@@ -2,13 +2,13 @@
 title: Sprache „Bicep“ für das Bereitstellen von Azure-Ressourcen
 description: Hier wird die Sprache „Bicep“ für das Bereitstellen der Infrastruktur in Azure beschrieben. Bei der Entwicklung von Vorlagen vereinfacht sie im Vergleich zur Verwendung von JSON die Erstellung.
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: 565f849edafaa6c083a1e7d21bb67f8b3ab8453e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/12/2021
+ms.openlocfilehash: 028ec297aa30bf6bfd397fee83b8b4525a66bdbc
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131443488"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484298"
 ---
 # <a name="what-is-bicep"></a>Was ist Bicep?
 
@@ -113,28 +113,6 @@ Sie können die [JSON-Dateien umgehend in Bicep dekompilieren](./decompile.md).
 **Kann ich Bicep zum Bereitstellen in Azure Stack Hub verwenden?**
 
 Ja, Sie können Bicep für Ihre Azure Stack Hub-Bereitstellungen verwenden, aber beachten Sie dabei, dass Bicep möglicherweise Typen anzeigt, die in Azure Stack Hub noch nicht verfügbar sind. Sie können eine Reihe von Beispielen im [GitHub-Repository mit Azure Stack Hub-Schnellstartvorlagen](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/Bicep) anzeigen. 
-
-## <a name="known-limitations"></a>Bekannte Einschränkungen
-
-- Bicep reagiert empfindlich auf Zeilenvorschübe. Zum Beispiel:
-
-    ```bicep
-    resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {
-      ...
-    }
-    ```
-
-    Kann nicht wie folgt geschrieben werden:
-
-    ```bicep
-    resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' =
-        if (newOrExisting == 'new') {
-          ...
-        }
-    ```
-
-- Keine Unterstützung für das „apiProfile“-Konzept, das für die Zuordnung eines einzelnen „apiProfile“ zu einer festgelegten „apiVersion“ für jeden Ressourcentyp verwendet wird.
-- Keine Unterstützung für benutzerdefinierte Funktionen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

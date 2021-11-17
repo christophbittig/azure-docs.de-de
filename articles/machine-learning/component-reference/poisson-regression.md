@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 3c77b0ac501d6829429cde79ca9165a1df450215
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 0ab03efd4ca6bf372b90ba04744c929082e85796
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566672"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339578"
 ---
 # <a name="poisson-regression"></a>Poisson-Regression
 
@@ -91,18 +91,18 @@ Da die Antwortvariable eine Poisson-Verteilung aufweist, trifft das Modell ander
     > 
     > - Wenn Sie einen Parameterbereich an [Train Model](train-model.md) übergeben, wird nur der erste Wert in der Parameterbereichsliste verwendet.
     > 
-    > - Wenn Sie eine Parameterwerte an die [Tune Model Hyperparameters](tune-model-hyperparameters.md)-Komponente übergeben, ignoriert sie die Werte und verwendet die Standardwerte für das Lernprogramm, wenn sie einen Bereich von Einstellungen für jeden Parameter erwartet.
+    > - Wenn Sie einen einzelnen Satz von Parameterwerten an die Komponente [Tune Model Hyperparameters](tune-model-hyperparameters.md) übergeben und ein Bereich von Einstellungen für jeden Parameter erwartet wird, werden die Werte ignoriert und stattdessen die Standardwerte für den Lerner verwendet.
     > 
     > - Wenn Sie die Option **Parameter Range** (Parameterbereich) auswählen und einen einzelnen Wert für einen beliebigen Parameter eingeben, wird dieser angegebene einzelne Wert während des gesamten Löschvorgangs verwendet, auch wenn andere Parameter in einem Wertebereich geändert werden.
 
-8.  Übermitteln Sie die Pipeline.
+8. Übermitteln Sie die Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 
 Nach Abschluss des Trainings:
 
-+ Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Trainingskomponente aus, und wechseln Sie dann im rechten Bereich zur Registerkarte **Outputs+logs** (Ausgaben und Protokolle). Klicken Sie auf das Symbol für **Dataset registrieren**.  Sie finden das gespeicherte Modell als Komponente in der Komponentenstruktur. 
+- Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Trainingskomponente aus und wechseln Sie dann im rechten Bereich zur Registerkarte **Outputs+logs** (Ausgaben und Protokolle). Klicken Sie auf das Symbol für **Dataset registrieren**.  Sie finden das gespeicherte Modell als Komponente in der Komponentenstruktur.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Hier finden Sie weitere Informationen zu den in Azure Machine Learning [verfügbaren Komponentensets](component-reference.md).
+Hier finden Sie die für Azure Machine Learning [verfügbaren Komponenten](component-reference.md).

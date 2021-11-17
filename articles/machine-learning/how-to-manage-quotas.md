@@ -10,12 +10,12 @@ ms.author: siarora
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 224ee0d4cc789349151bdc75ab164cc123119105
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 809f87ea7d8c4bdf3c6f21fe742ef5a5f2b595d9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564858"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335630"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 
@@ -119,8 +119,8 @@ Verwaltete Azure Machine Learning-Onlineendpunkte haben die in der folgenden Tab
 | Anzahl von Instanzen pro Bereitstellung | 20 |
 | Maximales Anforderungstimeout auf Endpunktebene  | 90 Sekunden |
 | Gesamtanforderungen pro Sekunde auf Endpunktebene für alle Bereitstellungen  | 500 <sup>2</sup> |
-| Gesamtanzahl der Verbindungen pro Sekunde auf Endpunktebene für alle Bereitstellungen  | 100 <sup>2</sup> |
-| Gesamtanzahl der auf Endpunktebene aktiven Verbindungen für alle Bereitstellungen  | 100 <sup>2</sup> |
+| Gesamtanzahl der Verbindungen pro Sekunde auf Endpunktebene für alle Bereitstellungen  | 500 <sup>2</sup> |
+| Gesamtanzahl der auf Endpunktebene aktiven Verbindungen für alle Bereitstellungen  | 500 <sup>2</sup> |
 | Gesamtbandbreite auf Endpunktebene für alle Bereitstellungen  | 5 MBit/s<sup>2</sup> |
 
 <sup>1</sup> Einzelne Bindestriche wie z .B. `my-endpoint-name` sind in Endpunkt- und Bereitstellungsnamen zulässig.

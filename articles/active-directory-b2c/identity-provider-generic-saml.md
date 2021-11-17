@@ -3,22 +3,22 @@ title: Einrichten von Registrierung und Anmeldung mit SAML-Identitätsanbieter
 titleSuffix: Azure Active Directory B2C
 description: Hier erfahren Sie, wie Sie in Azure Active Directory B2C Registrierung und Anmeldung mit einem SAML-Identitätsanbieter einrichten.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4aca76c584c2baf926157f9dbdd28375283bce80
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e76176c74405422fc871bc2bfb05e4dada01774d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128574627"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "132133785"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Einrichten von Registrierung und Anmeldung mit SAML-Identitätsanbieter und Azure Active Directory B2C
 

@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/28/2021
 ms.custom: template-concept
-ms.openlocfilehash: 866ca9439b5fc06f1e869cef6eef4c4adf979558
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 9f6493b2011a06a56f64e47711756b1172300885
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063970"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490267"
 ---
 # <a name="historical-query-storage-and-analysis-in-azure-synapse-analytics"></a>Speicherung und Analyse von Verlaufsabfragen in Azure Synapse Analytics
 
@@ -82,7 +82,7 @@ Bekannte Einschränkungen:
 ## <a name="log-analytics"></a>Log Analytics
 Log Analytics-Arbeitsbereiche können auf einfache Weise im Azure-Portal erstellt werden. Weitere Anweisungen zum Verbinden von Synapse mit Log Analytics finden Sie unter [Überwachen von Workloads – Azure-Portal](../sql-data-warehouse/sql-data-warehouse-monitor-workload-portal.md).
 
-Wie Azure Data Explorer verwendet auch Log Analytics die Kusto-Abfragesprache (KQL). Weitere Informationen zur Kusto-Syntax finden Sie unter [Übersicht über Kusto-Abfragen](/data-explorer/kusto/query/index.md). 
+Wie Azure Data Explorer verwendet auch Log Analytics die Kusto-Abfragesprache (KQL). Weitere Informationen zur Kusto-Syntax finden Sie unter [Übersicht über Kusto-Abfragen](/azure/data-explorer/kusto/query/). 
 
 Neben dem konfigurierbaren Aufbewahrungszeitraum wählen Sie den Arbeitsbereich aus, den Sie speziell für die Abfrage in Log Analytics verwenden möchten. Log Analytics bietet Ihnen die Flexibilität, Daten zu speichern sowie Abfragen auszuführen und zu speichern.
 
@@ -95,7 +95,7 @@ Bekannte Einschränkungen:
 
 ## <a name="azure-data-explorer-adx"></a>Azure Data Explorer (ADX)
 
-Azure Data Explorer (ADX) ist ein führender Dienst zur Untersuchung von Daten. Mit diesem Dienst können Verlaufsabfragen aus Azure Synapse Analytics analysiert werden. Informationen zum Einrichten einer ADF-Pipeline (Azure Data Factory) zum Kopieren und Speichern von Protokollen in ADX finden Sie unter [Kopieren von Daten in oder aus Azure Data Explorer](/data-factory/connector-azure-data-explorer.md). In ADX können Sie leistungsfähige Kusto-Abfragen zum Analysieren Ihrer Protokolle ausführen. Sie können hier auch andere Strategien kombinieren, z. B. zum Abfragen und Laden der DMV-Ausgabe in ADX über ADF.
+Azure Data Explorer (ADX) ist ein führender Dienst zur Untersuchung von Daten. Mit diesem Dienst können Verlaufsabfragen aus Azure Synapse Analytics analysiert werden. Informationen zum Einrichten einer ADF-Pipeline (Azure Data Factory) zum Kopieren und Speichern von Protokollen in ADX finden Sie unter [Kopieren von Daten in oder aus Azure Data Explorer](/azure/data-factory/connector-azure-data-explorer). In ADX können Sie leistungsfähige Kusto-Abfragen zum Analysieren Ihrer Protokolle ausführen. Sie können hier auch andere Strategien kombinieren, z. B. zum Abfragen und Laden der DMV-Ausgabe in ADX über ADF.
   
 Vorteile:
 * ADX bietet eine anpassbare Protokollaufbewahrungsrichtlinie.

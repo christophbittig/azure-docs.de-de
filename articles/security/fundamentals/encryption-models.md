@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 9ee57c3de5b0e6166e54c79713e789f2211ffed3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a939ec6093d6c06e9a7aeb0d7c46bdce2d78223a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131445007"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335554"
 ---
 # <a name="data-encryption-models"></a>Datenverschlüsselungsmodelle
 
@@ -212,8 +212,8 @@ Die Azure-Dienste, die die einzelnen Verschlüsselungsmodelle unterstützen:
 | **Medien**                        |                    |                    |                    |
 | Media Services                   | Ja                | Ja                | Ja                |
 | **Security**                     |                    |                    |                    |
-| Azure Security Center für IoT    | Ja                | Ja                | -                  |
-| Azure Sentinel                   | Ja                | Ja                | -                  |
+| Microsoft Defender für IoT    | Ja                | Ja                | -                  |
+| Microsoft Sentinel                   | Ja                | Ja                | -                  |
 | **Storage**                      |                    |                    |                    |
 | Blob Storage                     | Ja                | Ja                | Ja                |
 | Blob Storage Premium             | Ja                | Ja                | Ja                |

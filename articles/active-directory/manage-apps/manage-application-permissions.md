@@ -13,14 +13,14 @@ ms.date: 10/23/2021
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 038955a1c7b4a15b2b0ae630c95c2833f32a3eab
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: aeb8f00735e9455fd9d6adbdaf9e0cdec6940377
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131471172"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553171"
 ---
-# <a name="review-permissions-granted-to-applications-in-azure-active-directory"></a>Überprüfen von Berechtigungen, die Anwendungen in Azure Active Directory erteilt wurden
+# <a name="review-permissions-granted-to-applications"></a>Überprüfen von Berechtigungen, die Anwendungen erteilt wurden
 
 In diesem Artikel erfahren Sie, wie Sie Berechtigungen überprüfen, die Anwendungen in Ihrem Azure Active Directory-Mandanten erteilt wurden. Sie müssen die Berechtigungen möglicherweise überprüfen, wenn Sie eine schädliche Anwendung erkannt haben oder wenn der Anwendung mehr Berechtigungen erteilt wurden als erforderlich.
 

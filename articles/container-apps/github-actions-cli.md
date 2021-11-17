@@ -7,12 +7,12 @@ ms.service: container-apps
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: cshoe
-ms.openlocfilehash: c06ce3b75ac9b33d0dd82b74ba068a6a0039bbee
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: f345c3138891cef9d83000d1e64b950cd33747b4
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132027373"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179553"
 ---
 # <a name="publish-revisions-with-github-actions-in-azure-container-apps-preview"></a>Veröffentlichen von Revisionen mit GitHub-Aktionen in der Vorschau der Azure Container Anwendungen
 
@@ -41,7 +41,7 @@ Wenn Sie GitHub-Aktionen zum ersten Mal an Ihre Container-Anwendung anfügen, m�
 az ad sp create-for-rbac \
   --name <SERVICE_PRINCIPAL_NAME> \
   --role "contributor" \
-  --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME> /subscriptions/<SUBSCRIPTION_ID> \
+  --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME> \
   --sdk-auth
 ```
 
@@ -51,7 +51,7 @@ az ad sp create-for-rbac \
 az ad sp create-for-rbac `
   --name <SERVICE_PRINCIPAL_NAME> `
   --role "contributor" `
-  --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME> /subscriptions/<SUBSCRIPTION_ID> `
+  --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME> `
   --sdk-auth
 ```
 

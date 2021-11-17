@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2fd75ab871916dae166b2ead54e7379cb3c972f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b3fa2fbceba39ee6044c252703236c85545e46db
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110781869"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349165"
 ---
 # <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>Rollen für Microsoft 365-Dienste in Azure Active Directory
 
@@ -39,7 +39,7 @@ Alle Produkte in Microsoft 365 können mit Administratorrollen in Azure Active D
 > | Sicherheitsbewertung | [Integrierte Rollen in Azure AD](permissions-reference.md) | [Graph-API](/graph/api/overview)<br>[Abrufen von Rollenzuweisungen](/graph/api/directoryrole-list) |
 > | Compliance-Manager | [Compliance-Manager-Rollen](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | Nicht verfügbar |
 > | Azure Information Protection | [Integrierte Rollen in Azure AD](permissions-reference.md) | [Graph-API](/graph/api/overview)<br>[Abrufen von Rollenzuweisungen](/graph/api/directoryrole-list) |
-> | Microsoft Cloud App Security | [Rollenbasierte Zugriffssteuerung](/cloud-app-security/manage-admins) | [API-Referenz](/cloud-app-security/api-tokens)  |
+> | Microsoft Defender für Cloud-Apps | [Rollenbasierte Zugriffssteuerung](/cloud-app-security/manage-admins) | [API-Referenz](/cloud-app-security/api-tokens)  |
 > | Azure Advanced Threat Protection | [Azure ATP-Rollengruppen](/azure-advanced-threat-protection/atp-role-groups) | Nicht verfügbar |
 > | Windows Defender Advanced Threat Protection | [Rollenbasierte Zugriffssteuerung von Windows Defender ATP](/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | Nicht verfügbar |
 > | Privileged Identity Management | [Integrierte Rollen in Azure AD](permissions-reference.md) | [Graph-API](/graph/api/overview)<br>[Abrufen von Rollenzuweisungen](/graph/api/directoryrole-list) |

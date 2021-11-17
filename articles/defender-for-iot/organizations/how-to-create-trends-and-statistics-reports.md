@@ -1,14 +1,14 @@
 ---
 title: Generieren von Trend- und Statistikberichten
 description: Gewinnen Sie mithilfe der Trend- und Statistikwidgets von Defender für IoT Erkenntnisse zu Netzwerkaktivitäten, Statistiken und Trends.
-ms.date: 2/21/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: b4539e20ff485f1b6be69fee8e6849298540adcb
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: f84f739a9566bff2a9fe8286d301aa31d1e74199
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017487"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284035"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>Sensortrend- und Statistikberichte
 

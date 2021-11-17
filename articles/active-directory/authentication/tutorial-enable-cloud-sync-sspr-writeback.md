@@ -11,12 +11,12 @@ author: justinha
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4, ignite-fall-2021
-ms.openlocfilehash: 1572e029e4ae6b9c89587a32e710162aa53177a6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 17bc0c700aee1a351371f35e7c84e95312214088
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029860"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550304"
 ---
 # <a name="tutorial-enable-cloud-sync-self-service-password-reset-writeback-to-an-on-premises-environment-preview"></a>Tutorial: Aktivieren der Cloudsynchronisierung für das Rückschreiben von Self-Service-Kennzurücksetzungen in eine lokale Umgebung (Vorschauversion)
 
@@ -35,7 +35,7 @@ Die Azure Active Directory Connect-Cloudsynchronisierung für das SSPR-Rückschr
 - Zum Aktivieren des Kennwortrückschreibens in der Azure AD Connect-Cloudsynchronisierung müssen signierte PowerShell-Skripts ausgeführt werden.
   - Stellen Sie sicher, dass die PowerShell-Ausführungsrichtlinie das Ausführen von Skripts zulässt. 
   - Die empfohlene Ausführungsrichtlinie während der Installation ist „RemoteSigned“. 
-  - Weitere Informationen zum Festlegen der PowerShell-Ausführungsrichtlinie finden Sie unter [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy.md?view=powershell-7.1). 
+  - Weitere Informationen zum Festlegen der PowerShell-Ausführungsrichtlinie finden Sie unter [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy). 
 
 
 ## <a name="deployment-steps"></a>Bereitstellungsschritte

@@ -1,7 +1,6 @@
 ---
 title: Referenz zum Schreiben von Ausdrücken für Attributzuordnungen bei der Anwendungsbereitstellung von Azure Active Directory
 description: Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, um Attributwerte während der automatisierten Bereitstellung von SaaS-App-Objekten in Azure Active Directory in ein akzeptables Format zu transformieren. Enthält eine Referenzliste mit Funktionen
-services: active-directory
 author: kenwith
 manager: karenh444
 ms.service: active-directory
@@ -11,12 +10,12 @@ ms.topic: reference
 ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 2962c033ee42b91913324f22dbba3ca3cae49fdf
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 83b6e19a1e67e2e7e018aaa43ba4cf6149940ed7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456364"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292678"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 
@@ -734,7 +733,7 @@ Angenommen, Sie beziehen die Attribute *firstName* und *lastName* von SAP Succes
 ### <a name="randomstring"></a>Zufällige Zeichenfolge (RandomString)
 **Funktion:** Zufälllige Zeichenfolge(Länge, Mindestanzahl an Nummern, Mindestanzahl an Sonderzeichen, Mindestanzahl an Großbuchstaben, Mindestanzahl an Kleinbuchstaben, unzulässige Zeichen) [RandomString(Length, MinimumNumbers, MinimumSpecialCharacters , MinimumCapital, MinimumLowerCase, CharactersToAvoid)]
 
-**Beschreibung:** Die RandomString-Funktion generiert eine zufällige Zeichenfolge basierend auf den angegebenen Bedingungen. Die zulässigen Zeichen können [hier](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference) ausfindig gemacht werden.
+**Beschreibung:** Die RandomString-Funktion generiert eine zufällige Zeichenfolge basierend auf den angegebenen Bedingungen. Die zulässigen Zeichen können [hier](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference) ausfindig gemacht werden.
 
 **Parameter:** 
 

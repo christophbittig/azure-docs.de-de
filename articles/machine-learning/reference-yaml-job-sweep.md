@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Referenzdokumentation für das YAML-Schema von Sweep-Aufträgen an der Befehlszeilenschnittstelle (v2)
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: reference
 author: mx-iao
 ms.author: minxia
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 5589bee0b5dbbff8561af4c6ba6efc3a691e79de
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 90a69fceb96067ad92cc4d68f8b3e0929d2622a6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062527"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135119"
 ---
 # <a name="cli-v2-sweep-job-yaml-schema"></a>YAML-Schema für Sweep-Aufträge in der Befehlszeilenschnittstelle (v2)
 
@@ -27,12 +27,12 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 
 | Schlüssel | type | BESCHREIBUNG | Zulässige Werte | Standardwert |
 | --- | ---- | ----------- | -------------- | ------------- |
-| `$schema` | Zeichenfolge | Das YAML-Schema. Wenn Sie die Azure Machine Learning VS Code-Erweiterung verwenden, um die YAML-Datei zu erstellen, können Sie durch Einfügen von `$schema` am Anfang der Datei Schema- und Ressourcenvervollständigungen aufrufen. | | |
+| `$schema` | Zeichenfolge | Das YAML-Schema Wenn Sie die VS Code-Erweiterung für Azure Machine Learning zum Erstellen einer YAML-Datei verwenden, können Sie durch das Einfügen von `$schema` am Anfang der Datei Schema- und Ressourcenvervollständigungen aufrufen. | | |
 | `type` | const | **Erforderlich.** Typ des Auftrags. | `sweep` | `sweep` |
-| `name` | Zeichenfolge | Der Name des Auftrags. Muss für alle Aufträge im Arbeitsbereich eindeutig sein. Wenn diese Angabe nicht erfolgt, generiert Azure ML automatisch eine GUID für den Namen. | | |
-| `display_name` | Zeichenfolge | Anzeigename des Auftrags auf der Studio-Benutzeroberfläche. Kann innerhalb des Arbeitsbereichs nicht eindeutig sein. Wenn kein Wert angegeben wird, generiert Azure ML automatisch einen für Menschen lesbaren Adjektiv-Nomen-Bezeichner für den Anzeigenamen. | | |
-| `experiment_name` | Zeichenfolge | Experimentname, unter dem der Auftrag organisiert werden soll. Die Ausführungsaufzeichnung jedes Auftrags wird in Studio unter dem entsprechenden Experiment auf der Registerkarte „Experimente“ organisiert. Ohne Angabe verwendet Azure ML standardmäßig den Namen des Arbeitsverzeichnisses verwendet, in dem der Auftrag erstellt wurde. | | |
-| `description` | Zeichenfolge | Beschreibung des Auftrags. | | |
+| `name` | Zeichenfolge | Der Name des Auftrags. Muss für alle Aufträge im Arbeitsbereich eindeutig sein. Wenn dieser nicht angegeben wird, generiert Azure ML automatisch eine GUID für den Namen. | | |
+| `display_name` | Zeichenfolge | Der Anzeigename des Auftrags auf der Studio-Benutzeroberfläche. Kann innerhalb des Arbeitsbereichs nicht eindeutig sein. Wenn er nicht angegeben wird, generiert Azure ML automatisch einen für Menschen lesbaren Bezeichner für den Anzeigenamen. | | |
+| `experiment_name` | Zeichenfolge | Der Experimentname zum Organisieren des Auftrags. Die Ausführungsaufzeichnung jedes Auftrags wird auf der Registerkarte „Experimente“ des Studios unter dem entsprechenden Experiment organisiert. Wenn dieser nicht angegeben wird, wird von Azure ML standardmäßig der Namen des Arbeitsverzeichnisses verwendet, in dem der Auftrag erstellt wurde. | | |
+| `description` | Zeichenfolge | Die Beschreibung des Auftrags | | |
 | `tags` | Objekt (object) | Wörterbuch der Tags für den Auftrag. | | |
 | `sampling_algorithm` | Zeichenfolge | **Erforderlich.** Der Hyperparameter-Samplingalgorithmus, der über `search_space` verwendet werden soll. | `random`, `grid`, `bayesian` | |
 | `search_space` | Objekt (object) | **Erforderlich.** Wörterbuch des Suchbereichs für Hyperparameter. Der Schlüssel ist der Name des Hyperparameters, und der Wert ist der Parameterausdruck. <br><br> Auf Hyperparameter kann im `trial.command` mit dem Ausdruck `${{ search_space.<hyperparameter> }}` verwiesen werden. | | |
@@ -43,9 +43,9 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 | `limits` | Objekt (object) | Grenzwerte für den Sweep-Auftrag. Siehe [Attribute des `limits`-Schlüssels](#attributes-of-the-limits-key). | | |
 | `compute` | Zeichenfolge | **Erforderlich.** Name des Computeziels, auf dem der Auftrag mithilfe der `azureml:<compute_name>`-Syntax ausgeführt werden soll. | | |
 | `trial` | Objekt (object) | **Erforderlich.** Die Auftragsvorlage für die einzelnen Testversionen. Jeder Testauftrag wird mit einer anderen Kombination von Hyperparameterwerten bereitgestellt, die das System aus dem `search_space` als Stichproben entnimmt. Siehe [Attribute des `trial`-Schlüssels](#attributes-of-the-trial-key). | | |
-| `inputs` | Objekt (object) | Wörterbuch der Eingaben für den Auftrag. Der Schlüssel ist ein Name für die Eingabe im Kontext des Auftrags, und der Wert ist der Eingabewert. <br><br> Auf Eingaben kann im `trial.command` mit dem Ausdruck `${{ inputs.<input_name> }}` verwiesen werden. | | |
+| `inputs` | Objekt (object) | Wörterbuch der Eingaben für den Auftrag. Der Schlüssel ist ein Name für die Eingabe im Kontext des Auftrags, und der Wert ist der Eingabewert. <br><br> Eingaben können im `trial.command` mit dem Ausdruck `${{ inputs.<input_name> }}` verwiesen werden. | | |
 | `inputs.<input_name>` | number, integer, boolean, string oder object | Einer eines Literalwerts (vom Typ number, integer, boolean oder string), [JobInputUri](#jobinputuri) oder [JobInputDataset](#jobinputdataset). | | |
-| `outputs` | Objekt (object) | Wörterbuch der Ausgabekonfigurationen des Auftrags. Der Schlüssel ist ein Name für die Ausgabe im Kontext des Auftrags, und der Wert ist die Ausgabekonfiguration. <br><br> Auf Ausgaben kann im `trial.command` mit dem Ausdruck `${{ outputs.<output_name> }}` verwiesen werden. | |
+| `outputs` | Objekt (object) | Wörterbuch der Ausgabekonfigurationen des Auftrags. Der Schlüssel ist ein Name für die Ausgabe im Kontext des Auftrags, und der Wert ist die Ausgabekonfiguration. <br><br> Ausgaben können im `trial.command` mit dem Ausdruck `${{ outputs.<output_name> }}` verwiesen werden. | |
 | `outputs.<output_name>` | Objekt (object) | Sie können entweder einen optionalen `mode` angeben oder das Objekt leer lassen. Für jede im Wörterbuch (`outputs`) angegebene benannte Ausgabe generiert Azure ML automatisch eine standortbasierte Ausgabe. | |
 | `outputs.<output_name>.mode` | Zeichenfolge | Modus, wie Ausgabedateien an den Zielspeicher übermittelt werden. Für den Lese-/Schreib-Bereitstellungsmodus ist das Ausgabeverzeichnis ein bereitgestelltes Verzeichnis. Im Upload-Modus werden Dateien, die in das Ausgabeverzeichnis geschrieben werden, zum Auftragsende hochgeladen. | `rw_mount`, `upload` | `rw_mount` |
 
@@ -138,7 +138,7 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 
 ### <a name="attributes-of-the-limits-key"></a>Attribute des `limits`-Schlüssels
 
-| Schlüssel | type | BESCHREIBUNG | Standardwert |
+| Schlüssel | type | Beschreibung | Standardwert |
 | --- | ---- | ----------- | ------------- |
 | `max_total_trials` | integer | Die maximale Zeit in Sekunden, die der Auftrag ausgeführt werden darf. Sobald dieser Grenzwert erreicht ist, bricht das System den Auftrag ab. | `1000` |
 | `max_concurrent_trials` | integer | | Wird standardmäßig auf `max_total_trials` festgelegt. |
@@ -147,13 +147,13 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 
 ### <a name="attributes-of-the-trial-key"></a>Attribute des `trial`-Schlüssels
 
-| Schlüssel | type | BESCHREIBUNG | Standardwert |
+| Schlüssel | type | Beschreibung | Standardwert |
 | --- | ---- | ----------- | ------------- |
 | `command` | Zeichenfolge | **Erforderlich.** Den auszuführenden Befehl. | |
 | `code.local_path` | Zeichenfolge | Lokaler Pfad zum Quellcodeverzeichnis, das hochgeladen und für den Auftrag verwendet werden soll. | |
 | `environment` | Zeichenfolge oder Objekt | **Erforderlich.** Die Umgebung, die für den Auftrag verwendet werden soll. Dies kann entweder ein Verweis auf eine vorhandene Umgebung mit Versionsangabe im Arbeitsbereich oder eine Inline-Umgebungsspezifikation sein. <br> <br> Verwenden Sie die Syntax `azureml:<environment-name>:<environment-version>`, um auf eine vorhandene Umgebung zu verweisen. <br><br> Um eine Umgebung inline zu definieren, befolgen Sie das [Umgebungsschema](reference-yaml-environment.md#yaml-syntax). Schließen Sie die Eigenschaften `name` und `version` aus, da sie für Inlineumgebungen nicht unterstützt werden. | |
 | `environment_variables` | Objekt (object) | Wörterbuch der Name-Wert-Paare von Umgebungsvariablen, die für den Prozess festgelegt werden, in dem der Befehl ausgeführt wird. | |
-| `distribution` | Objekt (object) | Die Verteilungskonfiguration für verteilte Trainingsszenarien. Eine von [MpiConfiguration](#mpiconfiguration), [PyTorchConfiguration](#pytorchconfiguration)oder [TensorFlowConfiguration](#tensorflowconfiguration). | |
+| `distribution` | Objekt (object) | Die Verteilungskonfiguration für verteilte Trainingsszenarien Eine von [MpiConfiguration](#mpiconfiguration), [PyTorchConfiguration](#pytorchconfiguration)oder [TensorFlowConfiguration](#tensorflowconfiguration). | |
 | `resources.instance_count` | integer | Die Anzahl von Knoten, die für den Auftrag verwendet werden sollen. | `1` |
 
 #### <a name="distribution-configurations"></a>Verteilungskonfigurationen
@@ -163,14 +163,14 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 | Schlüssel | type | BESCHREIBUNG | Zulässige Werte |
 | --- | ---- | ----------- | -------------- |
 | `type` | const | **Erforderlich.** Verteilungstyp.  | `mpi` |
-| `process_count_per_instance` | integer | **Erforderlich.** Die Anzahl der Prozesse pro Knoten, die für den Auftrag gestartet werden sollen.  | |
+| `process_count_per_instance` | integer | **Erforderlich.** Die Anzahl der Prozesse pro Knoten, die für den Auftrag gestartet werden sollen  | |
 
 ##### <a name="pytorchconfiguration"></a>PyTorchConfiguration
 
 | Schlüssel | type | BESCHREIBUNG | Zulässige Werte | Standardwert |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | const | **Erforderlich.** Verteilungstyp.  | `pytorch` | |
-| `process_count_per_instance` | integer | Die Anzahl der Prozesse pro Knoten, die für den Auftrag gestartet werden sollen. | |  `1` |
+| `process_count_per_instance` | integer | Die Anzahl der Prozesse pro Knoten, die für den Auftrag gestartet werden sollen | |  `1` |
 
 ##### <a name="tensorflowconfiguration"></a>TensorFlowConfiguration
 
@@ -186,8 +186,8 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 
 | Schlüssel | type | BESCHREIBUNG | Zulässige Werte | Standardwert |
 | --- | ---- | ----------- | -------------- | ------------- |
-| `file` | Zeichenfolge | URI zu einer einzelnen Datei, die als Eingabe verwendet werden soll. Unterstützte URI-Typen sind `azureml`, `https`, `wasbs`, `abfss` und `adl`. Weitere Informationen zur Verwendung des `azureml://`-URI-Formats finden Sie unter [YAML-Kernsyntax](reference-yaml-core-syntax.md). **Entweder `file` oder `folder` ist erforderlich.**  | | |
-| `folder` | Zeichenfolge | URI zu einem Ordner, der als Eingabe verwendet werden soll. Unterstützte URI-Typen sind `azureml`, `wasbs`, `abfss` und `adl`. Weitere Informationen zur Verwendung des `azureml://`-URI-Formats finden Sie unter [YAML-Kernsyntax](reference-yaml-core-syntax.md). **Entweder `file` oder `folder` ist erforderlich.**   | | |
+| `file` | Zeichenfolge | Der URI zu einer einzelnen Datei, die als Eingabe verwendet werden soll. Unterstützte URI-Typen sind `azureml`, `https`, `wasbs`, `abfss` und `adl`. Weitere Informationen zur Verwendung des `azureml://`-URI-Formats finden Sie unter [YAML-Kernsyntax](reference-yaml-core-syntax.md). **Entweder `file` oder `folder` ist erforderlich.**  | | |
+| `folder` | Zeichenfolge | Der URI zu einem Ordner, der als Eingabe verwendet werden soll. Unterstützte URI-Typen sind `azureml`, `wasbs`, `abfss` und `adl`. Weitere Informationen zur Verwendung des `azureml://`-URI-Formats finden Sie unter [YAML-Kernsyntax](reference-yaml-core-syntax.md). **Entweder `file` oder `folder` ist erforderlich.**   | | |
 | `mode` | Zeichenfolge | Modus, in dem die Daten an das Computeziel übermittelt werden sollen. Für das schreibgeschützte Einbinden und die Lese-/Schreib-Einbindung werden die Daten als Einbindungspfad verwendet. Ein Ordner wird als Ordner eingebunden, und eine Datei wird als Datei eingebunden. Im Download-Modus werden die Daten als heruntergeladener Pfad verwendet. | `ro_mount`, `rw_mount`, `download` | `ro_mount` |
 
 #### <a name="jobinputdataset"></a>JobInputDataset

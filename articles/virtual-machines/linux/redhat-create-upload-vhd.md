@@ -1,21 +1,21 @@
 ---
 title: Erstellen und Hochladen einer VHD-Datei mit Red Hat Enterprise Linux zur Verwendung in Azure
 description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein Red Hat-Linux-Betriebssystem enthält.
-author: danielsollondon
+author: srijang
 ms.service: virtual-machines
 ms.subservice: redhat
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 12/01/2020
-ms.author: danis
-ms.openlocfilehash: 24cccbbd1bed0fc4e1fbe357832095455dae7df8
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 11/10/2021
+ms.author: srijangupta
+ms.openlocfilehash: 11a7931126d451b2fbeff301a337f15fd6aecbf3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220003"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301227"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Vorbereiten eines auf Red Hat basierenden virtuellen Computers für Azure
 
@@ -349,12 +349,13 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine ISO-Datei von 
     Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
 
     > [!CAUTION]
-    > Wenn Sie einen bestimmten virtuellen Computer migrieren, anstatt ein generalisiertes Image zu erstellen, überspringen Sie den Schritt zum Aufheben der Bereitstellung. Durch das Ausführen des Befehls `waagent -force -deprovision` wird der Quellcomputer unbrauchbar. Dieser Schritt ist nur für das Erstellen von generalisierten Images vorgesehen.
+    > Wenn Sie einen bestimmten virtuellen Computer migrieren, anstatt ein generalisiertes Image zu erstellen, überspringen Sie den Schritt zum Aufheben der Bereitstellung. Durch das Ausführen des Befehls `waagent -force -deprovision+user` wird der Quellcomputer unbrauchbar. Dieser Schritt ist nur für das Erstellen von generalisierten Images vorgesehen.
     ```console
-    # sudo waagent -force -deprovision
-
+    # sudo rm -f /var/log/waagent.log
+    # sudo cloud-init clean
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
     # export HISTSIZE=0
-
     # logout
     ```
     
@@ -536,14 +537,15 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine ISO-Datei von 
     Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
 
     ```console
-    # sudo waagent -force -deprovision
-
+    # sudo cloud-init clean
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    # sudo rm -f /var/log/waagent.log
     # export HISTSIZE=0
-
     # logout
     ```
     > [!CAUTION]
-    > Wenn Sie einen bestimmten virtuellen Computer migrieren, anstatt ein generalisiertes Image zu erstellen, überspringen Sie den Schritt zum Aufheben der Bereitstellung. Durch das Ausführen des Befehls `waagent -force -deprovision` wird der Quellcomputer unbrauchbar. Dieser Schritt ist nur für das Erstellen von generalisierten Images vorgesehen.
+    > Wenn Sie einen bestimmten virtuellen Computer migrieren, anstatt ein generalisiertes Image zu erstellen, überspringen Sie den Schritt zum Aufheben der Bereitstellung. Durch das Ausführen des Befehls `waagent -force -deprovision+user` wird der Quellcomputer unbrauchbar. Dieser Schritt ist nur für das Erstellen von generalisierten Images vorgesehen.
 
 
 1. Klicken Sie im Hyper-V-Manager auf **Aktion** > **Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.

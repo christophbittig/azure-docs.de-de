@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Edgemodul
 ms.topic: quickstart
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5cc04dc9ce6a149a64a61fb9fabdeeaca6593f51
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 48c41b812a4cdbd416d0dd146aba938cce419864
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131552884"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484203"
 ---
 # <a name="quickstart-detect-motion-record-video-to-video-analyzer"></a>Schnellstart: Erkennen von Bewegung, Aufzeichnen von Video in Video Analyzer
 
@@ -42,7 +42,7 @@ Weitere Details finden Sie [hier](https://github.com/Azure/video-analyzer/tree/m
 
 Auf dem virtuellen Computer, der bei der obigen Bereitstellung erstellt wurde, befinden sich mehrere MKV-Dateien.  Eine dieser Dateien hat den Namen `lots_015.mkv`. In den folgenden Schritten verwenden wir diese Videodatei, um einen Livestream für dieses Tutorial zu simulieren.
 
-Sie können eine Anwendung wie [VLC Player](https://www.videolan.org/vlc/) starten, `Ctrl+N` drücken und diesen Link zum [Parkplatz-Videobeispiel](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) einfügen, um mit der Wiedergabe zu beginnen. Etwa bei der 5-Sekunden-Marke fährt ein weißes Fahrzeug über den Parkplatz.
+Sie können eine Anwendung wie [VLC Player](https://www.videolan.org/vlc/) starten, `Ctrl+N` drücken und diesen Link zum [Parkplatz-Videobeispiel](https://avamedia.blob.core.windows.net/public/lots_015.mkv) einfügen, um mit der Wiedergabe zu beginnen. Etwa bei der 5-Sekunden-Marke fährt ein weißes Fahrzeug über den Parkplatz.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LUbN]
 

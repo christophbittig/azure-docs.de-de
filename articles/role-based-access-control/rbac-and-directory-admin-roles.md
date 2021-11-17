@@ -15,12 +15,12 @@ ms.date: 05/20/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: d339f058e94f27c26b4d5ae9bfcce4c66f279554
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f5e989394b42cb0f880ce6caa5ad069f53445c9e
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463635"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373162"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen
 
@@ -124,7 +124,7 @@ Standardmäßig wird mit Azure-Rollen und Azure AD-Rollen nicht der gesamte Azu
 
 Mit mehreren Azure AD-Rollen sind Azure AD und Microsoft 365 abgedeckt, z. B. bei den Rollen „Globaler Administrator“ und „Benutzeradministrator“. Wenn Sie beispielsweise Mitglied der Rolle „Globaler Administrator“ sind, verfügen Sie über globale Administratorfunktionen in Azure AD und Microsoft 365, z. B. Vornehmen von Änderungen an Microsoft Exchange und Microsoft SharePoint. Standardmäßig hat der globale Administrator aber keinen Zugriff auf Azure-Ressourcen.
 
-![Rollenvergleich: Azure RBAC und Azure AD](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
+![Rollenvergleich: Azure RBAC und Azure AD](./media/rbac-and-directory-admin-roles/azure-roles-azure-ad-roles.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

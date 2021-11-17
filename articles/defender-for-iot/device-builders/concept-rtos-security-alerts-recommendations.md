@@ -2,13 +2,13 @@
 title: IoT-Micro-Agent von Defender für integrierte und anpassbare Warnungen und Empfehlungen in Azure RTOS
 description: Hier erhalten Sie Informationen zu Sicherheitswarnungen und empfohlenen Abhilfemaßnahmen mit dem IoT-Micro-Agent von Azure Defender für IoT in Azure RTOS.
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: cfbd411617a0b80f4857e08f9803b34b80b873d4
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: ad6cd708bfdb53068895abc72abb3092e82db818
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016133"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293552"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Sicherheitswarnungen und -empfehlungen in Azure RTOS für den IoT-Micro-Agent von Defender (Vorschau)
 

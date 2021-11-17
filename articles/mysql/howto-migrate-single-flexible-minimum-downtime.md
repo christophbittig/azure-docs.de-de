@@ -6,12 +6,12 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/18/2021
-ms.openlocfilehash: 0197d3c4a76158663d721604cdd8e033b3d78153
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3bc4ee8d7d7491e577fba2e29d905262e37764cb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589642"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339540"
 ---
 # <a name="tutorial-migrate-azure-database-for-mysql--single-server-to-azure-database-for-mysql--flexible-server-with-minimal-downtime"></a>Tutorial: Migrieren von Azure Database for MySQL Single Server zu Azure Database for MySQL Flexible Server mit minimaler Downtime
 
@@ -168,7 +168,7 @@ Führen Sie die folgenden Schritte aus, um die Datenreplikation zu konfigurieren
         iii. Führen Sie zum Konfigurieren der Datenreplikation den folgenden Befehl aus:
 
         ```sql
-        CALL mysql.az_replication_change_master('<Primary_server>.mysql.database.azure.com', '=<username>@<primary_server>', '<Password>, 3306, '<File_Name>', <Position>, @cert);
+        CALL mysql.az_replication_change_master('<Primary_server>.mysql.database.azure.com', '<username>@<primary_server>', '<Password>', 3306, '<File_Name>', <Position>, @cert);
         ```
 
         > [!Note]
@@ -177,7 +177,7 @@ Führen Sie die folgenden Schritte aus, um die Datenreplikation zu konfigurieren
     * Wenn die SSL-Erzwingung nicht aktiviert ist, führen Sie den folgenden Befehl aus:
 
         ```sql
-        CALL mysql.az_replication_change_master('<Primary_server>.mysql.database.azure.com', '=<username>@<primary_server>', '<Password>, 3306, '<File_Name>', <Position>, ‘’);
+        CALL mysql.az_replication_change_master('<Primary_server>.mysql.database.azure.com', '<username>@<primary_server>', '<Password>', 3306, '<File_Name>', <Position>, ‘’);
         ```
 
 9. Rufen Sie die unten aufgeführte gespeicherte Prozedur auf, um die Replikation vom Replikatserver aus zu starten.

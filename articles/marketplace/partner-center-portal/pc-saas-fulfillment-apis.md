@@ -4,15 +4,15 @@ description: Hier finden Sie eine Einführung in die Fulfillment-APIs, mit denen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 11/09/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: f5db31caffe420f7b53a554e858b8752e9c51223
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: fbe417eca2e636f5af7fea2b9e200205dcc255af
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132054351"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398381"
 ---
 # <a name="saas-fulfillment-apis-in-the-microsoft-commercial-marketplace"></a>SaaS-Fulfillment-APIs im kommerziellen Microsoft-Marketplace
 

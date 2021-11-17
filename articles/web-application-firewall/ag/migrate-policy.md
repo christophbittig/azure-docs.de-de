@@ -3,17 +3,17 @@ title: Migrieren von WAF-Richtlinien für Azure Application Gateway
 description: Hier erfahren Sie, wie Sie Web Application Firewall-Richtlinien unter Verwendung von Azure PowerShell migrieren.
 services: web-application-firewall
 ms.topic: conceptual
-author: vhorne
+author: KumudD
 ms.service: web-application-firewall
 ms.date: 07/30/2021
-ms.author: ant
+ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d11c27e96ad214535008cefad5a926b46c316fa7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 162a6dbaa7430ddec38531d92590d22ea4e8d2fa
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339195"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549734"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Migrieren von Web Application Firewall-Richtlinien unter Verwendung von Azure PowerShell
 

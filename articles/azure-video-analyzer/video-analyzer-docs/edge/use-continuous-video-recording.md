@@ -4,12 +4,12 @@ description: In diesem Tutorial wird beschrieben, wie Sie Azure Video Analyzer z
 ms.topic: tutorial
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6a86dac6b242139d406dd6513a70846c57fa1c05
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 4b01a1a02e6e9c7901f6b366ff79b1e84891e44d
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559350"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493303"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>Tutorial: Fortlaufende Videoaufzeichnung und -wiedergabe
 
@@ -59,7 +59,7 @@ Wie in [diesem Artikel](../pipeline.md) beschrieben ist, können Sie bei Verwend
 > :::image type="content" source="../media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="Video Analyzer-Pipeline für fortlaufende Videoaufzeichnung":::
 <!-- ./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg -->
 
-In diesem Tutorial nutzen Sie ein mit dem [Live555-Medienserver](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555) erstelltes Edgemodul, um eine RTSP-Kamera zu simulieren. Innerhalb der Pipeline wird ein Knoten vom Typ [RTSP-Quelle](../pipeline.md#rtsp-source) verwendet, um den Livefeed abzurufen, und das Video wird an einen [Knoten vom Typ „Videosenke“](../pipeline.md#video-sink) gesendet, um es unter Ihrem Video Analyzer-Konto aufzuzeichnen. In diesem Tutorial wird ein [Beispielvideo zur Schnellstraßenkreuzung](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) verwendet.
+In diesem Tutorial nutzen Sie ein mit dem [Live555-Medienserver](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555) erstelltes Edgemodul, um eine RTSP-Kamera zu simulieren. Innerhalb der Pipeline wird ein Knoten vom Typ [RTSP-Quelle](../pipeline.md#rtsp-source) verwendet, um den Livefeed abzurufen, und das Video wird an einen [Knoten vom Typ „Videosenke“](../pipeline.md#video-sink) gesendet, um es unter Ihrem Video Analyzer-Konto aufzuzeichnen. In diesem Tutorial wird ein [Beispielvideo zur Schnellstraßenkreuzung](https://avamedia.blob.core.windows.net/public/camera-300s.mkv) verwendet.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 

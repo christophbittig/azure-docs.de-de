@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 11/03/2021
-ms.openlocfilehash: 372247d1fbb189f9662bf4d40be0c3779bf1d23c
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 07ff08303cc68934d5d7191952536b9101e12cf6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131579411"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494708"
 ---
 # <a name="troubleshoot-out-of-memory-errors-with-azure-sql-database"></a>Behandeln von Fehlern mit unzureichendem Arbeitsspeicher mit Azure SQL-Datenbanken  
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -170,7 +170,7 @@ Wenn weiterhin Fehler wegen nicht genügend Arbeitsspeicher in Azure SQL-Datenba
 
 - [Intelligente Abfrageverarbeitung in SQL-Datenbanken](/sql/relational-databases/performance/intelligent-query-processing)
 - [Leitfaden zur Architektur der Abfrageverarbeitung](/sql/relational-databases/query-processing-architecture-guide)    
-- [Leistungscenter für SQL Server-Datenbank-Engine und Azure SQL-Datenbank](/sql/relational-databases/performance/performance-center-for-sql-server-database-engine-and-azure-sql-database.md)  
+- [Leistungscenter für SQL Server-Datenbank-Engine und Azure SQL-Datenbank](/sql/relational-databases/performance/performance-center-for-sql-server-database-engine-and-azure-sql-database)  
 - [Beheben von Konnektivitätsproblemen und anderen Fehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance](troubleshoot-common-errors-issues.md)
 - [Behandeln vorübergehender Verbindungsfehler in SQL-Datenbank und SQL Managed Instance](troubleshoot-common-connectivity-issues.md)
 - [Demo zur intelligenten Abfrageverarbeitung](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/intelligent-query-processing)   

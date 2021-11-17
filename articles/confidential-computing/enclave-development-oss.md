@@ -1,20 +1,20 @@
 ---
 title: Entwickeln von Anwendungsenklaven mit Open-Source-Lösungen in Azure Confidential Computing
 description: Erfahren Sie, wie Sie Tools zum Entwickeln von Intel SGX-Anwendungen für Azure Confidential Computing verwenden.
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/01/2021
-ms.author: JenCook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e056bc01b77bf94850fe0459b9d99cf5dc4a1c5f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 71be688b3f69860468ce6c638e484caae0ba72f5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095416"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290208"
 ---
 # <a name="open-source-solutions-to-build-enclave-applications"></a>Open-Source-Lösungen zum Erstellen von Enklavenanwendungen
 

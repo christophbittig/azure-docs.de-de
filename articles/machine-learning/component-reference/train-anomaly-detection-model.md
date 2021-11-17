@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 269769c8bc80986230cbbee4225a38523f605724
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 8114492c9740cf706e9d2ba6fbd99f22029ba769
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566568"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289829"
 ---
 # <a name="train-anomaly-detection-model-component"></a>Komponente „Trainieren eines Anomalieerkennungsmodells“
 
@@ -48,10 +48,8 @@ Nach Abschluss des Trainings:
 
 + Wenn Sie eine Momentaufnahme des trainierten Modells speichern möchten, wählen Sie die Komponente aus. Klicken Sie dann auf das Symbol **Register dataset** (Dataset registrieren) unterhalb der Registerkarte **Protokolle und Ausgaben** im Bereich rechts.   
 
- 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [verfügbaren Komponenten](component-reference.md) für Azure Machine Learning an. 
+Hier finden Sie die für Azure Machine Learning [verfügbaren Komponenten](component-reference.md). 
 
-Eine Liste der Fehler, die bei den Designer-Komponenten auftreten können, finden Sie unter [Ausnahmen und Fehlercodes für den Designer](designer-error-codes.md).
-'
+Eine Liste der Fehler, die bei Designer-Komponenten auftreten können, finden Sie unter [Ausnahmen und Fehlercodes für den Designer](designer-error-codes.md).

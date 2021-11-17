@@ -1,14 +1,14 @@
 ---
 title: Filtern und Verwalten von Warnungen auf der Seite „Warnungen“
 description: Zeigen Sie Warnungen nach verschiedenen Kategorien an, und verwenden Sie Suchfunktionen zum Suchen nach bestimmten Warnungen.
-ms.date: 05/31/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 616072a83df91e047a0105e7a5cac560dcf5e6fd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: d7c8207a8dcd36fd52d9271bcc840ee6730f76da
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016682"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278624"
 ---
 # <a name="filter-and-manage-alerts-from-the-alerts-page"></a>Filtern und Verwalten von Warnungen auf der Seite „Warnungen“ 
 

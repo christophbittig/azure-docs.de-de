@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/21/2021
 ms.author: davidmu
 ms.reviewer: ergleenl
-ms.openlocfilehash: b13c7ac86ec8d21f143f4069cf1d0c777bde4bda
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 337561853bb34c8ecc67483dc8b94448b0b853a1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058337"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548518"
 ---
-# <a name="quickstart-enable-single-sign-on-for-an-enterprise-application-in-azure-active-directory"></a>Schnellstart: Aktivieren des einmaligen Anmeldens für eine Unternehmensanwendungen in Azure Active Directory
+# <a name="quickstart-enable-single-sign-on-for-an-enterprise-application"></a>Schnellstart: Aktivieren des einmaligen Anmeldens für eine Unternehmensanwendung
 
 In dieser Schnellstartanleitung verwenden Sie Azure Active Directory Admin Center, um einmaliges Anmelden (Single Sign-On, SSO) für eine Unternehmensanwendung zu aktivieren, die Sie Ihrem Azure AD-Mandanten (Azure Active Directory) hinzugefügt haben. Nachdem Sie SSO konfiguriert haben, können sich Ihre Benutzer mit ihren Azure AD-Anmeldeinformationen anmelden. 
 

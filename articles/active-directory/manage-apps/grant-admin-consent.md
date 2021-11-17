@@ -13,14 +13,14 @@ ms.date: 10/23/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 486063ba11c0b5854889ee22ef554bcab310ea26
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 8845643a7ef3816cb4bb3b2e25d511467d2bfcbb
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131447966"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546593"
 ---
-# <a name="grant-tenant-wide-admin-consent-to-an-application-in-azure-active-directory"></a>Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung in Azure Active Directory
+# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung
 
   In diesem Artikel erfahren Sie, wie Sie einer Anwendung in Azure Active Directory (Azure AD) eine mandantenweite Administratoreinwilligung erteilen.
 

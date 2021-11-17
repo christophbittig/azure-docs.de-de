@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: baf4e843eea859fc16ed6e3bcd509785cc4db8bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 128cf9e69b5e65d5feff4bbd4d05df5eb4c282dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86245584"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281550"
 ---
 # <a name="sfctl-settings"></a>sfctl settings
 Konfigurieren von Einstellungen, die für diese Instanz von sfctl lokal sind.
@@ -21,6 +21,6 @@ Konfigurieren von Einstellungen, die für diese Instanz von sfctl lokal sind.
 | [telemetry](service-fabric-sfctl-settings-telemetry.md) | Konfiguriert Telemetrieeinstellungen, die für diese Instanz von sfctl lokal sind. |
 
 
-## <a name="next-steps"></a>Nächste Schritte   
-- [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle   
+## <a name="next-steps"></a>Nächste Schritte
+- [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle
 - Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](./scripts/sfctl-upgrade-application.md)

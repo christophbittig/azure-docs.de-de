@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Erhalten Sie Informationen zum Installieren und Einrichten der Azure CLI-Erweiterung für Machine Learning.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: mlops
+ms.subservice: core
 ms.topic: how-to
 author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: de4ca6e0fcbcc6394889a6c334c9dc19f69da041
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 778c58c2a1408ea7beb2a756d5c1700810f4bb63
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131560984"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137599"
 ---
 # <a name="install-and-set-up-the-cli-v2"></a>Installieren und Einrichten der CLI (v2)
 
@@ -33,35 +33,35 @@ Die Erweiterung `ml` (Vorschau) für die [Azure CLI](/cli/azure/) ist die erweit
 
 Für die neue Machine Learning-Erweiterung **ist die Azure CLI-Version `>=2.15.0` erforderlich**. Stellen Sie sicher, dass diese Anforderung erfüllt ist:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_version":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_version":::
 
 Ist dies nicht der Fall, [aktualisieren Sie Ihre Azure CLI](/cli/azure/update-azure-cli).
 
 Überprüfen Sie die installierten Azure CLI-Erweiterungen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_extension_list":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_list":::
 
 Stellen Sie sicher, dass keine in Konflikt stehende Erweiterung mit dem Namespace `ml` installiert ist, einschließlich der Erweiterung `azure-cli-ml`:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_extension_remove":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_remove":::
 
 Installieren Sie nun die Erweiterung `ml`:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/setup.sh" id="az_ml_install":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_ml_install":::
 
 Führen Sie den Hilfebefehl aus, um Ihre Installation zu überprüfen und verfügbare Unterbefehle anzuzeigen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_ml_verify":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_ml_verify":::
 
 Sie können die Erweiterung auf die neueste Version aktualisieren:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_ml_update":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_ml_update":::
 
 ### <a name="installation-on-linux"></a>Installation unter Linux
 
 Wenn Sie Linux verwenden, ist die schnellste Möglichkeit, die erforderliche CLI-Version und die Machine Learning-Erweiterung zu installieren:
 
-:::code language="bash" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_extension_install_linux":::
+:::code language="bash" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_install_linux":::
 
 Weitere Informationen finden Sie unter [Installieren der Azure CLI unter Linux](/cli/azure/install-azure-cli-linux).
 
@@ -69,37 +69,37 @@ Weitere Informationen finden Sie unter [Installieren der Azure CLI unter Linux](
 
 Anmeldung:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_login":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_login":::
 
 Wenn Sie Zugriff auf mehrere Azure-Abonnements haben, können Sie Ihr aktives Abonnement festlegen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_account_set":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_account_set":::
 
 Richten Sie optional allgemeine Variablen in Ihrer Shell für die Verwendung in nachfolgenden Befehlen ein:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/azure-github.sh" id="set_variables":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/azure-github.sh" id="set_variables":::
 
 > [!WARNING]
 > Dabei wird die Bash-Syntax zum Festlegen von Variablen verwendet. Passen Sie diese bei Bedarf für Ihre Shell an. Sie können die Werte in den folgenden Befehlen auch inline ersetzen, anstatt Variablen zu verwenden.
 
 Ist noch keine Azure-Ressourcengruppe vorhanden, können Sie sie erstellen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/azure-github.sh" id="az_group_create":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/azure-github.sh" id="az_group_create":::
 
 Und erstellen Sie einen Machine Learning-Arbeitsbereich:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/azure-github.sh" id="az_ml_workspace_create":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/azure-github.sh" id="az_ml_workspace_create":::
 
 Für Machine Learning-Unterbefehle sind die Parameter `--workspace/-w` und `--resource-group/-g` erforderlich. Konfigurieren Sie Standardwerte, um diese nicht wiederholt eingeben zu müssen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/setup.sh" id="az_configure_defaults":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_configure_defaults":::
 
 > [!TIP]
 > Bei den meisten Codebeispielen wird davon ausgegangen, dass Sie einen Standardarbeitsbereich und eine Standardressourcengruppe festgelegt haben. Sie können diese über die Befehlszeile überschreiben.
 
 Sie können Ihre aktuellen Standardwerte mit `--list-defaults/-l` anzeigen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="list_defaults":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="list_defaults":::
 
 > [!TIP]
 > Die Kombination mit `--output/-o` ermöglicht besser lesbare Ausgabeformate.

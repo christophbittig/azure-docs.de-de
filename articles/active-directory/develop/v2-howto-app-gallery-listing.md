@@ -12,12 +12,12 @@ ms.date: 06/23/2021
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev, contperf-fy21q4
-ms.openlocfilehash: 7938e8ffbaca3f069016a445775d9c669f1ad144
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 7602c510ee60b30189e399bd07d624980534dc39
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228066"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336542"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Veröffentlichen Ihrer App im Azure AD-App-Katalog
 
@@ -224,7 +224,7 @@ Nachdem Sie mit einem Test sichergestellt haben, dass die Integration Ihrer Anwe
 
 Wenn Sie sich zum ersten Mal im Portal anzumelden versuchen, wird einer von zwei Bildschirmen angezeigt. 
 
-Wenn Sie die Meldung „Das hat nicht funktioniert“ erhalten, müssen Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) wenden. Geben Sie das E-Mail-Konto an, das Sie zum Senden der Anforderung verwenden möchten. Es empfiehlt sich, eine geschäftliche E-Mail-Adresse wie `name@yourbusiness.com` zu verwenden. Das Azure AD-Team fügt das Konto dann im Microsoft-Anwendungsnetzwerkportal hinzu.
+Wenn Sie die Meldung „Das hat nicht funktioniert“ erhalten, müssen Sie sich an das [Azure AD-SSO-Integrationsteam](mailto:SaaSApplicationIntegrations@service.microsoft.com) wenden. Geben Sie das E-Mail-Konto an, das Sie zum Senden der Anforderung verwenden möchten. Es empfiehlt sich, eine geschäftliche E-Mail-Adresse wie `name@yourbusiness.com` zu verwenden. Das Azure AD-Team fügt das Konto dann im Microsoft-Anwendungsnetzwerkportal hinzu.
 
 Wenn die Seite „Zugriff anfordern“ angezeigt wird, geben Sie den geschäftlichen Grund an, und wählen Sie **Zugriff anfordern** aus.
 
@@ -253,7 +253,7 @@ Der Gastbenutzer befindet sich in einem Verbund mit einem Basismandanten, der eb
 * Gastbenutzer bitten ihre Administratoren, das Risiko zu schließen bzw. zu verwerfen. Auch dies erfordert keinen Identitätsschutz. Der Administrator kann zu https://aka.ms/RiskyUsers navigieren und dann auf „Benutzerrisiko verwerfen“ klicken. Administratoren müssen jedoch die erforderliche Sorgfalt walten lassen, um sicherzustellen, dass es sich um eine falsch positive Risikobewertung handelt, bevor sie das Benutzerrisiko schließen. Andernfalls setzen sie ihre Ressourcen und die von Microsoft aufs Spiel, indem sie eine Risikobewertung ohne Untersuchung unterdrücken.
 
 > [!NOTE]
-> Wenn Sie Probleme beim Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+> Wenn Sie Probleme beim Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](mailto:SaaSApplicationIntegrations@service.microsoft.com).
 
 ### <a name="implementation-specific-options"></a>Implementieren spezieller Optionen
 Wenn Sie Ihre im Katalog aufzulistende Anwendung mithilfe von OpenID Connect hinzufügen möchten, wählen Sie **OpenID Connect und OAuth 2.0** (wie hier gezeigt) aus.
@@ -279,7 +279,7 @@ Im [Microsoft Application Network-Portal](https://microsoft.sharepoint.com/teams
 ![Auflisten einer SAML-Anwendung im Katalog](./media/howto-app-gallery-listing/updateorremove.png)
 
 > [!NOTE]
-> Wenn Sie Probleme mit dem Zugriff haben, lesen Sie den vorherigen Abschnitt zum Erstellen Ihres Kontos. Wenn dies nicht funktioniert, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+> Wenn Sie Probleme mit dem Zugriff haben, lesen Sie den vorherigen Abschnitt zum Erstellen Ihres Kontos. Wenn dies nicht funktioniert, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](mailto:SaaSApplicationIntegrations@service.microsoft.com).
 
 ### <a name="timelines"></a>Zeitpläne
 
@@ -312,7 +312,7 @@ Nachstehend ist der Flow für die vom Kunden angeforderten Anwendungen dargestel
 ![Zeigt den Flow für die vom Kunden angeforderten Apps](./media/howto-app-gallery-listing/customer-request-2.png)
 
 > [!Note]
-> Wenn Sie [Probleme mit dem Zugriff](#issues-on-logging-into-portal) haben, senden Sie eine [E-Mail an das Azure AD-App-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+> Wenn Sie [Probleme mit dem Zugriff](#issues-on-logging-into-portal) haben, senden Sie eine [E-Mail an das Azure AD-App-Integrationsteam](mailto:SaaSApplicationIntegrations@service.microsoft.com).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

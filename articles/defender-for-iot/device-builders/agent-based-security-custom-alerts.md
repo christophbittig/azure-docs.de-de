@@ -2,13 +2,13 @@
 title: Benutzerdefinierte Warnungen bei Agent-basierter Sicherheit
 description: Informieren Sie sich über anpassbare Sicherheitswarnungen und empfohlene Wartungsvorgänge unter Verwendung der Features und Dienste von Defender für IoT.
 ms.topic: conceptual
-ms.date: 2/16/2021
-ms.openlocfilehash: 2fb1385c12cbd9d0479d8528f54aad8816393ad1
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 8b1ea13ce6fef5a20c6e172a9de79bec2aa4a93e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016170"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289963"
 ---
 # <a name="defender-for-iot-devices-custom-security-alerts"></a>Defender für IoT-Geräte: benutzerdefinierte Sicherheitswarnungen
 

@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 98bbc2f84b0f56c4e50e98e99e7bcaf86588fb48
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a7fcc0cf2783aa530f99836279d75aff61f85188
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803966"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488979"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
 
@@ -92,48 +92,6 @@ Informationen zum Aktivieren der Mehrfachverschlüsselung im Ruhezustand für ve
 [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) nutzt entweder das [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)-Feature von Linux oder das [BitLocker](/windows/security/information-protection/bitlocker/bitlocker-overview)-Feature von Windows, um verwaltete Datenträger mit kundenseitig verwalteten Schlüsseln innerhalb der Gast-VM zu verschlüsseln.  Die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln bewirkt eine ADE-Verbesserung, indem Sie beliebige Betriebssystemtypen und Images für Ihre VMs verwenden können, indem Daten im Speicherdienst verschlüsselt werden.
 > [!IMPORTANT]
 > Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie vom Kunden verwaltete Schlüssel konfigurieren, wird Ihren Ressourcen im Hintergrund automatisch eine verwaltete Identität zugewiesen. Wenn Sie anschließend das Abonnement, die Ressourcengruppe oder den verwalteten Datenträger von einem Azure AD-Verzeichnis in ein anderes Verzeichnis verschieben, wird die den verwalteten Datenträgern zugeordnete verwaltete Identität nicht an den neuen Mandanten übertragen, sodass vom Kunden verwaltete Schlüssel möglicherweise nicht mehr funktionieren. Weitere Informationen finden Sie unter [Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
-
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-**F: Ist die serverseitige Verschlüsselung standardmäßig aktiviert, wenn ich einen verwalteten Datenträger erstelle?**
-
-**A:** Ja. Verwaltete Datenträger werden mit einer serverseitigen Verschlüsselung und plattformverwalteten Schlüsseln verschlüsselt.
-
-**F: Ist das Startvolume auf einem verwalteten Datenträger standardmäßig verschlüsselt?**
-
-**A:** Ja. Standardmäßig sind alle verwalteten Datenträger verschlüsselt, einschließlich des Betriebssystem-Datenträgers.
-
-**F: Wer verwaltet die Verschlüsselungsschlüssel?**
-
-**A:** Plattform-verwaltete Schlüssel werden von Microsoft verwaltet. Sie können auch Ihre eigenen Schlüssel verwenden und verwalten, die in Azure Key Vault gespeichert sind.
-
-**F: Kann ich die serverseitige Verschlüsselung für meine verwalteten Datenträger deaktivieren?**
-
-**A:** Nein.
-
-**F: Ist die Server-seitige Verschlüsselung nur in bestimmten Regionen verfügbar?**
-
-**A:** Nein. Serverseitige Verschlüsselung, die sowohl plattformverwaltete als auch kundenverwaltete Schlüssel verwendet, ist in allen Regionen verfügbar, in denen Azure Managed Disks verfügbar ist.
-
-**F: Unterstützt Azure Site Recovery die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln für Notfallwiederherstellungs Szenarios On-Premises-to-Azure und Azure-to-Azure?**
-
-**A:** Ja.
-
-**F: Kann ich den Azure Backup-Dienst verwenden, um verwaltete Datenträger zu sichern, die durch serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln verschlüsselt sind?**
-
-**A:** Ja.
-
-**F: Sind verwaltete Snapshots und Bilder verschlüsselt?**
-
-**A:** Ja. Alle verwalteten Momentaufnahmen und Images werden automatisch verschlüsselt.
-
-**F: Kann ich nicht verwaltete Datenträger von VMs in verwaltete Datenträger umwandeln, wenn sich diese Datenträger auf Speicherkonten befinden, die verschlüsselt sind oder zuvor verschlüsselt waren?**
-
-**A:** Ja.
-
-**F: Wird eine exportierte VHD von einem verwalteten Datenträger oder einem Snapshot ebenfalls verschlüsselt?**
-
-**A:** Nein. Wenn Sie allerdings eine VHD-Datei von einem verschlüsselten, verwalteten Datenträger oder einer Momentaufnahme in ein verschlüsseltes Speicherkonto exportieren, ist sie verschlüsselt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

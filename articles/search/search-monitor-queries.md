@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 67ada228d3b4ed95b1247b221f0ad90bbbc74ba0
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: e3932ee9a0683689bd74fb2d912d98cd29715da6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416963"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343039"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Überwachen von Abfrageanforderungen in Azure Cognitive Search
 
@@ -100,21 +100,21 @@ Im folgenden Screenshot gibt die erste Zahl die Anzahl (bzw. die Anzahl der an d
 
 Um einen schnellen Überblick über die aktuellen Zahlen zu erhalten, werden auf der Registerkarte **Überwachung** auf der Seite „Übersicht“ des Diensts drei Metriken (**Suchlatenz**, **Suchabfragen pro Sekunde (pro Sucheinheit)** , **Gedrosselte Suchabfragen in Prozent**) in bestimmten Intervallen angezeigt, gemessen in Stunden, Tagen und Wochen, mit der Option, den Aggregationstyp zu ändern.
 
-Zur tiefer gehenden Untersuchung öffnen Sie den Metrik-Explorer aus dem Menü **Überwachung**, um Daten überlagern, vergrößern und visualisieren und so Trends oder Anomalien untersuchen zu können. Weitere Informationen zum Metrik-Explorer erhalten Sie in diesem [Tutorial zum Erstellen eines Metrikdiagramms](../azure-monitor/essentials/tutorial-metrics-explorer.md).
+Zur tiefer gehenden Untersuchung öffnen Sie den Metrik-Explorer aus dem Menü **Überwachung**, um Daten überlagern, vergrößern und visualisieren und so Trends oder Anomalien untersuchen zu können. Weitere Informationen zum Metrik-Explorer erhalten Sie in diesem [Tutorial zum Erstellen eines Metrikdiagramms](../azure-monitor/essentials/tutorial-metrics.md).
 
 1. Wählen Sie im Abschnitt „Überwachung“ die Option **Metriken** aus, um den Metrik-Explorer mit dem auf Ihren Suchdienst festgelegt Bereich zu öffnen.
 
-1. Wählen Sie unter „Metrik“ eine Metrik aus der Dropdownliste aus, und überprüfen Sie die Liste der verfügbaren Aggregationen für einen bevorzugten Typ. Die Aggregation definiert, wie die Werte für jedes Zeitintervall erfasst werden.
+2. Wählen Sie unter „Metrik“ eine Metrik aus der Dropdownliste aus, und überprüfen Sie die Liste der verfügbaren Aggregationen für einen bevorzugten Typ. Die Aggregation definiert, wie die Werte für jedes Zeitintervall erfasst werden.
 
    ![Metrik-Explorer für QPS-Metrik](./media/search-monitor-usage/metrics-explorer-qps.png "Metrik-Explorer für QPS-Metrik")
 
-1. Legen Sie in der oberen rechten Ecke das Zeitintervall fest.
+3. Legen Sie in der oberen rechten Ecke das Zeitintervall fest.
 
-1. Wählen Sie eine Visualisierung aus. Der Standardwert ist ein Liniendiagramm.
+4. Wählen Sie eine Visualisierung aus. Der Standardwert ist ein Liniendiagramm.
 
-1. Überlagern Sie zusätzliche Aggregationen, indem Sie **Metrik hinzufügen** und unterschiedliche Aggregationen auswählen.
+5. Überlagern Sie zusätzliche Aggregationen, indem Sie **Metrik hinzufügen** und unterschiedliche Aggregationen auswählen.
 
-1. Vergrößern Sie einen relevanten Bereich im Liniendiagramm. Platzieren Sie den Mauszeiger am Anfang des Bereichs, halten Sie die linke Maustaste gedrückt, ziehen Sie den Mauszeiger zur anderen Seite des Bereichs, und lassen Sie die Maustaste wieder los. Im Diagramm wird dieser Zeitbereich vergrößert.
+6. Vergrößern Sie einen relevanten Bereich im Liniendiagramm. Platzieren Sie den Mauszeiger am Anfang des Bereichs, halten Sie die linke Maustaste gedrückt, ziehen Sie den Mauszeiger zur anderen Seite des Bereichs, und lassen Sie die Maustaste wieder los. Im Diagramm wird dieser Zeitbereich vergrößert.
 
 ## <a name="return-query-strings-entered-by-users"></a>Zurückgeben von Abfragezeichenfolgen, die von Benutzern eingegeben werden
 

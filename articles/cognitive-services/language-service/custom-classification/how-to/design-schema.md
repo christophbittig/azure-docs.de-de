@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 220995b286824b2daf2eb79c6b0ec917c5549263
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 243139219259c3b4be95010df988cf30256ca204
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132061961"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484111"
 ---
 # <a name="how-to-prepare-data-and-define-a-schema"></a>Vorbereiten von Daten und Definieren eines Schemas
 
@@ -47,7 +47,7 @@ Als Voraussetzung für die Erstellung eines Projekts zur benutzerdefinierten Tex
 * [Erstellen und Hochladen von Dateien aus Azure](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
 * [Erstellen und Hochladen von Dateien mit Azure Storage-Explorer](/azure/vs-azure-tools-storage-explorer-blobs)
 
-Sie können nur `.txt`- Dateien für benutzerdefinierten Text verwenden. Wenn Ihre Daten in einem anderen Format vorliegen, können Sie den [Parse-Befehl von CLUtils](https://github.com/microsoft/CogSLanguageUtilities/blob/main/CLUtils/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md) verwenden, um das Dateiformat zu ändern.
+Sie können nur `.txt`- Dateien für benutzerdefinierten Text verwenden. Wenn Ihre Daten in einem anderen Format vorliegen, können Sie den [Parse-Befehl von CLUtils](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md) verwenden, um das Dateiformat zu ändern.
 
  Sie können ein mit Anmerkungen versehenes Dataset oder ein nicht kommentiertes Dataset hochladen und Ihre Daten in Language Studio [kennzeichnen](../how-to/tag-data.md). 
  

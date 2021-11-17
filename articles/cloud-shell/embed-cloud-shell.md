@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
-ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f0f6f7a743796c825870de0c7cac668f67372e2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "60614311"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310127"
 ---
 # <a name="embed-azure-cloud-shell"></a>Einbetten von Azure Cloud Shell
 
@@ -43,7 +43,7 @@ Integrieren Sie die Start-Schaltfläche von Cloud Shell in Markdowndateien, inde
 
 Den HTML-Code zum Einbetten einer Popup-Cloud Shell finden Sie unten:
 ```html
-<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><img alt="Launch Azure Cloud Shell" src="https://shell.azure.com/images/launchcloudshell.png" /></a>
+<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><img alt="Launch Azure Cloud Shell" src="https://shell.azure.com/images/launchcloudshell.png"></a>
 ```
 
 ## <a name="customize-experience"></a>Anpassen der Benutzererfahrung

@@ -7,12 +7,12 @@ ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 18a1114c3253a9a8debb9289a3749df10ade7d54
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 71f7402fbd593d2fc97c2ec9574a48a2c28d53cb
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345975"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402464"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Eigenschaften der Modulzwillinge von IoT Edge-Agent und IoT Edge-Hub
 
@@ -32,7 +32,7 @@ Ein Modulzwilling enthält:
 
 Der Modulzwilling für den IoT Edge-Agent heißt `$edgeAgent` und koordiniert die Kommunikationsvorgänge zwischen dem auf einem Gerät ausgeführten IoT Edge-Agent und IoT Hub. Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanifest auf einem bestimmten Gerät im Zuge einer Einzelgeräte- oder einer umfassenden Bereitstellung angewendet wird.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
 | schemaVersion | Entweder „1.0“ oder „1.1“. Version 1.1 wurde mit IoT Edge Version 1.0.10 eingeführt und wird empfohlen. | Ja |
 | runtime.type | Muss „Docker“ sein. | Ja |
@@ -83,7 +83,6 @@ In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten I
 | lastDesiredVersion | Dieser Integerwert bezeichnet die letzte vom IoT Edge-Agent verarbeitete Version der gewünschten Eigenschaften. |
 | lastDesiredStatus.code | Dieser Statuscode bezieht sich auf die letzten gewünschten Eigenschaften, die der IoT Edge-Agent erkannt hat. Zulässige Werte: `200`: Erfolgreich, `400`: Ungültige Konfiguration, `412`: Ungültige Schemaversion, `417`: Die gewünschten Eigenschaften sind leer, `500`: Fehler |
 | lastDesiredStatus.description | Textbeschreibung des Status |
-| configurationHealth.{deploymentId}.health | `healthy`, wenn der von der Bereitstellung {deploymentId} festgelegte Runtimestatus aller Module `running` oder `stopped` ist, andernfalls `unhealthy` |
 | runtime.platform.OS | Meldung des auf dem Gerät ausgeführten Betriebssystems |
 | runtime.platform.architecture | Meldung der CPU-Architektur auf dem Gerät |
 | systemModules.edgeAgent.runtimeStatus | Gemeldeter Status des IoT Edge-Agents: {„running“ \| „unhealthy“} |

@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: f61c01c05412ea79aa955c599bd4dacd1eea7297
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c2d566e1ded80ed0d0d7ef33fb7218f77b39fe21
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131571220"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132530208"
 ---
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu Instanzen virtueller Computer bereit, die derzeit ausgeführt werden. Sie können ihn zur Verwaltung und Konfiguration Ihrer virtuellen Computer verwenden.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine umfassende Liste der verfügbaren Daten finden Sie in der [Übersicht über die Endpunktkategorien](#endpoint-categories).
@@ -323,7 +323,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich/Optional | Beschreibung |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `format` | Optional* | Das Format (`json` oder `text`) der Antwort. *Hinweis: Ist möglicherweise erforderlich, wenn Anforderungsparameter verwendet werden.
@@ -651,7 +651,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "azEnvironment": "AZUREPUBLICCLOUD",
     "extendedLocation": {
       "type": "edgeZone",
-      "location": "microsoftlosangeles"
+      "name": "microsoftlosangeles"
     },
     "evictionPolicy": "",
     "isHostCompatibilityLayerVm": "true",
@@ -769,7 +769,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "azEnvironment": "AZUREPUBLICCLOUD",
     "extendedLocation": {
       "type": "edgeZone",
-      "location": "microsoftlosangeles"
+      "name": "microsoftlosangeles"
     },
     "evictionPolicy": "",
     "isHostCompatibilityLayerVm": "true",
@@ -994,7 +994,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich/Optional | Beschreibung |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `nonce` | Optional | Eine 10-stellige Zeichenfolge, die als kryptografische Nonce fungiert. Wenn kein Wert angegeben wird, verwendet IMDS den aktuellen UTC-Zeitstempel.

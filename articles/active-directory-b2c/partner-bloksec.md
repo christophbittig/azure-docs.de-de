@@ -12,12 +12,12 @@ ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 15d98a7b24c2312f781f5d1e60721d99cbb2e63a
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: 8e955a50ed85710c0a3a33680b1edc4ef5873da6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131988538"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135511"
 ---
 # <a name="tutorial-configure-azure-active-directory-b2c-with-bloksec-for-passwordless-authentication"></a>Tutorial: Konfigurieren von Azure Active Directory B2C mit BlokSec für die kennwortlose Authentifizierung
 
@@ -54,7 +54,7 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 
 ## <a name="onboard-to-bloksec"></a>Onboarding für BlokSec
 
-Über [dieses Formular](https://bloksec.com/request-a-demo/) können Sie einen Demo-Mandanten für BlokSec anfordern. Geben Sie im Nachrichtenfeld an, dass Sie das Onboarding für Azure AD B2C durchführen möchten. Laden Sie die kostenlose mobile BlokSec-App „yuID“ aus dem App Store herunter, und installieren Sie sie. Wenn Ihr Demo-Mandant vorbereitet ist, erhalten Sie eine E-Mail. Klicken Sie auf Ihrem mobilen Gerät, auf dem die BlokSec-Anwendung installiert ist, auf den Link, um Ihr Administratorkonto bei Ihrer yuID-Instanz zu registrieren.
+Über [dieses Formular](https://bloksec.com/) können Sie einen Demo-Mandanten für BlokSec anfordern. Geben Sie im Nachrichtenfeld an, dass Sie das Onboarding für Azure AD B2C durchführen möchten. Laden Sie die kostenlose mobile BlokSec-App „yuID“ aus dem App Store herunter, und installieren Sie sie. Wenn Ihr Demo-Mandant vorbereitet ist, erhalten Sie eine E-Mail. Klicken Sie auf Ihrem mobilen Gerät, auf dem die BlokSec-Anwendung installiert ist, auf den Link, um Ihr Administratorkonto bei Ihrer yuID-Instanz zu registrieren.
 
 ::: zone pivot="b2c-user-flow"
 

@@ -11,12 +11,12 @@ ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66980ff85a3b539c81653f2abce39a1ced50003b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0e58ca9cce30c03467e7171ef29cf1e360fbe02e
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427606"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371712"
 ---
 # <a name="disable-pta"></a>Deaktivieren der PTA 
 
@@ -53,8 +53,8 @@ Die folgenden Voraussetzungen müssen erfüllt sein:
 Verwenden Sie in einer PowerShell-Sitzung den folgenden Befehl, um die PTA zu deaktivieren:
 
 1. PS C:\Programme\Microsoft Azure AD Connect Authentication Agent> `Import-Module .\Modules\PassthroughAuthPSModule`
-2. `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth` oder `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth -EnvironmentName <identifier>`
-3. `Disable-PassthroughAuthentication  -Feature PassthroughAuth` oder `Disable-PassthroughAuthentication -Feature PassthroughAuth -EnvironmentName <identifier>`
+2. `Get-PassthroughAuthenticationEnablementStatus`
+3. `Disable-PassthroughAuthentication`
 
 ## <a name="if-you-dont-have-access-to-an-agent"></a>Sie haben keinen Zugriff auf einen Agent
 

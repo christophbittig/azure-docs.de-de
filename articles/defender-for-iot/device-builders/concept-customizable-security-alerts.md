@@ -2,13 +2,13 @@
 title: Benutzerdefinierte Sicherheitswarnungen für IoT Hub
 description: Erfahren Sie mehr über anpassbare Sicherheitswarnungen und empfohlene Wartungsvorgänge unter Verwendung der Features und Dienste von Defender für IoT Hub.
 ms.topic: conceptual
-ms.date: 10/18/2021
-ms.openlocfilehash: e91587df3dbfb50700f95eaefea3bf80c2e18e04
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/09/2021
+ms.openlocfilehash: 3d72ee2d4cd91d0a922a7af61fbafd2cdb9a349a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249721"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318995"
 ---
 # <a name="defender-for-iot-hub-custom-security-alerts"></a>Defender für IoT Hub: benutzerdefinierte Sicherheitswarnungen
 

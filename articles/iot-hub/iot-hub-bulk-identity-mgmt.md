@@ -1,19 +1,19 @@
 ---
 title: Importieren/Exportieren von Azure IoT Hub-Geräteidentitäten | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe des Azure IoT-Dienst-SDK Massenvorgänge zum Importieren und Exportieren von Geräteidentitäten auf die Identitätsregistrierung anwenden. Mit Importvorgängen können Sie Geräteidentitäten per Massenvorgang erstellen, aktualisieren und löschen.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c7c85b88e2648f41c815d9cd864362f60845116b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 27a84f85f32eaf5fe77ff637d80eb4b3c9587930
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339472"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556152"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importieren und Exportieren von IoT Hub-Geräteidentitäten per Massenvorgang
 

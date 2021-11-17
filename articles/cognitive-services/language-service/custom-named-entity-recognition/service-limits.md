@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, references_regions, ignite-fall-2021
-ms.openlocfilehash: d56cec53d4fec33ec6db17667d95f9cc246796a4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 255c0f5f85f1f7b385fed82c36a799004f03ed0b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095614"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488214"
 ---
 # <a name="custom-named-entity-recognition-ner-service-limits"></a>Dienstgrenzwerte für benutzerdefinierte Erkennung benannter Entitäten (NER)
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie mehr über die Grenzwerte für Daten und Dienste 
 
 ## <a name="file-limits"></a>Dateigrenzwerte
 
-* Sie können nur `.txt`- wiedergeben wird. Wenn Ihre Daten in einem anderen Format vorliegen, können Sie den [Parse-Befehl von CLUtils](https://github.com/microsoft/CogSLanguageUtilities/blob/main/CLUtils/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md) verwenden, um das Dokument zu öffnen und den Text zu extrahieren.
+* Sie können nur `.txt`- wiedergeben wird. Wenn Ihre Daten in einem anderen Format vorliegen, können Sie den [Parse-Befehl von CLUtils](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md) verwenden, um das Dokument zu öffnen und den Text zu extrahieren.
 
 * Alle Dateien, die in Ihren Container hochgeladen werden, müssen Daten enthalten. Leere Dateien sind für das Training nicht zulässig.
 
@@ -44,7 +44,7 @@ In diesem Artikel erfahren Sie mehr über die Grenzwerte für Daten und Dienste 
 * Die maximale Dateigröße pro Anforderung beträgt 125.000 Zeichen. Sie können bis zu 25 Dateien senden, solange diese insgesamt nicht 125.000 Zeichen überschreiten.
 
 > [!NOTE]
-> Wenn Sie größere Dateien senden müssen, als der Grenzwert zulässt, können Sie den Text in kleinere Textabschnitte aufteilen, bevor Sie ihn an die API senden. Für diesen Vorgang können Sie den [Chunk-Befehl von CLUtils](https://github.com/microsoft/CogSLanguageUtilities/tree/main/CLUtils/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ChunkCommand) verwenden.
+> Wenn Sie größere Dateien senden müssen, als der Grenzwert zulässt, können Sie den Text in kleinere Textabschnitte aufteilen, bevor Sie ihn an die API senden. Für diesen Vorgang können Sie den [Chunk-Befehl von CLUtils](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ChunkCommand/README.md) verwenden.
 
 ## <a name="azure-resource-limits"></a>Azure-Ressourcengrenzwerte
 

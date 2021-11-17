@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a1770473b1c86524c77cc487e472872e792bded0
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 52d983bfdb492ff9e2a61774fe19300e0e7b4d7e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129612862"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345147"
 ---
 # <a name="expand-a-cloudsimple-private-cloud"></a>Erweitern einer privaten CloudSimple-Cloud
 
@@ -27,7 +27,7 @@ Bei einer neuen Clusterkonfiguration wird die VMware-Infrastruktur durch CloudSi
 
 Eine private Cloud kann mehrfach erweitert werden. Die Erweiterung ist jedoch nur bis zur maximal zulässigen Knotenanzahl möglich. Jedes Mal, wenn Sie eine private Cloud erweitern, fügen Sie einem vorhandenen Cluster Knoten hinzu oder erstellen einen neuen Cluster.
 
-## <a name="before-you-begin"></a>Vorbereitung
+## <a name="before-you-begin"></a>Voraussetzungen
 
 Bevor Sie eine private Cloud erweitern können, müssen Knoten bereitgestellt werden.  Weitere Informationen zum Bereitstellen von Knoten finden Sie im Artikel [Kaufen von Knoten für VMware Solution by CloudSimple – Azure](create-nodes.md).  Zum Erstellen eines neuen Clusters benötigen Sie mindestens drei verfügbare Knoten derselben SKU.
 

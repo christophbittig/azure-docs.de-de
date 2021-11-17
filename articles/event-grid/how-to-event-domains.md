@@ -4,12 +4,12 @@ description: Es wird veranschaulicht, wie Sie große Themenmengen in Azure Event
 ms.topic: conceptual
 ms.date: 09/28/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1e8187f43da38d7986c62a2c154c89f3576cf1ae
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8fd32086adb853380a63c24bc5055ac39e187942
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047794"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343399"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Verwalten von Themen und Veröffentlichen von Ereignissen mithilfe von Ereignisdomänen
 
@@ -122,7 +122,7 @@ New-AzEventGridSubscription `
 
 Wenn Sie einen Testendpunkt benötigen, um Ihre Ereignisse zu abonnieren, können Sie jederzeit eine [vordefinierte Webanwendung](https://github.com/Azure-Samples/azure-event-grid-viewer) bereitstellen, die die eingehenden Ereignisse anzeigt. Sie können die Ereignisse an Ihre Testwebsite unter `https://<your-site-name>.azurewebsites.net/api/updates` senden.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to deploy to Azure."></a>
 
 Berechtigungen, die für ein Thema festgelegt sind, werden in Azure Active Directory gespeichert und müssen explizit gelöscht werden. Das Löschen eines Ereignisabonnements widerruft nicht den Zugriff eines Benutzers zum Erstellen von Ereignisabonnements, wenn er Schreibzugriff für ein Thema besitzt.
 

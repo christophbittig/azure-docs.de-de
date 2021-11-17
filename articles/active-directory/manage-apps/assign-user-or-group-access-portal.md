@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 10/23/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 4076b4ab582289e6b8de55a827ef834191099f47
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d06dc25abf6ae83fd975a0d8d7fe38d905290e92
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427625"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550777"
 ---
-# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory
+# <a name="assign-users-and-groups-to-an-application"></a>Zuweisen von Benutzern und Gruppen zu einer Anwendung
 
 In diesem Artikel wird das Zuweisen von Benutzern und Gruppen zu einer Unternehmensanwendung in Azure Active Directory (Azure AD) mit PowerShell veranschaulicht. Wenn Sie einen Benutzer einer Anwendung zuweisen, wird die Anwendung im Portal „Meine Apps“ für den Benutzer angezeigt, um den Zugriff zu erleichtern. Wenn die Anwendung Rollen verfügbar macht, können Sie dem Benutzer auch eine bestimmte Rolle zuweisen.
 

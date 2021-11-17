@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/02/2021
 ms.author: lajanuar
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c19e08dce4c2cfcae67555189b55d085b18eceb0
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: b73f742054962e6d598b8313d565d1f15739fca4
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131988556"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554121"
 ---
 # <a name="quickstart-rest-api---preview"></a>Schnellstart: REST-API | Vorschau
 
@@ -111,7 +111,7 @@ In dieser Schnellstartanleitung verwenden Sie die folgenden Funktionen, um Daten
 #### <a name="request"></a>Anforderung
 
 ```bash
- curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-document:analyze?api-version=2021-09-30-preview&api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+ curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-document:analyze?api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
 #### <a name="operation-location"></a>Operation-Location
@@ -122,7 +122,7 @@ https://{host}/formrecognizer/documentModels/{modelId}/analyzeResults/**{resultI
 
 ### <a name="get-general-document-results"></a>Abrufen von Ergebnissen für allgemeine Dokumente
 
-Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)**-API die **[Get Analyze Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetAnalyzeDocumentResultw)**-API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)**-API die **[Get Analyze Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetAnalyzeDocumentResult)**-API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `{endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{subscription key}` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
@@ -132,7 +132,7 @@ Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.dev.cognitiv
 #### <a name="request"></a>Anforderung
 
 ```bash
-curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-document/analyzeResults/{resultId}?api-version=2021-09-30-preview&api-version=2021-09-30-preview"
+curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-document/analyzeResults/{resultId}?api-version=2021-09-30-preview"
 ```
 
 ### <a name="examine-the-response"></a>Untersuchen der Antwort
@@ -369,7 +369,7 @@ Der Knoten `"analyzeResults"` enthält den gesamten erkannten Text. Text ist nac
 
 ```bash
 bash
- curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-layout:analyze?api-version=2021-09-30-preview&api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+ curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-layout:analyze?api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
 #### <a name="operation-location"></a>Operation-Location
@@ -390,7 +390,7 @@ Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.api.cognitiv
 #### <a name="request"></a>Anforderung
 
 ```bash
-curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-layout/analyzeResults/{resultId}?api-version=2021-09-30-preview&api-version=2021-09-30-preview"
+curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-layout/analyzeResults/{resultId}?api-version=2021-09-30-preview"
 ```
 
 ### <a name="examine-the-response"></a>Untersuchen der Antwort
@@ -427,7 +427,7 @@ Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 #### <a name="request"></a>Anforderung
 
 ```bash
- curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-invoice:analyze?api-version=2021-09-30-preview&api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+ curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-invoice:analyze?api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
 #### <a name="operation-location"></a>Operation-Location
@@ -448,7 +448,7 @@ Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.api.cognitiv
 #### <a name="request"></a>Anforderung
 
 ```bash
-curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-invoice/analyzeResults/{resultId}?api-version=2021-09-30-preview&api-version=2021-09-30-preview"
+curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-invoice/analyzeResults/{resultId}?api-version=2021-09-30-preview"
 ```
 
 ### <a name="examine-the-response"></a>Untersuchen der Antwort

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9e12d8d112bd9c3d9ea44b29803bc475baa9e4
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: ccac6928918cb22b8d5e990e3eddeb9983c93153
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131500258"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553760"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
@@ -127,7 +127,6 @@ Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formf
 | KONA I                    | ![j]              | ![n]| ![j]| ![j]| ![n]           | https://konai.com/business/security/fido                                                            |
 | NEOWAVE                   | ![n]              | ![j]| ![j]| ![n]| ![n]           | https://neowave.fr/en/products/fido-range/                                                          |
 | Nymi                      | ![j]              | ![n]| ![j]| ![n]| ![n]           | https://www.nymi.com/nymi-band                                                                      | 
-| Octatco                   | ![j]              | ![j]| ![n]| ![n]| ![n]           | https://octatco.com/                                                                                |
 | OneSpan Inc.              | ![n]              | ![j]| ![n]| ![j]| ![n]           | https://www.onespan.com/products/fido                                                               |
 | Thales-Gruppe              | ![n]              | ![j]| ![j]| ![n]| ![n]           | https://cpl.thalesgroup.com/access-management/authenticators/fido-devices                           |
 | Thetis                    | ![j]              | ![j]| ![j]| ![j]| ![n]           | https://thetis.io/collections/fido2                                                                 |

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/28/2021
 ms.topic: how-to
-ms.openlocfilehash: ef82f0f5c9a66eff32228b12d8f04e1ffa0d22e9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 48f83cd92f682b6fb66a1d7b5bebd49cd5053b62
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356567"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400773"
 ---
 # <a name="deploy-an-extension-based-windows-or-linux-user-hybrid-runbook-worker-in-automation-preview"></a>Bereitstellen eines erweiterungsbasierten Hybrid Runbook Workers für Windows- oder Linux-Benutzer in Automation (Vorschau)
 
@@ -440,8 +440,8 @@ Sie können eine ARM-Vorlage (Azure Resource Manager) verwenden, um in Azure ein
 
 In der Vorlage sind die folgenden Azure-Ressourcen definiert:
 
-- hybridRunbookWorkerGroups/hybridRunbookWorkers
-- [Microsoft.Compute/virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions): 
+- [hybridRunbookWorkerGroups/hybridRunbookWorkers](/azure/templates/microsoft.automation/automationaccounts/hybridrunbookworkergroups/hybridrunbookworkers)
+- [Microsoft.Compute/virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions)
 
 ### <a name="review-parameters"></a>Überprüfen der Parameter
 
