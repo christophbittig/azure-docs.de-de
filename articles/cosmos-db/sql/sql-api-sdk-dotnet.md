@@ -57,8 +57,6 @@ ms.locfileid: "124806468"
 
 Die 2.x.x-Version umfasst die folgenden .NET SDK-Unterversionen:
 
-[!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v2/changelog.md)]
-
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
