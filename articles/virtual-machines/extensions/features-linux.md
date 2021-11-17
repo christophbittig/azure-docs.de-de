@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
-ms.openlocfilehash: 347293a0cd8647df110c10d9a94c99a978f36041
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 19520e2eeb65ca6cce77e913534fb2c82020c49f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424652"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245662"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -210,9 +210,9 @@ Durch Verschieben der Eigenschaft **CommandToExecute** in die **protected**-Konf
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Wie werden Agents und Erweiterungen aktualisiert?
 
-Agents und Erweiterungen haben den gleichen Updatemechanismus. Einige Updates erfordern keine zusätzlichen Firewallregeln.
+Agents und Erweiterungen haben den gleichen Updatemechanismus.
 
-Wenn ein Update verfügbar ist, wird es nur auf der VM installiert, auf der es eine Änderung der Erweiterungen oder andere Änderungen des VM-Modells gab, z.B.:
+Wenn ein Update verfügbar ist und automatische Updates aktiviert sind, wird das Update erst auf dem virtuellen Computer installiert, nachdem eine Änderung an einer Erweiterung vorgenommen wurde oder nachdem andere VM-Modelländerungen vorgenommen wurden, z. B.:
 
 - Datenträger
 - Erweiterungen
@@ -221,7 +221,13 @@ Wenn ein Update verfügbar ist, wird es nur auf der VM installiert, auf der es e
 - Größe des virtuellen Computers
 - Netzwerkprofil
 
+> [!IMPORTANT]
+> Das Update wird erst installiert, nachdem eine Änderung am VM-Modell vorgenommen wurde.
+
 Herausgeber stellen Updates in verschiedenen Regionen zu verschiedenen Zeiten zur Verfügung, d.h., möglicherweise haben Ihre VMs in verschiedenen Regionen unterschiedliche Versionen.
+
+> [!NOTE]
+> Einige Updates erfordern evtl. zusätzlichen Firewallregeln. Siehe [Netzwerkzugriff](#network-access).
 
 #### <a name="agent-updates"></a>Updates für Agents
 
@@ -257,7 +263,9 @@ Es wird dringend empfohlen, die automatische Aktualisierung für den Agent immer
 
 #### <a name="extension-updates"></a>Updates für Erweiterungen
 
-Wenn ein Update für eine Erweiterung verfügbar ist, lädt der Linux-Agent dieses herunter und aktualisiert die Erweiterung. Automatische Updates für Erweiterungen sind entweder *kleinere Updates* oder *Hotifxupdates*. Sie können beim Bereitstellen der Erweiterung entscheiden, ob Sie *kleinere* Updates für Erweiterungen abonnieren wollen oder nicht. Im folgenden Beispiel sehen Sie, wie man Nebenversionen in einer Resource Manager-Vorlage automatisch mit *autoUpgradeMinorVersion": true,'* aktualisiert:
+Wenn ein Erweiterungsupdate verfügbar ist und automatische Updates aktiviert sind, lädt der Linux-Agent die Erweiterung herunter und aktualisiert sie, nachdem eine Änderung am [VM-Modell](#how-do-agents-and-extensions-get-updated) erfolgt ist.
+
+Automatische Updates für Erweiterungen sind entweder *kleinere Updates* oder *Hotifxupdates*. Sie können beim Bereitstellen der Erweiterung entscheiden, ob Sie *kleinere* Updates für Erweiterungen abonnieren wollen oder nicht. Im folgenden Beispiel sehen Sie, wie man Nebenversionen in einer Resource Manager-Vorlage automatisch mit *autoUpgradeMinorVersion": true,'* aktualisiert:
 
 ```json
     "publisher": "Microsoft.Azure.Extensions",
@@ -272,6 +280,8 @@ Wenn ein Update für eine Erweiterung verfügbar ist, lädt der Linux-Agent dies
 ```
 
 Sie sollten in Ihren Bereitstellungen von Erweiterungen immer automatische Updates auswählen, um die neuesten Fehlerbehebungen für Nebenversionen zu erhalten. Das Abonnement für Hotfixupdates, die Sicherheitsfixes oder Hauptfehlerbehebungen enthalten, kann nicht gekündigt werden.
+
+Wenn Sie automatische Erweiterungsupdates deaktivieren oder ein Upgrade für eine Hauptversion durchführen müssen, verwenden Sie [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set), und geben Sie die Zielversion an.
 
 ### <a name="how-to-identify-extension-updates"></a>So identifizieren Sie Updates für Erweiterungen
 

@@ -6,13 +6,13 @@ ms.workload: storage
 ms.topic: conceptual
 author: b-juche
 ms.author: b-juche
-ms.date: 10/11/2021
-ms.openlocfilehash: 62dff22000c27125d278c06aa41228264150a8c0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/08/2021
+ms.openlocfilehash: 9539cf9cc327cb954a852c183cf8c94ee4d56ca1
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130270550"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054788"
 ---
 # <a name="networking-faqs-for-azure-netapp-files"></a>Häufig gestellte Fragen zum Netzwerkbetrieb von Azure NetApp Files
 
@@ -43,7 +43,7 @@ Nein. Die IP-Zuweisung zu Azure NetApp Files-Volumes ist dynamisch. Die statisch
 
 ## <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Unterstützt Azure NetApp Files Doppelstapel-VNet (IPv4 und IPv6)?
 
-Nein, Azure NetApp Files unterstützt derzeit kein Doppelstapel-VNet (IPv4 und IPv6).  
+Nein, Azure NetApp Files unterstützt derzeit nicht die Bereitstellung von Volumes in einem delegierten Subnetz mit dualem Stapel (IPv4 und IPv6). Das delegierte Subnetz für den Azure NetApp Files-Dienst muss ein reines IPv4-Subnetz sein. Der Zugriff auf Azure NetApp Files per IPv4 ist jedoch über ein Subnetz mit dualem Stapel oder per (mittels Peering verknüpftem) VNet möglich.
 
 ## <a name="is-the-number-of-the-ip-addresses-using-azure-vmware-solutions-for-guest-os-mounts-limited-to-1000"></a>Ist die Anzahl der IP-Adressen, die Azure VMware Solution für Gastbetriebssystemeinbindungen verwenden, auf 1.000 beschränkt?
 

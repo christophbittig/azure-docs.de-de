@@ -10,12 +10,12 @@ author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2
 ms.date: 11/03/2021
-ms.openlocfilehash: 94a1d171fb2bdf16f8229aa9a9bc9fd4a7ab3458
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: b98730e29dc5cc6e8b2e75781b366b5923adf2ae
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062907"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131566594"
 ---
 # <a name="autoscale-a-managed-online-endpoint-preview"></a>Autoskalierung für einen verwalteten Onlineendpunkt (Vorschau)
 
@@ -41,15 +41,15 @@ Zum Aktivieren der Autoskalierung für einen Endpunkt legen Sie zuerst ein Profi
 
 Der folgende Codeausschnitt legt die Endpunkt- und Bereitstellungsnamen fest:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="set_endpoint_deployment_name" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="set_endpoint_deployment_name" :::
 
 Als nächstes erhalten Sie die Azure Resource Manager-ID der Bereitstellung und des Endpunkts:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="set_other_env_variables" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="set_other_env_variables" :::
 
 Mit dem folgenden Codeausschnitt wird das Profil für die Autoskalierung erstellt:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="create_autoscale_profile" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="create_autoscale_profile" :::
 
 > [!NOTE]
 > Weitere Informationen finden Sie auf der [Referenzseite für die Autoskalierung](/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true).
@@ -81,7 +81,7 @@ Eine gängige Regel für das Aufskalieren besteht darin, die Anzahl der VM-Insta
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="scale_out_on_cpu_util" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="scale_out_on_cpu_util" :::
 
 Die Regel ist Teil des `my-scale-settings`-Profils (`autoscale-name` entspricht dem `name` des Profils). Der Wert des Arguments `condition` besagt, dass die Regel ausgelöst werden soll, wenn „die durchschnittliche CPU-Auslastung der VM-Instanzen fünf Minuten lang 70 % überschreitet“. Wenn diese Bedingung erfüllt ist, werden zwei weitere VM-Instanzen zugeordnet. 
 
@@ -109,7 +109,7 @@ Bei geringer Auslastung kann eine Skalierungsregel die Anzahl der VM-Instanzen r
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="scale_in_on_cpu_util" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="scale_in_on_cpu_util" :::
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -136,7 +136,7 @@ Die vorherigen Regeln, die auf die Bereitstellung angewendet wurden. Fügen Sie 
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="scale_up_on_request_latency" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="scale_up_on_request_latency" :::
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -162,7 +162,7 @@ Sie können auch Regeln erstellen, die nur an bestimmten Tagen oder zu bestimmte
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="weekend_profile" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="weekend_profile" :::
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -181,7 +181,7 @@ Wählen Sie unten auf der Seite __+ Skalierungsbedingung hinzufügen__ aus. Verw
 
 Wenn Sie Ihre Bereitstellungen nicht verwenden möchten, löschen Sie sie:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

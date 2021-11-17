@@ -3,17 +3,17 @@ title: 'Auswählen eines Datenträgertyps für virtuelle Azure IaaS-Computer: ve
 description: Erhalten Sie Informationen über die verfügbaren Azure-Datenträgertypen für virtuelle Computer, einschließlich Ultra-Datenträgern, SSD Premium, SSD Standard und Standard-HDDs.
 author: roygara
 ms.author: rogarana
-ms.date: 10/14/2021
+ms.date: 11/03/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 90612eecede80ae83247cb3727411db8c43e1eb2
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 5e4eb581f8cf9b95e9a8ba4dffd442efc6c055ef
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074359"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505439"
 ---
 # <a name="azure-managed-disk-types"></a>Azure verwaltete Festplattentypen
 
@@ -35,7 +35,7 @@ In der folgenden Tabelle finden Sie einen Vergleich der vier Datenträgerarten, 
 | **Datenträgertyp** | SSD | SSD | SSD | Festplattenlaufwerk |
 | **Szenario**  | E/A-intensive Workloads wie [SAP HANA](workloads/sap/hana-vm-operations-storage.md), führende Datenbanken (z. B. SQL, Oracle) und andere Workloads mit vielen Transaktionen. | Produktionsworkloads und leistungsabhängige Workloads | Webserver, wenig genutzte Unternehmensanwendungen und Dev/Test | Sicherung, nicht kritisch, sporadischer Zugriff |
 | **Maximale Datenträgergröße** | 65.536 Gibibyte (GiB) | 32767 GiB | 32767 GiB | 32767 GiB |
-| **Max. Durchsatz** | 2\.000 MB/s | 900 MB/s | 750 MB/s | 500 MB/s |
+| **Max. Durchsatz** | 4\.000 MB/s | 900 MB/s | 750 MB/s | 500 MB/s |
 | **Max. IOPS** | 160.000 | 20.000 | 6\.000 | 2\.000 |
 
 ## <a name="ultra-disks"></a>Ultra Disks
@@ -55,12 +55,12 @@ Die folgende Tabelle enthält einen Vergleich der Festplattengrößen und Leistu
 |4     |1\.200         |300         |
 |8     |2\.400         |600         |
 |16     |4\.800         |1\.200         |
-|32     |9\.600         |2\.000         |
-|64     |19.200         |2\.000         |
-|128     |38.400         |2\.000         |
-|256     |76.800         |2\.000         |
-|512     |153.600         |2\.000         |
-|1\.024–65.536 (Größen in diesem Bereich erhöhen sich in Schritten von 1 TiB)     |160.000         |2\.000         |
+|32     |9\.600         |2\.400         |
+|64     |19.200         |4\.000         |
+|128     |38.400         |4\.000         |
+|256     |76.800         |4\.000         |
+|512     |153.600         |4\.000         |
+|1\.024–65.536 (Größen in diesem Bereich erhöhen sich in Schritten von 1 TiB)     |160.000         |4\.000         |
 
 Ultra-Datenträger sind so konzipiert, dass sie in 99,99 % der Fälle Latenzzeiten im Submillisekundenbereich und die in der vorstehenden Tabelle beschriebenen Zielwerte für IOPS und Durchsatz erreichen.
 
@@ -80,7 +80,7 @@ Weitere Informationen zu IOPS finden Sie unter [Virtuelle Maschine und Festplatt
 
 ### <a name="ultra-disk-throughput"></a>Ultra-Datenträger-Durchsatz
 
-Die Durchsatzgrenze eines einzelnen Ultra-Datenträgers beträgt 256 KiB/s für jeden bereitgestellten IOPS, bis zu einem Maximum von 2000 MBps pro Datenträger (wobei MBps = 10^6 Bytes pro Sekunde). Der garantierte Mindestdurchsatz pro Datenträger beträgt 4 KiB/s für jeden bereitgestellten IOPS-Wert mit einem Gesamtmindestwert von 1 MB/s.
+Der Durchsatzgrenzwert eines einzelnen Ultra-Datenträgers beträgt 256 KiB/s für jeden bereitgestellten IOPS, bis zu einem Maximum von 4.000 MB/s pro Datenträger (wobei MB/s = 10^6 Bytes pro Sekunde). Der garantierte Mindestdurchsatz pro Datenträger beträgt 4 KiB/s für jeden bereitgestellten IOPS-Wert mit einem Gesamtmindestwert von 1 MB/s.
 
 Sie können die IOPS- und Durchsatzleistung von Ultra-Datenträgern während der Laufzeit anpassen, ohne den Datenträger von der virtuellen Maschine zu trennen. Nachdem eine Größenanpassung auf einer Festplatte vorgenommen wurde, kann es bis zu einer Stunde dauern, bis die Änderung wirksam wird. Innerhalb eines Zeitfensters von 24 Stunden sind bis zu vier Größenanpassungsvorgänge zulässig.
 

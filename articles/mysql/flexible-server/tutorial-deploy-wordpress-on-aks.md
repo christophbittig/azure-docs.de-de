@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: vc, devx-track-azurecli
-ms.openlocfilehash: ce9b80187bdab50ac05cd426fd04db7e31ccdc0e
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: d311dbc14f5a2227f10a29a553adafdbbc28494c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131853242"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472730"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Tutorial: Bereitstellen einer WordPress-App in AKS mit Azure Database for MySQL – Flexible Server
 
@@ -140,7 +140,7 @@ Laden Sie die [aktuelle WordPress-Version](https://wordpress.org/download/) heru
 
 ```
 
-Benennen Sie ```wp-config-sample.php``` in ```wp-config.php``` um, und ersetzen Sie die Zeilen ab ```// ** MySQL settings - You can get this info from your web host ** //``` bis zur Zeile ```define( 'DB_COLLATE', '' );``` durch den folgenden Codeausschnitt. Der folgende Code liest Datenbankhost, Benutzername und Kennwort aus der Kubernetes-Manifestdatei.
+Benennen Sie ```wp-config-sample.php``` in ```wp-config.php``` um, und ersetzen Sie die Zeilen 21 bis 32 durch den im Anschluss bereitgestellten Codeausschnitt. Der folgende Codeausschnitt liest Datenbankhost, Benutzername und Kennwort aus der Kubernetes-Manifestdatei:
 
 ```php
 //Using environment variables for DB connection information
@@ -151,10 +151,9 @@ Benennen Sie ```wp-config-sample.php``` in ```wp-config.php``` um, und ersetzen 
 $connectstr_dbhost = getenv('DATABASE_HOST');
 $connectstr_dbusername = getenv('DATABASE_USERNAME');
 $connectstr_dbpassword = getenv('DATABASE_PASSWORD');
-$connectst_dbname = getenv('DATABASE_NAME');
 
 /** MySQL database name */
-define('DB_NAME', $connectst_dbname);
+define('DB_NAME', 'flexibleserverdb');
 
 /** MySQL database username */
 define('DB_USER', $connectstr_dbusername);
@@ -237,11 +236,11 @@ spec:
         - containerPort: 80
         env:
         - name: DATABASE_HOST
-          value: "SERVERNAME.mysql.database.azure.com" #Update here
+          value: "SERVERNAME.mysql.database.azure.com"
         - name: DATABASE_USERNAME
-          value: "YOUR-DATABASE-USERNAME"  #Update here
+          value: "YOUR-DATABASE-USERNAME"
         - name: DATABASE_PASSWORD
-          value: "YOUR-DATABASE-PASSWORD"  #Update here
+          value: "YOUR-DATABASE-PASSWORD"
         - name: DATABASE_NAME
           value: "flexibleserverdb"
       affinity:
@@ -289,20 +288,20 @@ Wenn die Anwendung ausgeführt wird, macht ein Kubernetes-Dienst das Anwendungs-
 Verwenden Sie zum Überwachen des Fortschritts den Befehl [kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) mit dem Argument `--watch`.
 
 ```azurecli-interactive
-kubectl get service php-svc --watch
+kubectl get service wordpress-blog --watch
 ```
 
 Die externe IP-Adresse (*EXTERNAL-IP*) für den Dienst *wordpress-blog* wird zunächst als *pending* (ausstehend) angezeigt.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
-php-svc  LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
+wordpress-blog   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 Sobald die externe IP-Adresse (*EXTERNAL-IP*) von pending (*ausstehend*) in eine tatsächliche öffentliche IP-Adresse geändert wurde, verwenden Sie `CTRL-C`, um die `kubectl`-Überwachung zu beenden. Die folgende Beispielausgabe zeigt eine gültige öffentliche IP-Adresse, die dem Dienst zugewiesen ist:
 
 ```output
-  php-svc  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
+wordpress-blog  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
 ### <a name="browse-wordpress"></a>Durchsuchen von WordPress

@@ -6,20 +6,20 @@ author: JBCook
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.topic: overview
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.author: jencook
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 17462eaeacf36c7748c2654841e8ef11614a6c73
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 408f619f34942839bedcc75c6ab66044b4f90323
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080327"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852705"
 ---
 # <a name="use-cases-and-scenarios"></a>Anwendungsfälle und -szenarien
 Confidential Computing gilt für verschiedene Anwendungsfälle zum Schutz von Daten in regulierten Branchen wie Behörden und Finanzdienstleistungen sowie im Gesundheitswesen. Wenn Sie beispielsweise den Zugriff auf vertrauliche Daten verhindern, wird die digitale Identität der Bürger*innen vor allen beteiligten Parteien geschützt, einschließlich des Cloudanbieters, der sie speichert. Diese vertraulichen Daten können biometrische Daten enthalten, die zum Auffinden und Entfernen bekannter Bilder mit Kindermissbrauch, zur Verhinderung von Menschenhandel und zur Unterstützung digitaler forensischer Untersuchungen verwendet werden.
 
-![Anwendungsfälle für Confidential Computing](media/use-cases-scenarios/use_cases.jpg)
+:::image type="content" source="media/use-cases-scenarios/use-cases.png" alt-text="Screenshot: Anwendungsfälle für Azure Confidential Computing, u. a. Szenarien für Behörden, Finanzdienstleistungen und das Gesundheitswesen":::
 
 Dieser Artikel enthält eine Übersicht über verschiedene gängige Szenarien für Azure Confidential Computing. Die Empfehlungen in diesem Artikel dienen als Ausgangspunkt für die Anwendungsentwicklung mit Confidential Computing-Diensten und -Frameworks.
 
@@ -57,7 +57,7 @@ In diesem Beispiel für sicheres Computing mit mehreren Parteien tauschen mehrer
 
 Dank Confidential Computing können diese Finanzinstitute die Betrugserkennungsrate erhöhen, Maßnahmen gegen Geldwäsche ergreifen, False Positives reduzieren und weitere Erkenntnisse aus umfangreicheren Datasets gewinnen.
 
-![Freigeben von Daten für mehrere Parteien bei Banken](media/use-cases-scenarios/mpc_banks.jpg)
+:::image type="content" source="media/use-cases-scenarios/mpc-banks.png" alt-text="Grafik: Freigeben von Daten für mehrere Parteien bei Banken mit der durch Confidential Computing ermöglichten Datenbewegung":::
 
 ### <a name="drug-development-in-healthcare"></a>Medikamentenentwicklung im Gesundheitswesen
 

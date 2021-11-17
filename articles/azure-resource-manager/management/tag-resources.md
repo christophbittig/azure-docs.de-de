@@ -4,12 +4,12 @@ description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die 
 ms.topic: conceptual
 ms.date: 07/29/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: cf8b4ceb70eec2ac6dbb79b8193276997f8e06f1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2ecb43876582e21fbee97e4d51732b16727b6c92
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664521"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248213"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
@@ -238,7 +238,7 @@ $subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
 Remove-AzTag -ResourceId "/subscriptions/$subscription"
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ### <a name="apply-tags"></a>Anwenden von Tags
 
@@ -848,6 +848,7 @@ Für Tags gelten folgende Einschränkungen:
 
    > [!NOTE]
    > * Azure DNS-Zonen und Traffic Manager unterstützen die Verwendung von Leerzeichen im Tag oder ein Tag, das mit einer Zahl beginnt, nicht.
+   > * Azure DNS-Tagnamen unterstützen keine Sonderzeichen und keine Unicode-Zeichen. Der Wert kann alle Zeichen enthalten.
    >
    > * Die Verwendung von `#` oder `:` im Tagnamen wird in Azure Front Door nicht unterstützt.
    >

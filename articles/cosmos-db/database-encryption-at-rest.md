@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 10/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: abe4bb3a53e3177857cb8041fd255ec916985054
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d90817c4e49a61728d2c8a73628fdb33efe7123b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93089864"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446370"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Datenverschlüsselung in Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,7 +41,7 @@ Der grundlegende Ablauf bei einer Benutzeranforderung sieht wie folgt aus:
 A: Es fallen keine zusätzlichen Kosten an.
 
 ### <a name="q-who-manages-the-encryption-keys"></a>F: Wer verwaltet die Verschlüsselungsschlüssel?
-A: Die Schlüssel werden von Microsoft verwaltet.
+A: Auf Ihrem Azure Cosmos-Konto gespeicherte Daten werden automatisch und nahtlos mit Schlüsseln verschlüsselt, die von Microsoft mit dienstseitig verwalteten Schlüsseln verwaltet werden. Optional können Sie eine zweite Verschlüsselungsebene mit Schlüsseln hinzufügen, die Sie mithilfe von [kundenseitig verwalteten Schlüsseln (CMK)](how-to-setup-cmk.md) verwalten.
 
 ### <a name="q-how-often-are-encryption-keys-rotated"></a>F: Wie oft werden die Verschlüsselungsschlüssel ausgetauscht?
 A: Microsoft verfügt über eine Reihe von internen Richtlinien für die Rotation der Verschlüsselungsschlüssel, die auch für Cosmos DB gelten. Die spezifischen Richtlinien werden nicht veröffentlicht. Microsoft veröffentlicht den [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx), der als eine Teilmenge der internen Richtlinien gilt und nützliche bewährte Methoden für Entwickler enthält.

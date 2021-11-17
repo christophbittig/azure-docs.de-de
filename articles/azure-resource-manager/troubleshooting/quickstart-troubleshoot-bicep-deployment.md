@@ -1,15 +1,15 @@
 ---
 title: Fehlerbehebung bei der Bereitstellung von Bicep-Dateien
 description: Erfahren Sie, wie Sie die Bereitstellung von Bicep-Dateien überwachen und Fehler beheben können. Sie finden hier Aktivitätsprotokolle und den Bereitstellungsverlauf.
-ms.date: 10/26/2021
+ms.date: 11/04/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 44c98be9a0553d3e255b2272a3a8797bae61d3da
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 31d212ef608b5fbabb4430b5320ae033ae2be325
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101409"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849442"
 ---
 # <a name="quickstart-troubleshoot-bicep-file-deployments"></a>Schnellstart: Fehlerbehebung bei der Bereitstellung von Bicep-Dateien
 
@@ -17,11 +17,11 @@ Dieser Schnellstart beschreibt, wie Sie Fehler bei der Bereitstellung von Bicep-
 
 Es gibt drei Arten von Fehlern, die mit einer Bereitstellung zusammenhängen:
 
-- **Validierungsfehler** treten auf, bevor ein Einsatz beginnt, und werden durch Syntaxfehler in Ihrer Datei verursacht. Ihr Redakteur kann diese Fehler erkennen.
-- **Preflight-Fehler** treten auf, nachdem Sie die Bereitstellung gestartet haben, aber bevor irgendwelche Ressourcen bereitgestellt wurden. Diese Fehler werden gefunden, ohne dass die Bereitstellung gestartet wird. Wenn zum Beispiel ein Parameterwert falsch ist, wird der Fehler bei der Preflight-Validierung gefunden.
+- **Validierungsfehler** treten auf, bevor ein Einsatz beginnt, und werden durch Syntaxfehler in Ihrer Datei verursacht. Ihr Editor kann diese Fehler identifizieren.
+- **Preflight-Validierungsfehler** treten auf, wenn ein Bereitstellungsbefehl zwar ausgeführt wird, Ressourcen aber nicht bereitgestellt werden. Diese Fehler werden gefunden, ohne dass die Bereitstellung gestartet wird. Wenn zum Beispiel ein Parameterwert falsch ist, wird der Fehler bei der Preflight-Validierung gefunden.
 - **Einrichtungsfehler** treten während des Einrichtungsprozesses auf und können nur durch die Bewertung des Einrichtungsfortschritts gefunden werden.
 
-Alle Fehlertypen geben einen Fehlercode zurück, den Sie bei der Fehlersuche in der Bereitstellung verwenden können. Validierungs- und Preflight-Fehler werden nicht in Ihrem Bereitstellungsprotokoll angezeigt.
+Alle Fehlertypen geben einen Fehlercode zurück, den Sie bei der Fehlersuche in der Bereitstellung verwenden können. Validierungs- und Preflight-Fehler werden im Aktivitätsprotokoll angezeigt, aber nicht im Bereitstellungsverlauf. Eine Bicep-Datei mit Syntaxfehlern wird weder in JSON kompiliert noch im Aktivitätsprotokoll angezeigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -126,7 +126,7 @@ New-AzResourceGroupDeployment `
 
 ---
 
-Azure Resource Manager stellt fest, dass der Name des Speicherkontos Zeichen enthält, die nicht zulässig sind. Sie versucht nicht, den Einsatz zu starten. 
+Azure Resource Manager stellt fest, dass der Name des Speicherkontos Zeichen enthält, die nicht zulässig sind. Sie versucht nicht, den Einsatz zu starten.
 
 Sie erhalten eine Fehlermeldung, die besagt, dass die Preflight-Validierung fehlgeschlagen ist. Außerdem wird eine Meldung angezeigt, die besagt, dass der Name des Speicherkontos zwischen 3 und 24 Zeichen lang sein muss und nur Zahlen und Kleinbuchstaben enthalten darf. Die von Ihnen angegebene Vorwahl erfüllte diese Anforderung nicht. Weitere Informationen zu diesem Fehlercode finden Sie unter [Fehler für Speicherkontonamen beheben](error-storage-account-name.md).
 
@@ -148,14 +148,20 @@ Sie stellen die Datei erneut bereit und geben einen zulässigen Wert für den Pa
 
 ```azurecli
 az group create --name troubleshootRG --location westus
-az deployment group create --resource-group troubleshootRG --template-file troubleshoot.bicep --parameters prefixName=stg
+az deployment group create \
+  --resource-group troubleshootRG \
+  --template-file troubleshoot.bicep \
+  --parameters prefixName=stg
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup -Name troubleshootRG -Location westus
-New-AzResourceGroupDeployment -ResourceGroupName troubleshootRG -TemplateFile troubleshoot.bicep -prefixName stg
+New-AzResourceGroupDeployment `
+  -ResourceGroupName troubleshootRG `
+  -TemplateFile troubleshoot.bicep `
+  -prefixName stg
 ```
 
 ---

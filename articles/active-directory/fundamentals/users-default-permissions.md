@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45d03495d0866674352de35c337303a92ff3263b
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 1aa931198c380fe020e4b71ff82cc908aa3adba8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835187"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248828"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?
 In Azure Active Directory (Azure AD) wird allen Benutzern ein Satz mit Standardberechtigungen gewährt. Der Zugriffsumfang eines Benutzers basiert auf dem Benutzertyp, den [Rollenzuweisungen](active-directory-users-assign-role-azure-portal.md) und dem Besitz einzelner Objekte. In diesem Artikel werden diese Standardberechtigungen beschrieben, und es werden die Standardberechtigungen für Mitglieder und Gastbenutzer miteinander verglichen. Die Standardberechtigungen für Benutzer können nur in den Benutzereinstellungen in Azure AD geändert werden.
@@ -30,7 +30,7 @@ Der gewährte Satz an Standardberechtigungen richtet sich danach, ob der Benutze
 
 ## <a name="compare-member-and-guest-default-permissions"></a>Vergleich der Standardberechtigungen für Mitglieds- und Gastbenutzer
 
-**Bereich** | **Berechtigungen für Mitgliedsbenutzer** | **Standardberechtigungen für Gastbenutzer** | **Eingeschränkte Berechtigungen für Gastbenutzer (Vorschau)**
+**Bereich** | **Berechtigungen für Mitgliedsbenutzer** | **Standardberechtigungen für Gastbenutzer** | **Eingeschränkte Berechtigungen für Gastbenutzer**
 ------------ | --------- | ---------- | ----------
 Benutzer und Kontakte | <ul><li>Alle Benutzer und Kontakte auflisten<li>Alle öffentlichen Eigenschaften von Benutzern und Kontakten lesen</li><li>Gäste einladen<li>Eigenes Kennwort ändern<li>Eigene Mobiltelefonnummer verwalten<li>Eigenes Foto verwalten<li>Eigene Aktualisierungstoken für ungültig erklären</li></ul> | <ul><li>Eigene Eigenschaften lesen<li>Eigenschaften für Anzeigename, E-Mail-Adresse, Anmeldename, Foto, Benutzerprinzipalname und Benutzertyp anderer Benutzer und Kontakte lesen<li>Eigenes Kennwort ändern<li>Suchen nach einem anderen Benutzer nach ObjectId (falls zulässig)<li>Manager- und direkte Berichtsinformationen anderer Benutzer lesen</li></ul> | <ul><li>Eigene Eigenschaften lesen<li>Eigenes Kennwort ändern</li><li>Eigene Mobiltelefonnummer verwalten</li></ul>
 Gruppen | <ul><li>Sicherheitsgruppen erstellen<li>Erstellen von Microsoft 365-Gruppen<li>Alle Gruppen auflisten<li>Alle Eigenschaften von Gruppen lesen<li>Nicht ausgeblendete Gruppenmitgliedschaften lesen<li>Ausgeblendete Microsoft 365-Gruppenmitgliedschaften für eingebundene Gruppe lesen<li>Eigenschaften, Besitz und Mitgliedschaft von Gruppen im Besitz des Benutzers verwalten<li>Gäste zu Gruppen im Besitz des Benutzers hinzufügen<li>Einstellungen für dynamische Mitgliedschaften verwalten<li>Gruppen im Besitz des Benutzers löschen<li>Wiederherstellen von sich im Besitz befindenden Microsoft 365-Gruppen</li></ul> | <ul><li>Eigenschaften nicht ausgeblendeter Gruppen lesen, einschließlich Mitgliedschaft und Besitz (auch nicht eingebundene Gruppen)<li>Ausgeblendete Microsoft 365-Gruppenmitgliedschaften für eingebundene Gruppen lesen<li>Gruppen nach Anzeigename oder objectId (falls zulässig) suchen</li></ul> | <ul><li>Objekt-ID für eingebundene Gruppen lesen<li>Mitgliedschaft und Besitz eingebundener Gruppen in einigen Microsoft 365-Apps (sofern zulässig) lesen</li></ul>
@@ -64,11 +64,11 @@ Fähigkeit zum Lesen anderer Benutzer | Diese Einstellung ist nur in PowerShell 
 Die Standardberechtigungen für Gastbenutzer können auf folgende Weise eingeschränkt werden:
 
 >[!NOTE]
->Die Einstellung **Berechtigungen für Gastbenutzer sind eingeschränkt** wurde durch die Einstellung für Zugriffseinschränkungen für Gastbenutzer ersetzt. Anleitungen zur Verwendung dieser Funktion finden Sie unter [Einschränken von Gastzugriffsberechtigungen (Vorschau) in Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
+>Die Einstellung **Berechtigungen für Gastbenutzer sind eingeschränkt** wurde durch die Einstellung für Zugriffseinschränkungen für Gastbenutzer ersetzt. Anleitungen zur Verwendung dieser Funktion finden Sie unter [Einschränken von Gastzugriffsberechtigungen in Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 
 Berechtigung | Erläuterung der Einstellung
 ---------- | ------------
-Zugriffseinschränkungen für Gastbenutzer (Vorschau) | Wenn Sie diese Option auf **Gastbenutzer haben denselben Zugriff wie Mitglieder** festlegen, werden Gastbenutzern standardmäßig alle Berechtigungen von Mitgliedsbenutzern gewährt.<p>Wenn Sie diese Option auf **Der Gastbenutzerzugriff ist auf Eigenschaften und Mitgliedschaften eigener Verzeichnisobjekte beschränkt** festlegen, ist der Gastzugriff standardmäßig auf das eigene Benutzerprofil beschränkt. Der Zugriff auf andere Benutzer ist auch bei der Suche nach Benutzerprinzipalname, ObjectId oder Anzeigename nicht mehr zulässig. Der Zugriff auf Gruppeninformationen einschließlich Gruppenmitgliedschaften ist ebenfalls nicht mehr zulässig.<p>**Hinweis**: Diese Einstellung verhindert nicht den Zugriff auf eingebundene Gruppen in einigen Microsoft 365-Diensten wie z. B. Microsoft Teams. Weitere Informationen finden Sie unter [Gastzugriff auf Microsoft Teams](/MicrosoftTeams/guest-access).<p>Gastbenutzer können unabhängig von diesen Berechtigungseinstellungen weiterhin Administratorrollen hinzugefügt werden.
+Zugriffseinschränkungen für Gastbenutzer | Wenn Sie diese Option auf **Gastbenutzer haben denselben Zugriff wie Mitglieder** festlegen, werden Gastbenutzern standardmäßig alle Berechtigungen von Mitgliedsbenutzern gewährt.<p>Wenn Sie diese Option auf **Der Gastbenutzerzugriff ist auf Eigenschaften und Mitgliedschaften eigener Verzeichnisobjekte beschränkt** festlegen, ist der Gastzugriff standardmäßig auf das eigene Benutzerprofil beschränkt. Der Zugriff auf andere Benutzer ist auch bei der Suche nach Benutzerprinzipalname, ObjectId oder Anzeigename nicht mehr zulässig. Der Zugriff auf Gruppeninformationen einschließlich Gruppenmitgliedschaften ist ebenfalls nicht mehr zulässig.<p>**Hinweis**: Diese Einstellung verhindert nicht den Zugriff auf eingebundene Gruppen in einigen Microsoft 365-Diensten wie z. B. Microsoft Teams. Weitere Informationen finden Sie unter [Gastzugriff auf Microsoft Teams](/MicrosoftTeams/guest-access).<p>Gastbenutzer können unabhängig von diesen Berechtigungseinstellungen weiterhin Administratorrollen hinzugefügt werden.
 Gäste können einladen | Wenn Sie diese Option auf „Ja“ festlegen, können Gäste andere Gäste einladen. Weitere Informationen finden Sie unter [Delegieren von Einladungen zur B2B-Zusammenarbeit](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings).
 Mitglieder können einladen | Wenn Sie diese Option auf „Ja“ festlegen, können Mitglieder Ihres Verzeichnisses, die keine Administratoren sind, Gäste einladen. Weitere Informationen finden Sie unter [Delegieren von Einladungen zur B2B-Zusammenarbeit](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings).
 Administratoren und Benutzer mit der Rolle „Gasteinladender“ können einladen | Wenn Sie diese Option auf „Ja“ festlegen, können Administratoren und Benutzer, die der Rolle „Gasteinladender“ zugewiesen sind, Gäste einladen. Ist diese Option auf „Ja“ festgelegt, können Benutzer, die der Rolle „Gasteinladender“ zugewiesen sind, Gäste auch unabhängig davon einladen, was für die Einstellung „Mitglieder können einladen“ festgelegt ist. Weitere Informationen finden Sie unter [Delegieren von Einladungen zur B2B-Zusammenarbeit](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user).
@@ -149,7 +149,7 @@ Benutzer können die folgenden Aktionen für Gruppen ausführen, deren Besitzer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Einstellung für Zugriffseinschränkungen für Gastbenutzer finden Sie unter [Einschränken von Gastzugriffsberechtigungen (Vorschau) in Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
+* Weitere Informationen zur Einstellung für Zugriffseinschränkungen für Gastbenutzer finden Sie unter [Einschränken von Gastzugriffsberechtigungen in Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 * Weitere Informationen zum Zuweisen von Azure AD-Administratorrollen finden Sie unter [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](active-directory-users-assign-role-azure-portal.md).
 * Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

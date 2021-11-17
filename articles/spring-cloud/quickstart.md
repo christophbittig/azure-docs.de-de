@@ -8,14 +8,14 @@ ms.date: 10/18/2021
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: bdd778f9bad5bbafb48aa52c8059cdeadd3a0fc5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 88230912f04316b175feb4910f0b3e6b2e907238
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130241265"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853736"
 ---
-# <a name="quickstart-deploy-your-first-application-in-azure-spring-cloud"></a>Schnellstart: Bereitstellen Ihrer ersten Anwendung in Azure Spring Cloud
+# <a name="quickstart-deploy-your-first-application-to-azure-spring-cloud"></a>Schnellstart: Bereitstellen Ihrer ersten Anwendung in Azure Spring Cloud
 
 ::: zone pivot="programming-language-csharp"
 In diesem Schnellstart erfahren Sie, wie Sie eine kleine Anwendung für die Ausführung in Azure Spring Cloud bereitstellen.
@@ -471,7 +471,7 @@ Für die Bereitstellung in Azure müssen Sie sich bei Ihrem Azure-Konto anmelden
 1. Geben Sie im Textfeld **App-Name** den Namen *hellospring* ein, und aktivieren Sie dann das Kontrollkästchen **Weitere Einstellungen**.
 1. Wählen Sie neben **Öffentlicher Endpunkt** die Schaltfläche **Aktivieren** aus. Die Schaltfläche ändert sich in *Deaktivieren \<to be enabled\>* .
 1. Wenn Sie Java 11 verwendet haben, wählen Sie **Java 11** unter **Runtime** aus.
-1. Wählen Sie **OK** aus.
+1. Klicken Sie auf **OK**.
 
     ![Aussehen der Aktivierung des öffentlichen Endpunkts nach Auswahl](media/spring-cloud-quickstart-java/intellij-create-new-app-2.png)
 
@@ -542,7 +542,7 @@ az group delete --name <your resource group name> --yes
 In diesem Schnellstart haben Sie gelernt, wie Sie:
 
 > [!div class="checklist"]
-> * Generieren eines grundlegenden Azure Spring Cloud-Projekts
+> * Generieren eines grundlegenden Spring Cloud-Projekts
 > * Bereitstellen einer Dienstinstanz
 > * Erstellen und Bereitstellen der App mit einem öffentlichen Endpunkt
 > * Streamen von Protokollen in Echtzeit
@@ -550,6 +550,6 @@ In diesem Schnellstart haben Sie gelernt, wie Sie:
 Informationen zu weiteren Azure Spring-Funktionen finden Sie in der Schnellstartserie, in der eine Beispielanwendung in Azure Spring Cloud bereitgestellt wird:
 
 > [!div class="nextstepaction"]
-> [Erstellen und Ausführen von Microservices](./quickstart-sample-app-introduction.md)
+> [Erstellen und Ausführen von Apps](./quickstart-sample-app-introduction.md)
 
 Weitere Beispiele finden Sie auf GitHub: [Azure Spring Cloud-Beispiele](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ihre Cluster durch Verwendung von IP-Adressbe
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: c64d2e683ade2413e9c548ea548b2e1a6e0efef6
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 96c9e21c210a9aab4bc0b69d8e50b4a015c78993
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542960"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227414"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Sicherer Zugriff auf den API-Server mit autorisierten IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ Azure CLI-Version 2.0.76 oder höher muss installiert und konfiguriert sein. Fü
 
 Für die Funktion „vom API-Server autorisierte IP-Adressbereiche“ gelten die folgenden Einschränkungen:
 - In Clustern, die nach Beendigung der Vorschauphase (Oktober 2019) für vom API-Server autorisierte IP-Adressbereiche erstellt wurden, werden vom API-Server autorisierte IP-Adressbereiche nur für den Lastenausgleich mit der *Standard*-SKU unterstützt. Bestehende Cluster mit einem Lastenausgleich mit *Basic*-SKU und den von API-Servern autorisierten IP-Adressbereichen bleiben weiterhin funktionsfähig. Sie können jedoch nicht zu einem Lastenausgleich mit *Standard*-SKU migriert werden. Diese vorhandenen Cluster funktionieren auch dann weiter, wenn ihre Kubernetes-Version oder die Steuerungsebene aktualisiert werden. Vom API-Server autorisierte IP-Adressbereiche werden für private Cluster nicht unterstützt.
-- Diese Funktion ist nicht kompatibel mit Clustern, die die Funktion [Öffentliche IP-Adresse pro Knoten](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools) verwenden.
+- Wenn Sie dieses Feature mit Clustern verwenden, die [öffentliche IP-Adressen pro Knoten](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools) verwenden, müssen die Knotenpools mit aktivierter öffentlicher IP-Adresse pro Knoten öffentliche IP-Präfixe verwenden und diese Präfixe müssen als autorisierte Bereiche hinzugefügt werden.
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Übersicht über vom API-Server autorisierte IP-Adressbereiche
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 7/7/2021
-ms.openlocfilehash: 9fbcf03159e11aa9d2951f3f951290eb6e51b511
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.date: 11/02/2021
+ms.openlocfilehash: 716c425958a457b45736835029b90567c090d4a9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129670136"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446978"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Dienstebenen für Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,6 +30,8 @@ ms.locfileid: "129670136"
 Azure SQL-Datenbank bietet auch die Dienstebene „Hyperscale“: 
 
 - [Hyperscale](service-tier-hyperscale.md) ist für die meisten Geschäftsworkloads konzipiert und bietet hochgradig skalierbaren Speicher, horizontale Leseskalierung, Schnellskalierung und schnelle Datenbankwiederherstellungsfunktionen.
+
+Einen Vergleich zwischen vCore-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Entscheiden zwischen dem vCore-basierten und dem DTU-basierten Kaufmodell – Azure SQL-Datenbank und SQL Managed Instance](purchasing-models.md).
 
 ## <a name="service-tier-comparison"></a>Vergleich der Dienstebenen
 
@@ -50,8 +52,9 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen den Diensteb
 | **TempDB-Größe** | SQL-Datenbank | [32 GB pro virtuellem Kern](resource-limits-vcore-single-databases.md) | [32 GB pro virtuellem Kern](resource-limits-vcore-single-databases.md) | [32 GB pro virtuellem Kern](resource-limits-vcore-single-databases.md) |
 | | Verwaltete SQL-Instanz  | [24 GB pro virtuellem Kern](../managed-instance/resource-limits.md#service-tier-characteristics) | – | Bis zu 4 TB – [begrenzt durch Speichergröße](../managed-instance/resource-limits.md#service-tier-characteristics) |
 | **Protokollschreibdurchsatz** | SQL-Datenbank | Einzeldatenbanken: [4,5 MB/s pro virtuellem Kern (max. 50 MB/s)](resource-limits-vcore-single-databases.md) <br> Pools für elastische Datenbanken: [6 MB/s pro virtuellem Kern (max. 62,5 MB/s)](resource-limits-vcore-elastic-pools.md)| 100 MB/s | Einzeldatenbanken: [12 MB/s pro virtuellem Kern (max. 96 MB/s)](resource-limits-vcore-single-databases.md) <br> Pools für elastische Datenbanken: [15 MB/s pro virtuellem Kern (max. 120 MB/s)](resource-limits-vcore-elastic-pools.md)|
-| | Verwaltete SQL-Instanz | [3 MB/Sek. pro virtuellem Kern (max. 22 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) | – | [4 MB/Sek. pro virtuellem Kern (max. 48 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) |
-|**Verfügbarkeit**|All| 99,99 % |  [99,95 % mit einem sekundären Replikat, 99,99 % mit weiteren Replikaten](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database-) | 99,99 % <br/> [99,995 % mit zonenredundantem Singleton](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+| | Verwaltete SQL-Instanz | [3 MB/Sek. pro virtuellem Kern (max. 22 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) | – | [4 MB/s pro virtuellem Kern (max. 48 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) |
+|**Verfügbarkeit**|SQL-Datenbank ([SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-database/))| 99,99 % | [99,95 % mit einem sekundären Replikat, 99,99 % mit weiteren Replikaten](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database-) | 99,99 % <br/> [99,995 % mit zonenredundantem Singleton](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+| |SQL Managed Instance ([SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance/))| 99,99 % |  [99,95 % mit einem sekundären Replikat, 99,99 % mit weiteren Replikaten](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database-) | 99,99 % <br/> [99,995 % mit zonenredundantem Singleton](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**Sicherungen**|All|RA-GRS, 1–35 Tage (standardmäßig 7 Tage) | RA-GRS, 7 Tage, schnelle Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, 1–35 Tage (standardmäßig 7 Tage) |
 |**In-Memory-OLTP** | | – | Teilweise unterstützt. Speicheroptimierte Tabellentypen, Tabellenvariablen und nativ kompilierte Module werden unterstützt. | Verfügbar |
 |**Schreibgeschützte Replikate**| | 0: Integriert <br> 0–4: Verwendung von [Georeplikation](active-geo-replication-overview.md) | 0–4: Integriert | 1: Integriert, im Preis inbegriffen <br> 0–4: Verwendung von [Georeplikation](active-geo-replication-overview.md) |
@@ -59,10 +62,17 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen den Diensteb
 || Verwaltete SQL-Instanz | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.| – | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.| 
 |**Rabattmodelle**| | [Reservierte Instanzen](reserved-capacity-overview.md)<br/>[Azure-Hybridvorteil](../azure-hybrid-benefit.md) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements| [Azure-Hybridvorteil](../azure-hybrid-benefit.md) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements| [Reservierte Instanzen](reserved-capacity-overview.md)<br/>[Azure-Hybridvorteil](../azure-hybrid-benefit.md) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements|
 
-Weitere Informationen finden Sie auf den Seiten zu den ausführlichen Unterschieden zwischen den Dienstebenen unter [Azure SQL-Datenbank (virtueller Kern)](resource-limits-vcore-single-databases.md), [Azure SQL-Einzeldatenbank (DTU, Datenbankdurchsatzeinheit)](resource-limits-dtu-single-databases.md), [Azure SQL-Datenbank (DTU) in einem Pool](resource-limits-dtu-single-databases.md) und [Azure SQL Managed Instance](../managed-instance/resource-limits.md).
-
 > [!NOTE]
-> Informationen zur Dienstebene „Hyperscale“ finden Sie unter [Hyperscale-Dienstebene](service-tier-hyperscale.md). Einen Vergleich zwischen vCore-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Entscheiden zwischen dem vCore-basierten und dem DTU-basierten Kaufmodell – Azure SQL-Datenbank und SQL Managed Instance](purchasing-models.md).
+> Weitere Informationen zur Vereinbarung zum Servicelevel (Service Level Agreement, SLA) finden Sie unter [SLA für Azure SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/azure-sql-database/) oder [SLA für Azure SQL Managed Instance](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance/).
+
+### <a name="resource-limits"></a>Ressourceneinschränkungen
+
+Weitere Informationen zu Ressourcenbeschränkungen finden Sie unter:
+
+ - [Azure SQL-Datenbank (virtueller Kern)](resource-limits-vcore-single-databases.md)
+ - [Azure SQL-Einzeldatenbank (DTU)](resource-limits-dtu-single-databases.md)
+ - [Azure SQL-Pooldatenbank (DTU)](resource-limits-dtu-single-databases.md)
+ - [Verwaltete Azure SQL-Datenbank-Instanz](../managed-instance/resource-limits.md)
 
 ## <a name="data-and-log-storage"></a>Daten- und Protokollspeicher
 

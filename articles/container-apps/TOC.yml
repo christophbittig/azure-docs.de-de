@@ -10,7 +10,11 @@
   expanded: true
   items:
     - name: Bereitstellen Ihrer ersten Container-App
-      href: get-started.md
+      items:
+        - name: Azure-Portal
+          href: quickstart-portal.md
+        - name: Azure CLI
+          href: get-started.md
 - name: Konzepte
   items:
     - name: Environment

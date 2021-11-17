@@ -4,14 +4,14 @@ description: Es wird beschrieben, wie Sie eine C#-ASP.NET-App in Azure mit Azure
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 10/05/2021
+ms.date: 11/08/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 8569826c548e768e593e024af38b8b937ee02ca2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 72ea37f483055ae3bcb97520efa7f2a4fb704037
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058728"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058861"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Tutorial: Bereitstellen einer ASP.NET-App in Azure mit Azure SQL-Datenbank
 
@@ -34,9 +34,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie Folgendes:
+Zum Abschließen dieses Tutorials benötigen Sie Folgendes:
 
-Installieren Sie <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> mit der Workload **ASP.NET und Webentwicklung**.
+Installieren Sie <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2022</a> mit der Workload **ASP.NET und Webentwicklung**.
 
 Falls Sie Visual Studio bereits installiert haben, können Sie die Workloads in Visual Studio hinzufügen, indem Sie auf **Extras** > **Get Tools and Features** (Tools und Features abrufen) klicken.
 

@@ -1,14 +1,14 @@
 ---
 title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern
 description: Mit Azure Arc-fähigen Servern kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
-ms.date: 09/30/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83fb74673b5da94cc656b512886ce1ee5d772ac1
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: e652b7c520345ad56a28a718448ac520af8237e3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130064397"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447358"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern
 
@@ -22,10 +22,10 @@ Mit Azure Arc-fähigen Servern können Sie Azure-VM-Erweiterungen für nicht in 
 - [Azure Resource Manager-Vorlagen](manage-vm-extensions-template.md)
 
 > [!NOTE]
-> Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu Azure-VMs finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
+> Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu virtuellen Azure-Computern finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
 
 > [!NOTE]
-> Derzeit können Sie Erweiterungen nur über das Azure-Portal aktualisieren. Das Ausführen dieses Vorgangs über die Azure CLI, Azure PowerShell oder mit einer Azure Resource Manager-Vorlage wird derzeit nicht unterstützt.
+> Derzeit können Sie Erweiterungen lediglich über das Azure-Portal oder die Azure CLI aktualisieren. Das Ausführen dieses Vorgangs über Azure PowerShell oder mit einer Azure Resource Manager-Vorlage wird derzeit nicht unterstützt.
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
@@ -92,7 +92,9 @@ Lesen Sie unbedingt die Dokumentation zu jeder VM-Erweiterung, auf die in der vo
 
 ### <a name="log-analytics-vm-extension"></a>Log Analytics-Erweiterung für virtuelle Computer
 
-Für die Log Analytics-Agent-VM-Erweiterung für Linux muss Python 2.x auf dem Zielcomputer installiert sein.
+Für die Log Analytics-Agent-VM-Erweiterung für Linux muss Python 2.x auf dem Zielcomputer installiert sein. 
+
+Es wird empfohlen, dass Sie vor dem Installieren der Erweiterung die [Bereitstellungsoptionen für den Log Analytics-Agent](concept-log-analytics-extension-deployment.md) lesen, um zu verstehen, welche verschiedenen Methoden verfügbar sind und welche Ihre Anforderungen erfüllen.
 
 ### <a name="azure-key-vault-vm-extension"></a>Azure Key Vault-VM-Erweiterung
 

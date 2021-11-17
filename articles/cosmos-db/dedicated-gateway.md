@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/17/2021
+ms.date: 11/08/2021
 ms.author: tisande
-ms.openlocfilehash: 74a3bb89b10a48d5485df29797e891f80839047f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2c2681f1d6e9abf66375d8a6a9d0f43683474dcc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128614843"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060413"
 ---
 # <a name="azure-cosmos-db-dedicated-gateway---overview-preview"></a>Dediziertes Azure Cosmos DB-Gateway – Übersicht (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -98,9 +98,9 @@ Wie Knoten innerhalb eines Clusters sind regionsübergreifende dedizierte Gatewa
 Für das dedizierte Gateway gelten während der öffentlichen Vorschau die folgenden Einschränkungen:
 
 - Dedizierte Gateways werden nur für SQL-API-Konten unterstützt.
-- Sie können keine Verbindung mit einem dedizierten Gateway zu Azure Cosmos DB-Konten mit [IP-Firewalls](how-to-configure-firewall.md) oder konfigurierten [Private Link](how-to-configure-private-endpoints.md)-Verbindungen herstellen.
-- Sie können keine Verbindung mit einem dedizierten Gateway zu einem Azure Cosmos DB-Konto mit einem [Virtuellen Netzwerk VNET](how-to-configure-vnet-service-endpoint.md) herstellen
-- Sie können keine Verbindung zu einem dedizierten Gateway zu Azure Cosmos DB-Konten über aktivierte [Verfügbarkeitszonen](high-availability.md#availability-zone-support) herstellen.
+- Sie können ein dediziertes Gateway nicht in Azure Cosmos DB-Konten mit [IP-Firewalls](how-to-configure-firewall.md) oder [konfigurierten](how-to-configure-private-endpoints.md) Private Link-Verbindungen bereitstellen.
+- Sie können ein dediziertes Gateway nicht in einem Azure Cosmos DB-Konto in einem [virtuellen Netzwerk (VNET)](how-to-configure-vnet-service-endpoint.md) bereitstellen.
+- Sie können ein dediziertes Gateway nicht in Azure Cosmos DB-Konten mit [Verfügbarkeitszonen](high-availability.md#availability-zone-support) bereitstellen.
 - Sie können die [rollenbasierte Zugriffssteuerung (RBAC)](how-to-setup-rbac.md) nicht verwenden, um Datenebenenanforderungen zu authentifizieren, die über das dedizierte Gateway weitergeleitet werden.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
@@ -133,4 +133,4 @@ Weitere Informationen zur Verwendung dedizierter Gateways finden Sie in den folg
 - [Häufig gestellte Fragen zum integrierten Cache](integrated-cache-faq.md)
 - Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
     - Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
-    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
+    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

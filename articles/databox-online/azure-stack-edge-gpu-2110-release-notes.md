@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 7d8bde85114829ab00256810ff96dbf3840c2884
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 36c7e05e2cce3e93fcd35521582190f2d7cef2b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094850"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469159"
 ---
 # <a name="azure-stack-edge-2110-release-notes"></a>Versionshinweise zu Azure Stack Edge 2110
 
@@ -48,6 +48,11 @@ In der folgenden Tabelle sind die Probleme aufgelistet, die in vorherigen Releas
 |**3.**|IoT Edge |Über IoT Edge bereitgestellte Module können das Hostnetzwerk nicht verwenden. | 
 |**4.**|Kubernetes und Updates |Bei früheren Softwareversionen, z. B. Release 2008, treten bei einem Update Probleme durch eine Racebedingung auf, die beim Update zum Fehler ClusterConnectionException führen. |
 |**5.**|Kubernetes-Dashboard | Der *HTTPS*-Endpunkt für das Kubernetes-Dashboard mit SSL-Zertifikat wird nicht unterstützt. | 
+|**6.**|VMs |Eine Überprüfung auf Duplizierung der statischen IP-Adresse wurde für die VM-Verwaltungs-NIC während der VNF-Bereitstellung hinzugefügt. Es wird eine explizite Fehlermeldung zurückgegeben. | 
+|**7.**|VMs |Die Überprüfung der IP-Reservierung wurde für die ersten vier IP-Adressen im Adressraum entfernt.  | 
+|**8.**|Multi-Access Edge Compute |Problem durch Ablauf des lokalen Azure Resource Manager-Tokens während der VNF-Bereitstellung wurde behoben. Wenn in früheren Versionen der VHD-Download lange dauerte, trat bei der VNF-Bereitstellung ein Fehler auf, da das Azure Resource Manager-Token ablief.  | 
+|**9.**|Multi-Access Edge Compute |Ein Timeout für Azure Resource Manager-Aufrufe während der VNF-Bereitstellung wurde hinzugefügt. In früheren Versionen dauerte die VNF-Bereitstellung sehr lange, wenn Azure Resource Manager-Aufrufe nicht erfolgreich waren.   | 
+|**10.**|Multi-Access Edge Compute |Multi-Access Edge Compute bereinigt Bereitstellungen von Azure Resource Manager-Vorlagen nach Abschluss des VHD-Downloads. In früheren Versionen erhielt der Benutzer nach vielen VNF-Bereitstellungen eine Fehlermeldung, dass das Bereitstellungskontingent überschritten wurde. Das Standardkontingent lag bei 800 Bereitstellungen pro Ressourcengruppe.  | 
 
 
 

@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 11/04/2021
+ms.date: 10/29/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: addbd908670741cd0ba8662bf73a1a6788487498
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 22cfeda4b1fc1afb032e8a6b2e689117211e5f1e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131851456"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438524"
 ---
 # <a name="azure-firewall-premium-features"></a>Azure Firewall Premium-Features
 
@@ -51,8 +51,8 @@ Azure Firewall Premium bietet signaturbasiertes IDPS, um eine schnelle Erkennung
 
 Die Signaturen/Regelsätze in Azure Firewall bieten Folgendes:
 - Schwerpunkt auf der Erstellung von Fingerabdrücken von tatsächlicher Schadsoftware, Command-and-Control, Exploitkits und schädlichen Aktivitäten in der Praxis, die herkömmliche Präventionsmethoden übersehen
-- Über 58.000 Regeln in mehr als 50 Kategorien.
-    - Zu diesen Kategorien gehören unter anderem Schadsoftware, Command-and-Control, Phishing, Trojaner, Botnets, Informationsereignisse, Exploits, Sicherheitsrisiken, SCADA-Netzwerkprotokolle und Exploitkitaktivitäten.
+- Über 55.000 Regeln in mehr als 50 Kategorien.
+    - Zu diesen Kategorien gehören unter anderem Schadsoftware, Command-and-Control, DoS-Angriffe, Botnets, Informationsereignisse, Exploits, Sicherheitsrisiken, SCADA-Netzwerkprotokolle und Exploitkitaktivitäten.
 - Jeden Tag werden zwischen 20 und mehr als 40 neue Regeln veröffentlicht.
 - Niedrige False-Positive-Bewertung dank Verwendung einer modernen Sandbox für Schadsoftware und einer globalen Feedbackschleife für das Sensornetzwerk
 

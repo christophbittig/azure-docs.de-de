@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 1afc8bb1a8932fb808073cfdb9468c126c407b1e
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: b286dfd6fd4e494427b1094fc38039e575af1e17
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131579337"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846081"
 ---
 # <a name="create-and-provision-an-iot-edge-for-linux-on-windows-device-at-scale-by-using-a-tpm"></a>Bedarfsgerechtes Erstellen und Bereitstellen eines IoT Edge für Linux unter Windows-Geräts mithilfe eines TPM
 
@@ -86,9 +86,9 @@ Die IoT Edge für Linux-VM unter Windows enthält ein TPM-Feature, das aktiviert
 
 # <a name="physical-tpm"></a>[Physisches TPM](#tab/physical-tpm)
 
-Zur Bereitstellung Ihres Geräts müssen Sie Informationen aus Ihrem TPM-Chip erfassen und für Ihre Instanz des Device Provisioning Service bereitstellen, damit der Dienst Ihr Gerät erkennen kann, wenn es eine Verbindung herzustellen versucht.
+Zum Bereitstellen Ihres Geräts benötigen Sie einen **Endorsement Key** für Ihren TPM-Chip und eine **Registrierungs-ID** für Ihr Gerät. Sie stellen diese Informationen für Ihre Instanz von Device Provisioning Service bereit, damit der Dienst Ihr Gerät beim Versuch der Verbindungsherstellung erkennen kann.
 
-Zuerst müssen Sie den Endorsement Key ermitteln, der bei jedem TPM-Chip eindeutig ist und von dem ihm zugeordneten TPM-Chiphersteller abgerufen wird. Danach müssen Sie eine Registrierungs-ID für Ihr Gerät angeben. Sie können eine eindeutige Registrierungs-ID für Ihr TPM-Gerät ableiten, indem Sie beispielsweise einen SHA-256-Hash des Endorsement Keys erstellen.
+Der Endorsement Key ist für jeden TPM-Chip eindeutig. Er wird vom zugeordneten TPM-Chiphersteller bezogen. Sie können eine eindeutige Registrierungs-ID für Ihr TPM-Gerät ableiten, indem Sie beispielsweise einen SHA-256-Hash des Endorsement Keys erstellen.
 
 IoT Edge für Linux unter Windows enthält ein PowerShell-Skript zum Abrufen dieser Informationen aus Ihrem TPM. Führen Sie zur Verwendung des Skripts die folgenden Schritte auf Ihrem Gerät aus:
 
@@ -133,7 +133,7 @@ Simulierte TPM-Beispiele:
 1. Stellen Sie Ihr Gerät unter Angabe der **Bereichs-ID** bereit, die Sie aus Ihrer Instanz des Device Provisioning Service erfasst haben.
 
    ```powershell
-   Provision-EflowVM -provisioningType "DpsTpm" -scopeId "<scope id>"
+   Provision-EflowVM -provisioningType "DpsTpm" -scopeId "SCOPE_ID_HERE"
    ```
 
 # <a name="windows-admin-center"></a>[Windows Admin Center](#tab/windowsadmincenter)
@@ -151,7 +151,7 @@ Simulierte TPM-Beispiele:
 
 ---
 
-## <a name="verify-successful-configuration"></a>Überprüfen der erfolgreichen Konfiguration
+## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation
 
 Vergewissern Sie sich, dass IoT Edge für Linux unter Windows erfolgreich auf Ihrem IoT Edge-Gerät installiert und konfiguriert wurde.
 

@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 10/21/2021
-ms.openlocfilehash: 2b1d99beea620d0e88705d76df05f52af0c26f89
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.date: 11/05/2021
+ms.openlocfilehash: a01d1e0da99da4b662b85e1774c201e9adc56cf1
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554866"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893062"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Erstellen und Anfügen eines Azure Kubernetes Service-Clusters
 
@@ -47,6 +47,8 @@ Mit Azure Machine Learning kann ein trainiertes Machine Learning-Modell im Azure
 - Um einen AKS-Cluster aus einem __anderen Azure-Abonnement__ anfügen zu können, muss Ihnen (Ihrem Azure AD-Konto) die Rolle **Mitwirkender** im AKS-Cluster erteilt werden. Überprüfen Sie Ihren Zugriff im [Azure-Portal](https://ms.portal.azure.com/).
 
 - Wenn Sie einen privaten AKS-Cluster (mit Azure Private Link) verwenden möchten, müssen Sie zuerst den Cluster erstellen und diesen dann **an den Arbeitsbereich anfügen**. Weitere Informationen finden Sie unter [Erstellen eines privaten Azure Kubernetes Service-Clusters](../aks/private-clusters.md).
+
+- Die Verwendung eines [öffentlichen vollqualifizierten Domänennamens (FQDN) mit einem privaten AKS-Cluster](/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-fqdn) wird mit Azure Machine Learning __nicht unterstützt__. 
 
 - Der Computename für den AKS-Cluster MUSS innerhalb Ihres Azure ML-Arbeitsbereichs eindeutig sein. Er kann Buchstaben, Ziffern und Bindestriche enthalten. Er muss mit einem Buchstaben beginnen, mit einem Buchstaben oder einer Ziffer enden und zwischen 3 und 24 Zeichen lang sein.
  

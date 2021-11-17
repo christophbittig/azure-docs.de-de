@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: 8711727d007eca452c67f7bb79913f3ab29efa77
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: bf12371e786d5d657c5802bf64cdae9bc44f6b4a
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131500144"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989696"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-"></a>Neuerungen in Azure Database for MySQL Flexible Server
 
@@ -22,7 +22,28 @@ ms.locfileid: "131500144"
 
 In diesem Artikel werden neue Releases und Features in Azure Database for MySQL Flexible Server ab Januar 2021 zusammengefasst. Auflistungen werden in umgekehrter chronologischer Reihenfolge angezeigt, die neuesten Updates zuerst.
 
+## <a name="november-2021"></a>November 2021
+- **Allgemeine Verfügbarkeit von Azure Database for MySQL – Flexible Server**
+    
+  Azure Database for MySQL – Flexible Server ist jetzt in mehr als [30 Azure-Regionen](overview.md) weltweit **allgemein verfügbar**.
+
+- **Anzeigen verfügbarer vollständiger Sicherungen im Azure-Portal** Ein dediziertes Blatt „Sicherung und Wiederherstellung“ ist jetzt im Azure-Portal verfügbar. Auf diesem Blatt werden die Sicherungen aufgelistet, die innerhalb des Aufbewahrungszeitraums des Servers verfügbar sind. Dadurch erhalten Sie effektiv eine Ansicht mit einem einzelnen Bereich zum Verwalten der Sicherungen und aufeinanderfolgenden Wiederherstellungen eines Servers. Dieses Blatt ermöglicht Folgendes: 
+   1) Anzeigen der Abschlusszeitstempel für alle verfügbaren vollständigen Sicherungen innerhalb des Aufbewahrungszeitraums des Servers 
+   2) Ausführen von Wiederherstellungsvorgängen mit diesen vollständigen Sicherungen
+  
+- **Schnellste Wiederherstellungspunkte**
+  
+  Mit der Option „Schnellster Wiederherstellungspunkt“ können Sie eine Flexible Server-Instanz an einem bestimmten Tag innerhalb des Aufbewahrungszeitraums des Servers so schnell wie möglich wiederherstellen. Bei diesem Wiederherstellungsvorgang wird einfach die vollständige Momentaufnahmesicherung wiederhergestellt, ohne dass eine Wiederherstellung von Protokollen erforderlich ist. Mit dem schnellsten Wiederherstellungspunkt werden den Kunden bei der Durchführung von Point-in-Time-Wiederherstellungen über das Azure-Portal 3 Optionen angezeigt, nämlich letzter Wiederherstellungspunkt, benutzerdefinierter Wiederherstellungspunkt und schnellster Wiederherstellungspunkt. [Weitere Informationen](concepts-backup-restore.md#point-in-time-restore)
+  
+- **Blatt mit häufig gestellten Fragen im Azure-Portal**
+
+  Das Blatt „Sicherung und Wiederherstellung“ enthält auch den Abschnitt zum Auflisten der am häufigsten gestellten Fragen mit entsprechenden Antworten. Dadurch erhalten Sie Antworten auf die meisten Fragen zur Sicherung direkt im Azure-Portal. Darüber hinaus können Sie durch Auswählen des Fragezeichensymbols für die häufig gestellten Fragen im oberen Menü auf weitere verwandte Details zugreifen.
+
 ## <a name="october-2021"></a>Oktober 2021
+
+- **Threadpools sind jetzt für Azure Database for MySQL – Flexible Server verfügbar**
+ 
+    Threadpools verbessern die Skalierbarkeit von Azure Database for MySQL – Flexible Server. Mithilfe eines Threadpools können Benutzer jetzt die Leistung optimieren, einen besseren Durchsatz erzielen und die Latenz für hohe gleichzeitige Workloads verringern. [Weitere Informationen](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/achieve-up-to-a-50-performance-boost-in-azure-database-for-mysql/ba-p/2909691)
 
 - **Georedundante Backup-Wiederherstellung in einer geopolitischen Region für Notfallwiederherstellungsszenarien**
 

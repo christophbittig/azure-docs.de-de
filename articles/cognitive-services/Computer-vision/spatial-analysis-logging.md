@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 08afa72507bb5689dbd1a003cb776958d6e63f1d
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 34f9948905a51fd020a0942836a37d2c9737f4e3
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746445"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059826"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie und Problembehandlung
 
@@ -23,19 +23,49 @@ Die räumliche Analyse umfasst eine Reihe von Features zum Überwachen der Syste
 
 ## <a name="enable-visualizations"></a>Aktivieren von Visualisierungen
 
-Um die Visualisierung von KI Insights-Ereignissen in einem Videoframe zu aktivieren, müssen Sie die `.debug`-Version eines [Vorgangs zur räumlichen Analyse](spatial-analysis-operations.md) auf einem Desktopcomputer verwenden. Die Visualisierung ist auf Azure Stack Edge-Geräten nicht möglich. Es stehen vier Debugvorgänge zur Verfügung.
+Um die Visualisierung von KI Insights-Ereignissen in einem Videoframe zu aktivieren, müssen Sie die `.debug`-Version eines [Vorgangs zur räumlichen Analyse](spatial-analysis-operations.md) auf einem Desktopcomputer oder einer Azure-VM verwenden. Die Visualisierung ist auf Azure Stack Edge-Geräten nicht möglich. Es stehen vier Debugvorgänge zur Verfügung.
 
-Wenn es sich bei Ihrem Gerät nicht um ein Azure Stack Edge-Gerät handelt, bearbeiten Sie die Bereitstellungsmanifestdatei für [Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json), um den richtigen Wert für die Umgebungsvariable `DISPLAY` zu verwenden. Er muss mit der Variable `$DISPLAY` auf dem Hostcomputer übereinstimmen. Stellen Sie den Container nach dem Aktualisieren des Bereitstellungsmanifests erneut bereit.
+Wenn es sich bei Ihrem Gerät um einen lokalen Computer oder eine Azure-GPU-VM (mit aktiviertem Remotedesktop) handelt, können Sie zur `.debug`-Version eines beliebigen Vorgangs wechseln und die Ausgabe visualisieren.
 
-Nachdem die Bereitstellung abgeschlossen ist, müssen Sie möglicherweise die Datei `.Xauthority` vom Hostcomputer in den Container kopieren und diesen neu starten. Im folgenden Beispiel ist `peopleanalytics` der Name des Containers auf dem Hostcomputer.
+1.  Öffnen Sie den Desktop entweder lokal oder mithilfe eines Remotedesktopclients auf dem Hostcomputer, auf dem die räumliche Analyse ausgeführt wird. 
+2.  Führen Sie im Terminal `xhost +` aus.
+3.  Aktualisieren Sie das [Bereitstellungsmanifest](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) unter dem `spaceanalytics`-Modul mit dem Wert der `DISPLAY`-Umgebungsvariablen. Sie können den Wert ermitteln, indem Sie `echo $DISPLAY` im Terminal auf dem Hostcomputer ausführen.
+    ```
+    "env": {        
+        "DISPLAY": {
+            "value": ":11"
+            }
+    }
+    ```
+4. Aktualisieren Sie den Graphen im Bereitstellungsmanifest, den Sie im Debugmodus ausführen möchten. Im folgenden Beispiel aktualisieren wir die Vorgangs-ID (operationId) auf „cognitiveservices.vision.spatialanalysis-personcrossingpolygon.debug“. Ein neuer Parameter `VISUALIZER_NODE_CONFIG` ist erforderlich, um das Schnellansichtsfenster zu aktivieren. Alle Vorgänge sind in der Debugvariante verfügbar. Wenn Sie freigegebene Knoten verwenden, verwenden Sie den Vorgang „cognitiveservices.vision.spatialanalysis.debug“, und fügen Sie `VISUALIZER_NODE_CONFIG` den Instanzparametern hinzu. 
 
-```bash
-sudo docker cp $XAUTHORITY peopleanalytics:/root/.Xauthority
-sudo docker stop peopleanalytics
-sudo docker start peopleanalytics
-xhost +
-```
+    ```
+    "zonecrossing": {
+        "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon.debug",
+        "version": 1,
+        "enabled": true,
+        "parameters": {
+            "VIDEO_URL": "Replace http url here",
+            "VIDEO_SOURCE_ID": "zonecrossingcamera",
+            "VIDEO_IS_LIVE": false,
+            "VIDEO_DECODE_GPU_INDEX": 0,
+            "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0 }",
+            "CAMERACALIBRATOR_NODE_CONFIG": "{ \"gpu_index\": 0}",
+            "VISUALIZER_NODE_CONFIG": "{ \"show_debug_video\": true }",
+            "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"threshold\":35.0}]}"
+        }
+    }
+    ```
+    
+5. Stellen Sie die Daten erneut bereit, und das Schnellansichtsfenster wird auf dem Hostcomputer angezeigt.
+6. Nachdem die Bereitstellung abgeschlossen ist, müssen Sie möglicherweise die Datei `.Xauthority` vom Hostcomputer in den Container kopieren und diesen neu starten. Im folgenden Beispiel ist `peopleanalytics` der Name des Containers auf dem Hostcomputer.
 
+    ```bash
+    sudo docker cp $XAUTHORITY peopleanalytics:/root/.Xauthority
+    sudo docker stop peopleanalytics
+    sudo docker start peopleanalytics
+    xhost +
+    ```
 
 ## <a name="collect-system-health-telemetry"></a>Sammeln von Telemetriedaten zur Systemintegrität
 

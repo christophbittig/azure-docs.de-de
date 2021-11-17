@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 10/21/2021
+ms.date: 11/05/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 40be17bd213058e84c5978a6bd18f188fe938691
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: bd98c333043f3908a7a7ee50c01196304e5b693f
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558495"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131891905"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Rückschlussumgebung mit virtuellen Netzwerken
 
@@ -63,6 +63,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Rückschlussressourcen in 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
 * Wenn Ihr Arbeitsbereich einen __privaten Endpunkt__ enthält, muss sich der Azure Kubernetes Service-Cluster in derselben Azure-Region befinden wie der Arbeitsbereich.
+* Die Verwendung eines [öffentlichen vollqualifizierten Domänennamens (FQDN) mit einem privaten AKS-Cluster](/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-fqdn) wird mit Azure Machine Learning __nicht unterstützt__.
 
 <a id="aksvnet"></a>
 

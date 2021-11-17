@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 10/19/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 28f01a1dccde2049b8dfa20a5d9ebd5b07ef916b
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: f7c40dbcf0944ca5c78182d72346f3fc295ef50c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131511371"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848741"
 ---
 # <a name="set-up-secrets-store-csi-driver-to-enable-nginx-ingress-controller-with-tls"></a>Einrichten des CSI-Treibers für den Geheimnisspeicher zum Aktivieren des NGINX-Eingangsdatencontrollers mit TLS
 
@@ -72,7 +72,7 @@ Wählen Sie eine [Methode aus, um eine Zugriffsidentität bereitzustellen][csi-s
 Im Folgenden finden Sie ein Beispiel, wie Ihre SecretProviderClass aussehen kann:
 
 ```yml
-apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+apiVersion: secrets-store.csi.x-k8s.io/v1
 kind: SecretProviderClass
 metadata:
   name: azure-tls

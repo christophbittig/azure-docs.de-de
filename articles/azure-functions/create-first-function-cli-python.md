@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-python-uiex
-ms.openlocfilehash: ac4d0240f73f2165abed0fb11bd248f9af997124
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d72c220eb75372ee4faad94f4c7d08010eb725c4
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048739"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026544"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Python-Funktion über die Befehlszeile in Azure
 
@@ -34,7 +34,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2), Version 3.x.
++ [Azure Functions Core Tools](functions-run-local.md#v2), Version 4.x
 
 + Eines der folgenden Tools zum Erstellen von Azure-Ressourcen:
 
@@ -50,23 +50,23 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-+ Führen Sie in einem Terminal oder Befehlsfenster `func --version` aus, um zu überprüfen, ob mindestens Version 3.x der Azure Functions Core Tools verwendet wird.
++ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um zu überprüfen, ob Version 4.x der Azure Functions Core Tools verwendet wird.
 
 + Führen Sie `az --version` aus, um zu überprüfen, ob die Version 2.4 oder höher der Azure CLI verwendet wird.
 
 + Führen Sie `az login` aus, um sich bei Azure anzumelden und zu überprüfen, ob ein aktives Abonnement vorhanden ist.
 
-+ Führen Sie `python --version` (Linux/macOS) oder `py --version` (Windows) aus, um zu überprüfen, ob Python-Version 3.8.x, 3.7.x oder 3.6.x verwendet wird.
++ Führen Sie `python --version` (Linux/macOS) oder `py --version` (Windows) aus, um zu überprüfen, ob Python-Version 3.9.x, 3.8.x oder 3.7.x verwendet wird.
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ Führen Sie in einem Terminal oder Befehlsfenster `func --version` aus, um zu überprüfen, ob mindestens Version 3.x der Azure Functions Core Tools verwendet wird.
++ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um zu überprüfen, ob Version 4.x der Azure Functions Core Tools verwendet wird.
 
 + Führen Sie `(Get-Module -ListAvailable Az).Version` aus, und stellen Sie sicher, dass Version 5.0 oder höher ausgeführt wird.
 
 + Führen Sie `Connect-AzAccount` aus, um sich bei Azure anzumelden und zu überprüfen, ob ein aktives Abonnement vorhanden ist.
 
-+ Führen Sie `python --version` (Linux/macOS) oder `py --version` (Windows) aus, um zu überprüfen, ob Python-Version 3.8.x, 3.7.x oder 3.6.x verwendet wird.
++ Führen Sie `python --version` (Linux/macOS) oder `py --version` (Windows) aus, um zu überprüfen, ob Python-Version 3.9.x, 3.8.x oder 3.7.x verwendet wird.
 
 ---
 

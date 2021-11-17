@@ -7,14 +7,14 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 07/14/2021
+ms.date: 11/08/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e85fa72288ab31fd8e61fcda731debb3517057f
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: ba9fac9fef3e418cc48bc3185ca91af89dd7946f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114393368"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057060"
 ---
 # <a name="monitor-and-debug-with-insights-in-azure-cosmos-db"></a>Überwachen und Debuggen mit Insights in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -27,13 +27,13 @@ Dieser Artikel behandelt häufige Anwendungsfälle und zeigt, wie Azure Cosmos D
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrem Azure Cosmos DB-Konto.
 
-1. Sie können Ihre Kontometriken entweder im Bereich **Metriken** oder im Bereich **Insights (Vorschau)** einsehen.
+1. Sie können Ihre Kontometriken entweder im Bereich **Metriken** oder im Bereich **Insights** einsehen.
 
    * **Metriken:** Dieser Bereich bietet numerische Metriken, die in regelmäßigen Abständen erfasst werden und einen Aspekt eines Systems zu einem bestimmten Zeitpunkt beschreiben. So können Sie beispielsweise die [serverseitige Latenzmetrik](monitor-server-side-latency.md), die [normalisierte Metrik zur Nutzung von Anfrageeinheiten](monitor-normalized-request-units.md) usw. anzeigen und überwachen.
 
-   * **Insights (Vorschau):** Dieser Bereich bietet eine angepasste Überwachungsbenutzeroberfläche für Azure Cosmos DB. Sie verwenden die gleichen Metriken und Protokolle, die in Azure Monitor gesammelt werden, und zeigen eine aggregierte Ansicht für Ihr Konto an.
+   * **Insights:** Dieser Bereich bietet eine angepasste Überwachungsbenutzeroberfläche für Azure Cosmos DB. Sie verwenden die gleichen Metriken und Protokolle, die in Azure Monitor gesammelt werden, und zeigen eine aggregierte Ansicht für Ihr Konto an.
 
-1. Öffnen Sie den Bereich **Insights (Vorschau)** . Standardmäßig werden im Bereich „Insights“ die Metriken für Durchsatz, Anforderungen, Speicher, Verfügbarkeit, Latenz, System und Kontoverwaltung für alle Container in Ihrem Konto angezeigt. Sie können **Zeitbereiche**, **Datenbanken** und **Container** auswählen, für die Sie Insights anzeigen möchten. Auf der Registerkarte **Übersicht** werden die RU/s-Nutzung, Datennutzung, Indexnutzung, gedrosselte Anforderungen und der normalisierte RU/s-Verbrauch für die ausgewählte Datenbank und den Container angezeigt.
+1. Öffnen Sie den Bereich **Insights**. Standardmäßig werden im Bereich „Insights“ die Metriken für Durchsatz, Anforderungen, Speicher, Verfügbarkeit, Latenz, System und Kontoverwaltung für alle Container in Ihrem Konto angezeigt. Sie können **Zeitbereiche**, **Datenbanken** und **Container** auswählen, für die Sie Insights anzeigen möchten. Auf der Registerkarte **Übersicht** werden die RU/s-Nutzung, Datennutzung, Indexnutzung, gedrosselte Anforderungen und der normalisierte RU/s-Verbrauch für die ausgewählte Datenbank und den Container angezeigt.
 
    :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Cosmos DB-Leistungsmetriken im Azure-Portal" lightbox="./media/use-metrics/performance-metrics.png" :::
 
@@ -65,7 +65,7 @@ Der häufigste Fehlerstatuscode ist 429 (Ratenbegrenzung/Drosselung). Dieser Feh
 
 ## <a name="determine-the-throughput-consumption-by-a-partition-key-range"></a>Bestimmen des Durchsatzverbrauchs nach Partitionsschlüsselbereich
 
-Für jede skalierbare Anwendung ist eine gute Kardinalität der Partitionsschlüssel von wesentlicher Bedeutung. Um die nach Partitionsschlüssel-Bereichs-IDs aufgeschlüsselte Verteilung des Durchsatzes jedes partitionierten Containers zu bestimmen, navigieren Sie zum Bereich **Insights (Vorschau)** . Wenn Sie die Registerkarte **Durchsatz** öffnen, wird der normalisierte RU/s-Verbrauch für verschiedene Partitionsschlüsselbereiche im Diagramm angezeigt.
+Für jede skalierbare Anwendung ist eine gute Kardinalität der Partitionsschlüssel von wesentlicher Bedeutung. Um die nach Partitionsschlüssel-Bereichs-IDs aufgeschlüsselte Verteilung des Durchsatzes jedes partitionierten Containers zu bestimmen, navigieren Sie zum Bereich **Insights**. Wenn Sie die Registerkarte **Durchsatz** öffnen, wird der normalisierte RU/s-Verbrauch für verschiedene Partitionsschlüsselbereiche im Diagramm angezeigt.
 
 :::image type="content" source="media/use-metrics/throughput-consumption-partition-key-range.png" alt-text="Normalisierter Durchsatzverbrauch nach Partitionsschlüsselbereich-IDs" lightbox="media/use-metrics/throughput-consumption-partition-key-range.png":::
 
@@ -73,7 +73,7 @@ Mithilfe dieses Diagramms können Sie ermitteln, ob eine heiße Partition vorhan
 
 ## <a name="determine-the-data-and-index-usage"></a>Bestimmen der Daten- und Indexnutzung
 
-Es ist wichtig, die Speicherverteilung von partitionierten Containern nach Datennutzung, Indexnutzung und Dokumentnutzung zu bestimmen. Sie können die Indexnutzung minimieren, die Datennutzung maximieren und Ihre Abfragen optimieren. Um diese Daten abzurufen, navigieren Sie zum Bereich **Insights (Vorschau)** , und öffnen Sie die Registerkarte **Speicher**:
+Es ist wichtig, die Speicherverteilung von partitionierten Containern nach Datennutzung, Indexnutzung und Dokumentnutzung zu bestimmen. Sie können die Indexnutzung minimieren, die Datennutzung maximieren und Ihre Abfragen optimieren. Um diese Daten abzurufen, navigieren Sie zum Bereich **Insights**, und öffnen Sie die Registerkarte **Speicher**:
 
 :::image type="content" source="media/use-metrics/data-index-consumption.png" alt-text="Daten-, Index- und Dokumentnutzung" lightbox="media/use-metrics/data-index-consumption.png" :::
 

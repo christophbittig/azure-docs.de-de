@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Funktionen in Azure Functions deaktivieren un
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: 24ee2ce703287e62f1271c14f639048bb88da404
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e2df38182dd8b199ca13d7e5a9b7484aee004f52
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128663685"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265379"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Deaktivieren von Funktionen in Azure Functions
 
@@ -177,7 +177,7 @@ Berücksichtigen Sie beim Deaktivieren von Funktionen folgende Aspekte:
 
 + Wenn Sie eine durch HTTP ausgelöste Funktion mithilfe der in diesem Artikel beschriebenen Methoden deaktivieren, kann der Zugriff auf den Endpunkt bei Ausführung auf dem lokalen Computer weiterhin möglich sein.  
 
-+ Derzeit können Funktionen mit Namen, die einen Bindestrich (`-`) enthalten, nicht deaktiviert werden, wenn sie unter Linux in einem dedizierten (App Service-)Plan ausgeführt werden. Falls Sie Ihre Funktionen bei Verwendung von Linux in einem dedizierten Plan deaktivieren müssen, verwenden Sie keine Bindestriche in Ihren Funktionsnamen.
++ Derzeit können Funktionen mit Namen, die einen Bindestrich (`-`) enthalten, nicht deaktiviert werden, wenn sie unter in einem Linux-Plan ausgeführt werden. Falls Sie Ihre Funktionen bei Verwendung von Linux in einem Plan deaktivieren müssen, verwenden Sie keine Bindestriche in Ihren Funktionsnamen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

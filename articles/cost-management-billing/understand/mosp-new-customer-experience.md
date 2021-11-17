@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 8e58a31d37e4b6aece877e8a2d920e7abc91d8f8
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 07c8b711ae32311cceba0c6ebe3353974b867356
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710952"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061768"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Erste Schritte mit Ihrem aktualisierten Azure-Abrechnungskonto
 
@@ -190,6 +190,34 @@ Die folgenden Abschnitte enthalten zusätzliche Informationen zu Ihrer neuen Ben
 **Frühere Rechnungen sind auf der neuen Benutzeroberfläche verfügbar** Rechnungen, die vor der Aktualisierung Ihres Kontos generiert wurden, sind im Azure-Portal weiterhin verfügbar.
 
 **Rechnungen für das Konto werden Mitte des Monats aktualisiert** Wenn Ihr Konto Mitte des Monats aktualisiert wird, erhalten Sie eine Rechnung über die Gebühren, die bis zum Tag der Kontoaktualisierung angefallen sind. Sie erhalten dann eine weitere Rechnung für den Rest des Monats. Angenommen, Ihr Konto verfügt über ein Abonnement und wird am 15. September aktualisiert. Sie erhalten dann eine Rechnung über die Gebühren, die bis zum 15. September angefallen sind. Anschließend erhalten Sie eine weitere Rechnung für den Zeitraum zwischen dem 15. und 30. September. Für die weiteren Monate erhalten Sie dann eine Rechnung pro Monat.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="you-get-an-email-to-accept-the-terms-of-the-microsoft-customer-agreement-but-the-link-in-the-email-doesnt-work"></a>Sie erhalten eine E-Mail, um die Bedingungen der Microsoft-Kundenvereinbarung zu akzeptieren, aber der Link in der E-Mail funktioniert nicht
+
+Nachdem Ihr Azure-Abrechnungskonto aktualisiert wurde, erhalten Sie eine E-Mail von Microsoft, um die Bedingungen der Microsoft-Kundenvereinbarung zu akzeptieren. Der Link in der E-Mail kann aus folgenden Gründen möglicherweise nicht funktionieren:
+
+- Sie haben über eine Ihrer anderen E-Mail-Adressen Zugriff auf die Abrechnungsverwaltung. 
+
+    Dies geschieht in der Regel, wenn Sie eine E-Mail erhalten, in der Sie aufgefordert werden, die Bedingungen der Microsoft-Kundenvereinbarung zu akzeptieren. Wenn Sie auf den Link klicken, wird folgende Fehlermeldung angezeigt: `You don't have permission to accept the agreement. This typically happens when you sign in with an email, which doesn’t have permission to accept the agreement. Check you’ve signed in with the correct email address. If you are still seeing the error, see Why I can't accept an agreement`. Vergewissern Sie sich, dass Sie mit der E-Mail-Adresse angemeldet sind, die über die Berechtigung zur Abrechnungsverwaltung verfügt.
+
+- Sie haben Zugriff auf die Rechnung über eine andere Identität. 
+
+    Einige Kunden haben zwei Identitäten mit derselben E-Mail-Adresse: ein Geschäftskonto und ein Microsoft-Konto. Normalerweise verfügt nur eine der Identitäten über die Berechtigung zur Abrechnungsverwaltung. Wenn sich Kunden mit der Identität anmelden, die nicht über die Berechtigung verfügt, können die Bedingungen nicht akzeptiert werden. Vergewissern Sie sich, dass Sie für die Anmeldung die richtige Identität verwenden.
+
+- Sie haben sich beim falschen Azure AD-Mandanten (Azur Active Directory) angemeldet. 
+
+    Ihr Abrechnungskonto ist einem Azure AD-Mandanten zugeordnet. Wenn Sie bei einem falschen Mandanten angemeldet sind, können Sie die Bedingungen nicht akzeptieren. Vergewissern Sie sich, dass Sie beim richtigen Azure AD-Mandanten angemeldet sind. Wenn Sie nicht beim richtigen Mandanten angemeldet sind, wechseln Sie wie folgt den Mandanten im Azure-Portal:
+
+    1. Wählen Sie oben rechts auf der Seite Ihre E-Mail-Adresse aus.
+
+    2. Wählen Sie **Verzeichnis wechseln** aus.
+
+        ![Screenshot des Auswählens von „Verzeichnis wechseln“ im Portal](./media/mosp-new-customer-experience/select-switch-directory.png)
+
+    3. Wählen Sie im Bereich **Alle Verzeichnisse** die Option **Wechseln** für ein Verzeichnis aus.
+
+        ![Screenshot des Auswählens eines Verzeichnisses im Portal](./media/mosp-new-customer-experience/select-directory.png)
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 10/29/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45663b7a2229de0600e60ec2e40c5b721440b997
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5e7a9dd7ba8cd719e95582fee3650cb99a84e057
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346650"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448543"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Authentifizierungsmethoden in Azure Active Directory – Microsoft Authenticator-App
 
@@ -30,9 +30,9 @@ Informationen zur Verwendung der Microsoft Authenticator-App an einer Anmeldeauf
 
 ## <a name="passwordless-sign-in"></a>Anmeldung ohne Kennwort
 
-Einem Benutzer, der die Anmeldung per Telefon über die Microsoft Authenticator-App aktiviert hat, wird nach dem Eingeben eines Benutzernamens keine Aufforderung zur Eingabe eines Kennworts angezeigt, sondern eine Meldung, in der er aufgefordert wird, in der App auf eine Zahl zu tippen. Nach der Auswahl der richtigen Nummer ist der Anmeldevorgang abgeschlossen.
+Benutzer*innen, die die Anmeldung per Telefon über die Microsoft Authenticator-App aktiviert haben, wird nach dem Eingeben des Benutzernamens keine Aufforderung zur Eingabe eines Kennworts angezeigt, sondern eine Meldung, in der sie dazu aufgefordert werden, in der App eine Zahl einzugeben. Nach der Auswahl der richtigen Nummer ist der Anmeldevorgang abgeschlossen.
 
-![Beispiel für eine browserbasierte Anmeldung, die der Benutzer bestätigen muss](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
+![Beispiel für eine Browseranmeldung, bei der der Benutzer bzw. die Benutzerin zum Genehmigen der Anmeldung aufgefordert wird](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
 Diese Authentifizierungsmethode bietet ein hohes Maß an Sicherheit. Zudem muss der Benutzer bei der Anmeldung kein Kennwort mehr eingeben. 
 
@@ -42,7 +42,7 @@ Informationen zu den ersten Schritten mit der Anmeldung ohne Kennwort finden Sie
 
 Die Microsoft Authenticator-App kann dazu beitragen, nicht autorisierten Zugriff auf Konten zu verhindern und betrügerische Transaktionen zu stoppen, indem sie eine Benachrichtigung an Ihr Smartphone oder Tablet sendet. Benutzer sehen die Benachrichtigung und wählen **Bestätigen** aus, wenn der Vorgang rechtmäßig ist. Andernfalls können sie **Verweigern** auswählen.
 
-![Screenshot der Webbrowser-Eingabeaufforderung als Beispiel für die Benachrichtigung der Microsoft Authenticator-App zum Abschließen des Anmeldevorgangs](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
+![Screenshot: Beispiel für eine Eingabeaufforderung im Webbrowser für eine Benachrichtigung in der Authenticator-App zum Abschließen des Anmeldevorgangs](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
 > Wenn Mitarbeiter Ihrer Organisation nach China reisen oder dort arbeiten müssen, funktioniert die Methode *Benachrichtigung über mobile App* auf Android-Geräten in diesem Land nicht, da in dieser Region Google Play Services (einschließlich Pushbenachrichtigungen) blockiert sind. iOS-Benachrichtigungen funktionieren jedoch. Daher sollten Benutzern von Android-Geräten alternative Authentifizierungsmethoden zur Verfügung gestellt werden.

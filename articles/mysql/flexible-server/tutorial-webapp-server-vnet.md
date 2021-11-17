@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 2c53a76469edbb9fdaa507fb30af1157cca2608d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6f415429441801455d71aa459067a9c805dddd1c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131429202"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844010"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Tutorial: Erstellen einer Instanz von Azure Database for MySQL Flexible Server mit App Services-Web-App im virtuellen Netzwerk
 
@@ -51,13 +51,13 @@ az account set --subscription <subscription ID>
 
 Erstellen Sie einen privaten flexiblen Server innerhalb eines virtuellen Netzwerks (VNET) mit dem folgenden Befehl:
 ```azurecli
-az mysql flexible-server create --resource-group myresourcegroup --location westus2
+az mysql flexible-server create --resource-group myresourcegroup --location westus2 --vnet VNETName
 ```
 Kopieren Sie die Verbindungszeichenfolge und den Namen des neu erstellten virtuellen Netzwerks. Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dauern kann:
 
 - Erstellen Sie die Ressourcengruppe, wenn sie noch nicht vorhanden ist.
 - Generiert einen Servernamen, wenn er nicht angegeben ist.
-- Erstellen Sie ein neues virtuelles Netzwerk für Ihre neue MySQL-Serverinstanz. Notieren Sie sich den Namen des virtuellen Netzwerks und des Subnetzes, die für Ihre Serverinstanz erstellt wurden, da Sie die Web-App dem gleichen virtuellen Netzwerk hinzufügen müssen.
+- Erstellen Sie ein neues virtuelles Netzwerk (```VNETName```) für Ihren neuen MySQL-Server und ein Subnetz innerhalb dieses virtuellen Netzwerks für den Datenbankserver. Stellen Sie sicher, dass der Name eindeutig ist
 - Erstellt einen Administratorbenutzernamen und ein Kennwort für Ihren Server, sofern nicht angegeben.
 - Erstellt eine leere Datenbank mit dem Namen **flexibleserverdb**.
 
@@ -115,6 +115,12 @@ az webapp config appsettings set --settings DBHOST="<mysql-server-name>.mysql.da
 - Ersetzen Sie _&lt;username>_ und _&lt;password>_ durch die Anmeldeinformationen, die durch den Befehl auch für Sie generiert wurden.
 - Die Ressourcengruppe und der Name der App werden aus den zwischengespeicherten Werten in der Datei .azure/config abgerufen.
 - Der Befehl erstellt Einstellungen namens DBHOST, DBNAME, DBUSER und DBPASS. Wenn Ihr Anwendungscode einen anderen Namen für die Datenbankinformationen verwendet, verwenden Sie diese Namen für die App-Einstellungen, wie im Code erwähnt.
+
+
+Konfigurieren Sie die Web-App so, dass alle ausgehenden Verbindungen, die vom virtuellen Netzwerk ausgehen, zugelassen werden.
+```azurecli
+az webapp config set --name mywebapp --resource-group myresourcesourcegroup --generic-configurations '{"vnetRouteAllEnabled": true}'
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

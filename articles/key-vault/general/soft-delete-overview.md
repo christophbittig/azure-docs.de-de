@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 03/31/2021
-ms.openlocfilehash: 52cd7742f3c6961350f907cde8ffe19235cff9b8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 88541f8467edacb2e1f757ede82c00d70fea845d
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753252"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893859"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 
@@ -44,7 +44,7 @@ Azure-Schlüsseltresore sind nachverfolgte Ressourcen, die von Azure Resource Ma
 
 Wenn vorläufiges Löschen aktiviert ist, werden Ressourcen, die als gelöscht gekennzeichnet wurden, für einen bestimmten Zeitraum (standardmäßig 90 Tage) aufbewahrt. Der Dienst bietet darüber hinaus einen Mechanismus zur Wiederherstellung des gelöschten Objekts, bei dem der Löschvorgang im Wesentlichen rückgängig gemacht wird.
 
-Beim Erstellen eines neuen Schlüsseltresors ist vorläufiges Löschen standardmäßig aktiviert. Sie können über die [Azure-Befehlszeilenschnittstelle](./key-vault-recovery.md) oder [Azure PowerShell](./key-vault-recovery.md) aber auch einen Schlüsseltresor ohne vorläufiges Löschen erstellen. Wenn vorläufiges Löschen in einem Schlüsseltresor aktiviert ist, kann es nicht mehr deaktiviert werden.
+Beim Erstellen eines neuen Schlüsseltresors ist vorläufiges Löschen standardmäßig aktiviert. Wenn vorläufiges Löschen in einem Schlüsseltresor aktiviert ist, kann es nicht mehr deaktiviert werden.
 
 Der Standardaufbewahrungszeitraum beträgt 90 Tage. Über das Azure-Portal kann jedoch während der Erstellung des Schlüsseltresors das Intervall der Aufbewahrungsrichtlinie auf einen Wert zwischen 7 und 90 Tagen festgelegt werden. Die Aufbewahrungsrichtlinie des Bereinigungsschutzes verwendet das gleiche Intervall. Nach der Festlegung kann das Intervall für die Aufbewahrungsrichtlinie nicht mehr geändert werden.
 

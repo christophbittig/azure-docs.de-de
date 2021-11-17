@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/15/2021
+ms.date: 11/02/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aabb53a573ee8a3ccc5d98ab8316fee560dbf625
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7f31a210894f6c4581c9deea54e18c5dac4d44b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603902"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462922"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload
 
@@ -87,7 +87,7 @@ Ein Konfigurationsbeispiel für einen kleinen SAP ASE-DB-Server mit einer Datenb
 | SAP ASE-Version | 16.0.03.07 oder höher | 16.0.03.07 oder höher | --- |
 | Anzahl von Datengeräten | 4 | 4 | ---|
 | Anzahl von Protokollgeräten | 1 | 1 | --- |
-| Anzahl von temporären Geräten | 1 | 1 | mehr für SAP BW-Workload |
+| Anzahl von temporären Geräten | 1 | 1 | Mehr für die SAP BW-Workload |
 | Betriebssystem | Windows Server 2019 | SUSE 12 SP4/ 15 SP1 oder RHEL 7.6 | --- |
 | Datenträgeraggregierung | Speicherplätze | LVM2 | --- |
 | Dateisystem | NTFS | XFS |
@@ -108,7 +108,7 @@ Ein Konfigurationsbeispiel für einen mittleren SAP ASE-DB-Server mit einer Date
 | SAP ASE-Version | 16.0.03.07 oder höher | 16.0.03.07 oder höher | --- |
 | Anzahl von Datengeräten | 8 | 8 | ---|
 | Anzahl von Protokollgeräten | 1 | 1 | --- |
-| Anzahl von temporären Geräten | 1 | 1 | mehr für SAP BW-Workload |
+| Anzahl von temporären Geräten | 1 | 1 | Mehr für die SAP BW-Workload |
 | Betriebssystem | Windows Server 2019 | SUSE 12 SP4/ 15 SP1 oder RHEL 7.6 | --- |
 | Datenträgeraggregierung | Speicherplätze | LVM2 | --- |
 | Dateisystem | NTFS | XFS |
@@ -128,7 +128,7 @@ Ein Konfigurationsbeispiel für einen kleinen SAP ASE-DB-Server mit einer Datenb
 | SAP ASE-Version | 16.0.03.07 oder höher | 16.0.03.07 oder höher | --- |
 | Anzahl von Datengeräten | 16 | 16 | ---|
 | Anzahl von Protokollgeräten | 1 | 1 | --- |
-| Anzahl von temporären Geräten | 1 | 1 | mehr für SAP BW-Workload |
+| Anzahl von temporären Geräten | 1 | 1 | Mehr für die SAP BW-Workload |
 | Betriebssystem | Windows Server 2019 | SUSE 12 SP4/ 15 SP1 oder RHEL 7.6 | --- |
 | Datenträgeraggregierung | Speicherplätze | LVM2 | --- |
 | Dateisystem | NTFS | XFS |
@@ -149,7 +149,7 @@ Ein Konfigurationsbeispiel für einen kleinen SAP ASE-DB-Server mit einer Datenb
 | SAP ASE-Version | 16.0.03.07 oder höher | 16.0.03.07 oder höher | --- |
 | Anzahl von Datengeräten | 32 | 32 | ---|
 | Anzahl von Protokollgeräten | 1 | 1 | --- |
-| Anzahl von temporären Geräten | 1 | 1 | mehr für SAP BW-Workload |
+| Anzahl von temporären Geräten | 1 | 1 | Mehr für die SAP BW-Workload |
 | Betriebssystem | Windows Server 2019 | SUSE 12 SP4/ 15 SP1 oder RHEL 7.6 | --- |
 | Datenträgeraggregierung | Speicherplätze | LVM2 | --- |
 | Dateisystem | NTFS | XFS |
@@ -159,6 +159,13 @@ Ein Konfigurationsbeispiel für einen kleinen SAP ASE-DB-Server mit einer Datenb
 | ASE-Parameter „MaxMemory“ | 90 % von physischem RAM | 90 % von physischem RAM | Annahme: einzelne Instanz |
 | Anzahl von Sicherungsmedien | 16 | 16 | --- |
 | Anzahl und Typ von Sicherungsmedien | 4 | 4 | Verwenden von LVM2/Speicherplätzen |
+
+
+Von Azure NetApp Files gehostete NFS v4.1-Volumes sind eine weitere Alternative zur Verwendung für SAP ASE-Datenbankspeicher. Die grundsätzliche Struktur einer solchen Konfiguration sollte wie folgt aussehen:
+
+![Speicherkonfiguration für SAP ASE mit ANF](./media/dbms-guide-sap-ase/anf-layout.png)
+
+Im obigen Beispiel lautete die SID der Datenbank A11. Die Größen und Leistungsstufen der Azure NetApp Files-basierten Volumes hängen vom Datenbankvolumen und vom erforderlichen IOPS und Durchsatz ab. Für „sapdata“ und „saplog“ wird empfohlen, mit der Leistungsstufe „Ultra“ zu beginnen, um genügend Bandbreite bereitstellen zu können. Bei vielen Nicht-Produktionsbereitstellungen kann die Leistungsstufe „Premium“ ausreichend sein. Weitere Informationen zu bestimmter Dimensionierung und Einschränkungen von Azure NetApp Files für die Datenbanknutzung finden Sie im Kapitel [Dimensionierung für die HANA-Datenbank in Azure NetApp Files auf NFS v4.1-Volumes in Azure NetApp Files für SAP HANA](./hana-vm-operations-netapp.md).
 
 
 ### <a name="backup--restore-considerations-for-sap-ase-on-azure"></a>Überlegungen zur Sicherung und Wiederherstellung für SAP ASE in Azure

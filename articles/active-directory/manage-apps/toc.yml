@@ -142,7 +142,7 @@
           href: datawiza-with-azure-ad.md
         - name: F5
           items:
-            - name: Integration von F5 und Azure AD
+            - name: Integration vonF5 BIG-IP und Azure AD
               href: f5-aad-integration.md
             - name: Bereitstellung von F5 BIG-IP VE in Azure IaaS
               href: f5-bigip-deployment-guide.md
@@ -150,6 +150,8 @@
               href: f5-aad-password-less-vpn.md
             - name: F5 BIG-IP mit Azure AD für einmaliges Anmelden mit formularbasierter Authentifizierung
               href: f5-big-ip-forms-advanced.md
+            - name: F5 BIG-IP mit einmaligem Anmelden von Azure AD für headerbasierte Authentifizierung
+              href: f5-big-ip-header-advanced.md
         - name: Silverfort
           href: silverfort-azure-ad-integration.md
     - name: Einmaliges Anmelden

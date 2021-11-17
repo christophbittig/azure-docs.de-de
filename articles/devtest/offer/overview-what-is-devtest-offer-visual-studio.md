@@ -1,7 +1,6 @@
 ---
-title: Was für ein Angebot ist das?
-titleSuffix: Azure Dev/Test offer
-description: Beschleunigen und Verwalten von Machine Learning-Projektlebenszyklen mit dem Angebot des Clouddiensts Azure Dev/Test
+title: Was ist das Azure Dev/Test-Angebot?
+description: Verwenden Sie das Azure Dev/Test-Angebot, um Azure-Gutschriften für Visual Studio-Abonnenten zu erhalten.
 ms.topic: overview
 ms.prod: visual-studio-windows
 ms.author: jametra
@@ -9,12 +8,12 @@ author: jamestramel
 ms.date: 10/12/2021
 ms.custom: devtestoffer
 adobe-target: true
-ms.openlocfilehash: cf7285f65ad9ce41d9674de3d1eaa43359666650
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9ae8f0a6babc7fccb258956af4fa15d880d4f370
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029513"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062308"
 ---
 # <a name="what-is-the-azure-devtest-offer"></a>Was ist das Azure Dev/Test-Angebot?
 

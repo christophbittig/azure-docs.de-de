@@ -8,14 +8,14 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: c300e315571c90fd2aa1892336b6ad40d5593ed9
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f28de0520e4b69970549f7258a5a41dd109d2b48
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131433439"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852577"
 ---
-# <a name="connect-to-and-manage-google-bigquery-projects-in-azure-purview"></a>Eine Verbindung zu Google BigQuery-Projekten in Azure Purview herstellen und diese verwalten
+# <a name="connect-to-and-manage-google-bigquery-projects-in-azure-purview-preview"></a>Eine Verbindung mit Google BigQuery-Projekten in Azure Purview herstellen und diese verwalten (Vorschau)
 
 In diesem Artikel wird beschrieben, wie Sie Google BigQuery-Projekte registrieren und wie Sie Google BigQuery in Azure Purview authentifizieren und damit interagieren. Weitere Informationen zu Azure Purview finden Sie im [Einführungsartikel](overview.md).
 
@@ -37,7 +37,7 @@ In diesem Artikel wird beschrieben, wie Sie Google BigQuery-Projekte registriere
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
@@ -98,8 +98,8 @@ Führen Sie die folgenden Schritte aus, um ein Google BigQuery-Projekt zu scanne
     1. **Anmeldeinformationen**: Stellen Sie beim Konfigurieren von BigQuery-Anmeldeinformationen Folgendes sicher:
 
         * Wählen Sie **Windows-Authentifizierung** als Authentifizierungstyp aus
-        * Geben Sie die E-Mail-ID des Dienstkontos in das Feld Benutzername ein. Beispiel: xyz\@developer.gserviceaccount.com
-        * Speichern Sie die Datei mit dem privaten Schlüssel des Dienstkontos im JSON-Format im Geheimnis des Schlüsseltresors
+        * Geben Sie die E-Mail-ID des Dienstkontos in das Feld Benutzername ein. Zum Beispiel, `xyz\@developer.gserviceaccount.com`
+        * Führen Sie die folgenden Schritte aus, um den privaten Schlüssel zu generieren, kopieren Sie den JSON-Code, und speichern Sie ihn als Wert eines Key Vault-Geheimnisses.
 
         So erstellen Sie einen neuen privaten Schlüssel von der Cloud-Plattform von Google:
         1. Wählen Sie im Navigationsmenü IAM & Admin -\> Dienstkonten -\> Wählen Sie ein Projekt aus -\> 
@@ -146,8 +146,8 @@ Führen Sie die folgenden Schritte aus, um ein Google BigQuery-Projekt zu scanne
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

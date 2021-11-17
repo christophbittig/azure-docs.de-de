@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c1c6937f3b532b94b3b82fcd17bb6591f4887b96
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: cb061e152e34cc83b210907cc2e43017d85e1c97
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690701"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449125"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Erstellen einer Windows-VM mit Azure Image Builder unter Verwendung von PowerShell
 
@@ -152,7 +152,7 @@ New-AzRoleAssignment @RoleAssignParams
 > [!NOTE]
 > Bei Anzeige der Fehlermeldung „_New-AzRoleDefinition: Das Limit für Rollendefinitionen ist überschritten. Es können keine weiteren Rollendefinitionen erstellt werden._ “, beachten Sie die Informationen unter [Problembehandlung für Azure RBAC](../../role-based-access-control/troubleshooting.md).
 
-## <a name="create-a-shared-image-gallery"></a>Erstellen einer Shared Image Gallery-Instanz
+## <a name="create-an-azure-compute-gallery-formerly-known-as-shared-image-gallery"></a>Erstellen einer Azure Compute Gallery (früher als Shared Image Gallery bezeichnet)
 
 Erstellen Sie den Katalog.
 

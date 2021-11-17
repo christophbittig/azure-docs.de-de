@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-powershell
 - devx-track-azurecli
 - devx-track-azurepowershell
-ms.openlocfilehash: 1c22003dde88e5b7b6142520c9f9d4551a65a6fb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2b39b1214454d630079cb8e87bfb366c9d2c8685
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048758"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026546"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer PowerShell-Funktion über die Befehlszeile in Azure
 
@@ -30,7 +30,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2), Version 3.x.
++ [Azure Functions Core Tools](functions-run-local.md#v2), Version 4.x
 
 + Eines der folgenden Tools zum Erstellen von Azure-Ressourcen:
 
@@ -46,7 +46,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-+ Führen Sie in einem Terminal oder Befehlsfenster `func --version` aus, um zu überprüfen, ob mindestens Version 3.x der Azure Functions Core Tools verwendet wird.
++ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um zu überprüfen, ob Version 4.x der Azure Functions Core Tools verwendet wird.
 
 + Führen Sie `az --version` aus, um zu überprüfen, ob die Version 2.4 oder höher der Azure CLI verwendet wird.
 
@@ -54,7 +54,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ Führen Sie in einem Terminal oder Befehlsfenster `func --version` aus, um zu überprüfen, ob mindestens Version 3.x der Azure Functions Core Tools verwendet wird.
++ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um zu überprüfen, ob Version 4.x der Azure Functions Core Tools verwendet wird.
 
 + Führen Sie `(Get-Module -ListAvailable Az).Version` aus, und stellen Sie sicher, dass Version 5.0 oder höher ausgeführt wird.
 

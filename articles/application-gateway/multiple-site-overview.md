@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 08/31/2021
 ms.author: azhussai
 ms.topic: conceptual
-ms.openlocfilehash: b2a8c8054096a8d93a3160a3cb5af935276224b1
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 5feb112a9d1c9b7eb229c65f8bcce3845a3f23ad
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272815"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844979"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Anwendungsgateways – Hosten mehrerer Websites
 
@@ -34,7 +34,7 @@ Analog dazu können Sie mehrere Unterdomänen derselben übergeordneten Domäne 
 Um bei Verwendung von Listenern für mehrere Standorte sicherzustellen, dass der Clientdatenverkehr an das richtige Back-End geroutet wird, müssen die Anforderungsroutingregeln in der richtigen Reihenfolge vorhanden sein.
 Wenn z. B. 2 Listener mit den zugehörigen Hostnamen `*.contoso.com` und `shop.contoso.com` vorliegen, müsste der Listener mit dem Hostnamen `shop.contoso.com` vor dem Listener mit dem Hostnamen `*.contoso.com` verarbeitet werden. Wenn der Listener mit dem Hostnamen `*.contoso.com` zuerst verarbeitet wird, würde der spezifischere Listener mit dem Hostnamen `shop.contoso.com` keinen Clientdatenverkehr empfangen.
 
-Diese Reihenfolge kann durch Bereitstellen eines Feldwerts „Priorität“ für die Anforderungsroutingregeln festgelegt werden, die den Listenern zugeordnet sind. Sie können eine Integerwert von 1 bis 20000 angeben. Dabei ist 1 die höchste Priorität und 20000 die niedrigste Priorität. Falls der eingehende Clientdatenverkehr mehreren Listenern entspricht, wird die Anforderungsroutingregel mit der höchsten Priorität für die Anforderung verwendet.
+Diese Reihenfolge kann durch Bereitstellen eines Feldwerts „Priorität“ für die Anforderungsroutingregeln festgelegt werden, die den Listenern zugeordnet sind. Sie können eine Integerwert von 1 bis 20000 angeben. Dabei ist 1 die höchste Priorität und 20000 die niedrigste Priorität. Falls der eingehende Clientdatenverkehr mehreren Listenern entspricht, wird die Anforderungsroutingregel mit der höchsten Priorität für die Anforderung verwendet. Jede Anforderungsroutingregel muss einen eindeutigen Prioritätswert haben.
 
 Das Prioritätsfeld wirkt sich nur auf die Reihenfolge der Auswertung einer Anforderungsroutingregel aus. Dies ändert nicht die Reihenfolge der Auswertung von pfadbasierten Regeln innerhalb einer `PathBasedRouting`-Anforderungsroutingregel.
 

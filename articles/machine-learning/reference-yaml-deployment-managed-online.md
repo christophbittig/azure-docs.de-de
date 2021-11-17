@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: e356840d54ed156562d93b76bade6531a0b017d7
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: bb04bfb69052fab8224b70206b3c4cf680f20769
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132060528"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555887"
 ---
 # <a name="cli-v2-managed-online-deployment-yaml-schema"></a>CLI (v2) verwaltete Onlinebereitstellung: YAML-Schema
 
@@ -30,22 +30,22 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 | `$schema` | Zeichenfolge | Das YAML-Schema. Wenn Sie die Azure Machine Learning VS Code-Erweiterung verwenden, um die YAML-Datei zu erstellen, können Sie durch Einfügen von `$schema` am Anfang der Datei Schema- und Ressourcenvervollständigungen aufrufen. | | |
 | `name` | Zeichenfolge | **Erforderlich.** Name der Bereitstellung <br><br> Benennungsregeln sind [hier](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview) definiert.| | |
 | `description` | Zeichenfolge | Beschreibung des Bereitstellung. | | |
-| `tags` | Objekt (object) | Wörterbuch der Tags für die Bereitstellung. | | |
+| `tags` | Objekt | Wörterbuch der Tags für die Bereitstellung. | | |
 | `endpoint_name` | Zeichenfolge | **Erforderlich.** Name des Endpunkts, unter dem die Bereitstellung erstellt werden soll. | | |
 | `model` | Zeichenfolge oder Objekt | Das für die Bereitstellung zu verwendende Modell. Dieser Wert kann entweder ein Verweis auf ein vorhandenes versioniertes Modell im Arbeitsbereich oder eine Inline-Modellspezifikation sein. <br><br> Um auf ein bestehendes Modell zu verweisen, verwenden Sie die Syntax `azureml:<model-name>:<model-version>`. <br><br> Um ein Modell inline zu definieren, folgen Sie dem [Modellschema](reference-yaml-model.md#yaml-syntax). <br><br> Als bewährtes Verfahren für Produktionsszenarien sollten Sie das Modell separat erstellen und hier darauf verweisen. <br><br> Dieses Feld ist für Szenarien mit [benutzerdefinierter Containerbereitstellung](how-to-deploy-custom-container.md) optional.| | |
 | `model_mount_path` | Zeichenfolge | Der Pfad zum Einbinden des Modells in einen benutzerdefinierten Container. Gilt nur für Szenarien mit [benutzerdefinierter Containerbereitstellung](how-to-deploy-custom-container.md). Wenn das Feld `model` angegeben ist, wird es unter diesem Pfad im Container eingebunden. | | |
-| `code_configuration` | Objekt (object) | Konfiguration für die Logik des Bewertungscodes. <br><br> Dieses Feld ist für Szenarien mit [benutzerdefinierter Containerbereitstellung](how-to-deploy-custom-container.md) optional. | | |
+| `code_configuration` | Objekt | Konfiguration für die Logik des Bewertungscodes. <br><br> Dieses Feld ist für Szenarien mit [benutzerdefinierter Containerbereitstellung](how-to-deploy-custom-container.md) optional. | | |
 | `code_configuration.code.local_path` | Zeichenfolge | Lokaler Pfad zum Quellcodeverzeichnis für die Bewertung des Modells. | | |
 | `code_configuration.scoring_script` | Zeichenfolge | Relativer Pfad zur Bewertungsdatei im Quellcodeverzeichnis. | | |
 | `environment` | Zeichenfolge oder Objekt | **Erforderlich.** Die für die Bereitstellung zu verwendende Umgebung. Dieser Wert kann entweder ein Verweis auf eine vorhandene versionierte Umgebung im Arbeitsbereich oder eine Inline-Umgebungsspezifikation sein. <br><br> Verwenden Sie die Syntax `azureml:<environment-name>:<environment-version>`, um auf eine vorhandene Umgebung zu verweisen. <br><br> Um eine Umgebung inline zu definieren, folgen Sie dem [Umgebungsschema](reference-yaml-environment.md#yaml-syntax). <br><br> Als bewährtes Verfahren für Produktionsszenarien sollten Sie die Umgebung separat erstellen und hier referenzieren. | | |
 | `instance_type` | Zeichenfolge | **Erforderlich.** Die VM-Größe, die für die Bereitstellung verwendet werden soll. Eine Liste der unterstützten Größen finden Sie unter [SKU-Liste für verwaltete Onlineendpunkte](reference-managed-online-endpoints-vm-sku-list.md). | | |
 | `instance_count` | integer | **Erforderlich.** Die Anzahl der Instanzen, die für die Bereitstellung verwendet werden sollen. Geben Sie den Wert basierend auf der erwarteten Workload an. Für die Hochverfügbarkeit empfiehlt Microsoft, den Wert mindestens auf `3` festzulegen. <br><br> `instance_count` kann nach der Erstellung der Bereitstellung mit dem Befehl `az ml online-deployment update` aktualisiert werden. | | |
 | `app_insights_enabled` | boolean | Gibt an, ob die Integration mit der Azure Application Insights-Instanz, die Ihrem Arbeitsbereich zugeordnet ist, aktiviert werden soll. | | `false` |
-| `scale_settings` | Objekt (object) | Die Skalierungseinstellungen für die Bereitstellung. Derzeit wird nur der Skalierungstyp `default` unterstützt, sodass Sie diese Eigenschaft nicht angeben müssen. <br><br> Mit diesem `default`-Skalierungstyp können Sie entweder 1) die Anzahl der Instanzen nach der Erstellung der Bereitstellung manuell hoch- und herunterskalieren, indem Sie die `instance_count`-Eigenschaft aktualisieren, oder 2) eine [Richtlinie für die automatische Skalierung]() erstellen. | | |
+| `scale_settings` | Objekt | Die Skalierungseinstellungen für die Bereitstellung. Derzeit wird nur der Skalierungstyp `default` unterstützt, sodass Sie diese Eigenschaft nicht angeben müssen. <br><br> Mit diesem `default`-Skalierungstyp können Sie entweder 1) die Anzahl der Instanzen nach der Erstellung der Bereitstellung manuell hoch- und herunterskalieren, indem Sie die `instance_count`-Eigenschaft aktualisieren, oder 2) eine [Richtlinie für die automatische Skalierung]() erstellen. | | |
 | `scale_settings.type` | Zeichenfolge | Der Skalierungstyp. | `default` | `default` |
-| `request_settings` | Objekt (object) | Einstellungen für die Bewertungsanforderung für die Bereitstellung. Informationen zu den konfigurierbaren Eigenschaften finden Sie unter [RequestSettings](#requestsettings). | | |
-| `liveness_probe` | Objekt (object) | Livetesteinstellungen zum regelmäßigen Überwachen der Integrität des Containers. Informationen zu den konfigurierbaren Eigenschaften finden Sie unter [ProbeSettings](#probesettings). | | |
-| `readiness_probe` | Objekt (object) | Bereitschaftstesteinstellungen zum Überprüfen, ob der Container für die Bereitstellung von Datenverkehr bereit ist. Informationen zu den konfigurierbaren Eigenschaften finden Sie unter [ProbeSettings](#probesettings). | | |
+| `request_settings` | Objekt | Einstellungen für die Bewertungsanforderung für die Bereitstellung. Informationen zu den konfigurierbaren Eigenschaften finden Sie unter [RequestSettings](#requestsettings). | | |
+| `liveness_probe` | Objekt | Livetesteinstellungen zum regelmäßigen Überwachen der Integrität des Containers. Informationen zu den konfigurierbaren Eigenschaften finden Sie unter [ProbeSettings](#probesettings). | | |
+| `readiness_probe` | Objekt | Bereitschaftstesteinstellungen zum Überprüfen, ob der Container für die Bereitstellung von Datenverkehr bereit ist. Informationen zu den konfigurierbaren Eigenschaften finden Sie unter [ProbeSettings](#probesettings). | | |
 
 ### <a name="requestsettings"></a>RequestSettings
 
@@ -65,7 +65,7 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 | `success_threshold` | integer | Die Anzahl der Erfolge, die mindestens aufeinander folgen müssen, damit ein Test nach einem Fehler wieder als erfolgreich betrachtet wird. Der Mindestwert ist `1`. | `1` |
 | `failure_threshold` | integer | Wenn ein Test fehlschlägt, versucht das System den Vorgang `failure_threshold` Mal, bevor es aufgibt. Für einen Livetest bedeutet das Aufgeben einen Neustart des Containers. Im Falle eines Bereitschaftstests wird der Container als „Nicht bereit“ markiert. Der Mindestwert ist `1`. | `30` |
 
-## <a name="remarks"></a>Hinweise
+## <a name="remarks"></a>Bemerkungen
 
 Die `az ml online-deployment`-Befehle können für die Verwaltung von verwalteten Azure Machine Learning-Onlinebereitstellungen verwendet werden.
 
@@ -75,17 +75,17 @@ Beispiele finden Sie im [GitHub-Beispielrepository](https://github.com/Azure/azu
 
 ## <a name="yaml-basic"></a>YAML: Grundlagen
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/blue-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/blue-deployment.yml":::
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/green-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/green-deployment.yml":::
 
 ## <a name="yaml-system-assigned-identity"></a>YAML: Systemseitig zugewiesene Identität
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
 
 ## <a name="yaml-user-assigned-identity"></a>YAML: Benutzerseitig zugewiesene Identität
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-uai-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/2-uai-deployment.yml":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

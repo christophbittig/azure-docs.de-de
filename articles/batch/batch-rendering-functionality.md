@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: c39417697dd88d3faa64ce47493ab5e7c08faa0d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 57925df3babc22a6cfdff2f81d23bbbd60767cc6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481345"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461606"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch-Renderingfunktionen
 
@@ -20,7 +20,7 @@ Eine Übersicht über Batch-Konzepte, z.B. Pools, Aufträge und Aufgaben, finden
 
 ## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>Batch-Pools mit benutzerdefinierten VM-Images und Standardanwendungslizenzierung
 
-Wie bei anderen Workloads und Anwendungstypen kann ein benutzerdefiniertes VM-Image mit den erforderlichen Renderinganwendungen und Plug-Ins erstellt werden. Das benutzerdefinierte VM-Image wird in der [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) gespeichert und kann zum [Erstellen von Batch-Pools](batch-sig-images.md) verwendet werden.
+Wie bei anderen Workloads und Anwendungstypen kann ein benutzerdefiniertes VM-Image mit den erforderlichen Renderinganwendungen und Plug-Ins erstellt werden. Das benutzerdefinierte VM-Image wird im [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) platziert und [kann zum Erstellen von Batch-Pools verwendet werden](batch-sig-images.md).
 
 Die Befehlszeilen-Zeichenfolgen für eine Aufgabe müssen auf die Anwendungen und Pfade verweisen, die beim Erstellen des benutzerdefinierten VM-Images verwendet wurden.
 
@@ -46,8 +46,8 @@ Das Azure-Portal und Batch Explorer umfassen GUI-Tools zum Auswählen eines Rend
 
 Andere Optionen sind verfügbar, wenn weitere Anwendungen für die virtuellen Computer des Pools erforderlich sind:
 
-* Ein benutzerdefiniertes Image aus Shared Image Gallery:
-  * Diese Option ermöglicht das Konfigurieren Ihrer VM mit den genauen Anwendungen und den jeweiligen Versionen, die Sie benötigen. Weitere Informationen finden Sie unter [Erstellen eines Pools mit Shared Image Gallery](batch-sig-images.md). Arnold und V-Ray wurden von Autodesk bzw. Chaos Group für einen Azure Batch-Lizenzierungsdienst angepasst. Stellen Sie sicher, dass Sie über die Versionen dieser Anwendungen mit der entsprechenden Unterstützung verfügen, da die Lizenzierung mit nutzungsbasierter Bezahlung andernfalls nicht funktioniert. Für die aktuellen Versionen von Maya oder 3ds Max wird kein Lizenzserver benötigt, wenn die Ausführung monitorlos erfolgt (im Batch-/Befehlszeilenmodus). Wenden Sie sich an den Azure-Support, wenn Sie nicht sicher sind, wie Sie bei dieser Option vorgehen sollen.
+* Ein benutzerdefiniertes Image aus Azure Compute Gallery:
+  * Diese Option ermöglicht das Konfigurieren Ihrer VM mit den genauen Anwendungen und den jeweiligen Versionen, die Sie benötigen. Weitere Informationen finden Sie unter [Erstellen eines Pools mit Azure Compute Gallery](batch-sig-images.md). Arnold und V-Ray wurden von Autodesk bzw. Chaos Group für einen Azure Batch-Lizenzierungsdienst angepasst. Stellen Sie sicher, dass Sie über die Versionen dieser Anwendungen mit der entsprechenden Unterstützung verfügen, da die Lizenzierung mit nutzungsbasierter Bezahlung andernfalls nicht funktioniert. Für die aktuellen Versionen von Maya oder 3ds Max wird kein Lizenzserver benötigt, wenn die Ausführung monitorlos erfolgt (im Batch-/Befehlszeilenmodus). Wenden Sie sich an den Azure-Support, wenn Sie nicht sicher sind, wie Sie bei dieser Option vorgehen sollen.
 * [Anwendungspakete:](./batch-application-packages.md)
   * Packen Sie die Anwendungsdateien in einer oder mehreren ZIP-Dateien, laden Sie sie über das Azure-Portal hoch, und geben Sie das Paket in der Poolkonfiguration an. Wenn Pool-VMs erstellt werden, werden die ZIP-Dateien heruntergeladen und die Dateien extrahiert.
 * Ressourcendateien:

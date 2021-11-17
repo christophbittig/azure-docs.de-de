@@ -1,6 +1,6 @@
 ---
-title: Koexistenz von SQL Server HADR und bereichsbezogenem Azure-Hybridvorteil
-description: In diesem Artikel wird erläutert, wie der SQL Server HADR-Software Assurance-Vorteil und der bereichsbezogene Azure-Hybridvorteil koexistieren können.
+title: Koexistenz von SQL Server HADR und zentral verwaltetem Azure-Hybridvorteil
+description: In diesem Artikel wird erläutert, wie der SQL Server HADR-Software Assurance-Vorteil und der zentral verwaltete Azure-Hybridvorteil koexistieren können.
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: 97c338134430156fefa5d874d44e27c8dc34a496
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: f475fa19c06eb2ecc8ed863db06f5a647308ee00
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547363"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229425"
 ---
-# <a name="sql-server-hadr-and-scope-level-azure-hybrid-benefit-coexistence"></a>Koexistenz von SQL Server HADR und bereichsbezogenem Azure-Hybridvorteil
+# <a name="sql-server-hadr-and-centrally-managed-azure-hybrid-benefit-coexistence"></a>Koexistenz von SQL Server HADR und zentral verwaltetem Azure-Hybridvorteil
 
 Einer der Vorteile von Software Assurance (SA) besteht darin, dass Azure-Kunden passive SQL Server Instanzen für die Notfallwiederherstellung installieren und ausführen können, um Failoverereignisse abzufangen. Die Verwaltung von Azure-Hybridvorteil auf Bereichsebene unterstützt den SQL Server HADR-Vorteil, indem sichergestellt wird, dass die qualifizierten Replikate für die Notfallwiederherstellung keine zugewiesenen SQL Server-Lizenzen nutzen. Daher müssen Sie die Replikate nicht separat verwalten. 
 
@@ -37,6 +37,6 @@ Die in diesem Diagramm gezeigten Preise dienen nur als Beispiel.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie die [häufig gestellten Fragen zur Verwaltung des Azure-Hybridvorteils auf Bereichsebene](faq-azure-hybrid-benefit-scope.yml).
-- Informationen zur Anwendung von Rabatten finden Sie unter [Worum handelt es sich bei der Verwaltung von Azure-Hybridvorteil auf Bereichsebene?](sql-server-hadr-licenses.md).
-- Hier erfahren Sie mehr über den [Übergang von der vorhandenen Azure-Hybridvorteilserfahrung](transition-existing.md).
+- Lesen Sie die [häufig gestellten Fragen zum zentral verwalteten Azure-Hybridvorteil](faq-azure-hybrid-benefit-scope.yml).
+- Informieren Sie sich über die Anwendung von Rabatten unter [Was ist der zentral verwaltete Azure-Hybridvorteil?](sql-server-hadr-licenses.md)
+- Erfahren Sie mehr über den [Übergang von der vorhandenen Azure-Hybridvorteilserfahrung](transition-existing.md).

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
-ms.date: 11/5/2021
-ms.openlocfilehash: ce039347c2fe06f061aecc4a01cd05e92c43ae74
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.date: 09/23/2021
+ms.openlocfilehash: f5acdf621c04ba48664004bbb1f28ae1c0914fcb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131893176"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447035"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Verwenden von schreibgeschützten Replikaten zum Lesen schreibgeschützter Abfrageworkloads
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Als Teil der [Hochverfügbarkeitsarchitektur](high-availability-sla.md#premium-a
 
 Die *horizontale Leseskalierung* ist auch auf der Dienstebene „Hyperscale“ verfügbar, wenn mindestens ein [sekundäres Replikat](service-tier-hyperscale-replicas.md) hinzugefügt wird. Sekundäre [benannte Hyperscale-Replikate](service-tier-hyperscale-replicas.md#named-replica-in-preview) bieten unabhängige Skalierung, Zugriffsisolation, Workloadisolation, umfassende horizontale Leseskalierung und weitere Vorteile. Mehrere sekundäre [Hochverfügbarkeitsreplikate](service-tier-hyperscale-replicas.md#high-availability-replica) können für einen Lastenausgleich schreibgeschützter Workloads verwendet werden, für die mehr Ressourcen erforderlich sind, als auf einem sekundären Hochverfügbarkeitsreplikat zur Verfügung stehen. 
 
-Die Hochverfügbarkeitsarchitektur der Dienstebenen „Basic“, „Standard“ und „Universell“ enthält keine Replikate. Die *horizontale Leseskalierung* ist auf diesen Dienstebenen nicht verfügbar. [Georeplikate](active-geo-replication-overview.md) können jedoch ähnliche Funktionen in diesen Dienstebenen bereitstellen.
+Die Hochverfügbarkeitsarchitektur der Dienstebenen „Basic“, „Standard“ und „Universell“ enthält keine Replikate. Die *horizontale Leseskalierung* ist auf diesen Dienstebenen nicht verfügbar.
 
 Im folgenden Diagramm wird die Funktion für Datenbanken und verwaltete Instanzen in den Tarifen „Premium“ und „Unternehmenskritisch“ veranschaulicht.
 

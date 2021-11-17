@@ -1,14 +1,14 @@
 ---
 title: Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 description: Azure Lighthouse unterstützt Sie bei der effektiven Verwaltung von Azure Sentinel für delegierte Kundenressourcen.
-ms.date: 08/16/2021
+ms.date: 11/05/2021
 ms.topic: how-to
-ms.openlocfilehash: d6eba4cab51fa18164cc5f44e579be23ef8e74a5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 51dab03ae91d61979f2f84bac57fb96adad9fea7
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777809"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867036"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 
@@ -21,11 +21,14 @@ Dieses Thema bietet eine Übersicht zur Verwendung von [Azure Sentinel](../../se
 > [!TIP]
 > Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch gelten diese Anweisungen auch für [Unternehmen, die Azure Lighthouse zum Verwalten mehrerer Mandanten verwenden](../concepts/enterprise.md).
 
+> [!NOTE]
+> Sie können delegierte Ressourcen verwalten, die sich in unterschiedlichen [Regionen](../../availability-zones/az-overview.md#regions) befinden. Die Delegierung von Abonnements auf eine [nationale Cloud](../../active-directory/develop/authentication-national-cloud.md) und die öffentliche Azure-Cloud oder zwei separate nationale Clouds wird nicht unterstützt.
+
 ## <a name="architectural-considerations"></a>Architekturaspekte
 
 Für einen Anbieter von verwalteten Sicherheitsdiensten (Managed Security Service Provider, MSSP), der mithilfe von Azure Sentinel ein Security-as-a-Service-Angebot entwickeln möchte, ist möglicherweise die Konzentration in einem einzelnen Security Operations Center (SOC) erforderlich, um mehrere Azure Sentinel-Arbeitsbereiche, die in einzelnen Mandanten von Kunden bereitgestellt sind, zentral zu überwachen, verwalten und konfigurieren. Analog dazu kann es auch für Unternehmen mit mehreren Azure AD-Mandanten sinnvoll sein, mehrere Azure Sentinel-Arbeitsbereiche, die über ihre Mandanten verteilt bereitgestellt sind, zentral zu verwalten.
 
-Das zentrale Bereitstellungsmodell bietet folgende Vorzüge:
+Das Bereitstellungsmodell bietet folgende Vorzüge:
 
 - Der Besitz der Daten verbleibt bei den einzelnen verwalteten Mandanten.
 - Anforderung zur Speicherung von Daten innerhalb geografischer Grenzen wird unterstützt.
@@ -35,12 +38,13 @@ Das zentrale Bereitstellungsmodell bietet folgende Vorzüge:
 - Daten aus allen Datenquellen und Datenconnectors, die in Azure Sentinel integriert sind (wie etwa Azure AD-Aktivitätsprotokolle, Office 365-Protokolle oder Benachrichtigungen von Microsoft Threat Protection), verbleiben in den einzelnen Kundenmandanten.
 - Die Netzwerklatenz wird verringert.
 - Neue Niederlassungen oder Kunden lassen sich einfach hinzufügen oder entfernen.
-
-> [!NOTE]
-> Sie können delegierte Ressourcen verwalten, die sich in unterschiedlichen [Regionen](../../availability-zones/az-overview.md#regions) befinden. Die Delegierung von Abonnements auf eine [nationale Cloud](../../active-directory/develop/authentication-national-cloud.md) und die öffentliche Azure-Cloud oder zwei separate nationale Clouds wird nicht unterstützt.
+- Möglichkeit zur Verwendung einer Ansicht mit mehreren Arbeitsbereichen beim Arbeiten über Azure Lighthouse.
+- Zum Schutz Ihres geistigen Eigentums können Sie Playbooks und Arbeitsmappen verwenden, um mandantenübergreifend zu arbeiten, ohne Code direkt mit Kunden zu teilen. Nur Analyse- und Huntingregeln müssen direkt im Mandanten jedes Kunden gespeichert werden.
 
 > [!IMPORTANT]
 > Wenn alle Arbeitsbereiche im Mandanten des Kunden erstellt werden, müssen die Microsoft.SecurityInsights- und Microsoft.OperationalInsights-Ressourcenanbieter auch in einem Abonnement im verwaltenden Mandanten [registriert](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) werden.
+
+Ein alternatives Bereitstellungsmodell besteht in der Erstellung eines Azure Sentinel-Arbeitsbereichs im verwaltenden Mandanten. In diesem Modell ermöglicht Azure Lighthouse die übergreifende Protokollsammlung aus Datenquellen über verwaltete Mandanten hinweg. Es gibt jedoch einige Datenquellen, die nicht mandantenübergreifend verbunden werden können, z. B. Microsoft Defender. Aufgrund dieser Einschränkung ist dieses Modell für viele Dienstanbieterszenarien nicht geeignet.
 
 ## <a name="granular-azure-role-based-access-control-azure-rbac"></a>Granulare rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)
 
@@ -71,7 +75,7 @@ Wenn Sie Azure Sentinel-Ressourcen für mehrere Kunden verwalten, können Sie Vo
 
 Mithilfe von [Azure Monitor-Arbeitsmappen in Azure Sentinel](../../sentinel/overview.md#workbooks) können Sie Daten aus Ihren verbundenen Datenquellen visualisieren und überwachen, um Erkenntnisse zu gewinnen. Sie können die integrierten Arbeitsmappenvorlagen in Azure Sentinel verwenden oder eigene, benutzerdefinierte Arbeitsmappen für Ihre Szenarien erstellen.
 
-Sie können Arbeitsmappen in Ihrem Verwaltungsmandanten bereitstellen und in großem Maßstab Dashboards erstellen, um Daten übergreifend über Kundenmandanten zu überwachen und abzufragen. Weitere Informationen finden Sie unter [Arbeitsbereichsübergreifende Überwachung](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks). 
+Sie können Arbeitsmappen in Ihrem Verwaltungsmandanten bereitstellen und in großem Maßstab Dashboards erstellen, um Daten übergreifend über Kundenmandanten zu überwachen und abzufragen. Weitere Informationen finden Sie unter [Arbeitsbereichsübergreifende Überwachung](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks).
 
 Darüber hinaus können Sie Arbeitsmappen direkt in einem einzelnen von Ihnen verwalteten Mandanten bereitstellen, um für diesen Kunden spezifische Szenarien zu behandeln.
 
@@ -90,6 +94,12 @@ Verwenden Sie Azure Lighthouse in Verbindung mit Azure Sentinel, um die Sicherhe
 Sie können den [MCAS-Connector (Microsoft Cloud App Security)](../../sentinel/data-connectors-reference.md#microsoft-cloud-app-security-mcas) zum Streamen von Warnungen und Cloud Discovery-Protokollen in Azure Sentinel aktivieren. So erhalten Sie Einblicke in Cloud-Apps, erweiterte Analysen zur Erkennung und Abwehr von Cyberbedrohungen und Kontrolle darüber, wie Daten übertragen werden. Aktivitätsprotokolle für MCAS können [mithilfe von CEF (Common Event Format) genutzt werden](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849).
 
 Nach dem Einrichten von Office 365-Datenconnectors können Sie mandantenübergreifende Azure Sentinel-Funktionen verwenden, z. B. Anzeigen und Analysieren von Daten in Arbeitsmappen, Verwenden von Abfragen zum Erstellen von benutzerdefinierten Warnungen und Konfigurieren von Playbooks als Reaktion auf Bedrohungen.
+
+## <a name="protect-intellectual-property"></a>Schutz des geistigen Eigentums
+
+Bei der Arbeit mit Kunden kommt es möglicherweise auf den Schutz des geistigen Eigentums an, das Sie in Azure Sentinel entwickelt haben, z. B. Azure Sentinel-Analyseregeln, Suchabfragen, Playbooks und Arbeitsmappen. Es gibt verschiedene Methoden, mit denen Sie sicherstellen können, dass Kunden keinen vollständigen Zugriff auf den in diesen Ressourcen verwendeten Code haben.
+
+Weitere Informationen finden Sie unter [Schützen des geistigen Eigentums von MSSPs in Azure Sentinel](../../sentinel/mssp-protect-intellectual-property.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

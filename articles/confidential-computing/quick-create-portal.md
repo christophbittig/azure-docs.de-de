@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/1/2021
 ms.author: JenCook
 ms.custom: mode-portal, ignite-fall-2021
-ms.openlocfilehash: 51a91b6bb5ff5991ad2d92a41f7f70ef39c2a0c2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ebb48c3c3b0f7273b7ceeebd8a615b19444dab5b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131033277"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508398"
 ---
 # <a name="quickstart-create-intel-sgx-vm-in-the-azure-portal"></a>Schnellstart: Erstellen einer Intel SGX-VM im Azure-Portal
 
@@ -140,9 +140,9 @@ Weitere Informationen zum Herstellen einer Verbindung mit virtuellen Linux-Compu
 ## <a name="install-azure-dcap-client"></a>Installieren des Azure-DCAP-Clients
 
 > [!NOTE]
-> Trusted Hardware Identity Management (THIM) ist ein kostenloser Azure-Dienst, mit dem Sie die Hardware-Identitäten verschiedener Trusted Execution Environments (TEEs) verwalten können. Der Dienst ruft Begleitdaten vom Intel Provisioning Certification Service (PCS) ab und speichert sie zwischen. Er erzwingt zu Nachweiszwecken als Azure-Sicherheitsbaseline eine minimale Trusted Compute Base (TCB).
+> Trusted Hardware Identity Management (THIM) ist ein kostenloser Azure-Dienst, mit dem Sie die Hardware-Identitäten verschiedener Trusted Execution Environments (TEEs) verwalten können. Der Dienst ruft Begleitdaten vom Intel Provisioning Certification Service (PCS) ab und speichert sie zwischen. Er erzwingt zu Nachweiszwecken als Azure-Sicherheitsbaseline eine minimale Trusted Compute Base (TCB). Für Azure-VMs der DCsv3- und DCdsv3-Serie können die Intel-Zertifikate nur aus THIM abgerufen werden, da es nicht möglich ist, von den VMs aus direkte Aufrufe an den Intel-Dienst durchzuführen. 
 
-Benutzern der Azure-VM-Serien DCsv2, DCsv3 und DCdsv3 wird empfohlen, den Azure-DCAP-Client zu installieren, um mit THIM zu interagieren und TEE-Begleitdaten für die Angebotserstellung während des Nachweisverfahrens abzurufen. Weitere Informationen zum Nachweis finden Sie unter [Microsoft Azure Attestation](/azure/attestation/overview) oder [ECDSA Attestation](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html).
+Mit der Veröffentlichung der skalierbaren Xeon-Prozessoren von Intel® ändert sich die Unterstützung des Remotenachweises. DCsv3 und DCdsv3 unterstützen nur [ECDSA-basierte Nachweise](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html), und Benutzer müssen den [Azure DCAP](https://github.com/Microsoft/Azure-DCAP-Client)-Client installieren, um mit THIM zu interagieren und TEE-Begleitdaten für die Angebotserstellung während des Nachweisverfahrens abzurufen. DCsv2 unterstützt weiterhin [EPID-basierte Nachweise](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html). 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -158,3 +158,6 @@ Machen Sie sich damit vertraut, wie Sie Confidential Computing-Anwendungen entwi
 
 > [!div class="nextstepaction"]
 > [Entwickeln von Open Enclave SDK-Beispielen](https://github.com/openenclave/openenclave/blob/master/samples/README.md)
+
+Microsoft Azure Attestation ist kostenlos und verwendet das ECDSA-basierte Nachweisframework, um die Vertrauenswürdigkeit mehrerer TEEs und die Integrität der darin ausgeführten Binärdateien remote zu überprüfen. Weitere Informationen finden Sie [hier](/azure/attestation/overview).
+

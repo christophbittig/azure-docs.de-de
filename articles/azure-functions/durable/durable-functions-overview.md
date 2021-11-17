@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 987857c4534ddbef90ef3eca5f73f554db0c4341
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: c9a81c052f44afbb2049442f09e34a0e6bc588f9
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777714"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054769"
 ---
 # <a name="what-are-durable-functions"></a>Was ist Durable Functions?
 
@@ -797,6 +797,13 @@ Sie können die ersten Schritte mit Durable Functions in weniger als 10 Minuten 
 * [PowerShell unter Verwendung von Visual Studio Code](quickstart-powershell-vscode.md)
 
 In diesen Schnellstarts erstellen und testen Sie lokal eine dauerhafte Funktion vom Typ „Hallo Welt“. Anschließend veröffentlichen Sie den Funktionscode in Azure. Mit der von Ihnen erstellten Funktion werden Aufrufe anderer Funktionen orchestriert und miteinander verkettet.
+
+## <a name="publications"></a>Veröffentlichungen
+
+Durable Functions wird in Zusammenarbeit mit Microsoft Research entwickelt. Daher erstellt das Durable Functions-Team aktiv Forschungsberichte und Artefakte, u. a.:
+
+* [Durable Functions: Semantik für zustandsbehaftete serverlose Anwendungen](https://www.microsoft.com/en-us/research/uploads/prod/2021/10/DF-Semantics-Final.pdf) _(OOPSLA'21)_
+* [Serverlose Workflows mit Durable Functions und Netherite](https://arxiv.org/pdf/2103.00033.pdf) _(Vorabdruck)_
 
 ## <a name="learn-more"></a>Weitere Informationen
 

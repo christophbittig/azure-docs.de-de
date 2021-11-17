@@ -7,17 +7,20 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/17/2021
-ms.openlocfilehash: 6f429bd55c3fbf93f88c91168021eed9f1d6505a
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.date: 10/26/2021
+ms.openlocfilehash: bcfeb7b4baa0b9eae419bb8535869053d63ba57d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730183"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055810"
 ---
 # <a name="plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots für den kommerziellen Marketplace
 
 In diesem Artikel werden die verschiedenen Optionen und Anforderungen zum Veröffentlichen von SaaS-Angeboten (Software-as-a-Service) für den kommerziellen Marketplace von Microsoft erläutert. Mit SaaS-Angeboten können Sie Softwarelösungen für Ihre Kunden über ein Onlineabonnement bereitstellen und lizenzieren. Als SaaS-Herausgeber verwalten und bezahlen Sie die erforderliche Infrastruktur, die für die Nutzung Ihres Angebots durch den Kunden erforderlich ist. Dieser Artikel hilft Ihnen, Ihr Angebot für die Veröffentlichung auf dem kommerziellen Marketplace mit dem Partner Center vorzubereiten.
+
+> [!TIP]
+> Die Ansicht des Kunden für den Kauf eines SaaS-Angebots im Azure-Portal finden Sie unter [Kaufen eines SaaS-Angebots im Azure-Portal](/marketplace/purchase-saas-offer-in-azure-portal) und [Kaufen von SaaS-Apps in Microsoft AppSource](/marketplace/purchase-software-appsource).
 
 ## <a name="listing-options"></a>Auflistungsoptionen
 
@@ -56,7 +59,7 @@ Für die Auflistungsoptionen _Jetzt abrufen (kostenlos)_ , _Kostenlose Testversi
 
 Diese zusätzlichen technischen Anforderungen gelten nur für die Auflistungsoption _Über Microsoft verkaufen_ (transaktionsfähig):
 
-- Zur Integration des Angebots in Azure Marketplace und Microsoft AppSource müssen Sie die [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-api-v2.md) verwenden. Sie müssen einen Dienst bereitstellen, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht. Diagramme und ausführliche Erläuterungen zur Verwendung der gesammelten Felder finden Sie in der Dokumentation zu den [APIs](./partner-center-portal/pc-saas-fulfillment-api-v2.md).
+- Zur Integration des Angebots in Azure Marketplace und Microsoft AppSource müssen Sie die [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-apis.md) verwenden. Sie müssen einen Dienst bereitstellen, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht. Diagramme und ausführliche Erläuterungen zur Verwendung der gesammelten Felder finden Sie in der Dokumentation zu den [APIs](./partner-center-portal/pc-saas-fulfillment-apis.md).
 - Sie müssen mindestens einen Plan für Ihr Angebot erstellen. Der Plan für Ihr Angebot basiert auf dem Preismodell, das Sie vor der Veröffentlichung ausgewählt haben: _Pauschalgebühr_ oder _Pro Benutzer_. Weitere Details zu [Plänen](#plans) finden Sie weiter unten in diesem Artikel.
 - Der Kunde kann Ihr Angebot jederzeit stornieren.
 
@@ -66,13 +69,13 @@ Wenn Sie ein transaktionsfähiges Angebot erstellen, müssen Sie die folgenden I
 
 - **URL der Angebotsseite**: Die URL der SaaS-Website (z. B. `https://contoso.com/signup`), zu der Benutzer umgeleitet werden, nachdem sie Ihr Angebot im kommerziellen Marketplace erworben und den Konfigurationsvorgang vom neu erstellten SaaS-Abonnement aus gestartet haben. An diese URL wird ein Token gesendet, das zum Aufrufen der Fulfillment-APIs verwendet werden kann. So lassen sich Bereitstellungsdetails für die interaktive Registrierungsseite abrufen.
 
-  Die URL wird mit dem Identifizierungstokenparameter für den Marketplace-Kauf aufgerufen, der den SaaS-Kauf eines bestimmten Kunden eindeutig identifiziert. Sie müssen dieses Token mithilfe der [Auflösungs-API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) durch die entsprechenden SaaS-Abonnementdetails ersetzen. Diese und alle weiteren Details, die Sie als Teil einer Kunden-interaktiven Webseite sammeln möchten, können verwendet werden, um das Onboarding der Kunden zu starten, das letztendlich mit einem Aktivierungsvorgang für die API zum Starten des Abonnementzeitraums abgeschlossen werden muss. Auf dieser Seite sollte sich der Benutzer per 1-Klick-Authentifizierung über Azure Active Directory (Azure AD) registrieren.
+  Die URL wird mit dem Identifizierungstokenparameter für den Marketplace-Kauf aufgerufen, der den SaaS-Kauf eines bestimmten Kunden eindeutig identifiziert. Sie müssen dieses Token mithilfe der [Auflösungs-API](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription) durch die entsprechenden SaaS-Abonnementdetails ersetzen. Diese und alle weiteren Details, die Sie als Teil einer Kunden-interaktiven Webseite sammeln möchten, können verwendet werden, um das Onboarding der Kunden zu starten, das letztendlich mit einem Aktivierungsvorgang für die API zum Starten des Abonnementzeitraums abgeschlossen werden muss. Auf dieser Seite sollte sich der Benutzer per 1-Klick-Authentifizierung über Azure Active Directory (Azure AD) registrieren.
 
   Die URL mit dem Identifizierungstokenparameter für den Marketplace-Kauf wird auch aufgerufen, wenn der Kunde die Oberfläche für verwaltete SaaS-Lösungen über das Azure-Portal oder das Microsoft 365 Admin Center startet. Die beiden folgenden Abläufe sollten unterstützt werden: Wenn das Token nach dem Kauf erstmalig für neue Kunden bereitgestellt wird und wenn es für vorhandene Kunden erneut zum Verwalten der SaaS bereitgestellt wird.
 
     Die konfigurierte Landing Page sollte rund um die Uhr aktiv sein. Dies ist die einzige Möglichkeit, Sie über neue Käufe Ihrer SaaS-Angebote im kommerziellen Marketplace oder über Konfigurationsanforderungen eines aktiven Abonnements für ein Angebot zu benachrichtigen.
 
-- **Verbindungswebhook**: Für alle asynchronen Ereignisse, die Microsoft an Sie senden muss (z. B. bei Kündigung eines SaaS-Abonnements), müssen Sie eine [Verbindungswebhook-URL angeben](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service). Diese URL wird aufgerufen, um Sie über das Ereignis zu informieren.
+- **Verbindungswebhook**: Für alle asynchronen Ereignisse, die Microsoft an Sie senden muss (z. B. bei Kündigung eines SaaS-Abonnements), müssen Sie eine [Verbindungswebhook-URL angeben](./partner-center-portal/pc-saas-fulfillment-webhook.md). Diese URL wird aufgerufen, um Sie über das Ereignis zu informieren.
 
   Der von Ihnen bereitgestellte Webhook sollte rund um die Uhr aktiv sein. Dies ist die einzige Möglichkeit, Sie über Aktualisierungen der SaaS-Abonnements Ihrer Kunden, die über den kommerziellen Marketplace erworben wurden, zu benachrichtigen.
 

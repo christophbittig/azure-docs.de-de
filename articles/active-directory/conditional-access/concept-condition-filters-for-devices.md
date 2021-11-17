@@ -4,25 +4,24 @@ description: Verwenden von Filtern für Geräte beim bedingten Zugriff zur Verbe
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/26/2021
+ms.date: 11/08/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dc7b4630d26c0f1b78df5a29a3210fd68f3d734
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 311acb544a50758ec39314666201294c3930fdbc
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012660"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026803"
 ---
 # <a name="conditional-access-filter-for-devices"></a>Bedingter Zugriff: Filter für Geräte
 
 Beim Erstellen von Richtlinien für bedingten Zugriff haben Administratoren nach einer Möglichkeit gesucht, bestimmte Geräte in ihrer Umgebung als Ziel anzugeben oder auszuschließen. Die Bedingung „Filter für Geräte“ bietet Administratoren diese Möglichkeit. Jetzt können Sie mithilfe von [unterstützten Operatoren und Eigenschaften für Gerätefilter](#supported-operators-and-device-properties-for-filters) und den anderen verfügbaren Zuweisungsbedingungen in Ihren Richtlinien für bedingten Zugriff auf bestimmte Geräte abzielen.
 
 :::image type="content" source="media/concept-condition-filters-for-devices/create-filter-for-devices-condition.png" alt-text="Erstellen der Bedingung „Filter für Geräte“ in einer Richtlinie für bedingten Zugriff":::
-
 
 ## <a name="common-scenarios"></a>Häufige Szenarien
 
@@ -88,6 +87,10 @@ Richtlinie 2: Alle Benutzer mit der Verzeichnisrolle „Globaler Administrator�
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
+### <a name="setting-attribute-values"></a>Festlegen von Attributwerten
+
+Das Festlegen von Erweiterungsattributen wird über die Graph-API ermöglicht. Weitere Informationen zum Festlegen von Geräteattributen finden Sie im Artikel [Aktualisieren von Geräten](/graph/api/device-update?view=graph-rest-1.0&tabs=http#example-2--write-extensionattributes-on-a-device).
+
 ### <a name="filter-for-devices-graph-api"></a>Graph-API „Filter für Geräte“
 
 Die API „Filter für Geräte“ ist derzeit im Microsoft Graph v1.0-Endpunkt verfügbar und kann über https://graph.microsoft.com/v1.0/identity/conditionalaccess/policies/ aufgerufen werden. Sie können einen Filter für Geräte konfigurieren, wenn Sie eine neue Richtlinie für bedingten Zugriff erstellen. Sie können aber auch eine vorhandene Richtlinie aktualisieren, um „Filter für Geräte“ als Bedingung zu konfigurieren. Um eine vorhandene Richtlinie zu aktualisieren, können Sie einen Patchaufruf an den oben erwähnten Microsoft Graph v1.0-Endpunkt senden, indem Sie die Richtlinien-ID einer vorhandenen Richtlinie anfügen und den folgenden Anforderungstext ausführen. Im hier gezeigten Beispiel wird das Konfigurieren einer Bedingung „Filter für Geräte“ veranschaulicht, durch die Geräte ausgeschlossen werden, die nicht als SAW-Geräte markiert sind. Die Regelsyntax kann aus mehreren Ausdrücken bestehen. Weitere Informationen zur Syntax finden Sie unter [Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory](../enterprise-users/groups-dynamic-membership.md). 
@@ -143,6 +146,7 @@ Die Bedingung „Filter für Geräte“ für den bedingten Zugriff wertet richtl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Aktualisieren der Graph-API von Geräten](/graph/api/device-update?view=graph-rest-1.0&tabs=http)
 - [Bedingter Zugriff: Bedingungen](concept-conditional-access-conditions.md)
 - [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
 - [Schützen von Geräten im Rahmen der Geschichte des privilegierten Zugriffs](/security/compass/privileged-access-devices)

@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, Spezifikationen, Hardware, DK, Funktionen, Tiefe, Farbe, RGB, IMU, Array, Tiefe, mehrere, Synchronisierung
-ms.openlocfilehash: eabf77896777f39efcfd61adb3040bca8642716e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e4936e5c7b795745b7f1b131efbf99a562d8ed0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102039953"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254682"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Synchronisierung mehrerer Azure Kinect DK-Geräte
 
@@ -85,7 +85,7 @@ Vermeiden Sie in der Bildaufzeichnungsschleife Wiederholungen der gleichen Belic
 
 Wenn mehrere Tiefenkameras sich überlappende Sichtfelder aufnehmen, muss jede Kamera ihren einen eigenen zugeordneten Laser aufnehmen. Um zu verhindern, dass die Laser einander stören, sollten die Kameraaufzeichnungen um mindestens 160 μs voneinander versetzt sein.
 
-Für jede Tiefenkameraaufzeichnung wird der Laser neun Mal eingeschaltet und ist jeweils nur für 125&mu;s aktiv. Der Laser ist dann abhängig vom Betriebsmodus entweder für 14.505&mu;s oder 23.905&mu;s inaktiv. Darum ist der Ausgangspunkt für die Offsetberechnung 125&mu;s.
+Für jede Tiefenkameraaufzeichnung wird der Laser neun Mal eingeschaltet und ist jeweils nur für 125&mu;s aktiv. Der Laser ist dann abhängig vom Betriebsmodus für 1.450&mu;s oder 2.390&mu;s inaktiv. Darum ist der Ausgangspunkt für die Offsetberechnung 125&mu;s.
 
 Außerdem erhöhen die Unterschiede zwischen der Kamerauhr und der Gerätefirmwareuhr den minimalen Offset auf 160&mu;s. Um einen präziseren Offset für Ihre Konfiguration zu berechnen, notieren Sie sich den von Ihnen verwendeten Tiefenmodus, und nutzen Sie die [Rohtiminingtabelle des Tiefensensors](hardware-specification.md#depth-sensor-raw-timing). Anhand der Daten aus dieser Tabelle können Sie den minimalen Offset (die Belichtungszeit jeder Kamera) mithilfe der folgenden Gleichung berechnen:
 
@@ -96,7 +96,7 @@ Wenn Sie einen Offset von 160&mu;s verwenden, können Sie bis zu neun zusätzlic
 Verwenden Sie in Ihrer Software ```depth_delay_off_color_usec``` oder ```subordinate_delay_off_master_usec```, um sicherzustellen, dass jeder IR-Laser in seinem eigenen 160&mu;s-Fenster oder in einem anderen Sichtfeld ausgelöst wird.
 
 > [!NOTE]  
-> Die tatsächliche Impulsbreite beträgt 125 Mikrosekunden, aber wir geben 160 Mikrosekunden an, um einen gewissen Spielraum zu haben. Bei NFOV UNBINNED folgt beispielsweise auf jeden 125 Mikrosekunden-Impuls ein 1.450 Mikrosekunden-Leerlauf. Die Summe, (9 x 125) + (8 x 1.450), ergibt die Belichtungszeit von 12,8 ms. Sie können die Belichtung von 2 Geräten am engsten verschachteln, wenn der erste Impuls der zweiten Kamera in den ersten Leerlaufzeitraum der ersten Kamera fällt. Die Verzögerung zwischen der ersten und der zweiten Kamera könnte ein Minimum von 125 Mikrosekunden betragen (die Breite eines Impulses), aber die 160 Mikrosekunden dienen einem empfohlenen gewissen Spielraum. 160 Mikrosekunden ermöglichen Ihnen, die Belichtungszeiten von maximal 10 Kameras zu verschachteln.
+> Die tatsächliche Impulsbreite beträgt 125&mu;s, es werden jedoch 160 Mikrosekunden angegeben, um einen gewissen Spielraum zu haben. Bei NFOV UNBINNED folgen beispielsweise auf jeden 125&mu;s-Impuls 1.450&mu;s Inaktivität. Die Summe, (9 x 125) + (8 x 1.450), ergibt die Belichtungszeit von 12,8 ms. Sie können die Belichtung von 2 Geräten am engsten verschachteln, wenn der erste Impuls der zweiten Kamera in den ersten Leerlaufzeitraum der ersten Kamera fällt. Die Verzögerung zwischen der ersten und der zweiten Kamera könnte nur von 125&mu;s betragen (die Breite eines Impulses), aber ein gewisser Spielraum wird empfohlen, daher die Angabe von 160&mu;s. 160&mu;s ermöglichen es Ihnen, die Belichtungszeiten von bis zu 10 Kameras zu überlappen.
 
 ## <a name="prepare-your-devices-and-other-hardware"></a>Vorbereiten von Geräten und anderer Hardware
 
