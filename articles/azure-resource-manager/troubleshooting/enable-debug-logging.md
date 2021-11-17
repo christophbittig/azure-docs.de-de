@@ -3,14 +3,14 @@ title: Debugprotokollierung aktivieren
 description: Beschreibt, wie Sie die Debugprotokollierung aktivieren, um Probleme mit Azure-Ressourcen zu beheben, die mit Azure Resource Manager Vorlagen (ARM-Vorlagen) oder Bicep-Dateien bereitgestellt wurden.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 11/02/2021
+ms.date: 11/05/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d68041953979b594c83059a28a78e3440ca297ac
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: fcd2cbdf052f934bb797b3f1dab148d951d09167
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478893"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989647"
 ---
 # <a name="enable-debug-logging"></a>Debugprotokollierung aktivieren
 
@@ -44,7 +44,7 @@ Get-AzResourceGroupDeploymentOperation `
   -ResourceGroupName examplegroup
 ```
 
-Sie können eine Eigenschaft angeben. Die `StatusMessage`-Eigenschaft gibt z. B. die gleichen Daten wie die Azure CLI `response`-Eigenschaft aus.
+Sie können eine Eigenschaft wie `StatusMessage` oder `StatusCode` angeben, um die Ausgabe zu filtern.
 
 ```azurepowershell
 (Get-AzResourceGroupDeploymentOperation `
@@ -52,13 +52,11 @@ Sie können eine Eigenschaft angeben. Die `StatusMessage`-Eigenschaft gibt z. B
   -ResourceGroupName examplegroup).StatusMessage
 ```
 
-Verwenden Sie Azure CLI, um das Debuggen `request` und die Informationen `response` zu erhalten. In den Az-Modulversionen 4.8 und höher enthält `Get-AzResourceGroupDeploymentOperation` diese Eigenschaften nicht in der Ausgabe. Eine Liste der verfügbaren Eigenschaften finden Sie unter [Ausgaben](/powershell/module/az.resources/get-azresourcegroupdeploymentoperation#outputs).
-
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Sie können die Debugprotokollierung nicht mit Azure CLI aktivieren, aber Sie können Debugprotokollierungsdaten abrufen.
 
-Rufen Sie die Bereitstellungsvorgänge mit folgendem Befehl ab:
+Rufen Sie die Bereitstellungsvorgänge mit dem Befehl [az deployment operation group list](/cli/azure/deployment/operation/group#az_deployment_operation_group_list) ab:
 
 ```azurecli
 az deployment operation group list \

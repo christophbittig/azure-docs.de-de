@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e63867a4c46f8249db93c13914ab7a7297252f48
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ccd2e196f1e1a44a79f0d4f9f1f07e4a69f2b974
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238452"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053120"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault – Sicherheit
 
@@ -37,8 +37,11 @@ Mit dem Azure Private Link-Dienst können Sie über einen privaten Endpunkt in I
 
 - Beim Key Vault-Front-End (Datenebene) handelt es sich um einen mehrinstanzenfähigen Server. Dies bedeutet, dass die Schlüsseltresore verschiedener Kunden dieselbe öffentliche IP-Adresse gemeinsam nutzen können. Für die Gewährleistung von Isolation wird jede HTTP-Anforderung unabhängig von anderen Anforderungen authentifiziert und autorisiert.
 - Sie können ältere TLS-Versionen zwar ermitteln, um Sicherheitsrisiken zu melden, da die öffentliche IP-Adresse jedoch von mehreren Kunden gemeinsam genutzt wird, ist es dem Key Vault-Team nicht möglich, ältere TLS-Versionen für einzelne Schlüsseltresore auf Transportebene zu deaktivieren.
-- Das HTTPS-Protokoll ermöglicht es dem Client, an der TLS-Aushandlung teilzunehmen. **Clients können die neueste TLS-Version erzwingen.** Wenn dies der Fall ist, wird für die gesamte Verbindung der entsprechende Ebenenschutz verwendet. Dass Key Vault weiterhin ältere TLS-Versionen unterstützt, stellt keine Beeinträchtigung für die Sicherheit von Verbindungen dar, die neuere TLS-Versionen verwenden.
+- Das HTTPS-Protokoll ermöglicht es dem Client, an der TLS-Aushandlung teilzunehmen. **Clients können die neueste TLS-Version erzwingen.** Wenn dies der Fall ist, wird für die gesamte Verbindung der entsprechende Ebenenschutz verwendet. Anwendungen, die mit Azure Active Directory kommunizieren oder sich bei Azure Active Directory authentifizieren, funktionieren möglicherweise nicht wie erwartet, wenn sie NICHT in der Lage sind, TLS 1.2 oder die aktuelle Version für die Kommunikation zu verwenden.
 - Trotz bekannter Sicherheitsrisiken im TLS-Protokoll gibt es keinen bekannten Angriff, bei dem ein böswilliger Agent Informationen aus Ihrem Schlüsseltresor extrahieren kann, wenn ein Angreifer eine Verbindung mit einer TLS-Version initiiert, die Sicherheitsrisiken aufweist. Der Angreifer muss sich trotzdem authentifizieren und autorisiert werden, und solange berechtigte Clients Verbindungen immer mit den aktuellen TLS-Versionen herstellen, ist es nicht möglich, dass Anmeldeinformationen aufgrund von Sicherheitsrisiken in älteren TLS-Versionen kompromittiert werden.
+
+> [!NOTE]
+> Stellen Sie in Azure Key Vault sicher, dass die Anwendung, die auf den Keyvault-Dienst zugreift, auf einer Plattform ausgeführt wird, die TLS 1.2 oder die aktuelle Version unterstützt. Wenn die Anwendung von .NET Framework abhängig ist, sollte sie ebenfalls aktualisiert werden. Sie können auch die in [diesem Artikel](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment) erwähnten Registrierungsänderungen vornehmen, um die Verwendung von TLS 1.2 auf Betriebssystemebene und für .NET Framework explizit zu aktivieren.
 
 ## <a name="key-vault-authentication-options"></a>Key Vault-Authentifizierungsoptionen
 

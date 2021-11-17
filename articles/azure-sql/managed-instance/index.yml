@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: 
   ms.date: 05/27/2020
-  ms.openlocfilehash: a27cfbd170e1db6623ede6edc71d154f362e5363
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: b21d8f31de36362c542c668b5b992abfa2b99134
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130045444"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132551898"
 landingContent:
 - title: Verwaltete Azure SQL-Instanz
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: Neuigkeiten
       url: doc-changes-updates-release-notes-whats-new.md
+    - text: Umfrage zur Verbesserung von Azure SQL
+      url: https://aka.ms/AzureSQLSurveyNov2021
   - linkListType: quickstart
     links:
     - text: Erstellen einer verwalteten SQL-Instanz

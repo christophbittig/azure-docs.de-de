@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/22/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 069529d2f97e18e1b5d99b4f96e5bee98d80f497
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ba5be8cad5c7189d207a8e2915e970589e414175
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131421939"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063154"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100- und 8600-Migration zur Azure-Dateisynchronisierung
 
@@ -81,8 +81,9 @@ Wenn Sie die Schlüssel in Ihren Aufzeichnungen nicht finden können, können Si
 ### <a name="known-limitations"></a>Bekannte Einschränkungen
 
 Für StorSimple Data Manager und Azure-Dateifreigaben gelten einige Einschränkungen, die Sie berücksichtigen müssen, bevor Sie mit der Migration beginnen, da sie eine Migration verhindern können:
-* Nur NTFS-Volumes von StorSimple-Appliances werden unterstützt.
-* Der Dienst funktioniert nicht mit Volumen, die mit BitLocker verschlüsselt sind.
+* Nur NTFS-Volumes von StorSimple-Appliances werden unterstützt. ReFS-Volumes werden nicht unterstützt.
+* Alle auf [dynamischen Windows Server-Datenträgern](/troubleshoot/windows-server/backup-and-storage/best-practices-using-dynamic-disks) gespeicherte Volumes werden nicht unterstützt. (vor Windows Server 2012 veraltet)
+* Der Dienst funktioniert nicht mit Volumen, die mit BitLocker verschlüsselt sind oder für die [Datendeduplizierung](/windows-server/storage/data-deduplication/understand) aktiviert ist.
 * Beschädigte StorSimple-Sicherungen können nicht migriert werden.
 * Spezielle Netzwerkoptionen, z. B. Firewalls oder die ausschließliche Kommunikation zwischen privaten Endpunkten, können weder für das Quellspeicherkonto, in dem StorSimple-Sicherungen gespeichert sind, noch für das Zielspeicherkonto aktiviert werden, das die Azure-Dateifreigaben enthält.
 

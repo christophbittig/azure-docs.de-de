@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 10/29/2021
-ms.openlocfilehash: a59be71415197242d636c577cff1c80b9f5fc639
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a73df839ff7dcaad992b8930c8fb2545e854951c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131439878"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028076"
 ---
 # <a name="string-functions-for-bicep"></a>Zeichenfolgenfunktionen für Bicep
 
@@ -500,6 +500,9 @@ guid(resourceGroup().id, deployment().name)
 
 Eine Zeichenfolge mit 36 Zeichen im Format eines Globally Unique Identifiers.
 
+> [!NOTE]
+> Bedeutung der Reihenfolge: Es handelt sich nicht nur um dieselben Parameter, sie müssen auch in derselben Reihenfolge angegeben werden. Beispiel: `guid('hello', 'world') != guid('world', 'hello')`
+
 ### <a name="examples"></a>Beispiele
 
 Das folgende Beispiel gibt Ergebnisse aus GUID zurück:
@@ -706,7 +709,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 Sie können diese Funktion nur in einem Ausdruck für den Standardwert eines Parameters verwenden. Wenn diese Funktion an einer anderen Stelle in einer Bicep-Datei verwendet wird, wird ein Fehler zurückgegeben. Die Funktion ist in anderen Teilen der Bicep-Datei nicht zulässig, da bei jedem Aufruf ein anderer Wert zurückgegeben wird. Das Bereitstellen derselben Bicep-Datei mit denselben Parametern würde nicht zuverlässig zu denselben Ergebnissen führen.
 
-Im Gegensatz zur [guid](#guid)-Funktion verwendet die newGuid-Funktion keine Parameter. Wenn Sie die Funktion „guid“ mit demselben Parameter aufrufen, wird jedes Mal der gleiche Bezeichner zurückgegeben. Verwenden Sie die Funktion „guid“, wenn Sie die gleiche GUID für eine spezifische Umgebung zuverlässig generieren müssen. Verwenden Sie die Funktion „newGuid“, wenn Sie jedes Mal einen anderen Bezeichner benötigen, z. B. beim Bereitstellen von Ressourcen für eine Testumgebung.
+Im Gegensatz zur [guid](#guid)-Funktion verwendet die newGuid-Funktion keine Parameter. Wenn Sie die Funktion „guid“ mit denselben Parametern aufrufen, wird jedes Mal der gleiche Bezeichner zurückgegeben. Verwenden Sie die Funktion „guid“, wenn Sie die gleiche GUID für eine spezifische Umgebung zuverlässig generieren müssen. Verwenden Sie die Funktion „newGuid“, wenn Sie jedes Mal einen anderen Bezeichner benötigen, z. B. beim Bereitstellen von Ressourcen für eine Testumgebung.
 
 Die newGuid-Funktion verwendet die [Guid-Struktur](/dotnet/api/system.guid) im .NET Framework, um den global eindeutigen Bezeichner (GUID) zu generieren.
 

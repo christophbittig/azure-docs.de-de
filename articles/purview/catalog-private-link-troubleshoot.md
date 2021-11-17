@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/15/2021
-ms.openlocfilehash: 3a41e3e131c4537e21e3844dbf0db360e2b77b28
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1557b229c4db50dca2115fc9c11123c76c5adc50
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130214717"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851817"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Problembehandlung bei der Konfiguration privater Endpunkte für Purview-Konten
 
@@ -90,7 +90,7 @@ Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwend
    
 6. Testen Sie die Netzwerkkonnektivität und Namensauflösung der selbstgehosteten Integration Runtime für den Purview-Endpunkt.
 
-7. Testen Sie die Netzwerkkonnektivität und Namensauflösung der selbstgehosteten Integration Runtime für verwaltete Azure Purview-Ressourcen wie Blobwarteschlangen und Event Hubs über Port 443 und private IP-Adressen. (Ersetzen Sie das verwaltete Speicherkonto und den Event Hubs-Namespace durch den entsprechenden Namen der verwalteten Ressource, die Ihrem Azure Purview-Konto zugewiesen ist.)
+7. Testen Sie die Netzwerkkonnektivität und Namensauflösung der selbstgehosteten Integration Runtime für verwaltete Azure Purview-Ressourcen wie Blobwarteschlangen und Event Hubs über Port 443 und private IP-Adressen. (Ersetzen Sie das verwaltete Speicherkonto und den Event Hubs-Namespace durch den entsprechenden Namen der verwalteten Ressource, die Ihrem Azure Purview-Konto zugewiesen ist.)
 
     ```powershell
     Test-NetConnection -ComputerName `scansoutdeastasiaocvseab`.blob.core.windows.net -Port 443
@@ -123,7 +123,7 @@ Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwend
     ```powershell
     Test-NetConnection -ComputerName `Atlas-1225cae9-d651-4039-86a0-b43231a17a4b`.servicebus.windows.net -Port 443
     ```
-    Beispiel für eine erfolgreiche ausgehende Verbindung mit EventHub-Namespace über eine private IP-Adresse:
+    Beispiel für eine erfolgreiche ausgehende Verbindung mit Event Hub-Namespace über eine private IP-Adresse:
 
     ```
     ComputerName     : Atlas-1225cae9-d651-4039-86a0-b43231a17a4b.servicebus.windows.net
@@ -152,7 +152,7 @@ Beim Durchführen einer Überprüfung wird möglicherweise die folgende Fehlerme
 `Internal system error. Please contact support with correlationId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx System Error, contact support.`
 
 ### <a name="cause"></a>Ursache 
-Dies kann ein Hinweis auf Probleme im Zusammenhang mit der Konnektivität oder Namensauflösung zwischen dem virtuellen Computer, auf dem die selbstgehostete Integration Runtime ausgeführt wird, und dem Speicherkonto oder Event Hub der verwalteten Azure Purview-Ressourcen sein.
+Dies kann ein Hinweis auf Probleme im Zusammenhang mit der Konnektivität oder Namensauflösung zwischen dem virtuellen Computer, auf dem die selbstgehostete Integration Runtime ausgeführt wird, und dem Speicherkonto oder Event Hub der verwalteten Azure Purview-Ressourcen sein.
 
 ### <a name="resolution"></a>Lösung 
 Überprüfen Sie, ob die Namensauflösung zwischen dem virtuellen Computer, auf dem die selbstgehostete Integration Runtime ausgeführt wird, und anderen Ressourcen erfolgt.
@@ -164,7 +164,7 @@ Beim Durchführen einer neuen Überprüfung wird möglicherweise die folgende Fe
   `message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)`
 
 ### <a name="cause"></a>Ursache 
-Dies kann ein Hinweis auf die Ausführung einer älteren Version der selbstgehosteten Integration Runtime sein. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, müssen Sie die Version 5.9.7885.3 der selbstgehosteten Integration Runtime verwenden.
+Dies kann ein Hinweis auf die Ausführung einer älteren Version der selbstgehosteten Integration Runtime sein. Sie müssen mindestens Version 5.9.7885.3 der selbstgehosteten Integration Runtime verwenden.
 
 ### <a name="resolution"></a>Lösung 
 Führen Sie ein Upgrade der selbstgehosteten Integration Runtime auf Version 5.9.7885.3 durch.

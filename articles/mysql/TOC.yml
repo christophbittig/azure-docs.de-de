@@ -129,6 +129,8 @@
               href: flexible-server/tutorial-deploy-wordpress-on-aks.md
             - name: Erstellen einer PHP-App (Laravel) mit Datenbank
               href: flexible-server/tutorial-php-database-app.md
+            - name: Bereitstellen einer Java Spring Boot-App in AKS im VNet
+              href: flexible-server/tutorial-deploy-springboot-on-aks-vnet.md
             - name: Herstellen einer Verbindung mit einer privaten Web-App
               href: flexible-server/tutorial-webapp-server-vnet.md
             - name: Datenbankbereitstellung

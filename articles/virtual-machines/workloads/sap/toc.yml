@@ -232,6 +232,8 @@
           href: high-availability-guide-rhel-ibm-db2-luw.md
     - name: 'SAP-Anwendungsschicht: SLES'
       items:
+        - name: "Installieren von SAP\_NetWeaver mit Hochverfügbarkeit mit NFS in Azure Files"
+          href: high-availability-guide-suse-nfs-azure-files.md
         - name: Installieren von SAP NetWeaver mit Hochverfügbarkeit mit Azure NetApp Files
           href: high-availability-guide-suse-netapp-files.md
         - name: Installieren von SAP NetWeaver mit Hochverfügbarkeit
@@ -244,7 +246,9 @@
           href: high-availability-guide-suse-pacemaker.md
     - name: 'SAP-Anwendungsschicht: RHEL'
       items:
-        - name: Installieren eines SAP NetWeaver-Systems mit Hochverfügbarkeit mit Azure NetApp Files
+        - name: "Installieren von SAP\_NetWeaver mit Hochverfügbarkeit mit NFS in Azure Files"
+          href: high-availability-guide-rhel-nfs-azure-files.md
+        - name: Installieren von SAP NetWeaver mit Hochverfügbarkeit mit Azure NetApp Files
           href: high-availability-guide-rhel-netapp-files.md
         - name: Installieren von SAP NetWeaver mit Hochverfügbarkeit
           href: high-availability-guide-rhel.md

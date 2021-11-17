@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d290549baf39f11c495c1f028a6eea2aba75d701
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 1da7c5f189b3ffee7f74a4af94bda7fe2d755c74
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131576661"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025777"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer öffentlichen Instanz von Load Balancer Standard in Azure Kubernetes Service (AKS)
 
@@ -193,17 +193,16 @@ az aks create \
 ### <a name="configure-the-allocated-outbound-ports"></a>Konfigurieren der zugeordneten ausgehenden Ports
 
 > [!IMPORTANT]
-> Falls Ihr Cluster Anwendungen enthält, für die eine große Zahl von Verbindungsherstellungen mit wenigen Zielen zu erwarten ist (z. B. Verbindungen von vielen Front-End-Instanzen mit einer SQL-Datenbank), ist dies ein Szenario, bei dem es zu einer SNAT-Portüberlastung kommen kann (keine verfügbaren Ports für die Verbindungsherstellung). Für diese Szenarien empfehlen wir Ihnen dringend, die zugeordneten ausgehenden Ports und Front-End-IP-Ausgangsadressen auf dem Lastenausgleichsmodul zu erhöhen. Bei der Erhöhung sollten Sie berücksichtigen, dass mit einer (1) zusätzlichen IP-Adresse 64.000 zusätzliche Ports für die Verteilung auf alle Clusterknoten hinzugefügt werden.
+> Bei Anwendungen in Ihrem Cluster, die eine große Anzahl von Verbindungen mit kleinen Zielen herstellen können (etwa zahlreiche Instanzen einer Front-End-Anwendung, die eine Verbindung mit einer Datenbank herstellen), kann ein Szenario auftreten, das sehr anfällig für die SNAT-Portauslastung ist. Die SNAT-Portauslastung tritt auf, wenn eine Anwendung nicht mehr über ausgehende Ports zum Herstellen einer Verbindung mit einer anderen Anwendung oder einem anderen Host verfügt. Bei einem Szenario, in dem eine SNAT-Portauslastung auftreten kann, wird dringend empfohlen, die zugeordneten ausgehenden Ports und die Front-End-IP-Ausgangsadressen im Lastenausgleichsmodul zu erhöhen, um eine SNAT-Portauslastung zu verhindern. Weiter unten finden Sie Informationen zum ordnungsgemäßen Berechnen von ausgehenden Ports und Front-End-IP-Ausgangsadressen.
 
-
-Sofern nichts anderes angegeben ist, wird von AKS der Standardwert für „Zugeordnete ausgehende Ports“ verwendet, der von Load Balancer Standard bei der Konfiguration definiert wird. Dieser Wert ist für die AKS-API **null** und für die SLB-API **0**. Dies kann mit dem unten angegebenen Befehl angezeigt werden:
+AKS legt *AllocatedOutboundPorts* für den Lastenausgleich standardmäßig auf `0` fest. Dadurch wird die [automatische Zuweisung ausgehender Ports basierend auf der Größe des Back-End-Pools][azure-lb-outbound-preallocatedports] ermöglicht, wenn Sie einen Cluster erstellen. Wenn ein Cluster beispielsweise über 50 oder weniger Knoten verfügt, werden jedem Knoten 1.024 Ports zugeordnet. Wenn sich die Anzahl der Knoten im Cluster erhöht, sind weniger Ports pro Knoten verfügbar. Verwenden Sie `az network lb outbound-rule list`, um den Wert von *AllocatedOutboundPorts* für den Lastenausgleich des AKS-Clusters anzuzeigen. Beispiel:
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az network lb outbound-rule list --resource-group $NODE_RG --lb-name kubernetes -o table
 ```
 
-Mit den vorherigen Befehlen wird die Ausgangsregel für den Load Balancer aufgelistet, z. B.:
+Die folgende Beispielausgabe zeigt, dass die automatische Zuweisung ausgehender Ports basierend auf der Größe des Back-End-Pools für den Cluster aktiviert ist:
 
 ```console
 AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name             Protocol    ProvisioningState    ResourceGroup
@@ -211,11 +210,31 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-Diese Ausgabe bedeutet nicht, dass Sie über „0“ Ports verfügen, sondern dass Sie die [automatische Zuweisung ausgehender Ports basierend auf der Größe des Back-End-Pools][azure-lb-outbound-preallocatedports] nutzen. Wenn ein Cluster beispielsweise 50 oder weniger Knoten enthält, werden für jeden Knoten 1.024 Ports zugeordnet. Falls Sie die Anzahl von Knoten weiter erhöhen, erhalten Sie immer entsprechend weniger Ports pro Knoten.
+Verwenden Sie `load-balancer-outbound-ports` und entweder `load-balancer-managed-outbound-ip-count`, `load-balancer-outbound-ips` oder `load-balancer-outbound-ip-prefixes`, um einen bestimmten Wert für *AllocatedOutboundPorts* und die ausgehende IP-Adresse zu konfigurieren. Bevor Sie einen bestimmten Wert festlegen oder einen vorhandenen Wert für ausgehende Ports und IP-Adressen erhöhen, müssen Sie die entsprechende Anzahl ausgehender Ports und IP-Adressen berechnen. Verwenden Sie für diese Berechnung die folgende Gleichung, gerundet auf die nächste ganze Zahl: `64,000 ports per IP / <outbound ports per node> * <number of outbound IPs> = <maximum number of nodes in the cluster>`.
 
+Beachten Sie Folgendes, wenn Sie die Anzahl ausgehender Ports und IP-Adressen berechnen und die Werte festlegen:
+* Die Anzahl ausgehender Ports pro Knoten hängt von dem Wert ab, den Sie festlegen.
+* Der Wert für ausgehende Ports muss ein Vielfaches von 8 sein.
+* Durch das Hinzufügen weiterer IP-Adressen werden einem Knoten keine weiteren Ports hinzugefügt. Es wird Kapazität für weitere Knoten im Cluster geschaffen.
+* Sie müssen Knoten berücksichtigen, die unter Umständen im Rahmen von Upgrades hinzugefügt werden, einschließlich der Anzahl von Knoten, die über [maxSurge-Werte][maxsurge] angegeben werden.
 
-Beim Definieren oder Erhöhen der Anzahl von zugeordneten ausgehenden Ports hilft Ihnen das folgende Beispiel weiter:
+Die folgenden Beispiele zeigen, wie die Anzahl der ausgehenden Ports und IP-Adressen von den von Ihnen festgelegten Werten beeinflusst wird:
+- Wenn die Standardwerte verwendet werden und der Cluster über 48 Knoten verfügt, stehen jedem Knoten 1.024 Ports zur Verfügung.
+- Wenn die Standardwerte verwendet werden und der Cluster von 48 auf 52 Knoten skaliert wird, wird bei jedem Knoten die Anzahl verfügbarer Ports von 1.024 auf 512 aktualisiert.
+- Wenn Sie die Anzahl ausgehender Ports auf 1.000 und die Anzahl ausgehender IP-Adressen auf 2 festlegen, kann der Cluster maximal 128 Knoten unterstützen: `64,000 ports per IP / 1,000 ports per node * 2 IPs = 128 nodes`.
+- Wenn Sie die Anzahl ausgehender Ports auf 1.000 und die Anzahl ausgehender IP-Adressen auf 7 festlegen, kann der Cluster maximal 448 Knoten unterstützen: `64,000 ports per IP / 1,000 ports per node * 7 IPs = 448 nodes`.
+- Wenn Sie die Anzahl ausgehender Ports auf 4.000 und die Anzahl ausgehender IP-Adressen auf 2 festlegen, kann der Cluster maximal 32 Knoten unterstützen: `64,000 ports per IP / 4,000 ports per node * 2 IPs = 32 nodes`.
+- Wenn Sie die Anzahl ausgehender Ports auf 4.000 und die Anzahl ausgehender IP-Adressen auf 7 festlegen, kann der Cluster maximal 112 Knoten unterstützen: `64,000 ports per IP / 4,000 ports per node * 7 IPs = 112 nodes`.
 
+> [!IMPORTANT]
+> Nachdem Sie die Anzahl ausgehender Ports und IP-Adressen berechnet haben, überprüfen Sie, ob Sie über zusätzliche Kapazität für ausgehende Ports verfügen, um den Knotenanstieg während Upgrades zu bewältigen. Es ist sehr wichtig, eine ausreichende Zahl überschüssiger Ports für zusätzliche Knoten zuzuordnen, die für Upgrades und andere Vorgänge benötigt werden. AKS verwendet standardmäßig einen Pufferknoten für Upgradevorgänge. Bei Verwendung von [maxSurge-Werten][maxsurge] müssen Sie die ausgehenden Ports pro Knoten mit Ihrem maxSurge-Wert multiplizieren, um die Anzahl der erforderlichen Ports zu bestimmen. Sie haben beispielsweise berechnet, dass Sie 4.000 Ports pro Knoten mit 7 IP-Adressen in einem Cluster mit maximal 100 Knoten und einem maximalen Anstieg von 2 benötigen:
+> * 2 Surge-Knoten · 4.000 Ports pro Knoten = 8.000 Ports für den Knotenanstieg während Upgrades erforderlich
+> * 100 Knoten · 4.000 Ports pro Knoten = 400.000 Ports für Ihren Cluster erforderlich
+> * 7 IP-Adressen · 64.000 Ports pro IP-Adresse = 448.000 Ports für Ihren Cluster verfügbar
+>
+> Das obige Beispiel zeigt, dass der Cluster über eine überschüssige Kapazität von 48.000 Ports verfügt. Dies ist ausreichend, um die 8.000 Ports zu verarbeiten, die für den Knotenanstieg während Upgrades erforderlich sind.
+
+Nachdem die Werte berechnet und überprüft wurden, können Sie diese Werte mit `load-balancer-outbound-ports` und entweder `load-balancer-managed-outbound-ip-count`, `load-balancer-outbound-ips` oder `load-balancer-outbound-ip-prefixes` beim Erstellen oder Aktualisieren eines Clusters anwenden. Beispiel:
 
 ```azurecli-interactive
 az aks update \
@@ -223,25 +242,6 @@ az aks update \
     --name myAKSCluster \
     --load-balancer-managed-outbound-ip-count 7 \
     --load-balancer-outbound-ports 4000
-```
-
-In diesem Beispiel erhalten Sie 4.000 zugeordnete ausgehende Ports für jeden Knoten im Cluster, und bei Verwendung von sieben IP-Adressen ergibt sich Folgendes: *4.000 Ports pro Knoten · 100 Knoten = 400.000 Ports <= 448.000 Ports = 7 IP-Adressen · 64.000 Ports pro IP-Adresse*. Die Skalierung auf 100 Knoten ist also problemlos möglich, und Sie erhalten einen Standardvorgang für Upgrades. Es ist sehr wichtig, eine ausreichende Zahl von Ports für zusätzliche Knoten zuzuordnen, die für Upgrades und andere Vorgänge benötigt werden. Bei AKS wird standardmäßig ein Pufferknoten für Upgrades genutzt. In diesem Beispiel sind hierfür also jederzeit 4.000 freie Ports erforderlich. Bei Verwendung von [maxSurge-Werten](upgrade-cluster.md#customize-node-surge-upgrade) müssen Sie die ausgehenden Ports pro Knoten mit Ihrem maxSurge-Wert multiplizieren.
-
-Sie müssen weitere IP-Adressen hinzufügen, um sicher zu sein, dass bei mehr als 100 Knoten keine Probleme auftreten.
-
-
-> [!IMPORTANT]
-> Sie müssen [Ihr erforderliches Kontingent berechnen und die Anforderungen überprüfen][requirements], bevor Sie *allocatedOutboundPorts* anpassen, um Konnektivitäts- oder Skalierungsprobleme zu vermeiden.
-
-Sie können beim Erstellen eines Clusters auch den Parameter **`load-balancer-outbound-ports`** verwenden, aber Sie müssen auch entweder **`load-balancer-managed-outbound-ip-count`** , **`load-balancer-outbound-ips`** oder **`load-balancer-outbound-ip-prefixes`** angeben.  Beispiel:
-
-```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --load-balancer-sku standard \
-    --load-balancer-managed-outbound-ip-count 2 \
-    --load-balancer-outbound-ports 1024 
 ```
 
 ### <a name="configure-the-load-balancer-idle-timeout"></a>Konfigurieren des Leerlauftimeouts für den Load Balancer
@@ -263,16 +263,7 @@ Erwägen Sie die Verwendung eines niedrigen Timeoutwerts, z. B. vier Minuten, f
 > AKS ermöglicht bei einem Leerlauf standardmäßig die TCP-Zurücksetzung. Es wird empfohlen, diese Konfiguration beizubehalten und zu nutzen, um für Ihre Szenarien ein besser vorhersagbares Anwendungsverhalten zu erzielen.
 > „TCP RST“ wird nur während der TCP-Verbindung im Status „ESTABLISHED“ gesendet. Weitere Informationen hierzu finden Sie [hier](../load-balancer/load-balancer-tcp-reset.md).
 
-### <a name="requirements-for-customizing-allocated-outbound-ports-and-idle-timeout"></a>Anforderungen für die Anpassung zugewiesener ausgehender Ports und des Leerlauftimeouts
-
-- Der Wert, den Sie für *allocatedOutboundPorts* angeben, muss auch ein Vielfaches von „8“ sein.
-- Sie müssen für die Anzahl Ihrer Knoten-VMs und die erforderlichen zugeordneten ausgehenden Ports über ausreichend IP-Kapazität in ausgehender Richtung verfügen. Verwenden Sie die folgende Formel, um sicherzustellen, dass genügend IP-Kapazität in ausgehender Richtung vorhanden ist: 
- 
-*outboundIPs* \* 64.000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
- 
-Wenn Sie beispielsweise drei *nodeVMs* und 50.000 *desiredAllocatedOutboundPorts* verwenden, benötigen Sie mindestens drei *outboundIPs*. Wir empfehlen Ihnen, über Ihren Bedarf hinaus weitere IP-Kapazität in ausgehender Richtung bereitzustellen. Darüber hinaus müssen Sie die automatische Clusterskalierung und die Möglichkeit von Knotenpoolupgrades berücksichtigen, wenn Sie die IP-Kapazität in ausgehender Richtung berechnen. Überprüfen Sie für die automatische Clusterskalierung die aktuelle und die maximale Knotenanzahl, und verwenden Sie den höheren Wert. Berücksichtigen Sie für Upgrades eine zusätzliche Knoten-VM für jeden Knotenpool, für den Upgrades zulässig sind.
-
-- Wenn Sie *IdleTimeoutInMinutes* auf einen anderen Wert als den Standardwert von 30 Minuten festlegen, sollten Sie berücksichtigen, wie lange Sie für Ihre Workloads eine ausgehende Verbindung benötigen. Berücksichtigen Sie auch, dass der Standardtimeoutwert für einen Load Balancer mit der SKU *Standard*, der außerhalb von AKS verwendet wird, 4 Minuten beträgt. Ein *IdleTimeoutInMinutes*-Wert, der Ihre spezifische AKS-Workload genauer widerspiegelt, kann zu einer Verringerung der SNAT-Auslastung beitragen. Hierzu kann es kommen, wenn nicht mehr verwendete Verbindungen vorhanden sind.
+Wenn Sie *IdleTimeoutInMinutes* auf einen anderen Wert als den Standardwert von 30 Minuten festlegen, sollten Sie berücksichtigen, wie lange Sie für Ihre Workloads eine ausgehende Verbindung benötigen. Berücksichtigen Sie auch, dass der Standardtimeoutwert für einen Load Balancer mit der SKU *Standard*, der außerhalb von AKS verwendet wird, 4 Minuten beträgt. Ein *IdleTimeoutInMinutes*-Wert, der Ihre spezifische AKS-Workload genauer widerspiegelt, kann zu einer Verringerung der SNAT-Auslastung beitragen. Hierzu kann es kommen, wenn nicht mehr verwendete Verbindungen vorhanden sind.
 
 > [!WARNING]
 > Durch das Ändern der Werte für *AllocatedOutboundPorts* und *IdleTimeoutInMinutes* kann sich das Verhalten der Ausgangsregel für Ihren Lastenausgleich erheblich ändern. Dies sollte nicht leichtfertig durchgeführt werden, ohne die möglichen Nachteile und die Verbindungsmuster Ihrer Anwendung zu kennen. Lesen Sie unten den Abschnitt zur [SNAT-Problembehandlung][troubleshoot-snat] und die Informationen zu [Load Balancer-Ausgangsregeln][azure-lb-outbound-rules-overview] und [ausgehenden Verbindungen in Azure][azure-lb-outbound-connections], bevor Sie diese Werte aktualisieren, damit Sie mit den Auswirkungen Ihrer Änderungen vertraut sind.
@@ -426,7 +417,7 @@ Informieren Sie sich in der [Dokumentation zum internen AKS-Lastenausgleich](int
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az_extension_add
 [az-extension-update]: /cli/azure/extension#az_extension_update
-[requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
 [service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags
+[maxsurge]: upgrade-cluster.md#customize-node-surge-upgrade

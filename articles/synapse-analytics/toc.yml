@@ -666,6 +666,8 @@ items:
             href: quickstart-create-apache-spark-pool-portal.md
           - name: Erstellen eines Spark-Pools mithilfe von Synapse Studio
             href: quickstart-create-apache-spark-pool-studio.md
+          - name: "Erstellen eines GPU-beschleunigten Apache\_Spark-Pools"
+            href: quickstart-create-apache-gpu-pool-portal.md
       - name: Tutorials
         items:
           - name: "Datenvisualisierung mit Synapse\_Studio-Notebooks"
@@ -688,6 +690,8 @@ items:
             href: ./spark/apache-spark-concepts.md
           - name: "Apache\_Spark-Poolkonfigurationen"
             href: ./spark/apache-spark-pool-configurations.md
+          - name: "GPU-beschleunigte Apache\_Spark-Pools"
+            href: ./spark/apache-spark-gpu-concept.md
           - name: Delta Lake
             href: ./spark/apache-spark-what-is-delta-lake.md
           - name: 'Apache Spark: Verhalten der Autoskalierung'
@@ -746,6 +750,8 @@ items:
                 href: ./spark/apache-spark-performance.md
               - name: Leistungsoptimierung für Apache Spark unter Verwendung von Hyperspace-Indizes
                 href: ./spark/apache-spark-performance-hyperspace.md
+              - name: Beschleunigen von ETL-Vorgängen mit NVIDIA RAPIDS
+                href: ./spark/apache-spark-rapids-gpu.md
           - name: Verwalten und Überwachen
             items:
               - name: "Navigieren auf dem Apache\_Spark-Verlaufsserver für Pools"
@@ -1404,19 +1410,19 @@ items:
                   - name: Assistent für Anomalieerkennung
                     displayName: 'cognitive services, score model'
                     href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-                  - name: Textanalyse mit Apache Spark (MMLSpark)
+                  - name: Textanalyse mit Apache Spark (SynapseML)
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-text-analytics-use-mmlspark.md
-                  - name: Maschinelles Sehen mit Apache Spark (MMLSpark)
+                  - name: Maschinelles Sehen mit Apache Spark (SynapseML)
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-computer-vision-use-mmlspark.md
-                  - name: Formularerkennung mit Apache Spark (MMLSpark)
+                  - name: Formularerkennung mit Apache Spark (SynapseML)
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-form-recognizer-use-mmlspark.md
-                  - name: Übersetzer mit Apache Spark (MMLSpark)
+                  - name: Textübersetzung mit Apache Spark (SynapseML)
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-translator-use-mmlspark.md
-                  - name: Mit Apache Spark (MMLSpark)
+                  - name: Mit Apache Spark (SynapseML)
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
   - name: Data Catalog und Governance

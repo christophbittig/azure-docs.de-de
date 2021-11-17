@@ -131,8 +131,8 @@
           href: how-to-reports.md
     - name: Problembehandlung
       items:
-        - name: Probleme beim Routing
-          href: troubleshoot-route-issues.md
+        - name: "Behandeln von Front\_Door-Problemen"
+          href: ../troubleshoot-issues.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
         - name: Zulässige Zertifizierungsstellen
           href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
         - name: Dateikomprimierung

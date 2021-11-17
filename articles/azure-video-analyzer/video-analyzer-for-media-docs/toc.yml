@@ -39,8 +39,10 @@
       href: language-identification-model.md
     - name: Livestreamanalyse
       href: live-stream-analysis.md
-    - name: Beobachtete Personen
+    - name: Beobachtete Personen in einem Video
       href: observed-people-tracing.md
+    - name: Erkannte Bekleidung von Personen
+      href: detected-clothing.md
     - name: Erkennung von Audioeffekten
       href: audio-effects-detection.md
     - name: Anpassen von Inhaltsmodellen

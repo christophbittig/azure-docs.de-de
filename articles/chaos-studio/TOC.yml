@@ -14,6 +14,8 @@
   items:
     - name: Ausführen und Verwalten von Experimenten
       href: chaos-studio-run-experiment.md
+    - name: Planen eines Experiments
+      href: tutorial-schedule.md
 - name: Beispiele
   items:
     - name: Azure-REST-API

@@ -87,6 +87,8 @@
               href: container-registry-oci-artifacts.md
             - name: Push- und Pull-Vorgänge für ein Helm-Chart
               href: container-registry-helm-repos.md
+            - name: Push- und Pull-Vorgänge für Lieferkettenartefakte (Vorschau)
+              href: container-registry-oras-artifacts.md
             - name: Anzeigen von Repositorys
               href: container-registry-repositories.md
             - name: Importieren von Containerimages

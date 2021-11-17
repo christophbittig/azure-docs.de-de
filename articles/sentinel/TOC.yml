@@ -200,6 +200,8 @@
               href: work-with-anomaly-rules.md
             - name: Verwalten von Vorlagenversionen für Analyseregeln
               href: manage-analytics-rule-templates.md
+            - name: Behandeln von Erfassungsverzögerungen in Analyseregeln
+              href: ingestion-delay.md
             - name: Erhalten von Empfehlungen für die Optimierung
               href: detection-tuning.md
         - name: Aktivieren von User and Entity Behavior Analytics (UEBA)
@@ -344,8 +346,6 @@
           items:
             - name: Verwalten von Hunting-Abfragen mit der REST-API
               href: hunting-with-rest-api.md
-            - name: Verwalten von Watchlists mit der REST-API
-              href: watchlist-with-rest-api.md
             - name: Anreichern von Entitäten mit Geolocationdaten mit der REST-API
               href: geolocation-data-api.md
         - name: 'Defender for Cloud Apps-Warnungen, für die das Onboarding in Microsoft 365 Defender nicht durchgeführt worden ist'

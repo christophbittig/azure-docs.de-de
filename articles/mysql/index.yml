@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 7dc67d91f41915c4f570639bb04fb9fb9cc1c579
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 79331b7a1016c90bfa26f109f975571e99e07056
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131442177"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132551062"
 landingContent:
 - title: Informationen zu Azure Database for MySQL
   linkLists:
@@ -163,8 +163,10 @@ landingContent:
     links:
     - text: Entwerfen einer Datenbank mit Single Server
       url: tutorial-design-database-using-portal.md
-    - text: Erstellen einer Web-App mit Flexible Server im VNET
+    - text: Erstellen einer Web-App mit Flexible Server im VNet
       url: flexible-server/tutorial-webapp-server-vnet.md
+    - text: Bereitstellen einer Spring Boot-App in AKS mit Flexible Server
+      url: flexible-server/tutorial-deploy-springboot-on-aks-vnet.md
     - text: Erstellen einer PHP-Web-App (Laravel) mit Flexible Server
       url: flexible-server/tutorial-php-database-app.md
     - text: Erstellen einer PHP-Web-App (Laravel) mit Single Server

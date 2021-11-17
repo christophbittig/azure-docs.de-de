@@ -118,8 +118,8 @@
       href: front-door-diagnostics.md
     - name: Problembehandlung
       items:
-        - name: Problembehandlung für Routingfehler
-          href: front-door-troubleshoot-routing.md
+        - name: "Behandeln von Front\_Door-Problemen"
+          href: troubleshoot-issues.md
         - name: Zulässige Zertifizierungsstellen
           href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: Verweis
