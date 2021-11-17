@@ -7,12 +7,12 @@ ms.service: azure-video-analyzer
 ms.topic: tutorial
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b3de27af4dab9dd8968f97487cb120dbcd0d08c8
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 341c3df126d0ff949c3ba40e5d679bb2e3147ff6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554486"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488637"
 ---
 # <a name="tutorial-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Tutorial: Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse (Vorschau)
 
@@ -160,7 +160,7 @@ In Ihrer Bereitstellungsvorlagendatei:
 1. Die Erstellungsoptionen (createOptions) von `IpcMode` in den Modulen `avaedge` und `spatialanalysis` müssen identisch und auf **host** festgelegt sein.
 1. Damit der RTSP-Simulator funktioniert, müssen bei Verwendung eines Azure Stack Edge-Geräts Volumegrenzen eingerichtet worden sein.
 
-   1. [Stellen Sie eine Verbindung mit der SMB-Freigabe her](../../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share), und kopieren Sie die [Einzelhandels-Beispielvideodatei](https://lvamedia.blob.core.windows.net/public/retailshop-15fps.mkv) in die lokale Freigabe.
+   1. [Stellen Sie eine Verbindung mit der SMB-Freigabe her](../../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share), und kopieren Sie die [Einzelhandels-Beispielvideodatei](https://avamedia.blob.core.windows.net/public/retailshop-15fps.mkv) in die lokale Freigabe.
 
       > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWMIPP]
 
