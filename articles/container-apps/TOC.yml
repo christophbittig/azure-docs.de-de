@@ -10,6 +10,7 @@
   expanded: true
   items:
     - name: Bereitstellen Ihrer ersten Container-App
+      expanded: true
       items:
         - name: Azure-Portal
           href: quickstart-portal.md

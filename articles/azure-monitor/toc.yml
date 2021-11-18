@@ -650,7 +650,7 @@
         - name: Application Insights-Übersicht
           href: app/app-insights-overview.md
         - name: Häufig gestellte Fragen
-          href: /azure/azure-monitor/faq#application-insights
+          href: ./faq.yml
         - name: SDKs für Application Insights
           items:
             - name: .NET
@@ -791,7 +791,7 @@
                       href: app/java-standalone-sampling-overrides.md
                     - name: Telemetrieprozessoren
                       items:
-                        - name: Übersicht
+                        - name: Überblick
                           href: app/java-standalone-telemetry-processors.md
                         - name: Beispiele
                           href: app/java-standalone-telemetry-processors-examples.md

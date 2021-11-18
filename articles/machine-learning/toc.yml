@@ -457,25 +457,20 @@
               href: how-to-migrate-from-estimators-to-scriptrunconfig.md
             - name: Vertiefendes Lernen
               href: how-to-use-reinforcement-learning.md
-            - name: Arbeiten mit MLflow
+            - name: Trainieren von Experimenten mit MLflow-Projekten
+              displayName: 'log, monitor, metrics, model registry, register'
+              href: how-to-train-mlflow-projects.md
+            - name: Nachverfolgen und Überwachen des Trainings
               items:
+                - name: 'Nachverfolgen, Überwachen und Analysieren von Ausführungen'
+                  displayName: 'cancel, fail, status, child run'
+                  href: how-to-track-monitor-analyze-runs.md
                 - name: Nachverfolgen von Experimenten mit MLflow
                   displayName: 'log, monitor, metrics, model registry, register'
                   href: how-to-use-mlflow.md
                 - name: Nachverfolgen von Azure Databricks-Ausführungen mit MLflow
                   displayName: 'log, monitor, deploy, metrics, databricks'
                   href: how-to-use-mlflow-azure-databricks.md
-                - name: Trainieren von Experimenten mit MLflow-Projekten
-                  displayName: 'log, monitor, metrics, model registry, register'
-                  href: how-to-train-mlflow-projects.md
-                - name: Bereitstellen von MLflow-Modellen
-                  displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
-                  href: how-to-deploy-mlflow-models.md
-            - name: Nachverfolgen und Überwachen des Trainings
-              items:
-                - name: 'Nachverfolgen, Überwachen und Analysieren von Ausführungen'
-                  displayName: 'cancel, fail, status, child run'
-                  href: how-to-track-monitor-analyze-runs.md
                 - name: Protokollieren und Anzeigen von Metriken und Protokolldateien
                   displayName: 'troubleshoot, log, files, tracing, metrics'
                   href: how-to-log-view-metrics.md
@@ -545,6 +540,9 @@
         - name: 'Bereitstellung: wo und wie'
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: Bereitstellen von MLflow-Modellen
+          displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
+          href: how-to-deploy-mlflow-models.md
         - name: Bereitstellen mit Endpunkten
           items:
             - name: Echtzeit

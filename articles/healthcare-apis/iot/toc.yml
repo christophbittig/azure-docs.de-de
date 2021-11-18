@@ -1,7 +1,7 @@
 items:
   - name: IoT-Konnektor
     href: index.yml
-  - name: Übersicht
+  - name: Überblick
     expanded: true
     items:
       - name: Informationen zum IoT-Connector
@@ -19,25 +19,38 @@ items:
     items:
       - name: Datenfluss des IoT-Konnektors
         href: iot-data-flow.md
-      - name: IoT-Connector und Azure Machine Learning Service
+      - name: IoT-Connector und Azure Machine Learning-Dienst
         href: iot-connector-machine-learning.md
       - name: IoT-Connector und Microsoft Power BI
         href: iot-connector-power-bi.md
       - name: IoT-Connector und Microsoft Teams Benachrichtigungen
         href: iot-connector-teams.md
-  - name: Exemplarische Vorgehensweisen
+  - name: Anleitungen
     expanded: true
     items:
       - name: Empfangen von Gerätedaten über Azure IoT Hub
         href: device-data-through-iot-hub.md
       - name: Verwenden von Gerätezuordnungen
-        href: how-to-use-device-mapping-iot.md
-      - name: Verwenden benutzerdefinierter Funktionen
-        href: iot-connector-custom-functions.md
+        expanded: true
+        items:
+          - name: Gerätezuordnungen
+            href: how-to-use-device-mappings.md
+          - name: JsonPathContentTemplate-Zuordnungen
+            href: how-to-use-jsonpath-content-mappings.md
+          - name: Zuordnungen berechneter Funktionen
+            href: how-to-use-calculated-functions-mappings.md
+          - name: CollectionContentTemplate-Zuordnungen
+            href: how-to-use-collection-content-mappings.md
+          - name: IotJsonPathContentTemplate-Zuordnungen
+            href: how-to-use-iot-jsonpath-content-mappings.md
+          - name: IotCentralJsonContentTemplate-Zuordnungen
+            href: how-to-use-iot-central-json-content-mappings.md
+      - name: Verwenden von benutzerdefinierten Funktionen
+        href: how-to-use-custom-functions.md
       - name: Verwenden von FHIR-Zielzuordnungen
-        href: how-to-use-fhir-mapping-iot.md
+        href: how-to-use-fhir-mappings.md
       - name: Anzeigen von Metriken
-        href: iot-display-metrics.md
+        href: how-to-display-metrics.md
   - name: Ressourcen
     expanded: true
     items:

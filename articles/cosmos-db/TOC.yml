@@ -223,7 +223,7 @@
           href: sql/sql-api-python-samples.md
         - name: PowerShell
           href: sql/powershell-samples.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: sql/cli-samples.md
         - name: Azure Resource Manager
           href: sql/templates-samples-sql.md
@@ -624,7 +624,7 @@
               href: sql/change-feed-design-patterns.md
             - name: Lesen des Änderungsfeeds
               href: sql/read-change-feed.md
-            - name: SQL/Änderungsfeedprozessor
+            - name: Change Feed Processor
               href: sql/change-feed-processor.md
             - name: Auslösen von Azure Functions
               displayName: change feed

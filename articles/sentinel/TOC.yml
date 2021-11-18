@@ -42,7 +42,7 @@
         - name: Rollen und Berechtigungen
           href: roles.md
         - name: Kosten und Abrechnung
-          href: azure-sentinel-billing.md
+          href: billing.md
         - name: Erweitern von Microsoft Sentinel auf Arbeitsbereiche und Mandanten
           href: extend-sentinel-across-workspaces-tenants.md
         - name: Sicherheitsbaseline
@@ -68,7 +68,7 @@
             - name: 'ASIM: Inhalt'
               href: normalization-content.md
         - name: Klassifizieren von Daten mit Entitäten
-          href: entities-in-azure-sentinel.md
+          href: entities.md
     - name: Bedrohungsanalyse
       items:
         - name: Grundlegendes zu Threat Intelligence in Microsoft Sentinel
@@ -92,7 +92,7 @@
     - name: SOAR
       items:
         - name: 'Orchestrierung, Automatisierung und Reaktion'
-          href: automation-in-azure-sentinel.md
+          href: automation.md
         - name: Automatisierungsregeln
           href: automate-incident-handling-with-automation-rules.md
         - name: Playbooks
@@ -110,7 +110,7 @@
         - name: Beispielentwürfe für Arbeitsbereiche
           href: sample-workspace-designs.md
         - name: Planen und Verwalten von Kosten
-          href: azure-sentinel-billing.md
+          href: billing.md
         - name: Verwalten des Arbeitsbereichszugriffs
           href: resource-context-rbac.md
     - name: Migrieren zu Microsoft Sentinel
@@ -133,7 +133,7 @@
             - name: Azure Active Directory
               href: connect-azure-active-directory.md
             - name: Microsoft Defender für Cloud
-              href: connect-azure-security-center.md
+              href: connect-defender-for-cloud.md
             - name: "Microsoft\_365 Defender"
               href: connect-microsoft-365-defender.md
             - name: Windows-Sicherheitsereignisse

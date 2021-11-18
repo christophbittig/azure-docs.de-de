@@ -9,12 +9,12 @@ metadata:
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 11/08/2021
-  ms.openlocfilehash: 2dd98032c932f6a4dbe280ca823b7d6aa67f059c
-  ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+  ms.openlocfilehash: 39397cee65d48d44896c248620a4ac5d3d65283e
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/16/2021
-  ms.locfileid: "132520824"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132704767"
 landingContent:
 - title: Informationen zu Azure Container Apps
   linkLists:
@@ -30,8 +30,6 @@ landingContent:
     links:
     - text: 'Bereitstellen Ihrer ersten Container-App: Azure CLI'
       url: ./get-started.md
-  - linkListType: quickstart
-    links:
     - text: 'Bereitstellen Ihrer ersten Container-App: Azure-Portal'
       url: ./quickstart-portal.md
   - linkListType: concept
