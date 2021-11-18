@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.date: 11/10/2021
+ms.date: 11/16/2021
 ms.author: jasteppe
-ms.openlocfilehash: 0e4d6c23be9911fe4d3d073540467fd101e7671e
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: b74b3c1aefe2c7dd05421385e672385196aab15e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132337260"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719427"
 ---
 # <a name="what-is-iot-connector"></a>Was ist der IoT-Connector?
 
@@ -52,14 +52,14 @@ Die Gruppierungen nach Geräteidentität und Messungstyp ermöglichen die Verwen
 
 ## <a name="transform"></a>Transformieren
 
-In der Transformationsphase werden ge gruppierte normalisierte Nachrichten über FHIR-Zielzuordnungsvorlagen verarbeitet. Nachrichten, die mit einem Vorlagentyp übereinstimmen, werden wie durch die Zuordnung angegeben in FHIR-basierte Observation-Ressourcen transformiert.
+In der Phase Transformieren werden ge gruppierte normalisierte Nachrichten über FHIR-Zielzuordnungsvorlagen verarbeitet. Nachrichten, die mit einem Vorlagentyp übereinstimmen, werden wie durch die Zuordnung angegeben in FHIR-basierte Observation-Ressourcen transformiert.
 
 An diesem Punkt wird die Geräteressource zusammen mit der zugehörigen Patient-Ressource auch mithilfe der in der Nachricht angegebenen Geräte-ID aus dem FHIR-Dienst abgerufen. Diese Ressourcen werden als Verweis auf die zu erstellende Observation-Ressource hinzugefügt.
 
 > [!NOTE]
 >Alle Identitätssyntaufnahmen werden nach der Lösung zwischengespeichert, um die Auslastung des FHIR-Diensts zu verringern. Wenn Sie gerätespezifische Geräte mit mehreren Patienten wiederverwenden möchten, wird empfohlen, eine für den Patienten spezifische virtuelle Geräteressource zu erstellen und die ID des virtuellen Geräts in der Nachrichtennutzlast zu senden. Das virtuelle Gerät kann als übergeordnetes Element mit der tatsächlichen Geräteressource verknüpft werden.
 
-Wenn im FHIR-Dienst keine Geräteressource für eine bestimmte Geräte-ID vorhanden ist, hängt das Ergebnis vom Wert des Auflösungstyps ab, der zum Zeitpunkt der Erstellung festgelegt wurde. Wenn dies auf Suchen festgelegt ist, wird die spezifische Nachricht ignoriert, und die Pipeline wird weiterhin andere eingehende Nachrichten verarbeiten. Wenn erstellen festgelegt ist, erstellt der IoT-Connectordienst im FHIR-Dienst ein unerschädbares Gerät und Patientenressourcen.
+Wenn im FHIR-Dienst keine Geräteressource für eine bestimmte Geräte-ID vorhanden ist, hängt das Ergebnis vom Wert des Auflösungstyps ab, der zum Zeitpunkt der Erstellung festgelegt wurde. Wenn nachschlagen festgelegt ist, wird die spezifische Nachricht ignoriert, und die Pipeline wird weiterhin andere eingehende Nachrichten verarbeiten. Wenn erstellen festgelegt ist, erstellt der IoT-Connectordienst im FHIR-Dienst ein unerschädbares Gerät und Patientenressourcen.
 
 ## <a name="persist"></a>Speichern
 
@@ -70,9 +70,9 @@ Sobald die Observation FHIR-Ressource in der Transformationsphase generiert wurd
 Weitere Informationen zu IoT-Connectorzuordnungen finden Sie in den folgenden Leitfäden:
 
 >[!div class="nextstepaction"]
->[Verwenden von Gerätezuordnungen](how-to-use-device-mapping-iot.md)
+>[Verwenden von Gerätezuordnungen](how-to-use-device-mappings.md)
 
 >[!div class="nextstepaction"]
->[Verwenden von FHIR-Zielzuordnungen](how-to-use-fhir-mapping-iot.md)
+>[Verwenden von FHIR-Zielzuordnungen](how-to-use-fhir-mappings.md)
 
 (FHIR&#174;) ist eine registrierte Marke von [HL7](https://hl7.org/fhir/) und wird mit der Berechtigung von HL7 verwendet.

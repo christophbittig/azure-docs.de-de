@@ -1,19 +1,19 @@
 ---
 title: Empfangen von Gerätedaten über Azure IoT Hub – Azure Healthcare-APIs
-description: In diesem Tutorial erfahren Sie, wie Sie das Routing von Gerätedaten von einem IoT Hub in den FHIR-Dienst über den IoT-Connector aktivieren.
+description: In diesem Tutorial erfahren Sie, wie Sie das Routing von Gerätedaten IoT Hub in den FHIR-Dienst über den IoT-Connector aktivieren.
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 11/10/2021
+ms.date: 11/16/2021
 ms.author: jasteppe
-ms.openlocfilehash: f12c5efe25f48ae16e4f59159936627a27b47212
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 9c4dd42d81374f75beb66f0564a2fb2b0fc38c01
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132283465"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709213"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Tutorial: Empfangen von Gerätedaten über Azure IoT Hub
 
@@ -25,7 +25,7 @@ Der IoT-Connector bietet die Möglichkeit, Integritätsdaten von verschiedenen I
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein aktives Azure-Abonnement. ([Kostenloses Abonnement erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
-- FHIR-Dienstressource mit mindestens einem IoT-Connector: [Bereitstellen eines IoT-Connectors mit Azure-Portal](deploy-iot-connector-in-azure.md)
+- FHIR-Dienstressource mit mindestens einem IoT-Connector– [Bereitstellen des IoT-Connectors mit Azure-Portal](deploy-iot-connector-in-azure.md)
 - Azure IoT Hub-Ressource, die mit mindestens einem echten oder simulierten Gerät verbunden ist. Weitere Informationen finden Sie unter [Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Lesen der Telemetriedaten mit einer Back-End-Anwendung (.NET)](../../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp).
 
 > [!TIP]
@@ -93,11 +93,11 @@ Verwenden Sie Ihr (echtes oder simuliertes) Gerät, um die unten gezeigte exempl
 }
 ```
 > [!IMPORTANT]
-> Stellen Sie sicher, dass Sie die [](how-to-use-fhir-mapping-iot.md) Gerätenachricht senden, die den mit Ihrem IoT-Connector konfigurierten Zuordnungsvorlagen entspricht.
+> Stellen Sie sicher, dass Sie die Gerätenachricht senden, die den mit [Ihrem](how-to-use-fhir-mappings.md) IoT-Connector konfigurierten Zuordnungsvorlagen entspricht.
 
 ## <a name="view-device-data-in-fhir-service"></a>Anzeigen von Gerätedaten im FHIR-Dienst
 
-Sie können die vom IoT-Connector erstellten FHIR-Beobachtungsressourcen im FHIR-Dienst mithilfe von Postman anzeigen. Weitere Informationen finden Sie unter Zugreifen auf den [FHIR-Dienst mithilfe von Postman,](./../use-postman.md)und senden Sie eine Anforderung an , um FHIR-Beobachtungsressourcen mit dem In der obigen Beispielnachricht übermittelten Heart-Rate-Wert `GET` anzeigen zu `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` lassen.
+Sie können die vom IoT-Connector erstellten FHIR-Beobachtungsressourcen im FHIR-Dienst mithilfe von Postman anzeigen. Weitere Informationen finden Sie unter Zugreifen auf den [FHIR-Dienst mithilfe von Postman,](./../use-postman.md)und senden Sie eine Anforderung an , um FHIR-Beobachtungsressourcen mit dem In der obigen Beispielnachricht übermittelten Heart rate-Wert `GET` `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` anzeigen zu lassen.
 
 > [!TIP]
 > Stellen Sie sicher, dass Ihr Benutzer über den entsprechenden Zugriff auf die Datenebene des FHIR-Diensts verfügt. Verwenden Sie die [rollenbasierte Zugriffssteuerung in Azure](../azure-api-for-fhir/configure-azure-rbac.md) (Azure Role-Based Access Control, Azure RBAC), um die erforderlichen Datenebenenrollen zuzuweisen.
