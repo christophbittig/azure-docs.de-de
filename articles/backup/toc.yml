@@ -11,7 +11,7 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Sichern einer VM – Portal
+    - name: 'Sichern einer VM: Azure-Portal'
       href: quick-backup-vm-portal.md
     - name: Sichern einer VM – PowerShell
       href: quick-backup-vm-powershell.md
@@ -20,6 +20,8 @@
     - name: 'Sichern eines virtuellen Computers: ARM-Vorlage'
       displayName: Resource Manager
       href: quick-backup-vm-template.md
+    - name: 'Sichern einer VM: Bicep-Vorlage'
+      href: quick-backup-vm-bicep-template.md
 - name: Tutorials
   items:
     - name: Sichern von mehreren Azure-VMs

@@ -39,16 +39,14 @@
       href: service-dependencies.md
     - name: Standortbedingungen
       href: location-condition.md
+    - name: Workloadidentitäten
+      href: workload-identity.md
     - name: Filtern nach Geräten
       href: concept-condition-filters-for-devices.md
     - name: Was-wäre-wenn-Tool
       href: what-if-tool.md
     - name: Fortlaufende Zugriffsevaluierung
       href: concept-continuous-access-evaluation.md
-    - name: Benutzerdefinierte Steuerelemente
-      href: controls.md
-    - name: Migration klassischer Richtlinien
-      href: policy-migration.md
 - name: Anleitungen
   expanded: true
   items:
@@ -58,40 +56,34 @@
       href: howto-conditional-access-apis.md
     - name: Allgemeine Richtlinien für bedingten Zugriff
       items:
-        - name: Blockieren älterer Authentifizierungsmethoden
-          href: howto-conditional-access-policy-block-legacy.md
         - name: Vorschreiben der MFA für Administratoren
           href: howto-conditional-access-policy-admin-mfa.md
-        - name: Vorschreiben der MFA für die Azure-Verwaltung
-          href: howto-conditional-access-policy-azure-management.md
-        - name: Anfordern der MFA für alle Benutzer
-          href: howto-conditional-access-policy-all-users-mfa.md
-        - name: Risikobasierter bedingter Zugriff beim Anmelden
-          href: howto-conditional-access-policy-risk.md
-        - name: Risikobasierter bedingter Zugriff für Benutzer
-          href: howto-conditional-access-policy-risk-user.md
         - name: Sichere Registrierung von Sicherheitsinformationen
           href: howto-conditional-access-policy-registration.md
+        - name: Blockieren älterer Authentifizierungsmethoden
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: Anfordern der MFA für alle Benutzer
+          href: howto-conditional-access-policy-all-users-mfa.md
+        - name: Vorschreiben der MFA für die Azure-Verwaltung
+          href: howto-conditional-access-policy-azure-management.md
+        - name: Erzwingen der MFA für die Risikoanmeldung
+          href: howto-conditional-access-policy-risk.md
+        - name: Erzwingen der Kennwortänderung für Risikobenutzer
+          href: howto-conditional-access-policy-risk-user.md
+        - name: Erzwingen von konformen Geräten oder eingebundenen Hybridgeräten
+          href: howto-conditional-access-policy-compliant-device.md
+        - name: Erzwingen genehmigter Apps oder einer App-Schutzrichtlinie
+          href: howto-policy-approved-app-or-app-protection.md
         - name: Blockieren des Zugriffs nach Standort
           href: howto-conditional-access-policy-location.md
-        - name: Anfordern von kompatiblen Geräten
-          href: howto-conditional-access-policy-compliant-device.md
         - name: Zugriff blockieren
           href: howto-conditional-access-policy-block-access.md
     - name: Konfigurieren von Resilienzstandardwerten
       href: resilience-defaults.md
-    - name: Blockieren älterer Authentifizierungsmethoden
-      href: block-legacy-authentication.md
     - name: Konfigurieren des reinen Berichtsmodus
       href: howto-conditional-access-insights-reporting.md
-    - name: Vorschreiben der Verwendung genehmigter Client-Apps
-      href: app-based-conditional-access.md
-    - name: App-Schutzrichtlinie erforderlich
-      href: app-protection-based-conditional-access.md
-    - name: Vorschreiben der Verwendung verwalteter Geräte
-      href: require-managed-devices.md
-    - name: Vorschreiben der Verwendung der MFA für Zugriffsversuche von nicht vertrauenswürdigen Netzwerken
-      href: untrusted-networks.md
+    - name: Blockieren älterer Authentifizierungsmethoden
+      href: block-legacy-authentication.md
     - name: Vorschreiben der Verwendung von Nutzungsbedingungen
       href: terms-of-use.md
     - name: Steuerelemente für Anmeldehäufigkeit und Browserpersistenz
@@ -108,8 +100,14 @@
           href: howto-continuous-access-evaluation-troubleshoot.md
         - name: Häufig gestellte Fragen
           href: faqs.md
-    - name: Migrieren von klassischen Richtlinien
-      href: policy-migration-mfa.md
+    - name: Benutzerdefinierte Steuerelemente
+      href: controls.md
+    - name: Klassische Richtlinien
+      items:
+        - name: Migration klassischer Richtlinien
+          href: policy-migration.md
+        - name: Migrieren von klassischen Richtlinien
+          href: policy-migration-mfa.md
 - name: Verweis
   items:
     - name: Graph-APIs (Betaversion)

@@ -162,8 +162,12 @@
           href: howto-password-ban-bad-on-premises-faq.yml
         - name: Verlauf der Agent-Version
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Anstoßen der Einrichtung von Microsoft Authenticator (Vorschau)
-      href: how-to-nudge-authenticator-app.md
+    - name: Ausführen einer Registrierungskampagne
+      href: how-to-mfa-registration-campaign.md
+    - name: Verwenden des Nummernabgleichs (Vorschau)
+      href: how-to-mfa-number-match.md
+    - name: Verwenden eines zusätzlichen Kontexts (Vorschau)
+      href: how-to-mfa-additional-context.md
     - name: Verwenden der von Microsoft verwalteten Einstellungen
       href: how-to-mfa-microsoft-managed.md
     - name: Verwenden eines befristeten Zugriffspasses (Vorschau)

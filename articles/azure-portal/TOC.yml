@@ -50,22 +50,20 @@
           href: supportability/how-to-create-azure-support-request.md
         - name: Verwalten einer Azure-Supportanfrage
           href: supportability/how-to-manage-azure-support-request.md
-        - name: Anfordern der Kontingenterhöhung
+    - name: Anfordern der Kontingenterhöhung
+      items:
+        - name: Erhöhen der vCPU-Kontingente
           items:
-            - name: Erhöhen der vCPU-Grenzwerte für Compute
-              items:
-                - name: Ressourcen-Manager-Bereitstellungsmodell
-                  items:
-                    - name: Erhöhen des vCPU-Grenzwerts für die VM-Serie
-                      href: supportability/per-vm-quota-requests.md
-                    - name: Erhöhen des Grenzwerts der gesamten regionalen vCPUs
-                      href: supportability/regional-quota-requests.md
-                    - name: Erhöhung des Spotkontingentlimits
-                      href: supportability/low-priority-quota.md
-                - name: Klassisches Bereitstellungsmodell
-                  href: supportability/classic-deployment-model-quota-increase-requests.md
-            - name: Erhöhen der Grenzwerte für Netzwerke
-              href: supportability/networking-quota-requests.md
+            - name: Erhöhen der vCPU-Kontingente der VM-Familie
+              href: supportability/per-vm-quota-requests.md
+            - name: Erhöhen regionaler vCPU-Kontingente
+              href: supportability/regional-quota-requests.md
+            - name: Erhöhen der Spot-vCPU-Kontingente
+              href: supportability/spot-quota.md
+        - name: Erhöhen der vCPU-Kontingente für die klassische Bereitstellung
+          href: supportability/classic-deployment-model-quota-increase-requests.md
+        - name: Erhöhen der Netzwerkkontingente
+          href: supportability/networking-quota-requests.md
     - name: Behandeln von Problemen mit dem Azure-Portal
       items:
         - name: Wiederherstellen eines gelöschten Dashboards

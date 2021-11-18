@@ -193,30 +193,32 @@
                   href: azure-container-plan-availability.md
                 - name: Planen der technischen Konfiguration
                   href: azure-container-plan-technical-configuration.md
-    - name: Azure-VM-Angebote
+    - name: Angebot für virtuelle Azure-Computer
       items:
         - name: Planen des Angebots
           href: marketplace-virtual-machines.md
         - name: Erstellen des Angebots
           items:
             - name: Erstellen des Angebots
-              href: azure-vm-create.md
+              href: azure-vm-offer-setup.md
             - name: Eigenschaften
-              href: azure-vm-create-properties.md
+              href: azure-vm-properties.md
             - name: Angebotsliste
-              href: azure-vm-create-listing.md
+              href: azure-vm-offer-listing.md
             - name: Vorschauzielgruppe
-              href: azure-vm-create-preview.md
+              href: azure-vm-preview-audience.md
             - name: Plans
-              href: azure-vm-create-plans.md
-        - name: Verkaufen über CSPs
-          href: azure-vm-create-resell-csp.md
+              href: azure-vm-plan-overview.md
+            - name: Verkaufen über CSPs
+              href: azure-vm-resell-csp.md
+            - name: Konfigurieren einer Testversion
+              href: azure-vm-test-drive.md
         - name: Erstellen technischer Ressourcen
           items:
             - name: Erstellen eines virtuellen Computers aus einer genehmigten Basis
-              href: azure-vm-create-using-approved-base.md
+              href: azure-vm-use-approved-base.md
             - name: Erstellen eines virtuellen Computers mithilfe eines eigenen Images
-              href: azure-vm-create-using-own-image.md
+              href: azure-vm-use-own-image.md
             - name: Testen eines VM-Images
               href: azure-vm-image-test.md
             - name: Abrufen des SAS-URI
@@ -224,9 +226,9 @@
             - name: SAS-Fehlermeldungen
               href: azure-vm-sas-failure-messages.md
             - name: Häufig gestellte Fragen zur VM-Erstellung
-              href: azure-vm-create-faq.yml
+              href: azure-vm-faq.yml
             - name: Behandeln von Problemen bei der VM-Zertifizierung
-              href: azure-vm-create-certification-faq.yml
+              href: azure-vm-certification-faq.yml
     - name: Beratungsdienstangebot
       items:
         - name: Planen des Angebots
@@ -239,7 +241,7 @@
           href: create-consulting-service-offer-listing.md
         - name: Preise und Verfügbarkeit
           href: create-consulting-service-pricing-availability.md
-    - name: Dynamics 365-Angebote
+    - name: Dynamics 365-Angebot
       items:
         - name: Planen Ihres Angebots
           href: marketplace-dynamics-365.md
@@ -321,7 +323,7 @@
                   href: iot-edge-plan-availability.md
                 - name: Planen der technischen Konfiguration
                   href: iot-edge-plan-technical-configuration.md
-    - name: Angebote für verwaltete Dienste
+    - name: Angebot eines verwalteten Diensts
       items:
         - name: Planen des Angebots
           href: plan-managed-service-offer.md
@@ -335,7 +337,7 @@
           href: create-managed-service-offer-preview.md
         - name: Pläne erstellen
           href: create-managed-service-offer-plans.md
-    - name: "Power\_BI-App-Angebote"
+    - name: Power BI-App-Angebot
       items:
         - name: Planen des Angebots
           href: marketplace-power-bi.md
@@ -351,7 +353,7 @@
               href: power-bi-app-technical-configuration.md
             - name: Ergänzender Inhalt
               href: power-bi-app-supplemental-content.md
-    - name: "Angebote für Power\_BI-Visuals"
+    - name: "Angebot für Power\_BI-Visuals"
       items:
         - name: Planen des Angebots
           href: marketplace-power-bi-visual.md
@@ -371,7 +373,7 @@
               href: power-bi-visual-manage-names.md
         - name: Häufig gestellte Fragen zur Migration zum kommerziellen Marketplace
           href: power-bi-visual-faq.yml
-    - name: SaaS-Angebote
+    - name: SaaS-Angebot
       items:
         - name: Planen des Angebots
           href: plan-saas-offer.md
@@ -409,7 +411,7 @@
       href: review-publish-offer.md
     - name: Aktualisieren vorhandener Angebote
       href: update-existing-offer.md
-- name: Verkaufen und Vermarkten Ihrer Angebote
+- name: Verkaufen und Vermarkten Ihres Angebots
   items:
     - name: Bewährte Marketingmethoden
       href: gtm-marketing-best-practices.md

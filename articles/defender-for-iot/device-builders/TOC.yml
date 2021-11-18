@@ -19,7 +19,7 @@
     - name: Installieren eines Micro-Agents für Defender für IoT (Vorschau)
       displayName: 'package, authentication, methods, certificate, authenticate, version'
       href: quickstart-standalone-agent-binary-installation.md
-    - name: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender für Cloud (Vorschau)
+    - name: Erstellen eines Micro-Agent-Modulzwillings für Defender für IoT (Vorschau)
       href: quickstart-create-micro-agent-module-twin.md
     - name: "Konfigurieren des Defender-IoT-Micro-Agents für Azure\_RTOS"
       href: quickstart-azure-rtos-security-module.md
@@ -155,7 +155,7 @@
           href: how-to-investigate-device.md
     - name: Problembehandlung
       items:
-        - name: Problembehandlung für den IoT-Micro-Agent für Defender für Cloud (Vorschau)
+        - name: Problembehandlung für den Micro-Agent für Defender für IoT (Vorschau)
           displayName: 'service status, review logs'
           href: troubleshoot-defender-micro-agent.md
 - name: Verweis
