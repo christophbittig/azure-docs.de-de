@@ -200,7 +200,11 @@
         - name: Azure Monitor Insights
           href: azure-monitor-insights.md
         - name: Konfigurieren von S2S-VPN-Paketerfassungen
-          href: packet-capture-site-to-site-powershell.md
+          items:
+            - name: Azure-Portal
+              href: packet-capture-site-to-site-portal.md
+            - name: PowerShell
+              href: packet-capture-site-to-site-powershell.md
 - name: Verweis
   items:
     - name: Azure PowerShell
