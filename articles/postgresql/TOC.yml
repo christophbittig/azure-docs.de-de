@@ -517,6 +517,8 @@
                   href: flexible-server/concepts-intelligent-tuning.md
         - name: Replication
           href: flexible-server/concepts-logical.md
+        - name: "Azure\_Advisor-Empfehlungen"
+          href: flexible-server/concepts-azure-advisor-recommendations.md
     - name: Problembehandlung
       items:
         - name: Behandeln von CLI-Fehlern

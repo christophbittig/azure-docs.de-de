@@ -12,6 +12,8 @@
     - name: Installieren von Bicep-Tools
       href: install.md
       displayName: nightly
+    - name: Behandeln von Problemen bei der Installation
+      href: installation-troubleshoot.md
 - name: Schnellstarts
   items:
     - name: 'Erstellen von Bicep-Vorlagen: VS Code'

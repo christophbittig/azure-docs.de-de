@@ -4,20 +4,16 @@ summary: In diesem Artikel werden Anwendungsfälle für die ersten Schritte mit 
 metadata:
   title: Dokumentation zu Microsoft Sentinel
   description: In diesem Artikel werden Anwendungsfälle und Szenarien für die ersten Schritte mit Microsoft Sentinel vorgestellt. Erkennen und stoppen Sie Bedrohungen, bevor sie Schaden anrichten – mit einer SIEM-Lösung, die für die moderne Welt neu erfunden wurde. Mit Microsoft Sentinel können Sie Ihr gesamtes Unternehmen sozusagen aus der Vogelperspektive beobachten. Erforderliche Anzahl; in den Suchergebnissen angezeigte Artikelbeschreibung < 160 Zeichen
-  services: sentinel
-  ms.service: sentinel
-  ms.subservice: microsoft-sentinel
   ms.topic: landing-page
-  ms.collection: collection
   author: yelevin
   ms.author: yelevin
   ms.date: 11/09/2021
-  ms.openlocfilehash: d6a4d50dfeceb4769e377b46b35b949d7a890653
-  ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+  ms.openlocfilehash: 6c3159812641d431ab047fd3084d4f07d18b3a84
+  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/16/2021
-  ms.locfileid: "132518468"
+  ms.lasthandoff: 11/18/2021
+  ms.locfileid: "132760198"
 landingContent:
 - title: Informationen zu Microsoft Sentinel
   linkLists:

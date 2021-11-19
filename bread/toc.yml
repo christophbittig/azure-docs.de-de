@@ -286,6 +286,9 @@
         - name: Verwaltung
           tocHref: /azure/azure-resource-manager/management/
           topicHref: /azure/azure-resource-manager/management/
+        - name: Problembehandlung
+          tocHref: /azure/azure-resource-manager/troubleshooting/
+          topicHref: /azure/azure-resource-manager/troubleshooting/
         - name: Verwaltete Anwendungen
           tocHref: /azure/azure-resource-manager/managed-applications/
           topicHref: /azure/azure-resource-manager/managed-applications/

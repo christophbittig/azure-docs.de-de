@@ -168,13 +168,13 @@
       items:
         - name: 'Wählen Sie eine Ebene aus:'
           href: search-sku-tier.md
-        - name: Planen der Kapazität
-          href: search-capacity-planning.md
         - name: Erstellen von Diensten
           href: search-create-service-portal.md
+        - name: Planen der Kapazität
+          href: search-capacity-planning.md
         - name: Diensteinschränkungen
           href: search-limits-quotas-capacity.md
-        - name: Verwalten von Kosten
+        - name: Planen und Verwalten von Kosten
           href: search-sku-manage-costs.md
         - name: Verfügbarkeit und Wiederherstellung
           href: search-performance-optimization.md

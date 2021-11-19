@@ -1,9 +1,9 @@
 items:
-  - name: Azure API for FHIR dokumentation
+  - name: dokumentation zu Azure API for FHIR
     href: ./azure-api-for-fhir/index.yml
   - name: Dokumentation zu Azure Healthcare-APIs (Vorschauversion)
     href: index.yml
-  - name: Übersicht
+  - name: Überblick
     expanded: true
     items:
       - name: Informationen zu Gesundheits-APIs
@@ -21,21 +21,28 @@ items:
   - name: Schnellstarts
     expanded: true
     items:
-      - name: Bereitstellen von Gesundheits-APIs
+      - name: Bereitstellen von ApIs für das Gesundheitswesen
         href: healthcare-apis-quickstart.md
   - name: Anleitungen
     expanded: true
     items:
-      - name: Authentifizierung und Autorisierung
-        href: authentication-authorization.md
-      - name: Zugreifen auf den FHIR-Dienst mit Postman
+      - name: Verwalten des Benutzerzugriffs und der Berechtigungen
+        expanded: true
+        items:
+          - name: Authentifizierung und Autorisierung
+            href: authentication-authorization.md
+          - name: Registrieren einer Clientanwendung
+            href: register-application.md
+          - name: Konfigurieren der Azure RBAC
+            href: configure-azure-rbac.md
+          - name: Abrufen eines Zugriffstokens
+            href: get-access-token.md
+      - name: Zugriff mit Postman
         href: use-postman.md
       - name: Zugriff mit cURL
         href: using-curl.md
       - name: Zugriff mithilfe des REST-Clients
         href: using-rest-client.md
-      - name: Registrieren von Anwendungen
-        href: register-application.md
       - name: Protokollierung
         href: logging.md
   - name: Konzepte
@@ -49,5 +56,5 @@ items:
         href: release-notes.md
       - name: Häufig gestellte Fragen
         href: healthcare-apis-faqs.md
-      - name: GitHub-Projekte
+      - name: GitHub Projekte
         href: github-projects.md

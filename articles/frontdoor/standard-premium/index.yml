@@ -10,12 +10,12 @@ metadata:
   author: duongau
   ms.author: duau
   ms.date: 02/18/2020
-  ms.openlocfilehash: c345f74f688641fee550c622e83328689a79bb31
-  ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+  ms.openlocfilehash: 35263f4ae7b49d5d97dbe9713208ab9267c1a8be
+  ms.sourcegitcommit: 11ca7ba5a017429c22a6b0bc02acb70b83a2984a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112006867"
+  ms.lasthandoff: 11/19/2021
+  ms.locfileid: "132814182"
 landingContent:
 - title: Informationen zu Azure Front Door Standard/Premium (Vorschau)
   linkLists:
@@ -54,7 +54,7 @@ landingContent:
     - text: Origin
       url: concept-origin.md
     - text: Integritätstests
-      url: concept-health-probes.md
+      url: /azure/frontdoor/front-door-health-probes
   - linkListType: how-to-guide
     links:
     - text: Konfigurieren einer Ursprungsgruppe
@@ -82,7 +82,7 @@ landingContent:
     - text: WAF in Azure Front Door Standard/Premium
       url: ../../web-application-firewall/afds/afds-overview.md
     - text: DDoS-Schutz
-      url: concept-ddos.md
+      url: /azure/frontdoor/front-door-ddos
   - linkListType: how-to-guide
     links:
     - text: Aktivieren von Private Link

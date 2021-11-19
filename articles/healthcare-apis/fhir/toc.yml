@@ -1,7 +1,7 @@
 items:
   - name: FHIR-Dienst
     href: index.yml
-  - name: Übersicht
+  - name: Überblick
     items:
       - name: Informationen zum FHIR-Dienst
         href: overview.md
@@ -34,6 +34,12 @@ items:
   - name: Anleitungen
     expanded: true
     items:
+      - name: Zugriff mit Postman
+        href: ../use-postman.md
+      - name: Zugriff mit cURL
+        href: ../using-curl.md
+      - name: Zugriff mithilfe des REST-Clients
+        href: ../using-rest-client.md
       - name: 'Suchen,'
         expanded: true
         items:
@@ -57,19 +63,8 @@ items:
       - name: Konfigurieren von Einstellungen
         expanded: true
         items:
-          - name: Konfigurieren der RBAC
-            href: configure-azure-rbac-for-fhir.md
           - name: Konfigurieren von CORS
             href: configure-cross-origin-resource-sharing.md
-      - name: Verwenden von Azure Active Directory (AAD) für den FHIR-Dienst
-        expanded: true
-        items:
-          - name: AAD für den FHIR-Dienst
-            href: azure-active-directory-identity-configuration.md
-          - name: Überprüfung von Zugriffstoken
-            href: fhir-service-access-token-validation.md
-          - name: Abrufen des Zugriffstokens mithilfe der CLI
-            href: get-healthcare-apis-access-token-cli.md
       - name: Diagnoseprotokollierung
         expanded: true
         items:
@@ -77,6 +72,8 @@ items:
             href: fhir-service-diagnostic-logs.md
   - name: Konzepte
     items:
+      - name: Automatische Skalierung des FHIR-Diensts
+        href: fhir-service-autoscale.md
       - name: Funktionen der FHIR-Rest-API
         href: fhir-rest-api-capabilities.md
   - name: Ressourcen
