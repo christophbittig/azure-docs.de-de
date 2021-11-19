@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 07/20/2021
 ms.author: baselden
 ms.custom: references_regions
-ms.openlocfilehash: d724c41fd16ea762fc96c36e67fe4a00a5b5e72d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fdf6ef5910e31dc21929cf484b2b1ad580badef7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354976"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319718"
 ---
 # <a name="plan-your-azure-active-directory-verifiable-credentials-issuance-solution-preview"></a>Planen Ihrer Lösung für die Ausstellung von Azure Active Directory-Nachweisen (Vorschau)
 
@@ -286,7 +286,7 @@ Für die Sicherheitsprotokollierung und -überwachung empfehlen wir Folgendes:
 
 * Aktivieren Sie die Protokollierung Ihres Azure Storage-Kontos, um Konfigurationsänderungen zu überwachen und entsprechende Warnungen zu senden. Weitere Informationen finden Sie unter [Überwachen von Azure Blob Storage](../../storage/blobs/monitor-blob-storage.md).
 
-* Archivieren Sie Protokolle in einem SIEM-System (Security Information & Event Management) wie [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel) zur Langzeitaufbewahrung.
+* Archivieren Sie Protokolle in einem SIEM-System (Security Information & Event Management) wie [Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel) zur Langzeitaufbewahrung.
 
 * Minimieren von Spoofingrisiken mithilfe der folgenden Möglichkeiten
 

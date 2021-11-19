@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 2f81cd3e37b6fefea1a76a8a4bb50c756ff1fca4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: afe4ce82b779a6f8913ed61a44f3cf15992ba7e1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131463523"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335516"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
 
@@ -102,7 +102,7 @@ Wenn Ihre Anwendung [Dateiuploads](https://owasp.org/www-community/vulnerabiliti
 
 Antischadsoftware-Schutz hilft dabei, Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. Sie können [Microsoft Antimalware](../fundamentals/antimalware.md) oder die Endpunktschutz-Lösung eines Microsoft-Partners ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) und [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) installieren.
 
-[Microsoft Antimalware](../fundamentals/antimalware.md) umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Schadsoftwarebehandlung, Signaturupdates, Engine-Updates, Beispielberichte und Sammlung von Ausschlussereignissen. Sie können Microsoft Antimalware und Partnerlösungen zur Vereinfachung der Bereitstellung und für integrierte Erkennungen (Warnungen und Vorfälle) in [Azure Security Center](../../security-center/security-center-partner-integration.md) integrieren.
+[Microsoft Antimalware](../fundamentals/antimalware.md) umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Schadsoftwarebehandlung, Signaturupdates, Engine-Updates, Beispielberichte und Sammlung von Ausschlussereignissen. Sie können Microsoft Antimalware und Partnerlösungen zur Vereinfachung der Bereitstellung und für integrierte Erkennungen (Warnungen und Vorfälle) in [Microsoft Defender für Cloud](../../security-center/security-center-partner-integration.md) integrieren.
 
 ### <a name="dont-cache-sensitive-content"></a>Speichern Sie keine vertraulichen Inhalte zwischen.
 

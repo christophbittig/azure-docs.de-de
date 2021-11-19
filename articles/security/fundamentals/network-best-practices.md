@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5969c015a360d7f1c859070b1fc05df5bd469bbe
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735725"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327080"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Bewährte Methoden für die Netzwerksicherheit in Azure
 In diesem Artikel werden bewährte Methoden zur Verbesserung der Netzwerksicherheit in Azure beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit dem Azure-Netzwerk und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -77,7 +77,7 @@ Bewährte Methoden:
 **Detail**: Mit [bedingtem Zugriff mit Azure AD](../../active-directory/conditional-access/overview.md) können Sie die passende Zugriffssteuerung anwenden, indem Sie automatisierte Entscheidungen hinsichtlich der Zugriffssteuerung anhand der erforderlichen Bedingungen implementieren. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff](../../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md).
 
 **Bewährte Methode**: Aktivieren Sie den Portzugriff erst nach Genehmigung des Workflows.  
-**Detail**: Sie können [Just-In-Time-VM-Zugriff in Azure Security Center](../../security-center/security-center-just-in-time.md) verwenden, um eingehenden Datenverkehr auf den Azure-VMs zu sperren und dadurch die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einen einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen.
+**Detail**: Sie können [Just-In-Time-VM-Zugriff in Microsoft Defender für Cloud](../../security-center/security-center-just-in-time.md) verwenden, um eingehenden Datenverkehr auf den Azure-VMs zu sperren und dadurch die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einen einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen.
 
 **Bewährte Methode**: Gewähren Sie temporäre Berechtigungen zum Ausführen privilegierter Aufgaben. Dadurch wird verhindert, dass böswillige oder nicht autorisierte Benutzer nach dem Ablauf der Berechtigungen Zugriff erhalten. Der Zugriff wird nur gewährt, wenn Benutzer ihn benötigen.  
 **Detail**: Verwenden Sie Just-In-Time-Zugriff in Azure AD Privileged Identity Management oder in einer Drittanbieterlösung, um Berechtigungen zum Ausführen privilegierter Aufgaben zu gewähren.
