@@ -1,22 +1,22 @@
 ---
-title: Konfigurieren einer Agent-basierten Lösung für Azure Defender für IoT
-description: Erfahren Sie, wie Sie die Datensammlung in einer auf dem Azure Defender für IoT-Agent basierenden Lösung konfigurieren.
-ms.date: 05/26/2021
+title: Konfigurieren einer Agent-basierten Lösung für Microsoft Defender für IoT
+description: Hier erfahren Sie, wie Sie die Datensammlung in einer auf dem Microsoft Defender für IoT-Agent basierenden Lösung konfigurieren.
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 94f8548895da57efe450342a25bd5de086af0998
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 65e3febe4a1715ee1a55b377a5c54cbb4f3f88c6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016073"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306204"
 ---
-# <a name="configure-azure-defender-for-iot-agent-based-solution"></a>Konfigurieren einer Agent-basierten Lösung für Azure Defender für IoT  
+# <a name="configure-microsoft-defender-for-iot-agent-based-solution"></a>Konfigurieren einer Agent-basierten Lösung für Microsoft Defender für IoT  
 
-In diesem Artikel erfahren Sie, wie Sie die Datensammlung in einer auf dem Azure Defender für IoT-Agent basierenden Lösung konfigurieren.
+In diesem Artikel wird beschrieben, wie Sie die Datensammlung in einer auf dem Microsoft Defender für IoT-Agent basierenden Lösung konfigurieren.
 
 ## <a name="configure-data-collection"></a>Konfigurieren der Datensammlung
 
-So konfigurieren Sie die Datensammlung in einer auf dem Azure Defender für IoT-Agent basierenden Lösung 
+So konfigurieren Sie die Datensammlung in einer auf dem Microsoft Defender für IoT-Agent basierenden Lösung 
 
 1. Navigieren Sie zum Azure-Portal, und wählen Sie die IoT Hub-Instanz aus, an die der Defender für IoT angefügt ist. 
 

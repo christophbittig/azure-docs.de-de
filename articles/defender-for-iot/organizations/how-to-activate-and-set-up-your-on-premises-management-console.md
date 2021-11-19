@@ -1,14 +1,14 @@
 ---
 title: Aktivieren und Einrichten der lokalen Verwaltungskonsole
 description: Durch die Aktivierung der Verwaltungskonsole wird sichergestellt, dass Sensoren bei Azure registriert werden, Informationen an die lokale Verwaltungskonsole gesendet werden und die lokale Verwaltungskonsole Verwaltungsaufgaben auf verbundenen Sensoren ausführt.
-ms.date: 05/05/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 84506e9ebd12dab4198d075c6afea8ae23604a42
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 77f2a62cce7da4f9faac62820a85f38c0dd06ce5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445858"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306223"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivieren und Einrichten der lokalen Verwaltungskonsole 
 
@@ -76,9 +76,9 @@ Für Benutzer mit Versionen unter 10.0 läuft die Lizenz möglicherweise ab und 
 
 :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/activation-popup.png" alt-text="Wenn Ihre Lizenz abläuft, müssen Sie Ihre Lizenz über die Aktivierungsdatei aktualisieren.":::
 
-**So aktivieren Sie Ihre Lizenz:**
+**So aktivieren Sie Ihre Lizenz**
 
-1. Öffnen Sie einen Fall beim [Support](https://ms.portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support).
+1. Öffnen Sie einen Fall beim [Support](https://portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support).
 
 1. Stellen Sie dem Support Ihre Aktivierungs-ID-Nummer bereit.
 
@@ -135,7 +135,7 @@ Informationen zum Hochladen eines neuen Zertifikats, unterstützter Zertifikatda
 
 Stellen Sie sicher, dass Sensoren Informationen an die lokale Verwaltungskonsole senden und dass die lokale Verwaltungskonsole Sicherungen ausführen, Warnungen verwalten sowie andere Aktivitäten auf den Sensoren ausführen kann. Mit den folgenden Verfahren können Sie überprüfen, ob eine anfängliche Verbindung zwischen Sensoren und der lokalen Verwaltungskonsole hergestellt wird.
 
-Zum Verbinden von Azure Defender für IoT-Sensoren mit der lokalen Verwaltungskonsole gibt es zwei Optionen:
+Zum Verbinden von Microsoft Defender für IoT-Sensoren mit der lokalen Verwaltungskonsole gibt es zwei Optionen:
 
 - Herstellen einer Verbindung über die Sensorkonsole
 
@@ -270,7 +270,7 @@ Sie konfigurieren Zonen im Rahmen des Standortkonfigurationsprozesses.
 
 In der folgenden Tabelle werden die Parameter im Fenster **Standortverwaltung** beschrieben.
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 |--|--|
 | Name | Der Name des Sensors. Sie können diesen Namen nur über den Sensor ändern. Weitere Informationen finden Sie im Benutzerhandbuch zu Defender für IoT. |
 | IP | Die IP-Adresse des Sensors. |

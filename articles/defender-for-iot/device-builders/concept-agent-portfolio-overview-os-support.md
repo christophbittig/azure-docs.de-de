@@ -1,18 +1,18 @@
 ---
 title: Agent-Portfolioübersicht und Betriebssystemunterstützung (Vorschau)
-description: Azure Defender für IoT bietet ein umfangreiches Portfolio an gerätetypbasierten Agents.
-ms.date: 10/03/2021
+description: Microsoft Defender für IoT bietet ein umfangreiches Portfolio an gerätetypbasierten Agents.
+ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9cd87f9d332ca56da57a823886fa0ebdb93011fa
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: fbad1c486a9bf553b7f7effffe8dcf5e12b5d03a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129399563"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319014"
 ---
 # <a name="agent-portfolio-overview-and-os-support-preview"></a>Agent-Portfolioübersicht und Betriebssystemunterstützung (Vorschau)
 
-Azure Defender für IoT bietet ein umfangreiches Portfolio an gerätetypbasierten Agents.
+Microsoft Defender für IoT bietet ein umfangreiches Portfolio an gerätetypbasierten Agents.
 
 ## <a name="standalone-agent"></a>Eigenständiger Agent
 
@@ -30,9 +30,9 @@ Wenn Sie weitere Informationen oder Angaben zu unterstützten Betriebssystemen b
 
 ## <a name="azure-rtos-micro-agent"></a>Micro-Agent für Azure RTOS
 
-Der Micro-Agent für Azure Defender für IoT bietet eine umfassende Lightweight-Sicherheitslösung für Geräte, die Azure RTOS verwenden. Der Micro-Agent für Azure Defender für IoT deckt allgemeine Bedrohungen und potenziell schädliche Aktivitäten auf Geräten mit Echtzeitbetriebssystem (Real-Time Operating System, RTOS) ab. Der Micro-Agent ist in die Komponente „Azure RTOS NetX Duo“ integriert und überwacht die Netzwerkaktivität des Geräts.
+Der Micro-Agent für Microsoft Defender für IoT bietet eine umfassende und einfache Sicherheitslösung für Geräte, die Azure RTOS verwenden. Der Micro-Agent für Microsoft Defender für IoT deckt allgemeine Bedrohungen und potenziell schädliche Aktivitäten auf Geräten mit Echtzeitbetriebssystem (Real-Time Operating System, RTOS) ab. Der Micro-Agent ist in die Komponente „Azure RTOS NetX Duo“ integriert und überwacht die Netzwerkaktivität des Geräts.
 
-Der Micro-Agent für Azure Defender für IoT ist in die Komponente „Azure RTOS NetX Duo“ integriert und überwacht die Netzwerkaktivität des Geräts. Der Micro-Agent besteht aus einer umfassenden Lightweight-Sicherheitslösung zum Schutz vor allgemeinen Bedrohungen und potenziell schädlichen Aktivitäten auf Geräten mit Echtzeitbetriebssystem (Real-Time Operating System, RTOS).
+Der Micro-Agent für Microsoft Defender für IoT ist in die Komponente „Azure RTOS NetX Duo“ integriert und überwacht die Netzwerkaktivität des Geräts. Der Micro-Agent besteht aus einer umfassenden Lightweight-Sicherheitslösung zum Schutz vor allgemeinen Bedrohungen und potenziell schädlichen Aktivitäten auf Geräten mit Echtzeitbetriebssystem (Real-Time Operating System, RTOS).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,16 +1,16 @@
 ---
-title: Häufig gestellte Fragen zu Azure Defender für IoT für Gerätehersteller
-description: Hier finden Sie Antworten auf die am häufigsten gestellten Fragen zum Azure Defender für IoT-Agent.
+title: Häufig gestellte Fragen zu Microsoft Defender für IoT für Geräteentwickler
+description: Hier finden Sie Antworten auf die am häufigsten gestellten Fragen zum Microsoft Defender für IoT-Agent.
 ms.topic: conceptual
-ms.date: 07/07/2021
-ms.openlocfilehash: 3c2e099ca0a6c7cde2fa8a33ed766ba1d4b91fd1
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 11/09/2021
+ms.openlocfilehash: 9075424368a6d3e8c2e17306a573f768cb4a0e45
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113434316"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293476"
 ---
-# <a name="azure-defender-for-iot-for-device-builders-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Defender für IoT für Gerätehersteller
+# <a name="microsoft-defender-for-iot-for-device-builders-frequently-asked-questions"></a>Häufig gestellte Fragen zu Microsoft Defender für IoT für Geräteentwickler
 
 Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zum Defender für IoT-Agent und die zugehörigen Antworten.
 

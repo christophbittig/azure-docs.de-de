@@ -1,14 +1,14 @@
 ---
 title: Steuern, welcher Datenverkehr überwacht wird
 description: Sensoren führen automatisch eine umfassende Paketerkennung für IT- und OT-Datenverkehr durch und lösen Informationen über Netzwerkgeräte auf, wie etwa Geräteattribute und Netzwerkverhalten. Es stehen verschiedene Tools zur Verfügung, um den Typ von Datenverkehr zu steuern, der von den einzelnen Sensoren erkannt wird.
-ms.date: 12/07/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: b80ef4a4a1fca7383da80fda6fdf42831913f2bd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 76923afc40469ba30e4a2ce8ead6696f056a7580
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017673"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305938"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Steuern, welcher Datenverkehr überwacht wird
 
@@ -230,7 +230,7 @@ So definieren Sie DNS-Server:
 
 ## <a name="configure-windows-endpoint-monitoring"></a>Konfigurieren der Windows-Endpunktüberwachung
 
-Mit der Windows-Funktion zur Endpunktüberwachung können Sie in Azure Defender für IoT selektive Stichproben auf Windows-Systemen konfigurieren. Dadurch erhalten Sie stärker fokussierte und genauere Informationen über Ihre Geräte, etwa über die Service Pack-Stufen.
+Mit der Funktion „Windows-Endpunktüberwachung“ können Sie in Microsoft Defender für IoT selektive Stichproben auf Windows-Systemen konfigurieren. Dadurch erhalten Sie stärker fokussierte und genauere Informationen über Ihre Geräte, etwa über die Service Pack-Stufen.
 
 Sie können die Erfassung von Stichproben mit bestimmten Bereichen und Hosts und nur im gewünschten Umfang konfigurieren. Sie erreichen die selektive Erfassung von Stichproben mithilfe der Windows-Verwaltungsinstrumentation (WMI), der Standard-Skriptsprache von Microsoft zur Verwaltung von Windows-Systemen.
 

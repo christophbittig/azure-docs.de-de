@@ -1,18 +1,18 @@
 ---
 title: Hauptvorteile
 description: Hier erfahren Sie mehr über die grundlegenden Konzepte von Defender für IoT.
-ms.date: 09/09/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 284301f7a797f2a161aafe90ec641fc062738933
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 271af4bbfe56771576dec32799b19f2c7aebf258
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132026461"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293438"
 ---
 # <a name="basic-concepts"></a>Grundlegende Konzepte
 
-In diesem Artikel werden die wichtigsten Vorteile von Azure Defender für IoT beschrieben.
+In diesem Artikel werden die wichtigsten Vorteile von Microsoft Defender für IoT beschrieben.
 
 ## <a name="rapid-non-invasive-deployment-and-passive-monitoring"></a>Schnelle nicht-invasive Bereitstellung und passive Überwachung
 
@@ -57,7 +57,7 @@ Die Plattform bietet eine intuitive Data-Mining-Schnittstelle für die präzise 
 
 Mit dem Modus „Sensor Cloud Management“ wird festgelegt,wo vom Sensor erkannte Informationen zum Gerät, Warnungen und andere Informationen angezeigt werden.
 
-Bei **mit der Cloud verbundenen Sensoren** werden die vom Sensor erkannten Informationen in der Sensorkonsole angezeigt. Warnungsinformationen werden über einen IoT-Hub übermittelt und können für andere Azure-Dienste wie Azure Sentinel freigegeben werden.
+Bei **mit der Cloud verbundenen Sensoren** werden die vom Sensor erkannten Informationen in der Sensorkonsole angezeigt. Warnungsinformationen werden über einen IoT-Hub übermittelt und können für andere Azure-Dienste wie z. B. Microsoft Sentinel freigegeben werden.
 
 Bei **lokal verbundenen Sensoren** werden die vom Sensor erkannten Informationen in der Sensorkonsole angezeigt. Erkennungsinformationen werden auch für die lokale Verwaltungskonsole freigegeben, wenn der Sensor damit verbunden ist.
 

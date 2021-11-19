@@ -2,19 +2,17 @@
 title: Bereitstellen eines IoT Edge-Sicherheitsmoduls
 description: Erfahren Sie, wie Sie einen Defender für IoT-Sicherheits-Agent auf einem IoT Edge-Gerät bereitstellen.
 ms.topic: conceptual
-ms.date: 09/23/2021
-ms.openlocfilehash: 67c60841d4d1e9080c95cf50a71be6ad4a845ef1
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/09/2021
+ms.openlocfilehash: deb6a9e458351d512ccda4a1e5ef42fc921e628a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238622"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306147"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Bereitstellen eines Sicherheitsmoduls auf Ihrem IoT Edge-Gerät
 
-Das Modul **für IoT** stellt eine umfassende Sicherheitslösung für Ihr IoT Edge-Gerät bereit.
-Das Sicherheitsmodul sammelt, aggregiert und analysiert Sicherheitsrohdaten von Ihrem Betriebs- und Containersystem und gibt verwertbare Sicherheitsempfehlungen und -warnungen aus.
-Weitere Informationen finden Sie unter [Azure IoT Edge-Sicherheitsmodul](security-edge-architecture.md).
+Das Modul **für IoT** stellt eine umfassende Sicherheitslösung für Ihr IoT Edge-Gerät bereit. Das Sicherheitsmodul sammelt, aggregiert und analysiert Sicherheitsrohdaten von Ihrem Betriebs- und Containersystem und gibt verwertbare Sicherheitsempfehlungen und -warnungen aus. Weitere Informationen finden Sie unter [Azure IoT Edge-Sicherheitsmodul](security-edge-architecture.md).
 
 In diesem Artikel erfahren Sie, wie Sie ein Sicherheitsmodul auf Ihrem IoT Edge-Gerät bereitstellen.
 
@@ -41,7 +39,7 @@ Gehen Sie wie folgt vor, um ein Defender für IoT-Sicherheitsmodul für IoT Ed
 
 1. Öffnen Sie im Azure-Portal den **Marketplace**.
 
-1. Wählen Sie **Internet der Dinge** aus, suchen Sie nach **Azure Security Center für IoT**, und wählen Sie den Eintrag aus.
+1. Wählen Sie **Internet der Dinge** aus, suchen Sie nach **Microsoft Defender für IoT**, und wählen Sie den Eintrag aus.
 
    :::image type="content" source="media/howto/edge-onboarding.png" alt-text="Auswählen von Defender für IoT":::
 
