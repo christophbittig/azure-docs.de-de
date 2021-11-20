@@ -7,24 +7,57 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 9/28/2020
 ms.author: ranku
-ms.openlocfilehash: b0f8a1a9ddce7648d26bf73ebb0eadead06dba6c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a7757830dfb75f7ad111913ee4a8ea41926db600
+ms.sourcegitcommit: b00a2d931b0d6f1d4ea5d4127f74fc831fb0bca9
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347049"
+ms.lasthandoff: 11/20/2021
+ms.locfileid: "132867372"
 ---
 # <a name="exporting-de-identified-data-preview"></a>Exportieren anonymisierter Daten (Vorschauversion)
 
 > [!Note] 
 > Die Ergebnisse variieren bei Verwendung des anonymisierten Exports je nach Faktoren, z. B. den eingegebenen Daten oder den vom Kunden ausgewählten Funktionen. Microsoft kann die anonymisierten Exportausgaben nicht auswerten oder die Geeignetheit für Anwendungsfälle und Complianceanforderungen des Kunden bestimmen. Es ist nicht garantiert, dass der anonymisierte Export bestimmte gesetzliche, behördliche oder Complianceanforderungen erfüllt.
 
-Der Befehl $export kann auch verwendet werden, um anonymisierte Daten vom FHIR-Server zu exportieren. Er verwendet die Anonymisierungs-Engine der [FHIR-Tools für die Anonymisierung](https://github.com/microsoft/FHIR-Tools-for-Anonymization) und nimmt Details zur Anonymisierungskonfiguration in den Abfrageparametern entgegen. Sie können eine eigene Anonymisierungskonfigurationsdatei erstellen oder die [Beispielkonfigurationsdatei](https://github.com/microsoft/FHIR-Tools-for-Anonymization#sample-configuration-file-for-hipaa-safe-harbor-method) für die HIPAA Safe Harbor-Methode als Ausgangspunkt verwenden. 
+Der Befehl $export kann auch verwendet werden, um anonymisierte Daten vom FHIR-Server zu exportieren. Er verwendet die Anonymisierungs-Engine der [FHIR-Tools für die Anonymisierung](https://github.com/microsoft/FHIR-Tools-for-Anonymization) und nimmt Details zur Anonymisierungskonfiguration in den Abfrageparametern entgegen. Sie können eine eigene Anonymisierungskonfigurationsdatei erstellen oder die [Beispielkonfigurationsdatei](https://github.com/microsoft/Tools-for-Health-Data-Anonymization/blob/master/docs/FHIR-anonymization.md#sample-configuration-file) für die HIPAA Safe Harbor-Methode als Ausgangspunkt verwenden. 
 
+## <a name="configuration-file"></a>Konfigurationsdatei
+
+Die Anonymisierungs-Engine enthält eine Beispielkonfigurationsdatei, um die Anforderungen der HIPAA-Tresor Einer-Methode zu erfüllen. Die Konfigurationsdatei ist eine JSON-Datei mit vier Abschnitten: `fhirVersion` `processingErrors` , , , `fhirPathRules` `parameters` . 
+* `fhirVersion` gibt die FHIR-Version für die Anonymisierungs-Engine an.
+* `processingErrors` gibt an, welche Aktion für die Verarbeitungsfehler, die während der Anonymisierung auftreten können, zu ergreifen ist. Sie können _die_ Ausnahmen _je_ nach Ihren Anforderungen auslösen oder behalten.
+* `fhirPathRules` gibt an, welche Anonymisierungsmethode verwendet werden soll. Die Regeln werden in der Reihenfolge ihrer Darstellung in der Konfigurationsdatei ausgeführt.
+* `parameters` legt Regeln für das in _fhirPathRules_ angegebene Anonymisierungsverhalten fest.
+
+Hier ist eine Beispielkonfigurationsdatei für R4:
+
+```json
+{
+  "fhirVersion": "R4",
+  "processingError":"raise",
+  "fhirPathRules": [
+    {"path": "nodesByType('Extension')", "method": "redact"},
+    {"path": "Organization.identifier", "method": "keep"},
+    {"path": "nodesByType('Address').country", "method": "keep"},
+    {"path": "Resource.id", "method": "cryptoHash"},
+    {"path": "nodesByType('Reference').reference", "method": "cryptoHash"},
+    {"path": "Group.name", "method": "redact"}
+  ],
+  "parameters": {
+    "dateShiftKey": "",
+    "cryptoHashKey": "",
+    "encryptKey": "",
+    "enablePartialAgesForRedact": true
+  }
+}
+```
+
+Ausführlichere Informationen zu jedem dieser vier Abschnitte der Konfigurationsdatei finden Sie [hier.](https://github.com/microsoft/Tools-for-Health-Data-Anonymization/blob/master/docs/FHIR-anonymization.md#configuration-file-format)
+## <a name="using-export-command-for-the-de-identified-data"></a>Verwenden $export Befehls für die nicht identifizierten Daten
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
 
 > [!Note] 
-> Derzeit unterstützt der FHIR-Dienst nur den de-identified-Export auf Systemebene ($export).
+> Derzeit unterstützt der FHIR-Dienst nur den de-identified Export auf Systemebene ($export).
 
 |Query parameter (Abfrageparameter)            | Beispiel |Optionalität| BESCHREIBUNG|
 |---------------------------|---------|-----------|------------|

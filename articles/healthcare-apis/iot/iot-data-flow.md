@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 11/16/2021
+ms.date: 11/19/2021
 ms.author: jasteppe
-ms.openlocfilehash: 14a1668996682179ef0c0beb95383be892a4e693
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 31ee65ee1efd3e7576403aacb0aa35e147a4f2aa
+ms.sourcegitcommit: b00a2d931b0d6f1d4ea5d4127f74fc831fb0bca9
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132719402"
+ms.lasthandoff: 11/20/2021
+ms.locfileid: "132870313"
 ---
 # <a name="iot-connector-data-flow"></a>Datenfluss des IoT-Konnektors
 
@@ -22,7 +22,7 @@ ms.locfileid: "132719402"
 
 Dieser Artikel bietet eine Übersicht über den Datenfluss des IoT-Connectors. Sie erfahren mehr über die verschiedenen Datenverarbeitungsphasen im IoT-Connector, die Gerätedaten in Fast Healthcare Interoperability Resources(FHIR&#174;)-basierte [Beobachtungsressourcen](https://www.hl7.org/fhir/observation.html) transformieren.
 
-Daten von gesundheitsbezogenen Geräten oder medizinischen Geräten fließen über einen Pfad, in dem der IoT-Connector Daten in FHIR transformiert und dann daten auf dem FHIR-Server gespeichert und darauf zugegriffen wird. Der Integritätsdatenpfad folgt diesen Schritten in dieser Reihenfolge: Erfassung, Normalisierung, Gruppierung, Transformation und Persistenz. In diesem Datenfluss werden Integritätsdaten im ersten Schritt der Erfassung vom Gerät abgerufen. Nachdem die Daten empfangen wurden, werden sie pro benutzerdefinierten oder vom Benutzer erstellten Schemavorlagen verarbeitet oder normalisiert, sodass die Integritätsdaten einfacher zu verarbeiten und zu gruppiert werden können. Integritätsdaten werden in drei Sperate-Parametern gruppiert. Nachdem die Integritätsdaten normalisiert und gruppiert wurden, können sie über die FHIR-Zuordnung verarbeitet oder transformiert und dann auf dem FHIR-Server gespeichert oder beibehalten werden.
+Daten von gesundheitsbezogenen Geräten oder medizinischen Geräten fließen über einen Pfad, in dem der IoT-Connector Daten in FHIR transformiert und dann Daten im FHIR-Dienst gespeichert und darauf zugegriffen wird. Der Integritätsdatenpfad folgt diesen Schritten in dieser Reihenfolge: Erfassung, Normalisierung, Gruppierung, Transformation und Persistenz. In diesem Datenfluss werden Integritätsdaten im ersten Schritt der Erfassung vom Gerät abgerufen. Nachdem die Daten empfangen wurden, werden sie pro benutzerdefinierten oder vom Benutzer erstellten Schemavorlagen verarbeitet oder normalisiert, sodass die Integritätsdaten einfacher zu verarbeiten und zu gruppiert werden können. Integritätsdaten werden in drei Operate-Parametern gruppiert. Nachdem die Integritätsdaten normalisiert und gruppiert wurden, können sie über FHIR-Zielzuordnungen verarbeitet oder transformiert und dann im FHIR-Dienst gespeichert oder beibehalten werden.
 
 In diesem Artikel werden die einzelnen Schritte im Datenfluss genauer beschrieben. Die nächsten Schritte sind das Bereitstellen eines [IoT-Connectors](deploy-iot-connector-in-azure.md) mithilfe einer Gerätezuordnung (der Normalisierungsschritt) und die Verwendung einer FHIR-Gerätezuordnung (der Transformationsschritt).
 
