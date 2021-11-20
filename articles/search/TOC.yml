@@ -170,10 +170,10 @@
           href: search-sku-tier.md
         - name: Erstellen von Diensten
           href: search-create-service-portal.md
-        - name: Planen der Kapazität
-          href: search-capacity-planning.md
         - name: Diensteinschränkungen
           href: search-limits-quotas-capacity.md
+        - name: Planen der Kapazität
+          href: search-capacity-planning.md
         - name: Planen und Verwalten von Kosten
           href: search-sku-manage-costs.md
         - name: Verfügbarkeit und Wiederherstellung

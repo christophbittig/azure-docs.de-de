@@ -366,7 +366,7 @@
     - name: Versionshinweise
       href: 'https://aka.ms/apim/releases'
     - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Videos
       href: 'https://azure.microsoft.com/documentation/videos/index/?service=api-management'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"

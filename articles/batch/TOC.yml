@@ -44,7 +44,7 @@
         - name: Azure-Codebeispiele
           href: 'https://azure.microsoft.com/resources/samples/?service=batch'
         - name: Repository für Batch-Beispiele
-          href: 'https://github.com/Azure/azure-batch-samples'
+          href: 'https://github.com/Azure-Samples/azure-batch-samples'
     - name: Azure CLI
       items:
         - name: Erstellen eines Batch-Kontos im Modus „Batch-Dienst“
@@ -280,7 +280,7 @@
     - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
-      href: /powershell/module/az.batch
+      href: /powershell/module/az.batch/
     - name: .NET
       href: /dotnet/api/overview/azure/batch
     - name: Java
@@ -292,7 +292,7 @@
     - name: REST
       items:
         - name: Batch-Dienst
-          href: /rest/api/batchservice
+          href: /rest/api/batchservice/
         - name: Batch Management
           href: /rest/api/batchmanagement/
     - name: Resource Manager-Vorlage
@@ -338,7 +338,7 @@
     - name: Blog
       href: /archive/blogs/windowshpc/
     - name: HPC unter Azure
-      href: /azure/architecture/topics/high-performance-computing/
+      href: /azure/architecture/topics/high-performance-computing
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten): Batch"
       href: /answers/topics/azure-batch.html
     - name: Preise

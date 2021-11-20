@@ -57,7 +57,7 @@
         - name: Überwachen mithilfe von Azure Monitor für Container
           href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Erzwingen von Bedrohungsschutz mit Microsoft Defender für Cloud
-          href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
+          href: ../../defender-for-cloud/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Clusterinterne Richtlinienerzwingungen mithilfe von Azure Policy
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: "Bereitstellen von Open Service Mesh mit Azure\_Arc-Unterstützung"
@@ -75,8 +75,8 @@
         - name: Machine Learning mit Azure Arc-Unterstützung
           href: ../../machine-learning/how-to-attach-arc-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
     - name: Problembehandlung
-      href: Troubleshooting.md
-- name: Verweis
+      href: troubleshooting.md
+- name: Referenz
   items:
     - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'

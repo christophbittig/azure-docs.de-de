@@ -130,7 +130,7 @@
           href: logs/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Alerts
+    - name: Warnungen
       items:
         - name: Übersicht
           href: alerts/alerts-overview.md
@@ -791,7 +791,7 @@
                       href: app/java-standalone-sampling-overrides.md
                     - name: Telemetrieprozessoren
                       items:
-                        - name: Überblick
+                        - name: Übersicht
                           href: app/java-standalone-telemetry-processors.md
                         - name: Beispiele
                           href: app/java-standalone-telemetry-processors-examples.md
@@ -1179,6 +1179,8 @@
           href: insights/cosmosdb-insights-overview.md
         - name: Azure-Daten-Explorer
           href: insights/data-explorer.md
+        - name: Azure-Servicebus
+          href: insights/service-bus-insights.md
         - name: Log Analytics-Arbeitsbereich
           href: logs/log-analytics-workspace-insights-overview.md
         - name: Netzwerke
@@ -1435,11 +1437,11 @@
     - name: Azure PowerShell
       items:
         - name: Azure Monitor
-          href: /powershell/module/az.monitor
+          href: /powershell/module/az.monitor/
         - name: Azure Monitor-Protokolle
-          href: /powershell/module/az.operationalinsights
+          href: /powershell/module/az.operationalinsights/
         - name: Application Insights
-          href: /powershell/module/az.applicationinsights
+          href: /powershell/module/az.applicationinsights/
     - name: Azure CLI
       items:
         - name: Azure Monitor
@@ -1456,7 +1458,7 @@
         - name: Azure Monitor
           href: /rest/api/monitor/
         - name: Azure Monitor-Protokolle
-          href: /rest/api/loganalytics
+          href: /rest/api/loganalytics/
         - name: Exemplarische Vorgehensweise zur REST-API
           displayname: 'metrics, analyze'
           href: essentials/rest-api-walkthrough.md
@@ -1512,8 +1514,8 @@
     - name: Azure-Updates
       href: 'https://azure.microsoft.com/en-us/updates/?category=management-tools'
     - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
+      href: 'https://azure.microsoft.com/pricing/details/monitor/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor'

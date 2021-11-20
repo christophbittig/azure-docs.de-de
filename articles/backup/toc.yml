@@ -608,9 +608,9 @@
     - name: 'Schutz von Daten in Azure: CLI'
       href: /cli/azure/dataprotection?view=azure-cli-latest&preserve-view=true
     - name: Azure PowerShell
-      href: /powershell/module/az.recoveryservices
+      href: /powershell/module/az.recoveryservices/
     - name: 'Schutz von Daten in Azure: PowerShell'
-      href: /powershell/module/az.dataprotection/?view=azps-6.1.0&preserve-view=true
+      href: /powershell/module/az.dataprotection/
     - name: 'PowerShell: Azure Backup-Agent'
       href: /powershell/module/msonlinebackup/?view=msonlinebackup-ps
     - name: 'REST: Schutz von Daten in Azure'

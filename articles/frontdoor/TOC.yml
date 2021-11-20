@@ -5,7 +5,7 @@
     - name: Was ist Azure Front Door?
       href: front-door-overview.md
     - name: Auswählen des richtigen Lastenausgleichs
-      href: /architecture/guide/technology-choices/load-balancing-overview.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
+      href: /azure/architecture/guide/technology-choices/load-balancing-overview?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
 - name: Schnellstarts
   expanded: true
   items:

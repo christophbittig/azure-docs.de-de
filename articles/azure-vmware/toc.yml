@@ -219,7 +219,7 @@
     - name: Videos
       items:
         - name: Wiedergabeliste
-          href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
+          href: 'https://www.youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
         - name: Integration in Azure-Dienst
           href: 'https://youtu.be/m26iLu6DHbU'
         - name: Integration in Azure Application Gateway
@@ -229,7 +229,7 @@
 - name: Verweis
   items:
     - name: REST-API
-      href: /rest/api/avs
+      href: /rest/api/avs/
     - name: Azure CLI
       href: /cli/azure/vmware
     - name: Azure PowerShell

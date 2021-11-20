@@ -84,8 +84,6 @@
           href: how-to-determine-your-update-strategy.md
         - name: "Einrichten von Azure\_IoT\_Hub für die Bereitstellung von OTA-Updates"
           href: how-to-set-up-over-the-air-updates.md
-        - name: Auswählen des Updatepakets für Azure Percept DK
-          href: how-to-select-update-package.md
         - name: "Aktualisieren von Azure Percept\_DK per Funk (Over-the-Air-Update)"
           href: how-to-update-over-the-air.md
         - name: "Aktualisieren von Azure\_Percept\_DK über eine USB-C-Verbindung"

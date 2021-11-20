@@ -100,7 +100,7 @@
     - name: Cookbooks
       items:
         - name: Bereitstellungsskripts
-          href: 'https://azure.microsoft.com/documentation/scripts/'
+          href: /azure/automation/automation-runbook-gallery
     - name: Problembehandlung
       items:
         - name: Problembehandlung mit Visual Studio
