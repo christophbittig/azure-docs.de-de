@@ -107,6 +107,8 @@
           href: active-directory-licensing-whatis-azure-portal.md
         - name: Standardbenutzerberechtigungen
           href: users-default-permissions.md
+    - name: Benutzerdefinierte Sicherheitsattribute
+      href: custom-security-attributes-overview.md
     - name: Aufbau
       items:
         - name: Azure AD-Architektur
@@ -278,6 +280,14 @@
           href: license-users-groups.md
         - name: Wiederherstellen eines gelöschten Benutzers
           href: active-directory-users-restore.md
+    - name: Benutzerdefinierte Sicherheitsattribute
+      items:
+        - name: Hinzufügen oder Deaktivieren von Attributen
+          href: custom-security-attributes-add.md
+        - name: Verwalten des Zugriffs auf Attribute
+          href: custom-security-attributes-manage.md
+        - name: Problembehandlung für Attribute
+          href: custom-security-attributes-troubleshoot.md
     - name: Szenarien
       items:
         - name: Verwenden von Azure Active Directory zum Schützen des Zugriffs auf SAP-Plattformen und -Anwendungen

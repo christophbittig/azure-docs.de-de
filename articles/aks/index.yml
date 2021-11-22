@@ -9,12 +9,12 @@ metadata:
   author: laurenhughes
   ms.author: lahugh
   ms.date: 07/21/2020
-  ms.openlocfilehash: 0e38303b435a478b2c6338cd976d7659a3a70c6d
-  ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+  ms.openlocfilehash: 213e8336eb40a56c6f8bb4d1ce0e2f20e02d1fd4
+  ms.sourcegitcommit: b00a2d931b0d6f1d4ea5d4127f74fc831fb0bca9
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/18/2021
-  ms.locfileid: "122418436"
+  ms.lasthandoff: 11/20/2021
+  ms.locfileid: "132869210"
 landingContent:
 - title: Informationen zu Azure Kubernetes Service (AKS)
   linkLists:
@@ -34,10 +34,18 @@ landingContent:
       url: concepts-security.md
     - text: Netzwerk
       url: concepts-network.md
-    - text: Speicher
+    - text: Storage
       url: concepts-storage.md
     - text: Skalieren
       url: concepts-scale.md
+  - linkListType: learn
+    links:
+    - text: Einführung in Azure Kubernetes Service
+      url: /learn/modules/intro-to-azure-kubernetes-service/
+    - text: Einführung in Container in Azure
+      url: /learn/modules/intro-to-containers/
+    - text: Erstellen und Speichern von Containerimages mit Azure Container Registry
+      url: /learn/modules/build-and-store-container-images/
 - title: Bereitstellen eines AKS-Clusters in fünf Minuten
   linkLists:
   - linkListType: quickstart
@@ -48,32 +56,20 @@ landingContent:
       url: kubernetes-walkthrough-portal.md
     - text: Resource Manager-Vorlage
       url: kubernetes-walkthrough-rm-template.md
-- title: Entwickeln und Debuggen von Anwendungen mit Bridge to Kubernetes
+- title: Entwickeln und Debuggen von Anwendungen
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Entwickeln mit Helm
+      url: quickstart-helm.md
+    - text: Entwickeln mit Dapr
+      url: quickstart-dapr.md
   - linkListType: how-to-guide
     links:
     - text: Verwenden von Bridge to Kubernetes mit Visual Studio Code
       url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
     - text: Verwenden von Bridge to Kubernetes mit Visual Studio
       url: /visualstudio/containers/bridge-to-kubernetes
-- title: Bereitstellen, Verwalten und Aktualisieren von Anwendungen
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 1. Vorbereiten einer Anwendung für AKS
-      url: tutorial-kubernetes-prepare-app.md
-    - text: 2. Bereitstellen und Verwenden von Azure Container Registry
-      url: tutorial-kubernetes-prepare-acr.md
-    - text: 3. Bereitstellen eines AKS-Clusters
-      url: tutorial-kubernetes-deploy-cluster.md
-    - text: 4. Ausführen der Anwendung
-      url: tutorial-kubernetes-deploy-application.md
-    - text: 5. Skalieren von Anwendungen
-      url: tutorial-kubernetes-scale.md
-    - text: 6. Aktualisieren einer Anwendung
-      url: tutorial-kubernetes-app-update.md
-    - text: 7. Upgrade von Kubernetes in AKS
-      url: tutorial-kubernetes-upgrade-cluster.md
 - title: Anleitung zur Architektur
   linkLists:
   - linkListType: architecture
@@ -92,13 +88,31 @@ landingContent:
       url: best-practices.md
     - text: Andere AKS-Lösungen
       url: /azure/architecture/reference-architectures/containers/aks-start-here?WT.mc_id=AKSDOCSPAGE
-- title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+- title: Bereitstellen, Verwalten und Aktualisieren von Anwendungen
   linkLists:
-  - linkListType: learn
+  - linkListType: tutorial
     links:
-    - text: Einführung in Azure Kubernetes Service
-      url: /learn/modules/intro-to-azure-kubernetes-service/
-    - text: Einführung in Container in Azure
-      url: /learn/modules/intro-to-containers/
-    - text: Erstellen und Speichern von Containerimages mit Azure Container Registry
-      url: /learn/modules/build-and-store-container-images/
+    - text: 1. Vorbereiten einer Anwendung für AKS
+      url: tutorial-kubernetes-prepare-app.md
+    - text: 2. Bereitstellen und Verwenden von Azure Container Registry
+      url: tutorial-kubernetes-prepare-acr.md
+    - text: 3. Bereitstellen eines AKS-Clusters
+      url: tutorial-kubernetes-deploy-cluster.md
+    - text: 4. Ausführen der Anwendung
+      url: tutorial-kubernetes-deploy-application.md
+    - text: 5. Skalieren von Anwendungen
+      url: tutorial-kubernetes-scale.md
+    - text: 6. Aktualisieren einer Anwendung
+      url: tutorial-kubernetes-app-update.md
+    - text: 7. Upgrade von Kubernetes in AKS
+      url: tutorial-kubernetes-upgrade-cluster.md
+- title: Erweitern der Funktionen Ihres Clusters
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Open Service Mesh-Add-On
+      url: open-service-mesh-about.md
+    - text: Dapr-Clustererweiterung
+      url: dapr.md
+    - text: Clustererweiterungen
+      url: cluster-extensions.md

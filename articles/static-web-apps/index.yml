@@ -9,12 +9,12 @@ metadata:
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 05/07/2021
-  ms.openlocfilehash: 6c2119b81b9eea8c4da0caa68f998e70fab4fae1
-  ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+  ms.openlocfilehash: b41c8a8ed84fc627528f06c8c443fbc112456074
+  ms.sourcegitcommit: 11ca7ba5a017429c22a6b0bc02acb70b83a2984a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/28/2021
-  ms.locfileid: "129154943"
+  ms.lasthandoff: 11/19/2021
+  ms.locfileid: "132814165"
 landingContent:
 - title: Informationen zu Azure Static Web Apps
   linkLists:
@@ -26,13 +26,13 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Erstellen Ihrer ersten App ohne Framework
+    - text: Bereitstellen einer App ohne Front-End-Framework
       url: ./getting-started.md?tabs=vanilla-javascript
-    - text: Erstellen Ihrer ersten Angular-App
+    - text: Bereitstellen einer Angular-App
       url: ./getting-started.md?tabs=angular
-    - text: Erstellen Ihrer ersten React-App
+    - text: Bereitstellen einer React-App
       url: ./getting-started.md?tabs=react
-    - text: Erstellen Ihrer ersten Vue-App
+    - text: Bereitstellen einer Vue-App
       url: ./getting-started.md?tabs=vue
   - linkListType: learn
     links:
@@ -44,33 +44,27 @@ landingContent:
     links:
     - text: Erstellen und Bereitstellen einer statischen Web-App
       url: https://channel9.msdn.com/Shows/Docs-Azure/Building-and-Deploying-a-Static-Web-App/
-- title: Veröffentlichungsszenarien
+- title: Bereitstellen über ein Framework/eine Bibliothek
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Veröffentlichen über Gatsby
+    - text: Gatsby
       url: publish-gatsby.md
-    - text: Veröffentlichen über Hugo
+    - text: Hugo
       url: publish-hugo.md
-    - text: Veröffentlichen über VuePress
+    - text: VuePress
       url: publish-vuepress.md
-    - text: Veröffentlichen über Jekyll
+    - text: Jekyll
       url: publish-jekyll.md
-    - text: Bereitstellen über Blazor
+    - text: Blazor
       url: deploy-blazor.md
-    - text: Bereitstellen über Next.js
+    - text: Next.js
       url: deploy-nextjs.md
-    - text: Bereitstellen über Nuxt.js
+    - text: Nuxt.js
       url: deploy-nuxtjs.md
-    - text: Bereitstellen mit Azure DevOps
-      url: publish-devops.md
-    - text: Bereitstellen mit einer ARM-Vorlage
-      url: publish-azure-resource-manager.md
-  - linkListType: learn
-    links:
-    - text: Veröffentlichen einer statischen Web-App mit Gatsby
+    - text: Gatsby
       url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
-    - text: Veröffentlichen einer statischen Web-App mit Blazor
+    - text: Blazor
       url: /learn/modules/publish-app-service-static-web-app-api-dotnet
 - title: Wichtige Begriffe
   linkLists:
@@ -84,3 +78,13 @@ landingContent:
       url: review-publish-pull-requests.md
     - text: Beschränken des Zugriffs
       url: authentication-authorization.md
+    - text: Erstellen einer Konfiguration mit GitHub Actions
+      url: publish-devops.md?tabs=github-actions
+    - text: Erstellen einer Konfiguration mit Azure DevOps
+      url: publish-devops.md?tabs=azure-devops
+- title: Software-as-a-Service
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Bereitstellen mit einer ARM-Vorlage
+      url: publish-azure-resource-manager.md

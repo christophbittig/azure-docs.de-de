@@ -3,20 +3,20 @@ title: Erhöhen der Sicherheit von Ressourcen mit Azure Advisor
 description: Mithilfe von Azure Advisor können Sie die Sicherheit Ihrer Azure-Bereitstellungen verbessern.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: f130135ed53dc2ba87f46cbf6f9faf0f07cc0654
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b84a6e42fb3159e64bb3fe549f08d8ae3d03b8f4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87057663"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486723"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Erhöhen der Sicherheit von Ressourcen mit Azure Advisor
 
-Der Azure Advisor bietet Ihnen eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen. Azure Advisor und Azure Security Center sind integriert und bieten Ihnen sicherheitsbezogene Empfehlungen. Sicherheitsempfehlungen finden Sie auf dem Advisor-Dashboard auf der Registerkarte **Sicherheit**.
+Der Azure Advisor bietet Ihnen eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen. Er ist in Microsoft Defender für Cloud integriert, um Ihnen Sicherheitsempfehlungen zu geben. Sicherheitsempfehlungen finden Sie auf dem Advisor-Dashboard auf der Registerkarte **Sicherheit**.
 
-Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Die Sicherheitslösung analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen. Wenn Security Center potenzielle Sicherheitsrisiken identifiziert, werden Empfehlungen erstellt. Entsprechend den Empfehlungen werden Sie durch den Prozess der Konfiguration des erforderlichen Sicherheitsmechanismus geführt. 
+Defender für Cloud unterstützt Sie bei der Vermeidung, Erkennung und Behandlung von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Die Sicherheitslösung analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen. Wenn Defender für Cloud potenzielle Sicherheitsrisiken identifiziert, werden Empfehlungen erstellt. Entsprechend den Empfehlungen werden Sie durch den Prozess der Konfiguration des erforderlichen Sicherheitsmechanismus geführt. 
 
-Weitere Informationen über Empfehlungen zur Sicherheit finden Sie unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](../security-center/security-center-recommendations.md).
+Weitere Informationen zu Sicherheitsempfehlungen finden Sie unter [Überprüfen Ihrer Sicherheitsempfehlungen in Microsoft Defender für Cloud](../defender-for-cloud/review-security-recommendations.md).
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Zugreifen auf Sicherheitsempfehlungen im Azure Advisor
 

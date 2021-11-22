@@ -7,12 +7,12 @@ ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3c094a40cd0150fe4134bf1352dfbe418346d63b
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: d4a2d90c797585ad025a9540045fe65dee385000
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131577705"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493598"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -170,11 +170,14 @@ Den Verlauf der letzten Versionen finden Sie unter [Kubernetes](https://en.wikip
 
 |  Kubernetes-Version | Upstreamrelease  | AKS – Vorschau  | AKS – allgemeine Verfügbarkeit (GA)  | Ende der Lebensdauer |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.19  | 04. August 2020  | Sep 2020   | November 2020  | 1.22 GA |
+| 1.19*  | 04. August 2020  | Sep 2020   | November 2020  | 1.22 GA |
 | 1.20  | Dec-08-20  | Jan 2021   | März 2021  | 1.23 GA |
 | 1.21  | 08. April 2021 | Mai 2021   | Juli 2021  | 1.24: Allgemeine Verfügbarkeit |
 | 1.22  | 04. August 21 | September 2021   | November 2021  | 1.25 Allgemeine Verfügbarkeit |
 | 1.23  | Dezember 2021 | Januar 2022   | Februar 2022  | 1.26 Allgemeine Verfügbarkeit |
+
+> [!NOTE]
+> 1.19 ist veraltet und wird Ende Januar 2022 aus AKS entfernt.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

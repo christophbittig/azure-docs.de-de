@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 074c203a0a5688855d4f7607a877b25ce6ee6ad7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f57ae5565e176956cab15586809ad231b776d27
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89660567"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300862"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Identitätsanforderungen für Ihre Hybrid-Identitätslösung
 Der erste Schritt beim Entwickeln einer Hybrid-Identitätslösung ist, die Anforderungen für das Unternehmen zu bestimmen, das diese Lösung nutzen wird.  Die Hybrid-Identität beginnt als unterstützende Rolle (unterstützt alle anderen Cloud-Lösungen durch Authentifizierung) und bietet dann neue und interessante Funktionen, die Benutzern neue Workloads ermöglichen.  Diese Workloads oder Dienste, die Sie für Ihre Benutzer integrieren möchten, bestimmen die Anforderungen an die Gestaltung der Hybrid-Identität.  Diese Dienste und Workloads müssen Hybrid-Identität sowohl lokal aus auch in der Cloud nutzen.  
@@ -59,7 +59,7 @@ Außerdem müssen Sie wissen, welche Clouddienste in Ihrem Unternehmen genutzt w
 * Befindet sich diese Integration derzeit im Produktivbetrieb oder in einer Pilotphase?
 
 > [!NOTE]
-> Cloud Discovery analysiert Ihre Datenverkehrsprotokolle in Bezug auf den Cloud-App-Katalog von Microsoft Cloud App Security, in dem sich mehr als 16.000 Cloud-Apps befinden, die abhängig von mehr als 70 Risikofaktoren klassifiziert und bewertet werden. Dadurch erhalten Sie laufend Einblicke in die Cloudnutzung, Schatten-IT und das Risiko der Schatten-IT für Ihre Organisation. Informationen zu den ersten Schritten finden Sie unter [Einrichten von Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
+> Cloud Discovery analysiert Ihre Datenverkehrsprotokolle in Bezug auf den Microsoft Defender für Cloud-Apps-Katalog von Microsoft Cloud App Security, in dem sich mehr als 16.000 Cloud-Apps befinden, die abhängig von mehr als 70 Risikofaktoren klassifiziert und bewertet werden. Dadurch erhalten Sie laufend Einblicke in die Cloudnutzung, Schatten-IT und das Risiko der Schatten-IT für Ihre Organisation. Informationen zu den ersten Schritten finden Sie unter [Einrichten von Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 > 
 > 
 
@@ -112,4 +112,3 @@ Sie müssen zudem die Benutzeranforderungen bewerten. Diese Bewertung ist wichti
 
 ## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](plan-hybrid-identity-design-considerations-overview.md)
-

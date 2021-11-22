@@ -7,16 +7,16 @@ manager: karenh444
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 11/11/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0044f96f58ba3aa868577b0d0664d71daeddbc7f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 6659e28e1f2814f8bf2b0f08e21db25edae3dd66
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991069"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370686"
 ---
 # <a name="export-a-microsoft-identity-manager-connector-for-use-with-the-azure-ad-ecma-connector-host"></a>Exportieren eines Microsoft Identity Manager-Connectors für die Verwendung mit dem Azure AD-ECMA-Connectorhost
 
@@ -26,7 +26,7 @@ ms.locfileid: "129991069"
 Sie können eine Konfiguration für einen bestimmten Connector aus einer Forefront Identity Manager-Synchronisierungsdienst- oder Microsoft Identity Manager Synchronization Service-Installation (MIM Sync) in den Azure Active Directory (Azure AD) ECMA-Connectorhost importieren. Die MIM Sync-Installation kann nur für die Konfiguration und nicht für die laufende Synchronisierung mit Azure AD verwendet werden.
 
 >[!IMPORTANT]
->Derzeit unterstützt nur der generische SQL-Connector (GSQL) die Verwendung mit dem Azure AD-ECMA-Connectorhost.
+>Derzeit werden nur die generischen SQL- und LDAP-Connectors für die Verwendung mit dem Azure AD-ECMA-Connectorhost unterstützt.
 
 ## <a name="create-and-export-a-connector-configuration-in-mim-sync"></a>Erstellen und Exportieren einer Connectorkonfiguration in bzw. aus MIM Sync
 Wenn Sie MIM Sync bereits mit Ihrem ECMA-Connector konfiguriert haben, fahren Sie mit Schritt 10 fort.

@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30858e9978f7e8857c5f8a2dcdfd7455f6e97b60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f3874b4be6cd9f84a98a8e218f5faa983499ab5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553424"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300925"
 ---
-# <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>Ermitteln des aktuellen Status der Zusammenarbeit mit externen Benutzern in Ihrer Organisation 
+# <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>Ermitteln des aktuellen Status der Zusammenarbeit mit externen Benutzern in Ihrer Organisation
 
-Vor dem Ermitteln des aktuellen Zustands der Zusammenarbeit mit externen Benutzern sollten Sie [den gewünschten Sicherheitsstatus](1-secure-access-posture.md) ermitteln. Sie berücksichtigen die Anforderungen Ihres Unternehmens an zentralisierte und delegierte Steuerung sowie relevante Ziele in Bezug auf Governance, gesetzliche Bestimmungen und Compliance. 
+Vor dem Ermitteln des aktuellen Zustands der Zusammenarbeit mit externen Benutzern sollten Sie [den gewünschten Sicherheitsstatus](1-secure-access-posture.md) ermitteln. Sie berücksichtigen die Anforderungen Ihres Unternehmens an zentralisierte und delegierte Steuerung sowie relevante Ziele in Bezug auf Governance, gesetzliche Bestimmungen und Compliance.
 
-Personen in Ihrer Organisation arbeiten wahrscheinlich bereits mit Benutzern aus anderen Organisationen zusammen. Die Zusammenarbeit kann über Features in Produktivitätsanwendungen (z. B. Microsoft 365), per E-Mail oder mithilfe sonstiger Ressourcen für die Zusammenarbeit mit externen Benutzern erfolgen. Die Säulen Ihres Governanceplans werden deutlich, wenn ... 
-*   Benutzer die Zusammenarbeit mit externen Benutzern initiieren.
-*   Sie die externen Benutzer und Organisationen, mit denen Sie zusammenarbeiten, besser kennenlernen.
-*   Sie den für externe Benutzer gewährten Zugriff festlegen.
+Personen in Ihrer Organisation arbeiten wahrscheinlich bereits mit Benutzern aus anderen Organisationen zusammen. Die Zusammenarbeit kann über Features in Produktivitätsanwendungen (z. B. Microsoft 365), per E-Mail oder mithilfe sonstiger Ressourcen für die Zusammenarbeit mit externen Benutzern erfolgen. Die Säulen Ihres Governanceplans werden deutlich, wenn Sie Folgendes entdecken:
 
+* Benutzer die Zusammenarbeit mit externen Benutzern initiieren.
+* Die externen Benutzer und Organisationen, mit denen Sie zusammenarbeiten.
+* Den für externe Benutzer gewährten Zugriff.
 
 ## <a name="users-initiating-external-collaboration"></a>Benutzer, die Zusammenarbeit mit externen Benutzern initiieren
 
@@ -46,17 +46,15 @@ Externe Organisationen können durch die Domänennamen der E-Mail-Adressen exter
 
 ### <a name="use-allow-or-deny-lists"></a>Verwenden von Zulassungs- oder Verweigerungslisten
 
-Unter Umständen soll in Ihrer Organisation nur die Zusammenarbeit mit bestimmten Organisationen erlaubt sein. Es kann auch sein, dass die Zusammenarbeit mit bestimmten Organisationen blockiert werden soll.  Auf der Mandantenebene befindet sich eine [Zulassungs- oder Verweigerungsliste](../external-identities/allow-deny-list.md), mit der alle B2B-Einladungen und Einlösungen unabhängig von der Quelle (z. B. Teams, SharePoint und Azure-Portal) kontrolliert werden können.
+Unter Umständen soll in Ihrer Organisation nur die Zusammenarbeit mit bestimmten Organisationen erlaubt sein. Es kann auch sein, dass die Zusammenarbeit mit bestimmten Organisationen blockiert werden soll. Auf der Mandantenebene befindet sich eine [Zulassungs- oder Verweigerungsliste](../external-identities/allow-deny-list.md), mit der alle B2B-Einladungen und Einlösungen unabhängig von der Quelle (z. B, Microsoft Teams, Microsoft SharePoint, oder das Azure-Portal) kontrolliert werden können.
+
 Bei Verwendung der Berechtigungsverwaltung können Sie Zugriffspakete auch auf einen Teil Ihrer Partner begrenzen, indem Sie wie unten gezeigt die Einstellung „Bestimmte verbundene Organisationen“ verwenden.
 
-
-![Screenshot: Zulassungs- bzw. Verweigerungsliste beim Erstellen eines neuen Zugriffspakets](media/secure-external-access/2-new-access-package.png)
-
+![Screenshot: Zulassungsliste oder Verweigerungsliste beim Erstellen eines neuen Zugriffspakets.](media/secure-external-access/2-new-access-package.png)
 
 ## <a name="find-access-being-granted-to-external-users"></a>Ermitteln der Zugriffsberechtigungen, die externen Benutzern gewährt werden
 
 Wenn Sie mit mehreren externen Benutzern und Organisationen zusammenarbeiten, können Sie die Zugriffsberechtigungen für diese Benutzer mithilfe der Microsoft Graph-API festlegen, um [Azure AD-Gruppenmitgliedschaften](/graph/api/resources/groups-overview) oder[direkte Anwendungszuweisungen](/graph/api/resources/approleassignment) in Azure AD zu verwalten.
-
 
 ### <a name="enumerate-application-specific-permissions"></a>Aufzählen anwendungsspezifischer Berechtigungen
 
@@ -65,7 +63,8 @@ Möglicherweise können Sie auch anwendungsspezifische Berechtigungsaufzählunge
 Untersuchen Sie insbesondere den Zugriff auf alle geschäfts- und unternehmenskritischen Apps, damit Sie über jeglichen externen Zugriff vollständig Bescheid wissen.
 
 ### <a name="detect-ad-hoc-sharing"></a>Erkennen von Ad-hoc-Freigaben
-Wenn Ihre E-Mail-Infrastruktur und Ihre Netzwerkpläne es zulassen, können Sie per E-Mail oder über nicht autorisierte SaaS-Apps (Software-as-a-Service) freigegebene Inhalte untersuchen. Die [Microsoft 365-Mechanismen zur Verhinderung von Datenverlust (Data Loss Protection, DLP)](/microsoft-365/compliance/data-loss-prevention-policies) unterstützen Sie beim Identifizieren, Verhindern und Überwachen von versehentlichen Freigaben vertraulicher Informationen in Ihrer gesamten Microsoft 365-Infrastruktur. Mit [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) können Sie die Verwendung nicht autorisierter SaaS-Apps in Ihrer Umgebung identifizieren.
+
+Wenn Ihre E-Mail-Infrastruktur und Ihre Netzwerkpläne es zulassen, können Sie per E-Mail oder über nicht autorisierte SaaS-Apps (Software-as-a-Service) freigegebene Inhalte untersuchen. Die [Microsoft 365-Mechanismen zur Verhinderung von Datenverlust (Data Loss Protection, DLP)](/microsoft-365/compliance/data-loss-prevention-policies) unterstützen Sie beim Identifizieren, Verhindern und Überwachen von versehentlichen Freigaben vertraulicher Informationen in Ihrer gesamten Microsoft 365-Infrastruktur. Mit [Defender für Cloud-Apps](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) können Sie die Verwendung nicht autorisierter SaaS-Apps in Ihrer Umgebung identifizieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -79,7 +78,7 @@ In den folgenden Artikeln finden Sie Informationen zum Sichern des externen Zugr
 
 4. [Verwenden von Gruppen für die Sicherheit](4-secure-access-groups.md)
 
-5. [Umstellung auf Azure AD B2B](5-secure-access-b2b.md)
+5. [Durchführen der Umstellung auf Azure AD B2B](5-secure-access-b2b.md)
 
 6. [Schützen des Zugriffs mit der Berechtigungsverwaltung](6-secure-access-entitlement-managment.md)
 

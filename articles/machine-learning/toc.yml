@@ -295,6 +295,8 @@
               href: how-to-manage-rest.md
             - name: "Verknüpfen mit Azure\_Synapse\_Analytics-Arbeitsbereich"
               href: how-to-link-synapse-ml-workspaces.md
+            - name: Arbeitsbereichsdiagnose
+              href: how-to-workspace-diagnostic-api.md
         - name: Erstellen und Verwalten von Computeressourcen
           items:
             - name: Compute-Instanz
@@ -559,7 +561,7 @@
                   href: how-to-use-managed-online-endpoint-studio.md
                 - name: Hochleistungsbereitstellung mit Triton
                   href: how-to-deploy-with-triton.md
-                - name: Zugreifen auf Speicher mit verwaltetem Onlineendpunkt und verwalteter Identität
+                - name: Zugreifen auf Azure-Ressourcen über einen verwalteten Onlineendpunkt
                   href: how-to-access-resources-from-endpoints-managed-identities.md
                 - name: Anzeigen der Kosten für verwaltete Onlineendpunkte
                   href: how-to-view-online-endpoints-costs.md

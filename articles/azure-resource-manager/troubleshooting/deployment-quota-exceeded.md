@@ -2,14 +2,14 @@
 title: Überschreitung des Bereitstellungskontingents
 description: Beschreibt die Behebung des Fehlers, dass im Verlauf der Ressourcengruppe mehr als 800 Bereitstellungen vorkommen.
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 11/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 06383a47f2fc7603bdc112d1fe0cd0ca53930bd6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 64845ad3aed7dcccb7623a84552459ac9de78945
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095193"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132489849"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Beheben des Fehlers, dass die Anzahl der Bereitstellungen 800 überschreitet
 
@@ -17,7 +17,7 @@ Jede Ressourcengruppe ist in ihrem Bereitstellungsverlauf auf 800 Bereitstellung
 
 Azure Resource Manager löscht Bereitstellungen automatisch aus dem Verlauf, wenn der Grenzwert fast erreicht ist. Dieser Fehler wird aus einem der folgenden Gründe unter Umständen weiterhin angezeigt:
 
-1. Für die Ressourcengruppe ist eine CanNotDelete-Sperre festgelegt, die Löschungen aus dem Bereitstellungsverlauf verhindert.
+1. Für die Ressourcengruppe ist eine [CanNotDelete](../management/lock-resources.md)-Sperre festgelegt, die Löschungen aus dem Bereitstellungsverlauf verhindert.
 1. Sie haben automatische Löschungen deaktiviert.
 1. Sie verfügen über eine große Anzahl von gleichzeitig ausgeführten Bereitstellungen, und die automatischen Löschungen werden nicht schnell genug verarbeitet, um die Gesamtanzahl zu verringern.
 
@@ -27,13 +27,13 @@ In diesem Artikel wird beschrieben, wie Sie Bereitstellungen manuell aus dem Ver
 
 ## <a name="symptom"></a>Symptom
 
-Während einer Bereitstellung erhalten Sie einen Fehler, dass die aktuelle Bereitstellung das Kontingent von 800 Bereitstellungen überschreitet.
+Während einer Bereitstellung erhalten Sie einen Fehler, dass die aktuelle Bereitstellung das Kontingent von 800 Bereitstellungen überschreitet.
 
 ## <a name="solution"></a>Lösung
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie den Befehl [az deployment group delete](/cli/azure/group/deployment), um Bereitstellungen aus dem Verlauf zu löschen.
+Verwenden Sie den Befehl [az deployment group delete](/cli/azure/deployment/group#az_deployment_group_delete), um Bereitstellungen aus dem Verlauf zu löschen.
 
 ```azurecli-interactive
 az deployment group delete --resource-group exampleGroup --name deploymentName
@@ -57,7 +57,7 @@ Sie können die aktuelle Anzahl im Bereitstellungsverlauf mit dem folgenden Befe
 az deployment group list --resource-group exampleGroup --query "length(@)"
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Verwenden Sie den Befehl [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment), um Bereitstellungen aus dem Verlauf zu löschen.
 
@@ -68,7 +68,7 @@ Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymen
 Verwenden Sie Folgendes, um alle Bereitstellungen zu löschen, die älter als fünf Tage sind:
 
 ```azurepowershell-interactive
-$deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -lt ((Get-Date).AddDays(-5))
+$deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object -Property Timestamp -LT -Value ((Get-Date).AddDays(-5))
 
 foreach ($deployment in $deployments) {
   Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name $deployment.DeploymentName
@@ -81,9 +81,4 @@ Sie können die aktuelle Anzahl im Bereitstellungsverlauf mit dem folgenden Befe
 (Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup).Count
 ```
 
-## <a name="third-party-solutions"></a>Lösungen von Drittanbietern
-
-Die folgenden externen Lösungen berücksichtigen spezifische Szenarien:
-
-* [Azure Logic-Apps und PowerShell-Lösungen](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
-* [AzureDevOpsExtensionCleanRG](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)
+---

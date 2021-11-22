@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/27/2021
+ms.date: 11/10/2021
 ms.author: b-juche
-ms.openlocfilehash: fda75ec22d4573a1730d29fc4f9a34c1f4de239a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5b5d2cafbbd70e63e2b3a039e94f1fc66106203c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224253"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319591"
 ---
 # <a name="configure-manual-backups-for-azure-netapp-files"></a>Konfigurieren manueller Sicherungen für Azure NetApp Files 
 
@@ -40,7 +40,7 @@ In der folgenden Liste sind die Verhaltensweisen manueller Sicherungen zusammeng
 
 * Sie können manuelle Sicherungen auf einem Volume auch dann erstellen, wenn das Volume bereits für Sicherungen aktiviert und mit Sicherungsrichtlinien konfiguriert ist.  Es kann allerdings nur eine ausstehende manuelle Sicherungsanforderung für das Volume vorhanden sein. Wenn Sie eine Sicherungsrichtlinie zuweisen und die Baselineübertragung noch ausgeführt wird, wird die Erstellung einer manuellen Sicherung blockiert, bis die Baselineübertragung abgeschlossen ist.
 
-* Beim Erstellen einer manuellen Sicherung wird eine Momentaufnahme auf dem Volume generiert. Die Momentaufnahme wird dann in Azure Storage übertragen. Diese Momentaufnahme wird nicht automatisch gelöscht. Sie müssen sie manuell löschen.  Das Löschen der Momentaufnahme, die für die letzte manuelle Sicherung generiert wurde, ist jedoch nicht zulässig.  Daher können Sie nach dem Erstellen einer nachfolgenden manuellen Sicherung die Momentaufnahmen, die für vorherige manuelle Sicherungen generiert wurden, bereinigen (löschen), wenn Sie sie nicht beibehalten müssen. 
+* Wenn Sie keine vorhandene Momentaufnahme angeben, die für eine Sicherung verwendet werden soll, wird beim Erstellen einer manuellen Sicherung automatisch eine Momentaufnahme auf dem Volume generiert. Die Momentaufnahme wird dann in Azure Storage übertragen. Die auf dem Volume erstellte Momentaufnahme wird beibehalten, bis die nächste manuelle Sicherung erstellt wird. Während des nachfolgenden manuellen Sicherungsvorgangs werden ältere Momentaufnahmen bereinigt. Sie können die Momentaufnahme, die für die letzte manuelle Sicherung generiert wurde, nicht löschen. 
 
 ## <a name="enable-backup-functionality"></a>Aktivieren der Sicherungsfunktionalität
 
@@ -58,19 +58,22 @@ Wenn Sie dies noch nicht getan haben, aktivieren Sie die Sicherungsfunktionalit�
 
 1. Wechseln Sie zu **Volumes**, und wählen Sie das Volume aus, für das Sie eine manuelle Sicherung aktivieren möchten.
 2. Wählen Sie **Sicherung hinzufügen** aus.
-3. Geben Sie einen Namen für die Sicherung an.   
+3. Im angezeigten Fenster „Neue Sicherung“:   
 
-    * Namen manueller Sicherungen müssen zwischen 3 und 256 Zeichen lang sein.   
+    1. Geben Sie einen Sicherungsnamen im Feld **Name** an.   
+    
+        * Namen manueller Sicherungen müssen zwischen 3 und 256 Zeichen lang sein.   
+        * Als bewährte Methode stellen Sie dem eigentlichen Sicherungsnamen ein Präfix im folgenden Format voran. Auf diese Weise können Sie die manuelle Sicherung identifizieren, falls das Volume gelöscht wird (mit erhaltenen Sicherungen).   
 
-    * Als bewährte Methode stellen Sie dem eigentlichen Sicherungsnamen ein Präfix im folgenden Format voran. Auf diese Weise können Sie die manuelle Sicherung identifizieren, falls das Volume gelöscht wird (mit erhaltenen Sicherungen).   
+            `NetAppAccountName-CapacityPoolName-VolumeName`   
 
-        `NetAppAccountName-CapacityPoolName-VolumeName`   
+            Angenommen, das NetApp-Konto ist `account1`, der Kapazitätspool ist `pool1`, und der Volumename lautet `vol1`. Dann kann eine manuelle Sicherung wie folgt benannt werden:    
 
-        Angenommen, das NetApp-Konto ist `account1`, der Kapazitätspool ist `pool1`, und der Volumename lautet `vol1`. Dann kann eine manuelle Sicherung wie folgt benannt werden:    
+            `account1-pool1-vol1-backup1`   
 
-        `account1-pool1-vol1-backup1`   
-
-        Wenn Sie eine kürzere Form für den Sicherungsnamen verwenden, stellen Sie sicher, dass er weiterhin Informationen enthält, die das NetApp-Konto, den Kapazitätspool und den Volumenamen für die Anzeige in der Sicherungsliste identifizieren.
+            Wenn Sie eine kürzere Form für den Sicherungsnamen verwenden, stellen Sie sicher, dass er weiterhin Informationen enthält, die das NetApp-Konto, den Kapazitätspool und den Volumenamen für die Anzeige in der Sicherungsliste identifizieren.
+            
+    2. Wenn Sie eine vorhandene Momentaufnahme für die Sicherung verwenden möchten, wählen Sie die Option **Vorhandene Momentaufnahme verwenden** aus.  Wenn Sie diese Option verwenden, stellen Sie sicher, dass das Feld „Name“ dem vorhandenen Momentaufnahmenamen entspricht, der für die Sicherung verwendet wird. 
 
 4. Klicken Sie auf **Erstellen**. 
 

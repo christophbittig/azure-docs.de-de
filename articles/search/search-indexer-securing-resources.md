@@ -7,13 +7,13 @@ author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 8aac6f90880775c5a1d7002048c79257b4e5ab85
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.date: 11/12/2021
+ms.openlocfilehash: a541eb900648fe33beb76207da956c1489f89cb5
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855895"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485114"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features"></a>Indexerzugriff auf Datenquellen mit Azure-Netzwerksicherheitsfeatures
 
@@ -63,20 +63,25 @@ Beachten Sie bei der Auswahl eines sicheren Zugriffsmechanismus die folgenden Ei
 
 ## <a name="indexer-execution-environment"></a>Indexerausführungsumgebung
 
-Azure Cognitive Search-Indexer können effizient Inhalt aus Datenquellen extrahieren, dem extrahierten Inhalt Anreicherungen hinzufügen und optional Projektionen erzeugen, bevor die Ergebnisse in den Suchindex geschrieben werden. Abhängig von der Anzahl der Zuständigkeiten, die einem Indexer zugewiesen sind, kann er in einer von zwei Umgebungen ausgeführt werden:
+Azure Cognitive Search-Indexer können effizient Inhalt aus Datenquellen extrahieren, dem extrahierten Inhalt Anreicherungen hinzufügen und optional Projektionen erzeugen, bevor die Ergebnisse in den Suchindex geschrieben werden.
+
+Zur optimalen Verarbeitung bestimmt ein Suchdienst eine interne Ausführungsumgebung zum Einrichten des Vorgangs. Sie können die Umgebung nicht steuern oder konfigurieren, aber es ist wichtig zu wissen, dass sie vorhanden sind, damit Sie sie beim Einrichten von IP-Firewallregeln berücksichtigen können.
+
+Je nach Anzahl und Art der zugewiesenen Tasks wird der Indexer in einer von zwei Umgebungen ausgeführt:
 
 - Eine Umgebung, die für einen bestimmten Suchdienst privat ist. In solchen Umgebungen ausgeführte Indexer teilen Ressourcen mit anderen Workloads (z. B. anderen vom Kunden initiierten Indizierungen oder Abfragen der Workloads). In der Regel werden nur Indexer, die textbasierte Indizierung ausführen (z. B. kein Skillset verwenden), in dieser Umgebung ausgeführt.
 
 - Eine Umgebung mit mehreren Mandanten, die ressourcenintensive Indexer hostet, wie z. B. solche mit Skillsets. Diese Umgebung wird verwendet, um rechenintensive Verarbeitungen auszulagern, sodass dienstspezifische Ressourcen für Routineoperationen verfügbar bleiben. Diese mehrinstanzenfähige Umgebung wird von Microsoft ohne zusätzliche Kosten für den Kunden verwaltet und gesichert.
 
-Für eine bestimmte Indexerausführung bestimmt Azure Cognitive Search die beste Umgebung. Wenn Sie eine IP-Firewall verwenden, um den Zugriff auf Azure-Ressourcen zu steuern, helfen Ihnen die Kenntnisse über Ausführungsumgebungen dabei, einen IP-Adressbereich einzurichten, der beides einschließt.
+Für eine bestimmte Indexerausführung bestimmt Azure Cognitive Search die beste Umgebung. Wenn Sie eine IP-Firewall verwenden, um den Zugriff auf Azure-Ressourcen zu steuern, helfen Ihnen die Kenntnisse über Ausführungsumgebungen dabei, einen IP-Adressbereich einzurichten, der beides einschließt, wie im nächsten Abschnitt erläutert.
 
 ## <a name="granting-access-to-indexer-ip-ranges"></a>Gewähren von Zugriff auf die Indexer-IP-Adressbereiche
 
-Wenn die Ressource, auf die Ihr Indexer zugreifen möchte, auf eine bestimmte Gruppe von IP-Adressbereichen beschränkt ist, müssen Sie die Gruppe so erweitern, dass sie die möglichen IP-Adressbereiche einschließt, aus denen eine Indexeranforderung kommen kann. Wie bereits erwähnt, gibt es zwei mögliche Umgebungen, in denen Indexer ausgeführt werden und aus denen Zugriffsanforderungen kommen können. Sie müssen die IP-Adressen **beider** Umgebungen hinzufügen, damit der Indexerzugriff funktioniert.
+Wenn sich die Ressource, aus der Ihr Indexer Daten abruft, hinter einer Firewall befindet, stellen Sie sicher, dass die IP-Adressbereiche in den Regeln für eingehenden Datenverkehr alle IP-Adressen enthalten, von denen eine Indexeranforderung stammen kann. Wie bereits erwähnt, gibt es zwei mögliche Umgebungen, in denen Indexer ausgeführt werden und aus denen Zugriffsanforderungen kommen können. Sie müssen die IP-Adressen **beider** Umgebungen hinzufügen, damit der Indexerzugriff funktioniert.
 
-- Zum Abrufen der IP-Adresse der jeweiligen privaten Umgebung des Suchdiensts führen Sie ein `nslookup` (oder `ping`) für den vollqualifizierten Domänennamen (FQDN) des Suchdiensts durch. Der FQDN eines Suchdiensts in der öffentlichen Cloud wäre z. B. `<service-name>.search.windows.net`. Diese Informationen finden Sie im Azure-Portal.
-- Die IP-Adressen der mehrinstanzenfähigen Umgebungen sind über das `AzureCognitiveSearch`-Diensttag verfügbar. [Azure-Diensttags](../virtual-network/service-tags-overview.md) weisen für jeden Dienst einen veröffentlichten Bereich von IP-Adressen auf. Dieser ist über eine [Ermittlungs-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) oder eine [herunterladbare JSON-Datei](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) verfügbar. In beiden Fällen sind die IP-Adressbereiche nach Regionen untergliedert. Sie können nur die IP-Adressbereiche auswählen, die der Region zugewiesen sind, in der Ihr Suchdienst bereitgestellt wird.
+- Zum Abrufen der IP-Adresse der jeweiligen privaten Umgebung des Suchdiensts verwenden Sie `nslookup` (oder `ping`) für den vollqualifizierten Domänennamen (FQDN) des Suchdiensts. Der FQDN eines Suchdiensts in der öffentlichen Cloud wäre z. B. `<service-name>.search.windows.net`. Diese Informationen finden Sie im Azure-Portal.
+
+- Verwenden Sie das `AzureCognitiveSearch`-Diensttag, um die IP-Adressen der mehrinstanzenfähigen Umgebungen abzurufen, in denen ein Indexer ausgeführt werden kann. [Azure-Diensttags](../virtual-network/service-tags-overview.md) verfügen über einen veröffentlichten IP-Adressbereich für jeden Dienst. Sie finden diese IP-Adressen mithilfe der [Ermittlungs-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) oder einer [herunterladbaren JSON-Datei](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). In beiden Fällen werden IP-Adressbereiche nach Region unterteilt. Sie sollten nur die IP-Adressbereiche angeben, die der Region zugewiesen sind, in der Ihr Suchdienst bereitgestellt wird.
 
 Für bestimmte Datenquellen kann das Diensttag selbst direkt verwendet werden, anstatt die Liste der IP-Adressbereiche aufzulisten (die IP-Adresse des Suchdiensts muss weiterhin explizit verwendet werden). Diese Datenquellen schränken den Zugriff durch das Einrichten einer [Netzwerksicherheitsgruppen-Regel](../virtual-network/network-security-groups-overview.md) ein, die native Unterstützung für das Hinzufügen eines Diensttags bietet, im Gegensatz zu IP-Regeln wie den von Azure Storage, Cosmos DB, Azure SQL usw. angebotenen. Folgende Datenquellen unterstützen die direkte Verwendung des `AzureCognitiveSearch`-Diensttags zusätzlich zur IP-Adresse des Suchdiensts:
 
@@ -88,9 +93,9 @@ Weitere Informationen zu dieser Konnektivitätsoption finden Sie unter [Indexerv
 
 ## <a name="granting-access-via-private-endpoints"></a>Gewähren des Zugriffs über private Endpunkte
 
-Indexer können [private Endpunkte](../private-link/private-endpoint-overview.md) für den Zugriff auf Ressourcen verwenden, die entweder zum Auswählen virtueller Netzwerke gesperrt sind, oder für die kein öffentlicher Zugriff aktiviert ist.
+Indexer können [private Endpunkte](../private-link/private-endpoint-overview.md) für Verbindungen mit gesperrten Ressourcen verwenden (Ressourcen, die in einem geschützten virtuellen Netzwerk ausgeführt werden oder einfach nicht über eine öffentliche Verbindung verfügbar sind).
 
-Diese Funktion ist nur in kostenpflichtigen Suchdiensten verfügbar, mit Beschränkungen hinsichtlich der Anzahl der privaten Endpunkte, die erstellt werden. Weitere Informationen finden Sie unter [Diensteinschränkungen](search-limits-quotas-capacity.md#shared-private-link-resource-limits).
+Diese Funktion ist nur in abrechenbaren Suchdiensten (Basic und höher) verfügbar und unterliegt tarifbasierten Grenzwerten für die Anzahl privater Endpunkte, die für die text- und skillbasierte Indizierung erstellt werden können. Weitere Informationen finden Sie im Abschnitt [Grenzwerte für freigegebene Private Link-Ressourcen](search-limits-quotas-capacity.md#shared-private-link-resource-limits) in der Dokumentation zu Diensteinschränkungen.
 
 ### <a name="step-1-create-a-private-endpoint-to-the-secure-resource"></a>Schritt 1: Erstellen eines privaten Endpunkts für die sichere Ressource
 
@@ -129,16 +134,6 @@ Damit Indexer über Verbindungen über private Endpunkte auf Ressourcen zugreife
 
 Diese Schritte werden unter [Indexerverbindungen über einen privaten Endpunkt](search-indexer-howto-access-private.md) ausführlicher beschrieben.
 Wenn Sie über einen genehmigten privaten Endpunkt für eine Ressource verfügen, werden als *privat* festgelegte Indexer versuchen, über die Verbindung über den privaten Endpunkt Zugriff zu erhalten.
-
-### <a name="limits"></a>Grenzwerte
-
-Um eine optimale Leistung und Stabilität des Suchdiensts zu gewährleisten, werden Einschränkungen (von der Suchdienstebene) in den folgenden Dimensionen auferlegt:
-
-- Die Arten von Indexern, die als *privat* festgelegt werden können.
-- Die Anzahl der freigegebenen Private Link-Ressourcen, die erstellt werden können.
-- Die Anzahl der unterschiedlichen Ressourcentypen, für die freigegebene Private Link-Ressourcen erstellt werden können.
-
-Diese Grenzwerte werden in [Dienstgrenzwerte in der kognitiven Azure-Suche](search-limits-quotas-capacity.md) dokumentiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

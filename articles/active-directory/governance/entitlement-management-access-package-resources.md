@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7439263f15a99a7b717bac1dc48e06a77bb66b
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: d136272f97a203d78a3c508d7c7ccd3770e0f216
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257120"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371736"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -77,6 +77,7 @@ Sie können eine beliebige [Azure AD-Sicherheitsgruppe oder Microsoft 365-Grup
 - Wird ein Benutzer als Gruppen- oder Teammitglied hinzugefügt, sind alle anderen Mitglieder dieser Gruppe oder dieses Teams für ihn sichtbar. (Dies gilt auch für Gastbenutzer.)
 - In Azure AD kann die Mitgliedschaft einer Gruppe, die über Windows Server Active Directory mit Azure AD Connect synchronisiert oder in Exchange Online als Verteilergruppe erstellt wurde, nicht geändert werden.  
 - Die Mitgliedschaft von dynamischen Gruppen kann nicht durch Hinzufügen oder Entfernen eines Mitglieds aktualisiert werden. Daher eignen sich dynamische Gruppenmitgliedschaften nicht für die Azure AD-Berechtigungsverwaltung.
+- Für M365-Gruppen gelten zusätzliche Einschränkungen, die in der [Übersicht über Microsoft 365-Gruppen für Administratoren](/microsoft-365/admin/create-groups/office-365-groups) beschrieben werden, z. B. ein Grenzwert von 100 Besitzern pro Gruppe, Grenzwerte für die Anzahl von Mitgliedern, die gleichzeitig auf Gruppenunterhaltungen zugreifen können, und 7.000 Gruppen pro Mitglied.
 
 Weitere Informationen finden Sie unter [Vergleichen von Gruppen](/office365/admin/create-groups/compare-groups) und [Microsoft 365-Gruppen und Microsoft-Teams](/microsoftteams/office-365-groups).
 

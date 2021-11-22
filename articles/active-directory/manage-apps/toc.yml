@@ -25,7 +25,7 @@
 - name: Tutorials
   items:
     - name: Liste der Tutorials für die App-Integration
-      href: /azure/active-directory/saas-apps/
+      href: /azure/active-directory/saas-apps/tutorial-list
 - name: Beispiele
   items:
     - name: "Übersicht über App\_Management-Beispiele"
@@ -100,6 +100,8 @@
               href: manage-application-permissions.md
         - name: Verwalten der Benutzerzuweisung
           href: assign-user-or-group-access-portal.md
+        - name: Zuweisen benutzerdefinierter Sicherheitsattribute
+          href: custom-security-attributes-apps.md
         - name: Erstellen von Auflistungen in „Meine Apps“
           href: access-panel-collections.md
         - name: Aktivieren des Self-Service-App-Zugriffs
@@ -199,7 +201,7 @@
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
       href: /answers/topics/azure-active-directory.html
     - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
     - name: Stack Overflow

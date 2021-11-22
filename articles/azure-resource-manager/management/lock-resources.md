@@ -4,12 +4,12 @@ description: Verhindern Sie, dass Benutzer Azure-Ressourcen aktualisieren oder l
 ms.topic: conceptual
 ms.date: 07/01/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 62581028b58001c51721b79149ad2c75dacc86a8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 324aed15446e83e0853f4b590c7d679a7f598abe
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642394"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491391"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
@@ -97,9 +97,9 @@ Um alle Elemente für den Dienst zu löschen, einschließlich der gesperrten Inf
 
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
-### <a name="arm-template"></a>ARM-Vorlage
+### <a name="template"></a>Vorlage
 
-Wenn Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) zum Bereitstellen einer Sperre verwenden, müssen Sie den Bereich der Sperre und den Bereich der Bereitstellung beachten. Um eine Sperre auf den Bereitstellungsbereich anzuwenden, z. B. das Sperren einer Ressourcengruppe oder eines Abonnements, legen Sie die Eigenschaft „scope“ nicht fest. Wenn Sie eine Ressource innerhalb des Bereitstellungsbereichs sperren, legen Sie den Bereich ordnungsgemäß fest.
+Wenn Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) oder Bicep-Datei zum Bereitstellen einer Sperre verwenden, müssen Sie den Bereich der Sperre und den Bereich der Bereitstellung beachten. Um eine Sperre auf den Bereitstellungsbereich anzuwenden, z. B. das Sperren einer Ressourcengruppe oder eines Abonnements, legen Sie die Eigenschaft „scope“ nicht fest. Wenn Sie eine Ressource innerhalb des Bereitstellungsbereichs sperren, legen Sie den Bereich ordnungsgemäß fest.
 
 Die folgende Vorlage wendet eine Sperre auf die Ressourcengruppe an, in der sie bereitgestellt ist. Beachten Sie, dass für die Sperrressource keine Eigenschaft „scope“vorhanden ist, weil der Bereich der Sperre mit dem Bereich der Bereitstellung übereinstimmt. Diese Vorlage wird auf Ressourcengruppenebene bereitgestellt.
 

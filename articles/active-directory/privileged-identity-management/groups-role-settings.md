@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/07/2021
+ms.date: 11/12/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: badc03111d7c657685742505e53642498db344e9
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 97798fdfc680d2cc644a47acc814a8fbe7e44654
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668578"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490040"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Gruppen mit privilegiertem Zugriff (Vorschau) in Privileged Identity Management
 
@@ -30,7 +30,7 @@ Rolleneinstellungen sind die Standardeinstellungen, die auf Zuweisungen von priv
 
 Führen Sie die folgenden Schritte aus, um die Einstellungen für die Azure-Rolle einer Gruppe mit privilegiertem Zugriff zu öffnen.
 
-1. Melden Sie sich mit einem Benutzer beim [Azure-Portal](https://portal.azure.com/) an, der die Rolle [Globaler Administrator](../roles/permissions-reference.md#global-administrator) innehat oder als Gruppenbesitzer zugewiesen ist.
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) mit einem Benutzer in der Rolle [Global Administrator](../roles/permissions-reference.md#global-administrator), der Rolle Privileged Role Administrator oder der Rolle Gruppenbesitzer an.
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
@@ -64,10 +64,10 @@ Führen Sie die folgenden Schritte aus, um die Einstellungen für die Azure-Roll
 
 Auf der Registerkarte **Benachrichtigungen** der Rolleneinstellungenseite kann mit Privileged Identity Management differenziert gesteuert werden, wer welche Benachrichtigungen empfängt.
 
-- **Deaktivieren einer E-Mail**<br>Sie können bestimmte E-Mails deaktivieren, indem Sie das Standardempfänger-Kontrollkästchen deaktivieren und alle zusätzlichen Empfänger löschen.  
-- **E-Mails auf angegebene E-Mail-Adressen beschränken**<br>Sie können an Standardempfänger gesendete E-Mails deaktivieren, indem Sie das Standardempfänger-Kontrollkästchen deaktivieren. Anschließend können Sie zusätzliche E-Mail-Adressen als zusätzliche Empfänger hinzufügen. Wenn Sie mehrere E-Mail-Adressen hinzufügen möchten, trennen Sie diese durch ein Semikolon (;).
-- **E-Mails sowohl an Standardempfänger als auch zusätzliche Empfänger senden**<br>Sie können E-Mails sowohl an Standardempfänger als auch an zusätzliche Empfänger senden, indem Sie das Standardempfänger-Kontrollkästchen aktivieren und E-Mail-Adressen für weitere Empfänger hinzufügen.
-- **Nur kritische E-Mails**<br>Um nur kritische E-Mails zu erhalten, können Sie für jeden E-Mail-Typ das Kontrollkästchen aktivieren. Dies bedeutet, dass Privileged Identity Management nur dann weiterhin E-Mails an die konfigurierten Empfänger sendet, wenn die E-Mail eine sofortige Aktion erfordert. Beispielsweise werden E-Mails, die Benutzer zur Erweiterung ihrer Rollenzuweisung auffordern, nicht ausgelöst, während E-Mails, die Administratoren zum Genehmigen einer Erweiterungsanforderung auffordern, ausgelöst werden.
+- **Deaktivieren einer E-Mail**<br>Sie können bestimmte E-Mails deaktivieren, indem Sie das Standardempfänger-Kontrollkästchen deaktivieren und alle weiteren Empfänger löschen.  
+- **E-Mails auf angegebene E-Mail-Adressen beschränken**<br>Sie können an Standardempfänger gesendete E-Mails deaktivieren, indem Sie das Standardempfänger-Kontrollkästchen deaktivieren. Sie können dann andere E-Mail-Adressen als Empfänger hinzufügen. Wenn Sie mehrere E-Mail-Adressen hinzufügen möchten, trennen Sie diese durch ein Semikolon (;).
+- **E-Mails sowohl an Standardempfänger als auch weitere Empfänger senden**<br>Sie können E-Mails sowohl an Standardempfänger als auch an weitere Empfänger senden, indem Sie das Standardempfänger-Kontrollkästchen aktivieren und E-Mail-Adressen für weitere Empfänger hinzufügen.
+- **Nur kritische E-Mails**<br>Um nur kritische E-Mails zu erhalten, können Sie für jeden E-Mail-Typ das Kontrollkästchen aktivieren. Dies bedeutet, dass Privileged Identity Management nur dann weiterhin E-Mails an die angegebenen Empfänger sendet, wenn die E-Mail eine sofortige Aktion erfordert. Beispielsweise werden E-Mails, die Benutzer zur Erweiterung ihrer Rollenzuweisung auffordern, nicht ausgelöst, während E-Mails, die Administratoren zum Genehmigen einer Erweiterungsanforderung auffordern, ausgelöst werden.
 
 ## <a name="assignment-duration"></a>Zuweisungsdauer
 
@@ -96,7 +96,7 @@ Privileged Identity Management ermöglicht die optionale Erzwingung der Azure A
 
 ### <a name="require-multifactor-authentication-on-active-assignment"></a>Multi-Factor Authentication bei aktiver Zuweisung erforderlich
 
-Diese Option erfordert, dass Administratoren eine mehrstufige Authentifizierung abschließen müssen, bevor sie eine aktive (im Gegensatz zu einer berechtigten) Rollenzuweisung erstellen. Privileged Identity Management kann die mehrstufige Authentifizierung nicht erzwingen, wenn Benutzer ihre Rollenzuweisung verwenden, weil die Rolle ab dem Zeitpunkt der Zuweisung bereits aktiv ist.
+Diese Option erfordert, dass Administratoren die mehrstufige Authentifizierung abschließen müssen, bevor sie eine aktive (im Gegensatz zu einer berechtigten) Rollenzuweisung erstellen. Privileged Identity Management kann die mehrstufige Authentifizierung nicht erzwingen, wenn Benutzer ihre Rollenzuweisung verwenden, weil die Rolle ab dem Zeitpunkt der Zuweisung bereits aktiv ist.
 
 Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication bei aktiver Zuweisung erforderlich**, um die mehrstufige Authentifizierung beim Erstellen einer aktiven Rollenzuweisung als erforderlich festzulegen.
 
@@ -110,7 +110,7 @@ Weitere Informationen finden Sie unter [Mehrstufige Authentifizierung und Privil
 
 ## <a name="activation-maximum-duration"></a>Maximale Aktivierungsdauer
 
-Mit dem Schieberegler **Maximale Aktivierungsdauer** geben Sie die maximale Zeit in Stunden an, die eine Rolle aktiv bleibt, bevor sie abläuft. Dieser Wert kann zwischen einer und 24 Stunden betragen.
+Mit dem Schieberegler **Maximale Aktivierungsdauer** geben Sie die maximale Zeit in Stunden an, die eine Aktivierungsanforderung für eine Rolle aktiv bleibt, bevor sie abläuft. Dieser Wert kann zwischen einer und 24 Stunden betragen.
 
 ## <a name="require-justification"></a>Verlangen einer Begründung
 

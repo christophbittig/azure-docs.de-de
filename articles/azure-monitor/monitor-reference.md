@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 11/02/2021
-ms.openlocfilehash: 043f366bfc34ca496af866b4add3a73f44b15b71
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: b5ae25c2421d4c572a3ce2bd40ccec5a6cb959f7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505023"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310474"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 
@@ -48,7 +48,7 @@ In der folgenden Tabelle sind die verfügbaren kuratierten Visualisierungen und 
  | [Azure Container Insights](/azure/azure-monitor/insights/container-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/containerInsights) | Überwacht die Leistung von Containerworkloads, die in Managed Kubernetes-Clustern bereitgestellt und in Azure Kubernetes Service (AKS) gehostet werden. Es ermöglicht den Einblick in die Leistung, indem anhand der Metrik-API die in Kubernetes verfügbaren Metriken von Controllern, Knoten und Containern erfasst werden. Auch Containerprotokolle werden erfasst.  Nach der Aktivierung der Überwachung auf Kubernetes-Clustern werden diese Metriken und Protokolle für Sie automatisch mittels einer Containerversion des Log Analytics-Agents für Linux erfasst gespeichert. | 
  | [Azure Monitor für Ressourcengruppen](/azure/azure-monitor/insights/resource-group-insights) | Allgemein verfügbar | Nein | Selektieren und Diagnostizieren von Problemen Ihrer individuellen Ressourcen und Bereitstellen eines Kontexts für die Integrität und Leistung der Ressourcengruppe als Ganzes. | 
  | [Azure Monitor SAP](/azure/virtual-machines/workloads/sap/monitor-sap-on-azure) | Allgemein verfügbar | Nein | Ein Azure-natives Überwachungsprodukt für alle Kunden, die ihre SAP-Umgebungen in Azure ausführen. Es funktioniert sowohl mit SAP auf virtuellen Azure-Computern als auch mit SAP in Azure (große Instanzen). Erfasst Telemetriedaten aus der Azure-Infrastruktur und den Azure-Datenbanken an einem zentralen Ort und korreliert die Daten visuell, um die Problembehandlung zu beschleunigen. Sie können verschiedene Komponenten einer SAP-Landschaft wie beispielsweise Azure-VMs, Hochverfügbarkeitscluster, SAP HANA-Datenbanken oder SAP NetWeaver überwachen, indem sie den entsprechenden Anbieter für die jeweilige Komponente hinzufügen. |
- | [Azure Stack HCI Insights](/azure-stack/hci/manage/azure-stack-hci-insights) | Vorschau | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/azureStackHCIInsights) | Basiert auf Azure Monitor-Arbeitsmappen. Bietet Einblicke in die Integrität, Leistung und Nutzung über registrierte Azure Stack HCI-Cluster der Version 21H2, die mit Azure verbunden und für die Überwachung registriert sind. Die Daten werden in einem Log Analytics-Arbeitsbereich gespeichert. Dies ermöglicht leistungsstarke Aggregation und Filterung sowie die Analyse von Datentrends im zeitlichen Verlauf.  | 
+ | [Erkenntnisse zu Azure Stack HCI](/azure-stack/hci/manage/azure-stack-hci-insights) | Vorschau | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/azureStackHCIInsights) | Basiert auf Azure Monitor-Arbeitsmappen. Bietet Einblicke in die Integrität, Leistung und Nutzung über registrierte Azure Stack HCI-Cluster der Version 21H2, die mit Azure verbunden und für die Überwachung registriert sind. Die Daten werden in einem Log Analytics-Arbeitsbereich gespeichert. Dies ermöglicht leistungsstarke Aggregation und Filterung sowie die Analyse von Datentrends im zeitlichen Verlauf.  | 
  | [Erkenntnisse für Windows Virtual Desktop](/azure/virtual-desktop/azure-monitor) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/insights/menuId/insights) | Azure Monitor für Windows Virtual Desktop (Vorschau) ist ein Dashboard, das auf Azure Monitor-Arbeitsmappen basiert und IT-Experten Informationen zu ihren Windows Virtual Desktop-Umgebungen bereitstellt. In diesem Thema wird erläutert, wie Sie Azure Monitor für Windows Virtual Desktop zur Überwachung Ihrer Windows Virtual Desktop-Umgebungen einrichten. | 
 
 ## <a name="product-integrations"></a>Produktintegrationen
@@ -70,7 +70,7 @@ Die in der folgenden Tabelle aufgeführten anderen Dienste und älteren Überwac
 | **Die folgenden Lösungen können auch in Teile von Azure Monitor integriert werden. Beachten Sie, dass sich Lösungen nicht mehr aktiv weiterentwickelt werden. Verwenden Sie stattdessen [Insights](#insights-and-curated-visualizations).**  | | 
 | Netzwerk – [Netzwerkleistungsmonitor-Lösung](insights/network-performance-monitor.md) | 
 | Netzwerk – [Azure Application Gateway-Lösung](insights/azure-networking-analytics.md#azure-application-gateway-analytics) | .
-| [Office 365-Lösung](insights/solution-office-365.md) | Überwachen Ihrer Office 365-Umgebungen. Aktualisierte Version mit verbessertem Onboarding über Azure Sentinel verfügbar. |
+| [Office 365-Lösung](insights/solution-office-365.md) | Überwachen Ihrer Office 365-Umgebungen. Aktualisierte Version mit verbessertem Onboarding über Microsoft Sentinel verfügbar. |
 | [SQL-Analyse-Lösung](insights/azure-sql.md) | Verwenden Sie stattdessen SQL Insights. |
 | [Surface Hub-Lösung](insights/surface-hubs.md) |  |
 
@@ -282,6 +282,5 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 - Erfahren Sie mehr über die [Azure Monitor-Datenplattform, auf der mit Erkenntnissen und Lösungen gesammelte Protokolle und Metriken gespeichert werden](data-platform.md).
 - Arbeiten Sie ein [Tutorial zum Überwachen einer Azure-Ressource](essentials/tutorial-resource-logs.md) durch.
 - Arbeiten Sie ein [Tutorial zum Schreiben einer Protokollabfrage für die Analyse von Daten in Azure Monitor-Protokollen](essentials/tutorial-resource-logs.md) durch.
-- Arbeiten Sie ein [Tutorial zum Erstellen eines Metrikdiagramms für die Analyse von Daten in Azure Monitor-Metriken](essentials/tutorial-metrics-explorer.md) durch.
+- Arbeiten Sie ein [Tutorial zum Erstellen eines Metrikdiagramms für die Analyse von Daten in Azure Monitor-Metriken](essentials/tutorial-metrics.md) durch.
  
-

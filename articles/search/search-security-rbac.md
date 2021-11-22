@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: 5318ee205c66757409b9e0ffd8de864bcb69689a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b26334c655332810ad1f67ae6799c3919fda4bb4
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064979"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517811"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Verwenden der rollenbasierten Autorisierung in Azure Cognitive Search
 
@@ -64,16 +64,16 @@ Neue integrierte Vorschaurollen bieten einen präzisen Satz von Berechtigungen f
 
 So fügen Sie Ihr Abonnement zu der Vorschau hinzu:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zur Seite **Abonnements**.
-1. Wählen Sie das Abonnement aus, das Sie verwenden möchten.
-1. Wählen Sie auf der linken Seite der Abonnementseite die Option **Previewfunktion** aus.
-1. Verwenden Sie die Suchleiste oder Filter, um die **Rollenbasierte Zugriffssteuerung für den Suchdienst (Vorschauversion)** zu suchen und auszuwählen.
-1. Wählen Sie **Registrieren** aus, um das Feature Ihrem Abonnement hinzuzufügen.
+1. Navigieren Sie zu Ihrem Suchdienst im [Azure-Portal](https://portal.azure.com/).
+1. Wählen Sie auf der linken Seite die Option **Schlüssel** aus.
+1. Wählen Sie im blauen Banner, in dem die Vorschau erwähnt wird, **Registrieren** aus, um das Feature Ihrem Abonnement hinzuzufügen.
 
-![Registrieren für rbac auf afec](media/search-howto-aad/rbac-signup-afec.png)
+![Screenshot: Registrieren für die RBAC-Vorschau im Portal](media/search-howto-aad/rbac-signup-portal.png)
 
-Weitere Informationen zum Hinzufügen von Vorschaufeatures finden Sie unter [Einrichten von Vorschaufeatures im Azure-Abonnement](../azure-resource-manager/management/preview-features.md?tabs=azure-portal).
+Sie können sich auch für die Vorschau registrieren, indem Sie Azure Feature Exposure Control (AFEC) verwenden und nach *Rollenbasierte Zugriffssteuerung für Suchdienst (Vorschau)* suchen. Weitere Informationen zum Hinzufügen von Vorschaufeatures finden Sie unter [Einrichten von Vorschaufeatures im Azure-Abonnement](../azure-resource-manager/management/preview-features.md?tabs=azure-portal).
 
+> [!NOTE]
+> Nachdem Sie Die Vorschau zu Ihrem Abonnement hinzugefügt haben, werden alle Dienste im Abonnement dauerhaft in der Vorschau registriert. Wenn Sie die rollenbasierte Zugriffssteuerung (RBAC) für einen bestimmten Dienst nicht verwenden möchten, können Sie RBAC für Vorgänge auf Datenebene deaktivieren, wie im nächsten Schritt gezeigt.
 
 ## <a name="step-2-preview-configuration"></a>Schritt 2: Vorschau auf die Konfiguration
 
@@ -85,7 +85,7 @@ In diesem Schritt konfigurieren Sie Ihren Dienst so, dass er einen **Autorisieru
 
 ### <a name="azure-portal"></a>[**Azure-Portal**](#tab/config-svc-portal)
 
-1. Öffnen Sie das Portal mit dieser Syntax: [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true).
+1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com).
 
 1. Navigieren Sie zu Ihrem Suchdienst.
 
@@ -148,10 +148,7 @@ Sie müssen **Besitzer** sein oder über die Berechtigung [Microsoft.Authorizati
 
 ### <a name="azure-portal"></a>[**Azure-Portal**](#tab/roles-portal)
 
-1. Öffnen Sie für Vorschaurollen das Portal mit der folgenden Syntax: [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true). Die URL sollte `feature.enableRbac=true` enthalten.
-
-   > [!NOTE]
-   > Für Benutzer und Gruppen, die einer Vorschaurolle zugewiesen sind, werden Portalinhalte wie Indizes und Indexer nur sichtbar, wenn Sie das Portal mit dem Featureflag öffnen. 
+1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com).
 
 1. Navigieren Sie zu Ihrem Suchdienst.
 
@@ -204,10 +201,7 @@ Denken Sie daran, dass Sie den Zugriff nur auf Ressourcen der obersten Ebene bes
 
 ### <a name="azure-portal"></a>[**Azure-Portal**](#tab/test-portal)
 
-1. Öffnen Sie für Vorschaurollen das Portal mit der folgenden Syntax: [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true). 
-
-   > [!NOTE]
-   > Für Benutzer und Gruppen, die einer Vorschaurolle zugewiesen sind, werden Portalinhalte wie Indizes und Indexer nur sichtbar, wenn Sie das Portal mit dem Featureflag öffnen. 
+1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com).
 
 1. Navigieren Sie zu Ihrem Suchdienst.
 

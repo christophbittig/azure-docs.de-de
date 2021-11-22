@@ -10,12 +10,12 @@ ms.author: justinha
 author: calui
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 7cee43e911c2713b13f7e8e729a00b4c2379ce22
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: e7b34e98776f252c2122d58601c8067df208b2f2
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251089"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486793"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>Anmeldung bei Azure AD mit einer E-Mail-Adresse als alternative Anmelde-ID (Vorschau)
 
@@ -30,7 +30,9 @@ Einige Organisationen sind aus folgenden Gründen nicht auf die Hybridauthentifi
 * Wenn Sie den Azure AD-UPN ändern, stimmen die lokale Umgebung und die Azure AD-Umgebung nicht mehr überein, was zu Problemen mit bestimmten Anwendungen und Diensten führen kann.
 * Aufgrund von betrieblichen oder Compliancegründen möchte die Organisation den lokalen UPN nicht für die Anmeldung bei Azure AD verwenden.
 
-Zur Unterstützung der Umstellung auf die Hybridauthentifizierung können Sie Azure AD so konfigurieren, dass sich Benutzer mit ihren E-Mail-Adressen als alternative Anmelde-ID anmelden können. Wenn *Contoso* beispielsweise eine Markenumstellung auf *Fabrikam* durchführen würde, könnte die E-Mail-Adresse als alternative Anmelde-ID verwendet werden, anstatt Anmeldungen weiterhin mit dem veralteten UPN `balas@contoso.com` durchzuführen. Für den Zugriff auf eine Anwendung oder einen Dienst würden Benutzer sich dann mit einer E-Mail-Adresse bei Azure AD anmelden, die nicht als UPN registriert ist, z. B. `balas@fabrikam.com`.
+Zur Unterstützung der Umstellung auf die Hybridauthentifizierung können Sie Azure AD so konfigurieren, dass sich Benutzer mit ihren E-Mail-Adressen als alternative Anmelde-ID anmelden können. Wenn *Contoso* beispielsweise eine Markenumstellung auf *Fabrikam* durchführen würde, könnte die E-Mail-Adresse als alternative Anmelde-ID verwendet werden, anstatt Anmeldungen weiterhin mit dem veralteten UPN `ana@contoso.com` durchzuführen. Für den Zugriff auf eine Anwendung oder einen Dienst würden Benutzer sich dann mit einer E-Mail-Adresse bei Azure AD anmelden, die nicht als UPN registriert ist, z. B. `ana@fabrikam.com`.
+
+![Diagramm der E-Mail-Adresse als alternative Anmelde-ID.](media/howto-authentication-use-email-signin/email-alternate-login-id.png)
 
 In diesem Artikel erfahren Sie, wie Sie die E-Mail-Adresse als alternative Anmelde-ID aktivieren und verwenden.
 
@@ -39,7 +41,7 @@ In diesem Artikel erfahren Sie, wie Sie die E-Mail-Adresse als alternative Anmel
 Sie müssen Folgendes über die Verwendung von E-Mail-Adressen als alternative Anmelde-IDs wissen:
 
 * Das Feature ist in Azure AD Free und höher verfügbar.
-* Das Feature ermöglicht die Anmeldung mit dem *ProxyAddresses*-Attribut verifizierter Domänen für cloudauthentifizierte Azure AD-Benutzer.
+* Das Feature ermöglicht die Anmeldung mit *ProxyAddresses* (zusätzlich zu UPN) für cloudauthentifizierte Azure AD-Benutzer. Wie dies für Azure AD B2B-Szenarien Anwendung findet, erfahren Sie im Abschnitt [B2B](#b2b-guest-user-sign-in-with-an-email-address).
 * Wenn ein Benutzer sich mit einer E-Mail-Adresse anmeldet, die nicht als UPN registriert ist, geben die Ansprüche `unique_name` und `preferred_username` (sofern vorhanden) im [ID-Token](../develop/id-tokens.md) den Wert der E-Mail-Adresse zurück, die nicht als UPN registriert ist.
 * Das Feature unterstützt die verwaltete Authentifizierung mit Kennworthashsynchronisierung (Password Hash Sync, PHS) oder Passthrough-Authentifizierung (PTA).
 * Es gibt zwei Optionen zum Konfigurieren des Features:
@@ -57,8 +59,7 @@ In der aktuellen Vorschauversion gelten die folgenden Einschränkungen für die 
 
 * **Nicht unterstützte Flows:** Einige Flows sind derzeit nicht mit E-Mail-Adressen kompatibel, die nicht als UPN registriert wurden. Dazu gehören unter anderem folgende:
     * Identity Protection gleicht nicht als UPN registrierte E-Mail-Adressen nicht mit der Risikoerkennung *Kompromittierte Anmeldeinformationen* ab. Diese Risikoerkennung verwendet zum Abgleichen kompromittierter Anmeldeinformationen den UPN. Weitere Informationen finden Sie unter [Risikoerkennung und Problembehandlung in Azure AD Identity Protection][identity-protection].
-    * B2B-Einladungen, die an eine nicht als UPN registrierte E-Mail-Adresse gesendet werden, werden nicht vollständig unterstützt. Nachdem eine Einladung akzeptiert wurde, die an eine nicht als UPN registrierte E-Mail-Adresse gesendet wurde, funktioniert die Anmeldung mit der nicht als UPN registrierten E-Mail-Adresse möglicherweise nicht für den Gastbenutzer am Endpunkt des Ressourcenmandanten.
-    * Wenn ein Benutzer sich mit einer nicht als UPN registrierten E-Mail-Adresse anmeldet, kann dieser sein Kennwort nicht ändern. Die Self-Service-Kennwortzurücksetzung (SSPR) von Azure AD sollte erwartungsgemäß funktionieren. Während der SSPR wird dem Benutzer möglicherweise sein UPN angezeigt, wenn er seine Identität über eine alternative E-Mail-Adresse verifiziert.
+    * Wenn ein Benutzer sich mit einer nicht als UPN registrierten E-Mail-Adresse anmeldet, kann dieser sein Kennwort nicht ändern. Die Self-Service-Kennwortzurücksetzung (SSPR) von Azure AD sollte erwartungsgemäß funktionieren. Während der SSPR wird dem Benutzer möglicherweise sein UPN angezeigt, wenn er seine Identität unter Verwendung einer Nicht-UPN-E-Mail-Adresse verifiziert.
 
 * **Nicht unterstützte Szenarien:** Folgende Szenarien werden nicht unterstützt: Anmelden mit einer nicht als UPN registrierten E-Mail-Adresse bei den folgenden Diensten/Geräten:
     * [In Azure AD eingebundene Hybridgeräte](../devices/concept-azure-ad-join-hybrid.md)
@@ -68,8 +69,6 @@ In der aktuellen Vorschauversion gelten die folgenden Einschränkungen für die 
     * Anwendungen mit Legacyauthentifizierung wie POP3 und SMTP
     * Skype for Business
     * Microsoft Office unter macOS
-    * Microsoft Teams im Web
-    * OneDrive (wenn der Anmeldeflow keine mehrstufige Authentifizierung umfasst)
     * Microsoft 365-Verwaltungsportal
 
 * **Nicht unterstützte Apps:** Einige Anwendungen von Drittanbietern funktionieren möglicherweise nicht wie erwartet, wenn sie voraussetzen, dass die Ansprüche vom Typ `unique_name` oder `preferred_username` unveränderlich sind oder immer einem bestimmten Benutzerattribut entsprechen (beispielsweise UPN).
@@ -123,6 +122,12 @@ Eines der Benutzerattribute, das automatisch von Azure AD Connect synchronisiert
 > Nur E-Mail-Adressen in für den Mandanten verifizierten Domänen werden mit Azure AD synchronisiert. Jeder Azure AD-Mandant verfügt über mindestens eine verifizierte Domäne, deren Eigentümer er nachweislich ist, und die eindeutig an ihren Mandanten gebunden ist.
 >
 > Weitere Informationen finden Sie unter [Hinzufügen und Verifizieren eines benutzerdefinierten Domänennamens in Azure][verify-domain].
+
+## <a name="b2b-guest-user-sign-in-with-an-email-address"></a>B2B-Gastbenutzeranmeldung mit einer E-Mail-Adresse
+
+![Diagramm von „E-Mail-Adresse als alternative Anmelde-ID“ für die B2B-Gastbenutzeranmeldung.](media/howto-authentication-use-email-signin/email-alternate-login-id-b2b.png)
+
+„E-Mail als alternative Anmelde-ID“ kann für [Azure AD B2B-Zusammenarbeit (Business-to-Business)](../external-identities/what-is-b2b.md) unter einem „Bring Your Own Sign-In Identifiers“-Modell verwendet werden. Wenn im Basismandanten E-Mail-Adressen als alternative Anmelde-IDs aktiviert sind, können Azure AD-Benutzer die Gastanmeldung mit einer Nicht-UPN-E-Mail-Adresse auf dem Endpunkt des Ressourcenmandanten durchführen. Es ist keine Aktion vom Ressourcenmandanten erforderlich, um diese Funktionalität zu aktivieren.
 
 ## <a name="enable-user-sign-in-with-an-email-address"></a>Aktivieren der Benutzeranmeldung mit einer E-Mail-Adresse
 

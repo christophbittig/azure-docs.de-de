@@ -167,8 +167,6 @@
               href: sql/create-sql-api-nodejs.md
             - name: Python-App
               href: sql/create-sql-api-python.md
-            - name: Xamarin-App
-              href: sql/create-sql-api-xamarin-dotnet.md
     - name: Tutorials
       items:
         - name: 1. Erstellen und Verwalten von Daten
@@ -191,10 +189,6 @@
                   href: sql/sql-api-java-application.md
                 - name: Node.js
                   href: sql/sql-api-nodejs-application.md
-            - name: Erstellen einer mobilen App
-              items:
-                - name: Xamarin
-                  href: sql/mobile-apps-with-xamarin.md
         - name: 2. Migrieren von Daten
           items:
             - name: Verwenden des Datenmigrationstools
@@ -209,10 +203,8 @@
           href: sql/tutorial-global-distribution-sql-api.md
     - name: Beispiele
       items:
-        - name: .NET V2 SDK-Beispiele
-          href: sql/sql-api-dotnet-samples.md
         - name: .NET V3 SDK-Beispiele
-          href: sql/sql-api-dotnet-v3sdk-samples.md
+          href: sql/sql-api-dotnet-samples.md
         - name: Java SDK v4-Beispiele
           href: sql/sql-api-java-sdk-samples.md
         - name: Spring Data v3-Beispiele
@@ -229,6 +221,8 @@
           href: sql/templates-samples-sql.md
         - name: Bicep
           href: sql/bicep-samples.md
+        - name: .NET V2 SDK-Beispiele (Legacy)
+          href: sql/sql-api-dotnet-v2sdk-samples.md
     - name: Konzepte
       items:
         - name: Modellierung und Partitionierung
@@ -931,13 +925,13 @@
           items:
             - name: .NET SDK v3
               href: sql/sql-api-sdk-dotnet-standard.md
-            - name: .NET SDK v2
+            - name: .NET SDK v2 (Legacy)
               href: sql/sql-api-sdk-dotnet.md
-            - name: .NET Core SDK v2
+            - name: .NET Core SDK v2 (Legacy)
               href: sql/sql-api-sdk-dotnet-core.md
-            - name: .NET-Änderungsfeedbibliothek v2
+            - name: .NET-Änderungsfeedbibliothek v2 (Legacy)
               href: sql/sql-api-sdk-dotnet-changefeed.md
-            - name: ".NET-Bulk\_Executor-Bibliothek v2"
+            - name: ".NET-Bulk\_Executor-Bibliothek v2 (Legacy)"
               href: sql/sql-api-sdk-bulk-executor-dot-net.md
         - name: Java SDKs und Connectors
           items:
@@ -1506,7 +1500,11 @@
             - name: Migrieren zur fortlaufenden Sicherung
               href: migrate-continuous-backup.md
         - name: Verwalten der regelmäßigen Sicherung
-          href: configure-periodic-backup-restore.md
+          items:
+            - name: Konfigurieren regelmäßiger Sicherungen
+              href: configure-periodic-backup-restore.md
+            - name: Aktualisieren der Redundanz für Sicherungsspeicher
+              href: update-backup-storage-redundancy.md
     - name: Sicherheit
       items:
         - name: Konfigurieren der IP-Firewall

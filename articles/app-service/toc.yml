@@ -251,7 +251,7 @@
           href: configure-authentication-file-based.md
     - name: Sichern der App
       items:
-        - name: Hinzufügen eines TSL/SSL-Zertifikats
+        - name: Hinzufügen eines TLS-/SSL-Zertifikats
           href: configure-ssl-certificate.md
         - name: Beschränken des Zugriffs
           href: app-service-ip-restrictions.md

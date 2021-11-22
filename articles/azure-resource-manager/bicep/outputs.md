@@ -2,13 +2,13 @@
 title: Ausgaben in Bicep
 description: Beschreibt, wie Sie Ausgabevariablen in Bicep definieren.
 ms.topic: conceptual
-ms.date: 10/19/2021
-ms.openlocfilehash: c9b8e0bb4bfb4533b66170c60c8da7b1073a0853
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/12/2021
+ms.openlocfilehash: 4ed640cd639b7a1b69cd07ae8ac50a4ddff436fb
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236074"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491315"
 ---
 # <a name="outputs-in-bicep"></a>Ausgaben in Bicep
 
@@ -22,7 +22,7 @@ Die Syntax zum Definieren eines Ausgabewerts lautet:
 output <name> <data-type> = <value>
 ```
 
-Jeder Ausgabewert muss sich zu einem der [Datentypen](data-types.md) auflösen lassen.
+Eine Ausgabe darf nicht denselben Namen wie ein Parameter, eine Variable, ein Modul oder eine Ressource haben. Jeder Ausgabewert muss sich zu einem der [Datentypen](data-types.md) auflösen lassen.
 
 Im folgenden Beispiel wird gezeigt, wie Sie eine Eigenschaft von einer bereitgestellten Ressource zurückgeben lassen. Im Beispiel ist `publicIP` der symbolische Name einer öffentlichen IP-Adresse, die in der Bicep-Datei bereitgestellt wird. Der Ausgabewert erhält den vollqualifizierten Domänennamen für die öffentliche IP-Adresse.
 
@@ -44,23 +44,15 @@ var user = {
 output stringOutput string = user['user-name']
 ```
 
-Wenn der zurückzugebende Wert von einer Bedingung in der Bereitstellung abhängt, verwenden Sie den `?`-Operator. Weitere Informationen finden Sie unter [Bedingte Ausgabe](#conditional-output).
+## <a name="conditional-output"></a>Bedingte Ausgabe
+
+Wenn der zurückzugebende Wert von einer Bedingung in der Bereitstellung abhängt, verwenden Sie den `?`-Operator.
 
 ```bicep
 output <name> <data-type> = <condition> ? <true-value> : <false-value>
 ```
 
-Um mehr als eine Instanz eines Ausgabewerts zurückzugeben, verwenden Sie den `for`-Ausdruck. Weitere Informationen finden Sie unter [Dynamische Anzahl von Ausgaben](#dynamic-number-of-outputs).
-
-```bicep
-output <name> <data-type> = [for <item> in <collection>: {
-  ...
-}]
-```
-
-## <a name="conditional-output"></a>Bedingte Ausgabe
-
-Sie können einen Wert bedingt zurückgeben. In der Regel verwenden Sie eine bedingte Ausgabe, wenn Sie eine Ressource [bedingt bereitgestellt](conditional-resource-deployment.md) haben. Das folgende Beispiel zeigt, wie die Ressourcen-ID für eine öffentliche IP-Adresse abhängig davon zurückgegeben wird, ob eine neue Ressourcen-ID bereitgestellt wurde:
+In der Regel verwenden Sie eine bedingte Ausgabe, wenn Sie eine Ressource [bedingt bereitgestellt](conditional-resource-deployment.md) haben. Das folgende Beispiel zeigt, wie die Ressourcen-ID für eine öffentliche IP-Adresse abhängig davon zurückgegeben wird, ob eine neue Ressourcen-ID bereitgestellt wurde.
 
 Um eine bedingte Ausgabe in Bicep anzugeben, verwenden Sie den `?`-Operator. Im folgenden Beispiel wird entweder eine Endpunkt-URL oder eine leere Zeichenfolge zurückgegeben, abhängig von einer Bedingung.
 
@@ -87,9 +79,15 @@ output endpoint string = deployStorage ? myStorageAccount.properties.primaryEndp
 
 ## <a name="dynamic-number-of-outputs"></a>Dynamische Anzahl von Ausgaben
 
-In einigen Szenarien wissen Sie nicht, wie viele Instanzen eines Werts beim Erstellen der Vorlage zurückgegeben werden müssen. Sie können eine variable Anzahl von Werten zurückgeben, indem Sie eine iterative Ausgabe verwenden.
+In einigen Szenarien wissen Sie nicht, wie viele Instanzen eines Werts beim Erstellen der Vorlage zurückgegeben werden müssen. Sie können eine variable Anzahl von Werten zurückgeben, indem Sie den `for`-Ausdruck verwenden.
 
-Fügen Sie in Bicep einen `for`-Ausdruck hinzu, der die Bedingungen für die dynamische Ausgabe definiert. Im folgenden Beispiel wird ein Array durchlaufen.
+```bicep
+output <name> <data-type> = [for <item> in <collection>: {
+  ...
+}]
+```
+
+Im folgenden Beispiel wird ein Array durchlaufen.
 
 ```bicep
 param nsgLocation string = resourceGroup().location

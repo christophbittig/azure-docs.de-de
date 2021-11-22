@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: 039461797d9b451703959f43977234278e87827d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: e871bfe8f6fa787a3ffffc4fa0efb2df6d920a0e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131424057"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548385"
 ---
-# <a name="manage-consent-to-applications-and-evaluate-consent-requests-in-azure-active-directory"></a>Verwalten der Einwilligung in Anwendungen und Auswerten von Einwilligungsanforderungen in Azure Active Directory
+# <a name="manage-consent-to-applications-and-evaluate-consent-requests"></a>Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen
 
 Microsoft empfiehlt, die [Möglichkeiten zur Benutzereinwilligung einzuschränken](../../active-directory/manage-apps/configure-user-consent.md), damit Benutzer ihre Einwilligung nur für Apps von überprüften Herausgebern und nur für von Ihnen ausgewählte Berechtigungen erteilen können. Für Apps, die diese Richtlinie nicht erfüllen, wird der Entscheidungsprozess mit dem Sicherheits- und Identitätsadministratorteam Ihrer Organisation zentralisiert.
 
@@ -42,7 +42,7 @@ Nachdem die Endbenutzereinwilligung deaktiviert oder eingeschränkt wurde, müss
 
 3. Wenn Ihre Organisation über eine geeignete Lizenz verfügt:
 
-    * Verwenden Sie zusätzliche [Funktionen für die OAuth-Anwendungsüberwachung in Microsoft Cloud App Security](/cloud-app-security/investigate-risky-oauth).
+    * Verwenden Sie zusätzliche [Features für die OAuth-Anwendungsüberwachung in Microsoft Defender für Cloud-Apps](/cloud-app-security/investigate-risky-oauth).
     * Verwenden Sie [Azure Monitor-Arbeitsmappen für die Überwachung von Berechtigungen und Einwilligungen](../reports-monitoring/howto-use-azure-monitor-workbooks.md) und damit im Zusammenhang stehende Aktivitäten. Die Arbeitsmappe *Erkenntnisse aus Einwilligungen* bietet eine Ansicht der Apps nach der Anzahl fehlerhafter Einwilligungsanforderungen. Dies kann hilfreich sein, um Anwendungen für die Überprüfung durch die Administratoren zu priorisieren und zu entscheiden, ob ihnen eine Administratoreinwilligung gewährt werden soll.
 
 ### <a name="additional-considerations-for-reducing-friction"></a>Zusätzliche Überlegungen zur Vermeidung von Schwierigkeiten

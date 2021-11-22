@@ -52,6 +52,9 @@
     - name: Erstellen und Freigeben einer Abfrage im Azure-Portal
       displayName: 'query, portal'
       href: ./tutorials/create-share-query.md
+    - name: Automatisieren Ihrer Abfragen mit Azure Logic Apps
+      displayName: 'query, resource graph, logic app'
+      href: ./tutorials/logic-app-calling-arg.md
 - name: Beispiele
   items:
     - name: Sprachbeispiele

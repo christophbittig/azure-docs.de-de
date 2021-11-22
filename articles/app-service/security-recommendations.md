@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 5c8a6974778e76afc6f2ca7018e034ad5655690c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 42eaec619097d673c77b6b233a2f2316605971b6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130262525"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348424"
 ---
 # <a name="security-recommendations-for-app-service"></a>Sicherheitsempfehlungen für App Service
 
@@ -56,7 +56,7 @@ Dieser Artikel enthält Sicherheitsempfehlungen für Azure App Service. Die Umse
 
 | Empfehlung | Kommentare |
 |-|-|
-|Verwenden von Azure Defender für App Service von Azure Security Center | [Azure Defender für App Service](../security-center/defender-for-app-service-introduction.md) ist nativ in Azure App Service integriert. Security Center bewertet die von Ihrem App Service-Plan abgedeckten Ressourcen und generiert Sicherheitsempfehlungen auf der Grundlage der Ergebnisse. Befolgen Sie die ausführlichen Anweisungen in [diesen Empfehlungen]()../security-center/recommendations-reference.md#appservices-recommendations), um die Sicherheit Ihrer App Service-Ressourcen zu verbessern. Azure Defender bietet auch einen Bedrohungsschutz und kann eine Vielzahl von Bedrohungen erkennen, die fast die vollständige Liste der MITRE ATT-&CK-Taktiken abdecken – von Bedrohungen vor einem Angriff bis hin zu Command and Control. Eine vollständige Liste der Azure App Service-Warnungen finden Sie unter [Azure Defender for App Service alerts](../security-center/alerts-reference.md#alerts-azureappserv) (Azure Defender für App Service-Warnungen).|
+|Verwenden des Microsoft Defender für App Service von Microsoft Defender für Cloud | [Microsoft Defender für App Service](../security-center/defender-for-app-service-introduction.md) ist nativ in Azure App Service integriert. Defender für Cloud bewertet die von Ihrem App Service-Plan abgedeckten Ressourcen und generiert Sicherheitsempfehlungen auf der Grundlage der Ergebnisse. Befolgen Sie die ausführlichen Anweisungen in [diesen Empfehlungen]()../security-center/recommendations-reference.md#appservices-recommendations), um die Sicherheit Ihrer App Service-Ressourcen zu verbessern. Microsoft Defender für Cloud bietet auch einen Bedrohungsschutz und kann eine Vielzahl von Bedrohungen erkennen, die fast die vollständige Liste der MITRE ATT-&CK-Taktiken abdecken – von Bedrohungen vor einem Angriff bis hin zu Command and Control. Eine vollständige Liste der Azure App Service-Warnungen finden Sie unter [Microsoft Defender for App Service alerts](../security-center/alerts-reference.md#alerts-azureappserv) (Azure Defender für App Service-Warnungen).|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

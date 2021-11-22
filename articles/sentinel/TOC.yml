@@ -128,7 +128,7 @@
         - name: Top-Connectors
           expanded: true
           items:
-            - name: Amazon Web Services CloudTrail
+            - name: Amazon Web Services-Protokolle
               href: connect-aws.md
             - name: Azure Active Directory
               href: connect-azure-active-directory.md

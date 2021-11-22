@@ -85,6 +85,8 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2163454'
     - name: Widgets-Beispielrepositorys
       href: 'https://go.microsoft.com/fwlink/?linkid=2173229'
+    - name: Postman-Beispielrepository
+      href: 'https://github.com/Azure-Samples/video-analyzer-postman'
 - name: Konzepte
   items:
     - name: Pipeline

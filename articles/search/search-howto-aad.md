@@ -7,17 +7,17 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: 0dcc729ea622c42592d1f118f58a831d3a637aea
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d4053d64b8a35bf13b10a47a685b838d89a64dc3
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056184"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518143"
 ---
 # <a name="authorize-search-requests-using-azure-ad-preview"></a>Autorisieren von Suchanforderungen mit Azure AD (Vorschau)
 
 > [!IMPORTANT]
-> Die rollenbasierte Zugriffssteuerung für Datenebenenvorgänge wie das Erstellen oder Abfragen eines Indexes befindet sich derzeit in der öffentlichen Vorschau und wird gemäß den [zusätzlichen Nutzungsbestimmungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zur Verfügung gestellt. Diese Funktionalität ist nur in öffentlichen Clouds verfügbar und kann sich auf die Latenz Ihrer Vorgänge auswirken, während sich die Funktionalität in der Vorschau befindet. 
+> Die rollenbasierte Zugriffssteuerung für Datenebenenvorgänge wie das Erstellen oder Abfragen eines Indexes befindet sich derzeit in der öffentlichen Vorschau und wird gemäß den [zusätzlichen Nutzungsbestimmungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zur Verfügung gestellt. Diese Funktionalität ist nur in öffentlichen Cloudregionen verfügbar und kann sich auf die Latenz Ihrer Vorgänge auswirken, während sich die Funktionalität in der Vorschau befindet.
 
 Mit Azure Active Directory (Azure AD) können Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwenden, um Zugriff auf Ihre Azure Cognitive Search-Dienste zu gewähren. Ein wesentlicher Vorteil der Verwendung von Azure AD besteht darin, dass Ihre Anmeldeinformationen nicht mehr im Code gespeichert werden müssen. Azure AD übernimmt die Authentifizierung des Sicherheitsprinzipals (Benutzer, Gruppe oder Dienstprinzipal), der die Anwendung ausführt. Wenn die Authentifizierung erfolgreich ist, gibt Azure AD das Zugriffstoken an die Anwendung zurück, und die Anwendung kann dieses dann zum Autorisieren von Anforderungen an Azure Cognitive Search verwenden. Weitere Informationen zu den Vorteilen der Verwendung von Azure AD in Ihren Anwendungen finden Sie unter [Vorteile der Integration](../active-directory/develop/active-directory-how-to-integrate.md#benefits-of-integration).
 
@@ -33,28 +33,28 @@ Die Teile der RBAC-Funktionen von Azure Cognitive Search, die für die Verwendun
 
 Um Ihr Abonnement zur Vorschau hinzuzufügen:
 
-1. Navigieren Sie zur Seite **Abonnements** im [Azure-Portal](https://portal.azure.com/).
-1. Wählen Sie das Abonnement aus, das Sie verwenden möchten.
-1. Wählen Sie auf der linken Seite der Abonnementseite die Option **Funktionsvorschau**.
-1. Verwenden Sie die Suchleiste oder die Filter, um **Rollenbasierte Zugriffskontrolle für Suchdienst (Vorschau)** zu finden und auszuwählen.
-1. Wählen Sie **Registrieren**, um die Funktion zu Ihrem Abonnement hinzuzufügen.
+1. Navigieren Sie zu Ihrem Suchdienst im [Azure-Portal](https://portal.azure.com/).
+1. Wählen Sie auf der linken Seite die Option **Schlüssel** aus.
+1. Wählen Sie im blauen Banner, in dem die Vorschau erwähnt wird, **Registrieren** aus, um das Feature Ihrem Abonnement hinzuzufügen.
 
-![sich für rbac bei afec anmelden](media/search-howto-aad/rbac-signup-afec.png)
+![Screenshot: Registrieren für die RBAC-Vorschau im Portal](media/search-howto-aad/rbac-signup-portal.png)
 
-Weitere Informationen zum Hinzufügen von Vorschaufunktionen finden Sie unter [Vorschaufunktionen in Azure-Abonnement einrichten](../azure-resource-manager/management/preview-features.md?tabs=azure-portal).
+Sie können sich auch für die Vorschau registrieren, indem Sie Azure Feature Exposure Control (AFEC) verwenden und nach *Rollenbasierte Zugriffssteuerung für Suchdienst (Vorschau)* suchen. Weitere Informationen zum Hinzufügen von Vorschaufeatures finden Sie unter [Einrichten von Vorschaufeatures im Azure-Abonnement](../azure-resource-manager/management/preview-features.md?tabs=azure-portal).
 
+> [!NOTE]
+> Nachdem Sie Die Vorschau zu Ihrem Abonnement hinzugefügt haben, werden alle Dienste im Abonnement dauerhaft in der Vorschau registriert. Wenn Sie die rollenbasierte Zugriffssteuerung (RBAC) für einen bestimmten Dienst nicht verwenden möchten, können Sie RBAC für Vorgänge auf Datenebene deaktivieren, wie im nächsten Schritt gezeigt.
 
 ### <a name="enable-rbac-for-data-plane-operations"></a>Aktivieren von RBAC für Datenebenenvorgänge
 
-Nachdem Ihr Abonnement in die Vorschauversion integriert wurde, müssen Sie RBAC für Datenebenenvorgänge aktivieren, damit Sie die Azure AD-Authentifizierung verwenden können. Standardmäßig verwendet Azure Cognitive Search die schlüsselbasierte Authentifizierung für Datenebenenvorgänge, Sie können die Einstellung jedoch ändern, um die rollenbasierte Zugriffssteuerung zuzulassen. 
+Nachdem Ihr Abonnement zur Vorschauversion hinzugefügt wurde, müssen Sie RBAC für Datenebenenvorgänge aktivieren, damit Sie die Azure AD-Authentifizierung verwenden können. Standardmäßig verwendet Azure Cognitive Search die schlüsselbasierte Authentifizierung für Datenebenenvorgänge, Sie können die Einstellung jedoch ändern, um die rollenbasierte Zugriffssteuerung zuzulassen. 
 
 So aktivieren Sie die rollenbasierte Zugriffssteuerung:
 
-1. Navigieren Sie über diesen Vorschaulink zum Azure-Portal: [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true). 
+1. Navigieren Sie zu Ihrem Suchdienst im [Azure-Portal](https://portal.azure.com/).
 1. Wählen Sie im linken Navigationsbereich **Tasten**.
 1. Legen Sie fest, ob Sie sowohl die schlüsselbasierte als auch die rollenbasierte Zugriffssteuerung oder nur die rollenbasierte Zugriffssteuerung zulassen möchten.
 
-![Authentifizierungsoptionen für Azure Cognitive Search im Portal](media/search-howto-aad/portal-api-access-control.png)
+![Screenshot: Authentifizierungsoptionen für Azure Cognitive Search im Portal](media/search-howto-aad/portal-api-access-control.png)
 
 Sie können diese Einstellungen auch programmgesteuert ändern, wie in der [Dokumentation zu RBAC in Azure Cognitive Search](./search-security-rbac.md?tabs=config-svc-rest%2croles-powershell%2ctest-rest#step-2-preview-configuration) beschrieben.
 
@@ -70,7 +70,7 @@ So registrieren Sie eine Anwendung bei Azure AD:
 1. Wählen Sie **Neue Registrierung** aus.
 1. Geben Sie Ihrer Anwendung einen Namen, und wählen Sie einen unterstützten Kontotyp aus, der bestimmt, wer die Anwendung verwenden kann. Wählen Sie dann **Registrieren**.
 
-![Assistent für das Registrieren einer Anwendung](media/search-howto-aad/register-app.png)
+![Screenshot: Assistent zum Registrieren einer Anwendung](media/search-howto-aad/register-app.png)
 
 Damit haben Sie Ihre Azure AD-Anwendung und den Dienstprinzipal erstellt. Notieren Sie sich die Mandanten-ID (Verzeichnis-ID) und die Client-ID (Anwendungs-ID) auf der Übersichtsseite Ihrer App-Registrierung. Sie benötigen diese Werte in einem späteren Schritt.
 
@@ -78,12 +78,12 @@ Damit haben Sie Ihre Azure AD-Anwendung und den Dienstprinzipal erstellt. Notie
 
 Die Anwendung benötigt auch einen geheimen Clientschlüssel oder ein Zertifikat, um beim Anfordern eines Tokens ihre Identität nachzuweisen. In diesem Dokument erfahren Sie, wie Sie einen geheimen Clientschlüssel verwenden.
 
-1. Navigieren Sie zu der soeben erstellten App-Registrierung.
+1. Navigieren Sie zu der erstellten App-Registrierung.
 1. Wählen Sie **Zertifikate und Geheimnisse** aus.
-1. Klicken Sie unter **Geheime Clientschlüssel** auf **Neuer geheimer Clientschlüssel**.
+1. Wählen Sie unter **Geheime Clientschlüssel** die Option **Neuer geheimer Clientschlüssel**.
 1. Geben Sie eine Beschreibung des geheimen Schlüssels an, und wählen Sie das gewünschte Ablaufintervall aus.
 
-![Assistent für das Erstellen eines geheimen Clientschlüssels](media/search-howto-aad/create-secret.png)
+![Screenshot: Assistent zum Erstellen eines geheimen Clientschlüssels](media/search-howto-aad/create-secret.png)
 
 Stellen Sie sicher, dass Sie den Wert des geheimen Schlüssels an einem sicheren Ort speichern, da Sie nicht erneut auf den Wert zugreifen können. 
 
@@ -98,11 +98,11 @@ So weisen Sie Ihrer App-Registrierung eine Rolle zu:
 1. Öffnen Sie das Azure-Portal, und navigieren Sie zu Ihrem Suchdienst.
 1. Wählen Sie im linken Navigationsbereich **Access Control (IAM)** aus.
 1. Wählen Sie auf der rechten Seite unter **Zugriff auf diese Ressource gewähren** die Option **Rollenzuweisung hinzufügen** aus.
-1. Wählen Sie die Rolle aus, die Sie verwenden möchten, und klicken Sie auf **Weiter**.
-1. Klicken Sie auf der nächsten Seite auf **Mitglieder auswählen**, und suchen Sie die Anwendung, die Sie zuvor erstellt haben. 
-1. Klicken Sie schließlich auf **Überprüfen + Zuweisen**.
+1. Wählen Sie die Rolle, die Sie verwenden möchten, und dann **Weiter** aus.
+1. Wählen Sie auf der nächsten Seite **Mitglieder auswählen** aus, und suchen Sie die Anwendung, die Sie zuvor erstellt haben. 
+1. Wählen Sie schließlich **Überprüfen und zuweisen** aus.
 
-![Hinzufügen einer Rollenzuweisung im Azure-Portal](media/search-howto-aad/role-assignment.png)
+![Screenshot: Hinzufügen einer Rollenzuweisung im Azure-Portal](media/search-howto-aad/role-assignment.png)
 
 Sie können [Rollen auch mithilfe von PowerShell zuweisen](./search-security-rbac.md?tabs=config-svc-rest%2croles-powershell%2ctest-rest#step-3-assign-roles).
 

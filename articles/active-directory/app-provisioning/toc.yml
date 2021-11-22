@@ -18,8 +18,14 @@
       href: customize-application-attributes.md
     - name: App-spezifische Bereitstellungstutorials
       href: /azure/active-directory/saas-apps/tutorial-list
-    - name: Bereitstellung für SQL-basierte Apps
-      href: tutorial-ecma-sql-connector.md
+    - name: Tutorials zur Bereitstellung in lokalen Apps
+      items:
+        - name: Bereitstellung für lokale SCIM-fähige Apps
+          href: on-premises-scim-provisioning.md
+        - name: Bereitstellung für SQL-basierte Apps
+          href: on-premises-sql-connector-configure.md
+        - name: Bereitstellung für LDAP-basierte Apps
+          href: on-premises-ldap-connector-configure.md
 - name: Konzepte
   expanded: true
   items:
@@ -62,10 +68,6 @@
           href: export-import-provisioning-configuration.md
         - name: Bereitstellungsberichte
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Automatisieren der Konfiguration mit MS Graph
-      href: application-provisioning-configuration-api.md
-    - name: Aktivieren der Verhinderung von versehentlichen Löschvorgängen
-      href: accidental-deletions.md
     - name: Problembehandlung bei der Anwendungsbereitstellung
       items:
         - name: Bekannte Probleme
@@ -82,16 +84,6 @@
           href: on-premises-ecma-troubleshoot.md
         - name: Bereitstellungsprotokolle
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Lokale App-Bereitstellung
-      items:
-        - name: Bereitstellung für SQL-basierte Apps
-          href: on-premises-sql-connector-configure.md
-        - name: Konfiguration des generischen LDAP-Connectors
-          href: on-premises-ldap-connector-configure.md
-        - name: Lokale Anwendungsbereitstellung in SCIM-fähigen Apps
-          href: on-premises-scim-provisioning.md
-        - name: Migrieren des Connectors über die MIM-Synchronisierung
-          href: on-premises-migrate-microsoft-identity-manager.md
     - name: Problembehandlung bei der HR-Bereitstellung
       items:
         - name: Probleme beim Attributabruf
@@ -104,14 +96,18 @@
           href: hr-manager-update-issues.md
         - name: Probleme beim HR-Rückschreiben
           href: hr-writeback-issues.md
+    - name: Aktivieren der Verhinderung von versehentlichen Löschvorgängen
+      href: accidental-deletions.md
+    - name: Automatisieren der Konfiguration mit MS Graph
+      href: application-provisioning-configuration-api.md
 - name: Verweis
   items:
+    - name: Funktionsreferenz zum Schreiben von Ausdrücken für Attributzuordnungen
+      href: functions-for-customizing-application-data.md
     - name: "Einhaltung des SCIM\_2.0-Protokolls"
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: SCIM- und Graphszenarien
       href: scim-graph-scenarios.md
-    - name: Funktionsreferenz zum Schreiben von Ausdrücken für Attributzuordnungen
-      href: functions-for-customizing-application-data.md
     - name: HR-Cloudbereitstellung
       items:
         - name: SuccessFactors-Attributreferenz
@@ -120,6 +116,8 @@
           href: workday-attribute-reference.md
         - name: Versionsverlauf des Bereitstellungs-Agents
           href: provisioning-agent-release-version-history.md
+        - name: Migrieren des Connectors über die MIM-Synchronisierung
+          href: on-premises-migrate-microsoft-identity-manager.md
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen für Entwickler
