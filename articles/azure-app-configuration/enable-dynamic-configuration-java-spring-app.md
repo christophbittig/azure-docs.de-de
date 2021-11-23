@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.custom: devx-track-java
 ms.author: mametcal
-ms.openlocfilehash: 22214c6113d182363ccd86d9e79dac971eb0e432
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 34225576d435f9ff275f74372afa2cc9f7d50b9f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114465814"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287246"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer Java Spring-App
 
@@ -75,7 +75,7 @@ Wenn Sie die automatisierte Aktualisierung verwenden möchten, beginnen Sie mit 
 
     | Schlüssel | Wert |
     |---|---|
-    | sentinel | 1 |
+    | Sentinel | 1 |
 
     Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
 
@@ -106,7 +106,7 @@ Wenn Sie die automatisierte Aktualisierung verwenden möchten, beginnen Sie mit 
 
     | Schlüssel | Wert |
     |---|---|
-    | sentinel | 2 |
+    | Sentinel | 2 |
 
 1. Aktualisieren Sie die Browserseite, um die neue Nachricht anzuzeigen.
 

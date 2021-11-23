@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 10/26/2021
+ms.date: 11/15/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 16eb16d14890ae581bf71ff3998d22055965c336
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f9e296ec4c1b99f6f2a8d23103c8b04fcd16a814
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082586"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552658"
 ---
 ::: zone target="docs"
 
@@ -140,7 +140,7 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
 2. Senden Sie zum Anfordern der Abholung eine E-Mail an den SingPost-Kundendienst, indem Sie die folgende Vorlage mit der Nachverfolgungsnummer verwenden. (Sie finden die Nachverfolgungsnummer auf dem Rücksendeetikett, das im Lieferumfang des zugestellten Pakets enthalten ist.)
 
     ```
-    To: kadcustcare@singpost.com
+    To: g-corpsgcs@singpost.com
     Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
@@ -231,9 +231,11 @@ Wenn Sie das Gerät in Südafrika zurückgeben möchten, gehen Sie wie folgt vor
 
 5. Sollten Probleme auftreten, senden Sie eine E-Mail mit Einzelheiten zu den Problemen an [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Geben Sie im Betreff die Frachtbriefnummer an. Sie können auch die Nummer +27(0)119213902 anrufen.
 
+---
+
 ### <a name="self-managed-shipping"></a>Selbst verwalteter Versand
 
-Wenn Sie Data Box Disk in US-Regierungsbehörden, Japan, Singapur, Südkorea, im Vereinigten Königreich, in Westeuropa, Australien, Südafrika, Indien oder Brasilien verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor:
+Wenn Sie Data Box Disk in US-Regierungsbehörden, Japan, Singapur, Südkorea, im Vereinigten Königreich, in Westeuropa, Australien, Südafrika, Indien oder Brasilien verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor: Ausführliche Schritte finden Sie unter [Verwenden des selbst verwalteten Versands für Azure Data Box im Azure-Portal](data-box-disk-portal-customer-managed-shipping.md).
 
 1. Navigieren Sie im Azure-Portal zum Blatt **Übersicht** für Ihre Bestellung. Durchlaufen Sie die Schritte, die angezeigt werden, wenn Sie **Abholung planen** auswählen. Es sollte ein Autorisierungscode angezeigt werden, der bei der Abgabe der Bestellung verwendet wird.
 

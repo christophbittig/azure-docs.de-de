@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 83ef818f3b9555fc152f1ca31149a8c5686430ac
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 68ce8e33e6d87d084a646ce0179920545a655686
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131473754"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132323546"
 title: Häufig gestellte Fragen zu Azure Monitor
 summary: >
   Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor. Wenn Sie weiteren Fragen haben, können Sie diese im [Diskussionsforum](/answers/questions/topics/single/24223.html) stellen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -61,7 +61,7 @@ sections:
   - question: >
       Woher erhält Azure Monitor seine Daten?
     answer: >
-      Azure Monitor sammelt Daten aus einer Vielzahl von Quellen. Dazu gehören Protokolle und Metriken von Azure-Plattform und -Ressourcen, benutzerdefinierte Anwendungen und Agents, die auf virtuellen Computern ausgeführt werden. Andere Dienste, z. B. Azure Security Center und Network Watcher, sammeln Daten in einem Log Analytics-Arbeitsbereich, damit diese mit Azure Monitor-Daten analysiert werden können. Sie können auch benutzerdefinierte Daten mit der REST-API für Protokolle oder Metriken an Azure Monitor senden. Weitere Informationen finden Sie unter [Quellen für Überwachungsdaten für Azure Monitor](agents/data-sources.md).
+      Azure Monitor sammelt Daten aus einer Vielzahl von Quellen. Dazu gehören Protokolle und Metriken von Azure-Plattform und -Ressourcen, benutzerdefinierte Anwendungen und Agents, die auf virtuellen Computern ausgeführt werden. Andere Dienste, z. B. Microsoft Defender für Cloud und Network Watcher, sammeln Daten in einem Log Analytics-Arbeitsbereich, damit diese mit Azure Monitor-Daten analysiert werden können. Sie können auch benutzerdefinierte Daten mit der REST-API für Protokolle oder Metriken an Azure Monitor senden. Weitere Informationen finden Sie unter [Quellen für Überwachungsdaten für Azure Monitor](agents/data-sources.md).
   - question: >
       Welche Daten werden von Azure Monitor gesammelt?
     answer: >
@@ -230,7 +230,7 @@ sections:
       Wie lautet der Upgradepfad vom Log Analytics-Agent (MMA) zum Azure Monitor-Agent (AMA) für die Überwachung von System Center Operations Manager? Können wir den AMA für System Center Operations Manager-Szenarien verwenden?
     answer: "Hier sind die Auswirkungen des AMA auf die beiden Überwachungsszenarien mit System Center Operations Manager angegeben:\n- **Szenario 1**: Zur Überwachung des Windows-Betriebssystems von System Center Operations Manager ist der Upgradepfad derselbe wie bei jedem anderen Computer, und Sie können vom MMA (Version 2016 und 2019) zum AMA migrieren, sobald die erforderlichen Paritätsfeatures auf dem AMA verfügbar sind.\n- **Szenario 2**: Da das Onboarding/Verbinden von System Center Operations Manager mit Log Analytics-Arbeitsbereichen über einen System Center Operations Manager-Connector für Log Analytics/Azure Monitor aktiviert wird, muss weder der MMA noch der AMA auf dem SCOM-Verwaltungsserver installiert werden. Daher bestehen aus AMA-Sicht für diesen Anwendungsfall keine Auswirkungen.  \n\n> [!NOTE] \n> Sie können beide oben genannten Szenarien mit dem MMA und dem AMA parallel ausführen, ohne dass es Auswirkungen hat.\n"
   - question: >
-      Unterstützt der neue Azure Monitor-Agent die Datensammlung für die verschiedenen Log Analytics-Lösungen und Azure-Dienste wie Security Center, Sentinel usw.?
+      Unterstützt der neue Azure Monitor-Agent die Datensammlung für die verschiedenen Log Analytics-Lösungen und Azure-Dienste wie Microsoft Defender für Cloud und Microsoft Sentinel?
     answer: "Sehen Sie sich die Liste der [aktuell als Vorschauversion verfügbaren AMA-Erweiterungen](./agents/azure-monitor-agent-overview.md#supported-services-and-features) an. Dies sind dieselben Lösungen und Dienste, die jetzt stattdessen mit dem neuen Azure Monitor-Agent verfügbar sind. Möglicherweise werden zusätzliche Erweiterungen für die Lösung/den Dienst installiert. Dies dient dem Sammeln zusätzlicher Daten oder dem Durchführen von Transformationen/Verarbeitungen, die für die Lösung/den Dienst erforderlich sind, um anschließend AMA zum Weiterleiten der endgültigen Daten an Azure Monitor zu verwenden. \n\nIm folgenden Diagramm wird die **neue Erweiterbarkeitsarchitektur** veranschaulicht:\n\n![Erweiterungsarchitektur](agents/media/azure-monitor-agent/extensibility-arch-new.png)\n"
   - question: >
       Welche Log Analytics-Lösungen werden auf dem neuen Azure Monitor-Agent unterstützt?

@@ -5,14 +5,14 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 11/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 8ee94cf4c02c5535a85b75eec5a60522143a16ce
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1c9e0c5a6a0672ec36bfef1d2f8d909b0ddea984
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748712"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397678"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln von Servern in Hyper-V mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -32,7 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!NOTE]
 > Tutorials zeigen den schnellsten Weg zum Ausprobieren eines Szenarios, dabei kommen die Standardoptionen zum Einsatz.  
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -91,7 +91,7 @@ Delegieren von Anmeldeinformationen, wenn sich Serverdatenträger auf SMB-Remote
 ### <a name="run-the-script"></a>Ausführen des Skripts
 
 1. Laden Sie das Skript aus dem [Microsoft Download Center](https://aka.ms/migrate/script/hyperv) herunter. Das Skript wird von Microsoft kryptografisch signiert.
-2. Überprüfen Sie die Skriptintegrität mithilfe von MD5- oder SHA256-Hashdateien. Die Hashtagwerte sind unten aufgeführt. Führen Sie den folgenden Befehl aus, um den Hash für das Skript zu generieren:
+2. Überprüfen Sie die Skriptintegrität mithilfe der SHA256-Hashdatei. Der Hashtagwert ist unten angegeben. Führen Sie den folgenden Befehl aus, um den Hash für das Skript zu generieren:
 
     ```powershell
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
@@ -106,11 +106,10 @@ Delegieren von Anmeldeinformationen, wenn sich Serverdatenträger auf SMB-Remote
     ```powershell
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
-Hashwerte:
+Hashwert:
 
 **Hash** |  **Wert**
 --- | ---
-MD5 | 0ef418f31915d01f896ac42a80dc414e
 SHA256 | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 
 ## <a name="set-up-a-project"></a>Einrichten eines Projekts
@@ -177,13 +176,13 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
         **Szenario** | **Download** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,91 GB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
+        Hyper-V (8,91 GB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140422) |  91A435962F0DC9C7032DE0288D578171A76CC07563AC543C5E1EB25CD31BB231
 
     - Azure Government:
 
         **Szenario** _ | _ *Herunterladen** | **SHA256**
         --- | --- | ---
-        Hyper-V (85,8 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
+        Hyper-V (85,8 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140424) |  3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
 ### <a name="3-create-an-appliance"></a>3. Erstellen einer Appliance
 

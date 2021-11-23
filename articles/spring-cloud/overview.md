@@ -8,12 +8,12 @@ ms.date: 03/09/2021
 ms.author: karler
 ms.custom: devx-track-java, contperf-fy21q2
 customer intent: As an Azure Cloud user, I want to deploy, run, and monitor Spring Boot microservices.
-ms.openlocfilehash: ce56ac8e85e727cd4efa88b8f59ea7ec3871a8dc
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 8720a24e975ce7a73ed49f92460de301b5c8dfd8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179336"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485671"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Was ist Azure Spring Cloud?
 
@@ -69,7 +69,7 @@ Diese Dokumentation enthält Abschnitte mit ersten Schritten sowie mit Informati
 
     * [Entwickeln](how-to-prepare-app-deployment.md): Hier erfahren Sie, wie Sie eine bereits vorhandene Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten. Bei ordnungsgemäßer Konfiguration bietet Azure Spring Cloud stabile Dienste zur Überwachung, Skalierung und Aktualisierung von Java Spring Cloud-Anwendungen.
     * [Bereitstellen](./how-to-staging-environment.md): Hier erfahren Sie, wie Sie unter Verwendung des Blau-Grün-Bereitstellungsmusters in Azure Spring Cloud eine Stagingbereitstellung einrichten. Die Blau/Grün-Bereitstellung ist ein Azure DevOps-Muster für Continuous Delivery, bei dem eine vorhandene Version (blau) live bleibt, während eine neue Version (grün) bereitgestellt wird.
-    * [Konfigurieren von Apps](./how-to-start-stop-delete.md):  Hier erfahren Sie, wie Sie Ihre Azure Spring Cloud-Anwendung starten, beenden und löschen. Außerdem erfahren Sie, wie Sie den Zustand einer Anwendung in Azure Spring Cloud über das Azure-Portal oder mithilfe der Azure CLI ändern.
+    * [Konfigurieren von Apps](./how-to-start-stop-delete.md) Starten, Beenden und Löschen Ihrer Anwendung in Azure Spring Cloud Außerdem erfahren Sie, wie Sie den Zustand einer Anwendung in Azure Spring Cloud über das Azure-Portal oder mithilfe der Azure CLI ändern.
     * [Skalierung](./how-to-scale-manual.md): Hier erfahren Sie, wie Sie mithilfe des Azure Spring Cloud-Dashboards im Azure-Portal oder mithilfe von Einstellungen für die Autoskalierung eine beliebige Microserviceanwendung skalieren. Für die Kommunikation mit externen Ressourcen (beispielsweise Datenbanken, Speicher und Schlüsseltresore) stehen öffentliche IP-Adressen zur Verfügung.
     * [Überwachen von Apps](./how-to-distributed-tracing.md): Tools für die verteilte Ablaufverfolgung zum problemlosen Debuggen und Überwachen komplexer Probleme. Azure Spring Cloud integriert Spring Cloud Sleuth in Azure Application Insights. Diese Integration bietet leistungsstarke Funktionen für die verteilte Ablaufverfolgung aus dem Azure-Portal.
     * [Schützen von Apps](./how-to-enable-system-assigned-managed-identity.md): Azure-Ressourcen bieten eine automatisch verwaltete Identität in Azure Active Directory. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.

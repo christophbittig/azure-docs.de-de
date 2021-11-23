@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie das A
 ms.topic: quickstart
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ad6e963e28521f595a64e427230e4fd55e2f3d4b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2b9286dc6dba80de841969af285ab57e587f560a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564421"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319261"
 ---
 # <a name="quickstart-track-objects-in-a-live-video"></a>Schnellstart: Nachverfolgen von Objekten in einem Livevideo
 

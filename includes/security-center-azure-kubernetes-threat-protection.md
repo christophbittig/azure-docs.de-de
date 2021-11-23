@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 10/18/2021
 ms.topic: include
-ms.openlocfilehash: 29b61cddc9fba4475b06d53303bf46145b17412b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 74209403f26404435a58e76efffd69e54435d221
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010080"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132354166"
 ---
 Defender für Cloud bietet einen Echtzeit-Bedrohungsschutz für Ihre Containerumgebungen und generiert Warnungen für verdächtige Aktivitäten. Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern.
 
@@ -25,7 +25,7 @@ Defender für Cloud bietet Bedrohungsschutz auf unterschiedlichen Ebenen:
     Eine Liste der Warnungen auf Hostebene finden Sie in der [Referenztabelle der Warnungen](../articles/security-center/alerts-reference.md#alerts-containerhost).
 
 
-* **Clusterebene (bereitgestellt von Microsoft Defender für Kubernetes):** Auf Clusterebene basiert der Bedrohungsschutz auf der Analyse der Überwachungsprotokolle von Kubernetes. Aktivieren Sie die erweiterten Sicherheitsfeatures, um diese Überwachung **ohne Agent** zu ermöglichen. Wenn Ihr Cluster lokal oder von einem anderen Cloudanbieter gehostet wird, aktivieren Sie [Kubernetes mit Azure Arc-Unterstützung und die Microsoft Defender-Erweiterung](../articles/security-center/defender-for-kubernetes-azure-arc.md).
+* **Clusterebene (bereitgestellt von Microsoft Defender für Kubernetes):** Auf Clusterebene basiert der Bedrohungsschutz auf der Analyse der Überwachungsprotokolle von Kubernetes. Aktivieren Sie die erweiterten Sicherheitsfeatures, um diese Überwachung **ohne Agent** zu ermöglichen. Wenn Ihr Cluster lokal oder von einem anderen Cloudanbieter gehostet wird, aktivieren Sie [Kubernetes mit Azure Arc-Unterstützung und die Defender-Erweiterung](../articles/security-center/defender-for-kubernetes-azure-arc.md).
 
     Defender für Cloud überwacht die Protokolle Ihres Clusters, um Warnungen auf dieser Ebene zu generieren. Beispiele für Ereignisse auf dieser Ebene sind verfügbar gemachte Kubernetes-Dashboards und die Erstellung von Rollen mit hohen Berechtigungen und von sensiblen Einbindungen.
 

@@ -1,18 +1,18 @@
 ---
 title: Info zur Architektur einer Agent-basierten Lösung
-description: Erfahren Sie mehr über die Architektur mit Agents und den Informationsfluss von Azure Defender für IoT.
+description: Hier erfahren Sie mehr über die Architektur und den Informationsfluss von Microsoft Defender für IoT mit Agents.
 ms.topic: overview
-ms.date: 1/25/2021
-ms.openlocfilehash: e21dc7c7b0c82378d90335e4d4ceb71373a56267
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 4bedabced290c16e9172bee58d0f68a995bb5ebd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011092"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331602"
 ---
 # <a name="what-is-agent-based-solution-for-device-builders"></a>Info zu Agent-basierten Lösungen für Gerätehersteller
 
-In diesem Artikel wird die funktionale Systemarchitektur der Defender für IoT-Lösung mit Agents beschrieben. Azure Defender für IoT stellt für die Anforderungen in Ihrer Umgebung zwei Gruppen von Funktionen bereit: Unternehmenslösung ohne Agent und Agent-basierte Lösung für Gerätehersteller.
+In diesem Artikel wird die funktionale Systemarchitektur der Defender für IoT-Lösung mit Agents beschrieben. Microsoft Defender für IoT stellt für die Anforderungen in Ihrer Umgebung zwei Gruppen von Funktionen bereit: Unternehmenslösung ohne Agent und Agent-basierte Lösung für Gerätehersteller.
 
 ## <a name="iot-hub-built-in-security"></a>Integrierte IoT Hub-Sicherheit
 
@@ -36,4 +36,4 @@ Defender für IoT-Empfehlungen und -Warnungen (Ausgabe der Analysepipeline) werd
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [häufig gestellten Fragen zum Azure Defender für IoT-Agent](resources-agent-frequently-asked-questions.md) an.
+Lesen Sie die [häufig gestellten Fragen zum Microsoft Defender für IoT-Agent](resources-agent-frequently-asked-questions.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 096315d314555478b993151bd1b562010cb24949
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b70fc467fe2a8502f83437c1f9c004033f440993
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761256"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324375"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory in AwareGo
 
@@ -144,4 +144,4 @@ In diesem Abschnitt können Sie die Konfiguration des einmaligen Anmeldens von A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von AwareGo können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf der App-Steuerung für bedingten Zugriff. Weitere Informationen finden Sie im Artikel zum [Erzwingen der Sitzungssteuerung mit Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Nach dem Konfigurieren von AwareGo können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf der App-Steuerung für bedingten Zugriff. Weitere Informationen finden Sie im Artikel zum [Erzwingen der Sitzungssteuerung mit Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

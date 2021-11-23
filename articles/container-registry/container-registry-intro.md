@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b5c81d8b2e6d7eac2dcd9070bf1f448340ea1a18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a05e0664bc7576f662d39e3ccd44d3258a84a9d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96341264"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337773"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Einführung in private Docker-Containerregistrierungen in Azure
 
@@ -45,7 +45,7 @@ Azure bietet für die Verwaltung Ihrer Azure-Containerregistrierungen verschiede
 
   Sie [steuern den Zugriff](container-registry-authentication.md) auf eine Containerregistrierung mit einer Azure-Identität, einem auf Azure Active Directory basierenden [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) oder einem bereitgestellten Administratorkonto. Verwenden Sie die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC), um Benutzern oder Systemen differenzierte Berechtigungen für eine Registrierung zuzuweisen.
 
-  Zu den Sicherheitsfeatures der Premium-Dienstebene zählen [Inhaltsvertrauen](container-registry-content-trust.md) für das Signieren von Imagetags und [Firewalls und virtuelle Netzwerke (Vorschau)](container-registry-vnet.md), um den Zugriff auf die Registrierung einzuschränken. Azure Security Center wird optional in Azure Container Registry integriert, um [Images zu überprüfen](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json), wenn ein Image in eine Registrierung gepusht wird.
+  Zu den Sicherheitsfeatures der Premium-Dienstebene zählen [Inhaltsvertrauen](container-registry-content-trust.md) für das Signieren von Imagetags und [Firewalls und virtuelle Netzwerke (Vorschau)](container-registry-vnet.md), um den Zugriff auf die Registrierung einzuschränken. Microsoft Defender für Cloud wird optional in Azure Container Registry integriert, um [Images zu überprüfen](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json), wenn ein Image in eine Registrierung gepusht wird.
 
 * **Unterstützte Images und Artefakte**: Jedes Image wird in einem Repository gruppiert und ist eine schreibgeschützte Momentaufnahme eines mit Docker kompatiblen Containers. Azure-Containerregistrierungen können sowohl Windows- als auch Linux-Images enthalten. Sie steuern Imagenamen für alle Containerbereitstellungen. Verwenden Sie [Docker-Standardbefehle](https://docs.docker.com/engine/reference/commandline/), um Images in ein Repository zu übertragen (Push) oder ein Image aus einem Repository abzurufen (Pull). Zusätzlich zu den Dockercontainerimages speichert die Azure Container Registry [zugehörige Inhaltsformate](container-registry-image-formats.md) wie [Helm-Diagramme](container-registry-helm-repos.md) und Images, die nach der [Bildformatspezifikation Open Container Initiative (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md) erstellt wurden.
 

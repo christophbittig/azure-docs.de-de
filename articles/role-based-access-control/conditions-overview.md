@@ -10,12 +10,12 @@ ms.topic: overview
 ms.workload: identity
 ms.date: 05/13/2021
 ms.author: rolyon
-ms.openlocfilehash: 6919a5b94d9122f16084933574ffc88f8c9f1249
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 84bcac43d22d1c90ccfe4f674c495d8439fe9536
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109847416"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398324"
 ---
 # <a name="what-is-azure-attribute-based-access-control-azure-abac-preview"></a>Was ist die attributbasierte Zugriffssteuerung in Azure (Azure Attribute-Based Access Control, Azure ABAC)? (Vorschauversion)
 
@@ -37,7 +37,7 @@ Azure ABAC baut auf Azure RBAC auf und fügt Rollenzuweisungsbedingungen auf d
 Die Verwendung von Rollenzuweisungsbedingungen hat im Wesentlichen drei Vorteile:
 
 - **Präzisere Zugriffssteuerung:** Bei einer Rollenzuweisung wird eine Rollendefinition mit Aktionen und Datenaktionen verwendet, um einem Sicherheitsprinzipal Berechtigungen zu erteilen. Sie können Bedingungen schreiben, um diese Berechtigungen zu filtern und den Zugriff präziser zu steuern. Außerdem können Sie Bedingungen zu bestimmten Aktionen hinzufügen. So können Sie beispielsweise festlegen, dass ein bestimmter Benutzer nur Lesezugriff auf Blobs in Ihrem Abonnement haben soll, wenn die Blobs über das Tag „Project=Blue“ verfügen. 
-- **Weniger Rollenzuweisungen:** Die Anzahl von Rollenzuweisungen pro Azure-Abonnement ist aktuell auf 2.000 Rollenzuweisungen begrenzt. Es gibt jedoch Szenarien, in denen Tausende von Rollenzuweisungen erforderlich wären. Alle diese Rollenzuweisungen müssten verwaltet werden. In diesen Szenarien lässt sich die Anzahl von Rollenzuweisungen durch Hinzufügen von Bedingungen ggf. erheblich reduzieren. 
+- **Weniger Rollenzuweisungen:** Die Anzahl von Rollenzuweisungen pro Azure-Abonnement ist aktuell begrenzt. Es gibt jedoch Szenarien, in denen Tausende von Rollenzuweisungen erforderlich wären. Alle diese Rollenzuweisungen müssten verwaltet werden. In diesen Szenarien lässt sich die Anzahl von Rollenzuweisungen durch Hinzufügen von Bedingungen ggf. erheblich reduzieren. 
 - **Verwendung von Attributen mit spezifischer geschäftlicher Bedeutung:** Bedingungen ermöglichen die Verwendung von Attributen, die für Sie in der Zugriffssteuerung eine spezifische geschäftliche Bedeutung haben. Beispiele für Attribute wären etwa Projektname, Softwareentwicklungsphase und Klassifizierungsebenen. Die Werte dieser Ressourcenattribute sind dynamisch und ändern sich, wenn Benutzer zu anderen Teams oder Projekten wechseln.
 
 ## <a name="example-scenarios-for-conditions"></a>Beispielszenarien für Bedingungen

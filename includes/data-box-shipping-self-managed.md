@@ -3,16 +3,16 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 10/21/2021
+ms.date: 11/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d21a73b37f9a192ce080b0c5405b280b9100ba8
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6e18baf15b63a37f9c7746ac1273b481f1ea77cc
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247244"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556565"
 ---
-Gehen Sie wie folgt vor, wenn Sie Data Box in den Regionen „US Government“, „Japan“, „Singapur“, „Südkorea“, „Indien“, „Südafrika“, „Vereinigtes Königreich“, „Deutschland“, „Schweiz“, „Europa, Westen“, „Australien“ oder „Brasilien“ verwenden und bei der Auftragserstellung die Option für selbst verwalteten Versand ausgewählt haben:
+Gehen Sie wie folgt vor, wenn Sie Data Box in den Regionen „US Government“, „Japan“, „Singapur“, „Südkorea“, „Indien“, „Südafrika“, „Vereinigtes Königreich“, „Deutschland“, „Schweiz“, „Europa, Westen“, „Australien“ oder „Brasilien“ verwenden und bei der Auftragserstellung die Option für selbst verwalteten Versand ausgewählt haben: Ausführliche Schritte finden Sie unter [Verwenden des selbst verwalteten Versands für Azure Data Box im Azure-Portal](../articles/databox/data-box-portal-customer-managed-shipping.md).
 
 1. Notieren Sie sich den Autorisierungscode, der auf der Seite **Versandvorbereitung** der lokalen Webbenutzeroberfläche von Data Box angezeigt wird, nachdem dieser Schritt erfolgreich abgeschlossen wurde.
 2. Schalten Sie das Gerät aus, und entfernen Sie die Kabel. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.

@@ -10,18 +10,18 @@ ms.date: 11/02/2021
 author: ruixinxu
 ms.author: ruxu
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: cb7e8cabf49b528b1174db004f3d22636a13fdfe
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9450ef956fc4d849e47fbf742f032359cffeea61
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029873"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312102"
 ---
 # <a name="tutorial-form-recognizer-with-applied-ai-service"></a>Tutorial: Formularerkennung mit Applied AI Service
 
 [Azure-Formularerkennung](../../applied-ai-services/form-recognizer/index.yml) ist ein Feature von [Azure Applied AI Services](../../applied-ai-services/index.yml), das Ihnen mithilfe von Technologie für maschinelles Lernen ermöglicht, eine Anwendung für die automatisierte Dokumentverarbeitung zu erstellen. In diesem Tutorial erfahren Sie, wie Sie in Azure Synapse Analytics Ihre Daten problemlos anreichern können. Mithilfe der [Formularerkennung](../../applied-ai-services/form-recognizer/index.yml) können Sie Formulare und Dokumente analysieren, um Text und Daten zu extrahieren, und eine strukturierte JSON-Ausgabe zurückgeben. Sie können schnell präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse erzielen, ohne dass komplizierte manuelle Eingriffe oder umfangreiche Data Science-Kenntnisse erforderlich sind. 
 
-Dieses Tutorial veranschaulicht den Einsatz der Formularerkennung mit [MMLSpark](https://github.com/Azure/mmlspark) für Folgendes:
+Dieses Tutorial veranschaulicht den Einsatz der Formularerkennung mit [SynapseML](https://github.com/microsoft/SynapseML) für Folgendes:
 
 > [!div class="checklist"]
 > - Extrahieren von Text und Layout aus einem bestimmten Dokument
@@ -42,11 +42,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 
 ## <a name="get-started"></a>Erste Schritte
-Öffnen Sie Synapse Studio, und erstellen Sie ein neues Notebook. Importieren Sie zunächst [MMLSpark](https://github.com/Azure/mmlspark). 
+Öffnen Sie Synapse Studio, und erstellen Sie ein neues Notebook. Importieren Sie zunächst [SynapseML](https://github.com/microsoft/SynapseML). 
 
 ```python
-import mmlspark
-from mmlspark.cognitive import *
+import synapse.ml
+from synapse.ml.cognitive import *
 ```
 
 ## <a name="configure-form-recognizer"></a>Konfigurieren der Formularerkennung 
@@ -203,4 +203,4 @@ Beenden Sie alle verbundenen Sitzungen (Notebooks), um sicherzustellen, dass die
 
 * [Trainieren eines benutzerdefinierten Formularerkennungsmodells](../../applied-ai-services/form-recognizer/label-tool.md)
 * [Beispiele für Synapse-Notebooks](https://github.com/Azure-Samples/Synapse/tree/main/MachineLearning) 
-* [MMLSpark-GitHub-Repository](https://github.com/Azure/mmlspark)
+* [SynapseML-GitHub-Repository](https://github.com/microsoft/SynapseML)

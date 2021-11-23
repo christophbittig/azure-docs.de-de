@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 10/19/2021
 ms.author: itnorman
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 55a0a203bb359ca0d5cad44b5e773cee0f65edef
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8411add44f96d38778a589dcb59bf89142e97f80
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131016965"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312640"
 ---
 # <a name="create-a-video-analyzer-for-media-account"></a>Erstellen eines Video Analyzer for Media-Kontos
 
@@ -116,7 +116,7 @@ Klicken Sie auf der [Video Analyzer for Media](https://www.videoindexer.ai/)-Sei
 
 Geben Sie im Dialogfeld die folgenden Informationen ein:
 
-|Einstellung|BESCHREIBUNG|
+|Einstellung|Beschreibung|
 |---|---|
 |Video Analyzer for Media-Kontoregion|Der Name der Region des Video Analyzer for Media-Kontos. Zur Verbesserung der Leistung und Senkung der Kosten wird dringend empfohlen, den Namen der Region anzugeben, in der sich die Azure Media Services-Ressourcen und das Azure Storage-Konto befinden. |
 |Azure AD-Mandant|Der Name des Azure AD-Mandanten, z.B. „contoso.onmicrosoft.com“. Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers. Der Name befindet sich rechts neben **Domäne**.|

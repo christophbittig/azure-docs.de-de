@@ -9,14 +9,14 @@ ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: jairoc
+ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c12dea04fe603be370947ef0bae3c9db28335a01
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4b76ade4b47417cb6c3d4f65daa335553c7a4b83
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624005"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179179"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Tutorial: Einbinden eines neuen Windows 10-Geräts in Azure AD auf der Windows-Willkommensseite
 
@@ -48,16 +48,16 @@ Falls Ihr Mandant einem Verbund angehört, MUSS Ihr Identitätsanbieter außerde
 1. Wenn Sie das neue Gerät einschalten und den Setupprozess starten, sollte die Meldung **Vorbereitung** angezeigt werden. Befolgen Sie die Anweisungen, um Ihr Gerät einzurichten.
 1. Passen Sie zuerst die Region und die Sprache an. Akzeptieren Sie anschließend die Microsoft-Software-Lizenzbedingungen.
  
-    ![Für Ihre Region anpassen](./media/azuread-joined-devices-frx/01.png)
+    <!--![Customize for your region](./media/azuread-joined-devices-frx/01.png)-->
 
 1. Wählen Sie das Netzwerk aus, das Sie für die Verbindung mit dem Internet verwenden möchten.
 1. Klicken Sie auf **Dieses Gerät gehört meiner Organisation**. 
 
-    ![Bildschirm „Wem gehört dieser PC?“](./media/azuread-joined-devices-frx/02.png)
+    <!--![Who owns this PC screen](./media/azuread-joined-devices-frx/02.png)-->
 
 1. Geben Sie die Anmeldeinformationen ein, die von Ihrer Organisation bereitgestellt wurden, und klicken Sie auf **Anmelden**.
 
-    ![Anmeldebildschirm](./media/azuread-joined-devices-frx/03.png)
+    <!--![Sign-in screen](./media/azuread-joined-devices-frx/03.png)-->
 
 1. Ihr Gerät ermittelt einen übereinstimmenden Mandanten in Azure AD. Wenn Sie in einer Verbunddomäne sind, werden Sie an Ihren lokalen Sicherheitstokendienst-Server (STS) umgeleitet, beispielsweise Active Directory-Verbunddienste (AD FS).
 1. Wenn Sie ein Benutzer in einer nicht verbundenen Domäne sind, geben Sie Ihre Anmeldeinformationen direkt auf der von Azure AD gehosteten Seite ein. 

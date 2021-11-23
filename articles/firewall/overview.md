@@ -6,36 +6,49 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 09/01/2021
+ms.date: 11/10/2021
 ms.author: victorh
-ms.openlocfilehash: bd773dd1a865f50d441ca09760a9ee3130ed3898
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 54f5de052c6fed4729a41e9f54c614480efc1e7e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130226317"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309921"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
 <!--- ![ICSA certification](media/overview/icsa-cert-firewall-small.png) --->
 
-Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt. Es ist eine vollständig zustandsbehaftete Firewall-as-a-Service mit integrierter Hochverfügbarkeit und uneingeschränkter Cloudskalierbarkeit.
+Azure Firewall ist ein cloudnativer, intelligenter Netzwerkfirewall-Sicherheitsdienst, der erstklassigen Bedrohungsschutz für Ihre cloudbasierten, in Azure ausgeführten Workloads bietet. Es handelt sich hierbei um eine vollständig zustandsbehaftete Firewall-as-a-Service-Lösung mit integrierter Hochverfügbarkeit und uneingeschränkter Cloudskalierbarkeit. Sie ermöglicht die Untersuchung von Ost-West- und Nord-Süd-Datenverkehr.
 
-![Firewallübersicht](media/overview/firewall-threat.png)
+Azure Firewall wird in zwei SKUs angeboten: Standard und Premium.
 
-Sie können Richtlinien zur Anwendungs- und Netzwerkkonnektivität übergreifend für Abonnements und virtuelle Netzwerke zentral erstellen, erzwingen und protokollieren. Azure Firewall verwendet eine statische öffentliche IP-Adresse für Ihre virtuellen Netzwerkressourcen, die es außenstehenden Firewalls ermöglicht, Datenverkehr aus Ihrem virtuellen Netzwerk zu identifizieren.  Der Dienst ist für Protokollierung und Analyse vollständig in Azure Monitor integriert.
+## <a name="azure-firewall-standard"></a>Azure Firewall Standard
 
-Informationen zu Features von Azure Firewall finden Sie unter [Azure Firewall-Features](features.md).
+   Azure Firewall Standard bietet L3- bis L7-Filterung und Threat Intelligence-Feeds direkt von Microsoft Cyber Security. Die auf Threat Intelligence basierende Filterung kann Warnungen generieren und ein- bzw. ausgehenden Datenverkehr für als schädlich bekannte IP-Adressen und Domänen verweigern. Diese werden in Echtzeit aktualisiert, um vor neuen und sich entwickelnden Angriffen zu schützen.
+
+   ![Übersicht über Firewall Standard](media/overview/firewall-standard.png)
+
+Weitere Informationen zu Firewall Standard-Features finden Sie unter [Azure Firewall Standard-Features](features.md).
+
 
 ## <a name="azure-firewall-premium"></a>Azure Firewall Premium
 
-Die Azure Firewall Premium ist eine Firewall der nächsten Generation mit Funktionen, die für streng vertrauliche und regulierte Umgebungen erforderlich sind. Zu diesen Funktionen gehören TLS-Inspektion, IDPS, URL-Filterung und Webkategorien.
+   Azure Firewall Premium bietet erweiterte Funktionen wie signaturbasiertes IDPS, um eine schnelle Erkennung von Angriffen zu ermöglichen, indem nach bestimmten Mustern gesucht wird. Bei diesen Mustern kann es sich um Bytesequenzen im Netzwerkdatenverkehr oder um bekannte schädliche Anweisungssequenzen handeln, die von Schadsoftware verwendet werden. Es gibt über 58.000 Signaturen in über 50 Kategorien. Diese werden in Echtzeit aktualisiert, um vor neuen und sich entwickelnden Exploits zu schützen. Zu den Exploitkategorien zählen unter anderem Schadsoftware, Phishing, Coin Mining und Trojaner.
 
-Weitere Informationen zu den Funktionen der Azure Firewall Premium finden Sie unter [Funktionen der Azure Firewall Premium](premium-features.md).
+   ![Übersicht über Firewall Premium](media/overview/firewall-premium.png)
 
 
-Unter [Azure Firewall Premium im Azure-Portal](premium-portal.md) erfahren Sie, wie Sie die Azure Firewall Premium über das Azure-Portal konfigurieren.
+Weitere Informationen zu Firewall Premium-Features finden Sie unter [Azure Firewall Premium-Features](premium-features.md).
 
+
+## <a name="azure-firewall-manager"></a>Azure Firewall Manager
+
+Azure Firewall Manager ermöglicht die zentrale Verwaltung von Azure Firewall-Instanzen für mehrere Abonnements. Firewall Manager nutzt die Firewallrichtlinie, um einen allgemeinen Satz von Netzwerk-/Anwendungsregeln und -konfigurationen auf die Firewalls in Ihrem Mandanten anzuwenden.
+ 
+Firewall Manager unterstützt Firewalls in VNet- und Virtual WAN-Umgebungen (sicherer virtueller Hub). Sichere virtuelle Hubs verwenden die Virtual WAN-Routenautomatisierungslösung, um die Weiterleitung von Datenverkehr an die Firewall mit wenigen Klicks zu vereinfachen.
+
+Weitere Informationen zu Azure Firewall Manager finden Sie unter [Was ist Azure Firewall Manager?](../firewall-manager/overview.md).
 
 ## <a name="pricing-and-sla"></a>Preise und SLA
 
@@ -82,7 +95,8 @@ Azure Firewall weist die folgenden bekannten Probleme auf:
 |Das Entfernen von RuleCollectionGroup-Elementen mit ARM-Vorlagen wird nicht unterstützt.|Das Entfernen eines RuleCollectionGroup-Elements mit ARM-Vorlagen wird nicht unterstützt und führt zu einem Fehler.|Dies ist kein unterstützter Vorgang.|
 |Wenn die DNAT-Regel *allen* (*) Datenverkehr zulässt, erfolgt auch eine Quellnetzwerk-Adressübersetzung (Source Network Address Translation, SNAT).|Wenn eine DNAT-Regel *alle* (*) Quell-IP-Adressen zulässt, stimmt eine implizite Netzwerkregel mit dem VNet-VNet-Datenverkehr überein, sodass immer eine SNAT erfolgt.|Dies ist eine aktuelle Beschränkung.|
 |Das Hinzufügen einer DNAT-Regel zu einem geschützten virtuellen Hub mit einem Sicherheitsanbieter wird nicht unterstützt.|Dies führt zu einer asynchronen Route für den an den Sicherheitsanbieter zurückgegebenen DNAT-Datenverkehr.|Wird nicht unterstützt.|
-| Fehler, die beim Erstellen von mehr als 2.000 Regelsammlungen auftreten können. | Die maximale Anzahl der Regelsammlungen für die NAT, Anwendungen oder dem Netzwerk beträgt 2000 (Resource Manager-Begrenzung). | Dies ist eine aktuelle Beschränkung. |
+| Fehler, die beim Erstellen von mehr als 2.000 Regelsammlungen auftreten können. | Die maximale Anzahl von Regelsammlungen für NAT/Anwendung oder Netzwerk beträgt 2.000 (Resource Manager-Begrenzung). | Dies ist eine aktuelle Beschränkung. |
+|Netzwerkregelname wird in Azure Firewall-Protokollen nicht angezeigt|Der Regelname für Netzwerkdatenverkehr wird in den Netzwerkregelprotokolldaten von Azure Firewall nicht angezeigt.|Ein Feature wird geprüft, um dies zu unterstützen.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

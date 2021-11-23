@@ -4,16 +4,19 @@ description: In dieser Schnellstartanleitung werden die ersten Schritte mit Azur
 ms.topic: quickstart
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c449b86ca4718ad93c2b0c4be0a1623169916ecc
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 5c39d6ddae6ad34ad705da8ee2b6de79a8102452
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131556519"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398818"
 ---
 # <a name="quickstart-get-started-with-video-analyzer-in-the-portal"></a>Schnellstart: Erste Schritte mit Video Analyzer im Portal
 
-[!INCLUDE [header](includes/edge-env.md)]
+![Edgesymbol](media/env-icon/edge.png)  
+Lesen Sie alternativ die Informationen unter [Schnellstart: Erste Schritte mit Video Analyzer-Livepipelines im Azure-Portal](../cloud/get-started-livepipelines-portal.md).
+
+---
 
 In dieser Schnellstartanleitung werden die ersten Schritte mit Azure Video Analyzer erläutert. Sie erstellen im Azure-Portal ein Azure Video Analyzer-Konto und die zugehörigen Ressourcen. Anschließend stellen Sie das Video Analyzer-Edgemodul und ein RTSP-Kamerasimulatormodul (Real-Time Streaming Protocol) auf Ihrem Azure IoT Edge-Gerät bereit.
 

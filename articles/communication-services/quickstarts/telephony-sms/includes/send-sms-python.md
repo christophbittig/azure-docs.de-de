@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: 9e44cc1f631a56d1948c744a1ecb912208bad11e
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: c6fcc4c63b786af08c48450791a58b4f6f13a6ad
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113659613"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132529475"
 ---
 Steigen Sie ein in Azure Communication Services, indem Sie das Python-SDK für SMS von Communication Services nutzen, um SMS-Nachrichten zu senden.
 
@@ -105,7 +105,7 @@ sms_responses = sms_client.send(
 Ersetzen Sie `<from-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Instanz zugeordnet ist, und ersetzen Sie `<to-phone-number>` durch die Telefonnummer, an die Sie eine Nachricht senden möchten.
 
 > [!WARNING]
-> Beachten Sie, dass Telefonnummern im internationalen Standardformat E.164 angegeben werden sollten. (Beispiel: +14255550123).
+> Beachten Sie, dass Telefonnummern im internationalen Standardformat E.164 angegeben werden sollten (z. B. +14255550123). Die Telefonnummer vom Typ **From** (Anrufertelefonnummer) kann auch ein kurzer Code sein (z. B. 23456).
 
 ## <a name="send-a-1n-sms-message"></a>Senden einer SMS: 1:N
 
@@ -126,7 +126,7 @@ sms_responses = sms_client.send(
 Ersetzen Sie `<from-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Instanz zugeordnet ist, und ersetzen Sie `<to-phone-number-1>` `<to-phone-number-2>` durch Telefonnummern, an die Sie eine Nachricht senden möchten.
 
 > [!WARNING]
-> Beachten Sie, dass Telefonnummern im internationalen Standardformat E.164 angegeben werden sollten. (Beispiel: +14255550123).
+> Beachten Sie, dass Telefonnummern im internationalen Standardformat E.164 angegeben werden sollten (z. B. +14255550123). Die Telefonnummer vom Typ **From** (Anrufertelefonnummer) kann auch ein kurzer Code sein (z. B. 23456).
 
 ## <a name="optional-parameters"></a>Optionale Parameter
 

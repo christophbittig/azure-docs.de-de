@@ -9,18 +9,18 @@ ms.subservice: spark
 ms.date: 10/18/2021
 ms.author: nidutta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 072d1481ea1a089db7c02c5bc9af8179dcefccd7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c37e1361a1f0864dc64af3bfb91eb6f8df293949
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100961"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494323"
 ---
-# <a name="apache-spark-gpu-enabled-pool-in-azure-synapse-analytics"></a>Apache Spark: GPU-fähiger Pool in Azure Synapse Analytics
+# <a name="apache-spark-gpu-accelerated-pools-in-azure-synapse-analytics"></a>Apache Spark-Pools mit GPU-Beschleunigung in Azure Synapse Analytics
 
 Apache Spark ist ein Framework für die Parallelverarbeitung, das In-Memory-Verarbeitung unterstützt, um die Leistung von Big Data-Analyseanwendungen zu steigern. Apache Spark in Azure Synapse Analytics ist eine der cloudbasierten Apache Spark-Implementierungen von Microsoft. 
 
-Azure Synapse ermöglicht jetzt die Erstellung von Azure Synapse GPU-fähigen Pools für die Ausführung von Spark-Workloads mithilfe von zugrunde liegenden [RAPIDS-Bibliotheken](https://nvidia.github.io/spark-rapids/). Hierbei wird die hohe Leistungsstärke in Bezug auf die parallele Verarbeitung der GPUs genutzt, um die Verarbeitungsdauer zu verkürzen. Mit dem RAPIDS Accelerator für Apache Spark können Sie Ihre vorhandenen Spark-Anwendungen **ohne Codeänderung** ausführen, indem Sie lediglich eine Konfigurationseinstellung aktivieren, die für einen GPU-fähigen Pool vorkonfiguriert ist.
+Azure Synapse ermöglicht jetzt die Erstellung von Azure Synapse GPU-fähigen Pools für die Ausführung von Spark-Workloads mithilfe von zugrunde liegenden [RAPIDS-Bibliotheken](https://nvidia.github.io/spark-rapids/). Hierbei wird die hohe Leistungsstärke in Bezug auf die Parallelverarbeitung der GPUs genutzt, um die Verarbeitung zu beschleunigen. Mit dem RAPIDS Accelerator für Apache Spark können Sie Ihre vorhandenen Spark-Anwendungen **ohne Codeänderung** ausführen, indem Sie lediglich eine Konfigurationseinstellung aktivieren, die für einen GPU-fähigen Pool vorkonfiguriert ist.
 Sie können die RAPIDS-basierte GPU-Beschleunigung für Ihre Workload oder Teile davon aktivieren/deaktivieren, indem Sie diese Konfiguration festlegen:
 
 ```
@@ -63,9 +63,9 @@ Ein Beispiel hierfür ist die Verwendung eines großen Pools mit drei Knoten:
 }
 ```
 
-## <a name="run-a-sample-spark-job-through-notebook-on-an-azure-synapse-gpu-enabled-pool"></a>Ausführen eines Spark-Beispielauftrags über ein Notebook in einem Azure Synapse GPU-fähigen Pool
+## <a name="run-a-sample-spark-job-through-notebook-on-an-azure-synapse-gpu-accelerated-pool"></a>Ausführen eines Spark-Beispielauftrags über ein Notebook in einem Azure Synapse-Pool mit GPU-Beschleunigung
 
-Es ist hilfreich, wenn Sie sich vor dem Fortfahren mit diesem Abschnitt mit den [grundlegenden Konzepten der Nutzung eines Notebooks](apache-spark-development-using-notebooks.md) in Azure Synapse Analytics vertraut machen. Hier sind die Schritte zum Ausführen einer einfachen Spark-Anwendung mit GPU-Beschleunigung beschrieben. Sie können eine Spark-Anwendung in allen vier Sprachen schreiben, die in Synapse unterstützt werden: PySpark (Python), Spark (Scala), SparkSQL und .NET für Spark (C#).
+Es ist hilfreich, wenn Sie sich vor dem Fortfahren mit diesem Abschnitt mit den [grundlegenden Konzepten der Nutzung eines Notebooks](apache-spark-development-using-notebooks.md) in Azure Synapse Analytics vertraut machen. Hier sind die Schritte zum Ausführen einer Spark-Anwendung mit GPU-Beschleunigung beschrieben. Sie können eine Spark-Anwendung in allen vier Sprachen schreiben, die in Synapse unterstützt werden: PySpark (Python), Spark (Scala), SparkSQL und .NET für Spark (C#).
 
 1. Erstellen Sie einen GPU-fähigen Pool anhand der Beschreibung in [dieser Schnellstartanleitung](../quickstart-create-apache-gpu-pool-portal.md).
 
@@ -142,7 +142,7 @@ DataFrame empDF = spark.CreateDataFrame(emp, schema);
 ```
 ---
 
-5. Wir führen nun eine einfache Aggregierung durch, indem wir das höchste Gehalt nach Abteilungs-ID abrufen und das Ergebnis anzeigen:
+5. Sie führen nun eine Aggregierung durch, indem Sie das höchste Gehalt nach Abteilungs-ID abrufen und das Ergebnis anzeigen:
 
 ### <a name="scala"></a>[Scala](#tab/scala1)
 
@@ -176,4 +176,7 @@ Für die meisten Spark-Aufträge kann die Leistung verbessert werden, indem die 
 
 ### <a name="workspace-level"></a>Arbeitsbereichsebene
 
-Jeder Azure Synapse-Arbeitsbereich verfügt über ein Standardkontingent von 0 virtuellen GPU-Kernen. Gehen Sie wie folgt vor, um für Ihr Kontingent an GPU-Kernen eine Erhöhung anzufordern: Senden Sie eine E-Mail an AzureSynapseGPU@microsoft.com, die den Namen Ihres Arbeitsbereichs, die Region und das insgesamt benötigte GPU-Kontingent für Ihre Workload enthält.
+Jeder Azure Synapse-Arbeitsbereich verfügt über ein Standardkontingent von 50 virtuellen GPU-Kernen. Gehen Sie wie folgt vor, um für Ihr Kontingent an GPU-Kernen eine Erhöhung anzufordern: Senden Sie eine E-Mail an AzureSynapseGPU@microsoft.com, die den Namen Ihres Arbeitsbereichs, die Region und das insgesamt benötigte GPU-Kontingent für Ihre Workload enthält.
+
+## <a name="next-steps"></a>Nächste Schritte
+- [Azure Synapse Analytics](../overview-what-is.md)

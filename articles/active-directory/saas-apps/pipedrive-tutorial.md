@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 7713a1a502697a52ed811b8ed41b13485f454877
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 145d7e0f7b9ba1419b47fde3d8a3526f45315c98
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768171"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300069"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Pipedrive
 
@@ -128,6 +128,8 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
+<!-- docutune:ignore "Security Center" -->
+
 ## <a name="configure-pipedrive-sso"></a>Konfigurieren des einmaligen Anmeldens für Pipedrive
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Pipedrive-Website als Administrator an.
@@ -136,9 +138,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Der Screenshot zeigt die im Menü „User Profile“ ausgewählte Option „Settings“.](./media/pipedrive-tutorial/configure-1.png)
 
-1. Scrollen Sie nach unten zu Security Center, und wählen Sie **Single sign-on** (Einmaliges Anmelden) aus.
+1. Scrollen Sie nach unten zu Defender für Cloud, und wählen Sie **Single sign-on** (Einmaliges Anmelden) aus.
 
-    ![Der Screenshot zeigt die im „Security Center“ ausgewählte Option „Single sign-on“.](./media/pipedrive-tutorial/configure-2.png)
+    ![Screenshot: In „Defender für Cloud“ ausgewählte Option „Single sign-on“ (Einmaliges Anmelden)](./media/pipedrive-tutorial/configure-2.png)
 
 1. Führen Sie im Abschnitt **SAML configuration for pipedrive** (SAML-Konfiguration für Pipedrive) die folgenden Schritte aus:
 
@@ -195,4 +197,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Pipedrive können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Pipedrive können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 11/04/2021
-ms.openlocfilehash: a139996e881d38fb9170242196b2139993f501ae
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 94bd9d22876f264ffd438d579c48aa037ed87c3f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028806"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486619"
 ---
 # <a name="quickstart-purchase-commitment-tier-pricing"></a>Schnellstart: Kaufen zu Preisen für Mindestabnahme
 
@@ -97,7 +97,7 @@ Sollten Sie einen Mindestabnahmeplan benötigen, der über die angebotenen Tarif
 
 ## <a name="end-a-commitment-plan"></a>Beenden eines Mindestabnahmeplans
 
-Wenn Sie einen Mindestabnahmeplan nicht mehr benötigen, können Sie die automatische Verlängerung für Ihre Ressource auf **Nicht automatisch verlängern** festlegen. Der Mindestabnahmeplan läuft dann zum angezeigten Enddatum ab. Nach diesem Datum wird Ihnen der Mindestabnahmeplan nicht mehr in Rechnung gestellt. Sie können die Azure-Ressource weiterhin für API-Aufrufe verwenden, und Ihnen werden die Preise für die nutzungsbasierte Bezahlung in Rechnung gestellt.
+Wenn Sie einen Mindestabnahmeplan nicht mehr benötigen, können Sie die automatische Verlängerung für Ihre Ressource auf **Nicht automatisch verlängern** festlegen. Der Mindestabnahmeplan läuft dann zum angezeigten Enddatum ab. Nach diesem Datum wird Ihnen der Mindestabnahmeplan nicht mehr in Rechnung gestellt. Sie können die Azure-Ressource weiterhin für API-Aufrufe verwenden, und Ihnen werden die Preise für die nutzungsbasierte Bezahlung in Rechnung gestellt. Sie haben bis Mitternacht (UTC) am letzten Tag eines Monats Zeit, einen Mindestabnahmeplan zu beenden, und Ihnen werden keine Kosten für den folgenden Monat in Rechnung gestellt. 
 
 ## <a name="see-also"></a>Weitere Informationen
 

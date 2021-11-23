@@ -1,18 +1,18 @@
 ---
 title: 'Schnellstart: Systemvoraussetzungen'
-description: In dieser Schnellstartanleitung erhalten Sie Informationen zu den für die Durchführung von Azure Defender für IoT erforderlichen Systemvoraussetzungen.
-ms.date: 11/30/2020
+description: In dieser Schnellstartanleitung erhalten Sie Informationen zu den für die Ausführung von Microsoft Defender für IoT erforderlichen Systemvoraussetzungen.
+ms.date: 11/09/2021
 ms.topic: quickstart
-ms.openlocfilehash: f770a6436563439603403e0aedf62d496a38d805
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: f4f0912aade1f00623637791bc05aeee3a8747cb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011101"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278301"
 ---
 # <a name="quickstart-system-prerequisites"></a>Schnellstart: Systemvoraussetzungen
 
-Dieser Artikel enthält eine Beschreibung der Systemanforderungen für die Ausführung von Azure Defender für IoT.
+Dieser Artikel enthält eine Beschreibung der Systemanforderungen für die Ausführung von Microsoft Defender für IoT.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -22,8 +22,8 @@ Dieser Artikel enthält eine Beschreibung der Systemanforderungen für die Ausf�
 
 - Netzwerkswitches, die die Überwachung des Datenverkehrs über den SPAN-Port unterstützen.
 - Hardwareappliances für NTA-Sensoren.
-- Die Rolle „Mitwirkender“ für das Azure-Abonnement. Sie wird nur beim Onboarding zum Definieren von committeten Geräten und der Verbindung mit Azure Sentinel benötigt.
-- Rolle **Mitwirkender** für Azure IoT Hub (Tarif „Free“ oder „Standard“) für die cloudbasierte Verwaltung. Stellen Sie sicher, dass das Feature **Azure Defender für IoT** aktiviert ist.
+- Die Rolle „Mitwirkender“ für das Azure-Abonnement. Sie wird nur beim Onboarding zum Definieren von committeten Geräten und der Verbindung mit Microsoft Sentinel benötigt.
+- Rolle **Mitwirkender** für Azure IoT Hub (Tarif „Free“ oder „Standard“) für die cloudbasierte Verwaltung. Stellen Sie sicher, dass das Feature **Microsoft Defender für IoT** aktiviert ist.
 
 ## <a name="supported-service-regions"></a>Unterstützte Servicebereiche
 

@@ -1,21 +1,21 @@
 ---
-title: Setup der Testversion von Azure Defender für IoT
-description: In diesem Tutorial erfahren Sie, wie Sie das Onboarding für Azure Defender für IoT mit einem virtuellen Sensor auf einem virtuellen Computer mit einem Testabonnement von Azure Defender für IoT durchführen.
+title: Setup der Testversion von Microsoft Defender für IoT
+description: In diesem Tutorial erfahren Sie, wie Sie das Onboarding für Microsoft Defender für IoT mit einem virtuellen Sensor auf einem virtuellen Computer mit einem Testabonnement von Microsoft Defender für IoT durchführen.
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 10/07/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: e509b3a1c12c7c7d118eca0b3a2adabe01bdc977
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 91e7d217861be41453669ea47525ed563200f54e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129660303"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283635"
 ---
-# <a name="tutorial-azure-defender-for-iot-trial-setup"></a>Tutorial: Setup der Testversion von Azure Defender für IoT
+# <a name="tutorial-microsoft-defender-for-iot-trial-setup"></a>Tutorial: Setup der Testversion von Microsoft Defender für IoT
 
-In diesem Tutorial erfahren Sie, wie Sie das Onboarding für Azure Defender für IoT mit einem virtuellen Sensor auf einem virtuellen Computer mit einem Testabonnement von Azure Defender für IoT durchführen. In diesem Tutorial wird das optimale Setup für Benutzer gezeigt, die Azure Defender für IoT testen möchten, bevor sie sich registrieren und die Lösung in ihre Umgebung integrieren.
+In diesem Tutorial erfahren Sie, wie Sie das Onboarding für Microsoft Defender für IoT mit einem virtuellen Sensor auf einem virtuellen Computer mit einem Testabonnement von Microsoft Defender für IoT durchführen. In diesem Tutorial wird das optimale Setup für Benutzer gezeigt, die Microsoft Defender für IoT testen möchten, bevor sie sich registrieren und die Lösung in ihre Umgebung integrieren.
 
 Durch die Verwendung virtueller Umgebungen und der zum Erstellen eines Sensors erforderlichen Software ermöglicht Defender für IoT Ihnen Folgendes:
 
@@ -25,12 +25,12 @@ Durch die Verwendung virtueller Umgebungen und der zum Erstellen eines Sensors e
 
 - Erkennen abweichender oder nicht autorisierter Aktivitäten mit spezieller IoT- und OT-fähiger Threat Intelligence und Verhaltensanalyse. Sie können sogar komplexere Bedrohungen erkennen, die von statischen IoCs übersehen werden (z. B. Zero-Day-Malware, dateilose Schadsoftware und Living-off-the-Land-Taktiken).
 
-- Durch die Integration in Azure Sentinel erhalten Sie einen Überblick über Ihre gesamte Organisation. Implementieren Sie durch die Integration in vorhandene Workflows (einschließlich Tools von Drittanbietern wie Splunk, IBM QRadar und ServiceNow) eine einheitliche IoT- und OT-Sicherheitsgovernance.
+- Durch die Integration in Microsoft Sentinel erhalten Sie einen Überblick über Ihre gesamte Organisation. Implementieren Sie durch die Integration in vorhandene Workflows (einschließlich Tools von Drittanbietern wie Splunk, IBM QRadar und ServiceNow) eine einheitliche IoT- und OT-Sicherheitsgovernance.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Durchführen des Onboardings mit Azure Defender für IoT
+> * Durchführen des Onboardings mit Microsoft Defender für IoT
 > * Herunterladen der ISO-Datei für den virtuellen Sensor
 > * Erstellen eines virtuellen Computers für den Sensor
 > * Installieren der Software für den virtuellen Sensor
@@ -47,17 +47,17 @@ In diesem Tutorial lernen Sie Folgendes:
 
 - Ein Azure-Konto. Wenn Sie noch nicht über ein Azure-Konto verfügen, können Sie [noch heute Ihr kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/).
 
-## <a name="onboard-with-azure-defender-for-iot"></a>Durchführen des Onboardings mit Azure Defender für IoT
+## <a name="onboard-with-microsoft-defender-for-iot"></a>Durchführen des Onboardings mit Microsoft Defender für IoT
 
-Für den Einstieg in Azure Defender für IOT benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie über kein Abonnement verfügen, können Sie [noch heute Ihr kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/).
+Für den Einstieg in Microsoft Defender für IoT benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie über kein Abonnement verfügen, können Sie [noch heute Ihr kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/).
 
 Zum Evaluieren von Defender für IoT können Sie ein Testabonnement verwenden. Die Testversion ist 30 Tage lang gültig und unterstützt bis zu 1.000 committete Geräte. Mit der Testversion können Sie einen virtuellen Sensor in Ihrem Netzwerk bereitstellen. Verwenden Sie die Sensoren, um u. a. Datenverkehr zu überwachen, Daten zu analysieren, Warnungen zu generieren und mehr über Netzwerkrisiken und Sicherheitsrisiken zu erfahren. Mit der Testversion können Sie auch eine virtuelle lokale Verwaltungskonsole bereitstellen, um die vom Sensor generierten aggregierten Informationen anzeigen zu können.
 
-**So integrieren Sie ein Abonnement in Azure Defender für Iot:**
+**So integrieren Sie ein Abonnement in Microsoft Defender für IoT**
 
-1. Navigieren Sie zum [Azure-Portal](https://ms.portal.azure.com/).
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/).
 
-1. Suchen Sie nach **Azure Defender für IoT**, und wählen Sie den Eintrag aus.
+1. Suchen Sie nach **Microsoft Defender für IoT**, und wählen Sie den Eintrag aus.
 
 1. Klicken Sie auf **Onboard subscription** (Onboarding für Abonnement durchführen).
 
@@ -85,9 +85,9 @@ Für die virtuellen Geräte gelten Mindestspezifikationen, die sowohl für den S
 
 **So laden Sie die ISO-Datei für den virtuellen Sensor herunter:**
 
-1. Navigieren Sie zum [Azure-Portal](https://ms.portal.azure.com/).
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/).
 
-1. Suchen Sie nach **Azure Defender für IoT**, und wählen Sie den Eintrag aus.
+1. Suchen Sie nach **Microsoft Defender für IoT**, und wählen Sie den Eintrag aus.
 
 1. Wählen Sie auf der Seite „Erste Schritte“ die Registerkarte **Sensor** aus.
 
@@ -103,7 +103,7 @@ Der virtuelle Sensor unterstützt sowohl VMware- als auch Hyper-V-Bereitstellung
 
 - Verfügbare Hardwareressourcen für den virtuellen Computer
 
-- ISO-Installationsdatei für den Azure Defender für IoT-Sensor
+- ISO-Installationsdatei für den Microsoft Defender für IoT-Sensor
 
 - Sorgen Sie dafür, dass der Hypervisor ausgeführt wird.
 
@@ -404,7 +404,7 @@ Bevor Sie Ihren Defender für IoT-Sensor verwenden können, müssen Sie den erst
 
 **So integrieren Sie den virtuellen Sensor:**
 
-1. Navigieren Sie im **Defender für IoT-Portal** zur [Willkommensseite](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
+1. Navigieren Sie im Azure-Portal zu [Defender für IoT: Erste Schritte](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 
 1. Wählen Sie **Sensor integrieren** aus.
 
@@ -420,13 +420,13 @@ Bevor Sie Ihren Defender für IoT-Sensor verwenden können, müssen Sie den erst
 
 1. Wählen Sie mithilfe der Umschaltfläche **Mit der Cloud verbunden** einen Sensorverbindungsmodus aus. Ist der Umschalter auf „Ein“ festgelegt, ist der Sensor mit der Cloud verbunden. Wenn der Umschalter auf „Aus“ festgelegt ist, wird der Sensor lokal verwaltet.
 
-   - **Mit der Cloud verbundene Sensoren**: Die vom Sensor erkannten Informationen werden in der Sensorkonsole angezeigt. Warnungsinformationen werden über einen IoT-Hub übermittelt und können für andere Azure-Dienste wie Azure Sentinel freigegeben werden. Darüber hinaus können Threat Intelligence-Pakete aus dem Azure Defender für IoT-Portal an Sensoren gepusht werden. Wenn der Sensor hingegen nicht mit der Cloud verbunden ist, müssen Sie Threat Intelligence-Pakete herunterladen und dann auf Ihre Unternehmenssensoren hochladen. Um Defender für IoT das Pushen von Paketen an Sensoren zu ermöglichen, aktivieren Sie die Umschaltfläche **Automatische Threat Intelligence-Updates**. Weitere Informationen finden Sie unter [Forschung und Pakete zur Bedrohungsanalyse](how-to-work-with-threat-intelligence-packages.md).
+   - **Mit der Cloud verbundene Sensoren**: Die vom Sensor erkannten Informationen werden in der Sensorkonsole angezeigt. Warnungsinformationen werden über einen IoT-Hub übermittelt und können für andere Azure-Dienste wie Microsoft Sentinel freigegeben werden. Darüber hinaus können Threat Intelligence-Pakete aus Defender für IoT an Sensoren gepusht werden. Wenn der Sensor hingegen nicht mit der Cloud verbunden ist, müssen Sie Threat Intelligence-Pakete herunterladen und dann auf Ihre Unternehmenssensoren hochladen. Um Defender für IoT das Pushen von Paketen an Sensoren zu ermöglichen, aktivieren Sie die Umschaltfläche **Automatische Threat Intelligence-Updates**. Weitere Informationen finden Sie unter [Forschung und Pakete zur Bedrohungsanalyse](how-to-work-with-threat-intelligence-packages.md).
 
       Bei mit der Cloud verbundenen Sensoren wird in der Sensorkonsole der Name angezeigt, der während des Onboardings definiert wurde. Sie können diesen Namen nicht direkt über die Konsole ändern. Bei lokal verwalteten Sensoren wird der während des Onboardings angewendete Name in Azure gespeichert, dieser kann jedoch in der Sensorkonsole geändert werden.
 
    - **Lokal verwaltete Sensoren**: Die von Sensoren erkannten Informationen werden in der Sensorkonsole angezeigt. Wenn Sie in einem Air-Gap-Netzwerk arbeiten und eine einheitliche Ansicht aller Informationen haben möchten, die von mehreren lokal verwalteten Sensoren erkannt wurden, arbeiten Sie mit der lokalen Verwaltungskonsole.
 
-1. Wählen Sie eine Site zum Zuweisen Ihres Sensors in einem IoT Hub aus. Dabei dient der IoT-Hub als Gateway zwischen diesem Sensor und Azure Defender für IoT. Legen Sie einen Anzeigenamen und eine Zone fest. Sie können auch beschreibende Tags hinzufügen. Der Anzeigename, die Zone und Tags sind beschreibende Einträge unter [Anzeigen integrierter Sensoren](how-to-manage-sensors-on-the-cloud.md#view-onboarded-sensors).
+1. Wählen Sie eine Site zum Zuweisen Ihres Sensors in einem IoT Hub aus. Dabei dient die IoT Hub-Instanz als Gateway zwischen diesem Sensor und Microsoft Defender für IoT. Legen Sie einen Anzeigenamen und eine Zone fest. Sie können auch beschreibende Tags hinzufügen. Der Anzeigename, die Zone und Tags sind beschreibende Einträge unter [Anzeigen integrierter Sensoren](how-to-manage-sensors-on-the-cloud.md#view-onboarded-sensors).
 
 1. Wählen Sie **Registrieren**.
 
@@ -448,7 +448,7 @@ Sobald die Registrierung für den Sensor abgeschlossen ist, können Sie eine Akt
 
 1. Rufen Sie die Sensorkonsole in Ihrem Browser auf, indem Sie die bei der Installation festgelegte IP-Adresse verwenden.
 
-    :::image type="content" source="media/tutorial-onboarding/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Screenshot: Azure Defender für IoT-Sensor":::
+    :::image type="content" source="media/tutorial-onboarding/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Screenshot: Microsoft Defender für IoT-Sensor":::
 
 1. Geben Sie die bei der Sensorinstallation festgelegten Anmeldeinformationen ein.
 
@@ -477,4 +477,5 @@ Möglicherweise müssen Sie den Bildschirm aktualisieren, nachdem Sie das von ei
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über das Einrichten [weiterer Appliances](how-to-install-software.md#about-defender-for-iot-appliances).
+
 Erfahren Sie mehr über die [Architektur ohne Agent](architecture.md).

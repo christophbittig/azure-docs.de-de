@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 10/12/2021
 ms.author: zhenlwa
-ms.openlocfilehash: 94df4c9fb17f94c317e46b2bef9d2208fa592884
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 9631d083353382177afbb284cd92de53e44e94a4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130271328"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301929"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-web-application-net-framework"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer ASP.NET-Webanwendung (.NET Framework)
 
@@ -100,7 +100,7 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
     ```
     Die `Application_Start`-Methode wird bei der ersten Anforderung an Ihre Webanwendung aufgerufen. Sie wird während des Lebenszyklus der Anwendung nur einmal aufgerufen. Daher ist dies ein geeigneter Ort, um Ihr `IConfiguration`-Objekt zu initialisieren und Daten aus App Configuration zu laden.
 
-    In der Methode `ConfigureRefresh` wird ein Schlüssel in Ihrem App Configuration-Speicher für die Änderungsüberwachung registriert. Mit dem Parameter `refreshAll` der Methode `Register` wird angegeben, dass alle Konfigurationswerte aktualisiert werden sollen, wenn sich der registrierte Schlüssel ändert. In diesem Beispiel handelt es sich bei *TestApp:Settings:Sentinel* um einen *Sentinel*-Schlüssel, den Sie aktualisieren, nachdem Sie die Änderung aller anderen Schlüssel abgeschlossen haben. Wird eine Änderung erkannt, werden alle Konfigurationswerte von Ihrer Anwendung aktualisiert. Dieser Ansatz trägt dazu bei, die Konsistenz der Konfiguration in Ihrer Anwendung zu gewährleisten, anstatt alle Schlüssel auf Änderungen zu überwachen.
+    In der Methode `ConfigureRefresh` wird ein Schlüssel in Ihrem App Configuration-Speicher für die Änderungsüberwachung registriert. Mit dem Parameter `refreshAll` der Methode `Register` wird angegeben, dass alle Konfigurationswerte aktualisiert werden sollen, wenn sich der registrierte Schlüssel ändert. In diesem Beispiel handelt es sich bei *TestApp:Settings:Sentinel* um einen *Sentinel-Schlüssel*, den Sie aktualisieren, nachdem Sie die Änderung aller anderen Schlüssel abgeschlossen haben. Wird eine Änderung erkannt, werden alle Konfigurationswerte von Ihrer Anwendung aktualisiert. Dieser Ansatz trägt dazu bei, die Konsistenz der Konfiguration in Ihrer Anwendung zu gewährleisten, anstatt alle Schlüssel auf Änderungen zu überwachen.
     
     Durch die Methode `SetCacheExpiration` wird angegeben, wie viel Zeit mindestens verstreichen muss, bevor eine neue Anforderung an App Configuration gesendet wird, um nach Konfigurationsänderungen zu suchen. In diesem Beispiel setzen Sie die standardmäßige Ablaufzeit von 30 Sekunden außer Kraft und geben stattdessen einen Wert von 5 Minuten an. Dadurch wird die Anzahl potenzieller Anforderungen verringert, die an Ihren App Configuration-Speicher gesendet werden.
 

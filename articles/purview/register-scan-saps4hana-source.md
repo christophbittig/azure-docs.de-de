@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: df8794f0b22fa5ae1cc457bd8dfebc12032a7961
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: fdf5f8ed70d0af65bc80ace02d1e4db503a04abe
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131848873"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549582"
 ---
 # <a name="connect-to-and-manage-sap-s4hana-in-azure-purview"></a>Verbinden mit und Verwalten von SAP S/4HANA in Azure Purview
 
@@ -37,6 +37,9 @@ In diesem Artikel wird beschrieben, wie Sie SAP S/4HANA in Azure Purview registr
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
+    >[!NOTE]
+    >Die Überprüfung von SAP S/4HANA ist ein speicherintensiver Vorgang. Es wird empfohlen, die selbstgehostete Integration Runtime auf einem Computer mit mindestens 128 GB RAM zu installieren.
+
 * Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
 
 * Stellen Sie sicher, dass Visual C++ Redistributable für Visual Studio 2012 Update 4 auf dem Computer mit der selbstgehosteten Integration Runtime installiert ist. Wenn Sie dieses Update nicht installiert haben, [können Sie es hier herunterladen](https://www.microsoft.com/download/details.aspx?id=30679).
@@ -54,7 +57,7 @@ In diesem Artikel wird beschrieben, wie Sie SAP S/4HANA in Azure Purview registr
   * STFC_CONNECTION (Konnektivität überprüfen)
   * RFC_SYSTEM_INFO (Systeminformationen überprüfen)
 
-## <a name="register"></a>Register
+## <a name="register"></a>Registrieren
 
 In diesem Abschnitt wird beschrieben, wie Sie SAP S/4HANA in Azure Purview mithilfe von [Purview Studio](https://web.purview.azure.com/) registrieren.
 
@@ -115,10 +118,7 @@ Führen Sie die folgenden Schritte aus, um SAP S/4HANA zu überprüfen und autom
 
     1. **JCo-Bibliothekspfad**: Geben Sie den Pfad zu dem Ordner an, in dem sich die JCo-Bibliotheken befinden.
 
-    1. **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden SAP S/4HANA-Quelle.
-
-        > [!Note]
-        > Faustregel: 1 GB Arbeitsspeicher pro 1000 Tabellen.
+    1. **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden SAP S/4HANA-Quelle. Es wird empfohlen, einen großen verfügbaren Arbeitsspeicher bereitzustellen, z. B. 100.
 
     :::image type="content" source="media/register-scan-saps4hana-source/scan-saps-4-hana.png" alt-text="SAP S/4HANA überprüfen" border="true":::
 

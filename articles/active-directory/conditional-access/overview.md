@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4, azuread-video-2020
-ms.openlocfilehash: 80ba129ae6e945072bea0184445f27e2a724c455
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1c3549ec7dbbba8e45e8b359177460841bec68fd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591986"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283276"
 ---
 # <a name="what-is-conditional-access"></a>Was ist bedingter Zugriff?
 
@@ -58,7 +58,7 @@ Häufige Signale, die der bedingte Zugriff bei der Entscheidungsfindung in Bezug
    - Benutzer, die auf bestimmte Anwendungen zugreifen, können unterschiedliche Richtlinien für den bedingten Zugriff auslösen. 
 - Erkennung in Echtzeit und kalkulierte Risiken
    - Die Signalintegration in Azure AD Identity Protection ermöglicht bedingte Zugriffsrichtlinien, um riskantes Anmeldeverhalten zu erkennen. Richtlinien können dann erzwingen, dass Benutzer Kennwortänderungen vornehmen oder die mehrstufige Authentifizierung durchführen, um ihr Risiko zu verringern oder den Zugriff zu blockieren, bis ein Administrator manuelle Maßnahmen ergreift.
-- Microsoft Cloud App Security (MCAS)
+- Microsoft Defender für Cloud-Apps
    - Ermöglicht es, den Benutzerzugriff auf Anwendungen und Sitzungen zu kontrollieren und in Echtzeit zu überwachen, was die Transparenz und die Kontrolle über den Zugriff auf Ihre Cloudumgebung sowie über darin ausgeführte Aktivitäten ermöglicht.
 
 ## <a name="common-decisions"></a>Häufige Entscheidungen
@@ -98,5 +98,5 @@ Kunden mit [Microsoft 365 Business Premium-Lizenzen](/office365/servicedescripti
 - [Erstellen einer Richtlinie für bedingten Zugriff](concept-conditional-access-policies.md)
 - [Planen der Bereitstellung für bedingten Zugriff](plan-conditional-access.md)
 - [Informationen zu Identity Protection](../identity-protection/overview-identity-protection.md)
-- [Informationen zu Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
+- Erfahren Sie mehr über [Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security).
 - [Informationen zu Microsoft Intune](/intune/index)

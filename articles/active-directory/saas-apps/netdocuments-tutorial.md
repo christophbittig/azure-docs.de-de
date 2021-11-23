@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 7e6fc17510186ebae3ec736f2385baf39c22eda0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 79c3252155f1821d8927134a723ed62aa09df00f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124802111"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307477"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit NetDocuments
 
@@ -120,7 +120,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
@@ -132,7 +132,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf NetDocuments gewähren.
 
@@ -144,29 +144,31 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name=&quot;configure-netdocuments-sso&quot;></a>Konfigurieren des einmaligen Anmeldens für NetDocuments
+<!-- docutune:ignore "Security Center" -->
+
+## <a name="configure-netdocuments-sso"></a>Konfigurieren des einmaligen Anmeldens für NetDocuments
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der NetDocuments-Unternehmenswebsite als Administrator an.
 
-2. Wählen Sie in der Ecke oben rechts Ihren Namen und dann **Admin** aus.
+2. Wählen Sie in der Ecke oben rechts Ihren Namen und dann **Administrator** aus.
 
 3. Wählen Sie **Security Center** aus.
-   
-    ![Repository](./media/netdocuments-tutorial/security-center.png &quot;Security Center")
+
+    ![Security Center](./media/netdocuments-tutorial/security-center.png "Security Center")
 
 4. Wählen Sie **Advanced Authentication** (Erweiterte Authentifizierung) aus.
-    
+
     ![Erweiterte Authentifizierungsoptionen konfigurieren](./media/netdocuments-tutorial/advance-authentication.png "Erweiterte Authentifizierungsoptionen konfigurieren")
 
-5.  Führen Sie auf der Registerkarte **Federated ID** (Verbund-ID) die folgenden Schritte aus:   
-   
-    [ ![Verbundidentität](./media/netdocuments-tutorial/federated-id.png "Verbundidentität")](./media/netdocuments-tutorial/federated-id.png#lightbox)
-   
-    a. Wählen Sie als **Servertyp für Identitätsverbund** die Option **Microsoft Azure Active Directory** aus.
-    
-    b.  Wählen Sie **Choose File** (Datei auswählen) aus, um die Metadatendatei hochzuladen, die Sie über das Azure-Portal heruntergeladen haben.
-    
-    c.  Wählen Sie **SAVE** (SPEICHERN) aus.
+5. Führen Sie auf der Registerkarte **Federated ID** (Verbund-ID) die folgenden Schritte aus:  
+
+    [![Verbundidentität](./media/netdocuments-tutorial/federated-id.png "Verbundidentität")](./media/netdocuments-tutorial/federated-id.png#lightbox)
+
+    1. Wählen Sie als **Servertyp für Identitätsverbund** die Option **Microsoft Azure Active Directory** aus.
+
+    1. Wählen Sie **Choose File** (Datei auswählen) aus, um die Metadatendatei hochzuladen, die Sie über das Azure-Portal heruntergeladen haben.
+
+    1. Wählen Sie **SAVE** (SPEICHERN) aus.
 
 ### <a name="create-netdocuments-test-user"></a>Erstellen eines NetDocuments-Testbenutzers
 
@@ -176,18 +178,18 @@ Damit sich Azure AD-Benutzer bei NetDocuments anmelden können, müssen sie in N
 
 1. Melden Sie sich bei Ihrer **NetDocuments**-Unternehmenswebsite als Administrator an.
 
-2. Wählen Sie in der Ecke oben rechts Ihren Namen und dann **Admin** aus.
-   
+2. Wählen Sie in der Ecke oben rechts Ihren Namen und dann **Administrator** aus.
+
     ![Administrator](./media/netdocuments-tutorial/user-admin.png "Admin")
 
 3. Wählen Sie **Benutzer und Gruppen**.
-   
-    ![Benutzer und Gruppen](./media/netdocuments-tutorial/users-groups.png "Repository")
+
+    ![Benutzer und Gruppen](./media/netdocuments-tutorial/users-groups.png "Benutzer und Gruppen")
 
 4. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse eines gültigen Azure Active Directory-Kontos ein, das Sie bereitstellen möchten, und klicken Sie auf **Benutzer hinzufügen**.
-   
+
     ![E-Mail-Adresse](./media/netdocuments-tutorial/user-mail.png "E-Mail-Adresse")
-   
+
     > [!NOTE]
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird. Sie können Azure Active Directory-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von NetDocuments-Benutzerkonten oder mithilfe der von NetDocuments bereitgestellten APIs erstellen.
 
@@ -201,7 +203,6 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „NetDocuments“ klicken, sollten Sie automatisch bei der NetDocuments-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von NetDocuments können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von NetDocuments können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

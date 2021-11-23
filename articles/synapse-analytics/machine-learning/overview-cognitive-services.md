@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 author: garyericson
 ms.author: garye
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 108220b63e6562bf56119bb43c1ca27d4460c735
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e69730f486303fa508fed4cd53f8df3ee76433ba
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036711"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318463"
 ---
 # <a name="cognitive-services-in-azure-synapse-analytics"></a>Cognitive Services in Azure Synapse Analytics
 
@@ -25,9 +25,9 @@ Mit vortrainierten Modellen aus Azure Cognitive Services können Sie Ihre Daten 
 
 - Der Cognitive Services-Assistent in Synapse Analytics generiert PySpark-Code in einem Synapse-Notebook, das mithilfe von Daten in einer Spark-Tabelle eine Verbindung mit einem Cognitive Services-Dienst herstellt. Mithilfe vorab trainierter Machine Learning-Modelle fügt der Dienst Ihren Daten dann KI hinzu. Weitere Informationen finden Sie unter [Stimmungsanalyse-Assistent](tutorial-cognitive-services-sentiment.md) und [Anomalieerkennungs-Assistent](tutorial-cognitive-services-anomaly.md).
 
-- Microsoft Machine Learning for Apache Spark ([MMLSpark](https://github.com/Azure/mmlspark)) ermöglicht die Erstellung leistungsstarker und überaus skalierbarer Vorhersage- und Analysemodelle auf Grundlage verschiedener Spark-Datenquellen. Synapse Spark bietet integrierte MMLSpark-Bibliotheken, einschließlich [Cognitive Services für Spark](https://github.com/microsoft/SynapseML/blob/master/docs/cogsvc.md). Weitere Informationen finden Sie in den [Tutorials](#tutorials).
+- Synapse Machine Learning ([SynapseML](https://github.com/microsoft/SynapseML)) ermöglicht die Erstellung leistungsstarker und hochgradig skalierbarer Vorhersage- und Analysemodelle auf der Grundlage verschiedener Spark-Datenquellen. Synapse Spark bietet integrierte SynapseML-Bibliotheken, einschließlich [Cognitive Services für Spark](https://github.com/microsoft/SynapseML/blob/master/docs/cogsvc.md). Weitere Informationen finden Sie in den [Tutorials](#tutorials).
 
-- Sie können ausgehend von dem vom Assistenten generierten PySpark-Code oder dem im Tutorial bereitgestellten MMLSpark-Beispielcode eigenen Code schreiben, um andere Dienste von Cognitive Services mit Ihren Daten zu verwenden. Weitere Informationen zu den verfügbaren Diensten finden Sie unter [Was sind Azure Cognitive Services?](../../cognitive-services/what-are-cognitive-services.md).
+- Sie können ausgehend von dem vom Assistenten generierten PySpark-Code oder dem im Tutorial bereitgestellten SynapseML-Beispielcode eigenen Code schreiben, um andere Dienste von Cognitive Services mit Ihren Daten zu verwenden. Weitere Informationen zu den verfügbaren Diensten finden Sie unter [Was sind Azure Cognitive Services?](../../cognitive-services/what-are-cognitive-services.md).
 
 
 
@@ -44,7 +44,7 @@ Die folgenden Tutorials enthalten vollständige Beispiele für die Verwendung vo
 
 - [Anomalieerkennung mit Cognitive Services:](tutorial-cognitive-services-anomaly.md) Sie erstellen mithilfe eines Beispieldatasets von Zeitreihendaten eine Spark-Tabelle mit einer Spalte, die angibt, ob die Daten in den einzelnen Zeilen Anomalien sind.
 
-- [Erstellen von Machine Learning-Anwendungen mithilfe von Microsoft Machine Learning für Apache Spark](tutorial-build-applications-use-mmlspark.md): In diesem Tutorial wird veranschaulicht, wie Sie MMLSpark verwenden, um über Cognitive Services auf verschiedene Modelle zuzugreifen.
+- [Erstellen von Machine Learning-Anwendungen mithilfe von Microsoft Machine Learning für Apache Spark](tutorial-build-applications-use-mmlspark.md): In diesem Tutorial wird veranschaulicht, wie Sie SynapseML verwenden, um über Cognitive Services auf verschiedene Modelle zuzugreifen.
 
 - [Formularerkennung mit Applied KI Service](tutorial-form-recognizer-use-mmlspark.md) demonstriert, wie Sie in Azure Synapse Analytics mit dem Feature [Formularerkennung](../../applied-ai-services/form-recognizer/index.yml) Formulare und Dokumente analysieren, um Text und Daten zu extrahieren. 
 
@@ -57,13 +57,13 @@ Die folgenden Tutorials enthalten vollständige Beispiele für die Verwendung vo
 ## <a name="available-cognitive-services-apis"></a>Verfügbare Cognitive Services-APIs
 ### <a name="bing-image-search"></a>Bing-Bildersuche
 
-| API-Typ                                   | MMLSpark-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
+| API-Typ                                   | SynapseML-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
 | ------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 |Bing-Bildersuche|BingImageSearch|Bilder: Visuelle Suche, Version 7.0| Nicht unterstützt|
 
 ### <a name="anomaly-detector"></a>Anomalieerkennung
 
-| API-Typ                                   | MMLSpark-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
+| API-Typ                                   | SynapseML-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
 | ------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | Erkennen der letzten Anomalie                        | DetectLastAnomaly              | Erkennen des letzten Punkts, Version 1.0                                                                                                          | Unterstützt        |
 | Erkennen von Anomalien                           | DetectAnomalies                | Erkennen der gesamten Serie, Version 1.0                                                                                                       | Unterstützt        |
@@ -71,7 +71,7 @@ Die folgenden Tutorials enthalten vollständige Beispiele für die Verwendung vo
 
 ### <a name="computer-vision"></a>Maschinelles Sehen
 
-| API-Typ                                   | MMLSpark-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
+| API-Typ                                   | SynapseML-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
 | ------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | OCR                                        | OCR                            | Erkennen von gedrucktem Text, Version 2.0                                                                                                     | Unterstützt        |
 | Texterkennung                             | RecognizeText                  | Texterkennung, Version 2.0                                                                                                             | Unterstützt        |
@@ -85,7 +85,7 @@ Die folgenden Tutorials enthalten vollständige Beispiele für die Verwendung vo
 
 ### <a name="translator"></a>Übersetzer
 
-| API-Typ                                   | MMLSpark-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
+| API-Typ                                   | SynapseML-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
 | ------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | Übersetzen von Text                             | Translate                      | Übersetzen, Version 3.0                                                                                                                  | Nicht unterstützt    |
 | Transliteration von Text                         | Transliterate                  | Transliterieren, Version 3.0                                                                                                              | Nicht unterstützt    |
@@ -97,7 +97,7 @@ Die folgenden Tutorials enthalten vollständige Beispiele für die Verwendung vo
 
 ### <a name="face"></a>Gesicht
 
-| API-Typ                                   | MMLSpark-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
+| API-Typ                                   | SynapseML-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
 | ------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | Gesichtserkennung                                | DetectFace                     | Erkennen mit URL, Version 1.0                                                                                                            | Unterstützt        |
 | Suchen ähnlicher Gesichter                          | FindSimilarFace                | Suchen von Ähnlichem, Version 1.0                                                                                                               | Unterstützt        |
@@ -106,7 +106,7 @@ Die folgenden Tutorials enthalten vollständige Beispiele für die Verwendung vo
 | Überprüfen von Gesichtern                               | VerifyFaces                    | Überprüfen von Gesichtern, Version 1.0                                                                                                        | Unterstützt        |
 
 ### <a name="form-recognizer"></a>Formularerkennung
-| API-Typ                                   | MMLSpark-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
+| API-Typ                                   | SynapseML-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
 | ------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | Analysieren des Layouts                             | AnalyzeLayout                  | Analysieren des Layouts (asynchron), Version 2.1                                                                                                       | Unterstützt        |
 | Analysieren von Belegen                           | AnalyzeReceipts                | Analysieren von Belegen (asynchron), Version 2.1                                                                                                      | Unterstützt        |
@@ -118,7 +118,7 @@ Die folgenden Tutorials enthalten vollständige Beispiele für die Verwendung vo
 | Analysieren eines benutzerdefinierten Modells                       | AnalyzeCustomModel             | Analysieren mit dem benutzerdefinierten Modell, Version 2.1                                                                                                  | Unterstützt        |
 
 ### <a name="speech-to-text"></a>Spracherkennung
-| API-Typ                                   | MMLSpark-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
+| API-Typ                                   | SynapseML-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
 | ------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | Spracherkennung                             | SpeechToText                   | SpeechToText, Version 1.0 |  Nicht unterstützt    |
 | Spracherkennung (SDK)                         | SpeechToTextSDK                | Verwenden des Speech SDK, Version 1.14.0                                                                                                 | Nicht unterstützt    |
@@ -126,7 +126,7 @@ Die folgenden Tutorials enthalten vollständige Beispiele für die Verwendung vo
 
 ### <a name="text-analytics"></a>Textanalyse
 
-| API-Typ                                   | MMLSpark-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
+| API-Typ                                   | SynapseML-APIs                  | Cognitive Services-APIs (Versionen)                                                                                               | DEP-VNet-Unterstützung |
 | ------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | Stimmung in Text, Version 2                          | TextSentimentV2                | Stimmung, Version 2.0                                                                                                                  | Unterstützt        |
 | Spracherkennungsmodul, Version 2                       | LanguageDetectorV2             | Sprachen, Version 2.0                                                                                                                  | Unterstützt        |

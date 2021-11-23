@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 08/26/2021
+ms.date: 11/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 857b9ece50b4852e4d459915f9fd13477628781a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0fd3a8ed38d55580cfe56e6ee4501616771a2b48
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429278"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135756"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Tutorial: Kopieren von Daten in Azure Data Box (Vorschauversion) mithilfe des Datenkopierdiensts
 
@@ -72,7 +72,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
     |**Zieltyp**       |Wählen Sie den Zielspeichertyp in der Liste aus: **Blockblob**, **Seitenblob** oder **Azure Files**.        |
     |**Zielcontainer/-freigabe**    |Geben Sie den Namen des Containers oder der Freigabe an, in den bzw. die Daten in Ihrem Zielspeicherkonto hochgeladen werden sollen. Hierbei kann es sich um einen Freigabenamen oder um einen Containernamen handeln. Verwenden Sie beispielsweise `myshare` oder `mycontainer`. Der Name kann auch das Format `sharename\directory_name` oder `containername\virtual_directory_name` haben.        |
     |**Mit Muster übereinstimmende Dateien kopieren**    | Sie können das gewünschte Dateinamenmuster eingeben. Dabei haben Sie zwei Optionen:<ul><li>**Verwenden von Platzhalterausdrücken:** In Platzhalterausdrücken werden nur `*` und `?` unterstützt. Beispiel: Der Ausdruck `*.vhd` entspricht allen Dateien mit der Erweiterung `.vhd`. Analog dazu entspricht `*.dl?` allen Dateien, die entweder die Erweiterung `.dl` haben oder mit `.dl` beginnen, etwa `.dll`. `*foo` entspricht allen Dateien, deren Name mit `foo` endet.<br>Platzhalterausdrücke können direkt in das Feld eingegeben werden. Der in das Feld eingegebene Wert wird standardmäßig als Platzhalterausdruck behandelt.</li><li>**Verwenden von regulären Ausdrücken:** POSIX-basierte reguläre Ausdrücke werden unterstützt. Der reguläre Ausdruck `.*\.vhd` entspricht beispielsweise allen Dateien mit der Erweiterung `.vhd`. Wenn Sie regulärer Ausdrücke verwenden möchten, geben Sie das Muster (`<pattern>`) direkt als `regex(<pattern>)` an. Weitere Informationen zu regulären Ausdrücken finden Sie unter [Sprachelemente für reguläre Ausdrücke – Kurzübersicht](/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
-    |**Dateioptimierung**              |Wenn dieses Feature aktiviert ist, werden Dateien, die kleiner als 1 MB sind, während der Erfassung gepackt. Dieses Packen beschleunigt das Kopieren kleiner Dateien. Es spart darüber hinaus viel Zeit, wenn die Anzahl von Dateien deutlich über der Anzahl von Verzeichnissen liegt.</br>Bei Verwendung der Dateioptimierung:<ul><li>Nach den Versandvorbereitungen können Sie eine [BOM-Datei herunterladen](data-box-logs.md#inspect-bom-during-prepare-to-ship), in der die ursprünglichen Dateinamen aufgeführt sind, um sicherzustellen, dass die richtigen Dateien kopiert werden.</li><li>Löschen Sie nicht die gepackten Dateien, die durch eine GUID als Dateiname gekennzeichnet sind. Wenn Sie eine gepackte Datei löschen, wird die ursprüngliche Datei bei zukünftigen Datenkopiervorgängen nicht hochgeladen.</li><li>Kopieren Sie nicht die gleichen Dateien, die Sie mit dem Kopierdienst über andere Protokolle wie SMB, NFS oder REST-API kopieren. Die Verwendung verschiedener Protokolle kann zu Konflikten und Fehlern bei Datenuploads führen.</li></ul>    |
+    |**Dateioptimierung**              |Wenn dieses Feature aktiviert ist, werden Dateien, die kleiner als 1 MB sind, während der Erfassung gepackt. Dieses Packen beschleunigt das Kopieren kleiner Dateien. Es spart darüber hinaus viel Zeit, wenn die Anzahl von Dateien deutlich über der Anzahl von Verzeichnissen liegt.</br>Bei Verwendung der Dateioptimierung:<ul><li>Nach den Versandvorbereitungen können Sie eine [BOM-Datei herunterladen](data-box-logs.md#inspect-bom-during-prepare-to-ship), in der die ursprünglichen Dateinamen aufgeführt sind, um sicherzustellen, dass die richtigen Dateien kopiert werden.</li><li>Löschen Sie nicht die gepackten Dateien, deren Dateinamen mit „ADB_PACK_“ beginnen. Wenn Sie eine gepackte Datei löschen, wird die ursprüngliche Datei bei zukünftigen Datenkopiervorgängen nicht hochgeladen.</li><li>Kopieren Sie nicht die gleichen Dateien, die Sie mit dem Kopierdienst über andere Protokolle wie SMB, NFS oder REST-API kopieren. Die Verwendung verschiedener Protokolle kann zu Konflikten und Fehlern bei Datenuploads führen. </li></ul>    |
  
 4. Wählen Sie **Starten** aus. Die Eingaben werden überprüft. Ist die Überprüfung erfolgreich, wird der Auftrag gestartet. Es dauert möglicherweise ein paar Minuten, bis der Auftrag gestartet wird.
 

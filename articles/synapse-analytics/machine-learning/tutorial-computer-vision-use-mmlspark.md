@@ -10,18 +10,18 @@ ms.date: 11/02/2021
 author: ruixinxu
 ms.author: ruxu
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 01967a4e0b6daa3f79d9300047c83bc2ad493f09
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d3fb6edb446c2a034eb6e7c294b1639aa9eb8d5a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029932"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312121"
 ---
 # <a name="tutorial-computer-vision-with-cognitive-service"></a>Tutorial: maschinelles Sehen mit Cognitive Services
 
 [Maschinelles Sehen](../../cognitive-services/computer-vision/index.yml) ist ein [Azure Cognitive Services](../../cognitive-services/index.yml)-Dienst, mit dem Sie Bilder verarbeiten und Informationen basierend auf den visuellen Merkmalen zurückgeben können. In diesem Tutorial erfahren Sie, wie Sie [Maschinelles Sehen](../../cognitive-services/computer-vision/index.yml) verwenden, um Bilder in Azure Synapse Analytics zu analysieren.
 
-Dieses Tutorial veranschaulicht die Verwendung der Textanalyse mit [MMLSpark](https://github.com/Azure/mmlspark) für Folgendes:
+Dieses Tutorial veranschaulicht die Verwendung der Textanalyse mit [SynapseML](https://github.com/microsoft/SynapseML) für Folgendes:
 
 > [!div class="checklist"]
 > - Extrahieren visueller Merkmale aus dem Bildinhalt
@@ -187,4 +187,4 @@ Beenden Sie alle verbundenen Sitzungen (Notebooks), um sicherzustellen, dass die
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Beispiele für Synapse-Notebooks](https://github.com/Azure-Samples/Synapse/tree/main/MachineLearning) 
-* [MMLSpark-GitHub-Repository](https://github.com/Azure/mmlspark)
+* [SynapseML-GitHub-Repository](https://github.com/Azure/mmlspark)

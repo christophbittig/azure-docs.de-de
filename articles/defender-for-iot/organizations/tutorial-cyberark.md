@@ -1,21 +1,21 @@
 ---
-title: Integrieren von CyberArk mit Azure Defender für IoT
-description: In diesem Tutorial erfahren Sie, wie Sie Azure Defender für loT mit CyberArk integrieren.
+title: Integrieren von CyberArk in Microsoft Defender für loT
+description: In diesem Tutorial erfahren Sie, wie Sie Microsoft Defender für loT in CyberArk integrieren.
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/30/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 3dc47696a820708f3118ff752cfabfce365a5153
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: cbfa178c2e5358503208773109fc53ab3c274be7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129369612"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278377"
 ---
-# <a name="tutorial-integrate-cyberark-with-azure-defender-for-iot"></a>Tutorial: Integrieren von CyberArk mit Azure Defender für IoT
+# <a name="tutorial-integrate-cyberark-with-microsoft-defender-for-iot"></a>Tutorial: Integrieren von CyberArk in Microsoft Defender für loT
 
-In diesem Tutorial erfahren Sie, wie Sie CyberArk mit Azure Defender für IoT integrieren und verwenden.
+In diesem Tutorial lernen Sie, wie Sie CyberArk mit Microsoft Defender for loT integrieren und nutzen.
 
 Defender für IoT ist eine ICS- und IIoT-Cybersicherheitsplattform mit ICS-fähiger Bedrohungsanalyse und maschinellem Lernen.
 
@@ -96,7 +96,7 @@ Zum Aktivieren der Integration muss „Syslog-Server“ in der Defender für IoT
 
 ## <a name="view-and-manage-detections"></a>Anzeigen und Verwalten von Erkennungen
 
-Die Integration zwischen Azure Defender für IoT und CyberArk-PSM erfolgt über Syslog-Nachrichten. Diese Nachrichten werden von der PSM-Lösung an Defender für IoT gesendet, um Defender für IoT über Remotesitzungen oder Überprüfungsfehler zu benachrichtigen.
+Die Integration zwischen Microsoft Defender für IoT und CyberArk PSM erfolgt über Syslog-Nachrichten. Diese Nachrichten werden von der PSM-Lösung an Defender für IoT gesendet, um Defender für IoT über Remotesitzungen oder Überprüfungsfehler zu benachrichtigen.
 
 Sobald die Defender für IoT-Plattform diese Nachrichten von PSM empfängt, korreliert sie sie mit den verfügbaren Daten im Netzwerk und überprüft so, ob alle Remotezugriffsverbindungen mit dem Netzwerk von der PSM-Lösung generiert wurden und nicht von einem nicht autorisierten Benutzer.
 

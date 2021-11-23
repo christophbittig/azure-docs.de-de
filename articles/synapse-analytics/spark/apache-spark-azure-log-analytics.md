@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: dcf09885dab6ba41d545e4105a86c99535786c62
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: edb86a4c264b291516b3cc52d3d5dbfa159ace32
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130223137"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312170"
 ---
 # <a name="monitor-apache-spark-applications-with-azure-log-analytics"></a>Überwachen von Apache Spark-Anwendungen mit Azure Log Analytics
 
@@ -52,7 +52,7 @@ spark.synapse.logAnalytics.secret <LOG_ANALYTICS_WORKSPACE_KEY>
 #### <a name="option-2-configure-with-azure-key-vault"></a>Option 2: Konfigurieren mit Azure Key Vault
 
 > [!NOTE]
-> Benutzern, die Apache Spark-Anwendungen übermitteln, muss die Berechtigung zum Lesen von Geheimnissen erteilt werden. Weitere Informationen finden Sie unter [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure](../../key-vault/general/rbac-guide.md).
+> Benutzern, die Apache Spark-Anwendungen übermitteln, muss die Berechtigung zum Lesen von Geheimnissen erteilt werden. Weitere Informationen finden Sie unter [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure](../../key-vault/general/rbac-guide.md). Wenn Sie dieses Feature in einer Synapse-Pipeline aktivieren, müssen Sie **Option 3** verwenden. Dies ist erforderlich, um das Geheimnis aus Azure Key Vault mit der verwalteten Identität des Arbeitsbereichs abzurufen.
 
 Führen Sie die folgenden Schritte aus, um Azure Key Vault zum Speichern des Arbeitsbereichsschlüssels zu konfigurieren:
 
@@ -82,7 +82,7 @@ spark.synapse.logAnalytics.keyVault.key.secret <AZURE_KEY_VAULT_SECRET_KEY_NAME>
 #### <a name="option-3-configure-with-a-linked-service"></a>Option 3. Konfigurieren mit einem verknüpften Dienst
 
 > [!NOTE]
-> Benutzern, die Apache Spark-Anwendungen übermitteln, muss die Berechtigung zum Lesen von Geheimnissen erteilt werden. Weitere Informationen finden Sie unter [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure](../../key-vault/general/rbac-guide.md).
+> Bei dieser Option müssen Sie der verwalteten Identität des Arbeitsbereichs Berechtigung zum Lesen von Geheimnissen erteilen. Weitere Informationen finden Sie unter [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure](../../key-vault/general/rbac-guide.md).
 
 Führen Sie die folgenden Schritte aus, um in Synapse Studio einen mit Key Vault verknüpften Dienst zum Speichern des Arbeitsbereichsschlüssels zu konfigurieren:
 

@@ -6,12 +6,12 @@ ms.date: 05/25/2021
 ms.topic: overview
 description: Dieser Artikel enthält eine Übersicht zu Kubernetes mit Azure Arc-Aktivierung.
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: 1ff4a2c74e34dad29287e32dd33be5133d735c67
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 7338664698e40a1e4a1280cc08ee57a922518d79
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132056357"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312836"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Was ist Kubernetes mit Azure Arc-Unterstützung?
 
@@ -42,7 +42,7 @@ Kubernetes mit Azure Arc-Unterstützung unterstützt die folgenden Szenarien:
 
 * Anzeigen und Überwachen von Clustern mithilfe von Azure Monitor für Container
 
-* Erzwingen von Bedrohungsschutz mithilfe von Azure Defender für Kubernetes.
+* Erzwingen von Bedrohungsschutz mit Microsoft Defender für Kubernetes
 
 * Anwenden von Richtliniendefinitionen mithilfe von Azure Policy für Kubernetes
 

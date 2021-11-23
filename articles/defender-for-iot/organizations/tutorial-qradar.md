@@ -1,21 +1,21 @@
 ---
-title: Qradar mit Azure Defender für loT integrieren
-description: In diesem Tutorial lernen Sie, wie Sie Qradar in Azure Defender for loT integrieren können.
+title: Integrieren von Qradar in Microsoft Defender für loT
+description: In diesem Tutorial erfahren Sie, wie Sie Qradar in Azure Defender für loT integrieren.
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/12/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: ec55a652b59f7d45e01ef22e62bd046473ef8559
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3c6a1cfab17b2355f5f5501cd7fc2e944c74556f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124839048"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278358"
 ---
-# <a name="tutorial-integrate-qradar-with-azure-defender-for-iot"></a>Tutorial: Qradar mit Azure Defender für loT integrieren
+# <a name="tutorial-integrate-qradar-with-microsoft-defender-for-iot"></a>Tutorial: Integrieren von Qradar in Microsoft Defender für loT
 
-In diesem Tutorial lernen Sie, wie Sie QRadar mit Azure Defender for loT integrieren und nutzen können.
+In diesem Tutorial lernen Sie, wie Sie QRadar mit Microsoft Defender for loT integrieren und nutzen.
 
 Defender for IoT ist die einzige ICS- und IoT-Cybersicherheitsplattform mit patentierter ICS-sensitiver Bedrohungsanalyse und maschinellem Lernen.
 
@@ -23,7 +23,7 @@ Defender für IoT hat seine kontinuierliche ICS-Plattform zur Bedrohungsüberwac
 
 Dies sind einige Vorteile der Integration:
 
-- Die Möglichkeit, Azure Defender für IoT-Warnungen an IBM QRadar weiterzuleiten, um für eine einheitliche IT- und OT-Sicherheitsüberwachung und -Governance zu sorgen.
+- Die Möglichkeit, Microsoft Defender für IoT-Warnungen an IBM QRadar weiterzuleiten, um für eine einheitliche IT- und OT-Sicherheitsüberwachung und -Governance zu sorgen.
 
 - Die Möglichkeit, sich einen Überblick über IT- und OT-Umgebungen zu verschaffen. Ermöglicht die Erkennung von und Reaktion auf mehrstufige Angriffe, die häufig IT- und OT-Grenzen überschreiten.
 
@@ -85,7 +85,7 @@ Es gibt keine Voraussetzungen für dieses Tutorial.
 
 ## <a name="deploy-defender-for-iot-platform-qid"></a>Bereitstellung von Defender für die LoT-Plattform QID
 
-QID ist ein Ereignisbezeichner in QRadar. Alle Berichte des Defenders für die loT-Plattform sind unter demselben Ereignis (Sensor-Alarm) markiert.
+QID ist ein Ereignisbezeichner in QRadar. Alle Berichte der Plattform von Defender für loT sind unter demselben Ereignis (Sensorwarnung) markiert.
 
 **Um Defender for loT-Plattform QID bereitzustellen**:
 
@@ -192,7 +192,7 @@ Es müssen keine Ressourcen bereinigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie mit der QRadar-Integration beginnen können. Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie [ServiceNow mit Azure Defender für IoT integrieren](tutorial-servicenow.md):
+In diesem Tutorial haben Sie gelernt, wie Sie mit der QRadar-Integration beginnen können. Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie [ServiceNow in Microsoft Defender für IoT integrieren](tutorial-servicenow.md):
 
 > [!div class="nextstepaction"]
-> [Integrieren von ServiceNow mit Azure Defender für IoT](tutorial-servicenow.md)
+> [Integrieren von ServiceNow in Microsoft Defender für IoT](tutorial-servicenow.md)

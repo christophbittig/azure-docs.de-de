@@ -3,12 +3,12 @@ title: Was ist Azure Lighthouse?
 description: Mit Azure Lighthouse können Dienstanbieter verwaltete Dienste für Ihre Kunden bereitstellen, bei denen bedarfsorientiert eine höhere Automatisierung und Effizienz erzielt werden können.
 ms.date: 11/02/2021
 ms.topic: overview
-ms.openlocfilehash: 8130a88042678d277fd5fe727f0593e8805bb5b4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6279ef69c60c7a6d76fe0dfbea68934394c23c06
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131445783"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343114"
 ---
 # <a name="what-is-azure-lighthouse"></a>Was ist Azure Lighthouse?
 
@@ -16,7 +16,7 @@ Azure Lighthouse ermöglicht die Verwaltung mehrerer Mandanten mit hoher Skalier
 
 Mit Azure Lighthouse können Dienstanbieter verwaltete Dienste mithilfe [umfassender und stabiler Tools bereitstellen, die in die Azure-Plattform integriert sind](concepts/architecture.md). Kunden behalten die Kontrolle darüber, wer auf ihren Mandanten zugreifen kann, auf welche Ressourcen ein Zugriff möglich ist und welche Aktionen durchgeführt werden können. [Unternehmensorganisationen](concepts/enterprise.md), die Ressourcen in mehreren Mandanten verwalten, können ebenfalls Azure Lighthouse zum Optimieren von Verwaltungsaufgaben verwenden.
 
-Mithilfe der [mandantenübergreifenden Verwaltungsmöglichkeiten](concepts/cross-tenant-management-experience.md) können Sie effizienter mit Azure-Diensten wie [Azure Policy](how-to/policy-at-scale.md), [Azure Sentinel](how-to/manage-sentinel-workspaces.md), [Azure Arc](how-to/manage-hybrid-infrastructure-arc.md) und vielen mehr arbeiten. Benutzer können im [Aktivitätsprotokoll](how-to/view-service-provider-activity.md), das im Mandanten des Kunden gespeichert wird und von Benutzern im verwaltenden Mandanten angezeigt werden kann, nachverfolgen, welche Änderungen von wem vorgenommen wurden.
+Mithilfe der [mandantenübergreifenden Verwaltungsmöglichkeiten](concepts/cross-tenant-management-experience.md) können Sie effizienter mit Azure-Diensten wie [Azure Policy](how-to/policy-at-scale.md), [Microsoft Sentinel](how-to/manage-sentinel-workspaces.md), [Azure Arc](how-to/manage-hybrid-infrastructure-arc.md) und vielen mehr arbeiten. Benutzer können im [Aktivitätsprotokoll](how-to/view-service-provider-activity.md), das im Mandanten des Kunden gespeichert wird und von Benutzern im verwaltenden Mandanten angezeigt werden kann, nachverfolgen, welche Änderungen von wem vorgenommen wurden.
 
 ![Übersichtsdiagramm von Azure Lighthouse](media/azure-lighthouse-overview.jpg)
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-summarization, ignite-fall-2021
-ms.openlocfilehash: 62144ef2181a872327db3e30c0f81192f5a07ca4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 169772593542f502673194012112d56465ae224d
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029549"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518639"
 ---
 # <a name="what-is-text-summarization-preview-in-azure-cognitive-service-for-language"></a>Was ist die Textzusammenfassung (Vorschauversion) in Azure Cognitive Service für Sprache?
 
@@ -35,6 +35,6 @@ Ein KI-System umfasst nicht nur die Technologie, sondern auch die Personen, die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Es gibt zwei Möglichkeiten für die ersten Schritte zur Verwendung des Features für die Entitätsverknüpfung:
+Es gibt zwei Möglichkeiten für den Einstieg in die Verwendung der Textzusammenfassungsfunktion:
 * [Language Studio](../language-studio.md) ist eine webbasierte Plattform, mit der Sie mehrere Features von Azure Cognitive Services for Language ausprobieren können, ohne Code schreiben zu müssen.
 * Im [Schnellstartartikel](quickstart.md) finden Sie eine Anleitung zum Senden von Anfragen an den Dienst mithilfe der REST-API und des Clientbibliothek-SDK.  

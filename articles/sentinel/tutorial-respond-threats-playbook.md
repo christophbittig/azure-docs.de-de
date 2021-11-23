@@ -1,33 +1,33 @@
 ---
-title: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel
-description: Dieses Tutorial hilft Ihnen bei der Verwendung von Playbooks mit Automatisierungsregeln in Azure Sentinel, um Ihre Reaktion auf Vorfälle zu automatisieren und Sicherheitsbedrohungen zu behandeln.
+title: Verwenden von Playbooks mit Automatisierungsregeln in Microsoft Sentinel
+description: Dieses Tutorial hilft Ihnen bei der Verwendung von Playbooks mit Automatisierungsregeln in Microsoft Sentinel, um Ihre Reaktion auf Vorfälle zu automatisieren und Sicherheitsbedrohungen zu behandeln.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: e4afc5c8-ffad-4169-8b73-98d00155fa5a
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2021
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 903a0ae946a60ff4b1dd2fec7789fa38986d3bcb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8a1c290cebe566ec7d3a812de9746df8e0297120
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083781"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517746"
 ---
-# <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel
+# <a name="tutorial-use-playbooks-with-automation-rules-in-microsoft-sentinel"></a>Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie Playbooks mit Automatisierungsregeln verwenden, um Ihre Reaktion auf Vorfälle zu automatisieren und von Azure Sentinel erkannte Sicherheitsbedrohungen zu behandeln. Das Tutorial umfasst Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Playbooks mit Automatisierungsregeln verwenden, um Ihre Reaktion auf Vorfälle zu automatisieren und von Microsoft Sentinel erkannte Sicherheitsbedrohungen zu behandeln. Das Tutorial umfasst Folgendes:
 
 > [!div class="checklist"]
 >
@@ -37,16 +37,16 @@ In diesem Tutorial erfahren Sie, wie Sie Playbooks mit Automatisierungsregeln ve
 > * Anfügen eines Playbooks an eine Automatisierungs- oder Analyseregel, um die Reaktion auf Bedrohungen zu automatisieren
 
 > [!NOTE]
-> Dieses Tutorial enthält grundlegende Anleitungen für eine der wichtigsten Kundenaufgaben: Das Einrichten von Automatisierung für die Selektierung von Vorfällen. Weitere Informationen finden Sie in unserem Abschnitt **Vorgehensweise**, z. B. [Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel](automate-responses-with-playbooks.md) und [Verwenden von Triggern und Aktionen in Azure Sentinel-Playbooks](playbook-triggers-actions.md).
+> Dieses Tutorial enthält grundlegende Anleitungen für eine der wichtigsten Kundenaufgaben: Das Einrichten von Automatisierung für die Selektierung von Vorfällen. Weitere Informationen finden Sie in unserem Abschnitt **Vorgehensweise**, z. B. [Automatisieren der Bedrohungsabwehr mit Playbooks in Microsoft Sentinel](automate-responses-with-playbooks.md) und [Verwenden von Triggern und Aktionen in Microsoft Sentinel-Playbooks](playbook-triggers-actions.md).
 >
 
 ## <a name="what-are-automation-rules-and-playbooks"></a>Was sind Automatisierungsregeln und Playbooks?
 
-Automatisierungsregeln helfen bei der Selektierung von Vorfällen in Azure Sentinel. Hiermit können Sie Vorfälle automatisch den richtigen Mitarbeitern zuweisen, überflüssige Vorfälle oder bekannte [False Positives](false-positives.md) schließen, den Schweregrad ändern und Tags hinzufügen. Außerdem sind sie der Mechanismus, mit dem Playbooks als Reaktion auf Vorfälle ausgeführt werden können.
+Automatisierungsregeln helfen bei der Selektierung von Vorfällen in Microsoft Sentinel. Hiermit können Sie Vorfälle automatisch den richtigen Mitarbeitern zuweisen, überflüssige Vorfälle oder bekannte [False Positives](false-positives.md) schließen, den Schweregrad ändern und Tags hinzufügen. Außerdem sind sie der Mechanismus, mit dem Playbooks als Reaktion auf Vorfälle ausgeführt werden können.
 
-Bei Playbooks handelt es sich um eine Sammlung von Prozeduren, die über Azure Sentinel als Reaktion auf eine Warnung oder einen Vorfall ausgeführt werden können. Ein Playbook kann Ihnen dabei helfen, Ihre Reaktion zu automatisieren und zu orchestrieren, und es kann so festgelegt werden, dass es automatisch ausgeführt wird, wenn bestimmte Warnungen oder Vorfälle generiert werden. Hierzu wird es an eine Analyseregel oder an eine Automatisierungsregel angefügt. Bei Bedarf kann es aber auch manuell ausgeführt werden.
+Bei Playbooks handelt es sich um eine Sammlung von Prozeduren, die über Microsoft Sentinel als Reaktion auf eine Warnung oder einen Vorfall ausgeführt werden können. Ein Playbook kann Ihnen dabei helfen, Ihre Reaktion zu automatisieren und zu orchestrieren, und es kann so festgelegt werden, dass es automatisch ausgeführt wird, wenn bestimmte Warnungen oder Vorfälle generiert werden. Hierzu wird es an eine Analyseregel oder an eine Automatisierungsregel angefügt. Bei Bedarf kann es aber auch manuell ausgeführt werden.
 
-Da Playbooks in Azure Sentinel auf in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellten Workflows basieren, stehen Ihnen die Leistung, Anpassbarkeit und integrierten Vorlagen zur Verfügung, die Sie von Logic Apps gewohnt sind. Jedes Playbook wird zwar speziell für das Abonnement erstellt, zu dem es gehört, unter **Playbooks** werden jedoch alle Playbooks angezeigt, die für alle ausgewählten Abonnements verfügbar sind.
+Da Playbooks in Microsoft Sentinel auf in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellten Workflows basieren, stehen Ihnen die Leistung, Anpassbarkeit und integrierten Vorlagen zur Verfügung, die Sie von Logic Apps gewohnt sind. Jedes Playbook wird zwar speziell für das Abonnement erstellt, zu dem es gehört, unter **Playbooks** werden jedoch alle Playbooks angezeigt, die für alle ausgewählten Abonnements verfügbar sind.
 
 > [!NOTE]
 > Da Playbooks Azure Logic Apps nutzen, fallen möglicherweise zusätzliche Gebühren an. Ausführlichere Informationen finden Sie auf der [Preisseite von Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).
@@ -63,7 +63,7 @@ Wenn Sie beispielsweise verhindern möchten, dass sich potenziell kompromittiert
 
 1. Wenn die Administratoren die Option **Blockieren** auswählen, werden Befehle an Azure AD und an die Firewall gesendet, um den Benutzer zu deaktivieren bzw. um die IP-Adresse zu blockieren.
 
-1. Wenn die Administratoren die Option **Ignorieren** auswählen, werden der Vorfall in Azure Sentinel und das Ticket in ServiceNow geschlossen.
+1. Wenn die Administratoren die Option **Ignorieren** auswählen, werden der Vorfall in Microsoft Sentinel und das Ticket in ServiceNow geschlossen.
 
 Erstellen Sie anschließend als Auslöser für das Playbook eine Automatisierungsregel, die ausgeführt wird, wenn diese Vorfälle generiert werden. Diese Regel umfasst folgende Schritte:
 
@@ -79,7 +79,7 @@ Playbooks können automatisch als Reaktion auf Vorfälle ausgeführt werden. Hie
 
 Sie können ein Playbook bei Bedarf auch manuell ausführen, um auf eine ausgewählte Warnung zu reagieren.
 
-Eine ausführlichere Einführung in die Automatisierung von Reaktionen auf Bedrohungen mit Automatisierungsregeln und Playbooks in Azure Sentinel finden Sie unter [Automatisierung der Vorfallbehandlung in Azure Sentinel mit Automatisierungsregeln](automate-incident-handling-with-automation-rules.md) sowie unter [Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel](automate-responses-with-playbooks.md).
+Eine ausführlichere Einführung in die Automatisierung von Reaktionen auf Bedrohungen mit Automatisierungsregeln und Playbooks in Microsoft Sentinel finden Sie unter [Automatisierung der Vorfallbehandlung in Microsoft Sentinel mit Automatisierungsregeln](automate-incident-handling-with-automation-rules.md) sowie unter [Automatisieren der Bedrohungsabwehr mit Playbooks in Microsoft Sentinel](automate-responses-with-playbooks.md).
 
 > [!IMPORTANT]
 >
@@ -87,11 +87,11 @@ Eine ausführlichere Einführung in die Automatisierung von Reaktionen auf Bedro
 
 ## <a name="create-a-playbook"></a>Erstellen eines Playbooks
 
-Gehen Sie wie folgt vor, um in Azure Sentinel ein neues Playbook zu erstellen:
+Gehen Sie wie folgt vor, um in Microsoft Sentinel ein neues Playbook zu erstellen:
 
 ### <a name="prepare-the-playbook-and-logic-app"></a>Vorbereiten des Playbooks und der Logik-App
 
-1. Wählen Sie im Navigationsmenü **Azure Sentinel** die Option **Automatisierung** aus.
+1. Wählen Sie im Navigationsmenü **Microsoft Sentinel** die Option **Automatisierung** aus.
 
 1. Wählen Sie im oberen Menü **Erstellen** > **Neues Playbook hinzufügen** aus.
 
@@ -121,23 +121,23 @@ Gehen Sie wie folgt vor, um in Azure Sentinel ein neues Playbook zu erstellen:
 
 Jedes Playbook muss mit einem Trigger beginnen. Der Trigger definiert die Aktion, durch die das Playbook gestartet wird, sowie das vom Playbook erwartete Schema.
 
-1. Suchen Sie über die Suchleiste nach „Azure Sentinel“. Wählen Sie **Azure Sentinel** aus, wenn der entsprechende Eintrag in den Ergebnissen angezeigt wird.
+1. Suchen Sie in der Suchleiste nach Microsoft Sentinel. Wählen Sie **Microsoft Sentinel** aus, wenn der entsprechende Eintrag in den Ergebnissen angezeigt wird.
 
-1. Auf der daraufhin angezeigten Registerkarte **Trigger** stehen die beiden von Azure Sentinel angebotenen Trigger zur Verfügung:
-    - „When a response to an Azure Sentinel Alert is triggered“ (Wenn eine Reaktion auf eine Azure Sentinel-Warnung ausgelöst wird)
-    - Wenn die Azure Sentinel-Vorfallerstellungsregel ausgelöst wird
+1. Auf der daraufhin angezeigten Registerkarte **Trigger** stehen die beiden von Microsoft Sentinel angebotenen Trigger zur Verfügung:
+    - Wenn eine Reaktion auf eine Microsoft Sentinel-Warnung ausgelöst wird
+    - Wenn die Microsoft Sentinel-Vorfallerstellungsregel ausgelöst wird
 
    Wählen Sie den passenden Trigger für die Art des Playbooks aus, das Sie erstellen.
 
     > [!NOTE]
     > Denken Sie daran, dass nur Playbooks, die auf dem **Incidenttrigger** basieren, von Automatisierungsregeln aufgerufen werden können. Playbooks, die auf dem **Warnungstrigger** basieren, müssen für die direkte Ausführung in [Analyseregeln](detect-threats-custom.md#set-automated-responses-and-create-the-rule) definiert werden und können auch manuell ausgeführt werden.
     > 
-    > Weitere Informationen zum zu verwendenden Trigger finden Sie unter [**Verwenden von Triggern und Aktionen in Azure Sentinel Playbooks**](playbook-triggers-actions.md).
+    > Weitere Informationen zum zu verwendenden Trigger finden Sie unter [**Verwenden von Triggern und Aktionen in Microsoft Sentinel-Playbooks**](playbook-triggers-actions.md).
 
     :::image type="content" source="./media/tutorial-respond-threats-playbook/choose-trigger.png" alt-text="Auswählen eines Triggers für Ihr Playbook":::
 
 > [!NOTE]
-> Wenn Sie einen Trigger oder eine nachfolgende Aktion auswählen, werden Sie aufgefordert, sich bei dem Ressourcenanbieter zu authentifizieren, mit dem Sie interagieren. In diesem Fall ist der Anbieter Azure Sentinel. Sie können verschiedene Ansätze für die Authentifizierung verwenden. Weitere Informationen und Anweisungen finden Sie unter [**Authentifizieren von Playbooks für Azure Sentinel**](authenticate-playbooks-to-sentinel.md).
+> Wenn Sie einen Trigger oder eine nachfolgende Aktion auswählen, werden Sie aufgefordert, sich bei dem Ressourcenanbieter zu authentifizieren, mit dem Sie interagieren. In diesem Fall ist der Anbieter Microsoft Sentinel. Sie können verschiedene Ansätze für die Authentifizierung verwenden. Weitere Informationen und Anweisungen finden Sie unter [**Authentifizieren von Playbooks für Microsoft Sentinel**](authenticate-playbooks-to-sentinel.md).
 
 ### <a name="add-actions"></a>Hinzufügen von Aktionen
 
@@ -159,7 +159,7 @@ Sie verwenden ein Playbook, um auf einen **Vorfall** zu reagieren. Hierzu erstel
 
 So erstellen Sie eine Automatisierungsregel:
 
-1. Wählen Sie im Azure Sentinel-Navigationsmenü auf dem Blatt **Automatisierung** über das obere Menü **Erstellen** > **Neue Regel hinzufügen** aus.
+1. Wählen Sie im Microsoft Sentinel-Navigationsmenü auf dem Blatt **Automatisierung** über das obere Menü **Erstellen** > **Neue Regel hinzufügen** aus.
 
    :::image type="content" source="./media/tutorial-respond-threats-playbook/add-new-rule.png" alt-text="Hinzufügen einer neuen Regel":::
 
@@ -176,28 +176,28 @@ So erstellen Sie eine Automatisierungsregel:
 1. Wenn Sie eine Aktion vom Typ **Playbook ausführen** hinzufügen, werden Sie aufgefordert, ein Playbook aus einer Liste mit verfügbaren Playbooks auszuwählen. Nur Playbooks, die mit dem **Incidenttrigger** beginnen, können über Automatisierungsregeln ausgeführt werden. Daher werden in der Liste auch nur diese Playbooks angezeigt.<a name="permissions-to-run-playbooks"></a>
 
     > [!IMPORTANT]
-    > Azure Sentinel müssen explizite Berechtigungen erteilt werden, um Playbooks über Automatisierungsregeln ausführen zu können. Ist ein Playbook in der Dropdownliste ausgegraut dargestellt, verfügt Sentinel über keine Berechtigung für die Ressourcengruppe des Playbooks. Klicken Sie auf den Link **Manage playbook permissions** (Playbookberechtigungen verwalten), um Berechtigungen zuzuweisen.
+    > Microsoft Sentinel müssen explizite Berechtigungen erteilt werden, um Playbooks über Automatisierungsregeln ausführen zu können. Ist ein Playbook in der Dropdownliste ausgegraut dargestellt, verfügt Sentinel über keine Berechtigung für die Ressourcengruppe des Playbooks. Klicken Sie auf den Link **Manage playbook permissions** (Playbookberechtigungen verwalten), um Berechtigungen zuzuweisen.
     > Aktivieren Sie im daraufhin angezeigten Bereich **Berechtigungen verwalten** die Kontrollkästchen der Ressourcengruppen, die die auszuführenden Playbooks enthalten, und klicken Sie auf **Anwenden**.
     > :::image type="content" source="./media/tutorial-respond-threats-playbook/manage-permissions.png" alt-text="Verwalten von Berechtigungen":::
-    > - Sie selbst müssen für jede Ressourcengruppe, für die Sie Azure Sentinel Berechtigungen erteilen möchten, über die Berechtigung **Besitzer** und für jede Ressourcengruppe, die auszuführende Playbooks enthält, über die Rolle **Mitwirkender für Logik-Apps** verfügen.
-    > - In einer Bereitstellung mit mehreren Mandanten gilt: Wenn sich das Playbook, das Sie ausführen möchten, in einem anderen Mandanten befindet, müssen Sie Azure Sentinel die Berechtigung zum Ausführen des Playbooks im zugehörigen Mandanten erteilen.
-    >    1. Wählen Sie im Mandanten des Playbooks im Azure Sentinel-Navigationsmenü die Option **Einstellungen** aus.
+    > - Sie selbst müssen für jede Ressourcengruppe, für die Sie Microsoft Sentinel Berechtigungen erteilen möchten, über die Berechtigung **Besitzer** und für jede Ressourcengruppe, die auszuführende Playbooks enthält, über die Rolle **Mitwirkender für Logik-Apps** verfügen.
+    > - In einer Bereitstellung mit mehreren Mandanten gilt: Wenn sich das Playbook, das Sie ausführen möchten, in einem anderen Mandanten befindet, müssen Sie Microsoft Sentinel die Berechtigung zum Ausführen des Playbooks im zugehörigen Mandanten erteilen.
+    >    1. Wählen Sie im Mandanten des Playbooks im Microsoft Sentinel-Navigationsmenü die Option **Einstellungen** aus.
     >    1. Wählen Sie auf dem Blatt **Einstellungen** die Registerkarte **Einstellungen** aus, und erweitern Sie anschließend den Bereich **Playbookberechtigungen**.
     >    1. Klicken Sie auf die Schaltfläche **Berechtigungen konfigurieren**, um den weiter oben erwähnten Bereich **Berechtigungen verwalten** zu öffnen, und fahren Sie wie dort beschrieben fort.
-    > - Wenn Sie in einem **MSSP**-Szenario ein [Playbook in einem Kundenmandanten](automate-incident-handling-with-automation-rules.md#permissions-in-a-multi-tenant-architecture) anhand einer Automatisierungsregel ausführen möchten, die Sie erstellt haben, während Sie beim Dienstanbietermandanten angemeldet waren, müssen Sie Azure Sentinel die Berechtigung zum Ausführen des Playbooks in **_beiden Mandanten_ *erteilen. Befolgen Sie im* Kundenmandanten** die Anweisungen für die mehrinstanzenfähige Bereitstellung unter dem vorherigen Aufzählungspunkt. Im **Dienstanbietermandanten** müssen Sie die Azure Security Insights-App in Ihrer Azure Lighthouse-Onboardingvorlage hinzufügen:
+    > - Wenn Sie in einem **MSSP**-Szenario ein [Playbook in einem Kundenmandanten](automate-incident-handling-with-automation-rules.md#permissions-in-a-multi-tenant-architecture) anhand einer Automatisierungsregel ausführen möchten, die Sie erstellt haben, während Sie beim Dienstanbietermandanten angemeldet waren, müssen Sie Microsoft Sentinel die Berechtigung zum Ausführen des Playbooks in **_beiden Mandanten_ *erteilen. Befolgen Sie im _* Kundenmandanten** die Anweisungen für die mehrinstanzenfähige Bereitstellung unter dem vorherigen Aufzählungspunkt. Im **Dienstanbietermandanten** müssen Sie die Azure Security Insights-App in Ihrer Azure Lighthouse-Onboardingvorlage hinzufügen:
     >    1. Navigieren Sie im Azure-Portal zu **Azure Active Directory**.
     >    1. Klicken Sie auf **Unternehmensanwendungen**.
     >    1. Wählen Sie **Anwendungstyp** aus, und filtern Sie nach **Microsoft-Anwendungen**.
     >    1. Geben Sie im Suchfeld den Namen **Azure Security Insights** ein.
     >    1. Kopieren Sie das Feld **Objekt-ID**. Sie müssen diese zusätzliche Autorisierung zu Ihrer vorhandenen Azure Lighthouse-Delegierung hinzufügen.
     >
-    >    Die Rolle **Mitwirkender für Azure Sentinel-Automatisierung** weist eine feste GUID auf. Hierbei handelt es sich um `f4c81013-99ee-4d62-a7ee-b3f1f648599a`. Ein Beispiel für eine Azure Lighthouse Autorisierung würde in Ihrer Parametervorlage wie folgt aussehen:
+    >    Die Rolle **Mitwirkender für Microsoft Sentinel-Automatisierung** weist eine feste GUID auf. Hierbei handelt es sich um `f4c81013-99ee-4d62-a7ee-b3f1f648599a`. Ein Beispiel für eine Azure Lighthouse Autorisierung würde in Ihrer Parametervorlage wie folgt aussehen:
     >    
     >    ```json
     >    {
     >        "principalId": "<Enter the Azure Security Insights app Object ID>", 
     >        "roleDefinitionId": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
-    >        "principalIdDisplayName": "Azure Sentinel Automation Contributors" 
+    >        "principalIdDisplayName": "Microsoft Sentinel Automation Contributors" 
     >    }
     >    ```
 
@@ -213,7 +213,7 @@ Weitere Möglichkeiten zum Erstellen von Automatisierungsregeln finden Sie [hier
 
 Sie verwenden ein Playbook, um auf eine **Warnung** zu reagieren. Hierzu erstellen Sie eine **Analyseregel** oder bearbeiten eine bereits vorhandene Regel, die ausgeführt wird, wenn die Warnung generiert wird, und wählen Ihr Playbook als automatisierte Antwort im [Analyseregel-Assistent](detect-threats-custom.md) aus.
 
-1. Wählen Sie im Azure Sentinel-Navigationsmenü auf dem Blatt **Analyse** die Analyseregel aus, für die Sie die Reaktion automatisieren möchten, und klicken Sie im Detailbereich auf **Bearbeiten**.
+1. Wählen Sie im Microsoft Sentinel-Navigationsmenü auf dem Blatt **Analyse** die Analyseregel aus, für die Sie die Reaktion automatisieren möchten, und klicken Sie im Detailbereich auf **Bearbeiten**.
 
 1. Wählen Sie auf der Seite **Analyseregel-Assistent – Vorhandene Regel bearbeiten** die Registerkarte **Automatisierte Antwort** aus.
 
@@ -238,5 +238,5 @@ So führen Sie ein Playbook bei Bedarf aus:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie Playbooks und Automatisierungsregeln in Azure Sentinel verwenden, um auf Bedrohungen zu reagieren. 
-- Im [nächsten Artikel](hunting.md) erfahren Sie, wie Sie mithilfe von Azure Sentinel proaktiv nach Bedrohungen suchen.
+In diesem Tutorial haben Sie gelernt, wie Sie Playbooks und Automatisierungsregeln in Microsoft Sentinel verwenden, um auf Bedrohungen zu reagieren. 
+- Im [nächsten Artikel](hunting.md) erfahren Sie, wie Sie mithilfe von Microsoft Sentinel proaktiv nach Bedrohungen suchen.

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 68d446ca120ea9378c998cb81c2bf06579ffde7d
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: bb2b24c080f7f8173280d5c31ca711d7241d04f1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028513"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552715"
 ---
 # <a name="quickstart-deploy-your-first-container-app"></a>Schnellstart: Bereitstellen Ihrer ersten Container-App
 
@@ -82,19 +82,19 @@ Legen Sie anschließend die folgenden Umgebungsvariablen fest:
 # <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli
-RESOURCE_GROUP="my-containerapps"
+RESOURCE_GROUP="my-container-apps"
 LOCATION="canadacentral"
-LOG_ANALYTICS_WORKSPACE="containerapps-logs"
-CONTAINERAPPS_ENVIRONMENT="containerapps-env"
+LOG_ANALYTICS_WORKSPACE="my-container-apps-logs"
+CONTAINERAPPS_ENVIRONMENT="my-environment"
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
-$RESOURCE_GROUP="my-containerapps"
+$RESOURCE_GROUP="my-container-apps"
 $LOCATION="canadacentral"
-$LOG_ANALYTICS_WORKSPACE="containerapps-logs"
-$CONTAINERAPPS_ENVIRONMENT="containerapps-env"
+$LOG_ANALYTICS_WORKSPACE="my-container-apps-logs"
+$CONTAINERAPPS_ENVIRONMENT="my-environment"
 ```
 
 ---

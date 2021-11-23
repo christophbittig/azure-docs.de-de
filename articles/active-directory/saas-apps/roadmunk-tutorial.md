@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f0c139ac775cf0761e1866853c959d7e98b20cf3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e9038d90d84bd6007b280f712587cee3d628c9c1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124821758"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279789"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-roadmunk"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Roadmunk
 
@@ -177,4 +177,4 @@ Wenn Sie im Portal „Meine Apps“ die Kachel **Roadmunk** auswählen, sollten 
 
 Nach dem Konfigurieren von Roadmunk können Sie die Sitzungssteuerung erzwingen. Die Sitzungssteuerung schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf bedingtem Zugriff. 
 
-Erfahren Sie, wie Sie die [Sitzungssteuerung mit Microsoft Cloud App Security erzwingen](/cloud-app-security/proxy-deployment-any-app).
+Erfahren Sie, wie Sie die [Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

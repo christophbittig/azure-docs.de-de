@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 10/21/2021
 ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 15edab4bc16067b866912e1fca899e844ff6e7e0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: e3430ded70d8bba018e2bb28ad48decde82c46c4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554926"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339723"
 ---
 # <a name="tutorial-designer---train-a-no-code-regression-model"></a>Tutorial: Designer – Trainieren eines Regressionsmodells ohne Code
 
@@ -221,7 +221,7 @@ Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch 
 1. Verbinden Sie die Ausgabe der Komponente **Linear Regression** (Lineare Regression) mit der linken Eingabe der Komponente **Train Model** (Modell trainieren).
 
 1. Verbinden Sie die Trainingsdatenausgabe (linker Port) der Komponente **Split Data** (Daten aufteilen) mit der rechten Eingabe der Komponente **Train Model** (Modell trainieren).
-    
+
     > [!IMPORTANT]
     > Achten Sie darauf, dass der linke Ausgabeport von **Split Data** (Daten aufteilen) mit **Train Model** (Modell trainieren) verbunden ist. Der linke Port enthält den Trainingssatz. Der rechte Port enthält den Testsatz.
 

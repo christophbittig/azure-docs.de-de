@@ -10,12 +10,12 @@ ms.date: 07/01/2021
 author: nelgson
 ms.author: negust
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 901bfba094426a133db9b76054482ba649b4077d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 505bef004acb688a1fdb1ccc87d261b1a12c6009
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022353"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318292"
 ---
 # <a name="tutorial-anomaly-detection-with-cognitive-services"></a>Tutorial: Anomalieerkennung mit Cognitive Services
 
@@ -85,7 +85,7 @@ Wenn Sie fertig sind, wählen Sie **Notebook öffnen** aus. Dadurch wird ein Not
 
 ## <a name="run-the-notebook"></a>Ausführen des Notebooks
 
-Das soeben geöffnete Notebook verwendet die [MMLSpark-Bibliothek](https://github.com/microsoft/SynapseML), um eine Verbindung mit Cognitive Services herzustellen. Der mit Azure Cognitive Services verknüpfte Dienst, den Sie bereitgestellt haben, ermöglicht Ihnen, in dieser Umgebung sicher auf Ihren kognitiven Dienst zu verweisen, ohne Geheimnisse preiszugeben.
+Das soeben geöffnete Notebook verwendet die [SynapseML]-Bibliothek](https://github.com/microsoft/SynapseML), um eine Verbindung mit Cognitive Services herzustellen. Der mit Azure Cognitive Services verknüpfte Dienst, den Sie bereitgestellt haben, ermöglicht Ihnen, in dieser Umgebung sicher auf Ihren kognitiven Dienst zu verweisen, ohne Geheimnisse preiszugeben.
 
 Sie können jetzt alle Zellen ausführen, um die Anomalieerkennung auszuführen. Wählen Sie **Alle ausführen** aus. [Hier](../../cognitive-services/anomaly-detector/index.yml) finden Sie weitere Informationen zur Anomalieerkennung in Cognitive Services.
 

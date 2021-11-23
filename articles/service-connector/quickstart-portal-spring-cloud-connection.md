@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: overview
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 320cd5af7a6f64d6f74eb55ac9abfd7f07af18ce
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 001e014e616f3ee199fd59d11c385732b0bed568
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131843136"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301284"
 ---
 # <a name="quickstart-create-a-service-connection-in-spring-cloud-from-azure-portal"></a>Schnellstart: Erstellen einer Dienstverbindung in Spring Cloud im Azure-Portal
 
@@ -35,7 +35,7 @@ Sie verwenden den Dienstconnector, um eine neue Dienstverbindung in Spring Cloud
 1. Wählen Sie im linken Inhaltsverzeichnis **Dienstconnector (Vorschau)** aus. Klicken Sie anschließend auf **Erstellen**.
 1. Wählen Sie die folgenden Einstellungen aus, oder geben Sie sie ein.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Abonnement** | Eines Ihrer Abonnements | Das Abonnement, in dem sich Ihr Zieldienst befindet (der Dienst, mit dem Sie eine Verbindung herstellen möchten). Der Standardwert ist das Abonnement, in dem sich dieser App Service befindet. |
     | **Diensttyp** | Blob Storage | Zieldiensttyp. Wenn Sie über keinen Blobspeicher verfügen, können Sie [einen erstellen](../storage/blobs/storage-quickstart-blobs-portal.md) oder einen anderen Diensttyp verwenden. |
@@ -47,7 +47,7 @@ Sie verwenden den Dienstconnector, um eine neue Dienstverbindung in Spring Cloud
 
 ## <a name="view-service-connections-in-spring-cloud"></a>Anzeigen von Dienstverbindungen in Spring Cloud
 
-1. In **Dienstconnector (Vorschau)** wird eine Spring Cloud-Verbindung mit dem Zieldienst angezeigt.
+1. In **Dienstconnector (Vorschau)** wird eine Spring Cloud-Verbindung mit dem Zieldienst angezeigt.
 
 1. Klicken Sie auf die Schaltfläche **>** , um die Liste zu erweitern. Dadurch werden die Eigenschaften angezeigt, die für Ihre Spring Boot-Anwendung erforderlich sind.
 

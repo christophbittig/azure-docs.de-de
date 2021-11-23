@@ -1,0 +1,36 @@
+### YamlMime:FAQ
+metadata:
+  title: 'Microsoft Azure IoT Hub Device Provisioning Service: Häufig gestellte Fragen (FAQ)'
+  description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Azure IoT Hub Device Provisioning Service.
+  author: anastasia-ms
+  ms.author: v-stharr
+  ms.date: 11/08/2021
+  ms.topic: conceptual
+  ms.service: iot-dps
+  services: iot-dps
+  ms.openlocfilehash: 56cc7ef655ee5e874770a691b8f38b1ce0519eaf
+  ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/12/2021
+  ms.locfileid: "132404436"
+title: 'Azure IoT Hub Device Provisioning Service: Häufig gestellte Fragen (FAQ)'
+summary: >
+  In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure IoT Hub Device Provisioning Service. Die folgenden Themen werden behandelt:
+
+
+  * DPS-Verwaltung
+
+  * DPS-Abrechnung
+sections:
+- name: DPS-Verwaltung
+  questions:
+  - question: "Wie lautet die empfohlene Vorgehensweise zum Aktualisieren eines verknüpften Hubs, wenn der Primärschlüssel für die IoT Hub-Zugriffsrichtlinie neu generiert wird? \n"
+    answer: >
+      Der Primärschlüssel ist in die Verbindungszeichenfolge eingebettet, die DPS für die Authentifizierung verwendet. Wenn die primäre Verbindungszeichenfolge geändert wird, wird auch der Primärschlüssel geändert, und Sie müssen den Hub neu mit DPS verknüpfen.
+- name: DPS-Abrechnung
+  questions:
+  - question: "Welche API-Vorgänge des Device Provisioning-Diensts sind abrechenbar, und wie lauten die Preise? \n"
+    answer: >
+      Informationen dazu, welche Vorgänge abgerechnet werden können, und die jeweiligen Preise finden Sie unter [Abrechenbare Dienstvorgänge und Preise für Microsoft Device Provisioning Service](about-iot-dps.md#billable-service-operations-and-pricing).
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nWenn Sie in diesen FAQs keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):\n\n* Im Abschnitt „Kommentare“ dieses Artikels.\n* [MSFT: Q&A-Seite für Azure DPS(/answers/topics/azure-dps.html).\n* Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte [Hilfe](https://portal.azure.com/) die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage** aus.\n\n\n> [!div class=\"nextstepaction\"]\n> [https://github.com/anastasia-ms/azure-docs-pr/pull/new/dps-faq](how-to-troubleshoot-dps.md)"

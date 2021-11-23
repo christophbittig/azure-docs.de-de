@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: a4d451233277b76106f3176a68d451bd0c5847ff
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 1781a566f84825971ac3728a360b52fcd1270e0a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131433021"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490229"
 ---
 # <a name="whats-new-in-azure-virtual-desktop"></a>Neues in Azure Virtual Desktop
 
@@ -42,6 +42,12 @@ Der Azure Virtual Desktop-Agent wird mindestens einmal pro Monat aktualisiert.
 
 Hier sind die Änderungen für Azure Virtual Desktop-Agent angegeben:
 
+- Version 1.0.3719.1700: Dieses Update wurde im November 2021 veröffentlicht und umfasst die folgenden Änderungen:
+    - Agent-Fehlermeldungen aktualisiert
+    - Behebt ein Problem, aufgrund dessen der Agent bei jeder Aktualisierung des parallelen Stapels neu gestartet wurde.
+    - Allgemeine Agent-Verbesserungen.
+- Version 1.0.3583.2600: Dieses Update wurde im Oktober 2021 veröffentlicht und behebt ein Problem, aufgrund dessen der parallele Stapel bei einem Upgrade von Windows 10 auf Windows 11 deaktiviert wurde.
+- Version 1.0.3373.2605: Dieses Update wurde im September 2021 veröffentlicht und behebt ein Problem, aufgrund dessen die Aufhebung der Paketregistrierung bei Verwendung des MSIX-Features zum Anfügen von Apps hängen geblieben ist.
 - Version 1.0.3373.2600: Dieses Update wurde im September 2021 veröffentlicht und umfasst die folgenden Änderungen:
     - Allgemeine Agent-Verbesserungen.
     - Behebung von Problemen beim Neustart des Agents auf VMs mit Windows 7.

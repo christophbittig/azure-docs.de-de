@@ -1,23 +1,23 @@
 ---
 title: Verbinden und Verwalten einer Azure Database for PostgreSQL-Instanz
-description: In diesem Leitfaden wird beschrieben, wie Sie eine Verbindung mit einer Azure Database for PostgreSQL-Instanz in Azure Purview herstellen und die Features von Purview verwenden, um Ihre Azure Database for PostgreSQL-Quelle zu überprüfen und zu verwalten.
-author: evwhite
+description: In diesem Leitfaden wird beschrieben, wie Sie eine Verbindung mit einer Azure Database for PostgreSQL Single Server-Instanz in Azure Purview herstellen und die Features von Purview verwenden, um Ihre Azure Database for PostgreSQL-Quelle zu überprüfen und zu verwalten.
+author: evangelinew
 ms.author: evwhite
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 1f5fa328a7a7a2f61647274eba0ba0282a820ec8
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 46e2f60adc895b60370ed7109305bb8966057fa3
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131841894"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402388"
 ---
 # <a name="connect-to-and-manage-an-azure-database-for-postgresql-in-azure-purview"></a>Verbinden und Verwalten einer Azure Database for PostgreSQL-Instanz in Azure Purview
 
-In diesem Artikel wird beschrieben, wie Sie eine Azure Database for PostgreSQL-Instanz registrieren und wie Sie eine Azure Database for PostgreSQL-Instanz in Azure Purview authentifizieren und damit interagieren. Weitere Informationen zu Azure Purview finden Sie im [Einführungsartikel](overview.md).
+In diesem Artikel wird beschrieben, wie Sie eine Azure Database for PostgreSQL-Instanz registrieren, die mit der Bereitstellungsoption „Einzelserver“ bereitgestellt wurde, und wie Sie eine Azure Database for PostgreSQL-Instanz in Azure Purview authentifizieren und damit interagieren. Weitere Informationen zu Azure Purview finden Sie im [Einführungsartikel](overview.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -26,6 +26,9 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure Database for PostgreSQL-I
 | [Ja](#register) | [Ja](#scan)| [Ja](#scan) | [Ja](#scan) | [Ja](#scan) | Nein | nein** |
 
 \** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory-Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
+
+> [!Important]
+>  Purview unterstützt für Azure Database for PostgreSQL nur die Bereitstellungsoption „Einzelserver“. Versionen 8.x bis 12.x
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,7 +44,7 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Azure Database for PostgreSQL
 
 ### <a name="authentication-for-registration"></a>Authentifizierung für die Registrierung
 
-Derzeit wird nur die SQL-Authentifizierung unterstützt, um eine Azure Database for PostgreSQL-Instanz verwalten und mit ihr interagieren zu können.
+Derzeit wird nur die SQL-Authentifizierung unterstützt, um eine Azure Database for PostgreSQL Single Server-Instanz verwalten und mit ihr interagieren zu können.
 
 #### <a name="sql-authentication"></a>SQL-Authentifizierung
 

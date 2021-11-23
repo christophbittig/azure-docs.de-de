@@ -5,31 +5,20 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
-ms.date: 04/26/2021
-ms.openlocfilehash: bcecb9b50c493ba85172fd56ccf3f2d286aa1839
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 11/11/2021
+ms.openlocfilehash: dc8dd5e25a6b6aeb94d674156af2edd9dbcd008d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431312"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345601"
 ---
 # <a name="azure-web-pubsub-service-faq"></a>Häufig gestellte Fragen zum Azure Web PubSub-Dienst
 
 Hier finden Sie häufig gestellte Fragen zum Azure Web PubSub-Dienst. 
 
 ## <a name="is-azure-web-pubsub-service-ready-for-production-use"></a>Ist Azure Web PubSub bereit für den Einsatz in der Produktion?
-
-Der Azure Web PubSub-Dienst befindet sich in der öffentlichen Vorschau und weist keine verbindliche SLA auf. 
-
-## <a name="when-will-azure-web-pubsub-service-be-ready-for-production-use"></a>Wann ist Azure Web PubSub bereit für den Einsatz in der Produktion?
-
-Das Produktteam arbeitet mit Hochdruck an der allgemeinen Verfügbarkeit des Azure Web PubSub-Diensts. Sobald der Dienst allgemein verfügbar ist, unterstützt er Folgendes:
-- Azure Active Directory-Support
-- API Management-Integration
-- Binäres Pub/Sub-WebSocket-Unterprotokoll
-- Integration von Azure-Ressourcenprotokollen
-
-Wenden Sie sich an das Produktteam, wenn Sie weitere Details zu allgemein verfügbaren Features benötigen.
+Ja, der Azure Web PubSub-Dienst ist allgemein verfügbar.
 
 ## <a name="how-do-i-choose-between-azure-signalr-service-and-azure-web-pubsub-service"></a>Nach welchen Kriterien wähle ich zwischen Azure SignalR Service und dem Azure Web PubSub-Dienst?
 

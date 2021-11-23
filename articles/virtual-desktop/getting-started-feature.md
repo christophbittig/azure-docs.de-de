@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 664a63e50b4b0ff1d239317fce653378461a5d4c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 62ba9a8fa578ab12408160d9a6d19243474921fc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113799017"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277218"
 ---
 # <a name="deploy-azure-virtual-desktop-with-the-getting-started-feature"></a>Feature „Erste Schritte“ zum Bereitstellen von Azure Virtual Desktop
 
@@ -19,24 +19,24 @@ Das neue Azure-Portal-Feature „Erste Schritte“ ist eine schnelle und einfach
 
 ## <a name="requirements"></a>Anforderungen
 
-Für die ersten Schritte benötigen Sie Folgendes:
+Sie benötigen die folgenden erforderlichen Komponenten, um die ersten Schritte ausführen zu können:
 
 - Einen Azure Active Directory-Mandanten (AD)
-- Ein Konto mit globalen Administratorberechtigungen für Azure AD
+- Ein Konto mit globalen Administratorberechtigungen für Azure AD.
 
    >[!NOTE]
    >Das Feature „Erste Schritte“ unterstützt derzeit keine MSA-, B2B- oder Gastkonten.
 
-- Aktives Azure-Abonnement
+- Ein aktives Azure-Abonnement.
 
    >[!NOTE]
    >Das Feature „Erste Schritte“ unterstützt derzeit keine Konten mit mehrstufiger Authentifizierung.
 
-- Ein Konto mit **Besitzerberechtigungen** für das Abonnement
+- Ein Konto mit **Besitzerberechtigungen** für das Abonnement.
 
 Wenn Sie das Feature „Erste Schritte“ in einer Umgebung mit Active Directory Domain Services (AD DS) verwenden, müssen Sie auch die folgenden Anforderungen erfüllen:
 
-- Anmeldeinformationen für AD DS-Domänenadministratoren
+- Anmeldeinformationen für AD DS-Domänenadministratoren.
 - Sie müssen Azure AD Connect in Ihrem Abonnement konfigurieren und sicherstellen, dass der Container „USERS“ mit Azure AD synchronisiert ist.
 - Der Domänencontroller auf Ihrem virtuellen Computer (VM) darf keine DSC-Erweiterungen des Typs **Microsoft.Powershell.DSC** aufweisen.
 

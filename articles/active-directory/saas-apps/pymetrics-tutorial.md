@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 196f6da948d90afdbd05fc941b327cfd2b7ab1f9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4a43c088c5e8d92bb1cbbee741a17be2c8ceb590
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816542"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344178"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pymetrics"></a>Tutorial: Integrieren von pymetrics in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -42,7 +42,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * pymetrics unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 * pymetrics unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
-* Nach dem Konfigurieren von pymetrics können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von pymetrics können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="adding-pymetrics-from-the-gallery"></a>Hinzufügen von pymetrics aus dem Katalog
 
@@ -161,6 +161,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „pymetrics“ klicken, sollten Sie 
 
 - [Testen von pymetrics mit Azure AD](https://aad.portal.azure.com/)
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+- [Was ist die Sitzungssteuerung in Microsoft Defender for Cloud Apps?](/cloud-app-security/proxy-intro-aad)
 
 - [Schützen von Apps mit der App-Steuerung für bedingten Zugriff](/cloud-app-security/proxy-intro-aad)

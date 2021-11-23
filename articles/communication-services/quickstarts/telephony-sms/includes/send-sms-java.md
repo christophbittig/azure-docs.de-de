@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: ea5e7c4c502e7a31fddac78e1931d172acce7b9d
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: c0225c1193cd7e3664b9a7f21fa0337be8cb384a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111994"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132530046"
 ---
 Steigen Sie in Azure Communication Services ein, indem Sie das Java SMS-SDK von Communication Services nutzen, um SMS-Nachrichten zu senden.
 
@@ -140,7 +140,7 @@ System.out.println("Send Result Successful:" + sendResult.isSuccessful());
 Ersetzen Sie `<from-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Ressource zugeordnet ist, und ersetzen Sie `<to-phone-number>` durch eine Telefonnummer, an die Sie eine Nachricht senden möchten.
 
 > [!WARNING]
-> Beachten Sie, dass Telefonnummern im internationalen Standardformat E.164 angegeben werden sollten. (Beispiel: +14255550123).
+> Beachten Sie, dass Telefonnummern im internationalen Standardformat E.164 angegeben werden sollten (z. B. +14255550123). Die Telefonnummer vom Typ **From** (Anrufertelefonnummer) kann auch ein kurzer Code sein (z. B. 23456).
 
 ## <a name="send-a-1n-sms-message-with-options"></a>Senden einer SMS mit Optionen: 1:N
 Wenn Sie eine SMS an eine Empfängerliste senden möchten, rufen Sie die Methode `send` mit einer Liste mit den Telefonnummern der Empfänger auf. Sie können auch optionale Parameter übergeben, um anzugeben, ob der Zustellbericht aktiviert werden soll, und um benutzerdefinierte Tags festzulegen.
@@ -166,7 +166,7 @@ for (SmsSendResult result : sendResults) {
 Ersetzen Sie `<from-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Ressource zugeordnet ist, und ersetzen Sie `<to-phone-number-1>` und `<to-phone-number-2>` durch Telefonnummern, an die Sie eine Nachricht senden möchten.
 
 > [!WARNING]
-> Beachten Sie, dass Telefonnummern im internationalen Standardformat E.164 angegeben werden sollten. (Beispiel: +14255550123).
+> Beachten Sie, dass Telefonnummern im internationalen Standardformat E.164 angegeben werden sollten (z. B. +14255550123). Die Telefonnummer vom Typ **From** (Anrufertelefonnummer) kann auch ein kurzer Code sein (z. B. 23456).
 
 Die Methode `setDeliveryReportEnabled` wird verwendet, um Zustellberichte zu konfigurieren. Dies ist in Szenarien hilfreich, in denen Ereignisse ausgegeben werden sollen, wenn SMS-Nachrichten zugestellt wurden. Informationen zum Konfigurieren von Zustellberichten für SMS-Nachrichten finden Sie in der Schnellstartanleitung [Behandeln von SMS-Ereignissen](../handle-sms-events.md).
 

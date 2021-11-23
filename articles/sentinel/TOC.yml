@@ -244,6 +244,8 @@
           href: playbook-triggers-actions.md
         - name: Anpassen von Playbooks aus Vorlagen
           href: use-playbook-templates.md
+        - name: Automatisieren von Aktivitäten mit Watchlists und Playbooks
+          href: automate-playbook-watchlist.md
     - name: "Verwalten von Microsoft\_Sentinel"
       items:
         - name: Microsoft Sentinel für MSSPs

@@ -5,16 +5,19 @@ ms.service: azure-video-analyzer
 ms.topic: quickstart
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ed1c4e979d9b593cc701c294c95eda96b27db415
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 3f7c134174560d3222e0ba936378c37b931abee7
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554410"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132489925"
 ---
 # <a name="quickstart-get-started-with-video-analyzer-live-pipelines-in-the-azure-portal"></a>Schnellstart: Erste Schritte mit Video Analyzer-Livepipelines im Azure-Portal
 
-[!INCLUDE [header](includes/cloud-env.md)]
+![Cloud-Symbol](media/env-icon/cloud.png)  
+Lesen Sie alternativ die Informationen unter [Schnellstart: Erste Schritte mit Video Analyzer im Portal](../edge/get-started-detect-motion-emit-events-portal.md).
+
+---
 
 In diesem Schnellstart werden die Schritte zum Erfassen und Aufzeichnen von Videos von einer RTSP-Kamera (Real Time Streaming Protocol) mithilfe von Livepipelines im Azure Video Analyzer-Dienst beschrieben.
 Sie erstellen im Azure-Portal ein Video Analyzer-Konto und die zugehörigen Ressourcen. Sie stellen einen RTSP-Kamerasimulator bereit, wenn Sie keinen Zugriff auf eine RTSP-Kamera haben (die über das Internet zugänglich gemacht werden kann). Anschließend stellen Sie die relevanten Video Analyzer-Ressourcen zum Aufzeichnen von Videos in Ihrem Video Analyzer-Konto bereit.
@@ -62,7 +65,7 @@ In diesem Abschnitt erfahren Sie, wie Sie einen RTSP-Kamerasimulator auf einer A
 
     ```
     cd localmedia
-    wget https://lvamedia.blob.core.windows.net/public/camera-1800s.mkv
+    wget https://avamedia.blob.core.windows.net/public/camera-1800s.mkv
     ```
 1. Starten Sie wie folgt den RTSP-Server auf der VM mithilfe des vordefinierten Containerimages:
 

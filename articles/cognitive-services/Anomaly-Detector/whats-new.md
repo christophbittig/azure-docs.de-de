@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 06/23/2021
-ms.openlocfilehash: 07a47b432470b683680c315f2d1d741cc607774f
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 9bb87788a12a8ec58e3d9cc0035eeefa0b35656b
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214597"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134716"
 ---
 # <a name="whats-new-in-anomaly-detector"></a>Neues in der Anomalieerkennung
 
@@ -19,6 +19,9 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
 Wir haben auch Links zu einigen benutzergenerierten Inhalten hinzugefügt. Diese Elemente werden mit dem Tag **[UGC]** gekennzeichnet. Einige dieser Links werden auf externen Websites gehostet, die nicht Microsoft gehören. Microsoft ist für deren Inhalt nicht verantwortlich. Verweisen Sie umsichtig auf diese Ressourcen. Wenden Sie sich an AnomalyDetector@microsoft.com, oder melden Sie ein Problem in GitHub, wenn Sie wünschen, dass wir den Inhalt löschen.
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="november-2021"></a>November 2021
+* Multivariate Anomalieerkennung in sechs weiteren Regionen verfügbar: „VAE, Norden“, „Frankreich, Mitte“, „USA, Norden-Mitte“, „Schweiz, Norden“, „Südafrika, Norden“, „Jio Indien, Westen“. Jetzt werden insgesamt 26 Regionen unterstützt.
 
 ### <a name="september-2021"></a>September 2021
 * Anomalieerkennung (univariant) verfügbar in Jio, Indien, Westen.

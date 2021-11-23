@@ -280,6 +280,8 @@
           href: application-gateway-backend-health-troubleshooting.md
         - name: Key Vault-Fehler
           href: application-gateway-key-vault-common-errors.md
+    - name: Konfiguration des Proxypuffers
+      href: proxy-buffers.md
     - name: Benutzerdefinierte Fehlerseiten
       href: custom-error.md
     - name: Migrieren von v1 zu v2

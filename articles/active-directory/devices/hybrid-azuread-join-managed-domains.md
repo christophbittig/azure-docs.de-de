@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f83c7a9ac8a910a96a49c2ee354b68a18f4a774
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 0707969fe74714864eb3f92740c911847e21bd92
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131892151"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490192"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
@@ -128,6 +128,14 @@ Wenn es sich bei einigen Ihrer in die Domäne eingebundenen Geräte um kompatibl
 - Konfigurieren der lokalen Intraneteinstellungen für die Geräteregistrierung
 - Konfigurieren des nahtlosen einmaligen Anmeldens
 - Installieren von Microsoft Workplace Join für kompatible Windows-Computer
+
+Kompatible Windows-Geräte sind Geräte mit älteren Betriebssystemen. Die folgenden Geräte sind kompatible Windows Geräte:
+
+- Windows 7
+- Windows 8.1
+- Windows Server 2008 R2
+- Windows Server 2012
+- Windows Server 2012 R2
 
 > [!NOTE]
 > Die Unterstützung für Windows 7 wurde am 14. Januar 2020 eingestellt. Weitere Informationen finden Sie unter [Der Support für Windows 7 endet am 14. Januar 2020](https://support.microsoft.com/help/4057281/windows-7-support-ended-on-january-14-2020).

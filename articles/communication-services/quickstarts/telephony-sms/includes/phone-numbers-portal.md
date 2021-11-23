@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: fc175bdad79bbb01bd0686dcdbf314d8d6ee47fb
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 35394fc33316518dac760363d2b69fdaa0727d6a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "114201359"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132530004"
 ---
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -37,9 +37,9 @@ Das Konfigurieren Ihrer Telefonnummer ist in zwei Schritte unterteilt:
 1. Auswahl des [Nummerntyps](../../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
 2. Auswahl der [Nummernfunktionen](../../../concepts/telephony-sms/plan-solution.md#phone-number-capabilities-in-azure-communication-services)
 
-Sie haben die Wahl zwischen zwei Telefonnummerntypen: **Geografisch** und **Gebührenfrei**. Nach der Wahl eines Nummerntyps können Sie das Feature auswählen.
+Sie haben die Wahl zwischen zwei Telefonnummerntypen: **lokale** und **gebührenfreie** Telefonnummern. Nach der Wahl eines Nummerntyps können Sie das Feature auswählen.
 
-In diesem Beispiel wurde der Nummerntyp **Gebührenfrei** mit den Features **Outbound calling** (Ausgehende Anrufe) und **Inbound and Outbound SMS** (Ein- und ausgehende SMS) ausgewählt.
+In diesem Beispiel wurde der Nummerntyp **Gebührenfrei** mit den Features **Anrufe tätigen** und **Send and receive SMS** (SMS senden und empfangen) ausgewählt.
 
 :::image type="content" source="../../media/manage-phone-azure-portal-select-plans.png" alt-text="Screenshot: Ansicht für die Featureauswahl":::
 
@@ -52,7 +52,7 @@ Auf der Seite **Nummern** können Sie die Telefonnummern anpassen, die Sie berei
 :::image type="content" source="../../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="Screenshot: Seite für die Nummernauswahl":::
 
 > [!NOTE]
-> In dieser Schnellstartanleitung wird der Anpassungsvorgang für den Nummerntyp **Gebührenfrei** gezeigt. Der Vorgang unterscheidet sich etwas, wenn Sie den Nummerntyp **Geografisch** ausgewählt haben, das Endergebnis ist jedoch gleich.
+> In dieser Schnellstartanleitung wird der Anpassungsvorgang für den Nummerntyp **Gebührenfrei** gezeigt. Der Vorgang weicht etwas ab, wenn Sie den Nummerntyp **Lokal** ausgewählt haben, aber das Endergebnis ist identisch.
 
 Treffen Sie in der Liste mit den verfügbaren Ortsvorwahlen eine Auswahl für **Ortsvorwahl**, und geben Sie die Menge an, die Sie bereitstellen möchten. Klicken Sie anschließend auf **Suchen**, um nach Nummern zu suchen, die die ausgewählten Anforderungen erfüllen. Die Telefonnummern, die Ihre Anforderungen erfüllen, werden zusammen mit den monatlichen Kosten angezeigt.
 
@@ -91,11 +91,11 @@ Wählen Sie im Menü das Blatt „Telefonnummern“ aus, um Ihre Telefonnummern 
 
 ### <a name="update-phone-number-capabilities"></a>Funktionen für Telefonnummern
 
-Auf der Seite **Nummern** können Sie eine Telefonnummer auswählen, um sie zu konfigurieren.
+Auf der Seite **Telefonnummern** können Sie eine Telefonnummer auswählen, um sie zu konfigurieren.
 
 :::image type="content" source="../../media/manage-phone-azure-portal-capability-update.png" alt-text="Screenshot: Seite zum Aktualisieren von Features":::
 
-Wählen Sie aus den verfügbaren Optionen die gewünschten Features aus, und klicken Sie anschließend auf **Bestätigen**, um Ihre Auswahl anzuwenden.
+Wählen Sie aus den verfügbaren Optionen die gewünschten Features aus, und klicken Sie anschließend auf **Speichern**, um Ihre Auswahl anzuwenden.
 
 ### <a name="release-phone-number"></a>Freigeben einer Telefonnummer
 

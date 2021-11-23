@@ -7,12 +7,12 @@ ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 05b84abafb308b51236f5d92aa486e6ed8741204
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2f0636d5ef4b4e1fa3a9576912630470af7fa388
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131438814"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337792"
 ---
 # <a name="microsoft-azure-confidential-ledger-preview"></a>Microsoft Azure Confidential Ledger (Vorschauversion)
 
@@ -25,7 +25,7 @@ Azure Confidential Ledger ist für Anwendungsfälle vorgesehen, in denen essenzi
 - Datensätze zu Geschäftstransaktionen (z. B. Geldüberweisungen oder Änderungen an vertraulichen Dokumenten)
 - Änderungen an vertrauenswürdigen Ressourcen (z. B. Kernanwendungen oder Verträge)
 - Änderungen an der Verwaltung und Steuerung (z. B. das Erteilen von Zugriffsberechtigungen)
-- Ereignisse in Bezug auf die betriebliche und IT-Sicherheit (z. B. Azure Security Center-Warnungen)
+- Ereignisse in Bezug auf die betriebliche Sicherheit und die IT-Sicherheit (z. B. Microsoft Defender für Cloud-Warnungen)
 
 Sehen Sie sich die [Demo zu Azure Confidential Ledger von der Microsoft Ignite 2020](https://mediusprodstatic.studios.ms/asset-b88de19d-4187-40c4-98f2-a65efc419e2a/OD221_1920x1080_AACAudio_1461.mp4?sv=2018-03-28&sr=b&sig=k5roi6WXnlqK1zP0fs5KYlJd4FD3Nuaf97z%2B2gV0aTs%3D&st=2020-09-22T08%3A05%3A01Z&se=2025-09-22T08%3A10%3A01Z&sp=r&rscd=filename%3DIG20-OD221-Inside%2BAzure%2BDatacenter%2BArchitecture%2Bwith%2BMark%2BRu.mp4) an, um mehr zu erfahren.
 

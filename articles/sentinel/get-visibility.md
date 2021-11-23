@@ -1,45 +1,45 @@
 ---
 title: Visualisieren gesammelter Daten
-description: Hier erfahren Sie, wie Sie die Vorgänge in Ihrer Umgebung mithilfe von Azure Sentinel schnell anzeigen und überwachen können.
+description: Hier erfahren Sie, wie Sie die Vorgänge in Ihrer Umgebung mithilfe von Microsoft Sentinel schnell anzeigen und überwachen können.
 services: sentinel
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit, ignite-fall-2021
-ms.date: 09/16/2020
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: fb01d57a7801b940ba9de2e8c939743070c57eaa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 45128b80c6404a44c475d0d329fe65ab0e760375
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004091"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517765"
 ---
 # <a name="visualize-collected-data"></a>Visualisieren gesammelter Daten
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Artikel erfahren Sie, wie Sie die Vorgänge in Ihrer Umgebung mithilfe von Azure Sentinel schnell anzeigen und überwachen können. Nachdem Sie Ihre Datenquellen mit Azure Sentinel verbunden haben, stehen Ihnen sofort Datenvisualisierungen und -analysen zur Verfügung, die Informationen zu allen Vorgängen in Ihren verbundenen Datenquellen liefern. Azure Sentinel bietet Ihnen Arbeitsmappen mit den leistungsstarken Funktionen der bereits in Azure verfügbaren Tools sowie integrierte Tabellen und Diagramme mit Analysen für Ihre Protokolle und Abfragen. Sie können integrierte Arbeitsmappen verwenden, mühelos eine komplett neue Arbeitsmappe erstellen oder auf der Grundlage einer vorhandenen Arbeitsmappe eine eigene Arbeitsmappe erstellen. 
+In diesem Artikel erfahren Sie, wie Sie die Vorgänge in Ihrer Umgebung mithilfe von Microsoft Sentinel schnell anzeigen und überwachen können. Nachdem Sie Ihre Datenquellen mit Microsoft Sentinel verbunden haben, stehen Ihnen sofort Datenvisualisierungen und -analysen zur Verfügung, die Informationen zu allen Vorgängen in Ihren verbundenen Datenquellen liefern. Microsoft Sentinel bietet Ihnen Arbeitsmappen mit den leistungsstarken Funktionen der bereits in Azure verfügbaren Tools sowie integrierte Tabellen und Diagramme mit Analysen für Ihre Protokolle und Abfragen. Sie können integrierte Arbeitsmappen verwenden, mühelos eine komplett neue Arbeitsmappe erstellen oder auf der Grundlage einer vorhandenen Arbeitsmappe eine eigene Arbeitsmappe erstellen. 
 
 ## <a name="get-visualization"></a>Visualisierung
 
-Bevor Sie die Vorgänge in Ihrer Umgebung visualisieren und analysieren, sollten Sie zunächst einen Blick auf das Übersichtsdashboard werfen, um eine Vorstellung vom Sicherheitsstatus Ihrer Organisation zu bekommen. Sie können auf jedes Element auf diesen Kacheln klicken, um Detailinformationen zu den zugehörigen Rohdaten anzuzeigen. Um Fehlinformationen zu reduzieren und die Anzahl von Warnungen zu minimieren, die Sie überprüfen und untersuchen müssen, korreliert Azure Sentinel Warnungen mithilfe einer Zusammenführungstechnik zu Incidents. **Incidents** sind Gruppen von verwandten Warnungen, die zusammen einen handlungsrelevanten Incident bilden, den Sie untersuchen und beheben können.
+Bevor Sie die Vorgänge in Ihrer Umgebung visualisieren und analysieren, sollten Sie zunächst einen Blick auf das Übersichtsdashboard werfen, um eine Vorstellung vom Sicherheitsstatus Ihrer Organisation zu bekommen. Sie können auf jedes Element auf diesen Kacheln klicken, um Detailinformationen zu den zugehörigen Rohdaten anzuzeigen. Um Fehlinformationen zu reduzieren und die Anzahl von Warnungen zu minimieren, die Sie überprüfen und untersuchen müssen, korreliert Microsoft Sentinel Warnungen mithilfe einer Zusammenführungstechnik zu Incidents. **Incidents** sind Gruppen von verwandten Warnungen, die zusammen einen handlungsrelevanten Incident bilden, den Sie untersuchen und beheben können.
 
-- Wählen Sie im Azure-Portal Azure Sentinel und anschließend den Arbeitsbereich aus, den Sie überwachen möchten.
+- Wählen Sie im Azure-Portal Microsoft Sentinel und anschließend den Arbeitsbereich aus, den Sie überwachen möchten.
 
-  ![Azure Sentinel-Übersicht](./media/qs-get-visibility/overview.png)
+  ![Übersicht über Microsoft Sentinel](./media/qs-get-visibility/overview.png)
 
-- Auf der Symbolleiste am oberen Rand des Fensters werden die Anzahl von Ereignissen im ausgewählten Zeitraum und ein Vergleich mit den vorherigen 24 Stunden angezeigt. Der Symbolleiste können Sie entnehmen, welche Warnungen für diese Ereignisse ausgelöst wurden (die kleine Zahl stellt die Veränderung in den letzten 24 Stunden dar) und wie viele dieser Ereignisse offen, in Bearbeitung und geschlossen sind. Vergewissern Sie sich in dieser Ansicht, dass keine deutliche Zu- oder Abnahme der Anzahl von Ereignissen vorliegt. Im Fall einer Abnahme meldet eine Verbindung möglicherweise keine Daten mehr an Azure Sentinel. Eine Zunahme kann ein Anzeichen für eine verdächtige Aktivität sein. Überprüfen Sie, ob neue Warnungen vorhanden sind.
+- Auf der Symbolleiste am oberen Rand des Fensters werden die Anzahl von Ereignissen im ausgewählten Zeitraum und ein Vergleich mit den vorherigen 24 Stunden angezeigt. Der Symbolleiste können Sie entnehmen, welche Warnungen für diese Ereignisse ausgelöst wurden (die kleine Zahl stellt die Veränderung in den letzten 24 Stunden dar) und wie viele dieser Ereignisse offen, in Bearbeitung und geschlossen sind. Vergewissern Sie sich in dieser Ansicht, dass keine deutliche Zu- oder Abnahme der Anzahl von Ereignissen vorliegt. Im Fall einer Abnahme meldet eine Verbindung möglicherweise keine Daten mehr an Microsoft Sentinel. Eine Zunahme kann ein Anzeichen für eine verdächtige Aktivität sein. Überprüfen Sie, ob neue Warnungen vorhanden sind.
 
-   ![Azure Sentinel-Leistungsindikatoren](./media/qs-get-visibility/funnel.png)
+   ![Zähler in Microsoft Sentinel](./media/qs-get-visibility/funnel.png)
 
 Der Hauptteil der Übersichtsseite bietet auf einen Blick Aufschluss über den Sicherheitsstatus Ihres Arbeitsbereichs:
 
 - **Events and alerts over time** (Ereignisse und Warnungen im Zeitverlauf): Listet die Anzahl von Ereignissen und Warnungen auf, die aufgrund dieser Ereignisse erstellt wurden. Wenn Sie eine ungewöhnliche Spitze bemerken, sollten entsprechende Warnungen angezeigt werden. Falls aufgrund ungewöhnlicher Aktivitäten eine Spitze in der Anzahl von Ereignissen vorliegt, aber keine Warnungen angezeigt werden, kann dies Anlass zur Sorge sein.
 
-- **Potential malicious events** (Potenziell schädliche Ereignisse): Wenn Datenverkehr aus bekanntermaßen schädlichen Quellen erkannt wird, zeigt Azure Sentinel Warnungen auf der Karte an. Orange steht für eingehenden Datenverkehr: Jemand versucht, über eine bekanntermaßen schädliche IP-Adresse auf Ihre Organisation zuzugreifen. Wenn ausgehende Aktivität (rot) angezeigt wird, bedeutet dies, dass Daten aus Ihrem Netzwerk außerhalb Ihrer Organisation zu einer bekanntermaßen schädlichen IP-Adresse gestreamt werden.
+- **Potenzielle schädliche Ereignisse:** Wenn Datenverkehr aus bekanntermaßen schädlichen Quellen erkannt wird, zeigt Microsoft Sentinel Warnungen auf der Karte an. Orange steht für eingehenden Datenverkehr: Jemand versucht, über eine bekanntermaßen schädliche IP-Adresse auf Ihre Organisation zuzugreifen. Wenn ausgehende Aktivität (rot) angezeigt wird, bedeutet dies, dass Daten aus Ihrem Netzwerk außerhalb Ihrer Organisation zu einer bekanntermaßen schädlichen IP-Adresse gestreamt werden.
 
    ![Karte mit schädlichem Datenverkehr](./media/qs-get-visibility/map.png)
 
@@ -55,7 +55,7 @@ Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenq
 
 1. Wählen Sie unter **Einstellungen** die Option **Arbeitsmappen** aus. Unter **Installiert** werden alle installierten Arbeitsmappen angezeigt. Unter **Alle** wird der gesamte Katalog integrierter Arbeitsmappen angezeigt, die zur Installation verfügbar sind. 
 2. Suchen Sie nach einer bestimmten Arbeitsmappe, um die ganze Liste und die Beschreibung des Funktionsumfangs der einzelnen Arbeitsmappen anzuzeigen. 
-3. Sofern Sie Azure AD verwenden, empfehlen wir, zur Verwendung von Azure Sentinel mindestens die folgenden Arbeitsmappen zu installieren:
+3. Sofern Sie Azure AD verwenden, empfehlen wir, zur Verwendung von Microsoft Sentinel mindestens die folgenden Arbeitsmappen zu installieren:
    - **Azure AD**: Verwenden Sie eines oder beide der folgenden Dashboards:
        - Das Dashboard **Azure AD sign-ins** (Azure AD-Anmeldungen) analysiert Anmeldungen im Zeitverlauf, um Anomalien zu ermitteln. In dieser Arbeitsmappe werden fehlgeschlagene Anmeldungen nach Anwendungen, Geräten und Orten sortiert angezeigt, sodass Sie auf einen Blick sehen können, ob etwas Ungewöhnliches geschieht. Achten Sie besonders auf mehrmals fehlgeschlagene Anmeldungen. 
        - Das Dashboard **Azure AD audit logs** (Azure AD-Überwachungsprotokolle) analysiert Administratoraktivitäten, z. B. Änderungen der Benutzer (Hinzufügen, Entfernen usw.), die Erstellung von Gruppen und andere Änderungen.  
@@ -71,7 +71,7 @@ Weitere Informationen zum Verwenden von Abfragen finden Sie unter [Tutorial: Vis
 
 ### <a name="add-a-new-tile"></a>Hinzufügen einer neuen Kachel
 
-Wenn Sie eine neue Kachel hinzufügen möchten, können Sie sie einer vorhandenen Arbeitsmappe hinzufügen (einer von Ihnen erstellten Arbeitsmappe oder einer integrierten Azure Sentinel-Arbeitsmappe). 
+Wenn Sie eine neue Kachel hinzufügen möchten, können Sie sie einer vorhandenen Arbeitsmappe hinzufügen (einer von Ihnen erstellten Arbeitsmappe oder einer integrierten Microsoft Sentinel-Arbeitsmappe). 
 1. Erstellen Sie in Log Analytics eine Kachel, indem Sie den Anweisungen in [Tutorial: Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../azure-monitor/visualize/tutorial-logs-dashboards.md) folgen. 
 2. Nachdem die Kachel erstellt wurde, wählen Sie unter **Anheften** die Arbeitsmappe aus, in der die Kachel angezeigt werden soll.
 
@@ -113,18 +113,18 @@ Sie können basierend auf der Rolle der Person, die die Daten anzeigt, und den g
 
 ## <a name="create-new-detections"></a>Erstellen neuer Erkennungen
 
-Erstellen Sie Erkennungen für die [Datenquellen, die Sie mit Azure Sentinel verbunden haben](connect-data-sources.md), um Bedrohungen in Ihrer Organisation zu untersuchen.
+Erstellen Sie Erkennungen für die [Datenquellen, die Sie mit Microsoft Sentinel verbunden haben](connect-data-sources.md), um Bedrohungen in Ihrer Organisation zu untersuchen.
 
 Nutzen Sie beim Erstellen einer neuen Erkennung die von Microsoft-Sicherheitsexperten entwickelten integrierten Erkennungen, die auf die verbundenen Datenquellen zugeschnitten sind.
 
-Navigieren Sie zum Anzeigen aller standardmäßig verfügbaren Erkennungen zu **Analytics** und dann zu **Regelvorlagen**. Diese Registerkarte enthält alle integrierten Azure Sentinel-Regeln.
+Navigieren Sie zum Anzeigen aller standardmäßig verfügbaren Erkennungen zu **Analytics** und dann zu **Regelvorlagen**. Diese Registerkarte enthält alle integrierten Microsoft Sentinel-Regeln.
 
-   ![Verwenden integrierter Erkennungen für die Suche nach Bedrohungen mit Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
+   ![Verwenden integrierter Erkennungen für die Suche nach Bedrohungen mit Microsoft Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 
 Weitere Informationen zum Abrufen von Standarderkennungen finden Sie unter [Standardmäßig verfügbare Erkennung von Bedrohungen](detect-threats-built-in.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Schnellstart wurden die ersten Schritte mit Azure Sentinel erläutert. Fahren Sie mit dem Artikel zum [Erkennen von Bedrohungen](detect-threats-built-in.md) fort.
+In diesem Schnellstart wurden die ersten Schritte mit Microsoft Sentinel erläutert. Fahren Sie mit dem Artikel zum [Erkennen von Bedrohungen](detect-threats-built-in.md) fort.
 
 > [!div class="nextstepaction"]
 > [Erstellen Sie benutzerdefinierte Regeln zur Bedrohungserkennung](detect-threats-custom.md), um die auf Bedrohungen zu automatisieren.

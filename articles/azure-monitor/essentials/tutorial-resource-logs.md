@@ -1,20 +1,19 @@
 ---
-title: Sammeln von Ressourcenprotokollen von einer Azure-Ressource und Analysieren der Protokolle mit Azure Monitor
-description: 'Tutorial: Konfigurieren von Diagnoseeinstellungen zum Sammeln von Ressourcenprotokollen von einer Azure-Ressource in einem Log Analytics-Arbeitsbereich, wo diese per Protokollabfrage analysiert werden können.'
+title: 'Tutorial: Sammeln von Ressourcenprotokollen von einer Azure-Ressource'
+description: Tutorial zum Konfigurieren von Diagnoseeinstellungen zum Senden von Ressourcenprotokollen von einer Azure-Ressource in einem Log Analytics-Arbeitsbereich, wo diese per Protokollabfrage analysiert werden können
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 12/15/2019
-ms.openlocfilehash: 43a9c88bc64b688bfd1171e331232bb254b0eebe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 11/08/2021
+ms.openlocfilehash: 90a1f193bf1f136e4d3501b68bfab8346604fbbe
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032873"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297975"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Tutorial: Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource
-
-Ressourcenprotokolle bieten detaillierte Einblicke in die Vorgänge einer Azure-Ressource und sind hilfreich bei der Überwachung der Integrität und Verfügbarkeit der Ressource. Azure-Ressourcen generieren automatisch Ressourcenprotokolle, Sie müssen aber konfigurieren, wo diese gesammelt werden sollen. In diesem Tutorial lernen Sie, wie Sie eine Diagnoseeinstellung erstellen, um Ressourcenprotokolle für eine Ressource in Ihrem Azure-Abonnement zu sammeln und diese per Protokollabfrage zu analysieren.
+Ressourcenprotokolle bieten detaillierte Einblicke in die Vorgänge einer Azure-Ressource und sind hilfreich bei der Überwachung der Integrität und Verfügbarkeit der Ressource. Ressourcenprotokolle werden von Azure-Ressourcen automatisch generiert. Sie müssen jedoch eine Diagnoseeinstellung erstellen, um sie zu erfassen. In diesem Tutorial erfahren Sie, wie Sie eine Diagnoseeinstellung erstellen, um Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden, in dem Sie sie mit Protokollabfragen analysieren können.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -26,81 +25,59 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie eine Azure-Ressource, die überwacht werden kann. Sie können jede Ressource in Ihrem Azure-Abonnement verwenden, die Diagnoseeinstellungen unterstützt. Um zu überprüfen, ob eine Ressource Diagnoseeinstellungen unterstützt, navigieren Sie im Azure-Portal zum Menü der Ressource, und vergewissern Sie sich, dass im Abschnitt **Überwachung** des Menüs eine Option **Diagnoseeinstellungen** vorhanden ist.
+Für dieses Tutorial benötigen Sie Folgendes: 
 
+- Eine zu überwachende Azure-Ressource. Sie können jede Ressource in Ihrem Azure-Abonnement verwenden, die Diagnoseeinstellungen unterstützt. Um zu überprüfen, ob eine Ressource Diagnoseeinstellungen unterstützt, navigieren Sie im Azure-Portal zum Menü der Ressource, und vergewissern Sie sich, dass im Abschnitt **Überwachung** des Menüs eine Option **Diagnoseeinstellungen** vorhanden ist.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-
-
-## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
-Ein Log Analytics-Arbeitsbereich in Azure Monitor sammelt und indiziert Protokolldaten aus einer Vielzahl von Quellen und ermöglicht eine erweiterte Analyse mithilfe einer leistungsfähigen Abfragesprache. Der Log Analytics-Arbeitsbereich muss vorhanden sein, bevor Sie eine Diagnoseeinstellung erstellen, um Daten an den Bereich zu senden. Sie können einen vorhandenen Arbeitsbereich in Ihrem Azure-Abonnement verwenden oder mithilfe der folgenden Schritte einen neuen erstellen. 
 
 > [!NOTE]
-> Sie können in Log Analytics-Arbeitsbereichen im Menü **Azure Monitor** mit Daten arbeiten, aber die Erstellung und Verwaltung der Arbeitsbereiche erfolgt im Menü **Log Analytics-Arbeitsbereiche**.
+> Dieses Verfahren gilt nicht für virtuelle Azure-Computer, da ihr Menü **Diagnoseeinstellungen** zum Konfigurieren der Diagnoseerweiterung verwendet wird.
 
-1. Wählen Sie unter **Alle Dienste** die Option **Log Analytics-Arbeitsbereich** aus.
-2. Klicken Sie oben auf dem Bildschirm auf **Hinzufügen**, und geben Sie die folgenden Informationen zum Arbeitsbereich an:
-   - **Log Analytics-Arbeitsbereich**: Der Name des neuen Arbeitsbereichs. Dieser Name muss in allen Azure Monitor-Abonnements global eindeutig sein.
-   - **Abonnement**: Wählen Sie das Abonnement aus, in dem der Arbeitsbereich gespeichert werden soll. Hierbei muss es sich nicht um dasselbe Abonnement handeln, in dem sich die überwachte Ressource befindet.
-   - **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder klicken Sie auf **Neu erstellen**, um eine zu erstellen. Hierbei muss es sich nicht um dieselbe Ressourcengruppe handeln, in der sich die überwachte Ressource befindet.
-   - **Standort**: Wählen Sie eine Azure-Region aus, oder erstellen Sie einen neuen Standort. Hierbei muss es sich nicht um denselben Standort handeln, in dem sich die überwachte Ressource befindet.
-   - **Tarif:** Wählen Sie *Nutzungsbasierte Zahlung* aus. Sie können den Tarif später ändern. Klicken Sie auf den Link **Log Analytics-Preise**, um mehr über die verschiedenen Tarife zu erfahren.
-
-    ![Neuer Arbeitsbereich](media/tutorial-resource-logs/new-workspace.png)
-
-3. Klicken Sie auf **OK**, um den Arbeitsbereich zu erstellen.
+## <a name="create-a-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
+[!INCLUDE [Create workspace](../../../includes/azure-monitor-tutorial-workspace.md)]
 
 ## <a name="create-a-diagnostic-setting"></a>Erstellen einer Diagnoseeinstellung
 [Diagnoseeinstellungen](../essentials/diagnostic-settings.md) definieren, wohin Ressourcenprotokolle für eine bestimmte Ressource gesendet werden sollen. Eine einzelne Diagnoseeinstellung kann mehrere [Ziele](../essentials/diagnostic-settings.md#destinations) enthalten. In diesem Tutorial verwenden wir nur einen Log Analytics-Arbeitsbereich.
 
-1. Wählen Sie im Menü Ihrer Ressource im Abschnitt **Überwachung** die Option **Diagnoseeinstellungen** aus.
-2. Die Meldung „Es sind keine Diagnoseeinstellungen definiert.“ wird angezeigt. Klicken Sie auf **Diagnoseeinstellung hinzufügen**.
+Wählen Sie im Menü Ihrer Ressource im Abschnitt **Überwachung** die Option **Diagnoseeinstellungen** aus, und klicken Sie auf **Diagnoseeinstellung hinzufügen**.
 
-    ![Diagnoseeinstellungen](media/tutorial-resource-logs/diagnostic-settings.png)
+> [!NOTE]
+> Für einige Ressourcen muss unter Umständen eine zusätzliche Auswahl vorgenommen werden. Beispielsweise müssen Sie für ein Speicherkonto eine Ressource auswählen, bevor die Option **Diagnoseeinstellung hinzufügen** angezeigt wird. Unter Umständen fällt Ihnen auch die Bezeichnung **Vorschau** für einige Ressourcen auf, wenn ihre Diagnoseeinstellungen derzeit als Public Preview verfügbar sind.
 
-3. Jede Diagnoseeinstellung besteht aus drei Teilen:
+:::image type="content" source="media/tutorial-resource-logs/diagnostic-settings.png" lightbox="media/tutorial-resource-logs/diagnostic-settings.png"alt-text="Diagnoseeinstellungen":::
+
+
+Jede Diagnoseeinstellung besteht aus drei Teilen:
  
    - **Name**: Dieser Teil hat keine Auswirkungen und dient nur zur Beschreibung.
-   - **Ziele:** Ein oder mehrere Ziele zum Senden der Protokolle. Für alle Azure-Dienste gelten dieselben drei möglichen Ziele. Jede Diagnoseeinstellung kann ein oder mehrere Ziele definieren, aber nicht mehr als ein Ziel eines bestimmten Typs. 
    - **Kategorien**: Kategorien der Protokolle, die an die einzelnen Ziele gesendet werden können. Die Kategorien unterscheiden sich je nach Azure-Dienst.
+   - **Ziele:** Ein oder mehrere Ziele zum Senden der Protokolle. Für alle Azure-Dienste gelten dieselben möglichen Ziele. Jede Diagnoseeinstellung kann ein oder mehrere Ziele definieren, aber nicht mehr als ein Ziel eines bestimmten Typs. 
 
-4. Klicken Sie auf **An Log Analytics-Arbeitsbereich senden**, und wählen Sie dann den erstellten Arbeitsbereich aus.
-5. Wählen Sie die Kategorien aus, für die Sie Daten erfassen möchten. Eine Definition der verfügbaren Kategorien finden Sie in der Dokumentation jedes Diensts.
+Geben Sie einen Namen für die Diagnoseeinstellung ein, und wählen Sie die Kategorien aus, die Sie erfassen möchten. Eine Definition der verfügbaren Kategorien finden Sie in der Dokumentation jedes Diensts. **AllMetrics** sendet die gleichen Plattformmetriken, die auch in Azure Monitor-Metriken für die Ressource verfügbar sind, an den Arbeitsbereich. Dadurch können Sie diese Daten zusammen mit anderen Überwachungsdaten mit Protokollabfragen analysieren. Klicken Sie auf **An Log Analytics-Arbeitsbereich senden**, und wählen Sie dann den erstellten Arbeitsbereich aus. 
 
-    ![Diagnoseeinstellung](media/tutorial-resource-logs/diagnostic-setting.png)
+:::image type="content" source="media/tutorial-resource-logs/diagnostic-setting-details.png" lightbox="media/tutorial-resource-logs/diagnostic-setting-details.png"alt-text="Details der Diagnoseeinstellung":::
 
-6. Klicken Sie auf **Speichern**, um die Diagnoseeinstellungen zu speichern.
+Klicken Sie auf **Speichern**, um die Diagnoseeinstellungen zu speichern.
 
     
  
  ## <a name="use-a-log-query-to-retrieve-logs"></a>Verwenden einer Protokollabfrage zum Abrufen von Protokollen
-Die Daten werden mithilfe einer in Kusto Query Language (KQL) geschriebenen Protokollabfrage aus einem Log Analytics-Arbeitsbereich abgerufen. Erkenntnisse und Lösungen in Azure Monitor stellen Protokollabfragen bereit, um Daten aus einem bestimmten Dienst abzurufen, aber Sie können auch im Azure-Portal über Log Analytics direkt mit Protokollabfragen und deren Ergebnissen arbeiten. 
+Die Daten werden mithilfe einer in Kusto Query Language (KQL) geschriebenen Protokollabfrage aus einem Log Analytics-Arbeitsbereich abgerufen. Für viele Azure-Dienste steht eine Reihe von vorab erstellen Abfragen zur Verfügung, sodass Sie für den Einstieg keine KQL-Kenntnisse benötigen.
 
-1. Wählen Sie im Menü Ihrer Ressource im Abschnitt **Überwachung** die Option **Protokolle** aus.
-2. Log Analytics wird mit einem leeren Abfragefenster geöffnet, der Bereich ist auf Ihre Ressource festgelegt. Abfragen geben nur Datensätze aus dieser Ressource zurück.
+Wählen Sie im Menü Ihrer Ressource die Option **Protokolle** aus. Log Analytics wird mit dem Fenster **Abfragen** geöffnet, das vordefinierte Abfragen für Ihren **Ressourcentyp** enthält. 
 
-    > [!NOTE]
-    > Wenn Sie Protokolle über das Azure Monitor-Menü öffnen, ist der Bereich nicht auf den Log Analytics-Arbeitsbereich festgelegt. In diesem Fall werden Abfragen für alle Datensätze im Arbeitsbereich ausgeführt.
-   
-    ![Screenshot: Option „Protokolle“ für eine Logik-App, neue Abfrage mit hervorgehobenem App-Namen](media/tutorial-resource-logs/logs.png)
+> [!NOTE]
+> Sollte das Fenster **Abfragen** nicht geöffnet werden, klicken Sie rechts oben auf **Abfragen**. 
 
-4. Der im Beispiel gezeigte Dienst schreibt Ressourcenprotokolle in die Tabelle **AzureDiagnostics**, andere Dienste schreiben ihre Ergebnisse möglicherweise in andere Tabellen. Ausführliche Informationen zu den Tabellen, die von den einzelnen Azure-Diensten verwendet werden, finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../essentials/resource-logs-schema.md).
-
-    > [!NOTE]
-    > Mehrere Dienste schreiben Ressourcenprotokolle in die Tabelle „AzureDiagnostics“. Wenn Sie Log Analytics über das Azure Monitor-Menü starten, müssen Sie eine `where`-Anweisung mit der Spalte `ResourceProvider` hinzufügen, um den gewünschten Dienst anzugeben. Wenn Sie Log Analytics über das Menü einer Ressource starten, ist der Bereich auf Datensätze aus dieser Ressource festgelegt, und diese Spalte ist nicht erforderlich. Beispielabfragen finden Sie in der Dokumentation des Diensts.
+:::image type="content" source="media/tutorial-resource-logs/queries.png" lightbox="media/tutorial-resource-logs/queries.png"alt-text="Screenshot: Beispielabfragen unter Verwendung von Ressourcenprotokollen":::
 
 
-5. Geben Sie eine Abfrage ein, und klicken Sie auf **Ausführen**, um die Ergebnisse anzuzeigen. 
-6. Ein Tutorial zum Schreiben von Protokollabfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../logs/get-started-queries.md).
+Durchsuchen Sie die verfügbaren Abfragen. Identifizieren Sie eine auszuführende Abfrage, und klicken Sie auf **Ausführen**. Die Abfrage wird dem Abfragefenster hinzugefügt, und die Ergebnisse werden zurückgegeben.
 
-    ![Protokollabfrage](media/tutorial-resource-logs/log-query-1.png)
-
-
-
+:::image type="content" source="media/tutorial-resource-logs/query-results.png" lightbox="media/tutorial-resource-logs/query-results.png"alt-text="Screenshot: Ergebnisse einer Bespielprotokollabfrage":::
 
 ## <a name="next-steps"></a>Nächste Schritte
-Hier haben Sie gelernt, wie Sie Ressourcenprotokolle in einem Log Analytics-Arbeitsbereich sammeln. In einem weiteren Tutorial können Sie erfahren, wie Sie Protokollabfragen schreiben, um diese Daten zu analysieren.
+Sie haben Ressourcenprotokolle gesammelt. Erstellen Sie nun eine Protokollabfragewarnung, um proaktiv benachrichtigt zu werden, wenn interessante Daten in Ihren Protokolldaten identifiziert werden.
 
 > [!div class="nextstepaction"]
-> [Erste Schritte mit Protokollabfragen in Azure Monitor](../logs/get-started-queries.md)
+> [Tutorial: Erstellen einer Protokollabfragewarnung für eine Azure-Ressource](../alerts/tutorial-log-alert.md)

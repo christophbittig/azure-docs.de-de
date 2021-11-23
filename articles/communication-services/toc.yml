@@ -55,6 +55,8 @@ items:
             href: quickstarts/voice-video-calling/call-automation-api-sample.md
           - name: Aufzeichnen von Anrufen
             href: quickstarts/voice-video-calling/call-recording-sample.md
+          - name: Zugriff auf unformatierte Medien
+            href: quickstarts/voice-video-calling/get-started-raw-media-access.md
       - name: UI-Bibliothek
         items:
           - name: Erste Schritte mit zusammengesetzten Komponenten

@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 0834fa6fd7eff41f37eb8f16dc3429189be284cb
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: f16060e58783a96c95c71361908d6bfbc74e36ba
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688675"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281436"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Tutorial: Überwachen eines virtuellen Windows-Computers in Azure
 **Gilt für:** :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen
@@ -143,7 +143,7 @@ In diesem Tutorial haben Sie die Leistung Ihrer VM konfiguriert und angezeigt. S
 > * Anzeigen von Metriken des virtuellen Computers
 > * Erstellen einer Warnung
 
-Im nächsten Tutorial erhalten Sie Informationen zu Azure Security Center.
+Im nächsten Tutorial erfahren Sie mehr über Microsoft Defender für Cloud:
 
 > [!div class="nextstepaction"]
 > [Verwalten der VM-Sicherheit](../../security/fundamentals/overview.md)

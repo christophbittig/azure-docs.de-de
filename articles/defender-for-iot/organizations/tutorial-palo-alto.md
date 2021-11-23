@@ -1,18 +1,18 @@
 ---
-title: Integrieren von Palo Alto mit Azure Defender für IoT
+title: Integrieren von Palo Alto in Microsoft Defender für IoT
 description: Die Defender für IoT-Plattform für die kontinuierliche ICS-Bedrohungsüberwachung wurde in die Palo Alto-Firewalls der nächsten Generation integriert, um eine schnellere und effizientere Blockierung von kritischen Bedrohungen zu ermöglichen.
-ms.date: 09/26/2021
+ms.date: 11/09/2021
 ms.topic: tutorial
-ms.openlocfilehash: 6579c69d5ab789c97972a81f00dc56d19ce1f9f8
-ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
+ms.openlocfilehash: 5beec75d23fb940f35ded84f2a938dae7e3dd9bc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129062045"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301455"
 ---
-# <a name="tutorial-integrate-palo-alto-with-azure-defender-for-iot"></a>Tutorial: Integrieren von Palo Alto mit Azure Defender für IoT
+# <a name="tutorial-integrate-palo-alto-with-microsoft-defender-for-iot"></a>Tutorial: Integrieren von Palo Alto in Microsoft Defender für IoT
 
-In diesem Tutorial lernen Sie, wie Sie Palo Alto mit Azure Defender für IoT integrieren und nutzen können.
+In diesem Tutorial lernen Sie, wie Sie Palo Alto mit Microsoft Defender für IoT integrieren und nutzen.
 
 Die Defender für IoT-Plattform für die kontinuierliche ICS-Bedrohungsüberwachung wurde in die Palo Alto-Firewalls der nächsten Generation integriert, um eine schnellere und effizientere Blockierung von kritischen Bedrohungen zu ermöglichen.
 
@@ -38,7 +38,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="configure-immediate-blocking-by-a-specified-palo-alto-firewall"></a>Konfigurieren der sofortigen Blockierung durch eine angegebene Palo Alto-Firewall
 
-In bestimmten Fällen, z. B. Warnungen zu Schadsoftware, können Sie die automatische Blockierung aktivieren. Die Weiterleitungsregeln von Defender für IoT werden verwendet, um einen Blockierungsbefehl direkt an eine bestimmte Palo Alto-Firewall zu senden.
+In bestimmten Fällen, z. B. Warnungen zu Schadsoftware, können Sie die automatische Blockierung aktivieren. Die Weiterleitungsregeln von Defender für IoT werden verwendet, um einen Blockierungsbefehl direkt an eine bestimmte Palo Alto-Firewall zu senden.
 
 Wenn Defender für IoT eine kritische Bedrohung identifiziert, wird eine Warnung gesendet, die eine Option zum Blockieren der infizierten Quelle enthält. Durch Auswählen von **Quelle blockieren** in den Warnungsdetails wird die Weiterleitungsregel aktiviert, die den Blockierungsbefehl an die angegebene Palo Alto-Firewall sendet.
 

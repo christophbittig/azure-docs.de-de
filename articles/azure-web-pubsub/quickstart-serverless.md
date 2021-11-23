@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 11/08/2021
-ms.openlocfilehash: 14642eda290049d02cac18d967808b534516e1a4
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 7dc376bb84c52688e1f665501680f11f6bb317eb
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131998042"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488523"
 ---
 # <a name="tutorial-create-a-serverless-real-time-chat-app-with-azure-functions-and-azure-web-pubsub-service"></a>Tutorial: Erstellen einer serverlosen Echtzeit-Chat-App mit Azure Functions und dem Azure Web PubSub-Dienst
 
@@ -71,27 +71,26 @@ In diesem Tutorial lernen Sie Folgendes:
     func init --worker-runtime dotnet
     ```
 
-1. Installieren Sie das `Microsoft.Azure.WebJobs.Extensions.WebPubSub`-Funktionserweiterungspaket explizit.
+2. *Installieren Sie das `Microsoft.Azure.WebJobs.Extensions.WebPubSub`-Funktionserweiterungspaket.
 
-   1. Entfernen Sie den Abschnitt `extensionBundle` in `host.json`, um die Installation eines bestimmten Erweiterungspakets im nächsten Schritt zu ermöglichen. Sie können den JSON-Code für den Host auch so einfach wie unten gestalten.
+    > [!NOTE]
+    > Der Schritt ist optional, wenn [Erweiterungsbündel](/azure/azure-functions/functions-bindings-register#extension-bundles) unterstützt werden.
 
-      ```json
-      {
+   a. Entfernen Sie den Abschnitt `extensionBundle` in `host.json`, um die Installation eines bestimmten Erweiterungspakets im nächsten Schritt zu ermöglichen. Sie können den JSON-Code für den Host auch so einfach wie unten gestalten.
+    ```json
+    {
         "version": "2.0"
-      }
-      ```
+    }
+    ```
+   b. Führen Sie den Befehl zum Installieren eines bestimmten Funktionserweiterungspakets aus.
+    ```bash
+    func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0
+    ```
 
-   1. Führen Sie den Befehl zum Installieren eines bestimmten Funktionserweiterungspakets aus.
-
-      ```bash
-      func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
-      ```
-
-1. Erstellen Sie eine `index`-Funktion zum Lesen und Hosten einer statischen Webseite für Clients.
+3. Erstellen Sie eine `index`-Funktion zum Lesen und Hosten einer statischen Webseite für Clients.
     ```bash
     func new -n index -t HttpTrigger
     ```
-
    # <a name="javascript"></a>[JavaScript](#tab/javascript)
    - Aktualisieren Sie `index/function.json` und kopieren Sie den folgenden JSON-Code.
         ```json
@@ -118,18 +117,26 @@ In diesem Tutorial lernen Sie Folgendes:
    - Aktualisieren Sie `index/index.js` und kopieren Sie den folgenden Code.
         ```js
         var fs = require('fs');
+        var path = require('path');
+
         module.exports = function (context, req) {
-            fs.readFile('index.html', 'utf8', function (err, data) {
+            var index = 'index.html';
+            if (process.env["HOME"] != null)
+            {
+                index = path.join(process.env["HOME"], "site", "wwwroot", index);
+            }
+            context.log("index.html path: " + index);
+            fs.readFile(index, 'utf8', function (err, data) {
                 if (err) {
-                    console.log(err);
-                    context.done(err);
+                console.log(err);
+                context.done(err);
                 }
                 context.res = {
-                    status: 200,
-                    headers: {
-                        'Content-Type': 'text/html'
-                    },
-                    body: data
+                status: 200,
+                headers: {
+                    'Content-Type': 'text/html'
+                },
+                body: data
                 };
                 context.done();
             });
@@ -142,15 +149,21 @@ In diesem Tutorial lernen Sie Folgendes:
         [FunctionName("index")]
         public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequest req)
         {
+            string indexFile = "index.html";
+            if (Environment.GetEnvironmentVariable("HOME") != null)
+            {
+                indexFile = Path.Join(Environment.GetEnvironmentVariable("HOME"), "site", "wwwroot", indexFile);
+            }
+            log.LogInformation($"index.html path: {indexFile}.");
             return new ContentResult
             {
-                Content = File.ReadAllText("index.html"),
+                Content = File.ReadAllText(indexFile),
                 ContentType = "text/html",
             };
         }
         ```
 
-1. Erstellen Sie eine `negotiate`-Funktion, damit Clients die Dienstverbindungs-URL mit Zugriffstoken abrufen können.
+4. Erstellen Sie eine `negotiate`-Funktion, damit Clients die Dienstverbindungs-URL mit Zugriffstoken abrufen können.
     ```bash
     func new -n negotiate -t HttpTrigger
     ```
@@ -204,7 +217,7 @@ In diesem Tutorial lernen Sie Folgendes:
         }
         ```
 
-2. Erstellen Sie eine `message`-Funktion, um Clientnachrichten über den Dienst zu übertragen.
+5. Erstellen Sie eine `message`-Funktion, um Clientnachrichten über den Dienst zu übertragen.
    ```bash
    func new -n message -t HttpTrigger
    ```
@@ -220,15 +233,14 @@ In diesem Tutorial lernen Sie Folgendes:
                 {
                     "type": "webPubSubTrigger",
                     "direction": "in",
-                    "name": "message",
-                    "dataType": "binary",
+                    "name": "data",
                     "hub": "simplechat",
                     "eventName": "message",
                     "eventType": "user"
                 },
                 {
                     "type": "webPubSub",
-                    "name": "webPubSubEvent",
+                    "name": "actions",
                     "hub": "simplechat",
                     "direction": "out"
                 }
@@ -237,15 +249,15 @@ In diesem Tutorial lernen Sie Folgendes:
         ```
    - Aktualisieren Sie `message/index.js` und kopieren Sie den folgenden Code.
         ```js
-        module.exports = async function (context, message) {
-            context.bindings.webPubSubEvent = {
-                "operationKind": "sendToAll",
-                "message": `[${context.bindingData.connectionContext.userId}] ${message}`,
+        module.exports = async function (context, data) {
+            context.bindings.actions = {
+                "actionName": "sendToAll",
+                "data": `[${context.bindingData.request.connectionContext.userId}] ${data}`,
                 "dataType": context.bindingData.dataType
             };
-            // MessageResponse directly return to caller
+            // UserEventResponse directly return to caller
             var response = { 
-                "message": '[SYSTEM] ack.',
+                "data": '[SYSTEM] ack.',
                 "dataType" : "text"
             };
             return response;
@@ -256,26 +268,25 @@ In diesem Tutorial lernen Sie Folgendes:
    - Aktualisieren Sie `message.cs` und ersetzen Sie die `Run`-Funktion durch den folgenden Code.
         ```c#
         [FunctionName("message")]
-        public static async Task<MessageResponse> Run(
-            [WebPubSubTrigger(WebPubSubEventType.User, "message")] ConnectionContext context,
-            BinaryData message,
-            MessageDataType dataType,
-            [WebPubSub(Hub = "simplechat")] IAsyncCollector<WebPubSubOperation> operations)
+        public static async Task<UserEventResponse> Run(
+            [WebPubSubTrigger(WebPubSubEventType.User, "message")] UserEventRequest request,
+            BinaryData data,
+            WebPubSubDataType dataType,
+            [WebPubSub(Hub = "simplechat")] IAsyncCollector<WebPubSubAction> actions)
         {
-            await operations.AddAsync(new SendToAll
+            await actions.AddAsync(WebPubSubAction.CreateSendToAllAction(
+                BinaryData.FromString($"[{request.ConnectionContext.UserId}] {message.ToString()}"),
+                dataType
+            );
+            return new UserEventResponse
             {
-                Message = BinaryData.FromString($"[{context.UserId}] {message.ToString()}"),
-                DataType = dataType
-            });
-            return new MessageResponse
-            {
-                Message = BinaryData.FromString("[SYSTEM] ack"),
-                DataType = MessageDataType.Text
+                Data = BinaryData.FromString("[SYSTEM] ack"),
+                DataType = WebPubSubDataType.Text
             };
         }
         ```
 
-3. Fügen Sie die Client-Einzelseite `index.html` im Stammordner des Projekts hinzu, und kopieren Sie den unten gezeigten Inhalt.
+6. Fügen Sie die Client-Einzelseite `index.html` im Stammordner des Projekts hinzu, und kopieren Sie den unten gezeigten Inhalt.
     ```html
     <html>
         <body>
@@ -389,7 +400,7 @@ Use the following commands to create these items.
 
 ## <a name="configure-the-web-pubsub-service-event-handler"></a>Konfigurieren des Web PubSub-Diensts `Event Handler`
 
-In diesem Beispiel verwenden wir `WebPubSubTrigger`, um auf Anforderungen des Diensts für vorgelagerte Nachrichten zu lauschen. Web PubSub muss also die Endpunktinformationen der Funktion kennen, um die Clientanforderungen senden zu können. Die Azure Functions-App benötigt zudem einen Systemschlüssel für Sicherheit bei erweiterungsspezifischen Webhookmethoden. Nachdem wir im vorherigen Schritt die Funktions-App mit `message`-Funktionen bereitgestellt haben, können wir den Systemschlüssel abrufen.
+In diesem Beispiel verwenden Sie `WebPubSubTrigger`, um auf Anforderungen des Diensts für Upstreams zu lauschen. Web PubSub muss also die Endpunktinformationen der Funktion kennen, um die Clientanforderungen senden zu können. Die Azure Functions-App benötigt zudem einen Systemschlüssel für Sicherheit bei erweiterungsspezifischen Webhookmethoden. Nachdem wir im vorherigen Schritt die Funktions-App mit `message`-Funktionen bereitgestellt haben, können wir den Systemschlüssel abrufen.
 
 Wechseln Sie zum **Azure-Portal**. Wählen Sie Ihre Funktions-App-Ressource und dann **App-Schlüssel** -> **Systemschlüssel** ->  **`webpubsub_extension`** aus. Kopieren Sie den Wert von `<APP_KEY>`.
 

@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d472587800c536f6bebe7e0cf41a2b6fdac2606
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b624194285dd5ba7e0a54b8a15d3885a845d64dc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131451538"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283238"
 ---
 # <a name="what-is-identity-protection"></a>Was ist Identity Protection?
 
@@ -79,7 +79,7 @@ Microsoft macht zwar keine spezifischen Angaben zur Berechnung von Risiken, mit 
 
 Daten aus Identity Protection können zur Archivierung sowie für weitere Untersuchungen und Korrelationsschritte in andere Tools exportiert werden. Dank der Microsoft Graph-basierten APIs können Organisationen diese Daten zur weiteren Verarbeitung in einem Tool (beispielsweise SIEM) sammeln. Der Zugriff auf die Identity Protection-API wird im Artikel [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](howto-identity-protection-graph-api.md) erläutert.
 
-Informationen zur Integration von Identity Protection-Informationen in Azure Sentinel finden Sie im Artikel [Verknüpfen von Daten aus Azure AD Identity Protection](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection).
+Informationen zur Integration von Identity Protection-Informationen in Microsoft Sentinel finden Sie im Artikel [Verknüpfen von Daten aus Azure AD Identity Protection](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection).
 
 Darüber hinaus können Organisationen Daten für längere Zeiträume speichern, indem sie die Diagnoseeinstellungen in Azure AD so ändern, dass RiskyUsers- und UserRiskEvents-Daten an einen Log Analytics-Arbeitsbereich gesendet, Daten in einem Speicherkonto archiviert, Daten an einen Event Hub gestreamt oder Daten an eine Partnerlösung gesendet werden. Ausführliche Informationen dazu finden Sie im Artikel [Anleitung: Exportieren von Risikodaten](howto-export-risk-data.md).
 

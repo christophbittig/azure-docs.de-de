@@ -13,12 +13,12 @@ metadata:
   ms.reviewer: mal
   ms.custom: it-pro, seo-update-azuread-jan
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: dd15c9412cc9f7b0bed2ac4e0f622c827aaafe17
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: 661d38755cdaeea830b025fa2747b45d43b4c5d2
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130227650"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132490153"
 title: Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 summary: >
   Diese häufig gestellten Fragen (FAQs) zur Azure AD B2B-Zusammenarbeit (Azure Active Directory Business-to-Business) werden regelmäßig mit neuen Themen aktualisiert.
@@ -129,4 +129,8 @@ sections:
       Welche Lizenzen sind für die Verwendung von Azure AD B2B erforderlich?
     answer: >
       Informationen darüber, welche Lizenzen Ihre Organisation für die Verwendung von Azure AD B2B benötigt, finden Sie unter [Preise für externe Identitäten](external-identities-pricing.md).
+  - question: >
+      Können sich Benutzer der B2B-Zusammenarbeit mit ihrer nicht als UPN registrierten E-Mail-Adresse anmelden?
+    answer: >
+      Ja. Weitere Informationen zu E-Mails als alternative Anmelde-ID für die B2B-Zusammenarbeit finden Sie unter [Anmeldung bei Azure AD mit einer E-Mail-Adresse als alternative Anmelde-ID (Vorschau)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-use-email-signin#b2b-guest-user-sign-in-with-an-email-address).
 additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n[Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)\n"

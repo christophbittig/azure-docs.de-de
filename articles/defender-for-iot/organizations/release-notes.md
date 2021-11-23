@@ -1,16 +1,16 @@
 ---
-title: Neuerungen in Azure Defender für IoT
+title: Neuerungen in Microsoft Defender für IoT
 description: In diesem Artikel wird beschrieben, welche Neuerungen das aktuelle Release von Defender für IoT enthält.
 ms.topic: overview
-ms.date: 11/07/2021
-ms.openlocfilehash: ca588aed8a461e48cf85a01e97d5f8ddd4a42e24
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.date: 11/16/2021
+ms.openlocfilehash: ed4c7ab63c2b1b4b0a1efdade213fcd141da27c2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131988273"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550362"
 ---
-# <a name="whats-new-in-azure-defender-for-iot"></a>Neuerungen in Azure Defender für IoT  
+# <a name="whats-new-in-microsoft-defender-for-iot"></a>Neuerungen in Microsoft Defender für IoT
 
 [!INCLUDE [Banner for top of topics](../includes/banner.md)]
 
@@ -18,13 +18,13 @@ In diesem Artikel sind neue und verbesserte Features von Defender für IoT aufge
 
 Die genannten Features befinden sich in der Vorschauphase. Die [ergänzenden Bestimmungen für Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
-## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Versionsverwaltung und Unterstützung für Azure Defender für IoT
+## <a name="versioning-and-support-for-defender-for-iot"></a>Versionsverwaltung und Unterstützung für Defender für IoT
 
-Nachfolgend sind die Unterstützung, die Breaking Change-Richtlinien für Defender für IoT sowie die derzeit verfügbaren Versionen von Azure Defender für IoT aufgeführt.
+Nachfolgend sind die Unterstützung, die Breaking Change-Richtlinien für Defender für IoT sowie die derzeit verfügbaren Versionen von Defender für IoT aufgeführt.
 
 ### <a name="servicing-information-and-timelines"></a>Wartungsinformationen und Zeitachsen
 
-Microsoft plant, mindestens vierteljährlich Updates für Azure Defender für IoT zu veröffentlichen. Jede allgemein verfügbare Version des Sensors mit Azure Defender für IoT und der lokalen Verwaltungskonsole wird nach der Veröffentlichung bis zu neun Monate lang unterstützt. Korrekturen und neue Funktionen werden auf die aktuelle allgemein verfügbare Version angewendet, die derzeit unterstützt wird. Sie werden nicht auf ältere allgemein verfügbare Versionen angewendet.
+Microsoft plant, mindestens vierteljährlich Updates für Defender für IoT zu veröffentlichen. Jede allgemein verfügbare Version des Sensors mit Defender für IoT und der lokalen Verwaltungskonsole wird nach der Veröffentlichung bis zu neun Monate lang unterstützt. Korrekturen und neue Funktionen werden auf die aktuelle allgemein verfügbare Version angewendet, die derzeit unterstützt wird. Sie werden nicht auf ältere allgemein verfügbare Versionen angewendet.
 
 ### <a name="versions-and-support-dates"></a>Versionen und Supportdaten
 
@@ -32,7 +32,18 @@ Microsoft plant, mindestens vierteljährlich Updates für Azure Defender für Io
 |--|--|--|
 | 10.0 | 01/2021 | 10/2021 |
 | 10.3 | 04/2021 | 01/2022 |
-| 10.5.2 | 11/2021 | 07/2022 |
+| 10.5.2 | 10/2021 | 07/2022 |
+| 10.5.3 | 11/2021 | 08/2022 |
+
+## <a name="november-2021"></a>November 2021
+
+Die folgenden Featureverbesserungen werden mit der Version 10.5.3 von Microsoft Defender für IoT verfügbar gemacht:
+
+- Die Sensoren löschen jetzt automatisch archivierte Warnungen, die über 90 Tage alt sind.
+
+- Basierend auf Kundenfeedback wurden Verbesserungen an Warnungsexporten vorgenommen.
+
+- Leistungs- und Netzwerkdatenverkehrsanalyse wurden verbessert.
 
 ## <a name="october-2021"></a>Oktober 2021
 
@@ -46,11 +57,12 @@ Die folgenden Featureverbesserungen werden mit der Version 10.5.2 von Azure Def
 
 - [Webhook erweitert](#webhook-extended)
 
-- [Unicode-Unterstützung für Zertifikatpassphrasen](#unicode-support-for-certificate-passphrases) 
+- [Unicode-Unterstützung für Zertifikatpassphrasen](#unicode-support-for-certificate-passphrases)
 
 ### <a name="plc-operating-mode-detections-public-preview"></a>SPS-Betriebsmoduserkennungen (Public Preview)
 
 Benutzer können jetzt Zustände, Änderungen und Risiken des SPS-Betriebsmodus anzeigen. Der SPS-Betriebsmodus besteht aus dem logischen SPS-Ausführungszustand und dem physischen Schlüsselzustand, sofern ein physischer Schlüsselschalter für die SPS vorhanden ist.
+
 Diese neue Funktion trägt durch die Erkennung *unsicherer* SPS zur Verbesserung der Sicherheit und somit zur Verhinderung von Angriffen wie etwa SPS-Programmdownloads bei. Der Triton-Angriff von 2017 auf ein petrochemisches Werk zeigt, welche Auswirkungen solche Risiken haben können.
 Durch diese Information erhalten Betriebstechniker außerdem einen wichtigen Einblick in den Betriebsmodus von Unternehmens-SPS.
 
