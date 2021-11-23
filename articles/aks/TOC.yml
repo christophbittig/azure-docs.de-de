@@ -4,6 +4,10 @@
   items:
     - name: Informationen zu AKS
       href: intro-kubernetes.md
+    - name: Kontingente und regionale Grenzwerte
+      href: quotas-skus-regions.md
+    - name: Unterstützte Kubernetes-Version
+      href: supported-kubernetes-versions.md
     - name: Lösungsarchitekturen
       href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json?WT.mc_id=AKSDOCSTOC
 - name: Schnellstarts
@@ -48,10 +52,8 @@
       href: tutorial-kubernetes-upgrade-cluster.md
 - name: Konzepte
   items:
-    - name: Cluster und Workloads
+    - name: Kernkonzepte
       href: concepts-clusters-workloads.md
-    - name: Zugriff und Identität
-      href: concepts-identity.md
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
@@ -61,6 +63,10 @@
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: Sicherheitshärtung im Hostbetriebssystem
+          href: security-hardened-vm-host-image.md
+    - name: Zugriff und Identität
+      href: concepts-identity.md
     - name: Netzwerk
       href: concepts-network.md
     - name: Storage
@@ -71,6 +77,8 @@
       href: node-auto-repair.md
     - name: Dienstmeshes
       href: servicemesh-about.md
+    - name: Nachhaltige Softwareentwicklung
+      href: concepts-sustainable-software-engineering.md
     - name: Bewährte Methoden
       items:
         - name: Übersicht
@@ -104,8 +112,6 @@
               href: developer-best-practices-resource-management.md
             - name: Podsicherheit
               href: developer-best-practices-pod-security.md
-    - name: Kontingente und regionale Grenzwerte
-      href: quotas-skus-regions.md
     - name: Migrieren zu ARM
       items:
         - name: Planen und Ausführen einer Migration
@@ -134,16 +140,6 @@
         - name: Containerisieren und Migrieren von ASP.NET-Apps
           href: ../migrate/tutorial-app-containerization-aspnet-kubernetes.md
           maintainContext: false
-    - name: Unterstützte Kubernetes-Version
-      href: supported-kubernetes-versions.md
-    - name: Cloud Controller Manager (Vorschau)
-      href: out-of-tree.md
-    - name: Sicherheitshärtung im Hostbetriebssystem
-      href: security-hardened-vm-host-image.md
-    - name: Übersicht über die Azure Kubernetes Service-Diagnose
-      href: concepts-diagnostics.md
-    - name: Nachhaltige Softwareentwicklung
-      href: concepts-sustainable-software-engineering.md
 - name: Anleitungen
   items:
     - name: Clustervorgänge
@@ -156,6 +152,8 @@
           href: start-stop-cluster.md
         - name: Verwenden der geplanten Wartung (Vorschau)
           href: planned-maintenance.md
+        - name: Cloud Controller Manager (Vorschau)
+          href: out-of-tree.md
         - name: Aktualisieren eines AKS-Clusters
           href: upgrade-cluster.md
         - name: Verwenden einer Betriebszeit-SLA
@@ -207,79 +205,6 @@
           href: kubernetes-portal.md
         - name: Verwenden des Kubernetes-Dashboards
           href: kubernetes-dashboard.md
-    - name: Konfigurieren von Datenvolumes
-      items:
-        - name: 'Azure Disk: Dynamisch'
-          href: azure-disks-dynamic-pv.md
-        - name: 'Azure Disk: Statisch'
-          href: azure-disk-volume.md
-        - name: 'Azure Files: Dynamisch'
-          href: azure-files-dynamic-pv.md
-        - name: 'Azure Files: Statisch'
-          href: azure-files-volume.md
-        - name: Azure HPC Cache
-          href: azure-hpc-cache.md
-        - name: 'NFS-Server: statisch'
-          href: azure-nfs-volume.md
-        - name: Azure NetApp Files
-          href: azure-netapp-files.md
-        - name: Verwenden von Azure Ultra Disks
-          href: use-ultra-disks.md
-        - name: CSI-Speichertreiber
-          items:
-            - name: Aktivieren von CSI-Speichertreibern
-              href: csi-storage-drivers.md
-            - name: Azure Disk-CSI-Treiber
-              href: azure-disk-csi.md
-            - name: Azure Files-CSI-Treiber
-              href: azure-files-csi.md
-    - name: Konfigurieren der Netzwerkeinstellungen
-      items:
-        - name: Erstellen oder Verwenden eines vorhandenen virtuellen Netzwerks
-          items:
-            - name: Verwenden von kubenet
-              href: configure-kubenet.md
-            - name: Verwenden von Azure CNI
-              href: configure-azure-cni.md
-        - name: Erstellen eines internen Load Balancers
-          href: internal-lb.md
-        - name: Verwenden einer Load Balancer Standard-Instanz
-          href: load-balancer-standard.md
-        - name: Verwenden einer statischen IP-Adresse und einer DNS-Bezeichnung
-          href: static-ip.md
-        - name: Verwenden eines HTTP-Proxys (Vorschau)
-          href: http-proxy.md
-        - name: Eingehende Daten
-          items:
-            - name: Erstellen eines einfachen Controllers
-              href: ingress-basic.md
-            - name: Verwenden des HTTP-Anwendungsroutings
-              href: http-application-routing.md
-            - name: Verwenden des internen Netzwerks
-              href: ingress-internal-ip.md
-            - name: Aktivieren des AGIC-Add-Ons für einen vorhandenen AKS-Cluster
-              href: ../application-gateway/tutorial-ingress-controller-add-on-existing.md
-              maintainContext: true
-            - name: Verwenden von TLS mit eigenen Zertifikaten
-              href: ingress-own-tls.md
-            - name: Verwenden von TLS mit Let's Encrypt
-              items:
-                - name: Verwenden einer dynamischen öffentlichen IP-Adresse
-                  href: ingress-tls.md
-                - name: Verwenden einer statischen öffentlichen IP-Adresse
-                  href: ingress-static-ip.md
-        - name: Ausgehende Daten
-          items:
-            - name: Beschränken und Steuern des ausgehenden Clusterdatenverkehrs
-              href: limit-egress-traffic.md
-            - name: Verwenden einer benutzerdefinierten Route für ausgehenden Datenverkehr
-              href: egress-outboundtype.md
-            - name: Verwenden eines Lastenausgleichs im Basic-Tarif und einer statischen IP-Adresse
-              href: egress.md
-            - name: Verwaltete NAT Gateway-Instanz (Vorschau)
-              href: nat-gateway.md
-        - name: Anpassen von CoreDNS
-          href: coredns-custom.md
     - name: Sicherheit und Authentifizierung
       items:
         - name: Erstellen eines Dienstprinzipals
@@ -333,6 +258,79 @@
               href: csi-secrets-store-nginx-tls.md
             - name: Problembehandlung
               href: csi-secrets-store-troubleshooting.md
+    - name: Konfigurieren der Netzwerkeinstellungen
+      items:
+        - name: Erstellen oder Verwenden eines vorhandenen virtuellen Netzwerks
+          items:
+            - name: Verwenden von kubenet
+              href: configure-kubenet.md
+            - name: Verwenden von Azure CNI
+              href: configure-azure-cni.md
+        - name: Erstellen eines internen Load Balancers
+          href: internal-lb.md
+        - name: Verwenden einer Load Balancer Standard-Instanz
+          href: load-balancer-standard.md
+        - name: Verwenden einer statischen IP-Adresse und einer DNS-Bezeichnung
+          href: static-ip.md
+        - name: Verwenden eines HTTP-Proxys (Vorschau)
+          href: http-proxy.md
+        - name: Eingehende Daten
+          items:
+            - name: Erstellen eines einfachen Controllers
+              href: ingress-basic.md
+            - name: Verwenden des HTTP-Anwendungsroutings
+              href: http-application-routing.md
+            - name: Verwenden des internen Netzwerks
+              href: ingress-internal-ip.md
+            - name: Aktivieren des AGIC-Add-Ons für einen vorhandenen AKS-Cluster
+              href: ../application-gateway/tutorial-ingress-controller-add-on-existing.md
+              maintainContext: true
+            - name: Verwenden von TLS mit eigenen Zertifikaten
+              href: ingress-own-tls.md
+            - name: Verwenden von TLS mit Let's Encrypt
+              items:
+                - name: Verwenden einer dynamischen öffentlichen IP-Adresse
+                  href: ingress-tls.md
+                - name: Verwenden einer statischen öffentlichen IP-Adresse
+                  href: ingress-static-ip.md
+        - name: Ausgehende Daten
+          items:
+            - name: Beschränken und Steuern des ausgehenden Clusterdatenverkehrs
+              href: limit-egress-traffic.md
+            - name: Verwenden einer benutzerdefinierten Route für ausgehenden Datenverkehr
+              href: egress-outboundtype.md
+            - name: Verwenden eines Lastenausgleichs im Basic-Tarif und einer statischen IP-Adresse
+              href: egress.md
+            - name: Verwaltete NAT Gateway-Instanz (Vorschau)
+              href: nat-gateway.md
+        - name: Anpassen von CoreDNS
+          href: coredns-custom.md
+    - name: Konfigurieren von Datenvolumes
+      items:
+        - name: 'Azure Disk: Dynamisch'
+          href: azure-disks-dynamic-pv.md
+        - name: 'Azure Disk: Statisch'
+          href: azure-disk-volume.md
+        - name: 'Azure Files: Dynamisch'
+          href: azure-files-dynamic-pv.md
+        - name: 'Azure Files: Statisch'
+          href: azure-files-volume.md
+        - name: Azure HPC Cache
+          href: azure-hpc-cache.md
+        - name: 'NFS-Server: statisch'
+          href: azure-nfs-volume.md
+        - name: Azure NetApp Files
+          href: azure-netapp-files.md
+        - name: Verwenden von Azure Ultra Disks
+          href: use-ultra-disks.md
+        - name: CSI-Speichertreiber
+          items:
+            - name: Aktivieren von CSI-Speichertreibern
+              href: csi-storage-drivers.md
+            - name: Azure Disk-CSI-Treiber
+              href: azure-disk-csi.md
+            - name: Azure Files-CSI-Treiber
+              href: azure-files-csi.md
     - name: Überwachung und Protokollierung
       items:
         - name: Überwachen von AKS
@@ -438,6 +436,8 @@
           href: troubleshoot-linux.md
         - name: Suchen nach Resource Health-Ereignissen (Vorschau)
           href: aks-resource-health.md
+        - name: Azure Kubernetes Service-Diagnose (Vorschau)
+          href: concepts-diagnostics.md
 - name: Verweis
   items:
     - name: Azure CLI
