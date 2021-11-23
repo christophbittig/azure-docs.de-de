@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.collection: linux
 ms.date: 06/12/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f5fbea307653b8ee603c799a442f0e4d0a132be7
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: fcecc23d99ddc11169200ff903767be6c8c62b9b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300397"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486177"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-Erweiterung für Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -22,6 +22,8 @@ Desired State Configuration (DSC) ist eine Verwaltungsplattform, die Ihnen das V
 
 > [!NOTE]
 > Die DSC-Erweiterung für Linux und die [Log Analytics-VM-Erweiterung für Linux](./oms-linux.md) stehen zurzeit im Konflikt miteinander, und parallele Konfigurationen der beiden werden nicht unterstützt. Verwenden Sie nicht beide Lösungen zusammen auf der gleichen VM.
+>
+> Bevor Sie die DSC-Erweiterung aktivieren, sollten Sie wissen, dass jetzt eine neuere Version von DSC als Vorschauversion verfügbar ist, die durch das Feature [Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md) von Azure Policy verwaltet wird. Das Gastkonfigurationsfeature kombiniert Funktionen des DSC-Erweiterungshandlers (Desired State Configuration) mit Azure Automation State Configuration und den am häufigsten angeforderten Funktionen aus Kundenfeedback. Die Gastkonfiguration umfasst auch die Unterstützung von Hybridcomputern über [Arc-fähige Server](../../azure-arc/servers/overview.md).
 
 Die DSCForLinux-Erweiterung wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den OMI- und DSC-Agent auf virtuellen Azure-Computern. Die DSC-Erweiterung kann auch die folgenden Aktionen ausführen:
 

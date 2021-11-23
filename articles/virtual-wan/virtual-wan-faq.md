@@ -6,12 +6,12 @@ ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 65b39c7cae553663cc4b482ff98a4be3c2e03876
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: e28d5c9358077e072c31026bdc164a9b2037a40a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132026043"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492472"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN – Häufig gestellte Fragen
 
@@ -247,6 +247,10 @@ Ein virtueller Hub kann eine erlernte Standardroute an eine Verbindung vom Typ �
 
 Der Ursprung der Standardroute liegt nicht auf dem Virtual WAN-Hub. Sie wird weitergegeben, wenn sie dem Virtual WAN-Hub bereits bekannt ist, weil darin eine Firewall bereitgestellt wurde, oder wenn für eine andere verbundene Site die Tunnelerzwingung aktiviert ist. Eine Standardroute wird nicht zwischen Hubs weitergegeben.
 
+### <a name="is-it-possible-to-create-multiple-virtual-wan-hubs-in-the-same-region"></a>Ist es möglich, mehrere Virtual WAN-Hubs in derselben Region zu erstellen?
+Ja. Kunden können jetzt mehrere Hubs in derselben Region für dasselbe Azure Virtual WAN erstellen. 
+
+
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Wie wählt der virtuelle Hub in einer Virtual WAN-Instanz den besten Pfad für eine Route von mehreren Hubs aus?
 
 Wenn ein virtueller Hub von mehreren Remotehubs die gleichen Routeninformationen erhält, wird folgende Entscheidungsreihenfolge verwendet:
@@ -321,7 +325,7 @@ Ja. Eine Liste mit Lösungen von Anbietern verwalteter Dienste, die über Azure 
 
 Azure Route Server verfügt über einen BGP-Peeringdienst (Border Gateway Protocol), der von virtuellen Netzwerkgeräten (Network Virtual Appliance, NVA) genutzt werden kann, um Routen vom Routenserver in einem DIY-Hub-VNET zu erlernen. Beim Virtual WAN-Routing können verschiedene Funktionen genutzt werden, z. B. Transitrouting von VNET zu VNET, benutzerdefiniertes Routing, Zuordnung und Verteilung von benutzerdefinierten Routen und ein vollständig vermaschter Hubdienst ohne Benutzereingriff sowie Konnektivitätsdienste über ExpressRoute, Site-VPN, P2S-VPN für Remotebenutzer bzw. umfangreiche Anwendungen und die Funktionen eines geschützten Hubs (Azure Firewall). Wenn Sie ein BGP-Peering zwischen Ihrem virtuellen Netzwerkgerät und Azure Route Server einrichten, können Sie IP-Adressen für Ihr virtuelles Netzwerk über Ihr virtuelles Netzwerkgerät ankündigen. Für alle erweiterten Routingfunktionen, z. B. Transitrouting, benutzerdefiniertes Routing usw., können Sie das Virtual WAN-Routing nutzen.
 
-### <a name="if-i-am-using-a-third-party-security-provider-zscalar-iboss-or-checkpoint-to-secure-my-internet-traffic-why-dont-i-see-the-vpn-site-associated-to-the-third-party-security-provider-in-the-azure-portal"></a>Wenn ich einen Drittanbieter für die Sicherheit (ZScalar, iBoss oder Checkpoint) verwende, um meinen Datenverkehr zu sichern, warum wird dann im Azure-Portal nicht die VPN-Site angezeigt, die dem Drittanbieter für die Sicherheit zugeordnet ist?
+### <a name="if-i-am-using-a-third-party-security-provider-zscaler-iboss-or-checkpoint-to-secure-my-internet-traffic-why-dont-i-see-the-vpn-site-associated-to-the-third-party-security-provider-in-the-azure-portal"></a>Wenn ich einen Drittanbieter für Sicherheit (Zscaler, iBoss oder Checkpoint) verwende, um meinen Datenverkehr zu sichern, warum wird dann im Azure-Portal nicht die VPN-Site angezeigt, die dem Drittanbieter für Sicherheit zugeordnet ist?
 
 Wenn Sie sich für die Bereitstellung eines Sicherheitspartneranbieters entscheiden, um den Internetzugriff Ihrer Benutzer zu schützen, erstellt der Drittanbieter für die Sicherheit in Ihrem Namen einen VPN-Standort. Da der Drittanbieter für die Sicherheit automatisch vom Anbieter erstellt wird und kein vom Benutzer erstellter VPN-Standort ist, wird dieser VPN-Standort nicht im Azure-Portal angezeigt.
 

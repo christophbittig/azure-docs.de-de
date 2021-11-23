@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 0bdd2c517a6bfef059ad89d7c3cbf1a825aba526
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: 35738fe541d237b6bf271ea2892a67049f820fbf
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131866778"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402312"
 ---
 # <a name="dv5-and-dsv5-series"></a>Dv5- und Dsv5-Serie
 
@@ -29,7 +29,7 @@ Die virtuellen Computer der Dv5- und Dsv5-Serie werden auf dem Prozessor Intel&r
 
 VMs der Dv5-Serie werden auf dem Prozessor Intel® Xeon® Platinum 8370C (Ice Lake) der 3. Generation ausgeführt und erreichen eine Turbotaktgeschwindigkeit aller Kerne von bis zu 3,5 GHz.  Diese VMs bieten bis zu 96 vCPU und 384 GiB RAM.  VMs der Dv5-Serie bieten ein besseres Wertversprechen für die meisten allgemeinen Workloads im Vergleich zur vorherigen Generation (z. B. höhere Skalierbarkeit und eine aktualisierte CPU-Klasse).
 
-VMs der Dv5-Serie verfügen nicht über temporären Speicher, wodurch der Preis für den Einstieg gesenkt wird.  An diese VMs können Sie SSD Standard- und HDD Standard-Datenträger anfügen. Wählen Sie virtuelle Computer der Dsv5-Serie aus, um SSD Premium- oder Disk Ultra-Speicher zu verwenden. Datenträgerspeicher wird separat von VMs abgerechnet. [Weitere Informationen finden Sie unter den Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
+VMs der Dv5-Serie verfügen nicht über temporären Speicher, wodurch der Preis für den Einstieg gesenkt wird.  An diese VMs können Sie SSD Standard- und HDD Standard-Datenträger anfügen. Wählen Sie virtuelle Computer der Dsv5-Serie aus, um SSD Premium- oder Disk Ultra-Speicher zu verwenden. Datenträgerspeicher wird separat von VMs abgerechnet. [Weitere Informationen zu Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 [Storage Premium](premium-storage-performance.md): Nicht unterstützt<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
@@ -38,6 +38,7 @@ VMs der Dv5-Serie verfügen nicht über temporären Speicher, wodurch der Preis 
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Erforderlich <br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs|Max. Netzwerkbandbreite (MBit/s) |
@@ -58,7 +59,7 @@ VMs der Dv5-Serie verfügen nicht über temporären Speicher, wodurch der Preis 
 
 VMs der Dsv5-Serie werden auf dem Prozessor Intel® Xeon® Platinum 8370C (Ice Lake) der 3. Generation ausgeführt und erreichen eine Turbotaktgeschwindigkeit aller Kerne von bis zu 3,5 GHz.  Diese VMs bieten bis zu 96 vCPU und 384 GiB RAM.  VMs der Dsv5-Serie bieten ein besseres Wertversprechen für die meisten allgemeinen Workloads im Vergleich zur vorherigen Generation (z. B. höhere Skalierbarkeit und eine aktualisierte CPU-Klasse).
 
-VMs der Dsv5-Serie verfügen nicht über temporären Speicher, wodurch der Preis für den Einstieg gesenkt wird.  Sie können an diese VMs SSD Standard-, HDD Standard- und SSDs Premium-Datenträger anfügen. Sie können auch Disk Ultra-Speicher basierend auf der regionalen Verfügbarkeit anfügen. Datenträgerspeicher wird separat von VMs abgerechnet. [Weitere Informationen finden Sie unter den Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
+VMs der Dsv5-Serie verfügen nicht über temporären Speicher, wodurch der Preis für den Einstieg gesenkt wird.  Sie können an diese VMs SSD Standard-, HDD Standard- und SSDs Premium-Datenträger anfügen. Sie können auch Disk Ultra-Speicher basierend auf der regionalen Verfügbarkeit anfügen. Der Datenträgerspeicher wird separat von den virtuellen Computern in Rechnung gestellt. [Weitere Informationen finden Sie bei den Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 [Storage Premium](premium-storage-performance.md): Unterstützt<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
@@ -67,18 +68,19 @@ VMs der Dsv5-Serie verfügen nicht über temporären Speicher, wodurch der Preis
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Erforderlich <br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximaler Burst-Datenträgerdurchsatz ohne Cache: (IOPS/MB/s)<sup>3</sup> | Maximale Anzahl NICs | Max. Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|
-| Standard_D2s_v5<sup>1,2</sup> | 2  | 8   | Nur Remotespeicher | 4  | 3\.750/85    | 100.00/1.200 | 2 | 12500 |
-| Standard_D4s_v5               | 4  | 16  | Nur Remotespeicher | 8  | 6\.400/145   | 20.000/1.200 | 2 | 12500 |
-| Standard_D8s_v5               | 8  | 32  | Nur Remotespeicher | 16 | 12.800/290  | 20.000/1.200 | 4 | 12500 |
-| Standard_D16s_v5              | 16 | 64  | Nur Remotespeicher | 32 | 25.600/600  | 40.000/1.200 | 8 | 12500 |
-| Standard_D32s_v5              | 32 | 128 | Nur Remotespeicher | 32 | 51.200/865  | 80.000/2.000 | 8 | 16000 |
-| Standard_D48s_v5              | 48 | 192 | Nur Remotespeicher | 32 | 76.800/1.315 | 80.000/3.000 | 8 | 24.000 |
-| Standard_D64s_v5              | 64 | 256 | Nur Remotespeicher | 32 | 80.000/1.735 | 80.000/3.000 | 8 | 30.000 |
-| Standard_D96s_v5              | 96 | 384 | Nur Remotespeicher | 32 | 80.000/2.600 | 80.000/4.000 | 8 | 35000 |
+| Standard_D2s_v5<sup>1,2</sup> | 2  | 8   | Nur Remotespeicher | 4  | 3750/85    | 10000/1200 | 2 | 12500 |
+| Standard_D4s_v5               | 4  | 16  | Nur Remotespeicher | 8  | 6400/145   | 20000/1200 | 2 | 12500 |
+| Standard_D8s_v5               | 8  | 32  | Nur Remotespeicher | 16 | 12800/290  | 20000/1200 | 4 | 12500 |
+| Standard_D16s_v5              | 16 | 64  | Nur Remotespeicher | 32 | 25600/600  | 40000/1200 | 8 | 12500 |
+| Standard_D32s_v5              | 32 | 128 | Nur Remotespeicher | 32 | 51200/865  | 80.000/2.000 | 8 | 16000 |
+| Standard_D48s_v5              | 48 | 192 | Nur Remotespeicher | 32 | 76800/1315 | 80000/3000 | 8 | 24.000 |
+| Standard_D64s_v5              | 64 | 256 | Nur Remotespeicher | 32 | 80000/1735 | 80000/3000 | 8 | 30.000 |
+| Standard_D96s_v5              | 96 | 384 | Nur Remotespeicher | 32 | 80000/2600 | 80000/4000 | 8 | 35000 |
 
 <sup>1</sup> Beschleunigter Netzwerkbetrieb ist auf allen Dsv5-VMs erforderlich und standardmäßig aktiviert.<br>
 <sup>2</sup> Beschleunigter Netzwerkbetrieb kann auf zwei Netzwerkkarten angewendet werden.<br>

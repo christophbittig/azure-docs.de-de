@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: ba964b6bc48eaa1a5c0452709d63cf968a14c888
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0ac7719d108ab888b5573d03a8c45d545bcb135d
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131459708"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398666"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4- und Ddsv4-Serie
 
@@ -38,6 +38,7 @@ Die neuen Ddv4-VM-Größen umfassen schnellen, größeren lokalen SSD-Speicher (
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br> 
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler temporärer Speicherdurchsatz: IOPS/MB/s<sup>*</sup> | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
@@ -73,6 +74,7 @@ Die neuen Ddsv4-VM-Größen umfassen schnellen, größeren lokalen SSD-Speicher 
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br> 
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler temporärer Speicherdurchsatz: IOPS/MB/s<sup>*</sup> | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s |  Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |

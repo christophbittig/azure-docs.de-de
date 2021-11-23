@@ -8,18 +8,21 @@ author: bobbytreed
 ms.author: robreed
 ms.collection: windows
 ms.date: 03/26/2018
-ms.openlocfilehash: a782d94b40be7fb07009f46cc69883cc529d91c6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9bd77230e742f4874fde81fa0ab1e4c1a83ba6d5
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081512"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488789"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-Erweiterung
 
-## <a name="overview"></a>Überblick
+## <a name="overview"></a>Übersicht
 
 Die PowerShell-DSC-Erweiterung für Windows wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung lädt eine PowerShell-DSC-Konfiguration auf einer Azure-VM hoch und wendet diese an. Die DSC-Erweiterung richtet einen Aufruf an PowerShell DSC, um die empfangene DSC-Konfiguration auf der VM in Kraft zu setzen. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die DSC-VM-Erweiterung für Windows.
+
+> [!NOTE]
+> Bevor Sie die DSC-Erweiterung aktivieren, sollten Sie wissen, dass jetzt eine neuere Version von DSC als Vorschauversion verfügbar ist, die durch das Feature [Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md) von Azure Policy verwaltet wird. Das Gastkonfigurationsfeature kombiniert Funktionen des DSC-Erweiterungshandlers (Desired State Configuration) mit Azure Automation State Configuration und den am häufigsten angeforderten Funktionen aus Kundenfeedback. Die Gastkonfiguration umfasst auch die Unterstützung von Hybridcomputern über [Arc-fähige Server](../../azure-arc/servers/overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -97,7 +100,7 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 | apiVersion | 2018-10-01 | date |
 | publisher | Microsoft.Powershell.DSC | Zeichenfolge |
 | type | DSC | Zeichenfolge |
-| typeHandlerVersion | 2.77 | INT |
+| typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Eigenschaftswerte der Einstellungen
 
@@ -115,7 +118,7 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 ### <a name="protected-settings-property-values"></a>Eigenschaftswerte geschützter Einstellungen
 
-| Name | Datentyp | BESCHREIBUNG
+| Name | Datentyp | Beschreibung
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | Zeichenfolge | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird verschlüsselt. |
 | protectedSettings.configurationUrlSasToken | Zeichenfolge | Gibt das SAS-Token für den Zugriff auf durch „configuration.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |

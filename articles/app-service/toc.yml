@@ -385,7 +385,7 @@
         - name: Referenzarchitekturen
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: Bereitstellungsskripts
-          href: 'https://azure.microsoft.com/documentation/scripts/'
+          href: /azure/automation/automation-runbook-gallery
     - name: Problembehandlung
       items:
         - name: Beheben zeitweiliger Fehler bei der ausgehenden Verbindung

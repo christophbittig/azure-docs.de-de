@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 10/15/2021
-ms.openlocfilehash: c73ee217fd802a839b565cd1174c94f8da288a0e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/12/2021
+ms.openlocfilehash: cea06c5731fd17b05987e2c070264588f5428345
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131026049"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491372"
 ---
 # <a name="maintenance-window-preview"></a>Wartungsfenster (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -38,7 +38,7 @@ Das Wartungsfenster kann bei der Erstellung oder für vorhandene Azure SQL-Ress
 
 ### <a name="gain-more-predictability-with-maintenance-window"></a>Mehr Vorhersehbarkeit bei Wartungsfenstern
 
-Bedeutsame Updates werden durch die Azure SQL-Wartungsrichtlinie standardmäßig **täglich zwischen 8 und 17 Uhr Ortszeit** blockiert, um Unterbrechungen während der normalen Hauptgeschäftszeiten zu vermeiden. Die Ortszeit wird durch die [Azure-Region](https://azure.microsoft.com/global-infrastructure/geographies/) bestimmt, in der die Ressource gehostet wird, und die Sommerzeit kann gemäß der Definition der lokalen Zeitzone berücksichtigt werden. 
+Die meisten bedeutsamen Updates werden durch die Azure SQL-Wartungsrichtlinie standardmäßig **täglich zwischen 8 und 17 Uhr Ortszeit** blockiert, um Unterbrechungen während der normalen Hauptgeschäftszeiten zu vermeiden. Die Ortszeit wird durch die [Azure-Region](https://azure.microsoft.com/global-infrastructure/geographies/) bestimmt, in der die Ressource gehostet wird, und die Sommerzeit kann gemäß der Definition der lokalen Zeitzone berücksichtigt werden. 
 
 Sie können die Wartungsupdates weiter auf eine für Ihre Azure SQL-Ressourcen geeignete Zeit anpassen, indem Sie eines der zwei zusätzlichen Wartungszeitfenster auswählen:
  

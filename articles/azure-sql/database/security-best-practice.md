@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 725b483d4da7ce55b3ae9e866aa60a09226be7e9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 47acffc242973e70f9fe89db9304d193307c5695
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233283"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335744"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen für Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -625,7 +625,7 @@ DDoS-Schutz wird im Rahmen der Azure-Plattform automatisch aktiviert. Er umfasst
 - Die Advanced Threat Protection-Warnung **Brute-Force-SQL-Anmeldeinformationen** hilft, Brute-Force-Angriffe zu erkennen. In einigen Fällen kann die Warnung sogar Workloads für Penetrationstests unterscheiden.
 
 - Für Azure-VM-Hostinganwendungen, die eine Verbindung mit SQL-Datenbank herstellen:
-  - Befolgen Sie die Empfehlungen zum Einschränken des Zugriffs über Endpunkte mit Internetzugriff in Azure Security Center.
+  - Befolgen Sie die Empfehlungen zum Einschränken des Zugriffs über Endpunkte mit Internetzugriff in Microsoft Defender für Cloud.
   - Verwenden Sie VM-Skalierungsgruppen, um mehrere Instanzen der Anwendung auf Azure-VMs auszuführen.
   - Deaktivieren Sie RDP und SSH aus dem Internet, um Brute-Force-Angriffe zu verhindern.
 
@@ -647,7 +647,7 @@ Mit Advanced Threat Protection können Sie potenzielle Bedrohungen erkennen, sob
 
 **Bewährte Methoden:**
 
-- Konfigurieren Sie [Azure Defender für SQL](azure-defender-for-sql.md)  für einen spezifischen Server oder eine verwaltete Instanz. Sie können Azure Defender für SQL auch für alle Server und verwalteten Instanzen in einem Abonnement konfigurieren, indem Sie [Azure Defender](../../security-center/security-center-pricing.md) aktivieren.
+- Konfigurieren Sie [Microsoft Defender für SQL](azure-defender-for-sql.md)  für einen spezifischen Server oder eine verwaltete Instanz. Sie können Microsoft Defender für SQL auch für alle Server und verwalteten Instanzen in einem Abonnement konfigurieren, indem Sie [Microsoft Defender für Cloud](../../security-center/security-center-pricing.md) aktivieren.
 
 - Für eine vollständige Untersuchung wird empfohlen, die  [SQL-Datenbanküberwachung](../../azure-sql/database/auditing-overview.md) zu aktivieren. Mit der Überwachung können Sie Datenbankereignisse nachverfolgen und in ein Überwachungsprotokoll in einem Azure Storage-Konto oder Azure Log Analytics-Arbeitsbereich schreiben.
 
@@ -734,7 +734,7 @@ Ermitteln Sie Spalten, die potenziell vertrauliche Daten enthalten. Welche Daten
 
 - Überwachen Sie kontinuierlich den Status der empfohlenen vertraulichen Daten in der SQL-Sicherheitsrisikobewertung. Verfolgen Sie die Ermittlungsregel für vertrauliche Daten, und identifizieren Sie jegliche Abweichung in den empfohlenen Spalten für die Klassifizierung.  
 
-- Verwenden Sie die Klassifizierung so, dass sie auf die spezifischen Anforderungen Ihrer Organisation zugeschnitten ist. Passen Sie Ihre Information Protection-Richtlinie (Vertraulichkeitsbezeichnungen, Informationstypen, Ermittlungslogik) in der [SQL Information Protection](../../security-center/security-center-info-protection-policy.md)-Richtlinie in Azure Security Center an.
+- Verwenden Sie die Klassifizierung so, dass sie auf die spezifischen Anforderungen Ihrer Organisation zugeschnitten ist. Passen Sie Ihre Information Protection-Richtlinie (Vertraulichkeitsbezeichnungen, Informationstypen, Ermittlungslogik) in der [SQL Information Protection](../../security-center/security-center-info-protection-policy.md)-Richtlinie in Microsoft Defender für Cloud.
 
 ### <a name="track-access-to-sensitive-data"></a>Nachverfolgen von Zugriff auf sensible Daten
 
@@ -757,7 +757,7 @@ Verwenden Sie ein einheitliches Infrastruktur-Sicherheitsverwaltungssystem, das 
 
 **Implementierung**:
 
-- Überwachen Sie SQL-bezogene Sicherheitsempfehlungen und aktive Bedrohungen in [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/).
+- Überwachen Sie SQL-bezogene Sicherheitsempfehlungen und aktive Bedrohungen in [Microsoft Defender für Cloud](https://azure.microsoft.com/documentation/services/security-center/).
 
 ## <a name="common-security-threats-and-potential-mitigations"></a>Allgemeine Sicherheitsbedrohungen und potenzielle Risikominderungen
 
