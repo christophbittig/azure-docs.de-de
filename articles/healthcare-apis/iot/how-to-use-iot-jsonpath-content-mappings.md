@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 6a20c1130156a18da7b18a9454b5a37232a609be
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 56304f99e786a06abdfa67495bea061d21ebabb4
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733454"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132936504"
 ---
 # <a name="how-to-use-iotjsonpathcontenttemplate-mappings"></a>Verwenden von IotJsonPathContentTemplate-Zuordnungen
 
@@ -120,6 +120,9 @@ Wenn Sie Azure IoT Hub-Geräte-SDKs verwenden, können Sie weiterhin jsonPathCon
     ]
 }
 ```
+
+> [!TIP]
+> Informationen zur Behebung häufiger Fehler und [Probleme finden](./iot-troubleshoot-guide.md) Sie im Leitfaden zur Problembehandlung für IoT-Connectors.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

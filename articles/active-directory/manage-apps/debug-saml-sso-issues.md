@@ -12,14 +12,14 @@ ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 02/18/2019
 ms.reviewer: ergreenl
-ms.openlocfilehash: 52bb2f004aaf37803ca2e0b8e46630274daffb9a
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 588c5d7149a88ef56692cc59db9c14f244c7b6d2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620676"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553152"
 ---
-# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory.
+# <a name="debug-saml-based-single-sign-on-to-applications"></a>Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen
 
 Hier erfahren Sie, wie Sie Probleme beim [einmaligen Anmelden](what-is-single-sign-on.md) bei Anwendungen in Azure Active Directory (Azure AD), die das SAML-basierte einmalige Anmelden nutzen, finden und beheben können.
 

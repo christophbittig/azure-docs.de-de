@@ -4,12 +4,12 @@ description: Lernen Sie die Konzepte und Techniken der Azure Functions kennen, d
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 9/02/2021
-ms.openlocfilehash: db0fc469d7f4429d8a99c5869940dfc50b63e845
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7aef7301207772711bcce7fbec4bde8937c94cf1
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477058"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523446"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
@@ -218,12 +218,16 @@ Um eine identitätsbasierte Verbindung für „AzureWebJobsStorage“ zu verwend
 
 | Einstellung                       | BESCHREIBUNG                                | Beispielwert                                        |
 |-----------------------------------------------------|--------------------------------------------|------------------------------------------------|
-| `AzureWebJobsStorage__blobServiceUri`| Der Datenebenen-URI des Blobdiensts des Speicherkontos | <Speicherkontoname>.blob.core.windows.net |
-| `AzureWebJobsStorage__queueServiceUri` | Der Datenebenen-URI des Warteschlangendiensts des Speicherkontos | <Speicherkontoname>.queue.core.windows.net |
+| `AzureWebJobsStorage__blobServiceUri`| Der Datenebenen-URI des Blob-Diensts des Speicherkontos im HTTPS-Schema. | https://<Speicherkontoname>.blob.core.windows.net |
+| `AzureWebJobsStorage__queueServiceUri` | Der Datenebenen-URI des Warteschlangendiensts des Speicherkontos im HTTPS-Schema. | https://<Speicherkontoname>.queue.core.windows.net |
 
 [Allgemeine Eigenschaften für identitätsbasierte Verbindungen](#common-properties-for-identity-based-connections) können auch festgelegt werden.
 
 Wenn Sie ein Speicherkonto verwenden, das global das standardmäßige DNS-Suffix und den standardmäßigen Dienstnamen für Azure verwendet, können Sie gemäß dem `https://<accountName>.blob/queue/file/table.core.windows.net`-Format stattdessen `AzureWebJobsStorage__accountName` mit dem Namen Ihres Speicherkontos festlegen. Die Blob- und Warteschlangenendpunkte werden für dieses Konto abgeleitet. Dies funktioniert nicht, wenn sich das Speicherkonto in einer Sovereign Cloud befindet oder über ein benutzerdefiniertes DNS verfügt.
+
+| Einstellung                       | BESCHREIBUNG                                | Beispielwert                                        |
+|-----------------------------------------------------|--------------------------------------------|------------------------------------------------|
+| `AzureWebJobsStorage__accountName` | Der Kontoname eines Speicherkontos, der nur gültig ist, wenn sich das Konto nicht in einer Sovereign Cloud befindet und nicht über ein benutzerdefiniertes DNS verfügt. | <Speicherkontoname> |
 
 [!INCLUDE [functions-azurewebjobsstorage-permissions](../../includes/functions-azurewebjobsstorage-permissions.md)]
 

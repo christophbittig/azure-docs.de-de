@@ -1,18 +1,18 @@
 ---
-title: Azure IoT DPS – IP-Verbindungsfilter | Microsoft-Dokumentation
-description: Informieren Sie sich, wie Sie die IP-Filterung zum Blockieren von Verbindungen von bestimmten IP-Adressen zu Ihrer Azure IoT DPS-Instanz verwenden. Sie können Verbindungen von einzelnen IP-Adressen oder Bereichen von IP-Adressen blockieren.
-author: wesmc7777
-ms.author: wesmc
+title: IP-Verbindungsfilter in Microsoft Azure IoT DPS
+description: Informieren Sie sich, wie Sie die IP-Filterung zum Blockieren von Verbindungen von bestimmten IP-Adressen zu Ihrer Azure IoT DPS-Instanz verwenden.
+author: anastasia-ms
+ms.author: v-stharr
 ms.service: iot-dps
 services: iot-dps
-ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: e1b175a176255da465433b2db45cb3cb67d360d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.date: 11/12/2021
+ms.openlocfilehash: 9354b1e3bfc57951cff919b0c14e3bc950939d8f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98934501"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485322"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Verwenden von IP-Verbindungsfiltern in Azure IoT DPS
 
@@ -26,57 +26,105 @@ Es gibt zwei spezielle Anwendungsfälle, in denen es nützlich ist, Verbindungen
 
 * Sie müssen Datenverkehr von IP-Adressen ablehnen, die vom DPS-Administrator als verdächtig eingestuft wurden.
 
+>[!Note]
+>Wenn die IP-Filterung aktiviert ist, können Sie im Azure-Portal keine Dienstvorgänge mehr ausführen (d. h. Registrierungen verwalten). Um Dienstvorgänge über das Portal auszuführen, müssen Sie die IP-Filterung vorübergehend deaktivieren, Ihre Arbeit abschließen und dann die IP-Filterfunktion erneut aktivieren. Wenn Sie Ihre eigenen Clients verwenden und die Deaktivierung der IP-Filterung vermeiden möchten, können Sie die IP-Adresse Ihres Computers in `ipFilterRules` hinzufügen und die Registrierungen im DPS über die Befehlszeilenschnittstelle verwalten.
+
 ## <a name="how-filter-rules-are-applied"></a>Anwenden von Filterregeln
 
 Die IP-Filterregeln werden auf DPS-Instanzebene angewendet. Daher gelten die IP-Filterregeln für alle Verbindungen von Geräten und Back-End-Apps mit allen unterstützten Protokollen.
 
 Jeder Verbindungsversuch über eine IP-Adresse, der mit einer IP-Ablehnungsregel in Ihrer DPS-Instanz übereinstimmt, wird mit dem Statuscode „Unauthorized 401“ (401 – Nicht autorisiert) und einer Beschreibung versehen. In der Antwortnachricht wird die IP-Regel nicht erwähnt.
 
+> [!IMPORTANT]
+> Durch die Ablehnung von IP-Adressen lässt sich verhindern, dass andere Azure-Dienste mit der DPS-Instanz interagieren.
+
 ## <a name="default-setting"></a>Standardeinstellung
 
-Das Raster **IP-Filter** im Portal ist für DPS standardmäßig leer. Diese Standardeinstellung bedeutet, dass Ihr DPS Verbindungen von allen IP-Adressen akzeptiert. Die Standardeinstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist.
+Standardmäßig ist die IP-Filterung deaktiviert, und **Öffentlicher Netzwerkzugriff** ist auf *Alle Netzwerke* festgelegt. Diese Standardeinstellung bedeutet, dass Ihr DPS Verbindungen von beliebigen IP-Adressen akzeptiert oder dass eine Regel angewandt wird, die den IP-Adressbereich 0.0.0.0/0 akzeptiert.
 
-![Standardeinstellungen der IP-Filterung von IoT DPS](./media/iot-dps-ip-filtering/ip-filter-default.png)
+:::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-default.png" alt-text="Standardeinstellungen der IP-Filterung von IoT DPS":::
 
-## <a name="add-or-edit-an-ip-filter-rule"></a>Hinzufügen oder Bearbeiten einer IP-Filterregel
+## <a name="add-an-ip-filter-rule"></a>Hinzufügen einer IP-Filterregel
 
-Zum Hinzufügen einer IP-Filterregel wählen Sie **+ IP-Filterregel hinzufügen** aus.
+So fügen Sie eine IP-Filterregel hinzu
 
-![Hinzufügen einer IP-Filterregel zu einem IoT DPS](./media/iot-dps-ip-filtering/ip-filter-add-rule.png)
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
-Nachdem Sie **IP-Filterregel hinzufügen** ausgewählt haben, füllen Sie die Felder aus.
+2. Wählen Sie im Menü auf der linken Seite oder auf der Portalseite die Option **Alle Ressourcen** aus.
 
-![Nach dem Auswählen von „IP-Filterregel hinzufügen“](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
+3. Wählen Sie Ihre Device Provisioning Service-Instanz aus.
 
-* Geben Sie einen **Namen** für die IP-Filterregel an. Er muss eine eindeutige alphanumerische Zeichenfolge ohne Beachtung von Groß-/Kleinschreibung sein, die bis zu 128 Zeichen umfassen kann. Nur alphanumerische ASCII 7-Bit-Zeichen und die Zeichen `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` sind zulässig.
+4. Wählen Sie im Menü **Einstellungen** auf der linken Seite *Netzwerk* aus.
 
-* Geben Sie eine einzelne IPv4-Adresse oder einen Block von IP-Adressen in CIDR-Notation ein. In CIDR-Notation steht 192.168.100.0/22 beispielsweise für die 1.024 IPv4-Adressen von 192.168.100.0 bis 192.168.103.255.
+5. Wählen Sie unter **Öffentlicher Netzwerkzugriff** die Option *Ausgewählte IP-Adressbereiche* aus.
 
-* Wählen Sie **Zulassen** oder **Blockieren** als **Aktion** für die IP-Filterregel aus.
+6. Wählen Sie **+ IP-Filterregel hinzufügen** aus.
 
-Nachdem Sie die Felder ausgefüllt haben, wählen Sie **Speichern** aus, um die Regel zu speichern. Daraufhin wird eine Warnung mit dem Hinweis angezeigt, dass der Updatevorgang läuft.
+    :::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-add-rule.png" alt-text="Hinzufügen einer IP-Filterregel in IoT DPS":::
 
-![Benachrichtigung über das Speichern einer IP-Filterregel](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
+7. Füllen Sie die folgenden Felder aus:
 
-Die Option **Hinzufügen** ist deaktiviert, wenn Sie das Maximum von 100 IP-Filterregeln erreichen.
+    | Feld | Beschreibung|
+    |-------|------------|
+    | **Name** |Eine eindeutige alphanumerische Zeichenfolge ohne Beachtung von Groß-/Kleinschreibung mit maximal 128 Zeichen. Nur alphanumerische ASCII 7-Bit-Zeichen und die Zeichen `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` sind zulässig.|
+    | **Adressbereich** |Eine einzelne IPv4-Adresse oder einen Block von IP-Adressen in CIDR-Notation. In CIDR-Notation steht 192.168.100.0/22 beispielsweise für die 1.024 IPv4-Adressen von 192.168.100.0 bis 192.168.103.255.|
+    | **Aktion** |Wählen Sie **Zulassen** oder **Verweigern** aus.|
 
-Wenn Sie eine vorhandene Regel bearbeiten möchten, wählen Sie die zu ändernden Daten aus, nehmen Sie die Änderung vor, und wählen Sie **Speichern** aus, um Ihre Bearbeitung zu speichern.
+    :::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Nach dem Auswählen von „IP-Filterregel hinzufügen“":::
 
-> [!NOTE]
-> Durch die Ablehnung von IP-Adressen lässt sich verhindern, dass andere Azure-Dienste mit der DPS-Instanz interagieren.
+8. Wählen Sie **Speichern** aus. Daraufhin sollte eine Warnung mit dem Hinweis angezeigt werden, dass der Updatevorgang läuft.
+
+    :::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png" alt-text="Benachrichtigung über das Speichern einer IP-Filterregel":::
+
+    >[!Note]
+    > Die Option **+ IP-Filterregel hinzufügen** ist deaktiviert, wenn Sie das Maximum von 100 IP-Filterregeln erreichen.
+
+## <a name="edit-an-ip-filter-rule"></a>Bearbeiten einer IP-Filterregel
+
+So bearbeiten Sie eine vorhandene Regel
+
+1. Wählen Sie die IP-Filterregeldaten aus, die Sie ändern möchten.
+
+    :::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-rule-edit.png" alt-text="Bearbeiten einer IP-Filterregel":::
+
+2. Nehmen Sie die Änderungen vor.
+
+3. Wählen Sie **Speichern** aus.
 
 ## <a name="delete-an-ip-filter-rule"></a>Löschen einer IP-Filterregel
 
-Wählen Sie zum Löschen einer IP-Filterregel das Papierkorbsymbol in dieser Zeile und dann **Speichern** aus. Die Regel wird entfernt und die Änderung gespeichert.
+So löschen Sie eine IP-Filterregel
 
-![Löschen einer IP-Filterregel für IoT DPS](./media/iot-dps-ip-filtering/ip-filter-delete-rule.png)
+1. Wählen Sie das Löschsymbol in der Zeile der IP-Regel aus, die Sie löschen möchten.
 
+    :::image type="content" source="./media/iot-dps-ip-filtering/ip-filter-delete-rule.png" alt-text="Löschen einer IP-Filterregel in IoT DPS":::
 
-## <a name="update-ip-filter-rules-in-code"></a>Aktualisieren von IP-Filterregeln in Code
+2. Wählen Sie **Speichern** aus.
 
-Möglicherweise müssen Sie Ihren IP-Filter für DPS über den REST-Endpunkt des Azure-Ressourcenanbieters abrufen und ändern. Lesen Sie dazu `properties.ipFilterRules` unter [createorupdate-Methode](/rest/api/iot-dps/iotdpsresource/createorupdate).
+## <a name="ip-filter-rule-evaluation"></a>Auswertung von IP-Filterregeln
 
-Eine Aktualisierung von IP-Filterregeln für DPS wird bei Azure CLI oder Azure PowerShell derzeit nicht unterstützt, kann jedoch mit Azure Resource Manager Vorlagen erreicht werden. Unter [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md) finden Sie Anleitungen zur Verwendung von Resource Manager-Vorlagen. Die folgenden Vorlagenbeispiele zeigen, wie Sie IP-Filterregeln für DPS erstellen, bearbeiten und löschen.
+IP-Filterregeln werden in einer bestimmten Reihenfolge angewandt. Die erste Regel, die der IP-Adresse entspricht, bestimmt die Aktion zum Annehmen oder Verweigern.
+
+Wenn Sie beispielsweise Adressen im Bereich 192.168.100.0/22 zulassen und alle anderen Adressen ablehnen möchten, sollte die erste Regel im Raster lauten, dass der Adressbereich 192.168.100.0/22 zulässig ist. Mit der nächsten Regel sollten alle Adressen abgelehnt werden, indem der Bereich 0.0.0.0/0 verwendet wird.
+
+So ändern Sie die Reihenfolge Ihrer IP-Filterregeln
+
+1. Wählen Sie die Regel aus, die Sie verschieben möchten.
+
+2. Ziehen Sie die Regel per Drag & Drop an die gewünschte Position.
+
+3. Wählen Sie **Speichern** aus.
+
+## <a name="update-ip-filter-rules-using-azure-resource-manager-templates"></a>Aktualisieren von IP-Filterregeln mithilfe von Azure Resource Manager-Vorlagen
+
+Es gibt zwei Möglichkeiten, Ihren DPS-IP-Filter zu aktualisieren:
+
+1. Rufen Sie die Methode der IoT Hub-Ressourcenanbieter-REST-API auf. Informationen zum Aktualisieren Ihrer IP-Filterregeln mithilfe von REST finden Sie unter `IpFilterRule` im Abschnitt [Definitionen](/api/iothub/iot-hub-resource/update#definitions) der [IoT Hub-Ressource: Updatemethode](/api/iothub/iot-hub-resource/update).
+
+2. Verwenden Sie die Azure Resource Manager-Vorlagen. Unter [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md) finden Sie Leitfäden zur Verwendung von Resource Manager-Vorlagen. In den folgenden Beispielen wird gezeigt, wie Sie DPS-IP-Filterregeln mit Azure Resource Manager-Vorlagen erstellen, bearbeiten und löschen.
+
+    >[!NOTE]
+    >Die Aktualisierung von DPS-IP-Filterregeln mithilfe der Azure-Befehlszeilenschnittstelle oder von Azure PowerShell wird derzeit nicht unterstützt.
 
 ### <a name="add-an-ip-filter-rule"></a>Hinzufügen einer IP-Filterregel
 
@@ -238,20 +286,6 @@ Im folgenden Vorlagenbeispiel werden alle IP-Filterregeln für die DPS-Instanz g
     ] 
 }
 ```
-
-
-
-## <a name="ip-filter-rule-evaluation"></a>Auswertung von IP-Filterregeln
-
-IP-Filterregeln werden der Reihenfolge nach angewendet, und die erste Regel, die eine Übereinstimmung mit der IP-Adresse ergibt, bestimmt die Aktion (Zulassen oder Ablehnen).
-
-Wenn Sie beispielsweise Adressen im Bereich 192.168.100.0/22 zulassen und alle anderen Adressen ablehnen möchten, sollte die erste Regel im Raster lauten, dass der Adressbereich 192.168.100.0/22 zulässig ist. Mit der nächsten Regel sollten alle Adressen abgelehnt werden, indem der Bereich 0.0.0.0/0 verwendet wird.
-
-Sie können die Reihenfolge der IP-Filterregeln im Raster ändern, indem Sie auf die drei vertikal angeordneten Punkte am Anfang der Zeile klicken und Drag & Drop nutzen.
-
-Klicken Sie auf **Speichern**, um die neue Reihenfolge der IP-Filterregeln zu speichern.
-
-![Ändern der Reihenfolge Ihrer IP-Filterregeln für DPS](./media/iot-dps-ip-filtering/ip-filter-rule-order.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

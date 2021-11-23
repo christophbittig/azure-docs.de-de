@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 50c4d8bad51998f8077e2d5915748d0a19bd0a00
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 9fb3331e70d6a9e132f2d7cd96768249f0de83fb
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733457"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132938852"
 ---
 # <a name="how-to-use-iotcentraljsonpathcontenttemplate-mappings"></a>Verwenden von IotCentralJsonPathContentTemplate-Zuordnungen
 
@@ -141,6 +141,9 @@ Wenn Sie das Datenexportfeature von Azure IoT Central und benutzerdefinierte Eig
     }
 }
 ```
+
+> [!TIP]
+> Informationen zum Beheben häufiger Fehler und Probleme finden Sie im Leitfaden zur [Problembehandlung](./iot-troubleshoot-guide.md) für IoT-Connectors.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

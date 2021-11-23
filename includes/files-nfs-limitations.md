@@ -8,14 +8,11 @@ ms.topic: include
 ms.date: 06/30/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 112daf900c3a7447dc5279ea9704ea94eb8ec9ea
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 3bc611aae09bc94bd00f76c0d526f5b6b7d52a0e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113225250"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519425"
 ---
-In der Vorschauversion gelten für NFS-Azure-Dateifreigaben die folgenden Einschränkungen:
-
-- Nur für den Premium-Tarif verfügbar.
-- Wenn ein Speicherkonto vor der Registrierung für das NFS-Feature erstellt wurde, können in diesem Speicherkonto keine NFS-Dateifreigaben erstellt werden. NFS-Dateifreigaben können nur in Speicherkonten erstellt werden, die nach der Registrierung für das NFS-Feature erstellt wurden.
+NFS-Azure-Dateifreigaben sind nur im Premium-Tier verfügbar.

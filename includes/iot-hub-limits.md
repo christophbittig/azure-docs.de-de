@@ -4,16 +4,16 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 007c19a10db5e000770c8c80189453d4a80edec2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 526a1bf1c39ad503a2f0585999247a8e91b4c727
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82204463"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132529740"
 ---
 In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen Dienstebenen S1, S2, S3 und F1 zugeordnet sind. Informationen zu den Kosten jeder *Einheit* finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-| Resource | S1 Standard | S2 Standard | S3 Standard | F1 Free |
+| Ressource | S1 Standard | S2 Standard | S3 Standard | F1 Free |
 | --- | --- | --- | --- | --- |
 | Nachrichten/Tag |400.000 |6\.000.000 |300.000.000 |8\.000 |
 | Maximale Anzahl der Einheiten |200 |200 |10 |1 |
@@ -48,7 +48,7 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte.
 | Maximale Größe der Nutzlast der direkten Methode | 128 KB |
 | Maximale Aufbewahrungsdauer des Auftragsverlaufs | 30 Tage |
 | Maximale Anzahl gleichzeitiger Aufträge | 10 (S3), 5 (S2), 1 (S1) |
-| Maximale Anzahl zusätzlicher Endpunkte | 10 (S1, S2 und S3) |
+| Maximale Anzahl zusätzlicher Endpunkte (über die [integrierten Endpunkte](../articles/iot-hub/iot-hub-devguide-endpoints.md) hinaus) | 10 (S1, S2 und S3) |
 | Maximale Anzahl von Regeln für die Nachrichtenweiterleitung | 100 (S1, S2 und S3) |
 | Maximale Anzahl der gleichzeitig verbundenen Gerätestreams | 50 (nur für S1, S2, S3 und F1) |
 | Maximale Gerätestream-Datenübertragung | 300 MB pro Tag (nur für S1, S2, S3 und F1) |

@@ -1,20 +1,20 @@
 ---
-title: Binden von Azure Cosmos DB an Ihre Azure Spring Cloud-Anwendung
-description: Erfahren Sie, wie Sie Azure Cosmos DB an Ihre Azure Spring Cloud-Anwendung binden.
+title: Binden von Azure Cosmos DB an Ihre Anwendung in Azure Spring Cloud
+description: Erfahren Sie, wie Sie Azure Cosmos DB an Ihre Anwendung in Azure Spring Cloud binden.
 author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 387d526002411395e8bebc0fa59925bfa383e598
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 6d9a5007ba4b5bf2c5138ab584e774d81f23bd03
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340373"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493626"
 ---
-# <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Binden einer Azure Cosmos DB-Datenbank an Ihre Azure Spring Cloud-Anwendung
+# <a name="bind-an-azure-cosmos-db-database-to-your-application-in-azure-spring-cloud"></a>Binden einer Azure Cosmos DB-Datenbank an Ihre Anwendung in Azure Spring Cloud
 
 **Dieser Artikel gilt für:** ✔️ Java
 
@@ -27,7 +27,7 @@ Voraussetzungen:
 
 ## <a name="prepare-your-java-project"></a>Vorbereiten des Java-Projekts
 
-1. Fügen Sie eine der folgenden Abhängigkeiten in der Datei „pom.xml“ der Azure Spring Cloud-Anwendung hinzu. Wählen Sie die für Ihren API-Typ passende Abhängigkeit aus.
+1. Fügen Sie eine der folgenden Abhängigkeiten in der Datei „pom.xml“ Ihrer Anwendung hinzu. Wählen Sie die für Ihren API-Typ passende Abhängigkeit aus.
 
     * API-Typ: Core (SQL)
 
@@ -180,4 +180,4 @@ resource "azurerm_spring_cloud_active_deployment" "example" {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Ihre Azure Spring Cloud-Anwendung an eine Azure Cosmos DB-Datenbank binden. Weitere Informationen zum Binden von Diensten an Ihre Anwendung finden Sie unter [Binden von Azure-Diensten an Ihre Azure Spring Cloud-Anwendung: Azure Cache for Redis](./how-to-bind-redis.md).
+In diesem Artikel haben Sie erfahren, wie Sie Ihre Anwendung in Azure Spring Cloud an eine Azure Cosmos DB-Datenbank binden. Weitere Informationen zum Binden von Diensten an Ihre Anwendung finden Sie unter [Binden von Azure-Diensten an Ihre Azure Spring Cloud-Anwendung: Azure Cache for Redis](./how-to-bind-redis.md).

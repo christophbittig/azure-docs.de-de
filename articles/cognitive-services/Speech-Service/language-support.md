@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: eur
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 67ac8e5cc3f7d555086ad6f643b82e8615168fa3
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 1ae10bb589816ae40a033487fb5548e1bc1abeba
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028114"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549525"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -255,8 +255,8 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Englisch (Tansania) | `en-TZ` | Female | `en-TZ-ImaniNeural` <sup>Neu</sup>  | Allgemein |
 | Englisch (Tansania) | `en-TZ` | Male | `en-TZ-ElimuNeural` <sup>Neu</sup>  | Allgemein |
 | Walisisch (Großbritannien) | `en-GB` | Female | `en-GB-LibbyNeural` | Allgemein |
-| Walisisch (Großbritannien) | `en-GB` | Female | `en-GB-MiaNeural` <sup>Ab 30. Oktober außer Betrieb, siehe unten</sup> | Allgemein |
 | Walisisch (Großbritannien) | `en-GB` | Female | `en-GB-SoniaNeural` | Allgemein |
+| Walisisch (Großbritannien) | `en-GB` | Female | `en-GB-MiaNeural` <sup>Am 30. Oktober 2021 eingestellt, siehe unten</sup> | Allgemein |
 | Walisisch (Großbritannien) | `en-GB` | Male | `en-GB-RyanNeural` | Allgemein |
 | Englisch (USA) | `en-US` | Female | `en-US-AmberNeural` | Allgemein |
 | Englisch (USA) | `en-US` | Female | `en-US-AriaNeural` | Allgemein, mehrere Stimmstile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
@@ -438,8 +438,8 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Zulu (Südafrika) | `zu-ZA` | Male | `zu-ZA-ThembaNeural` <sup>Neu</sup>  | Allgemein |
 
 > [!IMPORTANT]
-> Die Stimme „Englisch (Vereinigtes Königreich) `en-GB-MiaNeural`“ wird am **30. Oktober 2021** außer Betrieb genommen. Alle Dienstanforderungen an `en-GB-MiaNeural` werden nach dem **30. Oktober 2021** automatisch an `en-GB-SoniaNeural` weitergeleitet.
-> Wenn Sie einen neuronalen TTS-Container verwenden, sollten Sie die aktuelle Version vor dem **30. Oktober 2021** [herunterladen](speech-container-howto.md#get-the-container-image-with-docker-pull) und bereitstellen. Nach dem **30. Oktober 2021** werden alle Anforderungen mit früheren Versionen abgelehnt.
+> Die Stimme „Englisch (Vereinigtes Königreich) `en-GB-MiaNeural`“ wurde am **30. Oktober 2021** außer Betrieb genommen. Alle Dienstanforderungen an `en-GB-MiaNeural` werden seit dem **30. Oktober 2021** automatisch an `en-GB-SoniaNeural` umgeleitet.
+> Wenn Sie nach dem **30. Oktober 2021** den Container „Neural TTS“ verwenden möchten, laden Sie die [neueste Version](speech-container-howto.md#get-the-container-image-with-docker-pull) herunter und stellen sie bereit. Anforderungen an frühere Versionen werden abgelehnt.
 
 #### <a name="neural-voices-in-preview"></a>Neuronale Stimmen in der Vorschau
 
@@ -718,20 +718,20 @@ Die Sprechererkennung ist größtenteils sprachunabhängig. Wir haben ein univer
 
 | Sprache | Gebietsschema (BCP-47) | Textabhängige Überprüfung | Textunabhängige Überprüfung | Textunabhängige Identifikation |
 |----|----|----|----|----|
-|Englisch (USA)  |  `en-US`  |  ja  |  ja  |  ja |
-|Chinesisch (Mandarin, vereinfacht) | `zh-CN`     |     – |     ja |     ja|
-|Englisch (Australien)     | `en-AU`    | –     | ja     | ja|
-|Englisch (Kanada)     | `en-CA`     | – |     ja |     ja|
-|Englisch (Indien)     | `en-IN`     | – |     ja |     ja|
-|English (UK)     | `en-GB`     | –     | ja     | ja|
-|Französisch (Kanada)     | `fr-CA`     | –     | ja |     ja|
-|Französisch (Frankreich)     | `fr-FR`     | –     | ja     | ja|
-|Deutsch (Deutschland)     | `de-DE`     | –     | ja     | ja|
-|Italienisch | `it-IT`     |     –     | ja |     ja|
-|Japanisch     | `ja-JP` | –     | ja     | ja|
-|Portugiesisch (Brasilien) | `pt-BR` |     – |     ja |     ja|
-|Spanisch (Mexiko)     | `es-MX`     | – |     ja |     ja|
-|Spanisch (Spanien)     | `es-ES` | –     | ja |     Ja|
+|Englisch (USA)  |  `en-US`  |  ja  |  Ja  |  ja |
+|Chinesisch (Mandarin, vereinfacht) | `zh-CN`     |     – |     Ja |     ja|
+|Englisch (Australien)     | `en-AU`    | –     | Ja     | ja|
+|Englisch (Kanada)     | `en-CA`     | – |     Ja |     Ja|
+|Englisch (Indien)     | `en-IN`     | – |     Ja |     ja|
+|English (UK)     | `en-GB`     | –     | Ja     | ja|
+|Französisch (Kanada)     | `fr-CA`     | –     | Ja |     ja|
+|Französisch (Frankreich)     | `fr-FR`     | –     | Ja     | ja|
+|Deutsch (Deutschland)     | `de-DE`     | –     | Ja     | ja|
+|Italienisch | `it-IT`     |     –     | Ja |     ja|
+|Japanisch     | `ja-JP` | –     | Ja     | ja|
+|Portugiesisch (Brasilien) | `pt-BR` |     – |     Ja |     ja|
+|Spanisch (Mexiko)     | `es-MX`     | – |     Ja |     ja|
+|Spanisch (Spanien)     | `es-ES` | –     | Ja |     Ja|
 
 ## <a name="custom-keyword-and-keyword-verification"></a>Benutzerdefiniertes Schlüsselwort und Schlüsselwortüberprüfung
 

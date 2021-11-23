@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Sprachübersetzung
-ms.openlocfilehash: 13d82c334504b2d396f10b1c80b99c0c264c9ea0
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: 3c71682028f1fb54b55e9faddde5928883f44916
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131988879"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485564"
 ---
 # <a name="what-is-speech-translation"></a>Was ist Sprachübersetzung?
 
@@ -43,7 +43,7 @@ Verwenden Sie die [Schnellstartanleitung](get-started-speech-translation.md), um
 
 ## <a name="sample-code"></a>Beispielcode
 
-Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarien wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und einmalige Erkennung/Übersetzung oder die Verwendung benutzerdefinierter Modelle behandelt.
+Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarien wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und anfängliche Erkennung/Übersetzung oder die Verwendung benutzerdefinierter Modelle behandelt.
 
 * [Beispiele für Spracherkennung und Übersetzung (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: eur
-ms.openlocfilehash: ba4e6fc3d128daf54f55456163acb6a563745b55
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 0944e5da8bde152a2c8e9fd67e5641d419b0b1fd
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131507945"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493962"
 ---
 # <a name="speech-service-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 
@@ -130,7 +130,7 @@ Ein weiteres Szenario ist die direkte Integration mit dem Session Initiation Pro
 
 ## <a name="sample-code"></a>Beispielcode
 
-Auf GitHub steht Beispielcode für jedes der Features des Speech-Diensts zur Verfügung. In den Beispielen werden gängige Szenarios wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und einmalige Erkennung oder die Verwendung benutzerdefinierter Modelle behandelt. Über die folgenden Links gelangen Sie zu den SDK- und REST-Beispielen:
+Auf GitHub steht Beispielcode für jedes der Features des Speech-Diensts zur Verfügung. In den Beispielen werden gängige Szenarien wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und anfängliche Erkennung oder die Verwendung benutzerdefinierter Modelle behandelt. Über die folgenden Links gelangen Sie zu den SDK- und REST-Beispielen:
 
 - [Beispiele für Spracherkennung und Sprachübersetzung (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Batch transcription samples (REST) (Batchtranskriptionsbeispiele (REST))](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)

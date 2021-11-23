@@ -8,12 +8,12 @@ ms.subservice: mlops
 ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: ecde110225ef42ace6b19e54930ee9f4152acec6
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c704af7d5249ca1a24da554e7789d3c92a360861
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558628"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519456"
 ---
 # <a name="monitor-managed-online-endpoints-preview"></a>Überwachen verwalteter Onlineendpunkte (Vorschau)
 
@@ -54,6 +54,13 @@ Abhängig von der ausgewählten Ressource unterscheiden sich die angezeigten Met
 - Anforderungswartezeit P90 (Anforderungswartezeit im 90. Perzentil)
 - Anforderungswartezeit P95 (Anforderungswartezeit im 95. Perzentil)
 - Anforderungen pro Minute
+- Neue Verbindungen pro Sekunde
+- Anzahl aktiver Verbindungen
+- Netzwerkbytes
+
+> ![HINWEIS] Die Bandbreite wird gedrosselt, wenn die Grenzwerte überschritten werden (siehe Abschnitt „Verwaltete Onlineendpunkte“ unter [Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)). So bestimmen Sie, ob Anforderungen gedrosselt werden
+> - Überwachen der Metrik „Netzwerkbytes“
+> - Die Antwortheader enthalten die Felder `ms-azureml-bandwidth-request-delay-ms` und `ms-azureml-bandwidth-response-delay-ms`. Die Werte der Felder sind die Verzögerungen der Bandbreitendrosselung in Millisekunden.
 
 Nehmen Sie die Aufteilung nach den folgenden Dimensionen vor:
 
@@ -63,12 +70,12 @@ Nehmen Sie die Aufteilung nach den folgenden Dimensionen vor:
 
 ### <a name="metrics-at-deployment-scope"></a>Metriken im Bereitstellungsbereich
 
-- CPU-Auslastung
+- Prozentsatz der CPU-Auslastung
 - Bereitstellungskapazität (die Anzahl der Instanzen des angeforderten Instanztyps)
 - Datenträgerverwendung
 - GPU-Arbeitsspeicherauslastung (gilt nur für GPU-Instanzen)
 - GPU-Auslastung (gilt nur für GPU-Instanzen)
-- Speicherauslastung
+- Speicherauslastung in %
 
 Nehmen Sie die Aufteilung nach den folgenden Dimensionen vor:
 

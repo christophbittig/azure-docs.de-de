@@ -7,12 +7,12 @@ ms.service: data-science-vm
 ms.author: mimarusa
 ms.date: 10/11/2021
 ms.topic: reference
-ms.openlocfilehash: c20d7e93bdf507db7c6ac43634c06c20c79b1786
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 97b95b37367d1cede3326307602a19ffdc5df8d5
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811190"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517138"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Azure Data Science Virtual Machine – Versionshinweise
 
@@ -20,25 +20,62 @@ Dieser Artikel enthält Informationen zu Azure Data Science Virtual Machine-Rele
 
 In der [Liste mit bekannten Problemen](reference-known-issues.md) finden Sie Informationen zu bekannten Fehlern und Problemumgehungen.
 
-## <a name="2021-10-07"></a>2021-10-07
+## <a name="november-4-2021"></a>4\. November 2021
+
+Neues Image für [Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview)
+
+Version: 21.11.04
+
+Hauptänderungen:
+* .NET Framework in Version 3.1.414 geändert
+* AzCopy in Version 10.13.0 geändert
+* Azure-Befehlszeilenschnittstelle in Version 2.30.0 geändert
+* CUDA in Version 11.5 geändert
+* Docker in Version 20.10.10 geändert
+* Intellijidea in Version 2021.2.3 geändert
+* NVIDIA-Treiber auf Version 495.29.05 geändert
+* NVIDIA SMI auf Version 495.29.05 geändert
+* NodeJS in Version 16.13.0 geändert
+* PyCharm in Version 2021.2.3 geändert
+* VS Code in Version 1.61.2 geändert
+* Conda
+  * *azureml_py36_automl*
+    * azureml-core in Version 1.35.0 geändert
+  * *py38_default*
+    * Jupyter Lab/jupyterlab in Version 3.2.1 geändert
+    * Jupyter Notebook/Notebook in Version 6.4.5 geändert
+    * Jupyter Server/jupyter_server in Version 1.11.2 geändert
+    * PyTorch Profiler TensorBoard-Plug-In/torch-tb-profiler in Version 0.3.1 geändert
+    * azure-core in Version 1.19.1 geändert
+    * matplotlib in Version 3.4.3 geändert
+    * mkl in Version 2021.4.0 geändert
+    * onnx in Version 1.10.2 geändert
+    * opencv-python in Version 4.5.4.58 geändert
+    * pandas in Version 1.3.4 geändert
+    * PyTorch in Version 1.10.0 geändert
+    * scikit-learn in Version 1.0.1 geändert
+    * tensorflow-gpu in Version 2.6.2 geändert
+
+
+## <a name="october-7-2021"></a>7\. Oktober 2021
 
 Neues Image für [Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview)
 
 Version: 21.10.07
 
 Hauptänderungen:
- - PyTorch wurde in Version 1.9.1 geändert
- - Docker wurde in Version 20.10.9 geändert
- - Intellijidea wurde in Version 2021.2.2 geändert
- - NodeJS wurde in Version 14.18.0 geändert
- - PyCharm wurde in Version 2021.2.2 geändert
- - VS Code wurde in Version 1.60.2 geändert
- - AutoML-Umgebung (azureml_py36_automl) wurde behoben
- - Stabilität von Azure Storage-Explorer wurde behoben
+ - PyTorch in Version 1.9.1 geändert
+ - Docker in Version 20.10.9 geändert
+ - Intellijidea in Version 2021.2.2 geändert
+ - NodeJS in Version 14.18.0 geändert
+ - PyCharm in Version 2021.2.2 geändert
+ - VS Code in Version 1.60.2 geändert
+ - AutoML-Umgebung (azureml_py36_automl) korrigiert
+ - Stabilität von Azure Storage-Explorer korrigiert
  - Verbesserung der Stabilität und kleinere Fehlerbehebungen 
 
 
-## <a name="2021-08-11"></a>2021-08-11
+## <a name="august-11-2021"></a>11. August 2021
 
 Neues Image für [Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview)
 
@@ -54,7 +91,7 @@ Hauptänderungen:
 
 
 
-## <a name="2021-07-12"></a>2021-07-12
+## <a name="july-12-2021"></a>12. Juli 2021
 
 Neues Image für [Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview)
 
@@ -67,7 +104,7 @@ Hauptänderungen:
 - Verbesserung der Stabilität und kleinere Fehlerbehebungen 
 
 
-## <a name="2021-06-22"></a>2021-06-22
+## <a name="june-22-2021"></a>22. Juni 2021
 
 Neues Image für [Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview)
 
@@ -79,7 +116,7 @@ Hauptänderungen:
 - Ein Fehler wurde behoben, bei dem Git nicht verfügbar war.
 
 
-## <a name="2021-06-01"></a>2021-06-01
+## <a name="june-1-2021"></a>1\. Juni 2021
 
 Neues Image für [Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview)
 
@@ -97,7 +134,7 @@ Hauptänderungen:
 <br/>
 Mehrere Symbole wurden vom Desktop entfernt.
 
-## <a name="2021-05-22"></a>2021-05-22
+## <a name="may-22-2021"></a>22. Mai 2021
 
 Neues Image für [Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview)
 
@@ -131,7 +168,7 @@ Firefox, Apache Drill und Microsoft Integration Runtime wurden entfernt.
 <br/>
 Dunkler Modus, geänderte Symbole auf dem Desktop, Änderung an den Hintergrundbildern.
 
-## <a name="2021-05-12"></a>2021-05-12
+## <a name="may-12-2021"></a>12. Mai 2021
 
 Neues Image für [Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview)
 
@@ -170,11 +207,11 @@ sudo systemctl start docker
 >
 
 
-## <a name="2020-02-24"></a>2020-02-24
+## <a name="february-24-2020"></a>24. Februar 2020
 
 Data Science Virtual Machine-Images für [Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview)- und [Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview)-Images sind jetzt verfügbar.
 
-## <a name="2019-10-08"></a>2019-10-08
+## <a name="october-8-2019"></a>8\. Oktober 2019
 
 ### <a name="updates-to-software-on-the-windows-dsvm"></a>Softwareupdates für die Windows-DSVM-Instanz
 
@@ -186,4 +223,4 @@ Data Science Virtual Machine-Images für [Ubuntu 18.04](https://azuremarketplac
 
 ### <a name="default-browser-for-windows-updated"></a>Standardbrowser für Windows aktualisiert
 
-Zuvor war der Standardbrowser auf Internet Explorer festgelegt. Benutzer werden nun bei der ersten Anmeldung aufgefordert, einen Standardbrowser auszuwählen.
+Zuvor war der Standardbrowser auf Internet Explorer festgelegt. Benutzer*innen werden nun bei der ersten Anmeldung aufgefordert, einen Standardbrowser auszuwählen.

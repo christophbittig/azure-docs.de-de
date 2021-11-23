@@ -13,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb824f9527619033467594a98310663c1113fdc
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 6c584b1815fbb17488acf75e0bc4f93c6e06620a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620733"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549107"
 ---
-# <a name="unexpected-error-when-performing-consent-to-an-application-in-azure-active-directory"></a>Unerwarteter Fehler beim Einwilligen in eine Anwendung in Azure Active Directory
+# <a name="unexpected-error-when-performing-consent-to-an-application"></a>Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung
 
 In diesem Artikel werden Fehler erläutert, die während des Vorgangs des Genehmigens einer Anwendung auftreten können. Wenn Sie Probleme mit unerwarteten Zustimmungsaufforderungen behandeln, die keine Fehlermeldungen enthalten, sehen Sie sich die [Authentifizierungsszenarien für Azure AD](../develop/authentication-vs-authorization.md) an.
 

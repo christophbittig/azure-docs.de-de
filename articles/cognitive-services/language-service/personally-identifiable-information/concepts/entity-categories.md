@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-service
 ms.topic: article
-ms.date: 11/02/2021
+ms.date: 11/15/2021
 ms.author: aahi
 ms.custom: language-service-pii, ignite-fall-2021
-ms.openlocfilehash: 49db4778dcdb2f4cbe3bff2ac07fc16ece2883f8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 099926359944c1f9e9a673f3c754019c761e6220
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094960"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519532"
 ---
 # <a name="supported-personally-identifiable-information-pii-entity-categories"></a>Unterstützte Entitätskategorien für personenbezogene Informationen (Personally Identifiable Information, PII)
 
@@ -47,7 +47,7 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        Namen von Personen Wird auch mit `domain=phi`zurückgegeben
+        Namen von Personen Werden sowohl als PII als auch als PHI zurückgegeben.
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Person` hinzu. In der API-Antwort wird `Person` zurückgegeben, falls es erkannt wird.
       
@@ -104,7 +104,7 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        Telefonnummern (nur US- und EU-Telefonnummern) Wird auch mit `domain=phi`zurückgegeben
+        Telefonnummern (nur US- und EU-Telefonnummern) Werden sowohl als PII als auch als PHI zurückgegeben.
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `PhoneNumber` hinzu. In der API-Antwort wird `PhoneNumber` zurückgegeben, falls es erkannt wird.
       
@@ -134,7 +134,7 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        Firmen, politische Gruppen, Musikgruppen, Sportvereine, Regierungsstellen und öffentliche Organisationen Nationalitäten und Religionen werden in diesem Entitätstyp nicht berücksichtigt. Wird auch mit `domain=phi`zurückgegeben
+        Firmen, politische Gruppen, Musikgruppen, Sportvereine, Regierungsstellen und öffentliche Organisationen Nationalitäten und Religionen werden in diesem Entitätstyp nicht berücksichtigt. Werden sowohl als PII als auch als PHI zurückgegeben.
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Organization` hinzu. In der API-Antwort wird `Organization` zurückgegeben, falls es erkannt wird.
       
@@ -235,7 +235,7 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        vollständige Postanschrift Wird auch mit `domain=phi`zurückgegeben
+        vollständige Postanschrift Werden sowohl als PII als auch als PHI zurückgegeben.
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Address` hinzu. In der API-Antwort wird `Address` zurückgegeben, falls es erkannt wird.
       
@@ -264,7 +264,7 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        E-Mail-Adressen Wird auch mit `domain=phi`zurückgegeben
+        E-Mail-Adressen Werden sowohl als PII als auch als PHI zurückgegeben.
       
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Email` hinzu. In der API-Antwort wird `Email` zurückgegeben, falls es erkannt wird.
 
@@ -292,7 +292,7 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        URLs zu Websites Wird auch mit `domain=phi`zurückgegeben
+        URLs zu Websites Werden sowohl als PII als auch als PHI zurückgegeben.
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `URL` hinzu. In der API-Antwort wird `URL` zurückgegeben, falls es erkannt wird.
       
@@ -321,7 +321,7 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        Netzwerk-IP-Adressen Wird auch mit `domain=phi`zurückgegeben
+        Netzwerk-IP-Adressen Werden sowohl als PII als auch als PHI zurückgegeben.
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `IP` hinzu. In der API-Antwort wird `IP` zurückgegeben, falls es erkannt wird.
       
@@ -376,7 +376,7 @@ Die Entität in dieser Kategorie kann die folgenden Unterkategorien aufweisen.
     :::column span="2":::
         **Details**
 
-        Kalenderdatumsangaben Wird auch mit `domain=phi`zurückgegeben
+        Kalenderdatumsangaben Werden sowohl als PII als auch als PHI zurückgegeben.
 
         Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Date` hinzu. In der API-Antwort wird `Date` zurückgegeben, falls es erkannt wird.
       
@@ -445,7 +445,7 @@ Die Entität in dieser Kategorie kann die folgenden Unterkategorien aufweisen.
 
 ### <a name="azure-information"></a>Azure-Informationen
 
-Diese Entitätskategorien beinhalten identifizierbare Azure-Informationen (einschließlich Authentifizierungsinformationen und Verbindungszeichenfolgen). Wird nicht mit dem `domain=phi`-Parameter zurückgegeben
+Diese Entitätskategorien beinhalten identifizierbare Azure-Informationen (einschließlich Authentifizierungsinformationen und Verbindungszeichenfolgen). Werden nicht als PHI zurückgegeben.
 
 :::row:::
     :::column span="":::

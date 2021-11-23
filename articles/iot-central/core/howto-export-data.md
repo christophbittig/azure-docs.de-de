@@ -8,12 +8,12 @@ ms.date: 10/20/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 0a084e6bad7530c4d506728b17227de13f1f86a1
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: a4a941d114d233e723d853d12386cb42834d3e19
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131579290"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493791"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports
 
@@ -49,7 +49,13 @@ Ihr Exportziel muss vorhanden sein, bevor Sie Ihren Datenexport konfigurieren. D
 
 ### <a name="connection-options"></a>Verbindungsoptionen
 
-Für die Azure-Dienstziele können Sie die Verbindung entweder mit einer *Verbindungszeichenfolge* oder mit einer [verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) konfigurieren. Die Verwendung einer verwalteten Identität ist die sicherere Variante, da Sie hier die Anmeldeinformationen für das Ziel nicht in Ihrer IoT Central-Anwendung speichern müssen. IoT Central verwendet derzeit [systemseitig zugewiesene verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
+Für die Azure-Dienstziele können Sie die Verbindung entweder mit einer *Verbindungszeichenfolge* oder mit einer [verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) konfigurieren. Verwaltete Identitäten sind aus folgenden Gründen sicherer:
+
+- Sie speichern die Anmeldeinformationen für Ihre Ressource nicht in einer Verbindungszeichenfolge in Ihrer IoT Central-Anwendung.
+- Die Anmeldeinformationen sind automatisch an die Lebensdauer Ihrer IoT Central-Anwendung gebunden.
+- Verwaltete Identitäten rotieren ihre Sicherheitsschlüssel automatisch regelmäßig.
+
+IoT Central verwendet derzeit [systemseitig zugewiesene verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
 
 Wenn Sie eine verwaltete Identität konfigurieren, müssen Sie einen *Bereich* und eine *Rolle* festlegen:
 

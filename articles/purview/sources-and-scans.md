@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3a06bf01ec9afa62a656eb5590a7ae283063ec88
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b29896a9ca047b05c3313b716b2a4df1b0e72f6c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074226"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517176"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Unterstützte Datenquellen und Dateitypen in Azure Purview
 
@@ -29,7 +29,8 @@ Die folgenden Dateitypen werden für Überprüfungen, Schemaextraktion und Klass
 
 - Dateierweiterungen der unterstützten strukturierten Dateiformate: AVRO, ORC, PARQUET, CSV, JSON, PSV, SSV, TSV, TXT, XML, GZIP
  > [!Note]
- > * In den Dateitypen AVRO, ORC und PARQUET unterstützt der Purview-Scanner keine komplexen Datentypen (z. B. MAP, LIST, STRUCT) für die Schemaextraktion. 
+ > * Die Purview-Überprüfung unterstützt nur die Schemaextraktion für die oben aufgeführten strukturierten Dateitypen.
+ > * In den Dateitypen AVRO, ORC und PARQUET unterstützt die Purview-Überprüfung keine Schemaextraktion für Dateien mit komplexen Datentypen (z. B. MAP, LIST, STRUCT). 
  > * Die Purview-Überprüfung unterstützt das Überprüfen von mit Snappy komprimierten PARQUET-Dateitypen auf Schemaextraktion und -klassifizierung. 
  > * Bei GZIP-Dateitypen muss die GZIP-Datei einer einzelnen enthaltenen CSV-Datei zugeordnet werden. 
  > GZIP-Dateien unterliegen System- und benutzerdefinierten Klassifizierungsregeln. Das Scannen einer GZIP-Datei, die mehreren enthaltenen Dateien oder einem anderen Dateityp als CSV zugeordnet ist, wird derzeit nicht unterstützt. 

@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 11/10/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 6718270b7b996813f4503e58cf2609e7eb3add00
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 88e5310a53bfd5fed79ae0a9a6efc06d91fdb0cf
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733406"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132933949"
 ---
 # <a name="how-to-display-iot-connector-metrics"></a>Anzeigen von IoT-Connectormetriken
 
@@ -76,6 +76,9 @@ In diesem Artikel erfahren Sie, wie Sie IoT-Connectormetriken im Azure-Portal an
 5. Wählen Sie das Dashboard aus, an das Sie die Kachel Metriken angeheftet haben. In diesem Beispiel ist das Dashboard `IoT connector Metrics` . Auf dem Dashboard wird die Kachel Metriken des IoT-Connectors angezeigt, die Sie in den vorherigen Schritten erstellt haben.
 
     :::image type="content" source="media\iot-metrics\iot-dashboard-with-metrics-tile-displayed.png" alt-text="Dashboard mit angehefteter Kachel &quot;Metriken&quot; des IoT-Connectors." lightbox="media\iot-metrics\iot-dashboard-with-metrics-tile-displayed.png":::
+
+> [!TIP]
+> Informationen zum Beheben häufiger Fehler und Probleme finden Sie im Leitfaden zur [Problembehandlung](./iot-troubleshoot-guide.md) für IoT-Connectors.
 
 ## <a name="conclusion"></a>Zusammenfassung 
 

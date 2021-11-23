@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
-ms.openlocfilehash: e1efc37e8bb824a6111987a789b48e805aeb1785
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: f11800c1501c0efad6dec18542ecaa912527689a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566550"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491657"
 ---
 # <a name="tune-model-hyperparameters"></a>Tune Model Hyperparameters
 
@@ -69,7 +69,7 @@ In diesem Abschnitt wird beschrieben, wie ein grundlegender Parameter-Sweep durc
 
     Die von Ihnen gewählte Metrik bestimmt aber, wie die Modelle eingestuft werden. Nur das oberste Modell, eingestuft entsprechend der gewählten Metrik, wird als trainiertes Modell ausgegeben, das für die Bewertung verwendet werden soll.
 
-8.  Geben Sie für **Random seed** (Zufälliger Ausgangswert) eine Zahl ein, die zum Starten der Parameterbereinigung verwendet werden soll. 
+8.  Geben Sie für **Random seed**(Zufälliger Ausgangswert) eine ganze Zahl als Pseudozustand für den Zufallszahlengenerator ein, der zum zufälligen Auswählen von Parameterwerten aus einem vordefinierten Bereich verwendet wird. Dieser Parameter ist nur wirksam, wenn der **Parameter sweeping mode** (Parameterbereinigungsmodus) den Wert **Random sweep** (Zufällige Bereinigung) hat.
 
 9. Übermitteln der Pipeline
 
@@ -151,4 +151,4 @@ Fast alle Lernmodule in Azure Machine Learning unterstützen Kreuzvalidierung mi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Siehe die [Sammlung der für Azure Machine Learning verfügbaren Komponenten](component-reference.md). 
+Hier finden Sie die für Azure Machine Learning [verfügbaren Komponenten](component-reference.md). 

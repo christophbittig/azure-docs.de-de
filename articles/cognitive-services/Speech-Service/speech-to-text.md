@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: Spracherkennung, Spracherkennungssoftware
-ms.openlocfilehash: 02e9a0d78aa8d904be2c9ade4ba419ea4fefd40f
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: bf0d8c7ffdff3c936804583f03b42dbe1c5e2392
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131989430"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488390"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
 
@@ -43,7 +43,7 @@ Verwenden Sie den [Schnellstart](get-started-speech-to-text.md), um mit der Spra
 
 ## <a name="sample-code"></a>Beispielcode
 
-Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarios wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und einmalige Erkennung oder die Verwendung benutzerdefinierter Modelle behandelt.
+Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarien wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und anfängliche Erkennung oder die Verwendung benutzerdefinierter Modelle behandelt.
 
 - [Speech-to-text samples (SDK) (Spracherkennungsbeispiele (SDK))](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Batch transcription samples (REST) (Batchtranskriptionsbeispiele (REST))](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)

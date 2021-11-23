@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-compute
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a6b2fb04ea4d0c35a0e1d3de5c9befd3ba06c1f4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 4c652a9292caf8e7ac198ac6922b11b78a85781e
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072687"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401419"
 ---
 # <a name="fsv2-series"></a>Fsv2-Serie
 
@@ -30,6 +30,7 @@ Virtuelle Computer der Fsv2-Serie verfügen über Hyper-Threading-Technologie vo
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt <br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br>
 
 | Size | vCPUs | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s |  Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> |Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |

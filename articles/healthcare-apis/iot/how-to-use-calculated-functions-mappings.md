@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 3e1ccf989bcd67e5e45d381ae681287730cad1d2
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 6e92acd7cc537b9723b1b114b11d8408cf941443
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733418"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132940983"
 ---
 # <a name="how-to-use-calculatedcontenttemplate-mappings"></a>Verwenden von CalculatedContentTemplate-Zuordnungen
 
@@ -96,7 +96,7 @@ CalculatedContentTemplate ermöglicht das Abgleichen und Extrahieren von Werten 
 
 Wenn Sie die Sprache angeben, die für den Ausdruck verwendet werden soll, sind die folgenden Werte gültig:
 
-| Ausdruckssprache | Wert        |
+| Ausdruckssprache | value        |
 |---------------------|--------------|
 | JSONPath            | **JsonPath** |
 | JmesPath            | **JmesPath** |
@@ -547,6 +547,9 @@ Im folgenden Beispiel werden die Höhendaten in Zoll oder Metern eintreffen. Wir
       }
     }
 ```
+
+> [!TIP]
+> Informationen zur Behebung häufiger Fehler und [Probleme finden](./iot-troubleshoot-guide.md) Sie im Leitfaden zur Problembehandlung für IoT-Connectors.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

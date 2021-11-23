@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 07/06/2021
 ms.topic: how-to
-ms.openlocfilehash: 2d8ab101b39412d9345fa470d3b6584036990581
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dc9611eebdce1e988e760fda3b000cb52d0ff95a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084965"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488272"
 ---
 # <a name="manage-and-monitor-iot-central-from-the-azure-portal"></a>Verwalten und Überwachen von IoT Central über das Azure-Portal
 
@@ -74,7 +74,13 @@ Wenn Sie die Anwendung in ein anderes Abonnement verschieben möchten, wählen S
 
 ## <a name="configure-a-managed-identity"></a>Konfigurieren einer verwalteten Identität
 
-Wenn Sie einen Datenexport in Ihrer IoT Central-Anwendung konfigurieren, können Sie die Verbindung mit dem Ziel mit einer *Verbindungszeichenfolge* oder einer [verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) konfigurieren. Die Verwendung einer verwalteten Identität ist die sicherere Variante, da Sie hier die Anmeldeinformationen für das Ziel nicht in Ihrer IoT Central-Anwendung speichern müssen. IoT Central verwendet derzeit [systemseitig zugewiesene verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Die verwaltete Identität wird entweder über das Azure-Portal oder die REST-API erstellt.
+Wenn Sie einen Datenexport in Ihrer IoT Central-Anwendung konfigurieren, können Sie die Verbindung mit dem Ziel mit einer *Verbindungszeichenfolge* oder einer [verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) konfigurieren. Verwaltete Identitäten sind aus folgenden Gründen sicherer:
+
+* Sie speichern die Anmeldeinformationen für Ihre Ressource nicht in einer Verbindungszeichenfolge in Ihrer IoT Central-Anwendung.
+* Die Anmeldeinformationen sind automatisch an die Lebensdauer Ihrer IoT Central-Anwendung gebunden.
+* Verwaltete Identitäten rotieren ihre Sicherheitsschlüssel automatisch regelmäßig.
+
+IoT Central verwendet derzeit [systemseitig zugewiesene verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Die verwaltete Identität wird entweder über das Azure-Portal oder die REST-API erstellt.
 
 > [!NOTE]
 > Verwaltete Identitäten können nur IoT Central-Anwendungen hinzugefügt werden, die in einer Region erstellt wurden. Alle neuen Anwendungen werden in einer Region erstellt. Weitere Informationen finden Sie bei den [Updates](https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-august-2021/).
