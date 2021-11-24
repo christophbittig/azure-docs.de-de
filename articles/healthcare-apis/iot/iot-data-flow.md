@@ -1,6 +1,6 @@
 ---
 title: Datenfluss im IoT-Connector – Azure Healthcare-APIs
-description: Grundlegendes zum Datenfluss des IoT-Connectors. Der IoT-Connector erfasst, normalisiert, gruppiert, transformiert und persistent IoMT-Daten im FHIR-Dienst.
+description: Informationen zum Datenfluss des IoT-Connectors. Der IoT-Connector erfassung, normalisiert, gruppent, transformiert und persistent IoMT-Daten im FHIR-Dienst.
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
@@ -8,63 +8,63 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: e442cad97c01c4cd15c931dea45a849cc723cb76
-ms.sourcegitcommit: 01b678462a4a390c30463c525432ffbbbe0195cf
+ms.openlocfilehash: 82ede0faff91b74f329d9555b6df90152d9fbf8b
+ms.sourcegitcommit: 3a063c59bb9396ce1d4b9a3565b194edf30393a2
 ms.translationtype: MT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/23/2021
-ms.locfileid: "132954263"
+ms.locfileid: "132964894"
 ---
 # <a name="iot-connector-data-flow"></a>Datenfluss des IoT-Konnektors
 
 > [!IMPORTANT]
-> Azure Healthcare-APIs befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
+> Azure Healthcare-APIs sind derzeit als VORSCHAUversion verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
-Dieser Artikel bietet eine Übersicht über den Datenfluss des IoT-Connectors. Sie erfahren mehr über die verschiedenen Datenverarbeitungsphasen innerhalb des IoT-Connectors, die Gerätedaten in Fast Healthcare Interoperability Resources (FHIR&#174;)-basierte [Überwachungsressourcen](https://www.hl7.org/fhir/observation.html) transformieren.
+Dieser Artikel bietet eine Übersicht über den Datenfluss des IoT-Connectors. Sie erfahren mehr über die verschiedenen Datenverarbeitungsphasen im IoT-Connector, die Gerätedaten in Fast Healthcare Interoperability Resources(FHIR&#174;)-basierte [Beobachtungsressourcen](https://www.hl7.org/fhir/observation.html) transformieren.
 
-Daten von gesundheitsbezogenen Geräten oder medizinischen Geräten durchlaufen einen Pfad, in dem der IoT-Connector Daten in FHIR transformiert. Anschließend werden Daten im FHIR-Dienst gespeichert und darauf zugegriffen. Der Pfad der Integritätsdaten folgt diesen Schritten in dieser Reihenfolge: Erfassen, Normalisieren, Gruppieren, Transformieren und Beibehalten. In diesem Datenfluss werden Integritätsdaten im ersten Schritt der Erfassung vom Gerät abgerufen. Nachdem die Daten empfangen wurden, werden sie pro vom Benutzer ausgewählten oder vom Benutzer erstellten Schemavorlagen verarbeitet oder normalisiert, sodass die Integritätsdaten einfacher zu verarbeiten sind und gruppiert werden können. Integritätsdaten sind in drei Betriebsparameter gruppiert. Nachdem die Integritätsdaten normalisiert und gruppiert wurden, können sie über FHIR-Zielzuordnungen verarbeitet oder transformiert und dann im FHIR-Dienst gespeichert oder gespeichert werden.
+Daten von gesundheitsbezogenen Geräten oder medizinischen Geräten fließen über einen Pfad, in dem der IoT-Connector Daten in FHIR transformiert und dann Daten im FHIR-Dienst gespeichert und darauf zugegriffen wird. Der Integritätsdatenpfad folgt diesen Schritten in dieser Reihenfolge: Erfassung, Normalisierung, Gruppierung, Transformation und Persistenz. In diesem Datenfluss werden Integritätsdaten im ersten Schritt der Erfassung vom Gerät abgerufen. Nachdem die Daten empfangen wurden, werden sie pro benutzerdefinierten oder vom Benutzer erstellten Schemavorlagen verarbeitet oder normalisiert, sodass die Integritätsdaten einfacher zu verarbeiten und zu gruppiert werden können. Integritätsdaten werden in drei Operate-Parametern gruppiert. Nachdem die Integritätsdaten normalisiert und gruppiert wurden, können sie über FHIR-Zielzuordnungen verarbeitet oder transformiert und dann im FHIR-Dienst gespeichert oder beibehalten werden.
 
-In diesem Artikel werden die einzelnen Schritte im Datenfluss ausführlicher erläutert. Die nächsten Schritte sind [die Bereitstellung eines IoT-Connectors](deploy-iot-connector-in-azure.md) mithilfe von Gerätezuordnungen (normalisierungsschritt) und FHIR-Zielzuordnungen (der Transformationsschritt).
+In diesem Artikel werden die einzelnen Schritte im Datenfluss genauer beschrieben. In den nächsten Schritten wird beschrieben, wie Sie einen [IoT-Connector](deploy-iot-connector-in-azure.md) mithilfe von Gerätezuordnungen (dem Normalisierungsschritt) und FHIR-Zielzuordnungen (dem Transformationsschritt) bereitstellen.
 
-In den nächsten Abschnitten werden die Phasen beschrieben, in denen IoMT-Daten (Internet of Medical Things, Internet der medizinischen Dinge) durchlaufen werden, sobald sie von einem Event Hub an den IoT-Connector empfangen wurden.
+In den nächsten Abschnitten werden die Phasen beschrieben, die IoMT-Daten (Internet of Medical Things, Internet der medizinischen Dinge) durchläuft, sobald sie von einem Event Hub in den IoT-Connector empfangen wurden.
 
-:::image type="content" source="media/iot-data-flow/iot-data-flow.png" alt-text="IoMT-Datenfluss von IoT-Geräten zu einem Event Hub. Vom IoT-Connector erfasste IoMT-Daten werden normalisiert, gruppiert, transformiert und in einem FHIR-Dienst gespeichert." lightbox="media/iot-data-flow/iot-data-flow.png":::
+:::image type="content" source="media/iot-data-flow/iot-data-flow.png" alt-text="IoMT-Daten fließen von IoT-Geräten in einen Event Hub. IoMT-Daten werden vom IoT-Connector im FHIR-Dienst normalisiert, gruppiert, transformiert und persistent gespeichert." lightbox="media/iot-data-flow/iot-data-flow.png":::
 
 ## <a name="ingest"></a>Erfassen
-Die Erfassung ist die erste Phase, in der Gerätedaten an den IoT-Connector empfangen werden. Der Erfassungsendpunkt für Gerätedaten wird auf einem [Azure Event Hubs](../../event-hubs/index.yml)gehostet. Azure Event Hubs Plattform unterstützt eine hohe Skalierung und einen hohen Durchsatz mit der Möglichkeit, Millionen von Nachrichten pro Sekunde zu empfangen und zu verarbeiten. Darüber hinaus kann der IoT-Connector Nachrichten asynchron verarbeiten, wodurch die Notwendigkeit entfällt, dass Geräte warten müssen, während Gerätedaten verarbeitet werden.
+Die Erfassung ist die erste Phase, in der Gerätedaten an den IoT-Connector empfangen werden. Der Erfassungsendpunkt für Gerätedaten wird auf einem [Azure Event Hubs.](../../event-hubs/index.yml) Azure Event Hubs-Plattform unterstützt eine hohe Skalierung und einen hohen Durchsatz mit der Möglichkeit, Millionen von Nachrichten pro Sekunde zu empfangen und zu verarbeiten. Außerdem kann der IoT-Connector Nachrichten asynchron verarbeiten, damit Geräte nicht mehr warten müssen, bis Gerätedaten verarbeitet werden.
 
 > [!NOTE]
 > Derzeit wird JSON als einziges Format für die Gerätedaten unterstützt.
 
 ## <a name="normalize"></a>Normalize
-Normalisieren ist die nächste Phase, in der Gerätedaten vom obigen Event Hub abgerufen und mithilfe der Gerätezuordnungen verarbeitet werden. Dieser Zuordnungsprozess führt zur Transformation der Gerätedaten in ein normalisiertes Schema. 
+Normalisieren ist die nächste Phase, in der Gerätedaten aus dem oben genannten Event Hub abgerufen und mithilfe der Gerätezuordnungen verarbeitet werden. Dieser Zuordnungsprozess führt zur Transformation der Gerätedaten in ein normalisiertes Schema. 
 
-Der Normalisierungsprozess vereinfacht nicht nur die Datenverarbeitung in späteren Phasen, sondern bietet auch die Möglichkeit, eine Eingabenachricht in mehrere normalisierte Nachrichten zu pro projectieren. Ein Gerät kann beispielsweise mehrere Vitalparameter für Körpertemperatur, Pulsfrequenz, Blutdruck und Atemfrequenz in einer einzelnen Nachricht senden. Mit dieser Eingabenachricht werden vier separate FHIR-Ressourcen erstellt. Jede Ressource stellt einen anderen Vitalparameter dar, wobei die Eingabenachricht in vier verschiedene normalisierte Nachrichten projiziert wird.
+Der Normalisierungsprozess vereinfacht nicht nur die Datenverarbeitung in späteren Phasen, sondern bietet auch die Möglichkeit, eine Eingabenachricht in mehrere normalisierte Nachrichten zu projektieren. Ein Gerät kann beispielsweise mehrere Vitalparameter für Körpertemperatur, Pulsfrequenz, Blutdruck und Atemfrequenz in einer einzelnen Nachricht senden. Mit dieser Eingabenachricht werden vier separate FHIR-Ressourcen erstellt. Jede Ressource stellt einen anderen Vitalparameter dar, wobei die Eingabenachricht in vier verschiedene normalisierte Nachrichten projiziert wird.
 
 ## <a name="group"></a>Group
-Gruppe ist die nächste Phase, in der die normalisierten Nachrichten aus der vorherigen Phase mit drei verschiedenen Parametern gruppiert werden:
+Gruppe ist die nächste Phase, in der die aus der vorherigen Phase verfügbaren normalisierten Nachrichten mit drei verschiedenen Parametern gruppiert werden:
 
 * Geräteidentität
 * Messungstyp 
 * Zeitraum
 
-Die Gruppierungen nach Geräteidentität und Messungstyp ermöglichen die Verwendung des Messungstyps [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData). Dieser Typ bietet eine übersichtliche Möglichkeit zur Darstellung einer zeitbasierten Messreihe von einem Gerät in FHIR. Und der Zeitraum steuert die Latenz, mit der vom IoT-Connector generierte Beobachtungsressourcen in den FHIR-Dienst geschrieben werden.
+Die Gruppierungen nach Geräteidentität und Messungstyp ermöglichen die Verwendung des Messungstyps [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData). Dieser Typ bietet eine übersichtliche Möglichkeit zur Darstellung einer zeitbasierten Messreihe von einem Gerät in FHIR. Der Zeitraum steuert die Latenz, mit der vom IoT-Connector generierte Beobachtungsressourcen in den FHIR-Dienst geschrieben werden.
 
 > [!NOTE]
 > Der Wert für den Zeitraum ist standardmäßig auf 15 Minuten festgelegt und kann in der Vorschauversion nicht konfiguriert werden.
 
 ## <a name="transform"></a>Transformieren
-In der Transformationsphase werden gruppierte normalisierte Nachrichten über FHIR-Zielzuordnungsvorlagen verarbeitet. Nachrichten, die mit einem Vorlagentyp übereinstimmen, werden wie durch die Zuordnung angegeben in FHIR-basierte Observation-Ressourcen transformiert.
+In der Phase Transformieren werden ge gruppierte normalisierte Nachrichten über FHIR-Zielzuordnungsvorlagen verarbeitet. Nachrichten, die mit einem Vorlagentyp übereinstimmen, werden wie durch die Zuordnung angegeben in FHIR-basierte Observation-Ressourcen transformiert.
 
-An diesem Punkt wird die [Geräteressource](https://www.hl7.org/fhir/device.html) zusammen mit der zugehörigen [Patient-Ressource](https://www.hl7.org/fhir/patient.html) auch vom FHIR-Dienst abgerufen, indem der in der Nachricht enthaltene Gerätebezeichner verwendet wird. Diese Ressourcen werden als Verweis auf die zu erstellende Observation-Ressource hinzugefügt.
+An diesem Punkt wird die [Geräteressource](https://www.hl7.org/fhir/device.html) zusammen mit der zugehörigen [Patient-Ressource](https://www.hl7.org/fhir/patient.html) auch mithilfe der in der Nachricht angegebenen Geräte-ID aus dem FHIR-Dienst abgerufen. Diese Ressourcen werden als Verweis auf die zu erstellende Observation-Ressource hinzugefügt.
 
 > [!NOTE]
-> Alle Identitätss lookups werden nach der Lösung zwischengespeichert, um die Auslastung des FHIR-Diensts zu verringern. Wenn Sie Geräte für mehrere Patienten wiederverwenden möchten, empfiehlt es sich, eine für den Patienten spezifische virtuelle Geräteressource zu erstellen und den Bezeichner des virtuellen Geräts in der Nachrichtennutzlast zu senden. Das virtuelle Gerät kann als übergeordnetes Element mit der tatsächlichen Geräteressource verknüpft werden.
+> Alle Identitätssyntaufnahmen werden nach der Lösung zwischengespeichert, um die Auslastung des FHIR-Diensts zu verringern. Wenn Sie Geräte für mehrere Patienten wiederverwenden möchten, empfiehlt es sich, eine für den Patienten spezifische virtuelle Geräteressource zu erstellen und den Bezeichner des virtuellen Geräts in der Nachrichtennutzlast zu senden. Das virtuelle Gerät kann als übergeordnetes Element mit der tatsächlichen Geräteressource verknüpft werden.
 
-Wenn im FHIR-Dienst keine Geräteressource für einen bestimmten Gerätebezeichner vorhanden ist, hängt das Ergebnis vom Wert ab, `Resolution Type` der zum Zeitpunkt der Erstellung festgelegt wurde. Wenn die Einstellung auf den Wert `Lookup` festgelegt ist, wird die betreffende Nachricht ignoriert. Die Pipeline verarbeitet weiterhin andere eingehende Nachrichten. Wenn diese Einstellung auf festgelegt `Create` ist, erstellt der IoT-Connector eine reine Geräte- und Patientenressourcen im FHIR-Dienst.  
+Wenn im FHIR-Dienst keine Geräteressource für eine bestimmte Geräte-ID vorhanden ist, hängt das Ergebnis vom Wert ab, der zum Zeitpunkt der `Resolution Type` Erstellung festgelegt wurde. Wenn die Einstellung auf den Wert `Lookup` festgelegt ist, wird die betreffende Nachricht ignoriert. Die Pipeline verarbeitet weiterhin andere eingehende Nachrichten. Wenn dieser Aufsatz auf festgelegt ist, erstellt der `Create` IoT-Connector im FHIR-Dienst ein bares Gerät und Patientenressourcen.  
 
 ## <a name="persist"></a>Speichern
-Sobald die FHIR-Beobachtungsressource in der Transformationsphase generiert wurde, wird die Ressource im FHIR-Dienst gespeichert. Wenn die FHIR-Ressource "Observation" neu ist, wird sie im FHIR-Dienst erstellt. Wenn die FHIR-Ressource "Observation" bereits vorhanden ist, wird sie aktualisiert.
+Sobald die Observation FHIR-Ressource in der Transformationsphase generiert wurde, wird die Ressource im FHIR-Dienst gespeichert. Wenn die Observation FHIR-Ressource neu ist, wird sie im FHIR-Dienst erstellt. Wenn die Observation FHIR-Ressource bereits vorhanden ist, wird sie aktualisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
