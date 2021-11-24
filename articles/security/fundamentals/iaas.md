@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 3099ff7525e07a2361a63382eea0d3dc6e689ee7
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 55e8caee298d8aab2b724b8c4fb5804e2b58f563
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956840"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305843"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -50,7 +50,7 @@ Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglich
 
 - [Mitwirkender von virtuellen Computern](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): Kann virtuelle Computer verwalten, jedoch nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
 - [Mitwirkender von klassischen virtuellen Computern](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): Kann virtuelle Computer verwalten, die mit dem klassischen Bereitstellungsmodell erstellt wurden, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
-- [Sicherheitsadministrator](../../role-based-access-control/built-in-roles.md#security-admin): Nur in Security Center: Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen.
+- [Sicherheitsadministrator](../../role-based-access-control/built-in-roles.md#security-admin): Nur in Defender für Cloud: Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen.
 - [DevTest Labs-Benutzer](../../role-based-access-control/built-in-roles.md#devtest-labs-user): Kann alles anzeigen sowie virtuelle Computer verbinden, starten, neu starten und herunterfahren.
 
 Ihre Abonnementadministratoren und Coadministratoren können diese Einstellung ändern und so zu Administratoren aller virtuellen Computer in einem Abonnement werden. Achten Sie darauf, dass alle Ihre Abonnementadministratoren und -coadministratoren für die Anmeldung bei Ihren Computern vertrauenswürdig sind.
@@ -72,13 +72,13 @@ Installieren Sie einen Schadsoftwareschutz, um Viren, Spyware und andere Schadso
 
 Microsoft-Antischadsoftware umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Malwareproblembehandlung, Signaturupdates, Engine-Updates, Beispielberichte und Sammlungen von Ausschlussereignissen. Für Umgebungen, die getrennt von Ihrer Produktionsumgebung gehostet werden, können Sie eine Antischadsoftware-Erweiterung verwenden, um den Schutz Ihrer VMs und Clouddienste zu verbessern.
 
-Sie können Microsoft Antimalware und Partnerlösungen zur Vereinfachung der Bereitstellung und für integrierte Erkennungen (Warnungen und Vorfälle) in [Azure Security Center](../../security-center/index.yml) integrieren.
+Sie können Microsoft Antimalware und Partnerlösungen zur Vereinfachung der Bereitstellung und für integrierte Erkennungen (Warnungen und Vorfälle) mit [Microsoft Defender für Cloud](../../security-center/index.yml) kombinieren.
 
 **Bewährte Methode**: Installieren Sie eine Antischadsoftware-Lösung zum Schutz vor Malware.   
 **Detail**: [Installieren Sie eine Microsoft-Partnerlösung oder Microsoft Antimalware](../../security-center/security-center-services.md#supported-endpoint-protection-solutions-).
 
-**Bewährte Methode**: Integrieren Sie Ihre Antischadsoftware-Lösung zum Überwachen des Status Ihres Schutzes in Security Center.   
-**Detail**: [Verwalten Sie Endpunktschutz-Probleme mit Security Center](../../security-center/security-center-partner-integration.md)
+**Beste Vorgehensweise**: Integrieren Sie Ihre Anti-Malware-Lösung zum Überwachen des Status Ihres Schutzes in Defender für Cloud.   
+**Detail**: [Verwalten Sie Probleme beim Endpunkt-Schutz mit Defender für Cloud](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>Verwalten Ihrer Updates für virtuelle Computer
 Azure-VMs sollen wie alle lokalen VMs vom Benutzer verwaltet werden. Azure führt bei ihnen keine Pushübertragungen von Windows-Updates durch. Sie müssen Ihre Updates für virtuelle Computer verwalten.
@@ -102,7 +102,7 @@ Wenn Sie Windows Update verwenden, lassen Sie die Einstellung für automatische 
 **Detail**: Definieren Sie Ihren virtuellen Computer mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/syntax.md), sodass Sie sie problemlos erneut bereitstellen können. Mithilfe einer Vorlage erhalten Sie bei Bedarf eine gepatchte und sichere VM.
 
 **Bewährte Methode**: Wenden Sie Sicherheitsupdates zügig auf virtuelle Computer an.   
-**Detail**: Aktivieren Sie Azure Security Center (Free-Tarif oder Standard-Tarif), um [fehlende Sicherheitsupdates zu erkennen und anzuwenden](../../security-center/asset-inventory.md).
+**Detail**: Aktivieren Sie Microsoft Defender für Cloud (kostenfrei oder Standard), um [fehlende Sicherheitsupdates zu identifizieren und anzuwenden](../../security-center/asset-inventory.md).
 
 **Bewährte Methode**: Installieren Sie die neuesten Sicherheitsupdates.   
 **Detail**: Zu den Workloads, die von Kunden als erste in Azure verschoben werden, zählen unter anderem Labs und Systeme mit externer Verbindung. Wenn Ihre in Azure gehosteten virtuellen Computer Anwendungen oder Dienste hosten, die über das Internet zugänglich sein sollen, müssen Sie beim Patchen aufmerksam sein. Beschränken Sie sich beim Patchen nicht nur auf das Betriebssystem. Ungepatchte Sicherheitsrisiken in Partneranwendungen können ebenfalls zu Problemen führen, die mit einer guten Patchverwaltung vermeidbar sind.
@@ -119,7 +119,7 @@ Bewährte Softwareupdatemethoden für herkömmliche Rechenzentren und Azure-IaaS
 ## <a name="manage-your-vm-security-posture"></a>Verwalten des Sicherheitsstatus Ihrer virtuellen Computer
 Cyberbedrohungen entwickeln sich stetig weiter. Der Schutz Ihrer virtuellen Computer erfordert daher umfangreiche Überwachungsfunktionen, die Bedrohungen schnell erkennen, nicht autorisierte Zugriffe auf Ihre Ressourcen verhindern, Warnungen auslösen und falsch positive Ergebnisse verringern.
 
-Den Sicherheitsstatus Ihrer [virtuellen Windows-Computer](../../security-center/security-center-introduction.md) und [virtuellen Linux-Computer](../../security-center/security-center-introduction.md) können Sie mithilfe von [Azure Security Center](../../security-center/security-center-introduction.md) überwachen. Zum Schutz Ihrer virtuellen Computer stehen Ihnen im Security Center folgende Funktionen zur Verfügung:
+Den Sicherheitsstatus Ihrer virtuellen [Windows](../../security-center/security-center-introduction.md)- und [virtuellen Linux-Computer](../../security-center/security-center-introduction.md) können Sie mithilfe von [Microsoft Defender für Cloud](../../security-center/security-center-introduction.md) überwachen. Zum Schutz Ihrer virtuellen Computer stehen Ihnen in Defender für Cloud folgende Funktionen zur Verfügung:
 
 - Anwenden von Sicherheitseinstellungen des Betriebssystems mit empfohlenen Konfigurationsregeln.
 - Ermitteln und Herunterladen sicherheitsrelevanter und wichtiger Updates, die möglicherweise noch fehlen.
@@ -128,9 +128,9 @@ Den Sicherheitsstatus Ihrer [virtuellen Windows-Computer](../../security-center/
 - Bewerten und Beseitigen von Sicherheitsrisiken.
 - Erkennen von Bedrohungen.
 
-Security Center kann aktiv nach Bedrohungen suchen, und potenzielle Bedrohungen werden in Sicherheitswarnungen angezeigt. Korrelierte Bedrohungen werden in einer zentralen Ansicht namens „Sicherheitsvorfall“ aggregiert.
+Defender für Cloud kann aktiv nach Bedrohungen suchen und potenzielle Bedrohungen werden in Sicherheitswarnungen angezeigt. Korrelierte Bedrohungen werden in einer zentralen Ansicht namens „Sicherheitsvorfall“ aggregiert.
 
-Security Center speichert Daten in [Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md). Azure Monitor-Protokolle bietet eine Abfragesprache und eine Analyseengine, die Ihnen Einblicke in den Betrieb Ihrer Anwendungen und Ressourcen gibt. Zudem werden Daten aus [Azure Monitor](../../batch/monitoring-overview.md), Verwaltungslösungen und auf den virtuellen Computern in der Cloud oder lokal installierten Agents gesammelt. Dadurch erhalten Sie ein vollständiges Bild von Ihrer gesamten Umgebung.
+Defender für Cloud speichert Daten in [Azure Monitor-Protokollen](../../azure-monitor/logs/log-query-overview.md). Azure Monitor-Protokolle bietet eine Abfragesprache und eine Analyseengine, die Ihnen Einblicke in den Betrieb Ihrer Anwendungen und Ressourcen gibt. Zudem werden Daten aus [Azure Monitor](../../batch/monitoring-overview.md), Verwaltungslösungen und auf den virtuellen Computern in der Cloud oder lokal installierten Agents gesammelt. Dadurch erhalten Sie ein vollständiges Bild von Ihrer gesamten Umgebung.
 
 Organisationen, die für ihre virtuellen Computer kein hohes Maß an Sicherheit erzwingen, bleiben potenzielle Vorfälle, bei denen nicht autorisierte Benutzer versuchen, die Sicherheitskontrollen zu umgehen, verborgen.
 
@@ -175,10 +175,10 @@ Mit Azure Disk Encryption können Sie die folgenden geschäftlichen Anforderunge
 **Detail**: Verwenden Sie Azure RBAC, um sicherzustellen, dass nur die zentrale Netzwerkgruppe über Berechtigungen für Netzwerkressourcen verfügt.
 
 **Bewährte Methode**: Identifizieren und korrigieren Sie exponierte VMs, die einen Zugriff über „alle“ Quell-IP-Adressen zulassen.   
-**Detail**: Verwenden Sie Azure Security Center. Azure Security Center empfiehlt, den Zugriff über Endpunkte mit Internetzugriff einzuschränken, wenn für beliebige Ihrer Netzwerksicherheitsgruppen mindestens eine Eingangsregel gilt, die den Zugriff über „alle“ Quell-IP-Adressen zulässt. Azure Security Center empfiehlt, diese Eingangsregeln so zu ändern, dass der [Zugriff eingeschränkt](../../security-center/security-center-network-recommendations.md) wird auf Quell-IP-Adressen, die tatsächlich Zugriff benötigen.
+**Detail**: Verwenden Sie Microsoft Defender für Cloud. Defender für Cloud empfiehlt, den Zugriff über Endpunkte mit Internetverbindung einzuschränken, wenn für beliebige Ihrer Netzwerksicherheitsgruppen mindestens eine Eingangsregel gilt, die den Zugriff über „alle“ Quell-IP-Adressen zulässt. Defender für Cloud empfiehlt, diese Eingangsregeln so abzuändern, dass der [Zugriff eingeschränkt](../../security-center/security-center-network-recommendations.md) wird auf Quell-IP-Adressen, die tatsächlich Zugriff benötigen.
 
 **Bewährte Methode**: Beschränken Sie Verwaltungsports (RDP, SSH).   
-**Detail**: Mit einem [JIT-VM-Zugriff](../../security-center/security-center-just-in-time.md) (Just-In-Time-VM-Zugriff) kann eingehender Datenverkehr auf den Azure-VMs gesperrt werden, um die Gefährdung durch Angriffe zu reduzieren und dennoch bei Bedarf einen einfachen Zugriff auf Verbindungen zu virtuellen Computern bereitzustellen. Wenn JIT aktiviert ist, sperrt Azure Security Center eingehenden Datenverkehr für Ihre Azure-VMs, indem eine Netzwerksicherheitsgruppen-Regel erstellt wird. Sie wählen die Ports auf dem virtuellen Computer aus, für die eingehender Datenverkehr gesperrt wird. Diese Ports werden durch die JIT-Lösung gesteuert.
+**Detail**: Mit einem [JIT-VM-Zugriff](../../security-center/security-center-just-in-time.md) (Just-In-Time-VM-Zugriff) kann eingehender Datenverkehr auf den Azure-VMs gesperrt werden, um die Gefährdung durch Angriffe zu reduzieren und dennoch bei Bedarf einen einfachen Zugriff auf Verbindungen zu virtuellen Computern bereitzustellen. Wenn JIT aktiviert ist, sperrt Defender für Cloud den eingehenden Datenverkehr für Ihre virtuellen Azure-Computer, indem eine Netzwerksicherheitsgruppen-Regel erstellt wird. Sie wählen die Ports auf dem virtuellen Computer aus, für die eingehender Datenverkehr gesperrt wird. Diese Ports werden durch die JIT-Lösung gesteuert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](best-practices-and-patterns.md).

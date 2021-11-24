@@ -2,16 +2,16 @@
 title: Automatisierung in Azure Backup
 description: Dieser Artikel bietet einen Überblick über die Automatisierungsfunktionen von Azure Backup.
 ms.topic: conceptual
-ms.date: 10/22/2021
+ms.date: 11/16/2021
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: ba817714fffb63e1c2b989c43e4a72c1d0f91235
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ec19a2f887971a3a159b8b6ca155b33cd9af52e6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095579"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493001"
 ---
 # <a name="automation-in-azure-backup"></a>Automatisierung in Azure Backup
 
@@ -36,7 +36,7 @@ Für den Zugriff auf Azure Backup-Funktionalität können Sie die folgenden, von
 
 Sie können Azure Backup auch mit anderen Azure-Diensten wie Logic Apps, Runbooks und Aktionsgruppen verwenden, um umfassende Automatisierungsworkflows einzurichten.
 
-Weitere Informationen zu den verschiedenen Szenarios, die Automatisierungsclients unterstützen, sowie die entsprechenden Dokumentationsverweise finden Sie im Abschnitt [Unterstützte Automatisierungsmethoden nach Vorgangstyp](#supported-automation-methods-by-operation-type).
+Weitere Informationen zu den verschiedenen Szenarios, die Automatisierungsclients unterstützen, sowie die entsprechenden Dokumentationsverweise finden Sie im Abschnitt [Unterstützte Automatisierungsmethoden nach Vorgangstyp](#supported-automation-methods-by-operation-types).
 
 ## <a name="sample-automation-scenarios"></a>Beispiele für Automatisierungsszenarios
 
@@ -130,87 +130,124 @@ Führen Sie zum Einstieg diese Schritte aus:
 
    > [!VIDEO https://channel9.msdn.com/Shows/IT-Ops-Talk/Automatically-retry-failed-backup-jobs-using-Azure-Resource-Graph-and-Azure-Automation-Runbooks/player]
 
-## <a name="supported-automation-methods-by-operation-type"></a>Unterstützte Automatisierungsmethoden nach Vorgangstyp
+## <a name="supported-automation-methods-by-operation-types"></a>Unterstützte Automatisierungsmethoden nach Vorgangstypen
 
-| **Workload** | **Kategorie** | **Vorgang** | **PowerShell** | **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | **REST-API** | **Azure Policy** | **ARM-Vorlage** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Azure VM | Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#back-up-azure-vms) | Unterstützt <br><br> [Beispiele](/azure/backup/quick-backup-vm-cli#enable-backup-for-an-azure-vm) | Unterstützt  <br><br>  [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms) | Unterstützt  <br><br> [Beispiele](/azure/backup/backup-azure-auto-enable-backup) | Unterstützt  <br><br> [Beispiele](/azure/backup/backup-rm-template-samples) |
-| Azure VM | Backup | Selektive Datenträgersicherung | Unterstützt  <br><br> [Beispiele](/azure/backup/selective-disk-backup-restore#using-powershell) | Unterstützt  <br><br> [Beispiele](/azure/backup/selective-disk-backup-restore#using-azure-cli) | Unterstützt  <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms#excluding-disks-in-azure-vm-backup) | – | – |
-| Azure VM | Backup | Ausführen einer On-Demand-Sicherung | Unterstützt   <br><br> [Beispiele](/azure/backup/quick-backup-vm-powershell#start-a-backup-job) | Unterstützt  <br><br> [Beispiele](/azure/backup/quick-backup-vm-cli#start-a-backup-job) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms#trigger-an-on-demand-backup-for-a-protected-azure-vm) | – | – |
-| Azure VM | Restore | Wiederherstellen von Datenträgern in der primären Region | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#restore-an-azure-vm) | Unterstützt  <br><br> [Beispiele](/azure/backup/tutorial-restore-disk#restore-a-vm-disk) | Unterstützt  <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-restoreazurevms) | – | – |
-| Azure VM | Restore | Regionsübergreifende Wiederherstellung | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#restore-disks-to-a-secondary-region) | Unterstützt   <br><br> [Beispiele](/cli/azure/backup/restore?view=azure-cli-latest#az_backup_restore_restore_disks&preserve-view=true) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-restoreazurevms#cross-region-restore) | – | – |
-| Azure VM | Restore | Selektives Wiederherstellen von Datenträgern | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#restore-selective-disks) | Unterstützt   <br><br> [Beispiele](/azure/backup/selective-disk-backup-restore#restore-disks-with-azure-cli) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-restoreazurevms#restore-disks-selectively) | – | – |
-| Azure VM | Restore | Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#using-managed-identity-to-restore-disks) | Unterstützt   <br><br> [Beispiele](/azure/backup/tutorial-restore-disk#using-managed-identity-to-restore-disks) | Unterstützt   <br><br> [Beispiele](/rest/api/backup/restores/trigge) | – | – |
-| Azure VM | Restore | Wiederherstellen von Dateien | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) | Unterstützt   <br><br> [Beispiele](/azure/backup/tutorial-restore-disk#create-a-vm-from-the-restored-disk) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-restoreazurevms#restore-disks) | – | – |
-| Azure VM | Verwalten | Überwachen von Aufträgen | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup) | Unterstützt   <br><br> [Beispiele](/azure/backup/tutorial-restore-files) | – | – |
-| Azure VM | Verwalten | Ändern der Sicherungsrichtlinie | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#monitoring-a-backup-job) | Unterstützt   <br><br> [Beispiele](/azure/backup/quick-backup-vm-cli#monitor-the-backup-job) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job) | – | – |
-| Azure VM | Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#retain-data) | Unterstützt   <br><br> [Beispiele](/cli/azure/backup/protection?view=azure-cli-latest#az_backup_protection_disable&preserve-view=true) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms#stop-protection-but-retain-existing-data) | – | – |
-| Azure VM | Verwalten | Schutz beenden und Sicherungsdaten löschen | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#delete-backup-data) | Unterstützt   <br><br> [Beispiele](/cli/azure/backup/protection?view=azure-cli-latest#az_backup_protection_disable&preserve-view=true) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms#stop-protection-and-delete-data) | – | – |
-| Azure VM | Verwalten | Schutz fortsetzen | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#resume-backup)    | Unterstützt    <br><br> [Beispiele](/cli/azure/backup/protection?view=azure-cli-latest#az_backup_protection_resume&preserve-view=true) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms#undo-the-deletion) | – | – |
-| SQL Server in Azure-VM | Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#configure-a-backup-policy) | Unterstützt | Unterstützt | Derzeit nicht hier | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-rm-template-samples) |
-| SQL Server in Azure-VM | Backup | Aktivieren des automatischen Schutzes | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#enable-autoprotection) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Backup | Ausführen einer On-Demand-Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#on-demand-backup) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Restore | Zurücksetzen auf einen eindeutigen vollständigen/differenziellen Wiederherstellungspunkt | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#original-restore-with-distinct-recovery-point) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Restore | Wiederherstellen eines bestimmten Zeitpunkts | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#original-restore-with-log-point-in-time) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Restore | Regionsübergreifende Wiederherstellung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#alternate-workload-restore-to-a-vault-in-secondary-region) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Verwalten | Überwachen von Aufträgen | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#track-azure-backup-jobs) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Verwalten | Verwalten von Azure Monitor-Warnungen (Vorschau) | Unterstützt    <br><br> [Beispiele](/azure/azure-monitor/powershell-samples) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Verwalten | Verwalten von Azure Monitor-Metriken (Vorschau) | Unterstützt    <br><br> [Beispiele](/azure/azure-monitor/powershell-samples) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Verwalten | Ändern der Sicherungsrichtlinie | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#change-policy-for-backup-items) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#retain-data) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Verwalten | Schutz beenden und Sicherungsdaten löschen | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#delete-backup-data) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Verwalten | Aufheben der Instanzregistrierung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#unregister-sql-vm) | Unterstützt | Unterstützt | – | – |
-| SQL Server in Azure-VM | Verwalten | Erneutes Registrieren der Instanz | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#re-register-sql-vms) | Unterstützt | Unterstützt | – | – |
-| SAP HANA in Azure-VM | Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-backup-cli#register-and-protect-the-sap-hana-instance) | Unterstützt | Wird derzeit nicht unterstützt. | – |
-| SAP HANA in Azure-VM | Backup | Ausführen einer On-Demand-Sicherung | Unterstützt | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-backup-cli#trigger-an-on-demand-backup) | Unterstützt | – | Unterstützt – Beispiele   <br><br> [Beispiele](/azure/backup/backup-rm-template-samples) |
-| SAP HANA in Azure-VM | Restore | Zurücksetzen auf einen eindeutigen vollständigen/differenziellen/inkrementellen Wiederherstellungspunkt | Unterstützt | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-restore-cli#restore-a-database) | Unterstützt | – |    |
-| SAP HANA in Azure-VM | Restore | Wiederherstellen eines bestimmten Zeitpunkts | Unterstützt  | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-restore-cli#restore-a-database) | Unterstützt | – | – |
-| SAP HANA in Azure-VM | Restore | Regionsübergreifende Wiederherstellung | Unterstützt | Unterstützt | Unterstützt | – | – |
-| SAP HANA in Azure-VM | Verwalten | Überwachen von Aufträgen | Unterstützt  | Unterstützt | Unterstützt | – | – |
-| SAP HANA in Azure-VM | Verwalten | Ändern der Sicherungsrichtlinie | Unterstützt | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-manage-cli#change-policy) | Unterstützt | – | – |
-| SAP HANA in Azure-VM | Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Unterstützt  | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-manage-cli#stop-protection-with-retain-data) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy) | – | – |
-| SAP HANA in Azure-VM | Verwalten | Schutz beenden und Sicherungsdaten löschen | Unterstützt  | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-manage-cli#stop-protection-without-retain-data) | Unterstützt    <br><br> [Beispiele](/rest/api/backup/protected-items/delete) | – | – |
-| SAP HANA in Azure-VM | Verwalten | Aufheben der Instanzregistrierung | Unterstützt  | Unterstützt | Unterstützt | – | – |
-| SAP HANA in Azure-VM | Verwalten | Erneutes Registrieren der Instanz | Unterstützt  | Unterstützt | Unterstützt | – | – |
-| Azure Files | Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-afs-automation#configure-a-backup-policy) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-afs-cli#enable-backup-for-azure-file-shares) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-file-share-rest-api#configure-backup-for-an-unprotected-azure-file-share-using-rest-api) | Wird derzeit nicht unterstützt. | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-rm-template-samples) |
-| Azure Files | Backup | Ausführen einer On-Demand-Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-afs-automation#trigger-an-on-demand-backup) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-afs-cli#trigger-an-on-demand-backup-for-file-share) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-file-share-rest-api#trigger-an-on-demand-backup-for-file-share) | – | – |
-| Azure Files | Restore | Wiederherstellen am ursprünglichen oder einem alternativen Speicherort | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-afs-powershell) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-afs-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-azure-file-share-rest-api) | – | – |
-| Azure Files | Verwalten | Überwachen von Aufträgen | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-powershell#track-backup-and-restore-jobs) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-backup-cli#monitor-jobs) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-azure-file-share-rest-api#monitor-jobs) | – | – |
-| Azure Files | Verwalten | Ändern der Sicherungsrichtlinie | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-powershell#modify-the-protection-policy) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-backup-cli#modify-policy) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-azure-file-share-rest-api#modify-policy) | – | – |
-| Azure Files | Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-powershell#stop-protection-and-retain-recovery-points) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-backup-cli#stop-protection-and-retain-recovery-points) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-azure-file-share-rest-api#stop-protection-but-retain-existing-data) | – | – |
-| Azure Files | Verwalten | Schutz beenden und Sicherungsdaten löschen | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-powershell#stop-protection-without-retaining-recovery-points) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-backup-cli#stop-protection-without-retaining-recovery-points) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-azure-file-share-rest-api#stop-protection-and-delete-data) | – | – |
-| Azure-Blobs | Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-blobs-storage-account-ps) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-blobs-storage-account-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-backup-blobs) | Wird derzeit nicht unterstützt. | Unterstützt |
-| Azure-Blobs | Restore | Wiederherstellen von Blobs | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-blobs-storage-account-ps) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-blobs-storage-account-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-restore-blobs) | – | – |
-| Azure-Blobs | Verwalten | Überwachen von Aufträgen | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-blobs-storage-account-ps#tracking-job) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-blobs-storage-account-cli#tracking-job) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-restore-blobs#tracking-jobs) | – | – |
-| Azure-Blobs | Verwalten | Ändern der Sicherungsrichtlinie | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | – | – |
-| Azure-Blobs | Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | – | – |
-| Azure-Blobs | Verwalten | Schutz beenden und Sicherungsdaten löschen | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Azure-Blobs | Verwalten | Schutz fortsetzen | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | – | – |
-| Azure Disks | Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-managed-disks-ps) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-managed-disks-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-backup-disks) | Wird derzeit nicht unterstützt. | Unterstützt |
-| Azure Disks | Backup | Ausführen einer On-Demand-Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-managed-disks-ps#run-an-on-demand-backup) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-managed-disks-cli#run-an-on-demand-backup) |  – | – |
-| Azure Disks | Restore | Wiederherstellen auf einem neuen Datenträger | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-managed-disks-ps) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-managed-disks-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-restore-disks) | – | – |
-| Azure Disks | Verwalten | Überwachen von Aufträgen | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-managed-disks-ps#tracking-job) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-managed-disks-cli#tracking-job) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-restore-disks#track-jobs) | – | – |
-| Azure Disks | Verwalten | Ändern der Sicherungsrichtlinie | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | – | – |
-| Azure Disks | Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Azure Disks | Verwalten | Schutz beenden und Sicherungsdaten löschen | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Azure Disks | Verwalten | Schutz fortsetzen | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Azure Database for PostgreSQL-Server | Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt | Unterstützt | Unterstützt | Derzeit nicht hier | Unterstützt |
-| Azure Database for PostgreSQL-Server | Backup | Ausführen einer On-Demand-Sicherung | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Azure Database for PostgreSQL-Server | Restore | Wiederherstellen der Datenbank im Zielspeicherkonto | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Azure Database for PostgreSQL-Server | Verwalten | Ändern der Sicherungsrichtlinie | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Azure Database for PostgreSQL-Server | Verwalten | Beenden des Schutzes und Löschen der Daten | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Azure Database for PostgreSQL-Server | Verwalten | Beenden des Schutzes und Aufbewahren von Daten | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Azure Database for PostgreSQL-Server | Verwalten | Schutz fortsetzen | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Konfigurationen auf Tresorebene | Verwalten | Erstellen eines Recovery Services-Tresors | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#create-a-recovery-services-vault) | Unterstützt    <br><br> [Beispiele](/azure/backup/quick-backup-vm-cli#create-a-recovery-services-vault) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-createorupdatevault) | – | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-rm-template-samples) |
-| Konfigurationen auf Tresorebene | Verwalten | Erstellen des Sicherungstresors | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-blobs-storage-account-ps#create-a-backup-vault) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-blobs-storage-account-cli#create-a-backup-vault) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-create-update-backup-vault) | – | Unterstützt |
-| Konfigurationen auf Tresorebene | Verwalten | Verschieben eines Recovery Services-Tresors | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-move-recovery-services-vault#use-powershell-to-move-recovery-services-vault) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-move-recovery-services-vault#use-powershell-to-move-recovery-services-vault) | Unterstützt | – | – |
-| Konfigurationen auf Tresorebene | Verwalten | Verschieben eines Backup-Tresors | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Konfigurationen auf Tresorebene | Verwalten | Löschen eines Recovery Services-Tresors | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-delete-vault#delete-the-recovery-services-vault-by-using-powershell) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-delete-vault#delete-the-recovery-services-vault-by-using-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-delete-vault#delete-the-recovery-services-vault-by-using-azure-resource-manager) | – | – |
-| Konfigurationen auf Tresorebene | Verwalten | Löschen eines Backup-Tresors | Unterstützt | Hier | Hier | – | – |
-| Konfigurationen auf Tresorebene | Verwalten | Konfigurieren von Diagnoseeinstellungen | Unterstützt | Unterstützt | Unterstützt | Unterstützt    <br><br> [Beispiele](/azure/backup/azure-policy-configure-diagnostics) | Unterstützt |
-| Konfigurationen auf Tresorebene | Verwalten | Verwalten von Azure Monitor-Warnungen (Vorschau) | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Konfigurationen auf Tresorebene | Verwalten | Verwalten von Azure Monitor-Metriken (Vorschau) | Unterstützt | Unterstützt | Unterstützt | – | – |
-| Konfigurationen auf Tresorebene | Sicherheit | Aktivieren privater Endpunkte für einen Recovery Services-Tresor | Unterstützt | Unterstützt | Unterstützt | Nur Überwachungsrichtlinie derzeit unterstützt | Unterstützt |
-| Konfigurationen auf Tresorebene | Sicherheit | Aktivieren von kundenseitig verwalteten Schlüsseln für einen Recovery Services-Tresor | Unterstützt | Unterstützt | Unterstützt | Nur Überwachungsrichtlinie derzeit unterstützt | Unterstützt |
-| Konfigurationen auf Tresorebene | Sicherheit | Aktivieren des vorläufigen Löschens für eine Recovery Services-Tresor | Unterstützt | Unterstützt | Unterstützt | Wird derzeit nicht unterstützt. | Unterstützt |
-| Konfigurationen auf Tresorebene | Resilienz | Aktivieren der regionsübergreifenden Wiederherstellung für einen Recovery Services-Tresor | Unterstützt | Unterstützt | Unterstützt | Wird derzeit nicht unterstützt. | Unterstützt |
+### <a name="azure-vm"></a>Azure VM
+
+| **Kategorie** | **Vorgang** | **PowerShell** | **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | **REST-API** | **Azure Policy** | **ARM-Vorlage** |
+| --- | --- | --- | --- | --- | --- | --- |
+| Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#back-up-azure-vms) | Unterstützt <br><br> [Beispiele](/azure/backup/quick-backup-vm-cli#enable-backup-for-an-azure-vm) | Unterstützt  <br><br>  [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms) | Unterstützt  <br><br> [Beispiele](/azure/backup/backup-azure-auto-enable-backup) | Unterstützt  <br><br> [Beispiele](/azure/backup/backup-rm-template-samples) |
+| Backup | Selektive Datenträgersicherung | Unterstützt  <br><br> [Beispiele](/azure/backup/selective-disk-backup-restore#using-powershell) | Unterstützt  <br><br> [Beispiele](/azure/backup/selective-disk-backup-restore#using-azure-cli) | Unterstützt  <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms#excluding-disks-in-azure-vm-backup) | – | – |
+| Backup | Ausführen einer On-Demand-Sicherung | Unterstützt   <br><br> [Beispiele](/azure/backup/quick-backup-vm-powershell#start-a-backup-job) | Unterstützt  <br><br> [Beispiele](/azure/backup/quick-backup-vm-cli#start-a-backup-job) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms#trigger-an-on-demand-backup-for-a-protected-azure-vm) | – | – |
+| Restore | Wiederherstellen von Datenträgern in der primären Region | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#restore-an-azure-vm) | Unterstützt  <br><br> [Beispiele](/azure/backup/tutorial-restore-disk#restore-a-vm-disk) | Unterstützt  <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-restoreazurevms) | – | – |
+| Restore | Regionsübergreifende Wiederherstellung | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#restore-disks-to-a-secondary-region) | Unterstützt   <br><br> [Beispiele](/cli/azure/backup/restore?view=azure-cli-latest#az_backup_restore_restore_disks&preserve-view=true) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-restoreazurevms#cross-region-restore) | – | – |
+| Restore | Selektives Wiederherstellen von Datenträgern | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#restore-selective-disks) | Unterstützt   <br><br> [Beispiele](/azure/backup/selective-disk-backup-restore#restore-disks-with-azure-cli) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-restoreazurevms#restore-disks-selectively) | – | – |
+| Restore | Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#using-managed-identity-to-restore-disks) | Unterstützt   <br><br> [Beispiele](/azure/backup/tutorial-restore-disk#using-managed-identity-to-restore-disks) | Unterstützt   <br><br> [Beispiele](/rest/api/backup/restores/trigger) | – | – |
+| Restore | Wiederherstellen von Dateien | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) | Unterstützt   <br><br> [Beispiele](/azure/backup/tutorial-restore-disk#create-a-vm-from-the-restored-disk) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-restoreazurevms#restore-disks) | – | – |
+| Verwalten | Überwachen von Aufträgen | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup) | Unterstützt   <br><br> [Beispiele](/azure/backup/tutorial-restore-files) | – | – |
+| Verwalten | Ändern der Sicherungsrichtlinie | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#monitoring-a-backup-job) | Unterstützt   <br><br> [Beispiele](/azure/backup/quick-backup-vm-cli#monitor-the-backup-job) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job) | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#retain-data) | Unterstützt   <br><br> [Beispiele](/cli/azure/backup/protection?view=azure-cli-latest#az_backup_protection_disable&preserve-view=true) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms#stop-protection-but-retain-existing-data) | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten löschen | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#delete-backup-data) | Unterstützt   <br><br> [Beispiele](/cli/azure/backup/protection?view=azure-cli-latest#az_backup_protection_disable&preserve-view=true) | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms#stop-protection-and-delete-data) | – | – |
+| Verwalten | Schutz fortsetzen | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#resume-backup)    | Unterstützt    <br><br> [Beispiele](/cli/azure/backup/protection?view=azure-cli-latest#az_backup_protection_resume&preserve-view=true) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-backupazurevms#undo-the-deletion) | – | – |
+
+### <a name="sql-in-azure-vm"></a>SQL Server in Azure-VM
+
+| **Kategorie** | **Vorgang** | **PowerShell** | **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | **REST-API** | **Azure Policy** | **ARM-Vorlage** |
+| --- | --- | --- | --- | --- | --- | --- |
+| Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#configure-a-backup-policy) | Unterstützt | Unterstützt | Derzeit nicht hier | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-rm-template-samples) |
+| Backup | Aktivieren des automatischen Schutzes | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#enable-autoprotection) | Unterstützt | Unterstützt | – | – |
+| Backup | Ausführen einer On-Demand-Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#on-demand-backup) | Unterstützt | Unterstützt | – | – |
+| Restore | Zurücksetzen auf einen eindeutigen vollständigen/differenziellen Wiederherstellungspunkt | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#original-restore-with-distinct-recovery-point) | Unterstützt | Unterstützt | – | – |
+| Restore | Wiederherstellen eines bestimmten Zeitpunkts | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#original-restore-with-log-point-in-time) | Unterstützt | Unterstützt | – | – |
+| Restore | Regionsübergreifende Wiederherstellung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#alternate-workload-restore-to-a-vault-in-secondary-region) | Unterstützt | Unterstützt | – | – |
+| Verwalten | Überwachen von Aufträgen | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#track-azure-backup-jobs) | Unterstützt | Unterstützt | – | – |
+| Verwalten | Verwalten von Azure Monitor-Warnungen (Vorschau) | Unterstützt    <br><br> [Beispiele](/azure/azure-monitor/powershell-samples) | Unterstützt | Unterstützt | – | – |
+| Verwalten | Verwalten von Azure Monitor-Metriken (Vorschau) | Unterstützt    <br><br> [Beispiele](/azure/azure-monitor/powershell-samples) | Unterstützt | Unterstützt | – | – |
+| Verwalten | Ändern der Sicherungsrichtlinie | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#change-policy-for-backup-items) | Unterstützt | Unterstützt | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#retain-data) | Unterstützt | Unterstützt | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten löschen | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#delete-backup-data) | Unterstützt | Unterstützt | – | – |
+| Verwalten | Aufheben der Instanzregistrierung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#unregister-sql-vm) | Unterstützt | Unterstützt | – | – |
+| Verwalten | Erneutes Registrieren der Instanz | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-sql-automation#re-register-sql-vms) | Unterstützt | Unterstützt | – | – |
+
+### <a name="sap-hana-in-azure-vm"></a>SAP HANA in Azure-VM
+
+| **Kategorie** | **Vorgang** | **PowerShell** | **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | **REST-API** | **Azure Policy** | **ARM-Vorlage** |
+| --- | --- | --- | --- | --- | --- | --- |
+| Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Wird derzeit nicht unterstützt. | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-backup-cli#register-and-protect-the-sap-hana-instance) | Unterstützt | Wird derzeit nicht unterstützt. | – |
+| Backup | Ausführen einer On-Demand-Sicherung | Wird derzeit nicht unterstützt. | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-backup-cli#trigger-an-on-demand-backup) | Unterstützt | – | Unterstützt – Beispiele   <br><br> [Beispiele](/azure/backup/backup-rm-template-samples) |
+| Restore | Zurücksetzen auf einen eindeutigen vollständigen/differenziellen/inkrementellen Wiederherstellungspunkt | Wird derzeit nicht unterstützt. | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-restore-cli#restore-a-database) | Unterstützt | – |    |
+| Restore | Wiederherstellen eines bestimmten Zeitpunkts | Wird derzeit nicht unterstützt.  | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-restore-cli#restore-a-database) | Unterstützt | – | – |
+| Restore | Regionsübergreifende Wiederherstellung | Wird derzeit nicht unterstützt. | Unterstützt | Unterstützt | – | – |
+| Verwalten | Überwachen von Aufträgen | Wird derzeit nicht unterstützt.  | Unterstützt | Unterstützt | – | – |
+| Verwalten | Ändern der Sicherungsrichtlinie | Wird derzeit nicht unterstützt. | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-manage-cli#change-policy) | Unterstützt | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Wird derzeit nicht unterstützt.  | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-manage-cli#stop-protection-with-retain-data) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy) | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten löschen | Wird derzeit nicht unterstützt.  | Unterstützt    <br><br> [Beispiele](/azure/backup/tutorial-sap-hana-manage-cli#stop-protection-without-retain-data) | Unterstützt    <br><br> [Beispiele](/rest/api/backup/protected-items/delete) | – | – |
+| Verwalten | Aufheben der Instanzregistrierung | Wird derzeit nicht unterstützt.  | Unterstützt | Unterstützt | – | – |
+| Verwalten | Erneutes Registrieren der Instanz | Wird derzeit nicht unterstützt.  | Unterstützt | Unterstützt | – | – |
+
+### <a name="azure-files"></a>Azure Files
+
+| **Kategorie** | **Vorgang** | **PowerShell** | **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | **REST-API** | **Azure Policy** | **ARM-Vorlage** |
+| --- | --- | --- | --- | --- | --- | --- |
+| Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-afs-automation#configure-a-backup-policy) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-afs-cli#enable-backup-for-azure-file-shares) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-file-share-rest-api#configure-backup-for-an-unprotected-azure-file-share-using-rest-api) | Wird derzeit nicht unterstützt. | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-rm-template-samples) |
+| Backup | Ausführen einer On-Demand-Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-afs-automation#trigger-an-on-demand-backup) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-afs-cli#trigger-an-on-demand-backup-for-file-share) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-file-share-rest-api#trigger-an-on-demand-backup-for-file-share) | – | – |
+| Restore | Wiederherstellen am ursprünglichen oder einem alternativen Speicherort | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-afs-powershell) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-afs-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-azure-file-share-rest-api) | – | – |
+| Verwalten | Überwachen von Aufträgen | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-powershell#track-backup-and-restore-jobs) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-backup-cli#monitor-jobs) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-azure-file-share-rest-api#monitor-jobs) | – | – |
+| Verwalten | Ändern der Sicherungsrichtlinie | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-powershell#modify-the-protection-policy) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-backup-cli#modify-policy) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-azure-file-share-rest-api#modify-policy) | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-powershell#stop-protection-and-retain-recovery-points) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-backup-cli#stop-protection-and-retain-recovery-points) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-azure-file-share-rest-api#stop-protection-but-retain-existing-data) | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten löschen | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-powershell#stop-protection-without-retaining-recovery-points) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-afs-backup-cli#stop-protection-without-retaining-recovery-points) | Unterstützt    <br><br> [Beispiele](/azure/backup/manage-azure-file-share-rest-api#stop-protection-and-delete-data) | – | – |
+
+### <a name="azure-blobs"></a>Azure-Blobs
+
+| **Kategorie** | **Vorgang** | **PowerShell** | **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | **REST-API** | **Azure Policy** | **ARM-Vorlage** |
+| --- | --- | --- | --- | --- | --- | --- |
+| Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-blobs-storage-account-ps) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-blobs-storage-account-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-backup-blobs) | Wird derzeit nicht unterstützt. | Unterstützt |
+| Restore | Wiederherstellen von Blobs | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-blobs-storage-account-ps) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-blobs-storage-account-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-restore-blobs) | – | – |
+| Verwalten | Überwachen von Aufträgen | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-blobs-storage-account-ps#tracking-job) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-blobs-storage-account-cli#tracking-job) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-restore-blobs#tracking-jobs) | – | – |
+| Verwalten | Ändern der Sicherungsrichtlinie | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten löschen | Unterstützt | Unterstützt | Unterstützt | – | – |
+| Verwalten | Schutz fortsetzen | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | – | – |
+
+### <a name="azure-disks"></a>Azure Disks
+
+| **Kategorie** | **Vorgang** | **PowerShell** | **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | **REST-API** | **Azure Policy** | **ARM-Vorlage** |
+| --- | --- | --- | --- | --- | --- | --- |
+| Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt   <br><br> [Beispiele](/azure/backup/backup-managed-disks-ps) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-managed-disks-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-backup-disks) | Wird derzeit nicht unterstützt. | Unterstützt |
+| Backup | Ausführen einer On-Demand-Sicherung | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-managed-disks-ps#run-an-on-demand-backup) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-managed-disks-cli#run-an-on-demand-backup) |  – | – |
+| Restore | Wiederherstellen auf einem neuen Datenträger | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-managed-disks-ps) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-managed-disks-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-restore-disks) | – | – |
+| Verwalten | Überwachen von Aufträgen | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-managed-disks-ps#tracking-job) | Unterstützt    <br><br> [Beispiele](/azure/backup/restore-managed-disks-cli#tracking-job) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-restore-disks#track-jobs) | – | – |
+| Verwalten | Ändern der Sicherungsrichtlinie | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | Wird derzeit nicht unterstützt. | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten beibehalten | Unterstützt | Unterstützt | Unterstützt | – | – |
+| Verwalten | Schutz beenden und Sicherungsdaten löschen | Unterstützt | Unterstützt | Unterstützt | – | – |
+| Verwalten | Schutz fortsetzen | Unterstützt | Unterstützt | Unterstützt | – | – |
+
+### <a name="azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL-Server
+
+| **Kategorie** | **Vorgang** | **PowerShell** | **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | **REST-API** | **Azure Policy** | **ARM-Vorlage** |
+| --- | --- | --- | --- | --- | --- | --- |
+| Backup | Erstellen einer Sicherungsrichtlinie und Konfigurieren der Sicherung | Unterstützt | Unterstützt | Unterstützt | Derzeit nicht hier | Unterstützt |
+| Backup | Ausführen einer On-Demand-Sicherung | Unterstützt | Unterstützt | Unterstützt | – | – |
+| Restore | Wiederherstellen der Datenbank im Zielspeicherkonto | Unterstützt | Unterstützt | Unterstützt | – | – |
+| Verwalten | Ändern der Sicherungsrichtlinie | Unterstützt | Unterstützt | Unterstützt | – | – |
+| Verwalten | Beenden des Schutzes und Löschen der Daten | Unterstützt | Unterstützt | Unterstützt | – | – |
+| Verwalten | Beenden des Schutzes und Aufbewahren von Daten | Unterstützt | Unterstützt | Unterstützt | – | – |
+| Verwalten | Schutz fortsetzen | Unterstützt | Unterstützt | Unterstützt | – | – |
+
+### <a name="vault-level-configurations"></a>Konfigurationen auf Tresorebene
+
+| **Kategorie** | **Vorgang** | **PowerShell** | **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | **REST-API** | **Azure Policy** | **ARM-Vorlage** |
+| --- | --- | --- | --- | --- | --- | --- |
+| Verwalten | Erstellen eines Recovery Services-Tresors | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-vms-automation#create-a-recovery-services-vault) | Unterstützt    <br><br> [Beispiele](/azure/backup/quick-backup-vm-cli#create-a-recovery-services-vault) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-arm-userestapi-createorupdatevault) | – | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-rm-template-samples) |
+| Verwalten | Erstellen des Sicherungstresors | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-blobs-storage-account-ps#create-a-backup-vault) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-blobs-storage-account-cli#create-a-backup-vault) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-dataprotection-use-rest-api-create-update-backup-vault) | – | Unterstützt |
+| Verwalten | Verschieben eines Recovery Services-Tresors | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-move-recovery-services-vault#use-powershell-to-move-recovery-services-vault) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-move-recovery-services-vault#use-powershell-to-move-recovery-services-vault) | Unterstützt | – | – |
+| Verwalten | Verschieben eines Backup-Tresors | Unterstützt | Unterstützt | Unterstützt | – | – |
+| Verwalten | Löschen eines Recovery Services-Tresors | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-delete-vault#delete-the-recovery-services-vault-by-using-powershell) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-delete-vault#delete-the-recovery-services-vault-by-using-cli) | Unterstützt    <br><br> [Beispiele](/azure/backup/backup-azure-delete-vault#delete-the-recovery-services-vault-by-using-azure-resource-manager) | – | – |
+| Verwalten | Löschen eines Backup-Tresors | Unterstützt | Hier | Hier | – | – |
+| Verwalten | Konfigurieren von Diagnoseeinstellungen | Unterstützt | Unterstützt | Unterstützt | Unterstützt    <br><br> [Beispiele](/azure/backup/azure-policy-configure-diagnostics) | Unterstützt |
+| Verwalten | Verwalten von Azure Monitor-Warnungen (Vorschau) | Unterstützt | Unterstützt | Unterstützt | – | – |
+| Verwalten | Verwalten von Azure Monitor-Metriken (Vorschau) | Unterstützt | Unterstützt | Unterstützt | – | – |
+| Sicherheit | Aktivieren privater Endpunkte für einen Recovery Services-Tresor | Unterstützt | Unterstützt | Unterstützt | Nur Überwachungsrichtlinie derzeit unterstützt | Unterstützt |
+| Sicherheit | Aktivieren von kundenseitig verwalteten Schlüsseln für einen Recovery Services-Tresor | Unterstützt | Unterstützt | Unterstützt | Nur Überwachungsrichtlinie derzeit unterstützt | Unterstützt |
+| Sicherheit | Aktivieren des vorläufigen Löschens für eine Recovery Services-Tresor | Unterstützt | Unterstützt | Unterstützt | Wird derzeit nicht unterstützt. | Unterstützt |
+| Resilienz | Aktivieren der regionsübergreifenden Wiederherstellung für einen Recovery Services-Tresor | Unterstützt | Unterstützt | Unterstützt | Wird derzeit nicht unterstützt. | Unterstützt |

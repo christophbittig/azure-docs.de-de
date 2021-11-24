@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 6ca47916dff0973ac5c28afce737055cba80a7d1
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d7d11ea059128c8d2623ae3b9613acb57c97e1c1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566671"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549506"
 ---
 # <a name="split-data-component"></a>„Split Data“-Komponente
 
@@ -58,9 +58,9 @@ Diese Komponente ist hilfreich, wenn Sie Daten in Trainings- und Testsätze unte
   
 1. Wählen Sie die Option **Randomized split** (Zufällige Aufteilung), wenn Daten den beiden Gruppen nach dem Zufallsprinzip zugewiesen werden sollen. Dies ist die bevorzugte Option bei der Erstellung von Trainings- und Testdatasets.
 
-1. **Random Seed** (Zufälliger Ausgangswert): Geben Sie einen nicht negativen ganzzahligen Wert ein, mit dem die pseudozufällige Sequenz der zu verwendenden Instanzen starten soll. Dieser Standardstartwert wird in allen Komponenten verwendet, die Zufallszahlen generieren. 
+1. **Zufälliger Seed**: Dieser Parameter wird ignoriert, wenn **Randomized split** auf false festgelegt ist. Andernfalls geben Sie einen nicht-negativen ganzzahligen Wert ein, um die Pseudo-Zufallsfolge der zu verwendenden Instanzen zu starten. Dieser Standardstartwert wird in allen Komponenten verwendet, die Zufallszahlen generieren. 
 
-   Die Angabe eines Startwerts führt dazu, dass die Ergebnisse reproduzierbar sind. Wenn Sie die Ergebnisse eines Aufteilungsvorgangs wiederholen müssen, muss auch ein Startwert für den Zufallszahlengenerator angegeben werden. Andernfalls wird der zufällige Startwert standardmäßig auf **0** festgelegt, was bedeutet, dass der ursprüngliche Startwert von der Systemuhr abgerufen wird. Daher kann die Verteilung der Daten bei einer neuen Aufteilung geringfügig abweichen. 
+   Die Angabe eines Startwerts führt dazu, dass die Ergebnisse reproduzierbar sind. Wenn Sie die Ergebnisse einer Split-Operation wiederholen müssen, sollten Sie die gleiche Seed-Nummer für den Zufallszahlengenerator angeben. 
 
 1. **Stratified split** (Geschichtete Aufteilung): Legen Sie diese Option auf **True** fest, um sicherzustellen, dass die beiden Ausgabedatasets eine repräsentative Stichprobe der Werte aus der *Schichtspalte* oder *Schichtungsschlüsselspalte* enthalten. 
 

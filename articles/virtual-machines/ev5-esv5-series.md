@@ -2,25 +2,25 @@
 title: 'Ev5- und Esv5-Serie: Azure Virtual Machines'
 description: Spezifikationen für die VMs der Ev5- und Esv5-Serie
 author: styli365
-ms.author: sttsinar
+ms.author: joelpell
 ms.reviewer: joelpell
 ms.custom: mimckitt
 ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: a09b15cb2acff0aebe94cd550185e1ded5e055ea
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 897ae578ca1ff088e2f3f937bb9f00977ee233ad
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131502158"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399350"
 ---
 # <a name="ev5-and-esv5-series"></a>Ev5- und Esv5-Serie
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
-Virtual Machines der Ev5- und Esv5-Serie werden auf dem Intel&reg;Xeon&reg; Platinum 8370C (Ice Lake)-Prozessor der dritten Generation in einer [Hyperthreadkonfiguration](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ausgeführt, wodurch für die meisten allgemeinen Workloads ein besseres Nutzenversprechen geboten wird. Dieser neue Prozessor verfügt über Turbotaktfrequenz für alle Kerne von 3,5 GH mit [Intel&reg;-Turbo-Boost-Technik](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Advanced Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) und [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Mit bis zu 672 Gib RAM eignen sich diese virtuellen Computer perfekt für speicherintensive Unternehmensanwendungen, relationale Datenbankserver und In-Memory-Analyseworkloads. Die Ev5- und Esv5-Serie bietet ein besseres Nutzenversprechen für Workloads, für die kein lokaler temporärer Datenträger erforderlich ist.
+Virtual Machines der Ev5- und Esv5-Serie werden auf dem Intel&reg;Xeon&reg; Platinum 8370C (Ice Lake)-Prozessor der dritten Generation in einer [Hyperthreadkonfiguration](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ausgeführt, wodurch für die meisten allgemeinen Workloads ein besseres Nutzenversprechen geboten wird. Dieser neue Prozessor verfügt über Turbotaktfrequenz für alle Kerne von 3,5 GH mit [Intel&reg;-Turbo-Boost-Technik](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Advanced Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) und [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Mit bis zu 672 Gib RAM eignen sich diese virtuellen Computer perfekt für speicherintensive Unternehmensanwendungen, relationale Datenbankserver und In-Memory-Analyseworkloads. Die Ev5- und Esv5-Serie bietet ein besseres Nutzenversprechen für Workloads, für die kein lokaler temporärer Datenträger erforderlich ist. Informationen zu ähnlichen virtuellen Computern mit lokalem Datenträger finden Sie unter [VMs der Edv5- und Edsv5-Serie](edv5-edsv5-series.md).
 
 > [!NOTE]
 > Häufig gestellte Fragen finden Sie unter [Azure-VM-Größen ohne lokale temporäre Datenträger](azure-vms-no-temp-disk.yml).
@@ -38,6 +38,7 @@ Die Ev5-Serie unterstützt SSD Standard- und HDD Standard-Datenträgertypen. Wä
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Erforderlich <br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs|Maximale Bandbreite (MBit/s) |
@@ -61,7 +62,7 @@ Die Ev5-Serie unterstützt SSD Standard- und HDD Standard-Datenträgertypen. Wä
 
 Virtuelle Computer der Esv5-Serie werden auf dem Intel® Xeon® Platinum 8370C (Ice Lake)-Prozessor der dritten Generation ausgeführt und erreichen eine Turbotaktfrequenz für alle Kerne von bis zu 3,5 GHz.  Diese virtuellen Computer bieten bis zu 104 vCPU und 672 GiB RAM. Virtuelle Computer der Esv5-Serie verfügen über keinen temporären Speicher, wodurch der Einstiegspreis gesenkt wird.
 
-Die Esv5-Serie unterstützt SSD Standard-, HDD Standard- und Premium SSD-Datenträgertypen. Sie können auch einen Disk Ultra-Speicher basierend auf seiner regionalen Verfügbarkeit anfügen. Der Datenträgerspeicher wird separat von den virtuellen Computern in Rechnung gestellt. [Weitere Informationen zu Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/)
+Die Esv5-Serie unterstützt SSD Standard-, HDD Standard- und Premium SSD-Datenträgertypen. Sie können auch einen Disk Ultra-Speicher basierend auf seiner regionalen Verfügbarkeit anfügen. Der Datenträgerspeicher wird separat von den virtuellen Computern in Rechnung gestellt. [Weitere Informationen finden Sie bei den Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 [Storage Premium](premium-storage-performance.md): Unterstützt<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
@@ -70,6 +71,7 @@ Die Esv5-Serie unterstützt SSD Standard-, HDD Standard- und Premium SSD-Datentr
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Erforderlich <br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximaler Burst-Datenträgerdurchsatz ohne Cache: IOPS/MBit/s<sup>5</sup> | Maximale Anzahl NICs | Maximale Bandbreite (MBit/s) |

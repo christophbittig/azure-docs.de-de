@@ -4,16 +4,19 @@ description: Dieser Artikel bietet eine Übersicht der Überwachung und Protokol
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 370904873a3f86ebee1cd530f349c55306588d08
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d4a2a6b37c02aad5779085514bc5854df4d8a823
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564003"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400540"
 ---
 # <a name="monitor-and-log"></a>Überwachen und Protokollieren
 
-[!INCLUDE [header](includes/cloud-env.md)]
+![Cloud-Symbol](media/env-icon/cloud.png)  
+Alternativ können Sie den Monitor [auschecken und sich am Edge anmelden.](../edge/monitor-log-edge.md)
+
+---
 
 In diesem Artikel erfahren Sie mehr über Ereignisse und Protokolle, die vom Azure Video Analyzer-Dienst generiert werden. Außerdem erfahren Sie, wie Sie die vom Dienst generierten Protokolle nutzen und die Dienstereignisse überwachen.
 

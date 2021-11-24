@@ -1,48 +1,48 @@
 ---
 title: Integrieren von Azure Data Explorer für die langfristige Protokollaufbewahrung | Microsoft-Dokumentation
-description: Senden Sie Azure Sentinel-Protokolle zur Langzeitaufbewahrung an Azure Data Explorer, um die Kosten für die Datenspeicherung zu senken.
+description: Senden Sie Microsoft Sentinel-Protokolle zur langfristigen Speicherung an Azure Daten-Explorer, um die Kosten für die Datenspeicherung zu senken.
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f906502ce03ffcad42f07cd951c5944eb3e55501
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 06fa0559d2ce0796cd8031b06b8ff4034d943675
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009090"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523902"
 ---
 # <a name="integrate-azure-data-explorer-for-long-term-log-retention"></a>Integrieren von Azure Data Explorer für die langfristige Protokollaufbewahrung
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In Azure Sentinel erfasste Protokolle werden standardmäßig in Azure Monitor Log Analytics gespeichert. In diesem Artikel wird erläutert, wie Sie die Aufbewahrungskosten in Azure Sentinel senken, indem Sie sie zur Langzeitaufbewahrung an Azure Data Explorer senden.
+Standardmäßig werden in Microsoft Sentinel aufgenommene Protokolle in Azure Monitor Log Analytics gespeichert. In diesem Artikel wird erläutert, wie Sie die Aufbewahrungskosten in Microsoft Sentinel reduzieren können, indem Sie sie zur langfristigen Aufbewahrung an Azure Daten-Explorer senden.
 
 Das Speichern von Protokollen in Azure Data Explorer reduziert die Kosten, aber bewahrt gleichzeitig die Möglichkeit, Ihre Daten abzufragen. Diese Option ist besonders nützlich, wenn Ihre Daten zunehmen. Während Sicherheitsdaten beispielsweise im Lauf der Zeit an Wert verlieren können, müssen Protokolle möglicherweise aufgrund gesetzlicher Vorgaben oder für die regelmäßige Untersuchung älterer Daten aufbewahrt werden.
 
 ## <a name="about-azure-data-explorer"></a>Informationen zu Azure Data Explorer
 
-Azure Data Explorer ist eine Big Data-Analyseplattform, die speziell für Protokoll- und Datenanalysen optimiert ist. Da Azure Data Explorer als Abfragesprache die Kusto Query Language (KQL) verwendet, stellt er eine gute Alternative zur Datenspeicherung in Azure Sentinel dar. Mit Azure Data Explorer als Datenspeicher können Sie plattformübergreifende Abfragen ausführen und Daten sowohl in Azure Data Explorer als auch in Azure Sentinel visualisieren.
+Azure Data Explorer ist eine Big Data-Analyseplattform, die speziell für Protokoll- und Datenanalysen optimiert ist. Da Azure Daten-Explorer die Kusto Query Language (KQL) als Abfragesprache verwendet, ist es eine gute Alternative für die Microsoft Sentinel-Datenspeicherung. Wenn Sie Azure Daten-Explorer für Ihre Datenspeicherung verwenden, können Sie plattformübergreifende Abfragen durchführen und Daten sowohl in Azure Data Explorer als auch in Microsoft Sentinel visualisieren.
 
 Weitere Informationen finden Sie in der [Dokumentation zu Azure Data Explorer](/azure/data-explorer/) und im [Blog](https://azure.microsoft.com/blog/tag/azure-data-explorer/).
 
 ### <a name="when-to-integrate-with-azure-data-explorer"></a>Anwendungsfälle für die Integration in Azure Data Explorer
 
-Azure Sentinel bietet vollständige SIEM- und SOAR-Funktionen, schnelle Bereitstellung und Konfiguration sowie erweiterte, integrierte Sicherheitsfeatures für SOC-Teams. Allerdings kann die Speicherung der Sicherheitsdaten in Azure Sentinel nach einigen Monaten nachteilig werden, wenn SOC-Benutzer nicht mehr so oft darauf zugreifen müssen wie auf neuere Daten.
+Microsoft Sentinel bietet umfassende SIEM- und SOAR-Funktionen, eine schnelle Bereitstellung und Konfiguration sowie erweiterte, integrierte Sicherheitsfunktionen für SOC-Teams. Der Wert der Speicherung von Sicherheitsdaten in Microsoft Sentinel kann jedoch nach einigen Monaten sinken, wenn die SOC-Benutzer nicht mehr so oft auf diese Daten zugreifen müssen wie auf neuere Daten.
 
-Wenn Sie auf bestimmte Tabellen nur noch gelegentlich zugreifen müssen, z. B. für regelmäßige Untersuchungen oder Überwachungen, ist die Aufbewahrung der Daten in Azure Sentinel nicht mehr kostengünstig. Es wird dann empfohlen, die Daten in Azure Data Explorer zu speichern. Dies kostet weniger, ermöglicht aber dennoch die gleichen KQL-Abfragen, die Sie auch in Azure Sentinel ausführen.
+Wenn Sie nur gelegentlich auf bestimmte Tabellen zugreifen müssen, z. B. für regelmäßige Untersuchungen oder Audits, ist die Aufbewahrung Ihrer Daten in Microsoft Sentinel möglicherweise nicht mehr wirtschaftlich. An dieser Stelle empfehlen wir die Speicherung von Daten im Azure Daten-Explorer, der weniger kostet, aber dennoch die gleichen KQL-Abfragen ermöglicht, die Sie in Microsoft Sentinel ausführen.
 
-Sie können mithilfe des [Azure Data Explorer-Proxyfeatures für Log Analytics](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md) direkt aus Azure Sentinel auf die Daten in Azure Data Explorer zugreifen. Dazu verwenden Sie clusterübergreifende Abfragen in Ihrer Protokollsuche oder in Arbeitsmappen.
+Sie können auf die Daten im Azure Daten-Explorer direkt von Microsoft Sentinel aus zugreifen, indem Sie die [Log Analytics Azure Data Explorer Proxy-Funktion](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md) verwenden. Dazu verwenden Sie clusterübergreifende Abfragen in Ihrer Protokollsuche oder in Arbeitsmappen.
 
 > [!IMPORTANT]
 > Einige wichtige SIEM-Funktionen wie Analyseregeln, UEBA und das Untersuchungsdiagramm unterstützen in Azure Data Explorer gespeicherten Daten nicht.
@@ -51,19 +51,19 @@ Sie können mithilfe des [Azure Data Explorer-Proxyfeatures für Log Analytics](
 > [!NOTE]
 > Die Integration in Azure Data Explorer bietet Ihnen auch die vollständige Kontrolle und Granularität Ihrer Daten. Weitere Informationen finden Sie unter [Überlegungen zum Entwurf](#design-considerations).
 >
-## <a name="send-data-directly-to-azure-sentinel-and-azure-data-explorer-in-parallel"></a>Gleichzeitiges Senden von Daten an Azure Sentinel und Azure Data Explorer
+## <a name="send-data-directly-to-microsoft-sentinel-and-azure-data-explorer-in-parallel"></a>Daten direkt und parallel an Microsoft Sentinel und Azure Daten-Explorer senden
 
-Möglicherweise möchten Sie alle Daten, die für die *Sicherheit wichtig* sind, in Azure Sentinel aufbewahren, um sie für Erkennungen, Incidentuntersuchungen, die Bedrohungssuche, UEBA usw. einzusetzen. Von der Speicherung dieser Daten in Azure Sentinel profitieren in erster Linie SOC-Benutzer (Security Operations Center), denen in der Regel ein Aufbewahrungszeitraum von 3–12 Monaten ausreicht.
+Möglicherweise möchten Sie alle Daten mit *Sicherheitswert* in Microsoft Sentinel aufbewahren, um sie für Erkennungen, Vorfalluntersuchungen, Bedrohungssuche, UEBA usw. zu verwenden. Die Aufbewahrung dieser Daten in Microsoft Sentinel kommt vor allem den Nutzern des Security Operations Center (SOC) zugute, bei denen in der Regel eine Speicherung von 3-12 Monaten ausreicht.
 
-Sie können darüber hinaus konfigurieren, dass sämtliche Daten *unabhängig von ihrer Sicherheitsrelevanz* gleichzeitig auch an Azure Data Explorer gesendet werden, wo sie länger gespeichert werden können. Das gleichzeitige Senden von Daten an Azure Sentinel und Azure Data Explorer führt zu einer gewissen Duplizierung, die Kosteneinsparungen können aber erheblich sein, da Sie dadurch die Aufbewahrungskosten in Azure Sentinel reduzieren.
+Sie können darüber hinaus konfigurieren, dass sämtliche Daten *unabhängig von ihrer Sicherheitsrelevanz* gleichzeitig auch an Azure Data Explorer gesendet werden, wo sie länger gespeichert werden können. Während das gleichzeitige Senden von Daten an Microsoft Sentinel und Azure Daten-Explorer zu einer gewissen Duplizierung führt, können die Kosteneinsparungen erheblich sein, da Sie die Aufbewahrungskosten in Microsoft Sentinel reduzieren.
 
 > [!TIP]
-> Außerdem können Sie mit dieser Option auch Ihre Daten auf mehrere Datenspeicher verteilen, um z. B. die in Azure Sentinel gespeicherten Sicherheitsdaten mit operativen oder langfristig in Azure Data Explorer gespeicherten Daten zu erweitern. Weitere Informationen finden Sie unter [Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md).
+> Mit dieser Option können Sie auch Daten, die über verschiedene Datenspeicher verteilt sind, korrelieren, z. B. um die in Microsoft Sentinel gespeicherten Sicherheitsdaten mit den in Azure Daten-Explorer gespeicherten operativen oder langfristigen Daten anzureichern. Weitere Informationen finden Sie unter [Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md).
 >
 
-Die folgende Abbildung zeigt, wie Sie alle Ihre Daten in Azure Data Explorer beibehalten und gleichzeitig nur die Sicherheitsdaten für die tägliche Nutzung an Azure Sentinel senden können.
+Die folgende Abbildung zeigt, wie Sie alle Ihre Daten in Azure Daten-Explorer aufbewahren können, während Sie nur Ihre Sicherheitsdaten zur täglichen Verwendung an Microsoft Sentinel senden.
 
-:::image type="content" source="media/store-logs-in-adx/store-data-in-sentinel-and-adx-in-parallel.png" alt-text="Paralleles Speichern von Daten in Azure Data Explorer und Azure Sentinel":::
+:::image type="content" source="media/store-logs-in-adx/store-data-in-sentinel-and-adx-in-parallel.png" alt-text="Daten parallel in Azure Daten-Explorer und Microsoft Sentinel speichern.":::
 
 Weitere Informationen zum Implementieren dieser Architekturoption finden Sie unter [Überwachung mit Azure Data Explorer](/azure/architecture/solution-ideas/articles/monitor-azure-data-explorer).
 
@@ -84,27 +84,27 @@ Beachten Sie beim Konfigurieren der Daten für den Export die folgenden Überleg
 |Aspekt  | Details |
 |---------|---------|
 |**Umfang der exportierten Daten**     |  Nachdem der Export für eine bestimmte Tabelle konfiguriert wurde, werden alle an diese Tabelle gesendeten Daten ohne Ausnahme exportiert. Das Exportieren einer gefilterten Teilmenge Ihrer Daten oder das Beschränken des Exports auf bestimmte Ereignisse wird nicht unterstützt.       |
-|**Standortanforderungen**     |   Der Azure Monitor-/Azure Sentinel-Arbeitsbereich und der Zielstandort (Azure Storage-Konto oder Event Hub) müssen sich in derselben geografischen Region befinden.      |
+|**Standortanforderungen**     |   Sowohl der Azure Monitor-/Microsoft Sentinel-Arbeitsbereich als auch der Zielort (ein Azure Storage Account oder Event Hub) müssen sich in der gleichen geografischen Region befinden.      |
 |**Unterstützte Tabellen**     | Nicht alle Tabellen werden für den Export unterstützt, benutzerdefinierte Protokolltabellen etwa nicht. <br><br>Weitere Informationen finden Sie unter [Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor](../azure-monitor/logs/logs-data-export.md) in der Liste [Unterstützte Tabellen](../azure-monitor/logs/logs-data-export.md#supported-tables).         |
 |     |         |
 
 ### <a name="data-export-methods-and-procedures"></a>Methoden und Verfahren für den Datenexport
 
-Verwenden Sie eines der folgenden Verfahren, um Daten aus Azure Sentinel in Azure Data Explorer zu exportieren:
+Verwenden Sie eines der folgenden Verfahren, um Daten aus Microsoft Sentinel in Azure Daten-Explorer zu exportieren:
 
-- **Über Azure Event Hub:** Exportieren Sie Daten aus Log Analytics in einen Event Hub, von wo aus sie in Azure Data Explorer erfasst werden können. Bei dieser Methode werden einige Daten (die ersten x Monate) sowohl in Azure Sentinel als auch in Azure Data Explorer gespeichert.
+- **Über Azure Event Hub:** Exportieren Sie Daten aus Log Analytics in einen Event Hub, von wo aus sie in Azure Data Explorer erfasst werden können. Diese Methode speichert einige Daten (die ersten X Monate) sowohl in Microsoft Sentinel als auch in Azure Daten-Explorer.
 
-- **Über Azure Storage und Azure Data Factory:** Exportieren Sie die Daten aus Log Analytics in Azure Blob Storage. Führen Sie anschließend mit Azure Data Factory einen regelmäßigen Kopierauftrag aus, um die Daten weiter in Azure Data Explorer zu exportieren. Mit dieser Methode können Sie Daten erst dann aus Azure Data Factory kopieren, wenn sie sich dem Ende des Aufbewahrungszeitraums in Azure Sentinel/Log Analytics nähern. Damit vermeiden Sie eine Duplizierung.
+- **Über Azure Storage und Azure Data Factory:** Exportieren Sie die Daten aus Log Analytics in Azure Blob Storage. Führen Sie anschließend mit Azure Data Factory einen regelmäßigen Kopierauftrag aus, um die Daten weiter in Azure Data Explorer zu exportieren. Diese Methode ermöglicht es Ihnen, Daten aus Azure Data Factory nur dann zu kopieren, wenn sie sich ihrem Aufbewahrungslimit in Microsoft Sentinel / Log Analytics nähern, um eine Duplizierung zu vermeiden.
 
 ### <a name="azure-event-hub"></a>[Azure Event Hub](#tab/adx-event-hub)
 
-In diesem Abschnitt wird beschrieben, wie Sie Azure Sentinel-Daten aus Log Analytics in einen Event Hub exportieren, von wo aus sie in Azure Data Explorer erfasst werden können. Ähnlich wie beim [parallelen Senden von Daten an Azure Sentinel und Azure Data Explorer](#send-data-directly-to-azure-sentinel-and-azure-data-explorer-in-parallel) tritt bei dieser Methode eine Datenduplizierung auf, da die Daten direkt an Azure Data Explorer gestreamt werden, wenn sie in Log Analytics eintreffen.
+In diesem Abschnitt wird beschrieben, wie Sie Microsoft Sentinel-Daten aus Log Analytics in einen Event Hub exportieren, von wo aus Sie sie in Azure Daten-Explorer einlesen können. Ähnlich wie beim [direkten parallelen Senden von Daten an Microsoft Sentinel und Azure Data Explorer](#send-data-directly-to-microsoft-sentinel-and-azure-data-explorer-in-parallel) beinhaltet diese Methode eine gewisse Datenduplizierung, da die Daten in Azure Daten-Explorer gestreamt werden, sobald sie in Log Analytics ankommen.
 
 Die folgende Abbildung zeigt einen Beispielflow exportierter Daten in einen Event Hub, von wo aus sie in Azure Data Explorer erfasst werden.
 
 :::image type="content" source="media/store-logs-in-adx/ingest-data-to-adx-via-event-hub.png" alt-text="Exportieren von Daten in Azure Data Explorer über Azure Event Hub":::
 
-Die in der vorherigen Abbildung gezeigte Architektur bietet die vollständige SIEM-Umgebung von Azure Sentinel, einschließlich Incidentmanagement, visuelle Untersuchungen, Bedrohungssuche, erweiterter Visualisierungen, UEBA und mehr, für Daten, auf die alle *X* Monate zugegriffen werden muss. Gleichzeitig können Sie mit dieser Architektur auch langfristig gespeicherte Daten abfragen, indem Sie direkt in Azure Data Explorer oder mithilfe des Azure Data Explorer-Proxyfeatures über Azure Sentinel darauf zugreifen. Abfragen des langfristigen Datenspeichers in Azure Data Explorer können ohne Änderungen aus Azure Sentinel in Azure Data Explorer übertragen werden.
+Die in der vorherigen Abbildung gezeigte Architektur bietet das volle Microsoft Sentinel SIEM-Erlebnis, einschließlich Incident Management, visuelle Untersuchungen, Threat Hunting, erweiterte Visualisierungen, UEBA und mehr, für Daten, auf die häufig zugegriffen werden muss, alle *X* Monate. Gleichzeitig ermöglicht diese Architektur auch die Abfrage langfristiger Daten durch direkten Zugriff im Azure Daten-Explorer oder über Microsoft Sentinel dank der Proxy-Funktion des Azure Data Explorer. Abfragen zur langfristigen Datenspeicherung in Azure Daten-Explorer können ohne Änderungen von Microsoft Sentinel auf Azure Data Explorer portiert werden.
 
 > [!NOTE]
 > Beachten Sie beim Exportieren mehrerer Datentabellen in Azure Data Explorer über Event Hub, dass für den Log Analytics-Datenexport Einschränkungen hinsichtlich der maximalen Anzahl von Event Hubs pro Namespace gelten. Weitere Informationen zum Exportieren von Daten finden Sie unter [Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor](../azure-monitor/logs/logs-data-export.md?tabs=portal).
@@ -127,7 +127,7 @@ Die in der vorherigen Abbildung gezeigte Architektur bietet die vollständige SI
 
 1. **Erstellen Sie die Zieltabellen.** Die Rohdaten werden zunächst in einer Zwischentabelle erfasst und dort gespeichert, bearbeitet und erweitert.
 
-    Mithilfe einer Updaterichtlinie, ähnlich einer Funktion, die auf alle neuen Daten angewandt wird, werden die erweiterten Daten in der endgültigen Tabelle erfasst. Diese weist das gleiche Schema wie die ursprüngliche Tabelle in Azure Sentinel auf.
+    Eine Aktualisierungsrichtlinie, die einer Funktion ähnelt, die auf alle neuen Daten angewendet wird, wird verwendet, um die erweiterten Daten in die endgültige Tabelle aufzunehmen, die dasselbe Schema wie die Originaltabelle in Microsoft Sentinel hat.
 
     Legen Sie die Aufbewahrungsdauer für die Rohdatentabelle auf **0** Tage fest. Die Daten werden nur in der formatierten Tabelle gespeichert und nach ihrer Transformation sofort in der Rohdatentabelle gelöscht.
 
@@ -138,7 +138,7 @@ Die in der vorherigen Abbildung gezeigte Architektur bietet die vollständige SI
 1. **Erstellen Sie eine Updaterichtlinie, und fügen Sie sie an die Tabelle mit den unformatierten Datensätzen an.** In diesem Schritt erstellen Sie eine Funktion, die als Updaterichtlinie bezeichnet wird, und fügen sie an die Zieltabelle an, damit die Daten zum Zeitpunkt der Erfassung transformiert werden.
 
     > [!NOTE]
-    > Dieser Schritt ist nur erforderlich, wenn die Datentabellen in Azure Data Explorer das gleiche Schema und Format wie in Azure Sentinel haben sollen.
+    > Dieser Schritt ist nur erforderlich, wenn Sie Datentabellen in Azure Daten-Explorer mit demselben Schema und Format wie in Microsoft Sentinel haben möchten.
     >
 
     Weitere Informationen finden Sie unter [Verbinden eines Event Hubs mit Azure Data Explorer](/azure/data-explorer/ingest-data-no-code?tabs=activity-logs).
@@ -151,7 +151,6 @@ Die in der vorherigen Abbildung gezeigte Architektur bietet die vollständige SI
     - **Format:** Geben Sie als Tabellenformat `.json` an.
     - **Anzuwendende Zuordnung:** Geben Sie die in [Schritt 4](#mapping) erstellte Zuordnungstabelle an.
 
-
 1. **Ändern Sie die Aufbewahrungsdauer für die Zieltabelle.** Die [Standardaufbewahrungsrichtlinie von Azure Data Explorer](/azure/data-explorer/kusto/management/retentionpolicy) gibt möglicherweise einen viel längeren Zeitraum als erforderlich an.
 
     Mit dem folgenden Befehl können Sie die Aufbewahrungsrichtlinie in ein Jahr ändern:
@@ -159,11 +158,12 @@ Die in der vorherigen Abbildung gezeigte Architektur bietet die vollständige SI
     ```kusto
     .alter-merge table <tableName> policy retention softdelete = 365d recoverability = disabled
     ```
+
 ### <a name="azure-storage--azure-data-factory"></a>[Azure Storage/Azure Data Factory](#tab/azure-storage-azure-data-factory)
 
-In diesem Abschnitt wird beschrieben, wie Azure Sentinel-Daten aus Log Analytics in Azure Storage exportiert werden. Von dort aus kann Azure Data Factory einen regulären Auftrag ausführen, um die Daten in Azure Data Explorer zu exportieren.
+In diesem Abschnitt wird beschrieben, wie Sie Microsoft Sentinel-Daten aus Log Analytics in Azure Storage exportieren, wo Azure Data Factory einen regulären Job ausführen kann, um die Daten in Azure Daten-Explorer zu exportieren.
 
-Wenn Sie Azure Storage und Azure Data Factory verwenden, können Sie Daten auch nur dann aus Azure Storage kopieren, wenn das Ende des Aufbewahrungszeitraums in Azure Sentinel/Log Analytics bald erreicht ist. Dadurch kommt es nicht zu einer Datenduplizierung, und Azure Data Explorer wird *nur* für den Zugriff auf Daten verwendet, die älter als das Aufbewahrungslimit in Azure Sentinel sind.
+Die Verwendung von Azure Storage und Azure Data Factory ermöglicht es Ihnen, Daten aus Azure Storage nur dann zu kopieren, wenn sie sich dem Aufbewahrungslimit in Microsoft Sentinel / Log Analytics nähern. Es gibt keine Datenduplizierung und Azure Daten-Explorer wird *nur* verwendet, um auf Daten zuzugreifen, die älter als das Aufbewahrungslimit in Microsoft Sentinel sind.
 
 > [!TIP]
 > Die Architektur für die Verwendung von Azure Storage und Azure Data Factory für Ihre Legacydaten ist zwar komplexer, aber Sie können durch diese Methode insgesamt größere Kosteneinsparungen erzielen.
@@ -183,7 +183,7 @@ Die folgende Abbildung zeigt einen Beispielflow exportierter Daten in Azure Stor
 
 1. **Erstellen Sie die Zieltabellen.** Die Rohdaten werden zunächst in einer Zwischentabelle erfasst und dort gespeichert, bearbeitet und erweitert.
 
-    Mithilfe einer Updaterichtlinie, ähnlich einer Funktion, die auf alle neuen Daten angewandt wird, werden die erweiterten Daten in der endgültigen Tabelle erfasst. Diese weist das gleiche Schema wie die ursprüngliche Tabelle in Azure Sentinel auf.
+    Eine Aktualisierungsrichtlinie, die einer Funktion ähnelt, die auf alle neuen Daten angewendet wird, wird verwendet, um die erweiterten Daten in die endgültige Tabelle aufzunehmen, die dasselbe Schema wie die Originaltabelle in Microsoft Sentinel hat.
 
     Legen Sie die Aufbewahrungsdauer für die Rohdatentabelle auf **0** Tage fest. Die Daten werden nur in der formatierten Tabelle gespeichert und nach ihrer Transformation sofort in der Rohdatentabelle gelöscht.
 
@@ -194,7 +194,7 @@ Die folgende Abbildung zeigt einen Beispielflow exportierter Daten in Azure Stor
 1. **Erstellen Sie eine Updaterichtlinie, und fügen Sie sie an die Tabelle mit den unformatierten Datensätzen an.** In diesem Schritt erstellen Sie eine Funktion, die als Updaterichtlinie bezeichnet wird, und fügen sie an die Zieltabelle an, damit die Daten zum Zeitpunkt der Erfassung transformiert werden.
 
     > [!NOTE]
-    > Dieser Schritt ist nur erforderlich, wenn die Datentabellen in Azure Data Explorer das gleiche Schema und Format wie in Azure Sentinel haben sollen.
+    > Dieser Schritt ist nur erforderlich, wenn Sie Datentabellen in Azure Daten-Explorer mit demselben Schema und Format wie in Microsoft Sentinel haben möchten.
     >
 
     Weitere Informationen finden Sie unter [Verbinden eines Event Hubs mit Azure Data Explorer](/azure/data-explorer/ingest-data-no-code?tabs=activity-logs).
@@ -224,7 +224,7 @@ Die folgende Abbildung zeigt einen Beispielflow exportierter Daten in Azure Stor
 
 ## <a name="design-considerations"></a>Überlegungen zum Entwurf
 
-Berücksichtigen Sie beim Speichern Ihrer Azure Sentinel-Daten in Azure Data Explorer Folgendes:
+Wenn Sie Ihre Microsoft Sentinel-Daten in Azure Daten-Explorer speichern, sollten Sie die folgenden Elemente berücksichtigen:
 
 |Aspekt  |Beschreibung  |
 |---------|---------|
@@ -238,9 +238,9 @@ Berücksichtigen Sie beim Speichern Ihrer Azure Sentinel-Daten in Azure Data Exp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fahren Sie unabhängig davon, wo Sie Ihre Daten speichern, mit dem Hunting und der Untersuchung mit Azure Sentinel fort.
+Unabhängig davon, wo Sie Ihre Daten speichern, setzen Sie die Jagd und Untersuchung mit Microsoft Sentinel fort.
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [Tutorial: Untersuchen von Vorfällen mit Azure Sentinel](investigate-cases.md)
-- [Suchen nach Bedrohungen mit Azure Sentinel](hunting.md)
+- [Tutorial: Untersuchen von Vorfällen mit Microsoft Sentinel](investigate-cases.md)
+- [Jagd auf Bedrohungen mit Microsoft Sentinel](hunting.md)

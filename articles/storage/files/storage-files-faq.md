@@ -7,15 +7,15 @@ ms.date: 11/5/2021
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 79cb958616bc709ddd2dd866283eed0bd90d5610
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: ae679f5f5f70b684a7b587babc3d1492170267c9
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131866721"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554520"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
-[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
+[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
 
 In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -Funktionen beantwortet, z.B. die Nutzung der Azure-Dateisynchronisierung mit Azure Files. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
 
@@ -350,17 +350,28 @@ Die Erstsynchronisierung wird normalerweise durch die anfängliche Uploadrate vo
 * <a id="when-to-use-nfs"></a>
 **Wann sollte ich Azure Files NFS verwenden?**
 
-    Informationen hierzu finden Sie unter [NFS-Freigaben (Vorschau)](files-nfs-protocol.md).
+    Weitere Informationen finden Sie unter [NFS-Freigaben.](files-nfs-protocol.md)
 
 * <a id="backup-nfs-data"></a>
 **Wie sichere ich Daten, die in NFS-Freigaben gespeichert sind?**
 
-    Die Sicherung von Daten in NFS-Freigaben kann entweder mit bekannten Tools wie rsync oder mit Produkten eines unserer Partnerunternehmen zur Datensicherung orchestriert werden. Mehrere dieser Partner zur Datensicherung, darunter [Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm), [Veeam](https://www.veeam.com/blog/?p=123438) und [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001), waren Teil unserer ersten Vorschauversion und haben ihre Lösungen auf SMB 3.x sowie NFS 4.1 für Azure Files erweitert.
+    Die Sicherung von Daten in NFS-Freigaben kann entweder mit bekannten Tools wie rsync oder mit Produkten eines unserer Partnerunternehmen zur Datensicherung orchestriert werden. Mehrere dieser Partner zur Datensicherung, darunter [Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm), [Veeam](https://www.veeam.com/blog/?p=123438) und [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001), haben ihre Lösungen auf SMB 3.x sowie NFS 4.1 für Azure Files erweitert.
 
 * <a id="migrate-nfs-data"></a>
 **Kann ich vorhandene Daten zu einer NFS-Freigabe migrieren?**
 
     Innerhalb derselben Region können Sie Daten mit Standardtools wie scp, rsync oder SSHFS verschieben. Da auf Azure Files NFS von mehreren Compute-Instanzen aus gleichzeitig zugegriffen werden kann, können Sie über parallele Uploads die Kopiergeschwindigkeit erhöhen. Wenn Sie Daten von außerhalb einer Region migrieren möchten, verwenden Sie zur Einbindung in Ihr Dateisystem aus Ihrem lokalen Rechenzentrum eine VPN- oder ExpressRoute-Verbindung.
+    
+* <a id=nfs-ibm-mq-support></a>
+**Können Sie IBM MQ (einschließlich mehreren Instanzen) auf Azure Files NFS ausführen?**
+    * Azure Files NFS v4.1-Dateifreigaben erfüllen die drei von IBM MQ festgelegten Anforderungen.
+       - https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-requirements-shared-file-systems
+          + Integrität des Schreibens von Daten
+          + Garantierter exklusiver Zugriff auf Dateien
+          + Releasesperren bei einem Fehler
+    * Die folgenden Testfälle werden erfolgreich ausgeführt
+        1. https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-verifying-shared-file-system-behavior
+        2. https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-running-amqsfhac-test-message-integrity
 
 ## <a name="on-premises-access"></a>Lokaler Zugriff
 

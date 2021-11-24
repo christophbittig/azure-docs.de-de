@@ -1,31 +1,37 @@
 ---
 title: Indexübersicht
 titleSuffix: Azure Cognitive Search
-description: Hier finden Sie eine Einführung in die Indizierungskonzepte und -tools in Azure Cognitive Search, einschließlich Schemadefinitionen und der physischen Datenstruktur.
+description: Erklärt, was ein Suchindex in Azure Cognitive Search ist und beschreibt Inhalt, Aufbau, physischen Ausdruck und das Indexschema.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/08/2021
-ms.openlocfilehash: ab1106ef927829589934485c2022d353339d5089
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.date: 11/12/2021
+ms.openlocfilehash: 51b075dbce189370cf502bce6d46471da6c58348
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062812"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490533"
 ---
-# <a name="search-indexes-in-azure-cognitive-search"></a>Suchindizes in Azure Cognitive Search
+# <a name="indexes-in-azure-cognitive-search"></a>Indizes in Azure Cognitive Search
 
-In Cognitive Search speichert ein *Suchindex* durchsuchbaren Inhalt, der für Volltext- und gefilterte Abfragen verwendet wird. Ein Index wird durch ein Schema definiert und im Dienst gespeichert. Der Datenimport erfolgt in einem zweiten Schritt. 
+In Azure Cognitive Search ist ein *Suchindex* Ihr durchsuchbarer Inhalt, der der Suchmaschine für Indizierung, Volltextsuche und gefilterte Abfragen zur Verfügung steht. Ein Index wird durch ein Schema definiert und im Suchdienst gespeichert, der Datenimport folgt in einem zweiten Schritt. Dieser Inhalt ist in Ihrem Suchdienst vorhanden, abgesehen von Ihren primären Datenspeichern, was für die in modernen Anwendungen erwarteten Antwortzeiten von Millisekunden notwendig ist. Außer in bestimmten Indizierungsszenarien wird der Suchdienst niemals eine Verbindung zu Ihren lokalen Daten herstellen oder diese abfragen.
 
-Dieser Artikel enthält eine Einführung in Suchindizes. Möchten Sie lieber sofort starten? Lesen Sie [Erstellen von Suchindizes](search-how-to-create-search-index.md).
+Wenn Sie einen Suchindex erstellen und verwalten, wird Ihnen dieser Artikel helfen, das Folgende zu verstehen:
 
-## <a name="whats-a-search-index"></a>Was ist ein Suchindex?
++ Inhalt (Dokumente und Schema)
++ Physische Darstellung
++ Einfache Vorgänge
 
-Indizes in Cognitive Search enthalten *Suchdokumente*. Konzeptionell ist ein Dokument eine einzelne Einheit mit durchsuchbaren Daten im Index. Ein Einzelhändler verfügt beispielsweise über ein Dokument für jedes Produkt, eine Nachrichtenagentur über ein Dokument pro Zeitungsartikel usw. So lassen sich diese Konzepte vertrauteren Entsprechungen in der Datenbank zuordnen: Ein *Suchindex* entspricht einer *Tabelle*, und *Dokumente* entsprechen ungefähr den *Zeilen* einer Tabelle.
+Sie möchten am liebsten gleich selbst Hand anlegen? Siehe stattdessen [Erstellen eines Suchindexes](search-how-to-create-search-index.md).
 
-Die physische Struktur eines Index wird durch das Schema bestimmt. Die „Feldsammlung“ ist typischerweise der größte Teil eines Index, wobei jedes Feld benannt ist, einen [Datentyp](/rest/api/searchservice/Supported-data-types) erhält und mit zulässigen Verhaltensweisen versehen wird, die bestimmen, wie es verwendet wird.
+## <a name="content-of-a-search-index"></a>Inhalt eines Suchindexes
+
+Indizes in Cognitive Search enthalten *Suchdokumente*. Konzeptionell ist ein Dokument eine einzelne Einheit mit durchsuchbaren Daten im Index. Zum Beispiel könnte ein Einzelhändler ein Dokument für jedes Produkt haben, eine Nachrichtenorganisation ein Dokument für jeden Artikel, eine Reiseseite ein Dokument für jedes Hotel und jedes Reiseziel und so weiter. So lassen sich diese Konzepte vertrauteren Entsprechungen in der Datenbank zuordnen: Ein *Suchindex* entspricht einer *Tabelle*, und *Dokumente* entsprechen ungefähr den *Zeilen* einer Tabelle.
+
+Die Struktur eines Dokuments wird durch das Indexschema bestimmt, wie unten dargestellt. Die Sammlung "fields" ist in der Regel der größte Teil eines Indexes, in dem jedes Feld benannt, einem [Datentyp](/rest/api/searchservice/Supported-data-types) zugeordnet und mit zulässigen Verhaltensweisen versehen ist, die bestimmen, wie es verwendet wird.
 
 ```json
 {
@@ -59,21 +65,23 @@ Die physische Struktur eines Index wird durch das Schema bestimmt. Die „Feldsa
 }
 ```
 
-Weitere Elemente sind aus Gründen der Übersicht reduziert, über die folgenden Links erhalten Sie jedoch weitere Informationen: [Vorschlagsfunktionen](index-add-suggesters.md), [Bewertungsprofile](index-add-scoring-profiles.md) und [Analysetools](search-analyzers.md), die zum Verarbeiten von Zeichenfolgen in Token gemäß den linguistischen Regeln oder anderen vom Analysetool unterstützten Merkmalen verwendet werden, sowie [CORS-Einstellungen (Cross-Origin Remote Scripting)](#corsoptions).
+Andere Elemente sind der Kürze halber ausgeblendet, aber die folgenden Links können die Details liefern: 
 
-## <a name="field-definitions"></a>Felddefinitionen
++ [Suggestoren](index-add-suggesters.md) unterstützen Vorausabfragen wie die automatische Vervollständigung
++ [Bewertungsprofile](index-add-scoring-profiles.md) werden für die Relevanzabstimmung verwendet
++ [Analysatoren](search-analyzers.md) werden verwendet, um Zeichenketten nach linguistischen Regeln oder anderen vom Analysator unterstützten Merkmalen in Token zu zerlegen
++ CORS (Cross-Origin-Remote-Scripting) [ wird](search-how-to-create-search-index.md#corsoptions) für Anwendungen verwendet, die Anfragen von verschiedenen Domänen aus stellen
++ [Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) wird für die doppelte Verschlüsselung von sensiblen Inhalten im Index verwendet.
 
-Ein Suchdokument wird durch die `fields`-Sammlung definiert. Sie benötigen Felder für die Dokumentidentifikation (Schlüssel), in denen durchsuchbarer Text gespeichert ist, und Felder zur Unterstützung von Filtern, Facetten und Sortierungen. Möglicherweise benötigen Sie auch Felder für Daten, die einem Benutzer nie angezeigt werden. Beispielsweise können Sie Felder für Gewinnspannen oder Marketingaktionen verwenden, mit denen Sie den Suchrang bearbeiten können.
+### <a name="field-definitions"></a>Felddefinitionen
 
-Ein Feld vom Typ „Edm.String“ muss als Dokumentschlüssel angegeben werden. Es wird für die eindeutige Identifizierung der einzelnen Suchdokumente verwendet und berücksichtigt Groß-/Kleinschreibung. Sie können ein Dokument anhand seines Schlüssels abrufen, um eine Detailseite aufzufüllen.
+Ein Suchdokument wird durch die Sammlung "Felder" definiert. Sie benötigen Felder für die Dokumentidentifikation (Schlüssel), in denen durchsuchbarer Text gespeichert ist, und Felder zur Unterstützung von Filtern, Facetten und Sortierungen. Möglicherweise benötigen Sie auch Felder für Daten, die einem Benutzer nie angezeigt werden. Beispielsweise können Sie Felder für Gewinnspannen oder Marketingaktionen verwenden, mit denen Sie den Suchrang bearbeiten können.
 
-Wenn eingehende Daten hierarchisch sind, weisen Sie einen [komplexen Typ](search-howto-complex-data-types.md) zu, um die geschachtelten Strukturen darzustellen. Das integrierte Beispieldataset „Hotels“ veranschaulicht komplexe Typen anhand einer Adresse (enthält mehrere untergeordnete Felder) mit einer 1:1-Beziehung zu den einzelnen Hotels verwenden und einer komplexen Zimmersammlung, wobei jedem Hotel mehrere Zimmer zugeordnet sind. 
-
-Weisen Sie alle Analysetools Zeichenfolgenfeldern zu, bevor der Index erstellt wird. Führen Sie die gleichen Schritte für Vorschlagsfunktionen aus, wenn Sie AutoVervollständigen für bestimmte Felder aktivieren möchten.
+Wenn die eingehenden Daten hierarchischer Natur sind, können sie in einem Index als [komplexer Typ](search-howto-complex-data-types.md) dargestellt werden, der zur Darstellung verschachtelter Strukturen verwendet wird. Das integrierte Beispieldataset „Hotels“ veranschaulicht komplexe Typen anhand einer Adresse (enthält mehrere untergeordnete Felder) mit einer 1:1-Beziehung zu den einzelnen Hotels verwenden und einer komplexen Zimmersammlung, wobei jedem Hotel mehrere Zimmer zugeordnet sind. 
 
 <a name="index-attributes"></a>
 
-### <a name="attributes"></a>Attributes
+### <a name="field-attributes"></a>Feldattribute
 
 Feldattribute bestimmen, wie ein Feld verwendet wird, z.B. ob es in der Volltextsuche, in der Facettennavigation, für Sortiervorgänge usw. verwendet wird. 
 
@@ -95,36 +103,64 @@ Obwohl Sie jederzeit neue Felder hinzufügen können, sind vorhandene Felddefini
 
 <a name="index-size"></a>
 
-## <a name="storage-implications-of-field-attributes"></a>Speicherauswirkungen von Feldattributen
+## <a name="physical-representation"></a>Physische Darstellung
 
-Die Größe eines Indexes wird durch die Größe der von Ihnen hochgeladenen Dokumente sowie durch die Indexkonfiguration bestimmt, also beispielsweise dadurch, ob Sie Vorschlagsfunktionen einbeziehen und wie Sie Attribute für einzelne Felder festlegen. 
+In Azure Cognitive Search ist die physische Struktur eines Indexes weitgehend eine interne Implementierung. Sie können auf das Schema zugreifen, den Inhalt abfragen, die Größe überwachen und die Kapazität verwalten, aber die Cluster selbst (Indizes, Shards und andere Dateien und Ordner) sind tabu und werden intern von Microsoft in Ihrem Namen verwaltet.
 
-Der folgende Screenshot veranschaulicht die Indexspeichermuster aus verschiedenen Kombinationen von Attributen. Der Index basiert auf dem **Real Estate-Beispielindex**, den Sie ganz einfach mithilfe des Datenimport-Assistenten erstellen können. Obwohl die Indexschemas nicht angezeigt werden, können Sie die auf dem Indexnamen basierenden Attribute ableiten. Beispielsweise ist für den *realestate-searchable*-Index das searchable-Attribut ausgewählt und sonst nichts, für den *realestate-retrievable*-Index ist das retrievable-Attribut ausgewählt und nichts anderes usw.
+Die Größe eines Indexes wird bestimmt durch:
+
++ Umfang und Zusammensetzung Ihrer Dokumente
++ Indexkonfiguration (insbesondere, ob Sie Suggestoren einbeziehen)
++ Attribute zu einzelnen Feldern
+
+Sie können die Indexgröße auf der Registerkarte Indizes im Azure-Portal überwachen oder eine [GET INDEX-Anforderung](/rest/api/searchservice/get-index) an Ihren Suchdienst stellen.
+
+### <a name="factors-influencing-index-size"></a>Faktoren, die die Indexgröße beeinflussen
+
+Die Zusammensetzung und Menge der Dokumente hängt davon ab, was Sie importieren möchten. Denken Sie daran, dass ein Suchindex nur durchsuchbare Inhalte enthalten sollte. Wenn Quelldokumente binäre Felder enthalten, würden Sie diese Felder in der Regel aus dem Indexschema auslassen (es sei denn, Sie verwenden KI-Anreicherung, um den Inhalt zu knacken und zu analysieren, um durchsuchbare Textinformationen zu erstellen).
+
+Die Indexkonfiguration kann neben Dokumenten auch andere Komponenten enthalten, z. B. Suggestoren, Kundenanalysatoren, Bewertungsprofile, CORS-Einstellungen und Informationen zu Verschlüsselungsschlüsseln. Aus der obigen Liste ist die einzige Komponente, die sich auf die Indexgröße auswirken kann, die der Suggestoren. [**Suggesters**](index-add-suggesters.md) sind Konstrukte, die Type-Ahead- oder Autocomplete-Abfragen unterstützen. Wenn Sie also einen Suggestor einbinden, erstellt der Indizierungsprozess die Datenstrukturen, die für wortwörtliche Zeichenübereinstimmungen erforderlich sind. Suggestoren werden auf Feldebene implementiert. Wählen Sie daher nur die Felder aus, die sich für die Vorauswahl eignen.
+
+Feldattribute sind der dritte Aspekt der Indexgröße. Attribute bestimmen das Verhalten. Um diese Verhaltensweisen zu unterstützen, erstellt der Indizierungsprozess die entsprechenden Datenstrukturen. Zum Beispiel ruft "searchable" die [Volltextsuche](search-lucene-query-architecture.md) auf, die invertierte Indizes nach dem tokenisierten Begriff durchsucht. Im Gegensatz dazu unterstützt ein Attribut "filterable" oder "sortable" die Iteration über unveränderte Zeichenketten.
+
+### <a name="example-demonstrating-the-storage-implications-of-attributes-and-suggesters"></a>Beispiel zur Veranschaulichung der Auswirkungen von Attributen und Suggestoren auf die Speicherung
+
+Der folgende Screenshot veranschaulicht die Indexspeichermuster aus verschiedenen Kombinationen von Attributen. Der Index basiert auf dem **Immobilien-Musterindex**, den Sie mit dem Datenimport-Assistenten und den integrierten Beispieldaten leicht erstellen können. Obwohl die Indexschemas nicht angezeigt werden, können Sie die auf dem Indexnamen basierenden Attribute ableiten. Beispielsweise ist für den *realestate-searchable*-Index das searchable-Attribut ausgewählt und sonst nichts, für den *realestate-retrievable*-Index ist das retrievable-Attribut ausgewählt und nichts anderes usw.
 
 ![Indexgröße basierend auf der Attributauswahl](./media/search-what-is-an-index/realestate-index-size.png "Indexgröße basierend auf der Attributauswahl")
 
-Obwohl diese Indexvarianten künstlich sind, können wir sie für umfassende Vergleiche des Einflusses von Attributen auf Speicher nutzen. Setzt die Einstellung „abrufbar“ die Indexgröße herauf? Nein. Setzt das Hinzufügen von Feldern zu einer **Vorschlagsfunktion** die Indexgröße herauf? Ja. 
+Obwohl diese Indexvarianten etwas künstlich sind, können wir sie für allgemeine Vergleiche der Auswirkungen von Attributen auf die Speicherung heranziehen. Setzt die Einstellung „abrufbar“ die Indexgröße herauf? Nein. Setzt das Hinzufügen von Feldern zu einer **Vorschlagsfunktion** die Indexgröße herauf? Ja. 
 
 Wenn Sie ein Feld filterbar oder sortierbar machen, erhöht dies auch den Speicherverbrauch, da gefilterte und sortierte Felder nicht tokenisiert werden, sodass Zeichensequenzen ausführlich abgeglichen werden können.
 
 Außerdem werden in der obigen Tabelle auch die Auswirkungen von [Analysetools](search-analyzers.md) nicht berücksichtigt. Wenn Sie den Tokenizer edgeNgram zum Speichern von direkten Zeichensequenzen (a, ab, abc, abcd) verwenden, ist der Index größer als bei Verwendung eines Standardanalysetools.
 
-> [!Note]
-> Die Speicherarchitektur gilt als Implementierungsdetail der kognitiven Azure-Suche und kann ohne vorherige Ankündigung geändert werden. Es gibt keine Garantie, dass das aktuelle Verhalten in der Zukunft beibehalten wird.
+## <a name="basic-operations"></a>Einfache Vorgänge
 
-<a name="corsoptions"></a>
+Nachdem Sie nun eine bessere Vorstellung davon haben, was ein Index ist, werden in diesem Abschnitt die Operationen zur Laufzeit eines Index vorgestellt, einschließlich der Verbindung zu einem einzelnen Index und dessen Sicherung.
 
-## <a name="about-corsoptions"></a>Informationen zum `corsOptions`
+### <a name="index-isolation"></a>Index-Isolierung
+  
+In der kognitiven Suche arbeiten Sie jeweils mit einem Index, wobei alle indexbezogenen Operationen auf einen einzigen Index abzielen. Es gibt kein Konzept für verwandte Indizes oder die Verknüpfung unabhängiger Indizes, weder für die Indizierung noch für die Abfrage. 
 
-Indexschemas enthalten einen Abschnitt zum Festlegen von `corsOptions`. Clientseitiger JavaScript-Code kann standardmäßig keine APIs aufrufen, da der Browser jegliche ursprungsübergreifenden Anforderungen verhindert. Um ursprungsübergreifende Abfragen für Ihren Index zu ermöglichen, aktivieren Sie CORS (Cross-Origin Resource Sharing), indem Sie das Attribut **corsOptions** festlegen. Aus Sicherheitsgründen wird CORS nur von Abfrage-APIs unterstützt. 
+Beachten Sie bei der Verwaltung eines Indexes, dass es keine Portal- oder API-Unterstützung für das Verschieben oder Kopieren eines Indexes gibt. Stattdessen richten die Kunden ihre Lösung zur Anwendungsbereitstellung in der Regel auf einen anderen Suchdienst aus (wenn sie denselben Indexnamen verwenden) oder ändern den Namen, um eine Kopie des aktuellen Suchdienstes zu erstellen, und bauen ihn dann auf.
 
-Die folgenden Optionen können für CORS festgelegt werden:
+### <a name="continuously-available"></a>Ständig verfügbar
 
-+ **allowedOrigins** (erforderlich): Dies ist eine Liste der Ursprünge, denen Zugriff auf Ihren Index gewährt wird. Dies bedeutet, dass jeglicher von diesen Ursprüngen bereitgestellte Javascript-Code Indexabfragen durchführen kann (sofern er den richtigen API-Schlüssel angibt). Ursprünge werden in der Regel im Format `protocol://<fully-qualified-domain-name>:<port>` angegeben, wobei `<port>` häufig weggelassen wird. Weitere Informationen finden Sie unter [Cross-Origin Resource Sharing, CORS (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
+Ein Index ist ständig verfügbar, ohne dass er angehalten oder offline genommen werden kann. Da er für einen kontinuierlichen Betrieb ausgelegt ist, erfolgen alle Aktualisierungen seines Inhalts oder Ergänzungen des Index selbst in Echtzeit. Daher kann es vorkommen, dass Abfragen vorübergehend unvollständige Ergebnisse liefern, wenn eine Anforderung mit einer Dokumentenaktualisierung zusammenfällt.
 
-  Wenn Sie den Zugriff auf alle Ursprünge zulassen möchten, beziehen Sie `*` als ein einzelnes Element in das Array **allowedOrigins** ein. *Dies ist keine empfohlene Vorgehensweise für Produktionssuchdienste*, ist für Entwicklung und Debugging jedoch oft nützlich.
+Beachten Sie, dass die Abfragekontinuität für Dokumentoperationen (Aktualisieren oder Löschen) und für Änderungen besteht, die sich nicht auf die bestehende Struktur und Integrität des aktuellen Index auswirken (z. B. Hinzufügen neuer Felder). Wenn Sie strukturelle Aktualisierungen vornehmen müssen (Änderung vorhandener Felder), werden diese in der Regel durch einen Drop-and-Rebuild-Workflow in einer Entwicklungsumgebung oder durch die Erstellung einer neuen Version des Indexes im Produktionsdienst verwaltet.
 
-+ **maxAgeInSeconds** (optional): Von Browsern wird dieser Wert verwendet, um die Dauer (in Sekunden) des Zwischenspeicherns von CORS-Preflight-Antworten zu ermitteln. Dies muss eine positive ganze Zahl sein. Mit dem Wert steigt auch die Leistung, aber es dauert auch länger, bis CORS-Richtlinienänderungen in Kraft treten. Wenn diese Einstellung nicht festgelegt ist, gilt die Standarddauer von 5 Minuten.
+Um einen Neuaufbau zu vermeiden, entscheiden sich einige Kunden, die kleine Änderungen vornehmen, für eine "Version" eines Feldes, indem sie ein neues Feld erstellen, das neben einer früheren Version existiert. Im Laufe der Zeit führt dies zu verwaisten Inhalten in Form von veralteten Feldern oder veralteten benutzerdefinierten Analyzer-Definitionen, insbesondere in einem Produktionsindex, der teuer zu replizieren ist. Sie können diese Probleme bei geplanten Aktualisierungen des Index im Rahmen des Index-Lebenszyklusverwaltung angehen.
+
+### <a name="endpoint-connection-and-security"></a>Endpunktverbindung und Sicherheit
+
+Alle Indizierungs- und Abfrage Anforderung zielen auf einen Index ab. Endpunkte sind in der Regel einer der folgenden:
+
+| Endpunkt | Verbindung und Zugangskontrolle |
+|----------|-------------------------------|
+| `<your-service>.search.windows.net/indexes` | Zielt auf die Sammlung der Indizes. Wird bei der Erstellung, Auflistung oder Löschung eines Index verwendet. Für diese Vorgänge sind Administratorrechte erforderlich, die über Administrator-API-Schlüssel oder eine Search Contributor-Rolle verfügbar sind. |
+| `<your-service>.search.windows.net/indexes/<your-index>/docs` | Zielt auf die Dokumentensammlung eines einzelnen Indexes ab. Wird verwendet, wenn ein Index abgefragt wird. Leserechte sind ausreichend und über Abfrage-API-Schlüssel oder eine Datenleserrolle verfügbar. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

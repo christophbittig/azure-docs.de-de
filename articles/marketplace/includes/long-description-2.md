@@ -4,22 +4,19 @@ description: file
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-ms.date: 05/19/2020
+ms.date: 11/10/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 7b4125990ab3dea4dff9db4a5a23c9a5b6377a9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4f96300f1ec6ca66c312e5d6ac61b88a5e50123
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92283218"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309685"
 ---
-Hier einige Tipps zum Verfassen Ihrer Beschreibung:
+Im Folgenden finden Sie einige Tipps zum Schreiben einer informativen und aussagekräftigen Beschreibung:
 
-- Schildern Sie in den ersten Sätzen deutlich den Nutzen Ihres Angebots, und geben Sie u. a. Folgendes an:
-  - Beschreibung des Angebots.
-  - Typ von Benutzern, die von dem Angebot profitieren
-  - Kundenbedürfnisse oder -probleme, an die sich das Angebot richtet.
-- Beachten Sie, dass die ersten Sätze möglicherweise in den Suchergebnissen angezeigt werden.
-- Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie auf den Nutzen, den Ihr Angebot bietet.
-- Verwenden Sie branchenspezifisches Vokabular oder nutzenorientierte Formulierungen.
+- Beschreiben Sie in den ersten Sätzen klar und deutlich den Nutzen Ihres Angebots. Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können.
+- Konzentrieren Sie auf den Nutzen, den Ihr Angebot bietet. Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen.
+- Verwenden Sie branchenspezifisches Vokabular und Sprache, welche die Vorteile Ihres Angebots beschreiben.
+- Verwenden Sie HTML-Tags, um Ihre Beschreibung zu formatieren und ansprechender zu gestalten. Eine Liste der zulässigen Tags finden Sie unter [Unterstützte HTML-Tags](../supported-html-tags.md).

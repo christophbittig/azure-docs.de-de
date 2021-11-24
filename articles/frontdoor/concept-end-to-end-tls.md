@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 11/02/2021
 ms.author: duau
-ms.openlocfilehash: 0e62c64aa5e1aa3f29c58510bb53f092b9417bb6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5e0cac6f9ba6a245ec201666adb2c5cfeed79c38
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478610"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343095"
 ---
 # <a name="end-to-end-tls-with-azure-front-door"></a>End-to-End-TLS mit Azure Front Door
 
@@ -54,6 +54,8 @@ Bei HTTPS-Verbindungen erwartet Azure Front Door, dass Ihr Back-End ein Zertifik
 
 Aus Sicherheitsgründen wird es nicht empfohlen, die Überprüfung des Zertifikatsubjektnamens zu deaktivieren. In bestimmten Anwendungsfällen, z. B. bei Tests, muss Ihr Ursprung ein selbstsigniertes Zertifikat verwenden. Um das Problem fehlerhafter HTTPS-Verbindungen zu umgehen, können Sie die Überprüfung des Zertifikatsubjektnamens für Azure Front Door deaktivieren. Die Deaktivierungsoption finden Sie in den Azure Front Door-Einstellungen im Azure Portal und unter BackendPoolsSettings in der Azure Front Door-API. 
 
+## <a name="frontend-tls-connection-client-to-front-door"></a>Front-End-TLS-Verbindung (Client zu Front Door)
+
 Um das HTTPS-Protokoll für die sichere Bereitstellung von Inhalten in einer benutzerdefinierten Azure Front Door-Domäne zu aktivieren, können Sie ein von Azure Front Door verwaltetes oder Ihr eigenes Zertifikat verwenden.  
 
 * Ein von Azure Front Door verwaltetes Zertifikat stellt über Digicert ein TLS/SSL-Standardzertifikat zur Verfügung und wird im Schlüsseltresor von Azure Front Door gespeichert.   
@@ -62,11 +64,13 @@ Um das HTTPS-Protokoll für die sichere Bereitstellung von Inhalten in einer ben
 
 * Selbstsignierte Zertifikate werden nicht unterstützt. Weitere Informationen zum  [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](front-door-custom-domain-https.md).
 
-Von Azure Front Door verwaltete Zertifikate werden innerhalb von 90 Tagen vor dem Ende der Ablaufzeit automatisch von Azure Front Door zur neuesten Version rotiert. Wenn Sie ein von Azure Front Door verwaltetes Zertifikat verwenden und feststellen, dass das Ablaufdatum des Zertifikats weniger als 60 Tage entfernt ist, sollten Sie ein Supportticket erstellen. 
+### <a name="certificate-autorotation"></a>Automatische Zertifikatrotation
+
+Von Azure Front Door verwaltete Zertifikate werden innerhalb von 90 Tagen vor dem Ende der Ablaufzeit automatisch von Azure Front Door zur neuesten Version rotiert. Von Azure Front Door verwaltete Standard-/Premium-Zertifikate werden innerhalb von 45 Tagen vor dem Ende der Ablaufzeit automatisch von Azure Front Door zur neuesten Version rotiert. Wenn Sie ein von Azure Front Door verwaltetes Zertifikat verwenden und feststellen, dass das Ablaufdatum des Zertifikats weniger als 60 Tage oder, was die Standard-/Premium-SKU angeht, weniger als 30 Tage entfernt ist, sollten Sie ein Supportticket erstellen. 
 
 Für Ihr eigenes benutzerdefiniertes TLS/SSL-Zertifikat:
 
-1. Legen Sie die Geheimnisversion auf „Neueste“ fest, damit das Zertifikat automatisch zur neuesten Version rotiert wird, wenn eine neuere Version des Zertifikats in Ihrem Schlüsseltresor verfügbar ist. Bei benutzerdefinierten Zertifikaten wird das Zertifikat innerhalb von 1 bis 2 Tagen unabhängig von der Ablaufzeit automatisch zu einer neueren Version rotiert.
+1. Legen Sie die Geheimnisversion auf „Neueste“ fest, damit das Zertifikat automatisch zur neuesten Version rotiert wird, wenn eine neuere Version des Zertifikats in Ihrem Schlüsseltresor verfügbar ist. Bei benutzerdefinierten Zertifikaten wird das Zertifikat innerhalb von 1 bis 2 Tagen unabhängig von der Ablauffrist automatisch zu einer neueren Version des Zertifikats rotiert.
 
 1. Bei der Auswahl einer bestimmten Version wird die automatische Rotation nicht unterstützt. Sie müssen die neue Version manuell auswählen, um das Zertifikat zu rotieren. Es dauert bis zu 24 Stunden, bis die neue Version des Zertifikats/Geheimnisses bereitgestellt wird.
 
@@ -74,7 +78,7 @@ Für Ihr eigenes benutzerdefiniertes TLS/SSL-Zertifikat:
 
 ## <a name="supported-cipher-suites"></a>Unterstützte Verschlüsselungssammlungen:
 
-### <a name="for-tls12-the-following-cipher-suites-are-supported"></a>Bei TLS1.2 werden folgende Verschlüsselungssammlungen unterstützt:
+Bei TLS1.2 werden folgende Verschlüsselungssammlungen unterstützt:
 
 * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
@@ -84,7 +88,7 @@ Für Ihr eigenes benutzerdefiniertes TLS/SSL-Zertifikat:
 > [!NOTE]
 > Für Windows 10 und höhere Versionen wird empfohlen, eine oder beide Suites mit ECDHE-Verschlüsselungsverfahren zu aktivieren, um die Sicherheit zu erhöhen. Windows 8.1, 8 und 7 sind nicht mit diesen Suites mit ECDHE-Verschlüsselungsverfahren kompatibel. Die Suites mit DHE-Verschlüsselungsverfahren wurden aus Gründen der Kompatibilität mit diesen Betriebssystemen bereitgestellt.
 
-### <a name="using-custom-domains-with-tls1011-enabled-the-following-cipher-suites-are-supported"></a>Wenn Sie benutzerdefinierte Domänen mit TLS 1.0/1.1 verwenden, werden die folgenden Verschlüsselungssammlungen unterstützt:
+Wenn Sie benutzerdefinierte Domänen mit TLS 1.0/1.1 verwenden, werden die folgenden Verschlüsselungssammlungen unterstützt:
 
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -106,6 +110,8 @@ Für Ihr eigenes benutzerdefiniertes TLS/SSL-Zertifikat:
 * TLS_RSA_WITH_AES_128_CBC_SHA
 * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 * TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+
+Azure Front Door unterstützt das Konfigurieren bestimmter Chiffrensammlungen (Cipher Suites) nicht. Sie können Ihr eigenes benutzerdefiniertes TLS/SSL-Zertifikat von Ihrer Zertifizierungsstelle (z. B. VeriSign, Entrust oder DigiCert) erhalten. Anschließend können Sie festlegen, dass beim Generieren bestimmte Verschlüsselungssammlungen für das Zertifikat markiert werden sollen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

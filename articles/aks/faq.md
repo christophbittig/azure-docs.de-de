@@ -4,12 +4,12 @@ description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Az
 ms.topic: conceptual
 ms.date: 05/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: fdccee2795a4e1b2c967c53dc17d15a6520f4402
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: f21a7189eee020be7599188bb1791373e8c233e5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546518"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294255"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -52,7 +52,7 @@ Für Windows Server-Knoten werden die neuesten Updates von Windows Update nicht 
 
 ### <a name="are-there-additional-security-threats-relevant-to-aks-that-customers-should-be-aware-of"></a>Gibt es zusätzliche für AKS relevante Sicherheitsbedrohungen, die Kunden beachten sollten?
 
-Microsoft bietet Anleitungen zu zusätzlichen Aktionen, mit denen Sie Ihre Workloads durch Dienste wie [Azure Security Center](https://azure.microsoft.com/services/security-center/) schützen können. Im Folgenden finden Sie eine Liste von zusätzlichen Sicherheitsbedrohungen im Zusammenhang mit AKS und Kubernetes, die Kunden beachten sollten:
+Microsoft bietet Anleitungen zu zusätzlichen Aktionen, mit denen Sie Ihre Workloads durch Dienste wie [Microsoft Defender für Cloud](https://azure.microsoft.com/services/security-center/) schützen können. Im Folgenden finden Sie eine Liste von zusätzlichen Sicherheitsbedrohungen im Zusammenhang mit AKS und Kubernetes, die Kunden beachten sollten:
 
 * [Neue umfangreiche Kampagne für Kubeflow](https://techcommunity.microsoft.com/t5/azure-security-center/new-large-scale-campaign-targets-kubeflow/ba-p/2425750) – 8. Juni 2021
 

@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: e21cfe528c3cba9c190ba667552deb7070884aa3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9a5a78fc77a2b0f0891bfdd2922ad1cd771aba42
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095504"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322898"
 ---
 # <a name="understand-and-work-with-azure-virtual-network-manager-preview-scopes"></a>Verstehen und Arbeit mit Azure Virtual Network Manager-Bereichen (Vorschau)
 
@@ -42,7 +42,7 @@ Der *Netzwerk-Manager* ist das Objekt der obersten Ebene, das aus untergeordnete
 Ein *Bereich* in Azure Virtual Network Manager ist eine Reihe von Ressourcen, auf die Features angewendet werden können. Wenn Sie einen Bereich angeben, beschränken Sie den Zugriff, für den Netzwerk-Manager Ressourcen verwalten kann. Der Wert für den Bereich kann auf Verwaltungsgruppenebene oder auf Abonnementebene sein. Hier erfahren Sie, wie Sie [Azure-Verwaltungsgruppen](../governance/management-groups/overview.md) zum Verwalten mehrerer Ressourcen-Hierarchie erstellen. Wenn Sie eine Verwaltungsgruppe als Bereich auswählen, werden alle untergeordneten Ressourcen in den Bereich eingeschlossen. 
 
 > [!NOTE]
-> Das Erstellen mehrerer Netzwerk-Manager mit einem überlappenden Bereich derselben Hierarchie wird nicht unterstützt.
+> Sie können nicht mehrere Azure Virtual Network Manager mit einem überlappenden Bereich derselben Hierarchie und den gleichen ausgewählten Features erstellen.
 > 
 
 ## <a name="features"></a>Features

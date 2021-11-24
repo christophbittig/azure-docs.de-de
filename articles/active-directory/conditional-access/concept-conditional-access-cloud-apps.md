@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d56443885c79f6d5aa153695df76156f4f9407
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6a0bd64f8e3377b78f276b1b3c4bdef6f43d8c76
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012679"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308046"
 ---
 # <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>Bedingter Zugriff: Cloud-Apps, Aktionen und Authentifizierungskontext
 
@@ -45,7 +45,7 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Microsoft Azure Management](#microsoft-azure-management)
 - Microsoft Azure-Abonnementverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 - Portal für die Zugriffssteuerung auf Microsoft Commerce-Tools
 - Authentifizierungsdienst für Microsoft Commerce-Tools
 - Microsoft Forms
@@ -144,7 +144,7 @@ Benutzeraktionen sind Aufgaben, die von einem Benutzer ausgeführt werden könne
 
 ## <a name="authentication-context-preview"></a>Authentifizierungskontext (Vorschau)
 
-Der Authentifizierungskontext kann verwendet werden, um Daten und Aktionen in Anwendungen besser zu schützen. Bei diesen Anwendungen kann es sich um Ihre eigenen benutzerdefinierten Anwendungen, um benutzerdefinierte Branchenanwendungen, um Anwendungen wie SharePoint oder um durch Microsoft Cloud App Security (MCAS) geschützte Anwendungen handeln. 
+Der Authentifizierungskontext kann verwendet werden, um Daten und Aktionen in Anwendungen besser zu schützen. Bei diesen Anwendungen kann es sich um Ihre eigenen benutzerdefinierten Anwendungen, benutzerdefinierte Geschäftsbereichsanwendungen (LOB), Anwendungen wie SharePoint oder Anwendungen handeln, die durch Microsoft Defender für Cloud Apps geschützt sind. 
 
 Eine Organisation kann z. B. Dateien auf SharePoint-Websites speichern, z. B. eine Speisekarte oder die geheime Rezeptur ihrer BBQ-Soße. Möglicherweise haben alle Zugriff auf die Speisekartenwebsite, aber Benutzer mit Zugriff auf die geheime Soßenrezepturwebsite müssen möglicherweise von einem verwalteten Gerät aus darauf zugreifen und bestimmten Nutzungsbedingungen zustimmen.
 
@@ -176,7 +176,7 @@ Administratoren können veröffentlichte Authentifizierungskontexte in ihren Ric
 Weitere Informationen zur Verwendung des Authentifizierungskontexts in Anwendungen finden Sie in den folgenden Artikeln.
 
 - [Microsoft Information Protection Vertraulichkeitsbezeichnungen zum Schützen SharePoint Websites](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#more-information-about-the-dependencies-for-the-authentication-context-option)
-- [Microsoft Cloud App Security](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
+- [Microsoft Defender für Cloud-Apps](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
 - [Benutzerdefinierte Anwendungen](../develop/developer-guide-conditional-access-authentication-context.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

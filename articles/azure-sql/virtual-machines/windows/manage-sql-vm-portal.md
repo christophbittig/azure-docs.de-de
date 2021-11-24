@@ -14,12 +14,12 @@ ms.date: 05/30/2021
 ms.author: pamela
 ms.reviewer: mathoma
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 16b2a041dc384e8c04df077638a51db1a7823da2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 602cb3affc441c92dfa29ac41de893c96a617ff7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131072109"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301872"
 ---
 # <a name="manage-sql-server-vms-by-using-the-azure-portal"></a>Verwalten von SQL Server-VMs über das Azure-Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -118,12 +118,13 @@ Konfigurieren Sie mit der Seite **Sicherheitskonfiguration** der Ressource „Vi
 
 Weitere Informationen finden Sie unter [Bewährte Sicherheitsmethoden](security-considerations-best-practices.md).
 
+<a name="security-center"></a>
 
-## <a name="security-center"></a>Security Center 
+## <a name="defender-for-cloud"></a>Defender für Cloud 
 
-Zeigen Sie auf der Seite **Security Center** der Ressource „Virtuelle SQL-Computer“ Security Center-Empfehlungen direkt auf dem SQL-VM-Blatt an. Aktivieren Sie [Azure Defender für SQL](../../../security-center/defender-for-sql-usage.md), um dieses Feature zu nutzen. 
+Zeigen Sie auf der Seite **Defender für SQL** der Ressource des virtuelle SQL-Computers die Empfehlungen von Defender für Cloud direkt auf dem Blade des virtuellen SQL-Computers an. Aktivieren Sie [Microsoft Defender für SQL](../../../security-center/defender-for-sql-usage.md), um diese Funktion zu nutzen. 
 
-![Konfigurieren von Einstellungen für das SQL Server-Security Center im Azure-Portal mithilfe der Ressource „Virtuelle SQL-Computer“](./media/manage-sql-vm-portal/sql-vm-security-center.png)
+![Konfigurieren von Defender-für-Cloud-Einstellungen der SQL-Server im Azure-Portal mithilfe der Ressource „Virtuelle SQL-Computer“](./media/manage-sql-vm-portal/sql-vm-security-center.png)
 
 ## <a name="sql-assessment-preview"></a>SQL-Bewertung (Vorschau)
 

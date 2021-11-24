@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 04/16/2021
-ms.openlocfilehash: 2c0ce50c1aac28b532d23ecd1203ff76f10529d4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.date: 11/10/2021
+ms.openlocfilehash: 921e441a783d1f7bf4dc68b9decf03d6b23fbdb8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130077825"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132354031"
 ---
 ## <a name="generalize-the-image"></a>Generalisieren des Images
 
@@ -39,13 +39,13 @@ Windows-Betriebssystemdatenträger werden mit dem [Sysprep](/windows-hardware/ma
 ### <a name="capture-image"></a>Erfassen des Images
 
 > [!NOTE]
-> Zum Veröffentlichen muss sich das Azure-Abonnement, das Shared Image Gallery enthält, unter demselben Mandanten wie das Herausgeberkonto befinden. Darüber hinaus muss das Herausgeberkonto mindestens über Zugriff als Mitwirkender auf das Abonnement verfügen, das SIG enthält.
+> Zum Veröffentlichen muss sich das Azure-Abonnement, das die Azure Compute Gallery enthält, unter demselben Mandanten wie das Herausgeberkonto befinden. Darüber hinaus muss das Herausgeberkonto mindestens über einen Zugriff als Mitwirkender auf das Abonnement verfügen, das die Azure Compute Gallery enthält.
 
-Sobald Ihre VM bereit ist, können Sie sie in Azure Shared Image Gallery erfassen. Führen Sie hierzu die folgenden Schritte aus:
+Sobald Ihr virtueller Computer bereit ist, können Sie ihn in einer Azure Compute Gallery (ehemals Shared Image Gallery) erfassen. Führen Sie hierzu die folgenden Schritte aus:
 
 1. Navigieren Sie im [Azure-Portal](https://ms.portal.azure.com/) zur Seite Ihres virtuellen Computers.
 2. Wählen Sie die Option **Erfassen** aus.
-3. Klicken Sie unter **Image in Shared Image Gallery freigeben** auf **Ja, als Imageversion für einen Katalog freigeben**.
+3. Klicken Sie unter **Image in Azure Compute Gallery freigeben** auf **Ja, als Imageversion für eine Galerie freigeben**.
 4. Wählen Sie unter **Betriebssystemstatus** die Option „Generalized“ (Generalisiert) aus.
 5. Wählen Sie ein Image Gallery-Ziel aus, oder klicken Sie auf **Neu erstellen**.
 6. Wählen Sie eine Zielimagedefinition aus, oder klicken Sie auf **Neu erstellen**.
@@ -55,7 +55,7 @@ Sobald Ihre VM bereit ist, können Sie sie in Azure Shared Image Gallery erfasse
 
 ## <a name="set-the-right-permissions"></a>Festlegen der richtigen Berechtigungen
 
-Wenn Ihr Partner Center-Konto der Besitzer des Abonnements ist, das Shared Image Gallery hostet, ist für Berechtigungen nichts weiter erforderlich.
+Wenn Ihr Partner-Center-Konto der Inhaber des Abonnements ist, das die Azure Compute Gallery hostet, ist in Bezug auf Berechtigungen nichts weiter erforderlich.
 
 Wenn Sie nur Lesezugriff auf das Abonnement haben, verwenden Sie eine der beiden folgenden Optionen.
 
@@ -63,7 +63,7 @@ Wenn Sie nur Lesezugriff auf das Abonnement haben, verwenden Sie eine der beiden
 
 Schritte zum Erteilen der Besitzerberechtigung durch den Besitzer:
 
-1. Wechseln Sie zur Shared Image Gallery-Instanz (SIG).
+1. Gehen Sie zur Azure Compute Gallery.
 2. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
 3. Wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus.<br>
     :::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="Screenshot des Fensters „Rollenzuweisung hinzufügen“":::
@@ -74,7 +74,7 @@ Schritte zum Erteilen der Besitzerberechtigung durch den Besitzer:
 
 ### <a name="option-two--run-a-command"></a>Option 2: Befehl ausführen
 
-Bitten Sie den Besitzer, einen dieser Befehle auszuführen (verwenden Sie in beiden Fällen die SusbscriptionId des Abonnements, in dem Sie die Shared Image Gallery erstellt haben).
+Bitten Sie den Besitzer, einen dieser Befehle auszuführen (verwenden Sie in beiden Fällen die Abonnement-ID des Abonnements, in dem Sie die Azure Compute Gallery erstellt haben).
 
 ```azurecli
 az login
@@ -88,4 +88,4 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.PartnerCenterIngestion
 ```
 
 > [!NOTE]
-> Sie müssen keinen URI (Uniform Resource Identifier) generieren, da Sie nun ein Shared Image Gallery-Image in Partner Center veröffentlichen können. Wenn Sie dennoch Informationen zu den Schritten zum Erstellen eines SAS-URIs benötigen, finden Sie diese unter [Generieren eines SAS-URIs für ein VM-Image](../azure-vm-get-sas-uri.md).
+> Sie müssen keine SAS-URIs generieren, da Sie jetzt ein Azure Compute Gallery Image im Partner Center veröffentlichen können. Wenn Sie dennoch Informationen zu den Schritten zum Erstellen eines SAS-URIs benötigen, finden Sie diese unter [Generieren eines SAS-URIs für ein VM-Image](../azure-vm-get-sas-uri.md).

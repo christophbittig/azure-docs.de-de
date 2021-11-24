@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/21/2021
-ms.openlocfilehash: e970108e225ef527b7772573b317272be1a775ce
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: aa24ce0f540137f516b7de8452a0ca85c684100e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557716"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337205"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -389,7 +389,7 @@ print(token)
 
 ### <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken
 
-Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Sie sollten zulassen, dass Azure Security Center Ihre Ressourcen überprüft und die Empfehlungen befolgt. Weitere Informationen finden Sie unter [Einführung in Azure Defender für Kubernetes](../security-center/defender-for-kubernetes-introduction.md).
+Microsoft Defender for Cloud bietet eine einheitliche Sicherheitsverwaltung und erweiterten Bedrohungsschutz für Hybrid Cloud-Workloads. Sie sollten Microsoft Defender für Cloud erlauben, Ihre Ressourcen zu überprüfen, und die Empfehlungen befolgen. Weitere Informationen finden Sie unter [Azure Kubernetes Services Integration mit Defender für Cloud](../security-center/defender-for-kubernetes-introduction.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

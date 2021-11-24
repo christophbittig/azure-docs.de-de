@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 700c5a9254cbb3ae8fe69ccc0f2ea3b76bb66121
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 11a4892a6cd9a1ddda9cf5857165dd9b52e1392b
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356450"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371857"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -74,9 +74,9 @@ Ihre Runbooks müssen Logik für die Verarbeitung von [Ressourcen](/rest/api/res
 
 ## <a name="security"></a>Sicherheit
 
-In Azure Automation wird [Azure Security Center (ASC)](../security-center/security-center-introduction.md) genutzt, um Ihre Ressourcen zu schützen und Kompromittierungen von Linux-Systemen zu erkennen. Dieser Schutz gilt unabhängig davon, ob sich die Ressourcen in Azure befinden, für Ihre gesamten Workloads. Weitere Informationen finden Sie unter [Einführen in die Authentifizierung in Azure Automation](automation-security-overview.md).
+In Azure Automation wird [Microsoft Defender für Cloud](../defender-for-cloud/defender-for-cloud-introduction.md) genutzt, um Ihre Ressourcen zu schützen und Kompromittierungen von Linux-Systemen zu erkennen. Dieser Schutz gilt unabhängig davon, ob sich die Ressourcen in Azure befinden, für Ihre gesamten Workloads. Weitere Informationen finden Sie unter [Einführen in die Authentifizierung in Azure Automation](automation-security-overview.md).
 
-Von ASC werden Benutzer, die auf einer VM alle Skripts (signiert oder unsigniert) ausführen können, mit Einschränkungen versehen. Wenn Sie ein Benutzer mit Rootzugriff auf eine VM sind, müssen Sie für den Computer explizit eine digitale Signatur konfigurieren oder diesen ausschalten. Andernfalls können Sie ein Skript zum Anwendungen von Betriebssystemupdates erst ausführen, nachdem Sie ein Automation-Konto erstellt und das entsprechende Feature aktiviert haben.
+Von Defender für Cloud werden Benutzer, die auf einer VM alle Skripts (signiert oder unsigniert) ausführen können, mit Einschränkungen versehen. Wenn Sie ein Benutzer mit Rootzugriff auf eine VM sind, müssen Sie für den Computer explizit eine digitale Signatur konfigurieren oder diesen ausschalten. Andernfalls können Sie ein Skript zum Anwendungen von Betriebssystemupdates erst ausführen, nachdem Sie ein Automation-Konto erstellt und das entsprechende Feature aktiviert haben.
 
 ## <a name="subscriptions"></a>Abonnements
 

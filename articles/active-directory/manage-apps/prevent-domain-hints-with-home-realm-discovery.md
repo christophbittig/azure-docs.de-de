@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: db874b82a8d0c966dbe6cdbecd14cf3c5fe521d2
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 912299553e48bbaec6c815e44f91a6ac0b42441e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615731"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547467"
 ---
-# <a name="disable-auto-acceleration-sign-in-in-azure-active-directory"></a>Deaktivieren der automatischen Anmeldebeschleunigung in Azure Active Directory
+# <a name="disable-auto-acceleration-sign-in"></a>Deaktivieren der Automatischen Beschleunigung der Anmeldung
 
 Mit der [Richtlinie zur Startbereichsermittlung (Home Realm Discovery, HRD)](/graph/api/resources/homeRealmDiscoveryPolicy) können Administratoren auf verschiedene Weise steuern, wie und wo sich Benutzer authentifizieren müssen. Der Abschnitt `domainHintPolicy` der HRD-Richtlinie wird verwendet, um Verbundbenutzer zu in der Cloud verwalteten Anmeldeinformationen, z. B. [FIDO](../authentication/howto-authentication-passwordless-security-key.md), zu migrieren. Hierfür wird sichergestellt, dass sie immer auf die Azure AD-Anmeldeseite geleitet werden und nicht aufgrund von Domänenhinweisen die automatische Anmeldebeschleunigung an einen Verbundidentitätsanbieter erfolgt.
 

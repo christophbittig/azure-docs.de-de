@@ -1,32 +1,32 @@
 ---
-title: Automatisierung der Vorfallbehandlung in Azure Sentinel | Microsoft Docs
+title: Automatisieren der Behandlung von Vorfällen in Microsoft Sentinel | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Automatisierungsregeln die Behandlung von Vorfällen automatisieren können, um die Effizienz und Effektivität Ihres SOC bei der Reaktion auf Sicherheitsbedrohungen zu maximieren.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2d618dacc14c188c188f92be41de3fba20eabe38
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 52f716bf8a5a4457f1f61545e079c17f16c708c3
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014218"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522154"
 ---
-# <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>Automatisierung der Vorfallbehandlung in Azure Sentinel mit Automatisierungsregeln
+# <a name="automate-incident-handling-in-microsoft-sentinel-with-automation-rules"></a>Automatisieren der Behandlung von Vorfällen in Microsoft Sentinel mit Automatisierungsregeln
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Artikel erfahren Sie, was Azure Sentinel Automatisierungsregeln sind und wie Sie sie für die Implementierung Ihrer Security Orchestration, Automation and Response (SOAR) nutzen können, um die Effektivität Ihres SOCs zu erhöhen und Zeit und Ressourcen zu sparen.
+In diesem Artikel wird erläutert, was Microsoft Sentinel-Automatisierungsregeln sind und wie Sie sie verwenden, um Ihre SOAR-Vorgänge (Security Orchestration, Automation and Response) zu implementieren, wodurch die Effektivität Ihres SOC erhöht und Zeit und Ressourcen gespart werden.
 
 > [!IMPORTANT]
 >
@@ -34,7 +34,7 @@ In diesem Artikel erfahren Sie, was Azure Sentinel Automatisierungsregeln sind u
 
 ## <a name="what-are-automation-rules"></a>Was sind Automatisierungsregeln?
 
-Automatisierungsregeln sind ein neues Konzept in Azure Sentinel. Diese Funktion ermöglicht es Benutzern, die Automatisierung der Behandlung von Vorfällen zentral zu verwalten. Mit Automatisierungsregeln können Sie nicht nur Playbooks Incidents zuweisen (nicht nur Alerts wie bisher), sondern auch Antworten für mehrere Analyseregeln gleichzeitig automatisieren, Incidents automatisch kennzeichnen, zuweisen oder schließen, ohne dass Playbooks erforderlich sind, und die Reihenfolge der ausgeführten Aktionen steuern. Automatisierungsregeln optimieren den Einsatz von Automatisierungen in Azure Sentinel und ermöglichen es Ihnen, komplexe Workflows für Ihre Incident-Orchestrierungsprozesse zu vereinfachen.
+Automatisierungsregeln sind ein neues Konzept in Microsoft Sentinel. Diese Funktion ermöglicht es Benutzern, die Automatisierung der Behandlung von Vorfällen zentral zu verwalten. Mit Automatisierungsregeln können Sie nicht nur Playbooks Incidents zuweisen (nicht nur Alerts wie bisher), sondern auch Antworten für mehrere Analyseregeln gleichzeitig automatisieren, Incidents automatisch kennzeichnen, zuweisen oder schließen, ohne dass Playbooks erforderlich sind, und die Reihenfolge der ausgeführten Aktionen steuern. Automatisierungsregeln optimieren die Automatisierungsverwendung in Microsoft Sentinel und ermöglichen es Ihnen, komplexe Workflows für Ihre Incident-Orchestrierungsprozesse zu vereinfachen.
 
 ## <a name="components"></a>Komponenten
 
@@ -44,7 +44,7 @@ Automatisierungsregeln bestehen aus mehreren Komponenten:
 
 Automatisierungsregeln werden durch die Erstellung eines Incidents ausgelöst. 
 
-Zu überprüfen: Vorfälle werden durch Analyseregeln aus Alarmen erstellt, von denen es mehrere Typen gibt, wie im Tutorial [Erkennen von Bedrohungen mit integrierten Analyseregeln in Azure Sentinel](detect-threats-built-in.md) erläutert.
+Zu überprüfen: Vorfälle werden durch Analyseregeln aus Alarmen erstellt, von denen es mehrere Typen gibt, wie im Tutorial [Erkennen von Bedrohungen mit integrierten Analyseregeln in Microsoft Sentinel](detect-threats-built-in.md) erläutert.
 
 ### <a name="conditions"></a>Bedingungen
 
@@ -84,14 +84,14 @@ Bis jetzt können nur Warnungen eine automatisierte Antwort durch die Verwendung
 
 ### <a name="trigger-playbooks-for-microsoft-providers"></a>Playbooks für Microsoft-Anbieter auslösen
 
-Automatisierungsregeln bieten eine Möglichkeit, die Behandlung von Microsoft-Sicherheitswarnungen zu automatisieren, indem diese Regeln auf Incidents angewendet werden, die aus den Warnmeldungen erstellt wurden. Die Automatisierungsregeln können Playbooks aufrufen ([spezielle Berechtigungen sind erforderlich](#permissions-for-automation-rules-to-run-playbooks)) und die Vorfälle mit allen Details, einschließlich Alarmen und Entitäten, an diese übergeben. IIm Allgemeinen empfehlen die Best Practices von Azure Sentinel die Verwendung der Warteschlange für Incidents als zentralen Punkt der Sicherheitsoperationen.
+Automatisierungsregeln bieten eine Möglichkeit, die Behandlung von Microsoft-Sicherheitswarnungen zu automatisieren, indem diese Regeln auf Incidents angewendet werden, die aus den Warnmeldungen erstellt wurden. Die Automatisierungsregeln können Playbooks aufrufen ([spezielle Berechtigungen sind erforderlich](#permissions-for-automation-rules-to-run-playbooks)) und die Vorfälle mit allen Details, einschließlich Alarmen und Entitäten, an diese übergeben. Im Allgemeinen schreiben die bewährten Methoden von Microsoft Sentinel die Verwendung der Warteschlange für Vorfälle als Schwerpunkt von Sicherheitsmaßnahmen vor.
 
 Microsoft-Sicherheitswarnungen umfassen Folgendes:
 
-- Microsoft Cloud App Security (MCAS)
+- Microsoft Defender für Cloud-Apps
 - Azure AD Identity Protection
-- Azure Defender (ASC)
-- Defender für IoT (vormals ASC für IoT)
+- Microsoft Defender für Cloud
+- Defender für IoT (früher Azure Security Center für IoT)
 - Microsoft Defender für Office 365 (vormals Office 365 ATP)
 - Microsoft Defender für den Endpunkt (vormals MDATP)
 - Microsoft Defender für die Identität (vormals Azure ATP)
@@ -135,27 +135,27 @@ Playbookaktionen innerhalb einer Automatisierungsregel können unter bestimmten 
 
 ### <a name="permissions-for-automation-rules-to-run-playbooks"></a>Berechtigungen für Automatisierungsregeln zum Ausführen von Playbooks
 
-Wenn eine Azure Sentinel Automatisierungsregel ein Playbook ausführt, verwendet sie ein spezielles Azure Sentinel Dienstkonto, das speziell für diese Aktion autorisiert ist. Die Verwendung dieses Kontos (im Gegensatz zu Ihrem Benutzerkonto) erhöht die Sicherheitsstufe des Diensts.
+Wenn eine Microsoft Sentinel-Automatisierungsregel ein Playbook ausführt, verwendet sie ein spezielles Microsoft Sentinel-Dienstkonto, das speziell für diese Aktion autorisiert ist. Die Verwendung dieses Kontos (im Gegensatz zu Ihrem Benutzerkonto) erhöht die Sicherheitsstufe des Diensts.
 
 Damit eine Automatisierungsregel ein Playbook ausführen kann, muss diesem Konto explizit die Berechtigung für die Ressourcengruppe erteilt werden, in der sich das Playbook befindet. An diesem Punkt kann jede Automatisierungsregel jedes beliebige Playbook in dieser Ressourcengruppe ausführen.
 
-Wenn Sie eine Automatisierungsregel konfigurieren und eine Aktion **Playbook ausführen** hinzufügen, wird eine Dropdown Liste mit Playbooks angezeigt. Playbooks, in denen Azure Sentinel nicht über Berechtigungen verfügt, werden als nicht verfügbar ("ausgeblendet") angezeigt. Sie können Azure Sentinel Berechtigungen für die Ressourcengruppen der Playbooks direkt erteilen, indem Sie den Link **Playbook Berechtigungen** verwalten auswählen.
+Wenn Sie eine Automatisierungsregel konfigurieren und eine Aktion **Playbook ausführen** hinzufügen, wird eine Dropdown Liste mit Playbooks angezeigt. Playbooks, für die Microsoft Sentinel nicht über Berechtigungen verfügt, werden als nicht verfügbar angezeigt ("abgeblendet"). Sie können Microsoft Sentinel Berechtigungen für die Ressourcengruppen der Playbooks direkt erteilen, indem Sie den Link **Playbook Berechtigungen** verwalten auswählen.
 
 #### <a name="permissions-in-a-multi-tenant-architecture"></a>Berechtigungen in einer Multi-Tenant-Architektur
 
 Automatisierungsregeln unterstützen arbeitsplatzübergreifende und [mehrinstanzfähige Bereitstellungen](extend-sentinel-across-workspaces-tenants.md#managing-workspaces-across-tenants-using-azure-lighthouse) vollständig (im Falle von mehrinstanzfähigen-Bereitstellungen unter Verwendung von [Azure Lighthouse](../lighthouse/index.yml)).
 
-Wenn Ihre Azure Sentinel Bereitstellung eine mehrinstanzfähige Architektur aufweist, können Sie daher eine Automatisierungsregel in einem Mandanten ein Playbook ausführen lassen, das sich in einem anderen Mandanten befindet, aber die Berechtigungen für Sentinel zur Ausführung der Playbooks müssen in dem Mandanten definiert werden, in dem sich die Playbooks befinden, nicht in dem Mandanten, in dem die Automatisierungsregeln definiert sind.
+Wenn Ihre Microsoft Sentinel-Bereitstellung eine mehr mandantenbasierte Architektur verwendet, können Sie daher eine Automatisierungsregel in einem Mandanten verwendet, die ein Playbook in einem anderen Mandanten ausführt. Aber die Berechtigungen für Sentinel zum Ausführen der Playbooks müssen in dem Mandanten definiert werden, in dem sich die Playbooks befinden, und nicht in dem Mandanten, in dem die Automatisierungsregeln definiert sind.
 
-Im speziellen Fall eines Dienstanbieters für verwaltete Sicherheit (Managed Security Service Provider, MSSP), bei dem ein Dienstanbieter-Mandant einen Azure Sentinel-Arbeitsbereich in einem Kunden-Mandanten verwaltet, gibt es zwei wichtige Szenarien:
+Im speziellen Fall eines Managed Security Service Provider (MSSP), bei dem ein Dienstanbieter-Mandant einen Microsoft Sentinel-Arbeitsbereich in einem Kundenmandanten verwaltet, gibt es zwei bestimmte Szenarien, die Ihre Aufmerksamkeit rechtfertigen:
 
 - **Eine Automatisierungsregel, die im Kunden-Mandanten erstellt wurde, ist so konfiguriert, dass ein Playbook ausgeführt wird, das sich im Mandanten des Dienstanbieters befindet.** 
 
-    Dieser Ansatz dient normalerweise zum Schutz geistigen Eigentums im Playbook. Dies ist ohne Weiteres umsetzbar. Wenn Sie eine Playbookaktion in Ihrer Automatisierungsregel definieren und die Phase erreichen, in der Sie Azure Sentinel-Berechtigungen für die Ressourcengruppe erteilen, in der sich das Playbook befindet (über das Panel **Playbookberechtigungen verwalten**), sehen Sie die zum Mandanten des Dienstanbieters gehörenden Ressourcengruppen unter den wählbaren Ressourcengruppen. [Sehen Sie sich hier eine Beschreibung des gesamten Ablaufs an.](tutorial-respond-threats-playbook.md#respond-to-incidents)
+    Dieser Ansatz dient normalerweise zum Schutz geistigen Eigentums im Playbook. Dies ist ohne Weiteres umsetzbar. Wenn Sie eine Playbookaktion in Ihrer Automatisierungsregel definieren und zu der Phase kommen, in der Sie Microsoft Sentinel-Berechtigungen für die relevante Ressourcengruppe erteilen, in der sich das Playbook befindet (über den Bereich **Playbook-Berechtigungen** verwalten), sehen Sie die Ressourcengruppen, die zum Mandanten des Dienstanbieters gehören, unter den Ressourcengruppen, aus denen Sie auswählen können. [Sehen Sie sich hier eine Beschreibung des gesamten Ablaufs an.](tutorial-respond-threats-playbook.md#respond-to-incidents)
 
 - **Eine Automatisierungsregel, die (angemeldet beim Mandanten des Dienstanbieters) im Arbeitsbereich des Kunden erstellt wurde, ist so konfiguriert, dass ein Playbook ausgeführt wird, das sich im Mandanten des Kunden befindet.**
 
-    Diese Konfiguration wird verwendet, wenn keine Notwendigkeit besteht, geistiges Eigentum zu schützen. Damit dieses Szenario funktioniert, benötigt Azure Sentinel Berechtigungen zum Ausführen des Playbooks in ***beiden Mandanten** _. Im Kunden-Mandanten gewähren Sie diese im Panel _ *Playbookberechtigungen verwalten**, genau wie im obigen Szenario. Um die relevanten Berechtigungen im Mandanten des Dienstanbieters zu erteilen, müssen Sie der Ressourcengruppe, in der sich das Playbook befindet, eine zusätzliche Azure Lighthouse-Delegierung hinzufügen, die der **Azure Security Insights**-App mit der Rolle **Mitwirkender für Azure Sentinel-Automatisierung** Zugriffsrechte erteilt.
+    Diese Konfiguration wird verwendet, wenn keine Notwendigkeit besteht, geistiges Eigentum zu schützen. Damit dieses Szenario funktioniert, müssen Berechtigungen zum Ausführen des Playbooks Microsoft Sentinel in * beiden Mandanten _ **erteilt** werden. Im Kunden-Mandanten gewähren Sie diese im Panel _ *Playbookberechtigungen verwalten**, genau wie im obigen Szenario. Um die relevanten Berechtigungen im Mandanten des Dienstanbieters zu erteilen, müssen Sie eine zusätzliche Azure Lighthouse-Delegierung hinzufügen, die Zugriffsrechte für die **Azure Security Insights-App** mit der Rolle Mitwirkender an **Microsoft Sentinel Automation** für die Ressourcengruppe gewährt, in der sich das Playbook befindet.
 
     Das Szenario sieht folgendermaßen aus:
 
@@ -165,7 +165,7 @@ Im speziellen Fall eines Dienstanbieters für verwaltete Sicherheit (Managed Sec
 
 ## <a name="creating-and-managing-automation-rules"></a>Erstellen und Verwalten von Automatisierungsregeln
 
-Sie können Automatisierungsregeln von verschiedenen Punkten in der Azure Sentinel Umgebung aus erstellen und verwalten, abhängig von Ihrem speziellen Bedarf und Anwendungsfall.
+Sie können Automatisierungsregeln von verschiedenen Punkten in der Microsoft Sentinel Umgebung aus erstellen und verwalten, abhängig von Ihrem speziellen Bedarf und Anwendungsfall.
 
 - **Automatisierung**
 
@@ -200,7 +200,7 @@ SecurityIncident
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument haben Sie gelernt, wie Sie mithilfe von Automatisierungsregeln Ihre Azure Sentinel Warteschlange für Incidents verwalten und einige grundlegende Automatisierungen für die Incident-Behandlung implementieren können.
+In diesem Dokument haben Sie erfahren, wie Sie Automatisierungsregeln verwenden, um Ihre Warteschlange für Microsoft Sentinel Vorfälle zu verwalten und eine grundlegende Automatisierung der Behandlung von Vorfällen zu implementieren.
 
-- Weitere Informationen zu den erweiterten Automatisierungsoptionen finden Sie unter [Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel](automate-responses-with-playbooks.md).
-- Hilfe bei der Implementierung von Automatisierungsregeln und Playbooks finden Sie im [Tutorial: Einsatz von Playbooks zur Automatisierung von Bedrohungsreaktionen in Azure Sentinel](tutorial-respond-threats-playbook.md).
+- Weitere Informationen zu erweiterten Automatisierungsoptionen finden Sie unter Automatisieren der [Reaktion auf Bedrohungen mit Playbooks in Microsoft Sentinel.](automate-responses-with-playbooks.md)
+- Hilfe zum Implementieren von Automatisierungsregeln und Playbooks finden Sie im [Tutorial: Verwenden von Playbooks zum Automatisieren von Reaktionen auf Bedrohungen in Microsoft Sentinel.](tutorial-respond-threats-playbook.md)

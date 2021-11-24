@@ -7,12 +7,12 @@ metadata:
   ms.service: purview
   ms.topic: conceptual
   ms.date: 05/08/2021
-  ms.openlocfilehash: cdde004521c6f99136bfa75f33359f3599b675df
-  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+  ms.openlocfilehash: 8ab2749a1a0134f90644e1af082006b414a9b91f
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129213445"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132301359"
 title: Häufig gestellte Fragen (FAQ) zu Azure Purview
 summary: ''
 sections:
@@ -93,7 +93,7 @@ sections:
   - question: >
       Werden beispielsweise E-Mails und PDF-Dateien für meine SharePoint- und OneDrive-Instanzen von Azure Purview überprüft und klassifiziert?
     answer: >
-      Die Überprüfung von lokalen SharePoint-Websites und -Bibliotheken wird über den Azure Information Protection-Scanner durchgeführt. Der „Scanner“ (also die Überprüfungsfunktion) kann über das Microsoft 365-Abonnement eines Kunden, das über die folgenden SKUs verfügt, genutzt werden: AIP P1, EMS E3 und m365 E3. Wenn Sie eine dieser SKUs verwenden, sollten Sie über die richtigen Berechtigungen für die Nutzung des Azure Information Protection-Scanners verfügen.
+      Derzeit unterstützt Purview keine Überprüfung von SharePoint und OneDrive. Die Überprüfung von lokalen SharePoint-Websites und -Bibliotheken wird über den Azure Information Protection-Scanner durchgeführt. Der „Scanner“ (also die Überprüfungsfunktion) kann über das Microsoft 365-Abonnement eines Kunden, das über die folgenden SKUs verfügt, genutzt werden: AIP P1, EMS E3 und m365 E3. Wenn Sie eine dieser SKUs verwenden, sollten Sie über die richtigen Berechtigungen für die Nutzung des Azure Information Protection-Scanners verfügen.
   - question: >
       Was für ein Computemodul wird für die Überprüfung verwendet?
     answer: >

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f2581033d0ffefa6d5014478e7eee68f786f49e
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: d4e8832222cb1fc0a4ec431f1eeedcdcda0c5a11
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132057516"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400963"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Erstellen einer Azure Image Builder-Vorlage 
 
@@ -34,7 +34,6 @@ Das grundlegende Format der Vorlage:
       "<name>": "<value>"
     },
     "identity": {},          
-    "dependsOn": [], 
     "properties": { 
       "buildTimeoutInMinutes": <minutes>, 
       "vmProfile": {
@@ -93,7 +92,7 @@ Die Verteilung unterstützt Zonenredundanz, VHDs werden standardmäßig auf ein 
  
 ## <a name="vmprofile"></a>vmProfile
 ## <a name="buildvm"></a>buildVM
-Standardmäßig verwendet Image Builder eine „Standard_D1_v2“-Build-VM. Diese wird aus dem Image erstellt, das Sie in `source` festlegen. Sie können dies außer Kraft setzen und dies aus folgenden Gründen tun:
+Standardmäßig verwendet Image Builder eine "Standard_D1_v2"-Build-VM für Gen1-Images und eine "Standard_D2ds_v4"-Build-VM für Gen2-Images. Diese wird aus dem Image erstellt, das Sie in `source` angeben. Sie können dies außer Kraft setzen und dies aus folgenden Gründen tun:
 1. Durchführen von Anpassungen, die mehr Arbeitsspeicher, CPU und Verarbeitung großer Dateien (GBs) erfordern.
 2. Wenn Sie Windows-Builds ausführen, sollten Sie „Standard_D2_v2“ oder eine gleichmäßige VM-Größe verwenden.
 3. Forderung nach [VM-Isolation](../isolation.md).
@@ -124,16 +123,6 @@ Wenn Sie keine VNET-Eigenschaften angeben, erstellt Image Builder ein eigenes VN
 ## <a name="tags"></a>`Tags`
 
 Dabei handelt es sich um Schlüssel-Wert-Paare, die Sie für das generierte Image angeben können.
-
-## <a name="depends-on-optional"></a>dependsON (Optional)
-
-Mit diesem optionalen Abschnitt kann sichergestellt werden, dass Abhängigkeiten durchgeführt werden, bevor der Vorgang fortgesetzt wird. 
-
-```json
-    "dependsOn": [],
-```
-
-Weitere Informationen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/resource-dependency.md#dependson).
 
 ## <a name="identity"></a>Identity
 

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: mimckitt
-ms.openlocfilehash: e42078618ad15850420b8c9c57c66e3419d586d2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 01d860987cb0d9753ac14d84cc5fbfb030dfdae1
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131466920"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402008"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3- und Esv3-Serie
 
@@ -36,6 +36,7 @@ Virtuelle Computer der Ev3-Serie verfügen über Hyperthreading-Technologie von 
 [Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBps Schreiben | Maximale Anzahl NICs/Netzwerkbandbreite |
@@ -67,6 +68,7 @@ Virtuelle Computer der Esv3-Serie verfügen über Hyperthreading-Technologie von
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Zwischengespeicherter Burst und Durchsatz des temporären Speichers: IOPS/Megabits pro Sekunde<sup>3</sup> | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s |  Durchsatz des Datenträgers mit Burst ohne Cache: IOPS/Megabits pro Sekunde<sup>3</sup>| Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) |

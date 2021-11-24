@@ -1,20 +1,20 @@
 ---
 title: Sicherheits-Agents
-description: Informationen zum Verstehen, Konfigurieren, Bereitstellen und Verwenden der Sicherheitsdienst-Agents von Azure Defender für IoT auf Ihren IoT-Geräten.
+description: Machen Sie sich mit dem Verständnis, der Konfiguration, der Bereitstellung und der Verwendung von Microsoft Defender für IoT-Sicherheitsdienstagenten auf Ihren IoT-Geräten vertraut.
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: d25adad695e12d7ee104fdf9af616baefb98150c
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 86c0295726989d142e10e01e8f4950cfcf385126
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016397"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331545"
 ---
-# <a name="get-started-with-azure-defender-for-iot-device-micro-agents"></a>Erste Schritte mit Micro-Agents für Azure Defender für IoT-Geräte
+# <a name="get-started-with-microsoft-defender-for-iot-device-micro-agents"></a>Erste Schritte mit Micro-Agents für Azure Defender für IoT-Geräte
 
 Sicherheits-Agents für Defender für IoT bieten erweiterte Sicherheitsfunktionen wie etwa die Überwachung bewährter Methoden für die Betriebssystemkonfiguration. Übernehmen Sie mit einem einzigen Dienst die Kontrolle über den Bedrohungsschutz und den Sicherheitsstatus Ihres Gerätefelds.
 
-Die Sicherheits-Agents für Defender für IoT verarbeiten unformatierte Ereigniserfassungen aus dem Betriebssystem des Geräts, ermöglichen eine Ereignisaggregation zur Kostensenkung und erlauben die Konfiguration über einen Modulzwilling des Geräts. Sicherheitsmeldungen werden über Ihre IoT Hub-Instanz an die Analysedienste von Defender für IoT gesendet.
+Die Defender für IoT-Sicherheits-Agents verarbeiten unformatierte Ereigniserfassungen aus dem Betriebssystem des Geräts, ermöglichen eine Ereignisaggregation zur Kostensenkung und erlauben die Konfiguration über einen Modulzwilling des Geräts. Sicherheitsmeldungen werden über Ihre IoT Hub-Instanz an die Analysedienste von Defender für IoT gesendet.
 
 Verwenden Sie den folgenden Workflow, um Ihre Defender für IoT-Sicherheits-Agents bereitzustellen und zu testen:
 

@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2, ignite-fall-2021
-ms.openlocfilehash: c535c31b41f1e95c7a7d49b3e7a310aeafcbe8bb
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 2bcd276b5c6d80de9266e41a95e1f59b3453a63c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132058371"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289848"
 ---
 # <a name="deploy-and-score-a-machine-learning-model-by-using-an-online-endpoint-preview"></a>Bereitstellen und Bewerten eines Machine Learning-Modells mit einem Onlineendpunkt (Vorschau)
 
@@ -111,7 +111,7 @@ In der Tabelle werden die Attribute von `deployment` beschrieben:
 | `code_configuration.scoring_script` | Die Python-Datei, die sich im `code_configuration.code.local_path`-Bewertungsverzeichnis befindet. Dieser Python-Code muss über eine `init()`- und eine `run()`-Funktion verfügen. Die Funktion `init()` wird aufgerufen, nachdem das Modell erstellt oder aktualisiert wurde (Sie können es verwenden, um das Modell z. B. im Arbeitsspeicher zwischenzuspeichern). Die Funktion `run()` wird bei jedem Aufruf des Endpunkts aufgerufen, um die tatsächliche Bewertung und Vorhersage auszuführen. |
 | `environment` | Enthält die Details der Umgebung zum Hosten des Modells und des Codes. In diesem Beispiel verfügen wir über Inlinedefinitionen, die `path` einbeziehen. Wir verwenden `environment.docker.image` für das Image. Die `conda_file`-Abhängigkeiten werden zusätzlich zum Image installiert. Weitere Informationen finden Sie im Tipp im nächsten Abschnitt. |
 | `instance_type` | Die VM-SKU, die Ihre Bereitstellungsinstanzen hosten wird. Weitere Informationen finden Sie unter [Unterstützte VM-SKUs für verwaltete Onlineendpunkte](reference-managed-online-endpoints-vm-sku-list.md). |
-| `instance_count` | Die Anzahl der Instanzen in der Bereitstellung. Richten Sie den Wert nach der zu erwartenden Workload. Für eine entsprechende Hochverfügbarkeit empfehlen wir, dass Sie `scale_settings.instance_count` mindestens auf `3` festlegen. |
+| `instance_count` | Die Anzahl der Instanzen in der Bereitstellung. Richten Sie den Wert nach der zu erwartenden Workload. Für eine entsprechende Hochverfügbarkeit empfehlen wir, dass Sie `instance_count` mindestens auf `3` festlegen. |
 
 Weitere Informationen zum YAML-Schema finden Sie in der [YAML-Referenz für Onlineendpunkte](reference-yaml-endpoint-managed-online.md).
 
@@ -155,7 +155,7 @@ Um Zeit beim Debuggen zu sparen, *wird dringend empfohlen*, den Endpunkt lokal z
 
 > [!IMPORTANT]
 > Das Ziel einer lokalen Endpunktbereitstellung besteht darin, Ihren Code und Ihre Konfiguration vor der Bereitstellung in Azure zu überprüfen und zu debuggen. Die lokale Bereitstellung weist die folgenden Einschränkungen auf:
-> - Lokale Endpunkte unterstützen *keine* Datenverkehrsregeln, Authentifizierung, Skalierungseinstellungen oder Testeinstellungen. 
+> - Lokale Endpunkte unterstützen *keine* Datenverkehrsregeln, Authentifizierungen oder Testeinstellungen. 
 > - Lokale Endpunkte unterstützen nur eine Bereitstellung pro Endpunkt. 
 
 ### <a name="deploy-the-model-locally"></a>Lokales Bereitstellen des Modells
@@ -272,7 +272,7 @@ Führen Sie `get-logs` erneut aus, um die Aufrufprotokolle anzuzeigen.
 
 ### <a name="optional-update-the-deployment"></a>(Optional) Aktualisieren der Bereitstellung
 
-Wenn Sie den Code, das Modell, die Umgebung oder Ihre Skalierungseinstellungen aktualisieren möchten, aktualisieren Sie die YAML-Datei, und führen Sie dann den Befehl `az ml online-endpoint update` aus. 
+Wenn Sie den Code, das Modell oder die Umgebung aktualisieren möchten, aktualisieren Sie die YAML-Datei und führen Sie dann den Befehl `az ml online-endpoint update` aus. 
 
 > [!Note]
 > Wenn Sie die Instanzanzahl und zusammen mit anderen Modelleinstellungen (Code, Modell oder Umgebung) in einem einzigen `update` Befehl aktualisieren: Zuerst wird der Skalierungsvorgang ausgeführt, dann werden die anderen Updates angewendet. In der Produktionsumgebung ist es eine bewährte Methode, diese Vorgänge separat durchzuführen.

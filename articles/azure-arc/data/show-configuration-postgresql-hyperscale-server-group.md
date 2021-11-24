@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: bf0972342cf70b542bef01a070f777dec615c13b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 0789e9bb28868ce4d75aa48beb956fcb4dd74031
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564364"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345801"
 ---
 # <a name="show-the-configuration-of-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Anzeigen der Konfiguration einer PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung
 
@@ -55,7 +55,7 @@ kubectl get pods -n <namespace>
 
 Der Befehl gibt die Liste der Pods zurück. Die Pods, die von Ihren Servergruppen verwendet werden, werden basierend auf den Namen angezeigt, die Sie diesen Servergruppen gegeben haben. Zum Beispiel:
 
-```console 
+```console
 NAME                 READY   STATUS    RESTARTS   AGE
 bootstrapper-4jrtl   1/1     Running   0          12d
 control-kz8gh        2/2     Running   0          12d
@@ -78,8 +78,8 @@ postgres01w0-3       3/3     Running   0          2d19h
 
 ### <a name="what-pod-is-used-for-what-role-in-the-server-group"></a>Welcher Pod wird für welche Rolle in der Servergruppe verwendet?
 
-Jeder Podname, der mit dem Suffix `c` versehen ist, stellt einen Koordinatorknoten dar. Jeder Knotenname, der das Suffix `w` besitzt, ist ein Workerknoten.
-Beispielsweise die fünf Pods, die die Servergruppe hosten:
+Jeder Podname, der mit dem Suffix `c` versehen ist, stellt einen Koordinatorknoten dar. Jeder Knotenname, dem ein `w` angehängt ist, ist ein Workerknoten, z. B. die fünf Pods, die die Servergruppe hosten:
+
 - `postgres01c0-0` ist der Koordinatorknoten.
 - `postgres01w0-0` ist ein Workerknoten.
 - `postgres01w0-1` ist ein Workerknoten.
@@ -88,14 +88,13 @@ Beispielsweise die fünf Pods, die die Servergruppe hosten:
 
 Sie können vorerst das Zeichen `0` ignorieren, das hinter `c` und `w` angezeigt wird (ServerGroupName`c0`-x oder ServerGroupName`w0`-x). Es wird eine Notation verwendet, wenn das Produkt Hochverfügbarkeitserfahrungen bietet.
 
-
 ### <a name="what-is-the-status-of-the-pods"></a>Wie lautet der Status der Pods?
 
 Führen Sie `kubectl get pods -n <namespace>` aus, und sehen Sie sich die Spalte `STATUS` an.
 
-### <a name="what-persistent-volume-claims-pvcs-are-being-used"></a>Welche persistenten Volumeansprüche (Persistent Volume Claims, PVCs) werden verwendet? 
+### <a name="what-persistent-volume-claims-pvcs-are-being-used"></a>Welche persistenten Volumeansprüche (Persistent Volume Claims, PVCs) werden verwendet?
 
-Um zu verstehen, welche PVCs allgemein und welche PVCs für Daten, Protokolle und Sicherungen verwendet werden, führen Sie Folgendes aus: 
+Um zu verstehen, welche PVCs allgemein und welche PVCs für Daten, Protokolle und Sicherungen verwendet werden, führen Sie Folgendes aus:
 
 ```console
 kubectl get pvc -n <namespace>
@@ -379,11 +378,11 @@ Status:
 Events:                      <none>
 ```
 
-####  <a name="interpret-the-configuration-information"></a>Interpretieren der Konfigurationsinformationen
+#### <a name="interpret-the-configuration-information"></a>Interpretieren der Konfigurationsinformationen
 
 Benennen wir einige bestimmte relevante Punkte in der Beschreibung der oben gezeigten `servergroup`. Welche Informationen erhalten wir zu dieser Servergruppe?
 
-- Es handelt sich bei ihr um Version 12 von Postgres, und sie führt eine Citus-Erweiterung aus: 
+- Es handelt sich bei ihr um Version 12 von Postgres, und sie führt eine Citus-Erweiterung aus:
 
    ```output
    Spec:
@@ -410,7 +409,7 @@ Benennen wir einige bestimmte relevante Punkte in der Beschreibung der oben geze
           Workers:        4
    ```
 
-- Ressourcenkonfiguration: In diesem Beispiel werden dem Koordinator und den Workern 256Mi Arbeitsspeicher garantiert. Der Koordinator und die Workerknoten können nicht mehr als 1Gi Arbeitsspeicher verwenden. Sowohl der Koordinator als auch die Worker erhalten garantiert einen virtuellen Kern und können nicht mehr als zwei virtuelle Kerne nutzen. 
+- Ressourcenkonfiguration: In diesem Beispiel werden dem Koordinator und den Workern 256Mi Arbeitsspeicher garantiert. Der Koordinator und die Workerknoten können nicht mehr als 1Gi Arbeitsspeicher verwenden. Sowohl der Koordinator als auch die Worker erhalten garantiert einen virtuellen Kern und können nicht mehr als zwei virtuelle Kerne nutzen.
 
    ```console
         Scheduling:
@@ -437,8 +436,8 @@ Benennen wir einige bestimmte relevante Punkte in der Beschreibung der oben geze
                Memory:  256Mi
    ```
 
- - Wie lautet der Status der Servergruppe? Ist sie für meine Anwendungen verfügbar? 
- 
+- Wie lautet der Status der Servergruppe? Ist sie für meine Anwendungen verfügbar?
+
    Ja, alle Pods (Koordinatorknoten und alle vier Workerknoten sind bereit)
 
    ```console
@@ -450,7 +449,8 @@ Benennen wir einige bestimmte relevante Punkte in der Beschreibung der oben geze
 Verwenden Sie Az-CLI-Befehle.
 
 ### <a name="what-are-the-postgres-server-groups-deployed-and-how-many-workers-are-they-using"></a>Welche Postgres-Servergruppen werden bereitgestellt, und wie viele Worker verwenden sie?
-Führen Sie den folgenden Befehl aus. 
+
+Führen Sie den folgenden Befehl aus.
 
    ```azurecli
    az postgres arc-server list --k8s-namespace <namespace> --use-k8s
@@ -488,6 +488,7 @@ az postgres arc-server show -n postgres01 --k8s-namespace arc --use-k8s
 Gibt die Informationen in einem Format und als Inhalt zurück, die der von kubectl zurückgegebenen Ausgabe ähnlich sind. Verwenden Sie das Tool Ihrer Wahl, um mit dem System zu interagieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - [Informationen zu den Konzepten von Azure Arc-fähigem PostgreSQL Hyperscale](concepts-distributed-postgres-hyperscale.md)
 - [Informationen zum horizontalen Hochskalieren einer Servergruppe (Hinzufügen von Workerknoten)](scale-out-in-postgresql-hyperscale-server-group.md)
 - [Informationen zum zentralen Hoch- oder Herunterskalieren einer Servergruppe (Erhöhen oder Verringern des Arbeitsspeichers und/oder der virtuellen Kerne)](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)

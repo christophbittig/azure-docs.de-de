@@ -5,14 +5,14 @@ author: srijang
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 6/3/2021
+ms.date: 11/10/2021
 ms.author: srijangupta
-ms.openlocfilehash: 4e9d7eec14e994d88f4212df4d0e848de1ea6476
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: e3d68e704ce91cddfabeb8518a60bba469b7adf7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689772"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301196"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Vorbereiten einer Debian-VHD für Azure
 
@@ -159,3 +159,7 @@ az vm create \
 >4. Kopieren Sie den Tarball auf die VM: `scp ./image_buster_azure_amd64.vhd.tar.gz <vm>:~`.
 >5. Extrahieren Sie die VM auf der VHD: `tar -xf ./image_buster_azure_amd64.vhd.tar.gz` (dies dauert aufgrund der Größe der Datei etwas).
 >6. Zum Schluss kopieren Sie die VHD auf der VM mit `azcopy` (oben stehender Befehl) auf den Azure-Datenträger.
+
+
+**Nächste Schritte:** Sie können jetzt mit Ihrer virtuellen Debian-Linux-Festplatte neue virtuelle Computer in Azure erstellen. Wenn Sie zum ersten Mal die VHD-Datei in Azure hochladen, lesen Sie den Artikel [Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe der Azure CLI 2.0](/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd).
+

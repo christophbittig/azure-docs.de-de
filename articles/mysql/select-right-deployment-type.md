@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 03799c27173a06ba1ffb25ba117750e65bca6b31
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: f07cb6dc6e5ab01b4c172c660fa971b1ef2a3db9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131842509"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286088"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Auswählen der richtigen MySQL Server-Option in Azure
 
@@ -59,7 +59,7 @@ Die Hauptunterschiede zwischen diesen Optionen werden in der folgenden Tabelle a
 | SSL/TLS | Standardmäßig aktiviert mit Unterstützung für TLS 1.2, 1.1 und 1.0 | Standardmäßig aktiviert mit Unterstützung für TLS 1.2, 1.1 und 1.0| Unterstützung für TLS 1.2, 1.1 und 1.0 |
 | Verschlüsselung ruhender Daten | Unterstützt mit kundenseitig verwalteten Schlüsseln (BYOK) | Unterstützt mit dienstseitig verwalteten Schlüsseln | Nicht unterstützt|
 | Azure AD-Authentifizierung | Unterstützt | Nicht unterstützt | Nicht unterstützt|
-| Azure Defender-Unterstützung | Ja | Nein | Nein |
+| Support bei Microsoft Defender für Cloud | Ja | Nein | Nein |
 | Serverüberwachung | Unterstützt | Unterstützt | Vom Benutzer verwaltet |
 | [**Patching und Wartung**](flexible-server/concepts-maintenance.md) | | |
 | Betriebssystempatching| Automatic  | Automatisch  | Vom Benutzer verwaltet |

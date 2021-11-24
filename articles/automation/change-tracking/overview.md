@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: b2675f6633da27c12e067cf93463f6cba94b473c
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 073fd4918cec0a1ec1dc679285b62fd63fe078d3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769390"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325731"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Übersicht über Änderungsnachverfolgung und Bestand
 
@@ -26,7 +26,7 @@ Dieser Artikel bietet eine Einführung in Änderungsnachverfolgung und Bestand i
 > [!NOTE]
 > Informationen zum Nachverfolgen von Eigenschaftenänderungen in Azure Resource Manager finden Sie im [Änderungsverlauf](../../governance/resource-graph/how-to/get-resource-changes.md) von Azure Resource Graph.
 
-Beim Feature „Änderungsnachverfolgung und Bestand“ werden die [Dateiintegritätsüberwachung (File Integrity Monitoring, FIM) von Azure Security Center](../../security-center/security-center-file-integrity-monitoring.md) zum Untersuchen von Betriebssystem- und Anwendungsdateien und die Windows-Registrierung verwendet. Diese Entitäten werden per FIM überwacht, und von Änderungsnachverfolgung und Bestand wird Folgendes standardmäßig nachverfolgt:
+Beim Feature „Änderungsnachverfolgung und Bestand“ werden die [Dateiintegritätsüberwachung (File Integrity Monitoring, FIM) von Microsoft Defender für Cloud](../../security-center/security-center-file-integrity-monitoring.md) zum Untersuchen von Betriebssystem- und Anwendungsdateien und die Windows-Registrierung verwendet. Diese Entitäten werden per FIM überwacht, und von Änderungsnachverfolgung und Bestand wird Folgendes standardmäßig nachverfolgt:
 
 - Softwareänderungen
 - Windows-Dienste
@@ -34,7 +34,7 @@ Beim Feature „Änderungsnachverfolgung und Bestand“ werden die [Dateiintegri
 
 Die Aktivierung aller Funktionen von Änderungsnachverfolgung und Bestand kann dazu führen, dass weitere Kosten anfallen. Lesen Sie [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/) und [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/), bevor Sie fortfahren.
 
-Änderungsnachverfolgung und Bestand leitet Daten an Azure Monitor-Protokolle weiter, und diese gesammelten Daten werden in einem Log Analytics-Arbeitsbereich gespeichert. Das Feature zur Dateiintegritätsüberwachung (FIM) ist nur verfügbar, wenn **Azure Defender für Server** aktiviert ist. Weitere Informationen finden Sie unter [Azure Security Center – Preise](../../security-center/security-center-pricing.md). Bei der Dateiintegritätsüberwachung werden Daten in denselben Log Analytics-Arbeitsbereich hochgeladen, der zum Speichern von Daten für Änderungsnachverfolgung und Bestand erstellt wurde. Wir empfehlen Ihnen, Ihren verknüpften Log Analytics-Arbeitsbereich zu überwachen, um die exakte Nutzung nachzuverfolgen. Weitere Informationen zum Analysieren des Datenverbrauchs mit Azure Monitor-Protokollen finden Sie unter [Verwalten von Verbrauch und Kosten](../../azure-monitor/logs/manage-cost-storage.md).
+Änderungsnachverfolgung und Bestand leitet Daten an Azure Monitor-Protokolle weiter, und diese gesammelten Daten werden in einem Log Analytics-Arbeitsbereich gespeichert. Die Funktion zur Dateiintegritätsüberwachung (FIM) ist nur verfügbar, wenn **Microsoft Defender für Server** aktiviert ist. Erfahren Sie mehr über die [Preise](../../security-center/security-center-pricing.md) für Microsoft Defender für Cloud. Bei der Dateiintegritätsüberwachung werden Daten in denselben Log Analytics-Arbeitsbereich hochgeladen, der zum Speichern von Daten für Änderungsnachverfolgung und Bestand erstellt wurde. Wir empfehlen Ihnen, Ihren verknüpften Log Analytics-Arbeitsbereich zu überwachen, um die exakte Nutzung nachzuverfolgen. Weitere Informationen zum Analysieren des Datenverbrauchs mit Azure Monitor-Protokollen finden Sie unter [Verwalten von Verbrauch und Kosten](../../azure-monitor/logs/manage-cost-storage.md).
 
 Computer, die mit dem Log Analytics-Arbeitsbereich verbunden sind, verwenden den [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md), um Daten zu Änderungen an installierter Software, Windows-Diensten, Windows-Registrierung und -Dateien sowie Linux-Daemons auf überwachten Servern zu sammeln. Wenn Daten verfügbar sind, sendet der Agent diese zur Verarbeitung an Azure Monitor-Protokolle. Von Azure Monitor-Protokollen wird Logik auf die empfangenen Daten angewendet, und die Daten werden aufgezeichnet und zu Analysezwecken verfügbar gemacht.
 

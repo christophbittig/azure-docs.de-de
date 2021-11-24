@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ca093294cb1782da5adeb02888696b38f57de4c
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93313641"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400108"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Automatisches Skalieren von Apache Spark-Pools in Azure Synapse Analytics
 
@@ -26,8 +26,8 @@ Die automatische Skalierung überwacht kontinuierlich die Spark-Instanz und samm
 
 |Metrik|BESCHREIBUNG|
 |---|---|
-|CPU insgesamt für ausstehende|Die Gesamtanzahl von Kernen, die zum Starten der Ausführung aller ausstehenden Knoten erforderlich sind.|
-|Arbeitsspeicher insgesamt für ausstehende|Die Gesamtgröße des Arbeitsspeichers (in MB), die zum Starten der Ausführung aller ausstehenden Knoten erforderlich ist.|
+|CPU insgesamt für ausstehende|Die Gesamtanzahl von Kernen, die zum Starten der Ausführung aller ausstehenden Aufträge erforderlich sind.|
+|Arbeitsspeicher insgesamt für ausstehende|Die Gesamtgröße des Arbeitsspeichers (in MB), die zum Starten der Ausführung aller ausstehenden Aufträge erforderlich ist.|
 |Freie CPUs insgesamt|Die Summe aller nicht verwendeten Kerne auf den aktiven Knoten.|
 |Freier Arbeitsspeicher insgesamt|Die Summe des nicht verwendeten Arbeitsspeichers (in MB) auf den aktiven Knoten.|
 |Verwendeter Arbeitsspeicher pro Knoten|Die Auslastung eines Knotens. Ein Knoten, auf dem 10 GB Arbeitsspeicher verwendet werden, ist höher ausgelastet als ein Knoten, auf dem 2 GB verwendet werden.|
@@ -45,7 +45,7 @@ Wenn die folgenden Bedingungen erkannt werden, gibt die Autoskalierung eine Skal
 
 Für das zentrale Hochskalieren berechnet der Azure Synapse-Autoskalierungsdienst, wie viele neue Knoten benötigt werden, um die aktuellen CPU- und Speicheranforderungen zu erfüllen, und gibt dann eine Anforderung für zentrales Hochskalieren aus, um die erforderliche Anzahl an Knoten hinzuzufügen.
 
-Für das zentrale Herunterskalieren gibt die Autoskalierung basierend auf der Anzahl von Executors, Anwendungsmaster pro Knoten und den aktuellen CPU- und Arbeitsspeicheranforderungen eine Anforderung zum Entfernen einer bestimmten Anzahl von Knoten aus. Der Dienst erkennt auch, welche Knoten aufgrund der aktuellen Auftragsausführung für die Entfernung in Frage kommen. Der Vorgang des Herunterskalierens deaktiviert zunächst die Knoten und entfernt sie dann aus dem Cluster.
+Für das zentrale Herunterskalieren gibt die Autoskalierung basierend auf der Anzahl von Executors, Anwendungsmaster pro Knoten sowie den aktuellen CPU- und Arbeitsspeicheranforderungen eine Anforderung zum Entfernen einer bestimmten Anzahl von Knoten aus. Der Dienst erkennt auch, welche Knoten aufgrund der aktuellen Auftragsausführung für die Entfernung in Frage kommen. Der Vorgang des Herunterskalierens deaktiviert zunächst die Knoten und entfernt sie dann aus dem Cluster.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -60,6 +60,26 @@ Um die Funktion für automatische Skalierung zu aktivieren, führen Sie als Teil
     * **Max**. Anzahl von Knoten
 
 Die anfängliche Anzahl von Knoten ist der Minimalwert. Dieser Wert definiert die Anfangsgröße der Instanz bei der Erstellung. Die Mindestanzahl von Knoten darf nicht kleiner als drei sein.
+
+Optional können Sie die dynamische Zuordnung von Executors in Szenarien aktivieren, in denen sich die Executoranforderungen in verschiedenen Phasen eines Spark-Auftrags stark unterscheiden oder die Menge der verarbeiteten Daten mit der Zeit schwankt. Durch Aktivieren der dynamischen Zuordnung von Executors kann die Kapazität nach Bedarf genutzt werden.
+
+Beim Aktivieren der dynamischen Zuordnung von Executors während der Erstellung eines Spark-Pools kann die minimale und maximale Anzahl von Knoten in Abhängigkeit von den Grenzwerten der verfügbaren Knoten festgelegt werden. Diese Werte werden für jede neue Sitzung, die im Pool erstellt wird, als Standardwerte übernommen.
+
+Apache Spark ermöglicht die Konfiguration der dynamischen Zuordnung von Executors über den folgenden Code:
+
+```
+    %%configure -f
+    {
+        "conf" : {
+            "spark.dynamicAllocation.maxExecutors" : "6",
+            "spark.dynamicAllocation.enable": "true",
+            "spark.dynamicAllocation.minExecutors": "2"
+     }
+    }
+```
+Die durch den Code angegebenen Standardwerte setzen die über die Benutzeroberfläche festgelegten Werte außer Kraft.
+
+Beim Aktivieren der dynamischen Zuordnung werden Executors basierend auf ihrer Auslastung hoch- oder herunterskaliert. Dadurch wird sichergestellt, dass die Executors entsprechend den Anforderungen des ausgeführten Auftrags bereitgestellt werden.
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

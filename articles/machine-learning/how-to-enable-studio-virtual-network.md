@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/01/2021
+ms.date: 11/10/2021
 ms.custom: contperf-fy20q4, tracking-python, security
-ms.openlocfilehash: c978e214e9a3c7e7bef5afc60f11263c1e9efe12
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: b978955c375ff30f677a395ea549276b960a80d9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562483"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293096"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
@@ -71,17 +71,17 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ### <a name="azure-storage-account"></a>Azure Storage-Konto
 
-Es gibt ein bekanntes Problem, bei dem der Standarddateispeicher nicht automatisch den Ordner `azureml-filestore` erstellt, der zum Übermitteln von Experimenten für automatisiertes maschinelles Lernen erforderlich ist. Dieser Fehler tritt auf, wenn Benutzer einen vorhandenen Dateispeicher während der Erstellung des Arbeitsbereichs als Standarddateispeicher festlegen.
+Es gibt ein bekanntes Problem, bei dem der Standarddateispeicher nicht automatisch den Ordner `azureml-filestore` erstellt, der zum Übermitteln von Experimenten für automatisiertes maschinelles Lernen erforderlich ist. Dieses Problem tritt auf, wenn Benutzer einen vorhandenen Dateispeicher während der Erstellung des Arbeitsbereichs als Standarddateispeicher festlegen.
 
-Sie haben zwei Möglichkeiten, dieses Problem zu vermeiden: 1.) Verwenden Sie den Standarddateispeicher, der bei der Erstellung des Arbeitsbereichs automatisch erstellt wird. 2.) Wenn Sie einen eigenen Dateispeicher verwenden möchten, stellen Sie sicher, dass sich dieser während der Erstellung des Arbeitsbereichs außerhalb des VNet befindet. Nachdem der Arbeitsbereich erstellt wurde, fügen Sie das Speicherkonto dem virtuellen Netzwerk hinzu.
+Sie haben zwei Möglichkeiten, um dieses Problem zu vermeiden: 1. Verwenden Sie den Standarddateispeicher, der bei der Erstellung des Arbeitsbereichs automatisch für Sie erstellt wird. 2. Wenn Sie einen eigenen Dateispeicher verwenden möchten, stellen Sie sicher, dass sich dieser während der Erstellung des Arbeitsbereichs außerhalb des VNet befindet. Nachdem der Arbeitsbereich erstellt wurde, fügen Sie das Speicherkonto dem virtuellen Netzwerk hinzu.
 
 Um dieses Problem zu beheben, entfernen Sie das Dateispeicherkonto aus dem virtuellen Netzwerk und fügen es dann dem virtuellen Netzwerk wieder hinzu.
 
 ### <a name="designer-sample-pipeline"></a>Beispielpipeline für den Designer
 
-Es gibt ein bekanntes Problem, bei dem der Benutzer keine Beispielpipeline auf der Designer-Homepage ausführen kann. Das in der Beispielpipeline verwendeten Beispieldataset ist ein Azure Gloabal-Dataset, das nicht für alle virtuellen Netzwerkumgebungen geeignet ist.
+Es gibt ein bekanntes Problem, bei dem der Benutzer keine Beispielpipeline auf der Designer-Homepage ausführen kann. Das in der Beispielpipeline verwendeten Beispieldataset ist ein Azure Global-Dataset, das nicht für alle virtuellen Netzwerkumgebungen geeignet ist.
 
-Um dieses Problem zu beheben, können Sie einen öffentlichen Arbeitsbereich verwenden, um eine Beispielpipeline auszuführen. Dadurch können Sie erfahren, wie der Designer verwendet werden soll und dann das Beispieldataset durch Ihr eigenes Dataset im virtuellen Netzwerk "Workspace" ersetzen.
+Um dieses Problem zu beheben, können Sie einen öffentlichen Arbeitsbereich verwenden, um eine Beispielpipeline auszuführen. Dadurch können Sie erfahren, wie der Designer verwendet werden soll und dann das Beispieldataset durch Ihr eigenes Dataset im virtuellen Netzwerk „Workspace“ ersetzen.
 
 ## <a name="datastore-azure-storage-account"></a>Datenspeicher: Azure Storage-Konto
 
@@ -97,7 +97,7 @@ Führen Sie die folgenden Schritte aus, um den Zugriff auf die gespeicherten Dat
 1. **Gewähren Sie der verwalteten Identität des Arbeitsbereichs die Rolle „Leser“ für private Speicherendpunkte**. Wenn für Ihren Speicherdienst ein __privater Endpunkt__ verwendet wird, müssen Sie der vom Arbeitsbereich verwalteten Identität **Lesezugriff** auf den privaten Endpunkt gewähren. Die vom Arbeitsbereich verwaltete Identität in Azure AD hat den gleichen Namen wie Ihr Azure Machine Learning-Arbeitsbereich.
 
     > [!TIP]
-    > Ihr Speicherkonto kann über mehrere private Endpunkte verfügen. Beispielsweise kann ein Speicherkonto separate private Endpunkte für Blob- und Dateispeicher aufweisen. Fügen Sie die verwaltete Identität beiden Endpunkten hinzu.
+    > Ihr Speicherkonto kann über mehrere private Endpunkte verfügen. Beispielsweise kann ein Speicherkonto über einen separaten privaten Endpunkt für Blob, Datei und DFS verfügen (Azure Data Lake Storage Gen2). Fügen Sie allen diesen Endpunkten die verwaltete Identität hinzu.
 
     Weitere Informationen finden Sie unter der integrierten Rolle [Leser](../role-based-access-control/built-in-roles.md#reader).
 
@@ -108,7 +108,7 @@ Führen Sie die folgenden Schritte aus, um den Zugriff auf die gespeicherten Dat
 
     In der folgenden Tabelle ist beschrieben, warum die Authentifizierung mit verwalteten Identitäten für die Standardspeicherkonten Ihres Arbeitsbereichs genutzt wird.
 
-    |Speicherkonto  | Notizen  |
+    |Speicherkonto  | Hinweise  |
     |---------|---------|
     |Standardblobspeicher für den Arbeitsbereich| Speichert Modellressourcen vom Designer. Aktivieren Sie die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto, um Modelle im Designer bereitzustellen. <br> <br> Sie können eine Designer-Pipeline visualisieren und ausführen, wenn sie nicht den Standarddatenspeicher verwendet, sondern einen, der für die Verwendung der verwalteten Identität konfiguriert wurde. Wenn Sie jedoch versuchen, ein trainiertes Modell ohne aktivierte verwaltete Identität im Standarddatenspeicher bereitzustellen, tritt dabei ein Fehler auf, unabhängig davon, welche anderen Datenspeicher verwendet werden.|
     |Standarddateispeicher für den Arbeitsbereich| Speichert Experimentressourcen für automatisiertes maschinelles Lernen. Aktivieren Sie die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto, um Experimente für automatisiertes maschinelles Lernen zu übermitteln. |
@@ -137,7 +137,7 @@ Wenn Sie Azure Data Lake Storage Gen1 als Datenspeicher verwenden, können Sie 
 
 Beim Verwenden von Azure Data Lake Storage Gen2 als Datenspeicher können Sie den Datenzugriff in einem virtuellen Netzwerk sowohl per Azure RBAC als auch mit POSIX-Zugriffssteuerungslisten (Access Control Lists, ACLs) steuern.
 
-Fügen Sie die vom Arbeitsbereich verwaltete Identität der Rolle [Storage-Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) hinzu, um **Azure RBAC zu verwenden**. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
+**Um Azure RBAC zu verwenden**, führen Sie die Schritte im Abschnitt [Datenspeicher: Azure Storage-Konto](#datastore-azure-storage-account) dieses Artikels aus. Data Lake Storage Gen2 basiert auf Azure Storage, sodass die gleichen Schritte gelten, wenn Sie Azure RBAC verwenden.
 
 Für die **Verwendung von ACLs** kann der verwalteten Identität des Arbeitsbereichs wie jedem anderen Sicherheitsprinzipal Zugriff gewährt werden. Weitere Informationen finden Sie unter [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

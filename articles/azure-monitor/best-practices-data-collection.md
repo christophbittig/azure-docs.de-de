@@ -5,23 +5,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/18/2021
-ms.openlocfilehash: 408103657b3d1485d8807768e83cc1d9721fd22b
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: b5522cb26f7f8fe486b4b690938a23c7e75c746a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181658"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315956"
 ---
 # <a name="azure-monitor-best-practices---configure-data-collection"></a>Best Practices für Azure Monitor – Konfigurieren der Datensammlung
 Dieser Artikel ist Teil des Szenarios [Empfehlungen zum Konfigurieren von Azure Monitor](best-practices.md). Es werden die empfohlenen Schritte zum Konfigurieren der Datensammlung beschrieben, die zum Aktivieren von Azure Monitor-Features für Ihre Azure- und Hybridanwendungen und -ressourcen benötigt wird.
 
-
 > [!IMPORTANT]
 > Die Features von Azure Monitor und deren Konfiguration variieren abhängig von den geschäftlichen Anforderungen und den Kosten der aktivierten Features. Bei jedem der nachfolgenden Schritte wird angegeben, ob mögliche Kosten anfallen. Sie sollten diese Kosten abschätzen, bevor Sie fortfahren. Ausführliche Preisinformationen finden Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
-> 
 
 ## <a name="create-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
-Sie benötigen mindestens einen Log Analytics-Arbeitsbereich, um [Azure Monitor-Protokolle](logs/data-platform-logs.md) zu aktivieren. Dies ist für das Erfassen von Daten wie Protokollen von Azure-Ressourcen, das Sammeln von Daten vom Gastbetriebssystem virtueller Azure-Computer und die meisten Azure Monitor-Erkenntnisse erforderlich. Andere Dienste wie Azure Sentinel und Azure Security Center verwenden ebenfalls einen Log Analytics-Arbeitsbereich und können denselben wie Azure Monitor gemeinsam verwenden. Sie können für diese Überwachung mit einem einzelnen Arbeitsbereich beginnen. Sehen Sie sich aber auch den Artikel [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](logs/design-logs-deployment.md) an, in dem Sie erfahren, wann Sie mehrere Arbeitsbereiche verwenden sollten.
+Sie benötigen mindestens einen Log Analytics-Arbeitsbereich, um [Azure Monitor-Protokolle](logs/data-platform-logs.md) zu aktivieren. Dies ist für das Erfassen von Daten wie Protokollen von Azure-Ressourcen, das Sammeln von Daten vom Gastbetriebssystem virtueller Azure-Computer und die meisten Azure Monitor-Erkenntnisse erforderlich. Andere Dienste wie Microsoft Sentinel und Microsoft Defender für Cloud verwenden ebenfalls einen Log Analytics-Arbeitsbereich und können denselben wie Azure Monitor verwenden. Sie können für diese Überwachung mit einem einzelnen Arbeitsbereich beginnen. Sehen Sie sich aber auch den Artikel [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](logs/design-logs-deployment.md) an, in dem Sie erfahren, wann Sie mehrere Arbeitsbereiche verwenden sollten.
 
 Es fallen keine Kosten für das Erstellen eines Log Analytics-Arbeitsbereichs an, allerdings wird möglicherweise eine Gebühr berechnet, wenn Sie das Erfassen von Daten darin konfigurieren. Ausführliche Informationen finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](logs/manage-cost-storage.md).  
 

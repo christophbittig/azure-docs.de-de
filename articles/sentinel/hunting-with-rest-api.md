@@ -1,32 +1,32 @@
 ---
-title: Verwalten von Hunting- und Livestreamabfragen in Azure Sentinel über die REST-API | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie mit den Huntingfeatures von Azure Sentinel die REST-API von Log Analytics nutzen können, um Hunting- und Livestreamabfragen zu verwalten.
+title: Verwalten von Hunting- und Livestream-Abfragen in Microsoft Sentinel mithilfe der REST-API | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie mit den Hunting-Features von Microsoft Sentinel die REST-API von Log Analytics nutzen können, um Hunting- und Livestream-Abfragen zu verwalten.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/06/2020
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 264e99b15676807c54f400cb4431f53c06cae8bd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0c12c96e5a9cb8fb532cdd8ad462ff3d6a5f0bfc
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037110"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520501"
 ---
-# <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>Verwalten von Hunting- und Livestreamabfragen in Azure Sentinel über die REST-API
+# <a name="manage-hunting-and-livestream-queries-in-microsoft-sentinel-using-rest-api"></a>Verwalten von Hunting- und Livestream-Abfragen in Microsoft Sentinel mithilfe der REST-API
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Mit Azure Sentinel, das teilweise auf Azure Monitor Log Analytics basiert, können Sie die REST-API von Log Analytics nutzen, um Hunting- und Livestreamabfragen zu verwalten. Dieses Dokument zeigt, wie Sie Huntingabfragen über die REST-API erstellen und verwalten.  Abfragen, die auf diese Weise erstellt werden, werden auf der Azure Sentinel-Benutzeroberfläche angezeigt.
+Mit Microsoft Sentinel, das teilweise auf Azure Monitor Log Analytics basiert, können Sie die REST-API von Log Analytics nutzen, um Hunting- und Livestream-Abfragen zu verwalten. Dieses Dokument zeigt, wie Sie Huntingabfragen über die REST-API erstellen und verwalten.  Auf diese Weise erstellte Abfragen werden auf der Microsoft Sentinel-Benutzeroberfläche angezeigt.
 
 Weitere Informationen zur [API für gespeicherte Suchvorgänge](/rest/api/loganalytics/savedsearches) finden Sie in der endgültigen REST-API-Referenz.
 
@@ -48,7 +48,7 @@ Ersetzen Sie in den folgenden Beispielen die jeweiligen Platzhalter durch die in
 
 ### <a name="example-1"></a>Beispiel 1
 
-Dieses Beispiel zeigt, wie Sie eine Huntingabfrage für einen bestimmten Azure Sentinel-Arbeitsbereich erstellen oder aktualisieren.  Bei einer Livestreamabfrage ersetzen Sie *“Category”: “Hunting Queries”* durch *“Category”: “Livestream Queries”* im **Anforderungstext**: 
+In diesem Beispiel wird gezeigt, wie Sie eine Hunting-Abfrage für einen bestimmten Microsoft Sentinel-Arbeitsbereich erstellen oder aktualisieren.  Bei einer Livestreamabfrage ersetzen Sie *“Category”: “Hunting Queries”* durch *“Category”: “Livestream Queries”* im **Anforderungstext**: 
 
 #### <a name="request-header"></a>Anforderungsheader
 
@@ -83,7 +83,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId} _
 
 ### <a name="example-2"></a>Beispiel 2
 
-Dieses Beispiel zeigt, wie Sie eine Hunting- oder Livestreamabfrage für einen bestimmten Azure Sentinel-Arbeitsbereich löschen:
+In diesem Beispiel wird gezeigt, wie Sie eine Hunting- oder Livestream-Abfrage für einen bestimmten Microsoft Sentinel-Arbeitsbereich löschen:
 
 ```http
 DELETE https://management.azure.com/subscriptions/{subscriptionId} _
@@ -105,7 +105,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId} _
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Hunting- und Livestreamabfragen in Azure Sentinel mithilfe der Log Analytics-API verwalten. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie erfahren, wie Sie Hunting- und Livestream-Abfragen in Microsoft Sentinel mithilfe der Log Analytics-API verwalten. Weitere Informationen zu Microsoft Sentinel finden Sie in den folgenden Artikeln:
 
 - [Proactively hunt for threats (Proaktive Ermittlung von Bedrohungen)](hunting.md)
 - [Verwenden von Notebooks zur Ermittlung von Anomalien](notebooks.md)

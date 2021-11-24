@@ -13,14 +13,14 @@ ms.date: 01/14/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: alamaral
-ms.openlocfilehash: 38b7137c130925ef7c8e9c127830c33f507b7642
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1074a89374b2cc4f5e272b3b325062de471b2c76
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046259"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549867"
 ---
-# <a name="review-the-application-activity-report-in-azure-active-directory"></a>Überprüfen des Anwendungsaktivitätsberichts in Azure Active Directory
+# <a name="review-the-application-activity-report"></a>Überprüfen des Anwendungsaktivitätsberichts
 
 Viele Organisationen verwenden Active Directory-Verbunddienste (AD FS), um Cloudanwendungen einmaliges Anmelden bereitzustellen. Die Migration Ihrer AD FS Anwendungen zu Azure AD bietet bedeutende Vorteile für die Authentifizierung, insbesondere im Hinblick auf Kostenverwaltung, Risikomanagement, Produktivität, Compliance und Governance. Es kann jedoch zeitaufwändig sein, zu ermitteln, ob Anwendungen mit Azure AD kompatibel sind, und spezifische Migrationsschritte zu identifizieren.
 

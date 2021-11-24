@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 098f9a65af4537dace4f6ac0edb2ff71df34c3d2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5a674141acb3b344ba2436cac3c493843480b62e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232007"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322168"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimieren der privaten CloudSimple-Cloud für die Installation von Oracle RAC
 
@@ -201,7 +201,7 @@ Zum Erstellen eines virtuellen Computers für Oracle klonen Sie eine vorhandene 
 14. Überprüfen Sie die Einstellungen, und klicken Sie auf **OK**, um den neuen virtuellen Computer zu erstellen.
 15. Schalten Sie die VM ein. Installieren des Betriebssystems und aller erforderlichen Updates
 
-Nachdem das Betriebssystem installiert wurde, können Sie einen zweiten virtuellen Computer klonen. Klicken Sie mit der rechten Maustaste auf den Eintrag der VM, und wählen Sie die Option zum Klonen aus.
+Nachdem das Betriebssystem installiert wurde, können Sie einen zweiten virtuellen Computer klonen. Klicken Sie mit der rechten Maustaste auf den Eintrag des virtuellen Computers, und wählen Sie die Option zum Klonen aus.
 
 ### <a name="create-shared-disks-for-vms"></a>Erstellen freigegebener Datenträger für virtuelle Computer
 

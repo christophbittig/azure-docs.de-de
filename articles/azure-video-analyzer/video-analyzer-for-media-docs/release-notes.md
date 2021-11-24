@@ -5,12 +5,12 @@ ms.topic: article
 ms.custom: references_regions
 ms.date: 08/01/2021
 ms.author: juliako
-ms.openlocfilehash: 115402133ad33b9fa20eb3298db3e342ea2afbbd
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7341112e545e4fc0c74de8d32e9c2d54d3461057
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131461682"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491919"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>Versionshinweise zu Video Analyzer for Media
 
@@ -30,6 +30,10 @@ Damit Sie bei den aktuellen Entwicklungen in Bezug auf Azure Video Analyzer for 
 Azure Video Analyzer für Medien führt eine öffentliche Vorschauversion der Azure Resource Manager (ARM)-basierten Kontoverwaltung ein. Sie können ARM-basierte APIs zum Erstellen, Bearbeiten und Löschen eines Kontos aus dem Azure-Portal nutzen.
 
 Weitere Informationen finden Sie unter [Erstellen eines Video Analyzer for Media](https://techcommunity.microsoft.com/t5/azure-ai/azure-video-analyzer-for-media-is-now-available-as-an-azure/ba-p/2912422).
+
+### <a name="peoples-clothing-detection"></a>Erkennung der Bekleidung von Personen
+
+Wenn Sie ein Video über die erweiterten Videoeinstellungen indizieren, können Sie die neue Funktion zur **Erkennung von Kleidung** sehen. Wenn in Ihrer Mediendatei Personen erkannt werden, können Sie nun über den Media Player den Kleidungstyp anzeigen, den sie tragen. 
 
 ## <a name="october-2021"></a>Oktober 2021
 

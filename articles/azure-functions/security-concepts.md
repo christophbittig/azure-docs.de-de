@@ -3,12 +3,12 @@ title: Absichern von Azure Functions
 description: Erfahren Sie, wie Sie Ihren in Azure ausgeführten Funktionscode vor gängigen Angriffen schützen können.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 97a58c38f08e3b22f25ca2834a26692452fcff9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d1901c9f471901c086c99d1c1fff66ab1258bd54
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340054"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484464"
 ---
 # <a name="securing-azure-functions"></a>Absichern von Azure Functions
 
@@ -22,9 +22,9 @@ Weitere Empfehlungen zur Sicherheit gemäß dem [Azure-Sicherheitsvergleichstest
 
 In diesem Abschnitt erfahren Sie, wie Sie Ihre Funktions-App so sicher wie möglich konfigurieren und ausführen können. 
 
-### <a name="security-center"></a>Security Center
+### <a name="defender-for-cloud"></a>Defender für Cloud
 
-Security Center und Ihre Funktions-App lassen sich im Portal integrieren. Es ermöglicht kostenlos eine schnelle Bewertung potenzieller konfigurationsbezogener Sicherheitsrisiken. Funktions-Apps, die in einem dedizierten Plan ausgeführt werden, können gegen Aufpreis auch die Echtzeitsicherheitsfeatures von Security Center nutzen. Weitere Informationen finden Sie unter [Schützen Ihrer Azure App Service-Web-Apps und -APIs](../security-center/defender-for-app-service-introduction.md). 
+Defender für Cloud kann im Portal in Ihre Funktions-App integriert werden. Es ermöglicht kostenlos eine schnelle Bewertung potenzieller konfigurationsbezogener Sicherheitsrisiken. Funktions-Apps, die in einem dedizierten Plan genutzt werden, können gegen einen Aufpreis auch die erweiterten Sicherheitsfunktionen von Defender für Cloud nutzen. Weitere Informationen finden Sie unter [Schützen Ihrer Azure App Service-Web-Apps und -APIs](../defender-for-cloud/defender-for-app-service-introduction.md). 
 
 ### <a name="log-and-monitor"></a>Protokollieren und Überwachen
 
@@ -32,7 +32,7 @@ Eine Möglichkeit, Angriffe zu erkennen, besteht in der Aktivitätsüberwachung 
 
 Zudem sind Azure Functions und Azure Monitor-Protokolle integriert, um Ihnen zu ermöglichen, Protokolle von Funktions-Apps mit Systemereignissen zur einfacheren Analyse zusammenzuführen. Sie können Diagnoseeinstellungen nutzen, um den Export von Plattformprotokollen und Metriken für Ihre Funktionen durch Streamen zum Ziel Ihrer Wahl festzulegen, z. B. einem Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie unter [Überwachen von Azure Functions mit Azure Monitor-Protokollen](functions-monitor-log-analytics.md). 
 
-Zur Erkennung von Bedrohungen auf Unternehmensebene und zur Automatisierung der Reaktion können Sie Ihre Protokolle und Ereignisse in einen Log Analytics-Arbeitsbereich streamen. Sie können anschließend Azure Sentinel mit diesem Arbeitsbereich verbinden. Weitere Informationen finden Sie unter [Was ist Azure Sentinel?](../sentinel/overview.md)  
+Zur Erkennung von Bedrohungen auf Unternehmensebene und zur Automatisierung der Reaktion können Sie Ihre Protokolle und Ereignisse in einen Log Analytics-Arbeitsbereich streamen. Sie können dann Microsoft Sentinel mit diesem Arbeitsbereich verbinden. Weitere Informationen finden Sie unter [ Was ist Microsoft Sentinel ](../sentinel/overview.md).  
 
 Weitere Empfehlungen zu Einblicken in die Sicherheit finden Sie unter [Azure-Sicherheitsbaseline für Azure Functions](security-baseline.md#logging-and-monitoring). 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: magoedte
-ms.openlocfilehash: 6d22e93fe8bd36e24520108bc310d5b08c25120c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 388afa5936b0cc84dcbee57302d48798d957a2bc
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560020"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492017"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
 
@@ -27,6 +27,8 @@ Dieser Artikel beschreibt die Azure Resource Manager-Vorlage für den [Handler d
 
 > [!NOTE]
 > Möglicherweise werden Ihnen andere Schemabeispiele angezeigt. Das Schema wurde im Release von Oktober 2016 geändert. Weitere Informationen finden Sie im Abschnitt zum [Update von einem vorherigen Format](#update-from-a-previous-format).
+>
+> Bevor Sie die DSC-Erweiterung aktivieren, möchten wir Sie darauf hinweisen, dass jetzt eine neuere Version von DSC in der Vorschau verfügbar ist, die von einer Funktion von Azure Policy namens [Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md) verwaltet wird. Die Gastkonfigurationsfunktion kombiniert Funktionen des Desired State Configuration (DSC)-Erweiterungshandlers, der Azure Automation State Configuration und die am häufigsten angeforderten Funktionen aus Kundenfeedback. Die Gastkonfiguration umfasst auch die Unterstützung von Hybridcomputern über [Arc-fähige Server](../../azure-arc/servers/overview.md).
 
 ## <a name="template-example-for-a-windows-vm"></a>Vorlagenbeispiel für einen virtuellen Windows-Computer
 

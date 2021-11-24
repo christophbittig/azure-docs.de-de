@@ -3,14 +3,14 @@ author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 01/27/2021
+ms.date: 11/12/2021
 ms.author: kengaderdus
-ms.openlocfilehash: 90c564956db3cfba02c9adee8c4f2fa2c5bac4fa
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 957a119f1a48c1e79326d80a16763204cd41a669
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130050614"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252485"
 ---
 Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie ein selbstsigniertes Zertifikat verwenden. Ein selbstsigniertes Zertifikat ist ein Sicherheitszertifikat, das nicht von einer Zertifizierungsstelle (ZS) signiert ist und nicht die Sicherheitsgarantien eines Zertifikats bietet, das von einer Zertifizierungsstelle signiert wurde. 
 
@@ -18,7 +18,7 @@ Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie ein selbstsignie
 
 Verwenden Sie unter Windows das PowerShell-Cmdlet [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate), um ein Zertifikat zu generieren.
 
-1. Führen Sie den folgenden PowerShell-Befehl aus, um ein selbstsigniertes Zertifikat zu generieren. Ändern Sie das Argument `-Subject` entsprechend Ihrer Anwendung und des Azure AD B2C-Mandantennamens. Sie können auch das `-NotAfter`-Datum anpassen, um einen anderen Ablaufzeitpunkt für das Zertifikat anzugeben.
+1. Führen Sie den folgenden PowerShell-Befehl aus, um ein selbstsigniertes Zertifikat zu generieren. Ändern Sie das Argument `-Subject` entsprechend Ihrer Anwendung und dem Azure AD B2C-Mandantennamen, z. B. `contosowebapp.contoso.onmicrosoft.com`. Sie können auch das `-NotAfter`-Datum anpassen, um einen anderen Ablaufzeitpunkt für das Zertifikat anzugeben.
 
     ```PowerShell
     New-SelfSignedCertificate `
@@ -31,11 +31,15 @@ Verwenden Sie unter Windows das PowerShell-Cmdlet [New-SelfSignedCertificate](/p
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```
 
-1. Öffnen Sie **Benutzerzertifikate verwalten** > **Aktueller Benutzer** > **Persönlich** > **Zertifikate** > *NameIhrerApp.IhrMandant.onmicrosoft.com*.
+1. Suchen Sie auf dem Windows-Computer nach **Benutzerzertifikate verwalten** und wählen Sie 
+1. Wählen Sie unter **Zertifikate - Aktueller Benutzer** die Option **Persönlich** > **Zertifikate**>*IhrAnwendungsname.ihrmieter.onmicrosoft.com*.
 1. Wählen Sie das Zertifikat und dann **Aktion** > **Alle Aufgaben** > **Exportieren** aus.
-1. Wählen Sie **Ja** > **Weiter** > **Ja, privaten Schlüssel exportieren** > **Weiter** aus.
-1. Übernehmen Sie die Standardeinstellungen für **Format der zu exportierenden Datei**.
-1. Geben Sie ein Kennwort für das Zertifikat an.
+1. Wählen Sie **Weiter** > **Ja, den privaten Schlüssel exportieren** > **Weiter**.
+1. Übernehmen Sie die Standardeinstellungen für **Exportdateiformat**, und wählen Sie dann **Weiter**.
+1. Aktivieren Sie die Option **Passwort**, geben Sie ein Passwort für das Zertifikat ein, und wählen Sie dann **Weiter**.
+1. Um einen Speicherort für Ihr Zertifikat anzugeben, wählen Sie **Durchsuchen** und navigieren Sie zu einem Verzeichnis Ihrer Wahl. 
+1. Geben Sie im Fenster **Speichern unter** einen **Dateinamen** ein, und wählen Sie dann **Speichern**.
+1. Wählen Sie **Weiter**>**Fertig stellen** aus.
 
 Damit das Kennwort für die PFX-Datei in Azure AD B2C akzeptiert wird, muss es statt mit „AES256-SHA256“ mit der Option „TripleDES-SHA1“ im Exporthilfsprogramm des Windows-Zertifikatspeichers verschlüsselt werden.
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: e3fede7fbb0f4951633ec74284fad00d2d66257b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ff2233f6a1b669856084cdd07591d99ee23dbe8c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566404"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331222"
 ---
 # <a name="evaluate-model-component"></a>Evaluate Model Komponente
 
@@ -138,8 +138,7 @@ Die folgenden Metriken werden für die Auswertung von Clusteringmodellen herange
      Wenn dieser Wert hoch ist, kann dies bedeuten, dass der Cluster weit verstreut ist. Überprüfen Sie diese Statistik zusammen mit **Average Distance to Cluster Center** (Durchschnittlicher Abstand zum Clusterzentrum), um die Streuung des Clusters zu ermitteln.   
 
 -   Der Wert **Combined Evaluation** (Kombinierte Bewertung) am Ende jedes Ergebnisabschnitts listet die gemittelten Werte für die in diesem bestimmten Modell erstellten Cluster auf.  
-  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Sammlung der verfügbaren Komponenten](component-reference.md) für Azure Machine Learning an.
+Hier finden Sie die für Azure Machine Learning [verfügbaren Komponenten](component-reference.md).

@@ -1,14 +1,14 @@
 ---
 title: Verwalten der lokalen Verwaltungskonsole
 description: Erfahren Sie mehr über die Möglichkeiten der lokalen Verwaltungskonsole wie Sicherung und Wiederherstellung, Definition des Hostnamens und Einrichtung eines Proxys für Sensoren.
-ms.date: 1/12/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 9b956dbfa640862d10d0e47aef97e5a1727052c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3604b4674a86d719f2fecf841347c0a55f5b9757
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625219"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339704"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Verwalten der lokalen Verwaltungskonsole
 
@@ -24,7 +24,7 @@ Nach der erstmaligen Aktivierung kann die Anzahl der überwachten Geräte die An
 
 **So laden Sie eine Aktivierungsdatei hoch**
 
-1. Wechseln Sie zur Azure Defender für IoT-Seite **Preise**.
+1. Navigieren Sie zur Seite **Preise** von Microsoft Defender für IoT
 1. Wählen Sie die Registerkarte **Aktivierungsdatei für die Verwaltungskonsole herunterladen** aus. Die Aktivierungsdatei wird heruntergeladen.
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="Laden Sie die Aktivierungsdatei herunter.":::
@@ -53,11 +53,11 @@ Möglicherweise müssen Administratoren Zertifikate aktualisieren, die nach der 
     - Laden Sie eine CRT-Datei und eine Schlüsseldatei hoch.
     - Laden Sie bei Bedarf eine PEM-Datei hoch.
 
-Bei einem fehlerhaften Upload wenden Sie sich an Ihren Sicherheits- oder IT-Administrator, oder lesen Sie die Informationen unter [Informationen zu Zertifikaten](how-to-deploy-certificates.md).
+Wenn der Upload fehlschlägt, wenden Sie sich an Ihren Sicherheits- oder IT-Administrator, oder aber lesen Sie die Informationen unter [Informationen zu Zertifikaten](how-to-deploy-certificates.md).
 
-**So ändern Sie die Zertifikatüberprüfungseinstellung**
+**So ändern Sie die Zertifikatsüberprüfungseinstellung:**
 
-1. Aktivieren oder deaktivieren Sie den Umschalter **Serverzertifikatüberprüfung aktivieren**. Wenn die Option aktiviert ist und bei der Überprüfung ein Fehler auftritt, wird die Kommunikation zwischen den relevanten Komponenten beendet, und an der Konsole wird ein Überprüfungsfehler angezeigt. Wenn sie deaktiviert ist, wird die Zertifikatüberprüfung nicht durchgeführt. Weitere Informationen finden Sie unter [Informationen zur Zertifikatüberprüfung](how-to-deploy-certificates.md#about-certificate-validation).
+1. Aktivieren oder deaktivieren Sie den Umschalter **Serverzertifikatüberprüfung aktivieren**. Wenn die Option aktiviert ist und bei der Überprüfung ein Fehler auftritt, wird die Kommunikation zwischen relevanten Komponenten angehalten, und in der Konsole wird ein Überprüfungsfehler angezeigt. Wenn sie deaktiviert ist, wird keine Zertifikatüberprüfung durchgeführt. Weitere Informationen finden Sie unter [Informationen zur Zertifikatüberprüfung](how-to-deploy-certificates.md#about-certificate-validation).
 
 1. Wählen Sie **Speichern** aus.
 

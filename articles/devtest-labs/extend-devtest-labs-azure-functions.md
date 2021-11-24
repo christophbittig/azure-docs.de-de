@@ -3,15 +3,15 @@ title: Erweitern von Azure DevTest Labs mit Azure Functions
 description: Hier erfahren Sie, wie Sie Azure DevTest Labs mit Azure Functions erweitern.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 8a6200dbfce99ee7904dc1a65965e95d81e98471
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a3160335bc233d0873c6e9cae5d32aef4f494ab9
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128623644"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401115"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Erweitern von DevTest Labs mithilfe von Azure Functions
-Mithilfe von Azure Functions können Sie zusätzliche Szenarien unterstützen, die über die bereits bestehenden Möglichkeiten von DevTest Labs hinausgehen. Azure Functions kann verwendet werden, um die integrierten Funktionen des Diensts entsprechend Ihren unternehmensspezifischen Anforderungen zu erweitern. Die folgende Liste enthält einige der möglichen Szenarien. In diesem Artikel wird gezeigt, wie Sie eines dieser Beispielszenarien implementieren.
+Mithilfe von Azure Functions können Sie weitere Szenarien unterstützen, die über die bereits bestehenden Möglichkeiten von DevTest Labs hinausgehen. Sie können Azure Functions verwenden, um die integrierten Funktionen des Diensts entsprechend Ihren unternehmensspezifischen Anforderungen zu erweitern. Die folgende Liste enthält einige der möglichen Szenarien. In diesem Artikel wird gezeigt, wie Sie eines dieser Beispielszenarien implementieren.
 
 - Eine Zusammenfassung auf oberster Ebene der VMs im Lab bereitstellen
 - [Konfigurieren eines Labs zur Verwendung eines Remotedesktopgateways](configure-lab-remote-desktop-gateway.md)
@@ -38,7 +38,7 @@ Wenn Benutzer die **interne Supportseite** in DevTest Labs aufrufen, sehen sie 
 
 Wenn Sie die Schaltfläche **Select here to refresh** (Zum Aktualisieren hier klicken) auswählen, ruft die Seite die erste Azure-Funktion auf: **UpdateInternalSupportPage**. Die Funktion fragt Informationen von DevTest Labs ab und generiert die **interne Supportseite** dann erneut mit den neuen Informationen.
 
-Für alle VMs, auf denen die Windows Update-Artefakte in letzter nicht angewendet wurden, ist als zusätzliche Aktion eine Schaltfläche verfügbar, mit der Windows-Updates auf die VM angewendet werden können. Wenn Sie für eine VM die Schaltfläche ***Windows Update ausführen** auswählen, ruft die Seite die zweite Azure-Funktion auf: **ApplyWindowsUpdateArtifact**. Diese Funktion überprüft, ob die VM ausgeführt wird, und wendet das Artefakt [Windows Update](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates) direkt an, wenn dies der Fall ist.
+Es gibt eine weitere Maßnahme, die Sie ergreifen können. Für alle VMs, auf die Windows Update-Artefakte nicht angewendet wurden, gibt es eine Schaltfläche zum Anwenden von Windows-Updates auf die VM. Wenn Sie für eine VM die Schaltfläche ***Windows Update ausführen** auswählen, ruft die Seite die zweite Azure-Funktion auf: **ApplyWindowsUpdateArtifact**. Diese Funktion überprüft, ob die VM ausgeführt wird, und wendet das Artefakt [Windows Update](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates) direkt an, wenn dies der Fall ist.
 
 ## <a name="step-by-step-walkthrough"></a>Ausführliche exemplarische Vorgehensweise
 Dieser Abschnitt enthält schrittweise Anweisungen zum Einrichten von Azure-Ressourcen, die zum Aktualisieren der **internen Supportseite** erforderlich sind. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Erweiterung von DevTest Labs. Sie können dieses Muster für andere Szenarien verwenden.
@@ -74,7 +74,7 @@ Nachdem die Funktionen veröffentlicht wurden, müssen Sie URLs für diese Funkt
     ![URLs von Azure-Funktionen](./media/extend-devtest-labs-azure-functions/function-url.png)
 4. Kopieren und speichern Sie die URL. Wiederholen Sie diese Schritte für die andere Azure-Funktion. 
 
-Außerdem benötigen Sie zusätzliche Informationen zum Dienstprinzipal, z. B. Anwendungs-ID, Schlüssel und Mandanten-ID.
+Außerdem benötigen Sie Informationen zum Dienstprinzipal, z. B. Anwendungs-ID, Schlüssel und Mandanten-ID.
 
 
 ### <a name="step-5--update-application-settings"></a>Schritt 5: Aktualisieren der Anwendungseinstellungen

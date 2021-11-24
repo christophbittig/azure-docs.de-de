@@ -10,15 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 11/12/2021
 ms.author: rolyon
 ms.custom: seohack1, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 3273285aeee7497c43fc4002b2bdabe0b6ef13de
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: e0ce4f4b0408b63c12c023ad56d473cc50a44027
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390062"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398305"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Behandeln von Problemen bei Azure RBAC
 
@@ -29,7 +29,7 @@ In diesem Artikel werden häufig gestellte Fragen über die rollenbasierte Zugri
 Azure unterstützt pro Abonnement bis zu **2.000** Rollenzuweisungen. Dieser Grenzwert schließt Rollenzuweisungen im Abonnement, in der Ressourcengruppe und im Ressourcenbereich, aber nicht im Verwaltungsgruppenbereich ein. Wenn beim Zuweisen einer Rolle die Fehlermeldung „No more role assignments can be created (code: RoleAssignmentLimitExceeded)“ (Es können keine weiteren Rollenzuweisungen erstellt werden (Code: RoleAssignmentLimitExceeded)) auftritt, verringern Sie die Anzahl der Rollenzuweisungen im Abonnement.
 
 > [!NOTE]
-> Das Rollenzuweisungslimit **2.000** pro Abonnement ist fest und kann nicht erweitert werden.
+> Ab November 2021 wird der Grenzwert für Rollenzuweisungen für ein Abonnement in den nächsten Monaten von **2000** auf **4000** erhöht. Abonnements, die dem Grenzwert nahe kommen, werden zuerst priorisiert. Der Grenzwert für die verbleibenden Abonnements wird im Laufe der Zeit erhöht.
 
 Wenn dieses Limit bald erreicht ist, können Sie mit folgenden Methoden die Anzahl der Rollenzuweisungen verringern:
 

@@ -7,16 +7,16 @@ ms.prod: visual-studio-windows
 ms.topic: how-to
 ms.date: 10/20/2021
 ms.custom: devtestoffer
-ms.openlocfilehash: 70f4ea05d0fffe1046ac45246933db9ae34b8a9a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6f3d9bae37e49c23dacc9a44ed4e0006df95ec29
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095201"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305881"
 ---
 # <a name="security-within-azure-devtest-subscription"></a>Sicherheit innerhalb eines Azure Dev/Test-Abonnements
 
-Der Schutz Ihrer Ressourcen ist eine gemeinsame Aufgabe, die von Ihrem Cloudanbieter, von Azure und von Ihnen selbst wahrgenommen wird. Mit Azure Dev/Test-Abonnements und [Azure Security Center](../../security-center/security-center-introduction.md) erhalten Sie die Tools, die Sie zum Härten Ihres Netzwerks, zum Schützen Ihrer Dienste und zum Gewährleisten eines optimalen Sicherheitsstatus benötigen.  
+Der Schutz Ihrer Ressourcen ist eine gemeinsame Aufgabe, die von Ihrem Cloudanbieter, von Azure und von Ihnen selbst wahrgenommen wird. Mit Azure Dev/Test-Abonnements und [Microsoft Defender für Cloud](../../security-center/security-center-introduction.md) erhalten Sie die Tools, die Sie zum Sichern Ihres Netzwerks, zum Schützen Ihrer Dienste und zum Gewährleisten eines optimalen Sicherheitsstatus benötigen.  
 
 Wichtige Tools in Azure Dev/Test-Abonnements helfen Ihnen dabei, den Zugriff auf Ihre Ressourcen sicher zu machen:  
 

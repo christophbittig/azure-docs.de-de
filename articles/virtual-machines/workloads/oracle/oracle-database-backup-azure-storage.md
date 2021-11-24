@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: f30a7fcbc99f6a47574d101e3792d992dc2c1af8
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 2c9128f6e03f039ddc6e56ec9672a7a0a18f9889
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260034"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520406"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-files"></a>Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure Linux-VM mithilfe von Azure Files
 
@@ -175,7 +175,7 @@ Führen Sie für die Sicherung in Azure Files die folgenden Schritte aus:
 
 ### <a name="set-up-azure-files"></a>Einrichten von Azure Files
 
-In diesem Schritt sichern Sie die Oracle-Datenbank mithilfe von Oracle Recovery Manager (RMAN) in Azure Files. Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Cloud gespeichert werden. Der Zugriff erfolgt entweder über das SMB-Protokoll (Server Message Block) oder das NFS-Protokoll (Network File System). In diesem Schritt wird eine Dateifreigabe erstellt, die über das SMB-Protokoll auf der VM eingebunden wird. Informationen zur Einbindung über NFS finden Sie unter [Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls](../../../storage/blobs/network-file-system-protocol-support-how-to.md).
+In diesem Schritt sichern Sie die Oracle-Datenbank mithilfe von Oracle Recovery Manager (RMAN) in Azure Files. Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Cloud gespeichert werden. Der Zugriff erfolgt entweder über das SMB-Protokoll (Server Message Block) oder das NFS-Protokoll (Network File System). In diesem Schritt wird eine Dateifreigabe erstellt, die über das SMB-Protokoll auf der VM eingebunden wird. Informationen zum Mounten mit NFS finden Sie unter [Erstellen einer NFS-Freigabe.](../../../storage/files/storage-files-how-to-create-nfs-shares.md)
 
 Beim Einbinden von Azure Files wird mit `cache=none` das Zwischenspeichern von Dateifreigabedaten deaktiviert. Um sicherzustellen, dass die in der Freigabe erstellten Dateien im Besitz des Oracle-Benutzers sind, werden auch die Optionen `uid=oracle` und `gid=oinstall` festgelegt. 
 

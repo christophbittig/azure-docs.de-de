@@ -8,16 +8,16 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 730b7344a213922bd87d5efa3a659d352ff8624f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fe9450310e3f8774b31557fd7c045f05ed9b56b1
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019139"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518354"
 ---
 # <a name="troubleshoot-azure-nfs-file-share-problems"></a>Behandeln von Problemen mit Azure NFS-Dateifreigaben
 
-In diesem Artikel sind einige allgemeine Probleme aufgeführt, die im Zusammenhang mit Azure NFS-Dateifreigaben (Vorschau) auftreten können. Er enthält mögliche Ursachen und Problemumgehungen, wenn diese Probleme auftreten. In diesem Artikel werden auch bekannte Probleme in der öffentlichen Vorschau behandelt.
+Dieser Artikel listet einige häufige Probleme und bekannte Probleme im Zusammenhang mit Azure NFS-Dateifreigaben auf. Er enthält mögliche Ursachen und Problemumgehungen, wenn diese Probleme auftreten.
 
 ## <a name="applies-to"></a>Gilt für:
 | Dateifreigabetyp | SMB | NFS |
@@ -44,31 +44,7 @@ Auch wenn idmapping ordnungsgemäß deaktiviert wurde, werden die Einstellungen 
 
 ## <a name="unable-to-create-an-nfs-share"></a>Es kann keine NFS-Freigabe erstellt werden.
 
-### <a name="cause-1-subscription-is-not-enabled"></a>Ursache 1: Das Abonnement ist nicht aktiviert.
-
-Möglicherweise wurde Ihr Abonnement nicht für die Azure Files-NFS-Vorschau registriert. Sie müssen einige weitere Cmdlets in der Cloud Shell oder einem lokalen Terminal ausführen, um die Funktion zu aktivieren.
-
-> [!NOTE]
-> Es kann bis zu 30 Minuten dauern, bis die Registrierung abgeschlossen ist.
-
-
-#### <a name="solution"></a>Lösung
-
-Verwenden Sie das folgende Skript, um die Funktion und den Ressourcenanbieter zu registrieren, und ersetzen Sie `<yourSubscriptionIDHere>` vor dem Ausführen des Skripts:
-
-```azurepowershell
-Connect-AzAccount
-
-#If your identity is associated with more than one subscription, set an active subscription
-$context = Get-AzSubscription -SubscriptionId <yourSubscriptionIDHere>
-Set-AzContext $context
-
-Register-AzProviderFeature -FeatureName AllowNfsFileShares -ProviderNamespace Microsoft.Storage
-
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-### <a name="cause-2-unsupported-storage-account-settings"></a>Ursache 2: Nicht unterstützte Speicherkontoeinstellungen
+### <a name="cause-1-unsupported-storage-account-settings"></a>Ursache 1: Nicht unterstützte Speicherkontoeinstellungen
 
 NFS ist nur für Speicherkonten mit der folgenden Konfiguration verfügbar:
 
@@ -79,14 +55,6 @@ NFS ist nur für Speicherkonten mit der folgenden Konfiguration verfügbar:
 #### <a name="solution"></a>Lösung
 
 Befolgen Sie die Anweisungen in unserem Artikel: [Erstellen einer NFS-Freigabe](storage-files-how-to-create-nfs-shares.md)
-
-### <a name="cause-3-the-storage-account-was-created-prior-to-registration-completing"></a>Ursache 3: Das Speicherkonto wurde vor Abschluss der Registrierung erstellt.
-
-Damit die Funktion von einem Speicherkonto verwendet werden kann, muss sie erstellt werden, sobald die NFS-Registrierung für das Abonnement abgeschlossen ist. Es kann bis zu 30 Minuten dauern, bis die Registrierung abgeschlossen ist.
-
-#### <a name="solution"></a>Lösung
-
-Nachdem die Registrierung abgeschlossen ist, befolgen Sie die Anweisungen in unserem Artikel: [Erstellen einer NFS-Freigabe](storage-files-how-to-create-nfs-shares.md)
 
 ## <a name="cannot-connect-to-or-mount-an-azure-nfs-file-share"></a>Es ist nicht möglich, eine Verbindung mit einer Azure NFS-Dateifreigabe herzustellen bzw. diese einzubinden.
 

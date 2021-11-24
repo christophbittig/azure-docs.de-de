@@ -17,19 +17,19 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1db2a820ab551130fbd9bba832c329b925a0f6a
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 110170868ba477060c5cd8ba1fbf28428160e29e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997113"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305577"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor
 
 Sie können Azure AD-Aktivitätsprotokolle (Azure Active Directory) zur langfristigen Aufbewahrung und Gewinnung von Erkenntnissen zu Daten an mehrere Endpunkte weiterleiten. Dieses Feature ermöglicht Folgendes:
 
 * Archivieren von Azure AD-Aktivitätsprotokollen in einem Azure-Speicherkonto, um die Daten für längere Zeit aufzubewahren
-* Streamen von Azure AD-Aktivitätsprotokollen zum Analysieren an einen Azure Event Hub mithilfe von beliebten SIEM-Tools (Security Information and Event Management) wie Splunk, QRadar und Azure Sentinel
+* Streamen Sie Aktivitätsprotokolle von Azure AD zum Analysieren an einen Azure Event Hub mithilfe der beliebten SIEM-Tools (Security Information & Event Management) wie Splunk, QRadar und Microsoft .
 * Integrieren von Azure AD-Aktivitätsprotokollen in Ihre eigenen benutzerdefinierten Protokolllösungen, indem Sie sie an einen Event Hub streamen
 * Senden von Azure AD-Aktivitätsprotokollen an Azure Monitor-Protokolle, um funktionsreiche Visualisierungen, Überwachung und Benachrichtigungen für die verbundenen Daten zu aktivieren
 
@@ -39,7 +39,7 @@ Sie können Azure AD-Aktivitätsprotokolle (Azure Active Directory) zur langfris
 
 ## <a name="supported-reports"></a>Unterstützte Berichte
 
-Mit diesem Feature können Sie Azure AD-Überwachungsprotokolle und -Anmeldeprotokolle an Ihr Azure-Speicherkonto, einen Event Hub, Azure Monitor-Protokolle oder eine benutzerdefinierte Lösung weiterleiten. 
+Mit dieser Funktion können Sie Azure AD-Überwachungsprotokolle und -Anmeldeprotokolle an Ihr Azure-Speicherkonto, einen Event Hub, an Azure Monitor-Protokolle oder eine benutzerdefinierte Lösung weiterleiten.
 
 * **Überwachungsprotokolle**: Der [Aktivitätsbericht der Überwachungsprotokolle](concept-audit-logs.md) bietet Ihnen Zugriff auf Informationen über Änderungen, die auf Ihren Mandanten angewendet wurden, z. B. die Verwaltung von Benutzern und Gruppen oder Aktualisierungen, die auf die Ressourcen Ihres Mandanten angewendet wurden.
 * **Anmeldeprotokolle**: Mit dem [Aktivitätsbericht zu Anmeldungen](concept-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die in den Überwachungsprotokollen aufgeführt sind.

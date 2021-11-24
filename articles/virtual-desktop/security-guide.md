@@ -8,12 +8,12 @@ ms.date: 12/15/2020
 ms.author: helohr
 ms.service: virtual-desktop
 manager: femila
-ms.openlocfilehash: e26a4b60edc413080a34687dbeb136c07ec0f412
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: e453f6f104a79ee4d364b7f52ab7c805741e3a22
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131467053"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132326833"
 ---
 # <a name="security-best-practices"></a>Bewährte Sicherheitsmethoden
 
@@ -50,21 +50,19 @@ Azure Virtual Desktop ist ein Dienst unter Azure. Um die Sicherheit Ihrer Azure 
 
 In diesem Abschnitt werden bewährte Methoden zum Sichern Ihres Azure-Ökosystems beschrieben.
 
-### <a name="enable-azure-security-center"></a>Aktivieren von Azure Security Center
+### <a name="enable-microsoft-defender-for-cloud"></a>Aktivieren von Microsoft Defender für Cloud
 
-Es wird empfohlen, Azure Security Center Standard für Abonnements, virtuelle Computer, Schlüsseltresore und Speicherkonten zu aktivieren.
+Wir empfehlen die Aktivierung der erweiterten Sicherheitsfunktionen von Microsoft Defender für Cloud für folgende Aktionen:
 
-Mit Azure Security Center Standard haben Sie folgende Möglichkeiten:
+- Verwalten von Sicherheitsrisiken
+- Bewerten der Konformität mit gängigen Frameworks wie PCI
+- Erhöhen Sie die allgemeine Sicherheit Ihrer Umgebung.
 
-* Verwalten von Sicherheitsrisiken
-* Bewerten der Konformität mit gängigen Frameworks wie PCI
-* Erhöhen Sie die allgemeine Sicherheit Ihrer Umgebung.
-
-Weitere Informationen finden Sie unter [Einbinden Ihres Azure-Abonnements in Security Center Standard](../security-center/security-center-get-started.md).
+Weitere Informationen finden Sie unter [Aktivieren erweiterter Sicherheitsfunktionen](../security-center/enable-enhanced-security.md).
 
 ### <a name="improve-your-secure-score"></a>Verbessern Ihrer Sicherheitsbewertung
 
-Die Sicherheitsbewertung bietet Empfehlungen und Ratschläge zu bewährten Methoden zur Verbesserung Ihrer allgemeinen Sicherheit. Diese Empfehlungen sind nach Prioritäten geordnet, um Ihnen bei der Auswahl der wichtigsten Empfehlungen zu helfen, und die Optionen für die schnelle Problembehebung helfen Ihnen, potenzielle Sicherheitsrisiken schnell zu beheben. Zudem werden diese Empfehlungen im Laufe der Zeit aktualisiert, sodass Sie immer auf dem Laufenden sind, wie Sie die Sicherheit Ihrer Umgebung am besten sicherstellen können. Weitere Informationen finden Sie unter [Verbessern der Sicherheitsbewertung in Azure Security Center](../security-center/secure-score-security-controls.md).
+Die Sicherheitsbewertung bietet Empfehlungen und Ratschläge zu bewährten Methoden zur Verbesserung Ihrer allgemeinen Sicherheit. Diese Empfehlungen sind nach Prioritäten geordnet, um Ihnen bei der Auswahl der wichtigsten Empfehlungen zu helfen, und die Optionen für die schnelle Problembehebung helfen Ihnen, potenzielle Sicherheitsrisiken schnell zu beheben. Zudem werden diese Empfehlungen im Laufe der Zeit aktualisiert, sodass Sie immer auf dem Laufenden sind, wie Sie die Sicherheit Ihrer Umgebung am besten sicherstellen können. Weitere Informationen finden Sie unter [Verbessern Ihres Secure Scores (Indikator für Sicherheitsbewertung) in Microsoft Defender für Cloud](../security-center/secure-score-security-controls.md).
 
 ## <a name="azure-virtual-desktop-security-best-practices"></a>Bewährte Sicherheitsmethoden für Azure Virtual Desktop
 
@@ -109,11 +107,11 @@ Für Profillösungen wie FSLogix oder andere Lösungen, die VHD-Dateien einbinde
 
 ### <a name="install-an-endpoint-detection-and-response-product"></a>Installieren eines Produkts zur Endpunkterkennung und -antwort
 
-Es wird empfohlen, ein EDR-Produkt (Endpunkterkennung und -antwort) zu installieren, um erweiterte Erkennungs- und Antwortfunktionen bereitzustellen. Bei Serverbetriebssystemen mit aktiviertem [Azure Security Center](../security-center/security-center-services.md) wird bei der Installation eines EDR-Produkts Defender ATP bereitgestellt. Für Clientbetriebssysteme können Sie [Defender ATP](/windows/security/threat-protection/microsoft-defender-atp/onboarding) oder ein Produkt eines Drittanbieters an diesen Endpunkten bereitstellen.
+Es wird empfohlen, ein EDR-Produkt (Endpunkterkennung und -antwort) zu installieren, um erweiterte Erkennungs- und Antwortfunktionen bereitzustellen. Bei Serverbetriebssystemen mit aktiviertem [Microsoft Defender für Cloud](../security-center/security-center-services.md) wird bei der Installation eines EDR-Produkts Defender ATP bereitgestellt. Für Clientbetriebssysteme können Sie [Defender ATP](/windows/security/threat-protection/microsoft-defender-atp/onboarding) oder ein Produkt eines Drittanbieters an diesen Endpunkten bereitstellen.
 
 ### <a name="enable-threat-and-vulnerability-management-assessments"></a>Aktivieren von Bewertungen des Bedrohungs- und Sicherheitsrisikomanagements
 
-Die Identifizierung von Softwaresicherheitsrisiken, die in Betriebssystemen und Anwendungen vorhanden sind, ist entscheidend für die Sicherheit Ihrer Umgebung. Azure Security Center kann Ihnen bei der Identifizierung von Problemzonen durch Bewertungen von Sicherheitsrisiken für Serverbetriebssysteme helfen. Sie können auch Defender ATP verwenden, das Bedrohungs- und Sicherheitsrisikomanagement für Desktopbetriebssysteme bietet. Sie können auch Produkte von Drittanbietern verwenden, wenn Sie dazu geneigt sind, obwohl wir die Verwendung von Azure Security Center und Defender ATP empfehlen.
+Die Identifizierung von Softwaresicherheitsrisiken, die in Betriebssystemen und Anwendungen vorhanden sind, ist entscheidend für die Sicherheit Ihrer Umgebung. Microsoft Defender für Cloud kann Ihnen bei der Identifizierung von Problemzonen durch Bewertungen von Sicherheitsrisiken für Serverbetriebssysteme helfen. Sie können auch Defender ATP verwenden, das Bedrohungs- und Sicherheitsrisikomanagement für Desktopbetriebssysteme bietet. Sie können auch Produkte von Drittanbietern verwenden, wenn Sie dazu geneigt sind, obwohl wir die Verwendung von Microsoft Defender für Cloud und Defender ATP empfehlen.
 
 ### <a name="patch-software-vulnerabilities-in-your-environment"></a>Patchen von Softwaresicherheitsrisiken in Ihrer Umgebung
 

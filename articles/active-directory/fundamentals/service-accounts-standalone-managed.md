@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea3bd3e6fc971901bf69c053088678e8f0f718d0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8237e746e6f48640ed1aca8d2637eb128172a297
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206671"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292431"
 ---
 # <a name="secure-standalone-managed-service-accounts"></a>Schützen von eigenständigen verwalteten Dienstkonten
 
@@ -61,7 +61,7 @@ In der folgenden Tabelle wird gezeigt, wie Sie potenzielle sMSA-bedingte Sicherh
 | Sicherheitsproblem| Minderung |
 | - | - |
 | sMSA ist Mitglied privilegierter Gruppen. | <li>Entfernen Sie das sMSA aus Gruppen mit erhöhten Rechten (z. B. Domänenadministratoren).<li>Verwenden Sie das Modell mit den *geringsten Berechtigungen*, und erteilen Sie dem sMSA nur die Rechte und Berechtigungen, die zum Ausführen der Dienste erforderlich sind.<li>Wenn Sie nicht sicher sind, welche Berechtigungen erforderlich sind, wenden Sie sich an den Ersteller des Diensts. |
-| Das sMSA verfügt über Lese-/Schreibzugriff auf vertrauliche Ressourcen. | <li>Überwachen Sie den Zugriff auf vertrauliche Ressourcen.<li>Archivieren Sie Überwachungsprotokolle zur Analyse in einem SIEM-Programm (Security Information and Event Management) wie Azure Log Analytics oder Azure Sentinel.<li>Korrigieren Sie Ressourcenberechtigungen, wenn eine unerwünschte Zugriffsebene erkannt wird. |
+| Das sMSA verfügt über Lese-/Schreibzugriff auf vertrauliche Ressourcen. | <li>Überwachen Sie den Zugriff auf vertrauliche Ressourcen.<li>Archivieren Sie Überwachungsprotokolle zur Analyse in einem SIEM-Programm (Security Information and Event Management) wie Azure Log Analytics oder Microsoft Sentinel.<li>Korrigieren Sie Ressourcenberechtigungen, wenn eine unerwünschte Zugriffsebene erkannt wird. |
 | Standardmäßig beträgt das Kennwortrolloverintervall von sMSAs 30 Tage. | Mit einer Gruppenrichtlinie können Sie die Dauer entsprechend den Sicherheitsanforderungen des Unternehmens optimieren. Zum Festlegen der Gültigkeitsdauer von Kennwörtern verwenden Sie den folgenden Pfad:<br>*Computerkonfiguration\Richtlinien\Windows-Einstellungen\Sicherheitseinstellungen\Sicherheitsoptionen*. Verwenden Sie für Domänenmitglieder **Maximalalter von Computerkontenkennwörtern**. |
 | | |
 
@@ -95,13 +95,13 @@ Führen Sie den folgenden Befehl aus, um nur sMSAs in der Active Directory-Domä
 
 Für die Verwaltung Ihrer sMSAs können Sie die folgenden Active Directory-PowerShell-Cmdlets verwenden:
 
-`Get-ADServiceAccount`  
-` Install-ADServiceAccount`  
-` New-ADServiceAccount`  
-` Remove-ADServiceAccount`  
-`Set-ADServiceAccount`  
-`Test-ADServiceAccount`  
-`Ininstall-ADServiceAccount`
+`Get-ADServiceAccount`
+`Install-ADServiceAccount`
+`New-ADServiceAccount`
+`Remove-ADServiceAccount`
+`Set-ADServiceAccount`
+`Test-ADServiceAccount`
+`Uninstall-ADServiceAccount`
 
 ## <a name="move-to-smsas"></a>Wechseln zu sMSAs
 

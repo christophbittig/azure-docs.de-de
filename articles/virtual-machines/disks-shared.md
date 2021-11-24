@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f66c1528058fd2d03098c00a54928fb0fbbd4057
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 244261c8b0ba1c5b99ea5add4124c92d1b5c3ae4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225152"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486224"
 ---
 # <a name="share-an-azure-managed-disk"></a>Freigeben eines verwalteten Azure-Datenträgers
 
@@ -50,8 +50,8 @@ Die folgende Liste enthält einige beliebte Anwendungen, die unter WSFC ausgefü
 
 - [Erstellen einer FCI mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)](../azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
     - [Migrieren Ihrer Failoverclusterinstanz zu SQL Server auf Azure-VMs mit freigegebenen Datenträgern](../azure-sql/migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)
-- Dateiserver mit horizontaler Skalierung (Scale-Out File Server, SOFS) [Vorlage] (https://aka.ms/azure-shared-disk-sofs-template)
-- SAP ASCS/SCS [Vorlage] (https://aka.ms/azure-shared-disk-sapacs-template)
+- horizontale Skalierung File Server (SoFS) [Vorlage](https://aka.ms/azure-shared-disk-sofs-template)
+- SAP ASCS/SCS [Vorlage](https://aka.ms/azure-shared-disk-sapacs-template)
 - Dateiserver zur allgemeinen Verwendung (IW-Workload)
 - Remotedesktopserver-Benutzerprofildatenträger (Remote Desktop Server User Profile Disk, RDS UPD)
 
@@ -152,44 +152,6 @@ Es folgt ein Beispiel für einen Linux-Cluster mit vier Knoten, einem einzelnen 
 #### <a name="ultra-pricing"></a>Preise für Ultra-Datenträger
 
 Die Preise für freigegebene Ultra-Datenträger basieren auf der bereitgestellten Kapazität, der Gesamtzahl zulässiger IOPS (diskIOPSReadWrite + diskIOPSReadOnly) und dem insgesamt zulässigen Durchsatz in MBit/s (diskMBpsReadWrite + diskMBpsReadOnly). Für zusätzliche VM-Einbindungen fallen keine weitere Gebühren an. Eine Beispiel: Ein freigegebener Ultra-Datenträger mit der folgenden Konfiguration (diskSizeGB: 1024, DiskIOPSReadWrite: 10000, DiskMBpsReadWrite: 600, DiskIOPSReadOnly: 100, DiskMBpsReadOnly: 1) wird mit 1024 GiB, 10100 IOPS und 601 MBit/s abgerechnet, unabhängig davon, ob er in zwei oder fünf VMs eingebunden ist.
-
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-**F: Wird die Funktion für gemeinsam genutzte Festplatten für nicht verwaltete Festplatten oder Seitenblobs unterstützt?**
-
-**A:** Nein. Diese Funktion wird nur für Ultra-Festplatten und Premium-SSD verwaltete Datenträger unterstützt.
-
-**F: Welche Regionen unterstützen gemeinsam genutzte Festplatten?**
-
-**A:** Regionale Informationen finden Sie in unserem [Konzeptionsartikel]().
-
-**F: Können gemeinsam genutzte Festplatten als Betriebssystemfestplatte verwendet werden?**
-
-**A:** Nein. Gemeinsam genutzte Festplatten werden nur für Datenfestplatten unterstützt.
-
-**F: Welche Festplattengrößen unterstützen gemeinsam genutzte Festplatten?**
-
-**A:** Für unterstützte Größen siehe unseren [Konzeptartikel]().
-
-**F: Wenn ich eine vorhandene Festplatte habe, kann ich darauf gemeinsame Laufwerke aktivieren?**
-
-**A:** Alle verwalteten Datenträger, die mit der API-Version 2019-07-01 oder einer späteren Version erstellt wurden, können gemeinsam genutzte Datenträger aktivieren. Dazu müssen Sie den Datenträger von allen VMs, an die er angeschlossen ist, aushängen. Bearbeiten Sie anschließend die maxShares-Eigenschaft des Datenträgers.
-
-**F: Wenn ich einen Datenträger nicht mehr im gemeinsamen Modus verwenden möchte, wie kann ich ihn deaktivieren?**
-
-**A:** Trennen Sie die Festplatte von allen VMs, mit denen sie verbunden ist. Ändern Sie dann die maxShare-Eigenschaft auf der Festplatte auf **1**.
-
-**F: Kann ich die Größe eines freigegebenen Datenträgers ändern?**
-
-**A:** Ja.
-
-**F: Kann ich die Schreibbeschleunigung auf einem Laufwerk aktivieren, auf dem auch gemeinsam genutzte Laufwerke aktiviert sind?**
-
-**A:** Nein. Sie können die Schreibbeschleunigung nicht auf einer Festplatte aktivieren, auf der auch gemeinsam genutzte Festplatten aktiviert sind.
-
-**F: Kann ich die Host-Zwischenspeicherung für eine Festplatte aktivieren, für die freigegebene Festplatten aktiviert sind?**
-
-**A:** Die einzige unterstützte Zwischenspeicheroption für den Host ist **Keine**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

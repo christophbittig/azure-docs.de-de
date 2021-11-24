@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: f4138c2b2835ede93e0a33693f49ed75ee6bb499
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3f1f1cfa0feb13b03abd5129098ab20c7b755b76
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449087"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401020"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- und Edsv4-Serie
 
@@ -34,6 +34,7 @@ Die Edv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platin
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) Unterstützt<sup>1</sup> <br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler temporärer Speicherdurchsatz: IOPS/MB/s<sup>*</sup>  | Maximale Anzahl NICs|Max. Netzwerkbandbreite (MBit/s) |
@@ -42,7 +43,7 @@ Die Edv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platin
 | Standard_E4d_v4              | 4  | 32  | 150  | 8  | 19.000/250   | 2 | 2000  |
 | Standard_E8d_v4              | 8  | 64  | 300  | 16 | 38.000/500   | 4 | 4000  |
 | Standard_E16d_v4             | 16 | 128 | 600  | 32 | 75.000/1.000   | 8 | 8.000  |
-| Standard_E20d_v4             | 20 | 160 | 750  | 32 | 94.000/1.250  | 8 | 10000 |
+| Standard_E20d_v4             | 20 | 160 | 750  | 32 | 94.000/1250  | 8 | 10000 |
 | Standard_E32d_v4             | 32 | 256 | 1200 | 32 | 150.000/2.000 | 8 | 16000 |
 | Standard_E48d_v4             | 48 | 384 | 1800 | 32 | 225.000/3.000 | 8 | 24.000 |
 | Standard_E64d_v4             | 64 | 504 | 2400 | 32 | 300.000/4.000 | 8 | 30.000 |
@@ -62,6 +63,7 @@ Die Edsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Plati
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt <br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler temporärer Speicherdurchsatz: IOPS/MB/s<sup>*</sup> | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> | Maximale Anzahl NICs|Max. Netzwerkbandbreite (MBit/s) |

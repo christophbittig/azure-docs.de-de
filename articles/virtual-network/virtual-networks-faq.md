@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 2a916c83cc3249b304648d090f739e66bb6b7dd3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3e59e95de15a34e11bba2071f5b22c722c6845a4
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130245586"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552126"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -51,7 +51,7 @@ Sie können die folgenden Tools zum Erstellen oder Konfigurieren eines VNet verw
 
 * Azure-Portal
 * PowerShell
-* Azure-Befehlszeilenschnittstelle
+* Azure CLI
 * Eine Netzwerkkonfigurationsdatei (NETCFG-Datei, nur für klassische VNets). Weitere Informationen finden Sie im Artikel [Konfigurieren eines Virtual Network mit einer Netzwerkkonfigurationsdatei](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file).
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welche Adressbereiche kann ich in meinen VNets verwenden?
@@ -230,6 +230,18 @@ Ja. Ausführliche Informationen finden Sie im Artikel [Die Netzwerksicherheit in
 
 ### <a name="do-virtual-networks-store-customer-data"></a>Werden in virtuellen Netzwerken Kundendaten gespeichert?
 Nein. In virtuellen Netzwerken werden keine Kundendaten gespeichert. 
+
+### <a name="can-i-set-flowtimeoutinminutes-property-for-an-entire-subscription"></a>Kann ich die Eigenschaft [FlowTimeoutInMinutes](/powershell/module/az.network/set-azvirtualnetwork?view=azps-6.5.0) für ein ganzes Abonnement festlegen? 
+Nein. Dies muss beim virtuellen Netzwerk eingestellt werden. Folgendes kann das automatische Festlegen dieser Eigenschaft für größere Abonnements unterstützen:  
+```Powershell
+$Allvnet = Get-AzVirtualNetwork
+$time = 4 #The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking. $null to disable. 
+ForEach ($vnet in $Allvnet)
+{
+    $vnet.FlowTimeoutInMinutes = $time
+    $vnet | Set-AzVirtualNetwork
+}
+```
 
 ## <a name="apis-schemas-and-tools"></a>APIs, Schemas und Tools
 

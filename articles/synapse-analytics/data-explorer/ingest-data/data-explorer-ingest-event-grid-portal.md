@@ -9,12 +9,12 @@ ms.reviewer: tzgitlin
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
-ms.openlocfilehash: f6fc9858589e1a5ee940a8fc44e3eb462a30ce7c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2c472ae5950bc035612987c35e76291dc5c23f49
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478781"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485665"
 ---
 # <a name="ingest-blobs-into-azure-synapse-data-explorer-by-subscribing-to-event-grid-notifications-preview"></a>Erfassen von Blobs in Azure Synapse Data Explorer durch Abonnieren von Event Grid-Benachrichtigungen (Vorschau)
 
@@ -103,7 +103,7 @@ Verbinden Sie nun das Speicherkonto mit Data Explorer, sodass die in den Speiche
 1. Klicken Sie auf **Weiter: Erfassungseigenschaften**.
 
 > [!NOTE]
-> Es wird empfohlen, das Speicherkonto so zu aktualisieren, dass verwaltete Identitäten verwendet werden, sobald die Option verfügbar ist.
+> Es wird empfohlen die Datenverbindung so zu aktualisieren, dass verwaltete Identitäten verwendet werden, um auf das Speicherkonto zuzugreifen, sobald die Option für Ihren Cluster verfügbar ist.
 
 #### <a name="data-connection---ingest-properties-tab"></a>Datenverbindung: Registerkarte „Erfassungseigenschaften“
 
@@ -262,5 +262,5 @@ Wenn Sie Ihre Event Grid-Instanz nicht erneut verwenden möchten, sollten Sie d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Analyse mit Data Explorer](../../get-started-analyze-data-explorer.md)
+- [Analysieren mit Data Explorer](../../get-started-analyze-data-explorer.md)
 - [Überwachen von Data Explorer-Pools](../data-explorer-monitor-pools.md)

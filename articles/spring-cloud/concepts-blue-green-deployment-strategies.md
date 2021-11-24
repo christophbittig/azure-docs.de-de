@@ -1,18 +1,18 @@
 ---
 title: Strategien für Blau-Grün-Bereitstellungen in Azure Spring Cloud
 description: In diesem Thema werden zwei Ansätze für Blau-Grün-Bereitstellungen in Azure Spring Cloud erläutert.
-author: barbkess
-ms.author: barbkess
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 11/12/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 194529a03a493ec22d22260576a678ab07401f4c
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 8b019c5cc8e7e7a8ed132cc6adbf0d4c7d0495a4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132056566"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486267"
 ---
 # <a name="blue-green-deployment-strategies-in-azure-spring-cloud"></a>Strategien für Blau-Grün-Bereitstellungen in Azure Spring Cloud
 
@@ -95,7 +95,7 @@ Es gibt jedoch auch Nachteile, wie im folgenden Abschnitt beschrieben.
 
 #### <a name="deployment-pipeline-failures"></a>Fehler der Bereitstellungspipeline
 
-Zwischen dem Start einer Bereitstellung und dem Löschen der Stagingbereitstellung schlagen alle weiteren Versuche, die Bereitstellungspipeline auszuführen, fehl. Die Pipeline versucht, eine neue Bereitstellung zu erstellen. Dies führt zu einem Fehler, da pro Azure Spring Cloud-Anwendung nur zwei Bereitstellungen zulässig sind.
+Zwischen dem Start einer Bereitstellung und dem Löschen der Stagingbereitstellung schlagen alle weiteren Versuche, die Bereitstellungspipeline auszuführen, fehl. Die Pipeline versucht, eine neue Bereitstellung zu erstellen. Dies führt zu einem Fehler, da pro Anwendung in Azure Spring Cloud nur zwei Bereitstellungen zulässig sind.
 
 Daher muss die Bereitstellungsorchestrierung entweder über die Möglichkeit verfügen, einen fehlgeschlagenen Bereitstellungsprozess zu einem späteren Zeitpunkt zu wiederholen, oder sie muss sicherstellen, dass die Bereitstellungsabläufe für jede Version in der Warteschlange bleiben, bis der Ablauf für alle vorherigen Versionen abgeschlossen ist.
 

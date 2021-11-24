@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 6092476180614fe11f8c1199c079b0599f829779
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: b01049e8b2ceb851680cc73837f5f0609818372b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111554424"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336846"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
 Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit virtuellen Computern verwendet werden können.
@@ -134,18 +134,18 @@ Weitere Informationen:
 
 ## <a name="security-policy-management-and-reporting"></a>Verwaltung von Sicherheitsrichtlinien und Berichtserstellung
 
-Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheben. Security Center sorgt für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Es hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum von Sicherheitslösungen verwendet werden.
+Microsoft Defender für Cloud hilft Ihnen dabei, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren. Defender für Cloud bietet Ihnen mehr Transparenz und Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Es hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum von Sicherheitslösungen verwendet werden.
 
-Mit Security Center können Sie die Sicherheit Ihrer virtuellen Computer durch folgende Aktionen optimieren und überwachen:
+Defender für Cloud unterstützt Sie bei der Optimierung und Überwachung der Sicherheit Ihrer virtuellen Geräte durch:
 
 * Bereitstellen von [Sicherheitsempfehlungen](../../security-center/security-center-recommendations.md) für die virtuellen Computer. Empfehlungen beziehen sich beispielsweise auf das Anwenden von Systemupdates, das Konfigurieren von ACL-Endpunkten, das Aktivieren von Antischadsoftware, das Aktivieren von Netzwerksicherheitsgruppen und das Anwenden der Datenträgerverschlüsselung.
 * Überwachen des Status Ihrer virtuellen Computer.
 
 Weitere Informationen:
 
-* [Einführung in Azure Security Center](../../security-center/security-center-introduction.md)
-* [Azure Security Center – Häufig gestellte Fragen](../../security-center/faq-general.yml)
-* [Planungs- und Betriebshandbuch für Azure Security Center](../../security-center/security-center-planning-and-operations-guide.md)
+* [Einführung in Microsoft Defender für Cloud](../../security-center/security-center-introduction.md)
+* [Häufig gestellte Fragen zu Microsoft Defender für Cloud](../../security-center/faq-general.yml)
+* [Microsoft Defender für Cloud: Planung und Betrieb](../../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>Compliance
 

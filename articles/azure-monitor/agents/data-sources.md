@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: 537163b4a78954443eeb7799dc624837ba03e2bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cac077bf962e8d021fb554acb5576d9d5665ebe6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036621"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284738"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Quellen für Überwachungsdaten für Azure Monitor
 Azure Monitor basiert auf einer [allgemeinen Überwachungsdatenplattform](../data-platform.md), die [Protokolle](../logs/data-platform-logs.md) und [Metriken](../essentials/data-platform-metrics.md) umfasst. Das Sammeln von Daten auf dieser Plattform macht es möglich, Daten von mehreren Ressourcen zusammen mit einem gemeinsamen Satz von Tools in Azure Monitor zu analysieren. Überwachungsdaten werden ggf. auch zur Unterstützung bestimmter Szenarien an andere Speicherorte gesendet, und einige Ressourcen schreiben möglicherweise Daten an andere Speicherorte, bevor sie in Protokollen oder Metriken gesammelt werden können.
@@ -179,7 +179,7 @@ Wenn Sie Application Insights durch Installation eines Instrumentierungspakets f
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Speichert Überwachungsdaten für AKS, einschließlich Bestand, Protokolle und Ereignisse. Metrikdaten werden ebenfalls in Protokollen gespeichert, um deren Analysefunktionen im Portal zu nutzen. | [Überwachen der Leistung von Kubernetes-Clustern mit Container Insights](../containers/container-insights-analyze.md) |
 | Azure Monitor-Metriken | Metrikdaten werden in der Metrikdatenbank für die Visualisierung und Warnungen gespeichert. | [Anzeigen von Containermetriken im Metrik-Explorer](../containers/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
-| Azure Kubernetes Service | Bietet direkten Zugriff auf Ihre Azure Kubernetes Service-Containerprotokolle (stdout/stderror), -Ereignisse und -Podmetriken im Portal. | [Anzeigen von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Echtzeit ](../containers/container-insights-livedata-overview.md) |
+| Azure Kubernetes Service | Bietet direkten Zugriff auf Ihre Azure Kubernetes Service-Containerprotokolle (stdout/stderror), -Ereignisse und -Podmetriken im Portal. | [Anzeigen von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Echtzeit](../containers/container-insights-livedata-overview.md) |
 
 ### <a name="vm-insights"></a>VM Insights
 [VM Insights](../vm/vminsights-overview.md) bietet eine angepasste Oberfläche für die Überwachung von VMs Eine Beschreibung der von VM Insights gesammelten Daten enthält der Abschnitt [Betriebssystem (Gast)](#operating-system-guest) weiter oben.
@@ -200,8 +200,8 @@ Sonstige Dienste in Azure schreiben Daten auf die Azure Monitor-Datenplattform. 
 
 | Dienst | Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|:---|
-| [Azure Security Center](../../security-center/index.yml) | Azure Monitor-Protokolle | Azure Security Center speichert die gesammelten Sicherheitsdaten in einem Log Analytics-Arbeitsbereich und ermöglicht so die Analyse mit anderen von Azure Monitor gesammelten Protokolldaten.  | [Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md) |
-| [Azure Sentinel](../../sentinel/index.yml) | Azure Monitor-Protokolle | Azure Sentinel speichert die aus verschiedenen Datenquellen gesammelten Daten in einem Log Analytics-Arbeitsbereich und ermöglicht so die Analyse mit anderen von Azure Monitor gesammelten Protokolldaten.  | [Herstellen einer Verbindung mit Datenquellen](../../sentinel/quickstart-onboard.md) |
+| [Microsoft Defender für Cloud](../../security-center/index.yml) | Azure Monitor-Protokolle | Microsoft Defender für Cloud speichert die gesammelten Sicherheitsdaten in einem Protokoll-Analyse(Log Analytics)-Arbeitsbereich und ermöglicht so die Analyse mit anderen von Azure Monitor gesammelten Protokolldaten.  | [Datensammlung in Microsoft Defender für Cloud](../../security-center/security-center-enable-data-collection.md) |
+| [Microsoft Sentinel](../../sentinel/index.yml) | Azure Monitor-Protokolle | Microsoft Sentinel speichert die aus verschiedenen Datenquellen gesammelten Daten in einem Protokoll-Analyse-Arbeitsbereich und ermöglicht so die Analyse mit anderen von Azure Monitor gesammelten Protokolldaten.  | [Herstellen einer Verbindung mit Datenquellen](../../sentinel/quickstart-onboard.md) |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

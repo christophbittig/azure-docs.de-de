@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4d902a3c5471455f6f2d6cc614544aeb4e0dc39
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 4d46bece61b686552b548461e39a94c26a264174
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131892076"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344825"
 ---
 # <a name="conditional-access-session"></a>Bedingter Zugriff: Sitzung
 
@@ -35,7 +35,7 @@ Weitere Informationen zum Verwenden und Konfigurieren von durch die App erzwunge
 
 ## <a name="conditional-access-application-control"></a>Anwendungssteuerung für bedingten Zugriff
 
-App-Steuerung für bedingten Zugriff verwendet eine Reverseproxyarchitektur und ist in bedingten Azure AD-Zugriff eindeutig integriert. Bedingter Azure AD-Zugriff ermöglicht Ihnen das Erzwingen von Zugriffssteuerungen für die Apps Ihrer Organisation auf der Grundlage bestimmter Bedingungen. Die Bedingungen definieren, auf wen (Benutzer oder Benutzergruppe), auf was (welche Cloud-Apps) und wo (welche Orte und Netzwerke) eine Richtlinie für bedingten Zugriff angewendet wird. Nachdem Sie die Bedingungen festgelegt haben, können Sie die Benutzer an [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) weiterleiten, wo Sie Daten mit der App-Steuerung für bedingten Zugriff schützen können, indem Sie Zugriffs- und Sitzungssteuerelemente anwenden.
+App-Steuerung für bedingten Zugriff verwendet eine Reverseproxyarchitektur und ist in bedingten Azure AD-Zugriff eindeutig integriert. Bedingter Azure AD-Zugriff ermöglicht Ihnen das Erzwingen von Zugriffssteuerungen für die Apps Ihrer Organisation auf der Grundlage bestimmter Bedingungen. Die Bedingungen definieren, auf wen (Benutzer oder Benutzergruppe), auf was (welche Cloud-Apps) und wo (welche Orte und Netzwerke) eine Richtlinie für bedingten Zugriff angewendet wird. Nachdem Sie die Bedingungen festgelegt haben, können Sie Benutzer an [Microsoft Defender für Cloud Apps](/cloud-app-security/what-is-cloud-app-security) weiterleiten, wo Sie Daten mit Conditional Access App Control durch Anwendung von Zugriffs- und Sitzungskontrollen schützen können.
 
 Mit der App-Steuerung für bedingten Zugriff können Benutzerzugriffe auf Apps und Sitzungen auf der Grundlage von Zugriffs- und Sitzungsrichtlinien in Echtzeit überwacht und gesteuert werden. Zugriffs- und Sitzungsrichtlinien werden im Cloud App Security-Portal verwendet, um Filter weiter zu verfeinern und Aktionen festzulegen, die für einen Benutzer ausgeführt werden sollen. Mithilfe von Zugriffs- und Sitzungsrichtlinien können Sie die folgenden Aktionen ausführen:
 

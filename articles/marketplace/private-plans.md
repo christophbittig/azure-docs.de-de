@@ -6,13 +6,14 @@ ms.service: marketplace
 ms.topic: article
 author: navits09
 ms.author: navits
-ms.date: 10/26/2021
-ms.openlocfilehash: 22523b73847b21426eb1fa56af665274fc830b4b
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.reviewer: amhindma
+ms.date: 11/10/2021
+ms.openlocfilehash: d8f2435fe78465ee40e3cf6011db14d6daf7c04f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131851000"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324648"
 ---
 # <a name="private-plans-in-the-microsoft-commercial-marketplace"></a>Private Pläne im kommerziellen Microsoft-Marketplace
 
@@ -57,7 +58,7 @@ Bei *neuen Angeboten, die nur private Pläne umfassen*, können Herausgeber dies
 
 Herausgeber können sowohl neue als auch vorhandene private Pläne mithilfe von Abonnementbezeichnern auf bestimmte Zielkunden ausrichten. Bei Angeboten für Azure-Anwendung oder verwaltete Dienste können Herausgeber*innen die Verfügbarkeit von privaten Plänen auf individuelle Azure-Abonnement-IDs beschränken. Bei SaaS-Angeboten können Herausgeber*innen Azure Active Directory-Mandanten IDs zuweisen, um die Verfügbarkeit von privaten Plänen zu beschränken. Bei Virtual Machine-Angeboten können Herausgeber*innen die Benutzergruppe zuweisen, die Zugriff auf einen privaten Plan hat, indem sie Azure-Mandanten-IDs, Abonnement-IDs oder beides verwendet. Für jeden dieser Angebotstypen können bis zu zehn IDs manuell hinzugefügt oder eine CSV-Tabelle importiert werden, wenn mehr als zehn IDs erforderlich sind.
 
-Sobald ein Angebot zertifiziert und veröffentlicht wurde, können Kunden mithilfe des Features zum Synchronisieren privater Abonnements im Plan aktualisiert oder daraus entfernt werden. Auf diese Weise können Herausgeber schnell und einfach die Liste der Kunden aktualisieren, denen der private Plan angezeigt wird, ohne das Angebot erneut zertifizieren oder veröffentlichen zu müssen.
+Sobald ein Angebot zertifiziert und veröffentlicht wurde, können Kunden mit Hilfe der Funktion Synchronisieren privater Zielgruppen aktualisiert oder aus dem Plan entfernt werden. Auf diese Weise können Herausgeber schnell und einfach die Liste der Kunden aktualisieren, denen der private Plan angezeigt wird, ohne das Angebot erneut zertifizieren oder veröffentlichen zu müssen.
 
 ## <a name="deploying-a-private-plan"></a>Bereitstellen eines privaten Plans
 

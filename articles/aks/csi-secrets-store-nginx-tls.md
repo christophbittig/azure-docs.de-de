@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 10/19/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f7c40dbcf0944ca5c78182d72346f3fc295ef50c
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: dd6945da0b3c4170082d20e5481d06048b7c3dde
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131848741"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284795"
 ---
 # <a name="set-up-secrets-store-csi-driver-to-enable-nginx-ingress-controller-with-tls"></a>Einrichten des CSI-Treibers für den Geheimnisspeicher zum Aktivieren des NGINX-Eingangsdatencontrollers mit TLS
 
@@ -29,7 +29,6 @@ Das Importieren des TLS-Eingangszertifikats in den Cluster kann mit einer von zw
 - Bevor Sie beginnen, stellen Sie sicher, dass Ihre Azure CLI-Version `2.30.0` oder höher ist, oder [installieren Sie die neueste Version](/cli/azure/install-azure-cli).
 - Ein AKS-Cluster, für den der CSI-Treiber des Geheimnisspeichers konfiguriert ist.
 - Eine Azure Key Vault-Instanz.
-
 
 ## <a name="generate-a-tls-certificate"></a>Generieren eines TLS-Zertifikats
 
@@ -66,6 +65,7 @@ kubectl create ns $NAMESPACE
 ```
 
 Wählen Sie eine [Methode aus, um eine Zugriffsidentität bereitzustellen][csi-ss-identity-access], und konfigurieren Sie Ihre SecretProviderClass-YAML-Datei entsprechend. Darüber hinaus gilt:
+
 - Achten Sie darauf, `objectType=secret` zu verwenden, da dies die einzige Möglichkeit ist, den privaten Schlüssel und das Zertifikat aus AKV abzurufen.
 - Legen Sie `kubernetes.io/tls` als `type` in Ihrem Abschnitt `secretObjects` fest.
 
@@ -352,6 +352,6 @@ curl -v -k --resolve demo.test.com:443:52.xx.xx.xx https://demo.test.com
 ```
 
 <!-- LINKS INTERNAL -->
-[csi-ss-identity-access]: ./csi-secrets-store-identity-access.md 
+[csi-ss-identity-access]: ./csi-secrets-store-identity-access.md
 <!-- LINKS EXTERNAL -->
 [kubernetes-ingress-tls]: https://kubernetes.io/docs/concepts/services-networking/ingress/#tls

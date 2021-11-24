@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 10/12/2021
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: f52f984b1e72d685dae46002e9ae4bac543c068a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 77e8ec3db7b66fe0c639bfd56942b171b9fc2129
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131447578"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294274"
 ---
-# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrieren Ihrer ILB-App Service-Umgebung in ein Azure Application Gateway #
+# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrieren Ihrer ILB-App Service-Umgebung in ein Azure Application Gateway
 
 Die [Azure App Service-Umgebung][AppServiceEnvironmentoverview] ist eine Bereitstellung von Azure App Service in einem Subnetz im virtuellen Azure-Netzwerk eines Kunden. Sie kann für den App-Zugriff über einen externen oder internen Endpunkt bereitgestellt werden. Die Bereitstellung der App Service-Umgebung mit einem internen Endpunkt wird als ILB-ASE (App Service-Umgebung mit internem Lastenausgleich) bezeichnet.
 
@@ -103,22 +103,22 @@ Wählen Sie im Azure-Portal **Neu** > **Netzwerk** > **Anwendungsgateway** aus, 
     
     * Öffentliche IP-Adresse: Sie müssen eine öffentliche IP-Adresse für den öffentlichen Zugriff auf das Anwendungsgateway zuordnen. Notieren Sie sich diese IP-Adresse. Sie müssen Ihrem DNS-Dienst später einen Eintrag hinzufügen.
     
-        :::image type="content" source="./media/integrate-with-application-gateway/frontends.png" alt-text="Screenshot des Abrufens der öffentlichen IP-Adresse aus der Front-End-Einstellung des Anwendungsgateways":::
+        :::image type="content" source="./media/integrate-with-application-gateway/frontends.png" alt-text="Screenshot vom Abruf der öffentlichen IP-Adresse aus der Front-End-Einstellung des Anwendungsgateways":::
 
 3. Back-End-Einstellung
 
     Geben Sie einen Back-End-Poolnamen ein, und wählen Sie als **Zieltyp** die Option **App Services** oder **IP-Adresse oder FQDN** aus. In diesem Fall legen wird **App Services** festgelegt und der App Service-Name aus der Dropdownliste für das Ziel ausgewählt.
-    
+
     :::image type="content" source="./media/integrate-with-application-gateway/add-backend-pool.png" alt-text="Screenshot des Hinzufügens eines Back-End-Poolnamens in der Back-End-Einstellung":::
 
 4. Konfigurationseinstellung
 
     Unter der Einstellung **Konfiguration** müssen Sie eine Routingregel hinzufügen, indem Sie auf das Symbol **Routingregel hinzufügen** klicken.
-    
+
     :::image type="content" source="./media/integrate-with-application-gateway/configuration.png" alt-text="Screenshot des Hinzufügens einer Routingregel in der Konfigurationseinstellung":::
-    
-    Sie müssen in einer Routingregel einen **Listener** und **Back-End-Ziele** konfigurieren. Sie können einen HTTP-Listener für die Proof of Concept-Bereitstellung oder einen HTTPS-Listener zur Steigerung der Sicherheit hinzufügen.
-    
+
+    Sie müssen in einer Routingregel einen **Listener** und **Back-End-Ziele** konfigurieren. Sie können einen HTTP-Listener für die Bereitstellung des Proof of Concept (Machbarkeitsnachweis) oder einen HTTPS-Listener zur Steigerung der Sicherheit hinzufügen.
+
     * Um für Verbindungen mit dem Anwendungsgateway HTTP zu verwenden, können Sie einen Listener mit den folgenden Einstellungen erstellen:
     
         | Parameter      | Wert                             | BESCHREIBUNG                                                  |
@@ -152,7 +152,7 @@ Wählen Sie im Azure-Portal **Neu** > **Netzwerk** > **Anwendungsgateway** aus, 
     
     * Sie müssen den **Back-End-Pool** und die **HTTP-Einstellungen** in den **Back-End-Zielen** konfigurieren. Der Back-End-Pool wurde in den vorherigen Schritten konfiguriert. Klicken Sie auf **Neuen hinzufügen**, um eine HTTP-Einstellung hinzuzufügen.
     
-        :::image type="content" source="./media/integrate-with-application-gateway/add-new-http-setting.png" alt-text="Screenshot des Hinzufügens eines neuen Links zum Hinzufügen einer HTTP-Einstellung":::
+        :::image type="content" source="./media/integrate-with-application-gateway/add-new-http-setting.png" alt-text="Screenshot des Hinzufügens eines neuen Links, um eine HTTP-Einstellung hinzufügen":::
     
     * Im Folgenden sind die HTTP-Einstellungen aufgeführt:
     
@@ -161,12 +161,12 @@ Wählen Sie im Azure-Portal **Neu** > **Netzwerk** > **Anwendungsgateway** aus, 
         | Name der HTTP-Einstellung             | Beispiel: `https-setting`                                   | Name der HTTP-Einstellung                                            |
         | Back-End-Protokoll              | HTTPS                                                        | Verwenden Sie TLS/SSL-Verschlüsselung.                                       |
         | Back-End-Port                  | 443                                                          | Standard-HTTPS-Port                                           |
-        | Zertifikat einer bekannten Zertifizierungsstelle verwenden | Ja                                                          | Der Standarddomänenname der ILB-ASE lautet **.appserviceenvironment.net**, und das Zertifikat dieser Domäne wird von einer öffentlichen, vertrauenswürdigen Stammzertifizierungsstelle ausgestellt. In der Einstellung „Vertrauenswürdiges Stammzertifikat“ können Sie festlegen, dass ein **bekanntes vertrauenswürdiges Zertifizierungsstellen-Stammzertifikat** verwendet wird. |
+        | Zertifikat einer bekannten Zertifizierungsstelle verwenden | Ja                                                          | Der Standarddomänenname der ILB-ASE lautet `.appserviceenvironment.net` und das Zertifikat dieser Domäne wird von einer öffentlichen vertrauenswürdigen Stammzertifizierungsstelle ausgestellt. In der Einstellung „Vertrauenswürdiges Stammzertifikat“ können Sie festlegen, dass ein **bekanntes vertrauenswürdiges Zertifizierungsstellen-Stammzertifikat** verwendet wird. |
         | Mit neuem Hostnamen überschreiben   | Ja                                                          | Der Hostnamenheader wird beim Herstellen einer Verbindung mit der App in der ILB-ASE überschrieben. |
         | Hostnamen außer Kraft setzen            | Hostnamen aus Back-End-Ziel auswählen | Wenn Sie den Back-End-Pool auf App Service festlegen, können Sie den Host am Back-End-Ziel auswählen. |
         | Benutzerdefinierte Tests erstellen | Nein | Verwenden Sie den Standardintegritätstest.|
         
-        :::image type="content" source="./media/integrate-with-application-gateway/https-setting.png" alt-text="Screenshot des Hinzufügens von Details zu HTTP-Einstellungen":::
+        :::image type="content" source="./media/integrate-with-application-gateway/https-setting.png" alt-text="Screenshot des Dialogfelds **H T T P-Einstellung hinzufügen**":::
 
 
 ## <a name="configure-an-application-gateway-integration-with-ilb-ase"></a>Konfigurieren einer Anwendungsgatewayintegration mit einer ILB-ASE

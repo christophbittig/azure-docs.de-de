@@ -3,13 +3,16 @@ title: Wiederherstellen von VMs über das Azure-Portal
 description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wiederherstellungspunkts über das Azure-Portal, einschließlich des Features zur regionsübergreifenden Wiederherstellung
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: a848a36632a4c0474c9f20de58c415bd779da198
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/16/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: b207fa803831aaa1e53da2c9991517a26fb9c07b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265034"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550485"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -95,6 +98,9 @@ Als eine der [Wiederherstellungsoptionen](#restore-options) können Sie von eine
 
 1. Wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsvorgang zu starten.
 
+>[!Note]
+>Bevor Sie NSG-Einstellungen ändern, stellen Sie sicher, dass der VM-Wiederherstellungsvorgang abgeschlossen ist. Erfahren Sie mehr [über das Nachverfolgen des Wiederherstellungsvorgang](#track-the-restore-operation).
+
 ## <a name="restore-disks"></a>Wiederherstellen von Datenträgern
 
 Als eine der [Wiederherstellungsoptionen](#restore-options) können einen Datenträger aus einem Wiederherstellungspunkt erstellen. Anschließend können Sie für den Datenträger die folgenden Aktionen durchführen:
@@ -163,7 +169,7 @@ Wenn CRR aktiviert ist, können Sie die Sicherungselemente in der sekundären Re
 1. Wählen Sie **Sekundäre Region** aus, um die Elemente in der sekundären Region anzuzeigen.
 
 >[!NOTE]
->In der Liste werden nur Sicherungsverwaltungstypen angezeigt, die das CRR-Feature unterstützen. Derzeit ist nur die Unterstützung der Wiederherstellung von Daten aus sekundären Regionen in einer sekundären Region zulässig.<br></br>CRR für Azure-VMs wird für verwaltete Azure-VMs (einschließlich verschlüsselter Azure-VMs) unterstützt.
+>In der Liste werden nur Sicherungsverwaltungstypen angezeigt, die das CRR-Feature unterstützen. Derzeit ist nur die Unterstützung der Wiederherstellung von Daten aus sekundären Regionen in einer sekundären Region zulässig.<br></br>CRR für Azure-VMs wird für verwaltete Azure-VMs (einschließlich verschlüsselter Azure-VMs) unterstützt. Sehen Sie sich [die Verwaltungstypen an, die die regionsübergreifende Wiederherstellung unterstützen.](/azure/backup/backup-support-matrix#cross-region-restore)
 
 ![Virtuelle Computer in der sekundären Region](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
 

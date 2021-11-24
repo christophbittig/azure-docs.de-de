@@ -3,20 +3,20 @@ title: Verwenden von verwalteten Azure-Identitäten zum Erstellen von Umgebungen
 description: Erfahren Sie, wie Sie verwaltete Identitäten in Azure verwenden, um Umgebungen in einem Lab in Azure DevTest Labs bereitzustellen.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 29ebda2920dc6fce5596d9b8b535ef014fd2240e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 220937d20c63420501e3ef6bb1b6c5f8a820613d
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595964"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400317"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Verwenden von verwalteten Azure-Identitäten zum Bereitstellen von Umgebungen in einem Lab 
 
-Als Lab-Besitzer können Sie eine verwaltete Identität verwenden, um Umgebungen in einem Lab bereitzustellen. Diese Funktion ist in Szenarien hilfreich, in denen die Umgebung Verweise auf Azure-Ressourcen wie Schlüsseltresore, freigegebene Imagekataloge und Netzwerke enthält oder besitzt, die außerhalb der Ressourcengruppe der Umgebung liegen. Sie ermöglicht die Erstellung von Sandboxumgebungen, die nicht auf die Ressourcengruppe dieser Umgebung beschränkt sind. 
+Als Lab-Besitzer können Sie eine verwaltete Identität verwenden, um Umgebungen in einem Lab bereitzustellen. Dieses Feature hilft in Szenarien, in denen die Umgebung Azure-Ressourcen enthält oder referenziert, die sich außerhalb der Ressourcengruppe der Umgebung befinden. Zu diesen Ressourcen gehören Schlüsseltresore, Kataloge mit freigegebenen Images und Netzwerke. Verwaltete Identitäten ermöglichen die Erstellung von Sandboxumgebungen, die nicht auf die Ressourcengruppe dieser Umgebung beschränkt sind. 
 
-Wenn Sie eine Umgebung erstellen, erstellt das Lab standardmäßig eine systemseitig zugewiesene Identität für den Zugriff auf Azure-Ressourcen und -Dienste im Namen eines Labbenutzers, während die Azure Resource Manager-Vorlage (ARM-Vorlage) bereitgestellt wird. Erfahren Sie mehr darüber, [warum ein Lab eine systemseitig zugewiesene Identität erstellt](configure-lab-identity.md#scenarios-for-using-labs-system-assigned-identity). Für neue und vorhandene Labs wird standardmäßig eine systemseitig zugewiesene Identität erstellt, wenn zum ersten Mal eine Laborumgebung erstellt wird.  
+Wenn Sie eine Umgebung erstellen, erstellt das Lab standardmäßig eine vom System zugewiesene Identität, während die Azure Resource Manager Vorlage (ARM-Vorlage) bereitgestellt wird. Die vom System zugewiesene Identität greift im Namen eines Labbenutzers auf Azure-Ressourcen und -Dienste zu. DevTest Labs erstellt standardmäßig eine vom System zugewiesene Identität, wenn die Labumgebung zum ersten Mal erstellt wird. Erfahren Sie mehr darüber, [warum ein Lab eine systemseitig zugewiesene Identität erstellt](configure-lab-identity.md#scenarios-for-using-labs-system-assigned-identity). 
 
-Beachten Sie, dass Sie als Labbesitzer auswählen können, ob Sie der systemseitig zugewiesenen Identitäten des Labs Berechtigungen für den Zugriff auf Azure-Ressourcen außerhalb des Labs erteilen oder Ihre eigene benutzerseitig zugewiesene Identität für das Szenario verwenden. Die systemseitig zugewiesene Identität des Labs ist nur für die Lebensdauer des Labs gültig. Wenn Sie das Lab löschen, wird die systemseitig zugewiesene Identität gelöscht. Wenn Sie Umgebungen in mehreren Labs haben, die eine Identität verwenden müssen, sollten Sie die Verwendung einer benutzerseitig zugewiesenen Identität in Betracht ziehen.  
+Als Labbesitzer können Sie der systemzugewiesenen Identität des Labs Berechtigungen für den Zugriff auf Azure-Ressourcen außerhalb des Labs gewähren. Sie können auch Ihre vom Benutzer zugewiesene Identität für das Szenario verwenden. Die systemseitig zugewiesene Identität des Labs ist nur für die Lebensdauer des Labs gültig. Wenn Sie das Lab löschen, wird die systemseitig zugewiesene Identität gelöscht. Wenn Sie Umgebungen in mehreren Labs haben, die eine Identität verwenden müssen, sollten Sie die Verwendung einer benutzerseitig zugewiesenen Identität in Betracht ziehen.  
 
 > [!NOTE]
 > Zurzeit wird eine einzige vom Benutzer zugewiesene Identität pro Lab unterstützt. 
@@ -44,7 +44,7 @@ In diesem Abschnitt verwenden Sie als Lab-Besitzer das Azure-Portal, um dem Lab 
 
     Nach dem Speichern verwendet das Lab diese Identität während der Bereitstellung aller Lab-Umgebungen. Sie können auch auf die Identitätsressource in Azure zugreifen, indem Sie die Identität in der Liste auswählen. 
 
-Der Lab-Besitzer muss beim Bereitstellen einer Umgebung nichts Besonderes tun, solange die dem Lab hinzugefügte Identität über Berechtigungen für die externen Ressourcen verfügt, auf die die Umgebung zugreifen muss. 
+Der Labbesitzer muss nichts Besonderes tun, um eine Umgebung bereitzustellen. Die dem Lab hinzugefügte Identität muss über Berechtigungen für die externen Ressourcen verfügen, auf die die Umgebung zugreifen muss. 
 
 Wenn Sie die dem Lab zugewiesene vom Benutzer verwaltete Identität ändern möchten, entfernen Sie zuerst die dem Lab angefügte Identität, und fügen Sie dann dem Lab eine weitere hinzu. Um eine dem Lab angefügte Identität zu entfernen, wählen Sie **... (Auslassungszeichen)** aus, und klicken Sie auf **Entfernen**. 
 
@@ -78,4 +78,4 @@ Wenn Sie die dem Lab zugewiesene vom Benutzer verwaltete Identität ändern möc
     
     ```
  
-Sobald die vom Benutzer zugewiesene Identität dem Lab hinzugefügt wurde, wird Sie vom Azure DevTest Labs-Dienst bei der Bereitstellung von Azure Resource Manager-Umgebungen verwendet. Wenn z. B. Ihre Resource Manager-Vorlage auf ein Image aus einem externen freigegebenen Imagekatalog zugreifen muss, stellen Sie sicher, dass die Identität, die Sie dem Lab hinzugefügt haben, über mindestens erforderliche Berechtigungen für die freigegebene Imagekatalogressource verfügt. 
+Nachdem Sie dem Lab die vom Benutzer zugewiesene Identität hinzugefügt haben, verwendet der DevTest Labs-Dienst die Identität beim Bereitstellen Azure Resource Manager Umgebungen. Wenn Sie beispielsweise Ihre Resource Manager Vorlage benötigen, um auf ein Shared Image Gallery-Image zuzugreifen, stellen Sie sicher, dass die Identität über die erforderlichen Berechtigungen für die Shared Image Gallery-Ressource verfügt. 

@@ -1,30 +1,30 @@
 ---
-title: 'Azure Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten | Microsoft-Dokumentation'
-description: Erfahren Sie mehr über die integrierten sicherheitsbezogenen Inhalte, die von der Azure Sentinel-Lösung für SAP bereitgestellt werden.
+title: 'Microsoft Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten | Microsoft-Dokumentation'
+description: Erfahren Sie mehr über die integrierten sicherheitsbezogenen Inhalte, die von der Microsoft Sentinel-Lösung für SAP bereitgestellt werden.
 author: batamig
 ms.author: bagold
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
-ms.date: 07/28/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: dabfc84a21e7ded8ce3d3e338ffbb03395ef88db
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: a2512bd38ff865b27d0ea667f33f42979aa4e4bb
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009052"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524320"
 ---
-# <a name="azure-sentinel-sap-solution-security-content-reference-public-preview"></a>Azure Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten (Public Preview)
+# <a name="microsoft-sentinel-sap-solution-security-content-reference-public-preview"></a>Microsoft Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten (Public Preview)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Artikel werden die sicherheitsbezogenen Inhalte für die [Azure Sentinel-Lösung für SAP](sap-deploy-solution.md#deploy-sap-security-content) detailliert beschrieben.
+In diesem Artikel werden die sicherheitsbezogenen Inhalte für die [Microsoft Sentinel-Lösung für SAP](sap-deploy-solution.md#deploy-sap-security-content) detailliert beschrieben.
 
 Dazu gehören eine integrierte Arbeitsmappe und integrierte Analyseregeln. Sie können auch SAP-bezogene [Watchlists](watchlists.md) hinzufügen, um sie in Ihrer Suche, für Erkennungsregeln, bei der Bedrohungssuche sowie in Playbooks für die Reaktion auf Bedrohungen zu verwenden.
 
 > [!IMPORTANT]
-> Die Azure Sentinel-Lösung für SAP befindet sich derzeit in der PREVIEW-Phase. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> Die Microsoft Sentinel-Lösung für SAP befindet sich derzeit in der PREVIEW. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 >
 
 
@@ -45,7 +45,7 @@ Weitere Informationen finden Sie unter [Tutorial: Visualisieren und Überwachen 
 
 ## <a name="built-in-analytics-rules"></a>Integrierte Analyseregeln
 
-In den folgenden Tabellen sind die integrierten [Analyseregeln](sap-deploy-solution.md#deploy-sap-security-content) in der Azure Sentinel-Lösung für SAP aufgeführt, die über den Marketplace für Azure Sentinel-Lösungen bereitgestellt wird.
+In den folgenden Tabellen sind die integrierten [Analyseregeln](sap-deploy-solution.md#deploy-sap-security-content) in der Microsoft Sentinel-Lösung für SAP aufgeführt, die über den Marketplace für Microsoft Sentinel-Lösungen bereitgestellt wird.
 
 ### <a name="built-in-sap-analytics-rules-for-initial-access"></a>Integrierte SAP-Analyseregeln für Erstzugriff
 
@@ -127,13 +127,11 @@ In den folgenden Tabellen sind die integrierten [Analyseregeln](sap-deploy-solut
 |**SAP – Mittel – Änderungen an sensiblen Rollen**     |Identifiziert Änderungen an sensiblen Rollen. <br><br> Verwalten Sie sensible Rollen in der Watchlist [SAP – Sensible Rollen](#roles).       |  Ändern Sie eine Rolle mithilfe von PFCG. <br><br>**Datenquellen**: SAPcon – Dokumentänderungsprotokoll, SAPcon – Überwachungsprotokoll   |  Auswirkung, Rechteausweitung, Persistenz    |
 | | | | |
 
-
 ## <a name="available-watchlists"></a>Verfügbare Watchlists
 
-In der folgenden Tabelle sind die für die Azure Sentinel-Lösung für SAP verfügbaren [Watchlists](sap-deploy-solution.md#deploy-sap-security-content) und deren Felder aufgeführt.
+In der folgenden Tabelle sind die für die Microsoft Sentinel-Lösung für SAP verfügbaren [Watchlists](sap-deploy-solution.md#deploy-sap-security-content) und deren Felder aufgeführt.
 
-Diese Watchlists stellen die Konfiguration für die Azure Sentinel-Lösung „Kontinuierliche Bedrohungsüberwachung in SAP“ bereit und sind im GitHub-Repository für Azure Sentinel unter https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/Analytics/Watchlists zu finden.
-
+Diese Watchlists stellen die Konfiguration für die SAP-Lösung „Microsoft Sentinel – Kontinuierliche Bedrohungsüberwachung“ bereit. Die [SAP-Watchlists](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/Analytics/Watchlists) sind im Microsoft Sentinel-GitHub verfügbar.
 
 |Name der Watchlist  |Beschreibung und Felder  |
 |---------|---------|
@@ -160,11 +158,11 @@ Diese Watchlists stellen die Konfiguration für die Azure Sentinel-Lösung „Ko
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [Bereitstellen der Azure Sentinel-Lösung für SAP](sap-deploy-solution.md)
-- [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP](sap-solution-log-reference.md)
-- [Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
+- [Bereitstellen der Microsoft Sentinel-Lösung für SAP](sap-deploy-solution.md)
+- [Referenz zu Protokollen für die Microsoft Sentinel-Lösung für SAP](sap-solution-log-reference.md)
+- [Bereitstellen des Microsoft Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
 - [Konfigurationsoptionen für Experten, lokale Bereitstellung und SAPControl-Protokollquellen](sap-solution-deploy-alternate.md)
-- [Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP](sap-solution-detailed-requirements.md)
-- [Problembehandlung bei der Bereitstellung der Azure Sentinel-Lösung für SAP](sap-deploy-troubleshoot.md)
+- [Detaillierte SAP-Anforderungen für die Microsoft Sentinel-Lösung für SAP (Public Preview)](sap-solution-detailed-requirements.md)
+- [Problembehandlung bei der Bereitstellung der Microsoft Sentinel-Lösung für SAP](sap-deploy-troubleshoot.md)

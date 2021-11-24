@@ -5,12 +5,12 @@ ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3b5d2dbb4e686cfe03a8deefbcbbc6d08647f3de
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 344f4772bc2c48612c6f8ee62cac9d22a35f321b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564061"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284530"
 ---
 # <a name="develop-and-deploy-grpc-inference-server"></a>Entwickeln und Bereitstellen eines gRPC-Rückschlussservers
 
@@ -59,7 +59,7 @@ Führen Sie die erforderlichen Schritte aus, um das Video Analyzer-Modul bereitz
 
         1. Bereitstellen als IoT-Modul zusammen mit dem Video Analyzer-Modul
         1. Bereitstellen als IoT-Modul auf einem über das Netzwerk erreichbaren Knoten (lokal oder in der Cloud), der Daten mit dem Video Analyzer-Modul austauschen kann.
-    1. Konfigurieren Sie eine Video Analyzer-Pipelinetopologie mit dem Video Analyzer-Modul, und verweisen Sie es auf den gRPC-Server.
+    1. Konfigurieren Sie eine Video-Analyse-Pipeline-Topologie mit dem Video-Analyse-Modul, und verweisen Sie es auf den gRPC-Server.
 
 ### <a name="recommendation"></a>Empfehlung
 

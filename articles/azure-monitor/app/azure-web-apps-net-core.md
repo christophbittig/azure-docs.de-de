@@ -4,12 +4,12 @@ description: Überwachung der Anwendungsleistung für Azure-Anwendungsdienste mi
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 4bb5df82dcfd045100b4fe41c70538504cf2566b
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 747b79affc2cb2ef862c1fb4000879ddbbe5b9f5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508229"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308768"
 ---
 # <a name="application-monitoring-for-azure-app-service-and-aspnet-core"></a>Anwendungsüberwachung für Azure App Service und ASP.NET Core 
 
@@ -22,6 +22,8 @@ Die Aktivierung der Überwachung IhrerASP.NET Core-basierten Webanwendungen, die
 > [!IMPORTANT]
 > Die folgenden Versionen von ASP.NET Core werden für die automatische Instrumentierung unter Windows unterstützt: ASP.NET Core 3.1, 5.0 und 6.0. Die Versionen 2.0, 2.1, 2.2 und 3.0 wurden eingestellt und werden nicht mehr unterstützt. Führen Sie ein Upgrade auf eine [unterstützte Version](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) von .NET Core aus, damit die automatische Instrumentierung funktioniert.
 
+[Das Kürzen eigenständiger Bereitstellungen](/dotnet/core/deploying/trimming/trim-self-contained) wird **nicht unterstützt.** Verwenden Sie stattdessen die [manuelle Instrumentierung](./asp-net-core.md) über Code.
+
 Lesen Sie im Folgenden den Abschnitt zum [Aktivieren der Überwachung](#enable-monitoring ), um mit der Einrichtung von Application Insights mit Ihrer App Service-Ressource zu beginnen. 
 
 # <a name="linux"></a>[Linux](#tab/Linux)
@@ -32,7 +34,7 @@ Lesen Sie im Folgenden den Abschnitt zum [Aktivieren der Überwachung](#enable-m
 > [!NOTE]
 > Die Aktivierung der automatischen Instrumentierung unter Linux im App Services-Portal befindet sich in der Public Preview. Diese Vorschauversionen werden ohne Vereinbarung zum Servicelevel bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 
- Unter Linux werden [frameworkabhängige Bereitstellungen](/dotnet/core/deploying/#publish-framework-dependent) und [eigenständige Bereitstellungen](/dotnet/core/deploying/#publish-self-contained) unterstützt. 
+[Das Kürzen eigenständiger Bereitstellungen](/dotnet/core/deploying/trimming/trim-self-contained) wird **nicht unterstützt.** Verwenden Sie stattdessen die [manuelle Instrumentierung](./asp-net-core.md) über Code.
 
 Lesen Sie im Folgenden den Abschnitt zum [Aktivieren der Überwachung](#enable-monitoring ), um mit der Einrichtung von Application Insights mit Ihrer App Service-Ressource zu beginnen. 
 

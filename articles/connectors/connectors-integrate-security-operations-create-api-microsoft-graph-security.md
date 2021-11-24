@@ -9,16 +9,16 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: b32d5aee270e3380899a81f49b12a55c468f2bc5
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: f6661a794e03bdeb1069b0f04a25d8bf8abdcdc1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122865010"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297675"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbessern des Bedrohungsschutzes durch Integrieren von Sicherheitsvorgängen mit der Sicherheits-API von Microsoft Graph und Azure Logic Apps
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Sicherheits-API-Connector von Microsoft Graph](/graph/security-concept-overview) können Sie die Art und Weise verbessern, in der Ihre App Bedrohungen erkennt, sich schützt und reagiert, indem Sie automatisierte Workflows für die Integration von Microsoft-Sicherheitsprodukten, Diensten und Partnern erstellen. Sie können z.B. [Azure Security Center-Playbooks](../security-center/workflow-automation.md) erstellen, die Entitäten der Sicherheits-API von Microsoft Graph, z.B. Warnungen, überwachen und verwalten. Unter anderem werden folgende Szenarien vom Sicherheits-API-Connector von Microsoft Graph unterstützt:
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Sicherheits-API-Connector von Microsoft Graph](/graph/security-concept-overview) können Sie die Art und Weise verbessern, in der Ihre App Bedrohungen erkennt, sich schützt und reagiert, indem Sie automatisierte Workflows für die Integration von Microsoft-Sicherheitsprodukten, Diensten und Partnern erstellen. Sie können z.B. [Playbooks in Microsoft Defender für Cloud](../security-center/workflow-automation.md) erstellen, die Entitäten der Sicherheits-API von Microsoft Graph, wie z.B. Warnungen, überwachen und verwalten. Unter anderem werden folgende Szenarien vom Sicherheits-API-Connector von Microsoft Graph unterstützt:
 
 * Abrufen von Warnungen basierend auf Abfragen oder nach Warnungs-ID. Sie können z.B. eine Liste abrufen, die Warnungen mit hohem Schweregrad enthält.
 
@@ -117,8 +117,8 @@ Weitere Informationen zu den Abfragen, die Sie mit diesem Connector verwenden k�
 
 | Aktion | BESCHREIBUNG |
 |--------|-------------|
-| **Warnungen abrufen** | Rufen Sie auf Basis von [Warnungseigenschaften](/graph/api/resources/alert) gefilterte Warnungen ab, z. B. `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`. | 
-| **Warnung nach ID abrufen** | Rufen Sie eine bestimmte Warnung basierend auf der Warnungs-ID ab. | 
+| **Warnungen abrufen** | Rufen Sie auf Basis von [Warnungseigenschaften](/graph/api/resources/alert) gefilterte Warnungen ab, z. B. `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`. |
+| **Warnung nach ID abrufen** | Rufen Sie eine bestimmte Warnung basierend auf der Warnungs-ID ab. |
 | **Benachrichtigung aktualisieren** | Aktualisieren Sie eine bestimmte Warnung basierend auf der Warnungs-ID. Um sicherzustellen, dass Sie die erforderlichen und bearbeitbaren Eigenschaften in der Anforderung übergeben, informieren Sie sich über die [bearbeitbaren Eigenschaften für Warnungen](/graph/api/alert-update). Um z.B. eine Warnung Sicherheitsanalysten zur Untersuchung zuzuweisen, können Sie die Eigenschaft **Zugewiesen an** der Warnung aktualisieren. |
 |||
 

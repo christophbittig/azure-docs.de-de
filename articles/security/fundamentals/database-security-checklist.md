@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 80455b442bbfb9c8a7d40799b2ddd5fc25460578
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c462e4084cc1fd2e46d7eec268501402cee7c887
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595587"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342963"
 ---
 # <a name="azure-database-security-checklist"></a>Checkliste für die Sicherheit der Azure-Datenbank
 
@@ -54,7 +54,7 @@ Es wird empfohlen, den Artikel [Azure Database Security Best Practices (Bewährt
 |<br>Anwendungszugriff| <ul><li>[Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) (Verwendet Sicherheitsrichtlinien und beschränkt gleichzeitig den Zugriff auf Zeilenebene auf Grundlage einer Benutzeridentität, einer Rolle oder eines Ausführungskontexts).</li><li>[Dynamische Datenmaskierung](../../azure-sql/database/dynamic-data-masking-overview.md) (Verwendet Permission &amp; Policy, schränkt die Offenlegung sensibler Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden).</li></ul>|
 |**Proaktive Überwachung**||  
 | <br>Nachverfolgen und Erkennen| <ul><li>Die [Überprüfung](../../azure-sql/database/auditing-overview.md) verfolgt Datenbankereignisse und schreibt diese in ein Überwachungs-/Aktivitätsprotokoll in Ihrem [Azure Speicherkonto](../../storage/common/storage-account-create.md).</li><li>Nachverfolgen der Integrität der Azure-Datenbank mit [Azure Monitor-Aktivitätsprotokollen](../../azure-monitor/essentials/platform-logs-overview.md).</li><li>Die [Bedrohungserkennung](../../azure-sql/database/threat-detection-configure.md) erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. </li></ul> |
-|<br>Azure Security Center| <ul><li>Die [Überwachung der Daten](../../security-center/security-center-remediate-recommendations.md) verwendet Azure Security Center als eine zentralisierte Sicherheitsüberwachungslösung für SQL und anderen Azure-Dienste.</li></ul>|        
+|<br>Microsoft Defender für Cloud| <ul><li>Die [Überwachung der Daten](../../security-center/security-center-remediate-recommendations.md) verwendet Microsoft Defender für Cloud als eine zentralisierte Sicherheitsüberwachungslösung für SQL und anderen Azure-Dienste.</li></ul>|        
 
 ## <a name="conclusion"></a>Zusammenfassung
 Azure-Datenbank ist eine stabile Datenbankplattform mit umfassenden Sicherheitsfunktionen, die viele Anforderungen des Unternehmens sowie behördliche Vorschriften erfüllen. Sie können Daten problemlos schützen, indem Sie den physischen Zugriff auf Ihre Daten steuern und eine Vielzahl von Optionen für die Datensicherheit auf der Datei-, Spalten- oder Zeilenebene mit Transparent Data Encryption, der Verschlüsselung auf Zellenebene oder Sicherheit auf Zeilenebene verwenden. Always Encrypted ermöglicht auch Vorgänge für verschlüsselte Daten, sodass der Prozess der Anwendungsaktualisierung vereinfacht wird. Durch den Zugriff auf Überwachungsprotokolle der SQL-Datenbankaktivität erhalten sie zudem Informationen dazu, wie und wann auf die Daten zugegriffen wird.

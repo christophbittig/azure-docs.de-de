@@ -6,16 +6,16 @@ manager: markkie
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 2/20/2019
+ms.date: 11/10/2021
 ms.author: raiye
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b6db47d812b13bced9d0e52530ec8c59b58be19
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c76e19101fbf6c325d66af2f14dbdc6e063ace9e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770797"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331051"
 ---
 # <a name="enable-write-accelerator"></a>Aktivieren der Schreibbeschleunigung
 
@@ -45,7 +45,7 @@ Für SAP-spezifische VM-Konfigurationen sollte das Aktivieren der Schreibbeschle
 Bei der Verwendung der Schreibbeschleunigung für einen Azure-Datenträger/eine Azure-VHD gelten folgende Einschränkungen:
 
 - Die Premium-Datenträgerzwischenspeicherung muss auf „Keine“ oder „Schreibgeschützt“ festgelegt werden. Alle anderen Zwischenspeicherungsmodi werden nicht unterstützt.
-- Momentaufnahmen werden derzeit nicht für Datenträger mit aktivierter Schreibbeschleunigung unterstützt. Während der Sicherung schließt der Azure Backup-Dienst an die VM angefügte Datenträger mit aktivierter Schreibbeschleunigung automatisch aus.
+- Momentaufnahmen werden derzeit nur für Write Accelerator-fähige Datenträger unterstützt, nicht aber für die Betriebssystemfestplatte. Während des Sicherungsvorgangs sichert und schützt der Azure Backup-Dienst automatisch die an den virtuellen Computer angeschlossenen Write Accelerator-fähigen Datenlaufwerke.
 - Der beschleunigte Pfad wird nur für kleinere E/A-Größen (<=512 KiB) verwendet. In Workloadsituationen, bei denen Daten in einem Massenvorgang geladen oder die Transaktionsprotokollpuffer vor ihrer persistenten Speicherung stärker befüllt werden, wird für die auf Datenträger geschriebenen E/A-Vorgänge wahrscheinlich nicht der beschleunigte Pfad verwendet.
 
 Die Anzahl von Azure Storage Premium-VHDs pro VM, die von der Schreibbeschleunigung unterstützt werden können, ist begrenzt. Die aktuellen Limits lauten wie folgt:

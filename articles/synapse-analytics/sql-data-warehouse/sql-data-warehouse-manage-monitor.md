@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/27/2020
+ms.date: 11/15/2021
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: c19646a554a9c12315a23cfa272625629c844e37
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3474b44f7661fd60a3885ee237f926f13dbfa361
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127153"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549801"
 ---
 # <a name="monitor-your-azure-synapse-analytics-dedicated-sql-pool-workload-using-dmvs"></a>Überwachen der Workload Ihres dedizierten SQL-Pools von Azure Synapse Analytics mit DMVs
 
@@ -220,7 +220,7 @@ ORDER BY sr.request_id;
 
 Wenn Sie eine Abfrage haben, die eine große Menge an Arbeitsspeicher verbraucht, oder wenn eine Fehlermeldung im Zusammenhang mit der Zuordnung von tempdb angezeigt wird, kann dies auf der Ausführung einer sehr umfangreichen [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)- oder [INSERT SELECT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-Anweisung beruhen, bei der im letzten Datenverschiebungsvorgang ein Fehler aufgetreten ist. Dies kann im Plan für verteilte Abfragen normalerweise als „ShuffleMove“-Vorgang direkt vor der letzten INSERT SELECT-Anweisung identifiziert werden.  Verwenden Sie [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) zum Überwachen von ShuffleMove-Vorgängen.
 
-Die häufigste Minderung besteht darin, Ihre CTAS- oder INSERT SELECT-Anweisung in mehrere Load-Anweisungen aufzuteilen, damit das Datenvolumen das tempdb-Limit von 1TB pro Knoten nicht überschreitet. Sie können auch Ihren Cluster auf eine größere Größe skalieren. Dadurch wird die tempdb-Größe über mehrere Knoten verteilt und so die tempdb auf jedem einzelnen Knoten verkleinert.
+Die häufigste Minderung besteht darin, Ihre CTAS- oder INSERT SELECT-Anweisung in mehrere Load-Anweisungen aufzuteilen, damit das Datenvolumen das tempdb-Limit von 2 TB pro Knoten nicht überschreitet (bei DW500c oder höher). Sie können auch Ihren Cluster auf eine größere Größe skalieren. Dadurch wird die tempdb-Größe über mehrere Knoten verteilt und so die tempdb auf jedem einzelnen Knoten verkleinert.
 
 Zusätzlich zu den CTAS- und INSERT SELECT-Anweisungen können große, komplexe Abfragen, die mit unzureichendem Speicher ausgeführt werden, in tempdb gelangen, wodurch Abfragen fehlschlagen.  Ziehen Sie die Ausführung mit einer größeren [Ressourcenklasse](resource-classes-for-workload-management.md) in Betracht, um tempdb zu entlasten.
 

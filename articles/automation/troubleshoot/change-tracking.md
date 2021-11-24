@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: dd027f94edad580836f0afb8c7293c81ca77605a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21699d306742c2a732155ac8df78608f5c3dd7ae
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101723825"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346020"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Behandeln von Problemen mit Änderungsnachverfolgung und Bestand
 
@@ -136,7 +136,8 @@ Im Folgenden sind mögliche Ursachen für dieses Problem aufgeführt:
 
 Überprüfen Sie, ob der Daemon für den Log Analytics-Agent für Linux (**omsagent**) auf dem Computer ausgeführt wird. Führen Sie in dem Log Analytics-Arbeitsbereich, der mit Ihrem Automation-Konto verknüpft ist, die folgende Abfrage aus.
 
-```loganalytics Copy
+```loganalytics
+Copy
 Heartbeat
 | summarize by Computer, Solutions
 ```
@@ -153,7 +154,7 @@ Der Log Analytics-Agent für Linux wurde möglicherweise nicht ordnungsgemäß f
 
 ##### <a name="fim-conflicts"></a>FIM-Konflikte
 
-Das FIM-Feature von Azure Security Center kann die Integrität Ihrer Linux-Dateien nicht ordnungsgemäß validieren. Vergewissern Sie sich, dass FIM betriebsbereit und ordnungsgemäß für die Linux-Dateiüberwachung konfiguriert ist. Siehe [Übersicht über Änderungsnachverfolgung und Bestand](../change-tracking/overview.md).
+Die FIM-Funktion von Microsoft Defender für Cloud könnte dann die Integrität Ihrer Linux-Dateien nicht ordnungsgemäß validieren. Vergewissern Sie sich, dass FIM betriebsbereit und ordnungsgemäß für die Linux-Dateiüberwachung konfiguriert ist. Siehe [Übersicht über Änderungsnachverfolgung und Bestand](../change-tracking/overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

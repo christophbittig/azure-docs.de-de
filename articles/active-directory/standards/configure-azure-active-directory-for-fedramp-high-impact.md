@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20eafed03b9dd63bf6c59445d744d7a3c67c5614
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e1cc2d2bf4a51a0d50c47d41982ced9962a977e2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601746"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132302045"
 ---
 # <a name="configure-azure-active-directory-to-meet-fedramp-high-impact-level"></a>Konfigurieren von Azure Active Directory, um die FedRAMP High-Auswirkungsstufe zu erfüllen
 
@@ -38,7 +38,7 @@ Es gibt mehrere Pfade zur FedRAMP-Autorisierung. Sie können das vorhandene Auto
 
 Die FedRAMP High-Baseline besteht aus 421 Kontrollen und Kontrollerweiterungen von [NIST 800-53 Security Controls Catalog Revision 4](https://csrc.nist.gov/publications/detail/sp/800-53/rev-4/final). Sofern zutreffend, haben wir klarstellende Informationen aus der [800-53 Revision 5](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) hinzugefügt. Dieser Artikelsatz behandelt eine Teilmenge dieser Kontrollen, die sich auf die Identität beziehen und die Sie konfigurieren müssen. 
 
-Wir bieten einen ausführlichen Leitfaden, der Sie bei der Einhaltung von Kontrollen unterstützt, für deren Konfiguration in Azure Active Directory (Azure AD) Sie verantwortlich sind. Um einige Anforderungen an die Identitätskontrolle vollständig zu erfüllen, müssen Sie möglicherweise andere Systeme verwenden. Dazu gehört beispielsweise ein SIEM-Tool (Security Information & Event Management) wie Azure Sentinel. Wenn Sie Azure-Dienste außerhalb von Azure Active Directory verwenden, gibt es weitere Kontrollen, die zu berücksichtigen sind. Sie können die bereits in Azure vorgefertigten Funktionen nutzen, um die Kontrollen zu erfüllen.
+Wir bieten einen ausführlichen Leitfaden, der Sie bei der Einhaltung von Kontrollen unterstützt, für deren Konfiguration in Azure Active Directory (Azure AD) Sie verantwortlich sind. Um einige Anforderungen an die Identitätskontrolle vollständig zu erfüllen, müssen Sie möglicherweise andere Systeme verwenden. Andere Systeme enthalten beispielsweise ein SIEM-Tool (Security Information & Event Management) wie Azure Sentinel. Wenn Sie Azure-Dienste außerhalb von Azure Active Directory verwenden, gibt es weitere Kontrollen, die zu berücksichtigen sind. Sie können die bereits in Azure vorgefertigten Funktionen nutzen, um die Kontrollen zu erfüllen.
 
 Nachstehend sehen Sie eine Liste der FedRAMP-Ressourcen:
 
@@ -67,4 +67,3 @@ Nachstehend sehen Sie eine Liste der FedRAMP-Ressourcen:
 [Konfigurieren von Identifizierungs- und Authentifizierungskontrollen](fedramp-identification-and-authentication-controls.md)
 
 [Konfigurieren Sie andere Steuerelemente](fedramp-other-controls.md)
-

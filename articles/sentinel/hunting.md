@@ -1,21 +1,23 @@
 ---
-title: Bedrohungssuchfunktionen in Azure Sentinel | Microsoft-Dokumentation
-description: Verwenden Sie die integrierten Suchabfragen von Azure Sentinel, um die richtigen Fragen zu stellen, mit denen Sie Probleme in Ihren Daten finden können.
+title: Bedrohungssuchfunktionen in Microsoft Sentinel | Microsoft-Dokumentation
+description: Verwenden Sie die integrierten Suchabfragen von Microsoft Sentinel, um die richtigen Fragen zu stellen, mit denen Sie Probleme in Ihren Daten finden können.
+services: sentinel
+documentationcenter: na
 author: yelevin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
 ms.custom: mvc, ignite-fall-2021
-ms.date: 11/02/2021
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 88c0b2919b680feb7776e9de63566ad70d885dee
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6e1308b039cc86bbe10fc062138ab76c486ad29a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131475305"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518620"
 ---
-# <a name="hunt-for-threats-with-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
+# <a name="hunt-for-threats-with-microsoft-sentinel"></a>Suchen nach Bedrohungen mit Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -26,7 +28,7 @@ ms.locfileid: "131475305"
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Als Sicherheitsanalysten und Prüfer möchten Sie proaktiv nach Sicherheitsbedrohungen suchen, aber Ihre verschiedenen Systeme und Sicherheits-Appliances generieren eine Menge von Daten, deren Analyse und Filterung in aussagekräftige Ereignisse schwierig sein können. Azure Sentinel verfügt über leistungsstarke Such- und Abfragetools zum Aufspüren von Sicherheitsbedrohungen in den Datenquellen Ihrer Organisation. Um Sicherheitsanalysten dabei zu unterstützen, proaktiv nach neuen Anomalien zu suchen, die von Ihren Sicherheits-Apps oder auch Ohren Regeln zur geplanten Analyse nicht erkannt wurden, werden Sie von den in Azure Sentinel integrierten Bedrohungssuchabfragen dazu geführt, die richtigen Fragen zu stellen, um Probleme in den Daten zu finden, die bereits in Ihrem Netzwerk vorhanden sind. 
+Als Sicherheitsanalysten und Prüfer möchten Sie proaktiv nach Sicherheitsbedrohungen suchen, aber Ihre verschiedenen Systeme und Sicherheits-Appliances generieren eine Menge von Daten, deren Analyse und Filterung in aussagekräftige Ereignisse schwierig sein können. Microsoft Sentinel verfügt über leistungsstarke Such- und Abfragetools zum Aufspüren von Sicherheitsbedrohungen in den Datenquellen Ihrer Organisation. Um Sicherheitsanalysten dabei zu unterstützen, proaktiv nach neuen Anomalien zu suchen, die von Ihren Sicherheits-Apps oder auch Ohren Regeln zur geplanten Analyse nicht erkannt wurden, werden Sie von den in Microsoft Sentinel integrierten Bedrohungssuchabfragen dazu geführt, die richtigen Fragen zu stellen, um Probleme in den Daten zu finden, die bereits in Ihrem Netzwerk vorhanden sind.
 
 Zum Beispiel liefert eine integrierte Abfrage Daten über die ungewöhnlichsten Prozesse, die in Ihrer Infrastruktur ausgeführt werden. Sie möchten nicht, dass bei jeder Ausführung eines solchen Prozesse eine Benachrichtigung erfolgt, denn er könnte völlig unproblematisch sein, aber Sie möchten die Abfrage gelegentlich ausführen, um zu sehen, ob es etwas Ungewöhnliches gibt.
 
@@ -46,26 +48,25 @@ Verwenden Sie Abfragen vor, während und nach einer Kompromittierung, um die fol
 
 - **Nach einer Kompromittierung:** Verbessern Sie nach einer Kompromittierung oder nach einem Incident Ihre Abdeckung und Erkenntnisse, um ähnliche Incidents in Zukunft zu verhindern.
 
-    - Ändern Sie Ihre vorhandenen Abfragen, oder erstellen Sie neue, die Sie bei der frühzeitigen Erkennung unterstützen. Orientieren Sie sich dabei an den Erkenntnissen, die Sie durch die Kompromittierung oder den Incident gewonnen haben.
+  - Ändern Sie Ihre vorhandenen Abfragen, oder erstellen Sie neue, die Sie bei der frühzeitigen Erkennung unterstützen. Orientieren Sie sich dabei an den Erkenntnissen, die Sie durch die Kompromittierung oder den Incident gewonnen haben.
 
-    - Wenn Sie eine Hunting-Abfrage entdeckt oder erstellt haben, die wertvolle Erkenntnisse zu möglichen Angriffen liefert, können Sie auf der Grundlage der Abfrage benutzerdefinierte Erkennungsregeln erstellen und diese Erkenntnisse als Warnungen in Ihren Antwortdiensten für Sicherheitsvorfälle verfügbar machen.
+  - Wenn Sie eine Hunting-Abfrage entdeckt oder erstellt haben, die wertvolle Erkenntnisse zu möglichen Angriffen liefert, können Sie auf der Grundlage der Abfrage benutzerdefinierte Erkennungsregeln erstellen und diese Erkenntnisse als Warnungen in Ihren Antwortdiensten für Sicherheitsvorfälle verfügbar machen.
 
-        Zeigen Sie die Ergebnisse der Abfrage an, und wählen Sie **Neue Warnungsregel** > **Azure Sentinel-Warnung erstellen** aus. Verwenden Sie den **Analyseregel-Assistenten**, um eine neue, auf Ihrer Abfrage basierende Regel zu erstellen. Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md).
-
+    Zeigen Sie die Ergebnisse der Abfrage an, und wählen Sie **Neue Warnungsregel** > **Microsoft Sentinel-Warnung erstellen** aus. Verwenden Sie den **Analyseregel-Assistenten**, um eine neue, auf Ihrer Abfrage basierende Regel zu erstellen. Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md).
 
 > [!TIP]
+>
 > - Während der Public Preview-Phase können nun auch Hunting- und Livestreamabfragen für gespeicherte Daten in Azure Data Explorer erstellt werden. Weitere Informationen finden Sie in der Dokumentation zu Azure Monitor unter [Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md).
 >
-> - Weitere Abfragen und Datenquellen finden Sie in Communityressourcen wie dem [GitHub-Repository für Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Hunting%20Queries).
->
+> - Weitere Abfragen und Datenquellen finden Sie in Communityressourcen wie dem [GitHub-Repository für Microsoft Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Hunting%20Queries).
 
 ## <a name="use-the-hunting-dashboard"></a>Verwenden des Hunting-Dashboards
 
-Mit dem Hunting-Dashboard können Sie alle Ihre Abfragen oder eine ausgewählte Teilmenge mit einer einzigen Auswahl ausführen. Wählen Sie im Azure Sentinel-Portal die Option **Hunting** aus.
+Mit dem Hunting-Dashboard können Sie alle Ihre Abfragen oder eine ausgewählte Teilmenge mit einer einzigen Auswahl ausführen. Wählen Sie im Microsoft Sentinel-Portal **Hunting** aus.
 
 Die daraufhin angezeigte Tabelle enthält alle Abfragen, die von den Sicherheitsanalysten von Microsoft geschrieben wurden, sowie alle weiteren Abfragen, die Sie selbst erstellt oder geändert haben. Jede Abfrage enthält eine Beschreibung dazu, nach welcher Bedrohung mit ihr gesucht wird und für welche Art von Daten sie ausgeführt wird. Diese Abfragen sind nach ihren MITRE ATT&CK-**Taktiken** gruppiert. Mit den Symbolen auf der rechten Seite wird die Art der Bedrohung kategorisiert, z. B. Erstzugriff, Persistenz und Exfiltration. Die MITRE ATT&CK-**Techniken** sind in der Spalte **Techniken** angegeben. Hier wird das spezifische Verhalten beschrieben, das mit der Hunting-Abfrage identifiziert wurde.
 
-:::image type="content" source="media/hunting/hunting-start.png" alt-text="Azure Sentinel beginnt mit der Bedrohungssuche" lightbox="media/hunting/hunting-start.png":::
+:::image type="content" source="media/hunting/hunting-start.png" alt-text="Microsoft Sentinel beginnt mit der Bedrohungssuche" lightbox="media/hunting/hunting-start.png":::
 
 Verwenden Sie das Hunting-Dashboard, um zu ermitteln, wo mit der Suche begonnen werden soll. Betrachten Sie dazu die Ergebnisanzahl, Spitzen oder die Veränderung der Ergebnisanzahl über einen Zeitraum von 24 Stunden. Sortieren und filtern Sie nach Favoriten, Datenquelle, MITRE ATT&CK-Taktik/-Technik, Ergebnisdelta oder Ergebnisdelta-Prozentsatz. Zeigen Sie Abfragen an, für die noch eine Verbindung mit Datenquellen hergestellt werden muss**, und erhalten Sie Empfehlungen zum Aktivieren dieser Abfragen.
 
@@ -83,7 +84,6 @@ In der folgenden Tabelle werden detaillierte Aktionen beschrieben, die über das
 | **Überprüfen einer zugrunde liegenden Abfrage**                     | Im Bereich mit den Abfragedetails können Sie eine schnelle Überprüfung der zugrunde liegenden Abfrage durchführen. Sie können die Ergebnisse anzeigen, indem Sie auf den Link **Abfrageergebnisse anzeigen** (unterhalb des Abfragefensters) oder auf die Schaltfläche **Ergebnisse anzeigen** (unten im Bereich) klicken. Die Abfrage wird auf dem Blatt **Protokolle** (Log Analytics) geöffnet, und unterhalb der Abfrage können Sie die Übereinstimmungen für die Abfrage überprüfen.         |
 |     |         |
 
-
 ## <a name="create-a-custom-hunting-query"></a>Erstellen einer benutzerdefinierten Hunting-Abfrage
 
 Erstellen oder ändern Sie eine Abfrage, und speichern Sie sie als Ihre eigene Abfrage, oder teilen Sie sie mit Benutzern im gleichen Mandanten.
@@ -97,7 +97,7 @@ Erstellen oder ändern Sie eine Abfrage, und speichern Sie sie als Ihre eigene A
 1. Füllen Sie alle leeren Felder aus, und wählen Sie **Erstellen** aus.
 
     1. **(Vorschau)** Erstellen Sie Entitätszuordnungen, indem Sie Entitätstypen, Bezeichner und Spalten auswählen.
-    
+
         :::image type="content" source="media/hunting/map-entity-types-hunting.png" alt-text="Screenshot: Zuordnen von Entitätstypen in Hunting-Abfragen":::
 
     1. **(Vorschau)** Ordnen Sie Ihren Hunting-Abfragen MITRE ATT&CK-Techniken zu, indem Sie die Taktik, die Technik und die untergeordnete Technik (falls zutreffend) auswählen.
@@ -136,15 +136,14 @@ Während des Hunting- und Untersuchungsprozesses stoßen Sie möglicherweise auf
 
 - Aktivieren Sie in Ihren Ergebnissen die Kontrollkästchen aller Zeilen, die Sie speichern möchten, und wählen Sie **Lesezeichen hinzufügen** aus. Für jede markierte Zeile wird ein Eintrag (Lesezeichen) erstellt, der die Zeilenergebnisse und die Abfrage enthält, mit der die Ergebnisse erstellt wurden. Sie können jedem Lesezeichen Ihre eigenen Tags und Notizen hinzufügen.
 
-    - **(Vorschau)** Wie auch bei benutzerdefinierten Abfragen können Sie Ihre Lesezeichen mit Entitätszuordnungen anreichern, um mehrere Entitätstypen und Bezeichner zu extrahieren, sowie mit MITRE ATT&CK-Zuordnungen, um bestimmte Taktiken und Techniken zuzuweisen.
-    - **(Vorschau)** Für Lesezeichen werden standardmäßig die gleichen Zuordnungen von Entitäten und MITRE ATT-&CK-Techniken wie für die Hunting-Abfrage verwendet, mit der die mit Lesezeichen versehenen Ergebnisse erzielt wurden. 
+  - **(Vorschau)** Wie auch bei benutzerdefinierten Abfragen können Sie Ihre Lesezeichen mit Entitätszuordnungen anreichern, um mehrere Entitätstypen und Bezeichner zu extrahieren, sowie mit MITRE ATT&CK-Zuordnungen, um bestimmte Taktiken und Techniken zuzuweisen.
+  - **(Vorschau)** Für Lesezeichen werden standardmäßig die gleichen Zuordnungen von Entitäten und MITRE ATT-&CK-Techniken wie für die Hunting-Abfrage verwendet, mit der die mit Lesezeichen versehenen Ergebnisse erzielt wurden. 
 
 - Klicken Sie auf der Hauptseite **Hunting** auf die Registerkarte **Lesezeichen**, um alle mit Lesezeichen versehenen Ergebnisse anzuzeigen. Fügen Sie Lesezeichen Tags hinzu, um sie für die Filterung zu klassifizieren. Wenn Sie beispielsweise eine Angriffskampagne untersuchen, können Sie ein Tag für die Kampagne erstellen, das Tag allen relevanten Lesezeichen hinzufügen und dann alle Lesezeichen auf Basis der Kampagne filtern.
 
 - Untersuchen Sie ein einzelnes, mit Lesezeichen versehenes Ergebnis, indem Sie das Lesezeichen auswählen und anschließend im Detailbereich auf **Untersuchen** klicken, um die Untersuchungsumgebung zu öffnen. Sie können auch direkt eine aufgeführte Entität auswählen, um dafür die zugehörige Seite mit den Details anzuzeigen.
 
     Sie können auch einen Incident auf der Grundlage eines oder mehrerer Lesezeichen erstellen oder einem bereits vorhandenen Incident ein oder mehrere Lesezeichen hinzufügen. Aktivieren Sie das Kontrollkästchen links neben den Lesezeichen, die Sie verwenden möchten, und wählen Sie anschließend **Incidentaktionen** > **Neuen Incident erstellen** oder **Zu vorhandenem Incident hinzufügen** aus. Selektieren und untersuchen Sie den Incident wie gewohnt.
-
 
 > [!TIP]
 > Lesezeichen stellen beachtenswerte Schlüsselereignisse dar, die zu Incidents eskaliert werden sollten, wenn sie schwerwiegend genug sind, um eine Untersuchung zu erfordern. Ereignisse wie potenzielle Grundursachen, Anzeichen einer Kompromittierung oder andere wichtige Ereignisse sollten mit einem Lesezeichen versehen werden.
@@ -154,11 +153,11 @@ Weitere Informationen zu Lesezeichen finden Sie unter [Behalten des Überblicks 
 
 ## <a name="use-notebooks-to-power-investigations"></a>Verwenden von Notebooks für Untersuchungen
 
-Wenn Ihre Suche und Nachforschungen komplexer werden, verwenden Sie Azure Sentinel Notebooks, um Ihre Aktivitäten mit maschinellem Lernen, Visualisierungen und Datenanalysen zu erweitern.
+Wenn Ihre Suche und Nachforschungen komplexer werden, verwenden Sie Microsoft Sentinel Notebooks, um Ihre Aktivitäten mit maschinellem Lernen, Visualisierungen und Datenanalysen zu erweitern.
 
 Notebooks stellen eine Art virtuelle Sandbox bereit, komplett mit eigenem Kernel, in dem Sie eine vollständige Nachforschung durchführen können. Ihr Notebook kann die Rohdaten, den Code, den Sie auf diesen Daten ausführen, die Ergebnisse und ihre Visualisierungen umfassen. Speichern Sie Ihre Notebooks, damit Sie sie für andere freigeben und in Ihrem Unternehmen weiterverwenden können.
 
-Notebooks können hilfreich sein, wenn Ihre Suche und Nachforschungen zu umfangreich werden, um sich die Details zu merken, oder wenn Sie Abfragen und Ergebnisse speichern müssen. Um Ihnen das Erstellen und Freigeben von Notebooks zu erleichtern, stellt Azure Sentinel [Jupyter Notebooks](https://jupyter.org) bereit: eine Open-Source-Umgebung zur interaktiven Entwicklung und Datenmanipulation, die direkt in die Seite von Azure Sentinel **Notebooks** integriert ist.
+Notebooks können hilfreich sein, wenn Ihre Suche und Nachforschungen zu umfangreich werden, um sich die Details zu merken, oder wenn Sie Abfragen und Ergebnisse speichern müssen. Um Ihnen das Erstellen und Freigeben von Notebooks zu erleichtern, stellt Microsoft Sentinel [Jupyter Notebooks](https://jupyter.org) bereit: eine Open-Source-Umgebung zur interaktiven Entwicklung und Datenmanipulation, die direkt in die Seite von Microsoft Sentinel **Notebooks** integriert ist.
 
 Weitere Informationen finden Sie unter
 
@@ -168,13 +167,13 @@ Weitere Informationen finden Sie unter
 - [Das Buch Infosec Jupyter](https://infosecjupyterbook.com)
 - [Real Python Tutorials](https://realpython.com)
 
-Die folgende Tabelle beschreibt einige Methoden zur Verwendung von Jupyter-Notebooks zur Unterstützung Ihrer Prozesse in Azure Sentinel:
+Die folgende Tabelle beschreibt einige Methoden zur Verwendung von Jupyter-Notebooks zur Unterstützung Ihrer Prozesse in Microsoft Sentinel:
 
 |Methode  |Beschreibung  |
 |---------|---------|
 |**Datenpersistenz, Wiederholbarkeit und Rückverfolgung**     |  Wenn Sie mit vielen Abfragen und Resultsets arbeiten, haben Sie wahrscheinlich einige Sackgassen. Sie müssen entscheiden, welche Abfragen und Ergebnisse beibehalten werden sollen und wie die nützlichen Ergebnisse in einem einzelnen Bericht gesammelt werden sollen. <br><br> Verwenden Sie Jupyter Notebooks, um Abfragen und Daten während der Arbeit zu speichern, verwenden Sie Variablen, um Abfragen mit anderen Werten oder Daten erneut auszuführen, oder speichern Sie Ihre Abfragen, um sie bei zukünftigen Untersuchungen erneut auszuführen.       |
 |**Skripts und Programmierung**     |    Mit Jupyter Notebooks können Sie Ihre Abfragen durch Programmierung ergänzen, einschließlich: <br><br>- *Deklarative* Sprachen wie [Kusto Query Language (KQL)](/azure/kusto/query/) oder SQL, um Ihre Logik in einer einzigen, möglicherweise komplexen, Anweisung zu kodieren.<br>- *Prozedurale* Programmiersprachen, um die Logik in einer Reihe von Schritten auszuführen. <br><br>Die Aufteilung Ihrer Logik in Schritte kann Ihnen helfen, Zwischenergebnisse zu sehen und zu debuggen, Funktionen hinzuzufügen, die in der Abfragesprache möglicherweise nicht verfügbar sind, und Teilergebnisse in späteren Verarbeitungsschritten wiederzuverwenden.     |
-|**Links zu externen Daten**     | Während Azure Sentinel-Tabellen die meisten Telemetrie- und Ereignisdaten enthalten, können Jupyter Notebooks mit allen Daten verknüpft werden, die über Ihr Netz oder aus einer Datei zugänglich sind. Mit Jupyter Notebooks können Sie unter anderem folgende Daten einschließen: <br><br>– Daten in externen Diensten, die nicht in Ihrem Besitz sind, wie z. B. Geolokalisierungsdaten oder Threat Intelligence-Datenquellen<br>Sensible Daten, die nur innerhalb Ihres Unternehmens gespeichert sind, wie z. B. Personaldatenbanken oder Listen mit wertvollen Objekten<br>– Daten, die Sie noch nicht in die Cloud migriert haben.        |
+|**Links zu externen Daten**     | Während Microsoft Sentinel-Tabellen die meisten Telemetrie- und Ereignisdaten enthalten, können Jupyter Notebooks mit allen Daten verknüpft werden, die über Ihr Netz oder aus einer Datei zugänglich sind. Mit Jupyter Notebooks können Sie unter anderem folgende Daten einschließen: <br><br>– Daten in externen Diensten, die nicht in Ihrem Besitz sind, wie z. B. Geolokalisierungsdaten oder Threat Intelligence-Datenquellen<br>Sensible Daten, die nur innerhalb Ihres Unternehmens gespeichert sind, wie z. B. Personaldatenbanken oder Listen mit wertvollen Objekten<br>– Daten, die Sie noch nicht in die Cloud migriert haben.        |
 |**Spezialisierte Tools für Datenverarbeitung, maschinelles Lernen und Visualisierung**     | Jupyter Notebooks stellt zusätzliche Visualisierungen, Bibliotheken für maschinelles Lernen sowie Datenverarbeitungs- und -transformationsfunktionen bereit. <br><br>Verwenden Sie zum Beispiel Jupyter Notebooks mit den folgenden [Python](https://python.org) Funktionen:<br>- [pandas](https://pandas.pydata.org/) für Datenverarbeitung, Bereinigung und Engineering<br>- [Matplotlib](https://matplotlib.org), [HoloViews](https://holoviews.org), und [Plotly](https://plot.ly) für die Visualisierung<br>- [NumPyS](https://www.numpy.org) und [SciPy](https://www.scipy.org) für erweiterte numerische und wissenschaftliche Verarbeitung<br>- [Sscikit-learn](https://scikit-learn.org/stable/index.html) für maschinelles Lernen<br>- [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org), und [Keras](https://keras.io/) für Deep Learning<br><br>**Tipp**: Jupyter Notebooks unterstützt mehrere Programmiersprachenkernel. Verwenden Sie *magics*, um Programmiersprachen innerhalb desselben Notebooks zu mischen, indem Sie die Ausführung einzelner Zellen in einer anderen Programmiersprache erlauben. So können Sie beispielsweise Daten mit einer PowerShell-Skript-Zelle abrufen, die Daten in Python verarbeiten und JavaScript zum Rendern einer Visualisierung verwenden.        |
 |     |         |
 
@@ -182,7 +181,7 @@ Die folgende Tabelle beschreibt einige Methoden zur Verwendung von Jupyter-Noteb
 
 Das [Microsoft Threat Intelligence Center (MSTIC)](https://msrc-blog.microsoft.com/tag/mstic/) ist ein Team von Microsoft-Sicherheitsanalysten und -ingenieuren, die Sicherheitserkennungen für verschiedene Microsoft-Plattformen erstellen und an der Identifizierung und Untersuchung von Bedrohungen arbeiten.
 
-MSTIC hat [MSTICPy](https://github.com/Microsoft/msticpy) entwickelt, eine Bibliothek für die Suche und Nachforschungen zur Informationssicherheit in Jupyter Notebooks. MSTICPy stellt wiederverwendbare Funktionen bereit, um die Erstellung von Notebooks zu beschleunigen und den Benutzern das Lesen von Notebooks in Azure Sentinel zu erleichtern.
+MSTIC hat [MSTICPy](https://github.com/Microsoft/msticpy) entwickelt, eine Bibliothek für die Suche und Nachforschungen zur Informationssicherheit in Jupyter Notebooks. MSTICPy stellt wiederverwendbare Funktionen bereit, um die Erstellung von Notebooks zu beschleunigen und den Benutzern das Lesen von Notebooks in Microsoft Sentinel zu erleichtern.
 
 Zum Beispiel kann MSTICPy:
 
@@ -197,17 +196,16 @@ MSTICPy kann auch einige zeitsparende Notebook-Tools umfassen, wie z. B. Widgets
 Weitere Informationen finden Sie unter
 
 - [MSTICPy-Dokumentation](https://msticpy.readthedocs.io/en/latest/)
-- [Tutorial: Erste Schritte mit Jupyter-Notebooks und MSTICPy in Azure Sentinel](notebook-get-started.md)
-- [Erweiterte Konfigurationen für Jupyter Notebooks und MSTICPy in Azure Sentinel](notebooks-msticpy-advanced.md)
-
+- [Tutorial: Erste Schritte mit Jupyter-Notebooks und MSTICPy in Microsoft Sentinel](notebook-get-started.md)
+- [Erweiterte Konfigurationen für Jupyter Notebooks und MSTICPy in Microsoft Sentinel](notebooks-msticpy-advanced.md)
 
 ## <a name="useful-operators-and-functions"></a>Praktische Operatoren und Funktionen
 
 Hunting-Abfragen werden in der [Kusto-Abfragesprache (KQL)](/azure/data-explorer/kusto/query/) erstellt. Diese leistungsstarke Abfragesprache mit IntelliSense bietet die Leistungsfähigkeit und Flexibilität, die Sie für die nächste Hunting-Stufe benötigen.
 
-Es ist dieselbe Sprache, die von den Abfragen in Ihren Analyseregeln und an anderer Stelle in Azure Sentinel verwendet wird. Weitere Informationen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md).
+Es ist dieselbe Sprache, die von den Abfragen in Ihren Analyseregeln und an anderer Stelle in Microsoft Sentinel verwendet wird. Weitere Informationen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md).
 
-Die folgenden Operatoren sind bei Hunting-Abfragen für Azure Sentinel besonders hilfreich:
+Die folgenden Operatoren sind bei Hunting-Abfragen für Microsoft Sentinel besonders hilfreich:
 
 - **where**: Filtert eine Tabelle auf die Teilmenge von Zeilen, die ein Prädikat erfüllen.
 
@@ -229,11 +227,11 @@ Die folgenden Operatoren sind bei Hunting-Abfragen für Azure Sentinel besonders
 
 - **find**: Sucht nach Zeilen, die einem Prädikat in einer Gruppe von Tabellen entsprechen.
 
-- **adx() (Vorschauversion)** : Diese Funktion führt ressourcenübergreifende Abfragen für Azure Data Explorer-Datenquellen über die Hunting-Umgebung von Azure Sentinel und über Log Analytics aus. Weitere Informationen finden Sie unter [Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md).
+- **adx() (Vorschauversion)** : Diese Funktion führt ressourcenübergreifende Abfragen für Azure Data Explorer-Datenquellen über die Hunting-Umgebung von Microsoft Sentinel und über Log Analytics aus. Weitere Informationen finden Sie unter [Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie eine Bedrohungsuntersuchung mit Azure Sentinel ausführen. 
+In diesem Artikel haben Sie erfahren, wie Sie eine Bedrohungsuntersuchung mit Microsoft Sentinel ausführen.
 
 Weitere Informationen finden Sie unter:
 

@@ -1,74 +1,74 @@
 ---
-title: Bewährte Methoden für Azure Sentinel
-description: Erfahren Sie mehr über bewährte Methoden für die Verwaltung Ihres Azure Sentinel-Arbeitsbereichs.
+title: Bewährte Verfahren für Microsoft Sentinel
+description: Erfahren Sie mehr über die besten Praktiken bei der Verwaltung Ihres Microsoft Sentinel-Arbeitsbereichs.
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
-ms.date: 07/21/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b53b634315487d7940cf4d202c29005498bcdfb9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 15543989655bf094f221a4259ad0b3e765338329
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060780"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524700"
 ---
-# <a name="best-practices-for-azure-sentinel"></a>Bewährte Methoden für Azure Sentinel
+# <a name="best-practices-for-microsoft-sentinel"></a>Bewährte Verfahren für Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Diese Sammlung bewährter Methoden enthält Anleitungen für die Bereitstellung, Verwaltung und Verwendung von Azure Sentinel, einschließlich Links zu anderen Artikeln, um weitere Informationen zu erhalten.
+Diese Sammlung von Best Practices bietet Anleitungen für die Bereitstellung, Verwaltung und Verwendung von Microsoft Sentinel, einschließlich Links zu anderen Artikeln für weitere Informationen.
 
 > [!IMPORTANT]
-> Bevor Sie Azure Sentinel bereitstellen, überprüfen und schließen Sie [Aktivitäten und Voraussetzungen vor der Bereitstellung](prerequisites.md) ab.
+> Bevor Sie Microsoft Sentinel bereitstellen, sollten Sie die [Vorbereitungsaktivitäten und -voraussetzungen](prerequisites.md) überprüfen und abschließen.
 >
 
 
 ## <a name="best-practice-references"></a>Referenzen für bewährte Praktiken
 
-In der Azure Sentinel-Dokumentation finden Sie zahlreiche Hinweise zu bewährten Verfahren. Zusätzlich zu den Inhalten in diesem Artikel finden Sie weitere Informationen in den folgenden Artikeln:
+In der Microsoft Sentinel-Dokumentation finden Sie in verschiedenen Artikeln Hinweise zu bewährten Verfahren. Zusätzlich zu den Inhalten in diesem Artikel finden Sie weitere Informationen in den folgenden Artikeln:
 
 - **Administratorbenutzer**:
 
-    - [Aktivitäten vor der Bereitstellung und Voraussetzungen für die Bereitstellung von Azure Sentinel](prerequisites.md)
-    - [Bewährte Methoden für die Azure Sentinel-Arbeitsbereichsarchitektur](best-practices-workspace-architecture.md)
-    - [Entwerfen der Azure Sentinel-Arbeitsbereichsarchitektur](design-your-workspace-architecture.md)
-    - [Beispiele für Azure Sentinel-Arbeitsbereichsentwürfe](sample-workspace-designs.md)
+    - [Aktivitäten vor der Bereitstellung und Voraussetzungen für die Bereitstellung von Microsoft Sentinel](prerequisites.md)
+    - [Bewährte Methoden für die Microsoft Sentinel-Arbeitsbereichsarchitektur](best-practices-workspace-architecture.md)
+    - [Entwerfen der Microsoft Sentinel-Arbeitsbereichsarchitektur](design-your-workspace-architecture.md)
+    - [Microsoft Sentinel sample workspace designs](sample-workspace-designs.md)
     - [Bewährte Methoden für die Datensammlung](best-practices-data.md)
-    - [Azure Sentinel: Kosten und Abrechnung](azure-sentinel-billing.md)
-    - [Berechtigungen in Azure Sentinel](roles.md)
-    - [Schützen des geistigen Eigentums von MSSPs in Azure Sentinel](mssp-protect-intellectual-property.md)
-    - [Threat Intelligence-Integration in Azure Sentinel](threat-intelligence-integration.md)
-    - [Überwachen von Azure Sentinel-Abfragen und -Aktivitäten](audit-sentinel-data.md)
+    - [Microsoft Sentinel Kosten und Abrechnung](azure-sentinel-billing.md)
+    - [Berechtigungen in Microsoft Sentinel](roles.md)
+    - [Schutz des geistigen Eigentums von MSSP in Microsoft Sentinel](mssp-protect-intellectual-property.md)
+    - [Integration von Threat Intelligence in Microsoft Sentinel](threat-intelligence-integration.md)
+    - [Microsoft Sentinel-Abfragen und -Aktivitäten prüfen](audit-sentinel-data.md)
 
 - **Analysten**:
 
     - [Empfohlene Playbooks](automate-responses-with-playbooks.md#recommended-playbooks)
-    - [Behandeln falsch positiver Ergebnisse in Azure Sentinel](false-positives.md)
-    - [Suchen nach Bedrohungen mit Azure Sentinel](hunting.md)
-    - [Häufig verwendete Azure Sentinel-Arbeitsmappen](top-workbooks.md)
+    - [Handhabung von Fehlalarmen in Microsoft Sentinel](false-positives.md)
+    - [Jagd auf Bedrohungen mit Microsoft Sentinel](hunting.md)
+    - [Häufig verwendete Microsoft Sentinel-Arbeitsmappen](top-workbooks.md)
     - [Standardmäßig verfügbare Erkennung von Bedrohungen](detect-threats-built-in.md)
     - [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md)
     - [Aufspüren von Sicherheitsrisiken mit Jupyter Notebook](notebooks.md)
 
-Weitere Informationen finden Sie auch in unserem Video: [Architecting SecOps for Success: Best Practices for Deploying Azure Sentinel](https://youtu.be/DyL9MEMhqmI) (Entwerfen erfolgreicher SecOps: Bewährte Methoden zum Bereitstellen von Azure Sentinel).
+Weitere Informationen finden Sie auch in unserem Video: [Architecting SecOps for Success: Best Practices for Deploying Microsoft Sentinel](https://youtu.be/DyL9MEMhqmI)
 
 ## <a name="regular-soc-activities-to-perform"></a>Durchzuführende reguläre SOC-Aktivitäten
 
-Planen Sie die folgenden Azure Sentinel-Aktivitäten regelmäßig, um kontinuierlich bewährte Sicherheitsmethoden sicherzustellen:
+Planen Sie die folgenden Microsoft Sentinel-Aktivitäten regelmäßig ein, um eine kontinuierliche Anwendung bewährter Sicherheitsverfahren zu gewährleisten:
 
 ### <a name="daily-tasks"></a>Tägliche Aufgaben
 
-- **Selektieren und Untersuchen von Incidents**.  Überprüfen Sie die Seite **Incidents** von Azure Sentinel, um auf neue Incidents zu prüfen, die von den derzeit konfigurierten Analyseregeln generiert werden, und beginnen Sie mit der Untersuchung neuer Incidents. Weitere Informationen finden Sie im [Tutorial: Untersuchen von Incidents mit Azure Sentinel](investigate-cases.md).
+- **Selektieren und Untersuchen von Incidents**.  Überprüfen Sie die Seite **Vorfälle** von Microsoft Sentinel, um nach neuen Vorfällen zu suchen, die von den derzeit konfigurierten Analyseregeln generiert wurden, und beginnen Sie mit der Untersuchung neuer Vorfälle. Weitere Informationen finden Sie unter [Tutorial: Untersuchen von Vorfällen mit Microsoft Sentinel](investigate-cases.md).
 
-- **Untersuchen Sie Hunting-Abfragen und Textmarken**. Untersuchen Sie die Ergebnisse für alle integrierten Abfragen, und aktualisieren Sie vorhandene Hunting-Abfragen und Textmarken. Generieren Sie manuell neue Incidents, oder aktualisieren Sie ggf. alte Incidents.  Weitere Informationen finden Sie unter:
+- **Untersuchen Sie Hunting-Abfragen und Textmarken**. Untersuchen Sie die Ergebnisse für alle integrierten Abfragen, und aktualisieren Sie vorhandene Hunting-Abfragen und Textmarken. Generieren Sie manuell neue Incidents, oder aktualisieren Sie ggf. alte Incidents.  Weitere Informationen finden Sie unter
 
     - [Automatisches Erstellen von Incidents aus Microsoft-Sicherheitswarnungen](create-incidents-from-alerts.md)
-    - [Suchen nach Bedrohungen mit Azure Sentinel](hunting.md)
-    - [Behalten des Überblicks über Daten beim Hunting mit Azure Sentinel](bookmarks.md)
+    - [Jagd auf Bedrohungen mit Microsoft Sentinel](hunting.md)
+    - [Verfolgen Sie Daten während der Jagd mit Microsoft Sentinel](bookmarks.md)
 
 - **Analyseregeln**.  Überprüfen und aktivieren Sie ggf. neue Analyseregeln, einschließlich neu veröffentlichter oder neu verfügbarer Regeln von kürzlich verbundenen Datenconnectors.
 
@@ -76,33 +76,32 @@ Planen Sie die folgenden Azure Sentinel-Aktivitäten regelmäßig, um kontinuier
 
 - **Log Analytics-Agent** Stellen Sie sicher, dass Server und Arbeitsstationen aktiv mit dem Arbeitsbereich verbunden sind, und behandeln und beheben Sie Verbindungsfehler.   Weitere Informationen finden Sie unter [Log Analytics – Übersicht über Agents](../azure-monitor/agents/log-analytics-agent.md).
 
-- **Playbookfehler**. Überprüfen Sie den Status der Playbook-Ausführung, und beheben Sie Fehler.   Weitere Informationen finden Sie unter [Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel](tutorial-respond-threats-playbook.md).
-
+- **Playbookfehler**. Überprüfen Sie den Status der Playbook-Ausführung, und beheben Sie Fehler.   Weitere Informationen finden Sie unter [Tutorial: Verwendung von Playbooks mit Automatisierungsregeln in Microsoft Sentinel](tutorial-respond-threats-playbook.md).
 
 ### <a name="weekly-tasks"></a>Wöchentliche Aufgaben
 
-- **Arbeitsmappenaktualisierungen**. Überprüfen Sie, ob Arbeitsmappen über Aktualisierungen verfügen, die installiert werden müssen. Weitere Informationen finden Sie unter [Häufig verwendete Azure Sentinel-Arbeitsmappen](top-workbooks.md).
+- **Arbeitsmappenaktualisierungen**. Überprüfen Sie, ob Arbeitsmappen über Aktualisierungen verfügen, die installiert werden müssen. Weitere Informationen finden Sie unter [Häufig verwendete Microsoft Sentinel-Arbeitsmappen](top-workbooks.md).
 
-- **Azure Sentinel: GitHub-Repositorybewertung** Überprüfen Sie das [Azure Sentinel GitHub](https://github.com/Azure/Azure-Sentinel)-Repository, um zu untersuchen, ob neue oder aktualisierte Ressourcen für Ihre Umgebung vorhanden sind, z. B. Analyseregeln, Arbeitsmappen, Hunting-Abfragen oder Playbooks.
+- **Microsoft Sentinel GitHub Repository Überprüfung**. Prüfen Sie das [Microsoft Sentinel GitHub-Repository](https://github.com/Azure/Azure-Sentinel), um zu sehen, ob es neue oder aktualisierte Ressourcen gibt, die für Ihre Umgebung von Nutzen sind, wie z. B. Analyseregeln, Arbeitsmappen, Jagdabfragen oder Playbooks.
 
-- **Azure Sentinel-Überwachung**. Überprüfen Sie Azure Sentinel-Aktivitäten, um zu ermitteln, wer Ressourcen aktualisiert oder gelöscht hat, z. B. Analyseregeln, Textmarken usw. Weitere Informationen finden Sie unter Überwachen von [Überwachen von Azure Sentinel-Abfragen und -Aktivitäten](audit-sentinel-data.md).
+- **Microsoft Sentinel-Überprüfung**. Überprüfen Sie die Aktivitäten von Microsoft Sentinel, um festzustellen, wer Ressourcen wie Analyseregeln, Lesezeichen usw. aktualisiert oder gelöscht hat. Weitere Informationen finden Sie unter [Audit Microsoft Sentinel Abfragen und Aktivitäten](audit-sentinel-data.md).
 
 ### <a name="monthly-tasks"></a>Monatliche Aufgaben
 
-- **Überprüfen Sie den Benutzerzugriff**. Überprüfen Sie Berechtigungen für Ihre Benutzer, und prüfen Sie auf inaktive Benutzer. Weitere Informationen hierzu finden Sie unter [Berechtigungen in Azure Sentinel](roles.md).
+- **Überprüfen Sie den Benutzerzugriff**. Überprüfen Sie Berechtigungen für Ihre Benutzer, und prüfen Sie auf inaktive Benutzer. Weitere Informationen finden Sie unter [Berechtigungen in Microsoft Sentinel](roles.md).
 
 - **Überprüfen des Log Analytics-Arbeitsbereichs**. Überprüfen Sie, ob die Datenaufbewahrungsrichtlinie des Log Analytics-Arbeitsbereichs weiterhin mit der Richtlinie Ihrer Organisation in Einklang steht.  Weitere Informationen finden Sie unter [Datenaufbewahrungsrichtlinie](/workplace-analytics/privacy/license-expiration) und [Integrieren von Azure Data Explorer für die langfristige Protokollaufbewahrung](store-logs-in-azure-data-explorer.md).
 
 
 ## <a name="integrate-with-microsoft-security-services"></a>Integrieren in Microsoft-Sicherheitsdienste
 
-Azure Sentinel wird durch die Komponenten unterstützt, die Daten an Ihren Arbeitsbereich senden, und durch Integrationen in andere Microsoft-Dienste gestärkt. Alle Protokolle, die in Produkten wie Microsoft Cloud App Security, Microsoft Defender für Endpunkt und Microsoft Defender for Identity erfasst werden, ermöglichen es diesen Diensten, Erkennungen zu erstellen und diese Erkennungen dann für Azure Sentinel bereitzustellen. Protokolle können ebenfalls direkt in der Azure Sentinel erfasst werden, um ein vollständigeres Bild von Ereignissen und Incidents zu erhalten.
+Microsoft Sentinel wird durch die Komponenten gestärkt, die Daten an Ihren Arbeitsbereich senden, und wird durch die Integration mit anderen Microsoft-Diensten gestärkt. Alle Protokolle, die in Produkte wie Microsoft Defender for Cloud Apps, Microsoft Defender for Endpoint und Microsoft Defender for Identity eingespeist werden, ermöglichen es diesen Diensten, Erkennungen zu erstellen und diese Erkennungen wiederum an Microsoft Sentinel weiterzuleiten. Protokolle können auch direkt in Microsoft Sentinel eingelesen werden, um ein umfassenderes Bild von Ereignissen und Vorfällen zu erhalten.
 
-Die folgende Abbildung zeigt z. B., wie Azure Sentinel Daten von anderen Microsoft-Diensten und Multi-Cloud- und Partnerplattformen erfasst, um Abdeckung für Ihre Umgebung bereitzustellen:
+Die folgende Abbildung zeigt zum Beispiel, wie Microsoft Sentinel Daten von anderen Microsoft-Diensten und Multi-Cloud- und Partnerplattformen aufnimmt, um Ihre Umgebung abzudecken:
 
-:::image type="content" source="media/best-practices/azure-sentinel-and-other-services.png" alt-text="Azure Sentinel-Integration in andere Microsoft- und Partnerdienste":::
+:::image type="content" source="media/best-practices/azure-sentinel-and-other-services.png" alt-text="Microsoft Sentinel integriert sich mit anderen Microsoft- und Partnerdiensten":::
 
-Neben der Erfassung von Warnungen und Protokollen aus anderen Quellen gilt für Azure Sentinel auch:
+Microsoft Sentinel ist mehr als nur das Erfassen von Warnungen und Protokollen aus anderen Quellen, sondern auch:
 
 - **Verwendet die Informationen, die erfasst werden, mit [maschinellem Lernen](bring-your-own-ml.md)** , um bessere Ereigniskorrelation, Warnungsaggregation, Anomalieerkennung und vieles mehr zu ermöglichen.
 - **Erstellt und präsentiert interaktive visuelle Elemente über [Arbeitsmappen](get-visibility.md)** und zeigt Trends, verwandte Informationen und wichtige Daten an, die sowohl für Administratoraufgaben als auch für Untersuchungen verwendet werden.
@@ -116,11 +115,11 @@ Die folgende Abbildung zeigt die empfohlenen Schritte in einem Incident Manageme
 
 :::image type="content" source="media/best-practices/incident-handling.png" alt-text="Incident Management-Prozess: Selektierung. Vorbereitung. Korrektur. Beseitigung. Aktivitäten nach Incidents.":::
 
-Die folgenden Abschnitte enthalten allgemeine Beschreibungen zur Verwendung der Azure Sentinel-Funktionen für Incident Management und Reaktion während des gesamten Prozesses. Weitere Informationen finden Sie im [Tutorial: Untersuchen von Incidents mit Azure Sentinel](investigate-cases.md).
+Die folgenden Abschnitte enthalten allgemeine Beschreibungen zur Verwendung der Azure Sentinel-Funktionen für Incident Management und Reaktion während des gesamten Prozesses. Weitere Informationen finden Sie unter [Tutorial: Untersuchen von Vorfällen mit Microsoft Sentinel](investigate-cases.md).
 
 ### <a name="use-the-incidents-page-and-the-investigation-graph"></a>Verwenden der Seite „Incidents“ und des Untersuchungsdiagramms
 
-Starten Sie alle Selektierungsprozesse für neue Incidents auf der Seite **Incidents** in Azure Sentinel sowie das **Untersuchungsdiagramm**. 
+Starten Sie einen beliebigen Triage-Prozess für neue Vorfälle auf der Seite Microsoft Sentinel **Vorfälle** in Microsoft Sentinel und dem **Untersuchungsdiagramm**. 
 
 Entdecken Sie wichtige Entitäten wie Konten, URLs, IP-Adressen, Hostnamen, Aktivitäten, Zeitachsen und vieles mehr. Verwenden Sie diese Daten, um zu verstehen, ob ein [falsch positives](false-positives.md) Ergebnis vorliegt. In diesem Fall können Sie den Incident direkt schließen.
 
@@ -128,12 +127,12 @@ Alle generierten Incidents werden auf der Seite **Incidents** angezeigt, die als
 
 Die Seite **Incidents** arbeitet mit dem **Untersuchungsdiagramm** zusammen, einem interaktiven Tool, mit dem Benutzer eine Warnung untersuchen und genau analysieren können, um den gesamten Umfang eines Angriffs zu erkennen. Benutzer können dann eine Zeitachse von Ereignissen erstellen und das Ausmaß einer Bedrohungskette entdecken.
 
-Wenn Sie feststellen, dass der Incident True Positive ist, können Sie direkt auf der Seite **Incidents** Maßnahmen ergreifen, um Protokolle, Entitäten und die Bedrohungskette zu untersuchen. Nachdem Sie die Bedrohung identifiziert und einen Aktionsplan erstellt haben, verwenden Sie andere Tools in Azure Sentinel und [andere Microsoft-Sicherheitsdienste](best-practices.md#integrate-with-microsoft-security-services), um die Untersuchung fortzusetzen.
+Wenn Sie feststellen, dass der Incident True Positive ist, können Sie direkt auf der Seite **Incidents** Maßnahmen ergreifen, um Protokolle, Entitäten und die Bedrohungskette zu untersuchen. Nachdem Sie die Bedrohung identifiziert und einen Aktionsplan erstellt haben, verwenden Sie andere Tools in Microsoft Sentinel und [andere Microsoft-Sicherheitsdienste](best-practices.md#integrate-with-microsoft-security-services), um die Untersuchung fortzusetzen.
 
 
 ### <a name="handle-incidents-with-workbooks"></a>Behandeln von Incidents mit Arbeitsmappen
 
-Neben der [Visualisierung und Anzeige von Informationen und Trends](get-visibility.md) sind Azure Sentinel-Arbeitsmappen wertvolle Tools.
+Neben der [Visualisierung und Darstellung von Informationen und Trends](get-visibility.md) sind die Arbeitsmappen von Microsoft Sentinel wertvolle Ermittlungsinstrumente.
 
 Verwenden Sie beispielsweise die Arbeitsmappe [Erkenntnisse aus Ermittlungen](top-workbooks.md#investigation-insights), um bestimmte Incidents zusammen mit allen zugeordneten Entitäten und Warnungen zu untersuchen. Mit dieser Arbeitsmappe können Sie Entitäten eingehender analysieren, indem Sie zugehörige Protokolle, Aktionen und Warnungen anzeigen.
 
@@ -145,11 +144,11 @@ Verwenden Sie den [Livestream](livestream.md) während einer Untersuchung oder n
 
 ### <a name="handle-incidents-with-entity-behavior"></a>Behandeln von Incidents mit Entitätsverhalten
 
-Entitätsverhalten in Azure Sentinel ermöglicht Benutzern das Überprüfen und Untersuchen von Aktionen und Warnungen für bestimmte Entitäten, z. B. das Untersuchen von Konten und Hostnamen. Weitere Informationen finden Sie unter:
+Das Verhalten von Entitäten in Microsoft Sentinel ermöglicht es Benutzern, Aktionen und Warnungen für bestimmte Entitäten zu überprüfen und zu untersuchen, z. B. die Untersuchung von Konten und Hostnamen. Weitere Informationen finden Sie unter
 
-- [Aktivieren von User and Entity Behavior Analytics (UEBA) in Azure Sentinel](enable-entity-behavior-analytics.md)
+- [ Aktivieren Sie User and Entity Behavior Analytics (UEBA) in Microsoft Sentinel](enable-entity-behavior-analytics.md)
 - [Untersuchen von Incidents mit UEBA-Daten](investigate-with-ueba.md)
-- [Referenz zu Azure Sentinel-UEBA-Anreicherungen](ueba-enrichments.md)
+- [Microsoft Sentinel UEBA Anreicherungen Referenz](ueba-enrichments.md)
 
 ### <a name="handle-incidents-with-watchlists-and-threat-intelligence"></a>Behandeln von Incidents mit Watchlists und Threat Intelligence
 
@@ -166,7 +165,7 @@ Verwenden Sie während eines Incidents Watchlists mit Untersuchungsdaten, und l�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den ersten Schritten mit Azure Sentinel:
+Erste Schritte mit Microsoft Sentinel finden Sie unter:
 
-- [Schnellstart: Ausführen des Onboardings für Azure Sentinel](quickstart-onboard.md)
+- [ Integrierter Microsoft Sentinel](quickstart-onboard.md)
 - [Einblick in Warnungen](get-visibility.md)

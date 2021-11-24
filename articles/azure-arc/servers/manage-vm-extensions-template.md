@@ -4,18 +4,18 @@ description: In diesem Artikel wird beschrieben, wie Sie mit einer Azure Resourc
 ms.date: 07/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f1ea92383242cb5b1b1a1d09f33f947ff07113c5
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: d0d23aa44de29eb71f64e80b8422a826ef7fa0f4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114389805"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348015"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe einer ARM-Vorlage
 
 In diesem Artikel erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) verwenden, um Azure-VM-Erweiterungen bereitzustellen, die von Azure Arc-fähigen Servern unterstützt werden.
 
-VM-Erweiterungen können einer Azure Resource Manager-Vorlage hinzugefügt und mit der Bereitstellung der Vorlage ausgeführt werden. Mit den von Azure Arc-fähigen Servern unterstützten VM-Erweiterungen können Sie die unterstützte VM-Erweiterung mithilfe von Azure PowerShell auf Linux- oder Windows-Computern bereitstellen. Jedes Beispiel unten beinhaltet eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
+VM-Erweiterungen können einer Azure Resource Manager-Vorlage hinzugefügt und mit der Bereitstellung der Vorlage ausgeführt werden. Mit den von Azure Arc-fähigen Servern unterstützten Erweiterungen für virtuelle Computer können Sie die unterstützte Erweiterung für virtuelle Computer mithilfe von Azure PowerShell auf Linux- oder Windows-Computer bereitstellen. Jedes Beispiel unten beinhaltet eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
 
 >[!NOTE]
 >Zwar können mehrere Erweiterungen in einem Batch zusammengefasst und verarbeitet werden, die Installation erfolgt jedoch nacheinander. Sobald die Installation der ersten Erweiterung abgeschlossen ist, wird die Installation der nächsten Erweiterung versucht.
@@ -143,7 +143,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 Zum Verwenden der Erweiterung für benutzerdefinierte Skripts steht das folgende Beispiel für die Ausführung unter Windows oder Linux zur Verfügung. Wenn Sie mit der Erweiterung für benutzerdefinierte Skripts nicht vertraut sind, lesen Sie [Erweiterung für benutzerdefinierte Skripts für Windows](../../virtual-machines/extensions/custom-script-windows.md) oder [Erweiterung für benutzerdefinierte Skripts für Linux](../../virtual-machines/extensions/custom-script-linux.md). Es gibt eine Reihe abweichender Merkmale, die Sie kennen sollten, wenn Sie diese Erweiterung für Hybridcomputer verwenden:
 
-* Die Liste der unterstützten Betriebssysteme für die Azure VM-Erweiterung für benutzerdefinierte Skripts trifft auf Azure Arc-fähige Server nicht zu. Die Liste der unterstützten Betriebssysteme für Arc-fähige Server finden Sie [hier](agent-overview.md#supported-operating-systems).
+* Die Liste der unterstützten Betriebssysteme für die Azure VM-Erweiterung für benutzerdefinierte Skripts trifft auf Azure Arc-fähige Server nicht zu. Die Liste der unterstützten Betriebssysteme für Azure Arc-fähige Server finden Sie [hier](agent-overview.md#supported-operating-systems).
 
 * Konfigurationsdetails, die Azure-VM-Skalierungsgruppen oder klassische VMs betreffen, sind nicht anwendbar.
 
@@ -535,9 +535,9 @@ Speichern Sie die Vorlagendatei auf dem Datenträger. Anschließend können Sie 
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
 ```
 
-## <a name="deploy-the-azure-defender-integrated-scanner"></a>Bereitstellen des in Azure Defender integrierten Scanners
+## <a name="deploy-the-microsoft-defender-for-cloud-integrated-scanner"></a>Bereitstellen des integrierten Scanners für Microsoft Defender für Cloud
 
-Zum Verwenden der Erweiterung für den in Azure Defender integrierten Scanner steht das folgende Beispiel für Windows und Linux zur Verfügung. Wenn Sie nicht mit dem integrierten Scanner vertraut sind, finden Sie in der [Übersicht über die Lösung zur Sicherheitsrisikobewertung von Azure Defender](../../security-center/deploy-vulnerability-assessment-vm.md) für Hybridcomputer weitere Informationen.
+Zum Verwenden der Erweiterung für den in Microsoft Defender für Cloud integrierten Scanner steht das folgende Beispiel für Windows und Linux zur Verfügung. Wenn Sie nicht mit dem integrierten Scanner vertraut sind, finden Sie unter [Übersicht über die Lösung zur Sicherheitsrisikobewertung von Microsoft Defender](../../security-center/deploy-vulnerability-assessment-vm.md) für Hybridcomputer weitere Informationen.
 
 ### <a name="template-file-for-windows"></a>Vorlagendatei für Windows
 

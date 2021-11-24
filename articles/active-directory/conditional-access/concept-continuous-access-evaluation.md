@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a0eaee3c6e265063270d5cb3b2ea43d3c22fbb0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 4de2ed185b3a4421a06ac9b3c88df68821b61adf
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553074"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307989"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -77,7 +77,7 @@ Dies ermöglicht ein Szenario, bei dem Benutzer unmittelbar nach Änderungen der
 
 | | OneDrive Web | OneDrive Win32 | OneDrive iOS | OneDrive Android | OneDrive Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+| **SharePoint Online** | Unterstützt | Nicht unterstützt | Unterstützt | Unterstützt | Nicht unterstützt |
 
 | | Teams (Webversion) | Teams (Win32) | Teams iOS | Teams Android | Teams Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -136,29 +136,11 @@ Im folgenden Beispiel hat ein Administrator für den bedingten Zugriff eine stan
 
 ## <a name="enable-or-disable-cae-preview"></a>Aktivieren oder Deaktivieren der fortlaufenden Zugriffsevaluierung (Vorschau)
 
-1. Melden Sie sich als Administrator für bedingten Zugriff, Sicherheitsadministrator oder globaler Administrator beim **Azure-Portal** an.
-1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Fortlaufende Zugriffsevaluierung**.
-1. Wählen Sie **Vorschau aktivieren** aus.
-1. Wählen Sie **Speichern**.
-
-Auf dieser Seite können Sie optional die Benutzer und Gruppen für die Vorschau einschränken.
-
-> [!NOTE]
-> Sie können Microsoft Graph über [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&preserve-view=true&tabs=http#request-body) abfragen, um die CAE-Konfiguration in Ihrem Mandanten zu überprüfen. Eine HTTP 200-Antwort und der zugehörige Antworttext geben an, ob CAE in Ihrem Mandanten aktiviert oder deaktiviert ist. CAE ist nicht konfiguriert, wenn Microsoft Graph eine HTTP 404-Antwort zurückgibt.
-
-![Aktivieren der Vorschau der fortlaufenden Zugriffsevaluierung im Azure-Portal](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
-
-### <a name="available-options"></a>Verfügbare Optionen
-
-Organisationen haben Optionen, wenn es um die Aktivierung von CAE geht.
-
-1. Wenn Sie die standardmäßige Einstellung **Automatische Aktivierung nach allgemeiner Verfügbarkeit** beibehalten, wird die Funktionalität aktiviert, sobald CAE allgemein verfügbar ist.
-1. Kunden, die **Vorschau aktivieren** wählen, profitieren sofort von der neuen Funktionalität und müssen bei allgemeiner Verfügbarkeit keine Änderungen vornehmen. 
-1. Kunden, die **Vorschau deaktivieren** wählen, haben Zeit, CAE nach ihrem eigenen Zeitplan zu übernehmen. Diese Einstellung wird bei der allgemeinen Verfügbarkeit als **Deaktiviert** beibehalten.
+Die CAE-Einstellung wurde in den Bereich „Bedingter Zugriff“ verschoben. Neue CAE-Kunden können beim Erstellen von Richtlinien für bedingten Zugriff direkt auf CAE zugreifen und diese umschalten. Einige Bestandskunden müssen jedoch die Migration durchlaufen, bevor sie mit dem Zugriff auf CAE über bedingten Zugriff beginnen können.
 
 #### <a name="migration"></a>Migration
 
-Die CAE-Einstellung wurde in den Bereich „Bedingter Zugriff“ verschoben. Kunden, die bisher CAE-Einstellungen unter „Sicherheit“ konfiguriert haben, müssen diese Einstellungen in eine Richtlinie für bedingten Zugriff migrieren. Führen Sie die folgenden Schritte aus, um die Einstellungen zu einer Richtlinie für bedingten Zugriff zu migrieren.
+Kunden, die zuvor CAE-Einstellungen unter Sicherheit konfiguriert haben, müssen diese Einstellungen in eine neue Richtlinie für bedingten Zugriff migrieren. Führen Sie die folgenden Schritte aus, um Ihre CAE-Einstellungen in eine Richtlinie für bedingten Zugriff zu migrieren.
 
 :::image type="content" source="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png" alt-text="Portalansicht mit der Option zum Migrieren der fortlaufenden Zugriffsauswertung zu einer Richtlinie für bedingten Zugriff." lightbox="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png":::
 

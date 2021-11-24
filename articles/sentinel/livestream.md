@@ -1,28 +1,28 @@
 ---
-title: Verwenden des Hunting-Livestreams in Azure Sentinel zum Erkennen von Bedrohungen | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie der Hunting-Livestream in Azure Sentinel verwendet werden kann, um den Überblick über Daten zu behalten.
+title: Verwenden des Hunting-Livestreams in Microsoft Sentinel zum Erkennen von Bedrohungen | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie der Hunting-Livestream in Microsoft Sentinel verwendet werden kann, um den Überblick über Daten zu behalten.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2021
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 70a8898b99ffaca2ed6aaa4dd978068bcd9d6c9a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 22e3eafbbae9259ddea56e9927055da08236eedb
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023213"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520083"
 ---
-# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Verwenden des Hunting-Livestreams in Azure Sentinel zum Erkennen von Bedrohungen
+# <a name="use-hunting-livestream-in-microsoft-sentinel-to-detect-threats"></a>Verwenden des Hunting-Livestreams in Microsoft Sentinel zum Erkennen von Bedrohungen
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -58,7 +58,7 @@ Sie können eine Livestreamsitzung aus einer vorhandenen Hunting-Abfrage erstell
     1. Klicken Sie mit der rechten Maustaste auf die Abfrage, und wählen Sie **Add to livestream** (Zu Livestream hinzufügen) aus. Beispiel:
     
     > [!div class="mx-imgBorder"]
-    > ![Erstellen einer Livestreamsitzung aus der Hunting-Abfrage von Azure Sentinel](./media/livestream/livestream-from-query.png)
+    > ![Erstellen einer Livestreamsitzung aus einer Microsoft Sentinel-Hunting-Abfrage](./media/livestream/livestream-from-query.png)
 
 1. So erstellen Sie eine Livestreamsitzung von Grund auf neu 
     
@@ -78,7 +78,7 @@ Sie können eine Livestreamsitzung aus einer vorhandenen Hunting-Abfrage erstell
     Die Statusleiste unter der Befehlsleiste gibt an, ob die Livestreamsitzung ausgeführt wird oder angehalten ist. Im folgenden Beispiel wird die Sitzung ausgeführt:
     
     > [!div class="mx-imgBorder"]
-    > ![Erstellen einer Livestreamsitzung aus Azure Sentinel Hunting](./media/livestream/livestream-session.png)
+    > ![Erstellen einer Livestreamsitzung aus Azure Sentinel-Hunting](./media/livestream/livestream-session.png)
 
 1. Wählen Sie in der Befehlsleiste **Speichern** aus.
     
@@ -91,7 +91,7 @@ Sie können eine Livestreamsitzung aus einer vorhandenen Hunting-Abfrage erstell
 1. Wählen Sie die Livestreamsitzung aus, die Sie anzeigen oder bearbeiten möchten. Beispiel:
     
     > [!div class="mx-imgBorder"]
-    > ![Erstellen einer Livestreamsitzung aus einer Azure Sentinel Hunting-Abfrage](./media/livestream/livestream-tab.png)
+    > ![Erstellen einer Livestreamsitzung aus einer Microsoft Sentinel-Hunting-Abfrage](./media/livestream/livestream-tab.png)
     
     Ihre ausgewählte Livestreamsitzung wird geöffnet, damit Sie sie wiedergeben, anhalten, bearbeiten usw. können.
 
@@ -114,7 +114,7 @@ Mit dieser Aktion wird der Regelerstellungs-Assistent geöffnet, der mit der Abf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie der Hunting-Livestream in Azure Sentinel verwendet wird. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie gelernt, wie der Hunting-Livestream in Microsoft Sentinel verwendet wird. Weitere Informationen zu Microsoft Sentinel finden Sie in den folgenden Artikeln:
 
 - [Proactively hunt for threats (Proaktive Ermittlung von Bedrohungen)](hunting.md)
 - [Verwenden von Notebooks zur Ermittlung von Anomalien](notebooks.md)

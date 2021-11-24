@@ -1,30 +1,30 @@
 ---
-title: Integrieren virtueller Azure Stack Hub-Computer in Azure Sentinel | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie die VM-Erweiterung zur Update- und Konfigurationsverwaltung für Azure Monitor auf virtuellen Azure Stack Hub-Computern bereitstellen und diese mit Azure Sentinel überwachen.
+title: Integrieren virtueller Azure Stack Hub-Computer in Microsoft Sentinel | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie die VM-Erweiterung zur Update- und Konfigurationsverwaltung für Azure Monitor auf virtuellen Azure Stack Hub-Computern bereitstellen und diese mit Microsoft Sentinel überwachen.
 services: sentinel
 documentationcenter: na
 author: yelevin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 02ba134062b51ba074ad5d19506eef13e5e3b89c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 570f297cfdd16aaac18f36d11d989c1dfa732e6f
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004262"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518905"
 ---
-# <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Verbinden von virtuellen Azure Stack Hub-Computern mit Azure Sentinel
+# <a name="connect-azure-stack-hub-virtual-machines-to-microsoft-sentinel"></a>Verbinden von virtuellen Azure Stack Hub-Computern mit Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Mit Azure Sentinel können Sie Ihre virtuellen Computer, die in Azure und Azure Stack Hub ausgeführt werden, zentral an einem Ort überwachen. Zum Durchführen des Onboardings Ihrer Azure Stack-Computer in Azure Sentinel müssen Sie zunächst auf den vorhandenen virtuellen Azure Stack Hub-Computern die VM-Erweiterung hinzufügen. 
+Mit Microsoft Sentinel können Sie Ihre virtuellen Computer, die in Azure und Azure Stack Hub ausgeführt werden, zentral an einem Ort überwachen. Zum Durchführen des Onboardings Ihrer Azure Stack-Computer in Microsoft Sentinel müssen Sie zunächst auf den vorhandenen virtuellen Azure Stack Hub-Computern die VM-Erweiterung hinzufügen. 
 
 Nachdem Sie die Azure Stack Hub-Computer verbunden haben, steht Ihnen ein Katalog von Dashboards zur Anzeige der Erkenntnisse, die Sie aus Ihren Daten gewinnen, zur Auswahl. Diese Dashboards können einfach an Ihre Anforderungen angepasst werden.
 
@@ -34,7 +34,7 @@ Fügen Sie die VM-Erweiterung zur **Update- und Konfigurationsverwaltung für Az
 
 1. Melden Sie sich auf einer neuen Browserregisterkarte beim [Azure Stack Hub-Portal](/azure-stack/user/azure-stack-use-portal#access-the-portal) an.
 
-1. Wechseln Sie zur Seite **Virtuelle Computer**, und wählen Sie den virtuellen Computer aus, der mit Azure Sentinel geschützt werden soll. Informationen zum Erstellen eines virtuellen Computers in Azure Stack Hub finden Sie unter [Erstellen eines virtuellen Windows Server-Computers mit dem Azure Stack Hub-Portal](/azure-stack/user/azure-stack-quick-windows-portal) oder [Schnellstart: Erstellen Sie einen virtuellen Linux-Server mit dem Azure Stack Hub-Portal](/azure-stack/user/azure-stack-quick-linux-portal).
+1. Wechseln Sie zur Seite **Virtuelle Computer**, und wählen Sie den virtuellen Computer aus, der mit Microsoft Sentinel geschützt werden soll. Informationen zum Erstellen eines virtuellen Computers in Azure Stack Hub finden Sie unter [Erstellen eines virtuellen Windows Server-Computers mit dem Azure Stack Hub-Portal](/azure-stack/user/azure-stack-quick-windows-portal) oder [Schnellstart: Erstellen Sie einen virtuellen Linux-Server mit dem Azure Stack Hub-Portal](/azure-stack/user/azure-stack-quick-linux-portal).
 
 1. Wählen Sie **Erweiterungen**. Die Liste der auf dieser VM installierten VM-Erweiterungen wird angezeigt.
 
@@ -47,17 +47,17 @@ Fügen Sie die VM-Erweiterung zur **Update- und Konfigurationsverwaltung für Az
    >[!NOTE]
    > Wenn die Erweiterung **Azure Monitor, Update- und Konfigurationsverwaltung** in Ihrem Marketplace nicht aufgeführt ist, können Sie sich an Ihren Azure Stack Hub-Betreiber wenden, damit sie zur Verfügung gestellt wird.
 
-1. Wählen Sie im Azure Sentinel-Menü die Option **Arbeitsbereichseinstellungen** und dann **Erweitert** aus, und kopieren Sie die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel (Primärschlüssel)** . 
+1. Wählen Sie im Microsoft Sentinel-Menü die Option **Arbeitsbereichseinstellungen** und dann **Erweitert** aus, und kopieren Sie die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel (Primärschlüssel)** . 
 
 1. Fügen Sie ihn im Azure Stack Hub-Fenster **Erweiterung installieren** in den angegebenen Feldern ein, und wählen Sie **OK**.
 
-1. Nach Abschluss der Installation wird die Erweiterung mit dem Status **Bereitstellung erfolgreich** angezeigt. Es kann bis zu einer Stunde dauern, bis der virtuelle Computer im Azure Sentinel-Portal angezeigt wird.
+1. Nach Abschluss der Installation wird die Erweiterung mit dem Status **Bereitstellung erfolgreich** angezeigt. Es kann bis zu einer Stunde dauern, bis der virtuelle Computer im Microsoft Sentinel-Portal angezeigt wird.
 
 Weitere Informationen zur Installation und Konfiguration des Agents für Windows finden Sie unter [Verbinden von Windows-Computern](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard).
 
 Informationen zum Beheben von Problemen mit dem Agent für Linux finden Sie unter [Behandeln von Problemen mit dem Log Analytics-Agent für Linux](../azure-monitor/agents/agent-linux-troubleshoot.md).
 
-Im Azure Sentinel-Portal in Azure wird unter **Virtuelle Computer** eine Übersicht aller virtuellen und physischen Computer mit dem jeweiligen Status angezeigt. 
+Im Microsoft Sentinel-Portal in Azure wird unter **Virtuelle Computer** eine Übersicht aller virtuellen und physischen Computer mit dem jeweiligen Status angezeigt. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -75,8 +75,8 @@ So entfernen Sie die Erweiterung:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Microsoft Sentinel finden Sie in den folgenden Artikeln:
 
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).
-- Streamen Sie Daten aus [CEF-Appliances (Common Event Format)](connect-common-event-format.md) an Azure Sentinel.
+- Beginnen Sie mit [Erkennung von Bedrohungen mithilfe von Microsoft Sentinel](detect-threats-built-in.md).
+- Streamen Sie Daten aus [CEF-Appliances (Common Event Format)](connect-common-event-format.md) an Microsoft Sentinel.

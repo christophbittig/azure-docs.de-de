@@ -1,22 +1,22 @@
 ---
-title: Verwenden von Azure Sentinel mit Azure Web Application Firewall
-description: In diesem Artikel wird gezeigt, wie Sie Azure Sentinel mit Azure Web Application Firewall (WAF) verwenden.
+title: Verwenden von Microsoft Sentinel mit der Azure Web Application Firewall
+description: In diesem Abschnitt zeigen wir Ihnen, wie Sie Microsoft Sentinel mit der Azure Web Application Firewall (WAF) verwenden.
 services: web-application-firewall
 author: TreMansdoerfer
 ms.service: web-application-firewall
 ms.date: 10/12/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 3d905dd1e6acab8f9f6d3885c882dd9c32133cb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c888b364bfac5687996bb88472b5725244ea1bcb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596439"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305463"
 ---
-# <a name="using-azure-sentinel-with-azure-web-application-firewall"></a>Verwenden von Azure Sentinel mit Azure Web Application Firewall
+# <a name="using-microsoft-sentinel-with-azure-web-application-firewall"></a>Verwenden von Microsoft Sentinel mit der Azure Web Application Firewall
 
-Azure Web Application Firewall (WAF) in Kombination mit Azure Sentinel kann Verwaltung für Sicherheitsinformationsereignisse für WAF-Ressourcen bereitstellen. Azure Sentinel bietet eine Sicherheitsanalyse mithilfe von Log Analytics, mit der Sie Ihre WAF-Daten problemlos aufschlüsseln und anzeigen können. Mithilfe von Azure Sentinel können Sie auf vorgefertigte Arbeitsmappen zugreifen und diese so ändern, dass sie den Anforderungen Ihrer Organisation am besten entsprechen. Die Arbeitsmappe kann Analysen für WAF in Azure Content Delivery Network (CDN), WAF auf Azure Front-Door und WAF auf Application Gateway über mehrere Abonnements und Arbeitsbereiche hinweg anzeigen.
+Die Azure Web Application Firewall (WAF) kann in Kombination mit Microsoft Sentinel Security Informtion Event Management (SIEM) für WAF-Ressourcen bereitstellen. Microsoft Sentinel bietet Sicherheitsanalysen mithilfe von Protokollanalysen, mit der Sie Ihre WAF-Daten problemlos aufschlüsseln und anzeigen können. Mithilfe von Microsoft Sentinel können Sie auf vorgefertigte Arbeitsmappen zugreifen und diese so ändern, dass sie den Anforderungen Ihrer Organisation am besten entsprechen. Die Arbeitsmappe kann Analysen für WAF in Azure Content Delivery Network (CDN), WAF auf Azure Front-Door und WAF auf Application Gateway über mehrere Abonnements und Arbeitsbereiche hinweg anzeigen.
 
 ## <a name="waf-log-analytics-categories"></a>WAF Log Analytics-Kategorien
 
@@ -66,7 +66,7 @@ Um Log Analytics für jede Ressource zu aktivieren, wechseln Sie zu Ihre jeweili
 
    :::image type="content" source="media//waf-sentinel/diagnostics-setting.png" alt-text="Diagnoseeinstellung":::
 
-4. Geben Sie auf der Azure-Homepage **Azure Sentinel** in die Suchleiste ein, und wählen Sie die Ressource **Azure Sentinel** aus. 
+4. Geben Sie auf der Azure-Homepage *Azure Sentinel* in die Suchleiste ein, und wählen Sie die Ressource **Microsoft Sentinel** aus. 
 2. Wählen Sie einen bereits aktiven Arbeitsbereich aus, oder erstellen Sie einen neuen Arbeitsbereich. 
 3. Wählen Sie im linken Bereich unter **Konfiguration** die Option **Datenconnectors** aus.
 4. Suchen Sie nach **Microsoft Web Application Firewall**, und wählen Sie **Microsoft Web Application Firewall (WAF)** aus. Wählen Sie unten rechts die Seite **Connector öffnen** aus.
@@ -81,5 +81,5 @@ Um Log Analytics für jede Ressource zu aktivieren, wechseln Sie zu Ihre jeweili
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Weitere Informationen zu Azure Sentinel](../sentinel/overview.md)
+- [Weitere Informationen zu Microsoft Sentinel](../sentinel/overview.md)
 - [Informationen zu Azure Monitor-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md)

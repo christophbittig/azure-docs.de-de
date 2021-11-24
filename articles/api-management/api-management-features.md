@@ -6,14 +6,14 @@ documentationcenter: ''
 author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 04/13/2021
+ms.date: 11/15/2021
 ms.author: danlep
-ms.openlocfilehash: 55e5d8de3761bb50295f849232363b5643329c2b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6159b5c5d677dd66dda12573feeb3aad9faa9764
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128596351"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556532"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Featurebasierter Vergleich der Azure API Management-Tarife
 
@@ -41,7 +41,8 @@ Jeder API Management-[Tarif](https://aka.ms/apimpricing) bietet einen bestimmten
 | Direkte Verwaltungs-API                                                                        | Nein          | Ja       | Ja   | Ja      | Ja     |
 | Azure Monitor-Protokolle und -Metriken                                                               | Nein          | Ja       | Ja   | Ja      | Ja     |
 | Statische IP                                                                                    | Nein          | Ja       | Ja   | Ja      | Ja     |
-| [WebSocket-APIs (Preview)](websocket-api.md)                                                                                    | Nein          | Ja       | Ja   | Ja      | Ja     |
+| [WebSocket-APIs](websocket-api.md)                                                                                    | Nein          | Ja       | Ja   | Ja      | Ja     |
+| [GraphQL-APIs (Vorschau)](graphql-api.md)                                                                               | Ja          | Ja       | Ja   | Ja      | Ja     |
 
 <sup>1</sup> Ermöglicht die Verwendung von Azure AD (und Azure AD B2C) als Identitätsanbieter für die Benutzeranmeldung im Entwicklerportal.<br/>
 <sup>2</sup> Einschließlich zugehöriger Funktionen, z.B. Benutzer, Gruppen, Probleme, Anwendungs- und E-Mail-Vorlagen und Benachrichtigungen.<br/>

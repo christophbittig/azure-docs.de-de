@@ -2,18 +2,105 @@
 title: Neues in der Azure Monitor-Dokumentation
 description: Neues in der Azure Monitor-Dokumentation
 ms.topic: conceptual
-ms.date: 09/07/2021
-ms.openlocfilehash: 3c7a433ed3c13e7853cab9a72bdd6b7a447bb3a0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/10/2021
+ms.openlocfilehash: 58e5ff2bbb95e14e0a99750004a6b4ca5f17821f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219887"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290350"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 
 In diesem Artikel werden wichtige Änderungen der Azure Monitor-Dokumentation aufgeführt.
 
+## <a name="october-2021"></a>Oktober 2021
+
+### <a name="general"></a>Allgemein
+
+**Neue Artikel**
+
+- [Bereitstellen von Azure Monitor – Warnungen und automatisierte Aktionen](best-practices-alerts.md)
+- [Best Practices für Azure Monitor: Analysieren und Visualisieren von Daten](best-practices-analysis.md)
+- [Best Practices für Azure Monitor – Konfigurieren der Datensammlung](best-practices-data-collection.md)
+- [Best Practices für Azure Monitor: Planen Ihrer Überwachungsstrategie und -konfiguration](best-practices-plan.md)
+- [Best Practices für Azure Monitor](best-practices.md)
+
+**Aktualisierte Artikel**
+
+- [Was wird von Azure Monitor überwacht?](monitor-reference.md):
+- [Visualisieren von Daten aus Azure Monitor](visualizations.md)
+### <a name="agents"></a>Agents
+
+**Aktualisierte Artikel**
+
+- [Behandeln von Problemen mit dem Log Analytics-Agent für Linux](agents/agent-linux-troubleshoot.md)
+- [Übersicht über Azure Monitor-Agents](agents/agents-overview.md)
+- [Installieren des Azure Monitor-Agents:](agents/azure-monitor-agent-install.md)
+
+### <a name="alerts"></a>Alerts
+
+**Aktualisierte Artikel**
+
+- [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](alerts/alerts-activity-log.md)
+- [Erstellen einer Protokollwarnung anhand einer Resource Manager-Vorlage](alerts/alerts-log-create-templates.md)
+- [Webhookaktionen für Protokollwarnungsregeln](alerts/alerts-log-webhook.md)
+- [Beispiele für Resource Manager-Vorlagen für Protokollwarnungsregeln in Azure Monitor](alerts/resource-manager-alerts-log.md)
+
+### <a name="application-insights"></a>Application Insights
+
+**Neue Artikel**
+
+- [Statsbeat in Azure Application Insights](app/statsbeat.md)
+- [Aktivieren von Azure Monitor OpenTelemetry Exporter für .NET-, Node.js- und Python-Anwendungen (Vorschau)](app/opentelemetry-enable.md)
+- [OpenTelemetry-Übersicht](app/opentelemetry-overview.md)
+
+**Aktualisierte Artikel**
+
+- [Bereitstellen des Azure Monitor Application Insights-Agents für lokale Server](app/status-monitor-v2-overview.md)
+- [Tipps zum Aktualisieren Ihrer JVM-Argumente – Azure Monitor Application Insights für Java](app/java-standalone-arguments.md)
+- [Einrichten von Azure Monitor für Ihre Python-Anwendung](app/opencensus-python.md)
+- [Java-Anwendungsüberwachung ohne Code mit Azure Monitor Application Insights](app/java-in-process-agent.md)
+- [Konfigurationsoptionen – Azure Monitor Application Insights für Java](app/java-standalone-config.md)
+
+### <a name="containers"></a>Container
+
+**Aktualisierte Artikel**
+
+- [Problembehandlung für Container Insights](containers/container-insights-troubleshoot.md)
+- [Empfohlene Metrikwarnungen von Container Insights (Vorschau)](containers/container-insights-metric-alerts.md)
+
+### <a name="essentials"></a>Essentials
+
+**Aktualisierte Artikel**
+
+- [Unterstützte Metriken von Azure Monitor](essentials/metrics-supported.md)
+- [Unterstützte Kategorien für Azure Monitor-Ressourcenprotokolle](essentials/resource-logs-categories.md)
+- [Überblick über Metriken in Azure Monitor](essentials/data-platform-metrics.md)
+- [Benutzerdefinierte Metriken in Azure Monitor (Vorschau)](essentials/metrics-custom-overview.md)
+- [Allgemeine und dienstspezifische Schemas für Azure-Ressourcenprotokolle](essentials/resource-logs-schema.md)
+- [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](essentials/diagnostic-settings.md)
+
+### <a name="logs"></a>Protokolle
+
+**Aktualisierte Artikel**
+
+- [Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)](logs/logs-data-export.md)
+- [Kundenseitig verwaltete Schlüssel in Azure Monitor](logs/customer-managed-keys.md)
+- [Dedizierte Azure Monitor-Protokollcluster](logs/logs-dedicated-clusters.md)
+- [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](logs/manage-cost-storage.md)
+
+### <a name="virtual-machines"></a>Virtual Machines
+
+**Aktualisierte Artikel**
+
+- [Aktivieren von VM Insights mithilfe von Azure Policy](vm/vminsights-enable-policy.md)
+
+## <a name="visualizations"></a>Visualisierungen
+
+**Aktualisierte Artikel**
+
+- [Überwachen Ihrer Azure-Dienste in Grafana](visualize/grafana-plugin.md)
 ## <a name="september-2021"></a>September 2021
 ### <a name="general"></a>Allgemein
 

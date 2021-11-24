@@ -7,12 +7,12 @@ ms.date: 10/19/2021
 ms.author: helohr
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 88de9f363851d47fbefcdcf69060111d8fd64bbf
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: a88c9ecef36786f67c930a22ecdd67d5890da92f
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131842376"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399065"
 ---
 # <a name="autoscale-preview-for-azure-virtual-desktop-host-pools"></a>Automatische Skalierung (Vorschau) für Azure Virtual Desktop-Hostpools
 
@@ -212,13 +212,13 @@ So erstellen oder ändern Sie einen Zeitplan:
         >[!NOTE]
         >Die hier ausgewählte Einstellung für den Lastenausgleich überschreibt die Einstellung, die Sie für ihre ursprünglichen Hostpooleinstellungen ausgewählt haben.
 
-    - Geben Sie unter **Minimaler Prozentsatz der Sitzungshost-VMs** die Menge der Sitzungshostressourcen ein, die Sie während der Anlauf- und Spitzenzeiten verwenden möchten. Wenn Sie beispielsweise **10 %** auswählen und Ihr Hostpool über 10 Sitzungshosts verfügt, bleibt bei der automatischen Skalierung während der Anlauf- und Spitzenzeiten jederzeit ein Sitzungshost für Benutzerverbindungen verfügbar.
+    - Geben Sie unter **Minimaler Prozentsatz der Hosts** den Prozentsatz der Sitzungshosts ein, auf dem Sie in dieser Phase immer bleiben möchten. Wenn der eingegebene Prozentsatz keine ganze Zahl ist, wird er auf die nächste ganze Zahl aufgerundet. Wenn beispielsweise in einem Hostpool von 7 Sitzungshosts der Mindestprozentsatz der Hosts **10 %** für die Startstunden beträgt, bleibt eine VM während der Startzeiten immer aktiviert, und die Funktion für die automatische Skalierung deaktiviert diesen virtuellen Computer nicht. 
     
-    - Geben Sie unter **Kapazitätsschwellenwert** den Prozentsatz der Hostpoolnutzung ein, der den Beginn der Anlauf- und Spitzenzeiten auslöst. Wenn Sie beispielsweise **60 %** für einen Hostpool auswählen, der 100 Sitzungen verarbeiten kann, aktiviert die automatische Skalierung nur dann zusätzliche Hosts, sobald der Hostpool mehr als 60 Sitzungen überschreitet.
+    - Geben Sie **unter Kapazitätsschwellenwert** den Prozentsatz der verfügbaren Hostpoolkapazität ein, der eine Skalierungsaktion auslöst. Wenn beispielsweise zwei Sitzungshosts im Hostpool mit einem maximalen Sitzungslimit von 20 aktiviert sind, beträgt die verfügbare Hostpoolkapazität 40. Wenn Sie den Kapazitätsschwellenwert auf **75 %** festlegen und die Sitzungshosts über mehr als 30 Benutzersitzungen verfügen, aktiviert die Funktion für die automatische Skalierung einen dritten Sitzungshost. Dadurch wird die verfügbare Hostpoolkapazität von 40 in 60 geändert.
 
 5. Füllen Sie auf der Registerkarte **Spitzenzeiten** die folgenden Felder aus:
 
-    - Geben Sie unter **Startzeit** eine Startzeit für den Zeitraum ein, zu dem Ihre Nutzungsrate während des Tages am höchsten ist. Stellen Sie sicher, dass sich der Zeitraum in derselben Zeitzone befindet, die Sie für Ihren Skalierungsplan angegeben haben. Diese Zeit ist auch die Endzeit für Ihre Anlaufzeitphase.
+    - Geben Sie unter **Startzeit** eine Startzeit für den Zeitraum ein, zu dem Ihre Nutzungsrate während des Tages am höchsten ist. Stellen Sie sicher, dass sich der Zeitraum in derselben Zeitzone befindet, die Sie für Ihren Skalierungsplan angegeben haben. Diese Zeit ist auch die Endzeit für die Anlaufphase.
 
     - Für **Lastenausgleich** können Sie entweder breiten- oder tiefenorientierten Lastenausgleich auswählen. Beim breitenorientierten Lastenausgleich werden neue Benutzersitzungen auf alle verfügbaren Sitzungen im Hostpool verteilt. Beim tiefenorientierten Lastenausgleich werden neue Benutzersitzungen auf verfügbare Sitzungshosts mit der höchsten Anzahl von Verbindungen verteilt, für die das maximale Sitzungslimit noch nicht erreicht wurde. Weitere Informationen zu Lastenausgleichstypen finden Sie unter [Konfigurieren der Lastenausgleichsmethode für Azure Virtual Desktop](configure-host-pool-load-balancing.md).
 
@@ -232,6 +232,9 @@ So erstellen oder ändern Sie einen Zeitplan:
       - Mindestprozentsatz der Hosts (%)
       - Kapazitätsschwellenwert (%)
       - Abmeldung der Benutzer erzwingen
+
+    >[!IMPORTANT]
+    >Wenn Sie die Autoscale-Funktion aktiviert haben, um die Abmeldung der Benutzer während des Rampdowns zu erzwingen, wählt die Funktion den Sitzungshost mit der geringsten Anzahl von Benutzersitzungen zum Herunterfahren aus. Die Autoscale-Funktion versetzt den Sitzungshost in den Auslaufmodus, sendet allen aktiven Benutzersitzungen eine Benachrichtigung, dass sie abgemeldet werden, und meldet dann alle Benutzer nach Ablauf der angegebenen Wartezeit ab. Nachdem die Autoscale-Funktion alle Benutzersitzungen abgemeldet hat, wird die Zuordnung der VM aufgehoben. Wenn Sie die erzwungene Abmeldung während des Rampdowns nicht aktiviert haben, werden Sitzungshosts ohne aktive oder getrennte Sitzungen freigegeben.
 
     - Ebenso funktioniert **Nebenzeiten** in gleicher Weise wie **Spitzenzeiten**:
 

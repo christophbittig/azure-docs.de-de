@@ -7,12 +7,12 @@ ms.author: msangapu
 ms.service: app-service
 ms.custom: subject-monitoring
 ms.date: 04/16/2021
-ms.openlocfilehash: bf48bd5fd5155b7409d3868635ee3529cfd97b92
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 914587d60b5932d2f9af6eef400a1a5067974652
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131471058"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290550"
 ---
 # <a name="monitoring-app-service-data-reference"></a>Datenreferenz zur App Service-Überwachung
 
@@ -54,7 +54,7 @@ In diesem Abschnitt werden die Ressourcenprotokolltypen aufgeführt, die für Ap
 | AppServiceAppLogs | ASP.NET | ASP.NET | Java SE und Tomcat Images <sup>1</sup> | Java SE und Tomcat Blessed Images <sup>1</sup> | Anwendungsprotokolle |
 | AppServiceIPSecAuditLogs  | Ja | Ja | Ja | Ja | Anforderungen von IP-Regeln |
 | AppServicePlatformLogs  | Wird noch angekündigt | Ja | Ja | Ja | Containervorgangsprotokolle |
-| AppServiceAntivirusScanAuditLogs | Ja | Ja | Ja | Ja | [Protokolle für Antivirenscans](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) mithilfe von Microsoft Defender; **nur verfügbar für Premium-Tarif** | 
+| AppServiceAntivirusScanAuditLogs | Ja | Ja | Ja | Ja | [Protokolle von Antiviren-Scans](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) mit Microsoft Defender für Cloud; **nur verfügbar für Premium-Abonnements** | 
 
 <sup>1</sup> Fügen Sie für Java SE-Apps den App-Einstellungen „$WEBSITE_AZMON_PREVIEW_ENABLED“ hinzu, und legen Sie sie auf „1“ oder „true“ fest.
 

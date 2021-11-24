@@ -1,22 +1,22 @@
 ---
-title: Beispiel für Azure Sentinel Arbeitsbereichsentwürfe | Microsoft-Dokumentation
-description: Hier finden Sie mehrere Beispiele für Azure Sentinel-Architekturentwürfe mit mehreren Mandanten, Clouds oder Regionen.
+title: Beispiele für Microsoft Sentinel-Arbeitsbereichsentwürfe | Microsoft-Dokumentation
+description: Hier finden Sie Beispiele für Microsoft Sentinel-Architekturentwürfe mit mehreren Mandanten, Clouds oder Regionen.
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
-ms.date: 07/18/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9cd48e8537f46ce9580b1b2e573e12bb5e12e455
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cb2332a4c9854aafe1ef8193da9ca76e9aaaed95
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131013990"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520064"
 ---
-# <a name="azure-sentinel-sample-workspace-designs"></a>Beispiele für Azure Sentinel-Arbeitsbereichsentwürfe
+# <a name="microsoft-sentinel-sample-workspace-designs"></a>Microsoft Sentinel-Beispielarbeitsbereichsentwürfe
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -26,7 +26,7 @@ In diesem Artikel werden empfohlene Arbeitsbereichsentwürfe für Organisationen
 - Einzelner Mandant mit mehreren Clouds
 - Mehrere Mandanten mit mehreren Regionen und zentralisierter Sicherheit
 
-Bei den Beispielen in diesem Artikel wird die [Entscheidungsstruktur für den Entwurf eines Azure Sentinel-Arbeitsbereichs](design-your-workspace-architecture.md) angewendet, um den besten Arbeitsbereichsentwurf für Organisationen zu bestimmen: Weitere Informationen finden Sie unter [Bewährte Methoden für die Azure Sentinel-Arbeitsbereichsarchitektur](best-practices-workspace-architecture.md).
+In den Beispielen in diesem Artikel wird die [Entscheidungsstruktur für](design-your-workspace-architecture.md) den Entwurf des Microsoft Sentinel-Arbeitsbereichs verwendet, um den besten Arbeitsbereichsentwurf für jede Organisation zu bestimmen. Weitere Informationen finden Sie unter Bewährte Methoden für die [Microsoft Sentinel-Arbeitsbereichsarchitektur.](best-practices-workspace-architecture.md)
 
 ## <a name="sample-1-multiple-tenants-and-regions"></a>Beispiel 1: Mehrere Mandanten und Regionen
 
@@ -57,7 +57,7 @@ Contoso muss Ereignisse aus den folgenden Datenquellen sammeln:
 -   Mehrere Azure-PaaS-Ressourcen, z. B. Azure Firewall, AKS, Key Vault, Azure Storage und Azure SQL
 -   Cisco Umbrella
 
-Die Azure-VMs befinden sich größtenteils in der Region „EU, Norden“, nur wenige sind in den Regionen „USA, Osten“ und „Japan, Westen“. Contoso verwendet Azure Defender für die Server auf allen Azure-VMs.
+Die Azure-VMs befinden sich größtenteils in der Region „EU, Norden“, nur wenige sind in den Regionen „USA, Osten“ und „Japan, Westen“. Contoso verwendet Microsoft Defender für Server auf allen Azure-VMs.
 
 Contoso geht davon aus, dass etwa 300 GB pro Tag aus allen Datenquellen erfasst werden.
 
@@ -65,17 +65,17 @@ Contoso geht davon aus, dass etwa 300 GB pro Tag aus allen Datenquellen erfasst 
 
 Die Azure-Umgebung von Contoso verfügt bereits über einen einzigen Log Analytics-Arbeitsbereich, der vom Operations-Team zum Überwachen der Infrastruktur verwendet wird. Dieser Arbeitsbereich befindet sich im Contoso-AAD-Mandanten in der Region „EU, Norden“ und wird zum Sammeln von Protokollen von Azure-VMs in allen Regionen verwendet. Derzeit werden ca. 50 GB pro Tag erfasst.
 
-Das Operations-Team von Contoso benötigt Zugriff auf alle Protokolle, die sich derzeit im Arbeitsbereich befinden. Dies umfasst auch mehrere Datentypen, die nicht vom SOC benötigt werden, z. B. **Perf**, **InsightsMetrics**, **ContainerLog** und mehr. Das Operations-Team darf *keinen* Zugriff auf die neuen Protokolle haben, die in Azure Sentinel gesammelt werden.
+Das Operations-Team von Contoso benötigt Zugriff auf alle Protokolle, die sich derzeit im Arbeitsbereich befinden. Dies umfasst auch mehrere Datentypen, die nicht vom SOC benötigt werden, z. B. **Perf**, **InsightsMetrics**, **ContainerLog** und mehr. Das Betriebsteam darf *keinen Zugriff* auf die neuen Protokolle haben, die in Microsoft Sentinel gesammelt werden.
 
 ### <a name="contosos-solution"></a>Die Lösung von Contoso
 
-In den folgenden Schritten wird die [Entscheidungsstruktur für den Entwurf eines Azure Sentinel-Arbeitsbereichs](design-your-workspace-architecture.md) angewendet, um den besten Arbeitsbereichsentwurf für Contoso zu bestimmen:
+Mit den folgenden Schritten wird die [Entscheidungsstruktur für](design-your-workspace-architecture.md) den Entwurf des Microsoft Sentinel-Arbeitsbereichs angewendet, um den besten Arbeitsbereichsentwurf für Contoso zu ermitteln:
 
-1. Contoso verfügt bereits über einen Arbeitsbereich, d. h. dass wir zunächst Überlegungen über das Aktivieren von Azure Sentinel in demselben Arbeitsbereich anstellen können.
+1. Contoso verfügt bereits über einen Arbeitsbereich, sodass wir die Aktivierung von Microsoft Sentinel in demselben Arbeitsbereich prüfen können.
 
     Die Erfassung von Nicht-SOC-Daten liegt bei weniger als 100 GB/Tag, daher können wir mit [Schritt 2](design-your-workspace-architecture.md#step-2-keeping-data-in-different-azure-geographies) fortfahren und sicherstellen, dass die entsprechende Option in [Schritt 5](design-your-workspace-architecture.md#step-5-collecting-any-non-soc-data) ausgewählt wird.
 
-1.  Contoso muss bestimmte gesetzliche Anforderungen befolgen, d. h. dass mindestens ein Azure Sentinel-Arbeitsbereich in Europa benötigt wird.
+1.  Contoso hat gesetzliche Anforderungen, daher benötigen wir mindestens einen Microsoft Sentinel-Arbeitsbereich in Europa.
 
 1.  Contoso verfügt über zwei verschiedene Azure AD-Mandanten und sammelt Daten aus Datenquellen auf Mandantenebene, z. B. Office 365 sowie Azure AD-Anmelde- und Überwachungsprotokolle. Daher benötigen wir mindestens einen Arbeitsbereich pro Mandant.
 
@@ -85,11 +85,11 @@ In den folgenden Schritten wird die [Entscheidungsstruktur für den Entwurf eine
 
 1.  Die meisten VMs von Contoso befinden sich in der Region „Europa, Norden“. Dort verfügt Contoso bereits über einen Arbeitsbereich. Daher sind die Bandbreitenkosten in diesem Fall kein Problem.
 
-1.  Contoso verfügt über ein einziges SOC-Team, das Azure Sentinel verwenden wird. Somit ist keine zusätzliche Trennung erforderlich.
+1.  Contoso verfügt über ein einzelnes SOC-Team, das Microsoft Sentinel verwenden wird, sodass keine zusätzliche Trennung erforderlich ist.
 
 1.  Alle Mitglieder des SOC-Teams von Contoso haben Zugriff auf alle Daten, sodass keine zusätzliche Trennung erforderlich ist.
 
-Der entsprechende Azure Sentinel-Arbeitsbereichsentwurf für Contoso ist in der folgenden Abbildung dargestellt:
+Das resultierende Design des Microsoft Sentinel-Arbeitsbereichs für Contoso ist in der folgenden Abbildung dargestellt:
 
 :::image type="content" source="media/best-practices/contoso-solution.png" alt-text="Diagramm der Contoso-Lösung mit einem separaten Arbeitsbereich für das Operations-Team" border="false":::
 
@@ -97,14 +97,14 @@ Die vorgeschlagene Lösung umfasst Folgendes:
 
 - Einen separaten Log Analytics-Arbeitsbereich für das Operations-Team von Contoso. Dieser Arbeitsbereich enthält ausschließlich Daten, die von dem SOC-Team von Contoso nicht benötigt werden, z. B. die **Perf**-, **InsightsMetrics**- oder **ContainerLog**-Tabellen.
 
-- Zwei Azure Sentinel-Arbeitsbereiche (einer in jedem Azure AD-Mandanten), um Daten von Office 365, Azure-Aktivität, Azure AD und allen Azure PaaS-Diensten zu erfassen.
+- Zwei Microsoft Sentinel-Arbeitsbereiche, jeweils Azure AD Mandanten, zum Erfassung von Daten aus Office 365, Azure-Aktivität, Azure AD und allen Azure PaaS-Diensten.
 
-- Alle anderen Daten, die aus lokalen Datenquellen stammen, können an einen der beiden Azure Sentinel-Arbeitsbereiche weitergeleitet werden.
+- Alle anderen Daten, die aus lokalen Datenquellen stammen, können an einen der beiden Microsoft Sentinel-Arbeitsbereiche geroutet werden.
 
 
 ## <a name="sample-2-single-tenant-with-multiple-clouds"></a>Beispiel 2: Einzelner Mandant mit mehreren Clouds
 
-Fabrikam ist eine Organisation mit Hauptsitz in New York City und mehreren Niederlassungen in den USA. Fabrikam steht noch am Anfang der Cloudeinführung. Die Organisation muss im nächsten Schritt ihre erste Azure-Zielzone bereitstellen und die ersten Workloads migrieren. Fabrikam verfügt bereits über einige Workloads in AWS, die mit Azure Sentinel überwacht werden sollen.
+Fabrikam ist eine Organisation mit Hauptsitz in New York City und mehreren Niederlassungen in den USA. Fabrikam steht noch am Anfang der Cloudeinführung. Die Organisation muss im nächsten Schritt ihre erste Azure-Zielzone bereitstellen und die ersten Workloads migrieren. Fabrikam verfügt bereits über einige Workloads in AWS, die mit Microsoft Sentinel überwacht werden sollen.
 
 ### <a name="fabrikam-tenancy-requirements"></a>Mandantenanforderungen von Fabrikam
 
@@ -141,11 +141,11 @@ Das SOC-Team von Fabrikam muss auf Folgendes zugreifen:
 -   Sicherheitsereignisse, sowohl aus lokalen als auch aus Azure-VM-Quellen
 -   AWS CloudTrail-Protokolle
 -   AKS-Überwachungsprotokolle
--   Das komplette Azure Sentinel-Portal
+-   Das vollständige Microsoft Sentinel-Portal
 
 ### <a name="fabrikams-solution"></a>Die Lösung von Fabrikam
 
-In den folgenden Schritten wird die [Entscheidungsstruktur für den Entwurf eines Azure Sentinel-Arbeitsbereichs](design-your-workspace-architecture.md) angewendet, um den besten Arbeitsbereichsentwurf für Fabrikam zu bestimmen:
+Mit den folgenden Schritten wird die [Entscheidungsstruktur für](design-your-workspace-architecture.md) den Entwurf des Microsoft Sentinel-Arbeitsbereichs angewendet, um den besten Arbeitsbereichsentwurf für Fabrikam zu ermitteln:
 
 1.  Fabrikam besitzt noch keinen Arbeitsbereich, also fahren wir mit [Schritt 2](design-your-workspace-architecture.md#step-2-keeping-data-in-different-azure-geographies) fort.
 
@@ -157,11 +157,11 @@ In den folgenden Schritten wird die [Entscheidungsstruktur für den Entwurf eine
 
 1.  Fabrikam benötigt separate Arbeitsbereiche für das SOC- und das Operations-Team:
 
-    Das Operations-Team von Fabrikam muss Leistungsdaten sowohl von VMs als auch von AKS sammeln. Da AKS auf Diagnoseeinstellungen basiert, kann das Team bestimmte Protokolle auswählen, die an bestimmte Arbeitsbereiche gesendet werden sollen. Fabrikam kann AKS-Überwachungsprotokolle an den Azure Sentinel-Arbeitsbereich und sämtliche AKS-Protokolle an einen separaten Arbeitsbereich senden, in dem Azure Sentinel nicht aktiviert ist. In dem Arbeitsbereich, in dem Azure Sentinel nicht aktiviert ist, wird Fabrikam die Container Insights-Lösung aktivieren.
+    Das Operations-Team von Fabrikam muss Leistungsdaten sowohl von VMs als auch von AKS sammeln. Da AKS auf Diagnoseeinstellungen basiert, kann das Team bestimmte Protokolle auswählen, die an bestimmte Arbeitsbereiche gesendet werden sollen. Fabrikam kann AKS-Überwachungsprotokolle an den Microsoft Sentinel-Arbeitsbereich und alle AKS-Protokolle an einen separaten Arbeitsbereich senden, in dem Microsoft Sentinel nicht aktiviert ist. In dem Arbeitsbereich, in dem Microsoft Sentinel nicht aktiviert ist, aktiviert Fabrikam die Container Insights Lösung.
 
-    Für Windows-VMs kann Fabrikam den [Azure Monitoring Agent (AMA)](connect-windows-security-events.md#connector-options) nutzen, um Protokolle zu teilen, Sicherheitsereignisse an den Azure Sentinel-Arbeitsbereich zu senden sowie Leistungs- und Windows-Ereignisse an den Arbeitsbereich zu senden, in dem Azure Sentinel nicht aktiviert ist.
+    Für Windows-VMs kann Fabrikam den [Azure Monitoring Agent (AMA)](connect-windows-security-events.md#connector-options) verwenden, um die Protokolle zu teilen, Sicherheitsereignisse an den Microsoft Sentinel-Arbeitsbereich zu senden und Leistungs- und Windows-Ereignisse an den Arbeitsbereich ohne Microsoft Sentinel zu senden.
 
-    Fabrikam hat sich dazu entschieden, überlappende Daten wie Sicherheitsereignisse und Azure-Aktivitätsereignisse in die Kategorie der SOC-Daten einzuordnen und diese Daten an den Azure Sentinel-Arbeitsbereich zu senden.
+    Fabrikam wählt aus, die überlappenden Daten wie Sicherheitsereignisse und Azure-Aktivitätsereignisse nur als SOC-Daten zu betrachten, und sendet diese Daten mit Microsoft Sentinel an den Arbeitsbereich.
 
 1.  Die Bandbreitenkosten stellen kein Problem für Fabrikam dar, deshalb fahren wir mit [Schritt 7](design-your-workspace-architecture.md#step-7-segregating-data-or-defining-boundaries-by-ownership) fort.
 
@@ -171,19 +171,19 @@ In den folgenden Schritten wird die [Entscheidungsstruktur für den Entwurf eine
 
     Weder bei Sicherheitsereignissen noch bei Azure-Aktivitätsereignissen handelt es sich um benutzerdefinierte Protokolle, sodass Fabrikam RBAC auf Tabellenebene verwenden kann, um dem Operations-Team Zugriff auf diese beiden Tabellen zu gewähren.
 
-Das daraus resultierende Azure Sentinel-Arbeitsbereichsentwurf für Fabrikam ist in der folgenden Abbildung dargestellt. Sie enthält der Einfachheit halber nur die wichtigsten Protokollquellen:
+Das resultierende Design des Microsoft Sentinel-Arbeitsbereichs für Fabrikam ist in der folgenden Abbildung dargestellt, die der Einfachheit halber nur wichtige Protokollquellen enthält:
 
 :::image type="content" source="media/best-practices/fabrikam-solution.png" alt-text="Diagramm der Fabrikam-Lösung mit einem separaten Arbeitsbereich für das Operations-Team" border="false" :::
 
 Die vorgeschlagene Lösung umfasst Folgendes:
 
-- Zwei separate Arbeitsbereiche in der Region „USA“: einer mit Azure Sentinel für das SOC-Team und ein weiterer ohne Azure Sentinel für das Operations-Team.
+- Zwei separate Arbeitsbereiche in der Region "USA": einer für das SOC-Team mit aktivierter Microsoft Sentinel und ein weiterer für das Betriebsteam ohne Microsoft Sentinel.
 
 - Den [Azure Monitoring Agent (AMA)](connect-windows-security-events.md#connector-options), der verwendet wird, um zu bestimmen, welche Protokolle von Azure und den lokalen VMs an den jeweiligen Arbeitsbereich gesendet werden.
 
 - Diagnoseeinstellungen, mit denen bestimmt wird, welche Protokolle von Azure-Ressourcen wie AKS an die einzelnen Arbeitsbereiche gesendet werden.
 
-- Überlappende Daten, die an den Azure Sentinel-Arbeitsbereich gesendet werden. Dort wird dem Operations-Team bei Bedarf Zugriff über RBAC auf Tabellenebene gewährt.
+- Überlappende Daten, die an den Microsoft Sentinel-Arbeitsbereich gesendet werden, mit RBAC auf Tabellenebene, um dem Betriebsteam bei Bedarf Zugriff zu gewähren.
 
 ## <a name="sample-3-multiple-tenants-and-regions-and-centralized-security"></a>Beispiel 3: Mehrere Mandanten und Regionen und zentralisierte Sicherheit
 
@@ -207,7 +207,7 @@ Adventure Works muss die folgenden Datenquellen für jede untergeordnete Entitä
 -   Office 365-Protokolle
 -   Microsoft 365 Defender for Endpoint-Rohprotokolle
 -   Azure-Aktivität
--   Azure Defender
+-   Microsoft Defender für Cloud
 -   Azure PaaS-Ressourcen, z. B. aus Azure Firewall, Azure Storage, Azure SQL und Azure WAF
 -   Sicherheits- und Windows-Ereignisse von Azure-VMs
 -   CEF-Protokolle von lokalen Netzwerkgeräten
@@ -220,19 +220,19 @@ Adventure Works verfügt über ein zentralisiertes SOC-Team, das die Sicherheits
 
 Adventure Works verfügt darüber hinaus über drei unabhängige SOC-Teams, eines für jeden Kontinent. Die SOC-Teams der Kontinente dürfen nur auf die Daten zugreifen, die in der jeweiligen Region generiert wurden, ohne dabei die Daten von anderen Kontinenten sehen zu können. Das SOC-Team aus Asien darf beispielsweise nur auf Daten von Azure-Ressourcen, die in Asien bereitgestellt wurden, auf AAD-Anmeldungen vom Asien-Mandanten und auf Defender for Endpoint-Protokolle des Asien-Mandanten zugreifen.
 
-Jedes SOC-Team muss auf die gesamte Azure Sentinel-Benutzeroberfläche zugreifen können.
+Das SOC-Team jedes Kontinents muss auf das gesamte Microsoft Sentinel-Portal zugreifen.
 
-Das Operations-Team von Adventure Works arbeitet unabhängig und verfügt über eigene Arbeitsbereiche ohne Azure Sentinel.
+Das Operations-Team von Adventure Works arbeitet unabhängig und verfügt über eigene Arbeitsbereiche ohne Microsoft Sentinel.
 
 ### <a name="adventure-works-solution"></a>Die Lösung von Adventure Works
 
-In den folgenden Schritten wird die [Entscheidungsstruktur für den Entwurf eines Azure Sentinel-Arbeitsbereichs](design-your-workspace-architecture.md) angewendet, um den besten Arbeitsbereichsentwurf für Adventure Works zu bestimmen:
+Mit den folgenden Schritten wird die [Entscheidungsstruktur für](design-your-workspace-architecture.md) den Entwurf des Microsoft Sentinel-Arbeitsbereichs angewendet, um den besten Arbeitsbereichsentwurf für Adventure Works zu ermitteln:
 
 1.  Das Operations-Team von Adventure Works verfügt bereits über eigene Arbeitsbereiche, fahren wir also mit [Schritt 2](design-your-workspace-architecture.md#step-2-keeping-data-in-different-azure-geographies) fort.
 
 1.  Adventure Works muss keine bestimmten gesetzlichen Anforderungen erfüllen. Fahren wir daher mit [Schritt 3](design-your-workspace-architecture.md#step-3-do-you-have-multiple-azure-tenants) fort.
 
-1.  Adventure Works verfügt über drei Azure AD-Mandanten und muss Datenquellen auf Mandantenebene erfassen, z. B. Office 365-Protokolle. Daher sollte Adventure Works mindestens einen Azure Sentinel-Arbeitsbereich für jeden Mandanten erstellen.
+1.  Adventure Works verfügt über drei Azure AD-Mandanten und muss Datenquellen auf Mandantenebene erfassen, z. B. Office 365-Protokolle. Daher sollte Adventure Works mindestens einen Microsoft Sentinel-Arbeitsbereich für jeden Mandanten erstellen.
 
 1.  Adventure Works muss die Gebühren nicht aufteilen. Fahren wir daher mit [Schritt 5](design-your-workspace-architecture.md#step-5-collecting-any-non-soc-data) fort.
 
@@ -240,21 +240,21 @@ In den folgenden Schritten wird die [Entscheidungsstruktur für den Entwurf eine
 
 1.  Die Bandbreitenkosten stellen kein Problem für Adventure Works dar, deshalb fahren wir mit [Schritt 7](design-your-workspace-architecture.md#step-7-segregating-data-or-defining-boundaries-by-ownership) fort.
 
-1.  Adventure Works muss Daten nach Besitzer trennen, da das SOC-Team eines bestimmten Kontinents nur auf die Daten zugreifen darf, die für diesen Kontinent relevant sind. Jedes SOC-Team benötigt jedoch auch Zugriff auf das gesamte Azure Sentinel-Portal.
+1.  Adventure Works muss Daten nach Besitzer trennen, da das SOC-Team eines bestimmten Kontinents nur auf die Daten zugreifen darf, die für diesen Kontinent relevant sind. Das SOC-Team jedes Kontinents benötigt jedoch auch Zugriff auf das vollständige Microsoft Sentinel-Portal.
 
 1.  Adventure Works muss den Datenzugriff nicht nach Tabellen steuern.
 
-Das daraus resultierende Azure Sentinel-Arbeitsbereichsentwurf für Adventure Works ist in der folgenden Abbildung dargestellt. Sie enthält der Einfachheit halber nur die wichtigsten Protokollquellen:
+Das resultierende Design des Microsoft Sentinel-Arbeitsbereichs für Adventure Works ist in der folgenden Abbildung dargestellt, die der Einfachheit halber nur wichtige Protokollquellen enthält:
 
 :::image type="content" source="media/best-practices/adventure-works-solution.png" alt-text="Diagramm der Adventure Works-Lösung mit separaten Arbeitsbereichen für jeden Azure AD-Mandanten" border="false":::
 
 Die vorgeschlagene Lösung umfasst Folgendes:
 
-- Einen separaten Azure Sentinel-Arbeitsbereich für jeden Azure AD-Mandanten. Jeder Arbeitsbereich sammelt Daten im Zusammenhang mit seinem Mandanten für alle Datenquellen.
+- Ein separater Microsoft Sentinel-Arbeitsbereich für jeden Azure AD Mandanten. Jeder Arbeitsbereich sammelt Daten im Zusammenhang mit seinem Mandanten für alle Datenquellen.
 
 - Die SOC-Teams der Kontinente haben ausschließlich Zugriff auf den Arbeitsbereich ihrer eigenen jeweiligen Mandanten. So wird sichergestellt, dass jedes SOC-Team nur auf Protokolle zugreifen kann, die innerhalb der Mandantengrenze generiert wurden.
 
-- Das zentrale SOC-Team kann mithilfe von Azure Lighthouse weiterhin über einen separaten Azure AD-Mandanten auf jede der verschiedenen Azure Sentinel-Umgebungen zugreifen. Auch wenn kein zusätzlicher Mandant verfügbar ist, kann das zentrale SOC-Team über Azure Lighthouse auf die Remote-Arbeitsbereiche zugreifen.
+- Das zentrale SOC-Team kann mithilfe von Azure Lighthouse weiterhin über einen separaten Azure AD-Mandanten auf jede der verschiedenen Microsoft Sentinel-Umgebungen zugreifen. Auch wenn kein zusätzlicher Mandant verfügbar ist, kann das zentrale SOC-Team über Azure Lighthouse auf die Remote-Arbeitsbereiche zugreifen.
 
 - Darüber hinaus kann das zentrale SOC-Team auch einen zusätzlichen Arbeitsbereich erstellen, in dem Artefakte gespeichert werden können, die vor den SOC-Teams der Kontinente verborgen bleiben sollen, oder in dem Daten aufgenommen werden, die für die SOC-Teams der Kontinente nicht relevant sind.
 
@@ -263,7 +263,7 @@ Die vorgeschlagene Lösung umfasst Folgendes:
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
->[Schnellstart: Ausführen des Onboardings für Azure Sentinel](quickstart-onboard.md)
+>[On-board Microsoft Sentinel](quickstart-onboard.md)
 
 > [!div class="nextstepaction"]
 >[Einblick in Warnungen](get-visibility.md)

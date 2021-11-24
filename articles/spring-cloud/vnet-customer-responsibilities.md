@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: efcff17cd867deb885e8591db48dd23424a445a2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3c21d89329db89b73a0e37046062eae876084e2b
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452431"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399766"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNET
 
 In diesem Artikel finden Sie Spezifikationen für die Verwendung von Azure Spring Cloud in einem virtuellen Netzwerk.
 
-Wenn Azure Spring Cloud in Ihrem virtuellen Netzwerk bereitgestellt wird, verfügt der Dienst über ausgehende Abhängigkeiten von Diensten außerhalb des virtuellen Netzwerks. Zu Verwaltungs- und Betriebszwecken muss Azure Spring Cloud auf bestimmte Ports und vollqualifizierte Domänennamen (FQDNs) zugreifen. Diese Endpunkte werden zum Kommunizieren mit der Azure Spring Cloud-Verwaltungsebene und zum Herunterladen und Installieren der Kernkomponenten des Kubernetes-Clusters sowie der Sicherheitsupdates benötigt.
+Wenn Azure Spring Cloud in Ihrem virtuellen Netzwerk bereitgestellt wird, verfügt der Dienst über ausgehende Abhängigkeiten von Diensten außerhalb des virtuellen Netzwerks. Zu Verwaltungs- und Betriebszwecken muss Azure Spring Cloud auf bestimmte Ports und vollqualifizierte Domänennamen (FQDNs) zugreifen. Azure Spring Cloud benötigt diese Endpunkte für die Kommunikation mit der Verwaltungsebene und zum Herunterladen und Installieren von Kernkomponenten des Kubernetes-Clusters und Sicherheitsupdates.
 
 Standardmäßig verfügt Azure Spring Cloud über uneingeschränkten Internetzugriff in ausgehender Richtung. Diese Ebene des Netzwerkzugriffs ermöglicht es, dass ausgeführte Anwendungen je nach Bedarf auf externe Ressourcen zugreifen können. Wenn Sie den ausgehenden Datenverkehr einschränken möchten, muss eine begrenzte Anzahl von Ports und Adressen für Wartungsaufgaben zugänglich sein. Die einfachste Lösung zum Schützen ausgehender Adressen besteht in der Verwendung eines Firewallgeräts, das den ausgehenden Datenverkehr auf der Grundlage von Domänennamen kontrolliert. Von Azure Firewall kann beispielsweise ausgehender HTTP- und HTTPS-Datenverkehr auf der Grundlage des FQDN des Ziels eingeschränkt werden. Darüber hinaus können Sie Ihre bevorzugten Firewall- und Sicherheitsregeln konfigurieren, um diese erforderlichen Ports und Adressen zuzulassen.
 
@@ -82,4 +82,4 @@ Von Azure Firewall wird das FQDN-Tag **AzureKubernetesService** bereitgestellt, 
 ## <a name="see-also"></a>Siehe auch
 
 * [Zugreifen auf eine Anwendung im privaten Netzwerk](access-app-virtual-network.md)
-* [Verfügbarmachen von Apps mit Application Gateway und Azure Firewall](expose-apps-gateway-azure-firewall.md)
+* [Anwendungen mit Hilfe von Application Gateway für das Internet freigeben](expose-apps-gateway.md)

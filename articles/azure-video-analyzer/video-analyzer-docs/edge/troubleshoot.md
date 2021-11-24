@@ -2,18 +2,21 @@
 title: Fehlerbehebung bei Azure Video Analyzer - Azure
 description: Dieser Artikel beschreibt die Schritte zur Fehlerbehebung für das Azure Video Analyzer Edge-Modul.
 ms.topic: troubleshooting
-ms.date: 10/22/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 89c14c4a8199f811359d76550b5e281c857a1469
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 38451ae2fe8d42e335a887d093bbab9322d13d81
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095624"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398153"
 ---
 # <a name="troubleshoot-azure-video-analyzer"></a>Fehlerbehebung beim Azure Video Analyzer
 
-[!INCLUDE [header](includes/edge-env.md)]
+![Edgesymbol](media/env-icon/edge.png)  
+Alternativ können Sie die [Problembehandlung im Dienst lesen.](../cloud/troubleshoot.md)
+
+---
 
 In diesem Artikel werden Schritte zur Fehlerbehebung für das Azure Video Analyzer Edge-Modul beschrieben.
 

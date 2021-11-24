@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova
 ms.date: 04/29/2021
-ms.openlocfilehash: 142e35a0335f01e8b9b2315d3c309f5841c244c9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 04a275c0e4bc9c3eb52fee8b02ea2606e52d4958
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216223"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554064"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Konnektivitätsarchitektur für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,6 +30,9 @@ SQL Managed Instance wird im virtuellen Azure-Netzwerk und dem für verwaltete I
 - Die Möglichkeit, eine Verbindung von einem lokalen Netzwerk mit SQL Managed Instance herzustellen.
 - Die Möglichkeit, eine Verbindung von SQL Managed Instance mit einem Verbindungsserver oder einem anderen lokalen Datenspeicher herzustellen.
 - Die Möglichkeit, eine Verbindung von SQL Managed Instance mit Azure-Ressourcen herzustellen.
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="communication-overview"></a>Kommunikationsübersicht
 

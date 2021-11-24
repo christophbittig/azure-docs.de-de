@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2021
-ms.openlocfilehash: 464e848814da046600b05a1feea632a1ceaa141a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 28bf92ffeb97c65aadae3f61cf471efba943b5b7
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129713828"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491960"
 ---
 # <a name="monitoring-azure-kubernetes-service-aks-with-azure-monitor"></a>Überwachen von Azure Kubernetes Service (AKS) mit Azure Monitor
 In diesem Szenario erfahren Sie, wie Sie mithilfe von Azure Monitor die Integrität und Leistung von Azure Kubernetes Service (AKS) überwachen. Es umfasst die Sammlung wichtiger Telemetriedaten für die Überwachung, die Analyse und Visualisierung der gesammelten Daten, um Trends zu identifizieren, sowie die Konfiguration von Warnungen, um proaktiv über kritische Probleme informiert zu werden.
@@ -25,9 +25,9 @@ Dieses Szenario richtet sich an Kunden, die Azure Monitor zur Überwachung von A
 - Überwachen von AKS mit anderen Tools als Azure Monitor (außer zur Schließung von Lücken in Azure Monitor und Containererkenntnissen)
 
 > [!NOTE]
-> Azure Monitor wurde entwickelt, um die Verfügbarkeit und Leistung von Cloudressourcen zu überwachen. Die in Azure Monitor gespeicherten operativen Daten können zwar bei der Untersuchung von Sicherheitsincidents hilfreich sein, für die Überwachung der Sicherheit stehen jedoch andere Dienste in Azure zur Verfügung. Für die Überwachung der Sicherheit von AKS werden [Azure Sentinel](../sentinel/overview.md) und [Azure Security Center](../security-center/security-center-introduction.md) verwendet. Eine Beschreibung der Sicherheitsüberwachungstools in Azure sowie Informationen zu ihrer Beziehung zu Azure Monitor finden Sie unter [Überwachen von VMs mit Azure Monitor: Sicherheitsüberwachung](../azure-monitor/vm/monitor-virtual-machine-security.md).
+> Azure Monitor wurde entwickelt, um die Verfügbarkeit und Leistung von Cloudressourcen zu überwachen. Die in Azure Monitor gespeicherten operativen Daten können zwar bei der Untersuchung von Sicherheitsincidents hilfreich sein, für die Überwachung der Sicherheit stehen jedoch andere Dienste in Azure zur Verfügung. Die Sicherheitsüberwachung für AKS erfolgt mit [Microsoft Sentinel](../sentinel/overview.md) und [Microsoft Defender für Cloud](../defender-for-cloud/defender-for-cloud-introduction.md). Eine Beschreibung der Sicherheitsüberwachungstools in Azure sowie Informationen zu ihrer Beziehung zu Azure Monitor finden Sie unter [Überwachen von VMs mit Azure Monitor: Sicherheitsüberwachung](../azure-monitor/vm/monitor-virtual-machine-security.md).
 >
-> Informationen zur Verwendung der Sicherheitsdienste für die Überwachung von AKS finden Sie in der [Einführung in Azure Defender für Kubernetes](../security-center/defender-for-kubernetes-introduction.md) sowie unter [Azure Kubernetes Service (AKS)](../sentinel/data-connectors-reference.md#azure-kubernetes-service-aks).
+> Informationen zur Verwendung der Sicherheitsdienste für die Überwachung von AKS finden Sie unter [Microsoft Defender für Kubernetes – Vorteile und Features](../defender-for-cloud/defender-for-kubernetes-introduction.md) und [Herstellen einer Verbindung von AKS-Diagnoseprotokollen (Azure Kubernetes Service) mit Microsoft Sentinel](../sentinel/data-connectors-reference.md#azure-kubernetes-service-aks).
 ## <a name="container-insights"></a>Container Insights
 Von AKS werden genau wie von anderen Azure-Ressourcen [Plattformmetriken und Ressourcenprotokolle](monitor-aks-reference.md) generiert, die Sie zum Überwachen der grundlegenden Integrität und Leistung verwenden können. Aktivieren Sie [Containererkenntnisse](../azure-monitor/containers/container-insights-overview.md), um diese Überwachung zu erweitern. Containererkenntnisse sind ein Feature in Azure Monitor, das neben anderen Clusterkonfigurationen auch die Integrität und Leistung verwalteter, in AKS gehosteter Kubernetes-Cluster überwacht. Containererkenntnisse bieten interaktive Ansichten und Arbeitsmappen für die Analyse gesammelter Daten in verschiedensten Überwachungsszenarien. 
 
@@ -43,7 +43,7 @@ In den folgenden Abschnitten werden die Schritte beschrieben, die zum Konfigurie
 ### <a name="create-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
 Sie benötigen mindestens einen Log Analytics-Arbeitsbereich, um Container Insights zu unterstützen und weitere Telemetriedaten zu Ihrem AKS-Cluster zu sammeln und zu analysieren. Für den Arbeitsbereich entstehen keine Kosten, aber beim Sammeln von Daten fallen Gebühren für die Erfassung und Aufbewahrung an. Ausführliche Informationen finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/logs/manage-cost-storage.md).
 
-Falls Sie Azure Monitor noch nicht verwendet haben, sollten Sie mit einem einzelnen Arbeitsbereich beginnen und die Erstellung weiterer Arbeitsbereiche in Betracht ziehen, wenn dies aufgrund Ihrer Anforderungen erforderlich ist. In vielen Umgebungen wird ein einzelner Arbeitsbereich für alle überwachten Azure-Ressourcen verwendet. Sogar die gemeinsame Nutzung eines von [Azure Security Center und Azure Sentinel](../azure-monitor/vm/monitor-virtual-machine-security.md) verwendeten Arbeitsbereichs ist möglich. Viele Kunden entscheiden sich jedoch dafür, ihre Verfügbarkeits- und Leistungstelemetriedaten von Sicherheitsdaten zu trennen. 
+Falls Sie Azure Monitor noch nicht verwendet haben, sollten Sie mit einem einzelnen Arbeitsbereich beginnen und die Erstellung weiterer Arbeitsbereiche in Betracht ziehen, wenn dies aufgrund Ihrer Anforderungen erforderlich ist. In vielen Umgebungen wird ein einzelner Arbeitsbereich für alle überwachten Azure-Ressourcen verwendet. Sie können sogar einen Arbeitsbereich gemeinsam nutzen, der von [Microsoft Defender für Cloud und Microsoft Sentinel](../azure-monitor/vm/monitor-virtual-machine-security.md) verwendet wird, obwohl sich viele Kunden dafür entscheiden, ihre Verfügbarkeits- und Leistungstelemetrie von Sicherheitsdaten zu trennen. 
 
 Ausführliche Informationen zur Logik, die Sie beim Entwerfen einer Arbeitsbereichskonfiguration berücksichtigen sollten, finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../azure-monitor/logs/design-logs-deployment.md).
 

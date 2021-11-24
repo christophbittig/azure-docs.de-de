@@ -5,16 +5,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/02/2021
-ms.openlocfilehash: 1fa0763c9d4ccdb4e0233a5c6159be7c0d745be6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2044e40c61e5683d9c21051ed38af471dbd73991
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470393"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294046"
 ---
 # <a name="log-analytics-agent-overview"></a>Übersicht über den Log Analytics-Agent
 
-Der Azure Log Analytics-Agent sammelt Telemetrie von virtuellen Windows- und Linux-Computern in allen Clouds, lokalen Computern und von [System Center Operations Manager](/system-center/scom/) überwachten Computern und sendet die gesammelten Daten an Ihren Log Analytics-Arbeitsbereich in Azure Monitor. Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor, z. B. [VM Insights](../vm/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml) und [Azure Automation](../../automation/automation-intro.md). Dieser Artikel enthält eine ausführliche Übersicht über die Anforderungen an den Agent, das System und das Netzwerk sowie über Bereitstellungsmethoden.
+Der Azure Log Analytics-Agent sammelt Telemetrie von virtuellen Windows- und Linux-Computern in allen Clouds, lokalen Computern und von [System Center Operations Manager](/system-center/scom/) überwachten Computern und sendet die gesammelten Daten an Ihren Log Analytics-Arbeitsbereich in Azure Monitor. Der Protokollanalyse-Agent (Log-Analytics-Agent) unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor, z. B. [Einblicke in virtuelle Computer](../vm/vminsights-enable-overview.md), [Microsoft Defender für Cloud](../../security-center/index.yml) und [Azure Automation](../../automation/automation-intro.md). Dieser Artikel enthält eine ausführliche Übersicht über die Anforderungen an den Agent, das System und das Netzwerk sowie über Bereitstellungsmethoden.
 
 > [!NOTE]
 > Der Log Analytics-Agent wird ggf. auch als Microsoft Monitoring Agent (MMA) bezeichnet.
@@ -27,7 +27,7 @@ Beachten Sie die folgenden Hauptunterschiede:
 
 - Die Azure-Diagnoseerweiterung kann nur mit virtuellen Azure-Computern verwendet werden. Der Log Analytics-Agent kann mit virtuellen Computern in Azure, anderen Clouds und lokal verwendet werden.
 - Die Azure-Diagnoseerweiterung sendet Daten an Azure Storage, [Azure Monitor-Metriken](../essentials/data-platform-metrics.md) (nur Windows) und Event Hubs. Der Log Analytics-Agent sendet Daten an [Azure Monitor-Protokolle](../logs/data-platform-logs.md).
-- Der Log Analytics-Agent ist für [Lösungen](../monitor-reference.md#insights-and-curated-visualizations), [VM Insights](../vm/vminsights-overview.md) und andere Dienste wie [Azure Security Center](../../security-center/index.yml) erforderlich.
+- Der Protokollanalyse-Agent (Log-Analytics-Agent) ist für [Lösungen](../monitor-reference.md#insights-and-curated-visualizations), [Einblicke in virtuelle Computer](../vm/vminsights-overview.md) und andere Dienste wie [Microsoft Defender für Cloud](../../security-center/index.yml) erforderlich.
 
 ## <a name="costs"></a>Kosten
 
@@ -55,7 +55,7 @@ Der Log Analytics-Agent sendet Daten an einen Log Analytics-Arbeitsbereich in 
 
 ## <a name="other-services"></a>Sonstige Dienste
 
-Der Agent für Linux und Windows dient nicht nur zum Herstellen einer Verbindung mit Azure Monitor. Andere Dienste wie Azure Security Center und Azure Sentinel setzen ebenfalls auf dem Agent und dessen verbundenem Log Analytics-Arbeitsbereich auf. Der Agent unterstützt auch Azure Automation zum Hosten der Hybrid Runbook Worker-Rolle und anderer Dienste wie [Änderungsnachverfolgung](../../automation/change-tracking/overview.md), [Updateverwaltung](../../automation/update-management/overview.md) und [Azure Security Center](../../security-center/security-center-introduction.md). Weitere Informationen zur Hybrid Runbook Workerrolle finden Sie unter [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+Der Agent für Linux und Windows dient nicht nur zum Herstellen einer Verbindung mit Azure Monitor. Andere Dienste wie Microsoft Defender für Cloud und Microsoft Sentinel basieren auf dem Agent und dessen verbundenen Protokollanalyse-Arbeitsbereich. Der Agent unterstützt auch Azure Automation zum Hosten der Hybrid-Runbook-Worker-Rolle und anderer Dienste wie [Änderungsnachverfolgung](../../automation/change-tracking/overview.md), [Update-Verwaltung](../../automation/update-management/overview.md)und [Microsoft Defender für Cloud.](../../security-center/security-center-introduction.md) Weitere Informationen zur Hybrid Runbook Workerrolle finden Sie unter [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="workspace-and-management-group-limitations"></a>Einschränkungen für Arbeitsbereich und Verwaltungsgruppe
 
@@ -78,7 +78,7 @@ Abhängig von Ihren Anforderungen gibt es mehrere Möglichkeiten, um den Log An
 ### <a name="azure-virtual-machine"></a>Virtueller Azure-Computer
 
 - [VM Insights](../vm/vminsights-enable-overview.md) bietet mehrere Methoden zum Aktivieren von Agents im großen Stil. Dies schließt die Installation des Log Analytics-Agents und des Dependency-Agents ein. 
-- [Azure Security Center kann den Log Analytics-Agent](../../security-center/security-center-enable-data-collection.md) auf allen unterstützten und neu erstellten Azure-VMs bereitstellen, wenn Sie die Überwachung auf Sicherheitslücken und Bedrohungen aktivieren.
+- [Microsoft Defender für Cloud kann den Protokollanalyse-Agent](../../security-center/security-center-enable-data-collection.md) (Log-Analytics-Agent) auf allen unterstützten und neu erstellten virtuellen Azure-Computern bereitstellen, wenn Sie die Überwachung auf Sicherheitslücken und Bedrohungen aktivieren.
 - Die Log Analytics-VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) oder [Linux](../../virtual-machines/extensions/oms-linux.md) kann mit dem Azure-Portal, der Azure-Befehlszeilenschnittstelle, Azure PowerShell oder einer Azure Resource Manager-Vorlage installiert werden.
 - Führen Sie die Installation für einzelne virtuelle Azure-Computer [manuell über das Azure-Portal](../vm/monitor-virtual-machine.md?toc=%2fazure%2fazure-monitor%2ftoc.json) durch.
 

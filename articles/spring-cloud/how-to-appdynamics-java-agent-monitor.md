@@ -1,23 +1,23 @@
 ---
 title: Überwachung von Spring Boot-Anwendungen mit dem AppDynamics Java Agent (Vorschau)
 titleSuffix: Azure Spring Cloud
-description: Verwendung des AppDynamics Java-Agenten zur Überwachung von Spring Boot-Anwendungen, die in Azure Spring Cloud ausgeführt werden.
+description: Wie man den AppDynamics Java-Agenten zur Überwachung von Spring Boot-Anwendungen in Azure Spring Cloud verwendet.
 author: KarlErickson
 ms.author: jiec
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/19/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 308869704426d8b62a92da3b739ce3b9218f860e
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: b549ce3e8e79b7315144f52484fe63f7553982c4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131500847"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492642"
 ---
 # <a name="how-to-monitor-spring-boot-apps-with-the-appdynamics-java-agent-preview"></a>Überwachung von Spring Boot-Anwendungen mit dem AppDynamics Java Agent (Vorschau)
 
-In diesem Artikel wird erklärt, wie Sie den AppDynamics Java Agent verwenden, um Spring Boot-Anwendungen zu überwachen, die in Azure Spring Cloud ausgeführt werden.
+In diesem Artikel wird erklärt, wie man den AppDynamics Java Agent zur Überwachung von Spring Boot-Anwendungen in der Azure Spring Cloud verwendet.
 
 Mit dem AppDynamics Java Agent können Sie:
 
@@ -106,9 +106,9 @@ Um eine Anwendung über das Azure-Portal zu aktivieren, führen Sie die folgende
 
 ## <a name="automate-provisioning"></a>Automatisieren der Bereitstellung
 
-Sie können auch eine Automatisierungspipeline für die Bereitstellung mit Terraform oder einer Azure Resource Manager-Vorlage (ARM-Vorlage) ausführen. Mit dieser Pipeline können Sie alle neuen Anwendungen, die Sie erstellen und bereitstellen, ganz ohne Aufwand instrumentieren und überwachen.
+Sie können eine Bereitstellungsautomatisierungspipeline auch mit Terraform oder einer Azure Resource Manager-Vorlage (ARM-Vorlage) ausführen. Mit dieser Pipeline können Sie alle neuen Anwendungen, die Sie erstellen und bereitstellen, ganz ohne Aufwand instrumentieren und überwachen.
 
-### <a name="automate-provisioning-using-terraform"></a>Automatisieren Sie die Bereitstellung mit Terraform
+### <a name="automate-provisioning-using-terraform"></a>Automatisieren der Bereitstellung mit Terraform
 
 Um die Umgebungsvariablen in einer Terraform-Vorlage zu konfigurieren, fügen Sie der Vorlage den folgenden Code hinzu, und ersetzen Sie dabei die Platzhalter *\<...>* durch Ihre eigenen Werte. Weitere Informationen finden Sie unter [Verwalten einer aktiven Azure Spring Cloud-Bereitstellung](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/spring_cloud_active_deployment).
 
@@ -130,7 +130,7 @@ resource "azurerm_spring_cloud_java_deployment" "example" {
 }
 ```
 
-### <a name="automate-provisioning-using-an-arm-template"></a>Automatisieren Sie die Bereitstellung mit einer ARM-Vorlage
+### <a name="automate-provisioning-using-an-arm-template"></a>Automatisieren der Bereitstellung mithilfe einer ARM-Vorlage
 
 Um die Umgebungsvariablen in einer ARM-Vorlage zu konfigurieren, fügen Sie der Vorlage den folgenden Code hinzu, und ersetzen Sie dabei die Platzhalter *\<...>* durch Ihre eigenen Werte. Weitere Informationen finden Sie unter [Microsoft.AppPlatform/Spring/apps/deployments/skus](/azure/templates/microsoft.appplatform/spring/apps/deployments?tabs=json).
 

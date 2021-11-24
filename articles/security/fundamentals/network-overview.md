@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 4fb4981925593a22ed65df9d3ed0da5f45062f23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a62e6d5b9450ded54d4dce51cbd4469abbbdcd3b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578940"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297371"
 ---
 # <a name="azure-network-security-overview"></a>Übersicht über die Netzwerksicherheit in Azure
 
@@ -79,13 +79,13 @@ Weitere Informationen:
 
 * [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md)
 
-#### <a name="asc-just-in-time-vm-access"></a>Just-in-Time-VM-Zugriff in ASC
+#### <a name="defender-for-cloud-just-in-time-vm-access"></a>Defender für Cloud: Just-In-Time-Zugrif auf virtuelle Computer
 
-In [Azure Security Center](../../security-center/security-center-introduction.md) können die Netzwerksicherheitsgruppen auf virtuellen Computern verwaltet und der Zugriff auf die virtuellen Computer gesperrt werden, bis ein Benutzer mit den entsprechenden [Azure RBAC](../../role-based-access-control/overview.md)-Berechtigungen (rollenbasierte Zugriffssteuerung in Azure) den Zugriff anfordert. Nachdem der Benutzer erfolgreich autorisiert wurde, nimmt ASC Änderungen an den Netzwerksicherheitsgruppen vor, um den Zugriff auf ausgewählte Ports für den angegebenen Zeitraum zu ermöglichen. Nach Ablauf des Zeitraums werden die NSGs auf ihren vorherigen gesicherten Status zurückgesetzt.
+In [Microsoft Defender für Cloud](../../security-center/security-center-introduction.md) können die Netzwerksicherheitsgruppen auf virtuellen Computern verwaltet und der Zugriff auf die virtuellen Computer kann -gesperrt werden, bis ein Benutzer mit den entsprechenden [Azure RBAC](../../role-based-access-control/overview.md)-Berechtigungen (RBAC: rollenbasierte Zugriffssteuerung in Azure) den Zugriff anfordert. Nachdem der Benutzer erfolgreich autorisiert wurde, nimmt Defender für Cloud Änderungen an den Netzwerksicherheitsgruppen vor, um den Zugriff auf ausgewählte Ports für den angegebenen Zeitraum zu ermöglichen. Nach Ablauf des Zeitraums werden die NSGs auf ihren vorherigen gesicherten Status zurückgesetzt.
 
 Weitere Informationen:
 
-* [Azure Security Center – Just-in-Time-Zugriff](../../security-center/security-center-just-in-time.md)
+* [Microsoft Defender für Cloud: Just-In-Time-Zugriff](../../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>Dienstendpunkte
 
@@ -369,11 +369,11 @@ Weitere Informationen zu Network Watcher und zum Testen einiger Funktionen in de
 > [!NOTE]
 > Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Diensts finden Sie auf der Seite mit [Azure-Updates](https://azure.microsoft.com/updates/?product=network-watcher).
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender für Cloud
 
-Azure Security Center unterstützt Sie beim Verhindern, Erkennen und Beheben von Bedrohungen und sorgt für eine größere Transparenz und bessere Kontrolle in Bezug auf die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
+Microsoft Defender für Cloud unterstützt Sie bei der Vermeidung, Erkennung und Behandlung von Bedrohungen und verschafft Ihnen mehr Transparenz und somit eine bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
-Mit Security Center können Sie die Netzwerksicherheit wie folgt optimieren und überwachen:
+Mit Defender für Cloud können Sie die Netzwerksicherheit wie folgt optimieren und überwachen:
 
 * Angeben von Empfehlungen zur Netzwerksicherheit
 * Überwachen des Zustands der Netzwerksicherheitskonfiguration
@@ -381,7 +381,7 @@ Mit Security Center können Sie die Netzwerksicherheit wie folgt optimieren und 
 
 Weitere Informationen:
 
-* [Einführung in Azure Security Center](../../security-center/security-center-introduction.md)
+* [Einführung in Microsoft Defender für Cloud](../../security-center/security-center-introduction.md)
 
 ### <a name="virtual-network-tap"></a>TAP eines virtuellen Netzwerks
 
