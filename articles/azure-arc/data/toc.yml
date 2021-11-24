@@ -15,6 +15,8 @@ items:
     items:
       - name: "Planen einer Bereitstellung von Datendiensten mit Azure\_Arc-Unterstützung"
         href: plan-azure-arc-data-services.md
+      - name: Erstellen eines ACS-Clusters
+        href: create-aks-cluster-data-controller.md
   - name: Konzepte
     items:
       - name: Konnektivitätsmodi und -anforderungen
@@ -51,8 +53,6 @@ items:
                 href: create-data-controller-direct-prerequisites.md
               - name: Azure-Portal
                 href: create-data-controller-direct-azure-portal.md
-              - name: az CLI
-                href: create-data-controller-direct-cli.md
       - name: "Allgemeine Erfahrungen mit Datendiensten mit Azure\_Arc-Unterstützung"
         items:
           - name: Überwachen mit Dashboards (Azure Data Studio)
@@ -245,7 +245,5 @@ items:
             href: ./reference/reference-az-sql-midb-arc.md
   - name: Ressourcen
     items:
-      - name: Planen für die Bereitstellung
-        href: plan-azure-arc-data-services.md
       - name: Einstieg in Azure Arc
         href: 'https://azurearcjumpstart.io'
