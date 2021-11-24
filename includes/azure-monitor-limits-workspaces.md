@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: b8ada581eabe0a2fedda08d0fbb1fa9585da0cca
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f0ea867dd07192b066a7944a2b392bbc91913759
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121801814"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132354105"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 

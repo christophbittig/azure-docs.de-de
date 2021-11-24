@@ -11,12 +11,12 @@ author: MaraSteiu
 ms.author: masteiu
 ms.reviewer: mathoma
 ms.date: 12/20/2018
-ms.openlocfilehash: e4a08dca9fe30b632b2653270ff6a41c6c081b41
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a85c3199f1307a6f7618aec4efdc0506f17598a0
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689766"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494803"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Bewährte Methoden für die Azure SQL-Datensynchronisierung 
 
@@ -54,7 +54,7 @@ Azure SQL-Datenbank unterstützt nur einen Satz von Anmeldeinformationen. Sie k�
 
 ### <a name="auditing"></a>Überwachung
 
-Es wird empfohlen, die Überwachung auf Datenbankebene in den Synchronisierungsgruppen zu aktivieren. 
+Es wird empfohlen, die Überwachung auf Datenbankebene in den Synchronisierungsgruppen zu aktivieren. Erfahren Sie, wie Sie [Auditing in Ihrer Azure SQL-Datenbank](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview) oder [Auditing in Ihrer SQL Server-Datenbank](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15) aktivieren.
 
 ## <a name="setup"></a>Einrichten
 

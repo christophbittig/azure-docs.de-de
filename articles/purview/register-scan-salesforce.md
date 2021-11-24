@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 22b0b3dfc76c6ae2dc8de38113b3cb2075117a70
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 81f4775771c162dce061bc1ad8901bd9b9542d40
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131858601"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554938"
 ---
 # <a name="connect-to-and-manage-salesforce-in-azure-purview-preview"></a>Herstellen einer Verbindung mit und Verwalten von Salesforce in Azure Purview (Vorschau)
 
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Sie Salesforce in Azure Purview registri
 |---|---|---|---|---|---|---|
 | [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| Nein|
 
-Beim Überprüfen von Salesforce unterstützt Purview das Extrahieren von Metadaten, einschließlich Salesforce-Organisationen, -Objekten, -Feldern, -Fremdschlüsseln, unique_constraints usw.
+Beim Überprüfen von Salesforce unterstützt Purview das Extrahieren von Metadaten, einschließlich Salesforce-Organisationen, -Objekten, -Feldern, -Fremdschlüsseln und unique_constraints.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,7 +40,7 @@ Beim Überprüfen von Salesforce unterstützt Purview das Extrahieren von Metada
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
-* Stellen Sie sicher, dass [JDK 11](https://www.Salesforce.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
+* Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
 
 * Stellen Sie sicher, dass Visual C++ Redistributable für Visual Studio 2012 Update 4 auf dem Computer mit der selbstgehosteten Integration Runtime installiert ist. Wenn Sie dieses Update nicht installiert haben, [können Sie es hier herunterladen](https://www.microsoft.com/download/details.aspx?id=30679).
 

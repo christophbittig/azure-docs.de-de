@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 7c9b8d5ef1126d204d4f418bc70100760468bc33
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ea374a6503b2d015ca92d3aee8179b3511c9755f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562369"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289678"
 ---
 # <a name="audit-and-manage-azure-machine-learning"></a>Azure Machine Learning prüfen und verwalten
 
@@ -125,7 +125,7 @@ Legen Sie den Parameter „effect“ auf __Modify__ oder __Disabled__ fest, um d
 
 * [Dokumentation zu Azure Policy](../governance/policy/overview.md)
 * [Integrierte Richtlinien für Azure Machine Learning](policy-reference.md)
-* [Arbeiten mit Sicherheitsrichtlinien mit Azure Security Center](../security-center/tutorial-security-policy.md)
+* [Arbeiten mit Sicherheitsrichtlinien bei Microsoft Defender für Cloud](../security-center/tutorial-security-policy.md)
 * Das [Cloud Adoption Framework-Szenario für Datenmanagement und -analyse](/azure/cloud-adoption-framework/scenarios/data-management/) beschreibt Überlegungen zum Betrieb von Daten- und Analyse-Workloads in der Cloud.
 * [Cloud Adoption Framework-Datenzielzonen](https://github.com/Azure/data-landing-zone) bieten eine Referenzimplementierung für die Verwaltung von Daten- und Analyse-Workloads in Azure.
 * [Erfahren Sie, wie Sie Richtlinien verwenden, um Azure Private Link mit Azure Private DNS-Zonen zu integrieren](/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale), um die Private Link-Konfiguration für den Arbeitsbereich und abhängige Ressourcen zu verwalten.

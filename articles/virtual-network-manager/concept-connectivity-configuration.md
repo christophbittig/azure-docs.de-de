@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: 3c1c6841f7ae25bad16640e11c67080833ac850b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: face052462909e755771f12ff19fed8139675183
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021345"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484596"
 ---
 # <a name="connectivity-configuration-in-azure-virtual-network-manager-preview"></a>Konfiguration der Konnektivität in Azure Virtual Network Manager (Vorschau)
 
@@ -39,7 +39,7 @@ Wenn Sie eine Mesh-Topologie erstellen, wird ein neues Konnektivitätskonstrukt 
 
 > [!NOTE]
 > * Wenn Sie konkurrierende Subnetze in zwei oder mehr virtuellen Netzwerken haben, können die Ressourcen in diesen Subnetzen *nicht miteinander kommunizieren, selbst wenn sie Teil desselben Mesh-Netzwerks sind* .
-> * Ein virtuelles Netz kann Teil von bis zu **fünf** Mesh-Konfigurationen sein.
+> * Ein virtuelles Netzwerk kann Teil von bis zu **zwei** Meshkonfigurationen sein.
 
 ## <a name="hub-and-spoke-topology"></a>Hub-Spoke-Topologie
 
@@ -60,7 +60,7 @@ Siehe nachstehendes Beispieldiagramm:
 Wenn Sie sich die effektiven Routen auf einer VM ansehen, hat die Route zwischen dem Hub und den virtuellen Spoke-Netzwerken den nächsten Hop-Typ *VNetPeering* oder *GlobalVNetPeering*. Routen zwischen virtuellen Speichen-Netzwerken werden mit dem nächsten Sprungtyp *ConnectedGroup* angezeigt. Im obigen Beispiel würde nur die Netzwerkgruppe *Production* eine *Verbundenen Gruppe* haben, da sie *Direct Connectivity* aktiviert hat.
 
 > [!NOTE]
-> Der Hub-Netzwerkadressraum wird der *Verbundenen Gruppe* hinzugefügt, wenn *Transitivity* **enabled** ist. Wenn also das virtuelle Netzwerk-Peering zwischen dem Hub und dem virtuellen Spoke-Netzwerk ausfällt, können sie immer noch über *Verbundenen Gruppe* kommunizieren.
+> Der Hub-Netzwerkadressraum wird der *Verbundenen Gruppe* hinzugefügt, wenn die *direkte Verbindung* **aktiviert** ist. Wenn also das virtuelle Netzwerk-Peering zwischen dem Hub und dem virtuellen Spoke-Netzwerk ausfällt, können sie immer noch über *Verbundenen Gruppe* kommunizieren.
 
 #### <a name="use-cases"></a>Anwendungsfälle
 

@@ -7,12 +7,12 @@ ms.reviewer: rarayudu, azla
 ms.topic: how-to
 ms.date: 09/13/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 475d1d580d1330cd3f65d21338a8dea050d37da7
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6867b624e4de138ef4d62030970c34f7c6c382f5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131464203"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337242"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -977,7 +977,7 @@ In dieser Tabelle werden die Authentifizierungstypen aufgeführt, die für die T
 | [Clientzertifikat](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Raw](#raw-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, HTTP Webhook |
-| [Verwaltete Identität](#managed-identity-authentication) | **Logik-App (Verbrauch)** : <p><p>- **Integriert**: Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP-Webhook <p><p>- **Verwalteter Connector** (Vorschau): <p><p>--- **Einzelauthentifizierung**: Azure ID Identity Protection, Azure Automation, Azure-Containerinstanz, Azure Data Explorer, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure Key Vault, Azure Resource Manager, Azure Sentinel, HTTP mit Azure AD <p><p>--- **Mehrfachauthentifizierung**: Azure Blob Storage, SQL Server <p><p>___________________________________________________________________________________________<p><p>**Logik-App (Standard)** : <p><p>- **Integriert**: HTTP, HTTP-Webhook <p><p>- **Verwalteter Connector** (Vorschau): <p>--- **Einzelauthentifizierung**: Azure ID Identity Protection, Azure Automation, Azure-Containerinstanz, Azure Data Explorer, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure Key Vault, Azure Resource Manager, Azure Sentinel, HTTP mit Azure AD <p><p>--- **Mehrfachauthentifizierung**: Azure Blob Storage, SQL Server |
+| [Verwaltete Identität](#managed-identity-authentication) | **Logik-App (Verbrauch)** : <p><p>- **Integriert**: Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP-Webhook <p><p>- **Verwalteter Connector** (Vorschau): <p><p>--- **Einzelauthentifizierung**: Azure AD Identity Protection, Azure Automation, Azure Container Instance, Azure Data Explorer, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure Key Vault, Azure Resource Manager, Microsoft Sentinel, HTTP mit Azure AD <p><p>--- **Mehrfachauthentifizierung**: Azure Blob Storage, SQL Server <p><p>___________________________________________________________________________________________<p><p>**Logik-App (Standard)** : <p><p>- **Integriert**: HTTP, HTTP-Webhook <p><p>- **Verwalteter Connector** (Vorschau): <p>--- **Einzelauthentifizierung**: Azure AD Identity Protection, Azure Automation, Azure Container Instance, Azure Data Explorer, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure Key Vault, Azure Resource Manager, Microsoft Sentinel, HTTP mit Azure AD <p><p>--- **Mehrfachauthentifizierung**: Azure Blob Storage, SQL Server |
 |||
 
 <a name="basic-authentication"></a>
@@ -1186,7 +1186,7 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
 
    | Eigenschaft (Designer) | Erforderlich | Wert | BESCHREIBUNG |
    |---------------------|----------|-------|-------------|
-   | **Verbindungsname** | Ja | <*connection-name*> ||
+   | **Verbindungsname** | Yes | <*connection-name*> ||
    | **Verwaltete Identität** | Yes | **Systemseitig zugewiesene verwaltete Identität** <br>oder <br> <*user-assigned-managed-identity-name*> | Der zu verwendende Authentifizierungstyp |
    |||||
 

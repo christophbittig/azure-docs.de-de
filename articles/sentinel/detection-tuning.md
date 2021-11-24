@@ -1,32 +1,32 @@
 ---
-title: Erhalten Sie Optimierungsempfehlungen für Ihre Analyseregeln in Azure Sentinel
-description: Erfahren Sie, wie Sie Ihre Regeln zur Bedrohungserkennung in Azure Sentinel mithilfe automatisch generierter Empfehlungen optimieren, um Fehlalarme zu reduzieren und gleichzeitig die Abdeckung der Bedrohungserkennung beizubehalten.
+title: Erhalten Sie Optimierungsempfehlungen für Ihre Analyseregeln in Microsoft Sentinel
+description: Erfahren Sie, wie Sie Ihre Regeln zur Bedrohungserkennung in Microsoft Sentinel mithilfe automatisch generierter Empfehlungen optimieren, um Fehlalarme zu reduzieren und gleichzeitig die Abdeckung der Bedrohungserkennung beizubehalten.
 author: yelevin
 ms.author: yelevin
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: how-to
-ms.date: 10/13/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a302a325ff3bd510298f0d4b70b62f27af060a4e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1b1d71f2c8a6a5f74d68d9480b918743a707cc83
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096061"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521508"
 ---
-# <a name="get-fine-tuning-recommendations-for-your-analytics-rules-in-azure-sentinel"></a>Erhalten Sie Optimierungsempfehlungen für Ihre Analyseregeln in Azure Sentinel
+# <a name="get-fine-tuning-recommendations-for-your-analytics-rules-in-microsoft-sentinel"></a>Erhalten Sie Optimierungsempfehlungen für Ihre Analyseregeln in Microsoft Sentinel
 
 > [!IMPORTANT]
 >
 > Die Erkennungsoptimierung befindet sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
-Die Feinabstimmung von Regeln für die Bedrohungserkennung in Ihrem SIEM kann ein schwieriger, langwieriger und kontinuierlicher Prozess sein, bei dem ein Ausgleich zwischen der Maximierung Ihrer Bedrohungserkennung und der Minimierung der Fehlalarmrate erfolgt. Azure Sentinel vereinfacht und optimiert diesen Prozess mithilfe von Maschinen-Lernen, um Milliarden von Signalen aus Ihren Datenquellen sowie Ihre Reaktionen auf Vorfälle im Laufe der Zeit zu analysieren, Muster ableiten und Ihnen umsetzbare Empfehlungen und Erkenntnisse bereitzustellen, die Ihren Optimierungsaufwand erheblich verringern und ihnen ermöglichen, sich auf das Erkennen und Reagieren auf tatsächliche Bedrohungen zu konzentrieren.
+Die Feinabstimmung von Regeln für die Bedrohungserkennung in Ihrem SIEM kann ein schwieriger, langwieriger und kontinuierlicher Prozess sein, bei dem ein Ausgleich zwischen der Maximierung Ihrer Bedrohungserkennung und der Minimierung der Fehlalarmrate erfolgt. Microsoft Sentinel vereinfacht und optimiert diesen Prozess mithilfe von Maschinen-Lernen, um Milliarden von Signalen aus Ihren Datenquellen sowie Ihre Reaktionen auf Vorfälle im Laufe der Zeit zu analysieren, Muster ableiten und Ihnen umsetzbare Empfehlungen und Erkenntnisse bereitzustellen, die Ihren Optimierungsaufwand erheblich verringern und ihnen ermöglichen, sich auf das Erkennen und Reagieren auf tatsächliche Bedrohungen zu konzentrieren.
 
 Optimierungsempfehlungen und Erkenntnisse sind jetzt in Ihre Analyseregeln integriert. In diesem Artikel wird erläutert, was diese Erkenntnisse zeigen und wie Sie die Empfehlungen implementieren können.
 
 ## <a name="view-rule-insights-and-tuning-recommendations"></a>Anzeigen von Regeleinblicken und Optimierungsempfehlungen
 
-Um festzustellen, ob Azure Sentinel Optimierungsempfehlungen für ihre Analyseregeln hat, wählen Sie im Navigationsmenü von Azure Sentinel **Analytics** aus.
+Um festzustellen, ob Microsoft Sentinel Optimierungsempfehlungen für ihre Analyseregeln hat, wählen Sie im Navigationsmenü von Microsoft Sentinel **Analytics** aus.
 
 Alle Regeln mit Empfehlungen zeigen ein Glühbirnensymbol an, wie hier gezeigt:
 
@@ -60,7 +60,7 @@ Die Ansicht **Optimierungserkenntnisse** besteht aus mehreren Bereichen, in dene
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
-- [Behandeln falsch positiver Ergebnisse in Azure Sentinel](false-positives.md)
+Weitere Informationen finden Sie unter
+- [Behandeln falsch positiver Ergebnisse in Microsoft Sentinel](false-positives.md)
 - [Verwenden von UEBA-Daten zum Analysieren falsch positiver Ergebnisse](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives)
 - [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md)

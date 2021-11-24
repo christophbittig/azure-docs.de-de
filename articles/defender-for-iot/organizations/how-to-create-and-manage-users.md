@@ -1,18 +1,18 @@
 ---
 title: Erstellen und Verwalten von Benutzern
 description: Erfahren Sie, wie Sie Benutzer von Sensoren und der lokalen Verwaltungskonsole erstellen und verwalten. Benutzern kann eine der Rollen „Administrator“, „Sicherheitsanalyst“ oder „Benutzer mit Lesezugriff“ zugewiesen werden.
-ms.date: 05/20/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: fa10961218d536faf09a1f7062c8a8c77dc99ce4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 73e08c7cdca6e57445566a99cb779a322306f944
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434032"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318938"
 ---
 # <a name="about-defender-for-iot-console-users"></a>Grundlegendes zu Benutzern der Defender für IoT-Konsole
 
-In diesem Artikel wird beschrieben, wie Sie Benutzer von Sensoren und der lokalen Verwaltungskonsole erstellen und verwalten. Zu den Benutzerrollen zählen „Administrator“, „Sicherheitsanalyst“ und „Benutzer mit Lesezugriff“. Jeder Rolle ist ein Bereich von Berechtigungen für Tools für den Sensor oder die lokale Verwaltungskonsole zugeordnet. Rollen sind so konzipiert, dass sie einen differenzierten und sicheren Zugriff auf Azure Defender für IoT ermöglichen.
+In diesem Artikel wird beschrieben, wie Sie Benutzer von Sensoren und der lokalen Verwaltungskonsole erstellen und verwalten. Zu den Benutzerrollen zählen „Administrator“, „Sicherheitsanalyst“ und „Benutzer mit Lesezugriff“. Jeder Rolle ist ein Bereich von Berechtigungen für Tools für den Sensor oder die lokale Verwaltungskonsole zugeordnet. Rollen sind so konzipiert, dass sie einen differenzierten und sicheren Zugriff auf Microsoft Defender für IoT ermöglichen.
 
 Außerdem stehen Funktionen zum Nachverfolgen der Benutzeraktivität und zum Aktivieren der Active Directory-Anmeldung zur Verfügung.
 

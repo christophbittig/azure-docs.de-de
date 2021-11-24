@@ -1,36 +1,36 @@
 ---
-title: Überprüfen von Registrierungsimages mit Azure Defender
-description: Hier erfahren Sie, wie Sie Azure Defender für Containerregistrierungen verwenden, um Images in Ihren Azure-Containerregistrierungen zu überprüfen.
+title: Überprüfen von Registrierungsprofilen mit Microsoft Defender für Cloud
+description: Hier erfahren Sie, wie Sie Mirosoft Defender für Containerregistrierungen verwenden, um Profile in Ihren Azure-Containerregistrierungen zu überprüfen
 ms.topic: article
 ms.date: 05/19/2021
-ms.openlocfilehash: d00e23ffa7e3bd2fc1084ba6253274d14031d624
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 0170895ede2be40cc57d9ecfd82806e1ee3a617c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113553066"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323484"
 ---
-# <a name="scan-registry-images-with-azure-defender"></a>Überprüfen von Registrierungsimages mit Azure Defender
+# <a name="scan-registry-images-with-microsoft-defender-for-cloud"></a>Überprüfen von Registrierungsprofilen mit Microsoft Defender für Cloud
 
-Um Images in Ihren Azure-Containerregistrierungen auf Sicherheitsrisiken zu überprüfen, können Sie eine der verfügbaren Azure Marketplace-Lösungen integrieren oder optional **Azure Defender für Containerregistrierungen** auf der Abonnementebene aktivieren, wenn Sie Azure Security Center verwenden möchten. 
+Um Profile in Ihren Azure-Containerregistrierungen auf Sicherheitsrisiken zu überprüfen, können Sie eine der verfügbaren Azure Marketplace-Lösungen integrieren oder optional **Microsoft Defender für Cloud** auf der Abonnementebene für Containerregistrierungen aktivieren. 
 
-* Weitere Informationen zu [Azure Defender für Containerregistrierungen](../security-center/defender-for-container-registries-introduction.md)
-* Weitere Informationen zur [Containersicherheit in Azure Security Center](../security-center/container-security.md)
+* Weitere Informationen zu [Microsoft Defender für Containerregistrierungen](../security-center/defender-for-container-registries-introduction.md)
+* [Containersicherheit in Microsoft Defender für Cloud](../security-center/container-security.md)
 
-## <a name="registry-operations-by-azure-defender"></a>Registrierungsvorgänge von Azure Defender
+## <a name="registry-operations-by-microsoft-defender-for-cloud"></a>Registrierungsvorgänge von Microsoft Defender für Cloud
 
-Azure Defender überprüft an eine Registrierung gepushte, in eine Registrierung importierte oder alle innerhalb der letzten 30 Tage gepullten Images. Wenn Sicherheitsrisiken erkannt werden, werden [empfohlene Wartungsmaßnahmen](../security-center/defender-for-container-registries-usage.md#view-and-remediate-findings) in Azure Security Center angezeigt.
+Microsoft Defender überprüft an eine Registrierung übertragene, in eine Registrierung importierte oder alle innerhalb der letzten 30 Tage abgerufenen Profile. Wenn Sicherheitsrisiken erkannt werden, werden [empfohlene Wartungsmaßnahmen](../security-center/defender-for-container-registries-usage.md#view-and-remediate-findings) in Microsoft Defender für Cloud angezeigt.
 
- Nachdem Sie die empfohlenen Schritte zum Beheben des Sicherheitsproblems ausgeführt haben, ersetzen Sie das Image in Ihrer Registrierung. Azure Defender überprüft das Image erneut, um zu bestätigen, dass die Sicherheitsrisiken behoben wurden. 
+ Nachdem Sie die empfohlenen Schritte zum Beheben des Sicherheitsproblems ausgeführt haben, ersetzen Sie das Image in Ihrer Registrierung. Microsoft Defender überprüft das Profil erneut, um zu bestätigen, dass die Sicherheitsrisiken behoben wurden. 
 
-Ausführliche Informationen finden Sie unter [Verwenden von Azure Defender für Containerregistrierungen](../security-center/defender-for-container-registries-usage.md).
+Ausführliche Informationen finden Sie unter [Verwenden von Mirosoft Defender für Containerregistrierungen](../security-center/defender-for-container-registries-usage.md).
 
 > [!TIP]
-> Azure Defender authentifiziert sich bei der Registrierung, um Images zur Überprüfung auf Sicherheitsrisiken zu pullen. Wenn [Ressourcenprotokolle](monitor-service-reference.md#resource-logs) für Ihre Registrierung gesammelt werden, enthalten diese von Azure Defender generierte Anmeldeereignisse und Ereignisse für Imagepullvorgänge für die Registrierung. Diesen Ereignissen ist eine alphanumerische ID zugeordnet, z. B. `b21cb118-5a59-4628-bab0-3c3f0e434cg6`.
+> Microsoft Defender für Cloud authentifiziert sich bei der Registrierung, um Profile für Schwachstellen-Scans abzurufen. Wenn [Ressourcenprotokolle](monitor-service-reference.md#resource-logs) für Ihre Registrierung gesammelt werden, sehen Sie Registrierungsanmeldeereignisse und Profilabrufereignisse, die von Microsoft Defender für Cloud generiert werden. Diesen Ereignissen ist eine alphanumerische ID zugeordnet, z. B. `b21cb118-5a59-4628-bab0-3c3f0e434cg6`.
 
 ## <a name="scanning-a-network-restricted-registry"></a>Überprüfen einer Registrierung mit Netzwerkeinschränkungen
 
-Azure Defender kann Images in einer öffentlich zugänglichen Containerregistrierung oder einer mit Netzwerkzugriffsregeln geschützten Containerregistrierung überprüfen. Wenn Netzwerkregeln konfiguriert sind (d. h. Sie deaktivieren den öffentlichen Zugriff auf die Registrierung, konfigurieren IP-Zugriffsregeln oder erstellen private Endpunkte), müssen Sie die Netzwerkeinstellung zum [**Zulassen des Zugriffs vertrauenswürdiger Microsoft-Dienste**](allow-access-trusted-services.md) auf die Registrierung aktivieren. Diese Einstellung ist in neuen Containerregistrierungen standardmäßig aktiviert.
+Microsoft Defender kann Profile innerhalb einer öffentlich zugänglichen Containerregistrierung oder einer mit Netzwerkzugriffsregeln geschützten Containerregistrierung überprüfen. Wenn Netzwerkregeln konfiguriert sind (d. h. Sie deaktivieren den öffentlichen Zugriff auf die Registrierung, konfigurieren IP-Zugriffsregeln oder erstellen private Endpunkte), müssen Sie die Netzwerkeinstellung zum [**Zulassen des Zugriffs vertrauenswürdiger Microsoft-Dienste**](allow-access-trusted-services.md) auf die Registrierung aktivieren. Diese Einstellung ist in neuen Containerregistrierungen standardmäßig aktiviert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

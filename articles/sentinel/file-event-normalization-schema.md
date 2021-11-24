@@ -1,34 +1,34 @@
 ---
-title: 'Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema | Microsoft-Dokumentation'
-description: In diesem Artikel wird das Dateiereignis-Normalisierungsschema von Azure Sentinel beschrieben.
+title: Referenz zum Schema der Microsoft Sentinel-Dateiereignisnormalisierung | Microsoft-Dokumentation
+description: In diesem Artikel wird das Normalisierungsschema für Microsoft Sentinel-Dateiereignisse beschrieben.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/22/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ba1dd4cd4b3552466db55723432f5e9c79593070
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1e5e0752459362dbb3cea63b9adb5f453f40d2fd
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055180"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524472"
 ---
-# <a name="azure-sentinel-file-event-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Public Preview)
+# <a name="microsoft-sentinel-file-event-normalization-schema-reference-public-preview"></a>Ereignis-Referenz zum Schema für die Normalisierung von Microsoft Sentinel-Dateiereignissen (öffentliche Vorschau)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Das Dateiereignis-Normalisierungsschema wird dazu verwendet, Dateiaktivitäten wie das Erstellen, Ändern oder Löschen von Dateien oder Dokumenten zu beschreiben. Solche Ereignisse werden von Betriebssystemen, Dateispeichersystemen wie Azure Files und Dokumentenverwaltungssystemen wie Microsoft SharePoint gemeldet.
 
-Weitere Informationen zu Normalisierung in Azure Sentinel finden Sie unter [Normalisierung und das Azure Sentinel Information Model (ASIM)](normalization.md).
+Weitere Informationen zur Normalisierung in Microsoft Sentinel finden Sie unter [Normalisierung und erweitertes SIEM-Informationsmodell (ADVANCED SIEM Information Model, ASIM).](normalization.md)
 
 > [!IMPORTANT]
 > Das Dateiereignis-Normalisierungsschema ist derzeit als Vorschau verfügbar. Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
@@ -38,16 +38,16 @@ Weitere Informationen zu Normalisierung in Azure Sentinel finden Sie unter [Norm
 
 ## <a name="parsers"></a>Parser
 
-Azure Sentinel bietet die folgenden integrierten, produktspezifischen Dateiereignisparser:
+Microsoft Sentinel bietet die folgenden integrierten, produktspezifischen Dateiereignisparser:
 
 - **Sysmon-Dateiaktivitätsereignisse** (Ereignisse 11, 23 und 26), die mit dem Log Analytics-Agent oder dem Azure Monitor-Agent erfasst wurden
 - **Microsoft Office 365 SharePoint- und OneDrive-Ereignisse**, die mithilfe des Office-Aktivitätsconnectors gesammelt wurden
-- **Microsoft 365 Defender für Endpunkt-Dateiereignisse**
+- **Microsoft 365 Defender für Endpunktdateiereignisse**
 - **Azure Storage**, einschließlich Blob, File, Queue und Table Storage
 
 Verwenden Sie imFileEvent als Tabellennamen in der Abfrage, um den quellunabhängigen Parser zu verwenden, der alle integrierten Parser vereinheitlicht, und um sicherzustellen, dass Ihre Analyse für alle konfigurierten Quellen ausgeführt wird.
 
-Stellen Sie die [quellunabhängigen und quellspezifischen Parser](normalization-about-parsers.md) aus dem [Azure Sentinel GitHub-Repository](https://aka.ms/AzSentinelFileEvent) bereit.
+Stellen Sie die [quellenunabhängigen und quellenspezifischen Parser](normalization-about-parsers.md) aus dem [Microsoft Sentinel GitHub-Repository](https://aka.ms/AzSentinelFileEvent) bereit.
 
 ## <a name="add-your-own-normalized-parsers"></a>Hinzufügen eigener normalisierter Parser
 
@@ -58,7 +58,7 @@ Fügen Sie Ihre KQL-Funktion dem quellunabhängigen Parser `imFileEvent` hinzu, 
 
 ## <a name="normalized-content-for-file-activity-data"></a>Normalisierter Inhalt für Dateiaktivitätsdaten
 
-Zur Unterstützung des ASIM-Schemas für Dateiaktivität gehört auch die Unterstützung der folgenden integrierten Analyseregeln mit normalisierten Dateiaktivitätsparsern. Im Folgenden finden Sie Links zum Azure Sentinel GitHub-Repository. Sie können diese Regeln aber auch in dem [Azure Sentinel Analytics-Regelkatalog](detect-threats-built-in.md) finden. Verwenden Sie die verlinkten GitHub-Seiten, um alle relevanten Hunting-Abfragen für die aufgeführten Regeln zu kopieren.
+Zur Unterstützung des ASIM-Schemas für Dateiaktivität gehört auch die Unterstützung der folgenden integrierten Analyseregeln mit normalisierten Dateiaktivitätsparsern. Links zum Microsoft Sentinel-GitHub-Repository sind weiter unten als Referenz angegeben. Sie finden diese Regeln jedoch auch im [Microsoft Sentinel Analytics-Regelkatalog.](detect-threats-built-in.md) Verwenden Sie die verlinkten GitHub-Seiten, um alle relevanten Hunting-Abfragen für die aufgeführten Regeln zu kopieren.
 
 
 - [SUNBURST- und SUPERNOVA-Hintertürhashes (normalisierte Dateiereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimFileEvent/imFileESolarWindsSunburstSupernova.yaml)
@@ -97,7 +97,7 @@ Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbs
 | Feld               | Klasse       | type       |  BESCHREIBUNG       |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
-| **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
+| **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die vom Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
 | **EventStartTime**      | Obligatorisch.   | Datum/Uhrzeit  |      Wenn die Quelle Aggregation unterstützt und der Datensatz mehrere Ereignisse darstellt, gibt dieses Feld die Zeit an, zu der das erste Ereignis generiert wurde. Andernfalls wird in diesem Feld ein Alias für das Feld [TimeGenerated](#timegenerated) verwendet. |
 | **EventEndTime**        | Obligatorisch.   | Alias      |      Alias für das Feld [TimeGenerated](#timegenerated).    |
 | **EventType**           | Obligatorisch.   | Enumerated |    Beschreibt den vom Datensatz gemeldeten Vorgang. <br><br>Für Dateidatensätze werden folgende Werte unterstützt: <br><br>- `FileCreated`<br>- `FileModified`<br>- `FileDeleted`<br>- `FileRenamed`<br>- `FileCopied`<br>- `FileMoved`<br>- `FolderCreated`<br>- `FolderDeleted` |
@@ -154,7 +154,7 @@ Beispiel: `JohnDoe` (**Actor**) verwendet `Windows File Explorer` (**handelnder 
 |**HttpUserAgent** |Optional | String |Der verwendete Benutzer-Agent, wenn der Vorgang von einem Remotesystem über HTTP oder HTTPS initiiert wird.<br><br>Zum Beispiel:<br>`Mozilla/5.0 (Windows NT 10.0; Win64; x64)`<br>`AppleWebKit/537.36 (KHTML, like Gecko)`<br>` Chrome/42.0.2311.135`<br>`Safari/537.36 Edge/12.246`|
 | **NetworkApplicationProtocol**| Optional|String | Wenn der Vorgang von einem Remotesystem initiiert wird, ist dieser Wert das Anwendungsschichtprotokoll, das im OSI-Modell verwendet wird. <br><br>Obwohl dies kein aufzählbares Feld ist und jeder Wert akzeptiert wird, sind folgende Werte zu bevorzugen: `HTTP`, `HTTPS`, `SMB`, `FTP` und `SSH`.<br><br>Beispiel: `SMB`|
 |**SrcIpAddr** |Empfohlen |IP-Adresse | Die IP-Adresse dieses Systems, wenn der Vorgang von einem Remotesystem initiiert wird.<br><br>Beispiel: `185.175.35.214`|
-| **SrcFileCreationTime**|Optional |Date/Time |Der Zeitpunkt, zu dem die Quelldatei erstellt wurde. |
+| **SrcFileCreationTime**|Optional |Datum/Uhrzeit |Der Zeitpunkt, zu dem die Quelldatei erstellt wurde. |
 |**SrcFileDirectory** | Optional| String| Der Quelldateiordner oder -speicherort. Dieses Feld sollte dem Feld [SrcFilePath](#srcfilepath) unter Ausschluss des letzten Elements gleichen. <br><br>**Hinweis**: Ein Parser kann diesen Wert bereitstellen, wenn der Wert in der Protokollquelle verfügbar ist und nicht aus dem vollständigen Pfad extrahiert werden muss.|
 | **SrcFileExtension**|Optional | String|Die Quelldateierweiterung. <br><br>**Hinweis**: Ein Parser kann diesen Wert bereitstellen, wenn der Wert in der Protokollquelle verfügbar ist und nicht aus dem vollständigen Pfad extrahiert werden muss.|
 |**SrcFileMimeType** |Optional |Enumerated |    Der MIME- oder Medientyp der Quelldatei. Die unterstützten Werte sind im [IANA-Medientypen](https://www.iana.org/assignments/media-types/media-types.xhtml)-Repository aufgeführt. |
@@ -166,7 +166,7 @@ Beispiel: `JohnDoe` (**Actor**) verwendet `Windows File Explorer` (**handelnder 
 |**SrcFileSHA256** | Optional|SHA256 |Der SHA-256-Hash der Quelldatei. <br><br>Beispiel:<br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274`|
 |**SrcFileSHA512** |Optional | SHA512|Der SHA-512-Hash der Quelldatei. |
 |**SrcFileSize**| Optional|Integer | Die Größe der Quelldatei in Byte.|
-|**TargetFileCreationTime** | Optional|Date/Time |Der Zeitpunkt, zu dem die Zieldatei erstellt wurde. |
+|**TargetFileCreationTime** | Optional|Datum/Uhrzeit |Der Zeitpunkt, zu dem die Zieldatei erstellt wurde. |
 |**TargetFileDirectory** | Optional|String |Der Zieldateiordner oder -speicherort. Dieses Feld sollte dem Feld [TargetFilePath](#targetfilepath) unter Ausschluss des letzten Elements gleichen. <br><br>**Hinweis**: Ein Parser kann diesen Wert bereitstellen, wenn der Wert in der Protokollquelle verfügbar ist und nicht aus dem vollständigen Pfad extrahiert werden muss.|
 |**TargetFileExtension** |Optional |String | Die Zieldateierweiterung<br><br>**Hinweis**: Ein Parser kann diesen Wert bereitstellen, wenn der Wert in der Protokollquelle verfügbar ist und nicht aus dem vollständigen Pfad extrahiert werden muss.|
 | **TargetFileMimeType**|Optional | Enumerated| Der MIME- oder Medientyp der Zieldatei. Die zulässigen Werte sind im [IANA-Medientypen](https://www.iana.org/assignments/media-types/media-types.xhtml)-Repository aufgeführt.|
@@ -201,11 +201,11 @@ Der Pfad muss so normalisiert werden, dass er einem der folgenden Formate entspr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [Normalisierung in Azure Sentinel](normalization.md)
-- [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)](authentication-normalization-schema.md)
-- [Azure Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](./network-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Prozessereignis-Normalisierungsschema (Public Preview)](process-events-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (Public Preview)](registry-event-normalization-schema.md)
+- [Normalisierung in Microsoft Sentinel](normalization.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung der Authentifizierung (Public Preview)](authentication-normalization-schema.md)
+- [Referenz zum DNS-Normalisierungsschema von Microsoft Sentinel](dns-normalization-schema.md)
+- [Referenz zum Microsoft Sentinel-Netzwerk-Normalisierungsschema](./network-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum Prozessereignis-Normalisierungsschema (Öffentliche Vorschau)](process-events-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung von Registrierungsereignissen (Public Preview)](registry-event-normalization-schema.md)

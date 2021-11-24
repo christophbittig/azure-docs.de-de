@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc8ceddce4d41244d72632db058aa58c0d919db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cbdd8f5e69fb21c59be5017a3c28e1067062968
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565171"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292603"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>Steuern des Zugriffs mit Vertraulichkeitsbezeichnungen 
 
@@ -33,16 +33,13 @@ Vertraulichkeitsbezeichnungen ermöglichen Ihnen Folgendes:
 Vertraulichkeitsbezeichnungen von E-Mails und anderen Inhalten bleiben fest zugeordnet. Mit Vertraulichkeitsbezeichnungen von Containern kann der Zugriff auf den Container eingeschränkt werden, aber die Bezeichnung wird nicht an die Inhalte des Containers vererbt. Beispielsweise kann ein Benutzer Inhalte von einer geschützten Website herunterladen und dann ohne Einschränkungen freigeben. Dies ist aber nicht möglich, wenn die Inhalte auch über eine Vertraulichkeitsbezeichnung verfügen.
 
  >[!NOTE]
->Zum Anwenden von Vertraulichkeitsbezeichnungen müssen Benutzer bei ihrem Geschäfts-, Schul- oder Unikonto von Microsoft angemeldet sein. 
+>Zum Anwenden von Vertraulichkeitsbezeichnungen müssen Benutzer bei ihrem Geschäfts-, Schul- oder Unikonto von Microsoft angemeldet sein.
 
- 
 ## <a name="permissions-necessary-to-create-and-manage-sensitivity-levels"></a>Erforderliche Berechtigungen zum Erstellen und Verwalten von Vertraulichkeitsstufen
 
-Mitglieder Ihres Konformitätsteams benötigen Berechtigungen für Microsoft 365 Compliance Center, Microsoft 365 Security Center oder das Security & Compliance Center, wenn sie Vertraulichkeitsbezeichnungen erstellen sollen.
+Mitglieder Ihres Konformitätsteams benötigen Berechtigungen für das Portal bei Microsoft 365 Defender, für das Microsoft 365 Compliance Center oder das Security & Compliance Center von Office 365, wenn sie Vertraulichkeitsbezeichnungen erstellen wollen.
 
 Standardmäßig haben globale Administratoren für Ihren Mandanten Zugriff auf diese Admin Centers und können den für die Konformität zuständigen Mitarbeitern und anderen Personen Zugriff gewähren, ohne ihnen alle Berechtigungen eines Mandantenadministrators zu erteilen. Fügen Sie die Benutzer den Rollengruppen „Compliancedatenadministrator“, „Complianceadministrator“ oder „Sicherheitsadministrator“ hinzu.
-
- 
 
 ## <a name="determine-your-sensitivity-label-strategy"></a>Festlegen der Strategie für Vertraulichkeitsbezeichnungen
 
@@ -148,7 +145,7 @@ In den folgenden Artikeln finden Sie Informationen zum Sichern des externen Zugr
 
 4. [Verwenden von Gruppen für die Sicherheit](4-secure-access-groups.md)
 
-5. [Umstellung auf Azure AD B2B](5-secure-access-b2b.md)
+5. [Durchführen der Umstellung auf Azure AD B2B](5-secure-access-b2b.md)
 
 6. [Schützen des Zugriffs mit der Berechtigungsverwaltung](6-secure-access-entitlement-managment.md)
 

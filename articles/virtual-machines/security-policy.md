@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 2010347f2b796a7cac181d0b574401ad34b6f859
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a0f292a3ea3df213c1e9be76da0c2d35ce8554ce
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697258"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345166"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Sichern und Verwenden von Richtlinien auf virtuellen Computern in Azure
 
@@ -25,11 +25,11 @@ Es ist wichtig, dass Sie in Bezug auf die ausgeführten Anwendungen auf den Schu
 
 Die Bedrohungslage für Cloudumgebungen ist dynamisch. Dies erhöht den Druck, effektive Schutzmaßnahmen durchzuführen, um die Compliance- und Sicherheitsanforderungen zu erfüllen. [Microsoft Antimalware for Azure](../security/fundamentals/antimalware.md) ist eine kostenlose Echtzeit-Schutzfunktion zum Bestimmen und Entfernen von Viren, Spyware und anderer Schadsoftware. Warnungen können so konfiguriert werden, dass Sie benachrichtigt werden, wenn versucht wird, bekannte Schadsoftware oder unerwünschte Software zu installieren oder auf Ihrer VM auszuführen. Es wird auf VMs, auf denen Linux oder Windows Server 2008 ausgeführt wird, nicht unterstützt.
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender für Cloud
 
-Mit [Azure Security Center](../security-center/security-center-introduction.md) können Sie Bedrohungen Ihrer VMs verhindern, erkennen und bekämpfen. Security Center bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
+[Microsoft Defender für Cloud](../security-center/security-center-introduction.md) hilft Ihnen dabei, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren. Defender for Cloud bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die sonst unbemerkt bleiben würden, und arbeitet mit einem breiten Ökosystem von Sicherheitslösungen zusammen.
 
-Der Just-In-Time-VM-Zugriff in Security Center kann auf alle VM-Bereitstellungen angewandt werden, um eingehenden Datenverkehr auf Azure-VMs zu sperren und dadurch die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen. Wenn Just-In-Time aktiviert ist und ein Benutzer Zugriff auf eine VM anfordert, überprüft Security Center, welche Berechtigungen der Benutzer für den virtuellen Computer hat. Wenn er über die passenden Berechtigungen verfügt, wird die Anforderung genehmigt, und die Netzwerksicherheitsgruppen (NSGs) werden von Security Center automatisch so konfiguriert, dass eingehender Datenverkehr zu den ausgewählten Ports für eine begrenzte Zeit zugelassen wird. Nach Ablauf dieser Zeitspanne stellt das Security Center die vorherigen Status der NSGs wieder her. 
+Der Just-in-Time-Zugriff von Defender for Cloud kann auf Ihre gesamte VM-Bereitstellung angewendet werden, um den eingehenden Datenverkehr zu Ihren Azure-VMs zu sperren und so die Anfälligkeit für Angriffe zu verringern, während gleichzeitig ein einfacher Zugriff auf die VMs bei Bedarf möglich ist. Wenn Just-in-Time aktiviert ist und ein Benutzer Zugriff auf eine VM anfordert, prüft Defender for Cloud, welche Berechtigungen der Benutzer für die VM hat. Wenn er über die entsprechenden Berechtigungen verfügt, wird die Anfrage genehmigt und Defender for Cloud konfiguriert automatisch die Netzwerksicherheitsgruppen (NSGs), um eingehenden Datenverkehr zu den ausgewählten Ports für eine begrenzte Zeit zuzulassen. Nach Ablauf dieser Zeitspanne stellt Defender für Cloud den jeweiligen vorherigen Status der NSGs wieder her. 
 
 ## <a name="encryption"></a>Verschlüsselung
 
@@ -75,4 +75,4 @@ Mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Acce
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Führen Sie die Schritte aus, um die VM-Sicherheit mit dem Azure Security Center für [Linux](../security/fundamentals/overview.md) oder [Windows](/previous-versions/azure/virtual-machines/tutorial-azure-security) zu überwachen.
+- Führen Sie die Schritte zur Überwachung der Sicherheit virtueller Maschinen mit Microsoft Defender für Cloud für [Linux](../security/fundamentals/overview.md) oder [Windows](/previous-versions/azure/virtual-machines/tutorial-azure-security) durch.

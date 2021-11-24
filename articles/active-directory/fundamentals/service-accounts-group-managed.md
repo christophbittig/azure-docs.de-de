@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b823fbcc124a67980fcd1f0440ae107de01fc20
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: f934e016f23e988cbe8673f80e96c4583b6aaec5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690407"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292507"
 ---
 # <a name="secure-group-managed-service-accounts"></a>Schützen von gruppenverwalteten Dienstkonten
 
@@ -57,7 +57,7 @@ Die folgende Tabelle enthält Informationen zu potenziellen Sicherheitsproblemen
 | Sicherheitsproblem| Minderung |
 | - | - |
 | Das gMSA ist Mitglied von privilegierten Gruppen. | <li>Überprüfen Sie die Gruppenmitgliedschaften. Dazu können Sie ein PowerShell-Skript erstellen, um alle Gruppenmitgliedschaften aufzuzählen. Anschließend können Sie eine resultierende CSV-Datei nach den Namen Ihrer gMSA-Dateien filtern.<li>Entfernen Sie das gMSA aus privilegierten Gruppen.<li>Weisen Sie dem gMSA nur die Rechte und Berechtigungen zu, die zum Ausführen des zugehörigen Diensts erforderlich sind (wenden Sie sich an den Dienstanbieter). 
-| Das gMSA verfügt über Lese-/Schreibzugriff auf vertrauliche Ressourcen. | <li>Überwachen Sie den Zugriff auf vertrauliche Ressourcen.<li>Archivieren Sie zur Analyse Überwachungsprotokolle in einem SIEM-System wie Azure Log Analytics oder Azure Sentinel.<li>Entfernen Sie unnötige Ressourcenberechtigungen, falls Sie eine unerwünschte Zugriffsebene finden. |
+| Das gMSA verfügt über Lese-/Schreibzugriff auf vertrauliche Ressourcen. | <li>Überwachen Sie den Zugriff auf vertrauliche Ressourcen.<li>Archivieren Sie zur Analyse Überwachungsprotokolle in einem SIEM-System wie Azure Log Analytics oder Microsoft Sentinel.<li>Entfernen Sie unnötige Ressourcenberechtigungen, falls Sie eine unerwünschte Zugriffsebene finden. |
 | | |
 
 

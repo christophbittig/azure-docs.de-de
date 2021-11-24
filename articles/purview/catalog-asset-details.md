@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 8004ef319efc08610f9c1a5de16b7c430d51d666
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 6013811622492f476e65c91d3c028007e2802c27
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209177"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485195"
 ---
 # <a name="view-edit-and-delete-assets-in-purview-catalog"></a>Anzeigen, Bearbeiten und Löschen von Ressourcen im Purview-Katalog
 
@@ -81,11 +81,16 @@ Sie können auf dem Bearbeitungsbildschirm zur Registerkarte „Schema“ navigi
 
 Sie können auf dem Bearbeitungsbildschirm zur Registerkarte „Kontakt“ navigieren, um Besitzer und Experten für die Ressource zu aktualisieren. Sie können in Ihrer Azure Active Directory-Instanz nach vollständigem Namen, E-Mail-Adresse oder Alias der Person suchen.
 
-### <a name="edit-behavior-explained"></a>Erläuterung des Bearbeitungsverhaltens
+### <a name="scans-on-edited-assets"></a>Überprüfen auf bearbeitete Ressourcen
 
-Wenn Sie eine Aktualisierung auf Ressourcenebene vornehmen, wie z. B. Hinzufügen einer Beschreibung, einer Klassifizierung auf Ressourcenebene, eines Glossarbegriffs oder eines Kontakts zu einer Ressource, wird bei nachfolgenden Überprüfungen das Schema der Ressource aktualisiert (mit neuen Spalten und Klassifizierungen, die bei nachfolgenden Überprüfungsläufen erkannt wurden).
+Wenn Sie eine Ressource bearbeiten, indem Sie eine Beschreibung, eine Klassifizierung auf Ressourcenebene, einen Glossarbegriff oder einen Kontakt hinzufügen, wird das Ressourcenschema auch bei späteren Überprüfungen aktualisiert (neue Spalten und Klassifizierungen, die bei späteren Überprüfungen erkannt wurden).
 
-Wenn Sie eine Aktualisierung auf Spaltenebene vornehmen, wie z. B. Hinzufügen einer Beschreibung, einer Klassifizierung auf Spaltenebene, eines Glossarbegriffs oder Aktualisieren des Datentyps oder Spaltennamens, wird bei nachfolgenden Überprüfungen das Schema der Ressource **nicht** aktualisiert (neue Spalten und Klassifizierungen werden bei nachfolgenden Überprüfungsläufen **nicht erkannt**).
+Wenn Sie einige Aktualisierungen auf Spaltenebene vornehmen, z. B. das Hinzufügen einer Beschreibung, einer Klassifizierung auf Spaltenebene oder eines Glossarbegriffs, dann wird bei nachfolgenden Überprüfungen auch das Ressourcenschema aktualisiert (neue Spalten und Klassifizierungen werden bei nachfolgenden Überprüfungen erkannt). 
+
+Selbst bei bearbeiteten Ressourcen spiegelt Azure Purview nach einer Überprüfung die Tatsachen des Quellsystems wider. Beispiel: Wenn Sie eine Spalte bearbeiten und sie aus der Quelle gelöscht wird, wird sie aus Ihrer Ressource in Purview gelöscht. 
+
+>[!NOTE]
+> Wenn Sie den **Namen oder den Datentyp einer Spalte** in einer Azure Purview-Ressource aktualisieren, wird das Schema der Ressource bei späteren Überprüfungen **nicht** mehr aktualisiert. Neue Spalten und Klassifizierungen **werden nicht** erkannt.
 
 ## <a name="deleting-assets"></a>Löschen von Ressourcen
 
@@ -93,11 +98,12 @@ Sie können ein Asset löschen, indem Sie auf das Löschsymbol unter dem Namen d
 
 ### <a name="delete-behavior-explained"></a>Erläuterung des Löschverhaltens
 
-Alle Ressourcen, die Sie mithilfe der Schaltfläche „Löschen“ löschen, werden endgültig gelöscht. Wenn Sie jedoch eine **vollständige Überprüfung** der Quelle durchführen, aus der die Ressource im Katalog erfasst wurde, wird die Ressource erneut erfasst, sodass Sie sie mithilfe des Purview-Katalogs finden können.
+Alle Ressourcen, die Sie mithilfe der Schaltfläche „Löschen“ löschen, werden in Azure Purview endgültig gelöscht. Wenn Sie jedoch eine **vollständige Überprüfung** der Quelle durchführen, aus der die Ressource im Katalog erfasst wurde, wird die Ressource erneut erfasst, sodass Sie sie mithilfe des Purview-Katalogs finden können.
 
 Wenn Sie für die Quelle eine geplante Überprüfung (wöchentlich oder monatlich) durchführen lassen, wird die **gelöschte Ressource nicht erneut im Katalog erfasst**, es sei denn, die Ressource wurde seit dem letzten Überprüfungslauf von einem Benutzer geändert.   Wenn z. B. eine SQL-Tabelle aus Purview gelöscht wurde, aber ein Benutzer nach der Löschung der Tabelle eine neue Spalte in SQL hinzugefügt hat, wird die Ressource bei der nächsten Überprüfung erneut geprüft und in den Katalog aufgenommen.
 
 Wenn Sie eine Ressource löschen, wird nur diese Ressource gelöscht. Purview unterstützt derzeit keine kaskadierenden Löschvorgänge. Wenn Sie beispielsweise ein Speicherkontoobjekt aus Ihrem Katalog löschen, werden die darin enthaltenen Container, Ordner und Dateien nicht gelöscht. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

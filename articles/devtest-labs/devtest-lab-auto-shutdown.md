@@ -3,12 +3,12 @@ title: Konfigurieren der Richtlinie zum automatischen Herunterfahren für Labs u
 description: Erfahren Sie, wie Sie Zeitpläne und Richtlinien für das automatische Herunterfahren für Azure DevTest Labs bzw. für einzelne virtuelle Computer (VMs) festlegen, um die VMs zu einem bestimmten Zeitpunkt täglich herunterfahren zu können.
 ms.topic: how-to
 ms.date: 11/01/2021
-ms.openlocfilehash: b795ab8baaec5ea84823d4741f1bfcc48c990204
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 622d9c2da013ad9eb8c3a0eef46a21999f54ee76
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131503316"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286733"
 ---
 # <a name="configure-auto-shutdown-for-labs-and-vms-in-devtest-labs"></a>Konfigurieren des automatischen Herunterfahrens für Labs und VMs in DevTest Labs
 
@@ -38,7 +38,7 @@ Standardmäßig gilt dieser Zeitplan für alle virtuellen Computer im Lab. Um di
 
 ## <a name="configure-lab-auto-shutdown-policy"></a>Konfigurieren Sie die Richtlinien zum automatischen Herunterfahren des Labors
 
-Als Lab-Besitzer können Sie Kosten steuern und Verschwendung in Ihren Labs minimieren, indem Sie Richtlinieneinstellungen für das automatische Herunterfahren für Ihr Lab anpassen. Informationen zum Festlegen aller Richtlinien finden Sie unter [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md). 
+Als Lab-Besitzer können Sie Kosten steuern und Verschwendung in Ihren Labs minimieren, indem Sie Richtlinieneinstellungen für das automatische Herunterfahren für Ihr Lab anpassen. Informationen zum Festlegen aller Richtlinien finden Sie unter [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md).
 
 > [!IMPORTANT]
 > Änderungen an der Richtlinie für das Herunterfahren gelten nur für neu im Lab erstellte VMs und nicht für bereits vorhandene VMs.
@@ -217,15 +217,15 @@ Integrieren in den E-Mail-Client.
 
    ![Screenshot: Option E-Mail Senden V2.](media/devtest-lab-auto-shutdown/select-send-email.png)
 
-1. Füllen Sie im Formular **E-Mail senden (V2)** die Felder **An**, **Betreff** und **Text** aus. 
+1. Füllen Sie im Formular **E-Mail senden (V2)** die Felder **An**, **Betreff** und **Text** aus.
 
-   Wählen Sie **Dynamischen Inhalt hinzufügen** aus, um die Benachrichtigung automatisch mit Werten zu füllen, die von der App und den Connectors verwendet werden. Wählen Sie beispielsweise für **An** die Option **Besitzer aus.** Füllen Sie **Subject** mit **vmName und** **labName** auf. Fügen Sie dem Nachrichtentext Inhalt wie **skipUrl** und **delayUrl** s hinzu.
+   Wählen Sie **Dynamischen Inhalt hinzufügen** aus, um die Benachrichtigung automatisch mit Werten zu füllen, die von der App und den Connectors verwendet werden. Wählen Sie beispielsweise für **An** die Option **Besitzer aus.** Füllen Sie **Subject** mit **vmName und** **labName** auf. Fügen Sie dem Nachrichtentext Inhalte wie zum Beispiel die Werte **skipUrl** und **delayUrl** s hinzu.
 
    ![Screenshot mit einem Beispiel für eine Benachrichtigungs-E-Mail.](media/devtest-lab-auto-shutdown/email-options.png)
 
 1. Wählen Sie auf der Symbolleiste **Speichern** aus.
 
-Nun können Sie die Webhook-URL kopieren. Wählen Sie den Schritt **Wenn eine HTTP-Anforderung empfangen wird**, und wählen Sie dann die Schaltfläche Kopieren, um den HTTP POST URL in die Zwischenablage zu kopieren. Fügen Sie diesen Webhook-URL in die Benachrichtigungseinstellungen für das automatische Herunterfahren ein.
+Nun können Sie die Webhook-URL kopieren. Wählen Sie den Schritt **Wenn eine HTTP-Anforderung empfangen wird** und wählen Sie dann die Schaltfläche Kopieren, um die HTTP POST URL in die Zwischenablage zu kopieren. Fügen Sie diesen Webhook-URL in die Benachrichtigungseinstellungen für das automatische Herunterfahren ein.
 
 ![Screenshot, der das Kopieren des Webhook-URL zeigt.](media/devtest-lab-auto-shutdown/webhook-url.png)
 

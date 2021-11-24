@@ -1,32 +1,32 @@
 ---
-title: Referenz zu Azure Sentinel-UEBA-Anreicherungen | Microsoft-Dokumentation
-description: In diesem Artikel werden die Entitätsanreicherungen gezeigt, die von der Entitätsverhaltensanalyse von Azure Sentinel generiert werden.
+title: Referenz zu Microsoft Sentinel-UEBA-Anreicherungen | Microsoft-Dokumentation
+description: In diesem Artikel werden die Entitätsanreicherungen gezeigt, die von der Entitätsverhaltensanalyse von Microsoft Sentinel generiert werden.
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: reference
-ms.date: 05/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 944c2b155a0cfa48d98876aa463c27cf5c47d40c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 345f34d2e0db508b831dca6d7f19b27436448de0
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083705"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519817"
 ---
-# <a name="azure-sentinel-ueba-enrichments-reference"></a>Referenz zu Azure Sentinel-UEBA-Anreicherungen
+# <a name="microsoft-sentinel-ueba-enrichments-reference"></a>Microsoft Sentinel UEBA Anreicherungen Referenz
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Dieser Artikel befasst sich mit der Azure Sentinel-Tabelle **BehaviorAnalytics**, die sich unter **Protokolle** befindet und die auf den [Seiten mit den Entitätsdetails](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages) erwähnt wird. Außerdem werden Details zu den Feldern für Entitätsanreicherungen in dieser Tabelle beschrieben, deren Inhalte Sie verwenden können, um Ihre Untersuchungen zu Sicherheitsvorfällen zu fokussieren und zu verbessern.
+Dieser Artikel befasst sich mit der Microsoft Sentinel-Tabelle **BehaviorAnalytics**, die sich unter **Protokolle** befindet und die auf den [Seiten mit den Entitätsdetails](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages) erwähnt wird. Außerdem werden Details zu den Feldern für Entitätsanreicherungen in dieser Tabelle beschrieben, deren Inhalte Sie verwenden können, um Ihre Untersuchungen zu Sicherheitsvorfällen zu fokussieren und zu verbessern.
 
 Die folgenden drei dynamischen Felder aus der Tabelle „BehaviorAnalytics“ werden in den [folgenden Tabellen](#entity-enrichments-dynamic-fields) beschrieben.
 
 Die Felder [UsersInsights](#usersinsights-field) und [DevicesInsights](#devicesinsights-field), enthalten Entitätsinformationen aus Active Directory/Azure AD- und Microsoft Threat Intelligence-Quellen.
 
-Das Feld [ActivityInsights](#activityinsights-field) enthält Entitätsinformationen, die auf den aus der Entitätsverhaltensanalyse von Azure Sentinel resultierenden Verhaltensprofilen basieren. 
+Das Feld [ActivityInsights](#activityinsights-field) enthält Entitätsinformationen, die auf den aus der Entitätsverhaltensanalyse von Microsoft Sentinel resultierenden Verhaltensprofilen basieren. 
 
 <a name="baseline-explained"></a>Benutzeraktivitäten werden anhand einer Baseline analysiert, die bei jeder Verwendung dynamisch kompiliert wird. Jede Aktivität verfügt über ihren eigenen definierten Rückblickzeitraum, von dem die dynamische Baseline abgeleitet ist. Dieser Rückblickzeitraum wird in der Spalte [**Baseline**](#activityinsights-field) in dieser Tabelle angegeben.
 
@@ -41,7 +41,7 @@ Das Feld [ActivityInsights](#activityinsights-field) enthält Entitätsinformati
 >
 ## <a name="behavioranalytics-table"></a>Tabelle „BehaviorAnalytics“
 
-In der folgenden Tabelle werden die Verhaltensanalysedaten beschrieben, die auf jeder [Seite mit Entitätsdetails](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages) in Azure Sentinel angezeigt werden.
+In der folgenden Tabelle werden die Verhaltensanalysedaten beschrieben, die auf jeder [Seite mit Entitätsdetails](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages) in Microsoft Sentinel angezeigt werden.
 
 | Feld                     | type | BESCHREIBUNG                                                  |
 |---------------------------|------|--------------------------------------------------------------|
@@ -208,7 +208,7 @@ In der folgenden Tabelle werden die Anreicherungen beschrieben, die im dynamisch
 
 ## <a name="identityinfo-table-public-preview"></a>IdentityInfo-Tabelle (öffentliche Vorschau)
 
-Nachdem Sie [UEBA](enable-entity-behavior-analytics.md) für Ihren Azure Sentinel-Arbeitsbereich aktiviert haben, werden Daten aus Ihrer Azure Active Directory-Instanz zur Verwendung in Azure Sentinel mit der **IdentityInfo-Tabelle** in Log Analytics synchronisiert. Sie können aus Azure AD synchronisierte Benutzerdaten in Ihre Analyseregeln einbetten, um die Analysen für Ihre Anwendungsfälle zu verbessern und falsch positive Ergebnisse zu reduzieren.
+Nachdem Sie [UEBA](enable-entity-behavior-analytics.md) für Ihren Microsoft Sentinel-Arbeitsbereich aktiviert haben, werden Daten aus Ihrer Azure Active Directory-Instanz zur Verwendung in Microsoft Sentinel mit der **IdentityInfo-Tabelle** in Log Analytics synchronisiert. Sie können aus Azure AD synchronisierte Benutzerdaten in Ihre Analyseregeln einbetten, um die Analysen für Ihre Anwendungsfälle zu verbessern und falsch positive Ergebnisse zu reduzieren.
 
 Die Erstsynchronisierung kann einige Tage dauern. Nachdem die Daten vollständig synchronisiert wurden, gilt Folgendes:
 
@@ -216,7 +216,7 @@ Die Erstsynchronisierung kann einige Tage dauern. Nachdem die Daten vollständig
 
 - Gruppen- und Rolleninformationen werden täglich zwischen der **IdentityInfo**-Tabelle und Azure AD synchronisiert.
 
-- Azure Sentinel führt alle 21 Tage eine erneute Synchronisierung mit Ihrer gesamten Azure AD-Instanz durch, um sicherzustellen, dass veraltete Datensätze vollständig aktualisiert werden.
+- Microsoft Sentinel führt alle 21 Tage eine erneute Synchronisierung mit Ihrer gesamten Azure AD-Instanz durch, um sicherzustellen, dass veraltete Datensätze vollständig aktualisiert werden.
 
 - Die Standardaufbewahrungsdauer in der **IdentityInfo**-Tabelle beträgt 30 Tage.
 
@@ -268,7 +268,7 @@ In der folgenden Tabelle werden die Benutzeridentitätsdaten beschrieben, die in
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument wurde das Tabellenschema der Entitätsverhaltensanalyse in Azure Sentinel beschrieben.
+In diesem Dokument wurde das Tabellenschema der Entitätsverhaltensanalyse in Microsoft Sentinel beschrieben.
 
 - Erfahren Sie mehr über die [Entitätsverhaltensanalyse](identify-threats-with-entity-behavior-analytics.md).
 - [Verwenden von UEBA](investigate-with-ueba.md) in Ihren Untersuchungen.

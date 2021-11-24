@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 10/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 1bf17761ed7ddba74ea62f5545f44f1c4b57c8d3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0212c21a90caa533003d2304cfded72eb2370b49
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456506"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286049"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled"></a>Bereitstellen eines virtuellen Computers mit aktiviertem vertrauenswürdigem Start
 
@@ -24,7 +24,7 @@ Der [vertrauenswürdige Start](trusted-launch.md) ist eine Möglichkeit zur Verb
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-- Sie müssen [für Ihr Abonnement ein Onboarding in Azure Security Center durchführen](https://azure.microsoft.com/services/security-center/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&OCID=AID2200277_SEM_CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE#overview), falls dies noch nicht erfolgt ist. Azure Security Center (ASC) verfügt über einen Free-Tarif, der sehr nützliche Erkenntnisse für unterschiedliche Azure- und Hybridressourcen bietet. Vertrauenswürdiger Start nutzt ASC, um mehrere Empfehlungen zur VM-Integrität anzuzeigen. 
+- Sie müssen [Ihr Abonnement in Microsoft Defender für Cloud integrieren](https://azure.microsoft.com/services/security-center/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&OCID=AID2200277_SEM_CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE#overview), falls dies noch nicht erfolgt ist. Microsoft Defender für Cloud verfügt über ein kostenloses Kontingent, das sehr nützliche Hinweise für unterschiedliche Azure- und Hybridressourcen bietet. Beim vertrauenswürdigen Start wird Defender für Cloud genutzt, um eine Reihe von Empfehlungen zur Integrität der virtuellen Computer zu erhalten. 
 
 - Weisen Sie Ihrem Abonnement Azure-Richtlinieninitiativen zu. Diese Richtlinieninitiativen müssen nur einmal pro Abonnement zugewiesen werden. Dadurch werden automatisch alle erforderlichen Erweiterungen auf allen unterstützten VMs installiert. 
     - Konfigurieren Sie die Voraussetzungen, um den Gastnachweises für virtuelle Computer mit „vertrauenswürdigem Start“ zu aktivieren 
@@ -158,9 +158,6 @@ Sie können VMs für den vertrauenswürdigen Start mithilfe einer Schnellstartvo
 [![In Azure bereitstellen](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ---
-
-
-
 
 ## <a name="verify-or-update-your-settings"></a>Überprüfen oder Aktualisieren Ihrer Einstellungen
 

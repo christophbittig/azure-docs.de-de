@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 86fd1a8a6dbf8ea18d630996dd0d5fc94537f363
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 72ef8193215d3dc35f576a96a005bde8bf40e49f
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131465742"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371940"
 ---
 # <a name="azure-automanage-for-machines-best-practices---windows-server"></a>Bewährte Methoden für Azure Automanage für Computer: Windows Server
 
@@ -37,7 +37,7 @@ Automanage unterstützt die folgenden Windows Server-Versionen:
 |-----------|---------------|----------------------|
 |[Überwachung von Computererkenntnissen](../azure-monitor/vm/vminsights-overview.md)    |Azure Monitor für Computer überwacht die Leistung und Integrität Ihrer virtuellen Computer, einschließlich ihrer ausgeführten Prozesse und Abhängigkeiten von anderen Ressourcen.    |Bereitstellung    |
 |[Backup](../backup/backup-overview.md)    |Azure Backup stellt unabhängige und isolierte Sicherungen bereit, um Schutz vor einer unbeabsichtigten Löschung von Daten auf Ihren Computern zu bieten. Die Gebühren basieren auf der Anzahl und Größe der VMs, die geschützt werden.    |Bereitstellung    |
-|[Azure Security Center](../security-center/security-center-introduction.md)    |Azure Security Center ist ein vereinheitlichtes Sicherheitsverwaltungssystem für Infrastrukturen, mit dem der Sicherheitsstatus Ihrer Rechenzentren gestärkt wird und ein erweiterter Schutz vor Bedrohungen für Ihre Hybridworkloads in der Cloud bereitgestellt wird.  Die automatische Verwaltung konfiguriert das Abonnement, in dem sich Ihre VM befindet, für das Free-Tarifangebot von Azure Security Center. Wenn Ihr Abonnement bereits mit Azure Security Center verbunden ist, wird es von Automanage nicht neu konfiguriert.    |Produktion, Dev/Test    |
+|[Microsoft Defender für Cloud](../defender-for-cloud/defender-for-cloud-introduction.md)    |Microsoft Defender für Cloud ist ein einheitliches Sicherheitsverwaltungssystem für die Infrastruktur, das den Sicherheitsstatus Ihrer Rechenzentren stärken und erweiterten Bedrohungsschutz für Ihre Hybridworkloads in der Cloud bietet.  Die automatische Verwaltung konfiguriert das Abonnement, in dem sich Ihr virtueller Computer befindet, für das Free-Tier-Angebot von Microsoft Defender für Cloud. Wenn Ihr Abonnement bereits mit Microsoft Defender für Cloud verbunden ist, wird es von Automanage nicht neu konfiguriert.    |Produktion, Dev/Test    |
 |[Microsoft Antimalware](../security/fundamentals/antimalware.md)    |Microsoft Antimalware für Azure ist eine kostenlose Echtzeit-Schutzfunktion zum Erkennen und Entfernen von Viren, Spyware und anderer Schadsoftware. Das Tool generiert Warnungen, wenn bekannte schädliche oder unerwünschte Software versucht, sich selbst auf Ihren Azure-Systemen zu installieren oder dort auszuführen. **Hinweis**: Microsoft Antimalware setzt für eine ordnungsgemäße Funktion voraus, dass keine andere Antimalware-Software installiert ist. |Produktion, Dev/Test    |
 |[Updateverwaltung](../automation/update-management/overview.md)    |Sie können die Updateverwaltung in Azure Automation verwenden, um Betriebssystemupdates für Ihre Computer zu verwalten. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.    |Produktion, Dev/Test    |
 |[Änderungsnachverfolgung und Bestand](../automation/change-tracking/overview.md) |„Änderungsnachverfolgung und Bestand“ kombiniert Änderungsnachverfolgungs- und Bestandsfunktionen, mit denen Sie Änderungen an virtuellen Computern und Serverinfrastrukturen nachverfolgen können. Da der Dienst auch eine Änderungsnachverfolgung für Dienste, Daemons, Software, Registrierung und Dateien in Ihrer Umgebung unterstützt, können Sie unerwünschte Änderungen ermitteln und entsprechende Warnungen auslösen. Durch die Unterstützung einer Bestandserfassung ist es zudem möglich, Ressourcen auf Gastsystemen abzurufen, um sich über die installierten Anwendungen und andere Konfigurationselemente zu informieren.    |Produktion, Dev/Test    |

@@ -1,23 +1,23 @@
 ---
-title: Verwenden von Hunting-Lesezeichen für Datenuntersuchungen in Azure Sentinel
-description: In diesem Artikel ist beschrieben, wie Azure Sentinel-Suchlesezeichen verwendet werden können, um den Überblick über Daten zu behalten.
+title: Verwenden von Hunting-Lesezeichen für Datenuntersuchungen in Microsoft Sentinel
+description: In diesem Artikel ist beschrieben, wie Microsoft Sentinel-Suchlesezeichen verwendet werden können, um den Überblick über Daten zu behalten.
 author: yelevin
 ms.author: yelevin
 manager: rkarlin
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
-ms.date: 11/01/2021
-ms.openlocfilehash: 36f81136a4fd3f836c925c2cc44fa4413aaba341
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/09/2021
+ms.openlocfilehash: 7ddfa01141ac95b78371d8fbe0a239e09057481a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131463589"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524738"
 ---
-# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Behalten des Überblicks über Daten beim Hunting mit Azure Sentinel
+# <a name="keep-track-of-data-during-hunting-with-microsoft-sentinel"></a>Daten während des Huntings mit Microsoft Sentinel verfolgen
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "131463589"
 
 Eine Bedrohungssuche erfordert in der Regel die Überprüfung sehr großer Mengen von Protokolldaten, um nach Beweisen für bösartiges Verhalten zu suchen. Während dieses Prozesses finden Ermittler Ereignisse, die sie sich merken, erneut besuchen und analysieren möchten, um mögliche Hypothesen zu validieren und die ganze Geschichte einer Gefährdung zu verstehen.
 
-Hunting-Lesezeichen in Azure Sentinel helfen Ihnen dabei, indem sie die Abfragen, die Sie in **Azure Sentinel – Logs** ausgeführt haben, sowie die Abfrageergebnisse, die Sie für relevant halten, konservieren. Sie können auch Ihre kontextbezogenen Beobachtungen aufzeichnen und Ihre Ergebnisse durch Hinzufügen von Anmerkungen und Tags referenzieren. Mit Lesezeichen markierte Daten sind für Sie und Ihre Teamkollegen zur einfachen Zusammenarbeit sichtbar.
+Hunting-Lesezeichen in Microsoft Sentinel helfen Ihnen dabei, indem sie die Abfragen, die Sie in **Microsoft Sentinel – Logs** ausgeführt haben, sowie die Abfrageergebnisse, die Sie für relevant halten, konservieren. Sie können auch Ihre kontextbezogenen Beobachtungen aufzeichnen und Ihre Ergebnisse durch Hinzufügen von Anmerkungen und Tags referenzieren. Mit Lesezeichen markierte Daten sind für Sie und Ihre Teamkollegen zur einfachen Zusammenarbeit sichtbar.
 
 Sie können Sie Lücken in Bezug auf die Abdeckung der MITRE ATT&CK-Techniken für alle Hunting-Abfragen nun identifizieren und schließen, indem Sie Ihre benutzerdefinierten Hunting-Abfragen den MITRE ATT&CK-Techniken zuordnen.
 
@@ -40,9 +40,9 @@ Sie können beim Hunting mit Lesezeichen auch weitere Arten von Entitäten unter
 > Die Zuordnung eines erweiterten Satzes mit Entitätstypen und Bezeichnern zu Lesezeichen befindet sich derzeit in der **VORSCHAUPHASE**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 >
 
-Wenn Sie während des Hunting-Vorgangs in Ihren Protokollen auf ein Problem stoßen, das dringend behandelt werden muss, können Sie einfach ein Lesezeichen erstellen und das Problem entweder auf einen Incident hochstufen oder einem vorhandenen Incident hinzufügen. Weitere Informationen zu Incidents finden Sie unter [Untersuchen von Vorfällen mit Azure Sentinel](investigate-cases.md).
+Wenn Sie während des Hunting-Vorgangs in Ihren Protokollen auf ein Problem stoßen, das dringend behandelt werden muss, können Sie einfach ein Lesezeichen erstellen und das Problem entweder auf einen Incident hochstufen oder einem vorhandenen Incident hinzufügen. Weitere Informationen zu Incidents finden Sie unter [Untersuchen von Vorfällen mit Microsoft Sentinel](investigate-cases.md).
 
-Wenn Sie ein Problem finden, für das Sie ein Lesezeichen vergeben möchten, aber keine unmittelbare Dringlichkeit besteht, können Sie wie folgt vorgehen: Erstellen Sie ein Lesezeichen, damit Sie auf diese gekennzeichneten Daten auf der Seite **Hunting** über die Registerkarte **Lesezeichen** jederzeit erneut zugreifen können. Sie können Filter- und Suchoptionen verwenden, um bestimmte Daten für Ihre aktuelle Untersuchung schnell zu finden. 
+Wenn Sie ein Problem finden, für das Sie ein Lesezeichen vergeben möchten, aber keine unmittelbare Dringlichkeit besteht, können Sie wie folgt vorgehen: Erstellen Sie ein Lesezeichen, damit Sie auf diese gekennzeichneten Daten auf der Seite **Hunting** über die Registerkarte **Lesezeichen** jederzeit erneut zugreifen können. Sie können Filter- und Suchoptionen verwenden, um bestimmte Daten für Ihre aktuelle Untersuchung schnell zu finden.
 
 Sie können Ihre mit Lesezeichen versehenen Daten visualisieren, indem Sie in den Lesezeichendetails die Option **Untersuchen** auswählen. Dadurch wird der Untersuchungsvorgang gestartet, in dem Sie Ihre Ergebnisse mithilfe eines interaktiven Entität-Grafikdiagramms und einer Zeitachse anzeigen, untersuchen und visuell kommunizieren können.
 
@@ -54,13 +54,13 @@ Durch Anzeigen von Lesezeichen aus der Tabelle können Sie mit Lesezeichen marki
 
 ## <a name="add-a-bookmark"></a>Hinzufügen eines Lesezeichens
 
-1. Navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Bedrohungsmanagement** > **Hunting**, um Abfragen zu verdächtigem und ungewöhnlichem Verhalten auszuführen.
+1. Navigieren Sie im Azure-Portal zu **Microsoft Sentinel** > **Bedrohungsverwaltung** > **Hunting**, um Abfragen zu verdächtigem und ungewöhnlichem Verhalten auszuführen.
 
-1. Wählen Sie eine der Hunting-Abfragen und dann rechts in den Details der Hunting-Abfrage die Option **Abfrage ausführen** aus. 
+1. Wählen Sie eine der Hunting-Abfragen und dann rechts in den Details der Hunting-Abfrage die Option **Abfrage ausführen** aus.
 
 1. Wählen Sie **Abfrageergebnisse anzeigen** aus. Beispiel:
 
-    :::image type="content" source="media/bookmarks/new-processes-observed-example.png" alt-text="Screenshot: Anzeigen von Abfrageergebnissen für Azure Sentinel-Hunting":::
+    :::image type="content" source="media/bookmarks/new-processes-observed-example.png" alt-text="Screenshot: Anzeigen von Abfrageergebnissen für Microsoft Sentinel-Hunting":::
 
     Diese Aktion öffnet die Abfrageergebnisse im Bereich **Protokolle**.
 
@@ -80,17 +80,16 @@ Durch Anzeigen von Lesezeichen aus der Tabelle können Sie mit Lesezeichen marki
 
     :::image type="content" source="media/bookmarks/map-entity-types-bookmark.png" alt-text="Screenshot: Zuordnen von Entitätstypen für Hunting-Lesezeichen":::
 
-    Um das Lesezeichen im Untersuchungsdiagramm anzeigen zu können, müssen Sie mindestens eine Entität zuordnen. Entitätszuordnungen für die Entitätstypen „Konto“, „Host“, „IP-Adresse“ und „URL“, die vor dieser Vorschauphase erstellt wurden, werden weiterhin unterstützt, und die Abwärtskompatibilität bleibt erhalten. 
+    Um das Lesezeichen im Untersuchungsdiagramm anzeigen zu können, müssen Sie mindestens eine Entität zuordnen. Entitätszuordnungen für die Entitätstypen „Konto“, „Host“, „IP-Adresse“ und „URL“, die vor dieser Vorschauphase erstellt wurden, werden weiterhin unterstützt, und die Abwärtskompatibilität bleibt erhalten.
 
 1. Klicken Sie auf **Speichern**, um Ihre Änderungen zu übernehmen und das Lesezeichen hinzuzufügen. Alle mit Lesezeichen markierten Daten werden für andere Analysten freigegeben. Dies ist ein erster Schritt zur Schaffung einer Umgebung für gemeinsame Untersuchungen.
 
- 
 > [!NOTE]
-> Die Ergebnisse der Protokollabfrage unterstützen Lesezeichen, wenn dieser Bereich von Azure Sentinel aus geöffnet wird. Sie wählen z. B. **Allgemein** > **Protokolle** auf der Navigationsleiste, dann Ereignislinks im Untersuchungsdiagramm oder eine Warnungs-ID aus den vollständigen Details eines Incidents aus (derzeit in der Vorschauversion). Sie können keine Lesezeichen erstellen, wenn der Bereich **Protokolle** von anderen Positionen aus geöffnet wird, z. B. direkt über Azure Monitor.
+> Die Ergebnisse der Protokollabfrage unterstützen Lesezeichen, wenn dieser Bereich von Microsoft Sentinel aus geöffnet wird. Sie wählen z. B. **Allgemein** > **Protokolle** auf der Navigationsleiste, dann Ereignislinks im Untersuchungsdiagramm oder eine Warnungs-ID aus den vollständigen Details eines Incidents aus (derzeit in der Vorschauversion). Sie können keine Lesezeichen erstellen, wenn der Bereich **Protokolle** von anderen Positionen aus geöffnet wird, z. B. direkt über Azure Monitor.
 
-## <a name="view-and-update-bookmarks"></a>Anzeigen und Aktualisieren von Lesezeichen 
+## <a name="view-and-update-bookmarks"></a>Anzeigen und Aktualisieren von Lesezeichen
 
-1. Navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Bedrohungsmanagement** > **Hunting**. 
+1. Navigieren Sie im Azure-Portal zu **Microsoft Sentinel** > **Bedrohungsverwaltung** > **Hunting**.
 
 2. Wählen Sie die Registerkarte **Lesezeichen** aus, um die Liste der Lesezeichen anzuzeigen.
 
@@ -102,7 +101,7 @@ Durch Anzeigen von Lesezeichen aus der Tabelle können Sie mit Lesezeichen marki
 
 ## <a name="exploring-bookmarks-in-the-investigation-graph"></a>Untersuchen von Lesezeichen im Untersuchungsdiagramm
 
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Azure Sentinel** > **Bedrohungsmanagement** > **Hunting** > **Lesezeichen**, und wählen Sie die Lesezeichen aus, die Sie untersuchen möchten.
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Microsoft Sentinel** > **Bedrohungsverwaltung** > **Hunting** > **Lesezeichen**, und wählen Sie das bzw. die Lesezeichen aus, die Sie untersuchen möchten.
 
 2. Stellen Sie in den Lesezeichendetails sicher, dass mindestens eine Entität zugeordnet ist.
 
@@ -112,25 +111,25 @@ Anweisungen zur Verwendung des Untersuchungsdiagramms finden Sie unter [Ausführ
 
 ## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>Hinzufügen von Lesezeichen zu einem neuen oder bestehenden Incident
 
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Azure Sentinel** > **Bedrohungsmanagement** > **Hunting** > **Lesezeichen**, und wählen Sie die Lesezeichen aus, die Sie einem Incident hinzufügen möchten.
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Microsoft Sentinel** > **Bedrohungsverwaltung** > **Hunting** > **Lesezeichen**, und wählen Sie das bzw. die Lesezeichen aus, die Sie zu einem Incident hinzufügen möchten.
 
 2. Wählen Sie auf der Befehlsleiste die Option **Incidentaktionen** aus:
 
     :::image type="content" source="media/bookmarks/incident-actions.png" alt-text="Screenshot: Hinzufügen von Lesezeichen zu einem Incident":::
 
 3. Wählen Sie entweder **Neuen Incident erstellen** oder **Zum vorhandenem Incident hinzufügen** aus. Führen Sie dann folgende Schritte aus:
-    
-    - Für einen neuen Incident: Aktualisieren Sie optional die Details für den Incident, und wählen Sie dann **Erstellen** aus.
-    - Zum Hinzufügen eines Lesezeichens zu einem vorhandenen Incident: Wählen Sie einen Incident und anschließend **Hinzufügen** aus. 
 
-Zeigen Sie das Lesezeichen im Incident wie folgt an: Navigieren Sie zu **Azure Sentinel** > **Bedrohungsmanagement** > **Incidents**, und wählen Sie den Incident mit Ihrem Lesezeichen aus. Wählen Sie **Alle Informationen anzeigen** und dann die Registerkarte **Lesezeichen** aus.
+    - Für einen neuen Incident: Aktualisieren Sie optional die Details für den Incident, und wählen Sie dann **Erstellen** aus.
+    - Zum Hinzufügen eines Lesezeichens zu einem vorhandenen Incident: Wählen Sie einen Incident und anschließend **Hinzufügen** aus.
+
+Zeigen Sie das Lesezeichen im Incident wie folgt an: Navigieren Sie zu **Microsoft Sentinel** > **Bedrohungsmanagement** > **Incidents**, und wählen Sie den Incident mit Ihrem Lesezeichen aus. Wählen Sie **Alle Informationen anzeigen** und dann die Registerkarte **Lesezeichen** aus.
 
 > [!TIP]
-> Als Alternative zur Option **Incidentaktionen** auf der Befehlsleiste können Sie das Kontextmenü ( **...** ) jeweils für Lesezeichen verwenden, um die Optionen **Neuen Incident erstellen**, **Zu vorhandenem Incident hinzufügen** und **Aus Incident entfernen** auszuwählen. 
+> Als Alternative zur Option **Incidentaktionen** auf der Befehlsleiste können Sie das Kontextmenü ( **...** ) jeweils für Lesezeichen verwenden, um die Optionen **Neuen Incident erstellen**, **Zu vorhandenem Incident hinzufügen** und **Aus Incident entfernen** auszuwählen.
 
 ## <a name="view-bookmarked-data-in-logs"></a>Anzeigen von mit Lesezeichen markierten Daten in Protokollen
 
-Wählen Sie das Lesezeichen auf der Registerkarte **Hunting** > **Lesezeichen** aus, um die mit Lesezeichen versehenen Abfragen, Ergebnisse oder deren Verlauf anzuzeigen, und verwenden Sie die im Detailbereich angegebenen Links: 
+Wählen Sie das Lesezeichen auf der Registerkarte **Hunting** > **Lesezeichen** aus, um die mit Lesezeichen versehenen Abfragen, Ergebnisse oder deren Verlauf anzuzeigen, und verwenden Sie die im Detailbereich angegebenen Links:
 
 - **Quellabfrage anzeigen**, um die Quellabfrage im Bereich **Protokolle** anzuzeigen.
 
@@ -146,19 +145,17 @@ In dieser Ansicht werden alle Ihre Lesezeichen mit den zugehörigen Metadaten an
 > Es kann eine erhebliche Verzögerung (gemessen in Minuten) zwischen der Erstellung eines Lesezeichens und dem Zeitpunkt liegen, ab dem es auf der Registerkarte **Lesezeichen** angezeigt wird.
 
 ## <a name="delete-a-bookmark"></a>Löschen eines Lesezeichens
- 
-1.  Navigieren Sie im Azure-Portal zur Registerkarte **Azure Sentinel** > **Bedrohungsmanagement** > **Hunting** > **Lesezeichen**, und wählen Sie die Lesezeichen aus, die Sie löschen möchten. 
+
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Microsoft Sentinel** > **Bedrohungsverwaltung** > **Hunting** > **Lesezeichen**, und wählen Sie das bzw. die Lesezeichen aus, die Sie löschen möchten.
 
 2. Klicken Sie mit der rechten Maustaste auf Ihre Auswahl, und wählen Sie die Option zum Löschen der ausgewählten Lesezeichen aus.
-    
-Das Löschen eines Lesezeichens bewirkt, dass das Lesezeichen aus der Liste auf der Registerkarte **Lesezeichen** (Bookmarks) entfernt wird. In der Tabelle **HuntingBookmark** für Ihren Log Analytics-Arbeitsbereich sind frühere Lesezeicheneinträge weiter enthalten, aber für den letzten Eintrag wird der Wert von **SoftDelete** in „true“ geändert, um das Filtern nach alten Lesezeichen zu erleichtern. Das Löschen eines Lesezeichens bewirkt nicht, dass irgendwelche Entitäten aus den Untersuchungsvorgängen entfernt werden, die mit anderen Lesezeichen oder Benachrichtigungen verknüpft sind. 
 
+Das Löschen eines Lesezeichens bewirkt, dass das Lesezeichen aus der Liste auf der Registerkarte **Lesezeichen** (Bookmarks) entfernt wird. In der Tabelle **HuntingBookmark** für Ihren Log Analytics-Arbeitsbereich sind frühere Lesezeicheneinträge weiter enthalten, aber für den letzten Eintrag wird der Wert von **SoftDelete** in „true“ geändert, um das Filtern nach alten Lesezeichen zu erleichtern. Das Löschen eines Lesezeichens bewirkt nicht, dass irgendwelche Entitäten aus den Untersuchungsvorgängen entfernt werden, die mit anderen Lesezeichen oder Benachrichtigungen verknüpft sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie eine Bedrohungsuntersuchung mithilfe von Lesezeichen in Azure Sentinel ausführen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-
+In diesem Artikel haben Sie erfahren, wie Sie eine Bedrohungsuntersuchung mithilfe von Lesezeichen in Microsoft Sentinel ausführen. Weitere Informationen über Microsoft Sentinel finden Sie in den folgenden Artikeln:
 
 - [Proactively hunt for threats (Proaktive Ermittlung von Bedrohungen)](hunting.md)
 - [Verwenden von Notebooks zur Ermittlung von Anomalien](notebooks.md)
-- [Bedrohungssuche mit Azure Sentinel (Learn-Modul)](/learn/modules/hunt-threats-sentinel/)
+- [Bedrohungssuche mit Microsoft Sentinel (Learn-Modul)](/learn/modules/hunt-threats-sentinel/)

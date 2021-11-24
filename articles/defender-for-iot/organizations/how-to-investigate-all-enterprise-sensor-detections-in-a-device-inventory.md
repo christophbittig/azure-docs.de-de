@@ -1,14 +1,14 @@
 ---
 title: Informationen zu Geräten, die von allen Unternehmenssensoren erkannt werden
 description: Sie können sich über den Gerätebestand in der lokalen Verwaltungskonsole einen umfassenden Überblick über die Geräteinformationen von verbundenen Sensoren verschaffen. Verwenden Sie die Tools zum Importieren, Exportieren und Filtern, um diese Informationen zu verwalten.
-ms.date: 12/02/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 3a92d1950bd1fab5ea6e94a433aad1d74802fb23
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 0025016dd449bf4083c707d4a6db5cd25bf66cfd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132027259"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343665"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Untersuchen aller Unternehmenssensorerkennungen im Gerätebestand
 
@@ -25,7 +25,7 @@ Im Folgenden werden die Spalten in der Gerätebestandstabelle beschrieben.
 | **Region** | Die Region, in der dieses Gerät enthalten ist |
 | **Website** | Der Standort, der dieses Gerät enthält |
 | **Zone** | Die Zone, in der dieses Gerät enthalten ist |
-| **Appliance** | Der Azure Defender für IoT-Sensor, der dieses Gerät schützt |
+| **Appliance** | Der Microsoft Defender für IoT-Sensor, der dieses Gerät schützt. |
 | **Name** | Der Name des Geräts, wie von Defender für IoT erkannt |
 | **Type** | Der Typ des Geräts, z. B. PLC oder HMI |
 | **Hersteller** | Der Name des Herstellers des Geräts, wie in der MAC-Adresse angegeben |

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523f0d1907e42f2db5d17ca4bd3cd81bfd7f6ca1
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2c8b611b9edb3e4c53b2d40231a6df6c3ccd8a1e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131466065"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346494"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Schützen von Microsoft 365 vor lokalen Angriffen
 
@@ -213,16 +213,16 @@ Nachdem Sie Ihre Umgebung so konfiguriert haben, dass Ihr Microsoft 365 vor lok
 
 * **Verdächtige Aktivitäten** 
 
-    Überwachen Sie alle [Azure AD-Risikoereignisse](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) auf verdächtige Aktivitäten. [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) ist nativ in das Azure Security Center integriert.
+    Überwachen Sie alle [Azure AD-Risikoereignisse](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) auf verdächtige Aktivitäten. [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) ist direkt in Microsoft Defender für Cloud integriert.
 
     Definieren Sie die [benannten Standorte](../conditional-access/location-condition.md) im Netzwerk, um die aufwändige Erkennung anhand von standortbasierten Signalen zu vermeiden. 
 *  **UEBA-Warnungen (User and Entity Behavior Analytics)** 
 
     Verwenden Sie UEBA, um Erkenntnisse aus der Anomalieerkennung zu gewinnen.
 
-    * Microsoft Cloud App Security (MCAS) bietet [UEBA in der Cloud](/cloud-app-security/tutorial-ueba).
+    * Microsoft Defender for Cloud Apps bietet [UEBA in der Cloud](/cloud-app-security/tutorial-ueba).
 
-    * Sie können das [lokale UEBA aus Azure ATP (Advanced Threat Protection) integrieren](/defender-for-identity/install-step2). MCAS liest Signale aus der Azure AD Identity Protection. 
+    * Sie können das [lokale UEBA aus Azure ATP (Advanced Threat Protection) integrieren](/defender-for-identity/install-step2). Defender für Cloud-Apps liest Signale aus Azure AD Identity Protection. 
 
 * **Aktivität bei Konten für den Notfallzugriff** 
 
@@ -266,7 +266,7 @@ Nachdem Sie Ihre Umgebung so konfiguriert haben, dass Ihr Microsoft 365 vor lok
 
 ### <a name="log-management"></a>Protokollverwaltung
 
-Definieren Sie eine Strategie für die Protokollspeicherung und -aufbewahrung, und entwerfen und implementieren Sie diese, um ein konsistentes Toolset bereitzustellen. Sie können z. B. SIEM-Systeme (Security Information & Event Management) wie Azure Sentinel, allgemeine Abfragen, Untersuchungen und Forensik-Playbooks in Erwägung ziehen.
+Definieren Sie eine Strategie für die Protokollspeicherung und -aufbewahrung, und entwerfen und implementieren Sie diese, um ein konsistentes Toolset bereitzustellen. Sie können z. B. SIEM-Systeme (Security Information & Event Management) wie Microsoft Sentinel, allgemeine Abfragen, Untersuchungen und Forensik-Playbooks in Erwägung ziehen.
 
 * **Azure AD-Protokolle:** Erfassen Sie die generierten Protokolle und Signale durch konsistente Einhaltung der bewährten Methoden für Einstellungen wie Diagnose, Protokollaufbewahrung und SIEM-Erfassung. 
 

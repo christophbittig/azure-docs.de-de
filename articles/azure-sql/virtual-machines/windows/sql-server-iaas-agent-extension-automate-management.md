@@ -17,12 +17,12 @@ ms.date: 10/26/2021
 ms.author: adbadram
 ms.reviewer: mathoma
 ms.custom: seo-lt-2019, ignite-fall-2021
-ms.openlocfilehash: 2ff6432261915e7200d69bc3b80dba217e5c9285
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 35ea46e4ce2b7c4ebbb6fdfa24bbe1d60e679bb7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131043963"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345698"
 ---
 # <a name="automate-management-with-the-windows-sql-server-iaas-agent-extension"></a>Automatisieren der Verwaltung mit der Windows SQL Server-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -83,7 +83,7 @@ Diese Vorteile werden in der folgenden Tabelle genauer erläutert:
 | **Anzeigen der Datenträgerauslastung im Portal** | Ermöglicht eine grafische Darstellung der Datenträgerauslastung Ihrer SQL-Datendateien im Azure-Portal.  <br/> Verwaltungsmodus: Vollständig | 
 | **Flexible Lizenzierung** | Durch einen [nahtlosen Wechsel](licensing-model-azure-hybrid-benefit-ahb-change.md) zwischen den Lizenzmodellen „Bring-Your-Own-License“ (BYOL, auch als „Azure-Hybridvorteil“ bezeichnet) und „Nutzungsbasierte Bezahlung“ können Sie Kosten sparen. <br/> Verwaltungsmodus: Lightweight und vollständig| 
 | **Flexible Version/Edition** | Wenn Sie die [Version](change-sql-server-version.md) oder [Edition](change-sql-server-edition.md) von SQL Server ändern möchten, können Sie einfach die Metadaten im Azure-Portal aktualisieren, ohne die gesamte SQL Server-VM erneut bereitstellen zu müssen.  <br/> Verwaltungsmodus: Lightweight und vollständig| 
-| **Security Center-Portalintegration** | Wenn Sie [Azure Defender für SQL](../../../security-center/defender-for-sql-usage.md) aktiviert haben, können Sie die Security Center-Empfehlungen direkt in der Ressource [Virtuelle SQL-Computer](manage-sql-vm-portal.md) des Azure-Portals anzeigen. Weitere Informationen finden Sie unter [Bewährte Sicherheitsmethoden](security-considerations-best-practices.md).  <br/> Verwaltungsmodus: Lightweight und vollständig|
+| **Integration des Defender für Cloudportals** | Wenn Sie [Microsoft Defender für SQL](../../../security-center/defender-for-sql-usage.md) aktiviert haben, können Sie die Empfehlungen von Defender for Cloud direkt in der Ressource [SQL Virtual Machines](manage-sql-vm-portal.md) des Azure-Portals einsehen. Weitere Informationen finden Sie unter [Bewährte Sicherheitsmethoden](security-considerations-best-practices.md).  <br/> Verwaltungsmodus: Lightweight und vollständig|
 | **SQL-Bewertung (Vorschau)** | Ermöglicht Ihnen, die Integrität Ihrer SQL Server-VMs mithilfe von bewährten Methoden für die Konfiguration zu bewerten. Weitere Informationen finden Sie unter [SQL-Bewertung](sql-assessment-for-sql-vm.md).  <br/> Verwaltungsmodus: Vollständig| 
 
 

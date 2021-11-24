@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 11/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: f8e52c61db68aaf85af70b6bfb373bd7b331bd29
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 61dec7d7c6391cacb5f25a2fccbda6b4d97b7033
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131555417"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316145"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Konnektivitätsmodi und -anforderungen
 
@@ -34,7 +34,7 @@ Wichtig: Wenn die Azure Arc-fähigen Datendienste direkt mit Azure verbunden sin
 
 Darüber hinaus können Azure Active Directory und rollenbasierte Azure-Zugriffssteuerung nur im Modus „Direkt verbunden“ verwendet werden, da eine Abhängigkeit von einer kontinuierlichen und direkten Verbindung mit Azure besteht, um diese Funktionalität bereitzustellen.
 
-Schließlich sind einige mit Azure verbundene Dienste nur dann verfügbar, wenn sie direkt erreichbar sind, wie die Azure Defender-Sicherheitsdienste, Container Insights und Azure Backup in Blob Storage.
+Einige an Azure angebundene Dienste sind nur verfügbar, wenn sie direkt erreicht werden können, z. B. die Sicherheitsdienste Microsoft Defender für Cloud, Container Insights und Azure Backup um Speicher zu verbinden.
 
 ||**Indirekt verbunden**|**Direkt verbunden**|**Nie verbunden**|
 |---|---|---|---|
@@ -57,7 +57,7 @@ Schließlich sind einige mit Azure verbundene Dienste nur dann verfügbar, wenn 
 |**Überwachung**|Unterstützt<br/>Lokale Überwachung mit Grafana- und Kibana-Dashboards.|Unterstützt<br/>Zusätzlich zu den lokalen Überwachungsdashboards können Sie _optional_ Überwachungsdaten und Protokolle an Azure Monitor senden, um mehrere Standorte an einem Ort angemessen zu überwachen. |
 |**Authentifizierung**|Verwenden Sie einen lokalen Benutzernamen bzw. ein lokales Kennwort für die Datencontroller- und Dashboardauthentifizierung. Verwenden Sie SQL- und Postgres-Anmeldungen oder Active Directory (AD wird zurzeit nicht unterstützt, kommt aber bald in die Vorschauphase) für Verbindungen mit Datenbankinstanzen.  Verwenden Sie K8s-Authentifizierungsanbieter für die Authentifizierung bei der Kubernetes-API.|Zusätzlich zu oder anstelle der Authentifizierungsmethoden für den Modus „Indirekt verbunden“ können Sie _optional_ Azure Active Directory verwenden. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
 |**Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)**|Verwenden Sie Kubernetes RBAC mit der Kubernetes-API. Verwenden Sie SQL und Postgres RBAC für Datenbankinstanzen.|Sie können Azure Active Directory und Azure-RBAC verwenden. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
-|**Azure Defender**|Nicht unterstützt|In Zukunft geplant|
+|**Microsoft Defender für Cloud**|Nicht unterstützt|In Zukunft geplant|
 
 ## <a name="connectivity-requirements"></a>Konnektivitätsanforderungen
 
@@ -75,7 +75,7 @@ Schließlich sind einige mit Azure verbundene Dienste nur dann verfügbar, wenn 
 |**Azure Active Directory (AAD) (Zukünftig)**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Möglicherweise, aber vielleicht zahlen Sie bereits für Azure AD|Nur direkt|Wenn Sie Azure AD für die Authentifizierung verwenden möchten, muss Konnektivität mit Azure jederzeit hergestellt werden. Wenn Sie Azure AD nicht für die Authentifizierung verwenden möchten, können Sie die Active Directory-Verbunddienste (AD FS) über Active Directory verwenden. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
 |**Sichern und Wiederherstellen**|Kundenumgebung -> Kundenumgebung|Erforderlich|Nein|Indirekt oder direkt|Der Sicherungs- und Wiederherstellungsdienst kann so konfiguriert werden, dass er auf lokale Speicherklassen verweist. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
 |**Azure Backup: langfristige Aufbewahrung (Zukünftig)**| Kundenumgebung-> Azure | Optional| Ja, für Azure Storage | Nur direkt |Möglicherweise möchten Sie Sicherungen, die lokal erstellt wurden, an Azure Backup für die langfristige, externe Aufbewahrung von Sicherungen senden und sie zur Wiederherstellung in die lokale Umgebung zurückholen. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
-|**Azure Defender-Sicherheitsdienste (Zukünftig)**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Ja|Nur direkt|**Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
+|**Microsoft Defender für Cloud-Sicherheitsdienste (zukünftig)**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Ja|Nur direkt|**Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
 |**Bereitstellungs- und Konfigurationsänderungen aus dem Azure-Portal**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Nein|Nur direkt|Bereitstellungs- und Konfigurationsänderungen können lokal mithilfe von Azure Data Studio oder der geeigneten CLI erfolgen.  Im Modus „Direkt verbunden“ können Sie Konfigurationsänderungen auch im Azure-Portal bereitstellen und vornehmen.|
 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0e3797e7f78b0938a50e2803f46962b4cacdcd33
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b2d8dcbee2b8308a78982122aea79c9775580642
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998160"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347045"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -218,7 +218,7 @@ Sie können [Azure RBAC](../../role-based-access-control/overview.md) verwenden,
 **Bewährte Methode**: Gewähren Sie Sicherheitsteams mit direkten operativen Pflichten die entsprechenden Berechtigungen.
 **Detail**: Überprüfen Sie die integrierten Azure-Rollen hinsichtlich der geeigneten Rollenzuweisung. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie [benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md) erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden.
 
-**Bewährte Methoden:** Gewähren Sie den Sicherheitsrollen Azure Security Center-Zugriff, die diesen benötigen. Security Center ermöglicht Sicherheitsteams das schnelle Identifizieren und Beheben von Risiken.
+**Bewährte Methoden**: Gewähren Sie Microsoft Defender für Cloud Zugriff auf Sicherheitsrollen, die benötigt werden. Mit Defender for Cloud können Sicherheitsteams Risiken schnell erkennen und beheben.
 **Detail**: Fügen Sie Sicherheitsteams mit diesem Bedarf der Azure RBAC-Rolle [Sicherheitsadministrator](../../role-based-access-control/built-in-roles.md#security-admin) hinzu, sodass sie Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen können. Sie können hierzu je nach Umfang der Pflichten die Stammverwaltungsgruppe oder die Segmentverwaltungsgruppe verwenden.
 
 Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie Azure RBAC erzwingen, erteilen Ihren Benutzern möglicherweise mehr Berechtigungen als erforderlich. Dies kann zur Gefährdung von Daten führen, indem Benutzern erlaubt wird, auf bestimmte Arten von Daten zuzugreifen (z.B. Daten mit hoher geschäftlicher Bedeutung), auf die sie eigentlich keinen Zugriff haben dürften.

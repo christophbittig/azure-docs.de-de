@@ -7,21 +7,21 @@ ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: thvankra
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4464db95637511339e0000235b85da86306b4cef
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8fe10e1706667bba10133131f7a1d50a6e3fa110
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131051019"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309808"
 ---
 # <a name="configure-grafana-to-visualize-metrics-emitted-from-the-managed-instance-cluster"></a>Konfigurieren von Grafana für die Visualisierung von Metriken, die vom Managed Instance-Cluster ausgegeben werden
 
 Wenn Sie einen Cluster vom Typ „Azure Managed Instance for Apache Cassandra“ bereitstellen, wird ein Server bereitgestellt, der als Host für [Prometheus](https://prometheus.io/) fungiert und von verschiedenen Clienttools genutzt werden kann. Prometheus ist eine Open-Source-Überwachungslösung. Die verwaltete Instanz gibt Metriken aus und speichert zehn Minuten oder 10 GB an Daten (je nachdem, welcher Schwellenwert zuerst erreicht wird). In diesem Artikel erfahren Sie, wie Sie Grafana für die Visualisierung von Metriken konfigurieren, die vom Managed Instance-Cluster ausgegeben werden. Zum Visualisieren von Metriken ist Folgendes erforderlich:
 
-* Bereitstellen eines virtuellen Ubuntu-Computers in dem virtuellen Azure-Netzwerk, in dem sich die verwaltete Instanz befindet
+* Bereitstellen eines virtuellen Ubuntu-Computers in dem virtuellen Azure-Netzwerk, in dem sich die verwaltete Instanz befindet.
 * Installieren des Open-Source-Tools [Grafana](https://grafana.com/grafana/), um Dashboards zu erstellen und von Prometheus ausgegebene Metriken zu visualisieren
 
-## <a name="deploy-a-ubuntu-server"></a>Bereitstellen eines Ubuntu-Servers
+## <a name="deploy-an-ubuntu-server"></a>Bereitstellen eines Ubuntu-Servers
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 

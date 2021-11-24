@@ -18,16 +18,19 @@ ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 76b0353022782aecabd2a7df3e5a920d22119402
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 463b806994364083c22dcfc40fd8b78dae87d8da
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643591"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488770"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands
 
 Der Azure VM-Agent und die dazugehörigen Erweiterungen sind Teil der Microsoft Azure-Infrastrukturdienste. VM-Erweiterungen sind Softwarekomponenten, die die VM-Funktionalität erweitern und verschiedene Verwaltungsvorgänge für virtuelle Computer vereinfachen.
+
+> [!NOTE]
+> Bevor Sie die DSC-Erweiterung aktivieren, möchten wir Sie darauf hinweisen, dass jetzt eine neuere Version von DSC in der Vorschau verfügbar ist, die von einer Funktion von Azure Policy namens [Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md) verwaltet wird. Die Gastkonfigurationsfunktion kombiniert Funktionen des Desired State Configuration (DSC)-Erweiterungshandlers, der Azure Automation State Configuration und die am häufigsten angeforderten Funktionen aus Kundenfeedback. Die Gastkonfiguration umfasst auch die Unterstützung von Hybridcomputern über [Arc-fähige Server](../../azure-arc/servers/overview.md).
 
 Der primäre Anwendungsfall für die Azure DSC-Erweiterung (Desired State Configuration) besteht im Bootstrap eines virtuellen Computers zum [Azure Automation DSC-Dienst](../../automation/automation-dsc-overview.md).
 Der Dienst bietet [Vorteile](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service) wie die fortlaufende Verwaltung der VM-Konfiguration und die Integration mit anderen Betriebstools wie Azure Monitoring.

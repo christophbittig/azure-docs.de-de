@@ -7,12 +7,12 @@ ms.topic: how-to
 author: ebolton-cyber
 ms.author: edewebolton
 ms.date: 03/10/2021
-ms.openlocfilehash: 876f4b42c77caba27ed94b42d784004b0bfd32ce
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4e3e3b281e90236704ebd50cd8ee1420947c4d56
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598154"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331241"
 ---
 # <a name="test-a-virtual-machine-image"></a>Testen eines VM-Images
 
@@ -20,12 +20,12 @@ In diesem Thema werden die Schritte erläutert, mit denen ein VM-Image für die 
 
 ## <a name="deploy-an-azure-vm"></a>Bereitstellen einer Azure-VM
 
-So stellen Sie eine VM über das Shared Image Gallery-Image bereit:
+So stellen Sie einen virtuellen Computer aus der Azure Compute Gallery (früher als Shared Image Gallery bekannt) bereit:
 
-1. Navigieren Sie zur Shared Image Gallery-Imageversion.
-1. Klicken Sie auf „VM erstellen“.
+1. Navigieren Sie zur Bildversion von Azure Compute Gallery.
+1. Wählen Sie **Virtuellen Computer Erstellen** aus.
 1. Geben Sie einen Namen für die VM an, und wählen Sie eine VM-Größe aus.
-1. Klicken Sie auf „Überprüfen + erstellen“. Klicken Sie nach Abschluss der Überprüfung auf „Erstellen“.
+1. Klicken Sie auf **Überprüfen + erstellen**. Klicken Sie auf **Erstellen**, sobald die Überprüfung erfolgreich abgeschlossen ist.
 
 > [!NOTE]
 > Wenn Sie eine VM über eine VHD-Datei erstellen müssen, befolgen Sie die Anweisungen in diesen Artikeln: [Vorbereiten einer Azure Resource Manager-Vorlage](#connect-the-certification-tool-to-a-vm-image) oder [Bereitstellen einer Azure-VM mithilfe von PowerShell](#how-to-use-powershell-to-consume-the-self-test-api).

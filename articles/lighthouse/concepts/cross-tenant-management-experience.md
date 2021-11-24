@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Azure Lighthouse ermöglicht und verbessert mandantenübergreifende Funktionen in vielen Azure-Diensten.
-ms.date: 10/21/2021
+ms.date: 11/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 115f71148ddd2d18cd99be883bdef77b1c27ad1b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 07a0e2e9a42ace65cc159e0363a8ba86f4291cca
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249683"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492832"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -54,7 +54,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
   - [Verwalten von verbundenen Windows Server- oder Linux-Computern außerhalb von Azure](../../azure-arc/servers/onboard-portal.md) mit delegierten Abonnements oder Ressourcengruppen in Azure
   - Verwalten von verbundenen Computern mithilfe von Azure-Konstrukten, z. B. Azure Policy und Tagging
   - Sicherstellen der Anwendung derselben Richtlinien für die Hybridumgebungen von Kunden
-  - Verwenden von Azure Security Center zum Überwachen der Compliance der Hybridumgebungen von Kunden
+  - Verwenden von Microsoft Defender für Cloud zum Überwachen der Konformität in den Hybridumgebungen von Kunden
 - Hybride Kubernetes-Cluster im großen Maßstab verwalten - [Azure Arc-aktiviertes Kubernetes (Vorschau)](../../azure-arc/kubernetes/overview.md):
   - [Verwalten von verbundenen Kubernetes-Clustern](../../azure-arc/kubernetes/quickstart-connect-cluster.md) mit delegierten Abonnements und/oder Ressourcengruppen in Azure
   - [Verwenden von GitOps](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) für verbundene Cluster
@@ -125,30 +125,6 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 - Enthält jetzt die Mandanten-ID in zurückgegebenen Abfrageergebnissen, sodass Sie ermitteln können, ob ein Abonnement zu einem verwalteten Mandanten gehört.
 
-[Azure Security Center](../../security-center/index.yml):
-
-- Mandantenübergreifende Sichtbarkeit
-  - Überwachen der Einhaltung von Sicherheitsrichtlinien und Sicherstellen der Sicherheitsabdeckung für alle Ressourcen der Mandanten
-  - Kontinuierliche Überwachung der Einhaltung gesetzlicher Bestimmungen für mehrere Mandanten in einer einzigen Ansicht
-  - Überwachen, Selektieren und Priorisieren von umsetzbaren Sicherheitsempfehlungen mit Sicherheitsbewertungsberechnung
-- Mandantenübergreifende Sicherheitsstatusverwaltung
-  - Verwalten von Sicherheitsrichtlinien
-  - Ergreifen von Maßnahmen für Ressourcen, die nicht mit umsetzbaren Sicherheitsempfehlungen konform sind
-  - Erfassen und Speichern von sicherheitsbezogenen Daten
-- Mandantenübergreifend Bedrohungserkennung und entsprechender Schutz davor
-  - Erkennen von Bedrohungen über Ressourcen von Mandanten hinweg
-  - Anwenden von Advanced Threat Protection-Kontrollen, wie z. B. JIT-VM-Zugriff (Just-in-Time)
-  - Verstärkung des Schutzes der Konfiguration von Netzwerksicherheitsgruppen mit adaptiver Netzwerkhärtung
-  - Sicherstellung mittels adaptiver Anwendungssteuerung, dass auf Servern nur die Anwendungen und Prozesse ausgeführt werden, die ausgeführt werden sollten
-  - Überwachen von Änderungen an wichtigen Dateien und Registrierungseinträgen mittels Überwachung der Dateiintegrität (FIM)
-- Beachten Sie, dass das gesamte Abonnement an den Verwaltungsmandanten delegiert werden muss. Azure Security Center-Szenarien werden bei delegierten Ressourcengruppen nicht unterstützt.
-
-[Azure Sentinel:](../../sentinel/multiple-tenants-service-providers.md)
-
-- Verwalten von Azure Sentinel-Ressourcen [in Kundenmandanten](../../sentinel/multiple-tenants-service-providers.md)
-- [Verfolgen von Angriffen und Anzeigen von Sicherheitswarnungen für mehrere Mandanten](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- [Anzeigen von Vorfällen](../../sentinel/multiple-workspace-view.md) in mehreren Azure Sentinel-Arbeitsbereichen in verschiedenen Mandanten
-
 [Azure Service Health](../../service-health/index.yml):
 
 - Überwachen der Integrität von Kundenressourcen mittels Azure Resource Health
@@ -165,6 +141,30 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - Zugreifen auf VMs mit der seriellen Konsole
 - Integrieren von VMs in Azure Key Vault mit einer [verwalteten Identität über Richtlinien](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret), um Kennwörter, Geheimnisse oder kryptografische Schlüssel für die Datenträgerverschlüsselung zu verwenden und dabei sicherzustellen, dass Geheimnisse in einer Key Vault-Instanz in den verwalteten Mandanten gespeichert werden
 - Beachten Sie, dass Sie Azure Active Directory nicht für die Remoteanmeldung bei VMs verwenden können.
+
+[Microsoft Defender für Cloud](../../security-center/index.yml)
+
+- Mandantenübergreifende Sichtbarkeit
+  - Überwachen der Einhaltung von Sicherheitsrichtlinien und Sicherstellen der Sicherheitsabdeckung für alle Ressourcen der Mandanten
+  - Kontinuierliche Überwachung der Einhaltung gesetzlicher Bestimmungen für mehrere Mandanten in einer einzigen Ansicht
+  - Überwachen, Selektieren und Priorisieren von umsetzbaren Sicherheitsempfehlungen mit Sicherheitsbewertungsberechnung
+- Mandantenübergreifende Sicherheitsstatusverwaltung
+  - Verwalten von Sicherheitsrichtlinien
+  - Ergreifen von Maßnahmen für Ressourcen, die nicht mit umsetzbaren Sicherheitsempfehlungen konform sind
+  - Erfassen und Speichern von sicherheitsbezogenen Daten
+- Mandantenübergreifend Bedrohungserkennung und entsprechender Schutz davor
+  - Erkennen von Bedrohungen über Ressourcen von Mandanten hinweg
+  - Anwenden von Advanced Threat Protection-Kontrollen, wie z. B. JIT-VM-Zugriff (Just-in-Time)
+  - Verstärkung des Schutzes der Konfiguration von Netzwerksicherheitsgruppen mit adaptiver Netzwerkhärtung
+  - Sicherstellung mittels adaptiver Anwendungssteuerung, dass auf Servern nur die Anwendungen und Prozesse ausgeführt werden, die ausgeführt werden sollten
+  - Überwachen von Änderungen an wichtigen Dateien und Registrierungseinträgen mittels Überwachung der Dateiintegrität (FIM)
+- Beachten Sie, dass das gesamte Abonnement an den Verwaltungsmandanten delegiert werden muss. Szenarien von Microsoft Defender für Cloud werden bei delegierten Ressourcengruppen nicht unterstützt.
+
+[Microsoft Sentinel](../../sentinel/multiple-tenants-service-providers.md):
+
+- Verwalten von Microsoft Sentinel-Ressourcen [in Kundenmandanten](../../sentinel/multiple-tenants-service-providers.md)
+- [Verfolgen von Angriffen und Anzeigen von Sicherheitswarnungen für mehrere Mandanten](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
+- [Anzeigen von Vorfällen](../../sentinel/multiple-workspace-view.md) in mehreren Microsoft Sentinel-Arbeitsbereichen in verschiedenen Mandanten
 
 Supportanfragen:
 

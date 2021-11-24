@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 03/30/2021
+ms.date: 11/12/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5a3c8c3369890bdbbd30a98f6f76c88b9358dcdf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 945a95054f281e0a5920232a729de4087d1deab6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791800"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490492"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Konfigurieren von Azure Spatial Anchors in einem Unity-Projekt
 
@@ -33,13 +33,24 @@ Bevor Sie das Azure Spatial Anchors SDK in Ihr Unity-Projekt einschließen, stel
 ### <a name="import-asa-packages"></a>Importieren von ASA-Paketen
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
-### <a name="hololens-only-configure-your-unity-project-xr-settings"></a>Nur HoloLens: Konfigurieren der XR-Einstellungen Ihres Unity-Projekts
-Bei der Entwicklung von MixedReality-Apps auf HoloLens müssen Sie die XR-Konfiguration in Unity einrichten. Weitere Informationen dazu finden Sie hier: [Einrichten Ihrer XR-Konfiguration - Mixed Reality | Microsoft-Dokumentation](/windows/mixed-reality/develop/unity/xr-project-setup?tabs=openxr)     und [Auswählen einer Unity-Version und eines XR-Plugins - Mixed Reality | Microsoft-Dokumentation](/windows/mixed-reality/develop/unity/choosing-unity-version).
+### <a name="hololens-only"></a>nur HoloLens
 
-Das Azure Spatial Anchors SDK 2.9 (oder älter) unterstützt nur das Windows-XR-Plugin (com.unity.xr.windowsmr). Daher weist das Unity-Paket für Azure Spatial Anchor HoloLens eine explizite Abhängigkeit vom Paket com.unity.xr.windowsmr auf.
+#### <a name="configure-your-unity-project-xr-settings"></a>Konfigurieren Sie die Einstellungen Ihres Unity-Projekts XR
+Bei der Entwicklung von MixedReality-Apps auf HoloLens müssen Sie die XR-Konfiguration in Unity einrichten. Weitere Informationen finden Sie unter [Einrichten der XR-Konfiguration - Mixed Reality | Microsoft Dokumentation](/windows/mixed-reality/develop/unity/xr-project-setup?tabs=openxr) und [Auswahl einer Unity-Version und eines XR-Plugins - Mixed Reality | Microsoft Docs](/windows/mixed-reality/develop/unity/choosing-unity-version).
 
-Das Azure Spatial Anchors SDK Version 2.10.0 (oder höher) unterstützt sowohl das Mixed Reality OpenXR-Plugin ([com.microsoft.mixedreality.openxr](https://dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging?_a=package&feed=Unity-packages&view=overview&package=com.microsoft.mixedreality.openxr&protocolType=Npm)) als auch das Windows-XR-Plugin ([com.unity.xr.windowsmr](https://docs.unity3d.com/Manual/com.unity.xr.windowsmr.html)). Sie müssen entweder das com.microsoft.mixedreality.openxr- oder das com.unity.xr.windowsmr-Paket in ein Projekt Ihrer Wahl integrieren.
+Azure Spatial Anchors SDK Versionen 2.9.0 oder früher bieten nur Unterstützung für das Windows XR Plugin (com.unity.xr.windowsmr), und daher hat das Azure Spatial Anchors windows Paket eine explizite Abhängigkeit von dem Windows XR Plugin.
 
+Azure Spatial Anchors SDK Versionen 2.10.0 oder höher bieten Unterstützung sowohl für das Mixed Reality OpenXR Plugin ([com.microsoft.mixedreality.openxr](https://dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging?_a=package&feed=Unity-packages&view=overview&package=com.microsoft.mixedreality.openxr&protocolType=Npm)) als auch für das Windows XR Plugin ([com.unity.xr.windowsmr](https://docs.unity3d.com/Manual/com.unity.xr.windowsmr.html)). Je nach Wahl müssen Sie entweder das Paket com.microsoft.mixedreality.openxr oder das Paket com.unity.xr.windowsmr in Ihr Projekt einbinden.
+
+#### <a name="configure-your-unity-project-capabilities"></a>Konfigurieren Sie die Fähigkeiten Ihres Unity-Projekts
+
+Stellen Sie sicher, dass Sie die folgenden Funktionen in Ihrem Unity-Projekt aktivieren:
+- SpatialPerception
+- InternetClient
+- PrivateNetworkClientServer
+
+> [!WARNING]
+> Wenn die PrivateNetworkClientServer-Fähigkeit nicht aktiviert ist, kann es zu einem Fehler bei der Abfrage von Ankern kommen, wenn das Gerät ein Netz verwendet, das als privat konfiguriert ist.
 ### <a name="android-only-configure-the-maintemplategradle-file"></a>Nur Android: Konfigurieren der Datei „maintemplate. gradle“
 
 1. Wechseln Sie zu **Bearbeiten** > **Projekteinstellungen** > **Player**.

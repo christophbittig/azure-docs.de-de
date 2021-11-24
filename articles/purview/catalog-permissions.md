@@ -6,12 +6,12 @@ ms.author: viseshag
 ms.service: purview
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: 761f0532bc66f8153a367325a6048a7ee209c3a7
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: de0904275100f0d72dac8e401736ad276f1c928a
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131853109"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401483"
 ---
 # <a name="access-control-in-azure-purview"></a>Zugriffssteuerung in Azure Purview
 
@@ -21,13 +21,17 @@ Azure Purview verwendet **Sammlungen**, um den Zugriff auf seine Quellen, Ressou
 
 Eine Sammlung ist ein Tool, das in Azure Purview zum Gruppieren von Ressourcen, Quellen und anderen Artefakte in einer Hierarchie eingesetzt wird. Dies dient der verbesserten Auffindbarkeit und der Verwaltung der Zugriffssteuerung. Der gesamte Zugriff auf die Purview-Ressourcen wird über die Sammlungen im Purview-Konto verwaltet.
 
+> [!NOTE]
+> Ab dem 8. November 2021 ist ***Insights*** für Datenkuratoren zugänglich. Datenleser haben keinen Zugriff auf Insights.
+>
+>
 ## <a name="roles"></a>Rollen
 
 Azure Purview verwendet eine Reihe vordefinierter Rollen, um zu steuern, wer innerhalb des Kontos worauf zugreifen kann. Diese Rollen sind derzeit:
 
 - **Collection admin** (Sammlungsadministrator): Dies ist eine Rolle für Benutzer*innen, die anderen Benutzer*innen in Azure Purview Rollen zuweisen oder Sammlungen verwalten müssen. Sammlungsadministrator*innen können Benutzer*innen zu Rollen für Sammlungen hinzufügen, deren Administrator*innen sie sind. Darüber hinaus können sie Sammlungen und deren Details bearbeiten und untergeordnete Sammlungen hinzufügen.
 - **Datenkuratoren** - eine Rolle, die Zugriff auf den Datenkatalog bietet, um Assets zu verwalten, benutzerdefinierte Klassifizierungen zu konfigurieren, Glossarbegriffe einzurichten und Einblicke zu erhalten. Datenkuratoren können Assets erstellen, lesen, ändern, verschieben und löschen. Sie können auch Anmerkungen auf Assets anwenden.
-- **Datenleser** - eine Rolle, die nur Lesezugriff auf Datenbestände, Klassifizierungen, Klassifizierungsregeln, Sammlungen, Glossarbegriffe und Einblicke bietet.
+- **Datenleser** - eine Rolle, die nur Lesezugriff auf Datenbestände, Klassifizierungen, Klassifizierungsregeln, Sammlungen und Glossarbegriffe bietet.
 - **Datenquellen-Administratoren** - eine Rolle, die es einem Benutzer ermöglicht, Datenquellen und Scans zu verwalten. Ein Benutzer in der Rolle Datenquellen-Admin hat keinen Zugriff auf Azure Purview Studio. Die Kombination dieser Rolle mit den Rollen Datenleser oder Datenkurator in einem beliebigen Sammlungsbereich bietet Zugriff auf Azure Purview Studio.
 
 ## <a name="who-should-be-assigned-to-what-role"></a>Wem sollte welche Rolle zugewiesen werden?
@@ -37,8 +41,9 @@ Azure Purview verwendet eine Reihe vordefinierter Rollen, um zu steuern, wer inn
 |Ich muss Ressourcen nur finden können und möchte keine Bearbeitungen durchführen|Datenleseberechtigter|
 |Ich muss Informationen zu Ressourcen bearbeiten, entsprechende Klassifizierungen zuweisen, Glossareinträge dafür zuordnen usw.|Datenkurator|
 |Ich muss das Glossar bearbeiten oder neue Klassifizierungsdefinitionen einrichten|Datenkurator|
+|Ich muss Insights anzeigen, um den Governancestatus meines Datenbestands zu verstehen.|Datenkurator|
 |Der Dienstprinzipal meiner Anwendung muss Daten per Pushvorgang an Azure Purview übertragen|Datenkurator|
-|Ich muss Überprüfungen über das Studio-Feature von Purview einrichten|Datenquellenadministrator und mindestens Datenleser **oder** Datenkurator für die Sammlung, in der die Quelle registriert ist.|
+|Ich muss Überprüfungen über das Studio-Feature von Purview einrichten|Datenkurator **oder** Datenkurator **und** Datenquellenadministrator für die Sammlung, in der die Quelle registriert ist|
 |Ich muss einen Dienstprinzipal oder eine Gruppe aktivieren, um Überprüfungen in Azure Purview einzurichten und zu überwachen, ohne dass diese Zugriff auf die Informationen des Katalogs haben. |Datenquellenadministrator|
 |Ich muss Benutzern in Azure Purview Rollen zuweisen | Sammlungsadministrator |
 

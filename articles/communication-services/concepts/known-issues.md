@@ -8,163 +8,147 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 9213d5fa18e2156962deb1e9cd6e49f592192728
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: a32b462b17a96eacb3858e7a22a27262046b8589
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132055453"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491260"
 ---
-# <a name="known-issues"></a>Bekannte Probleme
-Dieser Artikel enthält Informationen zu Einschränkungen und bekannten Problemen im Zusammenhang mit Azure Communication Services Calling SDKs und Azure Communication Services-APIs für die Anrufautomatisierung.
+# <a name="known-issues-in-the-sdks-and-apis"></a>Bekannte Probleme in SDK- und API-Instanzen
+
+Dieser Artikel enthält Informationen zu Einschränkungen und bekannten Problemen im Zusammenhang mit Azure Communication Services Calling SDKs und Communication Services-APIs für die Anrufautomatisierung.
 
 > [!IMPORTANT]
-> Es gibt mehrere Faktoren, die sich auf die Qualität von Anrufen auswirken können. Weitere Informationen zur Netzwerkkonfiguration und zu bewährten Testmethoden für Communication Services finden Sie in der **[Dokumentation zu Netzwerkanforderungen](./voice-video-calling/network-requirements.md)** .
+> Es gibt mehrere Faktoren, die sich auf die Qualität von Anrufen auswirken können. Weitere Informationen zur Netzwerkkonfiguration und zu bewährten Testmethoden für Communication Services finden Sie unter [Netzwerkempfehlungen](./voice-video-calling/network-requirements.md).
 
-## <a name="azure-communication-services-calling-sdks"></a>Azure Communication Services Calling SDKs
+## <a name="javascript-sdk"></a>JavaScript SDK
 
-### <a name="javascript-sdk"></a>JavaScript SDK
+Die folgenden Abschnitte enthalten Informationen zu bekannten Problemen im Zusammenhang mit den Communication Services JavaScript SDKs für Sprach-und Videoanrufe.
 
-Dieser Abschnitt enthält Informationen zu bekannten Problemen im Zusammenhang mit den Azure Communication Services JavaScript SDKs für Sprach-und Videoanrufe.
+### <a name="ios-with-safari-crashes-and-refreshes-the-page-if-a-user-tries-to-send-video-in-a-call"></a>iOS mit Safari stürzt ab und aktualisiert die Seite, wenn ein Benutzer versucht, während eines Anrufs ein Video zu senden.
 
-#### <a name="ios-151-regression---iossafari-will-crash-and-refresh-the-page-if-acs-user-tries-to-send-video-in-a-call"></a>iOS 15.1-Regression: iOS/Safari stürzt ab und aktualisiert die Seite, wenn der ACS-Benutzer versucht, in einem Anruf ein Videosignal zu senden.
+Mit iOS 15.1 wurde ein Fehler eingeführt, der sich auf die meisten Communication Services-Anrufe mit Video auswirkt, die in iOS mit Safari getätigt werden. Das Problem tritt insbesondere auf, wenn ein Benutzer einem Communication Services-Anruf oder einer Besprechung in Microsoft Teams beitritt, indem er Communication Services unter iOS 15.1 in einem beliebigen Browser mit aktiviertem Video verwendet. Unter diesen Umständen stürzt der Safari-Browser ab.
 
----
-**Wichtig**
+Dies ist ein [bekannter Fehler unter iOS 15.1 mit Safari](https://bugs.webkit.org/show_bug.cgi?id=231505). Sie sollten Benutzer daran hindern, die Videofunktion zu verwenden (zu aktivieren), wenn sie iOS 15.1 mit Safari für Communication Services-Videoanrufe verwenden. Sie sollten diese Aktivität auch bei Besprechungen mit Videoanrufen zwischen Microsoft Teams und Communication Services verhindern.
 
-In iOS 15.1 wurde ein Fehler eingeführt, der sich auf die meisten ACS-Aufrufe mit Video auswirkt, die in iOS/Safari platziert werden.
-
----
-
-**Problembeschreibung** Der Beitritt zu ACS-Anrufen oder Teams-Besprechungen mithilfe von ACS unter iOS 15.1 in beliebigen Browsern mit aktiviertem Video bewirkt einen Absturz des Safari-Browsers.
-
-**Details** Dies ist ein [bekannter Fehler in iOS 15.1 Safari](https://bugs.webkit.org/show_bug.cgi?id=231505), der in Version 15.1 von iOS neu eingeführt wurde. Wir gehen davon aus, dass dieses Problem mit der Veröffentlichung von iOS 15.2 behoben wird. Derzeit besteht die einzige bekannte Problemumgebung bei Verwendung von ACS unter iOS 15.1 Safari darin, Video zu deaktivieren.
-
-**Versionen** iOS 15.1 und beliebige ACS Web SDK-Versionen
-
-**Entschärfungen** Hindern Sie Benutzer daran, Video zu verwenden (aktivieren), wenn sie iOS 15.1 Safari für ACS-Videoanrufe nutzen und Microsoft Teams für ACS-Videoanrufbesprechungen verwenden.
-Wir evaluieren Problemumgehungen und arbeiten mit Apple an den nächsten Schritten.
-
-In der nächsten Version – iOS 15.2 – wird dieses Problem behoben
-
-
-#### <a name="refreshing-a-page-doesnt-immediately-remove-the-user-from-their-call"></a>Beim Aktualisieren einer Seite wird der Benutzer nicht sofort aus seinem Anruf entfernt.
+### <a name="refreshing-a-page-doesnt-immediately-remove-the-user-from-their-call"></a>Beim Aktualisieren einer Seite wird der Benutzer nicht sofort aus seinem Anruf entfernt.
 
 Wenn ein Benutzer während eines Anrufs beschließt, die Seite zu aktualisieren, wird dieser Benutzer durch den Communication Services-Mediendienst nicht sofort aus dem Anruf entfernt. Stattdessen wird auf den erneuten Beitritt des Benutzers gewartet. Der Benutzer wird erst nach dem Timeout des Mediendiensts aus dem Anruf entfernt.
 
-Es empfiehlt sich, Benutzeroberflächen zu erstellen, bei denen Endbenutzer die Seite Ihrer Anwendung nicht während eines Anrufs aktualisieren müssen. Wenn ein Benutzer die Seite aktualisiert, verwenden Sie die gleiche Communication Services-Benutzer-ID, nachdem er zur Anwendung zurückgekehrt ist.
+Es empfiehlt sich, Benutzeroberflächen zu erstellen, bei denen Endbenutzer die Seite Ihrer Anwendung nicht während eines Anrufs aktualisieren müssen. Wenn ein Benutzer die Seite aktualisiert, verwenden Sie die gleiche Communication Services-Benutzer-ID, nachdem dieser Benutzer zur Anwendung zurückgekehrt ist. Durch den erneuten Beitritt mit derselben Benutzer-ID wird der Benutzer als dasselbe vorhandene Objekt in der `remoteParticipants`-Sammlung dargestellt. Aus der Sicht der anderen Gesprächsteilnehmer bleibt der Benutzer während der Zeit, die für die Aktualisierung der Seite benötigt wird, bis zu ein oder zwei Minuten im Gespräch.
 
-Aus Sicht der anderen Teilnehmer des Anrufs bleibt der Benutzer für ein bis zwei Minuten im Anruf.
+Wenn der Benutzer vor der Aktualisierung Videodaten übertragen hat, behält die Sammlung `videoStreams` die vorherigen Streaminformationen bei, bis für den Dienst ein Timeout auftritt und die Informationen entfernt werden. In diesem Szenario kann die Anwendung ggf. prüfen, ob der Auflistung neue Streams hinzugefügt wurden, und einen Stream mit der höchsten `id` rendern. 
 
-Wenn der Benutzer mit der gleichen Communication Services-Benutzer-ID erneut beitritt, wird er in der Auflistung `remoteParticipants` als das gleiche, bereits vorhandene Objekt dargestellt.
+### <a name="its-not-possible-to-render-multiple-previews-from-multiple-devices-on-web"></a>Es ist nicht möglich, mehrere Vorschauen von mehreren Geräten im Web zu rendern.
 
-Wenn der Benutzer vor der Aktualisierung Videodaten übertragen hat, behält die Sammlung `videoStreams` die vorherigen Streaminformationen bei, bis für den Dienst ein Timeout auftritt und die Informationen entfernt werden. In diesem Szenario kann die Anwendung ggf. prüfen, ob der Auflistung neue Streams hinzugefügt wurden, und einen Stream mit der höchsten ID (`id`) rendern. 
-
-
-#### <a name="its-not-possible-to-render-multiple-previews-from-multiple-devices-on-web"></a>Es ist nicht möglich, mehrere Vorschauen von mehreren Geräten im Web zu rendern.
 Dies ist eine bekannte Einschränkung. Weitere Informationen finden Sie in der [Übersicht über das Calling SDK](./voice-video-calling/calling-sdk-features.md).
 
-#### <a name="enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados"></a>In Safari können keine Geräte aufgezählt werden, wenn die Anwendung unter iOS oder iPadOS ausgeführt wird.
+### <a name="enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados"></a>In Safari können keine Geräte aufgezählt werden, wenn die Anwendung unter iOS oder iPadOS ausgeführt wird.
 
-Anwendungen können keine Mikrofon-/Lautsprechergeräte (z. B. Bluetooth) in Safari für iOS/iPad auflisten/auswählen. Dies ist eine bekannte Betriebssystemeinschränkung.
+Anwendungen können keine Mikrofon- oder Lautsprechergeräte (z. B. Bluetooth) in Safari für iOS oder iPadOS auflisten oder auswählen. Dies ist eine bekannte Einschränkung dieser Betriebssysteme.
 
-Wenn Sie Safari unter macOS verwenden, kann Ihre App über den Geräte-Manager von Communication Services keine Lautsprecher auflisten bzw. auswählen. In diesem Szenario müssen Geräte über das Betriebssystem ausgewählt werden. Wenn Sie Chrome unter macOS verwenden, kann die App Geräte über den Geräte-Manager von Communication Services aufzählen/auswählen.
+Wenn Sie Safari unter macOS verwenden, kann Ihre App über den Geräte-Manager von Communication Services keine Lautsprecher auflisten bzw. auswählen. In diesem Szenario müssen Sie Geräte über das Betriebssystem auswählen. Wenn Sie Chrome unter macOS verwenden, kann die App Geräte über den Geräte-Manager von Communication Services aufzählen bzw. auswählen.
 
-#### <a name="device-will-get-muted-and-incoming-video-will-stop-rendering-when-an-interruption-occurs-that-takes-over-device-access"></a>Das Gerät wird stummgeschaltet, und das Rendering eingehender Videos wird beendet, wenn eine Unterbrechung auftritt, die den Gerätezugriff übernimmt.
-Dieses Problem kann in erster Linie durch eine andere Anwendung oder das Betriebssystem hervorgerufen werden, das die Steuerung des Mikrofons oder der Kamera übernimmt. Einige Beispiele sind unten zu sehen:
+### <a name="device-mutes-and-incoming-video-stops-rendering-when-certain-interruptions-occur"></a>Das Gerät wird stummgeschaltet und das Rendering des eingehenden Videos wird bei bestimmten Unterbrechungen beendet.
 
-- Während der Benutzer sich in einem Anruf befindet, geht ein PSTN-Anruf ein und übernimmt den Gerätezugriff auf das Mikrofon.
-- Während sich der Benutzer in einem Anruf befindet, navigiert er zu einer anderen nativen Anwendung, die den Zugriff auf das Mikrofon oder die Kamera übernimmt, beispielsweise zur Wiedergabe eines YouTube-Videos oder zum Einleiten eines FaceTime-Anrufs.
-- Während der Benutzer sich in einem Anruf befindet, aktiviert er Siri, die den Zugriff auf das Mikrofon übernimmt.
+Dieses Problem kann auftreten, wenn eine andere Anwendung oder das Betriebssystem die Steuerung des Mikrofons oder der Kamera übernimmt. Im Folgenden finden Sie einige Beispiele, die während eines Anrufs eines Benutzers auftreten können:
 
-Zur Wiederherstellung muss der Benutzer in allen genannten Fällen zur Anwendung zurückkehren, um die Stummschaltung aufzuheben und das Videosignal zu starten, damit die Audio- und Videodaten nach der Unterbrechung wieder zu fließen beginnen.
+- Ein eingehender Anruf erfolgt über das Telefonfestnetz (Public Switched Telephone Network, PSTN) und übernimmt den Zugriff auf das Mikrofongerät.
+- Ein Benutzer gibt z. B. ein YouTube-Video wieder oder startet einen FaceTime-Anruf. Der Wechsel zu einer anderen nativen Anwendung kann den Zugriff auf das Mikrofon oder die Kamera übernehmen.
+- Ein Benutzer aktiviert Siri, wodurch der Zugriff auf das Mikrofon übernommen wird.
 
-In einigen Fällen werden die Geräte (Mikrofon oder Kamera) nicht rechtzeitig freigegeben, und dies kann zu Problemen mit dem ursprünglichen Anruf führen, z. B. wenn der Benutzer versucht, die Stummschaltung beim Ansehen eines YouTube-Videos oder bei einem gleichzeitigen PSTN-Anruf aufzuheben. 
+In all diesen Fällen muss der Benutzer zurück zur Anwendung wechseln, um die Stummschaltung aufzuheben. Bei einem Video muss der Benutzer das Video starten, damit die Wiedergabe der Audio- und Videodaten nach der Unterbrechung fortgesetzt werden kann.
 
-<br/>Clientbibliothek: Calling (JavaScript)
-<br/>Browser: Safari
-<br/>Betriebssystem: iOS
+Gelegentlich werden Mikrofon- oder Kamerageräte nicht rechtzeitig freigeschaltet, was zu Problemen mit dem ursprünglichen Anruf führen kann. Wenn der Benutzer beispielsweise versucht, die Stummschaltung aufzuheben, während er ein YouTube-Video anschaut, oder wenn gleichzeitig einen Anruf über das Telefonfestnetz aktiv ist. 
 
-#### <a name="repeatedly-switching-video-devices-may-cause-video-streaming-to-temporarily-stop"></a>Ein wiederholter Wechsel von Videogeräten kann dazu führen, dass das Videostreaming vorübergehend angehalten wird.
+Dieses Problem tritt in der folgenden Umgebung auf:
 
-Das Wechseln zwischen Videogeräten kann dazu führen, dass Ihr Videostream angehalten wird, während der Stream vom ausgewählten Gerät erfasst wird.
+- Clientbibliothek: Calling (JavaScript)
+- Browser: Safari
+- Betriebssystem: iOS
 
-##### <a name="possible-causes"></a>Mögliche Ursachen
-Ein häufiger Wechsel zwischen Geräten kann zu Leistungsbeeinträchtigungen führen. Entwicklern wird empfohlen, einen Gerätestream zu beenden, bevor sie einen anderen starten.
+### <a name="repeatedly-switching-video-devices-might-cause-video-streaming-to-stop-temporarily"></a>Ein wiederholter Wechsel von Videogeräten kann dazu führen, dass das Videostreaming vorübergehend angehalten wird.
 
-#### <a name="bluetooth-headset-microphone-is-not-detected-therefore-is-not-audible-during-the-call-on-safari-on-ios"></a>Das Mikrofon eines Bluetooth-Headsets wird nicht erkannt, sodass während des Anrufs in Safari unter iOS kein Audio zur Verfügung steht.
+Das Wechseln zwischen Videogeräten kann dazu führen, dass Ihr Videostream angehalten wird, während der Stream vom ausgewählten Gerät erfasst wird. Ein häufiger Wechsel zwischen Geräten kann zu Leistungsbeeinträchtigungen führen. Entwicklern wird empfohlen, einen Gerätestream zu beenden, bevor sie einen anderen starten.
+
+### <a name="bluetooth-headset-microphone-isnt-detected-or-audible-during-the-call-on-safari-on-ios"></a>Das Mikrofon eines Bluetooth-Headsets wird während eines Anrufs in Safari unter iOS nicht erkannt oder ist nicht hörbar.
+
 Bluetooth-Headsets werden von Safari unter iOS nicht unterstützt. Ihr Bluetooth-Gerät wird in den verfügbaren Mikrofonoptionen nicht aufgeführt, und andere Teilnehmer können Sie nicht hören, wenn Sie versuchen, Bluetooth über Safari zu verwenden.
 
-##### <a name="possible-causes"></a>Mögliche Ursachen
-Dies ist eine bekannte Betriebssystemeinschränkung für macOS/iOS/iPadOS. 
+Dies ist eine bekannte Betriebssystemeinschränkung. Mit Safari unter macOS und iOS/iPadOS ist es nicht möglich, Lautsprechergeräte über den Geräte-Manager von Communication Services aufzulisten oder auszuwählen. Das liegt daran, dass Safari die Enumeration oder Auswahl von Lautsprechern nicht unterstützt. Verwenden Sie in diesem Szenario das Betriebssystem, um Ihre Geräteauswahl zu aktualisieren.
 
-Mit Safari unter **macOS** und **iOS/iPadOS** können keine Lautsprecher über den Geräte-Manager von Communication Services aufgezählt/ausgewählt werden, da das Aufzählen/Auswählen von Lautsprechern von Safari nicht unterstützt wird. In diesem Szenario muss Ihre Geräteauswahl über das Betriebssystem aktualisiert werden.
+### <a name="rotation-of-a-device-can-create-poor-video-quality"></a>Es kann vorkommen, dass sich die Videoqualität nach dem Drehen eines Geräts verschlechtert.
 
-#### <a name="rotation-of-a-device-can-create-poor-video-quality"></a>Es kann vorkommen, dass sich die Videoqualität nach dem Drehen eines Geräts verschlechtert.
-Unter Umständen verschlechtert sich die Videoqualität für Benutzer, wenn Geräte gedreht werden.
+Wenn Benutzer ein Gerät drehen, kann diese Bewegung die Qualität von Videos beeinträchtigen, die gestreamt werden.
 
-<br/>Betroffene Geräte: Google Pixel 5, Google Pixel 3a, Apple iPad 8, and Apple iPad X
-<br/>Clientbibliothek: Calling (JavaScript)
-<br/>Browser: Safari, Chrome
-<br/>Betriebssystem: iOS, Android
+Dieses Problem tritt in der folgenden Umgebung auf:
 
+- Betroffene Geräte: Google Pixel 5, Google Pixel 3a, Apple iPad 8, and Apple iPad X
+- Clientbibliothek: Calling (JavaScript)
+- Browser: Safari, Chrome
+- Betriebssysteme: iOS, Android
 
-#### <a name="camera-switching-makes-the-screen-freeze"></a>Wenn die Kamera umgeschaltet wird, friert der Bildschirm ein. 
-Wenn ein Communication Services-Benutzer einem Anruf über das JavaScript Calling SDK beitritt und dann die Schaltfläche zum Umschalten der Kamera verwendet, reagiert die Benutzeroberfläche möglicherweise erst wieder, wenn die Anwendung aktualisiert oder der Browser durch den Benutzer in den Hintergrundmodus versetzt wird.
+### <a name="camera-switching-makes-the-screen-freeze"></a>Wenn die Kamera umgeschaltet wird, friert der Bildschirm ein. 
 
-<br/>Betroffene Geräte: Google Pixel 4a
-<br/>Clientbibliothek: Calling (JavaScript)
-<br/>Browser: Chrome
-<br/>Betriebssystem: iOS, Android
+Wenn ein Communication Services-Benutzer einem Anruf mithilfe des JavaScript Calling SDK beitritt und dann die Schaltfläche zum Umschalten der Kamera auswählt, reagiert die Benutzeroberfläche möglicherweise nicht mehr. Der Benutzer muss dann die Anwendung aktualisieren oder den Browser in den Hintergrund pushen.
 
+Dieses Problem tritt in der folgenden Umgebung auf:
 
-##### <a name="possible-causes"></a>Mögliche Ursachen
-Wird untersucht
+- Betroffene Geräte: Google Pixel 4a
+- Clientbibliothek: Calling (JavaScript)
+- Browser: Chrome
+- Betriebssysteme: iOS, Android
 
-#### <a name="if-the-video-signal-was-stopped-while-the-call-is-in-connecting-state-the-video-will-not-be-sent-after-the-call-started"></a>Wenn das Videosignal während der Verbindungsherstellung des Anrufs beendet wurde, wird es nach Beginn des Anrufs nicht gesendet. 
-Wenn Benutzer die Videoübertragung schnell ein-/ausschalten, während sich der Anruf im Zustand `Connecting` befindet, kann dies zu Problemen mit dem Stream für den Anruf führen. Entwickler sollten Ihre Apps so erstellen, dass die Videoübertragung nicht ein-/ausgeschaltet werden muss, während sich der Anruf im Zustand `Connecting` befindet. Dieses Problem kann die Videoleistung in folgenden Szenarien beeinträchtigen:
+### <a name="video-signal-problem-when-the-call-is-in-connecting-state"></a>Problem mit dem Videosignal, wenn die Verbindung für den Anruf hergestellt wird. 
 
- - Der Benutzer beginnt den Anruf mit Audio und startet und beendet die Videoübertragung, während sich der Anruf im Zustand `Connecting` befindet.
- - Der Benutzer beginnt den Anruf mit Audio und startet und beendet die Videoübertragung, während sich der Anruf im Zustand `Lobby` befindet.
+Wenn ein Benutzer das Video schnell ein- und ausschaltet, während die *Verbindung* für den Anruf hergestellt wird, kann dies zu einem Problem mit dem für den Anruf erfassten Stream führen. Am besten erstellen die Entwickler ihre Apps so, dass das Video nicht ein- und ausgeschaltet werden muss, während die *Verbindung* für den Anruf hergestellt wird. In den folgenden Szenarien kann die Videoleistung beeinträchtigt werden:
 
-##### <a name="possible-causes"></a>Mögliche Ursachen
-Wird untersucht
+ - Der Benutzer beginnt den Anruf mit Audio und startet und beendet die Videoübertragung, während die *Verbindung* für den Anruf hergestellt wird.
+ - Der Benutzer beginnt den Anruf mit Audio und startet und beendet die Videoübertragung, während der Anruf den Status *Wartebereich* aufweist.
 
-#### <a name="enumeratingaccessing-devices-for-safari-on-macos-and-ios"></a>Aufzählen von Geräten für Safari unter macOS und iOS bzw. Zugreifen auf solche Geräte 
-Wenn Zugriff auf Geräte erteilt wird, werden die Geräteberechtigungen nach einer gewissen Zeit zurückgesetzt. Safari hält unter macOS und iOS die Berechtigungen nicht sehr lange aufrecht, es sei denn, es wurde ein Stream erlangt. Dieses Problem lässt sich am einfachsten umgehen, indem vor dem Aufrufen der Geräteaufzählungs-APIs des Geräte-Managers („DeviceManager.getCameras()“, „DeviceManager.getSpeakers()“ und „DeviceManager.getMicrophones()“) die API „DeviceManager.askDevicePermission()“ aufgerufen wird. Sind die Berechtigungen vorhanden, wird dem Benutzer nichts angezeigt. Andernfalls erfolgt eine erneute Anforderung.
+### <a name="enumerating-or-accessing-devices-for-safari-on-macos-and-ios"></a>Aufzählen von Geräten für Safari unter macOS und iOS bzw. Zugreifen auf solche Geräte 
 
-<br/>Betroffene Geräte: iPhone
-<br/>Clientbibliothek: Calling (JavaScript)
-<br/>Browser: Safari
-<br/>Betriebssystem: iOS
+In bestimmten Umgebungen werden Sie möglicherweise feststellen, dass Geräteberechtigungen nach einiger Zeit zurückgesetzt werden. Unter macOS und iOS werden Berechtigungen von Safari nicht für einen längeren Zeitraum beibehalten, sofern kein Stream erfasst wird. Am einfachsten lässt sich dies umgehen, indem die `DeviceManager.askDevicePermission()`-API aufgerufen wird, bevor die APIs des Geräte-Managers zur Enumeration der Geräte aufgerufen werden. Zu diesen APIs für die Enumeration gehören `DeviceManager.getCameras()`, `DeviceManager.getSpeakers()` und `DeviceManager.getMicrophones()`. Wenn die Berechtigungen vorhanden sind, wird dem Benutzer nichts angezeigt. Wenn die Berechtigungen nicht vorhanden sind, wird der Benutzer erneut zur Eingabe der Berechtigungen aufgefordert.
 
-####  <a name="sometimes-it-takes-a-long-time-to-render-remote-participant-videos"></a>Das Rendern der Videostreams von Remoteteilnehmern dauert manchmal sehr lange.
-Während eines laufenden Gruppenanrufs sendet _Benutzer A_ Videodaten, und _Benutzer B_ tritt dem Anruf bei. Manchmal wird Benutzer B das Video von Benutzer A nicht angezeigt, oder das Video von Benutzer A wird erst nach einer langen Verzögerung gerendert. Dieses Problem kann auf eine Netzwerkumgebung zurückzuführen sein, die weiter konfiguriert werden muss. Informationen zur Netzwerkkonfiguration finden Sie in der [Dokumentation zu Netzwerkanforderungen](./voice-video-calling/network-requirements.md).
+Dieses Problem tritt in der folgenden Umgebung auf:
 
-#### <a name="using-3rd-party-libraries-to-access-gum-during-the-call-may-result-in-audio-loss"></a>Die Verwendung von Drittanbieterbibliotheken für den Zugriff auf GUM während des Anrufs kann zu Audioverlusten führen.
-Die separate Verwendung von „getUserMedia“ innerhalb der Anwendung führt zu einem Verlust des Audiodatenstroms, da eine Drittanbieterbibliothek den Gerätezugriff von der ACS-Bibliothek übernimmt.
-Entwicklern wird empfohlen, folgende Schritte zu unternehmen:
-- Verwenden Sie während des Anrufs keine Drittanbieterbibliotheken, die intern die GetUserMedia-API verwenden.
-- Wenn Sie dennoch die Drittanbieterbibliothek verwenden müssen, besteht die einzige Möglichkeit zur Wiederherstellung darin, entweder das ausgewählte Gerät zu wechseln (wenn der Benutzer über mehrere verfügt) oder den Anruf neu zu starten.
+- Betroffenes Gerät: iPhone
+- Clientbibliothek: Calling (JavaScript)
+- Browser: Safari
+- Betriebssystem: iOS
 
-<br/>Browser: Safari
-<br/>Betriebssystem: iOS
+### <a name="delay-in-rendering-remote-participant-videos"></a>Verzögerung beim Rendern der Videostreams von Remoteteilnehmern
 
-##### <a name="possible-causes"></a>Mögliche Ursachen
-In einigen Browsern (z. B. Safari) hat das Abrufen Ihres eigenen Datenstroms vom selben Gerät den Nebeneffekt, dass Racebedingungen eintreten. Das Abrufen von Datenströmen von anderen Geräten kann dazu führen, dass der Benutzer nicht über genügend USB-/E/A-Bandbreite verfügt und die „SourceUnavailableError“-Rate extrem steigt.  
+Angenommen, während eines laufenden Gruppenanrufs sendet _Benutzer A_ Videodaten, und _Benutzer B_ tritt dem Anruf bei. Manchmal wird Benutzer B das Video von Benutzer A nicht angezeigt, oder das Video von Benutzer A wird erst nach einer langen Verzögerung gerendert. Ein Problem mit der Konfiguration der Netzwerkumgebung kann zu dieser Verzögerung führen. Weitere Informationen finden Sie unter [Netzwerkempfehlungen](./voice-video-calling/network-requirements.md).
 
-#### <a name="support-for-simulcast"></a>Unterstützung für Simulcast
-Simulcast ist ein Verfahren, bei dem ein Client denselben Videostream zweimal in unterschiedlichen Auflösungen und Bitraten codiert und die ACS-Infrastruktur entscheiden lässt, welchen Stream ein Client empfangen soll. Das ACS-Anrufbibliothek-SDK für Windows, Android oder iOS unterstützt das Senden von Simulcast-Streams. Das ACS-Web-SDK unterstützt derzeit nicht das Senden von Simulcast-Streams.
+### <a name="using-third-party-libraries-during-the-call-might-result-in-audio-loss"></a>Die Verwendung von Drittanbieterbibliotheken während des Anrufs kann zu Audioverlusten führen.
 
-## <a name="azure-communication-services-call-automation-apis"></a>Azure Communication Services-APIs für die Anrufautomatisierung
+Wenn Sie `getUserMedia` in der Anwendung separat verwenden, geht der Audiostream verloren. Dies liegt daran, dass eine Drittanbieterbibliothek den Gerätezugriff von der Azure Communication Services-Bibliothek übernimmt.
 
-Im Anschluss finden Sie Informationen zu den bekannten Problemen in den Azure Communication Services-APIs für die Anrufautomatisierung.
+- Verwenden Sie während des Anrufs keine Drittanbieterbibliotheken, die die `getUserMedia`-API intern verwenden.
+- Wenn Sie dennoch eine Drittanbieterbibliothek verwenden müssen, besteht die einzige Möglichkeit zur Wiederherstellung des Audiostreams darin, entweder das ausgewählte Gerät zu wechseln (wenn der Benutzer über mehrere verfügt) oder den Anruf neu zu starten.
 
-- Als Authentifizierung für Serveranwendungen wird derzeit nur die Verwendung einer Verbindungszeichenfolge unterstützt.
+Dieses Problem tritt in der folgenden Umgebung auf:
 
-- Anrufe sollten nur zwischen Entitäten der gleichen Azure Communication Services-Ressource erfolgen. Ressourcenübergreifende Kommunikation wird blockiert.
+- Browser: Safari
+- Betriebssystem: iOS
 
-- Anrufe zwischen Mandantenbenutzern von Teams und Benutzer- oder Serveranwendungsentitäten von Azure Communication Services sind nicht zulässig.
+Die Ursache für dieses Problem könnte sein, dass das Abrufen eines eigenen Datenstroms vom selben Gerät den Nebeneffekt hat, dass Racebedingungen eintreten. Das Abrufen von Datenströmen von anderen Geräten kann dazu führen, dass der Benutzer nicht über genügend USB-/E/A-Bandbreite verfügt und die `sourceUnavailableError`-Rate extrem steigt.  
+
+### <a name="support-for-simulcast"></a>Unterstützung für Simulcast
+
+Simulcast ist ein Verfahren, bei dem ein Client denselben Videostream zweimal in unterschiedlichen Auflösungen und Bitraten codiert. Der Client lässt dann Communication Services entscheiden, welchen Stream ein Client empfangen soll. Das Communication Services-Anrufbibliothek-SDK für Windows, Android oder iOS unterstützt das Senden von Simulcast-Streams. Das Communication Services Web SDK unterstützt derzeit nicht das Senden von Simulcast-Streams.
+
+## <a name="communication-services-call-automation-apis"></a>Communication Services-APIs für die Anrufautomatisierung
+
+Im Anschluss finden Sie Informationen zu den bekannten Problemen in den Communication Services-APIs für die Anrufautomatisierung:
+
+- Die einzige Authentifizierung, die derzeit für Serveranwendungen unterstützt wird, ist die Verwendung einer Verbindungszeichenfolge.
+
+- Tätigen Sie Anrufe nur zwischen Entitäten derselben Communication Services-Ressource. Die ressourcenübergreifende Kommunikation ist blockiert.
+
+- Anrufe zwischen Mandantenbenutzern von Microsoft Teams- und Communication Services-Benutzern oder Serveranwendungsentitäten sind nicht zulässig.
 
 - Wenn eine Anwendung zwei oder mehr Telefonfestnetzidentitäten anruft und dann den Aufruf verlässt, wird der Anruf zwischen den anderen Telefonfestnetzentitäten beendet.
 

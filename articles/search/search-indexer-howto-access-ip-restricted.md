@@ -6,86 +6,91 @@ manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
-ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: a91eddfba5c9e1973a938b0c58674cc528f11811
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.topic: how-to
+ms.date: 11/11/2021
+ms.openlocfilehash: 50ee624a3795015d35637e0e984a48025c802698
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858631"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492718"
 ---
 # <a name="configure-ip-firewall-rules-to-allow-indexer-connections-in-azure-cognitive-search"></a>Konfigurieren von IP-Firewallregeln zum Zulassen von Indexerverbindungen in Azure Cognitive Search
 
-IP-Firewallregeln für Azure-Ressourcen wie Speicherkonten, Cosmos DB-Konten und Azure SQL-Server erlauben für den Datenzugriff nur Datenverkehr, der aus bestimmten IP-Adressbereichen stammt.
+Im Namen eines Indexers gibt ein Suchdienst ausgehende Aufrufe an eine externe Azure-Ressource aus, um während der Indizierung Daten einzuholen. Wenn Ihre Azure-Ressource IP-Firewall-Regeln zum Filtern eingehender Anrufe verwendet, müssen Sie eine eingehende Regel in Ihrer Firewall erstellen, die Indexer-Anfragen zulässt.
 
-In diesem Artikel wird beschrieben, wie die IP-Regeln über das Azure-Portal für ein Speicherkonto so konfiguriert werden, dass Indexer von Azure Cognitive Search auf die Daten sicher zugreifen können. Obwohl spezifisch für Azure Storage, funktioniert dieser Ansatz auch bei anderen Azure-Ressourcen, die IP-Firewallregeln zum Sichern des Zugriffs auf Daten verwenden.
+In diesem Artikel wird erklärt, wie Sie die IP-Adresse Ihres Suchdienstes herausfinden und dann das Azure-Portal verwenden, um eine eingehende IP-Regel für ein Azure-Storage-Konto zu konfigurieren. Dieser Ansatz ist zwar spezifisch für Azure Storage, funktioniert aber auch für andere Azure-Ressourcen, die IP-Firewall-Regeln für den Datenzugriff verwenden, wie Cosmos DB und Azure SQL.
 
 > [!NOTE]
-> IP-Firewallregeln für Speicherkonten sind nur wirksam, wenn sich das Speicherkonto und der Suchdienst in verschiedenen Regionen befinden. Wenn Ihr Setup dies nicht zulässt, empfehlen wir die Verwendung der [Option „Ausnahme für vertrauenswürdige Dienste“](search-indexer-howto-access-trusted-service-exception.md).
+> IP-Firewall-Regeln für ein Speicherkonto sind nur wirksam, wenn sich das Speicherkonto und der Suchdienst in unterschiedlichen Regionen befinden. Wenn Ihre Einrichtung dies nicht zulässt, empfehlen wir als Alternative die Verwendung der Option [Vertrauenswürdige Dienstausnahme](search-indexer-howto-access-trusted-service-exception.md).
 
-## <a name="get-the-ip-address-of-the-search-service"></a>Abrufen der IP-Adresse des Suchdiensts
+## <a name="get-a-search-service-ip-address"></a>IP-Adresse eines Suchdienstes abrufen
 
-Rufen Sie den vollqualifizierten Domänennamen (FQDN) Ihres Suchdiensts ab. Dieser sieht wie `<search-service-name>.search.windows.net` aus. Sie können den FQDN ermitteln, indem Sie Ihren Suchdienst im Azure-Portal suchen.
+1. Ermitteln Sie den vollständig qualifizierten Domänennamen (FQDN) Ihres Suchdienstes. Dieser sieht wie `<search-service-name>.search.windows.net` aus. Sie können den FQDN ermitteln, indem Sie Ihren Suchdienst im Azure-Portal suchen.
 
    ![Abrufen des Dienst-FQDN](media\search-indexer-howto-secure-access\search-service-portal.png "Abrufen des Dienst-FQDN")
 
-Die IP-Adresse des Suchdiensts kann durch Ausführen von `nslookup` (oder von `ping`) des FQDN abgerufen werden. Im folgenden Beispiel fügen Sie einer eingehenden Regel in der Azure Storage-Firewall „150.0.0.1“ hinzu. Es kann bis zu 15 Minuten nach dem Aktualisieren der Firewalleinstellungen dauern, bis der Suchdienstindexer auf das Azure Storage-Konto zugreifen kann.
+1. Suchen Sie die IP-Adresse des Suchdienstes, indem Sie einen `nslookup` (oder `ping`) des FQDN in einer Eingabeaufforderung durchführen.
 
-```azurepowershell
+1. Kopieren Sie die IP-Adresse, damit Sie sie im nächsten Schritt in einer eingehenden Regel angeben können. Im folgenden Beispiel lautet die IP-Adresse, die Sie kopieren sollten, "150.0.0.1".
 
-nslookup contoso.search.windows.net
-Server:  server.example.org
-Address:  10.50.10.50
+   ```azurepowershell
+   nslookup contoso.search.windows.net
+   Server:  server.example.org
+   Address:  10.50.10.50
+    
+   Non-authoritative answer:
+   Name:    <name>
+   Address:  150.0.0.1
+   aliases:  contoso.search.windows.net
+   ```
 
-Non-authoritative answer:
-Name:    <name>
-Address:  150.0.0.1
-Aliases:  contoso.search.windows.net
-```
+## <a name="get-ip-addresses-for-azurecognitivesearch-service-tag"></a>IP-Adressen für das Dienst-Tag "AzureCognitiveSearch" abrufen
 
-## <a name="get-the-ip-address-ranges-for-azurecognitivesearch-service-tag"></a>Abrufen der IP-Adressbereiche für das Diensttag „AzureCognitiveSearch“
+Je nach Konfiguration Ihres Suchdienstes müssen Sie möglicherweise auch eine eingehende Regel erstellen, die Anfragen von einer Reihe von IP-Adressen zulässt. Insbesondere werden zusätzliche IP-Adressen für Anfragen verwendet, die aus der mandantenfähigen [Ausführungsumgebung des Indexers stammen](search-indexer-securing-resources.md#indexer-execution-environment). 
 
-Zusätzliche IP-Adressen werden für Anforderungen verwendet, die aus der [mehrinstanzenfähigen Ausführungsumgebung](search-indexer-securing-resources.md#indexer-execution-environment) des Indexers stammen. Sie können diesen IP-Adressbereich aus dem Diensttag abrufen.
+Sie können diesen IP-Adressbereich über das Dienst-Tag `AzureCognitiveSearch` abrufen.
 
-Die IP-Adressbereiche für das Diensttag `AzureCognitiveSearch` können entweder über die [Ermittlungs-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) oder die [herunterladbare JSON-Datei](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) abgerufen werden.
+1. Rufen Sie die IP-Adressbereiche für das `AzureCognitiveSearch` Service-Tag entweder über die [Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) oder die [herunterladbare JSON-Datei](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) ab.
 
-Für diese exemplarische Vorgehensweise sollte unter der Annahme, dass der Suchdienst der öffentliche Azure-Clouddienst ist, die [öffentliche Azure-JSON-Datei](https://www.microsoft.com/download/details.aspx?id=56519) heruntergeladen werden.
+1. Handelt es sich bei dem Suchdienst um die Azure Public Cloud, sollte die [Azure Public JSON-Datei](https://www.microsoft.com/download/details.aspx?id=56519) heruntergeladen werden.
 
    ![Herunterladen der JSON-Datei](media\search-indexer-howto-secure-access\service-tag.png "Herunterladen der JSON-Datei")
 
-Aus der JSON-Datei sind unter der Annahme, dass sich der Suchdienst in „USA, Westen-Mitte“ befindet, die IP-Adressen für die Ausführungsumgebung des Indexers für mehrere Mandanten nachfolgend aufgeführt.
+1. Aus der JSON-Datei sind unter der Annahme, dass sich der Suchdienst in „USA, Westen-Mitte“ befindet, die IP-Adressen für die Ausführungsumgebung des Indexers für mehrere Mandanten nachfolgend aufgeführt.
 
 ```json
-    {
-      "name": "AzureCognitiveSearch.WestCentralUS",
-      "id": "AzureCognitiveSearch.WestCentralUS",
-      "properties": {
-        "changeNumber": 1,
-        "region": "westcentralus",
-        "platform": "Azure",
-        "systemService": "AzureCognitiveSearch",
-        "addressPrefixes": [
-          "52.150.139.0/26",
-          "52.253.133.74/32"
-        ]
-      }
-    }
+{
+"name": "AzureCognitiveSearch.WestCentralUS",
+"id": "AzureCognitiveSearch.WestCentralUS",
+"properties": {
+   "changeNumber": 1,
+   "region": "westcentralus",
+   "platform": "Azure",
+   "systemService": "AzureCognitiveSearch",
+   "addressPrefixes": [
+      "52.150.139.0/26",
+      "52.253.133.74/32"
+   ]
+}
+}
 ```
 
-Für /32-IP-Adressen lassen Sie das „/32“ weg (52.253.133.74/32 -> 52.253.133.74), andere können unverändert verwendet werden.
+Für `/32` IP-Adressen lassen Sie das "/32" weg (52.253.133.74/32 wird in der Regeldefinition zu 52.253.133.74). Alle anderen IP-Adressen können wortwörtlich verwendet werden.
 
-## <a name="add-the-ip-address-ranges-to-ip-firewall-rules"></a>Hinzufügen von IP-Adressbereichen zu IP-Firewallregeln
+## <a name="add-ip-addresses-to-ip-firewall-rules"></a>IP-Adressen zu IP-Firewall-Regeln hinzufügen
 
-Der einfachste Weg, IP-Adressbereiche zur Firewallregel eines Speicherkontos hinzuzufügen, ist über das Azure-Portal. Suchen Sie das Speicherkonto auf dem Portal, und navigieren Sie zur Registerkarte **Firewalls und virtuelle Netzwerke**.
+Sobald Sie die IP-Adressen haben, können Sie die Regel einrichten. Der einfachste Weg, IP-Adressbereiche zur Firewallregel eines Speicherkontos hinzuzufügen, ist über das Azure-Portal. 
+
+1. Suchen Sie das Speicherkonto auf dem Portal, und navigieren Sie zur Registerkarte **Firewalls und virtuelle Netzwerke**.
 
    ![Firewall und virtuelle Netzwerke](media\search-indexer-howto-secure-access\storage-firewall.png "Firewall und virtuelle Netzwerke")
 
-Fügen Sie die drei zuvor abgerufenen IP-Adressen („1“ für die IP-Adresse des Suchdiensts, „2“ für das Diensttag `AzureCognitiveSearch`) in den Adressbereich ein, und wählen Sie **Speichern** aus.
+1. Fügen Sie die drei zuvor erhaltenen IP-Adressen (eine für die Suchdienst-IP, zwei für das `AzureCognitiveSearch`-Dienst-Tag) in den Adressbereich ein und wählen Sie **Speichern**.
 
    ![IP-Regeln der Firewall](media\search-indexer-howto-secure-access\storage-firewall-ip.png "IP-Regeln der Firewall")
 
-Die Firewallregeln benötigen 5–10 Minuten für die Aktualisierung. Danach sollten Indexer auf die Daten im Speicherkonto zugreifen können.
+Es kann fünf bis zehn Minuten dauern, bis die Firewall-Regeln aktualisiert sind. Danach sollten die Indexierer auf die Daten im Speicherkonto zugreifen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

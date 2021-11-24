@@ -1,65 +1,64 @@
 ---
-title: Verwenden von Triggern und Aktionen in Azure Sentinel-Playbooks | Microsoft-Dokumentation
-description: Erfahren Sie genauer, wie Sie Ihren Playbooks Zugriff auf die Informationen in Ihren Azure Sentinel-Warnungen und -Incidents geben und diese Informationen nutzen können, um Abhilfemaßnahmen zu ergreifen.
+title: Auslöser und Aktionen in Microsoft Sentinel-Playbooks verwenden | Microsoft Docs
+description: Erfahren Sie, wie Sie Ihren Playbooks Zugriff auf die Informationen in Ihren Microsoft Sentinel-Warnungen und -Vorfällen gewähren und diese Informationen nutzen können, um Abhilfemaßnahmen zu ergreifen.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 093db947b30444b4d7c3614126c83977fd45e3de
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 89b296d47f24391eb0c31b2292aa4add273d71f6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083952"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524396"
 ---
-# <a name="use-triggers-and-actions-in-azure-sentinel-playbooks"></a>Verwenden von Triggern und Aktionen in Azure Sentinel-Playbooks
+# <a name="use-triggers-and-actions-in-microsoft-sentinel-playbooks"></a>Verwendung von Auslösern und Aktionen in Microsoft Sentinel-Playbooks
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Dokument werden die Arten von Triggern und Aktionen im [Azure Sentinel-Connector für Logic Apps](/connectors/azuresentinel/) erläutert, die Playbooks zur Interaktion mit Azure Sentinel und den Informationen in den Tabellen Ihres Arbeitsbereichs verwenden können. Außerdem wird Ihnen gezeigt, wie Sie zu bestimmten Arten von Azure Sentinel-Informationen gelangen, die Sie voraussichtlich benötigen werden.
+In diesem Dokument werden die Arten von Triggern und Aktionen im [Logic Apps Microsoft Sentinel-Connector](/connectors/azuresentinel/) erläutert, die Playbooks zur Interaktion mit Microsoft Sentinel und den Informationen in den Tabellen Ihres Arbeitsbereichs verwenden können. Außerdem wird Ihnen gezeigt, wie Sie zu bestimmten Arten von Microsoft Sentinel-Informationen gelangen, die Sie wahrscheinlich benötigen werden.
 
-Dieses Dokument ist zusammen mit unserem Leitfaden zum [Authentifizieren von Playbooks in Azure Sentinel](authenticate-playbooks-to-sentinel.md) eine Ergänzung zu unserer anderen Playbookdokumentation: [Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel](tutorial-respond-threats-playbook.md). In diesen drei Dokumenten wird immer wieder aufeinander verwiesen.
+Dieses Dokument ist zusammen mit unserem Leitfaden zur [Authentifizierung von Playbooks in Microsoft Sentinel](authenticate-playbooks-to-sentinel.md) eine Ergänzung zu unserer anderen Playbook-Dokumentation - [Tutorial: Verwendung von Playbooks mit Automatisierungsregeln in Microsoft Sentinel](tutorial-respond-threats-playbook.md). In diesen drei Dokumenten wird immer wieder aufeinander verwiesen.
 
-Eine Einführung in Playbooks finden Sie unter [Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel](automate-responses-with-playbooks.md).
+Eine Einführung in Playbooks finden Sie unter [ Automatisierung Reaktion auf Bedrohungen mit Playbooks in Microsoft Sentinel](automate-responses-with-playbooks.md).
 
-Die vollständige Spezifikation des Azure Sentinel-Connectors finden Sie in der [Dokumentation zu Logic Apps-Connectors](/connectors/azuresentinel/).
+Die vollständige Spezifikation des Microsoft Sentinel-Konnektors finden Sie in der Dokumentation zum [Logic Apps-Konnektor](/connectors/azuresentinel/).
 
 ## <a name="permissions-required"></a>Erforderliche Berechtigungen
 
 | Rollen/Connectorkomponenten | Auslöser | „Get“-Aktionen | Incident aktualisieren,<br>Kommentar hinzufügen |
 | ------------- | :-----------: | :------------: | :-----------: |
-| **[Azure Sentinel-Leser](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)** | &#10003; | &#10003; | &#10007; |
-| **Azure Sentinel [Antwortdienst](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)/[Mitwirkender](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)** | &#10003; | &#10003; | &#10003; |
+| **[Microsoft Sentinel-Leser](../role-based-access-control/built-in-roles.md#microsoft-sentinel-reader)** | &#10003; | &#10003; | &#10007; |
+| **Microsoft Sentinel-[Responder](../role-based-access-control/built-in-roles.md#microsoft-sentinel-responder)/[Mitwirkender](../role-based-access-control/built-in-roles.md#microsoft-sentinel-contributor)** | &#10003; | &#10003; | &#10003; |
 | 
 
-[Erfahren Sie mehr zu Berechtigungen in Azure Sentinel](./roles.md).
+[Erfahren Sie mehr über Berechtigungen in Microsoft Sentinel](./roles.md).
 
-## <a name="azure-sentinel-triggers-summary"></a>Übersicht über Azure Sentinel-Trigger
+## <a name="microsoft-sentinel-triggers-summary"></a>Zusammenfassung der Auslöser von Microsoft Sentinel
 
-Obwohl der Azure Sentinel-Connector auf vielfältige Weise verwendet werden kann, lassen sich die Komponenten des Connectors in zwei Flows unterteilen, die jeweils durch ein anderes Azure Sentinel-Ereignis ausgelöst werden:
+Obwohl der Microsoft Sentinel-Konnektor auf vielfältige Weise verwendet werden kann, lassen sich die Komponenten des Konnektors in zwei Abläufe unterteilen, die jeweils durch ein anderes Microsoft Sentinel-Ereignis ausgelöst werden:
 
 | Trigger | Vollständiger Triggername in<br>Designer für Logik-Apps | Einsatzgebiete | Bekannte Einschränkungen 
 | --------- | ------------ | -------------- | -------------- | 
-| **Incidenttrigger** | „Wenn die Azure Sentinel-Incidenterstellungsregel ausgelöst wird (Vorschau)“ | Wird für die meisten Szenarien zur Incidentautomatisierung empfohlen.<br><br>Das Playbook empfängt Incidentobjekte, einschließlich Entitäten und Warnungen. Mit diesem Trigger kann das Playbook an eine **Automatisierungsregel** angefügt werden, damit es ausgelöst werden kann, wenn ein Incident in Azure Sentinel erstellt wird. So können alle [Vorteile von Automatisierungsregeln](./automate-incident-handling-with-automation-rules.md) auf den Incident angewendet werden. | Playbooks mit diesem Trigger können nicht manuell in Azure Sentinel ausgeführt werden.<br><br>Playbooks mit diesem Trigger unterstützen keine Gruppierung von Warnungen, d. h., sie empfangen nur die erste Warnung, die bei jedem Incident gesendet wird.
-| **Warnungstrigger** | „Wenn eine Reaktion auf eine Azure Sentinel-Warnung ausgelöst wird“ | Empfehlenswert für Playbooks, die manuell bei Warnungen aus dem Azure Sentinel-Portal ausgeführt werden müssen, oder für **geplante** Analyseregeln, die keine Incidents für ihre Warnungen generieren. | Dieser Trigger kann nicht verwendet werden, um Reaktionen auf Warnungen zu automatisieren, die von **Microsoft-Sicherheitsanalyseregeln** generiert werden.<br><br>Playbooks, die diesen Trigger verwenden, können nicht von **Automatisierungsregeln aufgerufen werden**. |
+| **Incidenttrigger** | "Wenn die Regel zur Erstellung von Microsoft Sentinel-Ereignissen ausgelöst wurde (Vorschau)" | Wird für die meisten Szenarien zur Incidentautomatisierung empfohlen.<br><br>Das Playbook empfängt Incidentobjekte, einschließlich Entitäten und Warnungen. Mit diesem Auslöser kann das Playbook an eine **Automatisierungsregel** angehängt werden, so dass es ausgelöst werden kann, wenn ein Vorfall in Microsoft Sentinel erstellt wird, und alle [Vorteile der Automatisierungsregeln](./automate-incident-handling-with-automation-rules.md) auf den Vorfall angewendet werden können. | Playbooks mit diesem Auslöser können nicht manuell über Microsoft Sentinel ausgeführt werden.<br><br>Playbooks mit diesem Trigger unterstützen keine Gruppierung von Warnungen, d. h., sie empfangen nur die erste Warnung, die bei jedem Incident gesendet wird.
+| **Warnungstrigger** | "Wenn eine Reaktion auf eine Microsoft Sentinel-Warnung ausgelöst wird" | Empfehlenswert für Playbooks, die manuell auf Alerts aus dem Microsoft Sentinel-Portal ausgeführt werden müssen, oder für **geplante** Analyseregeln, die keine Incidents für ihre Alerts erzeugen. | Dieser Trigger kann nicht verwendet werden, um Reaktionen auf Warnungen zu automatisieren, die von **Microsoft-Sicherheitsanalyseregeln** generiert werden.<br><br>Playbooks, die diesen Trigger verwenden, können nicht von **Automatisierungsregeln aufgerufen werden**. |
 |
 
-Die von diesen beiden Flows verwendeten Schemas sind nicht identisch.
-Es wird empfohlen, den Flow **Azure Sentinel-Incidenttrigger** zu verwenden, der für die meisten Szenarien geeignet ist.
+Die von diesen beiden Flows verwendeten Schemas sind nicht identisch. Es wird empfohlen, den Ablauf **Microsoft Sentinel incident trigger** zu verwenden, der für die meisten Szenarien geeignet ist.
 
 ### <a name="incident-dynamic-fields"></a>Dynamische Felder für Incidents
 
-Das Objekt **Incident**, das von **Wenn die Azure Sentinel-Incidenterstellungsregel ausgelöst wird** empfangen wurde, enthält die folgenden dynamischen Felder:
+Das Objekt **Incident**, das von **When Microsoft Sentinel incident creation rule was triggered** empfangen wurde, enthält die folgenden dynamischen Felder:
 
 - Incidenteigenschaften (als „Incident: Feldname“ angezeigt)
 
@@ -77,7 +76,7 @@ Das Objekt **Incident**, das von **Wenn die Azure Sentinel-Incidenterstellungsre
   - Arbeitsbereichs-ID
   - Ressourcengruppenname
 
-## <a name="azure-sentinel-actions-summary"></a>Übersicht über Azure Sentinel-Aktionen
+## <a name="microsoft-sentinel-actions-summary"></a>Zusammenfassung der Microsoft Sentinel-Aktionen
 
 | Komponente | Einsatzgebiete |
 | --------- | -------------- |
@@ -91,8 +90,9 @@ Das Objekt **Incident**, das von **Wenn die Azure Sentinel-Incidenterstellungsre
 ## <a name="work-with-incidents---usage-examples"></a>Arbeiten mit Incidents: Verwendungsbeispiele
 
 > [!TIP] 
-> Die Aktionen **Incident aktualisieren** und **Kommentar zu Incident hinzufügen** erfordern die **Incident-ARM-ID**. <br>
-Verwenden Sie zuvor die Aktion **Warnung: Incident abrufen**, um die **Incident-ARM-ID** zu erhalten.
+> Die Aktionen **Incident aktualisieren** und **Kommentar zu Incident hinzufügen** erfordern die **Incident-ARM-ID**.
+>
+> Verwenden Sie zuvor die Aktion **Warnung: Incident abrufen**, um die **Incident-ARM-ID** zu erhalten.
 
 ### <a name="update-an-incident"></a>Aktualisieren eines Incidents
 -  Playbook wird ausgelöst, **wenn ein Incident erstellt wird**
@@ -193,5 +193,5 @@ Sie können den folgenden JSON-Code zum Generieren des Schemas bereitstellen. De
     
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie mehr über die Verwendung von Triggern und Aktionen in Azure Sentinel-Playbooks erfahren, um auf Bedrohungen zu reagieren. 
-- Im [nächsten Artikel](hunting.md) erfahren Sie, wie Sie mithilfe von Azure Sentinel proaktiv nach Bedrohungen suchen.
+In diesem Artikel haben Sie mehr über die Verwendung der Auslöser und Aktionen in Microsoft Sentinel-Playbooks erfahren, um auf Bedrohungen zu reagieren. 
+- Erfahren Sie, wie Sie mit Microsoft Sentinel [proaktiv nach Bedrohungen suchen](hunting.md).

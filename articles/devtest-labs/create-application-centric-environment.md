@@ -1,44 +1,41 @@
 ---
-title: Erstellen einer anwendungsorientierten Umgebung
-description: In diesem Artikel erfahren Sie, wie Sie eine anwendungsorientierte Umgebung mit CloudShell Colony und Microsoft Azure erstellen.
+title: Erstellen einer anwendungsorientierten Umgebung mit Colony
+description: In diesem Artikel erfahren Sie, wie Sie eine anwendungsorientierte Umgebung mit Colony und Azure erstellen.
 ms.topic: how-to
-ms.date: 11/26/2020
-ms.openlocfilehash: 8b56a39996aa93e10ede28de91ae20857a8eefc0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/09/2021
+ms.openlocfilehash: 9ce80a7467ac94a69227cc9616c72c622a6f575f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128627575"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347241"
 ---
-# <a name="create-an-application-centric-environment"></a>Erstellen einer anwendungsorientierten Umgebung
+# <a name="create-an-application-centric-environment-with-colony"></a>Erstellen einer anwendungsorientierten Umgebung mit Colony
 
-[CloudShell Colony von Quali](https://azuremarketplace.microsoft.com/marketplace/apps/quali_systems.cloudshell_colony?tab=Overview) ist eine SaaS-Plattform zur Infrastrukturautomatisierung im großen Stil für komplexe anwendungsorientierte Umgebungen in Cloudtechnologien wie Azure und Kubernetes. CloudShell Colony ergänzt Azure DevTest Labs, um Entwicklerteams über den gesamten Wertstrom hinweg bis hin zur Produktion bei der Bereitstellung komplexer Anwendungen zu unterstützen.
+[Quali CloudShell Colony](https://azuremarketplace.microsoft.com/marketplace/apps/quali_systems.cloudshell_colony?tab=Overview) ist eine SaaS-Plattform (Software-as-a-Service), mit der Sie Infrastrukturautomatisierung im großen Stil bereitstellen können. Colony unterstützt Entwickler bei der Bereitstellung von Anwendungen in komplexen Cloudumgebungen wie Azure und Kubernetes. Dies ergänzt Azure DevTest Labs während des gesamten Anwendungsbereitstellungsprozesses bis hin zur Produktion. In diesem Artikel erfahren Sie, wie Sie eine anwendungsorientierte Umgebung mit Colony und Azure erstellen.
 
-In diesem Artikel erfahren Sie, wie Sie eine anwendungsorientierte Umgebung mit CloudShell Colony und Microsoft Azure erstellen.
-
-## <a name="set-up-the-environment-with-cloudshell-colony-and-microsoft-azure"></a>Einrichten der Umgebung mit CloudShell Colony und Microsoft Azure
+## <a name="set-up-the-environment-with-colony-and-microsoft-azure"></a>Einrichten der Umgebung mit CloudShell Colony und Microsoft Azure
 
 1. Registrieren Sie sich für Ihre kostenlose Testversion von [Colony](https://azuremarketplace.microsoft.com/marketplace/apps/quali_systems.cloudshell_colony?tab=Overview).
 
-    :::image type="content" source="./media/create-application-centric-environment/free-trial.png" alt-text="Für kostenlose Testversion registrieren":::    
-1. Verknüpfen Sie Ihr Azure-Konto. (Eine entsprechende Anleitung finden Sie [hier](https://colonysupport.quali.com/hc/articles/360008222234).)
+    :::image type="content" source="./media/create-application-centric-environment/free-trial.png" alt-text="Screenshot: Registrierung für eine kostenlose Colony-Testversion.":::
+1. [Verknüpfen Sie Ihr Azure-Konto](https://colonysupport.quali.com/hc/articles/360008222234).
 
-    :::image type="content" source="./media/create-application-centric-environment/welcome.png" alt-text="Willkommen bei Colony":::     
+    :::image type="content" source="./media/create-application-centric-environment/welcome.png" alt-text="Screenshot des Bildschirms &quot;Willkommen bei Colony“.":::
 1. Laden Sie Benutzer in Ihren Bereich ein.
-1. Erstellen Sie Ihre erste Blaupause mithilfe einer YAML-Datei. (Eine entsprechende Anleitung finden Sie [hier](https://colonysupport.quali.com/hc/articles/360001680807-Steps-to-Developing-a-Blueprint).)
+1. [Erstellen Sie Ihre erste Blaupause mithilfe einer YAML-Datei](https://colonysupport.quali.com/hc/articles/360001680807-Steps-to-Developing-a-Blueprint).
     1. Verknüpfen Sie Ihr Blaupausenrepository in GitHub oder BitBucket mit Colony.
-    1. Verwenden Sie eine Colony-Beispielblaupause als Grundlage, und ändern Sie sie nach Bedarf.
+    1. Verwenden Sie eine Colony-Beispielblaupause als Grundlage, und ändern sie nach Bedarf.
 
-        :::image type="content" source="./media/create-application-centric-environment/performance-stress-tests.png" alt-text="Belastungstests":::    
+        :::image type="content" source="./media/create-application-centric-environment/performance-stress-tests.png" alt-text="Screenshot: Belastungstests.":::
     1. Veröffentlichen Sie Ihre Blaupause, damit sie von anderen verwendet werden kann.
-1. Starten Sie Ihre Anwendungsumgebung mithilfe von Colony in einer Sandbox.
+1. Starten Ihrer Anwendungsumgebung in einer Sandbox unter Verwendung von Colony.
 
-    :::image type="content" source="./media/create-application-centric-environment/blueprints.png" alt-text="Starten Ihrer Anwendungsumgebung in einer Sandbox mithilfe von Colony":::    
+    :::image type="content" source="./media/create-application-centric-environment/blueprints.png" alt-text="Screenshot vom Starten Ihrer Anwendungsumgebung in einer Sandbox unter Verwendung von Colony.":::
 
-> [!NOTE]
-> Sie können Ihre Blaupause auch in einen CI/CD-Workflow in Azure DevOps integrieren. (Eine entsprechende Anleitung finden Sie [hier](https://colonysupport.quali.com/hc/articles/360008464234).)
+Sie können Ihre Blaupause auch als Teil eines CI/CD-Workflows (Continuous Integration and Continuous Delivery) in Azure Pipelines integrieren. Die Schritte hierzu finden Sie unter [Starten einer Sandbox aus Azure DevOps (VSTS)](https://colonysupport.quali.com/hc/articles/360008464234).
 
-:::image type="content" source="./media/create-application-centric-environment/devops-pipeline.png" alt-text="Herstellen einer Verbindung mit Ihrer Azure DevOps-Pipeline":::    
+:::image type="content" source="./media/create-application-centric-environment/devops-pipeline.png" alt-text="Screenshot: Herstellen einer Verbindung mit einer Azure Pipelines Pipeline.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

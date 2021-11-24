@@ -4,16 +4,19 @@ description: Dieser Artikel beschreibt Schritte zur Problembehandlung für den A
 ms.topic: troubleshooting
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 26d4675274d05500b54bbc43ecb84838b114f0c9
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 3760b17d71dc3526d9a16283084095174d7bb724
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554695"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398400"
 ---
 # <a name="troubleshoot-azure-video-analyzer-service"></a>Problembehandlung für den Azure Video Analyzer-Dienst
 
-[!INCLUDE [header](includes/cloud-env.md)]
+![Cloud-Symbol](media/env-icon/cloud.png)  
+Alternativ können Sie sich [die Problembehandlung im Edgebereich](../edge/troubleshoot.md)ansehen.
+
+---
 
 In diesem Artikel werden Schritte zur Problembehandlung für häufige Fehlerszenarien beschrieben, die bei der Verwendung des Diensts vorkommen können.
 

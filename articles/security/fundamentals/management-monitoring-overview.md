@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: f87ea1e1c9f43de4e9e0f94d1cd855615a0a880c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81306e06d4ac6d0168215cebe7d45b4fb4c051de
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712044"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305786"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure-Sicherheitsverwaltung und -Überwachung – Übersicht
 Dieser Artikel enthält eine Übersicht über die Sicherheitsfeatures und -dienste in Azure, die als Hilfe bei der Verwaltung und Überwachung von Azure-Clouddiensten und virtuellen Azure-Computern dienen.
@@ -115,13 +115,13 @@ Weitere Informationen:
 * [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD- und Identity-Show: Vorschau von Identity Protection)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-## <a name="security-center"></a>Security Center
+## <a name="defender-for-cloud"></a>Defender für Cloud
 
-Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheben. Security Center sorgt für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen sowie der Ressourcen in Ihrer Hybrid Cloud-Umgebung. 
+Microsoft Defender für Cloud hilft Ihnen dabei, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren. Defender für Cloud sorgt für eine größere Transparenz und eine bessere Kontrolle bezüglich der Sicherheit Ihrer Azure-Ressourcen sowie der Ressourcen in Ihrer hybriden Cloud-Umgebung. 
 
-Security Center führt kontinuierliche Sicherheitsbewertungen Ihrer verbundenen Ressourcen durch und vergleicht ihre Konfiguration und Bereitstellung mit dem [Azure-Sicherheitsvergleichstest](../benchmarks/introduction.md), um detaillierte, auf Ihre Umgebung zugeschnittene Sicherheitsempfehlungen zu geben.
+Defender für Cloud führt kontinuierliche Sicherheitsbewertungen Ihrer verbundenen Ressourcen durch und vergleicht ihre Konfiguration und Bereitstellung mit der [Azure-Sicherheits-Benchmark](../benchmarks/introduction.md), um detaillierte, auf Ihre Umgebung zugeschnittene Sicherheitsempfehlungen zu geben.
 
-Mit Security Center können Sie die Sicherheit Ihrer Azure-Ressourcen wie folgt optimieren und überwachen:
+Defender für Cloud unterstützt Sie bei der Optimierung und Überwachung der Sicherheit Ihrer Azure-Ressourcen durch Folgendes:
 
 - Sie können Richtlinien für die Ressourcen Ihres Azure-Abonnements definieren:
     - Die Sicherheitsanforderungen Ihrer Organisation.
@@ -132,8 +132,8 @@ Mit Security Center können Sie die Sicherheit Ihrer Azure-Ressourcen wie folgt 
 
 Weitere Informationen:
 
-* [Einführung in Azure Security Center](../../security-center/security-center-introduction.md)
-* [Verbessern des Secure Score in Azure Security Center](../../security-center/secure-score-security-controls.md)
+* [Einführung in Microsoft Defender für Cloud](../../security-center/security-center-introduction.md)
+* [Verbessern Ihres Secure Score (Indikator für Sicherheitsbewertung) in Microsoft Defender für Cloud](../../security-center/secure-score-security-controls.md)
 
 ## <a name="intelligent-security-graph"></a>Intelligent Security Graph
 

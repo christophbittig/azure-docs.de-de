@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 10/27/2021
-ms.openlocfilehash: 32d9607ea292dcce971fc4274717112d2669d01f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2655c3d5943902c94e364ba379ab6682d86c049d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131081351"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343969"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Verwenden von verwalteten Azure SQL-Instanzen mit SQL Server Integration Services (SSIS) in Azure Data Factory
 
@@ -38,7 +38,7 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
 
         1. Wählen Sie das virtuelle Netzwerk aus, das mit der Azure-SSIS IR verknüpft werden soll:
             - Im selben virtuellen Netzwerk wie die verwaltete Instanz mit **unterschiedlichen Subnetzen**.
-            - In einem anderen virtuellen Netzwerk als die verwaltete Instanz über Peering virtueller Netzwerke (das aufgrund von Einschränkungen für globales VNET-Peering auf dieselbe Region beschränkt ist) oder eine Verbindung zwischen den virtuellen Netzwerken.
+            - Innerhalb eines anderen virtuellen Netzwerks als die verwaltete Instanz, über ein virtuelles Netzwerk-Peering (das aufgrund der globalen VNet-Peering-Beschränkungen auf dieselbe Region beschränkt ist) oder eine Verbindung zwischen virtuellen Netzwerken untereinander.
 
             Weitere Informationen zu SQL Managed Instance-Verbindungen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und Azure SQL Managed Instance](../azure-sql/managed-instance/connect-application-instance.md).
 

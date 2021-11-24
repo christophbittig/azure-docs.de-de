@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 10/05/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 507e7a97c0ec884580b0a29fd8a8691035221751
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 72e869b1439e5fd9bcb77af57bd4e0d3d8f6a677
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131085978"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324800"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-the-azure-portal"></a>Erstellen eines Integrationsworkflows mit der Azure Logic Apps-Einzelmandanteninstanz (Standard) im Azure-Portal
 
@@ -72,7 +72,7 @@ Im Weiteren führen Sie diese allgemeinen Aufgaben aus:
 
 1. Geben Sie auf der Seite **Logik-App erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen zu Ihrer Logik-App-Ressource ein.
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | Beschreibung |
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Das für Ihre Logik-App zu verwendende Azure-Abonnement. |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Die Azure-Ressourcengruppe, in der Sie Ihre Logik-App und zugehörige Ressourcen erstellen. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und darf nur Buchstaben, Ziffern, Bindestriche ( **-** ), Unterstriche ( **_** ), Klammern ( **()** ) und Punkte ( **.** ) enthalten. <p><p>In diesem Beispiel wird eine Ressourcengruppe namens `Fabrikam-Workflows-RG` erstellt. |
@@ -148,7 +148,7 @@ Nachdem Sie Ihre leere Logik-App-Ressource erstellt haben, müssen Sie Ihren ers
 
 In diesem Beispiel wird ein Workflow mit den folgenden Schritten erstellt:
 
-* Den integrierten [Anforderungstrigger](../connectors/connectors-native-reqres.md), **Beim Empfang einer HTTP-Anforderung**, der eingehende Aufrufe oder Anforderungen empfängt und einen Endpunkt erstellt, der von anderen Diensten oder Logik-Apps aufgerufen werden kann.
+* Integrierter [Anforderungstrigger](../connectors/connectors-native-reqres.md), beim **Empfang einer HTTP-Anforderung**, der eingehende Aufrufe oder Anforderungen empfängt und einen Endpunkt erstellt, der von anderen Diensten oder Logik-Apps aufgerufen werden kann.
 
 * Die [Office 365 Outlook-Aktion](../connectors/connectors-create-api-office365-outlook.md): **E-Mail senden**.
 
@@ -158,9 +158,9 @@ Bevor Sie einem leeren Workflow einen Trigger hinzufügen können, stellen Sie s
 
 1. Überprüfen Sie, ob neben der Designeroberfläche im Bereich **Trigger hinzufügen** unter dem Suchfeld **Vorgang auswählen** die Registerkarte **Integriert** ausgewählt ist. Auf dieser Registerkarte werden Trigger angezeigt, die nativ in Azure Logic Apps ausgeführt werden.
 
-1. Geben Sie in das Suchfeld **Vorgang auswählen** die Zeichenfolge `when a http request` ein, und wählen Sie den integrierten Anforderungstrigger namens **Beim Empfang einer HTTP-Anforderung** aus.
+1. Geben Sie in das Suchfeld **Vorgang auswählen** die Zeichenfolge `when a http request` ein, und wählen Sie den integrierten Anforderungstrigger namens **Empfang einer HTTP-Anforderung** aus.
 
-   ![Screenshot, der den Designer und den Bereich **Trigger hinzufügen** mit ausgewähltem Trigger „Beim Empfang einer HTTP-Anforderung“ zeigt.](./media/create-single-tenant-workflows-azure-portal/find-request-trigger.png)
+   ![Der Screenshot zeigt den Bereich Designer und **Trigger hinzufügen** mit der Auswahl des Triggers "Empfang einer HTTP-Anforderung".](./media/create-single-tenant-workflows-azure-portal/find-request-trigger.png)
 
    Wenn der Trigger im Designer angezeigt wird, wird der Detailbereich des Triggers geöffnet, um die Eigenschaften, Einstellungen und anderen Aktionen des Triggers anzuzeigen.
 
@@ -260,7 +260,7 @@ Führen Sie die folgenden Schritte aus, um die vollqualifizierten Domänennamen 
 
 In diesem Beispiel wird der Workflow ausgeführt, wenn der Anforderungstrigger eine eingehende Anforderung empfängt, die an die URL für den Endpunkt gesendet wird, der vom Trigger erstellt wird. Als Sie den Workflow zum ersten Mal gespeichert haben, hat der Logic Apps-Dienst diese URL automatisch generiert. Bevor Sie diese Anforderung zum Auslösen des Workflows senden können, müssen Sie diese URL suchen.
 
-1. Wählen Sie im Workflow-Designer den Anforderungstrigger **Beim Empfang einer HTTP-Anforderung** aus.
+1. Wählen Sie im Workflow-Designer den Anforderungstrigger **Empfang einer HTTP-Anforderung** aus.
 
 1. Nach Öffnen des Detailbereichs suchen Sie auf der Registerkarte **Parameter** die **HTTP-POST-URL**-Eigenschaft. Um die generierte URL zu kopieren, wählen Sie **URL kopieren** aus („Datei kopieren“-Symbol), und speichern Sie die URL vorerst an einem anderen Ort. Die URL weist das folgende Format auf:
 

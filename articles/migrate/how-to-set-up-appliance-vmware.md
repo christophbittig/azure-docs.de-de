@@ -5,13 +5,13 @@ author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 07/27/2021
-ms.openlocfilehash: b2bdd5ee189d4fe350171d37e51d0f88b3e3ac20
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/12/2021
+ms.openlocfilehash: c95c92c1f592cc5f042975e832df66e585d99740
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347179"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402483"
 ---
 # <a name="set-up-an-appliance-for-servers-in-a-vmware-environment"></a>Einrichten einer Appliance für Server in einer VMware-Umgebung
 
@@ -64,11 +64,7 @@ Vergewissern Sie sich vor dem Bereitstellen der OVA-Datei, dass die Datei sicher
    
     Ein Beispiel: `C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256`
 
-1. Überprüfen Sie die neuesten Applianceversionen und Hashwerte für die öffentliche Azure-Cloud:
-    
-    **Algorithmus** | **Download** | **SHA256**
-    --- | --- | ---
-    VMware (11,9 GB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+1. Überprüfen Sie den neuesten Hashwert, indem Sie das Ergebnis des obigen Befehls mit dem [hier](/azure/migrate/tutorial-discover-vmware#verify-security)dokumentierten Wert vergleichen.
 
 #### <a name="create-the-appliance-server"></a>Erstellen des Servers auf der Appliance
 

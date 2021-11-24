@@ -1,24 +1,24 @@
 ---
-title: Konfigurieren der Einstellungen für den automatischen Start virtueller Computer
-description: Erfahren Sie, wie Sie Einstellungen für den automatischen Start für virtuelle Computer in einem Lab konfigurieren. Mit dieser Einstellung können virtuelle Computer im Lab nach einem Zeitplan automatisch gestartet werden.
+title: Konfigurieren der Einstellungen für den automatischen Start bei einem virtuellen Computer
+description: Erfahren Sie, wie Sie Einstellungen für den automatischen Start bei virtuellen Computern in einem Lab konfigurieren. Mit dieser Einstellung können virtuelle Computer im Lab nach einem Zeitplan automatisch gestartet werden.
 ms.topic: how-to
 ms.date: 10/21/2021
-ms.openlocfilehash: 8493a5037c01741c11f89ec5df84adac2d2d70c3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ea4220af8a3d7ade997b9e64b7164757edfc165a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130255022"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286714"
 ---
-# <a name="auto-startup-lab-virtual-machines"></a>Automatisches Starten virtueller Labcomputer
+# <a name="start-up-lab-virtual-machines-automatically"></a>Automatisches Starten virtueller Lab-Computer
 
-Mit dem automatischen Start können Sie virtuelle Computer (virtual machines, VMs) in einem Lab täglich automatisch zu einem geplanten Zeitpunkt starten. Zunächst müssen Sie eine Richtlinie für den automatischen Start erstellen. Anschließend müssen Sie auswählen, für welche VMs die Richtlinie gelten soll. Der zusätzliche Schritt der aktiven Auswahl von VMs für den automatischen Start soll das unbeabsichtigte Starten von VMs verhindern, das zu höheren Kosten führt.
+Mit dem automatischen Start können Sie virtuelle Computer (virtual machines, VMs) in einem Lab täglich automatisch zu einem geplanten Zeitpunkt starten. Zunächst müssen Sie eine Richtlinie für den automatischen Start erstellen. Anschließend müssen Sie auswählen, für welche VMs die Richtlinie gelten soll. Der zusätzliche Schritt der aktiven Auswahl von virtuellen Computern für den automatischen Start soll das nicht gewollte Starten von einzelnen virtuellen Computern verhindern, was zu höheren Kosten führt.
 
 In diesem Artikel erfahren Sie, wie Sie die Richtlinie für den automatischen Start für ein Lab konfigurieren. Weitere Informationen zum Konfigurieren der Einstellungen für das automatische Herunterfahren finden Sie unter [Verwalten von Richtlinien für das automatische Herunterfahren für ein Lab in Azure DevTest Labs](devtest-lab-auto-shutdown.md). 
 
 ## <a name="configure-auto-start-settings-for-a-lab"></a>Konfigurieren der Einstellungen für den automatischen Start für ein Lab 
 
-Mit der Richtlinie wird der automatische Start nicht automatisch auf VMs im Lab angewendet. Führen Sie nach dem Konfigurieren der Richtlinie die Schritte unter [Aktivieren des automatischen Starts für eine VM im Lab](#enable-auto-start-for-a-vm-in-the-lab) aus.
+Mit der Richtlinie wird der automatische Start nicht automatisch auf virtuelle Computer im Lab angewendet. Führen Sie nach dem Konfigurieren der Richtlinie die Schritte unter [Aktivieren des automatischen Starts für einen virtuellen Computer im Lab](#enable-auto start-for-a-vm-in-the-lab) aus.
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) an.
 
@@ -46,9 +46,9 @@ Mit der Richtlinie wird der automatische Start nicht automatisch auf VMs im Lab 
 
 1. Wählen Sie **Speichern** aus. 
 
-## <a name="enable-auto-start-for-a-vm-in-the-lab"></a>Aktivieren des automatischen Starts für eine VM im Lab
+## <a name="enable-auto-start-for-a-vm-in-the-lab"></a>Aktivieren des automatischen Starts für einen virtuellen Computer im Lab
 
-Diese Schritte sind eine Fortsetzung des vorherigen Abschnitts. Nachdem Sie eine Richtlinie für den automatischen Start erstellt haben, wählen Sie die VMs aus, auf die die Richtlinie angewendet werden soll.
+Diese Schritte sind eine Fortsetzung des vorherigen Abschnitts. Nachdem Sie eine Richtlinie für den automatischen Start erstellt haben, wählen Sie die virtuellen Computer aus, auf die die Richtlinie angewendet werden soll.
 
 1. Schließen Sie die Seite **Konfiguration und Richtlinien**, um zur Seite **DevTest Labs** zurückzukehren.
 
@@ -64,4 +64,4 @@ Diese Schritte sind eine Fortsetzung des vorherigen Abschnitts. Nachdem Sie eine
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Konfigurieren der Richtlinie für automatisches Herunterfahren für ein Lab finden Sie unter [Verwalten von Richtlinien für das automatische Herunterfahren für ein Lab in Azure DevTest Labs](devtest-lab-auto-shutdown.md).
+- [Verwalten von Richtlinien zum automatischen Herunterfahren für ein Lab in Azure DevTest Labs](devtest-lab-auto-shutdown.md)

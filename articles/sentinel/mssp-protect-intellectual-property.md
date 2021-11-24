@@ -1,33 +1,33 @@
 ---
-title: Schützen des geistigen Eigentums von MSSPs (Managed Security Service Providers) in Azure Sentinel | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie MSSPs (Managed Security Service Providers) das von ihnen erstellte geistige Eigentum in Azure Sentinel schützen können.
+title: Schützen des geistigen Eigentums von MSSPs (Managed Security Service Providers) in Microsoft Sentinel | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie MSSPs (Managed Security Service Providers) das von ihnen erstellte geistige Eigentum in Microsoft Sentinel schützen können.
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2021
+ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: b21bb010755e8f618cba2ae40db14d12aa3b28df
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 11ee855d2606376ab893d581a091afeca3dd6713
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023023"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518867"
 ---
-# <a name="protecting-mssp-intellectual-property-in-azure-sentinel"></a>Schützen des geistigen Eigentums von MSSPs in Azure Sentinel
+# <a name="protecting-mssp-intellectual-property-in-microsoft-sentinel"></a>Schützen des geistigen Eigentums von MSSPs in Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Artikel werden die Methoden beschrieben, mit denen MSSPs (Managed Security Service Providers) geistiges Eigentum schützen können, das sie in Azure Sentinel entwickelt haben. Beispiele hierfür wären etwa Azure Sentinel-Analyseregeln, Hunting-Abfragen, Playbooks und Arbeitsmappen.
+In diesem Artikel werden die Methoden beschrieben, mit denen MSSPs (Managed Security Service Providers) geistiges Eigentum schützen können, das sie in Microsoft Sentinel entwickelt haben. Beispiele hierfür wären etwa Microsoft Sentinel-Analyseregeln, Hunting-Abfragen, Playbooks und Arbeitsmappen.
 
 Für welche Methode Sie sich entscheiden, hängt davon ab, wie Ihre Kunden Azure erwerben – also ob Sie als [Cloudlösungsanbieter (Cloud Solutions Provider, CSP)](#cloud-solutions-providers-csp) fungieren oder ob der Kunde über ein Konto mit [Enterprise Agreement (EA)/nutzungsbasierter Bezahlung (Pay-As-You-Go, PAYG)](#enterprise-agreements-ea--pay-as-you-go-payg) verfügt. Die einzelnen Methoden werden in den folgenden Abschnitten beschrieben.
 
@@ -41,21 +41,21 @@ Wenn Sie Kundenbenutzern Zugriff auf die Azure-Umgebung gewähren müssen, empfi
 
 Beispiel:
 
-- Sie können dem Kunden Zugriff auf mehrere Ressourcengruppen gewähren, in denen sich seine Anwendungen befinden, und den Azure Sentinel-Arbeitsbereich in einer separaten Ressourcengruppe platzieren, auf die der Kunde keinen Zugriff hat.
+- Sie können dem Kunden Zugriff auf mehrere Ressourcengruppen gewähren, in denen sich seine Anwendungen befinden, und den Microsoft Sentinel-Arbeitsbereich in einer separaten Ressourcengruppe platzieren, auf die der Kunde keinen Zugriff hat.
 
 - Mit dieser Methode können Kunden bestimmte Arbeitsmappen und Playbooks anzeigen – also separate Ressourcen, die sich in ihrer eigenen Ressourcengruppe befinden.
 
-Wenn Sie Kunden Zugriff auf Ressourcengruppenebene gewähren, können diese trotzdem auf Protokolldaten für die Ressourcen zugreifen, auf die sie Zugriff haben (also beispielsweise auf Protokolle eines virtuellen Computers) – auch ohne Zugriff auf Azure Sentinel. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Azure Sentinel-Daten nach Ressource](resource-context-rbac.md).
+Wenn Sie Kunden Zugriff auf Ressourcengruppenebene gewähren, können diese trotzdem auf Protokolldaten für die Ressourcen zugreifen, auf die sie Zugriff haben (also beispielsweise auf Protokolle eines virtuellen Computers) – auch ohne Zugriff auf Microsoft Sentinel. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Microsoft Sentinel-Daten nach Ressource](resource-context-rbac.md).
 
 > [!TIP]
 > Falls Ihre Kunden Zugriff auf das gesamte Abonnement benötigen, sehen Sie sich die Informationen unter [Enterprise Agreements (EAs)/Nutzungsbasierte Bezahlung (Pay-As-You-Go, PAYG)](#enterprise-agreements-ea--pay-as-you-go-payg) an.
 >
 
-### <a name="sample-azure-sentinel-csp-architecture"></a>Azure Sentinel: CSP-Beispielarchitektur
+### <a name="sample-microsoft-sentinel-csp-architecture"></a>Microsoft Sentinel: CSP-Beispielarchitektur
 
 Die folgende Abbildung zeigt, wie die im [vorherigen Abschnitt](#cloud-solutions-providers-csp) beschriebenen Berechtigungen bei der Zugriffsgewährung für CSP-Kunden verwendet werden können:
 
-:::image type="content" source="media/mssp-protect-intellectual-property/csp-customers.png" alt-text="Schützen Ihres geistigen Eigentums in Azure Sentinel: CSP-Kunden":::
+:::image type="content" source="media/mssp-protect-intellectual-property/csp-customers.png" alt-text="Schützen Ihres geistigen Eigentums in Microsoft Sentinel: CSP-Kunden":::
 
 In dieser Abbildung:
 
@@ -63,7 +63,7 @@ In dieser Abbildung:
 - Anderen Gruppen des MSSP wird über Azure Lighthouse Zugriff auf die Kundenumgebung gewährt.
 - Der Kundenzugriff auf Azure-Ressourcen wird per Azure RBAC auf Ressourcengruppenebene verwaltet.
 
-    Dadurch können MSSPs Azure Sentinel-Komponenten wie Analyseregeln und Hunting-Abfragen nach Bedarf ausblenden.
+    Dadurch können MSSPs Microsoft Sentinel-Komponenten wie Analyseregeln und Hunting-Abfragen nach Bedarf ausblenden.
 
 Weitere Informationen finden Sie auch in der [Dokumentation zu Azure Lighthouse](../lighthouse/concepts/cloud-solution-provider.md).
 
@@ -71,15 +71,15 @@ Weitere Informationen finden Sie auch in der [Dokumentation zu Azure Lighthouse]
 
 Wenn Ihr Kunde direkt bei Microsoft kauft, hat er bereits Vollzugriff auf die Azure-Umgebung, und Sie können nichts ausblenden, was sich im Azure-Abonnement des Kunden befindet.
 
-Stattdessen können Sie Ihr in Azure Sentinel entwickeltes geistiges Eigentum wie folgt schützen (je nachdem, welche Art von Ressource Sie schützen möchten):
+Stattdessen können Sie Ihr in Microsoft Sentinel entwickeltes geistiges Eigentum wie folgt schützen (je nachdem, welche Art von Ressource Sie schützen möchten):
 
 ### <a name="analytics-rules-and-hunting-queries"></a>Analyseregeln und Hunting-Abfragen
 
-Analyseregeln und Hunting-Abfragen sind in Azure Sentinel enthalten und können daher nicht vom Azure Sentinel-Arbeitsbereich getrennt werden.
+Analyseregeln und Hunting-Abfragen sind in Microsoft Sentinel enthalten und können daher nicht vom Microsoft Sentinel-Arbeitsbereich getrennt werden.
 
-Die Abfrage kann somit selbst von Benutzern mit Berechtigungen vom Typ „Azure Sentinel-Leser“ angezeigt werden. In diesem Fall empfiehlt es sich, Ihre Analyseregeln und Hunting-Abfragen nicht im Kundenmandanten, sondern in Ihrem eigenen MSSP-Mandanten zu hosten.
+Die Abfrage kann somit selbst von Benutzern mit Berechtigungen vom Typ „Microsoft Sentinel-Leser“ angezeigt werden. In diesem Fall empfiehlt es sich, Ihre Analyseregeln und Hunting-Abfragen nicht im Kundenmandanten, sondern in Ihrem eigenen MSSP-Mandanten zu hosten.
 
-Hierzu benötigen Sie in Ihrem eigenen Mandanten einen Arbeitsbereich mit Azure Sentinel-Unterstützung, und der Kundenarbeitsbereich muss für Sie über [Azure Lighthouse](multiple-tenants-service-providers.md) sichtbar sein.
+Hierzu benötigen Sie in Ihrem eigenen Mandanten einen Arbeitsbereich mit Microsoft Sentinel-Unterstützung, und der Kundenarbeitsbereich muss für Sie über [Azure Lighthouse](multiple-tenants-service-providers.md) sichtbar sein.
 
 Um im MSSP-Mandanten eine Analyseregel oder Hunting-Abfrage mit Verweis auf Daten im Kundenmandanten zu erstellen, muss die Anweisung `workspace` wie folgt verwendet werden:
 
@@ -94,7 +94,7 @@ Berücksichtigen Sie Folgendes, wenn Sie Ihren Analyseregeln eine Anweisung vom 
 
 - **Erstellen Sie separate Warnungen für jeden Kunden.** Bei Verwendung dieser Methode empfiehlt es sich auch, separate Warnungsregeln für jeden Kunden und jede Erkennung zu verwenden, da die Arbeitsbereichsanweisung von Fall zu Fall unterschiedlich ist.
 
-    Zur problemlosen Identifizierung des Kunden, bei dem die Warnung ausgelöst wurde, können Sie den Kundennamen dem Namen der Warnungsregel hinzufügen. Separate Warnungen können zu einer großen Anzahl von Regeln führen, die Sie ggf. mithilfe von Skripts oder mit [Azure Sentinel als Code](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) verwalten sollten.
+    Zur problemlosen Identifizierung des Kunden, bei dem die Warnung ausgelöst wurde, können Sie den Kundennamen dem Namen der Warnungsregel hinzufügen. Separate Warnungen können zu einer großen Anzahl von Regeln führen, die Sie ggf. mithilfe von Skripts oder mit [Microsoft Sentinel als Code](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) verwalten sollten.
 
     Beispiel:
 
@@ -114,7 +114,7 @@ Berücksichtigen Sie Folgendes, wenn Sie Ihren Analyseregeln eine Anweisung vom 
 
 ### <a name="workbooks"></a>Arbeitsmappen
 
-Wenn Sie eine Azure Sentinel-Arbeitsmappe entwickelt haben, die von Ihrem Kunden nicht kopiert werden soll, hosten Sie die Arbeitsmappe in Ihrem MSSP-Mandanten. Stellen Sie sicher, dass Sie über Azure Lighthouse auf Ihre Kundenarbeitsbereiche zugreifen können, und ändern Sie dann die Arbeitsmappe so, dass diese Kundenarbeitsbereiche verwendet werden.
+Wenn Sie eine Microsoft Sentinel-Arbeitsmappe entwickelt haben, die von Ihrem Kunden nicht kopiert werden soll, hosten Sie die Arbeitsmappe in Ihrem MSSP-Mandanten. Stellen Sie sicher, dass Sie über Azure Lighthouse auf Ihre Kundenarbeitsbereiche zugreifen können, und ändern Sie dann die Arbeitsmappe so, dass diese Kundenarbeitsbereiche verwendet werden.
 
 Beispiel:
 
@@ -158,10 +158,10 @@ Benötigt das Playbook Zugriff auf Azure-fremde Ressourcen im Mandanten des Kund
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [Azure Sentinel: Technisches Playbook für MSSPs](https://cloudpartners.transform.microsoft.com/download?assetname=assets/Azure-Sentinel-Technical-Playbook-for-MSSPs.pdf&download=1)
-- [Verwalten mehrerer Mandanten in Azure Sentinel als MSSP](multiple-tenants-service-providers.md)
-- [Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten](extend-sentinel-across-workspaces-tenants.md)
+- [Microsoft Sentinel: Technisches Playbook für MSSPs](https://cloudpartners.transform.microsoft.com/download?assetname=assets/Azure-Sentinel-Technical-Playbook-for-MSSPs.pdf&download=1)
+- [Verwalten mehrerer Mandanten in Microsoft Sentinel als MSSP](multiple-tenants-service-providers.md)
+- [Erweitern von Microsoft Sentinel auf Arbeitsbereiche und Mandanten](extend-sentinel-across-workspaces-tenants.md)
 - [Visualisieren und Überwachen Ihrer Daten](monitor-your-data.md)
-- [Tutorial: Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](tutorial-respond-threats-playbook.md)
+- [Tutorial: Einrichten automatisierter Reaktionen auf Bedrohungen in Microsoft Sentinel](tutorial-respond-threats-playbook.md)

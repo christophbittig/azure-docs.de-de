@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 80bb6aac5d6eb80f82372fd90d77fa0c2a082957
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 6bcb751c58b4ba14e84f529ec268beacc93fdcf4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166706"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339559"
 ---
 # <a name="how-to-automatically-apply-sensitivity-labels-to-your-data-in-azure-purview"></a>Automatische Anwendung von Sensitivitätskennzeichnungen auf Ihre Daten in Azure Purview
 
@@ -54,7 +54,7 @@ Nachdem Sie die Beschriftung auf Assets in Azure Purview ausgeweitet haben, steh
 
 **Zum Erstellen neuer Vertraulichkeitsbezeichnungen oder Ändern vorhandener Bezeichnungen gehen Sie folgendermaßen vor**:
 
-1. Öffnen Sie das [Microsoft 365 Sicherheits- und Compliance-Center](https://compliance.microsoft.com/).
+1. Öffnen Sie das [Microsoft 365 Compliance Center](https://compliance.microsoft.com/).
 
 1. Wählen Sie unter **Lösungen** die Option **Information Protection** und dann **Bezeichnung erstellen** aus.
 

@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
 ms.date: 9/9/2021
-ms.openlocfilehash: f5cc4321f49a2cee75f8111bd975f750f075680f
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 12f445c1b532ff3989010ca2a4b747ca0c241aef
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094177"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546486"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,6 +33,10 @@ Die Dienstebene „Hyperscale“ in Azure SQL-Datenbank ist die neueste Diensteb
 >
 > - Ausführliche Informationen zu den Dienstebenen „Universell“ und „Unternehmenskritisch“ im vCore-basierten Kaufmodell finden Sie in den Dienstebenen [Universell](service-tier-general-purpose.md) und [Unternehmenskritisch](service-tier-business-critical.md). Einen Vergleich zwischen vCore-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](purchasing-models.md).
 > - Die Hyperscale-Dienstebene ist derzeit nur für Azure SQL-Datenbank und nicht für Azure SQL Managed Instance verfügbar.
+
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="what-are-the-hyperscale-capabilities"></a>Welche Funktionen bietet Hyperscale?
 

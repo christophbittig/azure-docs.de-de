@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5b815914d4a34d50e2bb566097620ee29e15f957
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 665cb2c8db360f061023294d563082321aae70e8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677524"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305805"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen
 
@@ -144,15 +144,15 @@ Ein wichtiger Teil des Sicherheitsprogramms besteht darin, sicherzustellen, dass
 
 Einige Azure-Dienste bieten Features, die Sie bei der Erstellung vorbeugender Maßnahmen unterstützen. Diese werden weiter unten ausführlicher beschrieben. Andere Methoden zur Vermeidung dieses Problems müssen über Best Practices oder Standards Ihrer Organisation implementiert werden.
 
-### <a name="enable-azure-defender-for-app-service"></a>Aktivieren von Azure Defender für App Service
+### <a name="enable-microsoft-defender-for-app-service"></a>Microsoft Defender für den App-Service aktivieren
 
-Azure Defender ist die Cloud Workload Protection Platform (CWPP) von Azure Security Center und bietet eine Reihe von Plänen zum Schützen Ihrer Azure-Ressourcen sowie Hybrid- und Multicloudressourcen und -workloads.
+Die integrierte Cloud Workload Protection Platform (CWPP) von Microsoft Defender für Cloud, Microsoft Defender für Cloud, bietet eine Reihe von Plänen zum Schützen Ihrer Azure- sowie Hybrid- und Multi-Cloud-Ressourcen und -Workloads.
 
-Der Plan **Azure Defender für App Service** umfasst das Erkennen verwaister DNS-Einträge. Wenn dieser Plan aktiviert ist, erhalten Sie Sicherheitswarnungen, wenn Sie eine App Service-Website außer Betrieb nehmen, aber nicht ihre benutzerdefinierte Domäne aus Ihrer DNS-Registrierungsstelle entfernen.
+Der Plan von **Microsoft Defender für den App-Service** umfasst das Erkennen defekter DNS. Wenn dieser Plan aktiviert ist, erhalten Sie Sicherheitswarnungen, wenn Sie eine App Service-Website außer Betrieb nehmen, aber nicht ihre benutzerdefinierte Domäne aus Ihrer DNS-Registrierungsstelle entfernen.
 
-Der Azure Defender-Schutz vor verwaisten DNS-Einträgen ist unabhängig davon verfügbar, ob Ihre Domänen mit Azure DNS oder mit einer externen Domänenregistrierungsstelle verwaltet werden. Der Schutz gilt sowohl für App Service unter Windows als auch für App Service unter Linux.
+Der Schutz von Microsoft Defender für Cloud vor defekter DNS ist abhängig davon verfügbar, ob Ihre Domänen mit Azure DNS oder mit einer externen Domänenregistrierungsstelle verwaltet werden. Der Schutz gilt sowohl für den App-Service unter Windows als auch Linux.
 
-Weitere Informationen zu diesem und anderen Vorteilen des Azure Defender-Plans finden Sie unter [Einführung in Azure Defender für App Service](../../security-center/defender-for-app-service-introduction.md).
+Weitere Informationen zu diesem und anderen Vorteilen des Microsoft-Defender-Plans finden Sie unter [Einführung in Microsoft Defender für den App-Service](../../security-center/defender-for-app-service-introduction.md).
 
 ### <a name="use-azure-dns-alias-records"></a>Verwenden von Azure DNS-Aliaseinträgen
 
@@ -211,7 +211,7 @@ Entwickler und Betriebsteams müssen häufig Bereinigungsprozesse durchführen, 
 
 Weitere Informationen zu verwandten Diensten und Azure-Features, die Sie verwenden können, um sich vor Unterdomänenübernahmen zu schützen, finden Sie auf den folgenden Seiten.
 
-- [Aktivieren von Azure Defender für App Service](../../security-center/defender-for-app-service-introduction.md), um Warnungen zu erhalten, wenn verwaiste DNS-Einträge erkannt werden
+- [Aktivieren Sie Microsoft Defender für den App-Service](../../security-center/defender-for-app-service-introduction.md), um Warnungen zu erhalten, wenn defekte DNS-Einträge erkannt werden
 
 - [Vermeiden verwaister DNS-Einträge](../../dns/dns-alias.md#prevent-dangling-dns-records)
 

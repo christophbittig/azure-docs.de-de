@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 95830ef00132c7b432b29c033a9d7e7e400b8aad
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6f798cb4bc1511c0656c697f04e2d1763ca54321
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131458853"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308596"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Dedizierte Azure Monitor-Protokollcluster
 
@@ -47,9 +47,9 @@ Für die Abrechnung des Verbrauchs in einem Cluster stehen zwei Modi zur Verfüg
 
 1. **Cluster (Standardeinstellung)** : Erfasste Daten werden auf Clusterebene abgerechnet. Die erfassten Datenmengen aus den einzelnen Arbeitsbereichen, die einem Cluster zugeordnet sind, werden aggregiert, um die tägliche Abrechnung für den Cluster zu berechnen. 
 
-2. **Arbeitsbereiche**: Die Kosten der Mindestabnahmestufe für Ihren Cluster werden proportional zu den Arbeitsbereichen im Cluster gemäß dem Datenerfassungsvolumen jedes Arbeitsbereichs (nach Einbeziehen der Knotenzuordnungen von [Azure Security Center](../../security-center/index.yml) für jeden Arbeitsbereich) zugeordnet. Die vollständigen Details dieses Preismodells werden [hier](./manage-cost-storage.md#log-analytics-dedicated-clusters) erläutert. 
+2. **Arbeitsbereiche**: Die Commitment Tier-Kosten für Ihren Cluster werden anteilig auf die Arbeitsbereiche im Cluster umgelegt, und zwar nach dem Datenerfassungsvolumen jedes Arbeitsbereichs (nach Berücksichtigung der Zuweisungen pro Knoten von [Microsoft Defender für Cloud](../../security-center/index.yml) für jeden Arbeitsbereich). Die vollständigen Details dieses Preismodells werden [hier](./manage-cost-storage.md#log-analytics-dedicated-clusters) erläutert. 
 
-Wenn Ihr Arbeitsbereich den alten Tarif auf Knotenbasis verwendet, wird er, wenn er mit einem Cluster verknüpft ist, nicht mehr pro Knoten abgerechnet, sondern mit den erfassten Daten der Mindestabnahmestufe des Clusters verrechnet. Datenzuweisungen pro Knoten von Azure Security Center werden weiterhin angewendet.
+Wenn Ihr Arbeitsbereich den alten Tarif auf Knotenbasis verwendet, wird er, wenn er mit einem Cluster verknüpft ist, nicht mehr pro Knoten abgerechnet, sondern mit den erfassten Daten der Mindestabnahmestufe des Clusters verrechnet. Datenzuordnungen pro Knoten von Microsoft Defender für Cloud werden weiterhin angewendet.
 
 Vollständige Informationen zur Abrechnung für dedizierte Log Analytics-Cluster finden Sie [hier](./manage-cost-storage.md#log-analytics-dedicated-clusters).
 

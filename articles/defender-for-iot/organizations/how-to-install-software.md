@@ -1,18 +1,18 @@
 ---
 title: Installation von Defender für IoT
-description: Hier erfahren Sie, wie Sie einen Sensor und die lokale Verwaltungskonsole für Azure Defender für IoT installieren.
-ms.date: 10/21/2021
+description: Hier erfahren Sie, wie Sie einen Sensor und die lokale Verwaltungskonsole für Microsoft Defender für IoT installieren.
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 0548b1caa269431bb27a54e2dcbd297b2d4734a0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 23776a9abf35cc8cdba512517163ab2f723b458d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247586"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343779"
 ---
 # <a name="defender-for-iot-installation"></a>Installation von Defender für IoT
 
-Dieser Artikel beschreibt, wie Sie die folgenden Azure Defender für IoT-Komponenten installieren:
+Dieser Artikel beschreibt, wie Sie die folgenden Microsoft Defender für IoT-Komponenten installieren:
 
 - **Sensor**: Defender für IoT-Sensoren erfassen den ICS-Netzwerkdatenverkehr mithilfe von passiver Überwachung (ohne Agents). Da sie passiv und nicht intrusiv arbeiten, haben die Sensoren keinerlei Auswirkungen auf OT- und IoT-Netzwerke und -Geräte. Der Sensor wird mit einem SPAN-Port oder Netzwerk-TAP verbunden und beginnt sofort mit der Überwachung Ihres Netzwerks. Erkennungen werden in der Sensorkonsole angezeigt. Dort können Sie sie in einer Netzwerkübersicht, einem Geräteinventar sowie einer umfangreichen Palette von Berichten anzeigen, untersuchen und analysieren. Zu den Beispielen zählen Risikobewertungsberichte, Data Mining-Abfragen und Angriffsvektoren.
 
@@ -73,7 +73,7 @@ Die folgenden virtuellen Geräte stehen zur Verfügung:
 
 ### <a name="access-the-iso-installation-image"></a>Zugreifen auf das ISO-Installationsimage
 
-Auf das Installationsimage kann über das Defender für IoT-Portal zugegriffen werden.
+Das Installationsbild ist über Defender for IoT im Azure-Portal zugänglich.
 
 So greifen Sie auf die Datei zu:
 
@@ -408,7 +408,7 @@ So installieren Sie die Software:
 
 1. Schließen Sie den Bildschirm und die Tastatur an die Appliance an, und stellen Sie eine Verbindung mit der CLI her.
 
-1. Verbinden Sie eine externe CD oder einen Datenträger auf dem Schlüssel mit dem ISO-Image, das Sie im Defender für IoT-Portal über die Seite **Updates** heruntergeladen haben.
+1. Schließen Sie eine externe CD oder einen Datenträger mit dem ISO-Bild, das Sie von der Seite **Updates** von Defender für IoT im Azure-Portal heruntergeladen haben, an den Schlüssel an.
 
 1. Starten Sie die Appliance.
 
@@ -494,7 +494,7 @@ So führen Sie die Installation durch:
 
 1. Schließen Sie den Bildschirm und die Tastatur an die Appliance an, und stellen Sie eine Verbindung mit der CLI her.
 
-1. Verbinden Sie eine externe CD oder einen Datenträger auf einem Schlüssel mit dem ISO-Image, das Sie im Defender für IoT-Portal über die Seite **Updates** heruntergeladen haben.
+1. Schließen Sie eine externe CD oder einen Datenträger mit dem ISO-Bild, das Sie von der Seite **Updates** von Defender für IoT im Azure-Portal heruntergeladen haben, an den Schlüssel an.
 
 1. Starten Sie die Appliance.
 
@@ -631,7 +631,7 @@ Die lokale Verwaltungskonsole unterstützt sowohl VMware- als auch Hyper-V-Berei
 
 - Verfügbare Hardwareressourcen für den virtuellen Computer
 
-- ISO-Installationsdatei für den Azure Defender für IoT-Sensor
+- ISO-Installationsdatei für den Microsoft Defender für IoT-Sensor
 
 Sorgen Sie dafür, dass der Hypervisor ausgeführt wird.
 
@@ -812,8 +812,7 @@ Sie können die Sicherheit Ihrer lokalen Verwaltungskonsole erhöhen, indem Sie 
 
 :::image type="content" source="media/tutorial-install-components/secondary-nic.png" alt-text="Die Gesamtarchitektur der sekundären NIC":::
 
-Beide NICs unterstützen die Benutzeroberfläche.
-Wenn Sie wählen, dass Sie keine sekundäre NIC bereitstellen möchten, stehen alle Features über die primäre NIC zur Verfügung.
+Beide NICs unterstützen die Benutzeroberfläche. Wenn Sie wählen, dass Sie keine sekundäre NIC bereitstellen möchten, stehen alle Features über die primäre NIC zur Verfügung.
 
 Wenn Sie Ihre lokale Verwaltungskonsole bereits konfiguriert haben und ihr eine sekundäre NIC hinzufügen möchten, führen Sie die folgenden Schritte aus:
 
