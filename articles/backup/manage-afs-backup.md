@@ -6,12 +6,12 @@ ms.date: 11/03/2021
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: 021a24cbe5c1e2ba9f504ca99c149b135bc40fc4
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 465331a39f5fc05d81a4ff06cd58c3962b301831
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131844731"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332039"
 ---
 # <a name="manage-azure-file-share-backups"></a>Verwalten der Sicherungen von Azure-Dateifreigaben
 
@@ -32,6 +32,9 @@ So öffnen Sie die Seite **Sicherungsaufträge**
 1. Wählen Sie **Azure Files (Azure Storage)** als Datenquellentyp und dann eine beliebige Zeile aus, um Details zum jeweiligen Auftrag anzuzeigen.
 
    :::image type="content" source="./media/manage-afs-backup/backup-center-jobs-inline.png" alt-text="Screenshot: Liste der Aufträge." lightbox="./media/manage-afs-backup/backup-center-jobs-expanded.png":::
+   
+    >[!NOTE]
+    >Da keine Daten in den Datenspeicher übertragen werden, sind die übertragenen Daten in MB bei Sicherungsaufträgen, die Azure-Dateien entsprechen, 0.
 
 ## <a name="monitor-using-azure-backup-reports"></a>Überwachen mit Azure Backup-Berichten
 

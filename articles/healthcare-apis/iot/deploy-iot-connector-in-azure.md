@@ -7,12 +7,13 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: 5d55af3165991c8a6d16596ae9d4e8f9f4e8e3e9
-ms.sourcegitcommit: 81a1d2f927cf78e82557a85c7efdf17bf07aa642
+ms.custom: mode-portal
+ms.openlocfilehash: 8323d2026bc45c3c357ad0055cc7da37c5a345b8
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2021
-ms.locfileid: "132812350"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133061589"
 ---
 # <a name="deploy-iot-connector-in-the-azure-portal"></a>Bereitstellen des IoT-Connectors im Azure-Portal
 
@@ -63,7 +64,7 @@ Füllen Sie auf der Registerkarte **Grundlagen** die erforderlichen Felder unter
 
 3. Geben Sie die **Consumergruppe ein.**
 
-   Der Name der Consumergruppe befindet sich über die **Suchleiste,** um zur Event Hubs Instanz zu wechseln, die Sie bereitgestellt haben, und indem Sie das Blatt  **Consumergruppen** auswählen.
+   Der Name der Consumergruppe befindet sich über die **Suchleiste,** um zu der bereitgestellten Event Hubs Instanz zu wechseln, und indem Sie das Blatt  **Consumergruppen** auswählen.
 
    ![Screenshot: Name der Consumergruppe](media/consumer-group-name.png#lightbox)
 
@@ -170,65 +171,65 @@ Um sicherzustellen, dass Ihr IoT-Connector ordnungsgemäß funktioniert, muss er
 
 2. Wählen Sie das Blatt **Zugriffssteuerung (IAM)** und dann **+ Hinzufügen** aus.   
 
-   ![Screenshot: Zugriffssteuerung für Event Hubs Namespace](media/access-control-blade-add.png#lightbox)
+   ![Screenshot der Zugriffssteuerung des Event Hubs Namespace](media/access-control-blade-add.png#lightbox)
 
 3. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
-   ![Screenshot: Hinzufügen der Rollenzuweisung](media/event-hub-add-role-assignment.png#lightbox)
+   ![Screenshot: Hinzufügen einer Rollenzuweisung](media/event-hub-add-role-assignment.png#lightbox)
  
-4. Wählen Sie die **Rolle** und dann **Azure Event Hubs Datenempfänger** aus.
+4. Wählen Sie **die Rolle** und dann Azure Event Hubs **Datenempfänger aus.**
 
-   ![Screenshot: Felder zum Hinzufügen von Pflichtfeldern für die Rollenzuweisung](media/event-hub-add-role-assignment-fields.png#lightbox)
+   ![Screenshot: Felder zum Hinzufügen erforderlicher Rollenzuweisungen](media/event-hub-add-role-assignment-fields.png#lightbox)
 
-   Mit der Rolle Azure Event Hubs Datenempfänger kann der IoT-Connector, dem diese Rolle zugewiesen wird, Daten von diesem Event Hub empfangen.
+   Mit Azure Event Hubs Rolle "Datenempfänger" kann der IoT-Connector, dem diese Rolle zugewiesen wird, Daten von diesem Event Hub empfangen.
 
-   Weitere Informationen zu Anwendungsrollen finden Sie unter [Authentifizierung & Autorisierung für die Gesundheits-APIs (Vorschau).](.././authentication-authorization.md)
+   Weitere Informationen zu Anwendungsrollen finden Sie unter [Authentication & Authorization for the Healthcare APIs (preview) (Authentifizierung & Autorisierung für die Gesundheits-APIs (Vorschauversion)).](.././authentication-authorization.md)
 
-5. Wählen Sie **Zugriff zuweisen zu** aus, und behalten Sie die Standardoption **Benutzer, Gruppe oder Dienstprinzipal** bei.
+5. Wählen **Sie Zugriff zuweisen zu aus,** und behalten Sie die Standardoption **Benutzer, Gruppe oder Dienstprinzipal bei.**
 
-6. Geben **Sie** im Feld Auswählen den Sicherheitsprinzipal für Ihren IoT-Connector ein.  
+6. Geben Sie **im Feld** Auswählen den Sicherheitsprinzipal für Ihren IoT-Connector ein.  
 
    `<your workspace name>/iotconnectors/<your IoT connector name>`
  
-   Wenn Sie einen IoT-Connector bereitstellen, wird eine verwaltete Identität erstellt. Der verwaltete Identifizierungsname ist eine Verkettung des Arbeitsbereichsnamens, des Ressourcentyps (d. h. des IoT-Connectors) und des Namens des IoT-Connectors.
+   Wenn Sie einen IoT-Connector bereitstellen, wird eine verwaltete Identität erstellt. Der name der verwalteten Identifizierung ist eine Verkettung des Arbeitsbereichsnamens, des Ressourcentyps (d. h. des IoT-Connectors) und des Namens des IoT-Connectors.
 
 7. Wählen Sie **Speichern** aus.
 
-   Nachdem die Rollenzuweisung dem Event Hub erfolgreich hinzugefügt wurde, wird in einer Benachrichtigung ein grünes Häkchen mit dem Text "Rollenzuweisung hinzufügen" angezeigt.  Diese Meldung gibt an, dass der IoT-Connector jetzt aus dem Event Hub lesen kann.
+   Nachdem die Rollenzuweisung erfolgreich zum Event Hub hinzugefügt wurde, wird in einer Benachrichtigung ein grünes Häkchen mit dem Text "Rollenzuweisung hinzufügen" angezeigt.  Diese Meldung gibt an, dass der IoT-Connector jetzt aus dem Event Hub lesen kann.
 
-   ![Screenshot der hinzugefügten Meldung zur Rollenzuweisung](media/event-hub-added-role-assignment.png#lightbox)
+   ![Screenshot: Meldung zu hinzugefügter Rollenzuweisung](media/event-hub-added-role-assignment.png#lightbox)
 
-Weitere Informationen zum Erstellen des Zugriffs auf Event Hubs Ressourcen finden Sie unter [Autorisieren](../../event-hubs/authorize-access-azure-active-directory.md)des Zugriffs mit Azure Active Directory .  
+Weitere Informationen zum Erstellen des Zugriffs auf Event Hubs Ressourcen finden Sie unter [Autorisieren des Zugriffs mit Azure Active Directory](../../event-hubs/authorize-access-azure-active-directory.md).  
 
 ### <a name="accessing-the-iot-connector-from-the-fhir-service"></a>Zugreifen auf den IoT-Connector über den FHIR-Dienst
 
-1. Wählen Sie in der **Liste Azure-Ressourcengruppe** den Namen Ihres  **FHIR-Diensts** aus.
+1. Wählen Sie **in der Liste Azure-Ressourcengruppe** den Namen Ihres **FHIR-Diensts aus.**
  
-2. Wählen Sie das Blatt **Zugriffssteuerung (IAM)** und dann **+ Hinzufügen** aus. 
+2. Wählen Sie **das Blatt Zugriffssteuerung (IAM)** und dann **+ Hinzufügen aus.** 
 
 3. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
-  ![Screenshot: Hinzufügen der Rollenzuweisung für den FHIR-Dienst](media/fhir-service-add-role-assignment.png#lightbox)
+  ![Screenshot: Hinzufügen einer Rollenzuweisung für den FHIR-Dienst](media/fhir-service-add-role-assignment.png#lightbox)
 
-4. Wählen Sie die **Rolle** und dann **FHIR Data Writer** aus.
+4. Wählen Sie **die Rolle** und dann **FHIR Data Writer aus.**
 
-   Die FHIR Data Writer-Rolle bietet Lese- und Schreibzugriff, den der IoT-Connector für die Funktion verwendet. Da der IoT-Connector als separate Ressource bereitgestellt wird, empfängt der FHIR-Dienst Anforderungen vom IoT-Connector. Wenn der FHIR-Dienst nicht weiß, wer die Anforderung stellt, oder wenn er nicht über die zugewiesene Rolle verfügen soll, wird die Anforderung als nicht autorisiert abgelehnt.
+   Die FHIR-Datenschreiberrolle bietet Lese- und Schreibzugriff, den der IoT-Connector verwendet, um zu funktionieren. Da der IoT-Connector als separate Ressource bereitgestellt wird, erhält der FHIR-Dienst Anforderungen vom IoT-Connector. Wenn der FHIR-Dienst nicht weiß, wer die Anforderung gestellt hat, oder wenn er nicht über die zugewiesene Rolle verfügen soll, wird die Anforderung als nicht autorisiert verweigert.
 
-   Weitere Informationen zu Anwendungsrollen finden Sie unter [Authentifizierung & Autorisierung für die Gesundheits-APIs (Vorschau).](.././authentication-authorization.md)
+   Weitere Informationen zu Anwendungsrollen finden Sie unter [Authentication & Authorization for the Healthcare APIs (preview) (Authentifizierung & Autorisierung für die Gesundheits-APIs (Vorschauversion)).](.././authentication-authorization.md)
 
-5. Geben **Sie** im Feld Auswählen den Sicherheitsprinzipal für Ihren IoT-Connector ein.  
+5. Geben Sie **im Feld** Auswählen den Sicherheitsprinzipal für Ihren IoT-Connector ein.  
 
     `<your workspace name>/iotconnectors/<your IoT connector name>`
 
 6. Wählen Sie **Speichern** aus.
 
-   ![Screenshot: Meldung zum Hinzufügen der Rollenzuweisung durch den FHIR-Dienst](media/fhir-service-added-role-assignment.png#lightbox)
+   ![Screenshot: Meldung zur Hinzugefügten Rollenzuweisung des FHIR-Diensts](media/fhir-service-added-role-assignment.png#lightbox)
 
    Weitere Informationen zum Zuweisen von Rollen zum FHIR-Dienst finden Sie unter [Konfigurieren von Azure RBAC.](.././configure-azure-rbac.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie einen IoT-Connector im Azure-Portal bereitstellen. Eine Übersicht über den IoT-Connector finden Sie unter
+In diesem Artikel haben Sie erfahren, wie Sie einen IoT-Connector in der Azure-Portal. Eine Übersicht über den IoT-Connector finden Sie unter
 
 >[!div class="nextstepaction"]
 >[Übersicht über den IoT-Connector](iot-connector-overview.md)
