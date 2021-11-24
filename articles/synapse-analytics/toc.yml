@@ -1459,6 +1459,8 @@ items:
         href: /rest/api/synapse/
       - name: Microsoft Spark-Hilfsprogramme
         href: ./spark/microsoft-spark-utilities.md
+      - name: API zum Bereitstellen/Aufheben der Bereitstellung von Dateien in Synapse
+        href: ./spark/synapse-file-mount-api.md
       - name: Beispiele
         href: 'https://github.com/Azure-Samples/Synapse'
       - name: Systemsichten

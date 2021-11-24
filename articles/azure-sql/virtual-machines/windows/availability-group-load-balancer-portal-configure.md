@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Verfügbarkeitsgruppenlistenern und einer Load Balancer-Instanz (Azure-Portal)
+title: Konfigurieren Sie einen Load Balancer und Verfügbarkeitsgruppen-Listener (Azure-Portal)
 description: Eine ausführliche Anleitung zum Erstellen eines Listeners für eine AlwaysOn-Verfügbarkeitsgruppe für SQL Server auf virtuellen Azure-Computern
 services: virtual-machines
 documentationcenter: na
@@ -11,33 +11,36 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 02/16/2017
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.custom: seo-lt-2019
 ms.reviewer: mathoma
-ms.openlocfilehash: d0489295cbc161f98ebe036ff79bdc2f2861877a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 0077b6a237cefd5547b70b79044087d86a9ea236
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130250367"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157497"
 ---
-# <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurieren eines Load Balancers für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern
+# <a name="configure-a-load-balancer--availability-group-listener-sql-server-on-azure-vms"></a>Konfigurieren Sie einen Load Balancer und Verfügbarkeitsgruppen-Listener (SQL Server auf Azure VMs)
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
+> [!TIP]
+> Eliminieren Sie die Notwendigkeit eines Azure Load Balancer für Ihre Always On Availability (AG)-Gruppe, indem Sie Ihre SQL Server-VMs in [mehreren Subnetzen](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) innerhalb desselben virtuellen Azure-Netzwerks erstellen.
 
-In diesem Artikel erfahren Sie, wie Sie einen Load Balancer für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, auf denen Azure Resource Manager ausgeführt wird. Eine Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
+
+In diesem Artikel wird erklärt, wie man einen Load Balancer für eine SQL Server Always On-Verfügbarkeitsgruppe in Azure Virtual Machines innerhalb eines einzelnen Subnetzes erstellt, die mit Azure Resource Manager ausgeführt werden. Eine Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
 
 Für diese Aufgabe benötigen Sie eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe, die auf virtuellen Azure-Computern mit Resource Manager bereitgestellt wird. Beide virtuellen SQL Server-Computer müssen der gleichen Verfügbarkeitsgruppe angehören. Mithilfe der [Microsoft-Vorlage](./availability-group-quickstart-template-configure.md) können Sie die Verfügbarkeitsgruppe in Resource Manager automatisch erstellen. Diese Vorlage nimmt Ihnen die Erstellung eines internen Load Balancers ab. 
 
-Alternativ können Sie aber auch eine [Verfügbarkeitsgruppe manuell konfigurieren](availability-group-manually-configure-tutorial.md).
+Alternativ können Sie aber auch eine [Verfügbarkeitsgruppe manuell konfigurieren](availability-group-manually-configure-tutorial-single-subnet.md).
 
 Dieser Artikel setzt voraus, dass Ihre Verfügbarkeitsgruppen bereits konfiguriert sind.  
 
 Lesen Sie verwandte Artikel:
 
-* [Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf einem virtuellen Azure-Computer (GUI)](availability-group-manually-configure-tutorial.md)   
+* [Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf einem virtuellen Azure-Computer (GUI)](availability-group-manually-configure-tutorial-single-subnet.md)   
 * [Konfigurieren einer VNet-zu-VNet-Verbindung mit Azure Resource Manager und PowerShell](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 Im Rahmen dieses Artikels erstellen und konfigurieren Sie mithilfe des Azure-Portals einen Load Balancer. Nach Abschluss des Verfahrens konfigurieren Sie den Cluster so, dass er die IP-Adresse aus dem Load Balancer für den Verfügbarkeitsgruppenlistener verwendet.

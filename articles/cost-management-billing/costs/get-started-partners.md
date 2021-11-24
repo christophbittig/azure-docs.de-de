@@ -3,18 +3,18 @@ title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Cost Management-Features verwenden und den Zugriff für ihre Kunden aktivieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/13/2021
+ms.date: 11/10/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 747dc5829315091d6a42fbf6c0749af104c5e1ac
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 31d2ceb9d8ae9a93ea15f2bf2f77ed7f05f6021c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984062"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287178"
 ---
 # <a name="get-started-with-cost-management-for-partners"></a>Erste Schritte mit Cost Management für Partner
 
@@ -150,6 +150,18 @@ Wenn die Richtlinie auf **Nein** festgelegt ist, ist Cost Management für Abonne
 Wenn die Kostenrichtlinie auf **Ja** festgelegt ist, können Abonnementbenutzer, die dem Kundenmandanten zugeordnet sind, nutzungsbasierte Nutzungsgebühren anzeigen.
 
 Wenn die Kostensichtbarkeits-Richtlinie aktiviert ist, werden für alle Dienste im Rahmen der Abonnementnutzung die durch nutzungsbasierte Gebühren anfallenden Kosten angezeigt. Die Reservierungsnutzung wird ohne Gebühren für tatsächliche und amortisierte Kosten angezeigt. Käufe und Berechtigungen werden keinem bestimmten Abonnement zugeordnet. Käufe werden also nicht im Abonnementbereich angezeigt. Der globale Administrator/Administrator-Agent eines direkten Partners oder indirekten Anbieters kann auch mithilfe der [Update Customer-API](/rest/api/billing/2019-10-01-preview/policies/updatecustomer) die Richtlinie für Kostentransparenz jedes Kunden im gewünschten Umfang festlegen.
+
+## <a name="view-and-enable-all-policies"></a>Anzeigen und Aktivieren von allen Richtlinien
+
+Sie können auch Richtlinien für Azure-Reservierungen anzeigen und ändern, Azure Marketplace, Azure-Gebühren anzeigen und die Tagverwaltung an einem zentralen Ort verwenden. Die Richtlinieneinstellungen gelten für alle Kunden im Abrechnungsprofil.
+
+So zeigen Sie Richtlinien an oder ändern diese:
+
+1. Navigieren Sie im Azure-Portal zu **Kostenverwaltung** (nicht Kostenverwaltung + Abrechnung).
+1. Wählen Sie im linken Menü unter **Einstellungen** die Option **Konfiguration** aus.
+1. Die Konfiguration des Abrechnungsprofils wird angezeigt. Die Richtlinien werden als Aktiviert oder Deaktiviert angezeigt. Wenn Sie eine Richtlinie ändern möchten, wählen Sie **Bearbeiten** unter einer Richtlinie aus.  
+    :::image type="content" source="./media/get-started-partners/configuration-policy-settings.png" alt-text="Screenshot der Konfigurationsseite für das Abrechnungsprofil, auf der Sie Richtlinieneinstellungen anzeigen und bearbeiten können." lightbox="./media/get-started-partners/configuration-policy-settings.png" :::
+1. Ändern Sie die Einstellungen für die Richtlinien nach Bedarf, und wählen Sie dann **Speichern** aus.
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>Anzeigen der Abonnementkosten auf dem Kundenmandanten
 

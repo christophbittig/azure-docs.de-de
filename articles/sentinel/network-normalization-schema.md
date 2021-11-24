@@ -1,34 +1,34 @@
 ---
-title: Referenz zum Azure Sentinel-Normalisierungsschema für Netzwerksitzungen (Public Preview) | Microsoft-Dokumentation
-description: Dieser Artikel behandelt das Azure Sentinel-Normalisierungsschema für Netzwerksitzungen.
+title: Referenz zum Microsoft Sentinel-Normalisierungsschema für Netzwerksitzungen (Public Preview) | Microsoft-Dokumentation
+description: Dieser Artikel behandelt das Microsoft Sentinel-Normalisierungsschema für Netzwerksitzungen.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/17/2021
+ms.date: 11/09/2021
 ms.author: ofshezaf
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: bca951ee50a503aa91a0dec680a787a5c2f95ad8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: df994e2be047e2829ea56423b85eee32e63c0154
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083863"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520416"
 ---
-# <a name="azure-sentinel-network-session-normalization-schema-reference-public-preview"></a>Referenz zum Azure Sentinel-Normalisierungsschema für Netzwerksitzungen (Public Preview)
+# <a name="microsoft-sentinel-network-session-normalization-schema-reference-public-preview"></a>Referenz zum Microsoft Sentinel-Normalisierungsschema für Netzwerksitzungen (Public Preview)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Das Normalisierungsschema für Netzwerksitzungen wird verwendet, um eine IP-Netzwerkaktivität zu beschreiben. Dies umfasst Netzwerkverbindungen und Netzwerksitzungen. Entsprechende Ereignisse werden beispielsweise von Betriebssystemen, Routern, Firewalls, Intrusion-Prevention-Systemen und Websicherheitsgateways gemeldet.
 
-Weitere Informationen zu Normalisierung in Azure Sentinel finden Sie unter [Normalisierung und das Azure Sentinel Information Model (ASIM)](normalization.md).
+Weitere Informationen zu Normalisierung in Microsoft Sentinel finden Sie unter [Normalisierung und das Advanced SIEM Information Model (ASIM)](normalization.md).
 
 > [!IMPORTANT]
 > In diesem Artikel wird Version 0.2 des Netzwerknormalisierungsschemas beschrieben. [Version 0.1](normalization-schema-v1.md) wurde veröffentlicht, bevor ASIM verfügbar war, und stimmt an mehreren Stellen nicht mit ASIM überein. Weitere Informationen finden Sie unter [Unterschiede zwischen Versionen der Netzwerknormalisierungsschemas](normalization-schema-v1.md#changes). 
@@ -105,11 +105,11 @@ Um einen quellunabhängigen Parser zu verwenden, der alle integrierten Parser ve
 - **imWebSession** für HTTP-Sitzungen, die in der Regel von Webservern, Webproxys und Websicherheitsgateways gemeldet werden.
 - **inNetworkNotables** für Sitzungen, die von einer Erkennungs-Engine (in der Regel als verdächtig) erkannt werden. Wichtige Ereignisse werden normalerweise von Intrusion-Prevention-Systemen, Firewalls und Websicherheitsgateways gemeldet.
 
-Stellen Sie die [quellunabhängigen und quellspezifischen Parser](normalization-about-parsers.md) aus dem [Azure Sentinel GitHub-Repository](https://aka.ms/AzSentinelNetworkSession) bereit.
+Stellen Sie die [quellunabhängigen und quellspezifischen Parser](normalization-about-parsers.md) aus dem [Microsoft Sentinel GitHub-Repository](https://aka.ms/AzSentinelNetworkSession) bereit.
 
-### <a name="built-in-source-specific-parsers"></a>Integrierte quellspezifische Parser
+### <a name="built-in-source-specific-parsers"></a>Integrierte quellenspezifische Parser
 
-Azure Sentinel bietet die folgenden integrierten, produktspezifischen Netzwerksitzungsparser:
+Microsoft Sentinel bietet die folgenden integrierten, produktspezifischen Netzwerksitzungsparser:
 
 - Quellspezifische Parser:
   - **Microsoft 365 Defender für Endpunkt**: vimNetworkSessionMicrosoft365Defender
@@ -117,7 +117,7 @@ Azure Sentinel bietet die folgenden integrierten, produktspezifischen Netzwerksi
   - **Microsoft Sysmon für Linux**: vimNetworkSessionSysmonLinux
   - **Windows Events-Firewall**: Windows-Firewallaktivität, die mithilfe von Windows Events 515x entweder mit dem Log Analytics-Agent oder dem Azure Monitor-Agent in der Tabelle „Event“ oder „WindowsEvent“ erfasst wird, vimNetworkSessionMicrosoftWindowsEventFirewall 
 
-Die Parser können über das [GitHub Repository von Azure Sentinel](https://aka.ms/AzSentinelNetworkSession) bereitgestellt werden.
+Die Parser können über das [GitHub-Repository von Microsoft Sentinel](https://aka.ms/AzSentinelNetworkSession) bereitgestellt werden.
 
 ### <a name="add-your-own-normalized-parsers"></a>Hinzufügen eigener normalisierter Parser
 
@@ -166,7 +166,7 @@ Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbs
 | Feld | Klasse | type | BESCHREIBUNG |
 |-------|-------|------|-------------|
 | **EventMessage** | Optional | String | Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert. |
-| **EventCount** | Obligatorisch. | Integer | Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>**Hinweis**: Netflow-Quellen unterstützen Aggregation, und das Feld **EventCount** sollte auf den Wert des Netflow-Felds **FLOWS** festgelegt werden. Bei anderen Quellen wird der Wert in der Regel auf `1` festgelegt. |
+| **EventCount** | Obligatorisch. | Integer | Die Anzahl der Ereignisse, die vom Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>**Hinweis**: Netflow-Quellen unterstützen Aggregation, und das Feld **EventCount** sollte auf den Wert des Netflow-Felds **FLOWS** festgelegt werden. Bei anderen Quellen wird der Wert in der Regel auf `1` festgelegt. |
 | **EventStartTime** | Obligatorisch. | Datum/Uhrzeit | Wenn die Quelle Aggregation unterstützt und der Datensatz mehrere Ereignisse darstellt, gibt dieses Feld die Zeit an, zu der das erste Ereignis generiert wurde. Andernfalls wird in diesem Feld ein Alias für das Feld [TimeGenerated](#timegenerated) verwendet. |
 | **EventEndTime** | Obligatorisch. | Alias | Alias für das Feld [TimeGenerated](#timegenerated). |
 | **EventType** | Obligatorisch. | Enumerated | Beschreibt den vom Datensatz gemeldeten Vorgang.<br><br> Für Netzwerksitzungsdatensätze werden folgende Werte unterstützt:<br>- `NetworkConnection`<br>- `NetworkSession`<br>- `HTTPsession` |
@@ -350,11 +350,11 @@ Wenn das Ereignis von einem der Endpunkte der Netzwerksitzung gemeldet wird, kan
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [Normalisierung in Azure Sentinel](normalization.md)
-- [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)](authentication-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Öffentliche Vorschau)](file-event-normalization-schema.md)
-- [Azure Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Prozessereignis-Normalisierungsschema](process-events-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (Öffentliche Vorschau)](registry-event-normalization-schema.md)
+- [Normalisierung in Microsoft Sentinel](normalization.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung der Authentifizierung (Public Preview)](authentication-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung von Dateiereignissen (Public Preview)](file-event-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung von Prozessereignissen](process-events-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung von Registrierungsereignissen (Public Preview)](registry-event-normalization-schema.md)

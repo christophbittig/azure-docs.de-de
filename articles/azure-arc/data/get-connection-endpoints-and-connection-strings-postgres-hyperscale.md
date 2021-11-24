@@ -1,5 +1,5 @@
 ---
-title: Rufen Sie Verbindungsendpunkte ab & erstellen Sie Verbindungszeichenfolgen für Ihre Azure Arc unterstützte PostgreSQL Hyperscale-Servergruppe
+title: Abrufen von Verbindungsendpunkten und Erstellen von Verbindungsstrings für Ihre Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe
 titleSuffix: Azure Arc-enabled data services
 description: Rufen Sie Verbindungsendpunkte ab & erstellen Sie Verbindungszeichenfolgen für Ihre Azure Arc unterstützte PostgreSQL Hyperscale-Servergruppe
 services: azure-arc
@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: f340cf95072015a3896291484ef1289a9d34d6ed
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 35a7a184ae3b699d5ed4d25c1cb6b78269dcea11
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564098"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279296"
 ---
 # <a name="get-connection-endpoints--create-the-connection-strings-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Rufen Sie Verbindungsendpunkte ab & erstellen Sie die Verbindungszeichenfolgen für Ihre Azure Arc unterstützte PostgreSQL Hyperscale-Servergruppe
 
@@ -95,10 +95,11 @@ kubectl get postgresqls/postgres01 -n arc
 ```
 
 Mit diesen Befehlen wird eine Ausgabe ähnlich der folgenden erzeugt. Diese Informationen können Sie verwenden, um Ihre Verbindungszeichenfolgen zu erstellen:
+
 ```console
 NAME         STATE   READY-PODS   PRIMARY-ENDPOINT     AGE
 postgres01   Ready   3/3          12.345.567.89:5432   9d
-``` 
+```
 
 ## <a name="form-connection-strings"></a>Erstellen von Verbindungszeichenfolgen
 

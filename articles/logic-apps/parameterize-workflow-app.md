@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: azla
 ms.topic: how-to
 ms.date: 08/09/2021
-ms.openlocfilehash: 32d15d248154c61320fe12074373a6401fe3bdcd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a29eda23d12ca07057ff1081ae8d9bc4cfdc56ed
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339829"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137035"
 ---
 # <a name="create-parameters-to-use-in-workflows-across-environments-in-single-tenant-azure-logic-apps"></a>Erstellen von Parametern für die Verwendung in Workflows umgebungsübergreifend in Azure Logic Apps-Instanzen mit nur einem Mandanten
 
@@ -68,7 +68,7 @@ Wenn Sie beispielsweise Visual Studio Code als lokales Entwicklungstool zum loka
 
 1. Geben Sie die folgenden Informationen zum zu erstellenden Parameter an:
 
-   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Beschreibung |
    |----------|----------|-------------|
    | **Name** | Ja | Der Name des zu erstellenden Parameters. |
    | **Typ** | Ja | Der Datentyp für den Parameter wie **Array**, **Bool**, **Float**, **Int**, **Object** und **String**. <p><p>**Hinweis**: In Workflows, die auf einem einzelnen Mandanten basieren, werden sichere Datentypen wie `securestring` und `secureobject` nicht unterstützt. |
@@ -159,10 +159,10 @@ Das folgende Beispiel zeigt eine parametrisierte **connections.json**-Datei, die
    "managedApiConnections": {
       "azureblob": {
          "api": {
-            "id": "/subscriptions/@appsetting('WORKFLOWS_SUBSCRIPTION_ID')/providers/Microsoft.Web/locations/@appsetting('WORKFLOWS_LOCATION_NAME')/managedApis/azureblob"
+            "id": "/subscriptions/@{appsetting('WORKFLOWS_SUBSCRIPTION_ID')}/providers/Microsoft.Web/locations/@{appsetting('WORKFLOWS_LOCATION_NAME')}/managedApis/azureblob"
          },
          "connection": {
-            "id": "/subscriptions/@appsetting('WORKFLOWS_SUBSCRIPTION_ID')/resourceGroups/@appsetting('WORKFLOWS_RESOURCE_GROUP_NAME')/providers/Microsoft.Web/connections/azureblob"
+            "id": "/subscriptions/@{appsetting('WORKFLOWS_SUBSCRIPTION_ID')}/resourceGroups/@{appsetting('WORKFLOWS_RESOURCE_GROUP_NAME')}/providers/Microsoft.Web/connections/azureblob"
          },
          "connectionRuntimeUrl": "@appsetting('BLOB_CONNECTION_RUNTIMEURL')",
          "authentication": "@parameters('blob_auth')"
@@ -170,6 +170,14 @@ Das folgende Beispiel zeigt eine parametrisierte **connections.json**-Datei, die
    }
 }
 ```
+
+> [!NOTE]
+> Wenn Sie einen Ausdruck haben, der inline mit einfachem Text ist, stellen Sie sicher, dass Sie das interpolierte Format für diesen Ausdruck verwenden, indem Sie den Ausdruck mit geschweiften Klammern ({}) umschließen. Dieses Format hilft, Probleme beim Parsen zu vermeiden.
+>
+> Wenn Sie zum Beispiel `"<text>/@<function-name>('<parameter-name>')/<text>"` haben, verwenden Sie stattdessen die folgende Version: `"<text>/@{<function-name>('<parameter-name>')}/<text>"`. 
+>
+> Weitere Informationen finden Sie unter [Überlegungen zur Verwendung von Funktionen](workflow-definition-language-functions-reference.md#function-considerations).
+     
 
 ## <a name="manage-parameters-files"></a>Verwalten von Parameterdateien
 

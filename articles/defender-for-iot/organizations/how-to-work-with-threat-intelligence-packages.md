@@ -1,14 +1,14 @@
 ---
 title: Aktualisieren von Threat Intelligence-Daten
 description: Das Threat Intelligence-Datenpaket wird mit jeder neuen Defender für IoT-Version oder bei Bedarf zwischen den Releases bereitgestellt.
-ms.date: 04/17/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: f5282002f406c62341f5d104c14aa1cbe9ad32dd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: ac743c9e8c53e40743bda0c50017885f40381971
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016521"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293191"
 ---
 # <a name="threat-intelligence-research-and-packages"></a>Forschung und Pakete zur Bedrohungsanalyse #
 ## <a name="overview"></a>Übersicht ##
@@ -34,7 +34,7 @@ Diese Intelligenz bietet kontextbezogene Informationen, um die Analysen der Micr
 
 Threat Intelligence-Pakete werden ungefähr einmal im Monat oder bei Bedarf häufiger bereitgestellt. Ankündigungen zu neuen Paketen sind unter https://techcommunity.microsoft.com/t5/azure-defender-for-iot/bd-p/AzureDefenderIoT verfügbar.
 
-Sie können das aktuellste gelieferte Paket vom **Threat Intelligence-Aktualisierungsbereich** der Seite **Aktualisierungen** auf dem Defender for IoT-Portal abrufen.  
+Sie können das aktuellste gelieferte Paket vom **Threat Intelligence-Aktualisierungsbereich** der Seite **Aktualisierungen** auf dem Defender für IoT im Azure-Portal abrufen.
 
 ## <a name="update-threat-intelligence-packages-to-your-sensors"></a>Aktualisieren von Threat Intelligence-Paketen auf Ihren Sensoren ##
 
@@ -52,12 +52,11 @@ Threat Intelligence-Pakete können auf mit der *Cloud verbundenen* Sensoren auto
 
 ### <a name="manually-push-threat-intelligence-updates-to-sensors"></a>Manuelles Pushen von Threat Intelligence-Updates auf Sensoren ###
 
-Ihre *mit der Cloud verbundenen* Sensoren können automatisch mit Threat Intelligence-Paketen aktualisiert werden. Wenn Sie jedoch einen konservativeren Ansatz verfolgen möchten, können Sie Pakete auch nur dann aus dem Portal von Azure Defender für IoT auf Sensoren pushen, wenn Sie dies für erforderlich halten.
-Dadurch können Sie steuern, wann ein Paket installiert wird, ohne es herunterladen und dann auf Ihre Sensoren hochladen zu müssen.
+Ihre *mit der Cloud verbundenen* Sensoren können automatisch mit Threat Intelligence-Paketen aktualisiert werden. Wenn Sie jedoch einen konservativeren Ansatz verfolgen möchten, können Sie Pakete auch nur dann aus dem Portal von Defender für IoT auf Sensoren pushen, wenn Sie dies für erforderlich halten. Dadurch können Sie steuern, wann ein Paket installiert wird, ohne es herunterladen und dann auf Ihre Sensoren hochladen zu müssen.
 
 **So pushen Sie Pakete manuell**
 
-1. Navigieren Sie in Azure Defender für IoT zur Seite **Standorte und Sensoren**.
+1. Navigieren Sie in Microsofte Defender für IoT zur Seite **Standorte und Sensoren**.
 1. Wählen Sie die Auslassungspunkte (...) für einen Sensor und dann **Threat Intelligence-Update pushen** aus. Im Feld **Status des Threat Intelligence-Updates** wird der Updatestatus angezeigt.
 
 #### <a name="change-the-threat-intelligence-update-mode"></a>Ändern des Modus von Threat Intelligence-Updates ####
@@ -71,15 +70,15 @@ Sie können den Threat Intelligence-Updatemodus für einen Sensor nach dem erste
 
 ### <a name="download-packages-and-upload-to-sensors"></a>Herunterladen von Paketen und Hochladen auf Sensoren ###
 
-Pakete können aus dem Defender für IoT-Portal heruntergeladen und dann manuell auf einzelne Sensoren hochgeladen werden. Wenn Ihre Sensoren über die lokale Verwaltungskonsole verwaltet werden, können Sie Threat Intelligence-Pakete auf die Verwaltungskonsole herunterladen und sie an mehrere Sensoren gleichzeitig übertragen.
+Pakete können im Azure-Portal heruntergeladen und manuell in einzelne Sensoren hochgeladen werden. Wenn Ihre Sensoren über die lokale Verwaltungskonsole verwaltet werden, können Sie Threat Intelligence-Pakete auf die Verwaltungskonsole herunterladen und sie an mehrere Sensoren gleichzeitig übertragen.
 
-:::image type="content" source="media/how-to-work-with-threat-intelligence-packages/download-screen.png" alt-text="Herunterladen von Updates über das Azure Defender für IoT-Portal.":::
+:::image type="content" source="media/how-to-work-with-threat-intelligence-packages/download-screen.png" alt-text="Laden Sie Updates im Azure-Portal herunter.":::
 
 Diese Option ist sowohl für *mit der Cloud verbundene* als auch für *lokal verwaltete* Sensoren verfügbar.
 
 **So führen Sie einen Upload auf einen einzelnen Sensor aus**
 
-1. Navigieren Sie zur Azure Defender für IoT-Seite **Updates**.
+1. Navigieren Sie zur Microsoft Defender für IoT-Seite **Updates**.
 
 2. Laden Sie das **Threat Intelligence**-Paket herunter, und speichern Sie es.
 
@@ -93,7 +92,7 @@ Diese Option ist sowohl für *mit der Cloud verbundene* als auch für *lokal ver
 
 **So führen Sie einen Upload auf mehrere Sensoren gleichzeitig aus**
 
-1. Navigieren Sie zur Azure Defender für IoT-Seite **Updates**.
+1. Navigieren Sie zur Microsoft Defender für IoT-Seite **Updates**.
 
 2. Laden Sie das **Threat Intelligence**-Paket herunter, und speichern Sie es.
 
@@ -121,12 +120,12 @@ Der Updatestatus und die Versionsinformationen zu einem Paket werden in den **Sy
 
 So überprüfen Sie Threat Intelligence-Informationen
 
-1. Navigieren Sie in Azure Defender für IoT zur Seite **Standorte und Sensoren**.
+1. Navigieren Sie in Microsofte Defender für IoT zur Seite **Standorte und Sensoren**.
 1. Überprüfen Sie die installierte **Threat Intelligence-Version** auf jedem Sensor. Die Benennung der Versionen basiert auf dem Tag, an dem das Paket von Defender für IoT erstellt wurde.
 1. Überprüfen Sie den **Threat Intelligence-Modus**. *Automatisch* gibt an, dass neu verfügbare Pakete automatisch auf Sensoren installiert werden, sobald sie von Defender für IoT veröffentlicht werden. *Manuell* gibt an, dass Sie neu verfügbare Pakete bei Bedarf direkt an Sensoren pushen können.
 1. Überprüfen Sie den **Status des Threat Intelligence-Updates**. Die folgenden Status werden möglicherweise angezeigt:
 
-- Fehlgeschlagen
+- Fehler
 - Vorgang wird ausgeführt
 - Update verfügbar
 - OK,

@@ -55,6 +55,8 @@ items:
         displayName: 'Azure CLI, az spatial-anchors-account'
   - name: Vorgehensweise
     items:
+      - name: Erstellen eines Azure Spatial Anchors-Kontos
+        href: how-tos/create-asa-account.md
       - name: Erstellen und Suchen von Ankern
         href: create-locate-anchors-overview.md
         items:
@@ -96,6 +98,10 @@ items:
     items:
       - name: Azure Spatial Anchors-Beispiele (GitHub)
         href: 'https://github.com/Azure/azure-spatial-anchors-samples'
+      - name: Azure Spatial Anchors-Beispiel für MROpenXR (GitHub)
+        href: 'https://github.com/microsoft/OpenXR-Unity-MixedReality-Samples'
+      - name: Azure Spatial Anchors-Lernmodul für MRTK
+        href: /learn/modules/azure-spatial-anchors-tutorials/
   - name: Konzepte
     items:
       - name: Authentifizierung

@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 06/23/2021
-ms.openlocfilehash: 290065bb7410c42695cf2b0062cdd11cb02c9580
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8f056fd416b6bbb36296a57fca26906852eb3af8
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065530"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156580"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -87,7 +87,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
     - Der Bereinigungsschutz kann mit [Azure CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli) oder [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) aktiviert werden. Wenn der Bereinigungsschutz aktiviert ist, kann ein Tresor oder ein Objekt im gelöschten Zustand erst bereinigt werden, wenn die Aufbewahrungsfrist abgelaufen ist. Der Standardaufbewahrungszeitraum beträgt 90 Tage, kann aber über das Azure-Portal zwischen 7 und 90 Tagen konfiguriert werden.   
 
 > [!IMPORTANT]
-> Für Server, die mit kundenverwaltetem TDE konfiguriert werden, sowie für bestehende Server, die kundenverwaltetes TDE verwenden, müssen sowohl der Soft-Delete- als auch der Purge-Schutz für den/die Schlüsseltresor(en) aktiviert sein. Wenn auf einem Server, der vom Kunden verwaltetes TDE verwendet, der Soft-Delete- und Purge-Schutz für den zugehörigen Schlüsseltresor nicht aktiviert ist, schlägt die Durchführung von Aktionen wie Datenbankerstellung, Einrichtung der Georeplikation, Datenbankwiederherstellung und Aktualisierung von TDE Protector mit der folgenden Fehlermeldung fehl *"Die angegebene Schlüsseltresor-URI ist nicht gültig. Bitte vergewissern Sie sich, dass der Schlüsseltresor mit Soft-Delete- und Purge-Schutz konfiguriert wurde."*
+> Für Server, die mit kundenverwaltetem TDE konfiguriert werden, sowie für bestehende Server, die kundenverwaltetes TDE verwenden, müssen sowohl der Soft-Delete- als auch der Purge-Schutz für den/die Schlüsseltresor(en) aktiviert sein.
 
 - Gewähren Sie dem Server oder der verwalteten Instanz Zugriff auf den Schlüsseltresor (*get*, *wrapKey*, *unwrapKey*) unter Verwendung seiner Azure Active Directory-Identität. Wenn Sie das Azure-Portal verwenden, wird die Azure AD-Identität automatisch erstellt, wenn der Server erstellt wird. Bei der Verwendung von PowerShell oder Azure CLI muss die Azure AD-Identität explizit erstellt werden und sollte überprüft werden. Unter [Konfigurieren von TDE mit BYOK](transparent-data-encryption-byok-configure.md) und [Konfigurieren von TDE mit BYOK für SQL Managed Instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) finden Sie ausführliche Anleitungen für die Verwendung von PowerShell.
     - Je nach Berechtigungsmodell des Schlüsseltresors (Zugriffsrichtlinie oder Azure RBAC) kann der Zugriff auf den Schlüsseltresor entweder durch Erstellen einer Zugriffsrichtlinie für den Schlüsseltresor oder durch Erstellen einer neuen Azure RBAC-Rollenzuweisung mit der Rolle [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) gewährt werden.
@@ -146,9 +146,9 @@ Wenn Transparent Data Encryption für die Verwendung eines kundenseitig verwalte
 
 Nachdem der Zugriff auf den Schlüssel wiederhergestellt wurde, erfordert die Wiederherstellung der Datenbank zusätzliche Zeit und Schritte, die je nach verstrichener Zeit ohne Zugriff auf den Schlüssel und die Größe der Daten in der Datenbank variieren kann bzw. können:
 
-- Wenn der Schlüsselzugriff innerhalb von 8 Stunden wiederhergestellt wird, erfolgt die automatische Reparatur der Datenbank innerhalb der nächsten Stunde.
+- Wenn der Schlüsselzugriff innerhalb von 30 Minuten wiederhergestellt wird, wird die Datenbank innerhalb der nächsten Stunde automatisch repariert.
 
-- Wenn der Schlüsselzugriff nach mehr als 8 Stunden wiederhergestellt wird, ist keine automatische Reparatur möglich. Die erneute Aktivierung der Datenbank erfordert zusätzliche Schritte im Portal und kann je nach Größe der Datenbank sehr lange dauern. Wenn die Datenbank wieder online ist, gehen zuvor konfigurierte Einstellungen auf Serverebene wie die Konfiguration der [Failovergruppe](auto-failover-group-overview.md), der Verlauf der Point-in-Time-Wiederherstellung und Tags **verloren**. Daher empfiehlt es sich, ein Benachrichtigungssystem zu implementieren, das es Ihnen ermöglicht, Probleme beim Zugriff auf zugrunde liegende Schlüssel innerhalb von 8 Stunden zu erkennen und zu beheben.
+- Wenn der Schlüsselzugriff nach mehr als 30 Minuten wiederhergestellt wird, ist eine automatische Wiederherstellung nicht möglich, und die Wiederherstellung der Datenbank erfordert zusätzliche Schritte im Portal und kann je nach Größe der Datenbank sehr viel Zeit in Anspruch nehmen. Wenn die Datenbank wieder online ist, gehen zuvor konfigurierte Einstellungen auf Serverebene wie die Konfiguration der [Failovergruppe](auto-failover-group-overview.md), der Verlauf der Point-in-Time-Wiederherstellung und Tags **verloren**. Es wird daher empfohlen, ein Benachrichtigungssystem zu implementieren, das es Ihnen ermöglicht, die zugrunde liegenden Probleme beim Schlüsselzugang innerhalb von 30 Minuten zu erkennen und zu beheben.
 
 Nachfolgend sehen Sie die zusätzlichen Schritte, die im Portal ausgeführt werden müssen, um eine Datenbank, auf die nicht zugegriffen werden kann, wieder online zu schalten.
 

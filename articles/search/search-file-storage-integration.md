@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2021
-ms.openlocfilehash: 94f1a1760c02401bbca04ac01af5dd9b10093311
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 37f33bb17b48f482f27a449871acc7256713c100
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131511373"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157553"
 ---
 # <a name="index-data-from-azure-files"></a>Indizieren von Daten aus Azure Files
 
@@ -42,6 +42,9 @@ Der Azure Files-Indexer von Azure Cognitive Search kann Text aus den folgenden D
 ## <a name="required-resources"></a>Erforderliche Ressourcen
 
 Sie benötigen sowohl Azure Cognitive Search als auch [Azure Files](https://azure.microsoft.com/services/storage/files/). Innerhalb von Azure Files benötigen Sie eine Dateifreigabe, die den Quellinhalt bereitstellt.
+
+> [!NOTE]
+> Um eine Dateifreigabe zu indizieren, muss sie den Zugriff über die REST-API [der Dateidatenebene unterstützen](/rest/api/storageservices/file-service-rest-api). [NFS-Freigaben](../storage/files/files-nfs-protocol.md#support-for-azure-storage-features) unterstützen die REST-API der Dateidatenebene nicht und können nicht mit Azure Cognitive Search-Indexern verwendet werden. [SMB-Freigaben](../storage/files/files-smb-protocol.md) unterstützen die REST-API der Dateidatenebene und können mit Azure Cognitive Search-Indexern verwendet werden.
 
 <a name="configure"></a>
 

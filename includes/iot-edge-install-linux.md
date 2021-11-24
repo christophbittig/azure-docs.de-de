@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2f4c83e7bb3976d7ac4eba245a921d01d40f3a92
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: e4c78fe2037beb23f69700ae7a340a4d5c6cc160
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505479"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490560"
 ---
 ## <a name="install-iot-edge"></a>Installieren von IoT Edge
 
@@ -20,31 +20,24 @@ Es gibt zwei Schritte, die Sie auf Ihrem Gerät ausführen müssen, bevor es fü
 
 ### <a name="access-the-microsoft-installation-packages"></a>Zugriff auf die Microsoft-Installationspakete
 
-1. Installieren Sie die Repository-Konfiguration, die dem Betriebssystem Ihres Geräts entspricht.
+1. Laden Sie das zum Betriebssystem Ihres Geräts passende Repositorykonfigurationspaket herunter.
 
    * **Ubuntu Server 18.04**:
 
       ```bash
-      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/packages-microsoft-prod.deb > ./packages-microsoft-prod.deb
       ```
 
    * **Raspberry Pi OS Stretch**:
 
       ```bash
-      curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+      curl https://packages.microsoft.com/config/debian/stretch/multiarch/packages-microsoft-prod.deb > ./packages-microsoft-prod.deb
       ```
 
-1. Kopieren Sie die generierte Liste in das Verzeichnis „sources.list.d“.
+1. Installieren Sie das Konfigurationspaket, um das Paketrepository und den öffentlichen GPG-Schlüssel von Microsoft hinzuzufügen.
 
    ```bash
-   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-   ```
-
-1. Installieren Sie den öffentlichen Schlüssel von Microsoft GPG.
-
-   ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-   sudo cp ./microsoft.gpg /etc/apt/trust.gpg.d/
+   sudo apt install ./packages-microsoft-prod.deb
    ```
 
 > [!NOTE]

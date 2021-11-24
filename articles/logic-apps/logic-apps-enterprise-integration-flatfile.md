@@ -8,18 +8,18 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 11/02/2021
-ms.openlocfilehash: b2dd3b61ae3b612879e92b4c5ef8feb79b71b6fe
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5956f8fb7a1de3baaac0a69ef9e5b63d445416eb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131429912"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327118"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps"></a>Codieren und Decodieren von Flatfiles in Azure Logic Apps
 
 Bevor Sie XML-Inhalt in einem B2B-Szenario (Business-to-Business) an einen Geschäftspartner senden, möchten Sie den Inhalt eventuell zuerst codieren. Wenn Sie einen Logik-App-Workflow erstellen, können Sie Flatfiles mithilfe der [integrierten](../connectors/built-in.md#integration-account-built-in-actions) **Flatfile**-Aktionen codieren und decodieren.
 
-Obwohl keine **Flatfile**-Trigger verfügbar sind, können Sie einen anderen Trigger oder eine andere Aktion verwenden, um den XML-Inhalt aus verschiedenen Quellen zur Codierung oder Decodierung in Ihren Workflow abzurufen oder in diesen einzuspeisen. Beispielsweise können Sie den Anforderungstrigger, eine andere App oder andere [Connectors verwenden, die von Azure Logic Apps unterstützt werden](../connectors/apis-list.md). Sie können **Flatfile**-Aktionen mit Workflows in den [Ressourcentypen **Logik-App (Verbrauch)** und **Logik-App (Standard)** ](single-tenant-overview-compare.md) verwenden.
+Obwohl keine **Flatfile**-Trigger verfügbar sind, können Sie einen anderen Trigger oder eine andere Aktion verwenden, um den XML-Inhalt aus verschiedenen Quellen zur Codierung oder Decodierung in Ihren Workflow abzurufen oder in diesen einzuspeisen. Beispielsweise können Sie den Anforderungstrigger, eine andere App oder andere [Connectors verwenden, die von Azure Logic Apps unterstützt werden](../connectors/apis-list.md). Sie können **Flatfile**-Aktionen mit Workflows in den [Ressourcentypen **Logik-App (Verbrauch)** und **Logik-App (Standard)**](single-tenant-overview-compare.md) verwenden.
 
 > [!NOTE]
 > Für **Logik-App (Standard)** befinden sich die **Flatfile**-Aktionen derzeit in der Vorschauphase. 

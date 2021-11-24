@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Dieser Artikel bietet eine konzeptionelle Übersicht über die Funktionalität für Clustererweiterungen von Kubernetes mit Azure Arc-Unterstützung.
-ms.openlocfilehash: 1f6bc02e111041e9a89e8066a57586c331c1a297
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6ae9270822ae16608a2c470ed818bcb8e6c2aa38
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265536"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279270"
 ---
 # <a name="cluster-extensions"></a>Clustererweiterungen
 
-Verwaltungsdienste wie Azure Monitor und Azure Defender für Kubernetes oder Dienste wie Azure-App-Dienste und Azure-Datendienste können über die Clustererweiterungsfunktion in Kubernetes-Clustern instanziiert werden. [Helm-Diagramme](https://helm.sh/) helfen Ihnen, Kubernetes-Anwendungen zu verwalten, indem sie die Bausteine bereitstellen, die zum Definieren, Installieren und Aktualisieren der komplexesten Kubernetes-Anwendungen erforderlich sind. Die Clustererweiterungsfunktion baut auf den Paketkomponenten von Helm auf, indem sie eine auf Azure Resource Manager basierende Möglichkeit für die Installation und Lebenszyklusverwaltung von Instanzen der Dienste bietet, die Sie in Ihrem Kubernetes-Cluster aktivieren möchten. Als Clusteroperator oder -administrator können Sie die Clustererweiterungsfunktion für Folgendes verwenden: 
+Verwaltungsdienste wie Azure Monitor und Microsoft Defender für Kubernetes oder Dienste wie Azure App Services und Azure Data Services können über die Cluster Extensions-Fähigkeit auf Kubernetes-Clustern instanziiert werden. [Helm-Diagramme](https://helm.sh/) helfen Ihnen, Kubernetes-Anwendungen zu verwalten, indem sie die Bausteine bereitstellen, die zum Definieren, Installieren und Aktualisieren der komplexesten Kubernetes-Anwendungen erforderlich sind. Die Clustererweiterungsfunktion baut auf den Paketkomponenten von Helm auf, indem sie eine auf Azure Resource Manager basierende Möglichkeit für die Installation und Lebenszyklusverwaltung von Instanzen der Dienste bietet, die Sie in Ihrem Kubernetes-Cluster aktivieren möchten. Als Clusteroperator oder -administrator können Sie die Clustererweiterungsfunktion für Folgendes verwenden: 
 
 - Installieren Sie verschiedene Erweiterungen für die gewünschte Funktionalität, und rufen Sie den Bestand aller Cluster und die Erweiterungen, die in diesen Clustern installiert sind, über Azure-Schnittstellen (z. B. Azure-Portal, Befehlszeilenschnittstelle, SDK usw.) ab. 
 - Steuern Sie wie bei jeder anderen Azure-Ressource den Zugriff auf die Clustererweiterungsressource mithilfe der rollenbasierte Zugriffssteuerung von Azure (Azure Role Based Access Control, RBAC).
@@ -25,7 +25,7 @@ Verwaltungsdienste wie Azure Monitor und Azure Defender für Kubernetes oder Die
 - Verwalten Sie Updates, indem Sie das automatische Upgrade für Erweiterungen einrichten oder eine bestimmte Version festlegen.
 - Verwalten Sie den Lebenszyklus von Erweiterungen, einschließlich Updates von Erweiterungseigenschaften, oder löschen Sie eine oder mehrere Erweiterungsinstanzen.
 
-Eine Erweiterung kann für einen Cluster oder einen Namespace gelten. Jeder Erweiterungstyp (z. B. Azure Monitor, Azure Defender, Azure-App-Dienste) definiert den Bereich, in dem die entsprechenden Erweiterungen im Cluster ausgeführt werden. 
+Eine Erweiterung kann für einen Cluster oder einen Namespace gelten. Jeder Erweiterungstyp (z. B. Azure Monitor, Microsoft Defender für Cloud, Azure App Services) definiert den Bereich, in dem er auf dem Cluster arbeitet. 
 
 ## <a name="architecture-for-azure-arc-enabled-kubernetes-clusters"></a>Architektur für Kubernetes-Cluster mit Azure Arc-Unterstützung
 

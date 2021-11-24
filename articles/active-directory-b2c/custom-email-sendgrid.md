@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 11/10/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5bb6c3aef0476e3da440eb8523d0ccc09491e074
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 7cebff64b67d5ec9f97700929d576ef8dbbc9bf0
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131501398"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132180114"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Benutzerdefinierte E-Mail-Überprüfung mit SendGrid
 
@@ -167,6 +167,9 @@ Wenn Sie ein SendGrid-Konto erstellt und den SendGrid-API-Schlüssel in einem Az
 1. Klicken Sie am oberen Rand der Seite auf **Speichern**.
 1. Wählen Sie den Zurück-Pfeil aus, um zur Seite **Transactional Templates** (Transaktionsvorlagen) zurückzukehren.
 1. Notieren Sie sich die **ID** der erstellten Vorlage zur Verwendung in einem späteren Schritt. Beispiel: `d-989077fbba9746e89f3f6411f596fb96`. Diese ID geben Sie an, wenn Sie [die Anspruchstransformation hinzufügen](#add-the-claims-transformation).
+
+
+[!INCLUDE [active-directory-b2c-important-for-custom-email-provider](../../includes/active-directory-b2c-important-for-custom-email-provider.md)]
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Hinzufügen von Azure AD B2C-Anspruchstypen
 
@@ -388,7 +391,7 @@ Fügen Sie wie bei den technischen Profilen für Einmalkennwörter dem `<ClaimsP
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>Erstellen eines Verweises auf das DisplayControl-Element
 
-Fügen Sie im letzten Schritt einen Verweis auf das erstellte DisplayControl-Element hinzu. Ersetzen Sie Ihre selbstbestätigten technischen Profile `LocalAccountSignUpWithLogonEmail` und `LocalAccountDiscoveryUsingEmailAddress` durch Folgendes. Wenn Sie eine ältere Version der Azure AD B2C-Richtlinie verwendet haben. In diesen technischen Profilen wird `DisplayClaims` mit einem Verweis auf „DisplayControl“ verwendet.
+Fügen Sie im letzten Schritt einen Verweis auf das erstellte DisplayControl-Element hinzu. Überschreiben Sie Ihre bestehenden `LocalAccountSignUpWithLogonEmail` und `LocalAccountDiscoveryUsingEmailAddress` selbstbestätigten technischen Profile, die in der Basisrichtlinie konfiguriert sind, mit dem folgenden XML-Schnipsel. Wenn Sie eine frühere Version der Azure AD B2C-Richtlinie verwendet haben, verwenden diese technischen Profile `DisplayClaims` mit einem Verweis auf die `DisplayControl`.
 
 Weitere Informationen finden Sie unter [Selbstbestätigtes technisches Profil](restful-technical-profile.md) und [DisplayControl](display-controls.md).
 
@@ -459,7 +462,7 @@ Zum Lokalisieren der E-Mail müssen Sie lokalisierte Zeichenfolgen an SendGrid o
     <!--
     <BuildingBlocks> -->
       <Localization Enabled="true">
-        <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+        <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
           <SupportedLanguage>en</SupportedLanguage>
           <SupportedLanguage>es</SupportedLanguage>
         </SupportedLanguages>
@@ -556,9 +559,7 @@ Mithilfe des Localization-Elements können Sie mehrere Gebietsschemas oder Sprac
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ein Beispiel für eine Richtlinie für die benutzerdefinierte E-Mail-Überprüfung finden Sie auf GitHub:
-
-- [Custom email verification - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol) (Benutzerdefinierte E-Mail-Überprüfung – Display Controls)
+- Ein Beispiel für [Benutzerdefinierte E-Mail-Überprüfung - DisplayControls benutzerdefinierte Richtlinie](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol/policy/SendGrid) finden Sie auf GitHub.
 - Informationen zur Verwendung einer benutzerdefinierten REST-API oder eines HTTP-basierten SMTP-E-Mail-Anbieters finden Sie unter [Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Azure AD B2C-Richtlinie](restful-technical-profile.md).
 
 ::: zone-end

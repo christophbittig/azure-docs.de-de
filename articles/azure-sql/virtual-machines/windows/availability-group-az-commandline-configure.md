@@ -10,25 +10,28 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/20/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 605a95142b74c06ae1b7a78cd832ab535b7345bf
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 6607760ad11290daf0488a06357432bf5eb32306
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167070"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157823"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Verwenden von PowerShell oder Azure CLI, um eine Verfügbarkeitsgruppe für SQL Server auf Azure-VMs zu konfigurieren 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In diesem Artikel wird die Verwendung von [PowerShell](/powershell/scripting/install/installing-powershell) oder der [Azure-Befehlszeilenschnittstelle (Azure CLI)](/cli/azure/sql/vm) zum Bereitstellen eines Windows-Failoverclusters, zum Hinzufügen von virtuellen SQL Server-Computern zum Cluster sowie zum Erstellen des internen Lastenausgleichs und Listeners für eine Always On-Verfügbarkeitsgruppe beschrieben. 
+> [!TIP]
+> Eliminieren Sie die Notwendigkeit eines Azure Load Balancer für Ihre Always On Availability (AG) Gruppe, indem Sie Ihre SQL Server VMs in [mehreren Subnetzen](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) innerhalb desselben virtuellen Azure Netzwerks erstellen.
+
+In diesem Artikel wird beschrieben, wie Sie mithilfe von [PowerShell](/powershell/scripting/install/installing-powershell) oder der [Azure CLI](/cli/azure/sql/vm) einen Windows-Failover-Cluster bereitstellen, dem Cluster SQL Server-VMs hinzufügen und den internen Load Balancer und Listener für eine Always On-Verfügbarkeitsgruppe innerhalb eines einzelnen Subnetzes erstellen. 
 
 Die Bereitstellung der Verfügbarkeitsgruppe erfolgt weiterhin manuell über SQL Server Management Studio (SSMS) oder Transact-SQL (T-SQL). 
 
-In diesem Artikel werden PowerShell und die Azure CLI verwendet, um die Umgebung der Verfügbarkeitsgruppe zu konfigurieren. Diese Konfiguration kann aber auch über das [Azure-Portal](availability-group-azure-portal-configure.md) mit [Azure-Schnellstartvorlagen](availability-group-quickstart-template-configure.md) oder [manuell](availability-group-manually-configure-tutorial.md) erfolgen. 
+In diesem Artikel werden PowerShell und die Azure CLI verwendet, um die Umgebung der Verfügbarkeitsgruppe zu konfigurieren. Diese Konfiguration kann aber auch über das [Azure-Portal](availability-group-azure-portal-configure.md) mit [Azure-Schnellstartvorlagen](availability-group-quickstart-template-configure.md) oder [manuell](availability-group-manually-configure-tutorial-single-subnet.md) erfolgen. 
 
 > [!NOTE]
 > Sie können Ihre Verfügbarkeitsgruppenlösung jetzt mithilfe von Azure Migrate per Lift-und-Shift-Verfahren zu SQL Server auf Azure-VMs verschieben. Weitere Informationen finden Sie unter [Migrieren von Verfügbarkeitsgruppen](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md). 

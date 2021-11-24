@@ -9,20 +9,24 @@ ms.topic: how-to
 ms.date: 11/01/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 18c3165ceee5f76b1148adc59e4013f6de7bba1f
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 6332b7443e3abc36810fc3085f3f2c413a5d7d1c
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062451"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137799"
 ---
-# <a name="connect-to-a-vm-using-bastion-and-the-native-client-on-your-windows-computer"></a>Verbinden einer VM mit Bastion und dem nativen Client auf Ihrem Windows Computer
+# <a name="connect-to-a-vm-using-bastion-and-the-native-client-on-your-windows-computer-preview"></a>Verbindung zu einer VM mit Bastion und dem nativen Client auf Ihrem Windows-Computer (Vorschau)
 
 Azure Bastion bietet jetzt Unterstützung für das Herstellen einer Verbindung mit Ziel-VMs in Azure mithilfe eines nativen Clients auf Ihrer Windows-Arbeitsstation. Mit dieser Funktion können Sie über Bastion mithilfe von Azure CLI eine Verbindung mit Ihren Ziel-VMs herstellen und Ihre Anmeldeoptionen um ein lokales SSH-Schlüsselpaar und Azure Active Directory (Azure AD) erweitern. In diesem Artikel wird beschrieben, wie Sie Bastion mit den erforderlichen Einstellungen konfigurieren und dann eine Verbindung mit einem VM im VNET herstellen. Weitere Informationen finden Sie unter [Was ist Azure Bastion?](bastion-overview.md).
 
 > [!NOTE]
 > Diese Konfiguration erfordert die Standard-SKU für Azure Bastion.
 >
+
+> [!IMPORTANT]
+> Diese Funktion wird noch weltweit eingeführt. Wenn Sie im Azure-Portal nicht darauf zugreifen können, warten Sie bitte ein paar Tage und versuchen Sie es erneut.
+
 
 Derzeit gelten für diese Funktion folgende Einschränkungen:
 
@@ -36,7 +40,7 @@ Derzeit gelten für diese Funktion folgende Einschränkungen:
 
 Vergewissern Sie sich zunächst, dass die folgenden Kriterien erfüllt sind:
 
-* Die aktuelle Version der CLI-Befehle ist installiert. Informationen zum Installieren der CLI-Befehle finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) und [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
+* Die neueste Version der CLI-Befehle (Version 2.30 oder höher) ist installiert. Informationen zum Installieren der CLI-Befehle finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) und [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
 * Ein virtuelles Azure-Netzwerk
 * Ein VM in einem virtuellen Netzwerk.
 

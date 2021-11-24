@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: reference
 ms.date: 09/27/2021
-ms.openlocfilehash: fa92330fcbae0bba9e3f9d18cb3e56d9c16a9ee6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: bc4d71f3e7b696bf46a1aa580e4a2ba254ba9d13
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449448"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343020"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Unterstützte Klassifizierungen in Azure Purview
 
@@ -164,7 +164,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 
 ### <a name="format"></a>Format
@@ -205,7 +205,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -628,7 +628,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -799,7 +799,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -809,7 +809,7 @@ alphanumerisches Muster mit 11 Zeichen
 
 alphanumerisches Muster mit 11 Zeichen:
 
-- A oder a
+- Oder ein
 - T oder t
 - optionale Leerstelle
 - U oder u
@@ -1130,7 +1130,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -1451,7 +1451,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -2752,7 +2752,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -2833,7 +2833,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -3604,7 +3604,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -4341,7 +4341,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -4647,7 +4647,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -4868,7 +4868,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -5227,7 +5227,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -5489,7 +5489,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -5525,7 +5525,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -5785,7 +5785,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -5901,7 +5901,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -5954,7 +5954,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -6727,7 +6727,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -6840,7 +6840,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -7001,7 +7001,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -7040,7 +7040,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -7651,7 +7651,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -7897,7 +7897,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -8327,7 +8327,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -8700,7 +8700,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -8761,7 +8761,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -8801,7 +8801,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -8841,7 +8841,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -8934,7 +8934,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -9005,7 +9005,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -9353,7 +9353,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -9401,7 +9401,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -9901,7 +9901,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -10019,7 +10019,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -10065,7 +10065,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -10311,7 +10311,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -10572,7 +10572,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -10675,7 +10675,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -10937,7 +10937,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -11072,7 +11072,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -11404,7 +11404,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -11518,7 +11518,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -11986,7 +11986,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -12314,7 +12314,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 
@@ -12346,7 +12346,7 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 - Richtlinien zur Konformität der Kommunikation
 - Information Governance
 - Datensatzverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 
 ### <a name="format"></a>Format
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: fd9984d6db66413f3c53d20fa63ffb4e1a106f3d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 712b1d3e7fde41991f9cea2d62e7e0864224509d
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131454540"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135202"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Was ist der Azure Cosmos DB-Analysespeicher?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -177,6 +177,21 @@ df = spark.read\
 ```
 
 * Azure Synapse Spark unterstützt jetzt Eigenschaften, deren Namen Leerzeichen enthalten.
+
+* Die folgenden BSON-Datentypen werden nicht unterstützt und nicht im Analysespeicher dargestellt:
+  * Decimal128
+  * Regular Expression
+  * DB-Zeiger
+  * JavaScript
+  * Symbol
+  * MinKey/MaxKey 
+
+* Wenn Sie DateTime-Zeichenfolgen verwenden, die dem ISO 8601 UTC-Standard entsprechen, erwarten Sie das folgende Verhalten:
+  * Spark-Pools in Azure Synapse stellen diese Spalten als `string` dar.
+  * SQL Serverless-Pools in Azure Synapse stellen diese Spalten als `varchar(8000)` dar.
+
+* SQL serverlose Pools in Azure Synapse unterstützen Ergebnismengen mit bis zu 1.000 Spalten, und das Verfügbarmachen geschachtelter Spalten zählt auch für diesen Grenzwert. Berücksichtigen Sie diese Informationen, wenn Sie Ihre Datenarchitektur entwerfen und Ihre Transaktionsdaten modellieren.
+
 
 ### <a name="schema-representation"></a>Schemadarstellung
 

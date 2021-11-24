@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 22569277eefafc518f407f06e34a69c061509b96
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c89625bb1ea7a9b2bee53468a09a48073e5516bf
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131458967"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308653"
 ---
 # <a name="azure-monitor-agent-overview"></a>Übersicht über den Azure Monitor-Agent
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer und übermittelt sie an Azure Monitor. Dieser Artikel bietet eine Übersicht über den Azure Monitor-Agent und enthält Informationen zu dessen Installation und zur Konfiguration der Datensammlung.
@@ -33,12 +33,12 @@ Neben der Konsolidierung dieser Funktionalität in einem einzelnen Agent bietet 
 ### <a name="current-limitations"></a>Aktuelle Einschränkungen
 Im Vergleich zu vorhandenen Agents bietet dieser neue Agent noch keine vollständige Parität.
 - **Vergleich mit Log Analytics-Agents (MMA/OMS):**
-    - Derzeit werden nicht alle Log Analytics-Lösungen unterstützt. Informieren Sie sich, [welche Dienste und Features unterstützt werden](#supported-services-and-features).
-    - Keine Unterstützung für Azure Private Link.
-    - Keine Unterstützung für das Sammeln von dateibasierten Protokollen oder IIS-Protokollen.
+  - Derzeit werden nicht alle Log Analytics-Lösungen unterstützt. Informieren Sie sich, [welche Dienste und Features unterstützt werden](#supported-services-and-features).
+  - Keine Unterstützung für Azure Private Link.
+  - Keine Unterstützung für das Sammeln von dateibasierten Protokollen oder IIS-Protokollen.
 - **Vergleich mit Erweiterungen für die Azure-Diagnose (WAD/LAD):**
-    - Keine Unterstützung für Event Hubs und Storage-Konten als Ziele.
-    - Keine Unterstützung für das Sammeln von dateibasierten Protokollen, IIS-Protokollen, ETW-Ereignissen, NET-Ereignissen und Absturzbildern.
+  - Keine Unterstützung für Event Hubs und Storage-Konten als Ziele.
+  - Keine Unterstützung für das Sammeln von dateibasierten Protokollen, IIS-Protokollen, ETW-Ereignissen, NET-Ereignissen und Absturzbildern.
 
 ### <a name="changes-in-data-collection"></a>Änderungen bei der Datensammlung
 Diese Methoden zum Definieren einer Datensammlung für die vorhandenen Agents unterscheiden sich erheblich. Jede Methode bringt Herausforderungen mit sich, die Sie mit dem Azure Monitor-Agent angehen können.
@@ -77,8 +77,8 @@ In der folgenden Tabelle erhalten Sie Informationen zur aktuellen Unterstützung
 
 | Azure-Dienst | Aktuelle Unterstützung | Weitere Informationen |
 |:---|:---|:---|
-| [Azure Security Center](../../security-center/security-center-introduction.md) | Private Vorschau | [Link zur Registrierung](https://aka.ms/AMAgent) |
-| [Azure Sentinel](../../sentinel/overview.md) | <ul><li>Windows Ereignisweiterleitung (WEF): Private Vorschau</li><li>Windows-Sicherheitsereignisse: [Öffentliche Vorschau](../../sentinel/connect-windows-security-events.md?tabs=AMA)</li></ul>  | <ul><li>[Link zur Registrierung](https://aka.ms/AMAgent) </li><li>Es ist keine Registrierung erforderlich!</li></ul> |
+| [Microsoft Defender für Cloud](../../security-center/security-center-introduction.md) | Private Vorschau | [Link zur Registrierung](https://aka.ms/AMAgent) |
+| [Microsoft Sentinel](../../sentinel/overview.md) | <ul><li>Windows Ereignisweiterleitung (WEF): Private Vorschau</li><li>Windows-Sicherheitsereignisse: [Öffentliche Vorschau](../../sentinel/connect-windows-security-events.md?tabs=AMA)</li></ul>  | <ul><li>[Link zur Registrierung](https://aka.ms/AMAgent) </li><li>Es ist keine Registrierung erforderlich!</li></ul> |
 
 In der folgenden Tabelle erhalten Sie Informationen zur aktuellen Unterstützung für den Azure Monitor-Agent mit Azure Monitor-Features.
 
@@ -93,7 +93,7 @@ In der folgenden Tabelle erhalten Sie Informationen zur aktuellen Unterstützung
 
 | Lösung | Aktuelle Unterstützung | Weitere Informationen |
 |:---|:---|:---|
-| [Änderungsnachverfolgung](../../automation/change-tracking/overview.md) | Dies wird als Dateiintegritätsüberwachung in der privaten Azure Security Center-Vorschau unterstützt.  | [Link zur Registrierung](https://aka.ms/AMAgent) |
+| [Änderungsnachverfolgung](../../automation/change-tracking/overview.md) | Wird als Überwachung der Dateiintegrität in der privaten Vorschauversion von Microsoft Defender für Cloud unterstützt.  | [Link zur Registrierung](https://aka.ms/AMAgent) |
 | [Updateverwaltung](../../automation/update-management/overview.md) | Verwenden Sie die Updateverwaltung v2 (private Vorschau), für die kein Agent erforderlich ist. | [Link zur Registrierung](https://www.yammer.com/azureadvisors/threads/1064001355087872) |
 
 ## <a name="coexistence-with-other-agents"></a>Koexistenz mit anderen Agents
@@ -134,8 +134,7 @@ Die Windows- und Linux-Erweiterungen für den Azure Monitor-Agent können mithil
 
 1. Verwenden Sie dieses Flussdiagramm, um zunächst die Werte der Parameter *setting* und *protectedSetting* zu bestimmen.
 
-   ![Flussdiagramm zum Bestimmen der Werte der Parameter „setting“ und „protectedSetting“ beim Aktivieren der Erweiterung](media/azure-monitor-agent-overview/proxy-flowchart.png)
-
+    ![Flussdiagramm zum Bestimmen der Werte der Parameter „setting“ und „protectedSetting“ beim Aktivieren der Erweiterung](media/azure-monitor-agent-overview/proxy-flowchart.png)
 
 2. Nachdem die Werte für die Parameter *setting* und *protectedSetting* festgelegt wurden, geben Sie diese zusätzlichen Parameter an, wenn Sie den Azure Monitor-Agent mithilfe von PowerShell-Befehlen bereitstellen. Die folgenden Beispiele sind für virtuelle Azure-Computer konzipiert.
 
@@ -144,8 +143,8 @@ Die Windows- und Linux-Erweiterungen für den Azure Monitor-Agent können mithil
     | Einstellung | Dies ist ein in eine Zeichenfolge konvertiertes JSON-Objekt aus dem vorherigen Flussdiagramm. Überspringen Sie diesen Schritt, wenn dies nicht zutrifft. Beispiel: {"proxy":{"mode":"application","address":"http://[address]:[port]","auth": false}}. |
     | ProtectedSetting | Dies ist ein in eine Zeichenfolge konvertiertes JSON-Objekt aus dem vorherigen Flussdiagramm. Überspringen Sie diesen Schritt, wenn dies nicht zutrifft. Beispiel: {"proxy":{"username": "[username]","password": "[password]"}}. |
 
-
 # <a name="windows-vm"></a>[Windows-VM](#tab/PowerShellWindows)
+
 ```powershell
 Set-AzVMExtension -ExtensionName AzureMonitorWindowsAgent -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location> -TypeHandlerVersion 1.0 -Setting <settingString> -ProtectedSetting <protectedSettingString>
 ```

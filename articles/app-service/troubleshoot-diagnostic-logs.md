@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 7e477f3d8df098f53abc4b1ad5f963f019b79ead
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 64a8259f859bb53be6464a9f522c4dcb5491ba21
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470887"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279327"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -203,7 +203,7 @@ In der folgenden Tabelle werden die unterstützten Protokolltypen und Beschreibu
 | AppServiceAppLogs | ASP.NET und Tomcat<sup>1</sup> | ASP.NET und Tomcat<sup>1</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Anwendungsprotokolle |
 | AppServiceIPSecAuditLogs  | Ja | Ja | Ja | Ja | Anforderungen von IP-Regeln |
 | AppServicePlatformLogs  | Wird noch angekündigt | Ja | Ja | Ja | Containervorgangsprotokolle |
-| AppServiceAntivirusScanAuditLogs <sup>3</sup> | Ja | Ja | Ja | Ja | [Protokolle für Antivirenscans](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) mithilfe von Microsoft Defender; **nur verfügbar für Premium-Tarif** | 
+| AppServiceAntivirusScanAuditLogs <sup>3</sup> | Ja | Ja | Ja | Ja | [Protokolle von Antiviren-Scans](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) mit Microsoft Defender für Cloud; **nur verfügbar für Premium-Tier** | 
 
 <sup>1</sup> Fügen Sie den App-Einstellungen für Tomcat-Apps `TOMCAT_USE_STARTUP_BAT` hinzu, und legen Sie den zugehörigen Wert auf `false` oder `0` fest. Sie müssen die *neueste* Tomcat-Version und *java.util.logging* verwenden.
 

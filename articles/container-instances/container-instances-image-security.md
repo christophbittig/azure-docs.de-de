@@ -4,12 +4,12 @@ description: Empfehlungen zum Schutz von Images und Secrets für Azure Container
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 721e3f27af768bd3a31d069100d1f3b84fb5e624
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9f0a30095605ae9ff52f5780bdf2f94454cf85a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091448"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315727"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Sicherheitsüberlegungen für Azure Container Instances
 
@@ -34,7 +34,7 @@ Ein öffentlich verfügbares Containerimage garantiert keine Sicherheit. Contain
 
 Nutzen Sie Lösungen zum Überprüfen von Containerimages in einer privaten Registrierung und zum Identifizieren potenzieller Sicherheitsrisiken. Es ist wichtig, die Tiefe der Bedrohungserkennung zu verstehen, die die verschiedenen Lösungen bieten.
 
-Beispielsweise kann Azure Security Center optional [mit Azure Container Registry integriert](../security-center/defender-for-container-registries-introduction.md) werden, um automatisch alle Linux-Images zu überprüfen, die in eine Registrierung gepusht werden. Der integrierte Qualys-Scanner von Azure Security Center erkennt Sicherheitsrisiken von Images, klassifiziert sie und stellt Anleitungen zur Wartung bereit.
+Beispielsweise kann Azure Container Registry optional [mit Microsoft Defender für Cloud integriert](../security-center/defender-for-container-registries-introduction.md) werden, um automatisch alle Linux-Images zu überprüfen, die in eine Registrierung gepusht werden. Der integrierte Qualys-Scanner von Microsoft Defender für Cloud erkennt Sicherheitsrisiken von Images, klassifiziert diese und stellt Anleitungen zur Wartung bereit.
 
 Lösungen zur Sicherheitsüberwachung und Imageüberprüfung wie [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) und [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) sind ebenfalls über den Azure Marketplace verfügbar.  
 
@@ -138,7 +138,7 @@ Wie in jeder IT-Umgebung sollten Sie die Aktivitäten und den Benutzerzugriff au
 
 Führen Sie ein genaues Überwachungsprotokoll für den administrativen Zugriff auf Ihr Containerökosystem, einschließlich Ihres Kubernetes-Clusters, der Containerregistrierung und der Containerimages. Diese Protokolle können für Überprüfungszwecke erforderlich sein und sind als forensische Beweise nach einem Sicherheitsvorfall nützlich. Zu Azure-Lösungen zählen z. B. folgende:
 
-* [Integration von Azure Kubernetes Service in Azure Security Center](../security-center/defender-for-kubernetes-introduction.md) zum Überwachen der Sicherheitskonfiguration der Clusterumgebung und zum Generieren von Sicherheitsempfehlungen
+* [Integration von Azure Kubernetes Service in Microsoft Defender für Cloud](../security-center/defender-for-kubernetes-introduction.md) zum Überwachen der Sicherheitskonfiguration der Clusterumgebung und zum Generieren von Sicherheitsempfehlungen
 * [Azure-Containerüberwachungslösung](../azure-monitor/containers/containers.md)
 * Ressourcenprotokolle für [Azure Container Instances](container-instances-log-analytics.md) und [Azure Container Registry](../container-registry/monitor-service.md)
 
@@ -146,6 +146,6 @@ Führen Sie ein genaues Überwachungsprotokoll für den administrativen Zugriff 
 
 * Umfassende Empfehlungen zur Verbesserung des Sicherheitsstatus Ihrer Bereitstellung finden Sie unter [Azure-Sicherheitsbaseline für Container Instances](security-baseline.md).
 
-* Erfahren Sie mehr über die Verwendung von [Azure Security Center](../security-center/container-security.md) für die Echtzeiterkennung von Bedrohungen in Ihren Containerumgebungen.
+* Erfahren Sie mehr über die Verwendung von [Microsoft Defender für Cloud](../security-center/container-security.md) für die Echtzeiterkennung von Bedrohungen in Ihren Containerumgebungen.
 
 * Weitere Informationen zum Verwalten von Containersicherheitsrisiken mit Lösungen von [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) und [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/).

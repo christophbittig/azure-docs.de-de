@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/07/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: a0290f85e1f408f9d1ec91cdc353a1acc87faeef
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: bc88b1dcebede150ca912244d482a2e926f13e2b
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130160929"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158157"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>Konfigurieren eines DNN für eine Failoverclusterinstanz
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> Eliminieren Sie die Notwendigkeit eines verteilten Netzwerknamens (DNN) für Failover-Cluster-Instanzen, indem Sie Ihre SQL Server-VMs in mehreren Subnetzen innerhalb desselben virtuellen Azure-Netzwerks erstellen.
 
 In Azure Virtual Machines wird über den Namen des verteilten Netzwerks (Distributed Network Name, DNN) Datenverkehr an die entsprechende Clusterressource weitergeleitet. Dieser Name stellt eine einfachere Möglichkeit zum Herstellen einer Verbindung mit der SQL Server-Failoverclusterinstanz (FCI) dar als der Name des virtuellen Netzwerks (Virtual Network Name, VNN). Zudem ist Azure Load Balancer nicht erforderlich. 
 

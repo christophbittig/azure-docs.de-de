@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2b7e51bc2837cdb068f0f9d6704e80d3f41c396e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: f5320812be623437099ed0ab587dbbe3d4abe6ef
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538856"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158755"
 ---
 # <a name="troubleshoot-hybrid-azure-ad-joined-devices"></a>Beheben von Problemen bei in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -32,6 +32,10 @@ In diesem Artikel wird vorausgesetzt, dass Sie [in Azure AD eingebundene Hybrid
 - Gerätebasierter bedingter Zugriff
 - [Enterprise State Roaming](./enterprise-state-roaming-overview.md)
 - [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
+
+
+> [!NOTE] 
+> Zur Behebung der häufigsten Probleme bei der Geräteregistrierung verwenden Sie das [Device Registration Troubleshooter Tool](https://aka.ms/DSRegTool).
 
 
 ## <a name="troubleshoot-join-failures"></a>Beheben von Einbindungsfehlern
@@ -384,7 +388,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
    > [!NOTE] 
    > Um den Status des primären Aktualisierungstokens (Primary Refresh Token, PRT) abzurufen, öffnen Sie das Eingabeaufforderungsfenster im Kontext des angemeldeten Benutzers. 
 
-1. `dsregcmd /status` ausführen. 
+1. Führen Sie `dsregcmd /status` aus. 
 
    Im Abschnitt „SSO-Status" wird der aktuelle PRT-Status angezeigt. 
 
@@ -474,7 +478,7 @@ Das Feld „Versuchsstatus“ unter dem Feld „AzureAdPrt“ gibt den Status de
 
 | Fehlercode | `Reason` | Lösung |
 | --- | --- | --- |
-| **AADSTS50155: Fehler bei Geräteauthentifizierung** | <li>Azure AD kann das Gerät nicht für die Ausgabe eines PRT authentifizieren.<li>Bestätigen Sie, dass das Gerät im Azure-Portal nicht gelöscht oder deaktiviert wurde. Weitere Informationen zu diesem Problem finden Sie unter [Häufig gestellte Fragen zur Azure Active Directory-Geräteverwaltung](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices). | Folgen Sie den Anleitungen für dieses Problem in [Häufig gestellte Fragen zur Azure Active Directory-Geräteverwaltung](faq.yml#i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell--but-the-local-state-on-the-device-says-it-s-still-registered--what-should-i-do), um das Gerät basierend auf dem Einbindungstyp erneut zu registrieren. |
+| **AADSTS50155: Fehler bei Geräteauthentifizierung** | <li>Azure AD kann das Gerät nicht für die Ausgabe eines PRT authentifizieren.<li>Bestätigen Sie, dass das Gerät im Azure-Portal nicht gelöscht oder deaktiviert wurde. Weitere Informationen zu diesem Problem finden Sie unter [Häufig gestellte Fragen zur Azure Active Directory-Geräteverwaltung](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-11-devices). | Folgen Sie den Anleitungen für dieses Problem in [Häufig gestellte Fragen zur Azure Active Directory-Geräteverwaltung](faq.yml#i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell--but-the-local-state-on-the-device-says-it-s-still-registered--what-should-i-do), um das Gerät basierend auf dem Einbindungstyp erneut zu registrieren. |
 | **AADSTS50034: Das Benutzerkonto `Account` ist nicht im `tenant id`-Verzeichnis vorhanden** | Azure AD kann das Benutzerkonto im Mandanten nicht finden. | <li>Sorgen Sie dafür, dass der Benutzer den richtigen UPN eingibt.<li>Sorgen Sie dafür, dass das lokale Benutzerkonto mit Azure AD synchronisiert wird.<li>Ereignis 1144 (Azure AD-Analyseprotokolle) enthält den bereitgestellten UPN. |
 | **AADSTS50126: Fehler beim Überprüfen der Anmeldeinformationen aufgrund eines ungültigen Benutzernamens oder Kennworts.** | <li>Der Benutzername und das Kennwort, die vom Benutzer in der Windows-LoginUI eingegeben wurden, sind falsch.<li>Wenn beim Mandanten die Kennworthashsynchronisierung aktiviert wurde, ist das Gerät hybrid eingebunden, und wenn der Benutzer das Kennwort gerade geändert hat, wurde das neue Kennwort wahrscheinlich nicht mit Azure AD synchronisiert. | Um ein neues PRT mit den neuen Anmeldeinformationen zu erhalten, warten Sie, bis die Azure AD Kennwortsynchronisierung abgeschlossen ist. |
 | | |
@@ -504,9 +508,9 @@ Das Feld „Versuchsstatus“ unter dem Feld „AzureAdPrt“ gibt den Status de
 > [!NOTE]
 > Wenn Sie Netzwerkablaufverfolgungen sammeln, ist es wichtig, Fiddler während der Reproduktion *nicht* zu verwenden.
 
-1.  `netsh trace start scenario=internetClient_dbg capture=yes persistent=yes` ausführen.
+1.  Führen Sie `netsh trace start scenario=internetClient_dbg capture=yes persistent=yes` aus.
 1. Sperren und entsperren Sie das Gerät. Warten Sie bei eingebundenen Hybridgeräten mindestens eine Minute, bis die PRT-Erfassungsaufgabe abgeschlossen ist.
-1. `netsh trace stop` ausführen.
+1. Führen Sie `netsh trace stop` aus.
 1. Geben Sie die Datei *nettrace.cab* für den Support frei.
 
 ---

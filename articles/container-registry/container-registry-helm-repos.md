@@ -3,12 +3,12 @@ title: Speichern von Helm-Diagrammen
 description: Erfahren Sie, wie Sie Helm-Charts für Ihre Kubernetes-Anwendungen mithilfe von Depots in Azure Container Registry speichern.
 ms.topic: article
 ms.date: 10/20/2021
-ms.openlocfilehash: 9bf771fae26d61a457299244910eff1cc6724b84
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5c96df6458a1f1fc40f4033d367c988c246a0fde
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232978"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135773"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Pushen und Pullen von Helm-Charts in Azure Container Registry
 
@@ -84,6 +84,12 @@ Legen Sie die folgende Umgebungsvariable fest, um die OCI-Unterstützung im Helm
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
+Legen Sie die folgenden Umgebungsvariablen für die Zielregistrierung fest. Der ACR_NAME ist der Name der Registrierungsressource. Wenn die URL der ACR-Registrierung myregistry.azurecr.io ist, legen Sie ACR_NAME auf myregistry fest.
+
+```console
+ACR_NAME=<container-registry-name>
+```
+
 ## <a name="create-a-sample-chart"></a>Erstellen eines Beispielcharts
 
 Erstellen Sie mithilfe der folgenden Befehle ein Testchart:
@@ -136,32 +142,52 @@ Successfully packaged chart and saved it to: /my/path/hello-world-0.1.0.tgz
 
 ## <a name="authenticate-with-the-registry"></a>Authentifizieren bei der Registrierung
 
-Führen Sie `helm registry login` aus, um sich bei der Registrierung zu authentifizieren. Sie können [Registrierungsanmeldeinformationen](container-registry-authentication.md) übergeben, die für Ihr Szenario geeignet sind, z. B. Dienstprinzipalanmeldeinformationen oder ein Token für den Repositorybereich.
+Führen Sie `helm registry login` aus, um sich bei der Registrierung zu authentifizieren. Sie können für Ihr Szenario geeignete [Registrierungsanmeldeinformationen](container-registry-authentication.md) übergeben, z. B. Anmeldeinformationen für den Dienstprinzipal, die Benutzeridentität oder ein Token für den Repositorygültigkeitsbereich.
 
-Erstellen Sie beispielsweise einen [Azure Active Directory-Dienstprinzipal mit Pull- und Pushberechtigungen](container-registry-auth-service-principal.md#create-a-service-principal) (AcrPush-Rolle) für die Registrierung. Geben Sie anschließend die Dienstprinzipal-Anmeldeinformationen für `helm registry login` an. Im folgenden Beispiel wird das Kennwort mithilfe einer Umgebungsvariablen angegeben:
-
-```console
-echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
-  --username <service-principal-id> \
-  --password-stdin
-```
-
-> [!TIP]
-> Sie können sich auch mit Ihrer [individuellen Azure AD-Identität](container-registry-authentication.md?tabs=azure-cli#individual-login-with-azure-ad) bei der Registrierung anmelden, um Helm-Charts zu pushen und zu pullen.
+- Authentifizieren Sie sich für die Registrierung mit einem [Azure Active Directory-Dienstprinzipal mit Pull- und Pushberechtigung](container-registry-auth-service-principal.md#create-a-service-principal) (Rolle AcrPush).
+  ```bash
+  SERVICE_PRINCIPAL_NAME=<acr-helm-sp>
+  ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
+  PASSWORD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME \
+            --scopes $(az acr show --name $ACR_NAME --query id --output tsv) \
+             --role acrpull \
+            --query "password" --output tsv)
+  USER_NAME=$(az ad sp list --display-name $SERVICE_PRINCIPAL_NAME --query "[].appId" --output tsv)
+  ```
+- Sie können sich bei der Registrierung auch mit Ihrer [individuellen Azure AD-Identität](container-registry-authentication.md?tabs=azure-cli#individual-login-with-azure-ad) anmelden, um Helm-Diagramme zu pushen und zu pullen.
+  ```bash
+  USER_NAME="00000000-0000-0000-0000-000000000000"
+  PASSWORD=$(az acr login --name $ACR_NAME --expose-token --output tsv --query accessToken)
+  ```
+- Authentifizieren mit einem [Token für den Repositorygültigkeitsbereich](container-registry-repository-scoped-permissions.md) (Vorschau).
+  ```bash
+  USER_NAME="helm-token"
+  PASSWORD=$(az acr token create -n $USER_NAME \
+                    -r $ACR_NAME \
+                    --scope-map _repositories_admin \
+                    --only-show-errors \
+                    --query "credentials.passwords[0].value" -o tsv)
+  ```
+- Stellen Sie die Anmeldeinformationen für `helm registry login` bereit.
+  ```bash
+  helm registry login $ACR_NAME.azurecr.io \
+    --username $USER_NAME \
+    --password $PASSWORD
+  ```
 
 ## <a name="push-chart-to-registry-as-oci-artifact"></a>Pushen eines Charts als OCI-Artefakt in die Registrierung
 
 Führen Sie den Befehl `helm push` in der Helm 3-Befehlszeilenschnittstelle aus, um das Chartarchiv in das vollqualifizierte Zielrepository zu pushen. Im folgenden Beispiel lautet der Ziel-Repositorynamespace `helm/hello-world`, und das Chart ist mit `0.1.0` gekennzeichnet:
 
 ```console
-helm push hello-world-0.1.0.tgz oci://mycontainerregistry.azurecr.io/helm
+helm push hello-world-0.1.0.tgz oci://$ACR_NAME.azurecr.io/helm
 ```
 
 Nach einem erfolgreichen Push ähnelt die Ausgabe der folgenden:
 
 ```output
-Pushed: mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
-digest: sha256:5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
+Pushed: <registry>.azurecr.io/helm/hello-world:0.1.0
+digest: sha256:5899db028dcf96aeaabdadfa5899db02589b2899b025899b059db02
 ```
 
 ## <a name="list-charts-in-the-repository"></a>Auflisten von Diagrammen im Repository
@@ -172,7 +198,7 @@ Führen Sie z. B. [az acr repository show][az-acr-repository-show] aus, um die 
 
 ```azurecli
 az acr repository show \
-  --name mycontainerregistry \
+  --name $ACR_NAME \
   --repository helm/hello-world
 ```
 
@@ -199,7 +225,7 @@ Führen Sie den Befehl [az acr repository show-manifests][az-acr-repository-show
 
 ```azurecli
 az acr repository show-manifests \
-  --name mycontainerregistry \
+  --name $ACR_NAME \
   --repository helm/hello-world --detail
 ```
 
@@ -225,7 +251,7 @@ Die Ausgabe (in diesem Beispiel abgekürzt) zeigt `application/vnd.cncf.helm.con
 Führen Sie `helm install` aus, um das Helm-Chart zu installieren, das Sie in die Registrierung gepusht haben. Das Charttag wird mithilfe des Parameters `--version` übergeben. Geben Sie einen Releasenamen (beispielsweise *myhelmtest*) an, oder übergeben Sie den Parameter `--generate-name`. Beispiel:
 
 ```console
-helm install myhelmtest oci://mycontainerregistry.azurecr.io/helm/hello-world --version 0.1.0
+helm install myhelmtest oci://$ACR_NAME.azurecr.io/helm/hello-world --version 0.1.0
 ```
 
 Die Ausgabe nach erfolgreicher Chartinstallation sieht in etwa wie folgt aus:
@@ -258,7 +284,7 @@ helm uninstall myhelmtest
 Optional können Sie ein Chart mithilfe von `helm pull` aus der Containerregistrierung in ein lokales Archiv pullen. Das Charttag wird mithilfe des Parameters `--version` übergeben. Wenn ein lokales Archiv im aktuellen Pfad vorhanden ist, wird es durch diesen Befehl überschrieben.
 
 ```console
-helm pull oci://mycontainerregistry.azurecr.io/helm/hello-world --version 0.1.0
+helm pull oci://$ACR_NAME.azurecr.io/helm/hello-world --version 0.1.0
 ```
 
 ## <a name="delete-chart-from-the-registry"></a>Löschen eines Charts aus der Registrierung
@@ -266,7 +292,7 @@ helm pull oci://mycontainerregistry.azurecr.io/helm/hello-world --version 0.1.0
 Wenn Sie ein Chart aus der Containerregistrierung löschen möchten, verwenden Sie den Befehl [az acr repository delete][az-acr-repository-delete]. Führen Sie den folgenden Befehl aus, und bestätigen Sie den Vorgang, wenn Sie dazu aufgefordert werden:
 
 ```azurecli
-az acr repository delete --name mycontainerregistry --image helm/hello-world:0.1.0
+az acr repository delete --name $ACR_NAME --image helm/hello-world:0.1.0
 ```
 
 ## <a name="migrate-your-registry-to-store-helm-oci-artifacts"></a>Migrieren Ihrer Registrierung zum Speichern von Helm-OCI-Artefakten
@@ -324,25 +350,25 @@ Ein lokales Chartarchiv wie `ingress-nginx-3.20.1.tgz` wird erstellt.
 Melden Sie sich bei der Registrierung an:
 
 ```azurecli
-az acr login --name myregistry
+az acr login --name $ACR_NAME
 ```
 
 Pushen Sie jedes Chartarchiv in die Registrierung. Beispiel:
 
 ```console
-helm push ingress-nginx-3.20.1.tgz oci://myregistry.azurecr.io/helm
+helm push ingress-nginx-3.20.1.tgz oci://$ACR_NAME.azurecr.io/helm
 ```
 
 Vergewissern Sie sich nach dem Pushen eines Charts, dass es in der Registrierung gespeichert ist:
 
 ```azurecli
-az acr repository list --name myregistry
+az acr repository list --name $ACR_NAME
 ```
 
 Entfernen Sie nach dem Pushen aller Charts optional das Helm 2-Chartrepository aus der Registrierung. Dadurch wird der beanspruchte Speicher in Ihrer Registrierung reduziert:
 
 ```console
-helm repo remove myregistry
+helm repo remove $ACR_NAME
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 7356b9bb814f8bca5465fe74d48409b9dbca6d3b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b97f7fdfb64f80fa1e132b0bdbd1dbb6d1382de1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731696"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279194"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor-Datenplattform
 
@@ -72,7 +72,7 @@ Die folgende Tabelle enthält einen Vergleich zwischen Metriken und Protokollen 
 | Struktur | Standardsatz von Eigenschaften, z.B. Stichprobenzeit, überwachte Ressource, ein numerischer Wert. Einige Metriken umfassen mehrere Dimensionen für die weitere Definition. | Eindeutiger Satz von Eigenschaften je nach Protokolltyp. |
 | Collection | Werden in regelmäßigen Abständen gesammelt. | Werden möglicherweise sporadisch gesammelt, wenn Ereignisse das Erstellen eines Datensatzes auslösen. |
 | Ansicht im Azure-Portal | Metrik-Explorer | Log Analytics |
-| Enthaltene Datenquellen | Von Azure-Ressourcen gesammelte Plattformmetriken<br>Von Application Insights überwachte Anwendungen<br>Benutzerdefiniert nach Anwendung oder API | Anwendungs- und Ressourcenprotokolle<br>Überwachungslösungen<br>Agents und VM-Erweiterungen<br>Anwendungsanforderungen und -ausnahmen<br>Azure Security Center<br>Datensammler-API |
+| Enthaltene Datenquellen | Von Azure-Ressourcen gesammelte Plattformmetriken<br>Von Application Insights überwachte Anwendungen<br>Benutzerdefiniert nach Anwendung oder API | Anwendungs- und Ressourcenprotokolle<br>Überwachungslösungen<br>Agents und VM-Erweiterungen<br>Anwendungsanforderungen und -ausnahmen<br>Microsoft Defender für Cloud.<br>Datensammler-API |
 
 ## <a name="collect-monitoring-data"></a>Sammeln von Überwachungsdaten
 Verschiedene [Datenquellen für Azure Monitor](agents/data-sources.md) schreiben entweder in einen Log Analytics-Arbeitsbereich (Protokolle), die Azure Monitor-Metrikdatenbank (Metriken) oder beides. Einige Quellen schreiben direkt in diese Datenspeicher, während andere möglicherweise an einen anderen Speicherort schreiben (z.B. Azure-Speicher) und eine Konfiguration erfordern, um Protokolle oder Metriken auszufüllen. 
@@ -90,4 +90,3 @@ Eine Liste der verschiedenen Datenquellen, die den jeweiligen Typ ausfüllen, fi
 - Informieren Sie sich ausführlicher über [Metriken in Azure Monitor](essentials/data-platform-metrics.md).
 - Informieren Sie sich ausführlicher über [Protokolle in Azure Monitor](logs/data-platform-logs.md).
 - Erfahren Sie mehr über die für verschiedene Ressourcen in Azure [verfügbaren Überwachungsdaten](agents/data-sources.md).
-

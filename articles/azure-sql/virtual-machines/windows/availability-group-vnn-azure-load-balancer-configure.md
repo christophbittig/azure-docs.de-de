@@ -12,20 +12,23 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/14/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: cddf36f1bd51b50d1642f92158adc3a3ba46cdc2
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 7c749744ef6dcad4ca8f233b1a85e07843ba0406
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161499"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158469"
 ---
 # <a name="configure-load-balancer-for-ag-vnn-listener"></a>Konfigurieren von Load Balancer für einen AG-VNN-Listener
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In Azure Virtual Machines wird für Cluster ein Lastenausgleich für eine IP-Adresse verwendet, die zu einem bestimmten Zeitpunkt auf einem Clusterknoten vorhanden sein muss. In dieser Lösung enthält Load Balancer die IP-Adresse für den VNN-Listener (Name des virtuellen Netzwerks), der für die Always On-Verfügbarkeitsgruppen (Availability Group, AG) verwendet wird. 
+> [!TIP]
+> Eliminieren Sie die Notwendigkeit eines Azure Load Balancer für Ihre Always On Availability (AG) Gruppe, indem Sie Ihre SQL Server VMs in [mehreren Subnetzen](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) innerhalb desselben virtuellen Azure Netzwerks erstellen.
+
+In Azure Virtual Machines wird für Cluster ein Lastenausgleich für eine IP-Adresse verwendet, die zu einem bestimmten Zeitpunkt auf einem Clusterknoten vorhanden sein muss. Bei dieser Lösung hält der Load Balancer die IP-Adresse für den VNN-Listener (Virtual Network Name) für die Always On-Verfügbarkeitsgruppe (AG), wenn sich die SQL Server-VMs in einem einzigen Subnetz befinden. 
 
 In diesem Artikel erfahren Sie, wie Sie Lastenausgleich mit dem Azure Load Balancer-Dienst konfigurieren. Load Balancer leitet Datenverkehr an Ihren [Verfügbarkeitsgruppenlistener](availability-group-overview.md) mit SQL Server auf Azure-VMs weiter und sorgt für Hochverfügbarkeit und Notfallwiederherstellung (High Availability und Disaster Recovery, HADR). 
 

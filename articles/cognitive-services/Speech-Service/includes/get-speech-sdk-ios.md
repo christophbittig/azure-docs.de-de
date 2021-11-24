@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: eur
-ms.openlocfilehash: 30d913eba160fd68702758695a8efa0547e55a26
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 942bf206454047f54765d096a2ac97fcabb895ab
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506526"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252441"
 ---
 :::row:::
     :::column span="3":::
-        Für die Entwicklung für iOS sind zwei Speech SDKs verfügbar. Das Objective-C Speech SDK ist nativ als iOS-CocoaPod-Paket verfügbar. Alternativ kann das .NET Speech SDK mit Xamarin.iOS verwendet werden, da es .NET Standard 2.0 implementiert.
+        Für die Entwicklung für iOS sind die folgenden Speech-SDKs verfügbar. Das Objective-C/Swift Speech SDK ist nativ als iOS CocoaPod-Paket verfügbar. Alternativ kann das .NET Speech SDK auch mit den Anwendungsframeworks Xamarin.iOS und Unity verwendet werden.
     :::column-end:::
     :::column:::
         <br>
@@ -58,7 +58,7 @@ end
 
 :::row:::
     :::column span="3":::
-        Xamarin.iOS macht das vollständige iOS SDK für .NET-Entwickler verfügbar. Erstellen Sie vollständig native iOS-Apps mit C# oder F# in Visual Studio. Weitere Informationen finden Sie unter <a href="/xamarin/ios/" target="_blank">Xamarin.iOS </a>.
+        Xamarin.iOS macht das vollständige iOS SDK für .NET-Entwickler verfügbar. Erstellen Sie vollständig native iOS-Anwendungen mit C# in Visual Studio. Weitere Informationen finden Sie unter <a href="/xamarin/ios/" target="_blank">Xamarin.iOS </a>.
     :::column-end:::
     :::column:::
         <br>

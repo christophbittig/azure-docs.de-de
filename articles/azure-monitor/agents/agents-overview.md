@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2021
-ms.openlocfilehash: 7bd926b12a85b62b79f55be3afd3dbbd67af4a25
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 92468fc96148dd22aab33e5cf7c4ff7a42c5ef65
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058424"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308634"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -32,7 +32,7 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 | **Agent-Anforderungen**  | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
 | **Gesammelte Daten** | Ereignisprotokolle<br>Leistung | Ereignisprotokolle<br>ETW-Ereignisse<br>Leistung<br>Dateibasierte Protokolle<br>IIS-Protokolle<br>.NET-App-Protokolle<br>Absturzabbilder<br>Agent-Diagnoseprotokolle | Ereignisprotokolle<br>Leistung<br>Dateibasierte Protokolle<br>IIS-Protokolle<br>Erkenntnisse und Lösungen<br>Sonstige Dienste | Prozessabhängigkeiten<br>Netzwerkverbindungsmetriken |
 | **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken<sup>1</sup> | Azure Storage<br>Azure Monitor-Metriken<br>Event Hub | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
-| **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | Metrik-Explorer | VM Insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM Insights<br>Dienstzuordnung |
+| **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | Metrik-Explorer | VM Insights<br>Log Analytics<br>Azure Automation<br>Microsoft Defender für Cloud<br>Microsoft Sentinel | VM Insights<br>Dienstzuordnung |
 
 ### <a name="linux-agents"></a>Linux-Agents
 
@@ -42,9 +42,9 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 | **Agent-Anforderungen**  | Keine | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
 | **Gesammelte Daten** | syslog<br>Leistung | syslog<br>Leistung | Leistung | syslog<br>Leistung| Prozessabhängigkeiten<br>Netzwerkverbindungsmetriken |
 | **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken<sup>1</sup> | Azure Storage<br>Event Hub | Azure Monitor-Metriken | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
-| **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | | Metrik-Explorer | VM Insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM Insights<br>Dienstzuordnung |
+| **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | | Metrik-Explorer | VM Insights<br>Log Analytics<br>Azure Automation<br>Microsoft Defender für Cloud<br>Microsoft Sentinel | VM Insights<br>Dienstzuordnung |
 
-<sup>1</sup> [Klicken Sie hier,](../essentials/metrics-custom-overview.md#quotas-and-limits) um weitere Einschränkungen bei der Verwendung von Azure Monitor-Metriken zu überprüfen. Unter Linux wird die Verwendung von Azure Monitor-Metriken als einziges Ziel in v.1.10.9.0 oder höher unterstützt. 
+<sup>1</sup> [Klicken Sie hier,](../essentials/metrics-custom-overview.md#quotas-and-limits) um weitere Einschränkungen bei der Verwendung von Azure Monitor Metrics zu überprüfen. Unter Linux wird die Verwendung von Azure Monitor-Metriken als einziges Ziel in v.1.10.9.0 oder höher unterstützt. 
 
 ## <a name="azure-monitor-agent"></a>Azure Monitor-Agent
 
@@ -53,23 +53,25 @@ Der [Azure Monitor-Agent](azure-monitor-agent-overview.md) soll den Log Analytic
 Verwenden Sie den Azure Monitor-Agent zu folgenden Zwecken:
 
 - Sammeln von Gastprotokollen und Metriken von einem beliebigen Computer in Azure, in anderen Clouds oder in lokalen Systemen. (Für Computer außerhalb von Azure sind [Server mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) erforderlich.) 
-- Zentrales Verwalten der Datensammlungskonfiguration mithilfe von [Datensammlungsregeln](./data-collection-rule-overview.md) und Verwenden von Azure Resource Manager-Vorlagen oder -Richtlinien (ARM) für die Gesamtverwaltung.
+- Zentrales Verwalten der Datensammlungskonfiguration mithilfe von [Datensammlungsregeln](./data-collection-rule-overview.md) und Verwenden von Azure Resource Manager-Vorlagen (ARM) oder -Richtlinien für die Gesamtverwaltung.
 - Senden von Daten an Azure Monitor-Protokolle und Azure Monitor- Metriken (Vorschau) zur Analyse mit Azure Monitor. 
-- Nutzen der Windows-Ereignisfilterung oder Multihoming für Protokolle unter Windows und Linux.
+- Nutzen der Windows-Ereignisfilterung oder Multi-Homing für Protokolle unter Windows und Linux.
+
 <!--- Send data to Azure Storage for archiving.
 - Send data to third-party tools using [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md).
-- Manage the security of your machines using [Azure Security Center](../../security-center/security-center-introduction.md)  or [Azure Sentinel](../../sentinel/overview.md). (Available in private preview.)
+- Manage the security of your machines using [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md)  or [Microsoft Sentinel](../../sentinel/overview.md). (Available in private preview.)
 - Use [VM insights](../vm/vminsights-overview.md) which allows you to monitor your machines at scale and monitors their processes and dependencies on other resources and external processes..  
-- Manage the security of your machines using [Azure Security Center](../../security-center/security-center-introduction.md)  or [Azure Sentinel](../../sentinel/overview.md).
+- Manage the security of your machines using [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md)  or [Microsoft Sentinel](../../sentinel/overview.md).
 - Use different [solutions](../monitor-reference.md#insights-and-curated-visualizations) to monitor a particular service or application. */
 -->
+
 Einschränkungen des Azure Monitor-Agents:
-- Log Analytics-Lösungen können nicht in der Produktion verwendet werden (nur in der Vorschau verfügbar, siehe[Unterstützte Dienste und Features](./azure-monitor-agent-overview.md#supported-services-and-features)).
+
+- Azure Monitor-Agent kann nicht in der Produktion verwendet werden (nur in der Vorschau verfügbar, [siehe Unterstützte Dienste und Features](./azure-monitor-agent-overview.md#supported-services-and-features)).
 - Netzwerkszenarien, die private Links enthalten, werden noch nicht unterstützt. 
 - Das Sammeln von benutzerdefinierten Protokollen (Dateien) oder IIS-Protokolldateien wird noch nicht unterstützt. 
 - Event Hubs und Storage-Konten als Ziele werden noch nicht unterstützt.
 - Hybrid Runbook Worker werden nicht unterstützt.
-
 
 ## <a name="log-analytics-agent"></a>Log Analytics-Agent
 
@@ -83,7 +85,7 @@ Verwenden Sie den Log Analytics-Agent für Folgendes:
 * Erfassen von Protokollen und Leistungsdaten von Azure-VMs oder Hybridcomputern, die außerhalb von Azure gehostet werden.
 * Senden von Überwachungsdaten an einen Log Analytics-Arbeitsbereich, um die von [Azure Monitor-Protokollen](../logs/data-platform-logs.md) unterstützten Features wie etwa [Protokollabfragen](../logs/log-query-overview.md) zu nutzen
 * Verwenden von [VM Insights](../vm/vminsights-overview.md) zur Überwachung Ihrer Computer im großen Stil sowie zur Überwachung der zugehörigen Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen.  
-* Verwalten der Sicherheit Ihrer Computer mithilfe von [Azure Security Center](../../security-center/security-center-introduction.md) oder [Azure Sentinel](../../sentinel/overview.md).
+* Verwalten Sie die Sicherheitsüberwachung Ihrer Computer mithilfe von [Microsoft Defender für Cloud](../../security-center/security-center-introduction.md) oder [Microsoft Sentinel](../../sentinel/overview.md).
 * Verwenden von [Azure Automation-Updateverwaltung](../../automation/update-management/overview.md), [Azure Automation State Configuration](../../automation/automation-dsc-overview.md) oder [Azure Automation für Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md) zur umfassenden Verwaltung Ihrer Azure- und Nicht-Azure-Computer.
 * Verwenden verschiedener [Lösungen](../monitor-reference.md#insights-and-curated-visualizations) zur Überwachung eines bestimmten Diensts oder einer bestimmten Anwendung
 
@@ -199,7 +201,8 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 
 <sup>1</sup> Erfordert die Installation von Python (2 oder 3) auf dem Computer.
 
-<sup>3</sup> Bekanntes Problem beim Sammeln von Syslog-Ereignissen in Versionen vor 1.9.0
+<sup>3</sup> Bekanntes Problem beim Sammeln von Syslog-Ereignissen in den Versionen vor 1.9.0.
+
 #### <a name="dependency-agent-linux-kernel-support"></a>Unterstützung des Linux-Kernels für den Dependency-Agent
 
 Da der Dependency-Agent auf der Kernelebene arbeitet, ist die Unterstützung auch von der Kernelversion abhängig. In der folgenden Tabelle sind die Haupt- und Nebenversionen des Linux-Betriebssystems sowie die unterstützten Kernelversionen für den Dependency-Agent aufgeführt:

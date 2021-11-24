@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 10/18/2021
 ms.author: denisgun
-ms.openlocfilehash: d24c1b3bdc6da07b844638157a0ecdfc9eb18843
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 43f4a8a1f467637f3a3703704361db525912f750
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225225"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179244"
 ---
 # <a name="azure-virtual-desktop-rdp-shortpath-for-managed-networks"></a>Azure Virtual Desktop – RDP Shortpath für verwaltete Netzwerke
 
@@ -93,7 +93,7 @@ Um eingehenden Netzwerkdatenverkehr für RDP Shortpath zuzulassen, erstellen Si
 2. Wählen Sie im Navigationsbereich **Regeln für eingehenden Datenverkehr** aus.
 3. Wählen Sie **Aktion** und dann **Neue Regel** aus.
 4. Wählen Sie im Assistenten für neue Regeln für eingehenden Datenverkehr auf der Seite **Regeltyp** die Option **Benutzerdefiniert** aus, und wählen Sie dann **Weiter** aus.
-5. Wählen Sie auf der Seite **Programm** die Option **Dieser Programmpfad** aus, geben Sie „%SystemRoot%\s ystem32\svchost.exe“ ein, und klicken Sie dann auf **Weiter**.
+5. Wählen Sie auf der Seite **Programm** die Option **Dieser Programmpfad** aus, geben Sie „%SystemRoot%\system32\svchost.exe“ ein, und wählen Sie dann **Weiter** aus.
 6. Wählen Sie auf der Seite **Protokoll und Ports** „UDP“ als Protokolltyp aus. Wählen Sie unter **Lokaler Port** die Option „Bestimmte Ports“ aus, und geben Sie den konfigurierten UDP-Port ein. Wenn Sie die Standardeinstellungen übernommen haben, lautet die Portnummer 3390.
 7. Auf der Seite **Bereich** können Sie angeben, dass die Regel nur für Netzwerkdatenverkehr zu und von den auf dieser Seite eingegebenen IP-Adressen gelten soll. Nehmen Sie die Konfiguration entsprechend Ihrem Design vor, und wählen Sie dann **Weiter** aus.
 8. Wählen Sie auf der Seite **Aktion** die Option **Verbindung zulassen** aus, und wählen Sie dann **Weiter** aus.

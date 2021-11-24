@@ -11,15 +11,15 @@ ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/01/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 40c68a77a3e432c5ff03da2a99e93255719e8898
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 8be0dc33d580314fd6b5e6472ed1cf41c5be2d4e
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163409"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158432"
 ---
 # <a name="hadr-configuration-best-practices-sql-server-on-azure-vms"></a>Bewährte Methoden der HADR-Konfiguration (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,13 +36,14 @@ In der folgenden Prüfliste finden Sie eine kurze Übersicht über die bewährte
 
 Erwägen Sie für Ihren Windows-Cluster die folgenden bewährten Methoden: 
 
+* Stellen Sie Ihre SQL Server-VMs nach Möglichkeit in mehreren Subnetzen bereit, um die Abhängigkeit von einem Azure Load Balancer oder einem verteilten Netzwerknamen (DNN) zur Weiterleitung des Datenverkehrs an Ihre HADR-Lösung zu vermeiden. 
 * Ändern Sie den Cluster in weniger aggressive Parameter, um unerwartete Ausfälle durch vorübergehende Netzwerkfehler oder Wartung der Azure-Plattform zu vermeiden. Weitere Informationen finden Sie unter [Heartbeat- und Schwellenwerteinstellungen](#heartbeat-and-threshold). Verwenden Sie für Windows Server 2012 und höher die folgenden Werte: 
    - **SameSubnetDelay**: 1 Sekunde
    - **SameSubnetThreshold**: 40 Heartbeats
    - **CrossSubnetDelay**: 1 Sekunde
    - **CrossSubnetThreshold**: 40 Heartbeats
 * Platzieren Sie Ihre VMs in einer Verfügbarkeitsgruppe oder verschiedenen Verfügbarkeitszonen.  Weitere Informationen finden Sie unter [VM-Verfügbarkeitseinstellungen](#vm-availability-settings). 
-* Verwenden Sie eine einzelne NIC pro Clusterknoten und ein einzelnes Subnetz. 
+* Verwenden Sie eine einzelne NIC pro Clusterknoten. 
 * Konfigurieren Sie die [Clusterquorumabstimmung](#quorum-voting) so, dass eine ungerade Anzahl von mindestens drei Stimmen verwendet wird. Weisen Sie keine Stimmen zu DR-Regionen zu. 
 * Überwachen Sie [Ressourcengrenzwerte](#resource-limits) sorgfältig, um unerwartete Neustarts oder Failover aufgrund von Ressourceneinschränkungen zu vermeiden.
    - Stellen Sie sicher, dass Betriebssystem, Treiber und SQL Server den neuesten Builds entsprechen. 
@@ -58,7 +59,7 @@ Erwägen Sie für die SQL Server Verfügbarkeitsgruppe oder Failoverclusterinsta
    `Lease timeout < (2 * SameSubnetThreshold * SameSubnetDelay)`.   
    Beginnen Sie mit 40 Sekunden. Wenn Sie die zuvor empfohlenen gelockerten `SameSubnetThreshold`- und `SameSubnetDelay`-Werte verwenden, darf der Leasetimeoutwert 80 Sekunden nicht überschreiten.   
    - **Maximale Fehler in einem angegebenen Zeitraum**: Legen Sie diesen Wert auf 6 fest. 
-* Wenn Sie den Namen des virtuellen Netzwerks (VNN) verwenden, um eine Verbindung mit Ihrer HADR-Lösung herzustellen, geben Sie `MultiSubnetFailover = true` in der Verbindungszeichenfolge an, auch wenn Ihr Cluster nur ein Subnetz umfasst. 
+* Wenn Sie den virtuellen Netzwerknamen (VNN) und einen Azure Load Balancer verwenden, um sich mit Ihrer HADR-Lösung zu verbinden, geben Sie `MultiSubnetFailover = true` in der Verbindungszeichenfolge an, auch wenn sich Ihr Cluster nur über ein Subnetz erstreckt. 
    - Wenn der Client `MultiSubnetFailover = True` nicht unterstützt, müssen Sie möglicherweise `RegisterAllProvidersIP = 0` und `HostRecordTTL = 300` festlegen, um Clientanmeldeinformationen für kürzere Zeiträume zwischenzuspeichern. Dies kann jedoch zu zusätzlichen Abfragen an den DNS-Server führen. 
 - Beim Herstellen einer Verbindung mit der HADR-Lösung mithilfe des Namens des verteilten Netzwerks (Distributed Network Name, DNN) ist Folgendes zu beachten:
    - Sie müssen einen Clienttreiber verwenden, der `MultiSubnetFailover = True` unterstützt, und dieser Parameter muss in der Verbindungszeichenfolge enthalten sein. 
@@ -115,15 +116,20 @@ Wenn Sie die Einstellungen für die Knotenabstimmung (Stimme) ändern, befolgen 
 
 ## <a name="connectivity"></a>Verbindung
 
+Um eine Verbindung zu Ihrem Verfügbarkeitsgruppen-Listener oder Ihrer Failover-Cluster-Instanz wie vor Ort herzustellen, stellen Sie Ihre SQL Server-VMs in mehreren Subnetzen innerhalb desselben virtuellen Netzwerks bereit. Mit mehreren Subnetzen entfällt die zusätzliche Abhängigkeit von einem Azure Load Balancer oder einem verteilten Netzwerknamen, um Ihren Datenverkehr an Ihren Listener zu leiten.  
 
-Es ist möglich, für Failoverclusterinstanzen und Verfügbarkeitsgruppenlistener entweder einen Namen eines virtuellen Netzwerks (VNN) oder ab SQL Server 2019 einen Namen eines verteilten Netzwerks (Distributed Network Name, DNN) zu konfigurieren. 
+Um Ihre HADR-Lösung zu vereinfachen, sollten Sie Ihre SQL Server-VMs nach Möglichkeit in mehreren Subnetzen einsetzen.  Weitere Informationen finden Sie unter [Multi-Subnetz AG](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) und [Multi-Subnetz FCI](failover-cluster-instance-prepare-vm.md#subnets). 
+
+Wenn sich Ihre SQL Server-VMs in einem einzigen Subnetz befinden, ist es möglich, entweder einen virtuellen Netzwerknamen (VNN) und einen Azure Load Balancer oder einen verteilten Netzwerknamen (DNN) sowohl für Failover-Cluster-Instanzen als auch für Verfügbarkeitsgruppen-Listener zu konfigurieren. 
 
 Der Name eines verteilten Netzwerks ist die empfohlene Konnektivitätsoption, falls verfügbar: 
 - Die End-to-End-Lösung ist stabiler, da Sie die Lastenausgleichsressource nicht mehr pflegen müssen. 
 - Wenn Sie die Lastenausgleichstests weglassen, wird die Failoverdauer minimiert. 
 - Der DNN vereinfacht die Bereitstellung und Verwaltung der Failoverclusterinstanz oder des Verfügbarkeitsgruppenlisteners mit SQL Server auf virtuellen Azure-Computern. 
 
-Wenn Sie DNN oder eine AG oder FCI verwenden, die sich über mehrere Subnetze erstreckt, müssen Sie einen Clienttreiber verwenden, der den MultiSubnetFailover-Parameter unterstützt, und MultiSubnetFailover=True in der Verbindungszeichenfolge angeben. Bei Verfügbarkeitsgruppen sollte die Verbindungszeichenfolge die DNN-Portnummer enthalten (für FCI nicht erforderlich). 
+Beachten Sie die folgenden Einschränkungen: 
+- Der Client-Treiber muss den Parameter `MultiSubnetFailover=True` unterstützen. 
+- Die DNN-Funktion ist ab [SQL Server 2016 SP3](https://support.microsoft.com/topic/kb5003279-sql-server-2016-service-pack-3-release-information-46ab9543-5cf9-464d-bd63-796279591c31), [SQL Server 2017 CU25](https://support.microsoft.com/topic/kb5003830-cumulative-update-25-for-sql-server-2017-357b80dc-43b5-447c-b544-7503eee189e9) und [SQL Server 2019 CU8](https://support.microsoft.com/topic/cumulative-update-8-for-sql-server-2019-ed7f79d9-a3f0-a5c2-0bef-d0b7961d2d72) auf Windows Server 2016 und höher verfügbar.
 
 Weitere Informationen finden Sie in der [Übersicht über Windows Server-Failovercluster](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn). 
 
@@ -134,7 +140,7 @@ Informationen zum Konfigurieren der Konnektivität finden Sie in den folgenden A
 Bei Verwendung des DNN funktionieren die meisten SQL Server-Features transparent mit FCI und Verfügbarkeitsgruppen. Es gibt jedoch bestimmte Features, die ggf. besondere Aufmerksamkeit erfordern. Weitere Informationen finden Sie unter [Featureinteroperabilität mit SQL Server-FCI und DNN](failover-cluster-instance-dnn-interoperability.md) sowie unter [Featureinteroperabilität mit Verfügbarkeitsgruppe und DNN-Listener](availability-group-dnn-interoperability.md). 
 
 >[!TIP]
-> Legen Sie den MultiSubnetFailover-Parameter in der Verbindungszeichenfolge auf true fest, auch für HADR-Lösungen, die sich über ein einzelnes Subnetz erstrecken, um die zukünftige Spanne von Subnetzen zu unterstützen, ohne dass Verbindungszeichenfolgen aktualisiert werden müssen.  
+> Legen Sie den Parameter MultiSubnetFailover = true in der Verbindungszeichenfolge fest, auch für HADR-Lösungen, die ein einzelnes Subnetz umfassen, um die künftige Überbrückung von Subnetzen zu unterstützen, ohne die Verbindungszeichenfolgen aktualisieren zu müssen.  
 
 ## <a name="heartbeat-and-threshold"></a>Takt und Schwellenwert 
 
@@ -285,6 +291,8 @@ Grenzwerte für virtuelle Computer oder Datenträger können zu einem Ressourcen
 
 ## <a name="networking"></a>Netzwerk
 
+Stellen Sie Ihre SQL Server-VMs nach Möglichkeit in mehreren Subnetzen bereit, um die Abhängigkeit von einem Azure Load Balancer oder einem verteilten Netzwerknamen (DNN) zur Weiterleitung des Datenverkehrs an Ihre HADR-Lösung zu vermeiden.
+
 Verwenden Sie eine einzelne NIC pro Server (Clusterknoten). Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten (NICs) in einem Azure-VM-Gastcluster überflüssig macht. Der Clusterüberprüfungsbericht weist Sie darauf hin, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind. Diese Warnung kann für Azure-VM-Gastfailovercluster ignoriert werden. 
 
 Die Bandbreitenlimits für einen bestimmten virtuellen Computer werden von NICs gemeinsam genutzt, und das Hinzufügen einer zusätzlichen NIC verbessert die Verfügbarkeitsgruppenleistung für SQL Server auf virtuellen Azure-Computern nicht. Daher ist es nicht erforderlich, eine zweite NIC hinzuzufügen. 
@@ -300,10 +308,7 @@ Beachten Sie folgendes Szenario, wenn ein Cluster mit zwei Knoten erstellt und o
 5. Wenn KNOTEN2 versucht, eine Verbindung mit KNOTEN1 herzustellen, verlassen für KNOTEN1 bestimmten Pakete niemals KNOTEN2, da die IP-Adresse von KNOTEN1 in sich selbst aufgelöst wird. KNOTEN2 kann keine Verbindung mit KNOTEN1 herstellen, verliert daraufhin das Quorum und fährt den Cluster herunter.
 6. KNOTEN1 kann Pakete an KNOTEN2 senden, aber KNOTEN2 kann nicht antworten. KNOTEN1 verliert das Quorum und fährt den Cluster herunter.
 
-Sie können dieses Szenario vermeiden, indem Sie dem Clusternetzwerknamen eine nicht verwendete statische IP-Adresse zuweisen, um den Clusternetzwerknamen online zu schalten. Beispielsweise können Sie eine verbindungslokale IP-Adresse wie 169.254.1.1 verwenden. Informationen zur Vereinfachung dieses Vorgangs finden Sie unter [How to Configure Windows Failover Cluster in Azure for Availability Groups (Konfigurieren eines Windows-Failoverclusters in Azure für Verfügbarkeitsgruppen)](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx).
-
-Weitere Informationen finden Sie unter [Konfigurieren von Verfügbarkeitsgruppen in Azure (GUI)](./availability-group-quickstart-template-configure.md).
-
+Sie können dieses Szenario vermeiden, indem Sie dem Clusternetzwerknamen eine unbenutzte statische IP-Adresse zuweisen, um den Clusternetzwerknamen online zu bringen und die IP-Adresse zu [Azure Load Balancer](availability-group-load-balancer-portal-configure.md) hinzuzufügen.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 

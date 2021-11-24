@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79e0dc10aa9cb5fb67812cca31d2cd892afcccbe
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 6dc3ec13715fe0c58ffbf23cf377f0ea5d29d6de
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208093"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292393"
 ---
 # <a name="secure-user-based-service-accounts-in-active-directory"></a>Schützen benutzerbasierter Dienstkonten in Active Directory
 
@@ -81,7 +81,7 @@ Get-ADUser -Filter * -Properties PasswordNeverExpires | where {$_.PasswordNeverE
 
 ```
 
-Sie können außerdem den Zugriff auf vertrauliche Ressourcen überwachen und Überwachungsprotokolle in einem SIEM-System (Security Information & Event Management) archivieren. Mit Systemen wie Azure Log Analytics oder Azure Sentinel können Sie nach Dienstkonten suchen und sie analysieren.
+Sie können außerdem den Zugriff auf vertrauliche Ressourcen überwachen und Überwachungsprotokolle in einem SIEM-System (Security Information & Event Management) archivieren. Mit Systemen wie Azure Log Analytics oder Microsoft Sentinel können Sie nach Dienstkonten suchen und sie analysieren.
 
 ## <a name="assess-the-security-of-on-premises-user-accounts"></a>Bewerten der Sicherheit lokaler Benutzerkonten
 
@@ -99,7 +99,7 @@ In der folgenden Tabelle sind potenzielle Sicherheitsprobleme und entsprechende 
 | - | - |
 | Kennwortverwaltung| <li>Stellen Sie sicher, dass Kennwortkomplexität und Kennwortänderungen durch einen robusten Prozess gesteuert werden, der regelmäßige Aktualisierungen und Anforderungen für sichere Kennwörter beinhaltet.<li>Koordinieren Sie die Kennwortänderung mit einer Kennwortaktualisierung, um Dienstausfallzeiten zu minimieren. |
 | Das Konto gehört privilegierten Gruppen an.| <li>Überprüfen Sie die Gruppenmitgliedschaften.<li>Entfernen Sie das Konto aus privilegierten Gruppen.<li>Weisen Sie dem Konto nur die Rechte und Berechtigungen zu, die zum Ausführen des zugehörigen Diensts erforderlich sind (wenden Sie sich an den Dienstanbieter). Beispielsweise können Sie unter Umständen die lokale oder die interaktive Anmeldung verweigern. |
-| Das Konto verfügt über Lese-/Schreibberechtigungen für vertrauliche Ressourcen.| <li>Überwachen Sie den Zugriff auf vertrauliche Ressourcen.<li>Archivieren Sie Überwachungsprotokolle zur Analyse in einem SIEM-System (Azure Log Analytics oder Azure Sentinel).<li>Korrigieren Sie Ressourcenberechtigungen, wenn eine unerwünschte Zugriffsebene erkannt wird. |
+| Das Konto verfügt über Lese-/Schreibberechtigungen für vertrauliche Ressourcen.| <li>Überwachen Sie den Zugriff auf vertrauliche Ressourcen.<li>Archivieren Sie zur Analyse Überwachungsprotokolle in einem SIEM-System (Azure Log Analytics oder Microsoft Sentinel).<li>Korrigieren Sie Ressourcenberechtigungen, wenn eine unerwünschte Zugriffsebene erkannt wird. |
 | | |
 
 

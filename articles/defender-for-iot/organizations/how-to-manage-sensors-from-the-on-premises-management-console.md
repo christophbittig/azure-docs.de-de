@@ -1,14 +1,14 @@
 ---
 title: Verwalten von Sensoren über die lokale Verwaltungskonsole
 description: Erfahren Sie, wie Sie Sensoren über die Verwaltungskonsole verwalten können. Dazu gehören das Aktualisieren von Sensorversionen, das Übertragen von Systemeinstellungen per Push an Sensoren, das Verwalten von Zertifikaten sowie das Aktivieren und Deaktivieren von Engines für Sensoren.
-ms.date: 07/08/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: dbdee98fc1f7e6bc294bd54d72e64fa8f053eb8e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 1015810f8999671665cf48d74058e9ad3fc47558
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431186"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278833"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Verwalten von Sensoren über die Verwaltungskonsole
 
@@ -76,7 +76,7 @@ Wenn Sie ein Upgrade für eine lokale Verwaltungskonsole und verwaltete Sensoren
 
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/).
 
-1. Willkommen bei Azure Defender für IoT
+1. Navigieren Sie zu Microsoft Defender für IoT.
 
 1. Navigieren Sie zur Seite **Updates**.
 
@@ -129,7 +129,7 @@ Wenn Sie den Sensor nicht aktualisieren können, wenden Sie sich an den Kundensu
 
 Das Datenpaket für Threat Intelligence wird mit jeder neuen Defender für IoT-Version oder bei Bedarf zwischen den Releases bereitgestellt. Das Paket enthält Signaturen (einschließlich Schadsoftwaresignaturen), CVEs und andere Sicherheitsinhalte. 
 
-Sie können diese Datei manuell von der Seite **Updates** im Defender für IoT-Portal hochladen und automatisch auf Sensoren aktualisieren. 
+Sie können diese Datei manuell in das Azure-Portal hochladen und sie automatisch auf Sensoren aktualisieren. 
 
 **Zum Aktualisieren von Threat Intelligence-Daten gehen Sie folgendermaßen vor:**
 

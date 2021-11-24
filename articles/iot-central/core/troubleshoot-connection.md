@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: faeaf58537da4a40716f0c2e76b205980b727bf9
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a929e5d4bccc3a6b2d27125de6aad4472364d67e
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459104"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179148"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Behandeln von Problemen, warum Daten von Ihren Geräten nicht in Azure IoT Central angezeigt werden
 
@@ -158,6 +158,18 @@ Wenn Sie Probleme in Bezug auf Ihren Authentifizierungsfluss feststellen:
 | 412 | Gemäß RFC7232 entspricht das `ETag` in der Anforderung nicht dem `ETag` der vorhandenen Ressource. | [Beantragen Sie ein Ticket beim Kundensupport](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
 | 429 | Vorgänge werden vom Dienst gedrosselt. Informationen zu bestimmten Dienstgrenzwerten finden Sie unter [Grenzwerte für den IoT Hub Device Provisioning-Dienst](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | Verringern Sie die Nachrichtenhäufigkeit, teilen Sie die Verantwortlichkeiten auf mehrere Geräte auf. |
 | 500 | Interner Fehler. | [Beantragen Sie ein Ticket beim Kundensupport](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), um zu sehen, ob dieser Ihnen weiterhelfen kann. |
+
+### <a name="detailed-authorization-error-codes"></a>Detaillierte Autorisierungsfehlercodes
+
+| Fehler | Sub-Fehlercode | Hinweise |
+| - | - | - |
+| 401 – Nicht autorisiert | 401002 | Das Gerät verwendet ungültige oder abgelaufene Anmeldedaten. Dieser Fehler wird von DPS gemeldet. |
+| 401 – Nicht autorisiert | 400209 | Das Gerät wartet entweder auf die Genehmigung durch einen Betreiber oder wurde von einem Betreiber gesperrt. |
+| 401 IoTHubUnauthorized |  | Das Gerät verwendet ein abgelaufenes Sicherheitstoken. Dieser Fehler wird von IoT Hub gemeldet. |
+| 401 IoTHubUnauthorized | GERÄT_AUSGESCHALTET | Das Gerät ist in diesem IoT-Hub deaktiviert und wurde zu einem anderen IoT-Hub verschoben. Das Gerät neu provisionieren. |
+| 401 IoTHubUnauthorized | GERÄT_GESPERRT | Ein Betreiber hat dieses Gerät gesperrt. |
+
+
 
 ### <a name="file-upload-error-codes"></a>Fehlercodes bei Dateiupload
 

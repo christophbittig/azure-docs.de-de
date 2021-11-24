@@ -2,18 +2,17 @@
 title: Speicheraspekte für Azure Functions
 description: Erfahren Sie über die Speicheranforderungen von Azure Functions und über das Verschlüsseln gespeicherter Daten.
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: 6dc2bad744118e57b9e958658814f5c194f633ad
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/09/2021
+ms.openlocfilehash: 0e53d2919d8af3f0e8162d4aca9f55f2ec0ab740
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216616"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335877"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Speicheraspekte für Azure Functions
 
 Azure Functions erfordert ein Azure Storage-Konto, wenn Sie eine Funktions-App-Instanz erstellen. Die folgenden Speicherdienste können von ihrer Funktions-App verwendet werden:
-
 
 |Speicherdienst  | Verwendung in Functions  |
 |---------|---------|
@@ -52,6 +51,10 @@ Die Verbindungszeichenfolgen für das Speicherkonto muss aktualisiert werden, we
 ### <a name="shared-storage-accounts"></a>Freigegebene Speicherkonten
 
 Es ist möglich, dass mehrere Funktions-Apps dasselbe Speicherkonto ohne Probleme gemeinsam nutzen. Beispielsweise können Sie in Visual Studio mit dem Azure Storage-Emulator mehrere Apps entwickeln. In diesem Fall verhält sich der Emulator wie ein einzelnes Speicherkonto. Dasselbe Speicherkonto, das von Ihrer Funktions-App verwendet wird, kann auch von zum Speichern Ihrer Anwendungsdaten verwendet werden. Dieser Ansatz ist jedoch in einer Produktionsumgebung nicht immer eine gute Idee.
+
+### <a name="lifecycle-management-policy-considerations"></a>Überlegungen zu Richtlinien für die Lebenszyklusverwaltung
+
+Azure Functions verwendet Blob Storage, um wichtige Informationen wie [Funktionszugriffsschlüssel](functions-bindings-http-webhook-trigger.md#authorization-keys) dauerhaft zu speichern. Wenn Sie eine Richtlinie zur [Lebenszyklusverwaltung](../storage/blobs/lifecycle-management-overview.md) auf Ihr Blob Storage-Konto anwenden, kann die Richtlinie Blobs entfernen, die vom Azure Functions-Host benötigt werden. Aus diesem Grund sollten Sie solche Richtlinien nicht auf das Speicherkonto anwenden, das von Functions verwendet wird. Wenn Sie eine solche Richtlinie anwenden müssen, denken Sie daran, die von Functions verwendeten Container auszuschließen, die in der Regel das Präfix `azure-webjobs` oder `scm` haben.
 
 ### <a name="optimize-storage-performance"></a>Optimieren der Speicherleistung
 

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/07/2021
+ms.date: 11/09/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f2978f2ee0eca3aef438d05f1e8aebbee3eeb1
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 62012b910ad1e08291760a2aea0747bf5d4c024d
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667685"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157585"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Zuweisen der Berechtigung für eine Gruppe mit privilegiertem Zugriff (Vorschau) in Privileged Identity Management
 
@@ -34,7 +34,8 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kann Sie
 
 Führen Sie die folgenden Schritte aus, um einen Benutzer als berechtigt für die Mitgliedschaft oder den Besitz einer Gruppe mit privilegiertem Zugriff einzurichten.
 
-1. [Melden Sie sich bei Azure AD](https://aad.portal.azure.com) mit den Berechtigungen eines globalen Administrators oder Gruppenbesitzers an.
+1. Melden Sie sich im [Azure AD-Administrationszentrum](https://aad.portal.azure.com/) mit einem Benutzer in der Rolle [Global Administrator](../roles/permissions-reference.md#global-administrator), der Rolle Privileged Role Administrator oder der Rolle Gruppenbesitzer an.
+
 1. Wählen Sie **Gruppen** und dann die Gruppe mit Rollenzuweisung aus, die Sie verwalten möchten. Sie können die Liste durchsuchen und filtern.
 
     ![Suchen einer Gruppe mit Rollenzuweisung für die Verwaltung in PIM](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)

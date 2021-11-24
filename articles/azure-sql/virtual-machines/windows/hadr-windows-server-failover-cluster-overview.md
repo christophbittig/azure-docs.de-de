@@ -11,15 +11,15 @@ ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/01/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: dc007e4aeb68d3cecd156a650bd3c04de1fd26e0
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 66899b7b4c5a9cb77b7545d671ac27433f927d5a
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162193"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156879"
 ---
 # <a name="windows-server-failover-cluster-with-sql-server-on-azure-vms"></a>Windows Server-Failovercluster mit SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -80,9 +80,11 @@ Informationen zu den ersten Schritte finden Sie unter [Konfigurieren des Cluster
 
 ## <a name="virtual-network-name-vnn"></a>Name des virtuellen Netzwerks (Virtual Network Name, VNN)
 
+Um die Verbindung zu Ihrem Verfügbarkeitsgruppen-Listener oder Ihrer Failover-Cluster-Instanz wie vor Ort zu gestalten, stellen Sie Ihre SQL Server-VMs in mehreren Subnetzen innerhalb desselben virtuellen Netzwerks bereit. Mit mehreren Subnetzen entfällt die zusätzliche Abhängigkeit von einem Azure Load Balancer, der den Datenverkehr zu Ihrer HADR-Lösung leitet.  Weitere Informationen finden Sie unter [Multi-Subnetz AG](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md), und [Multi-Subnetz FCI](failover-cluster-instance-prepare-vm.md#subnets). 
+
 In einer herkömmlichen lokalen Umgebung verwenden Clusterressourcen wie Failoverclusterinstanzen oder Always On-Verfügbarkeitsgruppen den Namen des virtuellen Netzwerks, um Datenverkehr an das entsprechende Ziel weiterzuleiten – entweder an die Failoverclusterinstanz oder den Listener der Always On-Verfügbarkeitsgruppe. Der Name des virtuellen Netzwerks bindet die IP-Adresse in DNS, und Clients können entweder den virtuellen Namen oder die IP-Adresse verwenden, um eine Verbindung mit ihrem Hochverfügbarkeitsziel herzustellen, und zwar unabhängig davon, welcher Knoten die Ressource derzeit besitzt. Der Name des virtuellen Netzwerks ist ein Netzwerkname und eine Adresse, die vom Cluster verwaltet werden. Der Clusterdienst verschiebt die Netzwerkadresse während eines Failoverereignisses von Knoten zu Knoten. Bei einem Ausfall wird die Adresse auf dem ursprünglichen primären Replikat offline geschaltet und auf dem neuen primären Replikat online geschaltet.
 
-In Azure Virtual Machines ist eine zusätzliche Komponente erforderlich, um Datenverkehr vom Client an den Namen des virtuellen Netzwerks der Clusterressource (Failoverclusterinstanz oder Listener einer Verfügbarkeitsgruppe) weiterzuleiten. In Azure enthält ein Lastenausgleich die IP-Adresse für den Namen des virtuellen Netzwerks, den die gruppierten SQL Server-Ressourcen verwenden. Sie ist erforderlich, um Datenverkehr an das entsprechende Hochverfügbarkeitsziel weiterzuleiten. Der Lastenausgleich erkennt auch Fehler bei den Netzwerkkomponenten und verschiebt die Adresse auf einen neuen Host. 
+Bei virtuellen Azure-Maschinen in einem einzelnen Subnetz ist eine zusätzliche Komponente erforderlich, um den Datenverkehr vom Client zum virtuellen Netzwerknamen der geclusterten Ressource (Failover-Cluster-Instanz oder Listener einer Verfügbarkeitsgruppe) zu leiten. In Azure enthält ein Lastenausgleich die IP-Adresse für den Namen des virtuellen Netzwerks, den die gruppierten SQL Server-Ressourcen verwenden. Sie ist erforderlich, um Datenverkehr an das entsprechende Hochverfügbarkeitsziel weiterzuleiten. Der Lastenausgleich erkennt auch Fehler bei den Netzwerkkomponenten und verschiebt die Adresse auf einen neuen Host. 
 
 Der Lastenausgleich verteilt eingehende Flows, die am Front-End eintreffen, und leitet diesen Datenverkehr dann an die durch den Back-End-Pool definierten Instanzen weiter. Sie konfigurieren den Datenverkehrsfluss mithilfe von Lastenausgleichsregeln und Integritätstests. Mit einer SQL Server-Failoverclusterinstanz sind die Back-End-Poolinstanzen die virtuellen Azure-Computer, auf denen SQL Server ausgeführt wird, und bei Verfügbarkeitsgruppen ist der Back-End-Pool der Listener. Bei Verwendung des Lastenausgleichs kommt es zu einer geringfügigen Failoververzögerung, da der Integritätstest standardmäßig alle 10 Sekunden Aktivitätsprüfungen durchführt. 
 
@@ -92,11 +94,13 @@ Informieren Sie sich zunächst darüber, wie Sie Azure Load Balancer für eine [
 **Unterstützte SQL-Version**: All   
 **Unterstützte HADR-Lösung**: Failoverclusterinstanz und Verfügbarkeitsgruppe   
 
-Die Konfiguration des Namen des virtuellen Netzwerks kann umständlich sein, ist eine zusätzliche Fehlerquelle und kann zu einer Verzögerung bei der Fehlererkennung führen. Zudem sind mit der Verwaltung der zusätzlichen Ressource Mehraufwand und Kosten verbunden. Um einige dieser Einschränkungen zu beheben, wurde in SQL Server 2019 Unterstützung für das Feature „Name des verteilten Netzwerks“ eingeführt. 
+Die Konfiguration des Namen des virtuellen Netzwerks kann umständlich sein, ist eine zusätzliche Fehlerquelle und kann zu einer Verzögerung bei der Fehlererkennung führen. Zudem sind mit der Verwaltung der zusätzlichen Ressource Mehraufwand und Kosten verbunden. Um einige dieser Einschränkungen zu beseitigen, hat SQL Server die Unterstützung für die Funktion "Verteilter Netzwerkname" eingeführt. 
 
 ## <a name="distributed-network-name-dnn"></a>Name des verteilten Netzwerks (Distributed Network Name, DNN)
 
-Ab SQL Server 2019 bietet das Feature „Name des verteilten Netzwerks“ eine Alternative, die es SQL Server-Clients ermöglicht, eine Verbindung mit der SQL Server-Failoverclusterinstanz oder dem Listener der Verfügbarkeitsgruppe herzustellen, ohne einen Lastenausgleich zu verwenden. 
+Um die Verbindung zu Ihrem Verfügbarkeitsgruppen-Listener oder Ihrer Failover-Cluster-Instanz wie vor Ort zu gestalten, stellen Sie Ihre SQL Server-VMs in mehreren Subnetzen innerhalb desselben virtuellen Netzwerks bereit. Mit mehreren Subnetzen entfällt die zusätzliche Abhängigkeit von einem DNN, das den Datenverkehr zu Ihrer HADR-Lösung leitet. Weitere Informationen finden Sie unter [Multi-Subnetz AG](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md), und [Multi-Subnetz FCI](failover-cluster-instance-prepare-vm.md#subnets). 
+
+Für SQL Server-VMs, die in einem einzelnen Subnetz bereitgestellt werden, bietet die Funktion für verteilte Netzwerknamen eine alternative Möglichkeit für SQL Server-Clients, sich mit der SQL Server-Failover-Clusterinstanz oder dem Verfügbarkeitsgruppen-Listener zu verbinden, ohne einen Load Balancer zu verwenden. Die DNN-Funktion ist ab [SQL Server 2016 SP3](https://support.microsoft.com/topic/kb5003279-sql-server-2016-service-pack-3-release-information-46ab9543-5cf9-464d-bd63-796279591c31), [SQL Server 2017 CU25](https://support.microsoft.com/topic/kb5003830-cumulative-update-25-for-sql-server-2017-357b80dc-43b5-447c-b544-7503eee189e9), [SQL Server 2019 CU8](https://support.microsoft.com/topic/cumulative-update-8-for-sql-server-2019-ed7f79d9-a3f0-a5c2-0bef-d0b7961d2d72), auf Windows Server 2016 und höher verfügbar.
 
 Wenn eine DNN-Ressource erstellt wird, bindet der Cluster den DNS-Namen an die IP-Adressen aller Knoten im Cluster. Der Client versucht, eine Verbindung mit den einzelnen IP-Adressen in dieser Liste herzustellen, um zu ermitteln, mit welcher Ressource eine Verbindung hergestellt werden soll. Sie können diesen Prozess beschleunigen, indem Sie `MultiSubnetFailover=True` in der Verbindungszeichenfolge angeben. Diese Einstellung weist den Anbieter an, alle IP-Adressen parallel zu testen, sodass der Client sofort eine Verbindung mit der FCI oder dem Listener herstellen kann. 
 

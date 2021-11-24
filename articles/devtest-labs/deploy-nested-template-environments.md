@@ -3,23 +3,27 @@ title: Bereitstellen geschachtelter Vorlagenumgebungen
 description: Erfahren Sie, wie Sie geschachtelte Azure Resource Manager-Vorlagen bereitstellen, um Umgebungen mit Azure DevTest Labs bereitzustellen.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 170c9adac15de9e8429ce994021e94fd80b347aa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 03738697f35df16fb2915fd7ece21a77b205eca1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662982"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278320"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Bereitstellen geschachtelter Azure Resource Manager-Vorlagen für Testumgebungen
-Mithilfe einer geschachtelten Bereitstellung können Sie andere Azure Resource Manager-Vorlagen der wichtigsten Resource Manager-Vorlage ausführen. Sie können die Bereitstellung in mehrere gezielte und zweckgebundene Vorlagen zerlegen. Dies bietet Vorteile für das Testen, die Wiederverwendung und die Lesbarkeit. Der Artikel [Verwenden verknüpfter Vorlagen bei der Bereitstellung von Azure-Ressourcen](../azure-resource-manager/templates/linked-templates.md) bietet einen guten Überblick über diese Projektmappe mit mehreren Beispielcodes. Dieser Artikel enthält ein Beispiel, das für Azure DevTest Labs gilt. 
+Mithilfe einer geschachtelten Bereitstellung können Sie andere Azure Resource Manager-Vorlagen der wichtigsten Resource Manager-Vorlage ausführen. Sie können Ihre Bereitstellung in eine Reihe von zielgerichteten und zweckspezifischen Vorlagen aufteilen. Eine verschachtelte Bereitstellung bietet Vorteile beim Testen, der Wiederverwendung und der Lesbarkeit. Der Artikel [Verwenden verknüpfter Vorlagen bei der Bereitstellung von Azure-Ressourcen](../azure-resource-manager/templates/linked-templates.md) bietet einen guten Überblick über diese Projektmappe mit mehreren Beispielcodes. Dieser Artikel enthält ein Beispiel, das für Azure DevTest Labs gilt. 
 
 ## <a name="key-parameters"></a>Schlüsselparameter
-Zwar können Sie Ihre eigene Resource Manager-Vorlage von Grund auf neu erstellen, allerdings empfehlen wir Ihnen, das [Azure-Ressourcengruppenprojekt](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) in Visual Studio zu verwenden, das das Entwickeln und Debuggen von Vorlagen vereinfacht. Wenn Sie „azuredeploy.json“ eine geschachtelte Bereitstellungsressource hinzufügen, fügt Visual Studio einige Elemente hinzu, um die Vorlage flexibler zu gestalten. Diese Elemente enthalten den Unterordner mit der zweiten Vorlagen- und Parameterdatei, dem Variablennamen in der Hauptvorlagendatei und zwei Parametern für den Speicherort der neuen Datei. **_artifactsLocation** und **_artifactsLocationSasToken** sind die von DevTest Labs verwendeten Schlüsselparameter. 
+Sie können zwar Ihre eigene Ressourcenmanager-Vorlage von Grund auf neu erstellen, aber wir empfehlen Ihnen, das [Azure-Ressourcengruppen-Projekt](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) in Visual Studio zu verwenden. Dieses Projekt erleichtert die Entwicklung und das Debugging von Vorlagen. Wenn Sie „azuredeploy.json“ eine geschachtelte Bereitstellungsressource hinzufügen, fügt Visual Studio einige Elemente hinzu, um die Vorlage flexibler zu gestalten. Dazu gehören:
 
-Wenn Sie nicht mit der Funktionsweise von DevTest Labs mit Umgebungen vertraut sind, finden Sie weitere Informationen unter [Create multi-VM environments and PaaS resources with Azure Resource Manager templates (Erstellen mehrerer VM-Umgebungen und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen)](devtest-lab-create-environment-from-arm.md). Die Vorlagen werden in dem mit dem Lab in DevTest Labs verknüpften Repository gespeichert. Wenn Sie mit diesen Vorlagen eine neue Umgebung erstellen, werden die Dateien in einen Azure Storage-Container im Lab verschoben. DevTest Labs identifiziert die Parameter „_artifactsLocation“ und „_artifactsLocationSasToken“ und kopiert die Unterordner in den Speichercontainer, um die geschachtelten Dateien zu identifizieren und zu kopieren. Anschließend wird das Speicherort- und Shared Access Signature-Token (SaS) automatisch in die Parameter eingefügt. 
+- Der Unterordner mit der sekundären Vorlage und der Parameterdatei
+- Variablennamen innerhalb der Hauptvorlagendatei
+- Zwei Parameter für den Speicherort für die neuen Dateien. **_artifactsLocation** und **_artifactsLocationSasToken** sind die von DevTest Labs verwendeten Schlüsselparameter. 
+
+Wenn Sie nicht wissen, wie DevTest Labs mit Umgebungen arbeitet, lesen Sie bitte [Erstellen von Multi-VM-Umgebungen und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md). Die Vorlagen werden in dem mit dem Lab in DevTest Labs verknüpften Repository gespeichert. Wenn Sie eine neue Umgebung mit diesen Vorlagen erstellen, werden die Dateien in einen Azure Storage-Container im Labor verschoben. Um die verschachtelten Dateien zu finden und zu kopieren, identifiziert DevTest Labs die Parameter _artifactsLocation und _artifactsLocationSasToken und kopiert die Unterordner in den Storage Container. Anschließend fügt DevTest Labs automatisch den Speicherort und das Shared Access Signature (SaS)-Token in die Parameter ein. 
 
 ## <a name="nested-deployment-example"></a>Beispiel für die geschachtelte Bereitstellung
-Hier finden Sie ein einfaches Beispiel für eine geschachtelte Bereitstellung:
+Hier ist ein einfaches Beispiel für eine verschachtelte Bereitstellung:
 
 ```json
 
@@ -59,11 +63,11 @@ Hier finden Sie ein einfaches Beispiel für eine geschachtelte Bereitstellung:
 
 Der Ordner im Repository, der diese Vorlage enthält, hat einen Unterordner (`nestedtemplates`) mit den Dateien **NestOne.json** und **NestOne.parameters.json**. In der **azuredeploy.json**-Vorlage wird der URI für die Vorlage mithilfe des Artefaktspeicherorts, dem geschachtelten Vorlagenordner und der geschachtelten Dateinamenvorlage erstellt. Auf ähnliche Weise wird der URI für diese Parameter mithilfe des Artefaktspeicherorts, dem geschachtelten Vorlagenordner und der Parameterdatei für die geschachtelte Vorlage erstellt. 
 
-So sieht die gleiche Projektstruktur in Visual Studio aus: 
+Hier ist das Bild der gleichen Projektstruktur in Visual Studio: 
 
-![Projektstruktur in Visual Studio](./media/deploy-nested-template-environments/visual-studio-project-structure.png)
+![Screenshot der Projektstruktur in Visual Studio.](./media/deploy-nested-template-environments/visual-studio-project-structure.png)
 
-Sie können im ersten Ordner zwar zusätzliche Ordner hinzufügen, allerdings nur eine einzelne Ebene. 
+Sie können weitere Ordner in den Hauptordner einfügen, aber nicht tiefer als eine Ebene. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Die folgenden Artikel enthalten ausführliche Informationen zu Umgebungen: 

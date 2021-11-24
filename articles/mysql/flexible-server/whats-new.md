@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: bf12371e786d5d657c5802bf64cdae9bc44f6b4a
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: 8333f0086a7d2778fcda1efec64ebca6de94a002
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131989696"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398001"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-"></a>Neuerungen in Azure Database for MySQL Flexible Server
 
@@ -38,6 +38,14 @@ In diesem Artikel werden neue Releases und Features in Azure Database for MySQL 
 - **Blatt mit häufig gestellten Fragen im Azure-Portal**
 
   Das Blatt „Sicherung und Wiederherstellung“ enthält auch den Abschnitt zum Auflisten der am häufigsten gestellten Fragen mit entsprechenden Antworten. Dadurch erhalten Sie Antworten auf die meisten Fragen zur Sicherung direkt im Azure-Portal. Darüber hinaus können Sie durch Auswählen des Fragezeichensymbols für die häufig gestellten Fragen im oberen Menü auf weitere verwandte Details zugreifen.
+
+- **Wiederherstellen einer gelöschten Instanz von Flexibler Server**
+    
+  Der Dienst ermöglicht Ihnen nun, eine gelöschte flexible MySQL-Serverressource innerhalb von 5 Tagen ab dem Zeitpunkt der Löschung des Servers wiederherzustellen. Eine detaillierte Anleitung zur Wiederherstellung eines gelöschten Servers [finden Sie in den dokumentierten Schritten](../flexible-server/how-to-restore-dropped-server.md). Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, werden Administratoren [Verwaltungssperren](../../azure-resource-manager/management/lock-resources.md) empfohlen.
+
+- **Bekannte Probleme**
+
+Auf Servern mit aktivierter Hochverfügbarkeit und georedundanter Sicherungsoption wurde ein seltenes Problem aufgrund einer Racebedingung festgestellt, die den Neustart des Standbyservers so blockiert, dass er nicht abgeschlossen werden kann. Als Folge dieses Problems kann es passieren, dass beim Failover der für Hochverfügbarkeit aktivierten Azure Database for MySQL-Instanz die flexible MySQL-Serverinstanz lange Zeit im Zustand „Wird neu gestartet“ hängen bleibt. Die Korrektur wird im nächsten Bereitstellungszyklus in der Produktion bereitgestellt.
 
 ## <a name="october-2021"></a>Oktober 2021
 

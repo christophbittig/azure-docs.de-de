@@ -5,12 +5,12 @@ ms.topic: how-to
 ms.author: itnorman
 ms.date: 10/19/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3ece5f979cb158f985b2a5f1af5afd8192b5b25f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 14ab4e2b3c95823359dc1f1f88b8368ce58afef9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096143"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312593"
 ---
 # <a name="connect-an-existing-classic-paid-video-analyzer-for-media-account-to-arm-based-account"></a>Verbinden eines vorhandenen klassischen kostenpflichtigen Video Analyzer für ein Medienkonto mit einem ARM-basierten Konto  
 
@@ -54,7 +54,7 @@ Im Verbindungsprozess ist die Kontoverwaltung mit ARM verbunden, wodurch 30 Tage
 
  ![Herstellen einer Verbindung zu ARM](media/connect-classic-account-to-arm/connect-blade-new.png)
 
- | Name | BESCHREIBUNG |
+ | Name | Beschreibung |
  | ---|---|
  |**Abonnement**| Das Abonnement enthält derzeit das klassische Konto und andere zugehörige Ressourcen, z. B. die Medienservices.|
  |**Ressourcengruppe**|Wählen Sie eine vorhandene Ressource aus, oder erstellen Sie eine neue. Die Ressourcengruppe muss sich am gleichen Standort befinden wie das klassische Konto, mit dem verbunden wird|

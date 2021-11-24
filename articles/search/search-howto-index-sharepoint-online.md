@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 840520f83a3c90a6c63c366e0e56a98d5ab71551
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: f0e5afcc4f0869c4fe12a634e34e7b0669da5c75
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131892948"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137790"
 ---
 # <a name="index-data-from-sharepoint-online"></a>Indizieren von Daten über SharePoint Online
 
@@ -153,6 +153,9 @@ api-key: [admin key]
 
 ```
 
+> [!IMPORTANT]
+> Nur [`metadata_spo_site_library_item_id`](#metadata) kann als Schlüsselfeld in einem vom SharePoint Online-Indexer erstellten Index verwendet werden. Wenn ein Schlüsselfeld in der Datenquelle nicht vorhanden ist, wird `metadata_spo_site_library_item_id` automatisch dem Schlüsselfeld zugeordnet.
+
 Weitere Informationen finden Sie unter [Erstellen eines Index (REST-API)](/rest/api/searchservice/create-index).
 
 ### <a name="step-5-create-an-indexer"></a>Schritt 5: Erstellen eines Indexers
@@ -262,6 +265,8 @@ Nachdem die Datenquelle aktualisiert wurde, führen Sie die folgenden Schritte a
 1.  Anmeldename
 
 1.  Starten Sie erneut manuell eine Ausführung des Indexers, und überprüfen Sie den Indexerstatus. Dieses Mal sollte die Indexerausführung erfolgreich gestartet werden.
+
+<a name="metadata"></a>
 
 ## <a name="indexing-document-metadata"></a>Indizieren von Dokumentmetadaten
 Wenn Sie den Indexer zum Indizieren von Dokumentmetadaten konfiguriert haben, können Sie die folgenden Metadaten indizieren.

@@ -3,13 +3,13 @@ title: Verwalten einer Azure-Supportanfrage
 description: Erfahren Sie mehr über das Anzeigen von Supportanfragen und das Senden von Nachrichten, das Hochladen von Dateien und das Verwalten von Optionen.
 tags: billing
 ms.topic: how-to
-ms.date: 11/02/2021
-ms.openlocfilehash: 361ab4b643dac6fb54fae8d236dfac38ee024701
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.date: 11/10/2021
+ms.openlocfilehash: c74a6245da9023889be151415bce72ba0129881c
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508342"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179928"
 ---
 # <a name="manage-an-azure-support-request"></a>Verwalten einer Azure-Supportanfrage
 
@@ -54,7 +54,7 @@ Auf dieser Seite können Sie Supportanfragen durchsuchen, filtern und sortieren.
 
 ## <a name="allow-collection-of-advanced-diagnostic-information"></a>Sammeln erweiterter Diagnoseinformationen zulassen ​
 
-Wenn Sie eine Supportanfrage erstellen, können Sie im Abschnitt **Erweiterte Diagnoseinformationen** entweder **Ja** oder **Nein** auswählen. Diese Option bestimmt, ob der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) zu Ihrer Azure-Ressourcen, zum Beispiel [Protokolldateien](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs), erfassen kann, die möglicherweise zur Behebung Ihres Problems beitragen.
+Wenn Sie eine Supportanfrage erstellen, können Sie im Abschnitt **Erweiterte Diagnoseinformationen** entweder **Ja** oder **Nein** auswählen. Diese Option bestimmt, ob der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) zu Ihrer Azure-Ressourcen, zum Beispiel [Protokolldateien](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs), erfassen kann, die möglicherweise zur Behebung Ihres Problems beitragen. Der Azure-Support kann nur dann auf erweiterte Diagnoseinformationen zugreifen, wenn Ihr Fall über das Azure-Portal erstellt wurde und Sie die Erlaubnis dazu erteilt haben.
 
 So ändern Sie Ihre Auswahl bei **Erweiterte Diagnoseinformationen**, nachdem die Anforderung erstellt wurde:
 

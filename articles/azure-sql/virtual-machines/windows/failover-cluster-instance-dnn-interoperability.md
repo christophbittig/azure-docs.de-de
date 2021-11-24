@@ -11,18 +11,21 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: b868de74376199fdc173c41e8711575b44e67200
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: adacd4e8264b7fcd4c0389f8d575247a17a664aa
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164805"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158977"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>Featureinteroperabilität mit SQL Server-FCI und DNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> Eliminieren Sie die Notwendigkeit eines verteilten Netzwerknamens (DNN) für Failover-Cluster-Instanzen, indem Sie Ihre SQL Server-VMs in mehreren Subnetzen innerhalb desselben virtuellen Azure-Netzwerks erstellen.
 
 Es gibt bestimmte SQL Server-Features, für die ein hartcodierter virtueller Netzwerkname (VNN) erforderlich ist. Daher sind einige zusätzliche Aspekte zu beachten, wenn Sie die DNN-Ressource (verteilter Netzwerkname) mit Ihrer Failoverclusterinstanz und SQL Server auf Azure-VMs verwenden. 
 

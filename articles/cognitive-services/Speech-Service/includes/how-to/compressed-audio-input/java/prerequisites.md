@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: eur
-ms.openlocfilehash: 5de18cfe1f187f0531871dedce1ab842934569f2
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 625f980c94536db7d4f23323393e19e0d735437e
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131520413"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156719"
 ---
 Die Verarbeitung komprimierter Audiodaten wird mit [GStreamer](https://gstreamer.freedesktop.org) implementiert. Aus Lizenzierungsgründen werden die GStreamer-Binärdateien nicht kompiliert und mit dem Speech SDK verknüpft. Sie müssen stattdessen die vorkonfigurierten Binärdateien für Android verwenden. Informationen zum Herunterladen der vorkonfigurierten Bibliotheken finden Sie unter [Installieren für die Android-Entwicklung](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
-`libgstreamer_android.so` ist erforderlich. Stellen Sie sicher, dass alle GStreamer-Plug-Ins (aus der nachfolgenden Android.mk-Datei) unter `libgstreamer_android.so` verknüpft sind. Wenn Sie das neueste Speech-SDK (1.16 und höher) mit der GStreamer-Version 1.18.3 verwenden, muss `libc++_shared.so` auch im Android-NDK vorhanden sein.
+`libgstreamer_android.so` ist erforderlich. Stellen Sie sicher, dass alle GStreamer-Plug-Ins (aus der nachfolgenden Android.mk-Datei) unter `libgstreamer_android.so` verknüpft sind. Wenn Sie das neueste Sprach-SDK (1.16 und höher) mit GStreamer Version 1.18.3 verwenden, muss auch `libc++_shared.so` von android ndk vorhanden sein.
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
@@ -77,7 +77,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-Sie können `libgstreamer_android.so` mit dem folgenden Befehl unter Ubuntu 16.04 oder 18.04 erstellen. Die folgenden Befehlszeilen wurden nur für [GStreamer (Android-Version 1.14.4)](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) mit [Android NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip) getestet.
+Sie können `libgstreamer_android.so` mit dem folgenden Befehl unter Ubuntu 18.04 oder 20.04 erstellen. Die folgenden Befehlszeilen wurden nur für [GStreamer (Android-Version 1.14.4)](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) mit [Android NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip) getestet.
 
 ```sh
 # Assuming wget and unzip already installed on the system

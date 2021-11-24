@@ -2,19 +2,19 @@
 title: Löschen einer Zahlungsmethode für die Azure-Abrechnung
 description: Es wird beschrieben, wie Sie eine von einem Azure-Abonnement verwendete Zahlungsmethode löschen.
 author: bandersmsft
-ms.reviewer: judupont
+ms.reviewer: lishepar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 11/10/2021
 ms.author: banders
-ms.openlocfilehash: 1ba1a97acfe2345ed5632ae6f84caacc525f13e4
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 6050b98d54cf46bf83168d7d33b9ca44d2bd6eda
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129544809"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132180034"
 ---
 # <a name="delete-an-azure-billing-payment-method"></a>Löschen einer Zahlungsmethode für die Azure-Abrechnung
 
@@ -84,8 +84,7 @@ Führen Sie die unten angegebenen Schritte aus, falls Ihre Zahlungsmethode von e
 1. Navigieren Sie zu **Kostenverwaltung und Abrechnung**.
 1. Wählen Sie bei Bedarf einen Abrechnungsbereich aus.
 1. Wählen Sie in der Menüliste auf der linken Seite unter **Abrechnung** die Option **Zahlungsmethoden** aus.
-1. Wählen Sie im Bereich „Zahlungsmethoden“ die _Zeile_ aus, in der sich Ihre Zahlungsmethode befindet. Wählen Sie nicht den Link für die Zahlungsmethoden aus. Unter Umständen ist keine sichtbare Markierung vorhanden, dass Sie die Zahlungsmethode ausgewählt haben.
-1. Klicken Sie auf **Löschen**.  
+1. Wählen Sie im Bereich Zahlungsmethoden in der Zeile, in der sich die Zahlungsmethode befindet, das Ellipsen-Symbol ( **...** ) und dann die Option **Löschen**.
     :::image type="content" source="./media/delete-azure-payment-method/delete-mosp-payment-method.png" alt-text="Beispiel: Erforderliche Korrekturmaßnahme zum Trennen einer Zahlungsmethode für Microsoft-Onlineabonnementprogramm" :::
 1. Wählen Sie im Bereich „Delete a payment method“ (Zahlungsmethode löschen) die Option **Löschen** aus, wenn alle Bedingungen erfüllt sind. Fahren Sie mit dem nächsten Schritt fort, falls die Option „Löschen“ nicht verfügbar ist.
 1. Eine Liste mit Bedingungen wird angezeigt. Führen Sie die aufgeführten Aktionen durch. Wählen Sie den Link aus, der im Bereich „Delete a payment method“ (Zahlungsmethode löschen) angezeigt wird.  

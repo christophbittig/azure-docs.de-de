@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 10/21/2021
-ms.openlocfilehash: 119405dc4db6d31aaf2ac5b704af7798ce41837a
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.date: 11/09/2021
+ms.openlocfilehash: d71d986ca975b9617af9b966c8795cd30d7db01d
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564402"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134947"
 ---
 # <a name="network-traffic-flow-when-using-a-secured-workspace"></a>Fluss des Netzwerkverkehrs bei Verwendung eines gesicherten Arbeitsbereichs
 
@@ -61,6 +61,16 @@ Dieser Artikel geht von der folgenden Konfiguration aus:
 | [Verwenden von Azure Kubernetes Service](#scenario-use-azure-kubernetes-service) | Nicht verfügbar | Informationen zur ausgehenden Konfiguration für AKS finden Sie unter [Bereitstellung für Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md#understand-connectivity-requirements-for-aks-inferencing-cluster). | Konfigurieren Sie den internen Load Balancer. Weitere Informationen finden Sie unter [Bereitstellung für Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md#understand-connectivity-requirements-for-aks-inferencing-cluster). | 
 | [Verwendung von Docker-Images, die von Azure Machine Learning verwaltet werden](#scenario-use-docker-images-managed-by-azure-ml) | Nicht verfügbar | <ul><li>Microsoft Container Registry</li><li>`viennaglobal.azurecr.io` globale Container-Registrierung</li></ul> | Wenn die Azure Container Registry für Ihren Arbeitsbereich hinter dem VNet liegt, konfigurieren Sie den Arbeitsbereich so, dass er einen Compute-Cluster zum Erstellen von Images verwendet. Weitere Informationen finden Sie unter [Wie Sie einen Arbeitsbereich in einem virtuellen Netzwerk sichern](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr). | 
 
+> [!IMPORTANT]
+> Azure Machine Learning verwendet mehrere Speicherkonten. Jedes speichert unterschiedliche Daten und hat einen anderen Zweck:
+>
+> * __Ihr Speicher__: Das Azure Storage-Konto/die Azure Storage-Konten in Ihrem Azure-Abonnement, das zum Speichern Ihrer Daten und Artefakte wie Modelle, Trainingsdaten, Trainingsprotokolle und Python-Skripte verwendet wird. Das _Standard_ speicherkonto für Ihren Arbeitsbereich befindet sich beispielsweise in Ihrem Abonnement. Die Azure Machine Learning Compute-Instanz und Compute-Cluster greifen über die Ports 445 (SMB) und 443 (HTTPS) auf __Datei-__ und __Blob__-Daten in diesem Speicher zu.
+> 
+>    Wenn Sie eine Compute-Instanz oder einen Compute-Cluster verwenden, wird Ihr Speicherkonto mithilfe des SMB-Protokolls als Dateifreigabe eingebunden. Auf diese Weise greift die Compute-Instanz/der Compute-Cluster auf Ihre Daten zu.
+>
+> * __Microsoft-Speicher__: Die Azure Machine Learning Compute-Instanz und die Compute-Cluster basieren auf Azure Batch und müssen auf Speicher zugreifen, der sich in einem Microsoft-Abonnement befindet. Dieser Speicher wird nur zur Verwaltung der Compute-Instanz/Compute-Cluster verwendet. Keine Ihrer Daten wird hier gespeichert. Die Compute-Instanz und der Compute-Cluster greifen über Port 443 (HTTPS) auf die __Blob-,__ __Tabellen-__ und __Warteschlangendaten__ in diesem Speicher zu.
+>
+> Machine Learning speichert Metadaten in einer Azure Cosmos DB-Instanz. Standardmäßig wird diese Instanz in einem Microsoft-Abonnement gehostet und von Microsoft verwaltet. Sie können optional eine Azure Cosmos DB-Instanz in Ihrem Azure-Abonnement verwenden. Weitere Informationen finden Sie unter [Datenverschlüsselung mit Azure Machine Learning](concept-data-encryption.md#azure-cosmos-db).
 
 ## <a name="scenario-access-workspace-from-studio"></a>Szenario: Zugriff auf den Arbeitsbereich vom Studio aus
 

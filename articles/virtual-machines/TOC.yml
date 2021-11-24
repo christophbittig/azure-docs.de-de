@@ -161,6 +161,8 @@
               href: av2-series.md
             - name: Burstable-Computer der B-Serie
               href: sizes-b-series-burstable.md
+            - name: DCasv5- und DCadsv5-Serie
+              href: dcasv5-dcadsv5-series.md
             - name: DCsv2-Serie
               href: dcv2-series.md
             - name: DCsv3- und DCdsv3-Serie
@@ -181,6 +183,8 @@
               href: ddv5-ddsv5-series.md
             - name: Dasv5- und Dadsv5-Serie
               href: dasv5-dadsv5-series.md
+            - name: DCasv5- und DCadsv5-Serie
+              href: dcasv5-dcadsv5-series.md
         - name: Computeoptimiert
           items:
             - name: Übersicht
@@ -211,6 +215,8 @@
               href: edv5-edsv5-series.md
             - name: Easv5- und Eadsv5-Serie
               href: easv5-eadsv5-series.md
+            - name: ECasv5- und ECadsv5-Serie
+              href: ecasv5-ecadsv5-series.md
             - name: M-Serie
               href: m-series.md
             - name: Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher
@@ -948,7 +954,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
-        - name: CLI
+        - name: Befehlszeilenschnittstelle (CLI)
           displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./linux/create-cli-availability-zone.md
         - name: PowerShell
@@ -962,7 +968,7 @@
         - name: Übersicht
           displayName: 'proximity placement groups, ppg'
           href: co-location.md
-        - name: CLI
+        - name: Befehlszeilenschnittstelle (CLI)
           displayName: 'proximity placement groups, ppg'
           href: ./linux/proximity-placement-groups.md
         - name: PowerShell
@@ -1005,7 +1011,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: availability-set-overview.md
-        - name: CLI
+        - name: Befehlszeilenschnittstelle (CLI)
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./linux/tutorial-availability-sets.md
         - name: PowerShell
@@ -1669,7 +1675,7 @@
             - name: Übersicht
               displayName: Maintenance control
               href: maintenance-control.md
-            - name: CLI
+            - name: Befehlszeilenschnittstelle (CLI)
               displayName: Maintenance control
               href: maintenance-control-cli.md
             - name: PowerShell

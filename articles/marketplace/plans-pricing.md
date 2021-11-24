@@ -4,15 +4,15 @@ description: Hier erhalten Sie Informationen zu Plänen für Angebote im kommerz
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/05/2021
-ms.openlocfilehash: 71efd629463f53519d98458afaa449c7a7f46ffb
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: e91e85982bb021193224010e2bd51df301240c69
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062337"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277978"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Pläne und Preise für Angebote im kommerziellen Marketplace
 
@@ -126,7 +126,7 @@ Preise in US-Dollar (USD) werden beim Speichern gemäß dem aktuellen Wechselkur
 
 ## <a name="plan-visibility"></a>Sichtbarkeit des Plans
 
-Sie können Pläne für einige Angebotstypen öffentlich oder nur für eine bestimmte (private) Zielgruppe verfügbar machen. Angebote mit privaten Plänen werden im Azure-Portal veröffentlicht. Erfahren Sie unter [Private Angebote im kommerziellen Microsoft-Marketplace](private-offers.md) mehr über private Pläne.
+Sie können Pläne für einige Angebotstypen öffentlich oder nur für eine bestimmte (private) Zielgruppe verfügbar machen. Angebote mit privaten Plänen werden im Azure-Portal veröffentlicht. Weitere Informationen über private Pläne finden Sie unter [Private Pläne auf dem kommerziellen Microsoft-Marktplatz](private-plans.md).
 
 Abhängig vom Angebotstyp definieren Sie eine private Zielgruppe mithilfe von Azure-Mandanten-IDs oder Azure-Abonnement-IDs. Sie können bis zu 10 IDs manuell eingeben oder bis zu 10.000 Abonnement-IDs oder 20.000 Mandanten-IDs mithilfe einer CSV-Datei importieren. Sie können auch private Zielgruppen für Beratungsdienste und Dynamics 365-Angebote definieren, die nicht über Pläne verfügen.
 

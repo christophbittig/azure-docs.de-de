@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 11/03/2020
-ms.openlocfilehash: e60c675c40345ccd9220453cb66125e2fc55582a
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 248234c816cc3341929417282521d30c2105c671
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113089429"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323251"
 ---
 # <a name="azure-database-for-mysql-version-support-policy"></a>Azure Database for MySQL: Richtlinie für die Versionsunterstützung
 
@@ -26,7 +26,7 @@ Azure Database for MySQL wurde basierend auf [MySQL Community Edition](https://w
 
 Azure Database for MySQL unterstützt derzeit die folgenden Haupt- und Nebenversionen von MySQL:
 
-| Version | [Single Server](overview.md) <br/> Aktuelle Nebenversion |[Flexible Server (Vorschau)](./flexible-server/overview.md) <br/> Aktuelle Nebenversion  |
+| Version | [Single Server](overview.md) <br/> Aktuelle Nebenversion |[Flexible Server](./flexible-server/overview.md) <br/> Aktuelle Nebenversion  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL-Version 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (eingestellt) | Nicht unterstützt|
 |MySQL-Version 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
@@ -72,5 +72,5 @@ Wenn Sie nach dem Einstellungsdatum der jeweiligen MySQL-Datenbankversionen die 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich für die Option „Einzelserver“ unter [Unterstützte Azure Database for MySQL-Serverversionen](./concepts-supported-versions.md).
-- Informieren Sie sich für die Option „Flexibler Server (Vorschau) unter [Unterstützte Versionen für Azure Database for MySQL – Flexible Server](flexible-server/concepts-supported-versions.md).
+- Unterstützte Versionen für Azure Database für MySQL – Flexible Server [unterstützte Versionen](flexible-server/concepts-supported-versions.md)
 - Informationen zu Upgrades finden Sie unter [Sicherungen und Wiederherstellungen](./concepts-migrate-dump-restore.md) für MySQL.

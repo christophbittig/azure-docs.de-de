@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache-Voraussetzungen
 description: Voraussetzungen für die Verwendung von Azure HPC Cache
-author: femila
+author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/06/2021
-ms.author: femila
-ms.openlocfilehash: b075e41d8bd8865fcb5ed24c4ecba2b9f539d3dd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/03/2021
+ms.author: rohogue
+ms.openlocfilehash: 1929677370ddf6f505f2425f61bfdaf4466223bb
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078596"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137750"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
@@ -79,6 +79,26 @@ Um einen benutzerdefinierten DNS-Server verwenden zu können, müssen Sie die fo
 Ein einfacher DNS-Server kann außerdem für den Lastenausgleich für Clientverbindungen zwischen allen verfügbaren Cache-Einbindungspunkten verwendet werden.
 
 Weitere Informationen zu virtuellen Azure-Netzwerken und DNS-Serverkonfigurationen finden Sie unter [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+
+### <a name="ntp-access"></a>NTP-Zugang
+
+Der HPC-Cache benötigt für den regulären Betrieb Zugang zu einem NTP-Server. Wenn Sie den ausgehenden Datenverkehr aus Ihren virtuellen Netzwerken einschränken, sollten Sie den Datenverkehr zu mindestens einem NTP-Server zulassen. Der Standardserver ist time.windows.com, und der Cache kontaktiert diesen Server über UDP-Port 123.
+
+Erstellen Sie eine Regel in der [Netzwerksicherheitsgruppe](../virtual-network/network-security-groups-overview.md) Ihres Cache-Netzwerks, die ausgehenden Datenverkehr zu Ihrem NTP-Server erlaubt. Die Regel kann einfach allen ausgehenden Datenverkehr über UDP-Port 123 zulassen oder weitere Einschränkungen enthalten.
+
+Dieses Beispiel öffnet explizit den ausgehenden Datenverkehr zur IP-Adresse 168.61.215.74, die von time.windows.com verwendet wird.
+
+| Priority | Name | Port | Protocol | `Source` | Destination   | Aktion |
+|----------|------|------|----------|--------|---------------|--------|
+| 200      | NTP  | Any  | UDP      | Any    | 168.61.215.74 | Allow  |
+
+Stellen Sie sicher, dass die NTP-Regel eine höhere Priorität hat als alle Regeln, die den ausgehenden Zugriff weitgehend verweigern.
+
+Zusätzliche Tipps für den NTP-Zugang:
+
+* Wenn sich zwischen Ihrem HPC-Cache und dem NTP-Server Firewalls befinden, stellen Sie sicher, dass diese Firewalls auch den NTP-Zugriff erlauben.
+
+* Welchen NTP-Server Ihr HPC-Cache verwendet, können Sie auf der Seite **Netzwerke** konfigurieren. Lesen Sie [Zusätzliche Einstellungen konfigurieren](configuration.md#customize-ntp) für weitere Informationen.
 
 ## <a name="permissions"></a>Berechtigungen
 

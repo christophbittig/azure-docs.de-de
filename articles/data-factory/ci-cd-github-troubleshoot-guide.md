@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: ci-cd
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 10/25/2021
-ms.openlocfilehash: 1c73346cde1eb20f17973b65e43a8d1c4148b41c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.openlocfilehash: d3d792f6b51dc24b17d86d6a6fecc83697445a5a
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073242"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157705"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-azure-data-factory-and-synapse-analytics"></a>Beheben von CI/CD-, Azure DevOps- und GitHub-Problemen in Azure Data Factory und Synapse Analytics 
 
@@ -321,6 +321,16 @@ Die Parametrisierung einer Entitätsreferenz (Integrationslaufzeit in Linked Ser
 #### <a name="resolution"></a>Lösung
 Data Factory erfordert, dass Sie in allen Phasen von CI/CD denselben Namen und Typ der Integrationslaufzeit verwenden. 
 
+### <a name="arm-template-deployment-failing-with-error-datafactorypropertyupdatenotsupported"></a>ARM-Vorlagenbereitstellung schlägt mit dem Fehler DataFactoryPropertyUpdateNotSupported fehl
+
+##### <a name="issue"></a>Problem
+Die Bereitstellung der ARM-Vorlage schlägt mit einem Fehler wie DataFactoryPropertyUpdateNotSupported fehl: Das Aktualisieren des Eigenschaftstyps wird nicht unterstützt. 
+
+##### <a name="cause"></a>Ursache
+Das ARM-Template-Bereitstellung versucht, den Typ einer bestehenden Integrationslaufzeit zu ändern. Dies ist nicht zulässig und führt zu einem Bereitstellungsfehler, da Data Factory in allen Phasen von CI/CD denselben Namen und Typ der Integrationslaufzeit erfordert.
+
+##### <a name="resolution"></a>Lösung
+Wenn Sie Integration Runtimes über alle Stufen hinweg freigeben möchten, können Sie eine ternäre Factory verwenden, die nur die freigegebenen Integration Runtimes enthält. Diese freigegebene Factory können Sie in allen Umgebungen als verknüpften Integration Runtime-Typ verwenden. Weitere Informationen finden Sie unter [Kontinuierliche Integration und Bereitstellung - Azure Data Factory](https://docs.microsoft.com/azure/data-factory/continuous-integration-delivery#best-practices-for-cicd)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

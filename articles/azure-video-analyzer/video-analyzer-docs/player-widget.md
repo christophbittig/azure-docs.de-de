@@ -3,14 +3,14 @@ title: Verwenden des Video Analyzer-Playerwidgets
 description: In diesem Artikel wird erläutert, wie Sie Ihrer Anwendung ein Video Analyzer-Playerwidget hinzufügen.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 11/04/2021
+ms.date: 11/12/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 44d14f7dc2977f39276e4c57a4d35d5e28b31a3d
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 8dbf85609196a930d7f51a713753f725b3016396
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131845451"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487471"
 ---
 # <a name="use-the-azure-video-analyzer-player-widget"></a>Verwenden des Azure Video Analyzer-Player-Widgets
 
@@ -142,6 +142,10 @@ Mit der Komponente Zone Drawer-Komponente können Sie Linien und Polygone über 
    ```javascript
    zoneDrawer.load();
    ```
+1. Konfigurieren Sie den Zone Drawer:
+   ```javascript
+   zoneDrawer.configure();
+   ```
 1. Zum Erstellen und Speichern von Zonen müssen Sie hier Ereignislistener hinzufügen:
    ```javascript
    zoneDrawer.addEventListener('ZONE_DRAWER_ADDED_ZONE', (event) => {
@@ -195,6 +199,7 @@ Wenn Sie die vorangehenden Webelemente kombinieren, erhalten Sie die folgende st
     
         const zoneDrawer = document.getElementById("zoneDrawer");
         zoneDrawer.load();
+        zoneDrawer.configure();
 
         zoneDrawer.addEventListener('ZONE_DRAWER_ADDED_ZONE', (event) => {
             console.log(event);
@@ -309,7 +314,7 @@ Das `TOKEN_EXPIRED`-Ereignis tritt 5 Sekunden vor Ablauf des Tokens auf. Wenn Si
 
 Der vorangehende Player weist eine einfache Konfiguration auf, aber Sie können eine breitere Palette von Optionen für Konfigurationswerte verwenden. Die folgenden Felder werden unterstützt:
 
-| Name   | type             | BESCHREIBUNG                         |
+| Name   | type             | Beschreibung                         |
 | ------ | ---------------- | ----------------------------------- |
 | `token`  | Zeichenfolge | Ihr JWT-Token für das Widget |
 | `videoName` | Zeichenfolge | Die Bezeichnung der Video-Ressource  |

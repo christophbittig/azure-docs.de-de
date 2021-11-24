@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 710402b4222a01a5235bba43d30dcf318a322275
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 8f98b1d5d020df0b8a2047fa5881c6d978a0ad94
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063796"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281739"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-azure-cli"></a>Verwalten von Azure Machine Learning-Arbeitsbereichen mithilfe der Azure CLI
 
@@ -93,7 +93,7 @@ Wenn Sie einen Azure Machine Learning-Arbeitsbereich bereitstellen, [werden vers
 > * Sowohl Azure Blob- als auch Azure-Dateifunktionen sind aktiviert.
 > * „Hierarchischer Namespace“ (ADLS Gen 2) ist deaktiviert. Diese Anforderungen gelten nur für das vom Arbeitsbereich verwendete _standardmäßige_ Speicherkonto.
 >
-> Beim Anfügen von Azure Container Registry muss das [Administratorkonto](../container-registry/container-registry-authentication.md#admin-account) aktiviert sein, bevor es mit einem Azure Machine Learning-Arbeitsbereich verwendet werden kann.
+> Wenn Sie die Azure-Container-Registrierung anhängen, müssen Sie das [Administratorkonto](../container-registry/container-registry-authentication.md#admin-account) aktiviert haben, bevor es mit einem Azure Machine Learning-Arbeitsbereich verwendet werden kann.
 
 # <a name="create-with-new-resources"></a>[Erstellen mit neuen Ressourcen](#tab/createnewresources)
 
@@ -174,7 +174,7 @@ Die Ausgabe des Befehls zur Erstellung des Arbeitsbereichs sieht ähnlich aus wi
 ## <a name="advanced-configurations"></a>Erweiterte Konfigurationen
 ### <a name="configure-workspace-for-private-network-connectivity"></a>Konfigurieren des Arbeitsbereichs für private Netzwerkkonnektivität
 
-Abhängig von Ihrem Anwendungsfall und Ihren organisatorischen Anforderungen können Sie Azure Machine Learning mithilfe einer privaten Netzwerkkonnektivität konfigurieren. Sie können die Azure CLI verwenden, um einen Arbeitsbereich und einen Private Link-Endpunkt für die Arbeitsbereichsressource bereitzustellen. Weitere Informationen zur Verwendung eines privaten Endpunkts und eines virtuellen Netzwerks mit Ihrem Arbeitsbereich finden Sie unter [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md). Für komplexe Ressourcenkonfigurationen beachten Sie auch die vorlagenbasierten Bereitstellungsoptionen einschließlich [Azure Resource Manager](how-to-create-workspace-template.md).
+Abhängig von Ihrem Anwendungsfall und Ihren organisatorischen Anforderungen können Sie Azure Machine Learning mithilfe einer privaten Netzwerkkonnektivität konfigurieren. Sie können die Azure CLI verwenden, um einen Arbeitsbereich und einen Private Link-Endpunkt für die Arbeitsbereichsressource bereitzustellen. Weitere Informationen zur Verwendung eines privaten Endpunkts und eines virtuellen Netzwerks (VNet) mit Ihrem Arbeitsbereich finden Sie unter [Übersicht über Isolierung und Datenschutz im virtuellen Netzwerk](how-to-network-security-overview.md). Für komplexe Ressourcenkonfigurationen beachten Sie auch die vorlagenbasierten Bereitstellungsoptionen einschließlich [Azure Resource Manager](how-to-create-workspace-template.md).
 
 # <a name="10-cli"></a>[1.0 CLI](#tab/vnetpleconfigurationsv1cli)
 
@@ -218,6 +218,48 @@ az network private-endpoint create \
     --private-connection-resource-id "/subscriptions/<subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>" \
     --group-id amlworkspace \
     --connection-name workspace -l <location>
+```
+
+Um die privaten DNS-Zoneneinträge für den Arbeitsbereich zu erstellen, verwenden Sie die folgenden Befehle:
+
+```azurecli-interactive
+# Add privatelink.api.azureml.ms
+az network private-dns zone create \
+    -g <resource-group-name> \
+    --name 'privatelink.api.azureml.ms'
+
+az network private-dns link vnet create \
+    -g <resource-group-name> \
+    --zone-name 'privatelink.api.azureml.ms' \
+    --name <link-name> \
+    --virtual-network <vnet-name> \
+    --registration-enabled false
+
+az network private-endpoint dns-zone-group create \
+    -g <resource-group-name> \
+    --endpoint-name <private-endpoint-name> \
+    --name myzonegroup \
+    --private-dns-zone 'privatelink.api.azureml.ms' \
+    --zone-name 'privatelink.api.azureml.ms'
+
+# Add privatelink.notebooks.azure.net
+az network private-dns zone create \
+    -g <resource-group-name> \
+    --name 'privatelink.notebooks.azure.net'
+
+az network private-dns link vnet create \
+    -g <resource-group-name> \
+    --zone-name 'privatelink.notebooks.azure.net' \
+    --name <link-name> \
+    --virtual-network <vnet-name> \
+    --registration-enabled false
+
+az network private-endpoint dns-zone-group add \
+    -g <resource-group-name> \
+    --endpoint-name <private-endpoint-name> \
+    --name myzonegroup \
+    --private-dns-zone 'privatelink.notebooks.azure.net' \
+    --zone-name 'privatelink.notebooks.azure.net'
 ```
 
 ---

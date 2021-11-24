@@ -1,24 +1,24 @@
 ---
 title: Einrichten des Netzwerks
 description: Erfahren Sie mehr über Lösungsarchitektur, Netzwerkvorbereitung, Voraussetzungen und weitere Informationen, die erforderlich sind, um sicherzustellen, dass Sie Ihr Netzwerk erfolgreich für die Arbeit mit Azure Defender für IoT-Appliances einrichten.
-ms.date: 11/07/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 150612e8e9d429e9fc2b8eb74f3ea7167a41495c
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 1e41cc1f8e491e92d2fe4896b90e61b4cd3fe835
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028361"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278814"
 ---
-# <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender für IoT: Netzwerkeinrichtung
+# <a name="about-microsoft-defender-for-iot-network-setup"></a>Informationen zur Netzwerkeinrichtung von Microsoft Defender für IoT
 
-Azure Defender für IoT bietet kontinuierliche ICS-Bedrohungsüberwachung und Geräteermittlung. Die Plattform umfasst die folgenden Komponenten:
+Microsoft Defender für IoT bietet kontinuierliche Überwachung von ICS-Bedrohungen und Geräteerkennung. Die Plattform umfasst die folgenden Komponenten:
 
 **Defender für IoT-Sensoren:** Sensoren erfassen den ICS-Netzwerkdatenverkehr mithilfe von passiver Überwachung (ohne Agents). Da sie passiv und nicht intrusiv arbeiten, haben die Sensoren keinerlei Auswirkungen auf die Leistung von OT- und IoT-Netzwerken und -Geräten. Der Sensor wird mit einem SPAN-Port oder Netzwerk-TAP verbunden und beginnt sofort mit der Überwachung Ihres Netzwerks. Ermittlungen werden in der Sensorkonsole angezeigt. Dort können Sie sie in einer Netzwerkdarstellung, einem Geräteinventar und einer umfangreichen Palette von Berichten anzeigen, untersuchen und analysieren. Zu den Beispielen zählen Risikobewertungsberichte, Data Mining-Abfragen und Angriffsvektoren.
 
 **Defender für die lokale IoT-Verwaltungskonsole**: Die lokale Verwaltungskonsole bietet eine konsolidierte Ansicht aller Netzwerkgeräte. Sie stellt eine Echtzeitansicht der wichtigsten OT- und IoT-Leistungsindikatoren und Warnungen für alle Ihre Einrichtungen bereit. Die enge Integration in Ihre SOC-Workflows und Playbooks ermöglicht eine einfache Priorisierung von Entschärfungsaktivitäten und standortübergreifende Korrelation von Bedrohungen.
 
-**Defender für IoT-Portal:** Die Defender für IoT-Anwendung kann Sie beim Kauf von Lösungsappliances, bei der Installation und Aktualisierung von Software sowie bei der Aktualisierung von TI-Paketen unterstützen.
+**Defender für IoT im Azure-Portal:** Die Defender for IoT-Anwendung unterstützt Sie beim Kauf von Lösungs-Appliances, bei der Installation und Aktualisierung von Software und bei der Aktualisierung von TI-Paketen.
 
 Dieser Artikel bietet Informationen zu Lösungsarchitektur, Netzwerkvorbereitung, Voraussetzungen und weitere Informationen, die Sie bei der erfolgreichen Einrichtung Ihres Netzwerks für die Arbeit mit Azure Defender für IoT-Appliances unterstützen. Leser, die mit den Informationen in diesem Artikel arbeiten, sollten mit Betrieb und Verwaltung von OT- und IoT-Netzwerken vertraut sein. Beispiele hierfür sind Automatisierungstechniker, Werkleiter, Anbieter von OT-Netzwerkinfrastrukturdiensten, Cybersicherheitsteams, CISOs oder CIOs.
 
@@ -161,7 +161,7 @@ So planen Sie Ihre Rackinstallation:
 
 ## <a name="about-passive-network-monitoring"></a>Informationen zur passiven Netzwerküberwachung
 
-Die Appliance empfängt Datenverkehr aus mehreren Quellen, entweder durch Spiegelports am Switch (SPAN-Ports) oder durch Netzwerk-TAPs. Der Verwaltungsport ist mit dem Geschäfts-, Unternehmens- oder Sensorverwaltungs-Netzwerk verbunden und verfügt über Konnektivität zu einer lokalen Verwaltungskonsole oder dem Defender für IoT-Portal.
+Die Appliance empfängt Datenverkehr aus mehreren Quellen, entweder durch Spiegelports am Switch (SPAN-Ports) oder durch Netzwerk-TAPs. Der Verwaltungsport ist mit dem Geschäfts-, Unternehmens- oder Sensorverwaltungsnetzwerk verbunden und bietet Konnektivität zu einer lokalen Verwaltungskonsole oder Defender for IoT im Azure-Portal.
 
 :::image type="content" source="media/how-to-set-up-your-network/switch-with-port-mirroring.png" alt-text="Diagramm eines verwalteten Switches mit Portspiegelung.":::
 
@@ -605,7 +605,7 @@ Mithilfe einer Übersicht des Industrienetzwerkdiagramms können Sie den richtig
     > [!NOTE]
     > Die Defender für IoT-Appliance sollte mit einem Switch auf niedrigerer Ebene verbunden sein, der den Datenverkehr zwischen den Ports auf dem Switch sehen kann.  
 
-1. **Committete Geräte**: Geben Sie die ungefähre Anzahl von Netzwerkgeräten an, die überwacht werden sollen. Sie benötigen diese Information, wenn Sie für Ihr Abonnement das Onboarding im Portal für Azure Defender für IoT durchführen. Während des Onboardingprozesses werden Sie aufgefordert, die Geräteanzahl in Inkrementen von 1.000 einzugeben.
+1. **Committete Geräte**: Geben Sie die ungefähre Anzahl von Netzwerkgeräten an, die überwacht werden sollen. Sie benötigen diese Informationen, wenn Sie Ihr Abonnement für Defender for IoT im Azure-Portal einrichten. Während des Onboardingprozesses werden Sie aufgefordert, die Geräteanzahl in Inkrementen von 1.000 einzugeben.
 
 1. **(Optional) Subnetzliste**: Geben Sie eine Subnetzliste für die Produktionsnetzwerke und eine Beschreibung an (optional).
 

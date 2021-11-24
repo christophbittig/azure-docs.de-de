@@ -98,6 +98,8 @@
               href: continuous-backup-restore-frequently-asked-questions.yml
             - name: 'Fortlaufende Sicherung: Ressourcenmodell'
               href: continuous-backup-restore-resource-model.md
+            - name: Letzter wiederherstellbarer Zeitstempel
+              href: latest-restore-timestamp-continuous-backup.md
     - name: Optimieren der Kosten für Azure Cosmos DB
       items:
         - name: Planen und Verwalten von Kosten
@@ -1495,6 +1497,8 @@
               href: continuous-backup-restore-permissions.md
             - name: 'Bereitstellen eines Kontos: Fortlaufende Sicherung'
               href: provision-account-continuous-backup.md
+            - name: Abrufen des letzten Wiederherstellungszeitstempels
+              href: get-latest-restore-timestamp.md
             - name: 'Wiederherstellen eines Kontos: Fortlaufende Sicherung'
               href: restore-account-continuous-backup.md
             - name: Migrieren zur fortlaufenden Sicherung

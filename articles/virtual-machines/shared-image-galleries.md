@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 6/8/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: fa87bdf9acca99b38f63ec6e9547d5cc5279afc5
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 9dd8978fe61bc8c952e4e06d8569141387caecca
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132060905"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133519"
 ---
 # <a name="store-and-share-images-in-an-azure-compute-gallery"></a>Speichern und Freigeben von Images in einer Azure Compute Gallery-Instanz
 
@@ -22,7 +22,7 @@ ms.locfileid: "132060905"
 
 Azure Compute Gallery enthält jetzt den Shared Image Gallery-Dienst und die neuen Features und Funktionen von [VM-Anwendungen](vm-applications.md).  
 
-Azure Compute Gallery unterstützt Sie beim Erstellen einer Struktur und Organisation für Ihre Azure-Ressourcen, z. B. Images und [Anwendungen])(vm-applications.md). Eine Azure Compute Gallery-Instanz bietet Ihnen folgendes:
+Azure Compute Gallery unterstützt Sie beim Erstellen einer Struktur für Ihre Azure-Ressourcen und der Organisation dieser, z. B. Images und [Anwendungen](vm-applications.md). Eine Azure Compute Gallery-Instanz bietet Ihnen folgendes:
 - Globale Replikation
 - Versionsverwaltung und Gruppierung von Ressourcen zur einfacheren Verwaltung
 - Hochverfügbare Ressourcen mit ZRS-Konten (zonenredundanter Speicher) in Regionen, die Verfügbarkeitszonen unterstützen. ZRS bietet bessere Ausfallsicherheit bei zonenbezogenen Fehlern.

@@ -2,19 +2,20 @@
 title: Aktivieren der verwalteten Identität im Azure Event Grid-Systemthema
 description: In diesem Artikel wird beschrieben, wie Sie die verwaltete Dienstidentität für ein Azure Event Grid-Thema aktivieren.
 ms.topic: how-to
-ms.date: 08/20/2021
-ms.openlocfilehash: d5d8c15c818f1a9735b6cf32fe48276fb311e8ea
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 11/02/2021
+ms.openlocfilehash: 825b1d22568b110f22e596d424a2f781b65de625
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633568"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157143"
 ---
 # <a name="assign-a-system-managed-identity-to-an-event-grid-system-topic"></a>Weisen Sie eine systemverwalteten Identität einem Event-Grid-Systemthema hinzu
-In diesem Artikel erfahren Sie, wie Sie einem vorhandenem Event Grid-Systemthema eine system- oder benutzerseitig zugewiesene Identität zuweisen. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).  
+In diesem Artikel erfahren Sie, wie Sie einem Ereignisraster-Systemthema eine vom System oder vom Benutzer zugewiesene Identität zuweisen. Um mehr über verwaltete Identitäten im Allgemeinen zu erfahren, siehe [Was sind verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).  
 
-> [!IMPORTANT]
-> Sie können entweder eine system- oder eine benutzerseitig zugewiesene Identität für ein Systemthema aktivieren, aber nicht beide. Einem Systemthema können maximal zwei benutzerseitig zugewiesene Identitäten zugewiesen werden. 
+> [!NOTE]
+> - Sie können einem Systemthema eine vom System zugewiesene Identität und bis zu zwei vom Benutzer zugewiesene Identitäten zuordnen. 
+> - Sie können Identitäten für Systemthemen aktivieren, die mit globalen Azure-Ressourcen wie Azure-Abonnements, Ressourcengruppen oder Azure Maps verbunden sind. Die Systemthemen für diese globalen Quellen sind auch nicht mit einer bestimmten Region verbunden.
 
 ## <a name="enable-managed-identity-for-an-existing-system-topic"></a>Aktivieren einer verwalteten Identität für ein vorhandenes Systemthema
 In diesem Abschnitt erfahren Sie, wie Sie eine verwaltete Identität für ein vorhandenes Systemthema aktivieren. 
@@ -22,7 +23,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine verwaltete Identität für ein vo
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Suchen Sie oben in der Suchleiste nach **Ereignis-Grid-Systemthemen**.
 3. Wählen Sie das **benutzerdefinierte Thema** aus, für das Sie die verwaltete Identität aktivieren möchten. 
-4. Wählen Sie im linken Menü **Identität** aus. Diese Option wird für ein System Thema, das sich am globalen Speicherort befindet, nicht angezeigt. 
+4. Wählen Sie im linken Menü **Identität** aus.  
 
 ### <a name="enable-system-assigned-identity"></a>Aktivieren systemseitig zugewiesener Identitäten
 1. **Aktivieren** Sie den Schalter, um die Identität zu aktivieren. 
@@ -41,7 +42,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine verwaltete Identität für ein vo
 1. Erstellen Sie zunächst anhand der Anweisungen im Artikel [Verwalten von benutzerseitig zugewiesenen verwalteten Identitäten](../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md) eine benutzerseitig zugewiesene Identität. 
 1. Wechseln Sie auf der Seite **Identität** im rechten Bereich zur Registerkarte **Benutzerseitig zugewiesen**, und wählen Sie dann auf der Symbolleiste **+ Hinzufügen** aus.
 
-    :::image type="content" source="./media/managed-service-identity/system-topic-user-identity-add-button.png" alt-text="Abbildung der Schaltfläche „Hinzufügen“ auf der Registerkarte „Benutzerseitig zugewiesen“ auf der Seite „Identität“":::
+    :::image type="content" source="./media/managed-service-identity/system-topic-user-identity-add-button.png" alt-text="Das Bild zeigt die Schaltfläche &quot;Hinzufügen&quot;, die auf der Registerkarte &quot;Zugewiesene Benutzer&quot; der Seite &quot;Identität&quot; ausgewählt wurde.":::
 1. Führen Sie im Fenster **Benutzerseitig zugewiesene verwaltete Identität hinzufügen** die folgenden Schritte aus:
     1. Wählen Sie das **Azure-Abonnement** mit der benutzerseitig zugewiesenen Identität aus. 
     1. Wählen Sie die **benutzerseitig zugewiesene Identität** aus. 
@@ -72,14 +73,8 @@ In diesem Abschnitt erfahren Sie, wie Sie eine verwaltete Identität für ein vo
                 1. Wählen Sie **Hinzufügen**.                         
 
 > [!NOTE]
-> Derzeit ist es nicht möglich, eine verwaltete Identität für ein neues Systemthema zu erstellen, wenn Sie ein Ereignisabonnement für eine Azure-Ressource erstellen, die Systemthemen unterstützt. 
-
-
-## <a name="global-azure-sources"></a>Globale Azure-Quellen
-Sie können die vom System verwaltete Identität nur für die regionalen Azure-Ressourcen aktivieren. Sie können Sie nicht für Systemthemen aktivieren, die mit globalen Azure-Ressourcen wie Azure-Abonnements, Ressourcengruppen oder Azure Maps verknüpft sind. Die Systemthemen für diese globalen Quellen sind auch keiner bestimmten Region zugeordnet. Sie sehen die Seite **Identität** nicht für das Systemthema, dessen Standort auf **Global** eingestellt ist. 
-
-:::image type="content" source="./media/managed-service-identity/system-topic-location-global.png" alt-text="System Thema mit auf Global eingestelltem Standort"::: 
-
+> - Derzeit ist es im Azure-Portal nicht möglich, beim Erstellen eines Systemthemas sowohl system- als auch benutzerzugeordnete Identitäten zuzuweisen. Sie können beides zuweisen, nachdem das Systemthema erstellt wurde. 
+> - Derzeit ist es nicht möglich, eine verwaltete Identität für ein neues Systemthema zu erstellen, wenn Sie ein Ereignisabonnement für eine Azure-Ressource erstellen, die Systemthemen unterstützt. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

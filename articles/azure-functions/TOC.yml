@@ -403,7 +403,7 @@
           href: functions-geo-disaster-recovery.md
         - name: Regionsübergreifendes Verschieben
           href: functions-move-across-regions.md
-    - name: Überwachen
+    - name: Monitor
       items:
         - name: Konfigurieren der Überwachung
           href: configure-monitoring.md
@@ -431,7 +431,7 @@
               href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Authentifizierung über Twitter
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
-            - name: Authentifizieren mit einem OpenID Connect-Anbieter (Vorschau)
+            - name: Authentifizieren mit einem OpenID Connect-Anbieter
               href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Authentifizieren mithilfe der Anmeldung mit Apple (Vorschau)
               href: ../app-service/configure-authentication-provider-apple.md?toc=%2fazure%2fazure-functions%2ftoc.json

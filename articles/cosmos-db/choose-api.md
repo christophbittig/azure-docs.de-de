@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/12/2021
-ms.openlocfilehash: 6d13f5f79da2906d1b994d4ab83e06d0593eaefe
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e120d4fa4d85ba2d52821460da1aa62eafd0455d
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128586637"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158027"
 ---
 # <a name="choose-an-api-in-azure-cosmos-db"></a>Auswählen einer API in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ Diese API speichert Daten im Dokumentformat. Sie bietet das beste End-to-End-Sze
 
 Wenn Sie von anderen Datenbanken wie Oracle, DynamoDB, HBase usw. migrieren und die modernisierten Technologien zum Erstellen Ihrer Apps verwenden möchten, wird die SQL-API empfohlen. Die SQL-API unterstützt Analysen und bietet Leistungsisolation zwischen operativen und analytischen Workloads.
 
-### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>Kapazitätsplanung für die Migration zur API für MongoDB
+### <a name="capacity-planning-for-migration-to-api-for-sqlcoreapi"></a>Kapazitätsplanung für die Migration zu API for SQL(Core)API
 
 Sie möchten die Kapazitätsplanung für eine Migration zur SQL-API für Azure Cosmos DB aus einem vorhandenen Datenbankcluster durchführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
 * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Shard-Datenbankcluster und replizierten Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md).
@@ -95,4 +95,4 @@ Anwendungen, die für Azure Table Storage geschrieben wurden, können mit gering
 * [Erste Schritte mit der Tabellen-API von Azure Cosmos DB](create-table-dotnet.md)
 * Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
     * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
-    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

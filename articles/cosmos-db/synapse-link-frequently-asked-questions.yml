@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 11/02/2021
   ms.custom: synapse-cosmos-db
-  ms.openlocfilehash: 8dc71afd5e134e1822df027e9b5f51dc33ed3b76
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 0820524698e13e5fe2e73ac3f245232a0a7ac227
+  ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131425839"
+  ms.lasthandoff: 11/10/2021
+  ms.locfileid: "132137212"
 title: Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
 summary: >
   [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -52,16 +52,19 @@ sections:
       Wirkt sich der analytische Speicher auf Transaktions-SLAs von Cosmos DB aus?
     answer: >
       Nein, es gibt keine Auswirkungen.
+  - question: >
+      Kann ich Synapse Link in serverlosen Azure Cosmos DB-Konten verwenden?
+    answer: "Ja, es wird unterstützt. Vorhandene Container werden jedoch nur für SQL API-Container und über Azure CLI Oder PowerShell unterstützt.         \n"
 - name: Azure Cosmos DB-Analysespeicher
   questions:
   - question: >
       Kann ich den Analysespeicher für vorhandene Container aktivieren?
     answer: >
-      Derzeit kann der Analysespeicher nur für neue Container (in neuen und vorhandenen Konten) aktiviert werden.
+      Derzeit können Sie den Analysespeicher nur für vorhandene SQL API-Container aktivieren.
   - question: >
       Kann ich den Analysespeicher für meine Azure Cosmos DB-Container deaktivieren, wenn er während der Containererstellung aktiviert wurde?
     answer: >
-      Derzeit kann der Analysespeicher in einem Azure Cosmos DB-Container nicht deaktiviert werden, wenn er während der Containererstellung aktiviert wurde.
+      Derzeit kann der Analysespeicher für einen Azure Cosmos DB-Container nicht deaktiviert werden.
   - question: >
       Wird der Analysespeicher für Azure Cosmos DB-Container mit per Autoskalierung bereitgestelltem Durchsatz unterstützt?
     answer: >
@@ -188,9 +191,23 @@ sections:
   questions:
   - question: >
       Wie erkenne ich in Azure Synapse Studio, ob eine Verbindung mit einem Azure Cosmos DB-Container besteht, der mit dem Analysespeicher aktiviert ist?
-    answer: "Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist, weist das folgende Symbol auf:\n\n:::image type=\"content\" source=\"./media/synapse-link-frequently-asked-questions/analytical-store-icon.png\" alt-text=\"Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist – Symbol\":::\n\nEin Transaktionsspeichercontainer wird durch das folgende Symbol dargestellt:\n\n:::image type=\"content\" source=\"./media/synapse-link-frequently-asked-questions/transactional-store-icon.png\" alt-text=\"Ein Azure Cosmos DB Container, der mit dem Transaktionsspeicher aktiviert ist – Symbol\":::\n \n"
+    answer: >
+      Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist, weist das folgende Symbol auf:
+
+
+      :::image type="content" source="./media/synapse-link-frequently-asked-questions/analytical-store-icon.png" alt-text="Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist – Symbol":::
+
+
+      Ein Transaktionsspeichercontainer wird durch das folgende Symbol dargestellt:
+
+
+      :::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Ein Azure Cosmos DB Container, der mit dem Transaktionsspeicher aktiviert ist – Symbol":::
   - question: >
       Wie werden Azure Cosmos DB-Anmeldeinformationen von Azure Synapse Studio übermittelt?
     answer: >
       Derzeit werden Azure Cosmos DB-Anmeldeinformationen beim Erstellen des verknüpften Diensts von dem Benutzer übermittelt, der Zugriff auf die Azure Cosmos DB-Datenbanken hat. Der Zugriff auf diesen Speicher steht anderen Benutzern zur Verfügung, die Zugriff auf den Arbeitsbereich haben.
+  - question: >
+      Kann ich SQL Server Management Studio verwenden, um den Analysespeicher mithilfe von Synapse Serverless SQL-Pool abzufragen?
+    answer: >
+      Ja.
 additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n* Erfahren Sie mehr über die [Vorteile von Azure Synapse Link](synapse-link.md#synapse-link-benefits).\n\n* Erfahren Sie mehr über die [Integration zwischen Azure Synapse Link und Azure Cosmos DB](synapse-link.md#synapse-link-integration).\n"

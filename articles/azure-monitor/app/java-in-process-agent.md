@@ -6,12 +6,12 @@ ms.date: 06/24/2021
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: c1bf5936e9e01a3d0446b99d9974011679b57b0a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6fbc2c38431cc638873ed4a93ce80f16d789c1de
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131432185"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158958"
 ---
 # <a name="azure-monitor-opentelemetry-based-auto-instrumentation-for-java-applications"></a>Azure Monitor OpenTelemetry-basierte automatische Instrumentierung für Java-Anwendungen
 
@@ -30,7 +30,7 @@ Die automatische Java-Instrumentierung kann ohne Codeänderungen aktiviert werde
 
 #### <a name="1-download-jar-file"></a>1. Herunterladen der JAR-Datei
 
-Laden Sie die Datei [applicationinsights-agent-3.2.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.2.2/applicationinsights-agent-3.2.2.jar) herunter.
+Laden Sie die Datei [applicationinsights-agent-3.2.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.2.3/applicationinsights-agent-3.2.3.jar) herunter.
 
 > [!WARNING]
 > 
@@ -52,7 +52,7 @@ Laden Sie die Datei [applicationinsights-agent-3.2.2.jar](https://github.com/mic
 
 #### <a name="2-point-the-jvm-to-the-jar-file"></a>2. Verweisen der JVM auf die JAR-Datei
 
-Fügen Sie den JVM-Argumenten Ihrer Anwendung den Eintrag `-javaagent:path/to/applicationinsights-agent-3.2.2.jar` hinzu. 
+Fügen Sie den JVM-Argumenten Ihrer Anwendung den Eintrag `-javaagent:path/to/applicationinsights-agent-3.2.3.jar` hinzu. 
 
 > [!TIP]
 > Informationen zum Konfigurieren der JVM-Argumente Ihrer Anwendung finden Sie unter [Tipps für das Updaten Ihrer JVM-Argumente](./java-standalone-arguments.md).
@@ -65,7 +65,7 @@ Verweisen Sie die JAR-Datei auf Ihre Application Insights-Ressource, indem Sie e
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-Sie können aber auch eine Konfigurationsdatei mit dem Namen `applicationinsights.json` erstellen und sie im gleichen Verzeichnis wie `applicationinsights-agent-3.2.2.jar` mit folgendem Inhalt ablegen:
+Sie können aber auch eine Konfigurationsdatei mit dem Namen `applicationinsights.json` erstellen und sie im gleichen Verzeichnis wie `applicationinsights-agent-3.2.3.jar` mit folgendem Inhalt ablegen:
 
 ```json
 {

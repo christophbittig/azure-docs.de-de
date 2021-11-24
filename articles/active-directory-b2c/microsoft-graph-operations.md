@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/08/2021
-ms.custom: project-no-code, ignite-fall-2021
+ms.custom: project-no-code, ignite-fall-2021, b2c-support
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 19a13d9c2941d9a98cce4415b9266d67a9bb8e53
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c7d64e4991a71849f8a0269dcfa8eff32164ef75
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028099"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133712"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Verwalten von Azure AD B2C mit Microsoft Graph
 
@@ -35,6 +35,9 @@ Sehen Sie sich dieses Video an, um mehr über die Migration von Azure AD B2C-Ben
 Zum Verwenden der MS Graph-API und Interagieren mit Ressourcen auf Ihrem Azure AD B2C-Mandanten benötigen Sie eine Anwendungsregistrierung, bei der die erforderlichen Berechtigungen gewährt werden. Führen Sie die Schritte im Artikel [Verwalten von Azure AD B2C mit Microsoft Graph](microsoft-graph-get-started.md) aus, um eine Anwendungsregistrierung zu erstellen, die von Ihrer Verwaltungsanwendung genutzt werden kann. 
 
 ## <a name="user-management"></a>Benutzerverwaltung
+> [!NOTE]
+> Azure AD B2C unterstützt derzeit keine erweiterten Abfragefunktionen für Verzeichnisobjekte. Dies bedeutet, dass keine Unterstützung für `$count`, `$search`Abfrageparameter und Not (`not`), Not equals (`ne`) und Ends with (`endsWith`) im Abfrageparameter `$filter` gibt. Weitere Informationen finden Sie unter [Abfrageparameter in Microsoft Graph](/graph/query-parameters) und [ erweiterte Abfragefunktionen in Microsoft Graph](/graph/aad-advanced-queries).
+
 
 - [Auflisten von Benutzern](/graph/api/user-list)
 - [Erstellen eines Consumerbenutzers](/graph/api/user-post-users)

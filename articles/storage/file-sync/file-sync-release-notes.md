@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/2/2021
+ms.date: 11/9/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 33433fe8556befaf2e34424ba35e71a66d433533
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 19e1d5f8eab559114f26d10a15c835cf0758b225
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452469"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133226"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -55,6 +55,9 @@ Die folgenden Versionen des Agents für die Azure-Dateisynchronisierung sind abg
 Die folgenden Versionshinweise gelten für Version 14.0.0.0 des Azure-Dateisynchronisierungs-Agents (Veröffentlichung: 29. Oktober 2021).
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>Verbesserungen und behobene Probleme
+- Weniger Transaktionen bei der Aufzählung von Cloud-Änderungsenumerationsaufgaben 
+    - Azure-Dateisynchronisierung verfügt über einen Cloud-Äänderungsenumerationsauftrag, der alle 24 Stunden ausgeführt wird,um Änderungen zu erkennen, die direkt in der Azure-Dateifreigabe und - synchronisierung vorgenommen wurden, und diese Änderungen mit Servern in Ihren Synchronisierungsgruppen zu synchronisieren. Wir haben Verbesserungen vorgenommen, um die Anzahl der Transaktionen zu reduzieren, wenn dieser Auftrag ausgeführt wird.
+
 - Verbesserte Anleitungen zur Bereitstellung von Serverendpunkten im Portal
     - Wenn Sie einen Serverendpunkt über das Portal entfernen, stellen wir nun eine Schritt-für-Schritt-Anleitung bereit, da nämlich der Serverendpunkt gelöscht werden könnte, sodass Sie Datenverluste vermeiden und sicherstellen können, dass sich Ihre Daten dort befinden, wo sie gespeichert werden müssen (Server- oder Azure-Dateifreigabe). Diese Funktion enthält auch neue PowerShell-Cmdlets (Get-StorageSyncStatus & New-StorageSyncUploadSession), die Sie auf Ihrem lokalen Server verwenden können, um Sie bei dem Aufhebungsprozess der Bereitstellung zu unterstützen.
 
@@ -63,6 +66,7 @@ Die folgenden Versionshinweise gelten für Version 14.0.0.0 des Azure-Dateisynch
 
 - Sonstige Verbesserungen
     - Die Azure-Dateisynchronisierung wird jetzt in der Region "USA, Westen 3" unterstützt.
+    - Ein Fehler wurde behoben, der dazu führte, dass FileSyncErrorsReport.ps1 Skript nicht die Liste aller Fehler pro Element bereitstellen konnte.
     - Reduzierte Transaktionen, wenn eine Datei aufgrund eines Synchronisierungsfehlers pro Element immer wieder nicht hochgeladen werden kann.
     - Zuverlässigkeits- und Telemetrieverbesserungen für Cloudtiering und Synchronisierung. 
 

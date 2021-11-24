@@ -748,6 +748,8 @@ items:
             href: data-lake-storage-introduction.md
       - name: Tutorials
         items:
+          - name: Verwenden mit Synapse SQL
+            href: data-lake-storage-use-sql.md
           - name: Verwenden mit Databricks und Spark
             href: data-lake-storage-use-databricks-spark.md
           - name: Verwenden mit Apache Hive und HDInsight

@@ -203,19 +203,23 @@
       items:
         - name: Verwenden von Geräte- und Dienst-SDKs
           items:
-            - name: Verwenden des Azure IoT-Geräte-SDKs für C
-              href: iot-hub-device-sdk-c-intro.md
+            - name: Azure IoT Embedded C SDK
+              href: iot-hub-device-embedded-c-sdk.md
+            - name: Azure IoT C SDK
               items:
-                - name: Verwenden von IoTHubClient
-                  href: iot-hub-device-sdk-c-iothubclient.md
-            - name: Ressourceninformationen zu Azure IoT C SDK
-              href: 'https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md'
-            - name: Entwickeln für eingeschränkte Geräte
-              href: iot-hub-devguide-develop-for-constrained-devices.md
-            - name: Entwickeln für mobile Geräte
-              href: iot-hub-how-to-develop-for-mobile-devices.md
-            - name: Entwickeln für die Android Things-Plattform
-              href: iot-hub-how-to-android-things.md
+                - name: Verwenden des Azure IoT C SDK
+                  href: iot-hub-device-sdk-c-intro.md
+                  items:
+                    - name: Verwenden von IoTHubClient
+                      href: iot-hub-device-sdk-c-iothubclient.md
+                - name: Ressourceninformationen zu Azure IoT C SDK
+                  href: 'https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md'
+                - name: Entwickeln für eingeschränkte Geräte
+                  href: iot-hub-devguide-develop-for-constrained-devices.md
+                - name: Entwickeln für mobile Geräte
+                  href: iot-hub-how-to-develop-for-mobile-devices.md
+                - name: Entwickeln für die Android Things-Plattform
+                  href: iot-hub-how-to-android-things.md
         - name: Steuern eines Geräts in Android
           href: quickstart-control-device-android.md
         - name: Abfragen von Avro-Daten aus einer Hubroute

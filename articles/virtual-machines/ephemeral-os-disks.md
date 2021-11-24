@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: aarthiv
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6ab8c0d7d1e547d564ddc3329858ddc49d51185b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 845bb5f4830c53b4fc4f6688851775afa908af73
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131448973"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135296"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer
 
@@ -33,18 +33,21 @@ Die wichtigsten Features von kurzlebigen Datenträgern sind:
  
 Die Hauptunterschiede zwischen permanenten und kurzlebigen Betriebssystem-Datenträgern:
 
-|                             | Permanenter Betriebssystem-Datenträger                          | Kurzlebiger Betriebssystemdatenträger                              |
-|-----------------------------|---------------------------------------------|------------------------------------------------|
-| **Maximale Größe für Betriebssystem-Datenträger**      | 2 TiB                                                                                        | Cachegröße für die VM-Größe oder 2TiB, je nachdem, was kleiner ist. Informationen zur **Cachegröße in GiB** finden Sie unter [DS](sizes-general.md), [ES](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md) und [GS](sizes-previous-gen.md#gs-series).              |
-| **Unterstützte VM-Größen**          | All                                                                                          | VM-Größen, die Storage Premium unterstützen, etwa DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M, Mdsv2,Bs, Dav4, Eav4                                               |
-| **Unterstützung für Datenträgertyp**           | Verwalteter und nicht verwalteter Betriebssystem-Datenträger                                                                | Nur verwalteter Betriebssystem-Datenträger                                                               |
-| **Unterstützung für Regionen**              | Alle Regionen                                                                                  | Alle Regionen                              |
-| **Datenpersistenz**            | Auf Betriebssystem-Datenträger geschriebene Daten von einem Betriebssystem-Datenträger werden in Azure Storage gespeichert.                                  | Auf den Betriebssystem-Datenträger geschriebene Daten werden auf dem lokalen VM-Speicher gespeichert und nicht in Azure Storage gespeichert. |
-| **Status „Zuordnung aufgehoben“**      | Die Zuordnung von VMs und Skalierungsgruppeninstanzen kann aufgehoben und sie können aus diesem Zustand neu gestartet werden. | Die Zuordnung für VMS und Skalierungsgruppeninstanzen kann nicht aufgehoben werden.                                  |
-| **Unterstützung der spezialisierte Betriebssystem-Datenträger** | Ja                                                                                          | Nein                                                                                 |
-| **Änderung der Betriebssystem-Datenträgergröße**              | Wird während der VM-Erstellung und nach dem Aufheben der VM-Zuordnung unterstützt.                                | Wird nur während der VM-Erstellung unterstützt.                                                  |
-| **Ändern der Größe in eine neue VM-Größe**   | Daten des Betriebssystem-Datenträgers werden beibehalten.                                                                    | Daten auf dem Betriebssystem-Datenträger werden gelöscht, Betriebssystem wird erneut bereitgestellt       
-| **Platzierung der Auslagerungsdatei**   | Unter Windows ist die Auslagerungsdatei auf dem Ressourcendatenträger gespeichert                                              | Für Windows wird die Seitendatei auf dem Betriebssystemdatenträger gespeichert (sowohl für die Platzierung des Betriebssystemcaches als auch für die Platzierung temporärer Datenträger).   |
+|   | Permanenter Betriebssystem-Datenträger | Kurzlebiger Betriebssystemdatenträger |
+|---|---|---|
+| **Maximale Größe für Betriebssystem-Datenträger** | 2 TiB | Cachegröße für die VM-Größe oder 2TiB, je nachdem, was kleiner ist. Informationen zur **Cachegröße in GiB** finden Sie unter [DS](sizes-general.md), [ES](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md) und [GS](sizes-previous-gen.md#gs-series). |
+| **Unterstützte VM-Größen** | All | VM-Größen, die Storage Premium unterstützen, etwa DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M, Mdsv2,Bs, Dav4, Eav4 |
+| **Unterstützung für Datenträgertyp**| Verwalteter und nicht verwalteter Betriebssystem-Datenträger| Nur verwalteter Betriebssystem-Datenträger|
+| **Unterstützung für Regionen**| Alle Regionen| Alle Regionen|
+| **Datenpersistenz**| Auf Betriebssystem-Datenträger geschriebene Daten von einem Betriebssystem-Datenträger werden in Azure Storage gespeichert.| Auf den Betriebssystem-Datenträger geschriebene Daten werden auf dem lokalen VM-Speicher gespeichert und nicht in Azure Storage gespeichert. |
+| **Status „Zuordnung aufgehoben“**| Die Zuordnung von VMs und Skalierungsgruppeninstanzen kann aufgehoben und sie können aus diesem Zustand neu gestartet werden. | Die Zuordnung für VMS und Skalierungsgruppeninstanzen kann nicht aufgehoben werden.|
+| **Unterstützung der spezialisierte Betriebssystem-Datenträger** | Ja| Nein|
+| **Änderung der Betriebssystem-Datenträgergröße**| Wird während der VM-Erstellung und nach dem Aufheben der VM-Zuordnung unterstützt.| Wird nur während der VM-Erstellung unterstützt.|
+| **Ändern der Größe in eine neue VM-Größe**| Daten des Betriebssystem-Datenträgers werden beibehalten.| Daten auf dem Betriebssystem-Datenträger werden gelöscht, Betriebssystem wird erneut bereitgestellt |
+| **Erneute Bereitstellung** | Daten des Betriebssystem-Datenträgers werden beibehalten. | Daten auf dem Betriebssystem-Datenträger werden gelöscht, Betriebssystem wird erneut bereitgestellt | 
+| **Beenden/Starten des VM** | Daten des Betriebssystem-Datenträgers werden beibehalten. | Daten auf dem Betriebssystem-Datenträger werden gelöscht, Betriebssystem wird erneut bereitgestellt | 
+| **Platzierung der Auslagerungsdatei**| Unter Windows ist die Auslagerungsdatei auf dem Ressourcendatenträger gespeichert| Für Windows wird die Seitendatei auf dem Betriebssystemdatenträger gespeichert (sowohl für die Platzierung des Betriebssystemcaches als auch für die Platzierung temporärer Datenträger).|
+
 
 ## <a name="size-requirements"></a>Größenanforderungen
 

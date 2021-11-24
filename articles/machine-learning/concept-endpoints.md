@@ -11,12 +11,12 @@ author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2, ignite-fall-2021
 ms.date: 10/21/2021
-ms.openlocfilehash: 03d5c93d27587e88ae1f21e12b8a729fab042ac7
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 7129286a0a91e27e80ebe4a6f3fc99e2b0e6c9b8
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554030"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135937"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>Was sind Azure Machine Learning-Endpunkte (Vorschau)? 
 
@@ -129,7 +129,7 @@ Es gibt zwei Arten von Onlineendpunkten: **Verwaltete Onlineendpunkte** (Vorscha
 | **Standardmäßige Protokollierung** | [Azure-Protokolle und Log Analytics auf Endpunktebene](how-to-deploy-managed-online-endpoints.md#optional-integrate-with-log-analytics) | Unterstützt |
 | **Application Insights** | Unterstützt | Unterstützt |
 | **Verwaltete Identität** | [Unterstützt](how-to-access-resources-from-endpoints-managed-identities.md) | Unterstützt |
-| **Virtuelles Netzwerk (VNET)** | Nicht unterstützt (öffentliche Vorschauversion) | Unterstützt |
+| **Virtuelles Netzwerk (VNET)** | Noch nicht unterstützt (wir arbeiten daran) | Unterstützt |
 | **Anzeigen von Kosten** | [Endpunkt- und Bereitstellungsebene](how-to-view-online-endpoints-costs.md) | Clusterebene |
 
 ### <a name="managed-online-endpoints"></a>Verwaltete Onlineendpunkte

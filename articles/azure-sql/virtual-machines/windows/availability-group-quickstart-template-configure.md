@@ -11,21 +11,24 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/04/2019
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 612280242c528065c8ba74ccd745cca28e7af1bd
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 28bb5d12d2eb7657a199f902d6ffe6c542c86901
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167059"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158503"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Verwenden von Azure-Schnellstartvorlagen zum Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In diesem Artikel erfahren Sie, wie Sie die Bereitstellung einer Always On-Verfügbarkeitsgruppenkonfiguration für virtuelle SQL Server-Computer (VMs) in Azure mithilfe von Azure-Schnellstartvorlagen teilweise automatisieren. Bei diesem Prozess werden zwei Azure-Schnellstartvorlagen verwendet: 
+> [!TIP]
+> Eliminieren Sie die Notwendigkeit eines Azure Load Balancer für Ihre Always On Availability (AG) Gruppe, indem Sie Ihre SQL Server VMs in [mehreren Subnetzen](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) innerhalb desselben virtuellen Azure Netzwerks erstellen.
+
+Dieser Artikel beschreibt die Verwendung der Azure-Schnellstartvorlagen zur teilweisen Automatisierung der Bereitstellung einer Always On-Verfügbarkeitsgruppenkonfiguration für virtuelle SQL Server-Maschinen (VMs) innerhalb eines einzelnen Subnetzes in Azure. Bei diesem Prozess werden zwei Azure-Schnellstartvorlagen verwendet: 
 
    | Vorlage | BESCHREIBUNG |
    | --- | --- |
@@ -35,7 +38,7 @@ In diesem Artikel erfahren Sie, wie Sie die Bereitstellung einer Always On-Verf�
 
 Andere Aufgaben der Verfügbarkeitsgruppenkonfiguration müssen manuell ausgeführt werden – etwa die Erstellung der Verfügbarkeitsgruppe und des internen Lastenausgleichs. Dieser Artikel enthält die Abfolge der automatisierten und manuellen Schritte.
 
-In diesem Artikel wird die Umgebung der Verfügbarkeitsgruppen mit Azure-Schnellstartvorlagen konfiguriert. Diese Konfiguration kann aber auch über das [Azure-Portal](availability-group-azure-portal-configure.md), [PowerShell oder die Azure CLI](availability-group-az-commandline-configure.md) sowie [manuell](availability-group-manually-configure-tutorial.md) erfolgen. 
+In diesem Artikel wird die Umgebung der Verfügbarkeitsgruppen mit Azure-Schnellstartvorlagen konfiguriert. Diese Konfiguration kann aber auch über das [Azure-Portal](availability-group-azure-portal-configure.md), [PowerShell oder die Azure CLI](availability-group-az-commandline-configure.md) sowie [manuell](availability-group-manually-configure-tutorial-single-subnet.md) erfolgen. 
 
 > [!NOTE]
 > Sie können Ihre Verfügbarkeitsgruppenlösung jetzt mithilfe von Azure Migrate per Lift & Shift zu SQL Server auf Azure-VMs migrieren. Weitere Informationen finden Sie unter [Migrieren von Verfügbarkeitsgruppen](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md). 

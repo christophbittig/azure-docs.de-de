@@ -10,12 +10,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 311acb544a50758ec39314666201294c3930fdbc
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: da1ecbbc9f4d6b318c7829b946da5495104e4632
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132026803"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135453"
 ---
 # <a name="conditional-access-filter-for-devices"></a>Bedingter Zugriff: Filter für Geräte
 
@@ -122,7 +122,7 @@ Die folgenden Geräteattribute können mit der Bedingung „Filter für Geräte�
 | mdmAppId | Equals, NotEquals, In, NotIn | Gültige MDM-Anwendungs-ID | (device.mdmAppId -in [“0000000a-0000-0000-c000-000000000000“] |
 | model | Equals, NotEquals, StartsWith, NotStartsWith, EndsWith, NotEndsWith, Contains, NotContains, In, NotIn | Beliebige Zeichenfolge | (device.model -notContains „Surface“) |
 | operatingSystem | Equals, NotEquals, StartsWith, NotStartsWith, EndsWith, NotEndsWith, Contains, NotContains, In, NotIn | Gültiges Betriebssystem (z. B. Windows, iOS oder Android) | (device.operatingSystem -eq „Windows“) |
-| operatingSystemVersion | Equals, NotEquals, StartsWith, NotStartsWith, EndsWith, NotEndsWith, Contains, NotContains, In, NotIn | Gültige Betriebssystemversion (z. B. 6.1 für Windows 7, 6.2 für Windows 8 oder 10.0 für Windows 10) | (device.operatingSystemVersion -in [„10.0.18363“, „10.0.19041”, „10.0.19042”]) |
+| operatingSystemVersion | Equals, NotEquals, StartsWith, NotStartsWith, EndsWith, NotEndsWith, Contains, NotContains, In, NotIn | Eine gültige Betriebssystemversion (z. B. 6.1 für Windows 7, 6.2 für Windows 8 oder 10.0 für Windows 10 und Windows 11) | (device.operatingSystemVersion -in [„10.0.18363“, „10.0.19041”, „10.0.19042”, „10.0.22000“]) |
 | physicalIds | Contains, NotContains | Beispiel: Alle Windows Autopilot-Geräte speichern ZTDId (eindeutiger Wert, der allen importierten Windows Autopilot-Geräten zugewiesen ist) in der PhysicalIds-Eigenschaft des Geräts. | (device.devicePhysicalIDs -contains "[ZTDId]:value") |
 | profileType | Equals, NotEquals | Gültiger Profiltyp, der für ein Gerät festgelegt ist. Unterstützte Werte: RegisteredDevice (Standard), SecureVM (für virtuelle Windows-Computer, die in Azure mit Azure AD-Anmeldung aktiviert sind), Printer (für Drucker), Shared (für freigegebene Geräte), IoT (für IoT-Geräte) | (device.profileType -notIn [„Printer“, „Shared“, „IoT“] |
 | systemLabels | Contains, NotContains | Liste der Bezeichnungen, die vom System auf das Gerät angewendet werden. Einige unterstützte Werte: AzureResource (für virtuelle Windows-Computer, die in Azure mit Azure AD-Anmeldung aktiviert sind), M365Managed (für mit Microsoft Managed Desktop verwaltete Geräte), MultiUser (für freigegebene Geräte) | (device.systemLabels -contains "M365Managed") |

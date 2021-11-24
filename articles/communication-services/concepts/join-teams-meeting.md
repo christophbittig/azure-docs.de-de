@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 6b6444ef42e0ada42f374ed5d1e69aefd332a983
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 74a39ff953c1ef8e549dbace0c7fc495976fae2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131438871"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325522"
 ---
 # <a name="join-a-teams-meeting"></a>Teilnehmen an einer Teams-Besprechung
 
@@ -36,7 +36,7 @@ Benutzerdefinierte Anwendungen, die mit Azure Communication Services erstellt wu
 
 ## <a name="meeting-experience"></a>Benutzererfahrung während der Besprechung
 
-Genau wie beim anonymen Besprechungsbeitritt von Teams muss Ihre Anwendung über den Besprechungslink für den Beitritt verfügen. Dieser kann über die Graph-API oder aus dem Kalender in Microsoft Teams abgerufen werden. Die Namen von in Teams angezeigten BYOI-Benutzern können über das Anruf-SDK von Communication Services konfiguriert werden und sind als „extern“ gekennzeichnet, um Teams-Benutzern mitzuteilen, dass sie nicht über Azure Active Directory authentifiziert wurden.
+Genau wie beim anonymen Besprechungsbeitritt von Teams muss Ihre Anwendung über den Besprechungslink für den Beitritt verfügen. Dieser kann über die Graph-API oder aus dem Kalender in Microsoft Teams abgerufen werden. Die Namen von in Teams angezeigten BYOI-Benutzern können über das Anruf-SDK von Communication Services konfiguriert werden und sind als „extern“ gekennzeichnet, um Teams-Benutzern mitzuteilen, dass sie nicht über Azure Active Directory authentifiziert wurden. Wenn der erste ACS-Benutzer einer Teams-Besprechung beitritt, zeigt der Teams-Client eine Meldung an, die angibt, dass einige Features möglicherweise nicht verfügbar sind, da einer der Teilnehmer einen benutzerdefinierten Client verwendet.
 
 Während einer Besprechung können Communication Services-Benutzer grundlegende Audio-, Video-, Bildschirmfreigabe- und Chatfunktionen über Azure Communication Services SDKs verwenden. Sobald ein Communication Services-Benutzer die Besprechung verlässt oder die Besprechung beendet wird, kann er keine neuen Chatnachrichten mehr senden oder empfangen. Er kann jedoch weiterhin auf Nachrichten zugreifen, die während der Besprechung gesendet und empfangen wurden. Anonyme Communication Services-Benutzer können der Besprechung keine zusätzlichen Teilnehmer hinzufügen oder sie aus ihr entfernen, und sie können für die Besprechung keine Aufzeichnung oder Transkription starten.
 

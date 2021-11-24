@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54155113920c61d2f32474f0fac2414a6751bcdf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 997b3ec9b784b8b52b826b526102a97bce7d3286
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067411"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301053"
 ---
 # <a name="building-a-conditional-access-policy"></a>Erstellen einer Richtlinie für bedingten Zugriff
 
@@ -44,7 +44,7 @@ Alle Richtlinien werden in zwei Phasen erzwungen:
       - Verwaltetes Gerät (kompatibel oder hybrid in Azure AD eingebunden) 
       - Nutzungsbedingungen 
       - Benutzerdefinierte Steuerelemente  
-   - Sobald alle Anforderungen der Gewährungssteuerelemente erfüllt wurden, wenden Sie Sitzungssteuerelemente an (von der App erzwungene Berechtigungen, Microsoft Cloud App Security und Tokengültigkeitsdauer). 
+   - Sobald alle Anforderungen der Gewährungssteuerelemente erfüllt wurden, wenden Sie Sitzungssteuerelemente an (von der App erzwungene Berechtigungen, Microsoft Defender für Cloud Apps und Tokengültigkeitsdauer). 
    - Die zweite Phase der Richtlinienauswertung wird für alle aktivierten Richtlinien durchlaufen. 
 
 ## <a name="assignments"></a>Zuweisungen
@@ -128,7 +128,7 @@ Administratoren können mithilfe der folgenden Optionen auswählen, ob eins der 
    - Funktioniert derzeit nur mit Exchange Online und SharePoint Online.
       - Übergibt Geräteinformationen, um das Gewähren von vollständigem oder eingeschränktem Zugriff auf die Umgebung zu steuern.
 - App-Steuerung für bedingten Zugriff verwenden
-   - Verwendet Signale von Microsoft Cloud App Security, um Folgendes auszuführen: 
+   - Verwendet Signale von Microsoft Defender für Cloud Apps, um beispielsweise: 
       - Blockiert das Herunterladen, Ausschneiden, Kopieren und Drucken von sensiblen Dokumenten.
       - Überwacht das Verhalten riskanter Sitzungen.
       - Erzwingt das Bezeichnen von sensiblen Dateien.
@@ -162,4 +162,4 @@ Der Artikel [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-
 
 [Verwalten der Gerätekonformität mit Intune](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security und bedingter Zugriff](/cloud-app-security/proxy-intro-aad)
+[Microsoft Defender für Cloud Apps und Bedingter Zugriff](/cloud-app-security/proxy-intro-aad)

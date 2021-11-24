@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory-Integration mit F5 BIG-IP für formularbasierte Authentifizierung mit einmaligem Anmelden
+title: F5 BIG-IP APM und Azure AD SSO für formularbasierte Authentifizierungsanwendungen
 description: Erfahren Sie, wie Sie den BIG-IP-Zugriffsrichtlinienverwalter (APM) von F5 integrieren und Azure Active Directory einen sicheren Hybridzugriff auf formularbasierte Anwendungen ermöglichen.
 author: gargi-sinha
 ms.service: active-directory
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.date: 10/20/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51fb95b6f79bd306a1e936fa99da7a55fe2eea2a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8306c9f0035eababdcf5feb115786982d78f0d52
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131039928"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137172"
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-f5-big-ip-for-forms-based-authentication-single-sign-on"></a>Tutorial: Integration von Azure Active Directory mit F5 BIG-IP für formularbasierte Authentifizierung mit einmaligem Anmelden
 
@@ -40,9 +40,13 @@ Stattdessen wird eine BIG-IP Virtual Edition (VE) zwischen dem Internet und dem 
 
 Mit einer BIG-IP vor der Anwendung können wir den Dienst mit Azure AD-Vorauthentifizierung und formularbasiertem SSO überlagern und so die Gesamtsicherheit der Anwendung erheblich verbessern, so dass das Unternehmen ohne Unterbrechung weiter tätig sein kann.
 
+Die vom BIG-IP APM zwischengespeicherten Benutzeranmeldeinformationen sind dann für SSO mit anderen formularbasierten Authentifizierungsanwendungen verfügbar.
+
+## <a name="scenario-architecture"></a>Szenario-Architektur
+
 Die sichere Hybridzugriffslösung für dieses Szenario besteht aus den folgenden Komponenten:
 
-**Anwendung**: Back-End-Dienst, der durch Azure AD - und sicheren BIG-IP-Hybridzugriff geschützt wird Diese spezielle Anwendung überprüft Benutzeranmeldeinformationen anhand einer Open Source-Anwendung. Dies kann jedoch ein beliebiges Verzeichnis sein, einschließlich Active Directory, LDS usw.
+**Anwendung**: Back-End-Dienst, der durch Azure AD - und sicheren BIG-IP-Hybridzugriff geschützt wird Diese spezielle Anwendung validiert Benutzeranmeldeinformationen anhand von Active Directory (AD), aber dies kann jedes beliebige Verzeichnis sein, einschließlich LDS (AD Lightweight Directory Services), Open Source usw.
 
 **Azure AD**: Der SAML-Identitätsanbieter (IDP), der für die Überprüfung der Benutzeranmeldeinformationen, des bedingten Zugriffs (Conditional Access, CA) und des einmaligen Anmeldens bei big-IP-APM verantwortlich ist.
 
@@ -53,13 +57,13 @@ Die sichere Hybridzugriffslösung für dieses Szenario besteht aus den folgenden
 | Schritte | Beschreibung|
 |:-------|:----------|
 | 1. | Der Benutzer stellt eine Verbindung mit dem SAML SP-Endpunkt der Anwendung (BIG-IP APM) her.|
-|2. | BIG-IP leitet den Benutzer zur Vorabauthentifizierung an den SAML-Identitätsanbieter (Azure AD) weiter.|
-| 3. | SAML IdP authentifiziert den Benutzer und wendet alle geltenden Richtlinien für Zertifizierungsstellen an.|
-| 4. | Azure AD leitet den Benutzer mit ausgestellten Token und Ansprüchen zurück an SAML SP. |
-| 5. | APM erfordert die Eingabe des Anwendungskennworts und speichert dieses im Cache. |
-| 6. |  Die BIG-IP-Anforderung an die Anwendung erhält das Anmeldeformular.|
-| 7. | Die APM-Skripterstellung antwortet auf das Ausfüllen von Benutzername und Kennwort vor dem Übermitteln des Formulars.|
-| 8. | Die Anwendungsnutzlast wird vom Webserver bedient und an den Client gesendet. Optional erkennt APM eine erfolgreiche Anmeldung, indem der Antwortheader untersucht und nach einer Cookie- oder Umleitungs-URI gesucht wird. |
+| 2. | BIG-IP leitet den Benutzer zur Vorabauthentifizierung an den SAML-Identitätsanbieter (Azure AD) weiter.|
+| 3. | Azure AD authentifiziert die Benutzer und wendet alle erzwungenen Richtlinien für bedingten Zugriff an.|
+| 4. | Der Benutzer wird mit dem ausgestellten Token und den Ansprüchen zum SAML SP zurückgeleitet. |
+| 5. | BIG-IP fordert den Benutzer zur Eingabe des Anwendungskennworts auf und speichert es im Cache. |
+| 6. | BIG-IP sendet eine Anforderung an die Anwendung und erhält ein Anmeldeformular.|
+| 7. | APM-Scripting reagiert automatisch auf die Eingabe von Benutzername und Passwort vor dem Absenden des Formulars.|
+| 8. | Die Anwendungsnutzlast wird vom Webserver bedient und an den Client gesendet. Optional erkennt APM eine erfolgreiche Anmeldung, indem der Antwortheader untersucht und nach einer Cookie- oder Umleitungs-URI gesucht wird.|
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -89,9 +93,7 @@ Eine vorherige BIG-IP-Erfahrung ist nicht erforderlich, aber Sie benötigen:
 
 ## <a name="deployment-modes"></a>Bereitstellungsmodi
 
-Es gibt mehrere Methoden zum Konfigurieren einer BIG-IP-Adresse für dieses Szenario, darunter mehrere assistentenbasierte Optionen oder eine erweiterte Konfiguration.
-
-In diesem Tutorial wird der erweiterte Ansatz behandelt, der einen flexibleren Ansatz für die Implementierung eines sicheren Hybridzugriffs bietet, indem alle BIG-IP-Konfigurationsobjekte manuell erstellt werden. Sie würden diesen Ansatz auch für Szenarien verwenden, die nicht von der geführten Konfiguration abgedeckt werden.
+Es gibt mehrere Methoden zur Konfiguration eines BIG-IP für dieses Szenario. In diesem Tutorial wird der erweiterte Ansatz behandelt, der einen flexibleren Ansatz für die Implementierung eines sicheren Hybridzugriffs bietet, indem alle BIG-IP-Konfigurationsobjekte manuell erstellt werden. Dieser Ansatz eignet sich für Szenarien, die nicht von der vorlagenbasierten Guided Configuration abgedeckt werden.
 
 >[!NOTE]
 >Alle Beispielzeichenfolgen und -werte in diesem Artikel sollten durch die tatsächlichen Werte für Ihre Umgebung ersetzt werden.
@@ -230,7 +232,7 @@ Ein Zugriffsprofil bindet viele APM-Elemente, die den Zugriff auf virtuelle BIG-
 
 1. Navigieren Sie zu **Access** > **Profiles/Policies** > **Access Profiles (Per-Session Policies)**  > **Erstellen** aus, um die folgenden Informationen anzugeben:
 
-   | Eigenschaft | BESCHREIBUNG |
+   | Eigenschaft | Beschreibung |
    |:-----|:-------|
    | Name | Zum Beispiel, `MyVacation` |
    |Profiltyp | Alle |
@@ -355,11 +357,11 @@ Ein virtueller Server ist ein BIG-IP-Datenebenenobjekt, das durch eine virtuelle
 
 ## <a name="session-management"></a>Sitzungsverwaltung
 
-Eine BIG-IP-Sitzungsverwaltungseinstellung wird verwendet, um die Bedingungen zu definieren, unter denen Benutzersitzungen beendet oder fortgesetzt werden dürfen, sowie Grenzwerte für Benutzer und IP-Adressen sowie Fehlerseiten festzulegen. Sie können Ihre eigene Richtlinie erstellen, indem Sie auf **Zugriffsrichtlinie** > **Zugriffsprofile** klicken und Ihre Anwendung aus der Liste auswählen.
+Mit den Einstellungen für die Sitzungsverwaltung von BIG-IPs werden die Bedingungen festgelegt, unter denen Benutzersitzungen beendet oder fortgesetzt werden dürfen, sowie Grenzen für Benutzer und IP-Adressen und Fehlerseiten. Sie können Ihre eigene Richtlinie erstellen, indem Sie auf **Zugriffsrichtlinie** > **Zugriffsprofile** klicken und Ihre Anwendung aus der Liste auswählen.
 
-Im Hinblick auf die SLO-Funktionalität wird durch die Definition einer Single Log-out URI in Azure AD sichergestellt, dass eine vom IdP initiierte Abmeldung vom MyApps-Portal auch die Sitzung zwischen dem Client und dem BIG-IP APM beendet.
+Im Hinblick auf die SLO-Funktionalität wird durch die Definition einer Single Log-Out URI in Azure AD sichergestellt, dass eine vom IdP initiierte Abmeldung vom MyApps-Portal auch die Sitzung zwischen dem Client und dem BIG-IP APM beendet.
 
-Nach dem Import der Federation-Metadaten der Anwendung stellt xml dem APM den Azure AD SAML-Logout-Endpunkt für SP-initiierte Sign-Outs zur Verfügung. Damit dies wirklich effektiv ist, muss der APM genau wissen, wann sich ein Benutzer abmeldet.
+Nach dem Import der Verbund-Metadaten der Anwendung stellt xml dem APM den Azure AD SAML SLO-Endpunkt für vom SP initiierte Sign-outs zur Verfügung. Damit dies wirklich effektiv ist, muss der APM genau wissen, wann sich ein Benutzer abmeldet.
 
 Nehmen wir ein Szenario, in dem ein BIG-IP-Webportal nicht verwendet wird und der Benutzer keine Möglichkeit hat, den APM anzuweisen, sich abzumelden. Selbst wenn sich der Benutzer von der Anwendung selbst abmeldet, ist dies für BIG-IP technisch nicht erkennbar, sodass die Anwendungssitzung problemlos über SSO wiederhergestellt werden kann. Aus diesem Grund muss die SP-initiierte Abmeldesitzung sorgfältig überdingt werden, um sicherzustellen, dass Sitzungen sicher beendet werden, wenn sie nicht mehr benötigt werden.
 
@@ -377,14 +379,11 @@ Um die Sicherheit zu erhöhen, könnten Organisationen, die dieses Muster verwen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verbinden Sie sich über einen Browser mit der externen URL der Anwendung oder wählen Sie das Symbol der Anwendung im MyApps-Portal aus. Nach der Authentifizierung bei Azure AD werden Sie zum virtuellen BIG-IP-Server für die Anwendung weitergeleitet und zur Eingabe eines Passworts aufgefordert.
-
->[!Note]
->Der APM füllt den Benutzernamen im Voraus mit dem UPN aus Azure AD aus.
+Verbinden Sie sich über einen Browser mit der externen URL der Anwendung oder wählen Sie das Symbol der Anwendung im MyApps-Portal aus. Nach der Authentifizierung bei Azure AD werden Sie an den BIG-IP-Endpunkt für die Anwendung weitergeleitet und zur Eingabe eines Kennworts aufgefordert. Beachten Sie, wie der APM den Benutzernamen mit dem UPN aus Azure AD vorausfüllt. Der vom APM vorausgefüllte Benutzername ist schreibgeschützt, um die Sitzungskonsistenz zwischen Azure AD und der Backend-Anwendung sicherzustellen. Dieses Feld kann bei Bedarf durch zusätzliche Konfiguration ausgeblendet werden.
 
 ![Sceenshot zeigt gesichertes SSO](./media/f5-big-ip-forms-advanced/secured-sso.png)
 
-Nach der Anmeldung sollte der Benutzer automatisch bei der Anwendung angemeldet werden, und das Kennwort sollte für die Wiederverwendung für alle anderen Anwendungen zwischengespeichert werden, die mithilfe des FBA-SSO-Zugriffsprofils veröffentlicht wurden.
+Nach dem Absenden sollte der Benutzer automatisch bei der Anwendung angemeldet werden.
 
 ![Sceenshot zeigt Begrüßungsnachricht](./media/f5-big-ip-forms-advanced/welcome-message.png)
 

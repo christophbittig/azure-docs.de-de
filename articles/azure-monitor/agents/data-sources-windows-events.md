@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: b87354ca6b7a079f60f8d64e2deae53b65cef167
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 444cbdc14d1d2d7d7237b79398b7d81ea43e8c80
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543851"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325579"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Datenquellen für das Sammeln von Windows-Ereignisprotokolldaten mit dem Log Analytics-Agent
 Windows-Ereignisprotokolle sind eine der gängigsten [Datenquellen](../agents/agent-data-sources.md) für Log Analytics-Agents auf virtuellen Windows-Computern, weil viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
@@ -30,7 +30,7 @@ Während der Eingabe des Namens des Ereignisprotokolls bietet Azure Monitor Vors
 [![Windows-Ereignisse konfigurieren](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
 
 > [!IMPORTANT]
-> Die Erfassung von Sicherheitsereignissen kann nicht im Arbeitsbereich konfiguriert werden. Sie müssen [Azure Security Center](../../security-center/security-center-enable-data-collection.md) oder [Azure Sentinel](../../sentinel/connect-windows-security-events.md) verwenden, um Sicherheitsereignisse zu sammeln.
+> Die Erfassung von Sicherheitsereignissen kann nicht im Arbeitsbereich konfiguriert werden. Sie müssen [Microsoft Defender für Cloud](../../security-center/security-center-enable-data-collection.md) oder Microsoft [Sentinel](../../sentinel/connect-windows-security-events.md) verwenden, um Sicherheitsereignisse zu sammeln.
 
 
 > [!NOTE]

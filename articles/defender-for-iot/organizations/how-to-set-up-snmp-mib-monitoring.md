@@ -1,14 +1,14 @@
 ---
 title: Einrichten der SNMP-MIB-Überwachung
 description: Sie können die Überwachung der Sensorintegrität mithilfe von SNMP durchführen. Der Sensor antwortet auf SNMP-Abfragen, die von einem autorisierten Überwachungsserver gesendet wurden.
-ms.date: 12/14/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 14803fd2f9c088fb4454f97ff1524e8d651ccd05
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: dc9baa68c39ec049f1ca717f1bb34a364d6bad10
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016757"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278719"
 ---
 # <a name="set-up-snmp-mib-monitoring"></a>Einrichten der SNMP-MIB-Überwachung
 
@@ -33,7 +33,7 @@ Bevor Sie mit der Konfiguration der SNMP-Überwachung beginnen, müssen Sie den 
 | Datenträgerverwendung | 1.3.6.1.4.1.53313.3.4 | GAUGE32 | Angabe für 0 (null) bis 100 |
 | Dienststatus | 1.3.6.1.4.1.53313.5  |STRING | Online oder offline, wenn eine der vier entscheidenden Komponenten ausfällt |
 | Dienststatus | 1.3.6.1.4.1.53313.5  |STRING | Online oder offline, wenn eine der vier entscheidenden Komponenten ausfällt |
-| Lokal/Verbunden mit Cloud | 1.3.6.1.4.1.53313.6   |STRING | Hiermit wird angegeben, ob der Sensor mit dem Azure Defender für IoT-Portal verbunden ist oder nur lokal verwaltet wird. |
+| Lokal/Verbunden mit Cloud | 1.3.6.1.4.1.53313.6   |STRING | Gibt an, ob der Sensor mit Defender für IoT in Azure verbunden ist oder nur vor Ort verwaltet wird |
 | Lizenzstatus | 1.3.6.1.4.1.53313.5  |STRING | Hiermit wird angegeben, ob die Aktivierungsdatei abgelaufen ist oder nicht. |
 
    - Nicht vorhandene Schlüssel antworten mit Null, HTTP 200, basierend auf [Stack Overflow](https://stackoverflow.com/questions/51419026/querying-for-non-existing-record-returns-null-with-http-200).

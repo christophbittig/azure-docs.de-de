@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie manuell ein Volume mit Azure Files für die V
 services: container-service
 ms.topic: article
 ms.date: 07/08/2021
-ms.openlocfilehash: c68783cd614ca5dc1a569f17365992a378d225b9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d303e00c7f1a7ef76bb048048123b65eb42de402
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355122"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179955"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure Files-Freigabe in Azure Kubernetes Service (AKS)
 
@@ -61,7 +61,7 @@ Notieren Sie sich den Speicherkontonamen und den Schlüssel, die am Ende der Skr
 
 Kubernetes benötigt Anmeldeinformationen für den Zugriff auf die im vorherigen Schritt erstellte Dateifreigabe. Diese Anmeldeinformationen werden in einem [Kubernetes-Geheimnis][kubernetes-secret] gespeichert, auf das bei der Erstellung eines Kubernetes-Pod verwiesen wird.
 
-Verwenden Sie den Befehl `kubectl create secret`, um das Geheimnis zu erstellen. Das folgende Beispiel erstellt die Freigabe *azure-secret* und füllt *azurestorageaccountname* und *azurestorageaccountkey* aus dem vorherigen Schritt aus. Um ein vorhandenes Azure Storage-Konto zu verwenden, geben Sie den Kontonamen und den Zugriffsschlüssel an.
+Verwenden Sie den Befehl `kubectl create secret`, um das Geheimnis zu erstellen. Das folgende Beispiel erstellt ein Geheimnis mit dem Namen *azure-secret* und füllt die Felder *azurestorageaccountname* und *azurestorageaccountkey* aus dem vorherigen Schritt. Um ein vorhandenes Azure Storage-Konto zu verwenden, geben Sie den Kontonamen und den Zugriffsschlüssel an.
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY

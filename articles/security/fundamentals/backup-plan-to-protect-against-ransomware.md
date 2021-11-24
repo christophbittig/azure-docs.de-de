@@ -9,12 +9,12 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 08/27/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2c75b1ae5112b758282941efb20be245fed4d22d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5affe181185d726432596bfda6dad6f4f041de80
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014237"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277921"
 ---
 # <a name="backup-and-restore-plan-to-protect-against-ransomware"></a>Sicherungs- und Wiederherstellungsplan zum Schutz vor Ransomware
 
@@ -173,7 +173,7 @@ Microsoft Azure:
 
 - [Schutz vor Ransomware mit Microsoft Azure Backup](https://www.youtube.com/watch?v=VhLOr2_1MCg) (26-minütiges Video)
 - [Wiederherstellen nach kompromittierter Systemidentität](./recover-from-identity-compromise.md)
-- [Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel](../../sentinel/fusion.md#fusion-for-ransomware)
+- [Erweiterte mehrstufige Angriffserkennung in Microsoft Sentinel](../../sentinel/fusion.md#fusion-for-ransomware)
 
 Microsoft 365:
 
