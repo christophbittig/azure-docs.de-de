@@ -171,7 +171,7 @@
               href: sql/create-sql-api-python.md
     - name: Tutorials
       items:
-        - name: 1. Erstellen und Verwalten von Daten
+        - name: Erstellen und Verwalten von Daten
           items:
             - name: Erstellen einer Konsolen-App
               items:
@@ -191,18 +191,20 @@
                   href: sql/sql-api-java-application.md
                 - name: Node.js
                   href: sql/sql-api-nodejs-application.md
-        - name: 2. Migrieren von Daten
+        - name: Migrieren von Daten
           items:
             - name: Verwenden des Datenmigrationstools
               href: import-data.md
             - name: Unter Verwendung der .NET-Unterstützung für Massenvorgänge
               href: sql/tutorial-sql-api-dotnet-bulk-import.md
-        - name: 3. Abfragen von Daten
+        - name: Daten abfragen
           href: sql/tutorial-query-sql-api.md
-        - name: 4. Erstellen eines Notebooks
+        - name: Erstellen eines Notebooks
           href: sql/create-notebook-visualize-data.md
-        - name: 5. Globale Datenverteilung
+        - name: Globale Verteilung von Daten
           href: sql/tutorial-global-distribution-sql-api.md
+        - name: Spring Boot-App in Azure Kubernetes Service
+          href: sql/tutorial-springboot-azure-kubernetes-service.md
     - name: Beispiele
       items:
         - name: .NET V3 SDK-Beispiele
@@ -1477,6 +1479,8 @@
           href: configure-synapse-link.md
         - name: Herstellen einer Verbindung mit Azure Synapse Link
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Synapse Link und Integration von Power BI
+          href: integrated-power-bi-synapse-link.md
         - name: Analysespeicher und private Endpunkte
           href: analytical-store-private-endpoints.md
         - name: Abfragen mit Azure Synapse Spark 3
@@ -1497,7 +1501,7 @@
               href: continuous-backup-restore-permissions.md
             - name: 'Bereitstellen eines Kontos: Fortlaufende Sicherung'
               href: provision-account-continuous-backup.md
-            - name: Abrufen des letzten Wiederherstellungszeitstempels
+            - name: Abrufen des letzten wiederherstellbaren Zeitstempels
               href: get-latest-restore-timestamp.md
             - name: 'Wiederherstellen eines Kontos: Fortlaufende Sicherung'
               href: restore-account-continuous-backup.md

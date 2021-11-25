@@ -30,7 +30,7 @@
   items:
     - name: 1. Aktivieren von Defender for Cloud für Ihre Abonnements
       href: get-started.md
-    - name: 2. Aktivieren des erweiterten Schutzes
+    - name: 2. Aktivieren der erweiterten Sicherheitsfeatures
       href: enable-enhanced-security.md
     - name: 3. Verbinden von Hybridcomputern und Multi-Cloud-Computern
       items:

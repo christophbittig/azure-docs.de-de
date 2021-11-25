@@ -228,6 +228,9 @@ items:
                 href: concepts-integration-runtime-performance.md
               - name: Verwalten der Datenflusscanvas
                 href: concepts-data-flow-manage-graph.md
+              - name: Flowlets
+                href: concepts-data-flow-flowlet.md
+                displayName: flowlet
               - name: Ausdrucks-Generator
                 href: concepts-data-flow-expression-builder.md
                 displayName: 'regex, regular expressions'
@@ -643,6 +646,9 @@ items:
             href: data-flow-filter.md
           - name: Vereinfachen
             href: data-flow-flatten.md
+          - name: Flowlet
+            href: data-flow-flowlet.md
+            displayName: flowlet
           - name: Join
             href: data-flow-join.md
             displayName: 'merge, timeout'
@@ -945,6 +951,8 @@ items:
             href: solution-template-move-files.md
           - name: Transformation mit Azure Databricks
             href: solution-template-databricks-notebook.md
+          - name: Aufrufen der Synapse-Pipeline mit einer Notebookaktivität
+            href: solution-template-synapse-notebook.md
       - name: Grundlegendes zu Preisen
         items:
           - name: Übersicht über reservierte Kapazität für Datenflüsse

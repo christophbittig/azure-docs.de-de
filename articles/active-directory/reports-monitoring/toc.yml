@@ -54,6 +54,8 @@
   items:
     - name: Berichte
       items:
+        - name: Zugreifen auf Aktivitätsprotokolle
+          href: howto-access-activity-logs.md
         - name: Herunterladen von Protokollen
           href: howto-download-logs.md
         - name: "Verwalten inaktiver Benutzerkonten in Azure\_AD"
