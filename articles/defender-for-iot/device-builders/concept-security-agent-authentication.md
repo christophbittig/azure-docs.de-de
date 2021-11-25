@@ -1,14 +1,14 @@
 ---
 title: Authentifizierung des Sicherheits-Agents (Vorschau)
 description: Führen Sie die Micro-Agent-Authentifizierung mit zwei möglichen Methoden aus.
-ms.date: 1/20/2021
+ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8dd8abaedaaababf4d84330c5bf8cb030bac55bd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 2323a833d819a45eb3956cb89d155184b34ef058
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016109"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289999"
 ---
 # <a name="micro-agent-authentication-methods-preview"></a>Authentifizierungsmethoden für den Micro-Agent (Vorschau)
 
@@ -20,7 +20,7 @@ Es gibt zwei Authentifizierungsoptionen mit dem Micro-Agent von Defender für Io
 
 ## <a name="authentication-using-a-connection-string"></a>Authentifizierung mithilfe einer Verbindungszeichenfolge 
 
-Um eine Verbindungszeichenfolge zu verwenden, müssen Sie eine Datei, die die mit UTF-8 codierte Verbindungszeichenfolge verwendet, im Verzeichnis des Defender-Agents einer Datei namens `connection_string.txt` hinzufügen. Beispiel:
+Um eine Verbindungszeichenfolge zu verwenden, müssen Sie eine Datei, die die mit utf-8 codierte Verbindungszeichenfolge verwendet, im Verzeichnis des Defender-für-Cloud-Agents einer Datei namens `connection_string.txt` hinzufügen. Beispiel:
 
 ```azurecli
 echo “<connection string>” > connection_string.txt 
@@ -37,15 +37,15 @@ sudo systemctl restart defender-iot-micro-agent.service
 
 So erfolgt die Authentifizierung mithilfe eines Zertifikats 
 
-1. Legen Sie den mit PEM codierten öffentlichen Teil eines Zertifikats im Verzeichnis des Defender-Agents in einer Datei mit dem Namen `certificate_public.pem` ab.
-1. Legen Sie den mit PEM codierten privaten Schlüssel im Verzeichnis des Defender-Agents in einer Datei mit dem Namen `certificate_private.pem` ab.
+1. Legen Sie den mit PEM codierten öffentlichen Teil eines Zertifikats im Verzeichnis des Defender-für-Cloud-Agents in einer Datei mit dem Namen `certificate_public.pem` ab.
+1. Legen Sie den mit PEM codierten privaten Schlüssel im Verzeichnis des Defender-für-Cloud-Agents in einer Datei mit dem Namen `certificate_private.pem` ab.
 1. Platzieren Sie die passende Verbindungszeichenfolge in der Datei `connection_string.txt`. Beispiel:
 
     ```azurecli
     HostName=<the host name of the iot hub>;DeviceId=<the id of the device>;ModuleId=<the id of the module>;x509=true 
     ```
 
-    Diese Aktion zeigt an, dass der Defender-Agent zur Authentifizierung die Bereitstellung eines Zertifikats erwartet. 
+    Diese Aktion zeigt an, dass der Defender-für-Cloud-Agent zur Authentifizierung die Bereitstellung eines Zertifikats erwartet. 
 
 1. Starten Sie den Dienst mithilfe des folgenden Codes neu: 
 

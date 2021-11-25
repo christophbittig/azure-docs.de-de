@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 563d49ff66bdcd81a37a0bf1b12e910f16f2f5ff
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 54f164c60a5602bcfe798c98785fca1aa8513279
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036692"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292850"
 ---
 # <a name="understanding-licensing-and-per-user-access-pricing"></a>Grundlegendes zu Lizenzen und zu den Preisen für benutzerspezifischen Zugriff
 
@@ -24,7 +24,7 @@ In diesem Artikel werden die Lizenzierungsanforderungen für die Verwendung von 
 Im Zusammenhang mit der Bereitstellung einer virtualisierten Infrastruktur mit Azure Virtual Desktop bezieht sich **interner Benutzer** auf Personen, die Mitglieder Ihrer eigenen Organisation sind, zum Beispiel Mitarbeiter eines Unternehmens oder Schüler einer Schule. **Externe Benutzer** sind nicht Mitglieder Ihrer Organisation, zum Beispiel Kunden eines Unternehmens.
 
 >[!NOTE]
->Achten Sie darauf, dass Sie externe *Nutzer* nicht mit externen *Identitäten* verwechseln. Azure Virtual Desktop unterstützt derzeit keine externen Identitäten, einschließlich Gastzugänge und B2B-Identitäten (B2B). Unabhängig davon, ob Sie interne oder externe Nutzer mit dem Azure Virtual Desktop bedienen, müssen Sie Identitäten für diese Nutzer selbst erstellen und verwalten. Die Preise für den Zugriff pro Nutzer sind keine Möglichkeit, Gastnutzerkonten mit dem Azure Virtual Desktop zu aktivieren. Weitere Informationen finden Sie unter [Architektur.-Empfehlungen](architecture-recs.md).
+>Achten Sie darauf, dass Sie externe *Nutzer* nicht mit externen *Identitäten* verwechseln. Azure Virtual Desktop unterstützt derzeit keine externen Identitäten, einschließlich Gastzugänge und B2B-Identitäten (Business-to-Business). Unabhängig davon, ob Sie interne oder externe Nutzer mit dem Azure Virtual Desktop bedienen, müssen Sie Identitäten für diese Nutzer selbst erstellen und verwalten. Die Preise für den Zugriff pro Nutzer sind keine Möglichkeit, Gastnutzerkonten mit dem Azure Virtual Desktop zu aktivieren. Weitere Informationen finden Sie unter [Architektur.-Empfehlungen](architecture-recs.md).
 
 Die Lizenzierung von Azure Virtual Desktop funktioniert für interne und externe Benutzer unterschiedlich. Betrachten Sie die folgenden Beispiele:
 
@@ -70,7 +70,7 @@ Im Folgenden finden Sie eine Zusammenfassung der beiden Arten von Lizenzen für 
 
 ## <a name="licensing-other-products-and-services-for-use-with-azure-virtual-desktop"></a>Lizenzieren anderer Produkte und Dienste für die Verwendung mit Azure Virtual Desktop
 
-Die Azure Virtual Desktop-Lizenz für den Zugriff auf Benutzerebene ist kein vollständiger Ersatz für eine Windows- oder Microsoft 365-Lizenz. Lizenzen pro Benutzer gewähren nur Zugriffsrechte auf Azure Virtual Desktop und umfassen nicht Microsoft Office, Microsoft Defender oder Universal Print. Das bedeutet, dass Sie, wenn Sie sich für eine Lizenz pro Benutzer entscheiden, andere Produkte und Dienste separat lizenzieren müssen, um Ihren Benutzern den Zugriff auf diese in Ihrer Azure Virtual Desktop-Umgebung zu ermöglichen.
+Die Azure Virtual Desktop-Lizenz für den Zugriff auf Benutzerebene ist kein vollständiger Ersatz für eine Windows- oder Microsoft 365-Lizenz. Lizenzen pro Benutzer gewähren nur Zugriffsrechte auf den virtuellen Azure-Desktop (Azure Virtual Desktop) und umfassen nicht Microsoft Office, Microsoft 365 Defender oder Universal Print. Das bedeutet, dass Sie, wenn Sie sich für eine Lizenz pro Benutzer entscheiden, andere Produkte und Dienste separat lizenzieren müssen, um Ihren Benutzern den Zugriff auf diese in Ihrer Azure Virtual Desktop-Umgebung zu ermöglichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

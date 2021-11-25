@@ -8,12 +8,13 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 09/10/2021
 ms.author: rabhaiya
-ms.openlocfilehash: 6eca34979b1be4abc6985492bcace04072f4135d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: mode-portal
+ms.openlocfilehash: 6feeb319d96b74b2f7dac82236274f587ae75445
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748877"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133061541"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Schnellstart: Bereitstellen von Azure IoT-Konnektor für FHIR (Vorschauversion) mithilfe des Azure-Portals
 
@@ -170,12 +171,12 @@ Stellen Sie die [Anwendungsvorlage für die ständige Überwachung von Patienten
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>Verbinden Ihrer IoT-Daten mit Azure IoT-Konnektor für FHIR (Vorschauversion)
 
-Nach der Bereitstellung Ihrer IoT Central-Anwendung beginnen Ihre beiden vordefinierten simulierten Geräte mit dem Generieren von Telemetriedaten. In diesem Tutorial erfassen Sie die Telemetriedaten vom Simulator *Smart Vitals Patch* in FHIR über Azure IoT-Konnektor für FHIR. Wenn Sie Ihre IoT-Daten in Azure IoT-Konnektor für FHIR exportieren möchten, sollten Sie einen [fortlaufenden Datenexport in IoT Central einrichten](../../iot-central/core/howto-export-data.md). Zunächst müssen wir eine Verbindung mit dem Ziel herstellen und dann einen Datenexportauftrag erstellen, um kontinuierlich ausgeführt zu werden: 
+Nach der Bereitstellung Ihrer IoT Central-Anwendung beginnen Ihre beiden vordefinierten simulierten Geräte mit dem Generieren von Telemetriedaten. In diesem Tutorial erfassen Sie die Telemetriedaten vom Simulator *Smart Vitals Patch* in FHIR über Azure IoT-Konnektor für FHIR. Wenn Sie Ihre IoT-Daten in Azure IoT-Konnektor für FHIR exportieren möchten, sollten Sie einen [fortlaufenden Datenexport in IoT Central einrichten](../../iot-central/core/howto-export-data.md). Zunächst müssen wir eine Verbindung mit dem Ziel herstellen und dann einen Datenexportauftrag für die kontinuierliche Ausführung erstellen: 
 
 > [!NOTE]
-> Sie sollten **Datenexport** im Vergleich zum Datenexport **(Legacy)** in den App IoT Central einstellungen für diesen Abschnitt auswählen.
+> Sie sollten datenexport **und** Datenexport **(Legacy)** in den App IoT Central einstellungen für diesen Abschnitt auswählen.
 
-[![IoT Central Datenexport Einstellungen](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
+[![IoT Central Data Export Einstellungen](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
 
 Erstellen Sie ein neues Ziel:
 - Wechseln Sie zur **Registerkarte Ziele,** und erstellen Sie ein neues Ziel.
@@ -191,7 +192,7 @@ Erstellen Sie einen neuen Datenexport:
 
 ## <a name="view-device-data-in-azure-api-for-fhir"></a>Anzeigen von Gerätedaten in Azure API for FHIR
 
-Mithilfe von Postman können Sie die FHIR-basierten Überwachungsressourcen anzeigen, die von Azure IoT-Konnektor für FHIR in Azure API for FHIR erstellt wurden. Weitere Informationen finden Sie unter [Zugreifen auf den FHIR-Dienst mithilfe](./../use-postman.md) von Postman und Senden einer Anforderung an , um FHIR-Beobachtungsressourcen mit einem `GET` `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` Heartrate-Wert anzeigen zu lassen. 
+Mithilfe von Postman können Sie die FHIR-basierten Überwachungsressourcen anzeigen, die von Azure IoT-Konnektor für FHIR in Azure API for FHIR erstellt wurden. Weitere Informationen finden Sie unter [Zugreifen auf den FHIR-Dienst mithilfe](./../use-postman.md) von Postman und Senden einer Anforderung an , um FHIR-Beobachtungsressourcen mit `GET` einem `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` Heartrate-Wert anzeigen zu lassen. 
 
 > [!TIP]
 > Vergewissern Sie sich, dass Ihr Benutzer über die erforderlichen Zugriffsrechte für die Azure API for FHIR-Datenebene verfügt. Verwenden Sie die [rollenbasierte Zugriffssteuerung in Azure](configure-azure-rbac.md) (Azure Role-Based Access Control, Azure RBAC), um die erforderlichen Datenebenenrollen zuzuweisen.

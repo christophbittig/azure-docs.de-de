@@ -1,62 +1,62 @@
 ---
-title: Bereitstellen und Überwachen von Azure Key Vault Honeytoken mit Azure Sentinel | Microsoft-Dokumentation
-description: Setzen Sie Azure Key Vault Honeytoken-Schlüssel und Geheimnisse und überwachen diese mit Azure Sentinel.
+title: Bereitstellung und Überwachung von Azure Key Vault-Honeytokens mit Microsoft Sentinel
+description: Setzen Sie Azure Key Vault Honeytoken-Schlüssel und Geheimnisse und überwachen diese mit Microsoft Sentinel.
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/27/2021
+ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: 160abcf739cbece61d34cd3db4118fd9f2f0ed9f
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d63dd9b3b8f7b81b5955ce431cd5477d9e63ea1a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478941"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517024"
 ---
-# <a name="deploy-and-monitor-azure-key-vault-honeytokens-with-azure-sentinel-public-preview"></a>Stellen Sie Azure Key Vault Honeytoken bereit und überwachen sie mit Azure Sentinel (öffentliche Vorschau)
+# <a name="deploy-and-monitor-azure-key-vault-honeytokens-with-microsoft-sentinel-public-preview"></a>Stellen Sie Azure Key Vault Honeytoken bereit und überwachen sie mit Microsoft Sentinel (öffentliche Vorschau)
 
 > [!IMPORTANT]
-> Die Azure Sentinel-Lösung (Honeytoken) befindet sich derzeit in der VORSCHAU. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> Die Lösung Microsoft Sentinel Deception (Honeytoken) befindet sich derzeit in der VORSCHAU. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 >
 
-In diesem Artikel wird beschrieben, wie Sie die **Azure Sentinel Deception (Honey Token) Lösung** zur Täuschung verwenden, um [Azure Key Vault](/azure/key-vault/) Lockvogel-Schlüssel und Geheimnisse, die als *Honeytoken* bezeichnet werden, in vorhandene Workloads einzubringen.
+In diesem Artikel wird beschrieben, wie Sie die Lösung **Microsoft Sentinel Deception (Honeytoken)** zur Täuschung verwenden, um [Azure Key Vault](/azure/key-vault/) Lockvogel-Schlüssel und Geheimnisse, die als *Honeytoken* bezeichnet werden, in vorhandene Workloads einzubringen.
 
 Verwenden Sie [die Analyseregeln](detect-threats-built-in.md), [Watchlists](watchlists.md)und [Arbeitsmappen](monitor-your-data.md), die von der Lösung bereitgestellt werden, um den Zugriff auf die bereitgestellten Honeytoken zu überwachen.
 
 Wenn Sie Honeytoken in Ihrem System verwenden, bleiben die Erkennungsprinzipien unverändert. Da es keinen legitimen Grund für den Zugriff auf einen Honeytoken gibt, deutet jede Aktivität auf das Vorhandensein eines Benutzers hin, der nicht mit der Umgebung vertraut ist und möglicherweise ein Angreifer sein könnte.
 
-## <a name="before-you-begin"></a>Vorbereitung
+## <a name="before-you-begin"></a>Voraussetzungen
 
-Stellen Sie sicher, dass Sie über die folgenden Azure Sentinel verfügen, um mit der Verwendung der Lösung "Azure Sentinel-Täuschung **(Honeytoken)"** zu beginnen:
+Um mit der Verwendung der Lösung **Microsoft Sentinel Deception (Honeytoken)** zu beginnen, stellen Sie sicher, dass Sie über die folgenden Komponenten verfügen:
 
-- **Erforderliche Rollen**: Sie müssen Mandantenadministrator sein, um die Lösung Azure Sentinel **Deception (Honey Token)** zu installieren. Sobald die Lösung installiert ist, können Sie die Arbeitsmappe für Key Vault-Besitzer freigeben, damit sie ihre eigenen Honeytoken bereitstellen können.
+- **Erforderliche Rollen**: Sie müssen Mandantenadministrator sein, um die Lösung **Microsoft Sentinel Deception (Honeytoken)** zu installieren. Sobald die Lösung installiert ist, können Sie die Arbeitsmappe für Key Vault-Besitzer freigeben, damit sie ihre eigenen Honeytoken bereitstellen können.
 
 - **Erforderliche Datenconnectors:** Stellen Sie sicher, dass Sie die [Azure Key Vault](data-connectors-reference.md#azure-key-vault) und die [ Azure-Aktivitätsdatenconnectors](data-connectors-reference.md#azure-activity) in Ihrem Arbeitsbereich bereitgestellt haben und dass sie verbunden sind.
 
-    Vergewissern Sie sich, dass das Datenrouting erfolgreich war und die **KeyVault** und **AzureActivity**-Daten zu Azure Sentinel fließen. Weitere Informationen finden Sie unter
+  Vergewissern Sie sich, dass das Datenrouting erfolgreich war und die **KeyVault** und **AzureActivity**-Daten zu Microsoft Sentinel fließen. Weitere Informationen finden Sie unter
 
-    - [Verbinden von Azure Sentinel mit Azure-, Windows-, Microsoft- und Amazon-Diensten](connect-azure-windows-microsoft-services.md?tabs=AP#diagnostic-settings-based-connections)
-    - [Ermitteln des richtigen Azure Sentinel-Datenconnectors](data-connectors-reference.md)
+  - [Verbinden von Microsoft Sentinel mit Azure-, Windows-, Microsoft- und Amazon-Diensten](connect-azure-windows-microsoft-services.md?tabs=AP#diagnostic-settings-based-connections)
+  - [Suchen Ihres Microsoft Sentinel-Datenconnectors](data-connectors-reference.md)
 
 ## <a name="install-the-solution"></a>Installieren der Lösung
 
-Installieren Sie die **Azure Sentinel Deception (Honey Token)** Lösung so wie [jede andere Lösung](monitor-key-vault-honeytokens.md) auch. Wählen Sie auf der Seite für die **Azure Sentinel Deception** Lösung die Option **Start**, um zu beginnen.
+Installieren Sie die **Microsoft Sentinel Deception (Honeytoken)** Lösung so wie [jede andere Lösung](sentinel-solutions-deploy.md) auch. Wählen Sie auf der Seite für die **Azure Sentinel Deception** Lösung die Option **Start**, um zu beginnen.
 
 :::image type="content" source="media/monitor-key-vault-honeytokens/honeytoken-create-solution.png" alt-text="Screenshot der Erstellungsvalidierungsseite.":::
 
 **So installieren Sie die Lösung Deception**:
 
-In den folgenden Schritten werden bestimmte Aktionen beschrieben, die für die **Azure Sentinel Deception (Honey Token)** Lösung erforderlich sind.
+In den folgenden Schritten werden bestimmte Aktionen beschrieben, die für die Lösung **Microsoft Sentinel Deception (Honeytoken)** erforderlich sind.
 
-1. Wählen Sie auf der Registerkarte **Grundlagen** dieselbe Ressourcengruppe aus, in der sich Ihr Azure Sentinel Arbeitsbereich befindet.
+1. Wählen Sie auf der Registerkarte **Grundlagen** dieselbe Ressourcengruppe aus, in der sich Ihr Microsoft Sentinel Arbeitsbereich befindet.
 
 1. Geben Sie auf der Registerkarte **Voraussetzungen** im Feld **Name der Funktions-App** einen aussagekräftigen Namen für die Azure-Funktions-App ein, die Honeytoken in Ihren Schlüsseltresoren erstellt.
 
@@ -66,7 +66,7 @@ In den folgenden Schritten werden bestimmte Aktionen beschrieben, die für die *
 
     :::image type="content" source="media/monitor-key-vault-honeytokens/prerequisites.png" alt-text="Screenshot der Registerkarte &quot;Voraussetzungen&quot; mit dem aktualisierten curl-Befehl.":::
 
-1. Wählen Sie **Hier Klicken, um eine Cloud Shell zu öffnen**,damit Sie eine Cloud Shell Registerkarte öffnen können. Melden Sie sich an, wenn Sie dazu aufgefordert werden, und führen Sie dann den angezeigten Befehl aus. 
+1. Wählen Sie **Hier Klicken, um eine Cloud Shell zu öffnen**,damit Sie eine Cloud Shell Registerkarte öffnen können. Melden Sie sich an, wenn Sie dazu aufgefordert werden, und führen Sie dann den angezeigten Befehl aus.
 
     Das Skript, das Sie ausführen, erstellt eine Azure AD-Funktions-App (AAD), die Ihre Honeytoken bereitstellen wird.    Beispiel:
 
@@ -82,7 +82,7 @@ In den folgenden Schritten werden bestimmte Aktionen beschrieben, die für die *
     maria@Azure:~$curl -sL https://aka.ms/sentinelhoneytokensappcreate | bash -s HoneyTokenFunctionApp
     ```
 
-     Die Skriptausgabe enthält die AAD App-ID und das Geheimnis. Beispiel:
+    Die Skriptausgabe enthält die AAD App-ID und das Geheimnis. Beispiel:
 
     ```bash
     WARNING: The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
@@ -92,7 +92,7 @@ In den folgenden Schritten werden bestimmte Aktionen beschrieben, die für die *
     maria@Azure:~$
     ```
 
-1. Geben Sie Azure Sentinel unten auf der Registerkarte **Voraussetzungen** ein und die AAD App-ID sowie das Geheimnis in die relevanten Felder. Beispiel:
+1. Geben Sie Microsoft Sentinel unten auf der Registerkarte **Voraussetzungen** ein und die AAD App-ID sowie das Geheimnis in die relevanten Felder. Beispiel:
 
     :::image type="content" source="media/monitor-key-vault-honeytokens/client-app-secret-values.png" alt-text="Screenshot der Client-App-Funktion mit hinzugefügten Geheimniswerten.":::
 
@@ -104,11 +104,10 @@ In den folgenden Schritten werden bestimmte Aktionen beschrieben, die für die *
 
     Für weitere Informationen, siehe [Erteilen der Administratoreinwilligung in App-Registrierungen](/azure/active-directory/manage-apps/grant-admin-consent).
 
-1. Wieder im Azure Sentinel auf den Registerkarten **Arbeitsmappen**, **Analyse**, **Watchlists** und **Playbooks**, beachten Sie die Sicherheitsinhalte, die erstellt werden, und ändern Sie die Namen nach Bedarf.
+1. Wieder im Microsoft Sentinel auf den Registerkarten **Arbeitsmappen**, **Analyse**, **Watchlists** und **Playbooks**, beachten Sie die Sicherheitsinhalte, die erstellt werden, und ändern Sie die Namen nach Bedarf.
 
     > [!NOTE]
     > Weitere Anweisungen in diesem Artikel beziehen sich auf die Arbeitsmappen **HoneyTokensIncidents** und **SOCHTManagement**. Wenn Sie die Namen dieser Arbeitsmappen ändern, achten Sie darauf, die neuen Arbeitsmappennamen für Ihre eigenen Referenzzwecke zu notieren und sie nach Bedarf anstelle der Standardnamen zu verwenden.
-    >
 
 1. Definieren Sie auf der **Azure Functions** Registerkarte die folgenden Werte:
 
@@ -138,9 +137,9 @@ In den folgenden Schritten werden bestimmte Aktionen beschrieben, die für die *
 
     - Ein Link zu Ihrer **SOCHTManagement**-Arbeitsmappe. Möglicherweise haben Sie diesen Namen weiter oben in diesem Verfahren auf der Registerkarte **Arbeitsmappen** geändert.
 
-    - Der URL für eine benutzerdefinierte ARM-Vorlage. Sie können diese ARM-Vorlage verwenden, um eine Azure Policy-Initiative bereitzustellen, die mit einer benutzerdefinierten Azure Security Center-Empfehlung verbunden ist, welche die **SOCHTManagement**-Arbeitsmappe an KeyVault-Besitzer in Ihrer Organisation verteilt.
+    - Der URL für eine benutzerdefinierte ARM-Vorlage. Sie können diese ARM-Vorlage verwenden, um eine Azure Policy-Initiative bereitzustellen, die mit einer benutzerdefinierten Microsoft Defender für Cloud-Empfehlung verbunden ist, welche die **SOCHTManagement**-Arbeitsmappe an Key Vault-Besitzer in Ihrer Organisation verteilt.
 
-1. Auf der Registerkarte **Schritte nach der Bereitstellung** wird darauf hingewiesen, dass Sie die in der Bereitstellungsausgabe angezeigten Informationen verwenden können, um die benutzerdefinierte Azure Security Center-Empfehlung an alle Key Vault-Besitzer in Ihrer Organisation zu verteilen und zu empfehlen, Honeytoken in ihren Schlüsseltresoren bereitzustellen.
+1. Auf der Registerkarte **Schritte nach der Bereitstellung** wird darauf hingewiesen, dass Sie die in der Bereitstellungsausgabe angezeigten Informationen verwenden können, um die benutzerdefinierte Microsoft Defender für Cloud-Empfehlung an alle Key Vault-Besitzer in Ihrer Organisation zu verteilen und zu empfehlen, Honeytoken in ihren Schlüsseltresoren bereitzustellen.
 
     Verwenden Sie den [URL der benutzerdefinierten ARM-Vorlage](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2faka.ms%2fsentinelhoneytokenspolicy), die in der Installationsausgabe angezeigt wird, um die Seite **Benutzerdefinierte Bereitstellung** der verknüpften Vorlage zu öffnen.
 
@@ -148,13 +147,13 @@ In den folgenden Schritten werden bestimmte Aktionen beschrieben, die für die *
 
 ## <a name="deploy-your-honeytokens"></a>Bereitstellen Ihrer Honeytoken
 
-Nachdem Sie die Lösung **Azure Sentinel Deception (Honey Tokens)** installiert haben, können Sie mit der Bereitstellung von Honeytoken in Ihren Schlüsseltresoren beginnen, indem Sie die Schritte in der **SOCHTManagement**-Arbeitsmappe ausführen.
+Nachdem Sie die Lösung **Microsoft Sentinel Deception (Honeytoken)** installiert haben, können Sie mit der Bereitstellung von Honeytoken in Ihren Schlüsseltresoren beginnen, indem Sie die Schritte in der **SOCHTManagement**-Arbeitsmappe ausführen.
 
 Wir empfehlen, dass Sie die **SOCHTManagement**-Arbeitsmappe für Key Vault-Besitzer in Ihrer Organisation freigeben, damit diese ihre eigenen Honeytoken in ihren jeweiligen Schlüsseltresoren erstellen können. Möglicherweise haben Sie diese Arbeitsmappe bei der [Installation der Projektmappe](#install-the-solution) umbenannt. Achten Sie bei der Freigabe darauf, nur Leseberechtigungen zu erteilen.
 
 **Stellen Sie Honeytoken in Ihren Schlüsseltresoren bereit**:
 
-1. Wechseln Sie in Azure Sentinel zu **Arbeitsmappen > Meine Arbeitsmappen** und öffnen Sie die Arbeitsmappe **SOCHTManagement.** Möglicherweise haben Sie diesen Namen bei der Bereitstellung der Lösung geändert.
+1. Wechseln Sie in Microsoft Sentinel zu **Arbeitsmappen > Meine Arbeitsmappen** und öffnen Sie die Arbeitsmappe **SOCHTManagement.** Möglicherweise haben Sie diesen Namen bei der Bereitstellung der Lösung geändert.
 
 1. Wählen Sie **Gespeicherte Arbeitsmappe anzeigen** >  **aus und fügen als vertrauenswürdig** hinzu. Beispiel:
 
@@ -167,7 +166,6 @@ Wir empfehlen, dass Sie die **SOCHTManagement**-Arbeitsmappe für Key Vault-Besi
     In der Spalte **Von SOC überwacht** :::image type="icon" source="media/monitor-key-vault-honeytokens/checkmark.png" border="false":::gibt ein grünes Häkchen an, dass der Schlüsseltresor bereits über Honeytoken verfügt. Ein rotes X-Zeichen :::image type="icon" source="media/monitor-key-vault-honeytokens/xmark.png" border="false":::zeigt an, dass der Schlüsseltresor noch keine Honeytoken enthält. Beispiel:
 
     :::image type="content" source="media/monitor-key-vault-honeytokens/honeytokens-deployed.png" alt-text="Screenshot der SOCHTManagement-Arbeitsmappen mit bereitgestellten Honeytokens.":::
-
 
 1. Scrollen Sie auf der Arbeitsmappenseite nach unten, und verwenden Sie die Anweisungen und Links im Abschnitt **Ausführen einer Aktion**, um Honeytoken für alle Schlüsseltresore in großem Umfang bereitzustellen, oder setzen Sie sie manuell nacheinander.
 
@@ -187,7 +185,7 @@ Wir empfehlen, dass Sie die **SOCHTManagement**-Arbeitsmappe für Key Vault-Besi
 
         Wählen Sie unten auf der Seite **Erstellen** aus, um Ihre ARM-Vorlage bereitzustellen, und sehen Sie nach einer Bestätigungsseite für die erfolgreiche Bereitstellung.
 
-    1. Zurück in Azure Sentinel in ihrer **SOCHTManagement**-Arbeitsmappe > **Tätig werden** >  **Skalierte Bereitstellung**, wählen Sie den Link  **Klicken zur Bereitstellung**, um Honeytoken zu allen Schlüsseltresoren hinzuzufügen, auf die Sie im ausgewählten Abonnement Zugriff haben.
+    1. Zurück in Microsoft Sentinel in ihrer **SOCHTManagement**-Arbeitsmappe > **Tätig werden** >  **Skalierte Bereitstellung**, wählen Sie den Link  **Klicken zur Bereitstellung**, um Honeytoken zu allen Schlüsseltresoren hinzuzufügen, auf die Sie im ausgewählten Abonnement Zugriff haben.
 
         Wenn Sie fertig sind, werden ihre Honeytoken-Bereitstellungsergebnisse in einer Tabelle auf einer neuen Registerkarte angezeigt.
 
@@ -224,7 +222,7 @@ Wir empfehlen, dass Sie die **SOCHTManagement**-Arbeitsmappe für Key Vault-Besi
 
     1. Erweitern Sie in der Tabelle **Operation** den Abschnitt **Honeytoken Bereitstellen**, und wählen Sie jeden Aufgabennamen aus, um die erforderlichen Schritte auszuführen. Melden Sie sich an, wenn Sie dazu aufgefordert werden.
 
-        - Wählen Sie **Klicken, um den Honeytoken aus dem Schlüsseltresor zu löschen**, um den Azure Key Vault für die Seite zu öffnen, auf der Sie Ihren Honeytoken entfernen können. 
+        - Wählen Sie **Klicken, um den Honeytoken aus dem Schlüsseltresor zu löschen**, um den Azure Key Vault für die Seite zu öffnen, auf der Sie Ihren Honeytoken entfernen können.
         - Wählen Sie **E-Mail senden aus, um den SOC zu aktualisieren**. In Ihrem Standard-E-Mail-Client wird eine E-Mail an den SOC geöffnet, in der empfohlen wird, die Honeytokenüberwachung für den ausgewählten Schlüsseltresor zu entfernen.
 
     > [!TIP]
@@ -239,32 +237,30 @@ Möglicherweise müssen Sie einige Minuten warten, während die Daten aufgefüll
 
 **Um zu testen, ob Sie tatsächlich bei jedem Zugriffsversuch auf Ihre Honeytoken benachrichtigt werden**:
 
-1. Wählen Sie auf der Azure Sentinel Seite **Watchlists** die Registerkarte **Meine Watchlists** und dann die Watchlist **HoneyTokens** aus.
+1. Wählen Sie auf der Microsoft Sentinel Seite **Watchlists** die Registerkarte **Meine Watchlists** und dann die Watchlist **HoneyTokens** aus.
 
     Wählen Sie **In Log Analytics Anzeigen** aus, um eine Liste der aktuellen gefundenen Honeytokenwerte zu erhalten. Die Elemente in Ihrer Watchlist werden automatisch für Ihre Abfrage extrahiert und auf der Registerkarte **Logs** angezeigt. Beispiel:
 
     :::image type="content" source="media/monitor-key-vault-honeytokens/honeytokens-watchlist.png" alt-text="Screenshot der Honeytoken-Watchlistwerte im Log Analytics." lightbox="media/monitor-key-vault-honeytokens/honeytokens-watchlist.png":::
 
-
-    Weitere Informationen finden Sie unter [Verwenden von Azure Sentinel Watchlists](watchlists.md).
+    Weitere Informationen finden Sie unter [Verwenden von Microsoft Sentinel-Watchlists](watchlists.md).
 
 1. Wählen Sie in der Liste in Log Analytics einen zu testenden Honeytokenwert aus.
 
     Wechseln Sie dann zu Azure Key Vault, und laden Sie den öffentlichen Schlüssel herunter, oder zeigen Sie das Geheimnis für den ausgewählten Honeytoken an.
 
-    Wählen Sie beispielsweise Ihren Honeytoken und dann **Öffentlichen Schlüssel herunterladen** aus. Mit dieser Aktion wird ein `KeyGet` oder `SecretGet`-Protokoll erstellt, das eine Warnung in Azure Sentinel auslöst.
+    Wählen Sie beispielsweise Ihren Honeytoken und dann **Öffentlichen Schlüssel herunterladen** aus. Mit dieser Aktion wird ein `KeyGet` oder `SecretGet`-Protokoll erstellt, das eine Warnung in Microsoft Sentinel auslöst.
 
     Weitere Informationen finden Sie in der [Key Vault](/azure/key-vault/)-Dokumentation.
 
-1. Zurück Azure Sentinel, wechslen Sie zur Seite **Incidents**. Möglicherweise müssen Sie etwa fünf Minuten warten, aber sie sollten einen neuen Vorfall sehen, beispielsweise mit dem Namen **HoneyToken: Zugriff auf Schlüssel für KeyVault HoneyToken**.
+1. Zurück in Microsoft Sentinel, wechseln Sie zur Seite **Incidents**. Möglicherweise müssen Sie etwa fünf Minuten warten, aber sie sollten einen neuen Vorfall sehen, beispielsweise mit dem Namen **HoneyToken: Zugriff auf Schlüssel für KeyVault HoneyToken**.
 
     Wählen Sie den Vorfall aus, um seine Details anzuzeigen, z. B. den ausgeführten Schlüsselvorgang, den Benutzer, der auf den Honeytokenschlüssel zugegriffen hat, und den Namen des kompromittierten Schlüsseltresors.
 
     > [!TIP]
-    > Jeder Zugriff oder Vorgang mit den Honeytokenschlüsseln und Geheimnissen generiert Vorfälle, die Sie in der Azure Sentinel untersuchen können. Da es keinen Grund gibt, Honeytokenschlüssel und Geheimnisse tatsächlich zu verwenden, kann jede ähnliche Aktivität in Ihrem Arbeitsbereich bösartig sein und sollte untersucht werden.
-    >
+    > Jeder Zugriff oder Vorgang mit den Honeytokenschlüsseln und Geheimnissen generiert Vorfälle, die Sie in der Microsoft Sentinel untersuchen können. Da es keinen Grund gibt, Honeytokenschlüssel und Geheimnisse tatsächlich zu verwenden, kann jede ähnliche Aktivität in Ihrem Arbeitsbereich bösartig sein und sollte untersucht werden.
 
-1. Zeigen Sie die Honeytokenaktivität in der **Arbeitsmappe HoneyTokensIncident** an. Suchen Sie auf Azure Sentinel Seite **Arbeitsmappen** nach der Arbeitsmappe **HoneyTokensIncident**, und öffnen Sie diese.
+1. Zeigen Sie die Honeytokenaktivität in der **Arbeitsmappe HoneyTokensIncident** an. Suchen Sie auf der Microsoft Sentinel Seite **Arbeitsmappen** nach der Arbeitsmappe **HoneyTokensIncident**, und öffnen Sie diese.
 
     Diese Arbeitsmappe zeigt alle Honeytoken-bezogenen Incidents, die zugehörigen Entitäten, kompromittierten Schlüsseltresore, ausgeführte Schlüsselvorgänge und den Zugriff auf Honeytoken an.
 
@@ -276,7 +272,7 @@ Wir empfehlen, Honeytoken in so vielen Schlüsseltresoren wie möglich bereitzus
 
 Viele SOC-Teams haben jedoch keinen Zugriff auf Schlüsseltresore. Um diese Lücke zu schließen, sollten Sie die **SOCHTManagement**-Arbeitsmappe an alle Schlüsseltresorbesitzer in Ihrem Mandanten verteilen, damit Ihre SOC-Teams ihre eigenen Honeytoken bereitstellen können. Möglicherweise haben Sie den Namen dieser Arbeitsmappe geändert, als Sie die [Projektmappe installiert](#install-the-solution) haben.
 
-Sie können jederzeit den direkten Link zur Arbeitsmappe freigeben. Altenativ können Sie diese ARM-Vorlage verwenden, um eine Azure Policy-Initiative bereitzustellen, die mit einer benutzerdefinierten Azure Security Center-Empfehlung verbunden ist, welche die **SOCHTManagement**-Arbeitsmappe an Key Vault-Besitzer in Ihrer Organisation verteilt.
+Sie können jederzeit den direkten Link zur Arbeitsmappe freigeben. Altenativ können Sie diese ARM-Vorlage verwenden, um eine Azure Policy-Initiative bereitzustellen, die mit einer benutzerdefinierten Microsoft Defender für Cloud-Empfehlung verbunden ist, welche die **SOCHTManagement**-Arbeitsmappe an Key Vault-Besitzer in Ihrer Organisation verteilt.
 
 > [!NOTE]
 > Achten Sie bei der Verteilung der Arbeitsmappe darauf, nur Lesezugriff zu gewähren.
@@ -288,7 +284,7 @@ Sie können jederzeit den direkten Link zur Arbeitsmappe freigeben. Altenativ k�
 
     Die Schaltflächen **In Azure Bereitstellen** verwenden dieselben URLs, die auf der Registerkarte **Ausgabe** nach der [Installation der Lösung](#install-the-solution) angezeigt werden.
 
-    | Bereitstellungsoption | BESCHREIBUNG | Bereitstellen in Azure | GitHub-Link |
+    | Bereitstellungsoption | BESCHREIBUNG | In Azure bereitstellen | GitHub-Link |
     |-------------------|-------------|-------------|-----------------|
     | Verwaltungsgruppe | Empfohlen für die unternehmensweite Bereitstellung| [![DTA-Button-MG]][DTA-MG]  |[Beispiel auf GitHub][GitHub-MG] |
     | Subscription | Empfohlen zum Testen in einem einzelnen Abonnement | [![DTA-Button-Sub]][DTA-Sub]  | [Beispiel auf GitHub][GitHub-Sub] |
@@ -301,7 +297,7 @@ Sie können jederzeit den direkten Link zur Arbeitsmappe freigeben. Altenativ k�
 
 1. Fügen Sie **auf der Registerkarte Verwaltungsarbeitsmappe** den Link zu Ihrer **SOCHTManagement-Arbeitsmappe** ein.
 
-    Sie finden den Arbeitsmappenlink aus der Arbeitsmappe **SOCHTManagement** in Azure Sentinel, und er ist auch auf der Registerkarte Ausgabe der Lösungsbereitstellung **enthalten**.
+    Sie finden den Arbeitsmappenlink aus der Arbeitsmappe **SOCHTManagement** in Microsoft Sentinel, und er ist auch auf der Registerkarte Ausgabe der Lösungsbereitstellung **enthalten**.
 
     Um beispielsweise den Link in der Arbeitsmappe zu finden, wählen Sie **Arbeitsmappen** > **Meine Arbeitsmappen** > **SOCHTManagement** und dann auf der Symbolleiste **Link** kopieren aus.
 
@@ -331,19 +327,17 @@ Sie können jederzeit den direkten Link zur Arbeitsmappe freigeben. Altenativ k�
 
 Allen Schlüsseltresoren im ausgewählten Bereich wird eine Überwachungsempfehlung mit einem Link zur Arbeitsmappe **SOCHTManagement** hinzugefügt. Möglicherweise haben Sie diese Arbeitsmappe bei der [Installation der Projektmappe](#install-the-solution) umbenannt.
 
-Weitere Informationen finden Sie in der [Azure Security Center-Dokumentation](/azure/security-center/security-center-recommendations).
-
+Weitere Informationen finden Sie in der Dokumentation zu [Microsoft Defender für Cloud](/azure/security-center/security-center-recommendations).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter
 
-- [Informationen zu Azure Sentinel-Lösungen](sentinel-solutions.md)
-- [Entdecken und Bereitstellen von Azure Sentinel-Lösungen](monitor-key-vault-honeytokens.md)
-- [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md)
+- [Informationen zu Microsoft Sentinel-Lösungen](sentinel-solutions.md)
+- [Entdecken und Bereitstellen von Microsoft Sentinel-Lösungen](sentinel-solutions-deploy.md)
+- [Microsoft Sentinel-Lösungskatalog](sentinel-solutions-catalog.md)
 - [Standardmäßig verfügbare Erkennung von Bedrohungen](detect-threats-built-in.md)
-- [Häufig verwendete Azure Sentinel-Arbeitsmappen](top-workbooks.md)
-
+- [Häufig verwendete Microsoft Sentinel-Arbeitsmappen](top-workbooks.md)
 
 <!-- The following section is used to store references to external images and links to reduce maintenance overhead and enable tooltips -->
 

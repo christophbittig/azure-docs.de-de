@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für den Clusteroperator zum Verwalte
 services: container-service
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 7560e9aaabf8b21729e1e9d8e008c0b6a0e8cefb
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 73c9ac0780c6a1217e58f40b4e64f290e8904457
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453320"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492434"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ In diesem Artikel wird erläutert, wie AKS-Cluster gesichert werden. Folgendes w
 
 Weitere Informationen finden Sie unter [Best Practices für Containerimageverwaltung und Sicherheit in Azure Kubernetes Service (AKS)][best-practices-container-image-management] und [Best Practices für Podsicherheit in Azure Kubernetes Service (AKS)][best-practices-pod-security].
 
-Sie können auch die [Integration von Security Center in Azure Kubernetes Service (Vorschau) ][security-center-aks] verwenden, um Bedrohungen zu erkennen und Empfehlungen zum Sichern Ihrer AKS-Cluster anzuzeigen.
+Sie können auch die [Azure Kubernetes Services-Integration mit Defender für Cloud][security-center-aks] nutzen, um Bedrohungen zu erkennen und Empfehlungen zur Sicherung Ihrer AKS-Cluster anzuzeigen.
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Sicherer Zugriff auf API-Server und Clusterknoten
 
@@ -310,5 +310,5 @@ Führen Sie für Windows Server-Knoten regelmäßig ein Knotenimageupgrade durch
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
-[security-center-aks]: ../security-center/defender-for-kubernetes-introduction.md
+[security-center-aks]: ../defender-for-cloud/defender-for-kubernetes-introduction.md
 [node-image-upgrade]: node-image-upgrade.md

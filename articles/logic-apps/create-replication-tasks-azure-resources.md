@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 11/02/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: bd4eaa70b456841ae47c6efa9bc3f2b323d0bcf5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 42364c1c1fc0f9d2d220b4b9156a4a7ab4a410fa
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095933"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337361"
 ---
 # <a name="create-replication-tasks-for-azure-resources-using-azure-logic-apps-preview"></a>Erstellen von Replikationsaufgaben für Azure-Ressourcen mithilfe von Azure Logic Apps (Vorschau)
 
@@ -52,7 +52,7 @@ Derzeit sind Replikationsaufgabenvorlagen für [Azure Event Hubs](../event-hubs/
 | Ressourcentyp | Replikationsquelle und -ziel |
 |---------------|-------------------------------|
 | Azure Event Hubs-Namespace | – Event Hubs-Instanz zu Event Hubs-Instanz <br>– Event Hubs-Instanz zu Service Bus-Warteschlange <br>– Event Hubs-Instanz zu Service Bus-Thema |
-| Azure Service Bus-Namespace | – Service Bus-Warteschlange zu Service Bus-Warteschlange <br>– Service Bus-Warteschlange zu Service Bus-Thema <br>– Service Bus-Warteschlange zu Event Hub-Instanz <br>– Service Bus-Themaabonnement zu Service Bus-Warteschlange <br>– Service Bus-Themenabonnement zu Event Hubs-Instanz |
+| Azure Service Bus-Namespace | – Service Bus-Warteschlange zu Service Bus-Warteschlange <br>– Service Bus-Warteschlange zu Service Bus-Thema <br>– Service Bus-Thema zu Service Bus Thema <br>– Service Bus-Warteschlange zu Event-Hubs-Instanz <br>– Service Bus-Thema zu Service Bus-Warteschlange <br>– Service Bus-Thema zu Event-Hubs-Instanz |
 |||
 
 ### <a name="replication-topology-and-workflow"></a>Replikationstopologie und -workflow
@@ -85,7 +85,7 @@ Informationen zur Replikation und zum Verbund in Azure Service Bus finden Sie in
 
 ## <a name="metadata-and-property-mappings"></a>Metadaten- und Eigenschaftenzuordnungen
 
-Für Event Hubs werden die folgenden Elemente, die aus dem Event Hubs-Quellnamespace abgerufen wurden, durch neue vom Dienst zugewiesene Werte im Event Hubs-Zielnamespace ersetzt: vom Dienst zugewiesene Metadaten eines Ereignisses, ursprüngliche Uhrzeit der Einreihung in die Warteschlange, Sequenznummer und Offset. Für [Hilfsfunktionen](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) und die Replikationsaufgaben in den von Azure bereitgestellten Beispielen werden die ursprünglichen Werte jedoch in den Benutzereigenschaften beibehalten: `repl-enqueue-time` (ISO8601-Zeichenfolge), `repl-sequence` und `repl-offset`. Diese Eigenschaften weisen den Typ `string` auf und enthalten den in eine Zeichenfolge umgewandelten Wert der jeweiligen ursprünglichen Eigenschaften. Wenn das Ereignis mehrfach weitergeleitet wird, werden die vom Dienst zugewiesenen Metadaten der unmittelbaren Quelle an die bereits vorhandenen Eigenschaften angefügt, wobei die Werte durch Semikolon getrennt sind. Weitere Informationen finden Sie unter [Muster für Ereignisreplikationsaufgaben: Vom Dienst zugewiesene Metadaten](../event-hubs/event-hubs-federation-patterns.md#service-assigned-metadata).
+Bei Event-Hubs werden die folgenden Elemente aus dem Quell-Event-Hubs-Namensraum durch neue, dem Service zugewiesene Werte im Ziel-Event-Hubs-Namensraum ersetzt: dem Service zugewiesene Metadaten eines Ereignisses, ursprüngliche Uhrzeit der Einreihung in die Warteschlange, Sequenznummer und Offset. Für [Hilfsfunktionen](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) und die Replikationsaufgaben in den von Azure bereitgestellten Beispielen werden die ursprünglichen Werte jedoch in den Benutzereigenschaften beibehalten: `repl-enqueue-time` (ISO8601-Zeichenfolge), `repl-sequence` und `repl-offset`. Diese Eigenschaften weisen den Typ `string` auf und enthalten den in eine Zeichenfolge umgewandelten Wert der jeweiligen ursprünglichen Eigenschaften. Wenn das Ereignis mehrfach weitergeleitet wird, werden die vom Dienst zugewiesenen Metadaten der unmittelbaren Quelle an die bereits vorhandenen Eigenschaften angefügt, wobei die Werte durch Semikolon getrennt sind. Weitere Informationen finden Sie unter [Muster für Ereignisreplikationsaufgaben: Vom Dienst zugewiesene Metadaten](../event-hubs/event-hubs-federation-patterns.md#service-assigned-metadata).
 
 Für Service Bus werden die folgenden Elemente, die aus der Service Bus-Quellwarteschlange oder dem Service Bus-Quellthema abgerufen wurden, durch neue vom Dienst zugewiesene Werte in der Service Bus-Zielwarteschlange oder im Service Bus-Zielthema ersetzt: vom Dienst zugewiesene Metadaten einer Nachricht, ursprüngliche Uhrzeit der Einreihung in die Warteschlange und Sequenznummer. Für die Standardreplikationsaufgaben in den von Azure bereitgestellten Beispielen werden die ursprünglichen Werte jedoch in den Benutzereigenschaften beibehalten: `repl-enqueue-time` (ISO8601-Zeichenfolge) und `repl-sequence`. Diese Eigenschaften weisen den Typ `string` auf und enthalten den in eine Zeichenfolge umgewandelten Wert der jeweiligen ursprünglichen Eigenschaften. Wenn die Meldung mehrfach weitergeleitet wird, werden die vom Dienst zugewiesenen Metadaten der unmittelbaren Quelle an die bereits vorhandenen Eigenschaften angefügt, wobei die Werte per Semikolon getrennt sind. Weitere Informationen finden Sie unter [Muster für Nachrichtenreplikationsaufgaben: Vom Dienst zugewiesene Metadaten](../service-bus-messaging/service-bus-federation-patterns.md#service-assigned-metadata).
 
@@ -108,7 +108,7 @@ Wenn eine Aufgabe von Service Bus zu Event Hubs repliziert wird, ordnet die Aufg
 
 ## <a name="order-preservation"></a>Beibehaltung der Reihenfolge
 
-Bei Event Hubs erstellt die Replikation 1:1-Klone zwischen der gleichen Anzahl von Partitionen ohne Änderungen an den Ereignissen. Duplikate können enthalten sein. Wenn die Anzahl der Partitionen nicht gleich ist, wird bei der Replikation jedoch nur die relative Reihenfolge der Ereignisse basierend auf dem Partitionsschlüssel beibehalten. Auch hier können Duplikate enthalten sein. Weitere Informationen finden Sie unter [Datenströme und Beibehaltung der Reihenfolge](../event-hubs/event-hubs-federation-patterns.md#streams-and-order-preservation).
+Bei Event Hubs erstellt die Replikation 1:1-Klone zwischen der gleichen Anzahl von [Partitionen](../event-hubs/event-hubs-features.md#partitions) ohne Änderungen an den Ereignissen. Duplikate können enthalten sein. Wenn die Anzahl der Partitionen nicht gleich ist, wird bei der Replikation jedoch nur die relative Reihenfolge der Ereignisse basierend auf dem Partitionsschlüssel beibehalten. Auch hier können Duplikate enthalten sein. Weitere Informationen finden Sie unter [Datenströme und Beibehaltung der Reihenfolge](../event-hubs/event-hubs-federation-patterns.md#streams-and-order-preservation).
 
 Für Service Bus müssen Sie Sitzungen aktivieren, damit aus der Quelle abgerufene Nachrichtensequenzen mit der gleichen Sitzungs-ID als Batch in der ursprünglichen Sequenz und mit derselben Sitzungs-ID an die Zielwarteschlange oder das Zielthema übermittelt werden. Weitere Informationen finden Sie unter [Sequenzen und Beibehaltung der Reihenfolge](../service-bus-messaging/service-bus-federation-patterns.md#sequences-and-order-preservation).
 
@@ -125,7 +125,68 @@ Weitere Informationen zu einem Verbund mit mehreren Standorten und Regionen für
 
 Im Hintergrund wird eine Replikationsaufgabe von einem zustandslosen Workflow in einer Ressource von **Logic Apps (Standard)** unterstützt, die in einer Azure Logic Apps-Instanz für Einzelmandanten gehostet wird. Wenn Sie diese Replikationsaufgabe erstellen, fallen sofort Gebühren an. Nutzung, Messung, Abrechnung und Preismodell folgen dem Hostingplan für [Standard (ein Mandant)](logic-apps-pricing.md#standard-pricing) gemäß den [Tarifen im Standardmodell](logic-apps-pricing.md#standard-pricing-tiers).
 
-Basierend auf der Anzahl von Ereignissen, die Event Hubs empfängt, oder der Anzahl von Nachrichten, die von Service Bus verarbeitet werden, kann der Standard-Plan zentral hoch- oder herunterskaliert werden, um die minimale CPU-Auslastung und niedrige Latenz während der aktiven Replikation zu erhalten. Dieses Verhalten erfordert, dass Sie den entsprechenden Tarif für den Standard-Plan auswählen, damit Azure Logic Apps die CPU-Auslastung nicht drosselt oder begrenzt und trotzdem eine hohe Replikationsgeschwindigkeit garantieren kann.
+<a name="scale-up"></a>
+
+Je nach Anzahl der Ereignisse, die Event Hubs empfängt, oder der Nachrichten, die Service Bus verarbeitet, kann Ihr Hosting-Plan nach oben oder unten skaliert werden, um eine minimale vCPU-Auslastung und eine niedrige Latenz während der aktiven Replikation zu gewährleisten. Dieses Verhalten erfordert, dass Sie bei der Erstellung einer Logic-App-Ressource, die Sie für Ihre Replikationsaufgabe verwenden möchten, [die entsprechende Preisstufe des Standard-Plans wählen](#scale-out), damit Azure Logic Apps die CPU-Nutzung nicht drosselt oder ausreizt und dennoch eine schnelle Replikationsgeschwindigkeit gewährleisten kann.
+
+> [!NOTE]
+> Wenn Ihre Anwendung mit einer Instanz des WS1-Plans beginnt und dann auf zwei Instanzen skaliert, sind die Kosten doppelt so hoch wie die des WS1-Plans, unter der Annahme, dass die Pläne den ganzen Tag laufen. Wenn Sie Ihre App auf den WS2-Plan hochskalieren und eine Instanz verwenden, sind die Kosten effektiv identisch mit denen von zwei WS1-Planinstanzen. Wenn Sie Ihre Anwendung auf den WS3-Plan skalieren und eine Instanz verwenden, sind die Kosten effektiv die gleichen wie bei zwei WS2-Plan-Instanzen oder vier WS1-Plan-Instanzen.
+
+<a name="scale-out"></a>
+
+Die folgenden Beispiele veranschaulichen den Tarif und die Konfigurationsoptionen des Hostingplans, die den besten Durchsatz und die besten Kosten für bestimmte Replikationsaufgabeszenarien bereitstellen, je nachdem, ob das Szenario Event Hubs oder Service Bus und verschiedene Konfigurationswerte ist.
+
+> [!NOTE]
+> Die Beispiele in den folgenden Abschnitten verwenden 800 als Standardwert für die Prefetch-Anzahl, die maximale Ereignisstapelgröße für Event-Hubs und die maximale Nachrichtenanzahl für den Service-Bus, wobei angenommen wird, dass die Ereignis- oder Nachrichtengröße 1 KB beträgt. Basierend auf Ihren Ereignisgrößen sollten Sie die Anzahl der Vorabrufe, die maximale Ereignisbatchgröße oder die maximale Nachrichtenanzahl anpassen. Wenn Ihre Ereignis- oder Nachrichtengröße beispielsweise über 1 KB liegt, sollten Sie die Werte für die Vorabrufanzahl und die maximale Ereignisbatchgröße oder Nachrichtenanzahl von 800 verringern.
+
+### <a name="event-hubs-scale-out"></a>Event Hubs aufskalieren
+
+Die folgenden Beispiele veranschaulichen die Preisstufe des Hosting-Plans und die Konfigurationsoptionen für eine Replikationsaufgabe zwischen zwei Event Hubs-Namespaces *in derselben Region*, basierend auf der Anzahl der [ Partitionen](../event-hubs/event-hubs-features.md#partitions), der Anzahl der Ereignisse pro Sekunde und anderen Konfigurationswerten.
+
+In den Beispielen in diesem Abschnitt wird 800 als Standardwert für die Anzahl der Vorabrufe und die maximale Ereignisbatchgröße verwendet, vorausgesetzt, die Ereignisgröße beträgt 1 KB. Basierend auf Ihren Ereignisgrößen sollten Sie die Anzahl der Vorabrufe, die maximale Ereignisbatchgröße oder die maximale Nachrichtenanzahl anpassen. Wenn Ihre Ereignis- oder Nachrichtengröße beispielsweise über 1 KB liegt, sollten Sie die Werte für die Vorabrufanzahl und die maximale Ereignisbatchgröße oder Nachrichtenanzahl von 800 verringern.
+
+| Tarif | Partitionsanzahl | Ereignisse pro Sekunde | Maximale Ausbrüche* | Jederzeit bereite Instanzen* | Anzahl der Vorabrufe* | Maximale Ereignisbatchgröße* |
+|--------------|-----------------|-------------------|----------------|-------------------------|-----------------|-----------------|
+| **WS1** | 1 | 1000 | 1 | 1 | 800 | 800 |
+| **WS1** | 2 | 2000 | 1 | 1 | 800 | 800 |
+| **WS2** | 4 | 4000 | 2 | 1 | 800 | 800 |
+| **WS2** | 8 | 8.000 | 2 | 1 | 800 | 800 |
+| **WS3** | 16 | 16000 | 2 | 1 | 800 | 800 |
+| **WS3** | 32 | 32000 | 3 | 1 | 800 | 800 |
+||||||||
+
+\*Weitere Informationen zu den Werten, die Sie für jeden Tarif ändern können, finden Sie in der folgenden Tabelle:
+
+| Wert | Beschreibung |
+|-------|-------------|
+| **Maximale Ausbrüche** | Die *maximale* Anzahl der elastischen Benutzer, die unter Last verkleinert werden. Wenn Ihre zugrunde liegende Anwendung Instanzen benötigt, die über die *immer bereiten Instanzen* in der nächsten Tabellenzeile hinausgehen, kann Ihre Anwendung weiter skalieren, bis die Anzahl der Instanzen die maximale Grenze an Ausbrüchen erreicht. Um diesen Wert zu ändern, lesen Sie bitte [Bearbeiten der Einstellungen für die Skalierung des Hostingplans](#edit-plan-scale-out-settings) weiter unten in diesem Artikel. <p>**Anmerkung**: Alle Instanzen, die über Ihren Plan hinausgehen, werden *nur* dann abgerechnet, wenn sie laufen und Ihnen auf einer sekundengenauen Basis zugewiesen werden. Die Plattform ist am besten dafür, Ihre App auf den definierten Höchstwert zu skalieren. <p>**Tipp**:Wählen Sie als Empfehlung einen Maximalwert aus, der höher ist, als Sie möglicherweise benötigen, damit die Plattform bei Bedarf aufskaliert werden kann, um eine größere Last zu bewältigen, da nicht verwendete Instanzen nicht in Rechnung gestellt werden. <p>Weitere Informationen finden Sie in der folgenden Dokumentation, da der Workflow-Standardplan einige Aspekte mit dem Azure Functions Premium gemeinsam hat: <p>- [Plan- und SKU-Einstellungen – Azure Functions Premium Plan](../azure-functions/functions-premium-plan.md#plan-and-sku-settings) <br>- [Was ist Cloudburstung](https://azure.microsoft.com/overview/what-is-cloud-bursting/)? |
+| **Jederzeit bereite Instanzen** | Die Mindestanzahl von Instanzen, die stets bereit für das Hosten Ihrer App sind. Die Mindestanzahl ist immer 1. Um diesen Wert zu ändern, lesen Sie bitte [Bearbeiten der Einstellungen für die Skalierung des Hostingplans](#edit-plan-scale-out-settings) weiter unten in diesem Artikel. <p>**Anmerkung**: Alle Instanzen, die Ihre Plangröße überschreiten, werden in Rechnung gestellt, unabhängig davon, ob sie zum Zeitpunkt der Zuweisung an Sie *laufen oder nicht*. <p>Weitere Informationen finden Sie in der folgenden Dokumentation, da der Workflow Standard-Plan einige Aspekte mit dem Azure Functions Premium-Plan gemeinsam hat: [Immer bereite Instanzen - Azure Functions Premium Plan](../azure-functions/functions-premium-plan.md#always-ready-instances). |
+| **Anzahl der Vorabrufe** | Der Standardwert für die `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__prefetchCount` App-Einstellung in Ihrer Logik-App-Ressource, welche die von der zugrunde liegenden Klasse verwendete Vorabruf-Anzahl bestimmt`EventProcessorHost`. Informationen zum Hinzufügen oder Angeben eines anderen Werts für diese App-Einstellung finden Sie unter Verwalten von [App-Einstellungen – local.settings.json.](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings), zum Beispiel: <p>- **Name**: `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__prefetchCount` <br>- **Wert**: `800` (keine Obergrenze) <p>Weitere Informationen über die Eigenschaft `prefetchCount` finden Sie in der folgenden Dokumentation: <p>- [host.json Einstellungen - Azure Event Hubs Trigger und Bindungen für Azure Funktionen](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) <br>- [EventProcessorOptions.PrefetchCount Eigenschaft](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount) <br>- [Ausgleichen der Partitionsauslastung über mehrere Instanzen der Anwendung hinweg](../event-hubs/event-processor-balance-partition-load.md). <br>- [Ereignisprozessorhost](../event-hubs/event-hubs-event-processor-host.md) <br>- [EventProcessorHost Klasse](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) |
+| **Maximale Ereignisbatchgröße** | Der Standardwert für die `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__maxBatchSize` App-Einstellung in Ihrer Logik-App-Ressource, der die maximale Ereignisanzahl bestimmt, die von jeder Empfangsschleife empfangen wird. Informationen zum Hinzufügen oder Angeben eines anderen Werts für diese App-Einstellung finden Sie unter Verwalten von [App-Einstellungen – local.settings.json.](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings), zum Beispiel: <p>- **Name**: `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__maxBatchSize` <br>- **Wert**: `800` (keine Obergrenze) <p>Weitere Informationen über die Eigenschaft `maxBatchSize` finden Sie in der folgenden Dokumentation: <p>- [host.json Einstellungen - Azure Event Hubs Trigger und Bindungen für Azure Funktionen](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) <br>- [EventProcessorOptions.MaxBatchSize Eigenschaft](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize) <br>- [Ereignisprozessorhost](../event-hubs/event-hubs-event-processor-host.md) |
+|||
+
+### <a name="service-bus-scale-out"></a>Service Bus-Skalierung
+
+Die folgenden Beispiele veranschaulichen die Preisstufe des Hosting-Plans und die Konfigurationsoptionen für eine Replikationsaufgabe zwischen zwei Service-Bus-Namespaces  *in derselben Region*, basierend auf der Anzahl der Nachrichten pro Sekunde und anderen Konfigurationswerten.
+
+In den Beispielen in diesem Abschnitt wird 800 als Standardwert für die Anzahl der Vorabrufe und die maximale Ereignisbatchgröße verwendet, vorausgesetzt, die Ereignisgröße beträgt 1 KB. Basierend auf Ihren Ereignisgrößen sollten Sie die Anzahl der Vorabrufe, die maximale Ereignisbatchgröße oder die maximale Nachrichtenanzahl anpassen. Wenn Ihre Ereignis- oder Nachrichtengröße beispielsweise über 1 KB liegt, sollten Sie die Werte für die Vorabrufanzahl und die maximale Ereignisbatchgröße oder Nachrichtenanzahl von 800 verringern.
+
+| Tarif | Nachrichten pro Sekunde | Maximale Ausbrüche* | Jederzeit bereite Instanzen* | Anzahl der Vorabrufe* | Maximale Nachrichtenanzahl* |
+|--------------|---------------------|-----------------|-------------------------|-----------------|------------------------|
+| **WS1** | 2000 | 1 | 1 | 800 | 800 |
+| **WS2** | 2500 | 1 | 1 | 800 | 800 |
+| **WS3** | 3500 | 1 | 1 | 800 | 800 |
+|||||||
+
+\*Weitere Informationen zu den Werten, die Sie für jeden Tarif ändern können, finden Sie in der folgenden Tabelle:
+
+| Wert | Beschreibung |
+|-------|-------------|
+| **Maximale Ausbrüche** | Die *maximale* Anzahl der elastischen Benutzer, die unter Last verkleinert werden. Wenn Ihre zugrunde liegende Anwendung Instanzen benötigt, die über die *immer bereiten Instanzen* in der nächsten Tabellenzeile hinausgehen, kann Ihre Anwendung weiter skalieren, bis die Anzahl der Instanzen die maximale Grenze an Ausbrüchen erreicht. Um diesen Wert zu ändern, lesen Sie bitte [Bearbeiten der Einstellungen für die Skalierung des Hostingplans](#edit-plan-scale-out-settings) weiter unten in diesem Artikel. <p>**Anmerkung**: Alle Instanzen, die über Ihren Plan hinausgehen, werden *nur* dann abgerechnet, wenn sie laufen und Ihnen auf einer sekundengenauen Basis zugewiesen werden. Die Plattform ist am besten dafür, Ihre App auf den definierten Höchstwert zu skalieren. <p>**Tipp**:Wählen Sie als Empfehlung einen Maximalwert aus, der höher ist, als Sie möglicherweise benötigen, damit die Plattform bei Bedarf aufskaliert werden kann, um eine größere Last zu bewältigen, da nicht verwendete Instanzen nicht in Rechnung gestellt werden. <p>Weitere Informationen finden Sie in der folgenden Dokumentation, da der Workflow-Standardplan einige Aspekte mit dem Azure Functions Premium gemeinsam hat: <p>- [Plan- und SKU-Einstellungen – Azure Functions Premium Plan](../azure-functions/functions-premium-plan.md#plan-and-sku-settings) <br>- [Was ist Cloudburstung](https://azure.microsoft.com/overview/what-is-cloud-bursting/)? |
+| **Jederzeit bereite Instanzen** | Die Mindestanzahl von Instanzen, die stets bereit für das Hosten Ihrer App sind. Die Mindestanzahl ist immer 1. Um diesen Wert zu ändern, lesen Sie bitte [Bearbeiten der Einstellungen für die Skalierung des Hostingplans](#edit-plan-scale-out-settings) weiter unten in diesem Artikel. <p>**Anmerkung**: Alle Instanzen, die Ihre Plangröße überschreiten, werden in Rechnung gestellt, unabhängig davon, ob sie zum Zeitpunkt der Zuweisung an Sie *laufen oder nicht*. <p>Weitere Informationen finden Sie in der folgenden Dokumentation, da der Workflow Standard-Plan einige Aspekte mit dem Azure Functions Premium-Plan gemeinsam hat: [Immer bereite Instanzen - Azure Functions Premium Plan](../azure-functions/functions-premium-plan.md#always-ready-instances). |
+| **Anzahl der Vorabrufe** | Der Standardwert für die `AzureFunctionsJobHost__extensions__serviceBus__prefetchCount` App-Einstellung in Ihrer Logik-App-Ressource, welche die von der zugrunde liegenden `ServiceBusProcessor` Klasse verwendete Vorabrufanzahl bestimmt. Informationen zum Hinzufügen oder Angeben eines anderen Werts für diese App-Einstellung finden Sie unter Verwalten von [App-Einstellungen – local.settings.json.](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings), zum Beispiel: <p>- **Name**: `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__prefetchCount` <br>- **Wert**: `800` (keine Obergrenze) <p>Weitere Informationen über die Eigenschaft `prefetchCount` finden Sie in der folgenden Dokumentation: <p>- [host.json Einstellungen - Azure Service Bus Bindungen für Azure Funktionen](../azure-functions/functions-bindings-service-bus.md#hostjson-settings) <br>- [ServiceBusProcessor.PrefetchCount Eigenschaft](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount) <br>- [ServiceBusProcessor-Klasse](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) |
+| **Maximale Anzahl von Meldungen** | Der Standardwert für die `AzureFunctionsJobHost__extensions__serviceBus__batchOptions__maxMessageCount`App-Einstellung in Ihrer Logik-App-Ressource, welche die maximale Anzahl der zu sendenden Nachrichten bei Auslösung bestimmt. Um einen anderen Wert für diese App-Einstellung hinzuzufügen oder festzulegen, überprüfen Sie [App-Einstellungen Verwalten - local.settings.json](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings), zum Beispiel: <p>- **Name**: `AzureFunctionsJobHost__extensions__serviceBus__batchOptions__maxMessageCount` <br>- **Wert**: `800` (keine Obergrenze) <p>Weitere Informationen über die `maxMessageCount`Eigenschaft finden Sie in der folgenden Dokumentation: [host.json Einstellungen - Azure Event Hubs Bindungen für Azure Funktionen](../azure-functions/functions-bindings-service-bus.md#hostjson-settings).|
+|||
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -133,7 +194,7 @@ Basierend auf der Anzahl von Ereignissen, die Event Hubs empfängt, oder der Anz
 
 - Die Quell- und Zielressourcen oder die Quell- und Zielentitäten, die in verschiedenen Azure-Regionen vorhanden sein sollten, damit Sie das Failoverszenario für die georedundante Notfallwiederherstellung testen können. Diese Entitäten können basierend auf der Aufgabenvorlage variieren, die Sie verwenden möchten. Das Beispiel in diesem Artikel verwendet zwei Service Bus-Warteschlangen, die sich in unterschiedlichen Namespaces und Azure-Regionen befinden.
 
-- Eine Ressource von **Logic Apps (Standard)** , die Sie beim Erstellen des Replikationsaufgabe wiederverwenden können. Auf diese Weise können Sie diese Ressource speziell für Ihre Replikationsaufgabe anpassen, indem Sie beispielsweise den [Hostingplan und Tarif](#pricing) basierend auf den Anforderungen Ihres Replikationsszenarios in Bezug auf Kapazität, Durchsatz und Skalierung auswählen. Sie können diese Ressource beim Erstellen des Replikationsaufgabe erstellen, aber Sie können weder Region noch Hostingplan oder Tarif ändern. Die folgende Liste enthält weitere Gründe und Best Practices für eine zuvor erstellte Logik-App-Ressource:
+- Eine Ressource von **Logic Apps (Standard)** , die Sie beim Erstellen des Replikationsaufgabe wiederverwenden können. Auf diese Weise können Sie diese Ressource speziell an Ihre Replikationsaufgabe anpassen, indem Sie zum Beispiel [den Hosting-Plan und Tarif](#pricing) auf der Grundlage der Anforderungen Ihres Replikationsszenarios, wie Kapazität, Durchsatz und Skalierung, auswählen. Sie können diese Ressource beim Erstellen des Replikationsaufgabe erstellen, aber Sie können weder Region noch Hostingplan oder Tarif ändern. Die folgende Liste enthält weitere Gründe und Best Practices für eine zuvor erstellte Logik-App-Ressource:
 
   - Sie können diese Logik-App-Ressource in einer Region erstellen, die sich von den Quell- und Zielentitäten in Ihrer Replikationsaufgabe unterscheidet.
 
@@ -163,7 +224,7 @@ Basierend auf der Anzahl von Ereignissen, die Event Hubs empfängt, oder der Anz
 
 ## <a name="naming-conventions"></a>Benennungskonventionen
 
-Planen Sie die Benennungsstrategie sorgfältig, die Sie für Ihre Replikationsaufgaben und Entitäten verwenden, wenn Sie diese noch nicht erstellt haben. Stellen Sie sicher, dass die Namen leicht identifizierbar und unterscheidbar sind. Wenn Sie z. B. mit einem Event Hubs-Namespace arbeiten, wird die Replikationsaufgabe von jedem Event Hub im Quellnamespace repliziert. Wenn Sie mit Service Bus-Warteschlangen, finden Sie in der folgenden Tabelle ein Beispiel für die Benennung der Entitäten und der Replikationsaufgabe:
+Planen Sie die Benennungsstrategie sorgfältig, die Sie für Ihre Replikationsaufgaben und Entitäten verwenden, wenn Sie diese noch nicht erstellt haben. Stellen Sie sicher, dass die Namen leicht identifizierbar und unterscheidbar sind. Wenn Sie beispielsweise mit dem Event-Hubs-Namensraum arbeiten, repliziert die Replikationsaufgabe von jeder Event-Hubs-Instanz im Quellnamensraum. Wenn Sie mit Service Bus-Warteschlangen, finden Sie in der folgenden Tabelle ein Beispiel für die Benennung der Entitäten und der Replikationsaufgabe:
 
 | Quellname | Beispiel | Replikations-App | Beispiel | Zielname | Beispiel |
 |-------------|---------|-----------------|---------|-------------|---------|
@@ -189,9 +250,9 @@ Dieses Beispiel zeigt, wie Sie eine Replikationsaufgabe für Service Bus-Wartesc
 
 1. Wählen Sie im Bereich **Aufgabe hinzufügen** unter **Vorlage auswählen** die Vorlage für den Replikationstask aus, die Sie erstellen möchten, und wählen Sie **Auswählen** aus. Wenn die nächste Seite nicht angezeigt wird, wählen Sie **Weiter: Authentifizierung** aus.
 
-   In diesem Beispiel wird nun die Aufgabenvorlage **Zu Service Bus-Warteschlange replizieren** ausgewählt, die Inhalte zwischen Service Bus-Warteschlangen repliziert.
+   In diesem Beispiel wird die Aufgabenvorlage **Replizieren von Service-Bus-Warteschlange zu Warteschlange** ausgewählt, die Inhalte zwischen Service Bus-Warteschlangen repliziert.
 
-   ![Screenshot: Bereich „Aufgabe hinzufügen“ mit ausgewählter Vorlage „Zu Service Bus-Warteschlange replizieren“.](./media/create-replication-tasks-azure-resources/select-replicate-service-bus-template.png)
+   ![Screenshot des Fensters "Aufgabe hinzufügen" mit der Vorlage "Replizieren von Service-Bus-Warteschlange zu Warteschlange".](./media/create-replication-tasks-azure-resources/select-replicate-service-bus-template.png)
 
 1. Wählen Sie auf der Registerkarte **Authentifizierung** im Abschnitt **Verbindungen** für jede Verbindung, die in der Aufgabe angezeigt wird, die Option **Erstellen** aus, damit Sie für alle Verbindungen Anmeldeinformationen zur Authentifizierung angeben können. Die Verbindungstypen in den einzelnen Aufgaben variieren je nach Aufgabe.
 
@@ -292,8 +353,8 @@ Dieses Beispiel zeigt, wie Sie den Verlauf der Workflowausführungen einer Aufga
 
    In der folgenden Tabelle werden die möglichen Status für eine Ausführung beschrieben:
 
-   | Status | BESCHREIBUNG |
-   |--------|-------------|
+   | Status-Label | BESCHREIBUNG |
+   |--------------|-------------|
    | **Abgebrochen** | Die Aufgabe wurde während der Ausführung abgebrochen. |
    | **Fehler** | Die Aufgaben hat mindestens eine fehlgeschlagene Aktion, aber es gab keine nachfolgenden Aktionen, um den Fehler zu beheben. |
    | **Wird ausgeführt** | Die Aufgabe wird gerade ausgeführt. |
@@ -410,7 +471,7 @@ Sie können den zugrunde liegenden Workflow einer Replikationsaufgabe bearbeiten
 
 Für eine Azure Event Hubs-Replikation zwischen den gleichen Entitätstypen erfordert die georedundante Notfallwiederherstellung ein Failover von der Quellentität zur Zielentität. Anschließend müssen alle betroffenen Ereignisconsumer und -producer darüber informiert werden, dass sie den Endpunkt für die Zielentität verwenden müssen, die zur neuen Quelle wird. Wenn also ein Notfall eintritt und für die Quellentität ein Failover ausgeführt wird, werden Consumer und Producer – einschließlich Ihrer Replikationsaufgabe – an die neue Quelle umgeleitet. Das von der Replikationsaufgabe erstellte Speicherkonto enthält Prüfpunktinformationen und die Position oder den Offset im Datenstrom, an dem die Quellentität angehalten wird, wenn die Quellregion unterbrochen wird oder nicht mehr verfügbar ist.
 
-Um sicherzustellen, dass das Speicherkonto keine veralteten Informationen aus der ursprünglichen Quelle enthält und die Replikationsaufgabe mit dem Lesen und Replizieren von Ereignissen ab dem Start des neuen Quelldatenstroms beginnt, müssen Sie die Replikationsaufgabe manuell neu konfigurieren:
+Um sicherzustellen, dass das Speicherkonto keine veralteten Informationen aus der ursprünglichen Quelle enthält und die Replikationsaufgabe mit dem Lesen und Replizieren von Ereignissen ab dem Start des neuen Quelldatenstroms beginnt, müssen Sie alle Altdaten aus der ursprünglichen Quelle manuell bereinigen und die Replikationsaufgabe neu konfigurieren.
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Logik-App-Ressource oder den zugrunde liegenden Workflow der Replikationsaufgabe.
 
@@ -419,22 +480,52 @@ Um sicherzustellen, dass das Speicherkonto keine veralteten Informationen aus de
 
 1. Wählen Sie im Navigationsmenü der Ressource oder des Workflows die **Übersicht** aus. Wählen Sie auf der Symbolleiste **Übersicht** entweder **Deaktivieren** für den Workflow oder **Beenden** für die Logik-App-Ressource aus.
 
-1. Wechseln Sie zu der Azure-Ressourcengruppe, die die Ressourcen des Replikationsaufgabe enthält.
+1. Gehen Sie wie folgt vor, um das Speicherkonto zu finden, das von der der Replikationsaufgabe zugrundeliegenden Logic-App-Ressource verwendet wird, um die Checkpoint- und Stream-Offset-Informationen der Quell-Entität zu speichern:
 
-   Diese Ressourcengruppe enthält die Logik-App-Ressource und das Speicherkonto, in dem die Informationen der Quellentität zu Prüfpunkt und Datenstromoffset gespeichert sind.
+   1. Klicken Sie im Logik-App-Menü unter **Einstellungen** auf **Konfiguration**.
 
-1. Wechseln Sie zu dem Speicherkonto, das der Logik-App-Ressource zugeordnet ist. Um dieses Speicherkonto zu finden, öffnen Sie die Ressourcengruppe, die die Logik-App-Ressource enthält. Führen Sie die folgenden Schritte aus, um das Speicherkonto zu löschen:
+   1. Wählen Sie im Bereich **Konfiguration** auf der **Registerkarte Anwendungseinstellungen** die **App-Einstellung AzureWebJobsStorage** aus.
 
-   1. Wählen Sie im Navigationsmenü des Speicherkontos unter **Datenspeicher** die Option **Container** aus.
-
-   1. Wählen Sie im geöffneten Bereich **Container** für die Event Hubs-Quelle den Eintrag **azure-webjobs-eventhub** aus.
+      Diese Einstellung gibt die Verbindungszeichenfolge und das Speicherkonto an, die von der Logik-App-Ressource verwendet werden.
 
       > [!NOTE]
-      > Wenn der Eintrag **azure-webjobs-eventhub** nicht vorhanden ist, stellen Sie sicher, dass die Aufgabe mindestens einmal ausgeführt wird.
+      > Wenn die App-Einstellung nicht in der Liste angezeigt wird, wählen Sie **Werte anzeigen** aus.
 
-   1. Wählen Sie im Bereich **azure-webjobs-eventhub** den Namespaceordner aus, dessen Name im folgenden Format angegeben ist: `<source-event-hub-name>.servicebus.windows.net`.
+   1. Wählen Sie die **App-Einstellung AzureWebJobsStorage** aus, damit Sie den Namen des Speicherkontos anzeigen können.
 
-   1. Löschen Sie im Namespaceordner den Ordner für die frühere Quellentität. Dieser Ordner enthält die Prüfpunkt- und Offsetinformationen für die frühere Quelle und weist in der Regel den Namen dieser Quelle auf.
+   In diesem Beispiel wird gezeigt, wie Sie den Namen für dieses Speicherkonto finden, der hier `storagefabrikamreplb0c` lautet:
+
+   ![Der Screenshot zeigt den Bereich "Konfiguration" der zugrunde liegenden Logik-App-Ressource mit der App-Einstellung "AzureWebJobsStorage" und dem Verbindungsstring mit dem Namen des Speicherkontos.](./media/create-replication-tasks-azure-resources/find-storage-account-name.png)
+
+   1. Um zu bestätigen, dass die Speicherkontoressource vorhanden ist, geben Sie im Suchfeld Azure-Portal den Namen ein, und wählen Sie dann das Speicherkonto aus. Beispiel:
+
+   ![Screenshot, der das Azure-Portal mit dem eingegebenen Speicherkontonamen zeigt.](./media/create-replication-tasks-azure-resources/find-storage-account.png)
+
+1. Löschen Sie nun den Ordner, der die Prüfpunkt- und Offsetinformationen der Quellentität enthält, und zwar mithilfe der folgenden Schritte:
+
+   1. Laden Sie den neuesten [Azure Storage Explorer Desktop-Client](https://azure.microsoft.com/features/storage-explorer/) herunter, installieren Sie ihn und öffnen Sie ihn, falls Sie noch nicht die neueste Version besitzen.
+
+      > [!NOTE]
+      > Für die Bereinigungsaufgabe "Löschen" müssen Sie derzeit den Azure Storage Explorer Client verwenden, *nicht* den Storage Explorer, Browser, Editor oder die Verwaltungserfahrung im Azure-Portal.
+      >
+      > Obwohl Sie Containerordner mit dem PowerShell-Befehl [`Remove-AzStorageDirectory` löschen können](/powershell/module/az.storage/remove-azstoragedirectory), funktioniert dieser Befehl nur bei *leeren* Ordnern.
+
+   1. Falls noch nicht geschehen, melden Sie sich mit Ihrem Azure-Konto an, und stellen Sie sicher, dass Ihr Azure-Abonnement für Ihre Speicherkontoressource ausgewählt ist. Weitere Informationen finden Sie unter [Erste Schritte mit Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+
+   1. Wechseln Sie im Explorer-Fenster unter ihrem Azure-Abonnementnamen zu **Storage Accounts** >  **{*your-storage-account-name*}**  > **Blob Containers** > **azure-webjobs-eventhub**.
+
+      > [!NOTE]
+      > Wenn der **Ordner azure-webjobs-eventhub** nicht vorhanden ist, wurde der Replikationsvorgang noch nicht ausgeführt. Der Ordner wird erst angezeigt, nachdem der Replikationsaufgabe mindestens einmal ausgeführt wurde.
+
+      ![Screenshot, der den Azure Storage-Explorer mit geöffneten Speicherkonto und Blobcontainer zeigt, um den ausgewählten Ordner "azure-webjobs-eventhub" zu zeigen.](./media/create-replication-tasks-azure-resources/azure-webjobs-eventhub-storage-explorer.png)
+
+   1. Wählen Sie im Bereich **azure-webjobs-eventhub** den Namensraumordner aus, dessen Name im folgenden Format angegeben ist: `<source-Event-Hubs-namespace-name>.servicebus.windows.net`.
+
+   1. Nachdem der Namespace-Ordner geöffnet wurde, wählen Sie im Fenster **azure-webjobs-eventhub** den Ordner <*former-source-entity-name*> aus. Wählen Sie entweder in der Symbolleiste oder im Kontextmenü des Ordners die Option **Löschen**, zum Beispiel:
+
+      ![Screenshot: Der frühere  Quell-Event-Hubs-Entitätenordner ist ausgewählt und die Schaltfläche "Löschen" ebenfalls.](./media/create-replication-tasks-azure-resources/delete-former-source-entity-folder-storage-explorer.png)
+
+   1. Bestätigen Sie, dass Sie den Ordner löschen möchten.
 
 1. Kehren Sie zu der Logik-App-Ressource bzw. zum zugrunde liegenden Workflow der Replikationsaufgabe zurück. Starten Sie die Logik-App neu, oder aktivieren Sie den Workflow erneut.
 
@@ -444,6 +535,38 @@ Weitere Informationen zur georedundanten Notfallwiederherstellung finden Sie in 
 
 - [Azure Event Hubs: Georedundante Notfallwiederherstellung](../event-hubs/event-hubs-geo-dr.md)
 - [Georedundante Notfallwiederherstellung in Azure Service Bus](../service-bus-messaging/service-bus-geo-dr.md)
+
+<a name="edit-plan-scale-out-settings"></a>
+
+## <a name="edit-hosting-plan-scale-out-settings"></a>Bearbeiten der Einstellungen für das Aufskalieren des Hostingplans
+
+### <a name="portal"></a>[Portal](#tab/portal)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Logik-App-Ressource oder den zugrunde liegenden Workflow der Replikationsaufgabe.
+
+1. Wählen Sie im Ressourcenmenü der Logik-Anwendung unter **Einstellungen** die Option **Skalieren (App Service Plan)** aus.
+
+   ![Screenshot, der die Hostingplaneinstellungen für maximale Ausbrüche, minimale Instanzen, immer einsatzbereite Instanzen und die Durchsetzung von Grenzwerten zeigt.](./media/create-replication-tasks-azure-resources/edit-app-service-plan-settings.png)
+
+1. Ändern Sie je nach den Anforderungen Ihres Szenarios unter **Plan Scale out** und **App Scale out** die Werte für die maximalen Ausbruch- bzw. Immer bereit-Instanzen.
+
+1. Wenn Sie fertig sind, klicken Sie in der Symbolleiste des Bereichs **Aufskalieren (App Service-Plan)** auf **Speichern**.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
+
+Sie können jederzeit bereite Instanzen für eine App auch mit der Azure CLI konfigurieren.
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <logic-app-app-name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites
+```
+
+---
+
+Weitere Informationen finden Sie in der folgenden Dokumentation, da der Workflow-Standardplan einige Aspekte mit dem Azure Funktionen Premium Plan gemeinsam hat:
+
+- [Plan- und SKU-Einstellungen - Azure Funktionen Premium Plan](../azure-functions/functions-premium-plan.md#plan-and-sku-settings)
+- [Was ist Cloudburstung](https://azure.microsoft.com/overview/what-is-cloud-bursting/)?
+- [Immer bereite Instanzen – Azure Funktionen Premium Plan](../azure-functions/functions-premium-plan.md#always-ready-instances)
 
 <a name="problems-failures"></a>
 
@@ -455,7 +578,7 @@ In diesem Abschnitt werden potenzielle Fehler oder Funktionsausfälle bei der Re
 
   Stellen Sie sicher, dass die gesendeten Nachrichten kleiner als 1 MB sind, da die Replikationsaufgabe [Replikationseigenschaften](#replication-properties) hinzufügt. Wenn nach dem Hinzufügen von [Replikationseigenschaften](#replication-properties) durch die Replikationsaufgabe die Nachricht größer ist als die Ereignisgröße, die an eine Event Hubs-Entität gesendet werden kann, wird der Replikationsprozess nicht erfolgreich ausgeführt.
 
-  Ein Beispiel: Nehmen Sie an, die Ereignisgröße beträgt 1 MB. Nachdem die Aufgabe Replikationseigenschaften hinzufügt hat, ist die Nachricht größer als 1 MB. Beim ausgehenden Aufruf, der versucht, die Nachricht zu senden, tritt ein Fehler auf.
+  Nehmen wir zum Beispiel an, die Nachricht ist 1 MB groß. Nachdem die Aufgabe Replikationseigenschaften hinzufügt hat, ist die Nachricht größer als 1 MB. Beim ausgehenden Aufruf, der versucht, die Nachricht zu senden, tritt ein Fehler auf.
 
 - Partitionsschlüssel
 

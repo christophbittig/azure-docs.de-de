@@ -11,12 +11,12 @@ author: buchananwp
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: data4ml, contperf-fy21q2
-ms.openlocfilehash: 05d7136b48f206cc9d091f5f73ee763cc24135fa
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: f80489726617b05e4a4c025893fdb24ec1f2d05c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558818"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335707"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Erkennen von Datendrift (Vorschau) in Datasets
 
@@ -232,7 +232,7 @@ monitor = monitor.enable_schedule()
 
 * **Monitoreinstellungen**:  Diese Einstellungen gelten für die geplante Datasetmonitor-Pipeline, die erstellt wird. 
 
-    | Einstellung | BESCHREIBUNG | Tipps | Veränderlich | 
+    | Einstellung | Beschreibung | Tipps | Veränderlich | 
     | ------- | ----------- | ---- | ------- |
     | Name | Name des Datasetmonitors. | | Nein |
     | Features | Liste der Features, die im Hinblick auf Datendrift im Lauf der Zeit analysiert werden. | Legen Sie diese Einstellung auf die Ausgabefeatures eines Modells fest, um eine konzeptionelle Drift zu messen. Schließen Sie keine Features ein, für die im Laufe der Zeit eine natürliche Drift auftritt (Monat, Jahr, Index usw.). Nach dem Anpassen der Featureliste können Sie einen Abgleich für alle vorhandenen Datendriftmonitore durchführen. | Ja | 
@@ -274,7 +274,7 @@ Dieser Abschnitt enthält Erkenntnisse auf Featureebene zu Änderungen an der Ve
 
 Für das Zieldataset wird auch ein Profil im Zeitverlauf erstellt. Der statistische Abstand zwischen der Baselineverteilung der einzelnen Features wird mit dem zeitlichen Verlauf des Zieldatasets verglichen.  Dies entspricht konzeptionell der Datendriftgröße.  Der statistische Abstand gilt jedoch für ein einzelnes Feature, nicht für alle Features. Mindest-, Maximal- und Mittelwerte sind ebenfalls verfügbar.
 
-Klicken Sie in Azure Machine Learning Studio auf einen Balken des Diagramms, um die Details auf der Featureebene für das entsprechende Datum anzuzeigen. Standardmäßig werden die Verteilung des Baselinedatasets und die Verteilung der letzten Ausführung für dieses Feature angezeigt.
+Klicken Sie im Azure Machine Learning Studio auf einen Balken des Diagramms, um die Details auf der Funktions-Ebene für das entsprechende Datum anzuzeigen. Standardmäßig werden die Verteilung des Baselinedatasets und die Verteilung der letzten Ausführung für dieses Feature angezeigt.
 
 :::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Driftausmaß nach Features":::
 
@@ -290,7 +290,7 @@ Die Metriken im Diagramm hängen von der Art des Features ab.
 
 * Numerische Features
 
-    | Metrik | BESCHREIBUNG |  
+    | Metrik | Beschreibung |  
     | ------ | ----------- |  
     | Wasserstein-Distanz | Der Mindestarbeitsaufwand, der für die Transformation der Baselineverteilung in die Zielverteilung erforderlich ist. |
     | Mittelwert | Durchschnittlicher Wert des Features. |

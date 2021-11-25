@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: 4e6ef102a4cf0a4528125e336e21ecf709bb37bc
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6eb624fd132823afe25a91414c2a316f9dc7bab3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240013"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310336"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-configure-monitoring"></a>Überwachen von VMs mit Azure Monitor: Konfigurieren der Überwachung
 Dieser Artikel ist Teil des Szenarios [Überwachen von VMs und zugehöriger Workloads in Azure Monitor](monitor-virtual-machine.md). Es wird beschrieben, wie Sie die Überwachung Ihrer Azure- und Hybrid-VMs in Azure Monitor konfigurieren.
@@ -41,14 +41,14 @@ Azure Monitor stellt kostenfrei und ohne Konfiguration eine grundlegende Überwa
 ## <a name="create-and-prepare-a-log-analytics-workspace"></a>Erstellen und Vorbereiten eines Log Analytics-Arbeitsbereichs
 Sie benötigen mindestens einen Log Analytics-Arbeitsbereich, um VM Insights zu unterstützen und Telemetriedaten vom Log Analytics-Agent zu sammeln. Für den Arbeitsbereich entstehen keine Kosten, aber beim Sammeln von Daten fallen Gebühren für Erfassung und Aufbewahrung an. Weitere Informationen finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../logs/manage-cost-storage.md).
 
-Viele Umgebungen verwenden einen einzelnen Arbeitsbereich für sämtliche VMs und weitere überwachte Azure-Ressourcen. Es ist sogar möglich, einen Arbeitsbereich freigeben, der von [Azure Security Center und Azure Sentinel](monitor-virtual-machine-security.md) verwendet wird. Viele Kunden entscheiden sich jedoch dafür, ihre Verfügbarkeits- und Leistungstelemetriedaten von Sicherheitsdaten zu trennen. Beim Einstieg in Azure Monitor sollten Sie mit einem einzigen Arbeitsbereich beginnen und die Erstellung weiterer Arbeitsbereiche in Betracht ziehen, wenn sich Ihre Anforderungen weiterentwickeln.
+Viele Umgebungen verwenden einen einzelnen Arbeitsbereich für sämtliche VMs und weitere überwachte Azure-Ressourcen. Sie können sogar einen Arbeitsbereich gemeinsam nutzen, der von [Microsoft Defender für Cloud und Microsoft Sentinel](monitor-virtual-machine-security.md) verwendet wird, obwohl sich viele Kunden dafür entscheiden, ihre Verfügbarkeits- und Leistungstelemetrie von Sicherheitsdaten zu trennen. Beim Einstieg in Azure Monitor sollten Sie mit einem einzigen Arbeitsbereich beginnen und die Erstellung weiterer Arbeitsbereiche in Betracht ziehen, wenn sich Ihre Anforderungen weiterentwickeln.
 
 Ausführliche Informationen zur Logik, die Sie beim Entwerfen einer Arbeitsbereichskonfiguration berücksichtigen sollten, finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../logs/design-logs-deployment.md).
 
 ### <a name="multihoming-agents"></a>Multihoming-Agents
 Multihoming bezieht sich auf eine VM, die eine Verbindung mit mehreren Arbeitsbereichen herstellt. In der Regel gibt es kaum einen Grund, nur für Azure Monitor Multihoming-Agents zu nutzen. Wenn ein Agent Daten an mehrere Arbeitsbereiche sendet, werden höchstwahrscheinlich doppelte Daten in jedem Arbeitsbereich generiert, was die Gesamtkosten erhöht. Sie können Daten aus mehreren Arbeitsbereichen kombinieren, indem Sie [arbeitsbereichsübergreifende Abfragen](../logs/cross-workspace-query.md) und [Arbeitsmappen verwenden](../visualizations/../visualize/workbooks-overview.md).
 
-Ein Grund für den Einsatz von Multihoming läge vor, wenn Sie über eine Umgebung mit Azure Security Center oder Azure Sentinel verfügen, die in einem Arbeitsbereich gespeichert ist, der von Azure Monitor getrennt ist. Ein Computer, der von jedem Dienst überwacht wird, muss Daten an jeden Arbeitsbereich senden. Der Windows-Agent unterstützt dieses Szenario, da er Daten an bis zu vier Arbeitsbereiche senden kann. Der Linux-Agent kann derzeit nur Daten an einen einzelnen Arbeitsbereich senden. Wenn Sie eine gemeinsame Gruppe von Linux-Computern über Azure Monitor und Azure Security Center oder Azure Sentinel überwachen möchten, müssen die Dienste denselben Arbeitsbereich gemeinsam nutzen.
+Ein Grund, warum Sie Multihoming in Betracht ziehen sollten, ist, wenn Sie eine Umgebung mit Microsoft Defender für Cloud oder Microsoft Sentinel haben, die in einem Arbeitsbereich gespeichert ist, der von Azure Monitor getrennt ist. Ein Computer, der von jedem Dienst überwacht wird, muss Daten an jeden Arbeitsbereich senden. Der Windows-Agent unterstützt dieses Szenario, da er Daten an bis zu vier Arbeitsbereiche senden kann. Der Linux-Agent kann derzeit nur Daten an einen einzelnen Arbeitsbereich senden. Wenn Sie Azure Monitor und Microsoft Defender für Cloud oder Microsoft Sentinel einen gemeinsamen Satz von Linux-Rechnern überwachen lassen möchten, müssen die Dienste denselben Arbeitsbereich nutzen.
 
 Ein weiterer Grund für die Nutzung von Multihoming-Agents liegt vor, wenn Sie ein [Hybridüberwachungsmodell](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) verwenden. In diesem Modell verwenden Sie Azure Monitor und Operations Manager gemeinsam, um dieselben Computer zu überwachen. Der Log Analytics-Agent und der Microsoft Management Agent für Operations Manager sind derselbe Agent. Gelegentlich wird auf sie mit unterschiedlichen Namen verwiesen.
 
@@ -99,7 +99,7 @@ Informationen zu den verschiedenen Optionen zum Aktivieren von VM Insights für 
 
 
 ## <a name="send-guest-performance-data-to-metrics"></a>Senden von Gastleistungsdaten an Metriken
-Der [Azure Monitor-Agent](../agents/azure-monitor-agent-overview.md) ersetzt den Log Analytics-Agent, wenn er Azure Monitor, Azure Security Center und Azure Sentinel vollständig unterstützt. Bis dahin kann er mit dem Log Analytics-Agent installiert werden, um Leistungsdaten zum Gastbetriebssystem von Computern an Azure Monitor-Metriken zu senden. Mit dieser Konfiguration können Sie die Daten anhand des Metrik-Explorers auswerten und Metrikwarnungen verwenden.
+Der [Azure Monitor Agent](../agents/azure-monitor-agent-overview.md) ersetzt den Log Analytics Agent, wenn er Azure Monitor, Microsoft Defender für Cloud und Microsoft Sentinel vollständig unterstützt. Bis dahin kann er mit dem Log Analytics-Agent installiert werden, um Leistungsdaten zum Gastbetriebssystem von Computern an Azure Monitor-Metriken zu senden. Mit dieser Konfiguration können Sie die Daten anhand des Metrik-Explorers auswerten und Metrikwarnungen verwenden.
 
 Der Azure Monitor-Agent erfordert mindestens eine Datensammlungsregel, die definiert, welche Daten gesammelt und wohin diese Daten gesendet werden sollen. Eine einzelne Datensammlungsregel kann von allen Computern in derselben Ressourcengruppe verwendet werden.
 

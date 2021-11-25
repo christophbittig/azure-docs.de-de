@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: 71e611855023becf474337b309f510244507bc96
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 7dafb069419c1ff42d2ec5358fbd8eb37465c88f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131848456"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552339"
 ---
 # <a name="create-and-run-machine-learning-pipelines-using-components-with-the-azure-machine-learning-cli-preview"></a>Erstellen und Ausführen von Machine Learning-Pipelines mit Komponenten und der Azure Machine Learning-CLI (Vorschau)
 
@@ -189,13 +189,13 @@ Standardmäßig werden nur die Komponenten erneut ausgeführt, deren Eingaben ge
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 ### <a name="how-do-i-change-the-location-of-the-outputs-generated-by-the-pipeline"></a>Wie ändere ich den Speicherort der von der Pipeline generierten Ausgaben?
-Sie können den Abschnitt `settings` im Pipelineauftrag verwenden, um einen anderen Datenspeicher für alle Aufträge in der Pipeline anzugeben (siehe Zeile 25 bis 26 in [diesem Beispiel](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml)). Das Angeben eines anderen Datenspeichers für einen bestimmten Auftrag oder eine bestimmte Ausgabe wird derzeit nicht unterstützt. Außerdem wird auch das Angeben von Pfaden, in denen Ausgaben im Datenspeicher gespeichert werden, derzeit nicht unterstützt.
+Sie können den Abschnitt `settings` im Pipelineauftrag verwenden, um einen anderen Datenspeicher für alle Aufträge in der Pipeline anzugeben (siehe Zeile 25 bis 26 in [diesem Beispiel](https://github.com/Azure/azureml-examples/blob/main/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml)). Das Angeben eines anderen Datenspeichers für einen bestimmten Auftrag oder eine bestimmte Ausgabe wird derzeit nicht unterstützt. Außerdem wird auch das Angeben von Pfaden, in denen Ausgaben im Datenspeicher gespeichert werden, derzeit nicht unterstützt.
 
 ### <a name="how-do-i-specify-a-compute-that-can-be-used-by-all-jobs"></a>Wie gebe ich ein Computeziel an, das von allen Aufträgen verwendet werden kann?
-Sie können ein Computeziel auf der Ebene des Pipelineauftrags angeben, das dann von den Aufträgen verwendet wird, für die kein Computeziel explizit angegeben wurde. (Siehe Zeile 28 in [diesem Beispiel](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml).)
+Sie können ein Computeziel auf der Ebene des Pipelineauftrags angeben, das dann von den Aufträgen verwendet wird, für die kein Computeziel explizit angegeben wurde. (Siehe Zeile 28 in [diesem Beispiel](https://github.com/Azure/azureml-examples/blob/main/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml).)
 
 ### <a name="what-job-types-are-supported-in-the-pipeline-job"></a>Welche Auftragstypen werden im Pipelineauftrag unterstützt?
-Das aktuelle Release unterstützt Befehls- und Komponentenauftragstypen. Für den Komponentenauftragstyp wird nur die Befehlskomponente unterstützt. In zukünftigen Releases werden weitere Auftragstypen unterstützt, z. B. Sweeps.
+Das aktuelle Release unterstützt Befehls-, Komponenten- und Sweep-Auftragstypen.
 
 ### <a name="what-are-the-different-modes-that-i-use-with-inputs-or-outputs"></a>Welche verschiedenen Modi kann ich mit Ein- oder Ausgaben verwenden?
 | Kategorie | Zulässige Modi | Standard |
@@ -209,10 +209,10 @@ Sie können mit Befehlsaufträgen schnelle Iterationen durchführen und sie dann
 
 ### <a name="im-doing-distributed-training-in-my-component-the-component-which-is-registered-specifies-distributed-training-settings-including-node-count-how-can-i-change-the-number-of-nodes-used-during-runtime-the-optimal-number-of-nodes-is-best-determined-at-runtime-so-i-dont-want-to-update-the-component-and-register-a-new-version"></a>Ich führe in meiner Komponente verteiltes Training aus. Die (registrierte) Komponente gibt Einstellungen für das verteilte Training einschließlich der Knotenanzahl an. Wie kann ich während der Laufzeit die Anzahl der verwendeten Knoten ändern? Da die optimale Anzahl von Knoten am besten zur Laufzeit bestimmt wird, möchte ich die Komponente nicht aktualisieren und eine neue Version registrieren.
 
-Sie können den Abschnitt „overrides“ im Komponentenauftrag verwenden, um die Ressourcen- und Verteilungseinstellungen zu ändern. Sehen Sie sich dazu [dieses Beispiel mit TensorFlow](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/6a_tf_hello_world/) oder [dieses Beispiel mit PyTorch](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/6y_pytorch_hello_world) an.  
+Sie können den Abschnitt „overrides“ im Komponentenauftrag verwenden, um die Ressourcen- und Verteilungseinstellungen zu ändern. Sehen Sie sich dazu [dieses Beispiel mit TensorFlow](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipelines-with-components/basics/6a_tf_hello_world) oder [dieses Beispiel mit PyTorch](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipelines-with-components/basics/6c_pytorch_hello_world) an.  
 
 ### <a name="how-can-i-define-an-environment-with-conda-dependencies-inside-a-component"></a>Wie kann ich eine Umgebung mit Conda-Abhängigkeiten innerhalb einer Komponente definieren?
-Weitere Informationen finden Sie in [diesem Beispiel](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/5c_env_conda_file).
+Weitere Informationen finden Sie in [diesem Beispiel](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipelines-with-components/basics/5c_env_conda_file).
  
 
 ## <a name="next-steps"></a>Nächste Schritte

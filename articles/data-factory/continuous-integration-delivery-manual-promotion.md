@@ -9,12 +9,12 @@ ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 09/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 367a0b7f231fcdd88a28237e83916995fd58062b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 485ace0d04375a406c8013d60d45635a596964a1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219506"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319505"
 ---
 # <a name="manually-promote-a-resource-manager-template-to-each-environment"></a>Manuelles Heraufstufen einer Resource Manager-Vorlage in jede Umgebung
 
@@ -36,7 +36,7 @@ Führen Sie die folgenden Schritte aus, um eine Resource Manager-Vorlage in jede
 
    :::image type="content" source="media/continuous-integration-delivery/custom-deployment-edit-template.png" alt-text="Bearbeiten der Vorlage":::
 
-1. Geben Sie im Abschnitt mit den Einstellungen die Konfigurationswerte ein, z. B. die Anmeldeinformationen für verknüpfte Dienste. Wählen Sie anschließend die Option **Kaufen** aus, um die Resource Manager-Vorlage bereitzustellen.
+1. Geben Sie im Abschnitt mit den Einstellungen die Konfigurationswerte ein, z. B. die Anmeldeinformationen für verknüpfte Dienste, die für die Bereitstellung erforderlich sind. Wählen Sie anschließend die Option **Überprüfen und erstellen** aus, um die Resource Manager-Vorlage bereitzustellen.
 
    :::image type="content" source="media/continuous-integration-delivery/continuous-integration-image5.png" alt-text="Einstellungsabschnitt":::
 
@@ -46,5 +46,5 @@ Führen Sie die folgenden Schritte aus, um eine Resource Manager-Vorlage in jede
 - [Automatisierung der kontinuierlichen Integration mit Azure Pipelines Releases](continuous-integration-delivery-automate-azure-pipelines.md)
 - [Benutzerdefinierte Parameter mit einer Resource Manager-Vorlage verwenden](continuous-integration-delivery-resource-manager-custom-parameters.md)
 - [Verknüpfte Resource Manager-Vorlagen](continuous-integration-delivery-linked-templates.md)
-- [Verwendung einer Hotfix-Produktionsumgebung](continuous-integration-delivery-hotfix-environment.md)
-- [Beispielskript für die Vor- und Nachbereitungsphase](continuous-integration-delivery-sample-script.md)
+- [Verwenden einer Hotfix-Produktionsumgebung](continuous-integration-delivery-hotfix-environment.md)
+- [Beispielskript für vor und nach der Bereitstellung](continuous-integration-delivery-sample-script.md)

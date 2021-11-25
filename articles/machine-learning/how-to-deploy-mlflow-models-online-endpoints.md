@@ -11,12 +11,12 @@ ms.date: 11/03/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, mlflow, devplatv2, no-code-deployment
-ms.openlocfilehash: d17db7c63d4e17009bffab948f335cedffb85e2e
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: a2328490185032e805a95f85b430d6742c76435c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132060071"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289886"
 ---
 # <a name="deploy-mlflow-models-to-managed-online-endpoint-preview"></a>Bereitstellen von MLflow-Modellen auf einem verwalteten Onlineendpunkt (Vorschau)
 
@@ -28,7 +28,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihr [MLflow-Modell](https://www.mlflow.o
 
 [!INCLUDE [basic cli prereqs](../../includes/machine-learning-cli-prereqs.md)]
 
-* Sie müssen über ein MLflow-Modell verfügen. Die Beispiele in diesem Artikel basieren auf den Modellen aus [https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow).
+* Sie müssen über ein MLflow-Modell verfügen. Die Beispiele in diesem Artikel basieren auf den Modellen aus [https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow).
 
 [!INCLUDE [clone repo & set defaults](../../includes/machine-learning-cli-prepare.md)]
 
@@ -68,9 +68,13 @@ Dieses Beispiel zeigt, wie Sie ein MLflow-Modell mithilfe der CLI (v2) auf einem
 
 ### <a name="invoke-the-endpoint"></a>Aufrufen des Endpunkts
 
-Sobald die Bereitstellung abgeschlossen ist, verwenden Sie den folgenden Befehl, um eine Bewertungsanforderung an den bereitgestellten Endpunkt zu stellen. Die in diesem Befehl verwendete Datei [sample-request-sklearn.json](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/endpoints/online/mlflow/sample-request-sklearn.json) befindet sich im Verzeichnis `/cli/endpoints/online/mlflow` des „azure-examples“-Repositorys:
+Sobald die Bereitstellung abgeschlossen ist, verwenden Sie den folgenden Befehl, um eine Bewertungsanforderung an den bereitgestellten Endpunkt zu stellen. Die in diesem Befehl verwendete Datei [sample-request-sklearn.json](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/mlflow/sample-request-sklearn.json) befindet sich im Verzeichnis `/cli/endpoints/online/mlflow` des „azure-examples“-Repositorys:
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="test_sklearn_deployment":::
+
+**sample-request-sklearn.json**
+
+:::code language="json" source="~/azureml-examples-main/cli/endpoints/online/mlflow/sample-request-sklearn.json":::
 
 Die Antwort sieht in etwa wie folgender Text aus:
 
@@ -91,7 +95,7 @@ Wenn Sie mit dem Endpunkt fertig sind, verwenden Sie den folgenden Befehl, um ih
 
 Dieses Beispiel zeigt, wie Sie ein MLflow-Modell mithilfe von [Azure Machine Learning Studio](https://ml.azure.com) auf einem verwalteten Onlineendpunkt bereitstellen können.
 
-1. Registrieren Sie Ihr Modell im MLflow-Format mit dem folgenden YAML- und CLI-Befehl. Der YAML-Befehl verwendet ein scikit-learn MLflow-Modell von [https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow).
+1. Registrieren Sie Ihr Modell im MLflow-Format mit dem folgenden YAML- und CLI-Befehl. Der YAML-Befehl verwendet ein scikit-learn MLflow-Modell von [https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/mlflow).
 
     __sample-create-mlflow-model.yaml__
 
@@ -147,7 +151,7 @@ In diesem Abschnitt erfahren Sie, wie Sie Modelle auf einem verwalteten Onlineen
     > [!NOTE]
     > Wenn Sie `mlflow.autolog()` in Ihrem Trainingsskript verwendet haben, werden Modellartefakte im Ausführungsverlauf des Auftrags angezeigt. Azure Machine Learning arbeitet mit der Nachverfolgungsfunktion von MLflow zusammen. Sie können `mlflow.autolog()` für mehrere gängige ML-Frameworks verwenden, um Modellparameter, Leistungsmetriken, Modellartefakte und sogar Featurerelevanzgraphen zu protokollieren.
     >
-    > Weitere Informationen finden Sie unter [Trainieren von Modellen per CLI](how-to-train-cli.md#model-tracking-with-mlflow). Weitere Informationen finden Sie auch in den [Beispielen zu Trainingsaufträgen](https://github.com/Azure/azureml-examples/tree/cli-preview/cli/jobs/single-step) im GitHub-Repository.
+    > Weitere Informationen finden Sie unter [Trainieren von Modellen per CLI](how-to-train-cli.md#model-tracking-with-mlflow). Weitere Informationen finden Sie auch in den [Beispielen zu Trainingsaufträgen](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/single-step) im GitHub-Repository.
 
     # <a name="azure-machine-learning-studio"></a>[Azure Machine Learning Studio](#tab/studio)
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 8e5f4e1a50b25fc9022444c25a2c1e091c5496e3
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 607cc8e3341e395fb7ef31c4af5c5c8b5fc75cec
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997474"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484792"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -55,7 +55,7 @@ Für Azure Spring Cloud gelten die folgenden bekannten Einschränkungen:
 
 * `spring.application.name` wird durch den Anwendungsnamen überschrieben, der zum Erstellen der einzelnen Anwendungen verwendet wird.
 * Der Standardwert für `server.port` ist Port 1025. Wenn ein anderer Wert angewandt wird, wird er in den Wert geändert. Beachten Sie auch diese Einstellung, und geben Sie im Code keinen Serverport an.
-* Das Hochladen von Anwendungspaketen wird vom Azure-Portal, von Azure Resource Manager-Vorlagen und von Terraform nicht unterstützt. Sie können Anwendungspakete hochladen, indem Sie die Anwendung mithilfe der Azure CLI, Azure DevOps, des Maven-Plug-Ins für Azure Spirng Cloud, Azure-Toolkit für IntelliJ und der Visual Studio Code-Erweiterung für Azure Spring Cloud bereitstellen.
+* Das Hochladen von Anwendungspaketen wird vom Azure-Portal, von Azure Resource Manager-Vorlagen und von Terraform nicht unterstützt. Sie können Anwendungspakete hochladen, indem Sie die Anwendung mithilfe der Azure CLI, Azure DevOps, des Maven-Plug-Ins für Azure Spring Cloud, Azure-Toolkit für IntelliJ und der Visual Studio Code-Erweiterung für Azure Spring Cloud bereitstellen.
 
 ### <a name="what-pricing-tiers-are-available"></a>Welche Tarife sind verfügbar?
 
@@ -72,9 +72,9 @@ Wenn bei der Azure Spring Cloud Probleme auftreten, erstellen Sie eine [Azure-Su
 
 ## <a name="development"></a>Entwicklung
 
-### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>Ich bin Spring Cloud-Entwickler, habe aber noch nicht mit Azure gearbeitet. Wie lerne ich am schnellsten, wie ich eine Azure Spring Cloud-Anwendung entwickle?
+### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-application-in-azure-spring-cloud"></a>Ich bin Spring Cloud-Entwickler, habe aber noch nicht mit Azure gearbeitet. Wie lerne ich am schnellsten, wie ich eine Anwendung in Azure Spring Cloud entwickle?
 
-Für den schnellsten Einstieg mit Azure Spring Cloud führen Sie die Anweisungen im [Schnellstart: Starten einer Azure Spring Cloud-Anwendung über das Azure-Portal](./quickstart.md).
+Am schnellsten können Sie mit Azure Spring Cloud beginnen, indem Sie die Anweisungen unter [Schnellstart: Starten einer Anwendung in Azure Spring Cloud über das Azure-Portal](./quickstart.md) befolgen.
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Welche Java-Runtime unterstützt Azure Spring Cloud?
@@ -103,7 +103,7 @@ Wir haben ein Problem mit Spring Boot 2.4 identifiziert und arbeiten zurzeit ge
 
 Metriken finden Sie auf der Registerkarte „App Overview“ (App-Übersicht) sowie der Registerkarte [Azure Monitor](../azure-monitor/essentials/data-platform-metrics.md#metrics-explorer).
 
-Azure Spring Cloud unterstützt das Exportieren von Spring Cloud-Anwendungsprotokollen und -metriken in Azure Storage, EventHub und [Log Analytics](../azure-monitor/logs/data-platform-logs.md). Der Tabellenname im Log Analytics lautet *AppPlatformLogsforSpring*. Informationen zum Aktivieren dieser Protokollierung finden Sie unter [Diagnosedienste](diagnostic-services.md).
+Azure Spring Cloud unterstützt das Exportieren von Spring Cloud-Anwendungsprotokollen und -metriken in Azure Storage, Event Hub und [Log Analytics](../azure-monitor/logs/data-platform-logs.md). Der Tabellenname im Log Analytics lautet *AppPlatformLogsforSpring*. Informationen zum Aktivieren dieser Protokollierung finden Sie unter [Diagnosedienste](diagnostic-services.md).
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Unterstützt Azure Spring Cloud die verteilte Ablaufverfolgung?
 

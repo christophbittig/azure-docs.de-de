@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 48732ac1f22d090afd3dd4b5607bd3d64ae51c8b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 92a8e44352d287cd6be1b48ed2c0aa3bc004b75d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131555436"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294217"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Konfigurieren der Sicherheit für Azure Arc-fähige PostgreSQL Hyperscale-Servergruppen
 
@@ -151,7 +151,7 @@ Wenn Sie sich mit der Anwendung verbinden und ein Kennwort eingeben, wird in der
 
    ```console
    select USERname from mysecrets where (USERpassword = crypt('MySecretPasswrod', USERpassword));
-   ``` 
+   ```
 
    Ausgabe:
 

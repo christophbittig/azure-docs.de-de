@@ -1,32 +1,32 @@
 ---
-title: Anreichern von Entitäten mit Geolocationdaten in Azure Sentinel mithilfe der REST-API | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie Entitäten in Azure Sentinel über die REST-API mit Geolocationdaten anreichern können.
+title: Anreicherung von Entitäten mit Geolocationsdaten in Microsoft Sentinel über REST API | Microsoft Docs
+description: In diesem Artikel wird beschrieben, wie Sie Entitäten in Microsoft Sentinel mit Geolocationdaten über die REST-API anreichern können.
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/21/2021
+ms.date: 11/09/2021
 ms.author: bagol
-ms.openlocfilehash: 223fa4bf0e62790e31ae8d872ef47c72a15b4634
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cce16ca2f0db3d4f44c4077e4760f599e565bae6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083866"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520596"
 ---
-# <a name="enrich-entities-in-azure-sentinel-with-geolocation-data-via-rest-api-public-preview"></a>Anreichern von Entitäten in Azure Sentinel mit Geolocationdaten über die REST-API (Public Preview)
+# <a name="enrich-entities-in-microsoft-sentinel-with-geolocation-data-via-rest-api-public-preview"></a>Anreichern von Entitäten in Microsoft Sentinel mit Geolocationdaten über die REST-API (Public Preview)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Artikel erfahren Sie, wie Sie Entitäten in Azure Sentinel mithilfe der REST-API mit Geolocationdaten anreichern.
+Dieser Artikel zeigt Ihnen, wie Sie Entitäten in Microsoft Sentinel mithilfe der REST-API mit Geolocationdaten anreichern können.
 
 > [!IMPORTANT]
 > Dieses Feature befindet sich derzeit in der VORSCHAU. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
@@ -123,12 +123,12 @@ Diese API ist auf 100 Aufrufe pro Benutzer und Stunde beschränkt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Microsoft Sentinel finden Sie in den folgenden Artikeln:
 
 - Weitere Informationen zu Entitäten finden Sie hier:
 
-    - [Referenz zu Azure Sentinel-Entitätstypen](entities-reference.md)
-    - [Klassifizieren und Analysieren von Daten mithilfe von Entitäten in Azure Sentinel](entities-in-azure-sentinel.md)
-    - [Zuordnen von Datenfeldern zu Entitäten in Azure Sentinel](map-data-fields-to-entities.md)
+    - [Referenz zu Microsoft Sentinel-Entitätstypen](entities-reference.md)
+    - [Klassifizieren und Analysieren von Daten mithilfe von Entitäten in Microsoft Sentinel](entities-in-azure-sentinel.md)
+    - [Zuordnen von Datenfeldern zu Entitäten in Microsoft Sentinel](map-data-fields-to-entities.md)
 
-- Erkunden anderer Verwendungsmöglichkeiten der [Azure Sentinel-API](/rest/api/securityinsights/)
+- Erkunden anderer Verwendungsmöglichkeiten der [Microsoft Sentinel-API](/rest/api/securityinsights/)

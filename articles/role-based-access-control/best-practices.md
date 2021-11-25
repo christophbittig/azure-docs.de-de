@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/16/2020
+ms.date: 11/15/2021
 ms.author: rolyon
-ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 947645848fd60a6d2864a1715ddc32424a683ce8
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555567"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524833"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Bewährte Methoden für Azure RBAC
 
@@ -34,7 +34,7 @@ Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Zuweisen von Azu
 
 ## <a name="limit-the-number-of-subscription-owners"></a>Begrenzen der Anzahl von Abonnementbesitzern
 
-Sie sollten höchstens 3 Abonnementbesitzer haben, um die Möglichkeit einer Sicherheitsverletzung durch einen kompromittierten Besitzer zu verringern. Diese Empfehlung lässt sich im Azure Security Center überwachen. Weitere Identitäts- und Zugriffsempfehlungen im Security Center finden Sie unter [Sicherheitsempfehlungen – ein Referenzhandbuch](../security-center/recommendations-reference.md).
+Sie sollten höchstens 3 Abonnementbesitzer haben, um die Möglichkeit einer Sicherheitsverletzung durch einen kompromittierten Besitzer zu verringern. Diese Empfehlung kann in Microsoft Defender für Cloud überwacht werden. Weitere Identitäts- und Zugriffsempfehlungen in Defender für Cloud finden Sie unter [Sicherheitsempfehlungen – ein Referenzhandbuch](../security-center/recommendations-reference.md).
 
 ## <a name="use-azure-ad-privileged-identity-management"></a>Verwenden von Azure AD Privileged Identity Management
 
@@ -44,7 +44,18 @@ Weitere Informationen finden Sie unter [Was ist Azure AD Privileged Identity Man
 
 ## <a name="assign-roles-to-groups-not-users"></a>Zuweisen von Rollen zu Gruppen,nicht zu Benutzern
 
-Damit Rollenzuweisungen besser verwaltbar sind, sollten Sie Benutzern keine Rollen direkt zuweisen. Weisen Sie Rollen stattdessen Gruppen zu. Das Zuweisen von Rollen zu Gruppen anstelle von Benutzern trägt auch dazu bei, die Anzahl von Rollenzuweisungen zu minimieren, die auf [2.000 Rollenzuweisungen pro Abonnement](troubleshooting.md#azure-role-assignments-limit) beschränkt sind. 
+Damit Rollenzuweisungen besser verwaltbar sind, sollten Sie Benutzern keine Rollen direkt zuweisen. Weisen Sie Rollen stattdessen Gruppen zu. Das Zuweisen von Rollen zu Gruppen anstelle von Benutzern trägt auch dazu bei, die Anzahl von Rollenzuweisungen zu minimieren, die auf [eine bestimmte Anzahl von Rollenzuweisungen pro Abonnement](troubleshooting.md#azure-role-assignments-limit) beschränkt sind.
+
+## <a name="assign-roles-using-the-unique-role-id-instead-of-the-role-name"></a>Zuweisen von Rollen mithilfe der eindeutigen Rollen-ID anstelle des Rollennamens
+
+In bestimmten Fällen kann sich ein Rollenname ändern, z. B.:
+
+- Sie verwenden eine eigene benutzerdefinierte Rolle und beschließen, den Namen zu ändern.
+- Sie verwenden eine als Vorschauversion verfügbare Rolle, deren Name den Zusatz **(Vorschauversion)** enthält. Beim Veröffentlichen wird die Rolle umbenannt.
+
+Auch wenn eine Rolle umbenannt wird, ändert sich die Rollen-ID nicht. Wenn Sie Ihre Rollenzuweisungen mithilfe von Skripts oder mittels Automatisierung erstellen, wird empfohlen, die eindeutige Rollen-ID anstelle des Rollennamens zu verwenden. Wird eine Rolle umbenannt, ist auf diese Weise die Wahrscheinlichkeit größer, dass Ihre Skripts funktionieren.
+
+Weitere Informationen finden Sie unter [Zuweisen einer Rolle mithilfe der eindeutigen Rollen-ID und Azure PowerShell](role-assignments-powershell.md#assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope) und [Zuweisen einer Rolle mithilfe der eindeutigen Rollen-ID und Azure CLI](role-assignments-cli.md#assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 61002f3943001dd145cd30593b6972d743f24eec
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 51685da924bc2fab2f936eceeaf13972216ffd77
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472795"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492131"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server"></a>Sicherung und Wiederherstellung in Azure Database for MySQL Flexible Server
 
@@ -120,7 +120,7 @@ Die geschätzte Wiederherstellungszeit hängt von mehreren Faktoren ab, einschli
 > Wenn Sie einen flexiblen Server wiederherstellen, der mit zonenredundanter Hochverfügbarkeit konfiguriert ist, wird der wiederhergestellte Server in derselben Region und Zone wie Ihr primärer Server konfiguriert und als einzelner flexibler Server in einem Modus ohne Hochverfügbarkeit bereitgestellt. Weitere Informationen finden Sie unter [Zonenredundante Hochverfügbarkeit](concepts-high-availability.md) für flexible Server.
 
 > [!IMPORTANT]
-> Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../../azure-resource-manager/management/lock-resources.md) nutzen.
+> Der Dienst ermöglicht Ihnen nun, eine gelöschte flexible MySQL-Serverressource innerhalb von 5 Tagen ab dem Zeitpunkt der Löschung des Servers wiederherzustellen. Eine detaillierte Anleitung zur Wiederherstellung eines gelöschten Servers [finden Sie in den dokumentierten Schritten](../flexible-server/how-to-restore-dropped-server.md). Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../../azure-resource-manager/management/lock-resources.md) nutzen.
 
 ## <a name="geo-restore"></a>Geowiederherstellung
 

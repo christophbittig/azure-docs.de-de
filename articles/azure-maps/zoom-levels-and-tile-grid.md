@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: b607037d56ab0c9d9bd119b12f4dc3a7200ff981
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bdda831f07d91ad13553814e198cac743314671a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339952"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284814"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomfaktoren und Linienraster
 
@@ -33,7 +33,7 @@ Jedes zusätzliche Zoomfaktorquadrat unterteilt die Kacheln des vorherigen Zoomf
 
 Die interaktiven Kartensteuerelemente in Azure Maps für Web und Android unterstützen 25 Zoomfaktoren, nummeriert von 0 bis 24. Obwohl Straßendaten bei den Zoomfaktoren nur dann verfügbar sind, wenn die jeweiligen Kacheln verfügbar sind.
 
-In der folgenden Tabelle finden Sie die vollständige Liste der Zoomfaktorwerte für eine Kachelgröße von 512 Pixeln im Quadrat am Breitengrad 0:
+In der folgenden Tabelle finden Sie die vollständige Liste der Zoomfaktorwerte für eine Kachelgröße von **512** Pixeln im Quadrat am Breitengrad 0:
 
 |Zoomfaktor|Meter/Pixel|Seite Meter/Kachel|
 |--- |--- |--- |
