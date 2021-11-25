@@ -8,12 +8,12 @@ ms.author: mbaldwin
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: efc0626c0c5f2c9333e5459d7fb7ce6aa2865cc4
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 989a7fcc058284c1c706cbfc30c97a77200de111
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105182"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315310"
 ---
 # <a name="overview-of-managed-disk-encryption-options"></a>Übersicht über Verschlüsselungsoptionen für verwaltete Datenträger
 
@@ -29,7 +29,7 @@ Für Ihre verwalteten Datenträger stehen verschiedene Arten von Verschlüsselun
 
 Nachfolgend werden SSE, ADE und Verschlüsselung auf dem Host verglichen.
 
-| | Verschlüsselung ruhender Daten (Betriebssystemdatenträger und Datenträger mit Daten) | Verschlüsselung temporärer Datenträger | Verschlüsselung von Caches | Verschlüsselte Datenflüsse zwischen Computeressource und Speicher | Kundenseitige Kontrolle von Schlüsseln | Azure Security Center-Status der Datenträgerverschlüsselung |
+| | Verschlüsselung ruhender Daten (Betriebssystemdatenträger und Datenträger mit Daten) | Verschlüsselung temporärer Datenträger | Verschlüsselung von Caches | Verschlüsselte Datenflüsse zwischen Computeressource und Speicher | Kundenseitige Kontrolle von Schlüsseln | Status der Datenträgerverschlüsselungverschlüsselung in Microsoft Defender für Cloud |
 |--|--|--|--|--|--|--|
 | **Verschlüsselung ruhender Daten mit plattformseitig verwaltetem Schlüssel (SSE+PMK)** | &#x2705; | &#10060; | &#10060; | &#10060; | &#10060; | Fehlerhaft, nicht zutreffend, wenn ausgenommen |
 | **Verschlüsselung ruhender Daten mit kundenseitig verwaltetem Schlüssel (SSE+CMK)** | &#x2705; | &#10060; | &#10060; | &#10060; | &#x2705; | Fehlerhaft, nicht zutreffend, wenn ausgenommen |
@@ -37,7 +37,7 @@ Nachfolgend werden SSE, ADE und Verschlüsselung auf dem Host verglichen.
 | **Verschlüsselung auf dem Host**  | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x2705; | Fehlerhaft, nicht zutreffend, wenn ausgenommen |
 
 > [!Important]
-> Bei Verschlüsselung auf dem Host erkennt Azure Security Center den Verschlüsselungsstatus nicht.
+> Bei der Verschlüsselung auf dem Host erkennt Microsoft Defender für Cloud den Verschlüsselungsstatus nicht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

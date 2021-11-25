@@ -12,20 +12,22 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: mathoma, vanto
 ms.date: 01/25/2021
-ms.openlocfilehash: 3b009686bf113c233e04dc238429d16980427c26
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ed77571e076dad04fc2110f688c80d4418fb840d
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128607385"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554140"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 In diesem Artikel wird die Architektur verschiedener Komponenten erläutert, die den Netzwerkdatenverkehr an einen Server in Azure SQL-Datenbank oder Azure Synapse Analytics weiterleiten. Außerdem werden andere Verbindungsrichtlinien und ihre Auswirkung auf Clients beschrieben, die eine Verbindung innerhalb und außerhalb von Azure herstellen.
 
-> [!IMPORTANT]
-> Dieser Artikel gilt *nicht* für **Azure SQL Managed Instance**. Informationen dazu finden Sie unter [Konnektivitätsarchitektur für eine verwaltete Instanz](../managed-instance/connectivity-architecture-overview.md).
+Dieser Artikel gilt *nicht* für **Azure SQL Managed Instance**. Informationen dazu finden Sie unter [Konnektivitätsarchitektur für eine verwaltete Instanz](../managed-instance/connectivity-architecture-overview.md).
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="connectivity-architecture"></a>Verbindungsarchitektur
 

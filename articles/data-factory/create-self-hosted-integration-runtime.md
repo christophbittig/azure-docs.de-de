@@ -9,12 +9,12 @@ author: lrtoyou1223
 ms.author: lle
 ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: 734c469afa43a178f5c7a50550426a47940b8f35
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8e0a2110458f57fb5485d982b6114574ac220eb5
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124820028"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373363"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 
@@ -74,7 +74,7 @@ Die Installation der selbstgehosteten Integration Runtime auf einem Domänencont
 - Ausführungen der Kopieraktivität werden mit einer bestimmten Häufigkeit durchgeführt. Die Prozessor- und RAM-Nutzung auf dem Computer folgt dem gleichen Muster mit Spitzen- und Leerlaufzeiten. Außerdem ist die Ressourcenverwendung auch stark von der Menge der Daten abhängig, die verschoben werden. Wenn mehrere Kopieraufträge in Bearbeitung sind, steigt die Ressourcenverwendung zu Spitzenzeiten an.
 - Unter Umständen tritt für Aufgaben während der Extraktion von Daten in den Formaten Parquet, ORC oder Avro ein Fehler auf. Weitere Informationen zu Parquet finden Sie im Artikel [Parquet-Format in Azure Data Factory](./format-parquet.md#using-self-hosted-integration-runtime). Die Dateierstellung wird auf dem Computer mit der selbstgehosteten Integration Runtime ausgeführt. Damit die Dateierstellung wie erwartet funktioniert, müssen die folgenden Voraussetzungen erfüllt sein:
   - Paket mit [Visual C++ 2010 Redistributable](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) (x64)
-  - Version 8 der Java Runtime (JRE) von einem JRE-Anbieter, z. B. [Adopt OpenJDK](https://adoptopenjdk.net/). Stellen Sie sicher, dass die Umgebungsvariable `JAVA_HOME` auf den JRE-Ordner (und nicht nur den JDK-Ordner) festgelegt wird.
+  - Version 8 der Java Runtime (JRE) von einem JRE-Anbieter, z. B. [Adopt OpenJDK](https://adoptopenjdk.net/). Stellen Sie sicher, dass die Umgebungsvariable JAVA_HOME auf den JDK-Ordner (und nicht nur den JRE-Ordner) festgelegt ist.
 
 >[!NOTE]
 >Wenn Sie in der Government-Cloud arbeiten, lesen Sie [Verbinden zur Government-Cloud](../azure-government/documentation-government-get-started-connect-with-ps.md).

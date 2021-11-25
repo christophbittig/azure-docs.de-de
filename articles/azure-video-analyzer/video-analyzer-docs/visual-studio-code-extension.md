@@ -5,12 +5,12 @@ ms.service: azure-video-analyzer
 ms.topic: reference
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 663f9289d6cc11a162c2325bc46381c1e2369193
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: b0faa61b724420ad04cc489d51539c134569dd05
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131563965"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287113"
 ---
 # <a name="visual-studio-code-extension-for-azure-video-analyzer"></a>Verwenden der Visual Studio Code-Erweiterung für Azure Video Analyzer
 
@@ -36,7 +36,7 @@ Wenn Sie den zugrunde liegenden JSON-Code hinter einer vorhandenen Topologie anz
 
 ## <a name="live-pipelines"></a>Livepipelines
 
-Um eine Livepipeline zu erstellen, klicken Sie links unter Pipelinetopologien mit der rechten Maustaste auf den Namen der Topologie und wählen Sie `Create live pipeline` aus.  Sie müssen dann einen Namen für die Livepipeline und alle erforderlichen Parameter eingeben, bevor Sie fortfahren.  Rechts oben können Sie entweder auf `Save` klicken, um es in einem inaktiven Zustand zu speichern, oder auf `Save and activate`, um die Livepipeline sofort zu starten. 
+Um eine Livepipeline zu erstellen, klicken Sie links unter Pipelinetopologien mit der rechten Maustaste auf den Namen der Topologie und wählen Sie `Create live pipeline` aus.  Sie müssen dann einen Namen für die Live-Pipeline und alle erforderlichen Parameter eingeben, bevor Sie fortfahren.  Rechts oben können Sie entweder auf `Save` klicken, um es in einem inaktiven Zustand zu speichern, oder auf `Save and activate`, um die Livepipeline sofort zu starten. 
 
 Klicken Sie zum Aktivieren einer vorhandenen Livepipeline links unter Pipelinetopologien mit der rechten Maustaste auf den Namen der Livepipeline und wählen Sie `Activate live pipeline` aus.
 

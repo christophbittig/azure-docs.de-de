@@ -5,24 +5,23 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2021
-ms.openlocfilehash: 52bb368ccf19c23c04bc062e7db50c07ecebaceb
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 74d3544fd7e858a685b669ad826bc17e0eb6e64f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296069"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312918"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor-retired"></a>Wire Data 2.0-Lösung (Vorschau) in Azure Monitor (eingestellt)
 
 ![Wire Data-Symbol](media/wire-data/wire-data2-symbol.png)
 
->[!NOTE]
->Die Wire Data-Lösung wurde durch [VM Insights](../vm/vminsights-overview.md) und die [Dienstzuordnungslösung](../vm/service-map.md) ersetzt.  Beide Lösungen nutzen den Log Analytics-Agent und den Dependency-Agent, um Netzwerkverbindungsdaten in Azure Monitor zu erfassen.
+> [!NOTE]
+> Die Wire Data-Lösung wurde durch [VM Insights](../vm/vminsights-overview.md) und die [Dienstzuordnungslösung](../vm/service-map.md) ersetzt.  Beide Lösungen nutzen den Log Analytics-Agent und den Dependency-Agent, um Netzwerkverbindungsdaten in Azure Monitor zu erfassen.
 >
->Die Unterstützung für die Wire Data-Lösung endet am **31. März 2022**.  Bis zum Einstellungsdatum können bestehende Kunden, die die Wire Data 2.0-Lösung (Vorschau) verwenden, diese weiterhin nutzen.
+> Die Unterstützung für die Wire Data-Lösung endet am **31. März 2022**.  Bis zum Einstellungsdatum können bestehende Kunden, die die Wire Data 2.0-Lösung (Vorschau) verwenden, diese weiterhin nutzen.
 >
->Neue und bestehende Kunden sollten [VM Insights](../vm/vminsights-enable-overview.md) oder die [Dienstzuordnungslösung](../vm/service-map.md) installieren.  Der von diesen Lösungen gesammelte Satz an Zuordnungsdaten ist mit dem Dataset von Wire Data 2.0 (Vorschau) vergleichbar.  VM Insights umfasst das Dataset der Dienstzuordnung sowie zusätzliche Leistungsdaten und Analysefeatures. Beide Angebote verfügen über [Verbindungen mit Azure Sentinel](../../sentinel/connect-data-sources.md#map-data-types-with-azure-sentinel-connection-options).
- 
+> Neue und bestehende Kunden sollten [VM Insights](../vm/vminsights-enable-overview.md) oder die [Dienstzuordnungslösung](../vm/service-map.md) installieren.  Der von diesen Lösungen gesammelte Satz an Zuordnungsdaten ist mit dem Dataset von Wire Data 2.0 (Vorschau) vergleichbar.  VM Insights umfasst das Dataset der Dienstzuordnung sowie zusätzliche Leistungsdaten und Analysefeatures. Beide Angebote verfügen über [Verbindungen mit Microsoft Sentinel](../../sentinel/connect-data-sources.md#map-data-types-with-microsoft-sentinel-connection-options).
 
 Daten zur Kommunikation sind konsolidierte Netzwerk- und Leistungsdaten, die von mit Windows verbundenen und mit Linux verbundenen Computern mit dem Log Analytics-Agent gesammelt werden, einschließlich der in Ihrer Umgebung von Operations Manager überwachten Computer. Netzwerkdaten werden mit Ihren sonstigen Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen.
 
@@ -130,8 +129,8 @@ Weitere Beispielabfragen finden Sie in der [Dokumentation zur VM Insights-Protok
 
 Um Wire Data 2.0 zu deinstallieren, müssen Sie einfach nur die Lösung aus Ihrem Log Analytics-Arbeitsbereich entfernen.  Das hat folgende Auswirkungen:
 
-* Das Wire Data Management Pack wird von den VMs entfernt, die mit dem Arbeitsbereich verbunden sind. 
-* Der Wire Data-Datentyp wird nicht mehr in Ihrem Arbeitsbereich angezeigt.
+- Das Wire Data Management-Paket wird von den virtuellen Computern entfernt, die mit dem Arbeitsbereich verbunden sind.
+- Der Datentyp Wire Data wird nicht mehr in Ihrem Arbeitsbereich angezeigt
 
 Folgen Sie [diesen Anweisungen](./solutions.md?tabs=portal#remove-a-monitoring-solution), um die Wire Data-Lösung zu entfernen.
 
@@ -161,7 +160,7 @@ Ein Administrator kann auch „%Programfiles%\Microsoft Dependency Agent\Uninsta
 
 Wenn Sie den Dependency-Agent unter Linux vollständig deinstallieren möchten, müssen Sie den Agent selbst und den Connector entfernen, der automatisch mit dem Agent installiert wird. Mit dem folgenden einzelnen Befehl können Sie beide Komponenten deinstallieren:
 
-```
+```bash
 rpm -e dependency-agent dependency-agent-connector
 ```
 
@@ -183,7 +182,7 @@ Mit dem Blatt **Agents, die Netzwerkdatenverkehr erfassen** können Sie bestimme
 
 Auf ähnliche Weise können Sie das Blatt **Lokale Subnetze** verwenden, um zu bestimmen, wie viel Netzwerkdatenverkehr über die Subnetze verschoben wird. Benutzer definieren Subnetze oft um kritische Bereiche für ihre Anwendungen herum. Dieses Blatt bietet einen Einblick in die Bereiche.
 
-![Screenshot des Blatts „Lokale Subnetze“ im Wire Data 2.0-Dashboard mit der von jedem lokalen Subnetz genutzten Netzwerkbandbreite](./media/wire-data/log-search-example02.png)
+![Screenshot des Blatts „Lokale Subnetze“ im Wire Data 2.0-Dashboard mit der von jedem lokalen Subnetz genutzten Netzwerkbandbreite.](./media/wire-data/log-search-example02.png)
 
 Das Blatt **Protokolle auf Anwendungsebene** ist nützlich, da es hilfreich ist, zu wissen, welche Protokolle verwendet werden. Sie könnten z.B. erwarten, dass SSH nicht in Ihrer Netzwerkumgebung verwendet wird. Die im Blatt angezeigten Informationen können Ihre Erwartungen schnell bestätigen oder widerlegen.
 

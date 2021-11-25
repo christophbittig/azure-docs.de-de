@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 087af92ce70ccb8db37073b6aadb8cf9b83bc57c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f77efc7ab6880db771ea7f53fe9cfb2858c6ecc0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131454294"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327894"
 ---
 # <a name="use-azure-digital-twins-explorer-preview"></a>Verwenden von Azure Digital Twins-Explorer (Vorschau)
 
@@ -304,9 +304,9 @@ Sie können auch die vollständige Definition eines Modells anzeigen, indem Sie 
 
 Sie können die Modelle in verschiedenen Konfigurationen neu anordnen, indem Sie auf sie klicken und sie auf dem Bildschirm „Model Graph“ verschieben.
 
-Sie können auch einen von mehreren Layoutalgorithmen über die Optionen im Menü **Run Layout** (Layout ausführen) auf den Modellgraphen anwenden. 
+Sie können auch einen von mehreren Layoutalgorithmen über die Optionen im Menü **Layout wählen** auf den Graphen anwenden. 
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png" alt-text="Screenshot des Bereichs „Model Graph“ des Azure Digital Twins-Explorers. Die Schaltfläche „Run Layout“ (Layout ausführen) ist hervorgehoben und zeigt ein Menü mit den Layoutoptionen Cola, Dagre, fCoSE, Klay und d3Force an." lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png" alt-text="Screenshot des Azure Digital Twins Explorer Modellgraphen-Panels. Die Schaltfläche &quot;Layout wählen&quot; ist hervorgehoben und zeigt ein Menü mit den Layout-Optionen Cola, Dagre, fCoSE, Klay und d3Force an." lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png":::
 
 ### <a name="filter-and-highlight-model-graph-elements"></a>Filtern und Hervorheben von Modellgraphelementen
 
@@ -554,7 +554,7 @@ Sie können mehrere erweiterte Einstellungen für Azure Digital Twins-Explorer a
 
 Unter dem Menüpunkt Einstellungen in der oberen rechten Symbolleiste können Sie auf verschiedene erweiterte Funktionen zugreifen:
 * **Eager Loading**: Wenn eine Abfrage Zwillinge zurückgibt, die Beziehungen zu anderen Zwillingen aufweisen, die **nicht** in den Abfrageergebnissen enthalten sind, werden die „fehlenden“ Zwillinge von dieser Funktion vor dem Rendern des Graphen geladen.
-* **Zwischenspeichern**: Wenn dieses Feature aktiviert ist, verwaltet der Azure Digital Twins-Explorer einen lokalen Cache mit Beziehungen und Modellen im Arbeitsspeicher, um die Abfrageleistung zu verbessern. Diese Caches werden bei Schreibvorgängen für die relevanten Elemente sowie bei der Browseraktualisierung gelöscht.
+* **Zwischenspeichern**: Wenn dieses Feature aktiviert ist, verwaltet der Azure Digital Twins-Explorer einen lokalen Cache mit Beziehungen und Modellen im Arbeitsspeicher, um die Abfrageleistung zu verbessern. Diese Caches werden bei Schreibvorgängen für die relevanten Elemente sowie bei der Browseraktualisierung gelöscht. Dieses Feature ist standardmäßig deaktiviert.
 * **Konsole**: Dieses Feature ermöglicht die Anzeige eines Konsolenfensters, das einfache Shellfunktionen für das Arbeiten mit dem Graphen verwenden kann.
 * **Ausgabe**: Dieses Feature ermöglicht die Anzeige eines Ausgabefensters, das eine Diagnosenablaufverfolgung von Vorgängen zeigt.
 * **Hoher Kontrast**: Dieses Feature ändert die Farben des Azure Digital Twins-Explorers, sodass sie mit größerem Kontrast angezeigt werden.

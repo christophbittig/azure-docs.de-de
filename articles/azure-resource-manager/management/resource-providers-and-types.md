@@ -2,14 +2,14 @@
 title: Ressourcenanbieter und Ressourcentypen
 description: Hier werden die Ressourcenanbieter beschrieben, die Azure Resource Manager unterstützen. Sie erfahren mehr über die Schemas, verfügbaren API-Versionen und die Regionen, in denen die Ressourcen gehostet werden können.
 ms.topic: conceptual
-ms.date: 08/26/2021
+ms.date: 11/15/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7e8ebf6217296b4792887dc0af2c40fc66a9dd85
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: c048da5d7027885bf30b512d9e16e5851697c8b4
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038954"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522648"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-Ressourcenanbieter und -typen
 
@@ -39,7 +39,9 @@ Bevor Sie einen Ressourcenanbieter verwenden können, müssen Sie Ihr Azure-Abon
 
 Einige Ressourcenanbieter sind standardmäßig registriert. Eine Liste der standardmäßig registrierten Anbieter von Azure-Ressourcen finden Sie unter [Ressourcenanbieter für Azure-Dienste](azure-services-resource-providers.md).
 
-Andere werden bei bestimmten Aktionen automatisch registriert. Wenn Sie eine Azure Resource Manager-Vorlage bereitstellen, werden alle erforderlichen Ressourcenanbieter automatisch registriert. Beim Erstellen einer Ressource über das Portal wird der Ressourcenanbieter in der Regel für Sie registriert. In anderen Szenarien müssen Sie den Ressourcenanbieter unter Umständen manuell registrieren. 
+Andere werden bei bestimmten Aktionen automatisch registriert. Beim Erstellen einer Ressource über das Portal wird der Ressourcenanbieter in der Regel für Sie registriert. Wenn Sie eine Azure Resource Manager-Vorlage oder Bicep-Datei bereitstellen, werden in der Vorlage definierte Ressourcenanbieter automatisch registriert. Wenn jedoch eine Ressource in der Vorlage unterstützende Ressourcen erstellt, die nicht in der Vorlage enthalten sind, z. B. Überwachungs- oder Sicherheitsressourcen, müssen Sie diese Ressourcenanbieter manuell registrieren.
+
+In anderen Szenarien müssen Sie den Ressourcenanbieter unter Umständen manuell registrieren.
 
 > [!IMPORTANT]
 > Ihr Anwendungscode sollte **nicht die Erstellung von Ressourcen für einen Ressourcenanbieter blockieren**, der sich im Status **Wird registriert** befindet. Wenn Sie den Ressourcenanbieter registrieren, wird der Vorgang für jede unterstützte Region einzeln ausgeführt. Um Ressourcen in einer Region zu erstellen, muss die Registrierung nur in dieser Region abgeschlossen werden. Indem Sie den Ressourcenanbieter im Status „Wird registriert“ nicht blockieren, kann die Anwendung viel früher fortfahren und muss nicht auf den Abschluss aller Regionen warten.

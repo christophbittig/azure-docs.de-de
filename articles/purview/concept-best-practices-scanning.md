@@ -8,16 +8,16 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 10/08/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 85dc954dcb352f9bc2447e72322d35e8d5e73cb3
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2313d8b544355dd2bdf5ca528faffbcc17f848e9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131552656"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309659"
 ---
 # <a name="azure-purview-scanning-best-practices"></a>Best Practices für die Azure Purview-Überprüfung
 
-Azure Purview unterstützt die automatisierte Überprüfung von lokalen, Multi-Cloud- und SaaS-Datenquellen. Beim Durchführen einer Überprüfung wird der Prozess zum Erfassen von Metadaten aus den registrierten Datenquellen aufgerufen. Die am Ende des Überprüfungs- und Zusammenstellungsprozesses generierten Metadaten umfassen technische Metadaten wie etwa die Namen von Datenressourcen (Tabellennamen/Dateinamen), Dateigröße, Spalten, Datenherkunft usw. Für strukturierte Datenquellen (z. B. ein relationales Datenbank-Managementsystem) werden auch die Schemadetails erfasst. Während der Zusammenstellung werden automatisierte Klassifizierungsbezeichnungen auf die Schemaattribute angewendet, die auf dem konfigurierten Überprüfungsregelsatz basieren, sowie Vertraulichkeitsbezeichnungen, wenn Ihr Purview-Konto mit einem Microsoft 365 Security & Compliance Center (SCC) verbunden ist. 
+Azure Purview unterstützt die automatisierte Überprüfung von lokalen, Multi-Cloud- und SaaS-Datenquellen. Beim Durchführen einer Überprüfung wird der Prozess zum Erfassen von Metadaten aus den registrierten Datenquellen aufgerufen. Die am Ende des Überprüfungs- und Zusammenstellungsprozesses generierten Metadaten umfassen technische Metadaten wie etwa die Namen von Datenressourcen (Tabellennamen/Dateinamen), Dateigröße, Spalten, Datenherkunft usw. Für strukturierte Datenquellen (z. B. ein relationales Datenbank-Managementsystem) werden auch die Schemadetails erfasst. Der Überprüfungsprozess wendet automatische Klassifizierungskennzeichen auf die Schemaattribute an, die auf dem konfigurierten Scan-Regelsatz basieren, sowie Sensibilitätskennzeichen, wenn Ihr Purview-Konto mit einem Microsoft 365 Security & Compliance Center verbunden ist.
 
 ## <a name="intended-audience"></a>Zielpublikum
 
@@ -115,7 +115,7 @@ Um unerwartete Kosten und Überarbeitungen zu vermeiden, empfiehlt es sich, die 
             - Ausführliche Informationen finden Sie in [diesem Dokument](./register-scan-sapecc-source.md#create-and-run-scan).
 
     - **Bereichsüberprüfung**
-        - Wählen Sie bei der Festlegung des Bereichs für die Überprüfung nur die Ressourcen aus, die auf untergeordneter oder übergeordneter Ebene relevant sind. Dadurch werden optimale Überprüfungskosten und eine effiziente Leistung sichergestellt. Alle zukünftigen Ressourcen unterhalb eines bestimmten übergeordneten Elements werden automatisch ausgewählt, wenn das übergeordnete Element vollständig oder teilweise markiert wird. Zum Beispiel:
+        - Wählen Sie bei der Festlegung des Bereichs für die Überprüfung nur die Ressourcen aus, die auf untergeordneter oder übergeordneter Ebene relevant sind. Dadurch werden optimale Überprüfungskosten und eine effiziente Leistung sichergestellt. Alle zukünftigen Ressourcen unterhalb eines bestimmten übergeordneten Elements werden automatisch ausgewählt, wenn das übergeordnete Element vollständig oder teilweise markiert wird. Beispiel:
             - Für Azure SQL-Datenbank oder ADLS Gen2 können Sie den Bereich Ihrer Überprüfung auf bestimmte Teile der Datenquelle (etwa auf Ordner, Sammlungen oder Schemas) festlegen, indem Sie in der Liste die entsprechenden Kontrollkästchen aktivieren.
             - Für Oracle-, Hive-Metastore-Datenbank- und Teradata-Quellen kann eine spezifische Liste der zu exportierenden Schemas über durch Semikolons getrennte Werte oder über Schemanamensmuster unter Verwendung von SQL-LIKE-Ausdrücken angegeben werden.
             - Bei Google Big-Abfragen kann eine spezifische Liste der zu exportierenden Datasets über durch Semikolons getrennte Werte angegeben werden.
@@ -136,7 +136,7 @@ Um unerwartete Kosten und Überarbeitungen zu vermeiden, empfiehlt es sich, die 
         - Der Überprüfungsprozess kann sofort ausgelöst oder für eine regelmäßige Ausführung (wöchentlich oder monatlich) geplant werden, um die Metadaten auf dem neuesten Stand zu halten. Außerdem ist die Ressourcenverwendung auch stark von der Menge der Daten abhängig, die überprüft werden.
         - Es wird empfohlen, die Überprüfungen außerhalb der Geschäftszeiten oder außerhalb der Spitzenzeiten auszuführen, um eine Überlastung der Quelle zu vermeiden.
         - Bei der ersten Überprüfung handelt es sich um eine vollständige Überprüfung, und jede nachfolgende Überprüfung erfolgt inkrementell. Nachfolgende Überprüfungen können als regelmäßige inkrementelle Überprüfungen geplant werden.
-        - Die Häufigkeit der Überprüfungen sollte sich nach dem Zeitplan für das Change Management der Datenquelle und/oder nach den Geschäftsanforderungen richten. Zum Beispiel:
+        - Die Häufigkeit der Überprüfungen sollte sich nach dem Zeitplan für das Change Management der Datenquelle und/oder nach den Geschäftsanforderungen richten. Beispiel:
             - Wenn sich die Struktur der Quelle möglicherweise wöchentlich ändert (durch Hinzufügung, Änderung oder Löschung neuer Ressourcen oder Felder innerhalb einer Ressource), sollte die Häufigkeit der Überprüfung entsprechend angepasst werden.
             - Wenn die Klassifizierungs-/Vertraulichkeitsbezeichnungen wöchentlich auf dem neuesten Stand sein sollen (z. B. aus rechtlichen Gründen), sollte eine wöchentliche Überprüfung festgelegt werden.
             Wenn einem Quell-Data Lake beispielsweise wöchentlich Partitionsdateien hinzugefügt werden, sollten Sie eher monatliche als wöchentliche Überprüfungen planen, da sich die Metadaten nicht ändern (vorausgesetzt, es gibt keine neuen Klassifizierungsszenarien).

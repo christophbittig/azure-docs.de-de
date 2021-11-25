@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 11/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 442bf95401f4816a192940191c3bee96aed4aa97
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d3ce22128b209a65d5f9036b0943f2425e2c5de3
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827325"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401248"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus und in IBM Informix mithilfe von Azure Data Factory oder Synapse Analytics
 
@@ -37,7 +37,7 @@ Sie können Daten aus einer Informix-Quelle in jeden unterstützten Senkendatens
 Zum Verwenden dieses Informix-Connectors müssen Sie folgende Schritte durchführen:
 
 - Richten Sie eine selbstgehostete Integration Runtime ein. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details.
-- Installieren des Informix-ODBC-Treibers für den Datenspeicher auf dem Computer mit der Integration Runtime. Informationen zur Treiberinstallation und -einrichtung finden Sie im Artikel zum [Leitfaden für den Informix ODBC-Treiber](https://www.ibm.com/support/knowledgecenter/SSGU8G_11.70.0/com.ibm.odbc.doc/odbc.htm) im IBM Knowledge Center. Wenden Sie sich alternativ an das IBM-Supportteam, um Anleitungen zur Treiberinstallation zu erhalten.
+- Laden Sie das 64-Bit-Client-SDK für Informix herunter, um eine ODBC-Verbindung für den Datenspeicher auf dem Integration-Runtime-Computer zu erstellen. Informationen zum Herunterladen und Einrichten des SDK finden Sie in diesem [Artikel](https://www.ibm.com/support/pages/informix-client-software-development-kit-client-sdk-and-informix-connect-system-requirements), oder wenden Sie sich an das IBM-Supportteam, um Anleitungen zur Treiberinstallation zu erhalten.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -74,7 +74,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit Informix verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Informix** | Ja |
 | connectionString | Die ODBC-Verbindungszeichenfolge, ausgenommen des Teils mit den Anmeldeinformationen. Sie können die Verbindungszeichenfolge angeben oder den System-DSN (Data Source Name) verwenden, den Sie auf dem Computer mit der Integration Runtime eingerichtet haben. (Sie müssen nach wie vor den Teil mit den Anmeldeinformationen im verknüpften Dienst entsprechend angeben.) <br> Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).| Ja |
@@ -114,7 +114,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Zum Kopieren von Daten aus Informix werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **InformixTable** | Ja |
 | tableName | Name der Tabelle in Informix. | Nein bei Quellen (wenn „query“ in der Aktivitätsquelle angegeben ist);<br/>ja bei Senken |

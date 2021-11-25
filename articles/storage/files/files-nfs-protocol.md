@@ -1,27 +1,27 @@
 ---
-title: NFS-Dateifreigaben (Vorschau) in Azure Files
+title: NFS-Dateifreigaben in Azure Files
 description: Erfahren Sie mehr über Dateifreigaben, die in Azure Files mit dem NFS-Protokoll (Network File System) gehostet werden.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 11/16/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 0d0fefe0994b0d3d162b8a7d9f802c70ae7b0b3f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 31aec4e32178b2f0ca7905c6d584df298dd2059a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225434"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524339"
 ---
-# <a name="nfs-file-shares-in-azure-files-preview"></a>NFS-Dateifreigaben in Azure Files (Vorschau)
-Azure Files unterstützt zwei Branchenstandardprotokolle für die Einbindung von Azure-Dateifreigaben: das [SMB-Protokoll (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) und das [NFS-Protokoll (Network File System)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau). In Azure Files können Sie das Dateisystemprotokoll auswählen, das sich für Ihre Workload am besten eignet. Bei Azure-Dateifreigaben ist der Zugriff auf eine einzelne Azure-Dateifreigabe über das SMB- oder das NFS-Protokoll nicht möglich. Sie können jedoch SMB- und NFS-Dateifreigaben innerhalb desselben Speicherkontos erstellen. Für alle Dateifreigaben ermöglicht Azure Files Dateifreigaben in Unternehmensqualität, die entsprechend Ihren Speicheranforderungen hochskaliert werden können und auf die Tausende von Clients gleichzeitig zugreifen können.
+# <a name="nfs-file-shares-in-azure-files"></a>NFS-Dateifreigaben in Azure Files
+Azure Files unterstützt zwei Branchenstandardprotokolle für die Einbindung von Azure-Dateifreigaben: das [SMB-Protokoll (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) und das [NFS-Protokoll (Network File System)](https://en.wikipedia.org/wiki/Network_File_System). In Azure Files können Sie das Dateisystemprotokoll auswählen, das sich für Ihre Workload am besten eignet. Bei Azure-Dateifreigaben ist der Zugriff auf eine einzelne Azure-Dateifreigabe über das SMB- oder das NFS-Protokoll nicht möglich. Sie können jedoch SMB- und NFS-Dateifreigaben innerhalb desselben Speicherkontos erstellen. Für alle Dateifreigaben ermöglicht Azure Files Dateifreigaben in Unternehmensqualität, die entsprechend Ihren Speicheranforderungen hochskaliert werden können und auf die Tausende von Clients gleichzeitig zugreifen können.
 
 In diesem Artikel werden NFS-Azure-Dateifreigaben behandelt. Informationen zu SMB-Azure-Dateifreigaben finden Sie unter [SMB-Dateifreigaben in Azure Files](files-smb-protocol.md).
 
 > [!IMPORTANT]
-> Es wird nicht empfohlen, NFS in der Vorschauphase für die Produktion zu verwenden. Eine Liste bekannter Probleme finden Sie im Artikel zur [Problembehandlung bei NFS-Dateifreigaben in Azure](storage-troubleshooting-files-nfs.md).
+>  Bevor Sie NFS-Dateifreigaben für die Produktion verwenden, finden Sie im Artikel [Problembehandlung für Azure NFS-Dateifreigaben](storage-troubleshooting-files-nfs.md) eine Liste bekannter Probleme.
 
 ## <a name="common-scenarios"></a>Häufige Szenarien
 NFS-Dateifreigaben werden häufig in den folgenden Szenarien verwendet:
@@ -83,8 +83,6 @@ Der Status der Elemente in dieser Tabelle kann sich im Laufe der Zeit ändern, d
 | Erstellen von NFS-Freigaben für vorhandene Speicherkonten*| ⛔ |
 | Unterstützung für mehr als 16 Gruppen| ⛔ |
 
-\* Wenn ein Speicherkonto vor der Registrierung für NFS erstellt wurde, können Sie es nicht für NFS verwenden. Es können nur Speicherkonten verwendet werden, die nach der Registrierung für NFS erstellt wurden.
-
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
@@ -94,9 +92,9 @@ NFS-Dateifreigaben in Azure werden nur für Premium-Dateifreigaben angeboten, be
 
 ## <a name="workloads"></a>Arbeitsauslastungen
 > [!IMPORTANT]
-> Es wird nicht empfohlen, NFS in der Vorschauphase für die Produktion zu verwenden. Eine Liste bekannter Probleme finden Sie im Artikel zur [Problembehandlung bei NFS-Dateifreigaben in Azure](storage-troubleshooting-files-nfs.md).
+> Bevor Sie NFS-Dateifreigaben für die Produktion verwenden, finden Sie im Artikel [Problembehandlung für Azure NFS-Dateifreigaben](storage-troubleshooting-files-nfs.md) eine Liste bekannter Probleme.
 
-Die NFS-Vorschauversion funktioniert nachgewiesenermaßen gut mit Workloads wie Basisverzeichnisse für universelle Dateiserver und Inhaltsrepositorys für Anwendungsworkloads.
+NFS wurde für eine gute Zusammenarbeit mit Workloads wie SAP-Anwendungsebene, Datenbanksicherungen, Datenbankreplikation, Messagingwarteschlangen, Homeverzeichnissen für universelle Dateiserver und Inhaltsrepositorys für Anwendungsworkloads überprüft.
 
 Bei den folgenden Workloads sind Probleme bekannt. Eine Liste bekannter Probleme finden Sie im Artikel zur [Problembehandlung bei NFS-Dateifreigaben in Azure](storage-troubleshooting-files-nfs.md):
 - Bei Oracle Database besteht eine Inkompatibilität mit dem dNFS-Feature.

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 7c3e4441289b2b17cf772df73f3c53caa465813e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f2b43fb9b816ff52c3e52bf8c39843c34651aea4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732586"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132314997"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Fünf Schritte zum Integrieren Ihrer gesamten Apps in Azure AD
 
@@ -88,7 +88,7 @@ Sie können auch Apps, für die ein anderer Anbieter eines cloudbasierten Identi
 
 In der Vergangenheit wurde für die Sicherheit von Anwendungen gesorgt, indem der Zugriff nur zugelassen wurde, während eine Verbindung mit dem Unternehmensnetzwerk bestanden hat. In einer zunehmend vernetzten Welt soll aber der Zugriff auf Apps für Kunden, Partner und Mitarbeiter unabhängig von ihrem Standort ermöglicht werden. Der [Azure AD-Anwendungsproxy](../app-proxy/what-is-application-proxy.md) (AppProxy) ist ein Feature von Azure AD, mit dem Ihre vorhandenen lokalen Apps mit Azure AD verbunden werden und bei dem es nicht erforderlich ist, dass Sie zu diesem Zweck Edgeserver oder andere zusätzliche Infrastruktur betreiben.
 
-![Der Anwendungsproxydienst ist im Diagramm in Aktion dargestellt. Ein Benutzer greift auf „https://sales.contoso.com“ zu, und seine Anforderung wird über „https://sales-contoso.msappproxy.net“ in Azure Active Directory an die lokale Adresse „http://sales“ umgeleitet.](./media/five-steps-to-full-application-integration-with-azure-ad\app-proxy.png)
+![Der Anwendungsproxydienst ist im Diagramm in Aktion dargestellt. Ein Benutzer greift auf „https://sales.contoso.com“ zu, und seine Anforderung wird über „https://sales-contoso.msappproxy.net“ in Azure Active Directory an die lokale Adresse „http://sales“ umgeleitet](./media/five-steps-to-full-application-integration-with-azure-ad\app-proxy.png)
 
 Sie können die Informationen unter [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](../app-proxy/application-proxy-add-on-premises-application.md) nutzen, um den Anwendungsproxy zu aktivieren und die lokale Anwendung Ihrem Azure AD-Mandanten hinzuzufügen.
 

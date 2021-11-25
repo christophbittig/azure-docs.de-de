@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: yvettep
-ms.openlocfilehash: 98554997056f8d09e4b6dde8751432b72fa6a8be
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 96d4d6273ef365435f7d21721600f145d40daae4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232810"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323536"
 ---
 # <a name="secure-remote-administration-of-your-gateway-in-azure-australia"></a>Sichere Remoteverwaltung Ihres Gateways in Azure Australien
 
@@ -167,7 +167,7 @@ Der Jumpserver/Bastionhost ist ein zentraler Punkt für die Verwaltung. Er verf�
 
 ### <a name="just-in-time-jit-access"></a>Just-In-Time-Zugriff (JIT)
 
-JIT ist eine Funktion von Azure Security Center, bei der Netzwerksicherheitsgruppen (Network Security Groups, NSGs) verwendet werden, um den Zugriff auf administrative Protokolle wie RDP und SSH auf virtuellen Computern zu blockieren. Anwendungen, die auf virtuellen Computern gehostet werden, funktionieren weiterhin wie üblich, aber administrativer Zugriff muss angefordert werden und kann nur für einen festgelegten Zeitraum erteilt werden. Alle Anforderungen werden für die Überprüfung protokolliert.
+JIT ist eine Funktion von Microsoft Defender für Cloud, die Netzwerksicherheitsgruppen (NSGs) nutzt, um den Zugriff auf Verwaltungsprotokolle wie RDP und SSH auf virtuellen Computern zu blockieren. Anwendungen, die auf virtuellen Computern gehostet werden, funktionieren weiterhin wie üblich, aber administrativer Zugriff muss angefordert werden und kann nur für einen festgelegten Zeitraum erteilt werden. Alle Anforderungen werden für die Überprüfung protokolliert.
 
 |Ressourcen |Link |
 |---|---|

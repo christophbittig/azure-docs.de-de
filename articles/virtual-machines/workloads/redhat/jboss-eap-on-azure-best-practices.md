@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 195a0bfa-dff1-429b-b030-19ca95ee6abe
 ms.date: 06/08/2021
-ms.openlocfilehash: 909f3dcff9f8ad5af5f1128d1d067f2430a00525
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: aaaa6fb269178954ade464745c6c640845457612
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124730108"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289222"
 ---
 # <a name="red-hat-jboss-eap-on-azure-best-practices"></a>Red Hat JBoss EAP in Azure: Bewährte Methoden
 
@@ -106,7 +106,7 @@ Es folgen die sechs Pläne:
 - JBoss EAP 7.3 unter RHEL 8.3 (gruppierte VM-Skalierungsgruppen, nutzungsbasierte Zahlung)
 - JBoss EAP 7.3 unter RHEL 8.3 (gruppierte VM-Skalierungsgruppen, BYOS)
 
-:::image type="content" source="./media/red-hat-marketplace-image-1.png" alt-text="Abbildung: Option zum Bereitstellen des Red Hat-Images über den GitHub-Link für die Bereitstellung":::
+:::image type="content" source="./media/red-hat-marketplace-image-1.png" alt-text="Abbildung: Option zum Bereitstellen des Red-Hat-Images über den GitHub-Link für die Bereitstellung.":::
 
 ### <a name="azure-quickstart-templates"></a>Azure-Schnellstartvorlagen
 
@@ -187,7 +187,7 @@ Konfigurieren Sie JBoss EAP mit Lastenausgleichsumgebung. Stellen Sie sicher, da
 
 ## <a name="other-best-practices"></a>Weitere bewährte Methoden
 
-- Für Sie als Administrator eines JBoss EAP-Setups auf einer VM ist es wichtig, sicherzustellen, dass Ihre VM sicher ist. Dadurch wird das Risiko, dass Gast- und Host-Betriebssysteme von Schadsoftware infiziert werden, erheblich verringert. Durch das Schützen Ihrer VM werden Angriffe auf JBoss EAP und Fehlfunktionen von Anwendungen, die auf JBoss EAP gehostet werden, reduziert. Steuern Sie den Zugriff auf die Azure-VMs mithilfe von Features wie [Azure Policy](https://azure.microsoft.com/services/azure-policy/) und [integrierte Rollen](../../../role-based-access-control/built-in-roles.md) für die [rollenbasierte Zugriffssteuerung in Azure (RBAC)](../../../role-based-access-control/overview.md). Schützen Sie Ihre VM vor Schadsoftware, indem Sie Microsoft Antimalware oder die Endpunktschutz-Lösung eines Microsoft-Partners installieren und Ihre Antischadsoftwarelösung mit [Azure Security Center](https://azure.microsoft.com/services/security-center/) integrieren, um den Status Ihres Schutzes zu überwachen. RHEL-VMs können Sie schützen, indem Sie die Portweiterleitung und die Stammanmeldung blockieren, die in der Datei „//ssh/sshd_config“ deaktiviert werden können.
+- Für Sie als Administrator eines JBoss EAP-Setups auf einer VM ist es wichtig, sicherzustellen, dass Ihre VM sicher ist. Dadurch wird das Risiko, dass Gast- und Host-Betriebssysteme von Schadsoftware infiziert werden, erheblich verringert. Durch das Schützen Ihrer VM werden Angriffe auf JBoss EAP und Fehlfunktionen von Anwendungen, die auf JBoss EAP gehostet werden, reduziert. Steuern Sie den Zugriff auf die Azure-VMs mithilfe von Features wie [Azure Policy](https://azure.microsoft.com/services/azure-policy/) und [integrierte Rollen](../../../role-based-access-control/built-in-roles.md) für die [rollenbasierte Zugriffssteuerung in Azure (RBAC)](../../../role-based-access-control/overview.md). Schützen Sie Ihren virtuellen Computer vor Schadsoftware, indem Sie Microsoft Antimalware oder die Endpunktschutz-Lösung eines Microsoft-Partners installieren und Ihre Antischadsoftwarelösung mit [Microsoft Defender für Cloud](https://azure.microsoft.com/services/security-center/) integrieren, um den Status Ihres Schutzes zu überwachen. RHEL-VMs können Sie schützen, indem Sie die Portweiterleitung und die Stammanmeldung blockieren, die in der Datei „//ssh/sshd_config“ deaktiviert werden können.
 
 
 - Verwenden Sie Umgebungsvariablen, um Ihre Arbeit mit JBoss EAP auf Azure-VMs einfach und reibungslos zu gestalten. Beispielsweise können Sie EAP_HOME verwenden, um den Pfad zur JBoss EAP-Installation anzugeben, die mehrmals verwendet wird. In solchen Fällen sind Umgebungsvariablen praktisch. Umgebungsvariablen sind auch ein gängiges Mittel zum Konfigurieren von Diensten und zum Behandeln von Webanwendungsgeheimnissen. Wenn eine Umgebungsvariable über die Shell mithilfe des Exportbefehls festgelegt wird, existiert sie für die Dauer der Benutzersitzungen. Dies ist problematisch, wenn die Variable sitzungsübergreifend beibehalten werden muss. Wenn eine Variable für die Umgebung eines Benutzers erhalten bleiben soll, exportieren wir die Variable aus dem Profilskript des Benutzers. Fügen Sie den Exportbefehl für jede Umgebungsvariable hinzu, die Sie im bash_profile beibehalten möchten. Wenn Sie eine permanente globale Umgebungsvariable für alle Benutzer festlegen möchten, die Zugriff auf die VM haben, können Sie sie dem Standardprofil hinzufügen. Es wird empfohlen, globale Umgebungsvariablen in einem Verzeichnis namens `/etc/profile.d` zu speichern. Das Verzeichnis enthält eine Liste von Dateien, die zum Festlegen von Umgebungsvariablen für das gesamte System verwendet werden. Durch die Verwendung des Befehls „set“ zum Festlegen von Systemumgebungsvariablen in einer Windows Server-Eingabeaufforderung wird die Umgebungsvariable nicht dauerhaft festgelegt. Verwenden Sie entweder den Befehl *setx* oder die Systemschnittstelle in der Systemsteuerung.

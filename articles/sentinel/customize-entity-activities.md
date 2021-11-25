@@ -1,26 +1,26 @@
 ---
-title: Anpassen von Aktivitäten auf Azure Sentinel-Entitätenzeitachsen | Microsoft-Dokumentation
-description: Hinzufügen von benutzerdefinierten Aktivitäten zu den von Azure Sentinel nachverfolgten und auf den Zeitachsen der Entitätsseiten angezeigten Aktivitäten
+title: Anpassen von Aktivitäten auf Microsoft Sentinel-Entitätenzeitachsen | Microsoft-Dokumentation
+description: Hinzufügen von benutzerdefinierten Aktivitäten zu den von Microsoft Sentinel nachverfolgten und auf den Zeitachsen der Entitätsseiten angezeigten Aktivitäten
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6fd6db5b75124552bff3f48a516cd352d817cf27
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0483d839af7a8707aa3be632f9d168447488e768
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055215"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523617"
 ---
 # <a name="customize-activities-on-entity-page-timelines"></a>Anpassen von Aktivitäten auf den Zeitachsen der Entitätsseite
 
@@ -32,7 +32,7 @@ ms.locfileid: "131055215"
 
 ## <a name="introduction"></a>Einführung
 
-Zusätzlich zu den Aktivitäten, die von Azure Sentinel standardmäßig nachverfolgt und auf der Zeitachse angezeigt werden, können Sie beliebige andere Aktivitäten zur Nachverfolgung erstellen und diese ebenfalls auf der Zeitachse anzeigen lassen. Sie können die benutzerdefinierten Aktivitäten auf der Grundlage von Entitätsdatenabfragen aus beliebigen verbundenen Datenquellen erstellen. Die folgenden Beispiele zeigen, wie Sie diese Funktion verwenden können:
+Zusätzlich zu den Aktivitäten, die von Microsoft Sentinel standardmäßig nachverfolgt und auf der Zeitachse angezeigt werden, können Sie beliebige andere Aktivitäten zur Nachverfolgung erstellen und diese ebenfalls auf der Zeitachse anzeigen lassen. Sie können die benutzerdefinierten Aktivitäten auf der Grundlage von Entitätsdatenabfragen aus beliebigen verbundenen Datenquellen erstellen. Die folgenden Beispiele zeigen, wie Sie diese Funktion verwenden können:
 
 - Fügen Sie der Entitätenzeitachse neue Aktivitäten hinzu, indem Sie die vorhandenen Aktivitätsvorlagen anpassen.
 
@@ -40,7 +40,7 @@ Zusätzlich zu den Aktivitäten, die von Azure Sentinel standardmäßig nachverf
 
 ## <a name="getting-started"></a>Erste Schritte
 
-1. Wählen Sie im Navigationsmenü von Azure Sentinel **Entity Behavior** aus.
+1. Wählen Sie im Navigationsmenü von Microsoft Sentinel **Entity Behavior** aus.
 
 1. Wählen Sie auf dem Blatt **Entitätsverhalten** die Option **Entitätsseite anpassen** am oberen Bildschirmrand aus.
 
@@ -146,7 +146,7 @@ SecurityEvent
 
 Der Einfachheit halber sollten Sie festlegen, wie die Aktivität auf der Zeitachse dargestellt wird, indem Sie der Aktivitätsausgabe dynamische Parameter hinzufügen.
 
-Azure Sentinel stellt vorgefertigte Parameter zur Nutzung bereit, und Sie können auch andere verwenden, die auf den in der Abfrage projizierten Feldern beruhen.
+Microsoft Sentinel stellt vorgefertigte Parameter zur Nutzung bereit, und Sie können auch andere verwenden, die auf den in der Abfrage projizierten Feldern beruhen.
 
 Verwenden Sie für Ihre Parameter das folgende Format: `{{ParameterName}}`
 
@@ -209,6 +209,6 @@ Sie können ebenfalls den Filter **Aktivitäten** nutzen, um bestimmte Aktivitä
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument haben Sie Informationen darüber erhalten, wie Sie benutzerdefinierte Aktivitäten für die Zeitachsen Ihrer Entitätsseiten erstellen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Dokument haben Sie Informationen darüber erhalten, wie Sie benutzerdefinierte Aktivitäten für die Zeitachsen Ihrer Entitätsseiten erstellen. Weitere Informationen über Microsoft Sentinel finden Sie in den folgenden Artikeln:
 - Umfassende Informationen über [Entitätsseiten](identify-threats-with-entity-behavior-analytics.md).
 - Hier finden Sie eine vollständige Liste mit [Entitäten und Bezeichnern](entities-reference.md).

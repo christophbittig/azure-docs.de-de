@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 01086769e006ee0005665ddde5d7717b8b69a513
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 4d87a78c809791f01745f4406b58832258ea4d36
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131858566"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548537"
 ---
 # <a name="connect-to-and-manage-postgresql-in-azure-purview-preview"></a>Verbinden mit und Verwalten von PostgreSQL in Azure Purview (Vorschau)
 
@@ -32,7 +32,7 @@ Die unterstützten PostgreSQL-Serverversionen sind 8.4 bis 12.x.
 
 Bei der Überprüfung der PostgreSQL-Quelle unterstützt Purview folgende Funktionen:
 
-- Extrahieren von Metadaten, einschließlich PostgreSQL-Server, -Datenbanken, -Schemas, -Tabellen, -Sichten, -Tabellenspalten, -Sichtspalten usw.
+- Extrahieren von Metadaten, einschließlich PostgreSQL-Server, -Datenbanken, -Schemas, -Tabellen, -Sichten und -Tabellenspalten sowie -Sichtspalten.
 - Abrufen der Herkunft für Ressourcenbeziehungen zwischen Tabellen und Sichten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -45,7 +45,7 @@ Bei der Überprüfung der PostgreSQL-Quelle unterstützt Purview folgende Funkti
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
-* Stellen Sie sicher, dass [JDK 11](https://www.PostgreSQL.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
+* Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
 
 * Stellen Sie sicher, dass Visual C++ Redistributable für Visual Studio 2012 Update 4 auf dem Computer mit der selbstgehosteten Integration Runtime installiert ist. Wenn Sie dieses Update nicht installiert haben, [können Sie es hier herunterladen](https://www.microsoft.com/download/details.aspx?id=30679).
 

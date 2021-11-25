@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie Azure Video Analyzer unt
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b03935028fec1cce2ea5794abf95ecfa70ea2921
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 023d6500a16d5b808bbb2e249076eae9b53741f8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554581"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487636"
 ---
 # <a name="deploy-azure-video-analyzer-on-azure-stack-edge"></a>Bereitstellen von Azure Video Analyzer unter Azure Stack Edge
 
@@ -182,7 +182,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
 1. Wählen Sie die Registerkarte **Moduleinstellungen** aus, geben Sie einen Namen für das Modul an sowie den URI für das Containerimage. Zum Beispiel:   
     
     * **Name des IoT Edge-Moduls**: rtspsim  
-    * **Image URI**: mcr.microsoft.com/lva-utilities/rtspsim-live555:1.2 
+    * **Image URI**: mcr.microsoft.com/ava-utilities/rtspsim-live555:1.2 
 
 1. Wählen Sie die Registerkarte **Optionen für Containererstellung** aus, und fügen Sie dann den folgenden JSON-Code in das Feld ein:
     

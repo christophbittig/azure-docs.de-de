@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b4b291006795728348aa694e56c3e84a88d8e65c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7a4e02461b7ba7eaba82b74cc2191b9528376b51
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131469956"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486673"
 ---
 # <a name="speech-service-release-notes"></a>Versionshinweise zum Speech-Dienst
 
@@ -130,7 +130,7 @@ ms.locfileid: "131469956"
 - **JavaScript**: Es wurde ein Problem behoben, aufgrund dessen das Erkennungsmodul bei der kontinuierlichen Erkennung erneut eine Verbindung mit einem Pushstream hergestellt hat. Ausführlichere Informationen finden Sie [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/399).
 - **JavaScript**: Die Offsetberechnung auf Wortebene in detaillierten Erkennungsergebnissen wurde korrigiert. Ausführlichere Informationen finden Sie [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/394).
 
-#### <a name="samples"></a>Beispiele
+#### <a name="samples"></a>Proben
 
 - Aktualisierte Java-Schnellstartbeispiele finden Sie [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java).
 - Die Beispiele zur JavaScript-Sprechererkennung wurden aktualisiert, um die neue Verwendung der `enrollProfileAsync()`-Methode zu veranschaulichen. Beispiele finden Sie [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/js/node).
@@ -167,8 +167,8 @@ ms.locfileid: "131469956"
 
 #### <a name="new-features"></a>Neue Funktionen
 
-- **C++/C#** : Neue eigenständige Einstufige/Start- und fortlaufende Sprachenerkennung über die `SourceLanguageRecognizer`-API. Wenn Sie nur die in Audioinhalten gesprochene(n) Sprache(n) erkennen möchten, ist dies die richtige API dafür.
-- **C++/C#** : Die Sprach- und Übersetzungserkennung unterstützt jetzt sowohl eine einstufige als auch eine fortlaufende Sprachenerkennung, sodass Sie programmgesteuert bestimmen können, welche Sprachen gesprochen werden, bevor sie transkribiert oder übersetzt werden. Weitere Informationen [zur Spracherkennung finden Sie hier](how-to-automatic-language-detection.md) und weitere Informationen [zur Sprachübersetzung finden Sie hier](get-started-speech-translation.md).
+- **C++/C#** : Neue eigenständige At-Start und Continuous Language Identification über die `SourceLanguageRecognizer` API. Wenn Sie nur die in Audioinhalten gesprochene(n) Sprache(n) erkennen möchten, ist dies die richtige API dafür.
+- **C++/C#** : Die Spracherkennung und die Übersetzungserkennung unterstützen jetzt sowohl die Spracherkennung zu Beginn als auch die kontinuierliche Spracherkennung, so dass Sie programmgesteuert bestimmen können, welche Sprache(n) gesprochen werden, bevor sie transkribiert oder übersetzt werden. Weitere Informationen [zur Spracherkennung finden Sie hier](how-to-automatic-language-detection.md) und weitere Informationen [zur Sprachübersetzung finden Sie hier](get-started-speech-translation.md).
 - **C#** : Unterstützung für Unity wurde zu macOS (x64) hinzugefügt. Dadurch werden Anwendungsfälle für Spracherkennung und Sprachsynthese in Mixed Reality und Gaming ermöglicht.
 - **Go**: Wir haben die Unterstützung für Sprachsynthese/Text-zu-Sprache zur Programmiersprache Go hinzugefügt, um die Sprachsynthese in noch mehr Anwendungsfällen zur Verfügung zu stellen. Weitere Informationen finden Sie in unserer [Schnellstartanleitung](get-started-text-to-speech.md?tabs=windowsinstall&pivots=programming-language-go) oder in unserer [Referenzdokumentation](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go).
 - **C++/C#/Java/Python/Objective-C/Go**: Der Sprachsynthetizer unterstützt jetzt das `connection`-Objekt. Dies hilft Ihnen bei der Verwaltung und Überwachung der Verbindung mit dem Spracherkennungsdienst und ist besonders hilfreich, um eine Vorabverbindung zur Verringerung der Wartezeit herzustellen. Die zugehörige Dokumentation finden Sie [hier](how-to-lower-speech-synthesis-latency.md).

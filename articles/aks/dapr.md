@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/15/2021
 ms.custom: devx-track-azurecli, ignite-fall-2021
-ms.openlocfilehash: a8ba281a1061643cc582e6de4fc75a8c43fae71c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9d7a263a17d117aea162b39682fa5bd9ec4c1fde
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131447423"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485748"
 ---
 # <a name="dapr-extension-for-azure-kubernetes-service-aks-preview"></a>Dapr-Erweiterung für Azure Kubernetes Service (AKS) (Vorschau)
 
@@ -98,7 +98,7 @@ az k8s-extension create --cluster-type managedClusters \
 --cluster-name myAKSCluster \
 --resource-group myResourceGroup \
 --name myDaprExtension \
---extension-type Microsoft.Dapr \
+--extension-type Microsoft.Dapr
 ```
 
 Sie haben die Möglichkeit, Dapr die automatische Aktualisierung der Nebenversion zu erlauben, indem Sie den `--auto-upgrade-minor-version`Parameter angeben und den Wert auf `true` festlegen:
@@ -117,9 +117,9 @@ az k8s-extension create --cluster-type managedClusters \
 --resource-group myResourceGroup \
 --name myDaprExtension \
 --extension-type Microsoft.Dapr \
---auto-upgrade-minor-version true \  
+--auto-upgrade-minor-version true \
 --configuration-settings "global.ha.enabled=true" \
---configuration-settings "dapr_operator.replicaCount=2" \
+--configuration-settings "dapr_operator.replicaCount=2"
 ```
 
 > [!NOTE]
@@ -155,11 +155,27 @@ Dasselbe Befehlszeilenargument wird zum Installieren einer bestimmten Dapr-Versi
 ```azure-cli-interactive
 az k8s-extension create --cluster-type managedClusters \
 --cluster-name myAKSCluster \
---resource-group myResourceGroup 
+--resource-group myResourceGroup \
 --name myDaprExtension \
 --extension-type Microsoft.Dapr \
 --auto-upgrade-minor-version false \
---version X.X.X \
+--version X.X.X
+```
+
+## <a name="limiting-the-extension-to-certain-nodes-nodeselector"></a>Beschränken der Erweiterung auf bestimmte Knoten (`nodeSelector`)
+
+In manchen Konfiguration kann es sein, dass sie Dapr ausführen müssen. Dies kann durch die Eingabe einer `nodeSelector`in der Erweiterungskonfiguration bewerkstelligt werden. Beachten Sie: Wenn das gewünschte `nodeSelector` eine `.` enthält, müssen Sie sie aus der Shell und der Erweiterung extrahieren. Zum Beispiel wird die folgende Konfiguration Dapr nur auf Knoten mit `kubernetes.io/os=linux`installieren:
+
+```azure-cli-interactive
+az k8s-extension create --cluster-type managedClusters \
+--cluster-name myAKSCluster \
+--resource-group myResourceGroup \
+--name myDaprExtension \
+--extension-type Microsoft.Dapr \
+--auto-upgrade-minor-version true \
+--configuration-settings "global.ha.enabled=true" \
+--configuration-settings "dapr_operator.replicaCount=2" \
+--configuration-settings "global.nodeSelector.kubernetes\.io/os=linux"
 ```
 
 ## <a name="show-current-configuration-settings"></a>Zeigen Sie die aktuellen Konfigurationseinstellungen an
@@ -204,9 +220,9 @@ az k8s-extension create --cluster-type managedClusters \
 --resource-group myResourceGroup \
 --name myDaprExtension \
 --extension-type Microsoft.Dapr \
---auto-upgrade-minor-version true \  
+--auto-upgrade-minor-version true \
 --configuration-settings "global.ha.enabled=true" \
---configuration-settings "dapr_operator.replicaCount=3" 
+--configuration-settings "dapr_operator.replicaCount=3"
 ```
 
 ## <a name="troubleshooting-extension-errors"></a>Problembehandlung bei Erweiterungsfehlern

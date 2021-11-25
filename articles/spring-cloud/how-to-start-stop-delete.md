@@ -1,20 +1,20 @@
 ---
-title: Starten, Beenden und Löschen einer Azure Spring Cloud-Anwendung | Microsoft-Dokumentation
-description: Starten, Beenden und Löschen einer Azure Spring Cloud-Anwendung
+title: Starten, Beenden und Löschen einer Anwendung in Azure Spring Cloud | Microsoft-Dokumentation
+description: 'Gewusst wie: Starten, Beenden und Löschen einer Anwendung in Azure Spring Cloud'
 author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 73fcf419438f24c784514c723397049d50dd87be
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 0e27f7ac841635f33bc40db739df4cf2240e2149
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350052"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484743"
 ---
-# <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Starten, Beenden und Löschen einer Azure Spring Cloud-Anwendung
+# <a name="start-stop-and-delete-an-application-in-azure-spring-cloud"></a>Starten, Beenden und Löschen einer Anwendung in Azure Spring Cloud
 
 **Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 

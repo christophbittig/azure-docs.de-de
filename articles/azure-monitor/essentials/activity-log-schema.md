@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
-ms.openlocfilehash: 1052ccb854248cb107e6e0b1bf99e2df9156d181
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 86c601cf70265ca6aec4ba620414fed709d756a0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131473792"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297752"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das [Azure-Aktivitätsprotokoll](./platform-logs-overview.md) gewährt Einblick in alle Ereignisse auf Abonnementebene, die in Azure aufgetreten sind. Dieser Artikel beschreibt die Kategorien des Aktivitätsprotokolls und das jeweils zugehörige Schema. 
@@ -45,7 +45,7 @@ Jedes Ereignis im Aktivitätsprotokoll verfügt über eine bestimmte Kategorie. 
 | [Warnung](#alert-category) | Enthält den Datensatz mit den Aktivierungen für Azure-Warnungen. Ein Beispiel für ein Warnungsereignis ist _CPU-Auslastung auf ‚myVM‘ liegt in den letzten 5 Minuten über 80_.|
 | [Automatische Skalierung](#autoscale-category) | Enthält Datensätze zu Ereignissen im Zusammenhang mit der Engine für die Autoskalierung – basierend auf den Einstellungen für die Autoskalierung, die Sie in Ihrem Abonnement definiert haben. Ein Beispiel für ein Ereignis der Autoskalierung ist _Fehler beim automatischen Hochskalieren_. |
 | [Empfehlung](#recommendation-category) | Enthält Empfehlungsereignisse von Azure Advisor. |
-| [Security](#security-category) | Enthält den Datensatz, der von allen Warnungen in Azure Security Center generiert wurde. Ein Beispiel für ein Sicherheitsereignis ist _Verdächtige Datei mit doppelter Erweiterung ausgeführt_. |
+| [Security](#security-category) | Enthält die Aufzeichnung aller von Microsoft Defender für Cloud generierten Warnungen. Ein Beispiel für ein Sicherheitsereignis ist _Verdächtige Datei mit doppelter Erweiterung ausgeführt_. |
 | [Richtlinie](#policy-category) | Enthält Datensätze aller Aktionsvorgänge für Auswirkungen, die von Azure Policy ausgeführt werden. Beispiele für Policy-Ereignisse sind _Überwachen_ und _Ablehnen_. Jede Aktion, die von Policy ausgeführt wird, ist als ein Vorgang für eine Ressource modelliert. |
 
 ## <a name="administrative-category"></a>Kategorie „Verwaltung“
@@ -517,7 +517,7 @@ Diese Kategorie enthält Datensätze zu Ereignissen im Zusammenhang mit der Engi
 | subscriptionId |Die Azure-Abonnement-ID. |
 
 ## <a name="security-category"></a>Kategorie „Sicherheit“
-Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Center generiert wurde. Ein Beispiel für den Typ der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Verdächtige Datei mit doppelter Erweiterung ausgeführt“.
+Diese Kategorie enthält die Aufzeichnung aller von Microsoft Defender für Cloud generierten Warnungen. Ein Beispiel für den Typ der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Verdächtige Datei mit doppelter Erweiterung ausgeführt“.
 
 ### <a name="sample-event"></a>Beispielereignis
 ```json
@@ -591,12 +591,12 @@ Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Cent
 | id |Eindeutiger Ressourcenbezeichner des Sicherheitsereignisses. |
 | level |Ebene des Ereignisses. Einer der folgenden Werte: „Critical“, „Error“, „Warning“ oder „Informational“ |
 | resourceGroupName |Name der Ressourcengruppe für die Ressource. |
-| resourceProviderName |Name des Ressourcenanbieters für die Azure Security Center. Immer „Microsoft.Security“. |
+| resourceProviderName |Name des Ressourcenanbieters für Microsoft Defender für Cloud. Immer „Microsoft.Security“. |
 | resourceType |Der Typ der Ressource, die das Sicherheitsereignis generiert hat, z. B. „Microsoft.Security/locations/alerts“. |
 | resourceId |Ressourcen-ID der Sicherheitswarnung. |
 | operationId |Eine GUID, die von den Ereignissen eines einzelnen Vorgangs gemeinsam genutzt wird. |
 | operationName |Name des Vorgangs. |
-| properties |Satz mit `<Key, Value>`-Paaren (Wörterbuch), die Details des Ereignisses beschreiben. Diese Eigenschaften variieren je nach Typ der Sicherheitswarnung. Eine Beschreibung der Warnungstypen, die aus Security Center stammen, finden Sie [auf dieser Seite](../../security-center/security-center-alerts-overview.md). |
+| properties |Satz mit `<Key, Value>`-Paaren (Wörterbuch), die Details des Ereignisses beschreiben. Diese Eigenschaften variieren je nach Typ der Sicherheitswarnung. Eine Beschreibung der Warnungstypen, die aus Defender für Cloud stammen, finden Sie auf [dieser Seite](../../security-center/security-center-alerts-overview.md). |
 | properties.Severity |Der Schweregrad. Mögliche Werte sind „Hoch“, „Mittel“ oder „Niedrig“. |
 | status |Zeichenfolge, die den Status des Vorgangs beschreibt. Gängige Werte: „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“, „Resolved“. |
 | subStatus | Für Sicherheitsereignisse in der Regel NULL. |
@@ -832,7 +832,7 @@ Beim Streamen des Azure-Aktivitätsprotokolls an ein Speicherkonto oder Event Hu
 
 Es folgt ein Beispiel für ein Ereignis mit diesem Schema.
 
-``` JSON
+```json
 {
     "records": [
         {

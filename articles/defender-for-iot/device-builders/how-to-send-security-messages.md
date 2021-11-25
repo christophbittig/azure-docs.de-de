@@ -2,14 +2,14 @@
 title: Senden von Sicherheitsmeldungen für Defender für IoT-Geräte
 description: Hier erfahren Sie, wie Sie Ihre Sicherheitsmeldungen unter Verwendung von Defender für IoT senden.
 ms.topic: how-to
-ms.date: 2/8/2021
+ms.date: 11/09/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 791e49c4e8f0e503c67f24e440fc229998b7b9da
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7be4d8491983ce041b4434c08039629519c7e393
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680495"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283883"
 ---
 # <a name="send-security-messages-sdk"></a>Senden von Sicherheitsmeldungen (SDK)
 
@@ -221,7 +221,7 @@ public void SendSecurityMessage(string message)
 - Lesen der [Übersicht](overview.md) über den Defender für IoT-Dienst
 - Weitere Informationen zu Defender für IoT: [Info zu Agent-basierten Lösungen für Gerätehersteller](architecture-agent-based.md)
 - Aktivieren Sie den [Dienst](quickstart-onboard-iot-hub.md).
-- Lesen Sie die [häufig gestellten Fragen zum Azure Defender für IoT-Agent](resources-agent-frequently-asked-questions.md).
+- Lesen Sie die [häufig gestellten Fragen zu Microsoft Defender für IoT-Agent](resources-agent-frequently-asked-questions.md).
 - Informieren Sie sich, wie Sie auf [Sicherheitsrohdaten](how-to-security-data-access.md) zugreifen.
 - Machen Sie sich mit [Empfehlungen](concept-recommendations.md) vertraut.
 - Machen Sie sich mit [Warnungen](concept-security-alerts.md) vertraut.

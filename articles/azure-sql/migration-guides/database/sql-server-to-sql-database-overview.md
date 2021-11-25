@@ -10,23 +10,22 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 11/06/2020
-ms.openlocfilehash: c147dfb2dbb16e350214dedff39a36625735834d
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: f5e581e979a1c02d58b9ef9f89bc43b06117ddfb
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062945"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371921"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>Migrationsübersicht: SQL Server zu Azure SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Erfahren Sie mehr über die Optionen und Überlegungen zur Migration Ihrer SQL Server-Datenbanken auf Azure SQL Database. 
 
-Sie können SQL Server-Datenbanken migrieren, die lokal auf folgenden Plattformen ausgeführt werden: 
+Sie können vorhandene SQL Server-Datenbanken migrieren, die auf folgenden Plattformen ausgeführt werden: 
 
-- SQL Server auf Azure Virtual Machines  
-- Azure SQL-Datenbank (PaaS)
-- Azure SQL Managed Instance (PaaS)
+- Lokaler SQL Server.  
+- SQL Server auf Azure Virtual Machines
 - Amazon Web Services (AWS) Elastic Compute Cloud (EC2)
 - AWS Relational Database Service (RDS)
 - Compute Engine in Google Cloud Platform (GCP)  

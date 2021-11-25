@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: d08d691b7ef990ac351984798efd1562171a023a
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c434319e48bb2bf1f7d0321a8200e9d42532e659
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553416"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289735"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Importieren von Daten in den Azure Machine Learning-Designer
 
@@ -66,7 +66,7 @@ Wenn Sie ein Dateidataset registrieren, ist der Ausgabeporttyp des Datasets **An
 - Derzeit können nur tabellarische Datasets im Designer visualisiert werden. Wenn Sie ein Dateidataset außerhalb des Designers registrieren, können Sie es nicht im Designer-Zeichenbereich visualisieren.
 - Derzeit unterstützt der Designer nur Vorschauausgaben, die in **Azure Blob Storage** gespeichert sind. Sie können Ihren Ausgabedatenspeicher in den **Ausgabeeinstellungen** unter der Registerkarte **Parameter** im rechten Bereich der Komponente überprüfen und ändern.
 - Wenn Ihre Daten in einem virtuellen Netzwerk (VNet) gespeichert sind und Sie eine Vorschau anzeigen möchten, müssen Sie die vom Arbeitsbereich verwaltete Identität des Datenspeichers aktivieren.
-    1. Navigieren Sie zum entsprechenden Datenspeicher, und klicken Sie auf **Anmeldeinformationen aktualisieren**.
+    1. Navigieren Sie zum entsprechenden Datenspeicher und klicken Sie auf **Authentifizierung aktualisieren**
     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="Anmeldeinformationen aktualisieren":::
     1. Wählen Sie **Ja** aus, um die vom Arbeitsbereich verwaltete Identität zu aktivieren.
     :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Aktivieren der vom Arbeitsbereich verwalteten Identität":::

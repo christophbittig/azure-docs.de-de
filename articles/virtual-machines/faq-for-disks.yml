@@ -8,12 +8,12 @@ metadata:
   ms.date: 06/15/2017
   ms.author: rogarana
   ms.subservice: disks
-  ms.openlocfilehash: 53af4de413739318a78f3ced65f64ffa89ba0545
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 75eccc45269218fa4af9dd8ccac9ed9509c84934
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131424682"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132492527"
 title: Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 summary: In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Azure Premium-SSD-Datenträgern ein.
 sections:
@@ -197,7 +197,7 @@ sections:
   - question: >
       Wird das Feature Freigegebene Datenträger für nicht verwaltete Datenträger oder Seitenblobs unterstützt?
     answer: >
-      Nein, es wird nur für Ultra-Datenträger und verwaltete SSD-Premium-Datenträger unterstützt.
+      Nein, sie wird nur für eine Teilmenge der verwalteten Datenträger unterstützt. Für Einzelheiten siehe den [Konzeptartikel](disks-shared.md).
   - question: >
       Welche Regionen unterstützen freigegebene Datenträger?
     answer: >
