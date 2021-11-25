@@ -8,12 +8,12 @@ ms.subservice: troubleshooting
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 16608f77971c3c19836d8f956512f28f945d3667
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: fd560856ab087727d73317eaef5de01950281db9
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809056"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399471"
 ---
 # <a name="synapse-studio-troubleshooting"></a>Problembehandlung für Synapse Studio
 
@@ -34,7 +34,7 @@ Wenn Sie die Abfrage mit „Serverloser SQL-Pool“ ausführen, erhalten Sie die
 ![Symptom 2](media/troubleshooting-synapse-studio/symptom2.png)
  
 
-## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
+### <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 
 > [!NOTE] 
 >    Die folgenden Schritte zur Problembehandlung sind für Microsoft Edge (Chromium) und Chrome vorgesehen. Sie können andere Browser (z. B. FireFox) mit den gleichen Schritten zur Problembehandlung verwenden, aber das Fenster „Entwicklertool“ kann ein anderes Layout als die hier enthaltenen Screenshots aufweisen. Verwenden Sie nach Möglichkeit NICHT das klassische Microsoft Edge zur Problembehandlung, da es in bestimmten Situationen ungenaue Informationen anzeigen kann.
@@ -100,6 +100,47 @@ Bestimmte Browser unterstützen die Anzeige von Zeitstempeln auf der Registerkar
 ![Einstellungen der Entwicklertoolkonsole](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
 
 ![Zeitstempel anzeigen](media/troubleshooting-synapse-studio/show-time-stamp.png)
+
+## <a name="notebook-websocket-connection-issue"></a>Problem mit der Notebook-Websocket-Verbindung
+
+### <a name="symptom"></a>Symptom
+Fehlermeldung: Ihre Notebookverbindung wurde unerwartet geschlossen. Um die Verbindung wiederherzustellen, führen Sie das Notebook erneut aus. Diagnoseinformationen: websocket_close_error (Korrelations-ID) 
+
+![Problem mit der Notebook-Websocket-Verbindung](media/troubleshooting-synapse-studio/notebook-websocket-connection-issue.png)
+
+### <a name="root-cause"></a>Grundursache: 
+Die Notebookausführung hängt vom Herstellen einer WebSocket-Verbindung mit der folgenden URL ab. 
+``` 
+wss://{workspace}.dev.azuresynapse.net/jupyterApi/versions/1/sparkPools/{spark-pool}/api/kernels/{kernel-id}/channels 
+``` 
+
++ **{workspace}** ist der Name des Synapse-Arbeitsbereichs. 
++ **{spark-pool}** ist der Name des Spark-Pools, an dem Sie gerade arbeiten. 
++ **{kernel-id}** ist eine GUID, die zum Unterscheiden von Notebooksitzungen verwendet wird. 
+
+Beim Einrichten der WebSocket-Verbindung enthält Synapse Studio ein Zugriffstoken (JWT-Bearertoken) im Sec-WebSocket-Protocol-Header der WebSocket-Anforderung. 
+
+In einigen Fällen kann eine WebSocket-Anforderung blockiert werden, oder das JWT-Token im Anforderungsheader wird in Ihrer Netzwerkumgebung ggf. umgeschrieben. Dies führt dazu, dass Synapse Notebook die Verbindung mit unserem Server nicht herstellen und Ihr Notebook ausführen kann. 
+
+### <a name="action"></a>Aktion: 
+
+Versuchen Sie nach Möglichkeit, Ihre Netzwerkumgebung zu wechseln, z. B. innerhalb oder außerhalb des Unternehmensnetzwerks, oder greifen Sie auf einer anderen Arbeitsstation auf Synapse Notebook zu. 
+
++ Wenn Sie Notebooks auf derselben Arbeitsstation, aber in einer anderen Netzwerkumgebung ausführen können, wenden Sie sich an Ihren Netzwerkadministrator, um herauszufinden, ob die WebSocket-Verbindung blockiert wurde. 
+
++ Wenn Sie Notebooks auf einer anderen Arbeitsstation, aber in derselben Netzwerkumgebung ausführen können, stellen Sie sicher, dass Sie kein Browser-Plug-In installiert haben, das die WebSocket-Anforderung möglicherweise blockiert. 
+
+Wenden Sie sich andernfalls an Ihren Netzwerkadministrator, und stellen Sie sicher, dass die ausgehenden WebSocket-Anforderungen mit dem folgenden URL-Muster zulässig sind und ihr Anforderungsheader nicht redigiert wird: 
+
+``` 
+wss://{workspace}.dev.azuresynapse.net/{path} 
+``` 
++ **{workspace}** ist der Name des Synapse-Arbeitsbereichs; 
+
++ **{path}** gibt einen beliebigen Unterpfad (d. h. Schrägstrichzeichen ist enthalten) im URI an. 
+
+Dieses URL-Muster ist lockerer als das im Abschnitt "Grundursache" gezeigte, da es uns ermöglicht, Synapse neue WebSocket-abhängige Funktionen hinzuzufügen, ohne dass in Zukunft ein potenzielles Konnektivitätsproblem vorliegt. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn die vorherigen Schritte nicht zur Lösung Ihres Problems beitragen, [erstellen Sie ein Supportticket](../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).

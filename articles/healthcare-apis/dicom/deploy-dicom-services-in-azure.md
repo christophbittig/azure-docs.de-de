@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen des DICOM-Diensts mithilfe Azure-Portal Azure Healthcare-APIs
+title: Bereitstellen des DICOM-Diensts mithilfe Azure-Portal – Azure Healthcare-APIs
 description: In diesem Artikel wird beschrieben, wie Sie den DICOM-Dienst im Azure-Portal.
 author: stevewohl
 ms.service: healthcare-apis
@@ -7,12 +7,13 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 08/04/2021
 ms.author: aersoy
-ms.openlocfilehash: b07d9bba578aeac026864e40a23236816b510f1e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: mode-portal
+ms.openlocfilehash: fefaf7fc2daced95ffde90834ad38131ecfc6b94
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121784791"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133041678"
 ---
 # <a name="deploy-dicom-service-using-the-azure-portal"></a>Bereitstellen des DICOM-Diensts mithilfe Azure-Portal
 
@@ -21,7 +22,7 @@ ms.locfileid: "121784791"
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie den DICOM-Dienst mithilfe der Azure-Portal.
 
-Nach Abschluss der Bereitstellung können Sie die Azure-Portal zum neu erstellten DICOM-Dienst navigieren, um die Details einschließlich Ihrer Dienst-URL anzuzeigen. Die Dienst-URL für den Zugriff auf Ihren DICOM-Dienst ist: ```https://<workspacename-dicomservicename>.dicom.azurehealthcareapis.com``` . Stellen Sie sicher, dass Sie die Version als Teil der URL angeben, wenn Sie Anforderungen stellen. Weitere Informationen finden Sie in der [Dokumentation api versioning for DICOM service (API-Versionierung für den DICOM-Dienst).](api-versioning-dicom-service.md)
+Nachdem die Bereitstellung abgeschlossen ist, können Sie mithilfe der Azure-Portal zum neu erstellten DICOM-Dienst navigieren, um die Details einschließlich Ihrer Dienst-URL anzuzeigen. Die Dienst-URL für den Zugriff auf Ihren DICOM-Dienst ist: ```https://<workspacename-dicomservicename>.dicom.azurehealthcareapis.com``` . Stellen Sie sicher, dass Sie die Version als Teil der URL angeben, wenn Sie Anforderungen stellen. Weitere Informationen finden Sie in der [Dokumentation api versioning for DICOM service (API-Versionierung für den DICOM-Dienst).](api-versioning-dicom-service.md)
 
 ## <a name="prerequisite"></a>Voraussetzung
 
@@ -29,13 +30,13 @@ Zum Bereitstellen des DICOM-Diensts müssen Sie über einen Arbeitsbereich verf�
 
 ## <a name="deploying-dicom-service"></a>Bereitstellen des DICOM-Diensts
 
-1. Wählen Sie **auf der Seite** Ressourcengruppe des Azure-Portal den Namen Ihres Arbeitsbereichs für die Gesundheits-APIs **aus.**
+1. Wählen Sie **auf der Seite** Ressourcengruppe des Azure-Portal den Namen Ihres Arbeitsbereichs für Die Gesundheits-APIs **aus.**
 
    [![Wählen Sie Arbeitsbereichsressourcengruppe aus. ](media/select-workspace-resource-group.png) ](media/select-workspace-resource-group.png#lightbox)
 
 2. Wählen Sie **DICOM-Dienst bereitstellen aus.**
 
-   [![Bereitstellen des dicom-Diensts. ](media/workspace-deploy-dicom-services.png) ](media/workspace-deploy-dicom-services.png#lightbox)
+   [![bereitstellen des dicom-Diensts. ](media/workspace-deploy-dicom-services.png) ](media/workspace-deploy-dicom-services.png#lightbox)
 
 
 3. Wählen Sie **DICOM-Dienst hinzufügen aus.**
@@ -70,9 +71,3 @@ Zum Bereitstellen des DICOM-Diensts müssen Sie über einen Arbeitsbereich verf�
 
 >[!div class="nextstepaction"]
 >[Übersicht über den DICOM-Dienst](dicom-services-overview.md)
-
-
-
-
-
-

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: fcbe52a8c390d41abbaa0a97b88bb360df595d60
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 0e3270c827e25ff13bd53c5a7d7d2610ce36c921
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553992"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286176"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Einrichten einer Entwicklungsumgebung mit Azure Databricks und automatisiertem maschinellem Lernen in Azure Machine Learning 
 
@@ -53,7 +53,7 @@ Verwenden Sie die folgenden Einstellungen:
 | Einstellung |Anwendungsbereich| Wert |
 |----|---|---|
 | Clustername |immer| IhrClustername |
-| Databricks-Runtimeversion |immer| Runtime 7.3 LTS oder niedriger – nicht ML|
+| Databricks-Runtimeversion |immer| Runtime 7.3 LTS – nicht ML|
 | Python-Version |immer| 3 |
 | Workertyp <br>(bestimmt die maximale Anzahl gleichzeitiger Iterationen) |Automatisiertes maschinelles Lernen<br>Machine Learning| Arbeitsspeicheroptimierte VM bevorzugt |
 | Worker |immer| 2 oder mehr |
@@ -97,12 +97,11 @@ Um AutoML zu verwenden, fahren Sie mit [Hinzufügen des Azure ML SDK mit AutoML 
   ![Azure Machine Learning SDK für Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) 
 
 ## <a name="add-the-azure-ml-sdk-with-automl-to-databricks"></a>Hinzufügen des Azure ML SDK mit AutoML zu Databricks
-Wenn der Cluster mit Databricks Runtime 7.1 - 7.3 LTS oder höher (*nicht* ML) erstellt wurde, führen Sie den folgenden Befehl in der ersten Zelle Ihres Notebooks aus, um das AML SDK zu installieren.
+Wenn der Cluster mit Databricks Runtime 7.3 LTS (*nicht* ML) erstellt wurde, führen Sie den folgenden Befehl in der ersten Zelle Ihres Notebooks aus, um das AML SDK zu installieren.
 
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
 ```
-Für Databricks Runtime 7.0 und niedriger installieren Sie das Azure Machine Learning SDK über das [init-Skript](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md).
 
 ### <a name="automl-config-settings"></a>AutoML-Konfigurationseinstellungen
 

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/02/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 4af1ae8edc94abe3a7bd640ce7562fc86a0655f1
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a1c61f2689bc6bf9d4a11b324aaaa739640b8189
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131448612"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305482"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Was ist Azure Web Application Firewall in Azure Application Gateway?
 
@@ -47,7 +47,7 @@ In diesem Abschnitt werden die wichtigsten Vorteile der WAF für Application Gat
 
 * Überwachen Sie Angriffe auf Ihre Webanwendungen mithilfe eines WAF-Echtzeitprotokolls. Dieses Protokoll ist in [Azure Monitor](../../azure-monitor/overview.md) integriert und dient zum Nachverfolgen von WAF-Warnungen sowie zum mühelosen Überwachen von Trends.
 
-* Die Application Gateway-WAF ist in Azure Security Center integriert. Security Center bietet eine zentrale Ansicht der Sicherheitsstatus sämtlicher Azure-Ressourcen.
+* Die Application Gateway WAF ist in Microsoft Defender für Cloud integriert. Defender für Cloud ermöglicht eine zentrale Ansicht des Sicherheitsstatus ihrer gesamten Azure-, Hybrid- und Multi-Cloud-Ressourcen.
 
 ### <a name="customization"></a>Anpassung
 
@@ -105,7 +105,7 @@ Weitere Informationen zu benutzerdefinierten Regeln finden Sie unter [Benutzerde
 
 ### <a name="bot-mitigation"></a>Bot-Risikominderung
 
-Neben dem verwalteten Regelsatz kann für Ihre WAF ein verwalteter Bot-Schutzregelsatz aktiviert werden, damit Anforderungen von als schädlich bekannten IP-Adressen blockiert oder protokolliert werden. Die IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf Intelligent Security Graph und wird von mehreren Diensten verwendet (einschließlich Azure Security Center).
+Neben dem verwalteten Regelsatz kann für Ihre WAF ein verwalteter Bot-Schutzregelsatz aktiviert werden, damit Anforderungen von als schädlich bekannten IP-Adressen blockiert oder protokolliert werden. Die IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed. Der Intelligente Sicherheitsgraph stellt die Grundlage für die Bedrohungsanalyse von Microsoft dar und wird von mehreren Diensten genutzt, darunter auch Microsoft Defender für Cloud.
 
 Bei aktiviertem Bot-Schutz werden eingehende Anforderungen, die von Client-IP-Adressen schädlicher Bots stammen, im Firewallprotokoll protokolliert. Weitere Informationen finden Sie weiter unten. Sie können auf WAF-Protokolle über ein Speicherkonto, über Event Hub oder über Log Analytics zugreifen. 
 
@@ -141,7 +141,7 @@ Ab einem Schwellenwert von 5 blockiert die Anomaliebewertung den Datenverkehr. E
 
 ### <a name="waf-monitoring"></a>WAF-Überwachung
 
-Die Integrität Ihres Anwendungsgateways sollte unbedingt überwacht werden. Die Überwachung der Integrität Ihrer WAF und der durch sie geschützten Anwendungen wird durch die Integration in Azure Security Center sowie durch Azure Monitor und Azure Monitor-Protokolle erreicht.
+Die Integrität Ihres Anwendungsgateways sollte unbedingt überwacht werden. Die Überwachung der Integrität Ihrer WAF und der durch sie geschützten Anwendungen wird durch die Integration in Microsoft Defender für Cloud sowie durch Azure Monitor und Azure Monitor-Protokolle erreicht.
 
 ![Diagramm der Application Gateway-WAF-Diagnose](../media/ag-overview/diagnostics.png)
 
@@ -149,15 +149,15 @@ Die Integrität Ihres Anwendungsgateways sollte unbedingt überwacht werden. Die
 
 Application Gateway-Protokolle sind in [Azure Monitor](../../azure-monitor/overview.md) integriert. Dadurch können Sie Diagnoseinformationen einschließlich WAF-Warnungen und -Protokolle nachverfolgen. Sie können innerhalb der Application Gateway-Ressource im Portal auf der Registerkarte **Diagnose** oder direkt über den Azure Monitor-Dienst auf diese Funktion zugreifen. Weitere Informationen zum Aktivieren von Protokollen finden Sie unter [Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
 
-#### <a name="azure-security-center"></a>Azure Security Center
+#### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender für Cloud
 
-Mit [Security Center](../../security-center/security-center-introduction.md) können Sie Bedrohungen verhindern, erkennen und beheben. Security Center sorgt für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Application Gateway ist [in Azure Security Center](../../security-center/security-center-partner-integration.md#integrated-azure-security-solutions) integriert. Security Center scannt die Umgebung, um ungeschützte Webanwendungen zu ermitteln. Security Center kann der Application Gateway-WAF die Empfehlung geben, diese ungeschützten Ressourcen zu schützen. Sie erstellen die Firewalls direkt von Security Center aus. Diese WAF-Instanzen sind in Security Center integriert. Sie senden Warnungen und Integritätsinformationen für die Berichterstellung an Security Center.
+[Defender für Cloud](../../security-center/security-center-introduction.md) hilft Ihnen dabei, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren. Security Center sorgt für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Die Application Gateway ist [in Defender für Cloud integriert](../../security-center/security-center-partner-integration.md#integrated-azure-security-solutions). Defender für Cloud scannt die Umgebung, um ungeschützte Webanwendungen zu ermitteln. Security Center kann der Application Gateway-WAF die Empfehlung geben, diese ungeschützten Ressourcen zu schützen. Sie erstellen die Firewalls direkt aus Defender für Cloud. Diese WAF-Instanzen sind in Defender für Cloud integriert. Sie senden Warnungen und Integritätsinformationen für die Berichterstellung an Defender für Cloud.
 
-![Security Center-Übersichtsfenster](../media/ag-overview/figure1.png)
+![Übersichtsfenster für Defender für Cloud](../media/ag-overview/figure1.png)
 
-#### <a name="azure-sentinel"></a>Azure Sentinel
+#### <a name="microsoft-sentinel"></a>Microsoft Sentinel
 
-Microsoft Azure Sentinel ist eine skalierbare, cloudnative Lösung für Security Information & Event Management (SIEM) und die Sicherheitsorchestrierung mit automatisierter Reaktion (Security Orchestration Automated Response, SOAR). Azure Sentinel bietet intelligente Sicherheits- und Bedrohungsanalysen für das ganze Unternehmen und stellt eine zentrale Lösung für die Warnungs- und Bedrohungserkennung, die proaktive Suche sowie die Reaktion auf Bedrohungen bereit.
+Microsoft Sentinel ist eine skalierbare, cloudnative Lösung für Security Information & Event Management (SIEM) und die Sicherheitsorchestrierung mit automatisierter Reaktion (Security Orchestration Automated Response, SOAR). Microsoft Sentinel bietet intelligente Sicherheits- und Bedrohungsanalysen für das ganze Unternehmen und stellt eine zentrale Lösung für die Warnungs- und Bedrohungserkennung, die proaktive Suche sowie die Reaktion auf Bedrohungen dar.
 
 Mit der integrierten Arbeitsmappe für Firewallereignisse der Azure WAF erhalten Sie einen Überblick über die Sicherheitsereignisse Ihrer WAF. Hierzu gehören Ereignisse, Übereinstimmungs- und Blockierungsregeln und alle anderen Daten, die in den Firewallprotokollen aufgezeichnet werden. Weitere Informationen zur Protokollierung finden Sie unten. 
 

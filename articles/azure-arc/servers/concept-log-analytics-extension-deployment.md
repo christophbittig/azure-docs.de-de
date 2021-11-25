@@ -3,12 +3,12 @@ title: Bereitstellen eines Log Analytics-Agents auf Arc-fähigen Servern
 description: In diesem Artikel werden die verschiedenen Methoden zum Bereitstellen des Log Analytics-Agents auf Windows- und Linux-Computern beschrieben, die bei Azure Arc-fähigen Servern in Ihrem lokalen Rechenzentrum oder in einer anderen Cloudumgebung registriert sind.
 ms.date: 10/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 150b0c032108cd6d0aad84b6bcadf1b7101c7ef1
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5ba1ccc8407903ca40677938b19846a7e6c205a0
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130270447"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132369453"
 ---
 # <a name="understand-deployment-options-for-the-log-analytics-agent-on-azure-arc-enabled-servers"></a>Grundlegendes zu Bereitstellungsoptionen für den Log Analytics-Agent auf Azure Arc-fähigen Servern
 
@@ -17,7 +17,7 @@ Azure Monitor unterstützt mehrere Methoden, um den Log Analytics-Agent zu insta
 Der Log Analytics-Agent ist für Folgendes erforderlich:
 
 * Zum Überwachen des Betriebssystems und der Workloads, die auf dem Computer oder Server ausgeführt werden, mit [VM Insights](../../azure-monitor/vm/vminsights-overview.md). Zum weiteren Analysieren und Warnen mithilfe anderer Features von [Azure Monitor](../../azure-monitor/overview.md).
-* Für die Sicherheitsüberwachung in Azure mit [Azure Security Center](../../security-center/security-center-introduction.md) oder [Azure Sentinel](../../sentinel/overview.md).
+* Führen Sie die Sicherheitsüberwachung in Azure mithilfe von [Microsoft Defender für Cloud](../../defender-for-cloud/defender-for-cloud-introduction.md) oder [Microsoft Sentinel](../../sentinel/overview.md) aus.
 * Zum Verwalten von Betriebssystemupdates mit der [Updateverwaltung von Azure Automation](../../automation/update-management/overview.md).
 * Zum Erfassen von Bestands- und Nachverfolgungsänderungen mithilfe von [Änderungsnachverfolgung und Bestand von Azure Automation](../../automation/change-tracking/overview.md).
 * Zum Ausführen von Automation-Runbooks mithilfe eines [Hybrid Runbook Workers von Azure Automation](../../automation/automation-hybrid-runbook-worker.md) direkt auf dem Computer und für Ressourcen in der Umgebung.
@@ -85,6 +85,6 @@ Die Betriebsumgebung zur Prozessautomatisierung in Azure Automation und die Unte
 
 * Sie können das Benutzerfeature Hybrid Runbook Worker von Azure Automation verwenden, um Runbooks direkt auf Servern oder Computern auszuführen, die bei Arc-fähigen Servern registriert sind. Weitere Informationen finden Sie im Artikel [Bereitstellen der VM-Erweiterung für den Hybrid Runbook Worker](../../automation/extension-based-hybrid-runbook-worker-install.md).
 
-* Um Informationen zu sicherheitsrelevanten Ereignissen mit Azure Sentinel zu erfassen, lesen Sie [Onboarding zu Azure Sentinel durchführen](scenario-onboard-azure-sentinel.md), oder lesen Sie [Onboarding zu Azure Security Center durchführen](../../security-center/quickstart-onboard-machines.md), wenn Sie die Informationen mit Azure Security Center erfassen möchten.
+* Informationen zum Sammeln von sicherheitsbezogenen Ereignissen mit Microsoft Sentinel finden Sie unter Onboarding in [Microsoft Sentinel](scenario-onboard-azure-sentinel.md), oder zum Sammeln mit Microsoft Defender für Cloud finden Sie Informationen unter Onboarding in[Microsoft Defender für Cloud](../../security-center/quickstart-onboard-machines.md).
 
 * Lesen Sie die Artikel [Leistung überwachen](../../azure-monitor/vm/vminsights-performance.md) und [Abhängigkeiten zuordnen](../../azure-monitor/vm/vminsights-maps.md) von VM Insights, um die Leistung Ihres Computers herauszufinden und erkannte Anwendungskomponenten einzusehen.

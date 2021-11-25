@@ -8,18 +8,18 @@ ms.service: web-application-firewall
 ms.date: 07/30/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 19453e987c276ae2716e06900ea2fc8ecc2a6ba6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7cc82630b2f65bdd94e02e71b3c2521fc5734a9e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355028"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315041"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Übersicht über die Azure Web Application Firewall für Azure Application Gateway-Bot-Schutz
 
 Etwa 20 % des gesamten Internetdatenverkehrs stammt von böswilligen Bots. Diese Bots führen Scraping und Scans durch, um Sicherheitsrisiken in Ihrer Webanwendung zu ermitteln. Wenn diese Bots durch die WAF (Web Application Firewall) aufgehalten werden, können diese Sie nicht angreifen. Außerdem können sie nicht Ihre Ressourcen und Dienste wie z. B. Ihre Back-Ends und andere zugrunde liegende Infrastruktur nutzen.
 
-Sie können einen verwalteten Bot-Schutzregelsatz für Ihre WAF aktivieren, um Anforderungen von IP-Adressen, die als schädlich bekannt sind, zu blockieren oder zu protokollieren. Die IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf Intelligent Security Graph und wird von mehreren Diensten verwendet (einschließlich Azure Security Center).
+Sie können einen verwalteten Bot-Schutzregelsatz für Ihre WAF aktivieren, um Anforderungen von IP-Adressen, die als schädlich bekannt sind, zu blockieren oder zu protokollieren. Die IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed. Der Intelligente Sicherheitsgraph stellt die Grundlage für die Bedrohungsanalyse von Microsoft dar und wird von mehreren Diensten genutzt, darunter auch Microsoft Defender für Cloud.
 
 ## <a name="use-with-owasp-rulesets"></a>Verwendung mit OWASP-Regelsätzen
 

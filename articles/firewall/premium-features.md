@@ -5,26 +5,25 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 10/29/2021
+ms.date: 11/16/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 22cfeda4b1fc1afb032e8a6b2e689117211e5f1e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 833bec745be68131709a78df1e52ed2ff782b167
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131438524"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548081"
 ---
 # <a name="azure-firewall-premium-features"></a>Azure Firewall Premium-Features
 
 :::image type="content" source="media/premium-features/icsa-cert-firewall-small.png" alt-text="ICSA-Zertifizierungslogo" border="false"::::::image type="content" source="media/premium-features/pci-logo.png" alt-text="PCI-Zertifizierungslogo" border="false":::
 
+Azure Firewall Premium bietet erweiterten Bedrohungsschutz, der die Anforderungen hochsensibler und regulierter Umgebungen erfüllt, z. B. der Zahlungs- und Gesundheitsbranche. 
 
- Azure Firewall Premium ist eine Firewall der nächsten Generation mit Funktionen, die für streng vertrauliche und regulierte Umgebungen erforderlich sind.
+Organisationen können Premium-Features (Stock Keeping Unit, SKU) wie IDPS und TLS-Überprüfung nutzen, um zu verhindern, dass Schadsoftware und Viren in lateraler und horizontaler Richtung über Netzwerke verbreitet werden. Um die erhöhten Leistungsanforderungen der IDPS- und TLS-Azure Firewall Premium zu erfüllen, verwendet Azure Firewall Premium leistungsfähigere SKU für VM. Wie die Standard-SKU kann die Premium-SKU nahtlos auf bis zu 30 GBit/s hochskaliert und in Verfügbarkeitszonen integriert werden, um die Vereinbarung zum Servicelevel (SLA) von 99,99 Prozent zu unterstützen. Die Premium-SKU entspricht den Anforderungen der Umgebung des Payment Card Industry Data Security Standard (PCI-DSS).
 
 :::image type="content" source="media/premium-features/premium-overview.png" alt-text="Azure Firewall Premium: Übersichtsdiagramm":::
-
-Azure Firewall Premium verwendet die Firewallrichtlinie, eine globale Ressource, die zur zentralen Verwaltung Ihrer Firewalls mit Azure Firewall Manager verwendet werden kann. Ab dieser Version sind alle neuen Features nur noch über die Firewallrichtlinie konfigurierbar. Firewallregeln (klassisch) werden weiterhin unterstützt und können zur Konfiguration bestehender Standardfirewallfeatures verwendet werden.  Die Firewallrichtlinie kann unabhängig oder mit Azure Firewall Manager verwaltet werden. Eine Firewallrichtlinie, die mit einer einzelnen Firewall verbunden ist, wird nicht berechnet.
 
 Azure Firewall Premium umfasst die folgenden Features:
 
@@ -32,7 +31,6 @@ Azure Firewall Premium umfasst die folgenden Features:
 - **IDPS** – Ein System zur Erkennung und Verhinderung von Eindringversuchen in Netzwerke (IDPS) ermöglicht es Ihnen, Netzwerkaktivitäten auf schädliche Aktivitäten zu überwachen, Informationen über diese Aktivitäten zu protokollieren, sie zu melden und optional zu versuchen, sie zu blockieren.
 - **URL-Filterung** – Erweitert die FQDN-Filterfunktion von Azure Firewall, um eine gesamte URL zu berücksichtigen. Beispiel: `www.contoso.com/a/c` anstelle von `www.contoso.com`.
 - **Webkategorien** – Administratoren können den Benutzerzugriff auf Websitekategorien wie Gaming- oder Social Media-Websites zulassen oder verweigern.
-
 
 ## <a name="tls-inspection"></a>TLS-Überprüfung
 
@@ -51,8 +49,8 @@ Azure Firewall Premium bietet signaturbasiertes IDPS, um eine schnelle Erkennung
 
 Die Signaturen/Regelsätze in Azure Firewall bieten Folgendes:
 - Schwerpunkt auf der Erstellung von Fingerabdrücken von tatsächlicher Schadsoftware, Command-and-Control, Exploitkits und schädlichen Aktivitäten in der Praxis, die herkömmliche Präventionsmethoden übersehen
-- Über 55.000 Regeln in mehr als 50 Kategorien.
-    - Zu diesen Kategorien gehören unter anderem Schadsoftware, Command-and-Control, DoS-Angriffe, Botnets, Informationsereignisse, Exploits, Sicherheitsrisiken, SCADA-Netzwerkprotokolle und Exploitkitaktivitäten.
+- Über 58.000 Regeln in mehr als 50 Kategorien.
+    - Zu diesen Kategorien gehören unter anderem Schadsoftware, Command-and-Control, Phishing, Trojaner, Botnets, Informationsereignisse, Exploits, Sicherheitsrisiken, SCADA-Netzwerkprotokolle und Exploitkitaktivitäten.
 - Jeden Tag werden zwischen 20 und mehr als 40 neue Regeln veröffentlicht.
 - Niedrige False-Positive-Bewertung dank Verwendung einer modernen Sandbox für Schadsoftware und einer globalen Feedbackschleife für das Sensornetzwerk
 
@@ -60,7 +58,16 @@ Mit IDPS können Sie Angriffe auf alle Ports und Protokolle für nicht verschlü
 
 Mit der IDPS-Umgehungsliste können Sie den Datenverkehr zu den in der Umgehungsliste angegebenen IP-Adressen, Bereichen und Subnetzen nicht filtern.
 
-Sie können auch Signaturregeln verwenden, wenn der IDPS-Modus auf **Warnung** festgelegt ist, Sie aber bestimmte Signaturen, einschließlich des zugehörigen Datenverkehrs, blockieren möchten. In diesem Fall können Sie neue Signaturregeln hinzufügen, indem Sie den Modus für die TLS-Inspektion auf **Ablehnen** festlegen.
+IDPS-Signaturregeln (Vorschau) ermöglichen Ihnen Folgendes:
+
+- Anpassen einer oder mehrerer Signaturen und Ändern ihres Modus zu *Deaktiviert,* , *Warnung* oder *Warnung und Ablehnen.* 
+
+   Falls Sie beispielsweise ein False Positive-Ergebnis erhalten, wenn eine legitime Anforderung aufgrund einer fehlerhaften Signatur durch Azure Firewall blockiert wird, können Sie die Signatur-ID aus den Anwendungsregelprotokollen verwenden und ihren IDPS-Modus auf „aus“ festlegen. Dies bewirkt, dass die „fehlerhafte“ Signatur ignoriert und das False Positive-Problem behoben wird.
+- Sie können das gleiche Optimierungsverfahren auf Signaturen anwenden, für die zu viele Warnungen mit niedriger Priorität erstellt werden, die dann die Sichtbarkeit von Warnungen mit hoher Priorität beeinträchtigen.
+- Verschaffen Sie sich einen ganzheitlichen Blick auf die gesamten 55.000 Signaturen.
+- Intelligente Suche
+
+   Ermöglicht es Ihnen, die gesamte Signaturendatenbank nach jedem Attributtyp zu durchsuchen. Sie können beispielsweise nach einer bestimmten CVE-ID suchen, um zu erfahren, welche Signaturen sich um dieses CVE kümmern, indem Sie einfach die ID in die Suchleiste eingeben.
 
 
 ## <a name="url-filtering"></a>URL-Filterung
@@ -173,6 +180,7 @@ Nicht vertrauenswürdige, vom Kunden signierte Zertifikate|Vom Kunden signierte 
 |Zertifikatverteilung|Nachdem ein Zertifizierungsstellenzertifikat auf die Firewall angewendet wurde, kann es zwischen 5-10 Minuten dauern, bis das Zertifikat wirksam wird.|Es wird bereits nach einer Lösung gesucht.|
 |Unterstützung für TLS 1.3|TLS 1.3 wird teilweise unterstützt. Der TLS-Tunnel vom Client zur Firewall basiert auf TLS 1.2 und der von der Firewall zum externen Webserver auf TLS 1.3.|Updates werden derzeit untersucht.|
 |Privater KeyVault-Endpunkt|Key Vault unterstützt den Zugriff auf private Endpunkte, um die Netzwerk-Präsenz einzuschränken. Vertrauenswürdige Azure-Dienste können diese Einschränkung umgehen, wenn eine Ausnahme konfiguriert ist, wie in der [KeyvVault-Dokumentation](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)beschrieben. Die Azure-Firewall ist derzeit nicht als vertrauenswürdiger Dienst aufgeführt und kann nicht auf die Key Vault zugreifen.|Es wird bereits nach einer Lösung gesucht.|
+|IDPS-Umgehungsliste|Die IDPS-Umgehungsliste unterstützt keine IP-Gruppen.|Es wird bereits nach einer Lösung gesucht.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

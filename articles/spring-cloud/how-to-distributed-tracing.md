@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 702b2fcd2c5cb88adf7c610287dbb9be7089268b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b796ddccbc561c81d08c0f967c866f7a2ddc65a9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258314"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484780"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud-deprecated"></a>Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud (veraltet)
 > [!NOTE]
@@ -119,7 +119,7 @@ Um diese Prozeduren zu befolgen, benötigen Sie einen Azure Spring Cloud-Dienst,
 
    Nach dieser Änderung kann der Zipkin-Sender an das Internet senden.
 
-1. Überspringen Sie diesen Schritt, wenn Sie die [Anleitung zum Vorbereiten einer Azure Spring Cloud-Anwendung](how-to-prepare-app-deployment.md) befolgt haben. Wechseln Sie andernfalls zu Ihrer lokalen Entwicklungsumgebung, und bearbeiten Sie die Datei „pom.xml“, um die folgende Spring Cloud Sleuth-Abhängigkeit einzufügen:
+1. Überspringen Sie diesen Schritt, wenn Sie die [Anleitung zum Vorbereiten einer Anwendung in Azure Spring Cloud](how-to-prepare-app-deployment.md) befolgt haben. Wechseln Sie andernfalls zu Ihrer lokalen Entwicklungsumgebung, und bearbeiten Sie die Datei „pom.xml“, um die folgende Spring Cloud Sleuth-Abhängigkeit einzufügen:
 
     * Spring Boot-Version < 2.4.x.
 
@@ -215,4 +215,4 @@ Application Insights bietet neben Anwendungsübersicht und Suchfunktion auch Üb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie weitere Informationen zur verteilten Ablaufverfolgung erhalten und erfahren, wie Sie die Funktion in Azure Spring Cloud aktivieren. Informationen zum Binden von Diensten an eine Anwendung finden Sie unter [Binden einer Azure Cosmos DB-Datenbank an Ihre Azure Spring Cloud-Anwendung](./how-to-bind-cosmos.md).
+In diesem Artikel haben Sie weitere Informationen zur verteilten Ablaufverfolgung erhalten und erfahren, wie Sie die Funktion in Azure Spring Cloud aktivieren. Informationen zum Binden von Diensten an eine Anwendung finden Sie unter [Binden einer Azure Cosmos DB-Datenbank an Ihre Anwendung in Azure Spring Cloud](./how-to-bind-cosmos.md).

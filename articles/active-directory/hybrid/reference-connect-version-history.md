@@ -11,12 +11,12 @@ ms.subservice: hybrid
 ms.author: rodejo
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d58e688133af9f587e3b2c6d40d9f9cf07e5a60
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: de2b1f3a6eb44802d074c813881702072e61339f
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131500885"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397640"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -29,7 +29,7 @@ Sie können Ihren AADConnect Server von allen unterstützten Versionen mit den n
 
  - Wenn Sie **Windows Server 2016 oder neuer** verwenden, sollten Sie **Azure AD Connect V2.0** verwenden. Sie können die neueste Version von Azure AD Connect 2.0 über [diesen Link](https://www.microsoft.com/en-us/download/details.aspx?id=47594) herunterladen. Die Versionshinweise für die neueste Version V2.0 finden Sie [hier](reference-connect-version-history.md#20280)
  - Wenn Sie noch eine **ältere Version von Windows Server** verwenden, sollten Sie **Azure AD Connect V1.6** verwenden. Sie können die neueste Version von Azure AD Connect 1.6 über [diesen Link](https://www.microsoft.com/download/details.aspx?id=103336) herunterladen. Die Versionshinweise für die neueste Version 1.6 finden Sie [hier](reference-connect-version-history.md#16160)
- - Wir werden in Zukunft nur noch kritische Änderungen an den V1.x-Versionen vornehmen, und einige der Funktionen und Korrekturen für V2.0 werden Sie in den V1.x-Versionen nicht finden. Vor allem die Unterstützung für den V2-Endpunkt ist für V1.x-Versionen nicht mehr verfügbar. Wenn Sie Gruppen mit mehr als 50.000 Mitgliedern synchronisieren möchten, müssen Sie auf Azure AD Connect V2.0 aktualisieren.
+ - Wir werden in Zukunft nur noch kritische Änderungen an den V1.x-Versionen vornehmen, und einige der Funktionen und Korrekturen für V2.0 werden Sie in den V1.x-Versionen nicht finden. Insbesondere gibt es ein Problem mit dem Build 1.16.4.2, bei dem das Upgrade auf diesen v1.6-Build oder neuere Builds das Gruppenlimit auf 50.000 zurücksetzt. Wenn ein Server auf diesen Build oder neuere 1.6-Builds aktualisiert wird, sollte der Kunde die Regeländerungen erneut anwenden, die beim anfänglichen Erhöhen des Gruppenmitgliedschaftslimits auf 250.000 angewendet wurden, bevor er die Synchronisierung für den Server aktiviert. 
 
 Dieser Tabelle enthält eine Liste der verwandten Themen:
 
@@ -65,7 +65,7 @@ Wenn Sie jedoch alle neuesten Features und Updates wünschen, überprüfen Sie a
 ## <a name="16160"></a>1.6.16.0
 >[!NOTE] 
 >Dies ist ein Hotfix-Updaterelease von Azure AD Connect. Diese Version soll von Kunden verwendet werden, die eine ältere Windows Server-Version ausführen und ihren Server zurzeit nicht auf Windows Server 2016 oder höher aktualisieren können. Sie können mit dieser Version keinen Azure AD Connect V2.0-Server aktualisieren. Dieses Release wird auf Windows Server 2016 oder neueren Versionen nicht unterstützt. Dieses Release beinhaltet SQL Server 2012-Komponenten und wird am 31. August 2022 eingestellt. Sie müssen Ihr Serverbetriebssystem und AADConnect-Version vor diesem Datum upgraden.
->Die Unterstützung für den V2-Endpunkt ist für V1.x-Versionen nicht mehr verfügbar. Wenn Sie Gruppen mit mehr als 50.000 Mitgliedern synchronisieren möchten, müssen Sie auf Azure AD Connect V2.0 aktualisieren.
+>Es gibt ein Problem, bei dem ein Upgrade auf diesen v1.6-Build oder neuere Builds das Gruppenmitgliedschaftslimit auf 50.000 zurücksetzt. Wenn ein Server auf diesen Build oder neuere 1.6-Builds aktualisiert wird, sollte der Kunde die Regeländerungen erneut anwenden, die beim anfänglichen Erhöhen des Gruppenmitgliedschaftslimits auf 250.000 angewendet wurden, bevor er die Synchronisierung für den Server aktiviert. 
 
 ### <a name="release-status"></a>Releasestatus
 13.10.2021: Als Download bereitgestellt und automatisches Upgrade durchgeführt.
@@ -73,6 +73,9 @@ Wenn Sie jedoch alle neuesten Features und Updates wünschen, überprüfen Sie a
 ### <a name="bug-fixes"></a>Behebung von Programmfehlern
 - Es wurde ein Fehler behoben, bei dem der Autoupgrade-Prozess versucht hat, ein Upgrade für AADConnect-Server durchzuführen, auf denen ältere Windows-Betriebssystemversionen wie Windows 2008 oder Windows 2008 R2 ausgeführt wurden und ein Fehler aufgetreten ist. Diese Versionen von Windows Server werden nicht mehr unterstützt. In diesem Release wird nur versucht, das automatische Upgrade auf Computern durchzuführen, auf denen Windows Server 2012 oder neuer ausgeführt wird.
 - Es wurde ein Problem behoben, bei dem MIIS-Server unter bestimmten Bedingungen aufgrund einer Zugriffsverletzungsausnahme abstürzte.
+
+### <a name="known-issues"></a>Bekannte Probleme
+ - Es gibt ein Problem, bei dem ein Upgrade auf diesen v1.6-Build oder neuere Builds das Gruppenmitgliedschaftslimit auf 50.000 zurücksetzt. Wenn ein Server auf diesen Build oder neuere 1.6-Builds aktualisiert wird, sollte der Kunde die Regeländerungen erneut anwenden, die beim anfänglichen Erhöhen des Gruppenmitgliedschaftslimits auf 250.000 angewendet wurden, bevor er die Synchronisierung für den Server aktiviert. 
 
 ## <a name="20280"></a>2.0.28.0
 
@@ -98,7 +101,8 @@ Hinweis: Ein Phantomobjekt ist ein Platzhalter für ein Objekt, das noch nicht v
 >[!NOTE] 
 >Dies ist ein Hotfix-Updaterelease von Azure AD Connect. Diese Version soll von Kunden verwendet werden, die eine ältere Windows Server-Version ausführen und ihren Server zurzeit nicht auf Windows Server 2016 oder höher aktualisieren können. Sie können mit dieser Version keinen Azure AD Connect V2.0-Server aktualisieren.
 >Wir beginnen mit dem automatischen Upgrade berechtigter Mandanten, wenn diese Version zum Download verfügbar ist. Das automatische Upgrade dauert einige Wochen.
->Die Unterstützung für den V2-Endpunkt ist für V1.x-Versionen nicht mehr verfügbar. Wenn Sie Gruppen mit mehr als 50.000 Mitgliedern synchronisieren möchten, müssen Sie auf Azure AD Connect V2.0 aktualisieren.
+>Es gibt ein Problem, bei dem ein Upgrade auf diesen v1.6-Build oder neuere Builds das Gruppenmitgliedschaftslimit auf 50.000 zurücksetzt. Wenn ein Server auf diesen Build oder neuere 1.6-Builds aktualisiert wird, sollte der Kunde die Regeländerungen erneut anwenden, die beim anfänglichen Erhöhen des Gruppenmitgliedschaftslimits auf 250.000 angewendet wurden, bevor er die Synchronisierung für den Server aktiviert. 
+
 
 ### <a name="release-status"></a>Releasestatus
 21.09.2021: Als Download bereitgestellt und automatisches Upgrade durchgeführt.

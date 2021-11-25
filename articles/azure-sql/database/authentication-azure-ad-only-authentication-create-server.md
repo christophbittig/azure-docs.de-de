@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/02/2021
-ms.openlocfilehash: 1a1c93a47d85b13c1f2a8267539da4c72f166756
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 845ecacf97887ef3488d1fd80b40f9424234e257
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131423753"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290484"
 ---
 # <a name="create-server-with-azure-ad-only-authentication-enabled-in-azure-sql"></a>Erstellen eines Servers mit aktivierter reiner Azure AD-Authentifizierung in Azure SQL
 
@@ -79,7 +79,7 @@ Sie sollten andere verfügbare APIs verwenden, um die vorhandenen Eigenschaften 
 
 1. Belassen Sie die Einstellungen für **Verbindungsrichtlinie** und **TLS-Mindestversion** auf ihren Standardwerten.
 
-1. Wählen Sie **Weiter: Sicherheit** unten auf der Seite aus. Konfigurieren Sie eine der Einstellungen für **Azure Defender für SQL**, **Ledger,** **Identität** und **Transparente Datenverschlüsselung** für Ihre Umgebung. Sie können diese Einstellungen auch überspringen.
+1. Wählen Sie **Weiter: Sicherheit** unten auf der Seite aus. Konfigurieren Sie eine der Einstellungen für **Microsoft Defender für SQL**, **Ledger,** **Identität** und **Transparente Datenverschlüsselung** für Ihre Umgebung. Sie können diese Einstellungen auch überspringen.
 
    > [!NOTE]
    > Der Gebrauch einer benutzerseitig zugewiesenen verwalteten Identität (UMI) wird bei der reinen Azure Active Directory-Authentifizierung nicht unterstützt. Legen Sie die Serveridentität im Abschnitt **Identität** nicht als UMI fest.

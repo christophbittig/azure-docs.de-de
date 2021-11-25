@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: e3fd54dba324ddd8e7340e47d6b7f63ee6b2ea5b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 45dc0c2fdfa8815c2adc1bd3fd0e8a508235c46e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233364"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308027"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
@@ -158,7 +158,7 @@ Ein standardisiertes Verfahren für das einmalige Anmelden im gesamten Unternehm
 ![Kennwortbasierte Anmeldung mit Anwendungsproxy](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
 > [!NOTE]
-> Wenn Sie nicht über einen Mechanismus zum Ermitteln nicht verwalteter Anwendungen in Ihrer Organisation verfügen, empfehlen wir Ihnen, einen Ermittlungsprozess mithilfe einer CASB-Lösung (Cloud Access Security Broker) wie [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security) zu implementieren.
+> Wenn Sie nicht über einen Mechanismus zur Erkennung von nicht verwalteten Anwendungen in Ihrem Unternehmen verfügen, empfehlen wir die Implementierung eines Erkennungsprozesses mithilfe einer Cloud Access Security Broker-Lösung (CASB) wie [Microsoft Defender for Cloud Apps](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security).
 
 Letztlich wird empfohlen, dass Sie Ihre [Anwendungen im App-Katalog aufführen](../develop/v2-howto-app-gallery-listing.md), wenn Sie über einen Azure AD-App-Katalog verfügen und Anwendungen verwenden, die SSO mit Azure AD unterstützen.
 

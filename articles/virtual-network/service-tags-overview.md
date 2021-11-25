@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: c51829c8f046f68d3a7d1e47083f18eb7f4c8416
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 2affaf7b66c1a7872e1db2b92871c5d07e77cdd2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858460"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324629"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -105,7 +105,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **LogicApps** | Logik-Apps | Beide | Nein | Nein |
 | **LogicAppsManagement** | Verwaltungsdatenverkehr für Logik-Apps. | Eingehend | Nein | Nein |
 | **MicrosoftAzureFluidRelay** | Dieses Tag stellt die IP-Adressen dar, die für Azure Microsoft Fluid Relay Server verwendet werden. | Ausgehend | Nein | Nein |
-| **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security | Ausgehend | Nein | Nein |
+| **MicrosoftCloudAppSecurity** | Microsoft Defender für Cloud Apps. | Ausgehend | Nein | Nein |
 | **MicrosoftContainerRegistry** | Containerregistrierung für Microsoft-Containerimages. <br/><br/>**Hinweis**: Dieses Tag weist eine Abhängigkeit vom Tag **AzureFrontDoor.FirstParty** auf. | Ausgehend | Ja | Ja |
 | **PowerBI** | in Power BI synchronisiert wird. **Hinweis**: Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar. | Beide | Nein | Nein|
 | **PowerPlatformInfra** | Dieses Tag stellt die IP-Adressen dar, die von der Infrastruktur zum Hosten von Power Platform-Diensten verwendet werden. **Hinweis**: Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar. | Ausgehend | Nein | Nein |

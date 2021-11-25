@@ -7,13 +7,13 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.author: rabhaiya
 ms.date: 09/10/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 611d43d7b34b729beee162d6bf9db5d099095ade
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: devx-track-azurepowershell, mode-other
+ms.openlocfilehash: 332b7aeaa9368dbdd0c4c863dfbaf174b2037331
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748822"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133061517"
 ---
 # <a name="quickstart-use-an-azure-resource-manager-arm-template-to-deploy-azure-iot-connector-for-fhir-preview"></a>Schnellstart: Bereitstellen von Azure IoT-Konnektor für FHIR (Vorschauversion) mithilfe einer ARM-Vorlage (Azure Resource Manager)
 
@@ -259,7 +259,7 @@ Nach der Bereitstellung Ihrer IoT Central-Anwendung beginnen Ihre beiden vordef
 
 ## <a name="view-device-data-in-azure-api-for-fhir"></a>Anzeigen von Gerätedaten in Azure API for FHIR
 
-Sie können die FHIR-basierten Beobachtungsressourcen anzeigen, die von Azure IoT Connector for FHIR in Ihrem FHIR-Dienst erstellt wurden, indem Sie Postman verwenden. Weitere Informationen finden Sie unter [Zugreifen auf den FHIR-Dienst mitHilfe von Postman](./../use-postman.md) und Erstellen einer `GET` Anforderung an , um `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` FHIR-Beobachtungsressourcen mit einem Heartratewert anzuzeigen.
+Sie können die FHIR-basierten Beobachtungsressourcen anzeigen, die von Azure IoT Connector for FHIR in Ihrem FHIR-Dienst mithilfe von Postman erstellt wurden. Weitere Informationen finden Sie unter [Zugreifen auf den FHIR-Dienst mithilfe](./../use-postman.md) von Postman und Senden einer Anforderung an , um FHIR-Beobachtungsressourcen mit `GET` einem `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` Heartrate-Wert anzeigen zu lassen.
 
 > [!TIP]
 > Vergewissern Sie sich, dass Ihr Benutzer über die erforderlichen Zugriffsrechte für die Azure API for FHIR-Datenebene verfügt. Verwenden Sie die [rollenbasierte Zugriffssteuerung in Azure](configure-azure-rbac.md) (Azure Role-Based Access Control, Azure RBAC), um die erforderlichen Datenebenenrollen zuzuweisen.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2021
 ms.author: allensu
-ms.openlocfilehash: 204de2d0b3ed6e75d8b599e094a58e0b2e1826b0
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 0501f703ce32df37a755c05240b24b8262ccf314
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131576109"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491163"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer-SKUs
 
@@ -35,6 +35,8 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 | --- | --- | --- |
 | **Szenario** |  Ausgestattet für den Lastausgleich des Datenverkehrs auf der Netzwerkebene, wenn hochleistungs und extrem niedrige Latenzzeiten erforderlich sind. Leitet den Datenverkehr innerhalb von und zwischen Regionen sowie zu Verfügbarkeitszonen für hohe Ausfallsicherheit. | Ausgestattet für kleine Anwendungen, die keine hohe Verfügbarkeit oder Redundanz benötigen. Nicht kompatibel mit Verfügbarkeitszonen. |
 | **Back-End-Typ** | IP-basiert, NIC-basiert | NIC-basiert |
+| **Protokoll** | TCP, UDP | TCP, UDP |
+| **[Front-End-IP-Konfigurationen](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | Unterstützt bis zu 600 Konfigurationen. | Unterstützt bis zu 200 Konfigurationen. |
 | **[Größe des Back-End-Pools](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | Unterstützt bis zu 1.000 Instanzen | Unterstützt bis zu 300 Instanzen |
 | **Endpunkte des Back-End-Pools** | Virtuelle Computer oder VM-Skalierungsgruppen in einem einzelnen Netzwerk | Virtuelle Computer in einer einzelnen Verfügbarkeitsgruppe oder VM-Skalierungsgruppe |
 | **[Integritätstests](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
@@ -49,6 +51,9 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 | **Verwaltungsvorgänge** | Die meisten Vorgänge < 30 Sekunden | Meist 60 bis 90+ Sekunden |
 | **SLA** | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nicht verfügbar | 
 | **Unterstützung des globalen VNet-Peerings** | Standard-ILB wird über globales VNet-Peering unterstützt. | Nicht unterstützt | 
+| **[NAT Gateway-Unterstützung](https://docs.microsoft.com/azure/virtual-network/nat-gateway/nat-overview)** | Sowohl Standard-ILB als auch Standard-Public-LB werden über Nat Gateway unterstützt. | Nicht unterstützt | 
+| **[Private Link-Unterstützung](https://docs.microsoft.com/azure/private-link/private-link-overview)** | Standard-ILB wird über Private Link unterstützt. | Nicht unterstützt | 
+| **[Regionsübergreifender Lastenausgleich (Vorschau)](https://docs.microsoft.com/azure/load-balancer/cross-region-overview)** | Der Standard-Public-Lastenausgleich wird über regionsübergreifenden Lastenausgleich unterstützt. | Nicht unterstützt | 
 
 Weitere Informationen finden Sie unter [Load Balancer-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer). Lesen Sie für den Standard-Load Balancer auch die ausführlicheren Informationen unter [Übersicht](./load-balancer-overview.md), [Preise](https://aka.ms/lbpricing) und [SLA](https://aka.ms/lbsla).
 

@@ -1,6 +1,6 @@
 ---
 title: Was ist der Identity Secure Score? – Azure Active Directory
-description: Verwenden von Identity Secure Score zum Verbessern des Sicherheitsstatus Ihres Verzeichnisses
+description: Erfahren Sie, wie Sie den Identity Secure Score nutzen können, um die Sicherheitslage Ihres Verzeichnisses zu verbessern.
 services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d5c1a1493a7ea2aac0945dae14fc4c547ad86c9
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 322643d443aac7cb0ec1aac06b46535114c8d340
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409917"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309508"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Was ist der Identity Secure Score in Azure Active Directory?
 
@@ -105,7 +105,7 @@ Kurz gesagt: Nein. Die Sicherheitsbewertung ist kein absolutes Maß dafür, wie 
 
 Ihre Bewertung für die Konfiguration empfohlener Sicherheitsfeatures oder die Durchführung sicherheitsrelevanter Aufgaben (z. B. das Lesen von Berichten) verbessert sich. Einige Aktionen werden bewertet, wenn sie teilweise abgeschlossen wurden, beispielsweise das Aktivieren von Multi-Factor Authentication (MFA) für Ihre Benutzer. Ihre Sicherheitsbewertung spiegelt die von Ihnen verwendeten Microsoft-Sicherheitsdienste direkt wider. Denken Sie daran, dass ein Gleichgewicht zwischen Sicherheit und Benutzerfreundlichkeit bestehen muss. Alle Sicherheitsmaßnahmen wirken sich auf Benutzer aus. Kontrollen mit geringen Benutzerauswirkungen sollten wenig oder gar keinen Einfluss auf das Tagesgeschäft Ihrer Benutzer haben.
 
-Wenn Sie Ihren Bewertungsverlauf anzeigen möchten, navigieren Sie zum [Microsoft 365 Security Center](https://security.microsoft.com/), und sehen Sie sich Ihre gesamte Microsoft-Sicherheitsbewertung an. Sie können die Änderungen Ihrer gesamten Sicherheitsbewertung überprüfen, indem Sie auf „Verlauf anzeigen“ klicken. Wählen Sie ein Datum aus, um anzuzeigen, welche Kontrollen für diesen Tag aktiviert waren und welche Bewertung Sie für die einzelnen Kontrollen erhalten haben.
+Wenn Sie Ihren Bewertungsverlauf anzeigen möchten, navigieren Sie zum [Microsoft 365 Defender Portal](https://security.microsoft.com/), und sehen Sie sich Ihre gesamte Microsoft-Sicherheitsbewertung an. Sie können die Änderungen Ihrer gesamten Sicherheitsbewertung überprüfen, indem Sie auf „Verlauf anzeigen“ klicken. Wählen Sie ein Datum aus, um anzuzeigen, welche Kontrollen für diesen Tag aktiviert waren und welche Bewertung Sie für die einzelnen Kontrollen erhalten haben.
 
 ### <a name="how-does-the-identity-secure-score-relate-to-the-microsoft-365-secure-score"></a>In welcher Beziehung steht der Identity Secure Score zum Microsoft 365 Secure Score?
 

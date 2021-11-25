@@ -3,12 +3,12 @@ title: Sperren von Images
 description: Festlegen von Attributen für ein Containerimage oder Repository, sodass es in einer Azure-Containerregistrierung nicht gelöscht oder überschrieben werden kann.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 340beb1bb6666ddf0de7de38adee6be71f5f52bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0b2cdd770233833e45c84bea1916ddf7f6e1e317
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772341"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494546"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Sperren von Containerimages in einer Azure-Containerregistrierung
 
@@ -53,37 +53,37 @@ Führen Sie den folgenden Befehl vom Typ [az acr repository show][az-acr-reposit
 
 ```azurecli
 az acr repository show \
-    --name myregistry --image image:tag \
+    --name myregistry --image myimage:tag \
     --output jsonc
 ```
 
 ### <a name="lock-an-image-by-tag"></a>Sperren von Images mithilfe von Tags
 
-Führen Sie den folgenden Befehl vom Typ [az acr repository update][az-acr-repository-update] aus, um das Image *myrepo/myimage:tag* in *myregistry* zu sperren:
+Um das Bild *myimage:tag* in *myregistry* zu sperren, führen Sie den folgenden Befehl [az acr repository update][az-acr-repository-update] aus:
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --write-enabled false
 ```
 
 ### <a name="lock-an-image-by-manifest-digest"></a>Sperren von Images anhand von Manifest-Digests
 
-Führen Sie den folgenden Befehl aus, um ein *myrepo/myimage*-Image zu sperren, das durch ein Manifest-Digest identifiziert wird (SHA-256-Hash, der als `sha256:...` dargestellt wird). (Führen Sie den Befehl [az acr repository show-manifests][az-acr-repository-show-manifests] aus, um den Manifest-Digest zu ermitteln, der mindestens einem Imagetag zugeordnet ist.)
+Um ein Bild *myimage* zu sperren, das durch den Manifest-Digest (SHA-256-Hash, dargestellt als `sha256:...`) identifiziert wird, führen Sie den folgenden Befehl aus. (Führen Sie den Befehl [az acr repository show-manifests][az-acr-repository-show-manifests] aus, um den Manifest-Digest zu ermitteln, der mindestens einem Imagetag zugeordnet ist.)
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage@sha256:123456abcdefg \
+    --name myregistry --image myimage@sha256:123456abcdefg \
     --write-enabled false
 ```
 
 ### <a name="lock-a-repository"></a>Sperren eines Repositorys
 
-Führen Sie den folgenden Befehl aus, um das Repository *myrepo/myimage* und alle darin enthaltenen Images zu sperren:
+Um das Repository *myrepo* und alle darin enthaltenen Images zu sperren, führen Sie den folgenden Befehl aus:
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --write-enabled false
 ```
 
@@ -91,57 +91,57 @@ az acr repository update \
 
 ### <a name="protect-an-image-from-deletion"></a>Schützen von Images vor dem Löschen
 
-Führen Sie den folgenden Befehl aus, um die Aktualisierung, aber nicht das Löschen, des Images *myrepo/myimage:tag* zuzulassen:
+Um zuzulassen, dass das Bild *myimage:tag* aktualisiert, aber nicht gelöscht wird, führen Sie den folgenden Befehl aus:
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --delete-enabled false --write-enabled true
 ```
 
 ### <a name="protect-a-repository-from-deletion"></a>Schützen von Repositorys vor dem Löschen
 
-Mit dem folgenden Befehl wird das Repository *myrepo/myimage* so festgelegt, dass es nicht gelöscht werden kann. Einzelne Images können weiterhin aktualisiert oder gelöscht werden.
+Der folgende Befehl setzt das Repository *myrepo* so, dass es nicht gelöscht werden kann. Einzelne Images können weiterhin aktualisiert oder gelöscht werden.
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --delete-enabled false --write-enabled true
 ```
 
 ## <a name="prevent-read-operations-on-an-image-or-repository"></a>Verhindern von Lesevorgängen für Images oder Repositorys
 
-Führen Sie den folgenden Befehl aus, um Lesevorgänge (Pull) für das Image *myrepo/myimage:tag* zu verhindern:
+Um Lese- (Pull-) Operationen auf das Bild *myimage:tag* zu verhindern, führen Sie den folgenden Befehl aus:
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --read-enabled false
 ```
 
-Führen Sie den folgenden Befehl aus, um Lesevorgänge für das Repository *myrepo/myimage* zu verhindern:
+Um Lesevorgänge für alle Images im Repository *myrepo* zu verhindern, führen Sie den folgenden Befehl aus:
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --read-enabled false
 ```
 
 ## <a name="unlock-an-image-or-repository"></a>Entsperren von Images oder Repositorys
 
-Führen Sie den folgenden Befehl aus, um das Standardverhalten des Images *myrepo/myimage:tag* wiederherzustellen, damit es wieder gelöscht und aktualisiert werden kann:
+Um das Standardverhalten des Bildes *myimage:tag* wiederherzustellen, so dass es gelöscht und aktualisiert werden kann, führen Sie den folgenden Befehl aus:
 
 ```azurecli
 az acr repository update \
-    --name myregistry --image myrepo/myimage:tag \
+    --name myregistry --image myimage:tag \
     --delete-enabled true --write-enabled true
 ```
 
-Führen Sie den folgenden Befehl aus, um das Standardverhalten des Repositorys *myrepo/myimage* und der enthaltenen Images wiederherzustellen, damit sie wieder gelöscht und aktualisiert werden können:
+Um das Standardverhalten des Repositorys *myrepo* und aller Images wiederherzustellen, so dass sie gelöscht und aktualisiert werden können, führen Sie den folgenden Befehl aus:
 
 ```azurecli
 az acr repository update \
-    --name myregistry --repository myrepo/myimage \
+    --name myregistry --repository myrepo \
     --delete-enabled true --write-enabled true
 ```
 

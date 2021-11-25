@@ -1,18 +1,18 @@
 ---
-title: Ändern eines von Service Fabric verwalteten Clusterknotentyps
+title: Konfigurieren oder ändern Sie einen von Service Fabric verwalteten Clusterknotentyp
 description: Dieser Artikel beschreibt, wie Sie einen verwalteten Clusterknotentyp ändern können
 ms.topic: how-to
 ms.date: 10/25/2021
-ms.openlocfilehash: bd39c3810b1ecc1c6174e80a6719f2422aa72bb4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 02d332774b98e7097bca0bbea6bc7216af0057fd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094839"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277256"
 ---
 # <a name="service-fabric-managed-cluster-node-types"></a>Service Fabric verwaltete Clusterknotentypen
 
-Jeder Knotentyp in einem verwalteten Service Fabric-Cluster wird von einer VM-Skalierungsgruppe unterstützt. Bei verwalteten Clustern nehmen Sie alle erforderlichen Änderungen über den Ressourcenanbieter für verwaltete Cluster der Service Fabric vor. Alle dem Cluster zugrundeliegenden Ressourcen werden vom Anbieter des verwalteten Clusters in Ihrem Namen erstellt und abstrahiert. Dies trägt dazu bei, die Bereitstellung und Verwaltung von Clusterknoten zu vereinfachen, Betriebsfehler wie das Löschen eines Seed-Knotens zu vermeiden und bewährte Verfahren anzuwenden, wie z. B. die Validierung einer VM-SKU, die sicher zu verwenden ist.
+Jeder Knotentyp in einem verwalteten Service Fabric-Cluster wird von einer VM-Skalierungsgruppe unterstützt. Bei verwalteten Clustern nehmen Sie alle erforderlichen Änderungen über den Ressourcenanbieter für verwaltete Cluster der Service Fabric vor. Alle dem Cluster zugrundeliegenden Ressourcen werden vom Anbieter des verwalteten Clusters in Ihrem Namen erstellt und abstrahiert. Die Verwaltung der Ressourcen durch den Ressourcenanbieter vereinfacht die Bereitstellung und Verwaltung des Clusterknotentyps, verhindert Bedienungsfehler wie das Löschen eines Seed-Knotens und die Anwendung bewährter Verfahren wie die Überprüfung der sicheren Verwendung einer VM-SKU.
 
 Der Rest dieses Dokuments befasst sich mit der Anpassung verschiedener Einstellungen, von der Erstellung eines Knotentyps über die Anpassung der Anzahl der Instanzen des Knotentyps, die Aktivierung automatischer Betriebssystem-Image-Upgrades, die Änderung des Betriebssystem-Images und die Konfiguration der Platzierungseigenschaften. In diesem Dokument geht es auch um die Verwendung von Azure-Portal oder Azure Resource Manager Templates, um Änderungen vorzunehmen.
 
@@ -188,7 +188,7 @@ In dieser Schritt-für-Schritt-Anleitung erfahren Sie, wie Sie das Betriebssyste
 
 ## <a name="modify-the-os-image-for-a-node-type-with-a-template"></a>Ändern Sie das Betriebssystem-Image für einen Knotentyp mit einer Vorlage
 
-Um das für einen Knotentyp verwendete Betriebssystem-Image mithilfe einer ARM-Vorlage zu ändern, passen Sie die Eigenschaft `vmImageSku` mit dem neuen Wert an und führen Sie eine Cluster-Bereitstellung durch, damit die Einstellung wirksam wird. Der Anbieter des verwalteten Clusters wird jede Instanz nach Upgrade-Domäne neu abbilden.
+Um das für einen Knotentyp verwendete Betriebssystem-Image mithilfe einer ARM-Vorlage zu ändern, passen Sie die Eigenschaft `vmImageSku` mit dem neuen Wert an und führen Sie eine Cluster-Bereitstellung durch, damit die Einstellung wirksam wird. Der Anbieter des verwalteten Clusters führt ein Re-Image jeder Instanz nach Upgrade-Domäne durch.
 
 * Die apiVersion der verwalteten Service Fabric-Clusterressource sollte **2021-05-01** oder höher lauten.
 
@@ -256,11 +256,62 @@ Sie können nun diese [Platzeigenschaft verwenden, um sicherzustellen, dass best
 
 ## <a name="modify-the-vm-sku-for-a-node-type"></a>Ändern Sie die VM SKU für einen Knotentyp
 
-Service Fabric Managed Cluster unterstützt keine In-Place-Modifikation der VM SKU, ist aber dennoch sehr einfach. Um dies zu erreichen, müssen Sie Folgendes tun:
+Service Fabric Managed Cluster unterstützt keine In-Place-Änderung der VM SKU, ist aber einfacher als die klassische Variante. Um dies zu erreichen, müssen Sie Folgendes tun:
 * [Erstellen Sie einen neuen Knotentyp](how-to-managed-cluster-modify-node-type.md#add-or-remove-a-node-type-with-portal) mit der erforderlichen VM SKU.
 * Migrieren Sie Ihre Arbeitslast. Eine Möglichkeit besteht darin, eine [Platzeigenschaft zu verwenden, um sicherzustellen, dass bestimmte Arbeitslasten nur auf bestimmten Arten von Knoten im Cluster](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) laufen. 
 * [Alten Knotentyp löschen](how-to-managed-cluster-modify-node-type.md#add-or-remove-a-node-type-with-portal)
 
+
+
+## <a name="configure-multiple-managed-disks-preview"></a>Konfigurieren Sie mehrere verwaltete Datenträger (Vorschau)
+Service Fabric verwaltete Cluster konfigurieren standardmäßig einen verwalteten Datenträger. Durch die Konfiguration der folgenden optionalen Eigenschaften und Werte können Sie mehr verwaltete Datenträger zu Knotentypen innerhalb eines Clusters hinzufügen. Sie können den Laufwerksbuchstaben, den Datenträgertyp und die Größe pro Datenträger angeben.
+
+Konfigurieren Sie weitere verwaltete Datenträger, indem Sie die Eigenschaft `additionalDataDisks` und die erforderlichen Parameter in Ihrer Resource Manager-Vorlage wie folgt deklarieren:
+
+**Funktionsanforderungen**
+* Lun muss pro Datenträger eindeutig sein und kann nicht das reservierte Lun 0 verwenden
+* Der Datenträger kann nicht die reservierten Buchstaben C oder D verwenden und kann nach der Erstellung nicht mehr geändert werden. S wird als Standard verwendet, wenn nicht angegeben.
+* Muss einen [unterstützten Datenträger-Typ](how-to-managed-cluster-managed-disk.md) angeben
+* Die apiVersion der von Service Fabric verwalteten Clusterressource muss **2021-11-01-preview** oder höher sein.
+
+```json
+     {
+            "apiVersion": "[variables('sfApiVersion')]",
+            "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+            "name": "[concat(parameters('clusterName'), '/', parameters('nodeTypeName'))]",
+            "location": "[resourcegroup().location]",
+            "properties": {
+                "additionalDataDisks": {
+                    "lun": "1",
+                    "diskSizeGB": "50",
+                    "diskType": "Standard_LRS",
+                    "diskLetter": "S" 
+            }
+        }
+     }
+```
+
+Siehe [vollständige Liste der verfügbaren Parameter](/azure/templates/microsoft.servicefabric/2021-11-01/managedclusters)
+
+## <a name="configure-the-service-fabric-data-disk-drive-letter-preview"></a>Konfigurieren Sie den Laufwerksbuchstaben des Datenträgers der Service Fabric (Vorschau)
+Service Fabric-verwaltete Cluster konfigurieren standardmäßig einen Service Fabric-Datenträger und konfigurieren automatisch den Laufwerksbuchstaben auf allen Knoten eines Knotentyps. Wenn Sie diese optionale Eigenschaft und diesen Wert konfigurieren, können Sie den Datenträger der Service Fabric angeben und abrufen, wenn Sie spezielle Anforderungen an die Zuordnung von Laufwerksbuchstaben haben.
+
+**Funktionsanforderungen**
+* Der Datenträger kann nicht die reservierten Buchstaben C oder D verwenden und kann nach der Erstellung nicht mehr geändert werden. S wird als Standard verwendet, wenn nicht angegeben.
+* Die apiVersion der von Service Fabric verwalteten Clusterressource muss **2021-11-01-preview** oder höher sein.
+
+```json
+     {
+            "apiVersion": "[variables('sfApiVersion')]",
+            "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+            "name": "[concat(parameters('clusterName'), '/', parameters('nodeTypeName'))]",
+            "location": "[resourcegroup().location]",
+            "properties": {
+                "dataDiskLetter": "S"      
+            }
+        }
+     }
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

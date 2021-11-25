@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 10/29/2021
+ms.date: 11/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19e4a99967e8fdc64eb7d10c66649cac59db048a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 11e8af7f7e955e960644f2748087a86e1aa5b61f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456249"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484626"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion) 
 
@@ -61,7 +61,10 @@ Führen Sie die folgenden Schritte aus, um die Authentifizierungsmethode für di
 1. Bei jeder hinzugefügten Gruppe und jedem hinzugefügten Benutzer ist standardmäßig Microsoft Authenticator sowohl im kennwortlosen als auch im Pushbenachrichtigungsmodus („Beliebig“) aktiviert. Um dies zu ändern, führen Sie für jede Zeile folgende Schritte aus:
    1. Navigieren Sie zu **...**  > **Konfigurieren**.
    1. Wählen Sie für **Authentifizierungsmodus** die Option **Beliebig** oder **Kennwortlos** aus. Wenn Sie **Push** auswählen, wird die Verwendung der Anmeldeinformationen für die kennwortlose Anmeldung per Telefon verhindert. 
-1. Wählen Sie **Speichern** aus, um die neue Richtlinie anzuwenden.
+1. Wählen Sie **Speichern** aus, um die neue Richtlinie anzuwenden. 
+
+   >[!NOTE]
+   >Wenn Sie beim Speichern eine Fehlermeldung erhalten, kann die Ursache in der Anzahl der hinzugefügten Benutzer oder Gruppen liegen. Als Abhilfe können Sie die Benutzer und Gruppen, die Sie hinzufügen möchten, im selben Vorgang durch eine einzige Gruppe ersetzen und dann erneut auf **Speichern** klicken.
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Benutzerregistrierung und Verwaltung von Microsoft Authenticator
 

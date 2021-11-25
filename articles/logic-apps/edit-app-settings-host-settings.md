@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 228e0ac6243ae25463a81967c6d5cbcd903ad2ce
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eec377641eca7dd31ab04e9f6cdee949352d4a61
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824163"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491144"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>Bearbeiten von Einstellungen für Hosts und Apps für Logik-Apps in Azure Logic Apps-Instanzen mit einem einzelnen Mandanten
 
@@ -48,7 +48,7 @@ In Visual Studio Code enthält die Datei **local.settings.json** auf der Stammeb
 
 App-Einstellungen in Azure Logic Apps funktionieren ähnlich wie App-Einstellungen in Azure Functions oder Azure-Web-Apps. Wenn Sie diese anderen Dienste bereits verwendet haben, sind Sie möglicherweise mit den App-Einstellungen vertraut. Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](../azure-functions/functions-app-settings.md) und [Arbeiten mit Azure Functions Core Tools – Datei für lokale Einstellungen](../azure-functions/functions-develop-local.md#local-settings-file).
 
-| Einstellung | Standardwert | BESCHREIBUNG |
+| Einstellung | Standardwert | Beschreibung |
 |---------|---------------|-------------|
 | `AzureWebJobsStorage` | Keine | Hiermit wird die Verbindungszeichenfolge für ein Azure-Speicherkonto festgelegt. |
 | `Workflows.<workflowName>.FlowState` | Keine | Hiermit wird der Status für <*Workflowname*> festgelegt. |
@@ -163,6 +163,15 @@ Diese Einstellungen wirken sich auf den Durchsatz und die Kapazität für Azure 
 |---------|---------------|-------------|
 | `Runtime.FlowRetentionThreshold` | `90.00:00:00` <br>(90 Tage) | Hiermit wird die Zeitdauer festgelegt, für die der Ausführungsverlauf von Workflows nach dem Start einer Ausführung gespeichert werden soll. |
 | `Runtime.Backend.FlowRunTimeout` | `90.00:00:00` <br>(90 Tage) | Hiermit wird die Zeitdauer festgelegt, die ein Workflow weiter ausgeführt werden kann, bevor ein Timeout erzwungen wird. <p><p>**Wichtig:** Stellen Sie sicher, dass dieser Wert kleiner als oder gleich dem Wert `Runtime.FlowRetentionThreshold` ist. Andernfalls werden Ausführungsverläufe möglicherweise gelöscht, bevor die zugeordneten Aufträge abgeschlossen sind. |
+||||
+   
+<a name="run-actions"></a>
+
+### <a name="run-actions"></a>Ausführen von Aktionen
+
+| Einstellung | Standardwert | Beschreibung |
+|---------|---------------|-------------|
+| `Runtime.FlowRunRetryableActionJobCallback.ActionJobExecutionTimeout` | `00:10:00` <br>(10 Minuten) | Legt die Zeitdauer für die Ausführung eines Workflow-Aktionsauftrags fest, bevor ein Time out und ein Wiederholungsversuch ausgeführt werden. |
 ||||
 
 <a name="inputs-outputs"></a>

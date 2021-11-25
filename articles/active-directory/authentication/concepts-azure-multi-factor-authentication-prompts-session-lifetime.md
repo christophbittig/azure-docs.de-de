@@ -5,22 +5,22 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/12/2021
+ms.date: 11/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93f5af54992189d553c9e5c5c141a6ca08b7018e
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 334ebbecdd9da5bd55eff57f4c170c1a898e6c12
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356087"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486879"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Optimieren von Aufforderungen zur erneuten Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure AD Multi-Factor Authentication
 
-Azure Active Directory (Azure AD) verfügt über mehrere Einstellungen, mit denen bestimmt wird, wie oft Benutzer sich erneut authentifizieren müssen. Diese erneute Authentifizierung kann einstufig wie etwa mit einem Kennwort, mit FIDO oder mit Microsoft Authenticator (kennwortlos) oder mithilfe der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) erfolgen. Sie können diese Einstellungen für die erneute Authentifizierung nach Bedarf für Ihre Umgebung und die gewünschte Benutzererfahrung konfigurieren.
+Azure Active Directory (Azure AD) verfügt über mehrere Einstellungen, mit denen bestimmt wird, wie oft Benutzer sich erneut authentifizieren müssen. Diese erneute Authentifizierung kann mit einem ersten Faktor wie einem Kennwort, FIDO oder dem kennwortlosen Microsoft Authenticator erfolgen, oder um eine Multifaktor-Authentifizierung (MFA) durchzuführen. Sie können diese Einstellungen für die erneute Authentifizierung nach Bedarf für Ihre Umgebung und die gewünschte Benutzererfahrung konfigurieren.
 
 Die Standardkonfiguration von Azure AD sieht für die Anmeldehäufigkeit von Benutzern ein rollierendes Zeitfenster von 90 Tagen vor. Benutzer zur Angabe von Anmeldeinformationen aufzufordern, kann häufig sinnvoll erscheinen, sich aber nachteilig auswirken. Wenn Benutzer darin geschult werden, ihre Anmeldeinformationen ohne Nachdenken einzugeben, können sie diese versehentlich in einer böswilligen Eingabeaufforderung für Anmeldeinformationen angeben.
 
@@ -100,7 +100,11 @@ Diese Einstellung ermöglicht die Konfiguration der Gültigkeitsdauer für das v
 
 ## <a name="review-your-tenant-configuration"></a>Überprüfen Ihrer Mandantenkonfiguration  
 
-Nachdem Sie nun wissen, wie unterschiedliche Einstellungen und die empfohlene Konfiguration funktionieren, ist es an der Zeit, die Mandantenkonfiguration zu überprüfen und entsprechende Änderungen vorzunehmen:
+Da Sie nun wissen, wie die verschiedenen Einstellungen funktionieren und welche Konfiguration empfohlen wird, können Sie Ihre Mieter überprüfen. Sie können damit beginnen, sich die Anmeldeprotokolle anzusehen, um zu verstehen, welche Richtlinien für die Sitzungsdauer während der Anmeldung angewendet wurden.
+
+Gehen Sie unter jedem Anmeldeprotokoll auf die Registerkarte **Authentifizierungsdetails** und erkunden Sie **Angewandte Richtlinien für die Sitzungslebensdauer**. Weitere Informationen finden Sie unter [Authentifizierungsdetails](../reports-monitoring/concept-sign-ins.md#authentication-details).
+
+![Screenshot der Authentifizierungsdetails.](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/details.png)
 
 Führen Sie die folgenden Schritte aus, um die Option *Remain signed-in* (Angemeldet bleiben) zu konfigurieren oder zu überprüfen:
 
@@ -108,7 +112,7 @@ Führen Sie die folgenden Schritte aus, um die Option *Remain signed-in* (Angeme
 1. Wählen Sie **Unternehmensbranding** aus, und wählen Sie anschließend für jedes Gebietsschema **Option „Angemeldet bleiben“ anzeigen** aus.
 1. Wählen Sie *Ja* und anschließend **Speichern** aus.
 
-Führen Sie die folgenden Schritte aus, um die Einstellungen für Multi-Factor Authentication für vertrauenswürdige Geräte zu speichern:
+Führen Sie die folgenden Schritte aus, um die Einstellungen für die Multifaktor-Authentifizierung auf vertrauenswürdigen Geräten zu speichern:
 
 1. Suchen Sie im Azure AD-Portal nach *Azure Active Directory*, und wählen Sie es aus.
 1. Wählen Sie **Sicherheit** und anschließend **MFA** aus.
