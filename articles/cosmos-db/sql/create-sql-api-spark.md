@@ -30,4 +30,4 @@ ms.locfileid: "123117571"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
 
-[!INCLUDE[Generic configuration](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-cosmos-spark_3-1_2-12/docs/configuration-reference.md)]
+
