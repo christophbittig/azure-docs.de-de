@@ -1,38 +1,38 @@
 ---
-title: 'Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema | Microsoft-Dokumentation'
-description: In diesem Artikel wird das Authentifizierungsnormalisierungsschema von Azure Sentinel beschrieben.
+title: Referenz zum Normalisierungsschema für die Authentifizierung in Microsoft Sentinel | Microsoft-Dokumentation
+description: In diesem Artikel wird das Normalisierungsschema für die Authentifizierung in Microsoft Sentinel beschrieben.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/22/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9b692046f0e812b903570ecd6e788ba83db6b96b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 62bf35c4638433cc4e9820f8d0bb7e2592bcebf5
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131075408"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517575"
 ---
-# <a name="azure-sentinel-authentication-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)
+# <a name="microsoft-sentinel-authentication-normalization-schema-reference-public-preview"></a>Referenz zum Normalisierungsschema für die Authentifizierung in Microsoft Sentinel (Public Preview)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Das Authentifizierungsinformationsmodell wird zum Beschreiben von Ereignissen im Zusammenhang mit der Authentifizierung und der An- und Abmeldung von Benutzern verwendet. Authentifizierungsereignisse werden von vielen meldenden Geräten meist im Rahmen des Ereignisdatenstroms zusammen mit anderen Ereignissen gesendet.
 
-Von Windows werden beispielsweise verschiedene Authentifizierungsereignisse zusammen mit anderen Ereignissen im Zusammenhang mit Betriebssystemaktivitäten gesendet. Daher werden die Authentifizierungsereignisse in den meisten Fällen in verschiedenen Azure Sentinel-Tabellen gespeichert und mithilfe einer KQL-Funktion normalisiert, mit der auch nur die relevanten Authentifizierungsereignisse gefiltert werden.
+Von Windows werden beispielsweise verschiedene Authentifizierungsereignisse zusammen mit anderen Ereignissen im Zusammenhang mit Betriebssystemaktivitäten gesendet. Daher werden die Authentifizierungsereignisse in den meisten Fällen in verschiedenen Microsoft Sentinel-Tabellen gespeichert und mithilfe einer KQL-Funktion normalisiert, die auch nur die relevanten Authentifizierungsereignisse herausfiltert.
 
 Zu den Authentifizierungsereignissen gehören sowohl Ereignisse von Systemen, die sich auf die Authentifizierung konzentrieren, wie etwa VPN-Gateways oder Domänencontroller, als auch die direkte Authentifizierung bei einem Endsystem, wie etwa bei einem Computer oder einer Firewall.
 
-Weitere Informationen zu Normalisierung in Azure Sentinel finden Sie unter [Normalisierung und das Azure Sentinel Information Model (ASIM)](normalization.md).
+Weitere Informationen zur Normalisierung in Microsoft Sentinel finden Sie unter [Normalisierung und erweitertes SIEM-Informationsmodell (ADVANCED SIEM Information Model, ASIM).](normalization.md)
 
 > [!IMPORTANT]
 > Das Authentifizierungsnormalisierungsschema befindet sich derzeit in der VORSCHAUPHASE. Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
@@ -42,7 +42,7 @@ Weitere Informationen zu Normalisierung in Azure Sentinel finden Sie unter [Norm
 
 ## <a name="parsers"></a>Parser
 
-Azure Sentinel bietet die folgenden integrierten, produktspezifischen Authentifizierungsereignisparser: 
+Microsoft Sentinel bietet die folgenden integrierten produktspezifischen Authentifizierungsereignisparser: 
 
 - **Windows-Anmeldungen**, die als sicherheitsrelevantes Ereignisse (4624, 4625, 4634 und 4647) gemeldet und mithilfe des Log Analytics-Agents oder des Azure Monitor-Agents erfasst werden.
 - **Windows-Anmeldungen**,die von Microsoft 365 Defender für Endpunkt gemeldet und mit dem Microsoft 365 Defender-Connector erfasst werden.
@@ -52,13 +52,13 @@ Azure Sentinel bietet die folgenden integrierten, produktspezifischen Authentifi
 
 Damit der quellunabhängige Parser verwendet wird, der alle aufgelisteten Parser vereinheitlicht und so sicherstellt, dass Sie Daten aus allen konfigurierten Quellen analysieren, verwenden Sie **imAuthentication** als Tabellenname in Ihrer Abfrage.
 
-Stellen Sie die [quellunabhängigen und quellspezifischen Parser](normalization-about-parsers.md) aus dem [Azure Sentinel GitHub-Repository](https://aka.ms/AzSentinelAuth) bereit.
+Stellen Sie die [quellenunabhängigen und quellenspezifischen Parser](normalization-about-parsers.md) aus dem [Microsoft Sentinel GitHub-Repository](https://aka.ms/AzSentinelAuth) bereit.
 
 
 
 ## <a name="normalized-content"></a>Normalisierter Inhalt
 
-Zur Unterstützung für das Authentifizierungsschema ASIM gehört auch die Unterstützung für die folgenden integrierten Analyseregeln mit normalisierten Authentifizierungsparsern. Im Folgenden finden Sie Links zum Azure Sentinel GitHub-Repository. Sie können diese Regeln aber auch in dem [Azure Sentinel Analytics-Regelkatalog](detect-threats-built-in.md) finden. Verwenden Sie die verlinkten GitHub-Seiten, um alle relevanten Hunting-Abfragen für die aufgeführten Regeln zu kopieren.
+Zur Unterstützung für das Authentifizierungsschema ASIM gehört auch die Unterstützung für die folgenden integrierten Analyseregeln mit normalisierten Authentifizierungsparsern. Links zum Microsoft Sentinel-GitHub-Repository sind weiter unten als Referenz angegeben. Sie finden diese Regeln jedoch auch im [Microsoft Sentinel Analytics-Regelkatalog.](detect-threats-built-in.md) Verwenden Sie die verlinkten GitHub-Seiten, um alle relevanten Hunting-Abfragen für die aufgeführten Regeln zu kopieren.
 
 - [Potenzieller Kennwortspray-Angriff (Verwendung der Authentifizierungsnormalisierung)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthPasswordSpray.yaml)
  - [Brute-Force-Angriff auf Anmeldeinformationen von Benutzern (Verwendung der Authentifizierungsnormalisierung)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthBruteForce.yaml)
@@ -66,7 +66,7 @@ Zur Unterstützung für das Authentifizierungsschema ASIM gehört auch die Unter
  - [Anmeldungen von IPs, die versuchen, sich bei deaktivierten Konten anzumelden (verwendet die Authentifizierungsnormalisierung)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imSigninAttemptsByIPviaDisabledAccounts.yaml)
 
 
-Regeln für die Analyse einer normalisierten Authentifizierung sind speziell, da damit Angriffe von verschiedenen Quellen erkannt werden. Wenn sich ein Benutzer beispielsweise von verschiedenen Ländern aus bei verschiedenen, nicht miteinander verbundenen Systemen anmeldet, wird diese Bedrohung von Azure Sentinel erkannt.
+Regeln für die Analyse einer normalisierten Authentifizierung sind speziell, da damit Angriffe von verschiedenen Quellen erkannt werden. Wenn sich beispielsweise ein Benutzer oder eine Benutzerin von verschiedenen Ländern aus bei verschiedenen, nicht miteinander verbundenen Systemen anmeldet, wird diese Bedrohung jetzt von Microsoft Sentinel erkannt.
 
 ## <a name="schema-details"></a>Schemadetails
 
@@ -96,7 +96,7 @@ Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbs
 | Feld               | Klasse       | type       |  BESCHREIBUNG        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
-| **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest. <br><br>**Hinweis**: Dieses Feld ist aus Gründen der Konsistenz enthalten, wird jedoch in der Regel nicht für Authentifizierungsereignisse verwendet.  |
+| **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die vom Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest. <br><br>**Hinweis**: Dieses Feld ist aus Gründen der Konsistenz enthalten, wird jedoch in der Regel nicht für Authentifizierungsereignisse verwendet.  |
 | **EventStartTime**      | Obligatorisch.   | Datum/Uhrzeit  |      Wenn die Quelle Aggregation unterstützt und der Datensatz mehrere Ereignisse darstellt, gibt dieses Feld die Zeit an, zu der das erste Ereignis generiert wurde. Andernfalls wird in diesem Feld ein Alias für das Feld [TimeGenerated](#timegenerated) verwendet.<br><br>**Hinweis**: Dieses Feld ist aus Gründen der Konsistenz enthalten, wird jedoch in der Regel nicht für Authentifizierungsereignisse verwendet.  |
 | **EventEndTime**        | Obligatorisch.   | Alias      |      Alias für das Feld [TimeGenerated](#timegenerated).    |
 | **EventType**           | Obligatorisch.   | Enumerated |    Beschreibt den vom Datensatz gemeldeten Vorgang. <br><br>Für Authentifizierungsdatensätze werden folgende Werte unterstützt: <br>- `Logon` <br>- `Logoff`<br><br>**Hinweis**: Der Wert kann im Quelldatensatz mit anderen Begriffen angegeben werden, die auf diese Werte normalisiert werden sollten. Der ursprüngliche Wert muss im Feld [EventOriginalType](#eventoriginaltype) gespeichert werden.|
@@ -190,10 +190,10 @@ Ein **Akteur**, der eine *agierende Anwendung* (**ActingApp**) auf einem *Quellg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [Normalisierung in Azure Sentinel](normalization.md)
-- [Azure Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Öffentliche Vorschau)](file-event-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](./network-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Prozessereignis-Normalisierungsschema (Öffentliche Vorschau)](process-events-normalization-schema.md)
+- [Normalisierung in Microsoft Sentinel](normalization.md)
+- [Referenz zum DNS-Normalisierungsschema von Microsoft Sentinel](dns-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung von Dateiereignissen (Public Preview)](file-event-normalization-schema.md)
+- [Referenz zum Microsoft Sentinel-Netzwerk-Normalisierungsschema](./network-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum Prozessereignis-Normalisierungsschema (Öffentliche Vorschau)](process-events-normalization-schema.md)

@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 08/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 00b6429e14dcb04a76abbc1a8d49a29b220c7c06
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fd667abab0802d6d11fc855a620bf51f8419b978
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128607069"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555762"
 ---
 # <a name="elastic-data-map-in-azure-purview"></a>Elastische Data Map in Azure Purview
 
@@ -117,6 +117,38 @@ Wählen Sie **Grenzwerte für Dienste und Abonnements (Kontingent)** aus, und be
 :::image type="content" source="./media/concept-elastic-data-map/increase-limit.png" alt-text="Bildschirm, der die Erstellung des Supportfalles mit aktivierten Optionen für die Erhöhung des Grenzwerts zeigt.":::
 
 Geben Sie in der Beschreibung so viele relevante Informationen wie möglich über Ihre Umgebung und die zusätzliche Kapazität an, die Sie anfordern möchten.
+
+## <a name="monitoring-the-elastic-data-map"></a>Überwachen der elastischen Datenzuordnung
+
+Die _Kapazitätseinheiten der Metrikdatenzuordnung_ und die _Größe des Datenzuordnungsspeichers_ können überwacht werden, um die Größe des Datenspeichers und die Abrechnung zu verstehen.
+
+1. Gehen Sie zum [Azure-Portal](https://portal.azure.com), navigieren Sie zur Seite **Purview-Konten** und klicken Sie auf Ihr _Purview-Konto_
+
+2. Klicken Sie auf **Übersicht**, und scrollen Sie nach unten, um sich den Abschnitt **Überwachung** für _Data Map-Kapazitätseinheiten_ und Metriken zur _Data Map-Speichergröße_ für verschiedene Zeiträume anzusehen.
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-metrics.png" alt-text="Screenshot des Menüs mit der Übersichtsseite für Metriken zur elastischen Datenzuordnung.":::
+
+3. Navigieren Sie zu **Überwachung --> Metriken**, um die **Data Map-Kapazitätseinheiten** und die **Data Map-Speichergröße** anzuzeigen, um weitere Einstellungen vorzunehmen.
+
+    :::image type="content" source="./media/concept-elastic-data-map/elastic-data-map-metrics.png" alt-text="Screenshot des Menüs mit den Metriken.":::
+
+4. Klicken Sie auf **Data Map-Kapazitätseinheiten**, um die Nutzung der Datenzuordnungskapazitätseinheiten in den letzten 24 Stunden anzuzeigen. Wenn Sie mit der Maus auf das Liniendiagramm zeigen, werden die Kapazitätseinheiten der Datenzuordnung an diesem Tag anzeigt.
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-default.png" alt-text="Screenshot des Menüs mit den Kapazitätseinheiten der Datenzuordnung, die in den letzten 24 Stunden genutzt wurden.":::
+
+5. Klicken Sie oben rechts auf dem Bildschirm auf **Local Time: Last 24 hours (Automatic - 1 hour)** (Ortszeit: Letzte 24 Stunden (Automatisch: 1 Stunde)), um den für das Diagramm angezeigten Zeitbereich zu ändern.
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-custom.png" alt-text="Screenshot des Menüs mit den Kapazitätseinheiten der Datenzuordnung, die in einem benutzerdefinierten Zeitraum genutzt wurden.":::
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-time-range.png" alt-text="Screenshot des Menüs mit den Kapazitätseinheiten der Datenzuordnung, die in einem benutzerdefinierten Zeitraum von drei Tagen genutzt wurden.":::
+
+6. Passen Sie den Diagrammtyp an, indem Sie wie unten angegeben auf die Option klicken.
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-capacity-graph-type.png" alt-text="Screenshot des Menüs mit den Optionen zum Ändern des Diagrammtyps.":::
+
+7. Klicken Sie auf das **neue Diagramm**, um das Diagramm für die Data Map-Speichergröße hinzuzufügen.
+
+    :::image type="content" source="./media/concept-elastic-data-map/data-map-storage-size.png" alt-text="Screenshot des Menüs mit der Größe des verwendeten Datenzuordnungsspeichers.":::
 
 ## <a name="summary"></a>Zusammenfassung
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/08/2021
+ms.date: 11/09/2021
 ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 645a45ed2ad16abc92b0dded9f1950a3e1ad47d6
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 559081847ae83776bdf2d915cd194ccf6ffddb1f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131509910"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546384"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -49,7 +49,7 @@ Die folgende Tabelle enthält die zulässigen Datentypen, gibt an, wann der jewe
 
 | Datentyp | Zum Testen verwendet | Empfohlene Menge | Für Training verwendet | Empfohlene Menge |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Ja<br>Zur visuellen Prüfung verwendet | Mindestens 5 Audiodateien | Nein | – |
+| [Nur Audio](#audio-data-for-testing) | Ja<br>Zur visuellen Prüfung verwendet | Mindestens 5 Audiodateien | Nein | – |
 | [Audio + menschenmarkierte Transkripte](#audio--human-labeled-transcript-data-for-trainingtesting) | Ja<br>Zur Bewertung der Genauigkeit verwendet | 0,5 – 5 Stunden Audio | Ja | 1–20 Stunden Audiodaten |
 | [Nur-Text](#plain-text-data-for-training) | Nein | Nicht zutreffend | Ja | 1 – 200 MB zugehöriger Text |
 | [Strukturierter Text](#structured-text-data-for-training-public-preview) (Öffentliche Vorschauversion) | Nein | Nicht zutreffend | Ja | Bis zu 10 Klassen mit bis zu 4.000 Elementen und bis zu 50.000 Trainingssätzen |
@@ -92,9 +92,7 @@ Nach dem Hochladen des Datasets haben Sie verschiedene Möglichkeiten:
 
 Sie können die [Spracherkennungs-REST-API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) verwenden, um alle Vorgänge im Zusammenhang mit Ihren benutzerdefinierten Modellen zu automatisieren. Insbesondere können Sie damit ein Dataset hochladen. Dies ist besonders nützlich, wenn Ihre Datasetdatei 128 MB überschreitet, da derart große Dateien nicht mit der Option *Lokale Datei* in Speech Studio hochgeladen werden können. (Sie können für denselben Zweck auch die Option *Azure-Blob oder freigegebener Speicherort* in Speech Studio verwenden, wie im vorherigen Abschnitt beschrieben).
 
-Verwenden Sie eine der folgenden Anforderungen, um ein Dataset zu erstellen und hochzuladen:
-* [Create Dataset (Dataset erstellen)](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)
-* [Create Dataset from Form (Dataset aus Formular erstellen)](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm)
+Verwenden Sie zum Erstellen und Hochladen eines Datasets die Anforderung [Create Dataset](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset).
 
 **Mit der REST-API erstellte Datasets und Speech Studio-Projekte**
 
@@ -102,7 +100,7 @@ Ein mit der Spracherkennungs-REST-API v3.0 erstelltes Dataset wird mit *keinem* 
 
 Wenn Sie sich bei Speech Studio anmelden, werden Sie über die Benutzeroberfläche benachrichtigt, wenn ein nicht verbundenes Objekt gefunden wird (z. B. Datasets, die über die REST-API ohne Projektreferenz hochgeladen wurden), und es wird angeboten, solche Objekte mit einem bestehenden Projekt zu verbinden. 
 
-Um das neue Dataset während des Hochladens mit einem bestehenden Projekt im Speech Studio zu verbinden, verwenden Sie [Create Dataset](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset) (Dataset erstellen) oder [Create Dataset from Form](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm) (Dataset aus Formular erstellen), und füllen Sie die Anforderung gemäß dem folgenden Format aus:
+Verwenden Sie [Create Dataset](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset) (Dataset erstellen), um das neue Dataset während des Hochladens mit einem bestehenden Projekt in Speech Studio zu verbinden, und füllen Sie die Anforderung gemäß dem folgenden Format aus:
 ```json
 {
   "kind": "Acoustic",
@@ -116,7 +114,7 @@ Um das neue Dataset während des Hochladens mit einem bestehenden Projekt im Spe
 }
 ```
 
-Die für das `project`-Element erforderliche Projekt-URL kann mit der Anforderung [Get Projects](https://westeurope.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetProjects) (Projekte abrufen) ermittelt werden.
+Die für das `project`-Element erforderliche Projekt-URL kann mit der Anforderung [Get Projects](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetProjects) (Projekte abrufen) ermittelt werden.
 
 ## <a name="audio--human-labeled-transcript-data-for-trainingtesting"></a>Audio- und Humantranskriptionsdaten für Training/Tests
 
@@ -192,7 +190,7 @@ Darüber hinaus sollten Sie die folgenden Einschränkungen beachten:
 
 ## <a name="structured-text-data-for-training-public-preview"></a>Strukturierte Textdaten für das Training (Öffentliche Vorschauversion)
 
-Häufig folgen die erwarteten Äußerungen einem bestimmten Muster. Ein gängiges Muster ist z. B., dass Äußerungen sich nur durch bestimmte Wörter oder Ausdrücke aus einer Liste unterscheiden. Beispiele hierfür sind: „Ich habe eine Frage zu `product`“, wobei `product` eine Liste möglicher Produkte ist. Oder: „Färbe das `object` `color`“, wobei `object` eine Liste mit geometrischen Formen und `color` eine Liste mit Farben ist. Um die Erstellung von Trainingsdaten zu vereinfachen und eine bessere Modellierung innerhalb des benutzerdefinierten Sprachmodells zu ermöglichen, können Sie einen strukturierten Text im Markdown-Format verwenden, um Listen mit Elementen zu definieren und diese dann in Ihren Trainings-Äußerungen zu referenzieren. Das Markdown-Format unterstützt darüber hinaus auch die Angabe der phonetischen Aussprache von Wörtern. Das Markdown-Format hat das gleiche Format wie das `.lu`-Markdown, das verwendet wird, um Language Understanding-Modelle, insbesondere Listenentitäten und Beispieläußerungen, zu trainieren. Weitere Informationen zum vollständigen `.lu`-Markdown finden Sie unter dem <a href="/azure/bot-service/file-format/bot-builder-lu-file-format" target="_blank">`.lu`-Dateiformat</a>.
+Häufig folgen die erwarteten Äußerungen einem bestimmten Muster. Ein gängiges Muster ist z. B., dass Äußerungen sich nur durch bestimmte Wörter oder Ausdrücke aus einer Liste unterscheiden. Beispiele hierfür sind: „Ich habe eine Frage zu `product`“, wobei `product` eine Liste möglicher Produkte ist. Oder: „Färbe das `object` `color`“, wobei `object` eine Liste mit geometrischen Formen und `color` eine Liste mit Farben ist. Um die Erstellung von Trainingsdaten zu vereinfachen und eine bessere Modellierung innerhalb des benutzerdefinierten Sprachmodells zu ermöglichen, können Sie einen strukturierten Text im Markdown-Format verwenden, um Listen mit Elementen zu definieren und diese dann in Ihren Trainings-Äußerungen zu referenzieren. Das Markdown-Format unterstützt darüber hinaus auch die Angabe der phonetischen Aussprache von Wörtern. Die Markdowndatei sollte über die Erweiterung `.md` verfügen. Die Syntax des Markdowns ist mit der Syntax der Language Understanding-Modelle (insbesondere der Listenentitäten und Beispieläußerungen) identisch. Weitere Informationen zur vollständigen Markdownsyntax finden Sie im Artikel zum <a href="/azure/bot-service/file-format/bot-builder-lu-file-format" target="_blank">Language Understanding-Markdown</a>.
 
 Im Folgenden finden Sie ein Beispiel für das Markdown-Format:
 

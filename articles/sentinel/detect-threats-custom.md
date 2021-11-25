@@ -1,48 +1,47 @@
 ---
-title: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie benutzerdefinierte Analyseregeln erstellen, um mit Azure Sentinel Sicherheitsbedrohungen zu erkennen. Nutzen Sie die Ereignis- und Warnungsgruppierung und die Warnungsanreicherung, und informieren Sie sich über „AUTO DISABLED“.
+title: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen mit Microsoft Sentinel | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie benutzerdefinierte Analyseregeln erstellen, um mit Microsoft Sentinel Sicherheitsbedrohungen zu erkennen. Nutzen Sie die Ereignis- und Warnungsgruppierung und die Warnungsanreicherung, und informieren Sie sich über „AUTO DISABLED“.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d1290d5d89c4e48c8e2e875bae5e64959f6f2c36
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 66ccebb9154285c7f387b7ef51424cbfb177fa04
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037224"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521565"
 ---
 # <a name="create-custom-analytics-rules-to-detect-threats"></a>Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Nachdem Sie [Ihre Datenquellen mit Azure Sentinel verbunden haben](quickstart-onboard.md), können Sie benutzerdefinierte Analyseregeln erstellen, mit denen Sie Bedrohungen und anomales Verhalten in Ihrer Umgebung erkennen können.
+Nachdem Sie [Ihre Datenquellen mit Microsoft Sentinel verbunden haben](quickstart-onboard.md), können Sie benutzerdefinierte Analyseregeln erstellen, mit denen Sie Bedrohungen und anomales Verhalten in Ihrer Umgebung erkennen können.
 
 Mit diesen Analyseregeln werden bestimmte Ereignisse oder Ereignisgruppen in Ihrer Umgebung gesucht, beim Erreichen bestimmter Ereignisschwellenwerte oder -bedingungen Warnungen ausgegeben, und Incidents generiert, die Ihr SOC selektieren und untersuchen kann. Außerdem wird mit automatisierten Nachverfolgungs- und Korrekturprozessen auf Bedrohungen reagiert.
 
 > [!TIP]
 > Um benutzerdefinierte Regeln zu erstellen, verwenden Sie vorhandene Regeln als Vorlagen oder Referenzen. Die Verwendung vorhandener Regeln als Grundlage hilft dabei, den Großteil der Logik zu erstellen, bevor Sie die erforderlichen Änderungen vornehmen.
-> 
 
 > [!div class="checklist"]
-> * Erstellen von Analyseregeln
-> * Definieren, wie Ereignisse und Warnungen verarbeitet werden
-> * Definieren, wie Warnungen und Vorfälle generiert werden
-> * Auswählen automatisierter Reaktionen auf Bedrohungen für Ihre Regeln
+> - Erstellen von Analyseregeln
+> - Definieren, wie Ereignisse und Warnungen verarbeitet werden
+> - Definieren, wie Warnungen und Vorfälle generiert werden
+> - Auswählen automatisierter Reaktionen auf Bedrohungen für Ihre Regeln
 
 ## <a name="create-a-custom-analytics-rule-with-a-scheduled-query"></a>Erstellen einer benutzerdefinierten Analyseregel mit einer geplanten Abfrage
 
-1. Wählen Sie im Azure Sentinel-Navigationsmenü die Option **Analysen** aus.
+1. Klicken Sie im Microsoft Sentinel-Navigationsmenü auf **Analytics**.
 
 1. Wählen Sie auf der Aktionsleiste die Option **+ Erstellen** und anschließend **Geplante Abfrageregel** aus. Dadurch wird der **Assistent für Analyseregeln** geöffnet.
 
@@ -50,11 +49,11 @@ Mit diesen Analyseregeln werden bestimmte Ereignisse oder Ereignisgruppen in Ihr
 
 ### <a name="analytics-rule-wizard---general-tab"></a>Analyseregel-Assistent: Registerkarte „Allgemein“
 
-- Geben Sie einen eindeutigen **Namen** und eine **Beschreibung** an. 
+- Geben Sie einen eindeutigen **Namen** und eine **Beschreibung** an.
 
 - Im Feld **Taktiken** stehen verschiedene Angriffskategorien zur Auswahl, nach denen die Regel klassifiziert werden kann. Diese basieren auf den Taktiken des [MITRE ATT&CK](https://attack.mitre.org/)-Frameworks.
 
-- Legen Sie den **Schweregrad** der Warnung nach Bedarf fest. 
+- Legen Sie den **Schweregrad** der Warnung nach Bedarf fest.
 
 - Beim Erstellen der Regel wird der **Status** standardmäßig auf **Aktiviert** eingestellt. Dies bedeutet, dass die Regel nach der Erstellung sofort ausgeführt wird. Wenn Sie die Regel nicht sofort ausführen möchten, wählen Sie **Deaktiviert** aus. Die Regel wird der Registerkarte **Aktive Regeln** hinzugefügt, von wo Sie diese bei Bedarf aktivieren können.
 
@@ -80,7 +79,8 @@ Auf der Registerkarte **Regellogik festlegen** können Sie im Feld **Regelabfrag
     ```
 
     > [!NOTE]
-    > **Bewährte Methoden für Abfragen**: 
+    > **Bewährte Methoden für Abfragen**:
+    >
     > - Die Abfrage sollte zwischen 1 und 10.000 Zeichen lang sein und darf weder `search *` noch `union *` enthalten. Sie können [benutzerdefinierte Funktionen](/azure/data-explorer/kusto/query/functions/user-defined-functions) verwenden, um die Einschränkung der Abfragelänge außer Kraft zu setzen.
     >
     > - Das Erstellen von Azure Data Explorer-Abfragen mit ADX-Funktionen innerhalb des Log Analytics-Abfragefensters **wird nicht unterstützt**.
@@ -93,11 +93,11 @@ Auf der Registerkarte **Regellogik festlegen** können Sie im Feld **Regelabfrag
 > [!IMPORTANT]
 > Die Funktionen zur Warnungsanreicherung befinden sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
-- Im Konfigurationsbereich **Entitätszuordnung** können Sie Parameter aus den Abfrageergebnissen den in Azure Sentinel erkannten Entitäten zuordnen. Durch Entitäten wird die Ausgabe der Regeln (Warnungen und Vorfälle) um wesentliche Informationen erweitert, die als Bausteine für alle nachfolgenden Untersuchungsprozesse und Korrekturmaßnahmen dienen. Außerdem können Sie auf der Registerkarte **Incidenteinstellungen** Warnungen nach bestimmten Kriterien in Vorfällen gruppieren.
+- Im Konfigurationsbereich **Entitätszuordnung** können Sie Parameter aus den Abfrageergebnissen den von Microsoft Sentinel erkannten Entitäten zuordnen. Durch Entitäten wird die Ausgabe der Regeln (Warnungen und Vorfälle) um wesentliche Informationen erweitert, die als Bausteine für alle nachfolgenden Untersuchungsprozesse und Korrekturmaßnahmen dienen. Außerdem können Sie auf der Registerkarte **Incidenteinstellungen** Warnungen nach bestimmten Kriterien in Vorfällen gruppieren.
 
-    Erfahren Sie mehr über [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md).
+    Erfahren Sie mehr über [Entitäten in Microsoft Sentinel](entities-in-azure-sentinel.md).
 
-    Unter [Zuordnen von Datenfeldern zu Entitäten in Azure Sentinel](map-data-fields-to-entities.md) finden Sie umfassende Anweisungen zur Entitätszuordnung sowie wichtige Informationen zur [Abwärtskompatibilität](map-data-fields-to-entities.md#notes-on-the-new-version).
+    Unter [Zuordnen von Datenfeldern zu Entitäten in Microsoft Sentinel](map-data-fields-to-entities.md) finden Sie umfassende Anweisungen zur Entitätszuordnung sowie wichtige Informationen zur [Abwärtskompatibilität](map-data-fields-to-entities.md#notes-on-the-new-version).
 
 - Im Konfigurationsbereich **Benutzerdefinierten Details** können Sie Ereignisdatenelemente aus der Abfrage extrahieren und in den durch die jeweilige Regel generierten Warnungen anzeigen. Dadurch erhalten Sie direkten Einblick in die Ereignisinhalte der Warnungen und Vorfälle.
 
@@ -113,26 +113,26 @@ Auf der Registerkarte **Regellogik festlegen** können Sie im Feld **Regelabfrag
 
    :::image type="content" source="media/tutorial-detect-threats-custom/set-rule-logic-tab-2.png" alt-text="Festlegen von Abfragezeitplan und Ereignisgruppierung" lightbox="media/tutorial-detect-threats-custom/set-rule-logic-tab-all-2-new.png":::
 
-    - Legen Sie unter **Abfrage ausführen alle** fest, wie häufig die Abfrage ausgeführt werden soll: häufig (alle fünf Minuten) oder selten (einmal alle 14 Tage).
+  - Legen Sie unter **Abfrage ausführen alle** fest, wie häufig die Abfrage ausgeführt werden soll: häufig (alle fünf Minuten) oder selten (einmal alle 14 Tage).
 
-    - Legen Sie unter **Datensuche für letzte** den Zeitraum der von der Abfrage abgedeckten Daten fest: z. B. Daten der letzten 10 Minuten oder der letzten 6 Stunden. Der Höchstwert ist 14 Tage.
+  - Legen Sie unter **Datensuche für letzte** den Zeitraum der von der Abfrage abgedeckten Daten fest: z. B. Daten der letzten 10 Minuten oder der letzten 6 Stunden. Der Höchstwert ist 14 Tage.
 
-        > [!NOTE]
-        > **Abfrageintervalle und Rückblickperiode**
-        >
-        >  Diese beiden Einstellungen sind bis zu einem Punkt voneinander unabhängig. Sie können in einem kurzen Intervall eine Abfrage für einen Zeitraum ausführen, der länger ist als das Intervall (was zu sich überschneidenden Abfragen führt). Sie können jedoch für eine Abfrage kein Intervall festlegen, das den Abdeckungszeitraum überschreitet, da dies zu Lücken in der Gesamtabdeckung der Abfrage führen würde.
+    > [!NOTE]
+    > **Abfrageintervalle und Rückblickperiode**
+    >
+    >  Diese beiden Einstellungen sind bis zu einem Punkt voneinander unabhängig. Sie können in einem kurzen Intervall eine Abfrage für einen Zeitraum ausführen, der länger ist als das Intervall (was zu sich überschneidenden Abfragen führt). Sie können jedoch für eine Abfrage kein Intervall festlegen, das den Abdeckungszeitraum überschreitet, da dies zu Lücken in der Gesamtabdeckung der Abfrage führen würde.
         >
         > **Erfassungsverzögerung**
         >
-        > Azure Sentinel führt geplante Analyseregeln mit einer **fünfminütigen Verzögerung** nach der geplanten Zeit aus, um die **Wartezeit** zu berücksichtigen, die zwischen der Erstellung eines Ereignisses in der Quelle und dessen Erfassung in Azure Sentinel auftreten kann, und um eine vollständige Abdeckung ohne Datenduplizierung zu gewährleisten.
+        > Microsoft Sentinel führt geplante Analyseregeln mit einer **fünfminütigen Verzögerung** nach der geplanten Zeit aus, um die **Wartezeit** zu berücksichtigen, die zwischen der Erstellung eines Ereignisses in der Quelle und dessen Erfassung in Microsoft Sentinel auftreten kann, und um eine vollständige Abdeckung ohne Datenduplizierung zu gewährleisten.
         >
-        > Eine ausführliche technische Erklärung, warum diese Verzögerung notwendig ist und wie damit dieses Problem gelöst wird, finden Sie im Blogbeitrag von Ron Marsiano zu diesem Thema: [Handling ingestion delay in Azure Sentinel scheduled alert rules](https://techcommunity.microsoft.com/t5/azure-sentinel/handling-ingestion-delay-in-azure-sentinel-scheduled-alert-rules/ba-p/2052851) (Verarbeiten der Erfassungsverzögerung in geplanten Azure Sentinel-Warnungsregeln).
+        > Weitere Informationen finden Sie unter [Behandeln von Erfassungsverzögerungen in Regeln für geplante Analysen](ingestion-delay.md).
 
 - Im Bereich **Warnungsschwellenwert** können Sie die Vertraulichkeitsstufe der Regel definieren. Legen Sie beispielsweise **Warnung generieren, wenn für die Anzahl der Abfrageergebnisse Folgendes gilt:** auf **Ist größer als** fest, und geben Sie die Zahl 1000 ein, wenn die Regel nur dann eine Warnung generieren soll, wenn die Abfrage bei jeder Ausführung mehr als 1000 Ergebnisse zurückgibt. Da dies ein Pflichtfeld ist, müssen Sie, wenn Sie keinen Schwellenwert festlegen möchten (d. h., wenn bei jedem Ereignis eine Warnung registriert werden soll), im Zahlenfeld den Wert „0“ eingeben.
 
 ### <a name="results-simulation"></a>Ergebnissimulation
 
-Wenn Sie im Bereich **Ergebnissimulation** rechts im Assistenten die Option **Mit aktuellen Daten testen** auswählen, wird in Azure Sentinel ein Diagramm der Ergebnisse (Protokollereignisse) angezeigt, die die Abfrage in den letzten 50 Ausführungen entsprechend dem aktuell definierten Zeitplan generiert hätte. Wenn Sie die Abfrage ändern, wählen Sie **Mit aktuellen Daten testen** erneut aus, um das Diagramm zu aktualisieren. Das Diagramm zeigt die Anzahl der Ergebnisse im definierten Zeitraum, der durch die Einstellungen im Abschnitt **Abfrageplanung** bestimmt wird.
+Wenn Sie im Bereich **Ergebnissimulation** rechts im Assistenten die Option **Mit aktuellen Daten testen** auswählen, wird in Microsoft Sentinel ein Diagramm der Ergebnisse (Protokollereignisse) angezeigt, die die Abfrage in den letzten 50 Ausführungen entsprechend dem aktuell definierten Zeitplan generiert hätte. Wenn Sie die Abfrage ändern, wählen Sie **Mit aktuellen Daten testen** erneut aus, um das Diagramm zu aktualisieren. Das Diagramm zeigt die Anzahl der Ergebnisse im definierten Zeitraum, der durch die Einstellungen im Abschnitt **Abfrageplanung** bestimmt wird.
 
 Die Ergebnissimulation für die Abfrage im obigen Screenshot könnte wie folgt aussehen. Die linke Seite ist die Standardansicht, und die rechte Seite zeigt, was Sie sehen, wenn Sie im Diagramm auf einen bestimmten Zeitpunkt zeigen.
 
@@ -145,40 +145,39 @@ Wenn die Abfrage zu viele oder zu häufige Warnungen generiert hätte, können S
 > [!IMPORTANT]
 > Die Ereignisgruppierung befindet sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
-- Wählen Sie unter **Ereignisgruppierung** eine von zwei Methoden aus, um **Ereignisse** in **Warnungen** zu gruppieren: 
+- Wählen Sie unter **Ereignisgruppierung** eine von zwei Methoden aus, um **Ereignisse** in **Warnungen** zu gruppieren:
 
-    - **Group all events into a single alert** (Alle Ereignisse in einer einzelnen Warnung gruppieren) (Standardeinstellung). Die Regel generiert bei jeder Ausführung eine einzelne Warnung, solange die Anzahl der von der Abfrage zurückgegebenen Ergebnisse den oben angegebenen **Warnungsschwellenwert** überschreitet. Die Warnung enthält eine Zusammenfassung aller in den Ergebnissen zurückgegebenen Ereignisse. 
+  - **Group all events into a single alert** (Alle Ereignisse in einer einzelnen Warnung gruppieren) (Standardeinstellung). Die Regel generiert bei jeder Ausführung eine einzelne Warnung, solange die Anzahl der von der Abfrage zurückgegebenen Ergebnisse den oben angegebenen **Warnungsschwellenwert** überschreitet. Die Warnung enthält eine Zusammenfassung aller in den Ergebnissen zurückgegebenen Ereignisse.
 
-    - **Warnung für jedes Ereignis auslösen**. Die Regel generiert eine eindeutige Warnung für jedes Ereignis, das von der Abfrage zurückgegeben wird. Dies ist hilfreich, wenn die Ereignisse einzeln angezeigt oder nach bestimmten Parametern – etwa Benutzer oder Hostname – gruppiert werden sollen. Sie können diese Parameter in der Abfrage definieren.
+  - **Warnung für jedes Ereignis auslösen**. Die Regel generiert eine eindeutige Warnung für jedes Ereignis, das von der Abfrage zurückgegeben wird. Dies ist hilfreich, wenn die Ereignisse einzeln angezeigt oder nach bestimmten Parametern – etwa Benutzer oder Hostname – gruppiert werden sollen. Sie können diese Parameter in der Abfrage definieren.
 
-        Derzeit ist die Anzahl von Warnungen, die eine Regel generieren kann, auf 20 begrenzt. Wenn in einer bestimmten Regel **Ereignisgruppierung** auf **Warnung für jedes Ereignis auslösen** festgelegt ist und die Abfrage der Regel mehr als 20 Ereignisse zurückgibt, generiert jedes der ersten 19 Ereignisse eine eindeutige Warnung, und die 20. Warnung fasst den gesamten Satz zurückgegebener Ereignisse zusammen. Mit anderen Worten: Die 20. Warnung ist die Warnung, die auch mit der Option **Alle Ereignisse in einer einzigen Warnung gruppieren** generiert wird.
+    Derzeit ist die Anzahl von Warnungen, die eine Regel generieren kann, auf 20 begrenzt. Wenn in einer bestimmten Regel **Ereignisgruppierung** auf **Warnung für jedes Ereignis auslösen** festgelegt ist und die Abfrage der Regel mehr als 20 Ereignisse zurückgibt, generiert jedes der ersten 19 Ereignisse eine eindeutige Warnung, und die 20. Warnung fasst den gesamten Satz zurückgegebener Ereignisse zusammen. Mit anderen Worten: Die 20. Warnung ist die Warnung, die auch mit der Option **Alle Ereignisse in einer einzigen Warnung gruppieren** generiert wird.
 
-        Wenn Sie diese Option auswählen, fügt Azure Sentinel das neue Feld **OriginalQuery** zu den Ergebnissen der Abfrage hinzu. Hier sehen Sie eine Gegenüberstellung des vorhandenen und des neuen Felds **Abfrage**:
+    Wenn Sie diese Option auswählen, fügt Microsoft Sentinel das neue Feld **OriginalQuery** zu den Ergebnissen der Abfrage hinzu. Hier sehen Sie eine Gegenüberstellung des vorhandenen und des neuen Felds **Abfrage**:
 
-        | Feldname | Enthält | Abfrage wird in diesem Feld ausgeführt<br>Ergebnis |
-        | - | :-: | :-: |
-        | **Abfrage** | Der komprimierte Datensatz des Ereignisses, das diese Instanz der Warnung generiert hat | Das Ereignis, das diese Instanz der Warnung generiert hat |
-        | **OriginalQuery** | Die ursprüngliche Abfrage, wie in der&nbsp;Analyseregel | Das letzte Ereignis in dem Zeitraum, in dem die Abfrage ausgeführt wird, das den von der Abfrage definierten Parametern entspricht |
-        |
+    | Feldname | Enthält | Abfrage wird in diesem Feld ausgeführt<br>Ergebnis |
+    | - | :-: | :-: |
+    | **Abfrage** | Der komprimierte Datensatz des Ereignisses, das diese Instanz der Warnung generiert hat | Das Ereignis, das diese Instanz der Warnung generiert hat |
+    | **OriginalQuery** | Die ursprüngliche Abfrage, wie in der&nbsp;Analyseregel | Das letzte Ereignis in dem Zeitraum, in dem die Abfrage ausgeführt wird, das den von der Abfrage definierten Parametern entspricht |
 
-        Anders ausgedrückt: Das Feld **OriginalQuery** verhält sich so, wie sich das Feld **Abfrage** normalerweise verhält. Ergebnis dieses zusätzlichen Felds: Das durch das erste Element im Abschnitt [Problembehandlung](#troubleshooting) unten beschriebene Problem wurde gelöst.
- 
-    > [!NOTE]
-    > Was ist der Unterschied zwischen **Ereignissen** und **Warnungen**?
-    >
-    > - Ein **Ereignis** ist eine Beschreibung eines einzelnen Vorkommens einer Aktion. Beispielsweise kann ein einzelner Eintrag in einer Protokolldatei als Ereignis gezählt werden. In diesem Kontext bezeichnet ein Ereignis ein einzelnes Ergebnis, das von einer Abfrage in einer Analyseregel zurückgegeben wird.
-    >
-    > - Eine **Warnung** ist eine Sammlung von Ereignissen, die gemeinsam im Hinblick auf die Sicherheit von Bedeutung sind. Eine Warnung kann ein einzelnes Ereignis beinhalten, wenn das Ereignis bedeutende Auswirkungen auf die Sicherheit hat, z. B. eine Administratoranmeldung aus dem Ausland außerhalb der Geschäftszeiten.
-    >
-    > - Und was sind **Incidents**? Die interne Logik von Azure Sentinel erstellt **Incidents** aus **Warnungen** oder Gruppen von Warnungen. Die Arbeit der SOC-Analysten – Selektierung, Untersuchung und Abhilfe – konzentriert sich auf die Vorfallwarteschlange.
-    > 
-    > Azure Sentinel erfasst unformatierte Ereignisse aus Datenquellen und bereits verarbeitete Warnungen von anderen. Es muss jederzeit unterschieden werden, ob es sich um Ereignisse oder Warnungen handelt.
+    Anders ausgedrückt: Das Feld **OriginalQuery** verhält sich so, wie sich das Feld **Abfrage** normalerweise verhält. Ergebnis dieses zusätzlichen Felds: Das durch das erste Element im Abschnitt [Problembehandlung](#troubleshooting) unten beschriebene Problem wurde gelöst.
+
+  > [!NOTE]
+  > Was ist der Unterschied zwischen **Ereignissen** und **Warnungen**?
+  >
+  > - Ein **Ereignis** ist eine Beschreibung eines einzelnen Vorkommens einer Aktion. Beispielsweise kann ein einzelner Eintrag in einer Protokolldatei als Ereignis gezählt werden. In diesem Kontext bezeichnet ein Ereignis ein einzelnes Ergebnis, das von einer Abfrage in einer Analyseregel zurückgegeben wird.
+  >
+  > - Eine **Warnung** ist eine Sammlung von Ereignissen, die gemeinsam im Hinblick auf die Sicherheit von Bedeutung sind. Eine Warnung kann ein einzelnes Ereignis beinhalten, wenn das Ereignis bedeutende Auswirkungen auf die Sicherheit hat, z. B. eine Administratoranmeldung aus dem Ausland außerhalb der Geschäftszeiten.
+  >
+  > - Und was sind **Incidents**? Die interne Logik von Microsoft Sentinel erstellt **Incidents** aus **Warnungen** oder Gruppen von Warnungen. Die Arbeit der SOC-Analysten – Selektierung, Untersuchung und Abhilfe – konzentriert sich auf die Vorfallwarteschlange.
+  >
+  > Microsoft Sentinel erfasst unformatierte Ereignisse aus Datenquellen und bereits verarbeitete Warnungen von anderen. Es muss jederzeit unterschieden werden, ob es sich um Ereignisse oder Warnungen handelt.
 
 - Im Abschnitt **Unterdrückung** können Sie die Einstellung **Ausführung der Abfrage beenden, wenn eine Warnung generiert wurde** auf **Ein** festlegen, wenn Sie nach dem Eingang einer Warnung das Ausführen dieser Regel für einen Zeitraum unterbrechen möchten, der das Abfrageintervall überschreitet. Wenn Sie diese Option aktivieren, müssen Sie unter **Abfrageausführung beenden für:** den Zeitraum festlegen, in dem die Abfrage nicht ausgeführt werden soll (bis zu 24 Stunden).
 
 ## <a name="configure-the-incident-creation-settings"></a>Konfigurieren der Einstellungen für die Incidenterstellung
 
-Auf der Registerkarte **Incidenteinstellungen** können Sie auswählen, ob und wie Azure Sentinel Warnungen in verwertbare Incidents umwandelt. Wenn Sie diese Registerkarte unverändert lassen, erstellt Azure Sentinel einen eigenen separaten Incident von jeder einzelnen Warnung. Durch Ändern der Einstellungen auf dieser Registerkarte können Sie festlegen, dass keine Incidents erstellt oder mehrere Warnungen zu einem einzelnen Incident gruppiert werden.
+Auf der Registerkarte **Incidenteinstellungen** können Sie auswählen, ob und wie Microsoft Sentinel Warnungen in verwertbare Incidents umwandelt. Wenn Sie diese Registerkarte unverändert lassen, erstellt Microsoft Sentinel einen eigenen separaten Incident von jeder einzelnen Warnung. Durch Ändern der Einstellungen auf dieser Registerkarte können Sie festlegen, dass keine Incidents erstellt oder mehrere Warnungen zu einem einzelnen Incident gruppiert werden.
 
 > [!IMPORTANT]
 > Die Registerkarte „Incidenteinstellungen“ befindet sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
@@ -189,7 +188,7 @@ Beispiel:
 
 ### <a name="incident-settings"></a>Incidenteinstellungen
 
-Im Bereich **Incidenteinstellungen** ist die Option **Incidents aus Warnungen erstellen, die von dieser Analyseregel ausgelöst werden** standardmäßig auf **Aktiviert** festgelegt. Dies bedeutet, dass in Azure Sentinel ein separater Vorfall von jeder einzelnen Warnung erstellt wird, die von der Regel ausgelöst wird.
+Im Bereich **Incidenteinstellungen** ist die Option **Incidents aus Warnungen erstellen, die von dieser Analyseregel ausgelöst werden** standardmäßig auf **Aktiviert** festgelegt. Dies bedeutet, dass in Microsoft Sentinel ein separater Vorfall von jeder einzelnen Warnung erstellt wird, die von der Regel ausgelöst wird.
 
 - Wenn durch diese Regel nicht alle Incidents erstellt werden sollen (z. B. wenn Sie mit dieser Regel nur Informationen für die nachfolgende Analyse sammeln möchten), legen Sie diese Einstellung auf **Deaktiviert** fest.
 
@@ -198,7 +197,6 @@ Im Bereich **Incidenteinstellungen** ist die Option **Incidents aus Warnungen er
 ### <a name="alert-grouping"></a>Warnungsgruppierung
 
 Wenn aus einer Gruppe von bis zu 150 ähnlichen oder wiederkehrenden Warnungen (siehe Hinweis) ein einzelner Incident erstellt werden soll, legen Sie im Abschnitt **Warnungsgruppierung** die Option **Alle verwandten Warnungen, die durch diese Analyseregel ausgelöst werden, in Incidents gruppieren** auf **Aktiviert** fest, und legen Sie die folgenden Parameter fest.
-
 
 - **Gruppe auf Warnungen beschränken, die innerhalb des ausgewählten Zeitraums erstellt werden**: Bestimmen Sie den Zeitraum, in dem ähnliche oder wiederkehrende Warnungen gruppiert werden sollen. Alle entsprechenden Warnungen innerhalb dieses Zeitraums generieren zusammen einen Incident oder eine Gruppe von Incidents (abhängig von den unten aufgeführten Gruppierungseinstellungen). Bei Warnungen außerhalb dieses Zeitraums wird ein separater Incident oder eine Reihe von Incidents generiert.
 
@@ -212,7 +210,7 @@ Wenn aus einer Gruppe von bis zu 150 ähnlichen oder wiederkehrenden Warnungen (
     |
 
 - **Geschlossene übereinstimmende Incidents erneut öffnen**: Wenn ein Incident gelöst oder geschlossen wurde und später eine weitere Warnung generiert wird, die zu diesem Incident gehören würde, haben Sie folgende Möglichkeiten: Legen Sie diese Einstellung auf **Aktiviert** fest, wenn der geschlossene Incident erneut geöffnet werden soll, oder übernehmen Sie die Einstellung **Deaktiviert**, wenn durch die Warnung ein neuer Incident erzeugt werden soll.
-    
+
     > [!NOTE]
     > **Bis zu 150 Warnungen** können in einem einzelnen Vorfall gruppiert werden. Wenn mehr als 150 Warnungen von einer Regel generiert werden, die sie zu einem einzelnen Incident gruppiert, wird ein neuer Incident mit denselben Incidentinformationen wie der ursprüngliche Incident generiert, und die überzähligen Warnungen werden in dem neuen Incident gruppiert.
 
@@ -222,7 +220,7 @@ Wenn aus einer Gruppe von bis zu 150 ähnlichen oder wiederkehrenden Warnungen (
     - Wählen Sie in der Dropdownliste unter **Automatisierung von Warnungen** die Playbooks aus, die Sie automatisch ausführen möchten, wenn eine Warnung generiert wird.
     - Für die incidentbasierte Automatisierung wählen oder erstellen Sie unter **Incidentautomatisierung (Vorschau)** eine Automatisierungsregel. Sie können Playbooks (die auf dem **Incidenttrigger** basieren) über diese Automatisierungsregeln aufrufen sowie Selektierung, Zuweisung und Abschluss automatisieren.
     - Weitere Informationen und Anweisungen zum Erstellen von Playbooks und Automatisierungsregeln finden Sie unter [Automatisieren von Reaktionen auf Bedrohungen](tutorial-respond-threats-playbook.md#automate-threat-responses).
-    - Weitere Informationen darüber, wann Sie den **Warnungstrigger** oder **Incidenttrigger** verwenden sollten, finden Sie unter [Verwenden von Triggern und Aktionen in Azure Sentinel-Playbooks](playbook-triggers-actions.md#azure-sentinel-triggers-summary).
+    - Weitere Informationen darüber, wann Sie den **Warnungstrigger** oder **Incidenttrigger** verwenden sollten, finden Sie unter [Verwenden von Triggern und Aktionen in Microsoft Sentinel-Playbooks](playbook-triggers-actions.md#microsoft-sentinel-triggers-summary).
 
     :::image type="content" source="media/tutorial-detect-threats-custom/automated-response-tab.png" alt-text="Definieren der Einstellungen für automatisierte Antworten":::
 
@@ -236,10 +234,10 @@ Wenn aus einer Gruppe von bis zu 150 ähnlichen oder wiederkehrenden Warnungen (
 
 - Die Ergebnisse der von Ihnen erstellten Warnungsregeln können Sie auf der Seite **Vorfälle** anzeigen. Hier können Sie Bedrohungen eingrenzen, [Vorfälle untersuchen](investigate-cases.md) und die Bedrohungen beseitigen.
 
-- Sie können die Regelabfrage aktualisieren, um falsch positive Ergebnisse auszuschließen. Weitere Informationen finden Sie unter [Behandeln falsch positive Ergebnisse in Azure Sentinel](false-positives.md).
+- Sie können die Regelabfrage aktualisieren, um falsch positive Ergebnisse auszuschließen. Weitere Informationen finden Sie unter [Behandeln von falsch positiven Ergebnissen in Microsoft Sentinel](false-positives.md)
 
 > [!NOTE]
-> In Azure Sentinel generierte Warnungen stehen über [Microsoft Graph Security](/graph/security-concept-overview) zur Verfügung. Weitere Informationen finden Sie unter [Verwenden der Sicherheits-API von Microsoft Graph](/graph/api/resources/security-api-overview).
+> In Microsoft Sentinel generierte Warnungen stehen über [Microsoft Graph Security](/graph/security-concept-overview) zur Verfügung. Weitere Informationen finden Sie unter [Verwenden der Sicherheits-API von Microsoft Graph](/graph/api/resources/security-api-overview).
 
 ## <a name="export-the-rule-to-an-arm-template"></a>Exportieren der Regel in eine ARM-Vorlage
 
@@ -249,7 +247,7 @@ Wenn Sie Ihre Regel packen möchten, damit sie verwaltet und als Code bereitgest
 
 ### <a name="issue-no-events-appear-in-query-results"></a>Problem: Keine Ereignisse in den Abfrageergebnissen
 
-Wenn **Ereignisgruppierung** auf **Warnung für jedes Ereignis auslösen** festgelegt ist, kann es in bestimmten Szenarien vorkommen, dass bei einem späteren Anzeigen der Abfrageergebnisse (z. B. bei der Pivotierung von Warnungen eines Incidents) keine Abfrageergebnisse angezeigt werden. Dies liegt daran, dass die Verknüpfung zwischen Ereignis und Warnung durch Hashing der Informationen des jeweiligen Ereignisses und das Einfügen des Hash in die Abfrage erreicht wird. Wenn die Abfrageergebnisse seit der Generierung der Warnung geändert wurden, ist der Hash nicht mehr gültig, und es werden keine Ergebnisse angezeigt. 
+Wenn **Ereignisgruppierung** auf **Warnung für jedes Ereignis auslösen** festgelegt ist, kann es in bestimmten Szenarien vorkommen, dass bei einem späteren Anzeigen der Abfrageergebnisse (z. B. bei der Pivotierung von Warnungen eines Incidents) keine Abfrageergebnisse angezeigt werden. Dies liegt daran, dass die Verknüpfung zwischen Ereignis und Warnung durch Hashing der Informationen des jeweiligen Ereignisses und das Einfügen des Hash in die Abfrage erreicht wird. Wenn die Abfrageergebnisse seit der Generierung der Warnung geändert wurden, ist der Hash nicht mehr gültig, und es werden keine Ergebnisse angezeigt.
 
 Um die Ereignisse anzuzeigen, entfernen Sie die Zeile mit dem Hash aus der Abfrage der Regel und führen die Abfrage aus.
 
@@ -258,17 +256,17 @@ Um die Ereignisse anzuzeigen, entfernen Sie die Zeile mit dem Hash aus der Abfra
 
 ### <a name="issue-a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Problem: Fehler bei der Ausführung einer geplanten Regel oder beim Hinzufügen von „AUTO DISABLED“ zum Namen
 
-Ein Fehler bei der Ausführung einer geplanten Abfrage ist zwar selten, aber nicht ausgeschlossen. Azure Sentinel klassifiziert Fehler auf der Grundlage des spezifischen Fehlertyps und der Umstände, die dazu geführt haben, als vorübergehende oder dauerhafte Fehler.
+Ein Fehler bei der Ausführung einer geplanten Abfrage ist zwar selten, aber nicht ausgeschlossen. Microsoft Sentinel klassifiziert Fehler auf der Grundlage des spezifischen Fehlertyps und der Umstände, die dazu geführt haben, als vorübergehende oder dauerhafte Fehler.
 
 #### <a name="transient-failure"></a>Vorübergehender Fehler
 
-Ein vorübergehender Fehler tritt aufgrund einer temporären Situation auf, die sich bald wieder normalisiert. Zu diesem Zeitpunkt wird die Regelausführung erfolgreich angewendet. Dies sind einige Beispiele für Fehler, die von Azure Sentinel als vorübergehend klassifiziert werden:
+Ein vorübergehender Fehler tritt aufgrund einer temporären Situation auf, die sich bald wieder normalisiert. Zu diesem Zeitpunkt wird die Regelausführung erfolgreich angewendet. Dies sind einige Beispiele für Fehler, die von Microsoft Sentinel als vorübergehend klassifiziert werden:
 
 - Die Ausführung einer Regelabfrage dauert zu lang und führt zu einem Timeout.
-- Es bestehen Konnektivitätsprobleme zwischen Datenquellen und Log Analytics bzw. zwischen Log Analytics und Azure Sentinel.
+- Es bestehen Konnektivitätsprobleme zwischen Datenquellen und Log Analytics bzw. zwischen Log Analytics und Microsoft Sentinel.
 - Alle anderen neuen und unbekannten Fehler werden als vorübergehende Fehler eingestuft.
 
-Wenn ein vorübergehender Fehler auftritt, versucht Azure Sentinel weiterhin, die Regel gemäß den vordefinierten und immer kürzeren Intervallen bis zu einem bestimmten Punkt noch mal auszuführen. Danach wird die Regel nur zum nächsten geplanten Zeitpunkt wieder ausgeführt. Eine Regel wird aufgrund eines vorübergehenden Fehlers nie automatisch deaktiviert.
+Wenn ein vorübergehender Fehler auftritt, versucht Microsoft Sentinel weiterhin, die Regel gemäß den vordefinierten und immer kürzeren Intervallen bis zu einem bestimmten Punkt noch mal auszuführen. Danach wird die Regel nur zum nächsten geplanten Zeitpunkt wieder ausgeführt. Eine Regel wird aufgrund eines vorübergehenden Fehlers nie automatisch deaktiviert.
 
 #### <a name="permanent-failure---rule-auto-disabled"></a>Dauerhafter Fehler: Regel automatisch deaktiviert
 
@@ -276,12 +274,12 @@ Ein dauerhafter Fehler tritt aufgrund einer Änderung der Bedingungen auf, die n
 
 - Der Zielarbeitsbereich (für den die Regelabfrage ausgeführt wurde) wurde gelöscht.
 - Die Zieltabelle (für die die Regelabfrage ausgeführt wurde) wurde gelöscht.
-- Azure Sentinel wurde aus dem Zielarbeitsbereich entfernt.
+- Microsoft Sentinel wurde aus dem Zielarbeitsbereich entfernt.
 - Eine von der Regelabfrage verwendete Funktion ist nicht mehr gültig. Sie wurde entweder geändert oder entfernt.
 - Die Berechtigungen für eine der Datenquellen der Regelabfrage wurden geändert.
 - Eine der Datenquellen der Regelabfrage wurde gelöscht oder getrennt.
 
-**Im Fall einer vordefinierten Anzahl aufeinanderfolgender dauerhafter Fehler mit demselben Typ und derselben Regel** versucht Azure Sentinel nicht mehr, die Regel auszuführen und führt stattdessen die folgenden Schritte aus:
+**Im Fall einer vordefinierten Anzahl aufeinanderfolgender dauerhafter Fehler mit demselben Typ und derselben Regel** versucht Microsoft Sentinel nicht mehr, die Regel auszuführen und führt stattdessen die folgenden Schritte aus:
 
 - Die Regel wird deaktiviert.
 - Die Wörter **AUTO DISABLED** werden am Anfang des Regelnamens hinzugefügt.
@@ -293,16 +291,16 @@ SOC-Manager sollten sicherstellen, dass die Regelliste regelmäßig auf automati
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie Analyseregeln zum Erkennen von Bedrohungen durch Azure Sentinel verwenden, stellen Sie sicher, dass Sie alle Regeln aktivieren, die Ihren verbundenen Datenquellen zugeordnet sind, um eine vollständige Sicherheitsabdeckung für Ihre Umgebung zu gewährleisten. Die effizienteste Möglichkeit zum Aktivieren von Analyseregeln besteht direkt auf der Seite des Datenconnectors, auf der alle zugehörigen Regeln aufgelistet sind. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zu Datenquellen](connect-data-sources.md).
+Wenn Sie Analyseregeln zum Erkennen von Bedrohungen durch Microsoft Sentinel verwenden, stellen Sie sicher, dass Sie alle Regeln aktivieren, die Ihren verbundenen Datenquellen zugeordnet sind, um eine vollständige Sicherheitsabdeckung für Ihre Umgebung zu gewährleisten. Die effizienteste Möglichkeit zum Aktivieren von Analyseregeln besteht direkt auf der Seite des Datenconnectors, auf der alle zugehörigen Regeln aufgelistet sind. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zu Datenquellen](connect-data-sources.md).
 
-Sie können auch Regeln per [API](/rest/api/securityinsights/) und [PowerShell](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0) an Azure Sentinel übermitteln, obwohl dies zusätzlichen Aufwand mit sich bringt. Wenn Sie die API oder PowerShell verwenden, müssen Sie die Regeln zunächst in JSON exportieren, bevor Sie die Regeln aktivieren. Die API oder PowerShell kann hilfreich sein, wenn Sie Regeln in mehreren Instanzen von Azure Sentinel mit identischen Einstellungen in jeder Instanz aktivieren.
-
-Weitere Informationen finden Sie unter:
+Sie können auch Regeln per [API](/rest/api/securityinsights/) und [PowerShell](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0) an Microsoft Sentinel pushen, obwohl dies zusätzlichen Aufwand mit sich bringt. Wenn Sie die API oder PowerShell verwenden, müssen Sie die Regeln zunächst in JSON exportieren, bevor Sie die Regeln aktivieren. Eine API oder PowerShell kann hilfreich sein, wenn Sie Regeln in mehreren Instanzen von Microsoft Sentinel mit identischen Einstellungen in jeder Instanz aktivieren.
 
 Weitere Informationen finden Sie unter:
 
-- [Tutorial: Untersuchen von Vorfällen mit Azure Sentinel](investigate-cases.md)
-- [Klassifizieren und Analysieren von Daten mithilfe von Entitäten in Azure Sentinel](entities-in-azure-sentinel.md)
-- [Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel](tutorial-respond-threats-playbook.md)
+Weitere Informationen finden Sie unter:
+
+- [Tutorial: Untersuchen von Incidents mit Microsoft Sentinel](investigate-cases.md)
+- [Klassifizieren und Analysieren von Daten mithilfe von Entitäten in Microsoft Sentinel](entities-in-azure-sentinel.md)
+- [Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Microsoft Sentinel](tutorial-respond-threats-playbook.md)
 
 Erfahren Sie außerdem anhand eines Beispiels, wie benutzerdefinierte Analyseregeln bei der [Überwachung von Zoom](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) mit einem [benutzerdefinierten Connector](create-custom-connector.md) eingesetzt werden.

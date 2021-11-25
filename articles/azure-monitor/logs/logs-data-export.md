@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: yossi-y
 ms.author: yossiy
 ms.date: 10/17/2021
-ms.openlocfilehash: 8088b85ceefef2d3ffb11e7713fefd115c84b781
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9814c90a60aaa67ff6c1914c28568fb478bd0f87
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131435166"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488542"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
@@ -73,7 +73,7 @@ Mit dem Datenexport im Log Analytics-Arbeitsbereich werden kontinuierlich Daten 
     - USA, Westen 2
 
 ## <a name="data-completeness"></a>Datenvollständigkeit
-Der Datenexport versucht bis zu 30 Minuten lang, Daten zu senden, wenn das Ziel nicht verfügbar ist. Wenn es nach 30 Minuten immer noch nicht verfügbar ist, werden die Daten verworfen, bis das Ziel wieder verfügbar ist.
+Der Datenexport ist für das Verschieben großer Datenmengen an Ihre Ziele optimiert und kann unter bestimmten Wiederholungsbedingungen eine geringe Anzahl doppelter Datensätze enthalten. Beim Exportieren an Ihr Ziel kann ein Fehler auftreten, wenn die Obergrenze für eingehenden Datenverkehr erreicht wurde. Weitere Informationen hierzu finden Sie unter [Erstellen oder Aktualisieren der Datenexportregel](#create-or-update-data-export-rule). Es wird bis zu 30 Minuten lang weiter versucht, die Daten zu exportieren. Wenn das Ziel bis dann keine Daten akzeptieren kann, werden die Daten verworfen, bis das Ziel wieder verfügbar ist.
 
 ## <a name="cost"></a>Cost
 Für das Datenexportfeature fallen zurzeit keine zusätzlichen Gebühren an. Die Preise für den Datenexport werden später bekanntgegeben, und vor Abrechnungsbeginn wird eine Kündigungsfrist eingeräumt. Falls Sie sich dafür entscheiden, den Datenexport über den Benachrichtigungszeitraum hinaus zu verwenden, wird dies Ihnen zum entsprechenden Tarif in Rechnung gestellt.

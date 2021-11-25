@@ -2,13 +2,13 @@
 title: Bicep-Module
 description: Hier wird beschrieben, wie ein Modul in einer Bicep-Datei definiert und wie Modulbereiche eingesetzt werden.
 ms.topic: conceptual
-ms.date: 10/15/2021
-ms.openlocfilehash: a8a0b9c1eeeb56c12926774a78d45bb58e7d8437
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/12/2021
+ms.openlocfilehash: a8aedd784875fccbad81957550380cc4fa236616
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087379"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551272"
 ---
 # <a name="bicep-modules"></a>Bicep-Module
 
@@ -39,7 +39,7 @@ Ein einfaches, reales Beispiel würde also folgendermaßen aussehen:
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/local-file-definition.bicep" :::
 
-Verwenden Sie den symbolischen Namen, um in einem anderen Teil der Bicep-Datei auf das Modul zu verweisen. Beispielsweise können Sie den symbolischen Namen verwenden, um die Ausgabe eines Moduls zu erhalten. Der symbolische Name kann a-z, A-Z, 0-9 und „_“ enthalten. Der Name darf nicht mit einer Zahl beginnen. Ein Modul darf nicht denselben Namen wie ein Parameter, eine Variable oder eine Ressource haben.
+Verwenden Sie den symbolischen Namen, um in einem anderen Teil der Bicep-Datei auf das Modul zu verweisen. Beispielsweise können Sie den symbolischen Namen verwenden, um die Ausgabe eines Moduls zu erhalten. Der symbolische Name kann die Zeichen a–z, A–Z und 0–9 sowie Unterstriche (`_`) enthalten. Der Name darf nicht mit einer Zahl beginnen. Ein Modul darf nicht denselben Namen wie ein Parameter, eine Variable oder eine Ressource haben.
 
 Der Pfad kann entweder eine lokale Datei oder eine Datei in einer Registrierung sein. Weitere Informationen finden Sie unter [Pfad zum Modul](#path-to-module).
 
@@ -53,7 +53,7 @@ Um **ein Modul bedingt bereitzustellen**, fügen Sie einen `if`-Ausdruck hinzu. 
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/conditional-definition.bicep" highlight="2" :::
 
-Um **mehrere Instanzen** eines Moduls bereitzustellen, fügen Sie den `for`-Ausdruck hinzu. Weitere Informationen finden Sie unter [Iterative Schleifen in Bicep](loops.md).
+Um **mehrere Instanzen** eines Moduls bereitzustellen, fügen Sie den `for`-Ausdruck hinzu. Sie können den Decorator `batchSize` verwenden, um anzugeben, ob die Instanzen nacheinander oder parallel bereitgestellt werden sollen. Weitere Informationen finden Sie unter [Iterative Schleifen in Bicep](loops.md).
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/iterative-definition.bicep" highlight="3" :::
 
@@ -91,7 +91,7 @@ Zum Beispiel:
 
 Wenn Sie auf ein Modul in einer Registrierung verweisen, ruft die Bicep-Erweiterung in Visual Studio Code automatisch [bicep restore](bicep-cli.md#restore) auf, um das externe Modul in den lokalen Cache zu kopieren. Die Wiederherstellung des externen Moduls dauert einen Moment. Wenn IntelliSense für das Modul nicht sofort funktioniert, warten Sie, bis die Wiederherstellung abgeschlossen ist.
 
-Der vollständige Pfad für ein Modul in einer Registrierung kann lang sein. Anstatt bei jeder Verwendung des Moduls den vollständigen Pfad anzugeben, können Sie [Aliase in der Datei „bicepconfig.json“ konfigurieren](bicep-config.md#aliases-for-modules). Die Aliase erleichtern das Verweisen auf das Modul. Mit einem Alias können Sie z. B. den Pfad wie folgt kürzen:
+Der vollständige Pfad für ein Modul in einer Registrierung kann lang sein. Anstatt bei jeder Verwendung des Moduls den vollständigen Pfad anzugeben, können Sie [Aliase in der Datei „bicepconfig.json“ konfigurieren](bicep-config-modules.md#aliases-for-modules). Die Aliase erleichtern das Verweisen auf das Modul. Mit einem Alias können Sie z. B. den Pfad wie folgt kürzen:
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/alias-definition.bicep" highlight="1" :::
 

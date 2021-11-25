@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 07481838f5fca77d7e634003e04169a95d944117
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 702a4b624041a20c925bfc65d92542788f381800
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452070"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551310"
 ---
 # <a name="azure-image-builder-overview"></a>Übersicht über Azure Image Builder
 
@@ -114,12 +114,12 @@ Bei der Erstellung, dem Aufbau und der Speicherung von Images mit Azure Image Bu
 
 Während der Imagestellung werden Dateien heruntergeladen und in der `IT_<DestinationResourceGroup>_<TemplateName>`-Ressourcengruppe gespeichert. Dadurch werden die Speicherkosten reduziert. Sie können die **Imagevorlage** nach der Erstellung löschen, wenn sie nicht mehr benötigt wird.
  
-Image Builder erstellt eine VM mit einer D1v2 VM-Größe und dem für die VM erforderlichen Speicher und Netzwerk. Diese Ressourcen werden für die Dauer des Erstellungsprozesses benötigt und werden gelöscht, sobald der Image Builder die Erstellung des Images abgeschlossen hat. 
+Image Builder erstellt eine VM mit der Standard-VM-Größe D1 v2 für Gen1-Images und D2ds v4 für Gen2-Images sowie den Speicher und das Netzwerk, die für die VM erforderlich sind. Diese Ressourcen werden für die Dauer des Buildprozesses bereitgestellt und gelöscht, sobald Image Builder die Erstellung des Images abgeschlossen hat. 
  
 Azure Image Builder verteilt das Image an die von Ihnen ausgewählten Regionen. Das könnte zu Kosten für ausgehenden Datenverkehr führen.
 
 ## <a name="hyper-v-generation"></a>Hyper-V Generation
-Image Builder unterstützt derzeit nativ nur die Erstellung von Images der Hyper-V-Generation 1 (Gen1) in der Azure Compute Gallery. 
+Image Builder unterstützt derzeit die Erstellung von Hyper-V-Gen1- und -Gen2-Images in der Azure Compute Gallery. 
  
 ## <a name="next-steps"></a>Nächste Schritte 
  

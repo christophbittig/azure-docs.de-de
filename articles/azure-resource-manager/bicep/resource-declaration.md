@@ -4,13 +4,13 @@ description: Hier wird beschrieben, wie Ressourcen für die Bereitstellung in Bi
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/25/2021
-ms.openlocfilehash: 28f61a3fb3a40cb4db0a06f3c59fe6b07ec7d5bc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/12/2021
+ms.openlocfilehash: 1398215116307cf810d259ac52c30f6588e612ab
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131074211"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494001"
 ---
 # <a name="resource-declaration-in-bicep"></a>Ressourcendeklaration in Bicep
 
@@ -34,7 +34,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 }
 ```
 
-Bei symbolischen Namen wird zwischen Groß- und Kleinschreibung unterschieden.  Sie dürfen Buchstaben, Zahlen und _; enthalten, jedoch nicht mit einer Zahl beginnen.
+Bei symbolischen Namen wird zwischen Groß- und Kleinschreibung unterschieden. Sie dürfen nur Buchstaben, Zahlen und Unterstriche (`_`) enthalten. Sie dürfen nicht mit einer Zahl beginnen. Eine Ressource darf nicht denselben Namen wie ein Parameter, eine Variable oder ein Modul haben.
 
 Für die verfügbaren Ressourcentypen und Versionen, siehe [Bicep-Ressourcenreferenz](/azure/templates/). Das `apiProfile`-Element wird von Bicep nicht unterstützt. Dieses Element ist in [ARM-Vorlagen-JSON-Dateien (Azure Resource Manager)](../templates/syntax.md) verfügbar.
 
@@ -46,9 +46,10 @@ resource <symbolic-name> '<full-type-name>@<api-version>' = if (condition) {
 }
 ```
 
-Um mehr als eine Instanz einer Ressource bereitzustellen, verwenden Sie die Syntax `for`. Für weitere Informationen siehe [Iterative Schleifen in Bicep](loops.md).
+Um mehr als eine Instanz einer Ressource bereitzustellen, verwenden Sie die Syntax `for`. Sie können den Decorator `batchSize` verwenden, um anzugeben, ob die Instanzen nacheinander oder parallel bereitgestellt werden sollen. Für weitere Informationen siehe [Iterative Schleifen in Bicep](loops.md).
 
 ```bicep
+@batchSize(int) // optional decorator for serial deployment
 resource <symbolic-name> '<full-type-name>@<api-version>' = [for <item> in <collection>: {
   <properties-to-repeat>
 }]

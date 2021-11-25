@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: mathoma
 ms.date: 07/14/2021
-ms.openlocfilehash: c1bb51ff65e7239fc758553288c84a4a52f90740
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 86d4a032b914c56518f5106072eb7a6a1634b8ff
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339243"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550720"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL-Datenbank- und Azure Synapse-IP-Firewallregeln
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -28,6 +28,10 @@ Wenn Sie z. B. einen neuen Server in Azure SQL-Datenbank oder Azure Synapse Ana
 > Dieser Artikel gilt *nicht* für *Azure SQL Managed Instance*. Informationen zur Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Instanz](../managed-instance/connect-application-instance.md).
 >
 > Azure Synapse unterstützt nur IP-Firewallregeln auf Serverebene. IP-Firewallregeln auf Datenbankebene werden nicht unterstützt.
+
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="how-the-firewall-works"></a>Funktionsweise der Firewall
 

@@ -13,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e4f03e2f7540b4724b7dfe001f5fc77ac3c0706e
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 4ea75a7aa9b5a2e06ecce612654604af4db1bdf3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617832"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546897"
 ---
-# <a name="troubleshoot-application-sign-in-in-azure-active-directory"></a>Beheben von Anmeldeproblemen bei Anwendungen in Azure Active Directory
+# <a name="troubleshoot-application-sign-in"></a>Behandlung von Anmeldeproblemen bei Anwendungen
 
 „Meine Apps“ ist ein webbasiertes Portal, über das Benutzer mit einem Geschäfts-, Schul- oder Unikonto in Azure Active Directory (Azure AD) cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Der Zugriff auf „Meine Apps“ erfolgt mithilfe eines Webbrowsers unter [https://myapps.microsoft.com](https://myapps.microsoft.com).
 

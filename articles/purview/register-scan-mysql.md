@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a8d6d95e015400ce92d4963527ae976ddde689fe
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 8f7d2dbdab590d2236032d3dd96a2008e2aa79c0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131858529"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553836"
 ---
 # <a name="connect-to-and-manage-mysql-in-azure-purview-preview"></a>Verbinden mit und Verwalten von MySQL in Azure Purview (Vorschau)
 
@@ -32,7 +32,7 @@ Die unterstützten MySQL-Serverversionen sind 5.7 bis 8.x.
 
 Bei der Überprüfung der MySQL-Quelle unterstützt Purview folgende Funktionen:
 
-- Extrahieren von Metadaten, einschließlich MySQL-Server, -Datenbanken, -Tabellen, -Sichten, -Tabellenspalten, -Sichtspalten usw.
+- Extrahieren von Metadaten, einschließlich des MySQL-Servers sowie Datenbanken, Tabellen, Ansichten, Tabellenspalten und Ansichtsspalten
 - Abrufen der Herkunft für Ressourcenbeziehungen zwischen Tabellen und Sichten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -45,7 +45,7 @@ Bei der Überprüfung der MySQL-Quelle unterstützt Purview folgende Funktionen:
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
-* Stellen Sie sicher, dass [JDK 11](https://www.MySQL.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
+* Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
 
 * Stellen Sie sicher, dass Visual C++ Redistributable für Visual Studio 2012 Update 4 auf dem Computer mit der selbstgehosteten Integration Runtime installiert ist. Wenn Sie dieses Update nicht installiert haben, [können Sie es hier herunterladen](https://www.microsoft.com/download/details.aspx?id=30679).
 

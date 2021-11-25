@@ -1,28 +1,28 @@
 ---
-title: 'Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema | Microsoft-Dokumentation'
-description: In diesem Artikel wird das Registrierungsereignis-Normalisierungsschema von Azure Sentinel beschrieben.
+title: Referenz zum Normalisierungsschema für Registrierungsereignisse in Microsoft Sentinel | Microsoft-Dokumentation
+description: In diesem Artikel wird das Normalisierungsschema für Registrierungsereignisse in Microsoft Sentinel beschrieben.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 07/01/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: dd1a6b99c65d92b1a6a96a25790a8b780d73565f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4a22c8b2f207d8d6d2019f417bfcb025dcca9fa1
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055189"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523921"
 ---
-# <a name="azure-sentinel-registry-event-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (Öffentliche Vorschau)
+# <a name="microsoft-sentinel-registry-event-normalization-schema-reference-public-preview"></a>Referenz zum Normalisierungsschema für Registrierungsereignisse in Microsoft Sentinel (Public Preview)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -30,7 +30,7 @@ Das Registrierungsereignisschema wird verwendet, um die Windows-Aktivität zum E
 
 Registrierungsereignisse sind spezifisch für Windows-Systeme, werden aber von verschiedenen Systemen gemeldet, die Windows überwachen, z. B. EDR-Systeme (Endpunkterkennung und -antwort), Sysmon oder Windows selbst.
 
-Weitere Informationen zu Normalisierung in Azure Sentinel finden Sie unter [Normalisierung und das Azure Sentinel Information Model (ASIM)](normalization.md).
+Weitere Informationen zur Normalisierung in Microsoft Sentinel finden Sie unter [Normalisierung und erweitertes SIEM-Informationsmodell (ADVANCED SIEM Information Model, ASIM).](normalization.md)
 
 > [!IMPORTANT]
 > Das Schema für die Normalisierung von Registrierungsereignissen befindet sich derzeit in der VORSCHAU. Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
@@ -40,15 +40,15 @@ Weitere Informationen zu Normalisierung in Azure Sentinel finden Sie unter [Norm
 
 ## <a name="parsers"></a>Parser
 
-Azure Sentinel bietet die folgenden integrierten, produktspezifischen Registrierungsereignisparser:
+Microsoft Sentinel bietet die folgenden integrierten produktspezifischen Registrierungsereignisparser:
 
 - **Registrierungsupdate für sicherheitsrelevante Ereignisse (Ereignis 4657)** , erfasst mit dem Log Analytics-Agent oder mit Azure Monitor
 - **Sysmon-Registrierungsüberwachungsereignisse (Ereignisse 12, 13 und 14)** , die mit dem Log Analytics-Agent oder dem Azure Monitor-Agent erfasst wurden
-- **Microsoft 365 Defender für Endpunktregistrierungsereignisse**
+- **Registrierungsereignisse aus Microsoft 365 Defender für Endpunkt**
 
 Um den quellunabhängigen Parser zu verwenden, der alle integrierten Parser vereinheitlicht, und um sicherzustellen, dass Ihre Analyse über alle konfigurierten Quellen hinweg ausgeführt wird, verwenden Sie **imRegistry** als Tabellennamen in der Abfrage.
 
-Stellen Sie die [quellunabhängigen und quellspezifischen Parser](normalization-about-parsers.md) aus dem [Azure Sentinel GitHub-Repository](https://aka.ms/AzSentinelRegistry) bereit.
+Stellen Sie die [quellenunabhängigen und quellenspezifischen Parser](normalization-about-parsers.md) aus dem [Microsoft Sentinel GitHub-Repository](https://aka.ms/AzSentinelRegistry) bereit.
 
 ### <a name="add-your-own-normalized-parsers"></a>Hinzufügen eigener normalisierter Parser
 
@@ -58,9 +58,9 @@ Fügen Sie Ihre KQL-Funktion den quellunabhängigen `imRegistry`-Parsern hinzu, 
 
 ## <a name="normalized-content"></a>Normalisierter Inhalt
 
-Azure Sentinel stellt die Hunting-Abfrage [Persisting Via IFEO Registry Key (Beibehalten über IFEO-Registrierungsschlüssel)](https://github.com/Azure/Azure-Sentinel/blob/master/Hunting%20Queries/MultipleDataSources/PersistViaIFEORegistryKey.yaml) bereit. Diese Abfrage funktioniert mit allen Registrierungsaktivitätsdaten, die mithilfe des Azure Sentinel-Informationsmodells normalisiert wurden.
+Microsoft Sentinel stellt die Huntingabfrage [Persisting Via IFEO Registry Key](https://github.com/Azure/Azure-Sentinel/blob/master/Hunting%20Queries/MultipleDataSources/PersistViaIFEORegistryKey.yaml) (Beibehalten über IFEO-Registrierungsschlüssel) bereit. Diese Abfrage funktioniert mit allen Registrierungsaktivitätsdaten, die mit dem erweiterten SIEM-Informationsmodell normalisiert wurden.
 
-Weitere Informationen finden Sie unter [Suchen nach Bedrohungen mit Azure Sentinel](hunting.md).
+Weitere Informationen finden Sie unter [Suchen nach Bedrohungen mit Microsoft Sentinel](hunting.md).
 
 ## <a name="schema-details"></a>Schemadetails
 
@@ -90,7 +90,7 @@ Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbs
 | Feld               | Klasse       | type       |  BESCHREIBUNG        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
-| **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
+| **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die vom Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
 | **EventStartTime**      | Obligatorisch.   | Datum/Uhrzeit  |      Wenn die Quelle Aggregation unterstützt und der Datensatz mehrere Ereignisse darstellt, gibt dieses Feld die Zeit an, zu der das erste Ereignis generiert wurde. <br><br>Andernfalls wird in diesem Feld ein Alias für das Feld [TimeGenerated](#timegenerated) verwendet. |
 | **EventEndTime**        | Obligatorisch.   | Alias      |      Alias für das Feld [TimeGenerated](#timegenerated).    |
 | **EventType**           | Obligatorisch.   | Enumerated |    Beschreibt den vom Datensatz gemeldeten Vorgang. <br><br>Für Registrierungsdatensätze werden folgende Werte unterstützt: <br>- `RegistryKeyCreated` <br>- `RegistryKeyDeleted`<br>- `RegistryKeyRenamed` <br>- `RegistryValueDeleted` <br>- `RegistryValueSet`|
@@ -172,10 +172,10 @@ Verschiedene Quellen stellen Registrierungswerttypen mit unterschiedlichen Darst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [Normalisierung in Azure Sentinel](normalization.md)
-- [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)](authentication-normalization-schema.md)
-- [Azure Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Öffentliche Vorschau)](file-event-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](./network-normalization-schema.md)
+- [Normalisierung in Microsoft Sentinel](normalization.md)
+- [Referenz zum Normalisierungsschema für die Authentifizierung in Microsoft Sentinel (Public Preview)](authentication-normalization-schema.md)
+- [Referenz zum DNS-Normalisierungsschema von Microsoft Sentinel](dns-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung von Dateiereignissen (Public Preview)](file-event-normalization-schema.md)
+- [Referenz zum Microsoft Sentinel-Netzwerk-Normalisierungsschema](./network-normalization-schema.md)
