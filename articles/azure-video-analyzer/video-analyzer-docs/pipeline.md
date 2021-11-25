@@ -4,12 +4,12 @@ description: Eine Azure Video Analyzer-Pipeline, mit der Sie in Edge und Cloud v
 ms.topic: conceptual
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2e1eefc30140d56b1f4d7970e59f235d04799d67
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 261cbc17f8bd54d16c10b3f97a997cb6ac594fdb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131552542"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287151"
 ---
 # <a name="pipeline"></a>Pipeline
 
@@ -143,7 +143,7 @@ Wenn die Dateisenke voll ist, werden die ältesten Daten vom Azure Video Analyze
 
 #### <a name="iot-hub-message-sink"></a>IoT Hub-Nachrichtensenke
 
-Ein Knoten der IoT Hub-Nachrichtensenke ermöglicht Ihnen das Veröffentlichen von Ereignissen im IoT Edge-Hub. Der Azure-IoT-Edge-Hub kann so konfiguriert werden, dass er die Daten an andere Module oder Apps auf dem Edge-Gerät oder an den IoT-Hub in der Cloud weiterleitet (gemäß den im Bereitstellungsmanifest festgelegten Routen). Der IoT-Hub-Nachrichtensenkknoten kann Ereignisse von vorgelagerten Prozessorknoten, z. B. einem Bewegungserkennungs-Prozessorknoten, oder von einem externen Inferenzdienst über einen HTTP-Erweiterungs-Prozessorknoten annehmen.
+Ein Knoten der IoT Hub-Nachrichtensenke ermöglicht Ihnen das Veröffentlichen von Ereignissen im IoT Edge-Hub. Der Azure-IoT-Edge-Hub kann so konfiguriert werden, dass er die Daten an andere Module oder Apps auf dem Edge-Gerät oder an den IoT-Hub in der Cloud weiterleitet (gemäß den im Bereitstellungsmanifest festgelegten Routen). Der Knoten der IoT-Hub-Nachrichtensenke kann Ereignisse von Upstream-Prozessorknoten, z. B. einem Prozessorknoten für die Bewegungserkennung, oder von einem externen Rückschlussdienst über einen Knoten des HTTP-Erweiterungsprozessors annehmen.
 
 ## <a name="rules-on-the-use-of-nodes"></a>Regeln für die Verwendung von Knoten
 

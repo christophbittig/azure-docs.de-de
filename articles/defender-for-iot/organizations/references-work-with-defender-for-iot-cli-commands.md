@@ -1,14 +1,14 @@
 ---
 title: Arbeiten mit den CLI-Befehlen von Defender für IoT
 description: In diesem Artikel werden die CLI-Befehle von Defender für IoT für Sensoren und lokale Verwaltungskonsolen beschrieben.
-ms.date: 05/20/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: bac3e84d77436e9dfc500baa9f729ba847c49bd4
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 4561f0e9697826fff808d03e3bf38f0d546d7c8a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016206"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347178"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Arbeiten mit den CLI-Befehlen von Defender für IoT
 
@@ -31,7 +31,7 @@ alerts exclusion-rule-create [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 
 Mit Warnungsausschlussregeln können Sie folgende Attribute verwenden:
 
-| attribute | BESCHREIBUNG |
+| attribute | Beschreibung |
 |--|--|
 | [-h] | Druckt die Hilfeinformationen für den Befehl. |
 | -n NAME | Der Name der Regel, die erstellt wird. |
