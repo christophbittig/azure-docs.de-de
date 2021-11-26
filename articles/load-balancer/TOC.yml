@@ -63,7 +63,7 @@
           href: tutorial-load-balancer-ip-backend-portal.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -149,7 +149,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: ./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
           href: ./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
@@ -162,7 +162,7 @@
       href: load-balancer-distribution-mode.md
     - name: Verwenden mehrerer IP-Konfigurationen
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
@@ -218,13 +218,17 @@
           href: troubleshoot-outbound-connection.md
         - name: Probleme mit Ressourcenintegrität und eingehender Verfügbarkeit
           href: troubleshoot-rhc.md
+        - name: Allgemeine Fehlercodes für Azure Instance Metadata Service (IMDS)
+          href: troubleshoot-load-balancer-imds.md
+        - name: Häufige Bereitstellungsfehler
+          href: load-balancer-common-deployment-errors.md
 - name: Verweis
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
     - name: Azure PowerShell
       href: /powershell/module/az.network
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network/lb
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.network.models
@@ -241,10 +245,6 @@
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
-    - name: Allgemeine Fehlercodes für Azure Instance Metadata Service (IMDS)
-      href: troubleshoot-load-balancer-imds.md
-    - name: Häufige Bereitstellungsfehler
-      href: load-balancer-common-deployment-errors.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

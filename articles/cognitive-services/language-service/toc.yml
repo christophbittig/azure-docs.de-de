@@ -529,6 +529,8 @@ items:
             href: question-answering/how-to/manage-knowledge-base.md
           - name: Netzwerkisolation und private Endpunkte
             href: question-answering/how-to/network-isolation.md
+          - name: Erstellungs-API
+            href: question-answering/how-to/authoring.md
           - name: Vordefinierte API
             href: question-answering/how-to/prebuilt.md
           - name: Problembehandlung
