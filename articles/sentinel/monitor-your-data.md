@@ -1,34 +1,34 @@
 ---
-title: Visualisieren Ihrer Daten mithilfe von Azure Monitor-Arbeitsmappen in Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihre Daten mithilfe von Arbeitsmappen in Azure Sentinel visualisieren.
+title: Visualisieren Sie Ihre Daten mit Azure Monitor Workbooks in Microsoft Sentinel | Microsoft Docs
+description: Erfahren Sie, wie Sie Ihre Daten mithilfe von Arbeitsmappen in Microsoft Sentinel visualisieren können.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/04/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ef77535810671c0f442aa90eade688778c381750
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 525f67a7c9284a9ac78c388e52041d7895032104
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064485"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522610"
 ---
 # <a name="use-azure-monitor-workbooks-to-visualize-and-monitor-your-data"></a>Visualisieren und Überwachen Ihrer Daten mithilfe von Azure Monitor-Arbeitsmappen
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Nachdem Sie Ihre [Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md) haben, können Sie die Daten mithilfe der Azure Sentinel-Einführung von Azure Monitor-Arbeitsmappen visualisieren und überwachen, die für Vielseitigkeit bei der Erstellung benutzerdefinierter Dashboards sorgt. Zwar werden Arbeitsmappen in Azure Sentinel anders angezeigt, dennoch kann es für Sie hilfreich sein, zu erfahren, wie Sie [interaktive Berichte mit Azure Monitor-Arbeitsmappen erstellen](../azure-monitor/visualize/workbooks-overview.md) können. Azure Sentinel ermöglicht das Erstellen von benutzerdefinierten Arbeitsmappen für Ihre Daten und enthält auch integrierte Arbeitsmappenvorlagen, mit denen Sie schnell Erkenntnisse zu den Daten erhalten, sobald Sie eine Verbindung mit einer Datenquelle herstellen.
+Sobald Sie [Ihre Datenquellen](quickstart-onboard.md) mit Microsoft Sentinel verbunden haben, können Sie die Daten mit der Microsoft Sentinel-Adaption von Azure Monitor Workbooks visualisieren und überwachen, was die Erstellung benutzerdefinierter Dashboards ermöglicht. Obwohl die Arbeitsmappen in Microsoft Sentinel anders dargestellt werden, kann es für Sie nützlich sein, zu sehen, wie Sie [ interaktive Berichte mit Azure Monitor Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) erstellen können. Microsoft Sentinel ermöglicht es Ihnen, benutzerdefinierte Arbeitsmappen für Ihre Daten zu erstellen, und enthält außerdem integrierte Arbeitsmappenvorlagen, mit denen Sie schnell Einblicke in Ihre Daten gewinnen können, sobald Sie eine Datenquelle anschließen.
 
-In diesem Artikel wird beschrieben, wie Sie Ihre Daten in Azure Sentinel visualisieren können.
+Dieser Artikel beschreibt, wie Sie Ihre Daten in Microsoft Sentinel visualisieren können.
 
 > [!div class="checklist"]
 > * Verwenden integrierter Arbeitsmappen
@@ -36,16 +36,16 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Daten in Azure Sentinel visuali
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen mindestens über die Berechtigung **Arbeitsmappenleser** oder **Arbeitsmappenmitwirkender** für die Ressourcengruppe des Azure Sentinel-Arbeitsbereichs verfügen.
+Sie müssen mindestens über die Berechtigungen **Arbeitsmappenleser** oder **Arbeitsmappenmitarbeiter** in der Ressourcengruppe des Microsoft Sentinel-Arbeitsbereichs verfügen.
 
 > [!NOTE]
-> Die Arbeitsmappen, die in Azure Sentinel angezeigt werden, werden in der Ressourcengruppe des Azure Sentinel-Arbeitsbereichs gespeichert und sind durch den Arbeitsbereich markiert, in dem Sie erstellt wurden.
+> Die Arbeitsmappen, die Sie in Microsoft Sentinel sehen können, werden in der Ressourcengruppe des Microsoft Sentinel-Arbeitsbereichs gespeichert und sind mit dem Arbeitsbereich gekennzeichnet, in dem sie erstellt wurden.
 
 ## <a name="use-built-in-workbooks"></a>Verwenden integrierter Arbeitsmappen
 
-1. Wechseln Sie zu **Workbooks** (Arbeitsmappen), und wählen Sie dann **Templates** (Vorlagen) aus, um die vollständige Liste der in Azure Sentinel integrierten Arbeitsmappen anzuzeigen. 
+1. Gehen Sie zu **Arbeitsmappen** und wählen Sie dann **Vorlagen**, um die vollständige Liste der in Microsoft Sentinel integrierten Arbeitsmappen anzuzeigen. 
 
-    Wenn Sie feststellen möchten, welche für die Datentypen relevant sind, mit denen Sie eine Verbindung hergestellt haben, wird Ihnen im Feld **Required data types** (Erforderliche Datentypen) in jeder Arbeitsmappe der Datentyp neben einem grünen Häkchen aufgelistet, wenn Sie bereits relevante Daten an Azure Sentinel streamen.
+    Um zu sehen, welche Datentypen für die von Ihnen verknüpften Daten relevant sind, wird im Feld **Erforderliche Datentypen** in jeder Arbeitsmappe der Datentyp neben einem grünen Häkchen aufgelistet, wenn Sie bereits relevante Daten an Microsoft Sentinel übertragen.
 
     [ ![Go to workbooks](media/tutorial-monitor-data/access-workbooks.png) ](media/tutorial-monitor-data/access-workbooks.png#lightbox) (Zu Arbeitsmappen wechseln)
 
@@ -79,7 +79,7 @@ Sie müssen mindestens über die Berechtigung **Arbeitsmappenleser** oder **Arbe
 
 1. Stellen Sie bei der Erstellung einer Abfrage sicher, dass **Data source** (Datenquelle) auf **Logs** (Protokolle) und **Resource type** (Ressourcentyp) auf **Log Analytics** (Protokollanalyse) festgelegt ist, und wählen Sie dann die relevanten Arbeitsbereiche aus. 
 
-1. Nachdem Sie die Arbeitsmappe erstellt haben, speichern Sie diese in dem Abonnement und in der Ressourcengruppe Ihres Azure Sentinel-Arbeitsbereichs.
+1. Nachdem Sie Ihre Arbeitsmappe erstellt haben, speichern Sie sie unter der Abonnement- und Ressourcengruppe Ihres Microsoft Sentinel-Arbeitsbereichs.
 
 1. Wenn Sie möchten, dass andere Personen in Ihrer Organisation die Arbeitsmappe verwenden, wählen Sie unter **Save to** (Speichern in) die Option **Shared reports** (Freigegebene Berichte) aus. Wenn Sie möchten, dass diese Arbeitsmappe nur für Sie verfügbar ist, wählen Sie **My reports** (Meine Berichte) aus.
 
@@ -127,8 +127,8 @@ Um eine gespeicherte Arbeitsmappe (entweder eine gespeicherte Vorlage oder eine 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Ihre Daten in Azure Sentinel mithilfe von Azure-Arbeitsmappen visualisieren.
+In diesem Artikel haben Sie gelernt, wie Sie Ihre Daten in Microsoft Sentinel mithilfe von Azure Workbooks visualisieren können.
 
-Informationen zum Automatisieren Ihrer Reaktionen auf Bedrohungen finden Sie unter [Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](tutorial-respond-threats-playbook.md).
+Wie Sie Ihre Reaktionen auf Bedrohungen automatisieren können, erfahren Sie unter [Einrichten automatischer Bedrohungsreaktionen in Microsoft Sentinel](tutorial-respond-threats-playbook.md).
 
-Informationen zu beliebten integrierten Arbeitsmappen finden Sie unter [Häufig verwendete Azure Sentinel Arbeitsmappen](top-workbooks.md). 
+Weitere Informationen zu beliebten integrierten Arbeitsmappen finden Sie unter [Häufig verwendete Microsoft Sentinel-Arbeitsmappen](top-workbooks.md). 
