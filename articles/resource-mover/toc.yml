@@ -26,6 +26,8 @@
       href: support-matrix-move-region-azure-vm.md
     - name: "Unterstützung: Verschieben von Azure\_SQL zwischen Regionen"
       href: support-matrix-move-region-sql.md
+    - name: 'Unterstützung: Erweiterungsressourcentypen für die Verschiebung'
+      href: support-matrix-extension-resource-types.md
 - name: Anleitungen
   items:
     - name: Regionsübergreifendes Verschieben
