@@ -1,13 +1,15 @@
 items:
   - name: FHIR-Dienst
     href: index.yml
-  - name: Überblick
+  - name: Übersicht
     items:
       - name: Informationen zum FHIR-Dienst
         href: overview.md
   - name: Schnellstarts
     expanded: true
     items:
+      - name: Erste Schritte mit dem FHIR-Dienst
+        href: get-started-with-fhir.md
       - name: Bereitstellen des FHIR-Diensts
         expanded: true
         items:
@@ -34,7 +36,7 @@ items:
   - name: Anleitungen
     expanded: true
     items:
-      - name: Zugriff mit Postman
+      - name: Zugriff mitHilfe von Postman
         href: ../use-postman.md
       - name: Zugriff mit cURL
         href: ../using-curl.md
@@ -74,7 +76,7 @@ items:
     items:
       - name: Automatische Skalierung des FHIR-Diensts
         href: fhir-service-autoscale.md
-      - name: Funktionen der FHIR-Rest-API
+      - name: FHIR-Rest-API-Funktionen
         href: fhir-rest-api-capabilities.md
   - name: Ressourcen
     items:

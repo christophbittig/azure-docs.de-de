@@ -409,7 +409,7 @@
               href: howto-migrate-using-dump-and-restore.md
             - name: Aktualisieren/Migrieren von Daten mit „pg_dump“ und psql
               href: howto-migrate-using-export-and-import.md
-- name: Flexible Server (Vorschau)
+- name: Flexible Server
   expanded: true
   items:
     - name: Dokumentation zu Flexible Server

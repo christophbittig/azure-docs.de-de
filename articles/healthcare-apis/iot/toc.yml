@@ -1,7 +1,7 @@
 items:
   - name: IoT-Konnektor
     href: index.yml
-  - name: Überblick
+  - name: Übersicht
     expanded: true
     items:
       - name: Informationen zum IoT-Connector
@@ -9,6 +9,8 @@ items:
   - name: Schnellstarts
     expanded: true
     items:
+      - name: Erste Schritte mit dem IoT-Connector
+        href: get-started-with-iot.md
       - name: Bereitstellen von IoT-Konnektor
         expanded: true
         items:
@@ -19,7 +21,7 @@ items:
     items:
       - name: Datenfluss des IoT-Konnektors
         href: iot-data-flow.md
-      - name: IoT-Connector und Azure Machine Learning-Dienst
+      - name: IoT-Connector und Azure Machine Learning Service
         href: iot-connector-machine-learning.md
       - name: IoT-Connector und Microsoft Power BI
         href: iot-connector-power-bi.md
@@ -45,7 +47,7 @@ items:
             href: how-to-use-iot-jsonpath-content-mappings.md
           - name: IotCentralJsonContentTemplate-Zuordnungen
             href: how-to-use-iot-central-json-content-mappings.md
-      - name: Verwenden von benutzerdefinierten Funktionen
+      - name: Verwenden benutzerdefinierter Funktionen
         href: how-to-use-custom-functions.md
       - name: Verwenden von FHIR-Zielzuordnungen
         href: how-to-use-fhir-mappings.md

@@ -1,7 +1,7 @@
 items:
   - name: DICOM-Dienst
     href: index.yml
-  - name: Überblick
+  - name: Übersicht
     expanded: true
     items:
       - name: Informationen zum DICOM-Dienst
@@ -9,7 +9,9 @@ items:
   - name: Schnellstarts
     expanded: true
     items:
-      - name: Bereitstellen von DICOM-Diensten mithilfe Azure-Portal
+      - name: Erste Schritte mit dem DICOM-Dienst
+        href: get-started-with-dicom.md
+      - name: Bereitstellen des DICOM-Diensts mithilfe der Azure-Portal
         href: deploy-dicom-services-in-azure.md
   - name: Tutorials
     expanded: true
@@ -25,7 +27,7 @@ items:
     items:
       - name: Verwenden von DICOMweb-Standard-APIs mit dem DICOM-Dienst
         href: dicomweb-standard-apis-with-dicom-services.md
-      - name: Dicom-Änderungsfeed – Übersicht
+      - name: Übersicht über den DICOM-Änderungsfeed
         href: dicom-change-feed-overview.md
       - name: Registrieren Azure Active Directory Anwendungen für den DICOM-Dienst
         href: dicom-register-azure-active-directory-applications.md

@@ -80,6 +80,8 @@
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: "Bereitstellen von Open Service Mesh mit Azure\_Arc-Unterstützung"
           href: tutorial-arc-enabled-open-service-mesh.md
+        - name: Zugreifen auf Geheimnisse über Azure Key Vault
+          href: tutorial-akv-secrets-provider.md
     - name: Bereitstellen von Diensten mit Arc-Unterstützung
       items:
         - name: Erstellen benutzerdefinierter Standorte
@@ -88,7 +90,7 @@
           href: ../../machine-learning/how-to-attach-arc-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
     - name: Problembehandlung
       href: troubleshooting.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'

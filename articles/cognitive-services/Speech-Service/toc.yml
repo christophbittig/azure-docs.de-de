@@ -529,10 +529,14 @@ items:
                     href: windows-voice-assistants-faq.yml
   - name: Anleitungen
     items:
-      - name: Aktivieren der Protokollierung
-        href: how-to-use-logging.md
-      - name: Nachverfolgen der Arbeitsspeicherauslastung
-        href: how-to-track-speech-sdk-memory-usage.md
+      - name: Protokolle und Diagnose
+        items:
+          - name: Aktivieren der Protokollierung im SDK
+            href: how-to-use-logging.md
+          - name: Abrufen der Spracherkennungs-Sitzungs-ID
+            href: how-to-get-speech-session-id.md
+          - name: Nachverfolgen der Arbeitsspeicherauslastung
+            href: how-to-track-speech-sdk-memory-usage.md
       - name: Aktivieren eines privaten Endpunkts
         href: speech-services-private-link.md
       - name: Aktivieren des VNet-Dienstendpunkts

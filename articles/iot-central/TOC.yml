@@ -153,6 +153,8 @@
           href: core/how-to-connect-devices-x509.md
         - name: Überwachen der Gerätekonnektivität per Azure CLI
           href: core/howto-monitor-devices-azure-cli.md
+        - name: Verbinden IoT Edge für Linux auf Windows Gerät
+          href: core/howto-connect-eflow.md
         - name: "Verbinden von Geräten über ein transparentes IoT\_Edge-Gateway"
           href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: Vorbereiten und Verbinden eines Azure Sphere DevKit
