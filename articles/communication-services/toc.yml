@@ -166,6 +166,8 @@ items:
             href: concepts/detailed-call-flows.md
           - name: Benutzerseitige Diagnose
             href: concepts/voice-video-calling/user-facing-diagnostics.md
+          - name: Statistiken zur Medienqualität
+            href: concepts/voice-video-calling/media-quality-sdk.md
           - name: Bewährte Methoden für das Web
             href: concepts/best-practices.md
           - name: Bekannte Probleme
@@ -192,6 +194,8 @@ items:
         href: concepts/metrics.md
       - name: Azure Advisor
         href: concepts/advisor-overview.md
+      - name: Diensteinschränkungen
+        href: concepts/service-limits.md
       - name: Problembehandlung
         href: concepts/troubleshooting-info.md
   - name: Anleitungen

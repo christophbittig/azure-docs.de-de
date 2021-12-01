@@ -712,6 +712,12 @@ productDirectory:
       azureCategories:
         - devops
       url: /azure/devops/test/
+    - title: Azure-Auslastungstests
+      summary: Generieren von hoher Auslastung und Identifizieren von Engpässen bei der App-Leistung
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/load-testing.svg'
+      azureCategories:
+        - devops
+      url: load-testing/index.yml
     - title: GitHub Actions für Azure
       summary: 'Erstellen, Testen und Bereitstellen von Apps aus GitHub in Azure'
       imageSrc: ./media/index/github-actions-icon.svg

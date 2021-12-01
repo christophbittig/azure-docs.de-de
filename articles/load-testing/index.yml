@@ -1,0 +1,59 @@
+### YamlMime:Hub
+title: Dokumentation zu Azure Load Testing
+summary: 'Erfahren Sie, wie Sie hohe Auslastungen generieren, Leistungsengpässe bei Der App identifizieren und Regressionstests mit dem Azure Load Testing-Dienst automatisieren. Tutorials, Codebeispiele, GitHub Aktionen, Azure Pipelines und mehr.'
+metadata:
+  title: Dokumentation zu Azure Load Testing
+  description: 'Erfahren Sie, wie Sie hohe Auslastungen generieren, Leistungsengpässe bei Der App identifizieren und Regressionstests mit dem Azure Load Testing-Dienst automatisieren. Tutorials, Codebeispiele, GitHub Aktionen, Azure Pipelines und mehr.'
+  services: load-testing
+  ms.service: load-testing
+  ms.topic: hub-page
+  ms.collection: collection
+  ms.author: jmartens
+  author: j-martens
+  ms.date: 11/30/2021
+highlightedContent:
+  items:
+    - title: Was ist Azure Load Testing?
+      itemType: overview
+      url: overview-what-is-azure-load-testing.md
+    - title: Erkennen von Leistungsengpässen
+      itemType: tutorial
+      url: tutorial-identify-bottlenecks-azure-portal.md
+    - title: Einrichten von kontinuierlichen Regressionstests
+      itemType: tutorial
+      url: tutorial-cicd-azure-pipelines.md
+conceptualContent:
+  items:
+    - title: Konfigurieren von Auslastungstests
+      links:
+        - url: how-to-high-scale-load.md
+          itemType: how-to-guide
+          text: Konfigurieren für hohe Skalierung
+        - url: how-to-parameterize-load-tests.md
+          itemType: how-to-guide
+          text: Parametrisieren von Auslastungstests
+        - url: how-to-update-rerun-test.md
+          itemType: how-to-guide
+          text: Aktualisieren & erneuten Ausführen von Auslastungstests
+    - title: Analysieren der Testergebnisse
+      links:
+        - url: how-to-compare-multiple-test-runs.md
+          itemType: how-to-guide
+          text: Analysieren der Leistung durch Vergleichen von Läufen
+        - url: how-to-find-download-logs.md
+          itemType: how-to-guide
+          text: Suchen & Herunterladen von Auslastungstestprotokollen
+        - url: how-to-appservice-insights.md
+          itemType: how-to-guide
+          text: Gewinnen von Erkenntnissen aus AppService-Workloads
+        - url: how-to-export-test-results.md
+          itemType: how-to-guide
+          text: Exportieren von Ergebnissen
+    - title: Automatisieren von Auslastungstests
+      links:
+        - url: tutorial-cicd-azure-pipelines.md
+          itemType: tutorial
+          text: CI/CD-Workflows in Azure Pipelines
+        - url: tutorial-cicd-github-actions.md
+          itemType: tutorial
+          text: CI/CD-Workflows in GitHub Actions

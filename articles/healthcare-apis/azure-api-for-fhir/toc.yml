@@ -1,7 +1,7 @@
 items:
   - name: Dokumentation zu Azure Healthcare-APIs (Vorschauversion)
     href: ../index.yml
-  - name: dokumentation zu Azure API for FHIR
+  - name: Azure API for FHIR dokumentation
     href: index.yml
   - name: Übersicht
     expanded: true
@@ -59,13 +59,13 @@ items:
           - name: Einführung in die Richtlinie für CMS-Interoperabilität und Patientenzugriff
             href: centers-for-medicare-tutorial-introduction.md
           - name: CARIN-Implementierungshandbuch für die blaue Schaltfläche
-            href: ../fhir/carin-implementation-guide-blue-button-tutorial.md
+            href: carin-implementation-guide-blue-button-tutorial.md
           - name: "Da\_Vinci-Arzneimittelliste (Da Vinci Drug Formulary)"
-            href: ../fhir/davinci-drug-formulary-tutorial.md
+            href: davinci-drug-formulary-tutorial.md
           - name: "Da\_Vinci-Datenaustausch für Kostenträger (Da Vinci PDex)"
-            href: ../fhir/davinci-pdex-tutorial.md
+            href: davinci-pdex-tutorial.md
           - name: "Da\_Vinci-Planungsnetzwerk (Da Vinci Plan Net)"
-            href: ../fhir/davinci-plan-net.md
+            href: davinci-plan-net.md
   - name: Anleitungen
     expanded: true
     items:
@@ -168,7 +168,7 @@ items:
             href: iot-data-flow.md
           - name: Zuordnungsvorlagen von Azure IoT-Konnektor für FHIR (Vorschauversion)
             href: iot-mapping-templates.md
-      - name: Funktionen der FHIR-Rest-API
+      - name: FHIR-Rest-API-Funktionen
         href: fhir-rest-api-capabilities.md
       - name: Sicherheit
         items:

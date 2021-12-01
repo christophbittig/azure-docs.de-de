@@ -54,6 +54,8 @@ items:
             href: concept-best-practices-network.md
           - name: Bewährte Methoden für die Überprüfung
             href: concept-best-practices-scanning.md
+          - name: Bewährte Methoden für die Klassifizierung
+            href: concept-best-practices-classification.md
           - name: Bewährte Methoden für die Automatisierung
             href: concept-best-practices-automation.md
       - name: "Azure\_Purview-Berechtigungen"

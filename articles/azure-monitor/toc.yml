@@ -130,7 +130,7 @@
           href: logs/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Warnungen
+    - name: Alerts
       items:
         - name: Übersicht
           href: alerts/alerts-overview.md
@@ -1125,6 +1125,8 @@
               href: containers/container-insights-agent-config.md
             - name: Aktualisieren zum Aktivieren von Metriken
               href: containers/container-insights-update-metrics.md
+            - name: Migration von Azure Red Hat OpenShift v4.x zu Azure Arc aktivierten Clustern
+              href: containers/container-insights-transition-hybrid.md
         - name: Überwachen
           items:
             - name: Überwachen der Leistung
