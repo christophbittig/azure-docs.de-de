@@ -184,18 +184,28 @@
       items:
         - name: Übersicht
           href: backup-azure-sql-database.md
-        - name: Backup
+        - name: Über das Azure-Portal
           items:
-            - name: "Sichern mehrerer SQL\_Server-VMs über den Tresor"
-              href: backup-sql-server-database-azure-vms.md
-            - name: "Sichern einer SQL\_Server-Verfügbarkeitsgruppe"
-              href: backup-sql-server-on-availability-groups.md
-            - name: Sichern einer SQL Server-VM über den VM-Bereich
-              href: backup-sql-server-vm-from-vm-pane.md
-        - name: Restore
-          href: restore-sql-database-azure-vm.md
-        - name: Verwalten
-          href: manage-monitor-sql-database-backup.md
+            - name: Backup
+              items:
+                - name: "Sichern mehrerer SQL\_Server-VMs über den Tresor"
+                  href: backup-sql-server-database-azure-vms.md
+                - name: "Sichern einer SQL\_Server-Verfügbarkeitsgruppe"
+                  href: backup-sql-server-on-availability-groups.md
+                - name: Sichern einer SQL Server-VM über den VM-Bereich
+                  href: backup-sql-server-vm-from-vm-pane.md
+            - name: Restore
+              href: restore-sql-database-azure-vm.md
+            - name: Verwalten
+              href: manage-monitor-sql-database-backup.md
+        - name: Mit der REST-API
+          items:
+            - name: Backup
+              href: backup-azure-sql-vm-rest-api.md
+            - name: Restore
+              href: restore-azure-sql-vm-rest-api.md
+            - name: Verwalten
+              href: manage-azure-sql-vm-rest-api.md
     - name: Sicherung von Azure Database for PostgreSQL
       items:
         - name: Übersicht

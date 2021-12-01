@@ -1042,3 +1042,6 @@
     - name: Dienstconnector
       tocHref: /azure/service-connector/
       topicHref: /azure/service-connector/
+    - name: Auslastungstests
+      tocHref: /azure/load-testing/
+      topicHref: /azure/load-testing/overview-what-is-azure-load-testing

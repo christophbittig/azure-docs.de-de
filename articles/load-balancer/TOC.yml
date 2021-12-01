@@ -73,18 +73,18 @@
   items:
     - name: Portaleinstellungen
       href: manage.md
-    - name: Regionsübergreifender Lastenausgleich
-      href: cross-region-overview.md
-    - name: Gateway Load Balancer
-      href: gateway-overview.md
     - name: Neuigkeiten
       href: whats-new.md
     - name: Komponenten
       href: components.md
     - name: Lastenausgleichsalgorithmus
       href: concepts.md
+    - name: Verteilungsmodi
+      href: distribution-mode-concepts.md
     - name: SKUs
       href: skus.md
+    - name: Floating IP-Konfiguration
+      href: load-balancer-floating-ip.md
     - name: Systemüberwachung
       items:
         - name: Überwachen des Lastenausgleichs
@@ -109,12 +109,12 @@
       href: outbound-rules.md
     - name: TCP-Zurücksetzung bei Leerlauftimeout
       href: load-balancer-tcp-reset.md
-    - name: Load Balancer Standard und Verfügbarkeitszonen
+    - name: Verfügbarkeitszonen
       href: load-balancer-standard-availability-zones.md
-    - name: Floating IP-Konfiguration
-      href: load-balancer-floating-ip.md
-    - name: Verteilungsmodi
-      href: distribution-mode-concepts.md
+    - name: Regionsübergreifender Lastenausgleich
+      href: cross-region-overview.md
+    - name: Gateway Load Balancer
+      href: gateway-overview.md
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
