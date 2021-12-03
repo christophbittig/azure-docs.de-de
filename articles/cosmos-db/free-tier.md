@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: sngun
-ms.openlocfilehash: 55b37ce3f96bc187e4420fc16924b02639c9a7df
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ddc09c428a7779f5e059ead02dbd869a592813e5
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355965"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554771"
 ---
 # <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB: Free-Tarif 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -29,7 +29,7 @@ Sie können pro Azure-Abonnement maximal ein Azure Cosmos DB-Konto im Free-Tarif
 
 Beim gemeinsamen Durchsatz-Modell wird bei der Bereitstellung des Durchsatzes für eine Datenbank der Durchsatz auf alle Container in der Datenbank verteilt. Wenn Sie den Free-Tarif verwenden, können Sie eine gemeinsam genutzte Datenbank mit bis zu 1000 RU/s kostenlos bereitstellen. Alle Container in der Datenbank teilen den Durchsatz. 
 
-Genau wie beim regulären Konto kann eine Datenbank mit gemeinsamem Durchsatz im Free-Tarif-Konto maximal 25 Container enthalten. Alle zusätzlichen Datenbanken mit gemeinsamem Durchsatz oder Container mit dediziertem Durchsatz über 1000 RU/s werden zum Normaltarif abgerechnet. In einem Free-Tarif-Konto können Sie maximal 5 Datenbanken mit gemeinsamem Durchsatz erstellen.
+Genau wie beim regulären Konto kann eine Datenbank mit gemeinsamem Durchsatz im Free-Tarif-Konto maximal 25 Container enthalten. Alle zusätzlichen Datenbanken mit gemeinsamem Durchsatz oder Container mit dediziertem Durchsatz über 1000 RU/s werden zum Normaltarif abgerechnet.
 
 ## <a name="free-tier-with-azure-discount"></a>Free-Tarif mit Azure-Rabatt
 

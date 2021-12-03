@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 269656068d01e2db1e222ec58e5f9b40f34f0d53
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/4/2021
+ms.openlocfilehash: 44b4c8e48c7e0edf4501915d3f801abc94b2f0ab
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349339"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893612"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-Treiber und -Verwaltungstools, die mit Azure Database for MySQL kompatibel sind
 
@@ -20,10 +20,13 @@ ms.locfileid: "122349339"
 In diesem Artikel werden die Treiber und Verwaltungstools beschrieben, die mit Azure Database for MySQL Single Server kompatibel sind.
 
 > [!NOTE]
-> Dieser Artikel gilt nur für Azure Database for MySQL Single Server, um sicherzustellen, dass Treiber mit der [Verbindungsarchitektur](concepts-connectivity-architecture.md) des Single Server-Diensts kompatibel sind. [Azure Database for MySQL Flexible Server](./flexible-server/overview.md) ist mit allen unterstützten Treibern und Tools kompatibel und mit der MySQL Community Edition kompatibel. 
+> Dieser Artikel gilt nur für Azure Database for MySQL Single Server, um sicherzustellen, dass Treiber mit der [Verbindungsarchitektur](concepts-connectivity-architecture.md) des Single Server-Diensts kompatibel sind. [Azure Database for MySQL Flexible Server](./flexible-server/overview.md) ist mit allen unterstützten Treibern und Tools kompatibel und mit der MySQL Community Edition kompatibel.
 
 ## <a name="mysql-drivers"></a>MySQL-Treiber
 Azure Database for MySQL verwendet die weltweit am häufigsten verwendete Communityedition von MySQL-Datenbank. Daher ist das Produkt mit einer Vielzahl von Programmiersprachen und Treibern kompatibel. Das Ziel besteht darin, die drei letzten Versionen von MySQL-Treibern zu unterstützen. Außerdem soll durch einen ständigen Austausch mit den Autoren der Open-Source-Community eine kontinuierliche Verbesserung von Funktionalität und Verwendbarkeit der MySQL-Treibern erreicht werden. Eine Liste der Treiber, die getestet und als mit Azure Database for MySQL 5.6 und 5.7 kompatibel eingestuft wurden, finden Sie in der folgenden Tabelle:
+
+> [!WARNING]
+> Der MySQL 8.0.27-Client ist mit Azure Database for MySQL Single Server nicht kompatibel. Alle Verbindungen vom MySQL 8.0.27-Client, die entweder über mysql.exe oder die Workbench erstellt wurden, führen zu einem Fehler. Als Problemumgehung können Sie eine frühere Version des Clients (vor MySQL 8.0.27) verwenden oder stattdessen eine Instanz von [Azure Database for MySQL Flexible Server](https://docs.microsoft.com/azure/mysql/flexible-server/overview) erstellen.
 
 | **Programmiersprache** | **Treiber** | **Links** | **Kompatible Versionen** | **Nicht kompatible Versionen** | **Hinweise** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |

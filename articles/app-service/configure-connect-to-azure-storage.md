@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/02/2021
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: e485efa572dd1b786b714b74b4d6df49d7a44853
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 12f2cc667cc568132eb4e91a1f739f81b075fd80
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236448"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400089"
 ---
 # <a name="mount-azure-storage-as-a-local-share-in-a-container-app-in-app-service"></a>Einbinden von Azure Storage als lokale Freigabe in einer Container-App in App Service
 
@@ -26,7 +26,7 @@ In diesem Leitfaden erfahren Sie, wie Sie Azure Storage-Dateien als Netzwerkfrei
 
 ::: zone pivot="container-linux"
 
-In diesem Leitfaden wird gezeigt, wie sie Azure Storage als Netzwerkfreigabe in einem integrierten Linux-Container oder benutzerdefinierten Linux-Container in App Service bereitstellen. Zu den Vorteilen benutzerdefiniert bereitgestellten Speichers zählen:
+In diesem Leitfaden wird gezeigt, wie sie Azure Storage als Netzwerkfreigabe in einem integrierten Linux-Container oder benutzerdefinierten Linux-Container in App Service bereitstellen. Siehe das Video [Einbinden von Azure Storage als lokale Freigabe](https://www.youtube.com/watch?v=OJkvpWYr57Y). Zu den Vorteilen benutzerdefiniert bereitgestellten Speichers zählen:
 
 ::: zone-end
 
@@ -99,6 +99,7 @@ Die folgenden Features werden für Linux-Container unterstützt:
 - FTP/FTPS-Zugriff auf benutzerdefiniert bereitgestellten Speicher wird nicht unterstützt (verwenden Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)).
 - Die Unterstützung von Azure CLI, Azure PowerShell und Azure SDK befindet sich in der Vorschau.
 - Die Zuordnung von `/` oder `/home` zu benutzerdefiniert bereitgestelltem Speicher wird nicht unterstützt.
+- Ordnen Sie die benutzerdefinierte Speichereinbindung nicht zu `/tmp` oder seinen Unterverzeichnissen zu, da dies beim Starten der App zu einem Timeout führen kann.
 - Speicherbereitstellungen können nicht zusammen mit der Kloneinstellungenoption bei der Erstellung von [Bereitstellungsslots](deploy-staging-slots.md) verwendet werden.
 - Speicherbereitstellungen werden nicht gesichert, wenn Sie [Ihre App sichern](manage-backup.md). Achten Sie darauf, zum Sichern der Azure Storage-Konten bewährte Methoden zu befolgen. 
 
@@ -248,5 +249,6 @@ So überprüfen Sie, ob Azure Storage erfolgreich für die App bereitgestellt wu
 ::: zone pivot="container-linux"
 
 - [Konfigurieren eines benutzerdefinierten Containers](configure-custom-container.md?pivots=platform-linux)
+- [Video: Einbinden von Azure Storage als lokale Freigabe](https://www.youtube.com/watch?v=OJkvpWYr57Y).
 
 ::: zone-end

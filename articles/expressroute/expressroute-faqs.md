@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: a9402ac0a69cff3cd2b420754aceeb452811e1a1
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 7f1787d8b1d074350ce42a98635bb8bb89c4aa75
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130246773"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501474"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -84,7 +84,7 @@ ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.m
 
 **Unterstützt:**
 
-* Virtuelle Netzwerke, einschließlich aller virtuellen Computer und Clouddienste
+* Virtuelle Netzwerke, einschließlich aller VMs und Clouddienste wie [Azure Virtual Desktop RDP Shortpath](../virtual-desktop/shortpath.md)
 
 ### <a name="microsoft-peering"></a>Microsoft-Peering
 
@@ -103,7 +103,6 @@ Wenn Ihre ExpressRoute-Verbindung für öffentliches Azure Microsoft-Peering akt
 
 * CDN
 * Azure Front Door
-* [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * Multi-Factor Authentication-Server (Vorversion)
 * Traffic Manager
 * Logic Apps

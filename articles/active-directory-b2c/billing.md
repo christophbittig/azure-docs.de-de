@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 09/15/2021
+ms.date: 11/16/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: aa03c0ec560102ce44aa0cbf2bede5dd59423296
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: ce908193e379fce29b07d36185a446e04a9d86de
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065063"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549200"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Abrechnungsmodell für Azure Active Directory B2C
 
@@ -52,7 +52,7 @@ Das MAU-Abrechnungsmodell für Azure AD B2C-Mandanten ist am **1. November 2
   
 Ihren Azure AD B2C-Mandanten müssen Sie außerdem mit dem entsprechenden Azure-Tarif verknüpfen, der die gewünschten Features unterstützt. Für Premium-Features ist der Azure AD B2C [Premium P1- oder P2-Tarif](https://azure.microsoft.com/pricing/details/active-directory-b2c/) erforderlich. Möglicherweise müssen Sie Ihren Tarif aktualisieren, wenn Sie neue Features verwenden. Beispielsweise müssen Sie für risikobasierte Richtlinien für bedingten Zugriff den Azure AD B2C Premium P2-Tarif für Ihren Mandanten auswählen.
 > [!NOTE]
->  Ihre ersten 50.000 MAUs pro Monat sind sowohl für Premium P1- als auch für Premium P2-Features kostenlos. Um die Gesamtzahl der MAUs zu ermitteln, kombinieren wir MAUs aus allen Ihren Mandanten (sowohl Azure AD als auch Azure AD B2C), die mit demselben Abonnement verknüpft sind.
+>  Ihre ersten 50.000 MAUs pro Monat sind sowohl für Premium P1- als auch für Premium P2-Features kostenlos, aber der **Free-Tarif gilt nicht für kostenlose Testversionen, guthabenbasierte Abonnements oder Sponsorship-Abonnements**. Nachdem der Zeitraum für die kostenlose Testversion oder das Guthaben für diese Abonnementtypen abgelaufen sind, werden Ihnen Azure AD B2C-MAUs in Rechnung gestellt. Um die Gesamtzahl der MAUs zu ermitteln, kombinieren wir MAUs aus allen Ihren Mandanten (sowohl Azure AD als auch Azure AD B2C), die mit demselben Abonnement verknüpft sind.
 ## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>Verknüpfen eines Azure AD B2C-Mandanten mit einem Abonnement
 
 Nutzungsgebühren für Azure Active Directory B2C (Azure AD B2C) werden einem Azure-Abonnement in Rechnung gestellt. Sie müssen einen Azure AD B2C-Mandanten explizit mit einem Azure-Abonnement verknüpfen, indem Sie eine Azure AD B2C-*Ressource* im Azure-Zielabonnement erstellen. In einem einzelnen Azure-Abonnement können neben anderen Azure-Ressourcen wie virtuellen Computern, Speicherkonten und Logik-Apps auch mehrere Azure AD B2C-Ressourcen erstellt werden. Sie können alle Ressourcen in einem Abonnement anzeigen, indem Sie den Azure Active Directory (Azure AD)-Mandanten aufrufen, dem das Abonnement zugeordnet ist.
@@ -72,7 +72,7 @@ Ein Abonnement, das mit einem Azure AD B2C-Mandanten verknüpft ist, kann für d
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Azure AD-Abonnement enthält, und nicht das Verzeichnis, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
 1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
-1. Wählen Sie **Ressource erstellen** aus, geben Sie `Active Directory B2C` im Feld **Marketplace durchsuchen** ein, und wählen Sie dann **Azure Active Directory B2C** aus.
+1. Wählen Sie **Ressource erstellen** aus, suchen Sie im Feld **Marketplace durchsuchen** nach **Azure Active Directory B2C**, und wählen Sie die Option aus.
 1. Klicken Sie auf **Erstellen**.
 1. Wählen Sie **Vorhandenen Azure AD B2C Mandanten mit meinem Azure-Abonnement verknüpfen** aus.
 1. Wählen Sie in der Dropdownliste einen **Azure AD B2C-Mandanten** aus. Es werden nur die Mandanten angezeigt, bei denen Sie als globaler Administrator fungieren und die noch nicht mit einem Abonnement verknüpft sind. Das Feld **Name der Azure AD B2C-Ressource** wird mit dem Domänennamen des ausgewählten Azure AD B2C-Mandanten ausgefüllt.

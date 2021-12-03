@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: b14d9298e87c7868d9a12e91a4fddbbdf118b5ab
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cbf205d925029c4b960bd15775b81c0715af7813
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832963"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132326070"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory-Integration mit LinkedIn Elevate
 
@@ -79,7 +79,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     a. Geben Sie im Textfeld **Bezeichner** den Wert für **Entitäts-ID** ein, den Sie im Linkedin-Portal kopieren (weiter unten in diesem Tutorial erläutert).
 
-    b. Geben Sie im Textfeld **Antwort-URL** den Wert für **Assertion Consumer Access (ACS)-URL** ein, den Sie im Linkedin-Portal kopieren (weiter unten in diesem Tutorial erläutert).
+    b. Geben Sie im Textfeld **Antwort-URL** den Wert für **Assertion Consumer Access-URL (ACS)** ein, den Sie im Linkedin-Portal kopieren (weiter unten in diesem Tutorial erläutert).
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
@@ -175,4 +175,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von LinkedIn Elevate können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von LinkedIn Elevate können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

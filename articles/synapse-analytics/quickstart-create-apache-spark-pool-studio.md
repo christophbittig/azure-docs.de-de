@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d280e96b354f38a86545ed5f6bcaa6c9a314c46b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14d604a5e15d7ca33cb9b73a41f867016599087d
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462032"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401522"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-using-synapse-studio"></a>Schnellstart: Erstellen eines serverlosen Apache Spark-Pools mithilfe von Synapse Studio
 
@@ -71,7 +71,8 @@ Wählen Sie in der Arbeitsbereichsübersicht die **Web-URL für den Arbeitsberei
     | **Knotengröße** | Klein (4 vCPUs/32 GB) | Legen Sie diese Einstellung auf die kleinste Größe fest, um die Kosten für diesen Schnellstart zu senken. |
     | **Automatische Skalierung** | Disabled | Für diesen Schnellstart ist keine Autoskalierung erforderlich. |
     | **Anzahl von Knoten** | 8 | Verwenden Sie eine kleine Größe, um die Kosten in diesem Schnellstart zu begrenzen.|
-       
+    | **Executors dynamisch zuordnen** |  Disabled | Diese Einstellung entspricht der dynamischen Zuordnungseigenschaft in der Spark-Konfiguration für die Executorzuteilung der Spark-Anwendung. Für diesen Schnellstart ist keine Autoskalierung erforderlich.|
+    
     ![Grundlagen für neuen Apache Spark-Pool in Synapse Studio](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-24.png)
     
     > [!IMPORTANT]

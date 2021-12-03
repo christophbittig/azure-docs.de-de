@@ -10,13 +10,13 @@ ms.topic: overview
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma
-ms.date: 12/05/2019
-ms.openlocfilehash: 21e6fec69b1ac02d1ffb37b0aa0f20f54d3c1a05
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/09/2021
+ms.openlocfilehash: fa127df408ce8da080e6e0543f92fbdb001b4547
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727101"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136897"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Übersicht über elastische Abfragen in Azure SQL-Datenbank (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,9 +29,9 @@ Mithilfe des Features für elastische Abfragen (in der Vorschauphase) können Si
 
 Die datenbankübergreifende Abfrage in Azure SQL-Datenbank erfolgt vollständig in T-SQL. Dies ermöglicht das Durchführen schreibgeschützter Abfragen in Remotedatenbanken und bietet derzeitigen Kunden von SQL Server eine Option zum Migrieren von Anwendungen unter Verwendung von Namen mit drei oder vier Teilen oder eines Verbindungsservers zu Azure SQL-Datenbank.
 
-### <a name="available-on-standard-tier"></a>Im Standard-Tarif verfügbar
+### <a name="available-on-all-service-tiers"></a>Verfügbar in allen Dienstebenen
 
-Elastische Abfragen werden in den Dienstebenen „Standard“ und „Premium“ unterstützt. Informationen zu Leistungseinschränkungen bei niedrigeren Dienstebenen finden Sie nachstehend im Abschnitt „Einschränkungen der Vorschau“.
+Elastische Abfragen werden in allen Dienstebenen von Azure SQL-Datenbank unterstützt. Informationen zu Leistungseinschränkungen bei niedrigeren Dienstebenen finden Sie nachstehend im Abschnitt „Einschränkungen der Vorschau“.
 
 ### <a name="push-parameters-to-remote-databases"></a>Übertragen von Parametern mithilfe von Push an Remotedatenbanken
 
@@ -139,7 +139,7 @@ Elastische Abfragen sind in den Kosten von Azure SQL-Datenbank enthalten. Beacht
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
-* Bei der Dienstebene „Standard“ kann das Ausführen Ihrer ersten elastischen Abfrage einige Minuten dauern. Dieser Zeitraum wird für das Laden der elastischen Abfragefunktionalität benötigt: je höher die Dienstebene und Computegröße, desto besser die Ladeleistung.
+* Die Ausführung Ihrer ersten elastischen Abfrage kann bei kleineren Ressourcen und der Dienstebene „Standard“ und „Universell“ einige Minuten dauern. Dieser Zeitraum wird für das Laden der elastischen Abfragefunktionalität benötigt: je höher die Dienstebene und Computegröße, desto besser die Ladeleistung.
 * Das Erstellen von Skripts für externe Datenquellen oder externe Tabellen in SSMS oder SSDT wird noch nicht unterstützt.
 * Import/Export für Azure SQL-Datenbank unterstützt noch keine externen Datenquellen und externen Tabellen. Wenn Sie Import/Export verwenden müssen, löschen Sie diese Objekte vor dem Exportieren, und erstellen Sie sie nach dem Importieren neu.
 * Elastische Abfragen unterstützen derzeit nur den schreibgeschützten Zugriff auf externe Tabellen. Sie können jedoch die vollständige T-SQL-Funktionalität für die Datenbank nutzen, in der die externe Tabelle definiert ist. Dies kann beispielsweise hilfreich sein, um temporäre Ergebnisse z.B. mithilfe von „SELECT <column_list> INTO <local_table>“ dauerhaft zu speichern, oder um gespeicherte Prozeduren für die elastische Abfragedatenbank zu definieren, die auf externe Tabellen verweisen.

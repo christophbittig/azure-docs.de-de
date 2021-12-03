@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.author: keli19
 author: likebupt
-ms.date: 03/06/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: b97837bea9654f713287b5e5263482e8067e22dd
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 6b79b80f666019cb5a8a59901bf12e9277287a12
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426584"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557412"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Verwenden von Pipelineparametern zum erneuten Trainieren von Modellen im Designer
 
@@ -41,24 +41,24 @@ In diesem Artikel wird auch davon ausgegangen, dass Sie Kenntnisse zur Erstellun
 
 ### <a name="sample-pipeline"></a>Beispiel-Pipeline
 
-Die in diesem Artikel verwendete Pipeline ist eine geänderte Version einer [Einkommensvorhersage](samples-designer.md#classification) einer Beispielpipeline auf der Designer-Homepage. Die Pipeline verwendet das Modul [Import Data](algorithm-module-reference/import-data.md) (Daten importieren) anstelle des Beispieldatasets, um Ihnen zu zeigen, wie Sie Modelle mit Ihren eigenen Daten trainieren können.
+Die in diesem Artikel verwendete Pipeline ist eine geänderte Version einer [Einkommensvorhersage](samples-designer.md#classification) einer Beispielpipeline auf der Designer-Homepage. Die Pipeline verwendet die Komponente [Daten importieren](algorithm-module-reference/import-data.md) anstelle des Beispieldatasets, um Ihnen zu zeigen, wie Sie Modelle mit Ihren eigenen Daten trainieren können.
 
-![Screenshot der geänderten Beispielpipeline mit einem Feld, in dem das Modul „Import Data“ (Daten importieren) hervorgehoben ist](./media/how-to-retrain-designer/modified-sample-pipeline.png)
+![Screenshot der geänderten Beispielpipeline mit einem Feld, in dem die Komponente „Daten importieren“ hervorgehoben ist](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
 ## <a name="create-a-pipeline-parameter"></a>Erstellen eines Pipelineparameters
 
 Pipelineparameter dienen zum Erstellen vielseitiger Pipelines, die später mit variierenden Parameterwerten erneut übermittelt werden können. Einige typische Szenarien sind die Aktualisierung von Datasets oder einiger Hyperparameter für das erneute Training. Erstellen Sie Pipelineparameter, um Variablen zur Laufzeit dynamisch festzulegen. 
 
-Pipelineparameter können in einer Pipeline Datenquellen- oder Modulparametern hinzugefügt werden. Wenn die Pipeline erneut übermittelt wird, können die Werte dieser Parameter angegeben werden.
+Pipelineparameter können in einer Pipeline Datenquellen- oder Komponentenparametern hinzugefügt werden. Wenn die Pipeline erneut übermittelt wird, können die Werte dieser Parameter angegeben werden.
 
-In diesem Beispiel werden Sie den Trainingsdatenpfad von einem festen Wert in einen Parameter ändern, sodass Sie Ihr Modell anhand anderer Daten neu trainieren können. Sie können auch je nach Anwendungsfall weitere Modulparameter als Pipelineparameter hinzufügen.
+In diesem Beispiel werden Sie den Trainingsdatenpfad von einem festen Wert in einen Parameter ändern, sodass Sie Ihr Modell anhand anderer Daten neu trainieren können. Sie können auch je nach Anwendungsfall weitere Komponentenparameter als Pipelineparameter hinzufügen.
 
-1. Wählen Sie das Modul **Import Data** (Daten importieren) aus.
+1. Wählen Sie das Modul **Daten importieren** aus.
 
     > [!NOTE]
-    > In diesem Beispiel wird das Modul „Import Data“ (Daten importieren) verwendet, um auf Daten in einem registrierten Datenspeicher zuzugreifen. Sie können jedoch ähnliche Schritte durchführen, wenn Sie alternative Datenzugriffsmuster verwenden.
+    > In diesem Beispiel wird die Komponente „Daten importieren“ verwendet, um auf Daten in einem registrierten Datenspeicher zuzugreifen. Sie können jedoch ähnliche Schritte durchführen, wenn Sie alternative Datenzugriffsmuster verwenden.
 
-1. Wählen Sie im Moduldetailbereich rechts neben der Canvas Ihre Datenquelle aus.
+1. Wählen Sie im Komponentendetailbereich rechts neben der Canvas Ihre Datenquelle aus.
 
 1. Geben Sie den Pfad zu Ihren Daten ein. Sie können auch **Pfad durchsuchen** auswählen, um durch Ihre Dateistruktur zu navigieren. 
 
@@ -73,11 +73,11 @@ In diesem Beispiel werden Sie den Trainingsdatenpfad von einem festen Wert in ei
 1. Wählen Sie **Speichern** aus.
 
    > [!NOTE]
-   > Sie können auch im Bereich mit den Moduldetails (vergleichbar mit dem Hinzufügen von Pipelineparametern) einen Modulparameter von einem Pipelineparameter trennen.
+   > Sie können auch im Bereich mit den Komponentendetails (vergleichbar mit dem Hinzufügen von Pipelineparametern) einen Komponentenparameter von einem Pipelineparameter trennen.
    >
    > Über das Zahnradsymbol **Einstellungen** neben dem Titel Ihres Pipelineentwurfs können Sie die Pipelineparameter überprüfen und bearbeiten. 
    >    - Nach dem Trennen können Sie den Pipelineparameter im Bereich **Einstellungen** löschen.
-   >    - Sie können auch einen Pipelineparameter im Bereich **Einstellungen** hinzufügen und ihn dann auf einen Modulparameter anwenden.
+   >    - Sie können auch einen Pipelineparameter im Bereich **Einstellungen** hinzufügen und ihn dann auf einen Komponentenparameter anwenden.
 
 1. Übermitteln Sie die Pipelineausführung.
 

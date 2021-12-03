@@ -2,23 +2,24 @@
 title: Zuweisen von Rollen zu Azure Enterprise Agreement-Dienstprinzipalnamen
 description: Dieser Artikel unterstützt Sie beim Zuweisen von Rollen zu Dienstprinzipalnamen mithilfe von PowerShell und REST-APIs.
 author: bandersmsft
-ms.reviewer: ruturajd
+ms.reviewer: sapnakeshari
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/12/2021
+ms.date: 10/22/2021
 ms.author: banders
-ms.openlocfilehash: 79e32c7514e561cc3c245464038130f5d4bef763
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 65f37b3f071286d143dc83674a7c7108a37cff44
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130001008"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260377"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Zuweisen von Rollen zu Azure Enterprise Agreement-Dienstprinzipalnamen
 
-Sie können Ihre EA-Registrierung (Enterprise Agreement) im [Azure Enterprise Portal](https://ea.azure.com/) verwalten. Sie können verschiedene Rollen erstellen, um Ihre Organisation zu verwalten, Kosten anzuzeigen und Abonnements zu erstellen. Dieser Artikel unterstützt Sie bei der Automatisierung einiger dieser Aufgaben durch die Verwendung von Azure PowerShell und REST-APIs mit Azure-Dienstprinzipalnamen (Service Prinzipal Names, SPNs).
+Sie können Ihre EA-Registrierung (Enterprise Agreement) im [Azure Enterprise Portal](https://ea.azure.com/) verwalten. Direkte Enterprise-Kund*innen können jetzt die EA-Registrierung (Enterprise Agreement) im [Azure-Portal](https://portal.azure.com/) verwalten.
+Sie können verschiedene Rollen erstellen, um Ihre Organisation zu verwalten, Kosten anzuzeigen und Abonnements zu erstellen. Dieser Artikel unterstützt Sie bei der Automatisierung einiger dieser Aufgaben durch die Verwendung von Azure PowerShell und REST-APIs mit Azure-Dienstprinzipalnamen (Service Prinzipal Names, SPNs).
 
 Bevor Sie beginnen, stellen Sie sicher, dass Sie den Inhalt der folgenden Artikel kennen:
 

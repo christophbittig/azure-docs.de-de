@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/11/2021
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 5a76287385e3e24485d9ec76126eafd3c818a57c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 677703e455d985b91f77a71acce3f7809525b368
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130248619"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519570"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Erstellen einer ASE mit einer Azure Resource Manager-Vorlage
 
@@ -21,17 +21,17 @@ ms.locfileid: "130248619"
 > In diesem Artikel werden die App Service-Umgebungen v2 und v3 behandelt, die mit isolierten App Service-Plänen verwendet werden.
 > 
 
-Azure App Service-Umgebungen (App Service Environments, ASEs) können mit einem über das Internet zugänglichen Endpunkt oder einem Endpunkt an einer internen Adresse in einem virtuellen Azure-Netzwerk (Virtual Network, VNET) erstellt werden. Beim Erstellen mit einem internen Endpunkt wird dieser Endpunkt über eine Azure-Komponente, den sogenannten internen Lastenausgleich (Internal Load Balancer, ILB), bereitgestellt. Eine ASE an einer internen IP-Adresse wird als ILB-ASE bezeichnet. Eine ASE mit einem öffentlichen Endpunkt wird als externe ASE bezeichnet. 
+Azure App Service-Umgebungen (App Service Environments, ASEs) können mit einem über das Internet zugänglichen Endpunkt oder einem Endpunkt an einer internen Adresse in einem virtuellen Azure-Netzwerk erstellt werden. Beim Erstellen mit einem internen Endpunkt wird dieser Endpunkt über eine Azure-Komponente, den sogenannten internen Lastenausgleich (Internal Load Balancer, ILB), bereitgestellt. Eine ASE an einer internen IP-Adresse wird als ILB-ASE bezeichnet. Eine ASE mit einem öffentlichen Endpunkt wird als externe ASE bezeichnet. 
 
 Eine ASE kann über das Azure-Portal oder mit einer Azure Resource Manager-Vorlage erstellt werden. In diesem Artikel werden die Schritte und Syntaxelemente beschrieben, die Sie zum Erstellen einer externen ASE oder einer ILB-ASE mit Resource Manager-Vorlagen benötigen. Informationen zum Erstellen einer ASEv2 im Azure-Portal finden Sie unter [Erstellen einer externen ASE][MakeExternalASE] oder [Erstellen einer ILB-ASE][MakeILBASE].
 Informationen zum Erstellen einer ASEv3 im Azure-Portal finden Sie unter [Erstellen einer ASEv3][Create ASEv3].
 
-Beim Erstellen einer ASE im Azure-Portal können Sie entweder gleichzeitig ein VNET erstellen oder ein vorhandenes VNET auswählen, in dem die Bereitstellung erfolgt. 
+Beim Erstellen einer ASE im Azure-Portal können Sie entweder gleichzeitig ein VNet erstellen oder ein vorhandenes VNet auswählen, in dem die Bereitstellung erfolgt. 
 
 Wenn Sie eine ASE aus einer Vorlage erstellen, benötigen Sie zunächst Folgendes: 
 
-* Ein Resource Manager-VNET.
-* Ein Subnetz in diesem VNET. Wir empfehlen eine ASE-Subnetzgröße von `/24` mit 256 Adressen, um genügend Platz für zukünftiges Wachstum und Skalierungsanforderungen zu haben. Nachdem die ASE erstellt wurde, können Sie die Größe nicht mehr ändern.
+* Ein Azure Virtual Network.
+* Ein Subnetz in dem virtuellen Netzwerk Wir empfehlen eine ASE-Subnetzgröße von `/24` mit 256 Adressen, um genügend Platz für zukünftiges Wachstum und Skalierungsanforderungen zu haben. Nachdem die ASE erstellt wurde, können Sie die Größe nicht mehr ändern.
 * Wenn Sie eine ASE in einem bereits vorhandenen VNet und Subnetz erstellen, sind der vorhandene Ressourcengruppenname, der Name des virtuellen Netzwerks und der Subnetzname erforderlich.
 * Das Abonnement, in dem die Bereitstellung erfolgen soll.
 * Der Speicherort, in dem die Bereitstellung erfolgen soll.
@@ -52,17 +52,17 @@ Wenn Sie eine ASE erstellen möchten, verwenden Sie diese Resource Manager-Vorla
 * *internalLoadBalancingMode*: Erforderlich. In den meisten Fällen auf 3 festlegen, was HTTP/HTTPS-Datenverkehr an den Ports 80/443 bedeutet. Wenn diese Eigenschaft auf 0 festgelegt ist, bleibt der HTTP/HTTPS-Datenverkehr in der öffentlichen VIP.
 * *zoneRedundant*: Erforderlich. In den meisten Fällen auf „false“ festlegen, was bedeutet, dass die ASE nicht in Verfügbarkeitszonen bereitgestellt wird. Zonale ASEs können in einigen Regionen bereitgestellt werden. Informationen hierzu finden Sie [hier][AZ Support for ASEv3].
 * *dedicatedHostCount*: Erforderlich. In den meisten Fällen auf 0 festlegen, was bedeutet, dass die ASE wie gewohnt ohne bereitgestellte dedizierte Hosts bereitgestellt wird.
-* *useExistingVnetandSubnet*: Erforderlich. Auf „true“ festlegen, wenn ein vorhandenes VNet und Subnetz verwendet werden. 
-* *vNetResourceGroupName*: Erforderlich, wenn ein vorhandenes VNet und Subnetz verwendet werden. Dieser Parameter definiert den Ressourcengruppennamen des vorhandenen VNets und Subnetzes, in denen sich die ASE befindet.
-* *virtualNetworkName*: Erforderlich, wenn ein vorhandenes VNet und Subnetz verwendet werden. Dieser Parameter definiert den Namen des virtuellen Netzwerks des vorhandenen VNets und Subnetzes, in denen sich die ASE befindet.
-* *subnetName*: Erforderlich, wenn ein vorhandenes VNet und Subnetz verwendet werden. Dieser Parameter definiert den Subnetznamen des vorhandenen VNets und Subnetzes, in denen sich die ASE befindet.
+* *useExistingVnetandSubnet*: Erforderlich. Wird bei Verwendung eines vorhandenen virtuellen Netzwerks und Subnetzes auf TRUE festgelegt. 
+* *vNetResourceGroupName:* erforderlich bei Verwendung eines vorhandenen virtuellen Netzwerks und Subnetzes. Dieser Parameter definiert den Ressourcengruppennamen des vorhandenen VNets und Subnetzes, in denen sich die ASE befindet.
+* *virtualNetworkName:* erforderlich bei Verwendung eines vorhandenen virtuellen Netzwerks und Subnetzes. Dieser Parameter definiert den VNet-Namen des vorhandenen virtuellen Netzwerks und Subnetzes, in denen sich die ASE befindet.
+* *subnetName:* erforderlich bei Verwendung eines vorhandenen virtuellen Netzwerks und Subnetzes. Dieser Parameter definiert den Subnetznamen des vorhandenen virtuellen Netzwerks und Subnetzes, in denen sich die ASE befindet.
 * *createPrivateDNS*: Auf „true“ festlegen, wenn Sie nach der Erstellung der ASEv3 eine private DNS-Zone erstellen möchten. Wenn dieser Parameter auf „true“ festgelegt ist, wird für eine ILB-ASE eine private DNS-Zone als ASE-Name mit dem DNS-Suffix *appserviceenvironment.net* erstellt. 
 ### <a name="asev2-parameters"></a>ASEv2-Parameter
 * *aseName*: Dieser Parameter definiert einen eindeutigen ASE-Namen.
 * *location*: Dieser Parameter definiert den Standort der App Service-Umgebung.
-* *existingVirtualNetworkName*: Dieser Parameter definiert den Namen des virtuellen Netzwerks des vorhandenen VNets und Subnetzes, in denen sich die ASE befindet.
-* *existingVirtualNetworkResourceGroup*: Dieser Parameter definiert den Namen der Ressourcengruppe des vorhandenen VNets und Subnetzes, in denen sich die ASE befindet.
-* *subnetName*: Dieser Parameter definiert den Subnetznamen des vorhandenen VNets und Subnetzes, in denen sich die ASE befindet.
+* *existingVirtualNetworkName:* Dieser Parameter definiert den Namen des virtuellen Netzwerks des vorhandenen virtuellen Netzwerks und Subnetzes, in denen sich die ASE befindet.
+* *existingVirtualNetworkResourceGroup:* Dieser Parameter definiert den Namen der Ressourcengruppe des vorhandenen virtuellen Netzwerks und Subnetzes, in denen sich die ASE befindet.
+* *subnetName:* Dieser Parameter definiert den Subnetznamen des vorhandenen virtuellen Netzwerks und Subnetzes, in denen sich die ASE befindet.
 * *internalLoadBalancingMode*: Sollte in den meisten Fällen auf „3“ festgelegt werden. Dies bedeutet, dass sowohl der HTTP/HTTPS-Datenverkehr über die Ports 80/443 als auch die Steuer-/Datenkanalports, auf die der FTP-Dienst in der ASE lauscht, an eine per ILB zugeordnete Adresse des virtuellen Netzwerks gebunden sind. Wenn diese Eigenschaft auf „2“ festgelegt wird, sind nur die Ports, die sich auf den FTP-Dienst beziehen (sowohl Steuer- als auch Datenkanäle) an eine ILB-Adresse gebunden. Wenn diese Eigenschaft auf 0 festgelegt ist, bleibt der HTTP/HTTPS-Datenverkehr in der öffentlichen VIP.
 * *dnsSuffix*: Dieser Parameter definiert die Standardstammdomäne, die der ASE zugewiesen wird. In der öffentlichen Variante von Azure App Service lautet die Standardstammdomäne für alle Web-Apps *azurewebsites.net*. Da eine ILB-ASE sich intern im virtuellen Netzwerk eines Kunden befindet, wäre es nicht sinnvoll, die Standardstammdomäne des öffentlichen Diensts zu verwenden. Stattdessen sollte eine ILB-ASE über eine Standardstammdomäne verfügen, für die die Verwendung im internen virtuellen Netzwerk eines Unternehmens sinnvoll ist. Die Contoso Corporation könnte beispielsweise die Standardstammdomäne *internal-contoso.com* für Apps verwenden, für die beabsichtigt ist, dass sie nur im virtuellen Netzwerk von Contoso auflösbar und zugänglich sind. 
 * *ipSslAddressCount*: Für diesen Parameter wird in der Datei *azuredeploy.json* automatisch der Wert 0 verwendet, da ILB-ASEs nur über eine einzige ILB-Adresse verfügen. Es gibt keine expliziten IP-SSL-Adressen für eine ILB-ASE. Daher muss der IP-SSL-Adresspool für eine ILB-ASE auf 0 (null) festgelegt werden. Andernfalls tritt ein Bereitstellungsfehler auf.

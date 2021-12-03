@@ -13,7 +13,7 @@ items:
       - name: Erstellen einer Android-App
         href: quick-android-map.md
       - name: Erstellen einer iOS-App
-        href: quick-iOS-app.md
+        href: quick-ios-app.md
   - name: Tutorials
     items:
       - name: Tutorials für das Web-SDK
@@ -70,10 +70,10 @@ items:
         href: choose-pricing-tier.md
       - name: Creator für Gebäudepläne
         items:
-          - name: Geografischer Bereich des Creator-Diensts
-            href: creator-geographic-scope.md
           - name: Konzepte für Gebäudepläne
             href: creator-indoor-maps.md
+          - name: Geografischer Bereich des Creator-Diensts
+            href: creator-geographic-scope.md
           - name: Fehler und Warnungen bei der Zeichnungskonvertierung
             href: drawing-conversion-error-codes.md
       - name: Verschlüsselung für ruhende Daten
@@ -281,6 +281,40 @@ items:
         items:
           - name: Erste Schritte mit dem iOS-Kartensteuerelement
             href: how-to-use-ios-map-control-library.md
+          - name: Ändern des Stils einer Karte
+            href: set-map-style-ios-sdk.md
+          - name: Hinzufügen von Steuerelementen zu einer Karte
+            href: add-controls-map-ios.md
+          - name: Erstellen einer Datenquelle
+            href: create-data-source-ios-sdk.md
+          - name: Hinzufügen einer Symbolebene
+            href: add-symbol-layer-ios.md
+          - name: Hinzufügen einer Blasenebene
+            href: add-bubble-layer-map-ios.md
+          - name: Anzeigen von Featureinformationen
+            href: display-feature-information-ios-sdk.md
+          - name: Hinzufügen einer Linienebene
+            href: add-line-layer-map-ios.md
+          - name: Hinzufügen einer Polygonebene
+            href: add-polygon-layer-map-ios.md
+          - name: Hinzufügen einer Polygonextrusionsebene
+            href: add-polygon-extrusion-layer-map-ios.md
+          - name: Hinzufügen einer Wärmebildebene
+            href: add-heat-map-layer-ios.md
+          - name: Hinzufügen einer Bildebene
+            href: add-image-layer-map-ios.md
+          - name: Hinzufügen einer Kachelebene
+            href: add-tile-layer-map-ios.md
+          - name: Anzeigen von Datenverkehrsdaten
+            href: show-traffic-data-map-ios-sdk.md
+          - name: Clustering von Punktdaten
+            href: clustering-point-data-ios-sdk.md
+          - name: Verwenden von datengesteuerten Ausdrücken
+            href: data-driven-style-expressions-ios-sdk.md
+          - name: React zu Ereignissen
+            href: interact-map-ios-sdk.md
+          - name: Verwenden des Moduls „Gebäudepläne“ von Azure Maps
+            href: how-to-use-indoor-module-ios.md
       - name: Verwenden von Azure Maps in Power BI
         items:
           - name: Erste Schritte
@@ -336,7 +370,7 @@ items:
           - name: Renderingdienst
             href: /rest/api/maps/render
           - name: Renderingdienst V2
-            href: /rest/api/maps/renderv2
+            href: /rest/api/maps/render-v2
           - name: Routendienst
             href: /rest/api/maps/route
           - name: Suchdienst
@@ -364,11 +398,11 @@ items:
               - name: WFS-Dienst
                 href: /rest/api/maps/v2/wfs
           - name: Kartenkontoverwaltung
-            href: /rest/api/maps-management
+            href: /rest/api/maps-management/
       - name: JavaScript
         items:
           - name: Kartensteuerelement
-            href: /javascript/api/azure-maps-javascript/
+            href: /javascript/api/azure-maps-control/
           - name: Zeichentools
             href: /javascript/api/azure-maps-drawing-tools/
           - name: Dienstmodule
@@ -394,7 +428,7 @@ items:
           - name: IoT Hub Device Provisioning Service
             href: ../iot-dps/index.yml
           - name: IoT Central
-            href: /microsoft-iot-central/
+            href: /azure/iot-central/
           - name: IoT Edge
             href: ../iot-edge/index.yml
           - name: "IoT\_Plug\_&\_Play"
@@ -412,7 +446,7 @@ items:
       - name: Nutzungsbedingungen für Azure Maps
         href: 'https://azure.microsoft.com/support/legal/'
       - name: Azure Maps-Preise
-        href: 'https://azure.microsoft.com/pricing/details/azure-maps'
+        href: 'https://azure.microsoft.com/pricing/details/azure-maps/'
       - name: Preisrechner
         href: 'https://azure.microsoft.com/pricing/calculator/'
       - name: Azure Maps-Videos
@@ -424,9 +458,9 @@ items:
       - name: Azure Maps-Glossar
         href: glossary.md
       - name: Dienstupdates
-        href: 'https://azure.microsoft.com/updates'
+        href: 'https://azure.microsoft.com/updates/'
       - name: Azure IoT Developer Center
-        href: 'https://azure.microsoft.com/develop/iot/'
+        href: 'https://azure.microsoft.com/overview/iot/'
       - name: Azure-Roadmap
         href: 'https://azure.microsoft.com/roadmap/?category=iot'
       - name: Technische Fallstudien

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: b96acda6ee882f54ea290d5c610d7a7a2fc7496a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6917b8bfb9c3d62fb2546768c9161a85e4470ece
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124801180"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304858"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shiphazmat"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ShipHazmat
 
@@ -41,7 +41,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * ShipHazmat unterstützt **IDP-initiiertes** einmaliges Anmelden.
 * ShipHazmat unterstützt die **Just-In-Time**-Benutzerbereitstellung.
-* Nach dem Konfigurieren von ShipHazmat können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von ShipHazmat können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)
 
 
 ## <a name="adding-shiphazmat-from-the-gallery"></a>Hinzufügen von ShipHazmat aus dem Katalog
@@ -157,4 +157,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ShipHazmat“ klicken, sollten Sie
 
 - [ShipHazmat mit Azure AD ausprobieren](https://aad.portal.azure.com/)
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+- [Was ist die Sitzungssteuerung in Microsoft Defender for Cloud Apps?](/cloud-app-security/proxy-intro-aad)

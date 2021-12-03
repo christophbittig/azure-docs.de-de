@@ -8,17 +8,17 @@ ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 1d3688e4051f2883c5316a13e59f5629481799e2
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 407d3c8d14cec2a55a9a33d58dfa1af77b8266b7
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864560"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522838"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
 
-- **Direktes Einbinden einer Azure-Dateifreigabe**: Da Azure Files entweder Zugriff auf den Server Message Block (SMB) oder das Network File System (NFS) bereitstellt, können Sie Azure-Dateifreigaben lokal oder in der Cloud mithilfe der SMB- oder NFS-Standardclients (Vorschau) einbinden, die in Ihrem Betriebssystem verfügbar sind. Da Azure-Dateifreigaben serverlos sind, erfordert die Bereitstellung für Produktionsszenarien keine Verwaltung eines Dateiservers oder NAS-Geräts. Dies bedeutet, dass Sie keine Softwarepatches anwenden oder physische Datenträger austauschen müssen. 
+- **Direktes Einbinden einer Azure-Dateifreigabe**: Da Azure Files entweder Zugriff auf den Server Message Block (SMB) oder das Network File System (NFS) bereitstellt, können Sie Azure-Dateifreigaben lokal oder in der Cloud mithilfe der SMB- oder NFS-Standardclients einbinden, die in Ihrem Betriebssystem verfügbar sind. Da Azure-Dateifreigaben serverlos sind, erfordert die Bereitstellung für Produktionsszenarien keine Verwaltung eines Dateiservers oder NAS-Geräts. Dies bedeutet, dass Sie keine Softwarepatches anwenden oder physische Datenträger austauschen müssen. 
 
 - **Lokales Zwischenspeichern von Azure-Dateifreigaben mit Azure-Dateisynchronisierung**: Die Azure-Dateisynchronisierung ermöglicht das Zentralisieren der Dateifreigaben Ihrer Organisation in Azure Files, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Die Azure-Dateisynchronisierung transformiert Ihre lokalen Windows Server-Computer in einen schnellen Cache für Ihre Azure-SMB-Dateifreigabe. 
 
@@ -29,7 +29,7 @@ Azure Files unterstützt zwei Branchenstandardprotokolle für die Einbindung von
 
 Mit sowohl SMB- als auch NFS-Dateifreigaben bietet Azure Files Dateifreigaben in Unternehmensqualität, die entsprechend Ihren Speicheranforderungen hochskaliert werden können und auf die Tausende von Clients gleichzeitig zugreifen können.
 
-| Funktion | SMB | NFS (Vorschau) |
+| Funktion | SMB | NFS |
 |---------|-----|---------------|
 | Unterstützte Protokollversionen | SMB 3.1.1, SMB 3.0, SMB 2.1 | NFS 4.1 |
 | Empfohlenes Betriebssystem | <ul><li>Windows 10, Version 21H1 und höher</li><li>Windows Server 2019 und höher</li><li>Linux-Kernelversion 5.3 und höher</li></ul> | Linux-Kernelversion 4.3 und höher |
@@ -38,7 +38,7 @@ Mit sowohl SMB- als auch NFS-Dateifreigaben bietet Azure Files Dateifreigaben in
 | [Redundanz](storage-files-planning.md#redundancy) | LRS, ZRS, GRS, GZRS | LRS, ZRS |
 | Dateisystemsemantik | Win32 | POSIX |
 | Authentifizierung | Identitätsbasierte Authentifizierung (Kerberos), Authentifizierung mit gemeinsam verwendeten Schlüsseln (NTLMv2) | Hostbasierte Authentifizierung |
-| Authorization | Win32-Zugriffssteuerungslisten (Access Control Lists, ACLs) | Berechtigungen im UNIX-Format |
+| Autorisierung | Win32-Zugriffssteuerungslisten (Access Control Lists, ACLs) | Berechtigungen im UNIX-Format |
 | Groß- und Kleinschreibung | Keine Beachtung von Groß-/Kleinschreibung, Schreibweise wird beibehalten | Groß-/Kleinschreibung beachten |
 | Löschen oder Ändern geöffneter Dateien | Nur mit Sperre | Ja |
 | Dateifreigabe | [Windows-Freigabemodus](/windows/win32/fileio/creating-and-opening-files) | Netzwerksperrungs-Manager im Bytebereich (Empfehlung) |
@@ -126,10 +126,10 @@ Mithilfe von Azure Backup können Sie im Azure-Portal Wiederherstellungen sowohl
 
 Weitere Informationen zur Sicherung finden Sie unter [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-### <a name="azure-defender-for-azure-files"></a>Azure Defender für Azure Files 
-Azure Defender für Azure Storage (ehemals Advanced Threat Protection für Azure Storage) bietet eine zusätzliche Ebene der Sicherheitsintelligenz, durch die Warnungen ausgegeben werden, wenn in Ihrem Speicherkonto anomale Aktivitäten erkannt werden, z. B. ungewöhnliche Zugriffsversuche. Es führt außerdem eine Analyse in Bezug auf die Malwarehashzuverlässigkeit durch und benachrichtigt Sie über bekannte Schadsoftware. Sie können Azure Defender über das Azure Security Center auf Abonnement- oder Speicherkontoebene konfigurieren. 
+### <a name="protect-azure-files-with-microsoft-defender-for-storage"></a>Schützen von Azure Files mit Microsoft Defender für Speicher
+Microsoft Defender für Storage bietet eine zusätzliche Ebene für sicherheitsbezogene Business Intelligence, die Warnungen generiert, wenn anomale Aktivitäten in Ihrem Speicherkonto erkannt werden, z. B. ungewöhnliche Zugriffsversuche. Es führt außerdem eine Analyse in Bezug auf die Malwarehashzuverlässigkeit durch und benachrichtigt Sie über bekannte Schadsoftware. Sie können Microsoft Defender für Speicher auf Abonnement- oder Speicherkontoebene über Microsoft Defender für Cloud konfigurieren.
 
-Weitere Informationen finden Sie unter [Einführung in Azure Defender für Azure Storage](../../security-center/defender-for-storage-introduction.md).
+Weitere Informationen finden Sie unter [Einführung in Microsoft Defender für Speicher ](../../security-center/defender-for-storage-introduction.md).
 
 ## <a name="storage-tiers"></a>Speicherebenen
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]

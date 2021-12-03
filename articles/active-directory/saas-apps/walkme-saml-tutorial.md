@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: b611d883d979069248590acb46196c84decd918a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c15276bf57855e93da3acd36b8045fa867875875
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124731500"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320077"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-walkme-saml20"></a>Tutorial – Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit WalkMe SAML2.0
 
@@ -136,4 +136,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von WalkMe SAML2.0 können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Ex- und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von WalkMe SAML2.0 können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Ex- und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 09/27/2021
-ms.openlocfilehash: 7836792245a9618e2ac8168af697c0151f8e123b
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 21bb6df47c255da5ffc463d3d7f42e61da6de1cc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080767"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063135"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>Testen und Veröffentlichen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -83,7 +83,7 @@ Gehen Sie wie folgt vor, um Ihr Angebot in der Vorschau anzuzeigen.
 
 1. Wenn Ihr SaaS-Angebot die [getaktete Abrechnung mit dem Messungsdienst des kommerziellen Marketplace](./partner-center-portal/saas-metered-billing.md) unterstützt, lesen und befolgen Sie die bewährten Testmethoden, die unter [APIs für getaktete Abrechnung im Marketplace](marketplace-metering-service-apis.md#development-and-testing-best-practices) beschrieben sind.
 
-1. Lesen und befolgen Sie die Testanweisungen unter [SaaS-Fulfillment-APIs (Version 2) im kommerziellen Microsoft-Marketplace](./partner-center-portal/pc-saas-fulfillment-api-v2.md#development-and-testing), um sicherzustellen, dass Ihr Angebot erfolgreich in die APIs integriert wird, bevor Sie Ihr Angebot live veröffentlichen.
+1. Lesen und befolgen Sie die Testanweisungen unter [SaaS-Fulfillment-APIs (Version 2) im kommerziellen Microsoft-Marketplace](./partner-center-portal/pc-saas-fulfillment-webhook.md#development-and-testing), um sicherzustellen, dass Ihr Angebot erfolgreich in die APIs integriert wird, bevor Sie Ihr Angebot live veröffentlichen.
 
 1. Wenn der Schritt zur Angebotsvalidierung zu Warnungen geführt hat, wird auf der Seite **Angebotsübersicht** der Link **Prüfbericht anzeigen** angezeigt. Überprüfen Sie den Bericht, und beheben Sie die Probleme, bevor Sie die Schaltfläche **Live schalten** auswählen. Andernfalls riskieren Sie eine fehlerhafte Zertifizierung, die zu einer Verzögerung bei der Aktivierung Ihres Angebots führt.
 

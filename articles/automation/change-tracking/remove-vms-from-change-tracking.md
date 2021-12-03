@@ -1,34 +1,47 @@
 ---
-title: Entfernen von VMs aus Änderungsnachverfolgung und Bestand in Azure Automation
-description: In diesem Artikel erfahren Sie, wie Sie VMs aus Änderungsnachverfolgung und Bestand entfernen.
+title: Entfernen von Maschinen aus Azure Automation Change Tracking und Inventory
+description: In diesem Artikel erfahren Sie, wie Sie Azure- und Nicht-Azure-Rechner aus der Änderungsverfolgung und Inventarisierung entfernen.
 services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 3a39294c2ecfe7b26cb3ef3d65c11cbcd665d220
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.date: 10/26/2021
+ms.openlocfilehash: 810b2ac388b0f387183f735437ccc2b2a3918cfd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110654123"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026297"
 ---
-# <a name="remove-vms-from-change-tracking-and-inventory"></a>Entfernen virtueller Computer aus Änderungsnachverfolgung und Bestand
+# <a name="remove-machines-from-change-tracking-and-inventory"></a>Maschinen aus der Änderungsverfolgung und Inventarisierung entfernen
 
-Wenn Sie mit der Nachverfolgung von Änderungen auf den VMs in Ihrer Umgebung fertig sind, können Sie deren Verwaltung mithilfe des Features [Änderungsnachverfolgung und Bestand](overview.md) beenden. Um die Bearbeitung zu beenden, bearbeiten Sie die gespeicherte Suchabfrage `MicrosoftDefaultComputerGroup` in Ihrem Log Analytics-Arbeitsbereich, der mit Ihrem Automation-Konto verknüpft ist.
+Wenn Sie mit der Verfolgung von Änderungen auf Ihren Azure- oder Nicht-Azure-Rechnern in Ihrer Umgebung fertig sind, können Sie deren Verwaltung mit der Funktion [Änderungsverfolgung und Inventarisierung](overview.md) beenden. Um die Bearbeitung zu beenden, bearbeiten Sie die gespeicherte Suchabfrage `MicrosoftDefaultComputerGroup` in Ihrem Log Analytics-Arbeitsbereich, der mit Ihrem Automation-Konto verknüpft ist.
 
 ## <a name="sign-into-the-azure-portal"></a>Anmelden beim Azure-Portal
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-## <a name="to-remove-your-vms"></a>So entfernen Sie Ihre VMs
+## <a name="to-remove-your-machines"></a>So entfernen Sie Ihre Geräte
 
 1. Starten Sie **Cloud Shell** über den oberen Navigationsbereich im Azure-Portal. Wenn Sie mit Azure Cloud Shell nicht vertraut sind, finden Sie weitere Informationen unter [Übersicht über Azure Cloud Shell](../../cloud-shell/overview.md).
 
-2. Ermitteln Sie mit dem folgenden Befehl die UUID eines Computers, den Sie aus der Verwaltung entfernen möchten.
+2. Verwenden Sie die folgende Methode, um die UUID einer virtuellen Azure-Maschine oder einer Nicht-Azure-Maschine zu identifizieren, die Sie aus der Verwaltung entfernen möchten.
 
-    ```azurecli
-    az vm show -g MyResourceGroup -n MyVm -d
-    ```
+   # <a name="azure-vm"></a>[Azure-VM](#tab/azure-vm)
+
+   ```azurecli
+   az vm show -g MyResourceGroup -n MyVm -d
+   ```
+
+   # <a name="non-azure-machine"></a>[Nicht-Azure-Computer](#tab/non-azure-machine)
+
+   ```kusto
+   Heartbeat
+   | where TimeGenerated > ago(30d)
+   | where ComputerEnvironment == "Non-Azure"
+   | summarize by Computer, VMUUID
+   ```
+
+   ---
 
 3. Navigieren Sie im Azure-Portal zu **Log Analytics-Arbeitsbereiche**. Wählen Sie Ihren Arbeitsbereich in der Liste aus.
 

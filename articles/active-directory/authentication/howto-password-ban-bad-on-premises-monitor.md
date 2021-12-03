@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 37192a38376536143472f406b9fd11c490a98e5b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 81dcb85302158adfe8be4df0715fee8cb5633fa6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128578816"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459575"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Überwachen und Überprüfen der Protokolle für lokale Umgebungen mit Azure AD-Kennwortschutz
 
@@ -100,6 +100,9 @@ PasswordSetErrors               : 1
 ```
 
 Der Umfang der Berichterstellung des Cmdlets kann mit einem der –Forest-, –Domain- oder –DomainController-Parameter beeinflusst werden. Keine Angabe eines Parameters bedeutet –Forest.
+
+> [!NOTE]
+> Wenn Sie den DC-Agent nur auf einem Domänencontroller (DC) installieren, liest der Bericht „Get-AzureADPasswordProtectionSummaryReport“ nur Ereignisse von diesem DC. Um Ereignisse von mehreren Domänencontrollern abzurufen, muss der DC-Agent auf jedem DC installiert sein.
 
 Die Cmdlet `Get-AzureADPasswordProtectionSummaryReport` funktioniert durch Abfragen des DC-Agent-Administratorereignisprotokolls und anschließendes Zählen der Gesamtanzahl von Ereignissen, die den einzelnen angezeigten Ergebniskategorien entsprechen. Die folgende Tabelle enthält die Zuordnungen zwischen den einzelnen Ergebnissen und der zugehörigen Ereignis-ID:
 

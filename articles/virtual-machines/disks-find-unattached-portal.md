@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 14ff8552b2e5244a9820f575a397ecc506f24447
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 0855516610c9712d5f8db597d1de6e53f01ac546
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689454"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301303"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern – Azure-Portal
 
@@ -27,12 +27,10 @@ Falls Sie über nicht angefügte verwaltete Datenträger verfügen und die Daten
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Suchen Sie nach **Datenträger**, und wählen Sie diese Option aus.
 
-    Auf dem Blatt **Datenträger** wird eine Liste aller Ihrer Datenträger angezeigt. Jeder Datenträger mit „ **-** “ in der Spalte **Besitzer** ist ein nicht angefügter Datenträger.
+    Auf dem Blatt **Datenträger** wird eine Liste aller Ihrer Datenträger angezeigt.
 
-    [![Screenshot: Blatt für verwaltete Datenträger. Wenn ein Datenträger in der Spalte „Besitzer“ den Wert „-“ aufweist, ist er ein nicht angefügter Datenträger.](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
-
-1. Wählen Sie den nicht angefügten Datenträger aus, den Sie löschen möchten. Daraufhin wird das Blatt des Datenträgers geöffnet.
-1. Auf dem Blatt des Datenträgers können Sie bestätigen, dass der Datenträger nicht angefügt ist, und dann **Löschen** auswählen.
+1. Wählen Sie den Datenträger aus, den Sie löschen möchten. Daraufhin wird der Blade des Datenträgers geöffnet.
+1. Auf dem Blade des Datenträgers können Sie bestätigen, dass der Datenträger nicht angefügt ist, und dann **Löschen** auswählen.
 
     :::image type="content" source="media/disks-find-unattached-portal/delete-managed-disk-unattached.png" alt-text="Screenshot: Blatt mit einem verwalteten Datenträger. Auf diesem Blatt wird „Nicht angefügt“ als Datenträgerstatus angezeigt, wenn dieser nicht angefügt ist. Sie können diesen Datenträger löschen, wenn die Daten nicht länger aufbewahrt werden müssen.":::
 

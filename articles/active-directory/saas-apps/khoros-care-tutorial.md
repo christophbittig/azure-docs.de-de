@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 1b0d4c88bc9408fa6b7c9a3f848e3ce7d402b4c9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e5b65a22677612b2ef4a7cb495e80b467ac0531d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124802420"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132326382"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-khoros-care"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Khoros Care
 
@@ -41,7 +41,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Khoros Care unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
 * Khoros Care unterstützt die **Just-in-Time**-Benutzerbereitstellung.
-* Nach dem Konfigurieren von Khoros Care können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von Khoros Care können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="adding-khoros-care-from-the-gallery"></a>Hinzufügen von Khoros Care aus dem Katalog
 
@@ -163,4 +163,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Khoros Care“ klicken, sollten Si
 
 - [Ausprobieren von Khoros Care mit Azure AD](https://aad.portal.azure.com/)
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+- [Was ist die Sitzungssteuerung in Microsoft Defender for Cloud Apps?](/cloud-app-security/proxy-intro-aad)

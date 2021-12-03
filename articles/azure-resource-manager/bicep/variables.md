@@ -4,13 +4,13 @@ description: Informationen zum Definieren von Variablen in Bicep
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 040e40d20fe81bb72493f087c9d0583a911b1ee7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/12/2021
+ms.openlocfilehash: 35175cff08b1470725da87015a3faef9f5bc3ed4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733348"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494784"
 ---
 # <a name="variables-in-bicep"></a>Variablen in Bicep
 
@@ -20,7 +20,15 @@ Resource Manager löst Variablen vor Beginn der Bereitstellungsvorgänge auf. Je
 
 ## <a name="define-variable"></a>Definieren einer Variablen
 
-Wenn Sie eine Variable definieren, geben Sie keinen [Datentyp](data-types.md) für die Variable an. Sie geben stattdessen einen Wert oder einen Vorlagenausdruck an. Der Variablentyp wird vom aufgelösten Wert abgeleitet. Im folgenden Beispiel wird eine Variable auf eine Zeichenfolge festgelegt.
+Die Syntax zum Definieren einer Variablen lautet:
+
+```bicep
+var <variable-name> = <variable-value>
+```
+
+Eine Variable darf nicht denselben Namen wie ein Parameter, ein Modul oder eine Ressource haben.
+
+Beachten Sie, dass Sie keinen [Datentyp](data-types.md) für die Variable angeben. Der Typ wird aus dem Wert abgeleitet. Im folgenden Beispiel wird eine Variable auf eine Zeichenfolge festgelegt.
 
 ```bicep
 var stringVar = 'example value'
@@ -29,50 +37,92 @@ var stringVar = 'example value'
 Sie können beim Erstellen der Variablen den Wert eines Parameters oder einer anderen Variablen verwenden.
 
 ```bicep
-param inputValue string = 'deployment Parameter'
+param inputValue string = 'deployment parameter'
 
-var stringVar = 'myVariable'
-
+var stringVar = 'preset variable'
 var concatToVar =  '${stringVar}AddToVar'
 var concatToParam = '${inputValue}AddToParam'
+
+output addToVar string = concatToVar
+output addToParam string = concatToParam
 ```
 
-Sie können [Bicep-Funktionen](bicep-functions.md) verwenden, um den Variablenwert zu erstellen. Die Funktionen [reference](bicep-functions-resource.md#reference) und [list](bicep-functions-resource.md#list) sind beim Deklarieren von Variablen gültig.
+Im vorherigen Beispiel wird Folgendes zurückgegeben:
 
-Im folgenden Beispiel wird ein Zeichenfolgenwert für ein Speicherkonto erstellt. Es werden mehrere Bicep-Funktionen verwendet, um einen Parameterwert abzurufen und zu einer eindeutigen Zeichenfolge zu verketten.
+```json
+{
+  "addToParam": {
+    "type": "String",
+    "value": "deployment parameterAddToParam"
+  },
+  "addToVar": {
+    "type": "String",
+    "value": "preset variableAddToVar"
+  }
+}
+```
+
+Sie können [Bicep-Funktionen](bicep-functions.md) verwenden, um den Variablenwert zu erstellen. Im folgenden Beispiel werden Bicep-Funktionen verwendet, um einen Zeichenfolgenwert für einen Speicherkontonamen zu erstellen.
 
 ```bicep
+param storageNamePrefix string = 'stg'
 var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+
+output uniqueStorageName string = storageName
 ```
 
-Im folgenden Beispiel werden keine Ressourcen bereitgestellt. Es wird gezeigt, wie Variablen unterschiedlicher Typen deklariert werden.
+Im folgenden Beispiel wird ein Wert wie der folgende zurückgegeben:
 
-:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variables.bicep":::
+```json
+"uniqueStorageName": {
+  "type": "String",
+  "value": "stghzuunrvapn6sw"
+}
+```
 
-Sie können Schleifen verwenden, um eine Arrayvariable zu deklarieren, die über eine dynamische Anzahl von Elementen verfügt. Weitere Informationen finden Sie unter [Variableniteration in Bicep](loop-variables.md).
+Sie können iterative Schleifen verwenden, wenn Sie eine Variable definieren. Im folgenden Beispiel wird ein Array von Objekten mit drei Eigenschaften erstellt.
+
+```bicep
+param itemCount int = 3
+
+var objectArray = [for i in range(0, itemCount): {
+  name: 'myDataDisk${(i + 1)}'
+  diskSizeGB: '1'
+  diskIndex: i
+}]
+
+output arrayResult array = objectArray
+```
+
+Die Ausgabe gibt ein Array mit den folgenden Elementen zurück:
+
+```json
+[
+  {
+    "name": "myDataDisk1",
+    "diskSizeGB": "1",
+    "diskIndex": 0
+  },
+  {
+    "name": "myDataDisk2",
+    "diskSizeGB": "1",
+    "diskIndex": 1
+  },
+  {
+    "name": "myDataDisk3",
+    "diskSizeGB": "1",
+    "diskIndex": 2
+  }
+]
+```
+
+Weitere Informationen zu den Schleifentypen, die Sie mit Variablen verwenden können, finden Sie unter [Iterative Schleifen in Bicep](loops.md).
 
 ## <a name="use-variable"></a>Verwenden einer Variablen
 
 Im folgenden Beispiel wird gezeigt, wie die Variable für eine Ressourceneigenschaft verwendet wird. Durch Angabe des Variablennamens verweisen Sie auf den Wert der Variable: `storageName`.
 
-```bicep
-param rgLocation string = resourceGroup().location
-param storageNamePrefix string = 'STG'
-
-var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
-
-resource demoAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
-  name: storageName
-  location: rgLocation
-  kind: 'Storage'
-  sku: {
-    name: 'Standard_LRS'
-    tier: 'Standard'
-  }
-}
-
-output stgOutput string = storageName
-```
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variableswithfunction.bicep" highlight="4,7,15" :::
 
 Da Speicherkontonamen Kleinbuchstaben verwenden müssen, verwendet die Variable `storageName` die Funktion `toLower`, um den Wert `storageNamePrefix` in Kleinbuchstaben zu schreiben. Die Funktion `uniqueString` erstellt einen eindeutigen Wert aus der Ressourcengruppen-ID. Die Werte werden zu einer Zeichenfolge verkettet.
 
@@ -85,4 +135,4 @@ Sie können Variablen definieren, die zugehörige Werte zum Konfigurieren einer 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu den verfügbaren Eigenschaften für Variablen finden Sie unter [Verstehen der Struktur und Syntax von Bicep-Dateien](file.md).
-- Informationen zur Verwendung von Schleifen mit der Variablendeklaration finden Sie unter [Variableniteration in Bicep](loop-variables.md).
+- Informationen zur Verwendung der Schleifensyntax finden Sie unter [Iterative Schleifen in Bicep](loops.md).

@@ -11,24 +11,43 @@ ms.subservice: service-overview
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/01/2021
-ms.openlocfilehash: 69d709dc6d58e732f56ef28c9b2e69b2a5ad5594
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.date: 11/10/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3eeeb1a2525877cad031d1f0acd38de6c45b2bac
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047974"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157697"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Dokumentationsänderungen für SQL Server auf virtuellen Azure-Computern
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Wenn Sie eine Azure-VM mit SQL Server manuell oder über ein integriertes Image bereitstellen, können Sie für eine bessere Erfahrung Azure-Features nutzen. In diesem Artikel werden die Dokumentationsänderungen zusammengefasst, die mit neuen Funktionen und Verbesserungen in den neuesten Releases von [SQL Server auf Azure-VMs](https://azure.microsoft.com/services/virtual-machines/sql-server/) in Zusammenhang stehen. Weitere Informationen zu SQL Server auf Azure-VMs finden Sie in der [Übersicht](sql-server-on-azure-vm-iaas-what-is-overview.md). 
 
+## <a name="november-2021"></a>November 2021
+
+| Änderungen | Details |
+| --- | --- |
+| **Entfällt die Notwendigkeit für HADR Azure Load Balancer oder DNN** | Stellen Sie Ihre SQL Server-VMs in mehreren Subnetzen bereit, um die Abhängigkeit von Azure Load Balancer oder Distributed Network Name (DNN) zu beseitigen und den Datenverkehr zu Ihrer Hochverfügbarkeits-/Disaster-Recovery-Lösung (HADR) zu leiten! Weitere Informationen finden Sie in der Anleitung [Multi-Subnetz-Verfügbarkeitsgruppe](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) oder im Artikel [Vorbereiten von SQL Server VM für FCI](failover-cluster-instance-prepare-vm.md#subnets). | 
+| **SQL-Bewertung** | Es ist jetzt möglich, den Zustand Ihrer SQL Server-VM im Azure-Portal mithilfe von [SQL-Bewertung](sql-assessment-for-sql-vm.md) zu bewerten, um Empfehlungen zur Verbesserung der Leistung anzuzeigen und fehlende Best-Practice-Konfigurationen zu identifizieren. Diese Funktion steht derzeit als Vorschau zur Verfügung. |
+| &nbsp; | &nbsp; |
+
+
+## <a name="october-2021"></a>Oktober 2021
+
+| Änderungen | Details |
+| --- | --- |
+| **SQL-IaaS-Erweiterung unterstützt jetzt Ubuntu** | Unterstützung für die [Registrierung](../linux/sql-iaas-agent-extension-register-vm-linux.md) Ihrer SQL Server-VM unter Ubuntu Linux mit der [SQL Server-IaaS-Erweiterung](../linux/sql-server-iaas-agent-extension-linux.md) mit eingeschränkter Funktionalität wurde hinzugefügt. | 
+| &nbsp; | &nbsp; |
+
+
 ## <a name="september-2021"></a>September 2021
 
 | Änderungen | Details |
 | --- | --- |
 | **Für den vollständigen Modus der SQL IaaS-Erweiterung ist kein Neustart mehr erforderlich** | Ein Neustart des SQL Server-Diensts ist nicht mehr notwendig, wenn Sie Ihre SQL Server-VM mit der [SQL IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) im [Modus „Vollständig“](sql-agent-extension-manually-register-single-vm.md#full-mode) registrieren! | 
+| &nbsp; | &nbsp; |
 
 
 ## <a name="july-2021"></a>Juli 2021
@@ -36,6 +55,7 @@ Wenn Sie eine Azure-VM mit SQL Server manuell oder über ein integriertes Image 
 | Änderungen | Details |
 | --- | --- |
 | **Reparieren der SQL Server IaaS-Erweiterung im Portal** | Es ist jetzt möglich, den Status Ihrer SQL Server IaaS Agent-Erweiterung direkt vom Azure-Portal aus zu überprüfen und sie bei Bedarf zu [reparieren](sql-agent-extension-manually-register-single-vm.md#repair-extension). | 
+| &nbsp; | &nbsp; |
 
 
 ## <a name="june-2021"></a>Juni 2021
@@ -43,12 +63,15 @@ Wenn Sie eine Azure-VM mit SQL Server manuell oder über ein integriertes Image 
 | Änderungen | Details |
 | --- | --- |
 | **Sicherheitsverbesserungen im Azure-Portal** | Nachdem Sie [Azure Defender für SQL](../../../security-center/defender-for-sql-usage.md) aktiviert haben, können Sie die Security Center-Empfehlungen in der [Ressource „Virtuelle SQL-Computer“ im Azure-Portal](manage-sql-vm-portal.md#security-center) anzeigen. | 
+| &nbsp; | &nbsp; |
+
 
 ## <a name="may-2021"></a>Mai 2021
 
 | Änderungen | Details |
 | --- | --- |
 | **Überarbeitete Inhalte in HADR** | Wir haben Inhalte in HADR (High Availability and Disaster Recovery, Hochverfügbarkeit und Notfallwiederherstellung) aktualisiert und verbessert. Es gibt jetzt eine [Übersicht des Windows Server-Failoverclusters](hadr-windows-server-failover-cluster-overview.md)sowie eine konsolidierte [Anleitung zum Konfigurieren des Quorums](hadr-cluster-quorum-configure-how-to.md) für SQL Server-VMs.  Darüber hinaus haben wir die [Best Practices für Cluster](hadr-cluster-best-practices.md) durch umfassendere, an die Cloud angepasste Einstellungsempfehlungen erweitert.| 
+| &nbsp; | &nbsp; |
 
 
 ## <a name="april-2021"></a>April 2021
@@ -56,14 +79,14 @@ Wenn Sie eine Azure-VM mit SQL Server manuell oder über ein integriertes Image 
 | Änderungen | Details |
 | --- | --- |
 | **Migrieren von Hochverfügbarkeit zu einer VM** | Azure Migrate bietet Unterstützung für ein Lift & Shift Ihrer gesamten Hochverfügbarkeitslösung zu SQL Server auf Azure-VMs. Migrieren Sie Ihre [Verfügbarkeitsgruppe](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md) oder Ihre [Failoverclusterinstanz](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md) noch heute mithilfe von Azure Migrate zu SQL Server-VMs! | 
-
+| &nbsp; | &nbsp; |
 
 ## <a name="march-2021"></a>März 2021
 
 | Änderungen | Details |
 | --- | --- |
 | **Aktualisierte bewährte Methoden für die Leistung** | Die Dokumentation zu bewährten Methoden für die Leistung wurde umgeschrieben, aktualisiert und auf den neuesten Stand gebracht. Außerdem wurde ein Artikel in eine Serie wie folgt aufgeteilt: eine [Prüfliste](performance-guidelines-best-practices-checklist.md), einen [Leitfaden zur VM-Größe](performance-guidelines-best-practices-vm-size.md), einen [Leitfaden zum Speicher](performance-guidelines-best-practices-storage.md) und [Anweisungen zum Erfassen einer Baseline](performance-guidelines-best-practices-collect-baseline.md).   | 
-
+| &nbsp; | &nbsp; |
 
 
 ## <a name="2020"></a>2020

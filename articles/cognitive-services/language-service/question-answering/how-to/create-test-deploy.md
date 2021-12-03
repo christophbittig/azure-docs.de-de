@@ -6,14 +6,14 @@ ms.subservice: language-service
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: aff89e8d55b4c4f3b2de77b7c44413fefc246cd1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f190c2aec509af157944fb11a110953c9e8bbdb0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101474"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476602"
 ---
-# <a name="create-test-and-deploy-custom-question-answering"></a>Erstellen, Testen und Bereitstellen benutzerdefinierter Fragen und Antworten
+# <a name="create-test-and-deploy-a-custom-question-answering-project"></a>Erstellen, Testen und Bereitstellen eines benutzerdefinierten Fragen und Antworten-Projekts
 
 Sie können ein Fragen und Antworten-Projekt aus eigenen Inhalten erstellen, z. B. aus häufig gestellten Fragen oder Produkthandbüchern. Dieser Artikel enthält ein Beispiel zum Erstellen eines Fragen und Antworten-Projekts auf Grundlage eines Produkthandbuchs zum Beantworten von Fragen.
 
@@ -21,7 +21,7 @@ Sie können ein Fragen und Antworten-Projekt aus eigenen Inhalten erstellen, z.�
 
 > [!div class="checklist"]
 > * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
-> * Eine [Sprachressource](https://aka.ms/create-language-resource) mit aktiviertem Feature „Benutzerdefinierte Fragen und Antworten“. Merken Sie sich die Azure Active Directory-ID, das Abonnement und den Sprachressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
+> * Eine [Sprachressource](https://aka.ms/create-language-resource) mit aktiviertem Feature „Benutzerdefinierte Fragen und Antworten“.
 
 ## <a name="create-your-first-question-answering-project"></a>Erstellen Ihres ersten Fragen und Antworten-Projekts
 
@@ -58,7 +58,7 @@ Sie können ein Fragen und Antworten-Projekt aus eigenen Inhalten erstellen, z.�
     |--------|---------|
     |Surface Book Benutzerhandbuch |https://download.microsoft.com/download/7/B/1/7B10C82E-F520-4080-8516-5CF0D803EEE0/surface-book-user-guide-EN.pdf |
 
-    Der Extraktionsvorgang nimmt einen Moment in Anspruch, um das Dokument zu lesen sowie Fragen und Antworten zu identifizieren.
+    Der Extraktionsvorgang nimmt einen Moment in Anspruch, um das Dokument zu lesen sowie Fragen und Antworten zu identifizieren. Mit „Fragen und Antworten“ wird bestimmt, ob der zugrunde liegende Inhalt strukturiert oder unstrukturiert ist.
 
     Nachdem die Quelle erfolgreich hinzugefügt wurde, können Sie den Quellinhalt bearbeiten, um weitere benutzerdefinierte Fragen und Antworten-Sätze hinzuzufügen.
 

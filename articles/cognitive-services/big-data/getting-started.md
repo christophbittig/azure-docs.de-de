@@ -6,14 +6,14 @@ author: mhamilton723
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 07/06/2020
+ms.date: 10/28/2021
 ms.author: marhamil
-ms.openlocfilehash: 9c9780a51954978935dad164c9d8c5b5a1535826
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f8d8e0ebbed2acc51c04a5ae83743e1fbf37ae6d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447329"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446560"
 ---
 # <a name="getting-started"></a>Erste Schritte
 
@@ -106,7 +106,7 @@ Zunächst können Sie ein Notebook in Azure Databricks erstellen. Verwenden Sie 
 from mmlspark.cognitive import *
 from pyspark.sql.functions import col
 
-# Add your subscription key from Text Analytics (or a general Cognitive Service key)
+# Add your subscription key from the Language service (or a general Cognitive Service key)
 service_key = "ADD-SUBSCRIPTION-KEY-HERE"
 
 df = spark.createDataFrame([
@@ -130,7 +130,7 @@ display(results.select("text", col("sentiment")[0].getItem("score").alias("senti
 
 ```
 
-1. Beziehen Sie Ihren Abonnementschlüssel über das Menü **Schlüssel und Endpunkt** aus dem Textanalyse-Dashboard im Azure-Portal.
+1. Beziehen Sie Ihren Abonnementschlüssel über das Menü **Schlüssel und Endpunkt** aus der Sprachressource im Azure-Portal.
 1. Ersetzen Sie den Platzhalter für den Abonnementschlüssel im Code Ihres Databricks-Notebook durch Ihren Abonnementschlüssel.
 1. Wählen Sie das Wiedergabesymbol – bzw. das Dreieck – rechts oben in der Notebook-Zelle aus, um das Beispiel auszuführen. Wählen Sie optional **Alle** am Anfang des Notebooks aus, um alle Zellen auszuführen. Die Antworten werden unterhalb der Zelle in einer Tabelle angezeigt.
 

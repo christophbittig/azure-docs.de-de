@@ -9,14 +9,14 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 2e46b7b877e3ce8e82782356339261ff5204bf26
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c925fdf1b5b53f703d7c996110fe1b6b5f52cde8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021573"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476583"
 ---
-# <a name="use-chitchat-with-a-knowledge-base"></a>Verwenden von Smalltalk mit einer Wissensdatenbank
+# <a name="use-chitchat-with-a-project"></a>Verwenden von Chitchat bei einem Projekt
 
 Durch Smalltalk wird ein Bot unterhaltsamer und interessanter. Über das Smalltalk-Feature in benutzerdefinierten Fragen und Antworten können Sie Ihrer Wissensdatenbank (Knowledge Base, KB) ganz einfach vordefinierten Smalltalk hinzufügen. Dies kann ein Ausgangspunkt für die Persönlichkeit Ihres Bots sein und Ihnen die Zeit und die Kosten ersparen, diese Elemente von Grund auf neu zu schreiben.
 

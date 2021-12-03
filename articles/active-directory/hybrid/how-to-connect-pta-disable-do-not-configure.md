@@ -11,14 +11,18 @@ ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acabc2cf177ec81ecc293398f9b43f42e71c2862
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 0e58ca9cce30c03467e7171ef29cf1e360fbe02e
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234906"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371712"
 ---
-# <a name="disable-pta-when-using-azure-ad-connect"></a>Deaktivieren der PTA bei Verwendung von Azure AD Connect
+# <a name="disable-pta"></a>Deaktivieren der PTA 
+
+Führen Sie zum Deaktivieren der PTA die Schritte aus, die in diesem Artikel unter [Deaktivieren der PTA bei Verwendung von Azure AD Connect](#disable-pta-when-using-azure-ad-connect) und [Deaktivieren der PTA in PowerShell](#disable-pta-in-powershell) beschrieben sind.
+
+## <a name="disable-pta-when-using-azure-ad-connect"></a>Deaktivieren der PTA bei Verwendung von Azure AD Connect
 
 Wenn Sie die Passthrough-Authentifizierung (PTA) mit Azure AD Connect verwenden und diese auf **Nicht konfigurieren** festgelegt haben, können Sie sie deaktivieren. 
 
@@ -44,11 +48,13 @@ Die folgenden Voraussetzungen müssen erfüllt sein:
 >| AzureUSGovernment | US Gov|
 
 
-## <a name="to-disable-pta"></a>So deaktivieren Sie die PTA
+## <a name="disable-pta-in-powershell"></a>Deaktivieren der PTA in PowerShell
+
 Verwenden Sie in einer PowerShell-Sitzung den folgenden Befehl, um die PTA zu deaktivieren:
+
 1. PS C:\Programme\Microsoft Azure AD Connect Authentication Agent> `Import-Module .\Modules\PassthroughAuthPSModule`
-2. `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth` oder `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth -EnvironmentName <identifier>`
-3. `Disable-PassthroughAuthentication  -Feature PassthroughAuth` oder `Disable-PassthroughAuthentication -Feature PassthroughAuth -EnvironmentName <identifier>`
+2. `Get-PassthroughAuthenticationEnablementStatus`
+3. `Disable-PassthroughAuthentication`
 
 ## <a name="if-you-dont-have-access-to-an-agent"></a>Sie haben keinen Zugriff auf einen Agent
 

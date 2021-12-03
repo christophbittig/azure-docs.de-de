@@ -43,10 +43,8 @@
           href: what-is-inter-directory-provisioning.md
     - name: Zugriffsüberprüfungen
       items:
-        - name: Verwalten des Gastzugriffs mit Überprüfungen
-          href: manage-guest-access-with-access-reviews.md
-        - name: Verwaltung des Benutzerzugriffs mit Überprüfungen
-          href: manage-user-access-with-access-reviews.md
+        - name: Verwalten des Zugriffs mit Überprüfungen
+          href: manage-access-review.md
         - name: 'Verwalten von Benutzern, die vom bedingten Zugriff ausgeschlossen wurden'
           href: conditional-access-exclusion.md
     - name: Überprüfen und Entfernen von Benutzern aus externen Organisationen
@@ -76,6 +74,8 @@
           items:
             - name: Erstellen eines Ressourcenkatalogs
               href: entitlement-management-catalog-create.md
+            - name: Erstellen einer benutzerdefinierten Erweiterung (Logik-Apps) für Kataloge
+              href: entitlement-management-logic-apps-integration.md
             - name: Delegieren an Zugriffspaketmanager
               href: entitlement-management-delegate-managers.md
         - name: Zugriffspaketmanager und Zugriffspaket-Zuweisungsmanager
@@ -94,7 +94,7 @@
               href: entitlement-management-access-package-lifecycle-policy.md
             - name: Konfigurieren der Aufgabentrennung
               href: entitlement-management-access-package-incompatible.md
-            - name: Anzeigen von Anforderungen
+            - name: Anzeigen und Entfernen von Anforderungen
               href: entitlement-management-access-package-requests.md
             - name: Erneutes Verarbeiten von Anforderungen
               href: entitlement-management-reprocess-access-package-requests.md
@@ -123,9 +123,7 @@
             - name: Erstellen einer Zugriffsüberprüfung
               href: entitlement-management-access-reviews-create.md
             - name: Überprüfen des Zugriffs
-              href: entitlement-management-access-reviews-review-access.md
-            - name: Überprüfen des eigenen Zugriffs
-              href: entitlement-management-access-reviews-self-review.md
+              href: self-access-review.md
         - name: Gruppen und Apps
           items:
             - name: Erstellen einer Zugriffsüberprüfung

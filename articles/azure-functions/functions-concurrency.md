@@ -5,19 +5,19 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 9/24/2021
 ms.author: cachai
-ms.openlocfilehash: 60d6861fbf0f9c02df78674f85633a962fea09a3
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 21702bf5bdc8eeee014305c106006a18640c001f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368239"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847658"
 ---
 # <a name="concurrency-in-azure-functions"></a>Parallelität in Azure Functions
 
 In diesem Artikel wird das Parallelverhalten von ereignisgesteuerten Triggern in Azure Functions beschrieben. Es wird außerdem ein neues dynamisches Modell zum Optimieren des Parallelitätsverhaltens beschrieben. 
 
 >[!NOTE]
->Das dynamische Parallelitätsmodell befindet sich derzeit in der Vorschau. Die Unterstützung für die dynamische Parallelität ist auf bestimmte Bindungserweiterungen beschränkt, die sich ebenfalls in der Vorschau befinden.  
+>Das dynamische Parallelitätsmodell befindet sich derzeit in der Vorschau. Unterstützung für dynamische Parallelität ist auf bestimmte Bindungserweiterungen beschränkt.
 
 Das Hostingmodell für Azure Functions ermöglicht die gleichzeitige Ausführung mehrerer Funktionsaufrufe auf einer einzelnen Compute-Instanz. Stellen Sie sich beispielsweise einen Fall vor, in dem Ihre Funktions-App drei verschiedene Funktionen aufskaliert und auf mehreren Instanzen ausgeführt wird. In diesem Szenario verarbeitet jede Funktion Aufrufe auf jeder Instanz des virtuellen Computers, auf der Ihre Funktions-App ausgeführt wird. Die Funktionsaufrufe auf einer einzelnen Instanz teilen sich die gleichen Computeressourcen des virtuellen Computers, wie den Arbeitsspeicher, die CPU und die Verbindungen. Wenn Ihre App in einem dynamischen Plan (Verbrauch oder Premium) gehostet wird, skaliert die Plattform die Anzahl der Funktions-App-Instanzen basierend auf der Anzahl der eingehenden Ereignisse hoch oder herunter. Weitere Informationen finden Sie unter [Ereignisgesteuerte Skalierung](./Event-Driven-Scaling.md). Wenn Sie Ihre Funktionen in einem dedizierten Plan (App Service) hosten, konfigurieren Sie Ihre Instanzen manuell oder [richten ein Schema für die automatische Skalierung ein](dedicated-plan.md#scaling).
 
@@ -38,7 +38,7 @@ Im Idealfall soll das System es den Instanzen ermöglichen, so viel Arbeit wie m
 Functions bietet jetzt ein dynamisches Parallelitätsmodell, das die Konfiguration der Parallelität für alle Funktions-Apps vereinfacht, die im gleichen Plan ausgeführt werden. 
 
 > [!NOTE]
-> Dynamische Parallelität wird derzeit nur für den Service Bus-Trigger unterstützt und erfordert, dass Sie die [Version 5.0.0-beta.6 (oder höher)](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/5.0.0-beta.6) der Erweiterung von **Microsoft.Azure.WebJobs.Extensions.ServiceBus** verwenden.
+> Dynamische Parallelität wird derzeit nur für Azure-Blob-, Azure Queue- und Service Bus-Trigger unterstützt und erfordert, dass Sie die Versionen verwenden, die im [Abschnitt zur Erweiterungsunterstützung unten](#extension-support) aufgeführt werden.
 
 ### <a name="benefits"></a>Vorteile
 
@@ -79,7 +79,20 @@ Wenn die dynamische Parallelität aktiviert ist, werden die dynamischen Parallel
 
 ### <a name="extension-support"></a>Unterstützung für Erweiterung 
 
-Die dynamische Parallelität ist für eine Funktions-App auf der Hostebene aktiviert und alle Erweiterungen, die die dynamische Parallelität unterstützen, werden in diesem Modus ausgeführt. Die dynamische Parallelität erfordert die Zusammenarbeit zwischen dem Host und den einzelnen Triggererweiterungen. Für die Vorschau unterstützen nur die neuesten Versionen (Vorschauversionen) der folgenden Erweiterungen die dynamische Parallelität.
+Die dynamische Parallelität ist für eine Funktions-App auf der Hostebene aktiviert und alle Erweiterungen, die die dynamische Parallelität unterstützen, werden in diesem Modus ausgeführt. Die dynamische Parallelität erfordert die Zusammenarbeit zwischen dem Host und den einzelnen Triggererweiterungen. Für die Vorschauversion unterstützen nur die aufgeführten Versionen der folgenden Erweiterungen dynamische Parallelität.
+
+#### <a name="azure-queues"></a>Azure-Warteschlangen
+
+Der Azure Queue Storage-Trigger verfügt über eine eigene Schleife zum Abfragen von Nachrichten. Bei Verwendung der statischen Konfiguration wird Parallelität durch die `BatchSize`/`NewBatchThreshold`-Konfigurationsoption bestimmt. Bei Verwendung dynamischer Parallelität werden diese Konfigurationswerte ignoriert. Dynamische Parallelität ist in die Nachrichtenschleife integriert, sodass die Anzahl der pro Iteration abgerufenen Nachrichten dynamisch angepasst wird. Wenn Drosselung aktiviert ist (Host ist überlastet), wird die Nachrichtenverarbeitung angehalten, bis Drosselung deaktiviert wird. Wenn Drosselungen deaktiviert sind, kann die Parallelität erhöht werden.
+
+Um dynamische Parallelität für Warteschlangen zu verwenden, müssen Sie [Version 5.x](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) der Speichererweiterung verwenden.
+
+#### <a name="azure-blobs"></a>Azure-Blobs
+
+Intern verwendet der Azure Blob Storage-Trigger die gleiche Infrastruktur wie der Azure-Warteschlangentrigger. Wenn neue/aktualisierte Blobs verarbeitet werden müssen, werden Nachrichten in eine durch die Plattform verwaltete Steuerungswarteschlange geschrieben, und diese Warteschlange wird mit der gleichen Logik verarbeitet, die auch für QueueTrigger verwendet wird. Wenn dynamische Parallelität aktiviert ist, wird Parallelität für die Verarbeitung dieser Steuerungswarteschlange dynamisch verwaltet.
+
+Um dynamische Parallelität für Blobs zu verwenden, müssen Sie [Version 5.x](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) der Speichererweiterung verwenden.
+
 
 #### <a name="service-bus"></a>Service Bus 
 
@@ -89,7 +102,7 @@ Der Service Bus Trigger unterstützt derzeit drei Ausführungsmodelle. Die dynam
 - **Sitzungsbasierte Verarbeitung einzelner Dispatch-Themen/Warteschlangen**: Jeder Aufruf Ihrer Funktion verarbeitet eine einzelne Nachricht. Abhängig von der Anzahl der aktiven Sitzungen für Ihr Thema / Ihre Warteschlange least jede Instanz eine oder mehrere Sitzungen. Nachrichten in jeder Sitzung werden seriell verarbeitet, um die Reihenfolge in einer Sitzung zu gewährleisten. Wenn keine dynamische Parallelität verwendet wird, wird die Parallelität durch die `MaxConcurrentSessions`-Einstellung bestimmt. Wenn dynamische Parallelität aktiviert ist, wird `MaxConcurrentSessions` ignoriert, und die Anzahl der Sitzungen, die von jeder Instanz verarbeitet werden, wird dynamisch angepasst. 
 - **Batchverarbeitung**: Bei jedem Aufruf Ihrer Funktion wird ein Nachrichtenbatch verarbeitet, der durch die Einstellung `MaxMessageCount` bestimmt wird. Da Batchaufrufe seriell sind, ist die Parallelität für Ihre durch den Batch ausgelöste Funktion immer eins und die dynamische Parallelität gilt nicht. 
 
-Sie müssen die [Version 5.0.0-beta.6 (oder höher)](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/5.0.0-beta.6) der Erweiterung von **Microsoft.Azure.WebJobs.Extensions.ServiceBus** verwenden, um Ihren Service Bus Trigger zu aktivieren. Dann können Sie die dynamische Parallelität verwenden. 
+Damit Ihr Service Bus-Trigger dynamische Parallelität verwenden kann, müssen Sie [Version 5.x](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) der Service Bus-Erweiterung verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

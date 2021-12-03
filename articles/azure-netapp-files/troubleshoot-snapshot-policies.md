@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung bei Momentaufnahmen-Richtlinien für Azure NetApp Files | Microsoft-Dokumentation
+title: Problembehandlung bei Fehlern von Momentaufnahmerichtlinien für Azure NetApp Files | Microsoft-Dokumentation
 description: In diesem Artikel werden Fehlermeldungen und Lösungen beschrieben, mit denen Sie Probleme bei der Verwaltung von Momentaufnahmen-Richtlinien für Azure NetApp Files beheben können.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: e86761ed15089ef8544ec80b23f3ab585522df7a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e6348e28b187b9d09f25eb50264b23aa3a521aae
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128613116"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224047"
 ---
-# <a name="troubleshoot-snapshot-policies"></a>Problembehandlung für Momentaufnahmenrichtlinien
+# <a name="troubleshoot-snapshot-policy-errors"></a>Behandeln von Fehlern bei Momentaufnahmerichtlinien
 
 In diesem Artikel werden Fehlerszenarios beschrieben, die beim Verwalten von Momentaufnahmen-Richtlinien für Azure NetApp Files auftreten können. Außerdem werden Lösungen bereitstellt, die Ihnen helfen können, die Probleme zu beheben.
 

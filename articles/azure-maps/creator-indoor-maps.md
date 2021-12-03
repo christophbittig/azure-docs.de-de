@@ -1,18 +1,18 @@
 ---
 title: Arbeiten mit Gebäudeplänen in Azure Maps Creator
 description: In diesem Artikel werden Konzepte vorgestellt, die für die Azure Maps Creator-Dienste gelten.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 05/26/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 11/11/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: 646045df9a6586d80969ec3e80081d45d4dcd249
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0e4f25e140c9b7d2693c94ead25b375e2298adbc
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345936"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400013"
 ---
 # <a name="creator-for-indoor-maps"></a>Creator für Gebäudepläne
 
@@ -29,7 +29,10 @@ Das folgende Diagramm veranschaulicht den vollständigen Workflow:
 
 ## <a name="create-azure-maps-creator"></a>Azure Maps Creator erstellen
 
-Damit Sie Creator-Dienste verwenden können, muss Azure Maps Creator in einem Azure Maps-Konto erstellt werden. Informationen zum Erstellen von Azure Maps Creator in Azure Maps finden Sie unter [Verwalten von Azure Maps Creator](how-to-manage-creator.md).
+Damit Sie Creator-Dienste verwenden können, muss Azure Maps Creator in einem Azure Maps-Konto mit dem Gen 2-Tarif erstellt werden. Informationen zum Erstellen von Azure Maps Creator in Azure Maps finden Sie unter [Verwalten von Azure Maps Creator](how-to-manage-creator.md).
+
+> [!TIP]
+> Preisinformationen finden Sie im Abschnitt *Creator* unter [Azure Maps – Preise](https://aka.ms/CreatorPricing).
 
 ## <a name="creator-authentication"></a>Creator-Authentifizierung
 

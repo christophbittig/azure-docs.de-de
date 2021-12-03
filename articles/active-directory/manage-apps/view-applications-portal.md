@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.date: 09/07/2021
 ms.author: davidmu
 ms.reviewer: arvinh
-ms.openlocfilehash: 0f744176e3a1472cadd740f94e34839bb7a8a09d
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 4da70b29fb7d5a8920db05e0d7c28f5c29a101fd
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613717"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553133"
 ---
-# <a name="quickstart-view-enterprise-applications-in-azure-active-directory"></a>Schnellstart: Anzeigen von Unternehmensanwendungen in Azure Active Directory
+# <a name="quickstart-view-enterprise-applications"></a>Schnellstart: Anzeigen von Unternehmensanwendungen
 
 In diesem Schnellstart erfahren Sie, wie Sie Azure Active Directory Admin Center verwenden, um nach den Unternehmensanwendungen zu suchen und die Anwendungen anzuzeigen, die bereits in Ihrem Azure Active Directory-Mandanten (Azure AD) konfiguriert sind.
 

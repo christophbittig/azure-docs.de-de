@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 51bc4233393be6d914578581597e8cce9d0373b0
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 610d24576386b311bf5e4ef5a98c1c22a705aff0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113439290"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466407"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Problembehandlung für Azure Virtual Network NAT-Konnektivität
 
@@ -177,11 +177,9 @@ _**Lösung:**_
 
 ### <a name="ipv6-coexistence"></a>IPv6-Koexistenz
 
-[Virtual Network NAT](nat-overview.md) unterstützt IPv4-UDP- und TCP-Protokolle. Die Bereitstellung in einem [Subnetz mit IPv6-Präfix wird nicht unterstützt](nat-overview.md#limitations).
+[Virtual Network NAT](nat-overview.md) unterstützt IPv4-UDP- und TCP-Protokolle. NAT kann nicht einer öffentlichen IPv6-Adresse oder einem Präfix für öffentliche IPv6-Adressen zugeordnet werden. NAT kann jedoch in einem Dual Stack-Subnetz bereitgestellt werden.
 
-_**Lösung:**_ Stellen Sie das NAT-Gateway in einem Subnetz ohne IPv6-Präfix bereit.
-
-Sie können Ihr Interesse an zusätzlichen Funktionen über [UserVoice für Virtual Network NAT](https://aka.ms/natuservoice) kommunizieren.
+_**Lösung:**_ Stellen Sie ein NAT-Gateway in einem Dual Stack-Subnetz bereit.
 
 ### <a name="connection-doesnt-originate-from-nat-gateway-ips"></a>Verbindung stammt nicht von den IP-Adressen des NAT Gateways
 
@@ -200,4 +198,3 @@ Wenn Sie weiterhin Probleme haben, öffnen Sie eine Supportanfrage zur weiteren 
 * Informieren Sie sich über [Virtual Network NAT](nat-overview.md).
 * Informieren Sie sich über die [NAT-Gatewayressource](nat-gateway-resource.md).
 * Informieren Sie sich über [Metriken und Warnungen für NAT-Gatewayressourcen](nat-metrics.md).
-* [Teilen Sie uns bei UserVoice mit, welche Funktionen wir als Nächstes für Virtual Network NAT entwickeln sollen.](https://aka.ms/natuservoice)

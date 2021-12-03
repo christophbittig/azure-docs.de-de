@@ -1,18 +1,18 @@
 ---
 title: Konfigurieren der Leistung für Azure-SSIS Integration Runtime
 description: Hier erfahren Sie, wie Sie die Eigenschaften von Azure-SSIS Integration Runtime für hohe Leistung konfigurieren.
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 ms.topic: conceptual
 ms.service: data-factory
 ms.subservice: integration-services
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 907b946dec3112d152212d26a1d3dffca41150fa
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e73ed20a998e58b3b396d7f420561ab9edec97eb
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828374"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845397"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurieren von Azure-SSIS Integration Runtime für hohe Leistung
 

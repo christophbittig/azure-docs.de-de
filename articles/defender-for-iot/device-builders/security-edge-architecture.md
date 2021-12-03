@@ -1,25 +1,22 @@
 ---
 title: Defender für loT azureiotsecurity für loT Edge
-description: Verstehen Sie die Architektur und die Möglichkeiten von Azure Defender für loT azureiotsecurity für loT Edge.
+description: Machen Sie sich mit der Architektur und den Funktionen von Microsoft Defender für IoT azureiotsecurity für IoT Edge vertraut.
 ms.topic: conceptual
-ms.date: 09/23/2021
-ms.openlocfilehash: dddd45c857537cbb1af8032c6e53590e9a8ff4cd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/09/2021
+ms.openlocfilehash: 55681d731193e0f73a9fb21b415b03d4411ee6fe
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604890"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318957"
 ---
-# <a name="azure-defender-for-iot-edge-azureiotsecurity"></a>Azure Defender für loT Edge azureiotsecurity
+# <a name="microsoft-defender-for-iot-edge-azureiotsecurity"></a>Microsoft Defender für loT Edge azureiotsecurity
 
-[Azure IoT Edge](../../iot-edge/index.yml) umfasst leistungsstarke Funktionen zum Verwalten und Ausführen von Geschäftsworkflows am Edge.
-Seine Schlüsselrolle in IoT-Umgebungen macht IoT Edge zu einem besonders attraktiven Ziel für böswillige Akteure.
+[Azure IoT Edge](../../iot-edge/index.yml) umfasst leistungsstarke Funktionen zum Verwalten und Ausführen von Geschäftsworkflows am Edge. Seine Schlüsselrolle in IoT-Umgebungen macht IoT Edge zu einem besonders attraktiven Ziel für böswillige Akteure.
 
-Defender für IoT azureiotsecurity stellt eine umfassende Sicherheitslösung für Ihre IoT Edge-Geräte bereit.
-Das Defender für IoT-Modul sammelt, aggregiert und analysiert Sicherheitsrohdaten von Ihrem Betriebs- und Containersystem und gibt verwertbare Sicherheitsempfehlungen und -warnungen aus.
+Defender für IoT azureiotsecurity stellt eine umfassende Sicherheitslösung für Ihre IoT Edge-Geräte bereit. Das Defender für IoT-Modul sammelt, aggregiert und analysiert Sicherheitsrohdaten von Ihrem Betriebs- und Containersystem und gibt verwertbare Sicherheitsempfehlungen und -warnungen aus.
 
-Ähnlich wie die Defender für IoT-Sicherheits-Agents für IoT-Geräte ist das Defender für IoT Edge-Modul durch seinen Modulzwilling hochgradig anpassbar.
-Weitere Informationen finden Sie unter [Konfigurieren Ihres Agents](how-to-agent-configuration.md).
+Ähnlich wie die Defender für IoT-Sicherheits-Agents für IoT-Geräte ist das Defender für IoT Edge-Modul durch seinen Modulzwilling hochgradig anpassbar. Weitere Informationen finden Sie unter [Konfigurieren Ihres Agents](how-to-agent-configuration.md).
 
 Defender für IoT azureiotsecurity für IoT Edge bietet die folgenden Funktionen:
 
@@ -35,8 +32,7 @@ Defender für IoT azureiotsecurity für IoT Edge bietet die folgenden Funktionen
 
   Weitere Informationen finden Sie unter [Konfigurieren eines Defender für IoT-Agents](how-to-agent-configuration.md).
 
-Defender für loT azureiotsecurity für loT Edge läuft in einem privilegierten Modus unter loT Edge.
-Der privilegierte Modus ist erforderlich, damit das Modul das Betriebssystem und andere IoT Edge-Module überwachen kann.
+Defender für loT azureiotsecurity für loT Edge läuft in einem privilegierten Modus unter loT Edge. Der privilegierte Modus ist erforderlich, damit das Modul das Betriebssystem und andere IoT Edge-Module überwachen kann.
 
 ## <a name="module-supported-platforms"></a>Vom Modul unterstützte Plattformen
 

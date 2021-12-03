@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/01/2021
-ms.openlocfilehash: 5298b572c24d174842da1c9e29b01a1d98f47a39
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 13326622dae32c0ebd8fa86035967d51ab734c2a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387352"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241590"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Logische Replikation und Decodierung in Azure Database for PostgreSQL – Flexible Server
 
@@ -20,25 +20,25 @@ ms.locfileid: "129387352"
 Azure Database für PostgreSQL - Flexible Server unterstützt die folgenden Methoden der logischen Datenextraktion und -replikation:
 1. **Logische Replikation**
    1. Verwendung Sie PostgreSQL [native logische Replikation](https://www.postgresql.org/docs/12/logical-replication.html), um Datenobjekte zu replizieren. Die logische Replikation ermöglicht eine detaillierte Kontrolle über die Datenreplikation, einschließlich der Datenreplikation auf Tabellenebene.
-   2. Mit der Erweiterung [pglogical](https://github.com/2ndQuadrant/pglogical), die logische Streaming-Replikation sowie zusätzliche Funktionen wie das Kopieren des Anfangsschemas der Datenbank, Unterstützung für TRUNCATE, die Möglichkeit, DDL zu replizieren usw. bietet. 
+   2. Verwenden Sie die Erweiterung [pglogical](https://github.com/2ndQuadrant/pglogical), die Ihnen logische Streaming-Replikation sowie zusätzliche Funktionen wie das Kopieren des Anfangsschemas der Datenbank, Unterstützung für TRUNCATE, die Möglichkeit, die DDL zu replizieren etc. bietet. 
 2. **Logische Dekodierung**, die durch [Dekodierung](https://www.postgresql.org/docs/12/logicaldecoding-explanation.html) des Inhalts des Write-Ahead-Logs (WAL) realisiert wird. 
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>Vergleich der logischen Replikation mit der logischen Decodierung
-Die logische Replikation und die logische Decodierung weisen Ähnlichkeiten auf. Folgendes gilt für beide Konzepte:
-* Sie ermöglichen es Ihnen, Daten aus Postgres zu replizieren.
-* Beide verwenden das [Write-Ahead-Protokoll](https://www.postgresql.org/docs/current/wal.html) (Write-Ahead Log, WAL) als Änderungsquelle.
-* Sie verwenden [logische Replikationsslots](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html#LOGICALDECODING-REPLICATION-SLOTS), um Daten zu senden. Ein Slot stellt einen Datenstrom von Änderungen dar.
-* Sie bestimmen mithilfe der [Eigenschaft REPLICA IDENTITY](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-CREATETABLE-REPLICA-IDENTITY) einer Tabelle, welche Änderungen gesendet werden können.
-* Sie replizieren keine DDL-Änderungen.
+Die logische Replikation und die logische Decodierung weisen Ähnlichkeiten auf. Beide:
+* Ermöglichen es Ihnen, Daten aus Postgres zu replizieren.
+* Verwenden das [Write-Ahead-Protokoll](https://www.postgresql.org/docs/current/wal.html) (Write-Ahead Log, WAL) als Änderungsquelle.
+* Verwenden [logische Replikationsslots](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html#LOGICALDECODING-REPLICATION-SLOTS), um Daten zu senden. Ein Slot stellt einen Datenstrom von Änderungen dar.
+* Bestimmen mithilfe der [Eigenschaft „REPLICA IDENTITY“](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-CREATETABLE-REPLICA-IDENTITY) einer Tabelle, welche Änderungen gesendet werden können.
+* Replizieren keine DDL-Änderungen.
 
 
-Die beiden Technologien unterscheiden sich wie folgt: Logische Replikation 
-* Ermöglicht es Ihnen, eine Tabelle oder Tabellengruppe anzugeben, die repliziert werden soll
-* Repliziert Daten zwischen PostgreSQL-Instanzen
+Es gibt auch Unterschiede zwischen den beiden Technologien: Die logische Replikation: 
+* Ermöglicht es Ihnen, eine Tabelle oder Tabellengruppe anzugeben, die repliziert werden soll.
+* Repliziert Daten zwischen PostgreSQL-Instanzen.
 
-Logische Decodierung 
-* Extrahiert Änderungen aus allen Tabellen in einer Datenbank 
-* kann keine Daten direkt zwischen PostgreSQL-Instanzen senden.
+Die logische Decodierung:
+* Extrahiert Änderungen aus allen Tabellen in einer Datenbank.
+* Kann keine Daten direkt zwischen PostgreSQL-Instanzen senden.
 
 >[!NOTE]
 > Derzeit unterstützt der flexible Server keine regionsübergreifenden Lesereplikate. Je nach Art der Workload können Sie das Feature „Logische Replikation“ für die regionsübergreifende Notfallwiederherstellung verwenden.
@@ -104,7 +104,7 @@ Weitere Informationen über die [logische Replikation](https://www.postgresql.or
 
 ### <a name="pglogical-extension"></a>pglogische Erweiterung
 
-Im Folgenden finden Sie ein Beispiel für die Konfiguration von pglogical auf dem Provider-Datenbankserver und dem Teilnehmer. Einzelheiten dazu finden Sie in der [Dokumentation zur pglogical-Erweiterung](https://www.2ndquadrant.com/en/resources/pglogical/pglogical-docs). Stellen Sie außerdem sicher, dass die oben aufgeführten Voraussetzungen erfüllt sind.
+Im Folgenden finden Sie ein Beispiel für die Konfiguration von pglogical auf dem Provider-Datenbankserver und dem Teilnehmer. Weitere Details finden Sie in der [Dokumentation zur pglogical-Erweiterung](https://github.com/2ndQuadrant/pglogical#usage). Stellen Sie außerdem sicher, dass die oben aufgeführten Voraussetzungen erfüllt sind.
 
 
 1. Installieren Sie die pglogical-Erweiterung sowohl auf den Anbieter- als auch auf den Abonnentendatenbankservern in der Datenbank.
@@ -112,7 +112,7 @@ Im Folgenden finden Sie ein Beispiel für die Konfiguration von pglogical auf de
    \C myDB
    CREATE EXTENSION pglogical;
    ```
-2. Wenn es sich bei dem Replikationsbenutzer nicht um den Serveradministratorbenutzer handelt (der den Server erstellt hat), stellen Sie sicher, dass Sie dem Benutzer die Berechtigungen `azure_pg_admin` und `replication` zuweisen. Alternativ dazu können Sie dem Replikationsbenutzer den Administratorbenutzer zuweisen. Ausführliche Informationen finden Sie in der [Dokumentation zu pglogical](https://www.2ndquadrant.com/en/resources/pglogical/pglogical-docs/#limitations-and-restrictions).
+2. Wenn es sich bei dem Replikationsbenutzer nicht um den Serveradministratorbenutzer handelt (der den Server erstellt hat), stellen Sie sicher, dass Sie dem Benutzer die Berechtigungen `azure_pg_admin` und `replication` zuweisen. Alternativ dazu können Sie dem Replikationsbenutzer den Administratorbenutzer zuweisen. Weitere Informationen finden Sie in der [Dokumentation zu pglogical](https://github.com/2ndQuadrant/pglogical#limitations-and-restrictions).
    ```SQL
    GRANT azure_pg_admin, replication to myUser;
    ```
@@ -243,10 +243,9 @@ SELECT * FROM pg_replication_slots;
 ## <a name="limitations"></a>Einschränkungen
 * Es gelten **logische Replikationseinschränkungen**, wie [hier](https://www.postgresql.org/docs/12/logical-replication-restrictions.html) dokumentiert.
 * **Lesereplikate:** Lesereplikate von Azure Database for PostgreSQL werden mit flexible Server derzeit nicht unterstützt.
-* **Slots und Hochverfügbarkeitsfailover:** Logische Replikationsslots auf dem primären Server sind auf dem Standbyserver in der sekundären Verfügbarkeitszone nicht verfügbar. Dies gilt für Sie, wenn der Server die Option für die zonenredundante Hochverfügbarkeit verwendet. Im Fall eines Failovers auf den Standbyserver sind logische Replikationsslots im Standbymodus nicht verfügbar.
+* **Slots und Hochverfügbarkeitsfailover:** Logische Replikationsslots auf dem primären Server sind auf dem Standbyserver in der sekundären Verfügbarkeitszone nicht verfügbar. Dies gilt für Sie, wenn Ihr Server die Option für die zonenredundante Hochverfügbarkeit verwendet. Im Fall eines Failovers auf den Standbyserver sind logische Replikationsslots im Standbymodus nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu [Netzwerkoptionen](concepts-networking.md)
 * Weitere Informationen zu in flexiblen Servern verfügbaren [Erweiterungen](concepts-extensions.md)
 * Weitere Informationen zu [Hochverfügbarkeit](concepts-high-availability.md)
-

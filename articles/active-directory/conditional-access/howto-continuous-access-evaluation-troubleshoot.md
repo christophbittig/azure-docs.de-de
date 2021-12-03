@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jlu, shreyamalik
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93d44065255dcb9f4977e93dd596eb3b80c1faa2
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 292860ed26a39205f221c213f392b4b120006d13
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533160"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344767"
 ---
 # <a name="monitor-and-troubleshoot-continuous-access-evaluation"></a>Überwachung und Problembehandlung von fortlaufender Zugriffsevaluierung
 
@@ -34,7 +34,7 @@ Administratoren haben die Möglichkeit, Benutzeranmeldungen zu überwachen, bei 
 
 Von hier aus werden Administratoren Informationen zu den Anmeldeereignissen ihres Benutzers angezeigt. Wählen Sie eine beliebige Anmeldung aus, um Details zur Sitzung anzuzeigen, z. B. welche Richtlinien für bedingten Zugriff angewendet wurden und ob die fortlaufende Zugriffsevaluierung aktiviert ist. 
 
-Ein angegebener Anmeldeversuch kann entweder auf der interaktiven oder nicht interaktiven Registerkarte angezeigt werden. Administratoren müssen möglicherweise beide Registerkarten überprüfen, wenn sie die Anmeldungen ihrer Benutzer nachverfolgen.
+Es gibt mehrere Anmeldeanforderungen für jede Authentifizierung. Einige werden auf der interaktiven Registerkarte angezeigt, während andere auf der nicht-interaktiven Registerkarte angezeigt werden. CAE wird nur für eine der Anfragen als wahr angezeigt, und zwar entweder auf der interaktiven oder der nicht-interaktiven Registerkarte. Administratoren müssen beide Registerkarten überprüfen, um festzustellen, ob die Authentifizierung des Benutzers CAE aktiviert ist oder nicht. 
 
 ### <a name="searching-for-specific-sign-in-attempts"></a>Suchen nach bestimmten Anmeldeversuchen
 

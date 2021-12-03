@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 215b9486af06c58cd1e7a6990bfc10ad43d4407f
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 26d2b6123e40f163d261009ff1c2f706f7597825
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356097"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309603"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistiken in Synapse SQL
 
@@ -254,7 +254,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE 50 PERCENT;
 ```
 
-Da zwischen *product\_category* und *product\_sub\_category* eine Korrelation besteht, kann ein Mehrspaltenstatistik-Objekt nützlich sein, wenn gleichzeitig auf diese Spalten zugegriffen wird.
+Da zwischen *product\_category* und *product\_sub\_category* eine Korrelation besteht, kann ein Mehrspaltenstatistik-Objekt nützlich sein, wenn gleichzeitig auf diese Spalten zugegriffen wird. Bei der Abfrage dieser Tabelle verbessern die mehrspaltigen Statistiken die Kardinalitätsschätzungen für Joins, GROUP BY-Aggregationen, eindeutige Zählungen und WHERE-Filter (solange die primäre Statistikspalte Teil des Filters ist).
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>Erstellen von Statistiken für alle Spalten einer Tabelle
 

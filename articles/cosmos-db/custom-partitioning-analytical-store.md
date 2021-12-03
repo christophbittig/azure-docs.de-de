@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: rosouz
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 72bd4c8a2001cc8e6f314f12862d7ed563ac770b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7534149aacc76bebdcf591471d08b120b885e625
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095330"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426124"
 ---
 # <a name="custom-partitioning-in-azure-synapse-link-for-azure-cosmos-db-preview"></a>Benutzerdefinierte Partitionierung in Azure Synapse Link für Azure Cosmos DB (Vorschauversion)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Mit der benutzerdefinierten Partitionierung können Sie die Daten des Analysespeichers in Feldern partitionieren, die häufig als Filter in Analyseabfragen verwendet werden, um die Abfrageleistung zu verbessern.
+Mit der benutzerdefinierten Partitionierung können Sie Daten des Analysespeichers in Feldern partitionieren, die häufig als Filter in Analyseabfragen verwendet werden, um die Abfrageleistung zu verbessern.
 
 In diesem Artikel wird beschrieben, wie Sie Ihre Daten im Azure Cosmos DB-Analysespeicher mit Schlüsseln partitionieren, die für Ihre Analyseworkloads von entscheidender Bedeutung sind. Darüber hinaus wird beschrieben, wie Sie die verbesserte Abfrageleistung mit Partitionsbereinigung nutzen. Sie erfahren auch, wie der partitionierte Speicher zur Verbesserung der Abfrageleistung beiträgt, wenn für Ihre Workloads eine erhebliche Anzahl von Aktualisierungs- oder Löschvorgängen durchgeführt werden muss.
 
@@ -25,32 +25,31 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Daten im Azure Cosmos DB-Analy
 > Das Feature für die benutzerdefinierte Partitionierung befindet sich derzeit in der Public Preview. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 > [!NOTE]
-> Azure Synapse Link sollte für Azure Cosmos DB-Konten aktiviert sein, um die Vorteile der benutzerdefinierten Partitionierung nutzen zu können. Die benutzerdefinierte Partitionierung wird derzeit nur für Azure Synapse Spark 2.0 unterstützt.
+> [Azure Synapse Link](synapse-link.md) sollte für Azure Cosmos DB-Konten aktiviert sein, um die Vorteile der benutzerdefinierten Partitionierung nutzen zu können. Die benutzerdefinierte Partitionierung wird derzeit nur für Azure Synapse Spark 2.0 unterstützt.
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
-Bei der benutzerdefinierten Partitionierung können Sie ein einzelnes Feld oder eine Felderkombination aus Ihrem Dataset als Partitionsschlüssel für den Analysespeicher auswählen.
+Die Partitionierung des Analysespeichers ist von der Partitionierung im Transaktionsspeicher unabhängig. Der Analysespeicher ist standardmäßig nicht partitioniert. Wenn Sie den Analysespeicher häufig basierend auf Feldern wie Datum, Uhrzeit, Kategorie usw. abfragen möchten, können Sie die benutzerdefinierte Partitionierung nutzen, um auf Grundlage dieser Schlüssel einen partitionierten Speicher zu erstellen. Sie können entweder ein einzelnes Feld oder eine Felderkombination aus Ihrem Dataset als Partitionsschlüssel für den Analysespeicher auswählen.
 
-Die Partitionierung des Analysespeichers ist unabhängig von der Partitionierung im Transaktionsspeicher. Der Analysespeicher ist standardmäßig nicht partitioniert. Wenn Sie den Analysespeicher häufig basierend auf Feldern wie Datum, Uhrzeit, Kategorie usw. abfragen möchten, empfehlen wir Ihnen, basierend auf diesen Schlüsseln einen partitionierten Speicher zu erstellen.
-
-Um die Partitionierung auszulösen, können Sie in regelmäßigen Abständen einen Partitionierungsauftrag aus einem Azure Synapse Spark-Notebook ausführen, indem Sie Azure Synapse Link verwenden. Sie können die Ausführung so planen, dass sie zu einem geeigneten Zeitpunkt als Hintergrundauftrag erfolgt.
+Sie können die Partitionierung von einem Azure Synapse Spark-Notebook mithilfe von Azure Synapse Link auslösen. Sie können sie als Hintergrundauftrag planen, der ein- oder zweimal täglich bzw. bei Bedarf auch häufiger ausgeführt wird. 
 
 > [!NOTE]
 > Der partitionierte Speicher verweist auf das primäre ADLS Gen2-Speicherkonto, das mit dem Azure Synapse-Arbeitsbereich verknüpft ist.
 
 :::image type="content" source="./media/custom-partitioning-analytical-store/partitioned-store-architecture.png" alt-text="Architektur des partitionierten Speichers in Azure Synapse Link für Azure Cosmos DB" lightbox="./media/custom-partitioning-analytical-store/partitioned-store-architecture.png" border="false":::
 
-Der partitionierte Speicher enthält die Azure Cosmos DB-Analysedaten bis zum letzten Zeitstempel der Ausführung Ihres Partitionierungsauftrags. Wenn Sie Ihre analytischen Daten mit den Partitionsschlüsselfiltern in Synapse Spark abfragen, führt Synapse Link die neuesten Daten aus dem Analysespeicher automatisch mit den Daten im partitionierten Speicher zusammen. So erhalten Sie die neuesten Ergebnisse. Die Daten werden vor dem Abfragen zwar zusammengeführt, aber die Deltadaten werden nicht in den partitionierten Speicher zurückgeschrieben. Wenn die Deltaabweichung zwischen Daten im Analysespeicher und im partitionierten Speicher größer wird, können die Abfragedauern für partitionierte Daten ggf. variieren. Diese Deltaabweichung wird verringert, wenn der Partitionierungsauftrag häufiger ausgelöst wird. Bei jeder Ausführung des Partitionierungsauftrags wird nicht das gesamte Dataset verarbeitet, sondern nur inkrementelle Änderungen im Analysespeicher.
+Der partitionierte Speicher enthält die Azure Cosmos DB-Analysedaten bis zum letzten Zeitstempel der Ausführung Ihres Partitionierungsauftrags. Wenn Sie Ihre analytischen Daten mit den Partitionsschlüsselfiltern in Synapse Spark abfragen, führt Synapse Link die neuesten Daten aus dem Analysespeicher automatisch mit den Daten im partitionierten Speicher zusammen. So erhalten Sie die neuesten Ergebnisse für Ihre Abfragen. Die Daten werden vor dem Abfragen zwar zusammengeführt, aber die Deltadaten werden nicht in den partitionierten Speicher zurückgeschrieben. Wenn die Deltaabweichung zwischen Daten im Analysespeicher und im partitionierten Speicher größer wird, können die Abfragedauern für partitionierte Daten ggf. variieren. Diese Deltaabweichung wird verringert, wenn der Partitionierungsauftrag häufiger ausgelöst wird. Bei jeder Ausführung des Partitionierungsauftrags wird nicht das gesamte Dataset verarbeitet, sondern nur inkrementelle Änderungen im Analysespeicher.
 
 ## <a name="when-to-use"></a>Einsatzgebiete
 
 Die Verwendung des partitionierten Speichers beim Abfragen von analytischen Daten in Azure Cosmos DB ist optional. Sie können dieselben Daten direkt abfragen, indem Sie Synapse Link mit dem vorhandenen Analysespeicher verwenden. Die Aktivierung des partitionierten Speichers kann ratsam sein, wenn bei Ihnen die folgenden Anforderungen gelten:
+* Allgemeine analytische Abfragefilter, die als Partitionsspalten verwendet werden können
+* Partitionsspalten mit niedriger Kardinalität
+* Gleichmäßige Verteilung von Daten auf die Partitionen über die Partitionsspalten
+* Große Menge an Update- oder Löschvorgängen
+* Langsame Datenerfassung 
 
-* Sie möchten häufig analytische Daten abfragen, für die eine Filterung nach einigen Feldern genutzt wird.
-
-* Sie verfügen über eine große Anzahl von Aktualisierungs- bzw. Löschvorgängen, oder Daten werden nur langsam erfasst. In diesen Fällen kann mit dem partitionierten Speicher eine bessere Abfrageleistung erzielt werden. Dies gilt unabhängig davon, ob Sie für die Abfragen Partitionsschlüssel nutzen.
-
-Mit Ausnahme der obigen Workloads gilt Folgendes: Wenn Sie Livedaten mit Abfragefiltern abfragen, die sich von den Partitionsschlüsseln unterscheiden, empfehlen wir Ihnen, diese Abfrage direkt aus dem Analysespeicher durchzuführen – vor allem, wenn die Partitionierungsaufträge nicht häufig ausgeführt werden.
+Wenn Sie Livedaten mithilfe von Abfragefiltern abfragen, die sich von den Partitionsschlüsseln unterscheiden, empfehlen wir Ihnen die Abfrage direkt an den Analysespeicher durchzuführen. Dies gilt nicht für Workloads, die die oben genannten Anforderungen erfüllen. Die Empfehlung ist insbesondere zu beachten, wenn keine häufige Ausführung der Partitionierungsaufträge geplant ist.
 
 ## <a name="benefits"></a>Vorteile
 
@@ -60,9 +59,7 @@ Da die Daten zu den einzelnen eindeutigen Partitionsschlüsseln gemeinsam im par
 
 ### <a name="flexibility-to-partition-your-analytical-data"></a>Flexible Partitionierung Ihrer analytischen Daten
 
-Sie können mehrere Partitionierungsstrategien für einen bestimmten Analysespeichercontainer nutzen, und die Daten des Analysespeichers können mit separaten Partitionsschlüsseln partitioniert werden. Beispielsweise kann der Container „store_sales“ partitioniert werden, indem „sold_date“ als Schlüssel genutzt wird, aber es kann auch „item“ als Schlüssel für die Partitionierung verwendet werden. In diesem Fall müssen Sie über zwei separate Partitionierungsaufträge verfügen, mit denen die Daten im Prinzip auf zwei separate partitionierte Speicher aufgeteilt werden. Diese Partitionierungsstrategie ist vorteilhaft, wenn für einige Abfragen „sold_date“ und für andere Abfragen „item“ als Abfragefilter verwendet wird.
-
-Die zu unterschiedlichen Partitionsschlüsseln gehörenden Daten sind dann Teil desselben partitionierten Speichers, und Sie können Abfragen basierend auf dem jeweiligen Partitionsschlüssel durchführen, um die entsprechenden Daten auszuwählen.
+Sie können mehrere Partitionierungsstrategien für einen bestimmten Analysespeichercontainer verwenden. Sie können z. B. zusammengesetzte oder separate Partitionsschlüssel basierend auf Ihren Abfrageanforderungen nutzen. Anleitungen hierzu finden Sie unter Partitionsstrategien. 
 
 ### <a name="query-performance-improvements"></a>Verbesserungen bei der Abfrageleistung
 
@@ -82,13 +79,56 @@ Wenn Sie [verwaltete private Endpunkte](analytical-store-private-endpoints.md) f
 
 Ebenso gilt Folgendes: Wenn Sie [kundenseitig verwaltete Schlüssel für den Analysespeicher](how-to-setup-cmk.md#is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store) konfiguriert haben, müssen Sie dies auch direkt im primären Speicherkonto (partitionierter Speicher) des Synapse-Arbeitsbereichs aktivieren.
 
+## <a name="partitioning-strategies"></a>Partitionierungsstrategien
+Sie können einen oder mehrere Partitionsschlüssel für Ihre analytischen Daten verwenden. Wenn Sie mehrere Partitionsschlüssel verwenden, finden Sie im Folgenden einige Empfehlungen zum Partitionieren der Daten: 
+   - **Verwenden zusammengesetzter Schlüssel:**
+
+     Gehen wir davon aus, dass Sie häufig Abfragen basierend auf Key1 und Key2 ausführen wollen. 
+      
+     Beispiel: „Abfragen aller Datensätze mit ReadDate = '2021-10-08' und Location = 'Sydney'“. 
+       
+     In diesem Fall ist die Verwendung zusammengesetzter Schlüssel effizienter, um nach allen Datensätzen zu suchen, die mit ReadDate übereinstimmen, und dann nach allen Datensätzen, die innerhalb dieses ReadDates mit der Location übereinstimmen. 
+       
+     Beispiele für Konfigurationsoptionen:      
+     ```python
+     .option("spark.cosmos.asns.partition.keys", "ReadDate String, Location String") \
+     .option("spark.cosmos.asns.basePath", "/mnt/CosmosDBPartitionedStore/") \
+     ```
+      
+     Wenn Sie nun im obigen partitionierten Speicher nur eine Abfrage basierend auf dem Filter „Location“ ausführen möchten:      
+     * Ist es möglicherweise besser, die Abfrage direkt an den Analysespeicher durchzuführen. Der partitionierte Speicher überprüft zuerst alle Datensätze nach ReadDate und dann nach Location. 
+     Je nach Workload und Kardinalität Ihrer analytischen Daten erhalten Sie also möglicherweise bessere Ergebnisse, wenn Sie den Analysespeicher direkt abfragen. 
+     * Sie können auch einen anderen Partitionsauftrag ausführen, um eine Partitionierung auf Grundlage der „Location“ im gleichen partitionierten Speicher durchzuführen.
+                           
+  *  **Separates Verwenden mehrerer Schlüssel:**
+     
+     Gehen wir davon aus, dass Sie manchmal Abfragen basierend auf „ReadDate“ und manchmal Abfragen basierend auf „Location“ ausführen wollen. 
+     
+     Beispiel: 
+     - Abfragen aller Datensätze, bei denen ReadDate = '2021-10-08'
+     - Abfragen aller Datensätze, bei denen Location = 'Sydney'
+     
+     Führen Sie zwei Partitionsaufträge mit den nachstehend für dieses Szenario definierten Partitionsschlüsseln aus:      
+     
+     Auftrag 1:
+     ```python
+     .option("spark.cosmos.asns.partition.keys", "ReadDate String") \
+     .option("spark.cosmos.asns.basePath", "/mnt/CosmosDBPartitionedStore/") \
+     ```                  
+     Auftrag 2: 
+     ```python
+     .option("spark.cosmos.asns.partition.keys", "Location String") \
+     .option("spark.cosmos.asns.basePath", "/mnt/CosmosDBPartitionedStore/") \
+     ```        
+     Beachten Sie, dass es bei der obigen Partitionierung nicht effizient ist, häufige Abfragen auf Grundlage von „ReadDate“- und „Location“-Filtern zusammen auszuführen. In diesem Fall bieten zusammengesetzte Schlüssel eine bessere Abfrageleistung. 
+      
 ## <a name="limitations"></a>Einschränkungen
 
 * Die benutzerdefinierte Partitionierung ist nur für Azure Synapse Spark verfügbar. Für serverlose SQL-Pools wird die benutzerdefinierte Partitionierung derzeit nicht unterstützt.
 
-* Für den partitionierten Speicher kann derzeit nur auf das primäre Speicherkonto verwiesen werden, das dem Synapse-Arbeitsbereich zugeordnet ist. Die Auswahl von benutzerdefinierten Speicherkonten wird noch nicht unterstützt.
+* Für den partitionierten Speicher kann derzeit nur auf das primäre Speicherkonto verwiesen werden, das dem Synapse-Arbeitsbereich zugeordnet ist. Die Auswahl von benutzerdefinierten Speicherkonten wird derzeit noch nicht unterstützt.
 
-* Die API für MongoDB unterstützt zwar Analysespeicher und Synapse Link, aber noch nicht die benutzerdefinierte Partitionierung.
+* Die benutzerdefinierte Partitionierung ist nur für die SQL-API in Cosmos DB verfügbar. Die API für Mongo DB, Gremlin und Cassandra wird derzeit nicht unterstützt. 
 
 ## <a name="pricing"></a>Preise
 
@@ -121,11 +161,12 @@ Ja. Der Partitionsschlüssel für den jeweiligen Container kann geändert werden
 
 ### <a name="can-different-partition-keys-point-to-the-same-basepath"></a>Können unterschiedliche Partitionsschlüssel auf denselben BasePath verweisen?
 
-Ja. Da die Partitionsschlüsseldefinition Teil des Pfads des partitionierten Speichers ist, verfügen unterschiedliche Partitionsschlüssel über unterschiedliche Pfade, die von demselben BasePath abgeleitet sind.
+Ja, wie nachfolgend dargestellt, können Sie mehrere Partitionsschlüssel im gleichen partitionierten Speicher angeben: 
 
-Das BasePath-Format kann wie folgt angegeben werden: /mnt/partitionedstorename/\<Cosmos_DB_account_name\>/\<Cosmos_DB_database_rid\>/\<Cosmos_DB_container_rid\>/partition=partitionkey/
-
-Beispiel: /mnt/CosmosDBPartitionedStore/store_sales/…/partition=sold_date/... /mnt/CosmosDBPartitionedStore/store_sales/…/partition=Date/...
+```python
+.option("spark.cosmos.asns.partition.keys", "ReadDate String, Location String") \
+.option("spark.cosmos.asns.basePath", "/mnt/CosmosDBPartitionedStore/") \
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

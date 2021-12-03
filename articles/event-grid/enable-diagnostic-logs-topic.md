@@ -1,103 +1,104 @@
 ---
-title: 'Azure Event Grid: Aktivieren von Diagnoseprotokollen für Themen oder Domänen'
-description: Dieser Artikel enthält schrittweise Anleitungen zum Aktivieren von Diagnoseprotokollen für ein Azure Event Grid-Thema.
+title: 'Azure Event Grid: Aktivieren von Diagnoseprotokollen für Event Grid-Ressourcen'
+description: Dieser Artikel enthält detaillierte Anleitungen zum Aktivieren von Diagnoseprotokollen für Event Grid-Ressourcen.
 ms.topic: how-to
-ms.date: 06/25/2021
-ms.openlocfilehash: 7ae1900c08b78ac5d84f4d36ef48319cd42ebce2
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.date: 11/11/2021
+ms.openlocfilehash: 06999716c884dc1c18ce41be288ebfba2b2298e6
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112969849"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556283"
 ---
-#  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Aktivieren von Diagnoseprotokollen für Azure Event Grid-Themen oder -Domänen
-Dieser Artikel enthält Schrittanleitungen zum Aktivieren von Diagnoseeinstellungen für Event Grid-Themen oder Domänen.  Mit diesen Einstellungen können Sie Protokolle zu **Veröffentlichungs- und Übermittlungsfehlern** erfassen und anzeigen. 
+# <a name="enable-diagnostic-logs-for-event-grid-resources"></a>Aktivieren von Diagnoseprotokollen für Event Grid-Ressourcen
+
+Dieser Artikel enthält detaillierte Anleitungen zum Aktivieren von Diagnoseeinstellungen für Event Grid-Ressourcen.
+
+Mit diesen Einstellungen können Sie die Informationen erfassen und anzeigen. In der folgenden Tabelle werden die Kompatibilität der Einstellungen in den Event Grid-Ressourcen angezeigt.
+
+| Diagnoseeinstellung | Beschreibung | Event Grid-Themen | Event Grid-Systemthemen | Event Grid-Domänen |
+| ------------- | ------------- | --------- | ----------- | ----------- |
+| DeliveryFailures | Übermittlungsfehler | Ja | Ja | Ja |
+| PublishFailures | Veröffentlichungsfehler | Ja | Nein | Ja |
+| DataPlaneRequests| Anforderungen auf Datenebene | Ja | Nein | Ja |
 
 > [!IMPORTANT]
-> Das Schema für Diagnoseprotokolle finden Sie unter [Diagnoseprotokolle](diagnostic-logs.md). 
-
+> Das Schema für Diagnoseprotokolle finden Sie unter [Diagnoseprotokolle](diagnostic-logs.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein bereitgestelltes Event Grid-Thema
-- Ein bereitgestelltes Ziel zum Erfassen von Diagnoseprotokollen Es kann eines der folgenden Ziele am gleichen Speicherort wie das Event Grid-Thema sein:
-    - Azure-Speicherkonto
-    - Event Hub
-    - Log Analytics-Arbeitsbereich
+- Eine bereitgestellte Event Grid-Ressource
+- Ein bereitgestelltes Ziel zum Erfassen von Diagnoseprotokollen:
+  - Log Analytics-Arbeitsbereich
+  - Speicherkonto
+  - Event Hub
+  - Partnerlösung
 
-## <a name="enable-diagnostic-logs-for-a-custom-topic"></a>Aktivieren von Diagnoseprotokollen für ein benutzerdefiniertes Thema
+## <a name="enable-diagnostic-logs-for-event-grid-topics-and-event-grid-domains"></a>Aktivieren von Diagnoseprotokollen für Event Grid-Themen und -Domänen
 
 > [!NOTE]
-> Das folgende Verfahren bietet eine schrittweise Anleitung zum Aktivieren von Diagnoseprotokollen für ein Thema. Schritte zum Aktivieren von Diagnoseprotokollen für eine Domäne sind sehr ähnlich. Navigieren Sie in Schritt 2 zur Event Grid-**Domäne** im Azure-Portal.  
+> Der folgende Prozess enthält eine detaillierte Anleitung zum Aktivieren von Diagnoseprotokollen für Event Grid-Themen. Schritte zum Aktivieren von Diagnoseprotokollen für eine Domäne sind sehr ähnlich. Navigieren Sie in Schritt 2 zu den Event Grid-**Domänen** im Azure-Portal.  
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Navigieren Sie zum Event Grid-Thema, für das Sie Diagnoseprotokolleinstellungen aktivieren möchten. 
-    1. Suchen Sie oben in der Suchleiste nach **Event Grid-Themen**. 
-    
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+2. Navigieren Sie zum Event Grid-Thema, für das Sie Diagnoseprotokolleinstellungen aktivieren möchten.
+    1. Suchen Sie oben in der Suchleiste nach **Event Grid-Themen**.
         ![Suchen nach benutzerdefinierten Themen](./media/enable-diagnostic-logs-topic/search-custom-topics.png)
-    1. Wählen Sie in der Liste, für die Sie Diagnoseeinstellungen konfigurieren möchten, das **Thema** aus. 
-1. Wählen Sie unter **Überwachung** im linken Menü die Option **Diagnoseeinstellungen** aus.
-1. Wählen Sie auf der Seite **Diagnoseeinstellungen** den Eintrag **Diagnoseeinstellung hinzufügen** aus. 
-    
+    2. Wählen Sie in der Liste, für die Sie Diagnoseeinstellungen konfigurieren möchten, das **Thema** aus.
+3. Wählen Sie unter **Überwachung** im linken Menü die Option **Diagnoseeinstellungen** aus.
+4. Wählen Sie auf der Seite **Diagnoseeinstellungen** den Eintrag **Diagnoseeinstellung hinzufügen** aus.
     ![Schaltfläche „Diagnoseeinstellung hinzufügen“](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
-5. Geben Sie einen **Namen** für die Diagnoseeinstellung an. 
-6. Wählen Sie im Abschnitt **Protokoll** die Optionen **DeliveryFailures** und **PublishFailures** aus. 
+5. Geben Sie einen **Namen** für die Diagnoseeinstellung an.
+6. Wählen Sie den Eintrag **allLogs** im Abschnitt **Protokolle** aus.
     ![Auswählen der Fehler](./media/enable-diagnostic-logs-topic/log-failures.png)
-7. Aktivieren Sie mindestens eines der Erfassungsziele für die Protokolle, und konfigurieren Sie diese dann, indem Sie eine zuvor erstellte Erfassungsressource auswählen. 
-    - Wenn Sie **In ein Speicherkonto archivieren** auswählen, wählen Sie **Speicherkonto - Konfigurieren** aus, und wählen Sie dann das Speicherkonto in Ihrem Azure-Abonnement aus. 
-
+7. Aktivieren Sie mindestens eines der Erfassungsziele für die Protokolle, und konfigurieren Sie diese dann, indem Sie eine zuvor erstellte Erfassungsressource auswählen.
+    - Wenn Sie **In ein Speicherkonto archivieren** auswählen, wählen Sie **Speicherkonto - Konfigurieren** aus, und wählen Sie dann das Speicherkonto in Ihrem Azure-Abonnement aus.
         ![Screenshot, der die Seite „Diagnoseeinstellungen“ mit aktivierter Option „In einem Azure-Speicherkonto archivieren“ sowie ein ausgewähltes Speicherkonto zeigt.](./media/enable-diagnostic-logs-topic/archive-storage.png)
-    - Wenn Sie **An einen Event Hub streamen** auswählen, wählen Sie **Event Hub - Konfigurieren** aus, und wählen Sie dann den Event Hubs-Namespace, den Event Hub und die Zugriffsrichtlinie aus. 
+    - Wenn Sie **An einen Event Hub streamen** auswählen, wählen Sie **Event Hub – Konfigurieren** aus, und wählen Sie dann den Event Hubs-Namespace, den Event Hub und die Zugriffsrichtlinie aus.
         ![Screenshot, der die Seite „Diagnoseeinstellungen“ mit aktivierter Option „An einen Event Hub streamen“ zeigt.](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - Wenn Sie **An Log Analytics senden** auswählen, wählen Sie den Log Analytics-Arbeitsbereich aus.
         ![Screenshot, der die Seite „Diagnoseeinstellungen“ mit aktivierter Option „An Log Analytics senden“ zeigt.](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
-8. Wählen Sie **Speichern** aus. Wählen Sie dann in der rechten oberen Ecke **X** aus, um die Seite zu schließen. 
-9. Vergewissern Sie sich nun auf der Seite **Diagnoseeinstellungen**, dass ein neuer Eintrag in der Tabelle **Diagnoseeinstellungen** angezeigt wird. 
+8. Wählen Sie **Speichern** aus. Wählen Sie dann in der rechten oberen Ecke **X** aus, um die Seite zu schließen.
+9. Vergewissern Sie sich nun auf der Seite **Diagnoseeinstellungen**, dass ein neuer Eintrag in der Tabelle **Diagnoseeinstellungen** angezeigt wird.
     ![Screenshot, der die Seite „Diagnoseeinstellungen“ mit einem neuen Eintrag zeigt, der in der Tabelle „Diagnoseeinstellungen“ hervorgehoben ist.](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
-     Sie können auch die Erfassung aller Metriken für das Thema aktivieren. 
+Sie können auch die Erfassung aller Metriken für das Thema aktivieren.
 
-## <a name="enable-diagnostic-logs-for-a-system-topic"></a>Aktivieren von Diagnoseprotokollen für ein Systemthema
+## <a name="enable-diagnostic-logs-for-event-grid-system-topics"></a>Aktivieren von Diagnoseprotokollen für Event Grid-Systemthemen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Navigieren Sie zum Event Grid-Thema, für das Sie Diagnoseprotokolleinstellungen aktivieren möchten. 
-    1. Suchen Sie oben in der Suchleiste nach **Event Grid-Systemthemen**. 
-    
+2. Navigieren Sie zum Event Grid-Thema, für das Sie Diagnoseprotokolleinstellungen aktivieren möchten.
+    1. Suchen Sie oben in der Suchleiste nach **Event Grid-Systemthemen**.
         ![Suchen nach Systemthemen](./media/enable-diagnostic-logs-topic/search-system-topics.png)
-    1. Wählen Sie das **Systemthema** aus, für das Sie Diagnoseeinstellungen konfigurieren möchten. 
-    
+    1. Wählen Sie das **Systemthema** aus, für das Sie Diagnoseeinstellungen konfigurieren möchten.
         ![Auswählen des Systemthemas](./media/enable-diagnostic-logs-topic/select-system-topic.png)
-3. Wählen Sie im linken Menü **Diagnoseeinstellungen** unter **Überwachung** aus, und wählen Sie dann **Diagnoseeinstellung hinzufügen** aus. 
-
+3. Wählen Sie im linken Menü **Diagnoseeinstellungen** unter **Überwachung** aus, und wählen Sie dann **Diagnoseeinstellung hinzufügen** aus.
     ![Schaltfläche „Diagnoseeinstellungen hinzufügen“](./media/enable-diagnostic-logs-topic/system-topic-add-diagnostic-settings-button.png)
-4. Geben Sie einen **Namen** für die Diagnoseeinstellung an. 
-7. Wählen Sie im Abschnitt **Protokoll** die Option **DeliveryFailures** aus. 
+4. Geben Sie einen **Namen** für die Diagnoseeinstellung an.
+5. Wählen Sie den Eintrag **allLogs** im Abschnitt **Protokolle** aus.
     ![Auswählen von Übermittlungsfehlern](./media/enable-diagnostic-logs-topic/system-topic-select-delivery-failures.png)
-6. Aktivieren Sie mindestens eines der Erfassungsziele für die Protokolle, und konfigurieren Sie diese dann, indem Sie eine zuvor erstellte Erfassungsressource auswählen. 
+6. Aktivieren Sie mindestens eines der Erfassungsziele für die Protokolle, und konfigurieren Sie diese dann, indem Sie eine zuvor erstellte Erfassungsressource auswählen.
     - Wenn Sie **An Log Analytics senden** auswählen, wählen Sie den Log Analytics-Arbeitsbereich aus.
-        ![An Log Analytics senden](./media/enable-diagnostic-logs-topic/system-topic-select-log-workspace.png) 
-    - Wenn Sie **In ein Speicherkonto archivieren** auswählen, wählen Sie **Speicherkonto - Konfigurieren** aus, und wählen Sie dann das Speicherkonto in Ihrem Azure-Abonnement aus. 
-
+        ![An Log Analytics senden](./media/enable-diagnostic-logs-topic/system-topic-select-log-workspace.png)
+    - Wenn Sie **In ein Speicherkonto archivieren** auswählen, wählen Sie **Speicherkonto - Konfigurieren** aus, und wählen Sie dann das Speicherkonto in Ihrem Azure-Abonnement aus.
         ![Archivieren in ein Azure-Speicherkonto](./media/enable-diagnostic-logs-topic/system-topic-select-storage-account.png)
-    - Wenn Sie **An einen Event Hub streamen** auswählen, wählen Sie **Event Hub - Konfigurieren** aus, und wählen Sie dann den Event Hubs-Namespace, den Event Hub und die Zugriffsrichtlinie aus. 
+    - Wenn Sie **An einen Event Hub streamen** auswählen, wählen Sie **Event Hub – Konfigurieren** aus, und wählen Sie dann den Event Hubs-Namespace, den Event Hub und die Zugriffsrichtlinie aus.
         ![An einen Event Hub streamen](./media/enable-diagnostic-logs-topic/system-topic-select-event-hub.png)
-8. Wählen Sie **Speichern** aus. Wählen Sie dann in der rechten oberen Ecke **X** aus, um die Seite zu schließen. 
-9. Vergewissern Sie sich nun auf der Seite **Diagnoseeinstellungen**, dass ein neuer Eintrag in der Tabelle **Diagnoseeinstellungen** angezeigt wird. 
+7. Wählen Sie **Speichern** aus. Wählen Sie dann in der rechten oberen Ecke **X** aus, um die Seite zu schließen.
+8. Vergewissern Sie sich nun auf der Seite **Diagnoseeinstellungen**, dass ein neuer Eintrag in der Tabelle **Diagnoseeinstellungen** angezeigt wird.
     ![Diagnoseeinstellung in der Liste](./media/enable-diagnostic-logs-topic/system-topic-diagnostic-settings-targets.png)
 
-     Sie können auch die Erfassung aller **Metriken** für das Systemthema aktivieren.
-
+Sie können auch die Erfassung aller **Metriken** für das Systemthema aktivieren.
     ![Systemthema: alle Metriken aktivieren](./media/enable-diagnostic-logs-topic/system-topics-metrics.png)
 
-## <a name="view-diagnostic-logs-in-azure-storage"></a>Anzeigen von Diagnoseprotokollen in Azure Storage 
+## <a name="view-diagnostic-logs-in-azure-storage"></a>Anzeigen von Diagnoseprotokollen in Azure Storage
 
-1. Nachdem Sie ein Speicherkonto als Erfassungsziel aktiviert haben, beginnt Event Grid mit der Ausgabe von Diagnoseprotokollen. Es sollten im Speicherkonto neue Container mit den Namen **insights-logs-deliveryfailures** und **insights-logs-publishfailures** angezeigt werden. 
+1. Nachdem Sie ein Speicherkonto als Erfassungsziel aktiviert haben, beginnt Event Grid mit der Ausgabe von Diagnoseprotokollen. Es sollten im Speicherkonto neue Container mit den Namen **insights-logs-deliveryfailures** und **insights-logs-publishfailures** angezeigt werden.
 
     ![Speicher: Container für Diagnoseprotokolle](./media/enable-diagnostic-logs-topic/storage-containers.png)
-2. Wenn Sie durch einen der Container navigieren, gelangen Sie zu einem Blob im JSON-Format. Die Datei enthält Protokolleinträge entweder für einen Zustellungs- oder Veröffentlichungsfehler. Der Navigationspfad stellt die **Ressourcen-ID** des Event Grid-Themas und den Zeitstempel (auf Minutenebene) dar, wann die Protokolleinträge ausgegeben wurden. Die Blob/JSON-Datei, die heruntergeladen werden kann, hält sich letztlich an das im nächsten Abschnitt beschriebene Schema. 
+2. Wenn Sie durch einen der Container navigieren, gelangen Sie zu einem Blob im JSON-Format. Die Datei enthält Protokolleinträge entweder für einen Zustellungs- oder Veröffentlichungsfehler. Der Navigationspfad stellt die **Ressourcen-ID** des Event Grid-Themas und den Zeitstempel (auf Minutenebene) dar, wann die Protokolleinträge ausgegeben wurden. Die Blob/JSON-Datei, die heruntergeladen werden kann, hält sich letztlich an das im nächsten Abschnitt beschriebene Schema.
 
-    [ ![JSON-Datei im Speicher](./media/enable-diagnostic-logs-topic/select-json.png) ](./media/enable-diagnostic-logs-topic/select-json.png)
-3. Sie sollten den Inhalt in der JSON-Datei ähnlich wie im folgenden Beispiel sehen: 
+    ![JSON-Datei im Speicher](./media/enable-diagnostic-logs-topic/select-json.png)(./media/enable-diagnostic-logs-topic/select-json.png)
+3. Sie sollten den Inhalt in der JSON-Datei ähnlich wie im folgenden Beispiel sehen:
 
     ```json
     {
@@ -111,12 +112,13 @@ Dieser Artikel enthält Schrittanleitungen zum Aktivieren von Diagnoseeinstellun
     ```
 
 ## <a name="use-azure-resource-manager-template"></a>Verwenden von Azure Resource Manager-Vorlagen
+
 Hier finden Sie eine exemplarische Azure Resource Manager-Vorlage zum Aktivieren von Diagnoseeinstellungen für ein Event Grid-Thema. Wenn Sie diese Beispielvorlage bereitstellen, werden die folgenden Ressourcen erstellt:
 
 - Ein Event Grid-Thema
 - Ein Log Analytics-Arbeitsbereich
 
-Anschließend wird eine Diagnoseeinstellung für das Thema erstellt, um Diagnoseinformationen an den Log Analytics-Arbeitsbereich zu senden. 
+Anschließend wird eine Diagnoseeinstellung für das Thema erstellt, um Diagnoseinformationen an den Log Analytics-Arbeitsbereich zu senden.
 
 ```json
 {
@@ -138,8 +140,8 @@ Anschließend wird eine Diagnoseeinstellung für das Thema erstellt, um Diagnose
         "sku": {
             "defaultValue": "Free",
             "type": "String"
-        }               
-    },  
+        }
+    },
     "variables": {},
     "resources": [
         {
@@ -177,7 +179,7 @@ Anschließend wird eine Diagnoseeinstellung für das Thema erstellt, um Diagnose
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventGrid/topics', parameters('topic_name'))]",
-                "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('log_analytics_workspace_name'))]"          
+                "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('log_analytics_workspace_name'))]"
             ],
             "properties": {
                 "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('log_analytics_workspace_name'))]",
@@ -203,5 +205,14 @@ Anschließend wird eine Diagnoseeinstellung für das Thema erstellt, um Diagnose
 }
 ```
 
+## <a name="enable-diagnostic-logs-for-audit-traces"></a>Aktivieren von Diagnoseprotokollen für Überwachungsablaufverfolgungen
+
+Event Grid kann die Überwachungsablaufverfolgungen für Datenebenenvorgänge veröffentlichen, wenn die Kategorie **Gruppenüberwachung** oder die Kategorie **DataPlaneRequests** unter **Protokolle** ausgewählt ist. Die Überwachungsablaufverfolgung kann verwendet werden, um sicherzustellen, dass der Datenzugriff nur für autorisierte Zwecke zulässig ist, und dass nur Informationen zur Sicherheitssteuerung erfasst werden, wie z. B. der Ressourcenname, Vorgangstyp, Netzwerkzugriff, die Ebene und Region. Weitere Informationen zum Aktivieren der Diagnoseeinstellung finden Sie unter [Diagnoseprotokolle in Event Grid-Themen und -Domänen](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-event-grid-topics-and-event-grid-domains).
+![Auswählen der Überwachungsablaufverfolgungen](./media/enable-diagnostic-logs-topic/enable-audit-logs.png)
+
+> [!IMPORTANT]
+> Weitere Informationen zum `DataPlaneRequests`-Schema finden Sie unter [Diagnoseprotokolle](diagnostic-logs.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 Informationen zum Protokollschema und andere konzeptionelle Informationen zu Diagnoseprotokollen für Themen oder Domänen finden Sie unter [Diagnoseprotokolle](diagnostic-logs.md).

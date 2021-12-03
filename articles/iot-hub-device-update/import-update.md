@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: f616fee894c1eb436770cdafbab7b60d7a1417db
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: caa58c1affc9e4a9cc9d3ec5b63e0b396e289144
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537136"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370420"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>Hinzufügen eines Updates zu Device Update for IoT Hub
 Hier erfahren Sie, wie Sie in Device Update for IoT Hub ein neues Update hinzufügen.
@@ -38,7 +38,7 @@ Falls Ihre Organisation bereits Software für die von Ihnen verwendeten Geräte 
 
 ## <a name="create-a-device-update-import-manifest"></a>Erstellen eines Device Update-Importmanifests
 
-Wenn Sie es noch nicht getan haben, sollten Sie sich mit den grundlegenden [Importkonzepten](import-concepts.md) vertraut machen.
+Falls Sie dies noch nicht getan haben, machen Sie sich mit den grundlegenden [Importkonzepten](import-concepts.md) vertraut, und probieren Sie zunächst ein [imagebasiertes](device-update-raspberry-pi.md) oder [paketbasiertes](device-update-ubuntu-agent.md) Tutorial aus.
 
 1. Stellen Sie sicher, dass sich Ihre Updatedateien in einem für PowerShell zugänglichen Verzeichnis befinden.
 
@@ -78,7 +78,7 @@ Wenn Sie es noch nicht getan haben, sollten Sie sich mit den grundlegenden [Impo
 
 ## <a name="review-the-generated-import-manifest"></a>Überprüfen des generierten Importmanifests
 
-Ein Beispiel einer Manifestausgabe sehen Sie unten. Wenn Sie Fragen zu einem der Elemente haben, sehen Sie sich das vollständige [Importmanifestschema](import-schema.md) an. 
+Ein Beispiel einer Manifestausgabe sehen Sie unten. In diesem Beispiel gibt es zwei Dateien, die dieses Update enthalten: eine JSON-Datei und eine ZIP-Datei. Wenn Sie Fragen zu einem der Elemente haben, sehen Sie sich das vollständige [Importmanifestschema](import-schema.md) an. 
 ```json
 {
   "updateId": {

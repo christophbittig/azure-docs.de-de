@@ -9,12 +9,12 @@ author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: 178f60c43d24489a80a4fc5424212df762160652
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 643d8aa51c3d676232f2dee748a4627c21be0c83
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249911"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067468"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Pipeline von Azure Data Factory Version 1
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -27,7 +27,7 @@ ms.locfileid: "130249911"
 Es existieren zwei Aktivitätstypen, die Sie in einer Azure Data Factory-Pipeline verwenden können.
 
 - [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) zum Verschieben von Daten zwischen [unterstützten Quell- und Senkendatenspeichern](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
-- [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) zum Transformieren von Daten mithilfe von Computediensten wie Azure HDInsight, Azure Batch und Azure Machine Learning Studio (klassisch).
+- [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) zum Transformieren von Daten mithilfe von Compute-Diensten wie Azure HDInsight und Azure Batch.
 
 Erstellen Sie zum Verschieben von Daten in oder aus einem Datenspeicher, der von Data Factory nicht unterstützt wird, eine **benutzerdefinierte Aktivität** mit Ihrer eigenen Datenverschiebungslogik, und verwenden Sie die Aktivität in einer Pipeline. Wenn Sie Daten auf eine Weise transformieren/verarbeiten müssen, die von Data Factory nicht unterstützt wird, können Sie auch eine benutzerdefinierte Aktivität mit Ihrer eigenen Datentransformationslogik erstellen und in einer Pipeline verwenden.
 
@@ -1033,7 +1033,6 @@ Das Beispiel [Azure Data Factory – Lokale Umgebung](https://github.com/gbrueck
 | Beispiel | Aktion der benutzerdefinierten Aktivität |
 | --- | --- |
 | [Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Lädt Daten von einem HTTP-Endpunkt mit einer benutzerdefinierten C#-Aktivität in Data Factory in Azure Blob Storage herunter. |
-| [Beispiel zur Twitter-Stimmungsanalyse](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Ruft ein Azure Machine Learning Studio-Modell (klassisch) auf, um Stimmungsanalysen, Bewertungen, Vorhersagen usw. durchzuführen. |
 | [R-Skript ausführen](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). |Ruft ein R-Skript auf, indem „RScript.exe“ in Ihrem HDInsight-Cluster ausgeführt wird, in dem R bereits installiert ist. |
 | [Anwendungsdomänenübergreifende .NET-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Verwendet andere Assemblyversionen als das Data Factory-Startprogramm |
 | [Erneutes Verarbeiten eines Modells in Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  Erneutes Verarbeiten eines Modells in Azure Analysis Services |

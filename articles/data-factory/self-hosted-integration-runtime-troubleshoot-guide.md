@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 09/09/2021
+ms.date: 10/26/2021
 ms.author: lle
-ms.openlocfilehash: d1b3770d236c7f88090840720e8f88fd453e70cf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 35d0b094e80796eb43f59d0c104bb3ced9f5b0ed
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755936"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430830"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
@@ -206,7 +206,7 @@ Dass die Datei *System.ValueTuple.dll* unter *%windir%\Microsoft.NET\assembly* u
 
 Beim folgenden Fehler können Sie deutlich erkennen, dass die Assembly *System.ValueTuple* fehlt. Dieses Problem tritt auf, wenn die Anwendung versucht, die Assembly *System.ValueTuple.dll* zu überprüfen.
  
-"\<LogProperties>\<ErrorInfo>[{"Code":0,"Message":"Der Typinitialisierer für 'Npgsql.PoolManager' hat eine Ausnahme ausgelöst.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Datei oder Assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' oder eine Abhängigkeit davon konnte nicht geladen werden. Das System kann die angegebene Datei nicht finden.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]\</ErrorInfo>\</LogProperties>"
+> "\<LogProperties>\<ErrorInfo>[{"Code":0,"Message":"Der Typinitialisierer für 'Npgsql.PoolManager' hat eine Ausnahme ausgelöst.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Datei oder Assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' oder eine Abhängigkeit davon konnte nicht geladen werden. Das System kann die angegebene Datei nicht finden.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]\</ErrorInfo>\</LogProperties>"
  
 Weitere Informationen zu GAC finden Sie unter [Globaler Assemblycache](/dotnet/framework/app-domains/gac).
 
@@ -355,6 +355,66 @@ Um dieses Problem zu beheben, müssen Sie den Berechtigungen für den privaten S
     1. Wählen Sie **NT SERVICE\DIAHostService** aus, um dem Konto Vollzugriff auf dieses Zertifikat zu gewähren. Übernehmen und speichern Sie die Änderung. 
     1. Wählen Sie **Namen überprüfen** aus, und klicken Sie dann auf **OK**.
     1. Wählen Sie im Bereich „Berechtigungen“ die Option **Übernehmen** aus, und klicken Sie dann auf **OK**.
+
+### <a name="usererrorjrenotfound-error-message-when-you-run-a-copy-activity-to-azure"></a>Fehlermeldung „UserErrorJreNotFound“ beim Ausführen einer Kopieraktivität in Azure
+
+#### <a name="symptoms"></a>Symptome 
+
+Wenn Sie versuchen, Inhalte mit einem Java-basierten Tool oder Programm in Microsoft Azure zu kopieren (z. B. durch Kopieren von Dateien im ORC- oder Parquet-Format), erhalten Sie eine Fehlermeldung, die der folgenden ähnelt:
+
+> ErrorCode=UserErrorJreNotFound,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Java Runtime Environment nicht gefunden. Besuchen Sie `http://go.microsoft.com/fwlink/?LinkId=808605`, um die JRE herunterzuladen, und installieren Sie sie auf Ihrem Knotencomputer Integration Runtime (selbstgehostet). Hinweis: Für eine 64-Bit-Version von Integration Runtime ist die 64-Bit-JRE erforderlich, für eine 32-Bit-Version von Integration Runtime die 32-Bit-JRE.,Source=Microsoft.DataTransfer.Common,''Type=System.DllNotFoundException,Message=Die DLL 'jvm.dll' kann nicht geladen werden: Das angegebene Modul wurde nicht gefunden. (Ausnahme von HRESULT: 0x8007007E),Source=Microsoft.DataTransfer.Richfile.HiveOrcBridge
+
+#### <a name="cause"></a>Ursache
+
+Dieses Problem tritt aus einem der folgenden Gründe auf:
+
+- Java Runtime Environment (JRE) ist nicht ordnungsgemäß auf Ihrem Integration Runtime-Server installiert.
+
+- Ihrem Integration Runtime-Server fehlt die erforderliche Abhängigkeit für JRE.
+
+Standardmäßig löst Integration Runtime den JRE-Pfad mithilfe von Registrierungseinträgen auf. Diese Einträge sollten während der JRE-Installation automatisch festgelegt werden.
+
+#### <a name="resolution"></a>Lösung
+
+Folgen Sie den Schritten in diesem Abschnitt sorgfältig. Wird die Registrierung falsch angepasst, können schwerwiegende Probleme auftreten. Bevor Sie sie ändern, [sichern Sie die Registrierung zwecks Wiederherstellung](https://support.microsoft.com/topic/how-to-back-up-and-restore-the-registry-in-windows-855140ad-e318-2a13-2829-d428a2ab0692) für den Fall, dass Probleme auftreten. 
+
+Zur Behebung dieses Problems führen Sie die folgenden Schritte aus, um den Status der JRE-Installation zu überprüfen:
+
+1. Stellen Sie sicher, dass Integration Runtime (Diahost.exe) und JRE auf derselben Plattform installiert sind. Überprüfen Sie die folgenden Punkte:
+    - Die 64-Bit-JRE für eine 64-Bit-Version von ADF-Integration Runtime sollte im folgenden Ordner installiert sein: `C:\Program Files\Java\`
+    
+        > [!NOTE]
+        > Der Ordner ist nicht `C:\Program Files (x86)\Java\`.
+    
+    - JRE 7 und JRE 8 sind beide für diese Kopieraktivität kompatibel. JRE 6 und frühere Versionen wurden für diese Verwendung nicht überprüft.
+
+2. Überprüfen Sie die Registrierung auf die entsprechenden Einstellungen. Gehen Sie hierzu folgendermaßen vor:
+
+    1. Geben Sie im Menü **Ausführen** die Zeichenfolge **Regedit** ein, und drücken Sie dann die EINGABETASTE.
+    
+    1. Suchen Sie im Navigationsbereich nach dem folgenden Unterschlüssel:<br/> `HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment`. <br/> 
+
+        Im Bereich **Details** sollte ein Eintrag „CurrentVersion“ angezeigt werden, der die JRE-Version angibt (z. B. 1.8).
+    
+        :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/java-runtime-environment-image.png" alt-text="Screenshot der Java Runtime Environment":::
+
+    1. Suchen Sie im Navigationsbereich einen Unterschlüssel, der genau mit der Version (z. B. 1.8) im JRE-Ordner übereinstimmt. Im Detailbereich sollte ein Eintrag **JavaHome** enthalten sein. Der Wert dieses Eintrags ist der JRE-Installationspfad.
+    
+        :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/java-home-entry-image.png" alt-text="Screenshot eines JavaHome-Eintrags":::
+
+3. Suchen Sie den Ordner „bin\server“ im folgenden Pfad: <br/> 
+
+    `C:\Program Files\Java\jre1.8.0_74`
+    
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/folder-of-jre.png" alt-text="Screenshot des JRE-Ordners":::
+
+1. Überprüfen Sie, ob dieser Ordner eine Datei „jvm.dll“ enthält. Wenn das nicht der Fall ist, suchen Sie im Ordner `bin\client` nach der Datei.
+
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/file-location-image.png" alt-text="Screenshot des Speicherorts der Datei „jvm.dll“":::
+
+> [!NOTE]
+> - Wenn eine dieser Konfigurationen nicht den Beschreibungen in diesen Schritten entspricht, verwenden Sie den [JRE-Windows Installer](https://java.com/en/download/manual.jsp), um die Probleme zu beheben.
+> - Wenn alle Konfigurationen wie in diesen Schritten beschrieben sind, fehlt möglicherweise eine VC++-Laufzeitbibliothek im System. Sie können dieses Problem beheben, indem Sie VC++ 2010 Redistributable Package installieren.
 
 ## <a name="self-hosted-ir-setup"></a>Einrichten der selbstgehosteten IR
 
@@ -604,7 +664,7 @@ Die selbstgehostete Integration Runtime kann keine Verbindung zum Backenddienst 
 
 Die folgende Antwort wird erwartet:
             
-:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png" alt-text="Screenshot der erwarteten Antwort auf den Powershell-Befehl":::
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png" alt-text="Screenshot der erwarteten Antwort auf den PowerShell-Befehl":::
 
 > [!NOTE] 
 > Proxy-Aspekte:

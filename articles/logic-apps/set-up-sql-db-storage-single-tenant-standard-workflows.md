@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2c88bc4adc49dfb5ddad3ccfd8f20267fc5a420d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5dd6f2d024055a75e350bfb5b0eee0e26c115193
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096106"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475804"
 ---
 # <a name="set-up-sql-database-storage-for-standard-logic-apps-in-single-tenant-azure-logic-apps-preview"></a>Einrichten des SQL-Datenbankspeichers für Standard-Logik-Apps in einer Azure Logic Apps-Instanz mit einem Mandanten (Vorschau)
 
@@ -21,7 +21,7 @@ ms.locfileid: "131096106"
 
 Wenn Sie den Ressourcentyp **Logik-App (Standard)** auswählen, um Workflows zu erstellen, die in Azure Logic Apps mit einem Mandanten, in der App Service-Umgebung v3 oder außerhalb von Azure ausgeführt werden, müssen Sie auch ein Azure Storage-Konto erstellen, um workflowbezogene Artefakte, Zustände und Laufzeitdaten zu speichern. Wenn Sie jedoch mehr Flexibilität und Kontrolle über die Laufzeitumgebung, den Durchsatz, die Skalierung, die Leistung und die Verwaltung Ihrer Logik-App-Workflows wünschen, können Sie den SQL Storage-Anbieter anstelle von Azure Storage für workflowbezogene Speichertransaktionen verwenden.
 
-Dieser Artikel bietet eine Übersicht darüber, warum Sie den SQL-Speicher als primären Speicheranbieter für Azure Logic Apps als Alternative zu Azure Storage verwenden sollten, und zeigt, wie Sie SQL für die Speicherverwendung entweder während der Erstellung der Logik-App im Azure-Portal oder während der Bereitstellung der Logik-App über Visual Studio Code einrichten.
+Dieser Abschnitt bietet eine Übersicht darüber, warum Sie den SQL-Speicher als primären Speicheranbieter für Azure Logic-Anwendungen (Apps) als Alternative zu Azure Storage verwenden sollten, und zeigt Ihnen, wie Sie SQL für die Speicherverwendung entweder während der Erstellung der Logic-Anwendung im Azure-Portal oder während der Bereitstellung der Logic-Anwendung über den Visual Studio Code einrichten.
 
 Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen in der folgenden Dokumentation:
 
@@ -146,7 +146,7 @@ Wenn Sie Ihre Logik-App mit dem Ressourcentyp **Logik-App (Standard)** in Azure 
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Das für Ihre Logik-App zu verwendende Azure-Abonnement. |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Die Azure-Ressourcengruppe, in der Sie Ihre Logik-App und zugehörige Ressourcen erstellen. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und darf nur Buchstaben, Ziffern, Bindestriche ( **-** ), Unterstriche ( **_** ), Klammern ( **()** ) und Punkte ( **.** ) enthalten. <p><p>In diesem Beispiel wird eine Ressourcengruppe namens `Fabrikam-Workflows-RG` erstellt. |
    | **Typ** | Ja | **Standard** | Dieser Typ von Logik-App-Ressource wird in der Azure Logic Apps-Umgebung mit einem einzelnen Mandanten ausgeführt und verwendet das [Nutzungs-, Abrechnungs- und Preismodell „Standard“](logic-apps-pricing.md#standard-pricing). |
-   | **Name der Logik-App** | Ja | <*logic-app-name*> | Der für Ihre Logik-App zu verwendende Name. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und darf nur Buchstaben, Ziffern, Bindestriche ( **-** ), Unterstriche ( **_** ), Klammern ( **()** ) und Punkte ( **.** ) enthalten. <p><p>In diesem Beispiel wird eine Logik-App namens `Fabrikam-Workflows` erstellt. <p><p>**Hinweis:** Der Name Ihrer Logik-App erhält automatisch das Suffix `.azurewebsites.net`, da die **Logik-App-Ressource (Standard)** von der Azure Logic Apps-Runtime mit einem Mandanten unterstützt wird, die das Azure Functions-Erweiterbarkeitsmodell verwendet und als Erweiterung auf der Azure Functions-Runtime gehostet wird. Azure Functions verwendet die gleiche Benennungskonvention für Apps. |
+   | **Name der Logik-App** | Ja | <*logic-app-name*> | Der für Ihre Logik-App zu verwendende Name. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und darf nur Buchstaben, Ziffern, Bindestriche ( **-** ), Unterstriche ( **_** ), Klammern ( **()** ) und Punkte ( **.** ) enthalten. <p><p>In diesem Beispiel wird eine Logik-App namens `Fabrikam-Workflows` erstellt. <p><p>**Hinweis:** Der Name Ihrer Logik-App erhält automatisch das Suffix `.azurewebsites.net`, da die **Logik-App -Ressource (Standard)** von der Azure Logic Apps-Runtime mit einem Mandanten unterstützt wird, die das Azure Functions-Erweiterbarkeitsmodell verwendet und als Erweiterung auf der Azure Functions-Runtime gehostet wird. Azure Functions verwendet die gleiche Benennungskonvention für Apps. |
    | **Veröffentlichen** | Ja | <*deployment-environment*> | Das Bereitstellungsziel für Ihre Logik-App. Standardmäßig ist **Workflow** für die Bereitstellung in einzelinstanzenfähigen Azure Logic Apps ausgewählt. Azure erstellt eine leere Logik-App-Ressource, in der Sie Ihren ersten Workflow hinzufügen müssen. <p><p>**Hinweis**: Derzeit erfordert die Option **Docker-Container** einen [*benutzerdefinierten Standort*](../azure-arc/kubernetes/conceptual-custom-locations.md) in einem Kubernetes-Cluster mit Azure Arc-Unterstützung, den Sie mit [Azure Arc-fähigen Logik-Apps (Preview)](azure-arc-enabled-logic-apps-overview.md) verwenden können. Die Ressourcenstandorte für Ihre Logik-App, der benutzerdefinierte Standort und der Cluster müssen alle identisch sein. |
    | **Region** | Ja | <*Azure-Region*> | Der Standort, der für die Erstellung Ihrer Ressourcengruppe und Ressourcen verwendet werden soll. In diesem Beispiel wird die Beispiel-Logik-App in Azure bereitgestellt, und es wird **USA, Westen** verwendet. <p>– Wenn Sie **Docker-Container** ausgewählt haben, wählen Sie Ihren benutzerdefinierten Standort aus. <p>– Wählen Sie zum Bereitstellen in einer [ASEv3](../app-service/environment/overview.md)-Ressource, die zuerst vorhanden sein muss, diese Umgebungsressource aus der Liste **Region** aus. |
    |||||

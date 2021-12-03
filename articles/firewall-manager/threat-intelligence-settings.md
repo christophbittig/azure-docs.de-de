@@ -7,16 +7,16 @@ ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7ede1c917bb44dd31aa59855a0b7c83eb478700a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 819509e08a5604957f01452e5c6ec33c20de2b2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651719"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297485"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Threat Intelligence-Konfiguration von Azure Firewall
 
-Das Filtern auf Basis von Threat Intelligence kann für Ihre Azure Firewall-Richtlinie konfiguriert werden, damit diese Sie vor Datenverkehr von und zu bekannten schädlichen IP-Adressen oder Domänen warnt und diesen verweigert. Die IP-Adressen und Domänen stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) und wird von mehreren Diensten einschließlich Azure Security Center verwendet.<br>
+Das Filtern auf Basis von Threat Intelligence kann für Ihre Azure Firewall-Richtlinie konfiguriert werden, damit diese Sie vor Datenverkehr von und zu bekannten schädlichen IP-Adressen oder Domänen warnt und diesen verweigert. Die IP-Adressen und Domänen stammen aus dem Microsoft Threat Intelligence-Feed. [Der Intelligente Sicherheitsgraph](https://www.microsoft.com/security/operations/intelligence) (Intelligent Security Graph) ist die Grundlage für Microsofts Bedrohungsanalyse und wird von mehreren Diensten genutzt, darunter Microsoft Defender für Cloud.<br>
 
 Wenn Sie Threat Intelligence-gestütztes Filtern konfiguriert haben, werden die zugehörigen Regeln vor allen anderen Regeln (NAT-Regeln, Netzwerkregeln oder Anwendungsregeln) verarbeitet.
 

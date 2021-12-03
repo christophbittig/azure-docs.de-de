@@ -6,33 +6,32 @@ ms.author: viseshag
 ms.service: purview
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: 8e6f9840f89d3e4c180da366f45548ef54a678dc
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: de0904275100f0d72dac8e401736ad276f1c928a
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042653"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401483"
 ---
 # <a name="access-control-in-azure-purview"></a>Zugriffssteuerung in Azure Purview
 
 Azure Purview verwendet **Sammlungen**, um den Zugriff auf seine Quellen, Ressourcen und anderen Artefakte zu organisieren und zu verwalten. In diesem Artikel werden Sammlungen und die Zugriffsverwaltung in Ihrem Azure Purview-Konto beschrieben.
 
-> [!NOTE]
-> Derzeit gelten diese Informationen nur für Purview-Konten, die **am oder nach dem 18. August 2021** erstellt wurden. Vor dem 18. August erstellte Instanzen können Sammlungen erstellen, aber keine Berechtigungen über diese Sammlungen verwalten. Informationen über die Zugriffssteuerung für Purview-Instanzen, die vor dem 18. August erstellt wurden, finden Sie im [**Leitfaden zu Legacyberechtigungen**](#legacy-permission-guide) am Ende dieses Artikels.
->
-> Alle Legacykonten erhalten in den kommenden Wochen automatisch ein Upgrade. Sie erhalten eine E-Mail-Benachrichtigung, wenn Ihr Purview-Konto aktualisiert wird. Informationen darüber, was sich bei einem Upgrade Ihres Kontos ändert, finden Sie in unserem Leitfaden zum [Upgrade von Konten](concept-account-upgrade.md).
-
 ## <a name="collections"></a>Auflistungen
 
 Eine Sammlung ist ein Tool, das in Azure Purview zum Gruppieren von Ressourcen, Quellen und anderen Artefakte in einer Hierarchie eingesetzt wird. Dies dient der verbesserten Auffindbarkeit und der Verwaltung der Zugriffssteuerung. Der gesamte Zugriff auf die Purview-Ressourcen wird über die Sammlungen im Purview-Konto verwaltet.
 
+> [!NOTE]
+> Ab dem 8. November 2021 ist ***Insights*** für Datenkuratoren zugänglich. Datenleser haben keinen Zugriff auf Insights.
+>
+>
 ## <a name="roles"></a>Rollen
 
 Azure Purview verwendet eine Reihe vordefinierter Rollen, um zu steuern, wer innerhalb des Kontos worauf zugreifen kann. Diese Rollen sind derzeit:
 
 - **Collection admin** (Sammlungsadministrator): Dies ist eine Rolle für Benutzer*innen, die anderen Benutzer*innen in Azure Purview Rollen zuweisen oder Sammlungen verwalten müssen. Sammlungsadministrator*innen können Benutzer*innen zu Rollen für Sammlungen hinzufügen, deren Administrator*innen sie sind. Darüber hinaus können sie Sammlungen und deren Details bearbeiten und untergeordnete Sammlungen hinzufügen.
 - **Datenkuratoren** - eine Rolle, die Zugriff auf den Datenkatalog bietet, um Assets zu verwalten, benutzerdefinierte Klassifizierungen zu konfigurieren, Glossarbegriffe einzurichten und Einblicke zu erhalten. Datenkuratoren können Assets erstellen, lesen, ändern, verschieben und löschen. Sie können auch Anmerkungen auf Assets anwenden.
-- **Datenleser** - eine Rolle, die nur Lesezugriff auf Datenbestände, Klassifizierungen, Klassifizierungsregeln, Sammlungen, Glossarbegriffe und Einblicke bietet.
+- **Datenleser** - eine Rolle, die nur Lesezugriff auf Datenbestände, Klassifizierungen, Klassifizierungsregeln, Sammlungen und Glossarbegriffe bietet.
 - **Datenquellen-Administratoren** - eine Rolle, die es einem Benutzer ermöglicht, Datenquellen und Scans zu verwalten. Ein Benutzer in der Rolle Datenquellen-Admin hat keinen Zugriff auf Azure Purview Studio. Die Kombination dieser Rolle mit den Rollen Datenleser oder Datenkurator in einem beliebigen Sammlungsbereich bietet Zugriff auf Azure Purview Studio.
 
 ## <a name="who-should-be-assigned-to-what-role"></a>Wem sollte welche Rolle zugewiesen werden?
@@ -42,8 +41,9 @@ Azure Purview verwendet eine Reihe vordefinierter Rollen, um zu steuern, wer inn
 |Ich muss Ressourcen nur finden können und möchte keine Bearbeitungen durchführen|Datenleseberechtigter|
 |Ich muss Informationen zu Ressourcen bearbeiten, entsprechende Klassifizierungen zuweisen, Glossareinträge dafür zuordnen usw.|Datenkurator|
 |Ich muss das Glossar bearbeiten oder neue Klassifizierungsdefinitionen einrichten|Datenkurator|
+|Ich muss Insights anzeigen, um den Governancestatus meines Datenbestands zu verstehen.|Datenkurator|
 |Der Dienstprinzipal meiner Anwendung muss Daten per Pushvorgang an Azure Purview übertragen|Datenkurator|
-|Ich muss Überprüfungen über das Studio-Feature von Purview einrichten|Datenquellenadministrator und mindestens Datenleser **oder** Datenkurator für die Sammlung, in der die Quelle registriert ist.|
+|Ich muss Überprüfungen über das Studio-Feature von Purview einrichten|Datenkurator **oder** Datenkurator **und** Datenquellenadministrator für die Sammlung, in der die Quelle registriert ist|
 |Ich muss einen Dienstprinzipal oder eine Gruppe aktivieren, um Überprüfungen in Azure Purview einzurichten und zu überwachen, ohne dass diese Zugriff auf die Informationen des Katalogs haben. |Datenquellenadministrator|
 |Ich muss Benutzern in Azure Purview Rollen zuweisen | Sammlungsadministrator |
 
@@ -64,6 +64,15 @@ Benutzer können einer Sammlung nur durch den Sammlungsadministrator hinzugefüg
 ## <a name="assign-permissions-to-your-users"></a>Zuweisen von Berechtigungen für Ihre Benutzer
 
 Nachdem Sie ein Azure Purview-Konto erstellt haben, müssen Sie als Nächstes Sammlungen erstellen und den Benutzern Rollen innerhalb dieser Sammlungen zuweisen.
+
+> [!NOTE]
+> Wenn Sie Ihr Azure Purview-Konto mithilfe eines Dienstprinzipals erstellt haben, um auf Purview Studio zugreifen und Benutzern Berechtigungen zuweisen zu können, müssen Sie einer Benutzersammlung Administratorberechtigungen für die Stammsammlung erteilen.
+> Sie können dafür [diesen Azure CLI-Befehl](/cli/azure/purview/account#az_purview_account_add_root_collection_admin) verwenden:
+>
+>   ```azurecli
+>   az purview account add-root-collection-admin --account-name --resource-group [--object-id]
+>   ```
+>
 
 ### <a name="create-collections"></a>Erstellen von Sammlungen
 
@@ -93,74 +102,6 @@ Ebenso wie bei den Rollen „Datenkurator“ und „Datenquellenadministrator“
 Die Rollenzuweisung wird über die Sammlungen verwaltet. Nur ein Benutzer mit der Rolle [Sammlungsadministrator](#roles) kann anderen Benutzern in dieser Sammlung Berechtigungen zuweisen. Wenn neue Berechtigungen hinzugefügt werden müssen, greift ein Sammlungsadministrator oder eine Sammlungsadministratorin auf [Purview Studio](https://web.purview.azure.com/resource/) zu und navigiert dort zu Data Map und dann zur Registerkarte „Sammlungen“. Dort wählt er bzw. sie die Sammlung aus, in der ein Benutzer oder eine Benutzerin hinzugefügt werden muss. Auf der Registerkarte „Rollenzuweisungen“ kann er Benutzer hinzufügen und verwalten, die Berechtigungen benötigen.
 
 Eine vollständige Anleitung finden Sie in unserer [Anleitung zum Hinzufügen von Rollenzuweisungen](how-to-create-and-manage-collections.md#add-role-assignments).
-
-## <a name="legacy-permission-guide"></a>Leitfaden zu Legacyberechtigungen
-
-> [!NOTE]
-> Dieser Leitfaden für Legacysammlungen gilt nur für Purview-Konten, die vor dem 18. August 2021 erstellt wurden. Für Instanzen, die nach diesem Zeitpunkt erstellt wurden, sollten Sie dem obigen Leitfaden folgen.
-
-In diesem Artikel wird beschrieben, wie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Purview-Ressourcen, die vor dem 18. August erstellt wurden, auf der [Datenebene](../azure-resource-manager/management/control-plane-and-data-plane.md#data-plane) von Azure Purview implementiert wird.
-
-> [!IMPORTANT]
-> Der Prinzipal, der ein Purview-Konto erstellt hat, erhält automatisch alle Datenebenenberechtigungen. Dies gilt unabhängig davon, welche Datenebenenrollen für den Prinzipal ggf. bereits vorhanden sind. Damit andere Benutzer Schritte in Azure Purview ausführen können, müssen sie mindestens über eine der vordefinierten Datenebenenrollen verfügen.
-
-### <a name="azure-purviews-pre-defined-legacy-data-plane-roles"></a>Vordefinierte Legacy-Datenebenenrollen von Azure Purview
-
-In Azure Purview wird eine Gruppe von vordefinierten Datenebenenrollen definiert, mit denen gesteuert werden kann, worauf Benutzer in Azure Purview zugreifen können. Die folgenden Rollen sind vorhanden:
-
-* **Rolle „Datenleseberechtigter für Purview“** : Verfügt über Zugriff auf das Purview-Portal und kann den gesamten Inhalt in Azure Purview lesen, mit Ausnahme von Scanbindungen.
-* **Rolle „Azure Purview-Datenkurator“** : Verfügt über Zugriff auf das Purview-Portal und kann den gesamten Inhalt in Azure Purview lesen (mit Ausnahme von Scanbindungen), Informationen zu Ressourcen sowie Klassifizierungsdefinitionen und Glossarbegriffe bearbeiten und Klassifizierungen und Glossarbegriffe auf Ressourcen anwenden.
-* **Rolle „Datenquellenadministrator für Purview“** : Verfügt nicht über Zugriff auf das Purview-Portal (der Benutzer muss auch über die Rolle „Datenleser“ oder „Datenkurator“ verfügen) und kann alle Aspekte der Datenüberprüfung in Azure Purview verwalten, verfügt aber weder über Schreib- noch über Lesezugriff auf den Inhalt in Azure Purview, der über das Überprüfen hinausgeht.
-
-### <a name="understand-how-to-use-azure-purviews-legacy-data-plane-roles"></a>Grundlegendes zur Verwendung der Legacy-Datenebenenrollen von Azure Purview
-
-Bei der Erstellung eines Azure Purview-Kontos wird der Ersteller so behandelt, als ob er sowohl über die Rolle „Datenkurator für Purview“ als auch die Rolle „Datenquellenadministrator für Purview“ verfügt. Im Rollenspeicher ist der Kontoersteller diesen Rollen jedoch nicht zugewiesen. Azure Purview erkennt, dass der Prinzipal der Ersteller des Kontos ist, und stellt diese Funktionen auf der Grundlage ihrer Identität zur Verfügung.
-
-Alle anderen Benutzer können das Azure Purview-Konto nur verwenden, wenn sie mindestens einer dieser Rollen zugewiesen werden. Dies bedeutet Folgendes: Nach der Erstellung eines Azure Purview-Kontos kann ausschließlich der Ersteller auf das Konto zugreifen und dessen APIs verwenden, bis die Benutzer mindestens einer der vorab definierten Rollen zugewiesen wurden.
-
-Beachten Sie, dass die Rolle „Datenquellenadministrator für Purview“ zwei unterstützte Szenarien aufweist. Das erste Szenario ist für Benutzer bestimmt, die bereits Datenleseberechtigter oder Datenkurator für Purview sind und auch die Berechtigung zum Erstellen von Überprüfungen benötigen. Diese Benutzer müssen über zwei Rollen verfügen, nämlich mindestens über eine der beiden Rollen „Datenleseberechtigter für Purview“ und „Datenkurator für Purview“ sowie zusätzlich über die Rolle „Datenquellenadministrator für Purview“.
-
-Das andere Szenario für „Datenquellenadministrator für Purview“ ist für programmgesteuerte Prozesse bestimmt, z. B. Dienstprinzipale, für die das Einrichten und Überwachen von Überprüfungen möglich sein soll, aber kein Zugriff auf die Daten des Katalogs.
-
-Dieses Szenario kann implementiert werden, indem dem Dienstprinzipal die Rolle „Datenquellenadministrator für Purview“ zugewiesen wird, ohne dass er über eine der beiden anderen Rollen verfügt. Der Prinzipal hat keinen Zugriff auf das Purview-Portal. Dies stellt aber kein Problem dar, weil es sich um einen programmgesteuerten Prinzipal handelt, der nur über APIs kommuniziert.
-
-### <a name="putting-users-into-legacy-roles"></a>Zuweisen von Legacy-Rollen für Benutzer
-
-Als Erstes müssen nach der Erstellung eines Azure Purview-Kontos Benutzern die Rollen zugewiesen werden.
-
-Die Rollenzuweisung wird über die [rollenbasierte Zugriffssteuerung (RBAC) von Azure](../role-based-access-control/overview.md) verwaltet.
-
-Rollen für Benutzer können nur über zwei integrierte Rollen der Steuerungsebene in Azure zugewiesen werden: entweder „Besitzer“ oder „Benutzerzugriffsadministrator“. Damit Benutzer über diese Rollen für Azure Purview verfügen, müssen sie sich also entweder an einen Besitzer oder Benutzerzugriffsadministrator wenden oder selbst eine dieser Rollen innehaben.
-
-#### <a name="an-example-of-assigning-someone-to-a-legacy-role"></a>Beispiel für die Zuweisung eines Benutzers zu einer Legacy-Rolle
-
-1. Navigieren Sie zu https://portal.azure.com und dann zu Ihrem Azure Purview-Konto.
-1. Klicken Sie auf der linken Seite auf **Zugriffssteuerung (IAM)** .
-1. Befolgen Sie dann [diese allgemeine Anleitung](../role-based-access-control/quickstart-assign-role-user-portal.md#create-a-resource-group).
-
-### <a name="legacy-role-definitions-and-actions"></a>Legacy-Rollendefinitionen und -aktionen
-
-Eine Rolle ist als eine Sammlung mit Aktionen definiert. Weitere Informationen zum Definieren von Rollen finden Sie [hier](../role-based-access-control/role-definitions.md). Die Rollendefinitionen für die Azure Purview-Rollen finden Sie [hier](../role-based-access-control/built-in-roles.md).
-
-### <a name="getting-added-to-a-legacy-data-plane-role-in-an-azure-purview-account"></a>Erreichen der Hinzufügung zu einer Legacy-Datenebenenrolle in einem Azure Purview-Konto
-
-Wenn Sie Zugriff auf ein Azure Purview-Konto erhalten möchten, damit Sie das Studio-Feature nutzen oder die zugehörigen APIs aufrufen können, müssen Sie einer Datenebenenrolle von Azure Purview hinzugefügt werden. Dies kann nur von Personen durchgeführt werden, die ein Besitzer oder Benutzerzugriffsadministrator des Azure Purview-Kontos sind. Für die meisten Benutzer ist der nächste Schritt dann die Kontaktaufnahme mit einem lokalen Administrator, der die richtigen Personen für die Erteilung des Zugriffs nennen kann.
-
-Benutzer*innen, die Zugriff auf das [Azure-Portal](https://portal.azure.com) ihres Unternehmens haben, können nach dem Azure Purview-Konto suchen, dem sie beitreten möchten, dann auf die zugehörige Registerkarte **Zugriffssteuerung (IAM)** klicken und so die jeweiligen Besitzer*innen bzw. Benutzerzugriffsadministrator*innen ermitteln. Beachten Sie hierbei aber Folgendes: In einigen Fällen werden unter Umständen Azure Active Directory-Gruppen oder Dienstprinzipale als Besitzer oder Benutzerzugriffsadministrator verwendet, mit denen eine direkte Kontaktaufnahme dann ggf. nicht möglich ist. Stattdessen müssen Sie sich an einen Administrator wenden.
-
-### <a name="legacy---who-should-be-assigned-to-what-role"></a>Legacy: Wem sollte welche Rolle zugewiesen werden?
-
-|Benutzerszenario|Geeignete Rollen|
-|-------------|-----------------|
-|Ich muss Ressourcen nur finden können und möchte keine Bearbeitungen durchführen|Rolle „Datenleseberechtigter für Purview“|
-|Ich muss Informationen zu Ressourcen bearbeiten, entsprechende Klassifizierungen einfügen, Glossareinträge dafür zuordnen usw.|Rolle „Datenkurator für Purview“|
-|Ich muss das Glossar bearbeiten oder neue Klassifizierungsdefinitionen einrichten|Rolle „Datenkurator für Purview“|
-|Der Dienstprinzipal meiner Anwendung muss Daten per Pushvorgang an Azure Purview übertragen|Rolle „Datenkurator für Purview“|
-|Ich muss Überprüfungen über das Studio-Feature von Purview einrichten|Rolle „Datenquellenadministrator für Purview“ sowie mindestens die Rolle „Datenleseberechtigter für Purview“ oder „Datenkurator für Purview“|
-|Ich muss einen Dienstprinzipal oder eine andere programmgesteuerte Identität aktivieren, um Überprüfungen in Azure Purview einzurichten und zu überwachen, ohne dass die programmgesteuerte Identität Zugriff auf die Informationen des Katalogs hat |Rolle „Datenquellenadministrator für Purview“|
-|Ich muss Benutzern in Azure Purview Rollen zuweisen | „Besitzer“ oder „Benutzerzugriffsadministrator“ |
-
-:::image type="content" source="./media/catalog-permissions/collection-permissions-roles-legacy.png" alt-text="Diagramm mit Purview-Legacyrollen" lightbox="./media/catalog-permissions/collection-permissions-roles-legacy.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.subservice: automatic-os-upgrade
 ms.date: 07/29/2021
 ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e9e814ad43d157d69fee2b70eaaccbadf23f4fa2
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: f4b5c58eb8811db9042d92416c4c37fa30234149
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690515"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432945"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 
@@ -27,7 +27,7 @@ Das automatische Betriebssystemupgrade weist folgende Merkmale auf:
 - Nach der Konfiguration wird das neueste von den Imageherausgebern veröffentlichte Betriebssystemimage automatisch ohne Benutzereingriff auf die Skalierungsgruppe angewendet.
 - Aktualisiert Batches von Instanzen immer parallel, wenn ein neues Image vom Herausgeber veröffentlicht wird.
 - Wird in Anwendungsintegritätstests und [Anwendungsintegritätserweiterung](virtual-machine-scale-sets-health-extension.md) integriert.
-- Funktioniert für alle VM-Größen und sowohl für Windows als auch für Linux-Images, einschließlich benutzerdefinierter Images über [Shared Image Gallery](../virtual-machines/shared-image-galleries.md).
+- Funktioniert für alle Formate von virtuellen Computern, sowohl für Windows- als auch für Linux-Images, einschließlich benutzerdefinierter Images über die [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md).
 - Sie können automatische Upgrades jederzeit abwählen (Betriebssystemupgrades können auch manuell initiiert werden).
 - Der Betriebssystemdatenträger eines virtuellen Computers wird durch den neuen, mit der neuesten Imageversion erstellten Betriebssystemdatenträger ersetzt. Konfigurierte Erweiterungen und benutzerdefinierte Datenskripts werden ausgeführt, wobei persistente Datenträger weiterhin aufbewahrt werden.
 - [Erweiterungssequenzierung](virtual-machine-scale-sets-extension-sequencing.md) wird unterstützt.
@@ -55,7 +55,7 @@ Das im Folgenden beschriebene Verfügbarkeitsmodell für plattformorchestrierte 
 - Alle VMs in einer gemeinsamen Skalierungsgruppe werden nicht gleichzeitig aktualisiert.  
 - VMs in einer gemeinsamen VM-Skalierungsgruppe werden in Batches gruppiert und innerhalb der Grenzen von Upgradedomänen aktualisiert (siehe folgende Beschreibung).
 
-Der Prozess der plattformorchestrierten Updates wird ausgeführt, um jeden Monat unterstützte Upgrades von Betriebssystemplattformimages auszuführen. Bei benutzerdefinierten Images über Shared Image Gallery wird ein Imageupgrade nur für eine bestimmte Azure-Region gestartet, wenn das neue Image veröffentlicht und in die Region dieser Skalierung gruppe [repliziert](../virtual-machines/shared-image-galleries.md#replication) wird.
+Der Prozess der plattformorchestrierten Updates wird ausgeführt, um jeden Monat unterstützte Upgrades von Betriebssystemplattformimages auszuführen. Bei benutzerdefinierten Images über Azure Compute Gallery wird ein Imageupgrade nur für eine bestimmte Azure-Region gestartet, wenn das neue Image veröffentlicht und in die Region dieser Skalierungsgruppe [repliziert](../virtual-machines/shared-image-galleries.md#replication) wird.
 
 ### <a name="upgrading-vms-in-a-scale-set"></a>Upgraden von virtuellen Computern in einer Skalierungsgruppe
 
@@ -73,7 +73,7 @@ Der Upgradeorchestrator für das Skalierungsgruppen-Betriebssystem überprüft d
 >Das automatische Betriebssystemupgrade führt kein Upgrade der Referenzimage-SKU für die Skalierungsgruppe durch. Um die SKU zu ändern (z. B. Ubuntu 16.04-LTS auf 18.04-LTS), müssen Sie das [Skalierungsgruppenmodell](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) direkt mit der gewünschten Image-SKU aktualisieren. Imageherausgeber und Angebot können bei einer vorhandenen Skalierungsgruppe nicht geändert werden.  
 
 ## <a name="supported-os-images"></a>Unterstützte Betriebssystemimages
-Derzeit werden nur bestimmte Betriebssystemplattform-Images unterstützt. Benutzerdefinierte Images [werden unterstützt](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images), wenn die Skalierungsgruppe benutzerdefinierte Images über [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) nutzt.
+Derzeit werden nur bestimmte Betriebssystemplattform-Images unterstützt. Benutzerdefinierte Images [werden unterstützt](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images), wenn die Skalierungsgruppe benutzerdefinierte Images über [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) nutzt.
 
 Derzeit werden die folgenden Plattform-SKUs unterstützt (weitere werden regelmäßig hinzugefügt):
 
@@ -116,11 +116,11 @@ Stellen Sie sicher, dass die Dauerhaftigkeitseinstellungen im Service Fabric-Clu
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>Automatisches Upgrade von Betriebssystemimages für benutzerdefinierte Images
 
-Das automatische Upgrade von Betriebssystemimages für benutzerdefinierte Images wird für benutzerdefinierte Images unterstützt, die über [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) bereitgestellt wurden. Andere benutzerdefinierte Images werden für automatische Upgrades von Betriebssystemimages nicht unterstützt.
+Das automatische Upgrade von Betriebssystemimages wird für benutzerdefinierte Images unterstützt, die über [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) bereitgestellt wurden. Andere benutzerdefinierte Images werden für automatische Upgrades von Betriebssystemimages nicht unterstützt.
 
 ### <a name="additional-requirements-for-custom-images"></a>Weitere Anforderungen für benutzerdefinierte Images
 - Der Einrichtungs- und Konfigurationsprozess für das automatische Upgrade von Betriebssystemimages ist für alle Skalierungsgruppen identisch (siehe Beschreibung im [Konfigurationsabschnitt](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) dieser Seite).
-- Skalierungsgruppeninstanzen, die für automatische Upgrades von Betriebssystemimages konfiguriert sind, werden auf die neueste Version des Shared Image Gallery-Images aktualisiert, wenn eine neue Version des Images veröffentlicht und in die Region der betreffenden Skalierungsgruppe [repliziert](../virtual-machines/shared-image-galleries.md#replication) wird. Wenn das neue Image nicht in der Region repliziert wird, in der die Skalierung bereitgestellt wird, erfolgt kein Upgrade der Skalierungsgruppeninstanzen auf die neueste Version. Die regionale Imagereplikation ermöglicht es Ihnen, das Rollout des neuen Images für Ihre Skalierungsgruppen zu steuern.
+- Skalierungsgruppeninstanzen, die für automatische Upgrades von Betriebssystemimages konfiguriert sind, werden auf die neueste Version des Azure-Compute-Gallery-Images aktualisiert, wenn eine neue Version des Images veröffentlicht und in die Region der dieser Skalierungsgruppe [repliziert](../virtual-machines/shared-image-galleries.md#replication) wird. Wenn das neue Image nicht in der Region repliziert wird, in der die Skalierung bereitgestellt wird, erfolgt kein Upgrade der Skalierungsgruppeninstanzen auf die neueste Version. Die regionale Imagereplikation ermöglicht es Ihnen, das Rollout des neuen Images für Ihre Skalierungsgruppen zu steuern.
 - Die neue Imageversion sollte nicht aus der aktuellen Version für das betreffende Katalogimage ausgeschlossen werden. Für Imageversionen, die aus der aktuellen Version des Katalogimages ausgeschlossen werden, erfolgt durch das automatische Upgrade von Betriebssystemimages kein Rollout in der Skalierungsgruppe.
 
 > [!NOTE]

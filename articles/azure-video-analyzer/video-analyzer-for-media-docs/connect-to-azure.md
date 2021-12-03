@@ -1,23 +1,37 @@
 ---
-title: Erstellen eines mit Azure verbundenen Kontos für Azure Video Analyzer for Media (früher Video Indexer)
+title: Erstellen eines mit Azure verbundenen Kontos für Azure Video Analyzer for Media (vormals Video Indexer)
 description: Erfahren Sie, wie Sie ein mit Azure verbundenes Konto für Azure Video Analyzer for Media (früher Video Indexer) erstellen.
 ms.topic: tutorial
-ms.date: 01/14/2021
-ms.author: juliako
-ms.openlocfilehash: 13bf5c4eb6fc34848e90b80eb7cd242abf8824c9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/19/2021
+ms.author: itnorman
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8411add44f96d38778a589dcb59bf89142e97f80
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662134"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312640"
 ---
 # <a name="create-a-video-analyzer-for-media-account"></a>Erstellen eines Video Analyzer for Media-Kontos
 
-Beim Erstellen eines Kontos für Azure Video Analyzer for Media (früher Video Analyzer) können Sie ein kostenloses Testkonto (für das Sie eine bestimmte Anzahl von kostenlosen Indizierungsminuten erhalten) oder eine kostenpflichtige Option (bei der Sie nicht aufgrund des Kontingents begrenzt sind) wählen. Bei der kostenlosen Testversion stellt der Video Analyzer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Analyzer for Media-Konto, das mit Ihrem Azure-Abonnement verbunden ist. Sie bezahlen pro Minute Indizierungszeit. Weitere Informationen finden Sie unter [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).
+Beim Erstellen eines Kontos für Azure Video Analyzer for Media (vormals Video Indexer) können Sie ein kostenloses Testkonto (für das Sie eine bestimmte Anzahl von kostenlosen Indizierungsminuten erhalten) oder eine kostenpflichtige Option (ohne Kontingentgrenze) auswählen. Bei der kostenlosen Testversion von Video Analyzer for Media erhalten Benutzer bis zu 600 kostenlose Indizierungsminuten bzw. bis zu 2.400 kostenlose Indizierungsminuten, wenn sie die Video Analyzer-API im [Entwicklerportal](https://aka.ms/avam-dev-portal) abonnieren. Bei den kostenpflichtigen Optionen können für Azure Video Analyzer for Media zwei Arten von Konten genutzt werden: klassische Konten (allgemeine Verfügbarkeit) und ARM-basierte Konten (Public Preview). Der Hauptunterschied zwischen den beiden Konten besteht in der Verwaltungsplattform. Während klassische Konten auf API Management beruhen, baut die ARM-basierte Kontoverwaltung auf Azure auf und ermöglicht die native Anwendung der Zugriffssteuerung auf alle Dienste mit rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC).
 
-In diesem Artikel wird gezeigt, wie Sie ein Video Analyzer for Media-Konto erstellen, das mit einem Azure-Abonnement und einem Azure Media Services-Konto verknüpft ist. Außerdem werden die Schritte zur Verbindungsherstellung mit Azure unter Verwendung des automatischen Flows (Standard) vorgestellt. Darüber hinaus wird gezeigt, wie Sie eine manuelle Verbindung mit Azure herstellen (erweitert).
+* Sie können ein **klassisches** Video Analyzer for Media-Konto über unsere [API](https://aka.ms/avam-dev-portal) erstellen.
 
-Wenn Sie von einem *Testkonto* zu einem *kostenpflichtigen* Konto für Video Analyzer for Media wechseln, haben Sie die Möglichkeit, alle Videos und Modellanpassungen in das neue Konto zu kopieren, wie im Abschnitt [Importieren Ihrer Inhalte aus dem Testkonto](#import-your-content-from-the-trial-account) erörtert.
+* Sie können ein **ARM-basiertes** Video Analyzer for Media-Konto erstellen, indem Sie eines der folgenden Verfahren verwenden:
+
+  1.  [Video Analyzer for Media-Portal](https://aka.ms/vi-portal-link)
+
+  2.  [Azure-Portal](https://ms.portal.azure.com/#home)
+
+  3.  [Schnellstart für ARM-Vorlage](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/ARM-Samples/Create-Account)
+
+### <a name="to-read-more-on-how-to-create-a-new-arm-based-video-analyzer-for-media-account-read-this-article"></a>Weitere Informationen zum Erstellen eines **neuen ARM-basierten** Video Analyzer for Media-Kontos finden Sie in [diesem Artikel](create-video-analyzer-for-media-account.md).
+
+## <a name="how-to-create-classic-accounts"></a>Erstellen von klassischen Konten
+In diesem Artikel wird veranschaulicht, wie Sie ein klassisches Video Analyzer for Media-Konto erstellen. Außerdem werden die Schritte zur Verbindungsherstellung mit Azure unter Verwendung des automatischen Flows (Standard) vorgestellt. Darüber hinaus wird gezeigt, wie Sie eine manuelle Verbindung mit Azure herstellen (erweitert).
+
+Wenn Sie von einem *Testkonto* zu einem *kostenpflichtigen ARM-basierten* Konto für Video Analyzer for Media wechseln, haben Sie die Möglichkeit, alle Videos und Modellanpassungen in das neue Konto zu kopieren. Dies ist im Abschnitt [Importieren Ihrer Inhalte aus dem Testkonto](#import-your-content-from-the-trial-account) beschrieben.
 
 Der Artikel behandelt auch das [Verknüpfen eines Video Analyzer for Media-Kontos mit Azure Government](#video-analyzer-for-media-in-azure-government).
 
@@ -55,49 +69,12 @@ Der Artikel behandelt auch das [Verknüpfen eines Video Analyzer for Media-Konto
 
     ![EventGrid](./media/create-account/event-grid.png)
 
-## <a name="create-a-new-account-on-azure"></a>Erstellen eines neuen Kontos in Azure 
-
-> [!NOTE]
-> Wenn für Ihr Azure-Abonnement die zertifikatbasierte mehrstufige Authentifizierung verwendet wird, ist es wichtig, die folgenden Schritte auf einem Gerät auszuführen, auf dem die erforderlichen Zertifikate installiert sind.
-
-1. Navigieren Sie zur [Video Analyzer for Media](https://www.videoindexer.ai/)-Website und melden Sie sich an.
-1. Klicken Sie auf die Schaltfläche **Uneingeschränktes Konto erstellen**:
-
-    ![Erstellen eines neuen Video Analyzer for Media-Kontos](./media/create-account/create-unlimited-account.png)
-1. Wenn die Liste mit den Abonnements angezeigt wird, können Sie das gewünschte Abonnement auswählen.
-
-    ![Verbinden von Video Analyzer for Media mit Azure](./media/create-account/new-account-on-azure-subscription.png)
-1. Wählen Sie aus den unterstützten Standorten eine Azure-Region aus: „USA, Westen 2“, „Europa, Norden“ oder „Asien, Osten“.
-1. Wählen Sie unter **Azure Media Services-Konto** eine dieser Optionen:
-
-    * Wählen Sie **Neue Ressourcengruppe erstellen**, um ein neues Media Services-Konto zu erstellen. Geben Sie einen Namen für Ihre Ressourcengruppe an.
-
-        Azure erstellt Ihr neues Konto unter Ihrem Abonnement, einschließlich eines neuen Azure Storage-Kontos.  
-    * Wählen Sie **Vorhandene Ressource verwenden**, um ein vorhandenes Media Services-Konto zu verwenden. Wählen Sie Ihr Konto in der Liste mit den Konten aus.
-
-        Ihr Media Services-Konto muss dieselbe Region wie Ihr Video Analyzer for Media-Konto aufweisen.
-
-        > [!NOTE]
-        > Um die Indizierungsdauer zu reduzieren und den Durchsatz zu verbessern, wird dringend empfohlen, den Typ und die Anzahl von [reservierten Einheiten](../../media-services/previous/media-services-scale-media-processing-overview.md ) in Ihrem Media Services-Konto auf **10 reservierte S3-Einheiten** festzulegen. Siehe [Verwenden des Portals zum Ändern der reservierten Einheiten](../../media-services/previous/media-services-portal-scale-media-processing.md). Die reservierten Einheiten werden für Ihr Konto in Rechnung gestellt. Weitere Informationen finden Sie bei den [Preisdetails](https://azure.microsoft.com/pricing/details/media-services/#analytics).
-    * Um Ihre Verbindung manuell zu konfigurieren, wählen Sie den Link **Zur manuellen Konfiguration wechseln** aus.
-
-        Ausführliche Informationen finden Sie im nachstehenden Abschnitt [Manuelle Verbindungsherstellung mit Azure (erweiterte Option)](#connect-to-azure-manually-advanced-option).
-1. Wenn Sie fertig sind, wählen Sie **Erstellen** aus. Dieser Vorgang kann einige Minuten dauern.
-
-    Nachdem Sie die Verbindung mit Azure hergestellt haben, wird Ihr neues Video Analyzer for Media-Konto in der Kontoliste angezeigt:
-
-    ![Neues Konto](./media/create-account/new-account.png)
-1. Stellen Sie sicher, dass der Streamingendpunkt des Media Services-Kontos aktiv ist, damit Sie Ihre Videos in der Video Analyzer for Media-Web-App wiedergeben können. (Klicken Sie auf „Starten“, wenn er angehalten ist.)
-
-> [!TIP]
-> Wechseln Sie zu **Einstellungen**, um einen benutzerfreundlichen Anzeigenamen für Ihr Konto festzulegen.
-
 ## <a name="connect-to-azure-manually-advanced-option"></a>Manuelle Verbindungsherstellung mit Azure (erweiterte Option)
 
 Wenn die Verbindungsherstellung mit Azure nicht erfolgreich war, können Sie versuchen, das Problem über eine manuelle Verbindungsherstellung zu beheben.
 
 > [!NOTE]
-> Die folgenden drei Konten sollten unbedingt in derselben Region vorhanden sein: das Video Analyzer for Media-Konto, dessen Verbindung mit dem Media Services-Konto Sie herstellen, sowie das mit demselben Media Services-Konto verbundene Azure Storage-Konto.
+> Es ist obligatorisch, dass sich die folgenden drei Konten in derselben Region befinden: das Video Analyzer for Media-Konto, für das Sie die Verbindung mit dem Media Services-Konto herstellen, und das mit demselben Media Services-Konto verbundene Azure Storage-Konto.
 
 ### <a name="create-and-configure-a-media-services-account"></a>Erstellen und Konfigurieren eines Media Services-Konto
 
@@ -114,9 +91,7 @@ Wenn die Verbindungsherstellung mit Azure nicht erfolgreich war, können Sie ver
 
     > [!NOTE]
     > Notieren Sie sich die Media Services-Ressource und die Kontonamen. Sie benötigen diese Informationen für die Schritte im nächsten Abschnitt.
-1. Ändern Sie den Typ und die Anzahl von [reservierten Einheiten](../../media-services/previous/media-services-scale-media-processing-overview.md ) im erstellten Media Services-Konto in **10 reservierte S3-Einheiten**. Siehe [Verwenden des Portals zum Ändern der reservierten Einheiten](../../media-services/previous/media-services-portal-scale-media-processing.md).
 
-    Die reservierten Einheiten werden für Ihr Konto in Rechnung gestellt. Weitere Informationen finden Sie bei den [Preisdetails](https://azure.microsoft.com/pricing/details/media-services/#analytics).
 1. Damit Sie Ihre Videos in der Video Analyzer for Media-Web-App abspielen können, müssen Sie den standardmäßigen **Streamingendpunkt** des neuen Media Services-Kontos starten.
 
     Wählen Sie im neuen Media Services-Konto **Streamingendpunkte** aus. Wählen Sie dann den Streamingendpunkt aus, und klicken Sie auf „Starten“.
@@ -153,12 +128,27 @@ Geben Sie im Dialogfeld die folgenden Informationen ein:
 
 ### <a name="import-your-content-from-the-trial-account"></a>Importieren Ihrer Inhalte aus dem *Testkonto*
 
-Beim Erstellen eines neuen Kontos haben Sie die Möglichkeit, Ihre Inhalte aus dem *Testkonto* in das neue Konto zu importieren. Wenn Sie die Option *Importieren* im Dialogfeld **Neues Konto für ein Azure-Abonnement erstellen** aktivieren, werden alle Medien und Inhaltsmodellanpassungen aus dem *Testkonto* in das neue Konto kopiert.
+Beim Erstellen eines neuen **ARM-basierten** Kontos haben Sie die Möglichkeit, Ihre Inhalte aus dem *Testkonto* kostenlos in das neue **ARM-basierte** Konto zu importieren.
+> [!NOTE]
+> * Der Import aus der Testversion kann nur einmal pro Testkonto durchgeführt werden.
+> * Das ARM-basierte Zielkonto muss erstellt worden und verfügbar sein, bevor der Import zugewiesen wird.  
+> * Das ARM-basierte Zielkonto muss ein leeres Konto sein (keinerlei Indizierung von Mediendateien).
 
-Die Möglichkeit, den Inhalt zu importieren, gilt für den oben beschriebenen automatisierten Ansatz ebenso wie für den manuellen.
+Führen Sie die folgenden Schritte aus, um Ihre Daten zu importieren:
+ 1. Navigieren Sie zum [Azure Video Analyzer for Media-Portal](https://aka.ms/vi-portal-link).
+ 2. Wählen Sie Ihr Testkonto aus, und navigieren Sie zur Seite *Kontoeinstellungen*.
+ 3. Klicken Sie auf *Inhalte in ein ARM-basiertes Konto importieren*.
+ 4. Wählen Sie im Dropdownmenü das ARM-basierte Konto aus, in das Sie die Daten importieren möchten.
+   * Falls die Konto-ID nicht angezeigt wird, können Sie sie aus dem Azure-Portal oder der Kontoliste kopieren, die sich im Azure Video Analyzer for Media-Portal auf dem seitlich angeordneten Blatt befindet.
+ 5. Klicken Sie auf **Inhalt importieren**.  
+
+![import](./media/create-account/import-steps.png)
+
+
+Alle Anpassungen der Medien und des Inhaltsmodells werden aus dem *Testkonto* in das neue ARM-basierte Konto kopiert.
+
 
 > [!NOTE]
-> Der Inhalt kann aus jedem Konto nur einmal importiert werden.
 >
 > Das *Testkonto* ist in der Azure Government-Cloud nicht verfügbar.
 

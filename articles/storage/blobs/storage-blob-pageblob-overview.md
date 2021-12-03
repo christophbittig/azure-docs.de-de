@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58509ca09bc17911d4a1a16955f97396c082e7de
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 43533fd7d770c9c21b1468412d4bae203a5bd31a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273115"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449239"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Übersicht über Azure-Seitenblobs
 

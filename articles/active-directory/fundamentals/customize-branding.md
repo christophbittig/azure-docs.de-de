@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cd3cbfd92f3448bd8b494b579a641bfb580ecd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0b014cc8fb1c6ca2e318125aeaefed34950175eb
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131052444"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578009"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Microsoft 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
@@ -34,7 +34,7 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
 > [!NOTE]
 > **Alle Brandingelemente sind optional und bleiben standardmäßig unverändert.** Wenn Sie beispielsweise ein Bannerlogo ohne Hintergrundbild angeben, wird auf der Anmeldeseite Ihr Logo mit einem Standardhintergrundbild der Zielwebsite (z. B. Microsoft 365) angezeigt.<br><br>Darüber hinaus wird das Branding von Anmeldeseiten nicht für persönliche Microsoft-Konten übernommen. Wenn sich Ihre Benutzer oder Gäste des Unternehmens mit einem persönlichen Microsoft-Konto anmelden, wird auf der Anmeldeseite das Branding Ihrer Organisation nicht angezeigt.
 
-### <a name="to-customize-your-branding"></a>So passen Sie Ihr Branding an
+### <a name="to-configure-your-branding-for-the-first-time"></a>So konfigurieren Sie Ihr Branding zum ersten Mal
 1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Wählen Sie **Azure Active Directory** aus, dann **Unternehmensbranding** und schließlich **Konfigurieren**.
@@ -102,7 +102,7 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
 
 3. Nachdem Sie mit dem Hinzufügen Ihres Brandings fertig sind, wählen Sie **Speichern** aus.
 
-    Wenn dieser Prozess Ihre erste benutzerdefinierte Brandingkonfiguration erstellt, wird sie der Standard für Ihren Mandanten. Wenn Sie zusätzliche Konfigurationen haben, können Sie Ihre Standardkonfiguration auswählen.
+    Wird in diesem Vorgang Ihre erste benutzerdefinierte Brandingkonfiguration erstellt, wird sie als Standard für Ihren Mandanten definiert. Die benutzerdefinierte Standardbrandingkonfiguration dient als Fallbackoption für alle sprachspezifischen Brandingkonfigurationen. Die Konfiguration kann nach der Erstellung nicht mehr entfernt werden.
     
     >[!IMPORTANT]
     >Um Ihrem Mandanten weitere Unternehmensbrandingkonfigurationen hinzuzufügen, müssen Sie **Neue Sprache** auf der Seite **Contoso – Unternehmensbranding** auswählen. Hierdurch wird die Seite **Unternehmensbranding konfigurieren** geöffnet, auf der Sie dieselben Schritte wie oben ausführen können.

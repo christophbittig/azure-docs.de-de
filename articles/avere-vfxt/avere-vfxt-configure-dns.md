@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: rohogue
-ms.openlocfilehash: e1567cbd90bcb97088e7527cf7cd76ce3895e958
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 26f85b4d3a2cc49e55d228fbd73ae7cb3b66bf5d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668965"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337868"
 ---
 # <a name="avere-cluster-dns-configuration"></a>DNS-Konfiguration des Avere-Clusters
 
@@ -84,4 +84,4 @@ Geben Sie auf der Einstellungsseite **Cluster** > **Verwaltungsnetzwerk** den DN
 * DNS-Domänenname
 * DNS-Suchdomänen
 
-Weitere Informationen zur Verwendung dieser Seite finden Sie in der Anleitung zur Konfiguration des Avere-Clusters unter [DNS-Einstellungen](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>).
+Weitere Informationen zur Verwendung dieser Seite finden Sie in der Anleitung zur Konfiguration des Avere-Clusters unter [DNS-Einstellungen](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns).

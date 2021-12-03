@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4935bb8c44c2f3d6d1a17a8c1f2ba897178d1606
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: f0f42b37c40a3a3a2ecda4115ebc7729fc686671
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069499"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473963"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Event Grid-Bindungen für Azure Functions
 
@@ -50,28 +50,21 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 
 #### <a name="event-grid-extension-3x-and-higher"></a>Event Grid-Erweiterung 3.x und höher
 
-Eine neue Version der Event Grid-Bindungserweiterung ist als Vorschau verfügbar. Für .NET-Anwendungen werden die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `Microsoft.Azure.EventGrid.Models` durch neuere Typen aus [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) ersetzt. [Cloudereignisse](/dotnet/api/azure.messaging.cloudevent) werden auch in der neuen Event Grid-Erweiterung unterstützt.
+Eine neue Version der Event Grid-Bindungserweiterung ist jetzt verfügbar. Für .NET-Anwendungen werden die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `Microsoft.Azure.EventGrid.Models` durch neuere Typen aus [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) ersetzt. [Cloudereignisse](/dotnet/api/azure.messaging.cloudevent) werden auch in der neuen Event Grid-Erweiterung unterstützt.
 
-Diese Erweiterungsversion ist als [NuGet-Vorschaupaket] verfügbar oder kann aus dem Vorschauerweiterungspaket v3 hinzugefügt werden, indem Sie Folgendes in Ihrer Datei `host.json` hinzufügen:
+Diese Erweiterungsversion ist nach der Installation des [NuGet-Pakets] Version 3.x verfügbar oder kann aus dem Erweiterungspaket v3 hinzugefügt werden, indem Sie Folgendes in Ihrer Datei `host.json` hinzufügen:
 
 ```json
 {
   "version": "2.0",
   "extensionBundle": {
-    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
-    "version": "[3.*, 4.0.0)"
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[3.3.0, 4.0.0)"
   }
 }
 ```
 
-Weitere Informationen finden Sie unter [Aktualisieren Ihrer Erweiterungen].
-
-[NuGet-Vorschaupaket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/3.0.0-beta.4
-[core tools]: ./functions-run-local.md
-[Erweiterungspaket]: ./functions-bindings-register.md#extension-bundles
-[NuGet-Paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
-[Aktualisieren Ihrer Erweiterungen]: ./functions-bindings-register.md
-[Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
+Weitere Informationen finden Sie unter [Aktualisierung Ihrer Erweiterungen].
 
 ### <a name="functions-1x"></a>Functions 1.x
 

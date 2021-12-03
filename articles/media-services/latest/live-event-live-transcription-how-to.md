@@ -16,16 +16,7 @@ In diesem Artikel wird beschrieben, wie Sie Livetranskription aktivieren, wenn S
 
 ## <a name="live-transcription-preview-regions-and-languages"></a>Regionen und Sprachen der Livetranskriptions-Vorschauversion
 
-Livetranskription ist in den folgenden Regionen verfügbar:
-
-- Asien, Südosten
-- Europa, Westen
-- Nordeuropa
-- East US
-- USA (Mitte)
-- USA Süd Mitte
-- USA, Westen 2
-- Brasilien Süd
+Livetranskription ist in den [hier](azure-clouds-regions.md) dokumentierten Regionen verfügbar.
 
 Dies ist die Liste der verfügbaren Sprachen, die transkribiert werden können. Verwenden Sie dazu den Sprachcode in der API.
 

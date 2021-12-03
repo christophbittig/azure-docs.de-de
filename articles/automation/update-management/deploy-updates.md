@@ -3,14 +3,14 @@ title: Erstellen von Updatebereitstellungen für die Azure Automation-Updateverw
 description: In diesem Artikel wird beschrieben, wie Sie Updatebereitstellungen planen und deren Status anzeigen.
 services: automation
 ms.subservice: update-management
-ms.date: 08/25/2021
+ms.date: 11/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: 993fcf45b983fef972a7201b4ffed60e8da99555
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 6830c06de1fc687f8c408d438086f6c08550d9f0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715076"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551404"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Bereitstellen von Updates und Überprüfen von Ergebnissen
 
@@ -98,7 +98,7 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
 
    * Wenn Sie nur eine bestimmte Liste von Updates installieren möchten, sollten Sie keine **Updateklassifizierungen** auswählen und eine Liste der Updates angeben, die mit der Option **Einschließen** angewandt werden sollen.
 
-   * Wenn Sie nur Sicherheits- und kritische Updates zusammen mit mindestens einem optionalen Treiberupdate installieren möchten, sollten Sie unter **Updateklassifizierungen** die Optionen **Sicherheitsupdates** und **Wichtige Updates** auswählen. Geben Sie dann unter der Option **Einschließen** die entsprechenden Treiberupdates an.
+   * Wenn Sie nur Sicherheits- und kritische Updates zusammen mit mindestens einem optionalen Update installieren möchten, sollten Sie unter **Updateklassifizierungen** die Optionen **Sicherheitsupdates** und **Wichtige Updates** auswählen. Geben Sie dann für die Option **Einschließen** die KBIDs für die optionalen Updates an.
 
    * Wenn Sie nur Sicherheits- und kritische Updates installieren möchten, jedoch Updates für Python überspringen möchten, um Fehler bei der Legacyanwendung zu vermeiden, sollten Sie unter **Updateklassifizierungen** die Optionen **Sicherheitsupdates** und **Wichtige Updates** auswählen. Fügen Sie dann unter der Option **Ausschließen** die zu überspringenden Python-Pakete hinzu.
 

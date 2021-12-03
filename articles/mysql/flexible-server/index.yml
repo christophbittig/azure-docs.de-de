@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: f42ba987469024be69e67215e78ed6b28e6a4652
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: cbeaf765156d98b80d29b2f6b25e047ec5ea561c
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131438035"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132546802"
 landingContent:
 - title: Informationen zu Flexible Server
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
     links:
     - text: Erstellen einer PHO-App mit flexiblem Server
       url: tutorial-php-database-app.md
+    - text: Bereitstellen einer Spring Boot-App in AKS mit Flexible Server
+      url: tutorial-deploy-springboot-on-aks-vnet.md
   - linkListType: whats-new
     links:
     - text: Neues im flexiblen Server
@@ -75,6 +77,8 @@ landingContent:
     links:
     - text: Wiederherstellen eines Servers
       url: how-to-restore-server-portal.md
+    - text: Wiederherstellen eines gelöschten Servers
+      url: how-to-restore-dropped-server.md
 - title: Netzwerk und Konnektivität
   linkLists:
   - linkListType: concept

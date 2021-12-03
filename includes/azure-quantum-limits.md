@@ -1,21 +1,21 @@
 ---
-title: include file
-description: include file
+title: Includedatei
+description: Includedatei
 author: danielstocker
 ms.service: azure-quantum
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 10/27/2021
 ms.author: dasto
-ms.openlocfilehash: 2106a48a583f120f8b4dde4eb32a30f1a1b1d85b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1811faeeb5de3e300a35f7107c5cdf23bf20151c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98947358"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520878"
 ---
 ### <a name="provider-limits--quota"></a>Grenzwerte und Kontingente für Anbieter
 
-Der Azure Quantum-Dienst unterstützt sowohl Erst- als auch Drittanbieter von Diensten. Drittanbieter besitzen eigene Grenzwerte und Kontingente. Benutzer können Angebote und Grenzwerte im Azure-Portal anzeigen, wenn sie Drittanbieter auf dem Blatt für Anbieter konfigurieren. 
+Der Azure Quantum-Dienst unterstützt sowohl Erst- als auch Drittanbieter von Diensten. Drittanbieter besitzen eigene Grenzwerte und Kontingente. Benutzer können Angebote und Grenzwerte im Azure-Portal anzeigen, wenn sie Drittanbieter konfigurieren. 
 
 Nachfolgend finden Sie die veröffentlichten Kontingentgrenzwerte für den Erstanbieter von Optimierungslösungen von Microsoft. 
 
@@ -23,22 +23,24 @@ Nachfolgend finden Sie die veröffentlichten Kontingentgrenzwerte für den Ersta
 
 | Resource | Begrenzung |
 | --- | --- |
-| CPU-basierte gleichzeitige Aufträge | bis zu fünf gleichzeitige Aufträge |
-| FPGA-basierte gleichzeitige Aufträge | bis zu zwei gleichzeitige Aufträge |
+| CPU-basierte gleichzeitige Aufträge | bis zu 5<sup>1</sup> gleichzeitige Aufträge |
+| FPGA-basierte gleichzeitige Aufträge | bis zu 2<sup>1</sup> gleichzeitige Aufträge |
 | CPU-basierte Solver-Stunden | 20 Stunden pro Monat  |
 | FPGA-basierte Solver-Stunden | 1 Stunde pro Monat  |
 
-Wenn Sie die SKU für Lernen und Entwickeln verwenden, können Sie **keine** Erhöhung Ihrer Kontingentgrenzwerte anfordern. Stattdessen sollten Sie zur SKU „Leistung im großen Stil“ (Performance at Scale) wechseln.
+Wenn Sie die SKU „Learn & Develop“ nutzen, können Sie **keine** Erhöhung Ihrer Kontingentgrenzwerte anfordern. Stattdessen sollten Sie zur SKU „Leistung im großen Stil“ (Performance at Scale) wechseln.
 
 #### <a name="performance-at-scale-sku"></a>SKU „Leistung im großen Stil“ (Performance at Scale)
 
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| CPU-basierte gleichzeitige Aufträge | bis zu 100 gleichzeitige Aufträge | wie Standardgrenzwert |
-| FPGA-basierte gleichzeitige Aufträge | bis zu 10 gleichzeitige Aufträge | wie Standardgrenzwert |
+| CPU-basierte gleichzeitige Aufträge | bis zu 100<sup>1</sup> gleichzeitige Aufträge | wie Standardgrenzwert |
+| FPGA-basierte gleichzeitige Aufträge | bis zu 10<sup>1</sup> gleichzeitige Aufträge | wie Standardgrenzwert |
 | Solver-Stunden | 1\.000 Stunden pro Monat  | bis zu 50.000 Stunden pro Monat |
 
-Wenn Sie eine Erhöhung des Grenzwerts anfordern müssen, wenden Sie sich an den Azure-Support. 
+Setzen Sie sich mit dem Azure-Support in Verbindung, um eine Erhöhung des Grenzwerts anzufordern.
 
 Weitere Informationen finden Sie in der [Preisübersicht zu Azure Quantum](https://aka.ms/AQ/Pricing).
-Informationen zu Angeboten von Drittanbietern finden Sie auf der entsprechenden Anbieterseite im Azure-Portal.
+Einzelheiten zu den Angeboten von Drittanbietern finden Sie auf den entsprechenden Anbieterseiten mit Preisübersichten im Azure-Portal.
+
+<sup>1</sup> Beschreibt die Anzahl von Aufträgen, die gleichzeitig in die Warteschlange eingereiht werden können.

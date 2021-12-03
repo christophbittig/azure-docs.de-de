@@ -6,14 +6,14 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 08/18/2021
+ms.date: 10/22/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0a684cec230766119345b8fd8acd3df53cc3f25a
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: e96a3e1e523c466cc3dc851725b648cba78dc8e8
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213012"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502115"
 ---
 # <a name="create-and-manage-collections-in-azure-purview"></a>Erstellen und Verwalten von Sammlungen in Azure Purview
 
@@ -102,6 +102,20 @@ Sie müssen als Sammlungsadministrator fungieren, um eine Sammlung erstellen zu 
 1. Klicken Sie auf der Seite mit den Sammlungsdetails auf **Aktualisieren**, um die Sammlung neu zu laden.
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/refresh-single-collection.png" alt-text="Screenshot: Purview Studio-Sammlungsfenster mit hervorgehobener Schaltfläche „Aktualisieren“ im Sammlungsfenster" border="true":::
+
+### <a name="delete-a-collection"></a>Löschen einer Sammlung
+
+Sie müssen als Sammlungsadministrator fungieren, um eine Sammlung erstellen zu können. Wenn Sie sich nicht sicher sind, überprüfen Sie mithilfe der Anleitung oben Ihre Berechtigungen. Sammlungen können nur gelöscht werden, wenn ihr keine untergeordneten Sammlungen, Ressourcen, Datenquellen oder Scans zugeordnet sind. 
+
+1. Wählen Sie auf der Seite mit den Sammlungsdetails die Option **Löschen** aus.
+   
+   :::image type="content" source="./media/how-to-create-and-manage-collections/delete-collections.png" alt-text="Screenshot des Purview Studio-Fensters zum Löschen einer Sammlung" border="true":::
+
+2. Wählen Sie **Bestätigen**, wenn Sie dazu aufgefordert werden, **Sind Sie sicher, dass Sie diese Sammlung löschen möchten?**
+
+   :::image type="content" source="./media/how-to-create-and-manage-collections/delete-collection-confirmation.png" alt-text="Screenshot des Fensters &quot;Purview Studio&quot; mit Bestätigungsmeldung zum Löschen einer Sammlung" border="true":::
+
+3. Überprüfen Sie das Löschen der Sammlung aus Ihrer Purview-Data Map.
 
 ## <a name="add-roles-and-restrict-access-through-collections"></a>Hinzufügen von Rollen und Einschränken des Zugriffs über Sammlungen
 

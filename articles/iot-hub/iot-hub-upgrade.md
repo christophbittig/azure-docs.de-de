@@ -1,18 +1,18 @@
 ---
 title: Upgrade für Azure IoT Hub | Microsoft-Dokumentation
 description: Ändern Sie den Tarif und die Skalierung für IoT Hub, um weitere Messaging- und Geräteverwaltungsfunktionen zu erhalten.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: robinsh
-ms.openlocfilehash: f306186fd079a32df68631055fcae6594d997d0d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: lizross
+ms.openlocfilehash: b6604dd246e4a98e58251a3de1c05365e405cfc2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355610"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551499"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Gewusst wie: Durchführen eines Upgrades für IoT Hub
 
@@ -36,13 +36,9 @@ Diese Beispiele sollen veranschaulichen, wie IoT Hub im Zuge von Änderungen in 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrem IoT Hub.
 
-2. Wählen Sie **Preise und Skalierung** aus.
-
-   ![Tarif und Skalierung](./media/iot-hub-upgrade/pricing-scale.png)
+2. Wählen Sie im linken Navigationsbereich **Preise und Skalierung** aus.
 
 3. Wählen Sie zum Ändern des Tarifs für Ihren Hub **Preise und Skalierung** aus. Wählen Sie den neuen Tarif aus, und klicken Sie auf **Auswählen**.
-
-   ![Tarif und Skalierung](./media/iot-hub-upgrade/select-tier.png)
 
 4. Um die Anzahl der Einheiten in Ihrem Hub zu ändern, geben Sie einen neuen Wert unter **IoT Hub-Einheiten** ein.
 

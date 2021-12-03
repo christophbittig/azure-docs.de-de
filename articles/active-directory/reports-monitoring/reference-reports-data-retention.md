@@ -4,7 +4,7 @@ description: Erfahren Sie, wie lange Azure die verschiedenen Arten von Berichtsd
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b53333ff9d61e6ee5bbc98bb4756199ca07486d0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dc9658cddb17bf948fe562d806916d20bd28ba31
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630070"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995367"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Wie lange speichert Azure AD die Berichtsdaten?
 
@@ -63,8 +63,8 @@ Die Erfassung von Sicherheitssignalen beginnt, wenn Sie sich für die Verwendung
 
 | Bericht                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
-| Überwachungsprotokolle             | 7 Tage        | 30 Tage             | 30 Tage             |
-| Anmeldungen               | 7 Tage        | 30 Tage             | 30 Tage             |
+| Überwachungsprotokolle             | Sieben Tage        | 30 Tage             | 30 Tage             |
+| Anmeldungen               | Sieben Tage        | 30 Tage             | 30 Tage             |
 | Verwendung von Azure AD MFA        | 30 Tage       | 30 Tage             | 30 Tage             |
 
 Sie können die Aktivitätsdaten zu Überwachung und Anmeldung länger als den oben beschriebenen Standardaufbewahrungszeitraum speichern, indem Sie sie mit Azure Monitor an ein Azure Storage-Konto weiterleiten. Weitere Informationen finden Sie unter [Archivieren von Azure AD-Protokollen in einem Azure Storage-Konto](quickstart-azure-monitor-route-logs-to-storage-account.md).

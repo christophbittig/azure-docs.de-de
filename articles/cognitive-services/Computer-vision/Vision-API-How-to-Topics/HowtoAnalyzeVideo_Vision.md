@@ -3,20 +3,18 @@ title: Analysieren von Videos nahezu in Echtzeit – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie nahezu in Echtzeit Analysen für Frames aus einem Livevideostream durchführen, indem Sie die Maschinelles Sehen-API verwenden.
 services: cognitive-services
-author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 09/09/2019
-ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 8438775d7651d742349d5b94876ac00248814dfe
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bb35a93a2cfbd7fc90e614161eb7a95a5098871b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078159"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063682"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Analysieren von Videos nahezu in Echtzeit
 

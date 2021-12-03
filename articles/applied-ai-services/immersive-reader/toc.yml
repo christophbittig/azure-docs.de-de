@@ -3,11 +3,11 @@
 - name: Übersicht
   items:
     - name: Worum handelt es sich beim plastischen Reader?
-      href: Overview.md
+      href: overview.md
     - name: Sprachunterstützung
       href: language-support.md
     - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
+      href: 'https://azure.microsoft.com/pricing/details/immersive-reader/'
     - name: Versionshinweise
       href: release-notes.md
 - name: Schnellstart

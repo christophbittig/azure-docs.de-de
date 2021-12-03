@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 4884730dc163b7720b5c2abb9c4f1fb529e5e2ca
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a42b0ff8a23f3504b642ab79a1b85718aa0c62e1
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355907"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557754"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Erstellen eines Datencontrollers in Azure Data Studio
 
@@ -24,7 +24,7 @@ Sie können einen Datencontroller mit Azure Data Studio erstellen, indem Sie den
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Sie benötigen Zugriff auf einen Kubernetes-Cluster und müssen die kubeconfig-Datei so konfigurieren, dass sie auf den Kubernetes-Cluster verweist, in dem Sie die Bereitstellung vornehmen möchten.
-- Sie müssen die [Clienttools installieren](install-client-tools.md), einschließlich **Azure Data Studio** und der Azure Data Studio-Erweiterungen namens **Azure Arc** sowie die Azure CLI mit der `arcdata`-Erweiterung.
+- Sie müssen die [Clienttools installieren](install-client-tools.md), einschließlich **Azure Data Studio**, die Azure Data Studio-Erweiterungen namens **Azure Arc** sowie die Azure CLI mit der `arcdata`-Erweiterung.
 - Sie müssen sich in Azure Data Studio bei Azure anmelden.  Drücken Sie dazu STRG/BEFEHL+UMSCHALT+P, um das Fenster für den Befehlstext zu öffnen, und geben Sie **Azure** ein.  Wählen Sie **Azure: Sign in** (Azure: Anmelden) aus.   Klicken Sie im eingeblendeten Bereich auf das Plussymbol (+) oben rechts, um ein Azure-Konto hinzuzufügen.
 
 ## <a name="use-the-deployment-wizard-to-create-azure-arc-data-controller"></a>Erstellen eines Azure Arc-Datencontrollers mit dem Bereitstellungs-Assistenten
@@ -66,7 +66,7 @@ Das Erstellen des Controllers dauert einige Minuten. Mithilfe der folgenden Befe
 >  Bei den folgenden Beispielbefehlen wird davon ausgegangen, dass Sie einen Datencontroller und Kubernetes-Namespace mit dem Namen „arc“ erstellt haben.  Wenn Sie einen anderen Namespace-/Datencontrollernamen verwendet haben, können Sie „arc“ durch diesen Namen ersetzen.
 
 ```console
-kubectl get datacontroller/arc --namespace arc
+kubectl get datacontroller --namespace arc
 ```
 
 ```console
@@ -76,10 +76,10 @@ kubectl get pods --namespace arc
 Sie können auch den Erstellungsstatus eines bestimmten Pods überprüfen, indem Sie einen Befehl wie den folgenden ausführen.  Dies ist besonders bei der Problembehandlung hilfreich.
 
 ```console
-kubectl describe po/<pod name> --namespace arc
+kubectl describe pod/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/control-2g7bl --namespace arc
+#kubectl describe pod/control-2g7bl --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>Beheben von Problemen bei der Erstellung

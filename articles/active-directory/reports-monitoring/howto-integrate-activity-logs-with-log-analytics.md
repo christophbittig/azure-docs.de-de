@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie Azure Active Directory-Protokolle in Azu
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: besiler
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44599666f6da3fddcd6c3df36daf25faac807e6e
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 5cc4a93d102cd87097fed198f08240da7ec10e36
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429313"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336352"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle
 
@@ -31,7 +31,7 @@ Führen Sie die Schritte in diesem Artikel aus, um Azure Active Directory-Protok
 
 Durch die Integration von Azure AD-Aktivitätsprotokollen in Azure Monitor-Protokolle können Sie folgende Aufgaben ausführen:
 
- * Vergleichen Ihrer Azure AD-Anmeldeprotokolle mit von Azure Security Center veröffentlichten Sicherheitsprotokollen.
+ * Vergleichen Ihrer Azure AD-Anmeldeprotokolle mit von Microsoft Defender für Cloud veröffentlichten Sicherheitsprotokollen
   
  * Behandeln von Leistungsengpässen auf der Anmeldeseite Ihrer Anwendung durch Korrelieren von Anwendungsleistungsdaten aus Azure Application Insights
 

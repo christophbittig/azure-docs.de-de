@@ -5,16 +5,15 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/17/2021
-ms.openlocfilehash: 58e5f6f5646eb2dd75215a17349b053426b7c837
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.date: 10/26/2021
+ms.openlocfilehash: c28e3b84251c645ff690098950066b3bb653f3df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133327"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467528"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Beschränkungen in Azure Database for PostgreSQL – Flexible Server
-
 
 
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Compute und Speicher](concepts-compute-storage.md).
@@ -82,10 +81,7 @@ Eine PostgreSQL-Verbindung kann selbst im Leerlauf ca. 10 MB Arbeitsspeicher be
 
 ### <a name="high-availability-ha"></a>Hochverfügbarkeit
 
-- Zonenredundante Hochverfügbarkeit wird derzeit für Server im Tarif „Burstfähig“ nicht unterstützt.
-- Die IP-Adresse des Datenbankservers ändert sich, wenn für Ihren Server ein Failover auf den Standbyserver mit Hochverfügbarkeit erfolgt. Stellen Sie sicher, dass Sie den DNS-Eintrag anstelle der IP-Adresse des Servers verwenden.
-- Wenn die logische Replikation mit einem flexiblen Server mit Hochverfügbarkeit konfiguriert ist, werden die logischen Replikationsslots bei einem Failover auf den Standbyserver nicht auf den Standbyserver kopiert. 
-- Weitere Informationen zur zonenredundanten Hochverfügbarkeit und den damit verbundenen Einschränkungen finden Sie auf der Dokumentationsseite [Konzepte – Hochverfügbarkeit](concepts-high-availability.md).
+- Weitere Informationen finden Sie auf der Dokumentationsseite [Einschränkungen der zonenredundanten Hochverfügbarkeit](concepts-high-availability.md#zone-redundant-high-availability---limitations).
 
 ### <a name="availability-zones"></a>Verfügbarkeitszonen
 

@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse in Unternehmensszenarien
 description: Die Funktionen von Azure Lighthouse können zum Vereinfachen der mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, verwendet werden.
-ms.date: 09/08/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: f83e5d84eee0c3ed7f159778630e3598274e4916
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d0accd765049c671d8d61a76d7c6449260b0140
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768779"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249645"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse in Unternehmensszenarien
 
@@ -49,6 +49,12 @@ Für Abonnements (bzw. Ressourcengruppen unter einem Abonnement) kann das Onboar
 Da Unternehmensbenutzer normalerweise Direktzugriff auf die Mandanten des Unternehmens haben und für ein Verwaltungsangebot keine Marketing- oder Förderungsmaßnahmen erforderlich sind, ist es in der Regel schneller und einfacher, Azure Resource Manager-Vorlagen bereitzustellen. Zwar wird in der [Anleitung für das Onboarding](../how-to/onboard-customer.md) auf Dienstanbieter und Kunden verwiesen, doch können Unternehmen die gleichen Prozesse für das Onboarding ihrer Mandanten verwenden.
 
 Falls Sie diese Vorgehensweise bevorzugen, kann das Onboarding für Mandanten eines Unternehmens durchgeführt werden, indem ein [Angebot für verwaltete Dienste im Azure Marketplace veröffentlicht wird](../how-to/publish-managed-services-offers.md). Achten Sie darauf, dass Ihre Pläne als „Privat“ gekennzeichnet sind, um sicherzustellen, dass das Angebot nur für die richtigen Mandanten verfügbar ist. Bei einem privaten Plan geben Sie die Abonnement-IDs für jeden Mandanten an, für den das Onboarding durchgeführt werden soll. Es erhalten dann keine anderen Personen Ihr Angebot.
+
+## <a name="azure-ad-b2c"></a>Azure AD B2C
+
+[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) ermöglicht die Benutzeridentifizierung für Unternehmen. Wenn Sie eine Ressourcengruppe über Azure Lighthouse delegieren, können Sie Azure Monitor verwenden, um Azure AD B2C-Anmelde- und Überwachungsprotokolle an verschiedene Überwachungslösungen weiterzuleiten. Sie können die Protokolle entweder zur langfristigen Verwendung speichern oder in SIEM-Drittanbietertools (Security Information & Event Management) integrieren, um Einblicke in Ihre Umgebung zu gewinnen.
+
+Weitere Informationen finden Sie unter [Überwachen von Azure AD B2C mit Azure Monitor](../../active-directory-b2c/azure-monitor.md).
 
 ## <a name="terminology-notes"></a>Hinweise zur Terminologie
 

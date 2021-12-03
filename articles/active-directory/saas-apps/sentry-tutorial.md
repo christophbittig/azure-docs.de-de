@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 5a8cbdc77a7570037645b350b62787aeaea7374f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6aa1d82982203a3d2c057fc0c4190dfbc7e60e71
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124821516"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279878"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sentry"></a>Tutorial: Integrieren von Sentry in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -88,7 +88,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für die Bezeichner, die Antwort-URL und die Anmelde-URL. Weitere Informationen zum Ermitteln dieser Werte finden Sie in der [Sentry-Dokumentation](https://docs.sentry.io/product/accounts/sso/azure-sso/#installation). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Klicken Sie auf der Seite **Einmaliges Anmelden mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf das Kopiersymbol, um die **App-Metadaten-URL** Werte zu kopieren und speichern Sie sie dann auf Ihrem Computer.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf das Kopiersymbol, um den Wert von **App-Metadaten-URL** zu kopieren, und speichern Sie ihn dann auf Ihrem Computer.
 
    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
     
@@ -144,4 +144,4 @@ Sie können das „Meine Apps“-Portal verwenden, um die Anwendung in einem bel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Sentry können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Sentry können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

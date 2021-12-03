@@ -8,15 +8,15 @@ ms.subservice: automl
 ms.author: nibaccam
 author: cartacioS
 ms.reviewer: nibaccam
-ms.date: 06/11/2021
+ms.date: 11/15/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: a48fa9df38b9892c740713b1463010c1f601506d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: d4c4188a04db444a153577ead82d79f32c9b137d
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130000022"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518243"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>Einrichten des Trainings für automatisiertes maschinelles Lernen ohne Code über die Studio-Benutzeroberfläche 
 
@@ -94,7 +94,9 @@ Andernfalls wird eine Liste Ihrer letzten Experimente für automatisiertes masch
 
 1. Wählen Sie eine Zielspalte aus: Dies ist die Spalte, für die Sie Vorhersagen ausführen möchten.
 
-1. Wählen Sie einen Compute für den Datenprofilerstellungs- und Trainingsauftrag aus. Eine Liste Ihrer vorhandenen Computes ist in der Dropdownliste verfügbar. Folgen Sie den Anweisungen in Schritt 7, um einen neuen Compute zu erstellen.
+1. Wählen Sie einen Computetyp für den Datenprofilerstellungs- und Trainingsauftrag aus. Sie können einen [Computecluster](concept-compute-target.md#azure-machine-learning-compute-managed) oder eine [Compute-Instanz](concept-compute-instance.md) auswählen. 
+    
+1. Wählen Sie in der Dropdownliste Ihrer vorhandenen Computeressourcen eine Computeressource aus.  Folgen Sie den Anweisungen in Schritt 8, um eine neue Computeressource zu erstellen.
 
 1. Wählen Sie **Create a new compute** (Neue Computeressource erstellen) aus, um den Computekontext für dieses Experiment zu konfigurieren.
 
@@ -120,14 +122,13 @@ Andernfalls wird eine Liste Ihrer letzten Experimente für automatisiertes masch
     
         Wenn Deep Learning aktiviert ist, ist die Überprüfung auf _train_validation split_ beschränkt. [Erfahren Sie mehr zu Überprüfungsoptionen](how-to-configure-cross-validation-data-splits.md).
 
-
     1. Für **Vorhersagen** haben Sie folgende Möglichkeiten: 
     
         1. Aktivieren Sie Deep Learning.
     
         1. Auswählen der *Zeitspalte*: Diese Spalte enthält die zu verwendenden Zeitdaten.
 
-        1. Auswählen des *Vorhersagehorizonts*: Geben Sie an, wie viele Zeiteinheiten (Minuten/Stunden/Tage/Wochen/Monate/Jahre) das Modell die Zukunft vorhersagen können soll. Je weiter das Modell die Zukunft vorhersagen muss, desto ungenauer wird es. [Weitere Informationen zu Vorhersagen und zum Vorhersagehorizont](how-to-auto-train-forecast.md).
+        1. Auswählen des *Vorhersagehorizonts*: Geben Sie an, wie viele Zeiteinheiten (Minuten/Stunden/Tage/Wochen/Monate/Jahre) das Modell die Zukunft vorhersagen können soll. Je weiter das Modell in die Zukunft vorausschauen muss, desto ungenauer wird es. [Weitere Informationen zu Vorhersagen und zum Vorhersagehorizont](how-to-auto-train-forecast.md).
 
 1. (Optional:) Anzeigen weiterer Konfigurationseinstellungen: zusätzliche Einstellungen, mit denen Sie den Trainingsauftrag besser steuern können. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet. 
 
@@ -137,13 +138,32 @@ Andernfalls wird eine Liste Ihrer letzten Experimente für automatisiertes masch
     Explain best model (Bestes Modell erläutern) | Wählen Sie diese Option aus, um die Erläuterungen für das empfohlene beste Modell anzuzeigen oder zu deaktivieren. <br> Diese Funktion ist derzeit nicht für [bestimmte Vorhersagealgorithmen](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model) verfügbar. 
     Blocked algorithm (Blockierter Algorithmus)| Wählen Sie Algorithmen aus, die Sie aus den Trainingsauftrag ausschließen möchten. <br><br> Das Zulassen von Algorithmen ist nur für [SDK-Experimente](how-to-configure-auto-train.md#supported-models) verfügbar. <br> Weitere Informationen finden Sie auf der Seite zu den [unterstützten Modellen für einzelne Aufgabentypen](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels).
     Beendigungskriterium| Wenn eines dieser Kriterien erfüllt ist, wird der Trainingsauftrag beendet. <br> *Training job time (hours)* Trainingsauftragszeit (Stunden): Gibt an, wie lange der Trainingsauftrag ausgeführt werden soll. <br> *Metric score threshold* (Metrischer Bewertungsschwellenwert):  Die Metrikmindestbewertung für alle Pipelines. Auf diese Weise wird sichergestellt, dass Sie nicht mehr Zeit für den Trainingsauftrag aufwenden als nötig, wenn Sie eine definierte Zielmetrik verwenden, die Sie erreichen möchten.
-    Überprüfen| Wählen Sie eine der Optionen für Kreuzvalidierung aus, die im Trainingsauftrag verwendet werden soll. <br> [Weitere Informationen zur Kreuzvalidierung](how-to-configure-cross-validation-data-splits.md#prerequisites).<br> <br>Für Vorhersagen wird nur die k-fache Kreuzvalidierung unterstützt.
     Parallelität| *Max concurrent iterations* (Maximale Anzahl gleichzeitiger Iterationen): Die maximale Anzahl von Pipelines (Iterationen), die im Trainingsauftrag getestet werden. Der Auftrag wird nicht häufiger als die angegebene Anzahl von Iterationen ausgeführt. Erfahren Sie mehr darüber, wie automatisiertes ML [mehrere untergeordnete Ausführungen in Clustern](how-to-configure-auto-train.md#multiple-child-runs-on-clusters) durchführt.
 
 1. (Optional) Anzeigen von Featurisierungseinstellungen: Wenn Sie im Formular **Additional configuration settings** (Zusätzliche Konfigurationseinstellungen) die Option **Automatische Featurisierung** aktivieren, werden standardmäßige Featurisierungstechniken angewendet. Diese Standardeinstellungen können unter **Featurisierungseinstellungen anzeigen** geändert und entsprechend angepasst werden. Informationen zum Anpassen von Featurisierungen finden Sie [hier](#customize-featurization). 
 
     ![Der Screenshot zeigt das Dialogfeld zum Auswählen von Aufgabentypen, in dem die Einstellungen für die Anzeige der Featurisierung beschrieben sind.](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
+
+1. Mit dem Formular **[Optional] Validieren und testen** können Sie Folgendes tun. 
+
+    1. Geben Sie die Art der Validierung an, die für Ihren Ausbildungsauftrag verwendet werden soll. [Weitere Informationen zur Kreuzvalidierung](how-to-configure-cross-validation-data-splits.md#prerequisites). 
+    
+        1. Vorhersageaufgaben unterstützen nur die k-fache Kreuzvalidierung.
+    
+    1. Stellen Sie einen Testdatensatz (Vorschau) zur Verfügung, um das empfohlene Modell zu bewerten, das automatisierte ML am Ende Ihres Experiments für Sie erstellt. Wenn Sie Testdaten bereitstellen, wird am Ende Ihres Experiments automatisch ein Testlauf ausgelöst. Dieser Testlauf wird nur mit dem besten Modell durchgeführt, das vom automatischen ML empfohlen wurde. Erfahren Sie, wie Sie die [Ergebnisse des Remote-Testlaufs](#view-remote-test-run-results-preview) erhalten.
+    
+        >[!IMPORTANT]
+        > Die Bereitstellung eines Testdatensatzes zur Bewertung der erstellten Modelle ist eine Previewfunktion. Diese Funktion ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion, die jederzeit geändert werden kann.
+
+        1. Die Testdaten werden getrennt von den Trainings- und Validierungsdaten betrachtet, um die Ergebnisse des Testlaufs des empfohlenen Modells nicht zu verfälschen. [Mehr über Verzerrungen bei der Modellvalidierung erfahren](concept-automated-ml.md#training-validation-and-test-data).
+        1. Sie können entweder Ihren eigenen Testdatensatz zur Verfügung stellen oder sich dafür entscheiden, einen Prozentsatz Ihres Trainingsdatensatzes zu verwenden.          
+        1. Das Schema des Testdatensatzes sollte mit dem Trainingsdatensatz übereinstimmen. Die Zielspalte ist optional, aber wenn keine Zielspalte angegeben wird, werden keine Testmetriken berechnet.
+        1. Der Testdatensatz sollte nicht derselbe sein wie der Trainingsdatensatz oder der Validierungsdatensatz.
+        1. Prognoseläufe unterstützen keine Aufteilung zwischen Training und Test.
+        
+        ![Der Screenshot zeigt das Formular für die Auswahl der Validierungs- und Testdaten](media/how-to-use-automated-ml-for-ml-models/validate-test-form.png)
+        
 ## <a name="customize-featurization"></a>Anpassen der Featurisierung
 
 Im Formular **Featurisierung** können Sie die automatische Featurisierung aktivieren/deaktivieren und die Einstellungen der automatischen Featurisierung für Ihr Experiment anpassen. Informationen zum Öffnen dieses Formulars finden Sie in Schritt 10 des Abschnitts [Erstellen und Ausführen eines Experiments](#create-and-run-experiment). 
@@ -190,11 +210,48 @@ Auf der Registerkarte „Datentransformation“ wird ein Diagramm mit der Datenv
 
 ![Datentransformation](./media/how-to-use-automated-ml-for-ml-models/data-transformation.png)
 
+## <a name="view-remote-test-run-results-preview"></a>Ergebnisse des Remote-Testlaufs anzeigen (Vorschau)
+
+Wenn Sie bei der Einrichtung Ihres Experiments einen Testdatensatz angegeben oder sich für eine Aufteilung in Training und Test entschieden haben - im Formular **Validieren und Testen** -, testet Automated ML standardmäßig automatisch das empfohlene Modell. Infolgedessen berechnet die automatisierte ML Testmetriken, um die Qualität des empfohlenen Modells und seiner Vorhersagen zu bestimmen. 
+
+>[!IMPORTANT]
+> Das Testen Ihrer Modelle mit einem Testdatensatz zur Bewertung der generierten Modelle ist eine Previewfunktion. Diese Funktion ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion, die jederzeit geändert werden kann.
+
+Zur Anzeige der Testlaufmetriken des empfohlenen Modells,
+ 
+1. Navigieren Sie zur Seite **Modelle** und wählen Sie das beste Modell. 
+1. Wählen Sie die Registerkarte **Testergebnisse (Vorschau)** . 
+1. Wählen Sie den gewünschten Lauf aus, und sehen Sie sich die Registerkarte **Metriken** an.  Registerkarte ![Testergebnisse des automatisch getesteten, empfohlenen Modells](./media/how-to-use-automated-ml-for-ml-models/test-best-model-results.png)
+    
+So zeigen Sie die Testvorhersagen an, die zur Berechnung der Testmetriken verwendet wurden, 
+
+1. Navigieren Sie zum unteren Ende der Seite und wählen Sie den Link unter **Outputs dataset**, um den Datensatz zu öffnen. 
+1. Wählen Sie auf der Seite **Datensätze** die Registerkarte **Durchsuchen**, um die Vorhersagen des Testlaufs zu betrachten.
+    1. Alternativ kann die Vorhersagedatei auch auf der Registerkarte **Ausgaben + Protokolle** eingesehen/heruntergeladen werden. Erweitern Sie den Ordner **Vorhersagen**, um Ihre `predicted.csv` Datei zu finden.
+
+Alternativ kann die Vorhersagedatei auch auf der Registerkarte Ausgaben + Protokolle angezeigt/heruntergeladen werden. Erweitern Sie den Ordner Vorhersagen, um die Datei predictions.csv zu finden.
+
+## <a name="test-an-existing-automated-ml-model-preview"></a>Testen Sie ein bestehendes automatisiertes ML-Modell (Vorschau)
+
+Nach Abschluss Ihres Experiments können Sie das/die Modell(e) testen, die das automatisierte ML für Sie erstellt hat. Wenn Sie nicht das empfohlene Modell, sondern ein anderes automatisch generiertes ML-Modell testen möchten, können Sie dies mit den folgenden Schritten tun. 
+
+1. Wählen Sie einen vorhandenen automatisierten ML-Experimentierlauf aus.  
+1. Navigieren Sie zur Registerkarte **Modelle** des Laufs und wählen Sie das fertige Modell, das Sie testen möchten.
+1. Wählen Sie auf der Seite Modell **Details** die Schaltfläche **Testmodell (Vorschau)** , um die Fensterfläche **Testmodell** zu öffnen.
+1. Wählen Sie im Bereich **Testmodell** den Rechencluster und einen Testdatensatz, den Sie für Ihren Testlauf verwenden möchten. 
+1. Wählen Sie die Schaltfläche **Test**. Das Schema des Testdatensatzes sollte mit dem Trainingsdatensatz übereinstimmen, aber die **Zielspalte** ist optional.
+1. Nach erfolgreicher Erstellung eines Modellprüflaufs wird auf der Seite **Details** eine Erfolgsmeldung angezeigt. Wählen Sie die Registerkarte **Testergebnisse**, um den Fortschritt des Laufs zu sehen.
+
+1. Um die Ergebnisse des Testlaufs zu betrachten, öffnen Sie die Seite **Details** und folgen Sie den Schritten im Abschnitt [Ergebnisse des Remote-Testlaufs anzeigen](#view-remote-test-run-results-preview). 
+
+    ![Testmodell-Formular](./media/how-to-use-automated-ml-for-ml-models/test-model-form.png)
+    
+
 ## <a name="model-explanations-preview"></a>Modellerklärungen (Vorschau)
 
 Zum besseren Verständnis Ihres Modells können Sie sich auf dem Dashboard für Modellerklärungen ansehen, welche Datenfeatures (Rohdaten oder verarbeitete Daten) die Vorhersagen des Modells beeinflusst haben. 
 
-Das Dashboard für Modellerklärungen enthält eine Gesamtanalyse des trainierten Modells sowie die zugehörigen Vorhersagen und Erklärungen. Außerdem können Sie hier Detailinformationen für einen Datenpunkt sowie die jeweils zugehörige Featurerelevanz anzeigen. Weitere Informationen zu den Visualisierungen des Erklärungsdashboards finden Sie [hier](how-to-machine-learning-interpretability-aml.md#visualizations).
+Das Dashboard für Modellerklärungen enthält eine Gesamtanalyse des trainierten Modells sowie die zugehörigen Vorhersagen und Erklärungen. Außerdem können Sie einen einzelnen Datenpunkt und die Bedeutung der einzelnen Merkmale aufschlüsseln. Weitere Informationen zu den Visualisierungen des Erklärungsdashboards finden Sie [hier](how-to-machine-learning-interpretability-aml.md#visualizations).
 
 So rufen Sie Erklärungen für ein bestimmtes Modell ab: 
 
@@ -233,10 +290,10 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
     ----|----
     Name| Geben Sie einen eindeutigen Namen für die Bereitstellung ein.
     BESCHREIBUNG| Geben Sie eine Beschreibung ein, um den Zweck dieser Bereitstellung genauer anzugeben.
-    Computetyp| Wählen Sie die Art des bereitzustellenden Endpunkts aus: *Azure Kubernetes Service (AKS)* oder *Azure-Containerinstanz (ACI)* .
+    Computetyp| Wählen Sie den Typ des Endpunkts, den Sie bereitstellen möchten: [*Azure Kubernetes Service (AKS)*](../aks/intro-kubernetes.md) oder [*Azure Containerinstanz (ACI)* ](../container-instances/container-instances-overview.md).
     Computename| *Nur für AKS:* Wählen Sie den Namen des AKS-Clusters aus, der als Ziel für die Bereitstellung verwendet werden soll.
     Authentifizierung aktivieren | Wählen Sie diese Option aus, um eine token- oder schlüsselbasierte Authentifizierung zu ermöglichen.
-    Use custom deployment assets (Benutzerdefinierte Bereitstellungsressourcen verwenden)| Aktivieren Sie dieses Feature, wenn Sie Ihr eigenes Bewertungsskript und Ihre eigene Umgebungsdatei hochladen möchten. Weitere Informationen zu Bewertungsskripts finden Sie [hier](how-to-deploy-and-where.md).
+    Use custom deployment assets (Benutzerdefinierte Bereitstellungsressourcen verwenden)| Aktivieren Sie dieses Feature, wenn Sie Ihr eigenes Bewertungsskript und Ihre eigene Umgebungsdatei hochladen möchten. Andernfalls stellt die automatisierte ML diese Assets standardmäßig für Sie bereit. Weitere Informationen zu Bewertungsskripts finden Sie [hier](how-to-deploy-and-where.md).
 
     >[!Important]
     > Ein Dateiname muss weniger als 32 Zeichen haben und muss mit einem alphanumerischen Zeichen beginnen und enden. Dazwischen darf ein Name Bindestriche, Unterstriche, Punkte und alphanumerische Zeichen enthalten. Leerzeichen sind nicht zulässig.

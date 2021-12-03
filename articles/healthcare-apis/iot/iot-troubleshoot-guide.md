@@ -6,28 +6,28 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 11/16/2021
 ms.author: jasteppe
-ms.openlocfilehash: d5111425c6377cf16d3fbd4afceb7fcacc1e539a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6a3af00eaca90c2ecdbbdcc4f6cce5231ffefcc0
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077418"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719445"
 ---
 # <a name="iot-connector-troubleshooting-guide"></a>Leitfaden zur Problembehandlung für Den IoT-Connector
 
 > [!IMPORTANT]
-> Azure Healthcare-APIs sind derzeit als VORSCHAUversion verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
-
-Dieser Artikel enthält Schritte zur Problembehandlung gängiger Fehlermeldungen und Bedingungen für den IoT-Connector. Außerdem erfahren Sie, wie Sie Kopien der Zielzuordnungen Device and Fast Healthcare Interoperability Resources (FHIR&#174;) des IoT-Connectors erstellen. Außerdem können Sie die Geräte- und FHIR-Zielzuordnungskopien zum Bearbeiten und Archivieren außerhalb der Azure-Portal.  
+> Azure Healthcare-APIs sind derzeit als VORSCHAUversion verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind. 
 
 > [!TIP]
 > Wenn Sie ein [Azure Technical Support-Ticket](https://azure.microsoft.com/support/create-ticket/) für den IoT-Connector öffnen, fügen Sie Kopien Ihrer Geräte- und FHIR-Zielzuordnungen ein, um Sie bei der Problembehandlung zu unterstützen.
 
+Dieser Artikel enthält Schritte zur Problembehandlung für häufige Fehlermeldungen und Bedingungen des IoT-Connectors. Außerdem erfahren Sie, wie Sie Kopien der Zielzuordnungen Device and Fast Healthcare Interoperability Resources (FHIR&#174;) des IoT-Connectors erstellen. Außerdem können Sie die Geräte- und FHIR-Zielzuordnungskopien zum Bearbeiten und Archivieren außerhalb der Azure-Portal. 
+
 ## <a name="device-and-fhir-destination-mappings-validations"></a>Überprüfungen von Geräte- und FHIR-Zielzuordnungen
 
-In diesem Abschnitt wird der Überprüfungsprozess des IoT-Connectors beschrieben. Der Überprüfungsprozess überprüft die Zielzuordnungen Gerät und FHIR, bevor sie zur Verwendung gespeichert werden können. Diese Elemente sind in den Zielzuordnungen Gerät und FHIR erforderlich.
+In diesem Abschnitt wird der Überprüfungsprozess des IoT-Connectors beschrieben. Der Überprüfungsprozess überprüft die Zielzuordnungen "Gerät" und "FHIR", bevor sie zur Verwendung gespeichert werden können. Diese Elemente sind in den Zielzuordnungen Gerät und FHIR erforderlich.
 
 > [!TIP]
 > Sehen Sie sich das [IoMT Connector Data Mapper-Tool zum](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper) Bearbeiten, Testen und Behandeln von Problemen bei Der IoT-Connector geräte- und FHIR-Zielzuordnungen an. Exportieren Sie Zuordnungen zum Hochladen in den IoT-Connector im Azure-Portal oder verwenden Sie sie mit der [Open-Source-Version des](https://github.com/microsoft/iomt-fhir) IoT-Connectors.
@@ -46,9 +46,9 @@ In diesem Abschnitt wird der Überprüfungsprozess des IoT-Connectors beschriebe
 > [!NOTE]
 > `Values[].ValueName and Values[].ValueExpression` -Elemente sind nur erforderlich, wenn sie über einen Werteintrag im Array verfügen. Es ist gültig, dass keine Werte zugeordnet sind. Dies wird verwendet, wenn die gesendete Telemetrie ein Ereignis ist. 
 >
->Zum Beispiel:
+>Beispiel:
 > 
->Wenn ein mobiles IoMT-Gerät ein- oder entfernt wird, haben die Elemente keine Werte außer einem Namen, den der IoT-Connector abspricht und aus gibt. Bei der FHIR-Konvertierung ordnet der IoT-Connector es einem codebasierten Konzept zu, das auf dem semantischen Typ basiert. Dies bedeutet, dass keine tatsächlichen Werte aufgefüllt werden.
+>Wenn ein mobiles IoMT-Gerät ein- oder entfernt wird, haben die Elemente keine Werte außer einem Namen, den der IoT-Connector abspricht und aus gibt. Bei der FHIR-Konvertierung ordnet der IoT-Connector es einem codeorientierten Konzept basierend auf dem semantischen Typ zu. Dies bedeutet, dass keine tatsächlichen Werte aufgefüllt werden.
 
 **FHIR-Zielzuordnungen**
 
@@ -67,7 +67,7 @@ In diesem Abschnitt wird der Überprüfungsprozess des IoT-Connectors beschriebe
 |-------|---------|---------|---|
 |Die maximale Anzahl von Ressourcentypen `iotconnectors` wurde erreicht.|API und Azure-Portal|Das IoT-Connector-Abonnementkontingent ist erreicht (Der Standardwert ist 25 pro Abonnement).|Löschen Sie eine der vorhandenen Instanzen des IoT-Connectors. Verwenden Sie ein anderes Abonnement, bei dem das Abonnementkontingent noch nicht erreicht wurde. Fordern Sie eine Erhöhung des Abonnementkontingents an.
 |Ungültige `deviceMapping` Zuordnung. Validierungsfehler: {Fehlerliste}|API und Azure-Portal|Die `properties.deviceMapping` in der Ressourcenbereitstellungsanforderung des IoT-Connectors bereitgestellte ist ungültig.|Korrigieren Sie die Fehler im JSON-Zuordnungs-JSON-Code, der in der -Eigenschaft `properties.deviceMapping` bereitgestellt wird.
-|`fullyQualifiedEventHubNamespace` ist NULL, leer oder falsch formatiert.|API und Azure-Portal|Die IoT-Connector-Bereitstellungsanforderung `properties.ingestionEndpointConfiguration.fullyQualifiedEventHubNamespace` ist ungültig.|Aktualisieren Sie den IoT-Connector `properties.ingestionEndpointConfiguration.fullyQualifiedEventHubNamespace` auf das richtige Format. Sollte `{YOUR_NAMESPACE}.servicebus.windows.net` sein.
+|`fullyQualifiedEventHubNamespace` ist NULL, leer oder falsch formatiert.|API und Azure-Portal|Die Bereitstellungsanforderung für den IoT-Connector `properties.ingestionEndpointConfiguration.fullyQualifiedEventHubNamespace` ist ungültig.|Aktualisieren Sie den IoT-Connector `properties.ingestionEndpointConfiguration.fullyQualifiedEventHubNamespace` auf das richtige Format. Sollte `{YOUR_NAMESPACE}.servicebus.windows.net` sein.
 |Vorgängerressourcen müssen vollständig bereitgestellt werden, bevor eine untergeordnete Ressource bereitgestellt werden kann.|API|Der übergeordnete Arbeitsbereich wird weiterhin bereitgestellt.|Warten Sie, bis die übergeordnete Arbeitsbereichsbereitstellung abgeschlossen ist, und senden Sie die Bereitstellungsanforderung erneut.
 |`Location` -Eigenschaft untergeordneter Ressourcen muss mit der `Location` -Eigenschaft der übergeordneten Ressourcen übereinstimmen.|API|Die Anforderungseigenschaft für die IoT-Connectorbereitstellung `location` ist anders als die übergeordnete Eigenschaft `location` Arbeitsbereich.|Legen Sie `location` die -Eigenschaft des IoT-Connectors in der Bereitstellungsanforderung auf den gleichen Wert wie die übergeordnete Workspace-Eigenschaft `location` fest.
 
@@ -75,10 +75,10 @@ In diesem Abschnitt wird der Überprüfungsprozess des IoT-Connectors beschriebe
 
 |`Message`|Angezeigt wird|Bedingung|Fix| 
 |-------|---------|---------|---|
-|Die maximale Anzahl von Ressourcentypen `iotconnectors/destinations` wurde erreicht.|API und Azure-Portal|Das Zielressourcenkontingent des IoT-Connectors wird erreicht, und der Standardwert ist 1 pro IoT-Connector.|Löschen Sie die vorhandene Instanz der IoT-Connectorzielressource. Pro IoT-Connector ist nur eine Zielressource zulässig.
+|Die maximale Anzahl von Ressourcentypen `iotconnectors/destinations` wurde erreicht.|API und Azure-Portal|Das Zielressourcenkontingent des IoT-Connectors ist erreicht, und der Standardwert ist 1 pro IoT-Connector.|Löschen Sie die vorhandene Instanz der Zielressource des IoT-Connectors. Pro IoT-Connector ist nur eine Zielressource zulässig.
 |Die `fhirServiceResourceId` bereitgestellte ist ungültig.|API und Azure-Portal|Die in der Bereitstellungsanforderung für Zielressourcen bereitgestellte ist keine gültige Ressourcen-ID für eine Instanz des `properties.fhirServiceResourceId` Azure Healthcare-APIs-FHIR-Diensts.|Stellen Sie sicher, dass die Ressourcen-ID ordnungsgemäß formatiert ist, und stellen Sie sicher, dass die Ressourcen-ID für eine Azure Healthcare-APIs-FHIR-Instanz gilt. Das Format sollte wie im folgenden Format sein: `/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP_NAME}/providers/Microsoft.HealthcareApis/services/{FHIR_SERVER_NAME} or /subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP_NAME}/providers/Microsoft.HealthcareApis/workspaces/{WORKSPACE_NAME}/`
 |Vorgängerressourcen müssen vollständig bereitgestellt werden, bevor eine untergeordnete Ressource bereitgestellt werden kann.|API|Der übergeordnete Arbeitsbereich oder der übergeordnete IoT-Connector wird weiterhin bereitgestellt.|Warten Sie, bis die Bereitstellung des übergeordneten Arbeitsbereichs oder des übergeordneten IoT-Connectors abgeschlossen ist, und senden Sie die Bereitstellungsanforderung erneut.
-|`Location` -Eigenschaft untergeordneter Ressourcen muss mit der `Location` -Eigenschaft der übergeordneten Ressourcen übereinstimmen.|API|Die Eigenschaft Destination provisioning request `location` (Zielbereitstellungsanforderung) ist anders als die übergeordnete `location` IoT-Connectoreigenschaft.|Legen Sie die -Eigenschaft des Ziels in der Bereitstellungsanforderung auf den gleichen Wert wie die übergeordnete `location` IoT-Connectoreigenschaft `location` fest.
+|`Location` -Eigenschaft untergeordneter Ressourcen muss mit der `Location` -Eigenschaft der übergeordneten Ressourcen übereinstimmen.|API|Die Anforderungseigenschaft Destination provisioning `location` (Zielbereitstellung) ist anders als die übergeordnete IoT-Connectoreigenschaft. `location`|Legen Sie die -Eigenschaft des Ziels in der Bereitstellungsanforderung auf den gleichen Wert wie die übergeordnete `location` IoT-Connectoreigenschaft `location` fest.
 
 ## <a name="why-is-iot-connector-data-not-showing-up-in-the-fhir-service"></a>Warum werden IoT-Connectordaten nicht im FHIR-Dienst angezeigt?
 
@@ -88,11 +88,11 @@ In diesem Abschnitt wird der Überprüfungsprozess des IoT-Connectors beschriebe
 |Die Gerätezuordnung wurde nicht konfiguriert.|Konfigurieren und speichern Sie die konforme Gerätezuordnung.|
 |Die FHIR-Zielzuordnung wurde nicht konfiguriert.|Konfigurieren und speichern Sie die konforme FHIR-Zielzuordnung.|
 |Die Gerätenachricht enthält keinen erwarteten Ausdruck, der in der Gerätezuordnung definiert ist.|Überprüfen `JsonPath` Sie, ob ausdrücke, die in der Gerätezuordnung definiert sind, mit Token übereinstimmen, die in der Gerätenachricht definiert sind.|
-|Im FHIR-Dienst wurde keine Geräteressource erstellt (Auflösungstyp: nur Suche)*.|Erstellen Sie eine gültige Geräteressource im FHIR-Dienst. Stellen Sie sicher, dass die Geräteressource einen Bezeichner enthält, der mit dem in der eingehenden Nachricht angegebenen Gerätebezeichner entspricht.|
+|Eine Geräteressource wurde nicht im FHIR-Dienst erstellt (Auflösungstyp: nur Suche)*.|Erstellen Sie eine gültige Geräteressource im FHIR-Dienst. Stellen Sie sicher, dass die Geräteressource einen Bezeichner enthält, der mit dem in der eingehenden Nachricht angegebenen Gerätebezeichner entspricht.|
 |Im FHIR-Dienst wurde keine Patient-Ressource erstellt (Auflösungstyp: nur Suche)*.|Erstellen Sie eine gültige Patient-Ressource im FHIR-Dienst.|
 |Der Verweis ist nicht festgelegt, oder der Verweis `Device.patient` ist ungültig (Auflösungstyp: Nur Suche)*.|Stellen Sie sicher, dass die Geräteressource einen gültigen [Verweis](https://www.hl7.org/fhir/device-definitions.html#Device.patient) auf eine Patientenressource enthält.| 
 
-[*Referenz-Schnellstart: Bereitstellen](deploy-iot-connector-in-azure.md) des IoT-Connectors mit Azure-Portal für eine funktionale Beschreibung der IoT-Connector-Auflösungstypen (z. B. Suchen oder Erstellen).
+[*Referenzschnellstart: Bereitstellen](deploy-iot-connector-in-azure.md) des IoT-Connectors mit Azure-Portal für eine funktionale Beschreibung der IoT-Connector-Auflösungstypen (z. B. Suchen oder Erstellen).
 
 ### <a name="the-operation-performed-by-iot-connector"></a>Der vom IoT-Connector ausgeführte Vorgang
 
@@ -106,14 +106,14 @@ Diese Eigenschaft stellt den Vorgang dar, der vom IoT-Connector ausgeführt wird
 |Setup|Die Setupdatenflussphase ist der Vorgang, der speziell für die Einrichtung Ihrer Instanz des IoT-Connectors gilt.|
 |Normalisierung|Normalisierung ist die Datenflussphase, in der die Gerätedaten normalisiert werden.|
 |Gruppierung|Die Gruppierungsdatenflussphase, in der die normalisierten Daten gruppiert werden.|
-|FHIRConversion|FHIRConversion ist die Datenflussphase, in der die gruppierten normalisierten Daten in eine FHIR-Ressource transformiert werden.|
+|FHIRConversion|FHIRConversion ist die Datenflussphase, in der die ge gruppierten normalisierten Daten in eine FHIR-Ressource transformiert werden.|
 |Unbekannt|Unbekannt ist der Vorgangstyp, der unbekannt ist, wenn ein Fehler auftritt.|
 
 ### <a name="the-severity-of-the-error"></a>Der Schweregrad des Fehlers
 
 Diese Eigenschaft stellt den Schweregrad des aufgetretenen Fehlers dar. Im Folgenden finden Sie eine Liste der möglichen Werte für diese Eigenschaft.
 
-|Schweregrad|BESCHREIBUNG|
+|severity|BESCHREIBUNG|
 |---------------|-----------|
 |Warnung|Es liegt ein kleineres Problem im Datenflussprozess vor, aber die Verarbeitung der Gerätenachricht wird nicht stoppt.|
 |Fehler|Diese Meldung tritt auf, wenn bei der Verarbeitung einer bestimmten Gerätenachricht ein Fehler aufgetreten ist und andere Nachrichten möglicherweise weiterhin wie erwartet ausgeführt werden.|
@@ -144,8 +144,8 @@ Diese Eigenschaft stellt den Namen für einen bestimmten Fehler bereit. Im Folge
 |`CorrelationIdNotDefinedException`|Die Korrelations-ID wird in der Gerätezuordnung nicht angegeben. `CorrelationIdNotDefinedException` ist ein bedingter Fehler, der nur auftritt, wenn die FHIR-Beobachtung Gerätemessungen mithilfe einer Korrelations-ID gruppieren muss, da sie nicht ordnungsgemäß konfiguriert ist.|`DeviceMessageError`|Fehler|Normalisierung|
 |`PatientDeviceMismatchException`|Dieser Fehler tritt auf, wenn die Geräteressource im FHIR-Dienst über einen Verweis auf eine Patientenressource verfügt. Dieser Fehlertyp bedeutet, dass er nicht mit dem in der Nachricht angegebenen Patientenbezeichner übereinstimmen kann.|`FHIRResourceError`|Fehler|`FHIRConversionError`|
 |`PatientNotFoundException`|Die Geräte-FHIR-Ressource, die dem Gerätebezeichner in der Gerätenachricht zugeordnet ist, verweist auf keine Patienten-FHIR-Ressource. Beachten Sie, dass dieser Fehler nur auftritt, wenn  die IoT-Connectorinstanz mit dem Suchauflösungstyp konfiguriert ist.|`FHIRConversionError`|Fehler|`FHIRConversion`|
-|`DeviceNotFoundException`|Es ist keine Geräteressource im FHIR-Dienst vorhanden, der der in der Gerätenachricht angegebenen Geräte-ID zugeordnet ist.|`DeviceMessageError`|Fehler|Normalisierung|
-|`PatientIdentityNotDefinedException`|Dieser Fehler tritt auf, wenn der Ausdruck zum Analysieren des Patientenbezeichners aus der Gerätenachricht nicht in der Gerätezuordnung konfiguriert ist oder der Bezeichner des Patienten in der Gerätenachricht nicht vorhanden ist. Beachten Sie, dass dieser Fehler nur auftritt, wenn der Auflösungstyp des IoT-Connectors auf Erstellen *festgelegt ist.*|`DeviceTemplateError`|Kritisch|Normalisierung|
+|`DeviceNotFoundException`|Im FHIR-Dienst, der der in der Gerätenachricht angegebenen Geräte-ID zugeordnet ist, ist keine Geräteressource vorhanden.|`DeviceMessageError`|Fehler|Normalisierung|
+|`PatientIdentityNotDefinedException`|Dieser Fehler tritt auf, wenn der Ausdruck zum Analysieren des Patientenbezeichners aus der Gerätenachricht nicht in der Gerätezuordnung konfiguriert ist oder der Bezeichner des Patienten nicht in der Gerätenachricht vorhanden ist. Beachten Sie, dass dieser Fehler nur auftritt, wenn der Auflösungstyp des IoT-Connectors auf Erstellen *festgelegt ist.*|`DeviceTemplateError`|Kritisch|Normalisierung|
 |`DeviceIdentityNotDefinedException`|Dieser Fehler tritt auf, wenn der Ausdruck zum Analysieren des Gerätebezeichners aus der Gerätenachricht nicht in der Gerätezuordnung konfiguriert ist oder der Gerätebezeichner nicht in der Gerätenachricht vorhanden ist.|`DeviceTemplateError`|Kritisch|Normalisierung|
 |`NotSupportedException`|Fehler beim Empfangen einer Gerätenachricht mit nicht unterstützten Formaten.|`DeviceMessageError`|Fehler|Normalisierung|
 
@@ -159,9 +159,9 @@ Die Zuordnungskopien sollten beim Öffnen eines Supporttickets für den technisc
 > JSON ist derzeit das einzige unterstützte Format für Geräte- und FHIR-Zielzuordnungen.
 
 > [!TIP]
-> Weitere Informationen zu [IoT-Connector-Gerätezuordnungen und](how-to-use-device-mapping-iot.md) [FHIR-Zielzuordnungen](how-to-use-fhir-mapping-iot.md)
+> Weitere Informationen zu [IoT-Connector-Gerätezuordnungen](how-to-use-device-mappings.md) und [FHIR-Zielzuordnungen](how-to-use-fhir-mappings.md)
 
-1. Wählen **Sie links im Arbeitsbereich "Gesundheits-APIs"** die Option "IoT-Connectors" aus.
+1. Wählen Sie links im Arbeitsbereich "Gesundheits-APIs" die Option **"IoT-Connectors"** aus.
 
    :::image type="content" source="media/iot-troubleshoot/iot-connector-blade.png" alt-text="Wählen Sie IoT-Connectors aus." lightbox="media/iot-troubleshoot/iot-connector-blade.png":::
 
@@ -170,7 +170,7 @@ Die Zuordnungskopien sollten beim Öffnen eines Supporttickets für den technisc
    :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT-Connector2" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
    > [!NOTE]
-   > Dieser Prozess kann auch zum Kopieren und Speichern des Inhalts der FHIR-Zielzuordnung **"Destination"** verwendet werden.
+   > Dieser Prozess kann auch zum Kopieren und Speichern  des Inhalts der Ziel-FHIR-Zielzuordnung verwendet werden.
 
 3. Wählen Sie den Inhalt des JSON-Code aus, und führen Sie einen Kopiervorgang aus (z. B.: Drücken Sie **STRG+C**). 
 

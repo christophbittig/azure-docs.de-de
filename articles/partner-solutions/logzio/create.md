@@ -4,15 +4,15 @@ description: Schnellstartartikel, in dem beschrieben wird, wie eine Logz.io-Ress
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 08/17/2021
+ms.date: 10/25/2021
 ms.author: tomfitz
 ms.custom: references_regions
-ms.openlocfilehash: 55b5057542af2812a6d5c21acf3d4a9e1f64c293
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: d97339251888b522fd31d30b3ce77d1bb4241f3a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429335"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070069"
 ---
 # <a name="quickstart-create-a-logzio-resource-in-azure-portal"></a>Schnellstart: Erstellen einer Logz.io-Ressource im Azure-Portal
 
@@ -47,7 +47,7 @@ Geben Sie auf der Registerkarte **Grundlagen** des Bildschirms **Logz.io-Konto e
 | **Abonnement** | Wählen Sie im Dropdownmenü das Azure-Abonnement aus, für das Sie über Zugriff als Besitzer verfügen. |
 | **Ressourcengruppe** | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene verwenden möchten. Eine [Ressourcengruppe](../../azure-resource-manager/management/overview.md#resource-groups) ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. |
 | **Name des Logz-Kontos** | Geben Sie den Namen des Logz.io-Kontos ein, das Sie erstellen möchten. |
-| **Location** | Wählen Sie **USA, Westen 2** oder **Europa, Westen** aus. Während der Vorschauphase unterstützt Logz.io nur diese Azure-Regionen. |
+| **Location** | Wählen Sie **USA, Westen 2** oder **Europa, Westen** aus. Logz.io unterstützt nur diese Azure-Regionen. |
 | **Pricing Plan** (Tarif) | Wählen Sie einen Plan aus der Liste der verfügbaren Logz.io-Pläne aus. |
 | **Abrechnungszeitraum** | **Monatlich** ist der Standardwert. |
 | **Preis** | Wird basierend auf dem ausgewählten Logz.io-Plan angegeben. |

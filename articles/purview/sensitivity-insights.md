@@ -8,12 +8,12 @@ ms.subservice: purview-insights
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1fd89f44552e8a986e4ccffb55836c0d4db3d8d2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2c030d419349275204e662d78396543f5517ceca
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131015027"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847221"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Vertraulichkeitsbezeichnungs-Erkenntnisse zu Ihren Daten in Azure Purview
 
@@ -22,7 +22,7 @@ In diesem Leitfaden ist beschrieben, wie Sie auf Sicherheitserkenntnisse zugreif
 > [!IMPORTANT]
 > Erkenntnisse für Azure Purview-Vertraulichkeitsbezeichnungen befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
-Folgende Datenquellen werden unterstützt: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, SQL Server, Azure SQL Database, Azure SQL Managed Instance, Amazon S3 buckets, Amazon RDS databases (öffentliche Vorschau)
+Folgende Datenquellen werden unterstützt: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, SQL Server, Azure SQL Database, Azure SQL Managed Instance, Amazon S3 Buckets, Amazon RDS-Datenbanken (öffentliche Vorschau), Power BI.
 
 In dieser Schrittanleitung lernen Sie Folgendes:
 
@@ -31,11 +31,7 @@ In dieser Schrittanleitung lernen Sie Folgendes:
 > - Anzeigen von Vertraulichkeitsbezeichnungs-Erkenntnissen zu Ihren Daten
 > - Ausführen von Drilldowns zu weiteren Vertraulichkeitsbezeichnungsdetails zu Ihren Daten
 
-> [!NOTE]
-> Vertraulichkeitsbezeichnungen in [Power BI-Ressourcen](register-scan-power-bi-tenant.md), die mit Purview überprüft werden, werden im Bericht zu den Erkenntnissen für Vertraulichkeitsbezeichnungen derzeit nicht angezeigt. 
->
-> Sehen Sie sich die entsprechende Ressource im [Purview-Datenkatalog](how-to-search-catalog.md) an, um Vertraulichkeitsbezeichnungen in Power BI-Ressourcen anzuzeigen.
-> 
+ 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie vor dem Beginn mit Purview-Erkenntnissen sicher, dass Sie die folgenden Schritte ausgeführt haben:

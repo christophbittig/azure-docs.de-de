@@ -1,45 +1,45 @@
 ---
-title: Ermitteln des richtigen Azure Sentinel-Datenconnectors | Microsoft-Dokumentation
-description: Erfahren Sie mehr über spezifische Konfigurationsschritte für Azure Sentinel-Datenconnectors.
+title: Suchen Ihres Microsoft Sentinel-Daten-Konnektors | Microsoft-Dokumentation
+description: Erfahren Sie mehr über bestimmte Konfigurationsschritte für Microsoft Sentinel-Daten-Konnektor.
 services: sentinel
 documentationcenter: na
 author: batamig
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: reference
-ms.date: 10/11/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8f9a02149cb7229a201f8dfb9c11381b19d8e8ec
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c5ba2be13c48c85786f2ab916eaf9a37c649a5e9
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023327"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518563"
 ---
-# <a name="find-your-azure-sentinel-data-connector"></a>Ermitteln des richtigen Azure Sentinel-Datenconnectors
+# <a name="find-your-microsoft-sentinel-data-connector"></a>Suchen Ihres Microsoft Sentinel-Daten-Konnektors
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Datenconnektoren in Azure Sentinel bereitstellen, alle unterstützten, vorkonfigurierten Datenconnektoren sowie Links zu generischen Bereitstellungsverfahren und zusätzlichen Schritte auflisten, die für bestimmte Connektoren erforderlich sind.
+In diesem Artikel wird die Bereitstellung von Daten-Konnektoren in Microsoft Sentinel beschrieben, wobei alle unterstützten, sofort einsatzbereiten Daten-Konnektoren sowie Links zu allgemeinen Bereitstellungsverfahren und zusätzlichen Schritten, die für bestimmte Konnektoren erforderlich sind, aufgeführt werden.
 
 > [!TIP]
-> Einige Datenconnectors werden nur über Lösungen bereitgestellt. Weitere Informationen finden Sie im [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md). Weitere, in der Community integrierte Datenconnectors finden Sie auch im [Azure Sentinel-GitHub-Repository](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors).
+> Einige Datenconnectors werden nur über Lösungen bereitgestellt. Weitere Informationen finden Sie im [Microsoft Sentinel-Lösungskatalog.](sentinel-solutions-catalog.md) Sie finden auch andere, in der Community integrierte Daten-Konnektors im [Microsoft Sentinel-GitHub Repository](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors).
 >
 
 ## <a name="how-to-use-this-guide"></a>Verwendung dieses Leitfadens
 
 1. Suchen Sie zunächst den Connector für Ihr Produkt, Ihren Dienst oder Ihr Gerät im Menü mit den Überschriften auf der rechten Seite, und wählen Sie ihn aus.
 
-    Die erste Information, die zu jedem Connector angezeigt wird, ist die **Datenerfassungsmethode**. Die Methode wird dort als Link zu einem der folgenden allgemeinen Bereitstellungsverfahren angezeigt, die die meisten Informationen enthalten, die Sie benötigen, um Ihre Datenquellen mit Azure Sentinel zu verbinden:
+    Die erste Information, die zu jedem Connector angezeigt wird, ist die **Datenerfassungsmethode**. Die dort angezeigte Methode enthält einen Link zu einem der folgenden generischen Bereitstellungsverfahren, die die meisten Informationen enthalten, die Sie benötigen, um Ihre Datenquellen mit Microsoft Sentinel zu verbinden:
 
     | Datenerfassungsmethode | Verknüpfter Artikel mit Anweisungen |
     | --- | --- |
     | **Azure-Dienst-zu-Dienst-Integration** | [Verbinden mit Azure-, Windows-, Microsoft- und Amazon-Diensten](connect-azure-windows-microsoft-services.md) |
-    | **Common Event Format (CEF) über Syslog** | [Abrufen von Protokollen im CEF-Format von Ihrem Gerät oder Ihrer Appliance in Azure Sentinel](connect-common-event-format.md) |
-    | **Azure Sentinel-Datensammler-API** | [Verbinden Ihrer Datenquelle mit der Datensammler-API von Azure Sentinel zur Erfassung von Daten](connect-rest-api-template.md) |
-    | **Azure Functions und die REST-API** | [Verwenden von Azure Functions zum Verbinden von Azure Sentinel mit Ihrer Datenquelle](connect-azure-functions-template.md) |
+    | **Common Event Format (CEF) über Syslog** | [Einlesen von CEF-formatierten Protokollen von Ihrem Gerät oder Ihrer Anwendung in Microsoft Sentinel](connect-common-event-format.md) |
+    | **Microsoft Sentinel-Datensammler-API** | [Verbinden Ihrer Datenquelle an die Microsoft Sentinel-Datensammler-API, um Daten zu erfassen](connect-rest-api-template.md) |
+    | **Azure Functions und die REST-API** | [Verwenden Azure Functions, um Microsoft Sentinel mit Ihrer Datenquelle zu verbinden](connect-azure-functions-template.md) |
     | **Syslog** | [Sammeln von Daten aus Linux-basierten Quellen mithilfe von Syslog](connect-syslog.md) |
-    | **Benutzerdefinierte Protokolle** | [Sammeln von Daten in benutzerdefinierten Protokollformaten für Azure Sentinel mit dem Log Analytics-Agent](connect-custom-logs.md) |
+    | **Benutzerdefinierte Protokolle** | [Sammeln von Daten in benutzerdefinierten Protokollformaten für Microsoft Sentinel mit dem Log Analytics-Agent](connect-custom-logs.md) |
     |
 
     > [!NOTE]
@@ -48,17 +48,15 @@ In diesem Artikel wird beschrieben, wie Sie Datenconnektoren in Azure Sentinel b
 1. Wenn Sie einen bestimmten Connector bereitstellen, wählen Sie den Artikel zur entsprechenden **Datenerfassungsmethode** aus und verwenden die Informationen und zusätzlichen Leitfäden im entsprechenden Abschnitt unten, als Ergänzung zu den Informationen in diesem Artikel.
 
 > [!TIP]
-> - Viele Datenconnectors können auch als Teil einer [Azure Sentinel-Lösung](sentinel-solutions.md) zusammen mit zugehörigen Analyseregeln, Arbeitsmappen und Playbooks bereitgestellt werden. Weitere Informationen finden Sie im [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md).
 >
+> - Viele Daten-Konnektoren können auch als Teil einer [Microsoft Sentinel-Lösung](sentinel-solutions.md) eingesetzt werden, zusammen mit den zugehörigen Analyseregeln, Arbeitsmappen und Playbooks. Weitere Informationen finden Sie im [Microsoft Sentinel-Lösungskatalog.](sentinel-solutions-catalog.md)
 >
-> - Die Azure Sentinel-Community stellt noch weitere Datenconnectors bereit, die Sie im Azure Marketplace finden. Die Dokumentation dieser Communitydatenconnectors ist Verantwortung der Organisation, die den Connector erstellt hat.
+> - Weitere Daten-Konnektors werden von der Microsoft Sentinel-Community bereitgestellt und finden Sie im Azure Marketplace. Die Dokumentation dieser Communitydatenconnectors ist Verantwortung der Organisation, die den Connector erstellt hat.
 >
->
-> - Wenn Ihre Datenquelle nicht aufgeführt ist oder derzeit nicht unterstützt wird, können Sie auch einen eigenen, benutzerdefinierten Connector erstellen. Weitere Informationen finden Sie unter [Ressourcen zum Erstellen benutzerdefinierter Azure Sentinel-Connectors](create-custom-connector.md).
->
+> - Wenn Ihre Datenquelle nicht aufgeführt ist oder derzeit nicht unterstützt wird, können Sie auch einen eigenen, benutzerdefinierten Connector erstellen. Weitere Informationen finden Sie unter [Ressourcen zum Erstellen von benutzerdefinierten Microsoft Sentinel-Konnektors.](create-custom-connector.md)
 
 > [!IMPORTANT]
-> Die genannten Azure Sentinel-Datenconnectors befinden sich derzeit in der **Vorschau**. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> Notierte Microsoft Sentinel-Daten-Konnektors befinden sich derzeit in der **Vorschauversion.** In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 ## <a name="agari-phishing-defense-and-brand-protection-preview"></a>Agari Phishing Defense and Brand Protection (Vorschau)
 
@@ -66,7 +64,7 @@ In diesem Artikel wird beschrieben, wie Sie Datenconnektoren in Azure Sentinel b
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md) <br><br>**Vor der Bereitstellung:** [Aktivieren der Security Graph-API (optional)](#enable-the-security-graph-api-optional) <br>**Nach der Bereitstellung:** [Zuweisen der erforderlichen Berechtigungen zu Ihrer Funktions-App](#assign-necessary-permissions-to-your-function-app)|
 | **Log Analytics-Tabellen** | agari_bpalerts_log_CL<br>agari_apdtc_log_CL<br>agari_apdpolicy_log_CL |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-agari-functionapp |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-agari-functionapp |
 | **API-Anmeldeinformationen** | <li>Client-ID<li>Geheimer Clientschlüssel<li>(Optional: Graph-Mandanten-ID, Graph-Client-ID, Graph-Clientgeheimnis) |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Schnellstart](https://developers.agari.com/agari-platform/docs/quick-start)<li>[Agari-Website für Entwickler](https://developers.agari.com/agari-platform) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPS) |
@@ -79,7 +77,7 @@ In diesem Artikel wird beschrieben, wie Sie Datenconnektoren in Azure Sentinel b
 > [!IMPORTANT]
 > Wenn Sie diesen Schritt ausführen, sollte dies vor der Bereitstellung Ihres Datenconnectors erfolgen.
 >
-Die Agari-Funktions-App ermöglicht den Austausch von Bedrohungsdaten mit Azure Sentinel über die Security Graph-API. Hierfür muss der [Sentinel Threat Intelligence Platforms-Connector](./connect-threat-intelligence-tip.md) aktiviert werden. Außerdem muss [eine Anwendung in Azure Active Directory registriert werden](/graph/auth-register-app-v2).
+Mit der Funktionsapp von Agari können Sie Informationen zu Bedrohungen mit Microsoft Sentinel über die Security Graph-API teilen. Hierfür muss der [Sentinel Threat Intelligence Platforms-Connector](./connect-threat-intelligence-tip.md) aktiviert werden. Außerdem muss [eine Anwendung in Azure Active Directory registriert werden](/graph/auth-register-app-v2).
 
 Dadurch erhalten Sie drei Informationen, die Sie beim [Bereitstellen der Funktions-App](connect-azure-functions-template.md) verwenden: die **Graph-Mandanten-ID**, die **Graph-Client-ID** und das **Graph-Clientgeheimnis** (siehe *Anwendungseinstellungen* in der Tabelle unten).
 
@@ -109,8 +107,8 @@ Der Agari-Connector speichert Zeitstempel für Protokollzugriffe in einer Umgebu
 Konfigurieren Sie Darktrace, um Syslog-Nachrichten im CEF-Format über den Log Analytics-Agent an Ihren Azure-Arbeitsbereich weiterzuleiten.
 
 1. Navigieren Sie in Darktrace Threat Visualizer im Hauptmenü unter **Admin** zur Seite **System Config** (Systemkonfiguration).
-1. Wählen Sie im Menü auf der linken Seite **Module** und dann **Azure Sentinel** in den verfügbaren **Workflowintegrationen** aus.
-1. Ein Konfigurationsfenster wird geöffnet. Suchen Sie nach **Azure Sentinel Syslog CEF**, und wählen Sie **New** (Neu) aus, um die Konfigurationseinstellungen anzuzeigen, sofern sie nicht bereits verfügbar gemacht wurden.
+1. Wählen Sie im Menü auf der linken Seite **Module** aus, und wählen Sie **Microsoft Sentinel** aus den **verfügbaren Workflow- Integrationen** aus.
+1. Ein Konfigurationsfenster wird geöffnet. Suchen Sie **Microsoft Sentinel Syslog CEF,** und wählen Sie **Neu** aus, um die Konfigurationseinstellungen offenzulegen, sofern sie nicht bereits verfügbar gemacht wurden.
 1. Geben Sie im Feld **Server configuration** (Serverkonfiguration) den Speicherort der Protokollweiterleitung ein, und ändern Sie optional den Kommunikationsport. Stellen Sie sicher, dass der Port auf 514 festgelegt ist und von allen zwischengeschalteten Firewalls zugelassen wird.
 1. Konfigurieren Sie ggf. Warnungsschwellenwerte, Zeitoffsets oder zusätzliche Einstellungen.
 1. Überprüfen Sie alle zusätzlichen Konfigurationsoptionen, die Sie möglicherweise aktivieren möchten, um die Syslog-Syntax anzupassen.
@@ -127,7 +125,7 @@ Konfigurieren Sie Darktrace, um Syslog-Nachrichten im CEF-Format über den Log A
 
 ### <a name="configure-cef-log-forwarding-for-ai-vectra-detect"></a>Konfigurieren der CEF-Protokollweiterleitung für AI Vectra Detect
 
-Konfigurieren Sie den Vectra-Agent (X-Serie), um Syslog-Nachrichten im CEF-Format über den Log Analytics-Agent an Ihren Azure Sentinel-Arbeitsbereich weiterzuleiten.
+Konfigurieren Sie den Vectra-Agent (X-Serie), um Syslog-Nachrichten im CEF-Format über den Log Analytics-Agent an Ihren Microsoft Sentinel-Arbeitsbereich weiterzuleiten.
 
 Navigieren Sie von der Vectra-Schnittstelle zu „Einstellungen > Benachrichtigungen“, und wählen Sie „Syslog-Konfiguration bearbeiten“ aus. Folgen Sie den unten stehenden Anweisungen, um die Verbindung herzustellen:
 
@@ -149,7 +147,7 @@ Weitere Informationen finden Sie im Syslog-Leitfaden zu Cognito Detect, den Sie 
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** mit einem Kusto-Funktionsparser |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
 | **Kusto-Funktionsalias:** | AkamaiSIEMEvent |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-akamaisecurityevents-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-akamaisecurityevents-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [SIEM-Integration (Security Information & Event Management) konfigurieren](https://developer.akamai.com/tools/integrations/siem)<br>[Einrichten eines CEF-Connectors](https://developer.akamai.com/tools/integrations/siem/siem-cef-connector) |
 | **Unterstützt von** | [Akamai](https://www.akamai.com/us/en/support/) |
 | | |
@@ -158,7 +156,7 @@ Weitere Informationen finden Sie im Syslog-Leitfaden zu Cognito Detect, den Sie 
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | alcide_kaudit_activity_1_CL: Alcide kAudit-Aktivitätsprotokolle<br>alcide_kaudit_detections_1_CL: Alcide kAudit-Erkennungen<br>alcide_kaudit_selections_count_1_CL: Alcide kAudit-Aktivitätsanzahl<br>alcide_kaudit_selections_details_1_CL: Alcide kAudit-Aktivitätsdetails |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Installationsleitfaden für Alcide kAudit](https://awesomeopensource.com/project/alcideio/kaudit?categoryPage=29#before-installing-alcide-kaudit) |
 | **Unterstützt von** | [Alcide](https://www.alcide.io/company/contact-us/) |
@@ -171,7 +169,7 @@ Weitere Informationen finden Sie im Syslog-Leitfaden zu Cognito Detect, den Sie 
 | **Datenerfassungsmethode** | [**Log Analytics-Agent: benutzerdefinierte Protokolle**](connect-custom-logs.md) <br><br>[Zusätzliche Konfiguration für Alsid](#extra-configuration-for-alsid)|
 | **Log Analytics-Tabellen** | AlsidForADLog_CL |
 | **Kusto-Funktionsalias:** | afad_parser |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-alsidforad-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-alsidforad-parser |
 | **Unterstützt von** | [Alsid](https://www.alsid.com/contact-us/) |
 | | |
 
@@ -193,7 +191,7 @@ Weitere Informationen finden Sie im Syslog-Leitfaden zu Cognito Detect, den Sie 
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Verbinden von AWS CloudTrail mit Azure Sentinel](connect-aws.md)** (wichtigster Artikel zum Connector) |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration: <br>[Verbinden AWS CloudTrail zu Microsoft Sentinel](connect-aws.md)** (Artikel zum wichtigsten Konnektor) |
 | **Log Analytics-Tabellen** | AWSCloudTrail |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -205,7 +203,7 @@ Weitere Informationen finden Sie im Syslog-Leitfaden zu Cognito Detect, den Sie 
 | **Datenerfassungsmethode** | [**Log Analytics-Agent: benutzerdefinierte Protokolle**](connect-custom-logs.md) |
 | **Log Analytics-Tabellen** | ApacheHTTPServer_CL |
 | **Kusto-Funktionsalias:** | ApacheHTTPServer |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-apachehttpserver-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-apachehttpserver-parser |
 | **Beispieldatei für benutzerdefinierte Protokolle:** | „access.log“ oder „error.log“ |
 | | |
 
@@ -216,7 +214,7 @@ Weitere Informationen finden Sie im Syslog-Leitfaden zu Cognito Detect, den Sie 
 | **Datenerfassungsmethode** | [**Log Analytics-Agent: benutzerdefinierte Protokolle**](connect-custom-logs.md) |
 | **Log Analytics-Tabellen** | Tomcat_CL |
 | **Kusto-Funktionsalias:** | TomcatEvent |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-ApacheTomcat-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-ApacheTomcat-parser |
 | **Beispieldatei für benutzerdefinierte Protokolle:** | „access.log“ oder „error.log“ |
 | | |
 
@@ -227,7 +225,7 @@ Weitere Informationen finden Sie im Syslog-Leitfaden zu Cognito Detect, den Sie 
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** mit einem Kusto-Funktionsparser |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
 | **Kusto-Funktionsalias:** | ArubaClearPass |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-arubaclearpass-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-arubaclearpass-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | Befolgen Sie die Anweisungen von Aruba, um [ClearPass zu konfigurieren](https://www.arubanetworks.com/techdocs/ClearPass/6.7/PolicyManager/Content/CPPM_UserGuide/Admin/syslogExportFilters_add_syslog_filter_general.htm). |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -238,12 +236,12 @@ Weitere Informationen finden Sie im Syslog-Leitfaden zu Cognito Detect, den Sie 
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md) |
 | **Log Analytics-Tabellen** | Confluence_Audit_CL |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-confluenceauditapi-functionapp |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-confluenceauditapi-functionapp |
 | **API-Anmeldeinformationen** | <li>ConfluenceAccessToken<li>ConfluenceUsername<li>ConfluenceHomeSiteName |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[API-Dokumentation](https://developer.atlassian.com/cloud/confluence/rest/api-group-audit/)<li>[Anforderungen und Anweisungen zum Abrufen von Anmeldeinformationen](https://developer.atlassian.com/cloud/confluence/rest/intro/#auth)<li>[Anzeigen des Überwachungsprotokolls](https://support.atlassian.com/confluence-cloud/docs/view-the-audit-log/) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPY) |
 | **Kusto-Funktionsalias** | ConfluenceAudit |
-| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/sentinel-confluenceauditapi-parser |
+| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/Sentinel-confluenceauditapi-parser |
 | **Anwendungseinstellungen** | <li>ConfluenceUsername<li>ConfluenceAccessToken<li>ConfluenceHomeSiteName<li>WorkspaceID<li>WorkspaceKey<li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -254,12 +252,12 @@ Weitere Informationen finden Sie im Syslog-Leitfaden zu Cognito Detect, den Sie 
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md) |
 | **Log Analytics-Tabellen** | Jira_Audit_CL |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-jiraauditapi-functionapp |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-jiraauditapi-functionapp |
 | **API-Anmeldeinformationen** | <li>JiraAccessToken<li>JiraUsername<li>JiraHomeSiteName |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[API-Dokumentation: Überwachungsdatensätze](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-audit-records/)<li>[Anforderungen und Anweisungen zum Abrufen von Anmeldeinformationen](https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/#authentication) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPY) |
 | **Kusto-Funktionsalias** | JiraAudit |
-| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/sentinel-jiraauditapi-parser |
+| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/Sentinel-jiraauditapi-parser |
 | **Anwendungseinstellungen** | <li>JiraUsername<li>JiraAccessToken<li>JiraHomeSiteName<li>WorkspaceID<li>WorkspaceKey<li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -268,7 +266,7 @@ Weitere Informationen finden Sie im Syslog-Leitfaden zu Cognito Detect, den Sie 
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Verbinden von Azure Active Directory-Daten mit Azure Sentinel](connect-azure-active-directory.md)** (wichtigster Artikel zum Connector) |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration: <br>[Verbinden Azure Active Directory daten in Microsoft Sentinel](connect-azure-active-directory.md)** (Artikel zum Top- Konnektor) |
 | **Lizenzvoraussetzungen/<br>Preisinformationen** | <li>Azure Active Directory P1- oder P2-Lizenz für Anmeldeprotokolle<li>Eine beliebige Azure AD-Lizenz (Free/O365/P1/P2) für andere Protokolltypen<br>Möglicherweise fallen weitere Gebühren an. |
 | **Log Analytics-Tabellen** | SigninLogs<br>AuditLogs<br>AADNonInteractiveUserSignInLogs<br>AADServicePrincipalSignInLogs<br>AADManagedIdentitySignInLogs<br>AADProvisioningLogs<br>ADFSSignInLogs |
 | **Unterstützt von** | Microsoft |
@@ -314,7 +312,7 @@ In der [Azure Monitor-Dokumentation](../azure-monitor/logs/data-platform-logs.md
 
 Bevor Sie den neuen Connector für das Azure-Aktivitätsprotokoll einrichten, müssen Sie die vorhandenen Abonnements von der Legacymethode trennen.
 
-1. Klicken Sie im Azure Sentinel-Navigationsmenü auf **Data connectors** (Datenconnectors). Klicken Sie in der Liste mit Connectoren auf **Azure-Aktivität** und dann unten rechts auf die Schaltfläche **Connectorseite öffnen**.
+1. Wählen Sie im Navigationsmenü von Microsoft Sentinel die Option **Daten-Konnektor aus.** Klicken Sie in der Liste mit Connectoren auf **Azure-Aktivität** und dann unten rechts auf die Schaltfläche **Connectorseite öffnen**.
 
 1. Überprüfen Sie unter der Registerkarte **Anweisungen** im Abschnitt **Konfiguration** in Schritt 1 die Liste Ihrer vorhandenen Abonnements, die mit der alten Methode verbunden sind (damit Sie wissen, welche Abonnements Sie der neuen Methode hinzufügen müssen), und trennen Sie diese alle auf einmal, indem Sie unten auf die Schaltfläche **Alle trennen** klicken.
 
@@ -331,16 +329,18 @@ Bevor Sie den neuen Connector für das Azure-Aktivitätsprotokoll einrichten, m�
 | **Unterstützt von** | Microsoft |
 | | |
 
-## <a name="azure-defender"></a>Azure Defender
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender für Cloud
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Verbinden von Azure Defender-Warnungen aus Azure Security Center](connect-azure-security-center.md)** (wichtigster Artikel zum Connector) |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration: <br>[Verbinden von Microsoft Defender for Cloud](connect-azure-security-center.md)** gesendete Sicherheitswarnungen (Artikel zum Top-Konnektor) |
 | **Log Analytics-Tabellen** | SecurityAlert |
 | **Unterstützt von** | Microsoft |
 | | |
 
-## <a name="azure-defender-for-iot"></a>Azure Defender für IoT
+<a name="azure-defender-for-iot"></a>
+
+## <a name="microsoft-defender-for-iot"></a>Microsoft Defender für IoT
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
@@ -392,7 +392,7 @@ Weitere Informationen finden Sie in der [Dokumentation zu Azure Information Prot
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf Diagnoseeinstellungen basierende Verbindungen (von Azure Policy verwaltet)](connect-azure-windows-microsoft-services.md?tabs=AP#diagnostic-settings-based-connections)** <br><br>Auch in [Azure SQL und Azure Sentinel für SQL PaaS-Lösungen](sentinel-solutions-catalog.md#azure) verfügbar|
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf Diagnoseeinstellungen basierende Verbindungen (von Azure Policy verwaltet)](connect-azure-windows-microsoft-services.md?tabs=AP#diagnostic-settings-based-connections)** <br><br>Auch in Azure SQL [und Microsoft Sentinel für SQL PaaS-Lösungen verfügbar](sentinel-solutions-catalog.md#azure)|
 | **Log Analytics-Tabellen** | SQLSecurityAuditEvents<br>SQLInsights<br>AutomaticTuning<br>QueryStoreWaitStatistics<br>Errors<br>DatabaseWaitStatistics<br>Timeouts<br>Blöcke<br>Deadlocks<br>Basic<br>InstanceAndAppAdvanced<br>WorkloadManagement<br>DevOpsOperationsAudit |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -435,8 +435,8 @@ Es werden nur die Speichertypen angezeigt, für die Sie tatsächlich Ressourcen 
 | **Datenerfassungsmethode** | [**syslog**](connect-syslog.md) |
 | **Log Analytics-Tabellen** | syslog |
 | **Kusto-Funktionsalias:** | CGFWFirewallActivity |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-barracudacloudfirewall-function |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | https://aka.ms/sentinel-barracudacloudfirewall-connector |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-barracudacloudfirewall-function |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | https://aka.ms/Sentinel-barracudacloudfirewall-connector |
 | **Unterstützt von** | [Barracuda](https://www.barracuda.com/support) |
 | | |
 
@@ -454,9 +454,9 @@ Es werden nur die Speichertypen angezeigt, für die Sie tatsächlich Ressourcen 
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | BetterMTDDeviceLog_CL<br>BetterMTDIncidentLog_CL<br>BetterMTDAppLog_CL<br>BetterMTDNetflowLog_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Dokumentation zu BETTER MTD](https://mtd-docs.bmobi.net/integrations/azure-sentinel/setup-integration)<br><br>Einrichten der Bedrohungsrichtlinie, die die Vorfälle definiert, die an Azure Sentinel gemeldet werden:<br><ol><li>Wählen Sie in der **BETTER MTD-Konsole** auf der Seitenleiste **Policies** (Richtlinien) aus.<li>Wählen Sie die Schaltfläche **Edit** (Bearbeiten) für die von Ihnen verwendete Richtlinie aus.<li>Wechseln Sie für jeden Vorfallstyp, den Sie protokollieren möchten, zum Feld **Send to Integrations** (An Integrationen senden), und wählen Sie **Sentinel** aus. |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Dokumentation zu BETTER MTD](https://mtd-docs.bmobi.net/integrations/azure-sentinel/setup-integration)<br><br>Einrichtung der Bedrohungsrichtlinie, die die Vorfälle definiert, die an Microsoft Sentinel gemeldet werden:<br><ol><li>Wählen Sie in der **BETTER MTD-Konsole** auf der Seitenleiste **Policies** (Richtlinien) aus.<li>Wählen Sie die Schaltfläche **Edit** (Bearbeiten) für die von Ihnen verwendete Richtlinie aus.<li>Wechseln Sie für jeden Vorfallstyp, den Sie protokollieren möchten, zum Feld **Send to Integrations** (An Integrationen senden), und wählen Sie **Sentinel** aus. |
 | **Unterstützt von** | [Better Mobile](mailto:support@better.mobi) |
 | | |
 
@@ -465,9 +465,9 @@ Es werden nur die Speichertypen angezeigt, für die Sie tatsächlich Ressourcen 
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | beSECURE_ScanResults_CL<br>beSECURE_ScanEvents_CL<br>beSECURE_Audit_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | Zugreifen auf das Menü **Integration**:<br><ol><li>Wählen Sie die Menüoption **More** (Weitere) aus.<li>Wählen Sie **Server** aus.<li>Wählen Sie **Integration** aus.<li>Aktivieren von Azure Sentinel<li>Fügen Sie die Werte für die **Arbeitsbereichs-ID** und den **Primärschlüssel** aus der beSECURE-Konfiguration ein.<li>Wählen Sie **Ändern** aus. |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | Zugreifen auf das Menü **Integration**:<br><ol><li>Wählen Sie die Menüoption **More** (Weitere) aus.<li>Wählen Sie **Server** aus.<li>Wählen Sie **Integration** aus.<li>Aktivieren von Microsoft Sentinel<li>Fügen Sie die Werte für die **Arbeitsbereichs-ID** und den **Primärschlüssel** aus der beSECURE-Konfiguration ein.<li>Wählen Sie **Ändern** aus. |
 | **Unterstützt von** | [Beyond Security](https://beyondsecurity.freshdesk.com/support/home) |
 | | |
 
@@ -479,7 +479,7 @@ Es werden nur die Speichertypen angezeigt, für die Sie tatsächlich Ressourcen 
 | **Datenerfassungsmethode** | [**syslog**](connect-syslog.md) |
 | **Log Analytics-Tabellen** | syslog |
 | **Kusto-Funktionsalias:** | CylancePROTECT |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-cylanceprotect-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-cylanceprotect-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Syslog-Leitfaden für Cylance](https://docs.blackberry.com/content/dam/docs-blackberry-com/release-pdfs/en/cylance-products/syslog-guides/Cylance%20Syslog%20Guide%20v2.0%20rev12.pdf) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -491,7 +491,7 @@ Es werden nur die Speichertypen angezeigt, für die Sie tatsächlich Ressourcen 
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** mit einem Kusto-Funktionsparser |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
 | **Kusto-Funktionsalias:** | SymantecDLP |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-symantecdlp-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-symantecdlp-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Konfigurieren der Aktion zur Protokollierung auf einem Syslog-Server](https://help.symantec.com/cs/DLP15.7/DLP/v27591174_v133697641/Configuring-the-Log-to-a-Syslog-Server-action?locale=EN_US) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -534,7 +534,7 @@ Es werden nur die Speichertypen angezeigt, für die Sie tatsächlich Ressourcen 
 Installieren und konfigurieren Sie den Firepower eNcore eStreamer-Client. Weitere Informationen finden Sie im [vollständigen Installationsleitfaden von Cisco](https://www.cisco.com/c/en/us/td/docs/security/firepower/670/api/eStreamer_enCore/eStreamereNcoreSentinelOperationsGuide_409.html).
 
 1. **Herunterladen des Firepower-Connectors von GitHub**  
-Laden Sie die neueste Version des Firepower eNcore-Connectors für Azure Sentinel aus dem [Cisco-GitHub-Repository](https://github.com/CiscoSecurity/fp-05-microsoft-sentinel-connector) herunter. Wenn Sie Python3 verwenden möchten, nutzen Sie den [eStreamer-Connector für Python3](https://github.com/CiscoSecurity/fp-05-microsoft-sentinel-connector/tree/python3).
+Laden Sie die neueste Version des Firepower eNcore-Konnektors für Microsoft Sentinel aus dem [Cisco GitHub-Repository herunter.](https://github.com/CiscoSecurity/fp-05-microsoft-sentinel-connector) Wenn Sie Python3 verwenden möchten, nutzen Sie den [eStreamer-Connector für Python3](https://github.com/CiscoSecurity/fp-05-microsoft-sentinel-connector/tree/python3).
 
 1. **Erstellen einer PKCS12-Datei mithilfe der Azure-/VM-IP-Adresse**  
 Erstellen Sie unter Verwendung der öffentlichen IP-Adresse der VM-Instanz ein PKCS12-Zertifikat. Wechseln Sie hierzu in FirePower zu **System > Integration > eStreamer**. Weitere Informationen finden Sie im [Installationsleitfaden](https://www.cisco.com/c/en/us/td/docs/security/firepower/670/api/eStreamer_enCore/eStreamereNcoreSentinelOperationsGuide_409.html#_Toc527049443).
@@ -553,7 +553,7 @@ Konfigurieren Sie eNcore für das Streamen von Daten über TCP an den Log Analyt
 | **Datenerfassungsmethode** | [**syslog**](connect-syslog.md)<br><br> Verfügbar in der [Cisco ISE Lösung](sentinel-solutions-catalog.md#cisco)|
 | **Log Analytics-Tabellen** | syslog |
 | **Kusto-Funktionsalias:** | CiscoMeraki |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-ciscomeraki-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-ciscomeraki-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Dokumentation zu Meraki Device Reporting](https://documentation.meraki.com/General_Administration/Monitoring_and_Reporting/Meraki_Device_Reporting_-_Syslog%2C_SNMP_and_API) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -565,12 +565,12 @@ Konfigurieren Sie eNcore für das Streamen von Daten über TCP an den Log Analyt
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md) <br><br> Verfügbar in der [Cisco Umbrella Lösung](sentinel-solutions-catalog.md#cisco)|
 | **Log Analytics-Tabellen** | Cisco_Umbrella_dns_CL<br>Cisco_Umbrella_proxy_CL<br>Cisco_Umbrella_ip_CL<br>Cisco_Umbrella_cloudfirewall_CL |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-CiscoUmbrellaConn-functionapp |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-CiscoUmbrellaConn-functionapp |
 | **API-Anmeldeinformationen** | <li>ID des AWS-Zugriffsschlüssels<li>Geheimnis für den AWS-Zugriffsschlüssel<li>Name des AWS S3-Buckets |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Protokollierung bei Amazon S3](https://docs.umbrella.com/deployment-umbrella/docs/log-management#section-logging-to-amazon-s-3) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPY) |
 | **Kusto-Funktionsalias** | Cisco_Umbrella |
-| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/sentinel-ciscoumbrella-function |
+| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/Sentinel-ciscoumbrella-function |
 | **Anwendungseinstellungen** | <li>WorkspaceID<li>WorkspaceKey<li>S3Bucket<li>AWSAccessKeyId<li>AWSSecretAccessKey<li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -582,7 +582,7 @@ Konfigurieren Sie eNcore für das Streamen von Daten über TCP an den Log Analyt
 | **Datenerfassungsmethode** | [**syslog**](connect-syslog.md) |
 | **Log Analytics-Tabellen** | syslog |
 | **Kusto-Funktionsalias:** | CiscoUCS |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-ciscoucs-function |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-ciscoucs-function |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Einrichten von Syslog für Cisco UCS – Cisco](https://www.cisco.com/c/en/us/support/docs/servers-unified-computing/ucs-manager/110265-setup-syslog-for-ucs.html#configsremotesyslog) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -592,9 +592,9 @@ Konfigurieren Sie eNcore für das Streamen von Daten über TCP an den Log Analyt
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | CitrixAnalytics_SAlerts_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Verbinden von Citrix mit Azure Sentinel](https://aka.ms/Sentinel-Citrix-Connector) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Verbinden Citrix zu Microsoft Sentinel](https://aka.ms/Sentinel-Citrix-Connector) |
 | **Unterstützt von** | [Citrix Systems](https://www.citrix.com/support/) |
 | | |
 
@@ -613,9 +613,9 @@ Konfigurieren Sie eNcore für das Streamen von Daten über TCP an den Log Analyt
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | CognniIncidents_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | **Herstellen einer Verbindung mit Cognni**<br><ol><li>Navigieren Sie zur [Integrationsseite von Cognni](https://intelligence.cognni.ai/integrations).<li>Wählen Sie im Feld „Azure Sentinel“ die Option **Connect** (Verbinden) aus.<li>Fügen Sie auf der Integrationsseite von Cognni die **workspaceId** und den **sharedKey** (Primärschlüssel) in die entsprechenden Felder ein.<li>Wählen Sie die Schaltfläche **Connect** (Verbinden) aus, um die Konfiguration abzuschließen. |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | **Herstellen einer Verbindung mit Cognni**<br><ol><li>Navigieren Sie zur [Integrationsseite von Cognni](https://intelligence.cognni.ai/integrations).<li>Wählen Sie **Verbinden** im Feld Microsoft Sentinel aus.<li>Fügen Sie auf der Integrationsseite von Cognni die **workspaceId** und den **sharedKey** (Primärschlüssel) in die entsprechenden Felder ein.<li>Wählen Sie die Schaltfläche **Connect** (Verbinden) aus, um die Konfiguration abzuschließen. |
 | **Unterstützt von** | [Cognni](https://cognni.ai/contact-support/)
 | | |
 
@@ -624,7 +624,7 @@ Konfigurieren Sie eNcore für das Streamen von Daten über TCP an den Log Analyt
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
 | **Datenerfassungsmethode** | Nur verfügbar nach der Installation der [kontinuierlichen Bedrohungsüberwachung für SAP-Lösung](sentinel-solutions-catalog.md#sap)|
-| **Log Analytics-Tabellen** | Siehe [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP](sap-solution-log-reference.md) |
+| **Log Analytics-Tabellen** | Weitere Informationen finden Sie in der Referenz zu [SAP-Lösungsprotokollen in Microsoft Sentinel.](sap-solution-log-reference.md) |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Bereitstellen der kontinuierlichen Bedrohungsüberwachung in SAP](sap-deploy-solution.md) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -645,28 +645,23 @@ Konfigurieren Sie eNcore für das Streamen von Daten über TCP an den Log Analyt
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | CyberpionActionItems_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Erwerben eines Cyberpion-Abonnements](https://azuremarketplace.microsoft.com/en/marketplace/apps/cyberpion1597832716616.cyberpion)<br>[Integrieren von Cyberpion-Sicherheitswarnungen in Azure Sentinel](https://www.cyberpion.com/resource-center/integrations/azure-sentinel/) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Erwerben eines Cyberpion-Abonnements](https://azuremarketplace.microsoft.com/en/marketplace/apps/cyberpion1597832716616.cyberpion)<br>[Integrieren von Cyberpion-Sicherheitswarnungen in Microsoft Sentinel](https://www.cyberpion.com/resource-center/integrations/azure-sentinel/) |
 | **Unterstützt von** | [Cyberpion](https://www.cyberpion.com/) |
 | | |
 
 
 
-## <a name="domain-name-server"></a>Domänennamenserver
+## <a name="dns-preview"></a>DNS (Vorschau)
 
-| Connectorattribut | BESCHREIBUNG |
-| --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Log Analytics-Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md#log-analytics-agent-based-connections)** |
-| **Log Analytics-Tabellen** | DnsEvents<br>DnsInventory |
-| **Unterstützt von** | Microsoft |
-| | |
+**Siehe [Windows DNS Server (Vorschau)](#windows-dns-server-preview).**
 
 ## <a name="dynamics-365"></a>Dynamics 365
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[API-basierte Verbindungen](connect-azure-windows-microsoft-services.md#api-based-connections)** <br><br> Auch als Teil der [Azure Sentinel 4 Dynamics 365 Lösung](sentinel-solutions-catalog.md#azure) verfügbar|
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[API-basierte Verbindungen](connect-azure-windows-microsoft-services.md#api-based-connections)** <br><br> Auch als Teil der [Microsoft Sentinel 4 Dynamics 365-Lösung](sentinel-solutions-catalog.md#azure) verfügbar|
 | **Lizenzvoraussetzungen/<br>Preisinformationen** | <li>[Microsoft Dynamics 365-Produktionslizenz](/office365/servicedescriptions/microsoft-dynamics-365-online-service-description). Nicht für Sandboxumgebungen verfügbar.<li>Für die Aktivitätsprotokollierung ist ein Microsoft 365 Enterprise [E3- oder E5](/power-platform/admin/enable-use-comprehensive-auditing#requirements)-Abonnement erforderlich.<br>Möglicherweise fallen weitere Gebühren an. |
 | **Log Analytics-Tabellen** | Dynamics365Activity |
 | **Unterstützt von** | Microsoft |
@@ -726,7 +721,7 @@ Konfigurieren Sie rsyslog so, dass Protokolle von Ihrer ESET-SMC-IP-Adresse akze
 
 ### <a name="configure-oms-agent-to-pass-eset-smc-data-in-api-format"></a>Konfigurieren des OMS-Agents, sodass ESET SMC-Daten im API-Format übergeben werden
 
-Damit ESET-Daten einfach zu erkennen sind, pushen Sie sie in eine separate Tabelle und analysieren sie im Agent. Damit vereinfachen und beschleunigen Sie Ihre Azure Sentinel-Abfragen. 
+Um Eset-Daten leicht erkennen zu können, pushen Sie sie in eine separate Tabelle, und analysieren Sie sie beim Agent, um Ihre Microsoft Sentinel-Abfrage zu vereinfachen und zu beschleunigen. 
 
 Ändern Sie in der Datei **/etc/opt/microsoft/omsagent/{IhreArbeitsbereichsID}/conf/omsagent.conf** den Abschnitt `match oms.**` so, dass Daten als API-Objekte gesendet werden. Ändern Sie dazu den Typ in `out_oms_api`.
     
@@ -814,7 +809,7 @@ Weitere Informationen finden Sie in der ESET-Dokumentation.
 | **Datenerfassungsmethode** | [**syslog**](connect-syslog.md) |
 | **Log Analytics-Tabellen** | syslog |
 | **Kusto-Funktionsalias:** | ExabeamEvent |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-Exabeam-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-Exabeam-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Konfigurieren von Advanced Analytics-Systemaktivitätsbenachrichtigungen](https://docs.exabeam.com/en/advanced-analytics/i54/advanced-analytics-administration-guide/113254-configure-advanced-analytics.html#UUID-7ce5ff9d-56aa-93f0-65de-c5255b682a08) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -833,9 +828,9 @@ Weitere Informationen finden Sie in der ESET-Dokumentation.
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | F5Telemetry_LTM_CL<br>F5Telemetry_system_CL<br>F5Telemetry_ASM_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Integrieren von F5 BIG-IP in Azure Sentinel](https://aka.ms/F5BigIp-Integrate) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Integrieren von F5 BIG-IP in Microsoft Sentinel](https://aka.ms/F5BigIp-Integrate) |
 | **Unterstützt von** | [F5 Networks](https://support.f5.com/csp/home) |
 | | |
 ## <a name="f5-networks-asm"></a>F5 Networks (ASM)
@@ -856,7 +851,7 @@ Weitere Informationen finden Sie in der ESET-Dokumentation.
 | --- | --- |
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Forcepoint CASB und Azure Sentinel](https://forcepoint.github.io/docs/casb_and_azure_sentinel/) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Forcepoint CASB und Microsoft Sentinel](https://forcepoint.github.io/docs/casb_and_azure_sentinel/) |
 | **Unterstützt von** | [Forcepoint](https://support.forcepoint.com/) |
 | | |
 
@@ -866,7 +861,7 @@ Weitere Informationen finden Sie in der ESET-Dokumentation.
 | --- | --- |
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Forcepoint Cloud Security Gateway und Azure Sentinel](https://forcepoint.github.io/docs/csg_and_sentinel/) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Forcepoint Cloud Security Gateway und Microsoft Sentinel](https://forcepoint.github.io/docs/csg_and_sentinel/) |
 | **Unterstützt von** | [Forcepoint](https://support.forcepoint.com/) |
 | | |
 
@@ -874,9 +869,9 @@ Weitere Informationen finden Sie in der ESET-Dokumentation.
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | ForcepointDLPEvents_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Forcepoint Data Loss Prevention und Azure Sentinel](https://forcepoint.github.io/docs/dlp_and_azure_sentinel/) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Verhinderung von Datenverlust durch Forcepoint und Microsoft Sentinel](https://forcepoint.github.io/docs/dlp_and_azure_sentinel/) |
 | **Unterstützt von** | [Forcepoint](https://support.forcepoint.com/) |
 | | |
 
@@ -886,7 +881,7 @@ Weitere Informationen finden Sie in der ESET-Dokumentation.
 | --- | --- |
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Forcepoint Next-Gen Firewall und Azure Sentinel](https://forcepoint.github.io/docs/ngfw_and_azure_sentinel/) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Forcepoint Next-Gen-Firewall und Microsoft Sentinel](https://forcepoint.github.io/docs/ngfw_and_azure_sentinel/) |
 | **Unterstützt von** | [Forcepoint](https://support.forcepoint.com/) |
 | | |
 
@@ -898,7 +893,7 @@ Weitere Informationen finden Sie in der ESET-Dokumentation.
 | --- | --- |
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Unbedingt zuerst installieren: ForgeRock Common Audit (CAUD) für Azure Sentinel](https://github.com/javaservlets/SentinelAuditEventHandler) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Installieren Sie dies zuerst! ForgeRock Common Audit (CAUD) für Microsoft Sentinel](https://github.com/javaservlets/SentinelAuditEventHandler) |
 | **Unterstützt von** | [ForgeRock](https://www.forgerock.com/support) |
 | | |
 
@@ -937,12 +932,12 @@ end
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md)<br><br>[Zusätzliche Konfiguration für die Google Reports-API](#extra-configuration-for-the-google-reports-api) |
 | **Log Analytics-Tabellen** | GWorkspace_ReportsAPI_admin_CL<br>GWorkspace_ReportsAPI_calendar_CL<br>GWorkspace_ReportsAPI_drive_CL<br>GWorkspace_ReportsAPI_login_CL<br>GWorkspace_ReportsAPI_mobile_CL<br>GWorkspace_ReportsAPI_token_CL<br>GWorkspace_ReportsAPI_user_accounts_CL<br> |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-GWorkspaceReportsAPI-functionapp |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-GWorkspaceReportsAPI-functionapp |
 | **API-Anmeldeinformationen** | <li>GooglePickleString |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[API-Dokumentation](https://developers.google.com/admin-sdk/reports/v1/reference/activities)<li>Rufen Sie die Anmeldeinformationen unter [Ausführen von domänenweiter Google Workspace-Delegierung der Autorität](https://developers.google.com/admin-sdk/reports/v1/guides/delegation) ab.<li>[Konvertieren der Datei „token.pickle“ in eine pickle-Zeichenfolge](https://aka.ms/sentinel-GWorkspaceReportsAPI-functioncode) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPY) |
 | **Kusto-Funktionsalias** | GWorkspaceActivityReports |
-| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/sentinel-GWorkspaceReportsAPI-parser |
+| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/Sentinel-GWorkspaceReportsAPI-parser |
 | **Anwendungseinstellungen** | <li>GooglePickleString<li>WorkspaceID<li>workspaceKey<li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -972,7 +967,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 | --- | --- |
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** <br><br>Verfügbar in der [Imperva Cloud WAF Lösung](sentinel-solutions-catalog.md#imperva)|
 | **Log Analytics-Tabellen** | CommonSecurityLog |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Schritte zum Aktivieren der Imperva WAF Gateway-Warnungsprotokollierung in Azure Sentinel](https://community.imperva.com/blogs/craig-burlingame1/2020/11/13/steps-for-enabling-imperva-waf-gateway-alert) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Schritte zum Aktivieren der Imperva WAF Gateway-Alarm-Protokollierung in Microsoft Sentinel](https://community.imperva.com/blogs/craig-burlingame1/2020/11/13/steps-for-enabling-imperva-waf-gateway-alert) |
 | **Unterstützt von** | [Imperva](https://www.imperva.com/support/technical-support/) |
 | | |
 
@@ -999,7 +994,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 | **Datenerfassungsmethode** | [**syslog**](connect-syslog.md) |
 | **Log Analytics-Tabellen** | syslog |
 | **Kusto-Funktionsalias:** | JuniperSRX |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-junipersrx-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-junipersrx-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Konfigurieren der Datenverkehrsprotokollierung (Sicherheitsrichtlinienprotokolle) für SRX Branch-Geräte](https://kb.juniper.net/InfoCenter/index?page=content&id=KB16509&actp=METADATA)<br>[Konfigurieren der Systemprotokollierung](https://kb.juniper.net/InfoCenter/index?page=content&id=kb16502) |
 | **Unterstützt von** | [Juniper Networks](https://support.juniper.net/support/) |
 | | |
@@ -1008,7 +1003,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md) <br><br>Nur verfügbar nach Installation der [Lookout Mobile Bedrohungsabwehr für Azure Sentinel](sentinel-solutions-catalog.md#lookout)-Lösung |
+| **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md) <br><br>Nur verfügbar nach Installation der [Lookout Mobile Threat Defense für Microsoft Sentinel](sentinel-solutions-catalog.md#lookout) Lösung |
 | **Log Analytics-Tabellen** | Lookout_CL |
 | **API-Anmeldeinformationen** | <li>Lookout-Anwendungsschlüssel |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Installationshandbuch](https://esupport.lookout.com/s/article/Lookout-with-Azure-Sentinel) (Anmeldung erforderlich)<li>[API-Dokumentation](https://esupport.lookout.com/s/article/Mobile-Risk-API-Guide) (Anmeldung erforderlich)<li>[Lookout Mobile Endpoint-Sicherheit](https://www.lookout.com/products/mobile-endpoint-security) |
@@ -1021,7 +1016,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Verbinden von Microsoft 365 Defender-Daten mit Azure Sentinel](connect-microsoft-365-defender.md)** (wichtigster Artikel zum Connector) |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration: <br>[Verbinden der Daten von Microsoft 365 Defender zu Microsoft Sentinel](connect-microsoft-365-defender.md)** (Artikel zum Top-Konnektor) |
 | **Lizenzvoraussetzungen/<br>Preisinformationen** | [Gültige Lizenz für Microsoft 365 Defender](/microsoft-365/security/mtp/prerequisites)
 | **Log Analytics-Tabellen** | **Alerts:**<br>SecurityAlert<br>SecurityIncident<br>**Defender für Endpunktereignisse:**<br>DeviceEvents<br>DeviceFileEvents<br>DeviceImageLoadEvents<br>DeviceInfo<br>DeviceLogonEvents<br>DeviceNetworkEvents<br>DeviceNetworkInfo<br>DeviceProcessEvents<br>DeviceRegistryEvents<br>DeviceFileCertificateInfo<br>**Defender für Office 365-Ereignisse:**<br>EmailAttachmentInfo<br>EmailUrlInfo<br>EmailEvents<br>EmailPostDeliveryEvents |
 | **Unterstützt von** | Microsoft |
@@ -1032,17 +1027,19 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
 | **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[API-basierte Verbindungen](connect-azure-windows-microsoft-services.md#api-based-connections)**<br><br>Auch verfügbar in der [Microsoft 365-Insider Risiko-Management-Lösung](sentinel-solutions-catalog.md#domain-solutions) |
-| **Lizenz und weitere Voraussetzungen** | <ul><li>Gültiges Abonnement für Microsoft 365 E5/A5/G5 oder die zugehörigen Compliance- oder IRM-Add-Ons.<li>[Microsoft 365-Insider Risikomanagement](/microsoft-365/compliance/insider-risk-management) vollständig eingerichtet und [IRM-Policies](/microsoft-365/compliance/insider-risk-management-policies) festgelegt und Warnungen ausgebend.<li>[Microsoft 365 IRM](/microsoft-365/compliance/insider-risk-management-settings#export-alerts-preview) konfiguriert, um den Export von IRM-Warnungen in die Office 365-Verwaltungsaktivitäts-API zu aktivieren, um die Warnungen über den Azure Sentinel zu empfangen.)
+| **Lizenz und weitere Voraussetzungen** | <ul><li>Gültiges Abonnement für Microsoft 365 E5/A5/G5 oder die zugehörigen Compliance- oder IRM-Add-Ons.<li>[Microsoft 365-Insider Risikomanagement](/microsoft-365/compliance/insider-risk-management) vollständig eingerichtet und [IRM-Policies](/microsoft-365/compliance/insider-risk-management-policies) festgelegt und Warnungen ausgebend.<li>[Microsoft 365 IRM konfiguriert](/microsoft-365/compliance/insider-risk-management-settings#export-alerts-preview), um den Export von IRM-Warnungen an die Office 365 Management Activity API zu aktivieren, um die Warnmeldungen über den Microsoft Sentinel Konnektor zu empfangen).
 | **Log Analytics-Tabellen** | SecurityAlert |
 | **Datenabfragefilter** | `SecurityAlert`<br>`\| where ProductName == "Microsoft 365 Insider Risk Management"` |
 | **Unterstützt von** | Microsoft |
 | | |
 
-## <a name="microsoft-cloud-app-security-mcas"></a>Microsoft Cloud App Security (MCAS)
+<a name="microsoft-cloud-app-security-mcas"></a>
+
+## <a name="microsoft-defender-for-cloud-apps"></a>Microsoft Defender für Cloud-Apps
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[API-basierte Verbindungen](connect-azure-windows-microsoft-services.md#api-based-connections)**<br><br>Für Cloud Discovery-Protokolle [aktivieren Sie Azure Sentinel als SIEM in Microsoft Cloud App Security](/cloud-app-security/siem-sentinel). |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[API-basierte Verbindungen](connect-azure-windows-microsoft-services.md#api-based-connections)**<br><br>Aktivieren Cloud Discovery Microsoft [Sentinel als SIEM in Microsoft Defender für Cloud-Apps.](/cloud-app-security/siem-sentinel) |
 | **Log Analytics-Tabellen** | SecurityAlert: für Warnungen<br>McasShadowItReporting: für Cloud Discovery-Protokolle |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1081,7 +1078,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
 | **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[API-basierte Verbindungen](connect-azure-windows-microsoft-services.md#api-based-connections)** |
-| **Lizenzvoraussetzungen/<br>Preisinformationen** | Ihre Office 365-Bereitstellung muss sich auf demselben Mandanten wie Ihr Azure Sentinel-Arbeitsbereich befinden.<br>Möglicherweise fallen weitere Gebühren an. |
+| **Lizenzvoraussetzungen/<br>Preisinformationen** | Ihre Office-365-Bereitstellung muss sich auf demselben Mandanten befinden wie Ihr Microsoft Sentinel-Arbeitsbereich.<br>Möglicherweise fallen weitere Gebühren an. |
 | **Log Analytics-Tabellen** | OfficeActivity |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1095,7 +1092,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** mit einem Kusto-Funktionsparser |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
 | **Kusto-Funktionsalias:** | Morphisec |
-| **Kusto-Funktions-URL** | https://aka.ms/sentinel-Morphiescutpp-parser |
+| **Kusto-Funktions-URL** | https://aka.ms/Sentinel-Morphiescutpp-parser |
 | **Unterstützt von** | [Morphisec](https://support.morphisec.com/support/home) |
 | | |
 
@@ -1106,12 +1103,12 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md) |
 | **Log Analytics-Tabellen** | Netskope_CL |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-netskope-functioncode |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-netskope-functioncode |
 | **API-Anmeldeinformationen** | <li>Netskope-API-Token |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Netskope Cloud Security Platform](https://www.netskope.com/platform)<li>[Dokumentation zur Netskope-API](https://innovatechcloud.goskope.com/docs/Netskope_Help/en/rest-api-v1-overview.html)<li>[Abrufen eines API-Tokens](https://innovatechcloud.goskope.com/docs/Netskope_Help/en/rest-api-v2-overview.html) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPS) |
 | **Kusto-Funktionsalias** | Netskope |
-| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/sentinel-netskope-parser |
+| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/Sentinel-netskope-parser |
 | **Anwendungseinstellungen** | <li>apikey<li>workspaceID<li>workspaceKey<li>URI (hängt von der Region ab, hat das Schema: `https://<Tenant Name>.goskope.com`) <li>timeInterval (auf 5 festgelegt)<li>logTypes<li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1123,7 +1120,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 | **Datenerfassungsmethode** | [**Log Analytics-Agent: benutzerdefinierte Protokolle**](connect-custom-logs.md) |
 | **Log Analytics-Tabellen** | NGINX_CL |
 | **Kusto-Funktionsalias:** | NGINXHTTPServer |
-| **Kusto-Funktions-URL** | https://aka.ms/sentinel-NGINXHTTP-parser |
+| **Kusto-Funktions-URL** | https://aka.ms/Sentinel-NGINXHTTP-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Module ngx_http_log_module](https://nginx.org/en/docs/http/ngx_http_log_module.html) |
 | **Beispieldatei für benutzerdefinierte Protokolle:** | „access.log“ oder „error.log“ |
 | **Unterstützt von** | Microsoft |
@@ -1133,9 +1130,9 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | BSMmacOS_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Benutzerleitfaden für NXLog Azure Sentinel](https://nxlog.co/documentation/nxlog-user-guide/sentinel.html) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [NXLog Microsoft Sentinel-Benutzerhandbuch](https://nxlog.co/documentation/nxlog-user-guide/sentinel.html) |
 | **Unterstützt von** | [NXLog](https://nxlog.co/community-forum) |
 | | |
 
@@ -1144,9 +1141,9 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | DNS_Logs_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Benutzerleitfaden für NXLog Azure Sentinel](https://nxlog.co/documentation/nxlog-user-guide/sentinel.html) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [NXLog Microsoft Sentinel-Benutzerhandbuch](https://nxlog.co/documentation/nxlog-user-guide/sentinel.html) |
 | **Unterstützt von** | [NXLog](https://nxlog.co/community-forum) |
 | | |
 
@@ -1155,9 +1152,9 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | LinuxAudit_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** |  [Benutzerleitfaden für NXLog Azure Sentinel](https://nxlog.co/documentation/nxlog-user-guide/sentinel.html) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** |  [NXLog Microsoft Sentinel-Benutzerhandbuch](https://nxlog.co/documentation/nxlog-user-guide/sentinel.html) |
 | **Unterstützt von** | [NXLog](https://nxlog.co/community-forum) |
 | | |
 
@@ -1170,7 +1167,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 | **Log Analytics-Tabellen** | Okta_CL |
 | **Azure Functions-App-Code** | https://aka.ms/sentineloktaazurefunctioncodev2 |
 | **API-Anmeldeinformationen** | <li>API-Token |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Dokumentation zur Okta-Systemprotokoll-API](https://developer.okta.com/docs/reference/api/system-log/)<li>[Erstellen eines API-Tokens](https://developer.okta.com/docs/guides/create-an-api-token/create-the-token/)<li>[Verbinden von Okta SSO mit Azure Sentinel](#okta-single-sign-on-preview) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Dokumentation zur Okta-Systemprotokoll-API](https://developer.okta.com/docs/reference/api/system-log/)<li>[Erstellen eines API-Tokens](https://developer.okta.com/docs/guides/create-an-api-token/create-the-token/)<li>[Verbinden des einmaligen Anmeldens von Okta bei Microsoft Sentinel](#okta-single-sign-on-preview) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPS) |
 | **Anwendungseinstellungen** | <li>apiToken<li>workspaceID<li>workspaceKey<li>uri (hat das Schema: `https://<OktaDomain>/api/v1/logs?since=`. [Ermitteln Sie Ihren Domänennamespace](https://developer.okta.com/docs/reference/api-overview/#url-namespace).) <li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
@@ -1184,7 +1181,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** mit Kusto-Funktionen für Lookup und Anreicherung<br><br>[Konfigurieren von Onapsis zum Senden von CEF-Protokollen an die Protokollweiterleitung](#configure-onapsis-to-send-cef-logs-to-the-log-forwarder) |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
 | **Kusto-Funktionsalias:** | incident_lookup |
-| **Kusto-Funktions-URL** | https://aka.ms/sentinel-Onapsis-parser |
+| **Kusto-Funktions-URL** | https://aka.ms/Sentinel-Onapsis-parser |
 | **Unterstützt von** | [Onapsis](https://onapsis.force.com/s/login/) |
 | | |
 
@@ -1192,7 +1189,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 
 Informationen zum Einrichten der Protokollweiterleitung an den Log Analytics-Agent finden Sie in der internen Onapsis-Produkthilfe.
 
-1. Navigieren Sie zu **Setup > Third-party integrations > Defend Alarms** (Setup > Drittanbieterintegrationen > Abwehralarme), und befolgen Sie die Anweisungen für Azure Sentinel.
+1. Wechseln Sie zu **Setup > Drittanbieterintegrationen > Schützen von Alarmen** und befolgen Sie die Anweisungen für Microsoft Sentinel.
 1. Stellen Sie sicher, dass die Onapsis-Konsole den Protokollweiterleitungscomputer erreichen kann, auf dem der Agent installiert ist. Protokolle sollten per TCP über Port 514 gesendet werden.
 
 ## <a name="one-identity-safeguard-preview"></a>One Identity Safeguard (Vorschau)
@@ -1214,7 +1211,7 @@ Informationen zum Einrichten der Protokollweiterleitung an den Log Analytics-Age
 | **Datenerfassungsmethode** | [**Log Analytics-Agent: benutzerdefinierte Protokolle**](connect-custom-logs.md) |
 | **Log Analytics-Tabellen** | OracleWebLogicServer_CL |
 | **Kusto-Funktionsalias:** | OracleWebLogicServerEvent |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-OracleWebLogicServer-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-OracleWebLogicServer-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Dokumentation zu Oracle WebLogic Server](https://docs.oracle.com/en/middleware/standalone/weblogic-server/14.1.1.0/index.html) |
 | **Beispieldatei für benutzerdefinierte Protokolle:** | server.log |
 | **Unterstützt von** | Microsoft |
@@ -1224,9 +1221,9 @@ Informationen zum Einrichten der Protokollweiterleitung an den Log Analytics-Age
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | OrcaAlerts_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Azure Sentinel-Integration](https://orcasecurity.zendesk.com/hc/en-us/articles/360043941992-Azure-Sentinel-configuration) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Microsoft Sentinel-Integration](https://orcasecurity.zendesk.com/hc/en-us/articles/360043941992-Azure-Sentinel-configuration) |
 | **Unterstützt von** | [Orca Security](http://support.orca.security/) |
 | | |
 
@@ -1238,7 +1235,7 @@ Informationen zum Einrichten der Protokollweiterleitung an den Log Analytics-Age
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** mit einem Kusto-Funktionsparser |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
 | **Kusto-Funktionsalias:** | OSSECEvent |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-OSSEC-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-OSSEC-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [OSSEC-Dokumentation](https://www.ossec.net/docs/)<br>[Senden von Warnungen über Syslog](https://www.ossec.net/docs/docs/manual/output/syslog-output.html) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1259,7 +1256,7 @@ Informationen zum Einrichten der Protokollweiterleitung an den Log Analytics-Age
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | Perimeter81_CL |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Dokumentation zu Perimeter 81](https://support.perimeter81.com/docs/360012680780) |
 | **Unterstützt von** | [Perimeter 81](https://support.perimeter81.com/) |
@@ -1273,12 +1270,12 @@ Informationen zum Einrichten der Protokollweiterleitung an den Log Analytics-Age
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md) <br><br>Auch in der [Proofpoint POD-Lösung](sentinel-solutions-catalog.md#proofpoint) verfügbar |
 | **Log Analytics-Tabellen** | ProofpointPOD_message_CL<br>ProofpointPOD_maillog_CL |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-proofpointpod-functionapp |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-proofpointpod-functionapp |
 | **API-Anmeldeinformationen** | <li>ProofpointClusterID<li>ProofpointToken |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Anmelden bei der Proofpoint-Community](https://proofpointcommunities.force.com/community/s/article/How-to-request-a-Community-account-and-gain-full-customer-access?utm_source=login&utm_medium=recommended&utm_campaign=public)<li>[Dokumentation und Anweisungen zur Proofpoint-API](https://proofpointcommunities.force.com/community/s/article/Proofpoint-on-Demand-Pod-Log-API) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPY) |
 | **Kusto-Funktionsalias** | ProofpointPOD |
-| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/sentinel-proofpointpod-parser |
+| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/Sentinel-proofpointpod-parser |
 | **Anwendungseinstellungen** | <li>ProofpointClusterID<li>ProofpointToken<li>WorkspaceID<li>WorkspaceKey<li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1316,12 +1313,12 @@ Informationen zum Einrichten der Protokollweiterleitung an den Log Analytics-Age
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md)<br><br>[Zusätzliche Konfiguration für Qualys VM KB](#extra-configuration-for-the-qualys-vm-kb) <br><br>Auch in der [Qualys VM-Lösung](sentinel-solutions-catalog.md#qualys) verfügbar|
 | **Log Analytics-Tabellen** | QualysKB_CL |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-qualyskb-functioncode |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-qualyskb-functioncode |
 | **API-Anmeldeinformationen** | <li>API-Benutzername<li>API-Kennwort |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Benutzerleitfaden für die QualysVM-API](https://www.qualys.com/docs/qualys-api-vmpc-user-guide.pdf) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPS) |
 | **Kusto-Funktionsalias** | QualysKB |
-| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/sentinel-qualyskb-parser |
+| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/Sentinel-qualyskb-parser |
 | **Anwendungseinstellungen** | <li>apiUsername<li>apiUsername<li>uri (nach Region; siehe [API-Serverliste](https://www.qualys.com/docs/qualys-api-vmpc-user-guide.pdf#G4.735348). Hat das Schema: `https://<API Server>/api/2.0`.<li>WorkspaceID<li>WorkspaceKey<li>filterParameters (am Ende des URI anfügen, getrennt durch `&`. Keine Leerzeichen)<li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1381,12 +1378,12 @@ Wenn eine noch längere Timeoutdauer erforderlich ist, sollten Sie ein Upgrade a
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md) |
 | **Log Analytics-Tabellen** | SalesforceServiceCloud_CL |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-SalesforceServiceCloud-functionapp |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-SalesforceServiceCloud-functionapp |
 | **API-Anmeldeinformationen** | <li>Salesforce-API-Benutzername<li>Salesforce-API-Kennwort<li>Salesforce-Sicherheitstoken<li>Salesforce-Consumerschlüssel<li>Salesforce-Consumergeheimnis |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Entwicklerleitfaden zur Salesforce-REST-API](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm)<br>Verwenden Sie unter **Set up authorization** (Autorisierung einrichten) die Methode **Session ID** (Sitzungs-ID) anstelle von OAuth. |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPY) |
 | **Kusto-Funktionsalias** | SalesforceServiceCloud |
-| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/sentinel-SalesforceServiceCloud-parser |
+| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/Sentinel-SalesforceServiceCloud-parser |
 | **Anwendungseinstellungen** | <li>SalesforceUser<li>SalesforcePass<li>SalesforceSecurityToken<li>SalesforceConsumerKey<li>SalesforceConsumerSecret<li>WorkspaceID<li>WorkspaceKey<li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1396,14 +1393,17 @@ Wenn eine noch längere Timeoutdauer erforderlich ist, sollten Sie ein Upgrade a
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration: <br>[Herstellen von Verbindungen mit Windows-Servern zum Sammeln von Sicherheitsereignissen](connect-windows-security-events.md)** (wichtigster Artikel zum Connector) |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Log Analytics-Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
 | **Log Analytics-Tabellen** | SecurityEvents |
 | **Unterstützt von** | Microsoft |
 | | |
 
+
 Weitere Informationen finden Sie unter [Einrichtung der Arbeitsmappe für unsichere Protokolle](./get-visibility.md#use-built-in-workbooks).
 
 Siehe auch: [**Windows-Sicherheitsereignisse über AMA**](#windows-security-events-via-ama)-Connector basierend auf Azure Monitor-Agent (AMA)
+
+[Konfigurieren des **Connectors für Sicherheitsereignisse/Windows-Sicherheitsereignisse** zur **Erkennung ungewöhnlicher RDP-Anmeldungen**](#configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection)
 
 ## <a name="sentinelone-preview"></a>SentinelOne (Vorschau)
 
@@ -1411,12 +1411,12 @@ Siehe auch: [**Windows-Sicherheitsereignisse über AMA**](#windows-security-even
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md) <br><br>[Zusätzliche Konfiguration für SentinelOne](#extra-configuration-for-sentinelone)|
 | **Log Analytics-Tabellen** | SentinelOne_CL |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-SentinelOneAPI-functionapp |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-SentinelOneAPI-functionapp |
 | **API-Anmeldeinformationen** | <li>SentinelOneAPIToken<li>SentinelOneUrl (`https://<SOneInstanceDomain>.sentinelone.net`) |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>https://`<SOneInstanceDomain>`.sentinelone.net/api-doc/overview<li>Weitere Informationen finden Sie in den Anweisungen unten. |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPY) |
 | **Kusto-Funktionsalias** | SentinelOne |
-| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/sentinel-SentinelOneAPI-parser |
+| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/Sentinel-SentinelOneAPI-parser |
 | **Anwendungseinstellungen** | <li>SentinelOneAPIToken<li>SentinelOneUrl<li>WorkspaceID<li>WorkspaceKey<li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1451,9 +1451,9 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | SophosCloudOptix_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Führen Sie die Integration mit Azure Sentinel durch](https://docs.sophos.com/pcg/optix/help/en-us/pcg/optix/tasks/IntegrateAzureSentinel.html), und überspringen Sie den ersten Schritt.<br>[Sophos-Abfragebeispiele](https://docs.sophos.com/pcg/optix/help/en-us/pcg/optix/concepts/ExampleAzureSentinelQueries.html) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Integrieren Sie in Microsoft Sentinel,](https://docs.sophos.com/pcg/optix/help/en-us/pcg/optix/tasks/IntegrateAzureSentinel.html)und überspringen Sie den ersten Schritt.<br>[Sophos-Abfragebeispiele](https://docs.sophos.com/pcg/optix/help/en-us/pcg/optix/concepts/ExampleAzureSentinelQueries.html) |
 | **Unterstützt von** | [Sophos](https://secure2.sophos.com/en-us/support.aspx) |
 | | |
 
@@ -1476,9 +1476,9 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | secRMM_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Azure Sentinel-Administratorleitfaden von secRMM](https://www.squadratechnologies.com/StaticContent/ProductDownload/secRMM/9.9.0.0/secRMMAzureSentinelAdministratorGuide.pdf) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [secRMM Microsoft Sentinel Administrator Guide (SecRMM Microsoft Sentinel-Administratorhandbuch)](https://www.squadratechnologies.com/StaticContent/ProductDownload/secRMM/9.9.0.0/secRMMAzureSentinelAdministratorGuide.pdf) |
 | **Unterstützt von** | [Squadra Technologies](https://www.squadratechnologies.com/Contact.aspx) |
 | | |
 
@@ -1490,7 +1490,7 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 | **Datenerfassungsmethode** | [**Log Analytics-Agent: benutzerdefinierte Protokolle**](connect-custom-logs.md) |
 | **Log Analytics-Tabellen** | SquidProxy_CL |
 | **Kusto-Funktionsalias:** | SquidProxy |
-| **Kusto-Funktions-URL** | https://aka.ms/sentinel-squidproxy-parser |
+| **Kusto-Funktions-URL** | https://aka.ms/Sentinel-squidproxy-parser |
 | **Beispieldatei für benutzerdefinierte Protokolle:** | „access.log“ oder „cache.log“ |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1499,9 +1499,9 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md) |
 | **Log Analytics-Tabellen** | SymantecICDx_CL |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Konfigurieren von Microsoft Azure Sentinel-Weiterleitungen (Log Analytics)](https://techdocs.broadcom.com/us/en/symantec-security-software/integrated-cyber-defense/integrated-cyber-defense-exchange/1-4-3/Forwarders/configuring-forwarders-v131944722-d2707e17438.html) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [secRMM Microsoft Sentinel Administrator Guide (SecRMM Microsoft Sentinel-Administratorhandbuch)](https://techdocs.broadcom.com/us/en/symantec-security-software/integrated-cyber-defense/integrated-cyber-defense-exchange/1-4-3/Forwarders/configuring-forwarders-v131944722-d2707e17438.html) |
 | **Unterstützt von** | [Broadcom Symantec](https://support.broadcom.com/security) |
 | | |
 
@@ -1563,7 +1563,7 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** mit einem Kusto-Funktionsparser |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
 | **Kusto-Funktionsalias:** | TrendMicroTippingPoint |
-| **Kusto-Funktions-URL** | https://aka.ms/sentinel-trendmicrotippingpoint-function |
+| **Kusto-Funktions-URL** | https://aka.ms/Sentinel-trendmicrotippingpoint-function |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | Senden von Syslog-Nachrichten im ArcSight-CEF-Format v4.2 |
 | **Unterstützt von** | [Trend Micro](https://success.trendmicro.com/technical-support) |
 | | |
@@ -1603,7 +1603,7 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 | **Datenerfassungsmethode** | [**syslog**](connect-syslog.md) |
 | **Log Analytics-Tabellen** | syslog |
 | **Kusto-Funktionsalias:** | VMwareESXi |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-vmwareesxi-parser |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-vmwareesxi-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Aktivieren von Syslog unter ESXi 3.5 und 4.x](https://kb.vmware.com/s/article/1016621)<br>[Konfigurieren von Syslog auf ESXi-Hosts](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.monitoring.doc/GUID-9F67DB52-F469-451F-B6C8-DAE8D95976E7.html) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1615,8 +1615,8 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 | **Datenerfassungsmethode** | [**syslog**](connect-syslog.md) |
 | **Log Analytics-Tabellen** | syslog |
 | **Kusto-Funktionsalias:** | WatchGuardFirebox |
-| **Kusto-Funktions-URL:** | https://aka.ms/sentinel-watchguardfirebox-parser |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Leitfaden für die Microsoft Azure Sentinel-Integration](https://www.watchguard.com/help/docs/help-center/en-US/Content/Integration-Guides/General/Microsoft%20Azure%20Sentinel.html) |
+| **Kusto-Funktions-URL:** | https://aka.ms/Sentinel-watchguardfirebox-parser |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Microsoft Sentinel-Integrationshandbuch](https://www.watchguard.com/help/docs/help-center/en-US/Content/Integration-Guides/General/Microsoft%20Azure%20Sentinel.html) |
 | **Unterstützt von** | [WatchGuard Technologies](https://www.watchguard.com/wgrd-support/overview) |
 | | |
 
@@ -1631,11 +1631,35 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 | | |
 
 
+## <a name="windows-dns-server-preview"></a>Windows DNS Server (Vorschau)
+
+| Connectorattribut | BESCHREIBUNG |
+| --- | --- |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Log Analytics-Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
+| **Log Analytics-Tabellen** | DnsEvents<br>DnsInventory |
+| **Unterstützt von** | Microsoft |
+| | |
+
+## <a name="windows-forwarded-events-preview"></a>Weitergeleitete Windows-Ereignisse (Vorschau)
+
+| Connectorattribut | BESCHREIBUNG |
+| --- | --- |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Azure Monitor Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md?tabs=AMA#windows-agent-based-connections)**<br><br>[Zusätzliche Anweisungen zum Bereitstellen des Connectors für Windows Weitergeleitete Ereignisse](#additional-instructions-for-deploying-the-windows-forwarded-events-connector) |
+| **Voraussetzungen** | Sie müssen Windows Event Collection (WEC) aktiviert und ausgeführt haben.<br>Installieren Sie Azure Monitor-Agent auf dem WEC-Computer. |
+| **Präfix für xPath-Abfragen** | "ForwardedEvents!*" |
+| **Log Analytics-Tabellen** | WindowsEvents |
+| **Unterstützt von** | Microsoft |
+| | |
+
+### <a name="additional-instructions-for-deploying-the-windows-forwarded-events-connector"></a>Zusätzliche Anweisungen zum Bereitstellen des Connectors für Windows Weitergeleitete Ereignisse
+
+Es wird empfohlen, die [ASIM-Parser (Advanced SIEM Information Model)](normalization.md) zu installieren, um die vollständige Unterstützung für die Datennormalisierung sicherzustellen. Sie können diese Parser aus dem [`Azure-Sentinel` GitHub-Repository](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers/ASim%20WindowsEvent) über die dortige Schaltfläche **In Azure** bereitstellen.
+
 ## <a name="windows-firewall"></a>Windows-Firewall
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Log Analytics-Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md#log-analytics-agent-based-connections)** |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Log Analytics-Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
 | **Log Analytics-Tabellen** | WindowsFirewall |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1644,12 +1668,37 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration: <br>[Herstellen von Verbindungen mit Windows-Servern zum Sammeln von Sicherheitsereignissen](connect-windows-security-events.md?tabs=AMA)** (wichtigster Artikel zum Connector) |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Azure Monitor Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md?tabs=AMA#windows-agent-based-connections)** |
+| **Präfix für xPath-Abfragen** | "Security!*" |
 | **Log Analytics-Tabellen** | SecurityEvents |
 | **Unterstützt von** | Microsoft |
 | | |
 
 Siehe auch: [**Sicherheitsereignisse über Agenten**](#security-events-via-legacy-agent-windows)-Connector einer Vorgängerversion.
+
+### <a name="configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection"></a>Konfigurieren des Connectors für Sicherheitsereignisse/Windows-Sicherheitsereignisse zur Erkennung ungewöhnlicher RDP-Anmeldungen
+
+> [!IMPORTANT]
+> Die Erkennung ungewöhnlicher RDP-Anmeldungen befindet sich derzeit in der öffentlichen Vorschauphase.
+> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Microsoft Sentinel kann maschinelles Lernen (ML) auf Sicherheitsereignisdaten anwenden, um anomale RDP-Anmeldeaktivitäten (Remote Desktop Protocol) zu identifizieren. Mögliche Szenarien:
+
+- **Ungewöhnliche IP-Adresse**: Die IP-Adresse ist in den letzten 30 Tagen nur selten oder gar nicht aufgetreten.
+
+- **Ungewöhnliche Geolocation**: IP-Adresse, Ort, Land und ASN sind in den letzten 30 Tagen nur selten oder gar nicht aufgetreten.
+
+- **Neuer Benutzer**: Ein neuer Benutzer meldet sich über eine IP-Adresse oder Geolocation an, mit deren Auftreten (einzeln oder gemeinsam) anhand der Daten der letzten 30 Tage nicht gerechnet wurde.
+
+**Konfigurationsanweisungen**
+
+1. Sie müssen RDP-Anmeldedaten (Ereignis-ID 4624) über den Datenconnector für **Sicherheitsereignisse** oder für **Windows-Sicherheitsereignisse** erfassen. Stellen Sie sicher, dass Sie neben "Keiner" einen [Ereignissatz](windows-security-event-id-reference.md) ausgewählt oder eine Datensammlungsregel erstellt haben, die diese Ereignis-ID enthält, um sie an Microsoft Sentinel zu streamen.
+
+1. Wählen Sie im Microsoft Sentinel-Portal **Analytics** und dann die Registerkarte **Regelvorlagen** aus. Wählen Sie die Regel **(Vorschau) Anomale RDP-Anmeldeerkennung** aus, und verschieben Sie den **Schieberegler Status** auf **Aktiviert.**
+
+    > [!NOTE]
+    > Da für den Machine Learning-Algorithmus zum Erstellen eines Basisprofils für das Benutzerverhalten die Daten von 30 Tagen benötigt werden, müssen Sie die Erfassung von Windows-Sicherheitsereignissen für 30 Tage zulassen, bevor Incidents erkannt werden können.
 
 ## <a name="workplace-from-facebook-preview"></a>Workplace from Facebook (Vorschau)
 
@@ -1657,12 +1706,12 @@ Siehe auch: [**Sicherheitsereignisse über Agenten**](#security-events-via-legac
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md)<br><br>[Konfigurieren von Webhooks](#configure-webhooks) <br>[Hinzufügen einer Rückruf-URL zur Webhookkonfiguration](#add-callback-url-to-webhook-configuration)|
 | **Log Analytics-Tabellen** | Workplace_Facebook_CL |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-WorkplaceFacebook-functionapp |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-WorkplaceFacebook-functionapp |
 | **API-Anmeldeinformationen** | <li>WorkplaceAppSecret<li>WorkplaceVerifyToken |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Konfigurieren von Webhooks](https://developers.facebook.com/docs/workplace/reference/webhooks)<li>[Konfigurieren von Berechtigungen](https://developers.facebook.com/docs/workplace/reference/permissions) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPY) |
 | **Kusto-Funktionsalias** | Workplace_Facebook |
-| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/sentinel-WorkplaceFacebook-parser |
+| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/Sentinel-WorkplaceFacebook-parser |
 | **Anwendungseinstellungen** | <li>WorkplaceAppSecret<li>WorkplaceVerifyToken<li>WorkspaceID<li>WorkspaceKey<li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1686,13 +1735,13 @@ Siehe auch: [**Sicherheitsereignisse über Agenten**](#security-events-via-legac
 
 ## <a name="zimperium-mobile-thread-defense-preview"></a>Zimperium Mobile Thread Defense (Vorschau)
 
-Der Zimperium Mobile Threat Defense-Datenconnector verbindet das Zimperium Threat-Protokoll mit Azure Sentinel, um Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und Untersuchungen zu verbessern. Durch diesen Connector erhalten Sie einen besseren Einblick in die Bedrohungslage mobiler Geräte in Ihrer Organisation und bessere Möglichkeiten für Sicherheitsvorgänge.
+Der Zimperium Mobile Threat Defense-Datenkonnektor verbindet das Zimperium-Bedrohungsprotokoll mit Microsoft Sentinel, um Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und die Untersuchung zu verbessern. Durch diesen Connector erhalten Sie einen besseren Einblick in die Bedrohungslage mobiler Geräte in Ihrer Organisation und bessere Möglichkeiten für Sicherheitsvorgänge.
 
-Weitere Informationen finden Sie unter [Zimperium mit Azure Sentinel verbinden](#zimperium-mobile-thread-defense-preview).
+Weitere Informationen finden Sie unter [Verbinden Sie Zimperium mit Microsoft Sentinel.](#zimperium-mobile-thread-defense-preview)
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | [**Azure Sentinel-Datensammler-API**](connect-rest-api-template.md)<br><br>[Konfigurieren und Verbinden von Zimperium MTD](#configure-and-connect-zimperium-mtd) |
+| **Datenerfassungsmethode** | [**Microsoft Sentinel-Datensammler-API**](connect-rest-api-template.md)<br><br>[Konfigurieren und Verbinden von Zimperium MTD](#configure-and-connect-zimperium-mtd) |
 | **Log Analytics-Tabellen** | ZimperiumThreatLog_CL<br>ZimperiumMitigationLog_CL |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Zimperium-Portal für den Kundensupport](https://support.zimperium.com/) (Anmeldung erforderlich) |
 | **Unterstützt von** | [Zimperium](https://www.zimperium.com/support) |
@@ -1704,10 +1753,10 @@ Weitere Informationen finden Sie unter [Zimperium mit Azure Sentinel verbinden](
 1. Wählen Sie die Registerkarte **Integrations** aus.
 1. Wählen Sie die Schaltfläche **Threat Reporting** (Bedrohungsberichte) und dann die Schaltfläche **Add Integrations** (Integrationen hinzufügen) aus.
 1. Erstellen Sie die Integration:
-    1. Wählen Sie in den verfügbaren Integrationen **Microsoft Azure Sentinel** aus.
+    1. Wählen Sie unter den verfügbaren Integrationen **Microsoft Sentinel**.
     1. Geben Sie als Nächstes Ihre *Arbeitsbereichs-ID* und den *Primärschlüssel* ein, und wählen Sie dann **Weiter** aus.
-    1. Geben Sie einen Namen für Ihre Azure Sentinel-Integration ein.
-    1. Wählen Sie eine **Filterebene** für die Bedrohungsdaten aus, die an Azure Sentinel gepusht werden sollen.
+    1. Geben Sie einen Namen für Ihre Microsoft Sentinel-Integration ein.
+    1. Wählen Sie eine **Filterstufe** für die Bedrohungsdaten, die Sie an Microsoft Sentinel senden möchten.
     1. Wählen Sie **Fertig stellen** aus.
 
 ## <a name="zoom-reports-preview"></a>Zoom Reports (Vorschau)
@@ -1716,12 +1765,12 @@ Weitere Informationen finden Sie unter [Zimperium mit Azure Sentinel verbinden](
 | --- | --- |
 | **Datenerfassungsmethode** | [**Azure Functions und die REST-API**](connect-azure-functions-template.md) |
 | **Log Analytics-Tabellen** | Zoom_CL |
-| **Azure Functions-App-Code** | https://aka.ms/sentinel-ZoomAPI-functionapp |
+| **Azure Functions-App-Code** | https://aka.ms/Sentinel-ZoomAPI-functionapp |
 | **API-Anmeldeinformationen** | <li>ZoomApiKey<li>ZoomApiSecret |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | <li>[Abrufen von Anmeldeinformationen mithilfe von JWT With Zoom](https://marketplace.zoom.us/docs/guides/auth/jwt) |
 | **Anweisungen zur Connectorbereitstellung** | <li>[Bereitstellung mit nur einem Klick](connect-azure-functions-template.md?tabs=ARM) mithilfe von ARM-Vorlagen (Azure Resource Manager)<li>[Manuelle Bereitstellung](connect-azure-functions-template.md?tabs=MPY) |
 | **Kusto-Funktionsalias** | Zoom |
-| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/sentinel-ZoomAPI-parser |
+| **Kusto-Funktions-URL/<br>Anweisungen zur Parserkonfiguration** | https://aka.ms/Sentinel-ZoomAPI-parser |
 | **Anwendungseinstellungen** | <li>ZoomApiKey<li>ZoomApiSecret<li>WorkspaceID<li>WorkspaceKey<li>logAnalyticsUri (optional) |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1732,7 +1781,7 @@ Weitere Informationen finden Sie unter [Zimperium mit Azure Sentinel verbinden](
 | --- | --- |
 | **Datenerfassungsmethode** | **[Common Event Format (CEF)](connect-common-event-format.md) über Syslog** |
 | **Log Analytics-Tabellen** | CommonSecurityLog |
-| **Herstellerdokumentation/<br>Installationsanweisungen** | [Bereitstellungsleitfaden für Zscaler und Microsoft Azure Sentinel](https://aka.ms/ZscalerCEFInstructions) |
+| **Herstellerdokumentation/<br>Installationsanweisungen** | [Bereitstellungshandbuch für Zscaler und Microsoft Sentinel](https://aka.ms/ZscalerCEFInstructions) |
 | **Unterstützt von** | [Zscaler](https://help.zscaler.com/submit-ticket-links) |
 | | |
 
@@ -1745,14 +1794,14 @@ Weitere Informationen finden Sie unter [Zimperium mit Azure Sentinel verbinden](
 | **Datenerfassungsmethode** | [**Log Analytics-Agent: benutzerdefinierte Protokolle**](connect-custom-logs.md)<br><br>[Zusätzliche Konfiguration für Zscaler Private Access](#extra-configuration-for-zscaler-private-access) |
 | **Log Analytics-Tabellen** | ZPA_CL |
 | **Kusto-Funktionsalias:** | ZPAEvent |
-| **Kusto-Funktions-URL** | https://aka.ms/sentinel-zscalerprivateaccess-parser |
+| **Kusto-Funktions-URL** | https://aka.ms/Sentinel-zscalerprivateaccess-parser |
 | **Herstellerdokumentation/<br>Installationsanweisungen** | [Dokumentation zu Zscaler Private Access](https://help.zscaler.com/zpa)<br>Weitere Informationen finden Sie auch unten. |
 | **Unterstützt von** | Microsoft |
 | | |
 
 ### <a name="extra-configuration-for-zscaler-private-access"></a>Zusätzliche Konfiguration für Zscaler Private Access
 
-Führen Sie die folgenden Konfigurationsschritte aus, um Zscaler Private Access-Protokolle in Azure Sentinel abzurufen. Weitere Informationen finden Sie in der [Azure Monitor DoKumentation](../azure-monitor/agents/data-sources-json.md). Zscaler Private Access-Protokolle werden über LSS (Log Streaming Service, Protokollstreamingdienst) übermittelt. Ausführliche Informationen finden Sie in der [Dokumentation zu LSS](https://help.zscaler.com/zpa/about-log-streaming-service).
+Führen Sie die folgenden Konfigurationsschritte aus, um Zscaler Private Access-Protokolle in Microsoft Sentinel abzurufen. Weitere Informationen finden Sie in der [Azure Monitor DoKumentation](../azure-monitor/agents/data-sources-json.md). Zscaler Private Access-Protokolle werden über LSS (Log Streaming Service, Protokollstreamingdienst) übermittelt. Ausführliche Informationen finden Sie in der [Dokumentation zu LSS](https://help.zscaler.com/zpa/about-log-streaming-service).
 
 1. Konfigurieren Sie [Protokollempfänger](https://help.zscaler.com/zpa/configuring-log-receiver). Wählen Sie beim Konfigurieren eines Protokollempfängers **JSON** als **Protokollvorlage** aus.
 1. Laden Sie die Konfigurationsdatei [zpa.conf](https://aka.ms/sentinel-zscalerprivateaccess-conf) herunter.
@@ -1775,7 +1824,7 @@ Den Wert Ihrer Arbeitsbereichs-ID finden Sie auf der Seite des ZScaler Private A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md)
-- [Threat Intelligence-Integration in Azure Sentinel](threat-intelligence-integration.md)
+- [Microsoft Sentinel-Lösungskatalog](sentinel-solutions-catalog.md)
+- [ Integration von Bedrohungsdaten in Microsoft Sentinel](threat-intelligence-integration.md)

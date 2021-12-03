@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: cf379d2eb5c20c8f8922631d5a467e961ea8f800
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3b95302be3eda412f6941abe359f6da63e235d24
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130228466"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492036"
 ---
 # <a name="tutorial-create-a-host-pool"></a>Tutorial: Erstellen eines Hostpools
 
@@ -219,7 +219,12 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool im 
 
 12. Geben Sie unter **VM-Administratorkonto** die Anmeldeinformationen des lokalen Administratorkontos ein, das beim Erstellen der VM hinzugefügt werden soll. Sie können dieses Konto zu Verwaltungszwecken sowohl für in AD als auch für in Azure AD eingebundene VMs verwenden.
 
-13. Klicken Sie auf **Weiter: Arbeitsbereich >** .
+13. Unter **Post update custom configuration** (Benutzerdefinierte Konfiguration nach Update) können Sie den Speicherort einer Azure Resource Manager-Vorlage eingeben, um nach dem Erstellen benutzerdefinierte Konfigurationen für Ihre Sitzungshosts vorzunehmen. Sie müssen die URLs für die Azure Resource Manager-Vorlagendatei und die Azure Resource Manager-Vorlagenparameterdatei eingeben. 
+
+      >[!NOTE]
+      >Azure Virtual Desktop unterstützt die Bereitstellung von Azure-Ressourcen in der Vorlage nicht.
+
+14. Klicken Sie auf **Weiter: Arbeitsbereich >** .
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

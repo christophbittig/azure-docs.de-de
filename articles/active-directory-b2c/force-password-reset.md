@@ -12,16 +12,18 @@ ms.date: 09/16/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7c350c04071dd5f01804aaea57dd7390dc00bad5
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 4c5802d9cd1fc9a7a41d38bc70e9d384882a1ea1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130236711"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424323"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Einrichten eines Flows zum Erzwingen der Kennwortzurücksetzung in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-user-flow"
 
 ## <a name="overview"></a>Übersicht
 
@@ -33,11 +35,19 @@ Wenn ein Administrator das Kennwort eines Benutzers über das Azure-Portal zurü
 
 Der Flow für die Kennwortzurücksetzung wird für lokale Konten in Azure AD B2C verwendet, bei denen für die Anmeldung eine [E-Mail-Adresse](sign-in-options.md#email-sign-in) oder ein [Benutzername](sign-in-options.md#username-sign-in) und ein Kennwort verwendet werden.
 
-::: zone pivot="b2c-user-flow"
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+Dieses Feature ist derzeit nur für Benutzerflows verfügbar. Wählen Sie für die Einrichtungsschritte weiter oben **Benutzerflow** aus. Verwenden Sie für benutzerdefinierte Richtlinien das [GitHub-Beispiel](https://github.com/azure-ad-b2c/samples/tree/master/policies/force-password-reset-first-logon) zum Erzwingen der Kennwortrücksetzung für die erste Anmeldung mit den unten angegebenen Voraussetzungen.
+
+::: zone-end
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+::: zone pivot="b2c-user-flow"
 
 ## <a name="configure-your-user-flow"></a>Konfigurieren des Benutzerflows
 
@@ -116,12 +126,6 @@ Nachdem eine Kennwortablaufrichtlinie festgelegt wurde, müssen Sie auch den Flo
 ### <a name="password-expiry-duration"></a>Zeitraum bis zum Ablauf des Kennworts
 
 Der Standardwert für die Kennwortablaufdauer beträgt **90** Tage. Der Wert kann im Azure Active Directory-Modul für Windows PowerShell mit dem Cmdlet [Set-MsolPasswordPolicy](/powershell/module/msonline/set-msolpasswordpolicy) konfiguriert werden. Mit diesem Befehl wird der Mandant aktualisiert, sodass die Kennwörter aller Benutzer nach der von Ihnen konfigurierten Anzahl von Tagen ablaufen.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-Dieses Feature ist derzeit nur für Benutzerflows verfügbar. Wählen Sie für die Einrichtungsschritte weiter oben **Benutzerflow** aus. Verwenden Sie für benutzerdefinierte Richtlinien das [GitHub-Beispiel](https://github.com/azure-ad-b2c/samples/tree/master/policies/force-password-reset-first-logon) zum Erzwingen der Kennwortrücksetzung für die erste Anmeldung.
 
 ::: zone-end
 

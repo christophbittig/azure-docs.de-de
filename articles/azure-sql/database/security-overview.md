@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 08/23/2021
-ms.openlocfilehash: 9326797e16190b3570ed6faca4d724bec432bc86
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: cf4ac33d22b28eb508aef47778885cd1ba6aebfe
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122767914"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315860"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -89,7 +89,7 @@ Bei der Überwachung von SQL-Datenbank und SQL Managed Instance werden Datenbank
 
 ### <a name="advanced-threat-protection"></a>Erweiterter Schutz vor Bedrohungen
 
-Advanced Threat Protection analysiert Ihre Protokolle auf ungewöhnliches Verhalten und potenziell schädliche Zugriffs- oder Offenlegungsversuche bei Datenbanken. Warnungen werden für verdächtige Aktivitäten wie SQL-Injektion, potenzielle Dateninfiltration und Brute-Force-Angriffe oder für Anomalien in den Zugriffsmustern erstellt, um Berechtigungserweiterungen und die Verwendung gefährdeter Anmeldeinformationen zu erfassen. Sie können die Warnungen im [Azure Security Center](https://azure.microsoft.com/services/security-center/) anzeigen. Dort finden Sie Details zu verdächtigen Aktivitäten und Empfehlungen für weitere Untersuchungen sowie zu Aktionen, mit denen das Risiko minimiert werden kann. Advanced Threat Protection kann pro Server für eine zusätzliche Gebühr aktiviert werden. Weitere Informationen finden Sie unter [Erste Schritte mit Advanced Threat Protection von SQL-Datenbank](threat-detection-configure.md).
+Advanced Threat Protection analysiert Ihre Protokolle auf ungewöhnliches Verhalten und potenziell schädliche Zugriffs- oder Offenlegungsversuche bei Datenbanken. Warnungen werden für verdächtige Aktivitäten wie SQL-Injektion, potenzielle Dateninfiltration und Brute-Force-Angriffe oder für Anomalien in den Zugriffsmustern erstellt, um Berechtigungserweiterungen und die Verwendung gefährdeter Anmeldeinformationen zu erfassen. Sie können die Warnungen in [Microsoft Defender für Cloud](https://azure.microsoft.com/services/security-center/) anzeigen. Dort finden Sie Details zu verdächtigen Aktivitäten und Empfehlungen für weitere Untersuchungen sowie zu Aktionen, mit denen das Risiko minimiert werden kann. Advanced Threat Protection kann pro Server für eine zusätzliche Gebühr aktiviert werden. Weitere Informationen finden Sie unter [Erste Schritte mit Advanced Threat Protection von SQL-Datenbank](threat-detection-configure.md).
 
 ![Das Diagramm zeigt, dass die SQL-Bedrohungserkennung den Zugriff auf die SQL-Datenbank für eine Web-App von einem externen Angreifer und böswilligen Insider überwacht.](./media/security-overview/azure-database-td.jpg)
 
@@ -136,7 +136,7 @@ Die dynamische Datenmaskierung beschränkt die Offenlegung vertraulicher Daten, 
 
 ### <a name="vulnerability-assessment"></a>Sicherheitsrisikobewertung
 
-Die [Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) ist ein einfach zu konfigurierender Dienst, mit dem potenzielle Schwachstellen in der Datenbank ermittelt, nachverfolgt und behoben werden können. Damit soll die allgemeine Datenbanksicherheit proaktiv verbessert werden. Die Sicherheitsrisikobewertung ist Bestandteil von Azure Defender für SQL. Dabei handelt es sich um ein vereinheitlichtes Paket mit erweiterten SQL-Sicherheitsfunktionen. Der Zugriff auf die Sicherheitsrisikobewertung und ihre Verwaltung sind über das Azure Defender für SQL-Portal möglich.
+Die [Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) ist ein einfach zu konfigurierender Dienst, mit dem potenzielle Schwachstellen in der Datenbank ermittelt, nachverfolgt und behoben werden können. Damit soll die allgemeine Datenbanksicherheit proaktiv verbessert werden. Die Schwachstellenbewertung (VA) ist Teil des Microsoft Defender für SQL-Angebots, einem einheitlichen Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Sicherheitsrisikobewertung und ihre Verwaltung sind über das Microsoft Defender für SQL-Portal möglich.
 
 ### <a name="data-discovery-and-classification"></a>Datenermittlung und -klassifizierung
 

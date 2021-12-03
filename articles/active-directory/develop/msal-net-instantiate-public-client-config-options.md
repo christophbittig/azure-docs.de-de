@@ -13,12 +13,12 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 68f4437ce75bfe2a9017133ed523bb5e9ce10a8c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 57d7cba072e51483732d103d358910ba443a525a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787128"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059412"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Instanziieren einer öffentlichen Clientanwendung mit Konfigurationsoptionen unter Verwendung von MSAL.NET
 
@@ -31,9 +31,9 @@ Vor der Initialisierung einer Anwendung müssen Sie diese zunächst [registriere
 - Die Mandanten-ID, wenn Sie eine Geschäftsanwendung ausschließlich für Ihre Organisation schreiben (auch als Einzelmandantenanwendung bezeichnet).
 - Für Web-Apps und gelegentlich auch für öffentliche Clientanwendungen (insbesondere, wenn Ihre App einen Broker verwenden muss) müssen Sie auch den Umleitungs-URI festlegen, mit dem der Identitätsanbieter Ihrer Anwendung die Sicherheitstoken sendet.
 
-## <a name="default-reply-uri"></a>Standardantwort-URI
+## <a name="default-reply-uri"></a>Standardantwort URI
 
-In MSAL.NET 4.1+ kann die Standardumleitungs-URI (Antwort-URI) jetzt mit der Methode `public PublicClientApplicationBuilder WithDefaultRedirectUri()` festgelegt werden. Diese Methode setzt die Eigenschaft Umleitungs-URI der öffentlichen Kundenanwendung auf den empfohlenen Standardwert.
+In MSAL.NET 4.1+ kann die Standardumleitungs-URI (Antwort-URI) jetzt mit der Methode `public PublicClientApplicationBuilder WithDefaultRedirectUri()` festgelegt werden. Diese Methode setzt die Einstellung Umleitungs-URI der öffentlichen Kundenanwendung auf den empfohlenen Standardwert.
 
 Das Verhalten dieser Methode ist abhängig von der Plattform, die Sie gerade verwenden. In der folgenden Tabelle wird beschrieben, welcher Umleitungs-URI auf bestimmten Plattformen festgelegt ist:
 
@@ -48,7 +48,7 @@ Für die UWP-Plattform wird das Erlebnis durch die Aktivierung von SSO mit dem B
 Für .NET Core setzt MSAL.Net den Wert auf den lokalen Host, damit der Benutzer den Systembrowser für die interaktive Authentifizierung verwenden kann.
 
 > [!NOTE]
-> Bei eingebetteten Browsern in Desktop-Szenarien wird die verwendete Umleitungs-URI von MSAL abgefangen, um zu erkennen, dass eine Antwort vom Identitätsanbieter zurückgegeben wird, dass ein Authentifizierungscode zurückgegeben wurde. Diese URI kann daher in jeder Cloud verwendet werden, ohne dass eine tatsächliche Weiterleitung zu dieser URI erfolgt. Das heißt, Sie können und sollten `https://login.microsoftonline.com/common/oauth2/nativeclient` in jeder Cloud verwenden. Wenn Sie möchten, können Sie auch jede andere URI verwenden, solange Sie die Umleitungs-URI in MSAL und in der App-Registrierung korrekt konfigurieren. Die Angabe der Standard-URI in der Anwendungsregistrierung bedeutet, dass der Aufwand für die Einrichtung in MSAL am geringsten ist.
+> Bei eingebetteten Browsern in Desktop-Szenarien wird die verwendete Umleitungs-URI von MSAL abgefangen, um zu erkennen, ob eine Antwort vom Identitätsanbieter zurückgegeben wird, ob ein Authentifizierungscode zurückgeschickt wurde. Diese URI kann daher in jeder Cloud verwendet werden, ohne dass eine tatsächliche Weiterleitung zu dieser URI erfolgt. Das heißt, Sie können und sollten `https://login.microsoftonline.com/common/oauth2/nativeclient` in jeder Cloud verwenden. Wenn Sie möchten, können Sie auch jede andere URI verwenden, solange Sie die Umleitungs-URI in MSAL und in der App-Registrierung korrekt konfigurieren. Die Angabe der Standard-URI in der Anwendungsregistrierung hat zur Folge, dass der Aufwand für die Einrichtung in MSAL am geringsten ist.
 
 
 Eine .NET Core-Konsolenanwendung könnte beispielsweise die folgende *appsettings.json*-Konfigurationsdatei aufweisen:
@@ -116,4 +116,3 @@ SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.j
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
            .Build();
 ```
-

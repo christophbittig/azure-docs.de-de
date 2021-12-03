@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen eines Modulzwillings für Sicherheit'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Modulzwilling für Azure Defender für IoT zur Verwendung mit Azure Defender für IoT erstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Modulzwilling für Defender für IoT zur Verwendung mit Microsoft Defender für IoT erstellen.
 ms.topic: quickstart
-ms.date: 05/26/2021
-ms.openlocfilehash: 5f2d6b4e4ab747988fe41322aab61c90b7c15b18
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 34927684fb87b48390479bccd63d7667a6350d14
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011145"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281890"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Schnellstart: Erstellen eines Azure IoT-Sicherheitsmodulzwillings
 
@@ -22,8 +22,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie individuelle _azureiot
 
 Für in Azure erstellte IoT-Lösungen spielen Gerätezwillinge eine wichtige Rolle – sowohl bei der Geräteverwaltung als auch bei der Prozessautomatisierung.
 
-Defender für IoT ermöglicht die vollständige Integration in Ihre vorhandene Plattform für die IoT-Geräteverwaltung. Auf diese Weise können Sie Ihren Gerätesicherheitsstatus verwalten und die vorhandenen Funktionen für die Gerätesteuerung nutzen.
-Die Integration von Defender für IoT wird mithilfe des Mechanismus für IoT Hub-Zwillinge erreicht.
+Defender für IoT ermöglicht die vollständige Integration in Ihre vorhandene Plattform für die IoT-Geräteverwaltung. Auf diese Weise können Sie Ihren Gerätesicherheitsstatus verwalten und die vorhandenen Funktionen für die Gerätesteuerung nutzen. Die Integration von Defender für IoT wird mithilfe des Mechanismus für IoT Hub-Zwillinge erreicht.
 
 Weitere Informationen zum allgemeinen Konzept in Bezug auf Modulzwillinge in Azure IoT Hub finden Sie unter [Verstehen und Verwenden von Modulzwillingen in IoT Hub](../../iot-hub/iot-hub-devguide-module-twins.md)[IoT Hub-Modulzwillinge].
 

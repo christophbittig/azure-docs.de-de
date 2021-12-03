@@ -1,7 +1,7 @@
 ---
 title: Richtlinien für menschenmarkierte Transkriptionen – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
-description: Um die Genauigkeit der Spracherkennung zu verbessern, z. B. wenn Wörter gelöscht oder falsch ersetzt werden, können Sie menschenmarkierte Transkriptionen zusammen mit Ihren Audiodaten verwenden. Menschenmarkierte Transkriptionen sind wortwörtliche Transkriptionen einer Audiodatei.
+description: Sie verwenden Humantranskriptionen mit Ihren Audiodaten, um die Genauigkeit der Spracherkennung zu verbessern. Dies ist besonders hilfreich, wenn Wörter gelöscht oder nicht ordnungsgemäß ersetzt werden.
 services: cognitive-services
 author: eric-urban
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: eur
-ms.openlocfilehash: 35cb9d2ea9f370043639f1c80b2cf901c6bcc510
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 913d8e0ef9a0ae74db2530167e99cefc92e75bb5
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508267"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397242"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Erstellen von menschenmarkierten Transkriptionen
 
-Wenn Sie die Genauigkeit der Spracherkennung verbessern möchten, insbesondere bei Problemen, die durch Löschen oder falsches Ersetzen von Wörtern verursacht werden, können Sie menschenmarkierte Transkriptionen zusammen mit Ihren Audiodaten verwenden. Doch was sind menschenmarkierte Transkriptionen? Ganz einfach: Es sind wortwörtliche Transkriptionen einer Audiodatei.
+Humantranskriptionen sind wortwörtliche Transkriptionen einer Audiodatei. Sie verwenden Humantranskriptionen, um die Erkennungsgenauigkeit zu verbessern, insbesondere wenn Wörter gelöscht oder nicht ordnungsgemäß ersetzt werden.
 
-Zum Verbessern der Erkennung ist eine umfangreiche Stichprobe von Transkriptionsdaten erforderlich. Es wird empfohlen, zwischen 1 und 20 Stunden an Transkriptionsdaten bereitzustellen. Der Speech-Dienst verwendet bis zu 20 Stunden Audiodaten für das Training. Auf dieser Seite werden Richtlinien besprochen, die Ihnen beim Erstellen qualitativ hochwertiger Transkriptionen helfen sollen. Dieser Leitfaden ist nach Gebietsschema unterteilt und enthält Abschnitte für Englisch (USA), Chinesisch (Mandarin) und Deutsch.
+Eine große Stichprobe von Transkriptionsdaten ist erforderlich, um die Erkennung zu verbessern. Wir empfehlen die Bereitstellung von Transkriptionsdaten für eine Dauer zwischen einer und 20 Stunden. Der Speech-Dienst verwendet bis zu 20 Stunden Audiodaten für das Training. Auf dieser Seite werden Richtlinien besprochen, die Ihnen beim Erstellen qualitativ hochwertiger Transkriptionen helfen sollen. Dieser Leitfaden ist nach Gebietsschema unterteilt und enthält Abschnitte für Englisch (USA), Chinesisch (Mandarin) und Deutsch.
 
 > [!NOTE]
 > Nicht alle Basismodelle unterstützen die Anpassung mit Audiodateien. Wenn ein Basismodell Anpassungen nicht unterstützt, wird für das Training nur der Text der Transkriptionen auf die gleiche Weise verwendet, wie der zugehörige Text genutzt wird. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text).
@@ -41,7 +41,7 @@ Folgende Rollen stehen beispielsweise zur Verfügung:
 | ------------------- | ------------ | ----- |
 | “Hello world” | "Hello world" | Die öffnenden und schließenden Anführungszeichen wurden durch entsprechende ASCII-Zeichen ersetzt. |
 | John’s day | John's day | Das Apostroph wurde durch das entsprechende ASCII-Zeichen ersetzt. |
-| it was good—no, it was great! | it was good--no, it was great! | Der Gedankenstrich wurde durch zwei Bindestriche ersetzt. |
+| It was good—no, it was great! | it was good--no, it was great! | Der Gedankenstrich wurde durch zwei Bindestriche ersetzt. |
 
 ### <a name="text-normalization-for-us-english"></a>Textnormalisierung für Englisch (USA)
 
@@ -57,7 +57,7 @@ Textnormalisierung ist die Transformation von Wörtern in ein konsistentes Forma
 
 Es folgen einige Beispiele für die Normalisierung, die Sie für die Transkription durchführen sollten:
 
-| Ursprünglicher Text               | Text nach der Normalisierung              |
+| Ursprünglicher Text               | Text nach der Normalisierung (Person)      |
 | --------------------------- | ------------------------------------- |
 | Dr. Bruce Banner            | Doctor Bruce Banner                   |
 | James Bond, 007             | James Bond, double oh seven           |
@@ -68,6 +68,7 @@ Es folgen einige Beispiele für die Normalisierung, die Sie für die Transkripti
 | Water is H20                | Water is H 2 O                        |
 | Play OU812 by Van Halen     | Play O U 8 1 2 by Van Halen           |
 | UTF-8 with BOM              | U T F 8 with BOM                      |
+| It costs \$3.14             | It costs three fourteen               |
 
 Die folgenden Normalisierungsregeln werden automatisch auf Transkriptionen angewendet:
 
@@ -77,7 +78,7 @@ Die folgenden Normalisierungsregeln werden automatisch auf Transkriptionen angew
 
 Es folgen einige Beispiele für die Normalisierung, die automatisch für die Transkription durchgeführt wird:
 
-| Ursprünglicher Text                          | Text nach der Normalisierung          |
+| Ursprünglicher Text                          | Text nach der Normalisierung (automatisch) |
 | -------------------------------------- | --------------------------------- |
 | "Holy cow!" said Batman.               | holy cow said batman              |
 | "What?" said Batman's sidekick, Robin. | what said batman's sidekick robin |
@@ -86,7 +87,6 @@ Es folgen einige Beispiele für die Normalisierung, die automatisch für die Tra
 | 104 Elm Street                         | one oh four Elm street            |
 | Tune to 102.7                          | tune to one oh two point seven    |
 | Pi is about 3.14                       | pi is about three point one four  |
-| It costs \$3.14                        | it costs three fourteen           |
 
 ## <a name="mandarin-chinese-zh-cn"></a>Chinesisch (Mandarin) (zh-CN)
 
@@ -120,7 +120,7 @@ Die folgenden Normalisierungsregeln werden automatisch auf Transkriptionen angew
 - Konvertieren von Buchstaben normaler Breite in Buchstaben halber Breite
 - Verwenden von Großbuchstaben für alle englischen Wörter
 
-Es folgen einige Beispiele für die Normalisierung, die automatisch für die Transkription durchgeführt wird:
+Im Folgenden finden Sie einige Beispiele für die Normalisierung der automatischen Transkription:
 
 | Ursprünglicher Text | Text nach der Normalisierung |
 | ------------- | ------------------------ |
@@ -170,7 +170,7 @@ Es folgen einige Beispiele für die Normalisierung, die automatisch für die Tra
 | ---------------- | ------------------------ |
 | Frankfurter Ring | frankfurter ring         |
 | ¡Eine Frage!     | eine frage               |
-| wir, haben       | wir haben                |
+| Wir, haben       | wir haben                |
 
 ### <a name="text-normalization-for-japanese"></a>Textnormalisierung für Japanisch
 

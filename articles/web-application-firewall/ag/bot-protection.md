@@ -7,18 +7,18 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 12c9466a4bee6adb77a0e46e63767c2b22fcc01d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a13784f722648f3639bcca7eece46d5128a689de
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339197"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344881"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway"></a>Konfigurieren des Bot-Schutzes für Web Application Firewall (WAF) in Azure Application Gateway
 
 In diesem Artikel erfahren Sie, wie Sie eine Bot-Schutzregel in Azure Web Application Firewall (WAF) für Application Gateway über das Azure-Portal konfigurieren. 
 
-Sie können einen verwalteten Bot-Schutzregelsatz für Ihre WAF aktivieren, um Anforderungen von IP-Adressen, die als schädlich bekannt sind, zu blockieren oder zu protokollieren. Die IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf Intelligent Security Graph und wird von mehreren Diensten verwendet (einschließlich Azure Security Center).
+Sie können einen verwalteten Bot-Schutzregelsatz für Ihre WAF aktivieren, um Anforderungen von IP-Adressen, die als schädlich bekannt sind, zu blockieren oder zu protokollieren. Die IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed. Der Intelligente Sicherheitsgraph ist die Grundlage für die Bedrohungsanalyse von Microsoft und wird von mehreren Diensten genutzt, darunter auch Microsoft Defender für Cloud.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

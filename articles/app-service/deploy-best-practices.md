@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: c70cf1ca07e5fff58a14aa6b5b6c2f18b9e0e775
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 06728431db78d14be1a67f1dde753a0992b5dbba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222511"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471115"
 ---
 # <a name="deployment-best-practices"></a>Bewährte Methoden der Bereitstellung
 

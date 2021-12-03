@@ -15,12 +15,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7a2e9d19c3847c5f2c7153580e463ce1e4d1d657
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: a9eb83289beaf3cafb80bda1b5c25bf6b4cb9528
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768769"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467737"
 ---
 # <a name="registration-management"></a>Registrierungsverwaltung
 
@@ -39,7 +39,7 @@ Bei einer Registrierung wird das PNS-Handle (Platform Notification Service) für
 
 ### <a name="installations"></a>Installationen
 
-Eine Installation ist eine erweiterte Registrierung, die einen Behälter von Eigenschaften umfasst, die sich auf Pushvorgänge beziehen. Dies ist der neueste und beste Ansatz zum Registrieren Ihrer Geräte. Bisher wird er jedoch noch nicht vom clientseitigen .NET SDK ([Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) unterstützt.  Wenn Sie die Registrierung über das Client-Gerät selbst durchführen, müssen Sie daher die [Notification Hubs-REST-API](/rest/api/notificationhubs/create-overwrite-installation) zur Unterstützung von Installationen verwenden. Wenn Sie einen Back-End-Dienst verwenden, sollten Sie auch das [Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)verwenden können.
+Eine Installation ist eine erweiterte Registrierung, die einen Behälter von Eigenschaften umfasst, die sich auf Pushvorgänge beziehen. Dies ist der neueste und beste Ansatz zum Registrieren Ihrer Geräte mit dem clientseitigen .NET SDK ([Notification (Benachrichtigungs-)Hub SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)).  Sie können auch die Methode [Notification Hubs-REST-API](/rest/api/notificationhubs/create-overwrite-installation) verwenden, um Installationen auf dem Clientgerät selbst zu registrieren. Wenn Sie einen Back-End-Dienst verwenden, sollten Sie auch das [Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)verwenden können.
 
 Im Folgenden sind die wichtigsten Vorteile bei der Verwendung von Installationen beschrieben:
 

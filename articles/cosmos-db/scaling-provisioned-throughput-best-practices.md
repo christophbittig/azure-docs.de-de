@@ -8,12 +8,12 @@ ms.date: 08/20/2021
 ms.author: dech
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: c8a2ab0b904c60e2d1d1c44a9d596cf62d0403d6
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 49b0f5bac116ccdc6696ce23100f661791304ff5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546010"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465001"
 ---
 # <a name="best-practices-for-scaling-provisioned-throughput-rus"></a>Bewährte Methoden für das Skalieren des bereitgestellten Durchsatzes (RU/Sekunde) 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -35,10 +35,12 @@ Wenn Sie eine Anforderung zum Erhöhen der RU/Sekunde Ihrer Datenbank oder Ihres
     - Daher kann die Ausführung des Vorgangs einige Zeit dauern, in der Regel 4 bis 6 Stunden.
 Jede physische Partition kann einen Durchsatz von maximal 10.000 RU/Sekunde (dies gilt für alle APIs) und eine Speichergröße von 50 GB unterstützen (dies gilt für alle APIs, mit Ausnahme von Cassandra mit 30 GB Speicher). 
 
+> [!NOTE]
+> Wenn Sie einen [manuellen Failovervorgang ausführen](how-to-manage-database-account.md#manual-failover) oder eine [neue Region hinzufügen/entfernen](how-to-manage-database-account.md#addremove-regions-from-your-database-account), während eine asynchroner Hochskalierung ausgeführt wird, wird der Vorgang zum Hochskalieren des Durchsatzes angehalten. Er wird automatisch fortgesetzt, sobald der Failovervorgang oder das Hinzufügen/Entfernen der Region abgeschlossen ist. 
 - **Sofortige Herunterskalierung**
     - Um einen Herunterskalierungsvorgang durchzuführen, muss Azure Cosmos DB keine Partitionen teilen oder neue hinzufügen. 
     - Daher wird der Vorgang sofort abgeschlossen, und die RU/Sekunde stehen zur Verwendung zur Verfügung. 
-    - Das wichtigste Ergebnis dieses Vorgangs ist, dass RUs pro Partitionsbereich reduziert werden.
+    - Das wichtigste Ergebnis dieses Vorgangs ist, dass RUs pro physischer Partition reduziert werden.
     
 ## <a name="how-to-scale-up-rus-without-changing-partition-layout"></a>Hochskalieren von RU/Sekunde ohne Änderung des Partitionslayouts
 

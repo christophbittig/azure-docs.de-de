@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
-ms.custom: cog-serv-seo-aug-2020
+ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: 23f525449edfa8d37a7bd8e3ebeff1fb9cdff601
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 61654777f94b44b2fca0d2976ea6fd4470987a62
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224496"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021701"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->

@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/27/2021
+ms.date: 11/09/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: b4344626318799a79fa668784e5674730e1731cd
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 83a4c80b809d2ea127b28d5f562d6c837a16d891
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065489"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136163"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -92,7 +92,7 @@ Das Element **Endpoints** enthält das folgende Element:
 
 Das Element **Endpoint** enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein eindeutiger Bezeichner des Endpunkts|
 | UserJourneyReferenceId | Ja | Ein Bezeichner der User Journey in der Richtlinie. Weitere Informationen finden Sie unter [User Journeys](userjourneys.md).  | 
@@ -152,10 +152,10 @@ Das **UserJourneyBehaviors**-Element enthält die folgenden Elemente:
 
 Das **SingleSignOn**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Scope` | Ja | Der Bereich des SSO-Verhaltens. Mögliche Werte: `Suppressed`, `Tenant`, `Application` oder `Policy`. Der Wert `Suppressed` gibt an, dass das Verhalten unterdrückt wird, und der Benutzer wird immer aufgefordert, einen Identitätsanbieter auszuwählen.  Der Wert `Tenant` gibt an, dass das Verhalten auf alle Richtlinien im Mandanten angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Mandanten navigiert nicht, dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Application` gibt an, dass das Verhalten auf alle Richtlinien für die Anwendung angewendet wird, die die Anforderung stellt. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien einer Anwendung navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Policy` gibt an, dass das Verhalten nur auf eine Richtlinie angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, dazu aufgefordert, einen Identitätsanbieter auszuwählen, wenn er zwischen Richtlinien wechselt. |
-| KeepAliveInDays | Nein | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Der Standardwert ist `0` (deaktiviert). Der Mindestwert ist `1` Tag. Der Höchstwert ist `90` Tage. Weitere Informationen finden Sie unter [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
+| KeepAliveInDays | No | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Der Standardwert ist `0` (deaktiviert). Der Mindestwert ist `1` Tag. Der Höchstwert ist `90` Tage. Weitere Informationen finden Sie unter [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
 |EnforceIdTokenHintOnLogout| Nein|  Erzwingt, dass ein zuvor ausgestelltes ID-Token als Hinweis bezüglich der aktuellen authentifizierten Sitzung des Endbenutzers mit dem Client an den Abmeldeendpunkt übergeben wird. Mögliche Werte: `false` (Standard) oder `true`. Weitere Informationen finden Sie unter [Webanmeldung mit OpenID Connect](openid-connect.md).  |
 
 
@@ -200,7 +200,7 @@ Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche mi
 
 Das **JourneyFraming**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Aktiviert | Ja | Ermöglicht das Laden dieser Richtlinie innerhalb eines iFrame. Mögliche Werte: `false` (Standard) oder `true`. |
 | Quellen | Ja | Enthält die Domänen, die den iFrame laden. Weitere Informationen finden Sie unter [Laden von Azure B2C in einem iFrame](embedded-login.md). |
@@ -227,7 +227,7 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
 Das **Protocol**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte: `OpenIdConnect` oder `SAML2`. Der Wert `OpenIdConnect` stellt den Protokollstandard „OpenID Connect 1.0“ gemäß der Vorgaben der OpenID Foundation dar. Der Wert `SAML2` stellt den Protokollstandard „SAML 2.0“ gemäß der Vorgaben von OASIS dar. |
 
@@ -244,6 +244,7 @@ Wenn `SAML` das Protokoll ist, enthält ein Metadatenelement die folgenden Eleme
 | UseDetachedKeys | Nein |  Mögliche Werte sind `true` oder `false` (Standardwert). Wenn der Wert auf `true` festgelegt wird, wird das Format der verschlüsselten Assertionen von Azure AD B2C geändert. Durch die Verwendung von getrennten Schlüsseln wird die verschlüsselte Assertion als untergeordnetes Element der EncrytedAssertion und nicht den EncryptedData hinzugefügt. |
 | WantsSignedResponses| Nein | Gibt an, ob Azure AD B2C den Abschnitt `Response` der SAML-Antwort signiert. Mögliche Werte: `true` (Standard) oder `false`.  |
 | RemoveMillisecondsFromDateTime| Nein | Gibt an, ob die Millisekunden aus DateTime-Werten in der SAML-Antwort entfernt werden sollen (dazu gehören „IssueInstant“, „NotBefore“, „NotOnOrAfter“ und „AuthnInstant“). Mögliche Werte: `false` (Standard) oder `true`.  |
+| RequestContextMaximumLengthInBytes| No | Gibt die maximale Länge der [SAML-Anwendungen](saml-service-provider.md) an `RelayState` Parameters an. Der Standardwert lautet 1000. Das Maximum ist 2048.| 
 
 ### <a name="inputclaims"></a>InputClaims
 

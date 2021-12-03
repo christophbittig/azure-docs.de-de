@@ -9,16 +9,16 @@ ms.subservice: terminate-notification
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 29466a1954e64b79614eec0afdd139e45a44df5b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 807ae8405ac8a4726a37329e5ef9ddda58714c3a
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698262"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373292"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Beendigungsbenachrichtigung für Instanzen von Azure-VM-Skalierungsgruppen
 
-**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Einheitliche Skalierungssätze :heavy_check_mark: Flexible Skalierungssätze
 
 Für Skalierungsgruppeninstanzen kann der Empfang von Beendigungsbenachrichtigungen aktiviert und ein vordefiniertes Verzögerungstimeout für den Beendigungsvorgang festgelegt werden. Die Beendigungsbenachrichtigung wird über „Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)“ gesendet. Dieser Subdienst sendet Benachrichtigungen über die Durchführung und Verzögerung einschneidender Vorgänge, z. B. Neustarts und erneute Bereitstellungen. In der Lösung wurde der Scheduled Events-Liste mit „Terminate“ ein weiteres Ereignis hinzugefügt. Welche Verzögerung dem Beendigungsereignis zugeordnet wird, hängt von dem Verzögerungslimit ab, das der Benutzer in der Konfiguration des Skalierungsgruppenmodells festlegt.
 
@@ -184,7 +184,7 @@ Stellen Sie sicher, dass durch jede VM in der Skalierungsgruppe nur die EventID 
 Weitere Informationen finden Sie in den Beispielskripts für das Abfragen und Reagieren auf Ereignisse mit [Python](../virtual-machines/linux/scheduled-events.md#python-sample).
 
 ## <a name="tips-and-best-practices"></a>Tipps und Best Practices
--   Beendigungsbenachrichtigungen nur für Löschvorgänge – Durch alle Löschvorgänge (manuelles Löschen oder durch Autoskalierung initiiertes, horizontales Herunterskalieren) werden Terminate-Ereignisse generiert, sofern *scheduledEventsProfile* für die Skalierungsgruppe aktiviert wurde. Durch andere Vorgänge wie Neustart, Reimaging, erneute Bereitstellung und Beenden/Zuordnung aufheben werden keine Terminate-Ereignisse generiert. Für VMs mit niedriger Priorität können keine Beendigungsbenachrichtigungen aktiviert werden.
+-   Beendigungsbenachrichtigungen nur für Löschvorgänge – Durch alle Löschvorgänge (manuelles Löschen oder durch Autoskalierung initiiertes, horizontales Herunterskalieren) werden Terminate-Ereignisse generiert, sofern *scheduledEventsProfile* für die Skalierungsgruppe aktiviert wurde. Durch andere Vorgänge wie Neustart, Reimaging, erneute Bereitstellung und Beenden/Zuordnung aufheben werden keine Terminate-Ereignisse generiert. 
 -   Keine verbindliche Wartezeit für Timeouts – Sie können den Beendigungsvorgang jederzeit starten, nachdem das Ereignis empfangen wurde und bevor die *NotBefore*-Zeit des Ereignisses abläuft.
 -   Verbindliche Löschung bei Timeout: Es gibt keine Möglichkeit zur Erhöhung des Timeoutwerts, nachdem ein Ereignis generiert wurde. Nach Ablauf des Timeouts wird das ausstehende Terminate-Ereignis verarbeitet, und die VM wird gelöscht.
 -   Änderbarer Timeoutwert – Sie können den Timeoutwert jederzeit ändern, bevor eine Instanz gelöscht wird, indem Sie die *notBeforeTimeout*-Eigenschaft des Skalierungsgruppenmodells ändern und die VM-Instanzen entsprechend dem neuesten Modell aktualisieren.

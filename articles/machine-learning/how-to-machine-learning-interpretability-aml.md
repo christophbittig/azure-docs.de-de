@@ -1,5 +1,5 @@
 ---
-title: Interpretieren und Erläutern von ML-Modellen in Python (Vorschauversion)
+title: Verwenden von Python zum Interpretieren und Erläutern von Modellen (Vorschau)
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Ihr Machine Learning-Modell die Featurerelevanz ermittelt und beim Verwenden der Azure Machine Learning-SDK Vorhersagen trifft.
 services: machine-learning
@@ -8,17 +8,17 @@ ms.subservice: enterprise-readiness
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 07/09/2020
+ms.date: 10/21/2021
 ms.topic: how-to
-ms.custom: devx-track-python, responsible-ml
-ms.openlocfilehash: 878af265e99c1d6ea431f027e19a6b930eb1ded6
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.custom: devx-track-python, responsible-ml, mktng-kw-nov2021
+ms.openlocfilehash: f22bee60a86d162c57313ab33811a21408eefd74
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130001445"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847449"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Erläutern von ML-Modellen und -Vorhersagen in Python mithilfe des Interpretierbarkeitspakets (Vorschauversion)
+# <a name="use-the-python-interpretability-package-to-explain-ml-models--predictions-preview"></a>Erläutern von ML-Modellen und -Vorhersagen mithilfe des Python-Interpretierbarkeitspakets (Vorschau)
 
 In diesem Leitfaden erfahren Sie, wie Sie das Interpretierbarkeitspaket des Python-SDK für Azure Machine Learning für die folgenden Aufgaben nutzen können:
 
@@ -584,6 +584,6 @@ Dataset-Explorer  | Unterstützt (keine Vorhersage)   | Wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Weitere Informationen zur Modellinterpretierbarkeit](how-to-machine-learning-interpretability.md)
+[Verfahren zur Interpretierbarkeit von Modellen in Azure ML](how-to-machine-learning-interpretability.md)
 
 [Weitere Informationen finden Sie in den Azure Machine Learning-Beispielnotebooks zur Interpretierbarkeit](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)

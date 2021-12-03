@@ -4,12 +4,12 @@ description: Erfahren Sie, wie parallele Computeworkloads auf Pools auf virtuell
 ms.topic: how-to
 ms.date: 01/21/2021
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: c711ec0d035b9b59ec7628a51fe3cff26de358bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2140fd4f2bfc383743b84f0b635afba3dda9afe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98683699"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458663"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Bereitstellen von Linux-Computeknoten in Batch-Pools
 
@@ -21,7 +21,7 @@ Wenn Sie einen Pool von Computeknoten in Batch erstellen, stehen Ihnen zwei Opti
 
 ### <a name="virtual-machine-image-reference"></a>VM-Imagereferenz
 
-Der Batch-Dienst verwendet [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md), um Computeknoten in der VM-Konfiguration bereitzustellen. Sie können ein Image aus dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1) angeben oder [mithilfe der Shared Image Gallery ein benutzerdefiniertes Image vorbereiten](batch-sig-images.md).
+Der Batch-Dienst verwendet [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md), um Computeknoten in der VM-Konfiguration bereitzustellen. Sie können ein Image aus dem [Azure Marktplatz](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1) angeben oder [mithilfe von Azure Compute Gallery ein benutzerdefiniertes Image vorbereiten](batch-sig-images.md).
 
 Beim Erstellen einer VM-Imagereferenz müssen Sie die folgenden Eigenschaften angeben:
 

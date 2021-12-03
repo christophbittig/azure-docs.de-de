@@ -1,7 +1,7 @@
 ---
 title: Angeben der Überprüfungsanforderung der Anforderungsdienst-REST-API (Vorschau)
 titleSuffix: Azure Active Directory Verifiable Credentials
-description: Informationen zum Starten einer Präsentationsanforderung für Nachweise
+description: Informationen zum Starten einer Präsentationsanforderung im Nachweisdienst
 documentationCenter: ''
 author: barclayn
 manager: karenh444
@@ -10,17 +10,16 @@ ms.topic: reference
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 30da74a6d94f2460a980737670d65442c0ddb3ac
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c670f060e7849f844997c0feefd60229b90e5202
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984400"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474001"
 ---
 # <a name="request-service-rest-api-presentation-specification-preview"></a>Spezifikation der Anforderungsdienst-REST-API-Präsentation (Vorschau)
 
-Mit der Anforderungsdienst-REST-API für Nachweise von Azure Active Directory (Azure AD) können Sie einen Nachweis ausstellen und überprüfen. In diesem Artikel wird die Anforderungsdienst-REST-API für eine Präsentationsanforderung beschrieben. Die Präsentationsanforderung fordert den Benutzer auf, einen Nachweis zu präsentieren und dann die Anmeldeinformationen zu überprüfen.
-
+Der Azure Active Directory-Nachweisdienst enthält die Anforderungsdienst-REST-API. Mit dieser API können Sie Nachweise (Verifiable Credentials) ausstellen und überprüfen. In diesem Artikel wird die Anforderungsdienst-REST-API für eine Präsentationsanforderung beschrieben. Die Präsentationsanforderung fordert den Benutzer auf, einen Nachweis zu präsentieren und diesen dann zu überprüfen.
 
 ## <a name="http-request"></a>HTTP-Anforderung
 
@@ -28,7 +27,7 @@ Die Präsentationsanforderung der Anforderungsdienst-REST-API unterstützt die f
 
 | Methode |Hinweise  |
 |---------|---------|
-|POST | Mit JSON-Nutzdaten, wie in diesem Artikel beschrieben. |
+|POST | Mit JSON-Nutzdaten, wie in diesem Abschnitt beschrieben. |
 
 Die Präsentationsanforderung der Anforderungsdienst-REST-API erfordert die folgenden HTTP-Header:
 
@@ -37,7 +36,7 @@ Die Präsentationsanforderung der Anforderungsdienst-REST-API erfordert die folg
 |`Authorization`| Fügen Sie das Zugriffstoken als Bearertoken an den Autorisierungsheader einer HTTP-Anforderung an. Beispiel: `Authorization: Bearer <token>`.|
 |`Content-Type`| `Application/json`|
 
-Erstellen Sie eine HTTP POST-Anforderung für die Anforderungsdienst-REST-API. Ersetzen Sie die `{tenantID}` durch Ihre [Mandanten-ID](verifiable-credentials-configure-issuer.md#gather-credentials-and-environment-details-to-set-up-your-sample-application) oder durch den Namen Ihres Mandanten.
+Erstellen Sie eine HTTP POST-Anforderung für die Anforderungsdienst-REST-API. Ersetzen Sie die `{tenantID}` durch Ihre Mandanten-ID oder durch den Namen Ihres Mandanten.
 
 ```http
 https://beta.did.msidentity.com/v1.0/{tenantID}/verifiablecredentials/request
@@ -63,7 +62,7 @@ Authorization: Bearer  <token>
 } 
 ```  
 
-Zum Aufrufen der Anforderungsdienst-REST-API ist die folgende Berechtigung erforderlich. Weitere Informationen finden Sie unter [Erteilen von Berechtigungen zum Abrufen von Zugriffstoken](verifiable-credentials-configure-tenant.md#31-grant-permissions-to-get-access-tokens).
+Zum Aufrufen der Anforderungsdienst-REST-API ist die folgende Berechtigung erforderlich. Weitere Informationen finden Sie unter [Erteilen von Berechtigungen zum Abrufen von Zugriffstoken](verifiable-credentials-configure-tenant.md#grant-permissions-to-get-access-tokens).
 
 | Berechtigungstyp | Berechtigung  |
 |---------|---------|
@@ -104,17 +103,17 @@ Die Nutzdaten der Präsentationsanforderung enthalten Informationen zu Ihrer Nac
 
 Die Nutzdaten enthalten die folgenden Eigenschaften.  
 
-|Parameter |type  | BESCHREIBUNG |
+|Parameter |type  | Beschreibung |
 |---------|---------|---------|
-| `includeQRCode` |  boolean |   Legt fest, ob ein QR-Code in der Antwort auf diese Anforderung enthalten ist. Präsentieren Sie den QR-Code, und fordern Sie den Benutzer auf, ihn zu scannen. Durch das Scannen des QR-Codes wird die Authentifikator-App mit dieser Präsentationsanforderung gestartet. Mögliche Werte sind `true` (Standardwert) oder `false`. Wenn der Parameter auf `false` festgelegt ist, verwenden Sie die `url`-Rückgabeeigenschaft, um einen Deep Link zu rendern.  |
-| `authority` | Zeichenfolge|  Ihr dezentralisierter Bezeichner Ihres Azure AD-Prüfungsmandanten. Weitere Informationen finden Sie unter [Erfassen von Mandantendetails zum Einrichten Ihrer Beispielanwendung](verifiable-credentials-configure-verifier.md#gather-tenant-details-to-set-up-your-sample-application).|
+| `includeQRCode` |  Boolesch |   Legt fest, ob ein QR-Code in der Antwort auf diese Anforderung enthalten ist. Präsentieren Sie den QR-Code, und fordern Sie den Benutzer auf, ihn zu scannen. Durch das Scannen des QR-Codes wird die Authentifikator-App mit dieser Präsentationsanforderung gestartet. Mögliche Werte sind: `true` (Standard) oder `false`. Wenn der Parameter auf `false` festgelegt ist, verwenden Sie die `url`-Rückgabeeigenschaft, um einen Deep-Link zu rendern.  |
+| `authority` | string|  Ihr dezentralisierter Bezeichner (DID) Ihres Azure AD-Prüfungsmandanten. Weitere Informationen finden Sie unter [Erfassen von Mandantendetails zum Einrichten Ihrer Beispielanwendung](verifiable-credentials-configure-verifier.md#gather-tenant-details-to-set-up-your-sample-application).|
 | `registration` | [RequestRegistration](#requestregistration-type)|  Stellt Informationen zum Prüfer bereit. |
 | `presentation` | [RequestPresentation](#requestpresentation-type)| Stellt Informationen zur Nachweispräsentationsanforderung bereit.  |
-|`callback`|  [Callback](#callback-type)| Ermöglicht dem Entwickler, die Benutzeroberfläche während des Nachweispräsentationsprozesses zu aktualisieren. Wenn der Benutzer den Prozess abgeschlossen hat, setzen Sie den Prozess fort, sobald die Ergebnisse an die Anwendung zurückgegeben werden.|
+|`callback`|  [Callback](#callback-type)| Ermöglicht dem Entwickler, die Benutzeroberfläche während des Nachweispräsentationsprozesses zu aktualisieren. Wenn der Benutzer den Prozess abgeschlossen hat, setzen Sie den Prozess fort, nachdem die Ergebnisse an die Anwendung zurückgegeben werden.|
 
-### <a name="requestregistration-type"></a>Typ „RequestRegistration“
+### <a name="requestregistration-type"></a>RequestRegistration-Typ
 
-Der Typ „RequestRegistration“ stellt Informationen zur Registrierung für den Aussteller bereit. Der Typ „RequestRegistration“ enthält die folgenden Eigenschaften:
+Der Typ `RequestRegistration` stellt Informationen zur Registrierung für den Aussteller bereit. Die Typ `RequestRegistration` enthält die folgenden Eigenschaften:
 
 |Eigenschaft |type |BESCHREIBUNG |
 |---------|---------|---------|
@@ -126,37 +125,36 @@ Der folgende Screenshot zeigt die `clientName`-Eigenschaft und den Anzeigenamen 
 
 ### <a name="requestpresentation-type"></a>Typ „RequestPresentation“
 
-Der Typ „RequestPresentation“ stellt Informationen bereit, die für die Nachweispräsentation erforderlich sind. Der Typ „RequestPresentation“ enthält die folgenden Eigenschaften:
+Der Typ `RequestPresentation` liefert Informationen, die für die Präsentation von Nachweisen erforderlich sind. `RequestPresentation` enthält die folgenden Eigenschaften:
 
-|Eigenschaft |type |BESCHREIBUNG |
+|Eigenschaft |type |Beschreibung |
 |---------|---------|---------|
-| `includeReceipt` |  boolean | Legt fest, ob ein Beleg in der Antwort dieser Anforderung enthalten sein soll. Mögliche Werte sind `true` oder `false` (Standardwert). Der Beleg enthält die ursprünglichen Nutzdaten, die vom Authentifikator an den Nachweisdienst gesendet wurden.  Der Beleg ist für die Problembehandlung nützlich und sollte nicht standardmäßig festgelegt werden. In der OpenID Connect-SIOP-Anforderung enthält der Beleg das ID-Token aus der ursprünglichen Anforderung. |
+| `includeReceipt` |  Boolesch | Legt fest, ob ein Beleg in der Antwort dieser Anforderung enthalten sein soll. Mögliche Werte sind `true` oder `false` (Standardwert). Der Beleg enthält die ursprünglichen Nutzdaten, die vom Authentifikator an den Nachweisdienst gesendet wurden. Der Beleg ist für die Problembehandlung nützlich und sollte nicht standardmäßig festgelegt werden. In der `OpenId Connect SIOP`-Anforderung enthält der Beleg das ID-Token aus der ursprünglichen Anforderung. |
 | `requestedCredentials` | collection| Eine Sammlung von [RequestCredential](#requestcredential-type)-Objekten.|
 
 ### <a name="requestcredential-type"></a>Typ „RequestCredential“
 
-Der Typ „RequestCredential“ stellt Informationen zu den angeforderten Anmeldeinformationen bereit, die der Benutzer angeben muss. Der Typ „RequestCredential“ enthält die folgenden Eigenschaften:
+Der Typ `RequestCredential` stellt Informationen zu den angeforderten Anmeldeinformationen bereit, die der Benutzer angeben muss. `RequestCredential` enthält die folgenden Eigenschaften:
 
 |Eigenschaft |type |BESCHREIBUNG |
 |---------|---------|---------|
-| `type`| Zeichenfolge| Der Typ des Nachweises. Der `type` muss dem Typ entsprechen, der im Nachweismanifest des **Ausstellers** definiert ist. Beispiel: `VerifiedCredentialExpert`. Um das Ausstellermanifest zu erhalten, folgen Sie den Anweisungen unter [Erfassen von Anmeldeinformationen und Umgebungsdetails zum Einrichten Ihrer Beispielanwendung](verifiable-credentials-configure-issuer.md#gather-credentials-and-environment-details-to-set-up-your-sample-application). Kopieren Sie die **Ausstelleranmeldeinformationen-URL**, öffnen Sie die URL in einem Webbrowser, und überprüfen Sie die **ID**-Eigenschaft. |
+| `type`| Zeichenfolge| Der Typ des Nachweises. Der `type` muss dem Typ entsprechen, der im `issuer`-Nachweismanifest definiert ist (z. B. `VerifiedCredentialExpert`). Um das Ausstellermanifest zu erhalten, lesen Sie [Erfassen von Nachweisen und Umgebungsdetails zum Einrichten Ihrer Beispielanwendung](verifiable-credentials-configure-issuer.md). Kopieren Sie die **Ausstelleranmeldeinformationen-URL**, öffnen Sie die URL in einem Webbrowser und überprüfen Sie die **ID**-Eigenschaft. |
 | `purpose`| Zeichenfolge | Geben Sie Informationen zum Zweck der Anforderung dieses Nachweises an. |
-| `acceptedIssuers`| Zeichenfolgensammlung | Eine Sammlung von DIDs von Ausstellern, die den Typ des Nachweises ausstellen könnten, den Antragsteller präsentieren können. Um Ihren Aussteller-DID zu erhalten, folgen Sie den Anweisungen unter [Erfassen von Anmeldeinformationen und Umgebungsdetails zum Einrichten Ihrer Beispielanwendung](verifiable-credentials-configure-issuer.md#gather-credentials-and-environment-details-to-set-up-your-sample-application), und kopieren Sie den Wert des **dezentralisierten Bezeichners (Decentralized Identifier, DID)** . |
-
+| `acceptedIssuers`| Zeichenfolgensammlung | Eine Sammlung von Aussteller-DIDs, die den Nachweistyp ausstellen könnten, der von Antragstellern präsentiert wird. Um Ihren Aussteller-DID zu erhalten, lesen Sie [Erfassen von Nachweisen und Umgebungsdetails zum Einrichten Ihrer Beispielanwendung](verifiable-credentials-configure-issuer.md), und kopieren Sie den Wert des **dezentralisierten Bezeichners (Decentralized Identifier, DID)** . |
 
 ### <a name="callback-type"></a>Rückruftyp
 
-Die Anforderungsdienst-REST-API generiert mehrere Ereignisse für den Rückrufendpunkt. Mit diesen Ereignissen können Sie die Benutzeroberfläche aktualisieren und den Prozess fortsetzen, sobald die Ergebnisse an die Anwendung zurückgegeben werden. Der Typ „Callback“ (Rückruf) enthält die folgenden Eigenschaften:
+Die Anforderungsdienst-REST-API generiert mehrere Ereignisse für den Rückrufendpunkt. Mit diesen Ereignissen können Sie die Benutzeroberfläche aktualisieren und den Prozess fortsetzen, nachdem die Ergebnisse an die Anwendung zurückgegeben werden. Die Typ `Callback` enthält die folgenden Eigenschaften:
 
 |Eigenschaft |type |BESCHREIBUNG |
 |---------|---------|---------|
 | `url` | Zeichenfolge| URI zum Rückrufendpunkt Ihrer Anwendung. |
 | `state` | Zeichenfolge| Assoziiert mit dem in den ursprünglichen Nutzdaten übergebenen Zustand. |
-| `headers` | Zeichenfolge| [Optional] Sie können eine Sammlung von HTTP-Headern einfügen, die von der empfangenden Seite der POST-Nachricht benötigt werden. Die Header dürfen nur den API-Schlüssel oder einen für die Autorisierung erforderlichen Header enthalten.|
+| `headers` | Zeichenfolge| Optional. Sie können eine Sammlung von HTTP-Headern einfügen, die von der empfangenden Seite der POST-Nachricht benötigt werden. Die Header dürfen nur den `api-key` oder einen für die Autorisierung erforderlichen Header enthalten.|
 
 ## <a name="successful-response"></a>Erfolgreiche Antwort
 
-Bei Erfolg gibt diese Methode einen „HTTP 201 Created“-Antwortcode und eine Sammlung von Ereignisobjekten im Antworttext zurück. Im folgenden JSON-Beispiel wird eine erfolgreiche Antwort dargestellt:
+Bei Erfolg gibt diese Methode einen *HTTP 201 Created*-Antwortcode und eine Sammlung von Ereignisobjekten im Antworttext zurück. Im folgenden JSON-Beispiel wird eine erfolgreiche Antwort dargestellt:
 
 ```json
 {  
@@ -171,16 +169,16 @@ Die Antwort enthält die folgenden Eigenschaften:
 
 |Eigenschaft |type |BESCHREIBUNG |
 |---------|---------|---------|
-| `requestId`| Zeichenfolge | Automatisch generierte Korrelations-ID. Der [Rückruf](#callback-events) verwendet dieselbe Anforderung. Damit können Sie die Präsentationsanforderung und deren Rückrufe nachverfolgen. |
+| `requestId`| string | Automatisch generierte Korrelations-ID. Die [Rückruffunktion (Callback)](#callback-events) verwendet dieselbe Anforderung, sodass Sie die Präsentationsanforderung und ihre Rückruffunktionen nachverfolgen können. |
 | `url`|  Zeichenfolge| Eine URL, die zuerst die Authentifikator-App und dann den Präsentationsprozess startet. Sie können dem Benutzer diese URL präsentieren, wenn er den QR-Code nicht scannen kann. |
 | `expiry`| integer| Gibt an, wann die Antwort abläuft. |
-| `qrCode`| Zeichenfolge | Ein QR-Code, den der Benutzer scannen kann, um den Präsentationsflow zu starten. |
+| `qrCode`| string | Ein QR-Code, den der Benutzer scannen kann, um den Präsentationsflow zu starten. |
 
 Wenn Ihre App die Antwort erhält, muss sie dem Benutzer den QR-Code präsentieren. Der Benutzer scannt den QR-Code, wodurch die Authentifikator-App geöffnet wird und der Präsentationsprozess gestartet wird.
 
 ## <a name="error-response"></a>Fehlerantwort
 
-Auch Fehlerantworten können zurückgegeben werden, damit die Anwendung sie entsprechend behandeln kann. Im folgenden JSON-Beispiel wird eine nicht autorisierte Fehlermeldung dargestellt.
+Auch Fehlerantworten können zurückgegeben werden, damit die Anwendung sie entsprechend behandeln kann. Im folgenden JSON-Beispiel wird eine nicht autorisierte Fehlermeldung dargestellt:
 
 
 ```json
@@ -198,25 +196,25 @@ Die Antwort enthält die folgenden Eigenschaften:
 
 |Eigenschaft |type |BESCHREIBUNG |
 |---------|---------|---------|
-| `requestId`| Zeichenfolge | Automatisch generierte Anforderungs-ID.|
-| `date`| date| Der Zeitpunkt des Fehlers. |
-| `error.code` | Zeichenfolge| Der zurückgegebene Fehlercode. |
-| `error.message`| Zeichenfolge| Die Fehlermeldung. |
+| `requestId`| string | Automatisch generierte Anforderungs-ID.|
+| `date`| date | Der Zeitpunkt des Fehlers. |
+| `error.code` | Zeichenfolge | Der zurückgegebene Fehlercode. |
+| `error.message`| Zeichenfolge | Die Fehlermeldung. |
 
-## <a name="callback-events"></a>Rückrufereignisse
+## <a name="callback-events"></a>Callback-Ereignisse
 
-Der Rückrufendpunkt wird aufgerufen, wenn ein Benutzer den QR-Code scannt, den Deep Link seiner Authentifikator-App verwendet oder den Präsentationsprozess abschließt. 
+Der Callback-Endpunkt wird aufgerufen, wenn ein Benutzer den QR-Code scannt, den Deep Link seiner Authentifikator-App verwendet oder den Präsentationsprozess abschließt. 
 
 |Eigenschaft |type |BESCHREIBUNG |
 |---------|---------|---------|
-| `requestId`| Zeichenfolge | Wird der ursprünglichen Anforderung zugeordnet, wenn die Nutzdaten an den Nachweisdienst gesendet werden.|
-| `code` |Zeichenfolge |Der Code, der zurückgegeben wird, wenn die Anforderung von der Authentifikator-App abgerufen wurde. Mögliche Werte: <ul><li>`request_retrieved`: Der Benutzer hat den QR-Code gescannt oder auf den Link geklickt, der den Präsentationsflow startet.</li><li>`presentation_verified`: Die Nachweisüberprüfung wurde erfolgreich abgeschlossen.</li></ul>    |
-| `state` |Zeichenfolge| Der Status gibt den Statuswert zurück, den Sie in den ursprünglichen Nutzdaten übergeben haben.   |
+| `requestId`| Zeichenfolge | Wird der ursprünglichen Anforderung zugeordnet, wenn die Nutzdaten an den Nachweisdienst gesendet wurden.|
+| `code` |Zeichenfolge |Der Code, der zurückgegeben wird, wenn die Anforderung von der Authentifikator-App abgerufen wurde. Mögliche Werte: <ul><li>`request_retrieved`: Der Benutzer hat den QR-Code gescannt oder den Link ausgewählt, der den Präsentationsflow startet.</li><li>`presentation_verified`: Die Überprüfung der Nachweise wurde erfolgreich abgeschlossen.</li></ul>    |
+| `state` |string| Gibt den Statuswert zurück, den Sie in den ursprünglichen Nutzdaten übergeben haben.   |
 | `subject`|Zeichenfolge | Der Benutzer-DID des Nachweises.|
 | `issuers`| array |Gibt ein Array von angeforderten Nachweisen zurück. Für jeden Nachweis wird Folgendes angegeben: </li><li>Der Typ des Nachweises.</li><li>Die abgerufenen Ansprüche.</li><li>Die Domäne des Nachweisausstellers. </li><li>Der Überprüfungsstatus der Domäne des Nachweisausstellers. </li></ul> |
-| `receipt`| Zeichenfolge | [Optional] Der Beleg enthält die ursprünglichen Nutzdaten, die vom Authentifikator an den Nachweisdienst gesendet wurden.  |
+| `receipt`| Zeichenfolge | Optional. Der Beleg enthält die ursprünglichen Nutzdaten, die vom Authentifikator an den Nachweisdienst gesendet wurden.  |
 
-Im folgenden Beispiel sehen Sie die Rückrufnutzdaten, wenn die Präsentationsanforderung von der Authentifikator-App gestartet wird.
+Das folgende Beispiel demonstriert Callback-Nutzdaten, wenn die Präsentationsanforderung durch die Authentifikator-App gestartet wird:
 
 ```json
 {  
@@ -226,7 +224,7 @@ Im folgenden Beispiel sehen Sie die Rückrufnutzdaten, wenn die Präsentationsan
 } 
 ```
 
-Im folgenden Beispiel sehen Sie die Rückrufnutzdaten, nachdem die Nachweispräsentation erfolgreich abgeschlossen wurde.
+Das folgende Beispiel demonstriert Callback-Nutzdaten, nachdem die Präsentation der Nachweise erfolgreich abgeschlossen wurde.
 
 ```json
 {

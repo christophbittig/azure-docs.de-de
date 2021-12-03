@@ -8,20 +8,22 @@ ms.subservice: automl
 ms.topic: conceptual
 author: cartacioS
 ms.author: sacartac
-ms.date: 07/01/2021
+ms.date: 10/21/2021
 ms.custom: automl
-ms.openlocfilehash: c08eae9654e01fda15889ac6fe65f99de2d73bb6
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 16d96eb508725e22bc1956a8b78d003f1512487b
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130261803"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518658"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Was ist automatisiertes maschinelles Lernen (AutoML)?
 
 Automatisiertes maschinelles Lernen, auch als automatisiertes ML oder AutoML bezeichnet, ist der Prozess der Automatisierung von zeitaufwändigen, iterativen Aufgaben bei der Entwicklung eines Machine Learning-Modells. Es versetzt Data Scientists, Analysten und Entwickler in die Lage, ML-Modelle mit hoher Skalierbarkeit, Effizienz und Produktivität zu erstellen und gleichzeitig die Modellqualität zu erhalten. Automatisiertes maschinelles Lernen in Azure Machine Learning basiert auf einem Durchbruch der [Microsoft Research-Abteilung](https://www.microsoft.com/research/project/automl/).
 
 Die Entwicklung traditioneller Machine Learning-Modelle ist ressourcenintensiv und erfordert viel Fachwissen und Zeit, um Dutzende von Modellen zu erstellen und zu vergleichen. Mit automatisiertem maschinellem Lernen verkürzen Sie die Zeit, die benötigt wird, um produktionsbereite ML-Modelle mit großer Leichtigkeit und Effizienz zu erhalten.
+
+<a name="parity"></a>
 
 ## <a name="ways-to-use-automl-in-azure-machine-learning"></a>Möglichkeiten zur Verwendung des automatisierten maschinellen Lernens in Azure Machine Learning
 
@@ -32,10 +34,6 @@ Azure Machine Learning bietet die folgenden beiden Möglichkeiten für die Arbei
 * Für Kunden mit begrenzten oder keinen Programmiererfahrungen: Azure Machine Learning Studio unter [https://ml.azure.com](https://ml.azure.com/).  Erste Schritte mit folgenden Tutorials:
     * [Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
     *  [Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen](tutorial-automated-ml-forecast.md)
-
-<a name="parity"></a>
-
-## <a name="automl-settings-and-configuration"></a>Einstellungen und Konfiguration für automatisiertes maschinelles Lernen
 
 ### <a name="experiment-settings"></a>Einstellungen für das Experiment 
 
@@ -70,7 +68,7 @@ Diese Einstellungen können auf das beste Modell als Ergebnis Ihres Experiments 
 |**Aktivieren von Abstimmungsensemble- und Stapelensemble-Modellen**| ✓|✓|
 |**Anzeigen des besten Modells auf der Basis von nicht primärer Metrik**|✓||
 |**Aktivieren/Deaktivieren der Kompatibilität des ONNX-Modells**|✓||
-|**Testen des Modells** | ✓| |
+|**Testen des Modells** | ✓| ✓ (Vorschau)|
 
 ### <a name="run-control-settings"></a>Ausführen der Steuerelementeinstellungen
 
@@ -99,7 +97,7 @@ Die Klassifizierung ist ein gängiger Machine Learning-Task. Klassifizierung ist
 
 Das Hauptziel von Klassifizierungsmodellen besteht darin, auf der Grundlage der Erkenntnisse aus den Trainingsdaten vorherzusagen, in welche Kategorien neue Daten fallen werden. Zu den gängigen Klassifizierungsbeispielen gehören Betrugserkennung, Handschrifterkennung und Objekterkennung. Weitere Informationen und ein Beispiel finden Sie unter [Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen](tutorial-first-experiment-automated-ml.md).
 
-Weitere Beispiele für Klassifizierung und automatisiertes Machine Learning finden Sie in den folgenden Python-Notebooks: [Fraud Detection](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) (Betrugserkennung), [Marketing Prediction](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) (Marketingprognose) und [Newsgroup Data Classification](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb) (Klassifizierung von Diskussionsgruppendaten)
+Weitere Beispiele für Klassifizierung und automatisiertes Machine Learning finden Sie in den folgenden Python-Notebooks: [Fraud Detection](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) (Betrugserkennung), [Marketing Prediction](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) (Marketingprognose) und [Newsgroup Data Classification](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml/classification-text-dnn) (Klassifizierung von Diskussionsgruppendaten)
 
 ### <a name="regression"></a>Regression
 
@@ -107,7 +105,7 @@ Weitere Beispiele für Klassifizierung und automatisiertes Machine Learning find
 
 Anders als bei der Klassifizierung, bei der die vorhergesagten Ausgabewerte kategorisch sind, sagen Regressionsmodelle numerische Ausgabewerte auf der Grundlage unabhängiger Vorhersagefaktoren voraus. Bei der Regression besteht das Ziel darin, die Beziehung zwischen diesen unabhängigen Vorhersagevariablen herzustellen, indem geschätzt wird, wie eine Variable die anderen beeinflusst. Beispiel: Der Fahrzeugpreis basierend auf Merkmalen wie Kraftstoffverbrauch, Sicherheitseinstufung, usw. Hier erhalten Sie weitere Informationen und ein Beispiel für die [Regression mit automatisiertem maschinellen Lernen](tutorial-auto-train-models.md).
 
-Weitere Beispiele für Regression und automatisiertes Machine Learning für Vorhersagen finden Sie in den folgenden Python-Notebooks: [CPU-Leistungsvorhersage](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb), 
+Weitere Beispiele für Regression und automatisiertes Machine Learning für Vorhersagen finden Sie in den folgenden Python-Notebooks: [CPU-Leistungsvorhersage](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml/regression-explanation-featurization), 
 
 ### <a name="time-series-forecasting"></a>Zeitreihenvorhersagen
 
@@ -124,7 +122,7 @@ Die erweiterte Vorhersagekonfiguration umfasst Folgendes:
 * Aggregierte Zeitfenstermerkmale (Rolling Window Features)
 
 
-Weitere Beispiele für Regression und automatisiertes Machine Learning für Vorhersagen finden Sie in den folgenden Python-Notebooks: [Sales Forecasting](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb) (Verkaufsprognose), [Demand Forecasting](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) (Nachfrageprognose) und [Beverage Production Forecast](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) (Getränkeproduktionsprognose).
+Weitere Beispiele für Regression und automatisiertes Machine Learning für Vorhersagen finden Sie in den folgenden Python-Notebooks: [Sales Forecasting](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb) (Verkaufsprognose), [Demand Forecasting](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) (Nachfrageprognose) und [Beverage Production Forecast](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) (Getränkeproduktionsprognose).
 
 ### <a name="computer-vision-preview"></a>Maschinelles Sehen (Vorschau)
 
@@ -186,9 +184,65 @@ Sie können die protokollierten Ausführungsinformationen auch untersuchen. Sie 
 
 Obwohl die Modellerstellung automatisiert ist, können Sie auch [ermitteln, wie wichtig oder relevant Features für die generierten Modelle sind](how-to-configure-auto-train.md#explain).
 
-
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
+<a name="local-remote"></a>
+
+## <a name="guidance-on-local-vs-remote-managed-ml-compute-targets"></a>Leitfaden zu lokal verwalteten ML-Computezielen im Vergleich zu remote verwalteten ML-Computezielen
+
+Die Weboberfläche für automatisiertes ML verwendet immer ein [Remotecomputeziel](concept-compute-target.md).  Wenn Sie jedoch das Python SDK verwenden, wählen Sie entweder ein lokales Computeziel oder ein Remotecomputeziel für automatisiertes ML-Training aus.
+
+* **Lokales Computeziel:** Das Training erfolgt auf Ihrem lokalen Computer oder VM-Compute. 
+* **Remotecomputeziel:** Das Training erfolgt auf Azure Machine Learning-Computeclustern.  
+
+### <a name="choose-compute-target"></a>Auswählen eines Computeziels
+Berücksichtigen Sie die folgenden Faktoren bei der Auswahl Ihres Computeziels:
+
+ * **Wählen Sie ein lokales Computeziel aus:** Wenn Ihr Szenario anfängliche Untersuchungen oder Demos mithilfe weniger Daten und kurzen Trainingsprozessen (d. h. Sekunden oder wenige Minuten pro untergeordnete Ausführung) umfasst, kann sich das Training auf Ihrem lokalen Computer als besser erweisen.  Es gibt keine Einrichtungszeit, die Infrastrukturressourcen (Ihr Computer oder Ihre VM) sind sofort verfügbar.
+ * **Wählen Sie ein Remote-ML-Computecluster aus**: Wenn Sie wie beim Erstellen von Modellen für Produktionstraining Training mit größeren Datasets durchführen, die längere Trainingszeiträume erfordern, bietet ein Remotecomputeziel eine bessere Gesamtdauer, da `AutoML` Trainingsprozesse über Clusterknoten hinweg parallelisiert. Auf einem Remotecomputeziel werden etwa 1,5 Minuten pro untergeordnete Ausführung durch die Startzeit für die interne Infrastruktur hinzugefügt. Außerdem werden weitere Minuten für die Clusterinfrastruktur addiert, wenn die VMs noch nicht ausgeführt werden.
+
+### <a name="pros-and-cons"></a>Vor- und Nachteile
+Wägen Sie die folgenden Vor- und Nachteile gegeneinander ab, wenn Sie zwischen einem lokalen und einem Remotecomputeziel entscheiden.
+
+|  | Vorteile  |Nachteile  |
+|---------|---------|---------|---------|
+|**Lokales Computeziel** |  <li> Keine Startzeit für die Umgebung   | <li>  Teilmenge der Features<li>  Keine Parallelisierung der Ausführungen <li> Schlechter für große Datenmengen <li>Kein Datenstreaming während des Trainings <li>  Keine DNN-basierte Featurisierung <li> Nur Python SDK |
+|**Remote-ML-Computecluster**|  <li> Alle Features <li> Parallelisierung untergeordneter Ausführungen <li>   Unterstützung großer Datasets<li>  DNN-basierte Featurisierung <li>  Dynamische Skalierbarkeit von Computeclustern nach Bedarf <li> Webbenutzeroberfläche zur Verwendung ohne Programmiererfahrung  |  <li> Startzeit für Clusterknoten <li> Startzeit für jede untergeordnete Ausführung    |
+
+### <a name="feature-availability"></a>Verfügbarkeit von Funktionen 
+
+Wie in der folgenden Tabelle gezeigt stehen Ihnen mehr Features zur Verfügung, wenn Sie Remotecompute verwenden. 
+
+| Funktion                                                    | Remote | Lokal | 
+|------------------------------------------------------------|--------|-------|
+| Datenstreaming (Unterstützung großer Datenmengen, bis zu 100 GB)          | ✓      |       | 
+| DNN-BERT-basierte Textfeaturisierung und -training             | ✓      |       |
+| Direkt einsatzbereite GPU-Unterstützung (Training und Rückschlüsse)        | ✓      |       |
+| Unterstützung von Bildklassifizierung und Bezeichnungen                  | ✓      |       |
+| Auto-ARIMA-, Prophet- und ForecastTCN-Modelle für Vorhersagen | ✓      |       | 
+| Mehrere parallele Ausführungen/Iterationen                       | ✓      |       |
+| Erstellen von Modellen mit Interpretierbarkeit in der AutoML Studio-Webbenutzeroberfläche      | ✓      |       |
+| Anpassung des Feature Engineering in der AutoML Studio-Webbenutzeroberfläche| ✓      |       |
+| Azure ML-Hyperparameteroptimierung                             | ✓      |       |
+| Unterstützung von Azure ML-Pipelineworkflows                         | ✓      |       |
+| Fortsetzen einer Ausführung                                             | ✓      |       |
+| Vorhersagen                                                | ✓      | ✓     |
+| Erstellen und Ausführen von Experimenten in Notebooks                    | ✓      | ✓     |
+| Registrieren und Visualisieren der Informationen und Metriken von Experimenten auf der Benutzeroberfläche | ✓      | ✓     |
+| Schutzmaßnahmen für Daten                                            | ✓      | ✓     |
+
+## <a name="training-validation-and-test-data"></a>Trainieren, Überprüfen und Testen von Daten 
+
+Mit automatisierten ML Sie die **Trainingsdaten** zum Trainieren ML Und Sie können angeben, welche Art von Modellvalidierung sie ausführen soll. Automatisiertes ML führt die Modellvalidierung im Rahmen des Trainings aus. Das heißt, dass automatisiertes ML **Validierungsdaten** verwendet, um Modellhyperparameter basierend auf dem angewendeten Algorithmus zu optimieren, um die beste Kombination zu finden, die am besten zu den Trainingsdaten passt. Allerdings werden dieselben Validierungsdaten für jede Iteration der Optimierung verwendet, was zu einer Voreingenommenheit bei der Modellauswertung führt, da das Modell sich weiter verbessert und an die Validierungsdaten anpasst. 
+
+Um zu bestätigen, dass diese Verzerrungen nicht auf das endgültige empfohlene Modell angewendet werden, unterstützt das automatisierte ML die Verwendung von **Testdaten**, um das endgültige Modell zu bewerten, das automatisiertes ML am Ende Ihres Experiments empfiehlt. Wenn Sie Testdaten als Teil Ihrer Experimentkonfiguration für automatisiertes maschinelles Lernen bereitstellen, wird dieses empfohlene Modell standardmäßig am Ende des Experiments (Vorschauversion) getestet. 
+
+>[!IMPORTANT]
+> Das Testen Ihrer Modelle mit einem Testdatensatz zur Bewertung der generierten Modelle ist eine Previewfunktion. Diese Funktion ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion, die jederzeit geändert werden kann.
+
+Erfahren Sie, wie Sie [Experimente für automatisiertes maschinelles Lernen für die Verwendung von Testdaten (Vorschauversion) mit dem SDK](how-to-configure-cross-validation-data-splits.md#provide-test-data-preview) oder mit [Azure Machine Learning](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment) Studio konfigurieren.
+
+Sie können auch [alle vorhandenen automatisierten ML-Modelle (Vorschauversion) testen](how-to-configure-auto-train.md#test-existing-automated-ml-model), einschließlich Modellen aus untergeordneten Läufen, indem Sie Ihre eigenen Testdaten bereitstellen oder einen Teil Ihrer Trainingsdaten abgesehen haben. 
 
 ## <a name="feature-engineering"></a>Featureentwicklung
 
@@ -234,58 +288,13 @@ Der [Caruana-Algorithmus für die Ensembleauswahl](http://www.niculescu-mizil.or
 
 Informationen zum Ändern der Standard-Ensembleeinstellungen beim automatisierten Machine Learning finden Sie unter [Gewusst wie:](how-to-configure-auto-train.md#ensemble).
 
-## <a name="guidance-on-local-vs-remote-managed-ml-compute-targets"></a><a name="local-remote"></a>Leitfaden zu lokal verwalteten ML-Computezielen im Vergleich zu remote verwalteten ML-Computezielen
-
-Die Weboberfläche für automatisiertes ML verwendet immer ein [Remotecomputeziel](concept-compute-target.md).  Wenn Sie jedoch das Python SDK verwenden, wählen Sie entweder ein lokales Computeziel oder ein Remotecomputeziel für automatisiertes ML-Training aus.
-
-* **Lokales Computeziel:** Das Training erfolgt auf Ihrem lokalen Computer oder VM-Compute. 
-* **Remotecomputeziel:** Das Training erfolgt auf Azure Machine Learning-Computeclustern.  
-
-### <a name="choose-compute-target"></a>Auswählen eines Computeziels
-Berücksichtigen Sie die folgenden Faktoren bei der Auswahl Ihres Computeziels:
-
- * **Wählen Sie ein lokales Computeziel aus:** Wenn Ihr Szenario anfängliche Untersuchungen oder Demos mithilfe weniger Daten und kurzen Trainingsprozessen (d. h. Sekunden oder wenige Minuten pro untergeordnete Ausführung) umfasst, kann sich das Training auf Ihrem lokalen Computer als besser erweisen.  Es gibt keine Einrichtungszeit, die Infrastrukturressourcen (Ihr Computer oder Ihre VM) sind sofort verfügbar.
- * **Wählen Sie ein Remote-ML-Computecluster aus**: Wenn Sie wie beim Erstellen von Modellen für Produktionstraining Training mit größeren Datasets durchführen, die längere Trainingszeiträume erfordern, bietet ein Remotecomputeziel eine bessere Gesamtdauer, da `AutoML` Trainingsprozesse über Clusterknoten hinweg parallelisiert. Auf einem Remotecomputeziel werden etwa 1,5 Minuten pro untergeordnete Ausführung durch die Startzeit für die interne Infrastruktur hinzugefügt. Außerdem werden weitere Minuten für die Clusterinfrastruktur addiert, wenn die VMs noch nicht ausgeführt werden.
-
-### <a name="pros-and-cons"></a>Vor- und Nachteile
-Wägen Sie die folgenden Vor- und Nachteile gegeneinander ab, wenn Sie zwischen einem lokalen und einem Remotecomputeziel entscheiden.
-
-|  | Vorteile  |Nachteile  |
-|---------|---------|---------|
-|**Lokales Computeziel** |  <li> Keine Startzeit für die Umgebung   | <li>  Teilmenge der Features<li>  Keine Parallelisierung der Ausführungen <li> Schlechter für große Datenmengen <li>Kein Datenstreaming während des Trainings <li>  Keine DNN-basierte Featurisierung <li> Nur Python SDK |
-|**Remote-ML-Computecluster**|  <li> Alle Features <li> Parallelisierung untergeordneter Ausführungen <li>   Unterstützung großer Datasets<li>  DNN-basierte Featurisierung <li>  Dynamische Skalierbarkeit von Computeclustern nach Bedarf <li> Webbenutzeroberfläche zur Verwendung ohne Programmiererfahrung  |  <li> Startzeit für Clusterknoten <li> Startzeit für jede untergeordnete Ausführung    |
-
-### <a name="feature-availability"></a>Verfügbarkeit von Funktionen 
-
-Wie in der folgenden Tabelle gezeigt stehen Ihnen mehr Features zur Verfügung, wenn Sie Remotecompute verwenden. 
-
-| Funktion                                                    | Remote | Lokal | 
-|------------------------------------------------------------|--------|-------|
-| Datenstreaming (Unterstützung großer Datenmengen, bis zu 100 GB)          | ✓      |       | 
-| DNN-BERT-basierte Textfeaturisierung und -training             | ✓      |       |
-| Direkt einsatzbereite GPU-Unterstützung (Training und Rückschlüsse)        | ✓      |       |
-| Unterstützung von Bildklassifizierung (Vorschau) und Bezeichnungen        | ✓      |       |
-| Auto-ARIMA-, Prophet- und ForecastTCN-Modelle für Vorhersagen | ✓      |       | 
-| Mehrere parallele Ausführungen/Iterationen                       | ✓      |       |
-| Erstellen von Modellen mit Interpretierbarkeit in der AutoML Studio-Webbenutzeroberfläche      | ✓      |       |
-| Anpassung des Feature Engineering in der AutoML Studio-Webbenutzeroberfläche| ✓      |       |
-| Azure ML-Hyperparameteroptimierung                             | ✓      |       |
-| Unterstützung von Azure ML-Pipelineworkflows                         | ✓      |       |
-| Fortsetzen einer Ausführung                                             | ✓      |       |
-| Vorhersagen                                                | ✓      | ✓     |
-| Maschinelles Sehen (Vorschau)                                  | ✓      |       |
-| Erstellen und Ausführen von Experimenten in Notebooks                    | ✓      | ✓     |
-| Registrieren und Visualisieren der Informationen und Metriken von Experimenten auf der Benutzeroberfläche | ✓      | ✓     |
-| Schutzmaßnahmen für Daten                                            | ✓      | ✓     |
-
-
 <a name="use-with-onnx"></a>
 
 ## <a name="automl--onnx"></a>AutoML und ONNX
 
 Mit Azure Machine Learning können Sie automatisiertes ML verwenden, um ein Python-Modell zu erstellen und in das ONNX-Format zu konvertieren. Sobald die Modelle im ONNX-Format vorliegen, können sie auf einer Vielzahl von Plattformen und Geräten ausgeführt werden. Erfahren Sie mehr über das [Beschleunigen von ML-Modellen mit ONNX](concept-onnx.md).
 
-Informationen zum Konvertieren in das ONNX-Format finden Sie in [diesem Jupyter Notebook-Beispiel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). Erfahren Sie, welche [Algorithmen in ONNX unterstützt werden](how-to-configure-auto-train.md#supported-models).
+Informationen zum Konvertieren in das ONNX-Format finden Sie in [diesem Jupyter Notebook-Beispiel](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml/classification-bank-marketing-all-features). Erfahren Sie, welche [Algorithmen in ONNX unterstützt werden](how-to-configure-auto-train.md#supported-models).
 
 Die ONNX-Runtime unterstützt auch C#, sodass Sie das erstellte Modell automatisch in Ihren C#-Apps verwenden können, ohne es neu codieren oder die Netzwerklatenzen in Kauf nehmen zu müssen, die REST-Endpunkte mit sich bringen. Erfahren Sie mehr über die [Verwendung eines AutoML ONNX-Modells in einer .NET-Anwendung mit ML.NET](./how-to-use-automl-onnx-model-dotnet.md) und das [Rückschließen von ONNX-Modellen mit der C#-API für die ONNX-Runtime](https://onnxruntime.ai/docs/api/csharp-api.html). 
 
@@ -313,7 +322,7 @@ Anleitungen bieten zusätzliche Einzelheiten zu den Funktionen des automatisiert
    
 ### <a name="jupyter-notebook-samples"></a>Jupyter Notebook-Beispiele 
 
-Überprüfen Sie detaillierte Codebeispiele und Anwendungsfälle im [GitHub-Notebook-Repository für Beispiele zum automatisierten maschinellen Lernen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/).
+Überprüfen Sie detaillierte Codebeispiele und Anwendungsfälle im [GitHub-Notebook-Repository für Beispiele zum automatisierten maschinellen Lernen](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml).
 
 ### <a name="python-sdk-reference"></a>Referenz zum Python SDK
 

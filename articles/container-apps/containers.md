@@ -1,19 +1,19 @@
 ---
 title: Container in Azure Container Apps (Vorschauversion)
 description: Erfahren Sie, wie Container in Azure Container Apps verwaltet und konfiguriert werden.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a471f0026140f5d2b3a559788422e92447e14cb8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fdebbbae4cba1577b8f92e0f54821eb72737c2c3
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095481"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026765"
 ---
 # <a name="containers-in-azure-container-apps-preview"></a>Container in Azure Container Apps (Vorschauversion)
 

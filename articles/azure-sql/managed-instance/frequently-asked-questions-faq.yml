@@ -13,12 +13,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: urmilano, danil, nnikolic
   ms.date: 09/21/2020
-  ms.openlocfilehash: 7cc6b21fac7efbb183a57506c9fd966a4320544c
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: 81b28084d63a01f6ceeba57d128f389a5e767259
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130046390"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132315841"
 title: Häufig gestellte Fragen (FAQ) zu Azure SQL Managed Instance
 summary: >
   [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -47,17 +47,60 @@ sections:
       ### <a name="where-can-i-find-known-issues-and-defects"></a>Wo finde ich bekannte Probleme und Fehler?
 
 
-      Informationen zu Produktfehlern und bekannten Problemen finden Sie unter [Bekannte Probleme](doc-changes-updates-known-issues.md).
+      Informationen zu Produktfehlern und bekannten Problemen finden Sie unter [Bekannte Probleme](doc-changes-updates-known issues.md).
   - question: >
       Neue Funktionen
     answer: >
       ### <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>Wo finde ich die neuesten Features sowie die Features in der Public Preview?
 
 
-      Neue Features und Previewfunktionen finden Sie unter [Neuerungen in Azure SQL Managed Instance](doc-changes-updates-release-notes-whats-new.md).
+      Neue Features und Previewfunktionen finden Sie in den [Versionshinweisen](doc-changes-updates-release-notes-whats-new.md).
   - question: >
       Erstellen, Aktualisieren, Löschen oder Verschieben von SQL Managed Instance
-    answer: "### <a name=\"how-can-i-provision-sql-managed-instance\"></a>Wie kann ich SQL Managed Instance bereitstellen?\n\nSie können eine Instanz per [Azure-Portal](instance-create-quickstart.md), [PowerShell](scripts/create-configure-managed-instance-powershell.md), [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) und mit [ARM-Vorlagen](/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates) bereitstellen.\n\n### <a name=\"can-i-provision-managed-instances-in-an-existing-subscription\"></a>Kann ich verwaltete Instanzen in einem vorhandenen Abonnement bereitstellen?\n\nJa. Sie können eine verwaltete Instanz in einem vorhandenen Abonnement bereitstellen, wenn es zu den [unterstützten Abonnementtypen](resource-limits.md#supported-subscription-types) gehört.\n\n### <a name=\"why-couldnt-i-provision-a-managed-instance-in-the-subnet-which-name-starts-with-a-digit\"></a>Warum kann ich keine verwaltete Instanz in einem Subnetz bereitstellen, dessen Name mit einer Ziffer beginnt?\n\nDies ist eine aktuelle Einschränkung der zugrunde liegenden Komponente, bei der der Subnetzname anhand regulärer Ausdrücke überprüft wird: ^[a-zA-Z_][^\\\\\\/\\:\\*\\?\\\"\\<\\>\\|\\`\\'\\^]*(?<![\\.\\s])$. Alle Namen, die die Überprüfung mit regulären Ausdrücken bestehen und gültige Subnetznamen sind, werden derzeit unterstützt.\n\n### <a name=\"how-can-i-scale-my-managed-instance\"></a>Wie kann ich meine verwaltete Instanz skalieren?\n\nSie können Ihre verwaltete Instanz per [Azure-Portal](../database/service-tiers-vcore.md?tabs=azure-portal), [PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](/cli/azure/sql/mi#az_sql_mi_update) oder mit [ARM-Vorlagen](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates) skalieren.\n\n### <a name=\"can-i-move-my-managed-instance-from-one-region-to-another\"></a>Kann ich meine verwaltete Instanz aus einer Region in eine andere verschieben?\n\nJa, das ist möglich. Eine Anleitung finden Sie unter [Verschieben von Ressourcen in eine neue Region](../database/move-resources-across-regions.md).\n\n### <a name=\"how-can-i-delete-my-managed-instance\"></a>Wie kann ich meine verwaltete Instanz löschen?\n\nSie können verwaltete Instanzen per Azure-Portal, [PowerShell](/powershell/module/az.sql/remove-azsqlinstance), [Azure CLI](/cli/azure/sql/mi#az_sql_mi_delete) oder mit [Resource Manager-REST-APIs](/rest/api/sql/managedinstances/delete) löschen.\n\n### <a name=\"how-much-time-does-it-take-to-create-or-update-an-instance-or-to-restore-a-database\"></a>Wie lange dauert es, eine Instanz zu erstellen oder zu aktualisieren oder eine Datenbank wiederherzustellen?\n\nDie erwartete Dauer für die Erstellung einer neuen verwalteten Instanz oder die Änderung von Dienstebenen (virtuelle Kerne, Speicher) hängt von mehreren Faktoren ab. Weitere Informationen finden Sie unter [Verwaltungsvorgänge](sql-managed-instance-paas-overview.md#management-operations).\n \n"
+    answer: >
+      ### <a name="how-can-i-provision-sql-managed-instance"></a>Wie kann ich SQL Managed Instance bereitstellen?
+
+
+      Sie können eine Instanz per [Azure-Portal](instance-create-quickstart.md), [PowerShell](scripts/create-configure-managed-instance-powershell.md), [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) und mit [ARM-Vorlagen](/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates) bereitstellen.
+
+
+      ### <a name="can-i-provision-managed-instances-in-an-existing-subscription"></a>Kann ich verwaltete Instanzen in einem vorhandenen Abonnement bereitstellen?
+
+
+      Ja. Sie können eine verwaltete Instanz in einem vorhandenen Abonnement bereitstellen, wenn es zu den [unterstützten Abonnementtypen](resource-limits.md#supported-subscription-types) gehört.
+
+
+      ### <a name="why-couldnt-i-provision-a-managed-instance-in-the-subnet-which-name-starts-with-a-digit"></a>Warum kann ich keine verwaltete Instanz in einem Subnetz bereitstellen, dessen Name mit einer Ziffer beginnt?
+
+
+      Dies ist eine aktuelle Einschränkung der zugrunde liegenden Komponente, bei der der Subnetzname anhand regulärer Ausdrücke überprüft wird: ^[a-zA-Z_][^\\\/\:\*\?\"\<\>\|\`\'\^]*(?<![\.\s])$. Alle Namen, die die Überprüfung mit regulären Ausdrücken bestehen und gültige Subnetznamen sind, werden derzeit unterstützt.
+
+
+      ### <a name="how-can-i-scale-my-managed-instance"></a>Wie kann ich meine verwaltete Instanz skalieren?
+
+
+      Sie können Ihre verwaltete Instanz per [Azure-Portal](../database/service-tiers-vcore.md?tabs=azure-portal), [PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](/cli/azure/sql/mi#az_sql_mi_update) oder mit [ARM-Vorlagen](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates) skalieren.
+
+
+      ### <a name="can-i-move-my-managed-instance-from-one-region-to-another"></a>Kann ich meine verwaltete Instanz aus einer Region in eine andere verschieben?
+
+
+      Ja, das ist möglich. Eine Anleitung finden Sie unter [Verschieben von Ressourcen in eine neue Region](../database/move-resources-across-regions.md).
+
+
+      ### <a name="how-can-i-delete-my-managed-instance"></a>Wie kann ich meine verwaltete Instanz löschen?
+
+
+      Sie können verwaltete Instanzen per Azure-Portal, [PowerShell](/powershell/module/az.sql/remove-azsqlinstance), [Azure CLI](/cli/azure/sql/mi#az_sql_mi_delete) oder mit [Resource Manager-REST-APIs](/rest/api/sql/managedinstances/delete) löschen.
+
+
+      ### <a name="how-much-time-does-it-take-to-create-or-update-an-instance-or-to-restore-a-database"></a>Wie lange dauert es, eine Instanz zu erstellen oder zu aktualisieren oder eine Datenbank wiederherzustellen?
+
+
+      Die erwartete Dauer für die Erstellung einer neuen verwalteten Instanz oder die Änderung von Dienstebenen (virtuelle Kerne, Speicher) hängt von mehreren Faktoren ab. Weitere Informationen finden Sie unter [Verwaltungsvorgänge](sql-managed-instance-paas-overview.md#management-operations).
+  - question: >
+      Erstellen, Aktualisieren, Löschen oder Verschieben einer Datenbank
+    answer: "### <a name=\"can-i-drop-and-recreate-a-database-on-a-managed-instance-using-the-same-database-name\"></a>Kann ich eine Datenbank in einer verwalteten Instanz löschen und mit demselben Datenbanknamen neu erstellen?\n\nDie Wiederherstellung jeder Datenbank ist während des gesamten definierten Aufbewahrungszeitraums garantiert. Dies gilt auch für Datenbanken, die erstellt und nach wenigen Sekunden bereits gelöscht werden. Wenn eine Datenbank erstellt, gelöscht oder wiederhergestellt wird, werden in unterschiedlichen Intervallen Sicherungen erstellt, um die Daten beizubehalten, sodass eine Wiederherstellung während des angegebenen Aufbewahrungszeitraums möglich ist. Wenn eine Datenbank gelöscht wird, bevor ein Sicherungsvorgang abgeschlossen ist, wird der Löschvorgang möglicherweise mit dem folgenden Fehler blockiert:\n\n`Message database 'backup_restore_db_lkg_native_restore' already exists. Choose a different database name.`          \n          \nUm diesen Fehler zu vermeiden, überprüfen Sie den Zustand des Löschvorgangs, bevor Sie eine Datenbank mit demselben Namen neu erstellen (weitere Informationen finden Sie unter [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azuresqldb-current&preserve-view=true)). Sobald der Vorgangszustand als **Abgeschlossen** angezeigt wird, ist es möglich, eine Datenbank mit demselben Namen WIEDERHERZUSTELLEN oder ZU ERSTELLEN. \n\nIn den folgenden gängigen Anwendungsfällen tritt dieser Fehler wahrscheinlich auf: \n\n*   Mehrere Datenbanken werden gelöscht und kurz darauf mit demselben Namen erneut erstellt.\n  Wenn eine Datenbank gelöscht wird, wird das verbleibende Fragment des Transaktionsprotokolls synchron gesichert, bevor der Löschvorgang abgeschlossen ist, wie in der Abbildung gezeigt: \n\n    ![Sicherung des Protokollfragments](./media/frequently-asked-questions-faq/tail-log-backup.png)  \n\n    Es ist nicht möglich, eine Datenbank mit dem gleichen Namen zu erstellen, bevor das [Protokollfragment gesichert](/sql/relational-databases/backup-restore/tail-log-backups-sql-server) und der Löschvorgang abgeschlossen ist. Aufgrund der sequenziellen Natur von Löschvorgängen werden Datenbanken, die kurz nach der Erstellung gelöscht werden, in eine Warteschlange eingereiht. Dies kann den Prozess des Löschens der Datenbanken verlängern und die Möglichkeit der Erstellung neuer Datenbanken mit demselben Namen verzögern.\n          \n\n*   Eine Datenbank wird wiederhergestellt und gelöscht, bevor eine vollständige Sicherung erstellt wird.\n  Wenn eine Datenbank wiederhergestellt wird, besteht der erste Schritt des Wiederherstellungsprozesses im Erstellen einer neuen vollständigen Sicherung der Datenbank.  Wenn Sie versuchen, eine Datenbank wiederherzustellen, und diese dann sofort löschen, bevor die vollständige Sicherung abgeschlossen ist, können Sie die Datenbank erst löschen und eine weitere Datenbank mit demselben Namen erstellen, wenn die vollständige Sicherung erstellt und der Löschvorgang abgeschlossen ist. Je nach Größe der Datenbank kann die vollständige Sicherung mehrere Stunden dauern. \n"
   - question: >
       Benennungskonventionen
     answer: "### <a name=\"can-a-managed-instance-have-the-same-name-as-a-sql-server-on-premises-instance\"></a>Kann eine verwaltete Instanz über den gleichen Namen wie eine lokale SQL Server-Instanz verfügen?\n\nDie Namensänderung für eine verwaltete Instanz wird nicht unterstützt.\n\n### <a name=\"can-i-change-dns-zone-prefix\"></a>Kann ich das Präfix der DNS-Zone ändern?\n\nJa. Die DNS-Standardzone *.database.windows.net* einer verwalteten Instanz kann geändert werden. \n\nSo verwenden Sie statt der Standardzone eine andere DNS-Zone, z. B. *.contoso.com*: \n- Verwenden Sie „CliConfig“ zum Definieren eines Alias. Weil das Tool nur ein Wrapper für Registrierungseinstellungen ist, kann es auch mithilfe einer Gruppenrichtlinie oder eines Skripts ausgeführt werden.\n- Verwenden Sie *CNAME* mit der Option *TrustServerCertificate=true*.\n"
@@ -66,7 +109,7 @@ sections:
     answer: "### <a name=\"how-can-i-migrate-from-azure-sql-database-single-or-elastic-pool-to-sql-managed-instance\"></a>Wie kann ich eine Azure SQL-Einzeldatenbank oder einen Azure SQL-Pool für elastische Datenbanken zu einer verwalteten Instanz von SQL Managed Instance migrieren?\n\nDie verwaltete Instanz bietet die gleichen Leistungsstufen pro Compute- und Speichergröße wie andere Bereitstellungsoptionen von Azure SQL-Datenbank. Wenn Sie Daten in einer einzelnen Instanz konsolidieren möchten oder einfach eine Funktion ausschließlich in der verwalteten Instanz unterstützt werden soll, können Sie die Daten mithilfe der Export-/Import-Funktion (BACPAC) migrieren. Hier finden Sie weitere Optionen, wofür die SQL-Datenbankmigration zu SQL Managed Instance geeignet wäre: \n- Verwenden der [externen Datenquelle](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210)\n- Verwenden von [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182)\n- Verwenden von [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7)\n\n### <a name=\"how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database\"></a>Wie kann ich meine Instanzdatenbank zu einer einzelnen Azure SQL-Datenbank migrieren?\n\nEine Option ist das [Exportieren einer Datenbank in eine BACPAC-Datei](../database/database-export.md) und das anschließende [Importieren der BACPAC-Datei](../database/database-import.md). Dieser Ansatz wird empfohlen, wenn die Datenbank kleiner als 100 GB ist.\n\n[Transaktionsreplikation](replication-two-instances-and-sql-server-configure-tutorial.md) kann verwendet werden, wenn alle Tabellen in der Datenbank *Primärschlüssel* aufweisen und in der Datenbank keine In-Memory-OLTP-Objekte vorhanden sind.\n\nNative COPY_ONLY-Sicherungen einer verwalteten Instanz können nicht in SQL Server wiederhergestellt werden, da eine verwaltete Instanz eine höhere Datenbankversion als SQL Server aufweist. Weitere Informationen finden Sie unter [Kopiesicherung](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15).\n\n### <a name=\"how-can-i-migrate-my-sql-server-instance-to-sql-managed-instance\"></a>Wie kann ich meine SQL Server-Instanz zu SQL Managed Instance migrieren?\n\nInformationen zum Migrieren Ihrer SQL Server-Instanz finden Sie unter [SQL Server zu Azure SQL Managed Instance: Anleitung zur Migration](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).\n\n### <a name=\"how-can-i-migrate-from-other-platforms-to-sql-managed-instance\"></a>Wie kann ich von anderen Plattformen zu SQL Managed Instance migrieren?\n\nWeitere Informationen zum Migrieren von anderen Plattformen finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/).\n"
   - question: "Wechseln der Hardwaregeneration \n"
     answer: >
-      ### <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>Kann ich für meine verwaltete Instanz online zwischen der Hardwaregeneration Gen 4 und Gen 5 wechseln?
+      ### <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen4-and-gen5-online"></a>Kann ich für meine verwaltete Instanz online zwischen den Hardwaregenerationen Gen4 und Gen5 wechseln?
 
 
       Der automatische Onlinewechsel von Gen4 zu Gen5 ist möglich, wenn die Gen5-Hardware in der Region verfügbar ist, in der Ihre verwaltete Instanz bereitgestellt wurde. In diesem Fall können Sie auf der [Seite mit der Übersicht über das V-Kern-Modell](../database/service-tiers-vcore.md) nachsehen, wie Sie zwischen den Hardwaregenerationen wechseln können.
@@ -75,7 +118,7 @@ sections:
       Dabei handelt es sich um einen Vorgang mit langer Ausführungszeit, da eine neue verwaltete Instanz im Hintergrund bereitgestellt wird und Datenbanken automatisch zwischen der alten und neuen Instanz mit einem schnellen Failover am Ende des Prozesses übertragen werden.
 
 
-      Hinweis: Die Gen4-Hardware wird eingestellt und steht für neue Bereitstellungen nicht mehr zur Verfügung. Alle neuen Datenbanken müssen auf Gen5-Hardware bereitgestellt werden. Der Wechsel von Gen5 zu Gen4 ist ebenfalls nicht möglich.
+      Hinweis: Die Gen4-Hardware wird eingestellt und steht für neue Bereitstellungen nicht mehr zur Verfügung. Alle neuen Datenbanken müssen auf späteren Hardwaregenerationen bereitgestellt werden. Der Wechsel von Gen5 zu Gen4 ist ebenfalls nicht möglich.
   - question: "Leistung \n"
     answer: "### <a name=\"how-can-i-compare-managed-instance-performance-to-sql-server-performance\"></a>Wie kann ich die Managed Instance-Leistung mit der SQL Server-Leistung vergleichen?\n\nAls Ausgangspunkt für einen Leistungsvergleich zwischen der verwalteten Instanz und SQL Server empfiehlt sich der Artikel [Best practices for performance comparison between Azure SQL Managed Instance and SQL Server](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210) (Bewährte Methoden für den Leistungsvergleich zwischen der verwalteten Azure-SQL-Instanz und SQL Server, in englischer Sprache).\n\n### <a name=\"what-causes-performance-differences-between-managed-instance-and-sql-server\"></a>Wodurch entstehen Leistungsunterschiede zwischen Managed Instance und SQL Server?\n\nWeitere Informationen finden Sie unter [Hauptursache für Leistungsunterschiede zwischen SQL Managed Instance und SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/). Weitere Informationen zum Einfluss der Protokolldateigröße auf die Leistung einer universell verwalteten Instanz finden Sie unter [Auswirkung der Protokolldateigröße auf die Leistung einer universell verwalteten Instanz](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).\n\n### <a name=\"how-do-i-tune-performance-of-my-managed-instance\"></a>Wie optimiere ich die Leistung meiner verwalteten Instanz?\n\nSie können die Leistung Ihrer verwalteten Instanz wie folgt optimieren:\n- [Die automatische Optimierung](../database/automatic-tuning-overview.md), die aufgrund einer kontinuierlichen Leistungsoptimierung, die auf künstlicher Intelligenz und maschinellem Lernen basiert, für hohe Leistung und stabile Workloads sorgt.\n- [In-Memory-OLTP](../in-memory-oltp-overview.md), das den Durchsatz und die Latenz bei transaktionalen Verarbeitungsworkloads verbessert und schnellere geschäftliche Erkenntnisse liefert. \n- Anwendung einiger [bewährter Methoden für die Anwendungs- und Datenbankoptimierung](../database/performance-guidance.md#tune-your-database).\n- [Änderung des Verbindungstyps vom Proxy- in den Umleitungsmodus](connection-types-overview.md#changing-connection-type), um eine niedrigere Latenz und einen höheren Durchsatz zu erreichen, wenn Ihre Workload aus vielen kleinen Transaktionen besteht.\n\n### <a name=\"how-can-i-further-tune-performance-of-my-general-purpose-managed-instance\"></a>Wie kann ich die Leistung meiner verwalteten Instanz vom Typ „Universell“ weiter optimieren?\n\nErwägen Sie, die [Größe der Datendateien zu erhöhen](https://techcommunity.microsoft.com/t5/azure-sql/increase-data-file-size-to-improve-hammerdb-workload-performance/ba-p/823337), um auf einer universellen Instanz die Leistung zu verbessern. Informationen zur Optimierung der Speicherleistung auf einer universellen Instanz finden Sie unter [Bewährte Speichermethoden für den Tarif „Universell“](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525).\n\n### <a name=\"my-query-duration-is-too-long-how-can-i-analyze-wait-statistics-on-my-managed-instance\"></a>Meine Abfragedauer ist zu lang. Wie kann ich die Wartestatistik auf meiner verwalteten Instanz analysieren?\n\nInformationen hierzu finden Sie unter [Analysieren der Wartestatistik unter SQL Managed Instance](/archive/blogs/sqlserverstorageengine/analyzing-wait-statistics-on-managed-instance). Bei einer Wartestatistik handelt es sich um Informationen, mit denen Sie ggf. besser verstehen können, warum die Abfragedauer lang ist. Darüber hinaus können Sie hiermit die Abfragen identifizieren, die sich im Datenbankmodul im Wartezustand befinden.\n     \n"
   - question: >
@@ -210,7 +253,7 @@ sections:
 
       - Aktivieren Sie [SQL-Überwachung](/sql/relational-databases/security/auditing/sql-server-audit-database-engine), und integrieren Sie sie in Warnungsmechanismen.
 
-      - Aktivieren Sie [Bedrohungserkennung](../database/threat-detection-configure.md) in der [Azure Defender für SQL](../database/azure-defender-for-sql.md)-Suite.
+      - Aktivieren Sie [Bedrohungserkennung](../database/threat-detection-configure.md) in der [Microsoft Defender für SQL](../database/azure-defender-for-sql.md)-Suite.
   - question: >
       DNS
     answer: >
@@ -328,7 +371,7 @@ sections:
       ### <a name="where-can-i-leave-my-ideas-for-sql-managed-instance-improvements"></a>Wohin kann ich meine Ideen für Verbesserungen von SQL Managed Instance senden?
 
 
-      Sie können Ihre Stimme für ein neues Feature von SQL Managed Instance abgeben oder eine neue Idee für eine Verbesserung im [Feedbackforum von SQL Managed Instance](https://feedback.azure.com/forums/915676-sql-managed-instance) zur Abstimmung bereitstellen. Auf diese Weise können Sie an der Produktentwicklung mitwirken und uns bei der Priorisierung von potenziellen Verbesserungen unterstützen.
+      Sie können Ihre Stimme für ein neues Feature von SQL Managed Instance abgeben oder eine neue Idee für eine Verbesserung im [Feedbackforum von SQL Managed Instance](https://feedback.azure.com/d365community/forum/a99f7006-3425-ec11-b6e6-000d3a4f0f84) zur Abstimmung bereitstellen. Auf diese Weise können Sie an der Produktentwicklung mitwirken und uns bei der Priorisierung von potenziellen Verbesserungen unterstützen.
 
 
       ### <a name="how-can-i-create-azure-support-request"></a>Wie kann ich eine Azure-Supportanfrage erstellen?

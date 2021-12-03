@@ -12,6 +12,8 @@
       href: whats-new.md
     - name: Benutzerdefinierte Fragen und Antworten (Vorschau)
       href: custom-question-answering.md
+    - name: Migrieren zu benutzerdefinierten Fragen und Antworten
+      href: ../language-service/question-answering/how-to/migrate-qnamaker.md?context=/azure/cognitive-services/qnamaker/context/context
 - name: Schnellstarts
   items:
     - name: Erstellen und Abfragen einer Wissensdatenbank
@@ -21,7 +23,7 @@
         - name: Clientbibliotheken oder REST-API
           href: Quickstarts/quickstart-sdk.md
 - name: Beispiele
-  href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face&terms=qna-maker'
+  href: /samples/browse/?products=azure&term=face&terms=qna-maker
 - name: Verantwortungsvolle Verwendung von KI
   items:
     - name: Transparenzhinweise
@@ -64,9 +66,6 @@
           href: How-To/edit-knowledge-base.md
         - name: Hinzufügen von Metadatentags
           href: Quickstarts/add-question-metadata-portal.md
-        - name: Hinzufügen von Folgeaufforderungen
-          href: How-To/multiturn-conversation.md
-          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
         - name: Ändern der Standardantwort
           href: How-To/change-default-answer.md
     - name: Abfragen einer Wissensdatenbank
@@ -81,6 +80,8 @@
     - name: Verwenden der vordefinierten API zum Abfragen von Text
       href: How-to/using-prebuilt-api.md
       displayName: 'prebuilt, query, answer, text, prebuilt api, ingest, no storage, call, response'
+    - name: Konversationen mit Mehrfachdurchläufen
+      href: how-to/multi-turn.md
     - name: Erhalten von Vorschlägen für alternative Fragen über aktives Lernen
       href: How-to/improve-knowledge-base.md
       displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
@@ -104,8 +105,6 @@
       href: Concepts/data-sources-and-content.md
     - name: "Rollenbasierte Zugriffssteuerung von Azure (Azure\_RBAC)"
       href: Concepts/role-based-access-control.md
-    - name: Präzise Antworten
-      href: reference-precise-answering.md
     - name: Aktivieren des Features für aktives Lernen
       href: How-To/use-active-learning.md
     - name: Einstufungsprozess
@@ -128,15 +127,15 @@
     - name: Anpassen Ihres Bots für häufig gestellte Fragen
       items:
         - name: Erstellen strukturierter Unterhaltungen mit mehrteiligen Eingabeaufforderungen
-          href: Tutorials/guided-conversations.md
+          href: ../language-service/question-answering/tutorials/guided-conversations.md?context=/azure/cognitive-services/qnamaker/context/context
         - name: Hinzufügen mehrerer Domänen zu einem Bot
-          href: Tutorials/create-faq-bot-for-multiple-domains.md
+          href: ../language-service/question-answering/tutorials/multiple-domains.md?context=/azure/cognitive-services/qnamaker/context/context
         - name: Erweitern von Wissensdatenbanken mit aktivem Lernen
-          href: Tutorials/active-learning.md
-        - name: Hinzufügen von Wissensdatenbanken in mehreren Sprachen
-          href: Tutorials/multiple-languages.md
+          href: ../language-service/question-answering/tutorials/active-learning.md?context=/azure/cognitive-services/qnamaker/context/context
         - name: Hinzufügen von Synonymen zur Verbesserung der Relevanz
-          href: Tutorials/adding-synonyms.md
+          href: ../language-service/question-answering/tutorials/adding-synonyms.md?context=/azure/cognitive-services/qnamaker/context/context
+        - name: Hinzufügen von Wissensdatenbanken in mehreren Sprachen
+          href: ../language-service/question-answering/tutorials/multiple-languages.md?context=/azure/cognitive-services/qnamaker/context/context
 - name: Verweis
   items:
     - name: REST-API

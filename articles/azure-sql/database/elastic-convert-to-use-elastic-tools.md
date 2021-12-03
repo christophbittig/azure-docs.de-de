@@ -11,12 +11,12 @@ author: scoriani
 ms.author: scoriani
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: acb8a03f4cbd719f348ae5a65974b1c326b10604
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c6a2506ec92580c949deef98c53d42b06bc37054
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131006276"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473602"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrieren vorhandener Datenbanken für die Aufskalierung
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -156,9 +156,9 @@ Nach der Einrichtung können Sie die Clientbibliothek für elastische Datenbanke
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Laden Sie die PowerShell-Skripts auf der Seite [Azure SQL Database – Elastic Database tools scripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db) (Azure SQL-Datenbank – Skripts für Tools für elastische Datenbanken) herunter.
+Laden Sie die PowerShell-Skripts von [Azure Skripts für Tools für elastische Datenbanken](https://github.com/Azure/elastic-db-tools/tree/master/Samples/PowerShell) (Azure Elastic Database tools scripts) herunter.
 
-Die Tools finden Sie auch auf GitHub: [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
+Die Client-Bibliothek für Tools für elastische Datenbanken ist unter GitHub [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools) verfügbar.
 
 Verschieben Sie Daten mithilfe des Split-Merge-Tools in das Modell mit mehreren Mandanten bzw. aus diesem Modell in ein Modell mit einem einzelnen Mandanten. Siehe [Split-Merge-Tool](elastic-scale-configure-deploy-split-and-merge.md).
 

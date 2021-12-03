@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: c72ce281697b23092530571114dafb3aece5d0d1
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b621616790394df54d312af86719b24ff90a59c6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990081"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068149"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookieeinstellungen für den Zugriff auf lokale Anwendungen in Azure Active Directory
 
@@ -40,7 +40,7 @@ Ab Version 80 des Chrome-Browsers und letztendlich in Browsern, die Chromium nut
 
 Diese Änderungen an den Anwendungsproxycookies werden im Laufe der nächsten Wochen vor der Veröffentlichung von Chrome 80 eingeführt.
 
-Wenn Ihre Back-End-Anwendung Cookies enthält, die in einem Drittanbieter-Kontext verfügbar sein müssen, ist es außerdem erforderlich, dies explizit anzugeben, indem Sie Ihre Anwendung so ändern, dass „SameSite=None“ für diese Cookies verwendet wird. Der Anwendungsproxy übersetzt den Header „Set-Cookie“ in seine URLs und berücksichtigt die Einstellungen für diese Cookies, die von der Back-End-Anwendung festgelegt wurden.
+Wenn Ihre Back-End-Anwendung Cookies enthält, die in einem Drittanbieter-Kontext verfügbar sein müssen, ist es außerdem erforderlich, dies explizit anzugeben, indem Sie Ihre Anwendung so ändern, dass „SameSite=None“ für diese Cookies verwendet wird. Der Anwendungsproxy übersetzt den Set-Cookie-Header in seine URLs und berücksichtigt die Einstellungen für diese Cookies, die von der Back-End-Anwendung festgelegt wurden.
 
 
 

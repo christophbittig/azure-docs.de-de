@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 09/10/2021
-ms.openlocfilehash: 7dcf326ea0834bdf644e2b717517f67d41d330e0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 83da2d9c1c242e49aac28067d1c315e1e382f2ef
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743275"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063644"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Freigeben und Empfangen von Daten aus Azure SQL-Datenbank und Azure Synapse Analytics
 
@@ -364,9 +364,13 @@ Bei SQL-Quelltabellen mit dynamischer Datenmaskierung werden Daten auf Empfänge
 ## <a name="sql-snapshot-performance"></a>Leistung von SQL-Momentaufnahmen
 Die Leistung von SQL-Momentaufnahmen wird durch eine Reihe von Faktoren beeinflusst. Es wird immer empfohlen, eigene Leistungstests durchzuführen. Nachfolgend sind einige Beispielfaktoren aufgerührt, die sich auf die Leistung auswirken.
 
+* Eingabe/Ausgabe-Vorgänge pro Sekunde (IOPS) und Bandbreite des Quell- oder Zieldatenspeichers.
 * Hardwarekonfiguration (z. B. virtuelle Kerne, Arbeitsspeicher, DWU) des SQL-Quell- und Zieldatenspeichers. 
-* Gleichzeitiger Zugriff auf Quell- und Zieldatenspeicher. Wenn Sie mehrere Tabellen und Sichten aus demselben SQL-Datenspeicher gemeinsam nutzen oder mehrere Tabellen und Sichten im gleichen SQL-Datenspeicher empfangen, wirkt sich dies auf die Leistung aus.   
-* Standort der Quell- und Zieldatenspeicher. 
+* Gleichzeitiger Zugriff auf Quell- und Zieldatenspeicher. Wenn Sie mehrere Tabellen und Sichten aus demselben SQL-Datenspeicher gemeinsam nutzen oder mehrere Tabellen und Sichten im gleichen SQL-Datenspeicher empfangen, wirkt sich dies auf die Leistung aus.
+* Netzwerkbandbreite zwischen den Quell- und Zieldatenspeichern sowie Speicherort der Quell- und Zieldatenspeicher.
+* Größe der freigegebenen Tabellen und Sichten. Die Freigabe von SQL-Momentaufnahmen erstellt eine vollständige Kopie der gesamten Tabelle. Wenn die Tabelle im Laufe der Zeit größer wird, dauert die Momentaufnahme länger. 
+
+Bei großen Tabellen, in denen inkrementelle Updates gewünscht sind, können Sie Updates in das Speicherkonto exportieren und die Funktion für die inkrementelle Freigabe des Speicherkontos nutzen, um die Leistung zu beschleunigen.
 
 ## <a name="troubleshoot-sql-snapshot-failure"></a>Problembehandlung für Fehler bei der SQL-Momentaufnahme
 Die häufigste Ursache für einen Fehler bei der Momentaufnahme ist, dass Data Share nicht über die Berechtigung für den Quell- oder Zieldatenspeicher verfügt. Um Data Share die Berechtigung für Quell- oder Zielinstanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) zu erteilen, müssen Sie das bereitgestellte SQL-Skript ausführen, wenn Sie eine Verbindung mit der SQL-Datenbank mithilfe der Azure Active Directory-Authentifizierung herstellen. Informationen zur Problembehandlung für weitere Fehler bei der SQL-Momentaufnahme finden Sie unter [Problembehandlung für Fehler bei Momentaufnahme](data-share-troubleshoot.md#snapshots).

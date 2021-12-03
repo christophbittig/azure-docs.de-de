@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4113f9743c92ab5809977f681e35d41b759fe599
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: faed36e348a8716e1023705ca077e892a24ac2d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130217333"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007237"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Google-Konto mithilfe von Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ ms.locfileid: "130217333"
 
 ## <a name="create-a-google-application"></a>Erstellen einer Google-Anwendung
 
-Wenn Sie die Anmeldung für Benutzer mit einem Google-Konto in Azure Active Directory B2C (Azure AD B2C) aktivieren möchten, müssen Sie eine Anwendung in der [Google Developers Console](https://console.developers.google.com/) erstellen. Weitere Informationen finden Sie unter [Einrichten von OAuth 2.0](https://support.google.com/googleapi/answer/6158849). Wenn Sie noch über kein Google-Konto verfügen, können Sie sich unter [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) registrieren.
+Wenn Sie die Anmeldung für Benutzer mit einem Google-Konto in Azure Active Directory B2C (Azure AD B2C) aktivieren möchten, müssen Sie eine Anwendung in der [Google Developers Console](https://console.developers.google.com/) erstellen. Weitere Informationen finden Sie unter [Einrichten von OAuth 2.0](https://support.google.com/googleapi/answer/6158849). Wenn Sie noch über kein Google-Konto verfügen, können Sie sich unter [`https://accounts.google.com/signup`](https://accounts.google.com/signup) registrieren.
 
 1. Melden Sie sich bei der [Google Developers Console](https://console.developers.google.com/) mit den Anmeldeinformationen für Ihr Google-Konto an.
 1. Wählen Sie in der oberen linken Ecke der Seite die Projektliste aus, und wählen Sie dann **Neues Projekt** aus.
@@ -197,4 +197,4 @@ Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie das [Google-Token an Ihre Anwendung übergeben](idp-pass-through-user-flow.md).
+Lernen Sie, wie Sie das [Google-Token an Ihre Anwendung übergeben](idp-pass-through-user-flow.md).

@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/16/2021
-ms.openlocfilehash: 986bc72d135cbbfceeb4b7e60556673a8dd8edbc
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 757290560f921ee87cf9454037a4f8f199283f29
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275846"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449486"
 ---
 # <a name="add-scoring-profiles-to-a-search-index"></a>Hinzufügen von Bewertungsprofilen zu einem Suchindex
 
@@ -206,7 +206,7 @@ Verwenden Sie Funktionen, wenn einfache relative Gewichtungen nicht ausreichen o
 
 | Funktion | BESCHREIBUNG |
 |-|-|
-| "freshness" | Höhere Gewichtung auf Basis der Werte in einem datetime-Feld (Edm.DataTimeOffset). Diese Funktion verfügt über ein `boostingDuration`-Attribut, sodass Sie einen Wert für die Zeitspanne angeben können, in der die höhere Gewichtung erfolgt. | 
+| "freshness" | Höhere Gewichtung auf Basis der Werte in einem DateTime-Feld (Edm.DataTimeOffset). Diese Funktion verfügt über ein `boostingDuration`-Attribut, sodass Sie einen Wert für die Zeitspanne angeben können, in der die höhere Gewichtung erfolgt. | 
 | "magnitude" | Höhere Gewichtung auf Basis der Größe eines numerischen Werts. Szenarien, die diese Funktion erforderlich machen, umfassen die Verstärkung nach Gewinnspanne, Höchstpreis, Mindestpreis oder Downloadanzahl. Diese Funktion kann nur mit Edm.Double- und Edm.Int-Feldern verwendet werden. Für die magnitude-Funktion können Sie den Bereich umkehren, wenn Sie das umgekehrte Muster anwenden möchten (z. B. um preiswerteren Artikeln eine höhere Relevanz als teureren zuzuweisen). Bei einem Preisbereich von 100 bis 1 USD würden Sie "boostingRangeStart" auf 100 und "boostingRangeEnd" auf 1 festlegen, um die preiswerteren Artikel höher zu gewichten. | 
 | "distance"  | Höhere Gewichtung auf Basis der Nähe oder des geografischen Standorts. Diese Funktion kann nur mit Edm.GeographyPoint-Feldern verwendet werden. | 
 | "tag"  | Höhere Gewichtung auf Basis von Tags, die sowohl für Suchdokumente als auch für Abfragezeichenfolgen gebräuchlich sind. Tags werden als `tagsParameter` bereitgestellt. Diese Funktion kann nur mit Edm.String- und Collection(Edm.String)-Feldern verwendet werden. | 

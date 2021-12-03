@@ -7,15 +7,19 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2ce8bc5c26eb99ed19578a036a4569829bc44879
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 8f86b7659e3147fcdf4a450820db31c3f72c0b4d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458300"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450968"
 ---
 # <a name="repair-an-automanage-account"></a>Reparieren eines Automanage-Kontos
-Ihr [Azure Automanage-Konto](./automanage-virtual-machines.md#automanage-account) ist der Sicherheitskontext bzw. die Identität, unter dem bzw. unter der die automatisierten Vorgänge ausgeführt werden. Wenn Sie vor kurzem ein Abonnement mit einem Automanage-Konto in einen neuen Mandanten verschoben haben, müssen Sie das Konto neu konfigurieren. Hierzu müssen Sie den Identitätstyp zurücksetzen und die entsprechenden Rollen für das Konto zuweisen.
+
+> [!IMPORTANT]
+> Dieser Artikel ist nur für Computer relevant, die in die frühere Version von Automanage (API-Version 2020-06-30-preview) integriert wurden. Der Status für diese Computer ist **Aktualisierung erforderlich**. 
+
+Ihr Azure Automanage-Konto ist der Sicherheitskontext bzw. die Identität, unter dem bzw. unter der die automatisierten Vorgänge ausgeführt werden. Wenn Sie vor kurzem ein Abonnement mit einem Automanage-Konto in einen neuen Mandanten verschoben haben, müssen Sie das Konto neu konfigurieren. Hierzu müssen Sie den Identitätstyp zurücksetzen und die entsprechenden Rollen für das Konto zuweisen.
 
 ## <a name="step-1-reset-the-automanage-account-identity-type"></a>Schritt 1: Zurücksetzen des Identitätstyps des Automanage-Kontos
 Setzen Sie den Identitätstyp des Automanage-Kontos mithilfe der folgenden ARM-Vorlage (Azure Resource Manager) zurück. Speichern Sie die Datei lokal unter „armdeploy.json“ oder unter einem ähnlichen Namen. Notieren Sie sich Name und Ort Ihres Automanage-Kontos, da es sich bei diesen Angaben um erforderliche Parameter in der ARM-Vorlage handelt.

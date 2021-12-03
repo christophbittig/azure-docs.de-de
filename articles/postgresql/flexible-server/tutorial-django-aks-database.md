@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9c408a0a8b0f278ea75462a9c006b64b9d5601c8
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a1c19100cad65c965c567c93c67db1033a4bba10
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131425328"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136843"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Tutorial: Bereitstellen einer Django-App in AKS mit Azure Database for PostgreSQL – Flexible Server
 
@@ -59,7 +59,7 @@ Die folgende Beispielausgabe zeigt, dass die Ressourcengruppe erfolgreich erstel
 
 ## <a name="create-aks-cluster"></a>Erstellen eines ACS-Clusters
 
-Erstellen Sie mithilfe des Befehls [az aks create](/cli/azure/aks#az_aks_create) einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* mit einem Knoten erstellt. Dieser Schritt dauert einige Minuten.
+Erstellen Sie mithilfe des Befehls [az aks create](/cli/azure/aks#az_aks_create) einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *djangoappcluster* mit einem Knoten erstellt. Dieser Schritt dauert einige Minuten.
 
 ```azurecli-interactive
 az aks create --resource-group django-project --name djangoappcluster --node-count 1 --generate-ssh-keys
@@ -207,7 +207,7 @@ Stellen Sie Ihr Image in [Docker Hub](https://docs.docker.com/get-started/part3/
 >Führen Sie bei Verwendung von Azure Container Registry (ACR) den Befehl ```az aks update``` aus, um das ACR-Konto mit dem AKS-Cluster zu verknüpfen.
 >
 >```azurecli-interactive
->az aks update -n myAKSCluster -g django-project --attach-acr <your-acr-name>
+>az aks update -n djangoappcluster -g django-project --attach-acr <your-acr-name>
 > ```
 >
 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7149d7ac2625eb60a1d0d22253b93b68a99475de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f0519b60d3b02c8312e15861441060ca89ab002
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99592091"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234130"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Verwenden der Azure-Front-End-APIs für die Authentifizierung
 
@@ -20,6 +20,7 @@ In diesem Abschnitt wird die Verwendung der API für Authentifizierung und Sitzu
 > [!CAUTION]
 > Die in diesem Kapitel beschriebenen Funktionen geben intern REST-Aufrufe auf dem Server aus. Wie bei allen REST-Aufrufen bewirkt das zu häufige Senden dieser Befehle, dass der Server eine Drosselung durchführt und schließlich einen Fehler zurückgibt. Der Wert des Members `SessionGeneralContext.HttpResponseCode` lautet in diesem Fall 429 („Zu viele Anforderungen“). Als Faustregel sollte eine Verzögerung von **5–10 Sekunden zwischen nachfolgenden Aufrufen** erfolgen.
 
+Einige Funktionen geben auch Informationen zurück, wenn Sie den Vorgang wiederholen können. `RenderingSessionPropertiesResult.MinimumRetryDelay` gibt beispielsweise an, wie viele Sekunden gewartet werden soll, bevor eine weitere Überprüfung versucht wird. Wenn ein solcher zurückgegebener Wert verfügbar ist, ist dessen Verwendung am besten, da Sie dadurch so oft wie möglich ohne Drosselung Überprüfungen durchführen können.
 
 ## <a name="sessionconfiguration"></a>SessionConfiguration
 

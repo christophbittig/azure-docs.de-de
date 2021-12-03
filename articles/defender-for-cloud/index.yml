@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Dokumentation zu Microsoft Defender for Cloud
+summary: Microsoft Defender for Cloud bietet eine einheitliche Sicherheitsverwaltung und erweiterten Bedrohungsschutz für Hybrid Cloud-Workloads.
+metadata:
+  title: Dokumentation zu Microsoft Defender for Cloud
+  description: Führen Sie die ersten Schritte mit Defender for Cloud aus. Erfahren Sie, wie Sie mithilfe unserer Schnellstarts und Tutorials Ihre Workloads schützen, Risiken begrenzen sowie Angriffe erkennen und darauf reagieren.
+  services: defender-for-cloud
+  author: memildin
+  ms.author: memildin
+  manager: raynew
+  ms.topic: landing-page
+  ms.collection: collection
+  ms.date: 10/21/2021
+  ms.openlocfilehash: fc2ad72084b56df50a4f35da9e7e0f9d5b0d57ab
+  ms.sourcegitcommit: e9e332a512ed615a3c8ad5a11baa21649f14116d
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/24/2021
+  ms.locfileid: "133097697"
+landingContent:
+- title: Informationen zu Defender for Cloud
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind die wichtigsten Funktionen von Defender for Cloud?
+      url: defender-for-cloud-introduction.md
+    - text: Welche Versionen von Windows Server und Linux werden unterstützt?
+      url: security-center-os-coverage.md
+    - text: Wie beginne ich mit der Nutzung von Defender for Cloud?
+      url: get-started.md
+    - text: Was sind Sicherheitsrichtlinien, Initiativen und Empfehlungen?
+      url: security-policy-concept.md
+- title: Auf dem Laufenden bleiben
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Versionshinweise zu Defender for Cloud
+      url: release-notes.md
+    - text: Wichtige bevorstehende Änderungen
+      url: upcoming-changes.md
+    - text: 'Sicherheit in mehreren Clouds: Schützen von AWS-EKS-Clustern'
+      url: defender-for-kubernetes-introduction.md#protect-amazon-elastic-kubernetes-service-clusters
+    - text: Verbinden von AWS-Konten mit Umgebungseinstellungen
+      url: quickstart-onboard-aws.md
+    - text: Sicherheitsrisikobewertung für Bedrohungs- und Sicherheitsrisikoverwaltung
+      url: deploy-vulnerability-assessment-tvm.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Aktivieren von Defender for Cloud für Ihre Abonnements
+      url: get-started.md
+    - text: Aktivieren erweiterter Sicherheitsfeatures
+      url: enable-enhanced-security.md
+    - text: Verbinden von Hybridcomputern und Multi-Cloud-Computern
+      url: quickstart-onboard-machines.md
+    - text: Konfigurieren der automatischen Bereitstellung
+      url: enable-data-collection.md
+    - text: Einrichten von E-Mail-Benachrichtigungen
+      url: configure-email-notifications.md
+- title: Verbessern Ihrer Sicherheitsbewertung
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Grundlegendes zur Sicherheitsbewertung
+      url: secure-score-security-controls.md
+    - text: Optimieren von Sicherheitsempfehlungen
+      url: implement-security-recommendations.md
+    - text: Ausschließen einer Ressource aus einer Empfehlung
+      url: exempt-resource.md
+    - text: Nachverfolgen Ihrer Bewertungen im Zeitverlauf
+      url: custom-dashboards-azure-workbooks.md#use-the-secure-score-over-time-workbook
+- title: Minimieren von Risiken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten des Just-in-Time-Zugriffs
+      url: just-in-time-access-usage.md
+    - text: Einrichten der adaptiven Anwendungssteuerung
+      url: adaptive-application-controls.md
+    - text: Implementieren der adaptiven Netzwerkhärtung
+      url: adaptive-network-hardening.md
+    - text: Verwenden des Workloadschutzes
+      url: workload-protections-dashboard.md

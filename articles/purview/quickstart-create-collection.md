@@ -6,21 +6,16 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: quickstart
-ms.date: 09/27/2021
+ms.date: 11/04/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 47db60e99048d5be58eb1aae6707caa6ae9c4d6e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 5dff616c6fa7ee8e72a932da281935f77db19010
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218779"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853698"
 ---
 # <a name="quickstart-create-a-collection-and-assign-permissions-in-purview"></a>Schnellstart: Erstellen einer Sammlung und Zuweisen von Berechtigungen in Purview
-
-> [!NOTE]
-> Derzeit gilt diese Schnellstartanleitung nur für Azure Purview-Instanzen, die am oder nach dem 18. August 2021 erstellt wurden. Vor dem 18. August erstellte Instanzen können Sammlungen erstellen, aber keine Berechtigungen über diese Sammlungen verwalten. Informationen zum Erstellen einer Sammlung für eine Purview-Instanz, die vor dem 18. August erstellt wurde, finden Sie im [**Leitfaden zu Legacysammlungen**](#legacy-collection-guide) am Ende dieses Artikels.
-> 
-> Alle Legacykonten erhalten in den kommenden Wochen automatisch ein Upgrade. Sie erhalten eine E-Mail-Benachrichtigung, wenn Ihr Purview-Konto aktualisiert wird. Informationen darüber, was sich bei einem Upgrade Ihres Kontos ändert, finden Sie in unserem Leitfaden zum [Upgrade von Konten](concept-account-upgrade.md).
 
 Sammlungen sind das Tool von Azure Purview zum Verwalten des Besitzes und der Zugriffssteuerung für Ressourcen, Quellen und Informationen. Darüber hinaus werden damit Ihre Quellen und Ressourcen in benutzerdefinierten Kategorien strukturiert, um Ihre Verwaltungsoberfläche auf Ihre Daten abzustimmen. In diesem Leitfaden erfahren Sie, wie Sie Ihre erste Sammlung und einen Sammlungsadministrator einrichten, um die Purview-Umgebung für Ihre Organisation vorzubereiten.
 
@@ -96,25 +91,6 @@ Alle zugewiesenen Rollen gelten für Quellen, Ressourcen und andere Objekte inne
     :::image type="content" source="./media/quickstart-create-collection/edit-role-assignments.png" alt-text="Screenshot: Purview Studio-Sammlungsfenster mit ausgewählter Dropdownliste „Rollenzuweisungen bearbeiten“" border="true":::
 
 1. Geben Sie einen Begriff in das Textfeld ein, um nach Benutzern zu suchen, die Sie als Rollenmitglied hinzufügen möchten. Wählen Sie **OK** aus, um die Änderung zu speichern.
-
-## <a name="legacy-collection-guide"></a>Leitfaden zu Legacysammlungen
-
-> [!NOTE]
-> Dieser Leitfaden für Legacysammlungen gilt nur für Purview-Instanzen, die vor dem 18. August 2021 erstellt wurden. Bei Instanzen, die nach diesem Zeitpunkt erstellt wurden, sollten Sie dem obigen Leitfaden folgen.
-
-### <a name="create-a-legacy-collection"></a>Erstellen einer Legacysammlung
-
-1. Wählen Sie im linken Bereich „Data Map“ aus, um die Datenzuordnung zu öffnen. Mithilfe der Zuordnungsansicht können Sie Ihre Sammlungen und die darunter aufgeführten Quellen anzeigen.
-
-    :::image type="content" source="./media/quickstart-create-collection/legacy-collection-view.png" alt-text="Screenshot: Purview Studio-Fenster mit geöffneter Option „Data Map“" border="true":::
-
-1. Wählen Sie **+ Neue Sammlung** aus.
-
-    :::image type="content" source="./media/quickstart-create-collection/legacy-collection-create.png" alt-text="Screenshot: Purview Studio-Fenster mit geöffneter Option „Data Map“ und hervorgehobener Option „+ Neue Sammlung“" border="true":::
-
-1. Geben Sie Ihrer Sammlung einen Namen, und wählen Sie ein übergeordnetes Element oder „Keine“ aus. Klicken Sie auf **Erstellen**. Die Sammlungsinformationen werden in der Datenzuordnung widergespiegelt.
-
-    :::image type="content" source="./media/quickstart-create-collection/legacy-collection-name.png" alt-text="Screenshot: Purview Studio mit dem Popupfenster „Neue Sammlung“" border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

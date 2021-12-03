@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/14/2020
 ms.author: cshoe
-ms.openlocfilehash: 7267e733971b2abed258ca815a010b13938bc2a6
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: b847243543eb8667a38d253e7eaad215af29e7b2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613470"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852333"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrieren von Bindungserweiterungen von Azure Functions
 
@@ -51,6 +51,7 @@ In der folgenden Tabelle werden die derzeit verfügbaren Versionen des Standardb
 | --- | --- | --- |
 | 1.x | `[1.*, 2.0.0)` | Siehe Datei [extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/v1.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json), mit der das Bundle generiert wurde |
 | 2.x | `[2.*, 3.0.0)` | Siehe Datei [extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/v2.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json), mit der das Bundle generiert wurde |
+| 3.x | `[3.3.0, 4.0.0)` | Siehe Datei [extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/v3.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json), mit der das Bundle generiert wurde |
 
 > [!NOTE]
 > Sie können zwar in der Datei „host.json“ einen benutzerdefinierten Versionsbereich angeben, es wird aber empfohlen, einen Versionswert aus dieser Tabelle zu verwenden.
@@ -92,7 +93,7 @@ Verwendet Ihre Funktions-App Bindungen, die von Core Tools nicht erkannt werden,
 Verwenden Sie den folgenden Befehl, um ein bestimmtes Erweiterungspaket mit einer bestimmten Version zu installieren (in diesem Fall die Speichererweiterung):
 
 ```command
-func extensions install --package Microsoft.Azure.WebJobs.Extensions.Storage --version 4.0.2
+func extensions install --package Microsoft.Azure.WebJobs.Extensions.Storage --version 5.0.0
 ```
 
 Weitere Informationen finden Sie unter dem [`func extensions install`-Befehl](functions-core-tools-reference.md#func-extensions-install).

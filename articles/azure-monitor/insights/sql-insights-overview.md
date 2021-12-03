@@ -4,13 +4,13 @@ description: Übersicht über SQL Insights in Azure Monitor
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/15/2021
-ms.openlocfilehash: 4dd60b3cf5a0e4ff6398a4f8304d24a1d910ad46
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/10/2021
+ms.openlocfilehash: 2b66fe7d268fbb2ad044d0ecc4a5bf0fff5cd17e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130252742"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297789"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>Überwachen Ihrer SQL-Bereitstellungen mit SQL Insights (Vorschau)
 Bei SQL Insights handelt es sich um eine umfassende Lösung zur Überwachung jeglichem Produkt der [Azure SQ- Familie](../../azure-sql/index.yml). SQL Insights verwendet [dynamische Verwaltungssichten](../../azure-sql/database/monitoring-with-dmvs.md), um die Daten offenzulegen, die Sie zur Überwachung der Integrität, zur Diagnose von Problemen und zur Leistungsoptimierung benötigen.  
@@ -52,7 +52,12 @@ SQL Insights bietet keine oder nur eingeschränkte Unterstützung für Folgendes
 - **Sekundäre Replikate**: Metriken können nur für ein einzelnes sekundäres Replikat pro Datenbank erfasst werden. Wenn eine Datenbank über mehrere sekundäre Replikate verfügt, kann nur ein Replikat überwacht werden.
 - **Authentifizierung mit Azure Active Directory**: Die einzige unterstützte [Authentifizierungs-](../../azure-sql/database/logins-create-manage.md#authentication-and-authorization)Methode für die Überwachung ist die SQL-Authentifizierung. Für SQL Server unter Azure Virtual Machines wird Authentifizierung über Active Directory auf einem benutzerdefinierten Domänencontroller nicht unterstützt.  
 
+## <a name="regional-availability"></a>Regionale Verfügbarkeit
+
+SQL Einblicke sind in allen Azure-Regionen verfügbar, in denen Azure Monitor [verfügbar](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) ist, mit Ausnahme von Azure Government und nationalen Clouds.
+
 ## <a name="opening-sql-insights"></a>Öffnen von SQL Insights
+
 So öffnen Sie SQL Insights:
 
 1. Navigieren Sie im Azure-Portal zum Menü **Azure Monitor**.

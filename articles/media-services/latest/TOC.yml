@@ -371,9 +371,10 @@
               displayName: 'trusted storage, storage, access, storage access, security'
         - name: Netzwerksicherheit
           items:
-            - name: Erstellen eines Media Services- und Speicherkontos mit einem privaten Link
-              href: security-private-link-how-to.md
-              displayName: 'security, private link, links, firewall, storage account, storage, private, links, secure'
+            - name: Private Endpunktverbindungen
+              href: security-private-link-connect-private-endpoint-concept.md
+            - name: Private Link mit Azure Media Services
+              href: security-private-link-concept.md
             - name: Liste zugelassener IP-Adressen für die Schlüsselübermittlung
               href: drm-content-protection-key-delivery-ip-allow.md
               displayName: 'DRM, AES, content key, allow list, IP, whitelist, access control, IP allow list, IP restriction, key delivery, license delivery, AES Key, AES-128, common encryption, security, secure, protect, encrypt'
@@ -621,8 +622,10 @@
               href: ../../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md
         - name: Netzwerksicherheit
           items:
-            - name: Verwenden von Private Link mit einem Medien- und Speicherkonto
-              href: security-private-link-how-to.md
+            - name: Verwenden einer Private Link-Instanz mit einem Streamingendpunkt
+              href: security-private-link-streaming-endpoint-how-to.md
+            - name: Verwenden von Private Link mit einer ARM-Vorlage
+              href: security-private-link-arm-how-to.md
               displayName: 'security, private link, links, firewall, storage account, storage, private, links, secure'
         - name: Sicheres Streaming
           items:
@@ -701,7 +704,7 @@
       displayName: 'Swagger, OpenAPI, open api, rest, rest reference, postman'
     - name: SDKs/Tools
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: /cli/azure/install-azure-cli
           displayName: 'CLI, command line, install cli, use cli, how to cli, cli how to, cli install, azure cli, get started'
         - name: .NET

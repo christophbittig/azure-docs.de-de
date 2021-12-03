@@ -13,12 +13,12 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 7ff61811e8b736f8f6d104a253cfe5dc5e76c428
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 437de129cec6b8ef6f8d9ca572b18c2a181295b3
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771361"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133647"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Initialisieren von Clientanwendungen mithilfe von MSAL.NET
 Dieser Artikel beschreibt die Initialisierung öffentlicher und vertraulicher Clientanwendungen mithilfe der Microsoft Authentication Library für .NET (MSAL.NET).  Weitere Informationen zu Clientanwendungstypen finden Sie unter [Öffentliche und vertrauliche Clientanwendungen](msal-client-applications.md).
@@ -100,7 +100,7 @@ Folgende Modifizierer können Sie sowohl für einen öffentlichen als auch einen
 
 |Modifizierer | BESCHREIBUNG|
 |--------- | --------- |
-|`.WithAuthority()` 7 Außerkraftsetzungen | Legt die Standardautorität der Anwendung auf eine Azure AD-Autorität fest, mit der Möglichkeit zur Auswahl der Azure-Cloud, der Zielgruppe, des Mandanten (Mandanten-ID oder Domänenname) oder mit direkter Angabe des Autoritäts-URI.|
+|[`.WithAuthority()`](/dotnet/api/microsoft.identity.client.abstractapplicationbuilder-1.withauthority)  | Legt die Standardautorität der Anwendung auf eine Azure AD-Autorität fest, mit der Möglichkeit zur Auswahl der Azure-Cloud, der Zielgruppe, des Mandanten (Mandanten-ID oder Domänenname) oder mit direkter Angabe des Autoritäts-URI.|
 |`.WithAdfsAuthority(string)` | Legt die Standardautorität der Anwendung auf eine AD FS-Autorität fest.|
 |`.WithB2CAuthority(string)` | Legt die Standardautorität der Anwendung auf eine Azure AD B2C-Autorität fest.|
 |`.WithClientId(string)` | Setzt die Client-ID außer Kraft.|

@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1ee521cdde76284c09f6bf34ad7945e188ee1c
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: e386add0cab29ed0570f3b0b72d6e34cbb363849
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042426"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292559"
 ---
 # <a name="azure-active-directory-security-operations-for-user-accounts"></a>Azure Active Directory-Sicherheitsvorgänge für Benutzerkonten
 
@@ -91,13 +91,13 @@ Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien:
 
 Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- (durch Trennzeichen getrennte Werte) oder JSON-Dateien (JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen in andere Tools, die eine umfassendere Automatisierung von Überwachung und Benachrichtigungen ermöglichen:
 
-* **[Azure Sentinel](../../sentinel/overview.md)** : ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
+* **[Microsoft Sentinel](../../sentinel/overview.md)** : Ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
 
 * **[Azure Monitor](../../azure-monitor/overview.md)** : ermöglicht die automatisierte Überwachung verschiedener Bedingungen und entsprechende Warnungen. Damit können Arbeitsmappen erstellt oder verwendet werden, um Daten aus verschiedenen Quellen zu kombinieren.
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) mit Integration in ein SIEM-System**- [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme wie Splunk, ArcSight, QRadar und Sumo Logic integriert](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) werden.
 
-* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)** : Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps. 
+* **[Microsoft Defender-für-Cloud-Apps](/cloud-app-security/what-is-cloud-app-security)** : Ermöglichen Ihnen die Erkennung und Verwaltung von Apps, die Steuerung von Apps und Ressourcen sowie die Überprüfung der Konformität Ihrer Cloud-Apps. 
 
 Ein Großteil der Überwachung und zugehörigen Warnungen hängt von den Auswirkungen Ihrer Richtlinien für bedingten Zugriff ab. Sie können die Arbeitsmappe [Erkenntnisse und Berichterstellung zum bedingten Zugriff](../conditional-access/howto-conditional-access-insights-reporting.md) verwenden, um die Auswirkungen einer oder mehrerer Richtlinien für bedingten Zugriff auf Ihre Anmeldungen sowie die Ergebnisse von Richtlinien, einschließlich Gerätestatus, zu untersuchen. Diese Arbeitsmappe bietet Ihnen die Möglichkeit, eine Zusammenfassung der Auswirkungen anzuzeigen und die Auswirkungen über einen bestimmten Zeitraum zu ermitteln. Sie können mithilfe der Arbeitsmappe auch die Anmeldungen eines bestimmten Benutzers untersuchen. 
 
@@ -273,11 +273,11 @@ Die folgenden Einträge sind nach Auswirkung und Schweregrad in der Reihenfolge 
 | - |- |- |- |- |
 | Betrugswarnungen bei mehrstufiger Authentifizierung (Multi-Factor Authentication, MFA).| Hoch| Azure AD-Anmeldungsprotokoll| Status = fehlgeschlagen<br>- und -<br>Details = MFA verweigert<br>| Überwachen und bei jedem Eintrag warnen. |
 | Fehlgeschlagene Authentifizierungen aus Ländern, in denen Sie nicht tätig sind.| Medium| Azure AD-Anmeldungsprotokoll| Ort = \<unapproved location\>| Überwachen und bei jedem Eintrag warnen. |
-| Fehlgeschlagene Authentifizierungen für Legacy- oder nicht verwendete Protokolle.| Medium| Azure AD-Anmeldungsprotokoll| Status = Fehler<br>- und -<br>Client-App = andere Clients, POP, IMAP, MAPI, SMTP, ActiveSync| Überwachen und bei jedem Eintrag warnen. |
+| Fehlgeschlagene Authentifizierungen für Legacy- oder nicht verwendete Protokolle.| Medium| Azure AD-Anmeldeprotokoll| Status = Fehler<br>- und -<br>Client-App = andere Clients, POP, IMAP, MAPI, SMTP, ActiveSync| Überwachen und bei jedem Eintrag warnen. |
 | Fehler aufgrund von Blockierung durch Zertifizierungsstelle.| Medium| Azure AD-Anmeldungsprotokoll| Fehlercode = 53003 <br>- und -<br>Fehlergrund = von Zertifizierungsstelle blockiert| Überwachen und bei jedem Eintrag warnen. |
 | Vermehrte fehlgeschlagene Authentifizierungen beliebiger Art.| Medium| Azure AD-Anmeldungsprotokoll| Erfassen Sie die Zunahme von Fehlern in allen Bereichen. Beispiel: die Gesamtanzahl der Fehler heute ist >10 % als am gleichen Tag der Vorwoche.| Wenn Sie keinen Schwellenwert festgelegt haben, überwachen und warnen Sie, wenn Fehler um 10 % oder mehr zunehmen. |
 | Die Authentifizierung erfolgt zu Zeiten und Tagen der Woche, an denen in Ländern kein normaler Geschäftsbetrieb herrscht.| Niedrig| Azure AD-Anmeldungsprotokoll| Erfassen Sie die interaktive Authentifizierung, die außerhalb der normalen Geschäftstage/-zeiten erfolgt. <br>Status = Erfolg<br>- und -<br>Ort = \<location\><br>- und -<br>Tag/Uhrzeit = \<not normal working hours\>| Überwachen und bei jedem Eintrag warnen. |
-| Konto für Anmeldungen deaktiviert/blockiert| Niedrig| Azure AD-Anmeldungsprotokoll| Status = Fehler<br>- und -<br>Fehlercode = 50057, Das Benutzerkonto ist deaktiviert.| Dies kann darauf hindeuten, dass jemand versucht, sich Zugriff auf ein Konto zu verschaffen, nachdem er eine Organisation verlassen hat. Obwohl das Konto blockiert ist, ist es dennoch wichtig, diese Aktivität zu protokollieren und eine Warnung auszugeben. |
+| Konto für Anmeldungen deaktiviert/blockiert| Niedrig| Azure AD-Anmeldeprotokoll| Status = Fehler<br>- und -<br>Fehlercode = 50057, Das Benutzerkonto ist deaktiviert.| Dies kann darauf hindeuten, dass jemand versucht, sich Zugriff auf ein Konto zu verschaffen, nachdem er eine Organisation verlassen hat. Obwohl das Konto blockiert ist, ist es dennoch wichtig, diese Aktivität zu protokollieren und eine Warnung auszugeben. |
 
 
 ### <a name="monitoring-for-successful-unusual-sign-ins"></a>Überwachung auf erfolgreiche ungewöhnliche Anmeldungen

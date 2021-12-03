@@ -8,15 +8,15 @@ ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/29/2021
+ms.date: 10/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: c478744bc960a90d8d84d3e51bd1cd9d8bb3719e
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 9d47a19e4890ac6e81a86aeb04e6a139be555599
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657871"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061190"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>Schützen von Azure Machine Learning-Arbeitsbereichsressourcen mit virtuellen Netzwerken (VNets)
@@ -37,7 +37,7 @@ Schützen Sie Arbeitsbereichsressourcen und Compute-Umgebungen von Azure Machine
 
 In diesem Artikel wird vorausgesetzt, dass Sie mit den folgenden Themen vertraut sind:
 + [Virtuelle Azure-Netzwerke](../virtual-network/virtual-networks-overview.md)
-+ [IP-Netzwerke](../virtual-network/public-ip-addresses.md)
++ [IP-Netzwerke](../virtual-network/ip-services/public-ip-addresses.md)
 + [Azure Machine Learning-Arbeitsbereich mit privatem Endpunkt](how-to-configure-private-link.md)
 + [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/network-security-groups-overview.md):
 + [Netzwerkfirewalls](../firewall/overview.md)
@@ -50,13 +50,15 @@ In der folgenden Tabelle sehen Sie in einer Gegenüberstellung, wie Dienste mit 
 | Szenario | Arbeitsbereich | Zugeordnete Ressourcen | Trainingscompute-Umgebung | Rückschlusscompute-Umgebung |
 |-|-|-|-|-|-|
 |**Kein virtuelles Netzwerk**| Öffentliche IP-Adresse | Öffentliche IP-Adresse | Öffentliche IP-Adresse | Öffentliche IP-Adresse |
-|**Sichere Ressourcen in einem virtuellen Netzwerk**| Private IP-Adresse (privater Endpunkt) | Öffentliche IP-Adresse (Dienstendpunkt) <br> **oder** <br> Private IP-Adresse (privater Endpunkt) | Öffentliche IP-Adresse | Private IP-Adresse  | 
+|**Öffentlicher Arbeitsbereich, alle anderen Ressourcen in einem virtuellen Netzwerk** | Öffentliche IP-Adresse | Öffentliche IP-Adresse (Dienstendpunkt) <br> **oder** <br> Private IP-Adresse (privater Endpunkt) | Private IP-Adresse | Private IP-Adresse  |
+|**Sichere Ressourcen in einem virtuellen Netzwerk**| Private IP-Adresse (privater Endpunkt) | Öffentliche IP-Adresse (Dienstendpunkt) <br> **oder** <br> Private IP-Adresse (privater Endpunkt) | Private IP-Adresse | Private IP-Adresse  | 
 
 * **Arbeitsbereich**: Erstellen Sie einen privaten Endpunkt für Ihren Arbeitsbereich. Der private Endpunkt verbindet den Arbeitsbereich über mehrere private IP-Adressen mit dem VNET.
+    * **Öffentlicher Zugriff:** Sie können optional den öffentlichen Zugriff für einen geschützten Arbeitsbereich aktivieren.
 * **Zugeordnete Ressource**: Stellen Sie mithilfe von Dienstendpunkten oder privaten Endpunkten eine Verbindung mit Arbeitsbereichsressourcen wie Azure Storage oder Azure Key Vault her. Verwenden Sie für Azure Container Services einen privaten Endpunkt.
     * **Dienstendpunkte** geben die Identität Ihres virtuellen Netzwerks gegenüber dem Azure-Dienst an. Nachdem Sie Dienstendpunkte in Ihrem virtuellen Netzwerk aktiviert haben, können Sie eine virtuelle Netzwerkregel hinzufügen, um die Azure-Dienstressourcen in Ihrem virtuellen Netzwerk zu schützen. Dienstendpunkte nutzen öffentliche IP-Adressen.
     * **Private Endpunkte** sind Netzwerkschnittstellen, die das Herstellen einer sicheren Verbindung mit einem Dienst gestatten, der über Private Link betrieben wird. Ein privater Endpunkt verwendet eine private IP-Adresse in Ihrem VNET und bindet den Dienst so effektiv in das VNET ein.
-* **Trainingscomputezugriff**: Hiermit greifen Sie über öffentliche IP-Adressen sicher auf Computeziele zu, die zu Trainingszwecken verwendet werden, wie beispielsweise eine Azure Machine Learning Compute-Instanz oder einen Azure Machine Learning Compute-Cluster. 
+* **Trainingscomputezugriff:** Hiermit greifen Sie über öffentliche IP-Adressen auf Computeziele zu, die zu Trainingszwecken verwendet werden, wie beispielsweise eine Azure Machine Learning Compute-Instanz oder einen Azure Machine Learning Compute-Cluster (Vorschau).
 * **Rückschlusscomputezugriff:** Hiermit greifen Sie mit privaten IP-Adressen auf AKS-Computecluster (Azure Kubernetes Services) zu.
 
 
@@ -67,11 +69,33 @@ In den nächsten Abschnitten wird gezeigt, wie Sie das oben beschriebene Netzwer
 1. [**Rückschlussumgebung schützen**](#secure-the-inferencing-environment)
 1. [**Studio-Funktionalität aktivieren**](#optional-enable-studio-functionality) (optional)
 1. [**Firewalleinstellungen**](#configure-firewall-settings) konfigurieren
-1. [DNS-Namensauflösung](#custom-dns) konfigurieren
+1. [**DNS-Namensauflösung**](#custom-dns) konfigurieren
+
+## <a name="public-workspace-and-secured-resources"></a>Öffentlicher Arbeitsbereich und geschützte Ressourcen
+
+Wenn Sie über das öffentliche Internet auf den Arbeitsbereich zugreifen und gleichzeitig alle zugehörigen Ressourcen in einem virtuellen Netzwerk schützen möchten, führen Sie die folgenden Schritte aus:
+
+1. Erstellen Sie ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md), das die vom Arbeitsbereich verwendeten Ressourcen enthält.
+1. Verwenden Sie __eine__ der folgenden Optionen, um einen öffentlich zugänglichen Arbeitsbereich zu erstellen:
+
+    * Erstellen Sie einen Azure Machine Learning-Arbeitsbereich, der __nicht__ das virtuelle Netzwerk verwendet. Weitere Informationen finden Sie unter [Verwalten von Azure Machine Learning-Arbeitsbereichen](how-to-manage-workspace.md).
+    * Erstellen Sie einen [Arbeitsbereich mit Private Link-Unterstützung](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint), um die Kommunikation zwischen Ihrem VNET und dem Arbeitsbereich zu ermöglichen. [Aktivieren Sie anschließend den öffentlichen Zugriff auf den Arbeitsbereich.](#optional-enable-public-access)
+
+1. Fügen Sie dem virtuellen Netzwerk die folgenden Dienste hinzu. Verwenden Sie dazu _entweder_ einen __Dienstendpunkt__ oder einen __privaten Endpunkt__. Gewähren Sie außerdem vertrauenswürdigen Microsoft-Diensten Zugriff auf diese Dienste:
+
+    | Dienst | Endpunktinformationen | Zulassen vertrauenswürdiger Informationen |
+    | ----- | ----- | ----- |
+    | __Azure Key Vault__| [Dienstendpunkt](../key-vault/general/overview-vnet-service-endpoints.md)</br>[Privater Endpunkt](../key-vault/general/private-link-service.md) | [Erlauben der Umgehung dieser Firewall für vertrauenswürdige Microsoft-Dienste](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
+    | __Azure Storage-Konto__ | [Dienst und privater Endpunkt](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[Privater Endpunkt](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [Gewähren von Zugriff für vertrauenswürdige Azure-Dienste](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure Container Registry__ | [Privater Endpunkt](../container-registry/container-registry-private-link.md) | [Zulassen vertrauenswürdiger Dienste](../container-registry/allow-access-trusted-services.md) |
+
+1. Fügen Sie in den Eigenschaften der Azure Storage-Konten für Ihren Arbeitsbereich Ihre Client-IP-Adresse der Liste mit den zulässigen Adressen in den Firewalleinstellungen hinzu. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken](/azure/storage/common/storage-network-security#configuring-access-from-on-premises-networks).
+
 ## <a name="secure-the-workspace-and-associated-resources"></a>Schützen des Arbeitsbereichs und zugehöriger Ressourcen
 
 Führen Sie die folgenden Schritte aus, um Ihren Arbeitsbereich und zugehörige Ressourcen zu schützen. Danach können Ihre Dienste im virtuellen Netzwerk kommunizieren.
 
+1. Erstellen Sie eine [Azure Virtual Network-Instanz](../virtual-network/virtual-networks-overview.md), die den Arbeitsbereich und andere Ressourcen enthält.
 1. Erstellen Sie einen [Arbeitsbereich mit Private Link-Unterstützung](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint), um die Kommunikation zwischen Ihrem VNET und dem Arbeitsbereich zu ermöglichen.
 1. Fügen Sie dem virtuellen Netzwerk die folgenden Dienste hinzu. Verwenden Sie dazu _entweder_ einen __Dienstendpunkt__ oder einen __privaten Endpunkt__. Gewähren Sie außerdem vertrauenswürdigen Microsoft-Diensten Zugriff auf diese Dienste:
 
@@ -89,7 +113,6 @@ Ausführliche Anweisungen zum Ausführen dieser Schritte finden Sie unter [Secur
 ### <a name="limitations"></a>Einschränkungen
 
 Für das Schützen Ihres Arbeitsbereichs und zugehöriger Ressourcen in einem virtuellen Netzwerk gelten die folgenden Einschränkungen:
-- Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit einem privaten Endpunkt ist in den Regionen vom Typ „Azure China 21Vianet“ nicht verfügbar.
 - Alle Ressourcen müssen sich innerhalb desselben VNET befinden. Sie können allerdings Subnetze innerhalb eines VNET einsetzen.
 
 ## <a name="secure-the-training-environment"></a>Schützen der Trainingsumgebung
@@ -141,17 +164,18 @@ Das folgende Netzwerkdiagramm zeigt einen geschützten Azure Machine Learning-Ar
 ![Architekturdiagramm, das Anfügen eines privaten AKS-Clusters an das virtuelle Netzwerk zeigt. Die AKS-Steuerungsebene wird außerhalb des Kunden-VNET platziert.](./media/how-to-network-security-overview/secure-inferencing-environment.png)
 
 ### <a name="limitations"></a>Einschränkungen
-- AKS-Cluster müssen demselben VNET angehören wie der Arbeitsbereich und die zugehörigen Ressourcen. 
+
+- Der Arbeitsbereich muss über einen privaten Endpunkt im selben VNet wie der AKS-Cluster verfügen. Wenn Sie beispielsweise mehrere private Endpunkte mit dem Arbeitsbereich verwenden, kann sich ein privater Endpunkt im AKS-VNet und ein anderer in dem VNet befinden, das Abhängigkeitsdienste für den Arbeitsbereich enthält.
 
 ## <a name="optional-enable-public-access"></a>Optional: Aktivieren des öffentlichen Zugriffs
 
 Sie können den Arbeitsbereich hinter einem VNet mithilfe eines privaten Endpunkts schützen und weiterhin den Zugriff über das öffentliche Internet zulassen. Die anfängliche Konfiguration entspricht der zum [Schützen von Arbeitsbereich und zugehörigen Ressourcen](#secure-the-workspace-and-associated-resources). 
 
-Nachdem Sie den Arbeitsbereich mit einem privaten Endpunkt geschützt haben, [aktivieren Sie öffentlichen Zugriff](how-to-configure-private-link.md#enable-public-access). Anschließend können Sie über das öffentliche Internet und das VNet auf den Arbeitsbereich zugreifen.
+Nach dem Schützen des Arbeitsbereichs mit einem privaten Endpunkt führen Sie die folgenden Schritte aus, um Clients die Remoteentwicklung mithilfe des SDK oder von Azure Machine Learning Studio zu ermöglichen:
 
-### <a name="limitations"></a>Einschränkungen
+1. [Aktivieren Sie den öffentlichen Zugriff](how-to-configure-private-link.md#enable-public-access) auf den Arbeitsbereich.
+1. [Konfigurieren Sie die Azure Storage-Firewall](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#grant-access-from-an-internet-ip-range), um die Kommunikation mit der IP-Adresse von Clients zu ermöglichen, die eine Verbindung über das öffentliche Internet herstellen.
 
-- Wenn Sie Azure Machine Learning Studio über das öffentliche Internet verwenden, können einige Features wie der Designer möglicherweise nicht auf Ihre Daten zugreifen. Dieses Problem tritt auf, wenn die Daten in einem Dienst gespeichert werden, der hinter dem VNet geschützt ist. Dies gilt z. B. für ein Azure Storage-Konto.
 ## <a name="optional-enable-studio-functionality"></a>Aktivieren der Studio-Funktionalität (optional)
 
 [Schützen des Arbeitsbereichs](#secure-the-workspace-and-associated-resources) > [Schützen der Trainingsumgebung](#secure-the-training-environment) > [Schützen der Rückschlussumgebung](#secure-the-inferencing-environment) > **Aktivieren der Studio-Funktionalität** > [Konfigurieren der Firewalleinstellungen](#configure-firewall-settings)

@@ -6,13 +6,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: devx-track-java
 ms.author: ariel
-ms.date: 10/12/2021
-ms.openlocfilehash: ca2650d8c1e3d3d397272904d72cb25facb3cb73
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.date: 11/12/2021
+ms.openlocfilehash: 313967fcadf1dac7ec2451b9dc51da1fac9bc435
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002926"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488751"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-terraform"></a>Schnellstart: Bereitstellen von Azure Spring Cloud mithilfe von Terraform
 
@@ -163,5 +163,5 @@ In dieser Schnellstartanleitung haben Sie mithilfe von Terraform eine Azure Spri
    - [Pet Clinic-App mit MySQL-Integration](https://github.com/azure-samples/spring-petclinic-microservices) (Microservices mit MySQL-Back-End).
    - [Einfaches „Hallo Welt“](./quickstart.md?pivots=programming-language-java&tabs=Azure-CLI).
 - Verwenden Sie [benutzerdefinierte Domänen](tutorial-custom-domain.md) mit Azure Spring Cloud.
-- Machen Sie Azure Spring Cloud-Anwendungen mithilfe von [Azure Application Gateway](expose-apps-gateway-azure-firewall.md) für das Internet verfügbar.
+- Machen Sie Anwendungen in Azure Spring Cloud mithilfe von [Azure Application Gateway](expose-apps-gateway-azure-firewall.md) für das Internet verfügbar.
 - Zeigen Sie die sichere [Azure Spring Cloud-Referenzarchitektur](reference-architecture.md) (End-to-End-Architektur) an, die auf dem [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/) basiert.

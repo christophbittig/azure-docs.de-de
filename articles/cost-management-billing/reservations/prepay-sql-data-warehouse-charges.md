@@ -2,18 +2,18 @@
 title: Senken der Kosten für Azure Synapse Analytics (nur Data Warehousing) mit reservierter Azure-Kapazität
 description: Hier erfahren Sie, wie Sie die Kosten für Azure Synapse Analytics mit reservierter Kapazität senken und so Geld sparen können.
 author: bandersmsft
-ms.reviewer: primittal
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/19/2021
 ms.author: banders
-ms.openlocfilehash: 7e5987aee066e8c9e439b2789b1242e1bc541c35
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 6b2fb94f625cb5eb6384961faa977da2b9822bf6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714100"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223971"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-data-warehousing-only-charges-with-reserved-capacity"></a>Senken der Kosten für Azure Synapse Analytics (nur Data Warehousing) mit reservierter Kapazität
 
@@ -30,7 +30,8 @@ Informationen zu den Preisen finden Sie unter [Azure Synapse Analytics – Preis
 Sie können reservierte Azure Synapse Analytics-Kapazität über das [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](./prepare-buy-reservation.md). So erwerben Sie reservierte Kapazität:
 
 - Sie müssen über die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein Abonnement mit nutzungsbasierter Bezahlung verfügen.
-- Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie EA-Administrator sein.
+- Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie EA-Administrator sein, um sie zu aktivieren. Direkte Enterprise-Kunden können nun Einstellungen für **Reservierte Instanz** im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/AllBillingScopes) aktualisieren. Navigieren Sie zum Menü „Richtlinien“, um Einstellungen zu ändern.
+
 - Für das Cloud Solution Provider-Programm (CSP) können nur die Administratoren oder Vertriebsmitarbeiter reservierte Azure Synapse Analytics-Kapazität erwerben.
 
 Weitere Informationen zur Berechnung der Reservierung von Kapazitäten für Unternehmenskunden und Kunden mit nutzungsbasierter Bezahlung finden Sie unter [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](understand-reserved-instance-usage-ea.md) und [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](understand-reserved-instance-usage.md).

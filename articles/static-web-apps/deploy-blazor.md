@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 04/09/2021
+ms.date: 11/08/2021
 ms.author: cshoe
-ms.openlocfilehash: 90c044593ac02f2c906fb2347d731168b25af5af
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: ac22d5ef720fb0701cb126e6fa0cb627614dd09c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813864"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027164"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Tutorial: Erstellen einer statischen Web-App mit Blazor in Azure Static Web Apps
 
@@ -27,23 +27,23 @@ Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kost
 
 ## <a name="application-overview"></a>Anwendungsübersicht
 
-Mit Azure Static Web Apps können Sie statische Webanwendungen erstellen, die von einem serverlosen Back-End gestützt werden. Im folgenden Tutorial wird gezeigt, wie Sie eine C#-Blazor-Webanwendung bereitstellen, die Wetterdaten zurückgibt.
+Mit Azure Static Web Apps können Sie statische Webanwendungen erstellen, die von einem serverlosen Back-End gestützt werden. Im folgenden Tutorial wird veranschaulicht, wie Sie eine C#-Blazor-WebAssembly-Anwendung bereitstellen, die von einer serverlosen API zurückgegebene Wetterdaten anzeigt.
 
 :::image type="content" source="./media/deploy-blazor/blazor-app-complete.png" alt-text="Fertig gestellte Blazor-App":::
 
 Die in diesem Tutorial gezeigte App setzt sich aus drei verschiedenen Visual Studio-Projekten zusammen:
 
-- **Api**: Die Azure Functions-C#-Anwendung, die den API-Endpunkt zur Bereitstellung von Wetterinformationen für die statische App implementiert. Die Funktion **WeatherForecastFunction** gibt ein Array mit `WeatherForecast`-Objekten zurück.
+- **API**: Die Azure Functions-C#-Anwendung, die den API-Endpunkt zur Bereitstellung von Wetterinformationen für die Blazor-WebAssembly-App implementiert. Die Funktion **WeatherForecastFunction** gibt ein Array mit `WeatherForecast`-Objekten zurück.
 
-- **Client:** Das Front-End-Blazor-Webassemblyprojekt. Um sicherzustellen, dass alle Routen zur Datei _index.html_ führen, ist eine [Fallbackroute](#fallback-route) implementiert.
+- **Client**: Das Front-End-Blazor-WebAssembly-Projekt. Eine [Fallbackroute](#fallback-route) wird implementiert, um sicherzustellen, dass das clientseitige Routing funktioniert.
 
 - **Gemeinsam genutzt**: Enthält gemeinsame Klassen, die sowohl von der API als auch von den Clientprojekten referenziert werden, damit Daten vom API-Endpunkt an die Front-End-Web-App übertragen werden können. Die Klasse [`WeatherForecast`](https://github.com/staticwebdev/blazor-starter/blob/main/Shared/WeatherForecast.cs) wird von beiden Apps gemeinsam genutzt.
 
-Diese Projekte werden zum Erstellen einer Blazor-Webassemblyanwendung kombiniert, die in dem von einem API-Back-End unterstützten Browser ausgeführt wird.
+Diese Projekte werden zum Erstellen einer Blazor-WebAssembly-Anwendung kombiniert, die in dem von einem Azure Functions-API-Back-End unterstützten Browser ausgeführt wird.
 
 ## <a name="fallback-route"></a>Fallbackroute
 
-Die Anwendung macht URLs wie _/counter_ und _/fetchdata_ verfügbar, die bestimmten Routen der Anwendung zugeordnet sind. Da diese App als Single-Page-Webanwendung implementiert ist, führt jede Route zur Datei _index.html_. Um sicherzustellen, dass bei Anforderungen für einen beliebigen Pfad die Datei _index.html_ zurückgegeben wird, ist in der Datei _staticwebapp.config.json_ eine [Fallbackroute](./configuration.md#fallback-routes) implementiert. Diese Datei befindet sich im Ordner _wwwroot_ des Clientprojekts.
+Die Anwendung macht URLs wie _/counter_ und _/fetchdata_ verfügbar, die bestimmten Routen der Anwendung zugeordnet sind. Da diese App als Single-Page-Webanwendung implementiert ist, führt jede Route zur Datei _index.html_. Um sicherzustellen, dass bei Anforderungen für einen beliebigen Pfad die Datei _index.html_ zurückgegeben wird, ist in der Datei _staticwebapp.config.json_ eine [Fallbackroute](./configuration.md#fallback-routes) implementiert. Diese Datei befindet sich im Stammordner des Clientprojekts.
 
 ```json
 {
@@ -57,7 +57,7 @@ Mit der obigen Konfiguration wird sichergestellt, dass bei jeglichen Anforderung
 
 ## <a name="create-a-repository"></a>Erstellen eines Repositorys
 
-In diesem Artikel wird ein GitHub-Vorlagenrepository verwendet, um Ihnen den Einstieg zu erleichtern. Die Vorlage enthält eine Starter-App, die in Azure Static Web Apps bereitgestellt wird.
+In diesem Artikel wird ein GitHub-Vorlagenrepository verwendet, um Ihnen den Einstieg zu erleichtern. Die Vorlage enthält eine Starter-App, die in Azure Static Web Apps bereitgestellt werden kann.
 
 1. Stellen Sie sicher, dass Sie bei GitHub angemeldet sind, und navigieren Sie zum folgenden Speicherort, um ein neues Repository zu erstellen:
    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
@@ -80,26 +80,32 @@ Nachdem das Repository erstellt wurde, erstellen Sie im Azure-Portal eine statis
     | _Ressourcengruppe_ | **my-blazor-group**  |
     | _Name_ | **my-first-static-blazor-app** |
     | _Plantyp_ | **Free** |
-    | _Region für Azure Functions-API und Stagingumgebungen_ | Wählen Sie eine Region aus, die in Ihrer Nähe liegt. |
+    | _Region für Azure Functions-API und Stagingumgebungen_ | Wählen Sie die Region aus, die Ihnen am nächsten ist. |
     | _Quelle_ | **GitHub** |
 
-1. Wählen Sie **Mit GitHub anmelden** aus, und führen Sie die Authentifizierung mit GitHub durch.
+1. Wählen Sie **Mit GitHub anmelden** aus, und authentifizieren Sie sich bei GitHub.
 
 1. Geben Sie die folgenden GitHub-Werte ein.
 
     | Eigenschaft | Wert |
     | --- | --- |
-    | _Organisation_ | Wählen Sie die gewünschte GitHub-Organisation aus. |
+    | _Organisation_ | Wählen Sie Ihre gewünschte GitHub-Organisation aus. |
     | _Repository_ | Wählen Sie **my-first-static-blazor-app** aus. |
     | _Branch_ | Wählen Sie **main** aus. |
 
-1. Wählen Sie im Abschnitt _Builddetails_ in der Dropdownliste _Buildvoreinstellungen_ die Option **Blazor** aus, und übernehmen Sie die Standardwerte.
+1. Wählen Sie im Abschnitt _Builddetails_ in der Dropdownliste _Buildvoreinstellungen_ die Option **Blazor** aus. Die folgenden Werte werden aufgefüllt:
 
+    | Eigenschaft | Wert | BESCHREIBUNG |
+    | --- | --- | --- |
+    | App-Speicherort | **Client** | Ordner mit der Blazor-WebAssembly-App |
+    | API-Speicherort | **API** | Ordner mit der Azure Functions-App |
+    | Ausgabeverzeichnis | **wwwroot** | Ordner in der Buildausgabe mit der veröffentlichten Blazor-WebAssembly-Anwendung |
+    
 ### <a name="review-and-create"></a>Überprüfen und Erstellen
 
-1. Klicken Sie auf die Schaltfläche **Überprüfen + Erstellen**, um sicherzustellen, dass alle Details stimmen.
+1. Wählen Sie die Schaltfläche **Überprüfen und erstellen** aus, um sicherzustellen, dass alle Details stimmen.
 
-1. Wählen Sie **Erstellen** aus, um mit der Erstellung der statischen App Service-Web-App zu beginnen und eine GitHub-Aktion für die Bereitstellung anzugeben.
+1. Wählen Sie **Erstellen** aus, um mit der Erstellung der statischen App Service-Web-App zu beginnen und einen GitHub Action-Vorgang für die Bereitstellung anzugeben.
 
 1. Wenn die Bereitstellung abgeschlossen ist, klicken Sie auf **Zu Ressource wechseln**.
 
@@ -109,9 +115,9 @@ Nachdem das Repository erstellt wurde, erstellen Sie im Azure-Portal eine statis
 
 ## <a name="view-the-website"></a>Anzeigen der Website
 
-Für die Bereitstellung einer statischen App gelten zwei Aspekte. Der erste Aspekt ist die Bereitstellung der zugrunde liegenden Azure-Ressourcen, aus denen Ihre App besteht. Der zweite Aspekt ist ein GitHub Actions-Workflow, mit dem Ihre Anwendung erstellt und veröffentlicht wird.
+Für die Bereitstellung einer statischen App gelten zwei Aspekte. Der erste Aspekt ist die Bereitstellung der zugrunde liegenden Azure-Ressourcen, aus denen Ihre App besteht. Der zweite ist ein GitHub-Actions-Workflow, mit dem Ihre Anwendung erstellt und veröffentlicht wird.
 
-Bevor Sie zu Ihrer neuen statischen Website navigieren können, muss zuerst die Ausführung des Buildvorgangs für die Bereitstellung abgeschlossen sein.
+Bevor Sie zu Ihrer neuen statischen Web-App navigieren können, muss zuerst die Ausführung des Buildvorgangs für die Bereitstellung abgeschlossen sein.
 
 Im Übersichtsfenster von Azure Static Web Apps werden einige Links angezeigt, die Ihnen als Hilfe bei der Interaktion mit Ihrer Web-App dienen.
 

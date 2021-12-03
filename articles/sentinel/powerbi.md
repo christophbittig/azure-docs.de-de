@@ -1,26 +1,26 @@
 ---
-title: Erstellen eines Power BI-Berichts aus Azure Sentinel-Daten
-description: Es wird beschrieben, wie Sie einen Power BI-Bericht erstellen, indem Sie eine exportierte Abfrage aus Azure Sentinel Log Analytics verwenden. Geben Sie Ihren Bericht für andere Personen im Power BI-Dienst und in einem Teams-Kanal frei.
+title: Erstellen eines Power BI-Berichts aus Microsoft Sentinel-Daten
+description: Es wird beschrieben, wie Sie einen Power BI-Bericht erstellen, indem Sie eine exportierte Abfrage aus Microsoft Sentinel Log Analytics verwenden. Geben Sie Ihren Bericht für andere Personen im Power BI-Dienst und in einem Teams-Kanal frei.
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 558d6d979321148923f8a10bc2f92bb13eedd746
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cd6c6de1fc1a83cecdf0ea96e912f989bdf6b904
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023042"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521318"
 ---
-# <a name="tutorial-create-a-power-bi-report-from-azure-sentinel-data"></a>Tutorial: Erstellen eines Power BI-Berichts aus Azure Sentinel-Daten
+# <a name="tutorial-create-a-power-bi-report-from-microsoft-sentinel-data"></a>Tutorial: Erstellen eines Power BI-Berichts aus Microsoft Sentinel-Daten
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [Power BI](https://powerbi.microsoft.com/) ist eine Plattform für die Berichterstellung und Analyse, mit der aus Daten kohärente, immersive, interaktive Visualisierungen erstellt werden können. Mit Power BI können Sie problemlos Verbindungen mit Datenquellen herstellen, Beziehungen visualisieren und ermitteln und Erkenntnisse mit beliebigen anderen Personen teilen.
 
-Sie können als Grundlage für Power BI-Berichte Daten aus Azure Sentinel Log Analytics-Arbeitsbereichen verwenden und diese Berichte für Personen freigeben, die keinen Zugriff auf Azure Sentinel haben. Es kann beispielsweise sein, dass Sie Informationen zu nicht erfolgreichen Anmeldeversuchen für App-Besitzer freigeben möchten, ohne ihnen Zugriff auf Azure Sentinel zu gewähren. Mit Power BI-Visualisierungen können Sie eine Übersicht für die Daten erstellen, die alle wichtigen Informationen enthält.
+Sie können als Grundlage für Power BI-Berichte Daten aus Microsoft Sentinel Log Analytics-Arbeitsbereichen verwenden und diese Berichte für Personen freigeben, die keinen Zugriff auf Microsoft Sentinel haben. Es kann beispielsweise sein, dass Sie Informationen zu nicht erfolgreichen Anmeldeversuchen für App-Besitzer freigeben möchten, ohne ihnen Zugriff auf Microsoft Sentinel zu gewähren. Mit Power BI-Visualisierungen können Sie eine Übersicht für die Daten erstellen, die alle wichtigen Informationen enthält.
 
 In diesem Tutorial:
 
@@ -30,24 +30,24 @@ In diesem Tutorial:
 > * Veröffentlichen des Berichts unter dem Power BI-Dienst und Teilen mit anderen Personen
 > * Hinzufügen des Berichts zu einem Teams-Kanal
 
-Personen, denen Sie im Power BI-Dienst Zugriff gewährt haben, und Mitglieder des Teams-Kanals können den Bericht anzeigen, ohne dass sie Azure Sentinel-Berechtigungen benötigen.
+Personen, denen Sie im Power BI-Dienst Zugriff gewährt haben, und Mitglieder des Teams-Kanals können den Bericht anzeigen, ohne dass sie Microsoft Sentinel-Berechtigungen benötigen.
 
 > [!NOTE]
-> Dieses Tutorial bietet eine szenariobasierte Vorgehensweise für einen der häufigsten Kundenwünsche: die Anzeige von Analyseberichten in Power BI für Ihre Azure Sentinel-Daten. Weitere Informationen finden Sie unter [Verbinden von Datenquellen](connect-data-sources.md) und [Visualisieren gesammelter Daten](get-visibility.md).
+> Dieses Tutorial bietet eine szenariobasierte Vorgehensweise für einen der häufigsten Kundenwünsche: die Anzeige von Analyseberichten in Power BI für Ihre Microsoft Sentinel-Daten. Weitere Informationen finden Sie unter [Verbinden von Datenquellen](connect-data-sources.md) und [Visualisieren gesammelter Daten](get-visibility.md).
 >
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Mindestens Lesezugriff auf einen Azure Sentinel Log Analytics-Arbeitsbereich, für den Anmeldeversuche überwacht werden.
+- Mindestens Lesezugriff auf einen Microsoft Sentinel Log Analytics-Arbeitsbereich, für den Anmeldeversuche überwacht werden.
 - Ein Power BI-Konto, das über Lesezugriff auf den Log Analytics-Arbeitsbereich verfügt.
 - [Installation von Power BI Desktop über den Microsoft Store](https://aka.ms/pbidesktopstore).
 
 ## <a name="export-a-query-from-log-analytics"></a>Exportieren einer Abfrage aus Log Analytics
 
-Führen Sie die Erstellung, die Ausführung und den Export einer Kusto-Abfrage in Ihrem Azure Sentinel Log Analytics-Arbeitsbereich durch. 
+Führen Sie die Erstellung, die Ausführung und den Export einer Kusto-Abfrage in Ihrem Microsoft Sentinel Log Analytics-Arbeitsbereich durch. 
 
-1. Wählen Sie in Ihrem Azure Sentinel Log Analytics-Arbeitsbereich die Option **Protokolle** aus, um eine einfache Abfrage zu erstellen. Geben Sie im Abfrage-Editor unter **Neue Abfrage 1** die folgende Kusto-Abfrage ein:
+1. Wählen Sie in Ihrem Microsoft Sentinel Log Analytics-Arbeitsbereich die Option **Protokolle** aus, um eine einfache Abfrage zu erstellen. Geben Sie im Abfrage-Editor unter **Neue Abfrage 1** die folgende Kusto-Abfrage ein:
    
    ```kusto
    SigninLogs
@@ -57,7 +57,7 @@ Führen Sie die Erstellung, die Ausführung und den Export einer Kusto-Abfrage i
    | sort by Failed
    ```
    
-   Verwenden Sie alternativ Ihre bevorzugte Kusto-Abfrage aus Azure Sentinel Log Analytics.
+   Verwenden Sie alternativ Ihre bevorzugte Kusto-Abfrage aus Microsoft Sentinel Log Analytics.
    
 1. Wählen Sie **Ausführen** aus, um die Abfrage auszuführen und Ergebnisse zu generieren.
    
@@ -145,7 +145,7 @@ Als Nächstes möchten Sie den Prozentsatz der nicht erfolgreichen Anmeldeversuc
    
 ### <a name="refresh-the-data-and-save-the-report"></a>Aktualisieren der Daten und Speichern des Berichts
 
-1. Wählen Sie **Aktualisieren** aus, um die neuesten Daten aus Azure Sentinel abzurufen.
+1. Wählen Sie **Aktualisieren** aus, um die neuesten Daten aus Microsoft Sentinel abzurufen.
    
    :::image type="content" source="media/powerbi/refresh.png" alt-text="Screenshot: Schaltfläche „Aktualisieren“ im Menüband":::
    
@@ -155,7 +155,7 @@ Als Nächstes möchten Sie den Prozentsatz der nicht erfolgreichen Anmeldeversuc
 
 Erstellen Sie wie folgt einen Power BI-Arbeitsbereich für die Freigabe des Berichts:
 
-1. Melden Sie sich bei [powerbi.com](https://powerbi.com) mit demselben Konto an, das Sie für den Lesezugriff für Power BI Desktop und Azure Sentinel verwendet haben.
+1. Melden Sie sich bei [powerbi.com](https://powerbi.com) mit demselben Konto an, das Sie für den Lesezugriff für Power BI Desktop und Microsoft Sentinel verwendet haben.
    
 1. Wählen Sie unter **Arbeitsbereiche** die Option **Arbeitsbereich erstellen** aus. Geben Sie dem Arbeitsbereich den Namen *Management Reports* (Verwaltungsberichte), und wählen Sie **Speichern** aus.
    

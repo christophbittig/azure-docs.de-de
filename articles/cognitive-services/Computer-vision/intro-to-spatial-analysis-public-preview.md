@@ -11,16 +11,16 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 10/06/2021
 ms.custom: contperf-fy22q2
-ms.openlocfilehash: 9553c7e177bdc78b071d6ed68725879e46c9ef5e
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: fd160aa2ba4a626e12db638694cb6d971b19fbd2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668445"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469937"
 ---
 # <a name="what-is-spatial-analysis"></a>Was ist räumliche Analyse?
 
-Räumliche Analyse ist ein KI-Dienst, der Unternehmen dabei unterstützt, den Wert ihrer physischen Plätze zu maximieren, indem die Bewegungen und Präsenz der Menschen in einem bestimmten Bereich nachvollzogen werden. Der Dienst bietet Ihnen die Möglichkeit, Videos von Überwachungskameras zu erfassen, Erkenntnisse aus Videostreams zu gewinnen und Ereignisse zu generieren, die von anderen Systemen verwendet werden können. Mithilfe von Videos von Kamerastreams kann der Dienst beispielsweise die Personen zählen, die einen bestimmten Bereich betreten, oder messen, ob eine Mund-Nasen-Bedeckung getragen wird und die geltenden Abstandsregeln eingehalten werden.
+Sie können die räumliche Analyse für maschinelles Sehen verwenden, um Streamingvideos von Kameras zu erfassen, Erkenntnisse zu extrahieren und Ereignisse zu generieren, die von anderen Systemen verwendet werden. Der Dienst erkennt die Anwesenheit und die Bewegungen von Personen im Video. Er kann beispielsweise die Personen zählen, die einen bestimmten Bereich betreten, oder messen, ob eine Mund-Nasen-Bedeckung getragen wird und die geltenden Abstandsregeln eingehalten werden. Durch die Verarbeitung von Videostreams aus physischen Bereichen können Sie ableiten, wie Menschen diese nutzen, und den Wert der Bereiche für Ihre Organisation maximieren. 
 
 <!--This documentation contains the following types of articles:
 * The [quickstarts](./quickstarts-sdk/analyze-image-client-library.md) are step-by-step instructions that let you make calls to the service and get results in a short period of time. 
@@ -29,18 +29,26 @@ Räumliche Analyse ist ein KI-Dienst, der Unternehmen dabei unterstützt, den We
 * The [tutorials](./tutorials/storage-lab-tutorial.md) are longer guides that show you how to use this service as a component in broader business solutions.-->
 
 ## <a name="what-it-does"></a>Funktionsbeschreibung
+Die räumliche Analyse erfasst Videos und erkennt dann Personen im Video. Nachdem Personen erkannt wurden, verfolgt das System diese nach, während sie sich im Laufe der Zeit bewegen, und generiert dann Ereignisse, wenn die Personen mit Regionen von Interesse interagieren. Alle Vorgänge liefern Erkenntnisse aus dem Sichtfeld einer einzelnen Kamera. 
 
-Die grundlegenden Vorgänge der räumlichen Analyse basieren auf einem System, das Videos erfasst, Personen im Video erkennt, diese verfolgt, während sie sich bewegen, und Ereignisse generiert, wenn Personen mit relevanten Bereichen interagieren.
+### <a name="people-counting"></a>Personenzählung
+Bei diesem Vorgang werden die Personen mithilfe des Vorgangs „PersonCount“ in einer bestimmten Zone im Laufe der Zeit gezählt. Er generiert eine unabhängige Anzahl für jeden verarbeiteten Frame, ohne zu versuchen, Personen über Frames hinweg nachzuverfolgen. Mit diesem Vorgang kann die Anzahl von Personen in einem Bereich geschätzt oder eine Warnung generiert werden, wenn eine Person erscheint.
 
-## <a name="spatial-analysis-features"></a>Funktionen für räumliche Analysen
+![Die räumliche Analyse zählt die Personen im Sichtfeld der Kamera.](https://user-images.githubusercontent.com/11428131/139924111-58637f2e-f2f6-42d8-8812-ab42fece92b4.gif)
 
-| Funktion | Definition |
-|------|------------|
-| **Personenerkennung** | Diese Komponente beantwortet die Frage, wo sich die Personen auf einem Bild befinden. Sie findet Personen in einem Bild und übergibt Koordinaten eines Begrenzungsrahmens, die die Aufenthaltsorte der einzelnen Personen markiert, an die Komponente zur **Personenverfolgung**. |
-| **Personenverfolgung** | Diese Komponente verbindet die erkannten Personen im Laufe der Zeit, während sich diese vor der Kamera bewegen. Dafür verwendet sie temporale Logik zu den üblichen Wegen der Menschen und grundlegende Informationen zu ihrem äußeren Erscheinungsbild. Personen werden nicht über mehrere Kameras hinweg beobachtet. Wenn eine Person für etwas länger als eine Minute aus dem Sichtfeld hinaustritt und dann wieder in das Sichtfeld läuft, wird diese vom System als neue Person wahrgenommen. Durch das Tracking von Personen können keine Personen kameraübergreifend eindeutig identifiziert werden. Die Gesichtserkennung oder die Nachverfolgung der Gangart werden nicht genutzt. |
-| **Gesichtsmaskenerkennung** | Diese Komponente erkennt die Position des Gesichts einer Person im Kamerasichtfeld und identifiziert das Vorhandensein einer Gesichtsmaske. Zu diesem Zweck scannt der KI-Vorgang Bilder aus einem Video. Immer dann, wenn ein Gesicht erkannt wird, stellt der Dienst einen Begrenzungsrahmen um das Gesicht bereit. Mithilfe der Objekterkennungsfunktionen kann nun im Begrenzungsrahmen identifiziert werden, ob die Person eine Gesichtsmaske trägt. Die Gesichtsmaskenerkennung kann nicht zwischen Gesichtern unterscheiden oder Gesichtsmerkmale vorhersagen oder erkennen und keine Gesichtserkennung durchführen. |
-| **Relevanter Bereich** | Diese Komponente ist eine benutzerdefinierte Zone oder Linie im Eingangsvideobild. Wenn eine Person mit diesem Bereich auf dem Video interagiert, erzeugt das System ein Ereignis. Beispielsweise ist für den Vorgang **PersonCrossingLine** eine Linie im Video definiert. Wenn eine Person diese Linie überquert, wird ein Ereignis generiert. |
-| **Event** | Ein Ereigniss stellen die primäre Ausgabe der räumlichen Analyse dar. Jeder Vorgang löst ein bestimmtes Ereignis entweder regelmäßig (etwa einmal pro Minute) oder bei jedem Auftreten eines bestimmten Auslösers aus. Das Ereignis umfasst Informationen darüber, was im Eingabevideo passiert ist, enthält aber keine Bilder oder Videos. Beispielsweise kann der Vorgang **PeopleCount** jedes Mal bei Änderung der Personenanzahl (Trigger) oder einmal pro Minute (regelmäßig) ein Ereignis auslösen, das die aktuelle Anzahl enthält. |
+### <a name="entrance-counting"></a>Zutrittszählung
+Mit diesem Feature wird überwacht, wie lange sich Personen in einem Bereich aufhalten oder wann sie durch eine Tür treten. Für diese Überwachung können die Vorgänge „PersonCrossingPolygon“ oder „PersonCrossingLine“ verwendet werden. In Einzelhandelsszenarien kann mit diesen Vorgängen die Wartezeit an der Kasse oder die Verweildauer vor einer Auslage gemessen werden. Darüber hinaus können diese Vorgänge in anderen Szenarien für Geschäftsgebäude die Personenbewegung in einer Lobby oder auf einer bestimmten Etage messen.
+
+![Die räumliche Analyse misst die Wartezeit an der Kasse.](https://user-images.githubusercontent.com/11428131/137016574-0d180d9b-fb9a-42a9-94b7-fbc0dbc18560.gif)
+
+### <a name="social-distancing-and-facemask-detection"></a>Abstandsregeln und Gesichtsmaskenerkennung 
+Mit diesem Feature wird analysiert, wie gut Personen die Abstandsregeln in einem Bereich einhalten. Mithilfe des PersonDistance-Vorgangs kalibriert sich das System automatisch selbst, wenn Personen in einem Bereich umhergehen. Anschließend wird ermittelt, wann Personen einen bestimmten Abstandsschwellenwert (6 Fuß oder 10 Fuß) überschreiten.
+
+![Bei der räumlichen Analyse werden Ereignisse bei Verletzung der Abstandsregeln visualisiert und Linien zwischen Personen angezeigt, die die Entfernung angeben.](https://user-images.githubusercontent.com/11428131/139924062-b5e10c0f-3cf8-4ff1-bb58-478571c022d7.gif)
+
+Die räumliche Analyse kann außerdem so konfiguriert werden, dass erkannt wird, ob eine Person eine schützende Gesichtsbedeckung (beispielsweise eine Maske) trägt. Für die Vorgänge „PersonCount“, „PersonCrossingLine“ und „PersonCrossingPolygon“ kann durch Konfigurieren des Parameters `ENABLE_FACE_MASK_CLASSIFIER` ein Maskenklassifizierer aktiviert werden.
+
+![Die räumliche Analyse klassifiziert, ob Personen in einem Aufzug Gesichtsmasken tragen.](https://user-images.githubusercontent.com/11428131/137015842-ce524f52-3ac4-4e42-9067-25d19b395803.png)
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -48,7 +56,7 @@ Befolgen Sie die [Schnellstartanleitung](spatial-analysis-container.md), um den 
 
 ## <a name="responsible-use-of-spatial-analysis-technology"></a>Verantwortungsvolle Verwendung der Technologie für räumliche Analysen
 
-Informationen zur verantwortungsvollen Verwendung der Technologie für räumliche Analysen finden Sie im [Transparenzhinweis](/legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext). Die Transparenzhinweise von Microsoft sollen Ihnen helfen zu verstehen, wie unsere KI-Technologie funktioniert, welche Entscheidungen Systembesitzer treffen können, die die Systemleistung und das Systemverhalten beeinflussen, und wie wichtig es ist, das gesamte System zu betrachten, einschließlich der Technologie, der Menschen und der Umgebung.
+Informationen zur verantwortungsvollen Verwendung der Technologie für räumliche Analysen finden Sie im [Transparenzhinweis](/legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext). Die Transparenzhinweise von Microsoft helfen Ihnen zu verstehen, wie unsere KI-Technologie funktioniert und welche Entscheidungen Systembesitzer treffen können, die die Systemleistung und das Systemverhalten beeinflussen. Sie konzentrieren sich darauf, wie wichtig es ist, das gesamte System zu betrachten, einschließlich der Technologie, der Menschen und der Umgebung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2021
 ms.author: terrylan
-ms.openlocfilehash: 96223db4d9087395f6771a4922694592a9e51b5e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 558eebf12179b04fb9a76c3db0195c4e812e956c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037338"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335440"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -53,7 +53,7 @@ An der Spitze des Stapels (Datengovernance und Rechteverwaltung) können Sie sic
 
 Dank verschiedener netzwerkbasierter Technologien bietet die Azure-Plattform außerdem starken DDoS-Schutz. Bei allen Arten von netzwerkbasierten DDoS-Schutzmethoden gelten allerdings gewisse Einschränkungen für Links und Datencenter. Zur Vermeidung der Auswirkungen groß angelegter DDoS-Angriffe können Sie dank der Kernfunktion der Azure-Cloud schnell und automatisch aufskalieren, um DDoS-Angriffe abzuwehren. Ausführlichere Informationen zur entsprechenden Vorgehensweise finden Sie in den Artikeln zu empfohlenen Vorgehensweisen.
 
-## <a name="modernizing-the-defenders-mindset"></a>Eine neue Mentalität für Verteidiger
+## <a name="modernizing-the-defender-for-clouds-mindset"></a>Modernisieren der Defender für Cloud-Mentalität
 Mit PaaS-Bereitstellungen verändert sich der gesamte Sicherheitsansatz. Sie müssen sich nun nicht mehr um alles selbst kümmern, sondern können einen Teil der Verantwortung an Microsoft abgeben.
 
 Ein weiterer wichtiger Unterschied zwischen PaaS und herkömmlichen lokalen Bereitstellungen ist die Neuauslegung des primären Sicherheitsbereichs. In der Vergangenheit war Ihr Netzwerk der primäre lokale Sicherheitsbereich, und bei den meisten lokalen Sicherheitskonzepten wird das Netzwerk als Dreh- und Angelpunkt für die Sicherheit verwendet. Bei PaaS-Bereitstellungen empfiehlt es sich dagegen, die Identität als primären Sicherheitsbereich zu betrachten.
@@ -125,7 +125,7 @@ Folgende Methoden haben sich bei der Verwendung von App Service bewährt.
 **Detail**: Die [App Service-Umgebung](../../app-service/environment/intro.md) verfügt über ein Feature zur Integration virtueller Netzwerke, mit dem Sie eingehende Quell-IP-Adressen über Netzwerksicherheitsgruppen einschränken können. Mit virtuellen Netzwerken können Sie Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Weitere Informationen hierzu finden Sie unter [Integrieren Ihrer App in ein Azure Virtual Network](../../app-service/overview-vnet-integration.md).
 
 **Bewährte Methode**: Überwachen Sie den Sicherheitsstatus Ihrer App Service-Umgebungen.   
-**Detail**: Verwenden Sie Azure Security Center, um Ihre App Service-Umgebungen zu überwachen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center [Empfehlungen](../../security-center/asset-inventory.md), die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen.
+**Detail**: Verwenden Sie Microsoft Defender für Cloud, um Ihre App Service-Umgebungen zu überwachen. Werden potenzielle Sicherheitslücken erkannt, erstellt Defender für Cloud [Empfehlungen](../../security-center/asset-inventory.md), die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen.
 
 ## <a name="azure-cloud-services"></a>Azure Cloud Services
 [Azure Cloud Services](../../cloud-services/cloud-services-choose-me.md) ist ein Beispiel für PaaS. Diese Technologie unterstützt genau wie Azure App Service skalierbare und zuverlässige Anwendungen mit geringen Betriebskosten. Azure Cloud Services werden wie App Service auf virtuellen Computern (VMs) gehostet. Sie haben jedoch mehr Kontrolle über die virtuellen Computer. Sie können Ihre eigene Software auf virtuellen Computern installieren, die Azure Cloud Services verwenden, und remote darauf zugreifen.

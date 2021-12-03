@@ -5,12 +5,12 @@ author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
-ms.openlocfilehash: 0b936ecbd80ba0b258cea8b043f4bef789b67a35
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0183e56d9bdf0c995dbbcf273914790eb0909e7d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751299"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297543"
 ---
 # <a name="generate-maps"></a>Generieren von Karten
 
@@ -43,7 +43,7 @@ Die folgenden Abhängigkeiten beziehen sich auf Sentinel:
 
 - Wir benötigen die Sentinel-Leistung zum Herunterladen von Satellitenbildern. Überprüfen Sie den Status der Sentinel-Leistung und die [Wartungsaktivitäten](https://scihub.copernicus.eu/twiki/do/view/SciHubNews/WebHome).
 - Bei Sentinel sind nur zwei gleichzeitige [Download-Threads](https://sentinels.copernicus.eu/web/sentinel/sentinel-data-access/typologies-and-services) zulässig.
-- Die Generierung von Präzisionskarten ist von der [Sentinel-Abdeckung und -Aufrufhäufigkeit]( https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage) abhängig.
+- Die Generierung von Präzisionskarten ist von der [Sentinel-Abdeckung und -Aufrufhäufigkeit](https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage) abhängig.
 
 ## <a name="create-a-sensor-placement-map"></a>Erstellen einer Karte zur Sensorplatzierung
 In diesem Abschnitt werden die Verfahren zum Erstellen von Karten zur Sensorplatzierung ausführlich beschrieben.

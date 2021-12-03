@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 09/22/2021
-ms.openlocfilehash: 4897b557626be5071a21d2cc1a6a8194eaed8994
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.date: 10/21/2021
+ms.openlocfilehash: 8515ad8c9a3db24c8504094cf7273cd149b7ab2d
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154278"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559179"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz
 
@@ -91,7 +91,7 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden un
 * [ComputeInstance.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computeinstance(class)#wait-for-completion-show-output-false--is-delete-operation-false-)
 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
@@ -419,7 +419,7 @@ Starten, Beenden, Neustarten und Löschen einer Compute-Instanz. Eine Compute-In
 Sie können einen [Zeitplan erstellen](#schedule) für die Compute-Instanz, um diese automatisch zu einer bestimmten Uhrzeit und an einem bestimmten Wochentag zu starten und zu stoppen.
 
 > [!TIP]
-> Die Compute-Instanz verfügt über einen 120 GB Betriebssystemdatenträger. Wenn Ihnen der Speicherplatz ausgeht, [verwenden Sie das Terminal](how-to-access-terminal.md), um mindestens 1–2 GB zu löschen, bevor Sie die Compute-Instanz beenden oder neu starten. Bitte beenden Sie die Compute-Instanz nicht, indem Sie sudo Herunterfahren im Terminal eingeben.
+> Die Compute-Instanz verfügt über einen 120 GB Betriebssystemdatenträger. Wenn Ihnen der Speicherplatz ausgeht, [verwenden Sie das Terminal](how-to-access-terminal.md), um mindestens 1–2 GB zu löschen, bevor Sie die Compute-Instanz beenden oder neu starten. Bitte beenden Sie die Compute-Instanz nicht, indem Sie sudo Herunterfahren im Terminal eingeben. Die Größe des temporären Datenträgers auf der Compute-Instanz hängt von der gewählten VM-Größe ab und wird in „/mnt“ eingebunden.
 
 # <a name="python"></a>[Python](#tab/python)
 

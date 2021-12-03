@@ -1,22 +1,22 @@
 ---
 title: Protokollmetriken im Designer
 titleSuffix: Azure Machine Learning
-description: Überwachen Sie Ihre Azure Machine Learning-Designerexperimente. Aktivieren Sie die Protokollierung mithilfe des „Execute Python Script“-Moduls (Ausführen eines Python-Skripts), und zeigen Sie die protokollierten Ergebnisse in Studio an.
+description: Überwachen Sie Ihre Azure Machine Learning-Designerexperimente. Aktivieren Sie die Protokollierung mit der Komponente Python-Skript ausführen und sehen Sie sich die protokollierten Ergebnisse im Studio an.
 services: machine-learning
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 01/11/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: bbf4168e59f04829603008bedea380f76a67264a
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ca78f86734c29e0aa6104e43ae759b666df6d290
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884568"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560737"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Aktivieren der Protokollierung in Azure Machine Learning-Designerpipelines
 
@@ -27,13 +27,13 @@ Weitere Informationen zum Protokollieren von Metriken mithilfe der SDK-Erstellun
 
 ## <a name="enable-logging-with-execute-python-script"></a>Aktivieren der Protokollierung mit „Execute Python Script“ (Ausführen eines Python-Skripts)
 
-Verwenden Sie das Modul [Execute Python Script](./algorithm-module-reference/execute-python-script.md) (Ausführen eines Python-Skripts), um die Protokollierung in Designerpipelines zu aktivieren. Obwohl Sie mit diesem Workflow beliebige Werte protokollieren können, ist es besonders dann hilfreich, Metriken aus dem Modul __Evaluate Model__ (Bewerten eines Modells) zu protokollieren, wenn Sie die Modellleistung für mehrere Ausführungen überwachen möchten.
+Verwenden Sie die Komponente [Pythonskript ausführen](./algorithm-module-reference/execute-python-script.md), um die Protokollierung in Designer-Pipelines zu aktivieren. Obwohl Sie mit diesem Workflow jeden Wert protokollieren können, ist es besonders nützlich, Metriken aus der Komponente __Modell auswerten__ zu protokollieren, um die Modellleistung über mehrere Läufe hinweg zu verfolgen.
 
-Im folgenden Beispiel wird gezeigt, wie Sie die mittlere quadratische Abweichung zweier trainierter Modelle mithilfe der Module „Evaluate Model“ (Bewerten eines Modells) und „Execute Python Script“ (Ausführen eines Python-Skripts) protokollieren.
+Das folgende Beispiel zeigt Ihnen, wie Sie den mittleren quadratischen Fehler von zwei trainierten Modellen mit Hilfe der Komponenten Modell auswerten und Python-Skript ausführen protokollieren können.
 
-1. Stellen Sie eine Verbindung vom Modul __Execute Python Script__ (Ausführen eines Python-Skripts) zur Ausgabe des Moduls __Evaluate Model__ (Bewerten eines Modells) her.
+1. Verbinden Sie eine Komponente __Pythonskript ausführen__ mit der Ausgabe der Komponente __Modell auswerten__.
 
-    ![Herstellen einer Verbindung vom Modul zum Ausführen des Python-Skripts zum Modul zum Evaluieren des Modells](./media/how-to-log-view-metrics/designer-logging-pipeline.png)
+    ![Verbinden Sie die Komponente Execute Python Script mit der Komponente Evaluate Model](./media/how-to-log-view-metrics/designer-logging-pipeline.png)
 
 1. Fügen Sie den folgenden Code in den Code-Editor des Moduls __Execute Python Script__ (Ausführen eines Python-Skripts) ein, um die mittlere absolute Abweichung für Ihr trainiertes Modell zu protokollieren. Sie können ein ähnliches Muster verwenden, um einen beliebigen anderen Wert im Designer zu protokollieren:
 
@@ -53,13 +53,13 @@ Im folgenden Beispiel wird gezeigt, wie Sie die mittlere quadratische Abweichung
         
         # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
         parent_run.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
-        # Log right output port result of Evaluate Model. The following line should be deleted if you only connect one Score Module to the` left port of Evaluate Model module.
+        # Log right output port result of Evaluate Model. The following line should be deleted if you only connect one Score component to the` left port of Evaluate Model component.
         parent_run.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
 
         return dataframe1,
     ```
     
-In diesem Code wird das Python-SDK für Azure Machine Learning zum Protokollieren von Werten verwendet. Es verwendet „Run.get_context()“, um den Kontext des aktuellen Testlaufs abzurufen. Anschließend werden mit der Methode „run.parent.log()“ Werte in diesem Kontext protokolliert. Dabei wird `parent` verwendet, um Werte für die übergeordnete Pipeline zu protokollieren, anstatt das Modul auszuführen.
+In diesem Code wird das Python-SDK für Azure Machine Learning zum Protokollieren von Werten verwendet. Es verwendet „Run.get_context()“, um den Kontext des aktuellen Testlaufs abzurufen. Anschließend werden mit der Methode „run.parent.log()“ Werte in diesem Kontext protokolliert. Es verwendet `parent`, um Werte im übergeordneten Pipelinelauf und nicht im Komponentenlauf zu protokollieren.
 
 Weitere Informationen zur Verwendung des Python-SDK zum Protokollieren von Werten finden Sie unter [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-log-view-metrics.md).
 

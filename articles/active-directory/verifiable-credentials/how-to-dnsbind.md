@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: d1a74d0019c931c8d52dccdc14ddd11a5ed7a1f3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 50954d4fef64ffabddf3ec8898ef81a030a77f95
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006867"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577344"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did-preview"></a>Verknüpfen Ihrer Domäne mit Ihrem dezentralisierten Bezeichner (Decentralized Identifier, DID) (Vorschau)
 
@@ -43,21 +43,22 @@ Die Verknüpfung einer DID mit einer Domäne löst das anfängliche Vertrauenspr
 
 ## <a name="how-do-we-link-dids-and-domains"></a>Wie werden DIDs und Domänen miteinander verknüpft?
 
-Zur Erstellung einer Verknüpfung zwischen einer Domäne und einer DID implementieren wir einen offenen, von der Decentralized Identity Foundation geschriebenen Standard, der als [Well Known DID Configuration](https://identity.foundation/.well-known/resources/did-configuration/) (Bekannte DID-Konfiguration) bezeichnet wird. Der Nachweisdienst in Azure Active Directory (Azure AD) unterstützt Ihre Organisation bei der Erstellung der Verknüpfung zwischen der DID und der Domäne. Hierzu wird auf der Grundlage der Domäneninformationen, die Sie in Ihrer DID angegeben haben, die Datei mit der bekannten Konfiguration erstellt:
+Zur Erstellung einer Verknüpfung zwischen einer Domäne und einer DID implementieren wir einen offenen, von der Decentralized Identity Foundation geschriebenen Standard, der als [Well Known DID Configuration](https://identity.foundation/.well-known/resources/did-configuration/) (Bekannte DID-Konfiguration) bezeichnet wird. Der Dienst für überprüfbare Anmeldeinformationen in Azure Active Directory (Azure AD) hilft Ihrer Organisation, die Verbindung zwischen der DID und der Domäne herzustellen, indem er die Domäneninformationen einbezieht, die Sie in Ihrer DID angegeben haben, und die bekannte Konfigurationsdatei generiert:
 
 1. Azure AD verwendet die im Rahmen der Organisationseinrichtung angegebenen Domäneninformationen, um einen Dienstendpunkt innerhalb des DID-Dokuments zu schreiben. Alle Parteien, die mit Ihrer DID interagieren, können die Domäne sehen, mit der Ihre DID laut Angabe verknüpft wurde.  
 
     ```json
-        "service": [
-          {
-            "id": "#linkeddomains",
-            "type": "LinkedDomains",
-            "serviceEndpoint": {
-              "origins": [
-                "https://www.contoso.com/"
-              ]
-            }
-          }
+    "service": [
+      {
+        "id": "#linkeddomains",
+        "type": "LinkedDomains",
+        "serviceEndpoint": {
+          "origins": [
+            "https://www.contoso.com/"
+          ]
+        }
+      }
+    ]
     ```
 
 2. Vom Nachweisdienst in Azure AD wird eine kompatible Ressource mit der bekannten Konfiguration generiert, die Sie in Ihrer Domäne hosten können. Die Konfigurationsdatei enthält einen selbst ausgestellten Nachweis mit dem Nachweistyp „DomainLinkageCredential“ (signiert mit Ihrer DID, die über einen Ursprung Ihrer Domäne verfügt). Das folgende Beispiel zeigt das Konfigurationsdokument, das unter der Stammdomänen-URL gespeichert ist.
@@ -118,7 +119,7 @@ Trifft einer der obigen Punkte nicht zu, wird von Microsoft Authenticator eine g
 
    ![Herunterladen der bekannten Konfiguration](media/how-to-dnsbind/verify-download.png) 
 
-3. Kopieren Sie das JWT, öffnen Sie [jwt.ms](https://www.jwt.ms), und vergewissern Sie sich, dass die Domäne korrekt ist.
+3. Kopieren Sie den linked_did Wert (JWT), öffnen Sie [https://jwt.ms/](https://www.jwt.ms), fügen Sie das JWT ein, und überprüfen Sie, ob die Domäne korrekt ist.
 
 4. Kopieren Sie Ihre DID, und öffnen Sie den [ION-Netzwerk-Explorer](https://identity.foundation/ion/explorer), um sich zu vergewissern, dass die gleiche Domäne im DID-Dokument enthalten ist. 
 

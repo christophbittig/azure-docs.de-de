@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/16/2021
+ms.date: 11/10/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d52903efad4b788c3ec4fcafb11053c7826ae4c2
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: d58a136b06093f22cd28e96714a1436277d4ce77
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114402298"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297637"
 ---
 ::: zone target="docs"
 
@@ -120,10 +120,10 @@ Nachdem Sie eine Verbindung mit den Data Box-Freigaben hergestellt haben, kopier
 * Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Größenbeschränkungen für Azure-Speicherkonten](data-box-limits.md#azure-storage-account-size-limits) beschrieben sind.
 * Wenn Sie beim Übertragen von Daten an Azure Files Metadaten (ACLs, Zeitstempel und Dateiattribute) beibehalten möchten, befolgen Sie die Anweisungen unter [Beibehalten von ACLs, Attributen und Zeitstempeln von Dateien mit Azure Data Box](data-box-file-acls-preservation.md).  
 * Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
-* Wir empfehlen Folgendes:
-  * Sie verwenden SMB und NFS nicht gleichzeitig.
-  * Kopieren Sie die gleichen Daten in das gleiche Endziel in Azure.
-  In diesen Fällen lässt sich das endgültige Ergebnis nicht im Vorhinein bestimmen.
+* Wenn Sie sowohl das SMB- als auch das NFS-Protokoll für Datenkopien verwenden, wird Folgendes empfohlen:
+  * Verwenden Sie verschiedene Speicherkonten für SMB und NFS.
+  * Kopieren Sie nicht dieselben Daten mit SMB und NFS in dasselbe Endziel in Azure. In diesen Fällen lässt sich das endgültige Ergebnis nicht im Vorhinein bestimmen.
+  * Zwar kann das parallele Kopieren über SMB und NFS funktionieren, doch wird davon abgeraten, da es anfällig für menschliche Fehler ist. Warten Sie, bis die SMB-Datenkopie abgeschlossen ist, bevor Sie eine NFS-Datenkopie starten.
 
 > [!IMPORTANT]
 > Bevor Sie bestätigen können, dass Data Box Ihre Daten nach Azure Storage übertragen hat, müssen Sie sicherstellen, dass Sie über eine Kopie der Quelldaten verfügen.

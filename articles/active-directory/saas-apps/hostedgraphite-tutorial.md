@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/11/2021
 ms.author: jeedes
-ms.openlocfilehash: b9230da3c27f17c6f8f2c6b5bb7d0e88b4ec0e84
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 185838b45f656e1b28b25749b215ab992d039131
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124772959"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291364"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Tutorial: Azure Active Directory-Integration mit Hosted Graphite
 
@@ -150,7 +150,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 In diesem Abschnitt wird in Hosted Graphite ein Benutzer mit dem Namen „Britta Simon“ erstellt. Hosted Graphite unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn ein Benutzer in Hosted Graphite noch nicht vorhanden ist, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 > [!NOTE]
-> Setzen Sie sich mit dem [Supportteam von Hosted Graphite](<mailto:help@hostedgraphite.com>) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+> Setzen Sie sich mit dem [Supportteam von Hosted Graphite](mailto:help@hostedgraphite.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
@@ -170,4 +170,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Hosted Graphite können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Hosted Graphite können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

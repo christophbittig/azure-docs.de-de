@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 0aab9d24888efea7937db62e1826d5d1e5c651b8
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: 79ebe80a0171edb020e3dad9f62106ed25ef1618
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114373305"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307045"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks-cloud-identity-engine---cloud-authentication-service"></a>Tutorial: Integration des einmaligen Anmeldens (SSO) von dem Azure Active Directory mit dem Palo Alto Networks Cloud Identity Engine – Cloud-Authentifizierungsdienst
 
@@ -107,7 +107,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
@@ -119,7 +119,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie den Zugriff auf den Palo Alto Networks Cloud Identity Engine – Cloud-Authentifizierungsdienst gewähren.
 
@@ -131,13 +131,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name=&quot;configure-palo-alto-networks-cloud-identity-engine---cloud-authentication-service-sso&quot;></a>Eine Anleitung zum Konfigurieren des einmaligen Anmeldens mit dem Palo Alto Networks Cloud Identity Engine – Cloud-Authentifizierungsdienst
+## <a name="configure-palo-alto-networks-cloud-identity-engine---cloud-authentication-service-sso"></a>Eine Anleitung zum Konfigurieren des einmaligen Anmeldens mit dem Palo Alto Networks Cloud Identity Engine – Cloud-Authentifizierungsdienst
 
 1. Melden Sie sich bei Ihrer Unternehmenswebsite bei dem Palo Alto Networks Cloud Identity Engine – Cloud-Authentifizierungsdienst als Administrator an.
 
 1. Navigieren Sie unter **Authentifizierung** > zu **Identitätsanbieter** und klicken Sie auf **Identitätsanbieter hinzufügen**.
 
-    ![Konto](./media/palo-alto-networks-cloud-identity-engine---cloud-authentication-service-tutorial/add-service.png &quot;Konto") 
+    ![Konto](./media/palo-alto-networks-cloud-identity-engine---cloud-authentication-service-tutorial/add-service.png "Konto") 
 
 1. Führen Sie auf der Seite **SAML-Authentifizierung einrichten** die folgenden Schritte aus.
 
@@ -168,4 +168,4 @@ In diesem Abschnitt wird ein Testbenutzer mit dem Namen Britta Simon in dem **Pa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren des **Palo Alto Networks Cloud Identity Engine – Cloud-Authentifizierungsdienst** können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren des **Palo Alto Networks Cloud Identity Engine – Cloud-Authentifizierungsdienst** können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

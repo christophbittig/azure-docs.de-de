@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/02/2021
+ms.date: 10/22/2021
 ms.author: curtand
-ms.reviewer: krbain
+ms.reviewer: jodah
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 834893a35c8284012f61d228bf44385cb9eb5549
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b437a88ca30907c097f33ef2065702db4f8945b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986452"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342545"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Microsoft 365-Gruppen
 
@@ -42,7 +42,9 @@ Informationen zum Herunterladen und Installieren der Azure AD-PowerShell-Cmdlets
 
 ## <a name="activity-based-automatic-renewal"></a>Aktivitätsbasierte automatische Erneuerung
 
-Mit Azure AD-Intelligence werden Gruppen nun automatisch erneuert, je nachdem, ob sie kürzlich verwendet wurden. Durch dieses Feature müssen Gruppenbesitzer keine manuellen Aktionen mehr ausführen, weil es auf der Benutzeraktivität in Gruppen in Microsoft 365-Diensten wie Outlook, SharePoint oder Teams basiert. Wenn beispielsweise ein Besitzer oder ein Gruppenmitglied ein Dokument in SharePoint hochlädt, einen Teams-Kanal besucht oder eine E-Mail an die Gruppe in Outlook sendet, wird die Gruppe etwa 35 Tage vor Ablauf der Gruppengültigkeitsdauer automatisch erneuert, und der Besitzer erhält keine Benachrichtigung zur Erneuerung.
+Mit Azure AD-Intelligence werden Gruppen nun automatisch erneuert, je nachdem, ob sie kürzlich verwendet wurden. Durch dieses Feature müssen Gruppenbesitzer keine manuellen Aktionen mehr ausführen, weil es auf der Benutzeraktivität in Gruppen in Microsoft 365-Diensten wie Outlook, SharePoint oder Teams basiert. Wenn beispielsweise ein Besitzer oder ein Gruppenmitglied ein Dokument in SharePoint hochlädt, einen Teams-Kanal besucht oder eine E-Mail an die Gruppe in Outlook sendet, wird die Gruppe etwa 35 Tage vor Ablauf der Gruppengültigkeitsdauer automatisch erneuert, und der Besitzer erhält keine Benachrichtigung zur Erneuerung. Die im einheitlichen Yammer-Modus in eine Microsoft 365-Gruppe konvertierte Gruppe „Alle Unternehmen“ unterstützt diese Art der automatischen Verlängerung derzeit nicht, und Yammer-Aktivitäten für diese Gruppe werden nicht als Aktivitäten gezählt.
+
+Betrachten Sie beispielsweise eine Ablaufrichtlinie, die so festgelegt ist, dass eine Gruppe nach 30 Tagen Inaktivität abläuft. Um jedoch zu verhindern, dass an dem Tag, an dem der Gruppenablauf aktiviert wird, eine Ablauf-E-Mail gesendet wird (weil es noch keine Datensatzaktivität gibt), wartet Azure AD zunächst fünf Tage. Wenn in diesen fünf Tagen Aktivitäten zu erwarten sind, funktioniert die Ablaufrichtlinie wie erwartet. Wenn innerhalb von fünf Tagen keine Aktivität besteht, senden wir eine E-Mail zum Ablauf bzw. zur Verlängerung. Wenn die Gruppe fünf Tage lang inaktiv war, eine E-Mail gesendet wurde und die Gruppe dann aktiv war, werden wir sie neu starten und den Ablaufzeitraum erneut starten.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Aktivitäten, durch die der Ablauf der Gruppe automatisch verlängert wird
 
@@ -65,7 +67,7 @@ Nachfolgend sind Rollen aufgeführt, mit denen der Ablauf für Microsoft 365-Gr
 Role | Berechtigungen
 -------- | --------
 Globaler Administrator, Gruppenadministrator oder Benutzeradministrator | Kann die Einstellungen der Ablaufrichtlinie für Microsoft 365-Gruppen erstellen, lesen, aktualisieren oder löschen<br>Kann eine beliebige Microsoft 365-Gruppe erneuern
-Benutzer | Kann eine Microsoft 365-Gruppe, deren Besitzer er ist, erneuern<br>Kann eine Microsoft 365 Gruppe, deren Besitzer er ist, wiederherstellen<br>Kann die Einstellungen der Ablaufrichtlinie lesen
+Benutzer | Sie können eine Microsoft 365-Gruppe erneuern, die sie besitzen<br>Sie können eine Microsoft 365-Gruppe wiederherstellen, die sie besitzen<br>Kann die Einstellungen der Ablaufrichtlinie lesen
 
 Weitere Informationen zu Berechtigungen zum Wiederherstellen einer gelöschten Gruppe finden Sie unter [Wiederherstellen einer gelöschten Microsoft 365-Gruppe in Azure Active Directory](groups-restore-deleted.md).
 
@@ -101,6 +103,9 @@ Werden Gruppen nicht automatisch erneuert, so werden E-Mail-Benachrichtigungen w
 
 Aus der Benachrichtigungs-E-Mail zu **Gruppe verlängern** können Gruppenbesitzer direkt auf die Seite mit den Gruppendetails im [Zugriffsbereich](https://account.activedirectory.windowsazure.com/r#/applications) zugreifen. Auf dieser Seite erhalten Benutzer weitere Informationen zur Gruppe, z.B. Beschreibung, Zeitpunkt der letzten Verlängerung, Ablaufzeitpunkt und Möglichkeit zur Verlängerung der Gruppe. Die Seite mit den Gruppendetails enthält jetzt auch Links zu den Microsoft 365-Gruppenressourcen, sodass der Gruppenbesitzer den Inhalt und die Aktivitäten der Gruppe bequem anzeigen kann.
 
+>[!Important]
+> Wenn ein Problem mit den Benachrichtigungs-E-Mails besteht und sie nicht gesendet werden oder verzögert werden, sollten Sie sicher sein, dass Microsoft eine Gruppe niemals löscht, bevor die letzte E-Mail gesendet wird.
+
 Wenn eine Gruppe abläuft, wird die Gruppe einen Tag nach dem Ablaufdatum gelöscht. Eine E-Mail-Benachrichtigung wie diese wird an die Microsoft 365-Gruppenbesitzer gesendet, um sie über den Ablauf und die nachfolgende Löschung ihrer Microsoft 365-Gruppe zu informieren.
 
 ![E-Mail-Benachrichtigungen zur Gruppenlöschung](./media/groups-lifecycle/deletion-notification.png)
@@ -111,7 +116,7 @@ Wenn die Gruppe, die Sie wiederherstellen, Dokumente, SharePoint-Websites oder a
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>Abrufen des Ablaufdatums für eine Microsoft 365-Gruppe
 
-Zusätzlich zum Zugriffsbereich, in dem Benutzer Gruppendetails einschließlich Ablaufdatum und letztem Erneuerungsdatum anzeigen können, kann das Ablaufdatum für eine Microsoft 365-Gruppe aus der Betaversion der Microsoft Graph-REST-API abgerufen werden. expirationDateTime als Gruppeneigenschaft wurde in der Betaversion von Microsoft Graph aktiviert. Sie kann mit einer GET-Anforderung abgerufen werden. Weitere Informationen finden Sie in [diesem Beispiel](/graph/api/group-get?view=graph-rest-beta#example&preserve-view=true).
+Zusätzlich zum Zugriffsbereich, in dem Benutzer Gruppendetails einschließlich des Ablaufdatums und des Datums der letzten Erneuerung anzeigen können, kann das Ablaufdatum einer Microsoft 365-Gruppe von der Microsoft Graph REST API Beta abgerufen werden. expirationDateTime als Gruppeneigenschaft wurde in der Betaversion von Microsoft Graph aktiviert. Sie kann mit einer GET-Anforderung abgerufen werden. Weitere Informationen finden Sie in [diesem Beispiel](/graph/api/group-get?view=graph-rest-beta#example&preserve-view=true).
 
 > [!NOTE]
 > Um Gruppenmitgliedschaften im Zugriffsbereich zu verwalten, muss „Zugriff auf Gruppen im Zugriffsbereich einschränken“ in der Allgemeinen Einstellung für Azure Active Directory-Gruppen auf „Nein“ festgelegt werden.

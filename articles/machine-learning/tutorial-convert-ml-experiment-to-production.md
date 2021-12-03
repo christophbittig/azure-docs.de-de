@@ -7,14 +7,14 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.subservice: mlops
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 10/21/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 1e3659f44811c59033a22e1985856f934cd78bba
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: caaaf01d8b1baa5a36726996f24b244f0d9afb46
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426508"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555664"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Tutorial: Konvertieren von ML-Experimenten in Python-Produktionscode
 

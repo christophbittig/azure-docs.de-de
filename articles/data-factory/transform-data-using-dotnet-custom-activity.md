@@ -9,12 +9,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell, synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: 5446bf3c2271fd31fc99e5fadb2f3ab92ca38e26
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0f7c3c85e07bb2a17685e283b5212432864a4818
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124806290"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005782"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-or-azure-synapse-analytics-pipeline"></a>Verwenden benutzerdefinierter Aktivitäten in einer Pipeline von Azure Data Factory oder Azure Synapse Analytics
 
@@ -26,7 +26,7 @@ ms.locfileid: "124806290"
 Es gibt zwei Aktivitätstypen, die Sie in einer Pipeline in Azure Data Factory oder Synapse verwenden können.
 
 - [Datenverschiebungsaktivitäten](copy-activity-overview.md) zum Verschieben von Daten zwischen [unterstützten Quell- und Senkendatenspeichern](copy-activity-overview.md#supported-data-stores-and-formats).
-- [Datentransformationsaktivitäten](transform-data.md) zum Transformieren von Daten mithilfe von Compute-Diensten wie Azure HDInsight, Azure Batch und ML Studio (Classic).
+- [Datentransformationsaktivitäten](transform-data.md) zum Transformieren von Daten mithilfe von Compute-Diensten wie Azure HDInsight und Azure Batch.
 
 Wenn Sie Daten in einen bzw. aus einem von dem Dienst nicht unterstützten Datenspeicher verschieben oder auf eine Weise transformieren/verarbeiten müssen, die von dem Dienst nicht unterstützt wird, können Sie auch eine **benutzerdefinierte Aktivität** mit Ihrer eigenen Datenverschiebungs- bzw. -transformationslogik erstellen und in einer Pipeline verwenden. Die benutzerdefinierte Aktivität führt Ihre angepasste Codelogik in einem **Azure Batch**-Pool mit virtuellen Computern aus.
 
@@ -389,5 +389,4 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [MapReduce-Aktivität](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop-Streamingaktivität](transform-data-using-hadoop-streaming.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
-* [Batch Execution-Aktivität für ML Studio (klassisch)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

@@ -1,18 +1,18 @@
 ---
 title: Entwicklung für mobile Geräte mithilfe von Azure IoT Hub SDKs | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Erfahren Sie mehr über die Entwicklung für mobile Geräte mithilfe von Azure IoT Hub SDKs.'
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
-ms.author: robinsh
-ms.openlocfilehash: 6b086e92f36873c28f4e1d88c9a73f54fd4b20d3
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.author: lizross
+ms.openlocfilehash: c0c7d58284528f33edfcf0a8e497bd8a99f73b53
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114287798"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554558"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Entwicklung für mobile Geräte mithilfe von Azure IoT Hub SDKs | Microsoft-Dokumentation
 

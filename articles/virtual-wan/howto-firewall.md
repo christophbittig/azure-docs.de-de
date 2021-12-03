@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: 90d1233a1374d4ad65410c818ab6e42b36a4e6f9
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: bf3aae99eb62a76885040589560c505ba2a8a2c3
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579648"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487933"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>Konfigurieren von Azure Firewall in einem Virtual WAN-Hub
 
@@ -67,6 +67,9 @@ Um zusätzliche Azure Firewall-Einstellungen für den virtuellen Hub zu konfigur
 Wenn Sie zur Seite **Übersicht** für den Hub zurückkehren möchten, können Sie zurücknavigieren, indem Sie auf den Pfad klicken, wie in der nachstehenden Abbildung dargestellt.
 
 :::image type="content" source="./media/howto-firewall/arrow.png" alt-text="Screenshot der Rückkehr zur Übersicht" lightbox="./media/howto-firewall/arrow.png":::
+
+## <a name="upgrade-to-azure-firewall-premium"></a>Upgrade auf Azure Firewall Premium
+Es ist jederzeit möglich, ein Upgrade von Azure Firewall Standard auf Premium unter Befolgung dieser [Anleitungen](https://docs.microsoft.com/azure/firewall/premium-migrate#migrate-a-secure-hub-firewall) auszuführen. Für diesen Vorgang sind Wartungsfenster erforderlich, da minimale Ausfallzeiten auftreten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 8b2b64de8dd16e36b6956c289beda986d89a5c98
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1c33c2f4bf89b76abf40d12146965114ba4918b0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339391"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564497"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-az-or-kubectl"></a>Hoch- und Herunterskalieren einer Azure Database for PostgreSQL Hyperscale-Servergruppe mithilfe der Befehlszeilenschnittstelle (az oder kubectl)
 
@@ -25,7 +25,9 @@ Es kann vorkommen, dass Sie die Merkmale oder die Definition einer Servergruppe 
 
 In diesem Leitfaden wird erläutert, wie Sie virtuelle Kerne und/oder Arbeitsspeicher skalieren.
 
-Wenn Sie die Einstellungen der virtuellen Kerne oder des Arbeitsspeichers der Servergruppe zentral hoch-oder herunterskalieren, haben Sie die Möglichkeit, für jede Einstellung der virtuellen Kerne oder des Arbeitsspeichers einen Minimal- und/oder einen Maximalwert festzulegen. Wenn Sie die Servergruppe so konfigurieren möchten, dass eine bestimmte Anzahl von virtuellen Kernen oder eine bestimmte Menge an Arbeitsspeicher verwendet wird, legen Sie die Minimalwerteinstellungen auf die Maximalwerteinstellungen fest.
+Wenn Sie die Einstellungen der virtuellen Kerne oder des Arbeitsspeichers der Servergruppe zentral hoch-oder herunterskalieren, haben Sie die Möglichkeit, für jede Einstellung der virtuellen Kerne oder des Arbeitsspeichers einen Minimal- und/oder einen Maximalwert festzulegen. Wenn Sie die Servergruppe so konfigurieren möchten, dass eine bestimmte Anzahl von virtuellen Kernen oder eine bestimmte Menge an Arbeitsspeicher verwendet wird, legen Sie die Minimalwerteinstellungen auf die Maximalwerteinstellungen fest. Bevor Sie die für virtuelle Kerne und den Arbeitsspeicher festgelegten Werte erhöhen, müssen Sie Folgendes sicherstellen: 
+- Sie verfügen über genügend Ressourcen in der physischen Infrastruktur, die Ihre Bereitstellung hostet. 
+- Workloads, die auf demselben System zugeordnet sind, konkurrieren nicht um dieselben virtuellen Kerne oder denselben Arbeitsspeicher.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -33,7 +35,7 @@ Wenn Sie die Einstellungen der virtuellen Kerne oder des Arbeitsspeichers der Se
 
 Führen Sie einen der folgenden Befehle aus, um die aktuelle Definition der Servergruppe und die aktuellen Einstellungen für virtuelle Kerne und den Arbeitsspeicher anzuzeigen:
 
-### <a name="cli-with-azure-cli-az"></a>CLI mit Azure-Befehlszeilenschnittstelle (az)
+### <a name="with-azure-cli-az"></a>Mit Azure CLI (az)
 
 ```azurecli
 az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
@@ -54,7 +56,9 @@ Spec:
       Name:   citus
     Version:  12
   Scale:
-    Workers:  2
+    Replicas:       1
+    Sync Replicas:  0
+    Workers:        4
   Scheduling:
     Default:
       Resources:
@@ -117,13 +121,13 @@ Um eine Anzahl von Kernen anzugeben, übergeben Sie einfach eine Zahl ohne Einhe
 **Konfigurieren Sie die Koordinatorrolle so, dass sie höchstens zwei Kerne verwendet, und die Workerrolle so, dass sie höchstens vier Kerne verwendet:**
 
 ```azurecli
- az postgres arc-server edit -n postgres01 --cores-request coordinator=1, --cores-limit coordinator=2  --k8s-namespace <namespace> --use-k8s
- az postgres arc-server edit -n postgres01 --cores-request worker=1, --cores-limit worker=4 --k8s-namespace <namespace> --use-k8s
+ az postgres arc-server edit -n postgres01 --cores-request coordinator=1, --cores-limit coordinator=2  --k8s-namespace arc --use-k8s
+ az postgres arc-server edit -n postgres01 --cores-request worker=1, --cores-limit worker=4 --k8s-namespace arc --use-k8s
 ```
 
 oder
 ```azurecli
-az postgres arc-server edit -n postgres01 --cores-request coordinator=1,worker=1 --cores-limit coordinator=4,worker=4 --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --cores-request coordinator=1,worker=1 --cores-limit coordinator=4,worker=4 --k8s-namespace arc --use-k8s
 ```
 
 > [!NOTE]
@@ -150,6 +154,17 @@ Angenommen, Sie möchten die folgenden Einstellungen für die Koordinator- und W
 Dazu würden Sie die Definition Ihrer Servergruppe so festlegen, dass sie der folgenden Konfiguration entspricht:
 
 ```json
+...
+  spec:
+  dev: false
+  engine:
+    extensions:
+    - name: citus
+    version: 12
+  scale:
+    replicas: 1
+    syncReplicas: "0"
+    workers: 4
   scheduling:
     default:
       resources:
@@ -163,7 +178,7 @@ Dazu würden Sie die Definition Ihrer Servergruppe so festlegen, dass sie der fo
             memory: 1Gi
           requests:
             cpu: "2"
-            memory: 512Mi
+            memory: 256Mi
       worker:
         resources:
           limits:
@@ -171,7 +186,8 @@ Dazu würden Sie die Definition Ihrer Servergruppe so festlegen, dass sie der fo
             memory: 1Gi
           requests:
             cpu: "2"
-            memory: 512Mi
+            memory: 256Mi
+...
 ```
 
 Wenn Sie mit dem `vi`-Editor nicht vertraut sind, finden Sie [hier](https://www.computerhope.com/unix/uvi.htm) eine Beschreibung der Befehle, die Sie möglicherweise benötigen:
@@ -186,13 +202,13 @@ Wenn Sie mit dem `vi`-Editor nicht vertraut sind, finden Sie [hier](https://www.
 Zum Zurücksetzen der Parameter für Kerne/Arbeitsspeichergrenzwerte/Anforderungen auf ihre Standardwerte bearbeiten Sie sie und übergeben eine leere Zeichenfolge anstelle eines tatsächlichen Werts. Wenn Sie beispielsweise den Parameter für den Kerngrenzwert zurücksetzen möchten, führen Sie die folgenden Befehle aus:
 
 ```azurecli
-az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
-az postgres arc-server edit -n postgres01 --cores-limit coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --k8s-namespace arc --use-k8s
+az postgres arc-server edit -n postgres01 --cores-limit coordinator='',worker='' --k8s-namespace arc --use-k8s
 ```
 
 oder 
 ```azurecli
-az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --cores-limit coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --cores-limit coordinator='',worker='' --k8s-namespace arc --use-k8s
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -4,16 +4,16 @@ description: Azure Cosmos DB unterstützt derzeit nur eine irreversible Migratio
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 10/04/2021
+ms.date: 10/28/2021
 ms.author: sngun
 ms.topic: how-to
 ms.reviewer: sngun
-ms.openlocfilehash: b6821435f2f6ce04f1b8ba4b3af8b8f47097c2fa
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 3ac1ae98dfa920a4b4060905e99b7378fcdb3414
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545996"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476298"
 ---
 # <a name="migrate-an-azure-cosmos-db-account-from-periodic-to-continuous-backup-mode"></a>Migrieren eines Azure Cosmos DB-Kontos vom zyklischen Sicherungsmodus zum fortlaufenden Sicherungsmodus
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -31,7 +31,7 @@ Im Folgenden finden Sie die wichtigsten Gründe für eine Migration zum fortlauf
 > [!NOTE]
 > Die Migrationsfunktion ist eine irreversible Aktion, die nicht rückgängig gemacht werden kann. Das bedeutet, dass Sie nach einem Wechsel vom zyklischen zum fortlaufenden Modus nicht wieder zum zyklischen Modus zurückkehren können.
 >
-> Sie können ein Konto nur dann zum fortlaufenden Sicherungsmodus migrieren, wenn folgende Bedingungen erfüllt sind:
+> Sie können ein Konto nur dann zum fortlaufenden Sicherungsmodus migrieren, wenn die folgenden Bedingungen erfüllt sind. Überprüfen Sie außerdem [die Einschränkungen für die Point-in-Time-Wiederherstellung](continuous-backup-restore-introduction.md#current-limitations), bevor Sie Ihr Konto migrieren:
 >
 > * Das Konto ist vom Typ SQL-API oder API für MongoDB.
 > * Das Konto verfügt über eine einzelne Schreibregion.
@@ -221,4 +221,4 @@ Weitere Informationen zum Modus fortlaufender Sicherungen finden Sie in den folg
 
 Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
-   * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
+   * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

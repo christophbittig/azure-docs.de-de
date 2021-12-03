@@ -9,16 +9,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/13/2020
 keywords: Absichtserkennung
-ms.openlocfilehash: bf84d9309974f645c2fb5011b82d2fb8159adca1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 221f5f0f022cba85df72979ed47b4033b2c3fdd1
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131024522"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988481"
 ---
 # <a name="what-is-intent-recognition"></a>Was ist die Absichtserkennung?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 In dieser Übersicht werden der Nutzen und die Funktionen der Absichtserkennung vorgestellt. Das Cognitive Services Speech SDK bietet zwei Möglichkeiten zum Erkennen von Absichten, die im Folgenden beschrieben werden. Eine Absicht ist eine Aufgabe, die der Benutzer ausführen möchte: einen Flug buchen, sich über das Wetter informieren oder einen Anruf tätigen. Mithilfe der Absichtserkennung können Ihre Anwendungen, Tools und Geräte basierend auf den in der Absichtserkennung oder in LUIS definierten Optionen bestimmen, was der Benutzer initiieren oder tun möchte.
 

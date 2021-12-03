@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8d076b43e2a6ea1c21394569b56a7e689a1ab5fc
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 83b8867ae750fe85bc848e339ddb0409cba85093
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130250880"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400602"
 ---
 # <a name="create-and-use-managed-identity-for-your-form-recognizer-resource"></a>Erstellen und Verwenden einer verwalteten Identität für Ihre Formularerkennungsressource
 
@@ -28,6 +29,10 @@ Eine verwaltete Azure-Identität ist ein Dienstprinzipal, der eine Azure Active 
 Die verwaltete Identität unterstützt sowohl private als auch öffentlich zugängliche Azure Blob Storage-Konten.  Für Speicherkonten mit öffentlichem Zugriff können Sie eine Shared Access Signature (SAS) verwenden, um eingeschränkten Zugriff zu gewähren.   In diesem Artikel erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität für Ihre Formularerkennungsinstanz aktivieren.
 
 ## <a name="private-storage-account-access"></a>Zugriff auf privates Speicherkonto
+> [!NOTE]
+>
+> Azure-Formularerkennung unterstützt derzeit nur vom System zugewiesene verwaltete Identitäten. Vom Benutzer zugewiesene verwaltete Identitäten sind auf der Roadmap und werden in naher Zukunft aktiviert. 
+
 
  Der Zugriff auf das private Azure-Speicherkonto und die Authentifizierung werden von [verwalteten Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) unterstützt. Wenn Sie über ein Azure-Speicherkonto verfügen, das durch ein virtuelles Netzwerk (VNet) oder eine Firewall geschützt ist oder BYOS (Bring-Your-Own-Storage) aktiviert hat, kann die Formularerkennung nicht direkt auf Ihre Speicherkontodaten zugreifen. Sobald jedoch eine verwaltete Identität aktiviert ist, kann der Formularerkennungsdienst mithilfe der zugewiesenen Anmeldeinformationen für die verwaltete Identität auf Ihr Speicherkonto zugreifen.
 

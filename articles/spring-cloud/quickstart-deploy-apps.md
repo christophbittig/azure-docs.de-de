@@ -5,15 +5,15 @@ author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 08/03/2020
+ms.date: 11/15/2021
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 67984beeb3cff6dbb68d440f432684971fa930a7
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c52c2f68754eb87cfca63223674b885f1ba7041e
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003078"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492604"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Schnellstart: Erstellen und Bereitstellen von Apps in Azure Spring Cloud
 
@@ -222,8 +222,8 @@ Die Kompilierung des Projekts dauert fünf bis zehn Minuten. Nach Abschluss des
 1. Stellen Sie die im vorherigen Schritt erstellten JAR-Dateien bereit.
 
     ```azurecli
-    az spring-cloud app deploy --name api-gateway --jar-path spring-petclinic-api-gateway/target/spring-petclinic-api-gateway-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
-    az spring-cloud app deploy --name customers-service --jar-path spring-petclinic-customers-service/target/spring-petclinic-customers-service-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
+    az spring-cloud app deploy --name api-gateway --jar-path spring-petclinic-api-gateway/target/spring-petclinic-api-gateway-2.5.1.jar --jvm-options="-Xms2048m -Xmx2048m"
+    az spring-cloud app deploy --name customers-service --jar-path spring-petclinic-customers-service/target/spring-petclinic-customers-service-2.5.1.jar --jvm-options="-Xms2048m -Xmx2048m"
     ```
 
 1. Fragen Sie den App-Status nach der Bereitstellung mit dem folgenden Befehl ab:
@@ -256,9 +256,9 @@ Damit die PetClinic-App mit allen Features wie Verwaltungsserver, Besuche und Ti
 az spring-cloud app create --name admin-server --instance-count 1 --memory 2 --assign-endpoint
 az spring-cloud app create --name vets-service --instance-count 1 --memory 2
 az spring-cloud app create --name visits-service --instance-count 1 --memory 2
-az spring-cloud app deploy --name admin-server --jar-path spring-petclinic-admin-server/target/spring-petclinic-admin-server-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
-az spring-cloud app deploy --name vets-service --jar-path spring-petclinic-vets-service/target/spring-petclinic-vets-service-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
-az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-visits-service/target/spring-petclinic-visits-service-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
+az spring-cloud app deploy --name admin-server --jar-path spring-petclinic-admin-server/target/spring-petclinic-admin-server-2.5.1.jar --jvm-options="-Xms2048m -Xmx2048m"
+az spring-cloud app deploy --name vets-service --jar-path spring-petclinic-vets-service/target/spring-petclinic-vets-service-2.5.1.jar --jvm-options="-Xms2048m -Xmx2048m"
+az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-visits-service/target/spring-petclinic-visits-service-2.5.1.jar --jvm-options="-Xms2048m -Xmx2048m"
 ```
 
 #### <a name="maven"></a>[Maven](#tab/Maven)
@@ -360,7 +360,7 @@ Für die Bereitstellung in Azure müssen Sie sich mit Ihrem Azure-Konto beim Azu
     ![Bereitstellen in Azure 1](media/spring-cloud-intellij-howto/deploy-to-azure-1-pet-clinic.png)
 
 1. Fügen Sie im Feld **Name** die Zeichenfolge *:api-gateway* an den vorhandenen **Namen** an.
-1. Wählen Sie im Textfeld **Artefakt** die Option *spring-petclinic-api-gateway-2.3.6* aus.
+1. Wählen Sie im Textfeld **Artefakt** die Option *spring-petclinic-api-gateway-2.5.1* aus.
 1. Überprüfen Sie im Textfeld **Abonnement** Ihr Abonnement.
 1. Wählen Sie im Textfeld **Spring Cloud** die Instanz von Azure Spring Cloud aus, die Sie unter [Schnellstart: Bereitstellen des Azure Spring Cloud-Diensts](./quickstart-provision-service-instance.md) erstellt haben.
 1. Legen Sie **Öffentlicher Endpunkt** auf *Aktivieren* fest.

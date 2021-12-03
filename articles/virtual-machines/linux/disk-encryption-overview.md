@@ -9,22 +9,24 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: bc800d12dd26f8edc3fa2f8719104f5f0d793b6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8fa9941d068b6062e8e0350aa9d711aa29808ee5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355416"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342659"
 ---
-# <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs 
+# <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Azure Disk Encryption unterstützt Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Complianceanforderungen Ihrer Organisation. Der Dienst stellt mithilfe des [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)-Features von Linux Volumeverschlüsselung für das Betriebssystem und die Datenträger von virtuellen Azure-Computern (VMs) bereit und ist in [Azure Key Vault](../../key-vault/index.yml) integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für Datenträger steuern und verwalten können.
 
 Azure Disk Encryption ist wie Virtual Machines zonenresilient. Ausführliche Informationen finden Sie unter [Azure-Dienste mit Unterstützung für Verfügbarkeitszonen](../../availability-zones/az-region.md).
 
-Falls Sie [Azure Security Center](../../security-center/index.yml) verwenden, werden Sie gewarnt, wenn VMs nicht verschlüsselt sind. Die Warnungen werden als „Hoher Schweregrad“ angezeigt. Empfohlen wird in diesem Fall die Verschlüsselung der VMs.
+Wenn Sie [Microsoft Defender für Cloud](../../security-center/index.yml) verwenden, werden Sie benachrichtigt, wenn Sie nicht verschlüsselte VMs haben. Die Warnungen werden als „Hoher Schweregrad“ angezeigt. Empfohlen wird in diesem Fall die Verschlüsselung der VMs.
 
-![Azure Security Center: Datenträgerverschlüsselungswarnung](media/disk-encryption/security-center-disk-encryption-fig1.png)
+![Microsoft Defender für Cloud: Warnung zur Datenträgerverschlüsselung](media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
 > - Wenn Sie zuvor Azure Disk Encryption mit Azure AD zum Verschlüsseln eines virtuellen Computers verwendet haben, müssen Sie diese Option auch weiterhin zum Verschlüsseln Ihres virtuellen Computers verwenden. Weitere Informationen finden Sie unter [Azure Disk Encryption mit Azure AD (vorheriges Release)](disk-encryption-overview-aad.md). 

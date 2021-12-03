@@ -1,18 +1,18 @@
 ---
 title: Defender für IoT-Glossar für Organisationen
 description: Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte der Defender für IoT-Plattform.
-ms.date: 05/27/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 21f3404b40ac1b203531079c2e6ecf64697c8d43
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 2506ce3e78c7d8b1c5a5b888b8e645e113bdb105
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016254"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331355"
 ---
 # <a name="defender-for-iot-glossary-for-organizations"></a>Defender für IoT-Glossar für Organisationen
 
-Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte der Azure Defender für IoT-Plattform. Wählen Sie die Links unter **Weitere Informationen** aus, um zu verwandten Begriffen im Glossar zu gelangen. So können Sie Tools im Produkt schneller erlernen und einsetzen.
+Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte für Microsoft Defender für IoT-Plattform. Wählen Sie die Links unter **Weitere Informationen** aus, um zu verwandten Begriffen im Glossar zu gelangen. So können Sie Tools im Produkt schneller erlernen und einsetzen.
 
 <a name="glossary-a"></a>
 
@@ -49,10 +49,10 @@ Dieses Glossar enthält eine Kurzbeschreibung wichtiger Begriffe und Konzepte de
 |--|--|--|
 | **Data Mining** | Generieren Sie umfassende und detaillierte Berichte zu Ihren Netzwerkgeräten:<br /><br />- **SOC-Reaktion auf Vorfälle**: Berichte in Echtzeit, um die sofortige Reaktion auf Vorfälle zu unterstützen. Beispielsweise können in einem Bericht Geräte aufgelistet werden, die möglicherweise gepatcht werden müssen.<br /><br />- **Forensik**: Berichte auf Grundlage von Verlaufsdaten für Untersuchungsberichte.<br /><br />- **IT-Netzwerkintegrität**: Berichte, die helfen, die allgemeine Netzwerksicherheit zu verbessern. Ein Bericht kann beispielsweise Geräte mit unsicheren Anmeldeinformationen für die Authentifizierung enthalten.<br /><br />- **Sichtbarkeit**: Berichte, die alle Abfragepunkte abdecken, um alle Baselineparameter Ihres Netzwerks darzustellen.<br /><br />Speichern Sie Data Mining-Berichte, die Benutzer mit Leseberechtigung anzeigen können. | **[Baseline](#b)<br /><br />[Berichte](#r)** |
 | **Defender für IoT-Plattform** | Die Defender für IoT-Lösung, die in den Defender für IoT-Sensoren und der lokalen Verwaltungskonsole installiert ist. | **[Sensor](#s)<br /><br />[lokale Verwaltungskonsole](#o)** |
-| **Geräteübersicht** | Eine grafische Darstellung der von Defender für IoT erkannten Netzwerkgeräte. Sie zeigt die Verbindungen zwischen Geräten und Informationen zu jedem Gerät. Nutzen Sie die Übersicht für folgende Aufgaben:<br /><br />Abrufen und Steuern von Informationen zu kritischen Geräten<br /><br />Analysieren von Netzwerksegmenten<br /><br />Exportieren von Gerätedetails und -zusammenfassungen | **[Gruppe „Purdue-Ebenen“](#p)** |
-| **Gerätebestand: Sensor** | Im Gerätebestand wird eine umfangreiche Palette der von Defender für IoT erfassten Geräteattribute angezeigt. Für die folgenden Aufgaben stehen Optionen zur Verfügung:<br /><br />Filtern der angezeigten Informationen<br /><br />Exportieren dieser Informationen in eine CSV-Datei<br /><br />Importieren von Windows-Registrierungsdetails | **[Gruppe](#g)** <br /><br />**[Gerätebestand: lokale Verwaltungskonsole](#d)** |
-| **Gerätebestand: lokale Verwaltungskonsole** | Von angeschlossenen Sensoren stammende Geräteinformationen können über die lokale Verwaltungskonsole im Gerätebestand eingesehen werden. Dadurch erhalten Benutzer der lokalen Verwaltungskonsole eine umfassende Übersicht über alle Netzwerkinformationen. | **[Gerätebestand: Sensor](#d)<br /><br />[Gerätebestand: Datenintegration](#d)** |
-| **Gerätebestand: Datenintegration** | Mit den Datenintegrationsfunktionen der lokalen Verwaltungskonsole können Sie die Daten im Gerätebestand mit Informationen aus anderen Unternehmensressourcen verbessern. Beispielressourcen sind Datenbanken für die Konfigurationsverwaltung, DNS, Firewalls und Web-APIs. | **[Gerätebestand: lokale Verwaltungskonsole](#d)** |
+| **Bestandsgerät** | Defender für IoT identifiziert und klassifiziert Geräte als ein einzelnes eindeutiges Netzwerkgerät im Bestand für:
+1. Eigenständige IT-/OT-/IoT-Geräte (mit einem oder mehreren NICs)
+1. Geräte, die aus mehreren Rückwandplatinenkomponenten bestehen (einschließlich aller Racks/Slots/Module)
+1. Geräte, die als Netzwerkinfrastruktur fungieren, z. B. Switch/Router (mit mehreren NICs). Öffentliche Internet-IP-Adressen, Multicastgruppen und Broadcastgruppen werden nicht als Bestandsgeräte betrachtet. Geräte, die seit mehr als 60 Tagen inaktiv sind, werden als inaktive Bestandsgeräte klassifiziert.| | **Gerätezuordnung|** Eine grafische Darstellung von Netzwerkgeräten, die von Defender für IoT erkannt werden. Sie zeigt die Verbindungen zwischen Geräten und Informationen zu jedem Gerät. Nutzen Sie die Übersicht für folgende Aufgaben:<br /><br />Abrufen und Steuern von Informationen zu kritischen Geräten<br /><br />Analysieren von Netzwerksegmenten<br /><br />Exportieren von Gerätedetails und -zusammenfassungen |  **[Gruppe „Purdue-Ebenen“](#p)** | | **Gerätebestand – Sensor** | Im Gerätebestand wird eine umfangreiche Palette der von Defender für IoT erfassten Geräteattribute angezeigt. Für die folgenden Aufgaben stehen Optionen zur Verfügung:<br /><br />Filtern der angezeigten Informationen<br /><br />Exportieren dieser Informationen in eine CSV-Datei<br /><br />Importieren von Windows-Registrierungsdetails |  **[Gruppe](#g)** <br /><br />**[Gerätebestand – lokale Verwaltungskonsole](#d)** | | **Gerätebestand – lokale Verwaltungskonsole** | Geräteinformationen aus verbundenen Sensoren können über die lokale Verwaltungskonsole im Gerätebestand eingesehen werden. Dadurch erhalten Benutzer der lokalen Verwaltungskonsole eine umfassende Übersicht über alle Netzwerkinformationen. |  **[Gerätebestand – Sensor](#d)<br /><br />[Gerätebestand – Datenintegrator](#d)** | | **Gerätebestand – Datenintegrator** | Mit den Datenintegrationsfunktionen der lokalen Verwaltungskonsole können Sie die Daten im Gerätebestand mit Informationen aus anderen Unternehmensressourcen erweitern. Beispielressourcen sind Datenbanken für die Konfigurationsverwaltung, DNS, Firewalls und Web-APIs. |  **[Gerätebestand – lokale Verwaltungskonsole](#d)**  |
 
 ## <a name="e"></a>E
 

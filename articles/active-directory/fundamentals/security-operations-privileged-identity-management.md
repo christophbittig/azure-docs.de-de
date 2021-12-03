@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac4f2982166fabf7a49a92966ca783a260ca875a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 7ef4ca7858e50c43a2ed17656ecdd11c3affef6d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038724"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300802"
 ---
 # <a name="azure-active-directory-security-operations-for-privileged-identity-management-pim"></a>Azure Active Directory-Sicherheitsvorgänge für Privileged Identity Management (PIM)
 
@@ -26,7 +26,7 @@ Die Sicherheit der Geschäftsressourcen hängt von der Integrität der privilegi
 
 Bei Clouddiensten sind Cloud-Dienstanbieter und Kunde gemeinsam verantwortlich für Prävention und Reaktion. 
 
-Klassischerweise haben sich Unternehmen bezüglich der Sicherheit auf die Ein- und Ausstiegspunkte eines Netzwerks als Sicherheitsperimeter konzentriert. Mit SaaS-Apps und persönlichen Geräten hat dieser Ansatz jedoch an Wirksamkeit verloren. In Azure Active Directory (Azure AD) wird der Netzwerksicherheitsperimeter durch eine Authentifizierung in der Identitätsschicht Ihrer Organisation ersetzt. Da Benutzern privilegierte Administratorrollen erteilt werden, muss ihr Zugriff in lokalen, cloudbasierten und hybriden Umgebungen geschützt werden. 
+Klassischerweise haben sich Unternehmen bezüglich der Sicherheit auf die Ein- und Ausstiegspunkte eines Netzwerks als Sicherheitsperimeter konzentriert. Mit SaaS-Apps und persönlichen Geräten hat dieser Ansatz jedoch an Wirksamkeit verloren. In Azure Active Directory (Azure AD) wird der Netzwerksicherheitsperimeter durch eine Authentifizierung in der Identitätsschicht Ihrer Organisation ersetzt. Da Benutzern privilegierte Administratorrollen erteilt werden, muss ihr Zugriff in lokalen, cloudbasierten und hybriden Umgebungen geschützt werden.
 
 Sie sind für alle Sicherheitsebenen Ihrer lokalen IT-Umgebung verantwortlich. Wenn Sie Azure-Dienste verwenden, liegen die Vorbeugung und Reaktion in der gemeinsamen Verantwortung von Microsoft als Clouddienstanbieter und Ihnen als Kunde. 
 
@@ -62,13 +62,13 @@ Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien:
 
 Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- oder JSON-Dateien (Comma-Separated Value bzw. JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen mit anderen Tools, die eine umfassendere Automatisierung von Überwachung und Warnmeldungen ermöglichen:
 
-* [**Azure Sentinel**](../../sentinel/overview.md) : ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
+* [**Microsoft Sentinel**](../../sentinel/overview.md): Ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
 
 * [**Azure Monitor**](../../azure-monitor/overview.md) : ermöglicht die automatisierte Überwachung verschiedener Bedingungen und entsprechende Warnungen. Damit können Arbeitsmappen erstellt oder verwendet werden, um Daten aus verschiedenen Quellen zu kombinieren.
 
 * [**Azure Event Hubs**](../../event-hubs/event-hubs-about.md) **mit Integration mit einem SIEM-System:** - [ Azure AD-Protokolle können über die Azure Event Hubs-Integration in andere SIEM-Systeme](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) wie Splunk, ArcSight, QRadar und Sumo Logic integriert werden.
 
-* [**Microsoft Cloud App Security (MCAS)** ](/cloud-app-security/what-is-cloud-app-security): Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps. 
+* [**Microsoft Defender für Cloud-Apps**](/cloud-app-security/what-is-cloud-app-security): Ermöglichen Ihnen die Erkennung und Verwaltung von Apps, die Steuerung von Apps und Ressourcen sowie die Überprüfung der Compliance Ihrer Cloud-Apps. 
 
 Der übrige Teil dieses Artikels enthält Empfehlungen zum Festlegen einer Baseline, die mithilfe eines Ebenenmodells organisiert ist und auf deren Grundlage die Überwachung und Warnungen erfolgen. Links zu vorgefertigten Lösungen sind im Anschluss an die Tabelle aufgeführt. Sie können Warnungen auch mithilfe der oben genannten Tools erstellen. Der Inhalt ist in die folgenden PIM-Themenbereiche unterteilt:
 

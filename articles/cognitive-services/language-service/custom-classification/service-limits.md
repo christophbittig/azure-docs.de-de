@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, references_regions, ignite-fall-2021
-ms.openlocfilehash: 745c75722fc3a431c3f7cc4b5b47a8ebdd1895e7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 06db585531cb3a73b291f2c8d45de18a3d298fb2
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101498"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484085"
 ---
 # <a name="custom-text-classification-limits"></a>Grenzwerte für die benutzerdefinierte Textklassifizierung
 
@@ -45,7 +45,7 @@ In diesem Artikel erfahren Sie mehr über die Grenzwerte für Daten und Raten be
 * Die maximale Größe von Dateien pro Anforderung beträgt 125.000 Zeichen. Sie können bis zu 25 Dateien senden, solange deren Gesamtgröße 125.000 Zeichen nicht überschreitet.
 
 > [!NOTE]
-> Wenn Sie größere Dateien senden müssen, als der Grenzwert zulässt, können Sie den Text in kleinere Textabschnitte aufteilen, bevor Sie ihn an die API senden. Für diesen Vorgang können Sie den [chunk-Befehl von CLUtils](https://github.com/microsoft/CogSLanguageUtilities/tree/main/CLUtils/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ChunkCommand) verwenden.
+> Wenn Sie größere Dateien senden müssen, als der Grenzwert zulässt, können Sie den Text in kleinere Textabschnitte aufteilen, bevor Sie ihn an die API senden. Für diesen Vorgang können Sie den [chunk-Befehl von CLUtils](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ChunkCommand/README.md) verwenden.
 
 ## <a name="azure-resource-limits"></a>Azure-Ressourcengrenzwerte
 

@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/09/2020
+ms.date: 11/12/2021
 ms.author: rolyon
-ms.openlocfilehash: 21bab82044e3c661ccd797030b43987a60c0cdce
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 667709d8f924556c43a741151c55f5469fb92639
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787561"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399957"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Auflisten von Azure-Rollenzuweisungen über das Azure-Portal
 
@@ -136,6 +136,8 @@ Sie können Rollenzuweisungen für vom System zugewiesene und vom Benutzer zugew
 ## <a name="list-number-of-role-assignments"></a>Auflisten der Anzahl von Rollenzuweisungen
 
 Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Dieser Grenzwert schließt Rollenzuweisungen im Abonnement, in der Ressourcengruppe und im Ressourcenbereich ein. Damit Sie diesen Grenzwert nachverfolgen können, enthält die Registerkarte **Rollenzuweisungen** ein Diagramm, in dem die Anzahl der Rollenzuweisungen für das aktuelle Abonnement aufgeführt ist.
+
+Das Limit für Rollenzuweisungen für ein Abonnement wird derzeit erhöht. Weitere Informationen finden Sie unter [Behandeln von Problemen bei Azure RBAC](troubleshooting.md#azure-role-assignments-limit).
 
 ![Zugriffssteuerung: Diagramm „Anzahl der Rollenzuweisungen“](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 

@@ -10,13 +10,13 @@ ms.topic: how-to
 author: uc-msft
 ms.author: umajay
 ms.reviewer: mathoma
-ms.date: 04/19/2020
-ms.openlocfilehash: 4597380c0bae96c67c38d36d162fdf740ba119a2
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 10/18/2021
+ms.openlocfilehash: ed70bb517478fb931ac402a7b528118b3d76d148
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590250"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239395"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database-and-azure-sql-managed-instance"></a>Erste Schritte mit JSON-Features in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ In Azure SQL-Datenbank und Azure SQL Managed Instance können Sie im JavaScript 
 
 Für einen Webdienst, der Daten aus der Datenbankschicht entnimmt und eine Antwort im JSON-Format bereitstellt, oder clientseitige JavaScript-Frameworks oder Bibliotheken, die Daten im JSON-Format akzeptieren, können Sie den Datenbankinhalt direkt in einer SQL-Abfrage im JSON-Format formatieren. Sie müssen nicht mehr Anwendungscode schreiben, der Ergebnisse aus Azure SQL-Datenbank oder Azure SQL Managed Instance als JSON formatiert, oder eine JSON-Serialisierungsbibliothek einbeziehen, um Ergebnisse einer tabellarischen Abfrage zu konvertieren und dann Objekte in das JSON-Format zu serialisieren. Stattdessen können Sie mit der FOR JSON-Klausel SQL-Abfrageergebnisse in JSON formatieren und direkt in Ihrer Anwendung verwenden.
 
-Im folgenden Beispiel werden Zeilen aus der Tabelle „Sales.Customer“ mithilfe der FOR JSON-Klausel im JSON-Format formatiert:
+Im folgenden Beispiel werden Zeilen aus der Tabelle `Sales.Customer` mithilfe der FOR JSON-Klausel im JSON-Format formatiert:
 
 ```sql
 select CustomerName, PhoneNumber, FaxNumber
@@ -191,9 +191,3 @@ END
 ```
 
 Die als JSON-Array formatierte und der gespeicherten Prozedur als Parameter bereitgestellte Auflistung der Aufträge kann analysiert und in die Tabelle „Orders“ eingefügt werden.
-
-## <a name="next-steps"></a>Nächste Schritte
-
-In diesen Ressourcen finden Sie weitere Informationen zur Integration von JSON in Ihre Anwendung:
-
-Weitere Informationen zu verschiedenen Szenarios der Integration von JSON in Ihre Anwendung enthalten die Demos in diesem [Channel 9-Video](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds), oder suchen Sie in den [JSON-Blogbeiträgen](/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases) nach einem Szenario, das Ihrem Anwendungsfall entspricht.

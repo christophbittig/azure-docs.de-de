@@ -16,19 +16,22 @@ ms.date: 10/07/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86ad08d7c50195332460eab285f3d32d45eec8cb
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: d8a36c1837273fc3fa173994e2ec3b3465ed4cb6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668008"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520254"
 ---
 # <a name="management-capabilities-for-privileged-access-groups-preview"></a>Verwaltungsfunktionen für Gruppen mit privilegiertem Zugriff (Vorschau)
 
 In Privileged Identity Management (PIM) kann nun die Berechtigung zur Mitgliedschaft in privilegierten Zugriffsgruppen oder zum Besitz privilegierter Zugriffsgruppen zugewiesen werden. Ab dieser Vorschauversion können Sie Cloudgruppen integrierte Azure AD-Rollen (Azure Active Directory) zuweisen und die Berechtigung und Aktivierung von Gruppenmitgliedern und -besitzern mithilfe von PIM verwalten. Weitere Informationen zu Gruppen, die in Azure AD Rollen zugewiesen werden können, finden Sie unter [Verwenden von Azure AD-Gruppen zum Verwalten von Rollenzuweisungen](../roles/groups-concept.md).
 
 >[!Important]
-> Verwenden Sie zum Zuweisen einer privilegierten Zugriffsgruppe zu einer Rolle für den Administratorzugriff auf Exchange, Security & Compliance Center oder SharePoint die Funktion **Rollen und Administratoren** im Azure AD-Portal und nicht die Funktion für Gruppen mit privilegiertem Zugriff, um den Benutzer oder die Gruppe als berechtigt für die Aktivierung in der Gruppe festzulegen.
+> Verwenden Sie zum Zuweisen einer Gruppe mit privilegiertem Zugriff zu einer Rolle für den Administratorzugriff auf Exchange, Security & Compliance Center oder SharePoint die Funktion **Rollen und Administratoren** im Azure AD-Portal und nicht die Funktion für Gruppen mit privilegiertem Zugriff, um den Benutzer oder die Gruppe als berechtigt für die Aktivierung in der Gruppe festzulegen.
+
+> [!NOTE]
+> Für Gruppen mit berechtigtem Zugriff, die für die Erhöhung von Azure AD-Rollen verwendet werden, empfiehlt es sich, einen Genehmigungsprozess für berechtigte Mitgliedszuweisungen vorauszusetzen. Zuweisungen, die ohne Genehmigung aktiviert werden können, können ein Sicherheitsrisiko für Administratoren mit einer niedrigeren Berechtigungsebene darstellen. Beispielsweise verfügt der Helpdeskadministrator über die Berechtigung zum Zurücksetzen des Kennworts eines berechtigten Benutzers.
 
 ## <a name="require-different-policies-for-each-role-assignable-group"></a>Verwenden unterschiedlicher Richtlinien für Gruppen, die Rollen zugewiesen werden können
 

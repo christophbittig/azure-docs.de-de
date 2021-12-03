@@ -4,15 +4,15 @@ description: Es wird beschrieben, wie Sie virtuelle Computer in einem Lab in Azu
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee3054c5b5434cba526c2025d5649fed0b44d391
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 24a9b21e9a081a875653a6b368f1ce501b1cb0fb
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604763"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401894"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Starten von virtuellen Computern in einem Lab nach einer bestimmten Reihenfolge mit Azure Automation-Runbooks
-Mit dem Feature [Autostart](devtest-lab-set-lab-policy.md#set-autostart) von DevTest Labs können Sie virtuelle Computer so konfigurieren, dass sie zu einem bestimmten Zeitpunkt automatisch gestartet werden. Bei diesem Feature wird das Starten von Computern in einer bestimmten Reihenfolge aber nicht unterstützt. Es gibt mehrere Szenarien, in denen diese Art von Automatisierung sinnvoll ist.  Ein Beispiel ist das Szenario, in dem eine Jumpbox-VM in einem Lab vor den anderen VMs zuerst gestartet werden muss, da die Jumpbox als Zugriffspunkt für die anderen VMs verwendet wird.  In diesem Artikel wird veranschaulicht, wie Sie ein Azure Automation-Konto mit einem PowerShell-Runbook einrichten, über das ein Skript ausgeführt wird. Im Skript werden Tags auf VMs im Lab genutzt, damit Sie die Startreihenfolge steuern können, ohne das Skript ändern zu müssen.
+Mit dem Feature [Autostart](devtest-lab-set-lab-policy.md#set-autostart) von DevTest Labs können Sie virtuelle Computer so konfigurieren, dass sie zu einem bestimmten Zeitpunkt automatisch gestartet werden. Bei diesem Feature wird das Starten von Computern in einer bestimmten Reihenfolge aber nicht unterstützt. Es gibt mehrere Szenarien, in denen diese Art von Automatisierung sinnvoll ist.  Ein Szenario ist, dass eine Jumpbox-VM in einem Lab der Zugriffspunkt für die anderen VMs ist. Die Jumpbox-VM muss vor den anderen VMs gestartet werden. In diesem Artikel wird veranschaulicht, wie Sie ein Azure Automation-Konto mit einem PowerShell-Runbook einrichten, über das ein Skript ausgeführt wird. Im Skript werden Tags auf VMs im Lab genutzt, damit Sie die Startreihenfolge steuern können, ohne das Skript ändern zu müssen.
 
 ## <a name="setup"></a>Einrichten
 In diesem Beispiel muss den VMs im Lab das Tag **StartupOrder** mit dem entsprechenden Wert (0, 1, 2 usw.) hinzugefügt werden. Kennzeichnen Sie alle Computer, die nicht gestartet werden sollen, mit „-1“.
@@ -24,7 +24,7 @@ Erstellen Sie ein Azure Automation-Konto, indem Sie die Anleitung in [diesem Art
 Wählen Sie nun im Menü auf der linken Seite die Option **Runbooks**, um dem Automation-Konto ein Runbook hinzuzufügen. Wählen Sie im Menü die Option **Runbook hinzufügen**, und befolgen Sie die Anleitung zum [Erstellen eines PowerShell-Runbooks](../automation/learn/powershell-runbook-managed-identity.md).
 
 ## <a name="powershell-script"></a>PowerShell-Skript
-Im folgenden Skript werden der Abonnementname und der Lab-Name als Parameter verwendet. Das Skript läuft so ab, dass alle VMs im Lab abgerufen und anschließend die Taginformationen analysiert werden, um eine Liste mit den VM-Namen und der Startreihenfolge zu erstellen. Das Skript geht die VMs der Reihenfolge nach durch und startet die VMs. Wenn mehrere virtuelle Computer in einer bestimmten Reihenfolge vorhanden sind, werden sie über PowerShell-Aufträge asynchron gestartet. Legen Sie den Startwert für die VMs ohne Tag auf den letzten Wert (10) fest, damit sie standardmäßig zuletzt gestartet werden.  Wenn der virtuelle Computer für das Lab nicht automatisch gestartet werden soll, können Sie den Tagwert auf 11 festlegen, damit er ignoriert wird.
+Im folgenden Skript werden der Abonnementname und der Lab-Name als Parameter verwendet. Das Skript läuft so ab, dass alle VMs im Lab abgerufen und anschließend die Taginformationen analysiert werden, um eine Liste mit den VM-Namen und der Startreihenfolge zu erstellen. Das Skript geht die VMs der Reihenfolge nach durch und startet die VMs. Wenn mehrere VMs in einer bestimmten Reihenfolge vorhanden sind, werden sie über PowerShell-Aufträge asynchron gestartet. Legen Sie für diese VMs, wenn sie kein Tag aufweisen, den Startwert auf den letzten (10) fest. Diese Computer werden standardmäßig zuletzt gestartet.  Wenn die VM nicht automatisch gestartet werden soll, legen Sie den Tagwert auf „11“ fest. Das Skript ignoriert dann diese VM.
 
 ```powershell
 #Requires -Version 3.0
@@ -127,7 +127,7 @@ While ($current -le 10) {
 ## <a name="create-a-schedule"></a>Erstellen eines Zeitplans
 [Erstellen Sie im Automation-Konto einen Zeitplan](../automation/shared-resources/schedules.md#create-a-schedule), wenn dieses Skript täglich ausgeführt werden soll. [Verknüpfen Sie den Zeitplan nach der Erstellung mit dem Runbook](../automation/shared-resources/schedules.md#link-a-schedule-to-a-runbook). 
 
-In einem umfassenderen Fall, wenn mehrere Abonnements mit mehreren Labs verwendet werden, sollten Sie die Parameterinformationen für verschiedene Labs in einer zentralen Datei speichern und die Datei anstelle der einzelnen Parameter an das Skript übergeben. Das Skript müsste geändert werden, aber die eigentliche Ausführung wäre identisch. In diesem Beispiel wird Azure Automation zum Ausführen des PowerShell-Skripts verwendet, aber es gibt auch andere Optionen, z. B. die Verwendung einer Aufgabe in einer Build-/Releasepipeline.
+In Fällen mit großer Skalierung und mehreren Abonnements mit vielen Labs speichern Sie die Parameterinformationen in einer Datei für die einzelnen Labs. Übergeben Sie dann anstelle der einzelnen Parameter diese Datei an das Skript. Das Skript muss zwar angepasst werden, aber die Kernausführung ist identisch. In diesem Beispiel wird Azure Automation zum Ausführen des PowerShell-Skripts verwendet, aber es gibt auch andere Optionen, z. B. die Verwendung einer Aufgabe in einer Build-/Releasepipeline.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Im folgenden Artikel finden Sie weitere Informationen zu Azure Automation: [An introduction to Azure Automation (Einführung in Azure Automation)](../automation/automation-intro.md).

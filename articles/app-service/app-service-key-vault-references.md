@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/11/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 381cc0d1114e60cbb9678c0df9a66176f3b51e99
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 74341e9f4c2436768a73591878f29e7f392b1f3a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128627594"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006827"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Verwenden von Key Vault-Verweisen für App Service und Azure Functions
 
@@ -88,7 +88,7 @@ Alternativ:
 
 ## <a name="rotation"></a>Drehung
 
-Wenn in der Referenz keine Version angegeben ist, verwendet die App die neueste in Key Vault vorhandene Version. Sobald neuere Versionen verfügbar werden, z. B. bei einem Rotationsereignis, wird die App automatisch aktualisiert und beginnt innerhalb eines Tages mit der Nutzung der neuesten Version. Jede Konfigurationsänderung in der App führt zu einer sofortigen Aktualisierung auf die neuesten Versionen aller referenzierten Geheimnisse.
+Wenn in der Referenz keine Version angegeben ist, verwendet die App die neueste in Schlüsseltresor vorhandene Version. Sobald neuere Versionen verfügbar werden, z. B. bei einem Rotationsereignis, wird die App automatisch aktualisiert und beginnt innerhalb von 24 Stunden mit der Nutzung der neuesten Version. Die Verzögerung liegt daran, dass App Service die Werte der Schlüsseltresorverweise zwischenspeichert und alle 24 Stunden erneut abruft. Alle Konfigurationsänderungen an der App verursachen eine sofortige Neuabfrage aller Geheimnisse, auf die verwiesen wird.
 
 ## <a name="source-application-settings-from-key-vault"></a>Einbinden von Anwendungseinstellungen aus Key Vault
 

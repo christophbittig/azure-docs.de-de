@@ -1,22 +1,22 @@
 ---
 title: Aktivieren der VM-Erweiterung mithilfe von Azure PowerShell
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in hybriden Cloudumgebungen ausgeführt werden.
-ms.date: 10/15/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c759510c3ab81b15b65315015a16507dadf2658a
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 03fb598989c7f308b3e481824e17d423f6d31824
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074568"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470621"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe von Azure PowerShell
 
-In diesem Artikel erfahren Sie, wie Sie Azure-VM-Erweiterungen, die von Azure Arc-fähigen Servern unterstützt werden, auf einem Linux- oder Windows-Hybridcomputer unter Verwendung von Azure PowerShell bereitstellen oder deinstallieren.
+In diesem Artikel erfahren Sie, wie Sie Azure-Erweiterungen für virtuelle Computer (VM), die von Azure-Arc-fähigen Servern unterstützt werden, auf einem Linux- oder Windows-Hybridcomputer unter Verwendung von Azure PowerShell bereitstellen, aktualisieren oder deinstallieren.
 
 > [!NOTE]
-> Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu virtuellen Azure-Computern finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
+> Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu virtuellen Azure-Computern finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -105,7 +105,13 @@ Name    Location  PropertiesType        ProvisioningState
 custom  westus2   CustomScriptExtension Succeeded
 ```
 
-## <a name="remove-an-installed-extension"></a>Entfernen einer installierten Erweiterung
+## <a name="update-extensions"></a>Aktualisieren von Erweiterungen
+
+Um eine installierte Erweiterung neu zu konfigurieren, können Sie das Cmdlet [Aktualisieren-Az-verbundene Computer-Erweiterung (Update-AzConnectedMachineExtension)](/powershell/module/az.connectedmachine/update-azconnectedmachineextension) mit den Parametern `-Name`, `-MachineName`, `-ResourceGroupName` und `-Settings` verwenden.
+
+Lesen Sie den Referenzartikel für das Cmdlet, um die verschiedenen Methoden zum Bereitstellen der Änderungen zu verstehen, die Sie an der Erweiterung vornehmen möchten.
+
+## <a name="remove-extensions"></a>Entfernen von Erweiterungen
 
 Verwenden Sie [Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) mit den Parametern `-Name`, `-MachineName` und `-ResourceGroupName`, um eine installierte VM-Erweiterung auf dem Azure Arc-fähigen Server zu entfernen.
 

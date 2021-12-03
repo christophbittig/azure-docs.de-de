@@ -4,19 +4,22 @@ description: In diesem Artikel werden Überlegungen zur Preisgestaltung, Abrechn
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 10/26/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 77ec7a7dad4b215ae22bf3766172f1e92e932593
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0e7166399dac6d28a5b7e0ed4cf5f4e5cd20e97c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736193"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059032"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
 In diesem Artikel werden Überlegungen zur Preisgestaltung, Abrechnung, Rechnungsstellung und Auszahlung für *transaktionsfähige* Angebote beschrieben, die über den kommerziellen Marketplace verkauft werden. Informationen zum Veröffentlichen nicht transaktionsfähiger Angebote (kostenlos oder BYOL) finden Sie unter [Einführung in Auflistungsoptionen](determine-your-listing-type.md).
+
+> [!TIP]
+> Die Ansicht des Kunden für den Kauf im kommerziellen Marketplace finden Sie unter [Kauf im Azure Marketplace](/marketplace/azure-purchasing-invoicing). Informationen zu SaaS-Angeboten finden Sie unter [Kaufen von SaaS-Apps in Microsoft AppSource](/marketplace/purchase-software-appsource).
 
 ## <a name="transactions-by-listing-option"></a>Transaktionen nach Auflistungsoption
 
@@ -59,7 +62,7 @@ Je nach verwendeter Transaktionsoption fallen folgende Abonnementgebühren an:
 
 - **Abonnementpreise**: Softwarelizenzgebühren werden als laufende Abonnementgebühr ausgewiesen, die monatlich oder jährlich fällig ist und als Pauschale oder pro Arbeitsplatz berechnet wird. Bei Kündigungen durch den Kunden in der Mitte der Laufzeit bzw. bei nicht genutzten Diensten erfolgt keine anteilsmäßige Erstattung von laufenden Abonnementgebühren. Laufende Abonnementgebühren können angerechnet werden, wenn der Kunde das Abonnement in der Mitte der Abonnementlaufzeit aktualisiert oder herabstuft.
 - **Nutzungsbasierte Preisgestaltung**: Bei Angeboten für virtuelle Azure-Computer werden dem Kunden nutzungsabhängige Gebühren für das Angebot berechnet. Bei VM-Images wird dem Kunden ein Azure Marketplace-Stundensatz in Rechnung gestellt, der vom Herausgeber festgelegt und für die Nutzung der virtuellen Computer erhoben wird, die auf der Grundlage der VM-Images bereitgestellt wurden. Die Stundengebühr kann einheitlich sein oder je nach VM-Größe variieren. Angefangene Stunden werden pro Minute abgerechnet. Pläne werden monatlich abgerechnet.
-- **Getaktetes Preismodell**: Bei Azure-Anwendungsangeboten und SaaS-Angeboten können Herausgeber den [Marketplace-Messungsdienst](marketplace-metering-service-apis.md) verwenden, um die Nutzung auf der Grundlage der von ihnen konfigurierten benutzerdefinierten Verbrauchseinheitsdimensionen zu berechnen. Diese Gebühren fallen zusätzlich zu den im Vertrag (Berechtigung) enthaltenen Monats- oder Jahresgebühren an. Beispiele für benutzerdefinierte Verbrauchseinheitsdimensionen wären etwa Bandbreite, Tickets oder verarbeitete E-Mails. Herausgeber können für jeden Plan eine oder mehrere getaktete Dimensionen definieren. Pro Angebot sind jedoch maximal 30 Dimensionen möglich. Herausgeber sind dafür verantwortlich, die Nutzung der einzelnen Kunden mit jeder im Angebot definierten Verbrauchseinheit nachzuverfolgen. Ereignisse sollten innerhalb einer Stunde an Microsoft gemeldet werden. Microsoft erstellt die Kundenrechnungen auf Basis der von den Herausgebern für den jeweiligen Abrechnungszeitraum gemeldeten Nutzungsinformationen.
+- **Getaktetes Preismodell**: Bei Azure-Anwendungsangeboten und SaaS-Angeboten können Herausgeber den [Marketplace-Messungsdienst](marketplace-metering-service-apis.md) verwenden, um die Nutzung auf der Grundlage der von ihnen konfigurierten benutzerdefinierten Verbrauchseinheitsdimensionen zu berechnen. Diese Gebühren fallen zusätzlich zu den im Vertrag (Berechtigung) enthaltenen Monats- oder Jahresgebühren an. Beispiele für benutzerdefinierte Verbrauchseinheitsdimensionen wären etwa Bandbreite, Tickets oder verarbeitete E-Mails. Herausgeber können für jeden Plan eine oder mehrere getaktete Dimensionen definieren. Pro Angebot sind jedoch maximal 30 Dimensionen möglich. Herausgeber sind dafür verantwortlich, die Nutzung der einzelnen Kunden mit jeder im Angebot definierten Verbrauchseinheit nachzuverfolgen. Ereignisse sollten innerhalb einer Stunde nach dem Eintreten an Microsoft gemeldet werden. Microsoft erstellt die Kundenrechnungen auf Basis der von den Herausgebern für den jeweiligen Abrechnungszeitraum gemeldeten Nutzungsinformationen.
 
 > [!NOTE]
 > Angebote, die nach Verbrauch abgerechnet werden, sind nach Verwendung der Lösung nicht erstattungsfähig.
@@ -81,13 +84,13 @@ Die Angebote für virtuelle Computer und Azure-Anwendungen eignen sich gut, wenn
 
 ### <a name="usage-based-and-subscription-pricing"></a>Nutzungsbasierte Preisgestaltung und Abonnementpreise
 
-Bei Veröffentlichung eines Angebots als nutzungs- oder abonnementbasierte Transaktion stellt Microsoft die Technologie und Dienste zum Verarbeiten von Käufen, Rückgaben und Rückbuchungen von Softwarelizenzen zur Verfügung. In diesem Szenario autorisiert der Herausgeber Microsoft, als Vermittler für diese Zwecke zu fungieren. Der Herausgeber erlaubt Microsoft die Abwicklung der Softwarelizenzierungstransaktion. Dabei behält der Herausgeber die Rolle als Verkäufer, Anbieter, Distributor und Lizenzgeber.
+Bei Veröffentlichung eines Angebots als nutzungs- oder abonnementbasierte Transaktion stellt Microsoft die Technologie und Dienste zum Verarbeiten von Käufen, Rückgaben und Rückbuchungen von Softwarelizenzen zur Verfügung. In diesem Szenario autorisiert der Herausgeber Microsoft, als Vermittler für diese Zwecke zu fungieren. Der Herausgeber erlaubt Microsoft die Abwicklung der Softwarelizenzierungstransaktion. Der Verkäufer, Anbieter, Vertriebspartner und Lizenzgeber ist jedoch weiterhin der Herausgeber.
 
 Microsoft ermöglicht es Kunden, Ihre Software zu bestellen, zu lizenzieren und zu nutzen, wobei die Bedingungen des kommerziellen Marketplace von Microsoft und Ihres Endbenutzerlizenzvertrags gelten. Sie müssen entweder Ihren eigenen Endbenutzerlizenzvertrag bereitstellen oder beim Erstellen des Angebots den [Standardvertrag](./standard-contract.md) auswählen.
 
 ### <a name="free-software-trials"></a>Kostenlose Testversionen
 
-Bei Veröffentlichungsszenarien des Typs „Transaktion“ können Sie je nach Abonnement eine Softwarelizenz zwischen 30 und 120 Tagen kostenlos zur Verfügung stellen. Kunden werden anfallende Nutzungsgebühren für die Azure-Infrastruktur in Rechnung gestellt.
+Bei Veröffentlichungsszenarien des Typs „Transaktion“ können Sie je nach Abonnement eine Softwarelizenz zwischen 30 und 120 Tagen kostenlos zur Verfügung stellen. Die für die Nutzung der Azure-Infrastruktur anfallenden Kosten werden den Kund*innen in Rechnung gestellt.
 
 ### <a name="examples-of-pricing-and-store-fees"></a>Beispiele für Preise und Store-Gebühren
 
@@ -165,7 +168,7 @@ Bei Auswahl der Preismodelle „Abonnement“ oder „Nutzungsbasierte Bezahlung
 
 ### <a name="publisher-payout-and-reporting"></a>Auszahlung an den Herausgeber und Berichterstellung
 
-Alle Softwarelizenzgebühren, die von Microsoft als Vertreter erhoben werden, unterliegen einer Store-Dienstgebühr von 3 %, sofern nicht anders angegeben, und werden zum Zeitpunkt der Auszahlung an den Herausgeber einbehalten.
+Sofern nicht anders angegeben, gilt für sämtliche Softwarelizenzgebühren, die von Microsoft als Vertreter erhoben werden, eine Store-Dienstgebühr von 3 %. Diese wird [bei der Auszahlung an den Herausgeber](/partner-center/payout-policy-details) einbehalten.
 
 Kunden kaufen in der Regel im Rahmen eines Enterprise Agreement oder eines Vertrags mit nutzungsbasierter Bezahlung per Kreditkarte. Der Vertragstyp bestimmt den Zeitpunkt für Abrechnung, Rechnungsstellung, Inkasso und Auszahlung.
 
@@ -195,16 +198,16 @@ Die Möglichkeit, Transaktionen über Microsoft abzuwickeln, steht nur für folg
 
 - **Virtueller Azure-Computer**: Wählen Sie ein kostenloses, BYOL-basiertes oder nutzungsbasierten Preismodell aus. Auf der Azure-Rechnung des Kunden weist Microsoft die Softwarelizenzgebühren des Herausgebers getrennt von den zugrunde liegenden Azure-Infrastrukturgebühren aus. Azure-Infrastrukturgebühren hängen von der Verwendung der Software des Herausgebers ab.
 
-- **SaaS-Anwendung**: Muss eine mehrinstanzenfähige Lösung sein, [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) für die Authentifizierung verwenden und mit den [SaaS-Fulfillment-APIs](partner-center-portal/pc-saas-fulfillment-api-v2.md) integriert sein. Die Nutzung der Azure-Infrastruktur wird verwaltet und direkt mit Ihnen (dem Herausgeber) abgerechnet. Nutzungsgebühren für die Azure-Infrastruktur sowie Softwarelizenzgebühren müssen daher von Ihnen als einzelner Posten abgerechnet werden. Ausführliche Informationen finden Sie unter [Pläne](plan-saas-offer.md#plans).
+- **SaaS-Anwendung**: Muss eine mehrinstanzenfähige Lösung sein, [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) für die Authentifizierung verwenden und mit den [SaaS-Fulfillment-APIs](partner-center-portal/pc-saas-fulfillment-apis.md) integriert sein. Die Nutzung der Azure-Infrastruktur wird verwaltet und direkt mit Ihnen (dem Herausgeber) abgerechnet. Nutzungsgebühren für die Azure-Infrastruktur sowie Softwarelizenzgebühren müssen daher von Ihnen als einzelner Posten abgerechnet werden. Ausführliche Informationen finden Sie unter [Pläne](plan-saas-offer.md#plans).
 
 ## <a name="private-plans"></a>Private Pläne
 
 Sie können einen privaten Plan für ein Angebot mit ausgehandelten, transaktionsspezifischen Preisen oder kundenspezifischen Konfigurationen anbieten.
 
-Private Pläne ermöglichen die Verwendung höherer oder niedrigerer Preise für bestimmte Kunden (im Vergleich zum öffentlich verfügbaren Angebot). Mithilfe von privaten Plänen können Sie Rabatte gewähren oder ein Angebot mit einem Aufschlag versehen. Private Pläne können für einzelne oder mehrere Kunden verfügbar gemacht werden, indem deren Azure-Abonnement auf Planebene aufgelistet wird.
+Mit privaten Plänen können Sie bestimmten Kunden höhere oder niedrigere Preise als beim öffentlich verfügbaren Plan anbieten. Mithilfe von privaten Plänen können Sie Rabatte gewähren oder ein Angebot mit einem Aufschlag versehen. Private Pläne können für einzelne oder mehrere Kunden verfügbar gemacht werden, indem deren Azure-Abonnement auf Planebene aufgelistet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Entnehmen Sie den Veröffentlichungsmustern der Onlineshops Beispiele für die Zuordnung Ihrer Lösung zu einem Angebotstyp und einer Konfiguration.
+- Informationen zu Eintrags- und Preisoptionen für die einzelnen Onlinestores finden Sie unter [Einführung in Eintragsoptionen](determine-your-listing-type.md#listing-and-pricing-options-by-online-store).
 - [Leitfaden zur Veröffentlichung nach Angebotstyp](publisher-guide-by-offer-type.md)
 - [Pläne und Preise für Angebote im kommerziellen Marketplace](./plans-pricing.md)

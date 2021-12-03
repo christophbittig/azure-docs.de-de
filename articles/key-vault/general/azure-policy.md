@@ -7,12 +7,12 @@ ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: dcbbe63754bdcfc4ded249720b58940e0c219bf9
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: d106830a4fb2d0b7060a38d978bcd71e0fd08eff
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340377"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077305"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Integrieren von Azure Key Vault in Azure Policy
 
@@ -39,11 +39,16 @@ Für Key Vault wurden einige Richtlinien erstellt, die zum Verwalten von Schlüs
 
 # <a name="certificate-policies"></a>[Zertifikatrichtlinien](#tab/certificates)
 
-### <a name="certificates-should-have-the-specified-maximum-validity-period-preview"></a>Zertifikate müssen die angegebene maximale Gültigkeitsdauer aufweisen (Vorschauversion)
+### <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration"></a>Zertifikate verwalten, die innerhalb einer angegebenen Anzahl von Tagen ablaufen 
 
-Mit dieser Richtlinie können Sie die maximale Gültigkeitsdauer Ihrer Zertifikate verwalten, die im Schlüsseltresor gespeichert sind. In Sachen Sicherheit hat es sich bewährt, die maximale Gültigkeitsdauer der Zertifikate zu beschränken. Wenn ein privater Schlüssel Ihres Zertifikats ohne Erkennung kompromittiert wird, minimiert die Verwendung kurzlebiger Zertifikate den Zeitrahmen für den aktuellen Schaden und reduziert den Wert des Zertifikats für einen Angreifer.
+Ihr Dienst kann einen Ausfall erleben, wenn ein Zertifikat, das nicht ausreichend überwacht wird, vor seinem Ablauf nicht rotiert wird. Diese Richtlinie ist wichtig, um sicherzustellen, dass Ihre im Schlüsseltresor gespeicherten Zertifikate überwacht werden. Es wird empfohlen, diese Richtlinie mehrmals mit unterschiedlichen Ablaufschwellenwerten anzuwenden, z. B. mit Schwellenwerten von 180, 90, 60 und 30 Tagen. Diese Richtlinie kann verwendet werden, um den Ablauf von Zertifikaten in Ihrer Organisation zu überwachen und zu überprüfen. 
 
-### <a name="certificates-should-use-allowed-key-types-preview"></a>Zertifikate müssen zulässige Schlüsseltypen verwenden (Vorschauversion)
+
+### <a name="certificates-should-have-the-specified-lifetime-action-triggers"></a>Zertifikate müssen die angegebenen Aktionstrigger für die Gültigkeitsdauer aufweisen  
+
+Diese Richtlinie ermöglicht Ihnen die Verwaltung der Lebensdaueraktion, die für Zertifikate festgelegt wurde, die entweder die innerhalb einer angegebenen Anzahl von Tagen ablaufen oder einen bestimmten Prozentsatz ihrer nutzbaren Lebensdauer erreicht haben.
+
+### <a name="certificates-should-use-allowed-key-types"></a>Zertifikate müssen zulässige Schlüsseltypen verwenden  
 
 Mit dieser Richtlinie können Sie den Zertifikattyp einschränken, der in Ihrem Schlüsseltresor vorhanden sein kann. Sie können diese Richtlinie verwenden, um sicherzustellen, dass Ihre privaten Zertifikatschlüssel durch RSA, ECC oder HSM gesichert sind. Sie können aus der folgenden Liste auswählen, welche Zertifikattypen zulässig sind.
 
@@ -52,19 +57,15 @@ Mit dieser Richtlinie können Sie den Zertifikattyp einschränken, der in Ihrem 
 - ECC
 - ECC - HSM
 
-### <a name="certificates-should-have-the-specified-lifetime-action-triggers-preview"></a>Zertifikate müssen die angegebenen Aktionstrigger für die Gültigkeitsdauer aufweisen (Vorschauversion)
-
-Diese Richtlinie ermöglicht Ihnen die Verwaltung der Lebensdaueraktion, die für Zertifikate festgelegt wurde, die entweder die innerhalb einer angegebenen Anzahl von Tagen ablaufen oder einen bestimmten Prozentsatz ihrer nutzbaren Lebensdauer erreicht haben.
-
-### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority-preview"></a>Zertifikate müssen von der angegebenen integrierten Zertifizierungsstelle ausgestellt werden (Vorschauversion)
+### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority"></a>Zertifikate müssen von der angegebenen integrierten Zertifizierungsstelle ausgestellt werden  
 
 Wenn Sie eine in Key Vault integrierte Zertifizierungsstelle (Digicert oder GlobalSign) verwenden und möchten, dass Benutzer einen oder beide Anbieter verwenden, können Sie diese Richtlinie verwenden, um Ihre Auswahl zu überwachen oder zu erzwingen. Diese Richtlinie wertet die in der Ausstellungsrichtlinie des Zertifikats ausgewählte Zertifizierungsstelle und den im Schlüsseltresor definierten Zertifizierungsstellenanbieter aus. Diese Richtlinie kann auch verwendet werden, um die Erstellung von selbstsignierten Zertifikaten im Schlüsseltresor zu überwachen oder zu verweigern.
 
-### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority-preview"></a>Zertifikate müssen von der angegebenen nicht integrierten Zertifizierungsstelle ausgestellt werden (Vorschauversion)
+### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority"></a>Zertifikate müssen von der angegebenen nicht integrierten Zertifizierungsstelle ausgestellt werden  
 
 Wenn Sie eine interne Zertifizierungsstelle oder eine nicht in den Schlüsseltresor integrierte Zertifizierungsstelle verwenden und möchten, dass Benutzer eine Zertifizierungsstelle aus einer von Ihnen bereitgestellten Liste verwenden, können Sie diese Richtlinie verwenden, um eine Liste der zulässigen Zertifizierungsstellen anhand des Ausstellernamens zu erstellen. Diese Richtlinie kann auch verwendet werden, um die Erstellung von selbstsignierten Zertifikaten im Schlüsseltresor zu überwachen oder zu verweigern.
 
-### <a name="certificates-using-elliptic-curve-cryptography-should-have-allowed-curve-names-preview"></a>Zertifikate mit Kryptografie für elliptische Kurve müssen zulässige Kurvennamen verwenden (Vorschauversion)
+### <a name="certificates-using-elliptic-curve-cryptography-should-have-allowed-curve-names"></a>Zertifikate mit Kryptografie für elliptische Kurve müssen zulässige Kurvennamen verwenden 
 
 Wenn Sie Kryptografie für elliptische Kurven oder ECC-Zertifikate verwenden, können Sie eine zulässige Liste von Kurvennamen aus der folgenden Liste erstellen. Die Standardoption lässt alle folgenden Kurvennamen zu.
 
@@ -73,7 +74,7 @@ Wenn Sie Kryptografie für elliptische Kurven oder ECC-Zertifikate verwenden, k�
 - P-384
 - P-521
 
-## <a name="certificates-using-rsa-cryptography-manage-minimum-key-size-for-rsa-certificates-preview"></a>Zertifikate mit Verwendung von RSA-Kryptografie: Mindestschlüsselgröße für RSA-Zertifikate verwalten (Vorschau)
+### <a name="certificates-using-rsa-cryptography-manage-minimum-key-size-for-rsa-certificates"></a>Zertifikate mit Verwendung von RSA-Kryptografie: Mindestschlüsselgröße für RSA-Zertifikate verwalten  
 
 Wenn Sie RSA-Zertifikate verwenden, können Sie eine Mindestschlüsselgröße für Ihre Zertifikate auswählen. Sie können aus der folgenden Liste eine Option auswählen.
 
@@ -81,13 +82,13 @@ Wenn Sie RSA-Zertifikate verwenden, können Sie eine Mindestschlüsselgröße f�
 - 3072 Bit
 - 4096 Bit
 
-## <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration-preview"></a>Zertifikate verwalten, die innerhalb einer angegebenen Anzahl von Tagen ablaufen (Vorschau)
+### <a name="certificates-should-have-the-specified-maximum-validity-period-preview"></a>Zertifikate müssen die angegebene maximale Gültigkeitsdauer aufweisen (Vorschauversion)
 
-Ihr Dienst kann einen Ausfall erleben, wenn ein Zertifikat, das nicht ausreichend überwacht wird, vor seinem Ablauf nicht rotiert wird. Diese Richtlinie ist wichtig, um sicherzustellen, dass Ihre im Schlüsseltresor gespeicherten Zertifikate überwacht werden. Es wird empfohlen, diese Richtlinie mehrmals mit unterschiedlichen Ablaufschwellenwerten anzuwenden, z. B. mit Schwellenwerten von 180, 90, 60 und 30 Tagen. Diese Richtlinie kann verwendet werden, um den Ablauf von Zertifikaten in Ihrer Organisation zu überwachen und zu überprüfen.
+Mit dieser Richtlinie können Sie die maximale Gültigkeitsdauer Ihrer Zertifikate verwalten, die im Schlüsseltresor gespeichert sind. In Sachen Sicherheit hat es sich bewährt, die maximale Gültigkeitsdauer der Zertifikate zu beschränken. Wenn ein privater Schlüssel Ihres Zertifikats ohne Erkennung kompromittiert wird, minimiert die Verwendung kurzlebiger Zertifikate den Zeitrahmen für den aktuellen Schaden und reduziert den Wert des Zertifikats für einen Angreifer.
 
 # <a name="key-policies"></a>[Richtlinien für Schlüssel](#tab/keys)
 
-### <a name="keys-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>Keys should not be active for longer than the specified number of days (preview) (Schlüssel dürfen nicht länger als die angegebene Anzahl von Tagen aktiv sein (Vorschauversion))
+### <a name="keys-should-not-be-active-for-longer-than-the-specified-number-of-days"></a>Schlüssel dürfen nicht länger als die angegebene Anzahl von Tagen aktiv sein 
 
 Wenn Sie sicherstellen möchten, dass Ihre Schlüssel nicht länger als eine angegebene Anzahl von Tagen aktiv waren, können Sie mit dieser Richtlinie die Dauer der Aktivität für Schlüssel überwachen.
 
@@ -95,7 +96,7 @@ Wenn Sie sicherstellen möchten, dass Ihre Schlüssel nicht länger als eine ang
 
 **Wenn für Ihren Schlüssel kein Aktivierungsdatum festgelegt ist**, wird mit dieser Richtlinie die Anzahl von Tagen berechnet, die vom **Erstellungsdatum** des Schlüssels bis zum aktuellen Datum verstrichen sind. Falls die Anzahl von Tagen den von Ihnen festgelegten Schwellenwert überschreitet, wird der Schlüssel als nicht mit der Richtlinie konform gekennzeichnet.
 
-### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>Keys should be the specified cryptographic type RSA or ECC (preview) (Schlüssel müssen den angegebenen Kryptografietyp RSA oder ECC aufweisen (Vorschauversion))
+### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec"></a>Schlüssel müssen den angegebenen kryptografischen Typ (RSA oder EC) aufweisen 
 
 Mit dieser Richtlinie können Sie den Schlüsseltyp einschränken, der in Ihrem Schlüsseltresor vorhanden sein darf. Sie können mit dieser Richtlinie sicherstellen, dass Ihre Schlüssel per RSA, ECC oder HSM geschützt sind. Sie können aus der folgenden Liste auswählen, welche Zertifikattypen zulässig sind.
 
@@ -104,7 +105,7 @@ Mit dieser Richtlinie können Sie den Schlüsseltyp einschränken, der in Ihrem 
 - ECC
 - ECC - HSM
 
-### <a name="keys-using-elliptic-curve-cryptography-should-have-the-specified-curve-names-preview"></a>Keys using elliptic curve cryptography should have the specified curve names (preview) (Für Schlüssel mit Kryptografie für elliptische Kurve (ECC) müssen die angegebenen Kurvennamen verwendet werden (Vorschauversion))
+### <a name="keys-using-elliptic-curve-cryptography-should-have-the-specified-curve-names"></a>Schlüssel mit Kryptografie für elliptische Kurve müssen die angegebenen Kurvennamen verwenden 
 
 Wenn Sie ECC-Schlüssel (Elliptic Curve Cryptography, Kryptografie für elliptische Kurve) verwenden, können Sie eine zulässige Liste mit Kurvennamen aus der folgenden Liste erstellen. Die Standardoption lässt alle folgenden Kurvennamen zu.
 
@@ -113,29 +114,29 @@ Wenn Sie ECC-Schlüssel (Elliptic Curve Cryptography, Kryptografie für elliptis
 - P-384
 - P-521
 
-### <a name="keys-should-have-expirations-dates-set-preview"></a>Keys should have expirations dates set (preview) (Für Schlüssel müssen Ablaufdaten festgelegt sein (Vorschauversion))
+### <a name="keys-should-have-expirations-dates-set"></a>Für Schlüssel müssen Ablaufdaten festgelegt sein 
 
 Mit dieser Richtlinie werden alle Schlüssel in Ihren Schlüsseltresoren überwacht und die Schlüssel, für die kein Ablaufdatum festgelegt ist, als nicht konform gekennzeichnet. Sie können diese Richtlinie auch verwenden, um die Erstellung von Schlüsseln zu blockieren, für die kein Ablaufdatum festgelegt ist.
 
-### <a name="keys-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>Keys should have more than the specified number of days before expiration (preview) (Schlüssel müssen mehr als die angegebene Anzahl von Tagen vom Ablaufdatum entfernt sein (Vorschauversion))
+### <a name="keys-should-have-more-than-the-specified-number-of-days-before-expiration"></a>Für Schlüssel müssen mehr als die angegebene Anzahl von Tagen vor Ablauf vorliegen 
 
 Wenn sich ein Schlüssel zu nah an seinem Ablaufdatum befindet, kann es bei einer organisationsbedingten Verzögerung der Rotation des Schlüssels zu einem Ausfall kommen. Schlüssel sollten nach einer angegebenen Anzahl von Tagen vor ihrem Ablauf rotiert werden, damit genügend Zeit ist, um auf Fehler reagieren zu können. Mit dieser Richtlinie werden Schlüssel überwacht, die sich zu nah an ihrem Ablaufdatum befinden, und Sie können einen entsprechenden Schwellenwert in Tagen festlegen. Sie können diese Richtlinie auch verwenden, um die Erstellung neuer Schlüssel zu verhindern, die sich zu nah am Ablaufdatum befinden.
 
-### <a name="keys-should-be-backed-by-a-hardware-security-module-preview"></a>Keys should be backed by a hardware security module (preview) (Schlüssel müssen durch ein Hardwaresicherheitsmodul geschützt sein (Vorschauversion))
+### <a name="keys-should-be-backed-by-a-hardware-security-module"></a>Schlüssel müssen durch ein Hardwaresicherheitsmodul gesichert werden 
 
 Mit einem Hardwaresicherheitsmodul (HSM) werden Schlüssel gespeichert. Hierbei handelt es sich um eine physische Schutzschicht für kryptografische Schlüssel. Der kryptografische Schlüssel kann ein physisches HSM nicht verlassen, sodass dieser einen höheren Schutz als ein Softwareschlüssel bietet. Einige Organisationen verfügen über Konformitätsanforderungen, in denen die Verwendung von HSM-Schlüsseln vorgeschrieben ist. Verwenden Sie diese Richtlinie zum Überwachen von Schlüsseln in einem Ihrer Schlüsseltresore ohne HSM-Schutz. Sie können diese Richtlinie auch verwenden, um die Erstellung neuer Schlüssel zu blockieren, die nicht per HSM geschützt sind. Diese Richtlinie gilt für alle Schlüsseltypen (RSA und ECC).
 
-### <a name="keys-using-rsa-cryptography-should-have-a-specified-minimum-key-size-preview"></a>Keys using RSA cryptography should have a specified minimum key size (preview) (Schlüssel mit Verwendung von RSA-Kryptografie müssen eine angegebene Mindestgröße für Schlüssel aufweisen (Vorschauversion))
+### <a name="keys-using-rsa-cryptography-should-have-a-specified-minimum-key-size"></a>Schlüssel mit RSA-Kryptografie müssen eine angegebene Mindestgröße für Schlüssel aufweisen 
 
 Die Verwendung von kleineren RSA-Schlüsseln ist keine sichere Entwurfsmethode. Unter Umständen gelten für Sie bestimmte Überwachungs- und Zertifizierungsstandards, in denen die Verwendung einer Mindestgröße für Schlüssel vorgeschrieben ist. Mit der folgenden Richtlinie können Sie für Ihren Schlüsseltresor eine Mindestgröße für Schlüssel festlegen. Sie können Schlüssel überwachen, die diese Mindestanforderung nicht erfüllen. Diese Richtlinie kann auch verwendet werden, um die Erstellung neuer Schlüssel zu blockieren, die die Mindestanforderung in Bezug auf die Schlüsselgröße nicht erfüllen.
 
-### <a name="keys-should-have-the-specified-maximum-validity-period-preview"></a>Keys should have the specified maximum validity period (preview) (Schlüssel müssen die angegebene maximale Gültigkeitsdauer aufweisen (Vorschauversion))
+### <a name="keys-should-have-the-specified-maximum-validity-period"></a>Schlüssel müssen die angegebene maximale Gültigkeitsdauer aufweisen
 
 Hiermit werden die Konformitätsanforderungen Ihrer Organisation verwaltet, indem die maximale Zeitspanne in Tagen angegeben wird, für die ein Schlüssel innerhalb Ihres Schlüsseltresors gültig sein darf. Schlüssel, deren Gültigkeitsdauer den von Ihnen festgelegten Schwellenwert überschreitet, werden als nicht konform gekennzeichnet. Sie können diese Richtlinie auch verwenden, um die Erstellung neuer Schlüssel zu blockieren, deren Ablaufdatum die von Ihnen angegebene maximale Gültigkeitsdauer überschreitet.
 
 # <a name="secret-policies"></a>[Richtlinien für Geheimnisse](#tab/secrets)
 
-### <a name="secrets-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>Secrets should not be active for longer than the specified number of days (preview) (Geheimnisse dürfen nicht länger als die angegebene Anzahl von Tagen aktiv sein (Vorschauversion))
+### <a name="secrets-should-not-be-active-for-longer-than-the-specified-number-of-days"></a>Geheimnisse dürfen nicht länger als die angegebene Anzahl von Tagen aktiv sein 
 
 Wenn Sie sicherstellen möchten, dass Ihre Geheimnisse nicht länger als eine angegebene Anzahl von Tagen aktiv waren, können Sie mit dieser Richtlinie die Dauer der Aktivität für Geheimnisse überwachen.
 
@@ -143,19 +144,19 @@ Wenn Sie sicherstellen möchten, dass Ihre Geheimnisse nicht länger als eine an
 
 **Wenn für Ihr Geheimnis kein Aktivierungsdatum festgelegt ist**, wird mit dieser Richtlinie die Anzahl von Tagen berechnet, die vom **Erstellungsdatum** des Geheimnisses bis zum aktuellen Datum verstrichen sind. Falls die Anzahl von Tagen den von Ihnen festgelegten Schwellenwert überschreitet, wird das Geheimnis als nicht mit der Richtlinie konform gekennzeichnet.
 
-### <a name="secrets-should-have-content-type-set-preview"></a>Secrets should have content type set (preview) (Für Geheimnisse muss der Inhaltstyp festgelegt werden (Vorschauversion))
+### <a name="secrets-should-have-content-type-set"></a>Festlegen des Inhaltstyps für Geheimnisse erforderlich 
 
 Alle Nur-Text- oder codierten Dateien können als Schlüsseltresorgeheimnis gespeichert werden. Es kann aber sein, dass Ihre Organisation andere Rotationsrichtlinien und -einschränkungen für als Schlüssel gespeicherte Kennwörter, Verbindungszeichenfolgen oder Zertifikate festlegen möchte. Anhand eines Tags für den Inhaltstyp können Benutzer sehen, was in einem Geheimnisobjekt gespeichert ist, ohne den Wert des Geheimnisses zu lesen. Sie können diese Richtlinie verwenden, um Geheimnisse zu überwachen, für kein Tag für den Inhaltstyp festgelegt wurde. Darüber hinaus können Sie diese Richtlinie auch verwenden, um die Erstellung neuer Geheimnisse zu verhindern, wenn dafür kein Tag für den Inhaltstyp vorhanden ist.
 
-### <a name="secrets-should-have-expiration-date-set-preview"></a>Secrets should have expiration date set (preview) (Für Geheimnisse muss ein Ablaufdatum festgelegt werden (Vorschauversion))
+### <a name="secrets-should-have-expiration-date-set"></a>Ablaufdatum für Geheimnisse erforderlich 
 
 Mit dieser Richtlinie werden alle Geheimnisse in Ihrem Schlüsseltresor überwacht und die Geheimnisse, für die kein Ablaufdatum festgelegt ist, als nicht konform gekennzeichnet. Sie können diese Richtlinie auch verwenden, um die Erstellung von Geheimnissen zu blockieren, für die kein Ablaufdatum festgelegt ist.
 
-### <a name="secrets-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>Secrets should have more than the specified number of days before expiration (preview) (Geheimnisse müssen mehr als die angegebene Anzahl von Tagen vom Ablaufdatum entfernt sein (Vorschauversion))
+### <a name="secrets-should-have-more-than-the-specified-number-of-days-before-expiration"></a>Für Geheimnisse müssen mehr als die angegebene Anzahl von Tagen vor Ablauf vorliegen 
 
 Wenn sich ein Geheimnis zu nah an seinem Ablaufdatum befindet, kann es bei einer organisationsbedingten Verzögerung der Rotation des Geheimnisses zu einem Ausfall kommen. Geheimnisse sollten nach einer angegebenen Anzahl von Tagen vor ihrem Ablauf rotiert werden, damit genügend Zeit ist, um auf Fehler reagieren zu können. Mit dieser Richtlinie werden Geheimnisse überwacht, die sich zu nah an ihrem Ablaufdatum befinden, und Sie können einen entsprechenden Schwellenwert in Tagen festlegen. Sie können diese Richtlinie auch verwenden, um die Erstellung neuer Geheimnisse zu verhindern, die sich zu nah am Ablaufdatum befinden.
 
-### <a name="secrets-should-have-the-specified-maximum-validity-period-preview"></a>Secrets should have the specified maximum validity period (preview) (Geheimnisse müssen die angegebene maximale Gültigkeitsdauer aufweisen (Vorschauversion))
+### <a name="secrets-should-have-the-specified-maximum-validity-period"></a>Geheimnisse müssen die angegebene maximale Gültigkeitsdauer aufweisen 
 
 Hiermit werden die Konformitätsanforderungen Ihrer Organisation verwaltet, indem die maximale Zeitspanne in Tagen angegeben wird, für die ein Geheimnis innerhalb Ihres Schlüsseltresors gültig sein darf. Geheimnisse, deren Gültigkeitsdauer den von Ihnen festgelegten Schwellenwert überschreitet, werden als nicht konform gekennzeichnet. Sie können diese Richtlinie auch verwenden, um die Erstellung neuer Geheimnisse zu blockieren, deren Ablaufdatum die von Ihnen angegebene maximale Gültigkeitsdauer überschreitet.
 
@@ -242,16 +243,25 @@ Sie verwalten einen Schlüsseltresor mit 100 Zertifikaten, der von mehreren Tea
 
 ## <a name="feature-limitations"></a>Funktionseinschränkungen
 
-Beim Zuweisen einer Richtlinie mit der Auswirkung „Verweigern“ kann es im Durchschnitt bis zu 30 Minuten, im ungünstigsten Fall bis zu einer Stunde dauern, bis die Erstellung nicht konformer Ressourcen verweigert wird. Bei der Richtlinienauswertung vorhandener Komponenten in einem Tresor kann es im Durchschnitt bis zu einer Stunde und im ungünstigsten Fall zwei Stunden dauern, bis die Konformitätsergebnisse in der Benutzeroberfläche des Portals angezeigt werden. Wenn die Konformitätsergebnisse als „Nicht gestartet“ angezeigt werden, kann dies auf folgende Gründe zurückzuführen sein:
+Beim Zuweisen einer Richtlinie mit der Auswirkung „Verweigern“ kann es im Durchschnitt bis zu 30 Minuten, im ungünstigsten Fall bis zu einer Stunde dauern, bis die Erstellung nicht konformer Ressourcen verweigert wird. Die Verzögerung bezieht sich auf die folgenden Szenarien:
+1.  Es wird eine neue Richtlinie zugewiesen.
+2.  Eine vorhandene Richtlinienzuweisung wird geändert.
+3.  Ein neuer KeyVault (Ressource) wird in einem Bereich mit vorhandenen Richtlinien erstellt.
+
+Bei der Richtlinienauswertung vorhandener Komponenten in einem Tresor kann es im Durchschnitt bis zu einer Stunde und im ungünstigsten Fall zwei Stunden dauern, bis die Konformitätsergebnisse in der Benutzeroberfläche des Portals angezeigt werden. Wenn die Konformitätsergebnisse als „Nicht gestartet“ angezeigt werden, kann dies auf folgende Gründe zurückzuführen sein:
 - Die Richtlinienauswertung ist noch nicht abgeschlossen. Die anfängliche Wartezeit für die Auswertung kann im schlimmsten Fall bis zu zwei Stunden in Anspruch nehmen. 
 - Im Gültigkeitsbereich der Richtlinienzuweisung sind keine Schlüsseltresore vorhanden.
 - Im Gültigkeitsbereich der Richtlinienzuweisung sind keine Schlüsseltresore mit Zertifikaten vorhanden.
+
+
+
 
 > [!NOTE]
 > Für die [Ressourcenanbietermodi](../../governance/policy/concepts/definition-structure.md#resource-provider-modes) von Azure Policy, z. B. für Azure Key Vault, werden Informationen zur Konformität auf der Seite [Komponentenkonformität](../../governance/policy/how-to/get-compliance-data.md#component-compliance) bereitgestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Protokollierung und häufig gestellte Fragen zu Azure Policy für Key Vault](../general/troubleshoot-azure-policy-for-key-vault.md)
 - Weitere Informationen zu [Azure Policy](../../governance/policy/overview.md)
 - Key Vault-Beispiele: [Integrierte Azure Policy-Richtliniendefinitionen: Key Vault](../../governance/policy/samples/built-in-policies.md#key-vault)
 - Erfahren Sie mehr über den [Azure-Sicherheitsbenchmarkleitfaden zu Key Vault](/security/benchmark/azure/baselines/key-vault-security-baseline?source=docs#network-security)

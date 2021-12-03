@@ -4,16 +4,16 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 3524469e8668fa14a27cd77199b47cf6efad8ce9
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: dfd5568e14dff765148096d55e5d10b1e5fe12f6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725566"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520354"
 ---
 In diesem Tutorial erfahren Sie, wie Sie eine IoT Plug & Play-Beispielgeräteanwendung mit Komponenten erstellen, mit Ihrem IoT-Hub verbinden und die an den Hub gesendeten Informationen mithilfe des Tools Azure IoT-Explorer anzeigen. Die Beispielanwendung wurde für Node.js geschrieben und ist im Azure IoT Hub-Geräte-SDK für Node.js enthalten. Ein Lösungsentwickler kann mithilfe von Azure IoT-Explorer mehr über die Funktionen eines IoT Plug & Play-Geräts erfahren, ohne Gerätecode anzeigen zu müssen.
 
-[![Code durchsuchen](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript/pnp)
+[![Code durchsuchen](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)
 
 In diesem Tutorial führen Sie Folgendes durch:
 
@@ -58,11 +58,11 @@ Dadurch werden die relevanten npm-Dateien installiert, die zum Ausführen der Be
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
-Navigieren Sie zum Ordner *azure-iot-sdk-node\device\samples\pnp*.
+Navigieren Sie zum Ordner *azure-iot-sdk-node\device\samples\javascript*.
 
-Der Ordner *azure-iot-sdk-node\device\samples\pnp* enthält den Beispielcode für den IoT Plug & Play-Temperaturregler.
+Der Ordner *azure-iot-sdk-node\device\samples\javascript* enthält den Beispielcode für den IoT Plug & Play-Temperaturregler.
 
-Der Code in der Datei *pnpTemperatureController.js* dient zum Implementieren eines IoT Plug & Play-Temperaturreglers. Das in diesem Beispiel implementierte Modell umfasst [mehrere Komponenten](../articles/iot-develop/concepts-modeling-guide.md). In der [DTDL-Modelldatei (Digital Twins Definition Language) für das Temperaturgerät](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) werden die vom Gerät implementierten Telemetriedaten, Eigenschaften und Befehle definiert.
+Der Code in der Datei *pnp_temperature_controller.js* dient zum Implementieren eines IoT Plug & Play-Temperaturreglers. Das in diesem Beispiel implementierte Modell umfasst [mehrere Komponenten](../articles/iot-develop/concepts-modeling-guide.md). In der [DTDL-Modelldatei (Digital Twins Definition Language) für das Temperaturgerät](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) werden die vom Gerät implementierten Telemetriedaten, Eigenschaften und Befehle definiert.
 
 Öffnen Sie die Datei *pnpTemperatureController.js* in einem Code-Editor Ihrer Wahl. Mithilfe des Beispielcodes wird Folgendes gezeigt:
 
@@ -110,12 +110,12 @@ Der Code in der Datei *pnpTemperatureController.js* dient zum Implementieren ein
 
 [!INCLUDE [iot-pnp-environment](iot-pnp-environment.md)]
 
-Weitere Informationen zur Beispielkonfiguration finden Sie in der [Beispiel-Infodatei](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/javascript/pnp/readme.md).
+Weitere Informationen zur Beispielkonfiguration finden Sie in der [Beispiel-Infodatei](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/readme.md#iot-plug-and-play-device-samples).
 
 Nachdem Sie nun mit dem Code vertraut sind, verwenden Sie den folgenden Befehl, um das Beispiel auszuführen:
 
 ```cmd\sh
-node pnpTemperatureController.js
+node pnp_temperature_controller.js
 ```
 
 Sie sehen die folgende Ausgabe. Das bedeutet, dass das Gerät mit dem Senden von Telemetriedaten an den Hub begonnen hat und jetzt zum Empfangen von Befehlen und Eigenschaftenaktualisierungen bereit ist.

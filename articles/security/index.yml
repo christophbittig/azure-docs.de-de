@@ -4,7 +4,7 @@ summary: 'Sicherheit ist ein wesentlicher Bestandteil aller Azure-Lösungen. Azu
 brand: azure
 metadata:
   title: Dokumentation zur Azure-Sicherheit
-  description: 'Informationen zur Sicherheit in Azure Lesen Sie die Informationen zu Grundlagen, Best Practices und Mustern im Zusammenhang mit Sicherheit sowie zu Azure Security Center.'
+  description: 'Informationen zur Sicherheit in Azure Lesen Sie die Informationen zu Grundlagen, Best Practices und Mustern im Zusammenhang mit Sicherheit sowie zu Microsoft Defender für Cloud.'
   services: security
   ms.service: security
   ms.subservice: na
@@ -115,7 +115,7 @@ conceptualContent:
       links:
         - url: ../security-center/security-center-get-started.md
           itemType: quickstart
-          text: Durchführen des Onboardings für Ihr Abonnement in Security Center
+          text: Durchführen des Onboardings für Ihr Abonnement in Defender für Cloud
         - url: ../security-center/security-center-just-in-time.md
           itemType: how-to-guide
           text: Just-In-Time-Zugriff auf virtuelle Computer
@@ -129,13 +129,13 @@ conceptualContent:
       links:
         - url: ../defender-for-iot/overview.md
           itemType: overview
-          text: Einführung in Azure Security Center für IoT
+          text: Einführung in Microsoft Defender für IoT
         - url: ../defender-for-iot/architecture.md
           itemType: how-to-guide
-          text: Azure Security Center für IoT-Architektur
+          text: Architektur von Microsoft Defender für IoT
         - url: ../defender-for-iot/getting-started.md
           itemType: how-to-guide
-          text: Erste Schritte mit Azure Security Center für IoT
+          text: Erste Schritte mit Microsoft Defender für IoT
       footerLink:
         url: /azure/asc-for-iot/
         text: Weitere Informationen
@@ -143,13 +143,13 @@ conceptualContent:
       links:
         - url: ../sentinel/overview.md
           itemType: overview
-          text: Was ist Azure Sentinel?
+          text: Was ist Microsoft Sentinel?
         - url: ../sentinel/quickstart-onboard.md
           itemType: quickstart
-          text: Ausführen des Onboardings für Azure Sentinel
+          text: Durchführen des Onboardings für Microsoft Sentinel
         - url: ../sentinel/get-visibility.md
           itemType: quickstart
-          text: Erste Schritte mit Azure Sentinel
+          text: Erste Schritte mit Microsoft Sentinel
       footerLink:
         url: ../sentinel/index.yml
         text: Weitere Informationen
@@ -157,13 +157,13 @@ conceptualContent:
       links:
         - url: ../security-center/security-center-alerts-overview.md
           itemType: concept
-          text: Sicherheitswarnungen in Azure Security Center
+          text: Sicherheitswarnungen in Microsoft Defender für Cloud
         - url: ../storage/common/azure-defender-storage-configure.md
           itemType: concept
-          text: Azure Defender für Storage
+          text: Microsoft Defender für Speicher
         - url: ../azure-sql/database/threat-detection-overview.md
           itemType: concept
-          text: Azure Defender für SQL
+          text: Microsoft Defender für SQL
       footerLink:
         url: ./fundamentals/threat-detection.md
         text: Weitere Informationen

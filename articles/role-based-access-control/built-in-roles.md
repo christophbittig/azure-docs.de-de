@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 09/28/2021
+ms.date: 11/12/2021
 ms.custom: generated
-ms.openlocfilehash: 3f9154a2ec6c7900ffa15fd19e9910c89649be2d
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 81b12ad1ae52c290e5c3ef573bf091fb64595701
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709296"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494408"
 ---
 # <a name="azure-built-in-roles"></a>Integrierte Azure-Rollen
 
@@ -98,8 +98,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [SignalR-REST-API-Leser](#signalr-rest-api-reader) | Bietet schreibgeschützten Zugriff auf Azure SignalR Service-REST-APIs. | ddde6b66-c0df-4114-a159-3618637b3035 |
 > | [SignalR Service-Besitzer](#signalr-service-owner) | Bietet Vollzugriff auf Azure SignalR Service-REST-APIs. | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
 > | [SignalR-/Web PubSub-Mitwirkender](#signalrweb-pubsub-contributor) | Ermöglicht das Erstellen, Lesen, Aktualisieren und Löschen von SignalR Service-Ressourcen. | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
-> | [Mitwirkender von Webplan](#web-plan-contributor) | Ermöglicht Ihnen das Verwalten der Webpläne für Websites, nicht aber den Zugriff darauf. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
-> | [Mitwirkender von Website](#website-contributor) | Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf. | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [Mitwirkender von Webplan](#web-plan-contributor) | Dieser verwaltet die Webpläne für Websites. Ermöglicht es Ihnen nicht, Rollen in Azure RBAC zuzuweisen. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+> | [Mitwirkender von Website](#website-contributor) | Verwalten von Websites, aber nicht von Webplänen. Ermöglicht es Ihnen nicht, Rollen in Azure RBAC zuzuweisen. | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **Container** |  |  |
 > | [AcrDelete](#acrdelete) | Löschen von Repositorys, Tags oder Manifesten aus einer Containerregistrierung | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | [AcrImageSigner](#acrimagesigner) | Pushen oder Pullen vertrauenswürdiger Images in einer Containerregistrierung, die für Inhaltsvertrauen aktiviert ist | 6cef56e8-d556-48e5-a04f-b8e64114680f |
@@ -206,10 +206,6 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Security** |  |  |
 > | [Attestation-Mitwirkender](#attestation-contributor) | Lesen, Schreiben oder Löschen der Nachweisanbieterinstanz | bbf86eb8-f7b4-4cce-96e4-18cddf81d86e |
 > | [Attestation-Leser](#attestation-reader) | Lesen der Eigenschaften des Nachweisanbieters | fd1bd22b-8476-40bc-a0bc-69b95687b9f3 |
-> | [Mitwirkender für Azure Sentinel-Automatisierung](#azure-sentinel-automation-contributor) | Mitwirkender für Azure Sentinel-Automatisierung | f4c81013-99ee-4d62-a7ee-b3f1f648599a |
-> | [Azure Sentinel-Mitwirkender](#azure-sentinel-contributor) | Azure Sentinel-Mitwirkender | ab8e14d6-4a74-4a29-9ba8-549422addade |
-> | [Azure Sentinel-Leser](#azure-sentinel-reader) | Azure Sentinel-Leser | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
-> | [Azure Sentinel-Antwortender](#azure-sentinel-responder) | Azure Sentinel-Antwortender | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Key Vault-Administrator](#key-vault-administrator) | Ausführen beliebiger Vorgänge auf Datenebene für einen Schlüsseltresor und alle darin enthaltenen Objekte (einschließlich Zertifikate, Schlüssel und Geheimnisse). Kann keine Key Vault-Ressourcen oder Rollenzuweisungen verwalten. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
 > | [Key Vault-Zertifikatbeauftragter](#key-vault-certificates-officer) | Ausführen beliebiger Aktionen für die Zertifikate eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [Key Vault-Mitwirkender](#key-vault-contributor) | Verwalten von Schlüsseltresoren, gestattet Ihnen jedoch nicht, Rollen in Azure RBAC zuzuweisen, und ermöglicht keinen Zugriff auf Geheimnisse, Schlüssel oder Zertifikate. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
@@ -220,6 +216,10 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Key Vault-Geheimnisbeauftragter](#key-vault-secrets-officer) | Ausführen beliebiger Aktionen für die Geheimnisse eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
 > | [Key Vault-Geheimnisbenutzer](#key-vault-secrets-user) | Lesen der Inhalte von Geheimnissen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. | 4633458b-17de-408a-b874-0445c86b69e6 |
 > | [Mitwirkender für verwaltete HSMs](#managed-hsm-contributor) | Ermöglicht Ihnen das Verwalten von verwalteten HSM-Pools, aber nicht den Zugriff auf diese. | 18500a29-7fe2-46b2-a342-b16a415e101d |
+> | [Microsoft Sentinel Automation-Mitarbeiter](#microsoft-sentinel-automation-contributor) | Microsoft Sentinel Automation-Mitarbeiter | f4c81013-99ee-4d62-a7ee-b3f1f648599a |
+> | [Microsoft Sentinel-Mitwirkender](#microsoft-sentinel-contributor) | Microsoft Sentinel-Mitwirkender | ab8e14d6-4a74-4a29-9ba8-549422addade |
+> | [Microsoft Sentinel Reader](#microsoft-sentinel-reader) | Microsoft Sentinel Reader | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
+> | [Microsoft Sentinel Responder](#microsoft-sentinel-responder) | Microsoft Sentinel Responder | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Sicherheitsadministrator](#security-admin) | Anzeigen und Aktualisieren von Berechtigungen für Security Center. Gleiche Rechte wie der Sicherheitsleseberechtigte und kann darüber hinaus die Sicherheitsrichtlinie aktualisieren sowie Warnungen und Empfehlungen verwerfen. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Mitwirkender für Sicherheitsbewertungen](#security-assessment-contributor) | Ermöglicht das Pushen von Bewertungen an Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [Sicherheits-Manager (Legacy)](#security-manager-legacy) | Dies ist eine Legacyrolle. Verwenden Sie stattdessen „Sicherheitsadministrator“. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
@@ -236,10 +236,11 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Arbeitsmappenmitwirkender](#workbook-contributor) | Kann freigegebene Arbeitsmappen speichern. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [Arbeitsmappenleser](#workbook-reader) | Kann Arbeitsmappen lesen. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 > | **Verwaltung und Governance** |  |  |
+> | [Mitwirkender für Automatisierung](#automation-contributor) | Verwalten von Azure Automation-Ressourcen und anderen Ressourcen mit Azure Automation. | f353d9bd-d4a6-484e-a77a-8050b599b867 |
 > | [Automation-Auftragsoperator](#automation-job-operator) | Hiermit werden Aufträge mithilfe von Automation-Runbooks erstellt und verwaltet. | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | [Operator für Automation](#automation-operator) | Automatisierungsoperatoren können Aufträge starten, beenden, anhalten und fortsetzen. | d3881f73-407a-4167-8283-e981cbba0404 |
 > | [Automation-Runbookoperator](#automation-runbook-operator) | Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
-> | [Azure Arc-aktivierte Kubernetes-Cluster-Benutzerrolle](#azure-arc-enabled-kubernetes-cluster-user-role) | Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers. | 00493d72-78f6-4148-b6c5-d3ce8e4799dd |
+> | [Benutzerrolle für Azure Arc-aktivierte Kubernetes-Cluster](#azure-arc-enabled-kubernetes-cluster-user-role) | Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers. | 00493d72-78f6-4148-b6c5-d3ce8e4799dd |
 > | [Azure Arc Kubernetes-Administrator](#azure-arc-kubernetes-admin) | Ermöglicht Ihnen das Verwalten aller Ressourcen unter einem Cluster/Namespace, außer das Aktualisieren oder Löschen von Ressourcenkontingenten und Namespaces. | dffb1e0c-446f-4dde-a09f-99eb5cc68b96 |
 > | [Azure Arc Kubernetes-Clusteradministrator](#azure-arc-kubernetes-cluster-admin) | Ermöglicht Ihnen das Verwalten aller Ressourcen im Cluster. | 8393591c-06b9-48a2-a542-1bd6b377f6a2 |
 > | [Anzeigeberechtigter für Azure Arc Kubernetes](#azure-arc-kubernetes-viewer) | Ermöglicht Ihnen das Anzeigen aller Ressourcen im Cluster/Namespace mit Ausnahme von Geheimnissen. | 63f0a09d-1495-4db4-a681-037d84835eb4 |
@@ -608,10 +609,10 @@ Erstellen und Verwalten von VMs, Verwalten von Datenträgern und Datenträgermom
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | Erstellen und Verwalten von Compute-Verfügbarkeitsgruppen |
-> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/cloudServices/* | Erstellen und Verwalten von Cloud Services (erweiterter Support) |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/locations/* | Erstellen und Verwalten von Compute-Speicherorten |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | Ausführen beliebiger Aktionen für virtuelle Computer, einschließlich Erstellen, Aktualisieren, Löschen, Starten, Neustarten und Ausschalten virtueller Computer. Ausführen von Skripts auf VMs |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | Erstellen und Verwalten von Skalierungsgruppen für virtuelle Computer |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/cloudServices/* |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/write | Erstellt einen neuen Datenträger oder aktualisiert einen bereits vorhandenen. |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/read | Dient zum Abrufen der Eigenschaften eines Datenträgers. |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/delete | Löscht den Datenträger. |
@@ -672,6 +673,7 @@ Erstellen und Verwalten von VMs, Verwalten von Datenträgern und Datenträgermom
         "Microsoft.Compute/locations/*",
         "Microsoft.Compute/virtualMachines/*",
         "Microsoft.Compute/virtualMachineScaleSets/*",
+        "Microsoft.Compute/cloudServices/*",
         "Microsoft.Compute/disks/write",
         "Microsoft.Compute/disks/read",
         "Microsoft.Compute/disks/delete",
@@ -2652,7 +2654,7 @@ Ermöglicht den Lesezugriff auf Dateien/Verzeichnisse in Azure-Dateifreigaben. D
 Lesen, Schreiben und Löschen von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Weitere Informationen](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
+> | Aktionen | Beschreibung |
 > | --- | --- |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/delete | Löschen einer Warteschlange. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | Zurückgeben einer Warteschlange oder Liste mit Warteschlangen. |
@@ -2930,6 +2932,7 @@ Gewährt Lese-, Schreib- und Löschzugriff auf kartenbezogene Daten von einem Az
 > | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/read |  |
 > | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/write |  |
 > | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/delete |  |
+> | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/action |  |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -2948,7 +2951,8 @@ Gewährt Lese-, Schreib- und Löschzugriff auf kartenbezogene Daten von einem Az
       "dataActions": [
         "Microsoft.Maps/accounts/*/read",
         "Microsoft.Maps/accounts/*/write",
-        "Microsoft.Maps/accounts/*/delete"
+        "Microsoft.Maps/accounts/*/delete",
+        "Microsoft.Maps/accounts/*/action"
       ],
       "notDataActions": []
     }
@@ -3955,7 +3959,7 @@ Ermöglicht das Erstellen, Lesen, Aktualisieren und Löschen von SignalR Service
 
 ### <a name="web-plan-contributor"></a>Mitwirkender von Webplan
 
-Ermöglicht Ihnen das Verwalten der Webpläne für Websites, nicht aber den Zugriff darauf.
+Dieser verwaltet die Webpläne für Websites. Ermöglicht es Ihnen nicht, Rollen in Azure RBAC zuzuweisen.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -4008,7 +4012,7 @@ Ermöglicht Ihnen das Verwalten der Webpläne für Websites, nicht aber den Zugr
 
 ### <a name="website-contributor"></a>Mitwirkender von Website
 
-Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf.
+Verwalten von Websites, aber nicht von Webplänen. Ermöglicht es Ihnen nicht, Rollen in Azure RBAC zuzuweisen.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -6125,7 +6129,7 @@ Der Datenquellenadministrator für Microsoft Purview ist eine Legacyrolle, die D
 Lesen, Schreiben und Löschen von Schemaregistrierungsgruppen und Schemas.
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
+> | Aktionen | Beschreibung |
 > | --- | --- |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemagroups/* |  |
 > | **NotActions** |  |
@@ -8359,7 +8363,7 @@ Ermöglicht Sendezugriff auf Event Grid-Ereignisse.
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/topics/read | Liest ein Thema. |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/domains/read | Liest eine Domäne. |
-> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/partnerNamespaces/read | Liest einen Partnernamespace |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/partnerNamespaces/read |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | **NotActions** |  |
 > | *keine* |  |
@@ -9155,292 +9159,6 @@ Lesen der Eigenschaften des Nachweisanbieters. [Weitere Informationen](../attest
 }
 ```
 
-### <a name="azure-sentinel-automation-contributor"></a>Mitwirkender für Azure Sentinel-Automatisierung
-
-Mitwirkender für Azure Sentinel-Automatisierung. [Weitere Informationen](../sentinel/roles.md)
-
-> [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
-> | --- | --- |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
-> | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/triggers/read | Liest den Trigger. |
-> | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/triggers/listCallbackUrl/action | Ruft die Rückruf-URL für Trigger ab. |
-> | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/runs/read | Liest die Workflowausführung. |
-> | **NotActions** |  |
-> | *keine* |  |
-> | **DataActions** |  |
-> | *keine* |  |
-> | **NotDataActions** |  |
-> | *keine* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Azure Sentinel Automation Contributor",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f4c81013-99ee-4d62-a7ee-b3f1f648599a",
-  "name": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
-  "permissions": [
-    {
-      "actions": [
-        "Microsoft.Authorization/*/read",
-        "Microsoft.Logic/workflows/triggers/read",
-        "Microsoft.Logic/workflows/triggers/listCallbackUrl/action",
-        "Microsoft.Logic/workflows/runs/read"
-      ],
-      "notActions": [],
-      "dataActions": [],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "Azure Sentinel Automation Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="azure-sentinel-contributor"></a>Azure Sentinel-Mitwirkender
-
-Azure Sentinel-Mitwirkender [Weitere Informationen](../sentinel/roles.md)
-
-> [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
-> | --- | --- |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/* |  |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Führt eine Suche mit der neuen Engine aus. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Anzeigen von Log Analytics-Daten |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/* |  |
-> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Dient zum Abrufen vorhandener OMS-Lösungen. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | Dient zum Ausführen von Abfragen für die Daten im Arbeitsbereich. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/querypacks/*/read |  |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/* |  |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | Liest eine private Arbeitsmappe |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
-> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
-> | **NotActions** |  |
-> | *keine* |  |
-> | **DataActions** |  |
-> | *keine* |  |
-> | **NotDataActions** |  |
-> | *keine* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Azure Sentinel Contributor",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ab8e14d6-4a74-4a29-9ba8-549422addade",
-  "name": "ab8e14d6-4a74-4a29-9ba8-549422addade",
-  "permissions": [
-    {
-      "actions": [
-        "Microsoft.SecurityInsights/*",
-        "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/*/read",
-        "Microsoft.OperationalInsights/workspaces/savedSearches/*",
-        "Microsoft.OperationsManagement/solutions/read",
-        "Microsoft.OperationalInsights/workspaces/query/read",
-        "Microsoft.OperationalInsights/workspaces/query/*/read",
-        "Microsoft.OperationalInsights/workspaces/dataSources/read",
-        "Microsoft.OperationalInsights/querypacks/*/read",
-        "Microsoft.Insights/workbooks/*",
-        "Microsoft.Insights/myworkbooks/read",
-        "Microsoft.Authorization/*/read",
-        "Microsoft.Insights/alertRules/*",
-        "Microsoft.Resources/deployments/*",
-        "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Support/*"
-      ],
-      "notActions": [],
-      "dataActions": [],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "Azure Sentinel Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="azure-sentinel-reader"></a>Azure Sentinel-Leser
-
-Azure Sentinel-Leser [Weitere Informationen](../sentinel/roles.md)
-
-> [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
-> | --- | --- |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | Überprüft Benutzerautorisierung und -lizenz. |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/action | Abfragen von Threat Intelligence-Indikatoren |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/action | Abfragen von Threat Intelligence-Indikatoren |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Führt eine Suche mit der neuen Engine aus. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Anzeigen von Log Analytics-Daten |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/LinkedServices/read | Ruft verknüpfte Dienste im angegebenen Arbeitsbereich ab. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/read | Ruft eine gespeicherte Suchabfrage ab. |
-> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Dient zum Abrufen vorhandener OMS-Lösungen. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | Dient zum Ausführen von Abfragen für die Daten im Arbeitsbereich. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/querypacks/*/read |  |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | Lesen einer Arbeitsmappe |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | Liest eine private Arbeitsmappe |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
-> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
-> | **NotActions** |  |
-> | *keine* |  |
-> | **DataActions** |  |
-> | *keine* |  |
-> | **NotDataActions** |  |
-> | *keine* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Azure Sentinel Reader",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8d289c81-5878-46d4-8554-54e1e3d8b5cb",
-  "name": "8d289c81-5878-46d4-8554-54e1e3d8b5cb",
-  "permissions": [
-    {
-      "actions": [
-        "Microsoft.SecurityInsights/*/read",
-        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
-        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
-        "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
-        "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/*/read",
-        "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
-        "Microsoft.OperationalInsights/workspaces/savedSearches/read",
-        "Microsoft.OperationsManagement/solutions/read",
-        "Microsoft.OperationalInsights/workspaces/query/read",
-        "Microsoft.OperationalInsights/workspaces/query/*/read",
-        "Microsoft.OperationalInsights/querypacks/*/read",
-        "Microsoft.OperationalInsights/workspaces/dataSources/read",
-        "Microsoft.Insights/workbooks/read",
-        "Microsoft.Insights/myworkbooks/read",
-        "Microsoft.Authorization/*/read",
-        "Microsoft.Insights/alertRules/*",
-        "Microsoft.Resources/deployments/*",
-        "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Support/*"
-      ],
-      "notActions": [],
-      "dataActions": [],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "Azure Sentinel Reader",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="azure-sentinel-responder"></a>Azure Sentinel-Antwortender
-
-Azure Sentinel-Antwortender [Weitere Informationen](../sentinel/roles.md)
-
-> [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
-> | --- | --- |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | Überprüft Benutzerautorisierung und -lizenz. |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/automationRules/* |  |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | Anfügen von Tags an Threat Intelligence-Indikator |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/action | Abfragen von Threat Intelligence-Indikatoren |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/bulkTag/action | Kennzeichnet Informationen zu Bedrohungen in einem Massenvorgang. |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | Anfügen von Tags an Threat Intelligence-Indikator |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/replaceTags/action | Ersetzen von Tags eines Threat Intelligence-Indikators |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/action | Abfragen von Threat Intelligence-Indikatoren |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Führt eine Suche mit der neuen Engine aus. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Anzeigen von Log Analytics-Daten |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/read | Ruft eine gespeicherte Suchabfrage ab. |
-> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Dient zum Abrufen vorhandener OMS-Lösungen. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | Dient zum Ausführen von Abfragen für die Daten im Arbeitsbereich. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/querypacks/*/read |  |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | Lesen einer Arbeitsmappe |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | Liest eine private Arbeitsmappe |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
-> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
-> | **NotActions** |  |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/*/Delete |  |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/*/Delete |  |
-> | **DataActions** |  |
-> | *keine* |  |
-> | **NotDataActions** |  |
-> | *keine* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Azure Sentinel Responder",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3e150937-b8fe-4cfb-8069-0eaf05ecd056",
-  "name": "3e150937-b8fe-4cfb-8069-0eaf05ecd056",
-  "permissions": [
-    {
-      "actions": [
-        "Microsoft.SecurityInsights/*/read",
-        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
-        "Microsoft.SecurityInsights/automationRules/*",
-        "Microsoft.SecurityInsights/cases/*",
-        "Microsoft.SecurityInsights/incidents/*",
-        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
-        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
-        "Microsoft.SecurityInsights/threatIntelligence/bulkTag/action",
-        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
-        "Microsoft.SecurityInsights/threatIntelligence/indicators/replaceTags/action",
-        "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
-        "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/*/read",
-        "Microsoft.OperationalInsights/workspaces/dataSources/read",
-        "Microsoft.OperationalInsights/workspaces/savedSearches/read",
-        "Microsoft.OperationsManagement/solutions/read",
-        "Microsoft.OperationalInsights/workspaces/query/read",
-        "Microsoft.OperationalInsights/workspaces/query/*/read",
-        "Microsoft.OperationalInsights/workspaces/dataSources/read",
-        "Microsoft.OperationalInsights/querypacks/*/read",
-        "Microsoft.Insights/workbooks/read",
-        "Microsoft.Insights/myworkbooks/read",
-        "Microsoft.Authorization/*/read",
-        "Microsoft.Insights/alertRules/*",
-        "Microsoft.Resources/deployments/*",
-        "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Support/*"
-      ],
-      "notActions": [
-        "Microsoft.SecurityInsights/cases/*/Delete",
-        "Microsoft.SecurityInsights/incidents/*/Delete"
-      ],
-      "dataActions": [],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "Azure Sentinel Responder",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
 ### <a name="key-vault-administrator"></a>Key Vault-Administrator
 
 Ausführen beliebiger Vorgänge auf Datenebene für einen Schlüsseltresor und alle darin enthaltenen Objekte (einschließlich Zertifikate, Schlüssel und Geheimnisse). Kann keine Key Vault-Ressourcen oder Rollenzuweisungen verwalten. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. [Weitere Informationen](../key-vault/general/rbac-guide.md)
@@ -9979,6 +9697,292 @@ Ermöglicht Ihnen das Verwalten von verwalteten HSM-Pools, aber nicht den Zugrif
 }
 ```
 
+### <a name="microsoft-sentinel-automation-contributor"></a>Microsoft Sentinel Automation-Mitarbeiter
+
+Microsoft Sentinel Automation-Mitarbeiter [Mehr erfahren](../sentinel/roles.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/triggers/read | Liest den Trigger. |
+> | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/triggers/listCallbackUrl/action | Ruft die Rückruf-URL für Trigger ab. |
+> | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/runs/read | Liest die Workflowausführung. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Microsoft Sentinel Automation Contributor",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f4c81013-99ee-4d62-a7ee-b3f1f648599a",
+  "name": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Logic/workflows/triggers/read",
+        "Microsoft.Logic/workflows/triggers/listCallbackUrl/action",
+        "Microsoft.Logic/workflows/runs/read"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Microsoft Sentinel Automation Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="microsoft-sentinel-contributor"></a>Microsoft Sentinel-Mitwirkender
+
+Microsoft Sentinel-Mitwirkender [Mehr erfahren](../sentinel/roles.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/* |  |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Führt eine Suche mit der neuen Engine aus. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Anzeigen von Log Analytics-Daten |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/* |  |
+> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Dient zum Abrufen vorhandener OMS-Lösungen. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | Dient zum Ausführen von Abfragen für die Daten im Arbeitsbereich. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/querypacks/*/read |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | Liest eine private Arbeitsmappe |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Microsoft Sentinel Contributor",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ab8e14d6-4a74-4a29-9ba8-549422addade",
+  "name": "ab8e14d6-4a74-4a29-9ba8-549422addade",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.SecurityInsights/*",
+        "Microsoft.OperationalInsights/workspaces/analytics/query/action",
+        "Microsoft.OperationalInsights/workspaces/*/read",
+        "Microsoft.OperationalInsights/workspaces/savedSearches/*",
+        "Microsoft.OperationsManagement/solutions/read",
+        "Microsoft.OperationalInsights/workspaces/query/read",
+        "Microsoft.OperationalInsights/workspaces/query/*/read",
+        "Microsoft.OperationalInsights/workspaces/dataSources/read",
+        "Microsoft.OperationalInsights/querypacks/*/read",
+        "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/myworkbooks/read",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Microsoft Sentinel Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="microsoft-sentinel-reader"></a>Microsoft Sentinel Reader
+
+Microsoft Sentinel Reader [Mehr erfahren](../sentinel/roles.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | Überprüft Benutzerautorisierung und -lizenz. |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/action | Abfragen von Threat Intelligence-Indikatoren |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/action | Abfragen von Threat Intelligence-Indikatoren |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Führt eine Suche mit der neuen Engine aus. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Anzeigen von Log Analytics-Daten |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/LinkedServices/read | Ruft verknüpfte Dienste im angegebenen Arbeitsbereich ab. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/read | Ruft eine gespeicherte Suchabfrage ab. |
+> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Dient zum Abrufen vorhandener OMS-Lösungen. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | Dient zum Ausführen von Abfragen für die Daten im Arbeitsbereich. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/querypacks/*/read |  |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | Lesen einer Arbeitsmappe |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | Liest eine private Arbeitsmappe |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Microsoft Sentinel Reader",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8d289c81-5878-46d4-8554-54e1e3d8b5cb",
+  "name": "8d289c81-5878-46d4-8554-54e1e3d8b5cb",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
+        "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
+        "Microsoft.OperationalInsights/workspaces/analytics/query/action",
+        "Microsoft.OperationalInsights/workspaces/*/read",
+        "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
+        "Microsoft.OperationalInsights/workspaces/savedSearches/read",
+        "Microsoft.OperationsManagement/solutions/read",
+        "Microsoft.OperationalInsights/workspaces/query/read",
+        "Microsoft.OperationalInsights/workspaces/query/*/read",
+        "Microsoft.OperationalInsights/querypacks/*/read",
+        "Microsoft.OperationalInsights/workspaces/dataSources/read",
+        "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Microsoft Sentinel Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="microsoft-sentinel-responder"></a>Microsoft Sentinel Responder
+
+Microsoft Sentinel Responder [Mehr erfahren](../sentinel/roles.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | Überprüft Benutzerautorisierung und -lizenz. |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/automationRules/* |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | Anfügen von Tags an Threat Intelligence-Indikator |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/action | Abfragen von Threat Intelligence-Indikatoren |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/bulkTag/action | Kennzeichnet Informationen zu Bedrohungen in einem Massenvorgang. |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | Anfügen von Tags an Threat Intelligence-Indikator |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/replaceTags/action | Ersetzen von Tags eines Threat Intelligence-Indikators |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/action | Abfragen von Threat Intelligence-Indikatoren |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Führt eine Suche mit der neuen Engine aus. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Anzeigen von Log Analytics-Daten |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/read | Ruft eine gespeicherte Suchabfrage ab. |
+> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Dient zum Abrufen vorhandener OMS-Lösungen. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | Dient zum Ausführen von Abfragen für die Daten im Arbeitsbereich. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/querypacks/*/read |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | Lesen einer Arbeitsmappe |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | Liest eine private Arbeitsmappe |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | **NotActions** |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/*/Delete |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/*/Delete |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Microsoft Sentinel Responder",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3e150937-b8fe-4cfb-8069-0eaf05ecd056",
+  "name": "3e150937-b8fe-4cfb-8069-0eaf05ecd056",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
+        "Microsoft.SecurityInsights/automationRules/*",
+        "Microsoft.SecurityInsights/cases/*",
+        "Microsoft.SecurityInsights/incidents/*",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
+        "Microsoft.SecurityInsights/threatIntelligence/bulkTag/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/replaceTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
+        "Microsoft.OperationalInsights/workspaces/analytics/query/action",
+        "Microsoft.OperationalInsights/workspaces/*/read",
+        "Microsoft.OperationalInsights/workspaces/dataSources/read",
+        "Microsoft.OperationalInsights/workspaces/savedSearches/read",
+        "Microsoft.OperationsManagement/solutions/read",
+        "Microsoft.OperationalInsights/workspaces/query/read",
+        "Microsoft.OperationalInsights/workspaces/query/*/read",
+        "Microsoft.OperationalInsights/workspaces/dataSources/read",
+        "Microsoft.OperationalInsights/querypacks/*/read",
+        "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [
+        "Microsoft.SecurityInsights/cases/*/Delete",
+        "Microsoft.SecurityInsights/incidents/*/Delete"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Microsoft Sentinel Responder",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="security-admin"></a>Sicherheitsadministrator
 
 Anzeigen und Aktualisieren von Berechtigungen für Security Center. Gleiche Rechte wie der Sicherheitsleseberechtigte und kann darüber hinaus die Sicherheitsrichtlinie aktualisieren sowie Warnungen und Empfehlungen verwerfen. [Weitere Informationen](../security-center/security-center-permissions.md)
@@ -10323,12 +10327,23 @@ Ermöglicht Ihnen das Erstellen neuer Labs unter ihren Azure Lab-Konten. [Weiter
 > | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/createLab/action | Hiermit wird ein Lab in einem Lab-Konto erstellt. |
 > | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getPricingAndAvailability/action | Ruft die Preise und die Verfügbarkeit von Kombinationen aus Größen, Regionen und Betriebssystemen für das Labkonto ab. |
 > | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRestrictionsAndUsage/action | Ruft Kerneinschränkungen und Nutzungsdaten für dieses Abonnement ab |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
+> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labPlans/images/read | Ruft die Eigenschaften eines Images ab. |
+> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labPlans/read | Ruft die Eigenschaften eines Lab-Plans ab. |
+> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labPlans/saveImage/action | Erstellt ein Image aus einem virtuellen Computer in dem an den Lab-Plan angefügten Katalog. |
+> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labs/read | Ruft die Eigenschaften eines Labs ab. |
+> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labs/schedules/read | Ruft die Eigenschaften eines Zeitplans ab. |
+> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labs/users/read | Ruft die Eigenschaften eines Benutzers ab. |
+> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labs/virtualMachines/read | Ruft die Eigenschaften eines virtuellen Computers ab. |
+> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/locations/usages/read | Nutzung an einem Ort abrufen |
+> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/skus/read | Ruft die Eigenschaften einer Lab-Dienst-SKU ab. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | [Microsoft.LabServices](resource-provider-operations.md#microsoftlabservices)/labPlans/createLab/action | Erstellt ein neues Lab aus einem Lab-Plan. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -10348,11 +10363,24 @@ Ermöglicht Ihnen das Erstellen neuer Labs unter ihren Azure Lab-Konten. [Weiter
         "Microsoft.LabServices/labAccounts/createLab/action",
         "Microsoft.LabServices/labAccounts/getPricingAndAvailability/action",
         "Microsoft.LabServices/labAccounts/getRestrictionsAndUsage/action",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.LabServices/labPlans/images/read",
+        "Microsoft.LabServices/labPlans/read",
+        "Microsoft.LabServices/labPlans/saveImage/action",
+        "Microsoft.LabServices/labs/read",
+        "Microsoft.LabServices/labs/schedules/read",
+        "Microsoft.LabServices/labs/users/read",
+        "Microsoft.LabServices/labs/virtualMachines/read",
+        "Microsoft.LabServices/locations/usages/read",
+        "Microsoft.LabServices/skus/read",
+        "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Support/*"
       ],
       "notActions": [],
-      "dataActions": [],
+      "dataActions": [
+        "Microsoft.LabServices/labPlans/createLab/action"
+      ],
       "notDataActions": []
     }
   ],
@@ -10491,6 +10519,7 @@ Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeit
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/activityLogAlerts/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/AlertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/* | Erstellen und Verwalten von Insights-Komponenten |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionEndpoints/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRules/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRuleAssociations/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | Erstellt, aktualisiert oder liest die Diagnoseeinstellung für den Analysis-Server. |
@@ -10541,6 +10570,7 @@ Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeit
         "Microsoft.Insights/activityLogAlerts/*",
         "Microsoft.Insights/AlertRules/*",
         "Microsoft.Insights/components/*",
+        "Microsoft.Insights/dataCollectionEndpoints/*",
         "Microsoft.Insights/dataCollectionRules/*",
         "Microsoft.Insights/dataCollectionRuleAssociations/*",
         "Microsoft.Insights/DiagnosticSettings/*",
@@ -10751,6 +10781,65 @@ Kann Arbeitsmappen lesen. [Weitere Informationen](../sentinel/tutorial-monitor-y
 ## <a name="management--governance"></a>Verwaltung + Governance
 
 
+### <a name="automation-contributor"></a>Mitwirkender für Automatisierung
+
+Verwalten von Azure Automation-Ressourcen und anderen Ressourcen mit Azure Automation. [Weitere Informationen](../automation/automation-role-based-access-control.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/* |  |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/ActionGroups/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/ActivityLogAlerts/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/MetricAlerts/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/ScheduledQueryRules/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | Erstellt, aktualisiert oder liest die Diagnoseeinstellung für den Analysis-Server. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/action | Ruft die gemeinsam verwendeten Schlüssel für den Arbeitsbereich ab. Diese Schlüssel werden verwendet, um Microsoft Operational Insights-Agents mit dem Arbeitsbereich zu verbinden. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Manage azure automation resources and other resources using azure automation.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f353d9bd-d4a6-484e-a77a-8050b599b867",
+  "name": "f353d9bd-d4a6-484e-a77a-8050b599b867",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Automation/automationAccounts/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/ActionGroups/*",
+        "Microsoft.Insights/ActivityLogAlerts/*",
+        "Microsoft.Insights/MetricAlerts/*",
+        "Microsoft.Insights/ScheduledQueryRules/*",
+        "Microsoft.Insights/diagnosticSettings/*",
+        "Microsoft.OperationalInsights/workspaces/sharedKeys/action"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Automation Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="automation-job-operator"></a>Automation-Auftragsoperator
 
 Hiermit werden Aufträge mithilfe von Automation-Runbooks erstellt und verwaltet. [Weitere Informationen](../automation/automation-role-based-access-control.md)
@@ -10942,7 +11031,7 @@ Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. [We
 }
 ```
 
-### <a name="azure-arc-enabled-kubernetes-cluster-user-role"></a>Azure Arc-aktivierte Kubernetes-Cluster-Benutzerrolle
+### <a name="azure-arc-enabled-kubernetes-cluster-user-role"></a>Benutzerrolle für Azure Arc-aktivierte Kubernetes-Cluster
 
 Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers.
 

@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: NikaKinska
 ms.author: nnikolic
 ms.reviewer: mathoma, wiassaf
-ms.date: 1/14/2021
-ms.openlocfilehash: 5ae1bfde67d2fed9147ffe8a18203f3dc1d80c19
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/04/2021
+ms.openlocfilehash: d4b9249ece6117af35466b0984c9dc5ceff2a224
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131431976"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843630"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Erkennbare Typen von Problemen mit Engpässen bei der Abfrageleistung in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -197,7 +197,7 @@ Sobald Sie einen suboptimalen Plan und *wartebezogene Probleme* im Zusammenhang 
   Wenn die Workload temporäre Tabellen verwendet oder die Pläne TempDB-Überläufe enthalten, liegt bei den Anfragen unter Umständen ein Problem mit dem TempDB-Durchsatz vor. Erfahren Sie, wie DMVs zum [Identifizieren von TempDB-Problemen ](database/monitoring-with-dmvs.md#identify-tempdb-performance-issues) verwendet werden können.
 - **Arbeitsspeicherbezogene Probleme**
 
-  Wenn für die Workload nicht genügend Arbeitsspeicher zur Verfügung steht, sinkt unter Umständen die Seitenlebenserwartung, oder die Abfragen erhalten weniger Arbeitsspeicher als sie benötigen. In bestimmten Fällen können arbeitsspeicherbezogene Probleme durch die integrierte Intelligenz des Abfrageoptimierers behoben werden. Erfahren Sie, wie DMVs zum [Identifizieren von Problemen mit der Speicherzuweisung](database/monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues) verwendet werden können.
+  Wenn für die Workload nicht genügend Arbeitsspeicher zur Verfügung steht, sinkt unter Umständen die Seitenlebenserwartung, oder die Abfragen erhalten weniger Arbeitsspeicher als sie benötigen. In bestimmten Fällen können arbeitsspeicherbezogene Probleme durch die integrierte Intelligenz des Abfrageoptimierers behoben werden. Erfahren Sie, wie DMVs zum [Identifizieren von Problemen mit der Speicherzuweisung](database/monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues) verwendet werden können. Weitere Informationen und Beispielabfragen finden Sie unter [Behandeln von Fehlern mit unzureichendem Arbeitsspeicher mit Azure SQL-Datenbanken](database/troubleshoot-memory-errors-issues.md).
 
 ### <a name="methods-to-show-top-wait-categories"></a>Methoden zum Anzeigen der wichtigsten Wartekategorien
 

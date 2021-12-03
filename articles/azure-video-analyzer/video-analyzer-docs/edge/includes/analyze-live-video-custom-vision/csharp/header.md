@@ -2,13 +2,13 @@
 author: Juliako
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 04/30/2021
+ms.date: 11/04/2021
 ms.author: juliako
-ms.openlocfilehash: 9e80af27606d06e3442e8127d8a1ac86276b1f81
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ff047727c51bf4893e8b8c7f380b122b95e0b75d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101105"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861110"
 ---
 In diesem Tutorial wird ein virtueller Azure-Computer (VM) als IoT Edge-Gerät verwendet, mit in C# geschriebenem Beispielcode. 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: 24d30dc81b2b2a3da2ac5f172dabe77cf5b01f9c
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 02bbc4d6b0cc6f346111a8cd0145ef099dd33feb
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058234"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552012"
 ---
-# <a name="add-an-openid-connect-based-single-sign-on-application-in-azure-active-directory"></a>Hinzufügen einer auf OpenID Connect basierenden Anwendung für einmaliges Anmelden in Azure Active Directory
+# <a name="add-an-openid-connect-based-single-sign-on-application"></a>Hinzufügen einer auf OpenID Connect basierenden Anwendung für einmaliges Anmelden
 
 Fügen Sie Ihrem Azure AD-Mandanten (Azure Active Directory) eine Anwendung hinzu, die auf [OpenID Connect (OIDC)](../develop/active-directory-v2-protocols.md) basierendes einmaliges Anmelden (Single Sign-On, SSO) unterstützt.
 

@@ -1,20 +1,20 @@
 ---
 title: Überwachen von Data Factorys mit Azure Monitor
 description: Erfahren Sie, wie Sie Azure Data Factory-Pipelines mit Azure Monitor überwachen können, indem Sie Diagnoseprotokolle mit Informationen aus Data Factory aktivieren.
-author: jasonwhowell
-ms.author: jasonh
+author: joshuha-msft
+ms.author: joowen
 ms.reviewer: jburchel
 ms.custom: contperf-fy22q1
 ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: a3e2fe3f005467e82ebe5fbc2e502c764a7322b3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 91f377e1e092348a9d3a4ea6be3794c6f212d6b8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131033131"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853945"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Durchführen der Überwachung und Verwenden von Warnungen für Data Factory mit Azure Monitor
 

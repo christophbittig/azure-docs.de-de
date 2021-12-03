@@ -1,15 +1,15 @@
 ---
 title: Eine Liste der Azure Resource Graph-Beispielabfragen nach Tabellen sortiert
 description: Eine Liste von Beispielabfragen für Azure Resource Graph. Die Tabellen umfassen Ressourcen, ResourceContainers, PolicyResources und vieles mehr.
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: ae85a1925eef24af4284ede99d1208eda1396357
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: fce6e85364bf62cc74f8668575752786782225e5
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535951"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058097"
 ---
 # <a name="azure-resource-graph-sample-queries-by-table"></a>Azure Resource Graph-Beispielabfragen nach Kategorien sortiert
 
@@ -30,6 +30,12 @@ Diese Seite zeigt eine nach Tabellen gruppierte Sammlung von Azure Resource Grap
 ## <a name="healthresources"></a>HealthResources
 
 [!INCLUDE [azure-resource-graph-samples-table-healthresources](../../../../includes/resource-graph/samples/bytable/healthresources.md)]
+
+## <a name="iotsecurityresources"></a>IotSecurityResources
+
+[!INCLUDE [azure-resource-graph-samples-table-iotsecurityresources](../../../../includes/resource-graph/samples/bytable/iotsecurityresources.md)]
+
+[!INCLUDE [azure-resource-graph-samples-table-iot-defender](../../../../includes/resource-graph/samples/bytable/iot-defender.md)]
 
 ## <a name="kubernetesconfigurationresources"></a>KubernetesConfigurationResources
 

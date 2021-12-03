@@ -8,18 +8,18 @@ ms.date: 03/02/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: ef783ba32cde3522f5b3cca9e0aa42bdd3fdf5f5
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c0348e159b14e400e7787da7e1c04de375f96815
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770419"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437142"
 ---
 # <a name="create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Linux
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
-In diesem Artikel erfahren Sie, wie Sie eine vorhandene Imageversion in einem [Katalog mit freigegebenen Images](../shared-image-galleries.md) aktualisieren und als neue Imageversion im Katalog veröffentlichen.
+In diesem Artikel erfahren Sie, wie Sie eine vorhandene Imageversion in [Azure Compute Gallery](../shared-image-galleries.md) (ehemals Shared Image Gallery) aktualisieren und als neue Imageversion im Katalog veröffentlichen.
 
 Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwenden die JSON-Datei [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
 
@@ -50,7 +50,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="set-variables-and-permissions"></a>Festlegen von Variablen und Berechtigungen
 
-Wenn Sie Ihren Katalog mit freigegebenen Images anhand von [Erstellen eines ein Images und Verteilen des Images in einem Katalog mit freigegebenen Images](image-builder-gallery.md) erstellt haben, haben Sie bereits einige der benötigten Variablen erstellt. Richten Sie andernfalls nun einige Variablen ein, die in diesem Beispiel verwendet werden.
+Wenn Sie Ihre Azure Compute Gallery-Instanz auf der Grundlage von [Erstellen eines Images und Verteilen des Images in eine Azure Compute Gallery](image-builder-gallery.md) erstellt haben, haben Sie auch einige der benötigten Variablen bereits erstellt. Richten Sie andernfalls nun einige Variablen ein, die in diesem Beispiel verwendet werden.
 
 
 ```console
@@ -60,7 +60,7 @@ sigResourceGroup=ibLinuxGalleryRG
 location=westus2
 # Additional region to replicate the image version to 
 additionalregion=eastus
-# Name of the shared image gallery 
+# Name of the Azure Compute Gallery 
 sigName=myIbGallery
 # Name of the image definition to use
 imageDefName=myIbImageDef
@@ -92,7 +92,7 @@ Da Sie im vorigen Beispiel die Benutzeridentität eingerichtet haben, müssen Si
 imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, 'aibBuiUserId')].id" -o tsv)
 ```
 
-Wenn Sie bereits über einen eigenen Katalog mit freigegebenen Images verfügen und nicht nach dem vorherigen Beispiel vorgegangen sind, müssen Sie Image Builder Berechtigungen zum Zugreifen auf die Ressourcengruppe zuweisen, damit er auf den Katalog zugreifen kann. Überprüfen Sie die Schritte im Beispiel [Erstellen und Verteilen eines Images an eine Shared Image Gallery](image-builder-gallery.md).
+Wenn Sie bereits über eine eigene Azure Compute Gallery-Instanz verfügen und nicht nach dem vorherigen Beispiel vorgegangen sind, müssen Sie Image Builder Berechtigungen zum Zugreifen auf die Ressourcengruppe zuweisen, damit er auf den Katalog zugreifen kann. Sehen Sie sich die Schritte im Beispiel [Erstellen und Verteilen eines Images an Azure Compute Gallery](image-builder-gallery.md) an.
 
 
 ## <a name="modify-helloimage-example"></a>Ändern des Beispiels helloImage

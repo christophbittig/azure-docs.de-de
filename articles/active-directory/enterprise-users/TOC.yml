@@ -38,6 +38,8 @@
           href: users-bulk-add.md
         - name: Verwalten von Benutzerprofilen
           href: ../fundamentals/active-directory-users-profile-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+        - name: Zuweisen benutzerdefinierter Sicherheitsattribute
+          href: users-custom-security-attributes.md
         - name: Herunterladen von Benutzerinformationen
           href: users-bulk-download.md
         - name: Freigeben von Benutzerkonten

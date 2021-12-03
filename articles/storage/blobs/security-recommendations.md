@@ -10,27 +10,27 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 7eede4af994bab1ca2dfa06bea20d9c79c6e96a7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c3554c60331abacae5796e64cefc0ede7f21b64b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339704"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335402"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Sicherheitsempfehlungen für Blob Storage
 
 Dieser Artikel enthält Sicherheitsempfehlungen für Blob Storage. Die Umsetzung dieser Empfehlungen erleichtert es Ihnen, Ihre Sicherheitspflichten zu erfüllen, die in unserem Modell der gemeinsamen Verantwortung beschrieben werden. Weitere Informationen dazu, wie Microsoft seiner Verantwortung als Dienstanbieter nachkommt, finden Sie unter [Gemeinsame Verantwortung in der Cloud](../../security/fundamentals/shared-responsibility.md).
 
-Einige der in diesem Artikel enthaltenen Empfehlungen können automatisch durch Azure Security Center überwacht werden. Azure Security Center ist die erste Verteidigungslinie zum Schutz Ihrer Ressourcen in Azure. Informationen zu Azure Security Center finden Sie unter [Was ist Azure Security Center?](../../security-center/security-center-introduction.md).
+Einige der Empfehlungen in diesem Abschnitt können automatisch von Microsoft Defender für Cloud überwacht werden, der ersten Verteidigungsfront zum Schutz Ihrer Ressourcen in Azure. Weitere Informationen zu Microsoft Defender für Cloud finden Sie unter [Was ist Microsoft Defender für Cloud?](../../security-center/security-center-introduction.md)
 
-Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Anschließend erhalten Sie Empfehlungen dazu, wie damit umgegangen werden kann. Weitere Informationen zu Empfehlungen von Azure Security Center finden Sie unter [Sicherheitsempfehlungen in Azure Security Center](../../security-center/security-center-recommendations.md).
+Microsoft Defender für Cloud analysiert regelmäßig den Sicherheitsstatus Ihrer Azure-Ressourcen, um potenzielle Sicherheitsrisiken zu erkennen. Anschließend erhalten Sie Empfehlungen dazu, wie damit umgegangen werden kann. Weitere Informationen zu Empfehlungen in Microsoft Defender für Cloud finden Sie unter [Sicherheitsempfehlungen in Microsoft Defender für Cloud](../../security-center/security-center-recommendations.md).
 
 ## <a name="data-protection"></a>Schutz von Daten
 
-| Empfehlung | Kommentare | Security Center |
+| Empfehlung | Kommentare | Defender für Cloud |
 |-|----|--|
 | Verwenden des Azure Resource Manager-Bereitstellungsmodells | Erstellen Sie neue Speicherkonten mit dem Azure Resource Manager-Bereitstellungsmodell, um von wichtigen Sicherheitsverbesserungen zu profitieren. Dazu gehören eine differenzierte rollenbasierte Zugriffssteuerung (Azure RBAC) und Überwachung in Azure, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Azure Key Vault für Geheimnisse sowie Azure AD-basierte Authentifizierung und Autorisierung für den Zugriff auf Azure Storage-Daten und -Ressourcen. Migrieren Sie nach Möglichkeit vorhandene Speicherkonten, die das klassische Bereitstellungsmodell verwenden, zu Azure Resource Manager. Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/management/overview.md). | - |
-| Aktivieren von Azure Defender für alle Speicherkonten | Azure Defender für Azure Storage bietet zusätzliche Sicherheitsanalysen für Daten zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Sicherheitswarnungen werden in Azure Security Center bei Auftreten von Anomalien in Bezug auf Aktivitäten ausgelöst und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet. Weitere Informationen finden Sie unter [Konfigurieren von Azure Defender für Azure Storage](../common/azure-defender-storage-configure.md). | [Ja](../../security-center/security-center-remediate-recommendations.md) |
+| Aktivieren von Microsoft Defender für all Ihre Speicherkonten | Microsoft Defender für Storage stellt eine zusätzliche Ebene der Sicherheitsanalyse bereit, die ungewöhnliche und potenziell bedrohliche Versuche erkennt, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Sicherheitswarnungen werden in Microsoft Defender für Cloud ausgelöst, wenn anormale Aktivitäten auftreten, und auch als E-Mail mit Angaben zu verdächtigen Aktivitäten und Empfehlungen, wie Bedrohungen untersucht und behoben werden können, an Abonnementadministratoren gesendet. Weitere Informationen finden Sie unter [Microsoft Defender für Storage konfigurieren](../common/azure-defender-storage-configure.md). | [Ja](../../security-center/security-center-remediate-recommendations.md) |
 | Aktivieren des vorläufigen Löschens für Blobs | Das vorläufige Löschen für Blobs ermöglicht es Ihnen, Blobdaten nach dem Löschen wiederherzustellen. Weitere Informationen zum vorläufigen Löschen für Blobs finden Sie unter [Vorläufiges Löschen für Azure Storage-Blobs](./soft-delete-blob-overview.md). | - |
 | Aktivieren des vorläufigen Löschens für Container | Das vorläufige Löschen für Container ermöglicht es Ihnen, einen Container nach dem Löschen wiederherzustellen. Weitere Informationen zum vorläufigen Löschen für Container finden Sie unter [Vorläufiges Löschen für Container](./soft-delete-container-overview.md). | - |
 | Sperren eines Speicherkontos, um versehentliches oder böswilliges Löschen oder Konfigurationsänderungen zu verhindern | Wenden Sie eine Azure Resource Manager-Sperre auf Ihr Speicherkonto an, um das Konto vor versehentlichem oder böswilligem Löschen oder einer Konfigurationsänderung zu schützen. Durch das Sperren eines Speicherkontos wird nicht verhindert, dass Daten in diesem Konto gelöscht werden. Dadurch wird nur verhindert, dass das Konto selbst gelöscht wird. Weitere Informationen finden Sie unter [Anwenden einer Azure Resource Manager-Sperre auf ein Speicherkonto](../common/lock-account-resource.md).
@@ -40,7 +40,7 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 
 ## <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung
 
-| Empfehlung | Kommentare | Security Center |
+| Empfehlung | Kommentare | Defender für Cloud |
 |-|----|--|
 | Verwenden von Azure Active Directory (Azure AD) zum Autorisieren des Zugriffs auf Blobdaten | Azure AD bietet überlegene Sicherheit und Benutzerfreundlichkeit gegenüber dem gemeinsam verwendeten Schüssel zum Autorisieren von Anforderungen an Blob Storage. Weitere Informationen finden Sie unter [Autorisieren des Zugriffs auf Daten in Azure Storage](../common/authorize-data-access.md). | - |
 | Beachten Sie das Prinzip der geringsten Rechte beim Zuweisen von Berechtigungen für einen Azure AD-Sicherheitsprinzipal über Azure RBAC. | Wenn Sie einem Benutzer, einer Gruppe oder einer Anwendung eine Rolle zuweisen, erteilen Sie diesem Sicherheitsprinzipal nur die Berechtigungen, die zum Ausführen der jeweiligen Aufgaben erforderlich sind. Durch Einschränken des Zugriffs auf Ressourcen kann sowohl ein unbeabsichtigter als auch böswilliger Missbrauch Ihrer Daten verhindert werden. | - |
@@ -55,7 +55,7 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 
 ## <a name="networking"></a>Netzwerk
 
-| Empfehlung | Kommentare | Security Center |
+| Empfehlung | Kommentare | Defender für Cloud |
 |-|----|--|
 | Configure the minimum required version of Transport Layer Security (TLS) for a storage account. (Konfigurieren Sie die erforderliche Mindestversion der Transport Layer Security (TLS) für ein Speicherkonto.)  | Legen Sie fest, dass Clients beim Senden von Anforderungen an ein Azure Storage-Konto eine sicherere TLS-Version verwenden, indem Sie die TLS-Mindestversion für dieses Konto konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren der erforderlichen Mindestversion der Transport Layer Security (TLS) für ein Speicherkonto](../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).| - |
 | Aktivieren der Option **Sichere Übertragung erforderlich** für alle Speicherkonten | Wenn Sie die Option **Sichere Übertragung erforderlich** aktivieren, müssen alle an das Speicherkonto gerichteten Anforderungen über sichere Verbindungen erfolgen. Bei Anforderungen über HTTP treten Fehler auf. Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). | [Ja](../../security-center/security-center-remediate-recommendations.md) |
@@ -68,7 +68,7 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 
 ## <a name="loggingmonitoring"></a>Protokollierung/Überwachung
 
-| Empfehlung | Kommentare | Security Center |
+| Empfehlung | Kommentare | Defender für Cloud |
 |-|----|--|
 | Nachverfolgen der Autorisierung von Anforderungen | Aktivieren Sie die Azure Storage-Protokollierung, um zu verfolgen, wie jede für Azure Storage durchgeführte Anforderung autorisiert wurde. Die Protokolle geben an, ob eine Anforderung anonym, mithilfe eines OAuth 2.0-Tokens, mit einem gemeinsam verwendeten Schlüssel oder mithilfe einer SAS (Shared Access Signature) durchgeführt wurde. Weitere Informationen finden Sie unter [Überwachen von Azure Blob Storage mit Azure Monitor](monitor-blob-storage.md) oder [Azure Storage Analytics-Protokollierung mit klassischer Überwachung](../common/storage-analytics-logging.md). | - |
 | Einrichten von Warnungen in Azure Monitor | Durch das Konfigurieren von Protokollwarnungen können Sie Ressourcenprotokolle mit einer bestimmten Häufigkeit auswerten und basierend auf den Ergebnissen eine Warnung auslösen. Weitere Informationen finden Sie unter [Protokollwarnungen in Azure Monitor](../../azure-monitor/alerts/alerts-unified-log.md). | - |

@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Skalierungsgruppe aus einem generalisierten Image mit Azure PowerShell
-description: Erstellen Sie mithilfe von PowerShell eine Skalierungsgruppe mithilfe eines generalisierten Images in einer Shared Image Gallery.
+description: Erstellen Sie mithilfe von PowerShell eine Skalierungsgruppe mithilfe eines generalisierten Images in einer Azure Compute Gallery-Instanz.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
@@ -10,18 +10,18 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 591ad83cf9beeff7b25ffa1234441109dc169aa2
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 45ce53df289c8e3d471937a0c7291943920a83d8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691258"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474759"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>Erstellen einer Skalierungsgruppe aus einem generalisierten Image mit PowerShell 
 
 **Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
 
-Erstellen Sie eine VM aus einer generalisierten Imageversion, die in einer [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) gespeichert wird. Wenn Sie eine Skalierungsgruppe mit einem spezialisierten Image erstellen möchten, finden Sie weitere Informationen unter [Erstellen von Skalierungsgruppeninstanzen aus einem spezialisierten Image](instance-specialized-image-version-powershell.md).
+Erstellen Sie eine VM aus einer generalisierten Imageversion, die in einem [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) gespeichert ist. Wenn Sie eine Skalierungsgruppe mit einem spezialisierten Image erstellen möchten, finden Sie weitere Informationen unter [Erstellen von Skalierungsgruppeninstanzen aus einem spezialisierten Image](instance-specialized-image-version-powershell.md).
 
 Nachdem Sie ein generalisiertes Image erstellt haben, können Sie mithilfe des Cmdlets [New-AzVmss](/powershell/module/az.compute/new-azvmss) eine VM-Skalierungsgruppe erstellen. 
 
@@ -62,7 +62,7 @@ Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Sk
 
 ## <a name="extended-parameter-set"></a>Erweiterter Parametersatz
 
-Verwenden Sie für vollständige Kontrolle über alle Ressourcen (einschließlich der Benennung) den vollständigen Parametersatz, um eine Skalierungsgruppe mithilfe eines Shared Image Gallery-Images zu erstellen. 
+Verwenden Sie für vollständige Kontrolle über alle Ressourcen (einschließlich der Benennung) den vollständigen Parametersatz, um eine Skalierungsgruppe mithilfe eines Azure Compute Gallery-Images zu erstellen. 
 
 ```azurepowershell-interactive
 # Get the image definition
@@ -178,10 +178,10 @@ Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Sk
 ## <a name="next-steps"></a>Nächste Schritte
 [Azure Image Builder (Vorschauversion)](../virtual-machines/image-builder-overview.md) hilft beim Automatisieren der Erstellung von Imageversionen. Sie können den Dienst sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](../virtual-machines/linux/image-builder-gallery-update-image-version.md) verwenden. 
 
-Sie können auch mithilfe von Vorlagen eine Ressource im Katalog für freigegebene Images erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
+Sie können auch mithilfe von Vorlagen eine Ressource in der Azure Compute Gallery erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
 
-- [Erstellen eines Katalogs mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-create/)
-- [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Erstellen einer Azure Compute Gallery-Instanz](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Erstellen einer Imagedefinition in einer Azure Compute Gallery-Instanz](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Erstellen einer Imageversion in einer Azure Compute Gallery-Instanz](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
 
 Weitere Informationen zu Katalogen mit geteilten Images finden Sie in der [Übersicht](../virtual-machines/shared-image-galleries.md). Sollten Probleme auftreten, sehen Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](../virtual-machines/troubleshooting-shared-images.md) nach.

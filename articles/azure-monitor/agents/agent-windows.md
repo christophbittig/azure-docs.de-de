@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
-ms.openlocfilehash: 8df379fe175db6a70d44ab23acf808379d8720bb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0e2b1711ed8f5a5bcf7059242116ece3e70f1235
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131044283"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332191"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Installieren des Log Analytics-Agents auf Windows-Computern
 Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Analytics-Agents auf Windows-Computern mithilfe der folgenden Methoden:
@@ -32,7 +32,7 @@ Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Ana
 Eine Liste der Windows-Versionen, die vom Log Analytics-Agent unterstützt werden, finden Sie unter [Übersicht über Azure Monitor-Agents](agents-overview.md#supported-operating-systems).
 
 ### <a name="sha-2-code-signing-support-requirement"></a>Erforderliche Unterstützung der SHA-2-Codesignierung 
-Der Windows-Agent verwendet ab dem 17. August 2020 ausschließlich die SHA-2-Signierung. Diese Änderung betrifft Kunden, die den Log Analytics-Agent als Teil eines Azure-Diensts (Azure Monitor, Azure Automation, Azure-Updateverwaltung, Azure-Änderungsnachverfolgung, Azure Security Center, Azure Sentinel, Windows Defender ATP) auf einem älteren Betriebssystem verwenden. Die Änderung erfordert keine kundenseitige Aktion, es sei denn, Sie führen den Agent auf einer älteren Betriebssystemversion (Windows 7, Windows Server 2008 R2 und Windows Server 2008) aus. Kunden mit einer älteren Betriebssystemversion müssen vor dem 17. August 2020 die folgenden Aktionen auf ihren Computern durchführen, da die Agents andernfalls keine Daten mehr an ihre Log Analytics-Arbeitsbereiche senden:
+Der Windows-Agent verwendet ab dem 17. August 2020 ausschließlich die SHA-2-Signierung. Diese Änderung wirkt sich auf Kunden aus, die den Log Analytics-Agenten auf einem älteren Betriebssystem als Teil eines beliebigen Azure-Dienstes verwenden (Azure Monitor, Azure Automation, Azure Update Management, Azure Change Tracking, Microsoft Defender for Cloud, Microsoft Sentinel, Windows Defender ATP). Die Änderung erfordert keine kundenseitige Aktion, es sei denn, Sie führen den Agent auf einer älteren Betriebssystemversion (Windows 7, Windows Server 2008 R2 und Windows Server 2008) aus. Kunden mit einer älteren Betriebssystemversion müssen vor dem 17. August 2020 die folgenden Aktionen auf ihren Computern durchführen, da die Agents andernfalls keine Daten mehr an ihre Log Analytics-Arbeitsbereiche senden:
 
 1. Installieren Sie das neueste Service Pack für Ihr Betriebssystem. Folgende Service Pack-Versionen sind erforderlich:
     - Windows 7 SP1

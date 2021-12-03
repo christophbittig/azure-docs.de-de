@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-clu, ignite-fall-2021
-ms.openlocfilehash: 697a42d32fd0af80737ad65a8350b719ffc5c7a6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 73ab3df8a7f13ec2c734206772f55bee626b871a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100910"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339932"
 ---
 # <a name="how-to-tag-utterances"></a>Kennzeichnen von Äußerungen
 
-Nachdem Sie für Ihr Projekt [ein Schema erstellt](build-schema.md) haben, sollten Sie Ihrem Projekt Trainingsäußerungen hinzufügen. Die Äußerungen sollten denen ähnlich sein, die Ihre Benutzer bei der Interaktion mit dem Projekt verwenden. Wenn Sie eine Äußerung hinzufügen, müssen Sie zuweisen, zu welcher Absicht sie gehört. Nachdem die Äußerung hinzugefügt wurde, beschriften Sie die Wörter in Ihrer Äußerung mit den Entitäten in Ihrem Projekt. Ihre Bezeichnungen für Entitäten sollten über die verschiedenen Äußerungen hinweg konsistent sein. 
+Nachdem Sie für Ihr Projekt [ein Schema erstellt](build-schema.md) haben, sollten Sie Ihrem Projekt Trainingsäußerungen hinzufügen. Die Äußerungen sollten denen ähnlich sein, die Ihre Benutzer bei der Interaktion mit dem Projekt verwenden. Wenn Sie eine Äußerung hinzufügen, müssen Sie zuweisen, zu welcher Absicht sie gehört. Nachdem die Äußerung hinzugefügt wurde, beschriften Sie die Wörter in Ihrer Äußerung mit den Entitäten in Ihrem Projekt. Ihre Bezeichnungen für Entitäten sollten über die verschiedenen Äußerungen hinweg konsistent sein.
 
 Kennzeichnen ist der Prozess, bei dem Ihre Äußerungen Absichten zugewiesen und mit Entitäten bezeichnet werden. Sie sollten sich Zeit für das Kennzeichnen Ihrer Äußerungen nehmen – für das Einführen und Optimieren der Daten, mit denen die zugrunde liegenden Machine Learning-Modelle für Ihr Projekt trainiert werden. Die Machine Learning-Modelle verallgemeinern auf der Grundlage der Beispiele, die Sie bereitstellen. Je mehr Beispiele Sie angeben, desto mehr Datenpunkte stehen dem Modell zur Verfügung, um bessere Verallgemeinerungen abzuleiten.
 

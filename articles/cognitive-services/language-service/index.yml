@@ -1,0 +1,98 @@
+### YamlMime:Hub
+title: Dokumentation zu Azure Cognitive Services for Language
+summary: 'Erfahren Sie, wie Sie KI in Ihre Anwendungen integrieren, die Informationen extrahieren, Text klassifizieren, Unterhaltungssprache verstehen, Fragen beantworten und vieles mehr.'
+brand: azure
+metadata:
+  title: 'Dokumentation für Azure Cognitive Services for Language – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: 'Erfahren Sie, wie Sie KI, die mit geschriebenem Text arbeitet, in Ihre Anwendungen integrieren können.'
+  author: aahill
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: hub-page
+  ms.date: 11/02/2021
+  ms.author: aahi
+highlightedContent:
+  items:
+    - title: Was ist Azure Cognitive Service for Language?
+      itemType: overview
+      url: overview.md
+    - title: Neuigkeiten
+      itemType: whats-new
+      url: whats-new.md
+    - title: Erste Schritte mit Language Studio
+      itemType: get-started
+      url: language-studio.md
+    - title: Verantwortungsvolle Verwendung von KI
+      itemType: concept
+      url: /legal/cognitive-services/language-service/transparency-note?context=/azure/cognitive-services/language-service/context/context
+conceptualContent:
+  items:
+    - title: Extrahieren von Informationen
+      summary: 'Verwenden Sie NLU (Natural Language Understanding, Verstehen natürlicher Sprache), um Informationen aus unstrukturiertem Text zu extrahieren. Identifizieren Sie beispielsweise Schlüsselbegriffe oder personenbezogene Informationen (Personally Identifiable Information, PII), fassen Sie Text zusammen, erkennen und kategorisieren Sie benannte Entitäten, oder passen Sie ein Entitätsextraktionsmodell auf der Grundlage Ihres Domänensatzes an.'
+      links:
+        - itemType: overview
+          text: Schlüsselbegriffe extrahieren
+          url: key-phrase-extraction/overview.md
+        - itemType: overview
+          text: Suchen verknüpfter Entitäten
+          url: entity-linking/overview.md
+        - itemType: overview
+          text: Erkennung benannter Entitäten (NER)
+          url: named-entity-recognition/overview.md
+        - itemType: overview
+          text: 'Erkennung personenbezogener Informationen (Personally Identifiable Information, PII)'
+          url: personally-identifiable-information/overview.md
+        - itemType: overview
+          text: Benutzerdefinierte Erkennung benannter Entitäten (Custom NER)
+          url: custom-named-entity-recognition/overview.md
+        - itemType: overview
+          text: Textanalyse für Gesundheit
+          url: text-analytics-for-health/overview.md
+        - itemType: overview
+          text: Textzusammenfassung
+          url: text-summarization/overview.md
+    - title: Klassifizieren von Text
+      summary: 'Verwenden Sie NLU (Natural Language Understanding, Verstehen natürlicher Sprache), um die Sprache zu erkennen oder die Stimmung ihres Texts zu klassifizieren. Sie können Ihre Textdokumente auch klassifizieren, indem Sie ein Klassifizierungsmodell für Ihr Dataset anpassen.'
+      links:
+        - itemType: overview
+          text: Analysieren der Stimmung und Auswerten von Text nach Meinungen
+          url: sentiment-opinion-mining/overview.md
+        - itemType: overview
+          text: Erkennen von Sprache
+          url: language-detection/overview.md
+        - itemType: overview
+          text: Benutzerdefinierte Textklassifizierung
+          url: custom-classification/overview.md
+    - title: Beantworten von Fragen
+      summary: 'Geben Sie mithilfe unserer vordefinierten Funktionen Antworten auf Fragen, die in unstrukturierten Texten gestellt werden, oder passen Sie Ihre domänenspezifischen Frage-Antwort-Paare über die von Ihnen angegebenen Daten an.'
+      links:
+        - itemType: overview
+          text: Fragen und Antworten
+          url: question-answering/overview.md
+    - title: Verstehen von Konversationen
+      summary: 'Erstellen Sie ein eigenes Modell für das Unterhaltungssprachverständnis, um Konversationsäußerungen zu klassifizieren und detaillierte Informationen daraus zu extrahieren, um Szenarien zu erfüllen.'
+      links:
+        - itemType: overview
+          text: Unterhaltungssprachverständnis
+          url: conversational-language-understanding/overview.md
+    - title: Text übersetzen
+      summary: 'Verwenden Sie cloudbasierte neuronale maschinelle Übersetzung, um intelligente, mehrsprachige Lösungen für Ihre Anwendungen zu erstellen.'
+      links:
+        - itemType: overview
+          text: Verwenden von maschinellen Übersetzungen für Text
+          url: ../translator/translator-overview.md
+additionalContent:
+  sections:
+    - items:
+        - title: Ressourcen
+          links:
+            - text: Preise
+              url: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
+            - text: Lernen
+              url: /learn/browse/?products=azure-cognitive-services&term=Speech
+        - title: Support
+          links:
+            - text: Support und Hilfe
+              url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

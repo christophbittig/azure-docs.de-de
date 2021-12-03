@@ -1,14 +1,14 @@
 ---
 title: Behandeln von Problemen mit dem Sensor und der lokalen Verwaltungskonsole
 description: Beheben Sie Probleme mit dem Sensor und der lokalen Verwaltungskonsole, um möglicherweise bestehende Probleme zu beseitigen.
-ms.date: 10/17/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 791df9cc7b95ac32dfcc794136bc53df51e3a0a8
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 66e4d9b221176bb8a1413e679656c6df401459dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131309"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278643"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Behandeln von Problemen mit dem Sensor und der lokalen Verwaltungskonsole
 
@@ -16,7 +16,7 @@ In diesem Artikel werden die grundlegenden Tools zur Problembehandlung für den 
 
 **Warnungen**: Eine Warnung wird erstellt, wenn die Sensorschnittstelle, die den Datenverkehr überwacht, nicht mehr angezeigt wird.
 
-**SNMP**: Die Sensorintegrität wird über SNMP überwacht. Azure Defender für IoT antwortet auf SNMP-Abfragen, die von einem autorisierten Überwachungsserver gesendet wurden.
+**SNMP**: Die Sensorintegrität wird über SNMP überwacht. Microsoft Defender für IoT antwortet auf SNMP-Abfragen, die von einem autorisierten Überwachungsserver gesendet wurden.
 
 **Systembenachrichtigungen**: Wenn der Sensor von einer Verwaltungskonsole gesteuert wird, können Sie Warnungen über fehlgeschlagene Sensorsicherungen und getrennte Sensoren weiterleiten.
 

@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: automl
 ms.topic: how-to
 ms.custom: contperf-fy21q1, automl, FY21Q4-aml-seo-hack
-ms.date: 06/11/2021
-ms.openlocfilehash: f8e036a77603c1e0833117a4562ad9dfd93c7ac9
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: 45c8f82729bd4cb16e0d0d36d9a9e70b66a7dbe2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427189"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345347"
 ---
 # <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>Einrichten von AutoML zum Trainieren eines Zeitreihenvorhersagemodells mit Python
 
@@ -145,8 +145,8 @@ Eine Übersicht über zusätzliche Parameter finden in der folgenden Tabelle. Sy
 |-------|-------|-------|
 |`time_column_name`|Dient zum Angeben der Datetime-Spalte in den Eingabedaten, die zum Erstellen der Zeitreihe sowie zum Ableiten des Intervalls verwendet wird.|✓|
 |`forecast_horizon`|Definiert die Anzahl der Zeiträume, die Sie vorhersagen möchten. Der Horizont wird in Einheiten der Zeitreihenhäufigkeit angegeben. Die Einheiten basieren auf dem Zeitintervall Ihrer Trainingsdaten, z. B. monatlich oder wöchentlich, die vorhergesagt werden sollen.|✓|
-|`enable_dnn`|[Aktivieren Sie Vorhersage-DNNs]().||
-|`time_series_id_column_names`|Die verwendeten Spaltennamen dienen zum eindeutigen Identifizieren der Zeitreihe in Daten, die mehrere Zeilen mit demselben Zeitstempel aufweisen. Ohne definierte Zeitreihenbezeichner wird bei dem Dataset von einer einzelnen Zeitreihe ausgegangen. Weitere Informationen zu einzelnen Zeitreihen finden Sie unter [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).||
+|`enable_dnn`|[Aktivieren Sie Vorhersage-DNNs](#enable-deep-learning).||
+|`time_series_id_column_names`|Die verwendeten Spaltennamen dienen zum eindeutigen Identifizieren der Zeitreihe in Daten, die mehrere Zeilen mit demselben Zeitstempel aufweisen. Ohne definierte Zeitreihenbezeichner wird bei dem Dataset von einer einzelnen Zeitreihe ausgegangen. Weitere Informationen zu einzelnen Zeitreihen finden Sie unter [energy_demand_notebook](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb).||
 |`freq`| Die Häufigkeit der Zeitreihendatasets. Dieser Parameter stellt den Zeitraum dar, in dem Ereignisse zu erwarten sind, z. B. täglich, wöchentlich, jährlich usw. Die Häufigkeit muss ein [Pandas-Offset-Alias](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects) sein. Weitere Informationen finden Sie im Abschnitt zur [Häufigkeit](#frequency-target-data-aggregation).||
 |`target_lags`|Anzahl der Zeilen, um die die Zielwerte basierend auf der Häufigkeit der Daten verzögert werden sollen. Diese Verzögerung wird als Liste oder als einzelner Integer dargestellt. Die Verzögerung sollte verwendet werden, wenn die Beziehung zwischen den unabhängigen Variablen und der abhängigen Variable standardmäßig nicht übereinstimmt oder korreliert. ||
 |`feature_lags`| Welche Features verzögert werden, wird automatisch durch automatisiertes ML festgelegt, wenn `target_lags` festgelegt und `feature_lags` auf `auto` festgelegt ist. Das Aktivieren von Featureverzögerungen kann zur Verbesserung der Genauigkeit beitragen. Featureverzögerungen sind standardmäßig deaktiviert. ||
@@ -287,7 +287,7 @@ Unterstützte Aggregationsvorgänge für Zielspaltenwerte:
 ### <a name="enable-deep-learning"></a>Aktivieren von Deep Learning
 
 > [!NOTE]
-> Die DNN-Unterstützung für Vorhersagen beim automatisiertem maschinellen Lernen befindet sich in der **Vorschauphase** und wird für lokales Ausführen sowie in Databricks gestartetes Ausführen nicht unterstützt.
+> Die DNN-Unterstützung für Vorhersagen in Automated Machine Learning befindet sich in der **Vorschau** und wird für lokale oder in Databricks initiierte Läufe nicht unterstützt.
 
 Sie können auch Deep Learning mit Deep Neural Networks (DNNs) anwenden, um die Scores des Modells zu verbessern. Deep Learning mit automatisiertem maschinellem Lernen ermöglicht das Vorhersagen von ein- und mehrdimensionalen Zeitreihendaten.
 
@@ -309,7 +309,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Informationen zum Aktivieren von DNN für ein AutoML-Experiment, das in Azure Machine Learning Studio erstellt wurde, finden Sie in der [Schrittanleitung für Aufgabentypeinstellungen in Studio](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-Ein detailliertes Codebeispiel für die Verwendung von DNNs finden Sie im [Notebook für die Vorhersage der Getränkeproduktion](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
+Ein detailliertes Codebeispiel für die Verwendung von DNNs finden Sie im [Notebook für die Vorhersage der Getränkeproduktion](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
 
 ### <a name="target-rolling-window-aggregation"></a>Rollierende Zeitfensteraggregationen als Ziel
 In vielen Fällen ist die beste Information, über die ein Vorhersagemodell verfügen kann, der aktuelle Wert des Ziels.  Wenn Sie rollierende Zeitfensteraggregationen als Ziel verwenden, können Sie eine rollierende Aggregation von Datenwerten als Features hinzufügen. Durch Erzeugen und Verwenden dieser Features als zusätzliche Kontextdaten wird die Genauigkeit des Trainingsmodells gesteigert.
@@ -320,7 +320,7 @@ In der Tabelle wird das resultierende Feature Engineering dargestellt, das auftr
 
 ![Ziel für rollierendes Zeitfenster](./media/how-to-auto-train-forecast/target-roll.svg)
 
-Sehen Sie sich ein Python-Codebeispiel an, in dem das [Feature für rollierende Zeitfensteraggregationen als Ziel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) angewendet wird.
+Sehen Sie sich ein Python-Codebeispiel an, in dem das [Feature für rollierende Zeitfensteraggregationen als Ziel](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) angewendet wird.
 
 ### <a name="short-series-handling"></a>Verarbeitung kurzer Reihen
 
@@ -505,13 +505,13 @@ hts_parameters = HTSTrainParameters(
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
 
-Sehen Sie sich die [Notebooks zum Vorhersagebeispiel](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) an. Dort finden Sie ausführliche Codebeispiele zu einer erweiterten Vorhersagekonfiguration, einschließlich:
+Sehen Sie sich die [Notebooks zum Vorhersagebeispiel](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml) an. Dort finden Sie ausführliche Codebeispiele zu einer erweiterten Vorhersagekonfiguration, einschließlich:
 
-* [Feiertagserkennung und Erstellen zusätzlicher Merkmale (Featurization)](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
-* [Kreuzvalidierung mit rollierendem Ursprung (Rolling Origin Validation)](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
-* [Konfigurierbare Verzögerungen (Lags)](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
-* [Aggregierte Zeitfenstermerkmale (Rolling Window Features)](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
-* [DNN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
+* [Feiertagserkennung und Erstellen zusätzlicher Merkmale (Featurization)](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [Kreuzvalidierung mit rollierendem Ursprung (Rolling Origin Validation)](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [Konfigurierbare Verzögerungen (Lags)](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [Aggregierte Zeitfenstermerkmale (Rolling Window Features)](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [DNN](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

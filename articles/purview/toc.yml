@@ -54,6 +54,10 @@ items:
             href: concept-best-practices-network.md
           - name: Bewährte Methoden für die Überprüfung
             href: concept-best-practices-scanning.md
+          - name: Bewährte Methoden für die Klassifizierung
+            href: concept-best-practices-classification.md
+          - name: Bewährte Methoden für die Automatisierung
+            href: concept-best-practices-automation.md
       - name: "Azure\_Purview-Berechtigungen"
         href: catalog-permissions.md
       - name: Datenzuordnung
@@ -76,11 +80,9 @@ items:
             href: concept-asset-normalization.md
       - name: Datenerkenntnisse
         href: concept-insights.md
-      - name: Aktualisierte Azure Purview-Konten
-        href: concept-account-upgrade.md
   - name: Anleitungen
     items:
-      - name: Erstellen und Verwalten von Sammlungen
+      - name: Verwalten von Sammlungen
         href: how-to-create-and-manage-collections.md
       - name: Verwalten von Quellen
         items:
@@ -133,6 +135,8 @@ items:
             href: register-scan-azure-synapse-analytics.md
           - name: Cassandra
             href: register-scan-cassandra-source.md
+          - name: DB2
+            href: register-scan-db2.md
           - name: Erwin
             href: register-scan-erwin-source.md
           - name: Google BigQuery
@@ -141,16 +145,24 @@ items:
             href: register-scan-hive-metastore-source.md
           - name: Looker
             href: register-scan-looker-source.md
+          - name: MySQL
+            href: register-scan-mysql.md
           - name: Lokaler SQL Server
             href: register-scan-on-premises-sql-server.md
           - name: Oracle
             href: register-scan-oracle-source.md
+          - name: PostgreSQL
+            href: register-scan-postgresql.md
           - name: 'Power BI-Mandant: Portal'
             href: register-scan-power-bi-tenant.md
+          - name: Salesforce
+            href: register-scan-salesforce.md
           - name: SAP ECC
             href: register-scan-sapecc-source.md
           - name: SAP S/4HANA
             href: register-scan-saps4hana-source.md
+          - name: Snowflake
+            href: register-scan-snowflake.md
           - name: Teradata
             href: register-scan-teradata-source.md
           - name: Amazon RDS
@@ -265,6 +277,8 @@ items:
         href: disaster-recovery.md
       - name: Überwachung mit Azure Monitor
         href: how-to-monitor-with-azure-monitor.md
+      - name: Integration in Azure-Sicherheitsprodukte
+        href: how-to-integrate-with-azure-security-products.md
       - name: Zugriffsrichtlinien für Datenbesitzer
         items:
           - name: Datenzugriffsrichtlinie für Azure Storage

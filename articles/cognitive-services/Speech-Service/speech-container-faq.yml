@@ -12,12 +12,12 @@ metadata:
   ms.date: 03/11/2021
   ms.author: eur
   ms.custom: devx-track-csharp
-  ms.openlocfilehash: 5b896e3f4bbd6cf00d4ee9b7eb2723cc75d07a5b
-  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+  ms.openlocfilehash: 6fec58c20c40371eb1c7226e7dbe6120217657fe
+  ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131508162"
+  ms.lasthandoff: 11/10/2021
+  ms.locfileid: "132133905"
 title: Häufig gestellte Fragen (FAQ) zu Containern für den Speech-Dienst
 summary: Ziehen Sie bei der Verwendung des Speech-Diensts mit Containern diese Sammlung häufig gestellter Fragen zu Rate, bevor Sie sich an den Support wenden. In diesem Artikel werden Fragen von unterschiedlicher Bedeutung erfasst, von allgemeinen bis hin zu technischen Fragen. Um eine Antwort zu erweitern, klicken Sie auf die Frage.
 sections:
@@ -114,10 +114,7 @@ sections:
       Wenn Sie mit dem aktuellen benutzerdefinierten Modell trainieren, wird dies derzeit nicht unterstützt. Wenn Sie mit einer älteren Version trainieren, sollte es möglich sein, diese zu verwenden. Wir arbeiten weiterhin an der Unterstützung der neuesten Versionen.
 
 
-      Im Wesentlichen unterstützen die benutzerdefinierten Container keine Halide- oder ONNX-basierten Akustikmodelle (dies ist der Standard im benutzerdefinierten Trainingsportal). Das liegt daran, dass benutzerdefinierte Modelle nicht verschlüsselt sind, und wir wollen ONNX-Modelle jedoch nicht verfügbar machen. Sprachmodelle sind in Ordnung. Der Kunde muss explizit ein älteres Nicht-ONNX-Modell für benutzerdefinierte Trainings auswählen. Die Genauigkeit wird nicht beeinträchtigt. Die Modellgröße kann größer sein (um 100 MB).
-
-
-      > Supportmodell > 20190220 (v4.5 Unified)
+      Im Wesentlichen unterstützen die benutzerdefinierten Container keine Halide- oder ONNX-basierten Akustikmodelle (dies ist der Standard im benutzerdefinierten Trainingsportal). Das liegt daran, dass benutzerdefinierte Modelle nicht verschlüsselt sind, und wir wollen ONNX-Modelle jedoch nicht verfügbar machen. Sprachmodelle sind in Ordnung. Die Modellgröße kann größer sein (um 100 MB).
 
 
       **Fehler 2:**

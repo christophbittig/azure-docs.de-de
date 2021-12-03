@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 2aa4dcc0aa4ecdd3b620aef874a0b5b9ceef4c96
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: c85659a6c9e89145494d4683da37bd2f13cbd379
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112963544"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234863"
 ---
 # <a name="gpu-acceleration-for-azure-iot-edge-for-linux-on-windows-preview"></a>GPU-Beschleunigung für Azure IoT Edge für Linux unter Windows (Vorschau)
 
@@ -62,7 +62,7 @@ Befolgen Sie nach der Registrierung die Anleitung auf der Registerkarte **2. Fl
 Für **T4-GPUs** empfiehlt Microsoft die Installation eines Treibers für die Risikominderung des Geräts, den Sie beim Anbieter Ihrer GPU erhalten. Die Installation eines Treibers für die Risikominderung des Geräts ist zwar optional, aber Sie können damit ggf. die Sicherheit Ihrer Bereitstellung erhöhen. Weitere Informationen finden Sie unter [Bereitstellen von Grafikgeräten mit Discrete Device Assignment](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda#optional---install-the-partitioning-driver).
 
 > [!WARNING]
-> Die Aktivieren des Passthrough-Vorgangs für Hardwaregeräte kann zu einem erhöhten Sicherheitsrisiko führen. Wir empfehlen Ihnen, einen Treiber für die Risikominderung des Geräts zu installieren, den Sie beim Anbieter Ihrer GPU erhalten.
+> Das Aktivieren von Hardwaregeräte-Passthrough kann zu einem erhöhten Sicherheitsrisiko führen. Microsoft empfiehlt zur Risikominderung die Installation eines Gerätetreibers, den Sie vom Anbieter Ihrer GPU erhalten. Weitere Informationen finden Sie unter [Bereitstellen von Grafikgeräten mit Discrete Device Assignment](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda).
 
 ### <a name="geforcequadro-gpus"></a>GeForce/Quadro-GPUs
 
@@ -70,7 +70,7 @@ Laden Sie für **GeForce/Quadro-GPUs** den [NVIDIA CUDA-fähigen Treiber für da
 
 ## <a name="using-gpu-acceleration-for-your-linux-on-windows-deployment"></a>Verwenden der GPU-Beschleunigung für Ihre Linux-Bereitstellung unter Windows
 
-Nun ist alles bereit, um die Linux-Module mit GPU-Beschleunigung in Ihrer Windows-Umgebung über Azure IoT Edge für Linux unter Windows bereitzustellen und auszuführen. Ausführlichere Informationen zum Bereitstellungsprozess finden Sie unter [Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät (Vorschau)](how-to-install-iot-edge-on-windows.md).
+Nun ist alles bereit, um die Linux-Module mit GPU-Beschleunigung in Ihrer Windows-Umgebung über Azure IoT Edge für Linux unter Windows bereitzustellen und auszuführen. Weitere Informationen zum Bereitstellungsprozess finden Sie im „[Leitfaden für die Bereitstellung eines einzelnen IoT Edge für Linux unter Windows-Geräts mithilfe von symmetrischen Schlüsseln](how-to-provision-single-device-linux-on-windows-symmetric.md) oder [mithilfe von X.509-Zertifikaten](how-to-provision-single-device-linux-on-windows-x509.md)“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

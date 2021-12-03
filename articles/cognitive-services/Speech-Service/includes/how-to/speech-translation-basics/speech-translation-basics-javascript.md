@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: eric-urban
 ms.custom: devx-track-js
-ms.openlocfilehash: 42e0db662c9eaae08351c12a03e1954372b628d6
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 7e129d8d7a38b2ba143f89ab4407453f62c75b93
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506897"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132530089"
 ---
 Eines der zentralen Features des Speech-Diensts ist die Fähigkeit, menschliche Sprache zu erkennen und in andere Sprachen zu übersetzen. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Sprachübersetzungen durchzuführen. In diesem Schnellstart werden folgende Themen behandelt:
 
@@ -114,7 +114,7 @@ const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfi
 
 Von der Klasse [TranslationRecognizer](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer) für das Speech SDK für JavaScript werden verschiedene Methoden für die Sprachübersetzung verfügbar gemacht.
 
-* Einzelübersetzung (asynchron): Führt die Übersetzung in einem nicht blockierenden (asynchronen) Modus durch. Dadurch wird eine einzelne Äußerung übersetzt. Zur Erkennung des Endes einer einzelnen Äußerung wird auf Stille am Ende gelauscht oder gewartet, bis maximal 15 Sekunden an Audiodaten verarbeitet wurden.
+* Anfängliche Übersetzung (asynchron): Führt die Übersetzung in einem nicht blockierenden (asynchronen) Modus durch. Dadurch wird eine einzelne Äußerung übersetzt. Zur Erkennung des Endes einer einzelnen Äußerung wird auf Stille am Ende gelauscht oder gewartet, bis maximal 15 Sekunden an Audiodaten verarbeitet wurden.
 * Fortlaufende Übersetzung (asynchron): Initialisiert asynchron einen fortlaufenden Übersetzungsvorgang. Der Benutzer registriert sich für Ereignisse und behandelt verschiedene Anwendungszustände. Zum Beenden der asynchronen fortlaufenden Übersetzung muss [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync) aufgerufen werden.
 
 > [!NOTE]
@@ -129,9 +129,9 @@ speechTranslationConfig.speechRecognitionLanguage = "en-US";
 speechTranslationConfig.addTargetLanguage("de");
 ```
 
-### <a name="single-shot-recognition"></a>Einzelerkennung
+### <a name="at-start-recognition"></a>Anfängliche Erkennung
 
-Das folgende Beispiel zeigt eine asynchrone Einzelübersetzung mit [`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#recognizeonceasync):
+Das folgende Beispiel zeigt eine asynchrone anfängliche Übersetzung mit [`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#recognizeonceasync):
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {
@@ -178,7 +178,7 @@ recognizer.recognized = function (s, e) {
 
 ### <a name="continuous-translation"></a>Fortlaufende Übersetzung
 
-Die fortlaufende Übersetzung ist etwas komplexer als die Einzelerkennung. Für die kontinuierliche Erkennung müssen die Ereignisse `recognizing`, `recognized` und `canceled` abonniert werden, um die Erkennungsergebnisse zu erhalten. Sie müssen [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync) aufrufen, um die Übersetzung zu beenden Im folgenden Beispiel wird eine fortlaufende Übersetzung für eine Audioeingabedatei durchgeführt.
+Die kontinuierliche Übersetzung ist etwas komplexer als die anfängliche Erkennung. Für die kontinuierliche Erkennung müssen die Ereignisse `recognizing`, `recognized` und `canceled` abonniert werden, um die Erkennungsergebnisse zu erhalten. Sie müssen [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync) aufrufen, um die Übersetzung zu beenden Im folgenden Beispiel wird eine fortlaufende Übersetzung für eine Audioeingabedatei durchgeführt.
 
 Als Erstes wird die Eingabe definiert und eine Spracherkennung ([`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer)) initialisiert:
 

@@ -8,24 +8,29 @@ ms.topic: conceptual
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 2fb4ec6ebe5960a6a782b3d76fe2aaec91603302
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 54f164c60a5602bcfe798c98785fca1aa8513279
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798949"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292850"
 ---
 # <a name="understanding-licensing-and-per-user-access-pricing"></a>Grundlegendes zu Lizenzen und zu den Preisen für benutzerspezifischen Zugriff
 
 In diesem Artikel werden die Lizenzierungsanforderungen für die Verwendung von Azure Virtual Desktop zum Streamen von Remoteanwendungen für externe Benutzer erläutert. In diesem Artikel erfahren Sie, wie sich die Lizenzierung von Azure Virtual Desktop für externe Benutzer von der für interne Benutzer unterscheidet, wie die Preisgestaltung für den benutzerspezifischen Zugriff im Detail funktioniert und wie Sie andere Produkte lizenzieren, die Sie mit Azure Virtual Desktop verwenden möchten.
 
-## <a name="licensing-azure-virtual-desktop-for-external-users"></a>Lizenzieren von Azure Virtual Desktop für externe Benutzer
+## <a name="internal-users-and-external-users"></a>Interne Benutzer und externe Benutzer
 
-Es gibt zwei Möglichkeiten für die Verwendung von Azure Virtual Desktop. Jede Möglichkeit weist unterschiedliche Anforderungen an die Lizenzierung auf:
+Im Zusammenhang mit der Bereitstellung einer virtualisierten Infrastruktur mit Azure Virtual Desktop bezieht sich **interner Benutzer** auf Personen, die Mitglieder Ihrer eigenen Organisation sind, zum Beispiel Mitarbeiter eines Unternehmens oder Schüler einer Schule. **Externe Benutzer** sind nicht Mitglieder Ihrer Organisation, zum Beispiel Kunden eines Unternehmens.
 
-- Für das Streamen von RemoteApps und Desktops für interne Benutzer. Das Produktionsunternehmen Fabrikam, Inc. könnte z. B. Azure Virtual Desktop verwenden, um den Mitarbeitern von Fabrikam Zugriff auf virtuelle Workstations und Branchenanwendungen zu verschaffen. In diesem Fall muss Fabrikam für jeden seiner Mitarbeiter, der auf Azure Virtual Desktop zugreift, eine der in der [Preisliste für Azure Virtual Desktop](https://azure.microsoft.com/pricing/details/virtual-desktop/) aufgeführten Lizenzen erwerben.
+>[!NOTE]
+>Achten Sie darauf, dass Sie externe *Nutzer* nicht mit externen *Identitäten* verwechseln. Azure Virtual Desktop unterstützt derzeit keine externen Identitäten, einschließlich Gastzugänge und B2B-Identitäten (Business-to-Business). Unabhängig davon, ob Sie interne oder externe Nutzer mit dem Azure Virtual Desktop bedienen, müssen Sie Identitäten für diese Nutzer selbst erstellen und verwalten. Die Preise für den Zugriff pro Nutzer sind keine Möglichkeit, Gastnutzerkonten mit dem Azure Virtual Desktop zu aktivieren. Weitere Informationen finden Sie unter [Architektur.-Empfehlungen](architecture-recs.md).
 
-- Für das Streamen von RemoteApps und Desktops für externe Benutzer. Beispielsweise könnte ein Softwareanbieter namens Contoso Azure Virtual Desktop verwenden, um Kunden von Contoso (Benutzer, die keine Contoso-Mitarbeiter sind) Remotestreams der Produktivitätsanwendung von Contoso bereitzustellen. In diesem Fall muss sich Contoso für den Azure Virtual Desktop-Preis für den benutzerspezifischen Zugriff registrieren. Mit diesem Lizenztyp kann Contoso für Azure Virtual Desktop-Zugriffsrechte im Namen dieser Benutzer über eine Azure-Verbrauchseinheit bezahlen, die auf der Anzahl der Benutzer basiert, die jeden Monat auf Azure Virtual Desktop zugreifen. Die Benutzer in der Bereitstellung benötigen keine separate Lizenz wie Microsoft 365, um auf Azure Virtual Desktop zuzugreifen.
+Die Lizenzierung von Azure Virtual Desktop funktioniert für interne und externe Benutzer unterschiedlich. Betrachten Sie die folgenden Beispiele:
+
+- Ein Fertigungsunternehmen namens Fabrikam, Inc. könnte Azure Virtual Desktop verwenden, um den Mitarbeitern (internen Benutzern) von Fabrikam Zugriff auf virtuelle Workstations und Geschäftsanwendungen zu bieten. Da Fabrikam interne Benutzer bedient, muss Fabrikam für jeden seiner Mitarbeiter, der auf Azure Virtual Desktop zugreift, eine der in der [Azure Virtual Desktop-Preisliste](https://azure.microsoft.com/pricing/details/virtual-desktop/) aufgeführten berechtigten Lizenzen erwerben.
+
+- Ein Softwareanbieter namens Contoso könnte Azure Virtual Desktop verwenden, um Remote-Streams der Produktivitätsanwendung von Contoso an Kunden von Contoso (externe Benutzer) zu verkaufen. Da Contoso externe Benutzer bedient, muss Contoso sich bei den Preisen für den benutzerspezifischen Zugriff von Azure Virtual Desktop registrieren. Dies ermöglicht Contoso die Zahlung für Azure Virtual Desktop-Zugriffsrechte im Namen der externen Benutzer, die eine Verbindung mit der Bereitstellung von Contoso herstellen. Die Benutzer in der Bereitstellung benötigen keine separate Lizenz wie etwa Microsoft 365, um auf Azure Virtual Desktop zuzugreifen. Contoso muss jedoch Identitäten für diese externen Benutzer erstellen und verwalten.
 
 ## <a name="per-user-access-pricing-for-azure-virtual-desktop"></a>Preise für benutzerspezifischen Zugriff für Azure Virtual Desktop
 
@@ -49,23 +54,23 @@ Azure Virtual Desktop erhebt höchstens eine Zugriffsgebühr für einen bestimmt
 
 ## <a name="comparing-licensing-options"></a>Vergleichen von Lizenzierungsoptionen
 
-Wie in [Preise für benutzerspezifischen Zugriff für Azure Virtual Desktop](#per-user-access-pricing-for-azure-virtual-desktop) erwähnt, gibt es zwei Arten von Lizenzen für Azure Virtual Desktop, aus denen Sie wählen können:
+Im Folgenden finden Sie eine Zusammenfassung der beiden Arten von Lizenzen für Azure Virtual Desktop, aus der Sie wählen können:
 
 - Eine Windows- oder Microsoft 365-Lizenz:
-   - Gewährt Azure Virtual Desktop-Zugriffsrechte ausschließlich für interne Benutzer.
-   - Im Voraus über ein Abonnement bezahlt.
-   - Gleiche Kosten pro Benutzer und Monat, unabhängig vom Benutzerverhalten.
-   - Umfasst Berechtigungen für einige andere Microsoft-Produkte und -Dienste.
+  - Gewährt Azure Virtual Desktop-Zugriffsrechte ausschließlich für interne Benutzer
+  - Im Voraus über ein Abonnement bezahlt
+  - Gleiche Kosten pro Benutzer und Monat, unabhängig vom Benutzerverhalten.
+  - Umfasst Berechtigungen für einige andere Microsoft-Produkte und -Dienste.
 
 - Preise für benutzerspezifischen Zugriff:
-   - Gewährt Azure Virtual Desktop-Zugriffsrechte ausschließlich für externe Benutzer.
-   - Nutzungsbasierte Bezahlung über eine Azure-Verbrauchseinheit.
-   - Dynamische Kosten pro Benutzer und Monat basierend auf dem Benutzerverhalten.
-   - Umfasst nur Zugriffsrechte für Azure Virtual Desktop.
+  - Gewährt Azure Virtual Desktop-Zugriffsrechte ausschließlich für externe Benutzer.
+  - Nutzungsbasierte Bezahlung über eine Azure-Verbrauchseinheit.
+  - Die Kosten pro Benutzer und Monat hängen vom Benutzerverhalten ab
+  - Umfasst nur Zugriffsrechte für Azure Virtual Desktop.
 
 ## <a name="licensing-other-products-and-services-for-use-with-azure-virtual-desktop"></a>Lizenzieren anderer Produkte und Dienste für die Verwendung mit Azure Virtual Desktop
 
-Die Azure Virtual Desktop-Lizenz für den Zugriff auf Benutzerebene ist kein vollständiger Ersatz für eine Windows- oder Microsoft 365-Lizenz. Lizenzen pro Benutzer gewähren nur Zugriffsrechte auf Azure Virtual Desktop und umfassen nicht Microsoft Office, Microsoft Defender oder Universal Print. Das bedeutet, dass Sie, wenn Sie sich für eine Lizenz pro Benutzer entscheiden, andere Produkte und Dienste separat lizenzieren müssen, um Ihren Benutzern den Zugriff auf diese in Ihrer Azure Virtual Desktop-Umgebung zu ermöglichen.
+Die Azure Virtual Desktop-Lizenz für den Zugriff auf Benutzerebene ist kein vollständiger Ersatz für eine Windows- oder Microsoft 365-Lizenz. Lizenzen pro Benutzer gewähren nur Zugriffsrechte auf den virtuellen Azure-Desktop (Azure Virtual Desktop) und umfassen nicht Microsoft Office, Microsoft 365 Defender oder Universal Print. Das bedeutet, dass Sie, wenn Sie sich für eine Lizenz pro Benutzer entscheiden, andere Produkte und Dienste separat lizenzieren müssen, um Ihren Benutzern den Zugriff auf diese in Ihrer Azure Virtual Desktop-Umgebung zu ermöglichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 10/21/2021
+ms.date: 11/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dadaa832e065163186ef590989c22c0f7e7700a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 11e8af7f7e955e960644f2748087a86e1aa5b61f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233902"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484626"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion) 
 
@@ -28,15 +28,15 @@ Diese Authentifizierungstechnologie kann auf jeder Geräteplattform verwendet we
 
 Personen, die die Anmeldung per Telefon über die Microsoft Authenticator-App aktiviert haben, sehen eine Meldung, in der sie aufgefordert werden, in ihrer App auf eine Zahl zu tippen. Es wird nicht nach Benutzername oder Kennwort gefragt. Um den Anmeldevorgang in der App abzuschließen, muss ein Benutzer als Nächstes die folgenden Aktionen ausführen:
 
-1. Auf die richtige Zahl tippen.
-2. Klicken Sie auf **Genehmigen**.
-3. Die PIN oder den biometrischen Wert bereitstellen.
+1. Er muss die Zahl, die auf dem Anmeldebildschirm angezeigt wird, in das Dialogfeld der Microsoft Authenticator-App eingeben.
+1. Klicken Sie auf **Genehmigen**.
+1. Die PIN oder den biometrischen Wert bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Die folgenden Voraussetzungen müssen erfüllt sein, damit die kennwortlose Anmeldung per Telefon mit der Microsoft Authenticator-App verwendet werden kann:
 
-- Azure AD Multi-Factor Authentication ist mit Pushbenachrichtigungen als Überprüfungsmethode zulässig. Pushbenachrichtigungen an Ihr Smartphone oder Tablet tragen dazu bei, dass die Microsoft Authenticator-App nicht autorisierten Zugriff auf Konten verhindern und betrügerische Transaktionen stoppen kann. Die Authenticator-App generiert automatisch Codes, wenn sie für Pushbenachrichtigungen eingerichtet wurde. So hat der Benutzer selbst dann eine Sicherungsanmeldemethode, wenn sein Gerät keine Verbindung herstellen kann. 
+- Empfohlen: Azure AD Multi-Factor Authentication ist mit Pushbenachrichtigungen als Überprüfungsmethode zulässig. Pushbenachrichtigungen an Ihr Smartphone oder Tablet tragen dazu bei, dass die Microsoft Authenticator-App nicht autorisierten Zugriff auf Konten verhindern und betrügerische Transaktionen stoppen kann. Die Authenticator-App generiert automatisch Codes, wenn sie für Pushbenachrichtigungen eingerichtet wurde. So hat der Benutzer selbst dann eine Sicherungsanmeldemethode, wenn sein Gerät keine Verbindung herstellen kann. 
 - Aktuelle Version von Microsoft Authenticator auf Geräten mit iOS 8.0 oder höher oder Android 6.0 oder höher installieren.
 - Das Gerät, auf dem die Microsoft Authenticator-App installiert ist, muss innerhalb des Azure AD-Tenants auf einen einzelnen Benutzer registriert sein. 
 
@@ -61,14 +61,17 @@ Führen Sie die folgenden Schritte aus, um die Authentifizierungsmethode für di
 1. Bei jeder hinzugefügten Gruppe und jedem hinzugefügten Benutzer ist standardmäßig Microsoft Authenticator sowohl im kennwortlosen als auch im Pushbenachrichtigungsmodus („Beliebig“) aktiviert. Um dies zu ändern, führen Sie für jede Zeile folgende Schritte aus:
    1. Navigieren Sie zu **...**  > **Konfigurieren**.
    1. Wählen Sie für **Authentifizierungsmodus** die Option **Beliebig** oder **Kennwortlos** aus. Wenn Sie **Push** auswählen, wird die Verwendung der Anmeldeinformationen für die kennwortlose Anmeldung per Telefon verhindert. 
-1. Wählen Sie **Speichern** aus, um die neue Richtlinie anzuwenden.
+1. Wählen Sie **Speichern** aus, um die neue Richtlinie anzuwenden. 
+
+   >[!NOTE]
+   >Wenn Sie beim Speichern eine Fehlermeldung erhalten, kann die Ursache in der Anzahl der hinzugefügten Benutzer oder Gruppen liegen. Als Abhilfe können Sie die Benutzer und Gruppen, die Sie hinzufügen möchten, im selben Vorgang durch eine einzige Gruppe ersetzen und dann erneut auf **Speichern** klicken.
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Benutzerregistrierung und Verwaltung von Microsoft Authenticator
 
 Benutzer registrieren sich mit den folgenden Schritten für die kennwortlose Authentifizierungsmethode von Azure AD:
 
 1. Navigieren Sie zu [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) .
-1. Melden Sie sich an, und fügen Sie anschließend die Authenticator-App hinzu, indem Sie **Methode hinzufügen > Authenticator-App** und anschließend **Hinzufügen** auswählen.
+1. Melden Sie sich an und klicken Sie dann auf **Methode hinzufügen** > **Authenticator-App** > **Hinzufügen**, um die Authenticator-App hinzuzufügen.
 1. Folgen Sie den Anweisungen zum Installieren und Konfigurieren der Microsoft Authenticator-App auf Ihrem Gerät.
 1. Wählen Sie **Fertig** aus, um die Authenticator-Konfiguration abzuschließen.
 1. Wählen Sie in **Microsoft Authenticator** im Dropdownmenü für das registrierte Konto die Option **Anmeldung per Telefon aktivieren** aus.
@@ -93,7 +96,7 @@ Wenn ein Benutzer zum ersten Mal den Anmeldevorgang per Telefon startet, führt 
 3. Wenn erforderlich, Auswahl von **Weitere Anmeldemethoden**.
 4. Auswahl von **Eine Anforderung in meiner Microsoft Authenticator-App bestätigen**.
 
-Dem Benutzer wird dann eine Zahl angezeigt. Die App fordert den Benutzer auf, sich zu authentifizieren, indem er die entsprechende Zahl auswählt, anstatt ein Kennwort einzugeben.
+Dem Benutzer wird dann eine Zahl angezeigt. Die App fordert den Benutzer auf, sich zu authentifizieren, indem er die entsprechende Zahl eintippt, anstatt ein Kennwort einzugeben.
 
 Nachdem der Benutzer die kennwortlose Anmeldung verwendet hat, leitet die App den Benutzer weiterhin durch diese Methode. Dem Benutzer wird jedoch die Option zum Auswählen einer anderen Methode angezeigt.
 

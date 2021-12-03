@@ -30,7 +30,7 @@
       href: sample-powershell.md
 - name: Konzepte
   items:
-    - name: Azure Firewall-Features
+    - name: Azure Firewall Standard-Features
       href: features.md
     - name: Azure Firewall Premium-Features
       href: premium-features.md
@@ -48,6 +48,8 @@
       href: logs-and-metrics.md
     - name: Bedrohungsanalyse
       href: threat-intel.md
+    - name: Richtlinienregelsätze
+      href: policy-rule-sets.md
     - name: Regelverarbeitungslogik
       href: rule-processing.md
     - name: Diensttags
@@ -121,7 +123,7 @@
       href: integrate-with-nat-gateway.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall

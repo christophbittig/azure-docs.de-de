@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-insights
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: ff50729dee893caa7a1c38f57cbd23f0470fc84b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 405be2ec031e95a6c59128b5f23310a4c0a711ac
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218848"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157940"
 ---
 # <a name="understand-insights-in-azure-purview"></a>Grundlegendes zu Erkenntnissen in Azure Purview
 
@@ -25,25 +25,30 @@ Erkenntnisse zählen zu den tragenden Säulen von Purview. Diese Funktion bietet
 
 ## <a name="asset-insights"></a>Ressourcen-Erkenntnisse
 
-Dieser Bericht zeigt Ihre Datenumgebung aus der Vogelperspektive und unterteilt sie beispielsweise nach Dimensionen wie Quelltyp, Klassifizierung und Dateigröße. Dieser Bericht ist für unterschiedliche Benutzertypen bestimmt, die das Purview-Konto verwalten und Überprüfungen durchführen könnten, oder Geschäftsbenutzer, die vielleicht wissen möchten, wie viele Ressourcen mit einer bestimmten Klassifizierung in der Datenumgebung Ihrer Organisation vorhanden sind. 
+Dieser Bericht zeigt Ihre Datenumgebung aus der Vogelperspektive und unterteilt sie beispielsweise nach Dimensionen wie Quelltyp, Klassifizierung und Dateigröße. Dieser Bericht richtet sich an verschiedene Arten von Stakeholdern in den Bereichen Data Governance und Katalogisierung, die den Status ihrer DataMap nach Klassifizierung und Dateierweiterungen kennen möchten.
 
 Der Bericht bietet umfassende Erkenntnisse mittels Diagrammen und KPIs und geht später ausführlich auf bestimmte Anomalien wie z. B. falsch platzierte Dateien ein. Außerdem unterstützt der Bericht auch eine komfortable End-to-End-Benutzeroberfläche, in der Kunden die Anzahl von Ressourcen mit einer bestimmten Klassifizierung anzeigen, Informationen nach Quelltypen und obersten Ordnern aufschlüsseln und auch die Liste der Ressourcen zur weiteren Untersuchung anzeigen können.
 
+> [!NOTE]
+> File Extension Insights wurde mit Asset Insights zusammengelegt und bietet nun einen umfassenderen Trendbericht, der das Wachstum der Datengröße nach Dateierweiterung zeigt. Weitere Informationen finden Sie unter [Asset Insights](asset-insights.md) 
+>
+>
+
 ## <a name="scan-insights"></a>Scan-Erkenntnisse
 
-Der Bericht ermöglicht Administratoren, die allgemeine Integrität der Scans nachzuvollziehen – wie viele erfolgreich waren, bei wie vielen Fehler aufgetreten sind, wie viele abgebrochen wurden. Dieser Bericht liefert ein Statusupdate für Scans, die innerhalb der letzten sieben Tage oder letzten 30 Tage im Purview-Konto ausgeführt wurden.
+Anhand des Berichts können die Datenquellenadministratoren den allgemeinen Zustand der Scans nachvollziehen - wie viele erfolgreich waren, wie viele fehlgeschlagen sind und wie viele abgebrochen wurden. Dieser Bericht liefert ein Statusupdate für Scans, die innerhalb der letzten sieben Tage oder letzten 30 Tage im Purview-Konto ausgeführt wurden.
 
 Außerdem können Administratoren anhand des Berichts eingehend untersuchen, bei welchen Scans bei welchen spezifischen Quelltypen Fehler aufgetreten sind. Um den Benutzern weitere Untersuchungen zu ermöglichen, unterstützt der Bericht sie bei der Navigation in der Scanverlaufseite in der Benutzeroberfläche „Quellen“.
 
 ## <a name="glossary-insights"></a>Glossarerkenntnisse
 
-Dieser Bericht liefert Geschäftsbenutzern und Data Stewards einen Statusbericht zum Glossar. Benutzer können diesen Bericht anzeigen, um die Verteilung von Glossarbegriffen nach Status zu verstehen, und zu erfahren, wie viele Glossarbegriffe Ressourcen angefügt sind, und wie viele noch nicht. Geschäftsbenutzer können sich auch über die Vollständigkeit ihrer Glossarbegriffe informieren. 
+Dieser Bericht gibt den Data Stewards einen Statusbericht über das Glossar. Datenverantwortliche können diesen Bericht einsehen, um die Verteilung der Glossarbegriffe nach Status zu verstehen und zu erfahren, wie viele Glossarbegriffe mit Assets verknüpft sind und wie viele noch nicht mit einem Asset verknüpft sind. Geschäftsbenutzer können sich auch über die Vollständigkeit ihrer Glossarbegriffe informieren. 
 
-Dieser Bericht fasst die wichtigsten Elemente zusammen, auf die sich ein Geschäftsbenutzer oder Data Steward konzentrieren muss, um ein umfassendes und brauchbares Glossar für seine Organisation zu erstellen. Benutzer können auch von der „Glossarerkenntnisse“-Umgebung zur „Glossar“-Umgebung navigieren, um Änderungen an einem bestimmten Glossarbegriff vorzunehmen.
+Dieser Bericht fasst die wichtigsten Punkte zusammen, auf die sich ein Data Steward konzentrieren muss, um ein vollständiges und brauchbares Glossar für seine Organisation zu erstellen. Stewards können auch von "Glossary Insights" zum "Glossar" navigieren, um Änderungen an einem bestimmten Glossarbegriff vorzunehmen.
 
 ## <a name="classification-insights"></a>Klassifizierungs-Erkenntnisse
 
-Dieser Bericht enthält Details zum Speicherort klassifizierter Daten, zu den während eines Scans gefundenen Klassifizierungen und einen Drilldown zu den klassifizierten Dateien selbst. Er ermöglicht Sicherheitsadministratoren, die in der Datenumgebung Ihrer Organisation gefundenen Arten von Informationen zu verstehen. 
+Dieser Bericht gibt Auskunft darüber, wo sich die Verschlusssachen befinden, welche Klassifizierungen bei einer Überprüfung gefunden wurden und wie die Verschlusssachen selbst aussehen. Es ermöglicht Stewards, Kuratoren und Sicherheitsadministratoren, die Arten von Informationen zu verstehen, die sich im Datenbestand ihrer Organisation befinden. 
 
 In Azure Purview ähneln Klassifizierungen Betrefftags und dienen zum Kennzeichnen und Identifizieren von Inhalten eines bestimmten Typs in Ihrer Datenumgebung.
 
@@ -53,21 +58,13 @@ Weitere Informationen finden Sie unter [Klassifizierungs-Erkenntnisse zu Ihren D
 
 ## <a name="sensitivity-labeling-insights"></a>Vertraulichkeitsbezeichnungs-Erkenntnisse
 
-Dieser Bericht enthält Details zu den Vertraulichkeitsbezeichnungen, die während eines Scans gefunden werden, sowie einen Drilldown zu den bezeichneten Dateien selbst. Er ermöglicht Sicherheitsadministratoren, die Sicherheit der in der Datenumgebung Ihrer Organisation gefundenen Informationen sicherzustellen. 
+Dieser Bericht enthält Details zu den bei einer Überprüfung gefundenen Sensitivitätskennzeichnungen sowie eine Aufschlüsselung der gekennzeichneten Dateien selbst. Er ermöglicht Sicherheitsadministratoren, die Sicherheit der in der Datenumgebung Ihrer Organisation gefundenen Informationen sicherzustellen. 
 
 In Azure Purview werden Vertraulichkeitsbezeichnungen verwendet, um die Klassifizierungstypkategorien sowie die Gruppensicherheitsrichtlinien zu ermitteln, die Sie auf die einzelnen Kategorien anwenden möchten.
 
 Verwenden Sie den Bericht „Vertraulichkeitsbezeichnungs-Erkenntnisse“, um die in ihren Inhalten gefundenen Vertraulichkeitsbezeichnungen zu identifizieren und erforderliche Aktionen wie das Verwalten des Zugriffs auf bestimmte Repositorys oder Dateien zu verstehen.
 
 Weitere Informationen finden Sie unter [Vertraulichkeitsbezeichnungs-Erkenntnisse zu Ihren Daten in Azure Purview](sensitivity-insights.md).
-
-## <a name="file-extension-insights"></a>Dateierweiterungs-Erkenntnisse
-
-Dieser Bericht enthält Details zu den während eines Scans gefundenen Dateierweiterungen oder Dateitypen sowie einen Drilldown zu den Dateien selbst. 
-
-Verwenden Sie den Bericht „Dateierweiterungs-Erkenntnisse“, um zu verstehen, wie viele Dateien jedes Typs Sie besitzen, wo sich diese Dateien befinden und ob sie auf vertrauliche Daten gescannt werden können.
-
-Weitere Informationen finden Sie unter [Dateierweiterungs-Erkenntnisse zu Ihren Daten von Azure Purview](file-extension-insights.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

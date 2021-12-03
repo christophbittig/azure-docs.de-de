@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: fbfef094cd062e437f2a28369162de96631ef41b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 509709b26a51a4202736fcab7e032ec8f91419eb
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99832605"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851133"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Tutorial: Überwachen und Verwalten einer Anwendung vom Typ „Videoanalyse: Objekt- und Bewegungserkennung“
 
@@ -52,6 +52,22 @@ Wählen Sie **Ausführen** aus, um das Kameragerät hinzuzufügen:
 
 > [!NOTE]
 > Die Gerätevorlage **LVA Edge Object Detector** (LVA-Edgeobjekterkennung) ist in der Anwendung bereits vorhanden.
+
+Wenn das Gerät keine Verbindung herstellen kann, überprüfen Sie den Status der Module auf dem Gerät:
+
+* Verwenden Sie SSH, um eine Shell auf dem Gerät zu öffnen.
+* Führen Sie in der Shell den folgenden Befehl aus:
+
+    `sudo iotedge list`
+
+Wenn die Module ordnungsgemäß ausgeführt werden, wird etwa folgende Ausgabe angezeigt:
+
+```
+    LvaEdgeGatewayModule                      running          Up 2 minutes     mcr.microsoft.com/lva-utilities/lva-edge-iotc-gateway:1.0-amd64
+    lvaEdge                                   running          Up 2 minutes     mcr.microsoft.com/media/live-video-analytics:2
+```
+
+Weitere Informationen finden Sie unter [Behandeln von Problemen bei Ihrem IoT Edge-Gerät](../../iot-edge/troubleshoot.md).
 
 ## <a name="add-a-motion-detection-camera-optional"></a>Hinzufügen einer Kamera für die Bewegungserkennung (optional)
 

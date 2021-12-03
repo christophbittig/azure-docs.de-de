@@ -1,20 +1,18 @@
 ---
 title: Zertifikatbindungen
-description: Hier werden zahlreiche Themen rund um Zertifikate in einer App Service-Umgebung erläutert. Informieren Sie sich über die Funktionsweise von Zertifikatbindungen auf Apps mit einem einzelnen Mandanten in einer App Service-Umgebung.
-author: ccompy
-ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
-ms.topic: article
-ms.date: 08/29/2018
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 604adeb3eeb716027ba821b4e230285602680e00
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+description: Hier werden zahlreiche Themen rund um Zertifikate in einer App Service-Umgebung v2 erläutert. Informieren Sie sich über die Funktionsweise von Zertifikatbindungen auf Apps mit einem einzelnen Mandanten in einer App Service-Umgebung.
+author: madsd
+ms.topic: overview
+ms.date: 11/15/2021
+ms.author: madsd
+ms.openlocfilehash: 0ecc9f29ae469cea01c29a23c5491320c37e7cc5
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113433164"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520995"
 ---
-# <a name="certificates-and-the-app-service-environment"></a>Zertifikate und die App Service-Umgebung 
+# <a name="certificates-and-the-app-service-environment-v2"></a>Zertifikate und die App Service-Umgebung v2
 > [!NOTE]
 > In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird
 > 

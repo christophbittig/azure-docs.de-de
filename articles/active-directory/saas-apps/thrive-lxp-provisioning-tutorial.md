@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/14/2021
 ms.author: thwimmer
-ms.openlocfilehash: ab5550c9e89d1cd755e376a1aaae8db9564ae484
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 7341d833ad1ddf00379c6d8a4e780a54456a8d73
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122327330"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046012"
 ---
 # <a name="tutorial-configure-thrive-lxp-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Thrive LXP für die automatische Benutzerbereitstellung
 
@@ -50,7 +50,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-2-configure-thrive-lxp-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Thrive LXP für die Unterstützung der Bereitstellung mit Azure AD
 
-Wenden Sie sich an Ihren Ansprechpartner bei Thrive LXP, um Ihre **Mandanten-URL** und das **geheime Token** zu generieren. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Thrive LXP-Anwendung in die Felder „Mandanten-URL“ und „Geheimes Token“ eingegeben.
+Wenden Sie sich an Ihren Ansprechpartner bei Thrive LXP, um Ihre **Mandanten-URL** und das **geheime Token** zu generieren. Diese Werte werden im Azure-Portal in der Registerkarte „Bereitstellung“ Ihrer Thrive LXP-Anwendung in die Felder „Mandanten-URL“ und „Geheimes Token“ eingegeben.
 
 ## <a name="step-3-add-thrive-lxp-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Thrive LXP aus dem Azure AD-Anwendungskatalog
 

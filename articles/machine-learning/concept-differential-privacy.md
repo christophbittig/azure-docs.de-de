@@ -1,31 +1,31 @@
 ---
 title: Differenzieller Datenschutz beim maschinellen Lernen (Vorschau)
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, was differenzieller Datenschutz ist und wie Sie differenzielle private Systeme implementieren, die den Datenschutz bewahren.
+description: Erfahren Sie, was differenzieller Datenschutz ist und wie differenzielle private Systeme den Datenschutz bewahren.
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/21/2020
+ms.date: 10/21/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.topic: conceptual
-ms.custom: responsible-ml
-ms.openlocfilehash: 3d28a2f9d18b143013ee89d7d1911b50905bc625
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.custom: responsible-ml, mktng-kw-nov2021
+ms.openlocfilehash: fc3606a4d893152b87fc5f5f47d987c16ce65724
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424633"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842555"
 ---
 # <a name="what-is-differential-privacy-in-machine-learning-preview"></a>Was ist differenzieller Datenschutz beim maschinellen Lernen (Vorschau)?
 
 Erfahren Sie etwas über den differenziellen Datenschutz beim maschinellen Lernen und seine Funktionsweise.
 
-In dem Maße, wie die von einer Organisation gesammelten und für Analysen verwendeten Datenmengen zunehmen, nehmen auch die Bedenken hinsichtlich des Datenschutzes und der Sicherheit zu. Analysen erfordern Daten. Je mehr Daten für das Training von Modellen verwendet werden, desto genauer sind sie in der Regel. Wenn für diese Analysen persönliche Informationen verwendet werden, ist es besonders wichtig, dass die Daten während ihrer gesamten Verwendung privat (geschützt) bleiben.
+In dem Maße, wie die von einer Organisation gesammelten und für Analysen verwendeten Datenmengen zunehmen, nehmen auch die Bedenken hinsichtlich des Datenschutzes und der Sicherheit zu. Analysen erfordern Daten. Je mehr Daten für das Training von Machine Learning-Modellen verwendet werden, desto genauer sind sie in der Regel. Wenn für diese Analysen persönliche Informationen verwendet werden, ist es besonders wichtig, dass die Daten während ihrer gesamten Verwendung privat (geschützt) bleiben.
 
 ## <a name="how-differential-privacy-works"></a>Funktionsweise des differenziellen Datenschutzes
 
-Der differenzielle Datenschutz umfasst eine Reihe von Systemen und Methoden, die dazu beitragen, die Daten von Einzelpersonen sicher und privat zu halten.
+Der differenzielle Datenschutz umfasst eine Reihe von Systemen und Methoden, die dazu beitragen, die Daten von Einzelpersonen sicher und privat zu halten. In Machine Learning-Lösungen kann differenzieller Datenschutz erforderlich sein, um die Einhaltung gesetzlicher Bestimmungen zu gewährleisten.
 
 > [!div class="mx-imgBorder"]
 > ![Prozess des differenziellen Datenschutzes beim maschinellen Lernen](./media/concept-differential-privacy/differential-privacy-machine-learning.jpg)
@@ -38,7 +38,7 @@ In differenziellen privaten Systemen werden Daten durch Anforderungen freigegebe
 
 Der differenzielle Datenschutz versucht davor zu schützen, dass ein Benutzer eine unbestimmte Anzahl von Berichten erstellen kann, um letztendlich vertrauliche Daten offenzulegen. Ein als **Epsilon** bezeichneter Wert misst, wie ungenau oder privat ein Bericht ist. Epsilon hat eine umgekehrte Beziehung zu Stördaten oder Datenschutz. Je niedriger der Epsilon-Wert, desto ungenauer (und geschützter) sind die Daten.
 
-Epsilon-Werte sind nicht negativ. Werte unter 1 bieten die völlige plausible Ablehnbarkeit. Alle Werte über 1 sind mit einem höheren Risiko der Offenlegung der tatsächlichen Daten verbunden. Wenn Sie differenzielle Datenschutzsysteme implementieren, möchten Sie Berichte mit Epsilon-Werten zwischen 0 und 1 erstellen.
+Epsilon-Werte sind nicht negativ. Werte unter 1 bieten die völlige plausible Ablehnbarkeit. Alle Werte über 1 sind mit einem höheren Risiko der Offenlegung der tatsächlichen Daten verbunden. Wenn Sie Machine Learning-Lösungen mit differenziellem Datenschutz implementieren, möchten Sie Daten mit Epsilon-Werten zwischen 0 und 1 verwenden.
 
 Ein weiterer direkt mit Epsilon korrelierter Wert ist **Delta**. Delta ist ein Maß für die Wahrscheinlichkeit, dass ein Bericht nicht vollständig privat ist. Je höher das Delta, desto höher das Epsilon. Da diese Werte korreliert sind, wird Epsilon häufiger eingesetzt.
 
@@ -52,7 +52,7 @@ Obwohl die Wahrung des Datenschutzes das Ziel sein sollte, gibt es einen Komprom
 
 ## <a name="open-source-differential-privacy-libraries"></a>Open-Source-Bibliotheken für den differenziellen Datenschutz
 
-SmartNoise ist ein Open-Source-Projekt, das verschiedene Komponenten zum Erstellen globaler, differenzieller privater Systeme enthält. SmartNoise umfasst folgende allgemeine Komponenten:
+SmartNoise ist ein Open-Source-Projekt, das Komponenten zum Erstellen von Machine Learning-Lösungen mit differenziellem Datenschutz enthält. SmartNoise umfasst folgende allgemeine Komponenten:
 
 - SmartNoise-Kernbibliothek
 - SmartNoise SDK-Bibliothek
@@ -80,6 +80,8 @@ Die Systembibliothek stellt die folgenden Tools und Dienste für die Arbeit mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen Sie ein System mit differenziellem Datenschutz](how-to-differential-privacy.md) in Azure Machine Learning.
+Erfahren Sie mehr über den differenziellen Datenschutz beim maschinellen Lernen: 
 
-Weitere Informationen zu den Komponenten von SmartNoise finden Sie in den GitHub-Repositorys für [SmartNoise Core](https://github.com/opendifferentialprivacy/smartnoise-core), [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk) und [SmartNoise-Beispiele](https://github.com/opendifferentialprivacy/smartnoise-samples).
+ - [Erstellen Sie ein System mit differenziellem Datenschutz](how-to-differential-privacy.md) in Azure Machine Learning.
+
+ - Weitere Informationen zu den Komponenten von SmartNoise finden Sie in den GitHub-Repositorys für [SmartNoise Core](https://github.com/opendifferentialprivacy/smartnoise-core), [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk) und [SmartNoise-Beispiele](https://github.com/opendifferentialprivacy/smartnoise-samples).

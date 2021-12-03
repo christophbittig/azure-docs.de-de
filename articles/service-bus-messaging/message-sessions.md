@@ -3,12 +3,12 @@ title: Azure Service Bus-Nachrichtensitzungen | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Nachrichtensitzungen zum Ermöglichen der gemeinsamen und geordneten Verarbeitung unbegrenzter Sequenzen verwandter Nachrichten verwendet werden.
 ms.topic: article
 ms.date: 09/01/2021
-ms.openlocfilehash: 98430d7b9db857de6dc3dfb37e61908b236591f2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 55a5d432505d6c0aec7c2fc9b030eb9763413bee
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433438"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063287"
 ---
 # <a name="message-sessions"></a>Nachrichtensitzungen
 Azure Service Bus-Sitzungen ermöglichen die gemeinsame und geordnete Verarbeitung unbegrenzter Sequenzen verwandter Nachrichten. Sitzungen können mit **FIFO**-Mustern (First in, First Out) und **Anforderung/Antwort**-Mustern verwendet werden. In diesem Artikel wird gezeigt, wie Sie diese Muster mithilfe von Sitzungen implementieren, wenn Sie Service Bus verwenden. 
@@ -54,7 +54,7 @@ Wenn Workflows in umfangreichen, hochverfügbaren Cloudsystemen verarbeitet werd
 
 Der Sitzungszustand ermöglicht eine von der Anwendung definierte Anmerkung einer Nachrichtensitzung innerhalb des Brokers, sodass der aufgezeichnete Verarbeitungszustand in Bezug auf diese Sitzung sofort verfügbar wird, sobald die Sitzung von einem neuen Prozessor übernommen wird.
 
-Aus Service Bus-Sicht ist der Nachrichtensitzungszustand ein undurchsichtiges binäres Objekt, das Daten von der Größe einer Nachricht aufnehmen kann, die bei Service Bus Standard 256 KB und bei Service Bus Premium 1 MB beträgt. Der Verarbeitungszustand relativ zu einer Sitzung kann innerhalb des Sitzungszustands gespeichert werden, oder der Sitzungszustand kann auf einen Speicherort oder Datenbankdatensatz verweisen, der solche Informationen enthält.
+Aus Service Bus-Sicht ist der Nachrichtensitzungszustand ein undurchsichtiges binäres Objekt, das Daten von der Größe einer Nachricht aufnehmen kann, die bei Service Bus Standard 256 KB und bei Service Bus Premium 100 MB beträgt. Der Verarbeitungszustand relativ zu einer Sitzung kann innerhalb des Sitzungszustands gespeichert werden, oder der Sitzungszustand kann auf einen Speicherort oder Datenbankdatensatz verweisen, der solche Informationen enthält.
 
 Die Methoden zum Verwalten des Sitzungszustands – „SetState“ und „GetState“ – befinden sich im Sitzungsempfängerobjekt. Eine Sitzung, für die zuvor kein Sitzungszustand festgelegt wurde, gibt für „GetState“ einen Nullverweis zurück. Der zuvor festgelegte Sitzungszustand kann durch Übergeben von NULL an die SetState-Methode auf der Empfängerseite gelöscht werden.
 

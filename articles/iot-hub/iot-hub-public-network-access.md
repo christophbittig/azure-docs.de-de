@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/07/2021
-ms.openlocfilehash: a729cd14c2f65b7ff4ab478f9efd25e13a1170b4
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: b77fa4d3e82114c4b52edca250aada9837157782
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113515587"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068277"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>Verwalten des Zugriffs über öffentliche Netzwerke für Ihren IoT-Hub
 
@@ -26,7 +26,7 @@ Wenn Sie den Zugriff auf nur [einen privaten Endpunkt für einen IoT-Hub in Ihre
 4. Wählen Sie unter „Zugriff über öffentliche Netzwerke zulassen auf“ die Option **Deaktiviert** aus.
 5. Wählen Sie **Speichern** aus.
 
-:::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="Screenshot des Navigationspfads im Azure-Portal zum Deaktivieren des Zugriffs über öffentliche Netzwerke" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
+:::image type="content" source="./media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="Screenshot des Navigationspfads im Azure-Portal zum Deaktivieren des Zugriffs über öffentliche Netzwerke":::
 
 Wenn Sie den Zugriff über öffentliche Netzwerke aktivieren möchten, wählen Sie **Alle Netzwerke** und dann **Speichern** aus.
 
@@ -57,7 +57,7 @@ Es gibt einen IoT Hub-Fehler, bei dem der Zugriff auf den [integrierten Event Hu
 5. Wählen Sie im daraufhin geöffneten Dialogfeld **IP-Filter** die Option **Client-IP-Adresse hinzufügen** aus, und geben Sie einen Namen und einen Adressbereich ein.
 6. Wählen Sie **Speichern** aus. Wenn die Schaltfläche abgeblendet ist, stellen Sie sicher, dass Ihre Client-IP-Adresse bereits als IP-Filter hinzugefügt wurde.
 
-:::image type="content" source="media/iot-hub-publicnetworkaccess/turn-on-public-network-access.png" alt-text="Abbildung des Navigationspfads im Azure-Portal zum Aktivieren des Zugriffs über öffentliche Netzwerke":::
+:::image type="content" source="./media/iot-hub-publicnetworkaccess/turn-on-public-network-access.png" alt-text="Screenshot des Navigationspfads im Azure-Portal zum Aktivieren des Zugriffs über öffentliche Netzwerke":::
 
 ### <a name="turn-on-all-network-ranges"></a>Aktivieren aller Netzwerkbereiche
 

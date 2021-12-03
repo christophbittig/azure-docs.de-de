@@ -7,18 +7,140 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 08/19/2021
+ms.date: 11/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: d91b14057937275338ee1c96ee4025d66af6251d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: references_regions
+ms.openlocfilehash: ac5b33de1a95b413c7eba92d2bdeaa8cc05b3a05
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794596"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059562"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services"></a>Versionshinweise: Azure Arc-fähige Datendienste
 
 In diesem Artikel werden die Funktionen, Features und Verbesserungen hervorgehoben, die kürzlich für Azure Arc-fähige Datendienste veröffentlicht bzw. durchgeführt wurden.
+
+## <a name="november-2021"></a>November 2021
+
+Dieses Release wird am 3. November 2021 veröffentlicht.
+
+#### <a name="tools"></a>Tools
+
+##### <a name="azure-data-studio"></a>Azure Data Studio
+
+Installieren Sie oder aktualisieren Sie auf die neueste Version der [Arc-Erweiterung für Azure Data Studio](/sql/azure-data-studio/extensions/azure-arc-extension).
+
+##### <a name="azure-az-cli"></a>Azure (`az`) CLI
+
+Installieren Sie oder aktualisieren Sie die Erweiterung `arcdata` für `az`-CLI, damit die Bereitstellung über eine direkte Verbindung unterstützt wird.
+
+Die folgenden `sql`-Befehle unterstützen jetzt den direkten Verbindungsmodus:
+
+   ```console
+   az arcdata dc create
+   az arcdata dc delete
+   az arcdata sql mi-arc create
+   az arcdata sql mi-arc delete
+   ```
+ 
+#### <a name="data-controller"></a>Datencontroller
+
+- Direkter Verbindungsmodus allgemein verfügbar
+- Direkt verbundene Azure Arc-Datencontrollererweiterungen auf Kubernetes-Clustern mit Azure Arc-Unterstützung verwenden jetzt systemseitig generierte verwaltete Identitäten anstelle des Dienstprinzipalnamens. Die verwaltete Identität wird automatisch erstellt, wenn eine neue Azure Arc-Datencontrollererweiterung erstellt wird. Sie müssen weiterhin die geeigneten Berechtigungen zum Hochladen von Verbrauchsdaten und Metriken erteilen.
+- Beim Hochladen von Metriken wird die systemseitig generierte verwaltete Identität mit einem direkt verbundenen Azure Arc-Datencontroller genutzt. 
+- Erstellen eines Azure Arc-Datencontrollers im direkten Verbindungsmodus aus Azure CLI (`az`).
+- Automatisches Hochladen von Metriken in Azure Monitor
+- Automatisches Hochladen von Protokollen in Azure Log Analytics
+- Aktivieren oder deaktivieren Sie das automatische Hochladen von Metriken und/oder Protokollen in Azure nach der Bereitstellung des Azure Arc-Datencontrollers.
+- Führen Sie mithilfe der Azure CLI ein direktes Upgrade vom Juli 2021-Release durch (nur für allgemein verfügbare Dienste wie Azure Arc-Datencontroller und universelle SQL Managed Instance).
+- Legen Sie die Benutzernamen und Kennwörter der Metrik- und Protokolldashboards zur Datencontroller-Bereitstellungszeit separat fest, indem Sie die neuen Umgebungsvariablen verwenden:
+
+   ```console
+   AZDATA_LOGSUI_USERNAME
+   AZDATA_LOGSUI_PASSWORD
+   AZDATA_METRICSUI_USERNAME
+   AZDATA_METRICSUI_PASSWORD
+   ```
+- Neuer Befehl: `az arcdata dc list-upgrades` zeigt die Liste der verfügbaren Upgrades vom derzeit bereitgestellten Datencontroller an.
+
+
+Sie können die Umgebungsvariablen `AZDATA_USERNAME` und `AZDATA_PASSWORD` weiterhin wie zuvor verwenden. Wenn Sie nur `AZDATA_USERNAME` und `AZDATA_PASSWORD` angeben, verwendet die Bereitstellung sie sowohl für die Protokoll- als auch für die Metrikdashboards.
+
+##### <a name="region-availability"></a>Regionale Verfügbarkeit
+
+Dieses Release führt die Verfügbarkeit des direkt verbundenen Modus in den folgenden Azure-Regionen ein:
+
+- USA Nord Mitte
+- USA (Westen)
+- USA, Westen 3
+
+Eine vollständige Liste finden Sie unter [Unterstützte Regionen](overview.md#supported-regions).
+
+#### <a name="azure-arc-enabled-sql-managed-instance"></a>SQL Managed Instance mit Azure Arc-Unterstützung
+
+- Direktes Upgrade von Instanzen von universeller SQL Managed Instance mit Azure Arc-Unterstützung
+- Die SQL-Binärdateien werden auf eine neue Version aktualisiert.
+- Bereitstellung im direkt verbundenen Modus von SQL Managed Instance mit Azure Arc-Unterstützung mithilfe von Azure CLI
+- Die Zeitpunktwiederherstellung (PITR) für SQL Managed Instance mit Azure Arc-Unterstützung wird mit diesem Release allgemein verfügbar gemacht. Derzeit wird die Zeitpunktwiederherstellung (PITR) nur für die universelle SQL Managed Instance unterstützt. Zeitpunktwiederherstellung (PITR) für unternehmenskritische SQL Managed Instance befindet sich noch in der Vorschauphase.
+- Neue `--dry-run`-Option für Zeitpunktwiederherstellung (PITR) bereitgestellt.
+- Recovery Point Objective ist standardmäßig auf 5 Minuten festgelegt und kann nicht konfiguriert werden.
+- Der Aufbewahrungszeitraum für Sicherungen ist standardmäßig auf 7 Tage festgelegt. Eine neue Option zum Festlegen des Aufbewahrungszeitraums auf 0 deaktiviert automatische Sicherungen für Entwicklungs- und Testinstanzen, die keine Sicherungen erfordern.
+- Problem behoben, bei dem der Zeitpunktwiederherstellungsvorgang die konfigurierte Zeitzone nicht beachtet hat. 
+- Wiederherstellen auf einen Zeitpunkt über Azure CLI oder Azure Data Studio
+ 
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+#### <a name="data-controller-upgrade"></a>Datencontrollerupgrade
+
+- Derzeit wird das Upgrade eines direkt verbundenen Datencontrollers über die CLI oder das Portal nicht unterstützt.
+- Sie können derzeit nur ein Upgrade für allgemein verfügbare Dienste wie Azure Arc-Datencontroller und universelle SQL Managed Instance durchführen. Wenn Sie auch über unternehmenskritische SQL Managed Instance und/oder PostgreSQL Hyperscale mit Azure Arc-Unterstützung verfügen, entfernen Sie sie zuerst, bevor Sie mit dem Upgrade fortfahren.
+
+#### <a name="commands"></a>Befehle
+
+Die folgenden Befehle unterstützen derzeit keinen direkt verbundenen Modus:
+
+```console
+az arcdata dc update
+az arcdata sql mi-arc update
+```
+
+#### <a name="azure-arc-enabled-postgresql-hyperscale"></a>PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+
+- Das Sichern und Wiederherstellen von Servern mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung wird in der aktuellen Vorschauversion nicht unterstützt.
+
+- Es ist nicht möglich, die `pg_cron`-Erweiterung gleichzeitig zu aktivieren und zu konfigurieren. Hierfür müssen Sie zwei Befehle verwenden. Einen Befehl zum Aktivieren und einen Befehl zum Konfigurieren. Beispiel:
+
+   1. Aktivieren der Erweiterung:
+
+      ```console
+      az postgres arc-server edit -n myservergroup --extensions pg_cron
+      ```
+
+   1. Neustarten des Servers.
+
+   1. Konfigurieren der Erweiterung:
+
+      ```console
+      az postgres arc-server edit -n myservergroup --engine-settings cron.database_name='postgres'
+      ```
+
+   Wenn Sie den zweiten Befehl ausführen, bevor der Neustart abgeschlossen wurde, tritt ein Fehler auf. In diesem Fall warten Sie einfach einige weitere Augenblicke, und führen Sie den zweiten Befehl erneut aus.
+
+- Durch das Übergeben eines ungültigen Werts an den Parameter `--extensions` beim Bearbeiten der Konfiguration einer Servergruppe, um zusätzliche Erweiterungen zu aktivieren, wird die Liste der aktivierten Erweiterungen fälschlicherweise auf die Liste zurückgesetzt, die zum Zeitpunkt der Erstellung der Servergruppe bestanden hat, und verhindert, dass Benutzer zusätzliche Erweiterungen erstellen können. Die einzige verfügbare Problemumgehung besteht in diesem Fall im Löschen und erneuten Bereitstellen der Servergruppe.
+
+#### <a name="azure-arc-enabled-sql-managed-instance"></a>SQL Managed Instance mit Azure Arc-Unterstützung
+
+- Wenn ein Pod erneut bereitgestellt wird, startet SQL Managed Instance einen neuen Satz vollständiger Sicherungen für alle Datenbanken.
+- Wenn Ihr Datencontroller direkt verbunden ist, müssen Sie zunächst ein Upgrade des Datencontrollers auf die neueste Version durchführen, bevor Sie eine SQL Managed Instance bereitstellen können. Der Versuch, eine SQL Managed Instance mit einer imageVersion des Datencontrollers von `v1.0.0_2021-07-30` bereitzustellen, wird nicht erfolgreich sein.
+
+
+##### <a name="other-limitations"></a>Weitere Einschränkungen
+
+- Die Transaktionsreplikation wird derzeit nicht unterstützt.
+- Der Protokollversand wird derzeit blockiert.
+- Nur die SQL Server-Authentifizierung wird unterstützt.
 
 ## <a name="july-2021"></a>Juli 2021
 
@@ -54,17 +176,21 @@ Verwenden Sie die folgenden Tools:
 - Der direkte Verbindungsmodus befindet sich in der Vorschauphase. 
 
 - Der direkte Verbindungsmodus (Vorschau) ist für dieses Release nur in den folgenden Azure-Regionen verfügbar:
-   - USA, Mitte
+
+   - USA, Norden-Mitte*
+   - USA (Mitte)
    - East US
    - USA (Ost) 2
+   - USA, Westen *
    - USA, Westen 2
+   - USA, Westen 3 *
    - UK, Süden
    - Europa, Westen
    - Nordeuropa
    - Australien (Osten)
    - Asien, Südosten
    - Korea, Mitte
-   - Frankreich, Mitte
+   - Frankreich, Mitte \* Neu hinzugefügt für November 2021.
 
 - Derzeit können Grafana über die Grafana-Verwaltungsfunktionen zusätzliche Benutzer mit Standardauthentifizierung hinzugefügt werden. Das Anpassen von Grafana durch Ändern der INI-Dateien von Grafana wird nicht unterstützt.
 
@@ -140,22 +266,22 @@ Verwenden Sie die folgenden Tools:
 
 ##### <a name="point-in-time-restorepitr-supportability-and-limitations"></a>Unterstützung und Einschränkungen bei der Zeitpunktwiederherstellung (Point-in-Time Restore, PITR):
     
--  Die Wiederherstellung zwischen Instanzen von SQL Managed Instance mit Azure Arc-Unterstützung wird nicht unterstützt.  Die Datenbank kann nur in derselben Instanz von SQL Managed Instance mit Azure Arc-Unterstützung hergestellt werden, in der die Sicherungen erstellt wurden.
--  Das Umbenennen einer Datenbank bei einer Zeitpunktwiederherstellung wird derzeit nicht unterstützt.
--  Derzeit gibt es keinen CLI-Befehl und keine API, um Informationen zum zulässigen Zeitfenster für die Zeitpunktwiederherstellung anzugeben. Sie können einen Zeitraum innerhalb eines sinnvollen Zeitfensters seit der Datenbankerstellung angeben – die Wiederherstellung funktioniert, wenn der Zeitstempel gültig ist. Wenn der Zeitstempel ungültig ist, wird das zulässige Zeitfenster über eine Fehlermeldung angezeigt.
--  Die Wiederherstellung einer Datenbank mit aktivierter TDE (Transparent Data Encryption) wird nicht unterstützt.
--  Gelöschte Datenbanken können derzeit nicht wiederhergestellt werden.
+- Die Wiederherstellung zwischen Azure Arc-fähigen SQL Managed Instance-Instanzen wird nicht unterstützt.  Die Datenbank kann nur in derselben Instanz von SQL Managed Instance mit Azure Arc-Unterstützung hergestellt werden, in der die Sicherungen erstellt wurden.
+- Das Umbenennen einer Datenbank bei einer Zeitpunktwiederherstellung wird derzeit nicht unterstützt.
+- Derzeit gibt es keinen CLI-Befehl und keine API, um Informationen zum zulässigen Zeitfenster für die Zeitpunktwiederherstellung anzugeben. Sie können einen Zeitraum innerhalb eines sinnvollen Zeitfensters seit der Datenbankerstellung angeben – die Wiederherstellung funktioniert, wenn der Zeitstempel gültig ist. Wenn der Zeitstempel ungültig ist, wird das zulässige Zeitfenster über eine Fehlermeldung angezeigt.
+- Die Wiederherstellung einer Datenbank mit aktivierter TDE (Transparent Data Encryption) wird nicht unterstützt.
+- Gelöschte Datenbanken können derzeit nicht wiederhergestellt werden.
 
 #####   <a name="automated-backups"></a>Automatisierte Sicherungen
 
--  Durch das Umbenennen einer Datenbank werden die automatisierten Sicherungen für diese Datenbank beendet.
--  Es wird keine Aufbewahrung erzwungen. Sicherungen werden so lange aufbewahrt, wie Speicherplatz verfügbar ist. 
--  Benutzerdatenbanken mit einfachem Wiederherstellungsmodell werden nicht gesichert.
--  Die Systemdatenbank `model` wird nicht gesichert, um Konflikte beim Erstellen/Löschen der Datenbank zu verhindern. Die Datenbank wird gesperrt, wenn Administratorvorgänge ausgeführt werden. 
--  Derzeit werden nur die Systemdatenbanken `master` und `msdb` gesichert. Es werden nur alle 12 Stunden vollständige Sicherungen ausgeführt.
--  Es werden nur `ONLINE`-Benutzerdatenbanken gesichert.
--  Standard-RPO (Recovery Point Objective): 5 Minuten. Im aktuellen Release ist keine Änderung möglich.
--  Sicherungen werden unbegrenzt aufbewahrt. Löschen Sie Sicherungen manuell, um Speicherplatz freizugeben.
+- Durch das Umbenennen einer Datenbank werden die automatisierten Sicherungen für diese Datenbank beendet.
+- Es wird keine Aufbewahrung erzwungen. Sicherungen werden so lange aufbewahrt, wie Speicherplatz verfügbar ist. 
+- Benutzerdatenbanken mit einfachem Wiederherstellungsmodell werden nicht gesichert.
+- Die Systemdatenbank `model` wird nicht gesichert, um Konflikte beim Erstellen/Löschen der Datenbank zu verhindern. Die Datenbank wird gesperrt, wenn Administratorvorgänge ausgeführt werden. 
+- Derzeit werden nur die Systemdatenbanken `master` und `msdb` gesichert. Es werden nur alle 12 Stunden vollständige Sicherungen ausgeführt.
+- Es werden nur `ONLINE`-Benutzerdatenbanken gesichert.
+- Standard-RPO (Recovery Point Objective): 5 Minuten. Im aktuellen Release ist keine Änderung möglich.
+- Sicherungen werden unbegrenzt aufbewahrt. Löschen Sie Sicherungen manuell, um Speicherplatz freizugeben.
 
 ##### <a name="other-limitations"></a>Weitere Einschränkungen
 - Die Transaktionsreplikation wird derzeit nicht unterstützt.
@@ -170,7 +296,7 @@ Dieses Vorschaurelease wird am 13. Juli 2021 veröffentlicht.
 
 #### <a name="new-deployment-templates"></a>Neue Bereitstellungsvorlagen
 
-- Native Kubernetes-Bereitstellungsvorlagen wurden für Datencontroller, Bootstrapper und SQL Managed Instance geändert. Aktualisieren Sie Ihre YAML-Vorlagen. [YAML-Beispieldateien](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml)
+- Native Kubernetes-Bereitstellungsvorlagen für Datencontroller, Bootstrapper und SQL Managed Instance wurden geändert. Aktualisieren Sie Ihre YAML-Vorlagen. [YAML-Beispieldateien](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml)
 
 #### <a name="new-azure-cli-extension-for-data-controller-and-azure-arc-enabled-sql-managed-instance"></a>Neue Erweiterung für die Azure-Befehlszeilenschnittstelle für Datencontroller und SQL Managed Instance mit Azure Arc-Unterstützung
 
@@ -240,19 +366,19 @@ Mit diesem Release werden Erweiterungen für die `az`-Befehlszeilenschnittstelle
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>SQL Managed Instance mit Azure Arc-Unterstützung
 
--  Automatisierte Sicherungen sind jetzt aktiviert.
--  Sie können nun eine Datenbanksicherung als neue Datenbank in derselben SQL-Instanz wiederherstellen, indem Sie eine neue benutzerdefinierte Ressource basierend auf der benutzerdefinierten Ressourcendefinition (CRD) `sqlmanagedinstancerestoretasks.tasks.sql.arcdata.microsoft.com` erstellen. Einzelheiten dazu finden Sie der Dokumentation. Es gibt noch keine Möglichkeit, eine Datenbank über eine Befehlszeilenschnittstelle (`azdata` oder `az`), das Azure-Portal oder Azure Data Studio wiederherzustellen.
--  Die Version der Binärdateien der SQL-Engine in diesem Release entspricht den neuesten Binärdateien, die global in Azure SQL Managed Instance (PaaS in Azure) bereitgestellt wurden. Dieser Abgleich ermöglicht die Sicherung/Wiederherstellung zwischen Azure SQL Managed Instance als PaaS und SQL Managed Instance mit Azure Arc-Unterstützung. Weitere Informationen zur Kompatibilität werden später bereitgestellt.
--  Sie können jetzt Instanzen von SQL Managed Instance mit Azure Arc-Unterstützung über das Azure-Portal im direkten Verbindungsmodus löschen.
--  Sie können jetzt eine Instanz von SQL Managed Instance mit einem Tarif (`GeneralPurpose`, `BusinessCritical`) und einem Lizenztyp (`LicenseIncluded`, `BasePrice` (für AHB-Preise) oder `developer`) konfigurieren. Für die Verwendung von SQL Managed Instance mit Azure Arc-Unterstützung fallen bis zum Datum der allgemeinen Verfügbarkeit (öffentlich angekündigt zum 30. Juli 2021) und bis zum Upgrade auf die Version mit allgemeiner Verfügbarkeit des Diensts keine Gebühren an.
--  Die `arcdata`-Erweiterung für Azure Data Studio verfügt jetzt über zusätzliche Parameter, die für die Bereitstellung und Bearbeitung von SQL Managed Instance konfiguriert werden können: Agent aktivieren/deaktivieren, Administratoranmeldegeheimnis, Anmerkungen, Bezeichnungen, Dienstanmerkungen, Dienstbezeichnungen, SSL-/TLS-Konfigurationseinstellungen, Sortierung, Sprache und Ablaufverfolgungsflags.
--  Neue Befehle in `azdata`-Tasks und Tasks benutzerdefinierter Ressourcen zum Einrichten verteilter Verfügbarkeitsgruppen. Diese Befehle befinden sich in einer frühen Vorschauphase. Die Dokumentation wird in Kürze bereitgestellt.
+- Automatisierte Sicherungen sind jetzt aktiviert.
+- Sie können nun eine Datenbanksicherung als neue Datenbank in derselben SQL-Instanz wiederherstellen, indem Sie eine neue benutzerdefinierte Ressource basierend auf der benutzerdefinierten Ressourcendefinition (CRD) `sqlmanagedinstancerestoretasks.tasks.sql.arcdata.microsoft.com` erstellen. Einzelheiten dazu finden Sie der Dokumentation. Es gibt noch keine Möglichkeit, eine Datenbank über eine Befehlszeilenschnittstelle (`azdata` oder `az`), das Azure-Portal oder Azure Data Studio wiederherzustellen.
+- Die Version der Binärdateien der SQL-Engine in diesem Release entspricht den neuesten Binärdateien, die global in Azure SQL Managed Instance (PaaS in Azure) bereitgestellt wurden. Dieser Abgleich ermöglicht die Sicherung/Wiederherstellung zwischen Azure SQL Managed Instance als PaaS und SQL Managed Instance mit Azure Arc-Unterstützung. Weitere Informationen zur Kompatibilität werden später bereitgestellt.
+- Sie können jetzt Instanzen von SQL Managed Instance mit Azure Arc-Unterstützung über das Azure-Portal im direkten Verbindungsmodus löschen.
+- Sie können jetzt eine Instanz von SQL Managed Instance mit einem Tarif (`GeneralPurpose`, `BusinessCritical`) und einem Lizenztyp (`LicenseIncluded`, `BasePrice` (für AHB-Preise) oder `developer`) konfigurieren. Für die Verwendung von SQL Managed Instance mit Azure Arc-Unterstützung fallen bis zum Datum der allgemeinen Verfügbarkeit (öffentlich angekündigt zum 30. Juli 2021) und bis zum Upgrade auf die Version mit allgemeiner Verfügbarkeit des Diensts keine Gebühren an.
+- Die `arcdata`-Erweiterung für Azure Data Studio verfügt jetzt über zusätzliche Parameter, die für die Bereitstellung und Bearbeitung von SQL Managed Instance konfiguriert werden können: Agent aktivieren/deaktivieren, Administratoranmeldegeheimnis, Anmerkungen, Bezeichnungen, Dienstanmerkungen, Dienstbezeichnungen, SSL-/TLS-Konfigurationseinstellungen, Sortierung, Sprache und Ablaufverfolgungsflags.
+- Neue Befehle in `azdata`-Tasks und Tasks benutzerdefinierter Ressourcen zum Einrichten verteilter Verfügbarkeitsgruppen. Diese Befehle befinden sich in einer frühen Vorschauphase. Die Dokumentation wird in Kürze bereitgestellt.
 
    > [!NOTE]
    > Diese Befehle werden zur Erweiterung `az arcdata` migriert.
 
--  `azdata arc dc export` ist veraltet. Sie wird durch `az arcdata dc export` in der Erweiterung `arcdata` für die Azure-Befehlszeilenschnittstelle (`az`) ersetzt. Es wird ein anderer Ansatz für das Exportieren der Daten verwendet. Dabei wird keine direkte Verbindung mehr mit der Datencontroller-API hergestellt. Stattdessen wird ein Exporttask basierend auf der benutzerdefinierten Ressourcendefinition (CRD) `exporttasks.tasks.arcdata.microsoft.com` erstellt. Die benutzerdefinierte Ressource für den erstellten Exporttask steuert einen Workflow zum Generieren eines herunterladbaren Pakets. Die Azure-Befehlszeilenschnittstelle wartet auf den Abschluss dieses Tasks und ruft dann die sichere URL aus dem Status der benutzerdefinierten Ressource des Tasks ab, um das Paket herunterzuladen.
--  Unterstützung für die Verwendung von NFS-basierten Speicherklassen.
+- `azdata arc dc export` ist veraltet. Sie wird durch `az arcdata dc export` in der Erweiterung `arcdata` für die Azure-Befehlszeilenschnittstelle (`az`) ersetzt. Es wird ein anderer Ansatz für das Exportieren der Daten verwendet. Dabei wird keine direkte Verbindung mehr mit der Datencontroller-API hergestellt. Stattdessen wird ein Exporttask basierend auf der benutzerdefinierten Ressourcendefinition (CRD) `exporttasks.tasks.arcdata.microsoft.com` erstellt. Die benutzerdefinierte Ressource für den erstellten Exporttask steuert einen Workflow zum Generieren eines herunterladbaren Pakets. Die Azure-Befehlszeilenschnittstelle wartet auf den Abschluss dieses Tasks und ruft dann die sichere URL aus dem Status der benutzerdefinierten Ressource des Tasks ab, um das Paket herunterzuladen.
+- Unterstützung für die Verwendung von NFS-basierten Speicherklassen.
 - Im Azure-Portal wurden Diagnosen und Lösungen für SQL Managed Instance mit Azure Arc-Unterstützung hinzugefügt.
 
 ## <a name="may-2021"></a>Mai 2021
@@ -271,7 +397,7 @@ Als Previewfunktion unterliegt die in diesem Artikel vorgestellte Technologie de
 
 #### <a name="platform"></a>Plattform
 
-- Erstellen und Löschen von Servergruppen für Datencontroller, verwaltete SQL-Instanzen und PostgreSQL Hyperscale auf dem Azure-Portal.
+- Erstellen und Löschen von Servergruppen für Datencontroller, SQL Managed Instance und PostgreSQL Hyperscale über das Azure-Portal.
 - Validieren Sie Portalaktionen beim Löschen von Azure Arc-Datendiensten. Das Portal warnt beispielsweise, wenn Sie versuchen, den Datencontroller zu löschen, wenn mit ihm SQL Managed Instances bereitgestellt werden.
 - Erstellen Sie benutzerdefinierte Konfigurationsprofile, um benutzerdefinierte Einstellungen zu unterstützen, wenn Sie Azure Arc-fähige Datencontroller mithilfe des Azure-Portals bereitstellen.
 - Optional können Sie Ihre Protokolle im direkt verbundenen Modus automatisch in den Azure Log Analytics-Arbeitsbereich hochladen.
@@ -361,7 +487,7 @@ Beim Bereinigen früherer Installationen löschen Sie die vorherigen CRDs. Siehe
 
 ### <a name="azure-arc-enabled-sql-managed-instance"></a>SQL Managed Instance mit Azure Arc-Unterstützung
 
-- Sie können jetzt eine SQL Managed Instance-Instanz über das Azure-Portal im direkten Konnektivitätsmodus erstellen.
+- Sie können jetzt eine SQL Managed Instance-Instanz über das Azure-Portal im direkt verbundenen Modus erstellen.
 
 - Sie können jetzt eine Datenbank auf SQL Managed Instance mit drei Replikaten wiederherstellen, und sie wird automatisch der Verfügbarkeitsgruppe hinzugefügt.
 
@@ -498,6 +624,6 @@ Anweisungen finden Sie unter [Was sind Azure Arc-fähige Datendienste?](overview
 
 - [Installieren der Clienttools](install-client-tools.md)
 - [Erstellen des Azure Arc-Datencontrollers](create-data-controller.md) (erfordert zuvor die Installation der Clienttools)
-- [Erstellen einer Azure SQL Managed Instance-Instanz in Azure Arc](create-sql-managed-instance.md) (erfordert zuvor die Erstellung eines Azure Arc-Datencontrollers)
+- [Erstellen einer Azure SQL Managed Instance-Instanz in Azure Arc](create-sql-managed-instance.md) (erfordert zuvor die Erstellung eines Azure Arc-Datencontrollers)
 - [Erstellen einer Azure Database for PostgreSQL Hyperscale-Servergruppe in Azure Arc](create-postgresql-hyperscale-server-group.md) (erfordert zuvor die Erstellung eines Azure Arc-Datencontrollers)
 - [Ressourcenanbieter für Azure-Dienste](../../azure-resource-manager/management/azure-services-resource-providers.md)

@@ -4,16 +4,16 @@ description: In diesem Artikel wird beschrieben, wie Sie Probleme beheben, die b
 author: billmath
 ms.author: billmath
 manager: daveba
-ms.date: 01/19/2021
+ms.date: 10/13/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 65022d98c7ee7e90d8f1fe5b6854605c841ad05b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4fa397505d7bb98235a97e5818409baee9c9c9e4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530320"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451861"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Problembehandlung bei der Cloudsynchronisierung
 
@@ -27,6 +27,7 @@ Die Cloudsynchronisierung berührt viele verschiedene Bereiche und weist viele u
 |[Agent-Probleme](#agent-problems)|Hier überprüfen Sie, ob der Agent korrekt installiert wurde und vergewissern sich, dass er mit Azure Active Directory (Azure AD) kommuniziert.|
 |[Objektsynchronisierungsprobleme](#object-synchronization-problems)|Hier verwenden Sie Bereitstellungsprotokolle, um Probleme bei der Objektsynchronisierung zu beheben.|
 |[Bereitstellungsprobleme im Status „Quarantäne“](#provisioning-quarantined-problems)|Hier lernen Sie Bereitstellungsprobleme im Status „Quarantäne“ und deren Behebung kennen.|
+|[Kennwortrückschreiben](#password-writeback)|Informationen zu häufigen Problemen beim Kennwortrückschreiben und deren Behebung.|
 
 
 ## <a name="agent-problems"></a>Agent-Probleme
@@ -167,21 +168,22 @@ Durch Klicken auf den Status können Sie zusätzliche Informationen zur Quarant�
 ![Screenshot mit zusätzlichen Informationen zur Quarantäne](media/how-to-troubleshoot/quarantine-2.png)
 
 Wenn Sie mit der rechten Maustaste auf den Status klicken, werden zusätzliche Optionen angezeigt:
-    
-   - Bereitstellungsprotokolle anzeigen
-   - Agent anzeigen
-   - Quarantäne löschen
+
+- Bereitstellungsprotokolle anzeigen
+- Agent anzeigen
+- Quarantäne löschen
 
 ![Screenshot der Optionen im Kontextmenü](media/how-to-troubleshoot/quarantine-4.png)
 
-
 ### <a name="resolve-a-quarantine"></a>Aufheben einer Quarantäne
-Es gibt zwei Möglichkeiten, eine Quarantäne aufzuheben.  Sie lauten wie folgt:
 
-  - Aufheben der Quarantäne: Löschen Sie das Wasserzeichen, und führen Sie eine Deltasynchronisierung aus.
-  - Erneutes Starten des Bereitstellungsauftrags: Löschen Sie das Wasserzeichen, und führen Sie eine Erstsynchronisierung aus.
+Es gibt zwei Möglichkeiten, eine Quarantäne aufzuheben. Sie lauten wie folgt:
+
+- Aufheben der Quarantäne: Löschen Sie das Wasserzeichen, und führen Sie eine Deltasynchronisierung aus.
+- Erneutes Starten des Bereitstellungsauftrags: Löschen Sie das Wasserzeichen, und führen Sie eine Erstsynchronisierung aus.
 
 #### <a name="clear-quarantine"></a>Aufheben der Quarantäne
+
 Wenn Sie das Wasserzeichen löschen und eine Deltasynchronisierung für den Bereitstellungsauftrag ausführen möchten, nachdem Sie diesen überprüft haben, klicken Sie einfach mit der rechten Maustaste auf den Status, und wählen Sie **Clear quarantine** (Quarantäne löschen) aus.
 
 Es sollte ein Hinweis angezeigt werden, dass die Quarantäne aufgehoben wird.
@@ -193,11 +195,13 @@ Daraufhin sollte der Status des Agents als fehlerfrei angezeigt werden.
 ![Informationen zum Quarantänestatus](media/how-to-troubleshoot/quarantine-6.png)
 
 #### <a name="restart-the-provisioning-job"></a>Erneutes Starten des Bereitstellungsauftrags
+
 Verwenden Sie das Azure-Portal, um den Bereitstellungsauftrag neu zu starten. Wählen Sie auf der Seite mit der Agent-Konfiguration die Option **Bereitstellung erneut starten** aus.
 
   ![Erneutes Starten der Bereitstellung](media/how-to-troubleshoot/quarantine-3.png)
 
 - Verwenden Sie Microsoft Graph, um [den Bereitstellungsauftrag neu zu starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true). Sie haben vollständige Kontrolle über die Elemente, die Sie neu starten. Sie können auswählen, dass Folgendes geschieht:
+
   - Der Zählerwert wird auf 0 zurückgesetzt und steigt wieder an, sobald neue Elemente in Quarantäne verschoben werden.
   - Eine Anwendung wird aus der Quarantäne entfernt.
   - Grenzwerte werden geändert. 
@@ -207,20 +211,39 @@ Verwenden Sie das Azure-Portal, um den Bereitstellungsauftrag neu zu starten. W�
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
 
 ## <a name="repairing-the-the-cloud-sync-service-account"></a>Reparieren des Cloud Sync-Dienstkontos
-Wenn Sie das Cloud Sync-Dienstkonto reparieren müssen, können Sie das Cmdlet `Repair-AADCloudSyncToolsAccount` verwenden.  
 
+Wenn Sie das Cloud Sync-Dienstkonto reparieren müssen, können Sie das Cmdlet `Repair-AADCloudSyncToolsAccount` verwenden.
 
-   1.  Führen Sie zunächst die [hier](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) beschriebenen Installationsschritte aus, und fahren Sie dann mit den verbleibenden Schritten fort.
-   2.  Geben Sie in einer Windows PowerShell-Sitzung mit Administratorrechten den folgenden Befehl ein (Sie können ihn auch kopieren und einfügen): 
-    ```
-    Connect-AADCloudSyncTools
-    ```  
+   1. Führen Sie zunächst die [hier](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) beschriebenen Installationsschritte aus, und fahren Sie dann mit den verbleibenden Schritten fort.
+
+   2. Geben Sie in einer PowerShell-Sitzung mit Administratorrechten den folgenden Befehl ein (Sie können ihn auch kopieren und einfügen):
+
+      ```powershell
+      Connect-AADCloudSyncTools
+      ```
+
    3. Geben Sie die Anmeldeinformationen des globalen Azure AD-Administrators ein.
-   4. Geben Sie den folgenden Befehl ein (Sie können ihn auch kopieren und einfügen): 
-    ```
-    Repair-AADCloudSyncToolsAccount
-    ```  
+
+   4. Geben Sie den folgenden Befehl ein (Sie können ihn auch kopieren und einfügen):
+
+      ```powershell
+      Repair-AADCloudSyncToolsAccount
+      ```
+
    5. Nach Abschluss dieses Vorgangs sollten Sie die Meldung erhalten, dass das Konto erfolgreich repariert wurde.
+
+## <a name="password-writeback"></a>Kennwortrückschreiben
+Die folgenden Informationen sind im Hinblick auf die Aktivierung und Verwendung des Kennwortrückschreibens mit der Cloudsynchronisierung zu beachten.
+
+- Wenn Sie die [Berechtigungen für das gruppenverwaltete Dienstkonto (gMSA)](how-to-gmsa-cmdlets.md#using-set-aadcloudsyncpermissions) aktualisieren müssen, kann es eine Stunde oder länger dauern, bis diese Berechtigungen auf alle Objekte in Ihrem Verzeichnis repliziert wurden. Wenn Sie diese Berechtigungen nicht zuweisen, scheint die Rückschreibung ordnungsgemäß konfiguriert zu sein, aber die Benutzer erhalten möglicherweise Fehler, wenn sie ihre lokalen Kennwörter über die Cloud aktualisieren. Berechtigungen müssen für „Dieses und alle untergeordneten Objekte“ gelten, damit **Abgelaufenes Kennwort wiederherstellen** angezeigt wird. 
+- Wenn Kennwörter für einige Benutzerkonten nicht in das lokale Verzeichnis zurückgeschrieben werden, stellen Sie sicher, dass die Vererbung für das Konto in der lokalen AD DS-Umgebung nicht deaktiviert ist. Schreibberechtigungen für Kennwörter müssen auf Nachfolgerobjekte angewendet werden, damit die Funktion ordnungsgemäß funktioniert. 
+- Kennwortrichtlinien in der lokalen AD DS-Umgebung verhindern unter Umständen, dass Kennwortzurücksetzungen ordnungsgemäß verarbeitet werden. Wenn Sie diese Funktion testen und das Kennwort für Benutzer mehr als einmal pro Tag zurücksetzen möchten, muss die Gruppenrichtlinie für das Mindestalter von Kennwörtern auf 0 festgelegt werden. Diese Einstellung finden Sie in der Datei **gpmc.msc** unter **Computerkonfiguration > Richtlinien > Windows-Einstellungen > Sicherheitseinstellungen > Kontorichtlinien**. 
+     - Warten Sie beim Aktualisieren der Gruppenrichtlinie, bis die aktualisierte Richtlinie repliziert wurde, oder verwenden Sie den Befehl „gpupdate /force“. 
+     - Damit Kennwörter sofort geändert werden können, muss für Mindestalter für Kennwörter die Einstellung „0“ festgelegt werden. Wenn sich Benutzer aber an die lokalen Richtlinien halten und „Minimales Kennwortalter“ auf einen höheren Wert als 0 festgelegt ist, funktioniert das Kennwortrückschreiben auch nach dem Auswerten der lokalen Richtlinien noch. 
+
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

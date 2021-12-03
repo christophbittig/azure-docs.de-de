@@ -2,13 +2,13 @@
 title: Öffentliche Endpunkte und Netzwerke
 description: Azure Video Analyzer macht eine Reihe von öffentlichen Netzwerkendpunkten verfügbar, die verschiedene Produktszenarien ermöglichen, einschließlich Verwaltung, Erfassung und Wiedergabe. In diesem Artikel wird erläutert, wie Sie auf öffentliche Endpunkte und Netzwerke zugreifen.
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: ad02a9ddd0ff2893e14d48f6698c83108f1acd63
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.date: 11/04/2021
+ms.openlocfilehash: 2285408cbdc6fd9f633e8c34c253c2d5921bc4db
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659600"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552903"
 ---
 # <a name="public-endpoints-and-networking"></a>Öffentliche Endpunkte und Netzwerke
 

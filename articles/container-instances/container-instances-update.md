@@ -3,12 +3,12 @@ title: Aktualisieren einer Containergruppe
 description: Hier erfahren Sie, wie Sie ausgeführte Container in Ihren Azure Container Instances-Containergruppen aktualisieren.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: cbb2e830490d2591645b8156ee830856da0f9049
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f2ec8ed3641fd9e692c89c6fdb29a7bea268b023
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786961"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853337"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualisieren von Containern in Azure Container Instances
 
@@ -73,6 +73,7 @@ Damit Änderungen an diesen Eigenschaften vorgenommen werden können, muss vor d
 * CPU-, Arbeitsspeicher- oder GPU-Ressourcen
 * Neustartrichtlinie
 * Netzwerkprofil
+* Verfügbarkeitszone
 
 Wenn Sie eine Containergruppe löschen und erneut erstellen, wird sie nicht erneut bereitgestellt, sondern neu erstellt. Alle Imageebenen werden neu aus der Registrierung und nicht aus der Zwischenspeicherung einer vorherigen Bereitstellung abgerufen. Die IP-Adresse des Containers kann sich unter Umständen ebenfalls ändern, weil die erneute Bereitstellung auf einem anderen zugrunde liegenden Host erfolgt.
 

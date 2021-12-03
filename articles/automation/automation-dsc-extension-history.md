@@ -6,16 +6,19 @@ keywords: DSC, PowerShell, Azure, Erweiterung
 services: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: b272993cdb1b89e63190d2c8c9ef80db2327ccc1
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 3aaadbb6f972838984f4ec01347537f21e244f14
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167514"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491467"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Arbeiten mit der Versionsgeschichte der Azure Desired State Configuration-Erweiterung
 
 Die VM-[Erweiterung](../virtual-machines/extensions/dsc-overview.md) von Azure Desired State Configuration (DSC) wird bei Bedarf aktualisiert, um Verbesserungen und neue Funktionen von Azure, Windows Server und Windows Management Framework (WMF) zu unterstützen, die in Windows PowerShell enthalten sind.
+
+> [!NOTE]
+> Bevor Sie die DSC-Erweiterung aktivieren, sollten Sie wissen, dass jetzt eine neuere Version von DSC als Vorschauversion verfügbar ist, die durch das Feature [Gastkonfiguration](../governance/policy/concepts/guest-configuration.md) von Azure Policy verwaltet wird. Der Gastkonfigurationsdienst kombiniert Features der DSC-Erweiterung und von Azure Automation State Configuration mit den am häufigsten angeforderten Features aus Kundenfeedback. Die Gastkonfiguration umfasst auch die Unterstützung von Hybridcomputern über [Arc-fähige Server](../azure-arc/servers/overview.md).
 
 Dieser Artikel informiert Sie über alle Versionen der Azure DSC-VM-Erweiterung sowie über die unterstützten Umgebungen und enthält Kommentare und Hinweise zu neuen Features und Änderungen.
 

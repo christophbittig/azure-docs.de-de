@@ -5,14 +5,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/29/2020
+ms.date: 10/28/2021
 ms.author: aahi
-ms.openlocfilehash: c4b3e9aeaaea9e8ff3d7abc58a8e468ca8dc2c3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddc720f8ac9b99418b0c5c7d6a70ababcfd034a2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97820616"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426170"
 ---
-### <a name="text-analytics-support-notes"></a>** Hinweise zur Textanalyseunterstützung
-Die Textanalyse beinhaltet eine vorgefertigte keyPhrase-Entität und Standpunktanalyse. Für die Subkulturen `pt-PT` und `pt-BR` wird nur Portugiesisch unterstützt. Alle anderen Kulturen werden auf primärer Kulturebene unterstützt. Erfahren Sie mehr über [unterstützte Sprachen](../../text-analytics/language-support.md) für die Textanalyse.
+### <a name="language-service-support-notes"></a>**Hinweise zur Sprachdienstunterstützung
+Der Sprachdienst beinhaltet eine vorgefertigte keyPhrase-Entität und Standpunktanalyse. Für die Subkulturen `pt-PT` und `pt-BR` wird nur Portugiesisch unterstützt. Alle anderen Kulturen werden auf primärer Kulturebene unterstützt.

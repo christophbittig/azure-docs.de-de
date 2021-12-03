@@ -5,14 +5,14 @@ description: Erfahren Sie, wie Sie Ihren Azure Cache for Redis-Verbindungen resi
 author: shpathak-msft
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/11/2021
+ms.date: 11/3/2021
 ms.author: shpathak
-ms.openlocfilehash: dd7bb63204ccaa38379b49cfe3946372319dfc44
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d8e5f95e78db7c46ad1c52401b938acc37af6b4f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130252899"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850943"
 ---
 # <a name="connection-resilience"></a>Verbindungsresilienz
 
@@ -33,13 +33,16 @@ Es werden die folgenden TCP-Einstellungen empfohlen:
 |Einstellung  |Wert |
 |---------|---------|
 | *net.ipv4.tcp_retries2*   | 5 |
-| *TCP_KEEPIDLE*   | 15 |
-| *TCP_KEEPINTVL*  | 5 |
-| *TCP_KEEPCNT* | 3 |
 
-Erwägen Sie die Verwendung des *ForceReconnect*-Musters. Eine Implementierung des Musters finden Sie in dem Code in [Erneutes Herstellen einer Verbindung mit dem Lazy\<T\>-Muster](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-lazyreconnect-cs).
+Weitere Informationen zu dem Szenario finden Sie unter [Verbindung wird bei der Ausführung unter Linux für 15 Minuten nicht wiederhergestellt](https://github.com/StackExchange/StackExchange.Redis/issues/1848#issuecomment-913064646). Während sich diese Diskussion auf die StackExchange.Redis-Bibliothek bezieht, sind auch andere Clientbibliotheken betroffen, die unter Linux ausgeführt werden. Die Erläuterung ist immer noch nützlich, und Sie können sie hinsichtlich anderer Bibliotheken verallgemeinern.
 
-Weitere Informationen zum Szenario finden Sie unter [Verbindung wird bei der Ausführung unter Linux für 15 Minuten nicht wiederhergestellt](https://github.com/StackExchange/StackExchange.Redis/issues/1848#issuecomment-913064646). Während sich diese Diskussion auf die StackExchange.Redis-Bibliothek bezieht, sind auch andere Clientbibliotheken betroffen, die unter Linux ausgeführt werden. Die Erläuterung ist immer noch nützlich, und Sie können sie hinsichtlich anderer Bibliotheken verallgemeinern.
+## <a name="using-forcereconnect-with-stackexchangeredis"></a>Verwenden von ForceReconnect mit StackExchange.Redis
+
+In seltenen Fällen kann StackExchange.Redis nach einer Verbindungsunterbrechung die Verbindung nicht mehr wiederherstellen. In diesen Fällen wird das Problem behoben, indem Sie den Client neu starten oder einen neuen `ConnectionMultiplexer` erstellen. Es wird empfohlen, ein `ConnectionMultiplexer`-Singletonmuster zu verwenden, wenn Sie Apps gestatten, eine erneute Verbindung in regelmäßigen Abständen zu erzwingen. Sehen Sie sich das Schnellstart-Beispielprojekt an, das am besten zu dem Framework und der Plattform passt, die Ihre Anwendung verwendet. Ein Beispiel für dieses Codemuster finden Sie in unseren [Schnellstartanleitungen](https://github.com/Azure-Samples/azure-cache-redis-samples).
+
+Benutzer von `ConnectionMultiplexer` müssen alle `ObjectDisposedException`-Fehler behandeln, die möglicherweise aufgrund des Verwerfens des alten Multiplexers auftreten.
+
+Rufen Sie `ForceReconnectAsync()` für `RedisConnectionExceptions` und `RedisSocketExceptions` auf. Sie können auch `ForceReconnectAsync()` für `RedisTimeoutExceptions` aufrufen, aber nur, wenn Sie großzügige Werte für `ReconnectMinInterval` und `ReconnectErrorThreshold` verwenden. Andernfalls kann das Herstellen neuer Verbindungen zu einem kaskadierten Fehler auf einem Server führen, bei dem ein Timeout auftritt, weil er bereits überlastet ist.
 
 ## <a name="configure-appropriate-timeouts"></a>Konfigurieren von entsprechenden Timeouts
 

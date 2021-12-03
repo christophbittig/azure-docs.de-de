@@ -22,59 +22,75 @@
       href: ./resource-graph-samples.md
 - name: Konzepte
   items:
-    - name: Agent-Architektur
-      href: conceptual-agent-architecture.md
-    - name: Konfigurationen und GitOps
-      href: conceptual-configurations.md
-    - name: Clustererweiterungen
-      href: conceptual-extensions.md
-    - name: Clusterverbindung
+    - name: Agent-Übersicht
+      href: conceptual-agent-overview.md
+    - name: Konnektivitätsmodi
+      href: conceptual-connectivity-modes.md
+    - name: Datenaustausch zwischen Cluster und Azure
+      href: conceptual-data-exchange.md
+    - name: Identitäts- und Zugriffsverwaltung
+      items:
+        - name: Azure RBAC
+          href: conceptual-azure-rbac.md
+    - name: Ortsunabhängiger Zugriff auf Cluster
       href: conceptual-cluster-connect.md
-    - name: Benutzerdefinierte Standorte
-      href: conceptual-custom-locations.md
-    - name: Azure RBAC
-      href: conceptual-azure-rbac.md
+    - name: Erweitern von Azure-Funktionen auf Cluster an beliebigen Orten
+      items:
+        - name: Clustererweiterungen
+          href: conceptual-extensions.md
+        - name: Benutzerdefinierte Standorte
+          href: conceptual-custom-locations.md
+    - name: Bereitstellen von Anwendungen im Cluster
+      items:
+        - name: Konfigurationen und GitOps
+          href: conceptual-configurations.md
+        - name: CI/CD-Workflow mit GitOps
+          href: conceptual-gitops-ci-cd.md
+        - name: Entwicklerumgebung für innere Schleifen
+          href: conceptual-inner-loop-gitops.md
     - name: Häufig gestellte Fragen
       href: faq.md
-    - name: CI/CD-Workflow mit GitOps
-      href: conceptual-gitops-ci-cd.md
-    - name: Entwicklerumgebung für innere Schleifen
-      href: conceptual-inner-loop-gitops.md
 - name: Anleitungen
   items:
-    - name: Verbinden eines Clusters mithilfe eines Dienstprinzipals
-      href: create-onboarding-service-principal.md
     - name: Upgrade von Agents
       href: agent-upgrade.md
-    - name: Szenarien
+    - name: Ortsunabhängiges Herstellen sicherer Verbindungen mit Clustern
+      href: cluster-connect.md
+    - name: Kubernetes-Ressourcenansicht im Azure-Portal
+      href: kubernetes-resource-view.md
+    - name: Verwenden von Azure AD RBAC für Autorisierungsüberprüfungen
+      href: azure-rbac.md
+    - name: Bereitstellen von Anwendungen im Cluster
       items:
         - name: Bereitstellen von Helm-Charts mithilfe von GitOps
           href: use-gitops-with-helm.md
-        - name: Erzwingen von GitOps mithilfe von Azure Policy
+        - name: Bereitstellung von Konfigurationen im großen Stil mithilfe von Azure Policy
           href: use-azure-policy.md
+        - name: Bereitstellen von IoT-Workloads
+          href: deploy-azure-iot-edge-workloads.md
+    - name: Verwalten Ihres Clusters
+      items:
         - name: Bereitstellen und Verwalten von Clustererweiterungen
           href: extensions.md
         - name: Überwachen mithilfe von Azure Monitor für Container
           href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json
-        - name: Erzwingen des Bedrohungsschutzes mithilfe von Azure Defender
-          href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
-        - name: Definitionen für Zugangskontrollrichtlinien mit Azure Policy
+        - name: Erzwingen von Bedrohungsschutz mit Microsoft Defender für Cloud
+          href: ../../defender-for-cloud/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
+        - name: Clusterinterne Richtlinienerzwingungen mithilfe von Azure Policy
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: "Bereitstellen von Open Service Mesh mit Azure\_Arc-Unterstützung"
           href: tutorial-arc-enabled-open-service-mesh.md
-        - name: Ortsunabhängiges Herstellen sicherer Verbindungen mit Clustern
-          href: cluster-connect.md
-        - name: Verwenden von Azure AD RBAC für Autorisierungsüberprüfungen
-          href: azure-rbac.md
+        - name: Zugreifen auf Geheimnisse über Azure Key Vault
+          href: tutorial-akv-secrets-provider.md
+    - name: Bereitstellen von Diensten mit Arc-Unterstützung
+      items:
         - name: Erstellen benutzerdefinierter Standorte
           href: custom-locations.md
-        - name: Bereitstellen von IoT-Workloads
-          href: deploy-azure-iot-edge-workloads.md
         - name: Machine Learning mit Azure Arc-Unterstützung
           href: ../../machine-learning/how-to-attach-arc-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
     - name: Problembehandlung
-      href: Troubleshooting.md
-- name: Referenz
+      href: troubleshooting.md
+- name: Verweis
   items:
     - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'

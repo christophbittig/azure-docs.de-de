@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c026a571a087008d86e34e8c2806745a06ae89cb
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 5b116a4b6a100f8b93d453b95b7c181cde97b572
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986756"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401400"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Zuweisen von Vertraulichkeitsbezeichnungen zu Microsoft 365-Gruppen in Azure Active Directory
 
@@ -35,7 +35,7 @@ Damit veröffentlichte Bezeichnungen auf Gruppen angewendet werden können, müs
 1. Öffnen Sie ein Windows PowerShell-Fenster auf Ihrem Computer. Sie können es ohne erhöhte Rechte öffnen.
 1. Führen Sie die folgenden Befehle aus, um die Ausführung der Cmdlets vorzubereiten.
 
-    ```PowerShell
+    ```powershell
     Install-Module AzureADPreview
     Import-Module AzureADPreview
     Connect-AzureAD
@@ -44,8 +44,8 @@ Damit veröffentlichte Bezeichnungen auf Gruppen angewendet werden können, müs
     Geben Sie auf der Seite **Bei Ihrem Konto anmelden** Ihr Administratorkonto und das zugehörige Kennwort ein, um eine Verbindung mit dem Dienst herzustellen, und wählen Sie **Anmelden** aus.
 1. Rufen Sie die aktuellen Gruppeneinstellungen für die Azure AD-Organisation ab.
 
-    ```PowerShell
-    $setting = (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ)
+    ```powershell
+    $grpUnifiedSetting = (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ)
     $template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
     $setting = $template.CreateDirectorySetting()
     ```
@@ -55,20 +55,26 @@ Damit veröffentlichte Bezeichnungen auf Gruppen angewendet werden können, müs
 
 1. Zeigen Sie als nächstes die aktuellen Gruppeneinstellungen an.
 
-    ```PowerShell
+    ```powershell
     $Setting.Values
     ```
 
-1. Aktivieren Sie dann das folgende Feature:
+1. Aktivieren Sie das Feature:
 
-    ```PowerShell
+    ```powershell
     $Setting["EnableMIPLabels"] = "True"
     ```
+ 
+1. Überprüfen Sie den neuen angewendeten Wert:
 
-1. Speichern Sie dann die Änderungen, und übernehmen Sie die Einstellungen:
+    ```powershell
+    $Setting.Values
+    ```
+    
+1. Speichern Sie die Änderungen, und übernehmen Sie die Einstellungen:
 
-    ```PowerShell
-    New-AzureADDirectorySetting -DirectorySetting $setting
+    ```powershell
+    Set-AzureADDirectorySetting -Id $grpUnifiedSetting.Id -DirectorySetting $setting
     ```
 
 Außerdem müssen Sie Ihre Vertraulichkeitsbezeichnungen mit Azure AD synchronisieren. Entsprechende Anweisungen finden Sie unter [Aktivieren von Vertraulichkeitsbezeichnungen für Container und Synchronisieren von Bezeichnungen](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).

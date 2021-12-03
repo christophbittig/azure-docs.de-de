@@ -3,23 +3,25 @@ title: Aktivieren des bedarfsgesteuerten Datenträgerburstings
 description: Aktivieren Sie das bedarfsgesteuerte Datenträgerbursting auf dem verwalteten Datenträger.
 author: roygara
 ms.author: rogarana
-ms.date: 11/03/2021
+ms.date: 11/09/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f02bab9dc9a2561aeb605d91388151f41fb9a243
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 27a832f7f02fd10cde7f3c9f603f38d0d5e466b6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131501493"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136191"
 ---
 # <a name="enable-on-demand-bursting"></a>Aktivieren des bedarfsgesteuerten Burstings
 
 SSD Premium-Datenträger verfügen über zwei verfügbare Modelle für das Bursting: guthabenbasiertes Bursting und bedarfsgesteuertes Bursting. In diesem Artikel wird beschrieben, wie Sie zum bedarfsgesteuerten Bursting wechseln. Datenträger, die das bedarfsgesteuerte Modell verwenden, können das Bursting über ihre ursprünglich bereitgestellten Ziele hinaus durchführen. Das bedarfsgesteuerte Bursting erfolgt so oft, wie es für den Workload erforderlich ist, bis zum maximalen Burstziel. Beim bedarfsgesteuerten Bursting fallen zusätzliche Gebühren an.
 
-Weitere Informationen zum Datenträgerbursting finden Sie unter [Verwaltetes Datenträgerbursting](disk-bursting.md).
+Weitere Informationen zum Datenträgerbursting finden Sie unter [Verwaltetes Datenträgerbursting](disk-bursting.md). 
+
+Informationen zu den maximalen Burstzielen auf jedem unterstützten Datenträger finden Sie unter [Skalierbarkeits- und Leistungsziele für VM-Datenträger](disks-scalability-targets.md#premium-ssd-managed-disks-per-disk-limits).
 
 > [!IMPORTANT]
 > Sie müssen die Schritte in diesem Artikel nicht befolgen, um das guthabenbasierte Bursting zu verwenden. Standardmäßig ist das guthabenbasierte Bursting auf allen berechtigten Datenträgern aktiviert.

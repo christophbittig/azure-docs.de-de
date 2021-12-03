@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3eb56d9de903fc6013600908e3b44e8e0f547ed
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 28a6ca16de88df5bde2b003879814c032ed0c519
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618113"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049955"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -84,7 +84,7 @@ Wenn Ihr Identitätsanbieter diese Protokolle nicht unterstützt, funktioniert A
 
 Zum Einbinden von Geräten in Azure AD können Sie keine Smartcards oder zertifikatbasierte Authentifizierung verwenden. Smartcards können jedoch für die Anmeldung bei in Azure AD eingebundenen Geräten verwendet werden, wenn AD FS konfiguriert ist.
 
-**Empfehlung:** Implementieren Sie Windows Hello for Business für eine sichere, kennwortlose Authentifizierung bei Windows 10-Geräten.
+**Empfehlung:** Implementieren Sie Windows Hello for Business für eine sichere, kennwortlose Authentifizierung bei Geräten mit Windows 10 oder höher.
 
 ### <a name="user-configuration"></a>Benutzerkonfiguration
 
@@ -103,8 +103,8 @@ UPN-Änderungen werden erst ab dem Windows 10-Update 2004 unterstützt. Bei Be
 
 Azure AD Join:
 
-- Gilt nur für Windows 10-Geräte. 
-- Gilt nicht für vorherige Versionen von Windows oder andere Betriebssysteme. Wenn Sie über Windows 7- oder Windows 8.1-Geräte verfügen, müssen Sie ein Upgrade auf Windows 10 durchführen, um Azure AD Join bereitstellen zu können.
+- Ist auf Geräten mit Windows 10 und Windows 11 anwendbar 
+- Gilt nicht für vorherige Versionen von Windows oder andere Betriebssysteme. Wenn Sie über Windows 7- oder Windows 8.1-Geräte verfügen, müssen Sie ein Upgrade auf mindestens Windows 10 durchführen, um Azure AD Join bereitstellen zu können.
 - Wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten.
  
 **Empfehlung:** Verwenden Sie immer das neueste Release von Windows 10, um die aktualisierten Features nutzen zu können.

@@ -5,17 +5,17 @@ author: normesta
 services: storage
 ms.author: normesta
 ms.reviewer: fryu
-ms.date: 10/26/2020
+ms.date: 11/10/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 05dae168df808cf0abd55b7908f181044fa8651f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dfd31111844bc6969d0d2d61caac53b663b1c05c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124804384"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346627"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Überwachen von Azure Queue Storage
 
@@ -322,6 +322,17 @@ Sie können die Metrikwerte auf der Kontoebene Ihres Speicherkontos oder des Que
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
+#### <a name="reading-metric-values-with-dimensions"></a>Lesen von Metrikwerten mit Dimensionen
+
+Wenn eine Metrik Dimensionen unterstützt, können Sie Metrikwerte lesen und sie mithilfe von Dimensionswerten filtern. Verwenden Sie das Cmdlet [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric).
+
+```powershell
+$resourceId = "<resource-ID>"
+$dimFilter = [String](New-AzMetricFilter -Dimension ApiName -Operator eq -Value "GetMessages" 3> $null)
+Get-AzMetric -ResourceId $resourceId -MetricName Transactions -TimeGrain 01:00:00 -MetricFilter $dimFilter -AggregationType "Total"
+```
+
+
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>Auflisten der Metrikdefinition auf Kontoebene
@@ -340,6 +351,14 @@ Sie können die Metrikwerte Ihres Speicherkontos oder des Queue Storage-Diensts 
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
+```
+
+#### <a name="reading-metric-values-with-dimensions"></a>Lesen von Metrikwerten mit Dimensionen
+
+Wenn eine Metrik Dimensionen unterstützt, können Sie Metrikwerte lesen und sie mithilfe von Dimensionswerten filtern. Verwenden Sie den Befehl [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list).
+
+```azurecli
+az monitor metrics list --resource <resource-ID> --metric "Transactions" --interval PT1H --filter "ApiName eq 'GetMessages' " --aggregation "Total" 
 ```
 
 ### <a name="net-sdk"></a>[.NET SDK](#tab/azure-portal)

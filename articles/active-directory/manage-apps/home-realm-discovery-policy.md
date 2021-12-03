@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/20/2021
 ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: ce71512e46f1b78ece832ec1fb1bad938edfcbf8
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 8ac93a42c4911a6694770ee320f84b88d6ea6aa5
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058840"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547444"
 ---
-# <a name="home-realm-discovery-for-an-application-in-azure-active-directory"></a>Home Realm Discovery für eine Anwendung in Azure Active Directory
+# <a name="home-realm-discovery-for-an-application"></a>Startbereichsermittlung für eine Anwendung
 
 Home Realm Discovery (HRD) ist der Prozess, der es Azure AD ermöglicht, zu bestimmen, bei welchem Identitätsanbieter ("IdP") sich ein Benutzer zum Zeitpunkt der Anmeldung authentifizieren muss.  Wenn sich ein Benutzer bei einem Azure AD-Mandanten oder auf der allgemeinen Anmeldeseite von Azure AD anmeldet, um auf eine Ressource zuzugreifen, gibt er einen Benutzernamen (UPN) ein. Azure AD verwendet diesen, um zu ermitteln, wo sich der Benutzer anmelden muss.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit ITRP | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit ITRP'
 description: In diesem Tutorial erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ITRP konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,27 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 10/27/2021
 ms.author: jeedes
-ms.openlocfilehash: daeff2aef260c13ae4bb08fd0c4c6a39d3fdcb48
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b972c3c6779d3ca288685d1a8921bceac7d001dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124809342"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346380"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Tutorial: Azure Active Directory-Integration mit ITRP
+# <a name="tutorial-azure-ad-sso-integration-with-itrp"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit ITRP
 
-In diesem Tutorial erfahren Sie, wie Sie ITRP in Azure Active Directory (Azure AD) integrieren.
-Diese Integration bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie ITRP in Azure Active Directory (Azure AD) integrieren. Die Integration von ITRP in Azure AD ermöglicht Folgendes:
 
-* Sie können mit Azure AD steuern, wer Zugriff auf ITRP hat.
-* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei ITRP anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Steuern Sie in Azure AD, wer Zugriff auf ITRP hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei ITRP anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,70 +41,50 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 ## <a name="add-itrp-from-the-gallery"></a>Hinzufügen von ITRP aus dem Katalog
 
-Zum Einrichten der Integration von ITRP in Azure AD müssen Sie ITRP aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von ITRP in Azure AD müssen Sie ITRP aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**:
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **ITRP** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **ITRP** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-    ![Wählen Sie „Azure Active Directory“.](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-itrp"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für ITRP
 
-2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**:
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit ITRP mithilfe eines Testbenutzers namens **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ITRP eingerichtet werden.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit ITRP die folgenden Schritte aus:
 
-3. Um eine Anwendung hinzuzufügen, wählen Sie oben im Fenster die Option **Neue Anwendung**:
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für ITRP](#configure-itrp-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines ITRP-Testbenutzers](#create-an-itrp-test-user)** , um eine Entsprechung von B. Simon in ITRP zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-    ![Auswählen von „Neue Anwendung“](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-4. Geben Sie im Suchfeld **ITRP** ein. Wählen Sie in den Suchergebnissen den Eintrag **ITRP** aus, und wählen Sie dann **Hinzufügen** aus.
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-     ![Suchergebnisse](common/search-new-app.png)
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **ITRP** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit ITRP mithilfe eines Testbenutzers namens Britta Simon.
-Damit einmaliges Anmelden funktioniert, müssen Sie eine Beziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ITRP einrichten.
-
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit ITRP müssen Sie die folgenden Schritte ausführen:
-
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden der Funktion zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für ITRP](#configure-itrp-single-sign-on)** auf der Anwendungsseite
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD für den Benutzer zu aktivieren.
-5. **[Erstellen eines ITRP-Testbenutzers](#create-an-itrp-test-user)** , der mit der Darstellung des Benutzers in Azure AD verknüpft ist
-6. **[Testen des einmaligen Anmeldens](#test-single-sign-on)** , um sicherzustellen, dass die Konfiguration funktioniert.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
-
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die folgenden Schritte aus:
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für ITRP die Option **Einmaliges Anmelden** aus:
-
-    ![„Einmaliges Anmelden“ auswählen](common/select-sso.png)
-
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren:
-
-    ![SSO-Methode auswählen](common/select-saml-option.png)
-
-3. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Symbol **Bearbeiten** aus, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen:
-
-    ![Screenshot: Seite „Einmaliges Anmelden (SSO) mit SAML einrichten“ mit Auswahl des Symbols „Bearbeiten“](common/edit-urls.png)
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 4. Führen Sie im Dialogfeld **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![Dialogfeld „Grundlegende SAML-Konfiguration“](common/sp-identifier.png)
+    1. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL nach folgendem Muster ein: 
 
-    1. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein:
+       `https://<tenant-name>.itrp.com`
+
+    1. Geben Sie im Textfeld **Anmelde-URL** eine URL nach folgendem Muster ein:
     
-       `https://<tenant-name>.itrp.com`
-
-    1. Geben Sie im Feld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein:
-
-       `https://<tenant-name>.itrp.com`
+       `https://<tenant-name>.itrp.com`   
 
     > [!NOTE]
-    > Diese Werte sind Platzhalter. Sie müssen die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner verwenden. Die Werte erhalten Sie vom [Supportteam von ITRP](https://www.4me.com/support/). Sie können sich auch die Muster im Azure-Portal im Dialogfeld **Grundlegende SAML-Konfiguration** ansehen.
+    > Diese Werte sind Platzhalter. Sie müssen die tatsächlichen Werte für Bezeichner und Anmelde-URL verwenden. Die Werte erhalten Sie vom [Supportteam von ITRP](https://www.4me.com/support/). Sie können sich auch die Muster im Azure-Portal im Dialogfeld **Grundlegende SAML-Konfiguration** ansehen.
 
 5. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** das Symbol **Bearbeiten** aus, um das Dialogfeld **SAML-Signaturzertifikat** zu öffnen:
 
@@ -123,29 +98,47 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    1. **Anmelde-URL**
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-    1. **Azure AD-Bezeichner**
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-    1. **Abmelde-URL**:
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
-### <a name="configure-itrp-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für ITRP
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf ITRP gewähren.
+
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **ITRP** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+## <a name="configure-itrp-sso"></a>Konfigurieren des einmaligen Anmeldens für ITRP
 
 1. Melden Sie sich in einem neuen Webbrowserfenster auf der ITRP-Unternehmenswebsite als Administrator an.
 
 1. Wählen Sie im oberen Fensterbereich das Symbol **Settings** (Einstellungen) aus.
 
-    ![Symbol „Einstellungen“](./media/itrp-tutorial/ic775570.png "Symbol „Einstellungen“")
+    ![Symbol „Einstellungen“](./media/itrp-tutorial/profile.png "Symbol „Einstellungen“")
 
 1. Wählen Sie im linken Bereich **Single Sign-On** (Einmaliges Anmelden) aus:
 
-    ![Auswählen von „Einmaliges Anmelden“](./media/itrp-tutorial/ic775571.png "„Einmaliges Anmelden“ auswählen")
+    ![Auswählen von „Einmaliges Anmelden“](./media/itrp-tutorial/setting.png "„Einmaliges Anmelden“ auswählen")
 
 1. Führen Sie im Konfigurationsabschnitt **Single Sign-On** (Einmaliges Anmelden) die folgenden Schritte aus:
 
-    ![Screenshot: Abschnitt „Single Sign-On“ (Einmaliges Anmelden) mit Auswahl von „Enabled“ (Aktiviert)](./media/itrp-tutorial/ic775572.png "Abschnitt „Einmaliges Anmelden“")
+    ![Screenshot: Abschnitt „Single Sign-On“ (Einmaliges Anmelden) mit Auswahl von „Enabled“ (Aktiviert)](./media/itrp-tutorial/configuration.png "Abschnitt „Einmaliges Anmelden“")
 
-    ![Screenshot: Abschnitt „Single Sign-On“ (Einmaliges Anmelden), in dem Sie die in diesem Schritt beschriebenen Informationen hinzufügen können](./media/itrp-tutorial/ic775573.png "Abschnitt „Einmaliges Anmelden“")
+    ![Screenshot: Abschnitt „Single Sign-On“ (Einmaliges Anmelden), in dem Sie die in diesem Schritt beschriebenen Informationen hinzufügen können](./media/itrp-tutorial/certificate.png "Abschnitt „Einmaliges Anmelden“")
 
     1. Wählen Sie **Aktiviert**.
 
@@ -157,56 +150,6 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die
 
     1. Wählen Sie **Speichern** aus.
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-
-In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „Britta Simon“.
-
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** aus, und wählen Sie dann **Benutzer** und anschließend **Alle Benutzer** aus:
-
-    ![„Alle Benutzer“ auswählen](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus:
-
-    ![„Neuer Benutzer“ auswählen](common/new-user.png)
-
-3. Führen Sie im Dialogfeld **Benutzer** die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-  
-    1. Geben Sie in das Feld **Benutzername** den Namen **BrittaSimon@\<yourcompanydomain>.\<extension>** ein. (Beispiel: BrittaSimon@contoso.com.)
-
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
-
-    1. Klicken Sie auf **Erstellen**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf ITRP gewähren.
-
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** > **ITRP** aus.
-
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
-2. Wählen Sie in der Liste der Anwendungen den Eintrag **ITRP** aus.
-
-    ![Liste der Anwendungen](common/all-applications.png)
-
-3. Wählen Sie im linken Bereich die Option **Benutzer und Gruppen** aus:
-
-    ![Benutzer und Gruppen auswählen](common/users-groups-blade.png)
-
-4. Wählen Sie die Schaltfläche **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Auswählen von „Benutzer hinzufügen“](common/add-assign-user.png)
-
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Fenster auf die Schaltfläche **Auswählen**.
-
-6. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Klicken Sie unten im Fenster auf die Schaltfläche **Auswählen**.
-
-7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
-
 ### <a name="create-an-itrp-test-user"></a>Erstellen eines ITRP-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei ITRP anmelden können, müssen Sie sie in ITRP hinzufügen. Sie müssen diese manuell hinzufügen.
@@ -217,19 +160,19 @@ Zum Erstellen eines Benutzerkontos führen Sie die folgenden Schritte aus:
 
 1. Wählen Sie im oberen Fensterbereich das Symbol **Records** (Datensätze) aus.
 
-    ![Symbol „Datensätze“](./media/itrp-tutorial/ic775575.png "Symbol „Datensätze“")
+    ![Symbol „Datensätze“](./media/itrp-tutorial/account.png "Symbol „Datensätze“")
 
 1. Wählen Sie im Menü **People** (Personen) aus:
 
-    ![Auswählen von „Personen“](./media/itrp-tutorial/ic775587.png "„Personen“ auswählen")
+    ![Auswählen von „Personen“](./media/itrp-tutorial/user.png "„Personen“ auswählen")
 
 1. Wählen Sie das Pluszeichen ( **+** ) aus, um eine neue Person hinzuzufügen:
 
-    ![Auswählen des Pluszeichens](./media/itrp-tutorial/ic775576.png "Pluszeichen auswählen")
+    ![Auswählen des Pluszeichens](./media/itrp-tutorial/people.png "Pluszeichen auswählen")
 
 1. Führen Sie im Dialogfeld **Add New Person** (Neue Person hinzufügen) die folgenden Schritte aus:
 
-    ![Dialogfeld „Neue Person hinzufügen“](./media/itrp-tutorial/ic775577.png "Dialogfeld „Neue Person hinzufügen“")
+    ![Dialogfeld „Neue Person hinzufügen“](./media/itrp-tutorial/details.png "Dialogfeld „Neue Person hinzufügen“")
 
     1. Geben Sie den Namen und die E-Mail-Adresse eines gültigen Azure AD-Kontos ein, das Sie hinzufügen möchten.
 
@@ -238,16 +181,16 @@ Zum Erstellen eines Benutzerkontos führen Sie die folgenden Schritte aus:
 > [!NOTE]
 > Sie können Azure AD-Benutzerkonten mithilfe beliebiger Tools zum Erstellen von Benutzerkonten oder mithilfe der von ITRP bereitgestellten API erstellen.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Jetzt müssen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich testen.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich die Kachel „ITRP“ auswählen, sollten Sie automatisch bei der ITRP-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für ITRP weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Rufen Sie direkt die ITRP-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](./tutorial-list.md)
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „ITRP“ klicken, werden Sie zur Anmelde-URL für ITRP weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
+Nach dem Konfigurieren von ITRP können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

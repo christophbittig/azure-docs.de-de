@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: fe7353f8b4021e4cacb6037f65fcf9f22520f8ae
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 1b698ae5b03a7d622e4fccb717789be8cb330057
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130129451"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561288"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Projektionen eines Wissensspeichers in Azure Cognitive Search
 
@@ -23,7 +23,7 @@ In diesem Artikel werden Projektionskonzepte und -workflows vorgestellt, damit S
 
 Projektionen werden in Cognitive Search-Skillsets definiert, aber die Endergebnisse sind die Tabellen-, Objekt- und Bilddateiprojektionen in Azure Storage.
 
-:::image type="content" source="media/knowledge-store-concept-intro/projections-azure-storage.png" alt-text="Projektionen in Azure Storage" border="true":::
+:::image type="content" source="media/knowledge-store-concept-intro/kstore-in-storage-explorer.png" alt-text="Projektionen in Azure Storage" border="true":::
 
 ## <a name="types-of-projections-and-usage"></a>Arten von Projektionen und deren Verwendung
 
@@ -142,7 +142,7 @@ Der Lebenszyklus Ihrer Projektionen ist an die Quelldaten in der Datenquelle geb
 
 Nachdem der Indexer ausgeführt wurde, stellen Sie eine Verbindung zu Projektionen her, und nutzen Sie die Daten in anderen Apps und Workloads.
 
-+ Verwenden Sie den [Storage-Explorer](knowledge-store-view-storage-explorer.md), um die Objekterstellung und den Inhalt zu überprüfen.
++ Verwenden Sie den [Storage-Browser](knowledge-store-view-storage-explorer.md), um die Objekterstellung und den Inhalt zu überprüfen.
 
 + Verwenden Sie [Power BI für die Datenuntersuchung](knowledge-store-connect-power-bi.md). Dieses Tool funktioniert am besten, wenn sich die Daten in Azure Table Storage befinden. Innerhalb von Power BI können Sie Daten in neuen Tabellen bearbeiten, die einfacher abzufragen und zu analysieren sind.
 

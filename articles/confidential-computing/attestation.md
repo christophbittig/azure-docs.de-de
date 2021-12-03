@@ -2,20 +2,20 @@
 title: Bescheinigung für SGX-Enclaves
 description: Überprüfen Sie die Sicherheit Ihrer SGX-Enclave für vertrauliche Datenverarbeitung mit einer Bescheinigung.
 services: virtual-machines
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/01/2020
-ms.author: JenCook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9672a40ac7008b60195b07b6a077ed5bac0eb1b4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 03a389facebbfcb242cf63afd0a8fcca6ad7b670
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131011444"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347668"
 ---
 # <a name="attestation-for-sgx-enclaves"></a>Bescheinigung für SGX-Enclaves
 

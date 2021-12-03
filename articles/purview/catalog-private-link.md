@@ -6,18 +6,18 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: ec97cba6afd1a335791b51ed905af2f713ce6a19
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.date: 10/19/2021
+ms.openlocfilehash: dba76c0b2d25c8bc962dd847e0d2ffdaa5bdd3eb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130179744"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234225"
 ---
 # <a name="use-private-endpoints-for-your-azure-purview-account"></a>Verwenden privater Endpunkte für Ihr Azure Purview-Konto
 
 > [!IMPORTANT]
-> Wenn Sie **vor dem 27. September 2021, 15:30 Uhr UTC** einen privaten _Portalendpunkt_ für Ihr Purview-Konto erstellt haben, müssen Sie die unter [Neukonfigurieren des DNS für private Portalendpunkte](#reconfigure-dns-for-portal-private-endpoints) beschriebenen erforderlichen Maßnahmen ergreifen. **Diese Aktionen müssen vor dem 11. Oktober 2021 abgeschlossen sein. Ansonsten funktionieren vorhandene private Portalendpunkte nicht mehr.**
+> Wenn Sie **vor dem 27. September 2021, 15:30 Uhr UTC** einen privaten _Portalendpunkt_ für Ihr Purview-Konto erstellt haben, müssen Sie die unter [Neukonfigurieren des DNS für private Portalendpunkte](#reconfigure-dns-for-portal-private-endpoints) beschriebenen erforderlichen Maßnahmen ergreifen. **Diese Maßnahmen müssen vor dem 12. November 2021 abgeschlossen sein. Andernfalls werden die vorhandenen privaten Portalendpunkte nicht mehr funktionieren**.
 
 
 In diesem Artikel wird beschrieben, wie private Endpunkte für Azure Purview konfiguriert werden.
@@ -77,25 +77,25 @@ Wenn Sie **vor dem 27. September 2021, 15:30 Uhr UTC** einen privaten _Portale
 
 1. Suchen Sie im Azure-Portal nach Ihrem Purview-Konto. Klicken Sie im Menü auf der linken Seite auf **Netzwerk**, und wählen Sie die Option **Verbindungen mit privatem Endpunkt** aus. Klicken Sie in der Liste auf jeden privaten Endpunkt, und führen Sie die folgenden Schritte aus.
 
-    :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-1.png" alt-text="Screenshot: Privater Purview-Endpunkt.":::
+    :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-1.png" alt-text="Screenshot: Privater Purview-Endpunkt."lightbox="media/catalog-private-link/purview-pe-dns-updates-1.png":::
 
 2. Wenn die Zielunterressource das _Portal_ ist, überprüfen Sie die **DNS-Konfiguration**. Gehen Sie andernfalls zurück zum vorherigen Schritt, und wählen Sie den nächsten privaten Endpunkt aus, bis Sie alle privaten Endpunkte überprüft und alle privaten Endpunkte validiert haben, die dem Portal zugeordnet sind.
 
-    :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-2.png" alt-text="Screenshot: Privater Purview-Endpunkt des Portals.":::
+    :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-2.png" alt-text="Screenshot: Privater Purview-Endpunkt des Portals."lightbox="media/catalog-private-link/purview-pe-dns-updates-2.png":::
 
 3. Überprüfen Sie im Fenster **DNS-Konfiguration** die aktuellen Einstellungen:
    
     - Wenn im Abschnitt **Benutzerdefinierte DNS-Einträge** Einträge vorhanden sind, führen Sie die Schritte unter [Wartungsszenarien 1](#scenario-1) und [Wiederherstellungsszenario 2](#scenario-2) aus.
     
-        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-3.png" alt-text="Screenshot: Benutzerdefinierte DNS-Konfiguration des privaten Purview-Endpunkts des Portals.":::
+        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-3.png" alt-text="Screenshot: Benutzerdefinierte DNS-Konfiguration des privaten Purview-Endpunkts des Portals."lightbox="media/catalog-private-link/purview-pe-dns-updates-3.png":::
 
     - Wenn im Abschnitt **Konfigurationsname** Einträge vorhanden sind und die DNS-Zone `privatelink.purviewstudio.azure.com` lautet, ist für diesen privaten Endpunkt keine Aktion erforderlich. Kehren Sie zu **Schritt 1** zurück, und überprüfen Sie die verbleibenden privaten Portalendpunkte.
   
-        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-4.png" alt-text="Screenshot: Privater Purview-Endpunkt des Portals mit neuer DNS-Zone.":::
+        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-4.png" alt-text="Screenshot: Privater Purview-Endpunkt des Portals mit neuer DNS-Zone."lightbox="media/catalog-private-link/purview-pe-dns-updates-4.png":::
     
     - Wenn im Abschnitt **Konfigurationsname** Einträge vorhanden sind und die DNS-Zone `privatelink.purview.azure.com` lautet, führen Sie die Schritte in [Wartungsszenario 3](#scenario-3) aus.
 
-        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-5.png" alt-text="Screenshot: Privater Purview-Endpunkt des Portals mit alter DNS-Zone.":::
+        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-5.png" alt-text="Screenshot: Privater Purview-Endpunkt des Portals mit alter DNS-Zone."lightbox="media/catalog-private-link/purview-pe-dns-updates-5.png":::
 
 ### <a name="remediation-scenarios"></a>Wartungsszenarien
 
@@ -103,7 +103,7 @@ Wenn Sie **vor dem 27. September 2021, 15:30 Uhr UTC** einen privaten _Portale
 
 Wenn Sie **erforderliche DNS-A-Einträge direkt Ihrem DNS oder der Hostdatei Ihrer Computer hinzugefügt haben**, ist **keine Aktion erforderlich**.
     
-:::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-host.png" alt-text="Screenshot: Hostdatei mit A-Einträgen.":::
+:::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-host.png" alt-text="Screenshot: Hostdatei mit A-Einträgen."lightbox="media/catalog-private-link/purview-pe-dns-updates-host.png":::
 
 #### <a name="scenario-2"></a>Szenario 2
 
@@ -123,7 +123,7 @@ Wenn Sie die **Integration von privaten Azure-DNS-Zonen** für Ihr Purview-Konto
        
     1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Klicken Sie auf Ihr Azure Purview-Konto und wählen Sie unter **Einstellungen** **Netzwerk** die Option **Private Endpunktverbindungen** aus.
 
-        :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal.png" alt-text="Screenshot: Erstellen eines privaten Endpunkts im Portal.":::
+        :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal.png" alt-text="Screenshot: Erstellen eines privaten Endpunkts im Portal."lightbox="media/catalog-private-link/purview-pe-reconfigure-portal.png":::
 
     2. Wählen Sie **+ Privater Endpunkt** aus, um einen neuen privaten Endpunkt zu erstellen.
 
@@ -135,7 +135,7 @@ Wenn Sie die **Integration von privaten Azure-DNS-Zonen** für Ihr Purview-Konto
 
     6. Wählen Sie auf der Registerkarte **Konfiguration** das virtuelle Netzwerk aus, und klicken Sie dann auf „Azure Private DNS zone“ (Azure Private DNS-Zone), um eine neue Azure DNS-Zone zu erstellen.
             
-        :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal-dns.png" alt-text="Screenshot: Erstellen eines privaten Portalendpunkts und DNS-Einstellungen":::
+        :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal-dns.png" alt-text="Screenshot: Erstellen eines privaten Portalendpunkts und DNS-Einstellungen"lightbox="media/catalog-private-link/purview-pe-reconfigure-portal-dns.png":::
 
     7. Wechseln Sie zur Zusammenfassungsseite, und wählen Sie **Erstellen** aus, um den privaten Endpunkt des Portals zu erstellen.
 

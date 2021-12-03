@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/19/2021
+ms.date: 10/28/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: has-adal-ref
-ms.openlocfilehash: 931d7385b9c7afe48d7c163aad3570c8485ae8d1
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: b99b69b403603d347dfd49fd97de580a3871e799
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122767887"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466155"
 ---
 # <a name="support-and-help-options-for-developers"></a>Support- und Hilfeoptionen für Entwickler
 
@@ -26,10 +26,10 @@ Wenn Sie eine Antwort auf eine Frage oder Hilfe bei der Lösung eines Problems b
 ## <a name="create-an-azure-support-request"></a>Erstellen einer Azure-Supportanfrage
 
 <div class='icon is-large'>
-    <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
+    <img alt='Azure support' src='./media/common/logo_azure.svg'>
 </div>
 
-Erkunden Sie die verschiedenen [Azure-Supportoptionen, und wählen Sie den Plan aus](https://azure.microsoft.com/support/plans), der am besten zu Ihren Anforderungen passt – unabhängig davon, ob Sie als Entwickler gerade erst damit beginnen, sich mit der Cloud zu beschäftigen, oder ob Sie in einer großen Organisation für die Bereitstellung geschäftskritischer, strategischer Anwendungen zuständig sind. Azure-Kunden können Supportanfragen im Azure-Portal erstellen und verwalten.
+Erkunden Sie die verschiedenen [Azure-Supportoptionen und wählen Sie den Plan aus](https://azure.microsoft.com/support/plans), der Ihren Anforderungen am besten entspricht. Es gibt zwei Optionen zum Erstellen und Verwalten von Supportanfragen im Azure-Portal:
 
 - Wenn Sie bereits einen Azure-Supportplan haben, [stellen Sie hier eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -39,7 +39,7 @@ Erkunden Sie die verschiedenen [Azure-Supportoptionen, und wählen Sie den Plan 
 
 <div class='icon is-large'>
     <img alt='Microsoft Q&A' src='./media/common/question-mark-icon.png'>
-</div>             
+</div>
 
 Erhalten Sie direkt von Microsoft-Technikern, von Azure Most Valuable Professionals (MVPs) und von Mitgliedern unserer Experten-Community Antworten auf Ihre Fragen zur Entwicklung von Identitäts-Apps.
 
@@ -47,9 +47,8 @@ Erhalten Sie direkt von Microsoft-Technikern, von Azure Most Valuable Profession
 
 Wenn Sie beim Durchsuchen der Fragen und Antworten keine Lösung für Ihr Problem finden, übermitteln Sie eine neue Frage an Microsoft Q&A. Verwenden Sie für Ihre [qualitativ hochwertige Frage](/answers/articles/24951/how-to-write-a-quality-question.html) eins der folgenden Tags:
 
-| Komponente/Bereich| `Tags`  |
-|------------|---------------------------|
-| Active Directory-Authentifizierungsbibliothek (ADAL)                              | [[adal]](/answers/topics/azure-ad-adal-deprecation.html)                |
+| Komponente/Bereich                                                              | `Tags`                                                                    |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | Microsoft Authentication Library (MSAL)                                     | [[msal]](/answers/topics/azure-ad-msal.html)                            |
 | Offene Webschnittstelle für .NET (OWIN)-Middleware                               | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
 | [Azure AD B2B/Externe Identitäten](../external-identities/what-is-b2b.md) | [[azure-ad-b2b]](/answers/topics/azure-ad-b2b.html)                     |
@@ -65,22 +64,22 @@ Wenn Sie beim Durchsuchen der Fragen und Antworten keine Lösung für Ihr Proble
 
 Wenn Sie Hilfe bei einer der Microsoft-Authentifizierungsbibliotheken (MSAL) benötigen, eröffnen Sie in dem entsprechenden Repository auf GitHub ein Problem.
 
-| MSAL-Bibliothek | URL für GitHub-Probleme|
-| --- | --- |
-| MSAL für Android | https://github.com/AzureAD/microsoft-authentication-library-for-android/issues |
-| MSAL Angular | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
-| MSAL für iOS und macOS| https://github.com/AzureAD/microsoft-authentication-library-for-objc/issues |
-| MSAL Java | https://github.com/AzureAD/microsoft-authentication-library-for-java/issues |
-| MSAL.js | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
-| MSAL.NET| https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues |
-| MSAL Node | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
-| MSAL Python | https://github.com/AzureAD/microsoft-authentication-library-for-python/issues |
-| MSAL React | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+| MSAL                   | URL für GitHub-Probleme                                                              |
+| ---------------------- | ------------------------------------------------------------------------------ |
+| MSAL für Android       | https://github.com/AzureAD/microsoft-authentication-library-for-android/issues |
+| MSAL Angular           | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues      |
+| MSAL für iOS und macOS | https://github.com/AzureAD/microsoft-authentication-library-for-objc/issues    |
+| MSAL Java              | https://github.com/AzureAD/microsoft-authentication-library-for-java/issues    |
+| MSAL.js                | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues      |
+| MSAL.NET               | https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues  |
+| MSAL Node              | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues      |
+| MSAL Python            | https://github.com/AzureAD/microsoft-authentication-library-for-python/issues  |
+| MSAL React             | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues      |
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>Erhalten von Informationen zu Updates und neuen Releases
 
 <div class='icon is-large'>
-    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
+    <img alt='Stay informed' src='./media/common/i_blog.svg'>
 </div>
 
 - [Azure-Updates](https://azure.microsoft.com/updates/?category=identity): Informieren Sie sich über wichtige Produktupdates, Roadmap und Ankündigungen.

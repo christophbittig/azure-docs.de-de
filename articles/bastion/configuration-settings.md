@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/12/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d1cf4c18c4722c327d9d74569e7709d11068dc7c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 71a86e1440d96a37fd72afc67aaaaa7d122c6d4f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087063"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426675"
 ---
 # <a name="about-bastion-configuration-settings"></a>Informationen zu Azure Bastion-Konfigurationseinstellungen
 
@@ -78,7 +78,7 @@ Sie können diese Einstellung konfigurieren, indem Sie die folgende Methode anwe
 Azure Bastion erfordert ein dediziertes Subnetz: **AzureBastionSubnet**. Dieses Subnetz muss in demselben virtuellen Netzwerk erstellt werden, in dem Azure Bastion bereitgestellt wird. Das Subnetz muss über die folgende Konfiguration verfügen:
 
 * Subnetz: *AzureBastionSubnet*.
-* Die Subnetzgröße muss /27 oder größer sein (/26, /25 usw.).
+* Die Subnetzgröße muss /26 oder größer sein (/25, /24 usw.).
 * Für die Hostskalierung wird ein wird ein Subnetz ab /26 empfohlen. Die Verwendung eines kleineren Subnetzbereichs schränkt die Anzahl der Skalierungseinheiten ein. Weitere Informationen finden Sie im Abschnitt [Hostskalierung](#instance) in diesem Artikel.
 * Das Subnetz muss sich im selben VNet und in derselben Ressourcengruppe wie der Bastionhost befinden.
 * Das Subnetz darf keine zusätzlichen Ressourcen enthalten.

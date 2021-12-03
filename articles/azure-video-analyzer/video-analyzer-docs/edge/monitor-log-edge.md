@@ -2,18 +2,21 @@
 title: 'Überwachung und Protokollierung: Azure'
 description: Dieser Artikel bietet eine Übersicht der Überwachung und Protokollierung in Azure Video Analyzer.
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 51dd5d593d2a4c35fb6c1b6ab17a82702fc31ec9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ed86a5de4fd5d65ec3e5a3b8112cb96c95f01811
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095684"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399937"
 ---
 # <a name="monitor-and-log-on-iot-edge"></a>Überwachen und Protokollieren mit IoT Edge
 
-[!INCLUDE [header](includes/edge-env.md)]
+![Edgesymbol](media/env-icon/edge.png)  
+Alternativ können Sie den Monitor [auschecken und sich beim Dienst anmelden.](../cloud/monitor-log-cloud.md)
+
+---
 
 In diesem Artikel erfahren Sie, wie Sie Ereignisse vom Azure Video Analyzer IoT Edge-Modul für die Remoteüberwachung empfangen können. 
 

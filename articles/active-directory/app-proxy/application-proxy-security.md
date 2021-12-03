@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/21/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: 96d2fac930b65ffb9bc05330e37e52bc7af3d4dc
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 85fb56b125bf1e220fc71bdbe9c2bbb9eaec5b62
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043527"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301095"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-active-directory-application-proxy"></a>Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure Active Directory-Anwendungsproxy
 
@@ -44,7 +44,7 @@ Wenden Sie umfassendere Richtlinienkontrollen an, bevor Verbindungen mit Ihrem N
 
 Beim [bedingten Zugriff](../conditional-access/concept-conditional-access-cloud-apps.md) können Sie Einschränkungen definieren, um zu steuern, wie Benutzer auf Ihre Anwendungen zugreifen können. Sie können Richtlinien erstellen, mit denen Anmeldungen basierend auf dem Standort, der Authentifizierungssicherheit und dem Risikoprofil des Benutzers eingeschränkt werden.
 
-Außerdem können Sie den bedingten Zugriff verwenden, um Multi-Factor Authentication-Richtlinien zu konfigurieren und Ihren Benutzerauthentifizierungen so eine weitere Sicherheitsebene hinzuzufügen. Darüber hinaus können Ihre Anwendungen auch über bedingten Azure AD-Zugriff an Microsoft Cloud App Security weitergeleitet werden, um von Echtzeitüberwachung und Steuerungsmöglichkeiten durch [Zugriffsrichtlinien](/cloud-app-security/access-policy-aad) und [Sitzungsrichtlinien](/cloud-app-security/session-policy-aad) zu profitieren.
+Außerdem können Sie den bedingten Zugriff verwenden, um Multi-Factor Authentication-Richtlinien zu konfigurieren und Ihren Benutzerauthentifizierungen so eine weitere Sicherheitsebene hinzuzufügen. Darüber hinaus können Ihre Anwendungen auch über einen bedingten Azure AD-Zugriff an Microsoft Defender-für-Cloud-Apps weitergeleitet werden, um von Echtzeitüberwachung und Steuerungsmöglichkeiten durch [Zugriffs](/cloud-app-security/access-policy-aad)- und [Sitzungs](/cloud-app-security/session-policy-aad)-Richtlinien Gebrauch zu machen.
 
 ### <a name="traffic-termination"></a>Beendigung des Datenverkehrs
 
@@ -171,7 +171,6 @@ Nach dem Erhalt einer Antwort stellt der Connector eine ausgehende Verbindung mi
 #### <a name="5-the-service-streams-data-to-the-user"></a>5. Der Dienst streamt Daten an den Benutzer. 
 
 Hier kann eine Verarbeitung der Anwendung erfolgen. Wenn Sie den Anwendungsproxy so konfiguriert haben, dass in Ihrer Anwendung Header oder URLs übersetzt werden, wird diese Verarbeitung während dieses Schritts je nach Bedarf durchgeführt.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

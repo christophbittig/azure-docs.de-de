@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 10/15/2021
+ms.date: 10/26/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019, contperf-fy21q4-portal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3667740745b5e81a1a1df6439610d8def2216c1
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: a2778e2e08c416837de78567fde5dbfb61d04804
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073276"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067294"
 ---
 # <a name="email-one-time-passcode-authentication"></a>Authentifizierung mit Einmalkennung per E-Mail
 
@@ -28,7 +28,8 @@ Sie können dieses Feature im Azure-Portal jederzeit aktivieren, indem Sie den I
 ![Einmalkennung per E-Mail, Übersichtsdiagramm](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> - **Ab 1. November 2021** wird mit der Aktivierung des Features „Einmalkennung per E-Mail“ für alle bestehenden Mandanten begonnen. Bei neuen Mandanten wird es standardmäßig aktiviert. Wenn Sie nicht möchten, dass das Feature automatisch aktiviert wird, können Sie es [deaktivieren](one-time-passcode.md#disable-email-one-time-passcode).
+>
+> - **Ab 1. November 2021** wird mit der Aktivierung des Features „Einmalkennung per E-Mail“ für alle bestehenden Mandanten begonnen. Bei neuen Mandanten wird es standardmäßig aktiviert. Im Rahmen dieser Änderung erstellt Microsoft während der Einlösung von Einladungen für die B2B-Zusammenarbeit keine neuen, nicht verwalteten („viralen“) Azure AD-Konten und -Mandanten mehr. Um Unterbrechungen während der Feiertage und Bereitstellungssperren zu minimieren, findet das Rollout der Änderungen für die meisten Mandanten im Januar 2022 statt. Wir aktivieren die Funktion „Einmalkennung per E-Mail“, da sie eine nahtlose alternative Authentifizierungsmethode für Ihre Gastbenutzer bietet. Wenn Sie jedoch nicht möchten, dass dieses Feature automatisch aktiviert wird, können Sie es [deaktivieren](one-time-passcode.md#disable-email-one-time-passcode).
 > - Die Einstellungen für die Einmalkennung per E-Mail wurden im Azure-Portal aus den **Einstellungen für externe Zusammenarbeit** in **Alle Identitätsanbieter** verschoben.
 
 > [!NOTE]
@@ -157,6 +158,10 @@ Weitere Informationen zu aktuellen Einschränkungen finden Sie unter [Microsoft 
 
 Aufgrund der Bereitstellungszeitpläne wird am 1. November 2021 damit begonnen, die Einmalkennung per E-Mail standardmäßig global zu aktivieren. Bis dahin kann in den Einstellungen zur Einmalkennung per E-Mail weiterhin die Option „Einmalkennung für E-Mail für Gastbenutzer ab Oktober 2021 automatisch aktivieren“ ausgewählt sein.
 
+**Was geschieht mit meinen vorhandenen Gastbenutzern/-benutzerinnen, wenn ich die einmalige E-Mail-Kennung aktiviere?**
+
+Ihre vorhandenen Gastbenutzer*innen sind nicht betroffen, wenn Sie eine einmal gesendete E-Mail-Kennung aktivieren, da Ihre vorhandenen Benutzer*innen den Zeitpunkt der Einlösung bereits hinter sich haben. Das Aktivieren der einmaligen E-Mail-Kennung wirkt sich nur auf zukünftige Einlösungsaktivitäten aus, bei denen neue Gastbenutzer*innen Einlösungsaktivitäten in den Mandanten durchführen.
+
 **Wie erleben Gastbenutzer*innen den globalen Rollout?**
 
 Während des globalen Rollouts hängt das Benutzererlebnis der Gastbenutzer*innen von der Konfiguration Ihrer Einmalkennung per E-Mail und dem Szenario der Gastbenutzer*innen ab. 
@@ -173,20 +178,20 @@ Bevor die Änderung Ihre Region erreicht, erleben Gastbenutzer*innen folgendes V
 
   - Wenn Gastbenutzer*innen über ein vorhandenes, nicht verwaltetes Azure AD-Konto verfügen, melden sie sich weiterhin mit dem nicht verwalteten Azure AD-Konto an.
   - Wenn Gastbenutzer*innen zuvor eine Einladung zu Ihrem Mandanten mit einem nicht verwalteten Azure AD-Konto eingelöst haben, Sie ihren Einlösungsstatus zurücksetzen und sie erneut einladen, melden sie sich weiterhin mit dem nicht verwalteten Azure AD-Konto an.
-  - Wenn Gastbenutzer*innen nicht über ein nicht verwaltetes Azure AD-Konto verfügen, lösen sie die Einladung mit einem Link für die Einmalkennung per E-Mail ein, doch möglicherweise kommt es zu einem Anmeldefehler, wenn sie zuvor nicht zu dem Azure-Portal hinzugefügt wurden.
+  - Wenn Gastbenutzer*innen kein nicht verwaltetes Azure AD-Konto besitzt, lösen sie die Einladung mithilfe eines nicht verwalteten Azure AD-Kontos ein, doch möglicherweise kommt es zu einem Anmeldefehler, wenn sie zuvor nicht zu dem Azure-Portal hinzugefügt wurden und die Einlösungsaktivität über einen direkten Anwendungslink durchführen.
 
 Nachdem die Änderung Ihre Region erreicht, erleben Gastbenutzer*innen folgendes Verhalten.
 
 - Mit aktivierter Einmalkennung per E-Mail:
 
-  - Wenn Gastbenutzer*innen über ein vorhandenes, nicht verwaltetes Azure AD-Konto verfügen, nutzen sie die Einmalkennung per E-Mail, um die Einladung einzulösen und sich in Zukunft anzumelden.
+  - Wenn Gastbenutzer*innen über ein vorhandenes, nicht verwaltetes Azure AD-Konto verfügen, melden sie sich weiterhin mit dem nicht verwalteten Azure AD-Konto an.
   - Wenn Gastbenutzer*innen zuvor eine Einladung zu Ihrem Mandanten mithilfe eines nicht verwalteten Azure AD-Kontos eingelöst haben, Sie ihren Einlösungsstatus zurücksetzen und sie erneut einladen, verwenden sie die Einmalkennung per E-Mail, um die Einladung einzulösen und sich in Zukunft anzumelden.
   - Wenn Gastbenutzer*innen nicht über ein nicht verwaltetes Azure AD-Konto verfügen, nutzen sie die Einmalkennung per E-Mail, um die Einladung einzulösen und sich in Zukunft anzumelden.
 
 - Mit deaktivierter Einmalkennung per E-Mail:
 
-  - Wenn Gastbenutzer*innen über ein vorhandenes, nicht verwaltetes Azure AD-Konto verfügen, verwenden sie ein Microsoft-Konto, um die Einladung einzulösen. Sie besitzen dann zwei Konten (das nicht verwaltete Azure AD-Konto und das Microsoft-Konto). Um dies zu verhindern, wird dringend empfohlen, die Einmalkennung per E-Mail zu aktivieren.
-  - Wenn Gastbenutzer*innen zuvor eine Einladung zu Ihrem Mandanten mithilfe eines nicht verwalteten Azure AD-Kontos eingelöst haben, Sie ihren Einlösungsstatus zurücksetzen und sie erneut einladen, verwenden sie ein Microsoft-Konto, um die Einladung einzulösen. Sie besitzen dann zwei Konten (das nicht verwaltete Azure AD-Konto und das Microsoft-Konto). Um dies zu verhindern, wird dringend empfohlen, die Einmalkennung per E-Mail zu aktivieren.
+  - Wenn Gastbenutzer*innen über ein vorhandenes, nicht verwaltetes Azure AD-Konto verfügen, melden sie sich weiterhin mit dem nicht verwalteten Azure AD-Konto an.
+  - Wenn Gastbenutzer*innen zuvor eine Einladung zu Ihrem Mandanten mithilfe eines nicht verwalteten Azure AD-Kontos eingelöst haben, Sie ihren Einlösungsstatus zurücksetzen und sie erneut einladen, verwenden sie ein Microsoft-Konto, um die Einladung einzulösen und sich dann anzumelden.
   - Wenn Gastbenutzer*innen nicht über ein nicht verwaltetes Azure AD-Konto verfügen, nutzen sie ein Microsoft-Konto, um die Einladung einzulösen und sich in Zukunft anzumelden.
 
 Weitere Informationen zu den verschiedenen Möglichkeiten, die Einladung einzulösen, finden Sie unter [B2B-Zusammenarbeit: Einlösen von Einladungen](redemption-experience.md).

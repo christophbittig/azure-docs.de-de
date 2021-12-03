@@ -1,0 +1,43 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zu Azure Virtual Desktop für Azure Stack HCI – Azure
+  description: Häufig gestellte Fragen zu Azure Virtual Desktop für Azure Stack HCI.
+  author: Heidilohr
+  ms.topic: conceptual
+  ms.date: 11/02/2021
+  ms.author: helohr
+  ms.custom: devx-track-azurepowershell
+  manager: femila
+  ms.openlocfilehash: 902b01508746ccc6253f633fd54ec6560659110b
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131437333"
+title: Häufig gestellte Fragen zu Azure Virtual Desktop für Azure Stack HCI
+summary: In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Azure Virtual Desktop für Azure Stack HCI.
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Welche Betriebssystemimages des Sitzungshosts werden von diesem Feature unterstützt?
+    answer: "Azure Virtual Desktop für Azure Stack HCI unterstützt die folgenden x64-Betriebssystemimages:\n  \n  - Windows 11 Enterprise mit mehreren Sitzungen (Vorschau)\n  - Windows 11 Enterprise (Vorschau)\n  - Windows 10 Enterprise (mehrere Sitzungen)\n  - Windows 10 Enterprise\n  - Windows Server 2022\n  - Windows Server 2019\n"
+  - question: >
+      Welche Azure Virtual Desktop-Clients werden von diesem Feature unterstützt?
+    answer: >
+      Azure Virtual Desktop für Azure Stack HCI unterstützt die gleichen Clients wie Azure Virtual Desktop.
+  - question: >
+      Kann ich Azure Virtual Desktop mit einer anderen lokalen Infrastruktur als Azure Stack HCI verwenden?
+    answer: >
+      Nein. Die lokalen Funktionen von Azure Virtual Desktop gelten nur für Sitzungshosts, auf denen Azure Stack HCI-Infrastruktur ausgeführt wird.
+  - question: >
+      Ist Azure Virtual Desktop ein Dienst mit Azure Arc-Unterstützung?
+    answer: >
+      Nein, Azure Virtual Desktop ist kein Dienst mit Azure Arc-Unterstützung. Außer auf virtuellen Azure Stack HCI-Computern wird Azure Virtual Desktop außerhalb von Azure, in einer Multicloudumgebung oder auf Servern mit Azure Arc-Unterstützung nicht unterstützt, wie in dieser technischen Dokumentation beschrieben.
+  - question: >
+      Ist Azure Virtual Desktop für Azure Stack HCI in Azure Government verfügbar?
+    answer: >
+      Nein, weil Azure Stack HCI derzeit nicht in Azure Government zur Verfügung steht.
+  - question: >
+      Bedeutet die Verwendung von Azure Virtual Desktop für Azure Stack HCI, dass alle meine Daten lokal gespeichert werden?
+    answer: Nein, die Verwendung von Azure Virtual Desktop für Azure Stack HCI garantiert nicht, dass alle Daten lokal gespeichert werden. Administratoren können Benutzerdaten lokal speichern, indem sie Sitzungshost-VMs und zugehörige Dienste wie Dateiserver lokal ermitteln. Einige Kundendaten, Diagnosedaten und vom Dienst generierte Daten werden jedoch weiterhin in einem Rechenzentrum gespeichert. Weitere Informationen dazu, wie Azure Virtual Desktop verschiedene Arten von Daten speichert, finden Sie unter [Datenspeicherorte für Azure Virtual Desktop](data-locations.md).

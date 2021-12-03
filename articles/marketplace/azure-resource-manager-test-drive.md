@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.author: trkeya
 author: trkeya
-ms.date: 09/09/2021
-ms.openlocfilehash: 7415e01f79c7982b2e56e1bb02fc84be13174388
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/26/2021
+ms.openlocfilehash: 3bcd8b99ea7361e0af05cd55f96741b0d5ab5db8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065150"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847430"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
@@ -21,6 +21,9 @@ Verwenden Sie diesen Typ, wenn Sie über ein Angebot auf Azure Marketplace oder 
 Wenn Sie mit ARM-Vorlagen nicht vertraut sind, lesen Sie [Was ist Azure Resource Manager?](../azure-resource-manager/management/overview.md) und [Verstehen der Struktur und Syntax von ARM-Vorlagen](../azure-resource-manager/templates/syntax.md), um zu erfahren, wie Sie Ihre eigenen Vorlagen erstellen und testen können.
 
 Informationen zu einer **gehosteten** oder **Logik-App**-Testversion finden Sie unter [Was ist eine Testversion?](what-is-test-drive.md)
+
+> [!TIP]
+> Die Ansicht der Testversion für den Kunden im kommerziellen Marketplace finden Sie unter [Was ist Azure Marketplace?](/marketplace/azure-marketplace-overview#take-action-on-a-listing) und [Was ist Microsoft AppSource?](/marketplace/appsource-overview).
 
 ## <a name="technical-configuration"></a>Technische Konfiguration
 

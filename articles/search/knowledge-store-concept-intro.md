@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 1463c4e879b364f8242d55aa58b424a8cc6f9cf9
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 659e625aa98a92c2730e76bd847dfdddc3c955bf
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706791"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577325"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Wissensspeicher in Azure Cognitive Search
 
@@ -25,7 +25,7 @@ Wenn Sie in der Vergangenheit kognitive Skills verwendet haben, wissen Sie berei
 
 Physisch betrachtet handelt es sich bei einem Wissensspeicher um [Azure Storage](../storage/common/storage-account-overview.md) (Azure Table Storage, Azure Blob Storage oder beides). Jedes Tool und jeder Prozess, das bzw. der eine Verbindung mit Azure Storage herstellen kann, kann die Inhalte eines Wissensspeichers nutzen.
 
-Über Storage-Explorer betrachtet, ist ein Wissensspeicher nur eine Sammlung von Tabellen, Objekten oder Dateien. Das folgende Beispiel zeigt einen Wissensspeicher, der aus drei Tabellen mit Feldern besteht, die entweder aus der Datenquelle übertragen oder durch Anreicherungen erstellt werden (siehe „Standpunktbewertung“ und „translated_text“).
+In der Anzeige von Speicherbrowser sieht ein Wissensspeicher wie jede andere Sammlung von Tabellen, Objekten oder Dateien aus. Das folgende Beispiel zeigt einen Wissensspeicher, der aus drei Tabellen mit Feldern besteht, die entweder aus der Datenquelle übertragen oder durch Anreicherungen erstellt werden (siehe „Standpunktbewertung“ und „translated_text“).
 
 :::image type="content" source="media/knowledge-store-concept-intro/kstore-in-storage-explorer.png" alt-text="Skills lesen aus der und schreiben in die Anreicherungsstruktur" border="true":::
 
@@ -52,7 +52,7 @@ Ein Wissensspeicher wird in einer Skillsetdefinition definiert und besteht aus z
 Das Projektionselement ist ein Array. Sie können mehrere Sätze von Tabellenobjekt-Datei-Kombinationen innerhalb eines Wissensspeichers erstellen.
 
 ```json
-"knowledgeStore":{
+"knowledgeStore": {
    "storageConnectionString":"<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>",
    "projections":[
       {
@@ -66,6 +66,10 @@ Das Projektionselement ist ein Array. Sie können mehrere Sätze von Tabellenobj
 Der Typ der Projektion, den Sie in dieser Struktur angeben, bestimmt den vom Wissensspeicher verwendeten Speichertyp.
 
 + `tables`-Objekte projizieren angereicherte Inhalte in Table Storage. Definieren Sie eine Tabellenprojektion, wenn Sie tabellarische Berichtsstrukturen für Eingaben in Analysetools benötigen oder als Datenrahmen in andere Datenspeicher exportieren müssen. Sie können mehrere `tables`-Objekte in derselben Projektionsgruppe angeben, um eine Teilmenge oder einen Querschnitt angereicherter Dokumente zu erhalten. Tabellenbeziehungen innerhalb derselben Projektionsgruppe bleiben erhalten, sodass Sie mit allen arbeiten können.
+
+  Projizierter Inhalt wird nicht aggregiert oder normalisiert. Der folgende Screenshot zeigt eine nach Schlüsselbegriffen sortierte Tabelle mit dem übergeordneten Dokument, das in der angrenzenden Spalte angegeben ist. Im Gegensatz zur Datenerfassung während der Indizierung gibt es keine linguistische Analyse oder Aggregation von Inhalten. Pluralformen und Unterschiede bei der Groß-/Kleinschreibung werden als eindeutige Instanzen betrachtet.
+
+  :::image type="content" source="media/kstore-keyphrases-per-document.png" alt-text="Screenshot: Schlüsselbegriffe und Dokumente in einer Tabelle" border="true":::
 
 + `objects`-Objekte projizieren JSON-Dokumente in Blob Storage. Die physische Darstellung eines `object` ist eine hierarchische JSON-Struktur, die ein angereichertes Dokument darstellt.
 
@@ -118,7 +122,7 @@ Innerhalb des Skillsets:
 
 Nachdem die Anreicherungen in Storage gespeichert sind, können Sie beliebige Tools oder Technologien mit einer Verbindung mit Azure Blob Storage oder Azure Table Storage verwenden, um die Inhalte zu untersuchen, zu analysieren oder zu nutzen. Die folgende Liste gibt einen ersten Einblick:
 
-+ Mit [Storage-Explorer](knowledge-store-view-storage-explorer.md) können Sie die Struktur und den Inhalt angereicherter Dokumente anzeigen. Nutzen Sie dies als Ihr Basistool zum Anzeigen des Inhalts von Wissensspeichern.
++ Mit dem [Speicherbrowser](knowledge-store-view-storage-explorer.md) können Sie die Struktur und den Inhalt angereicherter Dokumente anzeigen. Nutzen Sie dies als Ihr Basistool zum Anzeigen des Inhalts von Wissensspeichern.
 
 + Nutzen Sie [Power BI](knowledge-store-connect-power-bi.md) für die Berichterstellung und Analyse. 
 

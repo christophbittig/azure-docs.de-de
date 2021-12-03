@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 09/23/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 89acfa0c1074d170dd0b0b9fb19f227a4e0c21ab
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 0f162e7c14fc2f4c9d123c5beca6a76dc9e6a072
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061046"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553096"
 ---
-# <a name="manage-access-to-apps-in-azure-active-directory"></a>Verwalten des Zugriffs auf Apps in Azure Active Directory
+# <a name="manage-access-to-an-application"></a>Verwalten des Zugriffs auf eine Anwendung
 
 Die fortwährende Zugriffsverwaltung sowie die Nutzungsauswertung und Berichterstellung bleiben auch nach Integration einer Anwendung in das Identitätssystem der Organisation eine Herausforderung. In vielen Fällen müssen IT-Administratoren oder der Helpdesk eine ständige aktive Rolle bei der Verwaltung des Zugriffs auf Ihre Apps ausüben. Manchmal erfolgt die Zuweisung durch das allgemeine oder abteilungsinterne IT-Team. Oft soll die Zuweisungsentscheidung an einen kommerziellen Entscheidungsträger delegiert werden, da die IT-Abteilung ohnehin dessen Genehmigung einholen muss.  
 

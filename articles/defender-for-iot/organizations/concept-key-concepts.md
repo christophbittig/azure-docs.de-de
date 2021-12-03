@@ -1,18 +1,18 @@
 ---
 title: Hauptvorteile
 description: Hier erfahren Sie mehr über die grundlegenden Konzepte von Defender für IoT.
-ms.date: 09/09/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: be5c7f31cb652bb40f4bae35fa42b76d7a576276
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 271af4bbfe56771576dec32799b19f2c7aebf258
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836471"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293438"
 ---
 # <a name="basic-concepts"></a>Grundlegende Konzepte
 
-In diesem Artikel werden die wichtigsten Vorteile von Azure Defender für IoT beschrieben.
+In diesem Artikel werden die wichtigsten Vorteile von Microsoft Defender für IoT beschrieben.
 
 ## <a name="rapid-non-invasive-deployment-and-passive-monitoring"></a>Schnelle nicht-invasive Bereitstellung und passive Überwachung
 
@@ -57,7 +57,7 @@ Die Plattform bietet eine intuitive Data-Mining-Schnittstelle für die präzise 
 
 Mit dem Modus „Sensor Cloud Management“ wird festgelegt,wo vom Sensor erkannte Informationen zum Gerät, Warnungen und andere Informationen angezeigt werden.
 
-Bei **mit der Cloud verbundenen Sensoren** werden die vom Sensor erkannten Informationen in der Sensorkonsole angezeigt. Warnungsinformationen werden über einen IoT-Hub übermittelt und können für andere Azure-Dienste wie Azure Sentinel freigegeben werden.
+Bei **mit der Cloud verbundenen Sensoren** werden die vom Sensor erkannten Informationen in der Sensorkonsole angezeigt. Warnungsinformationen werden über einen IoT-Hub übermittelt und können für andere Azure-Dienste wie z. B. Microsoft Sentinel freigegeben werden.
 
 Bei **lokal verbundenen Sensoren** werden die vom Sensor erkannten Informationen in der Sensorkonsole angezeigt. Erkennungsinformationen werden auch für die lokale Verwaltungskonsole freigegeben, wenn der Sensor damit verbunden ist.
 
@@ -114,6 +114,20 @@ Wenn Sie mit benutzerdefinierten Horizon-Warnungen arbeiten, können Sie außerd
 Mithilfe von benutzerdefinierter, bedingungsbasierter Warnungsauslösung und Messaging können Sie bestimmte Netzwerkaktivitäten ermitteln sowie Ihre Sicherheits-, IT- und Betriebsteams effektiv aktualisieren.
 
 Eine vollständige Liste der unterstützten Protokolle finden Sie in [Unterstützte Protokolle](concept-supported-protocols.md#supported-protocols).
+
+## <a name="what-is-an-inventory-device"></a>Was ist ein Bestandsgerät?
+
+Der Defender für IoT-Gerätebestand zeigt eine Vielzahl von Ressourcenattributen an. Sie werden von Sensoren erkannt, die die Netzwerke und verwalteten Endpunkte der Organisation überwachen.
+
+Defender für IoT identifiziert und klassifiziert Geräte als ein einzelnes eindeutiges Netzwerkgerät im Bestand für:
+
+1. Eigenständige IT-/OT-/IoT-Geräte (mit einem oder mehreren NICs)
+1. Geräte, die aus mehreren Rückwandplatinenkomponenten bestehen (einschließlich aller Racks/Slots/Module)
+1. Geräte, die als Netzwerkinfrastruktur fungieren, z. B. Switch/Router (mit mehreren NICs). 
+
+Öffentliche Internet-IP-Adressen, Multicastgruppen und Broadcastgruppen werden nicht als Bestandsgeräte betrachtet.
+Geräte, die seit mehr als 60 Tagen inaktiv sind, werden als inaktive Bestandsgeräte klassifiziert.
+
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 

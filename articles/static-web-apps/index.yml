@@ -8,13 +8,13 @@ metadata:
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
-  ms.date: 05/07/2021
-  ms.openlocfilehash: 6c2119b81b9eea8c4da0caa68f998e70fab4fae1
-  ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+  ms.date: 11/19/2021
+  ms.openlocfilehash: 8f522788d818d3e66ff4de03198fe2c4b842373c
+  ms.sourcegitcommit: e9e332a512ed615a3c8ad5a11baa21649f14116d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/28/2021
-  ms.locfileid: "129154943"
+  ms.lasthandoff: 11/24/2021
+  ms.locfileid: "133097884"
 landingContent:
 - title: Informationen zu Azure Static Web Apps
   linkLists:
@@ -26,13 +26,13 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Erstellen Ihrer ersten App ohne Framework
+    - text: Bereitstellen einer App ohne Front-End-Framework
       url: ./getting-started.md?tabs=vanilla-javascript
-    - text: Erstellen Ihrer ersten Angular-App
+    - text: Bereitstellen einer Angular-App
       url: ./getting-started.md?tabs=angular
-    - text: Erstellen Ihrer ersten React-App
+    - text: Bereitstellen einer React-App
       url: ./getting-started.md?tabs=react
-    - text: Erstellen Ihrer ersten Vue-App
+    - text: Bereitstellen einer Vue-App
       url: ./getting-started.md?tabs=vue
   - linkListType: learn
     links:
@@ -40,47 +40,51 @@ landingContent:
       url: /learn/modules/publish-app-service-static-web-app-api
     - text: Veröffentlichen einer API
       url: /learn/modules/publish-static-web-app-api-preview-url
+    - text: Erstellen und Bereitstellen einer Gatsby-App
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - text: Veröffentlichen einer Blazor WebAssembly-App und einer .NET-API
+      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
   - linkListType: video
     links:
     - text: Erstellen und Bereitstellen einer statischen Web-App
       url: https://channel9.msdn.com/Shows/Docs-Azure/Building-and-Deploying-a-Static-Web-App/
-- title: Veröffentlichungsszenarien
+- title: Erstellen und Bereitstellen
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Veröffentlichen über Gatsby
+    - text: Gatsby
       url: publish-gatsby.md
-    - text: Veröffentlichen über Hugo
+    - text: Hugo
       url: publish-hugo.md
-    - text: Veröffentlichen über VuePress
+    - text: VuePress
       url: publish-vuepress.md
-    - text: Veröffentlichen über Jekyll
+    - text: Jekyll
       url: publish-jekyll.md
-    - text: Bereitstellen über Blazor
+    - text: Blazor
       url: deploy-blazor.md
-    - text: Bereitstellen über Next.js
+    - text: Next.js
       url: deploy-nextjs.md
-    - text: Bereitstellen über Nuxt.js
+    - text: Nuxt.js
       url: deploy-nuxtjs.md
-    - text: Bereitstellen mit Azure DevOps
-      url: publish-devops.md
-    - text: Bereitstellen mit einer ARM-Vorlage
-      url: publish-azure-resource-manager.md
-  - linkListType: learn
-    links:
-    - text: Veröffentlichen einer statischen Web-App mit Gatsby
-      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
-    - text: Veröffentlichen einer statischen Web-App mit Blazor
-      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
 - title: Wichtige Begriffe
   linkLists:
   - linkListType: concept
     links:
     - text: Konfiguration
       url: configuration-overview.md
-    - text: Öffentliche APIs
+    - text: Serverlose API-Endpunkte
       url: apis.md
     - text: Stagingumgebungen
       url: review-publish-pull-requests.md
-    - text: Beschränken des Zugriffs
+    - text: Authentifizierung und Autorisierung
       url: authentication-authorization.md
+    - text: Erstellen einer Konfiguration mit GitHub Actions
+      url: publish-devops.md?tabs=github-actions
+    - text: Erstellen einer Konfiguration mit Azure DevOps
+      url: publish-devops.md?tabs=azure-devops
+- title: Infrastructure-as-Code
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erstellen einer Azure Static Web Apps-Instanz mithilfe einer ARM-Vorlage
+      url: publish-azure-resource-manager.md

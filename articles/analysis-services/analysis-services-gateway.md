@@ -4,15 +4,15 @@ description: Ein lokales Gateway ist erforderlich, wenn der Analysis Services-Se
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 11/09/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e83e2badf08293feb32efe13df56c2a535bc4631
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 302b61562e76c8e99f81febf936d8841f188e7ff
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145859"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136633"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen über ein lokales Datengateway
 
@@ -57,7 +57,7 @@ Nachfolgend sind die vollqualifizierten Domänennamen aufgeführt, die vom Gatew
 | *.frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |80 |Wird verwendet, um die Internetkonnektivität zu testen, falls der Power BI-Dienst das Gateway nicht erreicht. |
+| *.msftncsi.com |443 |Wird verwendet, um die Internetkonnektivität zu testen, falls der Power BI-Dienst das Gateway nicht erreicht. |
 | *.microsoftonline-p.com |443 |Wird je nach Konfiguration für die Authentifizierung verwendet. |
 | dc.services.visualstudio.com    |443 |Werden von AppInsights zur Erfassung von Telemetrie verwendet. |
 

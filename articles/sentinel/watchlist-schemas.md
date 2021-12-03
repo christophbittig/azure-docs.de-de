@@ -1,28 +1,28 @@
 ---
-title: Schemas für Azure Sentinel Watchlistvorlagen | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Schemas, die in jeder integrierten Watchlistvorlage in Azure Sentinel verwendet werden.
+title: Schemas für Microsoft Sentinel-Watchlistvorlagen | Microsoft-Dokumentation
+description: Erfahren Sie mehr über die Schemas, die in jeder integrierten Watchlistvorlage in Microsoft Sentinel verwendet werden.
 author: batamig
 ms.author: bagold
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
-ms.date: 08/04/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: f531b18dfe94027948f1411372ff72e68b01c933
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: 0d322f7412e32de0c668c3dd82341da81eb12738
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131054968"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132516891"
 ---
-# <a name="azure-sentinel-built-in-watchlist-template-schemas-public-preview"></a>Azure Sentinel integrierte Watchlistvorlagenschemas (öffentliche Vorschau)
+# <a name="microsoft-sentinel-built-in-watchlist-template-schemas-public-preview"></a>In Microsoft Sentinel integrierte Watchlistvorlagenschemas (öffentliche Vorschau)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Artikel erfahren Sie mehr über die Schemas, die in jeder integrierten Watchlistvorlage in Azure Sentinel verwendet werden. Weitere Informationen finden Sie unter [Erstellen einer neuen Watchlist mithilfe einer Vorlage (öffentliche Vorschau)](watchlists.md#create-a-new-watchlist-using-a-template-public-preview).
+In diesem Artikel erfahren Sie mehr über die Schemas, die in jeder integrierten Watchlistvorlage in Microsoft Sentinel verwendet werden. Weitere Informationen finden Sie unter [Erstellen einer neuen Watchlist mithilfe einer Vorlage (öffentliche Vorschau)](watchlists.md#create-a-new-watchlist-using-a-template-public-preview).
 
 > [!IMPORTANT]
-> Die Azure Sentinel Watchlistvorlagen befinden sich derzeit in der VORSCHAU. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> Die Microsoft Sentinel-Watchlistvorlagen befinden sich derzeit in der VORSCHAU. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 >
 
 
@@ -117,4 +117,4 @@ Die Watchlist Dienstkonten listet Dienstkonten und deren Besitzer auf und enthä
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Verwenden von Azure Sentinel Watchlists](watchlists.md).
+Weitere Informationen finden Sie unter [Verwenden von Microsoft Sentinel-Watchlists](watchlists.md).

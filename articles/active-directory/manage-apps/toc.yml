@@ -25,7 +25,7 @@
 - name: Tutorials
   items:
     - name: Liste der Tutorials für die App-Integration
-      href: /azure/active-directory/saas-apps/
+      href: /azure/active-directory/saas-apps/tutorial-list
 - name: Beispiele
   items:
     - name: "Übersicht über App\_Management-Beispiele"
@@ -100,6 +100,8 @@
               href: manage-application-permissions.md
         - name: Verwalten der Benutzerzuweisung
           href: assign-user-or-group-access-portal.md
+        - name: Zuweisen benutzerdefinierter Sicherheitsattribute
+          href: custom-security-attributes-apps.md
         - name: Erstellen von Auflistungen in „Meine Apps“
           href: access-panel-collections.md
         - name: Aktivieren des Self-Service-App-Zugriffs
@@ -136,11 +138,13 @@
       items:
         - name: Sichern des Hybridzugriffs mit Azure AD
           href: secure-hybrid-access.md
+        - name: Partnerintegrationen mit sicherem Hybridzugriff
+          href: secure-hybrid-access-integrations.md
         - name: Datawiza
           href: datawiza-with-azure-ad.md
         - name: F5
           items:
-            - name: Integration von F5 und Azure AD
+            - name: Integration vonF5 BIG-IP und Azure AD
               href: f5-aad-integration.md
             - name: Bereitstellung von F5 BIG-IP VE in Azure IaaS
               href: f5-bigip-deployment-guide.md
@@ -148,6 +152,8 @@
               href: f5-aad-password-less-vpn.md
             - name: F5 BIG-IP mit Azure AD für einmaliges Anmelden mit formularbasierter Authentifizierung
               href: f5-big-ip-forms-advanced.md
+            - name: F5 BIG-IP mit einmaligem Anmelden von Azure AD für headerbasierte Authentifizierung
+              href: f5-big-ip-header-advanced.md
         - name: Silverfort
           href: silverfort-azure-ad-integration.md
     - name: Einmaliges Anmelden
@@ -195,7 +201,7 @@
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
       href: /answers/topics/azure-active-directory.html
     - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
     - name: Stack Overflow

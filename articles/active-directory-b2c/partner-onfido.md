@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 1441210303984bf777c6b580f6f7ab0c67ce6f21
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 25d24c6f9d1f8346ad088308badca181a5bf1944
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257856"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012793"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von Onfido mit Azure Active Directory B2C
 
@@ -110,9 +110,9 @@ Anwendungseinstellungen können [per App Service in Azure konfiguriert werden](.
 
 2. Öffnen Sie jede HTML-Datei.
 
-3. Suchen Sie {your-ui-blob-container-url}, und ersetzen diese Zeichenfolge durch die URL, unter der sich die Benutzeroberflächenordner **ocean_blue**, **dist** und **assets** befinden.
+3. Suchen und ersetzen Sie `{your-ui-blob-container-url}` mit der URL, unter der sich die Benutzeroberflächenordner **ocean_blue**, **dist** und **assets** befinden.
 
-4. Suchen Sie {your-intermediate-api-url}, und ersetzen diese Zeichenfolge durch die URL des API-App-Diensts der mittleren Schicht.
+4. Suchen und ersetzen Sie `{your-intermediate-api-url}` durch die URL des Zwischen-API-App-Diensts.
 
 #### <a name="upload-your-files"></a>Hochladen Ihrer Dateien
 

@@ -5,15 +5,15 @@ services: app-service
 author: jorgearteiro
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: joarteir
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 57d5c01290f59a876a187538c9578b84fab26773
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5c5cda6e2793ca70c1d53b8a4b4ce4235fa07efd
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095332"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577667"
 ---
 # <a name="tutorial-deploy-a-background-processing-application-with-azure-container-apps-preview"></a>Tutorial: Bereitstellen einer Hintergrundverarbeitungsanwendung mit Azure Container Apps Preview
 
@@ -124,6 +124,22 @@ az extension add \
 ```powershell
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl
+```
+
+---
+
+Nachdem die Erweiterung installiert wurde, registrieren Sie den `Microsoft.Web` Namespace.
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+az provider register --namespace Microsoft.Web
 ```
 
 ---
@@ -429,7 +445,7 @@ Die Anwendung wird wie im Abschnitt `scale` der ARM-Vorlage definiert je nach Wa
 
 ## <a name="verify-the-result"></a>Überprüfen des Ergebnisses
 
-Die Container-App, die als Hintergrundprozess ausgeführt wird, erstellt Protokolleinträge in Log Analytics, wenn Nachrichten von der Azure Storage-Warteschlange eingehen.
+Die Container-App, die als Hintergrundprozess ausgeführt wird, erstellt Protokolleinträge in Log Analytics, wenn Nachrichten von der Azure Storage-Warteschlange eingehen. Möglicherweise müssen Sie einige Minuten warten, bis die Analyse zum ersten Mal ankommt, bevor Sie die protokollierten Daten abfragen können.
 
 Führen Sie den folgenden Befehl aus, um die protokollierten Meldungen anzuzeigen. Für diesen Befehl ist die Log Analytics-Erweiterung erforderlich. Stimmen Sie daher der ggf. angezeigten Aufforderung zur Installation der Erweiterung zu.
 

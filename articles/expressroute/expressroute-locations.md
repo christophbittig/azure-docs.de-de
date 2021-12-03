@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/26/2021
 ms.author: duau
-ms.openlocfilehash: d420313cc38b905b0b04ce746f050ed6f585eb11
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 3f29b308f4d0f198d444d874a4f53cf660feb8f9
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163379"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136171"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-Konnektivitätspartner und Peeringstandorte
 
@@ -131,6 +131,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |Unterstützt |Unterstützt |Chicago, Dallas, Denver, Las Vegas, Silicon Valley, Washington DC |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |Unterstützt |Unterstützt |Chicago, Hongkong, Hongkong2, London, Singapur2 |
 | **[REANNZ](https://www.reannz.co.nz/products-and-services/cloud-connect/)** | Unterstützt | Unterstützt | Auckland |
+| **[Reliance Jio](https://www.jio.com/business/jio-cloud-connect)** | Unterstützt | Unterstützt | Mumbai |
 | **[Retelit](https://www.retelit.it/EN/Home.aspx)** | Unterstützt | Unterstützt | Mailand | 
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Unterstützt |Unterstützt |Seoul |
 | **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | Unterstützt |Unterstützt | London2, Washington DC |
@@ -164,6 +165,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **Vodacom** |Unterstützt |Unterstützt |Kapstadt, Johannesburg|
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Unterstützt |Unterstützt |Amsterdam2, London, Singapur |
 | **[Vodafone Idea](https://www.vodafone.in/business/enterprise-solutions/connectivity/vpn-extended-connect)** | Unterstützt | Unterstützt | Mumbai2 |
+| **[XL Axiata]** | Unterstützt | Unterstützt | Jakarta |
 | **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, Denver, London, Los Angeles, Montreal, New York, Paris, Phoenix, Seattle, Silicon Valley, Toronto, Washington DC, Washington DC2 |
 
  **+** steht für "In Kürze"

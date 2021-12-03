@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a58042c7098116a2800453dcca46cae62011dfac
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: f2322a6a445c908528163673662cc59227c01711
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570482"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044419"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Tutorial: Erweitern von Azure AD B2C zum Schützen lokaler Anwendungen mithilfe von Strata
 
@@ -324,7 +324,7 @@ appgateways:
 
 ## <a name="test-the-flow"></a>Testen des Flows
 
-1. Navigieren Sie zur URL der lokalen Anwendung: `https://example.com/sonar/dashboard`.
+1. Navigieren Sie zur URL der lokalen Anwendung, `https://example.com/sonar/dashboard`.
 
 2. Der Orchestrator sollte Sie zu der Seite umleiten, die Sie in Ihrem Benutzerflow konfiguriert haben.
 

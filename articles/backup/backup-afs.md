@@ -2,13 +2,16 @@
 title: Sichern von Azure-Dateifreigaben im Azure-Portal
 description: Erfahren Sie, wie Sie das Azure-Portal zum Sichern von Azure-Dateifreigaben im Recovery Services-Tresor verwenden.
 ms.topic: conceptual
-ms.date: 10/08/2021
-ms.openlocfilehash: 8e50cee7e177375fae41ef6fb3a27f871427342c
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.date: 11/03/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 46068722385e9cf89c5c85d37a72a0528479ab8a
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714408"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849728"
 ---
 # <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
 
@@ -31,48 +34,36 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="configure-backup-from-the-recovery-services-vault"></a>Konfigurieren der Sicherung über den Recovery Services-Tresor
 
-In den folgenden Schritten wird erläutert, wie Sie die Sicherung für mehrere Dateifreigaben im Bereich „Recovery Services-Tresor“ konfigurieren können:
+Führen Sie die folgenden Schritte aus, um die Sicherung für mehrere Dateifreigaben im Bereich des Recovery Services-Tresors zu konfigurieren:
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Recovery Services-Tresor, den Sie zur Konfiguration der Sicherung für die Dateifreigabe verwenden möchten.
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zu **Backup Center**, und klicken Sie auf **+Sichern**.
 
-1. Wählen Sie im Bereich **Recovery Services-Tresor** im Menü oben die Option **+Sicherung** aus.
+   :::image type="content" source="./media/backup-afs/backup-center-configure-inline.png" alt-text="Screenshot: Konfigurieren der Sicherung für Azure Files." lightbox="./media/backup-afs/backup-center-configure-expanded.png":::
 
-   ![Recovery Services-Tresor](./media/backup-afs/recovery-services-vault.png)
+1. Wählen Sie **Azure Files (Azure Storage)** als Datenquellentyp aus, wählen Sie den Tresor aus, mit dem Sie die Dateifreigaben schützen möchten, und klicken Sie dann auf **Weiter**.
 
-    1. Legen Sie im Bereich **Sicherungsziel** die Option **Wo wird Ihre Workload ausgeführt?** auf **Azure** fest, indem Sie in der Dropdownliste **Azure** auswählen.
+   :::image type="content" source="./media/backup-afs/azure-file-share-select-vault.png" alt-text="Screenshot: Auswählen von „Azure Files“.":::
 
-          ![Azure als Workload wählen](./media/backup-afs/backup-goal.png)
+1. Klicken Sie auf **Auswählen**, um das Speicherkonto auszuwählen, das die zu sichernden Dateifreigaben enthält.
 
-    2. Wählen Sie unter **Was möchten Sie sichern?** aus der Dropdownliste die Option **Azure-Dateifreigabe** aus.
+   Der Bereich **Speicherkonto auswählen**  wird auf der rechten Seite geöffnet, in dem eine Reihe erkannter unterstützter Speicherkonten aufgeführt ist. Sie sind entweder diesem Tresor zugeordnet oder befinden sich in derselben Region wie der Tresor, sind aber noch keinem Recovery Services-Tresor zugeordnet.
 
-          ![Azure-Dateifreigabe auswählen](./media/backup-afs/select-azure-file-share.png)
-
-    3. Wählen Sie **Sicherung** aus, um die Azure-Dateifreigabeerweiterung im Tresor zu registrieren.
-
-          ![Wählen Sie „Sicherung“ aus, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen.](./media/backup-afs/register-extension.png)
-
-1. Nachdem Sie **Sicherung** ausgewählt haben, wird der Bereich **Sicherung** geöffnet. Um das Speicherkonto auszuwählen, in dem die zu schützende Dateifreigabe gehostet wird, wählen Sie unter dem Textfeld **Speicherkonto** den Linktext **Auswählen** aus.
-
-   ![Klicken auf den Link „Auswählen“](./media/backup-afs/choose-select-link.png)
-
-1. Der Bereich **Speicherkonto auswählen**  wird auf der rechten Seite geöffnet, in dem eine Reihe erkannter unterstützter Speicherkonten aufgeführt ist. Sie sind entweder diesem Tresor zugeordnet oder befinden sich in derselben Region wie der Tresor, sind aber noch keinem Recovery Services-Tresor zugeordnet.
+   :::image type="content" source="./media/backup-afs/azure-file-share-select-storage-account-inline.png" alt-text="Screenshot: Auswählen eines Speicherkontos." lightbox="./media/backup-afs/azure-file-share-select-storage-account-expanded.png":::
 
 1. Wählen Sie aus der Liste der ermittelten Speicherkonten ein Speicherkonto und dann **OK** aus.
 
-   ![In den erkannten Speicherkonten eine Wahl treffen](./media/backup-afs/select-discovered-storage-account.png)
+   :::image type="content" source="./media/backup-afs/azure-file-share-confirm-storage-account-inline.png" alt-text="Screenshot: Auswählen eines der ermittelten Speicherkonten." lightbox="./media/backup-afs/azure-file-share-confirm-storage-account-expanded.png":::
    
    >[!NOTE]
-   > Wenn ein Speicherkonto in einer anderen Region als der Tresor vorhanden ist, ist es nicht in der Liste der ermittelten Speicherkonten enthalten.
+   >Wenn ein Speicherkonto in einer anderen Region als der Tresor vorhanden ist, ist es nicht in der Liste der ermittelten Speicherkonten enthalten.
 
 1. Der nächste Schritt ist das Auswählen der zu sichernden Dateifreigaben. Wählen Sie im Abschnitt **FileShares to Backup** (Zu sichernde Dateifreigaben) die Schaltfläche **Hinzufügen** aus.
 
-   ![Auswählen der zu sichernden Dateifreigaben](./media/backup-afs/select-file-shares-to-back-up.png)
+   :::image type="content" source="./media/backup-afs/azure-select-file-share-inline.png" alt-text="Screenshot: Auswählen der zu sichernden Dateifreigabe." lightbox="./media/backup-afs/azure-select-file-share-expanded.png":::
 
 1. Der Kontextbereich **Dateifreigaben auswählen** wird auf der rechten Seite geöffnet. Azure durchsucht das Speicherkonto nach Dateifreigaben, die gesichert werden können. Falls Sie die Dateifreigaben erst kürzlich hinzugefügt haben und diese nicht in der Liste angezeigt werden, warten Sie einen Moment, bis die Dateifreigaben angezeigt werden.
 
 1. Wählen Sie in der Liste **Dateifreigaben auswählen** mindestens eine zu sichernde Dateifreigabe aus. Klicken Sie auf **OK**.
-
-   ![Auswählen der Dateifreigaben](./media/backup-afs/select-file-shares.png)
 
 1. Für die Auswahl einer Sicherungsrichtlinie für Ihre Dateifreigabe gibt es drei Optionen:
 
@@ -83,13 +74,13 @@ In den folgenden Schritten wird erläutert, wie Sie die Sicherung für mehrere D
 
       1. Um eine neue Sicherungsrichtlinie für Ihre Dateifreigabe zu erstellen, wählen Sie im Abschnitt **Sicherungsrichtlinie** den Linktext unter der Dropdownliste aus.<br>
 
-         ![Erstellen Sie eine neue Richtlinie.](./media/backup-afs/create-new-policy.png)
+         :::image type="content" source="./media/backup-afs/azure-file-share-edit-policy-inline.png" alt-text="Screenshot: Erstellen einer neuen Richtlinie." lightbox="./media/backup-afs/azure-file-share-edit-policy-expanded.png":::
 
       1. Führen Sie die Schritte 3–7 im Abschnitt [Erstellen einer neuen Richtlinie](manage-afs-backup.md#create-a-new-policy) aus.
 
       1. Klicken Sie nach dem Definieren aller Attribute der Richtlinie auf **OK**.
 
-         ![Richtliniennamen und Aufbewahrungsdauer angeben](./media/backup-afs/policy-name.png)
+         :::image type="content" source="./media/backup-afs/azure-file-share-policy-parameters-inline.png" alt-text="Screenshot: Angeben des Richtliniennamens und der Werte für die Aufbewahrung." lightbox="./media/backup-afs/azure-file-share-policy-parameters-expanded.png":::
 
    * Eine der vorhandenen Sicherungsrichtlinien wählen <br>
 
@@ -169,31 +160,29 @@ In den folgenden Schritten wird erläutert, wie Sie die Sicherung für einzelne 
 
 Gelegentlich empfiehlt es sich, eine Sicherungsmomentaufnahme oder einen Wiederherstellungspunkt außerhalb der geplanten Zeiten in der Sicherungsrichtlinie zu erstellen. Häufig ist es sinnvoll, eine bedarfsgesteuerte Sicherung direkt nach dem Konfigurieren der Sicherungsrichtlinie zu erstellen. Basierend auf den Zeitplan in der Sicherungsrichtlinie, kann es Stunden oder Tage dauern, bis eine Momentaufnahme erstellt wird. Initiieren Sie eine bedarfsgesteuerte Sicherung, um Ihre Daten zu schützen, bevor die Sicherungsrichtlinie in Kraft tritt. Die Erstellung einer bedarfsgesteuerten Sicherung ist häufig erforderlich, bevor Sie geplante Änderungen an den Dateifreigaben vornehmen.
 
-### <a name="from-the-recovery-services-vault"></a>Über den Recovery Services-Tresor
+### <a name="from-backup-center"></a>Aus dem Backup Center
 
-1. Öffnen Sie den Recovery Services-Tresor, den Sie zum Sichern Ihrer Dateifreigaben verwendet haben. Wahlen Sie auf dem Blatt **Übersicht** im Abschnitt **Geschützte Elemente** die Option **Sicherungselemente** aus.
+1. Klicken Sie im **Backup Center** im Menü auf **Sicherungsinstanzen**.
 
-   ![Sicherungselemente auswählen](./media/backup-afs/backup-items.png)
+   Filtern Sie nach **Azure Files (Azure Storage)** als Datenquellentyp.
 
-1. Nachdem Sie **Sicherungselemente** ausgewählt haben, wird neben dem Bereich **Übersicht** ein neuer Bereich angezeigt, in dem alle **Sicherungsverwaltungstypen** aufgelistet sind.
+   :::image type="content" source="./media/backup-afs/azure-file-share-backup-instances-inline.png" alt-text="Screenshot: Auswählen von Sicherungsinstanzen." lightbox="./media/backup-afs/azure-file-share-backup-instances-expanded.png":::
 
-   ![Liste mit Sicherungsverwaltungstypen](./media/backup-afs/backup-management-types.png)
+1. Wählen Sie das Element aus, für das Sie einen bedarfsgesteuerten Sicherungsauftrag ausführen möchten.
 
-1. Wählen Sie aus der Liste der **Sicherungsverwaltungstypen** den Eintrag **Azure Storage (Azure Files)** aus. Angezeigt wird eine Liste aller Dateifreigaben und der entsprechenden Speicherkonten, die mit diesem Tresor gesichert werden.
+1. Wählen Sie im Menü **Sicherungselement** die Option **Jetzt sichern** aus. Da es sich um einen bedarfsgesteuerten Sicherungsauftrag handelt, ist dem Wiederherstellungspunkt keine Aufbewahrungsrichtlinie zugeordnet.
 
-   ![Azure Storage (Azure Files)-Sicherungselemente](./media/backup-afs/azure-files-backup-items.png)
-
-1. Wählen Sie in der Liste der Azure-Dateifreigaben die gewünschte Dateifreigabe aus. Einzelheiten zum **Sicherungselement** werden angezeigt. Wählen Sie im Menü **Sicherungselement** die Option **Jetzt sichern** aus. Da es sich um einen bedarfsgesteuerten Sicherungsauftrag handelt, ist dem Wiederherstellungspunkt keine Aufbewahrungsrichtlinie zugeordnet.
-
-   ![„Jetzt sichern“ auswählen](./media/backup-afs/backup-now.png)
+   :::image type="content" source="./media/backup-afs/azure-file-share-backup-now-inline.png" alt-text="Screenshot: Auswählen von „Jetzt sichern“." lightbox="./media/backup-afs/azure-file-share-backup-now-expanded.png":::
 
 1. Der Bereich **Jetzt sichern** wird geöffnet. Geben Sie den Tag an, bis zu dem der Wiederherstellungspunkt aufbewahrt werden soll. Bedarfsgesteuerte Sicherung können maximale 10 Jahre aufbewahrt werden.
 
-   ![Wählen Sie das Aufbewahrungsdatum aus.](./media/backup-afs/retention-date.png)
+   :::image type="content" source="./media/backup-afs/azure-file-share-on-demand-backup-retention.png" alt-text="Screenshot: Auswählen des Aufbewahrungsdatums.":::
 
 1. Wählen Sie **OK** aus, um die Ausführung des bedarfsgesteuerten Sicherungsauftrags zu bestätigen.
 
-1. Überwachen Sie die Portalbenachrichtigungen, um den Abschluss der Ausführung des Sicherungsauftrags zu verfolgen. Sie können den Auftragsstatus im Dashboard des Tresors überwachen. Wählen Sie dazu **Sicherungsaufträge** > **In Bearbeitung** aus.
+1. Überwachen Sie die Portalbenachrichtigungen, um den Abschluss der Ausführung des Sicherungsauftrags zu verfolgen.
+
+   Um den Auftragsfortschritt im **Backup Center**-Dashboard zu überwachen, wählen Sie **Backup Center** -> **Sicherungsaufträge** -> **In Bearbeitung** aus.
 
 ### <a name="from-the-file-share-pane"></a>Über den Bereich der Dateifreigabe
 

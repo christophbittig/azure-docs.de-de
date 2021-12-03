@@ -47,6 +47,8 @@
       href: manage-permissions.md
     - name: Einbinden von DDoS Rapid Response (DRR)
       href: ddos-rapid-response.md
+    - name: DDoS-L7-Inlineschutz mit Gateway Load Balancer und Partner-NVAs
+      href: inline-protection-glb.md
     - name: Onboarding von Partnern
       href: ddos-protection-partner-onboarding.md
 - name: Verweis

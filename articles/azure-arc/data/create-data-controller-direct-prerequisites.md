@@ -7,45 +7,43 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 03/31/2021
+ms.date: 11/03/2021
 ms.topic: overview
-ms.openlocfilehash: 143a601f89301d3ed4302efa6e978cba53539e2c
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: cd1c12eaf4c4d5df575c7774386da007c9124712
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733918"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549829"
 ---
 # <a name="prerequisites-to-deploy-the-data-controller-in-direct-connectivity-mode"></a>Hier werden die Voraussetzungen zum Bereitstellen des Datencontrollers im direkten Konnektivitätsmodus erläutert
 
-In diesem Artikel wird beschrieben, wie Sie die Bereitstellung eines Datencontrollers für Azure Arc-fähige Datendienste im direkten Verbindungsmodus vorbereiten. Die Bereitstellung des Azure Arc-Datencontrollers erfordert zusätzliche Kenntnisse und Konzepte, wie unter [Planen der Bereitstellung von Azure Arc-fähigen Datendiensten](plan-azure-arc-data-services.md) beschrieben.
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+In diesem Artikel wird beschrieben, wie Sie die Bereitstellung eines Datencontrollers für Azure Arc-fähige Datendienste im direkten Verbindungsmodus vorbereiten. Bevor Sie einen Azure Arc-Datencontroller bereitstellen, sollten Sie sich mit den Konzepten vertraut machen, die unter [Planen der Bereitstellung von Azure Arc-fähigen Datendiensten](plan-azure-arc-data-services.md) beschrieben werden.
 
 Zu den wichtigsten Voraussetzungen für die Erstellung von Azure Arc Data Controllern im **direkten** Konnektivitätsmodus gehören:
 
 1. Das Verbinden eines Kubernetes-Clusters mit Azure unter der Verwendung von Azure Arc-fähigem Kubernetes
-2. Erstellen des Dienstprinzipals und Konfigurieren von Rollen für Metriken
-3. Das Erstellen von Azure Arc-fähigen Datendienstdatencontrollern. Dieser Schritt umfasst das Erstellen von
+2. Das Erstellen von Azure Arc-fähigen Datendienstdatencontrollern. Dieser Schritt umfasst das Erstellen von
     - einer Azure Arc-Datendiensterweiterung
-    - einem benutzerdefinierten Speicherort
+    - Benutzerdefinierter Speicherort
     - einem Azure Arc-Datencontroller
+3. Wenn Protokolle automatisch nach Azure Log Analytics hochgeladen werden sollen, werden die Log Analytics-Arbeitsbereichs-ID und der Schlüssel für den gemeinsamen Zugriff als Teil der Bereitstellung benötigt.
 
 ## <a name="1-connect-kubernetes-cluster-to-azure-using-azure-arc-enabled-kubernetes"></a>1. Das Verbinden eines Kubernetes-Clusters mit Azure unter der Verwendung von Azure Arc-fähigem Kubernetes
 
-Sie können Ihren Kubernetes-Cluster mit Azure verbinden, indem Sie die CLI ```az``` mit den folgenden Erweiterungen und Helm verwenden.
+Um Ihren Kubernetes-Cluster mit Azure zu verbinden, verwenden Sie die Azure CLI `az` mit den folgenden Erweiterungen oder Helm.
 
-#### <a name="install-tools"></a>Installieren von Tools
+### <a name="install-tools"></a>Installieren von Tools
 
 - Helm-Version 3.3 oder höher ([Installieren](https://helm.sh/docs/intro/install/))
-- Informationen zur Installation und auf die neueste Version der Azure CLI finden Sie unter ([Installieren](/sql/azdata/install/deploy-install-azdata))
+- Installieren oder Aktualisieren auf die neueste Version der Azure CLI ([Herunterladen](https://aka.ms/installazurecliwindows))
 
-#### <a name="add-extensions-for-azure-cli"></a>Hinzufügen von Erweiterungen für die Azure CLI
+### <a name="add-extensions-for-azure-cli"></a>Hinzufügen von Erweiterungen für die Azure CLI
 
 Installieren Sie die neuesten Versionen der folgenden Azure CLI-Erweiterungen:
-- ```k8s-extension```
-- ```connectedk8s```
-- ```k8s-configuration```
+- `k8s-extension`
+- `connectedk8s`
+- `k8s-configuration`
 - `customlocation`
 
 Führen Sie den folgenden Befehl aus, um die Azure CLI-Erweiterungen zu installieren:
@@ -57,7 +55,7 @@ az extension add --name k8s-configuration
 az extension add --name customlocation
 ```
 
-Wenn Sie zuvor die ```k8s-extension```, ```connectedk8s```, ```k8s-configuration```, `customlocation` Erweiterungen installiert haben, können Sie über den folgenden Befehl auf die neueste Version aktualisieren:
+Wenn Sie zuvor die `k8s-extension`, `connectedk8s`, `k8s-configuration`, `customlocation` Erweiterungen installiert haben, können Sie über den folgenden Befehl auf die neueste Version aktualisieren:
 
 ```azurecli
 az extension update --name k8s-extension
@@ -65,20 +63,17 @@ az extension update --name connectedk8s
 az extension update --name k8s-configuration
 az extension update --name customlocation
 ```
-#### <a name="connect-your-cluster-to-azure"></a>Verbinden Sie Ihren Cluster mit Azure
+
+### <a name="connect-your-cluster-to-azure"></a>Verbinden Sie Ihren Cluster mit Azure
 
 Führen Sie zum Abschließen dieser Aufgabe die Schritte unter [Schnellstart: Herstellen einer Verbindung eines vorhandenen Kubernetes-Clusters mit Azure Arc](../kubernetes/quickstart-connect-cluster.md) aus.
 
-Nachdem Sie Ihren Cluster mit Azure verbunden haben, können Sie mit dem Erstellen eines Dienstprinzipals fortfahren. 
+## <a name="2-optionally-keep-the-log-analytics-workspace-id-and-shared-access-key-ready"></a>2. Halten Sie optional die Log Analytics-Arbeitsbereichs-ID und den gemeinsam genutzten Zugriffsschlüssel bereit.
 
-## <a name="2-create-service-principal-and-configure-roles-for-metrics"></a>2. Das Erstellen des Dienstprinzipals und das Konfigurieren von Rollen für Metriken
+Wenn Sie einen Azure Arc-fähigen Datencontroller bereitstellen, können Sie das automatische Hochladen von Metriken und Protokollen während des Setups aktivieren. Beim Hochladen von Metriken wird die systemseitig zugewiesene verwaltete Identität verwendet. Das Hochladen von Protokollen erfordert jedoch eine Arbeitsbereichs-ID und den Zugriffsschlüssel für den Arbeitsbereich. 
 
-Führen Sie die im Artikel [Hochladen von Nutzungsdaten, Metriken und Protokollen in Azure Monitor](upload-metrics-and-logs-to-azure-monitor.md) beschriebenen Schritte aus, erstellen Sie einen Dienstprinzipal, und gewähren Sie die Rollen wie in diesem Artikel beschrieben. 
-
-Beim [Bereitstellen des Azure Arc-Datencontrollers](create-data-controller-direct-azure-portal.md) sind die Informationen für die SPN-Client-ID, die Mandanten-ID und den geheimen Clientschlüssel erforderlich. 
+Sie können das automatische Hochladen von Metriken und Protokollen außerdem aktivieren oder deaktivieren, nachdem Sie den Datencontroller bereitgestellt haben. 
 
 ## <a name="3-create-azure-arc-data-services"></a>3. Das Erstellen eines Azure Arc-Datendienstes
 
 Wenn diese Voraussetzungen erfüllt sind, können Sie die Schritte unter [Bereitstellen eines Azure Arc-Datencontrollers | Direkter Verbindungsmodus](create-data-controller-direct-azure-portal.md) ausführen.
-
-

@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 167d46b96853c372790002bdb0d9609581970426
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: afdd3928207dbe82afe1e55e16d9c2677741022d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690198"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345111"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Sicherheitsempfehlungen für virtuelle Computer in Azure
 
@@ -23,13 +23,13 @@ ms.locfileid: "122690198"
 
 Dieser Artikel enthält Sicherheitsempfehlungen für virtuelle Azure-Computer. Das Befolgen dieser Empfehlungen kann Sie beim Erfüllen der Sicherheitsverpflichtungen unterstützen, die in unserem Modell für gemeinsame Verantwortung beschrieben sind. Die Empfehlungen helfen Ihnen außerdem, die Gesamtsicherheit Ihrer Web-App-Lösungen zu verbessern. Weitere Informationen dazu, wie Microsoft seiner Verantwortung als Dienstanbieter nachkommt, finden Sie unter [Gemeinsame Verantwortung für das Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
 
-Einige der Empfehlungen in diesem Artikel können automatisch durch Azure Security Center berücksichtigt werden. Azure Security Center ist die erste Verteidigungslinie für Ihre Ressourcen in Azure. Der Dienst analysiert regelmäßig den Sicherheitsstatus Ihrer Azure-Ressourcen, um potenzielle Sicherheitsrisiken zu erkennen. Anschließend gibt er eine Empfehlung ab, wie Sie die Sicherheitsrisiken beheben sollten. Weitere Informationen finden Sie unter [Sicherheitsempfehlungen in Azure Security Center anzeigen](../security-center/security-center-recommendations.md).
+Einige der Empfehlungen in diesem Artikel können automatisch durch Microsoft Defender für Cloud berücksichtigt werden. Microsoft Defender für Cloud ist die erste Verteidigungslinie zum Schutz Ihrer Ressourcen in Azure. Der Dienst analysiert regelmäßig den Sicherheitsstatus Ihrer Azure-Ressourcen, um potenzielle Sicherheitsrisiken zu erkennen. Anschließend gibt er eine Empfehlung ab, wie Sie die Sicherheitsrisiken beheben sollten. [Verwalten von Sicherheitsempfehlungen in Microsoft Defender für Cloud](../security-center/security-center-recommendations.md).
 
-Allgemeine Informationen zu Azure Security Center finden Sie unter [Was ist Azure Security Center?](../security-center/security-center-introduction.md).
+Weitere Informationen zu Microsoft Defender für Cloud finden Sie unter [Was ist Microsoft Defender für Cloud?](../security-center/security-center-introduction.md).
 
 ## <a name="general"></a>Allgemein
 
-| Empfehlung | Kommentare | Security Center |
+| Empfehlung | Kommentare | Defender für Cloud |
 |-|----|--|
 | Wenden Sie beim Erstellen benutzerdefinierter VM-Images die neuesten Updates an. | Installieren Sie vor dem Erstellen von Images die neuesten Updates für das Betriebssystem und alle Anwendungen, die im Image enthalten sein sollen.  | - |
 | Halten Sie Ihre virtuellen Computer auf dem neuesten Stand. | Sie können die Lösung für [Updateverwaltung](../automation/update-management/overview.md) in Azure Automation verwenden, um Betriebssystemupdates für Ihre Windows- und Linux-Computer in Azure zu verwalten. | [Ja](../security-center/asset-inventory.md) |
@@ -39,7 +39,7 @@ Allgemeine Informationen zu Azure Security Center finden Sie unter [Was ist Azur
 
 ## <a name="data-security"></a>Datensicherheit
 
-| Empfehlung | Kommentare | Security Center |
+| Empfehlung | Kommentare | Defender für Cloud |
 |-|----|--|
 | Verschlüsseln Sie Betriebssystemdatenträger. | Mit [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) können Sie die Datenträger Ihrer Windows- und Linux-IaaS-VMs verschlüsseln. Ohne die erforderlichen Schlüssel sind die Inhalte verschlüsselter Datenträger unlesbar. Datenträgerverschlüsselung schützt gespeicherte Daten vor nicht autorisiertem Zugriff, der andernfalls nach einem Kopieren des betreffenden Datenträgers möglich wäre.| [Ja](../security-center/asset-inventory.md) |
 | Verschlüsseln Sie Datenträger. | Mit [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) können Sie die Datenträger Ihrer Windows- und Linux-IaaS-VMs verschlüsseln. Ohne die erforderlichen Schlüssel sind die Inhalte verschlüsselter Datenträger unlesbar. Datenträgerverschlüsselung schützt gespeicherte Daten vor nicht autorisiertem Zugriff, der andernfalls nach einem Kopieren des betreffenden Datenträgers möglich wäre.| -  |
@@ -49,19 +49,19 @@ Allgemeine Informationen zu Azure Security Center finden Sie unter [Was ist Azur
 
 ## <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung 
 
-| Empfehlung | Kommentare | Security Center |
+| Empfehlung | Kommentare | Defender für Cloud |
 |-|----|--|
 | Zentralisieren Sie die VM-Authentifizierung. | Sie können die Authentifizierung Ihrer Windows- und Linux-VMs mit [Azure Active Directory-Authentifizierung](../active-directory/develop/authentication-vs-authorization.md) zentralisieren. | - |
 
 ## <a name="monitoring"></a>Überwachung
 
-| Empfehlung | Kommentare | Security Center |
+| Empfehlung | Kommentare | Defender für Cloud |
 |-|----|--|
 | Überwachen Sie Ihre VMs. | Sie können [Azure Monitor für VMs](../azure-monitor/vm/vminsights-overview.md) verwenden, um den Zustand Ihrer Azure-VMs und Ihrer VM-Skalierungsgruppen zu überwachen. Leistungsprobleme bei einem virtuellen Computer können zu einer Dienstunterbrechung führen und gegen das Sicherheitsprinzip der Verfügbarkeit verstoßen. | - |
 
 ## <a name="networking"></a>Netzwerk
 
-| Empfehlung | Kommentare | Security Center |
+| Empfehlung | Kommentare | Defender für Cloud |
 |-|----|--|
 | Schränken Sie den Zugriff auf Verwaltungsports ein. | Angreifer scannen öffentliche Cloud-IP-Adressbereiche nach offenen Verwaltungsports und versuchen „einfache“ Angriffe mittels häufig verwendeter Kennwörter und bekannter ungepatchter Sicherheitslücken. Mit einem [JIT-VM-Zugriff](../security-center/security-center-just-in-time.md) (Just-In-Time-VM-Zugriff) können Sie eingehenden Datenverkehr auf den Azure-VMs sperren, um die Gefährdung durch Angriffe zu reduzieren und dennoch bei Bedarf komfortable Verbindungen zu virtuellen Computern bereitzustellen. | - |
 | Schränken Sie den Netzwerkzugriff ein. | Mit Netzwerksicherheitsgruppen können Sie den Netzwerkzugriff einschränken und die Anzahl der verfügbaren Endpunkte festlegen. Weitere Informationen finden Sie unter [Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe](../virtual-network/manage-network-security-group.md). | - |

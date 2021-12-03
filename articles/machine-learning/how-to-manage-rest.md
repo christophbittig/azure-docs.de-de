@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: e17f5e53a2ab58ec7fe8edbe1d2b7e64953cf689
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9465a8c45dd44eca4fcd67a8603e60a2061f2609
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355064"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518183"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Erstellen, Ausführen und Löschen von Azure ML-Ressourcen mithilfe von REST
 
@@ -30,8 +30,8 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Erstellen einer ordnungsgemäß formatierten REST-Anforderung mithilfe der Dienstprinzipalauthentifizierung
 > * Verwenden von GET-Anforderungen zum Abrufen von Informationen zu den hierarchischen Ressourcen von Azure ML
 > * Verwenden von PUT- und POST-Anforderungen zum Erstellen und Ändern von Ressourcen
+> * Verwenden von PUT-Anforderungen zum Erstellen von Azure ML-Arbeitsbereichen
 > * Verwenden von DELETE-Anforderungen zum Bereinigen von Ressourcen 
-> * Verwenden schlüsselbasierter Autorisierung zum Bewerten von bereitgestellten Modellen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -270,28 +270,9 @@ curl -X PUT \
 
 Eine erfolgreiche Anforderung erhält eine `201 Created`-Antwort, aber beachten Sie, dass diese Antwort einfach nur bedeutet, dass der Bereitstellungsvorgang begonnen hat. Sie müssen eine Abfrage (oder das Portal) verwenden, um den erfolgreichen Abschluss zu bestätigen.
 
-### <a name="train-a-model"></a>Trainieren eines Modells
-
-Informationen zum Trainieren eines Modells mithilfe von REST finden Sie unter [Trainieren von Modellen mithilfe von REST (Vorschau).](how-to-train-with-rest.md) 
-
-### <a name="delete-resources-you-no-longer-need"></a>Löschen von Ressourcen, die nicht mehr benötigt werden
-
-Einige, aber nicht alle Ressourcen unterstützen das DELETE-Verb. Überprüfen Sie die [API-Referenz](/rest/api/azureml/), bevor Sie für Löschanwendungsfälle die REST-API verwenden. Zum Löschen eines Modells können Sie beispielsweise Folgendes verwenden:
-
-```bash
-curl
-  -X DELETE \
-'https://<REGIONAL-API-SERVER>/modelmanagement/v1.0/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/providers/Microsoft.MachineLearningServices/workspaces/<YOUR-WORKSPACE-NAME>/models/<YOUR-MODEL-ID>?api-version=2021-03-01-preview' \
-  -H 'Authorization:Bearer <YOUR-ACCESS-TOKEN>' 
-```
-
-## <a name="use-rest-to-score-a-deployed-model"></a>Verwenden von REST zum Bewerten eines bereitgestellten Modells
-
-Informationen zum Bewerten eines bereitgestellten Modells mithilfe von REST finden Sie unter [Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells](how-to-consume-web-service.md).
-
 ## <a name="create-a-workspace-using-rest"></a>Erstellen eines Arbeitsbereichs mithilfe von REST 
 
-Jeder Azure ML-Arbeitsbereich weist eine Abhängigkeit von vier anderen Azure-Ressourcen auf: von einer Containerregistrierung mit aktivierter Verwaltung, einem Schlüsseltresor, einer Application Insights-Ressource und einem Speicherkonto. Sie können erst einen Arbeitsbereich erstellen, wenn diese Ressourcen vorhanden sind. Weitere Informationen zum Erstellen dieser Ressourcen finden Sie in der REST-API-Referenz.
+Jeder Azure ML-Arbeitsbereich ist von vier anderen Azure-Ressourcen abhängig: einer Azure Container Registry-Ressource, Azure Key Vault, Azure Application Insights und einem Azure Storage-Konto. Sie können erst einen Arbeitsbereich erstellen, wenn diese Ressourcen vorhanden sind. Weitere Informationen zum Erstellen dieser Ressourcen finden Sie in der REST-API-Referenz.
 
 Um einen Arbeitsbereich zu erstellen, senden Sie einen ähnlichen Befehl wie den folgenden mit PUT an `management.azure.com`. Auch wenn dieser Aufruf erfordert, dass Sie eine große Anzahl von Variablen festlegen, ist er strukturell identisch mit anderen Aufrufen, die in diesem Artikel erläutert wurden. 
 
@@ -303,6 +284,9 @@ curl -X PUT \
   -H 'Content-Type: application/json' \
   -d '{
     "location": "AZURE-LOCATION>",
+    "identity" : {
+        "type" : "systemAssigned"
+    },
     "properties": {
         "friendlyName" : "<YOUR-WORKSPACE-FRIENDLY-NAME>",
         "description" : "<YOUR-WORKSPACE-DESCRIPTION>",
@@ -314,14 +298,109 @@ providers/Microsoft.ContainerRegistry/registries/<YOUR-REGISTRY-NAME>",
 providers/Microsoft.insights/components/<YOUR-APPLICATION-INSIGHTS-NAME>",
         "storageAccount" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
 providers/Microsoft.Storage/storageAccounts/<YOUR-STORAGE-ACCOUNT-NAME>"
-    },
-    "identity" : {
-        "type" : "systemAssigned"
     }
 }'
 ```
 
 Sie sollten eine `202 Accepted`-Antwort erhalten und in den zurückgegebenen Headern einen `Location`-URI. Sie können diesen URI für Informationen zur Bereitstellung mit GET abrufen, einschließlich hilfreicher Debuginformationen, wenn ein Problem mit einer ihrer abhängigen Ressourcen vorliegt (wenn Sie beispielsweise vergessen haben, Administratorzugriff für Ihre Containerregistrierung zu aktivieren). 
+
+## <a name="create-a-workspace-using-a-user-assigned-managed-identity"></a>Erstellen eines Arbeitsbereichs mit einer benutzerseitig zugewiesenen verwalteten Identität 
+
+Beim Erstellen eines Arbeitsbereichs können Sie eine benutzerseitig zugewiesene verwaltete Identität angeben, die für den Zugriff auf die zugehörigen Ressourcen verwendet werden soll: ACR, KeyVault, Storage und App Insights. Verwenden Sie den folgenden Anforderungstext, um einen Arbeitsbereich mit einer benutzerseitig zugewiesenen verwalteten Identität zu erstellen. 
+
+```bash
+curl -X PUT \
+  'https://management.azure.com/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>\
+/providers/Microsoft.MachineLearningServices/workspaces/<YOUR-NEW-WORKSPACE-NAME>?api-version=2021-03-01-preview' \
+  -H 'Authorization: Bearer <YOUR-ACCESS-TOKEN>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "location": "AZURE-LOCATION>",
+    "identity": {
+      "type": "SystemAssigned,UserAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.ManagedIdentity/userAssignedIdentities/<YOUR-MANAGED-IDENTITY>": {}
+      }
+    },
+    "properties": {
+        "friendlyName" : "<YOUR-WORKSPACE-FRIENDLY-NAME>",
+        "description" : "<YOUR-WORKSPACE-DESCRIPTION>",
+        "containerRegistry" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.ContainerRegistry/registries/<YOUR-REGISTRY-NAME>",
+        keyVault" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>\
+/providers/Microsoft.Keyvault/vaults/<YOUR-KEYVAULT-NAME>",
+        "applicationInsights" : "subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.insights/components/<YOUR-APPLICATION-INSIGHTS-NAME>",
+        "storageAccount" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.Storage/storageAccounts/<YOUR-STORAGE-ACCOUNT-NAME>"
+    }
+}'
+```
+
+## <a name="create-a-workspace-using-customer-managed-encryption-keys"></a>Erstellen eines Arbeitsbereichs mit kundenseitig verwalteten Verschlüsselungsschlüsseln
+
+Standardmäßig werden Metadaten für den Arbeitsbereich auf einer Azure Cosmos DB-Instanz gespeichert, die von Microsoft verwaltet wird. Diese Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt. Anstatt den von Microsoft verwalteten Schlüssel zu verwenden, können Sie auch Ihren eigenen Schlüssel bereitstellen. Dadurch wird ein [zusätzlicher Satz von Ressourcen](/azure/machine-learning/concept-data-encryption#azure-cosmos-db) in Ihrem Azure-Abonnement erstellt, um Ihre Daten zu speichern.
+
+Zum Erstellen eines Arbeitsbereichs, der Ihre Schlüssel zur Verschlüsselung verwendet, müssen Sie die folgenden Voraussetzungen erfüllen:
+
+* Der Azure Machine Learning-Dienstprinzipal muss über Zugriff als Mitwirkender auf Ihr Azure-Abonnement verfügen.
+* Sie müssen über einen vorhandenen Azure Key Vault verfügen, der einen Verschlüsselungsschlüssel enthält.
+* Der Azure Key Vault muss sich in derselben Azure-Region befinden, in der Sie den Azure Machine Learning-Arbeitsbereich erstellen möchten.
+* Für den Azure Key Vault muss das vorläufige Löschen und der Bereinigungsschutz aktiviert sein, um vor Datenverlusten im Falle eines versehentlichen Löschvorgangs zu schützen.
+* Sie müssen über eine Zugriffsrichtlinie im Azure Key Vault verfügen, die get-, wrap- und unwrap-Zugriff auf die Azure Cosmos DB-Anwendung gewährt.
+
+Verwenden Sie den folgenden Anforderungstext, um Arbeitsbereiche zu erstellen, die eine benutzerseitig zugewiesene verwaltete Identität und kundenseitig verwaltete Schlüssel für die Verschlüsselung verwenden. Wenn Sie eine benutzerseitig zugewiesene verwaltete Identität für den Arbeitsbereich verwenden, legen Sie auch die `userAssignedIdentity`-Eigenschaft auf die Ressourcen-ID der verwalteten Identität fest.
+
+```bash
+curl -X PUT \
+  'https://management.azure.com/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>\
+/providers/Microsoft.MachineLearningServices/workspaces/<YOUR-NEW-WORKSPACE-NAME>?api-version=2021-03-01-preview' \
+  -H 'Authorization: Bearer <YOUR-ACCESS-TOKEN>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "location": "eastus2euap",
+    "identity": {
+      "type": "SystemAssigned"
+    },
+    "properties": {
+      "friendlyName": "<YOUR-WORKSPACE-FRIENDLY-NAME>",
+      "description": "<YOUR-WORKSPACE-DESCRIPTION>",
+      "containerRegistry" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.ContainerRegistry/registries/<YOUR-REGISTRY-NAME>",
+      "keyVault" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>\
+/providers/Microsoft.Keyvault/vaults/<YOUR-KEYVAULT-NAME>",
+      "applicationInsights" : "subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.insights/components/<YOUR-APPLICATION-INSIGHTS-NAME>",
+      "storageAccount" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.Storage/storageAccounts/<YOUR-STORAGE-ACCOUNT-NAME>",
+      "encryption": {
+        "status": "Enabled",
+        "identity": {
+          "userAssignedIdentity": null
+        },      
+        "keyVaultProperties": {
+           "keyVaultArmId": "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.KeyVault/vaults/<YOUR-VAULT>",
+           "keyIdentifier": "https://<YOUR-VAULT>.vault.azure.net/keys/<YOUR-KEY>/<YOUR-KEY-VERSION>",
+           "identityClientId": ""
+        }
+      },
+      "hbiWorkspace": false
+    }
+}'
+```
+
+### <a name="delete-resources-you-no-longer-need"></a>Löschen von Ressourcen, die nicht mehr benötigt werden
+
+Einige, aber nicht alle Ressourcen unterstützen das DELETE-Verb. Überprüfen Sie die [API-Referenz](/rest/api/azureml/), bevor Sie für Löschanwendungsfälle die REST-API verwenden. Zum Löschen eines Modells können Sie beispielsweise Folgendes verwenden:
+
+```bash
+curl
+  -X DELETE \
+'https://<REGIONAL-API-SERVER>/modelmanagement/v1.0/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/providers/Microsoft.MachineLearningServices/workspaces/<YOUR-WORKSPACE-NAME>/models/<YOUR-MODEL-ID>?api-version=2021-03-01-preview' \
+  -H 'Authorization:Bearer <YOUR-ACCESS-TOKEN>' 
+```
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

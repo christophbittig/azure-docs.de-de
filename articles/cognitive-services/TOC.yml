@@ -20,6 +20,8 @@
     - name: Erstellen einer neuen Ressource mithilfe einer ARM-Vorlage
       displayName: Resource Manager
       href: create-account-resource-manager-template.md
+    - name: Erstellen einer neuen Ressource mit Preisen für Mindestabnahme
+      href: commitment-tier.md
 - name: Vorgehensweise
   items:
     - name: Planen und Verwalten von Kosten

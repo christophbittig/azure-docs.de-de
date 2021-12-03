@@ -1,5 +1,5 @@
 ---
-title: 'CLI-Skript: Erstellen einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau) und Aktivieren der Konnektivität für den öffentlichen Zugriff'
+title: 'CLI-Skript: Erstellen einer Instanz von Azure Database for MySQL – Flexible Server und Aktivieren der Konnektivität für den öffentlichen Zugriff'
 description: Dieses Azure CLI-Beispielskript zeigt, wie Sie eine Instanz von Azure Database for MySQL – Flexible Server erstellen, eine Firewallregel auf Serverebene konfigurieren (Konnektivitätsmethode für den öffentlichen Zugriff) und eine Verbindung mit dem Server herstellen.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: cc9710576eef20505a9ae27b74ce93897e7889b0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 59df8d613e8753895fba77d3bfabefe476f49cf1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701337"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844192"
 ---
-# <a name="create-an-azure-database-for-mysql---flexible-server-preview-and-enable-public-access-connectivity-using-azure-cli"></a>Erstellen einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau) und Aktivieren der Konnektivität für den öffentlichen Zugriff mithilfe der Azure CLI
+# <a name="create-an-azure-database-for-mysql---flexible-server-and-enable-public-access-connectivity-using-azure-cli"></a>Erstellen einer Instanz von Azure Database for MySQL – Flexible Server und Aktivieren der Konnektivität für den öffentlichen Zugriff mithilfe der Azure CLI
 
 Dieses CLI-Beispielskript erstellt eine Instanz von Azure Database for MySQL – Flexibler Server, konfiguriert eine Firewallregel auf Serverebene ([Konnektivitätsmethode für den öffentlichen Zugriff](../concepts-networking-public.md)) und stellt nach der Erstellung eine Verbindung mit dem Server her. 
 
@@ -58,5 +58,5 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server (Vorschau)](../sample-scripts-azure-cli.md).
+- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server](../sample-scripts-azure-cli.md).
 - Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).

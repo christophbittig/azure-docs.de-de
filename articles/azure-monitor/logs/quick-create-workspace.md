@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/18/2021
-ms.openlocfilehash: 01fe7b84596cbf4dba85f44c49488a8347b4cccc
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 3d9e075e50b4be0a21f4138a49faf8309474ad9c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351499"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440049"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal
 Im Menü **Log Analytics-Arbeitsbereiche** können Sie einen Log Analytics-Arbeitsbereich über das Azure-Portal einrichten. Ein Log Analytics-Arbeitsbereich ist eine spezifische Umgebung für Azure Monitor-Protokolldaten. Jeder Arbeitsbereich verfügt über ein eigenes Datenrepository und eine eigene Konfiguration. Datenquellen und Lösungen sind so konfiguriert, dass die zugehörigen Daten in einem bestimmten Arbeitsbereich gespeichert werden. Ein Log Analytics-Arbeitsbereich ist erforderlich, wenn Sie Daten aus den folgenden Quellen erfassen möchten:
@@ -41,7 +41,7 @@ Klicken Sie auf **Hinzufügen**, und geben Sie dann Werte für die folgenden Opt
         ![Erstellen des Log Analytics-Ressourcenblatts](media/quick-create-workspace/create-workspace.png)  
 
 
-Klicken Sie auf **Überprüfen + erstellen**, um die Einstellungen zu überprüfen, und dann auf **Erstellen**, um den Arbeitsbereich zu erstellen. Dadurch wird als Standardtarif die nutzungsbasierte Bezahlung ausgewählt. Dies wird nicht geändert, bis Sie mit der Erfassung einer ausreichenden Datenmenge beginnen. Weitere Informationen zu anderen Tarifen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
+Klicken Sie auf **Überprüfen + erstellen**, um die Einstellungen zu überprüfen, und dann auf **Erstellen**, um den Arbeitsbereich zu erstellen. Dadurch wird als Standardtarif die nutzungsbasierte Bezahlung ausgewählt. Hier fallen keine Kosten an, bis Sie mit der Erfassung einer ausreichenden Datenmenge beginnen. Weitere Informationen zu anderen Tarifen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 
 

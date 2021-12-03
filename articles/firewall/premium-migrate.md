@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 09/13/2021
+ms.date: 11/02/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 580dcb11ae04aaae78d2c15f24c2c08d1df6158d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 574c1f7f84ae34b1a1158b61206135de79ee73af
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061844"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548062"
 ---
 # <a name="migrate-to-azure-firewall-premium"></a>Migrieren zu Azure Firewall Premium
 
@@ -34,6 +34,21 @@ Der Firewalldurchsatz ist möglicherweise niedriger als 30 Gbit/s, wenn mindeste
 ## <a name="downtime"></a>Ausfallzeit
 
 Migrieren Sie Ihre Firewall während einer geplanten Wartung, da es während der Migration zu Ausfallzeiten kommt.
+
+## <a name="migrate-classic-rules-to-standard-policy"></a>Migrieren klassischer Regeln zur Standardrichtlinie
+
+Während des Migrationsprozesses müssen möglicherweise die klassischen Firewallregeln zu einer Standardrichtlinie migriert werden. Sie können hierfür das Azure-Portal verwenden:
+
+1. Wählen Sie im Azure-Portal Ihre Standardfirewall aus. Wählen Sie auf der Seite **Übersicht** die Option zum **Migrieren zur Firewallrichtlinie** aus.
+
+   :::image type="content" source="media/premium-migrate/firewall-overview-migrate.png" alt-text="Migrieren zur Firewallrichtlinie":::
+
+1. Wählen Sie auf der Seite **Migrieren zur Firewallrichtlinie** die Option **Überprüfen und erstellen** aus.
+1. Klicken Sie auf **Erstellen**.
+
+   Die Bereitstellung dauert einige Minuten.
+
+Darüber hinaus können bereits vorhandene klassische Regeln mithilfe von Azure PowerShell aus Azure Firewall migriert werden, um Richtlinien zu erstellen. Weitere Informationen finden Sie unter [Migrieren von Azure Firewall-Konfigurationen zu einer Azure Firewall-Richtlinie mithilfe von Azure PowerShell](../firewall-manager/migrate-to-policy.md)
 
 ## <a name="migrate-an-existing-policy-using-azure-powershell"></a>Migrieren einer vorhandenen Richtlinie mithilfe von Azure PowerShell
 
@@ -125,7 +140,7 @@ function TransformPolicyToPremium {
                         ResourceGroupName = $Policy.ResourceGroupName 
                         Location = $Policy.Location 
                         ThreatIntelMode = $Policy.ThreatIntelMode 
-                        BasePolicy = $Policy.BasePolicy.Id
+                        BasePolicy = $Policy.BasePolicy.Id 
                         DnsSetting = $Policy.DnsSettings 
                         Tag = $Policy.Tag 
                         SkuTier = "Premium" 
@@ -154,12 +169,18 @@ function TransformPolicyToPremium {
 
 function ValidateAzNetworkModuleExists {
     Write-Host "Validating needed module exists"
-    $networkModule = Get-InstalledModule -Name "Az.Network" -ErrorAction SilentlyContinue
-    if (($null -eq $networkModule) -or ($networkModule.Version -lt 4.5.0)){
+    $networkModule = Get-InstalledModule -Name "Az.Network" -MinimumVersion 4.5 -ErrorAction SilentlyContinue
+    if ($null -eq $networkModule) {
         Write-Host "Please install Az.Network module version 4.5.0 or higher, see instructions: https://github.com/Azure/azure-powershell#installation"
         exit(1)
     }
+    $resourceModule = Get-InstalledModule -Name "Az.Resources" -MinimumVersion 4.2 -ErrorAction SilentlyContinue
+    if ($null -eq $resourceModule) {
+        Write-Host "Please install Az.Resources module version 4.2.0 or higher, see instructions: https://github.com/Azure/azure-powershell#installation"
+        exit(1)
+    }
     Import-Module Az.Network -MinimumVersion 4.5.0
+    Import-Module Az.Resources -MinimumVersion 4.2.0
 }
 
 ValidateAzNetworkModuleExists
@@ -169,45 +190,52 @@ TransformPolicyToPremium -Policy $policy
 
 ```
 
-## <a name="migrate-an-existing-standard-firewall-using-the-azure-portal"></a>Migrieren einer vorhandenen Standardfirewall über das Azure-Portal
+## <a name="migrate-azure-firewall-using-stopstart"></a>Migrieren von Azure Firewall mithilfe von Beenden/Starten
 
-In diesem Beispiel wird gezeigt, wie Sie über das Azure-Portal eine Standardfirewall (klassische Regeln) zu Azure Firewall Premium mit einer Premiumrichtlinie migrieren.
+Wenn Sie eine Azure Firewall Standard-SKU mit Firewallrichtlinie verwenden, können Sie die Methode Zuordnen/Zuordnung aufheben verwenden, um Ihre Firewall-SKU zu Premium zu migrieren. Dieser Migrationsansatz wird sowohl für VNET Hub-Firewalls als auch für Secure Hub-Firewalls unterstützt. Beim Migrieren einer Secure Hub-Bereitstellung, wird die öffentliche IP-Adresse der Firewall beibehalten.
 
-1. Wählen Sie im Azure-Portal Ihre Standardfirewall aus. Wählen Sie auf der Seite **Übersicht** die Option zum **Migrieren zur Firewallrichtlinie** aus.
+Mindestanforderung ist Azure PowerShell Version 6.5.0. Weitere Informationen finden Sie unter [Az 6.5.0](https://www.powershellgallery.com/packages/Az/6.5.0).
 
-   :::image type="content" source="media/premium-migrate/firewall-overview-migrate.png" alt-text="Migrieren zur Firewallrichtlinie":::
+ 
+### <a name="migrate-a-vnet-hub-firewall"></a>Migrieren einer VNET Hub-Firewall
 
-1. Wählen Sie auf der Seite **Migrieren zur Firewallrichtlinie** die Option **Überprüfen und erstellen** aus.
-1. Klicken Sie auf **Erstellen**.
+- Heben Sie die Zuordnung der Standardfirewall auf 
 
-   Die Bereitstellung dauert einige Minuten.
-1. Verwenden Sie das [Azure PowerShell-Skript](#migrate-an-existing-policy-using-azure-powershell) `Transform-Policy.ps1`, um diese neue Standardrichtlinie in eine Premiumrichtlinie umzuwandeln.
-1. Wählen Sie im Portal Ihre Standardfirewallressource aus. 
-1. Wählen Sie unter **Automatisierung** die Option **Vorlage exportieren** aus. Lassen Sie diese Browserregisterkarte geöffnet. Sie werden später darauf zurückkommen.
-   > [!TIP]
-   > Um sicherzustellen, dass Sie die Vorlage nicht verlieren, laden Sie sie herunter und speichern Sie sie für den Fall, dass Ihre Browserregisterkarte geschlossen oder aktualisiert wird.
-1. Öffnen Sie eine neue Browserregisterkarte, navigieren Sie zum Azure-Portal, und öffnen Sie die Ressourcengruppe, die Ihre Firewall enthält.
-1. Löschen Sie die vorhandene Standardfirewallinstanz.
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Deallocate()
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
 
-   Der Vorgang kann einige Minuten dauern.
 
-1. Kehren Sie zur Browserregisterkarte mit der exportierten Vorlage zurück.
-1. Wählen Sie **Bereitstellen** und dann auf der Seite **Benutzerdefinierte Bereitstellung** die Option **Vorlage bearbeiten** aus.
-1. Bearbeiten Sie den Text der Vorlage:
-   
-   1. Ändern Sie unter der Ressource `Microsoft.Network/azureFirewalls` unter `Properties`, `sku`, die `tier` von „Standard“ in „Premium“.
-   1. Ändern Sie unter der Vorlage `Parameters` den Wert `defaultValue` für die `firewallPolicies_FirewallPolicy_,<your policy name>_externalid` von:
-      
-       `"/subscriptions/<subscription id>/resourceGroups/<your resource group>/providers/Microsoft.Network/firewallPolicies/FirewallPolicy_<your policy name>"`
+- Ordnen Sie Firewall Premium zu
 
-      in:
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Sku.Tier="Premium"
+   $azfw.Allocate($vnet,$pip, $mgmtpip)
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
 
-      `"/subscriptions/<subscription id>/resourceGroups/<your resource group>/providers/Microsoft.Network/firewallPolicies/FirewallPolicy_<your policy name>_premium"`
-1. Wählen Sie **Speichern** aus.
-1. Klicken Sie auf **Überprüfen + erstellen**.
-1. Klicken Sie auf **Erstellen**.
+### <a name="migrate-a-secure-hub-firewall"></a>Migrieren einer Secure Hub-Firewall
 
-Wenn die Bereitstellung abgeschlossen ist, können Sie nun alle neuen Features von Azure Firewall Premium konfigurieren.
+
+- Heben Sie die Zuordnung der Standardfirewall auf
+
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Deallocate()
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
+
+- Ordnen Sie Firewall Premium zu
+
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Sku.Tier="Premium"
+   $azfw.Allocate($hub.id)
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

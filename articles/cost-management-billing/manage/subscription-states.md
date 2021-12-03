@@ -2,20 +2,20 @@
 title: Azure-Abonnementstatus
 description: In diesem Artikel werden die verschiedenen Zustände und Statusoptionen eines Azure-Abonnements beschrieben.
 keywords: Azure-Abonnementzustand/-status
-author: anuragdalmia
-ms.reviewer: banders
+author: bandersmsft
+ms.reviewer: andalmia
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2021
-ms.author: andalmia
-ms.openlocfilehash: 565e6a556946859f757ec291a313eff766a15c9d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: banders
+ms.openlocfilehash: 9902bfc0e1214ee59ce2c0c6fc01b9620529d9ca
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128634917"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438700"
 ---
 # <a name="azure-subscription-states"></a>Azure-Abonnementstatus
 
@@ -28,4 +28,4 @@ In diesem Artikel werden die verschiedenen Status beschrieben, die ein Azure-Abo
 | **Disabled** | Ihr Azure-Abonnement ist deaktiviert, und Sie können damit keine Azure-Ressourcen mehr erstellen oder verwalten. In diesem Status ist die Zuordnung Ihrer virtuellen Computer aufgehoben, temporäre IP-Adressen sind freigegeben, der Speicher ist schreibgeschützt, und andere Dienste sind deaktiviert. Die Deaktivierung eines Abonnements kann folgende Ursachen haben: Ihr Guthaben ist abgelaufen. Sie haben Ihr Ausgabenlimit erreicht. Es ist eine überfällige Rechnung vorhanden. Ihr Kreditkartenlimit wurde überschritten. Oder: Das Abonnement wurde explizit deaktiviert oder gekündigt. Ein Abonnement kann abhängig vom Abonnementtyp bis zu 90 Tage deaktiviert bleiben. Danach wird es endgültig gelöscht. Weitere Informationen finden Sie unter [Reaktivieren eines deaktivierten Azure-Abonnements](subscription-disabled.md).<br><br>Vorgänge zum Erstellen oder Aktualisieren von Ressourcen (PUT, PATCH) sind deaktiviert. Vorgänge, die eine Aktion ausführen (POST), sind ebenfalls deaktiviert. Sie können Ressourcen abrufen oder löschen (GET, DELETE). Ihre Ressourcen sind weiterhin verfügbar. |
 | **Abgelaufen** | Ihr Azure-Abonnement ist abgelaufen, da es gekündigt wurde. Abgelaufene Abonnements können reaktiviert werden. Weitere Informationen finden Sie unter [Reaktivieren eines deaktivierten Azure-Abonnements](subscription-disabled.md).<br><br>Vorgänge zum Erstellen oder Aktualisieren von Ressourcen (PUT, PATCH) sind deaktiviert. Vorgänge, die eine Aktion ausführen (POST), sind ebenfalls deaktiviert. Sie können Ressourcen abrufen oder löschen (GET, DELETE).|
 | **Überfällig** | Für Ihr Azure-Abonnement liegt eine ausstehende Zahlung vor. Ihr Abonnement ist zwar noch aktiv, wenn die fälligen Gebühren jedoch nicht bezahlt werden, kann das Abonnement deaktiviert werden. Weitere Informationen finden Sie unter [Begleichen überfälliger Zahlungen für Ihr Azure-Abonnement](resolve-past-due-balance.md).<br><br>Alle Vorgänge sind verfügbar. |
-| **Gewarnt** | Ihr Azure-Abonnement befindet sich in einem Warnzustand. Es wird in Kürze deaktiviert, wenn der Grund für die Warnung nicht behoben wird. Ein Abonnement kann sich im Warnzustand befinden, wenn es überfällig ist, vom Benutzer storniert wurde, abgelaufen ist usw.<br><br>Sie können Ressourcen abrufen oder löschen (GET/DELETE), aber Sie können keine Ressourcen erstellen (PUT/PATCH/POST). |
+| **Gewarnt** | Ihr Azure-Abonnement befindet sich in einem Warnzustand. Es wird in Kürze deaktiviert, wenn der Grund für die Warnung nicht behoben wird. Ein Abonnement kann sich im Warnzustand befinden, wenn es überfällig ist, vom Benutzer storniert wurde oder das Abonnement abgelaufen ist.<br><br>Sie können Ressourcen abrufen oder löschen (GET/DELETE), aber keine neuen Ressourcen erstellen (PUT/PATCH/POST). |

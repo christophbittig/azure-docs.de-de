@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/20/2021
 ms.author: danlep
-ms.openlocfilehash: 03ac79a70a1725fd6d1ceca6d79d4cdb325a8c51
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: fd45ad3a77ddfe9bea46c9c816b67be0c2cf1fac
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428462"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579158"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -76,7 +76,7 @@ In diesem Artikel lernen Sie Folgendes:
     * Geben Sie eine **Beschreibung** ein.
     * Wählen Sie eine beliebige Option für **Gültig bis** aus.
     * Wählen Sie **Hinzufügen** aus. 
-1. Kopieren Sie die **ID des geheimen Clientschlüssels**, bevor Sie die Seite verlassen. Sie benötigen sie später. 
+1. Kopieren Sie den Client **Geheimniswert**, bevor Sie die Seite verlassen. Sie benötigen sie später. 
 1. Wählen Sie im Seitenmenü unter **Verwalten** die Option **Authentifizierung** aus.
 1. Aktivieren Sie in den Abschnitten **Implizite Genehmigung und Hybridflows** das Kontrollkästchen **ID-Token**.
 1. Wechseln Sie zur Browserregisterkarte mit Ihrer API Management-Instanz. 
@@ -104,40 +104,39 @@ Nachdem Sie den Zugriff für Benutzer in einem Azure AD-Mandanten aktiviert hab
 * Hinzufügen von Azure AD-Gruppen zu API Management 
 * Steuern der Sichtbarkeit von Produkten mit Azure AD-Gruppen
 
-Standardmäßig hat die Anwendung, die Sie im [vorherigen Abschnitt](#authorize-developer-accounts-by-using-azure-ad) registriert haben, Zugriff auf die Microsoft Graph-API mit der erforderlichen delegierten Berechtigung `User.Read`. Gewähren Sie der Anwendung auch Zugriff auf die Microsoft Graph-API und die Azure AD Graph-API mit der Anwendungsberechtigung `Directory.Read.All`, indem Sie die folgenden Schritte ausführen: 
+Befolgen Sie diese Schritte zur Erteilung:
+* `Directory.Read.All` Anwendungserlaubnis für Microsoft Graph API und Azure Active Directory Graph API.
+* `User.Read` delegierte Berechtigung für Microsoft Graph API. 
 
-1. Navigieren Sie zu der App-Registrierung, die Sie im vorherigen Abschnitt erstellt haben.
-2. Wählen Sie im Seitenmenü unter **Verwalten** die Option **API-Berechtigungen** aus.
-1. Wählen Sie **Berechtigung hinzufügen** aus. 
-1. Gehen Sie auf der Seite **API-Berechtigungen anfordern** folgendermaßen vor:
-    1. Wählen Sie die Registerkarte **Microsoft-APIs** aus.
-    1. Wählen Sie die Kachel **Microsoft Graph** aus. 
-    1. Wählen Sie **Anwendungsberechtigungen** aus und suchen Sie nach **Verzeichnis**. 
-    1. Wählen Sie die Berechtigung **Directory.Read.All** aus. 
-    1. Klicken Sie unten im Bereich auf **Berechtigungen hinzufügen**.
-1. Wählen Sie **Berechtigung hinzufügen** aus, um eine weitere Berechtigung hinzuzufügen. 
-1. Gehen Sie auf der Seite **API-Berechtigungen anfordern** folgendermaßen vor:
-    1. Wählen Sie die Registerkarte **Microsoft-APIs** aus.
-    1. Scrollen Sie nach unten zum Abschnitt **Unterstützte Legacy-APIs**.
-    1. Wählen Sie die Kachel **Azure Active Directory Graph** aus. 
-    1. Wählen Sie **Anwendungsberechtigungen** aus und suchen Sie nach **Verzeichnis**. 
-    1. Wählen Sie die Berechtigung **Directory.Read.All** aus.
-    1. Wählen Sie **Berechtigungen hinzufügen** aus. 
-1. Wählen Sie **Administratoeinwilligung für {tenantname} erteilen** aus, damit Sie allen Benutzern in diesem Verzeichnis den Zugriff gewähren. 
+1. Passen Sie die ersten 3 Zeilen des folgenden PowerShell-Skripts an Ihre Umgebung an und führen Sie es aus. 
+   ```powershell
+   $subId = "Your Azure subscription ID" #e.g. "1fb8fadf-03a3-4253-8993-65391f432d3a"
+   $tenantId = "Your Azure AD Tenant or Organization ID" #e.g. 0e054eb4-e5d0-43b8-ba1e-d7b5156f6da8"
+   $appObjectID = "Application Object ID that has been registered in AAD" #e.g. "2215b54a-df84-453f-b4db-ae079c0d2619"
+   #Login and Set the Subscription
+   az login
+   az account set --subscription $subId
+   #Assign the following permissions: Microsoft Graph Delegated Permission: User.Read, Microsoft Graph Application Permission: Directory.ReadAll,  Azure Active Directory Graph Application Permission: Directory.ReadAll (legacy)
+   az rest --method PATCH --uri "https://graph.microsoft.com/v1.0/$($tenantId)/applications/$($appObjectID)" --body "{'requiredResourceAccess':[{'resourceAccess': [{'id': 'e1fe6dd8-ba31-4d61-89e7-88639da4683d','type': 'Scope'},{'id': '7ab1d382-f21e-4acd-a863-ba3e13f7da61','type': 'Role'}],'resourceAppId': '00000003-0000-0000-c000-000000000000'},{'resourceAccess': [{'id': '5778995a-e1bf-45b8-affa-663a9f3f4d04','type': 'Role'}], 'resourceAppId': '00000002-0000-0000-c000-000000000000'}]}"
+   ```
+2. Melden Sie sich ab und melden Sie sich wieder am Azure-Portal an.
+3. Navigieren Sie zur Seite App-Registrierung für die Anwendung, die Sie im vorherigen Abschnitt [ registriert haben](#authorize-developer-accounts-by-using-azure-ad). 
+4. Klicken Sie auf **API-Berechtigungen**. Sie sollten die vom PowerShell-Skript in Schritt 1 gewährten Berechtigungen sehen. 
+5. Wählen Sie **Administratoeinwilligung für {tenantname} erteilen** aus, damit Sie allen Benutzern in diesem Verzeichnis den Zugriff gewähren. 
 
 Jetzt können Sie externe Azure AD-Gruppen über die Registerkarte **Gruppen** Ihrer API Management-Instanz hinzufügen.
 
 1. Wählen Sie im Seitenmenü unter **Entwicklerportal** die Option **Gruppen** aus.
-1. Wählen Sie die Schaltfläche **Azure AD-Gruppe hinzufügen** aus.
+2. Wählen Sie die Schaltfläche **Azure AD-Gruppe hinzufügen** aus.
 
    ![Schaltfläche „AAD-Gruppe hinzufügen“](./media/api-management-howto-aad/api-management-with-aad008.png)
 1. Wählen Sie in der Dropdownliste den **Mandanten** aus. 
-1. Suchen Sie nach der Gruppe, die Sie hinzufügen möchten, und wählen Sie sie aus.
-1. Klicken Sie auf die Schaltfläche **Auswählen**.
+2. Suchen Sie nach der Gruppe, die Sie hinzufügen möchten, und wählen Sie sie aus.
+3. Klicken Sie auf die Schaltfläche **Auswählen**.
 
 Nachdem Sie eine externe Azure AD-Gruppe hinzugefügt haben, können Sie ihre Eigenschaften überprüfen und konfigurieren: 
 1. Wählen Sie den Namen der Gruppe auf der Registerkarte **Gruppen** aus. 
-1. Bearbeiten Sie den **Namen** und die **Beschreibung** für die Gruppe.
+2. Bearbeiten Sie den **Namen** und die **Beschreibung** für die Gruppe.
  
 Benutzer aus der konfigurierten Azure AD-Instanz können jetzt folgende Aktionen ausführen:
 * Sie können sich beim Entwicklerportal anmelden. 
@@ -162,17 +161,17 @@ Es wird zwar automatisch ein neues Konto erstellt, wenn sich ein neuer Benutzer 
 So melden Sie sich mit einem in den vorherigen Abschnitten konfigurierten Azure AD-Konto beim Entwicklerportal an:
 
 1. Öffnen Sie ein neues Browserfenster, und geben Sie die Anmelde-URL aus der Active Directory-Anwendungskonfiguration ein. 
-1. Wählen Sie **Azure Active Directory** aus.
+2. Wählen Sie **Azure Active Directory** aus.
 
    ![Anmeldeseite][api-management-dev-portal-signin]
 
 1. Geben Sie die Anmeldeinformationen eines Benutzers in Azure AD ein.
-1. Wählen Sie **Anmelden**.
+2. Wählen Sie **Anmelden**.
 
    ![Anmeldung mit Benutzername und Kennwort][api-management-aad-signin]
 
 1. Wenn Sie zur Eingabe eines Registrierungsformulars aufgefordert werden, geben Sie alle erforderlichen zusätzlichen Informationen an. 
-1. Wählen Sie **Registrieren** aus.
+2. Wählen Sie **Registrieren** aus.
 
    ![Schaltfläche „Anmelden“ auf dem Registrierungsformular][api-management-complete-registration]
 

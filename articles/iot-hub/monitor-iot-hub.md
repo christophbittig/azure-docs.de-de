@@ -1,18 +1,18 @@
 ---
 title: Überwachen von Azure IoT Hub
 description: Beginnen Sie hier, um zu erfahren, wie Sie Azure IoT Hub überwachen können.
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.topic: conceptual
 ms.service: iot-hub
 ms.custom: subject-monitoring
-ms.date: 11/06/2020
-ms.openlocfilehash: c9e6107e981d2bae96c5d9f368c8122d3ce245f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/26/2021
+ms.openlocfilehash: 5a4c5902a42a2efd0b75bdbcbf5d5d90ddab335b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570937"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550381"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Überwachen von Azure IoT Hub
 
@@ -82,7 +82,7 @@ Sie können Metriken für Azure IoT Hub mit Metriken aus anderen Azure-Diensten 
 
 Im Azure-Portal können Sie im linken Bereich Ihres IoT-Hubs unter **Überwachung** die Option **Metriken** zum Öffnen des Metrik-Explorers auswählen, der standardmäßig auf die von Ihrem IoT-Hub ausgegebenen Plattformmetriken ausgelegt ist:
 
-:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="Seite „Metrik-Explorer“ für einen IoT-Hub.":::
+:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="Screenshot: Seite „Metrik-Explorer“ für einen IoT Hub" border="true":::
 
 Eine Liste der Plattformmetriken, die für Azure IoT Hub gesammelt werden, finden Sie in der [Referenz zu Azure IoT Hub-Überwachungsdaten im Abschnitt „Metriken“](monitor-iot-hub-reference.md#metrics). Eine Liste der Plattformmetriken, die für alle Azure-Dienste gesammelt werden, finden Sie unter [Unterstützte Metriken von Azure Monitor](../azure-monitor/essentials/metrics-supported.md).
 

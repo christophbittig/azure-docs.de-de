@@ -2,17 +2,17 @@
 title: Übereinstimmungsbedingungen in der Standardregel-Engine für Azure CDN | Microsoft-Dokumentation
 description: Referenzdokumentation für Übereinstimmungsbedingungen in der Standardregel-Engine für Azure Content Delivery Network (Azure CDN).
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: allensu
-ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: bd0c6b0578fc301c38e96b654a281eb025c54dc5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81259924"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469918"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Übereinstimmungsbedingungen in der Standardregel-Engine für Azure CDN
 
@@ -113,6 +113,7 @@ Keine IP-Übereinstimmung | IP-Adresse (durch Leerzeichen getrennt)
 - Die Syntax für einen IP-Adressblock besteht aus der IP-Basisadresse, gefolgt von einem Schrägstrich und der Präfixgröße. Beispiel:
   - **IPv4-Beispiel:** *5.5.5.64/26* entspricht allen Anforderungen, die von den Adressen 5.5.5.64 bis 5.5.5.127 eingehen.
   - **IPv6-Beispiel:** Die Angabe *1:2:3:/48* führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 1:2:3:0:0:0:0:0 bis 1:2:3:ffff:ffff:ffff:ffff:ffff.
+- Die Remoteadresse stellt die ursprüngliche Client-IP dar, die entweder von der Netzwerkverbindung oder in der Regel vom X-Forwarded-For-Anforderungs-Header kommt, wenn sich der Benutzer hinter einem Proxy befindet.
 
 ### <a name="request-body"></a>Anforderungstext
 

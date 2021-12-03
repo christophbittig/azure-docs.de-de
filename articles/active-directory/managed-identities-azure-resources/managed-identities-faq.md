@@ -12,14 +12,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/08/2021
+ms.date: 10/20/2021
 ms.author: barclayn
-ms.openlocfilehash: 7d2f09d3990f9e71e55b29b1eac771266627237a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 48d3d5e0e1b6adfb1c0763d1fb7824d604628962
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791287"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266125"
 ---
 # <a name="managed-identities-for-azure-resources-frequently-asked-questions---azure-ad"></a>Häufig gestellte Fragen zu verwalteten Identitäten für Azure-Ressourcen – Azure AD
 
@@ -38,7 +38,7 @@ Die Liste der Ressourcen, die über eine vom System zugewiesene verwaltete Ident
 az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
 ```
 
-### <a name="what-azure-rbac-permissions-are-required-to-work-with-managed-identities"></a>Welche Azure RBAC-Berechtigungen sind für verwaltete Identitäten erforderlich? 
+### <a name="which-azure-rbac-permissions-are-required-to-use-a-managed-identity-on-a-resource"></a>Welche Azure RBAC-Berechtigungen sind erforderlich, um eine verwaltete Identität auf einer Ressource zu nutzen?
 
 - Systemseitig zugewiesene verwaltete Identität: Sie benötigen Schreibberechtigungen für die Ressource. Für virtuelle Computer benötigen Sie beispielsweise `Microsoft.Compute/virtualMachines/write`. Diese Aktion ist in ressourcenspezifischen integrierten Rollen wie [Mitwirkender von virtuellen Computern](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) enthalten.
 - Zuweisen von benutzerseitig zugewiesenen verwalteten Identitäten zu Ressourcen: Sie benötigen Schreibberechtigungen für die Ressource. Für virtuelle Computer benötigen Sie beispielsweise `Microsoft.Compute/virtualMachines/write`. Sie benötigen auch die `Microsoft.ManagedIdentity/userAssignedIdentities/*/assign/action`-Aktion für die benutzerseitig zugewiesene Identität. Diese Aktion ist in der integrierten Rolle [Operator für verwaltete Identität](../../role-based-access-control/built-in-roles.md#managed-identity-operator) enthalten.

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: eur
-ms.openlocfilehash: 1159fac39df141e92f539063254d5166fba53bc9
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 6a33020c686686d40529b8188ccfcf7fcb412331
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131502391"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252315"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Sprach-SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für Python installieren. Führen Sie `pip install azure-cognitiveservices-speech` aus, wenn Sie nur den Paketnamen benötigen und selbständig einsteigen möchten.
 
@@ -19,7 +19,7 @@ In diesem Leitfaden erfahren Sie, wie Sie das [Sprach-SDK](~/articles/cognitive-
 
 - Das Python Speech SDK-Paket ist für die folgenden Betriebssysteme verfügbar:
   - Windows: x64 und x86
-  - Mac: macOS X Version 10.12 oder höher
+  - Mac: macOS X Version 10.14 oder höher (Die Python-Mindestversion unter macOS ist 3.7.)
   - Linux: Zeigen Sie die Liste mit den [unterstützten Linux-Distributionen und Zielarchitekturen](~/articles/cognitive-services/speech-service/speech-sdk.md) an.
 
 ## <a name="prerequisites"></a>Voraussetzungen

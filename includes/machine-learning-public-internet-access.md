@@ -1,19 +1,19 @@
 ---
-title: Datei einfügen
-description: Datei einfügen
+title: Includedatei
+description: Includedatei
 author: lobrien
 ms.service: machine-learning
 services: machine-learning
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 11/05/2021
 ms.author: larryfr
 ms.custom: include file
-ms.openlocfilehash: e144756e65c0ae4d202333cd2972d9c5a1e3fdc8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e066c97e12f4b8e34f66235f53857c583e4350a9
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740675"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135901"
 ---
 Azure Machine Learning erfordert sowohl eingehenden als auch ausgehenden Zugriff auf das öffentliche Internet. Die folgenden Tabellen geben Aufschluss darüber, welcher Zugriff wofür erforderlich ist. Das __Protokoll__ für alle Elemente ist __TCP__. Ersetzen Sie bei Diensttags, die auf `.region` enden, `region` durch die Azure-Region, die Ihren Arbeitsbereich enthält. Zum Beispiel `Storage.westus`:
 
@@ -21,7 +21,7 @@ Azure Machine Learning erfordert sowohl eingehenden als auch ausgehenden Zugriff
 | ----- |:-----:| ----- | ----- |
 | Eingehend | 29876–29877 | BatchNodeManagement | Erstellen, Aktualisieren und Löschen einer Azure Machine Learning Compute-Instanz und des Computeclusters. |
 | Eingehend | 44224 | AzureMachineLearning | Erstellen, Aktualisieren und Löschen einer Azure Machine Learning Compute-Instanz. |
-| Ausgehend | * | AzureActiveDirectory | Verwenden von Azure AD für die Authentifizierung. |
+| Ausgehend | 80, 443 | AzureActiveDirectory | Verwenden von Azure AD für die Authentifizierung. |
 | Ausgehend | 443 | AzureMachineLearning | Verwenden von Azure Machine Learning Service. |
 | Ausgehend | 443 | AzureResourceManager | Erstellen von Azure-Ressourcen mit Azure Machine Learning. |
 | Ausgehend | 443 | Storage.region | Auf Daten zugreifen, die im Azure Storage-Konto für den Azure Batch-Dienst sind. |
@@ -48,8 +48,8 @@ Unter Umständen muss auch __ausgehender__ Datenverkehr für Visual Studio Code 
 | **cloud.r-project.org** | Wird beim Installieren von CRAN-Paketen für die R-Entwicklung verwendet. |
 | **\*pytorch.org** | Wird von einigen Beispielen verwendet, die auf PyTorch basieren. |
 | **\*.tensorflow.org** | Wird von einigen Beispielen verwendet, die auf Tensorflow basieren. |
-| **update.code.visualstudio.com**</br></br>**\*.vo.msecnd.net** | Wird zum Abrufen von VS Code-Serverbits verwendet, die über ein Setupskript in der Compute-Instanz installiert werden.|
-| **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\*** | Wird zum Abrufen von Websocket-Serverbits verwendet, die in der Compute-Instanz installiert werden. Der Websocket-Server wird verwendet, um Anforderungen des Visual Studio Code-Clients (Desktopanwendung) an den Visual Studio Code-Server zu übertragen, der in der Compute-Instanz ausgeführt wird.|
+| **update.code.visualstudio.com**</br></br>**\*.vo.msecnd.net** | Dient zum Abrufen von VS Code-Server-Bits, die über ein Setup-Skript auf der Compute-Instanz installiert werden.|
+| **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\*** | Dient zum Abrufen von Websocket-Server-Bits, die auf der Compute-Instanz installiert sind. Der Websocket-Server wird verwendet, um Anforderungen des Visual Studio Code-Clients (Desktopanwendung) an den Visual Studio Code-Server zu übertragen, der in der Compute-Instanz ausgeführt wird.|
 
 Wenn Sie Azure Kubernetes Service (AKS) mit Azure Machine Learning verwenden, lassen Sie den folgenden Datenverkehr an das AKS-VNET zu:
 

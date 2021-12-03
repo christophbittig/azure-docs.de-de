@@ -4,35 +4,68 @@ description: Hier wird beschrieben, wie Ressourcen für die Bereitstellung in Bi
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/07/2021
-ms.openlocfilehash: 4b3b355016057af00c361a118aed2728948768dd
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.date: 11/12/2021
+ms.openlocfilehash: 1398215116307cf810d259ac52c30f6588e612ab
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659619"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494001"
 ---
 # <a name="resource-declaration-in-bicep"></a>Ressourcendeklaration in Bicep
 
-Um eine Ressource über eine Bicep-Datei bereitzustellen, fügen Sie mithilfe des Schlüsselworts `resource` eine Ressourcendeklaration hinzu.
+Dieser Artikel beschreibt die Syntax, mit der Sie eine Ressource zu Ihrer Bicep-Datei hinzufügen können.
 
-## <a name="set-resource-type-and-version"></a>Festlegen von Ressourcentyp und Version
+## <a name="declaration"></a>Deklaration
 
-Wenn Sie Ihrer Bicep-Datei eine Ressource hinzufügen, legen Sie zunächst den Ressourcentyp und die API-Version fest. Diese Werte bestimmen die anderen Eigenschaften, die für die Ressource verfügbar sind.
-
-Im folgenden Beispiel wird gezeigt, wie der Ressourcentyp und die API-Version für ein Speicherkonto festgelegt werden. Das Beispiel zeigt nicht die vollständige Ressourcendeklaration.
+Fügen Sie eine Ressourcendeklaration mit dem Schlüsselwort `resource` hinzu. Sie legen einen symbolischen Namen für die Ressource fest. Der symbolische Name ist nicht mit dem Ressourcennamen identisch. Sie verwenden den symbolischen Namen, um in anderen Teilen der Bicep-Datei auf die Ressource zu verweisen.
 
 ```bicep
-resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+resource <symbolic-name> '<full-type-name>@<api-version>' = {
+  <resource-properties>
+}
+```
+
+Eine Erklärung für ein Speicherkonto kann also mit:
+
+```bicep
+resource stg 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   ...
 }
 ```
 
-Sie legen einen symbolischen Namen für die Ressource fest. Im vorherigen Beispiel lautet der symbolische Name `stg`.  Der symbolische Name ist nicht mit dem Ressourcennamen identisch. Sie verwenden den symbolischen Namen, um in anderen Teilen der Bicep-Datei auf die Ressource zu verweisen. Bei symbolischen Namen wird zwischen Groß- und Kleinschreibung unterschieden.  Sie dürfen Buchstaben, Zahlen und _; enthalten, jedoch nicht mit einer Zahl beginnen.
+Bei symbolischen Namen wird zwischen Groß- und Kleinschreibung unterschieden. Sie dürfen nur Buchstaben, Zahlen und Unterstriche (`_`) enthalten. Sie dürfen nicht mit einer Zahl beginnen. Eine Ressource darf nicht denselben Namen wie ein Parameter, eine Variable oder ein Modul haben.
 
-Das `apiProfile`-Element wird von Bicep nicht unterstützt. Dieses Element ist in [ARM-Vorlagen-JSON-Dateien (Azure Resource Manager)](../templates/syntax.md) verfügbar.
+Für die verfügbaren Ressourcentypen und Versionen, siehe [Bicep-Ressourcenreferenz](/azure/templates/). Das `apiProfile`-Element wird von Bicep nicht unterstützt. Dieses Element ist in [ARM-Vorlagen-JSON-Dateien (Azure Resource Manager)](../templates/syntax.md) verfügbar.
 
-## <a name="set-resource-name"></a>Festlegen des Ressourcennamens
+Um eine Ressource bedingt einzusetzen, verwenden Sie die Syntax `if`. Für weitere Informationen siehe [Bedingter Einsatz in Bicep](conditional-resource-deployment.md).
+
+```bicep
+resource <symbolic-name> '<full-type-name>@<api-version>' = if (condition) {
+  <resource-properties>
+}
+```
+
+Um mehr als eine Instanz einer Ressource bereitzustellen, verwenden Sie die Syntax `for`. Sie können den Decorator `batchSize` verwenden, um anzugeben, ob die Instanzen nacheinander oder parallel bereitgestellt werden sollen. Für weitere Informationen siehe [Iterative Schleifen in Bicep](loops.md).
+
+```bicep
+@batchSize(int) // optional decorator for serial deployment
+resource <symbolic-name> '<full-type-name>@<api-version>' = [for <item> in <collection>: {
+  <properties-to-repeat>
+}]
+```
+
+Sie können auch die Syntax `for` für die Ressourceneigenschaften verwenden, um ein Array zu erstellen.
+
+```bicep
+resource <symbolic-name> '<full-type-name>@<api-version>' = {
+  properties: {
+    <array-property>: [for <item> in <collection>: <value-to-repeat>]
+  }
+}
+```
+
+## <a name="resource-name"></a>Ressourcenname
 
 Jede Ressource besitzt einen Namen. Achten Sie beim Festlegen des Ressourcennamens auf die [Regeln und Einschränkungen für Ressourcennamen](../management/resource-name-rules.md).
 
@@ -56,7 +89,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 ```
 
-## <a name="set-location"></a>Legen Sie einen Speicherort fest
+## <a name="location"></a>Standort
 
 Viele Ressourcen erfordern einen Speicherort. Sie können mittels IntelliSense oder über eine [Vorlagenreferenz](/azure/templates/) ermitteln, ob die Ressource einen Speicherort benötigt. Im folgenden Beispiel wird ein Speicherortparameter hinzugefügt, der für das Speicherkonto verwendet wird.
 
@@ -100,11 +133,11 @@ az provider show \
 
 ---
 
-## <a name="set-tags"></a>Festlegen von Tags
+## <a name="tags"></a>`Tags`
 
 Sie können während der Bereitstellung Tags auf eine Ressource anwenden. Tags helfen Ihnen dabei, Ihre bereitgestellten Ressourcen logisch zu organisieren. Beispiele für die verschiedenen Methoden zum Angeben der Tags finden Sie unter [ARM-Vorlagen-Tags](../management/tag-resources.md#arm-templates).
 
-## <a name="set-managed-identities-for-azure-resources"></a>Festlegen verwalteter Identitäten für Azure-Ressourcen
+## <a name="managed-identities-for-azure-resources"></a>Verwaltete Identitäten für Azure-Ressourcen
 
 Einige Ressourcen unterstützen [verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md). Diese Ressourcen verfügen über ein Identitätsobjekt auf der Stammebene der Ressourcendeklaration.
 
@@ -138,11 +171,11 @@ resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
   }
 ```
 
-## <a name="set-resource-specific-properties"></a>Festlegen ressourcenspezifischer Eigenschaften
+## <a name="resource-specific-properties"></a>Ressourcenspezifische Eigenschaften
 
 Die vorstehenden Eigenschaften sind für die meisten Ressourcentypen generisch. Nachdem Sie diese Werte festgelegt haben, müssen Sie die Eigenschaften festlegen, die für den Ressourcentyp, den Sie bereitstellen, spezifisch sind.
 
-Verwenden Sie IntelliSense oder eine [Vorlagenreferenz](/azure/templates/), um zu bestimmen, welche Eigenschaften verfügbar sind und welche erforderlich sind. Im folgenden Beispiel werden die restlichen Eigenschaften für ein Speicherkonto festgelegt.
+Verwenden Sie Intellisense oder die [Bicep-Ressourcenreferenz](/azure/templates/), um festzustellen, welche Eigenschaften verfügbar sind und welche erforderlich sind. Im folgenden Beispiel werden die restlichen Eigenschaften für ein Speicherkonto festgelegt.
 
 ```bicep
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
@@ -159,7 +192,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 ```
 
-## <a name="set-resource-dependencies"></a>Festlegen von Ressourcenabhängigkeiten
+## <a name="dependencies"></a>Abhängigkeiten
 
 Beim Bereitstellen einer Ressource müssen Sie möglicherweise sicherstellen, dass andere Ressourcen bereits vorhanden sind. So benötigen Sie beispielsweise einen logischen SQL-Server, bevor Sie eine Datenbank bereitstellen. Diese Beziehung richten Sie ein, indem Sie eine Ressource als von einer anderen Ressource abhängig kennzeichnen. Es gibt zwei Möglichkeiten, die Reihenfolge der Ressourcenbereitstellung zu beeinflussen: durch die [implizite Abhängigkeit](#implicit-dependency) und die [explizite Abhängigkeit](#explicit-dependency).
 
@@ -233,7 +266,7 @@ Visual Studio Code stellt ein Tool zum Visualisieren der Abhängigkeiten zur Ver
 
 :::image type="content" source="./media/resource-declaration/bicep-resource-visualizer.png" alt-text="Screenshot: Schnellansicht der Bicep-Ressourcen in Visual Studio Code":::
 
-## <a name="reference-existing-resources"></a>Verweisen auf vorhandene Ressourcen
+## <a name="existing-resources"></a>Vorhandene Ressourcen
 
 Um auf eine Ressource zu verweisen, die sich außerhalb der aktuellen Bicep-Datei befindet, verwenden Sie das `existing`-Schlüsselwort in einer Ressourcendeklaration.
 
@@ -257,6 +290,8 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
 
 output blobEndpoint string = stg.properties.primaryEndpoints.blob
 ```
+
+Wenn Sie versuchen, auf eine Ressource zu verweisen, die nicht existiert, erhalten Sie die Fehlermeldung `NotFound` und Ihre Bereitstellung schlägt fehl.
 
 Weitere Informationen zum Festlegen des Bereichs finden Sie unter [Bereichsfunktionen für Bicep](bicep-functions-scope.md).
 

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: fe8fd05dfc43fc4ff98182f90e3459af28529127
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 43e844380374a8e507325494b67faef1daf85340
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254100"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523940"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Übersicht über die Optionen der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -85,7 +85,7 @@ In der folgenden Tabelle werden die unterstützten Authentifizierungsszenarien f
 - Die Authentifizierung mit Azure AD DS und lokalen AD DS unterstützt keine Authentifizierung für Computerkonten. Stattdessen können Sie die Verwendung eines Dienstanmeldekontos in Erwägung ziehen.
 - Für in Azure AD eingebundene Geräte oder Azure AD registrierte Geräte werden weder die Azure AD DS-Authentifizierung noch die lokale AD DS Authentifizierung unterstützt.
 - Azure-Dateifreigaben unterstützen nur die identitätsbasierte Authentifizierung bei einem der folgenden Domänendienst, entweder bei [Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) oder einer [lokalen Active Directory Domain Services-Instanz (AD DS)](#ad-ds).
-- Mit dem Netzwerkdateisystem (Network File System, NFS), das sich in der Vorschau befindet, wird keine der identitätsbasierten Authentifizierungsmethoden unterstützt.
+- Bei NFS-Freigaben (Network File System) wird keine der identitätsbasierten Authentifizierungsmethoden unterstützt.
 
 ## <a name="advantages-of-identity-based-authentication"></a>Vorteile der identitätsbasierten Authentifizierung
 Die identitätsbasierte Authentifizierung für Azure Files bietet mehrere Vorteile gegenüber der Authentifizierung mit einem gemeinsam verwendeten Schlüssel:

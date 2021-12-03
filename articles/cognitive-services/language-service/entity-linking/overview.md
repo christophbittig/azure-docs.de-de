@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-entity-linking, ignite-fall-2021
-ms.openlocfilehash: d1c8d20c9581fa8c2f51b516c11e28e390a8fcd7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bbd4483702055a4bebb05251606fb705b1e0deb2
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100301"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487452"
 ---
 # <a name="what-is-entity-linking-in-azure-cognitive-service-for-language"></a>Was ist Entitätsverknüpfung in Azure Cognitive Services für Sprache?
 
@@ -33,7 +33,7 @@ Das Ergebnis ist eine Sammlung von erkannten Entitäten in Ihrem Text mit URLs z
 
 ## <a name="responsible-ai"></a>Verantwortungsbewusste künstliche Intelligenz 
 
-Ein KI-System umfasst nicht nur die Technologie, sondern auch die Personen, die das System verwenden, die davon betroffenen Personen, und die Umgebung, in der es bereitgestellt wird. Weitere Informationen zur verantwortungsbewussten Verwendung und Bereitstellung von KI in Ihren Systemen finden Sie im [Transparenzhinweis für Entitätsverknüpfung](/legal/cognitive-services/language-service/transparency-note-entity-linking?context=/azure/cognitive-services/language-service/context/context). Weitere Informationen finden Sie auch in den folgenden Artikeln:
+Ein KI-System umfasst nicht nur die Technologie, sondern auch die Personen, die das System verwenden, die davon betroffenen Personen, und die Umgebung, in der es bereitgestellt wird. Weitere Informationen zur verantwortungsbewussten Verwendung und Bereitstellung von KI in Ihren Systemen finden Sie im [Transparenzhinweis für Entitätsverknüpfung](/legal/cognitive-services/language-service/transparency-note?context=/azure/cognitive-services/language-service/context/context). Weitere Informationen finden Sie auch in den folgenden Artikeln:
 
 [!INCLUDE [Responsible AI links](../includes/overview-responsible-ai-links.md)]
 

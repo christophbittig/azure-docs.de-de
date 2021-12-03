@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 90e1600c54bb7bf7a405ca3748f15edc29ad53a6
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 0cd0b976ec511070432538e99b7a8e20001a0156
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043831"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058148"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrieren von Benutzern zu Azure AD B2C
 
@@ -88,7 +88,7 @@ Nicht alle Informationen des alten Identitätsanbieter sollten zu Ihrem Azure A
   - Vertrauliche Daten wie Kreditkartennummern, Sozialversicherungsnummern, Krankenakten oder andere Daten, die behördlichen oder branchenspezifischen Complianceregeln unterliegen
   - Marketing- oder Kommunikationspräferenzen, Benutzerverhalten und Erkenntnisse
 
-### <a name="directory-clean-up"></a>Verzeichnisbereinigung
+### <a name="directory-cleanup"></a>Verzeichnisbereinigung
 
 Es empfiehlt sich, vor Beginn der Migration Ihr Verzeichnis zu bereinigen.
 

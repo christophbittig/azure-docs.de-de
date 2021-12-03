@@ -3,15 +3,15 @@ title: Erstellen modularer Runbooks in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie ein Runbook erstellen, das von einem anderen Runbook aufgerufen wird.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2021
+ms.date: 10/29/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 11bd439b511f6ae60078f5006a1ff4571b5908e9
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 4eff80637886901644b36b19f74d79ae83e7cfe3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617262"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455490"
 ---
 # <a name="create-modular-runbooks-in-automation"></a>Modulare Runbooks in Automation erstellen
 
@@ -42,7 +42,7 @@ Die Parameter eines inline aufgerufenen untergeordneten Runbooks können einen b
 
 ### <a name="runbook-types"></a>Runbooktypen
 
-Nur bestimmte Runbooktypen können sich gegenseitig aufrufen:
+Derzeit werden PowerShell 5.1 und 7.1 (Vorschauversion) unterstützt, und nur bestimmte Runbooktypen können sich gegenseitig aufrufen:
 
 * Ein [PowerShell-Runbook](automation-runbook-types.md#powershell-runbooks) und ein [grafisches Runbook](automation-runbook-types.md#graphical-runbooks) können sich gegenseitig inline aufrufen, da beide auf PowerShell basieren.
 * Ein [PowerShell-Workflow-Runbook](automation-runbook-types.md#powershell-workflow-runbooks) und ein grafisches PowerShell-Workflow-Runbook können sich gegenseitig inline aufrufen, da beide auf einem PowerShell-Workflow basieren.

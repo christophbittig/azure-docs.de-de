@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 06/14/2021
+ms.date: 10/27/2021
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2, contperf-fy21q4
-ms.openlocfilehash: c608856e6238844638e63c3a719b3d534b98d33b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 966f30306189e82f29e2be3baf742f21ffd688c4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615318"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451717"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -43,7 +43,7 @@ Beim Registrieren Ihrer Anwendung wird eine Vertrauensstellung zwischen Ihrer Ap
 Führen Sie die folgenden Schritte aus, um die App-Registrierung zu erstellen:
 
 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
-1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, in dem Sie die Anwendung registrieren möchten.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie die Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
 1. Geben Sie einen **Anzeigenamen** für Ihre Anwendung ein. Benutzer Ihrer Anwendung können den Anzeigenamen sehen, wenn sie die App verwenden, z. B. während der Anmeldung.
@@ -119,7 +119,7 @@ Sie können Ihrer vertraulichen Client-App-Registrierung sowohl Zertifikate als 
 Für die Anmeldung wird die Verwendung eines Zertifikats (gelegentlich auch als _öffentlicher Schlüssel_ bezeichnet) empfohlen, da ein Zertifikat im Vergleich zu einem Clientschlüssel als sicherer gilt. Weitere Informationen zur Verwendung von Zertifikaten als Authentifizierungsmethode in Ihrer Anwendung finden Sie unter [Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung](active-directory-certificate-credentials.md).
 
 1. Wählen Sie im Azure-Portal unter **App-Registrierungen** Ihre Anwendung aus.
-1. Wählen Sie **Zertifikate & Geheimnisse** > **Zertifikat hochladen** aus.
+1. Wählen Sie **Zertifikate und Geheimnisse** > **Zertifikate** > **Zertifikat hochladen** aus.
 1. Wählen Sie die Datei, die Sie hochladen möchten. Dabei muss es sich um einen der folgenden Dateitypen handeln: _.cer_, _.pem_ oder _.crt_.
 1. Wählen Sie **Hinzufügen**.
 
@@ -130,7 +130,7 @@ Bei einem geheimen Clientschlüssel (gelegentlich auch als _Anwendungskennwort_ 
 Geheime Clientschlüssel gelten im Vergleich zu Zertifikatanmeldeinformationen als weniger sicher. Anwendungsentwickler verwenden bei der Entwicklung lokaler Apps aufgrund der Benutzerfreundlichkeit gelegentlich geheime Clientschlüssel. Für Anwendungen, die in der Produktion ausgeführt werden, sollten Sie jedoch Zertifikatanmeldeinformationen verwenden.
 
 1. Wählen Sie im Azure-Portal unter **App-Registrierungen** Ihre Anwendung aus.
-1. Wählen Sie **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel** aus.
+1. Wählen Sie **Zertifikate und Geheimnisse** > **Geheime Clientschlüssel** > **Neuer geheimer Clientschlüssel** aus.
 1. Fügen Sie eine Beschreibung für Ihren geheimen Clientschlüssel hinzu.
 1. Wählen Sie für das Geheimnis eine Ablauffrist aus, oder geben Sie eine benutzerdefinierte Lebensdauer an.
     - Die Lebensdauer eines geheimen Clientschlüssels ist auf maximal zwei Jahre (24 Monate) begrenzt. Das bedeutet, dass keine benutzerdefinierte Lebensdauer angegeben werden kann, die über die 24 Monate hinausgeht.

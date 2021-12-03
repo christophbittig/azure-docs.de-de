@@ -1,14 +1,14 @@
 ---
 title: Untersuchen der CIS-Vergleichstest-Empfehlung
 description: Ausführen grundlegender und erweiterter Untersuchungen basierend auf Empfehlungen zur Betriebssystembaseline
-ms.date: 08/11/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 295345d43c48736f9f4572c8845f96560ce4f184
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8777b4c134dc92cd8e8a94424f57355239ee32c5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346589"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293571"
 ---
 # <a name="investigate-os-baseline-based-on-cis-benchmark-recommendation"></a>Untersuchen der Empfehlung zur Betriebssystembaseline (basierend auf CIS-Benchmark)
 
@@ -16,13 +16,13 @@ Ausführen grundlegender und erweiterter Untersuchungen basierend auf Empfehlung
 
 ## <a name="basic-os-baseline-security-recommendation-investigation"></a>Untersuchen grundlegender Sicherheitsempfehlungen zur Betriebssystembaseline  
 
-Sie können die Empfehlungen zur Betriebssystembaseline im Azure Defender für IoT-Portal unter **IoT Hub** untersuchen. Weitere Informationen finden Sie unter [Untersuchen von Sicherheitsempfehlungen](quickstart-investigate-security-recommendations.md).
+Sie können die Empfehlungen zur Betriebssystembaseline im [Azure-Portal unter „IoT Hub“](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) untersuchen. Weitere Informationen finden Sie unter [Untersuchen von Sicherheitsempfehlungen](quickstart-investigate-security-recommendations.md).
 
 ## <a name="advanced-os-baseline-security-recommendation-investigation"></a>Untersuchen erweiterter Sicherheitsempfehlungen zur Betriebssystembaseline  
 
 In diesem Abschnitt wird beschrieben, wie Sie die Testergebnisse zur Betriebssystembaseline besser verstehen und Ereignisse in Azure Log Analytics abfragen.  
 
-Die Untersuchung der erweiterten Sicherheitsempfehlungen zur Betriebssystembaseline wird nur mithilfe von Log Analytics unterstützt. Verbinden Sie Defender für IoT mit einem Log Analytics-Arbeitsbereich, bevor Sie fortfahren. Weitere Informationen zu den erweiterten Sicherheitsempfehlungen zur Betriebssystembaseline finden Sie unter [Konfigurieren einer Agent-basierten Lösung für Azure Defender für IoT](how-to-configure-agent-based-solution.md).
+Die Untersuchung der erweiterten Sicherheitsempfehlungen zur Betriebssystembaseline wird nur mithilfe von Log Analytics unterstützt. Verbinden Sie Defender für IoT mit einem Log Analytics-Arbeitsbereich, bevor Sie fortfahren. Weitere Informationen zu den erweiterten Sicherheitsempfehlungen zur Betriebssystembaseline finden Sie unter [Konfigurieren einer Agent-basierten Lösung für Microsoft Defender für IoT](how-to-configure-agent-based-solution.md).
 
 So fragen Sie IoT-Sicherheitsereignisse in Log Analytics für Warnungen ab
 

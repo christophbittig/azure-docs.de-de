@@ -5,18 +5,18 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 09/09/2021
 ms.custom: seodec18
-ms.openlocfilehash: d4242ae2afb79f44452c51a971a64632e0d7f098
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 207d2f12c8603b7533cef588131e4a60e0f0ad36
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124769919"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427321"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Betriebssystemfunktionen für Azure App Service
 In diesem Artikel werden allgemeine, grundlegende Betriebssystemfunktionen beschrieben, die für alle Windows-Apps zur Verfügung stehen, die in [Azure App Service](./overview.md) ausgeführt werden. Diese Funktionen umfassen Zugriff auf Dateien, Netzwerke und Registrierung sowie Diagnoseprotokolle und Ereignisse. 
 
 > [!NOTE] 
-> [Linux-Apps](overview.md#app-service-on-linux) in App Service werden in eigenen Containern ausgeführt. Es wird kein Zugriff auf das Hostbetriebssystem gewährt, Sie erhalten Rootzugriff auf den Container. Ebenso erhalten Sie für [in Windows-Containern ausgeführte Apps](quickstart-custom-container.md?pivots=container-windows) Verwaltungszugriff auf die Container, aber keinen Zugriff auf das Hostbetriebssystem. 
+> [Linux-Apps](overview.md#app-service-on-linux) in App Service werden in eigenen Containern ausgeführt. Sie erhalten Rootzugriff auf den Container, aber es wird kein Zugriff auf das Hostbetriebssystem gewährt. Ebenso erhalten Sie für [in Windows-Containern ausgeführte Apps](quickstart-custom-container.md?pivots=container-windows) Verwaltungszugriff auf die Container, aber keinen Zugriff auf das Hostbetriebssystem. 
 >
 
 <a id="tiers"></a>
@@ -26,7 +26,7 @@ App Service führt Kunden-Apps in einer mandantenfähigen Hostingumgebung aus. A
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Da App Service eine nahtlose Skalierung zwischen unterschiedlichen Tarifen unterstützt, bleibt die durchgeführte Sicherheitskonfiguration für App Service Apps gleich. So wird gewährleistet, dass sich Apps nicht plötzlich anders verhalten und unerwartet ausfallen, wenn der App Service-Plan gewechselt wird.
+Da App Service eine nahtlose Skalierung zwischen unterschiedlichen Tarifen unterstützt, bleibt die durchgeführte Sicherheitskonfiguration für App Service Apps gleich. So wird gewährleistet, dass sich Apps nicht plötzlich anders verhalten und unerwartet ausfallen, wenn bei einem App Service-Plan die Dienstebene gewechselt wird.
 
 <a id="developmentframeworks"></a>
 
@@ -80,7 +80,7 @@ App Service reserviert `%SystemDrive%\local` auf dem Systemlaufwerk für App-spe
 
 Zwei Beispiele dazu, wie App Service temporären lokalen Speicherplatz verwendet, sind das Verzeichnis für ASP.NET-Dateien und das Verzeichnis für komprimierte IIS-Dateien. Das Kompilierungssystem von ASP.NET verwendet das Verzeichnis `%SystemDrive%\local\Temporary ASP.NET Files` als temporären Speicherort für den Kompilierungscache. IIS verwenden das Verzeichnis `%SystemDrive%\local\IIS Temporary Compressed Files` zum Speichern komprimierter Antwortausgaben. Diese beiden Arten der Dateinutzung (und weitere) werden in App Service über temporären lokalen Speicherplatz pro App neu zugewiesen. Durch diese Neuzuweisung wird eine durchgängige Funktionalität gewährleistet.
 
-Jede App in App Service wird als zufällige, eindeutige Workerprozessidentität mit geringen Berechtigungen ausgeführt. Weitere Informationen zu dieser als „Anwendungspoolidentität“ bezeichneten Identität finden Sie unter [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities). Anwendungscode nutzt diese Identität für grundlegenden schreibgeschützten Zugriff auf das Betriebssystemlaufwerk. Das bedeutet, Anwendungscode kann allgemeine Verzeichnisstrukturen auflisten und allgemeine Dateien auf dem Betriebssystemlaufwerk lesen. Dies erscheint zwar wie ein sehr umfassender Zugriff, dieselben Verzeichnisse und Dateien sind jedoch zugänglich, wenn Sie in einem von Azure gehosteten Dienst eine Workerrolle bereitstellen und die Laufwerksinhalte lesen. 
+Jede App in App Service wird als zufällige, eindeutige Workerprozessidentität mit geringen Berechtigungen ausgeführt. Weitere Informationen zu dieser als „Anwendungspoolidentität“ bezeichneten Identität finden Sie in der Dokumentation zu [Anwendungspoolidentitäten](/iis/manage/configuring-security/application-pool-identities). Anwendungscode nutzt diese Identität für grundlegenden schreibgeschützten Zugriff auf das Betriebssystemlaufwerk. Das bedeutet, Anwendungscode kann allgemeine Verzeichnisstrukturen auflisten und allgemeine Dateien auf dem Betriebssystemlaufwerk lesen. Dies erscheint zwar wie ein sehr umfassender Zugriff, dieselben Verzeichnisse und Dateien sind jedoch zugänglich, wenn Sie in einem von Azure gehosteten Dienst eine Workerrolle bereitstellen und die Laufwerksinhalte lesen. 
 
 <a name="multipleinstances"></a>
 

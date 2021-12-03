@@ -8,33 +8,26 @@ ms.subservice: mlops
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/14/2020
-ms.openlocfilehash: d8c765bbf006d02ec2c5bdf87a621119c922b02b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.custom: mktng-kw-nov2021
+ms.date: 11/04/2021
+ms.openlocfilehash: 9809169a8da6965c8d1fdbb741ddd4817f8d2af7
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129430115"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850183"
 ---
-# <a name="open-source-integration-with-azure-machine-learning-projects"></a>Open-Source-Integration in Azure Machine Learning-Projekte
+# <a name="use-open-source-machine-learning-libraries-and-platforms-with-azure-machine-learning"></a>Verwenden von Open-Source-Bibliotheken und -Plattformen für maschinelles Lernen mit Azure Machine Learning
 
-Sie können den gesamten Prozess des maschinellen Lernens in Azure Machine Learning trainieren, bereitstellen und verwalten, indem Sie Open-Source-Python-Bibliotheken und -Plattformen für maschinelles Lernen verwenden.  Verwenden Sie Entwicklungstools wie Jupyter Notebooks und Visual Studio Code, um Ihre vorhandenen Modelle und Skripts in Azure Machine Learning zu nutzen.  
-
-In diesem Artikel erfahren Sie mehr über diese Open-Source-Bibliotheken und -Plattformen.
+In diesem Artikel erfahren Sie mehr über Open-Source-Python-Bibliotheken und -Plattformen für maschinelles Lernen, die Sie mit Azure Machine Learning verwenden können. Führen Sie das Training, die Bereitstellung und Verwaltung für den End-to-End-Prozess des maschinellen Lernens mithilfe der von Ihnen bevorzugten Open-Source-Projekte durch.  Verwenden Sie Entwicklungstools wie Jupyter Notebooks und Visual Studio Code, um Ihre vorhandenen Modelle und Skripts in Azure Machine Learning zu nutzen.  
 
 ## <a name="train-open-source-machine-learning-models"></a>Trainieren von Open-Source-Machine Learning-Modellen
 
-Der Trainingsprozess des maschinellen Lernens umfasst die Anwendung von Algorithmen auf Ihre Daten, um eine Aufgabe zu erfüllen oder ein Problem zu lösen. Je nach Problem können Sie verschiedene Algorithmen wählen, die am besten zu der Aufgabe und Ihren Daten passen. Weitere Informationen zu den verschiedenen Branches des maschinellen Lernens finden Sie im Artikel [Deep Learning im Vergleich zu maschinellem Lernen](./concept-deep-learning-vs-machine-learning.md) und im [Spickzettel für Machine Learning-Algorithmen](algorithm-cheat-sheet.md).
-
-### <a name="preserve-data-privacy-using-differential-privacy"></a>Beibehalten des Datenschutzes mithilfe des differenziellen Datenschutzes
-
-Zum Trainieren eines Machine Learning-Modells benötigen Sie Daten. Manchmal sind diese Daten vertraulich, und es ist wichtig, sicherzustellen, dass die Daten sicher und privat sind. Differenzieller Datenschutz ist ein Verfahren zur Beibehaltung der Vertraulichkeit von Informationen in einem Dataset. Weitere Informationen finden Sie im Artikel [Beibehalten des Datenschutzes](concept-differential-privacy.md). 
-
-Open-Source-Lösungen für differenzielle Datenschutztoolkits wie [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core-python) helfen Ihnen den [Datenschutz von Daten](how-to-differential-privacy.md) in Azure Machine Learning-Lösungen beizubehalten.
+Der Trainingsprozess des maschinellen Lernens umfasst die Anwendung von Algorithmen auf Ihre Daten, um eine Aufgabe zu erfüllen oder ein Problem zu lösen. Je nach Problem können Sie verschiedene Algorithmen wählen, die am besten zu der Aufgabe und Ihren Daten passen. Weitere Informationen zu den Möglichkeiten des maschinellen Lernens finden Sie im Artikel [Deep Learning im Vergleich zu maschinellem Lernen](./concept-deep-learning-vs-machine-learning.md) und im [Spickzettel für Machine Learning-Algorithmen](algorithm-cheat-sheet.md).
 
 ### <a name="classical-machine-learning-scikit-learn"></a>Klassisches maschinelles Lernen: scikit-learn
 
-Für Trainingsaufgaben, die Algorithmen des klassischen maschinellen Lernens einbeziehen, z. B. Klassifizierung, Clustering und Regression, könnten Sie etwas wie Scikit-learn verwenden. Wie Sie ein Klassifizierungsmodell für Blumen trainieren können, erfahren Sie im Artikel [Trainieren mit Scikit-learn](how-to-train-scikit-learn.md).
+Für Trainingsaufgaben, die Algorithmen des klassischen maschinellen Lernens einbeziehen, z. B. Klassifizierung, Clustering und Regression, könnten Sie etwas wie scikit-learn verwenden. Wie Sie ein Klassifizierungsmodell für Blumen trainieren können, erfahren Sie im Artikel [Trainieren mit scikit-learn](how-to-train-scikit-learn.md).
 
 ### <a name="neural-networks-pytorch-tensorflow-keras"></a>Neuronale Netzwerke: PyTorch, TensorFlow, Keras
 
@@ -45,6 +38,8 @@ Open-Source-Deep Learning-Frameworks und -Schrittanleitungen umfassen Folgendes:
  *  [PyTorch](https://github.com/pytorch/pytorch): [Trainieren eines Deep Learning-Bildklassifizierungsmodells mithilfe von Lerntransfer](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow): [Erkennen von handschriftlichen Ziffern mithilfe von TensorFlow](how-to-train-tensorflow.md)
  *  [Keras](https://github.com/keras-team/keras): [Erstellen eines neuronalen Netzwerks zur Analyse von Bildern mithilfe von Keras](how-to-train-keras.md)
+
+### <a name="transfer-learning"></a>Transferlernen
 
 Das Trainieren eines Deep Learning-Modells von Grund auf erfordert oft viel Zeit sowie große Mengen an Daten und Computeressourcen. Sie können das Training abkürzen, indem Sie den Lerntransfer verwenden. Lerntransfer ist ein Verfahren, bei dem das bei der Lösung eines Problems gewonnene Wissen auf ein anderes, aber verwandtes Problem angewandt wird. Dies bedeutet, dass Sie ein vorhandenes Modell verwenden und es umfunktionieren können. Weitere Informationen zum Lerntransfer finden Sie im Artikel [Deep Learning im Vergleich zu maschinellem Lernen](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning).
 
@@ -59,6 +54,14 @@ Wie Sie Ray RLLib mit Azure Machine Learning verwenden, erfahren Sie im Abschnit
 ### <a name="monitor-model-performance-tensorboard"></a>Überwachen der Modellleistung: TensorBoard
 
 Das Training eines einzelnen oder mehrerer Modelle erfordert die Visualisierung und Überprüfung der gewünschten Metriken, um sicherzustellen, dass das Modell die erwartete Leistung erbringt. Sie können [TensorBoard in Azure Machine Learning verwenden, um Experimentmetriken nachzuverfolgen und zu visualisieren](./how-to-monitor-tensorboard.md)
+
+## <a name="responsible-ml-privacy-and-fairness"></a>Verantwortungsvolles maschinelles Lernen: Datenschutz und Fairness
+
+### <a name="preserve-data-privacy-with-differential-privacy"></a>Beibehalten des Datenschutzes mithilfe des differenziellen Datenschutzes
+
+Zum Trainieren eines Machine Learning-Modells benötigen Sie Daten. Manchmal sind diese Daten vertraulich, und es ist wichtig, sicherzustellen, dass die Daten sicher und privat sind. Differenzieller Datenschutz ist ein Verfahren zur Beibehaltung der Vertraulichkeit von Informationen in einem Dataset. Weitere Informationen finden Sie im Artikel [Beibehalten des Datenschutzes](concept-differential-privacy.md). 
+
+Open-Source-Lösungen für differenzielle Datenschutztoolkits wie [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core-python) helfen Ihnen den [Datenschutz von Daten](how-to-differential-privacy.md) in Azure Machine Learning-Lösungen beizubehalten.
 
 ### <a name="frameworks-for-interpretable-and-fair-models"></a>Frameworks für interpretierbare und faire Modelle
 

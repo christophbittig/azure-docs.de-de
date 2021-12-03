@@ -3,7 +3,7 @@ title: Azure Monitor-Arbeitsmappen für Berichte | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte verwenden.
 services: active-directory
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 ms.assetid: 4066725c-c430-42b8-a75b-fe2360699b82
 ms.service: active-directory
 ms.devlang: ''
@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 5/19/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9cde3940f09d3612ebe6411804fe4780e5bcfc18
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fe9639049573f62dbd403ab39c3c2067355a60f6
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469196"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995880"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte
 
@@ -31,6 +31,8 @@ Möchten Sie:
 - Die Auswirkung Ihrer [Richtlinien für bedingten Zugriff](../conditional-access/overview.md) auf die Anmeldung Ihrer Benutzer verstehen?
 
 - Anmeldefehler beheben, um eine bessere Übersicht über die Anmeldeintegrität in Ihrer Organisation zu erhalten, sowie Probleme schnell beheben?
+
+- Kennen Sie Risikobenutzer und Risikoerkennungstrends in Ihrem Mandanten?
 
 - Wissen, welche Benutzer sich über Legacyauthentifizierungen bei Ihrer Umgebung anmelden? (Durch [Blockieren der Legacyauthentifizierung](../conditional-access/block-legacy-authentication.md) können Sie den Schutz Ihres Mandanten verbessern.)
 
@@ -292,9 +294,25 @@ Damit Sie Probleme mit Anmeldungen beheben können, bietet Azure Monitor Ihnen e
     ![Zusammenfassung der Anmeldungen mit Benutzeraktionen](./media/howto-use-azure-monitor-workbooks/54.png)
 
 
+## <a name="identity-protection-risk-analysis"></a>Identity Protection-Risikoanalyse
 
+Verwenden Sie im Bereich **Nutzung** die Arbeitsmappe **Identity Protection-Risikoanalyse**, um Folgendes besser zu verstehen:
 
+- Verteilung von Risikobenutzern und Risikoerkennungen nach Stufe und Typ
+- Möglichkeiten zur besseren Risikobehandlung
+- Wo in der Welt das Risiko erkannt wird
 
+Die Trends für die Risikoerkennung können Sie nach folgenden Optionen filtern:
+- Typ des Erkennungszeitpunkts
+- Risikostufe
+
+Risikoerkennungen in Echtzeit sind solche, die zum Zeitpunkt der Authentifizierung erkannt werden können. Mithilfe des bedingten Zugriffs und Richtlinien für Risikoanmeldungen können Sie den Herausforderungen durch diese Risikoerkennungen begegnen und eine mehrstufige Authentifizierung anfordern. 
+
+Die Trends für Risikobenutzer können Sie nach folgenden Optionen filtern:
+- Risikodetail
+- Risikostufe
+
+Wenn Sie eine große Anzahl von Risikobenutzern haben, bei denen „keine Aktion“ ergriffen wurde, sollten Sie erwägen, eine Richtlinie für bedingten Zugriff zu aktivieren, um eine sichere Kennwortänderung anzufordern, wenn ein Benutzer ein hohes Risiko aufweist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,7 +9,9 @@ items:
   - name: Schnellstarts
     expanded: true
     items:
-      - name: Bereitstellen von DICOM-Diensten mithilfe Azure-Portal
+      - name: Erste Schritte mit dem DICOM-Dienst
+        href: get-started-with-dicom.md
+      - name: Bereitstellen des DICOM-Diensts mithilfe der Azure-Portal
         href: deploy-dicom-services-in-azure.md
   - name: Tutorials
     expanded: true
@@ -25,7 +27,7 @@ items:
     items:
       - name: Verwenden von DICOMweb-Standard-APIs mit dem DICOM-Dienst
         href: dicomweb-standard-apis-with-dicom-services.md
-      - name: DICOM-Änderungsfeed – Übersicht
+      - name: Übersicht über den DICOM-Änderungsfeed
         href: dicom-change-feed-overview.md
       - name: Registrieren Azure Active Directory Anwendungen für den DICOM-Dienst
         href: dicom-register-azure-active-directory-applications.md
@@ -36,16 +38,6 @@ items:
     items:
       - name: Pullen von DICOM-Änderungen mithilfe des Änderungsfeeds
         href: pull-dicom-changes-from-change-feed.md
-      - name: Registrieren einer Dienstclientanwendung
-        href: dicom-register-service-client-application.md
-      - name: Registrieren einer öffentlichen Clientanwendung
-        href: dicom-register-public-application.md
-      - name: Registrieren einer vertraulichen Clientanwendung
-        href: dicom-register-confidential-client-application.md
-      - name: Konfigurieren von Azure RBAC für den DICOM-Dienst
-        href: dicom-configure-azure-rbac.md
-      - name: Abrufen des Zugriffstokens für den DICOM-Dienst mit Azure CLI
-        href: dicom-get-access-token-azure-cli.md
   - name: Ressourcen
     expanded: true
     items:

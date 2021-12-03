@@ -32,6 +32,8 @@
       href: how-tos/local-mode-with-azure-client.md
     - name: Schreiben eines TokenProvider-Elements mit einer Azure-Funktion
       href: how-tos/azure-function-token-provider.md
+    - name: Bereitstellen von Fluid-Anwendungen mit Azure Static Web Apps
+      href: how-tos/deploy-fluid-static-web-apps.md
     - name: Verwenden von JWT-Token
       href: how-tos/fluid-json-web-token.md
     - name: Verwenden der Testautomatisierung mit Azure Fluid Relay

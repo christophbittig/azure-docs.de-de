@@ -1,6 +1,6 @@
 ---
-title: Die Erweiterung für den SQL Server-IaaS-Agent
-description: In diesem Artikel erfahren Sie, wie die SQL Server-IaaS-Agent-Erweiterung bei der Automatisierung bestimmter SQL Server-Verwaltungsaufgaben auf Azure-VMs hilft. Hierzu gehören Features wie automatisierte Sicherungen und Patches, Azure Key Vault-Integration, Lizenzierungsverwaltung, Speicherkonfiguration und zentrale Verwaltung aller SQL Server-VM-Instanzen.
+title: Die Erweiterung für den SQL Server-IaaS-Agent (Windows)
+description: In diesem Artikel erfahren Sie, wie die SQL Server-IaaS-Agent-Erweiterung bei der Automatisierung bestimmter SQL Server-Verwaltungsaufgaben auf Windows Azure-VMs hilft. Hierzu gehören Features wie automatisierte Sicherungen und Patches, Azure Key Vault-Integration, Lizenzierungsverwaltung, Speicherkonfiguration und zentrale Verwaltung aller SQL Server-VM-Instanzen.
 services: virtual-machines-windows
 documentationcenter: ''
 author: adbadram
@@ -13,22 +13,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 9/01/2021
+ms.date: 10/26/2021
 ms.author: adbadram
 ms.reviewer: mathoma
-ms.custom: seo-lt-2019
-ms.openlocfilehash: e5a122fb23b7ebcfbbbf008dacc675eddf0c3cb0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: seo-lt-2019, ignite-fall-2021
+ms.openlocfilehash: 35ea46e4ce2b7c4ebbb6fdfa24bbe1d60e679bb7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247951"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345698"
 ---
-# <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatisieren der Verwaltung mit der SQL Server-IaaS-Agent-Erweiterung
+# <a name="automate-management-with-the-windows-sql-server-iaas-agent-extension"></a>Automatisieren der Verwaltung mit der Windows SQL Server-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
+> [!div class="op_single_selector"]
+> * [Windows](sql-server-iaas-agent-extension-automate-management.md)
+> * [Linux](../linux/sql-server-iaas-agent-extension-linux.md)
 
-Die Erweiterung für den SQL Server-IaaS-Agent (SqlIaasExtension) kann auf virtuellen Azure-Computern ausgeführt werden, um Verwaltungsaufgaben zu automatisieren. 
+
+
+Die Erweiterung für den SQL Server-IaaS-Agent (SqlIaasExtension) kann auf virtuellen Windows Azure-Computern ausgeführt werden, um Verwaltungsaufgaben zu automatisieren. 
 
 Dieser Artikel bietet eine Übersicht über die Erweiterung. Informationen zum Installieren der SQL Server-IaaS-Erweiterung für SQL Server auf Azure-VMs finden Sie in den Artikeln zur [automatischen Installation](sql-agent-extension-automatic-registration-all-vms.md) und zur [Installation auf einzelnen VMs](sql-agent-extension-manually-register-single-vm.md) bzw. zur [Masseninstallation auf VMs](sql-agent-extension-manually-register-vms-bulk.md). 
 
@@ -61,9 +66,6 @@ Die Erweiterung für SQL Server-IaaS-Agent ermöglicht die Integration mit dem A
    ---
 
 
-> [!IMPORTANT]
-> Die SQL-IaaS-Agent-Erweiterung sammelt Daten ausschließlich, um Kunden zu ermöglichen, bei der Verwendung von SQL Server in Azure Virtual Machines optionale Vorteile zu nutzen. Microsoft verwendet diese Daten ohne vorherige Zustimmung des Kunden nicht für Lizenzierungsüberprüfungen. Weitere Informationen finden Sie unter [Ergänzende Datenschutzbestimmungen zu SQL Server](/sql/sql-server/sql-server-privacy#non-personal-data).
-
 
 ## <a name="feature-benefits"></a>Featurevorteile 
 
@@ -81,7 +83,8 @@ Diese Vorteile werden in der folgenden Tabelle genauer erläutert:
 | **Anzeigen der Datenträgerauslastung im Portal** | Ermöglicht eine grafische Darstellung der Datenträgerauslastung Ihrer SQL-Datendateien im Azure-Portal.  <br/> Verwaltungsmodus: Vollständig | 
 | **Flexible Lizenzierung** | Durch einen [nahtlosen Wechsel](licensing-model-azure-hybrid-benefit-ahb-change.md) zwischen den Lizenzmodellen „Bring-Your-Own-License“ (BYOL, auch als „Azure-Hybridvorteil“ bezeichnet) und „Nutzungsbasierte Bezahlung“ können Sie Kosten sparen. <br/> Verwaltungsmodus: Lightweight und vollständig| 
 | **Flexible Version/Edition** | Wenn Sie die [Version](change-sql-server-version.md) oder [Edition](change-sql-server-edition.md) von SQL Server ändern möchten, können Sie einfach die Metadaten im Azure-Portal aktualisieren, ohne die gesamte SQL Server-VM erneut bereitstellen zu müssen.  <br/> Verwaltungsmodus: Lightweight und vollständig| 
-| **Security Center-Portalintegration** | Wenn Sie [Azure Defender für SQL](../../../security-center/defender-for-sql-usage.md) aktiviert haben, können Sie die Security Center-Empfehlungen direkt in der Ressource [Virtuelle SQL-Computer](manage-sql-vm-portal.md) des Azure-Portals anzeigen. Weitere Informationen finden Sie unter [Bewährte Sicherheitsmethoden](security-considerations-best-practices.md).  <br/> Verwaltungsmodus: Lightweight und vollständig| 
+| **Integration des Defender für Cloudportals** | Wenn Sie [Microsoft Defender für SQL](../../../security-center/defender-for-sql-usage.md) aktiviert haben, können Sie die Empfehlungen von Defender for Cloud direkt in der Ressource [SQL Virtual Machines](manage-sql-vm-portal.md) des Azure-Portals einsehen. Weitere Informationen finden Sie unter [Bewährte Sicherheitsmethoden](security-considerations-best-practices.md).  <br/> Verwaltungsmodus: Lightweight und vollständig|
+| **SQL-Bewertung (Vorschau)** | Ermöglicht Ihnen, die Integrität Ihrer SQL Server-VMs mithilfe von bewährten Methoden für die Konfiguration zu bewerten. Weitere Informationen finden Sie unter [SQL-Bewertung](sql-assessment-for-sql-vm.md).  <br/> Verwaltungsmodus: Vollständig| 
 
 
 ## <a name="management-modes"></a>Verwaltungsmodi
@@ -105,7 +108,7 @@ Sie können Ihre SQL-IaaS-Erweiterung in drei Verwaltungsmodi registrieren:
 
 ## <a name="installation"></a>Installation
 
-Registrieren Sie Ihre SQL Server-VM mit der SQL Server-IaaS-Agent-Erweiterung, um die [_Ressource_ **Virtueller SQL-Computer**](manage-sql-vm-portal.md) in Ihrem Abonnement zu erstellen. Dabei handelt es sich um eine _andere_ Ressource als die Ressource für Ihren virtuellen Computer. Wenn Sie die Registrierung der Erweiterung für Ihre SQL Server-VM aufheben, wird die _Ressource_ **Virtueller SQL-Computer** entfernt, während der tatsächliche virtuelle Computer jedoch erhalten bleibt.
+Registrieren Sie Ihre SQL Server-VM mit der SQL Server-IaaS-Agent-Erweiterung, um die [_Ressource_ **Virtueller SQL-Computer**](manage-sql-vm-portal.md) in Ihrem Abonnement zu erstellen. Dabei handelt es sich um eine _andere_ Ressource als die Ressource für Ihren virtuellen Computer. Wenn Sie die Registrierung der Erweiterung für Ihre SQL Server-VM aufheben, wird die _Ressource_ **Virtueller SQL-Computer** aus Ihrem Abonnement entfernt, während der tatsächliche virtuelle Computer jedoch erhalten bleibt.
 
 Wenn Sie ein Azure Marketplace-Image einer SQL Server-VM über das Azure-Portal bereitstellen, wird die SQL Server-VM mit der Erweiterung automatisch im vollständigen Modus registriert. Wenn Sie jedoch SQL Server auf einer Azure-VM selbst installieren oder eine Azure-VM von einer benutzerdefinierten VHD bereitstellen, müssen Sie Ihre SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren, um die Featurevorteile nutzen zu können. 
 
@@ -115,6 +118,9 @@ Es gibt drei Möglichkeiten, VMs mit der Erweiterung zu registrieren:
 - [Automatisch für alle aktuellen und zukünftigen VMs in einem Abonnement](sql-agent-extension-automatic-registration-all-vms.md)
 - [Manuell für eine einzelne VM](sql-agent-extension-manually-register-single-vm.md)
 - [Manuell für mehrere VMs in einem Massenvorgang](sql-agent-extension-manually-register-vms-bulk.md)
+
+Standardmäßig werden Azure-VMs, auf denen SQL Server 2016 oder höher installiert ist, automatisch bei der Erweiterung für den SQL-IaaS-Agent registriert, wenn sie vom [CEIP-Dienst](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server) erkannt werden.  Weitere Informationen finden Sie unter [Ergänzende Datenschutzbestimmungen zu SQL Server](/sql/sql-server/sql-server-privacy#non-personal-data).
+
 
 ### <a name="named-instance-support"></a>Unterstützung für benannte Instanzen
 
@@ -138,7 +144,7 @@ Sie können den Status der Erweiterung über das Azure-Portal oder mit Azure Pow
 
 Vergewissern Sie sich im Azure-Portal, dass die Erweiterung installiert ist. 
 
-Wählen Sie im Bereich der VM die Option **Alle Einstellungen** und dann **Erweiterungen** aus. Die Erweiterung **SqlIaasExtension** sollte aufgeführt sein.
+Wechseln Sie zu Ihrer Ressource **Virtueller Computer** im Azure-Portal (nicht zur Ressource *Virtuelle SQL-Computer*, sondern zur Ressource für Ihre VM). Wählen Sie unter **Einstellungen** die Option **Erweiterungen** aus.  Die Erweiterung **SqlIaasExtension** sollte wie im folgenden Beispiel aufgeführt werden: 
 
 ![Status der SQL Server-IaaS-Agent-Erweiterung im Azure-Portal](./media/sql-server-iaas-agent-extension-automate-management/azure-rm-sql-server-iaas-agent-portal.png)
 
@@ -170,10 +176,14 @@ Die SQL-IaaS-Agent-Erweiterung unterstützt nur Folgendes:
 - Benannte Instanzen mit mehreren Instanzen auf einem einzelnen virtuellen Computer im Lightweight-Modus. 
 
 
+## <a name="privacy-statement"></a><a id="in-region-data-residency"></a> Datenschutzbestimmungen
 
-## <a name="in-region-data-residency"></a>Data Residency in der Region
+Wenn Sie SQL Server auf Azure-VMs und die SQL IaaS-Erweiterung verwenden, berücksichtigen Sie die folgenden Datenschutzbestimmungen: 
 
-Die Azure SQL-VM und die SQL-IaaS-Agent-Erweiterung verschieben oder speichern keine Kundendaten außerhalb der Region, in der sie bereitgestellt werden.
+- **Datensammlung**: Die SQL-IaaS-Agent-Erweiterung sammelt Daten ausschließlich, um Kunden zu ermöglichen, bei der Verwendung von SQL Server unter Azure Virtual Machines optionale Vorteile zu nutzen. Microsoft verwendet diese Daten ohne vorherige Zustimmung des Kunden **nicht für Lizenzierungsüberprüfungen**. Weitere Informationen finden Sie in der [SQL Server-Datenschutzergänzung](/sql/sql-server/sql-server-privacy#non-personal-data).
+
+- **Datenresidenz in der Region**: SQL Server auf Azure-VMs und die SQL IaaS-Agent-Erweiterung verschieben Kundendaten nicht aus der Region, in der die VMs bereitgestellt werden, oder speichern sie dort.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

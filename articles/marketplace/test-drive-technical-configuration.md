@@ -4,21 +4,24 @@ description: Erfahren Sie mehr über Testversionen. Testversionen ermöglichen e
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 10/26/2021
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: c4d5ccaead616fa53cc10733ad82f0f20b7e1cab
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 04eab06f0ce8aefa675b89613611c0ec9a93f9b6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007389"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847354"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische Konfiguration der Testversion
 
 Mit der Option „Testversion“ im kommerziellen Microsoft-Marketplace können Sie eine praktische, interaktive Tour durch die wichtigsten Funktionen Ihres Produkts konfigurieren. Mit einer Testversion können neue Kunden Ihr Angebot ausprobieren, bevor sie sich zum Kauf verpflichten. Weitere Informationen finden Sie unter [Was ist die Testversion?](what-is-test-drive.md)
 
 Wenn Sie keine Testversion mehr für Ihr Angebot bereitstellen möchten, kehren Sie zur Seite **Angebotseinrichtung** zurück, und deaktivieren Sie das Kontrollkästchen **Testversion aktivieren**. Nicht für alle Angebotstypen ist eine Testversion verfügbar.
+
+> [!TIP]
+> Die Ansicht der Testversion für den Kunden im kommerziellen Marketplace finden Sie unter [Was ist Azure Marketplace?](/marketplace/azure-marketplace-overview#take-action-on-a-listing) und [Was ist Microsoft AppSource?](/marketplace/appsource-overview).
 
 ## <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 

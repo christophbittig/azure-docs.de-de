@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Bereitstellen einer Dapr-Anwendung in Azure Container Apps mithilfe einer ARM-Vorlage'
 description: Bereitstellen einer Dapr-Anwendung in Azure Container Apps mithilfe einer ARM-Vorlage
-services: app-service
+services: container-apps
 author: asw101
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 10/25/2021
+ms.date: 11/02/2021
 ms.author: aawislan
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3e27ba920f47a7033871d8ccdf227341d2400816
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d38af387910551903d2781863deb3de3fcd36160
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095477"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026917"
 ---
 # <a name="tutorial-deploy-a-dapr-application-to-azure-container-apps-using-an-arm-template"></a>Tutorial: Bereitstellen einer Dapr-Anwendung in Azure Container Apps mithilfe einer ARM-Vorlage
 
@@ -131,6 +131,22 @@ az extension add \
 ```azurecli
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl 
+```
+
+---
+
+Die Erweiterung wurde installiert. Registrieren Sie nun den Namespace `Microsoft.Web`.
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```azurecli
+az provider register --namespace Microsoft.Web
 ```
 
 ---
@@ -534,7 +550,7 @@ Sie können überprüfen, ob die Dienste ordnungsgemäß funktionieren, indem Si
 
 ### <a name="view-logs"></a>Protokolle anzeigen
 
-Daten, die über eine Container-App protokolliert werden, werden in der benutzerdefinierten Tabelle `ContainerAppConsoleLogs_CL` im Log Analytics-Arbeitsbereich gespeichert. Sie können Protokolle über das Azure-Portal oder mit der CLI anzeigen.
+Daten, die über eine Container-App protokolliert werden, werden in der benutzerdefinierten Tabelle `ContainerAppConsoleLogs_CL` im Log Analytics-Arbeitsbereich gespeichert. Sie können Protokolle über das Azure-Portal oder mit der CLI anzeigen. Möglicherweise müssen Sie einige Minuten warten, bis die Analyse zum ersten Mal ankommt, bevor Sie die protokollierten Daten abfragen können.
 
 Verwenden Sie den folgenden CLI-Befehl, um Protokolle in der Befehlszeile anzuzeigen.
 

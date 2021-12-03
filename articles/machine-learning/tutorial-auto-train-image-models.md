@@ -11,12 +11,12 @@ ms.author: swatig
 ms.reviewer: nibaccam
 ms.date: 10/06/2021
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: a8b299a57b5ba3d31d34447ceacded9933c61b55
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: e6906988b47ecdb1ba5e1ca7947666e6371ddd8e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007625"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468573"
 ---
 # <a name="tutorial-train-an-object-detection-model-preview-with-automl-and-python"></a>Tutorial: Trainieren eines Objekterkennungsmodells (Vorschauversion) mit AutoML und Python
 
@@ -495,3 +495,6 @@ In diesem Tutorial zum automatisierten maschinellen Lernen haben Sie folgende Au
 * Weitere Informationen zu maschinellem Sehen im Zusammenhang mit automatisiertem maschinellem Lernen (Vorschauversion) finden Sie [hier](concept-automated-ml.md#computer-vision-preview).
 * Informationen zum Einrichten von automatisiertem maschinellem Lernen für das Trainieren von Modellen für maschinelles Sehen mit Python (Vorschauversion) finden Sie [hier](how-to-auto-train-image-models.md).
 * Überprüfen Sie detaillierte Codebeispiele und Anwendungsfälle im [GitHub-Notebook-Repository für Beispiele zum automatisierten maschinellen Lernen](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml). Überprüfen Sie die Ordner mit dem Präfix „image-“ auf spezifische Beispiele für die Erstellung von Modellen für maschinelles Sehen.
+
+> [!NOTE]
+> Das Dataset „Fridge Objects“ kann über die Lizenz unter [MIT-Lizenz](https://github.com/microsoft/computervision-recipes/blob/master/LICENSE) genutzt werden.

@@ -5,12 +5,12 @@ description: Erfahren Sie mehr über Standardkontingente, eingeschränkte SKU-Gr
 services: container-service
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: 6e965bd958b23598f7b11dcf9a12dafb33f26680
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 257598f1a1ea8bbc578fe44c40b8e2dafef36837
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437891"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266047"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)
 
@@ -37,21 +37,9 @@ Die Liste der unterstützten VM-Größen in AKS wird mit der Veröffentlichung n
 
 ## <a name="restricted-vm-sizes"></a>Eingeschränkte VM-Größen
 
-Jeder Knoten in einem AKS-Cluster umfasst eine feste Menge von Computeressourcen wie vCPU- und Arbeitsspeicher. Wenn ein AKS-Knoten unzureichende Computeressourcen aufweist, werden Pods möglicherweise nicht ordnungsgemäß ausgeführt. Um sicherzustellen, dass die erforderlichen *kube-system*-Pods und Ihre Anwendungen zuverlässig geplant werden können, **verwenden Sie in AKS nicht die folgenden VM-SKUs**:
+VM-Größen mit weniger als 2 CPUs können nicht mit AKS verwendet werden.
 
-- Standard_A0
-- Standard_A1
-- Standard_A1_v2
-- Standard_B1ls
-- Standard_B1s
-- Standard_B1ms
-- Standard_F1
-- Standard_F1s
-- Standard_A2
-- Standard_D1
-- Standard_D1_v2
-- Standard_DS1
-- Standard_DS1_v2
+Jeder Knoten in einem AKS-Cluster umfasst eine feste Menge von Computeressourcen wie vCPU- und Arbeitsspeicher. Wenn ein AKS-Knoten unzureichende Computeressourcen aufweist, werden Pods möglicherweise nicht ordnungsgemäß ausgeführt. Um sicherzustellen, dass die erforderlichen *kube-system*-Pods und Ihre Anwendungen zuverlässig geplant werden können, benötigt AKS Knoten mit VM-Größen mit mehr als 2 CPUs.
 
 Weitere Informationen zu VM-Typen und ihren Computeressourcen finden Sie unter [Größen für virtuelle Computer in Azure][vm-skus].
 

@@ -1,35 +1,35 @@
 ---
-title: Azure Sentinel Informationsmodell (ASIM) Parsers | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie KQL-Funktionen als Abfragezeitparser verwendet werden, um das Azure Sentinel Informationsmodell (ASIM) zu implementieren
+title: Parser für das erweiterte SIEM-Informationsmodell (Advanced SIEM Information Model, ASIM) | Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, wie KQL-Funktionen als Abfragezeitparser verwendet werden, um das erweiterte SIEM-Informationsmodell (Advanced SIEM Information Model, ASIM) zu implementieren.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2021
+ms.date: 11/09/2021
 ms.author: ofshezaf
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 12f26ca7567387cd6a9edfcde0ef1229e9635f69
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 43ec5162b0dc1bfd9def8afea6a36c7899483a55
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064462"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520292"
 ---
-# <a name="azure-sentinel-information-model-asim-parsers-public-preview"></a>Azure Sentinel Informationsmodell (ASIM) Parsers (Öffentliche Vorschau)
+# <a name="advanced-siem-information-model-asim-parsers-public-preview"></a>Parser für das erweiterte SIEM-Informationsmodell (Advanced SIEM Information Model, ASIM) (öffentliche Vorschau)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In Azure Sentinel erfolgen das Parsing und die [Normalisierung](normalization.md) zur Abfragezeit. Parser werden als [benutzerdefinierte KQL-Funktionen](/azure/data-explorer/kusto/query/functions/user-defined-functions) erstellt, die Daten in vorhandenen Tabellen (wie etwa **CommonSecurityLog**, benutzerdefinierte Protokolltabellen, Syslog) in das normalisierte Schema transformieren. Sobald der Parser als Arbeitsbereich-Funktion gespeichert ist, kann er wie jede Azure Sentinel-Tabelle verwendet werden.
+In Microsoft Sentinel erfolgen das Parsing und die [Normalisierung](normalization.md) zur Abfragezeit. Parser werden als [benutzerdefinierte KQL-Funktionen](/azure/data-explorer/kusto/query/functions/user-defined-functions) erstellt, die Daten in vorhandenen Tabellen (wie etwa **CommonSecurityLog**, benutzerdefinierte Protokolltabellen, Syslog) in das normalisierte Schema transformieren. Sobald der Parser als Arbeitsbereichsfunktion gespeichert ist, kann er wie jede Microsoft Sentinel-Tabelle verwendet werden.
 
 > [!TIP]
-> Informieren Sie sich auch über das [ausführliche Webinar zu normalisierten Parsern und Inhalten in Azure Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k), oder sehen Sie sich die [Folien](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM) an. Weitere Informationen finden Sie in den [nächsten Schritten](#next-steps).
+> Sehen Sie sich auch das [ausführliche Webinar zu normalisierten Parsern und Inhalten in Microsoft Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k) oder die [Folien](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM) an. Weitere Informationen finden Sie in den [nächsten Schritten](#next-steps).
 >
 
 > [!IMPORTANT]
@@ -285,11 +285,11 @@ Weitere Informationen finden Sie in der [ARM-Vorlage des generischen Parsers](ht
 
 ## <a name="next-steps"></a><a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel werden die Parser des Azure Sentinel Informationsmodells (ASIM) diskutiert.
+In diesem Artikel werden die Parser für das erweiterte SIEM-Informationsmodell (Advanced SIEM Information Model, ASIM) erläutert.
 
 Weitere Informationen finden Sie unter
 
-- Informieren Sie sich über das [ausführliche Webinar zu normalisierten Parsern und Inhalten in Azure Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k), oder sehen Sie sich die [Folien](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM) an.
-- [ Azure Sentinel-Informationsmodell Übersicht](normalization.md)
-- [Schemas des Azure Sentinel-Informationsmodells](normalization-about-schemas.md)
-- [ Azure Sentinel-Informationsmodell Inhalt](normalization-content.md)
+- Sehen Sie sich das [ausführliche Webinar zu normalisierten Parsern und Inhalten in Microsoft Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k) oder die [Folien](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM) an.
+- [Übersicht über das erweiterte SIEM-Informationsmodell](normalization.md)
+- [Schemas des erweiterten SIEM-Informationsmodells](normalization-about-schemas.md)
+- [Inhalte des erweiterten SIEM-Informationsmodells](normalization-content.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc3c40e9f4bad9a15b94ee7aa529438f45b97498
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1203b44225be723fa453dac8333e2ea6e7f29d33
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692609"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318178"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption für virtuelle Windows-Computer
 
@@ -24,9 +24,9 @@ Azure Disk Encryption unterstützt Sie beim Schutz Ihrer Daten gemäß den Siche
 
 Azure Disk Encryption ist genau wie Virtual Machines zonenresilient. Ausführliche Informationen finden Sie unter [Azure-Dienste mit Unterstützung für Verfügbarkeitszonen](../../availability-zones/az-region.md).
 
-Falls Sie [Azure Security Center](../../security-center/index.yml) verwenden, werden Sie gewarnt, wenn VMs nicht verschlüsselt sind. Die Warnungen werden als „Hoher Schweregrad“ angezeigt. Empfohlen wird in diesem Fall die Verschlüsselung der VMs.
+Wenn Sie [Microsoft Defender für Cloud](../../security-center/index.yml) verwenden, werden Sie benachrichtigt, wenn Sie nicht-verschlüsselte virtuelle Computer haben. Die Warnungen werden als „Hoher Schweregrad“ angezeigt. Empfohlen wird in diesem Fall die Verschlüsselung der VMs.
 
-![Azure Security Center: Datenträgerverschlüsselungswarnung](../media/disk-encryption/security-center-disk-encryption-fig1.png)
+![Microsoft Defender für Cloud: Warnung zur Datenträgerverschlüsselung](../media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
 > - Wenn Sie zuvor Azure Disk Encryption mit Azure AD zum Verschlüsseln eines virtuellen Computers verwendet haben, müssen Sie diese Option auch weiterhin zum Verschlüsseln Ihres virtuellen Computers verwenden. Weitere Informationen finden Sie unter [Azure Disk Encryption mit Azure AD (vorheriges Release)](disk-encryption-overview-aad.md). 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: cdf58b7f6a5be0e91143da346e5326cef4acd20c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d61f9cfb3918c8b3a775f68f71e0d2edd57076a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124833453"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309292"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grok-learning"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory-Integration mit Grok Learning
 
@@ -41,7 +41,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Grok Learning unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
 * Grok Learning unterstützt die **Just-in-Time**-Benutzerbereitstellung.
-* Nach dem Konfigurieren von Grok Learning können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von Grok Learning können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="adding-grok-learning-from-the-gallery"></a>Hinzufügen von Grok Learning über den Katalog
 
@@ -165,4 +165,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Grok Learning“ klicken, sollten 
 
 - [Ausprobieren von Grok Learning mit Azure AD](https://aad.portal.azure.com/)
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+- [Was ist die Sitzungssteuerung in Microsoft Defender for Cloud Apps?](/cloud-app-security/proxy-intro-aad)

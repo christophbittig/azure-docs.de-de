@@ -12,16 +12,16 @@ ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/01/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.custom: seo-lt-2019
 ms.reviewer: mathoma
-ms.openlocfilehash: 4196ab27f5b3f4c6ab4897d2df8ad0b2007f8c2b
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 21aef2227768d49da9a5eab5f4e772441c9f15b0
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162806"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158669"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On-Verfügbarkeitsgruppe für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -53,7 +53,9 @@ Obwohl Verfügbarkeitszonen gegenüber Verfügbarkeitsgruppen eine höhere Verf�
 
 ## <a name="connectivity"></a>Konnektivität
 
-Sie können einen Namen eines virtuellen Netzwerks oder eines verteilten Netzwerks für eine Verfügbarkeitsgruppe konfigurieren. [Überprüfen Sie die Unterschiede zwischen den beiden](hadr-windows-server-failover-cluster-overview.md), und stellen Sie dann entweder einen [Namen eines verteilten Netzwerks (Distributed Network Name, DNN)](availability-group-distributed-network-name-dnn-listener-configure.md) oder einen [Namen eines virtuellen Netzwerks (Virtual Network Name, VNN)](availability-group-vnn-azure-load-balancer-configure.md) für Ihre Verfügbarkeitsgruppe bereit. 
+Um die Verbindung mit Ihrem Verfügbarkeitsgruppenlistener wie in der lokalen Umgebung herzustellen, stellen Sie Ihre SQL Server-VMs in [mehreren Subnetzen](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) innerhalb desselben virtuellen Netzwerks bereit. Bei der Verwendung mehrerer Subnetze entfällt die Notwendigkeit einer zusätzlichen Abhängigkeit von einer Azure Load Balancer-Instanz oder von einem verteilten Netzwerknamen (Distributed Network Name, DNN), um Ihren Datenverkehr an Ihren Listener weiterzuleiten. 
+
+Wenn Sie Ihre SQL Server-VMs in einem einzelnen Subnetz bereitstellen, können Sie einen virtuellen Netzwerknamen (VNN) und eine Azure Load Balancer-Instanz oder einen verteilten Netzwerknamen (Distributed Network Name, DNN) konfigurieren, um Datenverkehr an Ihren Verfügbarkeitsgruppenlistener weiterzuleiten. [Überprüfen Sie die Unterschiede zwischen den beiden](hadr-windows-server-failover-cluster-overview.md), und stellen Sie dann entweder einen [Namen eines verteilten Netzwerks (Distributed Network Name, DNN)](availability-group-distributed-network-name-dnn-listener-configure.md) oder einen [Namen eines virtuellen Netzwerks (Virtual Network Name, VNN)](availability-group-vnn-azure-load-balancer-configure.md) für Ihre Verfügbarkeitsgruppe bereit. 
 
 Bei Verwendung des DNN funktionieren die meisten SQL Server-Features transparent mit Verfügbarkeitsgruppen. Es gibt jedoch bestimmte Features, die ggf. besondere Aufmerksamkeit erfordern. Weitere Informationen finden Sie unter [Interoperabilität zwischen Verfügbarkeitsgruppe und DNN](availability-group-dnn-interoperability.md). 
 
@@ -70,7 +72,7 @@ Sie können weiterhin separate Verbindungen mit den einzelnen Verfügbarkeitsrep
 * Es gibt ein primäres Replikat und ein sekundäres Replikat.
 * Das sekundäre Replikat ist als nicht lesbar konfiguriert (Option **Lesbare sekundäre Rolle** ist auf **Nein** festgelegt).
 
-Dies ist ein Beispiel für eine Clientverbindungszeichenfolge für eine einer Datenbankspiegelung ähnlichen Konfiguration mithilfe von ADO.NET oder SQL Server Native Client:
+Im Anschluss sehen Sie ein Beispiel für eine Clientverbindungszeichenfolge für eine einer Datenbankspiegelung ähnlichen Konfiguration mithilfe von ADO.NET oder SQL Server Native Client:
 
 ```console
 Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=AvailabilityDatabase;
@@ -97,7 +99,9 @@ Beim Konfigurieren einer Verfügbarkeitsgruppe in Azure-VMs müssen diese Schwel
 
 ## <a name="network-configuration"></a>Netzwerkkonfiguration  
 
-In einem Azure-VM-Failovercluster werden eine einzelne Netzwerkkarte pro Server (Clusterknoten) und ein einzelnes Subnetz empfohlen. Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten und Subnetze in einem Azure-VM-Failovercluster überflüssig macht. Obwohl im Clusterprüfbericht die Warnung ausgegeben wird, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind, kann diese Warnung für Azure-VM-Failovercluster einfach ignoriert werden. 
+Stellen Sie Ihre SQL Server-VMs nach Möglichkeit in mehreren Subnetzen bereit, um die Abhängigkeit von einer Azure Load Balancer-Instanz oder von einem verteilten Netzwerknamen (Distributed Network Name, DNN) zum Routen von Datenverkehr an Ihren Verfügbarkeitsgruppenlistener zu vermeiden. 
+
+In einem Azure-VM-Failovercluster wird ein einzelner Netzwerkadapter pro Server (Clusterknoten) empfohlen. Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkadapter in einem Azure-VM-Failovercluster überflüssig macht. Obwohl im Clusterprüfbericht die Warnung ausgegeben wird, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind, kann diese Warnung für Azure-VM-Failovercluster einfach ignoriert werden.
 
 ## <a name="basic-availability-group"></a>Basis-Verfügbarkeitsgruppe
 
@@ -114,26 +118,27 @@ Es gibt mehrere Optionen für die Bereitstellung einer Verfügbarkeitsgruppe fü
 
 Die folgende Tabelle bietet einen Vergleich der verfügbaren Optionen:
 
-| | [Azure-Portal](availability-group-azure-portal-configure.md), | [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md) | [Schnellstartvorlagen](availability-group-quickstart-template-configure.md) | [Manuell](availability-group-manually-configure-prerequisites-tutorial.md) |
+| | [Azure-Portal](availability-group-azure-portal-configure.md), | [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md) | [Schnellstartvorlagen](availability-group-quickstart-template-configure.md) | [Manuell (einzelnes Subnetz)](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md) | [Manuell (mehrere Subnetze)](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)
 |---------|---------|---------|---------|---------|
-|**SQL Server-Version** |2016 + |2016 +|2016 +|2012 +|
-|**SQL Server-Edition** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
-|**Windows Server-Version**| 2016 + | 2016 + | 2016 + | All|
-|**Der Cluster wird für Sie erstellt.**|Ja|Ja | Ja |Nein|
-|**Die Verfügbarkeitsgruppe wird für Sie erstellt.** |Ja |Nein|Nein|Nein|
-|**Der Listener und Lastenausgleich werden unabhängig voneinander erstellt.** |Nein|Nein|Nein|Ja|
-|**Kann mit dieser Methode ein DNN-Listener erstellt werden?**|Nein|Nein|Nein|Ja|
-|**WSFC-Quorumkonfiguration**|Cloudzeuge|Cloudzeuge|Cloudzeuge|All|
-|**DR mit mehreren Regionen** |Nein|Nein|Nein|Ja|
-|**Unterstützung mehrerer Subnetze** |Ja|Ja|Ja|Ja|
-|**Unterstützung für ein vorhandenes AD**|Ja|Ja|Ja|Ja|
-|**DR mit mehreren Zonen in derselben Region**|Ja|Ja|Ja|Ja|
-|**Verteilte AG ohne AD**|Nein|Nein|Nein|Ja|
-|**Verteilte AG ohne Cluster** |Nein|Nein|Nein|Ja|
+|**SQL Server-Version** |2016 + |2016 +|2016 +|2012 +|2012 +| 
+|**SQL Server-Edition** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|Enterprise, Standard|
+|**Windows Server-Version**| 2016 + | 2016 + | 2016 + | All| All|
+|**Der Cluster wird für Sie erstellt.**|Ja|Ja | Ja |Nein| Nein| 
+|**Die Verfügbarkeitsgruppe wird für Sie erstellt.** |Ja |Nein|Nein|Nein| Nein| 
+|**Der Listener und Lastenausgleich werden unabhängig voneinander erstellt.** |Nein|Nein|Nein|Ja|–|
+|**Kann mit dieser Methode ein DNN-Listener erstellt werden?**|Nein|Nein|Nein|Ja|–|
+|**WSFC-Quorumkonfiguration**|Cloudzeuge|Cloudzeuge|Cloudzeuge|All|All|
+|**DR mit mehreren Regionen** |Nein|Nein|Nein|Ja|Ja|
+|**Unterstützung mehrerer Subnetze** |Nein|Nein|Nein|–|Ja|
+|**Unterstützung für ein vorhandenes AD**|Ja|Ja|Ja|Ja|Ja|
+|**DR mit mehreren Zonen in derselben Region**|Ja|Ja|Ja|Ja|Ja|
+|**Verteilte AG ohne AD**|Nein|Nein|Nein|Ja| Ja| 
+|**Verteilte AG ohne Cluster** |Nein|Nein|Nein|Ja|Ja|
+|**Lastenausgleich oder DNN erforderlich**| Ja | Ja | Ja | Ja | Nein|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über die [Best Practices für HADR](hadr-cluster-best-practices.md), und beginnen Sie dann mit der Bereitstellung Ihrer Verfügbarkeitsgruppe über das [Azure-Portal](availability-group-azure-portal-configure.md), die [Azure CLI oder PowerShell](./availability-group-az-commandline-configure.md), [Schnellstartvorlagen](availability-group-quickstart-template-configure.md) oder die [manuelle](availability-group-manually-configure-prerequisites-tutorial.md) Bereitstellung.
+Informieren Sie sich über die [Best Practices für HADR](hadr-cluster-best-practices.md), und beginnen Sie dann mit der Bereitstellung Ihrer Verfügbarkeitsgruppe über das [Azure-Portal](availability-group-azure-portal-configure.md), die [Azure CLI oder PowerShell](./availability-group-az-commandline-configure.md), [Schnellstartvorlagen](availability-group-quickstart-template-configure.md) oder die [manuelle](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md) Bereitstellung.
 
 Alternativ können Sie eine [Verfügbarkeitsgruppe ohne Cluster](availability-group-clusterless-workgroup-configure.md) oder eine Verfügbarkeitsgruppe [in mehreren Regionen](availability-group-manually-configure-multiple-regions.md) bereitstellen.
 

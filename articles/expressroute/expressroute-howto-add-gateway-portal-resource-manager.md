@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 711f83a33a530aef99bba75a0010bcd131aa771b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 01a82e178725cc310e5e693c738de047f09c1b7a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130228963"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505591"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Tutorial: Konfigurieren eines virtuellen Netzwerkgateways für ExpressRoute mit dem Azure-Portal
 > [!div class="op_single_selector"]
@@ -82,16 +82,13 @@ Sie können sich ein [Video](https://azure.microsoft.com/documentation/videos/az
     | Virtuelles Netzwerk | Wählen Sie *TestVNet* aus. |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**.|
     | Name der öffentlichen IP-Adresse | Geben Sie einen Namen für die öffentliche IP-Adresse ein. |
-    | SKU der öffentlichen IP-Adresse | Geben Sie eine SKU für die öffentliche IP-Adresse ein. Wählen Sie für ein Gateway mit dualem Stapel *Standard* aus. |
 
     > [!IMPORTANT]
-    > Falls Sie planen, IPv6-basiertes privates Peering über ExpressRoute zu verwenden, erstellen Sie Ihr Gateway unbedingt mit einer öffentlichen IP-Adresse vom Typ „Standard, Statisch“.
+    > Falls Sie planen, IPv6-basiertes privates Peering über ExpressRoute zu verwenden, erstellen Sie Ihr Gateway unbedingt mit einer öffentlichen IP-Adresse vom Typ „Standard, Statisch“. Verwenden Sie hierzu die [PowerShell-Anweisungen](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway).
     > 
     > 
 
 1. Wählen Sie **Bewerten + erstellen** und dann **Erstellen** aus, um mit der Erstellung des Gateways zu beginnen. Die Einstellungen werden überprüft, und das Gateway wird bereitgestellt. Das vollständige Erstellen des virtuellen Netzwerkgateways kann bis zu 45 Minuten dauern.
-
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="Felder der Seite „Gateway für virtuelle Netzwerke erstellen“":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

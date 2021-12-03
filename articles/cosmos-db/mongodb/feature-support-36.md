@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 2fcaaf038ec7a619ec36a68fdd720ac7599da25f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 63fb96a6bbb5ac1cd883ea8c19a10951e4701c8f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649717"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443279"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB-API für MongoDB (Version 3.6): unterstützte Features und Syntax
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -179,6 +179,9 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 | $allElementsTrue | Ja |
 
 ### <a name="comparison-expressions"></a>Vergleichsausdrücke
+
+> [!NOTE]
+> Die API für MongoDB unterstützt keine Vergleichsausdrücke mit einem Arrayliteral in der Abfrage.
 
 | Get-Help | Unterstützt |
 |---------|---------|

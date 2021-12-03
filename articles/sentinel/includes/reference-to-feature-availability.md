@@ -4,15 +4,15 @@ description: Referenz zu einer Tabelle über die Verfügbarkeit von Features in 
 ms.service: sentinel
 author: batamig
 ms.topic: include
-ms.date: 03/15/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: include file
-ms.openlocfilehash: 666029f2b1b170be660a12a225f45c7a9a2dab29
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3f083479afef0721772b5726832664fde2091dda
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111993451"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336796"
 ---
 >[!NOTE]
-> Informationen zur Verfügbarkeit von Features in US Government-Clouds finden Sie in den Azure Sentinel-Tabellen unter [Verfügbarkeit von Cloudfeatures für US Government-Kunden](../../security/fundamentals/feature-availability.md).
+> Informationen über die Verfügbarkeit von Funktionen in US-Regierungs-Clouds finden Sie in den Microsoft Sentinel-Tabellen in [Cloud-Funktionsverfügbarkeit für US-Regierungskunden](../../security/fundamentals/feature-availability.md).

@@ -7,14 +7,14 @@ ms.date: 08/17/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 8b6084f411ec948eb7655c5c7c6b54bf7d2e2c30
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 380077339920071fa56d385e6de8f7e7a9e84321
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858979"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072539"
 ---
-# <a name="troubleshooting-issues-with-implementing-azure-policy-on-key-vault"></a>Behandeln von Problemen bei der Implementierung von Azure Policy für Key Vault
+# <a name="troubleshoot-issues-with-implementing-azure-policy-on-key-vault"></a>Behandeln von Problemen bei der Implementierung von Azure Policy für Key Vault
 
 In diesem Artikel erfahren Sie, wie Sie allgemeine Fehler beheben, die beim Einrichten von [Azure Policy für Key Vault](./azure-policy.md) auftreten können, und wie Sie diese beheben können.
 
@@ -33,7 +33,7 @@ Wenn Sie Protokollierung aktivieren, wird automatisch ein neuer Container mit de
 > 
 > 
 
-Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Sehen wir uns einen Beispielprotokolleintrag für eine Schlüsselrichtlinie an: [Für Schlüssel sollte das Ablaufdatum festgelegt sein](azure-policy.md?tabs=keys#secrets-should-have-expiration-date-set-preview). Mit dieser Richtlinie werden alle Schlüssel in Ihren Schlüsseltresoren ausgewertet und die Schlüssel, für die kein Ablaufdatum festgelegt ist, als nicht konform gekennzeichnet.
+Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Sehen wir uns einen Beispielprotokolleintrag für eine Schlüsselrichtlinie an: [Für Schlüssel sollte das Ablaufdatum festgelegt sein](azure-policy.md?tabs=keys#secrets-should-have-expiration-date-set). Mit dieser Richtlinie werden alle Schlüssel in Ihren Schlüsseltresoren ausgewertet und die Schlüssel, für die kein Ablaufdatum festgelegt ist, als nicht konform gekennzeichnet.
 
 ```json
 {
@@ -77,8 +77,14 @@ In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt:
 | **ObjectName** |Name des Objekts |
 | **ObjectType** |Der Typ des Schlüsseltresorobjekts, d. h. Zertifikat, Geheimnis oder Schlüssel. |
 | **IsComplianceCheck** |TRUE, wenn die Auswertung während der nachts durchgeführten Überwachung erfolgt ist, FALSE, wenn die Auswertung während der Ressourcenerstellung oder -aktualisierung erfolgt ist. |
-| **Ergebnis** | Gibt die Richtlinienauswertung zurück. |
-| **ExpressionEvaluationDetails** | Details zum Auswertungsfeld, Ausdruckswert. |
+| **AssignmentId** | Dies ist die ID der Richtlinienzuweisung. |
+| **AssignmentDisplayName** | Dies ist der Anzeigename der Richtlinienzuweisung. |
+| **DefinitionId** | Dies ist die ID der Richtliniendefinition für die Zuweisung. |
+| **DefinitionDisplayName** | Dies ist der Anzeigename der Richtliniendefinition für die Zuweisung. |
+| **Ergebnis** | Dies ist das Ergebnis der Richtlinienauswertung. |
+| **ExpressionEvaluationDetails** | Dies sind Details zu den Auswertungen, die während der Richtlinienauswertung durchgeführt wurden. |
+| **ExpressionValue** | Dies ist der tatsächliche Wert des angegebenen Felds während der Richtlinienauswertung. |
+| **TargetValue** | Dies ist der erwartete Wert des angegebenen Felds. |
 
 
 ### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen

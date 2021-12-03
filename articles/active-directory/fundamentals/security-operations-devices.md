@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbe50839beb886d22ad05414e220781f87e5f75b
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a80564d341ad6e3fbefe1500a222ad20fc3a482c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045462"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349279"
 ---
 # <a name="azure-active-directory-security-operations-for-devices"></a>Azure Active Directory-Sicherheitsvorgänge für Geräte
 
@@ -60,15 +60,15 @@ Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien:
 
 * [Azure Key Vault-Protokolle](../..//key-vault/general/logging.md?tabs=Vault)
 
-Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- oder JSON-Dateien (Comma-Separated Value, JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen mit anderen Tools, die eine weitergehende Automatisierung von Überwachung und Warnmeldungen ermöglichen:
+Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- oder JSON-Dateien (Comma-Separated Value, JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen in andere Tools, die eine umfassendere Automatisierung von Überwachung und Warnmeldungen ermöglichen:
 
-* **[Azure Sentinel](../../sentinel/overview.md)** : ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
+* **[Microsoft Sentinel](../../sentinel/overview.md)** : Ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
 
 * **[Azure Monitor](../..//azure-monitor/overview.md)** : ermöglicht die automatisierte Überwachung verschiedener Bedingungen und entsprechende Warnungen. Mit dem Tool können Arbeitsmappen erstellt oder verwendet werden, um Daten aus verschiedenen Quellen zu kombinieren.
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) mit Integration in ein SIEM-System**- [ Azure AD-Protokolle können über die Azure Event Hub-Integration mit anderen SIEM-Systemen](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) wie Splunk, ArcSight, QRadar und Sumo Logic integriert werden.
 
-* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)** : Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps. 
+* **[Microsoft Defender für Cloud-Apps](/cloud-app-security/what-is-cloud-app-security)** : Ermöglicht Ihnen die Erkennung und Verwaltung von Apps, die Steuerung von Apps und Ressourcen sowie die Überprüfung der Kompatibilität Ihrer Cloud-Apps. 
 
 Ein Großteil der Überwachung und zugehörigen Warnungen hängt von den Auswirkungen Ihrer Richtlinien für bedingten Zugriff ab. Sie können die Arbeitsmappe [Erkenntnisse und Berichterstellung zum bedingten Zugriff](../conditional-access/howto-conditional-access-insights-reporting.md) verwenden, um die Auswirkungen einer oder mehrere Richtlinien für bedingten Zugriff auf Ihre Anmeldungen sowie die Ergebnisse von Richtlinien, einschließlich Gerätestatus, zu untersuchen. Diese Arbeitsmappe bietet Ihnen die Möglichkeit, eine Zusammenfassung der Auswirkungen anzuzeigen und die Auswirkungen über einen bestimmten Zeitraum zu ermitteln. Sie können mithilfe der Arbeitsmappe auch die Anmeldungen eines bestimmten Benutzers untersuchen. 
 
@@ -85,7 +85,7 @@ Bei Azure AD registrierte und in Azure AD eingebundene Geräte verfügen über p
 | Änderungen an den Richtlinien für bedingten Zugriff, die in Domänen eingebundene oder konforme Geräte erfordern.| Hoch| Überwachungsprotokoll| Änderungen an Richtlinien für bedingten Zugriff<br>| Warnung, wenn: <br><li> eine Richtlinie geändert wird, die in Domänen eingebundene oder konforme Geräte erfordert.<li>Änderungen an vertrauenswürdigen Speicherorten vorgenommen wurden.<li> den MFA-Richtlinienausnahmen Konten oder Geräte hinzugefügt wurden. |
 
 
-Mit Azure Sentinel können Sie eine Warnung erstellen, mit der die entsprechenden Administratoren benachrichtigt werden, wenn ein Gerät ohne MFA registriert oder eingebunden wird.
+Sie können eine Warnung erstellen, die die entsprechenden Administratoren benachrichtigt, wenn ein Gerät ohne MFA registriert oder eingebunden wird, indem Sie Microsoft Sentinel verwenden.
 
 ```
 Sign-in logs

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d7d06180caedf23fb79b05ca9bbc345038722ea2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 50b032779039ed50a1d0132bfd109394be379636
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115329"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491903"
 ---
 # <a name="azure-cosmos-db-net-sdk-v3-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK v3 für SQL-API: Download und Versionshinweise
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -49,7 +49,17 @@ ms.locfileid: "123115329"
 |**Entity Framework Core-Tutorial**|[Entity Framework Core mit Azure Cosmos DB-Anbieter](/ef/core/providers/cosmos/#get-started)|
 |**Aktuelles unterstütztes Framework**|[Microsoft .NET Standard 2.0](/dotnet/standard/net-standard)|
 
-[!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v3/changelog.md)]
+## <a name="release-history"></a>Releaseverlauf
+
+Der Releaseverlauf wird im Azure Cosmos DB .NET SDK-Quellrepository verwaltet. Eine detaillierte Liste der Featurereleases und behobenen Fehler in jedem Release finden Sie in der [Dokumentation zum SDK-Änderungsprotokoll](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md)
+
+## <a name="recommended-version"></a><a name="recommended-version"></a> Empfohlene Version
+
+Die Version 3.x.x umfasst verschiedene Nebenversionen des .NET SDK. **Es wird mindestens Version 3.20.1 empfohlen.**
+
+## <a name="known-issues"></a><a name="known-issues"></a> Bekannte Probleme
+
+Eine Liste bekannter Probleme mit der empfohlenen Mindestversion des SDK finden Sie im [Abschnitt zu bekannten Problemen](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md#-known-issues).
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]

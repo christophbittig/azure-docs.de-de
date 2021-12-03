@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
-ms.openlocfilehash: e71f6b6dde1ae12a68f425dcb372cca73456de73
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 7edd651e5c6a52f707cfebd87310e0a104fef0d4
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858125"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401205"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>VMs starten/beenden v2 (Vorschau): Übersicht
 
@@ -49,9 +49,9 @@ Die Triggerfunktionen auf Warteschlangenbasis sind zur Unterstützung dieser Fun
 
 - **Sequenziert**: Aktionen zum Starten und Beenden basieren auf einem Zeitplan für VMs mit vordefinierten Sequenzierungstags. Es werden nur zwei benannte Tags unterstützt: **sequencestart** und **sequencestop**. **ststv2_vms_Sequenced_start** und **ststv2_vms_Sequenced_stop** konfigurieren das sequenzierte Starten und Beenden. 
 
-    Die richtige Methode zum Verwenden der Sequenzfunktionalität besteht darin, ein Tag namens **sequencestart** auf jeder VM zu erstellen, die Sie in einer Sequenz starten möchten. Der Tagwert muss eine ganze Zahl zwischen 1 und N für jede VM im jeweiligen Bereich sein. Das Tag ist optional. Wenn es nicht vorhanden ist, wird die entsprechende VM bei der Sequenzierung nicht berücksichtigt. Dieselben Kriterien gelten für das Beenden von VMs, nur der Tagname lautet in diesem Fall **sequencestop**. Sie müssen beide Tags auf jeder VM konfigurieren, um die Aktion zum Starten und Beenden zu erhalten.
+    Die richtige Methode zum Verwenden der Sequenzfunktionalität besteht darin, ein Tag namens **sequencestart** auf jeder VM zu erstellen, die Sie in einer Sequenz starten möchten. Der Tagwert muss eine ganze Zahl zwischen 1 und N für jede VM im jeweiligen Bereich sein. Das Tag ist optional. Wenn es nicht vorhanden ist, wird die entsprechende VM bei der Sequenzierung nicht berücksichtigt. Dieselben Kriterien gelten für das Beenden von VMs, nur der Tagname lautet in diesem Fall **sequencestop**. Sie müssen beide Tags auf jeder VM konfigurieren, um die Aktion zum Starten und Beenden zu erhalten. Wenn zwei oder mehr VMs denselben Tagwert gemeinsam nutzen, werden diese VMs gleichzeitig gestartet oder beendet.
 
-    Die folgende Tabelle zeigt beispielsweise, wie zwei VMs mit gegenläufigen Sequenzen letztlich in derselben Reihenfolge ausgeführt werden:
+    Die folgende Tabelle zeigt beispielsweise, dass Starten- und Beenden-Aktionen in aufsteigender Reihenfolge nach dem Wert des Tags verarbeitet werden.
 
     :::image type="content" source="media/overview/sequence-settings-table.png" alt-text="Tabelle mit Tagbeispielen für Sequenzeinstellungen":::
 

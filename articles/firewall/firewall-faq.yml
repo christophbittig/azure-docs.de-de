@@ -6,14 +6,14 @@ metadata:
   author: vhorne
   ms.service: firewall
   ms.topic: conceptual
-  ms.date: 09/28/2021
+  ms.date: 11/10/2021
   ms.author: victorh
-  ms.openlocfilehash: 98f226f85c9dac3d3ab17396e42759291e5a0007
-  ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+  ms.openlocfilehash: b2eed82256a5f937461944d634f146adc9ef0662
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/18/2021
-  ms.locfileid: "130138359"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132343209"
 title: Azure Firewall – Häufig gestellte Fragen
 summary: ''
 sections:
@@ -180,7 +180,7 @@ sections:
     answer: >
       Nein. Mit NAT-Regeln wird implizit eine entsprechende Netzwerkregel hinzugefügt, um den übersetzten Datenverkehr zuzulassen. Sie können dieses Verhalten außer Kraft setzen, indem Sie explizit eine Netzwerkregelsammlung mit Ablehnungsregeln hinzufügen, die für den übersetzten Datenverkehr geeignet sind. Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](rule-processing.md).
   - question: Wie funktionieren Platzhalter in Ziel-URLs und Ziel-FQDNs in Anwendungsregeln?
-    answer: "- **URL**: Sternchen funktionieren, wenn sie ganz rechts oder ganz links platziert werden. Wenn sie sich auf der linken Seite befinden, können sie nicht Teil des FQDN sein.\n- **FQDN**: Sternchen funktionieren, wenn sie ganz links platziert werden.\n\nBeispiele:\n\n\n  |type  |Regel  |Unterstützt?  |Positive Beispiele  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |Ja|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |Ja|`www.contoso.com`<br>`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|Ja         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|Ja|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|Ja|`www.contoso.com/test/anything`<br>Hinweis: `www.contoso.com/test` wird **nicht** übereinstimmen (letzter Schrägstrich)|\n  |TargetURL  |`www.contoso.*/test/*`|Nein|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|Nein|         |\n  |TargetURL  |`www.contoso.*`|Nein|         |\n  |TargetURL  |`www.*contoso.com`|Nein|         |\n  |TargetURL   |`www.contoso.com:8080`|Nein|         |\n  |TargetURL   |`*.contoso.*`|Nein|         |\n  |TargetFQDN    |`www.contoso.com`|Ja|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|Ja|`any.contoso.com`<br><br>Hinweis: Wenn Sie `contoso.com` explizit zulassen möchten, müssen Sie „contoso.com“ in die Regel aufnehmen. Andernfalls wird die Verbindung standardmäßig gelöscht, da die Anforderung mit keiner Regel übereinstimmt.|\n  |TargetFQDN    |`*contoso.com`|Ja|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|Nein|         |\n  |TargetFQDN    |`*.contoso.*`|Nein|         |\n \n"
+    answer: "- **URL**: Sternchen funktionieren, wenn sie ganz rechts oder ganz links platziert werden. Wenn sie sich auf der linken Seite befinden, können sie nicht Teil des FQDN sein.\n- **FQDN**: Sternchen funktionieren, wenn sie ganz links platziert werden.\n\nBeispiele:\n\n\n  |type  |Regel  |Unterstützt?  |Positive Beispiele  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |Ja|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |Ja|`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|Ja         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|Ja|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|Ja|`www.contoso.com/test/anything`<br>Hinweis: `www.contoso.com/test` wird **nicht** übereinstimmen (letzter Schrägstrich)|\n  |TargetURL  |`www.contoso.*/test/*`|Nein|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|Nein|         |\n  |TargetURL  |`www.contoso.*`|Nein|         |\n  |TargetURL  |`www.*contoso.com`|Nein|         |\n  |TargetURL   |`www.contoso.com:8080`|Nein|         |\n  |TargetURL   |`*.contoso.*`|Nein|         |\n  |TargetFQDN    |`www.contoso.com`|Ja|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|Ja|`any.contoso.com`<br><br>Hinweis: Wenn Sie `contoso.com` explizit zulassen möchten, müssen Sie „contoso.com“ in die Regel aufnehmen. Andernfalls wird die Verbindung standardmäßig gelöscht, da die Anforderung mit keiner Regel übereinstimmt.|\n  |TargetFQDN    |`*contoso.com`|Ja|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|Nein|         |\n  |TargetFQDN    |`*.contoso.*`|Nein|         |\n \n"
   - question: >
       Was bedeutet *Bereitstellungsstatus: Fehler*?
     answer: Wenn eine Konfigurationsänderung angewendet wird, versucht Azure Firewall alle zugrunde liegenden Back-End-Instanzen zu aktualisieren. In seltenen Fällen kann bei der Aktualisierung einer dieser Back-End-Instanzen mit der neuen Konfiguration ein Fehler auftreten, und der Aktualisierungsvorgang wird mit dem Bereitstellungsstatus „Fehler“ angehalten. Azure Firewall ist noch funktionsfähig, die angewendete Konfiguration befindet sich jedoch unter Umständen in einem inkonsistenten Zustand, in dem einige Instanzen die vorherige Konfiguration und andere den aktualisierten Regelsatz verwenden. Versuchen Sie in diesem Fall, die Konfiguration noch einmal zu aktualisieren, bis der Vorgang erfolgreich war und für Ihre Firewall der Bereitstellungsstatus *Erfolgreich* angezeigt wird.

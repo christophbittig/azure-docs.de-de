@@ -9,12 +9,12 @@ ms.author: barclayn
 ms.topic: tutorial
 ms.date: 04/01/2021
 ROBOTS: NOINDEX
-ms.openlocfilehash: 17229aca9833dced65ef07cebb59bd0a3569d6b4
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 096ca46c2a2c7c54553005fcb4a264c6ef8221d2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006905"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049176"
 ---
 #  <a name="tutorial---get-started-with-azure-active-directory-verifiable-credentials-using-a-sample-app-preview"></a>Tutorial: Erste Schritte mit Azure Active Directory-Nachweisen im Rahmen einer Beispiel-App (Vorschau)
 
@@ -141,7 +141,7 @@ Nachdem Sie nun den Ausstellungsteil des Tutorials abgeschlossen haben und in Au
     ngrok http 8082
     ```
 
-4. Öffnen Sie in Ihrem Browser die HTTPS-Weiterleitungs-URL von ngrok, und tippen Sie auf die Schaltfläche zum **Verifizieren des Nachweises**.  
+4. Öffnen Sie in Ihrem Browser die HTTPS-Weiterleitungs-URL von ngrok, und tippen Sie auf die Schaltfläche zum **Verifizieren der Anmeldeinformationen**.  
 
    ![Schaltfläche zum Verifizieren des Expertennachweises](media/get-started-verifiable-credentials/prove-credential-expert.png)
 

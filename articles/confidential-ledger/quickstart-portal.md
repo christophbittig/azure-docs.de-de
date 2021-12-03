@@ -7,16 +7,16 @@ ms.date: 10/18/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 5db9227303ed6b409dfd1650fc3c3a409ac2ba90
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 265dfc023d0adf384eb483efc16a40380e395fb3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167815"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458150"
 ---
 # <a name="quickstart-create-a-confidential-ledger-using-the-azure-portal"></a>Schnellstart: Erstellen einer Confidential Ledger-Instanz über das Azure-Portal
 
-Azure Confidential Ledger ist ein Clouddienst, der einen Speicher mit hoher Integrität für vertrauliche Datenprotokolle und Datensätze bietet, für die Daten intakt bleiben müssen. Weitere Informationen zu Confidential Ledger und Beispiele dafür, was in einer Confidential Ledger-Instanz gespeichert werden kann, finden Sie unter [Informationen zu Microsoft Azure Confidential Ledger](overview.md).
+Azure Confidential Ledger ist ein Clouddienst, der einen Speicher mit hoher Integrität für vertrauliche Datenprotokolle und Datensätze bietet, für die Daten intakt bleiben müssen. Weitere Informationen zu Azure Confidential Ledger und Beispiele dafür, was in einer Confidential Ledger-Instanz gespeichert werden kann, finden Sie unter [Informationen zu Microsoft Azure Confidential Ledger](overview.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -65,7 +65,7 @@ Sie benötigen diese Eigenschaftsnamen, um Transaktionen mit der Confidential L
  
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Weitere Artikel zu Confidential Ledger bauen auf dieser Schnellstartanleitung auf. Falls Sie mit weiteren Artikeln fortfahren möchten, empfiehlt es sich ggf., diese Ressourcen nicht zu bereinigen. 
+Weitere Artikel zu Azure Confidential Ledger bauen auf dieser Schnellstartanleitung auf. Falls Sie mit weiteren Artikeln fortfahren möchten, empfiehlt es sich ggf., diese Ressourcen nicht zu bereinigen. 
 
 Wenn Sie die Ressourcengruppe nicht mehr benötigen, löschen Sie die Ressourcengruppe. Dadurch werden die Confidential Ledger-Instanz und die dazugehörigen Ressourcen gelöscht. So löschen Sie die Ressourcengruppe über das Portal:
 
@@ -77,6 +77,6 @@ Wenn Sie die Ressourcengruppe nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Confidential Ledger-Instanz über das Azure-Portal erstellt. Weitere Informationen zu Confidential Ledger und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
+In dieser Schnellstartanleitung haben Sie eine Confidential Ledger-Instanz über das Azure-Portal erstellt. Weitere Informationen zu Azure Confidential Ledger und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
 - [Übersicht über Microsoft Azure Confidential Ledger](overview.md)

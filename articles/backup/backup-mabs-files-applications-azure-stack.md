@@ -2,13 +2,16 @@
 title: Sichern von Dateien auf virtuellen Azure Stack-Computern
 description: Verwenden Sie Azure Backup, um Azure Stack-Dateien und -Anwendungen in Ihrer Azure Stack-Umgebung zu sichern und wiederherzustellen.
 ms.topic: conceptual
-ms.date: 06/05/2018
-ms.openlocfilehash: cae95c10c510969cc0553a54a506789d6be427d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/11/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: a6c92485ec89e06f9bf545181fe7e6341cd7bff4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89180982"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284434"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Sichern von Dateien und Anwendungen in Azure Stack
 
@@ -133,5 +136,10 @@ Mit folgenden Schritten können Sie Azure Backup Server-Entitäten im Azure-Port
 
 Informationen zur Verwendung von Azure Backup Server zum Schützen anderer Workloads finden Sie in einem der folgenden Artikel:
 
+* [Informationen zu Azure Backup-Diensten](./backup-overview.md)
+* [Informationen zu Azure AD](../active-directory/fundamentals/active-directory-whatis.md)
+* [Informationen zum Azure Tresor für Wiederherstellungsdienste (Recovery Services)](./backup-azure-recovery-services-vault-overview.md)
+* [Informationen zu Azure Storage](../storage/common/storage-introduction.md)
+* [Informationen zu Azure Stack Hub](/azure-stack/operator/azure-stack-overview)
 * [Sichern einer SharePoint-Farm](./backup-mabs-sharepoint-azure-stack.md)
 * [Sichern einer SQL Server-Instanz](./backup-mabs-sql-azure-stack.md)

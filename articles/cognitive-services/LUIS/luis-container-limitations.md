@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/28/2021
 ms.author: aahi
-ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd29ef48f2d1042091a1379570e8ea710c718ff9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96002336"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426220"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Einschränkungen für Language Understanding-Container (LUIS)
 
@@ -46,7 +46,7 @@ Nicht unterstützte App-Konfigurationen|Details|
 
 LUIS-Container unterstützen eine Teilmenge der von LUIS insgesamt [unterstützten Sprachen](luis-language-support.md#languages-supported). Die LUIS-Container sind imstande, Äußerungen in den folgenden Sprachen zu verstehen:
 
-| Sprache | Gebietsschema | Vordefinierte Domäne | Vordefinierte Entität | Ausdrucklistenempfehlungen | \**[Textanalyse](../text-analytics/language-support.md)<br>(Stimmung und<br>Schlüsselwörter)|
+| Sprache | Gebietsschema | Vordefinierte Domäne | Vordefinierte Entität | Ausdrucklistenempfehlungen | **[Stimmungsanalyse](../language-service/sentiment-opinion-mining/language-support.md) und [Schlüsselbegriffserkennung](../language-service/key-phrase-extraction/language-support.md)|
 |--|--|:--:|:--:|:--:|:--:|
 | Englisch (USA) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Arabisch (Vorschau, modernes Hocharabisch) |`ar-AR`|❌|❌|❌|❌|
@@ -67,4 +67,4 @@ LUIS-Container unterstützen eine Teilmenge der von LUIS insgesamt [unterstützt
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
-[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
+[!INCLUDE [Language service support notes](includes/text-analytics-support-notes.md)]

@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.subservice: maintenance
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 10/18/2021
+ms.date: 10/20/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7df73a0e09cf845f0dd7b5fda10bbb370057e998
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 91d172cf1d3ba5bf78feb8e18382631464619c04
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181386"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459727"
 ---
-# <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>Vorschau: Automatische VM-Gastpatches für Azure-VMs
+# <a name="automatic-vm-guest-patching-for-azure-vms"></a>Automatische VM-Gastpatches für Azure-VMs
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen
 
@@ -28,11 +28,6 @@ Automatische VM-Gastpatches weisen die folgenden Merkmale auf:
 - Die Patchorchestrierung wird von Azure verwaltet, und Patches werden nach den [verfügbarkeitsbasierten Prinzipien](#availability-first-updates) angewendet.
 - Die Integrität des virtuellen Computers wird anhand von Integritätssignalen der Plattform ermittelt und überwacht, um Patchfehler zu erkennen.
 - Funktioniert für alle VM-Größen.
-
-> [!IMPORTANT]
-> Automatische VM-Gastpatches befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="how-does-automatic-vm-guest-patching-work"></a>Wie funktioniert automatisches VM-Gastpatchen?
 
@@ -78,7 +73,7 @@ Bei Betriebssystemtypen, die Patches in einem festen Rhythmus veröffentlichen, 
 Da jeden Monat ein neues Rollout ausgelöst wird, erhält eine VM jeden Monat mindestens ein Patchrollout, wenn die VM außerhalb der Spitzenzeiten eingeschaltet ist. Durch diesen Prozess wird sichergestellt, dass die VM monatlich mit den neuesten verfügbaren Sicherheits- und kritischen Patches gepatcht wird. Um die Konsistenz der installierten Patches sicherzustellen, können Sie Ihre VMs so konfigurieren, dass sie Patches aus Ihren eigenen privaten Repositorys bewerten und herunterladen.
 
 ## <a name="supported-os-images"></a>Unterstützte Betriebssystemimages
-Zurzeit werden nur VMs, die aus bestimmten Betriebssystem-Plattformimages erstellt wurden, in der Vorschau unterstützt. Benutzerdefinierte Images werden in der Vorschau zurzeit nicht unterstützt.
+Zurzeit werden nur VMs, die aus bestimmten Betriebssystem-Plattformimages erstellt wurden, in der Vorschau unterstützt. Benutzerdefinierte Bilder werden derzeit nicht unterstützt.
 
 Derzeit werden die folgenden Plattform-SKUs unterstützt (weitere werden regelmäßig hinzugefügt):
 
@@ -91,8 +86,8 @@ Derzeit werden die folgenden Plattform-SKUs unterstützt (weitere werden regelm�
 | Redhat  | RHEL | 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7_9, 7-RAW, 7-LVM |
 | Redhat  | RHEL | 8, 8.1, 8.2, 8_3, 8_4, 8-LVM |
 | Redhat  | RHEL-RAW | 8-raw |
-| OpenLogic  | Centos | 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7_8, 7_9, 7-LVM |
-| OpenLogic  | Centos | 8.0, 8_1, 8_2, 8_3, 8-lvm |
+| OpenLogic  | CentOS | 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7_8, 7_9, 7-LVM |
+| OpenLogic  | CentOS | 8.0, 8_1, 8_2, 8_3, 8-lvm |
 | SUSE  | sles-12-sp5 | gen1, gen2 |
 | SUSE  | sles-15-sp2 | gen1, gen2 |
 | MicrosoftWindowsServer  | Windows Server | 2008-R2-SP1 |

@@ -2,13 +2,13 @@
 title: App Service in Azure Arc
 description: Eine Einführung in App Service Integration in Azure Arc für Azure-Betreiber.
 ms.topic: article
-ms.date: 08/17/2021
-ms.openlocfilehash: cec1e7bb9dac43e33e85b6036910220a1fa287c2
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.date: 11/02/2021
+ms.openlocfilehash: 74cf4063d92aa5d563df881f2210e2ca5d08543e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711651"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440353"
 ---
 # <a name="app-service-functions-and-logic-apps-on-azure-arc-preview"></a>App Service, Funktionen und Logic Apps in Azure Arc (Vorschau)
 
@@ -32,6 +32,7 @@ Die folgenden Einschränkungen für die öffentliche Vorschau gelten für App Se
 |---------------------------------------------------------|---------------------------------------------------------------------------------------|
 | Unterstützte Azure-Regionen                                 | Ost-USA, Europa, Westen                                                                  |
 | Clusternetzwerkanforderung                          | Muss den `LoadBalancer`-Diensttyp unterstützen und eine öffentlich adressierbare statische IP-Adresse bereitstellen. |
+| Clusterspeicheranforderung                             | Muss über eine an den Cluster angefügte Speicherklasse verfügen, die von der Erweiterung verwendet werden kann, um die Bereitstellung und ggf. den Build von codebasierten Apps zu unterstützen.                      |
 | Funktion: Netzwerk                                     | [Nicht verfügbar (angewiesen auf Clusternetzwerke)](#are-networking-features-supported)      |
 | Funktion: Verwaltete Identitäten                             | [Nicht verfügbar](#are-managed-identities-supported)                                    |
 | Funktion: Key Vault-Verweise                           | Nicht verfügbar (abhängig von verwalteten Identitäten)                                         |
@@ -123,6 +124,31 @@ Beim Erstellen einer Kubernetes-Umgebungsressource wird für einige Abonnements 
 ### <a name="can-i-deploy-the-application-services-extension-on-an-arm64-based-cluster"></a>Kann ich die Anwendungsdiensterweiterung in einem ARM64-basierten Cluster bereitstellen?
 
 ARM64-basierte Cluster werden derzeit nicht unterstützt.  
+
+## <a name="extension-release-notes"></a>Versionshinweise zur Erweiterung
+
+### <a name="application-services-extension-v-090-may-2021"></a>Anwendungsdiensterweiterung, Version 0.9.0 (Mai 2021)
+
+- Erstes öffentliches Release der Vorschauversion der Anwendungsdiensterweiterung
+- Unterstützung für code- und containerbasierte Bereitstellungen von Web-, Funktions- und Logikanwendungen.
+- Runtimeunterstützung für Webanwendungen: .NET 3.1 und 5.0; Node.js 12 und 14; Python 3.6, 3.7 und 3.8; PHP 7.3 und 7.4; Ruby 2.5, 2.5.5, 2.6 und 2.6.2; Java SE 8u232, 8u242, 8u252, 11.05, 11.06 und 11.07; Tomcat 8.5, 8.5.41, 8.5.53, 8.5.57, 9.0, 9.0.20, 9.0.33, und 9.0.37.
+
+### <a name="application-services-extension-v-0100-november-2021"></a>Anwendungsdiensterweiterung, Version 0.10.0 (November 2021)
+
+Wenn Ihre Erweiterung in der letzten stabilen Version war und „auto-upgrade-minor-version“ auf aktiviert festgelegt ist, wird die Erweiterung automatisch aktualisiert.  Um die Erweiterung manuell auf die neueste Version zu aktualisieren, können Sie den Befehl weiter unten ausführen.
+
+- Die Anforderung für vorab zugewiesene statisch IP-Adressen, die für die Zuweisung zum Envoy-Endpunkt erforderlich sind, wurde entfernt
+- Upgrade von Keda auf Version 2.4.0
+- Upgrade von Envoy auf Version 1.19.0
+- Upgrade der Azure Functions-Runtime auf Version 3.3.1
+- Legen Sie die Standardreplikatanzahl von App Controller und Envoy Controller auf 2 fest, um weitere Stabilität zu schaffen.
+
+Wenn Ihre Erweiterung in der stabilen Version war und „auto-upgrade-minor-version“ auf TRUE festgelegt ist, wird die Erweiterung automatisch aktualisiert.  Um die Erweiterung manuell auf die neueste Version zu aktualisieren, können Sie den folgenden Befehl ausführen:
+
+```azurecli-interactive
+    az k8s-extension update --cluster-type connectedClusters -c <clustername> -g <resource group> -n <extension name> --release-train stable --version 0.10.0
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

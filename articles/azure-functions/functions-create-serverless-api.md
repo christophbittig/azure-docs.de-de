@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: b6e78329c4f45baffd779202ebfa37da3c6cf7c9
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 856845022e63a96b9e5d56d1e869dec55a2511be
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105433"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892170"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Anpassen eines HTTP-Endpunkts in Azure Functions
 
@@ -39,7 +39,7 @@ Standardmäßig ist Ihre HTTP-Triggerfunktion so konfiguriert, dass sie alle HTT
 
     | Feld | Beispielwert | BESCHREIBUNG |
     |---|---|---|
-    | Routenvorlage | /hello | Bestimmt, welche Route verwendet wird, um diese Funktion aufzurufen |
+    | Routenvorlage | hello | Bestimmt, welche Route verwendet wird, um diese Funktion aufzurufen |
     | Autorisierungsstufe | Anonym | Optional: Ermöglicht den Zugriff auf Ihre Funktion ohne einen API-Schlüssel |
     | Ausgewählte HTTP-Methoden | GET | Bestimmt, dass nur ausgewählte HTTP-Methoden zum Aufrufen dieser Funktion verwendet werden können |
 

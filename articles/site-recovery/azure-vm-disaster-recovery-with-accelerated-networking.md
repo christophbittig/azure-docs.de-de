@@ -3,18 +3,18 @@ title: Aktivieren des beschleunigten Netzwerkbetriebs für die Notfallwiederhers
 description: Dieser Artikel beschreibt, wie Sie den beschleunigten Netzwerkbetrieb mit Azure Site Recovery für die Notfallwiederherstellung von virtuellen Azure-Computern verwenden.
 services: site-recovery
 documentationcenter: ''
-author: Harsha-CS
-manager: rochakm
+author: rishjai-msft
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: harshacs
-ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: rishjai
+ms.openlocfilehash: d3495625da0b039a5e75bf3973600b16f802b263
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96000248"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463482"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Beschleunigter Netzwerkbetrieb mit Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -72,12 +72,12 @@ Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle 
 
 Wenn Sie die [Replikation für virtuelle Azure-Computer aktivieren](azure-to-azure-tutorial-enable-replication.md), erkennt Site Recovery automatisch, ob der beschleunigte Netzwerkbetrieb für die Netzwerkschnittstellen der virtuellen Computer aktiviert ist. Wenn der beschleunigte Netzwerkbetrieb bereits aktiviert ist, konfiguriert Site Recovery diesen automatisch in den Netzwerkschnittstellen des replizierten virtuellen Computers.
 
-Der Status des beschleunigten Netzwerkbetriebs kann im Abschnitt **Netzwerkschnittstellen** der **Compute und Netzwerk**-Einstellungen für den replizierten virtuellen Computer überprüft werden.
+Der Status des beschleunigten Netzwerkbetriebs kann auf der entsprechenden NIC-Registerkarte in den **Netzwerk**-Einstellungen des replizierten virtuellen Computers überprüft werden.
 
 ![Einstellungen des beschleunigten Netzwerkbetriebs](./media/azure-vm-disaster-recovery-with-accelerated-networking/compute-network-accelerated-networking.png)
 
 Wenn Sie den beschleunigten Netzwerkbetrieb erst nach dem Aktivieren der Replikation auf dem virtuellen Quellcomputer aktiviert haben, können Sie den Betrieb für die Netzwerkschnittstellen des virtuellen Computers mithilfe des folgenden Prozesses aktivieren:
-1. Öffnen Sie die **Compute und Netzwerk**-Einstellungen für den replizierten virtuellen Computer.
+1. Öffnen Sie die **Netzwerk**-Einstellungen des replizierten virtuellen Computers.
 2. Klicken Sie im Abschnitt **Netzwerkschnittstellen** auf den Namen der Netzwerkschnittstelle.
 3. Wählen Sie aus der Dropdownliste für den beschleunigten Netzwerkbetrieb in der Spalte **Ziel** die Option **Aktiviert** aus.
 

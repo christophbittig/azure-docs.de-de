@@ -8,6 +8,8 @@ items:
         href: overview.md
       - name: Neues
         href: whats-new.md
+      - name: 'Migrieren von LUIS, QnA Maker und Textanalyse'
+        href: concepts/migrate.md
       - name: Preise
         href: 'https://aka.ms/unifiedLanguagePricing'
       - name: Language Studio-Schnellstart
@@ -67,9 +69,19 @@ items:
           - name: REST-API (v3.2-preview.2)
             items:
               - name: Erstellungs-API
-                href: 'https://go.microsoft.com/fwlink/?linkid=2176818'
+                href: 'https://aka.ms/ct-authoring-swagger'
               - name: Vorhersage der Runtime-API
-                href: 'https://go.microsoft.com/fwlink/?linkid=2173145'
+                href: 'https://aka.ms/ct-runtime-swagger'
+          - name: SDKs (v3.2-preview.2)
+            items:
+              - name: .NET
+                href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+              - name: Python
+                href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+              - name: Java
+                href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+              - name: Node.js
+                href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
   - name: Benutzerdefinierte Erkennung benannter Entitäten (Vorschau)
     items:
       - name: Übersicht
@@ -115,9 +127,19 @@ items:
           - name: REST-API (v3.2-preview.2)
             items:
               - name: Erstellungs-API
-                href: 'https://go.microsoft.com/fwlink/?linkid=2176711'
+                href: 'https://aka.ms/ct-authoring-swagger'
               - name: Vorhersage der Runtime-API
-                href: 'https://go.microsoft.com/fwlink/?linkid=2173145'
+                href: 'https://aka.ms/ct-runtime-swagger'
+          - name: SDKs (v3.2-preview.2)
+            items:
+              - name: .NET
+                href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+              - name: Python
+                href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
+              - name: Java
+                href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview&preserve-view=true
+              - name: Node.js
+                href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview&preserve-view=true
   - name: Unterhaltungssprachverständnis (Vorschau)
     items:
       - name: Übersicht
@@ -138,8 +160,6 @@ items:
             href: conversational-language-understanding/how-to/tag-utterances.md
           - name: Trainieren eines Modells
             href: conversational-language-understanding/how-to/train-model.md
-          - name: Anzeigen der Modellauswertung und -bewertung
-            href: custom-named-entity-recognition/how-to/view-model-evaluation.md
           - name: Bereitstellen eines Modells und Abfragen der Runtime-API
             href: conversational-language-understanding/how-to/deploy-query-model.md
       - name: Konzepte
@@ -158,12 +178,18 @@ items:
             href: conversational-language-understanding/prebuilt-component-reference.md
           - name: Diensteinschränkungen
             href: conversational-language-understanding/service-limits.md
-          - name: Vorhersage-API
+          - name: REST-API
             items:
-              - name: REST-API
-                items:
-                  - name: v3.2-preview.2
-                    href: 'https://go.microsoft.com/fwlink/?linkid=2173145'
+              - name: Erstellen
+                href: 'https://aka.ms/clu-authoring-apis'
+              - name: Laufzeit-API
+                href: 'https://aka.ms/clu-apis'
+          - name: SDKs
+            items:
+              - name: .NET
+                href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview&preserve-view=true
+              - name: Python
+                href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true
   - name: Entitätsverknüpfung
     items:
       - name: Übersicht
@@ -174,9 +200,6 @@ items:
         href: entity-linking/language-support.md
       - name: Verantwortungsvolle Verwendung von KI
         items:
-          - name: Transparenzhinweis für Entitätsverknüpfung
-            href: /legal/cognitive-services/language-service/transparency-note-entity-linking?context=/azure/cognitive-services/language-service/context/context
-            displayName: 'Transparency note for entity linking, entity linking transparency, Responsible AI, Responsible use of AI'
           - name: Integration und verantwortungsvolle Verwendung
             href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
             displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
@@ -290,9 +313,9 @@ items:
         href: key-phrase-extraction/language-support.md
       - name: Verantwortungsvolle Verwendung von KI
         items:
-          - name: Transparenzhinweis für die Schlüsselbegriffserkennung
-            href: /legal/cognitive-services/language-service/transparency-note-key-phrase-detection?context=/azure/cognitive-services/language-service/context/context
-            displayName: 'Transparency note for key phrase detection, key phrase detection transparency, Responsible AI, Responsible use of AI'
+          - name: Transparenzhinweis für die Schlüsselbegriffsextraktion
+            href: /legal/cognitive-services/language-service/transparency-note-key-phrase-extraction?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Transparency note for key phrase extraction, key phrase extraction transparency, Responsible AI, Responsible use of AI'
           - name: Integration und verantwortungsvolle Verwendung
             href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
             displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
@@ -504,20 +527,30 @@ items:
             href: question-answering/how-to/analytics.md
           - name: Verwalten einer Wissensdatenbank
             href: question-answering/how-to/manage-knowledge-base.md
-          - name: Filtern von Antworten
-            href: ../qnamaker/how-to/query-knowledge-base-with-metadata.md?context=/azure/cognitive-services/language-service/context/context
           - name: Netzwerkisolation und private Endpunkte
             href: question-answering/how-to/network-isolation.md
+          - name: Erstellungs-API
+            href: question-answering/how-to/authoring.md
+          - name: Vordefinierte API
+            href: question-answering/how-to/prebuilt.md
+          - name: Problembehandlung
+            href: question-answering/how-to/troubleshooting.md
       - name: Konzepte
         items:
+          - name: Lebenszyklus der Entwicklung
+            href: question-answering/concepts/project-development-lifecycle.md
           - name: Ressourcenplanung
             href: question-answering/concepts/azure-resources.md
+          - name: App-Planung
+            href: question-answering/concepts/plan.md
           - name: Präzise Antworten
             href: question-answering/concepts/precise-answering.md
           - name: Zuverlässigkeitsbewertung
             href: question-answering/concepts/confidence-score.md
           - name: Bewährte Methoden
             href: question-answering/concepts/best-practices.md
+          - name: Einschränkungen
+            href: question-answering/concepts/limits.md
       - name: Tutorials
         items:
           - name: Erstellen eines Bots für häufig gestellte Fragen
@@ -532,6 +565,16 @@ items:
             href: question-answering/tutorials/multiple-languages.md
           - name: Mehrere Domänen
             href: question-answering/tutorials/multiple-domains.md
+      - name: Verweis
+        items:
+          - name: REST-API
+            items:
+              - name: Antwort-API
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering/get-answers'
+              - name: Vordefinierte API
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering/get-answers-from-text'
+              - name: Erstellungs-API
+                href: 'https://docs.microsoft.com/rest/api/cognitiveservices/questionanswering/question-answering-projects'
   - name: Stimmungsanalyse und Opinion Mining
     items:
       - name: Übersicht
@@ -568,9 +611,9 @@ items:
       - name: Tutorials
         items:
           - name: Stimmungsanalyse für Streamingdaten mit Azure Databricks
-            href: /databricks/scenarios/databricks-sentiment-analysis-cognitive-services?context=/azure/cognitive-services/language-service/context/context
+            href: /azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?context=/azure/cognitive-services/language-service/context/context
           - name: 'Übersetzen von Text, Analysieren der Stimmung und Synthetisieren von Sprache mithilfe von Flask'
-            href: /translator/tutorial-build-flask-app-translation-synthesis?context=/azure/cognitive-services/language-service/context/context
+            href: /azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?context=/azure/cognitive-services/language-service/context/context
       - name: Verweis
         items:
           - name: REST-API
@@ -717,8 +760,6 @@ items:
     items:
       - name: Mehrsprachige Unterstützung und Emoji-Unterstützung
         href: concepts/multilingual-emoji-support.md
-      - name: 'Migrieren von LUIS, QnA Maker und Textanalyse'
-        href: concepts/migrate.md
   - name: Tutorials
     items:
       - name: "Verwenden von Cognitive\_Services in Canvas-Apps"

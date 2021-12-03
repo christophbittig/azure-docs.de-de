@@ -1,8 +1,8 @@
 ---
 title: Grundlegendes zu den Preisen von Azure IoT Hub | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Informationen zur Funktionsweise von Messungen und zur Preisgestaltung für IoT Hub (einschließlich Praxisbeispielen).'
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.date: 03/11/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 809a38425adc376d72bed1330f077db2841ea8cd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 53dfcfbb04f729125db580a2f4f06ae5bb272bf3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355717"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548917"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub – Preisinformationen
 

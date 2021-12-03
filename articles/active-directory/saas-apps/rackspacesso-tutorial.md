@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 50b0a6bdb58559f5b0ca5c22991f6f6611269932
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5fffea39509166bcf600537372f0f37f1534308c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758938"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306907"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Tutorial: Azure Active Directory-Integration mit Rackspace SSO
 
@@ -87,7 +87,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Screenshot: Dialogfeld, in dem Sie eine Datei auswählen und hochladen können](common/browse-upload-metadata.png)
 
-    c. Sobald die Metadatendatei erfolgreich hochgeladen wurde, werden die erforderlichen URLs automatisch aufgefüllt.
+    c. Sobald die Metadaten-Datei erfolgreich hochgeladen wurde, werden die erforderlichen URLs automatisch ausgefüllt.
 
     d. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://login.rackspace.com/federate/`.
 
@@ -192,4 +192,4 @@ Sie können auch die Schaltfläche **Überprüfen** in den Einstellungen für ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren des einmaligen Anmeldens von Rackspace SSO können Sie Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren des einmaligen Anmeldens von Rackspace SSO können Sie Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

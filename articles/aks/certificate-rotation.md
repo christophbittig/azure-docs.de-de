@@ -3,13 +3,13 @@ title: Rotieren von Zertifikaten in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie Ihre Zertifikate in einem Azure Kubernetes Service-Cluster (AKS) rotieren.
 services: container-service
 ms.topic: article
-ms.date: 7/13/2021
-ms.openlocfilehash: ea488e281e52949eeb53fdeffb1dc26afb5a9b5e
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.date: 11/03/2021
+ms.openlocfilehash: cd1e55df9609adcc8d5d1d33b1853ba855889b8f
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350103"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371617"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Rotieren von Zertifikaten in Azure Kubernetes Service (AKS)
 
@@ -55,10 +55,37 @@ az vm run-command invoke -g MC_rg_myAKSCluster_region -n vm-name --command-id Ru
 az vmss run-command invoke -g MC_rg_myAKSCluster_region -n vmss-name --instance-id 0 --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
 ```
 
+## <a name="certificate-auto-rotation"></a>Automatische Zertifikatrotation
+
+Azure Kubernetes Service rotiert automatisch und ohne Ausfallzeiten Zertifikate, die nicht von einer Zertifizierungsstelle stammen, sowohl auf der Steuerungsebene als auch auf Agent-Knoten, bevor sie ablaufen.
+
+Damit AKS Zertifikate, die nicht von Zertifizierungsstellen stammen, automatisch rotieren kann, muss der Cluster [TLS-Bootstrapping](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/) bieten. TLS-Bootstrapping ist derzeit in den folgenden Regionen verfügbar:
+
+* eastus2euap
+* centraluseuap
+* westcentralus
+* uksouth
+* eastus
+* australiacentral
+* australiaest
+
+#### <a name="how-to-check-whether-current-agent-node-pool-is-tls-bootstrapping-enabled"></a>Wie kann überprüft werden, ob der aktuelle Agent-Knotenpool mit TLS-Bootstrapping aktiviert ist?
+Um zu überprüfen, ob TLS-Bootstrapping in Ihrem Cluster aktiviert ist, navigieren Sie zu den folgenden Pfaden.  Auf einem Linux-Knoten ist das: /var/lib/kubelet/bootstrap-kubeconfig. Auf einem Windows-Knoten ist das: c:\k\bootstrap-config.
+
+> [Hinweis] Der Dateipfad kann sich ändern, wenn die k8s-Version in der Zukunft weiterentwickelt wird.
+
+> [!IMPORTANT]
+>Nachdem eine Region konfiguriert wurde, erstellen Sie entweder einen neuen Cluster oder aktualisieren mit „az aks upgrade -g $RESSOURCEN_GRUPPEN_NAME -n $CLUSTER_NAME“ einen vorhandenen Cluster, um die automatische Zertifikatrotation für diesen Cluster zu konfigurieren. 
+
+### <a name="limitation"></a>Einschränkung
+
+Die automatische Zertifikatrotation wird in einem Cluster ohne RBAC nicht aktiviert.
+
+
 ## <a name="rotate-your-cluster-certificates"></a>Rotieren Ihrer Clusterzertifikate
 
 > [!WARNING]
-> Beim Rotieren von Zertifikaten mithilfe von `az aks rotate-certs` werden alle Knoten neu erstellt. Das kann dazu führen, dass der AKS-Cluster bis zu 30 Minuten ausfällt.
+> Beim Rotieren von Zertifikaten mithilfe von `az aks rotate-certs` werden alle Ihre Knoten und deren Betriebssystemdatenträger neu erstellt. Das kann dazu führen, dass der AKS-Cluster bis zu 30 Minuten ausfällt.
 
 Verwenden Sie [az aks get-credentials][az-aks-get-credentials], um sich bei Ihrem AKS-Cluster anzumelden. Mit diesem Befehl wird auch das `kubectl`-Clientzertifikat auf Ihren lokalen Computer heruntergeladen und konfiguriert.
 

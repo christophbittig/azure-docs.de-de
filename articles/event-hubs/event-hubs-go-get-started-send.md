@@ -2,13 +2,13 @@
 title: 'Schnellstart: Senden und Empfangen von Ereignissen unter Verwendung von Go: Azure Event Hubs'
 description: 'Schnellstart: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer Go-Anwendung, die Ereignisse aus Azure Event Hubs sendet.'
 ms.topic: quickstart
-ms.date: 09/23/2021
-ms.openlocfilehash: c6905dbdf3bac4beb95251b4cd0426384f05db07
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 11/11/2021
+ms.openlocfilehash: d70fdf86709257604d9176a760f0892dd9139420
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217313"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343342"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Schnellstart: Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von Go
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
@@ -80,7 +80,7 @@ Der folgende Code erstellt einen neuen Event Hubs-Client:
 
 ```go
 hub, err := eventhubs.NewHub("namespaceName", "hubName", tokenProvider)
-ctx := context.WithTimeout(context.Background(), 10 * time.Second)
+ctx, cancel := context.WithTimeout(context.Background(), 10 * time.Second)
 defer hub.Close(ctx)
 if err != nil {
     log.Fatalf("failed to get hub %s\n", err)

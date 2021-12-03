@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fdf632c298eeee10bac000f9695fc5e568043acd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2378daa38d1fba86bbb9194b7993cee9a862ad4c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128607784"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461967"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -27,7 +27,7 @@ Mit Azure Monitor wird sichergestellt, dass alle Daten und gespeicherten Abfrage
 
 Kundenseitig verwaltete Schlüssel werden auf [dedizierten Clustern](./logs-dedicated-clusters.md) bereitgestellt, die mehr Schutz und Kontrolle bieten. In dedizierten Clustern erfasste Daten werden zweimal verschlüsselt: einmal auf der Dienstebene mithilfe von Microsoft verwalteten Schlüsseln oder kundenseitig verwalteten Schlüsseln und einmal auf der Infrastrukturebene anhand von zwei verschiedenen Verschlüsselungsalgorithmen und zwei verschiedenen Schlüsseln. Die [doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) schützt vor dem Szenario, dass einer der Verschlüsselungsalgorithmen oder Schlüssel kompromittiert wurde. In diesem Fall werden die Daten weiterhin durch die zusätzliche Verschlüsselungsebene geschützt. Ein dedizierter Cluster ermöglicht Ihnen außerdem das Schützen Ihrer Daten mit [Lockbox](#customer-lockbox-preview).
 
-Daten, die in den letzten 14 Tagen erfasst wurden, werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Unabhängig von der Konfiguration kundenseitig verwalteter Schlüssel bleiben diese Daten mit Microsoft-Schlüsseln verschlüsselt, aber Ihre Kontrolle über SSD-Daten entspricht der [Schlüsselsperrung](#key-revocation). Wir arbeiten daran, dass SSD-Daten in der zweiten Hälfte des Jahres 2021 mit kundenseitig verwalteten Schlüsseln verschlüsselt werden.
+Daten, die in den letzten 14 Tagen erfasst wurden, und Daten, die kürzlich in Abfragen verwendet wurden, werden für effizientes Abfragen auch im Cache für heiße Daten (SSD-gestützt) aufbewahrt und unabhängig von der Konfiguration kundenseitig verwalteter Schlüssel mit Microsoft-Schlüsseln verschlüsselt. Ihre Kontrolle des SSD-Datenzugriffs gilt und entspricht der [Schlüsselsperrung](#key-revocation).
 
 Das [Preismodell](./logs-dedicated-clusters.md#cluster-pricing-model) für dedizierte Log Analytics-Cluster erfordert eine Mindestabnahme beginnend bei 500 GB/Tag. Es kann Werte von 500, 1000, 2000 oder 5000 GB/Tag haben.
 
@@ -73,37 +73,6 @@ Es gelten die folgenden Regeln:
 
 Im Azure-Portal wird die Konfiguration kundenseitig verwalteter Schlüssel derzeit nicht unterstützt. Die Bereitstellung kann über [PowerShell](/powershell/module/az.operationalinsights/)-, [CLI](/cli/azure/monitor/log-analytics)- oder [REST](/rest/api/loganalytics/)-Anforderungen vorgenommen werden.
 
-### <a name="asynchronous-operations-and-status-check"></a>Asynchrone Vorgänge und Statusüberprüfung
-
-Einige Konfigurationsschritte werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. In der Antwort kann `status` einen der folgenden Werte aufweisen: „In Bearbeitung“, „Wird aktualisiert“, „Wird gelöscht“, „Erfolgreich“ oder „Fehler“ mit einem Fehlercode.
-
-# <a name="azure-portal"></a>[Azure portal](#tab/portal)
-
-–
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-–
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-–
-
-# <a name="rest"></a>[REST](#tab/rest)
-
-Wenn REST verwendet wird, gibt die Antwort anfänglich den HTTP-Statuscode 202 (Akzeptiert) und einen Header mit der Eigenschaft *Azure-AsyncOperation* zurück:
-```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2021-06-01"
-```
-
-Sie können den Status des asynchronen Vorgangs überprüfen, indem Sie eine GET-Anforderung an den Endpunkt im *Azure-AsyncOperation*-Header senden:
-```rst
-GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2021-06-01
-Authorization: Bearer <token>
-```
-
----
-
 ## <a name="storing-encryption-key-kek"></a>Speichern des Verschlüsselungsschlüssels (KEK)
 
 Erstellen Sie eine neue oder verwenden Sie eine vorhandene Azure Key Vault-Instanz in der Region, in der der Cluster geplant ist, und generieren oder importieren Sie dann einen Schlüssel, der für die Protokollverschlüsselung verwendet werden soll. Azure Key Vault muss als wiederherstellbar konfiguriert werden, um Ihren Schlüssel und den Zugriff auf Ihre Daten in Azure Monitor zu schützen. Sie können diese Konfiguration unter den Eigenschaften in Ihrer Key Vault-Instanz überprüfen. Sowohl *Vorläufiges Löschen* als auch *Bereinigungsschutz* sollten aktiviert sein.
@@ -117,7 +86,7 @@ Diese Einstellungen können in Key Vault über die CLI und PowerShell aktualisie
 
 ## <a name="create-cluster"></a>Cluster erstellen
 
-Cluster unterstützen systemseitig zugewiesene verwaltete Identitäten und die Identitätseigenschaft `type` sollte auf `SystemAssigned` festgelegt werden. Die Identität wird bei der Clustererstellung automatisch generiert und kann später verwendet werden, um Speicherzugriff auf Ihre Key Vault-Instanz zu gewähren, damit Wrap- und Unwrap-Vorgänge (Packen und Entpacken) ausgeführt werden können. 
+Cluster verwenden verwaltete Identitäten für die Datenverschlüsselung mit Key Vault. Legen Sie beim Erstellen Ihres Clusters die Eigenschaft `type` der Identität auf `SystemAssigned` fest, um den Zugriff auf Ihre Key Vault-Instanz für Pack- und Entpackvorgänge zuzulassen. 
   
   Identitätseinstellungen im Cluster für systemseitig zugewiesene verwaltete Identität
   ```json
@@ -164,16 +133,24 @@ Der Vorgang ist asynchron und kann einige Zeit in Anspruch nehmen.
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
-az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
+az monitor log-analytics cluster update --no-wait --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
+
+# Wait for job completion when `--no-wait` was used
+$clusterResourceId = az monitor log-analytics cluster list --resource-group "resource-group-name" --query "[?contains(name, "cluster-name")].[id]" --output tsv
+az resource wait --created --ids $clusterResourceId --include-response-body true
+
 ```
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Select-AzSubscription "cluster-subscription-id"
 
-Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
+Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version" -AsJob
+
+# Check when the job is done when `-AsJob` was used
+Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 ```
 
 # <a name="rest"></a>[REST](#tab/rest)
@@ -199,9 +176,7 @@ Content-type: application/json
 
 **Antwort**
 
-Es dauert eine Weile, bis die Weitergabe des Schlüssels abgeschlossen ist. Sie können den Aktualisierungsstatus auf zwei Arten überprüfen:
-1. Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
-2. Senden Sie eine GET-Anforderung für den Cluster, und überprüfen Sie die Eigenschaften *KeyVaultProperties*. In der Antwort sollte der soeben aktualisierte Schlüssel zurückgegeben werden.
+Es dauert eine Weile, bis die Weitergabe des Schlüssels abgeschlossen ist. Sie können den Aktualisierungsstatus prüfen, indem Sie eine GET-Anforderung für den Cluster senden, und sich die Eigenschaften *KeyVaultProperties* ansehen. In der Antwort sollte der soeben aktualisierte Schlüssel zurückgegeben werden.
 
 Nach Abschluss der Aktualisierung des Schlüssels sollte die Antwort auf die GET-Anforderung wie folgt aussehen: 202 (Akzeptiert) und Header
 ```json
@@ -257,9 +232,7 @@ Folgen Sie dem im [Artikel zu dedizierten Clustern](./logs-dedicated-clusters.md
 > - Die empfohlene Vorgehensweise zum Widerrufen des Zugriffs auf Ihre Daten besteht darin, Ihren Schlüssel zu deaktivieren oder die Zugriffsrichtlinie auf Ihrer Key Vault-Instanz zu löschen.
 > - Wenn Sie `identity` `type` für den Cluster auf `None` festlegen, wird auch der Zugriff auf Ihre Daten widerrufen. Dieser Ansatz wird jedoch nicht empfohlen, da Sie ihn nicht ohne Kontaktaufnahme mit dem Support rückgängig machen können.
 
-Im Clusterspeicher werden Änderungen der Schlüsselberechtigungen immer innerhalb einer Stunde berücksichtigt, und der Speicher steht dann nicht mehr zur Verfügung. Neue Daten, die in den mit Ihrem Cluster verknüpften Arbeitsbereichen erfasst wurden, werden gelöscht und können nicht wiederhergestellt werden. Der Zugriff auf die Daten und Abfragen in diesen Arbeitsbereichen sind nicht mehr möglich. Zuvor erfasste Daten verbleiben im Speicher, solange der Cluster und Ihre Arbeitsbereiche nicht gelöscht werden. Daten, auf die nicht zugegriffen werden kann, unterliegen der Datenaufbewahrungsrichtlinie und werden bereinigt, sobald der Aufbewahrungszeitraum abgelaufen ist. Die in den letzten 14 Tagen erfassten Daten werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese werden beim Schlüsselsperrungsvorgang gelöscht, und es kann dann nicht mehr darauf zugegriffen werden.
-
-Der Clusterspeicher überprüft Ihre Key Vault-Instanz in regelmäßigen Abständen und versucht, den Verschlüsselungsschlüssel zu entpacken. Sobald der Zugriff erfolgt, werden die Vorgänge für die Datenerfassung und die Abfrage innerhalb von 30 Minuten fortgesetzt.
+Im Clusterspeicher werden Änderungen der Schlüsselberechtigungen immer innerhalb einer Stunde berücksichtigt, und der Speicher steht dann nicht mehr zur Verfügung. Neue Daten, die in den mit Ihrem Cluster verknüpften Arbeitsbereichen erfasst wurden, werden gelöscht und können nicht wiederhergestellt werden. Der Zugriff auf die Daten in diesen Arbeitsbereichen ist nicht mehr möglich und bei Abfragen treten Fehler auf. Zuvor erfasste Daten verbleiben im Speicher, solange der Cluster und Ihre Arbeitsbereiche nicht gelöscht werden. Daten, auf die nicht zugegriffen werden kann, unterliegen der Datenaufbewahrungsrichtlinie und werden bereinigt, sobald der Aufbewahrungszeitraum abgelaufen ist. Daten, die in den letzten 14 Tagen erfasst wurden, und Daten, die kürzlich in Abfragen verwendet wurden, werden für effizientes Abfragen auch im Cache für heiße Daten (SSD-gestützt) aufbewahrt. Die Daten auf SSD werden beim Schlüsselsperrungsvorgang gelöscht, und es kann dann nicht mehr darauf zugegriffen werden. Der Speicher des Clusters versucht in regelmäßigen Abständen, die Verschlüsselung mit Key Vault zu entpacken. Sobald Sie die Sperrung rückgängig machen, wird erfolgreich entpackt, SSD-Daten werden erneut aus dem Speicher geladen und die Datenerfassung und -abfrage werden innerhalb von 30 Minuten fortgesetzt.
 
 ## <a name="key-rotation"></a>Schlüsselrotation
 
@@ -301,7 +274,7 @@ Verknüpfen Sie das Speicherkonto für *Abfragen* mit Ihrem Arbeitsbereich. Abfr
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 
-Set-AzContext -SubscriptionId "workspace-subscription-id"
+az account set --subscription "workspace-subscription-id"
 
 az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
@@ -351,7 +324,7 @@ Verknüpfen Sie das Speicherkonto für *Warnungen* mit Ihrem Arbeitsbereich. Abf
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 
-Set-AzContext -SubscriptionId "workspace-subscription-id"
+az account set --subscription "workspace-subscription-id"
 
 az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
@@ -460,9 +433,7 @@ Der kundenseitig verwaltete Schlüssel wird im dedizierten Cluster bereitgestell
 
 - Wenn Sie die Schlüsselversion in Key Vault aktualisieren und die neuen Schlüsselbezeichnerdetails im Cluster nicht aktualisieren, verwendet der Log Analytics-Cluster weiterhin den vorherigen Schlüssel, und auf die Daten kann nicht mehr zugegriffen werden. Aktualisieren Sie neue Schlüsselbezeichnerdetails im Cluster, um mit der Datenerfassung fortzufahren und Daten abfragen zu können.
 
-- Einige Vorgänge dauern lange und können einige Zeit in Anspruch nehmen. Dies sind Erstellen des Clusters, Aktualisieren des Clusterschlüssels und Löschen des Clusters. Sie können den Vorgangsstatus auf zwei Arten überprüfen:
-  1. Kopieren Sie bei Verwendung von REST den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
-  2. Senden Sie eine GET-Anforderung an den Cluster oder Arbeitsbereich, und beobachten Sie die Antwort. Beispielsweise weist der nicht verknüpfte Arbeitsbereich unter *features* nicht die *clusterResourceId* auf.
+- Einige Vorgänge dauern lange und können einige Zeit in Anspruch nehmen. Dies sind Erstellen des Clusters, Aktualisieren des Clusterschlüssels und Löschen des Clusters. Sie können den Vorgangsstatus überprüfen, indem Sie eine GET-Anforderung an den Cluster oder Arbeitsbereich senden und die Antwort beobachten. Beispielsweise weist der nicht verknüpfte Arbeitsbereich unter *features* nicht die *clusterResourceId* auf.
 
 - Fehlermeldungen
   

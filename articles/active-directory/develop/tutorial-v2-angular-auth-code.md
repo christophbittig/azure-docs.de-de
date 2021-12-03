@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/14/2021
 ms.author: joarroyo
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: b116c7481dcbbdf05bf7aba476feeef853c0c87f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 398117120e560db00be97a344feed09351a26258
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993642"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050335"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application-spa-using-auth-code-flow"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API über eine Angular-Single-Page-Webanwendung (SPA) unter Verwendung des Autorisierungscodeflows
 
@@ -265,7 +265,7 @@ Registrieren Sie den Wert für Ihren **Umleitungs-URI** als **http://localhost:4
 
 Fügen Sie den Code aus den folgenden Abschnitten hinzu, um die Anmeldung mittels Popupfenster oder Vollbildumleitung aufzurufen: 
 
-### <a name="sign-in-using-popups"></a>Anmelden mittels Popups
+### <a name="sign-in-using-pop-ups"></a>Anmelden mit Hilfe von Popups
 
 1. Ändern Sie den Code in *src/app/app.component.ts* wie folgt, um einen Benutzer unter Verwendung eines Popupfensters anzumelden:
 
@@ -555,7 +555,7 @@ Wenn bestimmte Komponenten der Benutzeroberfläche nur für authentifizierte Ben
 
 ### <a name="angular-guard"></a>Angular-Wächter
 
-MSAL Angular bietet mit `MsalGuard` eine Klasse, mit der Sie Routen schützen und vor dem Zugriff auf die geschützte Route eine Authentifizierung erzwingen können. Mit den folgenden Schritten wird `MsalGuard` der Route `Profile` hinzugefügt. Der Schutz der Route `Profile` bedeutet Folgendes: Auch wenn sich ein Benutzer nicht über die Schaltfläche `Login` anmeldet, wird er vor der Anzeige der Seite `Profile` von `MsalGuard` mittels Popup oder Umleitung zur Authentifizierung aufgefordert, wenn er versucht, auf die Route `Profile` zuzugreifen, oder wenn er auf die Schaltfläche `Profile` klickt.
+MSAL Angular bietet mit `MsalGuard` eine Klasse, mit der Sie Routen schützen und vor dem Zugriff auf die geschützte Route eine Authentifizierung erzwingen können. Mit den folgenden Schritten wird `MsalGuard` der Route `Profile` hinzugefügt. Der Schutz der Route `Profile` bedeutet Folgendes: Auch wenn sich ein Nutzer nicht über die Schaltfläche `Login` anmeldet, wird er vor der Anzeige der Seite `Profile` von `MsalGuard` mittels Popup oder Umleitung zur Authentifizierung aufgefordert, wenn versucht wird, auf die Route `Profile` zuzugreifen oder wenn auf die Schaltfläche `Profile` geklickt wird.
 
 `MsalGuard` ist eine Komfortklasse zur Verbesserung der Benutzerfreundlichkeit. Sie sollte jedoch nicht als Sicherheitsfeature verwendet werden. Angreifer können clientseitige Wächter möglicherweise umgehen. Stellen Sie daher sicher, dass der Server keine Daten zurückgibt, auf die der Benutzer keinen Zugriff haben soll.
 
@@ -930,7 +930,7 @@ export class AppComponent implements OnInit, OnDestroy {
 }
 ```
 
-### <a name="sign-out-using-popups"></a>Abmelden mittels Popups
+### <a name="sign-out-using-pop-ups"></a>Durch Pop-Ups abmelden
 
 Aktualisieren Sie den Code in *src/app/app.component.ts*, um einen Benutzer unter Verwendung von Popups abzumelden:
 

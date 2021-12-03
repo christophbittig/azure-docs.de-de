@@ -2,13 +2,16 @@
 title: Sichern von Azure Database for PostgreSQL
 description: Weitere Informationen zur Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 ms.topic: conceptual
-ms.date: 09/22/2021
-ms.openlocfilehash: a012ef97db27b97039fa7aac7b108ca86afb9314
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 4121326bf36c71c3f98894bd8413dc1ae5f57a06
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219619"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458923"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 
@@ -31,6 +34,9 @@ Sie können die Sicherung für mehrere Datenbanken auf mehreren Azure PostgreSQL
    :::image type="content" source="./media/backup-azure-database-postgresql/create-or-add-backup-policy-inline.png" alt-text="Screenshot: Option zum Hinzufügen einer Sicherungsrichtlinie" lightbox="./media/backup-azure-database-postgresql/create-or-add-backup-policy-expanded.png":::
 
 1. **Auswählen der zu sichernden Azure Postgres-Datenbanken**: Wählen Sie einen der Azure PostgreSQL-Server abonnementübergreifend aus, wenn sie sich in derselben Region wie der Tresor befinden. Klappen Sie die Liste der Datenbanken innerhalb eines Servers auf, indem Sie auf den Pfeil klicken.
+
+   >[!Note]
+   >Sie können (und müssen) die Datenbanken nicht *azure_maintenance* und *azure_sys* sichern. Darüber hinaus können Sie eine Datenbank, die bereits in einem Sicherungstresor gesichert ist, nicht sichern.
 
    :::image type="content" source="./media/backup-azure-database-postgresql/select-azure-postgresql-databases-to-back-up-inline.png" alt-text="Screenshot: Option zum Auswählen einer Azure PostgreSQL-Datenbank" lightbox="./media/backup-azure-database-postgresql/select-azure-postgresql-databases-to-back-up-expanded.png":::
 
@@ -115,7 +121,7 @@ Sie können während des Ablaufs zur Sicherungskonfiguration eine Sicherungsrich
    - Die Aufbewahrungsdauer reicht im **Sicherungsdatenspeicher** von sieben Tagen bis zu zehn Jahren.
    - Die Aufbewahrungsdauer reicht im **Archivdatenspeicher** von sechs Monaten bis zu zehn Jahren.
 
-   :::image type="content" source="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-inline.png" alt-text="Screenshot: 5. Sicherung nach Ablauf im Sicherungsdatenspeicher in den Archivdatenspeicher verschieben" lightbox="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-expanded.png":::
+   :::image type="content" source="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-inline.png" alt-text="Screenshot: „Nach Ablauf“ wählen, um die Sicherung nach Ablauf in den Archivdatenspeicher zu verschieben." lightbox="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-expanded.png":::
 
 >[!Note]
 >Die Aufbewahrungsregeln werden in einer vordefinierten Reihenfolge ausgewertet. Die oberste Priorität hat die Regel „Jährlich“, gefolgt von der Regel „Monatlich“ und dann von der Regel „Wöchentlich“. Die Standardeinstellungen für die Aufbewahrung werden angewendet, wenn keine anderen Regeln zutreffen. Beispielsweise kann derselbe Wiederherstellungspunkt sowohl die erste erfolgreiche Sicherung, die jede Woche erstellt wird, als auch die erste erfolgreiche Sicherung, die jeden Monat erstellt wird, sein. Da die Priorität der monatlichen Regel jedoch höher als die der wöchentlichen Regel ist, gilt die Aufbewahrungsregel, die der ersten erfolgreichen, monatlich erstellten Sicherung entspricht.

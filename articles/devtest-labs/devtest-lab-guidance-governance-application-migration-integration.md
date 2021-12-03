@@ -1,15 +1,15 @@
 ---
 title: Anwendungsmigration und -integration
-description: Dieser Artikel enthält hilfreiche Informationen zur Governance der Azure DevTest Labs-Infrastruktur im Kontext der Anwendungsmigration und -integration.
+description: Dieser Artikel enthält einen Leitfaden zur Governance der Azure DevTest Labs-Infrastruktur. Der Kontext ist Anwendungsmigration und -integration.
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: a76da1aa62444c3bf7b9cd99216779774766299a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 0c80db4ef4d9fa6b3b58d84d663a84b89f93219f
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251754"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397621"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Governance der Azure DevTest Labs-Infrastruktur: Migration und Integration von Anwendungen
 Nach der Einrichtung Ihrer Entwicklungs-/Test Lab-Umgebung müssen Sie sich die folgenden Fragen stellen:
@@ -30,7 +30,7 @@ Azure Marketplace sollte standardmäßig verwendet werden, sofern keine bestimmt
 - Entwickler und Tester benötigen schnell Zugriff auf einen virtuellen Computer und möchten die erforderliche Zeit für die Einrichtung eines neuen virtuellen Computers minimieren.
 - Compliance- oder behördliche Bestimmungen (z.B. Sicherheitsrichtlinien), die für alle Computer umgesetzt werden müssen.
 
-Die Verwendung benutzerdefinierter Images sollte nicht auf die leichte Schulter genommen werden. Sie bringen zusätzliche Komplexität ins Spiel, da Sie sich nun um die Verwaltung der VHD-Dateien für die zugrundeliegenden Basisimages kümmern müssen. Außerdem müssen Sie die Basisimages regelmäßig mit Softwareupdates patchen. Zu diesen Updates gehören neue Betriebssystemupdates und alle Updates oder Konfigurationsänderungen, die am Softwarepaket selbst erforderlich werden.
+Erwägen Sie die Verwendung benutzerdefinierter Images sorgfältig. Benutzerdefinierte Images führen zu zusätzlicher Komplexität, da Sie sich nun um die Verwaltung der VHD-Dateien für die zugrundeliegenden Basisimages kümmern müssen. Außerdem müssen Sie die Basisimages regelmäßig mit Softwareupdates patchen. Zu diesen Updates gehören neue Betriebssystemupdates und alle Updates oder Konfigurationsänderungen, die am Softwarepaket selbst erforderlich werden.
 
 ## <a name="formula-vs-custom-image"></a>Formel- im Vergleich mit benutzerdefinierten Images
 
@@ -40,9 +40,13 @@ Wann sollte ein Formel- im Vergleich zu einem benutzerdefinierten Image bevorzug
 ### <a name="answer"></a>Antwort
 In der Regel sind die entscheidenden Faktoren Kosten und Wiederverwendbarkeit.
 
-Wenn in Ihrem Szenario viele Benutzer/Labs ein Image mit viel Software zusätzlich zum Basisimage erfordern, können Sie durch Erstellen eines benutzerdefinierten Images möglicherweise die Kosten reduzieren. Dies bedeutet, dass das Image einmal erstellt wird. Dadurch verringern sich der Zeitbedarf für die Einrichtung des virtuellen Computers und die Kosten, die bei der Ausführung des virtuellen Computers während des Setups anfallen würden.
+Sie können unter den folgenden Umständen die Kosten senken, indem Sie ein benutzerdefiniertes Image erstellen:
+- Viele Benutzer oder Labs benötigen das Image.
+- Das erforderliche Image verfügt über umfangreiche Software über dem Basisimage.
 
-Ein weiterer Faktor, der Beachtung verdient, ist jedoch die Häufigkeit von Änderungen an Ihrem Softwarepaket. Wenn Sie täglich Builds ausführen und es erforderlich ist, dass diese Software auf den virtuellen Computern Ihrer Benutzer vorhanden ist, ziehen Sie die Verwendung eines Formel- anstelle eines benutzerdefinierten Images in Betracht.
+Diese Lösung bedeutet, dass Sie das Image ein Mal erstellen. Ein benutzerdefiniertes Image reduziert die Einrichtungszeit der VM. Bei der Ausführung der VM während des Setups fallen keine Kosten an.
+
+Ein weiterer Faktor ist die Häufigkeit von Änderungen an Ihrem Softwarepaket. Wenn Sie täglich Builds ausführen und es erforderlich ist, dass Software auf den VMs Ihrer Benutzer vorhanden ist, ziehen Sie die Verwendung einer Formel anstelle eines benutzerdefinierten Images in Betracht.
 
 ## <a name="use-custom-organizational-images"></a>Verwenden von benutzerdefinierten Images der Organisation
 
@@ -67,14 +71,14 @@ Wie kann ich sicherstellen, dass VMs für Entwicklung und Test das öffentliche 
 ### <a name="answer"></a>Antwort
 Ja. Zwei Aspekte müssen berücksichtigt werden: eingehender und ausgehender Datenverkehr.
 
-**Eingehender Datenverkehr**: Wenn der virtuelle Computer nicht über eine öffentliche IP-Adresse verfügt, kann er vom Internet aus nicht erreicht werden. Ein gängiger Ansatz besteht darin, eine Richtlinie auf Abonnementebene festzulegen, die sicherstellt, dass kein Benutzer eine öffentliche IP-Adresse erstellen kann.
+**Eingehender Datenverkehr**: Wenn die VM über keine öffentliche IP-Adresse verfügt, kann sie aus dem Internet nicht erreicht werden. Ein gängiger Ansatz besteht darin, eine Richtlinie auf Abonnementebene festzulegen, die sicherstellt, dass kein Benutzer eine öffentliche IP-Adresse erstellen kann.
 
-**Ausgehender Datenverkehr**: Wenn Sie verhindern möchten, dass virtuelle Computer direkte Verbindungen mit dem öffentlichen Internet herstellen und Datenverkehr durch eine Unternehmensfirewall senden können, können Sie den Datenverkehr lokal mithilfe von ExpressRoute oder VPN routen, indem Sie erzwungenes Routing einsetzen.
+**Ausgehender Datenverkehr**: Wenn Sie verhindern möchten, dass VMs direkte Verbindungen mit dem öffentlichen Internet herstellen und Datenverkehr durch eine Unternehmensfirewall senden können, können Sie den Datenverkehr lokal mithilfe von Azure ExpressRoute oder VPN routen, indem Sie erzwungenes Routing einsetzen.
 
 > [!NOTE]
 > Wenn Sie über einen Proxyserver verfügen, der ohne Proxyeinstellungen Datenverkehr blockiert, vergessen Sie nicht, Ausnahmen für das Speicherkonto des Labs für Artefakte hinzuzufügen.
 
-Sie können außerdem Netzwerksicherheitsgruppen für virtuelle Computer oder Subnetze verwenden. Dieser Schritt fügt eine zusätzliche Schutzschicht zum Zulassen/Blockieren von Datenverkehr hinzu.
+Sie können außerdem Netzwerksicherheitsgruppen für virtuelle Computer oder Subnetze verwenden. Dieser Schritt fügt eine weitere Schutzschicht zum Zulassen/Blockieren von Datenverkehr hinzu.
 
 ## <a name="new-vs-existing-virtual-network"></a>Neues im Vergleich mit vorhandenem virtuellem Netzwerk
 
@@ -82,9 +86,9 @@ Sie können außerdem Netzwerksicherheitsgruppen für virtuelle Computer oder Su
 Wann sollte ich ein neues virtuelles Netzwerk für meine DevTest Labs-Umgebung erstellen und wann ein vorhandenes virtuelles Netzwerk nutzen?
 
 ### <a name="answer"></a>Antwort
-Wenn Ihre VMs mit vorhandener Infrastruktur interagieren müssen, sollten Sie die Verwendung eines vorhandenen virtuellen Netzwerks innerhalb Ihrer DevTest Labs-Umgebung in Erwägung ziehen. Wenn Sie ExpressRoute verwenden, kann es darüber hinaus sinnvoll sein, die Menge der VNets/Subnetze zu minimieren, um Fragmentierung Ihres IP-Adressraums, der für die Verwendung in den Abonnements zugewiesen wird, zu vermeiden. Sie sollten hier ferner die Verwendung des VNet-Peeringmusters (Nabe-Speiche-Modell) in Erwägung ziehen. Dieser Ansatz ermöglicht die abonnementübergreifende Kommunikation in VNets/Subnetzen innerhalb einer bestimmten Region. Das regionsübergreifende Peering ist als zukünftiges Feature in Azure-Netzwerken vorgesehen.
+Wenn Ihre VMs mit vorhandener Infrastruktur interagieren müssen, sollten Sie die Verwendung eines vorhandenen virtuellen Netzwerks innerhalb Ihrer DevTest Labs-Umgebung in Erwägung ziehen. Wenn Sie ExpressRoute verwenden, minimieren Sie die Anzahl virtueller Netzwerke und Subnetze, sodass Sie den IP-Adressraum, der Ihren Abonnements zugewiesen ist, nicht fragmentieren. Sie sollten auch die Verwendung des Peeringmusters für virtuelle Netzwerke (Hub-Spoke-Modell) in Erwägung ziehen. Dieser Ansatz ermöglicht die abonnementübergreifende Kommunikation zwischen virtuellen Netzwerken und Subnetzen innerhalb einer bestimmten Region.
 
-Andernfalls kann jede DevTest Labs-Umgebung über ein eigenen virtuelles Netzwerk verfügen. Beachten Sie aber, dass die Anzahl der virtuellen Netzwerke pro Abonnement [begrenzt](../azure-resource-manager/management/azure-subscription-service-limits.md) ist. Standardmäßig sind 50 möglich, dieser Grenzwert kann jedoch auf 100 heraufgesetzt werden.
+Jede DevTest Labs-Umgebung kann über ein eigenes virtuelles Netzwerk verfügen, aber es gibt [Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md) für die Anzahl virtueller Netzwerke pro Abonnement. Standardmäßig sind 50 möglich, dieser Grenzwert kann jedoch auf 100 heraufgesetzt werden.
 
 ## <a name="shared-public-or-private-ip"></a>Freigegebene, öffentliche oder private IP
 
@@ -102,12 +106,12 @@ Bei der Verwendung gemeinsamer öffentlicher IPs teilen die virtuellen Computer 
 ## <a name="limits-of-number-of-virtual-machines-per-user-or-lab"></a>Grenzen der Anzahl virtueller Computer pro Benutzer oder Lab
 
 ### <a name="question"></a>Frage
-Gibt es eine Regel hinsichtlich der Anzahl virtueller Computer, die pro Benutzer oder Lab eingerichtet werden sollten?
+Gibt es eine Regel hinsichtlich der Anzahl von VMS, die pro Benutzer oder Lab eingerichtet werden sollten?
 
 ### <a name="answer"></a>Antwort
 Beim Betrachten der Anzahl virtueller Computer pro Benutzer oder Lab gibt es drei Hauptanliegen:
 
-- Die **Gesamtkosten**, die das Team für Ressourcen im Lab aufwenden kann. Es ist natürlich kein Problem, viele Computer laufen zu lassen. Ein Mechanismus zur Kostenkontrolle besteht darin, die Anzahl der VMs pro Benutzer und/oder Lab zu beschränken.
+- Die **Gesamtkosten**, die das Team für Ressourcen im Lab aufwenden kann. Es ist natürlich kein Problem, viele Computer laufen zu lassen. Ein Mechanismus zur Kostenkontrolle besteht darin, die Anzahl der VMs pro Benutzer oder Lab zu beschränken.
 - Die Gesamtzahl der virtuellen Computer in einem Lab wird durch die verfügbaren [Kontingente auf Abonnementebene](../azure-resource-manager/management/azure-subscription-service-limits.md) beeinflusst. Eine der Obergrenzen liegt bei 800 Ressourcengruppen pro Abonnement. DevTest Labs erstellt derzeit eine neue Ressourcengruppe für jeden virtuellen Computer (sofern keine gemeinsamen öffentlichen IP-Adressen verwendet werden). Wenn Sie 10 Labs in einem Abonnement betreiben, könnten pro Lab ungefähr 79 virtuelle Computer eingesetzt werden (Obergrenze von 800 – 10 Ressourcengruppen für die 10 Labs selbst) = 79 virtuelle Computer pro Lab.
 - Wenn das Lab mithilfe von ExpressRoute (beispielsweise) mit dem lokalen Netzwerk verbunden ist, sind für das VNet/Subnetz **definierte IP-Adressräume verfügbar**. Um sicherzustellen, dass keine Fehler beim Erstellen von VMs im Lab auftreten (Fehler: IP-Adresse kann nicht abgerufen werden), können sich Lab-Besitzer beim Festlegen der maximalen Anzahl von VMs pro Lab am zur Verfügung stehenden IP-Adressraum orientieren.
 
@@ -117,11 +121,11 @@ Beim Betrachten der Anzahl virtueller Computer pro Benutzer oder Lab gibt es dre
 Wie können Resource Manager-Vorlagen in der DevTest Labs-Umgebung verwendet werden?
 
 ### <a name="answer"></a>Antwort
-Sie stellen Ihre Resource Manager-Vorlagen mithilfe der im Artikel [Environments feature in DevTest labs](devtest-lab-test-env.md) (Umgebungsfeature in DevTest Labs) genannten Schritte in einer DevTest Labs-Umgebung bereit. Im Wesentlichen checken Sie Ihre Resource Manager-Vorlagen in ein Git-Repository ein (Azure Repos oder GitHub) und fügen dem Lab ein [privates Repository für Ihre Vorlagen](devtest-lab-test-env.md) hinzu.
+Stellen Sie Ihre Resource Manager-Vorlagen bereit, indem Sie die Schritte unter [Verwenden von Azure DevTest Labs für Testumgebungen](devtest-lab-test-env.md) ausführen. Im Wesentlichen checken Sie Ihre Resource Manager-Vorlagen in ein Azure Repos- oder GitHub Git-Repository ein und fügen dem Lab ein [privates Repository für Ihre Vorlagen](devtest-lab-test-env.md) hinzu.
 
-Dieses Szenario ist möglicherweise nicht nützlich, wenn Sie DevTest Labs zum Hosten von Entwicklungscomputern verwenden, es kann aber beim Erstellen einer Stagingumgebung nützlich sein, die eine Produktionsumgebung darstellen soll.
+Dieses Szenario ist möglicherweise nicht sinnvoll, wenn Sie DevTest Labs zum Hosten von Entwicklungscomputern verwenden. Verwenden Sie dieses Szenario, um eine Stagingumgebung zu erstellen, die für die Produktion repräsentativ ist.
 
-Außerdem ist erwähnenswert, dass die Option für die Anzahl der virtuellen Computer pro Lab oder pro Benutzer nur die Anzahl der nativ im Lab selbst erstellten Computer einschränkt, Umgebungsparameter (Resource Manager-Vorlagen) aber nicht betrifft.
+Die Option für die Anzahl von VMs pro Lab oder Benutzer schränkt nur die Anzahl der nativ im Lab selbst erstellten Computer ein. Diese Option schränkt nicht die Erstellung durch Umgebungen mit Resource Manager Vorlagen ein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [Use environments in DevTest Labs](devtest-lab-test-env.md) (Verwenden von Umgebungen in DevTest Labs).

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/13/2021
+ms.date: 10/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18cc593e3aa1f50dcdaeaea32d7ac584f8bd4a24
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 4de2ed185b3a4421a06ac9b3c88df68821b61adf
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354064"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307989"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -77,7 +77,7 @@ Dies ermöglicht ein Szenario, bei dem Benutzer unmittelbar nach Änderungen der
 
 | | OneDrive Web | OneDrive Win32 | OneDrive iOS | OneDrive Android | OneDrive Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+| **SharePoint Online** | Unterstützt | Nicht unterstützt | Unterstützt | Unterstützt | Nicht unterstützt |
 
 | | Teams (Webversion) | Teams (Win32) | Teams iOS | Teams Android | Teams Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -136,25 +136,27 @@ Im folgenden Beispiel hat ein Administrator für den bedingten Zugriff eine stan
 
 ## <a name="enable-or-disable-cae-preview"></a>Aktivieren oder Deaktivieren der fortlaufenden Zugriffsevaluierung (Vorschau)
 
-1. Melden Sie sich als Administrator für bedingten Zugriff, Sicherheitsadministrator oder globaler Administrator beim **Azure-Portal** an.
-1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Fortlaufende Zugriffsevaluierung**.
-1. Wählen Sie **Vorschau aktivieren** aus.
-1. Wählen Sie **Speichern**.
+Die CAE-Einstellung wurde in den Bereich „Bedingter Zugriff“ verschoben. Neue CAE-Kunden können beim Erstellen von Richtlinien für bedingten Zugriff direkt auf CAE zugreifen und diese umschalten. Einige Bestandskunden müssen jedoch die Migration durchlaufen, bevor sie mit dem Zugriff auf CAE über bedingten Zugriff beginnen können.
 
-Auf dieser Seite können Sie optional die Benutzer und Gruppen für die Vorschau einschränken.
+#### <a name="migration"></a>Migration
 
-> [!NOTE]
-> Sie können Microsoft Graph über [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&preserve-view=true&tabs=http#request-body) abfragen, um die CAE-Konfiguration in Ihrem Mandanten zu überprüfen. Eine HTTP 200-Antwort und der zugehörige Antworttext geben an, ob CAE in Ihrem Mandanten aktiviert oder deaktiviert ist. CAE ist nicht konfiguriert, wenn Microsoft Graph eine HTTP 404-Antwort zurückgibt.
+Kunden, die zuvor CAE-Einstellungen unter Sicherheit konfiguriert haben, müssen diese Einstellungen in eine neue Richtlinie für bedingten Zugriff migrieren. Führen Sie die folgenden Schritte aus, um Ihre CAE-Einstellungen in eine Richtlinie für bedingten Zugriff zu migrieren.
 
-![Aktivieren der Vorschau der fortlaufenden Zugriffsevaluierung im Azure-Portal](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
+:::image type="content" source="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png" alt-text="Portalansicht mit der Option zum Migrieren der fortlaufenden Zugriffsauswertung zu einer Richtlinie für bedingten Zugriff." lightbox="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png":::
 
-### <a name="available-options"></a>Verfügbare Optionen
+1. Melden Sie sich als Administrator für bedingten Zugriff, Sicherheitsadministrator oder globaler Administrator beim **Azure-Portal** an. 
+1.  Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Fortlaufende Zugriffsevaluierung (Vorschauversion)** . 
+1.  Es wird die Option **Migrieren** der Richtlinie angezeigt. Diese Aktion ist die einzige Aktion, auf die Sie zu diesem Zeitpunkt zugreifen können.
+1. Navigieren Sie zu **Bedingter Zugriff**. Sie sehen dort eine neue Richtlinie namens **ZS-Richtlinie aus CAE-Einstellungen**, die mit Ihren Einstellungen konfiguriert ist. Administratoren können diese Richtlinie anpassen oder eine eigene Richtlinie erstellen, um sie zu ersetzen.
 
-Organisationen haben Optionen, wenn es um die Aktivierung von CAE geht.
+Weitere Informationen zur fortlaufenden Zugriffsauswertung als Sitzungssteuerung finden Sie im Abschnitt [Anpassen der fortlaufenden Zugriffsauswertung](concept-conditional-access-session.md#customize-continuous-access-evaluation).
 
-1. Wenn Sie die standardmäßige Einstellung **Automatische Aktivierung nach allgemeiner Verfügbarkeit** beibehalten, wird die Funktionalität aktiviert, sobald CAE allgemein verfügbar ist.
-1. Kunden, die **Vorschau aktivieren** wählen, profitieren sofort von der neuen Funktionalität und müssen bei allgemeiner Verfügbarkeit keine Änderungen vornehmen. 
-1. Kunden, die **Vorschau deaktivieren** wählen, haben Zeit, CAE nach ihrem eigenen Zeitplan zu übernehmen. Diese Einstellung wird bei der allgemeinen Verfügbarkeit als **Deaktiviert** beibehalten.
+### <a name="strict-enforcement"></a>Strict Enforcement (Strenge Erzwingung) 
+
+Bei der aktuellsten CAE-Einstellung unter „Bedingter Zugriff“ ist Strict Enforcement (Strenge Erzwingung) ein neues Feature, das eine erhöhte Sicherheit auf der Grundlage von zwei Faktoren ermöglicht: IP-Adressvariation und Clientfunktion. Diese Funktion kann beim Anpassen von CAE-Optionen für eine bestimmte Richtlinie aktiviert werden. Durch Aktivieren von Strict Enforcement (Strenge Erzwingung) widerruft CAE den Zugriff, wenn Instanzen von [IP-Adressvariationen](#ip-address-variation) oder fehlende [CAE-Clientfunktionen](#client-capabilities)erkannt werden.
+
+> [!NOTE] 
+> Sie sollten die strikte Durchsetzung erst aktivieren, nachdem Sie sichergestellt haben, dass alle Clientanwendungen CAE unterstützen und Sie alle IP-Adressen, die von Azure AD und den Ressourcenanbietern wie Exchange online und Azure Resource Mananger gesehen werden, in Ihre Standortrichtlinie unter Conditional Access aufgenommen haben. Andernfalls könnten Sie gesperrt werden.
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -229,4 +231,5 @@ Die Anmeldehäufigkeit wird mit oder ohne CAE berücksichtigt.
 
 - [Verwenden von CAE-fähigen APIs in Ihren Anwendungen](../develop/app-resilience-continuous-access-evaluation.md)
 - [Anspruchsherausforderungen, Anspruchsanforderungen und Clientfunktionen](../develop/claims-challenge.md)
+- [Bedingter Zugriff: Sitzung](concept-conditional-access-session.md)
 - [Überwachung und Problembehandlung von fortlaufender Zugriffsevaluierung](howto-continuous-access-evaluation-troubleshoot.md)

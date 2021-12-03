@@ -98,6 +98,8 @@
               href: continuous-backup-restore-frequently-asked-questions.yml
             - name: 'Fortlaufende Sicherung: Ressourcenmodell'
               href: continuous-backup-restore-resource-model.md
+            - name: Letzter wiederherstellbarer Zeitstempel
+              href: latest-restore-timestamp-continuous-backup.md
     - name: Optimieren der Kosten für Azure Cosmos DB
       items:
         - name: Planen und Verwalten von Kosten
@@ -167,11 +169,9 @@
               href: sql/create-sql-api-nodejs.md
             - name: Python-App
               href: sql/create-sql-api-python.md
-            - name: Xamarin-App
-              href: sql/create-sql-api-xamarin-dotnet.md
     - name: Tutorials
       items:
-        - name: 1. Erstellen und Verwalten von Daten
+        - name: Erstellen und Verwalten von Daten
           items:
             - name: Erstellen einer Konsolen-App
               items:
@@ -191,28 +191,24 @@
                   href: sql/sql-api-java-application.md
                 - name: Node.js
                   href: sql/sql-api-nodejs-application.md
-            - name: Erstellen einer mobilen App
-              items:
-                - name: Xamarin
-                  href: sql/mobile-apps-with-xamarin.md
-        - name: 2. Migrieren von Daten
+        - name: Migrieren von Daten
           items:
             - name: Verwenden des Datenmigrationstools
               href: import-data.md
             - name: Unter Verwendung der .NET-Unterstützung für Massenvorgänge
               href: sql/tutorial-sql-api-dotnet-bulk-import.md
-        - name: 3. Abfragen von Daten
+        - name: Daten abfragen
           href: sql/tutorial-query-sql-api.md
-        - name: 4. Erstellen eines Notebooks
+        - name: Erstellen eines Notebooks
           href: sql/create-notebook-visualize-data.md
-        - name: 5. Globale Datenverteilung
+        - name: Globale Verteilung von Daten
           href: sql/tutorial-global-distribution-sql-api.md
+        - name: Spring Boot-App in Azure Kubernetes Service
+          href: sql/tutorial-springboot-azure-kubernetes-service.md
     - name: Beispiele
       items:
-        - name: .NET V2 SDK-Beispiele
-          href: sql/sql-api-dotnet-samples.md
         - name: .NET V3 SDK-Beispiele
-          href: sql/sql-api-dotnet-v3sdk-samples.md
+          href: sql/sql-api-dotnet-samples.md
         - name: Java SDK v4-Beispiele
           href: sql/sql-api-java-sdk-samples.md
         - name: Spring Data v3-Beispiele
@@ -223,12 +219,14 @@
           href: sql/sql-api-python-samples.md
         - name: PowerShell
           href: sql/powershell-samples.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: sql/cli-samples.md
         - name: Azure Resource Manager
           href: sql/templates-samples-sql.md
         - name: Bicep
           href: sql/bicep-samples.md
+        - name: .NET V2 SDK-Beispiele (Legacy)
+          href: sql/sql-api-dotnet-v2sdk-samples.md
     - name: Konzepte
       items:
         - name: Modellierung und Partitionierung
@@ -624,7 +622,7 @@
               href: sql/change-feed-design-patterns.md
             - name: Lesen des Änderungsfeeds
               href: sql/read-change-feed.md
-            - name: SQL/Änderungsfeedprozessor
+            - name: Change Feed Processor
               href: sql/change-feed-processor.md
             - name: Auslösen von Azure Functions
               displayName: change feed
@@ -931,13 +929,13 @@
           items:
             - name: .NET SDK v3
               href: sql/sql-api-sdk-dotnet-standard.md
-            - name: .NET SDK v2
+            - name: .NET SDK v2 (Legacy)
               href: sql/sql-api-sdk-dotnet.md
-            - name: .NET Core SDK v2
+            - name: .NET Core SDK v2 (Legacy)
               href: sql/sql-api-sdk-dotnet-core.md
-            - name: .NET-Änderungsfeedbibliothek v2
+            - name: .NET-Änderungsfeedbibliothek v2 (Legacy)
               href: sql/sql-api-sdk-dotnet-changefeed.md
-            - name: ".NET-Bulk\_Executor-Bibliothek v2"
+            - name: ".NET-Bulk\_Executor-Bibliothek v2 (Legacy)"
               href: sql/sql-api-sdk-bulk-executor-dot-net.md
         - name: Java SDKs und Connectors
           items:
@@ -1032,6 +1030,8 @@
               href: cassandra/oracle-migrate-cosmos-db-blitzz.md
             - name: 'Migrieren: Apache Cassandra zur Cassandra-API mithilfe von Blitzz'
               href: cassandra/migrate-data-blitzz.md
+            - name: 'Migrieren: Apache Cassandra zum Cassandra-API mithilfe eines Proxys mit zwei Schreibzugriffen'
+              href: cassandra/migrate-data-dual-write-proxy.md
             - name: 'Migrieren: Apache Cassandra zur Cassandra-API mithilfe von Databricks'
               href: cassandra/migrate-data-databricks.md
             - name: "Migrieren: PostgreSQL zur Cassandra-API mithilfe von Apache\_Kafka"
@@ -1091,6 +1091,8 @@
           href: cassandra/glowroot-cassandra.md
         - name: Definitionen von Fehlercodes
           href: cassandra/error-codes-solution.md
+        - name: Einfache Transaktionen in Cassandra-API
+          href: cassandra/lwt-cassandra-api.md
     - name: Verweis
       items:
         - name: REST-Ressourcenanbieter
@@ -1481,6 +1483,8 @@
           href: configure-synapse-link.md
         - name: Herstellen einer Verbindung mit Azure Synapse Link
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Synapse Link und Integration von Power BI
+          href: integrated-power-bi-synapse-link.md
         - name: Analysespeicher und private Endpunkte
           href: analytical-store-private-endpoints.md
         - name: Abfragen mit Azure Synapse Spark 3
@@ -1501,12 +1505,18 @@
               href: continuous-backup-restore-permissions.md
             - name: 'Bereitstellen eines Kontos: Fortlaufende Sicherung'
               href: provision-account-continuous-backup.md
+            - name: Abrufen des letzten wiederherstellbaren Zeitstempels
+              href: get-latest-restore-timestamp.md
             - name: 'Wiederherstellen eines Kontos: Fortlaufende Sicherung'
               href: restore-account-continuous-backup.md
             - name: Migrieren zur fortlaufenden Sicherung
               href: migrate-continuous-backup.md
         - name: Verwalten der regelmäßigen Sicherung
-          href: configure-periodic-backup-restore.md
+          items:
+            - name: Konfigurieren regelmäßiger Sicherungen
+              href: configure-periodic-backup-restore.md
+            - name: Aktualisieren der Redundanz für Sicherungsspeicher
+              href: update-backup-storage-redundancy.md
     - name: Sicherheit
       items:
         - name: Konfigurieren der IP-Firewall

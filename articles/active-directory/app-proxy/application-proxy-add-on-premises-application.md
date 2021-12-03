@@ -12,12 +12,12 @@ ms.date: 02/17/2021
 ms.author: kenwith
 ms.reviewer: ashishj
 ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: e561b34ae624b800d65885999f7029235fce31b6
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 5edafb82c34c7636b1cf220ea312e1d898d1bf1b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990385"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335307"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -65,6 +65,7 @@ Für hohe Verfügbarkeit in Ihrer Produktionsumgebung sollten Sie mehrere Window
 > ```
 >
 > Der Schlüssel kann über PowerShell mit dem folgenden Befehl festgelegt werden:
+>
 > ```
 > Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\' -Name EnableDefaultHTTP2 -Value 0
 > ```
@@ -101,7 +102,7 @@ So aktivieren Sie TLS 1.2
 
 1. Starten Sie den Server neu.
 
-> [!Note]
+> [!NOTE]
 > Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Zertifikaten aus einer anderen Gruppe von Stammzertifizierungsstellen (Certificate Authorities, CAs). Diese Änderung wird vorgenommen, da die aktuellen Zertifizierungsstellenzertifikate eine der grundlegenden Anforderungen des Zertifizierungsstellen-/Browserforums nicht erfüllen. Weitere Informationen finden Sie unter [TLS-Zertifikatänderungen für Azure](../../security/fundamentals/tls-certificate-changes.md).
 
 ## <a name="prepare-your-on-premises-environment"></a>Vorbereiten Ihrer lokalen Umgebung
@@ -127,19 +128,20 @@ Wenn Ihre Firewall Datenverkehr gemäß Ursprungsbenutzern erzwingt, öffnen Sie
 Lassen Sie den Zugriff auf die folgenden URLs zu:
 
 | URL | Port | Wie diese verwendet wird |
-| ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
-| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net         | 443/HTTPS | Kommunikation zwischen dem Connector und dem Anwendungsproxy-Clouddienst |
-| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP   | Der Connector verwendet diese URLs, um Zertifikate zu überprüfen.        |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS | Der Connector verwendet diese URLs während der Registrierung. |
-| ctldl.windowsupdate.com                                      | 80/HTTP   | Der Connector verwendet diese URL während der Registrierung. |
+| --- | --- | --- |
+| `*.msappproxy.net` <br> `*.servicebus.windows.net` | 443/HTTPS | Kommunikation zwischen dem Connector und dem Anwendungsproxy-Clouddienst |
+| `crl3.digicert.com` <br> `crl4.digicert.com` <br> `ocsp.digicert.com` <br> `crl.microsoft.com` <br> `oneocsp.microsoft.com` <br> `ocsp.msocsp.com`<br> | 80/HTTP   | Der Connector verwendet diese URLs, um Zertifikate zu überprüfen.        |
+| `login.windows.net` <br> `secure.aadcdn.microsoftonline-p.com` <br> `*.microsoftonline.com` <br> `*.microsoftonline-p.com` <br> `*.msauth.net` <br> `*.msauthimages.net` <br> `*.msecnd.net` <br> `*.msftauth.net` <br> `*.msftauthimages.net` <br> `*.phonefactor.net` <br> `enterpriseregistration.windows.net` <br> `management.azure.com` <br> `policykeyservice.dc.ad.msft.net` <br> `ctldl.windowsupdate.com` <br> `www.microsoft.com/pkiops` | 443/HTTPS | Der Connector verwendet diese URLs während der Registrierung. |
+| `ctldl.windowsupdate.com` | 80/HTTP | Der Connector verwendet diese URL während der Registrierung. |
 
-Sie können Verbindungen mit „&ast;.msappproxy.net“, „&ast;.servicebus.windows.net“ und anderen URLs zulassen, wenn Ihre Firewall oder Ihr Proxy die Konfiguration von Zugriffsregeln auf der Grundlage von Domänensuffixen ermöglicht. Andernfalls müssen Sie den Zugriff auf die Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
+Sie können Verbindungen mit `*.msappproxy.net`, `*.servicebus.windows.net` und anderen oben genannten URLs zulassen, wenn Ihre Firewall oder Ihr Proxy die Konfiguration von Zugriffsregeln auf der Grundlage von Domänensuffixen ermöglicht. Andernfalls müssen Sie den Zugriff auf die Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
+
 > [!IMPORTANT]
 > Vermeiden Sie jegliche Art von Inline-Untersuchung und -Beendigung der ausgehenden TLS-Kommunikation zwischen Connectors und Clouddiensten des Azure AD-Anwendungsproxys.
 
 ### <a name="dns-name-resolution-for-azure-ad-application-proxy-endpoints"></a>DNS-Namensauflösung für Azure AD-Anwendungsproxy-Endpunkte
 
-Öffentliche DNS-Einträge für Azure AD-Anwendungsproxy-Endpunkte sind verkettete CNAME-Einträge, die auf einen A-Eintrag verweisen. Das sorgt für Fehlertoleranz und Flexibilität. Es ist sichergestellt, dass der Azure AD-Anwendungsproxyconnector immer auf Hostnamen mit dem Domänensuffix _*.msappproxy.net_ oder _*.servicebus.windows.net_ zugreift. Bei der Namensauflösung können die CNAME-Einträge allerdings DNS-Einträge mit anderen Hostnamen und Suffixen enthalten.  Daher muss sichergestellt werden, dass das Gerät (abhängig von Ihrem Setup: Connectorserver, Firewall, Proxy für ausgehenden Datenverkehr) alle Einträge in der Kette auflösen kann und eine Verbindung mit den aufgelösten IP-Adressen zulässt. Da die DNS-Einträge in der Kette ggf. gelegentlich geändert werden, können wir keine Liste mit DNS-Einträgen bereitstellen.
+Öffentliche DNS-Einträge für Azure AD-Anwendungsproxy-Endpunkte sind verkettete CNAME-Einträge, die auf einen A-Eintrag verweisen. Das sorgt für Fehlertoleranz und Flexibilität. Es ist sichergestellt, dass der Microsoft AAD-Anwendungsproxy-Connector immer auf Hostnamen mit dem Domänensuffix `*.msappproxy.net` oder `*.servicebus.windows.net` zugreift. Bei der Namensauflösung können die CNAME-Einträge allerdings DNS-Einträge mit anderen Hostnamen und Suffixen enthalten. Daher muss sichergestellt werden, dass das Gerät (abhängig von Ihrem Setup: Connectorserver, Firewall, Proxy für ausgehenden Datenverkehr) alle Einträge in der Kette auflösen kann und eine Verbindung mit den aufgelösten IP-Adressen zulässt. Da die DNS-Einträge in der Kette ggf. gelegentlich geändert werden, können wir keine Liste mit DNS-Einträgen bereitstellen.
 
 ## <a name="install-and-register-a-connector"></a>Installieren und Registrieren eines Connectors
 
@@ -148,7 +150,7 @@ Installieren Sie für die Nutzung des Anwendungsproxys einen Connector auf jedem
 
 So installieren Sie den Connector:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Anwendungsadministrator des Verzeichnisses an, das den Anwendungsproxy verwendet. Wenn die Mandantendomäne also beispielsweise „contoso.com“ lautet, muss sich der Administrator als admin@contoso.com oder mit einem anderen Administratoraliasnamen in dieser Domäne anmelden.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Anwendungsadministrator des Verzeichnisses an, das den Anwendungsproxy verwendet. Wenn die Mandantendomäne beispielsweise `contoso.com` lautet, muss als Administrator `admin@contoso.com` oder ein anderer Administratoralias für diese Domäne verwendet werden.
 1. Wählen Sie rechts oben Ihren Benutzernamen aus. Stellen Sie sicher, dass Sie an einem Verzeichnis angemeldet sind, für das der Anwendungsproxy verwendet wird. Wählen Sie **Verzeichnis wechseln**, und wählen Sie ein Verzeichnis aus, für das der Anwendungsproxy verwendet wird, falls Sie das Verzeichnis wechseln möchten.
 1. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Azure Active Directory**.
 1. Wählen Sie unter **Verwalten** die Option **Anwendungsproxy**.
@@ -213,10 +215,10 @@ Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind be
 4. Wählen Sie die Schaltfläche **Lokale Anwendung hinzufügen** aus, die etwa in der Mitte der Seite im Abschnitt **Lokale Anwendungen** angezeigt wird. Alternativ können Sie oben auf der Seite die Option **Eigene Anwendung erstellen** und dann **Anwendungsproxy für sicheren Remotezugriff auf eine lokale Anwendung konfigurieren** auswählen.
 5. Geben Sie im Abschnitt **Fügen Sie Ihre eigene lokale Anwendung hinzu** die folgenden Informationen zu Ihrer Anwendung an:
 
-    | Feld  | BESCHREIBUNG |
+    | Feld  | Beschreibung |
     | :--------------------- | :----------------------------------------------------------- |
     | **Name** | Der Name der Anwendung, der in „Meine Apps“ und im Azure-Portal angezeigt wird |
-    | **Interne URL** | Die URL zum Zugreifen auf die Anwendung innerhalb Ihres privaten Netzwerks. Sie können einen bestimmten Pfad auf dem Back-End-Server für die Veröffentlichung angeben, während der Rest des Servers nicht veröffentlicht wird. Auf diese Weise können Sie unterschiedliche Websites auf demselben Server als unterschiedliche Apps veröffentlichen und jeweils einen eigenen Namen und Zugriffsregeln vergeben.<br><br>Stellen Sie beim Veröffentlichen eines Pfads sicher, dass er alle erforderlichen Bilder, Skripts und Stylesheets für Ihre Anwendung enthält. Wenn sich die App beispielsweise unter „https:\//yourapp/app“ befindet und Bilder unter „https:\//yourapp/media“ genutzt werden, sollten Sie „https:\//yourapp/“ als Pfad veröffentlichen. Diese interne URL verfügt nicht über die Zielseite, die den Benutzern angezeigt wird. Weitere Informationen finden Sie unter [Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps](application-proxy-configure-custom-home-page.md). |
+    | **Interne URL** | Die URL zum Zugreifen auf die Anwendung innerhalb Ihres privaten Netzwerks. Sie können einen bestimmten Pfad auf dem Back-End-Server für die Veröffentlichung angeben, während der Rest des Servers nicht veröffentlicht wird. Auf diese Weise können Sie unterschiedliche Websites auf demselben Server als unterschiedliche Apps veröffentlichen und jeweils einen eigenen Namen und Zugriffsregeln vergeben.<br><br>Stellen Sie beim Veröffentlichen eines Pfads sicher, dass er alle erforderlichen Bilder, Skripts und Stylesheets für Ihre Anwendung enthält. Wenn sich Ihre App beispielsweise unter `https://yourapp/app` befindet und Bilder nutzt, die unter `https://yourapp/media` gespeichert sind, sollten Sie `https://yourapp/` als Pfad veröffentlichen. Diese interne URL verfügt nicht über die Zielseite, die den Benutzern angezeigt wird. Weitere Informationen finden Sie unter [Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps](application-proxy-configure-custom-home-page.md). |
     | **Externe URL** | Die Adresse für den Benutzerzugriff auf die App von außerhalb Ihres Netzwerks. Wenn Sie die Anwendungsproxy-Standarddomäne nicht verwenden möchten, lesen Sie [Benutzerdefinierte Domänen im Azure AD-Anwendungsproxy](./application-proxy-configure-custom-domain.md). |
     | **Vorauthentifizierung** | Gibt das Verfahren an, wie der Anwendungsproxy Benutzer überprüft, bevor diese Zugriff auf Ihre Anwendung erhalten.<br><br>**Azure Active Directory**: Der Anwendungsproxy leitet Benutzer an die Anmeldung mit Azure AD um. Hierbei werden deren Berechtigungen für das Verzeichnis und die Anwendung authentifiziert. Es wird empfohlen, diese Option als Standardwert aktiviert zu lassen, damit Sie Azure AD-Sicherheitsfunktionen wie bedingten Zugriff und Multi-Factor Authentication nutzen können. **Azure Active Directory** ist erforderlich, um die Anwendung mit Microsoft Cloud App Security zu überwachen.<br><br>**Passthrough**: Benutzer müssen sich nicht bei Azure AD authentifizieren, um Zugriff auf die Anwendung zu erhalten. Sie können weiterhin Authentifizierungsanforderungen auf dem Back-End einrichten. |
     | **Connectorgruppe** | Connectors verarbeiten den Remotezugriff auf Ihre Anwendung, und Connectorgruppen helfen Ihnen, Connectors und Apps nach Region, Netzwerk oder Zweck zu organisieren. Wenn Sie noch keine Connectorgruppen erstellt haben, wird Ihre App zu **Standard** zugewiesen.<br><br>Wenn Ihre Anwendung WebSockets verwendet, um eine Verbindung herzustellen, muss die Version aller Connectors in der Gruppe 1.5.612.0 oder höher sein. |
@@ -230,7 +232,7 @@ Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind be
     | **Sicheres Cookie verwenden**| Legen Sie diesen Wert auf **Ja** fest, um Cookies über einen sicheren Kanal zu übertragen, z.B. eine verschlüsselte HTTPS-Anforderung.
     | **Beständiges Cookie verwenden**| Behalten Sie für diesen Wert die Einstellung **Nein** bei. Verwenden Sie diese Einstellung nur für Anwendungen, bei denen Cookies übergreifend für Prozesse genutzt werden können. Weitere Informationen zu Cookieeinstellungen finden Sie unter [Cookieeinstellungen für den Zugriff auf lokale Anwendungen in Azure Active Directory](./application-proxy-configure-cookie-settings.md).
     | **URLs in Headern übersetzen** | Behalten Sie für diesen Wert **Ja** bei, wenn Ihre Anwendung den ursprünglichen Hostheader nicht in der Authentifizierungsanforderung erfordert. |
-    | **URLs im Hauptteil der Anwendung übersetzen** | Behalten Sie für diesen Wert **Nein** bei, wenn Sie nicht über hartcodierte HTML-Links zu anderen lokalen Anwendungen verfügen, und verwenden Sie keine benutzerdefinierten Domänen. Weitere Informationen finden Sie unter [Linkübersetzung mit dem Anwendungsproxy](./application-proxy-configure-hard-coded-link-translation.md).<br><br>Legen Sie diesen Wert auf **Ja** fest, wenn Sie diese Anwendung mit Microsoft Cloud App Security (MCAS) überwachen möchten. Weitere Informationen finden Sie unter [Konfigurieren der Echtzeitüberwachung des Anwendungszugriffs mit Microsoft Cloud App Security und Azure Active Directory](./application-proxy-integrate-with-microsoft-cloud-application-security.md). |
+    | **URLs im Hauptteil der Anwendung übersetzen** | Behalten Sie für diesen Wert **Nein** bei, wenn Sie nicht über hartcodierte HTML-Links zu anderen lokalen Anwendungen verfügen, und verwenden Sie keine benutzerdefinierten Domänen. Weitere Informationen finden Sie unter [Linkübersetzung mit dem Anwendungsproxy](./application-proxy-configure-hard-coded-link-translation.md).<br><br>Legen Sie diesen Wert auf **Ja** fest, wenn Sie diese Anwendung mit Microsoft Defender for Cloud Apps überwachen möchten. Weitere Informationen finden Sie unter [Konfigurieren der Echtzeitüberwachung des Anwendungszugriffs mit Microsoft Defender for Cloud Apps und Azure Active Directory](./application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
 7. Wählen Sie **Hinzufügen**.
 

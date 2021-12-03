@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 02/09/2021
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 57aae03e18f938ca89da5081a2076698ea3341f8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b6cd1bce4528d35cf0f7f897e6032079cae6cdea
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091574"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579234"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization"></a>Verwenden von Azure RBAC für die Kubernetes-Autorisierung
 
@@ -80,13 +80,18 @@ Verwenden Sie den Befehl [az aks update][az-aks-update] mit dem Flag `enable-azu
 ```azurecli-interactive
 az aks update -g myResourceGroup -n myAKSCluster --enable-azure-rbac
 ```
+Verwenden Sie den Befehl [az aks update][az-aks-update] mit dem Flag `disable-azure-rbac`, um Azure RBAC für Kubernetes-Autorisierung aus einem vorhandenen AKS-Cluster zu entfernen.
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myAKSCluster --disable-azure-rbac
+```
 
 ## <a name="create-role-assignments-for-users-to-access-cluster"></a>Erstellen von Rollenzuweisungen für Benutzer für den Zugriff auf den Cluster
 
 AKS stellt die folgenden vier integrierten Rollen bereit:
 
 
-| Rolle                                | Beschreibung  |
+| Role                                | Beschreibung  |
 |-------------------------------------|--------------|
 | RBAC-Leser von Azure Kubernetes Service  | Ermöglicht schreibgeschützten Zugriff, um die meisten Objekte in einem Namespace anzuzeigen. Es ist nicht möglich, Rollen oder Rollenbindungen anzuzeigen. Diese Rolle lässt das Anzeigen von `Secrets` nicht zu, da das Lesen des Inhalts von Geheimnissen den Zugriff auf ServiceAccount-Anmeldeinformationen im Namespace ermöglicht, was den API-Zugriff als beliebiges Dienstkonto im Namespace ermöglichen würde (eine Form von Berechtigungsausweitung).  |
 | RBAC-Writer von Azure Kubernetes Service | Ermöglicht Lese-/Schreibzugriff auf die meisten Objekte in einem Namespace. Diese Rolle lässt das Anzeigen oder Ändern von Rollen oder Rollenbindungen nicht zu. Diese Rolle ermöglicht jedoch den Zugriff auf `Secrets` und das Ausführen von Pods als beliebiges Dienstkonto im Namespace, sodass sie verwendet werden kann, um die API-Zugriffsebenen eines beliebigen ServiceAccount im Namespace zu erhalten. |

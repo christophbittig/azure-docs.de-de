@@ -1,15 +1,15 @@
 ---
 title: Azure Resource Graph-Beispielabfragen für Server mit Azure Arc-Unterstützung
 description: Azure Resource Graph-Beispielabfragen für Server mit Azure Arc-Unterstützung, die die Verwendung von Ressourcentypen und -tabellen für den Zugriff auf Ressourcen und Eigenschaften für Server mit Azure Arc-Unterstützung zeigen.
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 5e73647300e29650d31b6cb4dae08d99488fc32e
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 7e630fc7c931e835a1f8f9ec154192ca1a13b704
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541205"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132052975"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-arc-enabled-servers"></a>Azure Resource Graph-Beispielabfragen für Server mit Azure Arc-Unterstützung
 

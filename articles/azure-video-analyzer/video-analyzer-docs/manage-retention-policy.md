@@ -3,14 +3,14 @@ title: Verwalten der Aufzeichnungsrichtlinie mit Azure Video Analyzer
 description: In diesem Thema wird erklärt, wie Sie die Aufzeichnungsrichtlinie mit Azure Video Analyzer verwalten können.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 10/17/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0da96aa507db1f7514ee394be52a8ca7723562db
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0bb6ad0f3b9cb5ddea876969da3b6429e2f2ba32
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095623"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849385"
 ---
 # <a name="manage-retention-policy-with-video-analyzer"></a>Verwalten der Aufzeichnungsrichtlinie mit Azure Video Analyzer
 
@@ -49,7 +49,7 @@ Sie können auch die `retentionPeriod` -Eigenschaft einer Videoressource festleg
 ## <a name="rules-and-limitations"></a>Regeln und Einschränkungen
 
 * Es kann bis zu 24 Stunden dauern, bis die Aufbewahrungsrichtlinie wirksam wird.
-* Format: `retentionPeriod` Die Eigenschaft nimmt den Wert der ISO 8601-Dauer an, der mehrere Tage lang sein muss. Zulässige Beispielwerte: P1D, P20D, P1M, P365D, P1Y, P5Y
+* Format:  Die Eigenschaft nimmt den Wert der ISO 8601-Dauer an, der mehrere Tage lang sein muss. Zulässige Beispielwerte: P1D, P20D, P1M, P365D, P1Y, P5Y
     * Der Mindestwert ist P1D, und der Höchstwert ist P5Y.
     * Wenn diese Einstellung auf Null festgelegt ist, wird die Aufbewahrungsrichtlinie gelöscht, und der Videoinhalt wird unbegrenzt gespeichert.
 * Wenn die Aufbewahrungsrichtlinie verwendet wird, fallen zusätzliche Azure Storage-Transaktionskosten an, wenn der Dienst Blobs sucht und löscht.

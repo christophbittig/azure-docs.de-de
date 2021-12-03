@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 327c030708f37bffab05aa72884422a487b6b729
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 0eea2233a2b6b59c92b49ca325378a95301fc962
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166943"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158850"
 ---
 # <a name="configure-azure-load-balancer-for-an-fci-vnn"></a>Konfigurieren von Azure Load Balancer für einen FCI-VNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> Erstellen Sie Ihre SQL Server-VMs in mehreren Subnetzen innerhalb des gleichen virtuellen Azure-Netzwerks, um keine Azure Load Balancer-Instanz für die Failover-Cluster-Instanz zu benötigen.
 
 In Azure Virtual Machines wird für Cluster ein Lastenausgleich für eine IP-Adresse verwendet, die zu einem bestimmten Zeitpunkt auf einem Clusterknoten vorhanden sein muss. In dieser Lösung enthält der Load Balancer die IP-Adresse für den Namen des virtuellen Netzwerks (VNN), der von der Clusterressource in Azure verwendet wird. 
 

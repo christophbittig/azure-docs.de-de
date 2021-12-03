@@ -4,6 +4,10 @@
   items:
     - name: Informationen zu AKS
       href: intro-kubernetes.md
+    - name: Kontingente und regionale Grenzwerte
+      href: quotas-skus-regions.md
+    - name: Unterstützte Kubernetes-Version
+      href: supported-kubernetes-versions.md
     - name: Lösungsarchitekturen
       href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json?WT.mc_id=AKSDOCSTOC
 - name: Schnellstarts
@@ -26,6 +30,8 @@
       items:
         - name: Entwickeln mit Helm
           href: quickstart-helm.md
+        - name: Entwickeln mit Dapr (Vorschau)
+          href: quickstart-dapr.md
     - name: Abonnieren von AKS-Ereignissen mit Event Grid (Vorschau)
       href: quickstart-event-grid.md
 - name: Tutorials
@@ -46,10 +52,8 @@
       href: tutorial-kubernetes-upgrade-cluster.md
 - name: Konzepte
   items:
-    - name: Cluster und Workloads
+    - name: Kernkonzepte
       href: concepts-clusters-workloads.md
-    - name: Zugriff und Identität
-      href: concepts-identity.md
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
@@ -59,6 +63,10 @@
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: Sicherheitshärtung im Hostbetriebssystem
+          href: security-hardened-vm-host-image.md
+    - name: Zugriff und Identität
+      href: concepts-identity.md
     - name: Netzwerk
       href: concepts-network.md
     - name: Storage
@@ -67,12 +75,16 @@
       href: concepts-scale.md
     - name: Automatische Knotenreparatur
       href: node-auto-repair.md
+    - name: Dienstmeshes
+      href: servicemesh-about.md
+    - name: Nachhaltige Softwareentwicklung
+      href: concepts-sustainable-software-engineering.md
     - name: Bewährte Methoden
       items:
         - name: Übersicht
           href: best-practices.md
         - name: Baselinearchitektur für einen AKS-Cluster
-          href: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks/
+          href: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks
           maintainContext: true
         - name: Für Clusterbetreiber
           items:
@@ -100,8 +112,6 @@
               href: developer-best-practices-resource-management.md
             - name: Podsicherheit
               href: developer-best-practices-pod-security.md
-    - name: Kontingente und regionale Grenzwerte
-      href: quotas-skus-regions.md
     - name: Migrieren zu ARM
       items:
         - name: Planen und Ausführen einer Migration
@@ -130,16 +140,6 @@
         - name: Containerisieren und Migrieren von ASP.NET-Apps
           href: ../migrate/tutorial-app-containerization-aspnet-kubernetes.md
           maintainContext: false
-    - name: Unterstützte Kubernetes-Version
-      href: supported-kubernetes-versions.md
-    - name: Cloud Controller Manager (Vorschau)
-      href: out-of-tree.md
-    - name: Sicherheitshärtung im Hostbetriebssystem
-      href: security-hardened-vm-host-image.md
-    - name: Übersicht über die Azure Kubernetes Service-Diagnose
-      href: concepts-diagnostics.md
-    - name: Nachhaltige Softwareentwicklung
-      href: concepts-sustainable-software-engineering.md
 - name: Anleitungen
   items:
     - name: Clustervorgänge
@@ -152,6 +152,8 @@
           href: start-stop-cluster.md
         - name: Verwenden der geplanten Wartung (Vorschau)
           href: planned-maintenance.md
+        - name: Cloud Controller Manager (Vorschau)
+          href: out-of-tree.md
         - name: Aktualisieren eines AKS-Clusters
           href: upgrade-cluster.md
         - name: Verwenden einer Betriebszeit-SLA
@@ -184,6 +186,8 @@
           href: availability-zones.md
         - name: Verwenden von Knotenpools
           items:
+            - name: Momentaufnahme des Knotenpools
+              href: node-pool-snapshot.md
             - name: Verwenden mehrerer Knotenpools
               href: use-multiple-node-pools.md
             - name: Verwenden von Spot-Knotenpools
@@ -192,6 +196,8 @@
               href: use-system-pools.md
             - name: 'Verwenden von WASI-Knotenpools (WebAssembly System Interface, WebAssembly-Systemschnittstelle)'
               href: use-wasi-node-pools.md
+            - name: Starten/Beenden von Knotenpools (Vorschau)
+              href: start-stop-nodepools.md
         - name: Bereitstellen von AKS mit Terraform
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
@@ -199,32 +205,59 @@
           href: kubernetes-portal.md
         - name: Verwenden des Kubernetes-Dashboards
           href: kubernetes-dashboard.md
-    - name: Konfigurieren von Datenvolumes
+    - name: Sicherheit und Authentifizierung
       items:
-        - name: 'Azure Disk: Dynamisch'
-          href: azure-disks-dynamic-pv.md
-        - name: 'Azure Disk: Statisch'
-          href: azure-disk-volume.md
-        - name: 'Azure Files: Dynamisch'
-          href: azure-files-dynamic-pv.md
-        - name: 'Azure Files: Statisch'
-          href: azure-files-volume.md
-        - name: Azure HPC Cache
-          href: azure-hpc-cache.md
-        - name: 'NFS-Server: statisch'
-          href: azure-nfs-volume.md
-        - name: Azure NetApp Files
-          href: azure-netapp-files.md
-        - name: Verwenden von Azure Ultra Disks
-          href: use-ultra-disks.md
-        - name: CSI-Speichertreiber
+        - name: Erstellen eines Dienstprinzipals
+          href: kubernetes-service-principal.md
+        - name: Verwenden verwalteter Identitäten
+          href: use-managed-identity.md
+        - name: Verwenden der AAD-Podidentität (Vorschau)
+          href: use-azure-ad-pod-identity.md
+        - name: Beschränken des Zugriffs auf die Clusterkonfigurationsdatei
+          href: control-kubeconfig-access.md
+        - name: Schützen des Datenverkehrs zwischen Pods mit Netzwerkrichtlinien
+          href: use-network-policies.md
+        - name: Verwenden von Azure Policy
+          href: use-azure-policy.md
+        - name: Verwenden von Podsicherheitsrichtlinien (Vorschauversion)
+          href: use-pod-security-policies.md
+        - name: Definieren der vom API-Server autorisierten IP-Bereiche
+          href: api-server-authorized-ip-ranges.md
+        - name: Grundlegendes zu Azure Policy für Azure Kubernetes Service
+          href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
+        - name: Aktualisieren von Clusteranmeldeinformationen
+          href: update-credentials.md
+        - name: Aktivieren der Azure Active Directory-Integration
           items:
-            - name: Aktivieren von CSI-Speichertreibern
-              href: csi-storage-drivers.md
-            - name: Azure Disk-CSI-Treiber
-              href: azure-disk-csi.md
-            - name: Azure Files-CSI-Treiber
-              href: azure-files-csi.md
+            - name: "Von AKS verwaltete Azure\_AD-Instanz"
+              href: managed-aad.md
+            - name: "Azure\_AD-Integration (Legacy)"
+              href: azure-ad-integration-cli.md
+            - name: Aktivieren der GMSA-Integration (Vorschau)
+              href: use-group-managed-service-accounts.md
+        - name: Verwenden von Azure RBAC für die Kubernetes-Autorisierung
+          href: manage-azure-rbac.md
+        - name: Verwenden der rollenbasierten Zugriffssteuerung von Kubernetes mit Azure AD-Integration
+          href: azure-ad-rbac.md
+          maintainContext: true
+        - name: Rotieren von Zertifikaten
+          href: certificate-rotation.md
+        - name: Erstellen eines privaten Clusters
+          href: private-clusters.md
+        - name: BYOK für Datenträger
+          href: azure-disk-customer-managed-keys.md
+        - name: Aktivieren der hostbasierten Verschlüsselung
+          href: enable-host-encryption.md
+        - name: Secrets Store CSI-Treiber
+          items:
+            - name: Konfiguration des Secrets Store CSI-Treibers
+              href: csi-secrets-store-driver.md
+            - name: Bereitstellen von Azure Key Vault-Zugriff
+              href: csi-secrets-store-identity-access.md
+            - name: Konfigurieren von TLS für den NGINX-Eingangsdatencontroller
+              href: csi-secrets-store-nginx-tls.md
+            - name: Problembehandlung
+              href: csi-secrets-store-troubleshooting.md
     - name: Konfigurieren der Netzwerkeinstellungen
       items:
         - name: Erstellen oder Verwenden eines vorhandenen virtuellen Netzwerks
@@ -268,51 +301,36 @@
               href: egress-outboundtype.md
             - name: Verwenden eines Lastenausgleichs im Basic-Tarif und einer statischen IP-Adresse
               href: egress.md
+            - name: Verwaltete NAT Gateway-Instanz (Vorschau)
+              href: nat-gateway.md
         - name: Anpassen von CoreDNS
           href: coredns-custom.md
-    - name: Sicherheit und Authentifizierung
+    - name: Konfigurieren von Datenvolumes
       items:
-        - name: Erstellen eines Dienstprinzipals
-          href: kubernetes-service-principal.md
-        - name: Verwenden verwalteter Identitäten
-          href: use-managed-identity.md
-        - name: Verwenden der AAD-Podidentität (Vorschau)
-          href: use-azure-ad-pod-identity.md
-        - name: Beschränken des Zugriffs auf die Clusterkonfigurationsdatei
-          href: control-kubeconfig-access.md
-        - name: Schützen des Datenverkehrs zwischen Pods mit Netzwerkrichtlinien
-          href: use-network-policies.md
-        - name: Verwenden von Azure Policy
-          href: use-azure-policy.md
-        - name: Verwenden von Podsicherheitsrichtlinien (Vorschauversion)
-          href: use-pod-security-policies.md
-        - name: Definieren der vom API-Server autorisierten IP-Bereiche
-          href: api-server-authorized-ip-ranges.md
-        - name: Grundlegendes zu Azure Policy für Azure Kubernetes Service
-          href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
-        - name: Aktualisieren von Clusteranmeldeinformationen
-          href: update-credentials.md
-        - name: Aktivieren der Azure Active Directory-Integration
+        - name: 'Azure Disk: Dynamisch'
+          href: azure-disks-dynamic-pv.md
+        - name: 'Azure Disk: Statisch'
+          href: azure-disk-volume.md
+        - name: 'Azure Files: Dynamisch'
+          href: azure-files-dynamic-pv.md
+        - name: 'Azure Files: Statisch'
+          href: azure-files-volume.md
+        - name: Azure HPC Cache
+          href: azure-hpc-cache.md
+        - name: 'NFS-Server: statisch'
+          href: azure-nfs-volume.md
+        - name: Azure NetApp Files
+          href: azure-netapp-files.md
+        - name: Verwenden von Azure Ultra Disks
+          href: use-ultra-disks.md
+        - name: CSI-Speichertreiber
           items:
-            - name: "Von AKS verwaltete Azure\_AD-Instanz"
-              href: managed-aad.md
-            - name: "Azure\_AD-Integration (Legacy)"
-              href: azure-ad-integration-cli.md
-        - name: Verwenden von Azure RBAC für die Kubernetes-Autorisierung
-          href: manage-azure-rbac.md
-        - name: Verwenden der rollenbasierten Zugriffssteuerung von Kubernetes mit Azure AD-Integration
-          href: azure-ad-rbac.md
-          maintainContext: true
-        - name: Rotieren von Zertifikaten
-          href: certificate-rotation.md
-        - name: Erstellen eines privaten Clusters
-          href: private-clusters.md
-        - name: BYOK für Datenträger
-          href: azure-disk-customer-managed-keys.md
-        - name: Aktivieren der hostbasierten Verschlüsselung
-          href: enable-host-encryption.md
-        - name: Secrets Store CSI-Treiber (Vorschau)
-          href: csi-secrets-store-driver.md
+            - name: Aktivieren von CSI-Speichertreibern
+              href: csi-storage-drivers.md
+            - name: Azure Disk-CSI-Treiber
+              href: azure-disk-csi.md
+            - name: Azure Files-CSI-Treiber
+              href: azure-files-csi.md
     - name: Überwachung und Protokollierung
       items:
         - name: Überwachen von AKS
@@ -343,9 +361,9 @@
     - name: Entwickeln und Ausführen von Anwendungen
       items:
         - name: Verwenden von Bridge to Kubernetes mit Visual Studio Code
-          href: 'https://code.visualstudio.com/docs/containers/bridge-to-kubernetes'
+          href: /visualstudio/bridge/bridge-to-kubernetes-vs-code
         - name: Verwenden von Bridge to Kubernetes mit Visual Studio
-          href: /visualstudio/containers/bridge-to-kubernetes
+          href: /visualstudio/bridge/bridge-to-kubernetes-vs
         - name: Installieren vorhandener Anwendungen mit Helm
           href: kubernetes-helm.md
         - name: Verwenden von OpenFaaS
@@ -363,45 +381,40 @@
           href: howto-deploy-java-liberty-app.md
         - name: Verwenden von Azure API Management
           href: ../api-management/api-management-kubernetes.md
-          maintainContext: true
-    - name: Bereitstellen eines Dienstnetzes
-      items:
-        - name: Informationen zu Dienstnetzen
-          href: servicemesh-about.md
-        - name: Open Service Mesh AKS-Zusatzmodul (Vorschau)
+        - name: Verwenden von Dapr
           items:
-            - name: Übersicht über OSM
-              href: open-service-mesh-about.md
-            - name: Bereitstellen des OSM-AKS-Add-Ons
-              items:
-                - name: Verwenden der Azure CLI
-                  href: open-service-mesh-deploy-addon-az-cli.md
-                - name: Verwenden der Bicep-Vorlage
-                  href: open-service-mesh-deploy-addon-bicep.md
-            - name: Herunterladen der OSM-Clientbibliothek
-              href: open-service-mesh-binary.md
-            - name: OSM-Tutorials
-              items:
-                - name: Verwalten einer neuen Anwendungsbereitstellung
-                  href: open-service-mesh-deploy-new-application.md
-                - name: Verwalten einer vorhandenen Anwendungsbereitstellung
-                  href: open-service-mesh-deploy-existing-application.md
-                - name: Verwenden des Azure Application Gateway-Eingangs
-                  href: open-service-mesh-azure-application-gateway-ingress.md
-                - name: Verwenden des NGINX-Eingangs
-                  href: open-service-mesh-nginx-ingress.md
-                - name: 'Konfigurieren des Einblicks mithilfe von Prometheus, Grafana und Jaeger'
-                  href: open-service-mesh-open-source-observability.md
-                - name: Anpassen der OSM-CLI-Benutzeroberfläche
-                  href: open-service-mesh-customize-add-on-experience.md
-                - name: Ausschluss von IP- und Portbereichen
-                  href: open-service-mesh-ip-port-exclusion.md
-            - name: Konfigurieren von Azure Monitor
-              href: open-service-mesh-azure-monitor.md
-            - name: Problembehandlung für OSM
-              href: open-service-mesh-troubleshoot.md
-            - name: Deaktivieren von OSM
-              href: open-service-mesh-disable-add-on.md
+            - name: Übersicht über Dapr
+              href: dapr-overview.md
+            - name: Verwenden von Dapr (Vorschauversion)
+              href: dapr.md
+    - name: Bereitstellen des Open Service Mesh AKS-Add-Ons
+      items:
+        - name: Informationen zu Open Service Mesh
+          href: open-service-mesh-about.md
+        - name: Verwenden der Azure CLI
+          href: open-service-mesh-deploy-addon-az-cli.md
+        - name: Verwenden der Bicep-Vorlage
+          href: open-service-mesh-deploy-addon-bicep.md
+        - name: Installieren der OSM-Befehlszeilenschnittstelle
+          href: open-service-mesh-binary.md
+        - name: 'Verwalten einer neuen Anwendung:'
+          href: open-service-mesh-deploy-new-application.md
+        - name: Integrieren vorhandener Anwendungen
+          href: open-service-mesh-deploy-existing-application.md
+        - name: Konfigurieren des Ausschlusses von IP-Adress- und Portbereichen
+          href: open-service-mesh-ip-port-exclusion.md
+        - name: Konfigurieren von Azure Monitor
+          href: open-service-mesh-azure-monitor.md
+        - name: Integrieren in Azure Application Gateway (eingehend)
+          href: open-service-mesh-azure-application-gateway-ingress.md
+        - name: Integrieren in den NGINX-Eingangsdatencontroller
+          href: open-service-mesh-nginx-ingress.md
+        - name: Behandeln von Problemen mit Open Service Mesh
+          href: open-service-mesh-troubleshoot.md
+        - name: Deinstallieren des Open Service Mesh AKS-Add-Ons
+          href: open-service-mesh-uninstall-add-on.md
+    - name: Verwenden von Clustererweiterungen (Vorschau)
+      href: cluster-extensions.md
     - name: DevOps
       items:
         - name: Erstellen von AKS-Clustern mithilfe von Ansible
@@ -426,14 +439,16 @@
           href: troubleshoot-linux.md
         - name: Suchen nach Resource Health-Ereignissen (Vorschau)
           href: aks-resource-health.md
+        - name: Azure Kubernetes Service-Diagnose (Vorschau)
+          href: concepts-diagnostics.md
 - name: Verweis
   items:
     - name: Azure CLI
       href: /cli/azure/aks
     - name: REST
-      href: /rest/api/aks
+      href: /rest/api/aks/
     - name: PowerShell
-      href: /powershell/module/az.aks#aks
+      href: /powershell/module/az.aks/#aks
     - name: .NET
       href: /dotnet/api/overview/azure/containerservice
     - name: Python
@@ -452,9 +467,9 @@
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
       href: /learn/browse/?products=azure-container-instances&azure-container-registry
     - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+      href: 'https://azure.microsoft.com/pricing/details/kubernetes-service/'
     - name: Supportrichtlinien
       href: support-policies.md
     - name: Azure-Roadmap

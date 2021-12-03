@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: 82de5cc623193163aef3243c9c47a205bbbcffd7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5da75fba68e285ea4b01feee514bd38f6ceae036
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095099"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493594"
 ---
 # <a name="what-is-a-network-group-in-azure-virtual-network-manager-preview"></a>Was ist eine Netzwerkgruppe in Azure Virtual Network Manager (Vorschau)?
 
@@ -29,7 +29,7 @@ Eine *Netzgruppe* ist eine Gruppe von virtuellen Netzen, die manuell oder mit Hi
 
 ## <a name="static-membership"></a>Statische Mitgliedschaft
 
-Wenn Sie eine Netzwerkgruppe erstellen, können Sie virtuelle Netzwerke zu einer Gruppe hinzufügen, indem Sie manuell einzelne virtuelle Netzwerke aus einer bereitgestellten Liste auswählen. Die Liste der virtuellen Netzwerke ist abhängig vom Umfang (Verwaltungsgruppe oder Abonnement), der zum Zeitpunkt der Bereitstellung von Azure Virtual Network Manager definiert wurde. Diese Methode ist nützlich, wenn Sie einige virtuelle Netzwerke haben, die Sie der Netzwerkgruppe hinzufügen möchten. Aktualisierungen von Konfigurationen, die statische Mitglieder enthalten, müssen erneut bereitgestellt werden, damit die neuen Änderungen übernommen werden.
+Wenn Sie eine Netzwerkgruppe erstellen, können Sie virtuelle Netzwerke zu einer Gruppe hinzufügen, indem Sie manuell einzelne virtuelle Netzwerke aus einer bereitgestellten Liste auswählen. Die Liste der virtuellen Netzwerke ist abhängig vom Bereich (Verwaltungsgruppe oder Abonnement), der zum Zeitpunkt der Bereitstellung von Azure Virtual Network Manager definiert wurde. Diese Methode ist nützlich, wenn Sie einige virtuelle Netzwerke haben, die Sie der Netzwerkgruppe hinzufügen möchten. Aktualisierungen von Konfigurationen, die statische Mitglieder enthalten, müssen erneut bereitgestellt werden, damit die neuen Änderungen übernommen werden.
 
 ## <a name="dynamic-membership"></a>Dynamische Mitgliedschaft
 
@@ -37,7 +37,7 @@ Die dynamische Mitgliedschaft gibt Ihnen die Flexibilität, mehrere virtuelle Ne
 
 ## <a name="network-group-and-azure-policy"></a>Netzwerkgruppe und Azure-Richtlinie
 
-Wenn Sie eine Netzwerkgruppe erstellen, wird eine Azure-Richtlinie erstellt, damit Azure Virtual Network Manager über Änderungen an der Mitgliedschaft im virtuellen Netzwerk informiert wird. Diese Politiken sind für Sie einsehbar. Die definierten Richtlinien sind für Sie einsehbar, können aber derzeit von den Benutzern nicht bearbeitet werden. Das Erstellen, Ändern und Löschen von Azure-Richtliniendefinitionen und Zuweisungen für Netzwerkgruppen ist heute nur noch über den Azure Network Manager möglich. 
+Wenn Sie eine Netzwerkgruppe erstellen, wird eine Azure-Richtlinie erstellt, damit Azure Virtual Network Manager über Änderungen an der Mitgliedschaft im virtuellen Netzwerk informiert wird. Die definierten Richtlinien sind für Sie einsehbar, können aber derzeit von den Benutzern nicht bearbeitet werden. Das Erstellen, Ändern und Löschen von Azure-Richtliniendefinitionen und Zuweisungen für Netzwerkgruppen ist heute nur noch über den Azure Network Manager möglich. 
 
 Um eine Definition und Zuweisung einer Azure-Richtlinieninitiative für Azure Network Manager-Ressourcen zu erstellen, müssen Sie eine Netzwerkgruppe mit den erforderlichen Konfigurationen erstellen und bereitstellen. Um eine bestehende Azure-Richtlinieninitiativendefinition oder eine entsprechende Zuweisung zu aktualisieren, müssen Sie Änderungen an der Netzwerkgruppe innerhalb der Azure Virtual Network Manager-Ressource vornehmen und bereitstellen. Um eine Azure-Richtlinieninitiativendefinition und -zuweisung zu löschen, müssen Sie die Azure Virtual Network Manager-Ressourcen, die mit Ihrer Richtlinie verbunden sind, zurücksetzen und löschen. Dies kann die Rücknahme der Bereitstellung einer Konfiguration, das Löschen einer Konfiguration und das Löschen einer Netzwerkgruppe umfassen. Weitere Informationen zur Löschung finden Sie in der Azure Virtual Network Manager [Checkliste zum Entfernen von Komponenten](concept-remove-components-checklist.md).  
 

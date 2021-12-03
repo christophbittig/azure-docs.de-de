@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/25/2021
+ms.date: 10/29/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: ce5da1ae3ae87d3dbfc91b72fbda412ad179cfa9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 0ff64806531f1d99ced2ad2b5747ae73e54114bd
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233959"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505098"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten
 
@@ -47,7 +47,7 @@ Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung registrieren.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. 
 
-1. Wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält:
+1. Navigieren Sie zu dem Verzeichnis, das Ihr Abonnement enthält:
     1. Wählen Sie im Azure-Portal auf der Symbolleiste das Filtersymbol **Verzeichnisse und Abonnements** aus. 
     
         ![Filtersymbol „Verzeichnisse und Abonnements“](media/tutorial-create-tenant/directories-subscription-filter-icon.png)
@@ -58,8 +58,8 @@ Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung registrieren.
 
 1. Fügen Sie **Microsoft.AzureActiveDirectory** als Ressourcenanbieter für das verwendete Azure-Abonnement hinzu ([weitere Informationen](../azure-resource-manager/management/resource-providers-and-types.md?WT.mc_id=Portal-Microsoft_Azure_Support#register-resource-provider-1)):
 
-    1. Wählen Sie im Menü oder auf der **Startseite** des Azure-Portals die Option **Abonnements** aus.
-    2. Wählen Sie Ihr Abonnement und dann im Menü auf der linken Seite **Ressourcenanbieter** aus.
+    1. Suchen Sie im Azure-Portal nach dem Eintrag **Abonnements**, und wählen Sie ihn aus.
+    2. Wählen Sie Ihr Abonnement und dann im Menü auf der linken Seite **Ressourcenanbieter** aus. Wenn Ihnen das linke Menü nicht angezeigt wird, wählen Sie oben links auf der Seite das Symbol **Menü für < Name Ihres Abonnements > anzeigen** auf, um das Menü zu erweitern.
     3. Stellen Sie sicher, dass in der Zeile **Microsoft.AzureActiveDirectory** der Status **Registriert** angezeigt wird. Falls nicht, wählen Sie die Zeile und dann **Registrieren** aus.
 
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
@@ -85,6 +85,9 @@ Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung registrieren.
 1. Überprüfen Sie Ihre Verzeichniseinstellungen. Klicken Sie anschließend auf **Erstellen**. [Hier](../azure-resource-manager/templates/common-deployment-errors.md) finden Sie weitere Informationen zum Beheben von Bereitstellungsfehlern.
 
 Sie können mehrere Azure AD B2C-Mandanten zu Abrechnungszwecken mit einem einzelnen Azure-Abonnement verknüpfen. Zum Verknüpfen eines Mandanten müssen Sie auf dem Azure AD B2C-Mandanten ein Administrator sein, und Ihnen muss unter dem Azure-Abonnement mindestens die Rolle „Mitwirkender“ zugewiesen sein. Weitere Informationen finden Sie unter [Verknüpfen eines Azure AD B2C-Mandanten mit einem Abonnement](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
+
+> [!NOTE]
+> Wenn ein Azure AD B2C-Verzeichnis erstellt wird, wird automatisch eine Anwendung namens `b2c-extensions-app` im neuen Verzeichnis erstellt. Ändern oder löschen Sie sie nicht. Die Anwendung wird von Azure AD B2C zum Speichern von Benutzerdaten verwendet. Unter [Azure AD B2C: Erweiterungs-App](extensions-app.md) erhalten Sie weitere Informationen.
 
 ## <a name="select-your-b2c-tenant-directory"></a>Auswählen Ihres B2C-Mandantenverzeichnisses
 

@@ -3,22 +3,22 @@ title: Anpassen der Benutzeroberfläche mit HTML-Vorlagen
 titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, wie Sie mit HTML-Vorlagen die Benutzeroberfläche für Ihre Anwendungen anpassen, die Azure Active Directory B2C verwenden.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/14/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0f0ffa8a4a25df07cf212eb3352d3515d8c5267c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f662b1a1a47dba27457c4c5754d600bb920c7b2f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575555"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222664"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche mit HTML-Vorlagen in Azure Active Directory B2C
 
@@ -208,30 +208,34 @@ Erstellen Sie benutzerdefinierte Seiteninhalte mit dem Markennamen Ihres Produkt
 
 In diesem Artikel wird Azure Blob Storage zum Hosten unserer Inhalte verwendet. Sie können angeben, dass Ihre Inhalte auf einem Webserver gehostet werden sollen, aber Sie müssen [auf Ihrem Webserver CORS aktivieren](https://enable-cors.org/server.html).
 
+> [!NOTE]
+> In einem Azure AD B2C-Mandanten können Sie Blob Storage nicht bereitstellen. Sie müssen diese Ressource in Ihrem Azure AD-Mandanten erstellen.
+
 Führen Sie die folgenden Schritte aus, um Ihren HTML-Inhalt im Blob-Speicher zu hosten:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im Menü **Hub** die Option **Neu** > **Speicher** > **Speicherkonto**.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten und ein Abonnement enthält: 
+    1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+    1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste Verzeichnisname, und klicken Sie dann auf **Wechseln**.
+1. Suchen Sie im Azure-Portal nach **Speicherkonten**, und wählen Sie diese Option aus.
+1. Wählen Sie **+ Erstellen** aus.
 1. Wählen Sie ein **Abonnement** für Ihr Speicherkonto aus.
 1. Erstellen Sie eine **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
-1. Geben Sie einen eindeutigen **Namen** für Ihr Speicherkonto ein.
-1. Wählen Sie den **geografischen Standort** für das Speicherkonto aus.
-1. Als **Bereitstellungsmodell** können Sie **Resource Manager** unverändert lassen.
+1. Geben Sie unter **Speicherkontonamen** einen eindeutigen Namen für Ihr Speicherkonto ein.
+1. Wählen Sie die geografische **Region** für Ihr Speicherkonto aus.
 1. Für **Leistung** können Sie **Standard** übernehmen.
-1. Ändern Sie **Kontoart** in **Blob Storage**.
-1. Für **Replikation** können Sie **RA-GRS** übernehmen.
-1. Für **Zugriffstarif** können Sie **Heiß** übernehmen.
-1. Wählen Sie **Überprüfen + erstellen** aus, um das Speicherkonto zu erstellen.
-    Nach Abschluss der Bereitstellung wird die Seite **Speicherkonto** automatisch geöffnet.
-
+1. **Georedundanter Speicher (GRS)** kann als Einstellung für **Redundanz** übernommen werden.
+1. Wählen Sie **Überprüfen + erstellen** aus, und warten Sie einige Sekunden, bis Azure AD eine Überprüfung ausgeführt hat. 
+1. Wählen Sie **Erstellen**, um das Speicherkonto zu erstellen. Nach Abschluss der Bereitstellung wird die Seite für Ihr Speicherkonto automatisch geöffnet. Ist dies nicht der Fall, wählen Sie **Zu Ressource wechseln** aus.
 #### <a name="21-create-a-container"></a>2.1 Erstellen eines Containers
 
 Führen Sie die folgenden Schritte aus, um im Blob-Speicher einen öffentlichen Container zu erstellen:
 
-1. Wählen Sie unter **Blob-Dienst** im linken Menü die Option **Blobs** aus.
+1. Wählen Sie im linken Menü unter **Datenspeicher** die Option **Container** aus.
 1. Wählen Sie **+ Container** aus.
 1. Geben Sie im Feld **Name** die Zeichenfolge *root* ein. Dies kann ein Name Ihrer Wahl sein, z. B. *contoso*, aber in diesem Beispiel verwenden wir der Einfachheit halber *root*.
-1. Wählen Sie für **Öffentliche Zugriffsebene** die Option **Blob** aus, und klicken Sie dann auf **OK**.
+1. Wählen Sie als **Öffentliche Zugriffsebene** die Option **Blob** aus.
+1. Klicken Sie auf **Erstellen**, um den Container zu erstellen.
 1. Wählen Sie **root** aus, um den neuen Container zu öffnen.
 
 #### <a name="22-upload-your-custom-page-content-files"></a>2.2 Hochladen von Dateien mit benutzerdefinierten Seiteninhalten
@@ -249,13 +253,14 @@ Führen Sie die folgenden Schritte aus, um im Blob-Speicher einen öffentlichen 
 
 Führen Sie die folgenden Schritte aus, um den Blob-Speicher für die Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) zu konfigurieren:
 
-1. Wählen Sie im Menü **CORS** aus.
+1. Navigieren Sie zu Ihrem Speicherkonto. 
+1. Wählen Sie im linken Menü unter **Einstellungen** die Option **Ressourcenfreigabe (CORS)** aus.
 1. Geben Sie für **Zulässige Ursprünge** den Wert `https://your-tenant-name.b2clogin.com` ein. Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten. Beispiel: `https://fabrikam.b2clogin.com`. Verwenden Sie bei der Eingabe Ihres Mandantennamens ausschließlich Kleinbuchstaben.
 1. Wählen Sie für **Zulässige Methoden** sowohl `GET` als auch `OPTIONS` aus.
 1. Geben Sie für **Zulässige Header** ein Sternchen (*) ein.
 1. Geben Sie für **Verfügbar gemachte Header** ein Sternchen (*) ein.
 1. Für **Max. Alter** geben Sie 200 ein.
-1. Wählen Sie **Speichern** aus.
+1. Klicken Sie am oberen Rand der Seite auf **Speichern**.
 
 #### <a name="31-test-cors"></a>3.1 Testen von CORS
 
@@ -268,21 +273,26 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob Sie bereit sind:
     Das Ergebnis sollte `XHR status: 200` lauten. 
     Wenn ein Fehler ausgegeben wird, sollten Sie sich vergewissern, ob Ihre CORS-Einstellungen richtig sind. Außerdem müssen Sie unter Umständen Ihren Browsercache löschen oder eine InPrivate-Browsersitzung öffnen, indem Sie STRG+UMSCHALT+P drücken.
 
+Weitere Informationen finden Sie unter [Erstellen und Verwalten von Azure-Speicherkonten](../storage/common/storage-account-create.md).
+
 ::: zone pivot="b2c-user-flow"
 
 ### <a name="4-update-the-user-flow"></a>4. Aktualisieren des Benutzerflows
 
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-1. Wählen Sie **Benutzerflows** und dann den Benutzerflow *B2C_1_signupsignin1* aus.
-1. Wählen Sie **Seitenlayouts** aus, und klicken Sie dann unter **Einheitliche Seite für Registrierung oder Anmeldung** bei **Benutzerdefinierten Seiteninhalt verwenden** auf **Ja**.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält: 
+    1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+    1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** in der Verzeichnisliste Ihr Azure AD B2C-Verzeichnis, und wählen Sie dann **Wechseln** aus.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Wählen Sie im Menü auf der linken Seite **Benutzerflows** und dann den Benutzerflow *B2C_1_signupsignin1* aus.
+1. Wählen Sie **Seitenlayouts** und dann unter **Einheitliche Seite für Registrierung oder Anmeldung** für **Benutzerdefinierten Seiteninhalt verwenden** die Option **Ja** aus.
 1. Geben Sie unter **Benutzerdefinierter Seiten-URI** den URI für die Datei *custom-ui.html* ein, die Sie zuvor gespeichert haben.
 1. Klicken Sie am oberen Rand der Seite auf **Speichern**.
 
 ### <a name="5-test-the-user-flow"></a>5. Testen des Benutzerflows
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten **Benutzerflows** und dann den Benutzerflow *B2C_1_signupsignin1* aus.
-1. Klicken Sie im oberen Bereich der Seite auf **Benutzerflow ausführen**.
-1. Klicken Sie auf die Schaltfläche **Benutzerflow ausführen**.
+1. Wählen Sie im oberen Bereich der Seite **Benutzerflow ausführen** aus.
+1. Wählen Sie im Bereich auf der rechten Seite die Schaltfläche **Benutzerflow ausführen** aus.
 
 Es sollte eine Seite ähnlich dem folgenden Beispiel mit den zentrierten Elementen angezeigt werden, basierend auf der CSS-Datei, die Sie erstellt haben:
 
@@ -412,7 +422,7 @@ So verwenden Sie das Beispiel
 
 1. Klonen Sie das Repository auf Ihrem lokalen Computer. Wählen Sie den Vorlagenordner `/AzureBlue`, `/MSA` oder `/classic` aus.
 1. Laden Sie alle Dateien aus dem Vorlagenordner und dem Ordner `/src` in den Blob-Speicher hoch, wie in den vorherigen Abschnitten beschrieben.
-1. Öffnen Sie dann die einzelnen `\*.html`-Dateien im Vorlagenordner. Ersetzen Sie anschließend alle Instanzen von `https://login.microsoftonline.com`-URLs durch die URL, die Sie in Schritt 2 hochgeladen haben. Beispiel:
+1. Öffnen Sie dann die einzelnen `\*.html`-Dateien im Vorlagenordner. Ersetzen Sie anschließend alle Instanzen von `https://login.microsoftonline.com`-URLs durch die URL, die Sie in Schritt 2 hochgeladen haben. Zum Beispiel:
     
     Von:
     ```html

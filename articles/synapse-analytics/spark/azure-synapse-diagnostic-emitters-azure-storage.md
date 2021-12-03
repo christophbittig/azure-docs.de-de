@@ -1,5 +1,5 @@
 ---
-title: Sammeln Ihrer Apache Spark-Anwendungsprotokolle und -Metriken mithilfe eines Azure Storage-Kontos (Vorschau)
+title: Erfassen von Apache Spark-Anwendungsprotokollen und -Metriken mithilfe eines Azure Storage-Kontos
 description: In diesem Artikel wird gezeigt, wie Sie die Diagnoseemittererweiterung von Synapse Spark verwenden, um Protokolle, Ereignisprotokolle und Metriken zu sammeln, und Sie erfahren, wie Sie die Grafana-Dashboards integrieren.
 services: synapse-analytics
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 08/31/2021
-ms.openlocfilehash: c29cdbd9879397b3e171160f93ccd0ac712467db
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: de21862295e0a27937b8dc7e9552ce9530ec217d
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544622"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997873"
 ---
-# <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-storage-accountpreview"></a>Sammeln Ihrer Apache Spark-Anwendungsprotokolle und -Metriken mithilfe eines Azure Storage-Kontos (Vorschau)
+# <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-storage-account"></a>Erfassen von Apache Spark-Anwendungsprotokollen und -Metriken mithilfe eines Azure Storage-Kontos
 
 Die Diagnoseemittererweiterung von Synapse Apache Spark ist eine Bibliothek, die es der Apache Spark-Anwendung ermöglicht, Protokolle, Ereignisprotokolle und Metriken an ein einzelnes Ziel oder an mehrere Ziele wie Azure Log Analytics, Azure Storage und Azure Event Hubs auszugeben. 
 
@@ -55,7 +55,7 @@ Eine ausführlichere Beschreibung der Parameter finden Sie unter [Azure Storage
 
 Nachdem Sie einen Auftrag an den konfigurierten Apache Spark-Pool übermittelt haben, sollten die Protokolle und Metrikdateien im Zielspeicherkonto angezeigt werden.
 Die Protokolle werden für verschiedene Anwendungen nach dem Muster `<workspaceName>.<sparkPoolName>.<livySessionId>` in entsprechenden Pfaden platziert.
-Alle Protokolldateien liegen im JSON-Zeilenformat – auch „newline-delimited JSON“ (durch Zeilenvorschübe getrennter JSON-Code) oder kurz „ndjson“ genannt – vor, was für die Datenverarbeitung sehr praktisch ist.
+Alle Protokolldateien liegen im JSON-Zeilenformat – auch „newline-delimited JSON“ (durch Zeilenvorschübe getrennter JSON-Code) oder kurz „ndjson“ genannt – vor, was für die Datenverarbeitung praktisch ist.
 
 ## <a name="available-configurations"></a>Verfügbare Konfigurationen
 
@@ -69,6 +69,7 @@ Alle Protokolldateien liegen im JSON-Zeilenformat – auch „newline-delimited
 | `spark.synapse.diagnostic.emitter.<destination>.secret`                     | Optional. Der Inhalt des Geheimnisses: Zugriffsschlüssel (AccessKey) oder SAS. |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault`            | Erforderlich, wenn `.secret` nicht angegeben wird. Der Name der [Azure Key Vault-Instanz](../../key-vault/general/overview.md), in der das Geheimnis (Zugriffsschlüssel oder SAS) gespeichert ist. |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.secretName` | Erforderlich, wenn `.secret.keyVault` angegeben wird. Der Name des Azure Key Vault-Geheimnisses, in dem das Geheimnis (Zugriffsschlüssel oder SAS) gespeichert ist. |
+| `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.linkedService` | Optional. Der Name des mit Azure Key Vault verknüpften Diensts. Bei Aktivierung in der Synapse-Pipeline ist dieser Name erforderlich, um das Geheimnis aus AKV abzurufen. (Stellen Sie sicher, dass MSI über Leseberechtigung für AKV verfügt.) |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.eventName.match`     | Optional. Kommagetrennte Liste mit Spark-Ereignisnamen, um anzugeben, welche Ereignisse gesammelt werden sollen. Beispiel: `SparkListenerApplicationStart,SparkListenerApplicationEnd` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.loggerName.match`    | Optional. Kommagetrennte Liste mit log4j-Protokollierungsnamen, um anzugeben, welche Protokolle gesammelt werden sollen. Beispiel: `org.apache.spark.SparkContext,org.example.Logger` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.metricName.match`    | Optional. Kommagetrennte Liste mit Spark-Metriknamensuffixen, um anzugeben, welche Metriken gesammelt werden sollen. Beispiel: `jvm.heap.used` |
@@ -111,6 +112,6 @@ Azure Synapse Analytics-Arbeitsbereiche unterstützen die Aktivierung des Schutz
    > [!div class="mx-imgBorder"]
    > ![Erstellen eines verwalteten privaten Endpunkts 2](./media/azure-synapse-diagnostic-emitters-azure-storage/create-private-endpoint-2.png)
 3. Die Bereitstellung des privaten Endpunkts dauert einige Minuten.
-4. Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto. Wählen Sie unter **Netzwerkbetrieb** > **Verbindungen mit privatem Endpunkt** die soeben bereitgestellte Verbindung und anschließend **Genehmigen** aus.
+4. Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto. Wählen Sie unter **Netzwerk** > **Private Endpunktverbindungen** die bereitgestellte Verbindung und anschließend **Genehmigen** aus.
 
 

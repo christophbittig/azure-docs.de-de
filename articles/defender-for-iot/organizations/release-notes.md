@@ -1,35 +1,49 @@
 ---
-title: Neuerungen in Azure Defender für IoT
+title: Neuerungen in Microsoft Defender für IoT
 description: In diesem Artikel wird beschrieben, welche Neuerungen das aktuelle Release von Defender für IoT enthält.
 ms.topic: overview
-ms.date: 05/05/2021
-ms.openlocfilehash: bb039f53228b5b6abc05708ba7f6efd79c349672
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.date: 11/16/2021
+ms.openlocfilehash: ed4c7ab63c2b1b4b0a1efdade213fcd141da27c2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130179543"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550362"
 ---
-# <a name="whats-new-in-azure-defender-for-iot"></a>Neuerungen in Azure Defender für IoT  
+# <a name="whats-new-in-microsoft-defender-for-iot"></a>Neuerungen in Microsoft Defender für IoT
+
+[!INCLUDE [Banner for top of topics](../includes/banner.md)]
 
 In diesem Artikel sind neue und verbesserte Features von Defender für IoT aufgeführt.
 
 Die genannten Features befinden sich in der Vorschauphase. Die [ergänzenden Bestimmungen für Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
-## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Versionsverwaltung und Unterstützung für Azure Defender für IoT 
+## <a name="versioning-and-support-for-defender-for-iot"></a>Versionsverwaltung und Unterstützung für Defender für IoT
 
-Nachfolgend sind die Unterstützung, die Breaking Change-Richtlinien für Defender für IoT sowie die derzeit verfügbaren Versionen von Azure Defender für IoT aufgeführt. 
+Nachfolgend sind die Unterstützung, die Breaking Change-Richtlinien für Defender für IoT sowie die derzeit verfügbaren Versionen von Defender für IoT aufgeführt.
 
-### <a name="servicing-information-and-timelines"></a>Wartungsinformationen und Zeitachsen 
+### <a name="servicing-information-and-timelines"></a>Wartungsinformationen und Zeitachsen
 
-Microsoft plant, mindestens vierteljährlich Updates für Azure Defender für IoT zu veröffentlichen. Jede allgemein verfügbare Version des Sensors mit Azure Defender für IoT und der lokalen Verwaltungskonsole wird nach der Veröffentlichung bis zu neun Monate lang unterstützt. Korrekturen und neue Funktionen werden auf die aktuelle allgemein verfügbare Version angewendet, die derzeit unterstützt wird. Sie werden nicht auf ältere allgemein verfügbare Versionen angewendet.
+Microsoft plant, mindestens vierteljährlich Updates für Defender für IoT zu veröffentlichen. Jede allgemein verfügbare Version des Sensors mit Defender für IoT und der lokalen Verwaltungskonsole wird nach der Veröffentlichung bis zu neun Monate lang unterstützt. Korrekturen und neue Funktionen werden auf die aktuelle allgemein verfügbare Version angewendet, die derzeit unterstützt wird. Sie werden nicht auf ältere allgemein verfügbare Versionen angewendet.
 
 ### <a name="versions-and-support-dates"></a>Versionen und Supportdaten
 
 | Version | Veröffentlichungsdatum | Ablauf des Supports |
 |--|--|--|
 | 10.0 | 01/2021 | 10/2021 |
-| 10.3 | 04/2021 | 02/2022 |
+| 10.3 | 04/2021 | 01/2022 |
+| 10.5.2 | 10/2021 | 07/2022 |
+| 10.5.3 | 11/2021 | 08/2022 |
+
+## <a name="november-2021"></a>November 2021
+
+Die folgenden Featureverbesserungen werden mit der Version 10.5.3 von Microsoft Defender für IoT verfügbar gemacht:
+
+- Die Sensoren löschen jetzt automatisch archivierte Warnungen, die über 90 Tage alt sind.
+
+- Basierend auf Kundenfeedback wurden Verbesserungen an Warnungsexporten vorgenommen.
+
+- Leistungs- und Netzwerkdatenverkehrsanalyse wurden verbessert.
 
 ## <a name="october-2021"></a>Oktober 2021
 
@@ -43,11 +57,12 @@ Die folgenden Featureverbesserungen werden mit der Version 10.5.2 von Azure Def
 
 - [Webhook erweitert](#webhook-extended)
 
-- [Unicode-Unterstützung für Zertifikatpassphrasen](#unicode-support-for-certificate-passphrases) 
+- [Unicode-Unterstützung für Zertifikatpassphrasen](#unicode-support-for-certificate-passphrases)
 
 ### <a name="plc-operating-mode-detections-public-preview"></a>SPS-Betriebsmoduserkennungen (Public Preview)
 
 Benutzer können jetzt Zustände, Änderungen und Risiken des SPS-Betriebsmodus anzeigen. Der SPS-Betriebsmodus besteht aus dem logischen SPS-Ausführungszustand und dem physischen Schlüsselzustand, sofern ein physischer Schlüsselschalter für die SPS vorhanden ist.
+
 Diese neue Funktion trägt durch die Erkennung *unsicherer* SPS zur Verbesserung der Sicherheit und somit zur Verhinderung von Angriffen wie etwa SPS-Programmdownloads bei. Der Triton-Angriff von 2017 auf ein petrochemisches Werk zeigt, welche Auswirkungen solche Risiken haben können.
 Durch diese Information erhalten Betriebstechniker außerdem einen wichtigen Einblick in den Betriebsmodus von Unternehmens-SPS.
 
@@ -73,17 +88,29 @@ Wenn der Schlüsselzustand als „Programm“ oder der Ausführungszustand als �
 
 ### <a name="pcap-api"></a>PCAP-API
 
-Mit der neuen PCAP-API kann der Benutzer über die lokale Verwaltungskonsole PCAP-Dateien des Sensors mit und ohne direkten Zugriff auf den Sensor abrufen. Hierzu wird die Verwaltungskonsole als Proxy verwendet.
+Mit der neuen PCAP-API kann der Benutzer über die lokale Verwaltungskonsole PCAP-Dateien des Sensors mit und ohne direkten Zugriff auf den Sensor abrufen.
 
 ### <a name="on-premises-management-console-audit"></a>Überwachung der lokalen Verwaltungskonsole
 
-Überwachungsprotokolle für die Bereitstellung Ihres Sensors sind jetzt über die lokale Verwaltungskonsole verfügbar.
+Überwachungsprotokolle für die lokale Verwaltungskonsole können nun exportiert werden, um Untersuchungen dazu zu ermöglichen, welche Änderungen von wem vorgenommen wurden.
 
 ### <a name="webhook-extended"></a>Webhook erweitert
 
-Der erweiterte Webhook kann verwendet werden, um alle Informationen in der Webhookwarnung sowie zusätzliche Daten an den Endpunkt zu senden.
+Erweiterte Webhooks können zum Senden von zusätzlichen Daten an den Endpunkt verwendet werden. Das erweiterte Feature enthält alle Informationen in der Webhookwarnung und fügt dem Bericht die folgenden Informationen hinzu:
 
-### <a name="unicode-support-for-certificate-passphrases"></a>Unicode-Unterstützung für Zertifikatpassphrasen 
+- sensorID
+- sensorName
+- zoneID
+- zoneName
+- siteID
+- siteName
+- sourceDeviceAddress
+- destinationDeviceAddress
+- remediationSteps
+- handled (verarbeitet)
+- additionalInformation
+
+### <a name="unicode-support-for-certificate-passphrases"></a>Unicode-Unterstützung für Zertifikatpassphrasen
 
 Bei Passphrasen für Sensorzertifikate werden jetzt Unicode-Zeichen unterstützt. Weitere Informationen finden Sie unter [Informationen zu Zertifikaten](how-to-deploy-certificates.md#about-certificates).
 
@@ -93,7 +120,8 @@ Bei Passphrasen für Sensorzertifikate werden jetzt Unicode-Zeichen unterstützt
 
 Neue Threat Intelligence-Pakete können jetzt automatisch an mit der Cloud verbundene Sensoren gepusht werden, sobald sie von Microsoft Defender für IoT veröffentlicht werden. Diese Option steht zusätzlich zum Herunterladen von Threat Intelligence-Paketen und zum anschließenden Hochladen auf Sensoren zur Verfügung.
 
-Durch die Verwendung automatischer Updates lässt sich der Betriebsaufwand reduzieren und eine höhere Sicherheit gewährleisten. Aktivieren Sie die automatische Aktualisierung, indem Sie Ihren mit der Cloud verbundenen Sensor im Portal von Defender für IoT integrieren. Aktivieren Sie dazu die Umschaltfläche **Automatic Threat Intelligence Updates** (Automatische Threat Intelligence-Updates).
+Durch die Verwendung automatischer Updates lässt sich der Betriebsaufwand reduzieren und eine höhere Sicherheit gewährleisten.
+Aktivieren Sie die automatische Aktualisierung, indem Sie Ihren mit der Cloud verbundenen Sensor im Portal von Defender für IoT integrieren. Aktivieren Sie dazu die Umschaltfläche **Automatic Threat Intelligence Updates** (Automatische Threat Intelligence-Updates).
 
 Wenn Sie einen konservativeren Ansatz zum Aktualisieren Ihrer Threat Intelligence-Daten verfolgen möchten, können Sie Pakete nur dann manuell aus dem Portal von Azure Defender für IoT an mit der Cloud verbundene Sensoren pushen, wenn Sie es für erforderlich halten.
 Dadurch können Sie steuern, wann ein Paket installiert wird, ohne es herunterladen und dann auf Ihre Sensoren hochladen zu müssen. Updates werden in Defender für IoT über die Seite **Standorte und Sensoren** manuell an Sensoren gepusht.
@@ -101,7 +129,7 @@ Dadurch können Sie steuern, wann ein Paket installiert wird, ohne es herunterla
 Sie können auch die folgenden Informationen zu Threat Intelligence-Paketen überprüfen:
 
 - Installierte Paketversion
-- Modus des Threat Intelligence-Updates 
+- Modus des Threat Intelligence-Updates
 - Status des Threat Intelligence-Updates
 
 ### <a name="view-cloud-connected-sensor-information-public-preview"></a>Anzeigen von Informationen zu mit der Cloud verbundenen Sensoren (Public Preview)
@@ -121,7 +149,7 @@ Für Benutzer, die Warnungs-APIs verwenden, sind neue Felder verfügbar.
 - Quell- und Zieladresse
 - Schritte zur Bereinigung
 - Der vom Benutzer definierte Name des Sensors
-- Der Name der Zone, die dem Sensor zugeordnet ist 
+- Der Name der Zone, die dem Sensor zugeordnet ist
 - Der Name des Standorts, der dem Sensor zugeordnet ist
 
 **Sensor**
@@ -166,6 +194,7 @@ Dieses Feature ist in der lokalen Verwaltungskonsole mit Veröffentlichung von V
 - [Onboarding](#onboarding)
 - [Benutzerfreundlichkeit](#usability)
 - [Andere Updates](#other-updates)
+
 ### <a name="security"></a>Sicherheit
 
 Für dieses Release wurden Verbesserungen bei der Wiederherstellung von Zertifikaten und Kennwörtern vorgenommen.

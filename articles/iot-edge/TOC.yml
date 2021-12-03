@@ -115,68 +115,72 @@
       href: production-checklist.md
 - name: Anleitungen
   items:
-    - name: Erstellen eines IoT Edge-Geräts
+    - name: Installieren und Bereitstellen von IoT Edge
       items:
-        - name: Manuelles Bereitstellen eines einzelnen Geräts
+        - name: Erstellen eines IoT Edge-Geräts
+          href: how-to-create-iot-edge-device.md
+        - name: Linux-Container auf Linux-Hosts
           items:
-            - name: X.509-Zertifikatnachweis
+            - name: Bereitstellen eines einzelnen Geräts
               items:
-                - name: Linux
+                - name: X.509-Zertifikatnachweis
                   href: how-to-provision-single-device-linux-x509.md
-                - name: Linux-Container unter Windows
-                  href: how-to-provision-single-device-linux-on-windows-x509.md
-                - name: Windows
-                  href: how-to-provision-single-device-windows-x509.md
-            - name: Nachweis des symmetrischen Schlüssels
-              items:
-                - name: Linux
+                - name: Nachweis des symmetrischen Schlüssels
                   href: how-to-provision-single-device-linux-symmetric.md
-                - name: Linux-Container unter Windows
+            - name: Bereitstellen von Geräten im großen Stil
+              items:
+                - name: X.509-Zertifikatnachweis
+                  href: how-to-provision-devices-at-scale-linux-x509.md
+                - name: TPM-Nachweis
+                  href: how-to-provision-devices-at-scale-linux-tpm.md
+                - name: Nachweis des symmetrischen Schlüssels
+                  href: how-to-provision-devices-at-scale-linux-symmetric.md
+        - name: Linux-Container auf Windows-Hosts
+          items:
+            - name: Bereitstellen eines einzelnen Geräts
+              items:
+                - name: X.509-Zertifikatnachweis
+                  href: how-to-provision-single-device-linux-on-windows-x509.md
+                - name: Nachweis des symmetrischen Schlüssels
                   href: how-to-provision-single-device-linux-on-windows-symmetric.md
-                - name: Windows
+            - name: Bereitstellen von Geräten im großen Stil
+              items:
+                - name: X.509-Zertifikatnachweis
+                  href: how-to-provision-devices-at-scale-linux-on-windows-x509.md
+                - name: TPM-Nachweis
+                  href: how-to-provision-devices-at-scale-linux-on-windows-tpm.md
+                - name: Nachweis des symmetrischen Schlüssels
+                  href: how-to-provision-devices-at-scale-linux-on-windows-symmetric.md
+            - name: Konfigurieren der geschachtelten Virtualisierung für virtuelle Windows-Computer
+              href: nested-virtualization.md
+            - name: Erstellen des virtuellen Switches
+              href: how-to-create-virtual-switch.md
+            - name: Konfigurieren der GPU-Beschleunigung
+              href: gpu-acceleration.md
+        - name: Windows-Container auf Windows-Hosts
+          items:
+            - name: Bereitstellen eines einzelnen Geräts
+              items:
+                - name: Nachweis des symmetrischen Schlüssels
                   href: how-to-provision-single-device-windows-symmetric.md
+                - name: X.509-Zertifikatnachweis
+                  href: how-to-provision-single-device-windows-x509.md
+            - name: Bereitstellen von Geräten im großen Stil
+              items:
+                - name: Nachweis des symmetrischen Schlüssels
+                  href: how-to-provision-devices-at-scale-windows-symmetric.md
+                - name: X.509-Zertifikatnachweis
+                  href: how-to-provision-devices-at-scale-windows-x509.md
+                - name: TPM-Nachweis
+                  href: how-to-provision-devices-at-scale-windows-tpm.md
         - name: Aktualisieren von IoT Edge
           href: how-to-update-iot-edge.md
         - name: Verwalten von Gerätezertifikaten
           href: how-to-manage-device-certificates.md
-        - name: Konfigurieren der geschachtelten Virtualisierung für virtuelle Windows-Computer
-          href: nested-virtualization.md
-        - name: Erstellen eines virtuellen Switches für Linux unter Windows
-          href: how-to-create-virtual-switch.md
-        - name: Konfigurieren der GPU-Beschleunigung für Linux unter Windows
-          href: gpu-acceleration.md
-    - name: Alternative Geräteszenarien
-      items:
         - name: Ausführen von IoT Edge in Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
         - name: Bereitstellen eines virtuellen IoT Edge-Computers mithilfe einer ARM-Vorlage
           href: how-to-install-iot-edge-ubuntuvm.md
-    - name: Automatische Bereitstellung mit DPS
-      items:
-        - name: TPM-Nachweis
-          items:
-            - name: Linux
-              href: how-to-provision-devices-at-scale-linux-tpm.md
-            - name: Linux-Container unter Windows
-              href: how-to-provision-devices-at-scale-linux-on-windows-tpm.md
-            - name: Windows
-              href: how-to-provision-devices-at-scale-windows-tpm.md
-        - name: X.509-Zertifikatnachweis
-          items:
-            - name: Linux
-              href: how-to-provision-devices-at-scale-linux-x509.md
-            - name: Linux-Container unter Windows
-              href: how-to-provision-devices-at-scale-linux-on-windows-x509.md
-            - name: Windows
-              href: how-to-provision-devices-at-scale-windows-x509.md
-        - name: Nachweis des symmetrischen Schlüssels
-          items:
-            - name: Linux
-              href: how-to-provision-devices-at-scale-linux-symmetric.md
-            - name: Linux-Container unter Windows
-              href: how-to-provision-devices-at-scale-linux-on-windows-symmetric.md
-            - name: Windows
-              href: how-to-provision-devices-at-scale-windows-symmetric.md
     - name: Entwickeln von benutzerdefinierten Modulen
       items:
         - name: "Entwickeln mit Visual Studio\_2019"

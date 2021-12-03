@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 11/02/2021
 keywords: QnA Maker, Chatbots mit wenig Code, Konversationen mit Mehrfachdurchläufen
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 861f888371971a90378639a2ec5cc288c8d7a23f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8249fa4f276b7474740e2c8d882abc4e69c9487d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029825"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476488"
 ---
 # <a name="what-is-question-answering"></a>Was ist „Fragen und Antworten“?
 
 „Fragen und Antworten“ ermöglicht die cloudbasierte Verarbeitung natürlicher Sprache (NLP), um eine natürliche Konversationsebene für Ihre Daten erstellen zu können. Er wird dazu verwendet, für eine beliebige Eingabe die am besten geeignete Antwort aus Ihrer benutzerdefinierten Wissensdatenbank (Knowledge Base, KB) zu finden.
 
-„Fragen und Antworten“ wird häufig mithilfe von Clientanwendungen für die Konversation erstellt, darunter Anwendungen für soziale Medien, Chatbots und sprachaktivierte Desktopanwendungen.
+„Fragen und Antworten“ wird häufig mithilfe von Clientanwendungen für die Konversation erstellt, darunter Anwendungen für soziale Medien, Chatbots und sprachaktivierte Desktopanwendungen. Mehrere neue Features wurden hinzugefügt, einschließlich verbesserter Relevanz mithilfe eines Deep Learning-Bewerters, präziser Antworten und End-to-End-Unterstützung für Regionen.
 
 Diese Dokumentation enthält die folgenden Arten von Artikeln:
 
@@ -29,14 +29,14 @@ Diese Dokumentation enthält die folgenden Arten von Artikeln:
 
 ## <a name="when-to-use-question-answering"></a>Wann sollte „Fragen und Antworten“ verwendet werden?
 
-* **Vorhandensein von statischen Informationen:** Verwenden Sie „Fragen und Antworten“, wenn Ihre Antwort-Wissensdatenbank statische Informationen enthält. Diese Wissensdatenbank ist speziell auf Ihre Anforderungen zugeschnitten und wurde anhand von Dokumenten wie [PDFs und URLs](../../qnamaker/Concepts/data-sources-and-content.md) erstellt.
+* **Vorhandensein von statischen Informationen:** Verwenden Sie „Fragen und Antworten“, wenn Ihre Antwort-Wissensdatenbank statische Informationen enthält. Diese Wissensdatenbank ist speziell auf Ihre Anforderungen zugeschnitten und wurde anhand von Dokumenten wie PDFs und URLs erstellt.
 * **Bereitstellung der gleichen Antwort für eine Anforderung, eine Frage oder einen Befehl:** Wenn verschiedene Benutzer die gleiche Frage stellen, erhalten sie die gleiche Antwort.
-* **Filterung statischer Informationen auf der Grundlage von Metainformationen:** Fügen Sie [Metadatentags](../../qnamaker/how-to/metadata-generateanswer-usage.md) hinzu, um zusätzliche Filteroptionen bereitzustellen, die für die Benutzer Ihrer Clientanwendung und die Informationen relevant sind. Zu den gängigen Metadateninformationen zählen [Geplauder](./how-to/chit-chat.md), Inhaltstyp oder -format, Inhaltszweck und Inhaltsaktualität. <!--TODO: Fix Link-->
-* **Verwaltung einer Botkonversation, die statische Informationen beinhaltet:** Ihre Wissensdatenbank liefert eine Antwort für den Konversationstext oder Befehl eines Benutzers. Ist die Antwort Teil eines vordefinierten Konversationsablaufs (dargestellt in Ihrer Wissensdatenbank mit [Mehrfachdurchlauf-Kontext](../../qnamaker/how-to/multiturn-conversation.md)), kann der Bot diesen Ablauf problemlos bereitstellen.
+* **Filterung statischer Informationen auf der Grundlage von Metainformationen:** Fügen Sie [Metadatentags](./tutorials/multiple-domains.md) hinzu, um zusätzliche Filteroptionen bereitzustellen, die für die Benutzer Ihrer Clientanwendung und die Informationen relevant sind. Zu den gängigen Metadateninformationen zählen [Geplauder](./how-to/chit-chat.md), Inhaltstyp oder -format, Inhaltszweck und Inhaltsaktualität. <!--TODO: Fix Link-->
+* **Verwaltung einer Botkonversation, die statische Informationen beinhaltet:** Ihre Wissensdatenbank liefert eine Antwort für den Konversationstext oder Befehl eines Benutzers. Ist die Antwort Teil eines vordefinierten Konversationsablaufs (dargestellt in Ihrer Wissensdatenbank mit [Mehrfachdurchlauf-Kontext](./tutorials/guided-conversations.md)), kann der Bot diesen Ablauf problemlos bereitstellen.
 
 ## <a name="what-is-a-knowledge-base"></a>Was ist eine Wissensdatenbank?
 
-„Fragen und Antworten“ [importiert Ihre Inhalte](../../qnamaker/Concepts/plan.md) in eine Wissensdatenbank, die aus Frage-Antwort-Paaren besteht. Im Zuge des Importvorgangs werden Informationen zur Beziehung zwischen den Teilen Ihrer strukturierten und teilweise strukturierten Inhalte extrahiert, um Beziehungen zwischen den Frage-Antwort-Paaren zu implizieren. Sie können diese Frage-Antwort-Paare bearbeiten oder neue hinzufügen.
+„Fragen und Antworten“ [importiert Ihre Inhalte](./how-to/manage-knowledge-base.md) in eine Wissensdatenbank, die aus Frage-Antwort-Paaren besteht. Im Zuge des Importvorgangs werden Informationen zur Beziehung zwischen den Teilen Ihrer strukturierten und teilweise strukturierten Inhalte extrahiert, um Beziehungen zwischen den Frage-Antwort-Paaren zu implizieren. Sie können diese Frage-Antwort-Paare bearbeiten oder neue hinzufügen.
 
 Der Inhalt des Frage-Antwort-Paars umfasst Folgendes:
 * Alle alternativen Formen der Frage

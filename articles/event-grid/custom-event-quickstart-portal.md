@@ -3,12 +3,12 @@ title: Senden von benutzerdefinierten Ereignissen an einen Webendpunkt – Event
 description: 'Schnellstart: Verwenden Sie Azure Event Grid und das Azure-Portal, um ein benutzerdefiniertes Thema zu veröffentlichen und Ereignisse für dieses Thema zu abonnieren. Die Ereignisse werden von einer Webanwendung verarbeitet.'
 ms.date: 07/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: a2d259707e6bfbcc5216b345107507413da71523
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: 461d43e2a0210dfd5844beb844c7ae2a48e936f3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113232446"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310070"
 ---
 # <a name="route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Weiterleiten benutzerdefinierter Ereignisse an einen Webendpunkt mit dem Azure Portal und Event Grid
 Event Grid ist ein vollständig verwalteter Dienst, mit dem Sie Ereignisse problemlos über viele verschiedene Azure-Dienste und -Anwendungen hinweg verwalten können. Er vereinfacht das Erstellen ereignisgesteuerter und serverloser Anwendungen. Eine Übersicht über den Dienst finden Sie unter [Übersicht über Event Grid](overview.md).
@@ -54,7 +54,7 @@ Erstellen Sie zunächst einen Endpunkt für die Ereignisnachricht, bevor Sie ein
 
 1. Wählen Sie auf der Artikelseite **Deploy to Azure** (In Azure bereitstellen) aus, um die Lösung für Ihr Abonnement bereitzustellen. Geben Sie im Azure-Portal Werte für die Parameter an.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to deploy to Azure."></a>
 2. Gehen Sie auf der Seite **Benutzerdefinierte Bereitstellung** wie folgt vor: 
     1. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe aus, die Sie beim Erstellen des Speicherkontos erstellt haben. Dadurch muss zur Bereinigung nach Abschluss des Tutorials einfach nur die Ressourcengruppe gelöscht werden.  
     2. Geben Sie unter **Websitename** einen Namen für die Web-App ein.

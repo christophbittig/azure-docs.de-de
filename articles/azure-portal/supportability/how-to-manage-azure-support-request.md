@@ -1,19 +1,21 @@
 ---
 title: Verwalten einer Azure-Supportanfrage
-description: In diesem Artikel werden das Anzeigen von Supportanfragen, das Senden von Nachrichten, das Ändern des Schweregrads von Anfragen, das Freigeben von Diagnoseinformationen mit Azure-Support, das erneute Öffnen einer geschlossenen Supportanfrage und das Hochladen von Dateien erläutert.
+description: Erfahren Sie mehr über das Anzeigen von Supportanfragen und das Senden von Nachrichten, das Hochladen von Dateien und das Verwalten von Optionen.
 tags: billing
 ms.topic: how-to
-ms.date: 09/30/2021
-ms.openlocfilehash: 8e7b074883fe2dcfb79913e54cf7180e26f29c2a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 11/10/2021
+ms.openlocfilehash: c74a6245da9023889be151415bce72ba0129881c
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129353201"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179928"
 ---
 # <a name="manage-an-azure-support-request"></a>Verwalten einer Azure-Supportanfrage
 
-Nachdem Sie eine [Azure-Supportanfrage erstellt](how-to-create-azure-support-request.md) haben, können Sie sie im [Azure-Portal](https://portal.azure.com) verwalten. Dies wird in diesem Artikel beschrieben. Anfragen können aber auch programmgesteuert mithilfe der [Azure-Supportticket-REST-API](/rest/api/support) oder der [Azure CLI](/cli/azure/azure-cli-support-request) erstellt und verwaltet werden.
+Nachdem Sie eine [Azure-Supportanfrage erstellt](how-to-create-azure-support-request.md) haben, können Sie sie im [Azure-Portal](https://portal.azure.com) verwalten. Anfragen können aber auch programmgesteuert mithilfe der [Azure-Supportticket-REST-API](/rest/api/support) oder der [Azure CLI](/cli/azure/azure-cli-support-request) erstellt und verwaltet werden.
+
+Um eine Supportanfrage verwalten zu können, müssen Sie die Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner), [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) oder [Mitwirkender für Supportanfragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) auf der Abonnementebene innehaben. Um eine Supportanfrage zu verwalten, die ohne Abonnement erstellt wurde, müssen Sie [Administrator](../../active-directory/roles/permissions-reference.md) sein.
 
 ## <a name="view-support-requests"></a>Anzeigen von Supportanfragen
 
@@ -50,15 +52,15 @@ Auf dieser Seite können Sie Supportanfragen durchsuchen, filtern und sortieren.
 
         :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="Neuer Schweregrad kann nicht ausgewählt werden":::
 
-## <a name="share-diagnostic-information-with-azure-support"></a>Teilen von Diagnoseinformationen mit dem Azure-Support
+## <a name="allow-collection-of-advanced-diagnostic-information"></a>Sammeln erweiterter Diagnoseinformationen zulassen ​
 
-Wenn Sie eine Supportanfrage erstellen, können Sie im Abschnitt **Diagnoseinformationen teilen** entweder **Ja** oder **Nein** auswählen. Diese Option bestimmt, ob der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) zu Ihrer Azure-Ressourcen, zum Beispiel [Protokolldateien](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs), erfassen kann, die möglicherweise zur Behebung Ihres Problems beitragen.
+Wenn Sie eine Supportanfrage erstellen, können Sie im Abschnitt **Erweiterte Diagnoseinformationen** entweder **Ja** oder **Nein** auswählen. Diese Option bestimmt, ob der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) zu Ihrer Azure-Ressourcen, zum Beispiel [Protokolldateien](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs), erfassen kann, die möglicherweise zur Behebung Ihres Problems beitragen. Der Azure-Support kann nur dann auf erweiterte Diagnoseinformationen zugreifen, wenn Ihr Fall über das Azure-Portal erstellt wurde und Sie die Erlaubnis dazu erteilt haben.
 
-So ändern Sie Ihre Auswahl bei **Diagnoseinformationen teilen** nachdem die Anforderung erstellt wurde:
+So ändern Sie Ihre Auswahl bei **Erweiterte Diagnoseinformationen**, nachdem die Anforderung erstellt wurde:
 
 1. Wählen Sie auf der Seite **Alle Supportanfragen** die Supportanfrage aus.
 
-1. Suchen Sie auf der Seite **Supportanfrage** nach **Dignoseinformationen freigeben**, und wählen Sie dann **Ändern** aus.
+1. Suchen Sie auf der Seite **Supportanfrage** nach **Erweiterten Dignoseinformationen**, und wählen Sie dann **Ändern** aus.
 
 1. Wählen Sie **Ja** oder **Nein** aus, und klicken Sie dann auf **OK**, um dies zu bestätigen.
 
@@ -117,7 +119,7 @@ Befolgen Sie diese Richtlinien, wenn Sie die Dateiupload-Option verwenden:
 
 ## <a name="close-a-support-request"></a>Schließen einer Supportanfrage
 
-Um eine Supportanfrage zu schließen, [senden Sie eine Nachricht](#send-a-message) mit der Bitte, die Anfrage zu schließen.
+Um eine Supportanfrage zu schließen, [senden Sie eine Nachricht,](#send-a-message) und teilen Sie uns mit, dass Sie die Anfrage schließen möchten.
 
 ## <a name="reopen-a-closed-request"></a>Erneutes Öffnen einer geschlossenen Anfrage
 

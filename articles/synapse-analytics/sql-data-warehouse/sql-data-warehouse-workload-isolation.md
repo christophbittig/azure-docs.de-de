@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 11/16/2021
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 506aed16f1b8a6c631a759bb1367aef8242859ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b78fc9a0bb292cbc124e1629351ddd9cc2191e7
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734779"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547581"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Azure Synapse Analytics – Workloadisolation mit Arbeitsauslastungsgruppen
 
@@ -28,16 +28,25 @@ Arbeitsauslastungsgruppen sind Container für eine Reihe von Anforderungen und b
 
 In den folgenden Abschnitten wird erläutert, wie Arbeitsauslastungsgruppen die Möglichkeit zum Definieren der Isolation und Kapselung, Anfordern der Ressourcendefinition und Einhalten von Ausführungsregeln bietet.
 
+## <a name="resource-governance"></a>Ressourcengovernance
+
+Arbeitsauslastungsgruppen steuern Arbeitsspeicher- und CPU-Ressourcen.  Datenträger- und Netzwerk-E/A sowie tempdb werden nicht geregelt.  Die Ressourcen-Governance für Arbeitsspeicher und CPU lautet wie folgt:
+
+Der Arbeitsspeicher wird auf Anforderungsebene bestimmt und während der gesamten Dauer der Anforderung gespeichert.  Weitere Informationen zum Konfigurieren der Arbeitsspeichermenge pro Anforderung finden Sie unter [Definition von Ressourcen pro Anforderung](#resources-per-request-definition).  Der Parameter MIN_PERCENTAGE_RESOURCE Für die Arbeitsauslastungsgruppe verwendet ausschließlich Arbeitsspeicher für diese Arbeitsauslastungsgruppe.  Der Parameter CAP_PERCENTAGE_RESOURCE für die Arbeitsauslastungsgruppe ist eine harte Grenze für den Arbeitsspeicher, den eine Arbeitsauslastungsgruppe nutzen kann.
+
+CPU-Ressourcen werden auf Arbeitsauslastungsgruppenebene bestimmt und von allen Anforderungen innerhalb einer Arbeitsauslastungsgruppe gemeinsam genutzt.  CPU-Ressourcen sind im Vergleich zum Arbeitsspeicher, der für eine Anforderung für die Dauer der Ausführung ausschließlich verwendet wird, fließend.  Da es sich bei der CPU um eine fließende Ressource handelt, können nicht verwendete CPU-Ressourcen von allen Arbeitsauslastungsgruppen genutzt werden.  Dies bedeutet, dass die CPU-Auslastung den Parameter CAP_PERCENTAGE_RESOURCE für die Arbeitsauslastungsgruppe überschreiten kann.  Dies bedeutet auch, dass der Parameter MIN_PERCENTAGE_RESOURCE für die Arbeitsauslastungsgruppe keine harte Reservierung wie der Arbeitsspeicher ist.  Wenn CPU-Ressourcen in Konflikt stehen, wird die Verwendung an der Definition CAP_PERCENTAGE_RESOURCE für Arbeitsauslastungsgruppen ausgerichtet.
+
+
 ## <a name="workload-isolation"></a>Workloadisolation
 
 Workloadisolation bedeutet, dass Ressourcen ausschließlich für eine Arbeitsauslastungsgruppe reserviert sind.  Workloadisolation wird erreicht, indem der Parameter MIN_PERCENTAGE_RESOURCE in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) auf einen Wert größer als 0 (null) festgelegt wird.  Bei Workloads mit kontinuierlicher Ausführung, bei denen strenge SLAs eingehalten werden müssen, wird durch Isolation sichergestellt, dass immer Ressourcen für die Arbeitsauslastungsgruppe verfügbar sind.
 
-Durch Konfigurieren der Workloadisolation wird implizit ein garantierter Grad an Parallelität definiert. Beispielsweise ist für eine Arbeitsauslastungsgruppe, für die `MIN_PERCENTAGE_RESOURCE` auf 30 % und `REQUEST_MIN_RESOURCE_GRANT_PERCENT` auf 2 % festgelegt sind, eine Parallelität von 15 garantiert.  Der Grad an Parallelität ist sichergestellt, da jederzeit 15-2 % Ressourcenslots innerhalb der Arbeitsauslastungsgruppe reserviert sind (unabhängig davon, wie `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` konfiguriert ist).  Wenn `REQUEST_MAX_RESOURCE_GRANT_PERCENT` größer als `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ist und `CAP_PERCENTAGE_RESOURCE` größer als `MIN_PERCENTAGE_RESOURCE` ist, werden zusätzliche Ressourcen pro Anforderung hinzugefügt.  Sind `REQUEST_MAX_RESOURCE_GRANT_PERCENT` und `REQUEST_MIN_RESOURCE_GRANT_PERCENT` gleich und ist `CAP_PERCENTAGE_RESOURCE` größer als `MIN_PERCENTAGE_RESOURCE`, ist eine Erhöhung der Parallelität möglich.  Sehen Sie sich die folgende Methode zur Bestimmung der garantierten Parallelität an:
+Durch Konfigurieren der Workloadisolation wird implizit ein garantierter Grad an Parallelität definiert. Wenn zum Beispiel für eine Arbeitsauslastungsgruppe ein MIN_PERCENTAGE_RESOURCE auf 30 % und REQUEST_MIN_RESOURCE_GRANT_PERCENT auf 2 % festgelegt wird, ist für die Arbeitsauslastungsgruppe ein Grad an Parallelität von 15 garantiert.  Der Grad an Parallelität ist sichergestellt, da jederzeit 15-2 % Ressourcenslots innerhalb der Arbeitsauslastungsgruppe reserviert sind (unabhängig davon, wie REQUEST_ *MAX* _RESOURCE_GRANT_PERCENT konfiguriert ist).  Wenn REQUEST_MAX_RESOURCE_GRANT_PERCENT größer als REQUEST_MIN_RESOURCE_GRANT_PERCENT und CAP_PERCENTAGE_RESOURCE größer als MIN_PERCENTAGE_RESOURCE ist, können zusätzliche Ressourcen pro Anforderung hinzugefügt werden (basierend auf der Ressourcenverfügbarkeit).  Wenn REQUEST_MAX_RESOURCE_GRANT_PERCENT und REQUEST_MIN_RESOURCE_GRANT_PERCENT gleich sind und CAP_PERCENTAGE_RESOURCE größer als MIN_PERCENTAGE_RESOURCE ist, ist zusätzliche Parallelität möglich.  Sehen Sie sich die folgende Methode zur Bestimmung der garantierten Parallelität an:
 
 [Garantierte Parallelität] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE]
-> Für MIN_PERCENTAGE_RESOURCE gibt es bestimmte Mindestwerte für das Servicelevel.  Weitere Informationen finden Sie unter [Gültige Werte](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#effective-values).
+> Für min_percentage_resource gibt es bestimmte Mindestwerte für das Servicelevel.  Weitere Informationen finden Sie unter [Gültige Werte](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#effective-values).
 
 Wenn keine Workloadisolation vorhanden ist, werden Anforderungen im [freigegebenen Pool](#shared-pool-resources) von Ressourcen ausgeführt.  Der Zugriff auf Ressourcen im freigegebenen Pool ist nicht garantiert und wird auf Basis der [Priorität](sql-data-warehouse-workload-importance.md) zugewiesen.
 
@@ -61,7 +70,7 @@ Durch Konfigurieren der Workloadkapselung wird implizit ein maximaler Grad an Pa
 
 ## <a name="resources-per-request-definition"></a>Definition von Ressourcen pro Anforderung
 
-Arbeitsauslastungsgruppen bieten mit den Parametern REQUEST_MIN_RESOURCE_GRANT_PERCENT und REQUEST_MAX_RESOURCE_GRANT_PERCENT in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) einen Mechanismus zum Definieren der Mindest- und Höchstmenge an Ressourcen, die pro Anforderung zugewiesen werden.  Ressourcen sind in diesem Fall CPU und Arbeitsspeicher.  Durch Konfigurieren dieser Werte wird bestimmt, wie viele Ressourcen und welcher Grad an Parallelität auf dem System erreicht werden können.
+Arbeitsauslastungsgruppen bieten mit den Parametern REQUEST_MIN_RESOURCE_GRANT_PERCENT und REQUEST_MAX_RESOURCE_GRANT_PERCENT in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) einen Mechanismus zum Definieren der Mindest- und Höchstmenge an Ressourcen, die pro Anforderung zugewiesen werden.  Die Ressource ist in diesem Fall der Arbeitsspeicher. Die CPU-Ressourcen-Governance wird im Abschnitt [Ressourcen-Governance](#resource-governance) behandelt.
 
 > [!NOTE]
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT ist ein optionaler Parameter, der standardmäßig auf den gleichen Wert gesetzt wird, der für REQUEST_MIN_RESOURCE_GRANT_PERCENT angegeben ist.
@@ -75,7 +84,7 @@ Wenn REQUEST_MAX_RESOURCE_GRANT_PERCENT auf einen höheren Wert als REQUEST_MIN_
 
 ## <a name="execution-rules"></a>Ausführungsregeln
 
-Bei Ad-hoc-Berichterstellungssystemen können Kunden versehentlich Endlosabfragen ausführen, die sich erheblich auf die Produktivität anderer Anwendungen auswirken.  Systemadministratoren sind gezwungen, Zeit mit dem Abbrechen von Endlosabfragen zu verbringen, um Systemressourcen freizugeben.  Arbeitsauslastungsgruppen bieten die Möglichkeit, eine Überschreitungsregel für die Abfrageausführung zu konfigurieren, um Abfragen abzubrechen, die den angegebenen Wert überschritten haben.  Die Regel wird durch Festlegen des Parameters `QUERY_EXECUTION_TIMEOUT_SEC` in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) konfiguriert.
+Bei Ad-hoc-Berichterstellungssystemen können Kunden versehentlich Endlosabfragen ausführen, die sich erheblich auf die Produktivität anderer Anwendungen auswirken.  Systemadministratoren sind gezwungen, Zeit mit dem Abbrechen von Endlosabfragen zu verbringen, um Systemressourcen freizugeben.  Arbeitsauslastungsgruppen bieten die Möglichkeit, eine Überschreitungsregel für die Abfrageausführung zu konfigurieren, um Abfragen abzubrechen, die den angegebenen Wert überschritten haben.  Die Regel wird durch Festlegen des Parameters QUERY_EXECUTION_TIMEOUT_SEC in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) konfiguriert.
 
 ## <a name="shared-pool-resources"></a>Ressourcen im freigegebenen Pool
 

@@ -8,12 +8,12 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions, devx-track-azurepowershell
 ms.date: 09/28/2021
-ms.openlocfilehash: f9c07abdfe512c2564fdfe1595f16db8a6372a8b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: c4baf3ee8fdb26bd361dfafbaa29953f6d1d13f8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230232"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469546"
 ---
 # <a name="azure-data-factory-managed-virtual-network"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory
 
@@ -38,7 +38,7 @@ Vorteile der Verwendung eines verwalteten virtuellen Netzwerks:
 >Derzeit wird das verwaltete virtuelle Netzwerk nur in derselben Region wie Azure Data Factory unterstützt.
 
 > [!Note]
->Für eine vorhandene öffentliche Azure Integration Runtime-Instanz kann keine Umstellung auf eine Azure Integration Runtime-Instanz in einem verwalteten virtuellen Azure Data Factory-Netzwerk durchgeführt werden (und umgekehrt).
+>Für eine vorhandene globale Azure Integration Runtime-Instanz kann keine Umstellung auf eine Azure Integration Runtime-Instanz in einem verwalteten virtuellen Azure Data Factory-Netzwerk durchgeführt werden (und umgekehrt).
  
 
 :::image type="content" source="./media/managed-vnet/managed-vnet-architecture-diagram.png" alt-text="Architektur des verwalteten virtuellen ADF-Netzwerks":::
@@ -77,7 +77,7 @@ Interaktive Erstellungsfunktionen werden beispielsweise für Testverbindungen, d
 :::image type="content" source="./media/managed-vnet/interactive-authoring.png" alt-text="Interaktive Erstellung":::
 
 ## <a name="activity-execution-time-using-managed-virtual-network"></a>Aktivitätsausführungszeit mit verwaltetem virtuellen Netzwerk
-Die Warteschlangenzeit der Azure Integration Runtime ist im verwalteten VNet länger als in der öffentlichen Azure Integration Runtime. Der Grund dafür ist, dass nicht ein Serverknoten pro Data Factory reserviert wird und somit vor dem Starten jeder Aktivität eine Aufwärmphase erfolgt. Dies geschieht hauptsächlich beim Beitritt zu einem VNet und nicht in der Azure IR. Für Aktivitäten, die keine Copy-Aktivitäten sind, einschließlich Pipelineaktivitäten und externen Aktivitäten, beträgt die Gültigkeitsdauer (Time To Live, TTL) beim ersten Auslösen 60 Minuten. Innerhalb der TTL ist die Warteschlangenzeit kürzer, da der Knoten bereits aufgewärmt ist. 
+Die Warteschlangenzeit der Azure Integration Runtime ist im verwalteten VNet länger als in der globalen Azure Integration Runtime. Der Grund dafür ist, dass nicht ein Serverknoten pro Data Factory reserviert wird und somit vor dem Starten jeder Aktivität eine Aufwärmphase erfolgt. Dies geschieht hauptsächlich beim Beitritt zu einem VNet und nicht in der Azure IR. Für Aktivitäten, die keine Copy-Aktivitäten sind, einschließlich Pipelineaktivitäten und externen Aktivitäten, beträgt die Gültigkeitsdauer (Time To Live, TTL) beim ersten Auslösen 60 Minuten. Innerhalb der TTL ist die Warteschlangenzeit kürzer, da der Knoten bereits aufgewärmt ist. 
 > [!NOTE]
 > Die Copy-Aktivität bietet noch keine TTL-Unterstützung.
 
@@ -129,6 +129,7 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 ```
 
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
+
 ### <a name="supported-data-sources"></a>Unterstützte Datenquellen
 Die folgenden Datenquellen verfügen über native Unterstützung für private Endpunkte und können über Private Link eine Verbindung vom verwalteten virtuellen ADF-Netzwerk aus herstellen.
 - Azure Blob Storage (ohne Speicherkonto V1)
@@ -157,40 +158,8 @@ Die folgenden Datenquellen verfügen über native Unterstützung für private En
 Informationen zum Zugriff auf lokale Datenquellen aus dem verwalteten VNet mithilfe eines privaten Endpunkts finden Sie im [Tutorial: Zugreifen auf eine lokale SQL Server-Instanz über ein verwaltetes Data Factory-VNet unter Verwendung eines privaten Endpunkts](tutorial-managed-virtual-network-on-premise-sql-server.md).
 
 ### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory ist in den folgenden Azure-Regionen verfügbar:
-- Australien (Osten)
-- Australien, Südosten
-- Brasilien Süd
-- Kanada, Mitte
-- Kanada, Osten
-- Indien, Mitte
-- USA (Mitte)
-- China, Osten 2
-- China, Norden 2
-- Asien, Osten
-- East US
-- USA (Ost 2)
-- Frankreich, Mitte
-- Deutschland, Westen-Mitte
-- Japan, Osten
-- Japan, Westen
-- Korea, Mitte
-- USA Nord Mitte
-- Nordeuropa
-- Norwegen, Osten
-- Südafrika, Norden
-- USA Süd Mitte
-- Südostasien
-- Schweiz, Norden
-- Vereinigte Arabische Emirate, Norden
-- US Gov Arizona
-- US Gov Texas
-- US Government, Virginia
-- UK, Süden
-- UK, Westen
-- USA, Westen-Mitte
-- Europa, Westen
-- USA (Westen)
-- USA, Westen 2
+Im Allgemeinen ist verwaltetes virtuelles Netzwerk für alle Azure Data Factory-Regionen verfügbar, mit Ausnahme von:
+- Indien (Süden)
 
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Ausgehende Kommunikation über einen öffentlichen Endpunkt von einem verwaltetem virtuellen ADF-Netzwerk

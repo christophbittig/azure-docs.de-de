@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/08/2021
+ms.date: 11/02/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6596b5a61c4c65bdfd5172c4acd1c50b960097dd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dff3c04ee74d17aeb0b96d8d0e2348a9667f9729
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763156"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456307"
 ---
 # <a name="features-and-licenses-for-azure-ad-multi-factor-authentication"></a>Features und Lizenzen für Azure AD Multi-Factor Authentication
 
@@ -60,7 +60,7 @@ In der folgenden Tabelle werden die Funktionen aufgeführt, die in den verschied
 
 ## <a name="compare-multi-factor-authentication-policies"></a>Vergleichen von Richtlinien für die mehrstufige Authentifizierung
 
-Die folgende Tabelle enthält Überlegungen zur Bereitstellung verschiedener MFA-Richtlinien.
+Unser empfohlener Ansatz zum Erzwingen von MFA ist das Verwenden des [bedingten Zugriffs](../conditional-access/overview.md). Prüfen Sie die folgende Tabelle, um zu ermitteln, welche Funktionen in Ihren Lizenzen enthalten sind.
 
 | -Richtlinie | Standardwerte für die Sicherheit | Bedingter Zugriff | Benutzerbasierte MFA |
 | --- |:---:|:---:|:---:|

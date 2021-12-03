@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 09/28/2021
 ms.author: alkohli
-ms.openlocfilehash: ab759cf81ce95ca7cf61a3777092fd92040baf6c
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: ce8cc86727c92f8c0091abafa8f5d91ee1ab21ad
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208474"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347630"
 ---
 # <a name="azure-data-box-disk-limits"></a>Begrenzungen für Azure Data Box Disk
 
@@ -93,7 +93,7 @@ Hier sind die Größen der Azure-Objekte, die geschrieben werden können. Stelle
 
 | Entität | Konventionen                                             |
 |-------------------|-----------------------------------------------------------|
-| Namen für verwaltete Datenträger       | <li> Der Name muss aus 1 bis 80 Zeichen bestehen. </li><li> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und mit einem Buchstaben, einer Zahl oder einem Unterstrich enden. </li><li> Der Name darf nur Buchstaben, Ziffern, Unterstriche, Punkte und Bindestriche enthalten. </li><li>   Der Name darf kein Leerzeichen oder `/` enthalten.                                              |
+| Namen für verwaltete Datenträger       | <li> Der Name muss aus 1 bis 80 Zeichen bestehen. </li><li> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und mit einem Buchstaben, einer Zahl oder einem Unterstrich enden. </li><li> Der Name darf nur Buchstaben, Ziffern, Unterstriche, Punkte und Bindestriche enthalten. </li><li>     Der Name darf kein Leerzeichen oder `/` enthalten.                     |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

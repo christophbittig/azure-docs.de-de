@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 217663ae8dc1f2a0cba7bcd001ee12a20f1b6826
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 18bd3f6993c56187a64ba9db3397a659f9dea098
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618037"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049917"
 ---
 # <a name="azure-ad-registered-devices"></a>Bei Azure AD registrierte Geräte
 
@@ -29,8 +29,8 @@ Ziel von bei Azure AD registrierten Geräten ist die Bereitstellung der Unterst�
 |   | Bring Your Own Device |
 |   | Mobile Geräte |
 | **Gerätebesitz** | Benutzer oder Organisation |
-| **Betriebssysteme** | Windows 10, iOS, Android und macOS |
-| **Bereitstellung** | Windows 10: Einstellungen |
+| **Betriebssysteme** | Windows 10 und höher, iOS, Android und macOS |
+| **Bereitstellung** | Windows 10 und höher – Einstellungen |
 |   | iOS/Android: Unternehmensportal oder Microsoft Authenticator-App |
 |   | macOS: Unternehmensportal |
 | **Anmeldeoptionen für Gerät** | Lokale Anmeldeinformationen von Endbenutzern |
@@ -47,11 +47,11 @@ Ziel von bei Azure AD registrierten Geräten ist die Bereitstellung der Unterst�
 
 ![Bei Azure AD registrierte Geräte](./media/concept-azure-ad-register/azure-ad-registered-device.png)
 
-Bei Azure AD registrierte Geräte werden mit einem lokalen Konto angemeldet, z. B. einem Microsoft-Konto auf einem Windows 10-Gerät. Diese Geräte verfügen über ein Azure AD-Konto für den Zugriff auf Organisationsressourcen. Der Zugriff auf Ressourcen in der Organisation kann basierend auf diesem Azure AD-Konto und auf Richtlinien für den bedingten Zugriff, die auf die Geräteidentität angewendet werden, eingeschränkt werden.
+Azure AD-registrierte Geräte werden mit einem lokalen Konto angemeldet, z. B. einem Microsoft-Konto auf einem Gerät mit Windows 10 oder höher. Diese Geräte verfügen über ein Azure AD-Konto für den Zugriff auf Organisationsressourcen. Der Zugriff auf Ressourcen in der Organisation kann basierend auf diesem Azure AD-Konto und auf Richtlinien für den bedingten Zugriff, die auf die Geräteidentität angewendet werden, eingeschränkt werden.
 
 Administratoren können diese bei Azure AD registrierten Geräte schützen und genauer steuern, indem sie MDM-Tools (Mobile Device Management, Mobile Geräteverwaltung) verwenden, z. B. Microsoft Intune. MDM ist eine Möglichkeit zur Erzwingung der von einer Organisation geforderten Konfigurationen, z. B. Verschlüsselung des Speichers, Kennwortkomplexität und aktuelle Sicherheitssoftware. 
 
-Die Azure AD-Registrierung kann durchgeführt werden, wenn zum ersten Mal auf eine Arbeitsanwendung zugegriffen wird, oder manuell über das Menü mit den Windows 10-Einstellungen. 
+Die Azure AD-Registrierung kann durchgeführt werden, wenn zum ersten Mal auf eine Arbeitsanwendung zugegriffen wird oder manuell über das Menü mit den Einstellungen für Windows 10 oder Windows 11. 
 
 ## <a name="scenarios"></a>Szenarien
 

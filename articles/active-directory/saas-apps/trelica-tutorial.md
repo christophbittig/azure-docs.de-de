@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d7b2f01a9e90ca8a29b6ecbfc380cb138a3ad073
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b107b14b32417ea6f3da8c7e198a7d6b25497460
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124800477"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298862"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Trelica
 
@@ -43,7 +43,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Trelica unterstützt IDP-initiiertes einmaliges Anmelden.
 * Trelica unterstützt die Just-In-Time-Benutzerbereitstellung.
-* Nach dem Konfigurieren von Trelica können Sie die Sitzungssteuerung erzwingen. Diese Steuerung schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von Trelica können Sie die Sitzungssteuerung erzwingen. Diese Steuerung schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="adding-trelica-from-the-gallery"></a>Hinzufügen von Trelica über den Katalog
 
@@ -92,7 +92,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
-    ![Abschnitt „SAML-Signaturzertifikat“ mit hervorgehobener Kopierschaltfläche neben „Verbundmetadaten-XML“](common/copy-metadataurl.png)
+    ![Der Abschnitt SAML-Signaturzertifikat, wobei die Schaltfläche Kopieren neben dem App-Verbundmetadaten-URL hervorgehoben ist](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -150,6 +150,6 @@ Wenn Sie im Zugriffsbereich die Kachel „Trelica“ auswählen, werden Sie auto
 
 - [Trelica mit Azure AD ausprobieren](https://aad.portal.azure.com/)
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+- [Was ist die Sitzungssteuerung in Microsoft Defender for Cloud Apps?](/cloud-app-security/proxy-intro-aad)
 
 - [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)

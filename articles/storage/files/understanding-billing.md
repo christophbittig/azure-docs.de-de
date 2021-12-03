@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4656c98718d024a43096081df2ac662b38b2efb8
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 6cac0f689592aa6840520c87438add4bda987b32
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162997"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019094"
 ---
 # <a name="understand-azure-files-billing"></a>Grundlegendes zur Abrechnung für Azure Files
 Für Azure Files gibt es zwei Abrechnungsmodelle: „Bereitgestellt“ und „Nutzungsbasierte Zahlung“. Das Modell „Bereitgestellt“ ist nur für Premium-Dateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **FileStorage** bereitgestellt werden. Das Modell „Nutzungsbasierte Zahlung“ ist nur für Standarddateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **Universell, Version 2** bereitgestellt werden. In diesem Artikel wird die Funktionsweise beider Modelle erklärt, um Ihnen zu helfen, Ihre monatliche Azure Files-Rechnung zu verstehen.
@@ -151,6 +151,39 @@ Es gibt fünf grundlegende Transaktionskategorien: „Schreiben“, „Auflisten
 
 > [!Note]  
 > NFS 4.1 ist nur für Premium-Dateifreigaben mit dem Abrechnungsmodell „Bereitgestellt“ verfügbar. Transaktionen haben keinen Einfluss auf die Abrechnung für Premium-Dateifreigaben.
+
+## <a name="value-add-services"></a>Mehrwertdienste
+
+### <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
+Wenn Sie über das Verwenden von Azure-Dateisynchronisierung nachdenken, berücksichtigen Sie bei der Kostenauswertung Folgendes:
+
+#### <a name="server-fee"></a>Die Servergebühr
+Für jeden Server, den Sie mit einer Synchronisierungsgruppe verbunden haben, wird eine zusätzliche Gebühr von 5 USD berechnet. Dies hängt nicht von der Anzahl der Serverendpunkte ab. Wenn Sie beispielsweise einen Server mit drei verschiedenen Serverendpunkten hätten, würde Ihnen nur eine Gebühr von 5 USD berechnet. Pro Speichersynchronisierungsdienst ist ein Synchronisierungsserver kostenlos. 
+
+#### <a name="data-cost"></a>Datenkosten
+Die Kosten für ruhende Daten hängen von dem von Ihnen ausgewählten Abrechnungstarif ab. Dies sind die Kosten für das Speichern von Daten in der Azure-Dateifreigabe in der Cloud, einschließlich des Momentaufnahmespeichers.  
+
+#### <a name="cloud-enumeration-scans-cost"></a>Kosten für Cloudenumerationüberprüfungen
+Azure-Dateisynchronisierung zählt die Azure-Dateifreigabe in der Cloud einmal pro Tag auf, um Änderungen zu entdecken, die direkt an der Freigabe vorgenommen wurden, sodass sie mit den Serverendpunkten synchronisiert werden können. Bei dieser Überprüfung werden Transaktionen generiert, die dem Speicherkonto mit einer Rate von zwei LIST-Transaktionen pro Verzeichnis und Tag in Rechnung gestellt werden. Sie können diese Zahl in den [Preisrechner](https://azure.microsoft.com/pricing/calculator/) eingeben, um die Überprüfungskosten zu schätzen.  
+
+> [!Tip]  
+> Wenn Sie nicht wissen, über wie viele Ordner Sie verfügen, kann das TreeSize-Tool von JAM Software GmbH hilfreich sein.
+
+#### <a name="churn-and-tiering-costs"></a>Abwanderungs- und Tieringkosten
+Wenn sich Dateien auf Serverendpunkten ändern, werden die Änderungen in die Cloudfreigabe hochgeladen, wodurch Transaktionen generiert werden. Wenn das Cloudtiering aktiviert ist, werden zusätzlich zu den Kosten für ausgehende Daten zusätzliche Transaktionen für das Verwalten mehrstufiger Daten generiert, einschließlich E/A-Vorgänge für mehrstufige Dateien. Die Menge und der Typ der Transaktionen ist aufgrund der Abwanderungsraten und Cacheeffizienz schwer vorherzusagen. Sie können jedoch Ihre vorherigen Transaktionsmuster verwenden, um zukünftige Kosten vorherzusagen, wenn Sie nur über eine Dateifreigabe in Ihrem Speicherkonto verfügen. Weitere Informationen zum Anzeigen vorheriger Transaktionen finden Sie unter [Auswählen einer Abrechnungsebene](#choosing-a-billing-tier).  
+
+#### <a name="choosing-a-billing-tier"></a>Auswählen einer Abrechnungsebene
+Für Kund*innen von Azure-Dateisynchronisierung wird empfohlen, Standarddateifreigaben anstelle von Premiumdateifreigaben auszuwählen. Das liegt daran, das Kund*innen mit Azure-Dateisynchronisierung die geringe Latenz erhalten, die sie schon immer lokal hatten. Daher ist die durch die Premiumdateifreigabe bereitgestellte höhere Leistung nicht notwendig. Beim ersten Migrieren zu Azure Files über Azure-Dateisynchronisierung wird empfohlen, den Tarif „Transaktion optimiert“ aufgrund der großen Anzahl von Transaktionen, die während der Migration anfallen, zu verwenden. Nach Abschluss der Migration können Sie Ihre vorherigen Transaktionen in den [Preisrechner](https://azure.microsoft.com/pricing/calculator/) eingeben, um herauszufinden, welcher Tarif für Ihre Workload am besten geeignet ist. 
+
+So können Sie vorherige Transaktionen anzeigen:
+1. Wechseln Sie zu Ihrem Speicherkonto, und wählen Sie in der in der linken Navigationsleiste **Metriken** aus.
+2. Wählen Sie **Bereich** als Ihren Speicherkontonamen, **Metriknamespace** als „Datei“, **Metrik** als „Transaktionen“ und **Aggregation** als „Summe“ aus.
+3. Wählen Sie **Apply Splitting** (Aufteilung anwenden) aus.
+4. Wählen Sie **Werte** als „API-Name“ aus. Wählen Sie das gewünschte **Limit** und **Sortieren** aus.
+5. Wählen Sie den gewünschten Zeitraum aus.
+
+> [!Note]  
+> Stellen Sie sicher, dass Sie Transaktionen über einen bestimmten Zeitraum anzeigen, um eine genauere Vorstellung von der durchschnittlichen Anzahl der Transaktionen zu erhalten. Vergewissern Sie sich, dass der ausgewählte Zeitraum sich nicht mit der ersten Bereitstellung überschneidet. Multiplizieren Sie die durchschnittliche Anzahl der Transaktionen während dieses Zeitraums, um die geschätzte Anzahl der Transaktionen in einem gesamten Monat zu erhalten.
 
 ## <a name="file-storage-comparison-checklist"></a>Prüfliste für den Dateispeichervergleich
 Um die Kosten von Azure Files im Vergleich zu anderen Dateispeicheroptionen richtig zu bewerten, beachten Sie bitte die folgenden Fragen:

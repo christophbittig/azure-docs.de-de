@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 34938a6d5e52912db8d82b39bed3fdbad9f4814c
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: c92b17158beee9d1f6c60becb858564555bf56bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859018"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048442"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure
 
@@ -35,9 +35,8 @@ Es wird empfohlen, einen Schlüsseltresor pro Anwendung und Umgebung (Entwicklun
 
 Die Berechtigungen für einzelne Schlüssel, Geheimnisse und Zertifikate sollten nur in bestimmten Szenarien verwendet werden:
 
--   Anwendungen mit mehreren Ebenen, die die Zugriffssteuerung zwischen den Ebenen trennen müssen
-
--   Freigeben einzelner Geheimnisse zwischen mehreren Anwendungen
+-   Das Freigeben einzelner Geheimnisse zwischen mehreren Anwendungen, z. B. muss eine Anwendung auf Daten aus der anderen Anwendung zugreifen
+-   Eine mandantenübergreifende Verschlüsselung mit Kundenschlüssel, z. B. ein ISV, der einen Schlüssel aus einem Kundenschlüsseltresor verwendet, um seine Daten zu verschlüsseln
 
 Weitere Informationen zu Azure Key Vault-Verwaltungsrichtlinien finden Sie unter:
 

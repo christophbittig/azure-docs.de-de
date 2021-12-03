@@ -191,6 +191,12 @@ items:
             displayName: roles
           - name: Datenspeicherung
             href: luis-concept-data-storage.md
+      - name: Sicherheit
+        items:
+          - name: Rollenbasierte Zugriffssteuerung
+            href: role-based-access-control.md
+          - name: Authentifizierung mit Azure Active Directory
+            href: ../authentication.md#authenticate-with-azure-active-directory
       - name: Verwenden von LUIS und QnA Maker
         href: choose-natural-language-processing-service.md
         displayName: 'nlp, qna maker'

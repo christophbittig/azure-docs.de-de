@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 03/29/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fdff97b2b0325d8c965000a309fb6c3232aee7f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 10f530b703c67192104e3cb6ea553973b8534437
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129985179"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292640"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Widerrufen des Benutzerzugriffs in Azure Active Directory
 
@@ -123,7 +123,7 @@ Sobald Administratoren die oben genannten Schritte ausgeführt haben, kann der B
 > [!NOTE]
 > Daten auf dem Gerät können nach dem Zurücksetzen nicht wiederhergestellt werden.
 
-- Verwenden Sie [Microsoft Cloud App Security (MCAS), um den Datendownload ggf. zu blockieren](/cloud-app-security/use-case-proxy-block-session-aad). Wenn nur ein Online-Zugriff auf die Daten möglich ist, können Organisationen Sitzungen überwachen und die Durchsetzung von Richtlinien in Echtzeit erreichen.
+- Verwenden Sie [Microsoft Defender for Cloud Apps, um den Datendownload](/cloud-app-security/use-case-proxy-block-session-aad) ggf. zu blockieren. Wenn nur ein Online-Zugriff auf die Daten möglich ist, können Organisationen Sitzungen überwachen und die Durchsetzung von Richtlinien in Echtzeit erreichen.
 
 - Aktivieren Sie die [fortlaufende Zugriffsevaluierung (CAE) in Azure AD](../conditional-access/concept-continuous-access-evaluation.md). Mithilfe von CAE können Administratoren die Sitzungstoken und Zugriffstoken für Anwendungen widerrufen, die CAE unterstützen.  
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 6d7a391bcd90d54c7024da6deeef74849c178039
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: bc9a29e97e32ba798b516901d01aea968c93eab1
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232073"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157632"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -325,7 +325,7 @@ Bei einem Failover des Datenbankknotens muss die SAP-Anwendung nicht erneut konf
 
 Azure bietet zwei verschiedene [Load Balancer-SKUs](../../../load-balancer/load-balancer-overview.md): Basic und Standard. Angesichts der Vorteile in Bezug auf Setup und Funktionalität empfiehlt sich die Verwendung der Standard-SKU von Azure Load Balancer. Einer der großen Vorteile der Load Balancer-Standardversion besteht darin, dass der Datenverkehr nicht durch die Load Balancer-Instanz selbst geleitet wird.
 
-Ein Beispiel für die Konfiguration einer internen Load Balancer-Instanz finden Sie im [Tutorial: Manuelles Konfigurieren einer SQL Server-Verfügbarkeitsgruppe in Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial.md#create-an-azure-load-balancer).
+Ein Beispiel für die Konfiguration einer internen Load Balancer-Instanz finden Sie im [Tutorial: Manuelles Konfigurieren einer SQL Server-Verfügbarkeitsgruppe in Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial-single-subnet.md#create-an-azure-load-balancer).
 
 > [!NOTE]
 > Die SKUs „Basic“ und „Standard“ verhalten sich in Bezug auf den Zugriff auf öffentliche IP-Adressen unterschiedlich. Im Dokument [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](./high-availability-guide-standard-load-balancer-outbound-connections.md) wird beschrieben, wie die Einschränkungen der Standard-SKU beim Zugriff auf öffentliche IP-Adressen umgangen werden können.

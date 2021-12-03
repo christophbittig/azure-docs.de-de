@@ -8,18 +8,18 @@ ms.service: data-factory
 ms.subservice: pricing
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 38d6f8d8b96526c8ba190559a639985bedf96cff
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 45d8b3dea72555470059cb14b3268e4d9b4e9611
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798558"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319504"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Grundlegendes zu Azure Data Factory-Preisen anhand von Beispielen
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Artikel wird das Preismodell für Azure Data Factory mit ausführlichen Beispielen veranschaulicht.
+In diesem Artikel wird das Preismodell für Azure Data Factory mit ausführlichen Beispielen veranschaulicht.  Für spezifischere Szenarien und zur Einschätzung Ihrer zukünftigen Kosten für die Nutzung des Diensts können Sie auch den [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/) verwenden.
 
 > [!NOTE]
 > Die in diesen Beispielen verwendeten Preise sind hypothetisch und stellen keine tatsächliche Preisgestaltung dar.
@@ -51,10 +51,10 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 **Preis für gesamtes Szenario: 0,16811 US-$**
 
 - Data Factory-Vorgänge = **0,0001 US-$**
-  - Lesen/Schreiben = 10\*00001 = 0,0001 US-$ [1 R/W = 0,50 US-$/50.000 = 0,00001]
-  - Überwachung = 2\*000005 = 0,00001 US-$ [1 Überwachung = 0,25 US-$/50.000 = 0,000005]
+  - Read/Write = 10\*0.00001 = $0.0001 [1 R/W = $0.50/50000 = 0.00001]
+  - Überwachung = 2\*0.000005 = $0.00001 [1 Überwachung = $0.25/50000 = 0.000005]
 - Pipelineorchestrierung &amp; -ausführung = **0,168 US-$**
-  - Aktivitätsausführungen = 001\*2 = 0,002 [1 Ausführung = 1 US-$/1.000 = 0,001]
+  - Aktivitätsausführungen = 0.001\*2 = $0.002 [1 Ausführung = $1/1000 = 0.001]
   - Datenverschiebungsaktivitäten = 0,166 US-$ (anteilig für die Ausführungszeit von 10 Minuten. 0,25 US-$/Stunde auf Azure Integration Runtime)
 
 ## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Stündliches Kopieren und Transformieren von Daten mit Azure Databricks
@@ -83,10 +83,10 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 **Preis für gesamtes Szenario: 0,16916 US-$**
 
 - Data Factory-Vorgänge = **0,00012 US-$**
-  - Lesen/Schreiben = 11\*00001 = 0,00011 US-$ [1 R/W = 0,50 US-$/50.000 = 0,00001]
-  - Überwachung = 3\*000005 = 0,00001 US-$ [1 Überwachung = 0,25 US-$/50.000 = 0,000005]
+  - Read/Write = 11\*0.00001 = $0.00011 [1 R/W = $0.50/50000 = 0.00001]
+  - Überwachung = 3\*0.000005 = $0.00001 [1 Überwachung = $0.25/50000 = 0.000005]
 - Pipelineorchestrierung &amp; -ausführung = **0,16904 US-$**
-  - Aktivitätsausführungen = 001\*3 = 0,003 [1 Ausführung = 1 US-$/1.000 = 0,001]
+  - Aktivitätsausführungen = 0.001\*3 = $0.003 [1 Ausführung = $1/1000 = 0.001]
   - Datenverschiebungsaktivitäten = 0,166 US-$ (anteilig für die Ausführungszeit von 10 Minuten. 0,25 US-$/Stunde auf Azure Integration Runtime)
   - Externe Pipelineaktivität = 0,000041 US-$ (anteilig für die Ausführungszeit von 10 Minuten. 0,00025 US-$/Stunde auf Azure Integration Runtime)
 
@@ -118,10 +118,10 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 **Preis für gesamtes Szenario: 0,17020 US-$**
 
 - Data Factory-Vorgänge = **0,00013 US-$**
-  - Lesen/Schreiben = 11\*00001 = 0,00011 US-$ [1 R/W = 0,50 US-$/50.000 = 0,00001]
-  - Überwachung = 4\*000005 = 0,00002 US-$ [1 Überwachung = 0,25 US-$/50.000 = 0,000005]
+  - Read/Write = 11\*0.00001 = $0.00011 [1 R/W = $0.50/50000 = 0.00001]
+  - Überwachung = 4\*0.000005 = $0.00002 [1 Überwachung = $0.25/50000 = 0.000005]
 - Pipelineorchestrierung &amp; -ausführung = **0,17007 US-$**
-  - Aktivitätsausführungen = 001\*4 = 0,004 [1 Ausführung = 1 US-$/1.000 = 0,001]
+  - Aktivitätsausführungen = 0.001\*4 = $0.004 [1 Ausführung = $1/1000 = 0.001]
   - Datenverschiebungsaktivitäten = 0,166 US-$ (anteilig für die Ausführungszeit von 10 Minuten. 0,25 US-$/Stunde auf Azure Integration Runtime)
   - Pipelineaktivität = 0,00003 US-$ (anteilig für die Ausführungszeit von 1 Minute. 0,002 US-$/Stunde auf Azure Integration Runtime)
   - Externe Pipelineaktivität = 0,000041 US-$ (anteilig für die Ausführungszeit von 10 Minuten. 0,00025 US-$/Stunde auf Azure Integration Runtime)
@@ -173,10 +173,10 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 **Preis für gesamtes Szenario: 1,4631 US-$**
 
 - Data Factory-Vorgänge = **0,0001 US-$**
-  - Lesen/Schreiben = 10\*00001 = 0,0001 US-$ [1 R/W = 0,50 US-$/50.000 = 0,00001]
-  - Überwachung = 2\*000005 = 0,00001 US-$ [1 Überwachung = 0,25 US-$/50.000 = 0,000005]
+  - Read/Write = 10\*0.00001 = $0.0001 [1 R/W = $0.50/50000 = 0.00001]
+  - Überwachung = 2\*0.000005 = $0.00001 [1 Überwachung = $0.25/50000 = 0.000005]
 - Pipelineorchestrierung &amp; -ausführung = **1,463 US-$**
-  - Aktivitätsausführungen = 001\*2 = 0,002 [1 Ausführung = 1 US-$/1.000 = 0,001]
+  - Aktivitätsausführungen = 0.001\*2 = $0.002 [1 Ausführung = $1/1000 = 0.001]
   - Datenflussaktivitäten = 1,461 US-$ anteilig für 20 Minuten (10 Minuten Ausführungszeit + 10 Minuten TTL). 0,274 US-$ pro Stunde für die Azure Integration Runtime mit 16 allgemeinen Computekernen
 
 ## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Datenintegration in einem verwalteten Azure Data Factory-VNET
@@ -204,10 +204,10 @@ Um dieses Szenario zu realisieren, müssen Sie zwei Pipelines mit folgenden Elem
 **Preis für gesamtes Szenario: 1,45523 USD**
 
 - Data Factory-Vorgänge = 0,00023 USD
-  - Lesen/Schreiben = 20 × 0,00001 = 0,0002 USD [1 R/W = 0,50 USD/50.000 = 0,00001]
-  - Überwachung = 6 × 0,000005 = 0,00003 USD [1 Überwachung = 0,25 USD/50.000 = 0,000005]
+  - Read/Write = 20*0.00001 = $0.0002 [1 R/W = $0.50/50000 = 0.00001]
+  - Überwachung = 6*0.000005 = $0.00003 [1 Überwachung = $0.25/50000 = 0.000005]
 - Pipelineorchestrierung und -ausführung = 1,455 USD
-  - Aktivitätsausführungen = 0,001 × 6 = 0,006 [1 Ausführung = 1 USD/1.000 = 0,001]
+  - Aktivitätsausführungen = 0.001*6 = $0.006 [1 Ausführung = $1/1000 = 0.001]
   - Datenverschiebungsaktivitäten = 0,333 USD (anteilig für die Ausführungszeit von 10 Minuten. 0,25 US-$/Stunde auf Azure Integration Runtime)
   - Pipelineaktivität = 1,116 USD (anteilig für die Ausführungszeit von 7 Minuten plus 60 Minuten TTL. 1 USD/Stunde auf Azure Integration Runtime)
 

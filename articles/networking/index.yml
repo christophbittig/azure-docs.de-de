@@ -84,6 +84,14 @@ additionalContent:
               url: ../route-server/quickstart-configure-route-server-portal.md
             - text: Weitere Informationen
               url: ../route-server/index.yml
+        - title: Bereitstellen ausgehender Konnektivität mit einem virtuellen Netzwerk
+          links:
+            - text: Was ist Azure Virtual Network NAT?
+              url: ../virtual-network/nat-gateway/nat-overview.md
+            - text: Erstellen und Konfigurieren einer NAT-Gatewayressource
+              url: ../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md
+            - text: Weitere Informationen
+              url: ../virtual-network/nat-gateway/index.yml
     - title: Anwendungsbereitstellungsdienste
       items:
         - title: Lastenausgleich für das Netzwerk

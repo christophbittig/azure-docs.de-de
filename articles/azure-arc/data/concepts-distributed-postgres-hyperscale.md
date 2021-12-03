@@ -1,7 +1,7 @@
 ---
-title: Konzepte für die Verteilung von Daten und horizontales Hochskalieren mit der Arc-fähigen PostgreSQL Hyperscale-Servergruppe
+title: Konzepte für die Verteilung von Daten und horizontales Skalieren mit einer Arc-fähigen PostgreSQL-Hyperscale-Servergruppe
 titleSuffix: Azure Arc-enabled data services
-description: Konzepte für die Verteilung von Daten mit einer Arc-fähigen PostgreSQL Hyperscale-Servergruppe
+description: Konzepte für die Verteilung von Daten mit einer Arc-fähigen PostgreSQL-Hyperscale-Servergruppe
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -10,14 +10,14 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 69405ac6386587e6621c67532a8bd7f41450370e
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: aee8700274d074d94b6f6f8e1e153f256cb6e158
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729936"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294198"
 ---
-# <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>Konzepte für die Verteilung von Daten mit einer Arc-fähigen PostgreSQL Hyperscale-Servergruppe
+# <a name="concepts-for-distributing-data-with-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Konzepte für die Verteilung von Daten mit einer Arc-fähigen PostgreSQL-Hyperscale-Servergruppe
 
 In diesem Artikel werden zentrale Konzepte erläutert, die wichtig sind, um den größtmöglichen Nutzen aus PostgreSQL Hyperscale mit Azure Arc-Unterstützung ziehen zu können.
 Die Links zu den Artikeln unten verweisen auf die Konzepte, die für Azure Database for PostgreSQL Hyperscale (Citus) erläutert werden. Es handelt sich um die gleiche Technologie wie bei PostgreSQL Hyperscale-Servergruppen mit Azure Arc-Unterstützung, sodass die gleichen Konzepte und Perspektiven gelten.
@@ -27,7 +27,7 @@ Die Links zu den Artikeln unten verweisen auf die Konzepte, die für Azure Datab
 
 Dies ist der Hyperscale-Formfaktor der Postgres-Datenbank-Engine, der als Database-as-a-Service in Azure (PaaS) verfügbar ist. Er wird von der Citus-Erweiterung unterstützt, die die Hyperscale-Umgebung ermöglicht. In diesem Formfaktor wird der Dienst in den Microsoft-Rechenzentren ausgeführt und von Microsoft betrieben.
 
-- _PostgreSQL Hyperscale mit Azure Arc-Unterstützung_
+- _Azure Arc-fähiges PostgreSQL Hyperscale_
 
 Dies ist der Hyperscale-Formfaktor der Postgres-Datenbank-Engine, der mit dem Datendienst mit Azure Arc-Unterstützung angeboten wird. In diesem Formfaktor stellen unsere Kunden die Infrastruktur bereit, die die Systeme hostet, und betreiben sie.
 
@@ -73,4 +73,3 @@ Weitere Informationen finden Sie unter [Tabellen Zusammenstellung](../../postgre
 - [Informationen zum Aufskalieren von PostgreSQL Hyperscale-Servergruppen mit Azure Arc-Unterstützung, die in Ihrem Arc-Datencontroller erstellt wurden](scale-out-in-postgresql-hyperscale-server-group.md)
 - [Informationen zu Data Services mit Azure Arc-Unterstützung](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
 - [Weitere Informationen zu Azure Arc](https://aka.ms/azurearc)
-

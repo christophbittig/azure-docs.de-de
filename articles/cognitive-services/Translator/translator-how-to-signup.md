@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: c21d78e9731bc1711e62d26d6cca269868ac1714
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 02d1e509068c2332164fea7236fe1fe554b3ef02
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346996"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439270"
 ---
 # <a name="create-a-translator-resource"></a>Erstellen einer Translator-Ressource
 
@@ -32,7 +32,7 @@ Der Zugriff auf die Übersetzerressource ist über zwei verschiedene Ressourcent
 * Ressourcentypen für **einzelne Dienste** ermöglichen den Zugriff auf einen API-Schlüssel und einen Endpunkt für einen einzelnen Dienst.  
 
 * Ressourcentypen für **mehrere Dienste** ermöglichen den Zugriff auf mehrere Cognitive Services-Instanzen über einen einzelnen API-Schlüssel und Endpunkt. Die Cognitive Services-Ressource ist derzeit für die folgenden Dienste verfügbar:
-  * Computersprache ([Übersetzer](../translator/translator-overview.md), [LUIS (Language Understanding)](../luis/what-is-luis.md), [Textanalyse](../text-analytics/overview.md))  
+  * Sprache ([Übersetzer](../translator/translator-overview.md), [Sprachenverständnis (LUIS - Language Understanding)](../luis/what-is-luis.md), [Sprachenservice](../text-analytics/overview.md))  
   * Vision ([Maschinelles Sehen](../computer-vision/overview.md), [Gesichtserkennung](../face/overview.md))  
   * Entscheidungsfindung ([Content Moderator](../content-moderator/overview.md))  
 

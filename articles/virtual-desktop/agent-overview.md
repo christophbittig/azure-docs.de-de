@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 61716993bc4c9f3da4ad606789f050a280a94817
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ae07694e72f910945fbb213a448bfd910fef9786
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754644"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132483850"
 ---
 # <a name="get-started-with-the-azure-virtual-desktop-agent"></a>Erste Schritte mit dem Azure Virtual Desktop-Agent
 
@@ -42,7 +42,7 @@ Weitere wichtige Punkte, die Sie beachten sollten:
 - Das Agent-Update ist nicht mit den Buildupdates der Azure Virtual Desktop-Infrastruktur verbunden. Daher bedeutet eine Aktualisierung der Azure Virtual Desktop-Infrastruktur nicht, dass auch der Agent aktualisiert wurde.
 - Da virtuelle Computer in Ihrem Hostpool ihre Agent-Updates zu unterschiedlichen Zeiten erhalten können, müssen Sie in der Lage sein, den Unterschied zwischen den Flightproblemen und den fehlgeschlagenen Agent-Updates zu erkennen. Wenn Sie die Ereignisprotokolle für Ihren virtuellen Computer unter **Ereignisanzeige** > **Windows-Protokoll** >  **-Anwendung** aufrufen und ein Ereignis mit der Bezeichnung „ID 3277“ anzeigen, funktioniert das Agent-Update nicht. Wenn dieses Ereignis nicht angezeigt wird, befindet sich der virtuelle Computer in einem anderen Flight und wird später aktualisiert.
 - Nachdem der Überwachungs-Agent von Geneva auf die neueste Version aktualisiert wurde, wird zunächst der alte Task „GenevaTask“ ermittelt und deaktiviert und danach ein neuer Task für den neuen Überwachungs-Agent erstellt. Die frühere Version des Überwachungs-Agents wird nicht gelöscht, damit bei einem Fehler in der aktuellsten Version des Überwachungs-Agents eine Wiederherstellung der früheren Version durchgeführt werden kann. Wenn bei der neuesten Version ein Problem auftritt, wird der alte Überwachungs-Agent erneut aktiviert, damit weiterhin Überwachungsdaten bereitgestellt werden. Alle Versionen des Überwachungs-Agent, die älter sind als die letzte Version vor dem Update, werden von Ihrer VM gelöscht.
-- Ihre VM behält jeweils drei Versionen des parallelen Stapels bei. Dies ermöglicht eine schnelle Wiederherstellung, wenn beim Update Fehler auftreten. Bei einem Update wird dann die jeweils älteste Version des Stapels von der VM entfernt.
+- Auf Ihrem VM werden drei Versionen des Agents und des nebeneinander ausgeführten Stapels gleichzeitig verwaltet. Dies ermöglicht eine schnelle Wiederherstellung, wenn beim Update Fehler auftreten. Die älteste Version des Agents oder Stapels wird immer dann vom virtuellen Computer entfernt, wenn der Agent oder der Stapel aktualisiert wird. Wenn Sie diese Komponenten vorzeitig löschen und der Agent oder Stapel einen Fehler auflistet, kann der Agent oder Stapel kein Rollback auf eine frühere Version ausführen, wodurch Ihr virtueller Computer in einen nicht verfügbaren Zustand gerät.
 
 Das Agent-Update dauert auf einer neueren VM normalerweise 2-3 Minuten und sollte nicht dazu führen, dass die Verbindung der VM getrennt oder die VM selbst heruntergefahren wird. Dieser Updateprozess gilt sowohl für Azure Virtual Desktop (klassisch) als auch für die neueste Version von Azure Virtual Desktop mit Azure Resource Manager.
 

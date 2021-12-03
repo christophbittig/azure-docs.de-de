@@ -12,14 +12,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/15/2021
+ms.date: 11/09/2021
 ms.author: barclayn
-ms.openlocfilehash: e25ebb85071b6d0af2696083afda45a453c5841a
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 400fe7d940a97ddf9fb885302edd93c8780491f5
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131018"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134805"
 ---
 # <a name="managed-identity-best-practice-recommendations"></a>Empfehlungen zu bewährten Methoden für verwaltete Identitäten
 
@@ -38,7 +38,6 @@ Da vom System zugewiesene Identitäten zusammen mit der Ressource erstellt und g
 Wenn es in Ihrer Infrastruktur erforderlich ist, dass mehrere Ressourcen auf die gleichen Ressourcen zugreifen müssen, kann ihnen eine einzelne vom Benutzer zugewiesene Identität zugewiesen werden. Der Verwaltungsaufwand wird reduziert, da weniger unterschiedliche Identitäten und Rollenzuweisungen verwaltet werden müssen.
 
 Wenn jede Ressource über eine eigene Identität verfügen muss, oder wenn für Ressourcen ein eindeutiger Berechtigungssatz erforderlich ist und die Identität beim Löschen der Ressource ebenfalls gelöscht werden soll, sollten Sie eine vom System zugewiesene Identität verwenden.
-
 
 | Szenario| Empfehlung|Anmerkungen|
 |---|---|---|
@@ -109,3 +108,11 @@ Rollenzuweisungen werden beim Löschen von system- oder benutzerseitig zugewiese
 Rollenzuweisungen, die gelöschten verwalteten Identitäten zugeordnet sind, werden im Portal mit der Kennzeichnung „Identität nicht gefunden“ angezeigt. [Weitere Informationen](../../role-based-access-control/troubleshooting.md#role-assignments-with-identity-not-found).
 
 :::image type="content" source="media/managed-identity-best-practice-recommendations/identity-not-found.png" alt-text="Identität für Rollenzuweisung nicht gefunden.":::
+
+## <a name="limitation-of-using-azure-ad-groups-with-managed-identities-for-authorization"></a>Einschränkung der Verwendung von Azure AD-Gruppen mit verwalteten Identitäten für die Autorisierung
+
+Die Verwendung von Azure AD-Gruppen zur Gewährung des Zugriffs auf Dienste ist eine hervorragende Möglichkeit, den Autorisierungsprozess zu vereinfachen. Die Idee ist einfach: Sie erteilen einer Gruppe Berechtigungen und fügen der Gruppe Identitäten hinzu, so dass sie dieselben Berechtigungen erben. Dies ist ein bewährtes Muster aus verschiedenen lokalen Systemen und funktioniert gut, wenn die Identitäten Benutzer darstellen. Bei nicht menschlichen Identitäten, wie z. B. Azure AD-Anwendungen und Verwaltete Identitäten, ist der genaue Mechanismus derzeit jedoch nicht gut geeignet. Die heutige Implementierung mit Azure AD und Azure Role Based Access Control (Azure RBAC) verwendet Zugriffstoken, die von Azure AD für die Authentifizierung der einzelnen Identitäten ausgestellt werden. Wenn die Identität jedoch zu einer Gruppe hinzugefügt wird, wird ihre Gruppenzugehörigkeit als Anspruch in dem von Azure AD ausgestellten Zugriffstoken ausgedrückt. Azure RBAC verwendet diesen Anspruch, um die Autorisierungsregeln zum Zulassen oder Verweigern des Zugriffs weiter zu bewerten.  
+
+Da die Gruppenmitgliedschaft ein Anspruch im Zugriffstoken ist, werden Änderungen der Gruppenmitgliedschaft erst wirksam, wenn das Token aktualisiert wird. Ein menschlicher Benutzer kann ein neues Zugriffstoken abrufen, indem er sich abmelden und erneut anmelden kann. Token für verwaltete Identitäten werden aus Leistungs- und Resilienzgründen von der zugrunde liegenden Azure-Infrastruktur zwischengespeichert. Dies bedeutet, dass es mehrere Stunden dauern kann, bis Änderungen an der Gruppenmitgliedschaft einer verwalteten Identität wirksam werden. Derzeit ist es nicht möglich, zu erzwingen, dass das Token einer verwalteten Identität vor dessen Ablauf aktualisiert wird. Wenn Sie die Gruppenmitgliedschaft einer verwalteten Identität ändern, um Berechtigungen hinzuzufügen oder zu entfernen, müssen Sie daher möglicherweise mehrere Stunden warten, bis die Azure-Ressource, welche die Identität verwendet, den richtigen Zugriff hat – im Vergleich zu nur wenigen Minuten, wenn Sie Berechtigungen direkt für die Identität hinzufügen oder entfernen würden.
+
+Um sicherzustellen, dass Änderungen an Berechtigungen für verwaltete Identitäten schnell wirksam werden, empfiehlt es sich, Azure-Ressourcen mithilfe einer [vom Benutzer zugewiesenen verwalteten Identität](how-manage-user-assigned-managed-identities.md?pivots=identity-mi-methods-azcli) mit Berechtigungen zu gruppieren, die direkt auf die Identität angewendet werden, anstatt verwaltete Identitäten einer Azure AD-Gruppe mit Berechtigungen hinzufügen oder daraus entfernen zu müssen. Eine vom Benutzer zugewiesene verwaltete Identität kann wie eine Gruppe verwendet werden, da sie einer oder mehrere Azure-Ressource(n) zugewiesen werden kann, um sie zu verwenden. Der Zuweisungsvorgang kann mithilfe der Rolle [Mitwirkender für verwaltete Identität](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) und der [Operator-Rolle für verwaltete Identität gesteuert werden.](../../role-based-access-control/built-in-roles.md#managed-identity-operator)

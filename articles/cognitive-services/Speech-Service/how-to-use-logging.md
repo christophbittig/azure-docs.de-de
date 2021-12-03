@@ -3,20 +3,18 @@ title: Speech SDK-Protokollierung – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Anmeldung im Speech SDK (C++, C#, Python, Objective-C, Java) aktivieren.
 services: cognitive-services
-author: amitkumarshukla
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 584e200beac484ea742d51341a9cb93f0cfc4a41
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ba3f5234c3f11cdd5c2e302679bbb6a79ec0c4f6
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340001"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550209"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Aktivieren der Protokollierung im Speech SDK
 

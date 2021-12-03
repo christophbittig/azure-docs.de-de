@@ -7,17 +7,17 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/18/2021
-ms.openlocfilehash: 95d14afebd6567e18aed6e4585c930a3d46ccb42
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: e97ed074cd9c0fee7a2fc3b3c7795d205292da28
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137685"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254152"
 ---
 # <a name="configure-and-verify-dns-name-resolution-for-azure-purview-private-endpoints"></a>Konfigurieren und Überprüfen der DNS-Namensauflösung für private Azure Purview-Endpunkte
 
 > [!IMPORTANT]
-> Wenn Sie einen privaten _Portal_-Endpunkt für Ihr Purview-Konto **vor dem 27. September 2021 um 15:30 UTC** erstellt haben, müssen Sie die erforderlichen Maßnahmen ergreifen, wie unter [DNS für private Portal-Endpunkte neu konfigurieren](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints) beschrieben. **Diese Maßnahmen müssen vor dem 11. Oktober 2021 abgeschlossen sein. Andernfalls werden die vorhandenen privaten Portalendpunkte nicht mehr funktionieren**.
+> Wenn Sie einen privaten _Portal_-Endpunkt für Ihr Purview-Konto **vor dem 27. September 2021 um 15:30 UTC** erstellt haben, müssen Sie die erforderlichen Maßnahmen ergreifen, wie unter [DNS für private Portal-Endpunkte neu konfigurieren](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints) beschrieben. **Diese Maßnahmen müssen vor dem 12. November 2021 abgeschlossen sein. Andernfalls werden die vorhandenen privaten Portalendpunkte nicht mehr funktionieren.**
 
 ## <a name="conceptual-overview"></a>Konzeptionelle Übersicht
 Eine genaue Namensauflösung ist eine wichtige Voraussetzung für die Einrichtung von privaten Endpunkten für Ihre Azure Purview-Konten. 
@@ -79,7 +79,7 @@ Wenn Sie die Azure Purview-Endpunkt-URL von einem Punkt außerhalb des virtuelle
 
 Wenn ein Azure Purview-Kontoname beispielsweise "Contoso-Purview" lautet, wird er von außerhalb des virtuellen Netzwerks, das den privaten Endpunkt hostet, aufgelöst:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | CNAME | \<Purview public endpoint\> |
@@ -88,7 +88,7 @@ Wenn ein Azure Purview-Kontoname beispielsweise "Contoso-Purview" lautet, wird e
 
 Die DNS-Ressourceneinträge für Contoso-Purview lauten, wenn sie in dem virtuellen Netzwerk, das den privaten Endpunkt hostet, aufgelöst werden:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | Ein | \<Purview account private endpoint IP address\> |
@@ -148,7 +148,7 @@ Wenn Sie die Azure Purview-Endpunkt-URL von einem Punkt außerhalb des virtuelle
 
 Wenn ein Azure Purview-Kontoname beispielsweise "Contoso-Purview" lautet, wird er von außerhalb des virtuellen Netzwerks, das den privaten Endpunkt hostet, aufgelöst:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | CNAME | \<Purview public endpoint\> |
@@ -157,7 +157,7 @@ Wenn ein Azure Purview-Kontoname beispielsweise "Contoso-Purview" lautet, wird e
 
 Die DNS-Ressourceneinträge für Contoso-Purview lauten, wenn sie in dem virtuellen Netzwerk, das den privaten Endpunkt hostet, aufgelöst werden:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | Ein | \<Purview account private endpoint IP address\> |
@@ -170,7 +170,7 @@ Wenn Sie keine DNS-Weiterleitung verwenden und A-Einträge stattdessen direkt au
 > [!NOTE]
 > Aktualisieren Sie alle Namen mit `Contoso-Purview`, `scaneastusabcd1234` und `atlas-12345678-1234-1234-abcd-123456789abc`mit den entsprechenden Azure-Ressourcennamen in Ihrer Umgebung. Verwenden Sie beispielsweise anstelle von `scaneastusabcd1234` den Namen Ihres verwalteten Azure Purview-Speicherkontos.
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---------- | -------- | --------------- |
 | `web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview> |
 | `scaneastusabcd1234.blob.core.windows.net` | Ein | \<blob-ingestion private endpoint IP address of Azure Purview> |

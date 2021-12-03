@@ -1,6 +1,6 @@
 ---
 title: Verwenden Sie Microsoft- und Azure-Sicherheitsressourcen für Unterstützung bei der Wiederherstellung nach einer systemischen Identitätskompromittierung | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Microsoft- und Azure-Sicherheitsressourcen wie den Microsoft 365 Defender, Azure Sentinel und Azure Active Directory sowie Azure Security Center und Microsoft-Empfehlungen verwenden, um Ihr System vor kompromittierten Identitäten zu schützen, ähnlich wie beim Nobelium-Angriff (Solorigate) vom Dezember 2020.
+description: Hier erfahren Sie, wie Sie Microsoft- und Azure-Sicherheitsressourcen wie etwa Microsoft 365 Defender, Azure Sentinel und Azure Active Directory sowie Azure Security Center und Microsoft-Empfehlungen verwenden, um Ihr System vor kompromittierten Identitäten zu schützen, ähnlich wie beim Nobelium-Angriff (Solorigate) vom Dezember 2020.
 services: sentinel
 documentationcenter: na
 author: batamig
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: bagol
-ms.openlocfilehash: f2f99e7c9a901b6e76b3d4bbe87967527f836d1b
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: b858cb8d2830d305a90dfb8ecbda9fe2154e11f9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864343"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323195"
 ---
 # <a name="recovering-from-systemic-identity-compromise"></a>Wiederherstellen nach kompromittierter Systemidentität
 
@@ -88,18 +88,18 @@ Es wird empfohlen, dass die Kunden die Aktualisierungen von Systemanbietern befo
 
 Suchen Sie nach Aktualisierungen in den folgenden Microsoft-Sicherheitsprodukten, und implementieren Sie alle empfohlenen Änderungen:
 
-- [Azure Sentinel](../../sentinel/index.yml)
+- [Microsoft Sentinel](../../sentinel/index.yml)
 - [Microsoft 365 Sicherheitslösungen und -dienste](/microsoft-365/security/)
 - [Windows 10 Enterprise Security](/windows/security/)
-- [Microsoft Cloud App Security](/cloud-app-security/)
+- [Microsoft Defender für Cloud Apps](/cloud-app-security/)
 
 Die Implementierung neuer Aktualisierungen hilft dabei, alle vorherigen Kampagnen zu identifizieren und zukünftige Kampagnen gegen Ihr System zu verhindern. Beachten Sie, dass Listen mit IOCs möglicherweise nicht vollständig sind und sich mit der Fortsetzung der Untersuchungen erweitern.
 
 Daher wird empfohlen, auch die folgenden Aktionen durchzuführen:
 
-- Stellen Sie sicher, dass Sie die [Azure-Sicherheits-Benchmark-Dokumentation](/security/benchmark/azure/) angewendet haben und die Einhaltung der Richtlinien über das [Azure Security Center](../../security-center/index.yml) überwachen.
+- Stellen Sie sicher, dass Sie die [Azure-Sicherheits-Benchmark-Dokumentation](/security/benchmark/azure/) angewendet haben und die Einhaltung der Richtlinien über [Microsoft Defender für Cloud](../../security-center/index.yml) überwachen.
 
-- Integrieren Sie Threat Intelligence-Feeds in Ihr SIEM, z. B. durch Konfigurieren von Microsoft 365 Datenconnectors in [Azure Sentinel](../../sentinel/understand-threat-intelligence.md).
+- Integrieren Sie Bedrohungsdaten-Feeds in Ihr SIEM, z. B. durch die Konfiguration von Microsoft 365-Datenkonnektoren in [Microsoft Sentinel](../../sentinel/understand-threat-intelligence.md).
 
 Weitere Informationen finden Sie in der Sicherheitsdokumentation von Microsoft:
 
@@ -171,9 +171,9 @@ Beispielsweise können Microsoft-Sicherheitsdienste über bestimmte Ressourcen u
 > Wenn Ihre Untersuchung Beweise für Administratorberechtigungen findet, die durch die Kompromittierung auf Ihrem System erworben wurden, die Zugriff auf das globale Administratorkonto und/oder das vertrauenswürdige SAML-Token-Signaturzertifikat Ihres Unternehmens gewährt haben, empfehlen wir Ihnen, Maßnahmen zu ergreifen, um die [administrative Kontrolle zu wiederherzustellen und zu behalten](#remediate-and-retain-administrative-control).
 >
 
-### <a name="monitoring-with-azure-sentinel"></a>Überwachen mit Azure Sentinel
+### <a name="monitoring-with-microsoft-sentinel"></a>Überwachen mit Microsoft Sentinel
 
-Azure Sentinel verfügt über viele integrierte Ressourcen, die Sie bei Ihrer Untersuchung unterstützen. Diese beinhalten z. B. Hunting-Arbeitsmappen und Analyseregeln, die dabei helfen können, die Angriffe in relevanten Bereichen Ihrer Umgebung zu erkennen.
+Microsoft Sentinel verfügt über viele integrierte Ressourcen, die Sie bei Ihrer Untersuchung unterstützen. Diese beinhalten z. B. Hunting-Arbeitsmappen und Analyseregeln, die dabei helfen können, die Angriffe in relevanten Bereichen Ihrer Umgebung zu erkennen.
 
 Weitere Informationen finden Sie unter:
 
@@ -184,7 +184,7 @@ Weitere Informationen finden Sie unter:
 
 Es wird empfohlen, dass Sie den Microsoft 365 Defender for Endpoint und den Microsoft Defender Antivirus für spezifische Anleitungen für Ihren Angriff einbeziehen.
 
-Weitere Beispiele für Erkennungen, Suchabfragen und Bedrohungsanalyseberichte finden Sie im Microsoft Security Center, z. B. in Microsoft 365 Defender, Microsoft 365 Defender für Identität und Microsoft Cloud App Security. Um die Abdeckung zu gewährleisten, stellen Sie sicher, dass Sie den [Microsoft Defender for Identity-Agent](/defender-for-identity/install-step4) zusätzlich zu allen Domänencontrollern auf ADFS-Servern installieren.
+Weitere Beispiele für Erkennungen, Suchabfragen und Bedrohungsanalyseberichte finden Sie im Microsoft Security Center, z. B. in Microsoft 365 Defender, Microsoft 365 Defender für Identität und Microsoft Defender für Cloud-Apps. Um die Abdeckung zu gewährleisten, stellen Sie sicher, dass Sie den [Microsoft Defender for Identity-Agent](/defender-for-identity/install-step4) zusätzlich zu allen Domänencontrollern auf ADFS-Servern installieren.
 
 Weitere Informationen finden Sie unter:
 
@@ -193,7 +193,7 @@ Weitere Informationen finden Sie unter:
 
 ### <a name="monitoring-with-azure-active-directory"></a>Überprüfen mit Azure Active Directory
 
-Azure Active Directory Anmeldeprotokolle können anzeigen, ob die mehrstufige Authentifizierung ordnungsgemäß verwendet wird. Greifen Sie direkt über den Azure Active Directory-Bereich im Azure-Portal auf die Anmeldeprotokolle zu, verwenden Sie das Cmdlet **Get-AzureADAuditSignInLogs** oder zeigen Sie sie im Bereich **Protokolle** von Azure Sentinel an.
+Azure Active Directory Anmeldeprotokolle können anzeigen, ob die mehrstufige Authentifizierung ordnungsgemäß verwendet wird. Greifen Sie direkt über den Azure Active Directory-Bereich im Azure-Portal auf die Anmeldeprotokolle zu, verwenden Sie das Cmdlet **Get-AzureADAuditSignInLogs** oder zeigen Sie diese im Bereich **Protokolle** von Microsoft Sentinel an.
 
 Suchen oder filtern Sie zum Beispiel die Ergebnisse, wenn das Feld **MFA-Ergebnis** den Wert von der **MFA-Anforderung durch Anspruch im Token erfüllt**. Wenn Ihr Unternehmen AD FS verwendet und die protokollierten Ansprüche nicht in der ADFS-Konfiguration enthalten sind, können diese Ansprüche auf Angreiferaktivitäten hinweisen.
 
@@ -227,7 +227,7 @@ Wir empfehlen die folgenden Aktionen, um Ihren allgemeinen Sicherheitsstatus sic
 
 - **Überprüfen Sie [Microsoft Secure Score](/microsoft-365/security/mtp/microsoft-secure-score)** auf Empfehlungen zu den Sicherheitsvorkehrungen, die für die von Ihnen verbrauchten Microsoft-Produkte und -Dienste angepasst wurden.
 
-- **Stellen Sie sicher, dass Ihr Unternehmen über EDR- und SIEM-Lösungen**, wie z. B. den [Microsoft 365 Defender for Endpoint](/microsoft-365/security/defender/microsoft-365-defender) und [Azure Sentinel](../../sentinel/overview.md) verfügt.
+- **Stellen Sie sicher, dass Ihr Unternehmen über EDR- und SIEM-Lösungen**, wie z. B. den [Microsoft 365 Defender for Endpoint](/microsoft-365/security/defender/microsoft-365-defender) und [Microsoft Sentinel](../../sentinel/overview.md) verfügt.
 
 - **Überprüfen Sie das Microsoft [Enterprise-Zugriffsmodell](/security/compass/privileged-access-access-model)** .
 
@@ -444,15 +444,13 @@ Zusätzlich zu den oben aufgeführten empfohlenen Aktionen empfiehlt es sich, di
     - [Widerrufen des Benutzerzugriffs in Azure Active Directory](../../active-directory/enterprise-users/users-revoke-access.md)
     - [Wiederrufen der „AzureADUserAllRefreshToken PowerShell“ Dokumentation](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- **Abrufen von Hilfe innerhalb der Microsoft-Produkte**, einschließlich des Microsoft 365 Security Center, des Microsoft 365 Security & Compliance Center und des Microsoft Defender Security Center, indem Sie die Schaltfläche **Hilfe** ( **?** ) in der oberen Navigationsleiste auswählen.
+- **Abrufen von Hilfe innerhalb der Microsoft-Produkte**, einschließlich des Microsoft 365 Defender-Portals, des Microsoft 365 Security & Compliance Center und des Office 365 Security Center, indem Sie die Schaltfläche **Hilfe** ( **?** ) in der oberen Navigationsleiste auswählen.
 
 - Wenn Sie **Unterstützung bei der Bereitstellung** benötigen, wenden Sie sich an [FastTrack](https://fasttrack.microsoft.com) Support
 
-- **Wenn Sie Anforderungen an den Produktsupport haben**, können Sie eine Microsoft-Support-Case-Datei unter https://support.microsoft.com/contactus erstellen.
+- **Wenn Sie Anforderungen an den Produktsupport haben**, können Sie eine [Microsoft-Support-Case-Datei](https://support.microsoft.com/contactus) erstellen.
 
     > [!IMPORTANT]
     > Wenn Sie der Meinung sind, dass Sie kompromittiert wurden und Unterstützung durch eine Reaktion auf Vorfälle benötigen, öffnen Sie eine **Sev A** Microsoft-Support-Anfrage.

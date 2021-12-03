@@ -7,56 +7,82 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/28/2021
+ms.date: 11/09/2021
 ms.author: banders
-ms.openlocfilehash: af3b4eabfb47fb64e9e3912c8edcf939d17e04f2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 482db68e048c645eddf16849b32e39f1dc397d09
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131476241"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179396"
 ---
 # <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>Übertragen des Abrechnungsbesitzes für ein Azure-Abonnement für eine Microsoft-Kundenvereinbarung
 
 Sie müssen den Abrechnungsbesitz für Ihre Azure-Abonnements übertragen, wenn:
-- Sie die Abrechnungszuständigkeiten für die Abonnements auf einen anderen Abrechnungsbesitzer übertragen möchten.
-- Sie Ihre Azure-Abonnements von einem Lizenzvertrag zu einem anderen übertragen. Beispielsweise von einem Enterprise Agreement oder einem Microsoft Online-Abonnementvertrag (MOSA) zu einer Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-for-access)
 
-Die Person, von der Sie den Abrechnungsbesitz anfordern, muss eine der folgenden Rollen haben:
+- Sie die Abrechnungszuständigkeiten für die Abonnements auf einen anderen Abrechnungsbesitzer übertragen möchten.
+- Sie Ihre Azure-Abonnements von einem Lizenzvertrag zu einem anderen übertragen. Beispielsweise von einem Enterprise Agreement oder einem Microsoft Online-Abonnementvertrag (MOSA) zu einer Microsoft-Kundenvereinbarung.
+
+[Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-for-access)
+
+Der Übergang verschiebt nur die Abrechnungszuteilung für Ihre Azure-Abonnements; die an Ihre Abonnements gebundenen Azure-Ressourcen werden nicht verschoben, sodass der Übergang Ihre Azure-Dienste nicht unterbricht.
+
+Dieser Prozess enthält die folgenden Aufgaben, die Sie Schritt für Schritt durchlaufen:
+
+1. Anfordern des Abrechnungsbesitzes
+2. Überprüfen/Genehmigen der Übertragungsanforderung
+3. Überprüfen des Status der Übertragungsanforderung
+
+Stellen Sie zunächst sicher, dass die Person, von der Sie den Abrechnungsbesitz anfordern, über eine der folgenden Rollen verfügt:
+
 - Für eine Microsoft-Kundenvereinbarung muss die Person über die Rolle „Besitzer“ oder „Mitwirkender“ für das Abrechnungskonto oder das entsprechende Abrechnungsprofil bzw. den Rechnungsabschnitt verfügen. Weitere Informationen finden Sie unter [Rollen und Aufgaben für Abrechnungen](understand-mca-roles.md#invoice-section-roles-and-tasks).
 - Bei einem Konzernvertrag (Enterprise Agreement, EA) muss die Person ein Kontobesitzer sein.
 - Für einen Microsoft Online-Abonnementvertrag muss die Person ein Kontoadministrator sein.
 
+Wenn Sie bereit sind, befolgen Sie die folgenden Anweisungen. Sie können sich auch das folgende Video ansehen, in dem die einzelnen Schritte des Prozesses beschrieben werden.
+
+>[!VIDEO https://www.youtube.com/embed/gfiUI2YLsgc]
+
 ## <a name="request-billing-ownership"></a>Anfordern des Abrechnungsbesitzes
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) als Rechnungsabschnitt-Besitzer oder -Mitwirkender eines Abrechnungskontos für die Microsoft-Kundenvereinbarung an.
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) als Rechnungsabschnitt-Besitzer oder -Mitwirkender eines Abrechnungskontos für die Microsoft-Kundenvereinbarung an. Verwenden Sie die gleichen Anmeldeinformationen, die Sie zum Akzeptieren Ihrer Microsoft-Kundenvereinbarung verwendet haben.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.  
     ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-1. Wählen Sie auf der Seite mit den Abrechnungsbereichen die Option **Abrechnungsbereiche** und anschließend das Abrechnungskonto aus, das zur Zahlung der Abonnementnutzung verwendet wird. Das Abrechnungskonto sollte vom Typ **Microsoft-Kundenvereinbarung** sein.  
-    [![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Portal](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
+1. Wählen Sie auf der Seite mit den Abrechnungsbereichen die Option **Abrechnungsbereiche** und anschließend das Abrechnungskonto aus, das zur Zahlung für Ihre Azure-Abonnementnutzung verwendet wird. Wählen Sie das Abrechnungskonto für Ihre **Microsoft-Kundenvereinbarung** aus.  
+    [![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Portal](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)  
     > [!NOTE]
-    > Das Azure-Portal speichert den letzten Abrechnungsbereich, auf den Sie zugreifen, und zeigt den Bereich an, wenn Sie das nächste Mal auf die Seite „Kostenverwaltung + Abrechnung“ gelangen. Wenn Sie „Kostenverwaltung + Abrechnung“ bereits besucht haben, wird die Abrechnungsbereicheseite nicht angezeigt. Wenn dies der Fall ist, überprüfen Sie, ob Sie sich im [richtigen Bereich](#check-for-access) befinden. Wenn nicht, [wechseln Sie den Bereich](view-all-accounts.md#switch-billing-scope-in-the-azure-portal), um das Abrechnungskonto für eine Microsoft-Kundenvereinbarung auszuwählen.
+    >Das Azure-Portal speichert den letzten Abrechnungsbereich, auf den Sie zugreifen, und zeigt den Bereich an, wenn Sie das nächste Mal auf die Seite „Kostenverwaltung + Abrechnung“ gelangen. Wenn Sie „Kostenverwaltung + Abrechnung“ bereits besucht haben, wird die Abrechnungsbereicheseite nicht angezeigt. Wenn dies der Fall ist, überprüfen Sie, ob Sie sich im [richtigen Bereich](#check-for-access) befinden. Wenn nicht, [wechseln Sie den Bereich](view-all-accounts.md#switch-billing-scope-in-the-azure-portal), um das Abrechnungskonto für eine Microsoft-Kundenvereinbarung auszuwählen.
 1. Wählen Sie auf der linken Seite die Option **Abrechnungsprofile** aus.  
     [![Screenshot: Auswählen von Abrechnungsprofilen](./media/mca-request-billing-ownership/mca-select-profiles.png)](./media/mca-request-billing-ownership/mca-select-profiles.png#lightbox)
-    > [!Note]
+    > [!NOTE]
     > Wenn keine Abrechnungsprofile angezeigt werden, befinden Sie sich nicht im richtigen Abrechnungsbereich. Sie müssen ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung und dann Abrechnungsprofile auswählen. Weitere Informationen zum Ändern von Bereichen finden Sie unter [Wechseln des Abrechnungsbereichs im Azure-Portal](view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
 1. Wählen Sie ein **Abrechnungsprofil** in der Liste aus. Nachdem Sie den Besitz der Abonnements übernommen haben, wird deren Nutzung über dieses Abrechnungsprofil abgerechnet.
 1. Wählen Sie links die Option **Rechnungsabschnitte**.  
     [![Screenshot: Auswählen von Rechnungsabschnitten](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)](./media/mca-request-billing-ownership/mca-select-invoice-sections.png#lightbox)   
-1. Wählen Sie in der Liste einen Rechnungsabschnitt aus. Nachdem Sie den Besitz der Abonnements übernommen haben, wird deren Nutzung diesem Abschnitt der Rechnung für dieses Abrechnungsprofil zugewiesen.
+1. Wählen Sie in der Liste einen Rechnungsabschnitt aus. Jedes Abrechnungsprofil enthält standardmäßig einen Rechnungsabschnitt. Wählen Sie die Rechnung aus, auf die Sie Ihre Azure-Abonnementabrechnung verschieben möchten. Dort wird die Nutzung des Azure-Abonnements übertragen.
 1. Wählen Sie links unten die Option **Übertragungsanforderungen** und anschließend **Neue Anforderung hinzufügen** aus.  
     [![Screenshot: Auswählen von Übertragungsanforderungen](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. Geben Sie die E-Mail-Adresse des Benutzers ein, dessen Abrechnungsbesitz Sie übernehmen möchten. Wählen Sie **Übertragungsanforderung senden** aus.  
+1. Geben Sie die E-Mail-Adresse des Benutzers ein, dessen Abrechnungsbesitz Sie übernehmen möchten. Der Benutzer muss über eine Kontoadministratorrolle für die alten Abonnements verfügen. Wählen Sie **Übertragungsanforderung senden** aus.  
     [![Screenshot: Senden einer Übertragungsanforderung](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
+
+## <a name="review-and-approve-transfer-request"></a>Überprüfen und genehmigen der Übertragungsanforderung
+
 1. Der Benutzer erhält eine E-Mail mit der Aufforderung, Ihre Übertragungsanforderung zu prüfen.  
     ![Screenshot: E-Mail mit Aufforderung zur Prüfung der Übertragungsanforderung](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
-1. Um die Übertragungsanforderung zu genehmigen, muss der Benutzer auf den Link in der E-Mail klicken und den Anweisungen folgen.
-    [![Screenshot: Überprüfen der Übertragungsanforderung](./media/mca-request-billing-ownership/review-transfer-requests.png)](./media/mca-request-billing-ownership/review-transfer-requests.png#lightbox) Der Benutzer kann das Abrechnungskonto auswählen, von dem er Azure-Produkte übertragen möchte. Nach der Auswahl werden zur Übertragung berechtigte Produkte angezeigt. **Hinweis:** Deaktivierte Abonnements können nicht übertragen werden und werden ggf. in der Liste „Nicht übertragbare Azure-Produkte“ angezeigt. Nachdem Sie die zu übertragenden Azure-Produkte ausgewählt haben, klicken Sie auf **Überprüfen**.
+1. Um die Übertragungsanforderung zu genehmigen, muss der Benutzer auf den Link in der E-Mail klicken und den Anweisungen folgen.  
+
+    Der Benutzer wählt das Abrechnungskonto aus, von dem er Azure-Produkte übertragen möchte. Nach der Auswahl werden zur Übertragung berechtigte Produkte angezeigt. Nachdem Sie die zu übertragenden Azure-Produkte ausgewählt haben, klicken Sie auf **Überprüfen**.
+
+    >[!NOTE]
+    > Deaktivierte Abonnements können nicht übertragen werden und werden ggf. in der Liste „Nicht übertragbare Azure-Produkte“ angezeigt. 
+
+    [![Screenshot, der die Prüfung der Übertragungsanforderung zeigt](./media/mca-request-billing-ownership/review-transfer-requests.png)](./media/mca-request-billing-ownership/review-transfer-requests.png#lightbox)
 1. Im Bereich **Ergebnis der Übertragungsprüfung** werden die Auswirkungen der zu übertragenden Azure-Produkte angezeigt. Die folgenden Status sind möglich:
     * **Erfolgreich**: Die Überprüfung für dieses Azure-Produkt war erfolgreich, und das Produkt kann übertragen werden.
     * **Warnung**: Es besteht eine Warnung für das ausgewählte Azure-Produkt. Zwar kann das Produkt übertragen werden, doch hat dies Auswirkungen, die dem Benutzer bekannt sein sollten, falls er Maßnahmen zur Minderung ergreifen möchte. Beispielsweise nutzt das zu übertragende Azure-Abonnement die Vorteile einer RI. Nach der Übertragung sind diese Vorteile für das Abonnement nicht mehr vorhanden. Um die Einsparungen zu erhöhen, stellen Sie sicher, dass die RI einem anderen Abonnement zugeordnet wird, das diese Vorteile nutzen kann. Der Benutzer kann stattdessen auch zur Auswahlseite zurückkehren und die Auswahl dieses Azure-Abonnements aufheben.
     * **Fehler**: Das ausgewählte Azure-Produkt kann aufgrund eines Fehlers nicht übertragen werden. Der Benutzer muss zur Auswahlseite zurückkehren und die Auswahl dieses Produkts aufheben, um die anderen ausgewählten Azure-Produkte zu übertragen.  
     ![Screenshot: Überprüfungsoberfläche](./media/mca-request-billing-ownership/validate-transfer-request.png)
+1. Wählen Sie nach Abschluss der Überprüfung als **Übergeben** die Option **Übertragen** aus. Es wird eine Meldung `Transfer is in progress` angezeigt, und nach Abschluss des Vorgangs wird eine Meldung `Transfer completed successfully` angezeigt.
 
 ## <a name="check-the-transfer-request-status"></a>Überprüfen des Status der Übertragungsanforderung
 

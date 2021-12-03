@@ -1,28 +1,28 @@
 ---
-title: Untersuchen von Vorfällen mit Azure Sentinel | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie Azure Sentinel verwenden, um erweiterte Warnungsregeln zu erstellen, die Incidents generieren, die Sie zuweisen und untersuchen können.
+title: Untersuchen von Vorfällen mit Microsoft Sentinel| Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie mit Microsoft Sentinel erweiterte Warnungsregeln erstellen, die Vorfälle generieren, die Sie zuweisen und untersuchen können.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: dec517fae51463f5589b8dfbf39c4ac3e662395c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 77cf1b6dd4038613af9d079fc6226ab8c784577a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037072"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520140"
 ---
-# <a name="investigate-incidents-with-azure-sentinel"></a>Untersuchen von Vorfällen mit Azure Sentinel
+# <a name="investigate-incidents-with-microsoft-sentinel"></a>Untersuchen Sie Vorfälle mit Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "131037072"
 > Entsprechend gekennzeichnete Features sind derzeit als VORSCHAUVERSION verfügbar. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 >
 
-In diesem Artikel erfahren Sie, wie Sie Vorfälle mit Azure Sentinel untersuchen. Nachdem Sie Ihre Datenquellen mit Azure Sentinel verbunden haben, möchten Sie gewarnt werden, wenn etwas Verdächtiges geschieht. Damit Sie dies tun können, können Sie in Azure Sentinel erweiterte Warnungsregeln erstellen, die Vorfälle generieren, die Sie zuweisen und untersuchen können.
+Dieser Artikel unterstützt Sie bei der Untersuchung von Vorfällen mit Microsoft Sentinel. Nachdem Sie Ihre Datenquellen mit Microsoft Sentinel verbunden haben, möchten Sie benachrichtigt werden, wenn etwas Verdächtiges geschieht. Um dies zu ermöglichen, können Sie mit Microsoft Sentinel erweiterte Warnregeln erstellen, die Vorfälle erzeugen, die Sie zuordnen und untersuchen können.
 
 In diesem Artikel wird Folgendes behandelt:
 > [!div class="checklist"]
@@ -38,7 +38,7 @@ In diesem Artikel wird Folgendes behandelt:
 > * Verwenden des Untersuchungsdiagramms
 > * Reagieren auf Bedrohungen
 
-Ein Vorfall kann mehrere Warnungen enthalten. Es ist eine Aggregation aller relevanten Beweise für eine bestimmte Untersuchung. Ein Vorfall wird auf der Grundlage von Analyseregeln erstellt, die Sie auf der Seite **Analytics** erstellt haben. Die Eigenschaften, die zu den Warnungen gehören, z. B. Schweregrad und Status, werden auf Vorfallsebene festgelegt. Nachdem Azure Sentinel die Informationen dazu hat, welche Bedrohungsarten Sie suchen und wie diese gefunden werden, können Sie erkannte Bedrohungen überwachen, indem Sie Vorfälle untersuchen.
+Ein Vorfall kann mehrere Warnungen enthalten. Es ist eine Aggregation aller relevanten Beweise für eine bestimmte Untersuchung. Ein Vorfall wird auf der Grundlage von Analyseregeln erstellt, die Sie auf der Seite **Analytics** erstellt haben. Die Eigenschaften, die zu den Warnungen gehören, z. B. Schweregrad und Status, werden auf Vorfallsebene festgelegt. Nachdem Sie Microsoft Sentinel mitgeteilt haben, nach welchen Arten von Bedrohungen Sie suchen und wie Sie diese finden, können Sie erkannte Bedrohungen durch die Untersuchung von Vorfällen überwachen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -98,7 +98,7 @@ So verwenden Sie das Untersuchungsdiagramm:
    > [!IMPORTANT] 
    > - Sie können den Vorfall nur untersuchen, wenn Sie beim Einrichten der Analyseregel die Entitätszuordnungsfelder verwendet haben. Das Untersuchungsdiagramm fordert, dass Ihr ursprünglicher Vorfall Entitäten enthält.
    >
-   > - Azure Sentinel unterstützt derzeit die Untersuchung von **bis zu 30 Tage alten Vorfällen**.
+   > - Microsoft Sentinel unterstützt derzeit die Untersuchung von **Vorfällen, die bis zu 30 Tage alt sind**.
 
 
 1. Wählen Sie eine Entität aus, um den Bereich **Entitäten** zu öffnen, in dem Sie Informationen zur betreffenden Entität untersuchen können.
@@ -136,7 +136,7 @@ Nachdem Sie einen bestimmten Incident gelöst haben (beispielsweise dann, wenn d
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Screenshot, der die in der Liste „Klassifizierung auswählen“ verfügbaren Klassifizierungen hervorhebt.":::
 
-Weitere Informationen zu falsch positiven und unbedenklichen positiven Ergebnissen finden Sie unter [Behandeln falsch positiver Ergebnisse in Azure Sentinel](false-positives.md).
+Weitere Informationen zu falsch positiven und unbedenklichen positiven Ergebnissen finden Sie unter [Behandeln falsch positiver Ergebnisse in Microsoft Sentinel](false-positives.md)
 
 Nachdem Sie eine geeignete Klassifizierung ausgewählt haben, fügen Sie in das Feld **Kommentar** einen beschreibenden Text hinzu. Dies ist nützlich, falls Sie sich noch einmal auf diesen Incident beziehen müssen. Wenn Sie fertig sind, klicken Sie auf **Anwenden**. Der Incident wird geschlossen.
 
@@ -181,7 +181,7 @@ Die Verwendung erweiterter Suchoptionen ändert das Suchverhalten wie folgt:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie eine Einführung erhalten, wie Vorfälle mithilfe von Azure Sentinel untersucht werden. Weitere Informationen finden Sie unter:
+In diesem Artikel haben Sie erfahren, wie Sie mit der Untersuchung von Vorfällen mit Microsoft Sentinel beginnen. Weitere Informationen finden Sie unter
 
-- [Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel](tutorial-respond-threats-playbook.md)
+- [Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Microsoft Sentinel](tutorial-respond-threats-playbook.md)
 - [Untersuchen von Incidents mit UEBA-Daten](investigate-with-ueba.md)

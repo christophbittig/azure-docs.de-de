@@ -1,30 +1,38 @@
 ---
 title: Maschinelles Lernen mit Azure Arc-Unterstützung (Vorschauversion)
-description: Konfigurieren von Kubernetes-Clustern mit Azure Arc-Unterstützung zum Trainieren und zum Rückschluss von Machine Learning-Modellen in Azure Machine Learning
+description: Konfigurieren von Azure Kubernetes Service und Kubernetes-Clustern mit Azure Arc-Unterstützung zum Trainieren und zum Rückschluss von Machine Learning-Modellen in Azure Machine Learning
 titleSuffix: Azure Machine Learning
 author: luisquintanilla
 ms.author: luquinta
 ms.service: machine-learning
-ms.subservice: mlops
+ms.subservice: core
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5e9d95f863e5107a71118da9fdc9b0c5329acbb0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 635153d510b18bc0ce97033094abf21a3b6d3d74
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084658"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491626"
 ---
-# <a name="configure-azure-arc-enabled-machine-learning-preview"></a>Konfigurieren des maschinellen Lernens mit Azure Arc-Unterstützung (Vorschauversion)
+# <a name="configure-kubernetes-clusters-for-machine-learning-preview"></a>Konfigurieren von Kubernetes-Clustern für maschinelles Lernen (Vorschau)
 
-Hier erfahren Sie, wie Sie das maschinelle Lernen mit Azure Arc-Unterstützung für das Training konfigurieren und einen Rückschluss dafür erzielen können.
+Erfahren Sie, wie Sie Azure Kubernetes Service (AKS) und Kubernetes-Cluster mit Azure Arc-Unterstützung für das Trainieren und Rückschließen von Workloads für maschinelles Lernen konfigurieren.
 
 ## <a name="what-is-azure-arc-enabled-machine-learning"></a>Was ist maschinelles Lernen mit Azure Arc-Unterstützung?
 
 Mit Azure Arc können Sie Azure-Dienste in jeder Kubernetes-Umgebung ausführen, egal ob lokal, in mehreren Clouds oder im Edge.
 
-Maschinelles Lernen mit Azure Arc-Unterstützung erlaubt es Ihnen, Azure Arc-fähige Kubernetes-Cluster für das Training, den Rückschluss und die Verwaltung von Modellen in Azure Machine Learning zu konfigurieren und zu verwenden.
+Maschinelles Lernen mit Azure Arc-Unterstützung erlaubt Ihnen, Azure Kubernetes Service und Kubernetes-Cluster mit Azure Arc-Unterstützung für das Training, den Rückschluss und die Verwaltung von Machine Learning-Modellen in Azure Machine Learning zu konfigurieren und zu verwenden.
+
+## <a name="machine-learning-on-azure-kubernetes-service"></a>Maschinelles Lernen in Azure Kubernetes Service
+
+Um Azure Kubernetes Service-Cluster für Azure Machine Learning-Workloads für Training und Rückschluss zu verwenden, müssen Sie diese nicht mit Azure Arc verbinden.
+
+Sie müssen ein- und ausgehenden Netzwerkdatenverkehr konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren des ein- und ausgehenden Netzwerkdatenverkehrs (AKS)](how-to-access-azureml-behind-firewall.md#azure-kubernetes-services-1).
+
+Informationen zum Bereitstellen der Azure Machine Learning-Erweiterung in Azure Kubernetes Service-Clustern finden Sie im Abschnitt [Bereitstellen der Azure Machine Learning-Erweiterung](#deploy-azure-machine-learning-extension).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,15 +40,18 @@ Maschinelles Lernen mit Azure Arc-Unterstützung erlaubt es Ihnen, Azure Arc-f�
 * Kubernetes-Cluster mit Azure Arc-Unterstützung. Weitere Informationen finden Sie im Schnellstarthandbuch [Verbinden eines vorhandenen Kubernetes-Clusters mit Azure Arc ](../azure-arc/kubernetes/quickstart-connect-cluster.md).
 
     > [!NOTE]
-    > Für Azure Kubernetes Service -Cluster (AKS) ist das Verbinden mit Azure Arc **optional**.
+    > Für AKS-Cluster ist das Verbinden mit Azure Arc **optional**.
+
+* Erfüllen der [Azure Arc Netzwerkanforderungen](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements)
+
+    > [!IMPORTANT]
+    > Cluster, die hinter einem ausgehenden Proxyserver oder einer Firewall ausgeführt werden, benötigen zusätzliche Netzwerkkonfigurationen.
+    >
+    > Weitere Informationen finden Sie unter [Konfigurieren des ein- und ausgehenden Netzwerkdatenverkehrs (Kubernetes mit Azure Arc-Unterstützung)](how-to-access-azureml-behind-firewall.md#arc-kubernetes).
 
 * Erfüllen der [Voraussetzungen für Clustererweiterungen bei Kubernetes-Clustern mit Azure Arc-Unterstützung](../azure-arc/kubernetes/extensions.md#prerequisites)
   * Azure CLI ab Version 2.24.0
   * Azure CLI k8s-Erweiterung ab Version 1.0.0
-* Erfüllen der [Azure Arc Netzwerkanforderungen](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements)
-
-    > [!IMPORTANT]
-    > Cluster, die hinter einem ausgehenden Proxyserver oder einer Firewall ausgeführt werden, benötigen zusätzliche Netzwerkkonfigurationen. Weitere Informationen finden Sie unter [Konfiguration des ein- und ausgehenden Netzwerkdatenverkehrs](how-to-access-azureml-behind-firewall.md#arc-kubernetes).
 
 * Ein Azure Machine Learning-Arbeitsbereich. Bevor Sie beginnen, [erstellen Sie einen Arbeitsbereich](how-to-manage-workspace.md?tabs=python), wenn Sie noch keinen haben.
   * Python-SDK für Azure Machine Learning ab Version 1.30
@@ -84,7 +95,7 @@ Kubernetes mit Azure Arc-Unterstützung verfügt über eine Clustererweiterungsf
 Verwenden Sie die den Befehl [`create`](/cli/azure/k8s-extension?view=azure-cli-latest&preserve-view=true) der Azure CLI-Erweiterung `k8s-extension`, um die Azure Machine Learning-Erweiterung in Ihrem Azure Arc-fähigen Kubernetes-Cluster bereitzustellen.
 
 > [!IMPORTANT]
-> Legen Sie den `--cluster-type`-Parameter auf `managedCluster` fest, um die Azure Machine Learning-Erweiterung in AKS-Clustern bereitzustellen.
+> Legen Sie den `--cluster-type`-Parameter auf `managedClusters` fest, um die Azure Machine Learning-Erweiterung in AKS-Clustern bereitzustellen.
 
 Im Folgenden finden Sie eine Liste der Konfigurationseinstellungen, die für verschiedene Bereitstellungsszenarios von Azure Machine Learning-Erweiterungen verwendet werden können.
 

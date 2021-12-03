@@ -4,14 +4,14 @@ description: Dieses Thema bietet eine Übersicht über die Verfolgung beobachtet
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: juliako
-ms.openlocfilehash: c24d7f4a67afbf194be498e4fcd15779a806a3b9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6726c67cf5274ba252b86ace9165330dc296afb4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605143"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491941"
 ---
-# <a name="trace-observed-people-in-a-video"></a>Nachverfolgen von beobachteten Personen in einem Video
+# <a name="trace-observed-people-in-a-video-preview"></a>Beobachtete Personen in einem Video zurückverfolgen (Vorschau)
 
 Video Indexer erkennt beobachtete Personen in Videos und liefert Informationen wie die Position der Person im Video-Frame und den genauen Zeitstempel (Start, Ende), wann eine Person erscheint. Die API gibt die Begrenzungsfeldkoordinaten (in Pixel) für jede erkannte Personeninstanz zurück, einschließlich Erkennungssicherheit.  
  
@@ -25,7 +25,6 @@ Einige Szenarien, in denen die Funktion nützlich sein kann:
 Wenn ein Video beispielsweise eine Person enthält, listet der Erkennungsvorgang das Erscheinen dieser Person zusammen mit ihren Koordinaten in den Videoframes auf. Sie können diese Funktion verwenden, um den Weg der Person in einem Video zu bestimmen. Sie können außerdem ermitteln, ob mehrere Instanzen derselben Person einem Video enthalten sind.
 
 Die neu hinzugefügte Funktion **Verfolgung von beobachteten Personen** ist verfügbar, wenn Sie Ihre Datei (unter **Video + Audio Indizierung**) mit der Voreinstellung **Erweiterte Option** -> **Erweitertes Video** oder **Erweitertes Video + Audio** indizieren. Die Standardindizierung schließt dieses neue erweiterte Modell nicht ein. 
-
 
 :::image type="content" source="./media/observed-people-tracing/youtube-trailer.png" alt-text="Screenshot der Verfolgung für beobachteten Personen":::  
  

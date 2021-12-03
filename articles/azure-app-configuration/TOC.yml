@@ -17,7 +17,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: .NET Framework
+        - name: ".NET\_Framework"
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
@@ -171,7 +171,7 @@
         - name: .NET Framework-Generator
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
         - name: Java Spring-Anbieter
-          href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/appconfiguration'
+          href: 'https://go.microsoft.com/fwlink/?linkid=2180917'
         - name: Azure SDK für .NET
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Azure SDK für Java
@@ -195,7 +195,7 @@
         - name: PowerShell
           href: /powershell/module/az.appconfiguration/
         - name: Terraform
-          href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_configuration'
     - name: Datenebene
       items:
         - name: REST-API

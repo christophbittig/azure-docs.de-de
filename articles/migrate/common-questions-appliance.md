@@ -5,13 +5,13 @@ author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: 11360af784f456559955152772ba099ad4d48d73
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 11/01/2021
+ms.openlocfilehash: 446a59d6234219425bb24e62ecfc4796cd7fec6d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123423870"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429582"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate-Appliance: Häufig gestellte Fragen
 
@@ -108,6 +108,12 @@ Nein. Zwischen einer [Azure Migrate-Appliance](migrate-appliance.md) und vCenter
 ## <a name="can-a-project-have-multiple-appliances"></a>Kann ein Projekt über mehrere Appliances verfügen?
 
 Bei einem Projekt können mehrere Appliances registriert sein. Eine Appliance kann jedoch nur mit einem Projekt registriert werden.
+
+## <a name="how-do-i-find-the-azure-migrate-appliances-registered-to-the-project"></a>Wie sind die für das Projekt registrierten Azure Migrate Anwendungen zu finden?
+1. Navigieren Sie im Azure-Portal zur [Azure Migrate Startseite](https://portal.azure.com/?feature.customportal=false&feature.showassettypes=Microsoft_Azure_Migrate_AzureMigrationHub&feature.smsMigrationTool=true&feature.cloudamizeAssessmentTool=true&feature.sasAssessmentTool=true&feature.firstPartyDiscoveredMachines=true#blade/Microsoft_Azure_Migrate/AmhResourceMenuBlade/getStarted) und wählen Sie im Menü links **Server, Datenbanken und Web-Apps** aus.
+1. Wählen Sie in der oberen rechten Ecke **Ändern** aus, um Ihr Projekt auszuwählen.
+1. Wählen Sie im Projekt Azure Migrate die Option **Übersicht** aus „Azure Migrate: Ermittlung & Bewertung“ aus.
+1. Wählen Sie unter **Übersicht** im linken Menü **Anwendungen (Appliances)** aus, um die für das Projekt registrierten Anwendungen und den Konnektivitätsstatus der Agents auf der Anwendung anzuzeigen.
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Kann die Azure Migrate-Appliance/Replikations-Appliance eine Verbindung mit demselben vCenter herstellen?
 

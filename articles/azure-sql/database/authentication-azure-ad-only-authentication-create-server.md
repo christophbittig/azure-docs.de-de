@@ -8,20 +8,18 @@ ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/04/2021
-ms.openlocfilehash: 959175611f42c8c75da465044c7962c585d3728f
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.date: 11/02/2021
+ms.openlocfilehash: 845ecacf97887ef3488d1fd80b40f9424234e257
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458667"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290484"
 ---
 # <a name="create-server-with-azure-ad-only-authentication-enabled-in-azure-sql"></a>Erstellen eines Servers mit aktivierter reiner Azure AD-Authentifizierung in Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-> [!NOTE]
-> Die in diesem Artikel behandelte **reine Azure AD-Authentifizierung** befindet sich in der **Public Preview-Phase**. Ausführliche Informationen zu diesem Feature finden Sie unter [Reine Azure AD-Authentifizierung mit Azure SQL](authentication-azure-ad-only-authentication.md). Die reine Azure AD-Authentifizierung ist für Azure Synapse Analytics derzeit nicht verfügbar.
 
 In dieser Schrittanleitung sind die Schritte zum Erstellen eines [logischen Servers](logical-servers.md) für Azure SQL-Datenbank oder einer [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) mit aktivierter [reiner Azure AD-Authentifizierung](authentication-azure-ad-only-authentication.md) während der Bereitstellung beschrieben. Mit dem Feature für die reine Azure AD-Authentifizierung wird verhindert, dass Benutzer eine Verbindung mit dem Server oder der verwalteten Instanz per SQL-Authentifizierung herstellen. Die Verbindung kann also nur über die Azure AD-Authentifizierung hergestellt werden.
 
@@ -81,7 +79,7 @@ Sie sollten andere verfügbare APIs verwenden, um die vorhandenen Eigenschaften 
 
 1. Belassen Sie die Einstellungen für **Verbindungsrichtlinie** und **TLS-Mindestversion** auf ihren Standardwerten.
 
-1. Wählen Sie **Weiter: Sicherheit** unten auf der Seite aus. Konfigurieren Sie eine der Einstellungen für **Azure Defender für SQL**, **Ledger,** **Identität** und **Transparente Datenverschlüsselung** für Ihre Umgebung. Sie können diese Einstellungen auch überspringen.
+1. Wählen Sie **Weiter: Sicherheit** unten auf der Seite aus. Konfigurieren Sie eine der Einstellungen für **Microsoft Defender für SQL**, **Ledger,** **Identität** und **Transparente Datenverschlüsselung** für Ihre Umgebung. Sie können diese Einstellungen auch überspringen.
 
    > [!NOTE]
    > Der Gebrauch einer benutzerseitig zugewiesenen verwalteten Identität (UMI) wird bei der reinen Azure Active Directory-Authentifizierung nicht unterstützt. Legen Sie die Serveridentität im Abschnitt **Identität** nicht als UMI fest.
@@ -298,7 +296,27 @@ Sie können auch die folgende Vorlage verwenden. Verwenden Sie eine [benutzerdef
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Das Verwalten oder Bereitstellen einer verwalteten Instanz mit reiner Azure Active Directory-Authentifizierung mit dem Azure-Portal wird derzeit nicht unterstützt. Sie können eine verwaltete Instanz mit reiner Azure Active Directory-Authentifizierung mit der Azure CLI, PowerShell, Rest-API oder mit einer ARM-Vorlage bereitstellen.
+1. Navigieren Sie in dem Azure-Portal zur Optionsseite [SQL Bereitstellung auswählen](https://portal.azure.com/#create/Microsoft.AzureSQL).
+
+1. Wenn Sie nicht schon im Azure-Portal angemeldet sind, melden Sie sich auf Aufforderung an.
+
+1. Lassen Sie den **Ressourcentyp** unter **Verwaltete SQL-Instanzen** auf **Einfache Instanz** festgelegt, und wählen Sie **Erstellen** aus.
+
+1. Geben Sie die für **Projektdetails** und **Details der verwalteten Instanz** erforderlichen Informationen auf der Registerkarte **Grundlagen** an. Hierbei handelt es sich um die mindestens erforderlichen Informationen, die zum Bereitstellen einer verwalteten SQL-Instanz benötigt werden.
+
+   :::image type="content" source="media/authentication-azure-ad-only-authentication/azure-ad-only-managed-instance-create-basic.png" alt-text="Screenshot: Die Registerkarte „Grundlagen“ zum Erstellen einer verwalteten Instanz im Azure-Portal":::
+
+   Weitere Informationen zu den Konfigurationsoptionen finden Sie unter [Schnellstart: Erstellen einer Azure SQL Managed Instance-Instanz](../managed-instance/instance-create-quickstart.md).
+
+1. Wählen Sie unter **Authentifizierung** **Use only Azure Active Directory (Azure AD) authentication** (Nur Azure Active Directory (Azure AD) zur Authentifizierung verwenden) als **Authentifizierungsmethode** aus.
+
+1. Wählen Sie **Administrator festlegen** aus. Dadurch wird ein Menü zum Auswählen eines Azure AD-Prinzipals als Azure AD-Administrator für Ihre verwaltete Instanz angezeigt. Wenn Sie fertig sind, verwenden Sie die Schaltfläche **Auswählen**, um Ihren Administrator festzulegen.
+
+   :::image type="content" source="media/authentication-azure-ad-only-authentication/azure-ad-only-managed-instance-create-basic-choose-authentication.png" alt-text="Screenshot: Registerkarte „Grundlagen“ zum Erstellen einer verwalteten Instanz und dem Auswählen der Authentifizierung nur über Azure AD im Azure-Portal":::
+
+1. Sie können den Rest der Einstellungen unverändert lassen. Weitere Informationen zu den Registerkarten **Netzwerk**, **Sicherheit** oder anderen Registerkarten und Einstellungen finden Sie im Artikel [Schnellstart: Erstellen einer Azure SQL Managed Instance-Instanz](../managed-instance/instance-create-quickstart.md).
+
+1. Wenn Sie mit dem Konfigurieren Ihrer Einstellungen fertig sind, wählen Sie **Überprüfen + erstellen** aus, um fortzufahren. Wählen Sie **Erstellen** aus, um die Bereitstellung der verwalteten Instanz zu starten.
 
 # <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
@@ -710,7 +728,6 @@ Nachdem die Bereitstellung für Ihre verwaltete Instanz abgeschlossen ist, bemer
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Die Erstellung einer verwalteten Instanz mit dem Azure-Portal mit reiner Azure Active Directory-Authentifizierung wird derzeit nicht unterstützt.
 - Damit das Kennwort des Serveradministrators zurückgesetzt werden kann, muss die reine Azure AD-Authentifizierung deaktiviert werden.
 - Wenn die reine Azure AD-Authentifizierung deaktiviert ist, müssen Sie bei Verwendung aller APIs einen Server mit einem Serveradministrator und einem Kennwort erstellen.
 

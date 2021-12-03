@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0b7dfd314f745565a4beca8432d1e452c95df403
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 6f798cb4bc1511c0656c697f04e2d1763ca54321
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130001236"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308596"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Dedizierte Azure Monitor-Protokollcluster
 
@@ -24,7 +24,7 @@ Folgende Funktionen erfordern dedizierte Cluster:
 - **[Kundenseitig verwaltete Schlüssel](../logs/customer-managed-keys.md)** : Die Clusterdaten werden mithilfe von Schlüsseln verschlüsselt, die vom Kunden bereitgestellt und gesteuert werden.
 - **[Lockbox](../logs/customer-managed-keys.md#customer-lockbox-preview)** : Steuerung von Zugriffsanforderungen von Mitarbeitern des Microsoft-Supports für Ihre Daten.
 - **[Doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** : schützt vor dem Szenario, dass einer der Verschlüsselungsalgorithmen oder Schlüssel kompromittiert wurde. In diesem Fall werden die Daten weiterhin durch die zusätzliche Verschlüsselungsebene geschützt.
-- **[Verfügbarkeitszonen](./availability-zones.md)** : Schützen Sie Ihre Daten vor Rechenzentrumsausfällen mit Verfügbarkeitszonen auf dedizierten Clustern. Verfügbarkeitszonen sind Rechenzentren an separaten physischen Standorten und mit unabhängiger Stromversorgung, Kühlung und Netzwerkbetrieb ausgestattet. Diese unabhängige Infrastruktur und physische Trennung von Zonen macht einen Incident wesentlich weniger wahrscheinlich, da der Arbeitsbereich auf die Ressourcen aus beliebigen Zonen zurückgreifen kann.
+- **[Verfügbarkeitszonen](../../availability-zones/az-overview.md)** : Schützen Sie Ihre Daten vor Rechenzentrumsausfällen, indem Zonen physisch durch Standorte getrennt und mit unabhängiger Stromversorgung, Kühlung und Vernetzung ausgestattet sind. Durch die physische Aufteilung in Zonen und die unabhängige Infrastruktur ist ein Incident wesentlich weniger wahrscheinlich, da der Arbeitsbereich auf die Ressourcen aus beliebigen Zonen zurückgreifen kann. Dedizierte Cluster werden mit Verfügbarkeitszonen erstellt, die für Datenresilienz in den Regionen aktiviert sind, in denen [Azure Verfügbarkeitszonen aufweist](../../availability-zones/az-overview.md#azure-regions-with-availability-zones). Die Konfiguration von Verfügbarkeitszonen im Cluster kann nach dem Erstellen nicht mehr geändert werden, und die Einstellungen können in der Eigenschaft `isAvailabilityZonesEnabled` des Clusters überprüft werden. [Azure Monitor-Verfügbarkeitszonen](./availability-zones.md) decken einen größeren Teil des Diensts ab und erweitern die Azure Monitor-Resilienz automatisch, wenn sie in Ihrer Region verfügbar sind.
 - **[Mehrere Arbeitsbereiche](../logs/cross-workspace-query.md)** : Wenn ein Kunde mehr als einen Arbeitsbereich für die Produktion verwendet, ist es möglicherweise sinnvoll, einen dedizierten Cluster zu verwenden. Arbeitsbereichsübergreifende Abfragen werden schneller ausgeführt, wenn sich alle Arbeitsbereiche im selben Cluster befinden. Möglicherweise ist die Verwendung eines dedizierten Clusters auch kostengünstiger, da die zugewiesenen Mindestabnahmenstufen die gesamte Clustererfassung berücksichtigen und auf alle Arbeitsbereiche angewendet werden, auch wenn einige davon klein sind und nicht für den Mindestabnahmerabatt berechtigt sind.
 
 
@@ -47,26 +47,11 @@ Für die Abrechnung des Verbrauchs in einem Cluster stehen zwei Modi zur Verfüg
 
 1. **Cluster (Standardeinstellung)** : Erfasste Daten werden auf Clusterebene abgerechnet. Die erfassten Datenmengen aus den einzelnen Arbeitsbereichen, die einem Cluster zugeordnet sind, werden aggregiert, um die tägliche Abrechnung für den Cluster zu berechnen. 
 
-2. **Arbeitsbereiche**: Die Kosten der Mindestabnahmestufe für Ihren Cluster werden proportional zu den Arbeitsbereichen im Cluster gemäß dem Datenerfassungsvolumen jedes Arbeitsbereichs (nach Einbeziehen der Knotenzuordnungen von [Azure Security Center](../../security-center/index.yml) für jeden Arbeitsbereich) zugeordnet. Die vollständigen Details dieses Preismodells werden [hier](./manage-cost-storage.md#log-analytics-dedicated-clusters) erläutert. 
+2. **Arbeitsbereiche**: Die Commitment Tier-Kosten für Ihren Cluster werden anteilig auf die Arbeitsbereiche im Cluster umgelegt, und zwar nach dem Datenerfassungsvolumen jedes Arbeitsbereichs (nach Berücksichtigung der Zuweisungen pro Knoten von [Microsoft Defender für Cloud](../../security-center/index.yml) für jeden Arbeitsbereich). Die vollständigen Details dieses Preismodells werden [hier](./manage-cost-storage.md#log-analytics-dedicated-clusters) erläutert. 
 
-Wenn Ihr Arbeitsbereich den alten Tarif auf Knotenbasis verwendet, wird er, wenn er mit einem Cluster verknüpft ist, nicht mehr pro Knoten abgerechnet, sondern mit den erfassten Daten der Mindestabnahmestufe des Clusters verrechnet. Datenzuweisungen pro Knoten von Azure Security Center werden weiterhin angewendet.
+Wenn Ihr Arbeitsbereich den alten Tarif auf Knotenbasis verwendet, wird er, wenn er mit einem Cluster verknüpft ist, nicht mehr pro Knoten abgerechnet, sondern mit den erfassten Daten der Mindestabnahmestufe des Clusters verrechnet. Datenzuordnungen pro Knoten von Microsoft Defender für Cloud werden weiterhin angewendet.
 
 Vollständige Informationen zur Abrechnung für dedizierte Log Analytics-Cluster finden Sie [hier](./manage-cost-storage.md#log-analytics-dedicated-clusters).
-
-## <a name="asynchronous-operations-and-status-check"></a>Asynchrone Vorgänge und Statusüberprüfung
-
-Einige Konfigurationsschritte werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. Der Status in der Antwort enthält eine der folgenden Werte: *Wird ausgeführt*, *Wird aktualisiert*, *Wird gelöscht*, *Erfolgreich* oder *Fehler* einschließlich des Fehlercodes. Wenn REST verwendet wird, gibt die Antwort anfänglich den HTTP-Statuscode 202 (Akzeptiert) und einen Header mit der Eigenschaft „Azure-AsyncOperation“ zurück:
-
-```JSON
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2021-06-01"
-```
-
-Sie können den Status des asynchronen Vorgangs prüfen, indem Sie eine GET-Anforderung für den Headerwert Azure-AsyncOperation senden:
-
-```rest
-GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2021-06-01
-Authorization: Bearer <token>
-```
 
 ## <a name="create-a-dedicated-cluster"></a>Erstellen eines dedizierten Clusters
 
@@ -91,12 +76,13 @@ Pro Abonnement und Region können bis zu zwei aktive Cluster vorhanden sein. Wen
 
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)**
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster create --no-wait --resource-group "resource-group-name" --name "cluster-name" --location "region-name" --sku-capacity "daily-ingestion-gigabyte"
 
-# Wait for job completion
-az resource wait --created --ids /subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.operationalinsights/clusters/cluster-name --include-response-body true
+# Wait for job completion when `--no-wait` was used
+$clusterResourceId = az monitor log-analytics cluster list --resource-group "resource-group-name" --query "[?contains(name, "cluster-name")].[id]" --output tsv
+az resource wait --created --ids $clusterResourceId --include-response-body true
 ```
 
 **PowerShell**
@@ -106,7 +92,7 @@ Select-AzSubscription "cluster-subscription-id"
 
 New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" -AsJob
 
-# Check when the job is done
+# Check when the job is done when `-AsJob` was used
 Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 ```
 
@@ -145,7 +131,7 @@ Es dauert eine Weile, bis die Bereitstellung des Log Analytics-Clusters abgeschl
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)**
 
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
 ```
@@ -230,15 +216,16 @@ Verwenden Sie die folgenden Befehle, um einen Arbeitsbereich mit einem Cluster z
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)**
 ```azurecli
 # Find cluster resource ID
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 $clusterResourceId = az monitor log-analytics cluster list --resource-group "resource-group-name" --query "[?contains(name, "cluster-name")].[id]" --output tsv
 
 # Link workspace
-Set-AzContext -SubscriptionId "workspace-subscription-id"
+az account set --subscription "workspace-subscription-id"
 az monitor log-analytics workspace linked-service create --no-wait --name cluster --resource-group "resource-group-name" --workspace-name "workspace-name" --write-access-resource-id $clusterResourceId
 
-# Wait for job completion
-az resource wait --created --ids /subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.operationalinsights/clusters/cluster-name --include-response-body true
+# Wait for job completion when `--no-wait` was used
+$workspaceResourceId = az monitor log-analytics workspace list --resource-group "resource-group-name" --query "[?contains(name, "workspace-name")].[id]" --output tsv
+az resource wait --deleted --ids $workspaceResourceId --include-response-body true
 ```
 
 **PowerShell**
@@ -284,14 +271,11 @@ Content-type: application/json
 
 ### <a name="check-workspace-link-status"></a>Überprüfen des Verknüpfungsstatus des Arbeitsbereichs
   
-Wenn ein Cluster mit kundenverwalteten Schlüsseln konfiguriert ist, werden Daten, die nach Abschluss des Verknüpfungsvorgangs in den Arbeitsbereichen erfasst wurden, verschlüsselt mit Ihrem verwalteten Schlüssel gespeichert. Der Vorgang zum Verknüpfen des Arbeitsbereichs kann bis zu 90 Minuten dauern und Sie können den Status auf zwei Arten überprüfen:
-
-- Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die Überprüfung des Status asynchroner Vorgänge.
-- Führen Sie den Get-Vorgang für den Arbeitsbereich aus, und beobachten Sie, ob die *clusterResourceId*-Eigenschaft unter *features* in der Antwort vorhanden ist.
+Wenn ein Cluster mit kundenverwalteten Schlüsseln konfiguriert ist, werden Daten, die nach Abschluss des Verknüpfungsvorgangs in den Arbeitsbereichen erfasst wurden, verschlüsselt mit Ihrem verwalteten Schlüssel gespeichert. Der Vorgang zum Verknüpfen des Arbeitsbereichs kann bis zu 90 Minuten dauern. Sie können den Status überprüfen, indem Sie eine Get-Anforderung an den Arbeitsbereich senden und beobachten, ob die Eigenschaft *clusterResourceId* in der Antwort unter *Features* vorhanden ist.
 
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)**
 ```azurecli
-Set-AzContext -SubscriptionId "workspace-subscription-id"
+az account set --subscription "workspace-subscription-id"
 
 az monitor log-analytics workspace show --resource-group "resource-group-name" --workspace-name "workspace-name"
 ```
@@ -370,7 +354,7 @@ Nachdem Sie Ihre Clusterressource erstellt und vollständig bereitgestellt haben
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)**
 
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster list --resource-group "resource-group-name"
 ```
@@ -438,7 +422,7 @@ Authorization: Bearer <token>
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)**
 
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster list
 ```
@@ -473,7 +457,7 @@ Wenn sich das Datenvolumen Ihrer verknüpften Arbeitsbereiche im Laufe der Zeit 
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)**
 
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster update --resource-group "resource-group-name" --name "cluster-name"  --sku-capacity 500
 ```
@@ -540,7 +524,7 @@ Verwenden Sie den folgenden Befehl zum Aufheben der Verknüpfung eines Arbeitsbe
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)**
 
 ```azurecli
-Set-AzContext -SubscriptionId "workspace-subscription-id"
+az account set --subscription "workspace-subscription-id"
 
 az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --workspace-name "workspace-name" --name cluster
 ```
@@ -559,22 +543,19 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-nam
 
 ## <a name="delete-cluster"></a>Löschen von Clustern
 
-Sie müssen die Verknüpfung aller Arbeitsbereiche mit einen dedizierten Cluster aufheben, bevor Sie ihn löschen. Es sind *Schreibberechtigungen* für die Clusterressource notwendig, um diesen Vorgang auszuführen. 
+Es wird empfohlen, die Verknüpfung aller Arbeitsbereiche mit einem dedizierten Cluster aufzuheben, bevor Sie ihn löschen. Sie benötigen *Schreibberechtigungen* für die Clusterressource. Wenn Sie einen Cluster löschen, verlieren Sie den Zugriff auf alle Daten, die aus zurzeit und früher verknüpften Arbeitsbereichen im Cluster erfasst wurden. Dieser Vorgang ist nicht umkehrbar. Wenn Sie Ihren Cluster löschen, solange Arbeitsbereiche verknüpft sind, werden diese automatisch getrennt, und es werden stattdessen neue Daten im Log Analytics-Speicher erfasst.
 
-Nachdem die Clusterressource gelöscht wurde, wechselt der physische Cluster in einen Bereinigungs- und Löschvorgang. Beim Löschen eines Clusters werden alle Daten gelöscht, die auf dem Cluster gespeichert waren. Die Daten stammen unter Umständen aus Arbeitsbereichen, die in der Vergangenheit mit dem Cluster verknüpft wurden.
-
-Eine Clusterressource, die in den letzten 14 Tagen gelöscht wurde, befindet sich im vorläufig gelöschten Zustand und kann zusammen mit den Daten wiederhergestellt werden. Da bei der Löschung der Clusterressource die Zuordnung aller Arbeitsbereiche zur Clusterressource aufgehoben wurde, müssen Sie die Arbeitsbereiche nach der Wiederherstellung neu zuordnen. Der Wiederherstellungsvorgang kann vom Benutzer nicht durchgeführt werden. Wenden Sie sich daher bei Wiederherstellungsanfragen an Ihren Microsoft-Kanal oder den Support.
-
-Innerhalb von 14 Tagen nach dem Löschvorgang ist der Name der Clusterressource reserviert und kann nicht von anderen Ressourcen verwendet werden.
+Eine Clusterressource, die in den letzten 14 Tagen gelöscht wurde, verbleibt im vorläufig gelöschten Zustand, und ihr Name bleibt reserviert. Nach Ablauf des Zeitraums für vorläufiges Löschen wird der Cluster endgültig gelöscht, und sein Name kann wieder verwendet werden.
 
 > [!WARNING] 
-> Es gibt eine Begrenzung von drei Clustern pro Abonnement. Dazu zählen sowohl aktive als auch vorläufig gelöschte Cluster. Kunden sollten keine wiederkehrenden Prozeduren erstellen, mit denen Cluster erstellt und gelöscht werden. Dies hat erhebliche Auswirkungen auf Log Analytics-Back-End-Systeme.
+> - Die Wiederherstellung vorläufig gelöschter Cluster wird nicht unterstützt, und der Cluster kann nach dem Löschen nicht wiederhergestellt werden.
+> - Es gibt eine Begrenzung von vier Clustern pro Abonnement. Dazu zählen sowohl aktive als auch vorläufig gelöschte Cluster. Kunden sollten keine wiederkehrenden Prozeduren erstellen, mit denen Cluster erstellt und gelöscht werden. Dies hat erhebliche Auswirkungen auf Log Analytics-Back-End-Systeme.
 
 Mit den folgenden Befehlen können Sie ein Cluster löschen:
 
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)**
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster delete --resource-group "resource-group-name" --name $clusterName
 ```
@@ -630,9 +611,7 @@ Authorization: Bearer <token>
 
 - Wenn Sie den Cluster aktualisieren, während der Cluster bereitgestellt oder bereits aktualisiert wird, tritt bei der Aktualisierung ein Fehler auf.
 
-- Einige Vorgänge sind umfassend und können einige Zeit in Anspruch nehmen. Dies sind: *Cluster erstellen*, *Clusterschlüssel aktualisieren* und *Cluster löschen*. Sie können den Vorgangsstatus auf zwei Arten überprüfen:
-  - Kopieren Sie bei Verwendung von REST den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
-  - Senden Sie eine GET-Anforderung an den Cluster oder Arbeitsbereich, und beobachten Sie die Antwort. Beispielsweise weist der nicht verknüpfte Arbeitsbereich unter *features* nicht die *clusterResourceId* auf.
+- Einige Vorgänge sind umfassend und können einige Zeit in Anspruch nehmen. Dies sind: *Cluster erstellen*, *Clusterschlüssel aktualisieren* und *Cluster löschen*. Sie können den Vorgangsstatus überprüfen, indem Sie eine GET-Anforderung an den Cluster oder Arbeitsbereich senden und die Antwort beobachten. Beispielsweise weist der nicht verknüpfte Arbeitsbereich unter *features* nicht die *clusterResourceId* auf.
 
 - Die Arbeitsbereichverknüpfung mit dem Cluster schlägt fehl, wenn er mit einem anderen Cluster verknüpft ist.
 

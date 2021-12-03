@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: c0502b880d23e9f0a63564f11473f48e1c01b096
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: f92d776239bccb457f6d9fe9b073ea64a56178a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236553"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286429"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 
@@ -219,7 +219,7 @@ Im Diagramm werden die folgenden Informationen angezeigt:
 Anhand des Diagramms kann der Kunde eigenständig eine Fehlerbehebung für die Bereitstellung vornehmen, ohne zu erraten oder beim Support zu erfragen, ob andere Probleme auftreten. Der Dienst war nicht verfügbar, weil Integritätstests wegen einer Fehlkonfiguration oder einer fehlerhaften Anwendung fehlgeschlagen sind.
 </details>
 
-## <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurieren von Warnungen für mehrdimensionale Metriken ###
+## <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurieren von Warnungen für mehrdimensionale Metriken
 
 Azure Load Balancer Standard unterstützt leicht konfigurierbare Warnungen für mehrdimensionale Metriken. Konfigurieren Sie benutzerdefinierte Schwellenwerte für bestimmte Metriken, um Warnungen mit unterschiedlichen Schweregraden auszulösen und so eine berührungslose Ressourcenüberwachung zu ermöglichen.
 

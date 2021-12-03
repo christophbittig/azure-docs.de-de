@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 85110db5b3f9e11105fa27a9ed8767d3d7e9e2bd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3f21a2d4eb0742bc5e91298816f9648e325b1955
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592240"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335326"
 ---
 # <a name="start-virtual-machine-on-connect"></a>VM bei Verbindung starten
 
@@ -38,20 +38,25 @@ Die folgenden Remotedesktopclients unterstützen das Feature „VM bei Verbindun
 
 Bevor Sie das Feature „VM bei Verbindung starten“ konfigurieren können, müssen Sie Ihrem virtuellen Computer eine benutzerdefinierte RBAC-Rolle (Role-Based Access Control, rollenbasierte Zugriffssteuerung) zuweisen. Diese Rolle ermöglicht Azure Virtual Desktop die Verwaltung der VMs in Ihrem Abonnement. Sie können diese Rolle auch verwenden, um VMs zu aktivieren, ihren Status zu überprüfen und Diagnoseinformationen zu melden. Wenn Sie mehr über die Aufgaben der einzelnen Rollen erfahren möchten, lesen Sie den Artikel [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).
 
+>[!NOTE]
+>Wenn sich Ihre VMs und Ihr Hostpool in unterschiedlichen Abonnements befinden, muss die RBAC-Rolle dem Abonnement zugewiesen werden, in dem sich die VMs befinden.
+
 ### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
 So weisen Sie eine benutzerdefinierte Rolle für „VM bei Verbindung starten“ im Azure-Portal zu:
 
 1. Navigieren Sie im Azure-Portal zu **Abonnements**.
 
-2. Wechseln Sie zu **Zugriffssteuerung (IAM)** , und wählen Sie **Benutzerdefinierte Rolle hinzufügen** aus.
+2. Wählen Sie das Abonnement aus, in dem sich Ihre VMs befinden.
+ 
+3. Wechseln Sie zu **Zugriffssteuerung (IAM)** , und wählen Sie **Benutzerdefinierte Rolle hinzufügen** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Ein Screenshot eines Dropdownmenüs der Schaltfläche „Hinzufügen“ in „Zugriffssteuerung (IAM)“. „Benutzerdefinierte Rolle hinzufügen“ ist rot hervorgehoben.](media/add-custom-role.png)
 
-3. Benennen Sie als Nächstes die benutzerdefinierte Rolle, und fügen Sie eine Beschreibung hinzu. Wir empfehlen Ihnen die Benennung „VM bei Verbindung starten“.
+4. Benennen Sie als Nächstes die benutzerdefinierte Rolle, und fügen Sie eine Beschreibung hinzu. Wir empfehlen Ihnen die Benennung „VM bei Verbindung starten“.
 
-4. Fügen Sie auf der Registerkarte **Berechtigungen** dem Abonnement, dem Sie die Rolle zuweisen, einen der beiden folgenden Berechtigungssätze hinzu: 
+5. Fügen Sie auf der Registerkarte **Berechtigungen** dem Abonnement, dem Sie die Rolle zuweisen, einen der beiden folgenden Berechtigungssätze hinzu: 
  
    - Microsoft.Compute/virtualMachines/start/action
    - Microsoft.Compute/virtualMachines/read 
@@ -62,7 +67,7 @@ So weisen Sie eine benutzerdefinierte Rolle für „VM bei Verbindung starten“
    - Microsoft.Compute/virtualMachines/start/action
    - Microsoft.Compute/virtualMachines/*/read 
 
-5. Klicken Sie auf **OK**, wenn Sie fertig sind.
+6. Klicken Sie auf **OK**, wenn Sie fertig sind.
 
 Danach müssen Sie die Rolle zuweisen, um Azure Virtual Desktop Zugriff zu gewähren.
 
@@ -158,7 +163,7 @@ So konfigurieren Sie „VM bei Verbindung starten“ mit PowerShell:
     Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -StartVMOnConnect:$false
     ```
 
-## <a name="user-experience"></a>Benutzererfahrung
+## <a name="user-experience"></a>Benutzerfreundlichkeit
 
 In normalen Sitzungen nimmt die Zeit zu, die ein Benutzer zum Herstellen der Verbindung mit einer VM benötigt, deren Zuordnung aufgehoben wurde, da das erneute Einschalten der VM ähnlich wie das Einschalten eines physischen Computers eine Weile dauert. Der Remotedesktopclient hat einen Indikator, der dem Benutzer mitteilt, dass der PC eingeschaltet wird, während er die Verbindung herstellt.
 

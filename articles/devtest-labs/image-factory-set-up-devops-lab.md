@@ -3,12 +3,12 @@ title: Ausführen einer Image Factory aus AzureDevOps
 description: Dieser Artikel behandelt alle erforderlichen Vorbereitungsschritte, um die Image Factory aus Azure DevOps (früher Visual Studio Team Services) auszuführen.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: bc12dc67160a68898191ab802cc9f6e9bd3f3f62
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 22598594f4da2f931b8bb591903bad6c23b7e9ba
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604858"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398989"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Ausführen einer Image Factory aus AzureDevOps
 Dieser Artikel behandelt alle erforderlichen Vorbereitungsschritte, um die Image Factory aus Azure DevOps (früher Visual Studio Team Services) auszuführen.
@@ -35,17 +35,17 @@ Azure DevOps ermöglicht Ihnen das Speichern des Quellcodes und das Ausführen d
 
 Wenn Sie ein vorhandenes DevOps-Konto oder Projekt besitzen, das Sie stattdessen verwenden möchten, überspringen Sie diesen Schritt.
 
-Erstellen Sie zunächst ein kostenloses Konto in Azure DevOps. Besuchen Sie https://www.visualstudio.com/, und wählen Sie **Kostenlos einsteigen** direkt unter **Azure DevOps** (früher VSTS) aus. Sie müssen einen eindeutigen Kontonamen auswählen und sicherstellen, dass Sie Code mithilfe von Git verwalten. Sobald dies erstellt wurde, speichern Sie die URL für Ihr Teamprojekt. Hier ist eine Beispiel-URL: `https://<accountname>.visualstudio.com/MyFirstProject`.
+Erstellen Sie zunächst ein kostenloses Konto in Azure DevOps. Besuchen Sie https://www.visualstudio.com/, und wählen Sie **Kostenlos einsteigen** direkt unter **Azure DevOps** (früher VSTS) aus. Sie müssen einen eindeutigen Kontonamen auswählen und sicherstellen, dass Sie Code mithilfe von Git verwalten. Nachdem Sie das Konto erstellt haben, speichern Sie die URL in Ihrem Teamprojekt. Hier ist eine Beispiel-URL: `https://<accountname>.visualstudio.com/MyFirstProject`.
 
 ## <a name="check-in-the-image-factory-to-git"></a>Einchecken der Image Factory bei Git
-Die PowerShell, die Vorlagen und die Konfiguration für die Image Factory befinden sich im [öffentlichen DevTest Labs-GitHub-Repository](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory). Die schnellste Möglichkeit zum Abrufen des Codes in Ihr neues Teamprojekt besteht darin, ein Repository zu importieren. Hierdurch wird das gesamte DevTest Labs-Repository eingelesen (wodurch Sie zusätzliche Dokumente und Beispiele erhalten).
+Die PowerShell, die Vorlagen und die Konfiguration für die Image Factory befinden sich im [öffentlichen DevTest Labs-GitHub-Repository](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory). Die schnellste Möglichkeit zum Abrufen des Codes in Ihr neues Teamprojekt besteht darin, ein Repository zu importieren. Beim Importieren wird das gesamte DevTest-Labs-Repository eingelesen (wodurch Sie zusätzliche Dokumente und Beispiele erhalten).
 
 1. Besuchen Sie das Azure DevOps-Projekt, das Sie im vorherigen Schritt erstellt haben (die URL sieht aus wie **https:\//\<accountname>.visualstudio.com/MyFirstProject**).
 2. Wählen Sie **Repository importieren** aus.
 3. Geben Sie die **Klon-URL** für das DevTest-Labs-Repository ein: `https://github.com/Azure/azure-devtestlab`.
 4. Wählen Sie **Importieren** aus.
 
-    ![Importieren des Git-Repositorys](./media/set-up-devops-lab/import-git-repo.png)
+    ![Screenshot von Import Git repo.](./media/set-up-devops-lab/import-git-repo.png)
 
 Wenn Sie sich entscheiden, nur genau das einzuchecken, was benötigt wird (die Image Factory-Dateien), führen Sie [diese](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs) Schritte aus, um das Git-Repository zu klonen und nur die im Verzeichnis **scripts/ImageFactory** befindlichen Dateien zu übertragen.
 
@@ -57,13 +57,13 @@ Zu diesem Zeitpunkt haben Sie die Quelldateien in einem Git-Repository in Azure 
 
 1. Wählen Sie für den Anfang **Build einrichten** auf der Startseite Ihres DevOps-Projekts aus:
 
-    ![Schaltfläche „Build einrichten“](./media/set-up-devops-lab/setup-build-button.png)
+    ![Screenshot: Schaltfläche "Build einrichten"](./media/set-up-devops-lab/setup-build-button.png)
 2. Geben Sie einen **Namen** für den Build an (z.B.: Build), und liefern Sie Images an DevTest Labs.
 3. Wählen Sie eine **leere** Builddefinition aus, und wählen **Anwenden** aus, um Ihren Build zu erstellen.
 4. In dieser Phase können Sie als Build-Agent **Gehostet** auswählen.
 5. **Speichern** Sie die Builddefinition.
 
-    ![Builddefinition](./media/set-up-devops-lab/build-definition.png)
+    ![Screenshot: Builddefinition](./media/set-up-devops-lab/build-definition.png)
 
 ## <a name="configure-the-build-variables"></a>Konfigurieren der Buildvariablen
 Um die Befehlszeilenparameter zu vereinfachen, kapseln Sie die Schlüsselwerte, die die Image Factory steuern, in einen Satz Buildvariablen. Wählen Sie die Registerkarte **Variablen** aus, wo eine Liste mehrerer Standardvariablen angezeigt wird. Dies ist die Liste der in Azure DevOps einzugebenden Variablen:
@@ -71,25 +71,25 @@ Um die Befehlszeilenparameter zu vereinfachen, kapseln Sie die Schlüsselwerte, 
 
 | Variablenname | Wert | Notizen |
 | ------------- | ----- | ----- |
-| ConfigurationLocation | /Scripts/ImageFactory/Configuration | Dies ist der vollständige Pfad im Repository zum Ordner **Configuration**. Wenn Sie oben das gesamte Repository importiert haben, ist der Wert auf der linken Seite zutreffend. Andernfalls aktualisieren Sie ihn so, dass er auf den Speicherort von „Configuration“ verweist. |
+| ConfigurationLocation | /Scripts/ImageFactory/Configuration | Dies ist der vollständige Pfad im Repository zum Ordner **Konfiguration**. Wenn Sie oben das gesamte Repository importiert haben, ist der Wert auf der linken Seite zutreffend. Andernfalls aktualisieren Sie ihn so, dass er auf den Speicherort von „Configuration“ verweist. |
 | DevTestLabName | MyImageFactory | Der Name des Labs in Azure DevTest Labs, das als Factory zur Erzeugung von Images verwendet wird. Wenn Sie keins haben, erstellen Sie eins. Stellen Sie sicher, dass sich das Lab im selben Abonnement befindet, auf das auch der Dienstendpunkt Zugriff hat. |
 | ImageRetention | 1 | Die Anzahl der Images, die für jeden Typen gespeichert werden soll. Legen Sie den Standardwert auf 1 fest. |
 | MachinePassword | ******* | Das integrierte Administratorkonto-Kennwort für die virtuellen Computer. Dies ist ein vorübergehendes Konto. Stellen Sie also sicher, dass es geschützt ist. Wählen Sie das kleinen Schlosssymbol auf der rechten Seite aus, um sicherzustellen, dass es sich um eine sichere Zeichenfolge handelt. |
-| MachineUserName | ImageFactoryUser | Der integrierte Administratorkonto-Benutzername für die virtuellen Computer. Dies ist ein vorübergehendes Konto. |
+| MachineUserName | ImageFactoryUser | Der integrierte Administratorkonto-Benutzername für die virtuellen Computer. Dieses Konto ist vorübergehend. |
 | StandardTimeoutMinutes | 30 | Der Timeout, der für normale Azure-Vorgänge abgewartet werden soll. |
 | SubscriptionId |  0000000000-0000-0000-0000-0000000000000 | Die ID des Abonnements, in dem sich das Lab befindet, auf das auch der Dienstendpunkt Zugriff hat. |
 | VMSize | Standard_A3 | Die Größe des virtuellen Computers, der für den Schritt **Erstellen** verwendet werden soll. Die erstellten VMs sind kurzlebig. Die Größe muss derjenigen entsprechen, die [für das Lab aktiviert](devtest-lab-set-lab-policy.md) ist. Bestätigen Sie, dass ein ausreichendes [Abonnement-Kontingent Speicherkerne](../azure-resource-manager/management/azure-subscription-service-limits.md) vorhanden ist.
 
-![Buildvariablen](./media/set-up-devops-lab/configure-build-variables.png)
+![Screenshot: Buildvariablen](./media/set-up-devops-lab/configure-build-variables.png)
 
 ## <a name="connect-to-azure"></a>Herstellen einer Verbindung mit Azure
-Der nächste Schritt besteht darin, einen Dienstprinzipal einzurichten. Dies ist eine Identität in Azure Active Directory, die es dem DevOps-Build-Agent ermöglicht, in Azure im Auftrag des Benutzers zu agieren. Um ihn einzurichten, beginnen Sie damit, dass Sie Ihren ersten Azure PowerShell-Buildschritt hinzufügen.
+Der nächste Schritt besteht darin, einen Dienstprinzipal einzurichten. Ein Dienstprinzipal ist eine Identität in Azure Active Directory, die es dem DevOps-Build-Agent ermöglicht, in Azure im Auftrag des Benutzers zu agieren. Um ihn einzurichten, beginnen Sie damit, dass Sie Ihren ersten Azure PowerShell-Buildschritt hinzufügen.
 
 1. Wählen Sie **Aufgabe hinzufügen** aus.
 2. Suchen Sie nach **Azure PowerShell**.
-3. Sobald Sie sie gefunden haben, wählen Sie **Hinzufügen** aus, um die Aufgabe dem Build hinzuzufügen. Wenn Sie dies tun, sehen Sie, wie die Aufgabe mit dem Hinzufügen auf der linken Seite angezeigt wird.
+3. Sobald Sie sie gefunden haben, wählen Sie **Hinzufügen** aus, um die Aufgabe dem Build hinzuzufügen. Wenn Sie **Hinzufügen** auswählen, sehen Sie, wie die Aufgabe mit dem Hinzufügen auf der linken Seite angezeigt wird.
 
-![Einrichten eines PowerShell-Schritts](./media/set-up-devops-lab/set-up-powershell-step.png)
+![Screenshot von „PowerShell-Schritt einrichten“.](./media/set-up-devops-lab/set-up-powershell-step.png)
 
 Die schnellste Möglichkeit zum Einrichten eines Dienstprinzipals besteht darin, dies von Azure DevOps erledigen zu lassen.
 
@@ -97,7 +97,7 @@ Die schnellste Möglichkeit zum Einrichten eines Dienstprinzipals besteht darin,
 2. Wählen Sie als **Azure-Verbindungstyp** die Option **Azure Resource Manager** aus.
 3. Wählen Sie den Link **Verwalten** aus, um den Dienstprinzipal einzurichten.
 
-Weitere Informationen finden Sie in diesem [Blogbeitrag](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/). Wenn Sie den Link **Verwalten** auswählen, gelangen Sie zur richtigen Stelle in DevOps (zweiter Screenshot im Blogbeitrag), um die Verbindung mit Azure einzurichten. Achten Sie darauf, dass Sie **Azure Resource Manager-Dienstendpunkt** auswählen, wenn Sie dies einrichten.
+Weitere Informationen finden Sie in diesem [Blogbeitrag](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/). Wenn Sie den Link **Verwalten** auswählen, gelangen Sie zur richtigen Stelle in DevOps (zweiter Screenshot im Blogbeitrag), um die Verbindung mit Azure einzurichten. Achten Sie darauf, dass Sie **Azure-Ressourcen-Manager-Dienstendpunkt** auswählen, wenn Sie die Verbindung einrichten.
 
 ## <a name="complete-the-build-task"></a>Abschließen der Buildaufgabe
 Wenn Sie die Buildaufgabe auswählen, werden alle Details im rechten Bereich angezeigt, die eingetragen werden sollten.
@@ -109,7 +109,7 @@ Wenn Sie die Buildaufgabe auswählen, werden alle Details im rechten Bereich ang
 5. Navigieren Sie zum Skript **MakeGoldenImageVMs.ps1**.
 6. Die Skriptparameter sollten wie folgt aussehen: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 
-    ![Abschließen der Builddefinition](./media/set-up-devops-lab/complete-build-definition.png)
+    ![Screenshot: Abschließen der Builddefinition](./media/set-up-devops-lab/complete-build-definition.png)
 
 
 ## <a name="queue-the-build"></a>Einstellen des Builds in die Warteschlange

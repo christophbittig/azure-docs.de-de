@@ -1,19 +1,19 @@
 ---
 title: Erstellen einer Azure IoT Hub-Instanz mithilfe eines PowerShell-Cmdlets | Microsoft Docs
 description: Hier erfahren Sie, wie Sie mit den PowerShell-Cmdlets eine Ressourcengruppe und dann in der Ressourcengruppe eine IoT Hub-Instanz erstellen. Außerdem erfahren Sie, wie die Hub-Instanz entfernt wird.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: robinsh
+ms.author: lizross
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: accfb6d4a5191d3c9729ffe075924d44891c0cb3
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 1730887d38edf2d64a3456a188a50c3becaabbad
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702340"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551803"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>Erstellen einer IoT Hub-Instanz mithilfe des Cmdlets New-AzIotHub
 

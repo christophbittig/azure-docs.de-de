@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ec3ba6a71ea1430dc060d431776a31bc6c5e1b81
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6d5fed6547a32382413c1a128b1a9003bf099c88
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128547502"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471761"
 ---
 # <a name="migrate-automatically-from-azure-virtual-desktop-classic-preview"></a>Automatisches Migrieren von Azure Virtual Desktop (klassisch) (Vorschau)
 
@@ -146,40 +146,40 @@ So migrieren Sie Azure Virtual Desktop-Ressourcen (klassisch) zu Azure Resource 
 
 2. Führen Sie als Nächstes das Cmdlet **Start-RdsHostPoolMigration** aus, um zu entscheiden, ob ein einzelner Hostpool oder alle Hostpools innerhalb eines Mandanten migriert werden sollen.
 
-    Beispiel:
+   Beispiel:
 
-    ```powershell
-    Start-RdsHostPoolMigration -Tenant Contoso -Location WestUS
-    ```
+   ```powershell
+   Start-RdsHostPoolMigration -Tenant Contoso -Location WestUS
+   ```
 
-    Wenn Sie Ihre Ressourcen in einen bestimmten Hostpool migrieren möchten, fügen Sie den Hostpoolnamen ein. Wenn Sie beispielsweise den Hostpool mit dem Namen „Office“ verschieben möchten, führen Sie einen Befehl wie den folgenden aus:
+   Wenn Sie Ihre Ressourcen in einen bestimmten Hostpool migrieren möchten, fügen Sie den Hostpoolnamen ein. Wenn Sie beispielsweise den Hostpool mit dem Namen „Office“ verschieben möchten, führen Sie einen Befehl wie den folgenden aus:
 
-    ```powershell
-    Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments $false -Location EastUS
-    ```
+   ```powershell
+   Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments $false -Location EastUS
+   ```
 
-    Wenn Sie keinen Arbeitsbereichsnamen angeben, erstellt das Modul basierend auf dem Mandantennamen automatisch einen für Sie. Wenn Sie jedoch einen bestimmten Arbeitsbereich bevorzugen, können Sie seine Ressourcen-ID wie folgt eingeben:
+   Wenn Sie keinen Arbeitsbereichsnamen angeben, erstellt das Modul basierend auf dem Mandantennamen automatisch einen für Sie. Wenn Sie jedoch einen bestimmten Arbeitsbereich bevorzugen, können Sie seine Ressourcen-ID wie folgt eingeben:
 
-    ```powershell
-    Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments -Location EastUS -Workspace <Resource ID of workspacename>
-    ```
+   ```powershell
+   Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments -Location EastUS -Workspace <Resource ID of workspacename>
+   ```
     
-    Wenn Sie einen bestimmten Arbeitsbereich wünschen, aber dessen Ressourcen-ID nicht kennen, führen Sie dieses Cmdlet aus:
+   Wenn Sie einen bestimmten Arbeitsbereich wünschen, aber dessen Ressourcen-ID nicht kennen, führen Sie dieses Cmdlet aus:
 
-    ```powershell
-    Get-AzWvdWorkspace -WorkspaceName <workspace> -ResourceGroupName <resource group> |fl
-    ```
+   ```powershell
+   Get-AzWvdWorkspace -WorkspaceName <workspace> -ResourceGroupName <resource group> |fl
+   ```
 
-  Sie müssen auch für die vorhandenen Benutzerzuweisungen einen Benutzerzuweisungsmodus angeben:
+   Sie müssen auch für die vorhandenen Benutzerzuweisungen einen Benutzerzuweisungsmodus angeben:
 
-  - Wählen Sie **Kopieren**, um alle Benutzerzuweisungen aus Ihren bisherigen App-Gruppen in Azure Resource Manager-App-Gruppen zu kopieren. Benutzer sehen Feeds für beide Versionen ihrer Clients.
-  - Wählen Sie **Keine**, wenn Sie die Benutzerzuweisungen nicht ändern möchten. Später können Sie Benutzer oder Benutzergruppen über das Azure-Portal, PowerShell oder die API App-Gruppen zuweisen. Benutzer können Feeds nur unter Verwendung der (klassischen) Azure Virtual Desktop-Clients sehen.
+      - Wählen Sie **Kopieren**, um alle Benutzerzuweisungen aus Ihren bisherigen App-Gruppen in Azure Resource Manager-App-Gruppen zu kopieren. Benutzer sehen Feeds für beide Versionen ihrer Clients.
+      - Wählen Sie **Keine**, wenn Sie die Benutzerzuweisungen nicht ändern möchten. Später können Sie Benutzer oder Benutzergruppen über das Azure-Portal, PowerShell oder die API App-Gruppen zuweisen. Benutzer können Feeds nur unter Verwendung der (klassischen) Azure Virtual Desktop-Clients sehen.
 
-  Sie können pro Abonnement nur 2.000 Benutzerzuweisungen kopieren, sodass Ihr Grenzwert abhängt, wie viele Zuweisungen bereits in Ihrem Abonnement vorhanden sind. Das Modul berechnet den Grenzwert anhand der Anzahl der bereits erfolgten Zuweisungen. Wenn Sie nicht genügend Zuweisungen zum Kopieren haben, erhalten Sie die Fehlermeldung „Unzureichendes Rollenzuweisungskontingent zum Kopieren von Benutzerzuweisungen. Führen Sie zum Migrieren den Befehl ohne den Schalter -CopyUserAssignments erneut aus.“
+   Sie können pro Abonnement nur 2.000 Benutzerzuweisungen kopieren, sodass Ihr Grenzwert abhängt, wie viele Zuweisungen bereits in Ihrem Abonnement vorhanden sind. Das Modul berechnet den Grenzwert anhand der Anzahl der bereits erfolgten Zuweisungen. Wenn Sie nicht genügend Zuweisungen zum Kopieren haben, erhalten Sie die Fehlermeldung „Unzureichendes Rollenzuweisungskontingent zum Kopieren von Benutzerzuweisungen. Führen Sie zum Migrieren den Befehl ohne den Schalter -CopyUserAssignments erneut aus.“
 
-3. Nachdem Sie die Befehle ausgeführt haben, dauert es bis zu 15 Minuten, bis das Modul die Dienstobjekte erstellt. Wenn Sie Benutzerzuweisungen kopiert oder verschoben haben sollten, verlängert sich die Zeit, die das Modul für die Einrichtung benötigt, entsprechend.
+3. Nachdem Sie die Befehle ausgeführt haben, dauert es bis zu 15 Minuten, bis das Modul die Dienstobjekte erstellt hat. Wenn Sie Benutzerzuweisungen kopiert oder verschoben haben sollten, verlängert sich die Zeit, die das Modul für die Einrichtung benötigt, entsprechend.
 
-   Sobald das Cmdlet **Start-RdsHostPoolMigration** fertig ist, sollte Folgendes angezeigt werden:
+   Nachdem das Cmdlet **Start-RdsHostPoolMigration** ausgeführt wurde, sollten Sie Folgendes sehen:
 
       - Azure-Dienstobjekte für den von Ihnen angegebenen Mandanten oder Hostpool
 

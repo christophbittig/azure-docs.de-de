@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 3/31/2021
-ms.openlocfilehash: 25572c32eff7fcdaffe3bad2bbf349bc8ca885f7
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 4a98b229497aa3b11692fff044bb0f0347ada9d7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045804"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039523"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure Cache for Redis mit Azure Private Link
 
@@ -113,7 +113,7 @@ Führen Sie zum Erstellen einer Cache-Instanz die folgenden Schritte aus:
 
 1. Geben Sie optional auf der Registerkarte **Tags** den Namen und den Wert ein, wenn Sie die Ressource kategorisieren möchten.
 
-1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
+1. Klicken Sie auf **Überprüfen und erstellen**. Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
 1. Wenn die grüne Meldung „Validierung erfolgreich“ angezeigt wird, wählen Sie **Erstellen** aus.
 
@@ -208,6 +208,116 @@ Führen Sie die folgenden Schritte aus, um einen privaten Endpunkt zu erstellen:
 > Es gibt ein `publicNetworkAccess`-Flag, das standardmäßig `Disabled` ist.
 > Sie können den Wert auch auf `Disabled` oder `Enabled` festlegen. Wenn dieses Flag auf aktiviert gesetzt ist, erlaubt es sowohl den öffentlichen als auch den privaten Endpunktzugriff auf den Cache. Wenn es auf `Disabled` gesetzt ist, erlaubt es nur den Zugriff privater Endpunkte. Weitere Informationen zum Ändern des Wertes finden Sie in der [FAQ](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access).
 >
+## <a name="create-a-private-endpoint-using-azure-powershell"></a>Erstellen eines privaten Endpunkts mit Azure PowerShell
+
+Um einen privaten Endpunkt namens *MeinPrivaterEndpunkt* für eine vorhandene Azure Cache for Redis-Instanz zu erstellen, führen Sie das folgende PowerShell-Skript aus. Ersetzen Sie die Variablenwerte durch die entsprechenden Angaben für Ihre Umgebung:
+
+```azurepowershell-interactive
+
+$SubscriptionId = "<your Azure subscription ID>"
+# Resource group where the Azure Cache for Redis instance and virtual network resources are located
+$ResourceGroupName = "myResourceGroup"
+# Name of the Azure Cache for Redis instance
+$redisCacheName = "mycacheInstance"
+
+# Name of the existing virtual network
+$VNetName = "myVnet"
+# Name of the target subnet in the virtual network
+$SubnetName = "mySubnet"
+# Name of the private endpoint to create
+$PrivateEndpointName = "MyPrivateEndpoint"
+# Location where the private endpoint can be created. The private endpoint should be created in the same location where your subnet or the virtual network exists
+$Location = "westcentralus"
+
+$redisCacheResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Cache/Redis/$($redisCacheName)"
+
+$privateEndpointConnection = New-AzPrivateLinkServiceConnection -Name "myConnectionPS" -PrivateLinkServiceId $redisCacheResourceId -GroupId "redisCache"
+ 
+$virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName  $ResourceGroupName -Name $VNetName  
+ 
+$subnet = $virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq $SubnetName}  
+ 
+$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location "westcentralus" -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
+```
+
+## <a name="retrieve-a-private-endpoint-using-azure-powershell"></a>Abrufen eines privaten Endpunkts mit Azure PowerShell
+
+Verwenden Sie den folgenden PowerShell-Befehl, um die Details eines privaten Endpunkts zu erhalten:
+
+```azurepowershell-interactive
+Get-AzPrivateEndpoint -Name $PrivateEndpointName -ResourceGroupName $ResourceGroupName
+```
+
+## <a name="remove-a-private-endpoint-using-azure-powershell"></a>Entfernen eines privaten Endpunkts mit Azure PowerShell
+
+Verwenden Sie den folgenden PowerShell-Befehl, um einen privaten Endpunkt zu entfernen:
+
+```azurepowershell-interactive
+Remove-AzPrivateEndpoint -Name $PrivateEndpointName -ResourceGroupName $ResourceGroupName
+```
+
+## <a name="create-a-private-endpoint-using-azure-cli"></a>Erstellen eines privaten Endpunkts mit Azure CLI
+
+Um einen privaten Endpunkt namens *MeinPrivaterEndpunkt* für eine vorhandene Azure Cache for Redis-Instanz zu erstellen, führen Sie das folgende Azure CLI-Skript aus. Ersetzen Sie die Variablenwerte durch die entsprechenden Angaben für Ihre Umgebung:
+
+```azurecli-interactive
+# Resource group where the Azure Cache for Redis and virtual network resources are located
+ResourceGroupName="myResourceGroup"
+
+# Subscription ID where the Azure Cache for Redis and virtual network resources are located
+SubscriptionId="<your Azure subscription ID>"
+
+# Name of the existing Azure Cache for Redis instance
+redisCacheName="mycacheInstance"
+
+# Name of the virtual network to create
+VNetName="myVnet"
+
+# Name of the subnet to create
+SubnetName="mySubnet"
+
+# Name of the private endpoint to create
+PrivateEndpointName="myPrivateEndpoint"
+
+# Name of the private endpoint connection to create
+PrivateConnectionName="myConnection"
+
+az network vnet create \
+    --name $VNetName \
+    --resource-group $ResourceGroupName \
+    --subnet-name $SubnetName
+
+az network vnet subnet update \
+    --name $SubnetName \
+    --resource-group $ResourceGroupName \
+    --vnet-name $VNetName \
+    --disable-private-endpoint-network-policies true
+
+az network private-endpoint create \
+    --name $PrivateEndpointName \
+    --resource-group $ResourceGroupName \
+    --vnet-name $VNetName  \
+    --subnet $SubnetName \
+    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Cache/Redis/$redisCacheName" \
+    --group-ids "redisCache" \
+    --connection-name $PrivateConnectionName
+```
+
+## <a name="retrieve-a-private-endpoint-using-azure-cli"></a>Abrufen eines privaten Endpunkts mit Azure CLI
+
+Verwenden Sie den folgenden CLI-Befehl, um die Details eines privaten Endpunkts zu erhalten:
+
+```azurecli-interactive
+az network private-endpoint show --name MyPrivateEndpoint --resource-group MyResourceGroup
+```
+
+## <a name="remove-a-private-endpoint-using-azure-cli"></a>Entfernen eines privaten Endpunkts mit Azure CLI
+
+Verwenden Sie den folgenden CLI-Befehl, um einen privaten Endpunkt zu entfernen:
+
+```azurecli-interactive
+az network private-endpoint delete --name MyPrivateEndpoint --resource-group MyResourceGroup
+```
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
@@ -223,11 +333,14 @@ Führen Sie die folgenden Schritte aus, um einen privaten Endpunkt zu erstellen:
 
 ### <a name="why-cant-i-connect-to-a-private-endpoint"></a>Warum kann ich keine Verbindung mit einem privaten Endpunkt herstellen?
 
-Wenn Ihr Cache bereits ein VNet-eingeschleuster Cache ist, können private Endpunkte nicht mit ihrer Cache-Instanz verwendet werden. Wenn Ihre Cache-Instanz ein nicht unterstütztes Feature verwendet (siehe unten), können Sie keine Verbindung mit Ihrer Instanz des privaten Endpunkts herstellen.
+- Private Endpunkte können nicht mit Ihrer Cache-Instanz verwendet werden, wenn ihr Cache bereits ein in das VNET eingefügter Cache ist.
+- Für Cluster-Caches ist ein Limit für eine private Verbindung vorhanden. Für alle anderen Caches beträgt Ihr Limit 100 private Verbindungen.
+- Sie versuchen, [Daten dauerhaft im Speicherkonto zu speichern](cache-how-to-premium-persistence.md), in dem Firewallregeln angewendet werden, die Sie möglicherweise daran hindern können, die private Verbindung zu erstellen.
+- Möglicherweise stellen Sie keine Verbindung mit Ihrem privaten Endpunkt her, wenn Ihre Cache-Instanz ein [nicht unterstütztes Feature verwendet](#what-features-arent-supported-with-private-endpoints).
 
 ### <a name="what-features-arent-supported-with-private-endpoints"></a>Welche Features werden von privaten Endpunkten nicht unterstützt?
 
-Derzeit werden die Unterstützung der Portalkonsole und die Persistenz von Firewall-Speicherkonten nicht unterstützt.
+Der Versuch, über die Azure-Portal-Konsole eine Verbindung herzustellen, ist ein nicht unterstütztes Szenario, in dem ein Verbindungsfehler angezeigt wird.
 
 ### <a name="how-do-i-verify-if-my-private-endpoint-is-configured-correctly"></a>Wie kann ich überprüfen, ob mein privater Endpunkt richtig konfiguriert ist?
 

@@ -5,16 +5,16 @@ description: Referenzartikel zu „az arcdata resource-kind“-Befehlen.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: seanw
-ms.date: 07/30/2021
+ms.date: 11/04/2021
 ms.topic: reference
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: 597bc660140ec2f0ac856a3f6c67db600480aa63
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ad138bfc322aa109078e622b26d1f5254ec789ca
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340055"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852980"
 ---
 # <a name="az-arcdata-resource-kind"></a>az arcdata resource-kind
 ## <a name="commands"></a>Befehle
@@ -38,41 +38,29 @@ Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeige
 #### `--help -h`
 Zeigen Sie diese Hilfemeldung an, und schließen Sie sie.
 #### `--output -o`
-Ausgabeformat.  Zulässige Werte: „json“, „jsonc“, „none“, „table“, „tsv“, „yaml“, „yamlc“.  Standardwert: json.
+Ausgabeformat.  Zulässige Werte: json, jsonc, table, tsv.  Standardwert: json.
 #### `--query -q`
-JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org](http://jmespath.org).
-#### `--subscription`
-Der Name oder die ID des Abonnements. Sie können das standardmäßig verwendete Abonnement mittels `az account set -s NAME_OR_ID` konfigurieren.
+JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org/](http://jmespath.org).
 #### `--verbose`
-Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden.
+Ausführlichkeit der Protokollierung erhöhen. Verwenden Sie `--debug`, um vollständige Debugprotokolle zu erhalten.
 ## <a name="az-arcdata-resource-kind-get"></a>az arcdata resource-kind get
 Ruft die Vorlagendatei für den Arc-Ressourcentyp (resource-kind) ab.
 ```bash
-az arcdata resource-kind get --kind -k 
-                             [--dest -d]
+az arcdata resource-kind get 
 ```
 ### <a name="examples"></a>Beispiele
 Dies ist ein Beispielbefehl zum Abrufen der CRD-Vorlagendatei für einen Arc-Ressourcentyp.
 ```bash
 az arcdata resource-kind get --kind SqlManagedInstance
 ```
-### <a name="required-parameters"></a>Erforderliche Parameter
-#### `--kind -k`
-Dies ist die Art der Arc-Ressource, für die Sie die Vorlagendatei erstellen möchten.
-### <a name="optional-parameters"></a>Optionale Parameter
-#### `--dest -d`
-Dies ist das Verzeichnis, in dem Sie die Vorlagendateien platzieren möchten.
-`template`
 ### <a name="global-arguments"></a>Globale Argumente
 #### `--debug`
 Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen.
 #### `--help -h`
 Zeigen Sie diese Hilfemeldung an, und schließen Sie sie.
 #### `--output -o`
-Ausgabeformat.  Zulässige Werte: „json“, „jsonc“, „none“, „table“, „tsv“, „yaml“, „yamlc“.  Standardwert: json.
+Ausgabeformat.  Zulässige Werte: json, jsonc, table, tsv.  Standardwert: json.
 #### `--query -q`
-JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org](http://jmespath.org).
-#### `--subscription`
-Der Name oder die ID des Abonnements. Sie können das standardmäßig verwendete Abonnement mittels `az account set -s NAME_OR_ID` konfigurieren.
+JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org/](http://jmespath.org).
 #### `--verbose`
-Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden.
+Ausführlichkeit der Protokollierung erhöhen. Verwenden Sie `--debug`, um vollständige Debugprotokolle zu erhalten.

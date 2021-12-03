@@ -10,17 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: hasshah
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 25ab2fb283428f494ca52d769622df4b7a7a7ad1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: a91f3e6e59647d6817f05137e284fbee4400dbd8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110116612"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491786"
 ---
 # <a name="keyword-recognition"></a>Schlüsselworterkennung
 
-Schlüsselworterkennung bezieht sich auf die Sprachtechnologie, die das Vorhandensein eines Worts oder eines kurzen Ausdrucks innerhalb eines bestimmten Audiodatenstroms erkennt. Dies wird häufig auch als „Keyword Spotting“ bezeichnet. Der häufigste Anwendungsfall der Schlüsselworterkennung ist die Sprachaktivierung virtueller Assistenten. „Hey Cortana“ ist z. B. das Schlüsselwort für den Cortana-Assistenten. Bei Erkennung des Schlüsselworts wird eine szenariospezifische Aktion ausgeführt. Bei Szenarien mit virtuellen Assistenten ist eine häufige resultierende Aktion die Spracherkennung von Audioinformationen, die auf das Schlüsselwort folgen.
+Die Schlüsselworterkennung erkennt ein Wort oder einen kurzen Ausdruck innerhalb eines Audiodatenstroms. Dies wird auch als Schlüsselwortsuche bezeichnet. 
+
+Der häufigste Anwendungsfall der Schlüsselworterkennung ist die Sprachaktivierung virtueller Assistenten. „Hey Cortana“ ist z. B. das Schlüsselwort für den Cortana-Assistenten. Bei Erkennung des Schlüsselworts wird eine szenariospezifische Aktion ausgeführt. Bei Szenarien mit virtuellen Assistenten ist eine häufige resultierende Aktion die Spracherkennung von Audioinformationen, die auf das Schlüsselwort folgen.
 
 Im Allgemeinen lauschen virtuelle Assistenten immer. Die Schlüsselworterkennung dient als Datenschutzgrenze für den Benutzer. Eine Schlüsselwortanforderung fungiert als Tor, das verhindert, dass zusammenhangslose Audioinformationen des Benutzers vom lokalen Gerät in die Cloud gelangen.
 
@@ -28,7 +30,7 @@ Um ein Gleichgewicht zwischen Genauigkeit, Wartezeit und Berechnungskomplexität
 
 Das aktuelle System ist mit mehreren Stufen konzipiert, die sich über Edge und Cloud erstrecken:
 
-![Mehrere Stufen der Schlüsselworterkennung über Edge und Cloud.](media/custom-keyword/keyword-recognition-multi-stage.png)
+![Mehrere Stufen der Schlüsselworterkennung über Edge und Cloud.](media/custom-keyword/kw-recognition-multi-stage.png)
 
 Die Genauigkeit der Schlüsselworterkennung wird anhand der folgenden Metriken gemessen:
 * **Akzeptanzrate für richtige Begriffe** – Misst die Fähigkeit des Systems, das Schlüsselwort zu erkennen, wenn es von einem Endbenutzer gesprochen wird. Dies wird auch als True Positive-Rate bezeichnet. 
@@ -46,12 +48,15 @@ Es entstehen keine Kosten, wenn Sie „Benutzerdefiniertes Schlüsselwort“ fü
 
 ### <a name="types-of-models"></a>Typen von Modellen
 
-Mit „Benutzerdefiniertes Schlüsselwort“ können Sie zwei Typen von gerätebasierten Modellen für jedes beliebige Schlüsselwort generieren:
+Mit „Benutzerdefiniertes Schlüsselwort“ können Sie zwei Typen von gerätebasierten Modellen für jedes beliebige Schlüsselwort generieren.
 
 | Modelltyp | BESCHREIBUNG |
 | ---------- | ----------- |
 | Basic | Am besten geeignet für Demos oder die schnelle Erstellung von Prototypen. Die Modelle werden mit einem gemeinsamen Basismodell generiert und können bis zu 15 Minuten in Anspruch nehmen, bis sie bereit sind. Die Modelle weisen möglicherweise keine optimalen Genauigkeitsmerkmale auf. |
 | Fortgeschrittene | Am besten für die Produktintegration geeignet. Die Modelle werden durch Anpassung eines gemeinsamen Basismodells unter Verwendung simulierter Trainingsdaten generiert, um die Genauigkeitsmerkmale zu verbessern. Es kann bis zu 48 Stunden dauern, bis die Modelle bereit sind. |
+
+> [!NOTE]
+> Eine Liste der Regionen, die den Modelltyp **Erweitert** unterstützen, finden Sie in der Dokumentation zur [Unterstützung von Regionen für die Schlüsselworterkennung](keyword-recognition-region-support.md). 
 
 Keiner der Modelltypen erfordert, dass Sie Trainingsdaten hochladen. „Benutzerdefiniertes Schlüsselwort“ übernimmt die komplette Datengenerierung und das Modelltraining.
 
@@ -77,7 +82,7 @@ Die Schlüsselwortüberprüfung wird immer in Kombination mit der Spracherkennun
 
 Wenn die Schlüsselwortüberprüfung verwendet wird, erfolgt dies immer in Kombination mit der Spracherkennung. Beide Dienste werden parallel ausgeführt. Dies bedeutet, dass Audiodaten zur gleichzeitigen Verarbeitung an beide Dienste gesendet werden.
 
-![Parallele Verarbeitung von Schlüsselwortüberprüfung und Spracherkennung](media/custom-keyword/keyword-verification-parallel-processing.png)
+![Parallele Verarbeitung von Schlüsselwortüberprüfung und Spracherkennung](media/custom-keyword/kw-verification-parallel-processing.png)
 
 Die parallele Ausführung von Schlüsselwortüberprüfung und Spracherkennung bietet die folgenden Vorteile:
 * **Keine zusätzliche Wartezeit bei Spracherkennungsergebnissen** – Parallele Ausführung bedeutet, dass die Schlüsselwortüberprüfung keine Wartezeit hinzufügt, und der Client empfängt die auf der Spracherkennung basierenden Ergebnisse genauso schnell. Wenn die Schlüsselwortüberprüfung feststellt, dass das Schlüsselwort in den Audiodaten nicht vorhanden war, wird die Spracherkennungsverarbeitung beendet, was vor unnötiger Verarbeitung durch die Spracherkennung schützt. Die Verarbeitung von Netzwerk- und Cloudmodellen erhöht jedoch die vom Benutzer wahrgenommene Wartezeit der Sprachaktivierung. Weitere Informationen finden Sie unter [Empfehlungen und Richtlinien](keyword-recognition-guidelines.md).

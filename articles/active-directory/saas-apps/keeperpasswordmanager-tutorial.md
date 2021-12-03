@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 3488ecba825d82cd1f3790b977b8b039eb38486f
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 26f56e452b2065fd61180d9e6cc3f757d8392c16
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129402945"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294844"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-keeper-password-manager"></a>Tutorial: Azure AD-SSO-Integration mit Keeper Password Manager
 
@@ -164,4 +164,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Keeper Password Manager konfiguriert haben, können Sie Sitzungssteuerung erzwingen. Diese schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf bedingtem Zugriff. Weitere Informationen finden Sie im Artikel zum [Erzwingen der Sitzungssteuerung mit Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Nachdem Sie Keeper Password Manager konfiguriert haben, können Sie Sitzungssteuerung erzwingen. Diese schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf bedingtem Zugriff. Weitere Informationen finden Sie im Artikel zum [Erzwingen der Sitzungssteuerung mit Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

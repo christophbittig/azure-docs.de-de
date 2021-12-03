@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/16/2021
+ms.date: 11/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
-ms.openlocfilehash: b6d04053d4b63552c2329a675c2557e6f1cd8fee
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5eb3998821a8022a82c127a69279809e93d31056
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290018"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477343"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Tutorial: Zugreifen auf Azure-Speicher über eine Web-App
 
@@ -206,8 +206,8 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 
 ---
 
-## <a name="access-blob-storage-net"></a>Zugreifen auf Blob Storage (.NET)
-
+## <a name="access-blob-storage"></a>Zugreifen auf Blob Storage
+# <a name="c"></a>[C#](#tab/programming-language-csharp)
 Die Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) wird zum Abrufen von Tokenanmeldeinformationen für Ihren Code verwendet, um Anforderungen für Azure Storage zu autorisieren. Erstellen Sie eine Instanz der Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential), bei der die verwaltete Identität zum Abrufen von Token verwendet wird, und fügen Sie diese dem Dienstclient hinzu. Im folgenden Codebeispiel werden die authentifizierten Tokenanmeldeinformationen abgerufen und zum Erstellen eines Dienstclientobjekts verwendet, mit dem ein neues Blob hochgeladen wird.
 
 Im [Beispiel auf GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity) können Sie sich diesen Code in einer Beispielanwendung ansehen.
@@ -216,7 +216,7 @@ Im [Beispiel auf GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-d
 
 Installieren Sie das [Blob Storage-NuGet-Paket](https://www.nuget.org/packages/Azure.Storage.Blobs/), um Blob Storage zu nutzen, und das [NuGet-Paket mit der Azure Identity-Clientbibliothek für .NET](https://www.nuget.org/packages/Azure.Identity/), um die Authentifizierung mit Azure AD-Anmeldeinformationen durchzuführen. Installieren Sie die Clientbibliotheken über die .NET Core-Befehlszeilenschnittstelle oder die Paket-Manager-Konsole in Visual Studio.
 
-# <a name="command-line"></a>[Befehlszeile](#tab/command-line)
+#### <a name="net-core-command-line"></a>.NET Core-Befehlszeile
 
 Öffnen Sie eine Befehlszeile, und wechseln Sie zu dem Verzeichnis, in dem Ihre Projektdatei enthalten ist.
 
@@ -228,8 +228,7 @@ dotnet add package Azure.Storage.Blobs
 dotnet add package Azure.Identity
 ```
 
-# <a name="package-manager"></a>[Paket-Manager](#tab/package-manager)
-
+#### <a name="package-manager-console"></a>Paket-Manager-Konsole
 Öffnen Sie das Projekt bzw. die Projektmappe in Visual Studio und dann die Konsole mit dem Befehl **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
 
 Führen Sie die Installationsbefehle aus.
@@ -238,8 +237,6 @@ Install-Package Azure.Storage.Blobs
 
 Install-Package Azure.Identity
 ```
-
----
 
 ### <a name="example"></a>Beispiel
 
@@ -286,6 +283,40 @@ static public async Task UploadBlob(string accountName, string containerName, st
 }
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/programming-language-nodejs)
+Die Klasse `DefaultAzureCredential` aus dem Paket [@azure/identity](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/identity/identity/README.md) wird zum Abrufen von Tokenanmeldeinformationen für Ihren Code verwendet, um Anforderungen für Azure Storage zu autorisieren. Die Klasse `BlobServiceClient` aus dem Paket [@azure/storage-blob](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/storage/storage-blob) wird zum Hochladen eines neuen Blobs in den Speicher verwendet. Erstellen Sie eine Instanz der Klasse `DefaultAzureCredential`, bei der die verwaltete Identität zum Abrufen von Token verwendet wird, und fügen Sie diese an den Blobdienstclient an. Im folgenden Codebeispiel werden die authentifizierten Tokenanmeldeinformationen abgerufen und zum Erstellen eines Dienstclientobjekts verwendet, mit dem ein neues Blob hochgeladen wird.
+
+In *StorageHelper.js* in dem [Beispiel auf GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/tree/main/1-WebApp-storage-managed-identity) können Sie sich diesen Code in einer Beispielanwendung ansehen.
+
+### <a name="example"></a>Beispiel
+
+```nodejs
+const { DefaultAzureCredential } = require("@azure/identity");
+const { BlobServiceClient } = require("@azure/storage-blob");
+const defaultAzureCredential = new DefaultAzureCredential();
+
+// Some code omitted for brevity.
+
+async function uploadBlob(accountName, containerName, blobName, blobContents) {
+    const blobServiceClient = new BlobServiceClient(
+        `https://${accountName}.blob.core.windows.net`,
+        defaultAzureCredential
+    );
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+
+    try {
+        await containerClient.createIfNotExists();
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        const uploadBlobResponse = await blockBlobClient.upload(blobContents, blobContents.length);
+        console.log(`Upload block blob ${blobName} successfully`, uploadBlobResponse.requestId);
+    } catch (error) {
+        console.log(error);
+    }
+}
+```
+---
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie dieses Tutorial abgeschlossen haben und die Web-App und die zugehörigen Ressourcen nicht mehr benötigen, sollten Sie [die von Ihnen erstellten Ressourcen bereinigen](scenario-secure-app-clean-up-resources.md).
@@ -301,4 +332,10 @@ In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt wer
 > * Zugreifen auf Speicher über eine Web-App mit verwalteten Identitäten
 
 > [!div class="nextstepaction"]
+> [Tutorial: Isolieren der Back-End-Kommunikation mit virtueller Netzwerkintegration](tutorial-networking-isolate-vnet.md)
+
+> [!div class="nextstepaction"]
 > [App Service: Zugreifen auf Microsoft Graph im Namen des Benutzers](scenario-secure-app-access-microsoft-graph-as-user.md)
+
+> [!div class="nextstepaction"]
+> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](app-service-web-tutorial-custom-domain.md)

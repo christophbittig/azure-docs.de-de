@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/24/2021
 tags: azure-synapse
-ms.openlocfilehash: b24fcbac37288dd3c49fe64fe517dd31bbab03d2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4fd6360d1d549cd5c184dd5a1f3105d238ab9319
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788399"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335801"
 ---
 # <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,11 +62,11 @@ Die Klassifizierung umfasst zwei Metadatenattribute:
 
 Datenermittlung und -klassifizierung verfügt über einen integrierten Satz von Vertraulichkeitsbezeichnungen und einen integrierten Satz von Informationstypen und Ermittlungslogik. Sie können diese Taxonomie anpassen und eine spezielle Gruppe und Rangfolge von Klassifizierungskonstrukten für Ihre Umgebung definieren.
 
-Die Definition und Anpassung Ihrer Klassifizierungstaxonomie erfolgt an zentraler Stelle für die ganze Azure-Organisation. Diese Stelle befindet sich im [Azure Security Center](../../security-center/security-center-introduction.md) und ist Bestandteil Ihrer Sicherheitsrichtlinie. Nur Benutzer mit Administratorrechten für die Stammverwaltungsgruppe der Organisation können diese Aufgabe ausführen.
+Die Definition und Anpassung Ihrer Klassifizierungstaxonomie erfolgt an zentraler Stelle für die ganze Azure-Organisation. Dieser Speicherort befindet sich im Rahmen Ihrer Sicherheitsrichtlinie in [Microsoft Defender für Cloud](../../security-center/security-center-introduction.md). Nur Benutzer mit Administratorrechten für die Stammverwaltungsgruppe der Organisation können diese Aufgabe ausführen.
 
 Im Rahmen der Richtlinienverwaltung können Sie benutzerdefinierte Bezeichnungen definieren, deren Rangfolge festlegen und sie einer ausgewählten Gruppe von Informationstypen zuordnen. Sie können auch eigene benutzerdefinierte Informationstypen hinzufügen und diese mit Zeichenfolgenmustern konfigurieren. Die Muster werden der Ermittlungslogik hinzugefügt, um diese Datentypen in Ihren Datenbanken zu identifizieren.
 
-Weitere Informationen finden Sie unter [Anpassen der SQL Information Protection-Richtlinie im Azure Security Center (Vorschau)](../../security-center/security-center-info-protection-policy.md).
+Weitere Informationen finden Sie unter [Anpassen der SQL Information Protection-Richtlinie in Microsoft Defender für Cloud (Vorschau)](../../security-center/security-center-info-protection-policy.md).
 
 Nachdem die organisationsweite Richtlinie definiert wurde, können Sie die Klassifizierung einzelner Datenbanken mithilfe Ihrer benutzerdefinierten Richtlinie fortsetzen.
 
@@ -114,7 +114,7 @@ Nachdem die organisationsweite Richtlinie definiert wurde, können Sie die Klass
 
 Ein wichtiger Aspekt der Klassifizierung ist die Möglichkeit, den Zugriff auf vertrauliche Daten zu überwachen. Die [Azure SQL-Überwachung](../../azure-sql/database/auditing-overview.md) wurde erweitert, um ein neues Feld mit dem Namen `data_sensitivity_information` in das Überwachungsprotokoll zu integrieren. Dieses Feld protokolliert die Vertraulichkeitsklassifizierungen (Bezeichnungen) der Daten, die von einer Abfrage zurückgegeben wurden. Hier sehen Sie ein Beispiel:
 
-[ ![Überwachungsprotokoll](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png#lightbox)
+[![Überwachungsprotokoll](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png#lightbox)
 
 Dies sind die Aktivitäten, die tatsächlich mit vertraulichen Informationen geprüft werden können:
 - ALTER TABLE ... DROP COLUMN

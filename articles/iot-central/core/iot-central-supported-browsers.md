@@ -1,19 +1,19 @@
 ---
 title: Unterstützte Browser für Azure IoT Central | Microsoft-Dokumentation
 description: Auf Azure IoT Central kann von vielen modernen Desktops, Tablets und Browsern zugegriffen werden. Dieser Artikel enthält die Liste der unterstützten Browser.
-author: lmasieri
-ms.author: lmasieri
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/17/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0348a65d7e3bda2ff69be72f47ccbecd0f05f2d3
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 824d1dd74eb5235fd6f7e309950e64ed3d490341
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435922"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995785"
 ---
 # <a name="supported-browsers-for-azure-iot-central"></a>Unterstützte Browser für Azure IoT Central
 

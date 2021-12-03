@@ -3,19 +3,17 @@ title: Grundlegende Informationen zum Gastkonfigurationsfeature von Azure Policy
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurationsfeatures Einstellungen in VMs überwacht und konfiguriert.
 ms.date: 07/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: d562842da341394247a02516c08b062ee12a01cc
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6a40469b6cd391672ba953bac37402285ac4a097
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042634"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040414"
 ---
 # <a name="understand-the-guest-configuration-feature-of-azure-policy"></a>Grundlegende Informationen zum Gastkonfigurationsfeature von Azure Policy
 
 Das Gastkonfigurationsfeature von Azure Policy bietet native Funktionen zum Überprüfen oder Konfigurieren von Betriebssystemeinstellungen als Code, sowohl für Computer, die in Azure ausgeführt werden, als auch für hybride [Computer mit Arc-Unterstützung](../../../azure-arc/servers/overview.md).
 Das Feature kann direkt pro Computer oder in großem Umfang von Azure Policy orchestriert verwendet werden.
-
-Konfigurationen unterscheiden sich von Richtliniendefinitionen. Die Gastkonfiguration nutzt Azure Policy, um Computern Konfigurationen dynamisch zuzuweisen. Sie können Computern Konfigurationen auch [manuell](/guest-configuration-assignments.md#manually-creating-guest-configuration-assignments) oder mithilfe anderer Azure-Dienste wie [AutoManage](../../../automanage/automanage-virtual-machines.md) zuweisen.
 
 Konfigurationsressourcen in Azure sind als [Erweiterungsressourcen](../../../azure-resource-manager/management/extension-resource-types.md) konzipiert.
 Sie können sich jede Konfiguration als zusätzlichen Satz von Eigenschaften für den Computer vorstellen. Konfigurationen können Einstellungen enthalten wie:
@@ -24,9 +22,18 @@ Sie können sich jede Konfiguration als zusätzlichen Satz von Eigenschaften fü
 - Die Konfiguration oder das Vorhandensein der Anwendung
 - Umgebungseinstellungen
 
-Die Ergebnisse der einzelnen Konfigurationen können entweder auf der Seite [Gastzuweisungen](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) angezeigt werden, oder wenn die Konfiguration durch eine Azure Policy-Zuweisung orchestriert wird, indem Sie auf der Seite [Compliancedetails](../how-to/determine-non-compliance.md#view-configuration-assignment-details-at-scale) auf den Link „Zuletzt ausgewertete Ressource“ klicken.
+Konfigurationen unterscheiden sich von Richtliniendefinitionen. Die Gastkonfiguration nutzt Azure Policy, um Computern Konfigurationen dynamisch zuzuweisen. Sie können Computern Konfigurationen auch [manuell](guest-configuration-assignments.md#manually-creating-guest-configuration-assignments) oder mithilfe anderer Azure-Dienste wie [AutoManage](../../../automanage/automanage-virtual-machines.md) zuweisen.
 
-[Für dieses Dokument ist ein Video zur exemplarischen Vorgehensweise verfügbar](https://youtu.be/t9L8COY-BkM).
+Beispiele für jedes Szenario sind in der folgenden Tabelle aufgeführt.
+
+| type | BESCHREIBUNG | Beispielstory |
+| - | - | - |
+| [Konfigurationsverwaltung](guest-configuration-assignments.md) | Sie möchten eine vollständige Darstellung eines Servers als Code in der Quellcodeverwaltung. Die Bereitstellung sollte Eigenschaften des Servers (Größe, Netzwerk, Speicher) und die Konfiguration von Betriebssystem- und Anwendungseinstellungen enthalten. | "Dieser Computer sollte ein Webserver sein, der zum Hosten meiner Websete konfiguriert ist." |
+| [Compliance](../assign-policy-portal.md) | Sie möchten Einstellungen für alle Computer im Bereich überwachen oder bereitstellen, entweder reaktiv auf vorhandenen Computern oder proaktiv auf neuen Computern, wenn sie bereitgestellt werden. | "Alle Computer sollten TLS 1.2 verwenden. Überwachen Sie vorhandene Computer, damit ich Änderungen an den benötigten Stellen auf kontrollierte Weise und bedarfsorientiert freigeben kann. Erzwingen Sie für neue Computer die Einstellung, wenn sie bereitgestellt werden." |
+
+Die Ergebnisse der einzelnen Konfigurationen können entweder auf der Seite [Gastzuweisungen](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) angezeigt werden, oder wenn die Konfiguration durch eine Azure Policy-Zuweisung orchestriert wird, indem Sie auf der Seite [Compliance details](../how-to/determine-non-compliance.md#view-configuration-assignment-details-at-scale) auf den Link „Zuletzt ausgewertete Ressource“ klicken.
+
+[Für dieses Dokument ist ein Video zur exemplarischen Vorgehensweise verfügbar](https://youtu.be/t9L8COY-BkM). (Update in Kürze verfügbar)
 
 ## <a name="enable-guest-configuration"></a>Aktivieren der Gastkonfiguration
 

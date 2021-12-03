@@ -12,22 +12,26 @@ ms.custom: na, devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/18/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: bf458528503d8d2b74509b95ffde33c16c8e47f1
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 8d9e94ae12600223c6f54fb75cbc6c9648ecf7f9
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164012"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156957"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Erstellen einer FCI mit einer Premium-Dateifreigabe (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
+> [!TIP]
+> Eliminieren Sie die Notwendigkeit eines Azure Load Balancer oder eines verteilten Netzwerknamens (DNN) für Ihre Failover-Cluster-Instanz, indem Sie Ihre SQL Server-VMs in [mehreren Subnetzen](failover-cluster-instance-prepare-vm.md#subnets) innerhalb desselben virtuellen Azure-Netzwerks erstellen.
+
+
 In diesem Artikel wird erläutert, wie Sie auf virtuellen Azure-Computern eine SQL Server-Failoverclusterinstanz (FCI) mit SQL Server mithilfe einer [Premium-Dateifreigabe](../../../storage/files/storage-how-to-create-file-share.md) erstellen.
 
-Premium-Dateifreigaben sind SSD-gestützte (Storage Spaces Direct) Dateifreigaben mit durchgängig niedriger Latenz, die für die Verwendung mit Failoverclusterinstanzen für SQL Server 2012 oder höher unter Windows Server 2012 oder höher vollständig unterstützt werden. Premium-Dateifreigaben bieten Ihnen mehr Flexibilität, sodass Sie ohne Ausfallzeiten die Größe der Dateifreigabe ändern und diese skalieren können.
+Premium-Dateifreigaben sind SSD-gesichert und bieten durchgängig Dateifreigaben mit niedriger Latenz, die vollständig für die Verwendung mit Failover-Cluster-Instanzen für SQL Server 2012 oder höher auf Windows Server 2012 oder höher unterstützt werden. Premium-Dateifreigaben bieten Ihnen mehr Flexibilität, sodass Sie ohne Ausfallzeiten die Größe der Dateifreigabe ändern und diese skalieren können.
 
 Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md) und über [Bewährte Methoden für Cluster](hadr-cluster-best-practices.md). 
 
@@ -46,6 +50,8 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
 
 ## <a name="mount-premium-file-share"></a>Einbinden der Premium-Dateifreigabe
 
+Gehen Sie folgendermaßen vor, um Ihre Premium-Dateifreigabe einzubinden: 
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wechseln Sie dann zu Ihrem Speicherkonto.
 1. Navigieren Sie unter **Datenspeicher** zu **Dateifreigaben**, und wählen Sie die Premium-Dateifreigabe aus, die Sie als SQL-Speicher verwenden möchten.
 1. Klicken Sie auf **Verbinden**, um die Verbindungszeichenfolge für Ihre Dateifreigabe anzuzeigen.
@@ -53,7 +59,7 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/premium-file-storage-commands.png" alt-text="Kopieren des PowerShell-Befehls aus dem Portal zum Herstellen der Verbindung mit der Dateifreigabe":::
 
-1. Stellen Sie eine RDP-Verbindung (Remotedesktopprotokoll) mit der SQL Server-VM her. Nutzen Sie dazu das Konto, das Ihre SQL Server-FCI als Dienstkonto verwenden soll.
+1. Verwenden Sie das Remote Desktop Protocol (RDP), um eine Verbindung zur SQL Server-VM mit dem **Konto herzustellen, das Ihr SQL Server FCI für das Dienstkonto** verwenden wird.
 1. Öffnen Sie eine administrative PowerShell-Befehlskonsole.
 1. Führen Sie den Befehl aus, den Sie zuvor aus dem Dateifreigabeportal in den Text-Editor kopiert haben.
 1. Navigieren Sie über den Datei-Explorer oder das Dialogfeld **Ausführen** (WINDOWS+R auf der Tastatur) zur Freigabe. Verwenden Sie den Netzwerkpfad `\\storageaccountname.file.core.windows.net\filesharename`. Zum Beispiel, `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
@@ -61,69 +67,22 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
 1. Wiederholen Sie diese Schritte auf jeder SQL Server-VM, die zum Cluster gehört.
 
   > [!IMPORTANT]
-  > - Erwägen Sie den Einsatz einer gesonderten Dateifreigabe für Sicherungsdateien, um die IOPS- (Input/Output Operations Per Second, Ein-/Ausgabevorgänge pro Sekunde) und Größenkapazität dieser Freigabe für Daten- und Protokolldateien zu reservieren. Sie können für Sicherungsdateien eine Dateifreigaben des Typs Standard oder Premium verwenden.
+  > Erwägen Sie den Einsatz einer gesonderten Dateifreigabe für Sicherungsdateien, um die IOPS- (Input/Output Operations Per Second, Ein-/Ausgabevorgänge pro Sekunde) und Größenkapazität dieser Freigabe für Daten- und Protokolldateien zu reservieren. Sie können für Sicherungsdateien eine Dateifreigaben des Typs Standard oder Premium verwenden.
 
+## <a name="create-windows-failover-cluster"></a>Windows Failover Cluster erstellen
 
-## <a name="add-windows-cluster-feature"></a>Feature zum Hinzufügen von Windows-Clustern
+Die Schritte zur Erstellung Ihres Windows Server Failover-Clusters hängen davon ab, ob Sie Ihre SQL Server-VMs in einem einzelnen Subnetz oder in mehreren Subnetzen bereitgestellt haben. Um Ihren Cluster zu erstellen, folgen Sie den Schritten in der Anleitung entweder für ein [Multi-Subnetz-Szenario](availability-group-manually-configure-tutorial-multi-subnet.md#add-failover-cluster-feature) oder ein [Einzel-Subnetz-Szenario](availability-group-manually-configure-tutorial-single-subnet.md#create-the-cluster). Obwohl sich diese Anleitungen auf die Erstellung einer Verfügbarkeitsgruppe beziehen, sind die Schritte zur Erstellung des Clusters die gleichen. 
 
-1. Stellen Sie per RDP eine Verbindung mit dem ersten virtuellen Computer her, indem Sie ein Domänenkonto verwenden, das Mitglied der Gruppe der lokalen Administratoren ist und über Berechtigungen zum Erstellen von Objekten in Active Directory verfügt. Verwenden Sie dieses Konto für den Rest der Konfiguration.
-
-1. [Fügen Sie jedem virtuellen Computer Failoverclustering hinzu](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms).
-
-   Führen Sie die folgenden Schritte auf beiden virtuellen Computern aus, um das Failoverclustering über die Benutzeroberfläche zu installieren:
-   1. Wählen Sie unter **Server-Manager** die Option **Verwalten** und dann **Rollen und Features hinzufügen** aus.
-   1. Wählen Sie im **Assistenten zum Hinzufügen von Rollen und Features** die Option **Weiter** aus, bis Sie zu **Features auswählen** gelangen.
-   1. Wählen Sie in **Features auswählen** die Option **Failoverclustering** aus. Schließen Sie alle erforderlichen Features und Verwaltungstools ein. 
-   1. Wählen Sie **Features hinzufügen** aus.
-   1. Wählen Sie **Weiter** und dann **Fertig stellen** aus, um die Features zu installieren.
-
-   Führen Sie zum Installieren von Failoverclustering mithilfe von PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus:
-
-   ```powershell
-   $nodes = ("<node1>","<node2>")
-   Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
-   ```
-
-
-
-## <a name="create-failover-cluster"></a>Erstellen des Failoverclusters
-
-Für das Erstellen des Failoverclusters benötigen Sie Folgendes:
-
-- Die Namen der virtuellen Computer, die zu Clusterknoten werden.
-- Einen Namen für den Failovercluster.
-- Eine IP-Adresse für den Failovercluster. Sie können eine IP-Adresse verwenden, die nicht in demselben virtuellen Azure-Netzwerk und Subnetz wie die Clusterknoten genutzt wird.
-
-
-# <a name="windows-server-2012---2016"></a>[Windows Server 2012 bis 2016](#tab/windows2012)
-
-Mit dem folgenden PowerShell-Befehl wird ein Failovercluster für Windows Server 2012 bis Windows Server 2016 erstellt. Aktualisieren Sie das Skript mit den Namen der Knoten (Namen virtueller Computer) und einer verfügbaren IP-Adresse aus dem virtuellen Azure-Netzwerk.
-
-```powershell
-New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
-```   
-
-# <a name="windows-server-2019"></a>[Windows Server 2019](#tab/windows2019)
-
-Mit dem folgenden PowerShell-Befehl wird ein Failovercluster für Windows Server 2019 erstellt.  Aktualisieren Sie das Skript mit den Namen der Knoten (Namen virtueller Computer) und einer verfügbaren IP-Adresse aus dem virtuellen Azure-Netzwerk.
-
-```powershell
-New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
-```
-
-Weitere Informationen finden Sie unter [Failovercluster: Cluster Network Object](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97).
-
----
 
 ## <a name="configure-quorum"></a>Konfigurieren des Quorums
 
-Obwohl der Datenträgerzeuge die resilienteste Quorumoption ist, erfordert er einen freigegebenen Azure-Datenträger, der für die Konfiguration mit Premium-Dateifreigaben einige Einschränkungen für die Failoverclusterinstanz erzwingt. Daher ist der Cloudzeuge die empfohlene Quorumlösung für eine derartige Clusterkonfiguration für SQL Server auf Azure-VMs. Konfigurieren Sie andernfalls einen Dateifreigabenzeugen. 
+Der Cloud Witness ist die empfohlene Quorum-Lösung für diese Art von Clusterkonfiguration für SQL Server auf Azure-VMs.  
 
 Wenn Sie im Cluster über eine gerade Anzahl von Stimmen verfügen, konfigurieren Sie die [Quorumlösung](hadr-cluster-quorum-configure-how-to.md), die Ihren Geschäftsanforderungen am besten entspricht. Weitere Informationen finden Sie unter [Quorum mit SQL Server-VMs](hadr-windows-server-failover-cluster-overview.md#quorum). 
 
 ## <a name="validate-cluster"></a>Validieren des Clusters
 
-Führen Sie die Validierung für den Cluster auf der Benutzeroberfläche oder mit PowerShell durch.
+Validieren Sie den Cluster auf einer der virtuellen Maschinen mithilfe der Failover Cluster Manager-Benutzeroberfläche oder PowerShell.
 
 Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem der beiden virtuellen Computer folgendermaßen vor:
 
@@ -138,15 +97,14 @@ Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Auswählen von Tests zur Überprüfung des Clusters":::
 
 1. Wählen Sie **Weiter** aus.
-1. Wählen Sie unter **Bestätigung** die Option **Weiter** aus.
+1. Wählen Sie unter **Bestätigung** die Option **Weiter** aus. Der **Konfigurationsüberprüfungs-Assistent** führt die Validierungstests aus.
 
-Der **Konfigurationsüberprüfungs-Assistent** führt die Validierungstests aus.
 
 Führen Sie zum Validieren des Clusters mit PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus:
 
-   ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
-   ```
+```powershell
+Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+```
 
 
 
@@ -173,26 +131,46 @@ Nachdem Sie den Failovercluster konfiguriert haben, können Sie die SQL Server-F
 
 1. Wählen Sie **Neue SQL Server-Failoverclusterinstallation** aus, und befolgen Sie dann die Anweisungen im Assistenten, um die SQL Server-FCI zu installieren.
 
-   Die FCI-Datenverzeichnisse müssen sich auf der Premium-Dateifreigabe befinden. Geben Sie den vollständigen Pfad der Freigabe im folgenden Format ein: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Eine Warnung wird angezeigt, die Sie darüber informiert, dass Sie einen Dateiserver als Datenverzeichnis angegeben haben. Diese Warnung ist erwartungsgemäß. Vergewissern Sie sich zur Vermeidung möglicher Fehler, dass das Benutzerkonto, mit dem Sie beim persistenten Speichern der Dateifreigabe über RDP auf die VM zugegriffen haben, dasselbe Konto ist, das der SQL Server-Dienst verwendet.
+1. Auf der Seite **Cluster-Netzwerkkonfiguration** variiert die IP, die Sie angeben, je nachdem, ob Ihre SQL Server-VMs in einem einzelnen Subnetz oder in mehreren Subnetzen bereitgestellt wurden. 
+
+   1. Für eine **Einzelsubnetz-Umgebung** geben Sie die IP-Adresse an, die Sie dem [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) hinzufügen möchten.
+   1. Für eine **Multi-Subnetz-Umgebung**, geben Sie die sekundäre IP-Adresse im Subnetz der _ersten_ SQL Server-VM an, die Sie zuvor als [IP-Adresse des Netzwerknamens der Failover-Cluster-Instanz](failover-cluster-instance-prepare-vm.md#assign-secondary-ip-addresses) festgelegt haben:
+
+   :::image type="content" source="./media/failover-cluster-instance-azure-shared-disk-manually-configure/sql-install-cluster-network-secondary-ip-vm-1.png" alt-text="Bieten Sie die sekundäre IP-Adresse im Subnetz der ersten SQL Server-VM an, die Sie zuvor als IP-Adresse des Netzwerknamens der Failover-Cluster-Instanz festgelegt haben":::
+
+1. In **Database Engine Configuration** müssen sich die Datenverzeichnisse auf der Premium-Dateifreigabe befinden. Geben Sie den vollständigen Pfad der Freigabe im folgenden Format ein: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Es erscheint eine Warnung, die Sie darauf hinweist, dass Sie einen Dateiserver als Datenverzeichnis angegeben haben. Diese Warnung ist erwartungsgemäß. Vergewissern Sie sich zur Vermeidung möglicher Fehler, dass das Benutzerkonto, mit dem Sie beim persistenten Speichern der Dateifreigabe über RDP auf die VM zugegriffen haben, dasselbe Konto ist, das der SQL Server-Dienst verwendet.
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Verwenden der Dateifreigabe als SQL-Datenverzeichnisse":::
 
-1. Nach Abschluss der Schritte des Assistenten wird vom Setup eine SQL Server-FCI auf dem ersten Knoten installiert.
+1. Nachdem Sie die Schritte im Assistenten abgeschlossen haben, installiert Setup eine SQL Server FCI auf dem ersten Knoten.
 
-1. Nachdem das Setup die FCI auf dem ersten Knoten installiert hat, können Sie per RDP eine Verbindung mit dem zweiten Knoten herstellen.
+1. Nachdem die FCI-Installation auf dem ersten Knoten erfolgreich war, verbinden Sie sich über RDP mit dem zweiten Knoten.
 
 1. Öffnen Sie das **SQL Server-Installationscenter**, und wählen Sie **Installation** aus.
 
-1. Wählen Sie **Knoten einem SQL Server-Failovercluster hinzufügen** aus. Befolgen Sie die Anweisungen im Assistenten, um SQL Server zu installieren und die Serverinstanz der FCI hinzuzufügen.
+1. Wählen Sie **Knoten einem SQL Server-Failovercluster hinzufügen** aus. Folgen Sie den Anweisungen des Assistenten, um SQL Server zu installieren und den Knoten zur FCI hinzuzufügen.
 
-   >[!NOTE]
-   >Wenn Sie ein Azure Marketplace-Katalogimage mit SQL Server verwendet haben, sind die SQL Server-Tools im Image enthalten. Wenn Sie keines dieser Images verwendet haben, müssen Sie die SQL Server-Tools separat installieren. Weitere Informationen finden Sie unter [Herunterladen von SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+1. Für ein Szenario mit mehreren Subnetzen geben Sie in **Cluster-Netzwerkkonfiguration** die sekundäre IP-Adresse im Subnetz der _zweiten_ SQL Server-VM ein, die Sie zuvor als [IP-Adresse des Netzwerknamens der Failover-Clusterinstanz](failover-cluster-instance-prepare-vm.md#assign-secondary-ip-addresses)
+
+    :::image type="content" source="./media/failover-cluster-instance-azure-shared-disk-manually-configure/sql-install-cluster-network-secondary-ip-vm-2.png" alt-text="Geben Sie die sekundäre IP-Adresse im Subnetz des zweiten SQL Server VM-Subnetzes ein, das Sie zuvor als IP-Adresse des Netzwerknamens der Failover-Cluster-Instanz festgelegt haben":::
+
+    Nach Auswahl von **Weiter** in **Cluster-Netzwerkkonfiguration** zeigt das Setup ein Dialogfeld an, das anzeigt, dass das SQL Server-Setup mehrere Subnetze erkannt hat, wie im Beispielbild.  Klicken Sie auf **Ja**, um zu bestätigen. 
+
+    :::image type="content" source="./media/failover-cluster-instance-azure-shared-disk-manually-configure/sql-install-multi-subnet-confirmation.png" alt-text="Multi-Subnetz-Bestätigung":::
+   
+
+1. Nachdem Sie die Anweisungen des Assistenten ausgeführt haben, fügt das Setup den zweiten SQL Server FCI-Knoten hinzu. 
 
 1. Wiederholen Sie diese Schritte auf allen anderen Knoten, die Sie der SQL Server-Failoverclusterinstanz hinzufügen möchten. 
 
-## <a name="register-with-the-sql-vm-rp"></a>Registrieren beim SQL-VM-RP
 
-Wenn Sie Ihre SQL Server-VM im Portal verwalten möchten, registrieren Sie die VM mit der SQL-IaaS-Agent-Erweiterung im [Verwaltungsmodus „Lightweight“](sql-agent-extension-manually-register-single-vm.md#lightweight-mode). Dies ist derzeit der einzige Modus, der mit FCI und SQL Server auf Azure-VMs unterstützt wird. 
+>[!NOTE]
+> Die Galeriebilder des Azure Marketplace werden mit installiertem SQL Server Management Studio geliefert. Wenn Sie kein Marketplace-Image verwendet haben [Laden Sie SQL Server Management Studio (SSMS) herunter ](/sql/ssms/ownload-sql-server-management-studio-ssms).
+
+
+## <a name="register-with-sql-iaas-extension"></a>Registrieren mit SQL-IaaS-Erweiterung 
+
+Um Ihre SQL Server-VM über das Portal zu verwalten, registrieren Sie sie mit der SQL IaaS Agent-Erweiterung im [leichtgewichtigen Verwaltungsmodus](sql-agent-extension-manually-register-single-vm.md#lightweight-mode), dem derzeit einzigen Modus, der mit FCI und SQL Server auf Azure-VMs unterstützt wird. 
 
 Registrieren Sie eine SQL Server-VM im Modus „Lightweight“ mit PowerShell (-LicenseType `PAYG` oder `AHUB`):
 
@@ -205,9 +183,9 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
    -LicenseType ???? -SqlManagementType LightWeight  
 ```
 
-## <a name="configure-connectivity"></a>Konfigurieren von Konnektivität 
+## <a name="configure-connectivity"></a>Konfigurieren von Konnektivität
 
-Sie können einen VNet-Namen oder einen Namen für ein verteiltes Netzwerk für eine Failoverclusterinstanz konfigurieren. Machen Sie sich mit den [Unterschieden zwischen den beiden Optionen](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn) vertraut, und stellen Sie dann entweder einen [Namen eines verteilten Netzwerks](failover-cluster-instance-distributed-network-name-dnn-configure.md) oder einen [Namen eines virtuellen Netzwerks](failover-cluster-instance-vnn-azure-load-balancer-configure.md) für Ihre Failoverclusterinstanz bereit.
+Wenn Sie Ihre SQL Server-VMs in mehreren Subnetzen bereitgestellt haben, überspringen Sie diesen Schritt. Wenn Sie Ihre SQL Server-VMs in einem einzigen Subnetz bereitgestellt haben, müssen Sie eine zusätzliche Komponente konfigurieren, um den Datenverkehr zu Ihrer FCI zu leiten. Sie können einen virtuellen Netzwerknamen (VNN) mit einem Azure Load Balancer oder einen verteilten Netzwerknamen für eine Failover-Cluster-Instanz konfigurieren. [Überprüfen Sie die Unterschiede zwischen den beiden](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn) und stellen Sie dann entweder einen [verteilten Netzwerknamen](failover-cluster-instance-distributed-network-name-dnn-configure.md) oder einen [virtuellen Netzwerknamen und Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) für Ihre Failover-Cluster-Instanz bereit.  
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -220,9 +198,6 @@ Sie können einen VNet-Namen oder einen Namen für ein verteiltes Netzwerk für 
 - Datenbanken, die das In-Memory-OLTP-Feature verwenden, werden auf einer Failoverclusterinstanz, die mit einer Premium-Dateifreigabe bereitgestellt wird, nicht unterstützt. Wenn Ihr Unternehmen In-Memory-OLTP erfordert, sollten Sie stattdessen die Bereitstellung Ihrer FCI mit [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) oder [direkten Speicherplätzen](failover-cluster-instance-storage-spaces-direct-manually-configure.md) in Betracht ziehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Wenn dies noch nicht geschehen ist, konfigurieren Sie die Konnektivität mit Ihrer FCI mit einem [virtuellen Netzwerknamen und einem Azure-Lastenausgleich](failover-cluster-instance-vnn-azure-load-balancer-configure.md) oder einem [verteilten Netzwerknamen (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
-
 
 Wenn Premium-Dateifreigaben nicht die richtige FCI-Speicherlösung für Sie sind, können Sie Ihre FCI mithilfe von [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) oder von [Direkte Speicherplätze](failover-cluster-instance-storage-spaces-direct-manually-configure.md) erstellen. 
 

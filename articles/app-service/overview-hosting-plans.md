@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8e1348040bb496448d85c8d1bec3b9621025bf22
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: b6b07624265f4ec33079780f477ebd1b36d9ffab
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653591"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132525050"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -23,13 +23,13 @@ Wenn Sie einen App Service-Plan in einer bestimmten Region (z.B. „Europa, West
 - Region („USA, Westen“, „USA, Osten“ usw.)
 - Anzahl von VM-Instanzen
 - Größe von VM-Instanzen (Klein, Mittel, Groß)
-- Tarif (Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated)
+- Tarif (Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2)
 
 Mit dem _Tarif_ eines App Service-Plans wird ermittelt, welche App Service-Features Sie erhalten und welche Kosten für den Plan anfallen. Welche Tarife für Ihren App Service-Plan verfügbar sind, hängt vom Betriebssystem ab, das bei der Erstellung ausgewählt wurde. Es gibt verschiedene Kategorien von Tarifen:
 
 - **Freigegebene Computeressourcen**: Bei **Free** und **Shared** (die beiden Basistarife) wird eine App auf derselben Azure-VM wie andere App Service-Apps ausgeführt, z.B. Apps anderer Kunden. Für diese Tarife werden CPU-Kontingente für jede App zugeteilt, die auf den freigegebenen Ressourcen ausgeführt wird, und für die Ressourcen ist das Aufskalieren nicht möglich.
 - **Dedizierte Computeressourcen**: In den Tarifen **Basic**, **Standard**, **Premium**, **PremiumV2** und **PremiumV3** werden Apps auf dedizierten Azure-VMs ausgeführt. Nur für Apps desselben App Service-Plans werden dieselben Computeressourcen gemeinsam genutzt. Je höher der Tarif, desto mehr VM-Instanzen stehen Ihnen für das horizontale Hochskalieren zur Verfügung.
-- **Isoliert**: In diesem Tarif werden dedizierte Azure-VMs in dedizierten virtuellen Azure-Netzwerken ausgeführt. Er stellt zusätzlich zur Computeisolation Netzwerkisolation für Ihre Apps bereit. Sie verfügen hiermit über die maximalen Funktionen für die horizontale Skalierung.
+- **Isolated**: In diesen Tarifen **Isolated** und **IsolatedV2** werden dedizierte Azure-VMs in dedizierten virtuellen Azure-Netzwerken ausgeführt. Er stellt zusätzlich zur Computeisolation Netzwerkisolation für Ihre Apps bereit. Sie verfügen hiermit über die maximalen Funktionen für die horizontale Skalierung.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -70,7 +70,7 @@ Mit Ausnahme des Tarifs **Free** fällt für einen App Service-Plan eine Gebühr
 
 - Beim Tarif **Shared** erhält jede App ein Kontingent von CPU-Minuten, sodass für _jede App_ eine Gebühr gemäß dem CPU-Kontingent anfällt.
 - Bei dedizierten Computetarifen (**Basic**, **Standard**, **Premium**, **PremiumV2**, **PremiumV3**) ist im App Service-Plan die Anzahl von VM-Instanzen definiert, auf die Apps skaliert werden. Für _jede VM-Instanz_ des App Service-Plans fällt also eine Gebühr an. Diese VM-Instanzen werden unabhängig davon, wie viele Apps darauf ausgeführt werden, jeweils gleich berechnet. Informieren Sie sich unter [Manage an App Service plan in Azure](app-service-plan-manage.md#delete) (Verwalten eines App Service-Plans in Azure), um unerwartete Gebühren zu vermeiden.
-- Beim Tarif **Isolated** definiert die App Service-Umgebung die Anzahl von isolierten Workern, die zum Ausführen Ihrer Apps verwendet werden, und _jeder Worker_ wird berechnet. Darüber hinaus fällt eine Stempelgebührpauschale für die Ausführung der eigentlichen App Service-Umgebung an.
+- Bei den Tarifen **Isolated** und **IsolatedV2** definiert die App Service-Umgebung die Anzahl von isolierten Workern, die zum Ausführen Ihrer Apps verwendet werden, und _jeder Worker_ wird berechnet. Darüber hinaus fällt im Tarif **Isolated** eine Stempelgebührenpauschale für die Ausführung der eigentlichen App Service-Umgebung an.
 
 Für die Nutzung der App Service-Features, die für Sie verfügbar sind (Konfiguration von benutzerdefinierten Domänen, TLS/SSL-Zertifikaten, Bereitstellungsslots, Sicherungen usw.), fallen keine Gebühren an. Es gelten folgende Ausnahmen:
 

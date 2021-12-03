@@ -1,22 +1,22 @@
 ### YamlMime:Landing
-title: Dokumentation zu Flexible Server (Vorschau)
-summary: Azure Database for PostgreSQL Flexible Server (Vorschau) ist ein vollständig verwaltetes Angebot vom Typ „PostgreSQL-Database-as-a-Service“, bei dem geschäftskritische Workloads mit vorhersagbarer Leistung und dynamischer Skalierung verarbeitet werden können. Beim Entwickeln von Anwendungen mit Azure Database for PostgreSQL können Sie die Open-Source-Tools und die Plattform Ihrer Wahl verwenden. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Flexible Server verwenden.
+title: Dokumentation zu Flexible Server
+summary: 'Azure Database for PostgreSQL: Flexible Server ist ein vollständig verwaltetes PostgreSQL-Datenbank-as-a-Service-Angebot, das unternehmenskritische Workloads mit vorhersagbarer Leistung und dynamischer Skalierbarkeit verarbeiten kann. Beim Entwickeln von Anwendungen mit Azure Database for PostgreSQL können Sie die Open-Source-Tools und die Plattform Ihrer Wahl verwenden. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Flexible Server verwenden.'
 metadata:
-  title: Azure Database for PostgreSQL Flexible Server (Vorschau)
-  description: Azure Database for PostgreSQL Flexible Server (Vorschau) ist ein relationaler Datenbankdienst in Microsoft Cloud für Entwickler, der von der PostgreSQL Community-Edition unterstützt wird.
+  title: Azure Database for PostgreSQL – Flexible Server
+  description: 'Azure Database for PostgreSQL: Flexible Server ist ein relationaler Datenbankdienst in der Microsoft-Cloud, der für Entwickler entwickelt und von der PostgreSQL Community Edition unterstützt wird.'
   author: sunilagarwal
   ms.author: sunila
-  ms.date: 09/22/2020
+  ms.date: 11/30/2021
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 4ab2a940f0fdb18b60d626cb96813b708860f8ae
-  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+  ms.openlocfilehash: a9f0d9faf5ff1f1d9a6db416363f86c779c64ae5
+  ms.sourcegitcommit: dcf3424d7149fceaea0340eb0657baa2c27882a5
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122779685"
+  ms.lasthandoff: 11/30/2021
+  ms.locfileid: "133268656"
 landingContent:
-- title: Informationen zu Flexible Server (Vorschau)
+- title: Informationen zu Flexible Server
   linkLists:
   - linkListType: overview
     links:
@@ -58,6 +58,8 @@ landingContent:
       url: concepts-logical.md
     - text: Intelligente Optimierung
       url: concepts-intelligent-tuning.md
+    - text: Azure Advisor-Empfehlungen
+      url: concepts-azure-advisor-recommendations.md
   - linkListType: how-to-guide
     links:
     - text: Verwalten des Servers

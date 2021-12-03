@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 11/10/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 43949ff051357868e6a291436d343332bfec71d3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 93b4487d2bf4d4af1638917f5d88f906dc3b758a
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131424513"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179524"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Benutzerdefinierte E-Mail-Überprüfung mit Mailjet
 
@@ -177,6 +177,8 @@ Wenn Sie ein Mailjet-Konto erstellt und den Mailjet-API-Schlüssel in einem Azur
     1. Wählen Sie **Speichern** aus.
 1. Wählen Sie rechts oben die Option **Speichern und veröffentlichen** aus, und wählen Sie dann **Ja, Änderungen veröffentlichen** aus.
 1. Notieren Sie sich die **Vorlagen-ID** der von Ihnen erstellten Vorlage zur Verwendung in einem späteren Schritt. Diese ID geben Sie an, wenn Sie [die Anspruchstransformation hinzufügen](#add-the-claims-transformation).
+
+[!INCLUDE [active-directory-b2c-important-for-custom-email-provider](../../includes/active-directory-b2c-important-for-custom-email-provider.md)]
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Hinzufügen von Azure AD B2C-Anspruchstypen
 
@@ -401,7 +403,7 @@ Fügen Sie wie bei den technischen Profilen für Einmalkennwörter dem `<ClaimsP
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>Erstellen eines Verweises auf das DisplayControl-Element
 
-Fügen Sie im letzten Schritt einen Verweis auf das erstellte DisplayControl-Element hinzu. Ersetzen Sie Ihre selbstbestätigten technischen Profile `LocalAccountSignUpWithLogonEmail` und `LocalAccountDiscoveryUsingEmailAddress` durch Folgendes. Wenn Sie eine ältere Version der Azure AD B2C-Richtlinie verwendet haben. In diesen technischen Profilen wird `DisplayClaims` mit einem Verweis auf „DisplayControl“ verwendet.
+Fügen Sie im letzten Schritt einen Verweis auf das erstellte DisplayControl-Element hinzu. Überschreiben Sie Ihre bestehenden `LocalAccountSignUpWithLogonEmail` und `LocalAccountDiscoveryUsingEmailAddress` selbstbestätigten technischen Profile, die in der Basisrichtlinie konfiguriert sind, mit dem folgenden XML-Schnipsel. Wenn Sie eine frühere Version der Azure AD B2C-Richtlinie verwendet haben, verwenden diese technischen Profile `DisplayClaims` mit einem Verweis auf die `DisplayControl`.
 
 Weitere Informationen finden Sie unter [Selbstbestätigtes technisches Profil](restful-technical-profile.md) und [DisplayControl](display-controls.md).
 
@@ -476,7 +478,7 @@ Zum Lokalisieren der E-Mail müssen Sie lokalisierte Zeichenfolgen an Mailjet od
     <!--
     <BuildingBlocks> -->
       <Localization Enabled="true">
-        <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+        <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
           <SupportedLanguage>en</SupportedLanguage>
           <SupportedLanguage>es</SupportedLanguage>
         </SupportedLanguages>
@@ -571,9 +573,7 @@ Mithilfe des Localization-Elements können Sie mehrere Gebietsschemas oder Sprac
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ein Beispiel für eine Richtlinie für die benutzerdefinierte E-Mail-Überprüfung finden Sie auf GitHub:
-
-- [Custom email verification - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol) (Benutzerdefinierte E-Mail-Überprüfung – Display Controls)
+- Ein Beispiel für eine [Benutzerdefinierte E-Mail-Überprüfung - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol/policy/Mailjet) finden Sie auf GitHub.
 - Informationen zur Verwendung einer benutzerdefinierten REST-API oder eines HTTP-basierten SMTP-E-Mail-Anbieters finden Sie unter [Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Azure AD B2C-Richtlinie](restful-technical-profile.md).
 
 ::: zone-end

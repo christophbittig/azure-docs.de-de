@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: overview
 author: peterclu
 ms.author: peterlu
-ms.date: 08/23/2021
+ms.date: 10/21/2021
 adobe-target: true
-ms.openlocfilehash: d2b3a18341c782cf848ebd8740577004340be0f8
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 09f4a047d3cccb5b34834a9315893c4c1687bc1b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351896"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556234"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 
@@ -44,7 +44,7 @@ Studio bietet abhängig vom Projekttyp und von der Erfahrung der Benutzer versch
 
 + **Azure Machine Learning-Designer**
 
-  Verwenden Sie den Designer zum Trainieren und Bereitstellen von Machine Learning-Modellen, ohne Code schreiben zu müssen. Verschieben Sie Datasets und Module per Drag & Drop, um ML-Pipelines zu erstellen. Probieren Sie das [Tutorial zum Designer](tutorial-designer-automobile-price-train-score.md) aus.
+  Verwenden Sie den Designer zum Trainieren und Bereitstellen von Machine Learning-Modellen, ohne Code schreiben zu müssen. Verschieben Sie Datasets und Komponenten per Drag & Drop, um ML-Pipelines zu erstellen. Probieren Sie das [Tutorial zum Designer](tutorial-designer-automobile-price-train-score.md) aus.
 
     ![Azure Machine Learning-Designer: Beispiel](media/concept-designer/designer-drag-and-drop.gif)
 

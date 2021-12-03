@@ -4,7 +4,7 @@ description: Bietet Ihnen eine Lösung für fehlende Daten in heruntergeladenen 
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5003d7b644a0c75401a17ed6a37f31acd8180aa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9084d30ad8fe978defa7f336030535f7b4a97a1a
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85608074"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995405"
 ---
 # <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Ich finde nicht alle Daten in den Azure Active Directory-Aktivitätsprotokollen, die ich heruntergeladen habe.
 
@@ -42,5 +42,5 @@ Mithilfe von [Azure AD-Berichterstellungs-APIs](concept-reporting-api.md) könne
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Azure Active Directory-Berichte: häufig gestellte Fragen](reports-faq.md)
+* [Azure Active Directory-Berichte: häufig gestellte Fragen](reports-faq.yml)
 

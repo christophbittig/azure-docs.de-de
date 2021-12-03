@@ -9,14 +9,15 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: c9f738f95e11ab29fc5163b69812037410e79e8a
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a62feb0ea2aeb96a80002a40aa7bf905690e197c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114361103"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318316"
 ---
-# <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Tutorial: Stimmungsanalyse mit Cognitive Services (Vorschau)
+# <a name="tutorial-sentiment-analysis-with-cognitive-services"></a>Tutorial: Stimmungsanalyse mit Cognitive Services
 
 In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Synapse Analytics problemlos mit [Azure Cognitive Services](../../cognitive-services/index.yml) anreichern können. Hier werden die Funktionen der [Textanalyse](../../cognitive-services/text-analytics/index.yml) für eine Stimmungsanalyse verwendet. 
 
@@ -73,40 +74,30 @@ Für dieses Tutorial wird eine Spark-Tabelle benötigt.
 
    ![Screenshot: Auswahl für das Öffnen des Bewertungs-Assistenten](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00d.png)
 
-2. Ein Konfigurationsbereich wird angezeigt, und Sie werden aufgefordert, ein Cognitive Services-Modell auszuwählen. Wählen Sie **Textanalyse – Standpunktanalyse**“ aus.
+2. Ein Konfigurationsbereich wird angezeigt, und Sie werden aufgefordert, ein Cognitive Services-Modell auszuwählen. Wählen Sie **Gefühlsanalyse**.
 
-   ![Screenshot: Auswählen eines Cognitive Services-Modells](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00e.png)
-
-## <a name="provide-authentication-details"></a>Angeben von Authentifizierungsdetails
-
-Für die Authentifizierung bei Cognitive Services müssen Sie auf das Geheimnis für Ihren Schlüsseltresor verweisen. Die folgenden Eingaben sind abhängig von [erforderlichen Schritten](tutorial-configure-cognitive-services-synapse.md), die Sie zu diesem Zeitpunkt bereits abgeschlossen haben sollten.
-
-- **Azure-Abonnement**: Wählen Sie das Abonnement aus, zu dem Ihre Key Vault-Instanz gehört.
-- **Cognitive Services-Konto:** Geben Sie die Textanalyseressource ein, mit der Sie eine Verbindung herstellen.
-- **Mit Azure Key Vault verknüpfter Dienst:** Im Rahmen der erforderlichen Schritte haben Sie einen verknüpften Dienst für Ihre Textanalyseressource erstellt. Wählen Sie ihn hier aus.
-- **Geheimnisname**: Geben Sie den Namen des Geheimnisses in Ihrem Schlüsseltresor ein, der den Schlüssel zum Authentifizieren bei Ihrer Cognitive Services-Ressource enthält.
-
-![Screenshot: Authentifizierungsdetails für einen Schlüsseltresor](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00f.png)
+   ![Screenshot: Auswählen eines Cognitive Services-Modells](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-choose.png)
 
 ## <a name="configure-sentiment-analysis"></a>Konfigurieren der Stimmungsanalyse
 
 Konfigurieren Sie als Nächstes die Stimmungsanalyse. Wählen Sie die folgenden Details aus:
+- **Azure Cognitive Services verknüpfter Dienst**: Als Teil der vorausgesetzten Schritte haben Sie einen verknüpften Dienst zu Ihren [Cognitive Services](tutorial-configure-cognitive-services-synapse.md) erstellt. Wählen Sie ihn hier aus.
 - **Sprache:** Wählen Sie **Englisch** als Sprache des Texts aus, für den Sie eine Stimmungsanalyse durchführen möchten.
 - **Textspalte**: Wählen Sie die Spalte **comment (string)** (Kommentar (Zeichenfolge)) als die Textspalte in Ihrem Dataset aus, die Sie analysieren möchten, um die Stimmung zu ermitteln.
 
 Wenn Sie fertig sind, wählen Sie **Notebook öffnen** aus. Dadurch wird ein Notebook mit PySpark-Code generiert, der die Stimmungsanalyse mithilfe von Azure Cognitive Services durchführt.
 
-![Screenshot: Auswahl für die Konfiguration der Stimmungsanalyse](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00g.png)
+![Screenshot: Auswahl für die Konfiguration der Stimmungsanalyse](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-config.png)
 
 ## <a name="run-the-notebook"></a>Ausführen des Notebooks
 
-Das soeben geöffnete Notebook verwendet die [mmlspark-Bibliothek](https://github.com/Azure/mmlspark), um eine Verbindung mit Cognitive Services herzustellen. Mit den von Ihnen bereitgestellten Azure Key Vault-Details können Sie auf sichere Weise auf Ihre Geheimnisse verweisen, ohne sie offenzulegen.
+Das soeben geöffnete Notebook verwendet die [SynapseML-Bibliothek](https://github.com/microsoft/SynapseML), um eine Verbindung mit Cognitive Services herzustellen. Der mit Azure Cognitive Services verknüpfte Dienst, den Sie bereitgestellt haben, ermöglicht es Ihnen, Ihren kognitiven Dienst aus dieser Erfahrung heraus sicher zu referenzieren, ohne irgendwelche Geheimnisse preiszugeben.
 
-Nun können Sie alle Zellen ausführen, um Ihre Daten mit Stimmungen anzureichern. Wählen Sie **Alle ausführen** aus. 
+ Nun können Sie alle Zellen ausführen, um Ihre Daten mit Stimmungen anzureichern. Wählen Sie **Alle ausführen** aus. 
 
 Die Stimmungen werden als **positive** (positiv), **negative** (negativ), **neutral** (neutral) oder **mixed** (gemischt) zurückgegeben. Des Weiteren erhalten Sie Wahrscheinlichkeiten pro Stimmung. Weitere Informationen zur Stimmungsanalyse in Cognitive Services finden Sie [hier](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md).
 
-![Screenshot: Stimmungsanalyse](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
+![Screenshot: Stimmungsanalyse](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-notebook.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Tutorial: Anomalieerkennung mit Azure Cognitive Services](tutorial-cognitive-services-anomaly.md)

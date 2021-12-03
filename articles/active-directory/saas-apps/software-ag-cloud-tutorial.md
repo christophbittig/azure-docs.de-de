@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Software AG Cloud'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Software AG Cloud'
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Software AG Cloud konfigurieren.
 author: jeevansd
 manager: CelesteDG
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/09/2020
+ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 900cb7892331db3e78314a5de6bfb432f40990c6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 25806847c677eaa3751eef55bf4859d65bf6da2c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128558479"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329065"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Software AG Cloud
+# <a name="tutorial-azure-ad-sso-integration-with-software-ag-cloud"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Software AG Cloud
 
 In diesem Tutorial erfahren Sie, wie Sie Software AG Cloud in Azure Active Directory (Azure AD) integrieren. Die Integration von Software AG Cloud in Azure AD ermöglicht Folgendes:
 
@@ -32,14 +32,17 @@ Für die ersten Schritte benötigen Sie Folgendes:
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Software AG Cloud-Abonnement, für das einmaliges Anmelden aktiviert ist
 
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
+
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Software AG Cloud unterstützt **SP**-initiiertes einmaliges Anmelden.
-* Software AG Cloud unterstützt die **Just-In-Time**-Bereitstellung von Benutzern.
+* Software AG Cloud unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-## <a name="adding-software-ag-cloud-from-the-gallery"></a>Hinzufügen von Software AG Cloud aus dem Katalog
+## <a name="add-software-ag-cloud-from-the-gallery"></a>Hinzufügen von Software AG Cloud aus dem Katalog
 
 Zum Konfigurieren der Integration von Software AG Cloud in Azure AD müssen Sie Software AG Cloud aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -49,7 +52,6 @@ Zum Konfigurieren der Integration von Software AG Cloud in Azure AD müssen Sie 
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Software AG Cloud** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Software AG Cloud** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-software-ag-cloud"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Software AG Cloud
 
@@ -70,19 +72,19 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Software AG Cloud** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
-
-    1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: .
-
-        `https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
     1. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein:
 
-        `https://*.softwareag.cloud/auth/realms/TENANT-NAME`
+        `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME`
+    
+    1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: .
+
+        `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`    
 
         > [!NOTE]
         > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Diese Werte erhalten Sie vom [Supportteam für den Software AG Cloud-Client](mailto:support@softwareag.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -94,6 +96,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Kopieren Sie im Abschnitt **Software AG Cloud einrichten** die entsprechenden URLs für Ihre Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
@@ -132,7 +135,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Führen Sie auf der folgenden Seite die folgenden Schritte aus:
 
-    ![Konfigurieren von Software AG Cloud: Folgeschritte](./media/software-ag-cloud-tutorial/saml-1.png)
+    ![Konfigurieren von Software AG Cloud: Folgeschritte](./media/software-ag-cloud-tutorial/configuration.png)
 
     a. Geben Sie in das Textfeld **Identity provider display name** (Anzeigename des Identitätsanbieters) einen gültigen Namen ein, etwa `azure ad`.
 
@@ -154,4 +157,4 @@ Wenn Microsoft Azure in Software AG Cloud als Anbieter konfiguriert ist, könne
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Software AG Cloud können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Software AG Cloud können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

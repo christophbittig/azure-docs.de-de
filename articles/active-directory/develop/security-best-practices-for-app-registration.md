@@ -12,12 +12,12 @@ ms.date: 07/8/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: saumadan, marsma
-ms.openlocfilehash: 7c3398b6f7a2f4de99adfbdf137886278e69a007
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: cd03531e35d51bafeceb2df913e17fc4814e911c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071715"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050570"
 ---
 # <a name="azure-ad-application-registration-security-best-practices"></a>Bewährte Methoden für die Sicherheit bei der Azure AD-Anwendungsregistrierung
 
@@ -96,7 +96,7 @@ Der AppId-URI dient als Präfix für die Bereiche, auf die im API-Code verwiesen
 | Vermeiden von Konflikten durch Verwendung von gültigen URI-Formaten | Verwenden von AppId-URIs mit Platzhaltern |
 | Verwenden einer überprüften Domäne in branchenspezifischen Apps | Fehlerhaft formatierter URI    |
 | Inventarisieren Ihrer AppId-URIs                    |      -----             |
-| Verwenden Sie AppId Uri, um WebApi in Ihrer Organisation zu veröffentlichen| Verwenden Sie AppId Uri, um die Anwendung zu identifizieren, verwenden Sie stattdessen die appId-Eigenschaft|
+| Verwenden Sie den AppId-URI, um WebApi in Ihrer Organisation zu veröffentlichen.| Verwenden Sie nicht den AppId-URI, um die Anwendung zu identifizieren, verwenden Sie stattdessen die appId-Eigenschaft.|
 
 ## <a name="app-ownership-configuration"></a>Konfiguration des App-Besitzes
 

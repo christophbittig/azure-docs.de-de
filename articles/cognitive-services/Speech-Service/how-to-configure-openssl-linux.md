@@ -12,16 +12,16 @@ ms.date: 01/16/2020
 ms.author: jhakulin
 zone_pivot_groups: programming-languages-set-two
 ROBOTS: NOINDEX
-ms.openlocfilehash: 507ade69fc257b52a3fe632fcf652dcd5660d819
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ec2bd2cb46ff96602ed39cf3c9c4e41ddcf5ab33
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104240"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132155990"
 ---
 # <a name="configure-openssl-for-linux"></a>Konfigurieren von OpenSSL für Linux
 
-Bei der Verwendung einer beliebigen Speech SDK-Version vor 1.9.0 wird [OpenSSL](https://www.openssl.org) dynamisch für die Version des Hostsystems konfiguriert. In späteren Versionen des Speech SDK ist OpenSSL statisch mit der Kernbibliothek des Speech SDK verknüpft. In den Speech SDK-Versionen 1.9.0 bis 1.16.0 wird [OpenSSL Version 1.1.1b](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html) verwendet. In der Speech SDK-Version 1.17.0 wird [OpenSSL Version 1.1.1k](https://mta.openssl.org/pipermail/openssl-announce/2021-March/000197.html) verwendet.
+Mit dem Speech SDK Version 1.19.0 und höher wird [OpenSSL](https://www.openssl.org) dynamisch auf die Version des Hostsystems konfiguriert. In früheren Versionen ist OpenSSL statisch mit der Kernbibliothek des SDKs verknüpft.
 
 Um Konnektivität sicherzustellen, überprüfen Sie, ob OpenSSL-Zertifikate auf Ihrem System installiert wurden. Ausführen eines Befehls:
 ```bash
@@ -53,7 +53,7 @@ Legen Sie die Umgebungsvariable `SSL_CERT_FILE` so fest, dass sie auf diese Date
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
 
-## <a name="certificate-revocation-checks"></a>Überprüfungen der Zertifikatsperre
+## <a name="certificate-revocation-checks"></a>Überprüfung von Zertifikatswiderrufen
 Beim Herstellen einer Verbindung mit dem Speech-Dienst überprüft das Speech SDK, ob das vom Speech-Dienst verwendete TLS-Zertifikat widerrufen wurde. Für diese Überprüfung benötigt das Speech SDK Zugriff auf die CRL-Verteilungspunkte für von Azure verwendete Zertifizierungsstellen. Eine Liste der möglichen URLs für den Download von Zertifikatssperrlisten finden Sie in [diesem Dokument](../../security/fundamentals/tls-certificate-changes.md). Wenn ein Zertifikat widerrufen wurde oder die Zertifikatsperrliste nicht heruntergeladen werden kann, bricht das Speech SDK die Verbindung ab und gibt das Canceled-Ereignis aus.
 
 Falls die Konfiguration des Netzwerks, in dem das Speech SDK verwendet wird, den Zugriff auf die URLs für den Download von Zertifikatssperrlisten nicht zulässt, kann die CRL-Überprüfung deaktiviert oder als erfolgreich festgelegt werden, wenn die Zertifikatsperrliste nicht abgerufen werden kann. Diese Konfiguration erfolgt über das Konfigurationsobjekt, das zum Erstellen eines Recognizer-Objekts verwendet wird.

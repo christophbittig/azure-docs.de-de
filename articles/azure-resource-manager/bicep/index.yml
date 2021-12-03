@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 08/18/2021
-  ms.openlocfilehash: 6f4b12d1c4b4293ee32a30475d99810ac16af8a7
-  ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+  ms.date: 11/17/2021
+  ms.openlocfilehash: 7c825fcb85cc311b77e8ea851815a58974a5edf4
+  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/19/2021
-  ms.locfileid: "122445030"
+  ms.lasthandoff: 11/18/2021
+  ms.locfileid: "132754821"
 landingContent:
 - title: Bicep
   linkLists:
@@ -47,28 +47,36 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Verwenden von Funktionen
-      url: ./bicep-functions.md
-    - text: Verwenden von Operatoren
-      url: ./operators.md
-    - text: Verwenden von Datentypen
-      url: ./data-types.md
+    - text: 'Bicep: Dateistruktur und -syntax'
+      url: ./file.md
     - text: Definieren von Parametern
       url: ./parameters.md
     - text: Definieren von Variablen
       url: ./variables.md
     - text: Definieren von Ressourcen
       url: ./resource-declaration.md
+    - text: Definieren von Modulen
+      url: ./modules.md
     - text: Definieren der Ausgaben
       url: outputs.md
   - linkListType: reference
     links:
-    - text: Bicep-Dateistruktur
-      url: ./file.md
+    - text: Functions
+      url: ./bicep-functions.md
+    - text: Operatoren
+      url: ./operators.md
+    - text: Datentypen
+      url: ./data-types.md
     - text: Azure-Schnellstartvorlagen
       url: https://azure.microsoft.com/resources/templates/
 - title: Bereitstellen von Bicep-Dateien
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Bicep mit Pipelines
+      url: add-template-to-azure-pipelines.md
+    - text: Bicep mit GitHub Actions
+      url: deploy-github-actions.md
   - linkListType: how-to-guide
     links:
     - text: PowerShell
@@ -93,6 +101,16 @@ landingContent:
       url: deploy-to-tenant.md
     - text: Eingrenzen von Erweiterungsressourcen
       url: scope-extension-resources.md
+- title: Leitfaden und Muster
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Bewährte Methoden
+      url: best-practices.md
+    - text: Muster für Konfigurationssatz
+      url: patterns-configuration-set.md
+    - text: Datei mit freigegebenen Variablen (Muster)
+      url: patterns-shared-variable-file.md
 - title: Erkunden des Referenzinhalts
   linkLists:
   - linkListType: reference

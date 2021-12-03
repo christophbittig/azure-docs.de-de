@@ -3,12 +3,12 @@ title: Versionshinweise für die Erweiterung für Azure-Web-Apps – Application
 description: Versionshinweise für die Erweiterung für Azure-Web-Apps für Laufzeitinstrumentierung mit Application Insights
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 8b0ddf90f5e6ffbe685c4aea1239323beea6c106
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 84d01a2bcc4e371ca03610f2d002eaaf73159b2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828822"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316031"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Versionshinweise für die Erweiterung für Azure-Web-Apps für Application Insights
 
@@ -25,6 +25,26 @@ Erfahren Sie mehr über die [Erweiterung für Azure-Web-Apps für Application In
     - Deinstallieren Sie private Websiteerweiterungen, da diese nicht mehr unterstützt werden.
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="2842"></a>2.8.42
+
+- JAVA-Erweiterung: Ein Upgrade zu [Java Agent 3.2.0](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.2.0) von 2.5.1.
+- Node.js-Erweiterung: Das AI SDK wurde von 2.1.7 auf [2.1.8](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.8) aktualisiert. Unterstützung für vom Benutzer und vom System zugewiesene AAD verwaltete Identitäten wurde hinzugefügt.
+- .NET Core: Eigenständige Bereitstellungen und .NET 6.0-Unterstützung mit [.NET Startup Hook](https://github.com/dotnet/runtime/blob/main/docs/design/features/host-startup-hook.md) hinzugefügt.
+
+### <a name="2841"></a>2.8.41
+
+- Node.js-Erweiterung: Das AI SDK wurde von 2.1.3 auf [2.1.7](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.7) aktualisiert.
+- .NET Core: Nicht mehr unterstützte Versionen (2.1) wurden entfernt. Unterstützt werden die Versionen 3.1 und 5.0.
+
+### <a name="2840"></a>2.8.40
+
+- Java-Erweiterung: Ein Upgrade von 3.0.2 auf [Java Agent 3.1.1 (GA)](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.1.1) wurde durchgeführt.
+- Node.js-Erweiterung: Das AI SDK wurde von 1.8.8 auf [2.1.3](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.3) aktualisiert.
+
+### <a name="2839"></a>2.8.39
+
+- Unterstützung für .NET Core 5.0 hinzugefügt.
 
 ### <a name="2838"></a>2.8.38
 

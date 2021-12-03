@@ -1,27 +1,27 @@
 ---
 title: 'Schnellstart: Erstellen von Schlüsselwörtern – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
-description: Ihr Gerät lauscht immer auf ein Schlüsselwort (oder einen Ausdruck). Wenn der Benutzer das Schlüsselwort nennt, sendet das Gerät sämtliche nachfolgende Audioaufnahmen an die Cloud, bis der Benutzer aufhört zu sprechen. Durch das Anpassen Ihres Schlüsselworts können Sie Ihr Gerät auf effektive Weise differenzieren und Ihr Branding stärken.
+description: Ihr Gerät lauscht immer auf ein Schlüsselwort (oder einen Ausdruck). Wenn ein Benutzer das Schlüsselwort spricht, sendet Ihr Gerät sein Diktat an die Cloud, bis der Benutzer aufhört zu sprechen. Durch das Anpassen Ihres Schlüsselworts können Sie Ihr Gerät auf effektive Weise differenzieren und Ihr Branding stärken.
 services: cognitive-services
 author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/12/2021
 ms.author: eur
 ms.custom: devx-track-csharp, ignite-fall-2021
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 99c6b58950fa7b40328ff85a07db90104ba17531
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 59756ec624bfc4d716bcf222195f53029be05420
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508611"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493181"
 ---
 # <a name="get-started-with-custom-keyword"></a>Erste Schritte mit dem benutzerdefinierten Schlüsselwort
 
-In diesem Schnellstart erfahren Sie mehr über die Grundlagen der Arbeit mit benutzerdefinierten Schlüsselwörtern mithilfe von Speech Studio und dem Speech SDK. Ein Schlüsselwort ist ein Wort oder ein kurzer Ausdruck, mit dem Ihr Produkt per Sprache aktiviert werden kann. Sie erstellen Schlüsselwortmodelle in Speech Studio und exportieren dann eine Modelldatei, die Sie mit dem Speech SDK in Ihren Anwendungen verwenden.
+In dieser Schnellstartanleitung erfahren Sie die Grundlagen der Arbeit mit benutzerdefinierten Schlüsselwörtern. Ein Schlüsselwort ist ein Wort oder ein kurzer Ausdruck, mit dem Ihr Produkt per Sprache aktiviert werden kann. Sie erstellen Schlüsselwortmodelle in Speech Studio. Exportieren Sie dann eine Modelldatei, die Sie mit dem Speech SDK in Ihren Anwendungen verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,33 +35,38 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 > Benutzerdefinierte Schlüsselwortmodelle und die daraus resultierenden `.table`-Dateien können **nur** in Speech Studio erstellt werden.
 > Sie können keine benutzerdefinierten Schlüsselwörter über das SDK oder mit REST-Aufrufen erstellen.
 
-1. Wechseln Sie zu [Speech Studio](https://aka.ms/sdsdk-speechportal), und **melden Sie sich an**. Wenn Sie kein Speech-Abonnement haben, wählen Sie [**Abonnement erstellen**](https://go.microsoft.com/fwlink/?linkid=2086754) aus.
+1. Wechseln Sie zum [Speech Studio](https://aka.ms/sdsdk-speechportal), und **melden** Sie sich an. Wenn Sie nicht über ein Speech-Abonnement verfügen, wechseln Sie zu [**Erstellen von Speech-Diensten**](https://go.microsoft.com/fwlink/?linkid=2086754).
 
-1. Erstellen Sie auf der Seite [Benutzerdefiniertes Schlüsselwort](https://aka.ms/sdsdk-wakewordportal) ein **neues Projekt**. 
+1. Wählen Sie auf der Seite [Benutzerdefiniertes Schlüsselwort](https://aka.ms/sdsdk-wakewordportal) die Option **Neues Projekt erstellen** aus. 
 
-1. Geben Sie unter **Name** einen Namen und unter **Beschreibung** eine optionale Beschreibung ein, und wählen Sie die Sprache aus. Sie benötigen ein Projekt pro Sprache, und die Unterstützung ist derzeit auf Englisch (USA) und Chinesisch (Mandarin, vereinfacht) beschränkt.
+1. Geben Sie einen **Namen**, eine **Beschreibung** und eine **Sprache** für Ihr benutzerdefiniertes Schlüsselwortprojekt ein. Sie können nur eine Sprache pro Projekt wählen, und die Unterstützung ist derzeit auf Englisch (USA) und Chinesisch (Mandarin, vereinfacht) beschränkt. 
 
-    ![Beschreiben Ihres Schlüsselwortprojekts](media/custom-keyword/custom-kws-portal-new-project.png)
+    ![Beschreiben Ihres Schlüsselwortprojekts](media/custom-keyword/custom-kw-portal-new-project.png)
 
-1. Wählen Sie Ihr Projekt in der Liste aus. 
+1. Wählen Sie den Namen Ihres Projekts aus der Liste aus. 
 
-    ![Auswählen Ihres Schlüsselwortprojekts](media/custom-keyword/custom-kws-portal-project-list.png)
+    :::image type="content" source="media/custom-keyword/custom-kw-portal-project-list.png" alt-text="Wählen Sie Ihr Schlüsselwortprojekt aus.":::
 
-1. Klicken Sie zum Erstellen eines neuen Schlüsselwortmodells auf **Modell trainieren**.
+1. Um ein benutzerdefiniertes Schlüsselwort für Ihren virtuellen Assistenten zu erstellen, wählen Sie **Neues Modell erstellen** aus.
 
-1. Geben Sie einen **Namen** für das Modell, eine optionale **Beschreibung** und das **Schlüsselwort** Ihrer Wahl ein, und klicken Sie dann auf **Weiter**. Weitere Informationen zum Auswählen eines effektiven Schlüsselworts finden Sie in den [Richtlinien](keyword-recognition-guidelines.md#choosing-an-effective-keyword).
+1. Geben Sie einen **Namen** für das Modell, eine **Beschreibung** und ein **Schlüsselwort** Ihrer Wahl ein, und wählen Sie dann **Weiter** aus. Weitere Informationen zum Auswählen eines effektiven Schlüsselworts finden Sie in den [Richtlinien](keyword-recognition-guidelines.md#choosing-an-effective-keyword).
 
-    ![Eingeben Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-new-model.png)
+    ![Eingeben Ihres Schlüsselworts](media/custom-keyword/custom-kw-portal-new-model.png)
 
-1. Im Portal werden nun Kandidaten für die Aussprache Ihres Schlüsselworts erstellt. Hören Sie sich die einzelnen Kandidaten an, indem Sie auf die Wiedergabeschaltflächen klicken. Deaktivieren Sie dann alle nicht ordnungsgemäßen Aussprachevarianten. Wenn nur noch geeignete Aussprachen aktiviert sind, klicken Sie auf **Trainieren**, um mit dem Generieren des Schlüsselwortmodells zu beginnen. 
+1. Im Portal werden nun Kandidaten für die Aussprache Ihres Schlüsselworts erstellt. Hören Sie sich jeden Kandidaten an, indem Sie auf die Wiedergabeschaltflächen klicken und die Häkchen bei den falschen Aussprachen entfernen. Wählen Sie alle Aussprachen aus, die den Erwartungen Ihrer Benutzer entsprechen, und wählen Sie dann **Weiter** aus, um mit der Erstellung des Schlüsselwortmodells zu beginnen. 
 
-    ![Screenshot, der zeigt, wo Sie die richtigen Aussprachen auswählen.](media/custom-keyword/custom-kws-portal-choose-prons.png)
+    :::image type="content" source="media/custom-keyword/custom-kw-portal-choose-prons.png" alt-text="Screenshot, der zeigt, wo Sie die richtigen Aussprachen auswählen.":::
 
-1. Die Generierung des Modells kann bis zu dreißig Minuten dauern. Wenn das Modell fertig ist, ändert sich die Liste mit den Schlüsselwörtern von **Wird verarbeitet...** in **Erfolgreich**. Nun können Sie die Datei herunterladen.
+1. Wählen Sie einen Modelltyp und dann **Erstellen** aus. Eine Liste der Regionen, die den Modelltyp **Erweitert** unterstützen, finden Sie in der Dokumentation zur [Unterstützung von Regionen für die Schlüsselworterkennung](keyword-recognition-region-support.md). 
 
-    ![Überprüfen Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-download-model.png)
+1. Die Generierung des Modells kann bis zu 30 Minuten dauern. Wenn das Modell fertig ist, ändert sich die Liste mit den Schlüsselwörtern von **Wird verarbeitet...** in **Erfolgreich**. 
 
-1. Die heruntergeladene Datei ist ein `.zip`-Archiv. Extrahieren Sie das Archiv, und Sie erhalten eine Datei mit der Erweiterung `.table`. Dies ist die Datei, die Sie mit dem SDK im nächsten Abschnitt verwenden, sodass Sie sich unbedingt den Pfad notieren sollten. Der Dateiname spiegelt Ihren Schlüsselwortnamen wider, z. B. hat ein **Gerät aktivieren**-Schlüsselwort den Dateinamen `Activate_device.table`.
+    :::image type="content" source="media/custom-keyword/custom-kw-portal-review-keyword.png" alt-text="Überprüfen Sie Ihr Schlüsselwort.":::
+
+1. Wählen Sie im reduzierbaren Menü auf der linken Seite die Option **Optimieren** aus, um Ihr Modell zu optimieren und herunterzuladen. Die heruntergeladene Datei ist ein `.zip`-Archiv. Extrahieren Sie das Archiv, und Sie erhalten eine Datei mit der Erweiterung `.table`. Sie verwenden die `.table`-Datei mit dem SDK. Notieren Sie sich daher unbedingt ihren Pfad.
+
+    :::image type="content" source="media/custom-keyword/custom-kw-portal-download-model.png" alt-text="Laden Sie Ihre Modelltabelle herunter.":::
+
 
 ## <a name="use-a-keyword-model-with-the-speech-sdk"></a>Verwenden eines Schlüsselwortmodells mit dem Speech SDK
 

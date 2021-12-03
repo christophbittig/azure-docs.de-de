@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 03/19/2019
-ms.openlocfilehash: d534736e72bb97caa96b1001d379aefd7e3c7c6b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 10/18/2021
+ms.openlocfilehash: ebad0e9da1595d06dc2966d9b0c83dad9680556e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698815"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226790"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -48,18 +48,10 @@ Sowohl Columnstore-Indizes als auch In-Memory-OLTP gehören seit 2012 bzw. 2014 
 
 Aufgrund der effizienteren Abfrage- und Transaktionsverarbeitung tragen In-Memory-Technologien auch zur Kostensenkung bei. Sie müssen in der Regel nicht zu einem höheren Datenbanktarif wechseln, um Leistungsvorteile zu erzielen. In einigen Fällen können Sie möglicherweise sogar zu einem niedrigen Tarif wechseln und dennoch in den Genuss von Leistungsverbesserungen durch In-Memory-Technologien kommen.
 
-Hier sind zwei Beispiele dafür, wie In-Memory-OLTP geholfen hat, die Leistung deutlich zu verbessern:
-
-- Mithilfe von In-Memory-OLTP [konnten Quorum Business Solutions ihre Workload verdoppeln und ihre DTUs um 70 % verbessern](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu).
-- Das folgende Video veranschaulicht die erhebliche Verbesserung der Ressourcennutzung anhand einer Beispielworkload: [Video zu In-Memory-OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB). Weitere Informationen finden Sie in diesem Blogbeitrag: [In-Memory-OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+Mithilfe von In-Memory-OLTP [konnten Quorum Business Solutions ihre Workload verdoppeln und ihre DTUs um 70 % verbessern](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu). Weitere Informationen finden Sie im Blogbeitrag [In-Memory-OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/).
 
 > [!NOTE]  
 > In-Memory-Technologien sind in den Tarifen „Premium“ und „Unternehmenskritisch“ verfügbar.
-
-Im folgenden Video werden potenzielle Leistungssteigerungen durch In-Memory-Technologien erläutert. Denken Sie daran, dass der Leistungsvorteil, den Sie erzielen, stets von vielen Faktoren abhängig ist. Dazu gehören die Art der Workload und Daten, die Zugriffsmuster der Datenbank usw.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-In-Memory-Technologies/player]
->
 
 In diesem Artikel werden Aspekte von In-Memory-OLTP und Columnstore-Indizes beschrieben, die für Azure SQL-Datenbank und Azure SQL Managed Instance spezifisch sind. Außerdem sind darin Beispiele aufgeführt:
 
@@ -88,12 +80,7 @@ Die In-Memory-OLTP-Technologie ermöglicht extrem schnelle Datenzugriffsvorgäng
 > [!Note]
 > Die In-Memory-OLTP-Technologie wurde für Datenstrukturen entwickelt, die vollständig im Arbeitsspeicher verbleiben können. Da die In-Memory-Daten nicht auf einen Datenträger ausgelagert werden können, müssen Sie sicherstellen, dass Sie eine Datenbank mit ausreichend Arbeitsspeicher verwenden. Weitere Informationen finden Sie unter [Datengröße und Speicherkapazität für In-Memory-OLTP](#data-size-and-storage-cap-for-in-memory-oltp).
 
-Eine kurze Einführung zu In-Memory-OLTP finden Sie hier: [Schnellstart 1: In-Memory-OLTP-Technologien für höhere T-SQL-Leistung](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp) (Informationen für den Einstieg).
-
-Ausführliche Videos zu den Technologien:
-
-- [In-Memory-OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (enthält eine Demo der Leistungsvorteile und Schritte zum Reproduzieren dieser Ergebnisse)
-- [Videos zu In-Memory-OLTP: Was es ist und wann/wie es verwendet wird](/archive/blogs/sqlserverstorageengine/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it) (in englischer Sprache)
+- Schnelleinstieg in In-Memory-OLTP: [Schnellstart 1: In-Memory-OLTP-Technologien für höhere T-SQL-Leistung](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp).
 
 Es gibt einen programmgesteuerten Weg, um zu verstehen, ob eine vorhandene Datenbank In-Memory-OLTP unterstützt. Sie können die folgende Transact-SQL-Abfrage ausführen:
 
@@ -198,7 +185,7 @@ Wenn Sie über einen **gruppierten** Columnstore-Index verfügen, ist die gesamt
 
 ### <a name="deeper-information"></a>Weiterführende Informationen
 
-- [Erfahren Sie, wie Quorum die Workload der wichtigen Datenbank verdoppelt, während es die DTU mit In-Memory-OLTP in SQL-Datenbank um 70 % reduziert (in englischer Sprache)](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [Erfahren Sie, wie Quorum die Workload der wichtigen Datenbank verdoppelt, während es die DTU mit In-Memory-OLTP in SQL-Datenbank um 70 % reduziert.](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 - [Blogbeitrag: In-Memory-OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 - [In-Memory OLTP (Arbeitsspeicheroptimierung)](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 - [Beschreibung von Columnstore-Indizes](/sql/relational-databases/indexes/columnstore-indexes-overview)

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
-ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 7fbe4e45e48d3416f530b6845faf702959f92463
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: aaddev
+ms.openlocfilehash: 1e12b2d9512bd7c62a2657e13e74790af6556cd4
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067335"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507757"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO-Plug-In für Apple-Geräte (Vorschau)
 
@@ -221,7 +221,7 @@ Konfigurieren Sie einmaliges Anmelden für die Apps mithilfe der Bundle-IDs.
 
 #### <a name="allow-users-to-sign-in-from-unknown-applications-and-the-safari-browser"></a>Erlauben von Benutzeranmeldungen über unbekannte Anwendungen und den Safari-Browser
 
-Standardmäßig stellt das Microsoft Enterprise SSO-Plug-In einmaliges Anmelden (SSO) für autorisierte Apps nur dann bereit, wenn sich ein Benutzer über eine App angemeldet hat, die eine Microsoft Identity Platform-Bibliothek wie MSAL oder ADAL (Azure Active Directory Authentication Library) verwendet. Das Microsoft Enterprise SSO-Plug-In kann auch freigegebene Anmeldeinformationen abrufen, wenn es beim Beziehen eines neuen Tokens von einer anderen App aufgerufen wird, die eine Microsoft Identity Platform-Bibliothek verwendet.
+Standardmäßig stellt das Microsoft Enterprise SSO-Plug-In einmaliges Anmelden (SSO) für autorisierte Apps nur dann bereit, wenn sich ein Benutzer über eine App angemeldet hat, die eine Microsoft Identity Platform-Bibliothek wie MSAL verwendet. Das Microsoft Enterprise SSO-Plug-In kann auch freigegebene Anmeldeinformationen abrufen, wenn es beim Beziehen eines neuen Tokens von einer anderen App aufgerufen wird, die eine Microsoft Identity Platform-Bibliothek verwendet.
 
 Wenn Sie das Flag `browser_sso_interaction_enabled` aktivieren, können Apps, die keine Microsoft Identity Platform-Bibliothek verwenden, das anfängliche Bootstrapping durchführen und freigegebene Anmeldeinformationen abrufen. Auch der Safari-Browser kann das anfängliche Bootstrapping ausführen und freigegebene Anmeldeinformationen abrufen. 
 

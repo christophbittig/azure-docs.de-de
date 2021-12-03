@@ -3,19 +3,20 @@ title: Vorbereiten von Daten für Custom Speech – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie die Genauigkeit der Spracherkennung von Microsoft testen oder Ihre benutzerdefinierten Modelle trainieren möchten, benötigen Sie Audio- und Textdaten. Auf dieser Seite werden die einzelnen Datentypen, ihre Verwendung und ihre Verwaltung beschrieben.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/08/2021
-ms.author: pafarley
-ms.openlocfilehash: fa62d0e7c24c6a63c63f082333823b5e74a24cf0
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.date: 11/09/2021
+ms.author: eur
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 559081847ae83776bdf2d915cd194ccf6ffddb1f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132279"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546384"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -48,15 +49,16 @@ Die folgende Tabelle enthält die zulässigen Datentypen, gibt an, wann der jewe
 
 | Datentyp | Zum Testen verwendet | Empfohlene Menge | Für Training verwendet | Empfohlene Menge |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Ja<br>Zur visuellen Prüfung verwendet | Mindestens 5 Audiodateien | Nein | – |
+| [Nur Audio](#audio-data-for-testing) | Ja<br>Zur visuellen Prüfung verwendet | Mindestens 5 Audiodateien | Nein | – |
 | [Audio + menschenmarkierte Transkripte](#audio--human-labeled-transcript-data-for-trainingtesting) | Ja<br>Zur Bewertung der Genauigkeit verwendet | 0,5 – 5 Stunden Audio | Ja | 1–20 Stunden Audiodaten |
 | [Nur-Text](#plain-text-data-for-training) | Nein | Nicht zutreffend | Ja | 1 – 200 MB zugehöriger Text |
+| [Strukturierter Text](#structured-text-data-for-training-public-preview) (Öffentliche Vorschauversion) | Nein | Nicht zutreffend | Ja | Bis zu 10 Klassen mit bis zu 4.000 Elementen und bis zu 50.000 Trainingssätzen |
 | [Aussprache](#pronunciation-data-for-training) | Nein | Nicht zutreffend | Ja | 1 KB – 1 MB Aussprachetext |
 
 Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgeladen werden. Jedes Dataset darf nur einen einzelnen Datentyp enthalten.
 
 > [!TIP]
-> Wenn Sie ein neues Modell trainieren, beginnen Sie mit einfachem Text. Diese Daten verbessern das Erkennen von speziellen Begriffen und Ausdrücken bereits. Training mit Textdaten ist deutlich schneller als das Training mit Audiodaten (Minuten vs. Tage).
+> Wenn Sie ein neues Modell trainieren, beginnen Sie entweder mit Nur-Text-Daten oder mit strukturierten Textdaten. Diese Daten verbessern das Erkennen von speziellen Begriffen und Ausdrücken. Training mit Textdaten ist deutlich schneller als das Training mit Audiodaten (Minuten vs. Tage).
 
 > [!NOTE]
 > Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn es von einem Basismodell nicht unterstützt wird, verwendet der Speech-Dienst nur den Text aus den Transkriptionen und ignoriert die Audiodaten. Eine Liste mit Basismodellen, die das Training mit Audiodaten unterstützen, finden Sie unter [Sprachunterstützung](language-support.md#speech-to-text). Selbst wenn ein Basismodell das Training mit Audiodaten unterstützt, verwendet der Dienst möglicherweise nur einen Teil der Audiodaten. Dennoch werden alle Transkriptionen verwendet.
@@ -66,6 +68,11 @@ Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgelade
 > Wenn das im obigen Abschnitt beschriebene Problem auftritt, können Sie die Trainingsdauer schnell verkürzen, indem Sie die Menge der Audiodaten im Dataset verringern oder die Audiodaten ganz daraus entfernen, sodass das Dataset nur noch Text enthält. Letzteres ist sehr empfehlenswert, wenn es sich bei der Region Ihres Abonnements für den Speech-Dienst **nicht** um eine [Region mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account) für Training handelt.
 >
 > In Regionen mit dedizierter Hardware für das Training nutzt der Sprachdienst bis zu 20 Stunden Audiodaten für das Training. In anderen Regionen verwendet er nur bis zu 8 Stunden Audiodaten.
+
+> [!NOTE]
+> Das Training mit strukturiertem Text wird nur für diese Gebietsschemas unterstützt: en-US, en-UK, en-IN, de-DE, fr-FR, fr-CA, es-ES, es-MX. Außerdem müssen Sie das aktuellste Basismodell für diese Gebietsschemas verwenden. 
+>
+> Für Gebietsschemas, die das Training mit strukturiertem Text nicht unterstützen, nimmt der Dienst alle Trainingssätze entgegen, die im Rahmen des Trainings mit Nur-Text-Daten auf keine Klassen verweisen.
 
 ## <a name="upload-data"></a>Hochladen von Daten
 
@@ -85,9 +92,7 @@ Nach dem Hochladen des Datasets haben Sie verschiedene Möglichkeiten:
 
 Sie können die [Spracherkennungs-REST-API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) verwenden, um alle Vorgänge im Zusammenhang mit Ihren benutzerdefinierten Modellen zu automatisieren. Insbesondere können Sie damit ein Dataset hochladen. Dies ist besonders nützlich, wenn Ihre Datasetdatei 128 MB überschreitet, da derart große Dateien nicht mit der Option *Lokale Datei* in Speech Studio hochgeladen werden können. (Sie können für denselben Zweck auch die Option *Azure-Blob oder freigegebener Speicherort* in Speech Studio verwenden, wie im vorherigen Abschnitt beschrieben).
 
-Verwenden Sie eine der folgenden Anforderungen, um ein Dataset zu erstellen und hochzuladen:
-* [Create Dataset (Dataset erstellen)](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)
-* [Create Dataset from Form (Dataset aus Formular erstellen)](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm)
+Verwenden Sie zum Erstellen und Hochladen eines Datasets die Anforderung [Create Dataset](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset).
 
 **Mit der REST-API erstellte Datasets und Speech Studio-Projekte**
 
@@ -95,7 +100,7 @@ Ein mit der Spracherkennungs-REST-API v3.0 erstelltes Dataset wird mit *keinem* 
 
 Wenn Sie sich bei Speech Studio anmelden, werden Sie über die Benutzeroberfläche benachrichtigt, wenn ein nicht verbundenes Objekt gefunden wird (z. B. Datasets, die über die REST-API ohne Projektreferenz hochgeladen wurden), und es wird angeboten, solche Objekte mit einem bestehenden Projekt zu verbinden. 
 
-Um das neue Dataset während des Hochladens mit einem bestehenden Projekt im Speech Studio zu verbinden, verwenden Sie [Create Dataset](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset) (Dataset erstellen) oder [Create Dataset from Form](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm) (Dataset aus Formular erstellen), und füllen Sie die Anforderung gemäß dem folgenden Format aus:
+Verwenden Sie [Create Dataset](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset) (Dataset erstellen), um das neue Dataset während des Hochladens mit einem bestehenden Projekt in Speech Studio zu verbinden, und füllen Sie die Anforderung gemäß dem folgenden Format aus:
 ```json
 {
   "kind": "Acoustic",
@@ -109,7 +114,7 @@ Um das neue Dataset während des Hochladens mit einem bestehenden Projekt im Spe
 }
 ```
 
-Die für das `project`-Element erforderliche Projekt-URL kann mit der Anforderung [Get Projects](https://westeurope.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetProjects) (Projekte abrufen) ermittelt werden.
+Die für das `project`-Element erforderliche Projekt-URL kann mit der Anforderung [Get Projects](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetProjects) (Projekte abrufen) ermittelt werden.
 
 ## <a name="audio--human-labeled-transcript-data-for-trainingtesting"></a>Audio- und Humantranskriptionsdaten für Training/Tests
 
@@ -183,12 +188,79 @@ Darüber hinaus sollten Sie die folgenden Einschränkungen beachten:
 * URIs werden zurückgewiesen.
 * Bei einigen Sprachen (z. B. Japanisch oder Koreanisch) kann das Importieren großer Mengen von Textdaten sehr lange dauern oder ein Timeout verursachen. Erwägen Sie, die hochgeladenen Daten in Textdateien mit jeweils bis zu 20.000 Zeilen zu unterteilen.
 
+## <a name="structured-text-data-for-training-public-preview"></a>Strukturierte Textdaten für das Training (Öffentliche Vorschauversion)
+
+Häufig folgen die erwarteten Äußerungen einem bestimmten Muster. Ein gängiges Muster ist z. B., dass Äußerungen sich nur durch bestimmte Wörter oder Ausdrücke aus einer Liste unterscheiden. Beispiele hierfür sind: „Ich habe eine Frage zu `product`“, wobei `product` eine Liste möglicher Produkte ist. Oder: „Färbe das `object` `color`“, wobei `object` eine Liste mit geometrischen Formen und `color` eine Liste mit Farben ist. Um die Erstellung von Trainingsdaten zu vereinfachen und eine bessere Modellierung innerhalb des benutzerdefinierten Sprachmodells zu ermöglichen, können Sie einen strukturierten Text im Markdown-Format verwenden, um Listen mit Elementen zu definieren und diese dann in Ihren Trainings-Äußerungen zu referenzieren. Das Markdown-Format unterstützt darüber hinaus auch die Angabe der phonetischen Aussprache von Wörtern. Die Markdowndatei sollte über die Erweiterung `.md` verfügen. Die Syntax des Markdowns ist mit der Syntax der Language Understanding-Modelle (insbesondere der Listenentitäten und Beispieläußerungen) identisch. Weitere Informationen zur vollständigen Markdownsyntax finden Sie im Artikel zum <a href="/azure/bot-service/file-format/bot-builder-lu-file-format" target="_blank">Language Understanding-Markdown</a>.
+
+Im Folgenden finden Sie ein Beispiel für das Markdown-Format:
+
+```markdown
+// This is a comment
+
+// Here are three separate lists of items that can be referenced in an example sentence. You can have up to 10 of these
+@ list food =
+- pizza
+- burger
+- ice cream
+- soda
+
+@ list pet =
+- cat
+- dog
+
+@ list sports =
+- soccer
+- tennis
+- cricket
+- basketball
+- baseball
+- football
+
+// This is a list of phonetic pronunciations. 
+// This adjusts the pronunciation of every instance of these word in both a list or example training sentences 
+@ speech:phoneticlexicon
+- cat/k ae t
+- cat/f i l ai n
+
+// Here are example training sentences. They are grouped into two sections to help organize the example training sentences.
+// You can refer to one of the lists we declared above by using {@listname} and you can refer to multiple lists in the same training sentence
+// A training sentence does not have to refer to a list.
+# SomeTrainingSentence
+- you can include sentences without a class reference
+- what {@pet} do you have
+- I like eating {@food} and playing {@sports}
+- my {@pet} likes {@food}
+
+# SomeMoreSentence
+- you can include more sentences without a class reference
+- or more sentences that have a class reference like {@pet} 
+```
+
+Das Training mit strukturiertem Text dauert in der Regel einige Minuten, so wie das Training mit Nur-Text. Außerdem sollten Ihre Beispielsätze und Listen die Art der gesprochenen Eingabe widerspiegeln, die Sie in der Produktionsumgebung erwarten.
+Informationen zu Ausspracheeinträgen finden Sie in der Beschreibung des [Universellen Phonemsatzes](phone-sets.md).
+
+In der folgenden Tabelle sind die Einschränkungen und andere Eigenschaften des Markdown-Formats aufgelistet:
+
+| Eigenschaft | Wert |
+|----------|-------|
+| Textcodierung | UTF-8 BOM |
+| Maximale Dateigröße | 200 MB |
+| Maximale Anzahl von Beispielsätzen | 50.000 |
+| Maximale Anzahl von Listenklassen | 10 |
+| Maximale Anzahl von Elementen in einer Listenklasse | 4\.000 |
+| Maximale Anzahl von speech:phoneticlexicon-Einträgen | 15000 |
+| Maximale Anzahl von Aussprachen pro Wort | 2 |
+
+
 ## <a name="pronunciation-data-for-training"></a>Aussprachedaten für das Training
 
 Wenn die Benutzer auf selten vorkommende Begriffe ohne Standardaussprache treffen oder diese verwenden werden, können Sie eine benutzerdefinierte Aussprachedatei bereitstellen, um die Erkennung zu verbessern. Eine Liste der Sprachen, die benutzerdefinierte Aussprache unterstützen, finden Sie unter **Aussprache** in der Spalte **Anpassungen** in der [Spracherkennungstabelle](language-support.md#speech-to-text).
 
 > [!IMPORTANT]
 > Es wird davon abgeraten, benutzerdefinierte Aussprachedateien zu verwenden, um die Aussprache gebräuchlicher Wörter zu ändern.
+
+> [!NOTE]
+> Diese Art von Aussprachedateien können nicht mit Trainingsdaten aus strukturiertem Text kombiniert werden. Verwenden Sie für strukturierte Textdaten die phonetische Aussprachefunktion, die im Markdown-Format für strukturierten Text enthalten ist.
 
 Stellen Sie die Aussprache in einer einzelnen Textdatei bereit. Hier sehen Sie Beispiele für eine gesprochene Äußerung und die jeweilige benutzerdefinierte Aussprache:
 

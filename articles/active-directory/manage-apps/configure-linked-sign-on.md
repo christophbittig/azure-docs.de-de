@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: c8404b7ec361c90a6153cadc7ec6a71efb17fd1c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bc50777e503c50ca68955b8324b75c7c6aa66c77
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639620"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548480"
 ---
-# <a name="add-linked-single-sign-on-to-an-application-in-azure-active-directory"></a>Hinzufügen des verknüpften einmaligen Anmeldens zu einer Anwendung in Azure Active Directory
+# <a name="add-linked-single-sign-on-to-an-application"></a>Hinzufügen des verknüpften einmaligen Anmeldens zu einer Anwendung
 
 In diesem Artikel erfahren Sie, wie Sie das verknüpfte einmalige Anmelden (Single Sign-On, SSO) für Ihre Anwendung in Azure Active Directory (Azure AD) konfigurieren. Über das verknüpfte einmalige Anmelden kann Azure AD das einmalige Anmelden für eine Anwendung, die bereits in einem anderen Dienst für einmaliges Anmelden konfiguriert ist, bereitstellen. Mit der Option „Verknüpft“ können Sie den Zielort konfigurieren, wenn ein Benutzer die Anwendung im Portal „Meine Apps“ der Organisation oder im Microsoft 365-Portal auswählt.
 

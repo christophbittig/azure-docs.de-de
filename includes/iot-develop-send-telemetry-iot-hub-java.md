@@ -1,45 +1,147 @@
 ---
-title: Datei einfügen
+title: include file
 description: Datei einfügen
 author: timlt
 ms.service: iot-develop
 ms.topic: include
-ms.date: 08/03/2021
+ms.date: 11/02/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 6c295a5148f4821e3bd395a95c5b98e298da5077
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 093a75b77be2c24de11e97fe7d1627623fb1e2f9
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610221"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861507"
 ---
-[![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
+[![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
-In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Sie verwenden die Azure CLI und IoT Explorer, um einen Azure IoT-Hub und ein Gerät zu erstellen. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit dem Hub zu verbinden und Telemetriedaten zu senden.
+In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Sie verwenden die Azure CLI und den loT Explorer, um einen Azure loT-Hub und ein Gerät zu erstellen. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen Temperaturregler auszuführen, ihn sicher mit dem Hub zu verbinden und Telemetriedaten zu senden. Die Beispielanwendung für den Temperaturcontroller wird auf Ihrem lokalen Computer ausgeführt und generiert simulierte Sensordaten, die an IoT Hub gesendet werden sollen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+Diese Schnellstartanleitung wird unter Windows, Linux und Raspberry Pi ausgeführt. Sie wurde mit den folgenden Betriebssystem- und Geräteversionen getestet:
+
+- Windows 10
+- Ubuntu 20.04 LTS
+- Raspberry Pi OS Version 10 (Raspian), das auf einem Raspberry Pi 3 Model B+ ausgeführt wird
+
+Installieren Sie die folgenden Voraussetzungen auf Ihrem Entwicklungscomputer – es sei denn, dass dies für Raspberry Pi angegeben ist:
+
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 - [Git](https://git-scm.com/downloads).
-- Einen Entwicklungscomputer mit Java SE Development Kit 8 oder höher. Sie können das Java 8 JDK (LTS) für mehrere Plattformen unter [Herunterladen von Zulu-Builds von OpenJDK](https://www.azul.com/downloads/zulu-community/) herunterladen. Wählen Sie im Installationsprogramm die Option **Zu PATH hinzufügen** aus.
-- [Apache Maven 3](https://maven.apache.org/download.cgi) Nachdem Sie den Download in einen lokalen Ordner extrahiert haben, fügen Sie der Windows-Variablen „PATH“ den vollständigen Pfad zum Maven-Ordner */bin* hinzu.
-- [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases): Plattformübergreifendes Hilfsprogramm mit grafischer Benutzeroberfläche zum Überwachen und Verwalten von Azure IoT. 
+- [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases): Plattformübergreifendes Hilfsprogramm mit grafischer Benutzeroberfläche zum Überwachen und Verwalten von Azure IoT. Wenn Sie Raspberry Pi als Ihre Entwicklungsplattform verwenden, empfehlen wir, IoT Explorer auf einem anderen Computer zu installieren. Wenn Sie IoT Explorer nicht installieren möchten, können Sie mithilfe der Azure CLI die gleichen Schritte ausführen. 
 - Azure-Befehlszeilenschnittstelle. In dieser Schnellstartanleitung gibt es zwei Möglichkeiten zum Ausführen von Azure CLI-Befehlen:
     - Verwenden Sie Azure Cloud Shell. Dabei handelt es sich um eine interaktive Shell, mit der CLI-Befehle im Browser ausgeführt werden. Diese Option wird empfohlen, da Sie nichts installieren müssen. Wenn Sie Cloud Shell zum ersten Mal verwenden, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Führen Sie in der [Cloud Shell-Schnellstartanleitung](../articles/cloud-shell/quickstart.md) die Schritte zum **Starten von Cloud Shell** und **Auswählen der Bash-Umgebung** aus.
-    - Führen Sie optional die Azure CLI auf dem lokalen Computer aus. Wenn die Azure CLI bereits installiert ist, führen Sie `az upgrade` aus, um die CLI und die Erweiterungen auf die aktuelle Version zu aktualisieren. Informationen zur Installation der Azure CLI finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+    - Führen Sie optional die Azure CLI auf dem lokalen Computer aus. Wenn die Azure CLI bereits installiert ist, führen Sie `az upgrade` aus, um die CLI und die Erweiterungen auf die aktuelle Version zu aktualisieren. Informationen zur Installation der Azure CLI finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). Wenn Sie Raspberry Pi als Ihre Entwicklungsplattform verwenden, empfehlen wir, dass Sie die Azure Cloud Shell verwenden oder die Azure CLI auf einem anderen Computer installieren.
+
+Installieren Sie die übrigen erforderlichen Komponenten für Ihr Betriebssystem.
+
+### <a name="windows"></a>Windows
+
+Um diese Schnellstartanleitung unter Windows ausführen zu können, installieren Sie die folgende Software:
+
+- Java SE Development Kit 8 oder höher. Sie können das Java 8 JDK (LTS) für mehrere Plattformen unter [Herunterladen von Zulu-Builds von OpenJDK](https://www.azul.com/downloads/zulu-community/) herunterladen. Wählen Sie im Installationsprogramm die Option **Zu PATH hinzufügen** aus.
+
+- [Apache Maven 3](https://maven.apache.org/download.cgi) Nachdem Sie den Download in einen lokalen Ordner extrahiert haben, fügen Sie der Windows-Variablen `PATH` den vollständigen Pfad zum Maven-Ordner */bin* hinzu.
+
+### <a name="linux-or-raspberry-pi-os"></a>Betriebssystem Linux oder Raspberry Pi
+
+Installieren Sie die folgende Software zum Ausführen dieser Schnellstartanleitung unter Linux oder Raspberry Pi:
+
+> [!NOTE]
+> Die Schritte in diesem Abschnitt basieren auf Linux Ubuntu-/Debian-Distributionen. (Raspberry Pi OS basiert auf Debian.) Wenn Sie eine andere Linux-Distribution verwenden, müssen Sie die Schritte entsprechend ändern.
+
+- OpenJDK (Open Java Development Kit) 8 oder höher. Sie können mit dem Befehl `java -version` die auf Ihrem System installierte Java-Version überprüfen. Stellen Sie sicher, dass das JDK und nicht nur die Java-Runtime (JRE) installiert ist.
+
+    1. Geben Sie die folgenden Befehle ein, um das OpenJDK für Ihr System zu installieren:
+
+        So installieren Sie die Standardversion von OpenJDK für Ihr System (OpenJDK 11 für Ubuntu 20.04 und Raspberry Pi OS 10 zum Zeitpunkt der Artikelerstellung):
+
+        ```bash
+        sudo apt update
+        sudo apt install default-jdk
+        ```
+
+        Alternativ können Sie eine Version des zu installierenden JDK angeben. Beispiel:
+
+        ```bash
+        sudo apt update
+        sudo apt install openjdk-8-jdk
+        ```
+
+    1. Wenn auf Ihrem System mehrere Java-Versionen installiert sind, können Sie die Standardversionen (automatisch) von Java und dem Java-Compiler anhand der folgenden Befehle konfigurieren.
+
+        ```bash
+        update-java-alternatives --list          #list the Java versions installed
+        sudo update-alternatives --config java   #set the default Java version
+        sudo  update-alternatives --config javac #set the default Java compiler version
+        ```
+
+    1. Legen Sie die Umgebungsvariable `JAVA_HOME` auf den Pfad Ihrer JDK-Installation fest. (Dies ist im Allgemeinen ein Unterverzeichnis mit Versionsangabe im Verzeichnis **/usr/lib/jvm**.)
+
+        ```bash
+        export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+        ```
+
+        > [!IMPORTANT]
+        > Dieser Befehl legt die Variable `JAVA_HOME` in Ihrer aktuellen Shellumgebung fest. Wir empfehlen, den Befehl Ihrer Datei `~/.bashrc` oder `/etc/profile` hinzuzufügen, damit er verfügbar ist, wenn Sie eine neue Shell öffnen.
+
+    1. Stellen Sie bei der installierten Version des Java-JDK (und der JRE) sicher, dass Ihre Java-Compilerversion mit der JDK-Version übereinstimmt und dass die Umgebungsvariable `JAVA_HOME` ordnungsgemäß festgelegt wurde.
+
+        ```bash
+        java -version
+        javac -version
+        echo $JAVA_HOME
+        ```
+
+- Apache Maven 3 Sie können mit dem Befehl `mvn --version` die auf Ihrem System installierte Maven-Version überprüfen.
+
+    1. Geben Sie zum Installieren von Maven die folgenden Befehle ein:
+
+        ```bash
+        sudo apt-get update
+        sudo apt-get install maven
+        ```
+
+    1. Geben Sie zum Überprüfen Ihrer Installation den folgenden Befehl ein.
+
+        ```bash
+        mvn --version
+        ```
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-a-simulated-device"></a>Ausführen eines simulierten Geräts
-In diesem Abschnitt verwenden Sie das Java SDK zum Senden von Nachrichten von einem simulierten Gerät an Ihren IoT-Hub. Sie führen ein Beispiel aus, das einen Temperaturregler mit zwei Thermostatsensoren implementiert.
+## <a name="run-the-device-sample"></a>Ausführen des Gerätebeispiels
 
-### <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung
+In diesem Abschnitt verwenden Sie das Java SDK zum Senden von Nachrichten von einem Gerät an Ihren IoT-Hub. Sie führen ein Beispiel aus, das einen Temperaturregler mit zwei Thermostatsensoren implementiert.
+
 1. Öffnen Sie eine Konsole, um das Azure IoT-Java-Geräte-SDK zu installieren, und führen Sie den Buildvorgang durch und das Codebeispiel aus. Sie verwenden diese Konsole in den folgenden Schritten.
 
     > [!NOTE]
     > Wenn Sie eine lokale Installation der Azure CLI verwenden, sind nun möglicherweise zwei Konsolenfenster geöffnet. Achten Sie darauf, dass Sie die Befehle in diesem Abschnitt in der soeben geöffneten Konsole eingeben, nicht in der Konsole, die Sie für die CLI verwendet haben.
 
-1. Legen Sie die folgenden Umgebungsvariablen fest, damit das simulierte Gerät eine Verbindung mit Azure IoT herstellen kann:
+    **Linux und Raspberry Pi OS**
+
+    Vergewissern Sie sich, dass die JAVA_HOME-Umgebungsvariable (`echo $JAVA_HOME`) festgelegt wurde. Informationen zum Festlegen von JAVA_HOME finden Sie unter [Voraussetzungen für Linux/Raspberry Pi](#linux-or-raspberry-pi-os).
+
+1. Klonen Sie das Azure IoT-Java-Geräte-SDK auf Ihren lokalen Computer:
+
+    ```console
+    git clone https://github.com/Azure/azure-iot-sdk-java.git
+    ```
+
+1. Navigieren Sie zum Stammordner des SDK, und führen Sie den folgenden Befehl aus, um das SDK zu erstellen und die Beispiele zu aktualisieren.
+
+    ```console
+    cd azure-iot-sdk-java
+    mvn install -T 2C -DskipTests
+    ```
+
+    Dieser Vorgang dauert mehrere Minuten.
+
+1. Legen Sie die folgenden Umgebungsvariablen fest, damit Ihr Gerät eine Verbindung mit Azure IoT herstellen kann:
+
     * Legen Sie eine Umgebungsvariable mit dem Namen `IOTHUB_DEVICE_CONNECTION_STRING` fest. Verwenden Sie als Variablenwert die Geräteverbindungszeichenfolge, die Sie im vorherigen Abschnitt gespeichert haben.
     * Legen Sie eine Umgebungsvariable mit dem Namen `IOTHUB_DEVICE_SECURITY_TYPE` fest. Verwenden Sie als Variable den Literalzeichenfolgenwert `connectionString`.
 
@@ -59,28 +161,26 @@ In diesem Abschnitt verwenden Sie das Java SDK zum Senden von Nachrichten von ei
     export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
     ```
 
-### <a name="build-the-sample"></a>Erstellen des Beispiels
-1. Klonen Sie das Azure IoT-Java-Geräte-SDK auf Ihren lokalen Computer:
-    ```console
-    git clone https://github.com/Azure/azure-iot-sdk-java.git
-    ```
-1. Navigieren Sie zum Stammordner des SDK, und führen Sie den folgenden Befehl aus, um das SDK zu erstellen und die Beispiele zu aktualisieren.
-    ```console
-    cd azure-iot-sdk-java
-    mvn install -T 2C -DskipTests
-    ```
-    Dieser Vorgang dauert mehrere Minuten.
+1. Navigieren Sie zum Beispielverzeichnis.
 
-### <a name="run-the-code"></a>Ausführen des Codes
-1. Navigieren Sie zum Verzeichnis mit den Beispielen.
+    **Befehlszeile**
+
     ```console
+    cd device\iot-device-samples\pnp-device-sample\temperature-controller-device-sample
+    ```
+
+    **Bash**
+
+    ```bash
     cd device/iot-device-samples/pnp-device-sample/temperature-controller-device-sample
     ```
-1. Führen Sie das folgende Codebeispiel aus.
+
+1. Führen Sie das Codebeispiel aus.
 
     ```console
     mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.TemperatureController"
     ```
+
     > [!NOTE]
     > In diesem Codebeispiel wird Azure IoT Plug & Play verwendet. Dadurch wird die Integration intelligenter Geräte in Ihre Lösungen ohne manuelle Konfiguration ermöglicht.  In den meisten Beispielen in dieser Dokumentation wird standardmäßig IoT Plug & Play verwendet. Weitere Informationen zu den Vorteilen und Einsatzmöglichkeiten von IoT Plug & Play finden Sie unter [Was ist IoT Plug & Play?](../articles/iot-develop/overview-iot-plug-and-play.md).
 
@@ -111,7 +211,7 @@ Zum Lesen von Telemetriedaten, die von einzelnen Gerätekomponenten gesendet wer
 
 So zeigen Sie Gerätetelemetriedaten mit der Azure CLI an:
 
-1. Führen Sie den Befehl [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) zum Überwachen von Ereignissen aus, die vom simulierten Gerät an Ihren IoT-Hub gesendet werden. Verwenden Sie die Namen, die Sie zuvor in Azure IoT für Ihr Gerät und Ihren IoT-Hub erstellt haben.
+1. Führen Sie den Befehl [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) zum Überwachen von Ereignissen aus, die vom Gerät an Ihren IoT-Hub gesendet werden. Verwenden Sie die Namen, die Sie zuvor in Azure IoT für Ihr Gerät und Ihren IoT-Hub erstellt haben.
 
     ```azurecli
     az iot hub monitor-events --output table --device-id mydevice --hub-name {YourIoTHubName}

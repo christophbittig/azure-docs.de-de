@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: estfan, azla
 ms.topic: tutorial
 ms.date: 07/01/2021
-ms.openlocfilehash: fb315a42dc33a8ead4d3d09e0dbb15972bf8e585
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b1ad7f8af9233aeb49d38d4af93f43dcd7b04566
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128646794"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520235"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Tutorial: Überwachen von Änderungen an virtuellen Computern mit Azure Event Grid und Logic Apps
 
@@ -105,7 +105,7 @@ Fügen Sie nun den Event Grid-Trigger hinzu, den Sie zum Überwachen der Ressour
 
    ![Screenshot: Workflow-Designer mit dem geöffneten Editor für Triggerdetails](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-   | Eigenschaft | Erforderlich | Wert | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    | -------- | -------- | ----- | ----------- |
    | **Abonnement** | Ja | <*event-publisher-Azure-subscription-name*> | Wählen Sie den Namen für das Azure-Abonnement aus, das dem *Ereignisherausgeber* zugeordnet ist. Wählen Sie für dieses Tutorial den Namen des Azure-Abonnements für Ihren virtuellen Computer aus. |
    | **Ressourcentyp** | Ja | <*event-publisher-Azure-resource-type*> | Wählen Sie den Azure-Ressourcentyp für den Ereignisherausgeber aus. Weitere Informationen zu Azure-Ressourcentypen finden Sie unter [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md). Wählen Sie für dieses Tutorial den Wert `Microsoft.Resources.ResourceGroups` aus, um Azure-Ressourcengruppen zu überwachen. |
@@ -158,7 +158,7 @@ Falls Sie möchten, dass Ihre Logik-App nur ausgeführt wird, wenn ein bestimmte
 
    1. Behalten Sie im mittleren Feld den Operator **gleich** bei.
 
-   1. Geben Sie im rechten Feld diesen Wert ein. Dies ist der jeweilige Vorgang, den Sie überwachen möchten:
+   1. Geben Sie im rechten Feld den Vorgang ein, den Sie überwachen möchten. In diesem Beispiel ist dies der folgende Wert:
 
       `Microsoft.Compute/virtualMachines/write`
 

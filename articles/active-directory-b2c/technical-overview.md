@@ -1,6 +1,6 @@
 ---
 title: Technische und Funktionsübersicht – Azure Active Directory B2C
-description: Eine ausführliche Einführung in die Funktionen und Technologien in Azure Active Directory B2C.
+description: Eine ausführliche Einführung in die Funktionen und Technologien in Azure Active Directory B2C. Azure Active Directory B2C verfügt global über Hochverfügbarkeit.
 services: active-directory-b2c
 author: kengaderdus
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/01/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 5a01eb29caee02874cf828d1b2dd6b2df7440b4d
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a40801c03721016a47b28ca5fd273b448297e0b1
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043052"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055605"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technische und Funktionsübersicht für Azure Active Directory B2C
 
@@ -81,7 +81,7 @@ Mehr Informationen erhalten Sie in den Artikeln [Anmeldeoptionen in Azure AD B2C
 
 Mit Azure AD B2C können Sie allgemeine Attribute von Consumerkontoprofilen verwalten, etwa Anzeigename, Nachname, Vorname, Stadt usw.
 
-Sie können auch das Azure AD-Schema erweitern, um zusätzliche Informationen zu Ihren Benutzern zu speichern. Beispiele: Land/Region oder Wohnsitz, bevorzugte Sprache und Voreinstellungen, z. B. ob Sie einen Newsletter abonnieren oder die mehrstufige Authentifizierung aktivieren möchten. Weitere Informationen finden Sie unter
+Sie können auch das Azure AD-Schema erweitern, um zusätzliche Informationen zu Ihren Benutzern zu speichern. Zum Beispiel: Land/Region des Wohnsitzes, bevorzugte Sprache und Voreinstellungen (z. B. ob ein Newsletter abonniert oder die mehrstufige Authentifizierung aktiviert werden soll). Weitere Informationen finden Sie unter
 
 * [Benutzerprofilattribute](user-profile-attributes.md)
 * [Hinzufügen von Benutzerattributen und Anpassen der Benutzereingabe](configure-user-input.md)
@@ -161,9 +161,9 @@ Sie können die E-Mail an Benutzer anpassen, die sich für die Verwendung Ihrer 
 * [Benutzerdefinierte E-Mail-Überprüfung mit Mailjet](custom-email-mailjet.md)
 * [Benutzerdefinierte E-Mail-Überprüfung mit SendGrid](custom-email-sendgrid.md)
 
-## <a name="add-your-own-business-logic"></a>Hinzufügen Ihrer eigenen Geschäftslogik
+## <a name="add-your-own-business-logic-and-call-restful-api"></a>Hinzufügen eigener Geschäftslogik und Aufrufen der RESTful-API
 
-Wenn Sie benutzerdefinierte Richtlinien verwenden, können Sie eine RESTful-API in eine User Journey integrieren, um der Journey ihre eigene Geschäftslogik hinzuzufügen. Beispielsweise können mit Azure AD B2C Daten mit einem RESTful-Dienst ausgetauscht werden, um Folgendes zu erreichen:
+Sie können sowohl in Benutzerflows als auch in benutzerdefinierten Richtlinien eine RESTful-API integrieren. Der Unterschied besteht darin, dass Sie in Benutzerflows Aufrufe an bestimmten Stellen tätigen, während Sie in benutzerdefinierten Richtlinien der Journey ihre eigene Geschäftslogik hinzufügen. Mit diesem Feature können Sie Daten aus externen Identitätsquellen abrufen und verwenden. Mit Azure AD B2C können Sie Daten mit einem RESTful-Dienst austauschen, um Folgendes zu erreichen:
 
 * Anzeigen eigener benutzerfreundlicher Fehlermeldungen.
 * Überprüfen von Benutzereingabedaten, um zu verhindern, dass falsch formatierte Daten im Benutzerverzeichnis gespeichert werden. Beispielsweise können Sie die Daten ändern, die vom Benutzer eingegeben wurden, z. B. die Groß-/Kleinschreibung des Vornamens, wenn er in Kleinbuchstaben eingegeben wurde.
@@ -212,13 +212,13 @@ Mehrere Anwendungen können den gleichen Benutzerflow oder die gleiche benutzerd
 
 Beispielsweise kann die Anwendung den Benutzerflow *Registrieren oder anmelden* für die Anmeldung bei einer Anwendung verwenden. Wenn sich der Benutzer angemeldet hat und nun sein Profil bearbeiten möchte, initiiert die Anwendung eine weitere Autorisierungsanforderung, dieses Mal unter Verwendung des Benutzerflows *Profilbearbeitung*.
 
-## <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
+## <a name="multifactor-authentication-mfa"></a>Mehrstufige Authentifizierung (MFA)
 
-Azure AD B2C Multi-Factor Authentication (MFA) trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und ist dabei für Ihre Benutzer einfach zu verwenden. Aufgrund der obligatorischen zweiten Form der Authentifizierung sorgt das Verfahren für zusätzliche Sicherheit. Es wird eine zuverlässige Authentifizierung ermöglicht, indem mehrere benutzerfreundliche Authentifizierungsmethoden angeboten werden. 
+Die mehrstufige Authentifizierung (Multi-Factor Authentication, MF) von Azure AD B2C trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und ist gleichzeitig für Ihre Benutzer einfach zu verwenden. Aufgrund der obligatorischen zweiten Form der Authentifizierung sorgt das Verfahren für zusätzliche Sicherheit. Es wird eine zuverlässige Authentifizierung ermöglicht, indem mehrere benutzerfreundliche Authentifizierungsmethoden angeboten werden. 
 
 Sie als Administrator können über die Konfiguration festlegen, ob Ihre Benutzer aufgefordert werden, die MFA zu verwenden.
 
-Weitere Informationen zum Aktivieren der MFA in Benutzerflows finden Sie unter [Aktivieren der Multi-Factor Authentication in Azure Active Directory B2C](multi-factor-authentication.md).
+Weitere Informationen zum Aktivieren der MFA in Benutzerflows finden Sie unter [Aktivieren der mehrstufigen Authentifizierung (MFA) in Azure Active Directory B2C](multi-factor-authentication.md).
 
 ## <a name="conditional-access"></a>Bedingter Zugriff
 
@@ -226,7 +226,7 @@ Die Features von Azure AD Identity Protection zur Erkennung von Risiken, z. B
 
 ![Flow für bedingten Zugriff](media/technical-overview/conditional-access-flow.png)
 
-In Azure AD B2C wird jedes Anmeldungsereignis ausgewertet und sichergestellt, dass alle Richtlinienanforderungen erfüllt sind, bevor dem Benutzer der Zugriff gewährt wird. Risikobenutzer oder -anmeldungen können blockiert werden, oder es kann eine Aufforderung zur Durchführung einer bestimmten Sicherheitsmaßnahme angezeigt werden, z. B. der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA). Weitere Informationen finden Sie unter [Identity Protection und bedingter Zugriff](conditional-access-identity-protection-overview.md).
+In Azure AD B2C wird jedes Anmeldungsereignis ausgewertet und sichergestellt, dass alle Richtlinienanforderungen erfüllt sind, bevor dem Benutzer der Zugriff gewährt wird. Benutzer oder Anmeldungen mit hohem Risiko können blockiert werden, oder es kann eine Aufforderung zur Durchführung einer bestimmten Sicherheitsmaßnahme (z. B. die mehrstufige Authentifizierung) angezeigt werden. Weitere Informationen finden Sie unter [Identity Protection und bedingter Zugriff](conditional-access-identity-protection-overview.md).
 
 ## <a name="password-complexity"></a>Kennwortkomplexität
 
@@ -299,6 +299,11 @@ Weitere Informationen zu Überwachungsprotokollen finden Sie unter [Zugriff auf 
 Durch die Integration von Azure Application Insights in benutzerdefinierte Azure AD B2C-Richtlinien erhalten Sie Informationen zur Registrierung, Anmeldung, Kennwortzurücksetzung und Profilbearbeitung von Benutzern. Mit diesem Wissen können Sie datengesteuerte Entscheidungen über die zukünftigen Entwicklungszyklen treffen.
 
 Weitere Informationen finden Sie unter [Verfolgen des Benutzerverhaltens in Azure AD B2C mithilfe von Application Insights](analytics-with-application-insights.md).
+
+## <a name="region-availability-and-data-residency"></a>Regionale Verfügbarkeit und Datenresidenz
+Der Azure AD B2C-Dienst ist weltweit allgemein verfügbar, wobei die Option für die Datenresidenz in den Regionen gilt, die unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/) angegeben sind. Die Datenresidenz wird durch das Land oder die Region bestimmt, das bzw. die Sie beim [Erstellen Ihres Mandanten](tutorial-create-tenant.md) auswählen. 
+
+Weitere Informationen finden Sie unter [Regionale Verfügbarkeit und Datenresidenz des Azure Active Directory B2C-Diensts](data-residency.md) und [Vereinbarung zum Servicelevel (Service Level Agreement, SLA) für Azure Active Directory B2C](https://azure.microsoft.com/support/legal/sla/active-directory-b2c/v1_1).
 
 ## <a name="automation-using-microsoft-graph-api"></a>Automatisierung mithilfe der Microsoft Graph-API
 

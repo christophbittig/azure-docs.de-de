@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 9d87f2641fb53a2372afcae27ebd7e92e8885e66
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: cc6013a46da32438e0863016eca9917cb08a7bf8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903990"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086244"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -31,45 +31,45 @@ Sie müssen einige Blöcke mit IP-Adressen reservieren, um das Routing zwischen 
 Sie können entweder private IP-Adressen oder öffentliche IP-Adressen verwenden, um die Peerings zu konfigurieren. Der Adressbereich zum Konfigurieren der Routen darf sich nicht mit Adressbereichen überlappen, die in Azure zum Erstellen von virtuellen Netzwerken verwendet werden. 
 
 * IPv4:
-    * Sie müssen ein /29-Subnetz oder zwei /30-Subnetze für Routingschnittstellen reservieren.
+    * Sie müssen ein `/29`-Subnetz oder zwei `/30`-Subnetze für Routingschnittstellen reservieren.
     * Die für das Routing verwendeten Subnetze können entweder private IP-Adressen oder öffentliche IP-Adressen sein.
     * Die Subnetze dürfen nicht mit dem Bereich in Konflikt stehen, der vom Kunden für die Nutzung in der Microsoft Cloud reserviert ist.
-    * Wenn ein /29-Subnetz verwendet wird, wird es in zwei /30-Subnetze unterteilt. 
-      * Das erste /30-Subnetz wird für die primäre Verknüpfung verwendet, das zweite für die sekundäre Verknüpfung.
-      * Für jedes /30-Subnetz müssen Sie zuerst die IP-Adresse des /30-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des /30-Subnetzes zum Einrichten einer BGP-Sitzung.
+    * Wenn ein `/29`-Subnetz verwendet wird, wird es in zwei `/30`-Subnetze unterteilt. 
+      * Das erste `/30`-Subnetz wird für die primäre Verknüpfung verwendet, das zweite `/30`-Subnetz für die sekundäre Verknüpfung.
+      * Für jedes `/30`-Subnetz müssen Sie die erste IP-Adresse des `/30`-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des `/30`-Subnetzes zum Einrichten einer BGP-Sitzung.
       * Sie müssen beide BGP-Sitzungen einrichten, damit unsere [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) gültig sind.
 * IPv6:
-    * Sie müssen ein /125-Subnetz oder zwei /126-Subnetze für Routingschnittstellen reservieren.
+    * Sie müssen ein `/125`-Subnetz oder zwei `/126`-Subnetze für Routingschnittstellen reservieren.
     * Die für das Routing verwendeten Subnetze können entweder private IP-Adressen oder öffentliche IP-Adressen sein.
     * Die Subnetze dürfen nicht mit dem Bereich in Konflikt stehen, der vom Kunden für die Nutzung in der Microsoft Cloud reserviert ist.
-    * Wenn ein /125-Subnetz verwendet wird, wird es in zwei /126-Subnetze unterteilt. 
-      * Das erste /126-Subnetz wird für die primäre Verknüpfung verwendet, das zweite /126-Subnetz für die sekundäre Verknüpfung.
-      * Für jedes /126-Subnetz müssen Sie die erste IP-Adresse des /126-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des /126-Subnetzes zum Einrichten einer BGP-Sitzung.
+    * Wenn ein `/125`-Subnetz verwendet wird, wird es in zwei `/126`-Subnetze unterteilt. 
+      * Das erste `/126`-Subnetz wird für die primäre Verknüpfung verwendet, das zweite `/126`-Subnetz für die sekundäre Verknüpfung.
+      * Für jedes `/126`-Subnetz müssen Sie die erste IP-Adresse des `/126`-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des `/126`-Subnetzes zum Einrichten einer BGP-Sitzung.
       * Sie müssen beide BGP-Sitzungen einrichten, damit unsere [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) gültig sind.
 
 #### <a name="example-for-private-peering"></a>Beispiel für privates Peering
-Wenn Sie zum Einrichten des Peerings „a.b.c.d/29“ verwenden, wird eine Unterteilung in zwei /30-Subnetze vorgenommen. Beachten Sie im folgenden Beispiel, wie das Subnetz „a.b.c.d/29“ verwendet wird:
+Wenn Sie zum Einrichten des Peerings `a.b.c.d/29` verwenden, wird eine Unterteilung in zwei `/30`-Subnetze vorgenommen. Beachten Sie im folgenden Beispiel, wie das Subnetz `a.b.c.d/29` verwendet wird:
 
-* „a.b.c.d/29“ wird in „a.b.c.d/30“ und „a.b.c.d+4/30“ unterteilt und über die Bereitstellungs-APIs an Microsoft übergeben.
-  * Sie verwenden „a.b.c.d+1“ als VRF-IP für das primäre PE-Element, und Microsoft nutzt „a.b.c.d+2“ als VRF-IP für den primären MSEE.
-  * Sie verwenden „a.b.c.d+5“ als VRF-IP für das sekundäre PE-Element, und Microsoft nutzt „a.b.c.d+6“ als VRF-IP für den sekundären MSEE.
+* `a.b.c.d/29` wird in `a.b.c.d/30` und `a.b.c.d+4/30` unterteilt und über die Bereitstellungs-APIs an Microsoft übergeben.
+  * Sie verwenden `a.b.c.d+1` als VRF-IP für das primäre PE-Element, und Microsoft nutzt `a.b.c.d+2` als VRF-IP für den primären MSEE.
+  * Sie verwenden `a.b.c.d+5` als VRF-IP für das sekundäre PE-Element, und Microsoft nutzt `a.b.c.d+6` als VRF-IP für den sekundären MSEE.
 
-Betrachten wir den Fall, in dem Sie 192.168.100.128/29 zum Einrichten des privaten Peerings auswählen. 192.168.100.128/29 enthält die Adressen von 192.168.100.128 bis 192.168.100.135, für die Folgendes gilt:
+Betrachten wir den Fall, in dem Sie `192.168.100.128/29` zum Einrichten des privaten Peerings auswählen. `192.168.100.128/29` enthält die Adressen von `192.168.100.128` bis `192.168.100.135`, für die Folgendes gilt:
 
-* 192.168.100.128/30 wird link1 zugewiesen, wobei der Anbieter 192.168.100.129 und Microsoft 192.168.100.130 verwendet.
-* 192.168.100.132/30 wird link2 zugewiesen, wobei der Anbieter 192.168.100.133 und Microsoft 192.168.100.134 verwendet.
+* `192.168.100.128/30` wird `link1` zugewiesen, wobei der Anbieter `192.168.100.129` und Microsoft `192.168.100.130` verwendet.
+* `192.168.100.132/30` wird `link2` zugewiesen, wobei der Anbieter `192.168.100.133` und Microsoft `192.168.100.134` verwendet.
 
 ### <a name="ip-addresses-used-for-microsoft-peering"></a>IP-Adressen für Microsoft-Peering
 Sie müssen eigene öffentliche IP-Adressen zum Einrichten der BGP-Sitzungen verwenden. Microsoft muss in der Lage sein, die Eigentümerschaft der IP-Adressen über Routing Internet Registries (RIR) und Internet Routing Registries (IRR) zu überprüfen.
 
 * Die im Portal für angekündigte öffentliche Präfixe aufgeführten IP-Adressen für Microsoft-Peering erstellen ACLs für die Microsoft-Kernrouter, um eingehenden Datenverkehr von diesen IP-Adressen zuzulassen. 
-* Sie müssen ein eindeutiges /29-Subnetz (IPv4) oder /125-Subnetz (IPv6) oder zwei /30-Subnetze (IPv4) oder zwei /126-Subnetze (IPv6) verwenden, um das BGP-Peering für jedes Peering pro ExpressRoute-Verbindung einzurichten (falls Sie über mehrere verfügen).
-* Wenn ein /29-Subnetz verwendet wird, wird es in zwei /30-Subnetze unterteilt.
-* Das erste /30-Subnetz wird für die primäre Verknüpfung verwendet, das zweite für die sekundäre Verknüpfung.
-* Für jedes /30-Subnetz müssen Sie zuerst die IP-Adresse des /30-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des /30-Subnetzes zum Einrichten einer BGP-Sitzung.
-* Wenn ein /125-Subnetz verwendet wird, wird es in zwei /126-Subnetze unterteilt.
-* Das erste /126-Subnetz wird für die primäre Verknüpfung verwendet, das zweite für die sekundäre Verknüpfung.
-* Für jedes /126-Subnetz müssen Sie die erste IP-Adresse des /126-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des /126-Subnetzes zum Einrichten einer BGP-Sitzung.
+* Sie müssen ein eindeutiges `/29`-Subnetz (IPv4) oder `/125`-Subnetz (IPv6) oder zwei `/30`-Subnetze (IPv4) oder zwei `/126`-Subnetze (IPv6) verwenden, um das BGP-Peering für jedes Peering pro ExpressRoute-Verbindung einzurichten (falls Sie über mehrere verfügen).
+* Wenn ein `/29`-Subnetz verwendet wird, wird es in zwei `/30`-Subnetze unterteilt.
+* Das erste `/30`-Subnetz wird für die primäre Verknüpfung verwendet, das zweite `/30`-Subnetz für die sekundäre Verknüpfung.
+* Für jedes `/30`-Subnetz müssen Sie die erste IP-Adresse des `/30`-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des `/30`-Subnetzes zum Einrichten einer BGP-Sitzung.
+* Wenn ein `/125`-Subnetz verwendet wird, wird es in zwei `/126`-Subnetze unterteilt.
+* Das erste `/126`-Subnetz wird für die primäre Verknüpfung verwendet, das zweite `/126`-Subnetz für die sekundäre Verknüpfung.
+* Für jedes `/126`-Subnetz müssen Sie die erste IP-Adresse des `/126`-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des `/126`-Subnetzes zum Einrichten einer BGP-Sitzung.
 * Sie müssen beide BGP-Sitzungen einrichten, damit unsere [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) gültig sind.
 
 ### <a name="ip-addresses-used-for-azure-public-peering"></a>IP-Adressen für öffentliches Azure-Peering
@@ -80,10 +80,10 @@ Sie müssen eigene öffentliche IP-Adressen zum Einrichten der BGP-Sitzungen ver
 
 Sie müssen eigene öffentliche IP-Adressen zum Einrichten der BGP-Sitzungen verwenden. Microsoft muss in der Lage sein, die Eigentümerschaft der IP-Adressen über Routing Internet Registries (RIR) und Internet Routing Registries (IRR) zu überprüfen. 
 
-* Sie müssen ein eindeutiges /29-Subnetz oder zwei /30-Subnetze verwenden, um das BGP-Peering für jedes Peering pro ExpressRoute-Verbindung einzurichten (falls Sie über mehr als ein Peering verfügen). 
-* Wenn ein /29-Subnetz verwendet wird, wird es in zwei /30-Subnetze unterteilt. 
-  * Das erste /30-Subnetz wird für die primäre Verknüpfung verwendet, das zweite für die sekundäre Verknüpfung.
-  * Für jedes /30-Subnetz müssen Sie zuerst die IP-Adresse des /30-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des /30-Subnetzes zum Einrichten einer BGP-Sitzung.
+* Sie müssen ein eindeutiges `/29`-Subnetz oder zwei `/30`-Subnetze verwenden, um das BGP-Peering für jedes Peering pro ExpressRoute-Verbindung einzurichten (falls Sie über mehr als ein Peering verfügen). 
+* Wenn ein `/29`-Subnetz verwendet wird, wird es in zwei `/30`-Subnetze unterteilt. 
+  * Das erste `/30`-Subnetz wird für die primäre Verknüpfung verwendet, das zweite `/30`-Subnetz für die sekundäre Verknüpfung.
+  * Für jedes `/30`-Subnetz müssen Sie die erste IP-Adresse des `/30`-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des `/30`-Subnetzes zum Einrichten einer BGP-Sitzung.
   * Sie müssen beide BGP-Sitzungen einrichten, damit unsere [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) gültig sind.
 
 ## <a name="public-ip-address-requirement"></a>Öffentliche IP-Adresse – Anforderungen

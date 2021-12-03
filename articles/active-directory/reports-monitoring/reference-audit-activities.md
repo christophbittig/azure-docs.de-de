@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c4c0c26d413f856e522af00d29798630263ed20
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 49e40ec9fd5b17ff740bd914d37cbac00c6a640a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633391"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462744"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
 
@@ -150,7 +150,7 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Authorization|Create trustFramework policy with configurable prefix (Vertrauensframework-Richtlinie mit konfigurierbarem Präfix erstellen)|
 |Authorization|Create user attribute (Benutzerattribut erstellen)|
 |Authorization|CreateTrustFrameworkPolicy|
-|Authorization|Creates or Update an new AdminUserJourney (Neues AdminUserJourney-Element erstellen oder aktualisieren)|
+|Authorization|Neues AdminUserJourney-Element erstellen oder aktualisieren|
 |Authorization|Identitätsanbieter löschen|
 |Authorization|Delete IdentityProvider (IdentityProvider-Element löschen)|
 |Authorization|Delete V1 application (V1-Anwendung löschen)|

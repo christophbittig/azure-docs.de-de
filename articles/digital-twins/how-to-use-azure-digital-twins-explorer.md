@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Grundlegendes zur Verwendung der Features von Azure Digital Twins-Explorer
 author: baanders
 ms.author: baanders
-ms.date: 4/20/2021
+ms.date: 10/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22ad40dadf36b711bde4b7af7e8b24b09610ab89
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f77efc7ab6880db771ea7f53fe9cfb2858c6ecc0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459502"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327894"
 ---
 # <a name="use-azure-digital-twins-explorer-preview"></a>Verwenden von Azure Digital Twins-Explorer (Vorschau)
 
-Der [Azure Digital Twins-Explorer](concepts-azure-digital-twins-explorer.md) ist ein Tool für die Visualisierung von Azure Digital Twins und die Arbeit mit ihnen. In diesem Artikel werden die Features von Azure Digital Twins-Explorer und deren Verwendung zum Verwalten der Daten in Ihrer Azure Digital Twins-Instanz beschrieben. 
+Der [Azure Digital Twins-Explorer](concepts-azure-digital-twins-explorer.md) ist ein Tool für die Visualisierung von Azure Digital Twins und die Arbeit mit ihnen. In diesem Artikel werden die Features von Azure Digital Twins-Explorer und deren Verwendung zum Verwalten der Daten in Ihrer Azure Digital Twins-Instanz beschrieben. Sie können mit dem Azure Digital Twins-Explorer über Klicks oder [Tastenkombinationen interagieren](#accessibility-and-advanced-settings).
 
 >[!NOTE]
 >Dieses Tool ist aktuell als **öffentliche Vorschauversion** verfügbar.
@@ -46,7 +46,7 @@ Sie können den Bereich **Abfrage-Explorer** verwenden, um [Abfragen](concepts-q
 Geben Sie die Abfrage ein, die Sie ausführen möchten, und wählen Sie die Schaltfläche **Run Query** (Abfrage ausführen) aus. Dadurch werden die Abfrageergebnisse im Bereich **Twin Graph** (Zwillingsgraph) geladen.
 
 >[!NOTE]
-> Abfrageergebnisse, die Beziehungen enthalten, können nur im Bereich **Twin Graph** (Zwillingsgraph) gerendert werden, wenn die Ergebnisse mindestens einen Zwilling enthalten. Während Abfragen, die nur Beziehungen zurückgeben, in Azure Digital Twins möglich sind, können Sie diese nur im [Ausgabebereich](#advanced-settings) im Azure Digital Twins-Explorer anzeigen.
+> Abfrageergebnisse, die Beziehungen enthalten, können nur im Bereich **Twin Graph** (Zwillingsgraph) gerendert werden, wenn die Ergebnisse mindestens einen Zwilling enthalten. Während Abfragen, die nur Beziehungen zurückgeben, in Azure Digital Twins möglich sind, können Sie diese nur im [Ausgabebereich](#accessibility-and-advanced-settings) im Azure Digital Twins-Explorer anzeigen.
 
 ### <a name="overlay-query-results"></a>Überlagern von Abfrageergebnissen
 
@@ -99,19 +99,47 @@ Führen Sie eine Abfrage mithilfe des [Abfrage-Explorers](#query-your-digital-tw
 
 #### <a name="view-twin-and-relationship-properties"></a>Anzeigen von Zwillings- und Beziehungseigenschaften
 
-Um die Eigenschaftswerte eines Zwillings oder einer Beziehung anzuzeigen, wählen Sie den Zwilling oder die Beziehung in **Twin Graph** aus, und verwenden Sie die Schaltfläche **Toggle property inspector** (Eigenschaftenprüfung umschalten), um den Bereich **Eigenschaften** zu erweitern. In diesem Bereich werden alle dem Element zugeordneten Eigenschaften sowie deren Werte angezeigt. Er enthält auch Standardwerte für Eigenschaften, die noch nicht festgelegt wurden.
+Um die Eigenschaftswerte eines Zwillings oder einer Beziehung anzuzeigen, wählen Sie den Zwilling oder die Beziehung im Bereich **Twin Graph** aus, und verwenden Sie die Schaltfläche **Toggle property inspector** (Eigenschaftenanalyse umschalten), um den Bereich **Zwillingseigenschaften** bzw. den Bereich **Beziehungseigenschaften** zu erweitern. In diesem Bereich werden alle dem Element zugeordneten Eigenschaften sowie deren Werte angezeigt. Er enthält auch Standardwerte für Eigenschaften, die noch nicht festgelegt wurden.
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Screenshot des Bereichs „Twin Graph“des Azure Digital Twins-Explorers. Der Zwilling „FactoryA“ ist ausgewählt, und der Bereich „Eigenschaften“ ist erweitert und zeigt die Eigenschaften des Zwillings an." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Screenshot: Bereich „Twin Graph“ im Azure Digital Twins-Explorer. Der Zwilling „FactoryA“ ist ausgewählt, und der Bereich „Zwillingseigenschaften“ ist erweitert und zeigt die Eigenschaften des Zwillings an." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
 
-Eigenschaften werden in der Regel als weißer Text angezeigt, können aber auch in den folgenden Farben angezeigt werden, um zusätzliche Informationen anzugeben:
+##### <a name="data-type-icons"></a>Datentyp-Symbole
 
-* **Roter Text für Modell**: Gibt an, dass das Modell für den Zwilling nicht gefunden werden kann. Dies kann passieren, wenn das Modell seit der Erstellung des Zwillings gelöscht wurde.
+Die in den Dialogfeldern **Zwillingseigenschaften** und **Beziehungseigenschaften** angezeigten Eigenschaften werden jeweils mit einem Symbol dargestellt, das den Typ des Feldes aus dem DTDL-Modell angibt. Sie können den Mauszeiger über ein Symbol bewegen, um den zugehörigen Typ anzuzeigen.
 
-    :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/properties-color-red.png" alt-text="Screenshot: Bereich „Eigenschaften“ des Azure Digital Twins-Explorers mit Eigenschaften für einen Beispielzwilling. Das Feld „$model“ und sein Wert werden als roter Text angezeigt." lightbox="media/how-to-use-azure-digital-twins-explorer/properties-color-red.png":::
+Die folgende Tabelle zeigt die möglichen Datentypen und die entsprechenden Symbole. Die Tabelle enthält auch Links von jedem Datentyp zu seiner Schemabeschreibung in der [DTDL-Spezifikation](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#schemas).
 
-* **Gelber Text für Eigenschaft**: Gibt an, dass die Eigenschaft nicht Teil der Modelldefinition ist, die der Zwilling verwendet. Dies kann passieren, wenn das Modell für den Zwilling seit der Erstellung der Eigenschaft ersetzt oder geändert wurde und die Eigenschaft in der neuesten Version des Modells nicht mehr vorhanden ist. **Zwillinge mit veralteten Eigenschaften können nicht aktualisiert werden, es sei denn, die Aktualisierung korrigiert oder entfernt auch die veralteten Eigenschaften.**
+| Symbol | Datentyp |
+| --- | --- |
+| ![boolesches Symbol](./media/how-to-use-azure-digital-twins-explorer/data-icons/boolean.svg) | [boolean](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![Komponenten-Symbol](./media/how-to-use-azure-digital-twins-explorer/data-icons/component.svg) | [Komponente](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#component) |
+| ![Datumssymbol](./media/how-to-use-azure-digital-twins-explorer/data-icons/date.svg) | [date](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![DatumZeit-Symbol](./media/how-to-use-azure-digital-twins-explorer/data-icons/datetime.svg) | [dateTime](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![Dauer-Symbol](./media/how-to-use-azure-digital-twins-explorer/data-icons/duration.svg) | [duration](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![Enum-Symbol](./media/how-to-use-azure-digital-twins-explorer/data-icons/enum.svg) | [enum](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#enum) |
+| ![Kartensymbol](./media/how-to-use-azure-digital-twins-explorer/data-icons/map.svg) | [map](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#map) |
+| ![Numerisches Symbol](./media/how-to-use-azure-digital-twins-explorer/data-icons/numeric.svg) | Numerische Typen, einschließlich [Double, Float, Integer und Long](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![Objekt-Symbol](./media/how-to-use-azure-digital-twins-explorer/data-icons/object.svg) | [object](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#object) |
+| ![Zeichenfolgensymbol](./media/how-to-use-azure-digital-twins-explorer/data-icons/string.svg) | [string](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![Zeit-Symbol](./media/how-to-use-azure-digital-twins-explorer/data-icons/time.svg) | [time](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
 
-    :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/properties-color-yellow.png" alt-text="Screenshot: Bereich „Eigenschaften“ des Azure Digital Twins-Explorers mit Eigenschaften für einen Beispielzwilling. Mehrere Eigenschaftennamen werden als gelber Text angezeigt." lightbox="media/how-to-use-azure-digital-twins-explorer/properties-color-yellow.png":::
+##### <a name="errors"></a>Errors
+
+Im Bereich „Zwillingseigenschaften“ werden Fehlermeldungen angezeigt, wenn der Zwilling oder einige seiner Eigenschaften nicht mehr mit dem zugehörigen Modell übereinstimmen. 
+
+Es gibt zwei mögliche Fehlerszenarien, die jeweils eine eigene Fehlermeldung ergeben:
+* **Ein oder mehrere vom Zwilling verwendete Modelle fehlen**. Infolgedessen werden alle Eigenschaften, die mit diesem Modell verbunden sind, im Fenster Zwillingseigenschaften als "fehlend" gekennzeichnet. Dies kann passieren, wenn das Modell seit der Erstellung des Zwillings gelöscht wurde.
+* **Einige Eigenschaften des Zwillings sind nicht Teil des Zwillingsmodells**. Nur diese Eigenschaften werden im Fenster Zwillingseigenschaften als "fehlend" gekennzeichnet. Dies kann passieren, wenn das Modell für den Zwilling ersetzt oder geändert wurde, seit die Eigenschaften festgelegt wurden, und die Eigenschaften in der neuesten Version des Modells nicht mehr vorhanden sind.
+
+Die beiden Fehlermeldungen sind in der folgenden Abbildung dargestellt:
+
+:::row:::
+    :::column:::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/properties-errors.png" alt-text="Screenshot des Azure Digital Twins-Explorer Zwillingseigenschaften-Panels, das zwei Fehlermeldungen zeigt. Eine Fehlermeldung zeigt an, dass Modelle fehlen, die andere, dass den Eigenschaften ein Modell fehlt. " lightbox="media/how-to-use-azure-digital-twins-explorer/properties-errors.png":::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
 
 #### <a name="view-a-twins-relationships"></a>Anzeigen der Beziehungen eines Zwillings
 
@@ -125,9 +153,9 @@ Klicken Sie hierzu mit der rechten Maustaste auf einen Zwilling im Graphen, und 
 
 Sie können die Zwillinge in verschiedenen Konfigurationen neu anordnen, indem Sie auf sie klicken und sie auf dem Bildschirm „Twin Graph“ verschieben.
 
-Sie können auch einen von mehreren Layoutalgorithmen über die Optionen im Menü **Run Layout** (Layout ausführen) auf den Graphen anwenden. 
+Sie können auch einen von mehreren Layoutalgorithmen über die Optionen im Menü **Choose Layout** (Layout wählen) auf den Graphen anwenden. 
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png" alt-text="Screenshot des Bereichs „Twin Graph“ des Azure Digital Twins-Explorers. Die Schaltfläche „Run Layout“ (Layout ausführen) ist hervorgehoben und zeigt ein Menü mit den Layoutoptionen Cola, Dagre, fCoSE und Klay an." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png" alt-text="Screenshot: Bereich „Twin Graph“ im Azure Digital Twins-Explorer. Die Schaltfläche „Choose Layout“ (Layout wählen) ist hervorgehoben und zeigt ein Menü mit den Layoutoptionen Cola, Dagre, fCoSE und Klay an." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png":::
 
 ### <a name="control-twin-graph-expansion"></a>Steuern der Erweiterung des Zwillingsgraphen
 
@@ -137,15 +165,15 @@ Verwenden Sie die Option **Expansion Level** (Erweiterungsebene), um die Anzahl 
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-level.png" alt-text="Screenshot des Bereichs „Twin Graph“ des Azure Digital Twins-Explorers. Die Schaltfläche „Expansion Level“ (Erweiterungsebene) ist hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-level.png":::
 
-Verwenden Sie die Schaltfläche **Expansion Mode** (Erweiterungsmodus), um anzugeben, welchen Beziehungstypen beim Erweitern gefolgt werden soll. Auf diese Weise können Sie zwischen nur eingehenden, nur ausgehenden oder eingehenden sowie ausgehenden Beziehungen auswählen.
+Verwenden Sie die Schaltfläche **Expansion Direction** (Erweiterungsrichtung), um anzugeben, welchen Beziehungstypen beim Erweitern gefolgt werden soll. Auf diese Weise können Sie zwischen nur eingehenden, nur ausgehenden oder eingehenden sowie ausgehenden Beziehungen auswählen.
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-mode.png" alt-text="Screenshot des Bereichs „Twin Graph“des Azure Digital Twins-Explorers. Die Schaltfläche „Expansion Mode“(Erweiterungsmodus) ist hervorgehoben und zeigt ein Menü mit den Optionen „In“ (Eingehend), „Out“ (Ausgehend) und „In/Out“ (Eingehend/Ausgehend) an." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-mode.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-direction.png" alt-text="Screenshot: Bereich „Twin Graph“ im Azure Digital Twins-Explorer. Die Schaltfläche „Expansion Direction“ (Erweiterungsrichtung) ist hervorgehoben und zeigt ein Menü mit den Optionen „In“ (Eingehend), „Out“ (Ausgehend) und „In/Out“ (Eingehend/Ausgehend) an." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-direction.png":::
 
 ### <a name="show-and-hide-twin-graph-elements"></a>Anzeigen und Ausblenden von Zwillingsgraphelementen
 
 Sie können die Option umschalten, um Zwillinge oder Beziehungen in der Graphenansicht auszublenden. 
 
-Um einen Zwilling oder eine Beziehung auszublenden, klicken Sie im Fenster **Twin Graph** mit der rechten Maustaste darauf. Dadurch wird ein Menü mit einer Option zum Ausblenden des Elements oder anderer verwandter Elemente geöffnet.
+Um einen Zwilling oder eine Beziehung auszublenden, klicken Sie im Fenster **Twin Graph** mit der rechten Maustaste darauf. Dadurch wird ein Menü mit Optionen zum Ausblenden des Elements oder anderer verwandter Elemente geöffnet.
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-hide.png" alt-text="Screenshot des Bereichs „Twin Graph“ des Azure Digital Twins-Explorers. Der Zwilling „FactoryA“ ist ausgewählt, und es gibt ein Menü mit Optionen zum Ausblenden ausgewählter Elemente, Ausblenden ausgewählter Elemente und untergeordneter Elemente, Ausblenden aller anderen Elemente sowie Ausblenden der nicht untergeordneten Elemente." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-hide.png":::
 
@@ -161,7 +189,7 @@ Sie können die Zwillinge und Beziehungen, die im Diagramm angezeigt werden, nac
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-filter-text.png" alt-text="Screenshot des Bereichs „Twin Graph“ des Azure Digital Twins-Explorers. Das Textfiltersymbol ist ausgewählt und zeigt die Registerkarte „Filter“ an, auf der Sie einen Suchbegriff eingeben können." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-filter-text.png":::
 
-Sie können die Zwillinge und Graphen, die im Graphen angezeigt werden, auch nach Text hervorheben, indem Sie dieses **Hervorhebungssymbol** auswählen:
+Sie können die Zwillinge und Beziehungen, die im Diagramm erscheinen, auch durch Text hervorheben, indem Sie das Symbol **Hervorheben** wählen:
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-text.png" alt-text="Screenshot des Bereichs „Twin Graph“ des Azure Digital Twins-Explorers. Das Textfiltersymbol ist ausgewählt und zeigt die Registerkarte „Highlight“ (Hervorheben) an, auf der Sie einen Suchbegriff eingeben können." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-text.png":::
 
@@ -170,48 +198,58 @@ Sie können die Zwillinge und Graphen, die im Graphen angezeigt werden, auch nac
 Der Azure Digital Twins-Explorer bietet mehrere Möglichkeiten zum Verwalten der [Zwillinge](concepts-twins-graph.md#digital-twins) und [Beziehungen](concepts-twins-graph.md#relationships-a-graph-of-digital-twins) in Ihrer Instanz.
 
 In diesem Abschnitt wird beschrieben, wie Sie die folgenden Verwaltungsaktivitäten durchführen:
+* [Anzeigen einer flachen Liste von Zwillingen und Beziehungen](#view-flat-list-of-twins-and-relationships)
 * [Erstellen von Zwillingen](#create-twins) mit oder ohne Anfangseigenschaften
 * Erstellen von [Beziehungen](#create-relationships) zwischen Zwillingen
-* [Bearbeiten von Zwillingen und Beziehungen](#edit-twins-and-relationships)
+* [Bearbeiten von Zwillings- und Beziehungseigenschaften](#edit-twin-and-relationship-properties)
 * [Löschen von Zwillingen und Beziehungen](#delete-twins-and-relationships)
 
 Informationen zu Anzeigeoptionen für Zwillinge und Beziehungen finden Sie unter [Untersuchen von Zwillingen und des Zwillingsgraphen](#explore-the-twin-graph).
+
+### <a name="view-flat-list-of-twins-and-relationships"></a>Anzeigen einer flachen Liste von Zwillingen und Beziehungen
+
+Im Bereich **Zwillinge** wird eine flache Liste der Zwillinge und der zugehörigen Beziehungen angezeigt. Sie können Zwillinge nach dem Namen suchen und diese erweitern, um Details zu ihren eingehenden und ausgehenden Beziehungen zu erhalten.
+
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twins-panel.png" alt-text="Screenshot: Bereich „Zwillinge“ im Azure Digital Twins-Explorer. Ein Zwilling ist hervorgehoben, und seine Beziehungen werden angezeigt." lightbox="media/how-to-use-azure-digital-twins-explorer/twins-panel.png":::
 
 ### <a name="create-twins"></a>Erstellen von Zwillingen
 
 Sie können einen neuen digitalen Zwilling aus seiner Modelldefinition im Bereich **Models** (Modelle) erstellen.
 
-Um einen Zwilling aus einem Modell zu erstellen, suchen Sie nach diesem Modell in der Liste, und wählen Sie dann neben dem Modellnamen das Symbol **Zwilling erstellen** aus. Sie werden aufgefordert, einen **Namen** für den neuen Zwilling einzugeben, der eindeutig sein muss. Speichern Sie den Zwilling dann. Er wird Ihrem Graphen hinzugefügt.
+Um einen Zwilling aus einem Modell zu erstellen, suchen Sie nach diesem Modell in der Liste, und wählen Sie dann neben dem Modellnamen die Menüpunkte. Wählen Sie anschließend **Create a Twin** (Einen Zwilling erstellen). Sie werden aufgefordert, einen **Namen** für den neuen Zwilling einzugeben, der eindeutig sein muss. Speichern Sie den Zwilling dann. Er wird Ihrem Graphen hinzugefügt.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png" alt-text="Screenshot des Bereichs „Models“ (Modelle) des Azure Digital Twins-Explorers. Das Symbol „Zwilling erstellen“ für ein einzelnes Modell ist hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png" alt-text="Screenshot: Bereich „Models“ (Modelle) im Azure Digital Twins-Explorer. Die Menüpunkte für ein einzelnes Modell sind hervorgehoben, und die Menüoption „Create a Twin“ (Zwilling erstellen) ist ebenfalls hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
 :::row-end:::
 
-Informationen zum Hinzufügen von Eigenschaftswerten zu Ihrem Zwilling finden Sie unter [Bearbeiten von Zwillingen und Beziehungen](#edit-twins-and-relationships).
+Um Ihrem Zwilling Eigenschaftswerte hinzuzufügen, siehe [Eigenschaften von Zwillingen und Beziehungen bearbeiten](#edit-twin-and-relationship-properties).
 
 ### <a name="create-relationships"></a>Erstellen von Beziehungen
 
 Um eine Beziehung zwischen zwei Zwillingen zu erstellen, wählen Sie zunächst den Quellzwilling für die Beziehung im Fenster **Twin Graph** (Zwillingsdiagramm) aus. Halten Sie als dann eine Taste STRG/CMD oder UMSCHALT gedrückt, während Sie einen zweiten Zwilling als Ziel der Beziehung auswählen.
 
-Sobald die beiden Zwillinge gleichzeitig ausgewählt sind, klicken Sie mit der rechten Maustaste auf einen der Zwillinge. Dadurch wird ein Menü mit einer Option **Add relationships** (Beziehungen hinzufügen) angezeigt, um Beziehungen zwischen ihnen hinzuzufügen.
+Sobald die beiden Zwillinge gleichzeitig ausgewählt sind, klicken Sie mit der rechten Maustaste auf den Zielzwilling. Dadurch wird ein Menü mit einer Option **Add relationships** (Beziehungen hinzufügen) angezeigt, um Beziehungen zwischen ihnen hinzuzufügen.
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-add-relationship.png" alt-text="Screenshot des Bereichs „Twin Graph“ des Azure Digital Twins-Explorers. Die Zwillinge „FactoryA“ und „Consumer“ sind ausgewählt, und in einem Menü wird die Option zum Hinzufügen von Beziehungen angezeigt." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-add-relationship.png":::
 
 Daraufhin wird das Dialogfeld **Create Relationship** (Beziehung erstellen) angezeigt, in dem der Quellzwilling und der Zielzwilling der Beziehung zu sehen sind, gefolgt von einem Dropdownmenü **Relationship** (Beziehung), das die Beziehungstypen enthält, die der Quellzwilling haben kann (definiert in seinem DTDL-Modell). Wählen Sie eine Option für den Beziehungstyp aus, und **speichern** Sie die neue Beziehung.
 
-### <a name="edit-twins-and-relationships"></a>Bearbeiten von Zwillingen und Beziehungen
+### <a name="edit-twin-and-relationship-properties"></a>Zwillings- und Beziehungseigenschaften bearbeiten
 
-Um die Eigenschaftswerte eines Zwillings oder einer Beziehung anzuzeigen, wählen Sie das Element in **Twin Graph** aus, und verwenden Sie die Schaltfläche **Toggle property inspector** (Eigenschaftenprüfung umschalten), um den Bereich **Eigenschaften** zu erweitern.
+Um die Eigenschaftswerte eines Zwillings oder einer Beziehung anzuzeigen, wählen Sie das Element im Bereich **Twin Graph** aus, und verwenden Sie die Schaltfläche **Toggle property inspector** (Eigenschaftenanalyse umschalten), um den Bereich **Zwillingseigenschaften** bzw. den Bereich **Beziehungseigenschaften** zu erweitern.
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Screenshot des Bereichs „Twin Graph“des Azure Digital Twins-Explorers. Der Zwilling „FactoryA“ ist ausgewählt, und der Bereich „Eigenschaften“ ist erweitert und zeigt die Eigenschaften des Zwillings an." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Screenshot: Bereich „Twin Graph“ im Azure Digital Twins-Explorer. Der Zwilling „FactoryA“ ist ausgewählt, und der Bereich „Zwillingseigenschaften“ ist erweitert und zeigt die Eigenschaften des Zwillings an." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
 
-Sie können diesen Bereich verwenden, um beschreibbare Eigenschaften direkt zu bearbeiten. Aktualisieren Sie ihre Werte inline, und klicken Sie oben im Bereich auf die Schaltfläche **Patch twin** (Zwilling patchen), um Ihre Änderungen zu speichern. Wenn die Aktualisierung gespeichert wird, wird auf dem Bildschirm ein modales Fenster mit dem JSON Patch-Vorgang angezeigt, der von der [Update-API](/rest/api/azure-digitaltwins/) angewendet wurde.
+Sie können diesen Bereich verwenden, um beschreibbare Eigenschaften direkt zu bearbeiten. Aktualisieren Sie ihre Werte inline und wählen Sie die Schaltfläche **Änderungen speichern** oben im Bedienfeld, um sie zu speichern. Wenn die Aktualisierung gespeichert wird, wird auf dem Bildschirm ein modales Fenster mit dem JSON Patch-Vorgang angezeigt, der von der [Update-API](/rest/api/azure-digitaltwins/) angewendet wurde.
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties-save.png" alt-text="Screenshot des Bereichs „Twin Graph“ des Azure Digital Twins-Explorers. In der Mitte des Bildschirms wird ein modales Dialogfeld „Path Information“ (Pfadinformationen) mit JSON Patch-Code angezeigt." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties-save.png":::
+
+>[!TIP]
+> Die in den Dialogfeldern **Zwillingseigenschaften** und **Beziehungseigenschaften** angezeigten Eigenschaften werden jeweils mit einem Symbol dargestellt, das den Typ des Feldes aus dem DTDL-Modell angibt. Für weitere Informationen über die Typensymbole siehe [Datentypensymbole](#data-type-icons).
 
 ### <a name="delete-twins-and-relationships"></a>Löschen von Zwillingen und Beziehungen
 
@@ -248,27 +286,27 @@ Sie können den Bereich **Model Graph** (Modellgraph) verwenden, um eine grafisc
 
 #### <a name="view-model-definition"></a>Anzeigen der Modelldefinition
 
-Um die vollständige Definition eines Modells anzuzeigen, suchen Sie dieses Modell im Bereich **Model** (Modelle), und wählen Sie das Symbol **Modell anzeigen** neben dem Modellnamen aus. Dadurch wird ein modales Dialogfeld **Model Information** (Modellinformationen) angezeigt, das die unformatiert DTDL-Definition des Modells enthält.
+Um die vollständige Definition eines Modells anzuzeigen, suchen Sie dieses Modell im Bereich **Models** (Modelle), und wählen Sie die Menüpunkte neben dem Modellnamen. Wählen Sie anschließend **View Model** (Modell anzeigen). Dadurch wird ein modales Dialogfeld **Model Information** (Modellinformationen) angezeigt, das die unformatiert DTDL-Definition des Modells enthält.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png" alt-text="Screenshot des Bereichs „Models“ (Modelle) des Azure Digital Twins-Explorers. Das Symbol „Modell anzeigen“ für ein einzelnes Modell ist hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png" alt-text="Screenshot: Bereich „Models“ (Modelle) im Azure Digital Twins-Explorer. Die Menüpunkte für ein einzelnes Modell sind hervorgehoben, und die Menüoption „View Model“ (Modell anzeigen) ist ebenfalls hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
 :::row-end:::
 
-Sie können auch die vollständige Definition eines Modells anzeigen, indem Sie es im **Modellgraphen** auswählen und die Schaltfläche **Toggle model details** (Modelldetails umschalten) verwenden, um den Bereich **MODEL DETAIL** (MODELLDETAILS) zu erweitern. In diesem Bereich wird auch der vollständige DTDL-Code für das Modell angezeigt.
+Sie können auch die vollständige Definition eines Modells anzeigen, indem Sie es im Bereich **Model Graph** (Modellgraph) auswählen und die Schaltfläche **Toggle model details** (Modelldetails umschalten) verwenden, um den Bereich **Model Detail** (Modelldetails) zu erweitern. In diesem Bereich wird auch der vollständige DTDL-Code für das Modell angezeigt.
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-highlight-graph-details.png" alt-text="Screenshot des Bereichs „Model Graph“ (Modellgraph) des Azure Digital Twins-Explorers. Das Modell „Floor“ ist ausgewählt und der Bereich „MODEL DETAILS“ (MODELLDETAILS) erweitert. Er zeigt den DTDL-Code des Modells an." lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-highlight-graph-details.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-highlight-graph-details.png" alt-text="Screenshot: Bereich „Model Graph“ (Modellgraph) im Azure Digital Twins-Explorer. Das Modell „Floor“ ist ausgewählt und der Bereich „Model details“ (Modelldetails) erweitert. Er zeigt den DTDL-Code des Modells an." lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-highlight-graph-details.png":::
 
 ### <a name="edit-model-graph-layout"></a>Bearbeiten des Modellgraphlayouts
 
 Sie können die Modelle in verschiedenen Konfigurationen neu anordnen, indem Sie auf sie klicken und sie auf dem Bildschirm „Model Graph“ verschieben.
 
-Sie können auch einen von mehreren Layoutalgorithmen über die Optionen im Menü **Run Layout** (Layout ausführen) auf den Modellgraphen anwenden. 
+Sie können auch einen von mehreren Layoutalgorithmen über die Optionen im Menü **Layout wählen** auf den Graphen anwenden. 
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png" alt-text="Screenshot des Bereichs „Model Graph“ des Azure Digital Twins-Explorers. Die Schaltfläche „Run Layout“ (Layout ausführen) ist hervorgehoben und zeigt ein Menü mit den Layoutoptionen Cola, Dagre, fCoSE, Klay und d3Force an." lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png" alt-text="Screenshot des Azure Digital Twins Explorer Modellgraphen-Panels. Die Schaltfläche &quot;Layout wählen&quot; ist hervorgehoben und zeigt ein Menü mit den Layout-Optionen Cola, Dagre, fCoSE, Klay und d3Force an." lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png":::
 
 ### <a name="filter-and-highlight-model-graph-elements"></a>Filtern und Hervorheben von Modellgraphelementen
 
@@ -291,11 +329,11 @@ Sie können benutzerdefinierte Images hochladen, um verschiedene Modelle in den 
 >[!NOTE]
 >Diese Images werden im lokalen Browserspeicher gespeichert. Dies bedeutet, dass die Images in anderen Browsern als dem, in dem Sie sie gespeichert haben, nicht verfügbar sind, und dass sie auf unbestimmte Zeit im Browserspeicher verbleiben, bis der lokale Speicher gelöscht wird.
 
-Um ein Image für ein einzelnes Modell hochzuladen, suchen Sie dieses Modell im Bereich **Models** (Modelle), und wählen Sie das Symbol **Modellimage hochladen** neben dem Modellnamen aus. Navigieren Sie auf Ihrem Computer im angezeigten Dateiauswahlfeld zu der Imagedatei, die Sie für dieses Modell hochladen möchten. Wählen Sie **Open** (Öffnen) aus, um sie hochzuladen.
+Um ein Image für ein einzelnes Modell hochzuladen, suchen Sie dieses Modell im Bereich **Models** (Modelle), und wählen Sie die Menüpunkte neben dem Modellnamen aus. Wählen Sie anschließend **Upload Model Image** (Modellimage hochladen). Navigieren Sie auf Ihrem Computer im angezeigten Dateiauswahlfeld zu der Imagedatei, die Sie für dieses Modell hochladen möchten. Wählen Sie **Open** (Öffnen) aus, um sie hochzuladen.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png" alt-text="Screenshot des Bereichs „Models“ (Modelle) des Azure Digital Twins-Explorers. Das Symbol „Modellimage hochladen“ für ein einzelnes Modell ist hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png" alt-text="Screenshot: Bereich „Models“ (Modelle) im Azure Digital Twins-Explorer. Die Menüpunkte für ein einzelnes Modell sind hervorgehoben, und die Menüoption „Upload Model Image“ (Modellimage hochladen) ist ebenfalls hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -339,7 +377,7 @@ Informationen zu den Anzeigeoptionen für Modelle finden Sie unter [Untersuchen 
 
 Sie können Modelle von Ihrem Computer hochladen, indem Sie sie einzeln auswählen oder einen gesamten Ordner mit Modellen gleichzeitig hochladen.
 
-Um ein Modell oder mehrere Modelle hochzuladen, die einzeln ausgewählt wurden, wählen Sie das Symbol **Modell hochladen** aus, das einen Pfeil zeigt, der auf eine Wolke weist.
+Um ein Modell oder mehrere Modelle hochzuladen, die einzeln ausgewählt wurden, wählen Sie das Symbol **Modell hochladen** aus, das einen Pfeil zeigt, der nach oben weist.
 
 :::row:::
     :::column:::
@@ -370,11 +408,11 @@ Navigieren Sie im angezeigten Dateiauswahlfeld auf Ihrem Computer zu einem Ordne
 
 Sie können den Bereich „Models“ (Modelle) verwenden, um einzelne Modelle oder alle Modelle in Ihrer Instanz gleichzeitig zu löschen.
 
-Um ein einzelnes Modell zu löschen, suchen Sie dieses Modell in der Liste, und wählen Sie das Symbol **Modell löschen** neben dem Modellnamen aus.
+Um ein einzelnes Modell zu löschen, suchen Sie dieses Modell in der Liste, und wählen Sie die Menüpunkte neben dem Modellnamen aus. Wählen Sie anschließend **Delete Model** (Modell löschen).
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png" alt-text="Screenshot des Bereichs „Models“ (Modelle) des Azure Digital Twins-Explorers. Das Symbol „Modell löschen“ für ein einzelnes Modell ist hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png" alt-text="Screenshot: Bereich „Models“ (Modelle) im Azure Digital Twins-Explorer. Die Menüpunkte für ein einzelnes Modell sind hervorgehoben, und die Menüoption „Delete Model“ (Modell löschen) ist ebenfalls hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -394,7 +432,7 @@ Um alle Modelle in Ihrer Instanz gleichzeitig zu löschen, wählen Sie oben im B
 
 Wenn Sie den Azure Digital Twins-Explorer öffnen, sollten im Bereich „Models“ (Modelle) automatisch alle verfügbaren Modelle in Ihrer Umgebung angezeigt werden. 
 
-Sie können den Bereich jedoch jederzeit manuell aktualisieren, um die Liste aller Modelle in Ihrer Azure Digital Twins-Instanz erneut zu laden. Wählen Sie dazu das Symbol **Modelle aktualisieren** aus (ein Pfeil, der aus einer Cloud nach unten zeigt). 
+Sie können den Bereich jedoch jederzeit manuell aktualisieren, um die Liste aller Modelle in Ihrer Azure Digital Twins-Instanz erneut zu laden. Wählen Sie hierzu das Symbol **Refresh models** (Modelle aktualisieren). 
 
 :::row:::
     :::column:::
@@ -450,7 +488,7 @@ Azure Digital Twins öffnet einen Bereich **Import**, in dem eine Vorschau des z
 
 Wenn der Import erfolgreich ist, wird in einem modalen Fenster die Anzahl der hochgeladenen Modelle, Zwillinge und Beziehungen angezeigt.
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-import-successful.png" alt-text="Screenshot des Bereichs „Twin Graph“ (Zwillingsgraph) des Azure Digital Twins-Explorers. In der Mitte des Bildschirms wird ein modales Dialogfeld „Import Successful“ (Import erfolgreich) mit vier importierten Zwillingen und zwei importierten Beziehungen angezeigt." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-import-successful.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-import-successful.png" alt-text="Screenshot des Azure Digital Twins-Explorer Zwillingsdiagrammfensters. In der Mitte des Bildschirms wird ein Modal für den erfolgreichen Import angezeigt, das vier importierte Zwillinge und zwei importierte Beziehungen anzeigt." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-import-successful.png":::
 
 ### <a name="export-graph-and-models"></a>Exportieren von Graphen und Modellen
 
@@ -500,26 +538,32 @@ Der Abfragetext sollte URL-codiert sein.
 >
 > Sie können auch einen unabhängigen URL-Encoder verwenden, um den Abfragetext zu konvertieren.
 
-Hier ist ein Beispiel für den Parameter für eine Abfrage, die **SELECT * FROM digitaltwins** ausführt:
+Hier ein Beispiel für den Parameter für eine Abfrage an `SELECT * FROM digitaltwins`:
 
 `...&query=SELECT%20*%20FROM%20digitaltwins`
 
 Sie können die vollständige URL dann freigeben.
 
-## <a name="advanced-settings"></a>Erweiterte Einstellungen
+## <a name="accessibility-and-advanced-settings"></a>Barrierefreiheit und erweiterte Einstellungen
 
-Sie können mehrere erweiterte Einstellungsoptionen für den Azure Digital Twins-Explorer aktivieren.
+Sie können mehrere erweiterte Einstellungen für Azure Digital Twins-Explorer aktivieren, um Ihre Benutzeroberfläche anzupassen oder den Zugriff zu erleichtern.
 
-Durch Klicken auf das Einstellungszahnrad in der oberen rechten Ecke können die folgenden erweiterten Features konfiguriert werden:
-* **Eager Loading**: *Zugänglich über das Zahnrad **Einstellungen** in der oberen Symbolleiste*. Wenn eine Abfrage Zwillinge zurückgibt, die Beziehungen zu anderen Zwillingen aufweisen, die **nicht** in den Abfrageergebnissen enthalten sind, werden die „fehlenden“ Zwillinge von dieser Funktion vor dem Rendern des Graphen geladen.
-* **Zwischenspeichern**: *Zugänglich über das Zahnrad **Einstellungen** in der oberen Symbolleiste*. Wenn dieses Feature aktiviert ist, verwaltet der Azure Digital Twins-Explorer einen lokalen Cache mit Beziehungen und Modellen im Arbeitsspeicher, um die Abfrageleistung zu verbessern. Diese Caches werden bei Schreibvorgängen für die relevanten Elemente sowie bei der Browseraktualisierung gelöscht.
-* **Konsole**: *Zugänglich über das Zahnrad **Einstellungen** in der oberen Symbolleiste*. Dieses Feature ermöglicht die Anzeige eines Konsolenfensters, das einfache Shellfunktionen für das Arbeiten mit dem Graphen verwenden kann.
-* **Ausgabe**: *Zugänglich über das Zahnrad **Einstellungen** in der oberen Symbolleiste*. Dieses Feature ermöglicht die Anzeige eines Ausgabefensters, das eine Diagnosenablaufverfolgung von Vorgängen zeigt.
-* **Bereichslayout anpassen**: Sie können die Position der Bereiche bearbeiten, aus denen der Azure Digital Twins-Explorer besteht (Abfrage-Explorer, Modelle, Zwillingsgraph, Modellgraph). Um einen Bereich an eine andere Position zu verschieben, klicken Sie auf den Bereichsnamen, halten die Maustaste gedrückt und ziehen ihn an die neue gewünschte Position.
+Über das Symbol **Tastaturkurzbefehle** in der Symbolleiste oben rechts können Sie eine Liste der Tastaturkurzbefehle anzeigen, mit denen Sie im Azure Digital Twins-Explorer navigieren können.
 
-    :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/panels.png" alt-text="Screenshot: Azure Digital Twins-Explorer. Die Namen der Bereiche Abfrage-Explorer, Modelle, Zwillingsgraph und Modellgraph sind hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/panels.png":::
+ :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/keyboard-shortcuts.png" alt-text="Screenshot: Azure Digital Twins-Explorer. Das Symbol „Tastenkombinationen“ ist in der oberen Symbolleiste hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/keyboard-shortcuts.png":::
 
-    Die Bereichspositionen werden bei der Aktualisierung des Browserfensters zurückgesetzt.
+Unter dem Menüpunkt Einstellungen in der oberen rechten Symbolleiste können Sie auf verschiedene erweiterte Funktionen zugreifen:
+* **Eager Loading**: Wenn eine Abfrage Zwillinge zurückgibt, die Beziehungen zu anderen Zwillingen aufweisen, die **nicht** in den Abfrageergebnissen enthalten sind, werden die „fehlenden“ Zwillinge von dieser Funktion vor dem Rendern des Graphen geladen.
+* **Zwischenspeichern**: Wenn dieses Feature aktiviert ist, verwaltet der Azure Digital Twins-Explorer einen lokalen Cache mit Beziehungen und Modellen im Arbeitsspeicher, um die Abfrageleistung zu verbessern. Diese Caches werden bei Schreibvorgängen für die relevanten Elemente sowie bei der Browseraktualisierung gelöscht. Dieses Feature ist standardmäßig deaktiviert.
+* **Konsole**: Dieses Feature ermöglicht die Anzeige eines Konsolenfensters, das einfache Shellfunktionen für das Arbeiten mit dem Graphen verwenden kann.
+* **Ausgabe**: Dieses Feature ermöglicht die Anzeige eines Ausgabefensters, das eine Diagnosenablaufverfolgung von Vorgängen zeigt.
+* **Hoher Kontrast**: Dieses Feature ändert die Farben des Azure Digital Twins-Explorers, sodass sie mit größerem Kontrast angezeigt werden.
+
+Sie können das **Bereichslayout anpassen**, indem Sie die Position der Bereiche bearbeiten, aus denen der Azure Digital Twins-Explorer besteht (Abfrage-Explorer, Zwillinge, Modelle, Zwillingsgraph, Modellgraph). Um einen Bereich an eine andere Position zu verschieben, klicken Sie auf den Bereichsnamen, halten die Maustaste gedrückt und ziehen ihn an die neue gewünschte Position.
+
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/panels.png" alt-text="Screenshot: Azure Digital Twins-Explorer. Die Namen der Bereiche Abfrage-Explorer, Modelle, Zwillingsgraph und Modellgraph sind hervorgehoben." lightbox="media/how-to-use-azure-digital-twins-explorer/panels.png":::
+
+Die Bereichspositionen werden bei der Aktualisierung des Browserfensters zurückgesetzt.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

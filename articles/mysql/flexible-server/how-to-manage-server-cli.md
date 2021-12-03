@@ -6,21 +6,17 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 0788ab52bbd70d63cf32d501fc54e10910509e15
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a2836e2c319810b48a20742cebaa816b6c20ffe1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128587782"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438073"
 ---
-# <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>Verwalten einer Azure Database for MySQL – Flexible Server-Instanz (Vorschau) mithilfe der Azure CLI
+# <a name="manage-an-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Verwalten einer Azure Database for MySQL Flexible Server-Instanz mithilfe der Azure CLI
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
-
-In diesem Artikel erfahren Sie, wie Sie Ihre in Azure bereitgestellten Flexible Server-Instanzen (Vorschau) verwalten. Zu den Verwaltungsaufgaben gehören die Compute- und Speicherskalierung, das Zurücksetzen des Administratorkennworts und das Anzeigen von Serverdetails.
+In diesem Artikel erfahren Sie, wie Sie Ihre in Azure bereitgestellten flexiblen Server verwalten. Zu den Verwaltungsaufgaben gehören die Compute- und Speicherskalierung, das Zurücksetzen des Administratorkennworts und das Anzeigen von Serverdetails.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

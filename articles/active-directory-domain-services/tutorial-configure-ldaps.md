@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: 3cbc6d9b0f51b939a03378c45845c50f91c4549f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: a2cb97ce2ddc8e2d8b5921909346f943d955c87d
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991981"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370762"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -39,13 +39,13 @@ Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure
 Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
 * Ein aktives Azure-Abonnement.
-    * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+  * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
-    * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
+  * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance], sofern erforderlich.
+  * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance], sofern erforderlich.
 * Das Tool *LDP.exe* muss auf Ihrem Computer installiert sein.
-    * Bei Bedarf [installieren Sie die Remoteserver-Verwaltungstools][rsat] für *Active Directory Domain Services und LDAP*.
+  * Bei Bedarf [installieren Sie die Remoteserver-Verwaltungstools][rsat] für *Active Directory Domain Services und LDAP*.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -56,17 +56,17 @@ In diesem Tutorial konfigurieren Sie Secure LDAP für die verwaltete Domäne im 
 Bei Secure LDAP wird ein digitales Zertifikat zum Verschlüsseln der Kommunikation verwendet. Dieses digitale Zertifikat wird auf Ihre verwaltete Domäne angewendet und ermöglicht Tools wie *LDP.exe* eine sichere verschlüsselte Kommunikation beim Abfragen von Daten. Es gibt zwei Möglichkeiten, um ein Zertifikat für den Zugriff auf die verwaltete Domäne über Secure LDAP zu erstellen:
 
 * Ein Zertifikat von einer öffentlichen Zertifizierungsstelle oder einer Unternehmenszertifizierungsstelle.
-    * Wenn Ihre Organisation Zertifikate von einer öffentlichen Zertifizierungsstelle erhält, fordern Sie das Zertifikat für Secure LDAP bei dieser öffentlichen Zertifizierungsstelle an. Wenn Sie eine Unternehmenszertifizierungsstelle verwenden, fordern Sie das Zertifikat für Secure LDAP bei der Unternehmenszertifizierungsstelle an.
-    * Eine öffentliche Zertifizierungsstelle funktioniert nur, wenn Sie einen benutzerdefinierten DNS-Namen in Ihrer verwalteten Domäne verwenden. Wenn der DNS-Domänenname Ihrer verwalteten Domäne auf *.onmicrosoft.com* endet, können Sie kein digitales Zertifikat erstellen, um Verbindungen mit dieser Standarddomäne zu sichern. Die Domäne *.onmicrosoft.com* ist im Besitz von Microsoft, daher stellt keine öffentliche Zertifizierungsstelle ein Zertifikat aus. Erstellen Sie in diesem Szenario ein selbstsigniertes Zertifikat, und verwenden Sie es, um sicheres LDAP zu konfigurieren.
+  * Wenn Ihre Organisation Zertifikate von einer öffentlichen Zertifizierungsstelle erhält, fordern Sie das Zertifikat für Secure LDAP bei dieser öffentlichen Zertifizierungsstelle an. Wenn Sie eine Unternehmenszertifizierungsstelle verwenden, fordern Sie das Zertifikat für Secure LDAP bei der Unternehmenszertifizierungsstelle an.
+  * Eine öffentliche Zertifizierungsstelle funktioniert nur, wenn Sie einen benutzerdefinierten DNS-Namen in Ihrer verwalteten Domäne verwenden. Wenn der DNS-Domänenname Ihrer verwalteten Domäne auf *.onmicrosoft.com* endet, können Sie kein digitales Zertifikat erstellen, um Verbindungen mit dieser Standarddomäne zu sichern. Die Domäne *.onmicrosoft.com* ist im Besitz von Microsoft, daher stellt keine öffentliche Zertifizierungsstelle ein Zertifikat aus. Erstellen Sie in diesem Szenario ein selbstsigniertes Zertifikat, und verwenden Sie es, um sicheres LDAP zu konfigurieren.
 * Ein selbstsigniertes Zertifikat, das Sie selbst erstellen.
-    * Diese Methode eignet sich gut für Testzwecke und wird in diesem Tutorial vorgestellt.
+  * Diese Methode eignet sich gut für Testzwecke und wird in diesem Tutorial vorgestellt.
 
 Das Zertifikat, das Sie anfordern oder erstellen, muss die folgenden Anforderungen erfüllen. In Ihrer verwalteten Domäne treten Probleme auf, wenn Sie Secure LDAP mit einem ungültigen Zertifikat aktivieren:
 
 * **Vertrauenswürdiger Aussteller**: Das Zertifikat muss von einer Zertifizierungsstelle ausgestellt sein, der die Computer vertrauen, die über sicheres LDAP eine Verbindung mit der Domäne herstellen. Hierbei kann es sich um eine öffentliche Zertifizierungsstelle oder um eine Unternehmenszertifizierungsstelle handeln, die von diesen Computern als vertrauenswürdig eingestuft wird.
 * **Lebensdauer** : Das Zertifikat muss mindestens für die nächsten 3 bis 6 Monate gültig sein. Der Zugriff auf Ihre verwaltete Domäne über sicheres LDAP wird unterbrochen, wenn das Zertifikat abläuft.
 * **Antragstellername**: Der Name des Antragstellers im Zertifikat muss Ihre verwaltete Domäne sein. Wenn der Name Ihrer Domäne z. B. *aaddscontoso.com* lautet, muss als Antragstellername im Zertifikat * *.aaddscontoso.com* angegeben sein.
-    * Der DNS-Name oder alternative Antragstellername des Zertifikats muss ein Platzhalterzertifikat sein, um sicherzustellen, dass Secure LDAP ordnungsgemäß mit den Azure AD Domain Services funktioniert. Domänencontroller verwenden zufällig vergebene Namen und können entfernt oder hinzugefügt werden, um sicherzustellen, dass der Dienst verfügbar bleibt.
+  * Der DNS-Name oder alternative Antragstellername des Zertifikats muss ein Platzhalterzertifikat sein, um sicherzustellen, dass Secure LDAP ordnungsgemäß mit den Azure AD Domain Services funktioniert. Domänencontroller verwenden zufällig vergebene Namen und können entfernt oder hinzugefügt werden, um sicherzustellen, dass der Dienst verfügbar bleibt.
 * **Schlüsselverwendung**: Das Zertifikat muss für *digitale Signaturen* und *Schlüsselverschlüsselung* konfiguriert sein.
 * **Zertifikatzweck** : Das Zertifikat muss für die TLS-Serverauthentifizierung gültig sein.
 
@@ -108,12 +108,12 @@ Thumbprint                                Subject
 Zur Verwendung von Secure LDAP wird der Netzwerkdatenverkehr mithilfe einer Public Key-Infrastruktur (PKI) verschlüsselt.
 
 * Ein **privater** Schlüssel wird auf die verwaltete Domäne angewendet.
-    * Mit diesem privaten Schlüssel wird der Datenverkehr über Secure LDAP *entschlüsselt*. Der private Schlüssel sollte nur auf die verwaltete Domäne angewendet und nicht auf Clientcomputer verteilt werden.
-    * Ein Zertifikat, das den privaten Schlüssel enthält, verwendet das Dateiformat *PFX*.
-    * Beim Exportieren des Zertifikats müssen Sie den Verschlüsselungsalgorithmus *TripleDES-SHA1* angeben. Dies gilt nur für die PFX-Datei und wirkt sich nicht auf den Algorithmus aus, der vom Zertifikat selbst verwendet wird. Beachten Sie, dass die Option *TripleDES-SHA1* erst ab Windows Server 2016 verfügbar ist.
+  * Mit diesem privaten Schlüssel wird der Datenverkehr über Secure LDAP *entschlüsselt*. Der private Schlüssel sollte nur auf die verwaltete Domäne angewendet und nicht auf Clientcomputer verteilt werden.
+  * Ein Zertifikat, das den privaten Schlüssel enthält, verwendet das Dateiformat *PFX*.
+  * Beim Exportieren des Zertifikats müssen Sie den Verschlüsselungsalgorithmus *TripleDES-SHA1* angeben. Dies gilt nur für die PFX-Datei und wirkt sich nicht auf den Algorithmus aus, der vom Zertifikat selbst verwendet wird. Beachten Sie, dass die Option *TripleDES-SHA1* erst ab Windows Server 2016 verfügbar ist.
 * Ein **öffentlicher** Schlüssel wird auf die Clientcomputer angewendet.
-    * Mit diesem öffentlichen Schlüssel wird der Datenverkehr über Secure LDAP *verschlüsselt*. Der öffentliche Schlüssel kann auf Clientcomputer verteilt werden.
-    * Zertifikate ohne privaten Schlüssel verwenden das Dateiformat *CER*.
+  * Mit diesem öffentlichen Schlüssel wird der Datenverkehr über Secure LDAP *verschlüsselt*. Der öffentliche Schlüssel kann auf Clientcomputer verteilt werden.
+  * Zertifikate ohne privaten Schlüssel verwenden das Dateiformat *CER*.
 
 Diese beiden Schlüssel, der *private* und der *öffentliche*, stellen sicher, dass nur geeignete Computer erfolgreich miteinander kommunizieren können. Wenn Sie eine öffentliche Zertifizierungsstelle oder eine Unternehmenszertifizierungsstelle verwenden, wird Ihnen ein Zertifikat ausgestellt, das den privaten Schlüssel enthält und auf eine verwaltete Domäne angewendet werden kann. Der öffentliche Schlüssel sollte den Clientcomputern bereits bekannt sein und von diesen als vertrauenswürdig eingestuft werden.
 
@@ -222,7 +222,7 @@ Häufige Gründe für Fehler sind: Der Domänenname ist falsch, als Verschlüsse
 
 1. Erstellen Sie ein Ersatz-Secure LDAP-Zertifikat, indem Sie die unter [Erstellen eines Zertifikats für Secure LDAP](#create-a-certificate-for-secure-ldap) beschriebenen Schritte ausführen.
 1. Wenn Sie das Ersatzzertifikat auf Azure AD DS anwenden möchten, wählen Sie im Azure-Portal im linken Menü für Azure AD DS **Secure LDAP** und dann **Zertifikat ändern** aus.
-1. Verteilen Sie das Zertifikat an alle Clients, die mithilfe von Secure LDAP eine Verbindung herstellen. 
+1. Verteilen Sie das Zertifikat an alle Clients, die mithilfe von Secure LDAP eine Verbindung herstellen.
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Beschränken des Secure LDAP-Zugriffs über das Internet
 
@@ -243,7 +243,7 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
     | Destination                       | Any          |
     | Zielportbereiche           | 636          |
     | Protocol                          | TCP          |
-    | Aktion                            | Zulassen        |
+    | Aktion                            | Allow        |
     | Priority                          | 401          |
     | Name                              | AllowLDAPS   |
 
@@ -304,14 +304,14 @@ Wenn Sie der lokalen Datei „hosts“ auf Ihrem Computer einen DNS-Eintrag hinz
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn eine Fehlermeldung mit dem Hinweis angezeigt wird, dass LDAP.exe keine Verbindung herstellen kann, versuchen Sie, die verschiedenen Aspekte der Verbindungs Herstellung zu verwenden: 
+Wenn eine Fehlermeldung mit dem Hinweis angezeigt wird, dass LDAP.exe keine Verbindung herstellen kann, versuchen Sie, die verschiedenen Aspekte der Verbindungs Herstellung zu verwenden:
 
 1. Konfigurieren des Domänencontrollers
 1. Konfigurieren des Client
 1. Netzwerk
 1. Einrichten der TLS-Sitzung
 
-Für den Antragsteller Namen des Zertifikats wird der Domänen Controller den Azure Adds-Domänen Namen (nicht den Azure AD Domänen Namen) verwenden, um den Zertifikat Speicher nach dem Zertifikat zu durchsuchen. Rechtschreibfehler verhindern z. b., dass der DC das richtige Zertifikat auswählt. 
+Für den Abgleich des Namens des Zertifikatantragstellers wird vom Domänencontroller der Azure AD DS-Domänenname (nicht der Azure AD-Domänenname) verwenden, um den Zertifikatspeicher nach dem Zertifikat zu durchsuchen. Rechtschreibfehler verhindern z. b., dass der DC das richtige Zertifikat auswählt.
 
 Der Client versucht, die TLS-Verbindung mit dem von Ihnen angegebenen Namen herzustellen. Der Datenverkehr muss vollständig durchlaufen werden. Der Domänen Controller sendet den öffentlichen Schlüssel des Server Authentifizierungs Zertifikats. Das Zertifikat muss über die richtige Verwendung im Zertifikat verfügen, und der im Antragsteller Namen signierte Name muss kompatibel sein, damit der Client darauf vertrauen kann, dass es sich bei dem Server um den DNS-Namen handelt, mit dem Sie eine Verbindung herstellen (d. h. ein Platzhalter funktioniert, ohne Rechtschreibfehler), und der Client muss dem Aussteller vertrauen. Sie können im Systemprotokoll Ereignisanzeige auf Probleme in dieser Kette überprüfen und die Ereignisse filtern, bei denen die Quelle SChannel ist. Sobald diese Elemente vorhanden sind, bilden Sie einen Sitzungsschlüssel.  
 

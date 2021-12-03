@@ -1,6 +1,6 @@
 ---
 title: Aktive Georeplikation
-description: Mit aktiver Georeplikation können Sie lesbare sekundäre Datenbanken für einzelne Datenbanken in Azure SQL-Datenbank im selben oder in einem anderen Rechenzentrum (Region) erstellen.
+description: Verwenden Sie die aktive Georeplikation, um lesbare sekundäre Datenbanken von einzelnen Datenbanken in Azure SQL Database in derselben oder in verschiedenen Regionen zu erstellen.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
@@ -8,18 +8,20 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
-ms.date: 04/28/2021
-ms.openlocfilehash: 7b4f29ad732622529f391f6b50295138ad953634
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.date: 10/25/2021
+ms.openlocfilehash: ca958a3e7a43864caa673cd31736b1e661e7f608
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161195"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465362"
 ---
-# <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Erstellen und Verwenden der aktiven Georeplikation: Azure SQL-Datenbank
+# <a name="active-geo-replication"></a>Aktive Georeplikation
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Die aktive Georeplikation ist ein Feature in Azure SQL-Datenbank, mit der Sie lesbare sekundäre Datenbanken für einzelne Datenbanken auf einem Server im selben oder in einem anderen Rechenzentrum (Region) erstellen können.
+Aktive Georeplikation ist eine Funktion, mit der Sie eine kontinuierlich synchronisierte, lesbare Sekundärdatenbank für eine Primärdatenbank erstellen können. Die lesbare sekundäre Datenbank kann sich in derselben Azure-Region befinden wie die primäre, oder, was häufiger der Fall ist, in einer anderen Region. Diese Art von lesbaren Sekundärdatenbanken werden auch als Geo-Sekundärdatenbanken oder Geo-Replikate bezeichnet.
+
+Die aktive Georeplikation ist als Business-Continuity-Lösung konzipiert, mit der Sie im Falle einer regionalen Katastrophe oder eines großflächigen Ausfalls eine schnelle Wiederherstellung einzelner Datenbanken durchführen können. Sobald die Geo-Replikation eingerichtet ist, können Sie einen Geo-Failover zu einer Geo-Sekundärstelle in einer anderen Azure-Region initiieren. Der Geo-Failover wird programmatisch durch die Anwendung oder manuell durch den Benutzer ausgelöst.
 
 > [!NOTE]
 > Die aktive Georeplikation für Azure SQL Hyperscale befindet sich [jetzt in der öffentlichen Vorschau](https://aka.ms/hsgeodr). Die aktuellen Einschränkungen umfassen: nur eine sekundäre Geodatenbank in derselben oder einer anderen Region; erzwungene und geplante Failover werden derzeit nicht unterstützt; Wiederherstellung einer Datenbank aus sekundärer Geodatenbank wird nicht unterstützt; Verwendung einer sekundären Geodatenbank als Quelldatenbank für Datenbankkopie oder als primäre Datenbank für eine andere sekundäre Geodatenbank wird nicht unterstützt.
@@ -35,21 +37,15 @@ Die aktive Georeplikation ist ein Feature in Azure SQL-Datenbank, mit der Sie le
 > [!NOTE]
 > Informationen zum Migrieren von SQL-Datenbanken aus Azure Deutschland mithilfe der aktiven Georeplikation finden Sie unter [Migrieren einer SQL-Datenbank mithilfe der aktiven Georeplikation](../../germany/germany-migration-databases.md#migrate-sql-database-using-active-geo-replication).
 
-Aktive Georeplikation ist als Geschäftskontinuitätslösung konzipiert, die der Anwendung im Falle eines regionalen Notfalls oder größeren Ausfalls eine schnelle Notfallwiederherstellung einzelner Datenbanken ermöglicht. Wenn Georeplikation aktiviert ist, kann die Anwendung ein Failover auf eine sekundäre Datenbank in einer anderen Azure-Region initiieren. Bis zu vier sekundäre Datenbanken werden in derselben oder verschiedenen Regionen unterstützt, und die sekundären Datenbanken können auch für schreibgeschützten Abfragezugriff verwendet werden. Das Failover muss durch die Anwendung oder den Benutzer manuell eingeleitet werden. Nach einem Failover hat die neue primäre Datenbank einen anderen Verbindungsendpunkt.
-
-> [!NOTE]
-> Die aktive Georeplikation repliziert Änderungen durch das Transaktionsprotokoll für die Streamingdatenbank. Sie hat keinen Bezug zur [Transaktionsreplikation](/sql/relational-databases/replication/transactional/transactional-replication), bei der Änderungen durch Ausführen von DML-Befehlen (INSERT, UPDATE, DELETE) repliziert werden.
+Wenn Ihre Anwendung zusätzlich zur Georeplikation einen stabilen Verbindungsendpunkt und automatische Geo-Failover-Unterstützung benötigt, verwenden Sie [Auto-Failover-Gruppen](auto-failover-group-overview.md).
 
 Das folgende Diagramm zeigt eine typische Konfiguration einer georedundanten Cloudanwendung mit aktiver Georeplikation.
 
-![Aktive Georeplikation](./media/active-geo-replication-overview/geo-replication.png )
+![Aktive Georeplikation](./media/active-geo-replication-overview/geo-replication.png)
 
-> [!IMPORTANT]
-> SQL-Datenbank unterstützt auch Autofailover-Gruppen. Weitere Informationen finden Sie unter [Autofailover-Gruppen](auto-failover-group-overview.md).
+Wenn Ihre primäre Datenbank aus irgendeinem Grund ausfällt, können Sie einen Geo-Failover auf eine Ihrer sekundären Datenbanken veranlassen. Wenn ein Sekundärteilnehmer zum Primärteilnehmer befördert wird, werden alle anderen Sekundärteilnehmer automatisch mit dem neuen Primärteilnehmer verbunden.
 
-Falls Ihre primäre Datenbank aus irgendeinem Grund ausfällt oder einfach offline geschaltet werden muss, können Sie ein Failover auf eine der sekundären Datenbanken initiieren. Wenn das Failover auf eine sekundäre Datenbank aktiviert ist, werden alle anderen sekundären Datenbanken automatisch mit der neuen primären Datenbank verknüpft.
-
-Sie können Replikation und Failover für eine einzelne Datenbank oder eine Gruppe von Datenbanken auf einem Server oder in einem Pool für elastische Datenbanken mithilfe der aktiven Georeplikation verwalten. Verwenden Sie hierfür Folgendes:
+Sie können die Georeplikation verwalten und einen Geo-Failover wie folgt initiieren:
 
 - Das [Azure-Portal](active-geo-replication-configure-portal.md)
 - [PowerShell: Einzelne Datenbank](scripts/setup-geodr-and-failover-database-powershell.md)
@@ -57,226 +53,217 @@ Sie können Replikation und Failover für eine einzelne Datenbank oder eine Grup
 - [Transact-SQL: Einzelne Datenbank oder Pool für elastische Datenbanken](/sql/t-sql/statements/alter-database-azure-sql-database)
 - [REST-API: Einzelne Datenbank](/rest/api/sql/replicationlinks)
 
-Die Aktive Georeplikation nutzt die [Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) der Datenbank-Engine, um Transaktionen mit ausgeführtem Commit in der primären Datenbank asynchron mit Momentaufnahmeisolation in eine sekundäre Datenbank zu replizieren. Gruppen für automatisches Failover stellen die Gruppensemantik über der aktiven Georeplikation bereit, es wird aber der gleiche asynchrone Replikationsmechanismus verwendet. Wenngleich die sekundäre Datenbank stets ein wenig hinter der primären Datenbank zurückliegt, sind unvollständige Transaktionen bei sekundären Daten garantiert ausgeschlossen. Regionsübergreifende Redundanz ermöglicht Anwendungen die schnelle Wiederherstellung nach einem dauerhaften Ausfall eines gesamten Rechenzentrums oder von Teilen eines Rechenzentrums aufgrund von Naturkatastrophen, schwerwiegendem menschlichen Versagen oder böswilligen Handlungen. Die spezifischen RPO-Daten finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](business-continuity-high-availability-disaster-recover-hadr-overview.md).
+Die aktive Georeplikation nutzt die Technologie der [Allzeitverfügbarkeitsgruppe](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server), um das auf dem primären Replikat erzeugte Transaktionsprotokoll asynchron auf alle Georeplikate zu replizieren. Auch wenn eine sekundäre Datenbank zu einem bestimmten Zeitpunkt etwas hinter der primären Datenbank zurückbleiben kann, ist die Konsistenz der Daten in einer sekundären Datenbank garantiert. Mit anderen Worten: Änderungen, die durch nicht bestätigte Transaktionen vorgenommen werden, sind nicht sichtbar. 
 
 > [!NOTE]
-> Bei einem Netzwerkfehler zwischen zwei Regionen versuchen wir alle 10 Sekunden, die Verbindung erneut herzustellen.
+> Bei der aktiven Georeplikation werden Änderungen durch Streaming des Datenbanktransaktionsprotokolls vom primären Replikat auf sekundäre Replikate repliziert. Sie hat nichts mit der [transaktionalen Replikation](/sql/relational-databases/replication/transactional/transactional-replication) zu tun, die Änderungen durch die Ausführung von DML-Befehlen (INSERT, UPDATE, DELETE) auf Abonnenten repliziert.
 
-> [!IMPORTANT]
-> Um zu gewährleisten, dass eine wichtige Änderung in der primären Datenbank vor dem Failover zur sekundären Datenbank repliziert wird, können Sie die Synchronisierung erzwingen, um sicherzustellen, dass wichtige Änderungen (z.B. Kennwortänderungen) repliziert werden. Die erzwungene Synchronisierung beeinträchtigt die Leistung, da der aufrufende Thread blockiert wird, bis alle durchgeführten Transaktionen repliziert wurden. Weitere Informationen finden Sie unter [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Informationen zur Überwachung der Replikationsverzögerung zwischen der primären Datenbank und der geografisch sekundären Datenbank finden Sie unter [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
+Regionale Redundanz durch Georeplikation ermöglicht es Anwendungen, sich schnell von einem dauerhaften Verlust einer ganzen Azure-Region oder von Teilen einer Region zu erholen, der durch Naturkatastrophen, katastrophale menschliche Fehler oder bösartige Handlungen verursacht wurde. Geo-Replikations-RPO finden Sie in [Überblick über Business Continuity](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 
-Die folgende Abbildung zeigt ein Beispiel für die Konfiguration der aktiven Georeplikation, wobei sich die primäre Datenbank in der Region „USA, Norden-Mitte“ und die sekundäre Datenbank in der Region „USA, Süden-Mitte“ befindet.
+Die folgende Abbildung zeigt ein Beispiel für eine aktive Georeplikation mit einem primären Standort in der Region North Central US und einem sekundären Standort in der Region South Central US.
 
 ![Georeplikationsbeziehung](./media/active-geo-replication-overview/geo-replication-relationship.png)
 
-Weil die sekundären Datenbanken lesbar sind, können sie zum Auslagern schreibgeschützter Workloads wie Berichtsaufträge verwendet werden. Bei Verwendung der aktiven Georeplikation können Sie die sekundäre Datenbank in der gleichen Region wie die primäre erstellen, aber dies steigert nicht die Stabilität der Anwendung gegenüber schwerwiegenden Ausfällen. Wenn Sie Gruppen für automatisches Failover verwenden, werden die sekundären Datenbanken immer in einer anderen Region erstellt.
+Neben der Notfallwiederherstellung kann die aktive Georeplikation in den folgenden Szenarien eingesetzt werden:
 
-Zusätzlich zur Wiederherstellung im Notfall kann aktive Georeplikation in den folgenden Szenarien verwendet werden:
-
-- **Datenbankmigration**: Sie können die aktive Georeplikation zur Onlinemigration einer Datenbank von einem Server auf einen anderen mit minimalen Ausfallzeiten nutzen.
+- **Datenbankmigration**: Sie können die aktive Georeplikation verwenden, um eine Datenbank mit minimaler Ausfallzeit von einem Server auf einen anderen zu migrieren.
 - **Anwendungsupgrades**: Sie können bei Anwendungsupgrades eine zusätzliche sekundäre Datenbank als Failbackkopie erstellen.
 
-Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen von Datenbankredundanz zwischen Rechenzentren jedoch nur ein Teil der Lösung. Für die komplette Wiederherstellung einer Anwendung bzw. eines Diensts nach einem schwerwiegenden Fehler ist das Wiederherstellen aller Komponenten erforderlich, aus denen sich der Dienst und alle abhängigen Dienste zusammensetzen. Beispiele dieser Komponenten sind die Clientsoftware (z. B. ein Browser mit benutzerdefiniertem JavaScript), Web-Front-Ends, Speicher und DNS. Es ist wichtig, dass alle Komponenten hinsichtlich derselben Fehler gegen Ausfälle geschützt und innerhalb des RTO (Recovery Time Objective) der Anwendung wieder verfügbar sind. Daher müssen Sie alle abhängigen Dienste bestimmen und mit dem Leistungsumfang und den Funktionen vertraut sein, die sie bieten. Dann müssen Sie entsprechende Maßnahmen ergreifen, um sicherzustellen, dass Ihr Dienst während des Failovers der Dienste funktioniert, von denen er abhängig ist. Weitere Informationen zum Entwerfen von Lösungen für die Notfallwiederherstellung finden Sie unter [Entwerfen von Cloudlösungen für die Notfallwiederherstellung mithilfe der aktiven Georeplikation](designing-cloud-solutions-for-disaster-recovery.md).
+Um eine vollständige Geschäftskontinuität zu erreichen, ist das Hinzufügen einer regionalen Datenbankredundanz nur ein Teil der Lösung. Für die komplette Wiederherstellung einer Anwendung bzw. eines Diensts nach einem schwerwiegenden Fehler ist das Wiederherstellen aller Komponenten erforderlich, aus denen sich der Dienst und alle abhängigen Dienste zusammensetzen. Beispiele dieser Komponenten sind die Clientsoftware (z. B. ein Browser mit benutzerdefiniertem JavaScript), Web-Front-Ends, Speicher und DNS. Es ist wichtig, dass alle Komponenten hinsichtlich derselben Fehler gegen Ausfälle geschützt und innerhalb des RTO (Recovery Time Objective) der Anwendung wieder verfügbar sind. Daher müssen Sie alle abhängigen Dienste bestimmen und mit dem Leistungsumfang und den Funktionen vertraut sein, die sie bieten. Dann müssen Sie entsprechende Maßnahmen ergreifen, um sicherzustellen, dass Ihr Dienst während des Failovers der Dienste funktioniert, von denen er abhängig ist. Weitere Informationen zum Entwerfen von Lösungen für die Notfallwiederherstellung finden Sie unter [Entwerfen von Cloudlösungen für die Notfallwiederherstellung mithilfe der aktiven Georeplikation](designing-cloud-solutions-for-disaster-recovery.md).
 
 ## <a name="active-geo-replication-terminology-and-capabilities"></a>Aktive Georeplikation – Terminologie und Funktionen
 
 - **Automatische asynchrone Replikation**
 
-  Sie können eine sekundäre Datenbank nur erstellen, indem Sie diese einer vorhandenen Datenbank hinzufügen. Die sekundäre Datenbank kann auf einem beliebigen Server erstellt werden. Nach der Erstellung wird die sekundäre Datenbank mit den Daten aufgefüllt, die aus der primären Datenbank kopiert wurden. Dieser Prozess wird als Seeding bezeichnet. Nachdem eine sekundäre Datenbank erstellt wurde und das Seeding erfolgt ist, werden Aktualisierungen der primären Datenbank automatisch asynchron in die sekundäre Datenbank repliziert. Asynchrone Replikation bedeutet, dass für Transaktionen in der primären Datenbank ein Commit erfolgt, ehe sie in die sekundäre Datenbank repliziert werden.
+  Sie können eine Geo-Sekundärdatenbank nur für eine bestehende Datenbank erstellen. Die geo-sekundäre Datenbank kann auf einem beliebigen logischen Server erstellt werden, der nicht der Server mit der primären Datenbank ist. Nach der Erstellung wird die geo-sekundäre Replik mit den Daten der primären Datenbank befüllt. Dieser Prozess wird als Seeding bezeichnet. Nachdem eine Geo-Sekundärdatenbank erstellt und geimpft wurde, werden Aktualisierungen der primären Datenbank automatisch und asynchron auf die Geo-Sekundärdatenbank repliziert. Asynchrone Replikation bedeutet, dass die Transaktionen in der primären Datenbank bestätigt werden, bevor sie repliziert werden.
 
-- **Lesbare sekundäre Datenbanken**
+- **Lesbare geo-sekundäre Replikate**
 
-  Eine Anwendung kann für schreibgeschützte Vorgänge auf eine sekundäre Datenbank zugreifen, indem sie die Sicherheitsprinzipale für den Zugriff auf die primäre Datenbank oder andere Sicherheitsprinzipale verwendet. Die sekundären Datenbanken werden im Momentaufnahme-Isolationsmodus betrieben. Auf diese Weise wird sichergestellt, dass die Replikation von Aktualisierungen der primären Datenbank (Protokollwiedergabe) nicht durch Abfragen verzögert wird, die für die sekundäre Datenbank ausgeführt werden.
+  Eine Anwendung kann auf ein geo-sekundäres Replikat zugreifen, um schreibgeschützte Abfragen mit denselben oder anderen Sicherheitsprinzipien auszuführen, die für den Zugriff auf die primäre Datenbank verwendet werden. Weitere Informationen finden Sie unter [Verwenden Sie schreibgeschützte Replikate, um schreibgeschützte Abfragen zu entlasten](read-scale-out.md).
 
-> [!NOTE]
-> Die Protokollwiedergabe wird in der sekundären Datenbank verzögert, wenn Schemaupdates für die primäre Datenbank vorhanden sind. In diesem Fall ist eine Schemasperre für die sekundäre Datenbank erforderlich.
+   > [!IMPORTANT]
+   > Mit der Georeplikation können Sie sekundäre Replikate in derselben Region wie das primäre erstellen. Sie können diese Secondaries verwenden, um Read-Scale-Out-Szenarien in derselben Region zu erfüllen. Ein sekundäres Replikat in derselben Region bietet jedoch keine zusätzliche Ausfallsicherheit bei katastrophalen Fehlern oder großflächigen Ausfällen und ist daher kein geeignetes Failover-Ziel für Disaster Recovery-Zwecke. Es garantiert auch keine Isolierung der Verfügbarkeitszonen. Verwenden Sie für die Isolierung von Verfügbarkeitszonen die Service-Tiers "Business Critical" oder "Premium" [Zonenredundanzkonfiguration](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) oder das Service-Tier "General Purpose" [Zonenredundanzkonfiguration](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview).
+   >
 
-> [!IMPORTANT]
-> Sie können die Georeplikation verwenden, um eine sekundäre Datenbank in derselben Region wie die primäre Datenbank zu erstellen. Sie können diese sekundäre Datenbank verwenden, um einen Lastenausgleich für schreibgeschützte Workloads in derselben Region durchzuführen. Eine sekundäre Datenbank in derselben Region bietet jedoch keine zusätzliche Fehlertoleranz und ist daher kein geeignetes Failoverziel für die Notfallwiederherstellung. Es wird auch keine Garantie für die Isolation der Verfügbarkeitszone geben. Verwenden Sie die Dienstebene „Unternehmenskritisch“ oder „Premium“ mit [zonenredundanter Konfiguration](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) oder die Dienstebene „Universell“ mit [zonenredundanter Konfiguration](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview), um eine Verfügbarkeitszonenisolierung zu erreichen.
->
+- **Geplanter Geo-Failover**
 
-- **Geplantes Failover**
+  Der geplante Geo-Failover tauscht die Rollen der primären und der geosekundären Datenbank nach Abschluss der vollständigen Datensynchronisierung. Ein geplanter Failover führt nicht zu einem Datenverlust. Die Dauer des geplanten Geo-Failover hängt von der Größe des Transaktionsprotokolls auf dem primären System ab, das mit dem geo-sekundären System synchronisiert werden muss. Der geplante Geo-Failover ist für die folgenden Szenarien konzipiert:
 
-  Das geplante Failover schaltet die Rollen der primären und sekundären Datenbanken nach Abschluss der vollständigen Synchronisierung um. Es handelt sich um einen Onlinevorgang, der keinen Datenverlust zur Folge hat. Die für den Vorgang benötigte Zeit hängt von der Größe des Transaktionsprotokolls für die primäre Datenbank ab, die synchronisiert werden muss. Ein geplantes Failover wurde für folgenden Szenarien konzipiert: (a) zum Ausführen von DR-Drills in der Produktion, wenn ein Datenverlust nicht akzeptabel ist, (b) zum Verschieben der Datenbank in eine andere Region, (c) für die Rückkehr der Datenbank in die primäre Region, nachdem der Ausfall behoben wurde (Failback).
+  - Führen Sie DR-Drills in der Produktion durch, wenn der Datenverlust nicht akzeptabel ist; 
+  - Verlegen Sie die Datenbank in eine andere Region; 
+  - Rückführung der Datenbank in die primäre Region nach Behebung des Ausfalls (sog. Failback).
 
-- **Nicht geplantes Failover**
+- **Ungeplanter Geo-Failover**
 
-  Beim ungeplanten oder erzwungenen Failover übernimmt die sekundäre Datenbank sofort die Rolle der primären Datenbank, ohne dass eine Synchronisierung mit der primären Datenbank stattfindet. Alle Transaktionen, die an die primäre Datenbank committet, aber nicht auf die sekundäre Datenbank repliziert werden, gehen verloren. Dieser Vorgang ist als Wiederherstellungsmethode bei Ausfällen konzipiert, wenn auf die primäre Datenbank nicht zugegriffen werden kann, die Datenbankverfügbarkeit aber schnell wiederhergestellt werden muss. Wenn die ursprüngliche primäre Datenbank wieder online ist, stellt sie automatisch wieder eine Verbindung her und wird zur neuen sekundären Datenbank. Alle nicht synchronisierten Transaktionen vor dem Failover bleiben in der Sicherungsdatei erhalten, werden jedoch nicht mit der neuen primären Datenbank synchronisiert, um Konflikte zu vermeiden. Diese Transaktionen müssen manuell mit der neuesten Version der primären Datenbank gemergt werden.
+  Bei einem ungeplanten oder erzwungenen Geo-Failover wechselt der Geo-Sekundärserver sofort in die Primärrolle, ohne dass eine Synchronisierung mit dem Primärserver erfolgt. Alle Transaktionen, die auf dem primären System übertragen, aber noch nicht auf dem sekundären System repliziert wurden, gehen verloren. Dieser Vorgang ist als Wiederherstellungsmethode bei Ausfällen gedacht, wenn die Primärdatenbank nicht erreichbar ist, die Verfügbarkeit der Datenbank aber schnell wiederhergestellt werden muss. Wenn die ursprüngliche Primärdatenbank wieder online ist, wird sie automatisch wieder verbunden, mit den aktuellen Primärdaten neu bestückt und zu einer neuen Geo-Sekundärdatenbank.
 
-- **Mehrere lesbare sekundäre Datenbanken**
+  > [!IMPORTANT]
+  > Nach einem geplanten oder ungeplanten Geo-Failover ändert sich der Verbindungsendpunkt für den neuen Primärserver, da sich dieser nun auf einem anderen logischen Server befindet.
 
-  Es können bis zu vier sekundäre Datenbanken für eine primäre Datenbank erstellt werden. Wenn es nur eine sekundäre Datenbank gibt und diese ausfällt, ist die Anwendung bis zum Erstellen einer neuen sekundären Datenbank einem höheren Risiko ausgesetzt. Wenn mehrere sekundäre Datenbanken vorhanden sind, bleibt die Anwendung auch bei Ausfall einer der sekundären Datenbanken geschützt. Die zusätzlichen sekundären Datenbanken können auch zum Aufskalieren der schreibgeschützten Workloads verwendet werden.
+- **Mehrere lesbare Geo-Sekundärdaten**
 
-  > [!NOTE]
-  > Wenn Sie mit der aktiven Georeplikation eine global verteilte Anwendung erstellen und schreibgeschützten Zugriff auf Daten in mehr als vier Regionen bereitstellen müssen, können Sie eine sekundäre Datenbank einer sekundären Datenbank erstellen (dieser Prozess wird als Verkettung bezeichnet). Auf diese Weise können Sie die Datenbankreplikation praktisch unbegrenzt skalieren. Darüber hinaus verkürzt die Verkettung den Mehraufwand der Replikation von der primären Datenbank. Der Nachteil besteht in der erhöhten Replikationsverzögerung in den äußersten sekundären Datenbanken.
+  Für eine Primärseite können bis zu vier Geosekundärseiten erstellt werden. Wenn nur ein Sekundärspeicher vorhanden ist und dieser ausfällt, ist die Anwendung einem höheren Risiko ausgesetzt, bis ein neuer Sekundärspeicher erstellt wird. Wenn mehrere Sekundärsysteme vorhanden sind, bleibt die Anwendung auch dann geschützt, wenn eines der Sekundärsysteme ausfällt. Zusätzliche Secondaries können auch zur Skalierung von Nur-Lese-Workloads verwendet werden.
+
+  > [!TIP]
+  > Wenn Sie die aktive Georeplikation zum Aufbau einer global verteilten Anwendung verwenden und einen Nur-Lese-Zugriff auf Daten in mehr als vier Regionen benötigen, können Sie einen Sekundärteil eines Sekundärteils erstellen (ein Prozess, der als Verkettung bekannt ist), um zusätzliche Georeplikate zu erstellen. Die Replikationsverzögerung bei verketteten Geo-Replikaten kann höher sein als bei Geo-Replikaten, die direkt mit dem Primärsystem verbunden sind. Das Einrichten von verketteten Georeplikations-Topologien wird nur programmatisch und nicht über das Azure-Portal unterstützt.
 
 - **Georeplikation von Datenbanken in einem Pool für elastische Datenbanken**
 
-  Jede sekundäre Datenbank kann einzeln in einem Pool für elastische Datenbanken enthalten sein oder sich in keinem Pool befinden. Die Auswahl des Pools für jede sekundäre Datenbank erfolgt einzeln und ist nicht von der Konfiguration einer anderen sekundären Datenbank abhängig (ob primär oder sekundär). Jeder Pool für elastische Datenbanken befindet sich innerhalb einer einzelnen Region, daher können mehrere sekundäre Datenbanken in derselben Topologie einen Pool für elastische Datenbanken nie gemeinsam verwenden.
+  Jede Geosekundärdatenbank kann eine einzelne Datenbank oder eine Datenbank in einem elastischen Pool sein. Die Auswahl des elastischen Pools für jede geo-sekundäre Datenbank ist separat und hängt nicht von der Konfiguration einer anderen Replik in der Topologie ab (weder primär noch sekundär). Jeder elastische Pool ist in einem einzigen logischen Server enthalten. Da die Namen der Datenbanken auf einem logischen Server eindeutig sein müssen, können sich niemals mehrere Geo-Sekundärdatenbanken desselben Primärservers einen elastischen Pool teilen.
 
-- **Benutzergesteuertes Failover und Failback**
+- **Benutzergesteuertes Geo-Failover und Failback**
 
-  Eine sekundäre Datenbank kann jederzeit durch die Anwendung oder den Benutzer explizit die primäre Rolle erhalten. Bei einem echten Ausfall sollte die Option „Nicht geplant“ verwendet werden, die eine sekundäre Datenbank umgehend zu einer primären Datenbank heraufstuft. Wenn die ausgefallene primäre Datenbank wiederhergestellt ist und wieder zur Verfügung steht, kennzeichnet das System diese wiederhergestellte primäre Datenbank automatisch als sekundäre Datenbank und bringt sie auf den aktuellen Stand der neuen primären Datenbank. Aufgrund der asynchronen Natur der Replikation kann eine kleine Menge von Daten bei einem nicht geplanten Failover verloren gehen, wenn eine primäre Datenbank ausfällt, bevor die aktuellen Änderungen in die sekundäre Datenbank repliziert wurden. Wenn für eine primäre Datenbank mit mehreren sekundären Datenbanken ein Failover durchgeführt wird, konfiguriert das System automatisch die Replikationsbeziehungen neu und verknüpft die verbleibenden sekundären Datenbanken mit der soeben heraufgestuften primären Datenbank, ohne dass ein Benutzereingriff erforderlich ist. Wenn der Ausfall behoben ist, durch den das Failover verursacht wurde, kann es wünschenswert sein, die Anwendung wieder in die primäre Region zurückzuführen. Zu diesem Zweck sollte der Failoverbefehl mit der Option „Geplant“ aufgerufen werden.
+  Ein Geo-Sekundärdienst, der seine erste Aussaat abgeschlossen hat, kann jederzeit von der Anwendung oder dem Benutzer ausdrücklich in die primäre Rolle umgeschaltet werden (failed over). Während eines Ausfalls, bei dem die Hauptleitung nicht erreichbar ist, kann nur ein ungeplanter Geo-Failover verwendet werden. Damit wird eine Geosekundärstufe sofort zur neuen Primärstufe. Wenn der Ausfall behoben ist, macht das System die wiederhergestellte Primärdatenquelle automatisch zu einer Geo-Sekundärdatenquelle und bringt sie mit der neuen Primärdatenquelle auf den neuesten Stand. Aufgrund des asynchronen Charakters der Georeplikation können aktuelle Transaktionen bei ungeplanten Geo-Failovern verloren gehen, wenn die Primärseite ausfällt, bevor diese Transaktionen auf eine Geo-Sekundärseite repliziert werden. Fällt eine Primärdatei mit mehreren Geo-Sekundärdateien aus, konfiguriert das System automatisch die Replikationsbeziehungen neu und verbindet die verbleibenden Geo-Sekundärdateien mit der neuen Primärdatei, ohne dass ein Benutzereingriff erforderlich ist. Nachdem der Ausfall, der den Geo-Failover verursacht hat, entschärft wurde, kann es wünschenswert sein, die Primäranlage in ihre ursprüngliche Region zurückzubringen. Rufen Sie dazu einen geplanten Geo-Failover auf.
 
-## <a name="preparing-secondary-database-for-failover"></a>Vorbereiten der sekundären Datenbank für Failover
+## <a name="prepare-for-geo-failover"></a><a name="preparing-secondary-database-for-failover"></a> Vorbereitungen für Geo-Failover
 
-Um sicherzustellen, dass Ihre Anwendung nach einem Failover sofort auf die neue primäre Datenbank zugreifen kann, müssen Sie sicherstellen, dass die Authentifizierungsanforderungen für den sekundären Server und die Datenbank ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](active-geo-replication-security-configure.md). Um die Kompatibilität nach einem Failover zu gewährleisten, stellen Sie sicher, dass die Sicherungsaufbewahrungsrichtlinie für die sekundäre Datenbank mit der der primären Datenbank übereinstimmt. Diese Einstellungen sind nicht Teil der Datenbank und werden nicht repliziert. Standardmäßig wird die sekundäre Datenbank mit einer standardmäßigen PITR-Aufbewahrungsdauer von sieben Tagen konfiguriert. Weitere Informationen finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](automated-backups-overview.md).
+Um sicherzustellen, dass Ihre Anwendung nach einem Geo-Failover sofort auf den neuen primären Server zugreifen kann, müssen Sie sicherstellen, dass die Authentifizierung und der Netzwerkzugriff für Ihren sekundären Server ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](active-geo-replication-security-configure.md). Stellen Sie außerdem sicher, dass die Sicherungsaufbewahrungsrichtlinie der sekundären Datenbank mit der primären Datenbank übereinstimmt. Diese Einstellung ist nicht Teil der Datenbank und wird nicht von der Primärdatenbank repliziert. Standardmäßig ist die Geo-Sekundärdatei mit einer PITR-Aufbewahrungsfrist von sieben Tagen konfiguriert. Weitere Informationen finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](automated-backups-overview.md).
 
 > [!IMPORTANT]
-> Wenn Ihre Datenbank Mitglied einer Failovergruppe ist, können Sie das Failover nicht mit dem Befehl für ein Failover mit Georeplikation initiieren. Verwenden Sie den Failoverbefehl für die Gruppe. Wenn Sie ein Failover für eine einzelne Datenbank durchführen müssen, müssen Sie sie zuerst aus der Failovergruppe entfernen. Weitere Informationen finden Sie unter [Failovergruppen](auto-failover-group-overview.md).
+> Wenn Ihre Datenbank Mitglied einer Failovergruppe ist, können Sie das Failover nicht mit dem Befehl für ein Failover mit Georeplikation initiieren. Verwenden Sie den Failoverbefehl für die Gruppe. Wenn Sie ein Failover für eine einzelne Datenbank durchführen müssen, müssen Sie sie zuerst aus der Failovergruppe entfernen. Siehe [Auto-Failover-Gruppen](auto-failover-group-overview.md) für Einzelheiten.
 
-## <a name="configuring-secondary-database"></a>Konfigurieren einer sekundären Datenbank
+## <a name="configure-geo-secondary"></a><a name="configuring-secondary-database"></a> Geo-sekundär konfigurieren
 
-Sowohl die primäre als auch die sekundäre Datenbank müssen die gleiche Dienstebene aufweisen. Darüber hinaus wird dringend empfohlen, die sekundäre Datenbank mit der gleichen Sicherungsspeicherredundanz und Computegröße (DTUs oder virtuelle Kerne) wie die primäre Datenbank zu erstellen. Wenn in der primären Datenbank schreibintensive Workloads verarbeitet werden, ist eine sekundäre Datenbank mit einer geringeren Computegröße möglicherweise nicht in der Lage mitzuhalten. Dadurch wird die Wiederholungsverzögerung für die sekundäre Datenbank verursacht, sodass sie potenziell nicht verfügbar ist. Um diese Risiken zu mindern, drosselt die aktive Georeplikation die Transaktionsprotokollrate der primären Datenbank, damit die sekundären Datenbanken aufholen können.
+Sowohl die Primär- als auch die Geosekundärdienste müssen dieselbe Dienstebene haben. Es wird außerdem dringend empfohlen, die geo-sekundäre Einheit mit der gleichen Backup-Speicherredundanz und Rechengröße (DTUs oder vCores) zu konfigurieren wie die primäre Einheit. Wenn das primäre System eine hohe Schreiblast aufweist, kann ein sekundäres System mit einer geringeren Rechenleistung möglicherweise nicht mithalten. Dies führt zu einer Verzögerung der Replikation auf der Geo-Sekundärstation und kann schließlich zur Nichtverfügbarkeit der Geo-Sekundärstation führen. Um diese Risiken abzuschwächen, wird bei der aktiven Georeplikation die Transaktionsprotokollierungsrate des primären Systems bei Bedarf reduziert (gedrosselt), damit die sekundären Systeme aufholen können.
 
-Wenn die sekundäre Datenbank nicht angemessen konfiguriert ist, kann es außerdem passieren, dass die Anwendungsleistung nach einem Failover beeinträchtigt wird, da die neue primäre Datenbank nicht genügend Computekapazität aufweist. In diesem Fall muss das Ziel des Datenbankdiensts auf die erforderliche Stufe hochskaliert werden, was beträchtliche Zeit und Computeressourcen beanspruchen kann und ein [Hochverfügbarkeits-Failover](high-availability-sla.md) am Ende des Hochskalierungsprozesses erfordert.
+Eine weitere Folge einer unausgewogenen Geo-Sekundärkonfiguration ist, dass die Anwendungsleistung nach einem Failover aufgrund der unzureichenden Rechenkapazität des neuen Primärrechners leiden kann. In diesem Fall muss die Datenbank aufgestockt werden, um über ausreichende Ressourcen zu verfügen, was viel Zeit in Anspruch nehmen kann und eine [hochverfügbare](high-availability-sla.md) Ausfallsicherung am Ende des Aufstockungsprozesses erfordert, was zu einer Unterbrechung der Anwendungsarbeitslasten führen kann.
 
-Wenn Sie die sekundäre Datenbank mit einer niedrigeren Computegröße erstellen, können Sie anhand des Diagramms mit dem Protokoll-E/A-Prozentsatz im Azure-Portal gut abschätzen, welche Computegröße für die sekundäre Datenbank mindestens erforderlich ist, um die Replikationslast zu bewältigen. Wenn die Leistungsstufe der primären Datenbank beispielsweise P6 (1.000 DTU) ist und ihr Prozentsatz für Protokollschreibvorgänge 50 % beträgt, muss die Leistungsstufe der sekundären Datenbank mindestens P4 (500 DTU) sein. Verwenden Sie zum Abrufen von Protokoll-E/A-Verlaufsdaten die Sicht [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database). Verwenden Sie die Sicht [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), um die neuesten Daten zu Protokollschreibvorgängen mit höherer Granularität abzurufen, da sie kurzfristige Spitzen der Protokollierungsrate besser widerspiegeln.
+Wenn Sie sich dafür entscheiden, das Geo-Sekundärsystem mit einer geringeren Rechenleistung zu erstellen, sollten Sie die Protokoll-IO-Rate auf dem Primärsystem im Laufe der Zeit überwachen. So können Sie die minimale Rechengröße der Geo-Sekundärstation abschätzen, die erforderlich ist, um die Replikationslast aufrechtzuerhalten. Wenn Ihre primäre Datenbank beispielsweise P6 (1000 DTU) ist und ihr Log IO zu 50 % aufrechterhalten wird, muss die geo-sekundäre Datenbank mindestens P4 (500 DTU) sein. Verwenden Sie zum Abrufen von Protokoll-E/A-Verlaufsdaten die Sicht [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database). Um aktuelle IO-Protokolldaten mit höherer Granularität abzurufen, die kurzfristige Spitzen besser widerspiegeln, verwenden Sie die Ansicht [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database).
 
-Die Drosselung der Transaktionsprotokollrate für die primäre Datenbank aufgrund einer niedrigeren Computegröße in einer sekundären Datenbank wird über den Wartetyp HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO gemeldet, der in den Datenbanksichten [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) und [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) angezeigt wird.
+> [!TIP]
+> Die IO-Drosselung des Transaktionsprotokolls auf der primären Ebene aufgrund einer geringeren Rechenleistung auf einer geo-sekundären Ebene wird mit dem Wartentyp HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO gemeldet, der in den Datenbankansichten [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) und [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) sichtbar ist.
+>
+> Die IO des Transaktionsprotokolls auf der Primärseite kann aus Gründen gedrosselt werden, die nicht mit der geringeren Rechenleistung auf einer geo-sekundären Seite zusammenhängen. Diese Art der Drosselung kann selbst dann auftreten, wenn die geo-sekundäre Stelle die gleiche oder eine höhere Rechenleistung hat als die primäre Stelle. Einzelheiten, einschließlich der Wartetypen für verschiedene Arten der Protokoll-IO-Drosselung, finden Sie unter [Transaktionsprotokollratensteuerung](resource-limits-logical-server.md#transaction-log-rate-governance).
 
-Die Sicherungsspeicherredundanz der sekundären Datenbank ist standardmäßig identisch mit der der primären Datenbank. Sie können die sekundäre Datenbank mit einer anderen Sicherungsspeicherredundanz konfigurieren. Sicherungen werden stets in der primären Datenbank erstellt. Wird die sekundäre Datenbank mit einer anderen Sicherungsspeicherredundanz konfiguriert, gilt Folgendes: Sicherungen werden nach dem Failover beim Heraufstufen der sekundären Datenbank zur primären Datenbank gemäß der Speicherredundanz abgerechnet, die für die neue primäre Datenbank (zuvor die sekundäre Datenbank) ausgewählt wurde. 
-
-> [!NOTE]
-> Die Transaktionsprotokollrate der primären Datenbank kann aus Gründen gedrosselt werden, die nicht mit einer niedrigeren Computegröße einer sekundären Datenbank zusammenhängen. Diese Art der Drosselung kann auch auftreten, wenn die sekundäre Datenbank dieselbe Computegröße wie die primäre Datenbank oder eine höhere aufweist. Weitere Einzelheiten, einschließlich der Wartetypen für unterschiedliche Arten von Protokollratendrosselungen, finden Sie unter [Transaktionsprotokollratengovernance](resource-limits-logical-server.md#transaction-log-rate-governance).
-
-> [!NOTE]
-> Die konfigurierbare Sicherungsspeicherredundanz von Azure SQL-Datenbank ist zurzeit in der Azure-Region „Brasilien, Süden“ als öffentliche Vorschau und in „Asien, Südosten“ allgemein verfügbar. Wird die Quelldatenbank mit lokal redundanter oder zonenredundanter Sicherungsspeicherredundanz erstellt, so wird das Erstellen einer sekundären Datenbank in einer anderen Azure-Region nicht unterstützt. 
-
-Weitere Informationen zu SQL-Datenbank-Computegrößen finden Sie im Artikel über die [SQL-Datenbank-Dienstebenen](purchasing-models.md).
+Standardmäßig ist die Redundanz des Sicherungsspeichers für die geo-sekundäre Datenbank dieselbe wie für die primäre Datenbank. Sie können eine Geo-Sekundärdatei mit einer anderen Backup-Speicherredundanz konfigurieren. Sicherungen werden stets in der primären Datenbank erstellt. Wenn der Sekundärspeicher mit einer anderen Backup-Speicherredundanz konfiguriert ist, werden nach einem Geo-Failover, wenn der Geo-Sekundärspeicher zum Primärspeicher aufsteigt, neue Backups gespeichert und entsprechend der auf dem neuen Primärspeicher (vorheriger Sekundärspeicher) gewählten Speicherart (RA-GRS, ZRS, LRS) abgerechnet. 
 
 ## <a name="cross-subscription-geo-replication"></a>Abonnementübergreifende Georeplikation
 
-> [!NOTE]
-> Das Erstellen eines Georeplikats auf einem logischen Server in einem anderen Azure-Mandanten wird nicht unterstützt, wenn auf einem primären oder sekundären logischen Server die reine [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/azure-active-directory-only-authentication-for-azure-sql/ba-p/2417673)-Authentifizierung für Azure SQL aktiviert ist.
-> [!NOTE]
-> Abonnementübergreifende Georeplikationsvorgänge, einschließlich Einrichtung und Failover, werden nur über SQL-Befehle unterstützt.
+Um ein geo-sekundäres Abonnement in einem anderen Abonnement als dem des primären Abonnements zu erstellen (unabhängig davon, ob es sich um denselben Azure Active Directory-Tenant handelt oder nicht), führen Sie die Schritte in diesem Abschnitt aus.
 
-Zum Einrichten der aktiven Georeplikation zwischen zwei Datenbanken, die verschiedenen Abonnements angehören (unabhängig davon, ob sie sich im selben Mandanten befinden oder nicht), müssen Sie die in diesem Abschnitt beschriebene spezielle Vorgehensweise befolgen.  Diese basiert auf SQL-Befehlen und erfordert folgende Schritte:
+1. Fügen Sie die IP-Adresse des Client-Rechners, der die folgenden T-SQL-Befehle ausführt, zu den Server-Firewalls von **beiden**  primären und sekundären Servern hinzu. Sie können diese IP-Adresse bestätigen, indem Sie die folgende Abfrage ausführen, während Sie von demselben Client-Rechner aus mit dem Primärserver verbunden sind.
+  
+   ```sql
+   select client_net_address from sys.dm_exec_connections where session_id = @@SPID;
+   ``` 
 
-- Erstellen einer privilegierten Anmeldung auf beiden Servern
-- Hinzufügen der IP-Adresse zur Zulassungsliste des Clients, der die Änderung auf beiden Servern durchführt (z. B. die IP-Adresse des Hosts, auf dem SQL Server Management Studio ausgeführt wird)
+   Für weitere Informationen siehe [Firewall konfigurieren](firewall-configure.md).
 
-Der Client, der die Änderungen durchführt, benötigt Netzwerkzugriff auf den primären Server. Zwar muss die gleiche IP-Adresse des Clients der Zulassungsliste auf dem sekundären Server hinzugefügt werden, doch ist eine Netzwerkverbindung mit dem sekundären Server nicht unbedingt erforderlich.
-
-### <a name="on-the-master-of-the-primary-server"></a>Auf dem Master des primären Servers
-
-1. Fügen Sie die IP-Adresse der Zulassungsliste des Clients hinzu, der die Änderungen durchführt (weitere Informationen finden Sie unter [Konfigurieren der Firewall](firewall-configure.md)).
-1. Erstellen Sie eine Anmeldung für das Einrichten der aktiven Georeplikation (und passen Sie die Anmeldeinformationen nach Bedarf an):
+2. Erstellen Sie in der Master-Datenbank auf dem **primären** Server ein SQL-Authentifizierungs-Login für die aktive Einrichtung der Georeplikation. Passen Sie den Anmeldenamen und das Passwort nach Bedarf an.
 
    ```sql
-   create login geodrsetup with password = 'ComplexPassword01'
+   create login geodrsetup with password = 'ComplexPassword01';
    ```
 
-1. Erstellen Sie einen entsprechenden Benutzer, und weisen Sie ihn der Rolle „dbmanager“ zu:
-
-   ```sql
-   create user geodrsetup for login geodrsetup
-   alter role dbmanager add member geodrsetup
-   ```
-
-1. Notieren Sie sich die SID der neuen Anmeldung mithilfe der folgenden Abfrage:
-
-   ```sql
-   select sid from sys.sql_logins where name = 'geodrsetup'
-   ```
-
-### <a name="on-the-source-database-on-the-primary-server"></a>In der Quelldatenbank auf dem primären Server
-
-1. Erstellen Sie einen Benutzer für dieselbe Anmeldung:
-
-   ```sql
-   create user geodrsetup for login geodrsetup
-   ```
-
-1. Fügen Sie den Benutzer der Rolle „db_owner“ hinzu:
-
-   ```sql
-   alter role db_owner add member geodrsetup
-   ```
-
-### <a name="on-the-master-of-the-secondary-server"></a>Auf dem Master des sekundären Servers
-
-1. Fügen Sie die IP-Clientadresse für den sekundären Server der Zulassungsliste in den Firewallregeln hinzu. Überprüfen Sie, ob exakt dieselbe IP-Clientadresse, die auf dem primären Server hinzugefügt wurde, auch auf dem sekundären Server hinzugefügt wurde. Dieser Schritt ist erforderlich, bevor Sie den Befehl ALTER DATABASE ADD SECONDARY ausführen, um die Georeplikation zu initiieren.
-
-1. Erstellen Sie dieselbe Anmeldung wie auf dem primären Server, und verwenden Sie dabei denselben Benutzernamen, dasselbe Kennwort und dieselbe SID:
-
-   ```sql
-   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
-   ```
-
-1. Erstellen Sie einen entsprechenden Benutzer, und weisen Sie ihn der Rolle „dbmanager“ zu:
+3. Erstellen Sie in derselben Datenbank einen Benutzer für die Anmeldung, und fügen Sie ihn der Rolle `dbmanager` hinzu:
 
    ```sql
    create user geodrsetup for login geodrsetup;
-   alter role dbmanager add member geodrsetup
+   alter role dbmanager add member geodrsetup;
    ```
 
-### <a name="on-the-master-of-the-primary-server"></a>Auf dem Master des primären Servers
-
-1. Melden Sie sich mit der neuen Anmeldung beim Master des primären Servers an.
-1. Erstellen Sie ein sekundäres Replikat der Quelldatenbank auf dem sekundären Server (passen Sie den Datenbanknamen und Servernamen nach Bedarf an):
+4. Notieren Sie sich den SID-Wert der neuen Anmeldung. Ermitteln Sie den SID-Wert mit der folgenden Abfrage.
 
    ```sql
-   alter database dbrep add secondary on server <servername>
+   select sid from sys.sql_logins where name = 'geodrsetup';
    ```
 
-Nach der anfänglichen Einrichtung können die erstellten Benutzer, Anmeldungen und Firewallregeln entfernt werden.
+5. Verbinden Sie sich mit der **primären** Datenbank (nicht mit der Master-Datenbank), und erstellen Sie einen Benutzer mit demselben Login.
 
-## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>Synchronisieren von Anmeldeinformationen und Firewallregeln
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   ```
 
-Wir empfehlen die Verwendung von [IP-Firewallregeln auf Datenbankebene](firewall-configure.md) für georeplizierte Datenbanken, damit diese Regeln mit der Datenbank repliziert werden können. So wird sichergestellt, dass alle sekundären Datenbanken die gleichen IP-Firewallregeln wie die primäre Datenbank besitzen. Mit diesem Ansatz müssen Kunden auf Servern, auf denen sowohl die primäre als auch die sekundäre Datenbank gehostet wird, keine Firewallregeln mehr manuell konfigurieren und verwalten. Analog dazu wird durch die Verwendung von [eigenständigen Datenbankbenutzern](logins-create-manage.md) für den Datenzugriff sichergestellt, dass für primäre und sekundäre Datenbanken immer die gleichen Benutzeranmeldeinformationen gelten, damit bei einem Failover keine Unterbrechungen durch Benutzernamen- und Kennwortkonflikte auftreten. Durch Hinzufügen von [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) können Kunden den Benutzerzugriff sowohl für primäre als auch für sekundäre Datenbanken verwalten, sodass die Notwendigkeit der Verwaltung von Anmeldeinformationen in Datenbanken vollständig entfällt.
+6. Fügen Sie in derselben Datenbank den Benutzer zur Rolle `db_owner` hinzu.
 
-## <a name="upgrading-or-downgrading-primary-database"></a>Upgrade oder Downgrade einer primären Datenbank
+   ```sql
+   alter role db_owner add member geodrsetup;
+   ```
 
-Sie können für eine primäre Datenbank ein Upgrade oder Downgrade auf eine andere Computegröße (innerhalb der gleichen Dienstebene; nicht zwischen „Universell“ und „Unternehmenskritisch“) ausführen, ohne die Verbindung mit sekundären Datenbanken zu trennen. Bei einem Upgrade wird empfohlen, zuerst das Upgrade für die sekundäre Datenbank und anschließend das Upgrade für die primäre Datenbank auszuführen. Drehen Sie bei einem Downgrade die Reihenfolge um: Führen Sie zuerst das Downgrade für die primäre und anschließend das Downgrade für die sekundäre Datenbank aus. Wenn Sie ein Upgrade oder Downgrade der Datenbank auf eine andere Dienstebene durchführen, wird diese Empfehlung erzwungen.
+7. Erstellen Sie in der Master-Datenbank auf dem **Sekundärserver** das gleiche Login wie auf dem Primärserver, mit dem gleichen Namen, Passwort und SID. Ersetzen Sie den hexadezimalen SID-Wert im nachfolgenden Beispielbefehl durch den in Schritt 4 erhaltenen Wert.
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E;
+   ```
+
+8. Erstellen Sie in derselben Datenbank einen Benutzer für die Anmeldung, und fügen Sie ihn der Rolle `dbmanager` hinzu.
+
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   alter role dbmanager add member geodrsetup;
+   ```
+
+9. Verbinden Sie sich mit der Master-Datenbank auf dem **primären** Server unter Verwendung des neuen `geodrsetup` Logins und initiieren Sie die geo-sekundäre Erstellung auf dem sekundären Server. Passen Sie den Datenbanknamen und den Namen des Sekundärservers nach Bedarf an. Sobald der Befehl ausgeführt wurde, können Sie die Erstellung von Geo-Sekundärdateien überwachen, indem Sie die Ansicht [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) in der Datenbank **primary** und die Ansicht [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) in der Master-Datenbank auf dem Server **primary** abfragen. Die für die Erstellung einer Geo-Sekundärdatenbank benötigte Zeit hängt von der Größe der Primärdatenbank ab.
+
+   ```sql
+   alter database [dbrep] add secondary on server [servername];
+   ```
+
+10. Nachdem die Geo-Sekundärstation erfolgreich erstellt wurde, können die Benutzer, Anmeldungen und Firewall-Regeln, die mit diesem Verfahren erstellt wurden, entfernt werden.
 
 > [!NOTE]
-> Wenn Sie eine sekundäre Datenbank als Teil der Konfiguration der Failovergruppe erstellt haben, sollten Sie kein Downgrade der sekundären Datenbank durchführen. So wird sichergestellt, dass Ihre Datenebene nach dem Aktivieren des Failovers ausreichende Kapazität zum Verarbeiten des normalen Workloads hat.
+> Abonnementübergreifende Geo-Replikationsvorgänge, einschließlich Einrichtung und Geo-Failover, werden nur über T-SQL-Befehle unterstützt.
+> 
+> Das Hinzufügen einer Geo-Sekundärstation mithilfe von T-SQL wird nicht unterstützt, wenn für die primären und/oder sekundären Server ein [privater Endpunkt](private-endpoint-overview.md) konfiguriert ist und der [Zugriff über das öffentliche Netzwerk verweigert wird](connectivity-settings.md#deny-public-network-access). Wenn ein privater Endpunkt konfiguriert wurde, aber der Zugriff über das öffentliche Netzwerk zulässig ist, kann nach der Verbindungsherstellung mit dem primären Server über eine öffentliche IP-Adresse erfolgreich eine Geo-Sekundärstation hinzugefügt werden. Sobald eine Geo-Sekundärstation hinzugefügt wurde, kann der öffentliche Zugriff verweigert werden.
+> 
+> Das Erstellen eines geo-sekundären Servers auf einem logischen Server in einem anderen Azure-Tenant wird nicht unterstützt, wenn [nur Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/azure-active-directory-only-authentication-for-azure-sql/ba-p/2417673)-Authentifizierung für Azure SQL entweder auf dem primären oder sekundären logischen Server aktiv (aktiviert) ist.
+
+## <a name="keep-credentials-and-firewall-rules-in-sync"></a><a name="keeping-credentials-and-firewall-rules-in-sync"></a> Anmeldeinformationen und Firewall-Regeln auf dem neuesten Stand halten
+
+Wenn Sie für die Verbindung zur Datenbank einen öffentlichen Netzwerkzugang verwenden, empfehlen wir für georeplizierte Datenbanken IP-Firewall-Regeln [ auf Datenbankebene ](firewall-configure.md) zu verwenden. Diese Regeln werden mit der Datenbank repliziert, wodurch sichergestellt wird, dass alle Geo-Sekundärstellen dieselben IP-Firewall-Regeln haben wie die Primärstelle. Mit diesem Ansatz entfällt für die Kunden die Notwendigkeit, Firewall-Regeln auf den Servern, die die primären und sekundären Datenbanken hosten, manuell zu konfigurieren und zu pflegen. In ähnlicher Weise wird durch die Verwendung von Datenbankbenutzern[ mit ](logins-create-manage.md) für den Datenzugriff sichergestellt, dass sowohl die primäre als auch die sekundäre Datenbank immer über die gleichen Authentifizierungsdaten verfügen. Auf diese Weise kommt es nach einem Geo-Failover nicht zu Unterbrechungen aufgrund von Unstimmigkeiten bei den Authentifizierungsdaten.
+
+## <a name="scale-primary-database"></a><a name="upgrading-or-downgrading-primary-database"></a> Skalierung der primären Datenbank
+
+Sie können die primäre Datenbank auf eine andere Rechengröße vergrößern oder verkleinern (innerhalb derselben Dienstebene), ohne die Verbindung zu den sekundären Datenbanken zu unterbrechen. Bei der Skalierung wird empfohlen, zuerst die geo-sekundäre und dann die primäre Ebene zu vergrößern. Bei der Verkleinerung kehren Sie die Reihenfolge um: Verkleinern Sie zuerst die Primärseite und dann die Sekundärseite.
+
+> [!NOTE]
+> Wenn Sie eine geo-sekundäre Gruppe als Teil der Failover-Gruppenkonfiguration erstellt haben, ist es nicht empfehlenswert, diese zu verkleinern. Damit soll sichergestellt werden, dass Ihre Datenebene über genügend Kapazität verfügt, um die reguläre Arbeitslast nach einem Geo-Failover zu verarbeiten.
 
 > [!IMPORTANT]
-> Die primäre Datenbank in einer Failovergruppe kann nur auf eine höhere Ebene skaliert werden, wenn zuerst die sekundäre Datenbank auf die höhere Ebene skaliert wird. Wenn Sie versuchen, die primäre Datenbank vor der sekundären Datenbank zu skalieren, wird ggf. der folgende Fehler angezeigt:
+> Die primäre Datenbank in einer Failover-Gruppe kann nur dann auf eine höhere Serviceebene (Edition) skaliert werden, wenn die sekundäre Datenbank zuerst auf die höhere Ebene skaliert wird. Wenn Sie z. B. den primären Bereich von "General Purpose" auf "Business Critical" skalieren wollen, müssen Sie zuerst den geo-sekundären Bereich auf "Business Critical" skalieren. Wenn Sie versuchen, die Primär- oder Geo-Sekundärdaten in einer Weise zu skalieren, die gegen diese Regel verstößt, erhalten Sie die folgende Fehlermeldung:
 >
-> `Error message: The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
+> `The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
 >
 
-## <a name="preventing-the-loss-of-critical-data"></a>Verhindern des Verlusts wichtiger Daten
+## <a name="prevent-loss-of-critical-data"></a><a name="preventing-the-loss-of-critical-data"></a> Verhinderung des Verlusts kritischer Daten
 
-Aufgrund der hohen Latenz von WANs wird für die fortlaufende Kopie ein asynchroner Replikationsmechanismus verwendet. Asynchrone Replikation macht Datenverlust unvermeidlich, sobald ein Ausfall auftritt. Bei einigen Anwendung dürfen jedoch ggf. keine Daten verloren gehen. Um diese kritischen Aktualisierungen zu schützen, kann ein Anwendungsentwickler die Systemprozedur [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) aufrufen, unmittelbar nachdem der Commit für die Transaktion erfolgt ist. Das Aufrufen von **sp_wait_for_database_copy_sync** blockiert den aufrufenden Thread so lange, bis die letzte Transaktion mit erfolgtem Commit in die sekundäre Datenbank übertragen wurde. Es wird jedoch nicht abgewartet, bis die übertragenen Transaktionen wiedergegeben und in der sekundären Datenbank committet werden. **sp_wait_for_database_copy_sync** ist auf eine bestimmte fortlaufende Kopierverknüpfung begrenzt. Jeder Benutzer mit den Rechten zum Herstellen der Verbindung mit der primären Datenbank kann diese Prozedur aufrufen.
+Aufgrund der hohen Latenzzeit von WANs verwendet die Georeplikation einen asynchronen Replikationsmechanismus. Bei der asynchronen Replikation ist die Möglichkeit eines Datenverlusts unvermeidbar, wenn die primäre Datenbank ausfällt. Zum Schutz kritischer Transaktionen vor Datenverlust, kann ein Anwendungsentwickler die gespeicherte Prozedur [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) unmittelbar nach dem Commit der Transaktion aufrufen. Der Aufruf von `sp_wait_for_database_copy_sync` blockiert den aufrufenden Thread, bis die letzte committete Transaktion übertragen und im Transaktionsprotokoll der sekundären Datenbank gehärtet wurde. Er wartet jedoch nicht darauf, dass die übertragenen Transaktionen in der sekundären Datenbank wiedergegeben (wiederholt) werden. `sp_wait_for_database_copy_sync` ist auf eine bestimmte Georeplikationslink beschränkt. Jeder Benutzer mit den Rechten zum Herstellen der Verbindung mit der primären Datenbank kann diese Prozedur aufrufen.
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** verhindert Datenverlust nach einem Failover, garantiert aber nicht die vollständige Synchronisierung für den Lesezugriff. Die vom Aufruf der Prozedur **sp_wait_for_database_copy_sync** verursachte Verzögerung kann signifikant sein und hängt von der Größe des Transaktionsprotokolls zum Zeitpunkt des Aufrufs ab.
+> `sp_wait_for_database_copy_sync` verhindert Datenverluste nach einem Geofailover für bestimmte Transaktionen, garantiert aber keine vollständige Synchronisierung für Lesezugriffe. Die durch einen `sp_wait_for_database_copy_sync`-Prozeduraufruf verursachte Verzögerung kann beträchtlich sein und hängt von der Größe des noch nicht übertragenen Transaktionsprotokolls auf der Primärseite zum Zeitpunkt des Aufrufs ab.
 
-## <a name="monitoring-geo-replication-lag"></a>Überwachen der Verzögerung bei der Georeplikation
+## <a name="monitor-geo-replication-lag"></a><a name="monitoring-geo-replication-lag"></a> Verzögerung bei der Georeplikation überwachen
 
-Verwenden Sie zum Überwachen der Verzögerung in Bezug auf RPO in der primären Datenbank die Spalte *replication_lag_sec* von [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database). Die Verzögerung in Sekunden zwischen den Transaktionen, die in der primären Datenbank committet und in der sekundären Datenbank gespeichert werden, wird angezeigt. Beispiel: Falls der Wert der Verzögerung 1 Sekunde beträgt, bedeutet dies Folgendes: Wenn die primäre Datenbank in diesem Moment von einem Ausfall betroffen ist und ein Failover initiiert wird, wird 1 Sekunde der letzten Transaktionen nicht gespeichert.
+Verwenden Sie zum Überwachen der Verzögerung in Bezug auf RPO in der primären Datenbank die Spalte *replication_lag_sec* von [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database). Sie zeigt die Verzögerung in Sekunden zwischen den Transaktionen, die auf dem primären System durchgeführt wurden, und den gehärteten Transaktionen im Transaktionsprotokoll des sekundären Systems. Beträgt die Verzögerung beispielsweise eine Sekunde, bedeutet dies, dass Transaktionen, die in der letzten Sekunde durchgeführt wurden, verloren gehen, wenn die Primärseite in diesem Moment von einem Ausfall betroffen ist und ein Geo-Failover eingeleitet wird.
 
-Vergleichen Sie zum Messen der Verzögerung in Bezug auf Änderungen in der primären Datenbank, die auf die sekundäre Datenbank angewendet wurden (also aus dieser Datenbank gelesen werden können), den Zeitpunkt von *last_commit* in der sekundären Datenbank mit dem gleichen Wert in der primären Datenbank.
+Um die Verzögerung bei Änderungen in der primären Datenbank zu messen, die in der geo-sekundären Datenbank gehärtet wurden, vergleichen Sie die *last_commit*-Zeit in der geo-sekundären Datenbank mit demselben Wert in der primären Datenbank.
 
-> [!NOTE]
-> Es kann vorkommen, dass *replication_lag_sec* in der primären Datenbank einen NULL-Wert aufweist. Dies bedeutet, dass die primäre Datenbank derzeit nicht weiß, wie weit die sekundäre Datenbank fortgeschritten ist.   Dieser Fall tritt normalerweise ein, nachdem der Prozess neu gestartet wurde, und es sollte sich um einen vorübergehenden Zustand handeln. Erwägen Sie, in der Anwendung eine Warnung zu verwenden, wenn für *replication_lag_sec* über einen längeren Zeitraum hinweg NULL zurückgegeben wird. So wird darauf hingewiesen, dass die sekundäre Datenbank aufgrund eines dauerhaften Verbindungsausfalls nicht mit der primären Datenbank kommunizieren kann. Es können auch Bedingungen eintreten, unter denen der Unterschied zwischen dem Zeitpunkt von *last_commit* in der sekundären und primären Datenbank groß wird. Beispiel: Wenn in der primären Datenbank nach einem langen Zeitraum ohne Änderungen ein Commit erfolgt, springt der Unterschied auf einen hohen Wert, um dann schnell wieder auf 0 zu fallen. Sehen Sie es als Fehlerzustand an, wenn der Unterschied zwischen diesen beiden Werten längere Zeit groß bleibt.
+> [!TIP]
+> Wenn *replication_lag_sec* auf der Primärseite NULL ist, bedeutet dies, dass die Primärseite derzeit nicht weiß, wie weit eine Geosekundärseite zurückliegt. Dieser Fall tritt normalerweise ein, nachdem der Prozess neu gestartet wurde, und es sollte sich um einen vorübergehenden Zustand handeln. Erwägen Sie das Senden einer Warnung, wenn *replication_lag_sec* über einen längeren Zeitraum NULL zurückgibt. Es kann darauf hinweisen, dass der Geo-Sekundärserver aufgrund eines Verbindungsfehlers nicht mit dem Primärserver kommunizieren kann.
+> 
+> Es gibt auch Bedingungen, die dazu führen können, dass der Unterschied zwischen der *last_commit* Zeit auf der Geosekundärseite und der Primärseite groß wird. Wenn z. B. nach einer langen Zeit ohne Änderungen ein Commit auf dem primären System durchgeführt wird, springt die Differenz auf einen großen Wert, bevor sie schnell wieder auf Null zurückgeht. Erwägen Sie, eine Warnmeldung zu senden, wenn die Differenz zwischen diesen beiden Werten über einen längeren Zeitraum groß bleibt.
 
-## <a name="programmatically-managing-active-geo-replication"></a>Programmgesteuertes Verwalten der aktiven Georeplikation
+## <a name="programmatically-manage-active-geo-replication"></a><a name="programmatically-managing-active-geo-replication"></a> Aktive Georeplikation programmatisch verwalten
 
-Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](/rest/api/sql/) und [Azure PowerShell-Cmdlets](/powershell/azure/). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen die rollenbasierte Zugriffssteuerung (Azure RBAC) in Azure. Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md).
+Wie bereits erwähnt, kann die aktive Georeplikation auch programmatisch mit T-SQL, Azure PowerShell und REST API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](/rest/api/sql/) und [Azure PowerShell-Cmdlets](/powershell/azure/). Diese APIs unterstützen die rollenbasierte Zugriffskontrolle von Azure (Azure RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
-### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Verwalten des Failovers von Einzel- und Pooldatenbanken
+### <a name="t-sql-manage-geo-failover-of-single-and-pooled-databases"></a><a name="t-sql-manage-failover-of-single-and-pooled-databases"></a> T-SQL: Verwalten von Geo-Failover von einzelnen und gepoolten Datenbanken
 
 > [!IMPORTANT]
-> Diese Transact-SQL-Befehle gelten nur für die aktive Georeplikation und nicht für Failovergruppen. Daher gelten sie auch nicht für Instanzen von SQL Managed Instance, da diese nur Failovergruppen unterstützen.
+> Diese T-SQL-Befehle gelten nur für die aktive Georeplikation und nicht für Failover-Gruppen. Daher gelten sie auch nicht für SQL Managed Instance, das nur Failover-Gruppen unterstützt.
 
-| Get-Help | BESCHREIBUNG |
+| Befehl | BESCHREIBUNG |
 | --- | --- |
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Verwenden Sie das Argument ADD SECONDARY ON SERVER, um eine sekundäre Datenbank für eine vorhandene Datenbank zu erstellen und die Datenreplikation zu starten. |
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Verwenden Sie FAILOVER oder FORCE_FAILOVER_ALLOW_DATA_LOSS, um die sekundäre Datenbank zur primären zu erklären und zu ihr zu wechseln – damit starten Sie das Failover. |
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Verwenden Sie REMOVE SECONDARY ON SERVER, um die Datenreplikation zwischen einer SQL-Datenbank und der angegebenen sekundären Datenbank zu beenden. |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Verwenden Sie das Argument **ADD SECONDARY ON SERVER**, um eine sekundäre Datenbank für eine bestehende Datenbank zu erstellen und die Datenreplikation zu starten |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Verwenden Sie **FAILOVER** oder **FORCE_FAILOVER_ALLOW_DATA_LOSS**, um eine sekundäre Datenbank zur primären zu machen und ein Failover einzuleiten. |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Verwenden Sie **REMOVE SECONDARY ON SERVER**, um eine Datenreplikation zwischen einer SQL-Datenbank und der angegebenen sekundären Datenbank zu beenden. |
 | [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Gibt Informationen über alle vorhandenen Replikationsverknüpfungen für alle Datenbanken auf einem Server zurück |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Ruft den Zeitpunkt der letzten Replikation, die Verzögerung der letzten Replikation und andere Informationen über die Replikationsverknüpfung für eine angegebene Datenbank ab. |
-| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zeigt den Status für alle Datenbankvorgänge an, einschließlich des Status der Replikationsverknüpfungen. |
-| [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |Bewirkt, dass die Anwendung wartet, bis alle Transaktionen mit erfolgtem Commit repliziert und von der aktiven sekundären Datenbank bestätigt wurden. |
+| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zeigt den Status aller Datenbankoperationen an, einschließlich Änderungen an Replikationsverbindungen. |
+| [sys.sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |Bewirkt, dass die Anwendung wartet, bis alle bestätigten Transaktionen im Transaktionsprotokoll einer Geo-Sekundärdatei gehärtet sind. |
 |  | |
 
-### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>Mit PowerShell: Verwalten des Failovers von Einzel- und Pooldatenbanken
+### <a name="powershell-manage-geo-failover-of-single-and-pooled-databases"></a><a name="powershell-manage-failover-of-single-and-pooled-databases"></a> PowerShell: Verwalten von Geo-Failover von einzelnen und gepoolten Datenbanken
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -288,13 +275,13 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 | [New-AzSqlDatabaseSecondary](/powershell/module/az.sql/new-azsqldatabasesecondary) |Erstellt eine sekundäre Datenbank für eine vorhandene Datenbank und startet die Datenreplikation. |
 | [Set-AzSqlDatabaseSecondary](/powershell/module/az.sql/set-azsqldatabasesecondary) |Erklärt die sekundäre Datenbank zur primären und wechselt zu ihr – dadurch wird das Failover gestartet. |
 | [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) |Beendet die Datenreplikation zwischen einer SQL-Datenbank und der angegebenen sekundären Datenbank. |
-| [Get-AzSqlDatabaseReplicationLink](/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Ruft die Georeplikationsverknüpfungen zwischen einer Azure SQL-Datenbank-Instanz und einer Ressourcengruppe oder einer logischen SQL Server-Instanz ab. |
+| [Get-AzSqlDatabaseReplicationLink](/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Ruft die Geo-Replikationslinks für eine Datenbank ab. |
 |  | |
 
-> [!IMPORTANT]
+> [!TIP]
 > Beispielskripts finden Sie unter [Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank](scripts/setup-geodr-and-failover-database-powershell.md) und [Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine in einem Pool enthaltene Azure SQL-Datenbank](scripts/setup-geodr-and-failover-elastic-pool-powershell.md).
 
-### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST-API: Verwalten des Failovers von Einzel- und Pooldatenbanken
+### <a name="rest-api-manage-geo-failover-of-single-and-pooled-databases"></a><a name="rest-api-manage-failover-of-single-and-pooled-databases"></a> REST-API: Verwalten von Geo-Failover von einzelnen und gepoolten Datenbanken
 
 | API | BESCHREIBUNG |
 | --- | --- |
@@ -307,16 +294,13 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 | [Delete Replication Link](/rest/api/sql/replicationlinks/delete) | Löscht einen Datenbankreplikationslink. Kann nicht während eines Failovers verwendet werden. |
 |  | |
 
-
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Beispielskripts:
-  - [Configure and failover a single database using active geo-replication](scripts/setup-geodr-and-failover-database-powershell.md) (Konfiguration und Failover einer einzelnen Datenbank mithilfe von aktiver Georeplikation)
-  - [Configure and failover a pooled database using active geo-replication](scripts/setup-geodr-and-failover-elastic-pool-powershell.md) (Konfiguration und Failover einer Pooldatenbank mithilfe von aktiver Georeplikation)
+  - [Konfiguration und Failover einer einzelnen Datenbank mit aktiver Geo-Replikation](scripts/setup-geodr-and-failover-database-powershell.md).
+  - [Konfiguration und Failover einer gepoolten Datenbank mit aktiver Geo-Replikation](scripts/setup-geodr-and-failover-elastic-pool-powershell.md).
 - SQL-Datenbank unterstützt auch Autofailover-Gruppen. Weitere Informationen finden Sie unter [Autofailover-Gruppen](auto-failover-group-overview.md).
-- Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 - Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Automatisierte SQL-Datenbanksicherungen](automated-backups-overview.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](recovery-using-backups.md).
 - Weitere Informationen zu Authentifizierungsanforderungen für einen neuen primären Server und die Datenbank finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](active-geo-replication-security-configure.md).

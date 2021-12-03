@@ -1,20 +1,20 @@
 ---
 title: Hochladen von Dateien von Geräten nach Azure IoT Hub mit Python | Microsoft-Dokumentation
 description: Informationen zum Hochladen von Dateien von einem Gerät in die Cloud mithilfe des Azure IoT-Geräte-SDK für Python. Hochgeladene Dateien werden in einem Azure Storage-Blobcontainer gespeichert.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/18/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: a7f367c1301a3eb325e9dc024c518ecabe791170
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: d12ab40ee2bf585607f9dd60670e607decc4113a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835645"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548977"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (Python)
 

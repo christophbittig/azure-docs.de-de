@@ -6,14 +6,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
-ms.date: 08/30/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: d9f3d2c8f30f3b5d249aae0789a7e2fee282e867
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 243b8a068c5301c5545c2afe8567ae1fbf71284c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128677813"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426713"
 ---
 # <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>Schnellstart: Konfigurieren von Azure Bastion über VM-Einstellungen
 
@@ -62,7 +63,7 @@ Sie können beim Erstellen dieser Konfiguration die folgenden Beispielwerte verw
 | --- | --- |
 | Name | VNet1-bastion |
 | + Subnetzname | AzureBastionSubnet |
-| AzureBastionSubnet-Adressen | Ein Subnetz innerhalb Ihres VNet-Adressraums mit einer Subnetzmaske von „/27“ oder mehr.<br> Beispiel: 10.1.1.0/26.  |
+| AzureBastionSubnet-Adressen | Ein Subnetz innerhalb Ihres VNET-Adressraums mit einer Subnetzmaske von „/26“ oder höher.<br> Beispiel: 10.1.1.0/26.  |
 | Tarif/SKU | Standard |
 | Öffentliche IP-Adresse |  Neu erstellen |
 | Name der öffentlichen IP-Adresse | VNet1-ip  |
@@ -88,15 +89,15 @@ Es gibt verschiedene Möglichkeiten, einen Bastionhost zu konfigurieren. In den 
 
    :::image type="content" source="./media/quickstart-host-portal/create-step-1.png" alt-text="Screenshot der in Schritt 1 vorausgefüllten Einstellungen" lightbox="./media/quickstart-host-portal/create-step-1.png":::
 
-1. **Schritt 2**: Konfigurieren Sie die Subnetz-Werte auf der Seite **Verbindung herstellen über Azure Bastion**. Der AzureBastionSubnet-Adressraum wird mit einem empfohlenen Adressraum vorab aufgefüllt. Das AzureBastionSubnet muss über einen Adressraum der Größe „/27“ oder mehr (/26, /25 usw.) verfügen. Es wird empfohlen, „/26“ zu verwenden, damit die Hostskalierung uneingeschränkt möglich ist. Nachdem Sie die Konfiguration dieser Einstellung abgeschlossen haben, klicken Sie auf **Subnetz erstellen**, um das AzureBastionSubnet zu erstellen.
+1. **Schritt 2**: Konfigurieren Sie die Subnetz-Werte auf der Seite **Verbindung herstellen über Azure Bastion**. Der AzureBastionSubnet-Adressraum wird mit einem empfohlenen Adressraum vorab aufgefüllt. Das AzureBastionSubnet muss über einen Adressraum der Größe /26 oder mehr (/25, /24 usw.) verfügen. Es wird empfohlen, „/26“ zu verwenden, damit die Hostskalierung uneingeschränkt möglich ist. Nachdem Sie die Konfiguration dieser Einstellung abgeschlossen haben, klicken Sie auf **Subnetz erstellen**, um das AzureBastionSubnet zu erstellen.
 
      :::image type="content" source="./media/quickstart-host-portal/create-subnet.png" alt-text="Screenshot der Erstellung des Subnetzes für Bastion":::
 
 1. Nach dem Erstellen des Subnetzes geht die Seite automatisch zu **Schritt 3** über. Verwenden Sie für Schritt 3 die folgenden Werte:
 
    * **Name**: Name des Bastionhosts.
-   * **Ebene:** Die Ebene ist die SKU. Wählen Sie für diese Übung in der Dropdown-Liste **Standard** aus. Wenn Sie die Standard-SKU auswählen, können Sie die Anzahl der Instanzen für die Skalierung des Hosts konfigurieren. Von der Basic-SKU wird die Hostskalierung nicht unterstützt. Weitere Informationen finden Sie unter [Konfigurationseinstellungen – SKU](configuration-settings.md#skus). Die Standard-SKU befindet sich in der Vorschauversion.
-   * **Anzahl der Instanzen:** Dies ist die Einstellung für die Hostskalierung. Verwenden Sie den Schieberegler für die Konfiguration. Mit der Basic-Tarif-SKU sind Sie auf zwei Instanzen beschränkt und können diese Einstellung nicht konfigurieren. Weitere Informationen finden Sie unter [Konfigurationseinstellungen - Hostskalierung](configuration-settings.md#instance). Die Anzahl der Instanzen befindet sich in der Vorschauversion und basiert auf der Standard-SKU. In dieser Schnellstartanleitung können Sie die gewünschte Anzahl der Instanzen auswählen. Berücksichtigen Sie dabei jedoch die [Preis](https://azure.microsoft.com/pricing/details/azure-bastion)-Überlegungen für Skalierungseinheiten.
+   * **Ebene:** Die Ebene ist die SKU. Wählen Sie für diese Übung in der Dropdown-Liste **Standard** aus. Wenn Sie die Standard-SKU auswählen, können Sie die Anzahl der Instanzen für die Skalierung des Hosts konfigurieren. Von der Basic-SKU wird die Hostskalierung nicht unterstützt. Weitere Informationen finden Sie unter [Konfigurationseinstellungen – SKU](configuration-settings.md#skus).
+   * **Anzahl der Instanzen:** Dies ist die Einstellung für die Hostskalierung. Verwenden Sie den Schieberegler für die Konfiguration. Mit der Basic-Tarif-SKU sind Sie auf zwei Instanzen beschränkt und können diese Einstellung nicht konfigurieren. Weitere Informationen finden Sie unter [Konfigurationseinstellungen - Hostskalierung](configuration-settings.md#instance). Die Anzahl der Instanzen basiert auf der Standard-SKU. In dieser Schnellstartanleitung können Sie die gewünschte Anzahl der Instanzen auswählen. Berücksichtigen Sie dabei jedoch die [Preis](https://azure.microsoft.com/pricing/details/azure-bastion)-Überlegungen für Skalierungseinheiten.
    * **Öffentliche IP-Adresse:** Wählen Sie **Neu erstellen**.
    * **Name der öffentlichen IP-Adresse**: Der Name der öffentlichen IP-Adressressource.
    * **SKU der öffentlichen IP-Adresse**: Vorkonfiguriert als **Standard**.

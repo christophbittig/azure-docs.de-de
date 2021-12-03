@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/01/2021
 ms.author: ibthampy
-ms.openlocfilehash: 77f6eaf0cbd9478df6659310c61fa4616c17c749
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 244708b6603351ce7b01a6f69f2f19887cc63ea9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131458492"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344007"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
@@ -581,7 +581,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 |  Rel 20-12 |  4580325  |  Flash-Update | [3.92], [4.85], [5.50], [6.26] | 13. Oktober 2020 |
 |  Rel 20-12 |  [4586768]  |  Kumulative IE-Updates | [2.105], [3.92], [4.85] | 10. November 2020 |
 |  Rel 20-12 |  [4593226]  |  Letztes kumulatives Update | [5.50] | 8\. Dezember 2020 |
-|  Rel 20-12 |  [4052623]  |  Defender | [5.50], [6.26] | 13. Dezember 2020 |
+|  Rel 20-12 |  [4052623]  |  Defender für Cloud | [5.50], [6.26] | 13. Dezember 2020 |
 |  Rel 20-12 |  [4578952]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [2.105] | 10. November 2020 |
 |  Rel 20-12 |  [4578955]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | [2.105] | 10. November 2020 |
 |  Rel 20-12 |  [4578953]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | [4.85] | 10. November 2020 |

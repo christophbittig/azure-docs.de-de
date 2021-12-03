@@ -1,31 +1,31 @@
 ---
 title: Ausführen einer Azure-Funktion als Reaktion auf ein Blobaktivierungsereignis
 titleSuffix: Azure Storage
-description: Hier erfahren Sie, wie Sie eine Azure-Funktion mit .NET entwickeln und dann Azure Event Grid so konfigurieren, dass die Funktion als Reaktion auf ein Ereignis ausgeführt wird, das ausgelöst wird, wenn ein Blob auf der Archivebene aktiviert wird.
+description: Erfahren Sie, wie Sie eine Azure-Funktion mit .NET entwickeln und dann Azure Event Grid so konfigurieren, dass die Funktion als Reaktion auf ein Ereignis ausgeführt wird, das ausgelöst wird, wenn ein Blob von der Archivebene rehydriert wird.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 10/25/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 06239708293be94f13c62cab7004c7a57d00eea1
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: beaf5e72c74e066a0fc517d12100cb1703928b71
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275504"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441512"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>Ausführen einer Azure-Funktion als Reaktion auf ein Blobaktivierungsereignis
 
-Um ein Blob zu lesen, das sich auf der Archivebene befindet, müssen Sie das Blob zuerst für die heiße oder kalte Ebene aktivieren. Der Aktivierungsvorgang kann einige Stunden dauern. Statt den Status des Aktivierungsvorgangs wiederholt abzurufen, können Sie [Azure Event Grid](../../event-grid/overview.md) so konfigurieren, dass ein Ereignis ausgelöst wird, wenn der Blobaktivierungsvorgang abgeschlossen ist, und dieses Ereignis in Ihrer Anwendung behandeln.
+Um einen Blob zu lesen, der sich in der Archivschicht befindet, müssen Sie den Blob zunächst in die Heiß- oder Kühlschicht rehydrieren. Der Aktivierungsvorgang kann einige Stunden dauern. Statt den Status des Aktivierungsvorgangs wiederholt abzurufen, können Sie [Azure Event Grid](../../event-grid/overview.md) so konfigurieren, dass ein Ereignis ausgelöst wird, wenn der Blobaktivierungsvorgang abgeschlossen ist, und dieses Ereignis in Ihrer Anwendung behandeln.
 
 Wenn ein Ereignis eintritt, sendet Event Grid das Ereignis über einen Endpunkt an einen Ereignishandler. Als Ereignishandler können mehrere Azure-Dienste fungieren, z. B. [Azure Functions](../../azure-functions/functions-overview.md). Eine Azure-Funktion ist ein Codeblock, der als Reaktion auf ein Ereignis ausgeführt werden kann. In dieser Anleitung werden Sie durch die Schritte zum Entwickeln einer Azure-Funktion und zum anschließenden Konfigurieren von Event Grid geführt, um die Funktion als Reaktion auf ein Ereignis auszuführen, das bei Aktivierung eines Blobs eintritt.
 
 In diesem Artikel erfahren Sie, wie Sie eine Azure-Funktion mit .NET in Visual Studio erstellen und testen. Sie können Azure Functions mit verschiedenen lokalen Entwicklungsumgebungen und in einer Reihe von unterschiedlichen Programmiersprachen entwickeln. Weitere Informationen zu den Sprachen, die für Azure Functions unterstützt werden, finden Sie unter [In Azure Functions unterstützte Sprachen](../../azure-functions/supported-languages.md). Weitere Informationen zu den Entwicklungsoptionen für Azure Functions finden Sie unter [Lokales Codieren und Testen von Azure Functions](../../azure-functions/functions-develop-local.md).
 
-Weitere Informationen über das Aktivieren von Blobs auf der Archivebene finden Sie unter [Übersicht über die Aktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md).
+Weitere Informationen zur Rehydrierung von Blobs aus der Archivebene finden Sie unter [Übersicht über die Rehydrierung von Blobs aus der Archivebene](archive-rehydrate-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -253,17 +253,17 @@ Immer, wenn Sie Änderungen am Code in Ihrer Azure-Funktion vornehmen, müssen S
 
 Jetzt verfügen Sie über eine Funktions-App mit einer Azure-Funktion, die als Reaktion auf ein Ereignis ausgeführt werden kann. Als nächsten Schritt erstellen Sie ein Ereignisabonnement für Ihr Speicherkonto. Mit dem Ereignisabonnement wird das Speicherkonto so konfiguriert, dass als Reaktion auf einen Blobvorgang in Ihrem Speicherkonto ein Ereignis über Event Grid veröffentlicht wird. Event Grid sendet das Ereignis an den von Ihnen angegebenen Ereignishandlerendpunkt. In diesem Fall ist die im vorhergehenden Abschnitt erstellte Azure-Funktion der Ereignishandler.
 
-Wenn Sie das Ereignisabonnement erstellen, können Sie filtern, welche Ereignisse an den Ereignishandler gesendet werden. Um die Aktivierung eines Blobs auf der Archivebene abzufangen, verwenden Sie die Ereignisse **Microsoft.Storage.BlobTierChanged**, das dem Vorgang [Blobtarif festlegen](/rest/api/storageservices/set-blob-tier) entspricht, und **Microsoft.Storage.BlobCreated**, das einem Vorgang zum [Blob kopieren](/rest/api/storageservices/copy-blob) oder [Blob aus URL kopieren](/rest/api/storageservices/copy-blob-from-url) entspricht. Je nach Szenario behandeln Sie nur eines dieser Ereignisse.
+Wenn Sie das Ereignisabonnement erstellen, können Sie filtern, welche Ereignisse an den Ereignishandler gesendet werden. Die zu erfassenden Ereignisse bei der Rehydrierung eines Blobs aus der Archivebene sind **Microsoft.Storage.BlobTierChanged**, was einem Vorgang [Set Blob Tier](/rest/api/storageservices/set-blob-tier) entspricht, und **Microsoft.Storage.BlobCreated**, was einem Vorgang [Copy Blob](/rest/api/storageservices/copy-blob) entspricht. Je nach Szenario behandeln Sie nur eines dieser Ereignisse.
 
 Führen Sie zum Erstellen des Ereignisabonnements die folgenden Schritte aus:
 
-1. Navigieren Sie im Azure-Portal zu dem Speicherkonto, das Blobs auf der Archivebene enthält, die aktiviert werden können.
+1. Navigieren Sie im Azure-Portal zu dem Speicherkonto, das die zu rehydrierenden Blobs aus der Archivebene enthält.
 1. Wählen Sie im linken Navigationsbereich die Einstellung **Ereignisse** aus.
 1. Klicken Sie auf der Seite **Ereignisse** auf **Weitere Optionen**.
 1. Wählen Sie **Ereignisabonnement erstellen** aus.
 1. Geben Sie auf der Seite **Ereignisabonnement erstellen** im Abschnitt **Details zum Ereignisabonnement** einen Namen für das Ereignisabonnement ein.
 1. Geben Sie im Abschnitt **Themendetails** einen Namen für das Systemthema ein. Das Systemthema stellt ein oder mehrere Ereignisse dar, die von Azure Storage veröffentlicht werden. Weitere Informationen zu Systemthemen finden Sie unter [Systemthemen in Azure Event Grid](../../event-grid/system-topics.md).
-1. Wählen Sie im Abschnitt **Ereignistypen** die Ereignisse **Blob Created** (Blob erstellt) und **Blob Tier Changed** (Blobtarif geändert) aus. Je nachdem, wie Sie ein Blob auf der Archivebene aktivieren, wird eines dieser beiden Ereignisse ausgelöst.
+1. Wählen Sie im Abschnitt **Ereignistypen** die Ereignisse **Blob Created** (Blob erstellt) und **Blob Tier Changed** (Blobtarif geändert) aus. Je nachdem, wie Sie einen Blob aus dem Archiv-Tier rehydrieren wollen, wird eines dieser beiden Ereignisse ausgelöst.
 
     :::image type="content" source="media/archive-rehydrate-handle-event/select-event-types-portal.png" alt-text="Screenshot zur Auswahl der Ereignistypen für die Blobaktivierungsereignisse im Azure-Portal":::
 
@@ -290,20 +290,20 @@ Unter diesen beiden Verfahren finden Sie Informationen zum Testen der Funktion d
 - [Aktivieren eines Blobs mit einem Kopiervorgang](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-with-a-copy-operation)
 - [Aktivieren eines Blobs durch Ändern seiner Ebene](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-by-changing-its-tier)
 
-Nach Abschluss der Aktivierung wird das Protokollblob in den gleichen Container geschrieben, in dem sich auch das aktivierte Blob befindet. Wenn Sie beispielsweise ein Blog mit einem Kopiervorgang aktivieren, sehen Sie im Azure-Portal, dass das ursprüngliche Quellblob auf der Archivebene verbleibt, das vollständig aktivierte Zielblob auf der Zielonlineebene angezeigt wird und das von der Azure-Funktion erstellte Protokollblob ebenfalls in der Liste aufgeführt wird.
+Nach Abschluss der Aktivierung wird das Protokollblob in den gleichen Container geschrieben, in dem sich auch das aktivierte Blob befindet. Nachdem Sie beispielsweise einen Blob mit einem Kopiervorgang rehydriert haben, können Sie im Azure-Portal sehen, dass der ursprüngliche Quell-Blob im Archive-Tier verbleibt, der vollständig rehydrierte Ziel-Blob im gezielten Online-Tier erscheint und der Protokoll-Blob, der von der Azure-Funktion erstellt wurde, ebenfalls in der Liste erscheint.
 
-:::image type="content" source="media/archive-rehydrate-handle-event/copy-blob-archive-tier-rehydrated-with-log-blob.png" alt-text="Screenshot, der das ursprüngliche Blob auf der Archivebene, das aktivierte Blob auf der heißen Ebene sowie das vom Ereignishandler geschriebene Protokollblob zeigt":::
+:::image type="content" source="media/archive-rehydrate-handle-event/copy-blob-archive-tier-rehydrated-with-log-blob.png" alt-text="Screenshot mit dem ursprünglichen Blob in der Archivebene, dem rehydrierten Blob in der Hot-Tier-Ebene und dem vom Event-Handler geschriebenen Log-Blob":::
 
-Beachten Sie, dass das Kopieren eines Blobs je nach ausgewählter Einstellung für die Aktivierungspriorität bis zu 15 Stunden dauern kann. Wenn Sie die Aktivierungspriorität auf **Hoch** festlegen, wird die Aktivierung bei Blobs, die kleiner als 10 GB sind, möglicherweise in weniger als einer Stunde abgeschlossen. Aktivierungsvorgänge mit hoher Priorität verursachen allerdings höhere Kosten. Weitere Informationen finden Sie unter [Übersicht über die Aktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md).
+Beachten Sie, dass das Kopieren eines Blobs je nach ausgewählter Einstellung für die Aktivierungspriorität bis zu 15 Stunden dauern kann. Wenn Sie die Aktivierungspriorität auf **Hoch** festlegen, wird die Aktivierung bei Blobs, die kleiner als 10 GB sind, möglicherweise in weniger als einer Stunde abgeschlossen. Aktivierungsvorgänge mit hoher Priorität verursachen allerdings höhere Kosten. Weitere Informationen finden Sie unter [Übersicht über die Rehydrierung von Klecksen aus der Archivebene](archive-rehydrate-overview.md).
 
 > [!TIP]
-> Obwohl das Ziel dieser Anleitung die Behandlung von Ereignissen im Zusammenhang mit der Blobaktivierung war, ist sie möglicherweise auch für Testzwecke nützlich, um diese Ereignisse als Reaktion auf das Hochladen eines Blobs oder das Ändern der Ebene eines Onlineblobs (*d. h.* von heiß nach kalt) zu beobachten, da das Ereignis unmittelbar ausgelöst wird.
+> Obwohl das Ziel dieser Anleitung darin besteht, diese Ereignisse im Zusammenhang mit der Rehydrierung von BLOBs zu behandeln, kann es zu Testzwecken auch hilfreich sein, diese Ereignisse als Reaktion auf das Hochladen eines BLOBs oder die Änderung der Stufe eines Online-Blob (*i.e.* , von Hot zu Cool) zu beobachten, da das Ereignis sofort ausgelöst wird.
 
 Weitere Informationen zum Filtern von Ereignissen in Event Grid finden Sie unter [Filtern von Ereignissen für Azure Event Grid](../../event-grid/how-to-filter-events.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md)
-- [Übersicht über die Aktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md)
+- [Heiße, kühle und Archiv-Zugriffsebenen für Blobdaten](access-tiers-overview.md)
+- [Übersicht über die Rehydrierung von Klecksen aus der Archivebene](archive-rehydrate-overview.md)
 - [Aktivieren eines archivierten Blobs auf einer Onlineebene](archive-rehydrate-to-online-tier.md)
 - [Reacting to Blob storage events (preview)](storage-blob-event-overview.md) (Reagieren auf Blob Storage-Ereignisse (Vorschauversion))

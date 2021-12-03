@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/15/2021
 ms.author: thweiss
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d22b299cca557774ed47ecf6d8309f780f32fee8
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 2a052b7137ac29fae6203c10d3951c60bcbf4bcd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133061"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131041039"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -240,7 +240,7 @@ Diese Zugriffsrichtlinie stellt sicher, dass Ihr Azure Cosmos DB-Konto auf Ihre 
 
 ### <a name="to-use-a-system-assigned-managed-identity"></a>So verwenden Sie eine vom System zugewiesene verwaltete Identität
 
-Da eine vom System zugewiesene verwaltete Identität nur nach der Erstellung Ihres Kontos abgerufen werden kann, müssen Sie Ihr Konto noch zunächst wie [oben](#add-access-policy) beschrieben mit der Erstanbieteridentität erstellen. Führen Sie dann folgende Schritte aus:
+Da eine vom System zugewiesene verwaltete Identität nur nach der Erstellung Ihres Kontos abgerufen werden kann, müssen Sie Ihr Konto noch zunächst wie [oben](#add-access-policy) beschrieben mit der Erstanbieteridentität erstellen. Führen Sie anschließend Folgendes durch:
 
 1.  Wenn dies nicht während der Kontoerstellung erfolgt ist, [aktivieren Sie eine vom System zugewiesene verwaltete Identität](./how-to-setup-managed-identity.md#add-a-system-assigned-identity) in Ihrem Konto, und kopieren Sie die zugewiesene `principalId`.
 
@@ -363,7 +363,7 @@ Wenn Sie kundenseitig verwaltete Schlüssel verwenden, erhöht sich die Anzahl d
 | Vorgangsart | Erhöhung der Anforderungseinheiten |
 |---|---|
 | Punktlesevorgänge (Abrufen von Elementen nach ID) | 5 % pro Vorgang |
-| Beliebiger Schreibvorgang | 6 % pro Vorgang<br/>etwa 0,06 RU pro indizierte Eigenschaft |
+| Beliebiger Schreibvorgang | 6 % pro Vorgang <br/> etwa 0,06 RU pro indizierte Eigenschaft |
 | Abfragen, Lesen des Änderungsfeeds oder Konfliktfeeds | 15 % pro Vorgang |
 
 ### <a name="what-data-gets-encrypted-with-the-customer-managed-keys"></a>Welche Daten werden mit den vom Kunden verwalteten Schlüsseln verschlüsselt?

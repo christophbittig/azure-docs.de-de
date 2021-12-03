@@ -3,20 +3,20 @@ title: Definieren eines selbstbestätigten technischen Profils in einer benutzer
 titleSuffix: Azure AD B2C
 description: Definieren Sie ein selbstbestätigtes technisches Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/10/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 8d3343838216522abfc11ec3f202ae2da1c0e38f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 031b7b1ae4d776ce08a18da5e292d83206c4c3b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611877"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040150"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines selbstbestätigten technischen Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -204,7 +204,7 @@ Mit Ihrer Geschäftslogik können Sie durch eine weitere Integration in die Bran
 | ContentDefinitionReferenceId | Ja | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem technischen Profil zugeordnet ist. |
 | EnforceEmailVerification | Nein | Für die Registrierungs- oder Profilbearbeitung, erzwingt eine E-Mail-Überprüfung. Mögliche Werte: `true` (Standard) oder `false`. |
 | setting.retryLimit | Nein | Legt fest, wie viele Versuche ein Benutzer zur Eingabe der Daten hat, die anhand des technischen Validierungsprofils überprüft werden. Beispiel: Ein Benutzer versucht, ein Konto zu registrieren, das bereits vorhanden ist, und wiederholt den Vorgang, bis der Grenzwert erreicht ist.
-| SignUpTarget <sup>1</sup>| Nein | Der Austauschbezeichner für das Registrierungsziel. Wenn der Benutzer auf die Schaltfläche „Registrieren“ klickt, führt Azure AD B2C den angegebenen Austauschbezeichner aus. |
+| SignUpTarget <sup>1</sup>| Nein | Der Austauschbezeichner für das Registrierungsziel Wenn der Benutzer auf die Schaltfläche „Registrieren“ klickt, führt Azure AD B2C den angegebenen Austauschbezeichner aus. |
 | setting.showCancelButton | Nein | Zeigt die Schaltfläche „Abbrechen“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.showContinueButton | Nein | Zeigt die Schaltfläche „Weiter“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.showSignupLink <sup>2</sup>| Nein | Zeigt die Schaltfläche „Registrieren“ an. Mögliche Werte: `true` (Standard) oder `false` |

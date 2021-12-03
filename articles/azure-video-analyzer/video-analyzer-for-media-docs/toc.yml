@@ -15,6 +15,8 @@
       href: invite-users.md
 - name: Tutorials
   items:
+    - name: Erstellen eines neuen ARM-Kontos (Vorschau)
+      href: create-video-analyzer-for-media-account.md
     - name: Erstellen eines neuen Kontos
       href: connect-to-azure.md
     - name: Verwenden der Video Analyzer for Media-API
@@ -37,8 +39,10 @@
       href: language-identification-model.md
     - name: Livestreamanalyse
       href: live-stream-analysis.md
-    - name: Beobachtete Personen
+    - name: Beobachtete Personen in einem Video
       href: observed-people-tracing.md
+    - name: Erkannte Bekleidung von Personen
+      href: detected-clothing.md
     - name: Erkennung von Audioeffekten
       href: audio-effects-detection.md
     - name: Anpassen von Inhaltsmodellen
@@ -55,6 +59,8 @@
           href: customize-person-model-overview.md
 - name: Anleitungen
   items:
+    - name: Verbinden eines vorhandenen Kontos mit ARM (Vorschau)
+      href: connect-classic-account-to-arm.md
     - name: Verwalten eines mit Azure verbundenen Kontos
       href: manage-account-connected-to-azure.md
     - name: Hochladen und Indizieren von Videos
@@ -104,6 +110,8 @@
   items:
     - name: Video Analyzer for Media-API
       href: 'https://api-portal.videoindexer.ai/'
+    - name: 'Video Analyzer for Media: ARM-REST-API'
+      href: /rest/api/videoindexer/accounts?branch=videoindex
 - name: Ressourcen
   items:
     - name: Azure-Roadmap
@@ -111,13 +119,13 @@
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Regions
       displayName: location
       href: regions.md
     - name: Häufig gestellte Fragen
       href: faq.yml
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
     - name: Versionshinweise
       href: release-notes.md

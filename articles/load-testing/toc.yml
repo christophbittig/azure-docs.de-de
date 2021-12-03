@@ -1,0 +1,58 @@
+- name: Dokumentation zu Azure-Auslastungstests
+  href: index.yml
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Was ist Azure Load Testing?
+      displayName: 'ALT, load, MALT'
+      href: overview-what-is-azure-load-testing.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Erstellen & Ausführen eines Auslastungstests
+      href: quickstart-create-and-run-load-test.md
+- name: Tutorials
+  expanded: true
+  items:
+    - name: Erkennen von Leistungsengpässen
+      href: tutorial-identify-bottlenecks-azure-portal.md
+    - name: Kontinuierliche Regressionstests (CI/CD)
+      expanded: true
+      items:
+        - name: Automatisieren mit GitHub Aktionen
+          href: tutorial-cicd-github-actions.md
+        - name: Automatisieren mit Azure Pipelines
+          href: tutorial-cicd-azure-pipelines.md
+- name: Gewusst wie
+  expanded: true
+  items:
+    - name: Vergleichen von Testläufen
+      href: how-to-compare-multiple-test-runs.md
+    - name: Konfigurieren der serverseitigen Überwachung
+      href: how-to-update-rerun-test.md
+    - name: Konfigurieren für hohe Auslastungen
+      href: how-to-high-scale-load.md
+    - name: Beheben von Fehlern bei der Testausführung
+      href: how-to-find-download-logs.md
+    - name: Definieren von Testkriterien
+      href: how-to-define-test-criteria.md
+    - name: Parametrisieren von Auslastungstests
+      href: how-to-parameterize-load-tests.md
+    - name: Gewinnen von Erkenntnissen aus App Service Diagnose
+      href: how-to-appservice-insights.md
+    - name: Exportieren von Testergebnissen
+      href: how-to-export-test-results.md
+    - name: Verwenden einer verwalteten Identität
+      href: how-to-use-a-managed-identity.md
+- name: Verweis
+  items:
+    - name: YAML-Testkonfiguration
+      href: reference-test-config-yaml.md
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/load-testing-service/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'

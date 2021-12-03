@@ -5,15 +5,15 @@ description: Mit Application Insights können Sie verwaltete Onlineendpunkte üb
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
-ms.date: 05/03/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 44cfdcdd5d40aaac2eb97b9a3268a9b376f71560
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: c704af7d5249ca1a24da554e7789d3c92a360861
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425371"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519456"
 ---
 # <a name="monitor-managed-online-endpoints-preview"></a>Überwachen verwalteter Onlineendpunkte (Vorschau)
 
@@ -54,6 +54,13 @@ Abhängig von der ausgewählten Ressource unterscheiden sich die angezeigten Met
 - Anforderungswartezeit P90 (Anforderungswartezeit im 90. Perzentil)
 - Anforderungswartezeit P95 (Anforderungswartezeit im 95. Perzentil)
 - Anforderungen pro Minute
+- Neue Verbindungen pro Sekunde
+- Anzahl aktiver Verbindungen
+- Netzwerkbytes
+
+> ![HINWEIS] Die Bandbreite wird gedrosselt, wenn die Grenzwerte überschritten werden (siehe Abschnitt „Verwaltete Onlineendpunkte“ unter [Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)). So bestimmen Sie, ob Anforderungen gedrosselt werden
+> - Überwachen der Metrik „Netzwerkbytes“
+> - Die Antwortheader enthalten die Felder `ms-azureml-bandwidth-request-delay-ms` und `ms-azureml-bandwidth-response-delay-ms`. Die Werte der Felder sind die Verzögerungen der Bandbreitendrosselung in Millisekunden.
 
 Nehmen Sie die Aufteilung nach den folgenden Dimensionen vor:
 
@@ -63,12 +70,12 @@ Nehmen Sie die Aufteilung nach den folgenden Dimensionen vor:
 
 ### <a name="metrics-at-deployment-scope"></a>Metriken im Bereitstellungsbereich
 
-- CPU-Auslastung
+- Prozentsatz der CPU-Auslastung
 - Bereitstellungskapazität (die Anzahl der Instanzen des angeforderten Instanztyps)
 - Datenträgerverwendung
 - GPU-Arbeitsspeicherauslastung (gilt nur für GPU-Instanzen)
 - GPU-Auslastung (gilt nur für GPU-Instanzen)
-- Speicherauslastung
+- Speicherauslastung in %
 
 Nehmen Sie die Aufteilung nach den folgenden Dimensionen vor:
 

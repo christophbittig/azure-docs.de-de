@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 1a87a2f0d52895b97efdbe79ba3a53082efeccb2
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: e950667e1132c8eba350a5ffcada5e5d667a1288
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340340"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485638"
 ---
 # <a name="use-a-managed-identity-to-connect-azure-sql-database-to-an-azure-spring-cloud-app"></a>Verwenden einer verwalteten Identität zum Herstellen einer Verbindung zwischen Azure SQL-Datenbank und der Azure Spring Cloud-App
 
@@ -60,6 +60,6 @@ Erstellen Sie die App neu, und stellen Sie sie in der Azure Spring Cloud-App ber
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Zugreifen auf das Speicherblob mit der verwalteten Identität in Azure Spring Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/managed-identity-storage-blob)
-* [Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung](./how-to-enable-system-assigned-managed-identity.md)
+* [Aktivieren der systemseitig zugewiesenen verwalteten Identität für Anwendungen in Azure Spring Cloud](./how-to-enable-system-assigned-managed-identity.md)
 * [Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [Authentifizieren von Azure Spring Cloud mit Key Vault in GitHub Actions](./github-actions-key-vault.md)

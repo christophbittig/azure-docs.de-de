@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 98a74903f5472807ff7eb562ea9db9e12ceeb4be
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 33858a315e1a20a3f20277157f64b8992b6c43c2
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113108691"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179814"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Upgraden einer öffentlichen Azure Load Balancer-Instanz
 [Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](./skus.md#skus).
@@ -58,7 +58,7 @@ Es gibt ein Azure PowerShell-Skript, in dem folgende Vorgänge ausgeführt werde
 
 ## <a name="download-the-script"></a>Herunterladen des Skripts
 
-Laden Sie das Migrationsskript aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/5.0) herunter.
+Laden Sie das Migrationsskript aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/6.0) herunter.
 ## <a name="use-the-script"></a>Verwenden des Skripts
 
 Je nach dem, wie Ihre lokale PowerShell-Umgebung eingerichtet und eingestellt ist, gibt es zwei Optionen für Sie:
@@ -115,7 +115,7 @@ Ja. Lesen Sie [Vorbehalte/Einschränkungen](#caveatslimitations).
 
 ### <a name="how-long-does-the-upgrade-take"></a>Wie lange dauert das Upgrade?
 
-Es dauert in der Regel ungefähr 5 bis 10 Minuten, bis das Skript abgeschlossen ist. Abhängig von der Komplexität der Load Balancer-Konfiguration kann dies auch länger dauern. Berücksichtigen Sie daher die Ausfallzeiten, und planen Sie ggf. ein Failover ein.
+Es dauert in der Regel einige Minuten, bis das Skript abgeschlossen ist. Abhängig von der Komplexität der Load Balancer-Konfiguration kann dies auch länger dauern. Berücksichtigen Sie daher die Ausfallzeiten, und planen Sie ggf. ein Failover ein.
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Leitet das Azure PowerShell-Skript auch den Datenverkehr von meiner Load Balancer Basic-Instanz zur neu erstellten Load Balancer Standard-Instanz um?
 

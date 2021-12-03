@@ -7,12 +7,12 @@ ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2e3a51430ef2f57f3d9ea095dee8b297d01187a2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d4a2d90c797585ad025a9540045fe65dee385000
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758387"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493598"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -170,11 +170,14 @@ Den Verlauf der letzten Versionen finden Sie unter [Kubernetes](https://en.wikip
 
 |  Kubernetes-Version | Upstreamrelease  | AKS – Vorschau  | AKS – allgemeine Verfügbarkeit (GA)  | Ende der Lebensdauer |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.19  | 04. August 2020  | Sep 2020   | November 2020  | 1.22 GA |
+| 1.19*  | 04. August 2020  | Sep 2020   | November 2020  | 1.22 GA |
 | 1.20  | Dec-08-20  | Jan 2021   | März 2021  | 1.23 GA |
 | 1.21  | 08. April 2021 | Mai 2021   | Juli 2021  | 1.24: Allgemeine Verfügbarkeit |
-| 1.22  | 04. August 21 | September 2021   | Oktober 2021  | 1.25 Allgemeine Verfügbarkeit |
+| 1.22  | 04. August 21 | September 2021   | November 2021  | 1.25 Allgemeine Verfügbarkeit |
 | 1.23  | Dezember 2021 | Januar 2022   | Februar 2022  | 1.26 Allgemeine Verfügbarkeit |
+
+> [!NOTE]
+> 1.19 ist veraltet und wird Ende Januar 2022 aus AKS entfernt.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
@@ -217,7 +220,8 @@ Die Steuerungsebene muss sich innerhalb eines Fensters von Versionen aller Knote
 
 **Kann ich während eines Clusterupgrades mehrere AKS-Versionen überspringen?**
 
-Beim Upgrade eines unterstützten AKS-Clusters können Nebenversionen von Kubernetes nicht übersprungen werden. Beispielsweise Upgrades zwischen:
+Beim Upgrade eines unterstützten AKS-Clusters können Nebenversionen von Kubernetes nicht übersprungen werden. Die [Richtlinie zur Versionsabweichung](https://kubernetes.io/releases/version-skew-policy/) der Kubernetes-Steuerungsebenen unterstützt das Überspringen von Nebenversionen nicht. Beispielsweise Upgrades zwischen:
+
   * *1.12.x* -> *1.13.x*: zulässig.
   * *1.13.x* -> *1.14.x*: zulässig.
   * *1.12.x* -> *1.14.x*: nicht zulässig.
@@ -226,7 +230,7 @@ So führen Sie ein Upgrade von *1.12.x* -> *1.14.x* aus:
 1. Führen Sie ein Upgrade von *1.12.x* -> *1.13.x* aus.
 1. Führen Sie ein Upgrade von *1.13.x* -> *1.14.x* aus.
 
-Das Überspringen mehrerer Versionen ist nur möglich, wenn ein Upgrade von einer nicht unterstützten Version auf eine unterstützte Version erfolgt. Beispielsweise können Sie ein Upgrade von einer nicht unterstützten Version *1.10.x* auf eine unterstützte Version *1.15.x* durchführen.
+Das Überspringen mehrerer Versionen ist nur möglich, wenn ein Upgrade von einer nicht unterstützten Version auf eine mindestens unterstützte Version erfolgt. Beispielsweise können Sie ein Upgrade von einer nicht unterstützten Version *1.10.x* auf eine unterstützte Version *1.15.x* durchführen, wenn *1.15* die mindestens unterstützte Nebenversion ist.
 
 **Kann ich während des 30-tägigen Supportzeitraums einen neuen 1.xx.x-Cluster erstellen?**
 

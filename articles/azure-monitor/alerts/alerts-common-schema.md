@@ -3,24 +3,25 @@ title: Allgemeines Warnungsschema für Azure Monitor-Warnungen
 description: Enthält grundlegende Informationen zum allgemeinen Warnungsschema, zu den Vorteilen der Nutzung und zur Vorgehensweise bei der Aktivierung.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: ea05c010ff9ee732302054a07c8157e02e3e0034
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 60f3017312c8d650085d395e08d92af90ebf3f8d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739797"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327403"
 ---
 # <a name="common-alert-schema"></a>Allgemeines Warnungsschema
 
-In diesem Artikel wird beschrieben, was das allgemeine Warnungsschema ist, welche Vorteile sich durch die Nutzung ergeben und wie Sie die Aktivierung durchführen.
+In diesem Abschnitt wird beschrieben, was das allgemeine Warnungsschema ist, welche Vorteile sich durch die Nutzung ergeben und wie Sie die Aktivierung durchführen.
 
 ## <a name="what-is-the-common-alert-schema"></a>Was ist das allgemeine Warnungsschema?
 
 Mit dem allgemeinen Warnungsschema wird die Benutzeroberfläche für Warnungsbenachrichtigungen in Azure standardisiert. Bisher wurden für die Warnungstypen von Azure (Metrik, Protokoll und Aktivitätsprotokoll) eigene E-Mail-Vorlagen, Webhookschemas usw. verwendet. Mit dem allgemeinen Warnungsschema können Sie Warnungsbenachrichtigungen nun basierend auf einem einheitlichen Schema empfangen.
 
 Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache der Warnung** beschrieben. Diese Instanzen werden im allgemeinen Schema in den folgenden Abschnitten beschrieben:
-* **Zusammenfassung**: Eine Gruppe **standardisierter Felder** (für alle Warnungstypen gleich), die beschreiben, auf **welcher Ressource** sich die Warnung befindet, sowie zusätzliche allgemeine Warnungsmetadaten (z. B. Schweregrad oder Beschreibung). 
-* **Warnungskontext**: Eine Gruppe von Feldern, mit denen die **Ursache der Warnung** beschrieben wird. Die Felder variieren **basierend auf dem Warnungstyp**. Eine Metrikwarnung enthält im Warnungskontext beispielsweise Felder wie den Metriknamen und -wert, während eine Aktivitätsprotokollwarnung Informationen zum Ereignis enthält, von dem die Warnung generiert wurde. 
+
+- **Zusammenfassung**: Eine Gruppe **standardisierter Felder** (für alle Warnungstypen gleich), die beschreiben, auf **welcher Ressource** sich die Warnung befindet, sowie zusätzliche allgemeine Warnungsmetadaten (z. B. Schweregrad oder Beschreibung).
+- **Warnungskontext**: Ein Satz von Feldern, die die **Ursache der Warnung** beschreiben, und zwar mit Feldern, die **je nach Warnungstyp** variieren. Eine Metrikwarnung enthält im Warnungskontext beispielsweise Felder wie den Metriknamen und -wert, während eine Aktivitätsprotokollwarnung Informationen zum Ereignis enthält, von dem die Warnung generiert wurde.
 
 Die typischen Integrationsszenarien, über die uns von Kunden berichtet wird, umfassen das Routing der Warnungsinstanz an das entsprechende Team anhand eines Verbindungselements (z. B. eine Ressourcengruppe) und die anschließende Bearbeitung durch das zuständige Team. Mit dem allgemeinen Warnungsschema können Sie über Warnungstypen hinweg eine standardisierte Routinglogik verwenden, indem Sie die wichtigen Felder nutzen und die Kontextfelder unverändert lassen, damit diese später von den jeweiligen Teams untersucht werden können.
 
@@ -35,7 +36,7 @@ Das allgemeine Warnungsschema manifestiert sich hauptsächlich in Ihren Warnungs
 | Email | Eine einheitliche und detaillierte E-Mail-Vorlage, mit der Sie Probleme leicht auf einen Blick diagnostizieren können. Mit eingebetteten Deep-Links für die Warnungsinstanz im Portal und die betroffene Ressource wird sichergestellt, dass Sie schnell mit dem Lösungsprozess beginnen können. |
 | Webhook/Logik-App/Azure-Funktion/Automation-Runbook | Eine einheitliche JSON-Struktur für alle Warnungstypen, um Ihnen das einfache Entwickeln von Integrationen für die unterschiedlichen Warnungstypen zu ermöglichen. |
 
-Mit dem neuen Schema wird in naher Zukunft auch eine umfassendere Oberfläche für die Nutzung von Warnungen bereitgestellt – sowohl im Azure-Portal als auch in der mobilen Azure-App. 
+Mit dem neuen Schema wird in naher Zukunft auch eine umfassendere Oberfläche für die Nutzung von Warnungen bereitgestellt – sowohl im Azure-Portal als auch in der mobilen Azure-App.
 
 [Erfahren Sie mehr zu den Schemadefinitionen für Webhooks/Logik-Apps/Azure Functions/Automation-Runbooks.](./alerts-common-schema-definitions.md)
 
@@ -48,16 +49,16 @@ Sie können sowohl im Portal als auch in der REST-API über Aktionsgruppen eine 
 
 > [!NOTE]
 > 1. Für die folgenden Warnungstypen wird das allgemeine Schema standardmäßig unterstützt (keine Aktivierung erforderlich):
->     * Warnungen der intelligenten Erkennung
+>     - Warnungen der intelligenten Erkennung
 > 1. Von den folgenden Warnungstypen wird das allgemeine Schema derzeit nicht unterstützt:
->     * Von [VM Insights](../vm/vminsights-overview.md) generierte Warnungen
->     * Von [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md) generierte Warnungen
+>     - Von [VM Insights](../vm/vminsights-overview.md) generierte Warnungen
+>     - Von [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md) generierte Warnungen
 
 ### <a name="through-the-azure-portal"></a>Über das Azure-Portal
 
 ![Allgemeines Warnungsschema: Aktivierung](media/alerts-common-schema/portal-opt-in.png)
 
-1. Öffnen Sie in einer Aktionsgruppe eine vorhandene oder eine neue Aktion. 
+1. Öffnen Sie in einer Aktionsgruppe eine vorhandene oder eine neue Aktion.
 1. Wählen Sie für den Umschalter die Option „Ja“, um das allgemeine Warnungsschema wie gezeigt zu aktivieren.
 
 ### <a name="through-the-action-groups-rest-api"></a>Über die Aktionsgruppen-REST-API
@@ -66,9 +67,9 @@ Sie können auch die [Aktionsgruppen-API](/rest/api/monitor/actiongroups) verwen
 
 Mit dem folgenden Anforderungstext für den REST-API-Vorgang zum [Erstellen oder Aktualisieren](/rest/api/monitor/actiongroups/createorupdate) wird beispielsweise Folgendes durchgeführt:
 
-* Aktivieren des allgemeinen Warnungsschemas für die E-Mail-Aktion „John Doe's email“
-* Deaktivieren des allgemeinen Warnungsschemas für die E-Mail-Aktion „Jane Smith's email“
-* Deaktivieren des allgemeinen Warnungsschemas für die Webhookaktion „Sample webhook“
+- Aktivieren des allgemeinen Warnungsschemas für die E-Mail-Aktion „John Doe's email“
+- Deaktivieren des allgemeinen Warnungsschemas für die E-Mail-Aktion „Jane Smith's email“
+- Deaktivieren des allgemeinen Warnungsschemas für die Webhookaktion „Sample webhook“
 
 ```json
 {
@@ -111,10 +112,6 @@ Mit dem folgenden Anforderungstext für den REST-API-Vorgang zum [Erstellen oder
   "tags": {}
 }
 ```
-
-
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

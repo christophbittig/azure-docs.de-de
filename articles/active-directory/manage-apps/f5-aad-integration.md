@@ -12,12 +12,12 @@ ms.date: 11/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: 622834d3e91303f55fd4adaf2187800b2b2ce765
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 3d3556315e95ad72dd0c0e754f8762bfa585c245
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164365"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342431"
 ---
 # <a name="integrate-f5-big-ip-with-azure-active-directory"></a>Integrieren von F5 BIG-IP in Azure Active Directory
 
@@ -32,7 +32,7 @@ Die Vorabauthentifizierung des Zugriffs auf veröffentlichte BIG-IP-Dienste durc
 
 - Kennwortlose Authentifizierung durch [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview), [MS Authenticator](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a), [Fast Identity Online (FIDO)-Schlüssel](../authentication/howto-authentication-passwordless-security-key.md) und [zertifikatbasierte Authentifizierung](../authentication/active-directory-certificate-based-authentication-get-started.md)
 
-- [Bedingter Zugriff](../conditional-access/overview.md) und [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) als Maßnahmen im Vorfeld
+- [Bedingter Zugriff](../conditional-access/overview.md) und [Azure AD Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) als Maßnahmen im Vorfeld
 
 - [Identitätsschutz](../identity-protection/overview-identity-protection.md) als adaptive Steuerung durch Risikoprofilerstellung für Benutzer und Sitzung
 
@@ -42,9 +42,9 @@ Die Vorabauthentifizierung des Zugriffs auf veröffentlichte BIG-IP-Dienste durc
 
 - [Partnerzusammenarbeit](../governance/entitlement-management-external-users.md) mit Berechtigungsverwaltung für den kontrollierten Gastzugriff
 
-- [Cloud App Security (CASB)](/cloud-app-security/what-is-cloud-app-security) für umfassende App-Erkennung und -Steuerung
+- [Defender für Cloud-Apps (CASB)](/cloud-app-security/what-is-cloud-app-security) für umfassende App-Erkennung und -Steuerung
 
-- [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) für die Bedrohungsüberwachung und die erweiterte Bedrohungsanalyse
+- [Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel/) für die Bedrohungsüberwachung und die erweiterte Bedrohungsanalyse
 
 - [Azure AD-Portal](https://azure.microsoft.com/features/azure-portal/) als zentrale Steuerungsebene zum Verwalten von Identität und Zugriff
 
@@ -68,7 +68,7 @@ Die Schritte 1-4 im Diagramm veranschaulichen den Front-End-Austausch zur Voraba
 
 ![Die Abbildung zeigt die allgemeine Architektur](./media/f5-aad-integration/integration-flow-diagram.png)
 
-| Schritt | BESCHREIBUNG |
+| Schritt | Beschreibung |
 |:------|:-----------|
 | 1. | Der Benutzer wählt im Portal ein Anwendungssymbol aus, die URL wird aufgelöst, und der SAML-Dienstanbieter (BIG-IP) wird aufgerufen. |
 | 2. | BIG-IP leitet den Benutzer zur Vorabauthentifizierung an den SAML-Identitätsanbieter (Azure AD) um.|
@@ -93,7 +93,7 @@ Die gezeigten Screenshots stammen aus dem App-Portal von Azure AD, auf das Benu
 
 BIG-IP spielt für jedes Unternehmen eine wichtige Rolle. Daher sollten bereitgestellte BIG-IP-Instanzen überwacht werden, um sicherzustellen, dass veröffentlichte Dienste sowohl auf SHA- als auch auf Betriebsebene hochverfügbar sind.
 
-Für die Protokollierung von Ereignissen stehen mehrere Optionen zur Verfügung, und zwar entweder lokal oder remote über eine SIEM-Lösung (Security Information and Event Management), die ein separates Speichern und Verarbeiten von Telemetriedaten ermöglichen. Eine äußerst effektive Lösung für die Überwachung von Azure AD- und SHA-spezifischen Aktivitäten ist die gemeinsame Verwendung von [Azure Monitor](../../azure-monitor/overview.md) und [Azure Sentinel](../../sentinel/overview.md), die Folgendes bietet:
+Für die Protokollierung von Ereignissen stehen mehrere Optionen zur Verfügung, und zwar entweder lokal oder remote über eine SIEM-Lösung (Security Information and Event Management), die ein separates Speichern und Verarbeiten von Telemetriedaten ermöglichen. Eine äußerst effektive Lösung für die Überwachung von Azure AD- und SHA-spezifischen Aktivitäten ist die gemeinsame Verwendung von [Azure Monitor](../../azure-monitor/overview.md) und [Microsoft Sentinel](../../sentinel/overview.md), die Folgendes bietet:
 
 - Ausführliche Übersicht über Ihre Organisation, möglicherweise über mehrere Clouds und lokale Standorte hinweg (einschließlich der BIG-IP-Infrastruktur)
 
@@ -147,6 +147,10 @@ In den folgenden Tutorials finden Sie eine ausführliche Anleitung zum Implement
 
 - [Konfigurieren von Azure AD B2C mit F5 BIG-IP](../../active-directory-b2c/partner-f5.md)
 
+- [F5 BIG-IP APM und Azure AD – einmaliges Anmelden (SSO) bei formularbasierten Anwendungen](f5-big-ip-forms-advanced.md)
+
+- [Integration von Azure Active Directory SSO mit F5 BIG-IP für headerbasierte Authentifizierung](f5-big-ip-header-advanced.md)
+
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 - [Das Ende der Kennwörter: Umsteigen auf die kennwortlose Anmeldung](https://www.microsoft.com/security/business/identity/passwordless)
@@ -155,7 +159,7 @@ In den folgenden Tutorials finden Sie eine ausführliche Anleitung zum Implement
 
 - [„Zero Trust“-Framework von Microsoft zum Ermöglichen von Remotearbeit](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)
 
-- [Erste Schritte mit Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/?&OCID=AID2100131_SEM_XfknpgAAAHoVMTvh:20200922160358:s&msclkid=5e0e022409fc1c94dab85d4e6f4710e3&ef_id=XfknpgAAAHoVMTvh:20200922160358:s&dclid=CJnX6vHU_esCFUq-ZAod1iQF6A)
+- [Erste Schritte mit Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel/?&OCID=AID2100131_SEM_XfknpgAAAHoVMTvh:20200922160358:s&msclkid=5e0e022409fc1c94dab85d4e6f4710e3&ef_id=XfknpgAAAHoVMTvh:20200922160358:s&dclid=CJnX6vHU_esCFUq-ZAod1iQF6A)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

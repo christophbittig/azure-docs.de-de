@@ -5,16 +5,18 @@ description: Erfahren Sie, wie Sie einen benutzerdefinierten Container verwenden
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
+ms.author: ssambare
+author: shivanissambare
 ms.reviewer: larryfr
-ms.date: 06/16/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: deploy, devplatv2
-ms.openlocfilehash: 83713736d68dcd019708ade16460cb369d50127d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: fdbe6f6232bcd4d53ce3473a80de2829f02fb6bf
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251450"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056661"
 ---
 # <a name="deploy-a-tensorflow-model-served-with-tf-serving-using-a-custom-container-in-a-managed-online-endpoint-preview"></a>Bereitstellen eines TensorFlow-Modells mit TF Serving mithilfe eines benutzerdefinierten Containers in einem verwalteten Onlineendpunkt (Vorschau)
 
@@ -47,7 +49,7 @@ Benutzerdefinierte Containerbereitstellungen können andere Webserver als den st
 
 To follow along with this tutorial, download the source code below.
 
-```azurecli-interactive
+```azurecli
 git clone https://github.com/Azure/azureml-examples --depth 1
 cd azureml-examples/cli
 ```
@@ -86,17 +88,23 @@ Nachdem Sie das Image lokal getestet haben, beenden Sie es:
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="stop_image":::
 
-## <a name="create-a-yaml-file-for-your-endpoint"></a>Erstellen einer YAML-Datei für Ihren Endpunkt
+## <a name="create-a-yaml-file-for-your-endpoint-and-deployment"></a>Erstellen Sie eine YAML-Datei für Ihren Endpunkt und Ihr Bereitstellen.
 
-Sie können Ihre Cloudbereitstellung mit YAML konfigurieren. Sehen Sie sich das YAML-Beispiel für diesen Endpunkt an:
+Sie können Ihre Cloudbereitstellung mit YAML konfigurieren. Schauen Sie sich das YAML-Beispiel für dieses Beispiel an:
+
+__tfserving-endpoint.yml__
 
 :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/custom-container/tfserving-endpoint.yml":::
+
+__tfserving-deployment.yml__
+
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/custom-container/tfserving-deployment.yml":::
 
 In dieser YAML-Datei sind einige wichtige Konzepte zu beachten:
 
 ### <a name="readiness-route-vs-liveness-route"></a>Bereitschaftsroute im Vergleich zur Verfügbarkeitsroute
 
-Ein HTTP-Server kann optional sowohl für _Verfügbarkeit_ als auch für _Bereitschaft_ Pfade definieren. Eine Verfügbarkeitsroute wird verwendet, um zu überprüfen, ob der Server ausgeführt wird. Eine Bereitschaftsroute wird verwendet, um zu überprüfen, ob der Server arbeitsbereit ist. Im Machine Learning-Rückschluss könnte ein Server eine „200 OK“-Antwort auf eine Verfügbarkeitsanforderung geben, bevor er ein Modell lädt. Der Server kann erst dann mit „200 OK“ auf eine Bereitschaftsanforderung antworten, nachdem das Modell in den Arbeitsspeicher geladen wurde.
+Ein HTTP-Server definiert Pfade sowohl für _Lebensfähigkeit_ als auch für _Bereitschaft_. Eine Verfügbarkeitsroute wird verwendet, um zu überprüfen, ob der Server ausgeführt wird. Eine Bereitschaftsroute wird verwendet, um zu prüfen, ob der Server bereit ist, zu arbeiten. Im Machine Learning-Rückschluss könnte ein Server eine „200 OK“-Antwort auf eine Verfügbarkeitsanforderung geben, bevor er ein Modell lädt. Der Server kann erst dann mit „200 OK“ auf eine Bereitschaftsanforderung antworten, nachdem das Modell in den Arbeitsspeicher geladen wurde.
 
 In der [Kubernetes-Dokumentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) finden Sie weitere Informationen zu Verfügbarkeits- und Bereitschaftstests.
 
@@ -106,43 +114,58 @@ Beachten Sie, dass diese Bereitstellung sowohl für Verfügbarkeit als auch für
 
 Wenn Sie ein Modell als Echtzeit-Endpunkt bereitstellen, _bindet_ Azure Machine Learning Ihr Modell in Ihren Endpunkt ein. Mit der Modelleinbindung können Sie neue Versionen des Modells bereitstellen, ohne ein neues Docker-Image erstellen zu müssen. Standardmäßig befindet sich ein mit dem Namen *foo* und Version *1* registriertes Modell im folgenden Pfad in Ihrem bereitgestellten Container: `/var/azureml-app/azureml-models/foo/1`
 
-Dies gilt beispielsweise, wenn Sie auf Ihrem lokalen Computer über die folgende Verzeichnisstruktur verfügen:
+Beispiel: Sie haben auf Ihrem lokalen Rechner eine Verzeichnisstruktur von `/azureml-examples/cli/endpoints/online/custom-container`, in der das Modell den Namen `half_plus_two` trägt:
 
-```
-azureml-examples
-  cli
-    endpoints
-      online
-        custom-container
-          half_plus_two
-          tfserving-endpoint.yml    
-```     
+:::image type="content" source="./media/how-to-deploy-custom-container/local-directory-structure.png" alt-text="Diagramm mit einer Baumansicht der lokalen Verzeichnisstruktur.":::
 
-und `tfserving-endpoint.yml` enthält:
+und `tfserving-deployment.yml` enthält:
 
-```
+```yaml
 model:
     name: tfserving-mounted
     version: 1
     local_path: ./half_plus_two
 ```
 
-dann befindet sich Ihr Modell in Ihrem Endpunkt an folgendem Speicherort:
+dann befindet sich Ihr Modell unter `/var/azureml-app/azureml-models/tfserving-deployment/1` in Ihrer Bereitstellung:
 
+:::image type="content" source="./media/how-to-deploy-custom-container/deployment-location.png" alt-text="Diagramm mit einer Baumansicht der Verzeichnisstruktur der Bereitstellung ":::
+
+Sie können Ihre `model_mount_path` optional konfigurieren. Sie ermöglicht es Ihnen, den Pfad zu ändern, in dem das Modell montiert ist. Sie können zum Beispiel `model_mount_path` Parameter in Ihrer _tfserving-deployment.yml_ haben:
+
+> [!IMPORTANT]
+> Bei `model_mount_path` muss es sich um einen gültigen absoluten Pfad in Linux (dem Betriebssystem des Container-Images) handeln.
+
+```YAML
+name: tfserving-deployment
+endpoint_name: tfserving-endpoint
+model:
+  name: tfserving-mounted
+  version: 1
+  local_path: ./half_plus_two
+model_mount_path: /var/tfserving-model-mount
+.....
 ```
-var 
-  azureml-app
-    azureml-models
-      tfserving-endpoint
-        1
-          half_plus_two
+
+dann befindet sich Ihr Modell in Ihrer Bereitstellung an `/var/tfserving-model-mount/tfserving-deployment/1`. Beachten Sie, dass es sich nicht mehr unter `azureml-app/azureml-models` befindet, sondern unter dem von Ihnen angegebenen Einhängepfad:
+
+:::image type="content" source="./media/how-to-deploy-custom-container/mount-path-deployment-location.png" alt-text="Diagramm mit einer Baumansicht der Verzeichnissstruktur bei Verwendung von mount_model_path.":::
+
+### <a name="create-your-endpoint-and-deployment"></a>Erstellen Sie Ihren Endpunkt und die Bereitstellung
+
+Nachdem Sie nun wissen, wie die YAML-Datei erstellt wurde, erstellen Sie Ihren Endpunkt.
+
+```azurecli
+az ml online-endpoint create --name tfserving-endpoint -f endpoints/online/custom-container/tfserving-endpoint.yml
 ```
 
-### <a name="create-the-endpoint"></a>Erstellen des Endpunkts
+Die Erstellung eines Einsatzes kann einige Minuten dauern.
 
-Nachdem Sie nun wissen, wie die YAML-Datei erstellt wurde, erstellen Sie Ihren Endpunkt. Die Ausführung dieses Befehls kann einige Minuten dauern.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="create_endpoint":::
+
+```azurecli
+az ml online-deployment create --name tfserving-deployment -f endpoints/online/custom-container/tfserving-deployment.yml
+```
 
 ### <a name="invoke-the-endpoint"></a>Aufrufen des Endpunkts
 
@@ -154,7 +177,13 @@ Nachdem die Bereitstellung abgeschlossen ist, prüfen Sie, ob Sie eine Bewertung
 
 Nachdem Sie ihren Endpunkt erfolgreich bewertet haben, können Sie ihn löschen:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="delete_endpoint_and_model":::
+```azurecli
+az ml online-endpoint delete --name tfserving-endpoint
+```
+
+```azurecli
+az ml model delete -n tfserving-mounted --version 1
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

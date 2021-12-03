@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 03c5d976010e136ab5b91efc632594253eedca1c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 009f611e1c80f4c4e0e7bafaa80036d809b3393d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131054664"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853071"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity"></a>Erteilen von Berechtigungen für die verwaltete Identität eines Arbeitsbereichs (Vorschau)
 
@@ -97,4 +97,4 @@ Ihre verwaltete Identität sollte im Abschnitt **Mitwirkender an Storage-Blobdat
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur [Verwalteten Identität des Arbeitsbereichs](./synapse-workspace-managed-identity.md).
+Weitere Informationen zur [Verwalteten Identität des Arbeitsbereichs](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics).

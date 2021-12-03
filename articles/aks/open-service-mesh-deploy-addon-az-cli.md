@@ -6,58 +6,21 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: f5680d21abe1f4dffb163b6e0b16fd836e6a3fc2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 93ff4f0d8565f439bc16e887b0dd31e8f14249e9
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700429"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025741"
 ---
 # <a name="deploy-the-open-service-mesh-aks-add-on-using-azure-cli"></a>Bereitstellen des Open Service Mesh AKS-Add-Ons mittels Azure CLI
 
 In diesem Artikel wird erläutert, wie Sie das OSM-Add-On in AKS bereitstellen.
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure CLI, Version 2.20.0 oder höher
-- Erweiterung `aks-preview`, Version 0.5.5 oder höher
-- OSM-Version v0.9.1 oder höher
-
-## <a name="install-the-aks-preview-extension"></a>Installieren der Erweiterung aks-preview
-
-Sie benötigen mindestens Version 0.5.24 der Azure CLI-Erweiterung _aks-preview_. Installieren Sie die Erweiterung _aks-preview_ der Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az extension add][az-extension-add]. Alternativ können Sie verfügbare Updates mithilfe des Befehls [az extension update][az-extension-update] installieren.
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
-## <a name="register-the-aks-openservicemesh-preview-feature"></a>Registrieren der Previewfunktion `AKS-OpenServiceMesh`
-
-Um einen AKS-Cluster zu erstellen, der das Open Service Mesh-Add-on verwenden kann, müssen Sie das `AKS-OpenServiceMesh` Feature-Flag in Ihrem Abonnement aktivieren.
-
-Registrieren Sie das Featureflag `AKS-OpenServiceMesh` mithilfe des Befehls [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "AKS-OpenServiceMesh"
-```
-
-Es dauert einige Minuten, bis der Status _Registered (Registriert)_ angezeigt wird. Überprüfen Sie den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list]:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-OpenServiceMesh')].{Name:name,State:properties.state}"
-```
-
-Wenn der Vorgang abgeschlossen ist, können Sie die Registrierung des _Microsoft.ContainerService_-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register] aktualisieren:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+- OSM, Version 0.11.1 oder höher
 
 ## <a name="install-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-for-a-new-aks-cluster"></a>Installieren von Open Service Mesh (OSM) Azure Kubernetes Service (AKS) Add-on für einen neuen AKS-Cluster
 
@@ -98,6 +61,9 @@ Für ein bestehendes AKS-Cluster-Szenario aktivieren Sie das OSM-Add-on für ein
 
 Um das AKS-OSM-Add-on zu aktivieren, müssen Sie den `az aks enable-addons --addons` Befehl ausführen, der den Parameter übergibt. `open-service-mesh`
 
+> [!NOTE]
+> Damit die OSM-Add-On-Bereitstellung erfolgreich ist, sollte nur eine OSM-Meshinstanz in Ihrem Cluster bereitgestellt werden. Wenn Sie über andere OSM-Meshinstanzen in Ihrem Cluster verfügen, deinstallieren Sie sie, bevor Sie den Befehl `enable-addons` ausführen.
+
 ```azurecli-interactive
 az aks enable-addons --addons open-service-mesh -g <my-osm-aks-cluster-rg> -n <my-osm-aks-cluster-name>
 ```
@@ -136,6 +102,14 @@ Die folgenden `kubectl` Befehle melden den Status des OSM-Controllers.
 kubectl get deployments -n kube-system --selector app=osm-controller
 kubectl get pods -n kube-system --selector app=osm-controller
 kubectl get services -n kube-system --selector app=osm-controller
+```
+
+### <a name="check-osm-add-on-version"></a>Überprüfen der OSM-Add-On-Version
+
+Die installierte OSM-Add-On-Version sollte v0.11.1 oder höher sein. Um dies zu überprüfen, können Sie den folgenden Befehl ausführen, um die Imageversion für den osm-controller zu überprüfen, der im Imagetag codiert ist: 
+
+```azurecli-interactive
+kubectl get deployment -n kube-system osm-controller -o=jsonpath='{$.spec.template.spec.containers[:1].image}'
 ```
 
 ## <a name="accessing-the-aks-osm-add-on-configuration"></a>Zugreifen auf die Konfiguration des AKS-OSM-Add-Ons
@@ -200,6 +174,47 @@ Beachten Sie, dass **enablePermissiveTrafficPolicyMode** auf **true** festgelegt
 ```OSM Permissive Mode to True
 kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"traffic":{"enablePermissiveTrafficPolicyMode":true}}}' --type=merge
 ```
+
+## <a name="disable-open-service-mesh-osm-add-on-for-your-aks-cluster"></a>Deaktivieren Sie das OSM-Add-on für Ihren AKS-Cluster
+
+Führen Sie den folgenden Befehl aus, um das OSM-Add-On zu deaktivieren:
+
+```azurecli-interactive
+az aks disable-addons -n <AKS-cluster-name> -g <AKS-resource-group-name> -a open-service-mesh
+```
+Nachdem das OSM-Add-On deaktiviert wurde, verbleiben die folgenden Ressourcen im Cluster:
+1. Benutzerdefinierte OSM-MeshConfig-Ressource
+2. Geheimnisse der OSM-Steuerungsebene
+3. OSM-Konfiguration zum Ändern des Webhooks
+4. OSM-Konfiguration zum Überprüfen des Webhooks
+5. OSM-CRDs
+
+> [!IMPORTANT]
+> Sie müssen diese zusätzlichen Ressourcen entfernen, nachdem Sie das OSM-Add-On deaktiviert haben. Wenn Sie diese Ressourcen in Ihrem Cluster belassen, kann es zu Problemen kommen, wenn Sie das OSM-Add-On in Zukunft erneut aktivieren.
+
+So entfernen Sie die verbleibenden Ressourcen:
+
+1. Löschen der MeshConfig-Konfigurationsressource
+```azurecli-interactive
+kubectl delete --ignore-not-found meshconfig -n kube-system osm-mesh-config
+```
+
+2. Löschen der Geheimnisse der OSM-Steuerungsebene
+```azurecli-interactive
+kubectl delete --ignore-not-found secret -n kube-system osm-ca-bundle mutating-webhook-cert-secret validating-webhook-cert-secret crd-converter-cert-secret
+```
+
+3. Löschen der OSM-Konfiguration zum Ändern des Webhooks
+```azurecli-interactive
+kubectl delete mutatingwebhookconfiguration -l app.kubernetes.io/name=openservicemesh.io,app.kubernetes.io/instance=osm,app=osm-injector --ignore-not-found
+```
+
+4. Löschen der OSM-Konfiguration zum Überprüfen des Webhooks
+```azurecli-interactive
+kubectl delete validatingwebhookconfiguration -l app.kubernetes.io/name=openservicemesh.io,app.kubernetes.io/instance=osm,app=osm-controller --ignore-not-found
+```
+
+5. Löschen der OSM-CRDs: Anleitungen zu OSM-CRDs und deren Löschung finden Sie in [dieser Dokumentation](https://release-v0-11.docs.openservicemesh.io/docs/getting_started/uninstall/#removal-of-osm-cluster-wide-resources).
 
 <!-- Links -->
 <!-- Internal -->

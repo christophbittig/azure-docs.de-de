@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 10/11/2021
+ms.date: 10/19/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ba5d47c33b276b1585ad6200058439be4c4bc02
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 51385ce98da9e163be0d70d0c0662f51094094a3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993585"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222512"
 ---
 # <a name="extend-or-renew-azure-ad-role-assignments-in-privileged-identity-management"></a>Verlängern oder Erneuern von Azure AD-Rollenzuweisungen in Privileged Identity Management
 
@@ -44,11 +44,14 @@ Die folgenden Schritte beschreiben den Prozess für das Anfordern, Bearbeiten bz
 
 ### <a name="self-extend-expiring-assignments"></a>Selbständiges Verlängern von ablaufenden Zuweisungen
 
-Benutzer oder Gruppen, die einer Rolle zugewiesen sind, können die Verlängerung von ablaufenden Rollenzuweisungen direkt über die Registerkarte **Berechtigt** oder **Aktiv** auf der Seite **Meine Rollen**, entweder unter **Azure AD-Rollen** oder über die Seite **Meine Rollen** der obersten Ebene im Privileged Identity Management-Portal durchführen. Benutzer oder Gruppen können die Verlängerung von berechtigten und aktiven Rollenzuweisungen anfordern, die innerhalb der nächsten 14 Tage ablaufen.
+Benutzer*innen, die einer Rolle zugewiesen sind, können ablaufende Rollenzuweisungen direkt über die Registerkarten **Berechtigt** oder **Aktiv** auf der Seite **Meine Rollen** verlängern, entweder unter **Azure AD-Rollen** oder über die Seite **Meine Rollen** der obersten Ebene im Privileged Identity Management-Portal. Im Portal können Benutzer*innen die Verlängerung von berechtigten oder aktiven (zugewiesenen) Rollen anfordern, die in den nächsten 14 Tagen ablaufen.
 
 ![Azure AD-Rollen – Seite „Meine Rollen“, auf der die berechtigten Rollen mit der Spalte „Aktion“ aufgelistet werden](./media/pim-how-to-renew-extend/pim-extend-link-in-portal.png)
 
-Wenn Enddatum und -uhrzeit der Zuweisung innerhalb von 14 Tagen liegen, wird die Schaltfläche **Verlängern** auf der Benutzeroberfläche zu einem aktiven Link. Im folgenden Beispiel wird angenommen, dass der 27. März das aktuelle Datum ist. Für eine Gruppe, die einer Rolle zugeordnet ist, wird der Link **Erweitern** nie verfügbar, so dass ein einzelner Benutzer mit einer geerbten Zuordnung die Gruppenzuordnung nicht erweitern kann.
+Wenn Enddatum und -uhrzeit der Zuweisung innerhalb von 14 Tagen liegen, wird die Schaltfläche **Verlängern** auf der Benutzeroberfläche zu einem aktiven Link. Im folgenden Beispiel wird angenommen, dass der 27. März das aktuelle Datum ist.
+
+>[!Note]
+>Für eine Gruppe, die einer Rolle zugewiesen ist, steht der Link **Verlängern** nie zur Verfügung, damit Benutzer*innen mit geerbten Zuweisungen nicht die Gruppenzuweisung verlängern können.
 
 ![Spalte „Aktion“ mit Links zum Aktivieren oder Verlängern](./media/pim-how-to-renew-extend/pim-extend-within-fourteen.png)
 

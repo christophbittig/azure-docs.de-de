@@ -1,6 +1,6 @@
 ---
-title: Verbinden und Verwalten einer Azure MySQL-Datenbank
-description: In diesem Handbuch wird beschrieben, wie Sie eine Verbindung mit Azure MySQL-Datenbank in Azure Purview herstellen und die Funktionen von Purview verwenden, um Ihre Azure MySQL-Datenbankquelle zu überprüfen und zu verwalten.
+title: Verbinden mit und Verwalten von Azure Database for MySQL
+description: In diesem Leitfaden wird beschrieben, wie Sie eine Verbindung mit einer Azure Database for MySQL-Instanz in Azure Purview herstellen und die Features von Purview verwenden, um Ihre Azure Database for MySQL-Quelle zu überprüfen und zu verwalten.
 author: evwhite
 ms.author: evwhite
 ms.service: purview
@@ -8,24 +8,26 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: bdb96c3e1de3062426b87fe702d7694890fca44f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bcde9aee9719f8dbb127b908c312cc734c559f02
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131015046"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841887"
 ---
-# <a name="connect-to-and-manage-azure-mysql-databases-in-azure-purview"></a>Verbinden und Verwalten von Azure MySQL-Datenbanken in Azure Purview
+# <a name="connect-to-and-manage-azure-databases-for-mysql-in-azure-purview"></a>Verbinden mit und Verwalten von Azure-Datenbanken für MySQL in Azure Purview
 
-In diesem Artikel wird beschrieben, wie Sie eine Azure MySQL-Datenbank registrieren und sich in Azure Purview authentifizieren und mit Azure MySQL-Datenbanken interagieren. Weitere Informationen zu Azure Purview finden Sie im [Einführungsartikel](overview.md).
+In diesem Artikel wird beschrieben, wie Sie eine Azure Database for MySQL-Instanz registrieren, sich authentifizieren und mit Azure Database for MySQL-Instanzen in Azure Purview interagieren. Weitere Informationen zu Azure Purview finden Sie im [Einführungsartikel](overview.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
 |**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
 |---|---|---|---|---|---|---|
-| [Ja](#register) | [Ja](#scan)| [Ja*](#scan) | [Ja](#scan) | [Ja](#scan) | Nein | [Data Factory-Datenherkunft](how-to-link-azure-data-factory.md) |
+| [Ja](#register) | [Ja](#scan)| [Ja*](#scan) | [Ja](#scan) | [Ja](#scan) | Nein | nein** |
 
 \* Purview basiert auf UPDATE_TIME Metadaten aus der Azure Database for MySQL für inkrementelle Überprüfungen. In einigen Fällen wird dieses Feld möglicherweise nicht in der Datenbank beibehalten, und es wird eine vollständige Überprüfung durchgeführt. Weitere Informationen finden Sie in der Tabelle [INFORMATION_SCHEMA TABLES](https://dev.mysql.com/doc/refman/5.7/en/information-schema-tables-table.html) für MySQL.
+
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory-Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,17 +35,17 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure MySQL-Datenbank registrie
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 ## <a name="register"></a>Register
 
-In diesem Abschnitt wird beschrieben, wie Sie eine Azure MySQL-Datenbank in Azure Purview mithilfe von [Purview Studio](https://web.purview.azure.com/) registrieren.
+In diesem Abschnitt wird beschrieben, wie Sie eine Azure Database for MySQL-Instanz in Azure Purview mithilfe von [Purview Studio](https://web.purview.azure.com/) registrieren.
 
 ### <a name="authentication-for-registration"></a>Authentifizierung für die Registrierung
 
 Sie benötigen **Benutzername** und **Kennwort** für die nächsten Schritte.
 
-Befolgen Sie die Anweisungen unter [ERSTELLEN VON DATENBANKEN UND BENUTZERN,](../mysql/howto-create-users.md) um eine Anmeldung für Ihre Azure MySQL-Datenbank zu erstellen.
+Befolgen Sie die Anweisungen unter [ERSTELLEN VON DATENBANKEN UND BENUTZERN](../mysql/howto-create-users.md), um eine Anmeldung für Ihre Azure Database for MySQL-Instanz zu erstellen.
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Schlüsseltresor.
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
@@ -54,7 +56,7 @@ Befolgen Sie die Anweisungen unter [ERSTELLEN VON DATENBANKEN UND BENUTZERN,](..
 
 ### <a name="steps-to-register"></a>Schritte zur Registrierung
 
-Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Azure MySQL-Datenbank zu registrieren:
+Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Azure Database for MySQL-Instanz zu registrieren:
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
 
@@ -62,13 +64,13 @@ Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Azure MySQL-Datenba
 
 1. Wählen Sie **Registrieren**.
 
-1. Wählen Sie unter **Quellen registrieren** die Option **Azure Database for MySQL** aus. Wählen Sie **Weiter**.
+1. Wählen Sie unter **Quellen registrieren** die Option **Azure Database for MySQL** aus. Wählen Sie **Weiter**.
 
 :::image type="content" source="media/register-scan-azure-mysql/01-register-azure-mysql-data-source.png" alt-text="Registrieren einer neuen Datenquelle" border="true":::
 
-Gehen Sie auf dem Bildschirm **Quellen registrieren (Azure Database for MySQL)** wie folgt vor:
+Gehen Sie auf dem Bildschirm **Register sources (Azure Database for MySQL)** (Quellen registrieren (Azure Database for MySQL)) wie folgt vor:
 
-1. Geben Sie einen **Namen** für die Datenquelle ein. Dies wird der Anzeigename für diese Datenquelle in Ihrem Katalog.
+1. Geben Sie unter **Name** einen Namen für die Datenquelle ein. Dies wird der Anzeigename für diese Datenquelle in Ihrem Katalog.
 1. Wählen Sie die Option **Aus Azure-Abonnement** und dann im Dropdownfeld **Azure-Abonnement** das entsprechende Abonnement und im Dropdownfeld **Servername** den entsprechenden Server aus.
 1. Wählen Sie **Registrieren** aus, um die Datenquelle zu registrieren.
 
@@ -76,7 +78,7 @@ Gehen Sie auf dem Bildschirm **Quellen registrieren (Azure Database for MySQL)*
 
 ## <a name="scan"></a>Überprüfen
 
-Führen Sie die folgenden Schritte aus, um Azure MySQL-Datenbank zu überprüfen und automatisch Assets zu identifizieren und Ihre Daten zu klassifizieren. Weitere Informationen zum Überprüfen im Allgemeinen finden Sie in unserer [Einführung in Scans und Datenerfassung](concept-scans-and-ingestion.md)
+Führen Sie die folgenden Schritte aus, um Azure Database for MySQL zu überprüfen und automatisch Assets zu identifizieren und Ihre Daten zu klassifizieren. Weitere Informationen zum Scannen im Allgemeinen finden Sie in unserer [Einführung in Scans und Aufnahme](concept-scans-and-ingestion.md).
 
 ### <a name="create-and-run-scan"></a>Scan erstellen und ausführen
 
@@ -112,8 +114,8 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

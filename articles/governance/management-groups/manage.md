@@ -3,12 +3,12 @@ title: 'Verwenden von Verwaltungsgruppen: Azure Governance'
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: cf52f56b59dd1a99bb48807228015d502163fcd7
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 57c4af2d7c3d5d4978d500beaa6e6c8be5d12d4f
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351272"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509395"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -20,6 +20,9 @@ Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonne
 
 > [!IMPORTANT]
 > Azure Resource Manager-Benutzertoken und der Verwaltungsgruppencache gelten für 30 Minuten, bevor sie gezwungen werden, sich zu aktualisieren. Nach der Durchführung einer Aktion, wie dem Verschieben einer Verwaltungsgruppe oder eines Abonnements, kann die Anzeige bis zu 30 Minuten dauern. Um die Updates früher anzuzeigen, müssen Sie Ihr Token aktualisieren, indem Sie den Browser aktualisieren, sich an- und abmelden oder ein neues Token anfordern.
+
+> [!IMPORTANT]
+> AzManagementGroup-bezogene Az PowerShell-Cmdlets geben an, dass die **-GroupId** der Aliasname des **-GroupName**-Parameters ist, sodass wir beide verwenden können, um die Verwaltungsgruppen-ID als String-Wert zur Verfügung zu stellen. 
 
 ## <a name="change-the-name-of-a-management-group"></a>Ändern des Namens einer Verwaltungsgruppe
 
@@ -50,7 +53,7 @@ Der Name einer Verwaltungsgruppe kann über das Portal, mithilfe von PowerShell 
 Verwenden Sie zum Aktualisieren des Anzeigenamens den Befehl **Update-AzManagementGroup**. Wenn Sie beispielsweise den Anzeigenamen einer Verwaltungsgruppe von „Contoso IT“ in „Contoso Group“ ändern möchten, führen Sie den folgenden Befehl aus:
 
 ```azurepowershell-interactive
-Update-AzManagementGroup -GroupName 'ContosoIt' -DisplayName 'Contoso Group'
+Update-AzManagementGroup -GroupId 'ContosoIt' -DisplayName 'Contoso Group'
 ```
 
 ### <a name="change-the-name-in-azure-cli"></a>Ändern des Namens über die Azure CLI
@@ -97,7 +100,7 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 Verwenden Sie zum Löschen von Verwaltungsgruppen in PowerShell den Befehl **Remove-AzManagementGroup**.
 
 ```azurepowershell-interactive
-Remove-AzManagementGroup -GroupName 'Contoso'
+Remove-AzManagementGroup -GroupId 'Contoso'
 ```
 
 ### <a name="delete-in-azure-cli"></a>Löschen über die Azure-Befehlszeilenschnittstelle
@@ -135,13 +138,13 @@ Get-AzManagementGroup
 Verwenden Sie den Parameter „-GroupName“, um die Informationen einer einzelnen Verwaltungsgruppe anzuzeigen.
 
 ```azurepowershell-interactive
-Get-AzManagementGroup -GroupName 'Contoso'
+Get-AzManagementGroup -GroupId 'Contoso'
 ```
 
 Verwenden Sie die Parameter **-Expand** und **-Recurse**, um eine bestimmte Verwaltungsgruppe und die untergeordnete Hierarchie mit allen Ebenen zurückzugeben.
 
 ```azurepowershell-interactive
-PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
+PS C:\> $response = Get-AzManagementGroup -GroupId TestGroupParent -Expand -Recurse
 PS C:\> $response
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
@@ -204,7 +207,9 @@ Wenn Sie eine solche Verschiebung durchführen, müssen Ihnen auf jeder der folg
 - Untergeordnetes Abonnement / Untergeordnete Verwaltungsgruppe
   - `Microsoft.management/managementgroups/write`
   - `Microsoft.management/managementgroups/subscription/write` (nur für Abonnements)
-  - `Microsoft.Authorization/roleassignment/write`
+  - `Microsoft.Authorization/roleAssignments/write`
+  - `Microsoft.Authorization/roleAssignments/delete`
+  - `Microsoft.Management/register/action`
 - Übergeordnete Zielverwaltungsgruppe
   - `Microsoft.management/managementgroups/write`
 - Aktuelle übergeordnete Verwaltungsgruppe
@@ -259,13 +264,13 @@ Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgru
 Verschieben Sie Abonnements in PowerShell mit dem Befehl „New-AzManagementGroupSubscription“.
 
 ```azurepowershell-interactive
-New-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
+New-AzManagementGroupSubscription -GroupId 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
 Verwenden Sie zum Entfernen der Verknüpfung zwischen dem Abonnement und der Verwaltungsgruppe den Befehl „Remove-AzManagementGroupSubscription“.
 
 ```azurepowershell-interactive
-Remove-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
+Remove-AzManagementGroupSubscription -GroupId 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
 ### <a name="move-subscriptions-in-azure-cli"></a>Verschieben von Abonnements in der Azure CLI
@@ -344,8 +349,8 @@ Verwenden Sie die folgende Vorlage, um ein Abonnement in eine Azure Resource Man
 Verwenden Sie den Befehl „Update-AzureRmManagementGroup“ in PowerShell, um eine Verwaltungsgruppe in eine andere Gruppe zu verschieben.
 
 ```azurepowershell-interactive
-$parentGroup = Get-AzManagementGroup -GroupName ContosoIT
-Update-AzManagementGroup -GroupName 'Contoso' -ParentId $parentGroup.id
+$parentGroup = Get-AzManagementGroup -GroupId ContosoIT
+Update-AzManagementGroup -GroupId 'Contoso' -ParentId $parentGroup.id
 ```
 
 ### <a name="move-management-groups-in-azure-cli"></a>Verschieben von Verwaltungsgruppen in der Azure CLI

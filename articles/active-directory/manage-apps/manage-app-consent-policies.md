@@ -13,14 +13,14 @@ ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 67da7a27598e0791b266f0073c0bbf8ad5862614
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 0f15d42bb40adeebb65a73ec8c662006cd7b01b6
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617547"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553057"
 ---
-# <a name="manage-app-consent-policies-in-azure-active-directory"></a>Verwalten von Richtlinien für die App-Zustimmung in Azure Active Directory
+# <a name="manage-app-consent-policies"></a>Verwalten von Richtlinien zur Einwilligung für die App
 
 Mit Azure AD PowerShell können Sie Richtlinien zur Einwilligung für die App anzeigen und verwalten.
 
@@ -123,7 +123,7 @@ Sobald die Richtlinie zur Einwilligung für die App erstellt wurde, können Sie 
    ```
 
 > [!WARNING]
-> Gelöschte Richtlinien zur Einwilligung für die App können nicht wiederhergestellt werden. Wenn Sie eine benutzerdefinierte Richtlinie zur Einwilligung für die App versehentlich löschen, müssen Sie sie erneut erstellen.
+> Gelöschte Richtlinien zur Einwilligung für die App können nicht wiederhergestellt werden. Wenn Sie eine benutzerdefinierte Richtlinie zur Einwilligung für die App versehentlich löschen, müssen Sie diese erneut erstellen.
 
 ---
 

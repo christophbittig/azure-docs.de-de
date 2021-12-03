@@ -9,14 +9,14 @@ ms.topic: reference
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma, bonova, danil
-ms.date: 8/18/2021
+ms.date: 10/21/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1f8d848c87979419b4c2605560c3c371edfa5147
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: dad341c2d4323346619c20da105f7f50f21f67bc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045690"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431026"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -145,14 +145,14 @@ SQL Managed Instance kann nicht auf Dateien zugreifen. Daher können keine Krypt
     SQL Managed Instance unterstützt Azure AD-Datenbankprinzipale mit der Syntax `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Dieses Feature wird auch als Azure AD-Benutzer für eigenständige Datenbanken bezeichnet.
 
 - Windows-Anmeldungen, die mit der Syntax `CREATE LOGIN ... FROM WINDOWS` erstellt wurden, werden nicht unterstützt. Verwenden Sie Azure Active Directory-Anmeldungen und -Benutzer.
-- Der Azure AD-Benutzer, der die Instanz erstellt hat, verfügt über [uneingeschränkte Administratorrechte](../database/logins-create-manage.md).
+- Der Azure AD-Administrator der Instanz verfügt über [uneingeschränkte Administratorrechte](../database/logins-create-manage.md).
 - Azure AD-Benutzer auf Datenbankebene ohne Administratorrechte können mit der Syntax `CREATE USER ... FROM EXTERNAL PROVIDER` erstellt werden. Siehe [CREATE USER ... FROM EXTERNAL PROVIDER](../database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities).
 - Azure AD-Serverprinzipale (Anmeldungen) unterstützen SQL-Features nur innerhalb einer Instanz von SQL Managed Instance. Funktionen, die eine instanzübergreifende Interaktion erfordern – unabhängig davon, ob innerhalb desselben Azure AD-Mandanten oder in verschiedenen Mandanten –, werden für Azure AD-Benutzer nicht unterstützt. Beispiele für solche Funktionen:
 
   - SQL-Transaktionsreplikation
   - Linkserver
 
-- Das Festlegen einer Azure AD-Anmeldung, die einer Azure AD-Gruppe zugeordnet ist, als Besitzer der Datenbank wird nicht unterstützt.
+- Das Festlegen einer Azure AD-Anmeldung, die einer Azure AD-Gruppe zugeordnet ist, als Besitzer der Datenbank wird nicht unterstützt. Ein Mitglied der Azure AD-Gruppe kann ein Datenbankbesitzer sein, auch wenn die Anmeldung nicht in der Datenbank erstellt wurde.
 - Identitätswechsel von Azure AD-Prinzipalen auf Serverebene unter Verwendung anderer Azure AD-Prinzipale werden unterstützt, z.B. in der [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql)-Klausel. Einschränkung für EXECUTE AS:
 
   - EXECUTE AS USER wird für Azure AD-Benutzer nicht unterstützt, wenn der Name sich vom Anmeldenamen unterscheidet. Beispiel: Der Benutzer wird über die Syntax CREATE USER [meinAADBenutzer] FROM LOGIN [john@contoso.com] erstellt, und es wird ein Identitätswechsel über EXEC AS USER = _meinAADBenutzer_ versucht. Wenn Sie einen Benutzer (**USER**) auf der Grundlage eines Azure AD-Serverprinzipals (Anmeldung) erstellen, müssen Sie als Benutzernamen den gleichen Anmeldenamen angeben wie in der Anmeldung (**LOGIN**).
@@ -175,15 +175,13 @@ SQL Managed Instance kann nicht auf Dateien zugreifen. Daher können keine Krypt
 - Wenn es sich bei der Anmeldung um einen SQL-Prinzipal handelt, können nur Anmeldungen, die der Rolle `sysadmin` angehören, den Befehl „create“ verwenden, um Anmeldungen für ein Azure AD-Konto zu erstellen.
 - Die Azure AD-Anmeldung muss Mitglied einer Azure AD-Instanz im selben Verzeichnis sein, das auch für Azure SQL Managed Instance verwendet wird.
 - Azure AD-Serverprinzipale (Anmeldungen) werden ab SQL Server Management Studio 18.0 Preview 5 im Objekt-Explorer angezeigt.
-- Das Überlappen von Azure AD-Serverprinzipalen (Anmeldungen) mit einem Azure AD-Administratorkonto ist zulässig. Azure AD-Serverprinzipale (Anmeldungen) haben beim Auflösen des Prinzipals und beim Anwenden der Berechtigungen auf SQL Managed Instance Vorrang vor Azure AD-Administratoren.
+- Ein Serverprinzipal mit *sysadmin*-Zugriffsebene wird automatisch für das Azure AD-Administratorkonto erstellt, sobald es für eine Instanz aktiviert ist.
 - Während der Authentifizierung wird die folgende Reihenfolge angewendet, um den authentifizierenden Prinzipal aufzulösen:
 
     1. Wenn das Azure AD-Konto direkt dem Azure AD-Serverprinzipal (Anmeldung) zugeordnet ist, der in „sys.server_principals“ als Typ „E“ vorhanden ist, wird der Zugriff gewährt, und die Berechtigungen des Azure AD-Serverprinzipals (Anmeldung) werden angewendet.
-    2. Wenn das Azure AD-Konto Mitglied einer Azure AD-Gruppe ist, die dem Azure AD-Serverprinzipal (Anmeldung) zugeordnet ist – in „sys.server_principals“ als Typ „X“ vorhanden –, wird der Zugriff gewährt, und die Berechtigungen der Azure AD-Gruppenanmeldung werden angewendet.
-    3. Wenn das Azure AD-Konto ein spezieller, im Portal konfigurierter Azure AD-Administrator für SQL Managed Instance ist, der in den Systemsichten von SQL Managed Instance nicht vorhanden ist, werden spezielle feste Berechtigungen des Azure AD-Administrators für SQL Managed Instance angewandt (Legacymodus).
-    4. Wenn das Azure AD-Konto direkt einem Azure AD-Benutzer in einer Datenbank zugeordnet ist, die in „sys.database_principals“ als Typ „E“ vorhanden ist, wird der Zugriff gewährt, und die Berechtigungen des Azure AD-Datenbankbenutzers werden angewendet.
-    5. Wenn das Azure AD-Konto Mitglied einer Azure AD-Gruppe ist, die einem Azure AD-Benutzer in einer Datenbank zugeordnet ist – in „sys.database_principals“ als Typ „X“ vorhanden –, wird der Zugriff gewährt, und die Berechtigungen der Azure AD-Gruppenanmeldung werden angewendet.
-    6. Wenn eine Azure AD-Anmeldung einem Azure AD-Benutzerkonto oder einem Azure AD-Gruppenkonto zugeordnet ist, das zu dem authentifizierenden Benutzer aufgelöst werden kann, werden alle Berechtigungen dieser Azure AD-Anmeldung angewendet.
+    1. Wenn das Azure AD-Konto Mitglied einer Azure AD-Gruppe ist, die dem Azure AD-Serverprinzipal (Anmeldung) zugeordnet ist – in „sys.server_principals“ als Typ „X“ vorhanden –, wird der Zugriff gewährt, und die Berechtigungen der Azure AD-Gruppenanmeldung werden angewendet.
+    1. Wenn das Azure AD-Konto direkt einem Azure AD-Benutzer in einer Datenbank zugeordnet ist, die in „sys.database_principals“ als Typ „E“ vorhanden ist, wird der Zugriff gewährt, und die Berechtigungen des Azure AD-Datenbankbenutzers werden angewendet.
+    1. Wenn das Azure AD-Konto Mitglied einer Azure AD-Gruppe ist, die einem Azure AD-Benutzer in einer Datenbank zugeordnet ist – in „sys.database_principals“ als Typ „X“ vorhanden –, wird der Zugriff gewährt, und die Berechtigungen des Azure AD-Gruppenbenutzers werden angewendet.
 
 ### <a name="service-key-and-service-master-key"></a>Dienstschlüssel und Diensthauptschlüssel
 
@@ -393,7 +391,7 @@ Die [semantische Suche](/sql/relational-databases/search/semantic-search-sql-ser
 
 ### <a name="linked-servers"></a>Verbindungsserver
 
-Verbindungsserver in SQL Managed Instance unterstützen eine begrenzte Anzahl von Zielen:
+[Verbindungsserver](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) in SQL Managed Instance unterstützen eine begrenzte Anzahl von Zielen:
 
 - Unterstützte Ziele sind Instanzen von SQL Managed Instance, SQL-Datenbank, [serverlosen](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) und dedizierten Azure Synapse SQL-Pools und SQL Server. 
 - Verteilte beschreibbare Transaktionen sind nur in verwalteten Instanzen möglich. Weitere Informationen finden Sie unter [Verteilte Transaktionen](../database/elastic-transactions-overview.md). MS DTC wird jedoch nicht unterstützt.
@@ -405,13 +403,13 @@ Vorgänge:
 - `sp_dropserver` wird zum Löschen eines Verbindungsservers unterstützt. Siehe [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - Die `OPENROWSET`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Siehe [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
 - Die `OPENDATASOURCE`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Als Anbieter werden nur die Werte `SQLNCLI`, `SQLNCLI11` und `SQLOLEDB` unterstützt. z. B. `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Siehe [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql).
-- Verbindungsserver können nicht zum Lesen von Dateien (Excel, CSV) aus den Netzwerkfreigaben verwendet werden. Versuchen Sie, [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) und [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) für das Lesen von CSV-Dateien aus Azure Blob Storage oder einen [Verbindungsserver, der auf einen serverlosen SQL-Pool in Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) verweist, zu verwenden. Verfolgen Sie diese Anforderungen im [Feedback zu SQL Managed Instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|.
+- Verbindungsserver können nicht zum Lesen von Dateien (Excel, CSV) aus den Netzwerkfreigaben verwendet werden. Versuchen Sie, [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) und [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) für das Lesen von CSV-Dateien aus Azure Blob Storage oder einen [Verbindungsserver, der auf einen serverlosen SQL-Pool in Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) verweist, zu verwenden. Verfolgen Sie diese Anforderungen im [Feedback zu SQL Managed Instance](https://feedback.azure.com/d365community/idea/db80cf6e-3425-ec11-b6e6-000d3a4f0f84)|.
 
-Verbindungsserver in Azure SQL Managed Instance unterstützen nur die SQL-Authentifizierung. Die AAD-Authentifizierung wird noch nicht unterstützt.
+Die Verbindungsserver auf Azure SQL Managed Instance unterstützen sowohl die SQL-Authentifizierung als auch die [AAD-Authentifizierung](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#linked-servers-with-azure-sql-managed-instance).
 
 ### <a name="polybase"></a>PolyBase
 
-An der Aktivierung der PolyBase-Unterstützung in SQL Managed Instance wird [derzeit gearbeitet](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35698078-enable-polybase-on-sql-managed-instance). Als Problemumgehung können Sie in der Zwischenzeit Verbindungsserver für [einen serverlosen SQL-Pool in Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) oder SQL Server verwenden, um Daten aus Dateien abzufragen, die in Azure Data Lake oder Azure Storage gespeichert sind.   
+An der Aktivierung der PolyBase-Unterstützung in SQL Managed Instance wird [derzeit gearbeitet](https://feedback.azure.com/d365community/idea/ccc44856-3425-ec11-b6e6-000d3a4f0f84). Als Problemumgehung können Sie in der Zwischenzeit Verbindungsserver für [einen serverlosen SQL-Pool in Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) oder SQL Server verwenden, um Daten aus Dateien abzufragen, die in Azure Data Lake oder Azure Storage gespeichert sind.   
 Allgemeine Informationen zu PolyBase finden Sie unter [PolyBase](/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikation

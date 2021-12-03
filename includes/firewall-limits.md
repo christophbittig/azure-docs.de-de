@@ -1,24 +1,26 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 09/17/2021
+ms.date: 10/29/2021
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e0926dc0a211990a64812b00702e84acb0d1f140
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0f5bafd3bfa25691ee531c5e8aa60b4c70937815
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645493"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520933"
 ---
 | Resource | Begrenzung |
 | --- | --- |
 | Datendurchsatz |30 GBit/s|
 |Regelgrenzwerte|10.000 eindeutige Quellen/Ziele in Netzwerk- und Anwendungsregeln|
+|Gesamtgröße von Regeln innerhalb einer einzelnen Regelsammlungsgruppe| 2 MB|
+|Anzahl von Regelsammlungsgruppen in einer Firewallrichtlinie|50|
 |Maximale Anzahl von DNAT-Regeln|298 (für Firewalls, die mit einer einzigen öffentlichen IP-Adresse konfiguriert sind)<br><br> Die DNAT-Einschränkung ist auf die zugrunde liegende Plattform zurückzuführen. Die maximale Anzahl von DNAT-Regeln beträgt 298. Durch zusätzliche öffentliche IP-Adressen wird die Anzahl verfügbarer DNAT-Regeln jedoch verringert. Beispielsweise lassen zwei öffentliche IP-Adressen 297 DNAT-Regeln zu. Wenn das Protokoll einer Regel sowohl für TCP als auch für UDP konfiguriert ist, zählt dies als zwei Regeln.|
 |Mindestgröße für AzureFirewallSubnet |/26|
 |Portbereich in Netzwerk- und Anwendungsregeln|1 bis 65535|

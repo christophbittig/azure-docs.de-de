@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: e87105a05cde1a32a89d3e4fd404ad222245dce0
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 4f210077fd5a2cc4155b9123b33f4638e63c1ee4
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129996511"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026858"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Einführung in Nachweise für Azure Active Directory (Vorschauphase)
 
@@ -121,6 +121,6 @@ Die Rollen in diesem Szenario sind:
 
 Nachdem Sie sich nun mit DIDs und Nachweisen vertraut gemacht haben, können Sie sie selbst ausprobieren. Befolgen Sie hierzu die Anweisungen im Artikel „Erste Schritte“ oder einen unserer anderen Artikel mit weiteren Details zu den Konzepten von Nachweisen.
 
-- [Erste Schritte: Nachweise](get-started-verifiable-credentials.md)
+- [Erste Schritte: Nachweise](verifiable-credentials-configure-tenant.md)
 - [Vorgehensweise beim Anpassen Ihrer Anmeldeinformationen](credential-design.md)
 - [FAQ zu Nachweisen](verifiable-credentials-faq.md)

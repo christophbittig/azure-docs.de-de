@@ -1,15 +1,15 @@
 ---
 title: 'Visual Studio Code: Erstellen von Bicep-Dateien'
 description: Hier erfahren Sie, wie Sie Visual Studio Code und die Bicep-Erweiterung für Bicep-Dateien zum Bereitstellen von Azure-Ressourcen verwenden.
-ms.date: 10/01/2021
+ms.date: 11/09/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 95e7a601da5c8a9976d2341c2964df0f4d9718d0
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: f5950a143510b85ea6de8f7af4e08c7d4b5ed293
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354946"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136233"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Schnellstart: Erstellen von Bicep-Dateien mit Visual Studio Code
 
@@ -74,17 +74,15 @@ Sie können diese Bicep-Datei bereitstellen, aber wir fügen vor der Bereitstell
 
 ## <a name="add-parameter"></a>Hinzufügen eines Parameters
 
-Nun fügen wir einen Parameter hinzu, der für den Speicherkontonamen verwendet werden soll. Fügen Sie über dem virtuellen Netzwerk einige Zeilen hinzu, und geben Sie Folgendes ein:
+Nun fügen Sie einen Parameter für den Speicherkontonamen hinzu. Fügen Sie am Anfang der Datei Folgendes hinzu:
 
 ```bicep
 param storageName
 ```
 
-Wenn Sie nach **storageName** einen Leerzeichen hinzufügen, beachten Sie, dass IntelliSense die Datentypen anbietet, die für den Parameter verfügbar sind.
+Wenn Sie nach **storageName** einen Leerzeichen hinzufügen, beachten Sie, dass IntelliSense die Datentypen anbietet, die für den Parameter verfügbar sind. Wählen Sie **Zeichenfolge** aus.
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/add-param.png" alt-text="Hinzufügen des Zeichenfolgentyps zum Parameter":::
-
-Wählen Sie **Zeichenfolge** aus.
 
 Sie haben den folgenden Parameter:
 
@@ -133,11 +131,11 @@ Wenn Sie nach dem symbolischen Namen ein Leerzeichen hinzufügen, wird eine List
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/select-resource-type.png" alt-text="Auswählen von Speicherkonten als Ressourcentyp":::
 
-Nachdem Sie **Microsoft.Storage/storageAccounts** ausgewählt haben, werden Ihnen die verfügbaren API-Versionen angezeigt. Wählen Sie die neueste Version aus.
+Nachdem Sie **Microsoft.Storage/storageAccounts** ausgewählt haben, werden Ihnen die verfügbaren API-Versionen angezeigt. Wählen Sie **2021-02-01** aus.
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/select-api-version.png" alt-text="Auswählen der API-Version als Ressourcentyp":::
 
-Fügen Sie nach dem einfachen Anführungszeichen für den Ressourcentyp **=** und ein Leerzeichen hinzu. Ihnen werden Optionen zum Hinzufügen von Eigenschaften zu der Ressource angezeigt. Wählen Sie die **erforderlichen Eigenschaften** aus.
+Fügen Sie nach dem einfachen Anführungszeichen für den Ressourcentyp `=` und ein Leerzeichen hinzu. Ihnen werden Optionen zum Hinzufügen von Eigenschaften zu der Ressource angezeigt. Wählen Sie die **erforderlichen Eigenschaften** aus.
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/select-required-properties.png" alt-text="Hinzufügen der erforderlichen Eigenschaften":::
 
@@ -157,7 +155,7 @@ resource exampleStorage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
 
 Sie haben es fast geschafft! Geben Sie einfach Werte für diese Eigenschaften an.
 
-Auch hier hilft Ihnen IntelliSense weiter. Legen Sie `name` auf `storageName` fest, der der Parameter ist, der einen Namen für das Speicherkonto enthält. Legen Sie hierfür `location` auf `eastus` fest. Beim Hinzufügen von einem SKU-Name und einer SKU-Art stellt IntelliSense die gültigen Optionen zur Verfügung.
+Auch hier hilft Ihnen IntelliSense weiter. Legen Sie `name` auf `storageName` fest, der der Parameter ist, der einen Namen für das Speicherkonto enthält. Legen Sie hierfür `location` auf `'eastus'` fest. Beim Hinzufügen von einem SKU-Name und einer SKU-Art stellt IntelliSense die gültigen Optionen zur Verfügung.
 
 Wenn Sie fertig sind, haben Sie:
 
@@ -223,7 +221,7 @@ Um die erstellte Datei bereitzustellen, öffnen Sie die PowerShell oder Azure CL
 ```azurecli
 az group create --name exampleRG --location eastus
 
-az deployment group create --resource-group exampleRG --template-file main.bicep --parameters storageName={your-unique-name}
+az deployment group create --resource-group exampleRG --template-file main.bicep --parameters storageName=uniquename
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -231,15 +229,15 @@ az deployment group create --resource-group exampleRG --template-file main.bicep
 ```azurepowershell
 New-AzResourceGroup -Name exampleRG -Location eastus
 
-New-AzResourceGroupDeployment -ResourceGroupName exampleRG -TemplateFile ./main.bicep -storageName "{your-unique-name}"
+New-AzResourceGroupDeployment -ResourceGroupName exampleRG -TemplateFile ./main.bicep -storageName "uniquename"
 ```
 
 ---
 
 > [!NOTE]
-> Ersetzen Sie **{Ihren-eindeutigen-Namen}** (einschließlich der geschweiften Klammern) durch einen eindeutigen Speicherkontonamen.
+> Ersetzen Sie **uniquename** durch einen eindeutigen Namen für das Speicherkonto. Wenn Sie eine Fehlermeldung erhalten, die angibt, dass das Speicherkonto bereits verwendet wurde, wird der von Ihnen bereitgestellte Speichername bereits verwendet. Geben Sie einen Namen an, der wahrscheinlich eindeutiger ist.
 
-Nach Abschluss der Bereitstellung sollte eine Meldung mit dem Hinweis angezeigt werden, dass die Bereitstellung erfolgreich war. Wenn Sie eine Fehlermeldung erhalten, die angibt, dass das Speicherkonto bereits verwendet wurde, wird der von Ihnen bereitgestellte Speichername bereits verwendet. Geben Sie einen Namen an, der wahrscheinlich eindeutiger ist.
+Nach Abschluss der Bereitstellung sollte eine Meldung mit dem Hinweis angezeigt werden, dass die Bereitstellung erfolgreich war.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 53f09dd042543ebc433e9d9cbbd65db332e8fb6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62dfd9c8635dd3dff3d1fd065ead2293612d6f98
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518210"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251431"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-Beispielskripts
 
@@ -26,7 +26,7 @@ Das [Repository mit den ARR-Beispielen](https://github.com/Azure/azure-remote-re
 > Ferner ist ein [Tool mit grafischer Benutzeroberfläche unter dem Namen ARRT](azure-remote-rendering-asset-tool.md) für die Interaktion mit dem Dienst verfügbar, das eine komfortable Alternative zum Verwenden von Skripts darstellt. ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT-Screenshot")
 
 > [!CAUTION]
-> Zu häufiges Aufrufen von REST-API-Befehlen bewirkt, dass der Server eine Drosselung durchführt und schließlich einen Fehler zurückgibt. Die HTTP-Fehlercode-ID ist in diesem Fall 429 („zu viele Anforderungen“). Als Faustregel sollte eine Verzögerung von **5–10 Sekunden zwischen nachfolgenden Aufrufen** erfolgen.
+> Zu häufiges Aufrufen von REST-API-Befehlen bewirkt, dass der Server eine Drosselung durchführt und schließlich einen Fehler zurückgibt. Die HTTP-Fehlercode-ID lautet in diesem Fall 429 („zu viele Anforderungen“). Als Faustregel sollte eine Verzögerung von **5–10 Sekunden zwischen nachfolgenden Aufrufen** erfolgen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

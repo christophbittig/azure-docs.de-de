@@ -2,15 +2,15 @@
 title: 'Erkennen von Bewegung und Ausgeben von Ereignissen aus dem Edgebereich: Azure'
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie Azure Video Analyzer verwenden, um durch das programmgesteuerte Aufrufen direkter Methoden Bewegung zu erkennen und Ereignisse auszugeben.
 ms.topic: quickstart
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 zone_pivot_groups: video-analyzer-programming-languages
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a13a255c20b9d8d4293b029b61f614512229cbf3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1682dc1bedc5fa6cbc076ad500c30e48ded7d5bf
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030094"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554600"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Schnellstart: Erkennen von Bewegung und Ausgeben von Ereignissen
 

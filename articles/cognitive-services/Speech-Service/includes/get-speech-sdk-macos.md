@@ -4,25 +4,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: eur
-ms.openlocfilehash: 07fa99c6183e98554f20af5c992d0c81734a1b63
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 642fa02cf8f40d7cc6a39a1951499cb7921ed100
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506537"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252274"
 ---
-Für die Entwicklung für macOS sind drei Speech SDKs verfügbar.
+Bei der Entwicklung für macOS sind die folgenden Speech-SDKs verfügbar.
 
-- Das Objective-C Speech SDK ist nativ als CocoaPod-Paket verfügbar.
-- Das .NET Speech SDK kann mit **Xamarin.Mac** verwendet werden, da es .NET Standard 2.0 implementiert.
-- Das Python Speech SDK ist als PyPI-Modul verfügbar.
-
-> [!TIP]
-> Ausführliche Informationen zur Verwendung des Objective-C Speech SDK mit Swift finden Sie unter <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Importieren von Objective-C in Swift </a>.
+- Das Objective-C/Swift Speech SDK ist nativ als CocoaPod-Paket für Mac x64 und ARM-basierte Silikone verfügbar. Einzelheiten zur Verwendung des Objective-C Speech SDK mit Swift finden Sie unter <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Import von Objective-C in Swift </a>.
+- Das .NET Speech SDK ist über das NuGet-Paket verfügbar und kann mit den Anwendungsframeworks **Xamarin.Mac** und **Unity** verwendet werden.
+- Das Python Speech SDK ist als PyPI-Modul für die Python-Versionen 3.7 und höher verfügbar.
+- Das Java Speech SDK ist über das Maven-Repository als JAR-Paket verfügbar.
 
 ### <a name="system-requirements"></a>Systemanforderungen
 
-- macOS Version 10.13 oder höher
+- Eine macOS-Version 10.14 oder höher
 
 # <a name="xcode"></a>[Xcode](#tab/mac-xcode)
 
@@ -39,7 +37,7 @@ Für die Entwicklung für macOS sind drei Speech SDKs verfügbar.
 :::row-end:::
 
 ```
-platform :ios, '9.3'
+platform :osx, 10.14
 use_frameworks!
 
 target 'MyApp' do

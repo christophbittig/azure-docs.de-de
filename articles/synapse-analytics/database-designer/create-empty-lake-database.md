@@ -8,25 +8,25 @@ ms.subservice: database-editor
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 9612fabc94e3425c42bb30e3075a56fb3f789626
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 2cff956fa8507ec1dcbf8e3ab3576d19ecebf526
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131510443"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060810"
 ---
 # <a name="how-to-create-an-empty-lake-database"></a>How-to: Erstellen einer leeren Lake-Datenbank
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe des Datenbank-Designers eine leere [Lake-Datenbank](./concepts-lake-database.md) in Azure Synapse Analytics erstellen. Der Database Designer erlaubt es Ihnen, auf einfache Art und Weise ohne Veschlüsselung eine Datenbank zu erstellen und bereitzustellen. 
+In diesem Artikel erfahren Sie, wie Sie mithilfe des Datenbank-Designers eine leere [Lake-Datenbank](./concepts-lake-database.md) in Azure Synapse Analytics erstellen. Mit dem Datenbank-Designer können Sie ganz einfach eine Datenbank erstellen und bereitstellen, ohne Code schreiben zu müssen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie benötigen zumindest eine Synapse Nutzerrollenzugangsberechtigung, um auf eine Lake-Datenbank-Vorlage aus der Gallerie zugreifen zu können.
+- Zum Untersuchen einer Lake-Datenbankvorlage aus dem Katalog sind mindestens Berechtigungen für die Synapse-Benutzerrolle erforderlich.
 - Synapse Administrator,Synapse Contributor oder Synapse Artifact Publisher berechtigungen sind für den Synapse-Arbeitsbereich erforderlich, um eine Lake-Datenbank zu erstellen.
-- Bei Data Lake benötigt man eine Zugangsberechtigung für den Blob-Storage-Daten-Verteiler.
+- Storage Berechtigungen für Mitwirkende an Blobdaten sind für Data Lake erforderlich.
 
 ## <a name="create-lake-database-from-database-template"></a>Erstellen einer Lake-Datenbank aus Datenbankvorlagen
-1. Auf Ihrem Azure-Synapse-Analytics-Arbeitsbereich **Home** hub wählen Sie links den Tab **Datei** aus. Die Registerkarte **Daten** wird geöffnet, und die Liste der Datenbanken wird angezeigt, die bereits in Ihrem Arbeitsbereich vorhanden sind.
+1. In Ihrem Azure Synapse Analytics Arbeitsbereich **Startseite**-Hub wählen Sie auf der linken Seite die Registerkarte **Daten** aus. Die Registerkarte **Daten** wird geöffnet, und die Liste der Datenbanken wird angezeigt, die bereits in Ihrem Arbeitsbereich vorhanden sind.
 2. Zeigen Sie auf die **+** Schaltfläche, und wählen wählen Sie dann **Lake-Datenbank (Vorschau)** aus.
 ![Screenshot: Erstellen einer leeren Lake-Datenbank](./media/create-empty-lake-database/create-empty-lakedb.png)
 3. Die Registerkarte des Datenbank-Designers wird mit einer leeren Datenbank geöffnet.
@@ -34,41 +34,41 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des Datenbank-Designers eine le
     - **Name:** Geben Sie Ihrer Datenbank einen Namen. Namen können nach der Veröffentlichung der Datenbank nicht mehr bearbeitet werden. Stellen Sie daher sicher, dass der name, den Sie auswählen, richtig ist.
     - **Beschreibung:** Die Angabe einer Beschreibung für Ihre Datenbank ist optional, ermöglicht Benutzern jedoch, den Zweck der Datenbank zu verstehen.
     - **Speicher für die Datenbank:** Dieser Abschnitt enthält die Standardspeicherinformationen für Tabellen in der Datenbank. Dieser Standardwert wird auf jede Tabelle in der Datenbank angewendet, es sei denn, sie wird für die Tabelle selbst überschrieben.
-    - **Verknüpfter Dienst:** Dies ist der standardmäßige verknüpfte Dienst, der zum Speichern Ihrer Daten in Azure Data Lake Storage.  Der voreingestellte verlinkte Service vom Synapse-Arbeitsbereich wird angezeigt, aber Sie können den **verlinkten Service** zu jedem anderen ADLS-Speicherkonto abändern, das Sie wollen. 
+    - **Verknüpfter Dienst:** Dies ist der standardmäßige verknüpfte Dienst, der zum Speichern Ihrer Daten in Azure Data Lake Storage.  Der standardmäßige verknüpfte Dienst, der dem Synapse-Arbeitsbereich zugeordnet ist, wird angezeigt. Sie können den **verknüpften Dienst** jedoch in ein beliebiges ADLS-Speicherkonto ändern. 
     - **Eingabeordner:** Dient zum Festlegen des Standardkontainers und Ordnerpfads innerhalb dieses verknüpften Diensts mithilfe des Dateibrowsers.
     - **Datenformat**: Lake-Datenbanken in Azure Synapse Parquet- und Text mit Trennzeichen als Speicherformate für Daten.
 
 > [!NOTE]
 > Sie können die Standardspeichereinstellungen auf Tabellenbasis jederzeit überschreiben, und die Standardeinstellung bleibt anpassbar. Wenn Sie nicht sicher sind, was Sie auswählen möchten, können Sie dies später noch einmal überprüfen.
  
-5. Um ein Verzeichnis der Datenbank hinzuzufügen, wählen Sie die Schaltfläche **+ Verzeichnis**. 
-    - **Benutzerdefiniert** fügt ein neues Verzeichnis der Arbeitsfläche hinzu.
-    - Wenn Sie ein neues Verzeichnis hinzufügen, öffnet **Aus Vorlage** eine Galerie, aus der Sie eine zu verwendende Datenbankvorlage auswählen können. Für weitere Informationen, siehe [Lake-Datenbank aus Datenbankvorlage erstellen](./create-lake-database-from-lake-database-templates.md).
-    - Mit **Aus Data Lake** können Sie ein Verzeichnisschema importieren, das schon Daten in Ihrem Lake verwendet.
-6. Wählen Sie **Benutzerdefiniert** aus. Ein neues Verzeichnis erscheint auf der Arbeitsfläche mit dem Namen Verzeichnis_1.
-7. Sie können dann Verzeichnis_1 anpassen, indem Sie den Verzeichnisnamen, die Beschreibung, die Speichereinstellungen, Spalten und Bezüge einfügen. Weitere Informationen finden Sie unter [Ändern einer Lake-Datenbank.](./modify-lake-database.md)
-8. Fügen Sie ein neues Verzeichnis von Data Lake hinzu, indem Sie **+ Verzeichnis** und dann **Von Data Lake** auswählen.
-9. Es erscheint das Fenster **Ein externes Verzeichnis aus Data Lake erstellen**. Füllen Sie das Fenster mit den unteren Angaben aus und wählen Sie **Fortfahren** aus.
-    - **Externer Verzeichnisname** ist der Name, den Sie dem Verzeichnis, das Sie gerade erstellen, geben wollen.
-    - **Verlinkter Service** ist der verlinkte Service, der den Speicherort der Azure Data Lake beinhaltet, wo Ihre Datei zu finden ist.
-    - **Eingabedatei oder -verzeichnis** benutzen Sie den Dateibrowser, um zu einer Datei zu navigieren und eine Datei in Ihrem Lake auszuwählen, die Sie als Verzeichnis erstellen möchten.
-![Der Screenshot zeigt Ihnen die Optionen in dem Fenster Erstellen Sie ein externes Verzeichnis aus Data Lake](./media/create-empty-lake-database/create-from-lake.png)
-    - Auf der nächsten Bildschirmanzeige gibt Ihnen Azure Synapse eine Vorschau von der Datei und erkennt das Schema.
+5. Um der Datenbank eine Tabelle hinzuzufügen, wählen Sie die Schaltfläche **+ Tabelle** aus. 
+    - **Benutzerdefiniert** fügt dem Canvas-Panel eine neue Tabelle hinzu.
+    - **Über die Vorlage** wird der Katalog geöffnet, und Sie können eine Datenbankvorlage auswählen, die beim Hinzufügen einer neuen Tabelle verwendet werden soll. Weitere Informationen finden Sie unter [Erstellen einer Lake-Datenbank aus einer Datenbankvorlage](./create-lake-database-from-lake-database-templates.md).
+    - **Mithilfe von Data Lake** können Sie ein Tabellenschema mit daten importieren, die sich bereits in Ihrem Lake befindet.
+6. Wählen Sie **Benutzerdefiniert** aus. Im Zeichenbereich wird eine neue Tabelle mit dem Namen Table_1.
+7. Anschließend können Sie die Table_1, einschließlich Tabellenname, Beschreibung, Speichereinstellungen, Spalten und Beziehungen, anpassen. Weitere Informationen finden Sie unter [Ändern einer Lake-Datenbank.](./modify-lake-database.md)
+8. Fügen Sie eine neue Tabelle aus dem Data Lake hinzu, indem Sie **+ Tabelle** und dann **Aus Data Lake** auswählen.
+9. Der Bereich **Externe Tabelle aus Data Lake erstellen** wird angezeigt. Füllen Sie den Bereich mit den folgenden Details aus, und wählen Sie **Weiter** aus.
+    - **Geben Sie der externen Tabelle den Namen**, den Sie der Tabelle geben möchten, die Sie erstellen.
+    - **Verknüpfter Dienst**: Der verknüpfte Dienst, der den Azure Data Lake-Storage, an dem sich Ihre Datendatei befindet.
+    - **Eingabedatei oder -ordner** verwenden den Dateibrowser, um zu einer Datei in Ihrem Lake zu navigieren und diese auszuwählen, mit der Sie eine Tabelle erstellen möchten.
+![Screenshot: Optionen im Bereich "Externe Tabelle aus Data Lake erstellen"](./media/create-empty-lake-database/create-from-lake.png)
+    - Auf dem nächsten Bildschirm wird Azure Synapse Datei in der Vorschau angezeigt und das Schema erkannt.
     - Auf der Seite **Neue externe Tabelle** können Sie alle Einstellungen im Zusammenhang mit dem Datenformat und **Vorschaudaten** aktualisieren, um zu überprüfen, ob Synapse die Datei richtig identifiziert hat.
     - Wenn Sie mit den Einstellungen zufrieden sind, wählen Sie **Erstellen** aus.
-    - Ein neues Verzeichnis mit dem von Ihnen ausgewählten Namen wird nun der Arbeitsfläche hinzugefügt und der Abschnitt **Speichereinstellungen für das Verzeichnis** zeigt die Datei an, die Sie angegeben haben.
+    - Eine neue Tabelle mit dem von Ihnen ausgewählten Namen wird der Canvas hinzugefügt, und im Abschnitt **Speichereinstellungen für Tabelle** wird die Datei angezeigt, die Sie angegeben haben.
     
-10. Jetzt ist es Zeit die angepasste Database zu veröffentlichen. Wenn Sie Git-Integration auf Ihrem Synapse-Arbeitsbereich verwenden, müssen Sie Ihre Änderungen durchführen und sie in den Kollaborationsbranch einspeisen. [Erfahren Sie mehr über die Quellcodeverwaltung in Azure Synapse](././cicd/../../cicd/source-control.md). Wenn Sie den Azure Live-Modus verwenden, könnten Sie „Veröffentlichen“ auswählen.
-    - Ihre Datenbank wird auf Fehler überprüft, bevor Sie veröffentlicht wird. Alle gefundenen Fehler werden in dem Tab Benachrichtigungen angezeigt, und zwar mit Anweisungen, wie man den Fehler beheben kann.
+10. Nachdem die Datenbank angepasst wurde, ist es an der Zeit, sie zu veröffentlichen. Wenn Sie die Git-Integration mit Ihrem Synapse-Arbeitsbereich verwenden, müssen Sie Ihre Änderungen commiten und im Kollaborationszweig zusammenführen. [Erfahren Sie mehr über die Quellcodeverwaltung in Azure Synapse](././cicd/../../cicd/source-control.md). Wenn Sie den Synapse Live-Modus verwenden, können Sie "Veröffentlichen" auswählen.
+    - Ihre Datenbank wird vor der Veröffentlichung auf Fehler überprüft. Alle gefundenen Fehler werden auf der Registerkarte "Benachrichtigungen" mit Anweisungen zum Beheben des Fehlers angezeigt.
     
-       ![Der Screenshot des Prüfungsfensters zeigt die Validierungsfehler in der Datenbank an.](./media/create-empty-lake-database/validation-error.png)
-    - Beim Veröffentlichen wird Ihre Datenbankschema im Azure Synapse Metastore erstellt. Nach der Veröffentlichung werden die Datenbank und die Verzeichnisse für andere Azure-Dienste sichtbar und die Metadata von Ihrer Datenbank kann in Apps wie Power BI oder Purview fließen.
+       ![Screenshot des Überprüfungsbereichs mit Validierungsfehlern in der Datenbank](./media/create-empty-lake-database/validation-error.png)
+    - Die Veröffentlichung erstellt Ihr Datenbankschema im Azure Synapse Metastore. Nach der Veröffentlichung sind die Datenbank- und Tabellenobjekte für andere Azure-Dienste sichtbar und ermöglichen den Fluss der Metadaten aus Ihrer Datenbank in Apps wie Power BI Purview.
 
 11. Sie haben nun eine leere Lake-Datenbank in Azure Synapse erstellt und ihr mithilfe der Optionen **Benutzerdefiniert** und **Aus Data Lake Tabellen** hinzugefügt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die Möglichkeiten des Database Designers, indem Sie den Link unten verwenden. 
+Fahren Sie fort, die Möglichkeiten des Datenbankdesigners zu erkunden, indem Sie die nachstehenden Links verwenden. 
 - [Ändern einer Lake-Datenbank](./modify-lake-database.md)
-- [Erfahren Sie mehr über die Lake-Datenbanken](./concepts-lake-database.md)
-- [Erstellen Sie eine Lake-Datenbank anhand einer Lake-Datenbank-Vorlage](./create-lake-database-from-lake-database-templates.md)
+- [Weitere Informationen zu Lake-Datenbanken](./concepts-lake-database.md)
+- [Erstellen einer Lake-Datenbank aus einer Lake-Datenbankvorlage](./create-lake-database-from-lake-database-templates.md)

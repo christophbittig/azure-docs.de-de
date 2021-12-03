@@ -2,42 +2,42 @@
 title: Problembehandlung bei einem dedizierten SQL-Pool (früher SQL DW)
 description: Problembehandlung bei einem dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics
 services: synapse-analytics
-author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 11/13/2020
-ms.author: jrasnick
-ms.reviewer: jrasnick
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: azure-synapse
-ms.openlocfilehash: f03b71f956f075a730939f657f42c94bebec5b02
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: df8bb8b6e15a442c932147d61cd61c2b7727e480
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146579"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521090"
 ---
-# <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Problembehandlung bei einem dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics
+# <a name="troubleshoot-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Problembehandlung bei einem dedizierten SQL-Pool (vormals SQL DW) in Azure Synapse Analytics
 
 Dieser Artikel enthält allgemeine Informationen zur Problembehandlung bei einem dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics.
 
-## <a name="connecting"></a>Verbindung
+## <a name="connect"></a>Verbinden
 
 | Problem                                                        | Lösung                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Fehler bei der Anmeldung für den Benutzer 'NT-AUTORITÄT\ANONYME ANMELDUNG'. (Microsoft SQL Server, Fehler: 18456) | Dieser Fehler tritt auf, wenn ein Azure AD-Benutzer versucht, eine Verbindung mit der Masterdatenbank herzustellen, aber nicht über einen Benutzer in der Masterdatenbank verfügt.  Geben Sie zum Beheben dieses Problems entweder den dedizierten SQL-Pool (früher SQL DW) an, mit dem Sie gerade eine Verbindung herstellen möchten, oder fügen Sie den Benutzer zur Masterdatenbank hinzu.  Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md) . |
-| Der Serverprinzipal „MeinBenutzername“ kann unter dem aktuellen Sicherheitskontext nicht auf die Datenbank „Master“ zugreifen. Die Standarddatenbank des Benutzers kann nicht geöffnet werden. Fehler bei der Anmeldung. Fehler bei der Anmeldung für den Benutzer 'MeinBenutzername'. (Microsoft SQL Server, Fehler: 916) | Dieser Fehler tritt auf, wenn ein Azure AD-Benutzer versucht, eine Verbindung mit der Masterdatenbank herzustellen, aber nicht über einen Benutzer in der Masterdatenbank verfügt.  Geben Sie zum Beheben dieses Problems entweder den dedizierten SQL-Pool (früher SQL DW) an, mit dem Sie gerade eine Verbindung herstellen möchten, oder fügen Sie den Benutzer zur Masterdatenbank hinzu.  Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md) . |
-| CTAIP-Fehler                                                  | Dieser Fehler kann auftreten, wenn eine Anmeldung zwar für die SQL-Datenbank-Masterdatenbank erstellt wurde, aber nicht in der spezifischen SQL-Datenbank.  Lesen Sie den [Übersichtsartikel zur Sicherheit](sql-data-warehouse-overview-manage-security.md) , wenn dieser Fehler auftritt.  In diesem Artikel wird erläutert, wie Sie zunächst eine Anmeldung und einen Benutzer für die Masterdatenbank erstellen und anschließend einen Benutzer in der SQL-Datenbank. |
+| Fehler bei der Anmeldung für den Benutzer 'NT-AUTORITÄT\ANONYME ANMELDUNG'. (Microsoft SQL Server, Fehler: 18456) | Dieser Fehler tritt auf, wenn Azure AD-Benutzer*innen versuchen, eine Verbindung mit der `master`-Datenbank herzustellen, aber über keinen Benutzer in der `master`-Datenbank verfügen.  Geben Sie zum Beheben dieses Problems entweder den dedizierten SQL-Pool (vormals SQL DW-Instanz) an, mit dem Sie zum Verbindungszeitpunkt eine Verbindung herstellen möchten, oder fügen Sie den Benutzer bzw. die Benutzerin zur `master`-Datenbank hinzu.  Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md) . |
+| Der Serverprinzipal „MyUserName“ kann im aktuellen Sicherheitskontext nicht auf die `master`-Datenbank zugreifen. Die Standarddatenbank des Benutzers kann nicht geöffnet werden. Fehler bei der Anmeldung. Fehler bei der Anmeldung für den Benutzer 'MeinBenutzername'. (Microsoft SQL Server, Fehler: 916) | Dieser Fehler tritt auf, wenn Azure AD-Benutzer*innen versuchen, eine Verbindung mit der `master`-Datenbank herzustellen, aber über keinen Benutzer in der `master`-Datenbank verfügen.  Geben Sie zum Beheben dieses Problems entweder den dedizierten SQL-Pool (vormals SQL DW-Instanz) an, mit dem Sie zum Verbindungszeitpunkt eine Verbindung herstellen möchten, oder fügen Sie den Benutzer bzw. die Benutzerin zur `master`-Datenbank hinzu.  Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md) . |
+| CTAIP-Fehler                                                  | Dieser Fehler kann auftreten, wenn zwar Anmeldeinformationen für die `master`-Datenbank in SQL-Datenbank erstellt wurden, aber nicht in der spezifischen SQL-Datenbank.  Lesen Sie den [Übersichtsartikel zur Sicherheit](sql-data-warehouse-overview-manage-security.md) , wenn dieser Fehler auftritt.  In diesem Artikel wird erläutert, wie Sie zunächst Anmeldeinformationen und einen Benutzer für die `master`-Datenbank und anschließend einen Benutzer in einer SQL-Datenbank erstellen. |
 | Von der Firewall blockiert                                          | Dedizierte SQL-Pools (früher SQL DW) werden durch Firewalls geschützt, um sicherzustellen, dass nur bekannte IP-Adressen auf eine Datenbank zugreifen können. Firewalls sind standardmäßig sicher. Sie müssen daher eine IP-Adresse oder einen Adressbereich explizit aktivieren, bevor Sie eine Verbindung herstellen können.  Um Ihre Firewall für den Zugriff zu konfigurieren, führen Sie die in den [Bereitstellungsanweisungen](create-data-warehouse-portal.md) beschriebenen Schritte zum [Konfigurieren des Serverfirewallzugriffs für Ihre Client-IP](create-data-warehouse-portal.md) aus. |
-| Verbindung mit Tool oder Treiber kann nicht hergestellt werden                           | Beim dedizierten SQL-Pool (früher SQL DW) empfiehlt sich die Verwendung von [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [SSDT für Visual Studio](sql-data-warehouse-install-visual-studio.md) oder [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) zum Abfragen Ihrer Daten. Weitere Informationen zu Treibern und zum Herstellen einer Verbindung mit Azure Synapse finden Sie in den Artikeln [Treiber für Azure Synapse](sql-data-warehouse-connection-strings.md) und [Herstellen einer Verbindung mit Azure Synapse](sql-data-warehouse-connect-overview.md). |
+| Verbindung mit Tool oder Treiber kann nicht hergestellt werden                           | Bei einem dedizierten SQL-Pool (vormals SQL DW) empfiehlt es sich, zum Abfragen Ihrer Daten das [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [SSDT für Visual Studio](sql-data-warehouse-install-visual-studio.md) oder [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) zu verwenden. Weitere Informationen zu Treibern und zum Herstellen einer Verbindung mit Azure Synapse finden Sie in den Artikeln [Treiber für Azure Synapse](sql-data-warehouse-connection-strings.md) und [Herstellen einer Verbindung mit Azure Synapse](sql-data-warehouse-connect-overview.md). |
 
 ## <a name="tools"></a>Tools
 
 | Problem                                                        | Lösung                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Im Objekt-Explorer von Visual Studio fehlen Azure AD-Benutzer           | Dies ist ein bekanntes Problem.  Sie können die Benutzer in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) anzeigen, um dieses Problem zu umgehen.  Weitere Informationen zur Verwendung von Azure Active Directory beim dedizierten SQL-Pool (früher SQL DW) finden Sie unter [Authentifizierung in Azure Synapse](sql-data-warehouse-authentication.md). |
-| Manuelle, über den Assistenten für die Skripterstellung erstellte Skripts oder über SSMS hergestellte Verbindungen sind langsam, reagieren nicht mehr oder erzeugen Fehler | Vergewissern Sie sich, dass Benutzer in der Masterdatenbank erstellt wurden. Stellen Sie zudem in den Skriptoptionen sicher, dass die Engine-Edition auf „Microsoft Azure Synapse Analytics Edition“ und der Engine-Typ auf „Microsoft Azure SQL-Datenbank“ festgelegt ist. |
+| Manuelle, über den Assistenten für die Skripterstellung erstellte Skripts oder über SSMS hergestellte Verbindungen sind langsam, reagieren nicht mehr oder erzeugen Fehler | Vergewissern Sie sich, dass Benutzer in der `master`-Datenbank erstellt wurden. Stellen Sie zudem in den Skriptoptionen sicher, dass die Engine-Edition auf „Microsoft Azure Synapse Analytics Edition“ und der Engine-Typ auf „Microsoft Azure SQL-Datenbank“ festgelegt ist. |
 | Fehler beim Generieren von Skripts in SSMS                               | Beim Generieren eines Skripts für den dedizierten SQL-Pool (früher SQL DW) tritt ein Fehler auf, wenn die Option „Skript für abhängige Objekte generieren“ auf „True“ festgelegt ist. Um dieses Problem zu umgehen, müssen Benutzer manuell zu **Extras > Optionen > SQL Server-Objekt-Explorer > Skript für abhängige Objekte generieren** navigieren und diese Option auf FALSE festlegen. |
 
 ## <a name="data-ingestion-and-preparation"></a>Datenerfassung und -vorbereitung
@@ -57,7 +57,7 @@ Dieser Artikel enthält allgemeine Informationen zur Problembehandlung bei einem
 | Geringe Parallelität/Abfragen in der Warteschlange                             | Das Verständnis der [Workloadverwaltung](resource-classes-for-workload-management.md) ist wichtig, damit Sie wissen, wie Sie die Speicherbelegung und die Parallelität abwägen sollen. |
 | Implementieren von bewährten Methoden                              | Wenn Sie die Leistung bei Ihren Abfragen verbessern möchten, ist der Artikel [Bewährte Methoden für den dedizierten SQL-Pool (früher SQL DW)](../sql/best-practices-dedicated-sql-pool.md) ein idealer Ausgangspunkt. |
 | Verbessern der Leistung mit der Skalierung                      | Manchmal besteht der Weg zur Leistungsverbesserung einfach darin, mehr Computeleistung für Ihre Abfragen zur Verfügung zu stellen, indem Sie [Ihren dedizierten SQL-Pool (früher SQL DW) skalieren](sql-data-warehouse-manage-compute-overview.md). |
-| Schlechte Leistung aufgrund von schlechter Indexqualität     | Es kann vorkommen, dass sich Abfragen aufgrund der [schlechten Qualität des Columnstore-Index](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality) verlangsamen.  Weitere Informationen finden Sie unter [Rebuild indexes to improve segment quality](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)(Neuerstellen von Indizes zum Verbessern der Segmentqualität). |
+| Schlechte Leistung aufgrund von schlechter Indexqualität     | Es kann vorkommen, dass sich Abfragen aufgrund der [schlechten Qualität des Columnstore-Index](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality) verlangsamen.  Weitere Informationen finden Sie unter [Rebuild indexes to improve segment quality](sql-data-warehouse-tables-index.md#rebuild-indexes-to-improve-segment-quality)(Neuerstellen von Indizes zum Verbessern der Segmentqualität). |
 
 ## <a name="system-management"></a>Systemverwaltung
 
@@ -76,16 +76,15 @@ Dieser Artikel enthält allgemeine Informationen zur Problembehandlung bei einem
 | Nicht unterstützte SQL-Datenbank-Datentypen   | Siehe [Nicht unterstützte Datentypen](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types).        |
 | Einschränkungen für gespeicherte Prozeduren          | In „Gespeicherte Prozeduren in SQL Data Warehouse“ werden unter [Einschränkungen](sql-data-warehouse-develop-stored-procedures.md#limitations) einige Einschränkungen für gespeicherte Prozeduren beschrieben. |
 | UDFs unterstützen keine SELECT-Anweisungen | Dies ist eine aktuelle Beschränkung unserer benutzerdefinierten Funktionen (User-Defined Functions, UDFs).  Informationen zur unterstützten Syntax finden Sie unter [CREATE FUNCTION](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . |
-| „sp_rename“ (Vorschau) für Spalten funktioniert nicht für Schemas außerhalb von *dbo*. | Dies ist eine aktuelle Einschränkung im Zusammenhang mit [„sp_rename“ (Vorschau) für Spalten](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) von Synapse.  Spalten in Objekten, die nicht dem Schema *dbo* angehören, können über „CTAS“ in eine neue Tabelle umbenannt werden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Für weitere Hilfe bei der Suche nach einer Lösung für Ihr Problem, stehen Ihnen hier weitere Ressourcen zur Verfügung.
 
-* [Blogs](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
-* [Funktionsanfragen](https://feedback.azure.com/forums/307516-sql-data-warehouse)
-* [Videos](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
-* [Erstellen eines Supporttickets](sql-data-warehouse-get-started-create-support-ticket.md)
-* [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-synapse-analytics.html)
-* [Stack Overflow-Forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
-* [Twitter](https://twitter.com/hashtag/SQLDW)
+ - [Blogs](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+ - [Funktionsanfragen](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+ - [Videos](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+ - [Erstellen eines Supporttickets](sql-data-warehouse-get-started-create-support-ticket.md)
+ - [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-synapse-analytics.html)
+ - [Stack Overflow-Forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
+ - [Twitter](https://twitter.com/hashtag/SQLDW)

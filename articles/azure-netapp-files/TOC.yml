@@ -67,6 +67,12 @@
               href: azure-netapp-files-smb-performance.md
             - name: Bewährte Methoden für SKUs für virtuelle Azure-Computer
               href: performance-virtual-machine-sku.md
+    - name: Anwendungsvolumegruppen
+      items:
+        - name: Grundlegendes zur Anwendungsvolumegruppe für SAP HANA
+          href: application-volume-group-introduction.md
+        - name: Anforderungen und Überlegungen zur Anwendungsvolumegruppe für SAP HANA
+          href: application-volume-group-considerations.md
     - name: Schutz von Daten
       items:
         - name: Funktionsweise von Azure NetApp Files-Momentaufnahmen
@@ -115,6 +121,8 @@
           href: faq-application-resilience.md
         - name: Häufig gestellte Fragen zu Datenmigration und -schutz
           href: faq-data-migration-protection.md
+        - name: Häufig gestellte Fragen zu Anwendungsvolumegruppen
+          href: faq-application-volume-group.md
         - name: Häufig gestellte Fragen zur Azure NetApp Files-Sicherung
           href: faq-backup.md
         - name: Häufig gestellte Fragen zur Sicherheit
@@ -131,6 +139,8 @@
           href: azure-netapp-files-create-netapp-account.md
         - name: Delegieren eines Subnetzes an Azure NetApp Files
           href: azure-netapp-files-delegate-subnet.md
+        - name: Anfordern des Zugriffs auf eine Region
+          href: request-region-access.md
     - name: Verwalten von Active Directory
       items:
         - name: "Erstellen und Verwalten von Active\_Directory-Verbindungen"
@@ -151,7 +161,7 @@
           items:
             - name: Erstellen eines NFS-Volumes
               href: azure-netapp-files-create-volumes.md
-            - name: Konfigurieren der NFSv4.1-Standarddomäne
+            - name: Konfigurieren der NFSv4.1-Domäne
               href: azure-netapp-files-configure-nfsv41-domain.md
             - name: Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung
               href: configure-kerberos-encryption.md
@@ -189,6 +199,20 @@
               href: azure-netapp-files-resize-capacity-pools-or-volumes.md
             - name: Dynamisches Ändern der Dienstebene eines Volumes
               href: dynamic-change-volume-service-level.md
+    - name: Verwalten von Anwendungsvolumengruppen
+      items:
+        - name: Bereitstellen des ersten SAP HANA Hosts
+          href: application-volume-group-deploy-first-host.md
+        - name: Hinzufügen von Hosts zu einem System mit mehreren SAP HANA Host
+          href: application-volume-group-add-hosts.md
+        - name: Hinzufügen von Volumes für SAP HANA System als sekundäre Datenbank in HSR
+          href: application-volume-group-add-volume-secondary.md
+        - name: Hinzufügen von Volumes für ein SAP HANA-System als Dr-System
+          href: application-volume-group-disaster-recovery.md
+        - name: Verwalten von Volumes in einer Anwendungsvolumegruppe
+          href: application-volume-group-manage-volumes.md
+        - name: Löschen einer Anwendungsvolumengruppe
+          href: application-volume-group-delete.md
     - name: Verwalten von Datenschutz
       items:
         - name: Verwalten von Volumemomentaufnahmen
@@ -249,6 +273,8 @@
           href: troubleshoot-capacity-pools.md
         - name: Behandeln von Volumefehlern
           href: troubleshoot-volumes.md
+        - name: Beheben von Fehlern bei Anwendungsvolumengruppen
+          href: troubleshoot-application-volume-groups.md
         - name: Behandeln von Fehlern bei Momentaufnahmerichtlinien
           href: troubleshoot-snapshot-policies.md
         - name: Behandeln von Fehlern bei der regionsübergreifenden Replikation
@@ -306,4 +332,4 @@
     - name: Vergleich von Azure Files und Azure NetApp Files
       href: ../storage/files/storage-files-netapp-comparison.md
     - name: Azure NetApp Files auf Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/25532/azure-netapp-files.html'
+      href: /answers/topics/25532/azure-netapp-files.html

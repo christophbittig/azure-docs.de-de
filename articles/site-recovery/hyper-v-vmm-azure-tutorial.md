@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie die Notfallwiederherstellung für lokale Hype
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97cd0a103dab9b46205355da223bd65259f93fee
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89442819"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055886"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds nach Azure
 
@@ -91,6 +91,30 @@ Konfigurieren Sie im Setup-Assistenten für den Microsoft Azure Recovery Service
 1. **Installation**: Wählen Sie nach Abschluss der Installation **Schließen** aus, um den Assistenten zu beenden.
 
    ![Agent installieren](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
+
+### <a name="install-the-recovery-services-agent-on-windows-core-hyper-v-hosts"></a>Installieren des Recovery Services-Agents auf den Windows Core-Hyper-V-Hosts
+
+Installieren Sie den Agent auf jedem Windows Core-Hyper-V-Host, auf dem sich virtuelle Computer befinden, die Sie replizieren möchten.
+
+1. Erstellen Sie auf dem Windows Core-Hyper-V-Hosts ein Verzeichnis, indem Sie den folgenden Befehl ausführen:
+
+   ```powershell
+   New-Item -Path C:\ASR -ItemType Directory
+   ```
+
+2. Laden Sie das Installationsprogramm für den Microsoft Azure Recovery Services-Agent herunter.
+
+   ```powershell
+   Invoke-WebRequest -Uri <put the URI here> -OutFile .\ASR\MARSsoftware.exe
+   ```
+   
+3. Führen Sie das Installationsprogramm mithilfe des folgenden Befehls aus:
+
+   ```powershell
+   .\MARSsoftware.exe
+   ```
+
+4. Sobald die Installation des Microsoft Azure Recovery Services-Agents abgeschlossen ist, können Sie die Konsole des Assistenten schließen.
 
 ## <a name="set-up-the-target-environment"></a>Einrichten der Zielumgebung
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 05/07/2021
+ms.date: 11/15/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: b590468b0e1f036a8b60143ff23e4a54b01802a8
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: f9e296ec4c1b99f6f2a8d23103c8b04fcd16a814
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714492"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552658"
 ---
 ::: zone target="docs"
 
@@ -48,9 +48,13 @@ Stellen Sie zunächst sicher, dass Sie die Schritte unter [Tutorial: Kopieren vo
     - Es empfiehlt sich, die Datenträger sorgfältig in Luftpolsterfolie zu verpacken.
     - Achten Sie auf einen festen Sitz der Teile im Karton, um ein Verrutschen innerhalb der Verpackung zu vermeiden.
 
-Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben. Für USA/Kanada, Australien, die Europäische Union (EU) und asiatische Länder/Regionen gelten jeweils andere Anweisungen.
+Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben. In vielen Ländern/Regionen können Sie den von [Microsoft verwalteten Versand](#microsoft-managed-shipping) oder den [selbstverwalteten Versand](#self-managed-shipping) verwenden.
 
-### <a name="us-or-canada"></a>[USA oder Kanada](#tab/in-us-or-canada)
+### <a name="microsoft-managed-shipping"></a>Von Microsoft verwalteter Versand
+
+Befolgen Sie die Richtlinien für die Region, aus der Sie versenden, wenn Sie den von Microsoft verwalteten Versand verwenden.
+
+### <a name="us--canada"></a>[USA und Kanada](#tab/in-us-canada)
 
 Wenn Sie das Gerät in den USA oder in Kanada zurückgeben möchten, gehen Sie wie folgt vor:
 
@@ -66,8 +70,7 @@ Wenn Sie das Gerät in den USA oder in Kanada zurückgeben möchten, gehen Sie w
     - Wenn Sie keine Nachverfolgungsnummer angeben, fordert UPS eine Zusatzgebühr, die Sie bei der Abholung entrichten müssen.
     - Wenn Sie keine Abholung planen können oder möchten, können Sie den Data Box-Datenträger auch an der nächstgelegenen Versandstelle abgeben.
 
-
-### <a name="europe-or-uk"></a>[Europa oder Vereinigtes Königreich](#tab/in-europe-or-uk)
+### <a name="eu--uk"></a>[EU und UK](#tab/in-europe-uk)
 
 Wenn Sie das Gerät in Europa oder im Vereinigten Königreich zurückgeben möchten, gehen Sie wie folgt vor:
 
@@ -137,7 +140,7 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
 2. Senden Sie zum Anfordern der Abholung eine E-Mail an den SingPost-Kundendienst, indem Sie die folgende Vorlage mit der Nachverfolgungsnummer verwenden. (Sie finden die Nachverfolgungsnummer auf dem Rücksendeetikett, das im Lieferumfang des zugestellten Pakets enthalten ist.)
 
     ```
-    To: kadcustcare@singpost.com
+    To: g-corpsgcs@singpost.com
     Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
@@ -155,37 +158,6 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
    Sollten Probleme auftreten, senden Sie eine E-Mail an Data Box Operations Asia ([adbo@microsoft.com](mailto:adbo@microsoft.com)). Geben Sie in der Betreffzeile den Auftragsnamen und das aufgetretene Problem an.
 
 3. Übergeben Sie die Box an den Kurier.
-
-### <a name="south-africa"></a>[Südafrika](#tab/in-sa)
-
-Wenn Sie das Gerät in Südafrika zurückgeben möchten, gehen Sie wie folgt vor:
-
-1. Bringen Sie das mitgelieferte Adressetikett am Paket an. Dieses Etikett enthält die Nachverfolgungsnummer. Wenn das Adressetikett fehlt, können Sie ein neues herunterladen unter **Übersicht > Adressetikett herunterladen**.
-
-2. Verschließen Sie das Versandpaket, und stellen Sie sicher, dass das Etikett für den Rückversand sichtbar ist.
-
-3. Fordern Sie beim Azure Data Box Operations-Team einen Rückgabecode an. Ein Rückgabecode ist für den Rückversand des Pakets an das Rechenzentrum erforderlich. Senden Sie eine E-Mail an [adbops@microsoft.com](mailto:adbops@microsoft.com). Notieren Sie diesen Code gut sichtbar auf dem Adressetikett neben der Rücksendeadresse.
-
-4. Vereinbaren Sie eine Abholung mit DHL mit einer der folgenden Methoden:
-   * Reservieren Sie online bei DHL Express für Südafrika unter [**Schedule a Pickup**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference) (Buchen Sie eine Abholung) einen Abholtermin.
-   * Senden Sie eine E-Mail an [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com), und verwenden Sie dabei die folgende Vorlage:
-
-     ```output
-     To: Priority.Support@dhl.com
-     Subject: Pickup request for Microsoft Azure
-     Body: Need pick up for the below shipment
-       *  DHL tracking number: (reference number/waybill number)
-       *  Requested pickup date: yyyy/mm/dd;time:HH MM
-       *  Shipper contact: (company name)
-       *  Contact person: 
-       *  Phone number: 
-       *  Full physical address: 
-       *  Item to be collected: Azure Dt
-     ```
-
-    * Alternativ können Sie das Paket auch in einem DHL-Paketshop in Ihrer Nähe abgeben.
-
-5. Sollten Probleme auftreten, senden Sie eine E-Mail mit Einzelheiten zu den Problemen an [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Geben Sie im Betreff die Frachtbriefnummer an. Sie können auch die Nummer +27(0)119213902 anrufen.
 
 ### <a name="china"></a>[China](#tab/in-china)
 
@@ -227,9 +199,43 @@ Wenn Sie das Gerät in China zurückgeben möchten, gehen Sie wie folgt vor:
 |Telefon:      | 400.889.6066 Durchw. 3603 |
 |E-Mail:     | [739951@fedex.com](mailto:739951@fedex.com) |
 
-### <a name="self-managed"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged)
 
-Wenn Sie Data Box Disk in US-Regierungsbehörden, Japan, Singapur, Südkorea, im Vereinigten Königreich, in Westeuropa, Australien, Südafrika, Indien oder Brasilien verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor:
+### <a name="s-africa"></a>[S Afrika](#tab/in-sa)
+
+Wenn Sie das Gerät in Südafrika zurückgeben möchten, gehen Sie wie folgt vor: 
+
+1. Bringen Sie das mitgelieferte Adressetikett am Paket an. Dieses Etikett enthält die Nachverfolgungsnummer. Wenn das Adressetikett fehlt, können Sie ein neues herunterladen unter **Übersicht > Adressetikett herunterladen**.
+
+2. Verschließen Sie das Versandpaket, und stellen Sie sicher, dass das Etikett für den Rückversand sichtbar ist.
+
+3. Fordern Sie beim Azure Data Box Operations-Team einen Rückgabecode an. Ein Rückgabecode ist für den Rückversand des Pakets an das Rechenzentrum erforderlich. Senden Sie eine E-Mail an [adbops@microsoft.com](mailto:adbops@microsoft.com). Notieren Sie diesen Code gut sichtbar auf dem Adressetikett neben der Rücksendeadresse.
+
+4. Vereinbaren Sie eine Abholung mit DHL mit einer der folgenden Methoden:
+   * Reservieren Sie online bei DHL Express für Südafrika unter [**Schedule a Pickup**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference) (Buchen Sie eine Abholung) einen Abholtermin.
+   * Senden Sie eine E-Mail an [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com), und verwenden Sie dabei die folgende Vorlage:
+
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
+
+    * Alternativ können Sie das Paket auch in einem DHL-Paketshop in Ihrer Nähe abgeben.
+
+5. Sollten Probleme auftreten, senden Sie eine E-Mail mit Einzelheiten zu den Problemen an [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Geben Sie im Betreff die Frachtbriefnummer an. Sie können auch die Nummer +27(0)119213902 anrufen.
+
+---
+
+### <a name="self-managed-shipping"></a>Selbst verwalteter Versand
+
+Wenn Sie Data Box Disk in US-Regierungsbehörden, Japan, Singapur, Südkorea, im Vereinigten Königreich, in Westeuropa, Australien, Südafrika, Indien oder Brasilien verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor: Ausführliche Schritte finden Sie unter [Verwenden des selbst verwalteten Versands für Azure Data Box im Azure-Portal](data-box-disk-portal-customer-managed-shipping.md).
 
 1. Navigieren Sie im Azure-Portal zum Blatt **Übersicht** für Ihre Bestellung. Durchlaufen Sie die Schritte, die angezeigt werden, wenn Sie **Abholung planen** auswählen. Es sollte ein Autorisierungscode angezeigt werden, der bei der Abgabe der Bestellung verwendet wird.
 

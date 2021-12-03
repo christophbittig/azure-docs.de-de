@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma, emlisa
 ms.date: 09/24/2021
-ms.openlocfilehash: 0dc5dbec29cf8c1ac6a91777f0c67f0645e7a87d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 251a00fb5b64645cad5ec8bbdbed17fa229e61e4
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057301"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554919"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hochverfügbarkeit für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,6 +34,9 @@ Es gibt zwei Architekturmodelle für Hochverfügbarkeit:
 - Das **Premium-Verfügbarkeitsmodell**, das auf einem Cluster von Datenbank-Engine-Prozessen basiert. Dieses beruht auf dem Umstand, dass stets ein Quorum von verfügbaren Datenbank-Engine-Knoten vorhanden ist. Diese Architektur ist auf unternehmenskritische Anwendungen mit hoher E/A-Leistung und einer hohen Transaktionsrate ausgelegt; es garantiert während Wartungsaktivitäten minimale Leistungseinbußen für Ihre Workload.
 
 SQL-Datenbank und SQL Managed Instance werden auf der aktuellen stabilen Version der SQL Server-Datenbank-Engine und des Windows-Betriebssystems ausgeführt. Die meisten Benutzer bemerken nicht, dass laufend Upgrades ausgeführt werden.
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="basic-standard-and-general-purpose-service-tier-locally-redundant-availability"></a>Lokal redundante Verfügbarkeit der Dienstebenen „Basic“, „Standard“ und „Universell“
 

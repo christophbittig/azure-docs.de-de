@@ -2,14 +2,17 @@
 title: Übersicht über private Endpunkte
 description: Erfahren Sie mehr über die Verwendung privater Endpunkte für Azure Backup und die Szenarien, in denen private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 ms.topic: conceptual
-ms.date: 09/28/2021
+ms.date: 11/09/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3070cb72b6e5949b94972f9dad54d4e57e5bf591
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: c9ff432c1de5ebdb44ae8f5fa0d4889026a32252
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154962"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136469"
 ---
 # <a name="overview-and-concepts-of-private-endpoints-for-azure-backup"></a>Übersicht und Konzepte privater Endpunkte für Azure Backup
 
@@ -73,9 +76,9 @@ Die in beiden Szenarien betroffenen Speicher-FQDNs sind identisch. Bei einem Rec
 >Die privaten Endpunkte für Blobs und Warteschlangen folgen einem Standardbenennungsmuster, sie beginnen mit  **\<the name of the private endpoint>_ecs** oder **\<the name of the private endpoint>_prot** und haben das Suffix  **\_blob**  bzw.  **\_queue** .
 
 Die Endpunkte für den Azure Backup-Dienst werden für Tresore mit aktivierten privaten Endpunkten geändert.  
-Wenn Sie einen DNS-Proxyserver mit Proxyservern und Firewalls von Drittanbietern konfiguriert haben, müssen die oben genannten Domänennamen zugelassen und an ein benutzerdefiniertes DNS (mit Zuordnungen privater IP-Adressen) oder an 169.63.129.16 mit einer virtuellen Netzwerkverbindung zu einer privaten DNS-Zone mit diesen Zuordnungen privater IP-Adressen umgeleitet werden.
+Wenn Sie einen DNS-Proxyserver mit Proxyservern und Firewalls von Drittanbietern konfiguriert haben, müssen die oben genannten Domänennamen zugelassen und an einen benutzerdefinierten DNS (mit Zuordnungen privater IP-Adressen) oder an 168.63.129.16 mit einer virtuellen Netzwerkverbindung zu einer privaten DNS-Zone mit diesen privaten IP-Adressenzuordnungen umgeleitet werden.
 
-Das folgende Beispiel zeigt, wie die Azure-Firewall als DNS-Proxy verwendet wird, um die Domänennamenabfragen für Recovery Services-Tresore, Blobs, Warteschlangen und AAD an 169.63.129.16 umzuleiten.
+Das folgende Beispiel zeigt, wie die Azure-Firewall als DNS-Proxy verwendet wird, um die Domänennamenabfragen für Recovery Services Vault, Blob, Queues und AAD an 168.63.129.16 umzuleiten.
 
 :::image type="content" source="./media/private-endpoints-overview/azure-firewall-used-as-dns-proxy-inline.png" alt-text="Diagramm, das die Verwendung von Azure Firewall als DNS-Proxy zum Umleiten der Domänennamenabfragen zeigt." lightbox="./media/private-endpoints-overview/azure-firewall-used-as-dns-proxy-expanded.png":::
 

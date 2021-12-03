@@ -6,12 +6,12 @@ ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: eaeefcfc48492686abc88215e80bc6d74a836f4f
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: e28d5c9358077e072c31026bdc164a9b2037a40a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545037"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492472"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN – Häufig gestellte Fragen
 
@@ -209,7 +209,7 @@ Nein. Für Virtual WAN ist keine ExpressRoute-Verbindung mit jedem Standort erfo
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Gibt es bei Verwendung von Azure Virtual WAN einen Grenzwert für den Netzwerkdurchsatz oder die Anzahl der Verbindungen?
 
-Der Netzwerkdurchsatz wird in einem virtuellen WAN-Hub pro Dienst angegeben. Sie können beliebig viele virtuelle WANs verwenden, aber jedes Virtual WAN gestattet nur einen Hub pro Region. In jedem Hub beträgt der aggregierte VPN-Durchsatz bis zu 20 GBit/s, der aggregierte ExpressRoute-Durchsatz bis zu 20 GBit/s und der aggregierte Benutzer-VPN/Point-to-Site-VPN-Durchsatz bis zu 20 GBit/s. Der Router im virtuellen Hub unterstützt bis zu 50 GBit/s für VNET-zu-VNET-Datenverkehr und geht übergreifend für alle mit einem einzelnen virtuellen Hub verbundenen VNETs von einer Gesamtworkload von 2.000 virtuellen Computern aus.
+Der Netzwerkdurchsatz wird in einem virtuellen WAN-Hub pro Dienst angegeben. Sie können beliebig viele virtuelle WANs verwenden, aber jedes Virtual WAN gestattet nur einen Hub pro Region. In jedem Hub beträgt der aggregierte VPN-Durchsatz bis zu 20 GBit/s, der aggregierte ExpressRoute-Durchsatz bis zu 20 GBit/s und der aggregierte Benutzer-VPN/Point-to-Site-VPN-Durchsatz bis zu 20 GBit/s. Der Router im virtuellen Hub unterstützt bis zu 50 GBit/s für VNET-zu-VNET-Datenverkehr und geht übergreifend für alle mit einem einzelnen virtuellen Hub verbundenen VNETs von einer Gesamtworkload von 2.000 virtuellen Computern aus. Dieser [Grenzwert](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits) kann erhöht werden, indem eine Online-Kundensupportanfrage gestellt wird. Informationen zu den Kostenauswirkungen finden Sie unter Kosten für *Routinginfrastruktureinheiten* auf der Seite [Preise für Azure Virtual WAN](https://azure.microsoft.com/pricing/details/virtual-wan/). 
 
 VPN-Standorte stellen die Konnektivität mit einem Hub über Verbindungen her. Virtual WAN unterstützt bis zu 1.000 Verbindungen oder 2.000 IPsec-Tunnel pro virtuellem Hub. Wenn Remotebenutzer eine Verbindung mit einem virtuellen Hub herstellen, verbinden sie sich mit dem P2S-VPN-Gateway, das je nach der für das P2S-VPN-Gateway im virtuellen Hub ausgewählten Skalierungseinheit (Bandbreite) bis zu 10.000 Benutzer unterstützt.
 
@@ -246,6 +246,10 @@ Ja. Eine Internetverbindung und ein physisches Gerät, das IPsec unterstützt �
 Ein virtueller Hub kann eine erlernte Standardroute an eine Verbindung vom Typ „Virtuelles Netzwerk“, „Site-to-Site-VPN“ oder „ExpressRoute“ weitergeben, wenn das Flag für die Verbindung auf „Aktiviert“ festgelegt ist. Dieses Flag ist sichtbar, wenn der Benutzer eine VNET-Verbindung, eine VPN-Verbindung oder eine ExpressRoute-Verbindung bearbeitet. Das Flag ist standardmäßig deaktiviert, wenn für eine Site oder eine ExpressRoute-Leitung eine Verbindung mit einem Hub besteht. Es ist standardmäßig aktiviert, wenn eine VNET-Verbindung hinzugefügt wird, um ein VNET mit einem virtuellen Hub zu verbinden.
 
 Der Ursprung der Standardroute liegt nicht auf dem Virtual WAN-Hub. Sie wird weitergegeben, wenn sie dem Virtual WAN-Hub bereits bekannt ist, weil darin eine Firewall bereitgestellt wurde, oder wenn für eine andere verbundene Site die Tunnelerzwingung aktiviert ist. Eine Standardroute wird nicht zwischen Hubs weitergegeben.
+
+### <a name="is-it-possible-to-create-multiple-virtual-wan-hubs-in-the-same-region"></a>Ist es möglich, mehrere Virtual WAN-Hubs in derselben Region zu erstellen?
+Ja. Kunden können jetzt mehrere Hubs in derselben Region für dasselbe Azure Virtual WAN erstellen. 
+
 
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Wie wählt der virtuelle Hub in einer Virtual WAN-Instanz den besten Pfad für eine Route von mehreren Hubs aus?
 
@@ -321,7 +325,7 @@ Ja. Eine Liste mit Lösungen von Anbietern verwalteter Dienste, die über Azure 
 
 Azure Route Server verfügt über einen BGP-Peeringdienst (Border Gateway Protocol), der von virtuellen Netzwerkgeräten (Network Virtual Appliance, NVA) genutzt werden kann, um Routen vom Routenserver in einem DIY-Hub-VNET zu erlernen. Beim Virtual WAN-Routing können verschiedene Funktionen genutzt werden, z. B. Transitrouting von VNET zu VNET, benutzerdefiniertes Routing, Zuordnung und Verteilung von benutzerdefinierten Routen und ein vollständig vermaschter Hubdienst ohne Benutzereingriff sowie Konnektivitätsdienste über ExpressRoute, Site-VPN, P2S-VPN für Remotebenutzer bzw. umfangreiche Anwendungen und die Funktionen eines geschützten Hubs (Azure Firewall). Wenn Sie ein BGP-Peering zwischen Ihrem virtuellen Netzwerkgerät und Azure Route Server einrichten, können Sie IP-Adressen für Ihr virtuelles Netzwerk über Ihr virtuelles Netzwerkgerät ankündigen. Für alle erweiterten Routingfunktionen, z. B. Transitrouting, benutzerdefiniertes Routing usw., können Sie das Virtual WAN-Routing nutzen.
 
-### <a name="if-i-am-using-a-third-party-security-provider-zscalar-iboss-or-checkpoint-to-secure-my-internet-traffic-why-dont-i-see-the-vpn-site-associated-to-the-third-party-security-provider-in-the-azure-portal"></a>Wenn ich einen Drittanbieter für die Sicherheit (ZScalar, iBoss oder Checkpoint) verwende, um meinen Datenverkehr zu sichern, warum wird dann im Azure-Portal nicht die VPN-Site angezeigt, die dem Drittanbieter für die Sicherheit zugeordnet ist?
+### <a name="if-i-am-using-a-third-party-security-provider-zscaler-iboss-or-checkpoint-to-secure-my-internet-traffic-why-dont-i-see-the-vpn-site-associated-to-the-third-party-security-provider-in-the-azure-portal"></a>Wenn ich einen Drittanbieter für Sicherheit (Zscaler, iBoss oder Checkpoint) verwende, um meinen Datenverkehr zu sichern, warum wird dann im Azure-Portal nicht die VPN-Site angezeigt, die dem Drittanbieter für Sicherheit zugeordnet ist?
 
 Wenn Sie sich für die Bereitstellung eines Sicherheitspartneranbieters entscheiden, um den Internetzugriff Ihrer Benutzer zu schützen, erstellt der Drittanbieter für die Sicherheit in Ihrem Namen einen VPN-Standort. Da der Drittanbieter für die Sicherheit automatisch vom Anbieter erstellt wird und kein vom Benutzer erstellter VPN-Standort ist, wird dieser VPN-Standort nicht im Azure-Portal angezeigt.
 

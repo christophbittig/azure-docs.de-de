@@ -9,14 +9,15 @@ ms.reviewer: jrasnick, garye
 ms.date: 07/01/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: ed86453b76d7f7afa0ba7fcccd2e4d7519621fb8
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 505bef004acb688a1fdb1ccc87d261b1a12c6009
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362070"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318292"
 ---
-# <a name="tutorial-anomaly-detection-with-cognitive-services-preview"></a>Tutorial: Anomalieerkennung mit Cognitive Services (Vorschau)
+# <a name="tutorial-anomaly-detection-with-cognitive-services"></a>Tutorial: Anomalieerkennung mit Cognitive Services
 
 In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Synapse Analytics mit [Azure Cognitive Services](../../cognitive-services/index.yml) problemlos anreichern können. Sie verwenden die [Anomalieerkennung](../../cognitive-services/anomaly-detector/index.yml) zum Ermitteln von Anomalien. Ein Benutzer in Azure Synapse kann einfach eine Tabelle auswählen, um sie für die Erkennung von Anomalien anzureichern.
 
@@ -64,40 +65,31 @@ Für dieses Tutorial benötigen Sie eine Spark-Tabelle.
 
    ![Screenshot: Auswahl von „Anomalieerkennung“ als Modell](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00c.png)
 
-## <a name="provide-authentication-details"></a>Angeben von Authentifizierungsdetails
-
-Für die Authentifizierung bei Cognitive Services müssen Sie auf das Geheimnis in Ihrem Schlüsseltresor verweisen. Die folgenden Eingaben sind abhängig von den [erforderlichen Schritten](tutorial-configure-cognitive-services-synapse.md), die Sie zu diesem Zeitpunkt bereits abgeschlossen haben sollten.
-
-- **Azure-Abonnement**: Wählen Sie das Abonnement aus, zu dem Ihre Key Vault-Instanz gehört.
-- **Cognitive Services-Konto:** Geben Sie die Textanalyseressource ein, mit der Sie eine Verbindung herstellen.
-- **Mit Azure Key Vault verknüpfter Dienst:** Im Rahmen der erforderlichen Schritte haben Sie einen verknüpften Dienst für Ihre Textanalyseressource erstellt. Wählen Sie ihn hier aus.
-- **Geheimnisname**: Geben Sie den Namen des Geheimnisses in Ihrem Schlüsseltresor ein, der den Schlüssel zum Authentifizieren bei Ihrer Cognitive Services-Ressource enthält.
-
-![Screenshot: Authentifizierungsdetails für einen Schlüsseltresor](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00d.png)
-
 ## <a name="configure-anomaly-detector"></a>Konfigurieren der Anomalieerkennung
 
 Geben Sie die folgenden Details zum Konfigurieren der Anomalieerkennung an:
+
+- **Mit Azure Cognitive Services verknüpfter Dienst**: Als Teil der vorausgesetzten Schritte haben Sie einen mit [Cognitive Services verknüpften Dienst](tutorial-configure-cognitive-services-synapse.md) erstellt. Wählen Sie ihn hier aus.
 
 - **Granularität**: Die Rate, mit der Stichproben Ihrer Daten entnommen werden. Wählen Sie **monatlich** aus. 
 
 - **Spalte mit Zeitstempel**: Die Spalte, die die Uhrzeit der Reihe darstellt. Wählen Sie **timestamp (string)** (Zeitstempel (Zeichenfolge)) aus.
 
-- **Timeseries value column** (Spalte mit Zeitreihenwerten): Diese Spalte gibt den Wert der Reihe zu dem Zeitpunkt an, der unter „Spalte mit Zeitstempel“ angegeben ist. Wählen Sie **value (double)** (Wert (doppelt)) aus.
+- **Spalte mit Zeitreihenwert**: Diese Spalte gibt den Wert der Reihe zu dem Zeitpunkt an, der unter der Spalte „Zeitstempel“ angegeben ist. Wählen Sie **value (double)** (Wert (doppelt)) aus.
 
 - **Grouping column** (Gruppierungsspalte): Diese Spalte dient der Gruppierung der Reihe. Dies bedeutet, dass alle Zeilen mit gleichem Wert in dieser Spalte eine Zeitreihe bilden. Wählen Sie **group (string)** (Gruppe (Zeichenfolge)) aus.
 
 Wenn Sie fertig sind, wählen Sie **Notebook öffnen** aus. Dadurch wird ein Notebook für Sie mit PySpark-Code generiert, der Azure Cognitive Services für die Anomalieerkennung verwendet.
 
-![Screenshot: Konfigurationsdetails für die Anomalieerkennung](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00e.png)
+![Screenshot: Konfigurationsdetails für die Anomalieerkennung](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-config.png)
 
 ## <a name="run-the-notebook"></a>Ausführen des Notebooks
 
-Das soeben geöffnete Notebook verwendet die [mmlspark-Bibliothek](https://github.com/Azure/mmlspark), um eine Verbindung mit Cognitive Services herzustellen. Mit den von Ihnen bereitgestellten Azure Key Vault-Details können Sie auf sichere Weise auf Ihre Geheimnisse verweisen, ohne sie offenzulegen.
+Das soeben geöffnete Notebook verwendet die [SynapseML]-Bibliothek](https://github.com/microsoft/SynapseML), um eine Verbindung mit Cognitive Services herzustellen. Der mit Azure Cognitive Services verknüpfte Dienst, den Sie bereitgestellt haben, ermöglicht Ihnen, in dieser Umgebung sicher auf Ihren kognitiven Dienst zu verweisen, ohne Geheimnisse preiszugeben.
 
 Sie können jetzt alle Zellen ausführen, um die Anomalieerkennung auszuführen. Wählen Sie **Alle ausführen** aus. [Hier](../../cognitive-services/anomaly-detector/index.yml) finden Sie weitere Informationen zur Anomalieerkennung in Cognitive Services.
 
-![Screenshot: Anomalieerkennung](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00f.png)
+![Screenshot: Anomalieerkennung](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-notebook.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

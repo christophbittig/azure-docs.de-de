@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 06/09/2021
 ms.author: victorh
-ms.openlocfilehash: d7e0cc01d15e33e86f7e9446537fff6d43652256
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 09c184f9f3e62d8f26a2baaaa3fb31f06f4dbfca
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892850"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292906"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application Firewall für Azure Front Door
 
@@ -102,7 +102,7 @@ Sie können einen verwalteten Bot-Schutzregelsatz aktivieren, damit bei Anforder
 
 Es werden drei Bot-Kategorien unterstützt: „Ungültig“, „Gültig“ und „Unbekannt“. Bot-Signaturen werden von der WAF-Plattform verwaltet und dynamisch aktualisiert.
 
-Zu ungültigen Bots zählen Bots mit schädlicher IP-Adresse sowie Bots mit gefälschter Identität. Schädliche IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed und werden stündlich aktualisiert. Microsoft Threat Intelligence basiert auf [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) und wird von mehreren Diensten verwendet (einschließlich Azure Security Center).
+Zu ungültigen Bots zählen Bots mit schädlicher IP-Adresse sowie Bots mit gefälschter Identität. Schädliche IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed und werden stündlich aktualisiert. [Der Intelligente Sicherheitsgraph](https://www.microsoft.com/security/operations/intelligence) (Intelligent Security Graph) ist die Grundlage für Microsofts Bedrohungsanalyse und wird von mehreren Diensten genutzt, darunter Microsoft Defender für Cloud.
 
 Zu den guten Bots gehören auch validierte Suchmaschinen. Zur Kategorie „Unbekannt“ zählen weitere Bot-Gruppen, die sich selbst als Bots identifiziert haben. Beispiele wären etwa Agents für die Marktanalyse, für das Abrufen von Feeds oder für die Datensammlung. 
 

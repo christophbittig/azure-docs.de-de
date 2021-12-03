@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 75ca1779ca358d955f9cb7bdb4af5867347ca569
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 98ac612782eff1b304473b12f3c8883a684bff28
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015426"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491677"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen
 
@@ -111,7 +111,7 @@ Eine Regel kann auch über die Seite **Metriken** erstellt werden:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie Warnungen und Aktionsgruppen für Ihre Azure Spring Cloud-Anwendung einrichten können. Hier erfahren Sie mehr über Aktionsgruppen:
+In diesem Tutorial haben Sie erfahren, wie Sie Warnungen und Aktionsgruppen für eine Anwendung in Azure Spring Cloud einrichten. Hier erfahren Sie mehr über Aktionsgruppen:
 
 > [!div class="nextstepaction"]
 > [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/alerts/action-groups.md)

@@ -4,15 +4,15 @@ description: Hier erhalten Sie Informationen zu Plänen für Angebote im kommerz
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/05/2021
-ms.openlocfilehash: 6ea06820a9f66c831847808d9f6de9a6bf4803b1
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: e91e85982bb021193224010e2bd51df301240c69
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073960"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277978"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Pläne und Preise für Angebote im kommerziellen Marketplace
 
@@ -126,7 +126,7 @@ Preise in US-Dollar (USD) werden beim Speichern gemäß dem aktuellen Wechselkur
 
 ## <a name="plan-visibility"></a>Sichtbarkeit des Plans
 
-Sie können Pläne für einige Angebotstypen öffentlich oder nur für eine bestimmte (private) Zielgruppe verfügbar machen. Angebote mit privaten Plänen werden im Azure-Portal veröffentlicht. Erfahren Sie unter [Private Angebote im kommerziellen Microsoft-Marketplace](private-offers.md) mehr über private Pläne.
+Sie können Pläne für einige Angebotstypen öffentlich oder nur für eine bestimmte (private) Zielgruppe verfügbar machen. Angebote mit privaten Plänen werden im Azure-Portal veröffentlicht. Weitere Informationen über private Pläne finden Sie unter [Private Pläne auf dem kommerziellen Microsoft-Marktplatz](private-plans.md).
 
 Abhängig vom Angebotstyp definieren Sie eine private Zielgruppe mithilfe von Azure-Mandanten-IDs oder Azure-Abonnement-IDs. Sie können bis zu 10 IDs manuell eingeben oder bis zu 10.000 Abonnement-IDs oder 20.000 Mandanten-IDs mithilfe einer CSV-Datei importieren. Sie können auch private Zielgruppen für Beratungsdienste und Dynamics 365-Angebote definieren, die nicht über Pläne verfügen.
 
@@ -162,7 +162,7 @@ Nachdem ein Kunde eine kostenlose Testversion für einen Plan ausgewählt hat, k
 > [!NOTE]
 > Nachdem ein Kunde mit den Zahlungen für einen Plan begonnen hat, kann er keine kostenlose Testversion für dasselbe Angebot mehr erhalten, auch wenn er zu einem anderen Plan wechselt, der kostenlose Testversionen unterstützt.
 
-Wenn Sie Informationen zu Kundenabonnements abrufen möchten, die derzeit an einer kostenlosen Testversion teilnehmen, verwenden Sie die neue API-Eigenschaft `isFreeTrial`, die als „true“ oder „false“ gekennzeichnet ist. Weitere Informationen finden Sie unter der [API zum Abrufen von SaaS-Abonnements](./partner-center-portal/pc-saas-fulfillment-api-v2.md#get-subscription).
+Wenn Sie Informationen zu Kundenabonnements abrufen möchten, die derzeit an einer kostenlosen Testversion teilnehmen, verwenden Sie die neue API-Eigenschaft `isFreeTrial`, die als „true“ oder „false“ gekennzeichnet ist. Weitere Informationen finden Sie unter der [API zum Abrufen von SaaS-Abonnements](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-subscription).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

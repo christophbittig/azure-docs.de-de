@@ -7,13 +7,13 @@ author: swinarko
 ms.author: sawinark
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 71991798306296c7df16ee7d39678a25f263629f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/22/2021
+ms.openlocfilehash: 30608b15b71160b2fe3ad7a89ed3ef6328d6259a
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831232"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843706"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Installieren kostenpflichtiger oder lizenzierter benutzerdefinierter Komponenten für Azure SSIS Integration Runtime
 
@@ -37,7 +37,7 @@ Die folgende Abbildung zeigt die typischen Installations-, Aktivierungs- und Liz
 
 :::image type="content" source="media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png" alt-text="Installation lizenzierter Komponenten":::
 
-## <a name="instructions"></a>Anweisungen
+## <a name="instructions"></a>Instructions
 1. ISVs können ihre lizenzierten Komponenten in verschiedenen SKUs oder Stufen anbieten (z.B. Einzelknoten, bis zu 5 Knoten, bis zu 10 Knoten usw.). Der ISV stellt beim Kauf eines Produkts den entsprechenden Product Key zur Verfügung. Der ISV kann auch einen Azure Storage-Blobcontainer bereitstellen, der ein ISV-Setupskript und zugehörige Dateien enthält. Kunden können diese Dateien in ihren eigenen Speichercontainer kopieren und mit ihrem eigenen Product Key modifizieren (z.B. durch Ausführen von `IsvSetup.exe -pid xxxx-xxxx-xxxx`). Kunden können dann die Azure SSIS IR mit dem SAS-URI ihres Containers als Parameter bereitstellen oder neu konfigurieren. Weitere Informationen finden Sie unter [Benutzerdefiniertes Setup von Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 2. Wenn die Azure SSIS IR bereitgestellt oder neu konfiguriert wurde, wird das ISV-Setup auf jedem Knoten ausgeführt, um die Windows-Umgebungsvariablen `SSIS_CLUSTERID` und `SSIS_CLUSTERNODECOUNT` abzufragen. Anschließend sendet die Azure SSIS IR ihre Cluster-ID und den Product Key für das lizenzierte Produkt an den Aktivierungsserver des ISV, um einen Aktivierungsschlüssel zu generieren.

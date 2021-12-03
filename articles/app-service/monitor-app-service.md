@@ -7,26 +7,22 @@ ms.topic: article
 ms.service: app-service
 ms.custom: subject-monitoring
 ms.date: 04/16/2021
-ms.openlocfilehash: 1c3ff0fb224d5c1f8fe0133f184044b8aa5b30a3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d0bef29fc9e91d847046bc5d8157a70bd2fdfd9a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837136"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470982"
 ---
 # <a name="monitoring-app-service"></a>Überwachen von App Service
 
-Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel werden die Überwachungsdaten beschrieben, die von App Service generiert und an [Azure Monitor](../azure-monitor/overview.md) gesendet werden. Sie können auch die [integrierte Diagnose zur Ressourcenüberwachung](troubleshoot-diagnostic-logs.md) verwenden, um das Debuggen einer App Service-App zu unterstützen. Wenn Sie nicht mit den Features von Azure Monitor vertraut sind, die Bestandteil aller Azure-Dienste sind, für die Azure Monitor verwendet wird, lesen Sie den Artikel [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md).
-
-> [!NOTE]
-> Die Integration der Diagnoseeinstellungen in den App-Dienst befindet sich in der [Vorschau](https://aka.ms/appsvcblog-azmon).
->
+Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel werden die Überwachungsdaten beschrieben, die von App Service generiert und an [Azure Monitor](../azure-monitor/overview.md) gesendet werden. Sie können auch die [integrierte Diagnose zur Ressourcenüberwachung](troubleshoot-diagnostic-logs.md) verwenden, um das Debuggen einer App Service-App zu unterstützen. Wenn Sie nicht mit den Features von Azure Monitor vertraut sind, die Bestandteil aller Azure-Dienste sind, lesen Sie den Artikel [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md).
 
 ## <a name="monitoring-data"></a>Überwachungsdaten 
 
 App Service erfasst dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die unter [Überwachungsdaten von Azure-Ressourcen](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data) beschrieben werden. 
 
-Ausführliche Informationen zu den von App Service erstellten Metriken und Protokollmetriken finden Sie in der [Referenz für *App Service*-Überwachungsdaten](monitor-app-service-reference.md).
+Ausführliche Informationen zu App Service-Metriken und -Protokollen finden Sie in der [Referenz für *App Service*-Überwachungsdaten](monitor-app-service-reference.md).
 
 App Service bietet außerdem integrierte Diagnosefunktionen zur Unterstützung beim Debuggen von Apps. Weitere Informationen zum Aktivieren der integrierten Protokolle finden Sie unter [Aktivieren der Diagnoseprotokollierung](troubleshoot-diagnostic-logs.md). Informationen zum Überwachen von App Service-Instanzen finden Sie unter [Überwachen von App Service-Instanzen mit der Integritätsprüfung](monitor-instances-health-check.md).
 
@@ -52,7 +48,7 @@ Sie können zur Referenz auf eine Liste [aller in Azure Monitor unterstützter R
 
 Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Tabelle ihren eigenen Satz an eindeutigen Eigenschaften hat.  
 
-Alle Ressourcenprotokolle in Azure Monitor enthalten dieselben Felder, gefolgt von dienstspezifischen Feldern. Das allgemeine Schema wird in [Azure Monitor-Ressourcenprotokollschema](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview) beschrieben.
+Alle Ressourcenprotokolle in Azure Monitor enthalten dieselben Felder, gefolgt von dienstspezifischen Feldern. Das allgemeine Schema wird in [Azure Monitor-Ressourcenprotokollschema](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor) beschrieben.
 
 Das [Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md) ist eine Art von Plattformprotokoll, das Erkenntnisse zu Ereignissen auf Abonnementebene liefert. Sie können es unabhängig anzeigen oder an Azure Monitor-Protokolle weiterleiten. Das Weiterleiten an Azure Monitor-Protokolle bietet den Vorteil, dass mithilfe von Log Analytics komplexe Abfragen ausgeführt werden können.
 
@@ -98,7 +94,7 @@ Weitere Beispielabfragen finden Sie unter [Azure Monitor-Abfragen für App Servi
 
 Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen Ihnen, Probleme in Ihrem System zu identifizieren und zu beheben, bevor Ihre Kunden sie bemerken. Sie können Warnungen für [Metriken](../azure-monitor/alerts/alerts-metric-overview.md), [Protokolle](../azure-monitor/alerts/alerts-unified-log.md) und das [Aktivitätsprotokoll](../azure-monitor/alerts/activity-log-alerts.md) festlegen.
 
-Wenn Sie eine Anwendung in App Service ausführen, bietet [Azure Monitor Application Insights](../azure-monitor/overview.md#application-insights) möglicherweise zusätzliche Arten von Warnungen.
+Wenn Sie eine Anwendung in App Service ausführen, bietet [Azure Monitor Application Insights](../azure-monitor/overview.md#application-insights) weitere Arten von Warnungen.
 
 In der folgenden Tabelle sind gängige und empfohlene Warnungsregeln für App Service aufgeführt.
 

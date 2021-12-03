@@ -6,26 +6,23 @@ ms.topic: article
 ms.date: 9/20/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: f479a05fb305887d5e901ca236cb0183d4a2d87b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b0452588b8eb9eebbf8ab592ad2d0a8a0e9a6b92
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130227300"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066784"
 ---
 # <a name="deploy-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-using-bicep"></a>Bereitstellung des Add-On Open Service Mesh (OSM) für Azure Kubernetes Service (AKS) mithilfe von Bicep
 
 In diesem Artikel wird die Bereitstellung des OSM-Add-On für AKS unter Verwendung einer [Bicep](../azure-resource-manager/bicep/index.yml)-Vorlage beschrieben.
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-[Bicep](../azure-resource-manager/bicep/overview.md) ist eine domänenspezifische Sprache (DSL), die eine deklarative Syntax zur Bereitstellung von Azure-Ressourcen verwendet. Bicep kann anstelle der Erstellung von Azure [ARM](../azure-resource-manager/templates/overview.md)-Vorlagen für die Bereitstellung Ihrer Infrastruktur-als-Code Azure-Ressourcen verwendet werden.
+[Bicep](/azure/azure-resource-manager/bicep/overview) ist eine domänenspezifische Sprache (DSL), die eine deklarative Syntax zur Bereitstellung von Azure-Ressourcen verwendet. Bicep kann anstelle der Erstellung von Azure [ARM](/azure/azure-resource-manager/templates/overview)-Vorlagen für die Bereitstellung Ihrer Infrastruktur-als-Code Azure-Ressourcen verwendet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure CLI, Version 2.20.0 oder höher
-- Erweiterung `aks-preview`, Version 0.5.5 oder höher
-- OSM-Version v0.9.1 oder höher
+- OSM-Version v0.11.1 oder höher
 - Ein öffentlicher SSH-Schlüssel, der für die Bereitstellung von AKS verwendet wird
 - [Visual Studio Code](https://code.visualstudio.com/) unter Verwendung eines Bash-Terminals
 - Visual Studio Code [Bicep-Erweiterung](../azure-resource-manager/bicep/install.md)

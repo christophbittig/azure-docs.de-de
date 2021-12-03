@@ -2,14 +2,17 @@
 title: Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 description: In diesem Artikel lernen Sie die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure-VM-Sicherungslösung kennen.
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.custom: references_regions , devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e23c0729f44128172e4afd4902ce60e9c2ecb29c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/10/2021
+ms.custom: references_regions , devx-track-azurecli, devx-track-azurepowershell3
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: f2b4eda015bca45e586d77302eeedef18b217fbc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128613078"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312417"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 
@@ -186,9 +189,9 @@ Jeder Wiederherstellungspunkt verfügt über die Informationen der ein- und ausg
 ### <a name="remove-disk-exclusion-settings-and-get-protected-item-with-azure-cli"></a>Entfernen von Datenträgerausschlusseinstellungen und Abrufen eines geschützten Elements mit Azure CLI
 
 ```azurecli
-az backup protection update-for-vm --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --disk-list-setting resetexclusionsettings
+az backup protection update-for-vm --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --disk-list-setting resetexclusionsettings
 
-az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-group {resourcegroup} --backup-management-type AzureIaasVM
+az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-group {resourcegroup}
 ```
 
 Wenn Sie diese Befehle ausführen, wird `"diskExclusionProperties": null` angezeigt.

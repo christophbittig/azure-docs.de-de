@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: b10f4c221e0fd45ee942785edfa4b6e157a20077
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 67bbd26e4c565a5c7372be81fdf2398afe53c277
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124760884"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307218"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit New Relic
 
@@ -177,4 +177,4 @@ Anschließend können Sie überprüfen, ob Ihre Benutzer in New Relic hinzugefü
 
 Als Nächstes möchten Sie Ihre Benutzer wahrscheinlich bestimmten New Relic Konten oder Rollen zuweisen. Weitere Informationen hierzu finden Sie in der Dokumentation [Konzepte der Benutzerverwaltung](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#understand-concepts). 
 
-In der Benutzeroberfläche der Authentifizierungsdomäne von New Relic können Sie [weitere Einstellungen](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#session-mgmt) konfigurieren, wie z. B. die Sitzungssteuerung, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+In der Benutzeroberfläche der Authentifizierungsdomäne von New Relic können Sie [weitere Einstellungen](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#session-mgmt) konfigurieren, wie z. B. die Sitzungssteuerung, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

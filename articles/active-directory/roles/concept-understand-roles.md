@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
-ms.date: 11/20/2020
+ms.date: 11/11/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19d15ea184603587eb3477216bb5a93d6d07f905
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 5632c1bcd4acca150b7992b14535951f3d0eba50
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440518"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370636"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Grundlegendes zu Rollen in Azure Active Directory
 
@@ -33,12 +33,14 @@ Microsoft 365 umfasst zahlreiche verschiedene Dienste – beispielsweise Azure
 - Azure AD
 - Exchange
 - Intune
-- Security Center
+- Defender für Cloud
 - Compliance Center
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 - Commerce
 
 Andere Dienste wie Teams, SharePoint und Managed Desktop verfügen dagegen über keine separaten rollenbasierten Zugriffssteuerungssysteme. Sie verwenden Azure AD-Rollen für den Administratorzugriff. Azure verfügt über ein eigenes rollenbasiertes Zugriffssteuerungssystem für Azure-Ressourcen wie etwa virtuelle Computer, und dieses System unterscheidet sich von Azure AD-Rollen.
+
+![Rollenvergleich: Azure RBAC und Azure AD](./media/concept-understand-roles/azure-roles-azure-ad-roles.png)
 
 Ein separates rollenbasiertes Zugriffssteuerungssystem bedeutet, dass Rollendefinitionen und Rollenzuweisungen in einem anderen Datenspeicher gespeichert werden. Ebenso gibt es einen anderen Richtlinienentscheidungspunkt, an dem Zugriffsüberprüfungen durchgeführt werden. Weitere Informationen finden Sie unter [Rollen für Microsoft 365-Dienste in Azure Active Directory](m365-workload-docs.md) sowie unter [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -52,7 +54,7 @@ Integrierte Azure AD-Rollen unterscheiden sich hinsichtlich ihres Verwendungsor
 
 - **Azure AD-spezifische Rollen:** Durch diese Rollen werden nur Berechtigungen für die Verwaltung von Ressourcen innerhalb von Azure AD gewährt. „Benutzeradministrator“, „Anwendungsadministrator“ und „Gruppenadministrator“ gewähren beispielsweise jeweils Berechtigungen für die Verwaltung von Ressourcen in Azure AD.
 - **Dienstspezifische Rollen:** Für wichtige Microsoft 365-Dienste (nicht Azure AD) wurden dienstspezifische Rollen erstellt, die Berechtigungen für die Verwaltung aller Features innerhalb des Diensts gewähren.  Von den Rollen „Exchange-Administrator“, „Intune-Administrator“, „SharePoint-Administrator“ und „Teams-Administrator“ können Features mit den jeweiligen Diensten verwaltet werden. Ein Exchange-Administrator kann Postfächer verwalten, ein Intune-Administrator kann Geräterichtlinien verwalten, ein SharePoint-Administrator kann Websitesammlungen verwalten, ein Teams-Administrator kann Aspekte der Anrufqualität verwalten usw.
-- **Dienstübergreifende Rollen:** Einige Rollen umfassen mehrere Dienste. Es gibt zwei globale Rollen: „Globaler Administrator“ und „Globaler Leser“. Diese beiden Rollen werden von allen Microsoft 365-Diensten anerkannt. Darüber hinaus gibt es einige sicherheitsbezogene Rollen wie „Sicherheitsadministrator“ und „Sicherheitsleseberechtigter“, die Zugriff auf mehrere Sicherheitsdienste in Microsoft 365 gewähren. Mit Sicherheitsadministratorrollen in Azure AD können Sie beispielsweise Microsoft 365 Security Center, Microsoft Defender Advanced Threat Protection und Microsoft Cloud App Security verwalten. Analog dazu können Sie mit der Rolle „Complianceadministrator“ compliancebezogene Einstellungen in Microsoft 365 Compliance Center, Exchange usw. verwalten.
+- **Dienstübergreifende Rollen:** Einige Rollen umfassen mehrere Dienste. Es gibt zwei globale Rollen: „Globaler Administrator“ und „Globaler Leser“. Diese beiden Rollen werden von allen Microsoft 365-Diensten anerkannt. Darüber hinaus gibt es einige sicherheitsbezogene Rollen wie „Sicherheitsadministrator“ und „Sicherheitsleseberechtigter“, die Zugriff auf mehrere Sicherheitsdienste in Microsoft 365 gewähren. Mit Sicherheitsadministratorrollen in Azure AD können Sie beispielsweise das Microsoft 365 Defender-Portal, Microsoft Defender Advanced Threat Protection und Microsoft Defender for Cloud Apps verwalten. Analog dazu können Sie mit der Rolle „Complianceadministrator“ compliancebezogene Einstellungen in Microsoft 365 Compliance Center, Exchange usw. verwalten.
 
 ![Die drei Kategorien der integrierten Azure AD-Rollen](./media/concept-understand-roles/role-overlap-diagram.png)
 

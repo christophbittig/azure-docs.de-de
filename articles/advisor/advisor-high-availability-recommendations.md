@@ -2,17 +2,17 @@
 title: Verbessern der Zuverlässigkeit Ihrer Anwendung mit Advisor
 description: Verwenden Sie Azure Advisor, um die Zuverlässigkeit Ihrer geschäftskritischen Azure-Bereitstellungen sicherzustellen und zu verbessern.
 ms.topic: article
-ms.date: 09/27/2020
-ms.openlocfilehash: 8d0c8902c41d50f4391a5431aba7a58faa917208
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.date: 10/26/2021
+ms.openlocfilehash: f7ea986424271315843af9557555aa82a708a12c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111887544"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045860"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Verbessern der Zuverlässigkeit Ihrer Anwendung mit Azure Advisor
 
-Der Azure Advisor hilft Ihnen, die ununterbrochene Verfügbarkeit Ihrer unternehmenskritischen Anwendungen zu gewährleisten und zu verbessern. Sie können Empfehlungen von Advisor zur Zuverlässigkeit auf der Registerkarte **Zuverlässigkeit** des Advisor-Dashboards erhalten.
+Der Azure Advisor hilft Ihnen, die ununterbrochene Verfügbarkeit Ihrer unternehmenskritischen Anwendungen zu gewährleisten und zu verbessern. Sie können Empfehlungen zur Zuverlässigkeit auf der Registerkarte **Zuverlässigkeit** von [Azure Advisor](https://aka.ms/azureadvisordashboard) erhalten.
 
 ## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>Überprüfen der Version des Images Ihres virtuellen Netzwerkgeräts von Check Point
 
@@ -59,6 +59,9 @@ Azure Advisor überprüft alle VPN-Gateways, die eine Basic-SKU verwenden, und e
 - Benutzerdefinierte IPsec-/IKE-Richtlinie 
 - Höhere Stabilität und Verfügbarkeit
 
+## <a name="ensure-reliable-outbound-connectivity-with-vnet-nat"></a>Sicherstellen einer zuverlässigen ausgehenden Konnektivität mit VNet NAT
+Die Verwendung von ausgehenden Standardverbindungen, die von einem Standardlastenausgleich oder anderen Azure-Ressourcen bereitgestellt werden, wird für Workloads in der Produktion nicht empfohlen, da dies zu Verbindungsfehlern führt (auch als SNAT-Portauslastung bezeichnet). Der empfohlene Ansatz besteht darin, eine VNet NAT zu verwenden, die diesbezügliche Verbindungsfehler verhindert. Die NAT kann problemlos skaliert werden, um sicherzustellen, dass Ihre Anwendung immer über Ports verfügt. [Erfahren Sie mehr über die VNet NAT](../virtual-network/nat-gateway/nat-overview.md).
+
 ## <a name="ensure-virtual-machine-fault-tolerance-temporarily-disabled"></a>Sicherstellen von Fehlertoleranz für virtuelle Computer (vorübergehend deaktiviert)
 
 Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Advisor identifiziert virtuelle Computer, die nicht zu einer Verfügbarkeitsgruppe gehören und empfiehlt, diese in eine Verfügbarkeitsgruppe zu verschieben. Durch diese Konfiguration wird sichergestellt, dass während einer geplanten oder ungeplanten Wartung mindestens ein virtueller Computer verfügbar ist und die Azure-SLA für virtuelle Computer eingehalten wird. Sie können eine Verfügbarkeitsgruppe für den virtuellen Computer erstellen oder diesen einer vorhandenen Verfügbarkeitsgruppe hinzufügen.
@@ -70,9 +73,9 @@ Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierun
 
 Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Der Advisor ermittelt Verfügbarkeitsgruppen mit nur einem virtuellen Computer und empfiehlt, dieser weitere hinzuzufügen.  Durch diese Konfiguration wird sichergestellt, dass während einer geplanten oder ungeplanten Wartung mindestens ein virtueller Computer verfügbar ist und die Azure-SLA für virtuelle Computer eingehalten wird.  Sie können einen virtuellen Computer erstellen oder der Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzufügen.  
 
-## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>Verwenden von verwalteten Datenträgern zur Erhöhung der Datenzuverlässigkeit (vorübergehend deaktiviert)
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Verwenden von verwalteten Datenträgern zur Erhöhung der Datenzuverlässigkeit
 
-Virtuelle Computer, die sich in einer Verfügbarkeitsgruppe mit Datenträgern befinden, die entweder Speicherkonten oder Speicherskalierungseinheiten gemeinsam nutzen, sind nicht widerstandsfähig gegen Ausfälle einzelner Speicherskalierungseinheiten während eines Ausfalls. Advisor identifiziert diese Verfügbarkeitsgruppen und empfiehlt die Migration zu verwalteten Azure-Datenträgern. Durch diese Migration wird sichergestellt, dass die Datenträger der virtuellen Computer in der Verfügbarkeitsgruppe ausreichend isoliert sind, um einen Single Point of Failure zu vermeiden. 
+Virtuelle Computer in einer Verfügbarkeitsgruppe mit Datenträgern, die entweder Speicherkonten oder Speicherskalierungseinheiten gemeinsam nutzen, sind nicht resilient gegen Ausfälle einzelner Speicherskalierungseinheiten während eines Ausfalls. Stellen Sie mit einer Migration zu verwalteten Azure-Datenträgern sicher, dass die Datenträger verschiedener virtueller Computer in der Verfügbarkeitsgruppe ausreichend isoliert sind, um einen Single Point of Failure zu vermeiden.
 
 ## <a name="repair-invalid-log-alert-rules"></a>Reparieren ungültiger Protokollwarnungsregeln
 
@@ -113,13 +116,7 @@ Virtuelle Computer, für die die Replikation in eine andere Region nicht aktivie
 Der [Azure Connected Machine-Agent](../azure-arc/servers/manage-agent.md) wird in Bezug auf Fehlerbehebungen, Stabilitätsverbesserungen und neue Funktionen regelmäßig aktualisiert. Wir haben Ressourcen identifiziert, die nicht mit der neuesten Version des Computer-Agents arbeiten, und diese Advisor-Empfehlung empfiehlt Ihnen, ein Upgrade Ihres Agents auf die neueste Version vorzunehmen, um die beste Azure Arc-Erfahrung zu erzielen.
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Keine Außerkraftsetzung des Hostnamens, um die Integrität der Website sicherzustellen
-Advisor empfiehlt, dass Sie versuchen, bei der Application Gateway-Konfiguration die Außerkraftsetzung des Hostnamens zu vermeiden. Die Verwendung einer anderen Domäne auf dem Application Gateway-Front-End als die, die für den Zugriff auf das Back-End genutzt wird, kann ggf. zur Beschädigung von Cookies oder Umleitungs-URLs führen. Beachten Sie hierbei Folgendes: Dies gilt unter Umständen nicht in allen Fällen, und bestimmte Kategorien von Back-Ends (z. B. REST-APIs) sind hierfür normalerweise weniger anfällig. Vergewissern Sie sich, dass das Back-End dies verarbeiten kann, oder aktualisieren Sie die Application Gateway-Konfiguration, damit der Hostname für das Back-End nicht überschrieben werden muss. Fügen Sie bei Verwendung von App Service einen benutzerdefinierten Domänennamen an die Web-App an, und vermeiden Sie die Nutzung des Hostnamens „ *.azurewebsites.net“ für das Back-End.* [Erfahren Sie mehr über benutzerdefinierte Domänen](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md).
-
-## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zu Hochverfügbarkeit
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie [Advisor](https://aka.ms/azureadvisordashboard).
-
-2.  Wählen Sie auf dem Advisor-Dashboard die Registerkarte **Hochverfügbarkeit** aus.
+Advisor empfiehlt, dass Sie versuchen, bei der Application Gateway-Konfiguration die Außerkraftsetzung des Hostnamens zu vermeiden. Die Verwendung einer anderen Domäne auf dem Application Gateway-Front-End als die, die für den Zugriff auf das Back-End genutzt wird, kann ggf. zur Beschädigung von Cookies oder Umleitungs-URLs führen. Beachten Sie hierbei Folgendes: Dies gilt unter Umständen nicht in allen Fällen, und bestimmte Kategorien von Back-Ends (z. B. REST-APIs) sind hierfür normalerweise weniger anfällig. Vergewissern Sie sich, dass das Back-End dies verarbeiten kann, oder aktualisieren Sie die Application Gateway-Konfiguration, damit der Hostname für das Back-End nicht überschrieben werden muss. Fügen Sie bei Verwendung von App Service einen benutzerdefinierten Domänennamen an die Web-App an, und vermeiden Sie die Nutzung des Hostnamens `*.azurewebsites.net` für das Back-End. [Erfahren Sie mehr über benutzerdefinierte Domänen](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -129,5 +126,5 @@ Weitere Informationen zu Advisor-Empfehlungen finden Sie unter:
 * [Advisor-Bewertung](azure-advisor-score.md)
 * [Reduzieren der Dienstkosten mithilfe des Azure Advisors](advisor-cost-recommendations.md)
 * [Verbessern der Leistung von Azure-Anwendungen mit dem Azure Advisor](advisor-performance-recommendations.md)
-* [Erhöhen der Sicherheit von Ressourcen mit dem Azure Advisor](advisor-security-recommendations.md)
+* [Sicherheitsempfehlungen von Advisor](advisor-security-recommendations.md)
 * [Sicherstellen des optimalen Betriebs mit dem Azure Advisor](advisor-operational-excellence-recommendations.md)

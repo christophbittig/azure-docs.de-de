@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/22/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 9bb33a10314460462cc32838227cadd3480cf362
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ba5be8cad5c7189d207a8e2915e970589e414175
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022625"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063154"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100- und 8600-Migration zur Azure-Dateisynchronisierung
 
@@ -81,8 +81,9 @@ Wenn Sie die Schlüssel in Ihren Aufzeichnungen nicht finden können, können Si
 ### <a name="known-limitations"></a>Bekannte Einschränkungen
 
 Für StorSimple Data Manager und Azure-Dateifreigaben gelten einige Einschränkungen, die Sie berücksichtigen müssen, bevor Sie mit der Migration beginnen, da sie eine Migration verhindern können:
-* Nur NTFS-Volumes von StorSimple-Appliances werden unterstützt.
-* Der Dienst funktioniert nicht mit Volumen, die mit BitLocker verschlüsselt sind.
+* Nur NTFS-Volumes von StorSimple-Appliances werden unterstützt. ReFS-Volumes werden nicht unterstützt.
+* Alle auf [dynamischen Windows Server-Datenträgern](/troubleshoot/windows-server/backup-and-storage/best-practices-using-dynamic-disks) gespeicherte Volumes werden nicht unterstützt. (vor Windows Server 2012 veraltet)
+* Der Dienst funktioniert nicht mit Volumen, die mit BitLocker verschlüsselt sind oder für die [Datendeduplizierung](/windows-server/storage/data-deduplication/understand) aktiviert ist.
 * Beschädigte StorSimple-Sicherungen können nicht migriert werden.
 * Spezielle Netzwerkoptionen, z. B. Firewalls oder die ausschließliche Kommunikation zwischen privaten Endpunkten, können weder für das Quellspeicherkonto, in dem StorSimple-Sicherungen gespeichert sind, noch für das Zielspeicherkonto aktiviert werden, das die Azure-Dateifreigaben enthält.
 
@@ -287,7 +288,8 @@ Bei der Auswahl der zu migrierenden Sicherungen gibt es wichtige Aspekte:
 - Ihre Migrationsaufträge können nur Sicherungen, aber keine Daten von einem Livevolume übertragen. Die neueste Sicherung entspricht also am ehesten den Livedaten und sollte immer auf der Liste der bei einer Migration zu verschiebenden Sicherungen stehen. Wenn Sie das Auswahldialogfeld für Sicherungen öffnen, ist standardmäßig diese Sicherung ausgewählt.
 - Stellen Sie sicher, dass Ihre letzte Sicherung aktuell ist, um die Abweichung von der Livefreigabe so klein wie möglich zu halten. Es kann sinnvoll sein, eine weitere Volumesicherung manuell auszulösen und abzuschließen, bevor Sie einen Migrationsauftrag erstellen. Eine geringe Abweichung von der Livefreigabe verbessert die Erfahrung bei der Migration. Wenn diese Abweichung (Delta) Null sein kann (d.h. es sind keine Änderungen mehr am StorSimple-Volume aufgetreten, nachdem die neueste Sicherung in Ihrer Liste erstellt wurde), wird Phase 5: „Benutzerübernahme“ drastisch vereinfacht und beschleunigt.
 - Sicherungen müssen **von der ältesten zur neuesten** zurück in die Azure-Dateifreigabe übertragen werden. Eine ältere Sicherung kann nicht in die Liste der Sicherungen auf der Azure-Dateifreigabe „einsortiert“ werden, nachdem ein Migrationsauftrag ausgeführt wurde. Daher müssen Sie sicherstellen, dass Ihre Liste der Sicherungen vollständig ist, *bevor* Sie einen Auftrag erstellen. 
-- Diese Liste der Sicherungen in einem Auftrag kann nicht mehr geändert werden, sobald der Auftrag erstellt wurde, selbst wenn der Auftrag nie ausgeführt wurde. 
+- Diese Liste der Sicherungen in einem Auftrag kann nicht mehr geändert werden, sobald der Auftrag erstellt wurde, selbst wenn der Auftrag nie ausgeführt wurde.
+- Um Sicherungen auswählen zu können, muss das zu migrierende StorSimple-Volume online sein.
 
 :::row:::
     :::column:::        

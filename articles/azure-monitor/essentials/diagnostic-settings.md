@@ -1,70 +1,102 @@
 ---
-title: Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
+title: Erstellen von Diagnoseeinstellungen zum Senden von Metriken und Protokollen der Azure Monitor-Plattform an verschiedene Ziele
 description: Senden Sie Metriken und Protokolle der Azure Monitor-Plattform mithilfe von Diagnoseeinstellungen an Azure Monitor-Protokolle, Azure Storage oder Azure Event Hubs.
-author: bwren
-ms.author: bwren
+author: rboucher
+ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/09/2021
-ms.openlocfilehash: 50eb92441c248884930e556551a92acb9e43661b
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.date: 11/11/2021
+ms.openlocfilehash: 6de7ed1acffd7f4c05d912f7f565f4b811ebd357
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130176404"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402034"
 ---
-# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
-[Plattformprotokolle](./platform-logs-overview.md) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](./data-platform-metrics.md) werden standardmäßig gesammelt und in der Regel in der Azure Monitor-Metrikdatenbank gespeichert. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden.
+# <a name="create-diagnostic-settings-to-send-azure-monitor-platform-logs-and-metrics-to-different-destinations"></a>Erstellen von Diagnoseeinstellungen zum Senden von Metriken und Protokollen der Azure Monitor-Plattform an verschiedene Ziele
 
-> [!IMPORTANT]
-> Bevor Sie eine Diagnoseeinstellung für das Aktivitätsprotokoll erstellen, sollten Sie zunächst vorhandene Legacykonfigurationen deaktivieren. Weitere Informationen hierzu finden Sie unter [Legacy-Erfassungsmethoden](../essentials/activity-log.md#legacy-collection-methods).
+Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen zum Senden von Azure-Plattformmetriken und Protokollen an verschiedene Ziele.
+
+[Plattformmetriken](./metrics-supported.md) werden automatisch und ohne Konfiguration standardmäßig an [Azure Monitor Metrics](./data-platform-metrics.md) gesendet
+
+[Plattformprotokolle](./platform-logs-overview.md), einschließlich des Azure-Aktivitätsprotokolls und der Ressourcenprotokolle, liefern detaillierte Diagnose- und Prüfungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. Das Aktivitätsprotokoll existiert für sich allein, kann aber an andere Stellen weitergeleitet werden.  Ressourcenprotokolle werden erst gesammelt, wenn sie an ein Ziel weitergeleitet werden.
 
 Jede Azure-Ressource erfordert eine eigene Diagnoseeinstellung, die folgende Kriterien definiert:
 
-- Kategorien der Protokolle und Metrikdaten, die an die in der Einstellung definierten Ziele gesendet werden. Die verfügbaren Kategorien sind je nach Ressourcentyp verschieden.
-- Ein oder mehrere Ziele zum Senden der Protokolle. Zu den aktuellen Zielen gehören der Log Analytics-Arbeitsbereich, Event Hubs und Azure Storage.
+- Quellen: Der Typ der Metrik- und Protokolldaten, die an die in der Einstellung definierten Ziele gesendet werden sollen. Die verfügbaren Typen variieren je nach Ressourcentyp.
+- Ziele - Ein oder mehrere Ziele, an die gesendet werden soll.
 
 Mit einer einzelnen Diagnoseeinstellung kann maximal eines der Ziele definiert werden. Wenn Sie Daten an mehrere Ziele eines bestimmten Typs senden möchten (z.B. zwei verschiedene Log Analytics-Arbeitsbereiche), dann erstellen Sie mehrere Einstellungen. Jede Ressource kann bis zu fünf Diagnoseeinstellungen aufweisen.
 
 Das folgende Video führt Sie durch das Routing von Plattformprotokollen mit Diagnoseeinstellungen.
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AvVO]
 
-> [!NOTE]
-> [Plattformmetriken](./metrics-supported.md) werden automatisch an die [Azure Monitor-Metriken](./data-platform-metrics.md) gesendet. Mit Diagnoseeinstellungen können Metriken für bestimmte Azure-Dienste an Azure Monitor-Protokolle gesendet werden, damit diese mit anderen Überwachungsdaten anhand von [Protokollabfragen](../logs/log-query-overview.md) mit bestimmten Einschränkungen analysiert werden. 
->  
->  
-> Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert. *Beispiel*: Die Metrik „IOReadBytes“ in einer Blockchain kann für jeden Knoten einzeln untersucht und dargestellt werden. Wenn sie jedoch über Diagnoseeinstellungen exportiert wird, stellt die exportierte Metrik alle gelesenen Bytes für alle Knoten dar. Darüber hinaus können aufgrund von internen Einschränkungen nicht alle Metriken in Azure Monitor-Protokolle oder in Log Analytics exportiert werden. Weitere Informationen finden Sie in der [Liste mit den exportierbaren Metriken](./metrics-supported-export-diagnostic-settings.md). 
->  
->  
-> Um diese Einschränkungen für bestimmte Metriken zu umgehen, empfiehlt es sich, diese mithilfe der [REST-API für Metriken](/rest/api/monitor/metrics/list) manuell zu extrahieren und mithilfe der [Azure Monitor-Datensammler-API](../logs/data-collector-api.md) in Azure Monitor-Protokolle zu importieren.  
+## <a name="sources"></a>Quellen
 
+Hier sind die Quellenoptionen.
+
+### <a name="metrics"></a>Metriken
+
+Die Einstellung **AlleMetriken** leitet die Plattformmetriken einer Ressource an zusätzliche Ziele weiter. Diese Option ist möglicherweise nicht bei allen Ressourcenanbietern vorhanden.  
+
+### <a name="logs"></a>Protokolle
+
+Bei Protokollen können Sie die Protokollkategorien, die Sie weiterleiten möchten, einzeln auswählen oder eine Kategoriegruppe wählen.
+
+> [!NOTE]
+> Kategoriegruppen gelten nicht für Metriken. Nicht für alle Ressourcen sind Kategoriegruppen verfügbar.
+
+**Kategoriegruppen** ermöglichen die dynamische Erfassung von Ressourcenprotokollen auf der Grundlage vordefinierter Gruppierungen anstelle der Auswahl einzelner Protokollkategorien. Microsoft definiert die Gruppierungen, um die Überwachung bestimmter Anwendungsfälle über alle Azure-Dienste hinweg zu erleichtern. Im Laufe der Zeit können die Kategorien in der Gruppe aktualisiert werden, wenn neue Protokolle eingeführt werden oder sich Bewertungen ändern. Wenn Protokollkategorien einer Kategoriegruppe hinzugefügt oder daraus entfernt werden, wird Ihre Protokollsammlung automatisch geändert, ohne dass Sie Ihre Diagnoseeinstellungen aktualisieren müssen.
+
+Wenn Sie Kategoriegruppen verwenden, können Sie: 
+- Ressourcenprotokolle nicht mehr individuell auf der Grundlage einzelner Kategorietypen ausgewählt werden
+- Aufbewahrungseinstellungen nicht mehr auf Protokolle angewendn, die an Azure Storage gesendet werden
+
+Derzeit gibt es zwei Gruppen von Kategorien:
+- **Alle** - Jedes Ressourcenprotokoll, das von der Ressource angeboten wird.
+- **Audit** - Alle Ressourcenprotokolle, die Kundeninteraktionen mit Daten oder die Einstellungen des Dienstes aufzeichnen.
 
 ## <a name="destinations"></a>Destinations
 Plattformprotokolle und -metriken können an die Ziele in der folgenden Tabelle gesendet werden. 
 
 | Destination | BESCHREIBUNG |
 |:---|:---|
-| [Log Analytics-Arbeitsbereich](../logs/design-logs-deployment.md) | Das Senden von Protokollen und Metriken in einen Log Analytics-Arbeitsbereich gibt Ihnen die Möglichkeit, diese Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen von Azure Monitor erfasst werden, zu analysieren und andere Azure Monitor-Funktionen wie Warnungen und Visualisierungen zu nutzen. |
-| [Event Hubs](../../event-hubs/index.yml) | Das Senden von Protokollen und Metriken an Event Hubs ermöglicht Ihnen das Streamen von Daten an externe Systeme, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern.  |
-| [Azure-Speicherkonto](../../storage/blobs/index.yml) | Das Archivieren von Protokollen und Metriken in einem Azure Storage-Konto ist für die Überwachung, statische Analyse oder Sicherung nützlich. Im Vergleich zu Azure Monitor-Protokollen und einem Log Analytics Arbeitsbereich ist Azure Storage kostengünstiger, und die Protokolle können unbegrenzt aufbewahrt werden.  |
+| [Log Analytics-Arbeitsbereich](../logs/design-logs-deployment.md) | Metriken werden in das Protokollformular konvertiert. Diese Option ist möglicherweise nicht für alle Ressourcentypen verfügbar. Wenn Sie sie an den Azure Monitor Logs-Speicher senden (der über Log Analytics durchsuchbar ist), können Sie sie in Abfragen, Benachrichtigungen und Visualisierungen mit vorhandenen Protokolldaten integrieren.  
+| [Azure-Speicherkonto](../../storage/blobs/index.yml) | Das Archivieren von Protokollen und Metriken in einem Azure Storage-Konto ist für die Überwachung, statische Analyse oder Sicherung nützlich. Im Vergleich zu Azure Monitor-Protokollen und einem Log Analytics Arbeitsbereich ist Azure Storage kostengünstiger, und die Protokolle können unbegrenzt aufbewahrt werden.  | 
+| [Event Hubs](../../event-hubs/index.yml) | Das Senden von Protokollen und Metriken an Event Hubs ermöglicht es Ihnen, Daten an externe Systeme wie SIEMs von Drittanbietern und andere Log Analytics-Lösungen zu streamen.  |
+| [Azure Monitor – integrierte Partnerlösungen](/azure/partner-solutions/overview/)| Spezialisierte Integrationen zwischen Azure Monitor und anderen Überwachungsplattformen, die nicht von Mircrosoft stammen. Nützlich, wenn Sie bereits einen der Partner nutzen.  |
+
+## <a name="requirements-and-limitations"></a>Anforderungen und Einschränkungen
+
+### <a name="metrics-as-a-source"></a>Metriken als Quelle
+Der Export von Metriken unterliegt gewissen Einschränkungen.
+
+- **Das Senden von mehrdimensionalen Metriken über Diagnoseeinstellungen wird derzeit nicht unterstützt** - Metriken mit Dimensionen werden als abgeflachte eindimensionale Metriken exportiert, die über Dimensionswerte aggregiert werden. *Beispiel*: Die Metrik „IOReadBytes“ in einer Blockchain kann für jeden Knoten einzeln untersucht und dargestellt werden. Beim Exportieren über die Diagnoseeinstellungen zeigt die exportierte Metrik jedoch alle gelesenen Bytes für alle Knoten an.
+- **Nicht alle Metriken sind mit Diagnoseeinstellungen exportierbar** - Aufgrund interner Beschränkungen sind nicht alle Metriken in Azure Monitor Logs / Log Analytics exportierbar. Weitere Informationen finden Sie in der Spalte exportierbar in der [Liste der unterstützten Metriken](./metrics-supported.md)
+
+Um diese Einschränkungen für bestimmte Metriken zu umgehen, können Sie diese manuell mit der [Metrics REST API](/rest/api/monitor/metrics/list) extrahieren und mit der [Azure Monitor Data collector API](../logs/data-collector-api.md) in Azure Monitor Logs importieren.
+
+### <a name="activity-log-as-a-source"></a>Aktivitätsprotokoll als Quelle
+
+> [!IMPORTANT]
+> Bevor Sie eine Diagnoseeinstellung für das Aktivitätsprotokoll erstellen, sollten Sie zunächst vorhandene Legacykonfigurationen deaktivieren. Weitere Informationen hierzu finden Sie unter [Legacy-Erfassungsmethoden](../essentials/activity-log.md#legacy-collection-methods).
 
 
-### <a name="destination-requirements"></a>Anforderungen für Ziele
+### <a name="destination-limitations"></a>Grenzen des Reiseziels
 
 Alle Ziele für Diagnoseeinstellungen müssen vor den Diagnoseeinstellungen erstellt werden. Das Ziel muss sich nicht in demselben Abonnement befinden wie die Ressource, die Protokolle sendet, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden Azure RBAC-Zugriff auf beide Abonnements besitzt. Mit Azure Lighthouse ist es auch möglich, Diagnoseeinstellungen an einen Arbeitsbereich in einem anderen Mandanten in Azure Active Directory senden zu lassen. In der folgenden Tabelle sind besondere Anforderungen für die einzelnen Ziele einschließlich regionaler Einschränkungen aufgeführt.
 
 | Destination | Requirements (Anforderungen) |
 |:---|:---|
 | Log Analytics-Arbeitsbereich | Der Arbeitsbereich muss sich nicht in derselben Region wie die überwachte Ressource befinden.|
-| Event Hubs | Die SAS-Richtlinie für den Namespace definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an Event Hubs werden Berechtigungen für das Verwalten, Senden und Lauschen benötigt. Wenn Sie der Diagnoseeinstellung das Streamingfeature hinzufügen möchten, müssen Sie in der Event Hubs-Autorisierungsregel über die ListKey-Berechtigung verfügen.<br><br>Wenn die überwachte Ressource regional ist, muss sich der Event Hub-Namespace in derselben Region wie die Ressource befinden. |
-| Azure-Speicherkonto | Um den Zugriff auf die Daten besser steuern zu können, sollten Sie kein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten verwenden. Wenn Sie das Aktivitätsprotokoll und Ressourcenprotokollen zusammen archivieren, können Sie aber dasselbe Speicherkonto verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.<br><br>Legen Sie die unveränderliche Richtlinie für das Speicherkonto wie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](../../storage/blobs/immutable-policy-configure-version-scope.md) beschrieben fest, um die Daten an einen unveränderlichen Speicher zu senden. Sie müssen alle Schritte in diesem Artikel ausführen, einschließlich der Aktivierung von Schreibvorgängen in geschützten Anfügeblobs.<br><br>Wenn die überwachte Ressource regional ist, muss sich das Speicherkonto in derselben Region wie die Ressource befinden. |
+| Azure-Speicherkonto | Verwenden Sie kein bestehendes Speicherkonto, in dem andere, nicht überwachungsrelevante Daten gespeichert sind, damit Sie den Zugriff auf die Daten besser kontrollieren können. Wenn Sie das Aktivitätsprotokoll und Ressourcenprotokollen zusammen archivieren, können Sie aber dasselbe Speicherkonto verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.<br><br>Legen Sie die unveränderliche Richtlinie für das Speicherkonto wie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](../../storage/blobs/immutable-policy-configure-version-scope.md) beschrieben fest, um die Daten an einen unveränderlichen Speicher zu senden. Sie müssen alle Schritte in diesem verlinkten Artikel befolgen, einschließlich der Aktivierung des geschützten Schreibens von Append Blobs.<br><br>Wenn die überwachte Ressource regional ist, muss sich das Speicherkonto in derselben Region wie die Ressource befinden.|
+| Event Hubs | Die SAS-Richtlinie für den Namespace definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an Event Hubs werden Berechtigungen für das Verwalten, Senden und Lauschen benötigt. Wenn Sie der Diagnoseeinstellung das Streamingfeature hinzufügen möchten, müssen Sie in der Event Hubs-Autorisierungsregel über die ListKey-Berechtigung verfügen.<br><br>Wenn die überwachte Ressource regional ist, muss sich der Event Hub-Namespace in derselben Region wie die Ressource befinden. <br><br> Diagnoseeinstellungen können nicht auf Event-Hubs-Ressourcen zugreifen, wenn virtuelle Netzwerke aktiviert sind. Sie müssen die Einstellung *Vertrauenswürdige Microsoft-Dienste zulassen*, um diese Firewall in Event Hub zu umgehen, aktivieren, damit der Dienst Azure Monitor (Diagnoseeinstellungen) Zugriff auf Ihre Event Hub-Ressourcen erhält.|
+| Partnerintegrationen | Variiert je nach Partner.  Weitere Informationen finden Sie in der [Azure Monitor-Partnerintegrationsdokumentation](/azure/partner-solutions/overview/).  
+
+### <a name="azure-data-lake-storage-gen2-as-a-destination"></a>Azure Data Lake Storage Gen2 als Ziel
 
 > [!NOTE]
 > Azure Data Lake Storage Gen2-Konten werden derzeit nicht als Ziel für Diagnoseeinstellungen unterstützt, auch wenn sie möglicherweise als gültige Option im Azure-Portal aufgeführt werden.
-
-> [!NOTE]
-> Azure Monitor (Diagnoseeinstellungen) kann nicht auf Event Hubs-Ressourcen zugreifen, wenn virtuelle Netzwerke aktiviert sind. Wenn Sie die Einstellung „Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben“ in Event Hubs aktivieren, wird Azure Monitor (Diagnoseeinstellungen) der Zugriff auf Ihre Event Hubs-Ressourcen gewährt. 
-
 
 ## <a name="create-in-azure-portal"></a>Im Azure-Portal erstellen
 
@@ -94,17 +126,9 @@ Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monit
 
 3. Wenn noch kein Name für die Einstellung vorhanden ist, geben Sie ihr einen Namen.
 
-    ![Hinzufügen einer Diagnoseeinstellung](media/diagnostic-settings/setting-new-blank.png)
+      :::image type="Add diagnostic setting" source="media/diagnostic-settings/setting-new-blank.png" alt-text="Eine neue Diagnoseeinstellung hinzufügen":::
 
-4. **Kategoriedetails (weiterzuleitende Elemente):** Aktivieren Sie das Kontrollkästchen für jede Datenkategorie, die an die später angegebenen Ziele gesendet werden soll. Die Liste der Kategorien unterscheidet sich je nach Azure-Dienst.
-
-     - **AllMetrics** leitet die Plattformmetriken einer Ressource an den Azure-Protokollspeicher weiter, jedoch in Protokollform. Diese Metriken werden in der Regel nur an die Zeitreihendatenbank für Azure Monitor-Metriken gesendet. Wenn Sie sie an den Azure Monitor-Protokollspeicher (der über Log Analytics durchsucht werden kann) senden, können Sie sie in Abfragen integrieren, die andere Protokolle durchsuchen. Diese Option ist möglicherweise nicht für alle Ressourcentypen verfügbar. Bei Unterstützung dieser Option wird für [unterstützte Azure Monitor-Metriken](./metrics-supported.md) aufgelistet, welche Metriken für welche Ressourcentypen gesammelt werden.
-
-       > [!NOTE]
-       > Informationen zu Einschränkungen bei der Weiterleitung von Metriken an Azure Monitor-Protokolle finden Sie weiter oben in diesem Artikel.  
-
-
-     - Für **Protokolle** werden die verschiedenen verfügbaren Kategorien abhängig vom Ressourcentyp aufgelistet. Überprüfen Sie alle Kategorien, die Sie an ein Ziel weiterleiten möchten.
+4. **Zu routende Protokolle und Metriken:** Wählen Sie für Protokolle entweder eine Kategoriegruppe aus, oder aktivieren Sie die einzelnen Kontrollkästchen für jede Kategorie von Daten, die Sie an die später angegebenen Ziele senden möchten. Die Liste der Kategorien unterscheidet sich je nach Azure-Dienst. Choose *allMetrics* if you want to store metrics into Azure Monitor Logs as well. 
 
 5. **Zieldetails:** Aktivieren Sie das Kontrollkästchen für jedes Ziel. Beim Aktivieren der einzelnen Kontrollkästchen werden Optionen angezeigt, mit denen Sie zusätzliche Informationen hinzufügen können.
 
@@ -112,10 +136,10 @@ Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monit
 
     1. **Log Analytics:** Geben Sie das Abonnement und den Arbeitsbereich ein.  Wenn Sie noch nicht über einen Arbeitsbereich verfügen, [erstellen Sie vor dem Fortfahren einen](../logs/quick-create-workspace.md).
 
-    1. **Event Hubs:** Legen Sie die folgenden Kriterien fest:
+    1. **Ereignis-Hubs** - Geben Sie die folgenden Kriterien an:
        - Das Abonnement, zu dem der Event Hub gehört
        - Der Event Hub-Namespace: Wenn Sie noch keinen besitzen, müssen Sie [einen erstellen](../../event-hubs/event-hubs-create.md).
-       - Der Name eines Event Hub (optional), an den alle Daten gesendet werden sollen. Wenn Sie keinen Namen angeben, wird eine Event Hub für jede Protokollkategorie erstellt. Wenn Sie mehrere Kategorien senden, können Sie einen Namen angeben, um die Anzahl der erstellten Event Hubs zu beschränken. Ausführliche Informationen dazu finden Sie unter [Kontingente und Grenzwerte in Azure Event Hubs](../../event-hubs/event-hubs-quotas.md).
+       - Ein Event Hub-Name (optional), an den alle Daten gesendet werden sollen. Wenn Sie keinen Namen angeben, wird eine Event Hub für jede Protokollkategorie erstellt. Wenn Sie mehrere Kategorien senden, können Sie einen Namen angeben, um die Anzahl der erstellten Event Hubs zu beschränken. Ausführliche Informationen dazu finden Sie unter [Kontingente und Grenzwerte in Azure Event Hubs](../../event-hubs/event-hubs-quotas.md).
        - Eine Event Hub-Richtlinie (optional): definiert die Berechtigungen für den Streamingmechanismus. Weitere Informationen finden Sie unter [Event Hubs-Features](../../event-hubs/event-hubs-features.md#publisher-policy).
 
     1. **Speicher:** Wählen Sie das Abonnement, das Speicherkonto und die Aufbewahrungsrichtlinie aus.
@@ -123,12 +147,12 @@ Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monit
         ![Senden an den Speicher](media/diagnostic-settings/storage-settings-new.png)
 
         > [!TIP]
-        > Legen Sie die Aufbewahrungsrichtlinie auf 0 fest, und löschen Sie die Daten mithilfe eines geplanten Auftrags manuell aus dem Speicher, um mögliche Verwirrung in Zukunft zu vermeiden.
+        > Denken Sie daran, die Aufbewahrungsrichtlinie auf 0 festzulegen, und verwenden Sie entweder die [ Lebenszyklusrichtlinie für den Azure-Speicher](/azure/storage/blobs/lifecycle-management-policy-configure) oder löschen Sie Ihre Daten mithilfe eines geplanten Auftrags aus dem Speicher. Diese Vorgehensweise sorgt wahrscheinlich für ein konstanteres Verhalten. 
         >
-        > Erstens: Wenn Sie Speicher für die Archivierung verwenden, sollten Sie die Daten in der Regel für mehr als 365 Tage aufbewahren. Zweitens: Wenn Sie eine Aufbewahrungsrichtlinie über 0 auswählen, wird das Ablaufdatum beim Zeitpunkt des Speicherns an die Protokolle angefügt. Nach dem Speichern können Sie das Datum für diese Protokolle nicht mehr ändern.
-        >
-        > Wenn Sie z. B. die Aufbewahrungsrichtlinie für *WorkflowRuntime* auf 180 Tage und dann 24 Stunden später auf 365 Tage festlegen, werden die in den ersten 24 Stunden gespeicherten Protokolle automatisch nach 180 Tagen gelöscht, während alle nachfolgenden Protokolle dieses Typs nach 365 Tagen automatisch gelöscht werden. Das Ändern der Aufbewahrungsrichtlinie zu einem späteren Zeitpunkt sorgt nicht dafür, dass die Protokolle aus den ersten 24 Stunden 365 Tage lang aufbewahrt werden.
+        > Erstens: Wenn Sie Speicher für die Archivierung verwenden, sollten Sie die Daten in der Regel für mehr als 365 Tage aufbewahren. Zweitens: Wenn Sie eine Aufbewahrungsrichtlinie über 0 auswählen, wird das Ablaufdatum beim Zeitpunkt des Speicherns an die Protokolle angefügt. Nach dem Speichern können Sie das Datum für diese Protokolle nicht mehr ändern. Wenn Sie z. B. die Aufbewahrungsrichtlinie für *WorkflowRuntime* auf 180 Tage und dann 24 Stunden später auf 365 Tage festlegen, werden die in den ersten 24 Stunden gespeicherten Protokolle automatisch nach 180 Tagen gelöscht, während alle nachfolgenden Protokolle dieses Typs nach 365 Tagen automatisch gelöscht werden. Das Ändern der Aufbewahrungsrichtlinie zu einem späteren Zeitpunkt sorgt nicht dafür, dass die Protokolle aus den ersten 24 Stunden 365 Tage lang aufbewahrt werden.
 
+     1. **Partnerintegration** - Sie müssen zunächst eine Partnerintegration in Ihrem Abonnement installieren. Die Konfigurationsoptionen variieren je nach Partner. Weitere Informationen finden Sie unter [Azure Monitor-Partnerintegrationen](/azure/partner-solutions/overview/). 
+    
 6. Klicken Sie auf **Speichern**.
 
 Nach einigen Augenblicken wird die neue Einstellung in der Liste der Einstellungen für diese Ressource angezeigt, und Protokolle werden an die angegebenen Ziele gestreamt, sobald neue Ereignisdaten generiert werden. Zwischen der Ausgabe eines Ereignisses und dessen [Anzeige in einem Log Analytics-Arbeitsbereich](../logs/data-ingestion-time.md) können bis zu 15 Minuten vergehen.
@@ -197,7 +221,10 @@ Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mithilf
 Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mithilfe der [Azure Monitor-REST-API](/rest/api/monitor/) finden Sie unter [Diagnoseeinstellungen](/rest/api/monitor/diagnosticsettings).
 
 ## <a name="create-at-scale-using-azure-policy"></a>Erstellen im großen Stil mit Azure Policy
-Da für jede Azure-Ressource eine Diagnoseeinstellung erstellt werden muss, können Sie mit Azure Policy beim Erstellen der einzelnen Ressourcen automatisch eine Diagnoseeinstellung erstellen. Jeder Azure-Ressourcentyp verfügt über einen eindeutigen Satz von Kategorien, die in der Diagnoseeinstellung aufgelistet werden müssen. Daher ist für jeden Ressourcentyp eine separate Richtliniendefinition erforderlich. Einige Ressourcentypen verfügen über integrierte Richtliniendefinitionen, die Sie ohne Änderungen zuweisen können. Bei anderen Ressourcentypen müssen Sie eine benutzerdefinierte Definition erstellen.
+
+Da für jede Azure-Ressource eine Diagnoseeinstellung erstellt werden muss, können Sie mit Azure Policy beim Erstellen der einzelnen Ressourcen automatisch eine Diagnoseeinstellung erstellen. Jeder Azure-Ressourcentyp verfügt über einen eindeutigen Satz von Kategorien, die in der Diagnoseeinstellung aufgelistet werden müssen. Aus diesem Grund ist für jeden Ressourcentyp eine eigene Richtliniendefinition erforderlich. Einige Ressourcentypen verfügen über integrierte Richtliniendefinitionen, die Sie ohne Änderungen zuweisen können. Bei anderen Ressourcentypen müssen Sie eine benutzerdefinierte Definition erstellen. 
+
+Mit der Hinzufügung von Gruppen für Ressourcenprotokollkategorien können Sie jetzt Optionen wählen, die dynamisch aktualisiert werden, wenn sich die Protokollkategorien ändern.  Weitere Informationen finden Sie in den Quellen für [Diagnoseeinstellungen](#sources), die weiter oben in diesem Artikel aufgeführt sind. 
 
 ### <a name="built-in-policy-definitions-for-azure-monitor"></a>Integrierte Richtliniendefinitionen für Azure Monitor
 Es gibt zwei integrierte Richtliniendefinitionen für jeden Ressourcentyp, eine zum Senden an den Log Analytics-Arbeitsbereich und eine andere zum Senden an einen Event Hub. Wenn Sie nur einen Speicherort benötigen, weisen Sie diese Richtlinie für den Ressourcentyp zu. Wenn Sie beide benötigen, weisen Sie beiden Richtliniendefinitionen für die Ressource zu.
@@ -267,12 +294,11 @@ Mithilfe von Initiativparametern können Sie den Arbeitsbereich oder andere Deta
 ![Screenshot: Initiativenparameter auf der Registerkarte „Parameter“](media/diagnostic-settings/initiative-parameters.png)
 
 ### <a name="remediation"></a>Wiederherstellung
-Die Initiative gilt für jeden virtuellen Computer, während er erstellt wird. Mit einem [Wartungstask](../../governance/policy/how-to/remediate-resources.md) werden die Richtliniendefinitionen in der Initiative für vorhandene Ressourcen bereitgestellt, sodass Sie Diagnoseeinstellungen für alle Ressourcen erstellen können, die bereits erstellt wurden. 
+Die Initiative gilt für jeden virtuellen Computer, während er erstellt wird. Mit einem [Wartungstask](../../governance/policy/how-to/remediate-resources.md) werden die Richtliniendefinitionen in der Initiative für vorhandene Ressourcen bereitgestellt, sodass Sie Diagnoseeinstellungen für alle Ressourcen erstellen können, die bereits erstellt wurden.
 
 Wenn Sie die Zuweisung mithilfe des Azure-Portals erstellen, können Sie gleichzeitig einen Wartungstask erstellen. Weitere Informationen zur Wartung finden Sie unter [Korrigieren nicht konformer Ressourcen mit Azure Policy](../../governance/policy/how-to/remediate-resources.md).
 
 ![Screenshot: Korrektur eines Log Analytics-Arbeitsbereichs im Rahmen einer Initiative](media/diagnostic-settings/initiative-remediation.png)
-
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -280,15 +306,15 @@ Wenn Sie die Zuweisung mithilfe des Azure-Portals erstellen, können Sie gleichz
 
 Beim Bereitstellen einer Diagnoseeinstellung erhalten Sie eine Fehlermeldung ähnlich wie *Metrikkategorie „xxxx“ wird nicht unterstützt*. Dieser Fehler wird möglicherweise angezeigt, auch wenn ihre vorige Bereitstellung erfolgreich war. 
 
-Dieses Problem tritt auf, wenn eine Resource Manager-Vorlage, die REST-API für Diagnoseeinstellungen, die Azure CLI oder Azure PowerShell verwendet wird. Über das Azure-Portal erstellte Diagnoseeinstellungen sind nicht betroffen, da nur die unterstützten Kategorienamen angezeigt werden.
+Das Problem tritt auf, wenn eine Resource Manager-Vorlage, die REST-API für Diagnoseeinstellungen, Azure CLI oder Azure PowerShell verwendet wird. Über das Azure-Portal erstellte Diagnoseeinstellungen sind nicht betroffen, da nur die unterstützten Kategorienamen angezeigt werden.
 
-Das Problem wird von einer vor Kurzem erfolgten Änderung an der zugrunde liegenden API verursacht. Alle anderen Metrikkategorien außer 'AllMetrics' werden nicht unterstützt und wurden nicht unterstützt, mit Ausnahme einiger weniger spezifischer Azure-Dienste. In der Vergangenheit wurden andere Kategorienamen beim Bereitstellen einer Diagnoseeinstellung ignoriert. Das Azure Monitor-Back-End hat diese Kategorien einfach zu 'AllMetrics' umgeleitet.  Im Februar 2021 wurde das Back-End aktualisiert, sodass speziell dafür gesorgt ist, dass die bereitgestellte Metrikkategorie korrekt ist. Diese Änderungen führt zu Fehlern bei einigen Bereitstellungen.
+Das Problem wird von einer vor Kurzem erfolgten Änderung an der zugrunde liegenden API verursacht. Andere Metrikkategorien als "AllMetrics" werden nicht unterstützt und wurden mit Ausnahme einiger weniger spezifischer Azure-Dienste auch nie unterstützt. In der Vergangenheit wurden andere Kategorienamen beim Bereitstellen einer Diagnoseeinstellung ignoriert. Das Azure Monitor-Backend leitete diese Kategorien auf "AllMetrics" um.  Im Februar 2021 wurde das Back-End aktualisiert, sodass speziell dafür gesorgt ist, dass die bereitgestellte Metrikkategorie korrekt ist. Diese Änderungen führt zu Fehlern bei einigen Bereitstellungen.
 
-Wenn Sie diesen Fehler erhalten, aktualisieren Sie Ihre Bereitstellungen, sodass alle Metrikkategorienamen durch 'AllMetrics' ersetzt werden, um das Problem zu beheben. Wenn bei der Bereitstellung zuvor mehrere Kategorien hinzugefügt wurden, sollten Sie nur den 'AllMetrics'-Verweis beibehalten. Wenn das Problem weiterhin auftritt, wenden Sie sich über das Azure-Portal an den Azure-Support. 
+Wenn Sie diesen Fehler erhalten, aktualisieren Sie Ihre Bereitstellungen, sodass alle Metrikkategorienamen durch 'AllMetrics' ersetzt werden, um das Problem zu beheben. Wenn bei der Bereitstellung zuvor mehrere Kategorien hinzugefügt wurden, sollten Sie nur den 'AllMetrics'-Verweis beibehalten. Wenn das Problem weiterhin besteht, wenden Sie sich an den Azure-Support über das Azure-Portal. 
 
-## <a name="setting-disappears-due-to-non-ascii-characters-in-resourceid"></a>Einstellung wird aufgrund von Nicht-ASCII-Zeichen in resourceID nicht mehr angezeigt
+### <a name="setting-disappears-due-to-non-ascii-characters-in-resourceid"></a>Einstellung wird aufgrund von Nicht-ASCII-Zeichen in resourceID nicht mehr angezeigt
 
-Diagnoseeinstellungen unterstützen keine resourceIDs mit Nicht-ASCII-Zeichen (z. B. „Präproduktion“). Da Sie Ressourcen in Azure nicht umbenennen können, besteht Ihre einzige Möglichkeit darin, eine neue Ressource ohne die Nicht-ASCII-Zeichen zu erstellen. Wenn sich die Zeichen in einer Ressourcengruppe befinden, können Sie die darin enthaltenen Ressourcen in eine neue verschieben. Andernfalls müssen Sie die Ressource neu erstellen. 
+Diagnoseeinstellungen unterstützen keine resourceIDs mit Nicht-ASCII-Zeichen (z. B. „Präproduktion“). Da Sie Ressourcen in Azure nicht umbenennen können, besteht Ihre einzige Möglichkeit darin, eine neue Ressource ohne die Nicht-ASCII-Zeichen zu erstellen. Wenn sich die Zeichen in einer Ressourcengruppe befinden, können Sie die darin enthaltenen Ressourcen in eine neue verschieben. Andernfalls müssen Sie die Ressource neu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

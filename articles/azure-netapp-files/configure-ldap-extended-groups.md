@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 11/02/2021
 ms.author: b-juche
-ms.openlocfilehash: 90a87c85bace64c7c1cfc4a171c5fcbdb8d263c9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 79bd8ca1855391365bfc33c7a259d1a984ce139c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130256360"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447054"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>Konfigurieren von ADDS LDAP mit erweiterten Gruppen für Zugriff auf NFS-Volumes
 
@@ -37,7 +37,7 @@ Dieser Artikel erklärt die Überlegungen und Schritte zum Aktivieren von LDAP m
 
 * Nachdem Sie das Volume erstellt haben, können Sie die Einstellung der LDAP-Option (aktiviert oder deaktiviert) nicht mehr ändern.  
 
-* In der folgenden Tabelle wird die Gültigkeitsdauer (Time to Live, TTL) für den LDAP-Cache beschrieben. Sie müssen warten, bis der Cache aktualisiert wird, bevor Sie versuchen, über einen Client auf eine Datei oder ein Verzeichnis zuzugreifen. Andernfalls wird auf dem Client eine Meldung vom Typ „Zugriff verweigert“ angezeigt. 
+* In der folgenden Tabelle wird die Gültigkeitsdauer (Time to Live, TTL) für den LDAP-Cache beschrieben. Sie müssen warten, bis der Cache aktualisiert wird, bevor Sie versuchen, über einen Client auf eine Datei oder ein Verzeichnis zuzugreifen. Andernfalls wird auf dem Client eine Meldung vom Typ „Zugriff oder Berechtigung verweigert“ angezeigt. 
 
     |     Fehlerzustand    |     Lösung    |
     |-|-|

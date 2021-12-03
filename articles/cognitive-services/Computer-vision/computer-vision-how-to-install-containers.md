@@ -12,12 +12,12 @@ ms.date: 10/14/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: Lokal, OCR, Docker, Container
-ms.openlocfilehash: bfe2bbe061f92c4290e63d36e8dcd647b4f7f830
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8692ebd01c794165fc93e1aaaae912b33a4c1b52
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "131078007"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062774"
 ---
 # <a name="install-read-ocr-docker-containers"></a>Installieren von Read-OCR-Docker-Containern
 
@@ -26,6 +26,9 @@ ms.locfileid: "131078007"
 Container ermöglichen Ihnen, die APIs für maschinelles Sehen in Ihrer eigenen Umgebung auszuführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie Container für maschinelles Sehen herunterladen, installieren und ausführen.
 
 Mit dem *Read*-OCR-Container können Sie gedruckten und handschriftlichen Text aus Bildern und Dokumenten mit Unterstützung für die Dateiformate JPEG, PNG, BMP, PDF und TIFF extrahieren. Weitere Informationen finden Sie in der [Schrittanleitung zur Lese-API](Vision-API-How-to-Topics/call-read-api.md).
+
+## <a name="whats-new"></a>Neuigkeiten
+Für bestehende Benutzer des Lesecontainers ist eine neue `3.2-model-2021-09-30-preview`-Version des Lesecontainers verfügbar, die 122 Sprachen unterstützt und allgemeine Leistungs- und KI-Verbesserungen bietet. Befolgen Sie die [Downloadanweisungen](#docker-pull-for-the-read-ocr-container), um zu beginnen.
 
 ## <a name="read-32-container"></a>Read 3.2-Container
 
@@ -88,12 +91,19 @@ Für das Lesen stehen Containerimages zur Verfügung.
 
 | Container | Container Registry/Repository/Imagename |
 |-----------|------------|
+| Read 3.2 model-2021-09-30-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2021-09-30-preview` |
+| Read 3.2 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2` |
 | Read 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Read 3.2 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2` |
 
 Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage herunterzuladen.
 
 ### <a name="docker-pull-for-the-read-ocr-container"></a>„docker pull“ für den OCR-Container für das Lesen
+
+Für die neueste Vorschauversion:
+
+```bash
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2021-09-30-preview
+```
 
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
@@ -123,6 +133,12 @@ Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, kö
 Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/), um den Container auszuführen. Genaue Informationen dazu, wie Sie die Werte `{ENDPOINT_URI}` und `{API_KEY}` abrufen, erhalten Sie unter [Ermitteln erforderlicher Parameter](#gathering-required-parameters).
 
 Es sind [Beispiele](computer-vision-resource-container-config.md#example-docker-run-commands) für den Befehl `docker run` verfügbar.
+
+Ersetzen Sie für die neueste Vorschauversion den 3.2-Pfad durch Folgendes:
+
+```
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2021-09-30-preview
+```
 
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
@@ -205,6 +221,10 @@ So finden Sie die Verbindungszeichenfolge:
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
 
+Für die neueste Vorschauversion:
+
+Verwenden Sie denselben Swagger-Pfad wie 3.2, aber einen anderen Port, wenn Sie bereits 3.2 am Port 5000 bereitgestellt haben.
+
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
 Verwenden Sie für Container-APIs den Host `http://localhost:5000`. Sie können den Swagger-Pfad unter `http://localhost:5000/swagger/vision-v3.2-read/swagger.json` anzeigen.
@@ -217,6 +237,7 @@ Verwenden Sie für Container-APIs den Host `http://localhost:5000`. Sie können 
 
 ### <a name="asynchronous-read"></a>Asynchrones Lesen
 
+Für die neueste Vorschauversion ist alles identisch mit 3.2, mit Ausnahme des zusätzlichen `"modelVersion": "2021-09-30-preview"`.
 
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 

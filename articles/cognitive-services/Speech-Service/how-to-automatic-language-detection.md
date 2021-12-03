@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/21/2021
 ms.author: eur
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 6d5d88ba1629dce89acb0345d727896c49680cbe
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 94b3056f6766be37451a5d309243592eb31256dd
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505004"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488428"
 ---
 # <a name="how-to-use-language-identification"></a>Verwenden der Sprachenerkennung
 
@@ -32,18 +32,18 @@ Dieser Artikel setzt voraus, dass Sie über ein Azure-Abonnement und eine Sprach
 
 ## <a name="language-identification-with-speech-to-text"></a>Sprachenerkennung mit Spracherkennung
 
-Für die Sprachenerkennung gilt derzeit ein Grenzwert von **vier Sprachen** für die Einzelerkennung und **zehn Sprachen** für die kontinuierliche Erkennung. Beachten Sie diese Einschränkung bei der Erstellung des `AutoDetectSourceLanguageConfig`-Objekts. In den folgenden Beispielen verwenden Sie `AutoDetectSourceLanguageConfig`, um eine Liste möglicher Sprachen zu definieren, die Sie erkennen möchten. Sie können dann beim Ausführen der Spracherkennung auf diese Sprachen verweisen.
+Für die Sprachenerkennung gilt derzeit ein Grenzwert von **vier Sprachen** für die anfängliche Erkennung und von **zehn Sprachen** für die kontinuierliche Erkennung. Beachten Sie diese Einschränkung bei der Erstellung des `AutoDetectSourceLanguageConfig`-Objekts. In den folgenden Beispielen verwenden Sie `AutoDetectSourceLanguageConfig`, um eine Liste möglicher Sprachen zu definieren, die Sie erkennen möchten. Sie können dann beim Ausführen der Spracherkennung auf diese Sprachen verweisen.
 
 > [!IMPORTANT]
 > Die kontinuierliche Sprachenerkennung wird nur in C#, C++ und Python unterstützt.
 
 ::: zone pivot="programming-language-csharp"
 
-Im folgenden Beispiel wird die Einzelerkennung ausgeführt und `Latency` priorisiert. Diese Eigenschaft kann je nach Priorität für Ihren Anwendungsfall auch auf `Accuracy` festgelegt werden. `Latency` ist die beste Option, die Sie verwenden können, wenn Sie ein latenzarmes Ergebnis benötigen (z. B. für Livestreamingszenarien), aber die Sprache im Audiobeispiel nicht kennen. 
+Im folgenden Beispiel wird die anfängliche Erkennung ausgeführt und `Latency` priorisiert. Diese Eigenschaft kann je nach Priorität für Ihren Anwendungsfall auch auf `Accuracy` festgelegt werden. `Latency` ist die beste Option, die Sie verwenden können, wenn Sie ein latenzarmes Ergebnis benötigen (z. B. für Livestreamingszenarien), aber die Sprache im Audiobeispiel nicht kennen. 
 
 `Accuracy` sollte in Szenarien verwendet werden, in denen die Audioqualität möglicherweise schlecht ist und eine höhere Wartezeit akzeptabel ist. Beispielsweise kann eine Voicemail Hintergrundgeräusche oder etwas Stille am Anfang aufweisen, und das Gewähren von mehr Zeit für die Engine verbessert die Erkennungsergebnisse.
 
-In beiden Fällen sollte die Einzelerkennung, wie unten dargestellt, **nicht** für Szenarien verwendet werden, in denen sich die Sprache innerhalb desselben Audiobeispiels ändern kann. Informationen zur kontinuierlichen Erkennung für diese Arten von Szenarien finden Sie weiter unten.
+In beiden Fällen sollte die anfängliche Erkennung, wie unten dargestellt, **nicht** für Szenarien verwendet werden, in denen sich die Sprache innerhalb desselben Audiobeispiels ändern kann. Informationen zur kontinuierlichen Erkennung für diese Arten von Szenarien finden Sie weiter unten.
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -163,11 +163,11 @@ using (var audioInput = AudioConfig.FromWavFileInput(@"path-to-your-audio-file.w
 
 ::: zone pivot="programming-language-cpp"
 
-Im folgenden Beispiel wird die Einzelerkennung ausgeführt und `Latency` priorisiert. Diese Eigenschaft kann je nach Priorität für Ihren Anwendungsfall auch auf `Accuracy` festgelegt werden. `Latency` ist die beste Option, die Sie verwenden können, wenn Sie ein latenzarmes Ergebnis benötigen (z. B. für einen Livestreamingfall), aber die Sprache im Audiobeispiel nicht kennen. 
+Im folgenden Beispiel wird die anfängliche Erkennung ausgeführt und `Latency` priorisiert. Diese Eigenschaft kann je nach Priorität für Ihren Anwendungsfall auch auf `Accuracy` festgelegt werden. `Latency` ist die beste Option, die Sie verwenden können, wenn Sie ein latenzarmes Ergebnis benötigen (z. B. für einen Livestreamingfall), aber die Sprache im Audiobeispiel nicht kennen. 
 
 `Accuracy` sollte in Szenarien verwendet werden, in denen die Audioqualität möglicherweise schlecht ist und eine höhere Wartezeit akzeptabel ist. Beispielsweise kann eine Voicemail Hintergrundgeräusche oder etwas Stille am Anfang aufweisen, und das Gewähren von mehr Zeit für die Engine verbessert die Erkennungsergebnisse.
 
-In beiden Fällen sollte die Einzelerkennung, wie unten dargestellt, **nicht** für Szenarien verwendet werden, in denen sich die Sprache innerhalb desselben Audiobeispiels ändern kann. Informationen zur kontinuierlichen Erkennung für diese Arten von Szenarien finden Sie weiter unten.
+In beiden Fällen sollte die anfängliche Erkennung, wie unten dargestellt, **nicht** für Szenarien verwendet werden, in denen sich die Sprache innerhalb desselben Audiobeispiels ändern kann. Informationen zur kontinuierlichen Erkennung für diese Arten von Szenarien finden Sie weiter unten.
 
 ```cpp
 using namespace std;

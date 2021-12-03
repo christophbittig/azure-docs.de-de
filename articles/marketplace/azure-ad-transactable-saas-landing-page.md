@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: 4bfc29472373a53bcebb2ba59134d1f3702d4793
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/25/2021
+ms.openlocfilehash: cd03abdf01d11fa3b6de869a7d95feafff0ca393
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549871"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060356"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Erstellen der Landing Page für Ihr transaktionsfähiges SaaS-Angebot im kommerziellen Marketplace
 
@@ -48,6 +48,8 @@ In den folgenden Abschnitten werden Sie durch die Schritte zum Erstellen einer L
 
 Der kommerzielle Marketplace ist vollständig in Azure AD integriert. Käufer authentifizieren sich mit einem [Azure AD-Konto oder einem Microsoft-Konto (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology), um den Marketplace zu nutzen. Nach dem Kauf wechselt der Käufer vom kommerziellen Marketplace zu Ihrer Landing Page-URL, um das Abonnement Ihrer SaaS-Anwendung zu aktivieren und zu verwalten. Sie müssen es dem Käufer ermöglichen, sich mit dem einmaligen Anmelden von Azure AD bei Ihrer Anwendung anzumelden. (Die URL der Landing Page wird auf der Seite [Technische Konfiguration](plan-saas-offer.md#technical-information) des Angebots angegeben.)
 
+[!INCLUDE [pound-sign-note](./includes/pound-sign-note.md)]
+
 Zur Verwendung der Identität muss zunächst sichergestellt werden, dass Ihre Landing Page als Azure AD-Anwendung registriert ist. Durch die Registrierung der Anwendung können Sie Azure AD zum Authentifizieren von Benutzern und Anfordern des Zugriffs auf Benutzerressourcen verwenden. Sie kann als Anwendungsdefinition betrachtet werden, durch die der Dienst angewiesen wird, wie basierend auf den App-Einstellungen Token für die App ausgestellt werden sollen.
 
 ### <a name="register-a-new-application-using-the-azure-portal"></a>Registrieren einer neuen Anwendung mit dem Azure-Portal
@@ -79,7 +81,7 @@ Dadurch kann die Lösung auch in Szenarien verwendet werden, die auf dem Prinzip
 
 ## <a name="resolve-the-marketplace-purchase-identification-token"></a>Auflösen des Identifizierungstokens des Marketplace-Kaufs
 
-Wenn der Käufer auf Ihre Landing Page weitergeleitet wird, wird dem URL-Parameter ein Token hinzugefügt. Dieses Token unterscheidet sich sowohl vom Token, das von Azure AD ausgestellt wird, als auch vom Zugriffstoken, das für die Dienst-zu-Dienst-Authentifizierung verwendet wird. Vielmehr wird dieses Token als Eingabe für den Auflösungsaufruf der [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) verwendet, um die Einzelheiten des Abonnements abzurufen. Wie bei allen Aufrufen der SaaS-Fulfillment-APIs wird Ihre Dienst-zu-Dienst-Anforderung mit einem Zugriffstoken authentifiziert, das auf der Azure AD-Anwendungs-ID (Benutzer) der App für die Dienst-zu-Dienst-Authentifizierung basiert.
+Wenn der Käufer auf Ihre Landing Page weitergeleitet wird, wird dem URL-Parameter ein Token hinzugefügt. Dieses Token unterscheidet sich sowohl vom Token, das von Azure AD ausgestellt wird, als auch vom Zugriffstoken, das für die Dienst-zu-Dienst-Authentifizierung verwendet wird. Vielmehr wird dieses Token als Eingabe für den Auflösungsaufruf der [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription) verwendet, um die Einzelheiten des Abonnements abzurufen. Wie bei allen Aufrufen der SaaS-Fulfillment-APIs wird Ihre Dienst-zu-Dienst-Anforderung mit einem Zugriffstoken authentifiziert, das auf der Azure AD-Anwendungs-ID (Benutzer) der App für die Dienst-zu-Dienst-Authentifizierung basiert.
 
 > [!NOTE]
 > In den meisten Fällen sollte dieser Aufruf von einer zweiten Anwendung mit einem einzelnen Mandanten erfolgen. Weitere Informationen finden Sie unter [Verwenden von zwei Azure AD-Apps, um die Sicherheit in einer Produktionsumgebung zu verbessern](#use-two-azure-ad-apps-to-improve-security-in-production) weiter oben in diesem Artikel.
@@ -90,7 +92,7 @@ Zur Authentifizierung Ihrer Anwendung mit den SaaS-Fulfillment-APIs benötigen S
 
 ### <a name="call-the-resolve-endpoint"></a>Aufrufen des Auflösungsendpunkts
 
-Die SaaS-Fulfillment-APIs implementieren den [Auflösungsendpunkt](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription), der aufgerufen werden kann, um die Gültigkeit des Marketplace-Tokens zu bestätigen und Informationen zum Abonnement zurückzugeben.
+Die SaaS-Fulfillment-APIs implementieren den [Auflösungsendpunkt](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription), der aufgerufen werden kann, um die Gültigkeit des Marketplace-Tokens zu bestätigen und Informationen zum Abonnement zurückzugeben.
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>Lesen von Informationen aus Ansprüchen, die im ID-Token codiert sind
 

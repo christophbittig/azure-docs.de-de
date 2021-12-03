@@ -11,7 +11,7 @@ metadata:
   ms.collection: collection
   ms.author: sgilley
   author: sdgilley
-  ms.date: 08/23/2021
+  ms.date: 10/21/2021
   ms.custom: jordan-changes
 highlightedContent:
   items:
@@ -51,15 +51,18 @@ conceptualContent:
           text: 'Automatisiertes ML: Trainieren eines Klassifizierungsmodells'
     - title: Bereitstellen von Modellen
       links:
-        - url: how-to-deploy-and-where.md
-          itemType: how-to-guide
-          text: Bereitstellen eines Modells
+        - url: concept-endpoints.md
+          itemType: concept
+          text: Optimieren der Modellimplementierung mit Endpunkten (Vorschau)
         - url: how-to-deploy-managed-online-endpoints.md
           itemType: how-to-guide
           text: Echtzeitbewertung mit einem verwalteten Endpunkt (Vorschau)
         - url: how-to-use-batch-endpoint.md
           itemType: how-to-guide
           text: Batchbewertung mit verwalteten Endpunkten (Vorschau)
+        - url: how-to-deploy-and-where.md
+          itemType: how-to-guide
+          text: Optionen zum Bereitstellen von Modellen ohne Verwendung von Endpunkten
     - title: Verwalten des ML-Lebenszyklus (MLOps)
       links:
         - url: how-to-track-monitor-analyze-runs.md

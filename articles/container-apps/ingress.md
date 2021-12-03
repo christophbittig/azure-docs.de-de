@@ -1,19 +1,19 @@
 ---
 title: Einrichten von eingehendem HTTPS-Datenverkehr in Azure Container Apps-Vorschau
 description: Aktivieren von öffentlichen und privaten Endpunkten in Ihrer App mit Azure Container Apps
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: how-to
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7ff5f10097fcac78596d8b32ed7a5a72d331486a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5979588ec977ef7655fab21ef30e4fd233c12b43
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095478"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026423"
 ---
 # <a name="set-up-https-ingress-in-azure-container-apps-preview"></a>Einrichten von eingehendem HTTPS-Datenverkehr in Azure Container Apps-Vorschau
 

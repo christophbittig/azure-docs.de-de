@@ -5,12 +5,12 @@ description: Es wird beschrieben, wie Sie ein- und ausgehenden Datenverkehr bei 
 services: container-service
 ms.topic: article
 ms.date: 03/16/2021
-ms.openlocfilehash: b05c4add0a62f07b187376d670f23179ba97f3a8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4ceb9059456a4f5b20a346e1688b82320e5041fe
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767437"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577648"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
 
@@ -206,7 +206,7 @@ az aks create \
     --network-policy calico
 ```
 
-Die Erstellung des Clusters dauert einige Minuten. Ihr Cluster wird standardmäßig nur mit einem Linux-Knotenpool erstellt. Wenn Sie Windows-Knotenpools verwenden möchten, können Sie einen hinzufügen. Beispiel:
+Die Erstellung des Clusters dauert einige Minuten. Ihr Cluster wird standardmäßig nur mit einem Linux-Knotenpool erstellt. Wenn Sie Windows-Knotenpools verwenden möchten, können Sie einen hinzufügen. Zum Beispiel:
 
 ```azurecli
 az aks nodepool add \
@@ -305,7 +305,7 @@ kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Legen Sie dieses Mal einen Timeoutwert auf *2* Sekunden fest. Die Netzwerkrichtlinie blockiert jetzt sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann. Dies ist im folgenden Beispiel dargestellt:
 
 ```console
-wget -qO- --timeout=2 http://backend
+wget -O- --timeout=2 --tries=1 http://backend
 ```
 
 ```output
@@ -392,7 +392,7 @@ kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Die Netzwerkrichtlinie blockiert sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann. Dies ist im folgenden Beispiel dargestellt:
 
 ```console
-wget -qO- --timeout=2 http://backend
+wget -O- --timeout=2 --tries=1 http://backend
 ```
 
 ```output
@@ -489,7 +489,7 @@ kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubu
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass die Netzwerkrichtlinie Datenverkehr nun ablehnt:
 
 ```console
-wget -qO- --timeout=2 http://backend.development
+wget -O- --timeout=2 --tries=1 http://backend.development
 ```
 
 ```output

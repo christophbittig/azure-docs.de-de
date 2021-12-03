@@ -2,18 +2,18 @@
 title: Erwerben einer Azure-Reservierung
 description: Informieren Sie sich über wichtige Aspekte, wenn Sie eine Azure-Reservierung erwerben.
 author: bandersmsft
-ms.reviewer: primattal
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/21/2021
 ms.author: banders
-ms.openlocfilehash: bbd57ed54171785ab8f2aedea93fa8c56cc0319c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f7c9551b3edee5c4e491cd4218e7b7973f01f287
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128653367"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244151"
 ---
 # <a name="buy-a-reservation"></a>Kaufen einer Reservierung
 
@@ -23,7 +23,9 @@ Mit Azure-Reservierungen können Sie Geld sparen, indem Sie sich bei zahlreichen
 
 Um eine Reservierung kaufen zu können, müssen Sie für ein Enterprise-Abonnement (MS-AZR-0017P oder MS-AZR-0148P), für ein Abonnement mit nutzungsbasierter Zahlung (MS-AZR-0003P oder MS-AZR-0023P) oder für ein Abonnement mit Microsoft-Kundenvereinbarung über die Besitzer- oder Reservierungskäuferrolle verfügen. Cloudlösungsanbieter können Azure-Reservierungen über das Azure-Portal oder  [Partner Center](/partner-center/azure-reservations)  erwerben.
 
-EA-Kunden (Enterprise Agreement) können Käufe für EA-Administratoren beschränken, indem sie die Option **Reservierte Instanzen hinzufügen** im EA-Portal deaktivieren. EA-Administratoren benötigen für mindestens ein EA-Abonnement Zugriff als Besitzer oder Reservierungskäufer, um eine Reservierung erwerben zu können. Die Option ist nützlich für Unternehmen, die ein zentralisiertes Team für den Erwerb von Reservierungen benötigen.
+EA-Kunden (Enterprise Agreement) können Käufe für EA-Administratoren beschränken, indem sie die Option **Reservierte Instanzen hinzufügen** im EA-Portal deaktivieren. Direkte EA-Kunden können nun die Einstellung „Reservierte Instanz“ im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts) deaktivieren. Navigieren Sie zum Menü „Richtlinien“, um die Einstellungen zu ändern.
+
+EA-Administratoren benötigen für mindestens ein EA-Abonnement Zugriff als Besitzer oder Reservierungskäufer, um eine Reservierung erwerben zu können. Die Option ist nützlich für Unternehmen, die ein zentralisiertes Team für den Erwerb von Reservierungen benötigen.
 
 Ein Reservierungsrabatt gilt nur für Ressourcen in Verbindung mit Abonnements, die über Enterprise, einen Cloud Solution Provider (CSP), eine Microsoft-Kundenvereinbarung und individuelle Pläne mit nutzungsbasierten Tarifen erworben wurden.
 

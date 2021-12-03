@@ -7,12 +7,12 @@ ms.date: 08/25/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 39c96be31a8a8be0cf1c2fc4f16fcbfa7468cb41
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 28efc06f2d7c3b5a9fca8d96dda7fa885a98f088
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584235"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070335"
 ---
 # <a name="how-to-authenticate-and-authorize-iot-central-rest-api-calls"></a>Wie Sie IoT Central-REST-API-Aufrufe authentifizieren und autorisieren
 
@@ -164,4 +164,4 @@ Um ein Bearertoken zu verwenden, wenn Sie einen REST-API-Aufruf ausführen, sieh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie REST-API-Aufrufe autorisiert werden, empfiehlt es sich als nächsten Schritt: [ Wie die IoT Central REST-API zum Verwalten von Benutzern und Rollen verwendet wird](howto-manage-users-roles-with-rest-api.md).
+Nachdem Sie erfahren haben, wie REST-API-Aufrufe autorisiert werden, wird als nächster Schritt empfohlen: [ Verwenden der IoT Central-REST-API zum Abfragen von Geräten](howto-query-with-rest-api.md).

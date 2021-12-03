@@ -4,23 +4,23 @@ description: Verfolgen Sie Bindungen mit Azure-Kunden nach, indem Sie eine Partn
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 09/08/2021
+ms.date: 11/04/2021
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f554c8e29cbff3b78a3390cb3f6ef155a7a61b6f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b5951b46448d7bfa1ac5010bd17a0a5e7d98b89f
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124744168"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577800"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
 Microsoft-Partner stellen Dienste bereit, die Kunden beim Erreichen ihrer Geschäftsziele und der Ziele beim Einsatz von Microsoft-Produkten unterstützen. Wenn die Partner Azure-Dienste im Auftrag des Kunden verwalten, konfigurieren und unterstützen, benötigen sie als Benutzer Zugriff auf die Umgebung des Kunden. Mit dem Partner Admin Link (PAL) können Partner ihre Partnernetzwerk-ID mit den für die Bereitstellung von Diensten verwendeten Anmeldeinformationen verknüpfen.
 
-Mithilfe des PALs kann Microsoft Partner ermitteln und würdigen, die zum Erfolg von Azure-Kunden beitragen. Microsoft kann den Einfluss und den Verbrauch in Azure basierend auf den Berechtigungen des Kontos (Azure-Rolle) sowie auf dem Umfang (Abonnement, Ressourcengruppe, Ressource) Ihrem Unternehmen zuordnen.
+Mithilfe des PALs kann Microsoft Partner ermitteln und würdigen, die zum Erfolg von Azure-Kunden beitragen. Microsoft kann den Einfluss und den Verbrauch in Azure basierend auf den Berechtigungen des Kontos (Azure-Rolle) sowie auf dem Umfang (Abonnement, Ressourcengruppe, Ressource) Ihrem Unternehmen zuordnen. Wenn eine Gruppe über Azure RBAC-Zugriff verfügt, wird PAL für alle Benutzer in der Gruppe erkannt.
 
 ## <a name="get-access-from-your-customer"></a>Erlangen des Zugriffs seitens Ihres Kunden
 

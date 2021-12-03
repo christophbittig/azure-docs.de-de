@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, portieren, Körper, Body Tracking, Gelenk, Hierarchie, Knochen, Verbindung
-ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2616573d0474addb14abe5f6e932181b097bed46
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "85276736"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223448"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Body Tracking in Azure Kinect: Gelenke
 
@@ -25,12 +25,14 @@ Die Position und Orientierung von Gelenken werden relativ zum globalen Tiefensen
 
 ## <a name="joint-coordinates"></a>Gelenkkoordinaten
 
-Position und Orientierung jedes Gelenks bilden ein eigenes Gelenkkoordinatensystem. Alle Gelenkkoordinatensysteme sind absolute Koordinatensysteme, aber relativ zum 3D-Koordinatensystem der Tiefenkamera.
+Position und Orientierung jedes Gelenks bilden ein eigenes rechtshändiges Gelenkkoordinatensystem. Alle Gelenkkoordinatensysteme sind absolute Koordinatensysteme im 3D-Koordinatensystem der Tiefenkamera.
 
 > [!NOTE]
-> Gelenkkoordinaten befinden sich in Achsenorientierung. Die Achsenorientierung wird häufig bei kommerziellen Avataren, Spiele-Engines und Renderingsoftware verwendet. Die Verwendung der Achsenorientierung vereinfacht gespiegelte Bewegungen, beispielsweise das Anheben beider Arme um 20 Grad.
+> Die Auswahl der Ausrichtung der gespiegelten Achsen für die entsprechenden Gelenke auf den beiden Seiten des Körpers soll die Spiegelbewegung vereinfachen, z. B. beide Arme um +20° heben, was bei kommerziellen Avataren, Game-Engines und Renderingsoftware üblich ist.
 
 ![Gelenkkoordinaten](./media/concepts/joint-coordinates.png)
+
+Legende: | x-Achse = rot | y-Achse = grün | z-Achse = blau |
 
 ## <a name="joint-hierarchy"></a>Gelenkhierarchie
 

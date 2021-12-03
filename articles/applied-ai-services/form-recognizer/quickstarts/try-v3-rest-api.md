@@ -7,25 +7,27 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
-ms.openlocfilehash: 6ee2aca6eb48b87a1d773d8d713b954eeb08beca
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: b73f742054962e6d598b8313d565d1f15739fca4
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240431"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554121"
 ---
-# <a name="get-started-form-recognizer-rest-api---preview"></a>Erste Schritte: REST-API für Formularerkennung | Vorschau
+# <a name="quickstart-rest-api---preview"></a>Schnellstart: REST-API | Vorschau
 
 >[!NOTE]
-> Formularerkennung v3.0 befindet sich derzeit in der öffentlichen Vorschauphase. Dies bedeutet, dass einige Features unter Umständen nicht unterstützt werden oder nur eingeschränkt verwendbar sind. 
+> Formularerkennung v3.0 befindet sich derzeit in der öffentlichen Vorschauphase. Dies bedeutet, dass einige Features unter Umständen nicht unterstützt werden oder nur eingeschränkt verwendbar sind.
 
 | [Formularerkennungs-REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) | [Formularerkennungs-REST-API](/rest/api/azure/) |
 
-Die Formularerkennung unter Azure Cognitive Services ist ein Clouddienst, bei dem maschinelles Lernen genutzt wird, um Formularfelder, Text und Tabellen aus Ihren Dokumenten zu extrahieren und zu analysieren. Sie können Formularerkennungsmodelle leicht aufrufen, indem Sie unsere Clientbibliothek-SDKs in Ihre Workflows und Anwendungen integrieren.
+Informieren Sie sich über die ersten Schritte mit der Azure-Formularerkennung mit der Programmiersprache C#. Die Azure-Formularerkennung ist ein cloudbasierter Dienst von Azure Applied AI Services, bei dem maschinelles Lernen genutzt wird, um Formularfelder, Text und Tabellen aus Ihren Dokumenten zu extrahieren und zu analysieren. Sie können Formularerkennungsmodelle leicht aufrufen, indem Sie unsere Clientbibliothek-SDKs in Ihre Workflows und Anwendungen integrieren. Sie sollten den kostenlosen Dienst nutzen, wenn Sie die Technologie erlernen. Bedenken Sie, dass die Anzahl der kostenlosen Seiten auf 500 pro Monat beschränkt ist.
 
-### <a name="form-recognizer-models"></a>Formularerkennungsmodelle
+Weitere Informationen zu Funktionen der Formularerkennung und zu Entwicklungsoptionen finden Sie auf unserer [Übersichtsseite](../overview.md#form-recognizer-features-and-development-options).
+## <a name="form-recognizer-models"></a>Formularerkennungsmodelle
 
  Die REST-API unterstützt die folgenden Modelle und Funktionen:
 
@@ -37,13 +39,35 @@ Die Formularerkennung unter Azure Cognitive Services ist ein Clouddienst, bei de
 * Ausweisdokumente: Analysieren und Extrahieren häufig verwendeter Felder aus Ausweisdokumenten, z. B. Pässen oder Führerscheinen, mit einem vortrainierten Modell für Ausweisdokumente.
 * Visitenkarten: Analysieren und Extrahieren häufig verwendeter Felder aus Visitenkarten mit einem vortrainierten Modell für Visitenkarten.
 
+## <a name="analyze-document"></a>Analysieren eines Dokuments
+
+Mit Formularerkennung v3.0 werden das Analysedokument und GET-Vorgänge (Get Analyze Result) für das Layout, vordefinierte Modelle und benutzerdefinierte Modelle zu einem zentralen Vorgangspaar zusammengefasst, indem den POST- und GET-Vorgängen  `modelIds` zugewiesen werden:
+
+```http
+POST /documentModels/{modelId}:analyze
+
+GET /documentModels/{modelId}/analyzeResults/{resultId}
+```
+
+In der folgenden Tabelle sind die Aktualisierungen der REST-API-Aufrufe dargestellt.
+
+|Funktion| v2.1 | v3.0|
+|-----|-----|----|
+|Allgemeines Dokument | – |`/documentModels/prebuilt-document:analyze` |
+|Layout |`/layout/analyze` | ``/documentModels/prebuilt-layout:analyze``|
+|Rechnung | `/prebuilt/invoice/analyze` | `/documentModels/prebuilt-invoice:analyze` |
+|Rechnung | `/prebuilt/receipt/analyze` | `/documentModels/prebuilt-receipt:analyze` |
+|ID-Dokument| `/prebuilt/idDocument/analyze` | `/documentModels/prebuilt-idDocument:analyze`|
+|Visitenkarte| `/prebuilt/businessCard/analyze`  | `/documentModels/prebuilt-businessCard:analyze` |
+|Benutzerdefiniert| `/custom/{modelId}/analyze` |`/documentModels/{modelId}:analyze`|
+
 In dieser Schnellstartanleitung verwenden Sie die folgenden Funktionen, um Daten und Werte aus Formularen und Dokumenten zu analysieren und zu extrahieren:
 
-* [**Allgemeines Dokument**](#try-it-general-document-model)
+* [🆕 **Allgemeines Dokument:**](#try-it-general-document-model) Analysieren und Extrahieren von Text, Tabellen, Strukturen, Schlüssel-Wert-Paaren und benannten Entitäten
 
-* [**Layout**](#try-it-layout-model)
+* [**Layout:**](#try-it-layout-model) Analysieren und Extrahieren von Tabellen, Zeilen, Wörtern und Auswahlmarkierungen, z. B. Optionsfeldern und Kontrollkästchen in Formulardokumenten, ohne ein Modell trainieren zu müssen
 
-* [**Vordefinierte Rechnung**]#try-it-prebuilt-invoice-model)
+* [**Vordefiniertes Modell:**](#try-it-prebuilt-model) Analysieren und Extrahieren von Daten aus gängigen Dokumenttypen mit einem vorab trainierten Modell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,9 +82,21 @@ In dieser Schnellstartanleitung verwenden Sie die folgenden Funktionen, um Daten
 > [!TIP]
 > Erstellen Sie eine Cognitive Services-Ressource, wenn Sie planen, über einen einzelnen Endpunkt bzw. Schlüssel auf mehrere Cognitive Services-Instanzen zuzugreifen. Erstellen Sie eine Formularerkennungsressource, falls nur auf die Formularerkennung zugegriffen werden soll. Beachten Sie hierbei, dass Sie eine Ressource mit einem einzelnen Dienst benötigen, falls Sie die [Azure Active Directory-Authentifizierung](../../../active-directory/authentication/overview-authentication.md) nutzen möchten.
 
-* Klicken Sie nach der Bereitstellung Ihrer Ressource auf **Zu Ressource wechseln**. Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Formularerkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt:
+* Wählen Sie nach der Bereitstellung der Ressource **Zu Ressource wechseln** aus. Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Formularerkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt:
 
   :::image type="content" source="../media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal.":::
+
+### <a name="select-a-code-sample-to-copy-and-paste-into-your-application"></a>Wählen Sie ein Codebeispiel zum Kopieren und Einfügen in Ihre Anwendung aus:
+
+* [**Allgemeines Dokument**](#try-it-general-document-model)
+
+* [**Layout**](#try-it-layout-model)
+
+* [**Vordefiniertes Modell**](#try-it-prebuilt-model)
+
+> [!IMPORTANT]
+>
+> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. Verwenden Sie in der Produktionsumgebung sichere Methoden, um Ihre Anmeldeinformationen zu speichern und darauf zuzugreifen. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../../../cognitive-services/cognitive-services-security.md).
 
 ## <a name="try-it-general-document-model"></a>**Try it** (Ausprobieren): Allgemeines Dokumentmodell
 
@@ -75,7 +111,7 @@ In dieser Schnellstartanleitung verwenden Sie die folgenden Funktionen, um Daten
 #### <a name="request"></a>Anforderung
 
 ```bash
- curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-document:analyze?api-version=2021-09-30-preview&api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+ curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-document:analyze?api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
 #### <a name="operation-location"></a>Operation-Location
@@ -86,7 +122,7 @@ https://{host}/formrecognizer/documentModels/{modelId}/analyzeResults/**{resultI
 
 ### <a name="get-general-document-results"></a>Abrufen von Ergebnissen für allgemeine Dokumente
 
-Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.api.cognitive.microsoft.com/formrecognizer/documentModels/prebuilt-document:analyze?api-version=2021-09-30-preview&stringIndexType=textElements)**-API die **[Get Analyze Result](https://westus.api.cognitive.microsoft.com/formrecognizer/documentModels/prebuilt-document/analyzeResults/{resultId}?api-version=2021-09-30-preview)**-API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)**-API die **[Get Analyze Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetAnalyzeDocumentResult)**-API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `{endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{subscription key}` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
@@ -96,7 +132,7 @@ Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.api.cognitiv
 #### <a name="request"></a>Anforderung
 
 ```bash
-curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-document/analyzeResults/{resultId}?api-version=2021-09-30-preview&api-version=2021-09-30-preview"
+curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-document/analyzeResults/{resultId}?api-version=2021-09-30-preview"
 ```
 
 ### <a name="examine-the-response"></a>Untersuchen der Antwort
@@ -333,7 +369,7 @@ Der Knoten `"analyzeResults"` enthält den gesamten erkannten Text. Text ist nac
 
 ```bash
 bash
- curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-layout:analyze?api-version=2021-09-30-preview&api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+ curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-layout:analyze?api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
 #### <a name="operation-location"></a>Operation-Location
@@ -354,18 +390,20 @@ Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.api.cognitiv
 #### <a name="request"></a>Anforderung
 
 ```bash
-curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-layout/analyzeResults/{resultId}?api-version=2021-09-30-preview&api-version=2021-09-30-preview"
+curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-layout/analyzeResults/{resultId}?api-version=2021-09-30-preview"
 ```
 
 ### <a name="examine-the-response"></a>Untersuchen der Antwort
 
 Sie erhalten die Antwort `200 (Success)` mit der folgenden JSON-Ausgabe: Das erste Feld, `"status"`, gibt den Status des Vorgangs an. Wenn der Vorgang nicht abgeschlossen ist, ist der Wert von `"status"``"running"` oder `"notStarted"`, und Sie sollten die API Aufrufen entweder manuell oder über ein Skript erneut aufrufen. Ein Intervall von mindestens einer Sekunde zwischen den Aufrufen wird empfohlen.
 
-## <a name="try-it-prebuilt-invoice-model"></a>**Try it** (Ausprobieren): Vordefiniertes Rechnungsmodell
+## <a name="try-it-prebuilt-model"></a>**Probieren Sie es aus:** Vordefiniertes Modell
+
+In diesem Beispiel wird veranschaulicht, wie Sie Daten aus bestimmten Arten von häufig verwendeten Dokumenttypen mit vortrainierten Modellen analysieren, wobei eine Rechnung als Beispiel verwendet wird.
 
 > [!div class="checklist"]
 >
-> * Für dieses Beispiel benötigen Sie eine **Rechnungsdokumentdatei unter einem URI**. Für diese Schnellstartanleitung können Sie unser [Beispiel für ein Rechnungsdokument](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf) verwenden.
+> * In diesem Beispiel analysieren Sie ein Rechnungsdokument mithilfe eines vordefinierten Modells. Für diese Schnellstartanleitung können Sie unser [Beispiel für ein Rechnungsdokument](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf) verwenden.
 
 ### <a name="choose-the-invoice-prebuilt-model-id"></a>Auswählen der ID für das vordefinierte Rechnungsmodell
 
@@ -380,20 +418,23 @@ Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `{endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{subscription key}` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
-1. Ersetzen Sie `\"{your-document-url}` durch eine der Beispiel-URLs.
+1. Ersetzen Sie `\"{your-document-url}` durch eine URL für ein Rechnungsbeispiel:
+
+    ```http
+    https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf
+    ```
 
 #### <a name="request"></a>Anforderung
 
 ```bash
-bash
- curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-invoice:analyze?api-version=2021-09-30-preview&api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+ curl -v -i POST "https://{endpoint}/formrecognizer/documentModels/prebuilt-invoice:analyze?api-version=2021-09-30-preview HTTP/1.1" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
 #### <a name="operation-location"></a>Operation-Location
 
 Sie erhalten die Antwort `202 (Success)` mit einem **Operation-Location**-Header. Der Wert dieses Headers enthält eine Ergebnis-ID, mit der Sie den Status des asynchronen Vorgangs abfragen und die Ergebnisse abrufen können:
 
-https:\//{host}/formrecognizer/documentModels/{modelId}/analyzeResults/**{resultId}**?api-version=2021-07-30-preview
+https://{host}/formrecognizer/documentModels/{modelId}/analyzeResults/**{resultId}**?api-version=2021-07-30-preview
 
 ### <a name="get-invoice-results"></a>Abrufen von Rechnungsergebnissen
 
@@ -407,7 +448,7 @@ Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.api.cognitiv
 #### <a name="request"></a>Anforderung
 
 ```bash
-curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-invoice/analyzeResults/{resultId}?api-version=2021-09-30-preview&api-version=2021-09-30-preview"
+curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/prebuilt-invoice/analyzeResults/{resultId}?api-version=2021-09-30-preview"
 ```
 
 ### <a name="examine-the-response"></a>Untersuchen der Antwort
@@ -422,7 +463,7 @@ Sie erhalten die Antwort `200 (Success)` mit der folgenden JSON-Ausgabe: Das ers
 
 ### <a name="get-a-list-of-models"></a>Abrufen einer Liste mit Modellen
 
-Bei der   [List Models](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetModels)-Anforderung der Vorschauversion 3.0 wird eine paginierte Liste mit vordefinierten und benutzerdefinierten Modellen zurückgegeben. In dieser Liste sind nur Modelle mit dem Status „Erfolgreich“ enthalten. Modelle mit dem Status „In Bearbeitung“ oder „Fehler“ können über die [List Operations](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetOperations)-Anforderung enumeriert werden. Verwenden Sie die „nextLink“-Eigenschaft, um auf die nächste Seite mit Modellen zuzugreifen (falls zutreffend). Um weitere Informationen zu den einzelnen zurückgegebenen Modellen zu erhalten, z. B. die Liste mit unterstützten Dokumenten und den zugehörigen Feldern, übergeben Sie die „modelId“ für die   [Get Model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetOperations)-Anforderung. 
+Bei der   [List Models](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetModels)-Anforderung der Vorschauversion 3.0 wird eine paginierte Liste mit vordefinierten und benutzerdefinierten Modellen zurückgegeben. In dieser Liste sind nur Modelle mit dem Status „Erfolgreich“ enthalten. Modelle mit dem Status „In Bearbeitung“ oder „Fehler“ können über die [List Operations](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetOperations)-Anforderung enumeriert werden. Verwenden Sie die „nextLink“-Eigenschaft, um auf die nächste Seite mit Modellen zuzugreifen (falls zutreffend). Um weitere Informationen zu den einzelnen zurückgegebenen Modellen zu erhalten, z. B. die Liste mit unterstützten Dokumenten und den zugehörigen Feldern, übergeben Sie die „modelId“ für die   [Get Model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetOperations)-Anforderung.
 
 ```bash
 curl -v -X GET "https://{endpoint}/formrecognizer/documentModels?api-version=2021-07-30-preview"
@@ -433,7 +474,7 @@ curl -v -X GET "https://{endpoint}/formrecognizer/documentModels?api-version=202
 Mit der [Get Model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetModel)-Anforderung der Vorschauversion 3.0 werden Informationen zu einem bestimmten Modell mit dem Status „Erfolgreich“ abgerufen. Verwenden Sie für Modelle mit dem Status „Fehler“ und „In Bearbeitung“ die [Get Operation](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetOperation)-Anforderung, um den Status der Vorgänge für die Modellerstellung und die damit verbundenen Fehler nachzuverfolgen.
 
 ```bash
-curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/{modelId}?api-version=2021-07-30-preview" 
+curl -v -X GET "https://{endpoint}/formrecognizer/documentModels/{modelId}?api-version=2021-07-30-preview"
 ```
 
 ### <a name="delete-a-model"></a>Löschen eines Modells

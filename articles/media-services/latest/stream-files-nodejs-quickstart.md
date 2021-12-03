@@ -1,6 +1,6 @@
 ---
 title: Codieren und Streamen von Videodateien mit Node.js
-description: Es wird beschrieben, wie Sie Videodateien mit Node.js streamen. Führen Sie die in diesem Tutorial beschriebenen Schritte aus, um ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
+description: Hier wird beschrieben, wie Sie Videodateien mit Node.js streamen. Führen Sie die in diesem Tutorial beschriebenen Schritte aus, um ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5bb061af37f6f6d7e6e27cf25f0faa63bca7353c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: f8eafe88168f908025321d1e3ce6304fa34c03ab
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109185"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179946"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Codieren und Streamen von Videodateien mit Node.js
 

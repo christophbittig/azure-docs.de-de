@@ -1,29 +1,36 @@
 ---
 title: Was sind gekennzeichnete Anmeldungen in Azure Active Directory?
 description: Dieser Artikel enthält eine allgemeine Übersicht über gekennzeichnete Anmeldungen für Azure Active Directory.
+services: active-directory
+documentationcenter: ''
 author: MarkusVi
 manager: karenhoran
+editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
 ms.service: active-directory
+ms.devlang: na
 ms.topic: overview
+ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/28/2021
+ms.date: 11/12/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c40295803d9389bfa1534880aa6cbb4bb0426d2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 056ed3df8e9658b00917680aa2ad291f3529d1c8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233732"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484589"
 ---
 # <a name="what-are-flagged-sign-ins-in-azure-active-directory"></a>Was sind gekennzeichnete Anmeldungen in Azure Active Directory?
 
 Wenn sich ein Benutzer nicht anmelden konnte, sollten Sie als IT-Administrator das Problem schnellstmöglich beheben, um die Blockierung des Benutzers aufzuheben. Aufgrund der Menge an verfügbaren Daten im Anmeldeprotokoll ist die Suche nach den richtigen Informationen unter Umständen nicht ganz einfach.
 
 Dieser Artikel enthält eine Übersicht über ein Feature, das die Suche nach den entsprechenden Problemen vereinfacht und somit dafür sorgt, dass sich Probleme bei der Benutzeranmeldung deutlich schneller lösen lassen.
+
+
 
 
 ## <a name="what-it-is"></a>Funktionsbeschreibung
@@ -37,7 +44,9 @@ Gekennzeichnete Anmeldungen geben dem Benutzer die Möglichkeit, die Kennzeichnu
 Gekennzeichnete Anmeldungen haben also folgende Vorteile:
 
 - **Benutzer können Anmeldefehler melden**, bei denen sie Unterstützung von ihren Mandantenadministratoren benötigen.
+
 - Die Suche nach den Anmeldefehlern, die für einen Benutzer behoben werden müssen, wird **vereinfacht**.
+
 - Helpdeskmitarbeiter können **proaktiv** nach den Problemen suchen, bei denen Benutzer Unterstützung benötigen. Endbenutzer müssen lediglich das Ereignis kennzeichnen.
 
 ## <a name="how-it-works"></a>Funktionsweise
@@ -68,11 +77,15 @@ Nach der Aktivierung der Kennzeichnung müssen die gleiche Browseranwendung und 
 
 ### <a name="admin-or-developer-find-flagged-events-using-ms-graph"></a>Administrator oder Entwickler: Suchen nach gekennzeichneten Ereignissen mithilfe von MS Graph
 
-Sie können die Meldungs-API für Anmeldungen mit einer gefilterten Abfrage verwenden, um gekennzeichnete Anmeldungen zu finden. Beispielabfrage:
- 
-`https://graph.microsoft.com/beta/auditlogs/signins?&$filter=(flaggedForReview eq true)`
+Sie können die Meldungs-API für Anmeldungen mit einer gefilterten Abfrage verwenden, um gekennzeichnete Anmeldungen zu finden.
 
-Weitere Informationen zur Verwendung der Graph-API für Anmeldungen finden Sie unter [signIn-Ressourcentyp](/graph/api/resources/signin?view=graph-rest-1.0&preserve-view=true).
+Alle gekennzeichneten Anmeldungen anzeigen: `https://graph.microsoft.com/beta/auditLogs/signIns?&$filter=flaggedforReview eq true`
+
+Abfragen gekennzeichneter Anmeldungen für bestimmte Benutzer nach UPN (z. B. user@contoso.com): `https://graph.microsoft.com/beta/auditLogs/signIns?&$filter=flaggedforReview eq true and userPrincipalname eq 'user@contoso.com'`
+
+Abfragen gekennzeichneter Anmeldungen für bestimmte Benutzer und ein Datum größer als: `https://graph.microsoft.com/beta/auditLogs/signIns?&$filter=flaggedforReview eq true and createdDateTime ge 2021-10-01 and userPrincipalname eq 'user@contoso.com'`
+ 
+Weitere Informationen zur Verwendung der Graph-API für Anmeldungen finden Sie unter [signIn-Ressourcentyp](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-1.0&preserve-view=true).
 
 
 

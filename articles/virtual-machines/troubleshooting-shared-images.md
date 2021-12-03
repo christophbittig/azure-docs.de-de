@@ -1,23 +1,23 @@
 ---
 title: Behandeln von Problemen mit freigegebenen Images in Azure
-description: In diesem Artikel erfahren Sie, wie Sie Probleme in Katalogen mit freigegebenen Images behandeln.
+description: In diesem Abschnitt erfahren Sie, wie Sie mit Problemen mit freigegebenen Images in Azure Compute Galleries verfahren.
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 7/1/2021
-ms.openlocfilehash: 10e8b54145d5948eff55265b3b0bc0b413d2cd66
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: a838879249bad2edfb8d5105e34cd7697a1f59e2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129054431"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437085"
 ---
-# <a name="troubleshoot-shared-image-galleries-in-azure"></a>Problembehandlung für Kataloge mit freigegebenen Images in Azure
+# <a name="troubleshoot-images-in-an-azure-compute-gallery"></a>Problembehandlung bei Images in der Azure Compute Gallery
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
-Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Imagedefinitionen und Imageversionen Probleme auftreten, führen Sie den fehlgeschlagenen Befehl noch mal im Debugmodus aus. Sie aktivieren den Debugmodus, indem Sie die `--debug`-Option mit der Azure CLI oder die `-Debug`-Option mit PowerShell übergeben. Nachdem Sie den Fehler gefunden haben, befolgen Sie diesen Artikel, um das Problem zu beheben.
+Wenn Sie Probleme beim Ausführen von Vorgängen für Ressourcen bei Azure Compute Gallery (ehemals Shared Image Gallery), z. B. Galerien, Imagedefinitionen und Imageversionen, haben, führen Sie den fehlerhaften Befehl erneut im Debug-Modus aus. Sie aktivieren den Debugmodus, indem Sie die `--debug`-Option mit der Azure CLI oder die `-Debug`-Option mit PowerShell übergeben. Nachdem Sie den Fehler gefunden haben, befolgen Sie diesen Artikel, um das Problem zu beheben.
 
 
 ## <a name="creating-or-modifying-a-gallery"></a>Erstellen oder Ändern eines Katalogs ##
@@ -142,7 +142,7 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Problemumgehung**: Prüfen Sie, ob der Regionsname richtig geschrieben ist. Sie können diesen Befehl ausführen, um die Regionen anzuzeigen, auf die Sie Zugriff haben. Wenn die Region nicht in der Liste enthalten ist, senden Sie [eine Zugriffsanforderung](/troubleshoot/azure/general/region-access-request-process).
 
 **Meldung**: *Nicht möglich, den angeforderten Vorgang auf einer geschachtelten Ressource auszuführen. Übergeordnete Ressource \<galleryName/imageDefinitionName\> wird nicht gefunden.*  
-**Ursache**: Es gibt keinen Katalog mit dem Namen \<galleryName/imageDefinitionName\> im gegenwärtigen Abonnement und in der Ressourcengruppe.  
+**Ursache**: Es gibt keinen Katalog mit dem Namen \<galleryName/imageDefinitionName\> im aktuellen Abonnement und in der aktuellen Ressourcengruppe.  
 **Problemumgehung**: Überprüfen Sie, ob die Namen des Katalogs, des Abonnements und der Ressourcengruppe richtig sind. Andernfalls erstellen Sie einen neuen Katalog mit dem Namen \<galleryName\> und/oder einer Bilddefinition, die in der angegebenen Ressourcengruppe benannt\<imageDefinitionName\> ist.
 
 **Meldung**: *Nicht möglich, Parameter zu binden \<property\>. Nicht möglich, den Wert zu konvertieren\<value\> zum Typ &quot;System.DateTime&quot;*  
@@ -202,11 +202,11 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Problemumgehung**: Wählen Sie entweder eine Quelle mit dem gleichen Betriebssystem (Linux/Windows) wie in der Imagedefinition, oder erstellen/wählen Sie eine neue Imagedefinition, die die gleiche Betriebssystemgeneration wie die Imageversion aufweist.
 
 **Meldung**: *Der virtuelle Computer \<resourceID\> kann keinen kurzlebigen Betriebssystemdatenträger enthalten.*  
-**Ursache**: Die Quelle bei \<resourceID\> enthält einen kurzlebigen Betriebssystemdatenträger. Shared Image Gallery unterstützt derzeit keine kurzlebigen Betriebssystemdatenträger.  
+**Ursache**: Die Quelle bei \<resourceID\> enthält einen kurzlebigen Betriebssystemdatenträger. Die Azure Compute Gallery unterstützt derzeit keine kurzlebigen Betriebssystemdatenträger.  
 **Problemumgehung**: Wählen Sie eine andere Quelle basierend auf einer VM ohne kurzlebigen Betriebssystemdatenträger.
 
 **Meldung**: *Der Virtueller Ausgangscomputer \<resourceID\> kann keine Festplatte ['\<diskID\>'] enthalten, die in einem UltraSSD-Kontotyp gespeichert ist.*  
-Disk Storage Ultra **Ursache**: Der Datenträger \<diskID\> ist ein Ultra SSD-Datenträger. Shared Image Gallery unterstützt SSD Ultra-Datenträger derzeit nicht.  
+Disk Storage Ultra **Ursache**: Der Datenträger \<diskID\> ist ein Ultra SSD-Datenträger. Die Azure Compute Gallery unterstützt derzeit keine Ultra SSD-Datenträger.  
 **Problemumgehung**: Verwenden Sie eine Quelle, die nur verwaltete Datenträger des Typs SSD Premium, SSD Standard und/oder HDD Standard enthält.
 
 **Meldung**: *Der Virtueller Ausgangscomputer \<resourceID\> muss aus verwalteten Datenträgern erstellt werden.*  
@@ -222,7 +222,7 @@ Disk Storage Ultra **Ursache**: Der Datenträger \<diskID\> ist ein Ultra SSD-Da
 **Problemumgehung**: Erstellen oder verwenden Sie einen Verschlüsselungssatz, der im gleichen Abonnement und in der gleichen Region wie die Imageversion enthalten ist.
 
 **Meldung**: *Die verschlüsselte Quelle: ‚\<resourceID\>'hat eine andere Abonnement-ID als das aktuelle Abonnement für die Katalogversion ‚\<subscriptionID\_1\>'. Bitte versuchen Sie es erneut mit einer oder mehreren unverschlüsselten Quelle(n) oder verwenden Sie das Abonnement der Quelle ‚\<subcriptionID\_2\>', um die Katalogversion zu erstellen.*  
-**Ursache:** Shared Image Gallery unterstützt derzeit nicht die Erstellung von Imageversionen in einem anderen Abonnement aus einem anderen Quellimage, wenn das Quellimage verschlüsselt ist.  
+**Ursache**: Die Azure Compute Gallery unterstützt derzeit nicht die Erstellung von Image-Versionen in einem anderen Abonnement aus einem anderen Quell-Image, wenn das Quell-Image verschlüsselt ist.  
 **Problemumgehung**: Verwenden Sie eine unverschlüsselte Quelle, oder erstellen Sie die Imageversion im selben Abonnement wie die Quelle.
 
 **Meldung**: *Datenträgerverschlüsselungssatz \<diskEncryptionSetID\> wird nicht gefunden.*  
@@ -282,7 +282,7 @@ Disk Storage Ultra **Ursache**: Der Datenträger \<diskID\> ist ein Ultra SSD-Da
 **Problemumgehung**: Verwenden Sie die LUNs und Datenträger der vorhandenen Imageversion.
 
 **Meldung**: *Das Festplattenverschlüsselungsset '\<diskEncryptionSetID\>' muss sich in demselben Abonnement '\<subscriptionID\>' wie die Katalogressource*  befinden.  
-**Ursache:** Shared Image Gallery unterstützt derzeit nicht die Verwendung eines Datenträgerverschlüsselungssatzes in einem anderen Abonnement.  
+**Ursache**: Die Azure Compute Gallery unterstützt derzeit nicht die Verwendung eines Datenträgerverschlüsselungssatzes in einem anderen Abonnement.  
 **Problemumgehung**: Erstellen Sie die Imageversion und Datenträgerverschlüsselung im selben Abonnement.
 
 **Meldung:** *Replication failed in this region due to 'The GalleryImageVersion source resource size 2048 exceeds the max size 1024 supported.'* (Fehler bei der Replikation in dieser Region aufgrund des Fehlers "Die Größe 2048 der GalleryImageVersion-Quellressource überschreitet die maximal unterstützte Größe von 1024".)  
@@ -294,7 +294,7 @@ Disk Storage Ultra **Ursache**: Der Datenträger \<diskID\> ist ein Ultra SSD-Da
 **Problemumgehung**: Warten Sie, bis das Löschereignis abgeschlossen ist, und erstellen Sie die Imageversion erneut.
 
 **Meldung**: *Die Verschlüsselung wird für die Quellressource „\<sourceID>“ nicht unterstützt. Verwenden Sie einen anderen Quellressourcentyp, der die Verschlüsselung unterstützt, oder entfernen Sie die Verschlüsselungseigenschaften.*  
-**Ursache**: Derzeit unterstützt Shared Image Gallery nur die Verschlüsselung für VMs, Datenträger, Momentaufnahmen und verwaltete Images. Eine der für die Imageversion bereitgestellten Quellen ist nicht in der obigen Liste der Quellen enthalten, die die Verschlüsselung unterstützen.  
+**Ursache**: Derzeit unterstützt die Azure Compute Gallery nur die Verschlüsselung für virtuelle Computer, Datenträger, Momentaufnahmen und verwaltete Images. Eine der für die Imageversion bereitgestellten Quellen ist nicht in der obigen Liste der Quellen enthalten, die die Verschlüsselung unterstützen.  
 **Problemumgehung**: Entfernen Sie den Datenträgerverschlüsselungssatz aus der Imageversion, und wenden Sie sich an das Supportteam.
 
 ## <a name="creating-or-updating-a-vm-or-scale-sets-from-an-image-version"></a>Erstellen oder Aktualisieren einer VM oder Skalierungsgruppe anhand der Imageversion ##
@@ -312,7 +312,7 @@ Disk Storage Ultra **Ursache**: Der Datenträger \<diskID\> ist ein Ultra SSD-Da
 **Problemumgehung:** Stellen Sie sicher, dass in der Region mindestens eine Imageversion vorhanden ist, bei der „Aus aktueller Version ausschließen“ auf „False“ festgelegt ist. 
 
 **Meldung**: *Der Mandant hat die Berechtigung, die Aktion 'Microsoft.Compute/galleries/images/versions/read' für den Bereich \<resourceID\> auszuführen, jedoch ist der aktuelle Mandant \<tenantID\> nicht berechtigt, auf das verknüpfte Abonnement \<subscriptionID\> zuzugreifen.*  
-**Ursache:** Die VM oder Skalierungsgruppe wurde mit einem SIG-Image in einem anderen Mandanten erstellt. Sie haben versucht, eine Änderung an der VM oder Skalierungsgruppe vorzunehmen, aber Sie verfügen nicht über den Zugriff auf das Abonnement, zu dem das Image gehört.  
+**Ursache**: Der virtuelle Computer oder die Skalierungsgruppe wurde mit einem Galerie-Image bei einem anderen Mandanten erstellt. Sie haben versucht, eine Änderung an der VM oder Skalierungsgruppe vorzunehmen, aber Sie verfügen nicht über den Zugriff auf das Abonnement, zu dem das Image gehört.  
 **Problemumgehung**: Bitten Sie den Besitzer des Abonnements der Imageversion, Ihnen Lesezugriff auf die Imageversion zu gewähren.
 
 **Meldung**: *Das Katalogbild \<resourceID\> ist nicht verfügbar in Region \<region\> Bitte wenden Sie sich an den Besitzer des Bildes, um es in diese Region zu replizieren, oder ändern Sie die angeforderte Region.*  
@@ -331,7 +331,7 @@ Disk Storage Ultra **Ursache**: Der Datenträger \<diskID\> ist ein Ultra SSD-Da
 **Ursache:** Das aktuelle Quellimage für die Skalierungsgruppe ist ein generalisiertes Quellimage, aber es wird mit einem spezialisierten Quellimage aktualisiert. Das aktuelle und das neue Quellimage für eine Skalierungsgruppe müssen den gleichen Status aufweisen.  
 **Problemumgehung**: Verwenden Sie ein generalisierte Imageversion, um die Skalierungsgruppe zu aktualisieren.
 
-**Meldung**: *Datenträgerverschlüsselungssatz \<diskEncryptionSetID\> im Katalog mit freigegeben Images \<versionID\> gehört zum Abonnement \<subscriptionID\_1\> und kann nicht mit der Ressource im Abonnement \<subscriptionID\_2\>benutzt werden*  
+**Meldung**: Der *Datenträgerverschlüsselungssatz \<diskEncryptionSetID\> in Azure Compute Gallery \<versionID\> gehört zum Abonnement \<subscriptionID\_1\> und kann nicht mit der Ressource “ im Abonnement \<subscriptionID\_2\>* benutzt werden  
 **Ursache:** Der zur Verschlüsselung der Imageversion verwendete Datenträgerverschlüsselungssatz befindet sich in einem anderen Abonnement als dem zum Hosten der Imageversion.  
 **Problemumgehung**: Verwenden Sie dasselbe Abonnement für die Imageversion und den Datenträgerverschlüsselungssatz.
 
@@ -346,12 +346,12 @@ Disk Storage Ultra **Ursache**: Der Datenträger \<diskID\> ist ein Ultra SSD-Da
 ## <a name="creating-a-disk-from-an-image-version"></a>Erstellen eines Datenträgers aus einer Imageversion ##
 
 **Meldung:** *Der Wert von Parameter imageReference ist ungültig.*  
-**Ursache:** Sie haben einen Export aus einer SIG-Imageversion auf einen Datenträger versucht, aber eine LUN-Position verwendet, die im Image nicht vorhanden ist.    
+**Ursache**: Sie haben einen Export aus einer Galerie-Image-Version auf einen Datenträger versucht, aber eine LUN-Position verwendet, die im Image nicht vorhanden ist.    
 **Problemumgehung**: Prüfen Sie die Imageversion hinsichtlich der verwendeten LUN-Positionen.
 
 ## <a name="sharing-resources"></a>Gemeinsame Nutzung von Ressourcen
 
-Das Teilen von Ressourcen aus Imagekatalogen, Imagedefinitionen und Imageversionen zwischen Abonnements wird mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md) aktiviert. 
+Das Freigeben von Galerie-, Image-Definitions- und Image-Versions-Ressourcen zwischen Abonnements wird mithilfe der [rollenbasierten Zugriffssteuerung von Azure](../role-based-access-control/rbac-and-directory-admin-roles.md) (Azure role-based access control, Azure RBAC) aktiviert. 
 
 ## <a name="replication-speed"></a>Replikationsgeschwindigkeit
 
@@ -359,9 +359,9 @@ Verwenden Sie das Flag **--expand ReplicationStatus**, um zu überprüfen, ob di
 
 ## <a name="azure-limits-and-quotas"></a>Azure-Grenzwerte und -Kontingente 
 
-[Azure-Grenzwerte und -Kontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) gelten für alle Katalog mit geteilten Images-, Imagedefinitions- und Imageversionsressourcen. Stellen Sie sicher, dass Sie die Grenzwerte für Ihre Abonnements einhalten. 
+[Azure-Grenzwerte und -Kontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) gelten für alle Ressourcen in Azure Compute Gallery, der Image-Definiton und der Image-Version. Stellen Sie sicher, dass Sie die Grenzwerte für Ihre Abonnements einhalten. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über [Kataloge mit freigegebenen Images](./shared-image-galleries.md).
+Weitere Informationen über [Azure Compute Galleries](./shared-image-galleries.md).

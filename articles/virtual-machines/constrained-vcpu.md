@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
-ms.openlocfilehash: 2f86f559bfba9c2fcc75649153db450abb877b4d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1cfbe39883612804e32b47868806f87b3753a102
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696530"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437256"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Eingeschränkte vCPU-fähige VM-Größen
 
@@ -30,69 +30,113 @@ Beispielsweise verfügt die aktuelle VM-Größe „Standard_GS5“ über 32 vCPU
 Die Lizenzgebühren für SQL Server oder Oracle sind auf die neue vCPU-Anzahl beschränkt, und andere Produkte sollten auf der Grundlage der neuen vCPU-Anzahl berechnet werden. Dies führt zu einer Erhöhung des Verhältnisses zwischen VM-Spezifikationen und aktiven (abrechenbaren) vCPUs um 50 % bis 75 %. Mit diesen neuen VM-Größen können Kunden für ihre Workloads dieselben Arbeitsspeicher- und Speicherkapazität sowie E/A-Bandbreite verwenden und gleichzeitig ihre Kosten für die Softwarelizenzierung senken. Zu diesem Zeitpunkt bleiben die Computekosten (einschließlich der Betriebssystemlizenzierung) gleich wie bei der ursprünglichen Größe. Weitere Informationen finden Sie unter [Azure VM-Größen für kostengünstigere Datenbankworkloads](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Name                | vCPU | Spezifikationen           |
-|---------------------|------|-----------------|
-| Standard_M8-2 ms     | 2    | Wie M8ms    |
-| Standard_M8-4ms     | 4    | Wie M8ms    |
-| Standard_M16-4ms    | 4    | Wie M16ms   |
-| Standard_M16-8ms    | 8    | Wie M16ms   |
-| Standard_M32-8ms    | 8    | Wie M32ms   |
-| Standard_M32-16ms   | 16   | Wie M32ms   |
-| Standard_M64-32ms   | 32   | Identisch mit M64ms   |
-| Standard_M64-16ms   | 16   | Identisch mit M64ms   |
-| Standard_M128-64ms  | 64   | Identisch mit M128ms  |
-| Standard_M128-32ms  | 32   | Identisch mit M128ms  |
-| Standard_E4-2s_v3   | 2    | Identisch mit E4s_v3  |
-| Standard_E8-4s_v3   | 4    | Identisch mit E8s_v3  |
-| Standard_E8-2s_v3   | 2    | Identisch mit E8s_v3  |
-| Standard_E16-8s_v3  | 8    | Identisch mit E16s_v3 |
-| Standard_E16-4s_v3  | 4    | Identisch mit E16s_v3 |
-| Standard_E32-16s_v3 | 16   | Identisch mit E32s_v3 |
-| Standard_E32-8s_v3  | 8    | Identisch mit E32s_v3 |
-| Standard_E64-32s_v3 | 32   | Identisch mit E64s_v3 |
-| Standard_E64-16s_v3 | 16   | Identisch mit E64s_v3 |
-| Standard_E4-2s_v4   | 2    | Identisch mit E4s_v4  |
-| Standard_E8-4s_v4   | 4    | Identisch mit E8s_v4  |
-| Standard_E8-2s_v4   | 2    | Identisch mit E8s_v4  |
-| Standard_E16-8s_v4  | 8    | Identisch mit E16s_v4 |
-| Standard_E16-4s_v4  | 4    | Identisch mit E16s_v4 |
-| Standard_E32-16s_v4 | 16   | Identisch mit E32s_v4 |
-| Standard_E32-8s_v4  | 8    | Identisch mit E32s_v4 |
-| Standard_E64-32s_v4 | 32   | Identisch mit E64s_v4 |
-| Standard_E64-16s_v4 | 16   | Identisch mit E64s_v4 |
-| Standard_E4-2ds_v4  | 2    | Identisch mit E4ds_v4 |
-| Standard_E8-4ds_v4  | 4    | Identisch mit E8ds_v4 |
-| Standard_E8-2ds_v4  | 2    | Identisch mit E8ds_v4 |
-| Standard_E16-8ds_v4 | 8    | Identisch mit E16ds_v4|
-| Standard_E16-4ds_v4 | 4    | Identisch mit E16ds_v4|
-| Standard_E32-16ds_v4| 16   | Identisch mit E32ds_v4|
-| Standard_E32-8ds_v4 | 8    | Identisch mit E32ds_v4|
-| Standard_E64-32ds_v4| 32   | Identisch mit E64ds_v4|
-| Standard_E64-16ds_v4| 16   | Identisch mit E64ds_v4|
-| Standard_E4-2as_v4  | 2    | Identisch mit E4as_v4 |
-| Standard_E8-4as_v4  | 4    | Identisch mit E8as_v4 |
-| Standard_E8-2as_v4  | 2    | Identisch mit E8as_v4 |
-| Standard_E16-8as_v4 | 8    | Identisch mit E16as_v4|
-| Standard_E16-4as_v4 | 4    | Identisch mit E16as_v4|
-| Standard_E32-16as_v4| 16   | Identisch mit E32as_v4|
-| Standard_E32-8as_v4 | 8    | Identisch mit E32as_v4|
-| Standard_E64-32as_v4| 32   | Identisch mit E64as_v4|
-| Standard_E64-16as_v4| 16   | Identisch mit E64as_v4|
-| Standard_E96-48as_v4| 48   | Identisch mit E96as_v4|
-| Standard_E96-24as_v4| 24   | Identisch mit E96as_v4|
-| Standard_GS4-8      | 8    | Identisch mit GS4     |
-| Standard_GS4-4      | 4    | Identisch mit GS4     |
-| Standard_GS5-16     | 16   | Identisch mit GS5     |
-| Standard_GS5-8      | 8    | Identisch mit GS5     |
-| Standard_DS11-1_v2  | 1    | Identisch mit DS11_v2 |
-| Standard_DS12-2_v2  | 2    | Identisch mit DS12_v2 |
-| Standard_DS12-1_v2  | 1    | Identisch mit DS12_v2 |
-| Standard_DS13-4_v2  | 4    | Identisch mit DS13_v2 |
-| Standard_DS13-2_v2  | 2    | Identisch mit DS13_v2 |
-| Standard_DS14-8_v2  | 8    | Identisch mit DS14_v2 |
-| Standard_DS14-4_v2  | 4    | Identisch mit DS14_v2 |
-| Standard_M416-208s_v2 | 208    | Identisch mit M416s_v2|
-| Standard_M416-208ms_v2 | 208    | Identisch mit M416ms_v2 |
+| Name                    | vCPU | Spezifikationen              |
+|-------------------------|------|--------------------|
+| Standard_M8-2 ms         | 2    | Wie M8ms       |
+| Standard_M8-4ms         | 4    | Wie M8ms       |
+| Standard_M16-4ms        | 4    | Wie M16ms      |
+| Standard_M16-8ms        | 8    | Wie M16ms      |
+| Standard_M32-8ms        | 8    | Wie M32ms      |
+| Standard_M32-16ms       | 16   | Wie M32ms      |
+| Standard_M64-32ms       | 32   | Identisch mit M64ms      |
+| Standard_M64-16ms       | 16   | Identisch mit M64ms      |
+| Standard_M128-64ms      | 64   | Identisch mit M128ms     |
+| Standard_M128-32ms      | 32   | Identisch mit M128ms     |
+| Standard_E4-2s_v3       | 2    | Identisch mit E4s_v3     |
+| Standard_E8-4s_v3       | 4    | Identisch mit E8s_v3     |
+| Standard_E8-2s_v3       | 2    | Identisch mit E8s_v3     |
+| Standard_E16-8s_v3      | 8    | Identisch mit E16s_v3    |
+| Standard_E16-4s_v3      | 4    | Identisch mit E16s_v3    |
+| Standard_E32-16s_v3     | 16   | Identisch mit E32s_v3    |
+| Standard_E32-8s_v3      | 8    | Identisch mit E32s_v3    |
+| Standard_E64-32s_v3     | 32   | Identisch mit E64s_v3    |
+| Standard_E64-16s_v3     | 16   | Identisch mit E64s_v3    |
+| Standard_E4-2s_v4       | 2    | Identisch mit E4s_v4     |
+| Standard_E8-4s_v4       | 4    | Identisch mit E8s_v4     |
+| Standard_E8-2s_v4       | 2    | Identisch mit E8s_v4     |
+| Standard_E16-8s_v4      | 8    | Identisch mit E16s_v4    |
+| Standard_E16-4s_v4      | 4    | Identisch mit E16s_v4    |
+| Standard_E32-16s_v4     | 16   | Identisch mit E32s_v4    |
+| Standard_E32-8s_v4      | 8    | Identisch mit E32s_v4    |
+| Standard_E64-32s_v4     | 32   | Identisch mit E64s_v4    |
+| Standard_E64-16s_v4     | 16   | Identisch mit E64s_v4    |
+| Standard_E4-2ds_v4      | 2    | Identisch mit E4ds_v4    |
+| Standard_E8-4ds_v4      | 4    | Identisch mit E8ds_v4    |
+| Standard_E8-2ds_v4      | 2    | Identisch mit E8ds_v4    |
+| Standard_E16-8ds_v4     | 8    | Identisch mit E16ds_v4   |
+| Standard_E16-4ds_v4     | 4    | Identisch mit E16ds_v4   |
+| Standard_E32-16ds_v4    | 16   | Identisch mit E32ds_v4   |
+| Standard_E32-8ds_v4     | 8    | Identisch mit E32ds_v4   |
+| Standard_E64-32ds_v4    | 32   | Identisch mit E64ds_v4   |
+| Standard_E64-16ds_v4    | 16   | Identisch mit E64ds_v4   |
+| Standard_E4-2s_v5       | 2    | Identisch mit E4s_v5     |
+| Standard_E8-4s_v5       | 4    | Identisch mit E8s_v5     |
+| Standard_E8-2s_v5       | 2    | Identisch mit E8s_v5     |
+| Standard_E16-8s_v5      | 8    | Identisch mit E16s_v5    |
+| Standard_E16-4s_v5      | 4    | Identisch mit E16s_v5    |
+| Standard_E32-16s_v5     | 16   | Identisch mit E32s_v5    |
+| Standard_E32-8s_v5      | 8    | Identisch mit E32s_v5    |
+| Standard_E64-32s_v5     | 32   | Identisch mit E64s_v5    |
+| Standard_E64-16s_v5     | 16   | Identisch mit E64s_v5    |
+| Standard_E96-48s_v5     | 48   | Identisch mit E96s_v5    |
+| Standard_E96-24s_v5     | 24   | Identisch mit E96s_v5    |
+| Standard_E4-2ds_v5      | 2    | Identisch mit E4ds_v5    |
+| Standard_E8-4ds_v5      | 4    | Identisch mit E8ds_v5    |
+| Standard_E8-2ds_v5      | 2    | Identisch mit E8ds_v5    |
+| Standard_E16-8ds_v5     | 8    | Identisch mit E16ds_v5   |
+| Standard_E16-4ds_v5     | 4    | Identisch mit E16ds_v5   |
+| Standard_E32-16ds_v5    | 16   | Identisch mit E32ds_v5   |
+| Standard_E32-8ds_v5     | 8    | Identisch mit E32ds_v5   |
+| Standard_E64-32ds_v5    | 32   | Identisch mit E64ds_v5   |
+| Standard_E64-16ds_v5    | 16   | Identisch mit E64ds_v5   |
+| Standard_E96-48ds_v5    | 48   | Identisch mit E96ds_v5   |
+| Standard_E96-24ds_v5    | 24   | Identisch mit E96ds_v5   |
+| Standard_E4-2as_v4      | 2    | Identisch mit E4as_v4    |
+| Standard_E8-4as_v4      | 4    | Identisch mit E8as_v4    |
+| Standard_E8-2as_v4      | 2    | Identisch mit E8as_v4    |
+| Standard_E16-8as_v4     | 8    | Identisch mit E16as_v4   |
+| Standard_E16-4as_v4     | 4    | Identisch mit E16as_v4   |
+| Standard_E32-16as_v4    | 16   | Identisch mit E32as_v4   |
+| Standard_E32-8as_v4     | 8    | Identisch mit E32as_v4   |
+| Standard_E64-32as_v4    | 32   | Identisch mit E64as_v4   |
+| Standard_E64-16as_v4    | 16   | Identisch mit E64as_v4   |
+| Standard_E96-48as_v4    | 48   | Identisch mit E96as_v4   |
+| Standard_E96-24as_v4    | 24   | Identisch mit E96as_v4   |
+| Standard_E4-2ads_v5     | 2    | Identisch mit E4ads_v5   |
+| Standard_E8-4ads_v5     | 4    | Identisch mit E8ads_v5   |
+| Standard_E8-2ads_v5     | 2    | Identisch mit E8ads_v5   |
+| Standard_E16-8ads_v5    | 8    | Identisch mit E16ads_v5  |
+| Standard_E16-4ads_v5    | 4    | Identisch mit E16ads_v5  |
+| Standard_E32-16ads_v5   | 16   | Identisch mit E32ads_v5  |
+| Standard_E32-8ads_v5    | 8    | Identisch mit E32ads_v5  |
+| Standard_E64-32ads_v5   | 32   | Identisch mit E64ads_v5  |
+| Standard_E64-16ads_v5   | 16   | Identisch mit E64ads_v5  |
+| Standard_E96-48ads_v5   | 48   | Identisch mit E96ads_v5  |
+| Standard_E96-24ads_v5   | 24   | Identisch mit E96ads_v5  |
+| Standard_E4-2as_v5      | 2    | Identisch mit E4as_v5    |  
+| Standard_E8-4as_v5      | 4    | Identisch mit E8as_v5    | 
+| Standard_E8-2as_v5      | 2    | Identisch mit E8as_v5    |  
+| Standard_E16-8as_v5     | 8    | Identisch mit E16as_v5   |
+| Standard_E16-4as_v5     | 4    | Identisch mit E16as_v5   |
+| Standard_E32-16as_v5    | 16   | Identisch mit E32as_v5   |
+| Standard_E32-8as_v5     | 8    | Identisch mit E32as_v5   |
+| Standard_E64-32as_v5    | 32   | Identisch mit E64as_v5   |
+| Standard_E64-16as_v5    | 16   | Identisch mit E64as_v5   |
+| Standard_E96-48as_v5    | 48   | Identisch mit E96as_v5   |
+| Standard_E96-24as_v5    | 24   | Identisch mit E96as_v5   |
+| Standard_GS4-8          | 8    | Identisch mit GS4        |
+| Standard_GS4-4          | 4    | Identisch mit GS4        |
+| Standard_GS5-16         | 16   | Identisch mit GS5        |
+| Standard_GS5-8          | 8    | Identisch mit GS5        |
+| Standard_DS11-1_v2      | 1    | Identisch mit DS11_v2    |
+| Standard_DS12-2_v2      | 2    | Identisch mit DS12_v2    |
+| Standard_DS12-1_v2      | 1    | Identisch mit DS12_v2    |
+| Standard_DS13-4_v2      | 4    | Identisch mit DS13_v2    |
+| Standard_DS13-2_v2      | 2    | Identisch mit DS13_v2    |
+| Standard_DS14-8_v2      | 8    | Identisch mit DS14_v2    |
+| Standard_DS14-4_v2      | 4    | Identisch mit DS14_v2    |
+| Standard_M416-208s_v2   | 208  | Identisch mit M416s_v2   |
+| Standard_M416-208ms_v2  | 208  | Identisch mit M416ms_v2  |
 
 ## <a name="other-sizes"></a>Andere Größen
 - [Computeoptimiert](./sizes-compute.md)

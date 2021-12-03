@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 11/10/2021
 ms.author: victorh
-ms.openlocfilehash: 7b8dd13c5d2c3c080ca20115dfc41b23dd6e545e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 252a4e71a5fdcc823ab357e8528a50bd737ff1c2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339025"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283559"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Bereitstellen eines Sicherheitspartneranbieters
 
@@ -102,6 +102,10 @@ Um Tunnel zum VPN-Gateway Ihres virtuellen Hubs einzurichten, benötigen Drittan
 3. Wählen Sie den Hub aus, und navigieren Sie zu **Sicherheitskonfigurationen**.
 
    Wenn Sie einen Drittanbieter im Hub bereitstellen, wird der Hub in einen *geschützten virtuellen Hub* konvertiert. So ist sichergestellt, dass der Drittanbieter eine (standardmäßige) Route von 0.0.0.0/0 an den Hub sendet. VNET-Verbindungen und mit dem Hub verbundene Standorte erhalten diese Route jedoch nicht, es sei denn, Sie wählen die Verbindungen aus, die diese Standardroute erhalten sollen.
+
+   > [!NOTE]
+   > Erstellen Sie nicht manuell eine 0.0.0.0/0-Route (Standard) über BGP für Branch-Ankündigungen. Dies erfolgt automatisch für eine sichere Bereitstellung virtueller Hubs mit Sicherheitsanbietern von Drittanbietern. Dadurch kann der Bereitstellungsprozess möglicherweise nicht mehr ablaufen.
+
 4. Konfigurieren Sie die Sicherheit virtueller WAN durch Einstellung von **Internet-Datenverkehr** über Azure Firewall und **Privaten Datenverkehr** über einen vertrauenswürdigen Sicherheitspartner. Dadurch werden die einzelnen Verbindungen im virtuellen WAN automatisch gesichert.
 
    :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="Sicherheitskonfiguration":::

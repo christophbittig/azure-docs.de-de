@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: service-bus-messaging, event-hubs
 author: spelluru
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9bc641d680d927c44814f6814ebf6a6dde958c9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4d7b9d272f097f5be332c8ff0acdf7cb30395ea
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98900943"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571026"
 ---
 Azure Functions ermöglicht das Erstellen von auf Konfigurationen beschränkten Replikationsaufgaben, die auf einem vordefinierten Einstiegspunkt basieren. Die [konfigurationsbasierten Replikationsbeispiele für Azure Functions](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) veranschaulichen, wie [vorgefertigte Hilfsprogramme](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) in Ihrem eigenen Code genutzt werden können, oder wie damit vermieden werden kann, Code überhaupt anfassen zu müssen und nur die Konfiguration zu verwenden.
 
@@ -22,7 +22,7 @@ Um eine solche Replikationsaufgabe zu erstellen, erstellen Sie zunächst einen n
 
 Erstellen Sie als Nächstes im Ordner eine Datei `function.json`. Die Datei konfiguriert die Funktion. Beginnen Sie mit folgendem Inhalt:
 
-``` JSON
+```json
 {
     "configurationSource": "config",
     "bindings" : [
@@ -64,7 +64,7 @@ Wenn Sie Ereignisse von einem Event Hub empfangen möchten, fügen Sie dem obers
 * **eventHubName**: Der Name des Event Hubs innerhalb des Namespace, der durch die Verbindungszeichenfolge identifiziert wird.
 * **consumerGroup**: Der Name der Consumergruppe. Beachten Sie, dass der Name in Prozentzeichen eingeschlossen ist und daher auch auf einen App-Einstellungswert verweist.
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -86,7 +86,7 @@ Wenn Sie Ereignisse von einer Service Bus-Warteschlange empfangen möchten, füg
 * **connection**: Der Name des Werts für die App-Einstellungen für die Service Bus-Verbindungszeichenfolge.
 * **queueName**: Der Name der Service Bus-Warteschlange innerhalb des Namespace, der durch die Verbindungszeichenfolge identifiziert wird.
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -108,7 +108,7 @@ Wenn Sie Ereignisse von einem Service Bus-Thema empfangen möchten, fügen Sie d
 * **topicName**: Der Name des Service Bus-Themas innerhalb des Namespace, der durch die Verbindungszeichenfolge identifiziert wird.
 * **subscriptionName**: Der Name des Service Bus-Abonnements in dem angegebenen Thema innerhalb des Namespace, der durch die Verbindungszeichenfolge identifiziert wird.
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -132,7 +132,7 @@ Wenn Sie Ereignisse an einen Event Hub weiterleiten möchten, fügen Sie dem unt
 * **connection**: Der Name des Werts für die App-Einstellungen für die Event Hub-Verbindungszeichenfolge. 
 * **eventHubName**: Der Name des Event Hubs innerhalb des Namespace, der durch die Verbindungszeichenfolge identifiziert wird.
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -156,7 +156,7 @@ Wenn Sie Ereignisse an eine Service Bus-Warteschlange weiterleiten möchten, fü
 * **connection**: Der Name des Werts für die App-Einstellungen für die Service Bus-Verbindungszeichenfolge. 
 * **queueName**: Der Name der Service Bus-Warteschlange innerhalb des Namespace, der durch die Verbindungszeichenfolge identifiziert wird.
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -180,7 +180,7 @@ Wenn Sie Ereignisse an ein Service Bus-Thema weiterleiten möchten, fügen Sie d
 * **connection**: Der Name des Werts für die App-Einstellungen für die Service Bus-Verbindungszeichenfolge. 
 * **topicName**: Der Name des Service Bus-Themas innerhalb des Namespace, der durch die Verbindungszeichenfolge identifiziert wird.
 
-```JSON
+```json
     ...
     "bindings" : [
         {
@@ -200,7 +200,7 @@ Wenn Sie Ereignisse an ein Service Bus-Thema weiterleiten möchten, fügen Sie d
 
 Die Konfiguration des Einstiegspunkts wählt eine der Standardreplikationsaufgaben aus. Wenn Sie das `Azure.Messaging.Replication`-Projekt ändern, können Sie auch Aufgaben hinzufügen und hier darauf verweisen. Beispiel:
 
-```JSON
+```json
     ...
     "scriptFile": "../dotnet/bin/Azure.Messaging.Replication.dll",
     "entryPoint": "Azure.Messaging.Replication.EventHubReplicationTasks.ForwardToEventHub"

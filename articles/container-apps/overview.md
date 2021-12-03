@@ -1,19 +1,19 @@
 ---
 title: Übersicht über Azure Container Apps (Vorschauversion)
 description: Erfahren Sie mehr über gängige Szenarien und Verwendungen von Azure Container Apps.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: overview
-ms.date: 10/19/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7b7f0cfb02b5aa2b7b37efc306213915a855a7bf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 720d243796781ea2be2f01796c1892e64132f58a
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101712"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028608"
 ---
 # <a name="azure-container-apps-preview-overview"></a>Übersicht über Azure Container Apps (Vorschauversion)
 
@@ -37,25 +37,25 @@ Azure Container Apps ermöglicht die Ausführung von Anwendungscode, der in eine
 
 Mit Azure Container Apps haben Sie folgende Möglichkeiten:
 
-- [Mehrere Containerrevisionen ausführen](application-lifecycle-management.md) und den Anwendungslebenszyklus der Container-App verwalten.
+- [**Mehrere Containerrevisionen ausführen**](application-lifecycle-management.md) und den Anwendungslebenszyklus der Container-App verwalten
 
-- [Autoskalierung](scale-app.md) für Ihre Apps basierend auf einem von KEDA unterstützten Skalierungstrigger. Die meisten Anwendungen können auf Null<sup>1</sup> skaliert werden.
+- [**Autoskalierung**](scale-app.md) für Ihre Apps basierend auf einem von KEDA unterstützten Skalierungstrigger. Die meisten Anwendungen können auf Null<sup>1</sup> skaliert werden.
 
-- [HTTPS-Eingang aktivieren](ingress.md), ohne eine andere Azure-Infrastruktur verwalten zu müssen.
+- [**HTTPS-Eingang aktivieren**](ingress.md), ohne eine andere Azure-Infrastruktur verwalten zu müssen
 
-- [Datenverkehr aufteilen](revisions.md) auf mehrere Versionen einer Anwendung für Blau/Grün-Bereitstellungen und A/B-Testszenarien.
+- [**Datenverkehr aufteilen**](revisions.md) auf mehrere Versionen einer Anwendung für Blau/Grün-Bereitstellungen und A/B-Testszenarien
 
-- [Interne Eingangs- und Diensterfassung verwenden](connect-apps.md) für sichere, rein interne Endpunkte mit integrierter DNS-basierter Dienstermittlung.
+- [**Interne Eingangs- und Diensterfassung verwenden**](connect-apps.md) für sichere, rein interne Endpunkte mit integrierter DNS-basierter Dienstermittlung
 
-- [Microservices mit Dapr erstellen](microservices.md) und auf deren umfangreichen API-Satz zugreifen.
+- [**Microservices mit Dapr erstellen**](microservices.md) und auf deren umfangreichen API-Satz zugreifen
 
-- [Container von einer beliebigen Registrierung ausführen](containers.md), öffentlich oder privat, einschließlich Docker Hub und Azure Container Registry (ACR).
+- [**Container von einer beliebigen Registrierung ausführen**](containers.md) (öffentlich oder privat), einschließlich Docker Hub und Azure Container Registry (ACR)
 
-- [Azure CLI-Erweiterung oder ARM-Vorlagen verwenden](get-started.md), um Ihre Anwendungen zu verwalten.
+- [**Azure CLI-Erweiterung oder ARM-Vorlagen verwenden**](get-started.md), um Ihre Anwendungen zu verwalten
 
-- [Geheimnisse auf sichere Weise direkt in Ihrer Anwendung verwalten](secure-app.md).
+- [**Geheimnisse auf sichere Weise direkt in Ihrer Anwendung verwalten**](secure-app.md)
 
-- [Anwendungsprotokolle mithilfe von Azure Log Analytics anzeigen](monitor.md)
+- [**Anwendungsprotokolle mithilfe von Azure Log Analytics anzeigen**](monitor.md)
 
 <sup>1</sup> Anwendungen, die [nach CPU- oder Arbeitsspeicherauslastung skaliert werden](scale-app.md), können nicht auf Null skaliert werden.
 

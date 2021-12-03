@@ -4,16 +4,16 @@ description: Hier wird beschrieben, wie Sie einen Azure-Datenträgerpool bereits
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/02/2021
+ms.date: 11/09/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7230bf83f5ca203aa40cb043b3ea02d983ba7a4a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c4c010d1c142a2f2e09c0a60122f446ab7df6530
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022189"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135386"
 ---
 # <a name="deploy-an-azure-disk-pool-preview"></a>Bereitstellen eines Azure-Datenträgerpools (Vorschau)
 
@@ -33,6 +33,8 @@ Für eine erfolgreiche Bereitstellung eines Datenträgerpools benötigen Sie Fol
 
 - eine Gruppe verwalteter Datenträger, die Sie einem Datenträgerpool hinzufügen möchten.
 - ein virtuelles Netzwerk mit einem dedizierten Subnetz, das für Ihren Datenträgerpool bereitgestellt wird.
+    - Die ausgehenden Ports 53, 443 und 5671 müssen geöffnet sein.
+    - Stellen Sie sicher, dass Ihre Netzwerkeinstellungen keine der erforderlichen ausgehenden Abhängigkeiten Ihres Datenträgerpools blockiert. Sie können entweder das [Azure PowerShell-Modul](/powershell/module/az.diskpool/get-azdiskpooloutboundnetworkdependencyendpoint?view=azps-6.6.0) oder [Azure CLI,](/cli/azure/disk-pool?view=azure-cli-latest#az_disk_pool_list_outbound_network_dependency_endpoint) um die vollständige Liste aller ausgehenden Abhängigkeiten zu erhalten.
 
 Wenn Sie das Azure PowerShell-Modul verwenden möchten, installieren Sie [Version 6.1.0 oder höher](/powershell/module/az.diskpool/?view=azps-6.1.0&preserve-view=true).
 

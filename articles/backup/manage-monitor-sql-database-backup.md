@@ -2,13 +2,16 @@
 title: Verwalten und Überwachen von SQL Server-Datenbanken auf einem virtuellen Azure-Computer
 description: In diesem Artikel wird beschrieben, wie auf einer Azure-VM ausgeführte SQL Server-Datenbanken verwaltet und überwacht werden.
 ms.topic: conceptual
-ms.date: 07/27/2021
-ms.openlocfilehash: c536b29f731ee646f987dc9ce2d178cb93426c91
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 6da639ea369b0676a34af12a8e37c13b018c57d7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272008"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435003"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken
 
@@ -18,9 +21,9 @@ Wenn Sie noch keine Sicherungen für Ihre SQL Server-Datenbanken konfiguriert ha
 
 ## <a name="monitor-backup-jobs-in-the-portal"></a>Überwachen von Sicherungsaufträgen im Portal
 
-Azure Backup zeigt alle geplanten und bedarfsgesteuerten Vorgänge im Portal unter **Sicherungsaufträge** an – mit Ausnahme der geplanten Protokollsicherungen, da diese sehr häufig erfolgen können. Zu den in diesem Portal angezeigten Aufträgen gehören Datenbankermittlung und -registrierung, Konfiguration der Sicherung sowie Sicherungs- und Wiederherstellungsvorgänge.
+Azure Backup zeigt alle geplanten und bedarfsgesteuerten Vorgänge im **Backup Center** im Azure-Portal unter **Sicherungsaufträge** an – mit Ausnahme der geplanten Protokollsicherungen, da diese sehr häufig erfolgen können. Zu den in diesem Portal angezeigten Aufträgen gehören Datenbankermittlung und -registrierung, Konfiguration der Sicherung sowie Sicherungs- und Wiederherstellungsvorgänge.
 
-![Das Portal „Sicherungsaufträge“](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
+:::image type="content" source="./media/backup-azure-sql-database/backup-operations-in-backup-center-jobs-inline.png" alt-text="Screenshot der Sicherungsaufträge unter „Sicherungsaufträge“" lightbox="./media/backup-azure-sql-database/backup-operations-in-backup-center-jobs-expanded.png":::
 
 Ausführliche Informationen zu Überwachungsszenarios finden Sie unter [Monitoring in the Azure portal](backup-azure-monitoring-built-in-monitor.md) (Überwachung im Azure-Portal) und [Monitoring using Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) (Überwachung mithilfe von Azure Monitor).  
 
@@ -55,19 +58,21 @@ Wenn Sie die Wiederherstellungspunkte beibehalten, sollten Sie Folgendes beachte
 
 Gehen Sie wie folgt vor, um den Schutz für eine Datenbank zu beenden:
 
-1. Wählen Sie auf dem Tresordashboard die Option **Sicherungselemente** aus.
+1. Klicken Sie im **Backup Center** im Menü auf **Sicherungsinstanzen**.
 
-2. Wählen Sie unter **Backup Management Type** (Sicherungsverwaltungstyp) die Option **SQL in Azure VM** (SQL Server in Azure-VM) aus.
+2. Wählen Sie **SQL auf einer Azure-VM** als Datenquellentyp aus.
 
-    ![Auswählen von „SQL Server in Azure-VM“](./media/backup-azure-sql-database/sql-restore-backup-items.png)
+   :::image type="content" source="./media/backup-azure-sql-database/backup-center-instance-inline.png" alt-text="Screenshot vom Auswählen von „SQL auf einer Azure-VM“" lightbox="./media/backup-azure-sql-database/backup-center-instance-expanded.png":::
 
 3. Wählen Sie die Datenbank aus, für die Sie den Schutz beenden möchten.
 
-    ![Auswählen der Datenbank zum Beenden des Schutzes](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
+   :::image type="content" source="./media/backup-azure-sql-database/sql-select-instance-inline.png" alt-text="Screenshot vom Auswählen der Datenbank zum Beenden des Schutzes" lightbox="./media/backup-azure-sql-database/sql-select-instance-expanded.png":::
 
 4. Wählen Sie im Datenbankmenü **Sicherung beenden** aus.
 
-    ![Auswählen von „Sicherung beenden“](./media/backup-azure-sql-database/stop-db-button.png)
+   Sie können auch mit der rechten Maustaste in der Ansicht „Sicherungsinstanzen“ auf eine bestimmte Zeile klicken und **Sicherung beenden** auswählen.
+
+   :::image type="content" source="./media/backup-azure-sql-database/sql-stop-backup-inline.png" alt-text="Screenshot vom Auswählen von „Sicherung beenden“" lightbox="./media/backup-azure-sql-database/sql-stop-backup-expanded.png":::
 
 5. Wählen Sie im Menü **Sicherung beenden** aus, ob Daten beibehalten oder gelöscht werden sollen. Geben Sie bei Bedarf einen Grund und einen Kommentar ein.
 

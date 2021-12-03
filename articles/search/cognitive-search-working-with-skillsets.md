@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: c189fd8d77d33a2397e5a83f73dcdda759247a03
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 08bf1a57c4b7d4905693c3f11964feeb04c8beef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535237"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014859"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Skillsetkonzepte in Azure Cognitive Search
 
@@ -91,7 +91,7 @@ Bei einem angereicherten Dokument handelt es sich um eine temporäre baumähnlic
 
 Bei einem angereicherten Dokument handelt es sich anfänglich nur um den Inhalt, der bei der [*Dokumententschlüsselung*](search-indexer-overview.md#document-cracking) aus der Datenquelle extrahiert wird. Dabei werden Texte und Bilder aus der Quelle extrahiert und für die Sprach- oder Bildanalyse verfügbar gemacht. 
 
-Beim anfänglichen Inhalt handelt es sich um den *Stammknoten*. Dies ist in der Regel ein ganzes Dokument oder ein normalisiertes Bild. Die Art, wie der Inhalt in einer Anreicherungsstruktur formuliert wird, variiert je nach Datenquellentyp. In der folgenden Tabelle wird für verschiedene unterstützte Datenquellen der Zustand eines Dokuments gezeigt, das in die Anreicherungspipeline wechselt:
+Der Ausgangsinhalt ist der *Wurzelknoten* (`document\content`) und ist in der Regel ein ganzes Dokument oder ein normalisiertes Bild, das beim Cracken des Dokuments aus einer Datenquelle extrahiert wird. Die Art, wie der Inhalt in einer Anreicherungsstruktur formuliert wird, variiert je nach Datenquellentyp. In der folgenden Tabelle wird für verschiedene unterstützte Datenquellen der Zustand eines Dokuments gezeigt, das in die Anreicherungspipeline wechselt:
 
 |Datenquelle\Analysemodus|Standard|JSON, JSON-Zeilen & CSV|
 |---|---|---|
@@ -99,7 +99,7 @@ Beim anfänglichen Inhalt handelt es sich um den *Stammknoten*. Dies ist in der 
 |Azure SQL|/document/{column1}<br>/document/{column2}<br>…|– |
 |Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|–|
 
-Beim Ausführen von Skills wird der Anreicherungsstruktur die Ausgabe in Form von neuen Knoten hinzugefügt. Diese Knoten können als Eingabe für nachgelagerte Skills verwendet werden und werden schließlich in einen Wissensspeicher projiziert oder Indexfeldern zugeordnet. Skills, die Inhalte wie übersetzte Zeichenfolgen erstellen, schreiben ihre Ausgabe in das angereicherte Dokument. Entsprechend lesen Skills, die die Ausgabe von vorgelagerten Skills verwenden, im angereicherten Dokument, um die erforderlichen Eingaben abzurufen. 
+Beim Ausführen von Skills wird der Anreicherungsstruktur die Ausgabe in Form von neuen Knoten hinzugefügt. Diese Knoten können als Eingabe für nachgelagerte Skills verwendet werden und werden schließlich in einen Wissensspeicher projiziert oder Indexfeldern zugeordnet. Skills, die Inhalte wie übersetzte Zeichenfolgen erstellen, schreiben ihre Ausgabe in das angereicherte Dokument. Entsprechend lesen Skills, die die Ausgabe von vorgelagerten Skills verwenden, im angereicherten Dokument, um die erforderlichen Eingaben abzurufen.
 
 :::image type="content" source="media/cognitive-search-working-with-skillsets/skillset-def-enrichment-tree.png" alt-text="Skills lesen aus der und schreiben in die Anreicherungsstruktur" border="false":::
 

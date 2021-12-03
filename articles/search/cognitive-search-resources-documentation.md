@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/16/2021
-ms.openlocfilehash: 26338164ca073ff5d9b331d36a5a9d935a3f3468
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: acf4d6fa3057dca4d1b7ccf0c08ee8c8ca5ef31a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707593"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555524"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Dokumentationressourcen für die KI-Anreicherung in Azure Cognitive Search
 
@@ -43,7 +43,7 @@ Im Folgenden finden Sie eine konsolidierte Liste der Dokumentation für die KI-A
 
 + [Schnellstart: Erstellen eines Azure Cognitive Search-Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md)
 + [Erstellen eines Wissensspeichers mithilfe von REST und Postman](knowledge-store-create-rest.md)
-+ [Anzeigen eines Wissensspeichers mit Storage-Explorer](knowledge-store-view-storage-explorer.md)
++ [Anzeigen eines Wissensspeichers mit einem Speicherbrowser](knowledge-store-view-storage-explorer.md)
 + [Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI](knowledge-store-connect-power-bi.md)
 + [Definieren von Projektionen in einem Wissensspeicher](knowledge-store-projections-examples.md)
 

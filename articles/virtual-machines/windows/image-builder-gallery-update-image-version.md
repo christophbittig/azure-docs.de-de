@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.collection: windows
-ms.openlocfilehash: 166e9b2b2ea98027c4ca9a8e13c5c26d68214d9a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 2f3c4c302d0b31bbd97eedcd8e83f2cb50a8af2e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769075"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462896"
 ---
 # <a name="create-a-new-windows-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder unter Windows
 
 **Gilt für**: :heavy_check_mark: Windows VMs
 
-In diesem Artikel erfahren Sie, wie Sie eine vorhandene Imageversion in einem [Katalog mit freigegebenen Images](../shared-image-galleries.md) aktualisieren und als neue Imageversion im Katalog veröffentlichen.
+In diesem Artikel erfahren Sie, wie Sie eine vorhandene Imageversion in [Azure Compute Gallery](../shared-image-galleries.md) (ehemals Shared Image Gallery) aktualisieren und als neue Imageversion im Katalog veröffentlichen.
 
 Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwenden die JSON-Datei [helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
 
@@ -51,7 +51,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="set-variables-and-permissions"></a>Festlegen von Variablen und Berechtigungen
 
-Wenn Sie Ihren Katalog mit freigegebenen Images anhand von [Erstellen eines ein Images und Verteilen des Images in einem Katalog mit freigegebenen Images](image-builder-gallery.md) erstellt haben, haben Sie die benötigten Variablen bereits erstellt. Richten Sie andernfalls nun einige Variablen ein, die in diesem Beispiel verwendet werden.
+Wenn Sie Ihre Azure Compute Gallery-Instanz anhand von [Erstellen eines Images und Verteilen des Images in Azure Compute Gallery](image-builder-gallery.md) erstellt haben, wurden die benötigten Variablen bereits erstellt. Richten Sie andernfalls nun einige Variablen ein, die in diesem Beispiel verwendet werden.
 
 Image Builder unterstützt nur das Erstellen von benutzerdefinierten Images in derselben Ressourcengruppe, in der sich auch das verwaltete Quellimage befindet. Aktualisieren Sie den Namen der Ressourcengruppe in diesem Beispiel, sodass es sich um dieselbe Ressourcengruppe handelt, in der sich auch das verwaltete Quellimage befindet.
 
@@ -62,7 +62,7 @@ sigResourceGroup=myIBWinRG
 location=westus
 # Additional region to replicate the image to - we are using East US in this example
 additionalregion=eastus
-# name of the shared image gallery - in this example we are using myGallery
+# name of the Azure Compute Gallery - in this example we are using myGallery
 sigName=my22stSIG
 # name of the image definition to be created - in this example we are using myImageDef
 imageDefName=winSvrimages
@@ -97,7 +97,7 @@ Da Sie im vorigen Beispiel die Benutzeridentität eingerichtet haben, müssen Si
 imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, 'aibBuiUserId')].id" -o tsv)
 ```
 
-Wenn Sie bereits über einen eigenen Katalog mit freigegebenen Images verfügen und nicht nach dem vorherigen Beispiel vorgegangen sind, müssen Sie Image Builder Berechtigungen zum Zugreifen auf die Ressourcengruppe zuweisen, damit er auf den Katalog zugreifen kann. Überprüfen Sie die Schritte im Beispiel [Erstellen und Verteilen eines Images an eine Shared Image Gallery](image-builder-gallery.md).
+Wenn Sie bereits über eine eigene Azure Compute Gallery-Instanz verfügen und nicht nach dem vorherigen Beispiel vorgegangen sind, müssen Sie Image Builder Berechtigungen zum Zugreifen auf die Ressourcengruppe zuweisen, damit er auf den Katalog zugreifen kann. Sehen Sie sich die Schritte im Beispiel [Erstellen und Verteilen eines Images an Azure Compute Gallery](image-builder-gallery.md) an.
 
 
 ## <a name="modify-helloimage-example"></a>Ändern des Beispiels helloImage

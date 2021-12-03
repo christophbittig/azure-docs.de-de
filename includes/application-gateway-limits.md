@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 09/09/2021
 ms.author: victorh
-ms.openlocfilehash: f106ca51487e1c4c306d51161110062ad3582fcd
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 76fed7a6f79dafd42c6262f4f73bd21a7c2e45a7
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129440097"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860693"
 ---
 | Resource | Begrenzung | Hinweis |
 | --- | --- | --- |
@@ -27,7 +27,8 @@ ms.locfileid: "129440097"
 | Authentifizierungszertifikate |100 | |
 | Vertrauenswürdige Stammzertifikate |100 | |
 | Minimales Anforderungstimeout |1 Sekunde | |
-| Maximales Anforderungstimeout |24 Stunden | |
+| Maximales Anforderungstimeout für privates Back-End |24 Stunden | |
+| Maximales Anforderungstimeout für externes Back-End |4 Minuten | |
 | Anzahl der Websites |100<sup>1</sup> |1 pro HTTP-Listener |
 | URL-Zuordnungen pro Listener |1 | |
 | Maximale Anzahl pfadbasierter Regeln pro URL-Zuordnung|100||

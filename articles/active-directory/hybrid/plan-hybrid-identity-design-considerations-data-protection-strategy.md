@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bac3f53def6db1038a6dd7e45d7933daa22df9f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31d05ec747ea85a61d1099fc089ab8a0353b54ff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703851"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432703"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definieren der Datenschutzstrategie für Ihre Hybrididentitätslösung
 In dieser Aufgabe definieren Sie die Datenschutzstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie hier definiert haben:
@@ -63,7 +63,7 @@ Ein Vorteil der Verwendung von Azure AD zum Verwalten einer Hybrididentitätsinf
 
 Organisationen, die um den Datenschutz besorgt sind, fordern in der Regel eine Klassifizierung von Daten für ihre Lösung. Wenn die aktuelle lokale Infrastruktur bereits die Klassifizierung von Daten unterstützt, kann Azure AD als Hauptrepository für die Identität des Benutzers genutzt werden. Ein gängiges, lokal für die Klassifizierung von Daten verwendetes Tool ist das [Toolkit zur Datenklassifizierung](/previous-versions/tn-archive/hh204743(v=technet.10)) für Windows Server 2012 R2. Dieses Tool unterstützt Sie beim Ermitteln, Klassifizieren und Schützen von Daten auf Dateiservern in Ihrer privaten Cloud. Sie können hierfür auch die [Automatische Dateiklassifizierung](/windows-server/identity/solution-guides/deploy-automatic-file-classification--demonstration-steps-) in Windows Server 2012 einsetzen.
 
-Wenn Ihre Organisation keine Datenklassifizierung einsetzt, aber vertrauliche Dateien schützen muss, ohne lokal neue Server hinzuzufügen, kann sie den [Azure Rights Management-Dienst](/azure/information-protection/what-is-azure-rms)von Microsoft nutzen.  Azure RMS verwendet Verschlüsselungs-, Identitäts- und Autorisierungsrichtlinien, um Ihre Dateien und E-Mail zu schützen, und ist geräteübergreifend einsetzbar – auf Telefonen, Tablets und PCs. Da Azure RMS ein Clouddienst ist, erübrigt es sich, explizit Vertrauensstellungen mit anderen Organisationen zu konfigurieren, bevor Sie geschützte Inhalte freigeben können. Wenn Sie bereits ein Microsoft 365- oder Azure AD-Verzeichnis haben, wird automatisch die Zusammenarbeit zwischen Organisationen unterstützt. Sie können auch einfach die Verzeichnisattribute, die Azure RMS benötigt, um eine gemeinsame Identität für Ihre lokalen Active Directory-Konten zu unterstützen, mithilfe der Azure Active Directory-Synchronisierungsdienste (Azure AD-Synchronisierung) oder Azure AD Connect synchronisieren.
+Wenn Ihre Organisation keine Datenklassifizierung einsetzt, aber vertrauliche Dateien schützen muss, ohne lokal neue Server hinzuzufügen, kann sie den [Azure Rights Management-Dienst](/azure/information-protection/what-is-azure-rms)von Microsoft nutzen.  Azure RMS verwendet Verschlüsselungs-, Identitäts- und Autorisierungsrichtlinien, um Ihre Dateien und E-Mail zu schützen, und ist geräteübergreifend einsetzbar – auf Telefonen, Tablets und PCs. Da Azure RMS ein Clouddienst ist, erübrigt es sich, explizit Vertrauensstellungen mit anderen Organisationen zu konfigurieren, bevor Sie geschützte Inhalte freigeben können. Wenn Sie bereits ein Microsoft-365- oder Azure-AD-Verzeichnis haben, wird automatisch die Zusammenarbeit zwischen Organisationen unterstützt. Sie können auch einfach die Verzeichnisattribute, die Azure RMS benötigt, um eine gemeinsame Identität für Ihre lokalen Active Directory-Konten zu unterstützen, mithilfe der Azure Active Directory-Synchronisierungsdienste (Azure AD-Synchronisierung) oder Azure AD Connect synchronisieren.
 
 Ein wesentlicher Bestandteil des Content Managements ist, zu verstehen, wer auf welche Ressource zugreift. Darum ist eine umfassende Protokollierungsfunktion für die Identitätsverwaltungslösung wichtig. Azure AD bietet eine 30 Tage dauernde Protokollierung, einschließlich:
 

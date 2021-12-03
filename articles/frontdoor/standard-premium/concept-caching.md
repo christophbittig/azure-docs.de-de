@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: a8adfef720d446c3ae2a45d27cee72a8135edb70
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 687a18ff1f66f5bd14a76b620c4fda04e6b7a6f0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595045"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234975"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>Zwischenspeichern mit Azure Front Door Standard/Premium (Vorschau)
 
@@ -83,7 +83,7 @@ Cacheverhalten und Cachedauer können sowohl in der Front Door-Designer-Routingr
 
 > [!NOTE]
 > * Die in der Front Door-Designer-Routingregel festgelegte *Cachedauer* ist die **minimale Cachedauer**. Diese Außerkraftsetzung funktioniert nicht, wenn der Cachesteuerungsheader vom Ursprung eine längere Gültigkeitsdauer aufweist als der Außerkraftsetzungswert.
-> * Wenn Cacheinhalte nicht sehr häufig angefordert werden, können sie vor ihrem Ablauf aus Azure Front Door entfernt werden, um Platz für häufiger angeforderte Inhalte zu schaffen.
+> * Azure Front Door garantiert nicht, wie lange das Objekt mindestens im Cache gespeichert wird. Wenn Cacheinhalte nicht sehr häufig angefordert werden, können sie vor ihrem Ablauf aus dem Edgecache entfernt werden, um Platz für häufiger angeforderte Inhalte zu schaffen.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

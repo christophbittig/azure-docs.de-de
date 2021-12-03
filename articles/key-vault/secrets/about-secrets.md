@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5583596e399456461b2fc157a193b83b596180ee
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 54ebf914b27c8cd91272e4b8e5c8834e5331cdf4
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387390"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057421"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informationen zu Azure Key Vault-Geheimnissen
 
@@ -28,7 +28,11 @@ Key Vault unterstützt auch ein contentType-Feld für Geheimnisse. Clients könn
 
 ## <a name="encryption"></a>Verschlüsselung
 
-Alle Geheimnisse in Ihrer Key Vault-Instanz werden verschlüsselt gespeichert. Diese Verschlüsselung ist transparent, und der Benutzer muss keine Aktion durchführen. Ihre Geheimnisse werden vom Azure Key Vault-Dienst verschlüsselt, wenn Sie diese hinzufügen, und dann automatisch entschlüsselt, wenn Sie sie lesen. Der Verschlüsselungsschlüssel ist für jeden Schlüsseltresor eindeutig.
+Alle Geheimnisse in Ihrer Key Vault-Instanz werden verschlüsselt gespeichert. Key Vault verschlüsselt Geheimnisse im Ruhezustand mithilfe einer Hierarchie von Verschlüsselungsschlüsseln, wobei alle Schlüssel in dieser Hierarchie durch Module geschützt sind, die FIPS 140-2-konform sind. Diese Verschlüsselung ist transparent, und der Benutzer muss keine Aktion durchführen. Ihre Geheimnisse werden vom Azure Key Vault-Dienst verschlüsselt, wenn Sie diese hinzufügen, und dann automatisch entschlüsselt, wenn Sie sie lesen.
+
+Der Verschlüsselungsblattschlüssel der Schlüsselhierarchie ist für jeden Schlüsseltresor eindeutig. Der Verschlüsselungsstammschlüssel der Schlüsselhierarchie ist in der Sicherheitsumgebung eindeutig, und seine Schutzebene variiert je nach Region:
+- China: Der Stammschlüssel ist durch ein Modul geschützt, das gemäß FIPS 140-2 Level 1 validiert ist. 
+- Andere Regionen: Der Stammschlüssel ist durch ein Modul geschützt, das gemäß FIPS 140-2 Level 2 oder höher validiert ist. 
 
 ## <a name="secret-attributes"></a>Geheimnisattribute
 

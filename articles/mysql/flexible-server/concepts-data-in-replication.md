@@ -6,14 +6,14 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 071672c5c2d3c741abd14dad94c8c150e427a3ce
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 5c0a63d140bb06bb14bb9c81dd17b0b057c3c8f4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464772"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422784"
 ---
-# <a name="replicate-data-into-azure-database-for-mysql-flexible--server-preview"></a>Replizieren von Daten in Azure Database for MySQL Flexible Server (Vorschau)
+# <a name="replicate-data-into-azure-database-for-mysql-flexible--server"></a>Replizieren von Daten in Azure Database for MySQL Flexible Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
@@ -21,7 +21,7 @@ Die Datenreplikation ermöglicht das Synchronisieren von Daten von einem externe
 
 > [!Note]
 > Die GTID-basierte Replikation wird für Azure Database for MySQL Flexible Server derzeit nicht unterstützt.<br>
-> Die Konfiguration von Datenreplikation für Server mit zonenredundanter Hochverfügbarkeit wird nicht unterstützt. 
+> Die Konfiguration der Datenreplikation für Server mit zonenredundanter Hochverfügbarkeit wird nicht unterstützt.
 
 ## <a name="when-to-use-data-in-replication"></a>Szenarien für die Verwendung der Datenreplikation
 
@@ -29,7 +29,7 @@ Zu den wichtigsten Szenarien, bei denen die Verwendung der Datenreplikation infr
 
 - **Synchronisierung von Hybriddaten:** Mit der Datenreplikation können Sie Daten zwischen Ihren lokalen Servern und Azure Database for MySQL Flexible Server synchron halten. Eine solche Synchronisierung ist für die Erstellung von Hybridanwendungen nützlich. Diese Methode ist optimal geeignet, wenn Sie über einen lokalen Datenbankserver verfügen, die Daten jedoch in eine Region verschieben möchten, die sich näher bei den Endbenutzern befindet.
 - **Synchronisierung von Daten in verschiedenen Clouds:** Verwenden Sie bei komplexen Cloudlösungen die Datenreplikation, um Daten zwischen Azure Database for MySQL Flexible Server und unterschiedlichen Cloudanbietern zu synchronisieren, einschließlich virtueller Computer und Datenbankdienste, die in diesen Clouds gehostet werden.
-- **Migration:** Kunden können die Migration mit minimalem Zeitaufwand mithilfe von Open-Source-Tools wie [MyDumper/MyLoader](https://centminmod.com/mydumper.html) mit der Datenreplikation durchführen. Eine selektive Übernahme der Produktionslast von der Quell- zur Zieldatenbank ist mit der Datenreplikation möglich. 
+- **Migration:** Kunden können die Migration mit minimalem Zeitaufwand mithilfe von Open-Source-Tools wie [MyDumper/MyLoader](https://centminmod.com/mydumper.html) mit der Datenreplikation durchführen. Eine selektive Übernahme der Produktionslast von der Quell- zur Zieldatenbank ist mit der Datenreplikation möglich.
 
 Verwenden Sie bei Migrationsszenarien den [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/)(DMS).
 
@@ -39,12 +39,12 @@ Verwenden Sie bei Migrationsszenarien den [Azure Database Migration Service](htt
 
 Die [*Systemdatenbank „mysql“*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) auf dem Quellserver wird nicht repliziert. Außerdem werden Änderungen an Konten und Berechtigungen auf dem Quellserver nicht repliziert. Wenn Sie ein Konto auf dem Quellserver erstellen und dieses Konto Zugriff auf den Replikatserver erfordert, erstellen Sie dasselbe Konto manuell auf dem Replikatserver. Einen Überblick über die Tabellen, die in der Systemdatenbank enthalten sind, finden Sie im [Leitfaden zu MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html).
 
-### <a name="data-in-replication-not-supported-on-ha-enabled-servers"></a>Datenreplikation wird auf Servern mit aktivierter Hochverfügbarkeit nicht unterstützt. 
-Die Konfiguration von Datenreplikation für Server mit zonenredundanter Hochverfügbarkeit wird nicht unterstützt. Auf Servern mit aktivierter Hochverfügbarkeit sind die gespeicherten Prozeduren für die Replikation `mysql.az_replication_*` nicht verfügbar. 
+### <a name="data-in-replication-not-supported-on-ha-enabled-servers"></a>Datenreplikation wird auf Servern mit aktivierter Hochverfügbarkeit nicht unterstützt.
+Die Konfiguration von Datenreplikation für Server mit zonenredundanter Hochverfügbarkeit wird nicht unterstützt. Auf Servern mit aktivierter Hochverfügbarkeit sind die gespeicherten Prozeduren für die Replikation `mysql.az_replication_*` nicht verfügbar.
 
 ### <a name="filtering"></a>Filterung
 
-Das Ändern des Parameters `replicate_wild_ignore_table`, der zum Erstellen eines Replikationsfilters für Tabellen verwendet wurde, wird für flexible Azure Database for MySQL-Server derzeit nicht unterstützt. 
+Das Ändern des Parameters `replicate_wild_ignore_table`, der zum Erstellen eines Replikationsfilters für Tabellen verwendet wurde, wird für flexible Azure Database for MySQL-Server derzeit nicht unterstützt.
 
 ### <a name="requirements"></a>Requirements (Anforderungen)
 

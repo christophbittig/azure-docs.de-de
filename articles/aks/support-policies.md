@@ -4,12 +4,12 @@ description: Hier erhalten Sie Informationen zu AKS-Unterstützungsrichtlinien (
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 1e85effa5a8efca59bfc88aada050ee5ddcc7fcf
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 759d2714f755c39e0b189d7578e90cd268cd53c5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666439"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222455"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -18,7 +18,7 @@ Dieser Artikel enthält Details zu den Richtlinien und Einschränkungen für den
 ## <a name="service-updates-and-releases"></a>Dienstupdates und -versionen
 
 * Versionsinformationen finden Sie unter [AKS-Versionshinweise](https://github.com/Azure/AKS/releases).
-* Informationen zu Features in der Vorschauversion finden Sie unter [AKS-Previewfunktionen und zugehörige Projekte](https://awesomeopensource.com/projects/aks?categoryPage=11).
+* Informationen zu den Features in der Vorschau finden Sie in der [AKS-Roadmap](https://github.com/Azure/AKS/projects/1).
 
 ## <a name="managed-features-in-aks"></a>Verwaltete Features in AKS
 

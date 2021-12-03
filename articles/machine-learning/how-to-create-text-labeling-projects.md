@@ -9,12 +9,12 @@ ms.subservice: mldata
 ms.topic: how-to
 ms.date: 10/21/2021
 ms.custom: data4ml, ignite-fall-2021
-ms.openlocfilehash: 1aa49d52c11f430affb6b9deea14a4160806f06c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e3097c6b00d97287526015836c44ddcaeb08177a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131068392"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468705"
 ---
 # <a name="create-a-text-labeling-project-and-export-labels-preview"></a>Ein Textbeschriftungsprojekt erstellen und Beschriftungen exportieren (Vorschau)
 
@@ -39,10 +39,10 @@ Azure Machine Learning Datenbeschriftung ist ein zentraler Ort zum Erstellen, Ve
 > [!Important]
 > Die Textdaten müssen in einem Azure Blob-Datenspeicher verfügbar sein. (Wenn kein Datenspeicher vorhanden ist, können Sie Dateien während der Projekterstellung hochladen.)
 
-Textdaten können entweder TXT- oder CSV-Dateien sein.
+Verfügbare Datenformate für Textdaten:
 
-* Bei TXT-Dateien stellt jede Datei ein zu beschriftendes Element dar.
-* Bei ".csv"-Dateien stellt jede Zeile ein Element dar, das dem Beschriftungsprogramm vorgelegt wird.  Sie können eine oder mehrere Spalten anzeigen, die bei der Beschriftung dieser Zeile verwendet werden.
+* **.txt**: Jede Datei stellt ein Element dar, das bezeichnet werden soll.
+* **.csv** oder **.tsv**: Jede Zeile stellt ein Element dar, das dem Beschriftungsprogramm angezeigt wird.  Sie entscheiden, welche Spalten dem Beschriftungsprogramm angezeigt werden können, um die Zeile zu beschriften.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -83,7 +83,7 @@ Erstellen eines Datasets aus Dateien, die Sie bereits in einem Azure-Blobspeiche
 1. Wählen Sie **Dataset erstellen** > **Aus Datenspeicher**.
 1. Weisen Sie Ihrem Dataset einen **Namen** zu.
 1. Wählen Sie den **Datensatztyp**:
-    * Wählen Sie **Tabellarisch** aus, wenn Sie eine CSV-Datei verwenden, bei der jede Zeile eine Antwort enthält.
+    * Wählen Sie **Tabellarisch** aus, wenn Sie eine .csv- oder .tsv-Datei verwenden, bei der jede Zeile eine Antwort enthält.
     * Wählen **Datei** aus, wenn Sie für jede Antwort separate TXT-Dateien verwenden.
 1. (Optional) Geben Sie eine Beschreibung für Ihr Dataset an.
 1. Klicken Sie auf **Weiter**.
@@ -101,16 +101,16 @@ Direktes Hochladen Ihrer Daten:
 1. Wählen Sie **Dataset erstellen** > **Aus lokalen Dateien** aus.
 1. Weisen Sie Ihrem Dataset einen **Namen** zu.
 1. Wählen Sie den **Datasettyp** aus.
-    * Wählen Sie **Tabellarisch** aus, wenn Sie eine CSV-Datei verwenden, in der jede Zeile eine Antwort darstellt.
+    * Wählen Sie **Tabellarisch** aus, wenn Sie eine .csv- oder .tsv-Datei verwenden, bei der jede Zeile eine Antwort enthält.
     * Wählen **Datei** aus, wenn Sie für jede Antwort separate TXT-Dateien verwenden.
 1. (Optional) Geben Sie eine Beschreibung Ihres Datensatzes an.
 1. Wählen Sie **Weiter** aus.
 1. (Optional) Wählen oder erstellen Sie einen Datenspeicher. Sie können auch die Standardeinstellung beibehalten und in den Standard-Blobstore ("workspaceblobstore") Ihres Arbeitsbereichs für maschinelles Lernen hochladen.
 1. Wählen Sie **Hochladen**, um die lokale(n) Datei(en) oder Ordner zum Hochladen auszuwählen.
 1. Klicken Sie auf **Weiter**.
-1. Wenn Sie .csv-Dateien hochladen:
+1. Beim Hochladen von .csv- oder .tsv-Dateien:
     * Bestätigen Sie die Einstellungen und die Vorschau, wählen Sie **Weiter**.
-    * Fügen Sie alle Textspalten ein, die der Beschrifter bei der Klassifizierung dieser Zeile sehen soll.
+    * Fügen Sie alle Textspalten ein, die der Beschrifter bei der Klassifizierung dieser Zeile sehen soll.  Wenn Sie die ML-unterstützte Beschriftung verwenden, kann das Hinzufügen numerischer Spalten den Ablauf des ML-unterstützten Modells stören.
     * Wählen Sie **Weiter** aus.
 1.  Bestätigen Sie die Informationen. Wählen Sie **Zurück**, um Einstellungen zu ändern, oder **Erstellen**, um das Dataset zu erstellen.
 
@@ -118,6 +118,9 @@ Direktes Hochladen Ihrer Daten:
 ## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> Konfigurieren der inkrementellen Aktualisierung
 
 [!INCLUDE [refresh](../../includes/machine-learning-data-labeling-refresh.md)]
+
+> [!NOTE]
+> Die inkrementelle Aktualisierung ist nicht für Projekte verfügbar, die tabellarische Datasatzeingaben (.csv oder .tsv) verwenden.
 
 ## <a name="specify-label-classes"></a>Angeben von Beschriftungsklassen
 

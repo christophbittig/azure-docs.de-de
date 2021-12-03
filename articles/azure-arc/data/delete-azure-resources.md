@@ -7,29 +7,39 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 5a2b51573e4b639c80fd36b69cef667b9ea6eff5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ad92c16b70fd2d9f2e137558db1e70c387815a8f
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355658"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564136"
 ---
 # <a name="delete-resources-from-azure"></a>Löschen von Azure-Ressourcen
 
-In diesem Artikel wird beschrieben, wie Sie Ressourcen in Azure löschen.
+In diesem Artikel wird beschrieben, wie Sie Ressourcen von Azure Arc-fähigen Datendiensten aus Azure löschen.
 
 > [!WARNING]
 > Wenn Sie Ressourcen wie in diesem Artikel beschrieben löschen, können diese Aktionen nicht rückgängig gemacht werden.
 
 ## <a name="before"></a>Vorher
 
-Bevor Sie eine Ressource wie eine verwaltete SQL-Instanz von Azure Arc oder einen Azure Arc-Datencontroller löschen, müssen Sie die Nutzungsinformationen exportieren und in Azure hochladen, um eine genaue Abrechnungsberechnung zu erhalten. Befolgen Sie dazu die Anweisungen unter [Hochladen von Abrechnungsdaten in Azure](view-billing-data-in-azure.md#upload-billing-data-to-azure).
+Bevor Sie eine Ressource wie eine verwaltete SQL-Instanz mit Azure Arc-Unterstützung oder einen Azure Arc-Datencontroller löschen, müssen Sie die Nutzungsinformationen exportieren und in Azure hochladen, um eine genaue Abrechnungsberechnung zu erhalten. Befolgen Sie dazu die Anweisungen unter [Hochladen von Abrechnungsdaten in Azure](view-billing-data-in-azure.md#upload-billing-data-to-azure---indirectly-connected-mode).
 
 ## <a name="direct-connectivity-mode"></a>Direkter Konnektivitätsmodus
 
 Wenn ein Cluster im direkten Konnektivitätsmodus mit Azure verbunden ist, verwenden Sie das Azure-Portal, um die Ressourcen zu verwalten. Verwenden Sie das Portal für alle CRUD-Vorgänge (Create, Read, Update, & Delete) für die Gruppen Datencontroller, verwaltete Instanz und PostgreSQL.
+
+Über das Azure-Portal:
+1. Navigieren Sie zur Ressourcengruppe, und löschen Sie den Azure Arc-Datencontroller.
+2. Wählen Sie den Kubernetes-Cluster mit Azure Arc-Unterstützung aus, um zur Übersichtsseite zu navigieren.
+    - Wählen Sie unter „Einstellungen“ die Option **Erweiterungen** aus.
+    - Wählen Sie auf der Seite „Erweiterungen“ die Erweiterung für Azure Arc-fähige Datendienste (vom Typ „microsoft.arcdataservices“) aus, und klicken Sie auf **Deinstallieren**.
+3. Löschen Sie optional den benutzerdefinierten Speicherort, an dem der Azure Arc-Datencontroller bereitgestellt wird.
+4. Optional können Sie optional auch den Namespace in Ihrem Kubernetes-Cluster löschen, wenn in dem Namespace keine anderen Ressourcen erstellt werden.
+
+
 
 Siehe [Verwalten von Azure-Ressourcen über das Azure-Portal](../../azure-resource-manager/management/manage-resources-portal.md).
 

@@ -3,12 +3,12 @@ title: Verwaltete Service Fabric-Cluster
 description: Verwaltete Service Fabric-Cluster sind eine Weiterentwicklung des Azure Service Fabric-Clusterressourcenmodells, das die Bereitstellung und Clusterverwaltung optimiert.
 ms.topic: overview
 ms.date: 10/22/2021
-ms.openlocfilehash: 2b0b0b79899acaf0b4be3b05f52fceadf8acf54d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5c94254e470e625a844b345c452e252fcd69b626
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055044"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308122"
 ---
 # <a name="service-fabric-managed-clusters"></a>Verwaltete Service Fabric-Cluster
 
@@ -70,17 +70,8 @@ Verwaltete Service Fabric-Cluster sind sowohl in der SKU „Basic“ als auch �
 
 ## <a name="feature-support"></a>Featureunterstützung
 
-Die Funktionen verwalteter Cluster werden noch erweitert. Aktuell wird Folgendes unterstützt:
+Die Funktionen verwalteter Cluster werden noch erweitert. Weitere Informationen finden Sie unter [Konfigurationsoptionen für verwaltete Service Fabric-Cluster](how-to-managed-cluster-configuration.md) oder [Microsoft.ServiceFabric-Ressourcentypen](/azure/templates/microsoft.servicefabric/allversions) für verwaltete Cluster.
 
-* [Anwendungsbereitstellung mit ARM-Vorlagen](how-to-managed-cluster-app-deployment-template.md)
-* [Anwendungsgeheimnisse](how-to-managed-cluster-application-secrets.md)
-* [Automatische Upgrades für Betriebssystemimages](how-to-managed-cluster-modify-node-type.md#enable-automatic-os-image-upgrades)
-* [Verfügbarkeitszonenübergreifende Bereitstellung](how-to-managed-cluster-availability-zones.md)
-* Auswahl von [Datenträgerverschlüsselung](how-to-enable-managed-cluster-disk-encryption.md) und [verwaltetem Datenträgertyp](how-to-managed-cluster-managed-disk.md)
-* Unterstützung verwalteter Identitäten für [verwaltete Clusterknotentypen](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) sowie für die [Anwendungsauthentifizierung](how-to-managed-cluster-application-managed-identity.md)
-* [NSG-Regeln und andere Netzwerkoptionen](how-to-managed-cluster-networking.md)
-* [Ausschließlich zustandslose Knotentypen](how-to-managed-cluster-stateless-node-type.md)
-* [VM-Skalierungsgruppenerweiterungen](how-to-managed-cluster-vmss-extension.md) für Knotentypen
 
 ## <a name="next-steps"></a>Nächste Schritte
 

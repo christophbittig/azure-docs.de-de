@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1c8f1117053e6076d2281036ecc63f1cbf97d15
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c5597ca90a2264d192273ebfd57ecfd51382c3c4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352746"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349298"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory
 
@@ -354,7 +354,7 @@ Azure AD fügt den Überwachungsprotokollen in folgenden Fällen Einträge hinzu
 
 * Ein Benutzer aktiviert oder deaktiviert sein Konto für einen Sicherheitsschlüssel oder setzt den zweiten Faktor für den Sicherheitsschlüssel auf dem Windows 10-Computer zurück. Siehe Ereignis-IDs 4670 und 5382.
 
-**Azure AD speichert die meisten Überwachungsdaten 30 Tage** und stellt sie per Azure-Verwaltungsportal oder API zur Verfügung, damit Sie sie in Ihre Analysesysteme herunterladen können. Wenn Sie einen längeren Aufbewahrungszeitraum benötigen, exportieren und nutzen Sie die Protokolle in einem SIEM-Tool wie [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk oder Sumo Logic. Wir empfehlen eine längere Aufbewahrung für Überwachungen, Trendanalysen und andere Geschäftsanforderungen.
+**Azure AD speichert die meisten Überwachungsdaten 30 Tage** und stellt sie per Azure-Verwaltungsportal oder API zur Verfügung, damit Sie sie in Ihre Analysesysteme herunterladen können. Wenn Sie einen längeren Aufbewahrungszeitraum benötigen, exportieren und nutzen Sie die Protokolle in einem SIEM-Tool wie [Microsoft Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk oder Sumo Logic. Wir empfehlen eine längere Aufbewahrung für Überwachungen, Trendanalysen und andere Geschäftsanforderungen.
 
 Das Aktivitätsdashboard für Authentifizierungsmethoden umfasst zwei Registerkarten: „Registrierung“ und „Nutzung“.
 

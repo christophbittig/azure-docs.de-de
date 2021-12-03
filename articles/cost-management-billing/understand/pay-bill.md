@@ -8,14 +8,14 @@ tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: ef24c80e50cc45f48b583d721b35f61645b94033
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 70d104853db5634e70dfbdd7bc01c1c2b8fd9589
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483179"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476146"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Bezahlen Ihrer Rechnung für Microsoft Azure
 
@@ -40,6 +40,8 @@ Wenn eine Kredit- oder Debitkarte als Standardzahlungsmethode für Ihr Abrechnun
 Falls die automatische Belastung Ihrer Kredit- oder Debitkarte aus irgendeinem Grund abgelehnt wird, können Sie mit einer Kredit- oder Debitkarte eine einmalige Zahlung leisten, indem Sie im Azure-Portal die Option **Jetzt zahlen** verwenden.
 
 Informationen zum Ändern Ihrer Standardzahlungsmethode in die Zahlung per Scheck oder Banküberweisung finden Sie unter [Zahlen für Ihr Azure-Abonnement auf Rechnung](../manage/pay-by-invoice.md).
+
+Es gibt einige Länder, die die Verwendung von Debitkarten nicht zulassen. Im Allgemeinen können Sie sie jedoch verwenden, um Ihre Azure-Rechnung zu bezahlen. Virtuelle und vorauszahlende Debitkarten können nicht verwendet werden, um Ihre Azure-Rechnung zu bezahlen.
 
 ### <a name="check-or-wire-transfer"></a>Scheck oder Überweisung
 
@@ -114,7 +116,7 @@ Wenn Ihre Standardzahlungsmethode die Überweisung ist, überprüfen Sie Ihre Re
 > - [Guayana](/legal/pay/guyana)
 > - [Haiti](/legal/pay/haiti)
 > - [Honduras](/legal/pay/honduras)
-> - [Hongkong (SAR)](/legal/pay/hong-kong)
+> - [Hongkong](/legal/pay/hong-kong)
 > - [Ungarn](/legal/pay/hungary)
 > - [Island](/legal/pay/iceland)
 > - [Indien](/legal/pay/india)

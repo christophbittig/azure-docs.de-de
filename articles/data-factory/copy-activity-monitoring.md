@@ -9,18 +9,18 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: ed65bb5bcde37bf4ad18d9650697d51640ac1e4a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 14607231fd68cf78f33a21abdb26dd68e2ef6871
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767582"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131062186"
 ---
 # <a name="monitor-copy-activity"></a>Überwachen der Kopieraktivität
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Ausführung der Kopieraktivität in Azure Data Factory- und Synapse-Pipelines überwachen können. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Ausführung der Kopieraktivität in Azure Data Factory- und Synapse-Pipelines überwachen können. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.  Sie können auch Kopieraktivitäten, die mit dem [Kopierdatentool](copy-data-tool.md) erzeugt wurden, sowie [Löschaktivitäten](delete-activity.md) mit demselben Ansatz überwachen.
 
 ## <a name="monitor-visually"></a>Visuelle Überwachung
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: 588764e8eb1864dc702fa94b05fcd7bf32a57c79
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 0902fbd761cb66eb5dbee4a5e3406ecba688c0b7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388074"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451481"
 ---
 # <a name="tutorial-migrate-okta-sync-provisioning-to-azure-ad-connect-based-synchronization"></a>Tutorial: Okta-Synchronisierungsbereitstellung zu Azure AD Connect-basierter Synchronisierung migrieren
 
@@ -39,6 +39,7 @@ Verwenden Sie einen Azure AD Connect-Server, wenn Ihre Organisation beim Synchr
 
 >[!NOTE]
 >Bei der Installation von Azure AD Connect oder der Azure AD-Cloudbereitstellung sind alle Voraussetzungen zu berücksichtigen. Bevor Sie die Installation fortsetzen, finden Sie weitere Informationen unter [Voraussetzungen für Azure AD Connect](../hybrid/how-to-connect-install-prerequisites.md).
+
 ## <a name="confirm-immutableid-attribute-synchronized-by-okta"></a>Überprüfen des mit Okta synchronisierten Attributs „ImmutableID“
 
 „ImmutableID“ ist das Kernattribut, das zum Verknüpfen von synchronisierten Objekten mit ihren lokalen Entsprechungen verwendet wird. Okta konvertiert die Active Directory-objectGUID eines lokalen Objekts in eine Base64-codierte Zeichenfolge. Diese Zeichenfolge wird dann im Feld „ImmutableID“ in Azure AD standardmäßig mit einem Stempel versehen.
@@ -52,7 +53,7 @@ Connect-AzureAD
 
 Wenn Sie das Modul bereits verwenden, erhalten Sie möglicherweise eine Warnung zum Aktualisieren auf die neueste Version, wenn es veraltet ist.
 
-Importieren Sie das Modul nach der Installation, und führen Sie die folgenden Schritte aus, um eine Verbindung mit dem Azure AD-Dienst herzustellen:
+Importieren Sie das Modul nach der Installation und führen Sie die folgenden Schritte aus, um eine Verbindung mit dem Azure AD-Dienst herzustellen:
 
 1. Geben Sie im Authentifizierungsfenster Ihre Anmeldeinformationen für den globalen Administrator ein.
 
@@ -106,16 +107,18 @@ Im Beispiel werden *alle* lokalen Azure AD-Benutzer erfasst und eine Liste der b
 
    >[!IMPORTANT]
    >Wenn die ImmutableID-Werte in der Cloud nicht mit den objectGUID-Werten übereinstimmen, haben Sie die Standardwerte für die Okta-Synchronisierung geändert. Wahrscheinlich haben Sie ein anderes Attribut ausgewählt, um ImmutableID-Werte zu bestimmen. Bevor Sie mit dem nächsten Abschnitt fortfahren, muss das Quellattribut der ImmutableID-Werte identifiziert werden. Aktualisieren Sie das Attribut, das über Okta synchronisiert wird, bevor Sie die Okta-Synchronisierung deaktivieren.
+
 ## <a name="install-azure-ad-connect-in-staging-mode"></a>Installieren von Azure AD Connect im Stagingmodus
 
 Nach der Vorbereitung einer Liste der Quellen und Ziele wird der Azure AD Connect-Server installiert. Bei Verwendung der Azure AD Connect-Cloudbereitstellung können Sie diesen Abschnitt überspringen.
 
-1. Fahren Sie mit dem [Download und der Installation von Azure AD Connect](../hybrid/how-to-connect-install-custom.md) auf dem ausgewählten Server fort. 
+1. Fahren Sie mit dem [Download und der Installation von Azure AD Connect](../hybrid/how-to-connect-install-custom.md) auf dem ausgewählten Server fort.
 
 1. Wählen Sie auf der Seite **Benutzer werden identifiziert** unter **Wählen Sie aus, wie Benutzer bei Azure AD identifiziert werden sollen** die Option **Bestimmtes Attribut auswählen** aus. Wählen Sie dann **mS-DS-ConsistencyGUID** aus, wenn Sie die Okta-Standardwerte nicht geändert haben.
 
    >[!WARNING]
    >Dies ist der wichtigste Schritt auf dieser Seite. Bevor Sie **Weiter** auswählen, stellen Sie sicher, dass das Attribut, das Sie als Quellanker auswählen, das Attribut ist, über das Ihre vorhandenen Azure AD-Benutzer *aktuell* gefüllt werden. Wenn Sie das falsche Attribut auswählen, müssen Sie Azure AD Connect deinstallieren und neu installieren und anschließend diese Option erneut aktivieren.
+   
    ![Screenshot von mS-DS-ConsistencyGuid.](./media/migrate-okta-sync-provisioning-to-azure-active-directory-connect-based-synchronization/consistency-guid.png)
 
 1. Aktivieren Sie auf der Seite **Konfigurieren** das Kontrollkästchen **Stagingmodus aktivieren**. Wählen Sie dann **Installieren** aus.
@@ -162,6 +165,7 @@ Nach der Vorbereitung einer Liste der Quellen und Ziele wird der Azure AD Conne
 
    >[!NOTE]
    >Bevor Sie mit dem nächsten Schritt fortfahren, stellen Sie sicher, dass alle Benutzerattribute ordnungsgemäß synchronisiert sind und wie erwartet auf der Registerkarte **Pending Export** (Ausstehender Export) angezeigt werden. Wenn sie gelöscht werden, stellen Sie sicher, dass die ImmutableID-Werte übereinstimmen und sich der Benutzer in einer der ausgewählten Organisationseinheiten für die Synchronisierung befindet.
+
 ## <a name="install-azure-ad-cloud-sync-agents"></a>Installieren von Agents für die Azure AD-Cloudsynchronisierung
 
 Nach der Vorbereitung einer Liste der Quellen und Ziele werden [Agents für die Azure AD-Cloudsynchronisierung installiert und konfiguriert](../cloud-sync/tutorial-single-forest.md). Bei Verwendung eines Azure AD Connect-Servers können Sie diesen Abschnitt überspringen.
@@ -170,21 +174,22 @@ Nach der Vorbereitung einer Liste der Quellen und Ziele werden [Agents für die 
 
 Wenn Sie die Azure AD Connect-Installation überprüft haben und die ausstehenden Exporte korrekt angezeigt werden, können Sie die Okta-Bereitstellung für Azure AD deaktivieren.
 
-1. Navigieren Sie zum Okta-Portal. Wählen Sie **Applications** (Anwendungen) und dann Ihre Okta-App aus, die zum Bereitstellen von Benutzern für Azure AD verwendet wird. Öffnen Sie die Registerkarte **Provisioning** (Bereitstellung), und wählen Sie den Bereich **Integration** aus.
+1. Navigieren Sie zum Okta-Portal. Wählen Sie **Applications** (Anwendungen) und dann Ihre Okta-App aus, die zum Bereitstellen von Benutzern für Azure AD verwendet wird. Öffnen Sie die Registerkarte **Provisioning** (Bereitstellung) und wählen Sie den Bereich **Integration** aus.
 
    ![Screenshot des Abschnitts „Integration“ in Okta.](./media/migrate-okta-sync-provisioning-to-azure-active-directory-connect-based-synchronization/integration-section.png)
 
-1. Wählen Sie **Edit** (Bearbeiten) aus, deaktivieren Sie die Option **Enable API integration** (API-Integration aktivieren), und wählen Sie **Save** (Speichern) aus.
+1. Wählen Sie **Edit** (Bearbeiten) aus, deaktivieren Sie die Option **Enable API integration** (API-Integration aktivieren) und wählen Sie **Save** (Speichern) aus.
 
    ![Screenshot vom Bearbeiten der Option zum Aktivieren der API-Integration in Okta.](./media/migrate-okta-sync-provisioning-to-azure-active-directory-connect-based-synchronization/edit-api-integration.png)
 
    >[!NOTE]
    >Wenn Sie mehrere Office 365-Apps für die Verarbeitung der Bereitstellung für Azure AD verwenden, stellen Sie sicher, dass alle deaktiviert sind.
+
 ## <a name="disable-staging-mode-in-azure-ad-connect"></a>Deaktivieren des Stagingmodus in Azure AD Connect
 
 Nach dem Deaktivieren der Okta-Bereitstellung kann die Synchronisierung von Objekten mit dem Azure AD Connect-Server beginnen. Bei Verwendung von Agents für die Azure AD-Cloudsynchronisierung können Sie diesen Abschnitt überspringen.
 
-1. Führen Sie auf dem Desktop erneut den Installations-Assistenten aus, und wählen Sie **Konfigurieren** aus.
+1. Führen Sie auf dem Desktop erneut den Installations-Assistenten aus und wählen Sie **Konfigurieren** aus.
 
    ![Screenshot vom Azure AD Connect-Server.](./media/migrate-okta-sync-provisioning-to-azure-active-directory-connect-based-synchronization/azure-ad-connect-server.png)
 
@@ -192,7 +197,7 @@ Nach dem Deaktivieren der Okta-Bereitstellung kann die Synchronisierung von Obje
 
    ![Screenshot der Option „Stagingmodus konfigurieren“.](./media/migrate-okta-sync-provisioning-to-azure-active-directory-connect-based-synchronization/configure-staging-mode.png)
 
-1. Deaktivieren Sie die Option **Stagingmodus aktivieren**, und wählen Sie **Weiter** aus.
+1. Deaktivieren Sie die Option **Stagingmodus aktivieren** und wählen Sie **Weiter** aus.
 
    ![Screenshot vom Deaktivieren der Option „Stagingmodus aktivieren“.](./media/migrate-okta-sync-provisioning-to-azure-active-directory-connect-based-synchronization/uncheck-enable-staging-mode.png)
 
@@ -212,13 +217,14 @@ Nach dem Deaktivieren der Okta-Bereitstellung kann die Synchronisierung von Obje
 
 1. Ändern Sie das **Konfigurationsprofil** in **Aktiviert**.
 
-1. Kehren Sie zum Bereitstellungsmenü zurück, und wählen Sie **Protokolle** aus.
+1. Kehren Sie zum Bereitstellungsmenü zurück und wählen Sie **Protokolle** aus.
 
 1. Überprüfen Sie, ob vorhandene Objekte mit dem Bereitstellungsconnector ordnungsgemäß aktualisiert wurden. Die Agents für die Cloudsynchronisierung sind nicht destruktiv. Wenn eine Übereinstimmung nicht ordnungsgemäß erfolgt ist, treten bei den Updates Fehler auf.
 
 1. Wenn ein Benutzer nicht übereinstimmt, nehmen Sie die erforderlichen Updates vor, um die ImmutableID-Werte zu binden. Starten Sie dann die Synchronisierung der Cloudbereitstellung neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zur Migration von Okta zu Azure AD finden Sie unter:
 
 - [Migrieren von Anwendungen von Okta zu Azure AD](migrate-applications-from-okta-to-azure-active-directory.md)

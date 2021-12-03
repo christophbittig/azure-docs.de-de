@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12e86dc602e52fb96b7f9cea3a52079fc80c201b
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: c96362b522100d27757618e330f45514e4d442df
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041688"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349241"
 ---
 # <a name="security-operations-for-infrastructure"></a>Sicherheitsvorgänge für die Infrastruktur
 
@@ -51,13 +51,13 @@ Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien:
 
 Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- (durch Trennzeichen getrennte Werte) oder JSON-Dateien (JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen in andere Tools, die eine umfassendere Automatisierung von Überwachung und Benachrichtigungen ermöglichen:
 
-* [Azure Sentinel](../../sentinel/overview.md): Ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene durch die Bereitstellung von SIEM-Funktionen (Security Information & Event Management). 
+* [Microsoft Sentinel](../../sentinel/overview.md): Ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
 
 * [Azure Monitor](../../azure-monitor/overview.md): Ermöglicht die automatisierte Überwachung von und Warnung vor verschiedenen Bedingungen. Damit können Arbeitsmappen erstellt oder verwendet werden, um Daten aus verschiedenen Quellen zu kombinieren.
 
 * [Azure Event Hubs](../../event-hubs/event-hubs-about.md) mit Integration in ein SIEM-System: [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme integriert werden](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md), z. B. in Splunk, ArcSight, QRadar und Sumo Logic.
 
-* [Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security) - ermöglicht Ihnen die Erkennung und Verwaltung von Apps, die Steuerung von Apps und Ressourcen sowie die Überprüfung der Compliance Ihrer Cloud-Apps. 
+* [Microsoft Defender-für-Cloud-Apps](/cloud-app-security/what-is-cloud-app-security): Ermöglichen Ihnen die Erkennung und Verwaltung von Apps, die Steuerung von Apps und Ressourcen sowie die Überprüfung der Kompatibilität Ihrer Cloud-Apps. 
 
 Im restlichen Teil dieses Artikels wird beschrieben, welche Ereignisse Sie überwachen und wofür Sie Warnungen erstellen sollten, wobei die Inhalte nach der Art der Bedrohung organisiert sind. Wenn es spezielle vorgefertigte Lösungen gibt, finden Sie im Anschluss an die Tabelle entsprechende Links. Andernfalls können Sie Warnungen mithilfe der oben genannten Tools erstellen.
 
@@ -137,7 +137,7 @@ Informationen zum Konfigurieren der Überwachung für den Anwendungsproxy finden
 
 Damit die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) wirksam wird, müssen Sie auch die Legacyauthentifizierung blockieren. Anschließend müssen Sie Ihre Umgebung überwachen und bei jeder Verwendung der Legacyauthentifizierung eine Warnung ausgeben. Der Grund dafür ist, dass Legacyauthentifizierungsprotokolle, z. B. POP, SMTP, IMAP und MAPI, keine MFA erzwingen können. Dadurch werden diese Protokolle zu bevorzugten Zugangspunkten für Angreifer Ihrer Organisation. Weitere Informationen zu Tools, mit denen Sie die Legacyauthentifizierung blockieren können, finden Sie unter [New tools to block legacy authentication in your organization](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302) (Neue Tools zum Blockieren der Legacyauthentifizierung in Ihrer Organisation, in englischer Sprache). 
 
-Die Legacyauthentifizierung wird im Protokoll der Azure AD-Anmeldungen als Ereignisdetail erfasst. Sie können mithilfe der Azure Monitor-Arbeitsmappe die Verwendung der Legacyauthentifizierung identifizieren. Weitere Informationen finden Sie unter [Anmeldungen mit Legacyauthentifizierung](../reports-monitoring/howto-use-azure-monitor-workbooks.md) in [Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte](../reports-monitoring/howto-use-azure-monitor-workbooks.md). Sie können auch die Azure Sentinel-Arbeitsmappe für unsichere Protokolle verwenden. Weitere Informationen finden Sie unter [Azure Sentinel Insecure Protocols Workbook Implementation Guide](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-insecure-protocols-workbook-implementation-guide/ba-p/1197564) (Leitfaden zur Implementierung der Azure Sentinel-Arbeitsmappe für unsichere Protokolle, in englischer Sprache). Zu überwachende Aktivitäten:
+Die Legacyauthentifizierung wird im Protokoll der Azure AD-Anmeldungen als Ereignisdetail erfasst. Sie können mithilfe der Azure Monitor-Arbeitsmappe die Verwendung der Legacyauthentifizierung identifizieren. Weitere Informationen finden Sie unter [Anmeldungen mit Legacyauthentifizierung](../reports-monitoring/howto-use-azure-monitor-workbooks.md) in [Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte](../reports-monitoring/howto-use-azure-monitor-workbooks.md). Sie können auch die Arbeitsmappe für unsichere Protokolle für Microsoft Sentinel verwenden. Weitere Informationen finden Sie unter [Leitfaden zur Implementierung der Arbeitsmappe für unsichere Protokolle mit Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-insecure-protocols-workbook-implementation-guide/ba-p/1197564). Zu überwachende Aktivitäten:
 
 | Zu überwachende Elemente| Risikostufe| Hierbei gilt:| Filter/Unterfilter| Notizen |
 | - | - | - | - | - |
@@ -185,7 +185,7 @@ Informationen zum Überwachen von Konfigurationsinformationen:
 
 * Für SQL Server siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records)
 
-* Für Azure Sentinel siehe [Herstellen einer Verbindung mit Windows-Sicherheitsereignissen](/sql/relational-databases/security/auditing/sql-server-audit-records) 
+* Weiter Informationen zu Microsoft Sentinel finden Sie unter [Herstellen einer Verbindung mit Windows-Servern, um Sicherheitsereignissen zu sammeln](/sql/relational-databases/security/auditing/sql-server-audit-records). 
 
 * Informationen zum Konfigurieren und Verwenden von Azure AD Connect finden Sie unter [Was ist Azure AD Connect?](../hybrid/whatis-azure-ad-connect.md)
 

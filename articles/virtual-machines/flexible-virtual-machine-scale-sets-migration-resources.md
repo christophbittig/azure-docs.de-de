@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 10/14/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: b6cdeff69c1d9a919651d68b937af1c7b328edbe
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b4662c2fd6c5a0950bc3b2b6f336fabab12fc1aa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130257953"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008473"
 ---
 # <a name="migrate-deployments-and-resources-to-virtual-machine-scale-sets-in-flexible-orchestration"></a>Migrieren von Bereitstellungen und Ressourcen zu VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ 
 
@@ -86,23 +86,31 @@ Es gibt derzeit keine automatisierten Tools zum direkten Verschieben vorhandener
 
 VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ ermöglichen Ihnen das Kombinieren der Skalierbarkeit von [VM-Skalierungsgruppen im Orchestrierungsmodus „Uniform“ (einheitlich)](../virtual-machine-scale-sets/overview.md) mit den regionalen Verfügbarkeitsgarantien von Verfügbarkeitsgruppen. Im Folgenden finden Sie wichtige Überlegungen zur Entscheidung, mit dem flexiblen Orchestrierungsmodus zu arbeiten. 
 
-### <a name="explicit-network-outbound-connectivity-required"></a>Explizite ausgehende Netzwerkkonnektivität erforderlich. 
+### <a name="create-scalable-network-connectivity"></a>Erstellen skalierbarer Netzwerkkonnektivität 
+<!-- the following is an important link to use in FLEX documentation to reference this section:
+/virtual-machines/flexible-virtual-machine-scale-sets-migration-resources.md#create-scalable-network-connectivity
+-->
 
-Um die Standardnetzwerksicherheit zu verbessern, erfordern VM-Skalierungsgruppen mit der Orchestrierung „Flexibel“, dass implizit über das Profil für die automatische Skalierung erstellte Instanzen über ausgehende Konnektivität verfügen, die explizit durch eine der folgenden Methoden definiert wird: 
+Das Netzwerkverhalten für externen Zugriff hängt davon ab, wie Sie virtuelle Computer in Ihrer Skalierungsgruppe erstellen. **Manuell hinzugefügte VM-Instanzen** verfügen standardmäßig über einen ausgehenden Konnektivitätszugriff. **Implizit erstellte VM-Instanzen** verfügen über keinen Standardzugriff. 
+
+Zur Verbesserung der Standard-Netzwerksicherheit verfügen **VM-Instanzen, die implizit über das Profil für die automatische Skalierung erstellt wurden, nicht standardmäßig über ausgehenden Zugriff**. Damit VM-Skalierungsgruppen mit implizit erstellten VM-Instanzen verwendet werden können, muss der ausgehende Zugriff explizit mit einer der folgenden Methoden definiert werden: 
 
 - Für die meisten Szenarios werden die unter [Tutorial: Erstellen eines NAT-Gateways mithilfe des Azure-Portals](../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md) beschrieben Schritte empfohlen.
 - Im Fall von Szenarien mit hohen Sicherheitsanforderungen oder bei Verwendung von Azure Firewall oder virtuellen Netzwerkappliances (Network Virtual Appliance, NVA) können Sie eine benutzerdefinierte Route als nächsten Hop durch die Firewall festlegen. 
 - Instanzen befinden sich im Back-End-Pool einer Azure Load Balancer-Instanz der Standard-SKU. 
 - Sie fügen eine öffentliche IP-Adresse an die Netzwerkschnittstelle der Instanz an. 
 
-Bei Einzelinstanz-VMs und VM-Skalierungsgruppen mit der Orchestrierung „Einheitlich“ wird ausgehende Konnektivität automatisch bereitgestellt. 
-
 Dies sind häufige Szenarios, die explizite ausgehende Konnektivität erfordern: 
 
 - Die Aktivierung einer Windows-VM erfordert, dass Sie ausgehende Konnektivität zwischen der VM-Instanz mit dem Schlüsselverwaltungsdienst (Key Management Service, KMS) definiert haben. Weitere Informationen finden Sie unter [Behandlung von Problemen bei der VM-Aktivierung](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems).  
 - Zugriff auf Speicherkonten oder Key Vault. Die Verbindung mit Azure-Diensten kann auch über [Private Link](../private-link/private-link-overview.md) hergestellt werden. 
+- Windows-Updates
+- Zugriff auf Paket-Manager für Linux 
 
-Weitere Details zum Definieren von sicheren ausgehenden Verbindungen finden Sie unter [Ausgehender Standardzugriff in Azure](../virtual-network/ip-services/default-outbound-access.md).
+Weitere Details zum Definieren von ausgehender Konnektivität finden Sie unter [Standardzugriff in ausgehender Richtung in Azure](../virtual-network/ip-services/default-outbound-access.md).
+
+Einzelinstanz-VMs, bei denen Sie den Netzwerkadapter explizit erstellen, wird standardmäßig ausgehender Zugriff gewährt. VM-Skalierungsgruppen im Orchestrierungsmodus „Uniform“ (Einheitlich) verfügen ebenfalls standardmäßig über ausgehende Konnektivität. 
+
 
 > [!IMPORTANT]
 > Vergewissern Sie sich, dass Sie über explizite ausgehende Netzwerkkonnektivität verfügen. Erfahren Sie mehr darüber in [Virtuelle Netzwerke und virtuelle Computer in Azure](../virtual-network/network-overview.md), und stellen Sie sicher, dass Sie die [bewährten Methoden](../virtual-network/concepts-and-best-practices.md) für Netzwerke von Azure beachten. 
@@ -155,17 +163,9 @@ Verwenden Sie die Standard-VM-APIs und -Befehle, um Daten und Screenshots zur St
 Verwenden Sie für Standard-VMs bestimmte Erweiterungen, und keine Erweiterungen, die für Instanzen mit dem Orchestrierungsmodus „Einheitlich“ bestimmt sind.
 
 
+### <a name="protect-instances-from-delete"></a>Schützen von Instanzen vor Löschung
 
-
-
-
-
-
-
-
-
-
-
+Für VM-Skalierungsgruppen im Orchestrierungsmodus „Flexible“ (Flexibel) sind derzeit keine Schutzoptionen für Instanzen verfügbar. Wenn Sie die Autoskalierung für eine VM-Skalierungsgruppe aktiviert haben, besteht bei einigen VMs möglicherweise das Risiko, dass sie bei der Skalierung gelöscht werden. Wenn Sie bestimmte VM-Instanzen davor schützen möchten, gelöscht zu werden, verwenden Sie eine [Sperre im Azure Resource Manager](../azure-resource-manager/management/lock-resources.md).
 
 
 

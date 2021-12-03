@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.author: peterlu
-author: peterclu
+ms.author: lagayhar
+author: lgayhardt
 ms.date: 01/09/2020
 ms.custom: designer
-ms.openlocfilehash: 86cb5260a59f864658fbb7ac1c1da2d943c6253e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfa3b5630b09e2a3e3411afc7d77b76f1b651e72
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "90893428"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554999"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Verwenden einer Tastatur zur Verwendung von Azure Machine Learning-Designer
 
@@ -25,40 +25,40 @@ Dieser Workflow wurde mit [Sprachausgabe](https://support.microsoft.com/help/227
 
 ## <a name="navigate-the-pipeline-graph"></a>Navigieren im Pipelinegraph
 
-Der Pipelinegraph ist als geschachtelte Liste organisiert. Die äußere Liste ist eine Modulliste, die alle Module im Pipelinegraph beschreibt. Die innere Liste ist eine Verbindungsliste, die alle Verbindungen eines bestimmten Moduls beschreibt.  
+Der Pipelinegraph ist als geschachtelte Liste organisiert. Die äußere Liste ist eine Komponentenliste, die alle Komponenten im Pipelinegraphen beschreibt. Die innere Liste ist eine Verbindungsliste, die alle Verbindungen einer bestimmten Komponente beschreibt.  
 
-1. In der Modulliste können Sie mit der Pfeiltaste zwischen den Modulen wechseln.
-1. Verwenden Sie die Registerkarte, um die Verbindungsliste für das Zielmodul zu öffnen.
-1. Verwenden Sie die Pfeiltaste, um zwischen den Verbindungsports für das Modul zu wechseln.
-1. Verwenden Sie „G“, um zum Zielmodul zu wechseln.
+1. Verwenden Sie in der Komponentenliste die Pfeiltaste, um die Komponenten zu wechseln.
+1. Verwenden Sie die Registerkarte, um die Verbindungsliste für die Zielkomponente zu öffnen.
+1. Verwenden Sie die Pfeiltaste, um zwischen den Verbindungsports für die Komponente zu wechseln.
+1. Verwenden Sie „G“, um zur Zielkomponente zu wechseln.
 
 ## <a name="edit-the-pipeline-graph"></a>Bearbeiten des Pipelinegraphs
 
-### <a name="add-a-module-to-the-graph"></a>Hinzufügen eines Moduls zum Graph
+### <a name="add-a-component-to-the-graph"></a>Hinzufügen einer Komponente zum Graphen
 
-1. Verwenden Sie STRG+F6, um den Fokus von der Canvas zur Modulstruktur zu verschieben.
-1. Suchen Sie das gewünschte Modul in der Modulstruktur mithilfe des standardmäßigen TreeView-Steuerelements.
+1. Verwenden Sie STRG+F6, um den Fokus von der Canvas zur Komponentenstruktur zu verschieben.
+1. Suchen Sie die gewünschte Komponente in der Komponentenstruktur mithilfe des standardmäßigen TreeView-Steuerelements.
 
-### <a name="edit-a-module"></a>Bearbeiten eines Moduls
+### <a name="edit-a-component"></a>Bearbeiten einer Komponente
 
-So verbinden Sie ein Modul mit einem anderen Modul
+So verbinden Sie eine Komponente mit einer anderen Komponente:
 
-1. Verwenden Sie STRG + UMSCHALT + H, wenn Sie auf ein Modul in der Modulliste abzielen, um den Verbindungshilfsprogramm zu öffnen.
-1. Bearbeiten Sie die Verbindungsports für das Modul.
+1. Verwenden Sie STRG+UMSCHALT+H, wenn Sie auf eine Komponente in der Komponentenliste abzielen, um das Verbindungshilfsprogramm zu öffnen.
+1. Bearbeiten Sie die Verbindungsports für die Komponente.
 
-So passen Sie die Moduleigenschaften an
+So passen Sie Komponenteneigenschaften an:
 
-1. Verwenden Sie STRG + UMSCHALT + E, wenn Sie auf ein Modul abzielen, um die Moduleigenschaften zu öffnen.
-1. Bearbeiten Sie die Moduleigenschaften.
+1. Verwenden Sie STRG+UMSCHALT+E, wenn Sie eine Komponente als Ziel verwenden, um die Komponenteneigenschaften zu öffnen.
+1. Bearbeiten Sie die Komponenteneigenschaften.
 
 ## <a name="navigation-shortcuts"></a>Tastenkombinationen zur Navigation
 
 | Tastatureingabe | Beschreibung |
 |-|-|
-| STRG + F6 | Fokus zwischen Canvas und Modulstruktur umschalten |
-| STRG + F1   | Informationskarte beim Fokussieren auf einen Knoten in der Modulstruktur öffnen |
+| STRG + F6 | Fokus zwischen Canvas und Komponentenstruktur umschalten |
+| STRG + F1   | Informationskarte beim Fokussieren auf einen Knoten in der Komponentenstruktur öffnen |
 | STRG + UMSCHALT + H | Verbindungshilfsprogramm öffnen, wenn der Fokus auf einem Knoten liegt |
-| STRG + UMSCHALT + E | Moduleigenschaften öffnen, wenn der Fokus auf einem Knoten liegt |
+| STRG + UMSCHALT + E | Komponenteneigenschaften öffnen, wenn der Fokus auf einem Knoten liegt |
 | STRG + G | Fokus auf ersten fehlerhaften Knoten verschieben, wenn bei der Pipelineausführung ein Fehler aufgetreten ist |
 
 ## <a name="action-shortcuts"></a>Tastenkombinationen für Aktionen

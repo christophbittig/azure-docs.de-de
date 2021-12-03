@@ -3,14 +3,14 @@ title: 'Entwickeln und Bereitstellen eines gRPC-Rückschlussservers: Azure Video
 description: Dieser Artikel enthält Anleitungen zum Entwickeln und Bereitstellen eines gRPC-Rückschlussservers, der mit Azure Video Analyzer verwendet werden soll.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6b252ef52b1501d5428aa85cb697ea04a8c3cafc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 344f4772bc2c48612c6f8ee62cac9d22a35f321b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095041"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284530"
 ---
 # <a name="develop-and-deploy-grpc-inference-server"></a>Entwickeln und Bereitstellen eines gRPC-Rückschlussservers
 
@@ -59,7 +59,7 @@ Führen Sie die erforderlichen Schritte aus, um das Video Analyzer-Modul bereitz
 
         1. Bereitstellen als IoT-Modul zusammen mit dem Video Analyzer-Modul
         1. Bereitstellen als IoT-Modul auf einem über das Netzwerk erreichbaren Knoten (lokal oder in der Cloud), der Daten mit dem Video Analyzer-Modul austauschen kann.
-    1. Konfigurieren Sie eine Video Analyzer-Pipelinetopologie mit dem Video Analyzer-Modul, und verweisen Sie es auf den gRPC-Server.
+    1. Konfigurieren Sie eine Video-Analyse-Pipeline-Topologie mit dem Video-Analyse-Modul, und verweisen Sie es auf den gRPC-Server.
 
 ### <a name="recommendation"></a>Empfehlung
 
@@ -67,7 +67,10 @@ Beim Zusammenstellen auf demselben Knoten kann `shared memory` verwendet werden,
 
 1. Öffnen Sie das Shared Memory-Handle von Linux.
 1. Greifen Sie beim Empfang eines Frames auf den Adressoffset innerhalb des gemeinsam genutzten Speicherbereichs zu.
-1. Bestätigen Sie den Abschluss der Frameverarbeitung, sodass der verwendete Arbeitsspeicher wieder von Video Analyzer beansprucht werden kann.
+1. Bestätigen Sie den Abschluss der Bildverarbeitung, damit der Speicher von Azure Video Analyzer wieder freigegeben werden kann.
+
+> [!NOTE]
+> Bei Verwendung eines gRPC-Erweiterungsmoduls für das Rückschließen mit gemeinsamem Speicher sollten sowohl das Video Analyzer-Edge-Modul als auch das Erweiterungsmodul unter demselben [Benutzer und derselben Gruppe](https://docs.docker.com/engine/reference/builder/#user) laufen
 
 ## <a name="create-a-grpc-inference-server"></a>Erstellen eines gRPC-Rückschlussservers
 

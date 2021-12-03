@@ -1,35 +1,35 @@
 ---
 title: Ausführen oder Zurücksetzen von Indexern
 titleSuffix: Azure Cognitive Search
-description: Zurücksetzen eines Indexers, von Fertigkeiten oder einzelnen Dokumenten, um den gesamten Index oder Wissensspeicher oder einen Teil davon zu aktualisieren.
+description: Führen Sie Indexer vollständig aus, oder setzen Sie einen Indexer, Qualifikationen oder einzelne Dokumente zurück, um einen Suchindex oder einen Wissensspeicher ganz oder teilweise zu aktualisieren.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/09/2021
-ms.openlocfilehash: 9ba66a8eb76c2c0bdcc2dd086d3abcfc47bcba65
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/02/2021
+ms.openlocfilehash: e29c511a59d8b446b497a8fd4ff393c9a9c683e9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128678135"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449296"
 ---
-# <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>Ausführen oder Zurücksetzen von Indexern, Kenntnissen oder Dokumenten
+# <a name="run-or-reset-indexers-skills-or-documents"></a>Ausführen oder Zurücksetzen von Indexern, Qualifikationen oder Dokumenten
 
-Die Indexerausführung kann auftreten, wenn Sie den [Indexer](search-indexer-overview.md) erstmalig erstellen, bei Bedarf einen Indexer ausführen oder einen Indexer nach einem Zeitplan festlegen. Nach der ersten Ausführung verfolgt ein Indexer, welche Suchdokumente über eine interne obere Grenze indiziert wurden. Der Marker wird nie in der API verfügbar gemacht, aber intern weiß der Indexer, wo die Indizierung angehalten wurde, sodass er bei der nächsten Ausführung an der Stelle fortfahren kann, wo er aufgehört hat.
+Indexer können auf drei Arten aufgerufen werden: bei Bedarf, nach einem Zeitplan oder beim [Erstellen des Indexers](/rest/api/searchservice/create-indexer). Nach der ersten Ausführung verfolgt ein Indexer, welche Suchdokumente über eine interne obere Grenze indiziert wurden. Der Marker wird nie in der API verfügbar gemacht, aber intern weiß der Indexer, wo die Indizierung angehalten wurde, sodass er bei der nächsten Ausführung an der Stelle fortfahren kann, wo er aufgehört hat.
 
 Sie können die obere Grenze löschen, indem Sie den Indexer zurücksetzen, wenn Sie die Verarbeitung von Grund auf neu durchführen möchten. Rücksetz-APIs sind in der Objekthierarchie auf abnehmenden Ebenen verfügbar:
 
 + Der gesamte Suchkorpus (siehe [Zurücksetzen eines Indexers](#reset-indexers))
 + Ein bestimmtes Dokument oder eine Liste von Dokumenten (siehe [Zurücksetzen von Dokumenten (Vorschau)](#reset-docs))
-+ Eine bestimmte Fertigkeit oder eine Anreicherung in einem Dokument (siehe [Zurücksetzen von Fertigkeiten (Vorschau)](#reset-skills))
++ Eine bestimmte Qualifikation oder eine Anreicherung in einem Dokument (verwenden Sie [Zurücksetzen von Qualifikationen - Vorschau](#reset-skills))
 
 Die Rücksetz-APIs werden verwendet, um zwischengespeicherte (in Szenarien zur [KI-Anreicherung](cognitive-search-concept-intro.md) anwendbare) Inhalte zu aktualisieren oder um die obere Grenze zu löschen und den Index neu zu erstellen.
 
 Durch Zurücksetzen, gefolgt von der Ausführung, können vorhandene Dokumente und neue Dokumente erneut verarbeitet werden, doch werden keine verwaisten Suchdokumente im Suchindex entfernt, die in vorherigen Ausführungen erstellt wurden. Weitere Informationen zum Löschen finden Sie unter [Hinzufügen, Aktualisieren oder Löschen von Dokumenten (Azure Cognitive Search-REST-API)](/rest/api/searchservice/addupdate-or-delete-documents).
 
-## <a name="run-indexers"></a>Ausführen von Indexern
+## <a name="how-to-run-indexers"></a>Ausführen von Indexern
 
 Mit dem [Erstellen eines Indexers](/rest/api/searchservice/create-indexer) wird der Indexer erstellt und ausgeführt, es sei denn, Sie erstellen ihn in einem deaktivierten Zustand ("disabled": true). Die erste Ausführung dauert etwas länger, da sie auch die Objekterstellung abdeckt.
 
@@ -41,15 +41,17 @@ Sie können einen Indexer ausführen, indem Sie einen der folgenden Ansätze ver
 + [Ausführen des Indexers (REST)](/rest/api/searchservice/run-indexer)
 + [RunIndexers-Methode](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexer) im Azure .NET SDK (oder Verwenden der entsprechenden RunIndexer-Methode in einem anderen SDK)
 
+## <a name="indexer-execution"></a>Indexer-Ausführung
+
 Die Indexerausführung unterliegt den folgenden Einschränkungen:
 
-+ Die maximale Anzahl von Indexeraufträgen beträgt 1 pro Replikat ohne gleichzeitige Aufträge.
++ Die maximale Anzahl von Indexeraufträgen beträgt 1 pro Replikat.
 
   Wenn der Indexer bereits an der Kapazitätsgrenze ausgeführt wird, erhalten Sie diese Benachrichtigung: „Fehler beim Ausführen des Indexers '\<indexer-name\>', Fehler: „Ein anderer Indexeraufruf wird derzeit ausgeführt; parallele Aufrufe sind nicht zulässig.“
 
 + Die maximale Ausführungszeit beträgt 2 Stunden, wenn ein Skillset verwendet wird, und 24 Stunden ohne. 
 
-  Sie können die Verarbeitung ausdehnen, indem Sie einen Zeitplan für den Indexer erstellen. Im Free-Tarif gelten niedrigere Ausführungszeitlimits. Die vollständige Liste finden Sie unter [Indexergrenzwerte](search-limits-quotas-capacity.md#indexer-limits).
+  Wenn Sie [einen großen Datensatz indexieren](search-howto-large-index.md), können Sie die Verarbeitung ausdehnen, indem Sie einen Zeitplan für den Indexer erstellen. Im Free-Tarif gelten niedrigere Ausführungszeitlimits. Die vollständige Liste finden Sie unter [Indexergrenzwerte](search-limits-quotas-capacity.md#indexer-limits).
 
 <a name="reset-indexers"></a>
 
@@ -72,12 +74,9 @@ Ein Rücksetzflag wird nach Abschluss der Ausführung gelöscht. Jede reguläre 
 
 ## <a name="reset-skills-preview"></a>Zurücksetzen von Fertigkeiten (Vorschau)
 
-> [!IMPORTANT] 
-> Das [Zurücksetzen von Skills](/rest/api/searchservice/preview-api/reset-skills) befindet sich in der Public Preview und unterliegt den [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Die [Vorschau-REST-API](/rest/api/searchservice/index-preview) unterstützt dieses Feature.
-
 Für Indexer, die über Skillsets verfügen, können Sie bestimmte Fertigkeiten zurücksetzen, um die Verarbeitung dieser Fertigkeit und aller nachgelagerten Fertigkeiten zu erzwingen, die von ihrer Ausgabe abhängen. [Zwischengespeicherte Anreicherungen](search-howto-incremental-index.md) werden ebenfalls aktualisiert. Durch das Zurücksetzen von Fertigkeiten werden die zwischengespeicherten Fertigkeitenergebnisse ungültig, was nützlich ist, wenn eine neue Version einer Fertigkeit bereitgestellt wird und der Indexer diese Fertigkeit für alle Dokumente erneut ausführen soll. 
 
-Das [Zurücksetzen von Fertigkeiten](/rest/api/searchservice/preview-api/reset-skills) ist über REST **`api-version=2020-06-30-Preview`** verfügbar.
+Das [Zurücksetzen von Qualifikationen](/rest/api/searchservice/preview-api/reset-skills) ist über REST **`api-version=2020-06-30-Preview`** oder höher verfügbar.
 
 ```http
 POST https://[service name].search.windows.net/skillsets/[skillset name]/resetskills?api-version=2020-06-30-Preview
@@ -98,9 +97,6 @@ Wenn keine Fertigkeiten angegeben werden, wird das gesamte Skillset ausgeführt,
 
 ## <a name="reset-docs-preview"></a>Zurücksetzen von Dokumenten (Vorschau)
 
-> [!IMPORTANT] 
-> Das [Zurücksetzen von Dokumenten](/rest/api/searchservice/preview-api/reset-documents) ist nur über die Vorschau-REST-API in der öffentlichen Vorschau verfügbar. Vorschaufeatures werden wie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) beschrieben im Ist-Zustand angeboten.
-
 Die [API zum Zurücksetzen von Dokumenten](/rest/api/searchservice/preview-api/reset-documents) akzeptiert eine Liste von Dokumentschlüsseln, damit Sie bestimmte Dokumente aktualisieren können. Wenn angegeben, sind die Rücksetzungsparameter unabhängig von anderen Änderungen in den zugrunde liegenden Daten allein dafür ausschlaggebend, was verarbeitet wird. Wenn z. B. seit der letzten Indexerausführung 20 Blobs hinzugefügt oder aktualisiert wurden, Sie aber nur ein Dokument zurücksetzen, wird nur dieses eine Dokument verarbeitet.
 
 Auf Dokumentbasis werden alle Felder in diesem Suchdokument mit Werten aus der Datenquelle aktualisiert. Sie können nicht auswählen, welche Felder aktualisiert werden sollen. 
@@ -109,8 +105,8 @@ Wenn das Dokument durch ein Skillset angereichert wird und zwischengespeicherte 
 
 Wenn Sie diese API zum ersten Mal testen, können Sie mithilfe der folgenden APIs die Verhaltensweisen validieren und testen:
 
-+ [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status) mit API-Version `2020-06-30-Preview`, um den Rücksetzungsstatus und den Ausführungsstatus zu überprüfen. Informationen über die Rücksetzungsanforderung finden Sie am Ende der Statusantwort.
-+ [Zurücksetzen der Dokumente](/rest/api/searchservice/preview-api/reset-documents) mit der API-Version `2020-06-30-Preview`, um anzugeben, welche Dokumente verarbeitet werden sollen.
++ [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status) mit API-Version **`api-version=2020-06-30-Preview`** oder höher, um den Status der Zurücksetzung und den Ausführungsstatus zu überprüfen. Informationen über die Rücksetzungsanforderung finden Sie am Ende der Statusantwort.
++ [Zurücksetzen der Dokumente](/rest/api/searchservice/preview-api/reset-documents) mit der API-Version **`api-version=2020-06-30-Preview`** oder höher, um anzugeben, welche Dokumente verarbeitet werden sollen.
 + [Ausführen des Indexers](/rest/api/searchservice/run-indexer), um den Indexer (beliebige API-Version) auszuführen.
 + [Durchsuchen von Dokumenten](/rest/api/searchservice/search-documents), um nach aktualisierten Werten zu suchen, und außerdem, um Dokumentschlüssel zurückzugeben, wenn Sie sich über den Wert nicht sicher sind. Verwenden Sie `"select": "<field names>"`, wenn Sie einschränken möchten, welche Felder in der Antwort angezeigt werden.
 
@@ -145,7 +141,7 @@ POST https://[service name].search.windows.net/indexers/[indexer name]/resetdocs
 
 ## <a name="check-reset-status"></a>Überprüfen des Rücksetzungsstatus
 
-Verwenden Sie zum Überprüfen des Status einer Zurücksetzung und um anzuzeigen, welche Dokumentschlüssel sich zur Verarbeitung in der Warteschlange befinden, [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status) mit **`api-version=06-30-2020-Preview`** . Die Vorschau-API gibt den **`currentState`** -Abschnitt zurück, den Sie am Ende der Antwort von „Abrufen des Indexerstatus“ finden.
+Verwenden Sie zum Überprüfen des Status einer Zurücksetzung und zum Anzeigen der Dokumentschlüssel, die sich zur Verarbeitung gerade in der Warteschlange befinden, [Abrufen des Indexer-Status](/rest/api/searchservice/get-indexer-status) mit **`api-version=06-30-2020-Preview`** oder höher. Die Vorschau-API gibt den **`currentState`** -Abschnitt zurück, den Sie am Ende der Antwort von „Abrufen des Indexerstatus“ finden.
 
 Der „Modus“ **`indexingAllDocs`** ist für das Zurücksetzen von Fertigkeiten verfügbar (da für die Felder, die durch die KI-Anreicherung aufgefüllt werden, potenziell alle Dokumente betroffen sind).
 

@@ -11,12 +11,12 @@ ms.date: 10/18/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 63af3b70ebfde53078d71955a95e55e03a6c591b
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5cdf2cfb9b530721a8de31501c2f763f0c61bd21
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162491"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240887"
 ---
 # <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows und benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -145,7 +145,7 @@ Wenn Sie Benutzern die Profilbearbeitung in Ihrer Anwendung ermöglichen möchte
 > In diesem Artikel wird erläutert, wie Sie Ihren Mandanten manuell einrichten. Sie können den gesamten Prozess in diesem Artikel automatisieren. Durch die Automatisierung wird das [SocialAndLocalAccountsWithMFA-Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) von Azure AD B2C bereitgestellt, das Journeys zum Registrieren und Anmelden, zur Kennwortzurücksetzung und zur Profilbearbeitung beinhaltet. Befolgen Sie die Anweisungen in der [IEF-Setup-App](https://aka.ms/iefsetup), um die nachfolgende exemplarische Vorgehensweise zu automatisieren.
 
 
-## <a name="add-signing-and-encryption-keys"></a>Hinzufügen von Signatur- und Verschlüsselungsschlüsseln
+## <a name="add-signing-and-encryption-keys-for-identity-experience-framework-applications"></a>Hinzufügen von Signatur- und Verschlüsselungsschlüsseln für Identity Experience Framework-Anwendungen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
@@ -276,33 +276,6 @@ Fügen Sie die Anwendung-ID zur Erweiterungsdatei *TrustFrameworkExtensions.xml*
 1. Ersetzen Sie beide Instanzen von `ProxyIdentityExperienceFrameworkAppId` durch die Anwendungs-ID der ProxyIdentityExperienceFramework-Anwendung, die Sie zuvor erstellt haben.
 1. Speichern Sie die Datei .
 
-## <a name="upload-the-policies"></a>Hochladen der Richtlinien
-
-1. Wählen Sie in Ihrem B2C-Mandanten im Azure-Portal das Menüelement **Identity Experience Framework** aus.
-1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus.
-1. Laden Sie die Richtliniendateien in dieser Reihenfolge hoch:
-    1. *TrustFrameworkBase.xml*
-    2. *TrustFrameworkLocalization.xml*
-    3. *TrustFrameworkExtensions.xml*
-    4. *SignUpOrSignin.xml*
-    5. *ProfileEdit.xml*
-    6. *PasswordReset.xml*
-
-Wenn Sie die Dateien hochladen, fügt Azure jeder Datei das Präfix `B2C_1A_` hinzu.
-
-> [!TIP]
-> Wenn Ihr XML-Editor Validierungen unterstützt, überprüfen Sie die Dateien anhand des XML-Schemas `TrustFrameworkPolicy_0.3.0.0.xsd` im Stammverzeichnis des Starter Packs. Durch die XML-Schemavalidierung werden vor dem Upload Fehler festgestellt.
-
-## <a name="test-the-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
-
-1. Wählen Sie unter **Benutzerdefinierte Richtlinien** die Richtlinie **B2C_1A_signup_signin** aus.
-1. Wählen Sie auf der Übersichtsseite der benutzerdefinierten Richtlinie unter **Anwendung auswählen** die Webanwendung namens *webapp1* aus, die Sie zuvor registriert haben.
-1. Stellen Sie sicher, dass die **Antwort-URL**`https://jwt.ms` lautet.
-1. Wählen Sie **Jetzt ausführen** aus.
-1. Registrieren Sie sich mit einer E-Mail-Adresse. Verwenden Sie die Option **Facebook** noch nicht. 
-1. Wählen Sie erneut **Jetzt ausführen** aus.
-1. Melden Sie sich zur Bestätigung der richtigen Konfiguration mit demselben Konto an.
-
 ## <a name="add-facebook-as-an-identity-provider"></a>Hinzufügen von Facebook als Identitätsanbieter
 
 Das Starter Pack **SocialAndLocalAccounts** beinhaltet die Facebook-Anmeldung für soziale Netzwerke. Facebook ist *nicht* erforderlich, um benutzerdefinierte Richtlinien zu verwenden. Die Anwendung wird hier jedoch verwendet, um zu veranschaulichen, wie Sie die Verbundanmeldung bei sozialen Netzwerken in einer benutzerdefinierten Richtlinie aktivieren können.
@@ -328,7 +301,7 @@ Fügen Sie das [App-Geheimnis](identity-provider-facebook.md) der Facebook-Anwen
 1. Klicken Sie auf **Erstellen**.
 
 ### <a name="update-trustframeworkextensionsxml-in-custom-policy-starter-pack"></a>Aktualisieren von „TrustFrameworkExtensions.xml“ im Starter Pack für benutzerdefinierte Richtlinien
-1. Ersetzen Sie in der Datei `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** den Wert `client_id` durch die ID der Facebook-Anwendung:
+Ersetzen Sie in der Datei `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** den Wert `client_id` durch die ID der Facebook-Anwendung, und speichern Sie die Änderungen.
 
    ```xml
    <TechnicalProfile Id="Facebook-OAUTH">
@@ -337,11 +310,34 @@ Fügen Sie das [App-Geheimnis](identity-provider-facebook.md) der Facebook-Anwen
        <Item Key="client_id">00000000000000</Item>
    ```
 
-1. Laden Sie die Datei *TrustFrameworkExtensions.xml* in Ihren Mandanten hoch.
+
+## <a name="upload-the-policies"></a>Hochladen der Richtlinien
+
+1. Wählen Sie in Ihrem B2C-Mandanten im Azure-Portal das Menüelement **Identity Experience Framework** aus.
+1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus.
+1. Laden Sie die Richtliniendateien in dieser Reihenfolge hoch:
+    1. *TrustFrameworkBase.xml*
+    2. *TrustFrameworkLocalization.xml*
+    3. *TrustFrameworkExtensions.xml*
+    4. *SignUpOrSignin.xml*
+    5. *ProfileEdit.xml*
+    6. *PasswordReset.xml*
+
+Wenn Sie die Dateien hochladen, fügt Azure jeder Datei das Präfix `B2C_1A_` hinzu.
+
+> [!TIP]
+> Wenn Ihr XML-Editor Validierungen unterstützt, überprüfen Sie die Dateien anhand des XML-Schemas `TrustFrameworkPolicy_0.3.0.0.xsd` im Stammverzeichnis des Starter Packs. Durch die XML-Schemavalidierung werden vor dem Upload Fehler festgestellt.
+
+## <a name="test-the-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
+
 1. Wählen Sie unter **Benutzerdefinierte Richtlinien** die Richtlinie **B2C_1A_signup_signin** aus.
-1. Wählen Sie **Jetzt ausführen**, und wählen Sie „Facebook“ aus, um sich bei Facebook anzumelden und die benutzerdefinierte Richtlinie zu testen.
-
-
+1. Wählen Sie auf der Übersichtsseite der benutzerdefinierten Richtlinie unter **Anwendung auswählen** die Webanwendung namens *webapp1* aus, die Sie zuvor registriert haben.
+1. Stellen Sie sicher, dass die **Antwort-URL**`https://jwt.ms` lautet.
+1. Wählen Sie **Jetzt ausführen** aus.
+1. Registrieren Sie sich mit einer E-Mail-Adresse.
+1. Wählen Sie erneut **Jetzt ausführen** aus.
+1. Melden Sie sich zur Bestätigung der richtigen Konfiguration mit demselben Konto an.
+1. Wählen Sie erneut **Jetzt ausführen**, und wählen Sie „Facebook“ aus, um sich über Facebook anzumelden und die benutzerdefinierte Richtlinie zu testen.
 ::: zone-end
 
 ## <a name="next-steps"></a>Nächste Schritte

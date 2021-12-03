@@ -11,12 +11,12 @@ ms.date: 10/07/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4bda35abff8bed8795d9cc6257b45bb22ef961c
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: ff693e9985f0c741a329d5e4bc17398461bb224d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709879"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424076"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Worum handelt es sich bei der Azure AD Connect-Cloudsynchronisierung?
 Die Azure AD Connect-Cloudsynchronisierung ist ein neues Angebot von Microsoft, das entwickelt wurde, um Ihre Ziele in Bezug auf die Hybrididentität für die Synchronisierung von Benutzern, Gruppen und Kontakten mit Azure AD zu erreichen und die entsprechenden Anforderungen zu erfüllen.  Hierfür wird nicht die Azure AD Connect-Anwendung verwendet, sondern der Agent für die Azure AD-Cloudbereitstellung.  Die Azure AD Connect-Cloudbereitstellung kann aber zusammen mit der Azure AD Connect-Synchronisierung verwendet werden. Dies hat die folgenden Vorteile:
@@ -68,7 +68,9 @@ Die folgende Tabelle enthält einen Vergleich zwischen der Azure AD Connect-Sync
 | Zulassen eines minimalen Attributsatzes für die Synchronisierung (MinSync) |● |● |
 | Zulassen der Entfernung von Attributen aus dem Attributfluss von AD nach Azure AD |● |● |
 | Zulassen einer erweiterten Anpassung des Attributflusses |● | |
-| Unterstützung des Rückschreibens (Kennwörter, Geräte, Gruppen) |● | |
+| Unterstützung für das Kennwortrückschreiben |● |● |
+| Unterstützung für das Geräterückschreiben|● | |
+| Unterstützung für das Gruppenrückschreiben|● | |
 | Azure AD Domain Services-Unterstützung|● | |
 | [Exchange-Hybridrückschreiben](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | Unbegrenzte Anzahl von Objekten pro AD-Domäne |● | |

@@ -7,15 +7,16 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 98364df02238c36f7e15f00eaff6ec124631987c
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d598c3af52f8b62b23b49f9d661a79a2979574a0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178237"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027296"
 ---
 <!-- markdownlint-disable MD033 -->
 
@@ -23,40 +24,62 @@ ms.locfileid: "130178237"
 
 Das ID-Dokumentmodell kombiniert leistungsstarke OCR-Funktionen (Optical Character Recognition, optische Zeichenerkennung) mit Deep Learning-Modellen, um wichtige Informationen aus US-amerikanischen Führerscheinen (alle 50 US-Bundesstaaten sowie District of Columbia) und internationalen Reisepässen (mit Ausnahme von Visa und anderen Reisedokumenten) zu analysieren und zu extrahieren. Die API analysiert Identitätsdokumente, extrahiert wichtige Informationen wie Vorname, Nachname, Anschrift und Geburtsdatum und gibt eine strukturierte JSON-Datendarstellung zurück.
 
-***Muster eines US-Führerscheins, der mit dem [Beschriftungsprogramm der Formularerkennung](https://fott-2-1.azurewebsites.net/) bearbeitet wurde:***
+***Muster eines US-Führerscheins, der mit Formularerkennung Studio verarbeitet wurde***
 
-:::image type="content" source="./media/id-example-drivers-license.jpg" alt-text="Beispielausweis" lightbox="./media/overview-id.jpg":::
+:::image type="content" source="media/studio/drivers-license.png" alt-text="Beispielausweis" lightbox="media/overview-id.jpg":::
 
-## <a name="try-form-recognizer-studio-preview"></a>Testen der Studioversion der Formularerkennung (Vorschau)
+## <a name="development-options"></a>Entwicklungsoptionen
 
-* Die Studioversion der Formularerkennung ist mit der Vorschau-API (v3.0) verfügbar.
+Die folgenden Ressourcen werden von der Azure-Formularerkennung v2.1 unterstützt:
 
-* Extrahieren Sie den Namen, die maschinenlesbare Zone und das Ablaufdatum mit dem ID-Dokumentfeature der Formularerkennung in der Studioversion:
+| Funktion | Ressourcen |
+|----------|-------------------------|
+|**Ausweisdokumentmodell**| <ul><li>[**Formularerkennungstool für die Bezeichnung**](https://fott-2-1.azurewebsites.net/prebuilts-analyze)</li><li>[**REST-API**](quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api#analyze-identity-id-documents)</li><li>[**Clientbibliothek/SDK**](quickstarts/try-sdk-rest-api.md)</li><li>[**Docker-Container für Formularerkennung**](containers/form-recognizer-container-install-run.md?tabs=id-document#run-the-container-with-the-docker-compose-up-command)</li></ul>|
 
-> [!div class="nextstepaction"]
-> [Studioversion der Formularerkennung testen](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=idDocument)
+Die folgenden Ressourcen werden von der Azure-Formularerkennung v3.0 unterstützt:
 
-## <a name="try-it-sample-labeling-tool"></a>Jetzt testen: Tool für die Beschriftung von Beispielen
+| Funktion | Ressourcen | Modell-ID |
+|----------|-------------|-----------|
+|**Ausweisdokumentmodell**|<ul><li> [**Formularerkennung Studio**](https://formrecognizer.appliedai.azure.com)</li><li>[**REST-API**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)</li><li>[**C# SDK**](quickstarts/try-v3-csharp-sdk.md)</li><li>[**Python SDK**](quickstarts/try-v3-python-sdk.md)</li><li>[**Java SDK**](quickstarts/try-v3-java-sdk.md)</li><li>[**JavaScript SDK**](quickstarts/try-v3-javascript-sdk.md)</li></ul>|**prebuilt-idDocument**|
 
-Indem Sie unser Tool für die Beschriftung von Beispielen ausprobieren, können Sie selbst sehen, wie ID-Dokumentdaten extrahiert werden. Sie benötigen Folgendes:
+### <a name="try-form-recognizer"></a>Formularerkennung ausprobieren
 
-* Azure-Abonnement – Sie können ein [kostenloses Abonnement erstellen](https://azure.microsoft.com/free/cognitive-services/).
+Erfahren Sie, wie Daten, einschließlich Name, Geburtsdatum, maschinenlesbarer Bereich und Ablaufdatum, aus Ausweisdokumenten mithilfe von Formularerkennung Studio oder unserem Beispielbeschriftungstool extrahiert werden. Sie benötigen Folgendes:
 
-* Eine [Instanz der Formularerkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) im Azure-Portal. Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren. Klicken Sie nach der Bereitstellung Ihrer Ressource auf **Zu Ressource wechseln**, um Ihren API-Schlüssel und -Endpunkt abzurufen.
+* Azure-Abonnement – Sie können ein [kostenloses Abonnement erstellen](https://azure.microsoft.com/free/cognitive-services/)
 
- :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal.":::
+* Eine [Formularerkennungsinstanz](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) im Azure-Portal Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren. Wählen Sie nach der Bereitstellung Ihrer Ressource **Zu Ressource wechseln** aus, um Ihren API-Schlüssel und -Endpunkt abzurufen.
 
-* Ein ID-Dokument. Sie können unser [ID-Beispieldokument](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/applied-ai-services/form-recognizer/media/id-license.jpg) verwenden.
+ :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal":::
 
-> [!div class="nextstepaction"]
-  > [Testen](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
+#### <a name="form-recognizer-studio-preview"></a>Formularerkennung Studio (Vorschau)
 
-Gehen Sie auf der Benutzeroberfläche der Formularerkennung folgendermaßen vor:
+> [!NOTE]
+> Formularerkennung Studio ist mit der Vorschau-API (v3.0) verfügbar.
 
-  1. Wählen Sie **Vordefiniertes Modell zum Abrufen von Daten verwenden** aus.
-  1. Wählen Sie aus dem Dropdownmenü **Formulartyp** die Option **Beleg** aus:
+1. Wählen Sie auf der Startseite von Azure-Formularerkennung Studio die Option **Rechnungen** aus.
 
-  :::image type="content" source="media/try-id-document.png" alt-text="Screenshot: Dropdownmenü des Tools für die Beschriftung von Beispielen zur Auswahl vordefinierter Modelle.":::
+1. Sie können entweder die Beispielrechnung analysieren oder die Schaltfläche **+ Hinzufügen** auswählen, um Ihr eigenes Beispiel hochzuladen.
+
+1. Wählen Sie die Schaltfläche **Analysieren** aus:
+
+    :::image type="content" source="media/studio/id-document-analyze.png" alt-text="Screenshot: Menü „Ausweisdokument analysieren“":::
+
+    > [!div class="nextstepaction"]
+    > [Ausprobieren von Formularerkennung Studio](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=idDocument)
+
+#### <a name="sample-labeling-tool"></a>Beispiel-Beschriftungstool
+
+Sie benötigen ein Ausweisdokument. Sie können unser [ID-Beispieldokument](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/DriverLicense.png) verwenden.
+
+1. Wählen Sie auf der Startseite des Beispiel-Beschriftungstools die Option **Vordefiniertes Modell zum Abrufen von Daten verwenden** aus.
+
+1. Wählen Sie die Option **Identity documents** (Ausweisdokumente) aus dem Dropdownmenü **Formulartyp** aus:
+
+    :::image type="content" source="media/try-id-document.png" alt-text="Screenshot: Dropdownmenü des Beispiel-Beschriftungstools für die Auswahl vordefinierter Modelle":::
+
+   > [!div class="nextstepaction"]
+   > [Ausprobieren des Beispiel-Beschriftungstools](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
 
 ## <a name="input-requirements"></a>Eingabeanforderungen
 
@@ -70,10 +93,10 @@ Gehen Sie auf der Benutzeroberfläche der Formularerkennung folgendermaßen vor:
 * Wenn Ihre PDFs kennwortgeschützt sind, müssen Sie die Sperre vor dem Senden entfernen.
 * Für unbeaufsichtigtes Lernen (ohne beschriftete Daten) gilt Folgendes:
   * Die Daten müssen Schlüssel und Werte enthalten.
-  * Die Schlüssel müssen über oder links von den Werten stehen; sie dürfen nicht darunter oder rechts davon stehen.
+  * Die Schlüssel müssen über oder links von den Werten stehen; sie dürfen nicht unter oder rechts von ihnen stehen.
 
 > [!NOTE]
-> Das [Tool für die Beschriftung von Beispielen](https://fott-2-1.azurewebsites.net/) unterstützt das BMP-Dateiformat nicht. Dies ist eine Einschränkung des Tools, nicht des Formularerkennungsdiensts.
+> Das [Beispielbeschriftungstool](https://fott-2-1.azurewebsites.net/) unterstützt das BMP-Dateiformat nicht. Dies ist eine Einschränkung des Tools, nicht des Formularerkennungsdiensts.
 
 ## <a name="supported-languages-and-locales-v21"></a>Unterstützte Sprachen und Gebietsschemas in Version 2.1
 
@@ -81,22 +104,22 @@ Gehen Sie auf der Benutzeroberfläche der Formularerkennung folgendermaßen vor:
 |--------|:----------------------|:---------|
 |ID-Dokument| <ul><li>Englisch (USA) – en-US (Führerschein)</li><li>Seiten mit persönlichen Daten aus internationalen Reisepässen</br> (mit Ausnahme von Visa und anderen Reisedokumenten)</li></ul></br>|Englisch (USA) – en-US|
 
-## <a name="key-value-pair-extraction"></a>Schlüssel-Wert-Paar-Extraktion
+## <a name="field-extraction"></a>Feldextraktion
 
 |Name| type | BESCHREIBUNG | Standardisierte Ausgabe|
 |:-----|:----|:----|:----|
 |  CountryRegion | countryRegion | Länder- oder Regionscode, konform zu ISO 3166-Standard |  |
-|  DateOfBirth | date | DOB | yyyy-mm-dd |
-|  DateOfExpiration | date | Ablaufdatum DOB | yyyy-mm-dd |
-|  DocumentNumber | Zeichenfolge | Relevante Passnummer, Führerscheinnummer usw. |  |
-|  FirstName | Zeichenfolge | Extrahierter Vorname und ggf. Mittelinitial |  |
-|  LastName | Zeichenfolge | Extrahierter Nachname |  |
+|  DateOfBirth | Date | DOB | yyyy-mm-dd |
+|  DateOfExpiration | Date | Ablaufdatum DOB | yyyy-mm-dd |
+|  DocumentNumber | String | Relevante Passnummer, Führerscheinnummer usw. |  |
+|  FirstName | String | Extrahierter Vorname und ggf. Mittelinitial |  |
+|  LastName | String | Extrahierter Nachname |  |
 |  Nationality | countryRegion | Länder- oder Regionscode, konform zur ISO 3166-Norm (nur Reisepass) |  |
-|  Geschlecht | Zeichenfolge | Mögliche extrahierte Werte: „M“, „F“ und „X“ | |
-|  MachineReadableZone | Objekt | Maschinenlesbarer zweizeiliger Bereich (Machine Readable Zone, MRZ) mit jeweils 44 Zeichen | „P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816“ |
-|  DocumentType | Zeichenfolge | Dokumenttyp, z. B. Pass oder Führerschein | „passport“ |
+|  Geschlecht | String | Mögliche extrahierte Werte: „M“, „F“ und „X“ | |
+|  MachineReadableZone | Object | Maschinenlesbarer zweizeiliger Bereich (Machine Readable Zone, MRZ) mit jeweils 44 Zeichen | „P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816“ |
+|  DocumentType | String | Dokumenttyp, z. B. Pass oder Führerschein | „passport“ |
 |  Adresse | Zeichenfolge | Extrahierte Adresse (nur beim Führerschein) ||
-|  Region | Zeichenfolge | Extrahierte Region, Bundesstaat, Provinz usw. (nur Führerschein) |  |
+|  Region | String | Extrahierte Region, Bundesstaat, Provinz usw. (nur Führerschein) |  |
 
 ## <a name="form-recognizer-preview-v30"></a>Formularerkennung: Vorschau v3.0
 
@@ -104,27 +127,29 @@ Gehen Sie auf der Benutzeroberfläche der Formularerkennung folgendermaßen vor:
 
 * Das Modell **ID-Dokument (v3.0)** unterstützt das Extrahieren von Vermerken, Einschränkungen und Fahrzeugklassifizierungen aus US-amerikanischen Führerscheinen.
 
-    ### <a name="id-document-preview-key-value-pair-extraction"></a>Extrahieren von Schlüssel-Wert-Paaren in der Vorschau des ID-Dokuments
+### <a name="id-document-preview-field-extraction"></a>Ausweisdokumentenvorschau: Feldextraktion
 
-    |Name| type | BESCHREIBUNG | Standardisierte Ausgabe|
-    |:-----|:----|:----|:----|
-    | 🆕 Endorsements | Zeichenfolge | Zusätzliche Fahrberechtigungen, z. B. Genehmigung zum Führen eines Motorrads oder Schulbusses.  | |
-    | 🆕 Restrictions | Zeichenfolge | Eingeschränkte Fahrberechtigungen, z. B. gesperrte oder widerrufene Lizenzen.| |
-    | 🆕VehicleClassification | Zeichenfolge | Fahrzeugklassen, für die eine Fahrberechtigung erteilt wurde. ||
-    |  CountryRegion | countryRegion | Länder- oder Regionscode, konform zu ISO 3166-Standard |  |
-    |  DateOfBirth | date | DOB | yyyy-mm-dd |
-    |  DateOfExpiration | date | Ablaufdatum DOB | yyyy-mm-dd |
-    |  DocumentNumber | Zeichenfolge | Relevante Passnummer, Führerscheinnummer usw. |  |
-    |  FirstName | Zeichenfolge | Extrahierter Vorname und ggf. Mittelinitial |  |
-    |  LastName | Zeichenfolge | Extrahierter Nachname |  |
-    |  Nationality | countryRegion | Länder- oder Regionscode, konform zur ISO 3166-Norm (nur Reisepass) |  |
-    |  Geschlecht | Zeichenfolge | Mögliche extrahierte Werte: „M“, „F“ und „X“ | |
-    |  MachineReadableZone | Objekt | Maschinenlesbarer zweizeiliger Bereich (Machine Readable Zone, MRZ) mit jeweils 44 Zeichen | „P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816“ |
-    |  DocumentType | Zeichenfolge | Dokumenttyp, z. B. Pass oder Führerschein | „passport“ |
-    |  Adresse | Zeichenfolge | Extrahierte Adresse (nur beim Führerschein) ||
-    |  Region | Zeichenfolge | Extrahierte Region, Bundesstaat, Provinz usw. (nur Führerschein) |  |
+|Name| type | BESCHREIBUNG | Standardisierte Ausgabe|
+|:-----|:----|:----|:----|
+| 🆕 Endorsements | String | Zusätzliche Fahrberechtigungen, z. B. Genehmigung zum Führen eines Motorrads oder Schulbusses.  | |
+| 🆕 Restrictions | String | Eingeschränkte Fahrberechtigungen, z. B. gesperrte oder widerrufene Lizenzen.| |
+| 🆕VehicleClassification | String | Fahrzeugklassen, für die eine Fahrberechtigung erteilt wurde. ||
+|  CountryRegion | countryRegion | Länder- oder Regionscode, konform zu ISO 3166-Standard |  |
+|  DateOfBirth | Date | DOB | yyyy-mm-dd |
+|  DateOfExpiration | Date | Ablaufdatum DOB | yyyy-mm-dd |
+|  DocumentNumber | String | Relevante Passnummer, Führerscheinnummer usw. |  |
+|  FirstName | String | Extrahierter Vorname und ggf. Mittelinitial |  |
+|  LastName | String | Extrahierter Nachname |  |
+|  Nationality | countryRegion | Länder- oder Regionscode, konform zur ISO 3166-Norm (nur Reisepass) |  |
+|  Geschlecht | String | Mögliche extrahierte Werte: „M“, „F“ und „X“ | |
+|  MachineReadableZone | Object | Maschinenlesbarer zweizeiliger Bereich (Machine Readable Zone, MRZ) mit jeweils 44 Zeichen | „P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816“ |
+|  DocumentType | String | Dokumenttyp, z. B. Pass oder Führerschein | „passport“ |
+|  Adresse | Zeichenfolge | Extrahierte Adresse (nur beim Führerschein) ||
+|  Region | String | Extrahierte Region, Bundesstaat, Provinz usw. (nur Führerschein) |  |
 
-* Im [**Migrationsleitfaden für die Formularerkennung v3.0**](v3-migration-guide.md) erfahren Sie, wie Sie die Vorschauversion in Ihren Anwendungen und Workflows verwenden können.
+### <a name="migration-guide-and-rest-api-v30"></a>Migrationsleitfaden und REST-API v3.0
+
+* Erfahren Sie, wie Sie die Vorschauversion in Ihren Anwendungen und Workflows verwenden können, indem Sie unseren [**Formularerkennung v3.0-Migrationsleitfaden**](v3-migration-guide.md) befolgen.
 
 * Erkunden Sie die [**REST-API (Vorschau)**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument), um mehr über die Vorschauversion und neue Funktionen zu erfahren.
 

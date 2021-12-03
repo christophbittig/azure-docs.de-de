@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 07/20/2021
 ms.author: baselden
 ms.custom: references_regions
-ms.openlocfilehash: 984b680c207c8c7e6bf404a7ced08f2fdcfd7b71
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 36eb4676c63a539004aba9c000702ba964f05d3c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984438"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332419"
 ---
 # <a name="plan-your-azure-active-directory-verifiable-credentials--verification-solution-preview"></a>Planen einer Überprüfungslösung für Azure Active Directory-Nachweise (Vorschau)
 
@@ -332,7 +332,7 @@ Ziehen Sie im Rahmen Ihrer operativen Planung die Überwachung der folgenden Asp
 
    * Aktivieren Sie die Protokollierung für Azure Key Vault, um Signaturvorgänge nachzuverfolgen sowie Konfigurationsänderungen zu überwachen und entsprechende Warnungen zu generieren. Weitere Informationen finden Sie unter [Aktivieren der Azure Key Vault-Protokollierung](../../key-vault/general/howto-logging.md).
 
-   * Archivieren Sie Protokolle in einem SIEM-System (Security Information and Event Management), z. B. [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/), zur langfristigen Aufbewahrung.
+   * Archivieren Sie Protokolle in einem SIEM-System (Security Information & Event Management) wie [Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel/) zur Langzeitaufbewahrung.
 
  
 

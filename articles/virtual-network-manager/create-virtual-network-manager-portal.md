@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: template-quickstart, ignite-fall-2021
-ms.openlocfilehash: 4794e327ceeacaa91075317d1009ae45834580d8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 134f8b28d6505963cde1f44f0b6850643dae3436
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029353"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131421747"
 ---
 # <a name="quickstart-create-a-mesh-network-topology-with-azure-virtual-network-manager-using-the-azure-portal"></a>Schnellstart: Erstellen einer Mesh-Netzwerktopologie mit Azure Virtual Network Manager über das Azure-Portal
 
@@ -28,6 +28,16 @@ In diesem Schnellstart stellen Sie drei virtuelle Netzwerke bereit und verwenden
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="register-subscription-for-public-preview"></a>Registrieren eines Abonnements für die Public Preview
+
+1. Navigieren Sie zur Seite [Previewfunktionen](https://portal.azure.com/#blade/Microsoft_Azure_Resources/PreviewFeaturesBlade).
+
+1. Suchen Sie nach **AllowAzureNetworkManager**.
+
+1. Aktivieren Sie das Kontrollkästchen neben *AllowAzureNetworkManager*, und wählen Sie dann **+ Registrieren** aus.
+
+    :::image type="content" source="./media/create-virtual-network-manager-portal/registration.png" alt-text="Screenshot: Registrierungsseite für Previewfunktionen":::
 
 ## <a name="create-virtual-network-manager"></a>Erstellen einer Virtual Network Manager-Instanz
 

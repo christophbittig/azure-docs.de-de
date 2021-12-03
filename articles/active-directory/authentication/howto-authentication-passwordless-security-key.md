@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 06/03/2021
+ms.date: 11/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3373c1f9a82f79782ed1758fd09c83bcfbe6fc03
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 033bc34d82e497f7de7b63d8e69a606e9a9501ee
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963721"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486811"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln 
 
@@ -53,6 +53,9 @@ Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung s
    1. **Aktivieren**: „Ja“ oder „Nein“
    1. **Ziel**: „Alle Benutzer“ oder „Benutzer auswählen“
 1. **Speichern** Sie die Konfiguration.
+
+   >[!NOTE]
+   >Wenn Sie beim Speichern eine Fehlermeldung erhalten, kann die Ursache in der Anzahl der hinzugefügten Benutzer oder Gruppen liegen. Als Abhilfe können Sie die Benutzer und Gruppen, die Sie hinzufügen möchten, im selben Vorgang durch eine einzige Gruppe ersetzen und dann erneut auf **Speichern** klicken.
 
 
 ### <a name="fido-security-key-optional-settings"></a>Optionale Einstellungen für FIDO-Sicherheitsschlüssel 

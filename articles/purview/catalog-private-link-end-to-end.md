@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 4f15d39da8f97897498f07892eb90d37a1bd8574
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 2d0a74b5674bba6850cbe38f1811c1204acb5e69
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209281"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848209"
 ---
 # <a name="connect-to-your-azure-purview-and-scan-data-sources-privately-and-securely"></a>Privates und sicheres Herstellen einer Verbindung mit Azure Purview und Überprüfen von Datenquellen
 
@@ -180,7 +180,7 @@ Führen Sie die Schritte unter [Erstellen und Verwalten einer selbstgehosteten I
    :::image type="content" source="media/catalog-private-link/shir-for-azure.png" alt-text="Screenshot: Ausführen einer Azure-Überprüfung mithilfe einer selbstgehosteten IR.":::
 
 > [!IMPORTANT]
-> Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, stellen Sie sicher, dass Sie die neueste Version der selbstgehosteten Integration Runtime aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunterladen und installieren.
+> Stellen Sie sicher, dass Sie die neueste Version der selbstgehosteten Integration Runtime vom [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunterladen und installieren.
 
 ## <a name="firewalls-to-restrict-public-access"></a>Firewalls zur Einschränkung des öffentlichen Zugriffs
 
@@ -196,4 +196,4 @@ Führen Sie diese Schritte aus, um den Zugriff auf das Azure Purview-Konto über
 
 -  [Überprüfen der Auflösung für private Endpunkte](./catalog-private-link-name-resolution.md)
 -  [Verwalten von Datenquellen in Azure Purview](./manage-data-sources.md)
--  [Problembehandlung bei der Konfiguration privater Endpunkte für Ihr Azure Purview-Konto](./catalog-private-link-troubleshoot.md)
+-  [Problembehandlung bei der Konfiguration des privaten Endpunkts für Ihr Azure Purview-Konto](./catalog-private-link-troubleshoot.md)

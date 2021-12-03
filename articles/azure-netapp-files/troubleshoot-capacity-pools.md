@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung bei Kapazitätspools für Azure NetApp Files | Microsoft-Dokumentation
+title: Problembehandlung bei Kapazitätspoolfehlern in Azure NetApp Files | Microsoft-Dokumentation
 description: Hier werden mögliche Probleme bei der Verwaltung von Kapazitätspools beschrieben und Lösungen für diese Probleme angeboten.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 7ca7f042aaa97967d47dd9f35afaa647e0d37361
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: e637c80f864592f89252e52f27325762cd43582b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407264"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219771"
 ---
-# <a name="troubleshoot-capacity-pool-issues"></a>Problembehandlung bei Kapazitätspools
+# <a name="troubleshoot-capacity-pool-errors"></a>Behandeln von Kapazitätspoolfehlern
 
 In diesem Artikel werden Lösungen für möglicherweise beim Verwalten von Kapazitätspools auftretende Probleme einschließlich des Pooländerungsvorgangs beschrieben. 
 

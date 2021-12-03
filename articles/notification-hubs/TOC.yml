@@ -90,6 +90,8 @@
       href: uwp-react.md
 - name: Konzepte
   items:
+    - name: Verfügbarkeitszonen
+      href: availability-zones.md
     - name: Transport Layer Security (TLS)
       href: notification-hubs-tls12.md
     - name: Anleitung für eine unternehmensbezogene Pusharchitektur
@@ -161,7 +163,7 @@
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.notificationhubs
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/notification-hub
     - name: PowerShell
       href: /powershell/module/az.notificationhubs

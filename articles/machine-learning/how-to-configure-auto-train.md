@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: automl
-ms.date: 09/27/2021
+ms.date: 11/15/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: 59bf4007cad596b4d14c17a729c9da4e4cfb3957
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 57d529d74d5e320c8a41fdcf71ddd61d11e4379e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065264"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519380"
 ---
 # <a name="set-up-automl-training-with-python"></a>Einrichten von AutoML-Training mit Python
 
@@ -91,7 +91,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>Trainieren, Überprüfen und Testen von Daten
 
-Sie können separate **Trainingsdaten und Datasets für die Überprüfung** direkt im `AutoMLConfig`-Konstruktor angeben. Erfahren Sie mehr über das [Konfigurieren von Datenaufteilungen und Kreuzvalidierung](how-to-configure-cross-validation-data-splits.md) für Ihre AutoML-Experimente. 
+Sie können separate **Trainingsdaten und Datasets für die Überprüfung** direkt im `AutoMLConfig`-Konstruktor angeben. Erfahren Sie mehr über das [Konfigurieren von Training, Validierung, Kreuzvalidierung und Testdaten](how-to-configure-cross-validation-data-splits.md) für Ihre AutoML-Experimente. 
 
 Wenn Sie keinen `validation_data`- oder `n_cross_validation`-Parameter explizit angeben, wendet das automatisierte maschinelle Lernen Standardverfahren an, um zu bestimmen, wie die Überprüfung durchgeführt wird. Diese Bestimmung hängt von der Anzahl der Zeilen im Dataset ab, das Ihrem `training_data`-Parameter zugewiesen wird. 
 
@@ -100,7 +100,15 @@ Wenn Sie keinen `validation_data`- oder `n_cross_validation`-Parameter explizit 
 |**Größer&nbsp;als&nbsp;20.000&nbsp;Zeilen**| Es wird eine Aufteilung in Trainings- und Validierungsdaten vorgenommen. Standardmäßig werden 10 % des ursprünglichen Trainingsdatasets als Validierungsset verwendet. Dieses Validierungsset wird seinerseits für die Metrikberechnung verwendet.
 |**Kleiner&nbsp;als&nbsp;20.000&nbsp;Zeilen**| Der Kreuzvalidierungsansatz wird angewendet. Die Standardanzahl der Faltungen (Folds) hängt von der Zeilenanzahl ab. <br> **Wenn das Dataset weniger als 1.000 Zeilen aufweist**, werden 10 Faltungen verwendet. <br> **Wenn die Anzahl der Zeilen zwischen 1.000 und 20.000 liegt**, werden drei Faltungen verwendet.
 
-Zu diesem Zeitpunkt müssen Sie Ihre eigenen **Testdaten** für die Modellauswertung angeben. Ein Codebeispiel, in dem Sie Ihre eigenen Testdaten für die Modellauswertung verwenden, finden Sie im Abschnitt **Testen** von [diesem Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb).
+
+> [!TIP] 
+> Sie können **Testdaten (Vorschau)** hochladen, um Modelle zu bewerten, die durch automatisiertes maschinelles Lernen für Sie generiert wurden. Diese Features sind [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktionen und können jederzeit geändert werden.
+> In diesem Artikel werden folgende Themen erläutert: 
+> * [Übergeben von Testdaten an Ihr AutoMLConfig-Objekt](how-to-configure-cross-validation-data-splits.md#provide-test-data-preview) 
+> * [Testen der Modelle, die durch automatisiertes maschinelles Lernen für Ihr Experiment generiert wurden](#test-models-preview)
+>  
+> Wenn Sie eine Vorgehensweise ohne Code bevorzugen, fahren Sie mit [Schritt 11 unter „Einrichten des automatisierten maschinellen Lernens mit der Studio-Benutzeroberfläche“](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment) fort.
+
 
 ### <a name="large-data"></a>Große Datenmengen 
 
@@ -122,11 +130,11 @@ Verwenden von Datenstreamingalgorithmen&nbsp;&nbsp;&nbsp; <br> [(Experimente mit
 
 Legen Sie als Nächstes die Instanz fest, auf der das Modell trainiert werden soll. Ein Trainingsexperiment mit automatisiertem ML kann auf den folgenden Computeoptionen ausgeführt werden. Informieren Sie sich über die [Vor- und Nachteile der lokalen und Remotecomputeoptionen](concept-automated-ml.md#local-remote). 
 
-* Ihr **lokaler** Computer (z. B. lokaler Desktop oder Laptop): Diese Option wird in der Regel für kleine Datasets und während der Untersuchungsphase verwendet. Ein Beispiel mit einem lokalen Computeziel finden Sie in [diesem Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb). 
+* Ihr **lokaler** Computer (z. B. lokaler Desktop oder Laptop): Diese Option wird in der Regel für kleine Datasets und während der Untersuchungsphase verwendet. Ein Beispiel mit einem lokalen Computeziel finden Sie in [diesem Notebook](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb). 
  
 * Ein **Remotecomputer** in der Cloud: [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) ist ein verwalteter Dienst, mit dem Machine Learning-Modelle in Clustern virtueller Azure-Computer trainiert werden können. Compute-Instanzen werden auch als Computeziel unterstützt.
 
-    Ein Remotebeispiel mit Azure Machine Learning Managed Compute finden Sie in [diesem Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). 
+    Ein Remotebeispiel mit Azure Machine Learning Managed Compute finden Sie in [diesem Notebook](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). 
 
 * Ein **Azure Databricks-Cluster** im Azure-Abonnement. Weitere Informationen finden Sie unter [Einrichten eines Azure Databricks-Clusters für automatisiertes maschinelles Lernen](how-to-configure-databricks-automl-environment.md). Beispielnotebooks mit Azure Databricks finden Sie auf der [GitHub-Website](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl).
 
@@ -211,7 +219,7 @@ Informationen zu den speziellen Definitionen dieser Metriken finden Sie unter [G
 
 #### <a name="metrics-for-classification-scenarios"></a>Metriken für Klassifizierungsszenarien 
 
-Postschwellenwertmetriken wie `accuracy`, `average_precision_score_weighted`, `norm_macro_recall`, und `precision_score_weighted` optimieren möglicherweise nicht so gut für Datensätze, die klein sind, eine sehr große Klassenschieflage (Klassenungleichgewicht) aufweisen oder wenn der erwartete Metrikwert sehr nahe bei 0,0 oder 1,0 liegt. In diesen Fällen eignet sich `AUC_weighted` möglicherweise besser als primäre Metrik. Nach Abschluss des automatisierten ML können Sie das stärkste Modell basierend auf der Metrik auswählen, die sich am besten für Ihre Geschäftsanforderungen eignet.
+Schwellenwertabhängige Metriken wie `accuracy`, `recall_score_weighted`, `norm_macro_recall` und `precision_score_weighted` sind möglicherweise nicht optimal für kleine Datensätze, die eine sehr große Klassenschiefe (Klassenungleichgewicht) aufweisen, oder wenn der erwartete Metrikwert sehr nahe bei 0,0 oder 1,0 liegt. In diesen Fällen eignet sich `AUC_weighted` möglicherweise besser als primäre Metrik. Nach Abschluss des automatisierten ML können Sie das stärkste Modell basierend auf der Metrik auswählen, die sich am besten für Ihre Geschäftsanforderungen eignet.
 
 | Metrik | Beispiel eines Anwendungsfalls |
 | ------ | ------- |
@@ -222,10 +230,16 @@ Postschwellenwertmetriken wie `accuracy`, `average_precision_score_weighted`, `n
 | `precision_score_weighted` |  |
 
 #### <a name="metrics-for-regression-scenarios"></a>Metriken für Regressionsszenarien
- 
-Mit Metriken wie `r2_score` und `spearman_correlation` lässt sich die Qualität des Modells besser darstellen, wenn für den vorherzusagenden Wert eine Vielzahl von Größenordnungen verfügbar sind. Nehmen wir die Schätzung eines Gehalts als Beispiel: Viele Menschen verfügen über ein Gehalt zwischen 20.000 und 100.000 USD, es gibt jedoch auch Gehälter von rund 100 Millionen. 
 
-In diesem Fall würden `normalized_mean_absolute_error` und `normalized_root_mean_squared_error` einen Vorhersagefehler im Bereich 20.000 USD bei einem Mitarbeiter mit 30.000 USD Jahresgehalt und einem Mitarbeiter mit 20 Millionen USD Jahresgehalt identisch behandeln. Tatsächlich ist ein Vorhersagefehler bzw. eine Abweichung von 20.000 USD bei einem Jahresgehalt von 20 Millionen USD jedoch sehr nah am eigentlichen Wert (eine geringe relative Differenz von 0,1 %), wohingegen ein Vorhersagefehler bzw. eine Abweichung von 20.000 USD bei einem Gehalt von 30.000 USD eine erhebliche Abweichung darstellt (eine große relative Differenz von 67 %). `normalized_mean_absolute_error` und `normalized_root_mean_squared_error` sind nützlich, wenn die Größenordnung der vorherzusagenden Werte ähnlich ist.
+`r2_score`, `normalized_mean_absolute_error` und `normalized_root_mean_squared_error` versuchen alle, die Vorhersagefehler zu minimieren. `r2_score` und `normalized_root_mean_squared_error` minimieren beide die durchschnittlichen quadratischen Fehler, während `normalized_mean_absolute_error` den durchschnittlichen absoluten Wert der Fehler minimiert. Der absolute Wert behandelt Fehler aller Größenordnungen gleich, und quadrierte Fehler haben einen viel größeren Nachteil für Fehler mit größeren absoluten Werten. Je nachdem, ob größere Fehler stärker bestraft werden sollen oder nicht, kann man wählen, ob man den quadratischen Fehler oder den absoluten Fehler optimiert.
+
+Der Hauptunterschied zwischen `r2_score` und `normalized_root_mean_squared_error` ist die Art und Weise, wie sie normalisiert werden, und ihre Bedeutung. `normalized_root_mean_squared_error` ist der mittlere quadratische Fehler, normiert auf den Bereich und kann als durchschnittliche Fehlergröße für die Vorhersage interpretiert werden. `r2_score` ist der mittlere quadratische Fehler, normalisiert durch eine Schätzung der Varianz der Daten. Es ist der Anteil der Variation, der durch das Modell erfasst werden kann. 
+
+> [! Hinweis] `r2_score` und `normalized_root_mean_squared_error` verhalten sich auch als primäre Metriken ähnlich. Wenn ein fester Validierungssatz verwendet wird, optimieren diese beiden Metriken dasselbe Ziel, nämlich den mittleren quadratischen Fehler, und werden von demselben Modell optimiert. Wenn nur ein Trainingsset zur Verfügung steht und Kreuzvalidierung angewendet wird, würden sie sich leicht unterscheiden, da der Normalisierer für `normalized_root_mean_squared_error` als Bereich des Trainingssets festgelegt ist, aber der Normalisierer für `r2_score` würde für jede Falte variieren, da er die Varianz für jede Falte darstellt.
+
+Wenn der Rang und nicht der genaue Wert von Interesse ist, kann `spearman_correlation` die bessere Wahl sein, da er die Rangkorrelation zwischen realen Werten und Vorhersagen misst.
+
+Derzeit gibt es jedoch keine primäre Regressionsmetrik, die sich mit relativen Unterschieden befasst. Alle `r2_score`, `normalized_mean_absolute_error` und `normalized_root_mean_squared_error` behandeln einen Vorhersagefehler von $20k für einen Arbeitnehmer mit einem Gehalt von $30k genauso wie für einen Arbeitnehmer, der $20M verdient, wenn diese beiden Datenpunkte zum selben Datensatz für die Regression oder zur selben Zeitreihe gehören, die durch den Zeitreihenbezeichner angegeben wird. Tatsächlich ist ein Vorhersagefehler bzw. eine Abweichung von 20.000 USD bei einem Jahresgehalt von 20 Millionen USD jedoch sehr nah am eigentlichen Wert (eine geringe relative Differenz von 0,1 %), wohingegen ein Vorhersagefehler bzw. eine Abweichung von 20.000 USD bei einem Gehalt von 30.000 USD eine erhebliche Abweichung darstellt (eine große relative Differenz von 67 %). Um das Problem der relativen Unterschiede zu lösen, kann man ein Modell mit den verfügbaren primären Metriken trainieren und dann das Modell mit den besten `mean_absolute_percentage_error` oder `root_mean_squared_log_error` auswählen.
 
 | Metrik | Beispiel eines Anwendungsfalls |
 | ------ | ------- |
@@ -502,9 +516,59 @@ RunDetails(run).show()
 
 ![Jupyter Notebook-Widget für automatisiertes Machine Learning](./media/how-to-configure-auto-train/azure-machine-learning-auto-ml-widget.png)
 
+## <a name="test-models-preview"></a>Testmodelle (Vorschau)
+
+>[!IMPORTANT]
+> Das Testen Ihrer Modelle mit einem Testdataset zum Bewerten der durch automatisiertes maschinelles Lernen generierten Modelle ist eine Previewfunktion. Diese Funktion ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion, die jederzeit geändert werden kann.
+
+Das Übergeben der Parameter `test_data` oder `test_size` an `AutoMLConfig` löst automatisch einen Remotetestlauf aus, der die bereitgestellten Testdaten verwendet, um das beste Modell zu bewerten, das durch automatisiertes maschinelles Lernen nach Abschluss des Experiments empfohlen wird. Dieser Remotetestlauf erfolgt am Ende des Experiments, nachdem das beste Modell ermittelt wurde. Erfahren Sie, wie Sie [Testdaten an Ihre `AutoMLConfig` übergeben](how-to-configure-cross-validation-data-splits.md#provide-test-data-preview). 
+
+### <a name="get-test-run-results"></a>Abrufen der Ergebnisse des Testlaufs 
+
+Sie können die Vorhersagen und Metriken aus dem Remotetestlauf in [Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md#view-remote-test-run-results-preview) oder mit dem folgenden Code abrufen. 
+
+```python
+best_run, fitted_model = remote_run.get_output()
+test_run = next(best_run.get_children(type='automl.model_test'))
+test_run.wait_for_completion(show_output=False, wait_post_processing=True)
+
+# Get test metrics
+test_run_metrics = test_run.get_metrics()
+for name, value in test_run_metrics.items():
+    print(f"{name}: {value}")
+
+# Get test predictions as a Dataset
+test_run_details = test_run.get_details()
+dataset_id = test_run_details['outputDatasets'][0]['identifier']['savedId']
+test_run_predictions = Dataset.get_by_id(workspace, dataset_id)
+predictions_df = test_run_predictions.to_pandas_dataframe()
+
+# Alternatively, the test predictions can be retrieved via the run outputs.
+test_run.download_file("predictions/predictions.csv")
+predictions_df = pd.read_csv("predictions.csv")
+
+```
+
+### <a name="test-existing-automated-ml-model"></a>Testen eines vorhandenen Modells für automatisiertes maschinelles Lernen
+
+Führen Sie zum Testen anderer vorhandener Modelle für automatisiertes maschinelles Lernen (beste oder untergeordnete Ausführung) [`ModelProxy()`](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy) aus, um ein Modell zu testen, nachdem die Hauptausführung des automatisierten maschinellen Lernens abgeschlossen wurde. `ModelProxy()` gibt bereits die Vorhersagen und Metriken zurück und erfordert keine weitere Verarbeitung zum Abrufen der Ausgaben.
+
+> [!NOTE]
+> ModelProxy ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Vorschauklasse und kann jederzeit geändert werden.
+
+Der folgende Code veranschaulicht das Testen eines Modells aus einer beliebigen Ausführung mithilfe der [ModelProxy.test()](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy#test-test-data--azureml-data-abstract-dataset-abstractdataset--include-predictions-only--bool---false-----typing-tuple-azureml-data-abstract-dataset-abstractdataset--typing-dict-str--typing-any--)-Methode. Sie können in der test()-Methode mithilfe des Parameters `include_predictions_only` angeben, dass nur die Vorhersagen des Testlaufs angezeigt werden sollen. 
+
+```python
+from azureml.train.automl.model_proxy import ModelProxy
+
+model_proxy = ModelProxy(child_run=my_run, compute_target=cpu_cluster)
+predictions, metrics = model_proxy.test(test_data, include_predictions_only= True
+)
+```
+
 ## <a name="register-and-deploy-models"></a>Registrieren und Bereitstellen von Modellen
 
-Sie können ein Modell registrieren, damit Sie es später wiederverwenden können. 
+Nachdem Sie ein Modell getestet und bestätigt haben, dass Sie es in der Produktion verwendet möchten, können Sie es für die spätere Verwendung registrieren und 
 
 Zum Registrieren eines Modells aus einer Ausführung für das automatisierte maschinelle Lernen verwenden Sie die [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-)-Methode. 
 

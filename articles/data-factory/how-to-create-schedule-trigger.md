@@ -10,12 +10,12 @@ ms.subservice: orchestration
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.custom: devx-track-python, devx-track-azurepowershell, synapse
-ms.openlocfilehash: c21d06a97acd433445ee73e90833684c5cc36dac
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a712fcbd256f80f1402bf29c96bb6e17c7409072
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124815010"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223933"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Erstellen eines Triggers zum Ausführen einer Pipeline gemäß einem Zeitplan
 
@@ -27,7 +27,7 @@ Geben Sie bei der Erstellung eines Zeitplantriggers einen Zeitplan (Startdatum, 
 
 In den folgenden Abschnitten werden die Schritte zum Erstellen eines Zeitplantriggers durch unterschiedliche Methoden erläutert. 
 
-## <a name="ui-experience"></a>Benutzeroberfläche
+## <a name="azure-data-factory-and-synapse-portal-experience"></a>Azure Data Factory und Synapse-Portal
 
 Sie können einen **Zeitplantrigger** erstellen, um eine regelmäßige Ausführung der Pipeline (stündlich, täglich usw.) festzulegen. 
 
@@ -110,6 +110,14 @@ Sie können einen **Zeitplantrigger** erstellen, um eine regelmäßige Ausführu
 
 In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Zeitplantrigger erstellen, starten und überwachen. Damit dieses Beispiel funktioniert, lesen Sie zuerst [Schnellstart: Erstellen einer Data Factory mit Azure PowerShell](quickstart-create-data-factory-powershell.md). Fügen Sie anschließend den folgenden Code zur „main“-Methode hinzu, der einen Zeitplantrigger erstellt und startet, der alle 15 Minuten ausgeführt wird. Der Trigger ist einer Pipeline namens **Adfv2QuickStartPipeline** zugeordnet, die Sie als Teil des Schnellstarts erstellen.
 
+### <a name="prerequisites"></a>Voraussetzungen
+
+- **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
+
+- **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](/powershell/azure/install-az-ps). 
+
+### <a name="sample-code"></a>Beispielcode
+
 1. Erstellen Sie im Ordner „C:\ADFv2QuickStartPSH“ eine JSON-Datei mit dem Namen **MyTrigger.json** und dem folgenden Inhalt:
 
     > [!IMPORTANT]
@@ -158,31 +166,31 @@ In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Zeitplantri
     - Der Trigger ist der Pipeline **Adfv2QuickStartPipeline** zugeordnet. Um einen Trigger mehreren Pipelines zuzuordnen, fügen Sie weitere **pipelineReference**-Abschnitte hinzu.
     - Die Pipeline im Schnellstart akzeptiert zwei **parameter**-Werte: **inputPath** und **outputPath**. Sie übergeben Werte für diese Parameter aus dem Trigger.
 
-1. Erstellen Sie mit dem Cmdlet **Set-AzDataFactoryV2Trigger** einen Trigger:
+1. Erstellen Sie mit dem Cmdlet [Set-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/set-azdatafactoryv2trigger) einen Trigger:
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-1. Vergewissern Sie sich, dass der Status des Triggers **Beendet** lautet, indem Sie das Cmdlet **Get-AzDataFactoryV2Trigger** verwenden:
+1. Vergewissern Sie sich, dass der Status des Triggers **Beendet** lautet, indem Sie das Cmdlet [Get-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/get-azdatafactoryv2trigger) verwenden:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-1. Starten Sie den Trigger mithilfe des Cmdlets **Start-AzDataFactoryV2Trigger**:
+1. Starten Sie den Trigger mithilfe des Cmdlets [Start-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/start-azdatafactoryv2trigger):
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-1. Vergewissern Sie sich, dass der Status des Triggers **Gestartet** lautet, indem Sie das Cmdlet **Get-AzDataFactoryV2Trigger** verwenden:
+1. Vergewissern Sie sich, dass der Status des Triggers **Gestartet** lautet, indem Sie das Cmdlet [Get-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/get-azdatafactoryv2trigger) verwenden:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-1.  Rufen Sie Triggerausführungen in Azure PowerShell mit dem Cmdlet **Get-AzDataFactoryV2TriggerRun** ab. Führen Sie in regelmäßigen Abständen den folgenden Befehl aus, um die Informationen zu den Triggerausführungen abzurufen. Aktualisieren Sie die Werte **TriggerRunStartedAfter** und **TriggerRunStartedBefore** entsprechend den Werten in Ihrer Triggerdefinition:
+1.  Rufen Sie Triggerausführungen in Azure PowerShell mit dem Cmdlet [Get-AzDataFactoryV2TriggerRun](/powershell/module/az.datafactory/get-azdatafactoryv2triggerrun) ab. Führen Sie in regelmäßigen Abständen den folgenden Befehl aus, um die Informationen zu den Triggerausführungen abzurufen. Aktualisieren Sie die Werte **TriggerRunStartedAfter** und **TriggerRunStartedBefore** entsprechend den Werten in Ihrer Triggerdefinition:
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
@@ -190,6 +198,97 @@ In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Zeitplantri
     
     > [!NOTE]
     > Die Auslösezeiten für Zeitplantrigger sind im UTC-Zeitstempel angegeben. _TriggerRunStartedAfter_ und _TriggerRunStartedBefore_ erwarten ebenfalls einen UTC-Zeitstempel.
+
+    Informationen zum Überwachen von Trigger- bzw. Pipelineausführungen im Azure-Portal finden Sie unter [Überwachen der Pipeline](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+
+## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+In diesem Abschnitt erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) einen Zeitplantrigger erstellen, starten und überwachen. Um zu sehen, wie dieses Beispiel funktioniert, arbeiten Sie zunächst den [Schnellstart: Erstellen einer Azure Data Factory mithilfe der Azure-Befehlszeilenschnittstelle](./quickstart-create-data-factory-azure-cli.md) durch. Führen Sie dann die folgenden Schritte aus, um einen Zeitplantrigger zu erstellen und zu starten, der alle 15 Minuten ausgeführt wird. Der Trigger ist einer Pipeline namens **Adfv2QuickStartPipeline** zugeordnet, die Sie als Teil des Schnellstarts erstellen.
+
+### <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+### <a name="sample-code"></a>Beispielcode
+
+1. Erstellen Sie in Ihrem Arbeitsverzeichnis die JSON-Datei **MyTrigger.json** mit den Eigenschaften für den Trigger. Verwenden Sie für dieses Beispiel den folgenden Inhalt:
+
+    > [!IMPORTANT]
+    > Legen Sie vor dem Speichern der JSON-Datei den Wert des **startTime**-Elements auf die aktuelle UTC-Zeit fest. Legen Sie den Wert des **endTime**-Elements auf eine Stunde nach der aktuellen UTC-Zeit fest.
+
+    ```json
+    {
+        "name": "MyTrigger",
+        "type": "ScheduleTrigger",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "Minute",
+                "interval": 15,
+                "startTime": "2017-12-08T00:00:00Z",
+                "endTime": "2017-12-08T01:00:00Z",
+                "timeZone": "UTC"
+            }
+        },
+        "pipelines": [{
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "Adfv2QuickStartPipeline"
+                },
+                "parameters": {
+                    "inputPath": "adftutorial/input",
+                    "outputPath": "adftutorial/output"
+                }
+            }
+        ]
+    }
+    ```
+
+    Im JSON-Codeausschnitt:
+    - Das **type**-Element des Triggers wird auf „ScheduleTrigger“ festgelegt.
+    - Das **frequency**-Element wird auf „Minute“ und das **interval**-Element auf „15“ festgelegt. So führt der Trigger die Pipeline zwischen dem Start- und Endzeitpunkt alle 15 Minuten aus.
+    - Das **timeZone**-Element gibt die Zeitzone an, in der der Trigger erstellt wird. Diese Einstellung betrifft sowohl **startTime** als auch **endTime**.
+    - Das **endTime**-Element ist auf eine Stunde nach dem Wert des **startTime**-Elements festgelegt. So führt der Trigger die Pipeline 15 Minuten, 30 Minuten und 45 Minuten nach der Startzeit aus. Denken Sie daran, die Startzeit in die aktuelle UTC-Zeit und die Endzeit in eine Stunde nach der Startzeit zu ändern. 
+
+        > [!IMPORTANT]
+        > In der Zeitzone UTC müssen startTime und endTime das Format „yyyy-MM-ddTHH:mm:ss **Z**“ aufweisen, in anderen Zeitzonen ist das Format „yyyy-MM-ddTHH:mm:ss“ erforderlich. 
+        > 
+        > Gemäß ISO 8601-Norm markiert das Suffix _Z_ des Zeitstempels den datetime-Wert für die Zeitzone UTC, und damit ist das timeZone-Feld nutzlos. Wenn das Suffix _Z_ für UTC fehlt, tritt bei der _Aktivierung_ des Triggers ein Fehler auf.
+
+    - Der Trigger ist der Pipeline **Adfv2QuickStartPipeline** zugeordnet. Um einen Trigger mehreren Pipelines zuzuordnen, fügen Sie weitere **pipelineReference**-Abschnitte hinzu.
+    - Die Pipeline im Schnellstart akzeptiert zwei **parameter**-Werte: **inputPath** und **outputPath**. Sie übergeben Werte für diese Parameter aus dem Trigger.
+
+1. Erstellen Sie einen Trigger mit dem Befehl [az datafactory trigger create](/cli/azure/datafactory/trigger#az_datafactory_trigger_create):
+
+    ```azurecli
+    az datafactory trigger create --resource-group "ADFQuickStartRG" --factory-name "ADFTutorialFactory"  --name "MyTrigger" --properties @MyTrigger.json  
+    ```
+
+1. Vergewissern Sie sich mithilfe des Befehls [az datafactory trigger show](/cli/azure/datafactory/trigger#az_datafactory_trigger_show), dass der Status des Triggers **Beendet** lautet:
+
+    ```azurecli
+    az datafactory trigger show --resource-group "ADFQuickStartRG" --factory-name "ADFTutorialFactory" --name "MyTrigger" 
+    ```
+
+1. Starten Sie den Trigger mit dem Befehl [az datafactory trigger start](/cli/azure/datafactory/trigger#az_datafactory_trigger_start):
+
+    ```azurecli
+    az datafactory trigger start --resource-group "ADFQuickStartRG" --factory-name "ADFTutorialFactory" --name "MyTrigger" 
+    ```
+
+1. Vergewissern Sie sich mithilfe des Befehls [az datafactory trigger show](/cli/azure/datafactory/trigger#az_datafactory_trigger_show), dass der Status des Triggers **Gestartet** lautet:
+
+    ```azurecli
+    az datafactory trigger show --resource-group "ADFQuickStartRG" --factory-name "ADFTutorialFactory" --name "MyTrigger" 
+    ```
+
+1. Rufen Sie die Triggerausführungen in der Azure-Befehlszeilenschnittstelle mit dem Befehl [az datafactory trigger-run query-by-factory](/cli/azure/datafactory/trigger-run#az_datafactory_trigger_run_query_by_factory) ab. Führen Sie in regelmäßigen Abständen den folgenden Befehl aus, um die Informationen zu den Triggerausführungen abzurufen. Aktualisieren Sie die Werte **last-updated-after** und **last-updated-before**, damit sie den Werten in Ihrer Triggerdefinition entsprechen:
+
+    ```azurecli
+    az datafactory trigger-run query-by-factory --resource-group "ADFQuickStartRG" --factory-name "ADFTutorialFactory" --filters operand="TriggerName" operator="Equals" values="MyTrigger" --last-updated-after "2017-12-08T00:00:00" --last-updated-before "2017-12-08T01:00:00"
+    ```
+
+    > [!NOTE]
+    > Die Auslösezeiten für Zeitplantrigger sind im UTC-Zeitstempel angegeben. _last-updated-after_ und _last-updated-before_ erwarten ebenfalls einen UTC-Zeitstempel.
 
     Informationen zum Überwachen von Trigger- bzw. Pipelineausführungen im Azure-Portal finden Sie unter [Überwachen der Pipeline](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
@@ -415,7 +514,7 @@ Im Folgenden finden Sie einige der für Zeitplantrigger unterstützte Zeitzonen:
 | India Standard Time (IST) | +5:30 | `India Standard Time` | Nein  | `'yyyy-MM-ddTHH:mm:ss'` |
 | China Normalzeit | +8 | `China Standard Time` | Nein  | `'yyyy-MM-ddTHH:mm:ss'` |
 
-Diese Liste ist unvollständig. Eine vollständige Liste der Zeitzonenoptionen finden Sie im Portal auf der Seite zur [Triggererstellung](#ui-experience).
+Diese Liste ist unvollständig. Eine vollständige Liste der Zeitzonenoptionen finden Sie im Portal auf der Seite zur [Triggererstellung](#azure-data-factory-and-synapse-portal-experience).
 
 ### <a name="starttime-property"></a>startTime-Eigenschaft
 Die folgende Tabelle zeigt, wie die **startTime**-Eigenschaft eine Triggerausführung steuert:

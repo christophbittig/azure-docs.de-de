@@ -1,5 +1,5 @@
 ---
-title: 'Vorgehensweise: Benutzerdefinierte und zusammengesetzte Modelle'
+title: 'Schrittanleitung: Verwenden benutzerdefinierter und zusammengesetzter Modelle'
 titleSuffix: Azure Applied AI Services
 description: Erfahren Sie, wie Sie benutzerdefinierte und zusammengesetzte Modelle für die Formularerkennung erstellen, verwenden und verwalten.
 author: laujan
@@ -7,17 +7,18 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: ef5514b44ad2d35870674a85958c28f5f780c308
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5389e30e2aca2d93ba0fb27c71a6b934d7bf10e0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233694"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027783"
 ---
-# <a name="how-to-use-custom-and-composed-models"></a>Vorgehensweise: Verwenden benutzerdefinierter und zusammengesetzter Modelle
+# <a name="use-custom-and-composed-models"></a>Verwenden benutzerdefinierter und zusammengesetzter Modelle
 
 Die Formularerkennung verwendet fortschrittliche ML-Technologie, um Informationen in Dokumentbildern zu erkennen, zu extrahieren und sie in Form einer strukturierten JSON-Ausgabe zurück zu geben. Mit der Formularerkennung können Sie eigenständige benutzerdefinierte Modelle trainieren oder benutzerdefinierte Modelle vereinen, um zusammengesetzte Modelle zu erstellen.
 
@@ -25,15 +26,19 @@ Die Formularerkennung verwendet fortschrittliche ML-Technologie, um Informatione
 
 * **Zusammengesetzte Modelle**. Ein zusammengesetztes Modell wird erstellt, indem eine Sammlung benutzerdefinierter Modelle verwendet und zu einem einzigen Modell zusammengesetzt wird, das Ihre Formulartypen umfasst. Wenn ein Dokument an ein zusammengesetztes Modell übermittelt wird, führt der Dienst einen Klassifizierungsschritt aus, um zu entscheiden, welchem benutzerdefiniertem Modell das zur Analyse eingereichte Formular genau entspricht.
 
-In diesem Artikel untersuchen wir die Vorgehensweise beim Erstellen benutzerdefinierter und zusammengesetzter Formularerkennung-Modelle mit unserem [Tool zum Bezeichnen von Beispielen für die Formularerkennung](label-tool.md), [REST-APIs](./quickstarts/try-sdk-rest-api.md?branch=main&pivots=programming-language-rest-api#train-a-custom-model) oder [Clientbibliothek-SDKs](./quickstarts/try-sdk-rest-api.md?branch=main&pivots=programming-language-csharp#train-a-custom-model).
+***Fenster für die Modellkonfiguration in Formularerkennung Studio***
 
-## <a name="try-it-sample-labeling-tool"></a>Jetzt testen: Tool für die Beschriftung von Beispielen
+:::image type="content" source="media/studio/composed-model.png" alt-text="Screenshot: Fenster für die Modellkonfiguration in Formularerkennung Studio":::
+
+In diesem Artikel erfahren Sie, wie Sie benutzerdefinierte und zusammengesetzte Modelle der Formularerkennung mit unserem [Bespielbeschriftungstool für die Formularerkennung](label-tool.md), [REST-APIs](quickstarts/client-library.md?branch=main&pivots=programming-language-rest-api#train-a-custom-model) oder [Clientbibliothek-SDKs](quickstarts/client-library.md?branch=main&pivots=programming-language-csharp#train-a-custom-model) erstellen.
+
+## <a name="sample-labeling-tool"></a>Tool für die Beschriftung von Beispielen
 
 Sie können sehen, wie Daten aus benutzerdefinierten Formularen extrahiert werden, indem Sie unser Tool für die Bezeichnung von Beispielen ausprobieren. Sie benötigen Folgendes:
 
 * Azure-Abonnement – Sie können ein [kostenloses Abonnement erstellen](https://azure.microsoft.com/free/cognitive-services/).
 
-* Eine [Instanz der Formularerkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) im Azure-Portal. Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren. Klicken Sie nach der Bereitstellung Ihrer Ressource auf **Zu Ressource wechseln**, um Ihren API-Schlüssel und -Endpunkt abzurufen.
+* Eine [Instanz der Formularerkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) im Azure-Portal. Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren. Wählen Sie nach der Bereitstellung Ihrer Ressource **Zu Ressource wechseln** aus, um Ihren API-Schlüssel und -Endpunkt abzurufen.
 
  :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal":::
 
@@ -96,7 +101,7 @@ Die Formularerkennung verwendet die [Layout](concept-layout.md)-API, um die erwa
 
 Sie können einem zusammengesetzten Modell bis zu 100 trainierte benutzerdefinierte Modelle zuweisen. Wenn Sie mit der ID dieses zusammengesetzten Modells die Option zum Analysieren aufrufen, klassifiziert die Formularerkennung zunächst das übermittelte Formular, wählt das am ehesten übereinstimmende Modell aus und gibt dann Ergebnisse für dieses Modell zurück. Dieser Vorgang ist nützlich, wenn eingehende Formulare zu einer von mehreren Vorlagen gehören können.
 
-Folgen Sie bei Verwendung des Tools zum Bezeichnen von Beispielen für die Formularerkennung, der REST-API oder der Clientbibliothek-SDKs den nachstehenden Schritten, um ein benutzerdefiniertes Modell zu erstellen:
+Folgen Sie bei Verwendung des Beispielbeschriftungstool für die Formularerkennung, der REST-API oder der Clientbibliothek-SDKs den nachstehenden Schritten, um ein benutzerdefiniertes Modell zu erstellen:
 
 1. [**Erfassen der IDs Ihrer benutzerdefinierten Modelle**](#gather-your-custom-model-ids)
 1. [**Zusammensetzen Ihrer benutzerdefinierten Modelle**](#compose-your-custom-models)
@@ -105,9 +110,9 @@ Folgen Sie bei Verwendung des Tools zum Bezeichnen von Beispielen für die Formu
 
 Nachdem der Trainingsprozess erfolgreich abgeschlossen wurde, wird Ihrem benutzerdefinierten Modell eine Modell-ID zugewiesen. Sie können eine Modell-ID wie folgt abrufen:
 
-### <a name="form-recognizer-sample-labeling-tool"></a>[**Tool zum Bezeichnen von Beispielen für die Formularerkennung**](#tab/fott)
+### <a name="form-recognizer-sample-labeling-tool"></a>[**Beispielbeschriftungstool für die Formularerkennung**](#tab/fott)
 
-Wenn Sie Modelle mithilfe des [**Tools zum Bezeichnen von Beispielen für die Formularerkennung**](https://fott-2-1.azurewebsites.net/) trainieren, befindet sich die Modell-ID im Fenster mit den Trainingsresultaten:
+Wenn Sie Modelle mithilfe des [**Beispielbeschriftungstools für die Formularerkennung**](https://fott-2-1.azurewebsites.net/) trainieren, befindet sich die Modell-ID im Fenster mit den Trainingsresultaten:
 
 :::image type="content" source="media/fott-training-results.png" alt-text="Screenshot: Fenster der Trainingsresultate":::
 
@@ -135,9 +140,9 @@ Die [**REST-API**](./quickstarts/try-sdk-rest-api.md?pivots=programming-language
 
 Nachdem Sie die benutzerdefinierten Modelle gesammelt haben, die einem einzelnen Formulartyp entsprechen, können Sie sie zu einem einzelnen Modell zusammensetzen.
 
-### <a name="form-recognizer-sample-labeling-tool"></a>[**Tool zum Bezeichnen von Beispielen für die Formularerkennung**](#tab/fott)
+### <a name="form-recognizer-sample-labeling-tool"></a>[**Beispielbeschriftungstool für die Formularerkennung**](#tab/fott)
 
-Mit dem **Tool zum Bezeichnen von Beispielen** können Sie schnell mit dem Trainieren von Modellen beginnen und diese zu einer einzigen Modell-ID zusammensetzen.
+Mit dem **Beispielbeschriftungstool** können Sie schnell mit dem Trainieren von Modellen beginnen und diese zu einer einzelnen Modell-ID zusammensetzen.
 
 Nachdem Sie das Training abgeschlossen haben, erstellen Sie Ihre Modelle wie folgt:
 
@@ -175,7 +180,7 @@ Verwenden Sie den Programmiersprachencode Ihrer Wahl, um ein zusammengesetztes M
 
  Der benutzerdefinierte Vorgang zum **Analysieren** von Formularen erfordert, dass Sie die `modelID` im Aufruf der Formularerkennung verwenden. Sie können eine einzelne benutzerdefinierte Modell-ID oder eine zusammengesetzte Modell-ID für den Parameter `modelID` angeben.
 
-### <a name="form-recognizer-sample-labeling-tool"></a>[**Tool zum Bezeichnen von Beispielen für die Formularerkennung**](#tab/fott)
+### <a name="form-recognizer-sample-labeling-tool"></a>[**Beispielbeschriftungstool für die Formularerkennung**](#tab/fott)
 
 1. Wählen Sie im Menü auf der linken Seite des Tools das **Analysieren-Symbol** (Glühbirne) aus.
 

@@ -3,14 +3,14 @@ title: Bereitstellungsverlauf
 description: Erfahren Sie, wie Sie Azure Resource Manager-Bereitstellungsvorgänge mit dem Portal, mit PowerShell, mit der Azure-Befehlszeilenschnittstelle (CLI) und der REST-API anzeigen.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 11/10/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: eeb56665d7287b8239ad309fd0f7de5b539e1ed2
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 60bc06ab15e7f36a5c67ff5fc4de9da8bad28f88
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752101"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310224"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Anzeigen des Bereitstellungsverlaufs mit Azure Resource Manager
 
@@ -18,7 +18,7 @@ Mit Azure Resource Manager können Sie den Bereitstellungsverlauf anzeigen. Sie 
 
 Der Bereitstellungsverlauf einer Ressourcengruppe ist auf 800 Bereitstellungen beschränkt. Wenn Sie den Grenzwert fast erreicht haben, werden Bereitstellungen automatisch aus dem Verlauf gelöscht. Weitere Informationen finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](deployment-history-deletions.md).
 
-Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](common-deployment-errors.md).
+Hilfe zum Beheben bestimmter Bereitstellungsfehler finden Sie unter [Problembehandlung von häufigen Azure-Bereitstellungsfehlern](common-deployment-errors.md).
 
 ## <a name="get-deployments-and-correlation-id"></a>Abrufen von Bereitstellungen und der Korrelations-ID
 
@@ -30,15 +30,15 @@ Sie können Details zu einer Bereitstellung über das Azure-Portal, die PowerShe
 
 1. Wählen Sie den Link unter **Bereitstellungen** aus.
 
-   ![Auswählen des Bereitstellungsverlaufs](./media/deployment-history/select-deployment-history.png)
+   :::image type="content" source="media/deployment-history/select-deployment-history.png" alt-text="Screenshot: Ressourcengruppenübersicht mit einer erfolgreichen Bereitstellung.":::
 
 1. Wählen Sie eine der Bereitstellungen aus dem Bereitstellungsverlauf aus.
 
-   ![Auswählen der Bereitstellung](./media/deployment-history/select-details.png)
+   :::image type="content" source="media/deployment-history/select-details.png" alt-text="Screenshot des hervorgehobenen Links für eine Ressourcenbereitstellung.":::
 
 1. Es wird eine Zusammenfassung der Bereitstellung angezeigt, einschließlich der Korrelations-ID.
 
-    ![Zusammenfassung der Bereitstellungen](./media/deployment-history/show-correlation-id.png)
+   :::image type="content" source="media/deployment-history/show-correlation-id.png" alt-text="Screenshot des Bereitstellungsverlaufs, der die Korrelations-ID hervorhebt.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -48,7 +48,7 @@ Um alle Bereitstellungen für eine Ressourcengruppe aufzulisten, verwenden Sie d
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
 ```
 
-Um eine bestimmte Bereitstellung aus einer Ressourcengruppe abzurufen, fügen Sie den Parameter **DeploymentName** hinzu.
+Um eine bestimmte Bereitstellung aus einer Ressourcengruppe abzurufen, fügen Sie den Parameter `DeploymentName` hinzu.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
@@ -62,13 +62,13 @@ Gehen Sie folgendermaßen vor, um die Korrelations-ID abzurufen:
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Um die Bereitstellung für eine Ressourcengruppe aufzulisten, verwenden Sie [az deployment group list](/cli/azure/group/deployment#az_deployment_group_list).
+Um alle Bereitstellungen für eine Ressourcengruppe aufzulisten, verwenden Sie [az deployment group list](/cli/azure/deployment/group#az_deployment_group_list).
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-Um eine bestimmte Bereitstellung abzurufen, verwenden Sie [az deployment group show](/cli/azure/group/deployment#az_deployment_group_show).
+Um eine bestimmte Bereitstellung abzurufen, verwenden Sie [az deployment group show](/cli/azure/deployment/group#az_deployment_group_show).
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -88,7 +88,7 @@ Um die Bereitstellung für eine Ressourcengruppe aufzulisten, verwenden Sie den 
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
 ```
 
-Um eine bestimmte Bereitstellung abzurufen, verwenden Sie den folgenden Vorgang. Informationen zur neuesten API-Versionsnummer, die in der Anforderung verwendet werden soll, finden Sie unter [Bereitstellungen – Abrufen](/rest/api/resources/deployments/get).
+Um eine bestimmte Bereitstellung zu erhalten, verwenden Sie den folgenden Vorgang. Informationen zur neuesten API-Versionsnummer, die in der Anforderung verwendet werden soll, finden Sie unter [Bereitstellungen – Abrufen](/rest/api/resources/deployments/get).
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
@@ -104,7 +104,7 @@ Die Antwort enthält die Korrelations-ID.
    "provisioningState": "Failed",
    "timestamp": "2019-11-26T14:18:36.4518358Z",
    "duration": "PT26.2091817S",
-   "correlationId": "47ff4228-bf2e-4ee5-a008-0b07da681230",
+   "correlationId": "11111111-1111-1111-1111-111111111111",
    ...
  }
 }
@@ -120,35 +120,35 @@ Jede Bereitstellung kann mehrere Vorgänge umfassen. Um weiter Informationen zu 
 
 1. Wählen Sie in der Zusammenfassung für eine Bereitstellung **Vorgangsdetails** aus.
 
-    ![Auswählen von Vorgangsdetails](./media/deployment-history/get-operation-details.png)
+   :::image type="content" source="media/deployment-history/get-operation-details.png" alt-text="Screenshot der fehlerhaften Bereitstellung, der den Link für Vorgangsdetails hervorhebt.":::
 
 1. Es werden die ausführlichen Informationen zu dem Bereitstellungsschritt angezeigt. Wenn ein Fehler auftritt, enthalten die Details die Fehlermeldung.
 
-    ![Anzeigen von Vorgangsdetails](./media/deployment-history/see-operation-details.png)
+   :::image type="content" source="media/deployment-history/see-operation-details.png" alt-text="Screenshot der Vorgangsdetails der fehlerhaften Bereitstellung.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Verwenden Sie zum Anzeigen der Bereitstellungsvorgänge für die Bereitstellung in einer Ressourcengruppe den Befehl [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation).
+Verwenden Sie zum Anzeigen der Bereitstellungsvorgänge für die Bereitstellung in einer Ressourcengruppe den Befehl [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azresourcegroupdeploymentoperation).
 
 ```azurepowershell-interactive
-Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy
+Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
 ```
 
 Zum Anzeigen fehlerhafter Vorgänge filtern Sie Vorgänge mit dem Zustand **Fehler**.
 
 ```azurepowershell-interactive
-(Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy).Properties | Where-Object ProvisioningState -eq Failed
+Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Name ExampleDeployment | Where-Object { $_.ProvisioningState -eq "Failed" }
 ```
 
 Verwenden Sie den folgenden Befehl, um die Statusmeldung für einen fehlerhaften Vorgang abzurufen:
 
 ```azurepowershell-interactive
-((Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy ).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage.error
+(Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Name ExampleDeployment | Where-Object { $_.ProvisioningState -eq "Failed" }).StatusMessage
 ```
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie zum Anzeigen der Bereitstellungsvorgänge für die Bereitstellung in einer Ressourcengruppe den Befehl [az deployment operation group list](/cli/azure/deployment/operation/group#az_deployment-operation-group-list). Sie müssen Azure CLI 2.6.0 oder höher verwenden.
+Verwenden Sie zum Anzeigen der Bereitstellungsvorgänge für die Bereitstellung in einer Ressourcengruppe den Befehl [az deployment operation group list](/cli/azure/deployment/operation/group#az_deployment_operation_group_list). Sie müssen Azure CLI 2.6.0 oder höher verwenden.
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
@@ -157,13 +157,13 @@ az deployment operation group list --resource-group ExampleGroup --name ExampleD
 Zum Anzeigen fehlerhafter Vorgänge filtern Sie Vorgänge mit dem Zustand **Fehler**.
 
 ```azurecli-interactive
-az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment --query "[?properties.provisioningState=='Failed']"
 ```
 
 Verwenden Sie den folgenden Befehl, um die Statusmeldung für einen fehlerhaften Vorgang abzurufen:
 
 ```azurecli-interactive
-az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
 # <a name="http"></a>[HTTP](#tab/http)
@@ -180,15 +180,15 @@ Die Antwort enthält eine Fehlermeldung.
 {
   "value": [
     {
-      "id": "/subscriptions/xxxx/resourceGroups/examplegroup/providers/Microsoft.Resources/deployments/exampledeploy/operations/13EFD9907103D640",
-      "operationId": "13EFD9907103D640",
+      "id": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/examplegroup/providers/Microsoft.Resources/deployments/exampledeployment/operations/1234567890ABCDEF",
+      "operationId": "1234567890ABCDEF",
       "properties": {
         "provisioningOperation": "Create",
         "provisioningState": "Failed",
         "timestamp": "2019-11-26T14:18:36.3177613Z",
         "duration": "PT21.0580179S",
-        "trackingId": "9d3cdac4-54f8-486c-94bd-10c20867b8bc",
-        "serviceRequestId": "01a9d0fe-896b-4c94-a30f-60b70a8f1ad9",
+        "trackingId": "11111111-1111-1111-1111-111111111111",
+        "serviceRequestId": "11111111-1111-1111-1111-111111111111",
         "statusCode": "BadRequest",
         "statusMessage": {
           "error": {
@@ -197,9 +197,9 @@ Die Antwort enthält eine Fehlermeldung.
           }
         },
         "targetResource": {
-          "id": "/subscriptions/xxxx/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/storageq2czadzfgizc2",
+          "id": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/storage",
           "resourceType": "Microsoft.Storage/storageAccounts",
-          "resourceName": "storageq2czadzfgizc2"
+          "resourceName": "storage"
         }
       }
     },
@@ -212,6 +212,6 @@ Die Antwort enthält eine Fehlermeldung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](common-deployment-errors.md).
-* Weitere Informationen zur Verwaltung von Bereitstellungen im Verlauf finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](deployment-history-deletions.md).
-* Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit Azure Resource Manager-Vorlagen](deploy-powershell.md).
+- Hilfe zum Beheben bestimmter Bereitstellungsfehler finden Sie unter [Problembehandlung von häufigen Azure-Bereitstellungsfehlern](common-deployment-errors.md).
+- Weitere Informationen zur Verwaltung von Bereitstellungen im Verlauf finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](deployment-history-deletions.md).
+- Informationen zum Anzeigen einer Änderungsvorschau vor der Bereitstellung einer Vorlage finden Sie unter [Was-wäre-wenn-Vorgang bei der Bereitstellung von ARM-Vorlagen](deploy-what-if.md).

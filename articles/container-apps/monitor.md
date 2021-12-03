@@ -1,19 +1,19 @@
 ---
 title: Überwachen einer App in Azure Container Apps (Vorschauversion)
 description: Hier erfahren Sie, wie Anwendungen in Azure Container Apps überwacht und protokolliert werden.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 852506b024939fdbdde6fa4d3ffebbe1c08b38fa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c9c324c90ad401d43be1e2d6768ea82121fc1ae8
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096004"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027831"
 ---
 # <a name="monitor-an-app-in-azure-container-apps-preview"></a>Überwachen einer App in Azure Container Apps (Vorschauversion)
 
@@ -84,7 +84,7 @@ az monitor log-analytics query \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az monitor log-analytics query `
   --workspace $LOG_ANALYTICS_WORKSPACE_CLIENT_ID `
   --analytics-query "ContainerAppConsoleLogs_CL | where ContainerAppName_s == 'my-container-app' | project ContainerAppName_s, Log_s, TimeGenerated | take 3" `

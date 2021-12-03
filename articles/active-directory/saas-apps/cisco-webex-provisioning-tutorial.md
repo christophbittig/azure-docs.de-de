@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: thwimmer
-ms.openlocfilehash: 311b147648c8a7eccda889769a60ea8fa15fa1ad
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 1d7c7092dc0bf44093390e9cd41b9ca8f62f247e
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764383"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988443"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cisco Webex für die automatische Benutzerbereitstellung
 
@@ -34,6 +34,9 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * Einen Azure AD-Mandanten.
 * [Einen Cisco Webex-Mandanten](https://www.webex.com/pricing/index.html).
 * Ein Benutzerkonto in Cisco Webex mit Administratorrechten.
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Hinzufügen von Cisco Webex aus dem Katalog
 

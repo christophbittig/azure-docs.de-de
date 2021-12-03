@@ -1,14 +1,14 @@
 ---
 title: Micro-Agent-Konfigurationen (Vorschau)
 description: Der Collector sendet alle aktuellen Daten unmittelbar nach jeder Konfigurationsänderung. Die Änderungen werden dann übernommen.
-ms.date: 10/10/2021
+ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: e6270e6e3f3f2e9234d4bffae3f0970137d38019
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 2db49df42644ca2ef0cff3d38768ffa6df4defae
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730335"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293609"
 ---
 # <a name="micro-agent-configurations-preview"></a>Micro-Agent-Konfigurationen (Vorschau)
 

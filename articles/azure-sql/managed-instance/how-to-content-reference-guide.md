@@ -5,18 +5,18 @@ description: Eine Referenzanleitung für Inhalte, in denen das Konfigurieren und
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: deployment-configuration
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, ignite-fall-2021
 ms.devlang: ''
 ms.topic: guide
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 04/16/2019
-ms.openlocfilehash: 2b64353da7de0b7f7d29502695c9d7ea22d6a19f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 86511b0cb494ecd5cb9f60fb8aa825a11fe48065
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130244678"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045630"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL Managed Instance: Inhaltsreferenz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,7 +36,8 @@ Dieser Artikel enthält eine Inhaltsreferenz für verschiedene Anleitungen, Skri
 
 - [Bestimmen der Subnetzgröße](vnet-subnet-determine-size.md): Da die Größe des Subnetzes nach der Bereitstellung von SQL Managed Instance nicht geändert werden kann, müssen Sie berechnen, welcher IP-Adressbereich für die Anzahl und Typen von verwalteten Instanzen erforderlich ist, die im Subnetz bereitgestellt werden sollen. 
 - [Erstellen eines neuen VNETs und Subnetzes](virtual-network-subnet-create-arm-template.md): Konfigurieren Sie das virtuelle Netzwerk und das Subnetz gemäß den [Netzwerkanforderungen](connectivity-architecture-overview.md#network-requirements). 
-- [Konfigurieren eines vorhandenen VNets und Subnetzes](vnet-existing-add-subnet.md): Überprüfen Sie die Netzwerkanforderungen, und konfigurieren Sie das vorhandene virtuelle Netzwerk und Subnetz für die Bereitstellung von SQL Managed Instance. 
+- [Konfigurieren eines vorhandenen VNets und Subnetzes](vnet-existing-add-subnet.md): Überprüfen Sie die Netzwerkanforderungen, und konfigurieren Sie das vorhandene virtuelle Netzwerk und Subnetz für die Bereitstellung von SQL Managed Instance.
+- [Konfigurieren Sie Dienstendpunktrichtlinien für Azure Storage (Vorschau)](service-endpoint-policies-configure.md): Sichern Sie Ihr Subnetz gegen irrtümliche oder böswillige Datenexfiltration in nicht autorisierte Azure Storage-Konten.
 - [Konfigurieren von benutzerdefiniertem DNS](custom-dns-configure.md): Konfigurieren Sie benutzerdefiniertes DNS, um externen Ressourcen von SQL Managed Instance aus den Zugriff auf benutzerdefinierte Domänen über einen Verbindungsserver von DB-E-Mal-Profilen zu ermöglichen. 
 - [Synchronisieren der Netzwerkkonfiguration](azure-app-sync-network-configuration.md): Aktualisieren Sie den Netzwerkkonfigurationsplan, wenn Sie nach der [Integration ihrer App in ein virtuelles Azure-Netzwerk](../../app-service/overview-vnet-integration.md) keine Verbindung herstellen können.
 - [Ermitteln der IP-Adresse des Verwaltungsendpunkts](management-endpoint-find-ip-address.md): Bestimmen Sie den öffentlichen Endpunkt, den SQL Managed Instance für Verwaltungszwecke verwendet. 

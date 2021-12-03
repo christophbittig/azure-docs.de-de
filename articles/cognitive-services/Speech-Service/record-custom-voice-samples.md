@@ -3,19 +3,19 @@ title: Aufzeichnen benutzerdefinierter Stimmbeispiele – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Erstellen Sie eine benutzerdefinierte Stimme in Produktionsqualität, indem Sie ein überzeugendes Skript vorbereiten, einen guten Sprecher engagieren und professionell aufzeichnen.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.author: pafarley
-ms.openlocfilehash: 965791510a58391476e0f0ef1e276d06a83a690b
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: 2a0c504fdcc39b4aff0981350e747dfd42ce3389
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540665"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504719"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme
 
@@ -107,7 +107,9 @@ Im Folgenden finden Sie einige allgemeine Richtlinien, die Sie befolgen können,
    Im Folgenden finden Sie einige Beispiele für bewährte Methoden:
     - Bei Zeilen mit Abkürzungen steht anstelle von „BTW“ entsprechend „by the way“ (übrigens).
     - Für Zeilen mit Ziffern steht anstelle von „911“ „neun eins eins“.
-    - Bei Zeilen mit Akronymen wird statt „ABC“ entsprechend „A B C“ verwendet. Stellen Sie also sicher, dass Ihr Sprecher diese Wörter in der erwarteten Weise ausspricht. Achten Sie darauf, dass Ihr Skript und Ihre Aufzeichnungen während des Trainingsprozesses stets übereinstimmen.  
+    - Bei Zeilen mit Akronymen haben Sie anstelle von "ABC" vielmehr "A B C".
+   
+   Stellen Sie sicher, dass Ihr Sprecher diese Wörter entsprechend ausspricht. Achten Sie darauf, dass Ihr Skript und Ihre Aufzeichnungen während des Trainingsprozesses stets übereinstimmen.  
 
    > [!NOTE]
    > Die für Ihren Sprecher vorbereiteten Skripts müssen den muttersprachlichen Lesekonventionen entsprechen, z. B. 50 % und 45 USD, während die für das Training verwendeten Skripts normalisiert werden müssen, um sicherzustellen, dass die Skripts mit dem Audioinhalt übereinstimmen, z. B. *fünfzig Prozent* und *vierundfünfzig US-Dollar*. Überprüfen Sie die für das Training verwendeten Skripts mit den Aufzeichnungen Ihres Sprechers, um sicherzustellen, dass sie übereinstimmen.

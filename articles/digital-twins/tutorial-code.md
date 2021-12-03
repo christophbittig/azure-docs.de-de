@@ -1,18 +1,18 @@
 ---
 title: 'Tutorial: Codieren einer Client-App'
 titleSuffix: Azure Digital Twins
-description: Tutorial zum Schreiben des Minimalcodes für eine Client-App mit dem .NET (C#) SDK.
+description: In diesem Tutorial erfahren Sie, wie Sie den Minimalcode für eine Azure Digital Twins-Client-App mit dem .NET SDK (C#) schreiben.
 author: baanders
 ms.author: baanders
-ms.date: 04/28/2021
+ms.date: 10/18/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 2146d07ce28cf0d14bb1b1416a0aa5b8ebf1febe
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: df99bfd1dfd07749b4906e9bd7f9f62ece68066b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128612071"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501702"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Tutorial: Codieren mit den Azure Digital Twins-APIs
 
@@ -27,7 +27,7 @@ Entwickler, die mit Azure Digital Twins arbeiten, schreiben in der Regel Clienta
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieses Tutorial verwendet die Befehlszeile für Setup und Projektarbeit. Sie können also jeden beliebigen Code-Editor verwenden, um die Übungen zu durchlaufen.
+Dieses Tutorial zur Azure Digital Twins verwendet die Befehlszeile für Setup und Projektarbeit. Sie können also jeden beliebigen Code-Editor verwenden, um die Übungen zu durchlaufen.
 
 Zum Einstieg benötigen Sie Folgendes:
 * Einen beliebigen Code-Editor
@@ -130,7 +130,7 @@ Erstellen Sie in dem Verzeichnis, in dem Sie Ihr Projekt erstellt haben, eine ne
 > [!TIP] 
 > Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Das Beispiel basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie unter [Analysieren und Überprüfen von Modellen](how-to-parse-models.md).
 
-Als Nächstes fügen Sie *Program.cs* weiteren Code hinzu, um das soeben erstellte Modell in Ihre Azure Digital Twins-Instanz hochzuladen.
+Als Nächstes fügen Sie *Program.cs* weiteren Code hinzu, um das erstellte Modell in Ihre Azure Digital Twins-Instanz hochzuladen.
 
 Im ersten Schritt fügen Sie am Dateianfang die folgenden `using`-Anweisungen hinzu:
 
@@ -196,7 +196,7 @@ Führen Sie in Ihrem Befehlsfenster das Programm mit `dotnet run` aus. Suchen Si
 
 Führen Sie das Programm anschließend erneut aus. 
 
-Beachten Sie, dass beim zweiten Erstellen der digitalen Zwillinge kein Fehler ausgegeben wird, obwohl die Zwillinge bereits nach der ersten Ausführung vorhanden sind. Im Gegensatz zur Modellerstellung erfolgt die Erstellung der Zwillinge auf REST-Ebene über einen *PUT*-Aufruf mit *upsert*-Semantik. Dies bedeutet Folgendes: Wenn bereits ein Zwilling vorhanden ist, wird beim Versuch, den gleichen Zwilling erneut zu erstellen, lediglich der ursprüngliche Zwilling ersetzt. Es wird kein Fehler ausgelöst.
+Beachten Sie, dass beim zweiten Erstellen der digitalen Zwillinge kein Fehler ausgegeben wird, obwohl die Zwillinge bereits nach der ersten Ausführung vorhanden sind. Im Gegensatz zur Modellerstellung erfolgt die Erstellung der Zwillinge auf REST-Ebene über einen *PUT*-Aufruf mit *upsert*-Semantik. Die Verwendung dieser Art von REST-Aufruf bedeutet Folgendes: Wenn bereits ein Zwilling vorhanden ist, wird beim Versuch, den gleichen Zwilling erneut zu erstellen, lediglich der ursprüngliche Zwilling ersetzt. Es wird kein Fehler ausgelöst.
 
 ### <a name="create-relationships"></a>Erstellen von Beziehungen
 

@@ -1,14 +1,14 @@
 ---
 title: Definieren der globalen Benutzerzugriffssteuerung
 description: In großen Unternehmen können Benutzerberechtigungen komplex sein und zusätzlich zur Standardstruktur von Websites und Zonen auch durch eine globale Organisationsstruktur bestimmt werden.
-ms.date: 12/08/2020
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 8f5f8df56a5dcb4152fc0ae9fcae3d504d6cf3e2
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 70437ceeadba0b1c8af9559037ccf718d7a251d4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017433"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283826"
 ---
 # <a name="define-global-access-control"></a>Definieren der globalen Zugriffssteuerung
 
@@ -16,7 +16,7 @@ In großen Unternehmen können Benutzerberechtigungen komplex sein und zusätzli
 
 Um den Bedarf an globalen und komplexeren Zugriffsberechtigungen für Benutzer zu erfüllen, können Sie eine globale Geschäftstopologie erstellen, die auf Geschäftsbereichen, Regionen und Standorten basiert. Anschließend können Sie für Benutzer Zugriffsberechtigungen für diese Entitäten definieren.
 
-Das Arbeiten mit Zugriffstools für die Geschäftstopologie hilft Unternehmen bei der Umsetzung von Zero-Trust-Strategien, indem besser kontrolliert wird, wo Benutzer Geräte auf der Azure Defender für IoT-Plattform verwalten und analysieren.
+Das Arbeiten mit Zugriffstools für die Geschäftstopologie hilft Organisationen bei der Umsetzung von Zero-Trust-Strategien, indem besser kontrolliert wird, wo Benutzer Geräte auf der Microsoft-Defender-für-IoT-Plattform verwalten und analysieren.
 
 ## <a name="about-access-groups"></a>Informationen zu Zugriffsgruppen
 

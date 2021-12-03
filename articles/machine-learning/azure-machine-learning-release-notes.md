@@ -1,25 +1,51 @@
 ---
-title: Neuerungen im Release
+title: Versionshinweise zum Python SDK
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie mehr über die neuesten Updates für Azure Machine Learning und Python SDKs für maschinelles Lernen und Datenaufbereitung.
+description: Erfahren Sie mehr über die neuesten Updates für das Azure Machine Learning SDK für Python.
+services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 10/04/2021
-ms.openlocfilehash: 8807aa11ce8f9d4c96ae27656d9d29a4f5f7e7f1
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.date: 11/01/2021
+ms.openlocfilehash: 9f23037c5582b0e75107b3637f09a7b80c32a530
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994174"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028532"
 ---
-# <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
+# <a name="azure-machine-learning-python-sdk-release-notes"></a>Versionshinweise zum Azure Machine Learning SDK für Python
 
-In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](/python/api/overview/azure/ml/intro).
+In diesem Artikel erfahren Sie mehr über Releases des Azure Machine Learning SDK für Python.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](/python/api/overview/azure/ml/intro).
 
 __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wird, indem Sie die folgende URL kopieren und in Ihren Feedreader einfügen: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+## <a name="2021-11-08"></a>2021-11-08
+
+### <a name="azure-machine-learning-sdk-for-python-v1360"></a>Azure Machine Learning SDK für Python v1.36.0
+  + **azureml-automl-dnn-vision**
+    + Bei einigen Fehlermeldungen wurden geringfügige Tippfehler bereinigt.
+  + **azureml-contrib-reinforcementlearning**
+    + Das Übermitteln von Ausführungen für vertiefendes Lernen, die Simulatoren verwenden, wird nicht mehr unterstützt.
+  + **azureml-core**
+    + Die Unterstützung für partitionierte Premium-Blobs wurde hinzugefügt.
+    + Die Angabe von nicht öffentlichen Clouds für die Authentifizierung verwalteter Identitäten wird nicht länger unterstützt.
+    + Der Benutzer kann den AKS-Webdienst zu einem Onlineendpunkt und einer Bereitstellung migrieren, die über die CLI (v2) verwaltet wird.
+    + Der Instanztyp für Trainingsaufträge auf Kubernetes-Computezielen kann jetzt über eine RunConfiguration-Eigenschaft festgelegt werden: run_config.kubernetescompute.instance_type.
+  + **azureml-defaults**
+    + Redundante Abhängigkeiten wie Gunicorn und Werkzeug wurden entfernt.
+  + **azureml-interpret**
+    + Das azureml-interpret-Paket hat ein Update auf Version 0.21.* von interpret-community erhalten.
+  + **azureml-pipeline-steps**
+    + MpiStep wurde zugunsten von CommandStep zum Ausführen von ML-Training (einschließlich verteiltem Training) in Pipelines als veraltet markiert.
+  + **azureml-train-automl-rutime**
+    + Aktualisieren Sie die Dokumente zum Ausgabeformat der AutoML-Modelltestvorhersagen.
+    + Es wurden Docstring-Beschreibungen für die Naive-, SeasonalNaive-, Average- und SeasonalAverage-Vorhersagemodelle hinzugefügt.
+    + Die Zusammenfassung zur Featurisierung wird jetzt als Artefakt bei der Ausführung gespeichert (überprüfen Sie im Ordner „outputs“ nach einer Datei namens „featurization_summary.json“).
+    + Aktivieren Sie die Unterstützung kategorischer Indikatoren für Tabnet Learner.
+    + Fügen Sie den Parameter „downsample“ zu „automl_setup_model_explanations“ hinzu, damit Benutzer Erläuterungen zu allen Daten erhalten können, ohne ein Downsampling zu verwenden, indem Sie diesen Parameter auf „false“ festlegen.
+    
 
 ## <a name="2021-10-11"></a>2021-10-11
 
@@ -1912,7 +1938,7 @@ Greifen Sie von Studio aus auf die folgenden webbasierten Erstellungstools zu:
 ### <a name="azure-machine-learning-designer-enhancements"></a>Verbesserungen am Azure Machine Learning-Designer
 
 + Zuvor als grafische Benutzeroberfläche bezeichnet 
-+    11 neue [Module](algorithm-module-reference/module-reference.md) einschließlich Empfehlungs-, Klassifizierungs- und Trainings-Hilfsprogrammen für Funktionsentwicklung, Kreuzvalidierung, Datentransformation u. v. m.
++    11 neue [Module](component-reference/component-reference.md) einschließlich Empfehlungs-, Klassifizierungs- und Trainings-Hilfsprogrammen für Funktionsentwicklung, Kreuzvalidierung, Datentransformation u. v. m.
 
 ### <a name="r-sdk"></a>R SDK 
  

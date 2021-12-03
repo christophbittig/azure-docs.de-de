@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/07/2021
+ms.date: 10/19/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07923556630157dcde3f23c24e1321ec4a02fa5c
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 7d9214936073106424301d8e7b85867d51cbeb22
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667989"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253693"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Ermitteln von Azure-Ressourcen zur Verwaltung in PIM
 
@@ -29,7 +29,11 @@ Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) könn
 - Organisationen, die bereits Privileged Identity Management zum Schutz der Azure AD-Rollen verwenden
 - Verwaltungsgruppen und Abonnementbesitzer, die Produktionsressourcen sichern möchten
 
-Beim erstmaligen Einrichten von Privileged Identity Management für Azure-Ressourcen müssen Sie die Ressourcen ermitteln und auswählen, die mit Privileged Identity Management geschützt werden sollen. Die Anzahl der Ressourcen, die Sie mit Privileged Identity Management verwalten können, ist nicht beschränkt. Es empfiehlt sich aber, mit Ihren wichtigsten Produktionsressourcen zu beginnen.
+Beim erstmaligen Einrichten von Privileged Identity Management für Azure-Ressourcen müssen Sie die gewünschten Ressourcen ermitteln und auswählen, die mit Privileged Identity Management geschützt werden sollen. Die Anzahl der Ressourcen, die Sie mit Privileged Identity Management verwalten können, ist nicht beschränkt. Es empfiehlt sich aber, mit Ihren wichtigsten Produktionsressourcen zu beginnen.
+
+## <a name="required-permissions"></a>Erforderliche Berechtigungen
+
+Sie können die Verwaltungsgruppen oder Abonnements anzeigen und verwalten, für die Sie über Microsoft.Authorization/roleAssignments/write-Berechtigungen verfügen, z. B. Benutzerzugriffsadministrator- oder Besitzerrollen. Wenn Sie kein Abonnementbesitzer sind, aber ein globaler Administrator sind und keine zu verwaltende Azure-Abonnements oder -Verwaltungsgruppen angezeigt werden, können Sie [den Zugriff erhöhen, um Ihre Ressourcen zu verwalten](../../role-based-access-control/elevate-access-global-admin.md).
 
 ## <a name="discover-resources"></a>Ermitteln von Ressourcen
 

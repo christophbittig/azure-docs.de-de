@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.date: 08/31/2021
 ms.author: azhussai
 ms.topic: conceptual
-ms.openlocfilehash: b2a8c8054096a8d93a3160a3cb5af935276224b1
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 5687c4af0321e26d20906932fd9ac3b06b983651
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272815"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373078"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Anwendungsgateways – Hosten mehrerer Websites
 
-Das Hosten mehrerer Websites ermöglicht es Ihnen, mithilfe von öffentlichen Listenern mehrere Webanwendungen am selben Port eines Anwendungsgateways zu konfigurieren. Sie können eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu hundert Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Beispielsweise können die drei Domänen „contoso.com“, „fabrikam.com“ und „adatum.com“ auf die IP-Adresse des Anwendungsgateways verweisen. Sie erstellen drei Listener vom Typ „Mehrere Websites“ und konfigurieren jeden Listener für den jeweiligen Port und die jeweilige Protokolleinstellung. 
+Das Hosten mehrerer Websites ermöglicht es Ihnen, mithilfe von öffentlichen Listenern mehrere Webanwendungen am selben Port eines Anwendungsgateways zu konfigurieren. Sie können eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu hundert Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Beispielsweise können die drei Domänen „contoso.com“, „fabrikam.com“ und „adatum.com“ auf die IP-Adresse des Anwendungsgateways verweisen. Sie erstellen drei Listener vom Typ „Mehrere Websites“ und konfigurieren jeden Listener für den jeweiligen Port und die jeweilige Protokolleinstellung.
 
 Sie können auch Hostnamen mit Platzhaltern in einem Listener für mehrere Standorte und bis zu fünf Hostnamen pro Listener definieren. Weitere Informationen finden Sie unter [Hostnamen mit Platzhaltern in Listenern](#wildcard-host-names-in-listener-preview).
 
@@ -34,7 +34,7 @@ Analog dazu können Sie mehrere Unterdomänen derselben übergeordneten Domäne 
 Um bei Verwendung von Listenern für mehrere Standorte sicherzustellen, dass der Clientdatenverkehr an das richtige Back-End geroutet wird, müssen die Anforderungsroutingregeln in der richtigen Reihenfolge vorhanden sein.
 Wenn z. B. 2 Listener mit den zugehörigen Hostnamen `*.contoso.com` und `shop.contoso.com` vorliegen, müsste der Listener mit dem Hostnamen `shop.contoso.com` vor dem Listener mit dem Hostnamen `*.contoso.com` verarbeitet werden. Wenn der Listener mit dem Hostnamen `*.contoso.com` zuerst verarbeitet wird, würde der spezifischere Listener mit dem Hostnamen `shop.contoso.com` keinen Clientdatenverkehr empfangen.
 
-Diese Reihenfolge kann durch Bereitstellen eines Feldwerts „Priorität“ für die Anforderungsroutingregeln festgelegt werden, die den Listenern zugeordnet sind. Sie können eine Integerwert von 1 bis 20000 angeben. Dabei ist 1 die höchste Priorität und 20000 die niedrigste Priorität. Falls der eingehende Clientdatenverkehr mehreren Listenern entspricht, wird die Anforderungsroutingregel mit der höchsten Priorität für die Anforderung verwendet.
+Diese Reihenfolge kann durch Bereitstellen eines Feldwerts „Priorität“ für die Anforderungsroutingregeln festgelegt werden, die den Listenern zugeordnet sind. Sie können eine Integerwert von 1 bis 20000 angeben. Dabei ist 1 die höchste Priorität und 20000 die niedrigste Priorität. Falls der eingehende Clientdatenverkehr mehreren Listenern entspricht, wird die Anforderungsroutingregel mit der höchsten Priorität für die Anforderung verwendet. Jede Anforderungsroutingregel muss einen eindeutigen Prioritätswert haben.
 
 Das Prioritätsfeld wirkt sich nur auf die Reihenfolge der Auswertung einer Anforderungsroutingregel aus. Dies ändert nicht die Reihenfolge der Auswertung von pfadbasierten Regeln innerhalb einer `PathBasedRouting`-Anforderungsroutingregel.
 
@@ -71,6 +71,8 @@ Im Azure-Portal müssen Sie unter dem Listener für mehrere Standorte den Hostty
 * `*`: kann für mehrere zulässige Zeichen stehen
 * `?`: kann für ein einzelnes zulässiges Zeichen stehen
 
+<!-- docutune:disable -->
+
 ### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>Bedingungen für die Verwendung von Platzhalterzeichen und von mehreren Hostnamen in einem Listener
 
 * In einem einzelnen Listener können nur bis zu fünf Hostnamen verwendet werden.
@@ -78,6 +80,8 @@ Im Azure-Portal müssen Sie unter dem Listener für mehrere Standorte den Hostty
 * In einem Hostnamen dürfen maximal zwei Sternchen (`*`) verwendet werden. Beispiel: `*.contoso.*` ist gültig, `*.contoso.*.*.com` ist ungültig.
 * Ein Hostname darf maximal vier Platzhalterzeichen enthalten. Beispiel: `????.contoso.com` und `w??.contoso*.edu.*` sind gültig, `????.contoso.*` ist ungültig.
 * Das Sternchen (`*`) und das Fragezeichen (`?`) dürfen in einer Komponente eines Hostnamens nicht zusammen verwendet werden (`*?`, `?*` oder `**`). Beispiel: `*?.contoso.com` und `**.contoso.com` sind ungültig.
+
+<!-- docutune:enable -->
 
 ### <a name="considerations-and-limitations-of-using-wildcard-or-multiple-host-names-in-a-listener"></a>Überlegungen und Einschränkungen bei der Verwendung von Platzhaltern oder mehreren Hostnamen in einem Listener
 

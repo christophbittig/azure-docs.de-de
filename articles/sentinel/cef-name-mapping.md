@@ -1,31 +1,31 @@
 ---
 title: Zuordnung von CEF-Schlüsseln (Common Event Format) zu CommonSecurityLog-Feldnamen
-description: In diesem Artikel werden CEF-Schlüssel den entsprechenden Feldnamen im CommonSecurityLog in Azure Sentinel zugeordnet.
+description: In diesem Artikel werden CEF-Schlüssel den entsprechenden Feldnamen im CommonSecurityLog in Microsoft Sentinel zugeordnet.
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: reference
-ms.date: 07/26/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ee4aec218ba3969b54531f6f025b84b4909f6b85
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 710b20dcf4f1ac94816881c4851ddfafc0f84872
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064542"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522097"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF- und CommonSecurityLog-Feldzuordnung
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In den folgenden Tabellen werden CEF-Feldnamen (Common Event Format) den Namen zugeordnet, die in CommonSecurityLog in Azure Sentinel verwendet werden. Sie sind möglicherweise hilfreich, wenn Sie in Azure Sentinel mit einer CEF-Datenquelle arbeiten.
+In den folgenden Tabellen werden CEF-Feldnamen (Common Event Format) den Namen zugeordnet, die in CommonSecurityLog in Microsoft Sentinel verwendet werden. Sie sind möglicherweise hilfreich, wenn Sie in Microsoft Sentinel mit einer CEF-Datenquelle arbeiten.
 
 Weitere Informationen finden Sie unter [Verbinden der externen Lösung mithilfe von Common Event Format](connect-common-event-format.md).
 
 > [!NOTE]
-> Für das [Erfassen von CEF-Daten](connect-common-event-format.md#prerequisites) in Log Analytics wird ein Azure Sentinel-Arbeitsbereich benötigt.
+> Für das [Erfassen von CEF-Daten](connect-common-event-format.md#prerequisites) in Log Analytics wird ein Microsoft Sentinel-Arbeitsbereich benötigt.
 >
 
 ## <a name="a---c"></a>A–C
@@ -123,7 +123,7 @@ Weitere Informationen finden Sie unter [Verbinden der externen Lösung mithilfe 
 | requestCookies | RequestCookies |Der Anforderung zugeordnete Cookies. |
 | requestMethod | RequestMethod | Die zum Zugreifen auf eine URL verwendete Methode. <br><br>Gültige Werte sind Methoden wie `POST`, `GET` usw. |
 | rt | ReceiptTime | Der Zeitpunkt, zu dem das mit der Aktivität verbundene Ereignis empfangen wurde. |
-|Schweregrad     |  <a name="logseverity"></a> LogSeverity       |  Eine Zeichenfolge oder ganze Zahl, die die Wichtigkeit des Ereignisses beschreibt.<br><br> Gültige Zeichenfolgenwerte: `Unknown`, `Low`, `Medium`, `High`, `Very-High` <br><br>Gültige ganzzahlige Werte sind:<br> - `0`-`3` = Niedrig <br>- `4`-`6` = Mittel<br>- `7`-`8` = Hoch<br>- `9`-`10` = Sehr hoch |
+|severity     |  <a name="logseverity"></a> LogSeverity       |  Eine Zeichenfolge oder ganze Zahl, die die Wichtigkeit des Ereignisses beschreibt.<br><br> Gültige Zeichenfolgenwerte: `Unknown`, `Low`, `Medium`, `High`, `Very-High` <br><br>Gültige ganzzahlige Werte sind:<br> - `0`-`3` = Niedrig <br>- `4`-`6` = Mittel<br>- `7`-`8` = Hoch<br>- `9`-`10` = Sehr hoch |
 | shost    | SourceHostName        |Identifiziert die Quelle, auf die sich das Ereignis in einem IP-Netzwerk bezieht. Das Format muss ein vollqualifizierter Domänenname (DQDN) sein, der dem Quellknoten zugeordnet ist, wenn ein Knoten verfügbar ist. Zum Beispiel: `host` oder `host.domain.com`. |
 | smac | SourceMacAddress | MAC-Adresse der Quelle. |
 | sntdom | SourceNTDomain | Der Windows-Domänenname für die Quelladresse. |
@@ -239,7 +239,7 @@ In der folgenden Tabelle sind die CEF-Schlüssel- und CommonSecurityLog-Namen f�
 
 ## <a name="enrichment-fields"></a>Anreicherungsfelder
 
-Die folgenden **CommonSecurityLog**-Felder werden von Azure Sentinel hinzugefügt, um die ursprünglichen, von den Quellgeräten empfangenen Ereignisse anzureichern, und verfügen nicht über Zuordnungen in CEF-Schlüsseln:
+Die folgenden **CommonSecurityLog**-Felder werden von Microsoft Sentinel hinzugefügt, um die ursprünglichen, von den Quellgeräten empfangenen Ereignisse anzureichern, und verfügen nicht über Zuordnungen in CEF-Schlüsseln:
 
 ### <a name="threat-intelligence-fields"></a>Threat Intelligence-Felder
 
@@ -258,7 +258,7 @@ Die folgenden **CommonSecurityLog**-Felder werden von Azure Sentinel hinzugefüg
 
 ### <a name="additional-enrichment-fields"></a>Zusätzliche Anreicherungsfelder
 
-|CommonSecurityLog-Feldname  |BESCHREIBUNG  |
+|CommonSecurityLog-Feldname  |Beschreibung  |
 |---------|---------|
 |**OriginalLogSeverity**     |  Immer leer, wird für die Integration in CiscoASA unterstützt. <br>Ausführliche Informationen zu den Werten für den Protokollschweregrad siehe Feld [LogSeverity](#logseverity).       |
 |**RemoteIP**     |     Die Remote-IP-Adresse. <br>Dieser Wert basiert auf dem Feld [CommunicationDirection](#communicationdirection), wenn möglich.     |

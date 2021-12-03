@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 6eb8af995b733fb796827d508ee003d83e46c67f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 29037a52284bb8af8adb68090f484061db6b9100
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167308"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157035"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurieren einer Verfügbarkeitsgruppe für eine Arbeitsgruppe 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -136,7 +136,7 @@ In diesem Schritt konfigurieren Sie einen Cloudfreigabezeugen. Wenn Sie mit den 
 
 ## <a name="enable-the-availability-group-feature"></a>Aktivieren des Verfügbarkeitsgruppenfeatures 
 
-In diesem Schritt aktivieren Sie das Feature für Verfügbarkeitsgruppen. Wenn Sie mit den Schritten nicht vertraut sind, finden Sie weitere Informationen im [Tutorial zu Verfügbarkeitsgruppen](availability-group-manually-configure-tutorial.md#enable-availability-groups). 
+In diesem Schritt aktivieren Sie das Feature für Verfügbarkeitsgruppen. Wenn Sie mit den Schritten nicht vertraut sind, finden Sie weitere Informationen im [Tutorial zu Verfügbarkeitsgruppen](availability-group-manually-configure-tutorial-single-subnet.md#enable-availability-groups). 
 
 ## <a name="create-keys-and-certificates"></a>Erstellen von Schlüsseln und Zertifikaten
 
@@ -281,7 +281,7 @@ Wenn weitere Knoten im Cluster vorhanden sind, wiederholen Sie diese Schritte au
 
 ## <a name="configure-an-availability-group"></a>Konfigurieren einer Verfügbarkeitsgruppe
 
-In diesem Schritt konfigurieren Sie die Verfügbarkeitsgruppe und fügen ihr Ihre Datenbanken hinzu. Erstellen Sie zu diesem Zeitpunkt keinen Listener. Wenn Sie mit den Schritten nicht vertraut sind, finden Sie weitere Informationen im [Tutorial zu Verfügbarkeitsgruppen](availability-group-manually-configure-tutorial.md#create-the-availability-group). Initiieren Sie unbedingt ein Failover und ein Failback, um sicherzustellen, dass alles ordnungsgemäß funktioniert. 
+In diesem Schritt konfigurieren Sie die Verfügbarkeitsgruppe und fügen ihr Ihre Datenbanken hinzu. Erstellen Sie zu diesem Zeitpunkt keinen Listener. Wenn Sie mit den Schritten nicht vertraut sind, finden Sie weitere Informationen im [Tutorial zu Verfügbarkeitsgruppen](availability-group-manually-configure-tutorial-single-subnet.md#create-the-availability-group). Initiieren Sie unbedingt ein Failover und ein Failback, um sicherzustellen, dass alles ordnungsgemäß funktioniert. 
 
    > [!NOTE]
    > Wenn während des Synchronisierungsvorgangs ein Fehler auftritt, müssen Sie möglicherweise `NT AUTHORITY\SYSTEM` vorübergehend Systemadmininistratorberechtigungen erteilen, um Clusterressourcen auf dem ersten Knoten zu erstellen, z. B. `AGNode1`. 

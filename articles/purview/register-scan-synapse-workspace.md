@@ -1,44 +1,52 @@
 ---
-title: Registrieren und Überprüfen von Azure Synapse Analytics-Arbeitsbereichen
-description: Hier erfahren Sie, wie Sie einen Azure Synapse-Arbeitsbereich in Ihrem Azure Purview-Datenkatalog überprüfen.
+title: Verbinden mit und Verwalten von Azure Synapse Analytics-Arbeitsbereichen
+description: In diesem Leitfaden wird beschrieben, wie Sie sich in Azure Purview mit Azure Synapse Analytics-Arbeitsbereichen verbinden und mit den Features von Purview Ihre Azure Synapse Analytics-Arbeitsbereichsquelle überprüfen und verwalten.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: 8a7b23089e9b17e35b56b04991c76b37baedf231
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: a5921e2af4445ad645ce48f6102c311c9478b9e9
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207790"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848019"
 ---
-# <a name="register-and-scan-azure-synapse-analytics-workspaces"></a>Registrieren und Überprüfen von Azure Synapse Analytics-Arbeitsbereichen
+# <a name="connect-to-and-manage-azure-synapse-analytics-workspaces-in-azure-purview"></a>Verbinden mit und Verwalten von Azure Synapse Analytics-Arbeitsbereichen in Azure Purview
 
-In diesem Artikel erfahren Sie, wie Sie einen Azure Synapse Analytics-Arbeitsbereich in Azure Purview registrieren und eine Überprüfung dafür einrichten.
+In diesem Artikel wird beschrieben, wie Sie Azure Synapse Analytics-Arbeitsbereiche in Azure Purview registrieren, authentifizieren und damit interagieren. Weitere Informationen zu Azure Purview finden Sie im [Einführungsartikel](overview.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Azure Synapse Analytics-Arbeitsbereichsüberprüfungen unterstützen die Erfassung von Metadaten und Schemas für die darin befindlichen dedizierten und serverlosen SQL-Datenbanken. Darüber hinaus werden die Daten bei den Arbeitsbereichsüberprüfungen automatisch auf der Grundlage von systemseitigen und benutzerdefinierten Klassifizierungsregeln klassifiziert.
+|**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
+|---|---|---|---|---|---|---|
+| [Ja](#register) | [Ja](#scan)| [Ja](#scan) | [Ja](#scan)| [Ja](#scan)| Nein| [Ja – Synapse-Pipelines](how-to-lineage-azure-synapse-analytics.md)|
+
+
+<!-- 4. Prerequisites
+Required. Add any relevant/source-specific prerequisites for connecting with this source. Authentication/Registration should be covered by the sections below and does not need to be covered here.
+-->
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie ein Azure Purview-Konto, bevor Sie Ihre Datenquellen registrieren. Weitere Informationen finden Sie unter [Quickstart: Erstellen eines Azure Purview-Kontos](create-catalog-portal.md).
-- Sie müssen Datenquellenadministrator für Azure Purview sein.
-- Richten Sie die Authentifizierung wie in den folgenden Abschnitten beschrieben ein.
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="register-and-scan-an-azure-synapse-workspace"></a>Registrieren und Überprüfen eines Azure Synapse-Arbeitsbereichs
+* Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-> [!IMPORTANT]
-> Gehen Sie beim Ausführen der Schritte sowie beim Anwenden der Berechtigungen exakt so vor wie in den nächsten Abschnitten beschrieben, um Ihren Arbeitsbereich erfolgreich zu überprüfen.
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
-### <a name="step-1-register-your-source"></a>**Schritt 1:** Registrieren Ihrer Quelle
+## <a name="register"></a>Register
 
-> [!NOTE]
-> Dieser Schritt kann nur von Benutzern ausgeführt werden, die für den Azure Synapse-Arbeitsbereich mindestens über die Rolle *Leser* verfügen und *Datenquellenadministrator* in Azure Purview sind.
+In diesem Abschnitt wird beschrieben, wie Sie in Azure Purview mithilfe von [Purview Studio](https://web.purview.azure.com/) Azure Synapse Analytics-Arbeitsbereiche registrieren.
 
-So registrieren Sie in Ihrem Datenkatalog eine neue Azure Synapse-Quelle:
+### <a name="authentication-for-registration"></a>Authentifizierung für die Registrierung
+
+Nur Benutzer mit mindestens der Rolle *Leser* für den Azure Synapse-Arbeitsbereich, die auch *Datenquellenadministratoren* in Azure Purview sind, können einen Azure Synapse-Arbeitsbereich registrieren.
+
+### <a name="steps-to-register"></a>Schritte zur Registrierung
 
 1. Gehen Sie zu Ihrem Azure Purview-Konto.
 1. Wählen Sie im linken Bereich **Quellen** aus.
@@ -56,28 +64,33 @@ So registrieren Sie in Ihrem Datenkatalog eine neue Azure Synapse-Quelle:
     d. In den Dropdownlisten für die Endpunkte werden die SQL-Endpunkte automatisch basierend auf Ihrer Arbeitsbereichsauswahl ausgefüllt.  
     e. Wählen Sie in der Dropdownliste **Sammlung auswählen** die Sammlung aus, mit der Sie arbeiten, oder erstellen Sie optional eine neue Sammlung.  
     f. Wählen Sie **Registrieren** aus, um die Registrierung der Datenquelle abzuschließen.
-    
+
     :::image type="content" source="media/register-scan-synapse-workspace/register-synapse-source-details.png" alt-text="Screenshot: Seite „Quellen registrieren (Azure Synapse Analytics)“ zum Eingeben von Details zur Azure Synapse Quelle":::
 
+## <a name="scan"></a>Überprüfen
 
-### <a name="step-2-apply-permissions-to-enumerate-the-contents-of-the-azure-synapse-workspace"></a>**Schritt 2:** Anwenden von Berechtigungen zum Aufzählen der Inhalte des Azure Synapse-Arbeitsbereichs
+Führen Sie die folgenden Schritte aus, um Azure Synapse Analytics-Arbeitsbereiche zu überprüfen, Ressourcen automatisch zu identifizieren und Ihre Daten zu klassifizieren. Weitere Informationen zum Scannen im Allgemeinen finden Sie in unserer [Einführung in Scans und Aufnahme](concept-scans-and-ingestion.md).
 
-#### <a name="set-up-authentication-for-enumerating-dedicated-sql-database-resources"></a>Einrichten der Authentifizierung zum Aufzählen dedizierter SQL-Datenbank-Ressourcen
+Sie müssen zunächst die Authentifizierung für die Aufzählung Ihrer [dedizierten](#authentication-for-enumerating-dedicated-sql-database-resources) oder [serverlosen](#authentication-for-enumerating-serverless-sql-database-resources) Ressourcen einrichten. Dadurch kann Purview Ihre Arbeitsbereichsressourcen aufzählen und bereichsbezogene Prüfungen durchführen.
+
+Dann müssen Sie [Berechtigungen zum Überprüfen des Inhalts des Arbeitsbereichs](#apply-permissions-to-scan-the-contents-of-the-workspace) erteilen.
+
+### <a name="authentication-for-enumerating-dedicated-sql-database-resources"></a>Authentifizierung zum Aufzählen dedizierter SQL-Datenbank-Ressourcen
 
 1. Navigieren Sie im Azure-Portal zu der Azure Synapse-Arbeitsbereichsressource.  
-1. Klicken Sie im linken Bereich auf  **Zugriffssteuerung (IAM)**. 
+1. Klicken Sie im linken Bereich auf  **Zugriffssteuerung (IAM)**.
 
    > [!NOTE]
    > Sie müssen *Besitzer* oder *Benutzerzugriffsadministrator* sein, um eine Rolle für die Ressource hinzufügen zu können.
-   
-1. Wählen Sie die Schaltfläche **Hinzufügen** aus.   
+
+1. Wählen Sie die Schaltfläche **Hinzufügen** aus.
 1. Legen Sie die Rolle auf **Leser** fest, und geben Sie den Namen Ihres Azure Purview-Kontos ein. Dieser stellt die verwaltete Dienstidentität (Managed Service Identity, MSI) dar.
 1. Wählen Sie **Speichern** aus, um das Zuweisen der Rolle abzuschließen.
 
 > [!NOTE]
-> Wenn Sie in Ihrem Azure Purview-Konto mehrere Azure Synapse-Arbeitsbereiche registrieren und überprüfen möchten, können Sie die Rolle auch von einer höheren Ebene aus (beispielsweise Ressourcengruppe oder Abonnement) zuweisen. 
+> Wenn Sie in Ihrem Azure Purview-Konto mehrere Azure Synapse-Arbeitsbereiche registrieren und überprüfen möchten, können Sie die Rolle auch von einer höheren Ebene aus (beispielsweise Ressourcengruppe oder Abonnement) zuweisen.
 
-#### <a name="set-up-authentication-for-enumerating-serverless-sql-database-resources"></a>Einrichten der Authentifizierung zum Aufzählen serverloser SQL-Datenbank-Ressourcen
+### <a name="authentication-for-enumerating-serverless-sql-database-resources"></a>Authentifizierung zum Aufzählen serverloser SQL-Datenbank-Ressourcen
 
 Es gibt drei Orte, an denen Sie die Authentifizierung festlegen müssen, damit Purview Ihre serverlosen SQL-Datenbank-Ressourcen aufzählen kann: im Synapse-Arbeitsbereich, im zugeordneten Speicher und in den serverlosen Datenbanken. Mit den folgenden Schritten werden Berechtigungen für alle drei Orte festgelegt.
 
@@ -107,7 +120,7 @@ Es gibt drei Orte, an denen Sie die Authentifizierung festlegen müssen, damit P
     CREATE LOGIN [PurviewAccountName] FROM EXTERNAL PROVIDER;
     ```
 
-### <a name="step-3-apply-permissions-to-scan-the-contents-of-the-workspace"></a>**Schritt 3:** Anwenden von Berechtigungen zum Überprüfen des Arbeitsbereichsinhalts
+### <a name="apply-permissions-to-scan-the-contents-of-the-workspace"></a>Erteilen von Berechtigungen zum Überprüfen des Arbeitsbereichsinhalts
 
 Die Authentifizierung für eine Azure Synapse-Quelle kann auf zwei Arten eingerichtet werden:
 
@@ -175,6 +188,7 @@ GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::[scoped_credential] TO [PurviewA
     EXEC sp_addrolemember 'db_datareader', [ServicePrincipalID]
     GO
     ```
+
 > [!NOTE]
 > Wiederholen Sie den vorherigen Schritt für alle dedizierten SQL-Datenbanken in Ihrem Synapse-Arbeitsbereich. 
 
@@ -194,7 +208,7 @@ GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::[scoped_credential] TO [PurviewA
     ALTER ROLE db_datareader ADD MEMBER [ServicePrincipalID]; 
     ```
 
-### <a name="step-4-set-up-azure-synapse-workspace-firewall-access"></a>**Schritt 4:** Einrichten des Firewallzugriffs für den Azure Synapse-Arbeitsbereich
+### <a name="set-up-azure-synapse-workspace-firewall-access"></a>Einrichten des Firewallzugriffs für den Azure Synapse-Arbeitsbereich
 
 1. Navigieren Sie im Azure-Portal zum Azure Synapse-Arbeitsbereich. 
 
@@ -204,7 +218,7 @@ GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::[scoped_credential] TO [PurviewA
 
 1. Wählen Sie **Speichern** aus.
 
-### <a name="step-5-set-up-a-scan-on-the-workspace"></a>**Schritt 5:** Einrichten einer Überprüfung für den Arbeitsbereich
+### <a name="create-and-run-scan"></a>Scan erstellen und ausführen
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
@@ -229,36 +243,14 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
 1. Wählen Sie den Auslöser für die Überprüfung. Sie können die Planung so konfigurieren, dass die Ausführung **wöchentlich/monatlich** oder **einmal** erfolgt.
 
-1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie anschließend **Speichern** aus, um die Einrichtung abzuschließen.   
+1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie anschließend **Speichern** aus, um die Einrichtung abzuschließen.  
 
-#### <a name="view-your-scans-and-scan-runs"></a>Betrachten Sie Ihre Überprüfungen und Überprüfungsausführungen
-
-1. Sehen Sie sich die Details der Quelle an, indem Sie auf der Kachel unter dem Quellenabschnitt die Option **Details anzeigen** auswählen. 
-
-      :::image type="content" source="media/register-scan-synapse-workspace/synapse-source-details.png" alt-text="Screenshot: Detailseite der Azure Synapse Analytics-Quelle"::: 
-
-1. Sehen Sie sich die Details der Überprüfungsausführung an, indem Sie zur Seite mit den Überprüfungsdetails navigieren.
-
-    * Die **Statusleiste** zeigt eine kurze Zusammenfassung des Ausführungsstatus der untergeordneten Ressourcen. Der Status wird in der Überprüfung auf Arbeitsbereichsebene angezeigt.  
-    * Grün bedeutet, dass die Überprüfung erfolgreich ausgeführt wurde. Rot gibt an, dass die Überprüfungsausführung nicht erfolgreich war. Grau bedeutet, dass die Überprüfung noch nicht abgeschlossen ist.  
-    * Durch die Auswahl der Überprüfungsausführungen können Sie ausführlichere Informationen anzeigen.
-
-      :::image type="content" source="media/register-scan-synapse-workspace/synapse-scan-details.png" alt-text="Screenshot: Detailseite der Azure Synapse Analytics-Überprüfung" lightbox="media/register-scan-synapse-workspace/synapse-scan-details.png"::: 
-
-    * Im unteren Bereich der Seite mit den Quellendetails finden Sie eine Zusammenfassung der letzten nicht erfolgreichen Überprüfungsausführungen. Durch die Auswahl der Überprüfungsausführungen können Sie ausführlichere Informationen anzeigen.
-
-#### <a name="manage-your-scans"></a>Verwalten Ihrer Überprüfungen
-
-Wenn Sie eine Überprüfung bearbeiten, löschen oder abbrechen möchten, gehen Sie wie folgt vor:
-
-1. Navigieren Sie zum Verwaltungscenter. Wählen Sie im Abschnitt **Sources and scanning** (Quellen und Überprüfung) die Option **Datenquellen** und anschließend die gewünschte Datenquelle aus.
-
-1. Wählen Sie die zu gewünschte Überprüfung und anschließend **Bearbeiten** aus.
-
-   - Wenn Sie Ihre Überprüfung löschen möchten, wählen Sie **Löschen** aus.
-   - Wird eine Überprüfung gerade ausgeführt, können Sie sie abbrechen.
+[!INCLUDE [create and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
-- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)   
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
+- [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
+- [Data Catalog suchen](how-to-search-catalog.md)

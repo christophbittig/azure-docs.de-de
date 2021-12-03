@@ -1,30 +1,30 @@
 ---
-title: Überwachen mit dem New Relic-Agent von Java
+title: Überwachen von Spring Boot-Apps mit dem New Relic-Agent von Java
 titleSuffix: Azure Spring Cloud
-description: Erfahren Sie, wie Sie Azure Spring Cloud-Apps mithilfe des New Relic-Agents von Java überwachen.
+description: Hier erfahren Sie, wie Sie Spring Boot-Anwendungen mit dem New Relic-Agent von Java überwachen.
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 4f8773660846dfeef87c27ccbe0755a0ce37d325
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 7c0a659effc973737647f3868154be1e5154afba
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342875"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493702"
 ---
-# <a name="how-to-monitor-with-new-relic-java-agent-preview"></a>Überwachen mit dem New Relic-Agent von Java (Vorschau)
+# <a name="how-to-monitor-spring-boot-apps-using-new-relic-java-agent-preview"></a>Überwachen von Spring Boot-Apps mit dem New Relic-Agent von Java (Vorschau)
 
-Dieses Feature ermöglicht die Überwachung von Azure Spring Cloud-Apps mit dem New Relic-Agent von Java.
+Dieses Feature ermöglicht die Überwachung von Spring Boot-Anwendungen in Azure Spring Cloud mit dem New Relic-Java-Agent.
 
 Mit dem New Relic-Agent von Java können Sie die folgenden Funktionen verwenden:
 * Nutzen des New Relic-Agents von Java.
 * Konfigurieren des New Relic-Agents von Java mit Umgebungsvariablen.
 * Überprüfen aller Überwachungsdaten aus dem New Relic-Dashboard.
 
-Im folgenden Video wird beschrieben, wie Sie Spring Boot-Anwendungen, die in Azure Spring Cloud ausgeführt werden, mithilfe von New Relic One aktivieren und überwachen.
+Im folgenden Video wird beschrieben, wie Sie Spring Boot-Anwendungen in Azure Spring Cloud mithilfe von New Relic One aktivieren und überwachen.
 
 <br>
 
@@ -35,7 +35,7 @@ Im folgenden Video wird beschrieben, wie Sie Spring Boot-Anwendungen, die in Azu
 * Ein [New Relic](https://newrelic.com/)-Konto.
 * [Azure CLI-Version 2.0.67 oder höher](/cli/azure/install-azure-cli)
 
-## <a name="leverage-the-new-relic-java-in-process-agent"></a>Nutzen des prozessinternen New Relic-Java-Agents
+## <a name="activate-the-new-relic-java-in-process-agent"></a>Aktivieren des prozessinternen New Relic-Agents von Java
 
 Verwenden Sie das folgende Verfahren, um auf den Agent zuzugreifen:
 
@@ -57,11 +57,11 @@ Verwenden Sie das folgende Verfahren, um auf den Agent zuzugreifen:
        --env NEW_RELIC_APP_NAME=appName NEW_RELIC_LICENSE_KEY=newRelicLicenseKey
     ```
 
-Azure Spring Cloud installiert den New Relic-Agent von Java unter */opt/agents/newrelic/java/newrelic-agent.jar* vor. Kunden können den Agent aus den **JVM-Optionen** von Anwendungen nutzen und den Agent mithilfe der [Umgebungsvariablen des New Relic-Java-Agents](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file/#Environment_Variables) konfigurieren.
+Azure Spring Cloud installiert den New Relic-Agent von Java unter */opt/agents/newrelic/java/newrelic-agent.jar* vor. Kunden können den Agent über **JVM-Optionen** von Anwendungen aktivieren und den Agent mithilfe der [Umgebungsvariablen des New Relic-Agents von Java](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file/#Environment_Variables) konfigurieren.
 
 ## <a name="portal"></a>Portal
 
-Sie können diesen Agent auch über das Portal mit dem folgenden Verfahren nutzen.
+Sie können diesen Agent auch über das Portal mit dem folgenden Verfahren aktivieren.
 
 1. Suchen die App unter **Einstellungen**/**Apps** im Navigationsbereich.
 
@@ -99,15 +99,50 @@ Sie können diesen Agent auch über das Portal mit dem folgenden Verfahren nutze
 
    [ ![Anwendungsprofil](media/new-relic-monitoring/profile-app.png) ](media/new-relic-monitoring/profile-app.png)
 
-## <a name="new-relic-java-agent-logging"></a>Protokollierung des New Relic-Java-Agents
+## <a name="automate-provisioning"></a>Automatisieren der Bereitstellung
 
-Standardmäßig gibt Azure Spring Cloud die Protokolle des New Relic-Java-Agents in `STDOUT` aus. Sie werden mit den Anwendungsprotokollen kombiniert. Sie können die explizite Agent-Version aus den Anwendungsprotokollen abrufen.
+Sie können eine Bereitstellungsautomatisierungspipeline auch mit Terraform oder einer Azure Resource Manager-Vorlage (ARM-Vorlage) ausführen. Mit dieser Pipeline können Sie alle neuen Anwendungen, die Sie erstellen und bereitstellen, ganz ohne Aufwand instrumentieren und überwachen.
 
-Sie können die Protokolle des New Relic-Agents auch aus den folgenden Quellen abrufen:
+### <a name="automate-provisioning-using-terraform"></a>Automatisieren der Bereitstellung mit Terraform
 
-* Azure Spring Cloud-Protokolle.
-* Azure Spring Cloud Application Insights.
-* Azure Spring Cloud-LogStream.
+Um die Umgebungsvariablen in einer Terraform-Vorlage zu konfigurieren, fügen Sie der Vorlage den folgenden Code hinzu, und ersetzen Sie dabei die Platzhalter *\<...>* durch Ihre eigenen Werte. Weitere Informationen finden Sie unter [Verwalten einer aktiven Azure Spring Cloud-Bereitstellung](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/spring_cloud_active_deployment).
+
+```terraform
+resource "azurerm_spring_cloud_java_deployment" "example" {
+  ...
+  jvm_options = "-javaagent:/opt/agents/newrelic/java/newrelic-agent.jar"
+  ...
+    environment_variables = {
+      "NEW_RELIC_APP_NAME": "<app-name>",
+      "NEW_RELIC_LICENSE_KEY": "<new-relic-license-key>"
+  }
+}
+```
+
+### <a name="automate-provisioning-using-an-arm-template"></a>Automatisieren der Bereitstellung mithilfe einer ARM-Vorlage
+
+Um die Umgebungsvariablen in einer ARM-Vorlage zu konfigurieren, fügen Sie der Vorlage den folgenden Code hinzu, und ersetzen Sie dabei die Platzhalter *\<...>* durch Ihre eigenen Werte. Weitere Informationen finden Sie unter [Microsoft.AppPlatform/Spring/apps/deployments/skus](/azure/templates/microsoft.appplatform/spring/apps/deployments?tabs=json).
+
+```ARM template
+"deploymentSettings": {
+  "environmentVariables": {
+    "NEW_RELIC_APP_NAME" : "<app-name>",
+    "NEW_RELIC_LICENSE_KEY" : "<new-relic-license-key>"
+  },
+  "jvmOptions": "-javaagent:/opt/agents/newrelic/java/newrelic-agent.jar",
+  ...
+}
+```
+
+## <a name="view-new-relic-java-agent-logs"></a>Anzeigen von Protokollen des New Relic-Agents von Java
+
+Standardmäßig gibt Azure Spring Cloud die Protokolle des New Relic-Java-Agents in `STDOUT` aus. Die Protokolle werden mit den Anwendungsprotokollen gemischt. Sie können die explizite Agent-Version aus den Anwendungsprotokollen abrufen.
+
+Sie können die Protokolle des New Relic-Agents auch an den folgenden Speicherorten abrufen:
+
+* Azure Spring Cloud-Protokolle
+* Azure Spring Cloud Application Insights
+* Azure Spring Cloud-LogStream
 
 Sie können einige von New Relic bereitgestellte Umgebungsvariablen nutzen, um die Protokollierung des neuen Agents zu konfigurieren, z. B. `NEW_RELIC_LOG_LEVEL`, um den Protokolliergrad zu steuern. Weitere Informationen finden Sie unter [New Relic-Umgebungsvariablen](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file/#Environment_Variables).
 

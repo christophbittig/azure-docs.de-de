@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: b719e866852d2e865c16c62fddd8c549ae505b7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fabe48a641fcb4f0d96c2853d8b0b38c58c32a5d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85551561"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027966"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorisieren des Zugriffs auf Webanwendungen mit OpenID Connect und Azure Active Directory
 
@@ -115,7 +115,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type |required |Muss das `id_token` für die OpenID Connect-Anmeldung enthalten. Es können auch andere Antworttypen enthalten sein, z.B. `code` oder `token`. |
 | scope | empfohlen | Die OpenID Connect-Spezifikation erfordert den Bereich `openid`, der auf der Zustimmungsbenutzeroberfläche die Anmeldeberechtigung ergibt. Dieser und andere OIDC-Bereiche werden auf dem v1.0-Endpunkt ignoriert, aber er ist immer noch eine bewährte Methode für standardkonforme Clients. |
 | nonce |required |Ein Wert in der von der App erzeugten Anforderung, die im resultierenden `id_token`-Element als Anspruch enthalten ist. Die App kann diesen Wert dann überprüfen, um die Gefahr von Tokenwiedergabeangriffen zu vermindern. Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge oder GUID, die verwendet werden kann, um den Ursprung der Anforderung zu identifizieren. |
-| redirect_uri | empfohlen |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. Wenn er nicht vorhanden ist, wird der Benutzer-Agent nach dem Zufallsprinzip an einen der Umleitungs-URIs gesendet, die für die App registriert sind. Die maximale Länge beträgt 255 Bytes. |
+| redirect_uri | empfohlen |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einem der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. Wenn er nicht vorhanden ist, wird der Benutzer-Agent nach dem Zufallsprinzip an einen der Umleitungs-URIs gesendet, die für die App registriert sind. Die maximale Länge beträgt 255 Bytes. |
 | response_mode |optional |Gibt die Methode an, die zum Senden des resultierenden Autorisierungscodes zurück an Ihre App verwendet werden soll. Unterstützte Werte sind `form_post` für *HTTP-Formularbereitstellung* und `fragment` für *URL-Fragment*. Bei Webanwendungen empfiehlt sich die Verwendung von `response_mode=form_post`, um eine möglichst sichere Tokenübertragung an die Anwendung zu gewährleisten. Der Standardwert für einen beliebigen Datenfluss mit einem ID-Token ist `fragment`.|
 | state |empfohlen |Ein in der Anforderung enthaltener Wert, der in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird auch verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z. B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | prompt |Optional |Gibt den Typ der erforderlichen Benutzerinteraktion an. Zurzeit sind die einzigen gültigen Werte „login“, „none“ und „consent“. `prompt=login` zwingt den Benutzer, die Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich. `prompt=none` ist genau das Gegenteil: Dieser Wert stellt sicher, dass dem Benutzer keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt der Endpunkt einen Fehler aus. `prompt=consent` löst nach der Anmeldung des Benutzers das OAuth-Zustimmungsdialogfeld aus, in dem der Benutzer aufgefordert wird, der App Berechtigungen zu gewähren. |

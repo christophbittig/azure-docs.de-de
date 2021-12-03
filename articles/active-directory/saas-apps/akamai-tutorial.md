@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Akamai | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Akamai'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Akamai konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 10/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 38b0ea6b65c3fcb01e8a49cd3a416533bcab5688
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4d5046f3d783a3e9c7d6035b221c9a55109db179
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803373"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331184"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Akamai
+# <a name="tutorial-azure-ad-sso-integration-with-akamai"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Akamai
 
 In diesem Tutorial erfahren Sie, wie Sie Akamai in Azure Active Directory (Azure AD) integrieren. Die Integration von Akamai in Azure AD ermöglicht Folgendes:
 
@@ -379,7 +379,7 @@ Klicken Sie auf **Save and go to Advanced Settings** (Speichern und zu erweitert
 
 1. Geben Sie unter **Application Name** (Anwendungsname) einen Anwendungsnamen und unter **Description** (Beschreibung) eine Beschreibung ein.
 
-    ![Screenshot des Dialogfelds „SSH App“ (SSH-App) mit Einstellungen für „Application Name“ (Anwendungsname) und „Description“ (Beschreibung).](./media/header-akamai-tutorial/configure-26.png)
+    ![Screenshot: Dialogfeld „SSH App“ (SSH-App) mit Einstellungen für „Application Name“ (Anwendungsname) und „Description“ (Beschreibung)](./media/header-akamai-tutorial/configure-26.png)
 
 1. Konfigurieren Sie die Anwendungsidentität.
 
@@ -519,7 +519,7 @@ Weisen Sie den Identitätsanbieter zu.
 
 1. Klicken Sie für das Konto „EAADelegation“ auf die Registerkarte für die Delegierung.
 
-    ![Screenshot einer Administratoreingabeaufforderung mit dem Befehl zum Konfigurieren des SPN.](./media/header-akamai-tutorial/spn.png)
+    ![Screenshot einer Administratoreingabeaufforderung mit dem Befehl zum Konfigurieren des SPN.](./media/header-akamai-tutorial/delegation.png)
 
     * Verwenden Sie ein beliebiges Authentifizierungsprotokoll.
     * Klicken Sie auf „Add“ (Hinzufügen), und fügen Sie das App-Pool-Konto für die Kerberos-Website hinzu. Bei korrekter Konfiguration sollte es automatisch zum korrekten SPN aufgelöst werden.
@@ -587,4 +587,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Akamai können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Akamai können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

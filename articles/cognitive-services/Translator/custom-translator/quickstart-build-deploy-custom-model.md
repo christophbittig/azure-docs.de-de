@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: quickstart
-ms.openlocfilehash: e77196572a0ea3b18f0b28a6ad26349e6e7c668e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fec2ae2f5f06303d48df77a34bcf41e4ab9e83f5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744793"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252229"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Schnellstart: Erstellen, Bereitstellen und Verwenden eines benutzerdefinierten Modells für die Übersetzung
 
@@ -27,6 +27,8 @@ Dieser Artikel enthält ausführliche Anweisungen zum Erstellen eines Übersetzu
 2. Abonnement für die Textübersetzungs-API über das Azure-Portal. Sie benötigen den Abonnementschlüssel der Textübersetzungs-API für die Zuordnung zu Ihrem Arbeitsbereich in Custom Translator. [Hier](../translator-how-to-signup.md) erfahren Sie, wie Sie sich für die Textübersetzungs-API registrieren.
 
 3. Sind die beiden Komponenten oben vorhanden, melden Sie sich beim Portal für den [benutzerdefinierten Translator](https://portal.customtranslator.azure.ai) an, um Arbeitsbereiche und Projekte zu erstellen, Dateien hochzuladen sowie Modelle zu erstellen und bereitzustellen.
+
+Sie können eine Übersicht über die Übersetzung und die benutzerdefinierte Übersetzung lesen, Tipps erhalten und sich im [technischen Blog zu Azure KI](https://techcommunity.microsoft.com/t5/azure-ai/customize-a-translation-to-make-sense-in-a-specific-context/ba-p/2811956) ein Video zu den ersten Schritten ansehen. 
 
 Sie können auch ein vollständiges Video zur exemplarischen Vorgehensweise des benutzerdefinierten Translators auf [YouTube](https://www.youtube.com/watch?v=TykB6WDTkRc&t=3s) anzeigen.
 

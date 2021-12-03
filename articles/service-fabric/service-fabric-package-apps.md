@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über das Verpacken einer Azure Service Fabric-An
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 168e6d6dc7ab5bfeccc4e1dabc7bd50efcbe8f34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f575ea61f2406e8e1a636c2cf633a034753853bf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98789701"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003920"
 ---
 # <a name="package-an-application"></a>Packen einer Anwendung
 
@@ -207,12 +207,11 @@ Sie können Visual Studio anweisen, Pakete bei der Bereitstellung zu komprimiere
 ## <a name="create-an-sfpkg"></a>Erstellen einer SFPKG-Datei
 
 Ab Version 6.1 unterstützt Service Fabric die Bereitstellung aus einem externen Speicher.
-Bei dieser Option muss das Anwendungspaket nicht in den Imagespeicher kopiert werden. Stattdessen können Sie eine `sfpkg`-Datei erstellen und in einen externen Speicher hochladen und dann bei der Bereitstellung für Service Fabric den Download-URI angeben. Dasselbe Paket kann für mehrere Cluster bereitgestellt werden. Die Bereitstellung aus dem externen Speicher spart die Zeit, die für das Kopieren des Pakets in jeden Cluster benötigt wird.
+Bei dieser Option muss das Anwendungspaket nicht in den Imagespeicher kopiert werden. Stattdessen können Sie eine `sfpkg`-Datei erstellen, in einen externen Speicher hochladen und dann bei der Bereitstellung für Service Fabric den Download-URI angeben. Dasselbe Paket kann für mehrere Cluster bereitgestellt werden. Die Bereitstellung aus dem externen Speicher spart die Zeit, die für das Kopieren des Pakets in jeden Cluster benötigt wird.
 
-Die `sfpkg`-Datei ist eine ZIP-Datei, die das ursprüngliche Anwendungspaket enthält und die Erweiterung „.sfpkg“ aufweist.
-Das Anwendungspaket innerhalb der ZIP-Datei kann komprimiert oder unkomprimiert sein. Die Komprimierung des Anwendungspakets innerhalb der ZIP-Datei erfolgt wie [zuvor erwähnt](service-fabric-package-apps.md#compress-a-package) auf Code-, Konfigurations- und Datenpaketebene.
+Die `sfpkg`-Datei ist eine ZIP-Datei, die das ursprüngliche Anwendungspaket enthält und die Erweiterung `.sfpkg` aufweist. Das Anwendungspaket innerhalb der ZIP-Datei kann komprimiert oder unkomprimiert sein. Die Komprimierung des Anwendungspakets innerhalb der ZIP-Datei erfolgt wie [zuvor erwähnt](service-fabric-package-apps.md#compress-a-package) auf Code-, Konfigurations- und Datenpaketebene.
 
-Um eine `sfpkg` zu erstellen, beginnen Sie mit einem Ordner, der das ursprüngliche (komprimierte oder unkomprimierte) Anwendungspaket enthält. Verwenden Sie anschließend ein beliebiges Hilfsprogramm, um den Ordner mit der Erweiterung „.sfpkg“ zu zippen. Verwenden Sie z. B. [ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
+Beginnen Sie mit einem Ordner, der das ursprüngliche (komprimierte oder unkomprimierte) Anwendungspaket enthält, um eine `sfpkg`-Datei zu erstellen. Verwenden Sie anschließend ein beliebiges Hilfsprogramm, um den Ordner mit der Erweiterung „.sfpkg“ zu zippen. Verwenden Sie z. B. [ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

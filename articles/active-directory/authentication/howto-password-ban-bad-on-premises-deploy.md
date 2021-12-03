@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bb017cd4532d4739b563d4a22a50a731268407f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 15383c9ff24e8d5b9cec0f92f178f37df1618df5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759717"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132330937"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -346,7 +346,7 @@ Der Proxydienst unterstützt nicht die Verwendung von spezifischen Anmeldeinform
 
 Die DC-Agent-Software für den Azure AD-Kennwortschutz verwendet RPC über TCP für die Kommunikation mit dem Proxydienst. Standardmäßig lauscht der Azure AD-Kennwortschutz-Proxydienst auf jedem verfügbaren dynamischen RPC-Endpunkt. Sie können den Dienst so konfigurieren, dass er an einem bestimmten TCP-Port lauscht, wenn dies aufgrund von Netzwerktopologie- oder Firewallanforderungen in Ihrer Umgebung erforderlich ist. Wenn Sie einen statischen Port konfigurieren, müssen Sie Port 135 und den statischen Port Ihrer Wahl öffnen.
 
-<a id="static" /></a>Verwenden Sie das Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration` wie folgt, um den Dienst für die Ausführung unter einem statischen Port zu konfigurieren.
+<a id="static"></a>Verwenden Sie das Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration` wie folgt, um den Dienst für die Ausführung unter einem statischen Port zu konfigurieren.
 
 ```powershell
 Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>

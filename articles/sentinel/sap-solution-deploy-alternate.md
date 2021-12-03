@@ -1,46 +1,46 @@
 ---
-title: Azure Sentinel-Konfigurationsoptionen von Experten für SAP-Datenconnectors, lokale Bereitstellung und SAPControl-Protokollquellen | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Azure Sentinel-Datenconnector für SAP-Umgebungen mithilfe von Konfigurationsoptionen von Experten und eines lokalen Computers bereitstellen. Erfahren Sie auch mehr über SAPControl-Protokollquellen.
+title: Konfigurationsoptionen für Experten für den Microsoft Sentinel-Datenconnector für SAP, lokale Bereitstellung und SAPControl-Protokollquellen | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie den Microsoft Sentinel-Datenconnector für SAP-Umgebungen mit Konfigurationsoptionen für Experten und einem lokalen Computer bereitstellen. Erfahren Sie auch mehr über SAPControl-Protokollquellen.
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
-ms.date: 05/19/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: 870106b7f3494ac818af90b6b919603e39a0a598
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: 56176315a6d4d56c419f15a4472aa4f6b739a227
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131075161"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520026"
 ---
 # <a name="expert-configuration-options-on-premises-deployment-and-sapcontrol-log-sources"></a>Konfigurationsoptionen für Experten, lokale Bereitstellung und SAPControl-Protokollquellen
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Artikel wird beschrieben, wie Sie den Azure Sentinel-Datenconnector für SAP in einem Experten- oder benutzerdefinierten Prozess bereitstellen, z. B. mithilfe eines lokalen Computers und einer Azure Key Vault-Instanz zum Speichern Ihrer Anmeldeinformationen.
+In diesem Artikel wird beschrieben, wie Sie den Microsoft Sentinel-Datenconnector für SAP in einem Expertenprozess oder benutzerdefinierten Prozess bereitstellen, z. B. mithilfe eines lokalen Computers und einer Azure Key Vault-Instanz zum Speichern Ihrer Anmeldeinformationen.
 
 > [!NOTE]
-> Der standardmäßige und am meisten empfohlene Bereitstellungsprozess für den Azure Sentinel-Datenconnector für SAP ist [die Verwendung einer Azure-VM](sap-deploy-solution.md). Dieser Artikel richtet sich an fortgeschrittene Benutzer.
+> Der standardmäßig verwendete und am häufigsten empfohlene Prozess für die Bereitstellung des Microsoft Sentinel-Datenconnectors für SAP ist [die Verwendung einer Azure-VM](sap-deploy-solution.md). Dieser Artikel richtet sich an fortgeschrittene Benutzer.
 
 > [!IMPORTANT]
-> Die Azure Sentinel-Lösung für SAP befindet sich derzeit in der PREVIEW-Phase. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> Die Microsoft Sentinel-Lösung für SAP befindet sich derzeit in der PREVIEW. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die grundlegenden Voraussetzungen für die Bereitstellung Ihres Azure Sentinel-Datenconnectors für SAP sind unabhängig von Ihrer Bereitstellungsmethode identisch.
+Die grundlegenden Voraussetzungen für die Bereitstellung des Microsoft Sentinel-Datenconnectors für SAP sind bei allen Bereitstellungsmethoden identisch.
 
 Stellen Sie sicher, dass Ihr System die Voraussetzungen erfüllt, die in der [Hauptanleitung zur Bereitstellung des SAP-Datenconnectors](sap-deploy-solution.md#prerequisites) dokumentiert sind, bevor Sie beginnen.
 
-Weitere Informationen finden Sie unter [Azure Sentinel-Lösung für SAP: detaillierte SAP-Anforderungen (Public Preview)](sap-solution-detailed-requirements.md).
+Weitere Informationen finden Sie unter [Detaillierte SAP-Anforderungen für die Microsoft Sentinel-Lösung für SAP (Public Preview)](sap-solution-detailed-requirements.md).
 
 ## <a name="create-your-azure-key-vault"></a>Erstellen Ihres Azure-Schlüsseltresors
 
-Erstellen Sie einen Azure-Schlüsseltresor, den Sie für Ihren Azure Sentinel-Datenconnector für SAP reservieren können.
+Erstellen Sie einen Azure-Schlüsseltresor, den Sie als dedizierten Schlüsseltresor für den Microsoft Sentinel-Datenconnector für SAP nutzen können.
 
-Führen Sie den folgenden Befehl aus, um Ihren Azure-Schlüsseltresor zu erstellen und Zugriff auf einen Azure-Dienstprinzipal zu gewähren: 
+Führen Sie den folgenden Befehl aus, um Ihren Azure-Schlüsseltresor zu erstellen und Zugriff auf einen Azure-Dienstprinzipal zu gewähren:
 
 ``` azurecli
 kvgp=<KVResourceGroup>
@@ -124,7 +124,7 @@ Weitere Informationen finden Sie in der CLI-Dokumentation unter [az keyvault sec
 
 ## <a name="perform-an-expert--custom-installation"></a>Durchführen einer Experten-/benutzerdefinierten Installation
 
-In diesem Verfahren wird beschrieben, wie Sie den SAP-Datenconnector mithilfe einer Experten- oder benutzerdefinierten Installation bereitstellen, z. B. bei der lokalen Installation. 
+In diesem Verfahren wird beschrieben, wie Sie den SAP-Datenconnector mithilfe einer Experten- oder benutzerdefinierten Installation bereitstellen, z. B. bei der lokalen Installation.
 
 Wir empfehlen diesen Vorgang, nachdem Sie einen Schlüsseltresor mit Ihren SAP-Anmeldeinformationen eingerichtet haben.
 
@@ -139,7 +139,7 @@ Wir empfehlen diesen Vorgang, nachdem Sie einen Schlüsseltresor mit Ihren SAP-A
 
 1. Erstellen Sie auf Ihrem lokalen Computer einen neuen Ordner mit einem aussagekräftigen Namen, und kopieren Sie die ZIP-Datei des SDK in Ihren neuen Ordner.
 
-1. Klonen Sie das GitHub-Repository von Azure Sentinel auf Ihrem lokalen Computer, und kopieren Sie die Datei **systemconfig.ini**  der Azure Sentinel-Lösung für SAP in Ihren neuen Ordner.
+1. Klonen Sie das GitHub-Repository mit der Microsoft Sentinel-Lösung auf Ihren lokalen Computer, und kopieren Sie die Datei **systemconfig.ini** der Microsoft Sentinel-Lösung für SAP in Ihren neuen Ordner.
 
     Beispiel:
 
@@ -154,7 +154,7 @@ Wir empfehlen diesen Vorgang, nachdem Sie einen Schlüsseltresor mit Ihren SAP-A
 
     Um Ihre Konfiguration zu testen, sollten Sie Benutzer und Kennwort direkt zur Konfigurationsdatei **systemconfig.ini** hinzufügen. Wir empfehlen zwar [Azure Key Vault](#add-azure-key-vault-secrets) zur Speicherung Ihrer Anmeldeinformationen, Sie können aber auch eine Datei des Typs **env.list** bzw. [Docker-Geheimnisse](#manually-configure-the-sap-data-connector) verwenden oder Ihre Anmeldeinformationen direkt in die Datei **systemconfig.ini** einfügen.
 
-1. Legen Sie die Protokolle, die Sie in Azure Sentinel erfassen möchten, anhand der Anweisungen in der Datei **systemconfig.ini** fest. Weitere Informationen finden Sie beispielsweise unter [Bestimmen der an Azure Sentinel gesendeten SAP-Protokolle](#define-the-sap-logs-that-are-sent-to-azure-sentinel).
+1. Befolgen Sie die Anweisungen in der Datei **systemconfig.ini**, um die Protokolle zu definieren, die Sie in Microsoft Sentinel erfassen möchten. Ein Beispiel hierfür finden Sie unter [Definieren der an Microsoft Sentinel gesendeten SAP-Protokolle](#define-the-sap-logs-that-are-sent-to-microsoft-sentinel).
 
 1. Legen Sie die folgenden Konfigurationen anhand der Anweisungen in der Datei **systemconfig.ini** fest:
 
@@ -177,6 +177,7 @@ Wir empfehlen diesen Vorgang, nachdem Sie einen Schlüsseltresor mit Ihren SAP-A
 
     ```bash
     ##############################################################
+    # Include the following section if you're using user authentication
     ##############################################################
     # env.list template for Credentials
     SAPADMUSER=<SET_SAPCONTROL_USER>
@@ -186,10 +187,12 @@ Wir empfehlen diesen Vorgang, nachdem Sie einen Schlüsseltresor mit Ihren SAP-A
     JAVAUSER=<SET_JAVA_OS_USER>
     JAVAPASS=<SET_JAVA_OS_USER>
     ##############################################################
+    # Include the following section if you are using Azure Keyvault
     ##############################################################
     # env.list template for AZ Cli when MI is not enabled
     AZURE_TENANT_ID=<your tenant id>
     AZURE_CLIENT_ID=<your client/app id>
+    AZURE_CLIENT_SECRET=<your password/secret for the service principal>
     ##############################################################
     ```
 
@@ -207,19 +210,19 @@ Wir empfehlen diesen Vorgang, nachdem Sie einen Schlüsseltresor mit Ihren SAP-A
     docker logs –f sapcon-[SID]
     ```
 
-1. Fahren Sie mit der Bereitstellung der Lösung **Azure Sentinel – Kontinuierliche Bedrohungsüberwachung für SAP** fort.
+1. Stellen Sie im nächsten Schritt die Lösung **Microsoft Sentinel – Continuous Threat Monitoring for SAP** bereit.
 
-    Durch die Bereitstellung der Lösung wird der SAP-Datenconnector in Azure Sentinel angezeigt, und die SAP-Arbeitsmappe und -Analyseregeln werden bereitgestellt. Wenn Sie fertig sind, fügen Sie Ihre SAP-Watchlists manuell hinzu, und passen Sie sie an.
+    Durch die Bereitstellung der Lösung wird der SAP-Datenconnector in Microsoft Sentinel angezeigt, und die SAP-Arbeitsmappe und -Analyseregeln werden bereitgestellt. Wenn Sie fertig sind, fügen Sie Ihre SAP-Watchlists manuell hinzu, und passen Sie sie an.
 
     Weitere Informationen finden Sie unter [Bereitstellen von SAP-Sicherheitsinhalten](sap-deploy-solution.md#deploy-sap-security-content).
 
 ## <a name="manually-configure-the-sap-data-connector"></a>Manuelles Konfigurieren des SAP-Datenconnectors
 
-Der SAP-Datenconnector für Azure Sentinel für wird in der Datei **systemconfig.ini** konfiguriert, die Sie im Rahmen des [Bereitstellungsvorgangs](#perform-an-expert--custom-installation) auf Ihrem Computer mit dem SAP-Datenconnector geklont haben.
+Der Datenconnector für die Microsoft Sentinel-Lösung für SAP wird in der Datei **systemconfig.ini** konfiguriert, die Sie im Rahmen des [Bereitstellungsvorgangs](#perform-an-expert--custom-installation) auf den Computer mit dem SAP-Datenconnector geklont haben.
 
 Der folgende Code zeigt ein Beispiel der Datei **systemconfig.ini**:
 
-```Python
+```python
 [Secrets Source]
 secrets = '<DOCKER_RUNTIME/AZURE_KEY_VAULT/DOCKER_SECRETS/DOCKER_FIXED>'
 keyvault = '<SET_YOUR_AZURE_KEYVAULT>'
@@ -274,15 +277,15 @@ javaseverity = <SET_JAVA_SEVERITY  0 = All logs ; 1 = Warning ; 2 = Error>
 javatz = <SET_JAVA_TZ --Use ONLY GMT FORMAT-- example - For OS Timezone = NZST use javatz = GMT+12>
 ```
 
-### <a name="define-the-sap-logs-that-are-sent-to-azure-sentinel"></a>Bestimmen der an Azure Sentinel gesendeten SAP-Protokolle
+### <a name="define-the-sap-logs-that-are-sent-to-microsoft-sentinel"></a>Definieren der an Microsoft Sentinel gesendeten SAP-Protokolle
 
-Fügen Sie der Datei **systemconfig.ini** der Azure Sentinel-Lösung für SAP den folgenden Code hinzu, um die Protokolle zu bestimmen, die an Azure Sentinel gesendet werden.
+Fügen Sie der Datei **systemconfig.ini** der Microsoft Sentinel-Lösung für SAP den folgenden Code hinzu, um die Protokolle zu definieren, die an Microsoft Sentinel gesendet werden sollen.
 
-Weitere Informationen finden Sie unter [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP (öffentliche Vorschau)](sap-solution-log-reference.md).
+Weitere Informationen finden Sie unter [Referenz zu Protokollen für die Microsoft Sentinel-Lösung für SAP (Public Preview)](sap-solution-log-reference.md).
 
-```Python
+```python
 ##############################################################
-# Enter True OR False for each log to send those logs to Azure Sentinel
+# Enter True OR False for each log to send those logs to Microsoft Sentinel
 [Logs Activation Status]
 ABAPAuditLog = True
 ABAPJobLog = True
@@ -306,12 +309,11 @@ JAVAFilesLogs = False
 
 ### <a name="sal-logs-connector-settings"></a>Einstellungen des SAL-Protokollconnectors
 
-Fügen Sie den folgenden Code der Datei **systemconfig.ini** des Azure Sentinel-Datenconnectors für SAP hinzu, um weitere Einstellungen für in Azure Sentinel erfasste SAP-Protokolle festzulegen.
+Fügen Sie den folgenden Code der Datei **systemconfig.ini** des Microsoft Sentinel-Datenconnectors für SAP hinzu, um weitere Einstellungen für in Microsoft Sentinel erfasste SAP-Protokolle zu definieren.
 
 Weitere Informationen finden Sie unter [Ausführen einer Experten-/benutzerdefinierten Installation des SAP-Datenconnectors](#perform-an-expert--custom-installation).
 
-
-```Python
+```python
 ##############################################################
 [Connector Configuration]
 extractuseremail = True
@@ -335,26 +337,25 @@ In diesem Abschnitt können Sie die folgenden Parameter konfigurieren:
 
 ### <a name="configuring-an-abap-sap-control-instance"></a>Konfigurieren einer ABAP SAP Control-Instanz
 
-Um alle ABAP-Protokolle in Azure Sentinel zu erfassen, einschließlich NW RFC- und SAP Control Web Service-Protokolle, konfigurieren Sie die folgenden ABAP SAP Control-Details:
+Konfigurieren Sie die folgenden Details für ABAP SAP Control, um alle ABAP-Protokolle in Microsoft Sentinel zu erfassen, einschließlich NW RFC- und SAP Control Web Service-basierter Protokolle:
 
 |Einstellung  |BESCHREIBUNG  |
 |---------|---------|
 |**javaappserver**     |Geben Sie Ihren SAP Control ABAP-Serverhost ein. <br>Beispiel: `contoso-erp.appserver.com`         |
 |**javainstance**     |Geben Sie Ihre SAP Control ABAP-Instanznummer ein. <br>Beispiel: `00`         |
 |**abaptz**     |Geben Sie die auf Ihrem SAP Control ABAP-Server konfigurierte Zeitzone im GMT-Format ein. <br>Beispiel: `GMT+3`         |
-|**abapseverity**     |Geben Sie den niedrigsten, inklusiven Schweregrad ein, für den Sie ABAP-Protokolle in Azure Sentinel erfassen möchten.  Mögliche Werte: <br><br>- **0** = Alle Protokolle <br>- **1** = Warnung <br>- **2** = Fehler     |
-
+|**abapseverity**     |Geben Sie den niedrigsten eingeschlossenen Schweregrad ein, für den Sie ABAP-Protokolle in Microsoft Sentinel erfassen möchten.  Mögliche Werte: <br><br>- **0** = Alle Protokolle <br>- **1** = Warnung <br>- **2** = Fehler     |
 
 ### <a name="configuring-a-java-sap-control-instance"></a>Konfigurieren einer Java SAP Control-Instanz
 
-Um SAP Control Web Service-Protokolle in Azure Sentinel zu erfassen, konfigurieren Sie die folgenden Java SAP Control-Instanzdetails:
+Konfigurieren Sie die folgenden JAVA SAP Control-Instanzdetails, um SAP Control Web Service-Protokolle in Microsoft Sentinel zu erfassen:
 
 |Parameter  |BESCHREIBUNG  |
 |---------|---------|
 |**javaappserver**     |Geben Sie Ihren SAP Control Java-Serverhost ein. <br>Beispiel: `contoso-java.server.com`         |
 |**javainstance**     |Geben Sie Ihre SAP Control ABAP-Instanznummer ein. <br>Beispiel: `10`         |
 |**javatz**     |Geben Sie die auf Ihrem SAP Control Java-Server konfigurierte Zeitzone im GMT-Format ein. <br>Beispiel: `GMT+3`         |
-|**javaseverity**     |Geben Sie den niedrigsten, inklusiven Schweregrad ein, für den Sie Webdienstprotokolle in Azure Sentinel erfassen möchten.  Mögliche Werte: <br><br>- **0** = Alle Protokolle <br>- **1** = Warnung <br>- **2** = Fehler     |
+|**javaseverity**     |Geben Sie den niedrigsten eingeschlossenen Schweregrad ein, für den Sie Web Service-Protokolle in Microsoft Sentinel erfassen möchten.  Mögliche Werte: <br><br>- **0** = Alle Protokolle <br>- **1** = Warnung <br>- **2** = Fehler     |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -364,8 +365,8 @@ Weitere Informationen finden Sie unter [Bereitstellen der SAP-Lösung](sap-deplo
 
 Weitere Informationen finden Sie unter
 
-- [Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
-- [Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP](sap-solution-detailed-requirements.md)
-- [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP](sap-solution-log-reference.md)
-- [Azure Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten](sap-solution-security-content.md)
-- [Problembehandlung bei der Bereitstellung der Azure Sentinel-Lösung für SAP](sap-deploy-troubleshoot.md)
+- [Bereitstellen des Microsoft Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
+- [Detaillierte SAP-Anforderungen für die Microsoft Sentinel-Lösung für SAP (Public Preview)](sap-solution-detailed-requirements.md)
+- [Referenz zu Protokollen für die Microsoft Sentinel-Lösung für SAP (Public Preview)](sap-solution-log-reference.md)
+- [Microsoft Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten (Public Preview)](sap-solution-security-content.md)
+- [Problembehandlung bei der Bereitstellung der Microsoft Sentinel-Lösung für SAP](sap-deploy-troubleshoot.md)

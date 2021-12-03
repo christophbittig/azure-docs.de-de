@@ -7,12 +7,12 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: cynthn
-ms.openlocfilehash: db59c95c215bdf51746a252c29b44f13dfaf7e22
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 349289abd3b03f231df96cc6fefb88f5035fc0fa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161933"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432888"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure
 
@@ -22,7 +22,7 @@ Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie einen virtuellen Linus-C
 
 Schnellbefehle finden Sie unter [Erstellen eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](mac-create-ssh-keys.md).
 
-Informationen zum Erstellen von SSH-Schlüsseln und deren Verwendung zum Herstellen einer Verbindung mit einem **Windows**-Computer finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](ssh-from-windows.md). Sie können auch das [Azure-Portal](../ssh-keys-portal.md) verwenden, um SSH-Schlüssel zum Erstellen virtueller Computer im Portal zu erstellen und zu verwalten.
+Informationen zum Erstellen von SSH-Schlüsseln und deren Verwendung zum Herstellen einer Verbindung mit einem Linux-Computer von einem **Windows**-Computer aus finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](ssh-from-windows.md). Sie können auch das [Azure-Portal](../ssh-keys-portal.md) verwenden, um SSH-Schlüssel zum Erstellen virtueller Computer im Portal zu erstellen und zu verwalten.
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 

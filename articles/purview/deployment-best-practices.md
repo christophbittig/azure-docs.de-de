@@ -6,12 +6,12 @@ ms.author: sandeepshah
 ms.service: purview
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: d357a85449a6ae734b3311f2649180b36646d4f4
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: bb5ba8386ab84f9ca4b3da6a34714a27fea38738
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214330"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301416"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Bewährte Methoden zur Bereitstellung von Azure Purview
 
@@ -25,12 +25,12 @@ Eine gut geplante Bereitstellung einer Datengovernanceplattform (z. B. Azure Pu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Zugriff auf Microsoft Azure mit einem Entwicklungs- oder Produktionsabonnement
-* Möglichkeit zum Erstellen von Azure-Ressourcen einschließlich Purview
-* Zugriff auf Datenquellen wie Azure Data Lake Storage oder Azure SQL in Test-, Entwicklungs- oder Produktionsumgebungen
-  * Für Data Lake Storage ist die Rolle „Leser“ erforderlich.
-  * Für SQL muss die Identität Tabellen abfragen können, um Stichproben von Klassifizierungen zu erhalten.
-* Zugriff auf Azure Security Center oder die Möglichkeit der Zusammenarbeit mit dem Security Center-Administrator für die Datenbezeichnung
+- Zugriff auf Microsoft Azure mit einem Entwicklungs- oder Produktionsabonnement
+- Möglichkeit zum Erstellen von Azure-Ressourcen einschließlich Purview
+- Zugriff auf Datenquellen wie Azure Data Lake Storage oder Azure SQL in Test-, Entwicklungs- oder Produktionsumgebungen
+  - Für Data Lake Storage ist die Rolle „Leser“ erforderlich.
+  - Für SQL muss die Identität Tabellen abfragen können, um Stichproben von Klassifizierungen zu erhalten.
+- Zugriff auf Microsoft Defender für Cloud oder die Möglichkeit zur Zusammenarbeit mit Administratoren von Defender für Cloud für die Datenbeschriftung
 
 ## <a name="identify-objectives-and-goals"></a>Identifizieren der Ziele
 

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 10/11/2021
 ms.custom: contperf-fy22q2
-ms.openlocfilehash: 69c44e8fe4ff1eeb77ce2efc1cf9ac11158d82ee
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: c7e0ddee8e42f76c034ce79c7200e48fcb8bae04
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811335"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555905"
 ---
 # <a name="get-started-with-azure-service-bus-queues-net"></a>Erste Schritte mit Azure Service Bus-Warteschlangen (.NET)
 Diese Schnellstartanleitung umfasst folgende Schritte:
@@ -24,6 +24,7 @@ Diese Schnellstartanleitung umfasst folgende Schritte:
 > In dieser Schnellstartanleitung wird Schritt für Schritt ein einfaches Szenario erläutert, bei dem Sie einen Batch von Nachrichten an eine Service Bus-Warteschlange senden und diese Nachrichten empfangen. Weitere vordefinierte .NET-Beispiele für Azure Service Bus finden Sie [auf GitHub im Repository mit dem Azure SDK für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+Wenn Sie mit dem Dienst noch keine Erfahrung haben, informieren Sie sich über den Abschnitt [Was ist Azure Service Bus?](service-bus-messaging-overview.md), bevor Sie die Schritte in dieser Schnellstartanleitung durchführen. 
 
 - **Azure-Abonnement**. Für die Verwendung von Azure-Diensten benötigen Sie ein Abonnement. Das gilt auch für Azure Service Bus. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/free/) registrieren.
 - **Microsoft Visual Studio 2019**. In der Azure Service Bus-Clientbibliothek werden neue Features genutzt, die in C# 8.0 eingeführt wurden.  Die Bibliothek kann zwar auch weiterhin mit älteren Versionen von C# verwendet werden, doch die neue Syntax steht dann nicht zur Verfügung. Wenn Sie die ganze Syntax nutzen möchten, sollten Sie mit dem .NET Core SDK 3.0 oder höher kompilieren, wobei die Sprachversion auf `latest` festgelegt sein muss. Bei Verwendung von Visual Studio sind Versionen vor Visual Studio 2019 nicht mit den Tools kompatibel, die zum Erstellen von C# 8.0-Projekten erforderlich sind.
@@ -450,7 +451,7 @@ In diesem Abschnitt fügen Sie Code hinzu, mit dem Nachrichten aus der Warteschl
 1. Sehen Sie sich erneut die Informationen im Portal an. Warten Sie einige Minuten, und aktualisieren Sie die Seite, wenn für **Aktive Nachrichten** nicht `0` angezeigt wird. 
 
     - Die Werte für **Anzahl aktiver Nachrichten** und **Aktuelle Größe** lauten jetzt **0**.
-    - Im unteren Abschnitt **Metriken** im Diagramm **Nachrichten** können Sie sehen, dass für die Warteschlange acht ein- und acht ausgehende Nachrichten vorhanden sind. 
+    - Im Diagramm **Nachrichten** im unteren Abschnitt **Metriken** können Sie sehen, dass für die Warteschlange drei eingehende und drei ausgehende Nachrichten vorhanden sind. 
     
         :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="Aktive Nachrichten und Größe nach dem Empfang" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 

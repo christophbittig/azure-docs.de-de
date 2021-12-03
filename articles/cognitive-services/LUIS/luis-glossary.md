@@ -4,13 +4,13 @@ description: In diesem Glossar werden Begriffe erläutert, auf die Sie mögliche
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 05/17/2021
-ms.openlocfilehash: 5d4b5f5264ad38ca3610840e6fd9a72c6bc5e0aa
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 10/28/2021
+ms.openlocfilehash: 25bdf291d7d836523655b131f485721e3a29593b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950967"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434577"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit dem LUIS-Dienst stoßen.
@@ -270,7 +270,7 @@ Das LUIS-Kontingent ist die Einschränkung durch den Azure-Abonnementtarif. Das 
 Ihr Schema umfasst Ihre Absichten und Entitäten zusammen mit den untergeordneten Entitäten. Das Schema wird anfänglich geplant und dann im Laufe der Zeit iteriert. Das Schema umfasst keine App-Einstellungen, Features oder Beispieläußerungen.
 
 ## <a name="sentiment-analysis"></a>Standpunktanalyse
-Die Standpunktanalyse (Stimmungsanalyse) liefert durch eine [Textanalyse](../text-analytics/overview.md) positive oder negative Werte zu Äußerungen.
+Die Stimmungsanalyse liefert positive oder negative Werte zu Äußerungen, die vom [Sprachdienst](../language-service/sentiment-opinion-mining/overview.md) bereitgestellt werden.
 
 ## <a name="speech-priming"></a>Sprachvorbereitung
 

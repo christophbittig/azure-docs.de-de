@@ -7,12 +7,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6f2732f03b990d10b3ae15e472bf7600114c3a33
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc89cbfd01ef827be277d332ecd770b3fa6d7016
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339112"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249797"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Gewähren des Zugriff auf den lokalen Speicher eines Geräts für Module
 
@@ -75,14 +75,25 @@ Ersetzen Sie `<HostStoragePath>` und `<ModuleStoragePath>` durch den Speicherpfa
 
 Beispielsweise bedeutet `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` auf einem Linux-System, dass das Verzeichnis **/etc/iotedge/storage** in Ihrem Hostsystem dem Verzeichnis **/iotedge/storage/** im Container zugeordnet ist. Ein weiteres Beispiel: Auf einem Windows-System bedeutet `"Binds":["C:\\temp:C:\\contemp"]`, dass das Verzeichnis **C:\\temp** in Ihrem Hostsystem dem Verzeichnis **C:\\contemp** im Container zugeordnet ist.
 
-Außerdem müssen Sie auf Linux-Geräten sicherstellen, dass das Benutzerprofil für Ihr Modul über die erforderlichen Lese-, Schreib- und Ausführungsberechtigungen für das Hostsystemverzeichnis verfügt. Zurück zum vorherigen Beispiel, in dem IoT Edge-Hub zum Speichern von Nachrichten im lokalen Speicher Ihres Geräts aktiviert wurde: Sie müssen Sie dem zugehörigen Benutzerprofil, UID 1000, Berechtigungen erteilen. (Der IoT Edge-Agent fungiert als Root und benötigt daher keine zusätzlichen Berechtigungen.) Es gibt mehrere Möglichkeiten zum Verwalten von Verzeichnisberechtigungen auf Linux-Systemen, einschließlich der Verwendung von `chown` zum Ändern des Verzeichnisbesitzers und dann `chmod` zum Ändern der Berechtigungen, beispielsweise:
+Weitere Details zu Erstellungsoptionen finden Sie in der [Docker-Dokumentation](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+
+## <a name="host-system-permissions"></a>Hostsystemberechtigungen
+
+Auf Linux-Geräten müssen Sie sicherstellen, dass das Benutzerprofil für Ihr Modul über die erforderlichen Lese-, Schreib- und Ausführungsberechtigungen für das Hostsystemverzeichnis verfügt. Zurück zum vorherigen Beispiel, in dem IoT Edge-Hub zum Speichern von Nachrichten im lokalen Speicher Ihres Geräts aktiviert wurde: Sie müssen Sie dem zugehörigen Benutzerprofil, UID 1000, Berechtigungen erteilen. Es gibt mehrere Möglichkeiten zum Verwalten von Verzeichnisberechtigungen auf Linux-Systemen, einschließlich der Verwendung von `chown` zum Ändern des Verzeichnisbesitzers und dann `chmod` zum Ändern der Berechtigungen, beispielsweise:
 
 ```bash
 sudo chown 1000 <HostStoragePath>
 sudo chmod 700 <HostStoragePath>
 ```
 
-Weitere Details zu Erstellungsoptionen finden Sie in der [Docker-Dokumentation](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+Auf Windows-Geräten müssen Sie ebenfalls Berechtigungen für das Hostsystemverzeichnis konfigurieren. Sie können PowerShell zum Festlegen von Berechtigungen verwenden:
+
+```powershell
+$acl = get-acl <HostStoragePath>
+$ace = new-object system.security.AccessControl.FileSystemAccessRule('Authenticated Users','FullControl','Allow')
+$acl.AddAccessRule($ace)
+$acl | Set-Acl
+```
 
 ## <a name="encrypted-data-in-module-storage"></a>Verschlüsselte Daten im Modulspeicher
 

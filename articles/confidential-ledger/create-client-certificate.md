@@ -7,16 +7,16 @@ ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 125f56a6c96e37394e4e9e2565093c847e592108
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 216a626bfaaf86a8c2237b5d871ab7895d921127
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113585931"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476393"
 ---
 # <a name="creating-a-client-certificate"></a>Erstellen eines Clientzertifikats
 
-Die Confidential Ledger-APIs erfordern eine clientzertifikatbasierte Authentifizierung. Nur die Zertifikate, die während der Ledgererstellung oder dem Ledgerupdate einer Positivliste hinzugefügt wurden, können verwendet werden, um die funktionalen Confidential Ledger-APIs aufzurufen.
+Die Azure Confidential Ledger-APIs erfordern eine clientzertifikatbasierte Authentifizierung. Nur die Zertifikate, die während der Ledgererstellung oder des Ledgerupdates einer Positivliste hinzugefügt wurden, können zum Aufrufen der funktionalen Confidential Ledger-APIs verwendet werden.
 
 Sie benötigen ein Zertifikat im PEM-Format. Sie können mehr als ein Zertifikat erstellen und mithilfe der Ledgerupdate-API hinzufügen oder löschen.
 

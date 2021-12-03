@@ -2,27 +2,37 @@
 title: Ausgaben in Bicep
 description: Beschreibt, wie Sie Ausgabevariablen in Bicep definieren.
 ms.topic: conceptual
-ms.date: 09/02/2021
-ms.openlocfilehash: 4cdf21eddcf14f5563c0c638f962585ad021e8ed
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 11/12/2021
+ms.openlocfilehash: 4ed640cd639b7a1b69cd07ae8ac50a4ddff436fb
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428756"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491315"
 ---
 # <a name="outputs-in-bicep"></a>Ausgaben in Bicep
 
 Dieser Artikel beschreibt, wie Sie in einer Bicep-Datei Ausgabewerte definieren. Sie verwenden Ausgaben, wenn Werte von den bereitgestellten Ressourcen zurückgegeben werden müssen.
 
-Das Format der einzelnen Ausgabewerte muss sich zu einem der [Datentypen](data-types.md) auflösen lassen.
-
 ## <a name="define-output-values"></a>Definieren von Ausgabewerten
 
-Im folgenden Beispiel wird gezeigt, wie Sie das Schlüsselwort `output` verwenden, um eine Eigenschaft von einer bereitgestellten Ressource zurückzugeben. Im Beispiel ist `publicIP` der Bezeichner (symbolischer Name) einer öffentlichen IP-Adresse, die in der Bicep-Datei bereitgestellt wird. Der Ausgabewert erhält den vollqualifizierten Domänennamen für die öffentliche IP-Adresse.
+Die Syntax zum Definieren eines Ausgabewerts lautet:
+
+```bicep
+output <name> <data-type> = <value>
+```
+
+Eine Ausgabe darf nicht denselben Namen wie ein Parameter, eine Variable, ein Modul oder eine Ressource haben. Jeder Ausgabewert muss sich zu einem der [Datentypen](data-types.md) auflösen lassen.
+
+Im folgenden Beispiel wird gezeigt, wie Sie eine Eigenschaft von einer bereitgestellten Ressource zurückgeben lassen. Im Beispiel ist `publicIP` der symbolische Name einer öffentlichen IP-Adresse, die in der Bicep-Datei bereitgestellt wird. Der Ausgabewert erhält den vollqualifizierten Domänennamen für die öffentliche IP-Adresse.
 
 ```bicep
 output hostname string = publicIP.properties.dnsSettings.fqdn
 ```
+
+Im nächsten Beispiel wird veranschaulicht, wie Ausgaben verschiedener Typen zurückgegeben werden.
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/outputs/output.bicep":::
 
 Wenn Sie eine Eigenschaft ausgeben müssen, die einen Bindestrich im Namen aufweist, setzen Sie den Namen in eckige Klammern, anstatt die Punktnotation zu verwenden. Verwenden Sie beispielsweise `['property-name']` anstelle von `.property-name`.
 
@@ -34,14 +44,15 @@ var user = {
 output stringOutput string = user['user-name']
 ```
 
-Im nächsten Beispiel wird veranschaulicht, wie Ausgaben verschiedener Typen zurückgegeben werden.
-
-:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/outputs/output.bicep":::
-
-
 ## <a name="conditional-output"></a>Bedingte Ausgabe
 
-Sie können einen Wert bedingt zurückgeben. In der Regel verwenden Sie eine bedingte Ausgabe, wenn Sie eine Ressource [bedingt bereitgestellt](conditional-resource-deployment.md) haben. Das folgende Beispiel zeigt, wie die Ressourcen-ID für eine öffentliche IP-Adresse abhängig davon zurückgegeben wird, ob eine neue Ressourcen-ID bereitgestellt wurde:
+Wenn der zurückzugebende Wert von einer Bedingung in der Bereitstellung abhängt, verwenden Sie den `?`-Operator.
+
+```bicep
+output <name> <data-type> = <condition> ? <true-value> : <false-value>
+```
+
+In der Regel verwenden Sie eine bedingte Ausgabe, wenn Sie eine Ressource [bedingt bereitgestellt](conditional-resource-deployment.md) haben. Das folgende Beispiel zeigt, wie die Ressourcen-ID für eine öffentliche IP-Adresse abhängig davon zurückgegeben wird, ob eine neue Ressourcen-ID bereitgestellt wurde.
 
 Um eine bedingte Ausgabe in Bicep anzugeben, verwenden Sie den `?`-Operator. Im folgenden Beispiel wird entweder eine Endpunkt-URL oder eine leere Zeichenfolge zurückgegeben, abhängig von einer Bedingung.
 
@@ -68,34 +79,41 @@ output endpoint string = deployStorage ? myStorageAccount.properties.primaryEndp
 
 ## <a name="dynamic-number-of-outputs"></a>Dynamische Anzahl von Ausgaben
 
-In einigen Szenarien wissen Sie nicht, wie viele Instanzen eines Werts beim Erstellen der Vorlage zurückgegeben werden müssen. Sie können eine variable Anzahl von Werten zurückgeben, indem Sie eine iterative Ausgabe verwenden.
+In einigen Szenarien wissen Sie nicht, wie viele Instanzen eines Werts beim Erstellen der Vorlage zurückgegeben werden müssen. Sie können eine variable Anzahl von Werten zurückgeben, indem Sie den `for`-Ausdruck verwenden.
 
-Fügen Sie in Bicep einen `for`-Ausdruck hinzu, der die Bedingungen für die dynamische Ausgabe definiert. Im folgenden Beispiel wird ein Array durchlaufen.
+```bicep
+output <name> <data-type> = [for <item> in <collection>: {
+  ...
+}]
+```
+
+Im folgenden Beispiel wird ein Array durchlaufen.
 
 ```bicep
 param nsgLocation string = resourceGroup().location
-param nsgNames array = [
-  'nsg1'
-  'nsg2'
-  'nsg3'
+param orgNames array = [
+  'Contoso'
+  'Fabrikam'
+  'Coho'
 ]
 
-resource nsg 'Microsoft.Network/networkSecurityGroups@2020-06-01' = [for name in nsgNames: {
-  name: name
+resource nsg 'Microsoft.Network/networkSecurityGroups@2020-06-01' = [for name in orgNames: {
+  name: 'nsg-${name}'
   location: nsgLocation
 }]
 
-output nsgs array = [for (name, i) in nsgNames: {
-  name: nsg[i].name
+output deployedNSGs array = [for (name, i) in orgNames: {
+  orgName: name
+  nsgName: nsg[i].name
   resourceId: nsg[i].id
 }]
 ```
 
-Sie können auch einen Bereich von ganzen Zahlen iterieren. Weitere Informationen finden Sie unter [Ausgabeiteration in Bicep](loop-outputs.md).
+Weitere Informationen zu Schleifen finden Sie unter [Iterative Schleifen in Bicep](loops.md).
 
-## <a name="modules"></a>Module
+## <a name="outputs-from-modules"></a>Ausgaben von Modulen
 
-Sie können verwandte Vorlagen mithilfe von Modulen bereitstellen. Zum Abrufen eines Ausgabewerts aus einem Modul verwenden Sie die folgende Syntax:
+Um von einem Modul einen Ausgabewert zu erhalten, verwenden Sie die folgende Syntax:
 
 ```bicep
 <module-name>.outputs.<property-name>

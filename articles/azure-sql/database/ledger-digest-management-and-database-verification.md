@@ -1,27 +1,26 @@
 ---
 title: Digest-Verwaltung und Datenbanküberprüfung
 description: Dieser Artikel enthält Informationen zur Digest-Verwaltung und Datenbanküberprüfung für eine Ledgerdatenbank in Azure SQL-Datenbank.
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 8e6fbbdcb4b6db8ed7e9549b8776010cf01894e4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: df0b87543c213b77a3cf47a7e9020f7f3c0e1866
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355686"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059581"
 ---
 # <a name="digest-management-and-database-verification"></a>Digest-Verwaltung und Datenbanküberprüfung
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger ist zurzeit als Public Preview (Öffentliche Vorschau) verfügbar.
 
 Der Azure SQL-Datenbank-Ledger ermöglicht eine Form der Datenintegrität, die als *Forward Integrity* („Vorwärtsintegrität“) bezeichnet wird und einen Beweis für die Manipulation von Daten in Ihren Ledgertabellen liefern kann. Wenn beispielsweise eine Banktransaktion in einer Ledgertabelle auftritt, in der ein Saldo auf den Wert `x` aktualisiert wurde, und ein Angreifer die Daten später ändert (Änderung des Saldos von `x` in `y`), wird diese Manipulationsaktivität durch die Datenbanküberprüfung erkannt.  
 

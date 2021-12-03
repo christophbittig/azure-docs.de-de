@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 19ead7fe063992e95588641f7fd739081cf54a2f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e037a1ba1ba3c0820321662d4f3feffa6dd2b35
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578412"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050620"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-App, die Web-APIs aufruft – Aufruf eines Tokens
 
@@ -65,7 +65,7 @@ Der für die Clientanmeldeinformationen verwendete Bereich muss immer die Ressou
 
 > [!IMPORTANT]
 > Wenn MSAL ein Zugriffstoken für eine Ressource anfordert, die ein Version 1.0-Zugriffstoken akzeptiert, analysiert Azure AD die gewünschte Zielgruppe aus dem angeforderten Bereich, indem alles vor dem letzten Schrägstrich als Ressourcenbezeichner verwendet wird.
-> Wenn also die Ressource wie z. B. bei Azure SQL-Datenbank (**https:\//database.windows.net**) eine Zielgruppe erwartet, die mit einem Schrägstrich endet (für Azure SQL-Datenbank `https://database.windows.net/`), müssen Sie als Bereich `https://database.windows.net//.default` anfordern. (Beachten Sie den doppelten Schrägstrich.) Weitere Informationen finden Sie unter dem MSAL.NET-Problem [747: Resource url's trailing slash is omitted, which caused sql auth failure](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747) (Bei der URL der Ressource wurde der nachgestellte Schrägstrich ausgelassen, wodurch bei der SQL-Authentifizierung ein Fehler aufgetreten ist).
+> Wenn also, wie bei Azure SQL Database (`https://database.windows.net`), die Ressource eine Zielgruppe erwartet, die mit einem Schrägstrich endet (für Azure SQL Database, `https://database.windows.net/`), müssen Sie einen Bereich von `https://database.windows.net//.default` anfordern. (Beachten Sie den doppelten Schrägstrich.) Siehe auch MSAL.NET Ausgabe [#747: `Resource url's trailing slash is omitted, which caused sql auth failure`](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient-API
 

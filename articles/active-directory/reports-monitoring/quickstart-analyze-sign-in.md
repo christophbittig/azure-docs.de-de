@@ -8,15 +8,15 @@ ms.topic: quickstart
 ms.date: 06/03/2021
 ms.author: markvi
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beaab0517c1bd0d3aa06cc31cf6c087896f7d52b
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: b998a502ba2c3edaae263e5ac1571239f84c3543
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111442032"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997341"
 ---
 # <a name="quickstart-analyze-sign-ins-with-the-azure-ad-sign-ins-log"></a>Schnellstart: Analysieren von Anmeldungen mit dem Azure AD-Anmeldeprotokoll 
 
@@ -27,18 +27,18 @@ Mit den Informationen im Azure AD-Anmeldeprotokoll können Sie herausfinden, wa
 
 Für die Durchführung des Szenarios im Rahmen dieses Schnellstarts benötigen Sie Folgendes:
 
-- **Zugriff auf einen Azure AD-Mandanten**: Wenn Sie keinen Zugriff auf einen Azure AD-Mandanten besitzen, lesen Sie [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- **Zugriff auf einen Azure AD-Mandanten**: Wenn Sie keinen Zugriff auf einen Azure AD-Mandanten besitzen, können Sie hier ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - **Ein Testkonto unter dem Namen Isabella Simonsen**: Wenn Sie nicht wissen, wie Sie ein Testkonto erstellen, lesen Sie [Hinzufügen von cloudbasierten Benutzern](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="perform-a-failed-sign-in"></a>Ausführen einer fehlerhaften Anmeldung
 
-Das Ziel dieses Schritts besteht im Erstellen eines Datensatzes für eine fehlgeschlagene Anmeldung im Azure AD-Anmeldeprotokoll.
+Das Ziel dieses Schritts besteht darin, im Azure AD-Anmeldeprotokoll einen Eintrag über eine fehlgeschlagene Anmeldung zu erstellen.
 
-**So führen Sie diesen Schritt aus:**
+**Führen Sie hierzu folgende Schritte aus:**
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Isabella Simonsen mit einem falschen Kennwort an.
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) als Isabella Simonsen mit einem falschen Kennwort an.
 
-2. Warten Sie 5 Minuten, um sicherzustellen, dass Sie einen Datensatz für die Anmeldung im Anmeldeprotokoll finden können. Weitere Informationen finden Sie unter [Aktivitätsberichte](reference-reports-latencies.md#activity-reports).
+2. Warten Sie fünf Minuten, um sicherzustellen, dass der Eintrag über die Anmeldung im Anmeldeprotokoll angezeigt wird. Weitere Informationen finden Sie unter [Aktivitätsberichte](reference-reports-latencies.md#activity-reports).
 
 
 

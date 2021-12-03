@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 77e374e43722554a215675fd09d0317899d7992f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: feea2bdccd5f4e7ea4c18b7dd155ee0f105b6c8f
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709061"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027563"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -217,7 +217,7 @@ Weitere Informationen zum Anpassen des `applicationInitialization`-Elements find
 
 Sie können das Aufwärmverhalten ferner mithilfe folgender [App-Einstellungen](configure-common.md) anpassen:
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: Der zu pingende Pfad, um Ihre Website vorzubereiten. Fügen Sie diese App-Einstellung durch Angeben eines benutzerdefinierten Pfads hinzu, der mit einem Schrägstrich als Wert beginnt. z. B. `/statuscheck`. Standardwert: `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: Der über HTTP zu pingende Pfad, um Ihre Website vorzubereiten. Fügen Sie diese App-Einstellung durch Angeben eines benutzerdefinierten Pfads hinzu, der mit einem Schrägstrich als Wert beginnt. z. B. `/statuscheck`. Standardwert: `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Gültige HTTP-Antwortcodes für den Aufwärmvorgang. Fügen Sie diese App-Einstellung mit einer durch Trennzeichen getrennten Liste mit HTTP-Codes hinzu. Beispiel: `200,202`. Ist der zurückgegebene Statuscode nicht in der Liste enthalten, werden die Vorbereitungs- und Austauschvorgänge beendet. Standardmäßig sind alle Antwortcodes gültig.
 - `WEBSITE_WARMUP_PATH`: Ein relativer Pfad auf der Site, der bei jedem Neustart der Site (nicht nur während des Slotaustausches) gepingt werden sollte. Beispielwerte sind `/statuscheck` oder der Stammpfad `/`.
 

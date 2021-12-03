@@ -14,14 +14,14 @@ ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.reviewer: miccohen
-ms.openlocfilehash: 2bc309ed4d4fcfcc205ff3b464d23769d1e2182c
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: f5f1d631ad0fdcd484511987b1f79ce702e51fe9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129611855"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339008"
 ---
-# <a name="deploy-an-f5-big-ip-virtual-edition-vm-to-azure-active-directory"></a>Bereitstellen einer VM der F5 BIG-IP Virtual Edition für Azure Active Directory
+# <a name="deploy-an-f5-big-ip-virtual-edition-vm-to-azure"></a>Bereitstellen einer F5 BIG-IP Virtual Edition VM in Azure
 
 In diesem Tutorial finden Sie alle Schritte für die Bereitstellung von BIG-IP Virtual Edition (VE) in Azure IaaS. Am Ende dieses Tutorials verfügen Sie über Folgendes:
 
@@ -47,9 +47,9 @@ Kenntnisse über F5 BIG-IP sind nicht erforderlich. Es wird jedoch empfohlen, s
 
 - Ein Platzhalter- oder SAN-Zertifikat (Subject Alternative Name, alternativer Antragstellername) zum Veröffentlichen von Webanwendungen über SSL (Secure Socket Layer). [Let’s Encrypt](https://letsencrypt.org/) bietet ein kostenloses Testzertifikat für 90 Tage an.
 
-- Ein SSL-Zertifikat zum Schützen der Verwaltungsschnittstelle von BIG-IP. Sie können ein zum Veröffentlichen von Web-Apps verwendetes Zertifikat verwenden, wenn der Antragsteller dem vollqualifizierten Domänennamen (FQDN) von BIG-IP entspricht. So wäre beispielsweise ein Platzhalterzertifikat für den Antragsteller „*.contoso.com“ für `https://big-ip-vm.contoso.com:8443` geeignet.
+- Ein SSL-Zertifikat zum Schützen der Verwaltungsschnittstelle von BIG-IP. Sie können ein zum Veröffentlichen von Web-Apps verwendetes Zertifikat verwenden, wenn der Antragsteller dem vollqualifizierten Domänennamen (FQDN) von BIG-IP entspricht. Beispielsweise wäre ein Platzhalterzertifikat, das mit einem Betreff `*.contoso.com`definiert ist, geeignet für `https://big-ip-vm.contoso.com:8443`
 
-Die VM-Bereitstellung und die grundlegende Systemkonfigurationen dauern ca. 30 Minuten. Zu diesem Zeitpunkt ist Ihre BIG-IP-Plattform für die Implementierung der [hier](f5-aad-integration.md) aufgeführten Szenarien für den sicheren Hybridzugriff (SHA) bereit.
+Die VM-Bereitstellung und die grundlegende Systemkonfigurationen dauern ca. 30 Minuten. Zu diesem Zeitpunkt ist Ihre BIG-IP-Plattform bereit für die Implementierung eines der SHA-Szenarien, die unter [Integrieren von F5 BIG-IP in Azure Active Directory.Azure Active Directory](f5-aad-integration.md) aufgeführt sind.
 
 Zum Testen der Szenarien wird in diesem Tutorial davon ausgegangen, dass BIG-IP in einer Azure-Ressourcengruppe bereitgestellt wird, die eine Active Directory-Umgebung (AD) enthält. Die Umgebung sollte aus einem Domänencontroller (DC) und Webhost-VMs (IIS) bestehen. Es ist auch möglich, diese Server an anderen Standorten als die BIG-IP-VM bereitzustellen, sofern BIG-IP direkten Zugriff auf die für die Unterstützung eines bestimmten Szenarios erforderlichen Komponenten hat. Darüber hinaus werden auch Szenarien unterstützt, in denen die BIG-IP-VM über eine VPN-Verbindung mit einer anderen Umgebung verbunden ist.
 
@@ -234,7 +234,7 @@ In den folgenden Schritten wird davon ausgegangen, dass die DNS-Zone der öffent
   Wenn Sie den DNS-Domänennamespace mit einem externen Anbieter wie [GoDaddy](https://www.godaddy.com/) verwalten, müssen Sie die Datensätze mit den dort bereitgestellten DNS-Verwaltungsfunktionen erstellen.
 
 >[!NOTE]
->Sie können auch die lokale Hostdatei eines PC verwenden, wenn Sie DNS-Einträge testen und häufig ändern möchten. Sie können auf die Datei „localhost“ auf einem Windows-Computer zugreifen, indem Sie auf der Tastatur „Windows+R“ drücken und im Feld „Ausführen“ das Wort **Treiber** übergeben. Beachten Sie, dass ein Localhost-Eintrag die DNS-Auflösung nur für den lokalen Computer, nicht jedoch für andere Clients bereitstellt.
+>Sie können auch die lokale Hostdatei eines PC verwenden, wenn Sie DNS-Einträge testen und häufig ändern möchten. Sie können auf die Datei „localhost“ auf einem Windows-Computer zugreifen, indem Sie auf der Tastatur „Windows+R“ drücken und im **Feld „Ausführen“** das Wort *Treiber* übergeben. Denken Sie daran, dass ein lokaler Hosteintrag nur die DNS-Auflösung für den lokalen PC und nicht für andere Clients bereitstellt.
 
 ## <a name="client-traffic"></a>Clientdatenverkehr
 
@@ -251,7 +251,7 @@ Standardmäßig sind Azure-VNETs und die zugehörigen Subnetze private Netzwerke
  |Ziel-IP-Adressen|Durch Trennzeichen getrennte Liste aller sekundären privaten IP-Adressen der BIG-IP-VM|
  |Zielports| 80, 443|
  |Protokoll| TCP |
- |Aktion| Zulassen|
+ |Aktion| Allow|
  |Priorität|Der niedrigste verfügbare Wert zwischen 100 und 4096|
  |Name | Ein aussagekräftiger Name, z. B. `BIG-IP-VM_Web_Services_80_443`|
 
@@ -355,7 +355,7 @@ Wenn Sie sowohl Client-SSL- als auch Server-SSL-Profile bereitstellen, ist BIG-I
 
 2. Wählen Sie in der Dropdownliste **Import Type** (Importtyp) die Option **PKCS 12 (IIS)** aus.
 
-3. Geben Sie einen Namen für das importierte Zertifikat an, z. B. `ContosoWilcardCert`.
+3. Geben Sie einen Namen für das importierte Zertifikat an, z. B. `ContosoWildcardCert`.
 
 4. Wählen Sie **Choose File** (Datei auswählen) aus, um zum SSL-Webzertifikat zu navigieren, dessen Antragstellernamen dem gewünschten Domänensuffix für veröffentlichte Dienste entspricht.
 
@@ -363,7 +363,7 @@ Wenn Sie sowohl Client-SSL- als auch Server-SSL-Profile bereitstellen, ist BIG-I
 
 6. Wechseln Sie auf der linken Navigationsleiste zu **Local Traffic** > **Profiles** > **SSL** > **Client** (Lokaler Datenverkehr > Profile > SSL > Client), und wählen Sie dann **Create** (Erstellen) aus.
 
-7. Geben Sie auf der Seite **New Client SSL Profile** (Neues Client-SSL-Profil) einen eindeutigen Anzeigenamen für das neue Client-SSL-Profil an, und stellen Sie sicher, dass das übergeordnete Profil auf **clientssl** festgelegt ist.
+7. Geben Sie auf der Seite **Neues Server-SSL-Profil** einen eindeutigen Anzeigenamen für das neue Server-SSL-Profil an, und stellen Sie sicher, dass das übergeordnete Profil auf `clientssl` gesetzt ist.
 
 ![Abbildung der BIG-IP-Aktualisierung](./media/f5ve-deployment-plan/client-ssl.png)
 
@@ -375,7 +375,7 @@ Wenn Sie sowohl Client-SSL- als auch Server-SSL-Profile bereitstellen, ist BIG-I
 
 10. Wiederholen Sie die Schritte 6–9, um ein **SSL-Serverzertifikatprofil** zu erstellen. Wählen Sie auf dem oberen Menüband **SSL** > **Server** > **Create** (Erstellen) aus.
 
-11. Geben Sie auf der Seite **New Server SSL Profile** (Neues Server-SSL-Profil) einen eindeutigen Anzeigenamen für das neue Server-SSL-Profil an, und stellen Sie sicher, dass das übergeordnete Profil auf **serverssl** festgelegt ist.
+11. Geben Sie auf der Seite **Neues Server-SSL-Profil** einen eindeutigen Anzeigenamen für das neue Server-SSL-Profil an, und stellen Sie sicher, dass das übergeordnete Profil auf `serverssl`gesetzt ist.
 
 12. Aktivieren Sie in den Zeilen „Certificate“ (Zertifikat) und „Key“ (Schlüssel) jeweils das Kontrollkästchen ganz rechts, und wählen Sie in der Dropdownliste Ihr importiertes Zertifikat und dann **Finished** (Fertig) aus.
 

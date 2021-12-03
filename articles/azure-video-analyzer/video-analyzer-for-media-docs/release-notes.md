@@ -5,12 +5,12 @@ ms.topic: article
 ms.custom: references_regions
 ms.date: 08/01/2021
 ms.author: juliako
-ms.openlocfilehash: 3bfe1e7f18f50723eed9d456eac8a773f06a34bf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7341112e545e4fc0c74de8d32e9c2d54d3461057
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128552564"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491919"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>Versionshinweise zu Video Analyzer for Media
 
@@ -22,6 +22,26 @@ Damit Sie bei den aktuellen Entwicklungen in Bezug auf Azure Video Analyzer for 
 * Bekannte Probleme
 * Behebung von Programmfehlern
 * Veraltete Funktionen
+
+## <a name="november-2021"></a>November 2021
+ 
+### <a name="public-preview-of-azure-video-analyzer-for-media-account-management-based-on-arm"></a>Öffentliche Vorschauversion von Azure Video Analyzer für die Medienkontoverwaltung basierend auf ARM
+
+Azure Video Analyzer für Medien führt eine öffentliche Vorschauversion der Azure Resource Manager (ARM)-basierten Kontoverwaltung ein. Sie können ARM-basierte APIs zum Erstellen, Bearbeiten und Löschen eines Kontos aus dem Azure-Portal nutzen.
+
+Weitere Informationen finden Sie unter [Erstellen eines Video Analyzer for Media](https://techcommunity.microsoft.com/t5/azure-ai/azure-video-analyzer-for-media-is-now-available-as-an-azure/ba-p/2912422).
+
+### <a name="peoples-clothing-detection"></a>Erkennung der Bekleidung von Personen
+
+Wenn Sie ein Video über die erweiterten Videoeinstellungen indizieren, können Sie die neue Funktion zur **Erkennung von Kleidung** sehen. Wenn in Ihrer Mediendatei Personen erkannt werden, können Sie nun über den Media Player den Kleidungstyp anzeigen, den sie tragen. 
+
+## <a name="october-2021"></a>Oktober 2021
+
+### <a name="embed-widgets-in-your-app-using-azure-video-analyzer-for-media-package"></a>Einbetten von Widgets in Ihre App mithilfe des Azure Video Analyzer für Medienpaket
+
+Verwenden Sie das neue `@azure/video-analyzer-for-media-widgets` NPM-Paket von Azure Video Analyzer für Medien (AVAM), um Ihrer App `insights` Widgets hinzuzufügen und sie ihren Anforderungen entsprechend anzupassen.
+
+Mit dem neuen AVAM-Paket können Sie ganz einfach unsere Widgets und Ihre App einbetten und kommunizieren, anstatt ein `iframe`-Element zum Einbetten des Erkenntniswidgets hinzuzufügen. Weitere Informationen finden Sie unter [Einbetten und Anpassen von Video Analyzer for Media-Widgets in Ihre App](https://techcommunity.microsoft.com/t5/azure-media-services/embed-and-customize-azure-video-analyzer-for-media-widgets-in/ba-p/2847063). 
 
 ## <a name="august-2021"></a>August 2021
 
@@ -112,7 +132,7 @@ Das neu hinzugefügte Paket ist verfügbar, wenn Sie beim Indizieren oder Neuind
 
 ### <a name="new-developer-portal"></a>Neues Entwicklerportal 
 
-Video Analyzer for Media verfügt über ein [Neues Entwicklerportal](https://api-portal.videoindexer.ai/) – testen Sie die neuen Video Analyzer for Media-APIs, und finden Sie alle relevanten Ressourcen an einem Ort: [GitHub-Repository](https://github.com/Azure-Samples/media-services-video-indexer), [Stack Overflow](https://stackoverflow.com/questions/tagged/video-indexer), [Video Analyzer for Media Tech Community](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer) mit relevanten Blogbeiträgen, [Häufig gestellte Fragen (FAQs) zu Video Analyzer for Media](faq.yml), [User Voice](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016), um Feedback zu geben und Features vorzuschlagen, und ["CodePen"-Link](https://codepen.io/videoindexer) mit Codebeispielen für Widgets. 
+Video Analyzer for Media verfügt über ein [Neues Entwicklerportal](https://api-portal.videoindexer.ai/) – testen Sie die neuen Video Analyzer for Media-APIs, und finden Sie alle relevanten Ressourcen an einem Ort: [GitHub-Repository](https://github.com/Azure-Samples/media-services-video-indexer), [Stack Overflow](https://stackoverflow.com/questions/tagged/video-indexer), [Video Analyzer for Media Tech Community](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer) mit relevanten Blogbeiträgen, [Häufig gestellte Fragen (FAQs) zu Video Analyzer for Media](faq.yml), [User Voice](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858), um Feedback zu geben und Features vorzuschlagen, und ["CodePen"-Link](https://codepen.io/videoindexer) mit Codebeispielen für Widgets. 
  
 ### <a name="advanced-customization-capabilities-for-insight-widget"></a>Erweiterte Anpassungsmöglichkeiten für das Erkenntnis-Widget 
 

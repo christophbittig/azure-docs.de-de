@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 08/09/2021
 author: palma21
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fefdb4619c017d7c43e4dfa84c8099450310ca2f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8a19cc69d14e32a20819618efcf60594aef34be9
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339911"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371978"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster"></a>Beenden und Starten eines AKS-Clusters (Azure Kubernetes Service)
 
 Ihre AKS-Workloads müssen möglicherweise nicht kontinuierlich ausgeführt werden – beispielsweise bei einem Entwicklungscluster, der nur während der Geschäftszeiten verwendet wird. In diesem Fall können Zeiten auftreten, in denen sich Ihr AKS-Cluster (Azure Kubernetes Service) im Leerlauf befindet und nur die Systemkomponenten ausgeführt werden. Dann können Sie den Speicherbedarf des Clusters reduzieren, indem Sie [alle `User`-Knotenpools auf 0 skalieren](scale-cluster.md#scale-user-node-pools-to-0). Der [`System`-Pool](use-system-pools.md) wird jedoch weiterhin für die Ausführung der Systemkomponenten benötigt, solange der Cluster ausgeführt wird.
-Um Ihre Kosten während dieser Zeiträume weiter zu optimieren, können Sie Ihren Cluster vollständig ausschalten (beenden). Dadurch werden Ihre Steuerungsebene und Agentknoten vollständig angehalten, sodass Sie bei allen Computekosten sparen können. Gleichzeitig werden alle Objekte und der Clusterstatus gespeichert und so lange beibehalten, bis Sie sie wieder starten. So können Sie nach einem Wochenende genau dort weitermachen, wo Sie aufgehört haben. Sie haben auch die Möglichkeit, Ihren Cluster immer nur dann auszuführen, wenn Sie Ihre Batchaufträge ausführen.
+Um Ihre Kosten während dieser Zeiträume weiter zu optimieren, können Sie Ihren Cluster vollständig ausschalten (beenden). Durch diese Aktion werden die Steuerungsebene und die Agent-Knoten vollständig beendet, sodass Sie alle Computerkosten sparen können, während Sie alle Ihre Objekte (mit Ausnahme eigenständiger Pods) und den Clusterstatus beibehalten, die gespeichert werden, wenn Sie sie erneut starten. So können Sie nach einem Wochenende genau dort weitermachen, wo Sie aufgehört haben. Sie haben auch die Möglichkeit, Ihren Cluster immer nur dann auszuführen, wenn Sie Ihre Batchaufträge ausführen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -30,6 +30,7 @@ Wenn Sie das Feature zum Starten/Beenden von Clustern verwenden, gelten die folg
 - Der Clusterstatus eines beendeten AKS-Clusters wird bis zu 12 Monate beibehalten. Wenn Ihr Cluster länger als 12 Monate angehalten wird, kann der Clusterstatus danach nicht mehr wiederhergestellt werden. Weitere Informationen finden Sie unter [Unterstützungsrichtlinien für Azure Kubernetes Service](support-policies.md).
 - Nun ein angehaltener AKS-Cluster kann gestartet oder gelöscht werden. Wenn Sie einen Vorgang wie eine Skalierung oder ein Upgrade ausführen möchten, müssen Sie zuerst den Cluster starten.
 - Die vom Kunden bereitgestellten PrivateEndpoints, die mit dem privaten Cluster verknüpft sind, müssen gelöscht und erneut erstellt werden, wenn Sie einen beendeten AKS-Cluster starten.
+- Da der Beendigungsprozess alle Knoten leert, werden alle eigenständigen Pods (d. h. Pods, die nicht von einer Bereitstellung verwaltet werden, StatefulSet, DaemonSet, Auftrag usw.) gelöscht.
 
 ## <a name="stop-an-aks-cluster"></a>Beenden eines AKS-Clusters
 

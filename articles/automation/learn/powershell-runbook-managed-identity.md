@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/28/2021
 ms.topic: tutorial
-ms.openlocfilehash: f335df520b8d47a9439575a5d2f337d28a9bebc6
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 31f9e30d938f70852eac5c5185626828e5305897
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357548"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427169"
 ---
 # <a name="tutorial-create-automation-powershell-runbook-using-managed-identity"></a>Tutorial: Erstellen eines Automation PowerShell-Runbooks mithilfe einer verwalteten Identität
 
-Dieses Tutorial führt Sie schrittweise durch das Erstellen eines [PowerShell-Runbooks](../automation-runbook-types.md#powershell-runbooks) in Azure Automation, das [verwaltete Identitäten](../automation-security-overview.md#managed-identities-preview) anstelle des ausführenden Kontos verwendet, um mit Ressourcen zu interagieren. PowerShell-Runbooks basieren auf Windows PowerShell. Durch eine verwaltete Entität aus Azure Active Directory (Azure AD) kann Ihr Runbook mühelos auf andere durch Azure AD geschützte Ressourcen zugreifen.
+Dieses Tutorial führt Sie schrittweise durch das Erstellen eines [PowerShell-Runbooks](../automation-runbook-types.md#powershell-runbooks) in Azure Automation, das eine [verwaltete Identität](../automation-security-overview.md#managed-identities) anstelle des ausführenden Kontos verwendet, um mit Ressourcen zu interagieren. PowerShell-Runbooks basieren auf Windows PowerShell. Durch eine verwaltete Entität aus Azure Active Directory (Azure AD) kann Ihr Runbook mühelos auf andere durch Azure AD geschützte Ressourcen zugreifen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -267,11 +267,7 @@ Remove-AzRoleAssignment `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie ein [PowerShell-Runbook](../automation-runbook-types.md#powershell-runbooks) in Azure Automation erstellt, das [verwaltete Identitäten](../automation-security-overview.md#managed-identities-preview) anstelle des ausführenden Kontos verwendet hat, um mit Ressourcen zu interagieren. Informationen zu PowerShell-Workflow-Runbooks finden Sie unter:
+In diesem Tutorial haben Sie ein [PowerShell-Runbook](../automation-runbook-types.md#powershell-runbooks) in Azure Automation erstellt, das eine [verwaltete Identität](../automation-security-overview.md#managed-identities) anstelle des ausführenden Kontos verwendet hat, um mit Ressourcen zu interagieren. Informationen zu PowerShell-Workflow-Runbooks finden Sie unter:
 
 > [!div class="nextstepaction"]
 > [Tutorial: Erstellen eines PowerShell-Workflow-Runbooks](automation-tutorial-runbook-textual.md)
-
-
-
-

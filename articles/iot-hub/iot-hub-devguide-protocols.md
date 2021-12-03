@@ -1,8 +1,8 @@
 ---
 title: Azure IoT Hub-Kommunikationsprotokolle und -Ports | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Beschreibung der unterstützten Kommunikationsprotokolle für D2C- und C2D-Kommunikationen sowie der Portnummern, die geöffnet sein müssen.'
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: fdc463c6af5d3a62897cebefc3bafb6dca3a8ce0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 95debfa45f56f138295e33c0464bd722dcc463c5
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338947"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554691"
 ---
 # <a name="choose-a-device-communication-protocol"></a>Auswählen eines Protokolls für die Gerätekommunikation
 

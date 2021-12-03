@@ -3,12 +3,13 @@ title: Berechtigungen für Repositorys in Azure Container Registry
 description: Erstellen eines Tokens mit Berechtigungen, die für bestimmte Repositorys in einer Premium-Registrierung gelten, um Images zu pullen oder zu pushen bzw. andere Aktionen auszuführen
 ms.topic: article
 ms.date: 02/04/2021
-ms.openlocfilehash: 796d98173a5ec850af2f8dbec3e8bfd1db902ca0
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 560722669dc663799af3219393cb7bdc4acdf3ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220432"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037984"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Erstellen eines Token mit repositorybezogenen Berechtigungen
 
@@ -428,7 +429,7 @@ Wählen Sie im Portal das Token im Bildschirm **Token (Vorschau)** und dann **Ve
 
 * Um Gültigkeitsbereichszuordnungen und Token zu verwalten, verwenden Sie zusätzliche Befehle in den [az acr scope-map][az-acr-scope-map]- und [az acr token][az-acr-token]-Befehlsgruppen.
 * In der [Authentifizierungsübersicht](container-registry-authentication.md) finden Sie weitere Optionen zur Authentifizierung mit einer Azure-Containerregistrierung, einschließlich der Verwendung einer Azure Active Directory-Identität, eines Dienstprinzipals oder eines Administratorkontos.
-
+* Erfahren Sie mehr über [verbundene Registrierungen](intro-connected-registry.md) und die Verwendung von Token für den [Zugriff](overview-connected-registry-access.md).
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

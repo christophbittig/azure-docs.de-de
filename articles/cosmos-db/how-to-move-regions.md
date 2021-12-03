@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: e8d39f6215e76c4cd9da9458f5e8a7af61622089
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: abe4c084243025cb5570d8913911a45554f067f5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094832"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454521"
 ---
 # <a name="move-an-azure-cosmos-db-account-to-another-region"></a>Verschieben eines Azure Cosmos DB-Kontos in eine andere Region
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -40,6 +40,9 @@ Azure Cosmos DB unterstützt nativ die Datenreplikation, sodass das Verschieben
 1. Entfernen Sie die ursprüngliche Region.
 
     Informationen zum Entfernen einer Region aus einem Azure Cosmos DB-Konto finden Sie unter [Hinzufügen/Entfernen von Regionen aus Ihrem Azure Cosmos DB-Konto](how-to-manage-database-account.md#addremove-regions-from-your-database-account).
+
+> [!NOTE]
+> Wenn Sie einen Failovervorgang ausführen oder eine neue Region hinzufügen/entfernen, während ein [asynchroner Durchsatzskalierungsvorgang](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) aktiv ist, wird der Vorgang zum horizontalen Hochskalieren des Durchsatzes angehalten. Er wird automatisch fortgesetzt, sobald der Failovervorgang oder das Hinzufügen/Entfernen der Region abgeschlossen ist. 
 
 ## <a name="migrate-azure-cosmos-db-account-metadata"></a>Migrieren von Azure Cosmos DB-Kontometadaten
 

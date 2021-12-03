@@ -9,12 +9,12 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp, subject-rbac-steps
-ms.openlocfilehash: ef49c6ebd356c97466b9b5a744cc58584c42bcb7
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 7006cbf78e7a1a122837e7e2f294b161c230ee29
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113126030"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137058"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Authentifizierung und Autorisierung bei Azure Spatial Anchors
 
@@ -112,7 +112,7 @@ Für Anwendungen, die auf Azure Active Directory-Benutzer abzielen, empfehlen wi
         1.    Wenn Ihre Anwendung **Nur meine Organisation** unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen**. Beispiel: „contoso.microsoft.com“.
         2.    Wenn Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch **Organizations** (Organisationen).
         3.    Wenn Ihre Anwendung **Alle Microsoft-Kontobenutzer** unterstützt, ersetzen Sie diesen Wert durch **Common** (Allgemein).
-3.    Legen Sie für Ihre Tokenanforderung für **scope** den Wert **"`https://sts.<account-domain>//.default`"** fest, wobei `<account-domain>` durch die **Kontodomäne** für Ihr Azure Spatial Anchors-Konto ersetzt wird. Ein Beispiel für ein Azure Spatial Anchors-Konto in der Kontodomäne „USA, Osten 2“ ist **"`https://sts.mixedreality.azure.com//.default`"** . Dieser Bereich informiert Azure AD darüber, dass Ihre Anwendung ein Token für den Sicherheitstokendienst (Security Token Service, STS) Mixed Reality anfordert.
+3.    Legen Sie in Ihrer Tokenanforderung den **Bereich** auf **`https://sts.mixedreality.azure.com//.default`** fest. Dieser Bereich informiert Azure AD darüber, dass Ihre Anwendung ein Token für den Sicherheitstokendienst (Security Token Service, STS) Mixed Reality anfordert.
 
 Nachdem Sie diese Schritte ausgeführt haben, sollte Ihre Anwendung in der Lage sein, ein Azure AD-Token von MSAL abzurufen. Sie können dieses Azure AD-Token als `authenticationToken` für Ihr Cloudsitzungs-Konfigurationsobjekt festlegen:
 
@@ -181,7 +181,7 @@ Das Azure AD-Zugriffstoken wird mithilfe von [MSAL](../../active-directory/deve
 
 1.    Stellen Sie sicher, dass Sie die Anwendungs-ID, das Anwendungsgeheimnis und den Umleitungs-URI Ihrer eigenen Azure AD-Anwendung als Parameter für **Client-ID**, **Geheimnis** und **RedirectUri** (Umleitungs-URI) in MSAL verwenden.
 2.    Legen Sie die Mandanten-ID im **authority**-Parameter in MSAL auf Ihre eigene Azure AD-Mandanten-ID fest.
-3.    Legen Sie für Ihre Tokenanforderung für **scope** den Wert **"`https://sts.<account-domain>//.default`"** fest, wobei `<account-domain>` durch die **Kontodomäne** für Ihr Azure Spatial Anchors-Konto ersetzt wird. Ein Beispiel für ein Azure Spatial Anchors-Konto in der Kontodomäne „USA, Osten 2“ ist **"`https://sts.mixedreality.azure.com//.default`"** .
+3.    Legen Sie in Ihrer Tokenanforderung den **Bereich** auf **`https://sts.mixedreality.azure.com//.default`** fest.
 
 Nachdem Sie diese Schritte durchgeführt haben, kann Ihr Back-End-Dienst ein Azure AD-Token abrufen. Der Dienst kann dieses Token gegen ein MR-Token austauschen, das er dann an den Client zurückgibt. Der Abruf eines MR-Tokens mithilfe eines Azure AD-Tokens erfolgt über einen REST-Aufruf. Hier sehen Sie einen Beispielaufruf:
 

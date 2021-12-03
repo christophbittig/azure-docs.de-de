@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe41b61a21aea87a35446f1b5c7052f62595b29
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a70d01ddd2387e30ef854acff1412fac2bd0bf65
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046618"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346475"
 ---
 # <a name="azure-active-directory-security-operations-guide-for-applications"></a>Leitfaden für Azure Active Directory-Sicherheitsvorgänge für Anwendungen
 
@@ -76,15 +76,15 @@ Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien:
 
 * [Azure Key Vault-Protokolle](../../key-vault/general/logging.md)
 
-Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- oder JSON-Dateien (Comma-Separated Value, JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen mit anderen Tools, die eine weitergehende Automatisierung von Überwachung und Warnmeldungen ermöglichen:
+Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- oder JSON-Dateien (Comma-Separated Value, JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen in andere Tools, die eine umfassendere Automatisierung von Überwachung und Warnmeldungen ermöglichen:
 
-* **[Azure Sentinel](../../sentinel/overview.md)** : ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
+* **[Microsoft Sentinel](../../sentinel/overview.md)** : Ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
 
 * **[Azure Monitor](../../azure-monitor/overview.md)** : ermöglicht die automatisierte Überwachung verschiedener Bedingungen und entsprechende Warnungen. Mit dem Tool können Arbeitsmappen erstellt werden, die sich zum Kombinieren von Daten aus verschiedenen Quellen eignen.
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) mit Integration in ein SIEM-System**- [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme wie Splunk, ArcSight, QRadar und Sumo Logic integriert](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) werden.
 
-* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)** : Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps.
+* **[Microsoft Defender für Cloud-Apps](/cloud-app-security/what-is-cloud-app-security)** : Ermöglichen Ihnen die Erkennung und Verwaltung von Apps, die Steuerung von Apps und Ressourcen sowie die Überprüfung der Compliance Ihrer Cloud-Apps.
 
 Ein Großteil der Überwachung und zugehörigen Warnungen hängt von den Auswirkungen Ihrer Richtlinien für bedingten Zugriff ab. Sie können die Arbeitsmappe [Erkenntnisse und Berichterstellung zum bedingten Zugriff](../conditional-access/howto-conditional-access-insights-reporting.md) verwenden, um die Auswirkungen einer oder mehrerer Richtlinien für bedingten Zugriff auf Ihre Anmeldungen sowie die Ergebnisse von Richtlinien, einschließlich Gerätestatus, zu untersuchen. Diese Arbeitsmappe bietet Ihnen die Möglichkeit, eine Zusammenfassung der Auswirkungen anzuzeigen und die Auswirkungen über einen bestimmten Zeitraum zu ermitteln. Sie können mithilfe der Arbeitsmappe auch die Anmeldungen eines bestimmten Benutzers untersuchen. 
 
@@ -106,11 +106,11 @@ Viele Anwendungen verwenden Anmeldeinformationen für die Authentifizierung bei 
 
  Die folgenden vordefinierten Überwachungen und Warnungen sind verfügbar.
 
-* Azure Sentinel: [Warnung, wenn neue Anmeldeinformationen für die App oder den Dienstprinzipal hinzugefügt wurden](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/AuditLogs/NewAppOrServicePrincipalCredential.yaml) 
+* Microsoft Sentinel: [Warnung, wenn neue Anmeldeinformationen für die App oder den Dienstprinzipal hinzugefügt wurden](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/AuditLogs/NewAppOrServicePrincipalCredential.yaml) 
 
 * Azure Monitor: [Azure AD Arbeitsmappe, um Sie bei der Bewertung des Solorigate-Risikos zu unterstützen – Microsoft Tech Community](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/azure-ad-workbook-to-help-you-assess-solorigate-risk/ba-p/2010718)
 
-* MCAS: [Cloud App Security-Leitfaden zur Untersuchung von Warnungen zur Anomalieerkennung](/cloud-app-security/investigate-anomaly-alerts)
+* Defender für Cloud-Apps – [Defender für Cloud-Apps-Leitfaden zur Untersuchung von Warnungen zur Anomalieerkennung](/cloud-app-security/investigate-anomaly-alerts)
 
 * PowerShell: [PowerShell-Beispielskript zum Ermitteln der Gültigkeitsdauer von Anmeldeinformationen](https://github.com/madansr7/appCredAge)
 
@@ -181,7 +181,7 @@ Weitere Informationen zu Einwilligungsvorgängen finden Sie in den folgenden Res
 | Zu überwachende Elemente| Risikostufe| Hierbei gilt:| Filter/Unterfilter| Notizen |
 |-|-|-|-|-|
 | Verwaister URI| Hoch| Azure AD-Protokolle und Anwendungsregistrierung| Dienst – Kernverzeichnis, Kategorie: ApplicationManagement<br>Aktivität: Anwendung aktualisieren<br>Erfolg: Eigenschaftenname, AppAddress| Achten Sie zum Beispiel auf verwaiste URIs, die auf eine Domäne verweisen, die nicht mehr vorhanden ist oder die Sie nicht explizit besitzen. |
-| Änderungen an der Konfiguration des Umleitungs-URI| Hoch| Azure AD-Protokolle| Dienst – Kernverzeichnis, Kategorie: ApplicationManagement<br>Aktivität: Anwendung aktualisieren<br>Erfolg: Eigenschaftenname, AppAddress| Achten Sie auf URIs ohne HTTPS*, URIs mit Platzhaltern am Ende oder der Domäne der URL, URIs, die für die Anwendung nicht eindeutig sind, und URIs, die auf eine Domäne verweisen, die Sie nicht kontrollieren. |
+| Änderungen an der Konfiguration des Umleitungs-URI| Hoch| Azure AD-Protokolle| Dienst – Kernverzeichnis, Kategorie: ApplicationManagement<br>Aktivität: Anwendung aktualisieren<br>Erfolg: Eigenschaftenname, AppAddress| Achten Sie auf URIs ohne HTTPS*, URIs mit Platzhaltern am Ende oder der Domäne der URL, URIs, die für die Anwendung NICHT eindeutig sind, und URIs, die auf eine Domäne verweisen, die Sie nicht kontrollieren. |
 
 Warnung auslösen, wenn diese Änderungen erkannt werden.
 

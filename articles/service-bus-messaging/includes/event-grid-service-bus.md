@@ -1,19 +1,19 @@
 ---
-title: Datei einfügen
+title: include file
 description: include file
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 10/20/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8115e79a0cf747fbf5980d717331883097012077
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 491d8cb7cc11d0a904ad70fac8d54c9c6e16670d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112412995"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287336"
 ---
 ## <a name="available-event-types"></a>Verfügbare Ereignistypen
 
@@ -23,8 +23,8 @@ Service Bus gibt die folgenden Ereignistypen aus:
 | ---------- | ----------- |
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | Wird ausgelöst, wenn aktive Nachrichten in einer Warteschlange oder in einem Abonnement vorliegen und kein lauschender Empfänger vorhanden ist. |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListeners | Wird ausgelöst, wenn aktive Nachrichten in einer Warteschlange für unzustellbare Nachrichten vorliegen und kein lauschender Empfänger vorhanden ist. |
-| Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications | Wird regelmäßig ausgelöst, wenn aktive Nachrichten in einer Warteschlange oder einem Abonnement vorhanden sind, auch wenn aktive Listener in dieser bestimmten Warteschlange oder im Abonnement vorhanden sind. |
-| Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications | Wird regelmäßig ausgelöst, wenn aktive Nachrichten in der Deadletter-Entität einer Warteschlange oder eines Abonnements vorhanden sind, auch wenn aktive Listener in der Deadletter-Entität dieser bestimmten Warteschlange oder im Abonnement vorhanden sind. | 
+| Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications | Wird alle 30 Sekunden ausgelöst, wenn aktive Nachrichten in einer Warteschlange oder einem Abonnement vorhanden sind, selbst wenn aktive Listener in dieser spezifischen Warteschlange oder des Abonnements vorhanden sind. Eine Auslösung erfolgt ebenfalls, wenn die Anzahl aktiver Nachrichten für die Warteschlange oder das Abonnement von 0 in einen positiven Wert wechselt. |
+| Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications | Wird alle 30 Sekunden ausgelöst, wenn aktive Nachrichten in der Entität für unzustellbare Nachrichten einer Warteschlange oder eines Abonnements vorhanden sind, selbst wenn aktive Listener in der Entität für unzustellbare Nachrichten dieser spezifischen Warteschlange oder des Abonnements vorhanden sind. Eine Auslösung erfolgt ebenfalls, wenn die Anzahl unzustellbarer Nachrichten für die Entität für unzustellbare Nachrichten der Warteschlange oder des Abonnements von 0 in einen positiven Wert wechselt. | 
 
 ## <a name="example-event"></a>Beispielereignis
 
@@ -223,7 +223,7 @@ Dieses Ereignis wird regelmäßig ausgelöst, wenn unzustellbare Nachrichten fü
 # <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -238,7 +238,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -252,7 +252,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | `namespaceName` | Zeichenfolge | Der Service Bus-Namespace, in dem sich die Ressource befindet. |
 | `requestUri` | Zeichenfolge | Der URI für die spezifische Warteschlange oder das Abonnement, von der bzw. von dem das Ereignis ausgegeben wird. |

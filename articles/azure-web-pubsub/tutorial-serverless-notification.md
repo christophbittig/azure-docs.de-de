@@ -5,13 +5,13 @@ author: JialinXin
 ms.author: jixin
 ms.service: azure-web-pubsub
 ms.topic: tutorial
-ms.date: 08/24/2021
-ms.openlocfilehash: f0811776692bcb12e25fa9757c13d7a0fb75c7fa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/01/2021
+ms.openlocfilehash: 3fb4c5dbbc8ea073962cd7e0edb3e53c4c9920d5
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080933"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494024"
 ---
 # <a name="tutorial-create-a-serverless-notification-app-with-azure-functions-and-azure-web-pubsub-service"></a>Tutorial: Erstellen einer serverlosen Benachrichtigungs-App mit Azure Functions und dem Azure Web PubSub-Dienst
 
@@ -67,71 +67,77 @@ In diesem Tutorial lernen Sie Folgendes:
     func init --worker-runtime dotnet
     ```
 
-1. Installieren Sie das `Microsoft.Azure.WebJobs.Extensions.WebPubSub`-Funktionserweiterungspaket explizit.
+2. *Installieren Sie das `Microsoft.Azure.WebJobs.Extensions.WebPubSub`-Funktionserweiterungspaket.
 
-   1. Entfernen Sie den Abschnitt `extensionBundle` in `host.json`, um die Installation eines bestimmten Erweiterungspakets im nächsten Schritt zu ermöglichen. Sie können den JSON-Code für den Host auch so einfach wie unten gestalten.
+    > [!NOTE]
+    > Der Schritt ist optional, wenn [Erweiterungsbündel](/azure/azure-functions/functions-bindings-register#extension-bundles) unterstützt werden.
 
-      ```json
-      {
+   a. Entfernen Sie den Abschnitt `extensionBundle` in `host.json`, um die Installation eines bestimmten Erweiterungspakets im nächsten Schritt zu ermöglichen. Sie können den JSON-Code für den Host auch so einfach wie unten gestalten.
+    ```json
+    {
         "version": "2.0"
-      }
-      ```
+    }
+    ```
+   b. Führen Sie den Befehl zum Installieren eines bestimmten Funktionserweiterungspakets aus.
+    ```bash
+    func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0
+    ```
 
-   1. Führen Sie den Befehl zum Installieren eines bestimmten Funktionserweiterungspakets aus.
-
-      ```bash
-      func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
-      ```
-
-1. Erstellen Sie eine `index`-Funktion zum Lesen und Hosten einer statischen Webseite für Clients.
-
-   ```bash
-   func new -n index -t HttpTrigger
-   ```
-
+3. Erstellen Sie eine `index`-Funktion zum Lesen und Hosten einer statischen Webseite für Clients.
+    ```bash
+    func new -n index -t HttpTrigger
+    ```
    # <a name="javascript"></a>[JavaScript](#tab/javascript)
    - Aktualisieren Sie `index/function.json` und kopieren Sie den folgenden JSON-Code.
-     ```json
-     {
-         "bindings": [
-             {
-                 "authLevel": "anonymous",
-                 "type": "httpTrigger",
-                 "direction": "in",
-                 "name": "req",
-                 "methods": [
-                   "get",
-                   "post"
-                 ]
-             },
-             {
-                 "type": "http",
-                 "direction": "out",
-                 "name": "res"
-             }
-         ]
-     }
-     ```
+        ```json
+        {
+            "bindings": [
+                {
+                    "authLevel": "anonymous",
+                    "type": "httpTrigger",
+                    "direction": "in",
+                    "name": "req",
+                    "methods": [
+                      "get",
+                      "post"
+                    ]
+                },
+                {
+                    "type": "http",
+                    "direction": "out",
+                    "name": "res"
+                }
+            ]
+        }
+        ```
    - Aktualisieren Sie `index/index.js` und kopieren Sie den folgenden Code.
-     ```js
-     var fs = require('fs');
-     module.exports = function (context, req) {
-         fs.readFile('index.html', 'utf8', function (err, data) {
-             if (err) {
-                 console.log(err);
-                 context.done(err);
-             }
-             context.res = {
-                 status: 200,
-                 headers: {
-                     'Content-Type': 'text/html'
-                 },
-                 body: data
-             };
-             context.done();
-         });
-     }
-     ```
+        ```js
+        var fs = require('fs');
+        var path = require('path');
+
+        module.exports = function (context, req) {
+            var index = 'index.html';
+            if (process.env["HOME"] != null)
+            {
+                index = path.join(process.env["HOME"], "site", "wwwroot", index);
+            }
+            context.log("index.html path: " + index);
+            fs.readFile(index, 'utf8', function (err, data) {
+                if (err) {
+                    console.log(err);
+                    context.done(err);
+                }
+                context.res = {
+                    status: 200,
+                    headers: {
+                        'Content-Type': 'text/html'
+                    },
+                    body: data
+                };
+                context.done();
+            });
+        }
+        ```
 
    # <a name="c"></a>[C#](#tab/csharp)
    - Aktualisieren Sie `index.cs` und ersetzen Sie die `Run`-Funktion durch den folgenden Code.
@@ -139,15 +145,21 @@ In diesem Tutorial lernen Sie Folgendes:
         [FunctionName("index")]
         public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequest req)
         {
+            string indexFile = "index.html";
+            if (Environment.GetEnvironmentVariable("HOME") != null)
+            {
+                indexFile = Path.Join(Environment.GetEnvironmentVariable("HOME"), "site", "wwwroot", indexFile);
+            }
+            log.LogInformation($"index.html path: {indexFile}.");
             return new ContentResult
             {
-                Content = File.ReadAllText("index.html"),
+                Content = File.ReadAllText(indexFile),
                 ContentType = "text/html",
             };
         }
         ```
 
-2. Erstellen Sie eine `negotiate`-Funktion, damit Clients die Dienstverbindungs-URL mit Zugriffstoken abrufen können.
+4. Erstellen Sie eine `negotiate`-Funktion, damit Clients die Dienstverbindungs-URL mit Zugriffstoken abrufen können.
     ```bash
     func new -n negotiate -t HttpTrigger
     ```
@@ -188,7 +200,7 @@ In diesem Tutorial lernen Sie Folgendes:
         ```c#
         [FunctionName("negotiate")]
         public static WebPubSubConnection Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             [WebPubSubConnection(Hub = "notification")] WebPubSubConnection connection,
             ILogger log)
         {
@@ -198,7 +210,7 @@ In diesem Tutorial lernen Sie Folgendes:
         }
         ```
 
-3. Erstellen Sie eine `notification`-Funktion zum Generieren von Benachrichtigungen mit `TimerTrigger`.
+5. Erstellen Sie eine `notification`-Funktion zum Generieren von Benachrichtigungen mit `TimerTrigger`.
    ```bash
     func new -n notification -t TimerTrigger
     ```
@@ -215,7 +227,7 @@ In diesem Tutorial lernen Sie Folgendes:
                 },
                 {
                 "type": "webPubSub",
-                "name": "webPubSubOperation",
+                "name": "actions",
                 "hub": "notification",
                 "direction": "out"
                 }
@@ -225,9 +237,9 @@ In diesem Tutorial lernen Sie Folgendes:
    - Aktualisieren Sie `notification/index.js` und kopieren Sie den folgenden Code.
         ```js
         module.exports = function (context, myTimer) {
-            context.bindings.webPubSubOperation = {
-                "operationKind": "sendToAll",
-                "message": `[DateTime: ${new Date()}] Temperature: ${getValue(22, 1)}\xB0C, Humidity: ${getValue(40, 2)}%`,
+            context.bindings.actions = {
+                "actionName": "sendToAll",
+                "data": `[DateTime: ${new Date()}] Temperature: ${getValue(22, 1)}\xB0C, Humidity: ${getValue(40, 2)}%`,
                 "dataType": "text"
             }
             context.done();
@@ -242,12 +254,12 @@ In diesem Tutorial lernen Sie Folgendes:
         ```c#
         [FunctionName("notification")]
         public static async Task Run([TimerTrigger("*/10 * * * * *")]TimerInfo myTimer, ILogger log,
-            [WebPubSub(Hub = "notification")] IAsyncCollector<WebPubSubOperation> operations)
+            [WebPubSub(Hub = "notification")] IAsyncCollector<WebPubSubAction> actions)
         {
-            await operations.AddAsync(new SendToAll
+            await actions.AddAsync(new SendToAllAction
             {
-                Message = BinaryData.FromString($"[DateTime: {DateTime.Now}] Temperature: {GetValue(23, 1)}{'\xB0'}C, Humidity: {GetValue(40, 2)}%"),
-                DataType = MessageDataType.Text
+                Data = BinaryData.FromString($"[DateTime: {DateTime.Now}] Temperature: {GetValue(23, 1)}{'\xB0'}C, Humidity: {GetValue(40, 2)}%"),
+                DataType = WebPubSubDataType.Text
             });
         }
 
@@ -259,7 +271,7 @@ In diesem Tutorial lernen Sie Folgendes:
         }
         ``` 
 
-4. Fügen Sie die Client-Einzelseite `index.html` im Stammordner des Projekts hinzu, und kopieren Sie den unten gezeigten Inhalt.
+6. Fügen Sie die Client-Einzelseite `index.html` im Stammordner des Projekts hinzu, und kopieren Sie den unten gezeigten Inhalt.
     ```html
     <html>
         <body>
@@ -296,7 +308,7 @@ In diesem Tutorial lernen Sie Folgendes:
     </ItemGroup>
     ```
 
-5. Konfigurieren und Ausführen der Azure Functions-App
+7. Konfigurieren und Ausführen der Azure Functions-App
 
     - Öffnen Sie im Browser das **Azure-Portal**, und vergewissern Sie sich, dass die zuvor bereitgestellte Instanz des Web PubSub-Diensts erfolgreich erstellt wurde. Navigieren Sie zu der Instanz.
     - Wählen Sie **Schlüssel** aus, und kopieren Sie die Verbindungszeichenfolge.

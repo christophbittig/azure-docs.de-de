@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 11/11/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: ecec077db8ca0b9b1a5285256eabb67791d461f2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 209fc857296556124cb5fa2003fb0c578dfe3317
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115486"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397564"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Async Java SDK für die SQL-API: Versionshinweise und Ressourcen
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -46,8 +46,8 @@ Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL
 >
 
 > [!IMPORTANT]  
-> Am 31. August 2024 wird das Async Java SDK v2.x von Azure Cosmos DB außer Betrieb gesetzt. Das SDK und alle Anwendungen, die es verwenden, **sind weiterhin funktionsfähig**. Azure Cosmos DB bietet jedoch keine weitere Wartung und Unterstützung für dieses SDK an.
-> Es wird empfohlen, die obigen Anweisungen zur Migration zu Azure Cosmos DB Java SDK v4 zu befolgen.
+> Am 31. August 2024 wird das Async Java SDK v2.x von Azure Cosmos DB eingestellt. Das SDK und alle Anwendungen, die es verwenden, **sind weiterhin funktionsfähig**. Azure Cosmos DB stellt jedoch keine weitere Wartung und Unterstützung für dieses SDK bereit.
+> Es wird empfohlen, die obigen Anweisungen zur Migration zum Azure Cosmos DB Java SDK v4 zu befolgen.
 >
 
 | | Links |
@@ -60,7 +60,10 @@ Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL
 | **Leistungstipps**| [GitHub-Infodatei](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
 | **Unterstützte Mindestlaufzeit**|[JDK 8](/java/azure/jdk/) | 
 
-[!INCLUDE [Release notes](~/azure-cosmosdb-java-v2/changelog/README.md)]
+## <a name="release-history"></a>Releaseverlauf
+
+Der Releaseverlauf wird im Azure Cosmos DB Java SDK-Quellrepository verwaltet. Eine detaillierte Liste der Featurereleases und behobenen Fehler in jedem Release finden Sie in der [Dokumentation zum SDK-Änderungsprotokoll](https://github.com/Azure/azure-cosmosdb-java/blob/master/changelog/README.md).
+
 ## <a name="faq"></a>Häufig gestellte Fragen
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
 

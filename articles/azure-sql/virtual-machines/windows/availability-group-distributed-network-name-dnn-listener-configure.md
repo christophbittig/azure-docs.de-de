@@ -12,20 +12,23 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/07/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 3ad963def4866e7528527400ff259502441c9dbf
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: f4a79ae5b1083bf9091486e9f4d87c6fdad14747
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130165643"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156888"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>Konfigurieren eines DNN-Listeners für eine Verfügbarkeitsgruppe
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Bei SQL Server auf Azure-VMs wird über den DNN (Distributed Network Name, Name des verteilten Netzwerks) Datenverkehr an die entsprechende Clusterressource weitergeleitet. Er bietet eine einfachere Möglichkeit zum Herstellen einer Verbindung mit einer AlwaysOn-Verfügbarkeitsgruppe als der VNN-Listener (Virtual Network Name, Name des virtuellen Netzwerks), ohne dass ein Azure Load Balancer-Objekt erforderlich ist.
+> [!TIP]
+> Eliminieren Sie die Notwendigkeit eines verteilten Netzwerknamens für Ihre Always On Availability (AG)-Gruppe, indem Sie Ihre SQL Server-VMs in [mehreren Subnetzen](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) innerhalb desselben virtuellen Azure-Netzwerks erstellen.
+
+Bei SQL Server auf Azure-VMs in einem einzigen Subnetz leitet der verteilte Netzwerkname (DNN) den Datenverkehr an die entsprechende Clusterressource weiter. Er bietet eine einfachere Möglichkeit zum Herstellen einer Verbindung mit einer AlwaysOn-Verfügbarkeitsgruppe als der VNN-Listener (Virtual Network Name, Name des virtuellen Netzwerks), ohne dass ein Azure Load Balancer-Objekt erforderlich ist.
 
 In diesem Artikel erfahren Sie, wie Sie einen DNN-Listener konfigurieren, durch den der VNN-Listener ersetzt und Datenverkehr an Ihre Verfügbarkeitsgruppe mit SQL Server auf Azure-VMs für Hochverfügbarkeit und Notfallwiederherstellung (HADR) weitergeleitet wird.
 

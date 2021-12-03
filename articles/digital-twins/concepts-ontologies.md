@@ -1,24 +1,26 @@
 ---
 title: Was ist eine Ontologie?
 titleSuffix: Azure Digital Twins
-description: Hier erfahren Sie mehr über branchenspezifische DTDL-Ontologien für die Modellierung in einer bestimmten Domäne.
+description: Erfahren Sie mehr über Ontologien für digitale Zwillinge, wie sie in Azure Digital Twins verwendet werden und wie diese DTDL-Ontologien für die Modellierung im Kontext bestimmter Branchen verwendet werden können.
 author: baanders
 ms.author: baanders
-ms.date: 6/1/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f4beb002a1bfd8a885157099228747213e754253
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 56ce0815bdcb59e64f6a61cce4d4fb6172abea20
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772357"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501626"
 ---
 # <a name="what-is-an-ontology"></a>Was ist eine Ontologie? 
 
+Dieser Artikel beschreibt das Konzept von Branchen-Ontologien und wie sie im Kontext von Azure Digital Twins verwendet werden können.
+
 Das Vokabular einer Azure Digital Twins-Lösung wird mit [Modellen](concepts-models.md) definiert, die die Arten von Entitäten in Ihrer Umgebung beschreiben.
 
-Wenn es sich bei Ihrer Lösung um eine branchenspezifische Lösung handelt, kann es manchmal einfacher und effektiver sein, mit einer Gruppe bereits vorhandener Modelle für diese Branche zu arbeiten statt ein eigenes Modell von Grund auf neu zu erstellen. Diese Gruppen bereits vorhandener Modelle werden **Ontologien** genannt. 
+Wenn es sich bei Ihrer Lösung um eine branchenspezifische Lösung handelt, kann es manchmal einfacher und effektiver sein, mit einer Gruppe bereits vorhandener Modelle für diese Branche zu arbeiten statt ein eigenes Modell von Grund auf neu zu erstellen. Diese Gruppen bereits vorhandener Modelle werden **Ontologien** genannt.
 
 Allgemein ist eine Ontologie eine Gruppe von Modellen für eine bestimmte Domäne (z. B. eine Gebäudestruktur, ein IoT-System, eine Smart City, das Energienetz, Webinhalte usw.). Ontologien werden häufig als Schemas für Zwillingsgraphen verwendet, da sie Folgendes ermöglichen können:
 * Harmonisierung von Softwarekomponenten, Dokumentation, Abfragebibliotheken usw.

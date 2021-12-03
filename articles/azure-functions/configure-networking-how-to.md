@@ -4,12 +4,12 @@ description: Dieser Artikel zeigt Ihnen, wie Sie bestimmte virtuelle Netzwerkauf
 ms.topic: conceptual
 ms.date: 3/13/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 91555099c7144d976b5f0b5ef2fe639912857bce
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: db0567456156f8ea74ba048e991000b57ae271b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048815"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332381"
 ---
 # <a name="how-to-configure-azure-functions-with-a-virtual-network"></a>Konfigurieren von Azure Functions mit einem virtuellen Netzwerk
 
@@ -47,7 +47,7 @@ Einrichten einer Funktion mit einem auf ein privates Netzwerk beschränkten Spei
     | `AzureWebJobsStorage`| Speicherverbindungszeichenfolge | Dies ist die Verbindungszeichenfolge für ein gesichertes Speicherkonto. |
     | `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` |  Speicherverbindungszeichenfolge | Dies ist die Verbindungszeichenfolge für ein gesichertes Speicherkonto. |
     | `WEBSITE_CONTENTSHARE` | Dateifreigabe | Der Name der Dateifreigabe, die im gesicherten Speicherkonto erstellt wurde und in der sich die Projektbereitstellungsdateien befinden. |
-    | `WEBSITE_CONTENTOVERVNET` | 1 | Neue Einstellung |
+    | `WEBSITE_CONTENTOVERVNET` | 1 | Der Wert 1 ermöglicht die Skalierung Ihrer Funktions-App, wenn Sie Ihr Speicherkonto auf ein virtuelles Netzwerk beschränken. Sie sollten diese Einstellung aktivieren, wenn Sie Ihr Speicherkonto auf ein virtuelles Netzwerk einschränken. |
     | `WEBSITE_VNET_ROUTE_ALL` | 1 | Erzwingt den gesamten ausgehenden Datenverkehr über das virtuelle Netzwerk. Erforderlich, wenn das Speicherkonto private Endpunktverbindungen verwendet. |
 
 1. Wählen Sie **Speichern**, um die Anwendungseinstellungen zu speichern. Das Ändern von App-Einstellungen führt zu einem Neustart der App.  

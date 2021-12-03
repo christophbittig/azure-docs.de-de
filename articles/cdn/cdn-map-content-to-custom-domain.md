@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/12/2021
 ms.author: yuajia
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: ee721a56da41c4a5ff9184c6bc716784f858507d
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 20a3015886962d9c48844d0aeb53a994dd5037c3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112467633"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423468"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zu Ihrem Endpunkt
 
@@ -66,7 +66,9 @@ Verwenden Sie für unterschiedliche Azure-Dienste mehrere CNAME-Einträge für u
 Eine benutzerdefinierte Domäne mit unterschiedlichen Unterdomänen kann dem gleichen CDN-Endpunkt zugeordnet werden.
 
 > [!NOTE]
-> In diesem Tutorial wird der CNAME-Eintragstyp verwendet. Wenn Sie die Eintragstypen A oder AAAA verwenden, führen Sie die gleichen unten gezeigten Schritte aus, und ersetzen Sie CNAME durch den Eintragstyp Ihrer Wahl.
+> - In diesem Tutorial wird der CNAME-Eintragstyp für mehrere Zwecke verwendet:
+>   - *Routing von Datenverkehr*: Kann über einen CNAME-Eintrag sowie A- oder AAAA-Eintragstypen in Azure DNS erreicht werden. Führen Sie dazu die folgenden Schritte aus, und ersetzen Sie den CNAME-Eintrag durch den Eintragstyp Ihrer Wahl.  
+>   - Ein CNAME-Eintrag ist für den *Besitznachweis* für eine benutzerdefinierte Domäne **erforderlich** und muss verfügbar sein, wenn die benutzerdefinierte Domäne einem CDN-Endpunkt hinzugefügt wird.  Unten sind weitere Details hierzu angegeben.
 
 ---
 # <a name="azure-dns"></a>[**Azure DNS**](#tab/azure-dns)

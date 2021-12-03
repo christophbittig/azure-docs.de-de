@@ -5,18 +5,14 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 907ae75b17bcb7496c2ad3e76a8e4da1bd44b1fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd68df35eed106edf707a8356e066e736aa913f7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728106"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470925"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Tutorial: Problembehandlung für eine App Service-App mit Azure Monitor
-
-> [!NOTE]
-> Die Azure Monitor-Integration in App Service befindet sich in der [Vorschauphase](https://aka.ms/appsvcblog-azmon).
->
 
 In diesem Tutorial wird veranschaulicht, wie Sie mit [Azure Monitor](../azure-monitor/overview.md) die Problembehandlung für eine [App Service](overview.md)-App durchführen. Die Beispiel-App enthält Code, mit dem der Arbeitsspeicher ausgelastet wird und HTTP 500-Fehler verursacht werden, damit Sie das Problem mit Azure Monitor diagnostizieren und beheben können. Nach Abschluss des Vorgangs verfügen Sie über eine Beispiel-App, die über App Service unter Linux mit Integration von [Azure Monitor](../azure-monitor/overview.md) ausgeführt wird.
 
@@ -58,7 +54,7 @@ git remote add azure <url-from-app-webapp-create>
 git push azure main
 ```
 
-## <a name="configure-azure-monitor-preview"></a>Konfigurieren von Azure Monitor (Vorschauversion)
+## <a name="configure-azure-monitor"></a>Konfigurieren von Azure Monitor
 
 ### <a name="create-a-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
 
@@ -132,7 +128,7 @@ Wählen Sie im Azure-Portal Ihren Log Analytics-Arbeitsbereich aus.
 
 ### <a name="log-queries"></a>Protokollabfragen
 
-Mithilfe von Protokollabfragen können Sie die Daten, die in Azure Monitor-Protokollen erfasst werden, in vollem Umfang nutzen. Sie verwenden Protokollabfragen, um die Protokolle sowohl in „AppServiceHTTPLogs“ als auch in „AppServiceConsoleLogs“ zu identifizieren. Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
+Mithilfe von Protokollabfragen können Sie die Daten, die in Azure Monitor-Protokollen erfasst werden, in vollem Umfang nutzen. Sie verwenden Protokollabfragen, um die Protokolle sowohl in „AppServiceHTTPLogs“ als auch in „AppServiceConsoleLogs“ zu identifizieren. Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>Anzeigen von „AppServiceHTTPLogs“ mit Protokollabfrage
 

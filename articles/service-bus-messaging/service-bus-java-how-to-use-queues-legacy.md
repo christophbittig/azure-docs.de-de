@@ -5,12 +5,12 @@ ms.date: 07/27/2021
 ms.topic: how-to
 ms.devlang: Java
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
-ms.openlocfilehash: 6689f54035467b7ee380e292abad98db180b5516
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2382a45b73f3961053e870c15b99f3ef5746f966
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083648"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056680"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages-old-package"></a>Senden und Empfangen von Nachrichten mithilfe von Azure Service Bus-Warteschlangen und Java (altes Paket)
 
@@ -110,7 +110,7 @@ public void run() throws Exception {
 Nachrichten, die an die Service Bus-Warteschlangen gesendet bzw. von diesen empfangen werden, sind Instanzen der [Message](/java/api/com.microsoft.azure.servicebus.message)-Klasse. Nachrichtenobjekte verfügen über einen Satz von Standardeigenschaften (z.B. „Label“ und „TimeToLive“), ein Wörterbuch, in dem benutzerdefinierte anwendungsspezifische Eigenschaften enthalten sind, sowie einen Textteil mit beliebigen Anwendungsdaten. Eine Anwendung kann den Text der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt an den Konstruktor der Nachricht übergeben wird. Anschließend erfolgt die Serialisierung des Objekts mit dem entsprechenden Serialisierer. Alternativ können Sie ein **java.IO.InputStream**-Objekt bereitstellen.
 
 
-Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
+Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 100 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
 
 ## <a name="receive-messages-from-a-queue"></a>Empfangen von Nachrichten aus einer Warteschlange
 Der einfachste Weg zum Empfangen von Nachrichten aus Warteschlangen sind **ServiceBusContract**-Objekte. Empfangene Nachrichten können in zwei unterschiedlichen Modi funktionieren: **ReceiveAndDelete** und **PeekLock**.

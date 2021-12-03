@@ -62,7 +62,7 @@ items:
               - name: Azure-Portal
                 href: quickstart-create-workspace.md
                 displayName: quickstart
-              - name: Azure-Befehlszeilenschnittstelle
+              - name: Azure CLI
                 href: quickstart-create-workspace-cli.md
                 displayName: quickstart
               - name: Azure PowerShell
@@ -155,12 +155,10 @@ items:
                     href: ./security/synapse-workspace-synapse-rbac-roles.md
                   - name: Grundlegendes zu Synapse RBAC-Rollen
                     href: ./security/synapse-workspace-understand-what-role-you-need.md
-                  - name: 'Synapse-Arbeitsbereich: verwaltete Identität'
-                    href: ./security/synapse-workspace-managed-identity.md
                   - name: System- und benutzerseitig zugewiesene verwaltete Identität
-                    href: ../data-factory/data-factory-service-identity.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json&tabs=synapse-analytics
+                    href: ../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context
                   - name: Anmeldeinformationen für benutzerseitig zugewiesene verwaltete Identität
-                    href: ../data-factory/credentials.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json&tabs=synapse-analytics
+                    href: ../data-factory/credentials.md?context=/azure/synapse-analytics/context/context
       - name: Anleitungen
         items:
           - name: Verwalten und Überwachen
@@ -217,6 +215,9 @@ items:
           - name: Übersicht über Datenbankvorlagen
             href: database-designer/overview-database-templates.md
             displayName: overview
+          - name: Übersicht über Zuordnungsdaten
+            href: database-designer/overview-map-data.md
+            displayName: map data
       - name: Schnellstarts
         items:
           - name: Erstellen einer Lake-Datenbank
@@ -486,6 +487,8 @@ items:
                 href: ./sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context
               - name: 'Überwachen Ihrer Workload: Portal'
                 href: ./sql-data-warehouse/sql-data-warehouse-monitor-workload-portal.md?context=/azure/synapse-analytics/context/context
+              - name: Abfrageverlauf und -analyse
+                href: ./sql/query-history-storage-analysis.md
               - name: Verwalten von Workloads
                 items:
                   - name: Analysieren Ihrer Workload
@@ -663,6 +666,8 @@ items:
             href: quickstart-create-apache-spark-pool-portal.md
           - name: Erstellen eines Spark-Pools mithilfe von Synapse Studio
             href: quickstart-create-apache-spark-pool-studio.md
+          - name: "Erstellen eines GPU-beschleunigten Apache\_Spark-Pools"
+            href: quickstart-create-apache-gpu-pool-portal.md
       - name: Tutorials
         items:
           - name: "Datenvisualisierung mit Synapse\_Studio-Notebooks"
@@ -685,6 +690,8 @@ items:
             href: ./spark/apache-spark-concepts.md
           - name: "Apache\_Spark-Poolkonfigurationen"
             href: ./spark/apache-spark-pool-configurations.md
+          - name: "GPU-beschleunigte Apache\_Spark-Pools"
+            href: ./spark/apache-spark-gpu-concept.md
           - name: Delta Lake
             href: ./spark/apache-spark-what-is-delta-lake.md
           - name: 'Apache Spark: Verhalten der Autoskalierung'
@@ -743,6 +750,8 @@ items:
                 href: ./spark/apache-spark-performance.md
               - name: Leistungsoptimierung für Apache Spark unter Verwendung von Hyperspace-Indizes
                 href: ./spark/apache-spark-performance-hyperspace.md
+              - name: Beschleunigen von ETL-Vorgängen mit NVIDIA RAPIDS
+                href: ./spark/apache-spark-rapids-gpu.md
           - name: Verwalten und Überwachen
             items:
               - name: "Navigieren auf dem Apache\_Spark-Verlaufsserver für Pools"
@@ -1401,19 +1410,19 @@ items:
                   - name: Assistent für Anomalieerkennung
                     displayName: 'cognitive services, score model'
                     href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-                  - name: Textanalyse mit Apache Spark (MMLSpark)
+                  - name: Textanalyse mit Apache Spark (SynapseML)
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-text-analytics-use-mmlspark.md
-                  - name: Maschinelles Sehen mit Apache Spark (MMLSpark)
+                  - name: Maschinelles Sehen mit Apache Spark (SynapseML)
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-computer-vision-use-mmlspark.md
-                  - name: Formularerkennung mit Apache Spark (MMLSpark)
+                  - name: Formularerkennung mit Apache Spark (SynapseML)
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-form-recognizer-use-mmlspark.md
-                  - name: Übersetzer mit Apache Spark (MMLSpark)
+                  - name: Textübersetzung mit Apache Spark (SynapseML)
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-translator-use-mmlspark.md
-                  - name: Mit Apache Spark (MMLSpark)
+                  - name: Mit Apache Spark (SynapseML)
                     displayName: 'cognitive services, score model, applications'
                     href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
   - name: Data Catalog und Governance
@@ -1432,6 +1441,8 @@ items:
     items:
       - name: Planen und Verwalten von Kosten
         href: plan-manage-costs.md
+      - name: "Durchsuchen eines ADLS\_Gen2-Ordners mit ACLs"
+        href: how-to-access-container-with-access-control-lists.md
   - name: Verweis
     items:
       - name: Azure CLI
@@ -1448,6 +1459,8 @@ items:
         href: /rest/api/synapse/
       - name: Microsoft Spark-Hilfsprogramme
         href: ./spark/microsoft-spark-utilities.md
+      - name: API zum Bereitstellen/Aufheben der Bereitstellung von Dateien in Synapse
+        href: ./spark/synapse-file-mount-api.md
       - name: Beispiele
         href: 'https://github.com/Azure-Samples/Synapse'
       - name: Systemsichten

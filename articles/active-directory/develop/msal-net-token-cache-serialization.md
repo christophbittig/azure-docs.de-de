@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/30/2021
+ms.date: 11/09/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 5452f6bd6adc4693b74a20d174b6efe42346226d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 22e6dbfbda88035f74e19fabfe296974b362e286
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351841"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517290"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisierung des Tokencaches in MSAL.NET
 
@@ -27,11 +27,18 @@ Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) 
 ## <a name="quick-summary"></a>Kurze Zusammenfassung
 
 Empfehlung:
-- Verwenden Sie in Web-Apps und Web-APIs die [Tokencacheserialisierer von „Microsoft.Identity.Web.TokenCache“](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization). Diese stellen sogar ein verteiltes Datenbank- oder Cachesystem bereit, um Token zu speichern.
-  - Verwenden Sie Microsoft.Identity.Web in [Web-Apps](scenario-web-app-call-api-overview.md) und [Web-APIs](scenario-web-api-call-api-overview.md) von ASP.NET Core [Microsoft.Identity.Web](microsoft-identity-web.md) als allgemeinere API in ASP.NET Core.
-  - Verwenden Sie in ASP.NET Classic, .NET Core und .NET Framework MSAL.NET direkt mit [Tokencacheserialisierungs-Adaptern für MSAL](msal-net-token-cache-serialization.md?tabs=aspnet), die im NuGet-Paket Microsoft.Identity.Web.TokenCache bereitgestellt sind. 
-- Verwenden Sie in Desktopanwendungen (die ein Dateisystem zum Speichern von Token verwenden können) [Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/wiki/Cross-platform-Token-Cache) mit MSAL.Net.
-- In mobilen Anwendungen (Xamarin.iOS, Xamarin.Android, Universelle Windows-Plattform) ist keine Aktion Ihrerseits erforderlich, da MSAL.NET den Cache für Sie verarbeitet: Diese Plattformen verfügen über einen sicheren Speicher.
+- Verwenden Sie beim Schreiben einer Desktopanwendung den plattformübergreifenden Tokencache, wie unter [Desktop-App](msal-net-token-cache-serialization.md?tabs=desktop#cross-platform-token-cache-msal-only) erläutert.
+- Unternehmen Sie nichts bei [mobilen Apps und UWP-Apps](msal-net-token-cache-serialization.md?tabs=mobile). Ein Cache wird von MSAL.NET bereitgestellt.
+- Verwenden Sie Microsoft.Identity.Web in [Web-Apps](scenario-web-app-call-api-overview.md) und [Web-APIs](scenario-web-api-call-api-overview.md) von ASP.NET Core [Microsoft.Identity.Web](microsoft-identity-web.md) als allgemeinere API in ASP.NET Core. Sie erhalten Tokencaches und vieles mehr. Weitere Informationen finden Sie unter [ASP.NET Core-Web-Apps und -Web-APIs](msal-net-token-cache-serialization.md?tabs=aspnetcore).
+- Bei anderen Fällen von [Web-Apps](scenario-web-app-call-api-overview.md) und [Web-API](scenario-web-api-call-api-overview.md):
+  - Wenn Sie Token für Benutzer*innen in einer Produktionsanwendung anfordern, verwenden Sie einen [verteilten Tokencache](msal-net-token-cache-serialization.md?tabs=aspnet#distributed-caches) (Redis, SQL, Cosmos DB, verteilter Arbeitsspeicher). Verwenden der Tokencacheserialisierer von [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache/)
+  - Andernfalls bei Verwendung eines In-Memory-Caches
+    -   Wenn Sie nur `AcquireTokenForClient` verwenden:
+      - Verwenden Sie entweder die Instanz der vertraulichen Clientanwendung wieder, und fügen Sie kein Serialisierungsmodul hinzu.
+      - Oder erstellen Sie eine neue vertrauliche Clientanwendung, und aktivieren Sie die Option [freigegebener Cache](msal-net-token-cache-serialization.md?tabs=aspnet#no-token-cache-serialization). Dieser Cache ist schneller, da er nicht serialisiert wird. Der Arbeitsspeicherbedarf nimmt jedoch zu, wenn immer mehr Token zwischengespeichert werden. Die Anzahl der Token entspricht der Anzahl der Mandanten multipliziert mit der Anzahl der Downstream-APIs. Ein App-Token ist ungefähr 2 KB groß. Es eignet sich ideal für die Entwicklung oder bei nur wenigen Benutzer*innen. Informationen zum Leeren finden Sie unter dem nächsten Aufzählungspunkt.
+      - Wenn Sie einen In-Memory-Tokencache verwenden und dessen Größe und Leerungsrichtlinien steuern möchten, verwenden Sie die [In-Memory-Cacheoption „Microsoft.Identity.Web“](msal-net-token-cache-serialization.md?tabs=aspnet#in-memory-token-cache-1).
+-   Wenn Sie ein SDK erstellen und Ihr eigenes Serialisierungsmodul für den Tokencache vertraulicher Clientanwendungen schreiben möchten, erben Sie von [Microsoft.Identity.Web.MsalAsbtractTokenCacheProvider](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.TokenCache/MsalAbstractTokenCacheProvider.cs), und überschreiben Sie die Methoden `WriteCacheBytesAsync` und `ReadCacheBytesAsync`.
+
 
 ## <a name="aspnet-core-web-apps-and-web-apis"></a>[ASP.NET Core-Web-Apps und -Web-APIs](#tab/aspnetcore)
 
@@ -39,10 +46,12 @@ Die Bibliothek [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-ide
 
 | Erweiterungsmethode | BESCHREIBUNG  |
 | ---------------- | ------------ |
-| `AddInMemoryTokenCaches` | InMemory-Tokencacheserialisierung. Diese Implementierung eignet sich hervorragend für Beispiele. Sie eignet sich auch für Produktionsanwendungen, falls es Ihnen nichts ausmacht, wenn der Tokencache beim Neustart der Web-App verloren geht. `AddInMemoryTokenCaches` verwendet einen optionalen Parameter vom Typ `MsalMemoryTokenCacheOptions`, mit dem Sie die Zeitspanne angeben können, nach der der Cacheeintrag abläuft, sofern er nicht verwendet wird.
+| `AddInMemoryTokenCaches` | InMemory-Tokencacheserialisierung. Die Implementierung ist in Beispielen und in Daemonanwendungen (App-zu-App-Token/`AcquireTokenForClient`) gut geeignet. Sie eignet sich auch für Produktionsanwendungen, falls es Ihnen nichts ausmacht, wenn der Tokencache beim Neustart der Web-App verloren geht. Ab Microsoft.Identity.Web 1.19.0 ist MSAL.NET so konfiguriert, dass ein statischer (freigegebener) Cache für alle App-Instanzen verwendet wird. Dieses Verfahren ist schneller als andere, lässt jedoch keine Steuerung der Cachegröße zu.
 | `AddSessionTokenCaches` | Der Tokencache ist an die Benutzersitzung gebunden. Diese Option ist nicht ideal, wenn das ID-Token viele Ansprüche enthält, da das Cookie zu groß wird.
 | `AddDistributedTokenCaches` | Der Tokencache ist ein Adapter für die ASP.NET Core-Implementierung `IDistributedCache`. Daher stehen ein verteilter Speichercache, ein Redis-Cache, ein verteilter NCache oder ein SQL Server-Cache zur Auswahl. Details zur Implementierung von `IDistributedCache` finden Sie unter [Verteilter Arbeitsspeichercache](/aspnet/core/performance/caching/distributed).
 
+
+### <a name="in-memory-token-cache"></a>In-Memory-Tokencache
 
 Im Folgenden finden Sie ein Codebeispiel für die Verwendung des In-Memory-Caches in der [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices)-Methode der [Startup](/aspnet/core/fundamentals/startup)-Klasse in einer ASP.NET Core-Anwendung:
 
@@ -70,8 +79,11 @@ public class Startup
 }
 ```
 
-Aus Sicht des Caches ist der Code in ASP.NET Core-Web-APIs sehr ähnlich.
+AddInMemoryTokenCaches eignet sich für die Produktion, wenn Sie nur App-Token anfordern. Wenn Sie Benutzertoken verwenden, sollten Sie eher einen verteilten Tokencache in Betracht ziehen. 
 
+Aus Sicht des Caches ist der Code in ASP.NET Core-Web-Apps und -Web-APIs sehr ähnlich.
+
+### <a name="distributed-token-caches"></a>Verteilte Tokencaches
 
 Beispiele für mögliche verteilte Caches:
 
@@ -82,7 +94,30 @@ Beispiele für mögliche verteilte Caches:
              .EnableTokenAcquisitionToCallDownstreamApi(new string[] { scopesToRequest }
                .AddDistributedTokenCaches();
 
-// and then choose your implementation of distributed cache
+// Distributed token caches have a L1/L2 mechanism.
+// L1 is in memory, and L2 is the distributed cache
+// implementation that you will choose below.
+// You can configure them to limit the memory of the 
+// L1 cache, encrypt, and set eviction policies.
+services.Configure<MsalDistributedTokenCacheAdapterOptions>(options => 
+  {
+    // You can disable the L1 cache if you wish. For instance in some cases where you share the L2 cache
+    // between instances of your apps.
+    options.DisableL1Cache = false;
+    
+    // Or limit the memory (by default this is 500 Mb)
+    options.SizeLimit = 500 * 1024 * 1024,   // 500 Mb
+
+    // You can choose if you encrypt or not the cache
+    options.Encrypt = false;
+
+    // And you can set eviction policies for the distributed
+    // cache.
+    options.SlidingExpiration = TimeSpan.FromHours(1);
+  }
+
+// Then, choose your implementation of distributed cache
+// -----------------------------------------------------
 
 // For instance the distributed in memory cache (not cleared when you stop the app)
 services.AddDistributedMemoryCache();
@@ -93,6 +128,21 @@ services.AddStackExchangeRedisCache(options =>
 {
  options.Configuration = "localhost";
  options.InstanceName = "SampleInstance";
+});
+
+// You can even decide if you want to repair the connection
+// with Redis and retry on Redis failures. 
+services.Configure<MsalDistributedTokenCacheAdapterOptions>(options => 
+{
+  options.OnL2CacheFailure = (ex) =>
+  {
+    if (ex is StackExchange.Redis.RedisConnectionException)
+    {
+      // action: try to reconnect or something
+      return true; //try to do the cache operation again
+    }
+    return false;
+  };
 });
 
 // Or even a SQL Server token cache
@@ -115,7 +165,13 @@ services.AddCosmosCache((CosmosCacheOptions cacheOptions) =>
 });
 ```
 
-Die Nutzung wird im [Tutorial zum Erstellen einer Web-App mit ASP.NET Core](/aspnet/core/tutorials/first-mvc-app/) in der Phase [2-2 Tokencache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) dargestellt.
+Weitere Informationen finden Sie unter
+- [Unterschied zwischen In-Memory- und verteilten In-Memory-Caches](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#inmemory-vs-distributedmemory-cache-options)
+- [Erweiterte Optionen für verteilte Caches](https://github.com/AzureAD/microsoft-identity-web/wiki/L1-Cache-in-Distributed-(L2)-Token-Cache)
+- [Behandeln der L2-Cache-Leerung](https://github.com/AzureAD/microsoft-identity-web/wiki/Handle-L2-cache-eviction)
+- [Einrichten eines Redis-Caches in Docker](https://github.com/AzureAD/microsoft-identity-web/wiki/Set-up-a-Redis-cache-in-Docker)
+
+Die Nutzung von verteiltem Cache wird im [Tutorial zum Erstellen einer Web-App mit ASP.NET Core](/aspnet/core/tutorials/first-mvc-app/) in der Phase [2-2 Tokencache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) dargestellt.
 
 ## <a name="non-aspnet-core-web-apps-and-web-apis"></a>[Nicht-ASP.NET Core-Web-Apps und -Web-APIs](#tab/aspnet)
 
@@ -123,7 +179,7 @@ Auch wenn Sie MSAL.NET verwenden, können Sie von den Tokencacheserialisierern v
 
 ### <a name="referencing-the-nuget-package"></a>Verweisen auf das NuGet-Paket
 
-Fügen Sie das NuGet-Paket [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache) zusätzlich zu MSAL.NET zu Ihrem Projekt hinzu.
+Hinzufügen des NuGet-Pakets [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache) anstelle von MSAL.NET zu Ihrem Projekt
 
 ### <a name="configuring-the-token-cache"></a>Konfigurieren des Tokencaches
 
@@ -175,16 +231,49 @@ public static async Task<AuthenticationResult> GetTokenAsync(string clientId, X5
 
 ### <a name="available-caching-technologies"></a>Verfügbare Zwischenspeicherungstechnologien
 
-Anstelle von `app.AddInMemoryTokenCache();` können Sie verschiedene Zwischenspeicherungstechnologien verwenden, einschließlich der von .NET bereitgestellten verteilter Tokencaches.
+Anstelle von `app.AddInMemoryTokenCache();` können Sie verschiedene Technologien für die Cacheserialisierung verwenden, z. B. keine Serialisierung, In-Memory-Cache und verteilten Tokencachespeicher, der von .NET bereitgestellt wird.
+
+#### <a name="no-token-cache-serialization"></a>Keine Tokencacheserialisierung
+
+Sie können angeben, dass Sie keine Tokencacheserialisierung (mit dem internen MSAL.NET-Cache) verwenden möchten, wenn Folgendes zutrifft:
+- Sie verwenden `.WithCacheOptions(CacheOptions.EnableSharedCacheOptions)` beim Erstellen der Anwendung.
+- Sie fügen kein Serialisierungsmodul hinzu.
+
+```CSharp
+    // Create the confidential client application
+    app= ConfidentialClientApplicationBuilder.Create(clientId)
+       // Alternatively to the certificate you can use .WithClientSecret(clientSecret)
+       .WithCertificate(cert)
+       .WithLegacyCacheCompatibility(false)
+       .WithCacheOptions(CacheOptions.EnableSharedCacheOptions)
+       .WithAuthority(authority)
+       .Build();
+```
 
 #### <a name="in-memory-token-cache"></a>In-Memory-Tokencache
 
-In Beispielen eignet sich die Serialisierung des Speichertokencaches hervorragend. Sie eignet sich auch für Produktionsanwendungen, falls es Ihnen nichts ausmacht, wenn der Tokencache beim Neustart der Web-App verloren geht.
+In Beispielen eignet sich die Serialisierung des Speichertokencaches hervorragend. Sie eignet sich auch für Produktionsanwendungen, falls Sie nur App-Token (`AcquireTokenForClient`) anfordern und es Ihnen nichts ausmacht, wenn der Tokencache beim Neustart der Web-App verloren geht. Dies wird in der Produktion nicht empfohlen, wenn Sie Benutzertoken (`AcquireTokenByAuthorizationCode`, `AcquireTokenSilent`, `AcquireTokenOnBehalfOf`) anfordern.
 
 ```CSharp 
      // Add an in-memory token cache
      app.AddInMemoryTokenCache();
 ```
+
+Sie können auch Optionen angeben, um die Größe des In-Memory-Tokencaches zu beschränken:
+
+```CSharp 
+  // Add an in-memory token cache with options
+  app.AddInMemoryTokenCache(services =>
+  {
+      // Configure the memory cache options
+      services.Configure<MemoryCacheOptions>(options =>
+      {
+          options.SizeLimit = 500 * 1024 * 1024; // in bytes (500 Mb)
+      });
+  }
+  );
+```
+
 
 #### <a name="distributed-caches"></a>Verteilte Caches
 
@@ -193,12 +282,33 @@ Wenn Sie `IDistributedCache` verwenden, ist der Tokencache ein Adapter für die 
 ##### <a name="distributed-in-memory-token-cache"></a>Verteilter In-Memory-Tokencache
 
 ```CSharp 
-     // In memory distributed token cache
-     app.AddDistributedTokenCache(services =>
-     {
-       // In net462/net472, requires to reference Microsoft.Extensions.Caching.Memory
-       services.AddDistributedMemoryCache();
-     });
+  // In memory distributed token cache
+  app.AddDistributedTokenCache(services =>
+  {
+    // In net462/net472, requires to reference Microsoft.Extensions.Caching.Memory
+    services.AddDistributedMemoryCache();
+
+    // Distributed token caches have a L1/L2 mechanism.
+    // L1 is in memory, and L2 is the distributed cache
+    // implentation that you will choose below.
+    // You can configure them to limit the memory of the 
+    // L1 cache, encrypt, and set eviction policies.
+    services.Configure<MsalDistributedTokenCacheAdapterOptions>(options => 
+      {
+        // You can disable the L1 cache if you wish
+        options.DisableL1Cache = false;
+        
+        // Or limit the memory (by default this is 500 Mb)
+        options.SizeLimit = 500 * 1024 * 1024,   // 500 Mb
+
+        // You can choose if you encrypt or not the cache
+        options.Encrypt = false;
+
+        // And you can set eviction policies for the distributed
+        // cache
+        options.SlidingExpiration = TimeSpan.FromHours(1);
+      });
+  });
 ```
 
 ##### <a name="sql-server"></a>Datenbank importieren
@@ -228,16 +338,31 @@ Wenn Sie `IDistributedCache` verwenden, ist der Tokencache ein Adapter für die 
 ##### <a name="redis-cache"></a>Redis Cache
 
 ```CSharp 
-     // Redis token cache
-     app.AddDistributedTokenCache(services =>
-     {
-       // Requires to reference Microsoft.Extensions.Caching.StackExchangeRedis
+    // Redis token cache
+    app.AddDistributedTokenCache(services =>
+    {
+      // Requires to reference Microsoft.Extensions.Caching.StackExchangeRedis
        services.AddStackExchangeRedisCache(options =>
        {
          options.Configuration = "localhost";
          options.InstanceName = "Redis";
        });
+
+      // You can even decide if you want to repair the connection
+      // with REDIS and retry on Redis failures. 
+      services.Configure<MsalDistributedTokenCacheAdapterOptions>(options => 
+      {
+        options.OnL2CacheFailure = (ex) =>
+        {
+          if (ex is StackExchange.Redis.RedisConnectionException)
+          {
+            // action: try to reconnect or something
+            return true; //try to do the cache operation again
+          }
+          return false;
+        };
       });
+    });
 ```
 
 Weitere Informationen finden Sie unter [Deaktivieren der Cachesynchronisierung](#disabling-cache-synchronization), wenn Sie feststellen, dass der Tokenabruf gelegentlich so viel Zeit in Anspruch nimmt wie das Redis-Cachetimeout. 
@@ -258,6 +383,14 @@ Weitere Informationen finden Sie unter [Deaktivieren der Cachesynchronisierung](
         });
        });
 ```
+
+##### <a name="more-about-the-distributed-cache"></a>Weitere Informationen zu verteiltem Cache
+
+Weitere Informationen zu verteilten Caches finden Sie unter:
+- [Unterschied zwischen In-Memory- und verteilten In-Memory-Caches](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#inmemory-vs-distributedmemory-cache-options)
+- [Erweiterte Optionen für verteilte Caches](https://github.com/AzureAD/microsoft-identity-web/wiki/L1-Cache-in-Distributed-(L2)-Token-Cache)
+- [Behandeln der L2-Cache-Leerung](https://github.com/AzureAD/microsoft-identity-web/wiki/Handle-L2-cache-eviction)
+- [Einrichten eines Redis-Caches in Docker](https://github.com/AzureAD/microsoft-identity-web/wiki/Set-up-a-Redis-cache-in-Docker)
 
 ### <a name="disabling-legacy-token-cache"></a>Deaktivieren eines Legacytokencaches
 
@@ -332,7 +465,7 @@ cacheHelper.RegisterCache(pca.UserTokenCache);
 
 ##### <a name="plain-text-fallback-mode"></a>Nur-Text-Fallbackmodus
 
-Mit dem plattformübergreifenden Tokencache können Sie unverschlüsselte Token in Klartext speichern. Dies ist nur für die Verwendung in Entwicklungsumgebungen zu Debugzwecken vorgesehen. Sie können den Nur-Text-Fallbackmodus mit dem folgenden Codemuster verwenden.
+Mit dem plattformübergreifenden Tokencache können Sie unverschlüsselte Token in Klartext speichern. Dieses Feature ist nur für die Verwendung in Entwicklungsumgebungen zu Debugzwecken vorgesehen. Sie können den Nur-Text-Fallbackmodus mit dem folgenden Codemuster verwenden.
 
 ```csharp
 storageProperties =
@@ -373,11 +506,9 @@ Die Strategien variieren, je nachdem, ob Sie eine Tokencacheserialisierung für 
 
 ### <a name="custom-token-cache-for-a-web-app-or-web-api-confidential-client-application"></a>Benutzerdefinierter Tokencache für eine Web-App oder Web-API (vertrauenswürdige Clientanwendung)
 
-In Web-Apps oder Web-APIs kann der Cache die Sitzung, einen Redis-Cache, eine SQL-Datenbank oder eine Cosmos DB-Datenbank verwenden. Halten Sie in Web-Apps oder Web-APIs jeweils einen Tokencache pro Konto bereit: 
-- Bei Web-Apps sollte der Tokencache durch die Konto-ID mit einem Schlüssel versehen werden.
-- Bei Web-APIs sollte das Konto durch den Hash des Tokens, das zum Aufrufen der API verwendet wird, mit einem Schlüssel versehen werden.
+Wenn Sie ein eigenes Serialisierungsmodul für den Tokencache vertraulicher Clientanwendungen schreiben möchten, sollten Sie von [Microsoft.Identity.Web.MsalAsbtractTokenCacheProvider](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.TokenCache/MsalAbstractTokenCacheProvider.cs) erben und die Methoden `WriteCacheBytesAsync` und `ReadCacheBytesAsync` überschreiben.
 
-Beispiele für Tokencacheserialisierer finden Sie unter [Microsoft.Identity.Web/TokenCacheProviders](https://github.com/AzureAD/microsoft-identity-web/tree/master/src/Microsoft.Identity.Web/TokenCacheProviders).
+Beispiele für Tokencacheserialisierer finden Sie unter [Microsoft.Identity.Web/TokenCacheProviders](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.TokenCache).
 
 ### <a name="custom-token-cache-for-a-desktop-or-mobile-app-public-client-application"></a>Benutzerdefinierter Tokencache für eine Desktop- oder Mobil-App (öffentliche Clientanwendung)
 
@@ -608,8 +739,8 @@ MSAL macht wichtige Metriken als Teil des [AuthenticationResult.AuthenticationRe
 |  `DurationTotalInMs` | Gesamtzeit in MSAL, einschließlich Netzwerkaufrufen und Cache   | Alarm bei hoher Gesamtlatenz (> 1 s). Der Wert hängt von der Tokenquelle ab. Aus dem Cache: ein Cachezugriff. Aus AAD: zwei Cachezugriffe + ein HTTP-Aufruf. Der allererste Aufruf (pro Prozess) dauert aufgrund eines zusätzlichen HTTP-Aufrufs länger. |
 |  `DurationInCacheInMs` | Zeitbedarf für Lade- oder Speichervorgang des Tokencaches, der vom App-Entwickler angepasst wird (z. B. Speichern in Redis).| Alarm bei Spitzen. |
 |  `DurationInHttpInMs`| Zeitbedarf für HTTP-Aufrufe an AAD.  | Alarm bei Spitzen.|
-|  `TokenSource` | Gibt die Quelle der Tokens an. Token werden viel schneller aus dem Cache abgerufen (z. B. ~100 ms im Vergleich zu ~700 ms). Kann verwendet werden, um das Cachetrefferverhältnis zu überwachen und zu alarmieren. | Verwendung mit `DurationTotalInMs` |
-
+|  `TokenSource` | Gibt die Quelle der Tokens an. Token werden viel schneller aus dem Cache abgerufen (z. B. ~100 ms im Vergleich zu ~700 ms). Kann verwendet werden, um das Cachetrefferverhältnis zu überwachen und zu alarmieren. | Verwendung mit `DurationTotalInMs`. |
+|  `CacheRefreshReason` | Gibt den Grund für das Abrufen des Zugriffstokens vom Identitätsanbieter an. | Verwendung mit `TokenSource`. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

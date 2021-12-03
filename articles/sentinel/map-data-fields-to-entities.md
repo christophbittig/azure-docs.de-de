@@ -1,28 +1,28 @@
 ---
-title: Zuordnen von Datenfeldern zu Azure Sentinel-Entitäten | Microsoft-Dokumentation
-description: Zuordnen von Datenfeldern in Tabellen zu Azure Sentinel-Entitäten in Analyseregeln, um bessere Informationen zu Vorfällen zu erhalten
+title: Zuordnen von Datenfeldern zu Microsoft Sentinel-Entitäten | Microsoft-Dokumentation
+description: Zuordnen von Datenfeldern in Tabellen zu Microsoft Sentinel-Entitäten in Analyseregeln, um bessere Informationen zu Vorfällen zu erhalten
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0e380676a99a74b9a9849322e8a1e611c14db2c1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 48c08771fef5b18445d0a1b5268ea5ea2c535abf
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023061"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523427"
 ---
-# <a name="map-data-fields-to-entities-in-azure-sentinel"></a>Zuordnen von Datenfeldern zu Entitäten in Azure Sentinel 
+# <a name="map-data-fields-to-entities-in-microsoft-sentinel"></a>Zuordnen von Datenfeldern zu Entitäten in Microsoft Sentinel 
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -42,7 +42,7 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 
 ## <a name="how-to-map-entities"></a>Zuordnen von Entitäten
 
-1. Wählen Sie im Azure Sentinel-Navigationsmenü die Option **Analysen** aus.
+1. Klicken Sie im Microsoft Sentinel-Navigationsmenü auf **Analytics**.
 
 1. Wählen Sie eine geplante Abfrageregel aus, und klicken Sie auf **Bearbeiten**. Oder erstellen Sie eine neue Regel, indem Sie oben auf dem Bildschirm auf **Erstellen > Geplante Abfrageregel** klicken.
 
@@ -83,6 +83,6 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument wurde beschrieben, wie Sie Datenfelder Entitäten in Azure Sentinel-Analyseregeln zuordnen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Dokument wurde beschrieben, wie Sie Datenfelder Entitäten in Microsoft Sentinel-Analyseregeln zuordnen. Weitere Informationen zu Microsoft Sentinel finden Sie in den folgenden Artikeln:
 - Unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md) können Sie sich ein Gesamtbild machen.
-- Erfahren Sie mehr über [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md).
+- Erfahren Sie mehr über [Entitäten in Microsoft Sentinel](entities-in-azure-sentinel.md).

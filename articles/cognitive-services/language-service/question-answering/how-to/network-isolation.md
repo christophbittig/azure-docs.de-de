@@ -6,12 +6,12 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: e16734ac0ff53f778fad368913d89bcea3869ee3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9ab30b82a9bac9d06e2d5228b2004c36d465d392
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095632"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458207"
 ---
 #  <a name="network-isolation-and-private-endpoints"></a>Netzwerkisolation und private Endpunkte
 
@@ -45,16 +45,16 @@ Private Endpunkte werden durch [Azure Private Link](../../../../private-link/pri
 5. Wechseln Sie zur Registerkarte *Netzwerk* der Sprachressource, und wählen Sie unter *Zugriff erlauben von* die Option *Ausgewählte Netzwerke und private Endpunkte* aus. Wählen Sie anschließend *Speichern* aus.
  
 > [!div class="mx-imgBorder"]
-> ![Textanalyse: Netzwerk](../../../QnAMaker/media/qnamaker-reference-private-endpoints/private-endpoint-networking-custom-qna.png)
+> ![Textanalyse Netzwerk](../../../QnAMaker/media/qnamaker-reference-private-endpoints/private-endpoint-networking-custom-qna.png)
 
 Dadurch wird eine private Endpunktverbindung zwischen der Sprachressource und der Azure Cognitive Search-Dienstinstanz hergestellt. Sie können die private Endpunktverbindung auf der Registerkarte *Netzwerk* der Azure Cognitive Search-Dienstinstanz überprüfen. Sobald der gesamte Vorgang abgeschlossen ist, können Sie Ihre Sprachressource mit aktivierten Fragen und Antworten verwenden.
 
 ![Registerkarte „Netzwerk“ für verwalteten Dienst](../../../QnAMaker/media/qnamaker-reference-private-endpoints/private-endpoint-networking-3.png)
 
 ## <a name="support-details"></a>Details zur Unterstützung
- * Wir unterstützen keine Änderungen am Azure Cognitive Search-Dienst, nachdem Sie den privaten Zugriff auf Ihren Textanalyse-Dienst aktiviert haben. Wenn Sie den Azure Cognitive Search-Dienst über die Registerkarte „Features“ ändern, nachdem Sie den privaten Zugriff aktiviert haben, wird der Textanalyse-Dienst unbrauchbar.
+ * Wir unterstützen keine Änderungen am Azure Cognitive Suchdienst, nachdem Sie den privaten Zugriff auf Ihren Textanalyse-Dienst aktiviert haben. Wenn Sie den Azure Cognitive Suchdienst über die Registerkarte "Funktionen" ändern, nachdem Sie den privaten Zugriff aktiviert haben, wird die Sprachen-Funktion unbrauchbar.
 
- * Wenn Sie nach dem Einrichten der privaten Endpunktverbindung die Einstellung für das Netzwerk des Azure Cognitive Search-Diensts in „Öffentlich“ ändern, können Sie den Textanalyse-Dienst nicht verwenden. Sie müssen für das Netzwerk des Azure Search-Diensts die Einstellung „Privat“ verwenden, damit die private Endpunktverbindung funktioniert.
+ * .Wenn Sie nach der Einrichtung der privaten Endpunktverbindung die Vernetzung des Azure Cognitive Search Service auf "Öffentlich" umstellen, können Sie die Sprachen-Funktion nicht mehr verwenden. Sie müssen für das Netzwerk des Azure Search-Diensts die Einstellung „Privat“ verwenden, damit die private Endpunktverbindung funktioniert.
 
 ## <a name="restrict-access-to-cognitive-search-resource"></a>Einschränken des Zugriffs auf Cognitive Search-Ressourcen
 

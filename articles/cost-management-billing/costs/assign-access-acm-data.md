@@ -3,18 +3,18 @@ title: Zuweisen des Zugriffs auf Daten in Azure Cost Management
 description: Dieser Artikel führt Sie durch das Zuweisen von Berechtigungen für Daten in Cost Management für verschiedene Zugriffsbereiche.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: adwise
+ms.reviewer: sapnakeshari
 ms.custom: secdec18
-ms.openlocfilehash: dddb6292530687e75e4b5e697f4fc754d98040fb
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: d467fd2ac2ecb01d4a933573603360f5382d5efb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706251"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457979"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
@@ -47,6 +47,7 @@ Zum Anzeigen von Kostendaten für Azure EA-Abonnements muss ein Benutzer mindest
 
 <sup>2</sup> Das Registrierungskonto wird auch als Kontobesitzer bezeichnet.
 
+Direkte Unternehmensadministratoren können das Abrechnungskonto, die Abteilung und den Registrierungskontobereich im [Azure-Portal](https://portal.azure.com/) zuweisen. Weitere Informationen finden Sie unter [Azure-Portal-Verwaltung für direkte Enterprise Agreements](../manage/direct-ea-administration.md).
 
 ## <a name="other-azure-account-scopes"></a>Andere Azure-Kontobereiche
 
@@ -119,6 +120,8 @@ Für den Zugriff auf den Abteilungsbereich muss im EA-Portal der Zugriff eines A
 7. Wählen Sie die Abteilungen aus, denen Sie Berechtigungen für die Abteilungsverwaltung gewähren möchten.
 8. Wählen Sie **Hinzufügen** aus, um das Konto zu erstellen.  
     ![Eingeben der erforderlichen Informationen in das Feld „Abteilungsadministrator hinzufügen“](./media/assign-access-acm-data/add-depart-admin.png)
+    
+Direkte Unternehmensadministratoren können im Azure-Portal Abteilungsadministratorzugriff zuweisen. Weitere Informationen finden Sie unter [Hinzufügen eines Abteilungsadministrators im Azure-Portal](../manage/direct-ea-administration.md#add-a-department-administrator).
 
 ## <a name="assign-enrollment-account-scope-access"></a>Zuweisen des Zugriffs auf den Registrierungskontobereich
 
@@ -136,10 +139,11 @@ Für den Zugriff auf den Registrierungskontobereich muss im EA-Portal der Zugrif
 
 Nachdem die obigen Schritte ausgeführt wurden, wird das Benutzerkonto zu einem Registrierungskonto im Enterprise Portal. Fortan können damit Abonnements erstellt werden. Der Benutzer kann auf Kosten- und Nutzungsdaten für von ihm erstellte Abonnements zugreifen.
 
+Direkte Unternehmensadministratoren können im Azure-Portal Kontobesitzerzugriff zuweisen. Weitere Informationen finden Sie unter [Hinzufügen eines Kontobesitzers im Azure-Portal](../manage/direct-ea-administration.md#add-an-account-and-account-owner).
+
 ## <a name="assign-management-group-scope-access"></a>Zuweisen des Zugriffs auf den Verwaltungsgruppenbereich
 
 Für den Zugriff zur Anzeige des Verwaltungsgruppenbereichs ist mindestens die Berechtigung „Cost Management-Leser“ (oder „Leser“) erforderlich. Sie können die Berechtigungen für eine Verwaltungsgruppe im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für die Verwaltungsgruppe, um anderen Benutzern Zugriff zu gewähren. Für Azure EA-Konten muss zudem im EA-Portal die Einstellung **Kontobesitzer können Gebühren anzeigen** aktiviert sein.
-
 
 - Weisen Sie die Rolle „Kostenverwaltung: Leser“ (oder „Leser“) einem Benutzer im Verwaltungsgruppenbereich zu.  
      Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).

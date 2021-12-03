@@ -4,17 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Hier erfahren Sie mehr über bereits vorhandene branchenspezifische Ontologien, die für Azure Digital Twins übernommen werden können.
 author: baanders
 ms.author: baanders
-ms.date: 2/26/2021
+ms.date: 10/27/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 51a35f13b8f9328abaad44b112acf4e2176796d6
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 936df82dc8c7c5babcb3b1844f2d53f1396dbd8b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771184"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500657"
 ---
 # <a name="adopting-an-industry-ontology"></a>Übernehmen einer branchenspezifischen Ontologie
+
+In diesem Artikel werden verschiedene Branchenstandard-Ontologien behandelt, die zur Vereinfachung von Lösungen übernommen werden können.
 
 Da es einfacher sein kann, mit einer Open-Source-DTDL-Ontologie (Digital Twins Definition Language) zu beginnen, als von Grund auf neu zu entwickeln, arbeitet Microsoft mit Branchenexperten zusammen, um Ontologien zu veröffentlichen. Diese Ontologien stellt weitgehend akzeptierte Branchenkonventionen dar und unterstützen verschiedenste Anwendungsfälle von Kunden. 
 

@@ -1,24 +1,24 @@
 ---
-title: Behandeln falsch positiver Ergebnisse in Azure Sentinel
-description: Erfahren Sie, wie Sie falsch positive Ergebnisse in Azure Sentinel beheben, indem Sie Automatisierungsregeln erstellen oder Analyseregeln ändern, um Ausnahmen anzugeben.
+title: Behandeln falsch positiver Ergebnisse in Microsoft Sentinel
+description: Erfahren Sie, wie Sie falsch positive Ergebnisse in Microsoft Sentinel beheben, indem Sie Automatisierungsregeln erstellen oder Analyseregeln ändern, um Ausnahmen anzugeben.
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d14d4942f659be48b49615e6fe9addb2ffa34905
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 009cb9d66f4294bc72bafdcf515a68131d9b7e38
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046886"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521157"
 ---
-# <a name="handle-false-positives-in-azure-sentinel"></a>Behandeln falsch positiver Ergebnisse in Azure Sentinel
+# <a name="handle-false-positives-in-microsoft-sentinel"></a>Behandeln falsch positiver Ergebnisse in Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-[Azure Sentinel-Analyseregeln](detect-threats-built-in.md) benachrichtigen Sie, wenn in Ihrem Netzwerk etwas Verdächtiges auftritt. Keine Analyseregel ist perfekt, und Sie werden einige falsch positive Ergebnisse, die sich nicht vermeiden lassen, behandeln müssen. In diesem Artikel wird beschrieben, wie Sie falsch positive Ergebnisse entweder mithilfe der Automatisierung oder durch Ändern geplanter Analyseregeln behandeln können.
+[Microsoft Sentinel-Analyseregeln](detect-threats-built-in.md) benachrichtigen Sie, wenn in Ihrem Netzwerk etwas Verdächtiges auftritt. Keine Analyseregel ist perfekt, und Sie werden einige falsch positive Ergebnisse, die sich nicht vermeiden lassen, behandeln müssen. In diesem Artikel wird beschrieben, wie Sie falsch positive Ergebnisse entweder mithilfe der Automatisierung oder durch Ändern geplanter Analyseregeln behandeln können.
 
 ## <a name="false-positive-causes-and-prevention"></a>Ursachen und Prävention falsch positiver Ergebnisse
 
@@ -49,17 +49,17 @@ Die einfachste Möglichkeit, eine Ausnahme hinzuzufügen, besteht im [Hinzufüge
 
 So fügen Sie eine Automatisierungsregel hinzu, um ein falsch positives Ergebnis zu behandeln
 
-1. Wählen Sie in Azure Sentinel unter **Incidents** den Incident aus, für den Sie eine Ausnahme erstellen möchten.
+1. Wählen Sie in Microsoft Sentinel unter **Incidents** den Incident aus, für den Sie eine Ausnahme erstellen möchten.
 1. Wählen Sie **Automatisierungsregel erstellen** aus.
 1. Ändern Sie optional auf der Randleiste **Neue Automatisierungsregel erstellen** den Namen der neuen Regel, der die Ausnahme definieren soll, und verwenden Sie nicht einfach den Namen der Warnungsregel.
 1. Fügen Sie unter **Bedingungen** optional weitere **Namen von Analyseregeln** hinzu, auf die die Ausnahme angewendet werden soll.
 1. Auf der Randleiste werden jeweils die Entitäten im aktuellen Incident angezeigt, die möglicherweise das falsch positive Ergebnis verursacht haben. Übernehmen Sie die automatischen Vorschläge, oder ändern Sie diese, um die Ausnahme zu optimieren. Beispielsweise können Sie eine Bedingung für eine IP-Adresse so ändern, dass sie für ein ganzes Subnetz gilt.
 
-   :::image type="content" source="media/false-positives/create-rule.png" alt-text="Screenshot: Erstellen einer Automatisierungsregel für einen Incident in Azure Sentinel.":::
+   :::image type="content" source="media/false-positives/create-rule.png" alt-text="Screenshot: Erstellen einer Automatisierungsregel für einen Incident in Microsoft Sentinel":::
 
 1. Nachdem Sie den Trigger definiert haben, können Sie den Vorgang fortsetzen und die Funktion der Regel definieren:
 
-   :::image type="content" source="media/false-positives/apply-rule.png" alt-text="Screenshot: Beenden des Erstellens und Anwendens einer Automatisierungsregel in Azure Sentinel.":::
+   :::image type="content" source="media/false-positives/apply-rule.png" alt-text="Screenshot: Beenden des Erstellens und Anwendens einer Automatisierungsregel in Microsoft Sentinel":::
 
    - Die Regel ist bereits so konfiguriert, dass sie den Incident schließt, der die Ausnahmekriterien erfüllt.
    - Sie können dem automatisch geschlossenen Incident einen Kommentar hinzufügen, in dem die Ausnahme erläutert wird. Sie können z. B. angeben, dass der Incident von einer bekannten Verwaltungsaktivität ausgelöst wurde.
@@ -68,7 +68,7 @@ So fügen Sie eine Automatisierungsregel hinzu, um ein falsch positives Ergebnis
 1. Wählen Sie **Anwenden** aus, um die Ausnahme zu aktivieren.
 
 > [!TIP]
-> Sie können auch eine Automatisierungsregel von Grund auf neu erstellen, ohne mit einem Incident zu beginnen. Wählen Sie im linken Navigationsmenü von Azure Sentinel **Automatisierung** aus, und wählen Sie dann **Erstellen** > **Neue Regel hinzufügen** aus.
+> Sie können auch eine Automatisierungsregel von Grund auf neu erstellen, ohne mit einem Incident zu beginnen. Wählen Sie im linken Navigationsmenü von Microsoft Sentinel die Option **Automatisierung** aus, und wählen Sie dann **Erstellen** > **Neue Regel hinzufügen** aus.
 
 ## <a name="add-exceptions-by-modifying-analytics-rules"></a>Hinzufügen von Ausnahmen durch Ändern von Analyseregeln
 
@@ -76,7 +76,7 @@ Eine weitere Möglichkeit zum Implementieren von Ausnahmen ist das Ändern der A
 
 ### <a name="modify-the-query"></a>Ändern der Abfrage
 
-Um vorhandene Analyseregeln zu bearbeiten, wählen Sie im linken Navigationsmenü von Azure Sentinel **Automatisierung** aus. Wählen Sie die Regel aus, die Sie bearbeiten möchten, und wählen Sie dann unten rechts **Bearbeiten** aus, um den **Assistenten für Analyseregeln** zu öffnen.
+Um vorhandene Analyseregeln zu bearbeiten, wählen Sie im linken Navigationsmenü von Microsoft Sentinel die Option **Automatisierung** aus. Wählen Sie die Regel aus, die Sie bearbeiten möchten, und wählen Sie dann unten rechts **Bearbeiten** aus, um den **Assistenten für Analyseregeln** zu öffnen.
 
 Ausführliche Anweisungen zum Verwenden des **Assistenten für Analyseregeln** zum Erstellen und Bearbeiten von Analyseregeln finden Sie unter [Erstellen von benutzerdefinierten Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md).
 
@@ -150,6 +150,6 @@ let subnets = _GetWatchlist('subnetallowlist');
 
 Weitere Informationen finden Sie unter:
 - [Verwenden von UEBA-Daten zum Analysieren falsch positiver Ergebnisse](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives)
-- [Automatisierung der Vorfallbehandlung in Azure Sentinel mit Automatisierungsregeln](automate-incident-handling-with-automation-rules.md)
+- [Automatisierung der Vorfallbehandlung in Microsoft Sentinel mit Automatisierungsregeln](automate-incident-handling-with-automation-rules.md)
 - [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md)
-- [Verwenden von Azure Sentinel-Watchlists](watchlists.md)
+- [Verwenden von Microsoft Sentinel-Watchlists](watchlists.md)

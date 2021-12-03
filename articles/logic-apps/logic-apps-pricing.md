@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 08/23/2021
-ms.openlocfilehash: d6a43a64cbe24bc547ef1c6e61d4c0e3c340d76f
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.date: 11/10/2021
+ms.openlocfilehash: 90e0703313db99bee1a7d06e9c1bc9d0efac135f
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067267"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372964"
 ---
 # <a name="usage-metering-billing-and-pricing-models-for-azure-logic-apps"></a>Modelle für Verwendungsmessung, Abrechnung und Preise in den Azure Logic Apps
 
@@ -73,10 +73,10 @@ Diese Tipps helfen Ihnen beim Schätzen genauerer Nutzungskosten:
 
 In Azure Logic Apps mit einem Mandanten wird für eine Logik-App und ihren Workflow der [**Standardplan**](https://azure.microsoft.com/pricing/details/logic-apps/) für Preise und Abrechnung verwendet. Sie erstellen solche Logik-Apps auf unterschiedliche Weisen, z. B. wenn Sie den Ressourcentyp **Logik-App (Standard)** auswählen oder die Erweiterung **Azure Logic Apps (Standard)** in Visual Studio Code verwenden. Für dieses Preismodell müssen Logik-Apps einen Hostingplan und einen Tarif verwenden. Dies unterscheidet sich vom Verbrauchsplan insofern, dass Ihnen reservierte Kapazitäten und dedizierte Ressourcen in Rechnung gestellt werden, unabhängig davon, ob Sie sie verwenden.
 
+Wenn Sie Logik-Apps mit dem Ressourcentyp **Logik-App (Standard)** erstellen oder bereitstellen, können Sie den Hostingplan „Workflow-Standard“ in allen Azure-Regionen verwenden. Sie haben auch die Möglichkeit, eine vorhandene **App Service-Umgebung v3**-Ressource als Bereitstellungsort zu wählen, aber Sie können nur den App Service-Plan mit dieser Option verwenden. Wenn Sie diese Option auswählen, werden Ihnen die vom App Service-Plan verwendeten Instanzen und die Ausführung Ihrer Logik-App-Workflows in Rechnung gestellt. Es fallen keine weiteren Gebühren an.
+
 > [!IMPORTANT]
-> Wenn Sie Logik-Apps mit dem Ressourcentyp **Logik-App (Standard)** erstellen oder bereitstellen, können Sie den Hostingplan „Workflow-Standard“ in allen Azure-Regionen verwenden. Sie können einen App Service-Hostingplan *nur* verwenden, wenn Sie eine vorhandene **App Service-Umgebung v3 (ASEv3)** -Ressource als die Region verwenden, in der Sie Ihre Logik-App-Ressource erstellen und bereitstellen.
->
-> Die folgenden Optionen sind in der öffentlichen Version des Ressourcentyps **Logik-App (Standard)** in Azure-Regionen nicht mehr verfügbar oder werden dort nicht mehr unterstützt: Functions Premium-Plan, App Service-Umgebung v1 und App Service-Umgebung v2. Der App Service-Plan ist nicht verfügbar und wird nicht unterstützt, mit Ausnahme von ASEv3.
+> Die folgenden Pläne und Ressourcen sind mit der öffentlichen Freigabe des Ressourcentyps **Logic App (Standard)** in Azure-Regionen nicht mehr verfügbar oder werden nicht mehr unterstützt: Funktionen Premium-Plan, App Service Environment v1 und App Service Environment v2. Der App Service-Plan ist nicht verfügbar und wird nicht unterstützt, mit Ausnahme von ASEv3.
 
 In der folgenden Tabelle wird zusammengefasst, wie das Standardmodell die Verbrauchsmessung und Abrechnung für die folgenden Komponenten verarbeitet, wenn es mit einer Logik-App und einem Workflow in Azure Logic Apps mit einem Mandanten verwendet wird:
 
@@ -108,7 +108,7 @@ Der Tarif, den Sie für die Messung und Abrechnung Ihrer Logik-App auswählen, u
 >
 > Angenommen, in einer Beispielregion gelten für die folgenden Ressourcen diese Stundensätze:
 >
-> | Resource | Stundensatz (Beispielregion) |
+> | Ressource | Stundensatz (Beispielregion) |
 > |----------|-----------------------------|
 > | **vCPU** | 0,192 USD pro vCPU |
 > | **Arbeitsspeicher** | 0,0137 USD pro GB |

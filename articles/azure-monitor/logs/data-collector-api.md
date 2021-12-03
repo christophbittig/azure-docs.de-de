@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2021
-ms.openlocfilehash: 043427f288a5e757e63aefe79b97953f40a15c69
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a7d998499285dbaa400269bc87d027febfd0ca14
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131461929"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325617"
 ---
 # <a name="send-log-data-to-azure-monitor-by-using-the-http-data-collector-api-preview"></a>Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Vorschau)
 
@@ -263,7 +263,6 @@ Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $metho
     $authorization = 'SharedKey {0}:{1}' -f $customerId,$encodedHash
     return $authorization
 }
-
 
 # Create the function to create and post the request
 Function Post-LogAnalyticsData($customerId, $sharedKey, $body, $logType)
@@ -569,7 +568,7 @@ Wenngleich die Datensammler-API die meisten Ihrer Anforderungen an die Erfassung
 | Alternative | BESCHREIBUNG | Am besten geeignet für |
 |---|---|---|
 | [Benutzerdefinierte Ereignisse](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Native SDK-basierte Erfassung in Application Insights | Application Insights (in der Regel über ein SDK in Ihrer Anwendung instrumentiert) bietet die Möglichkeit, benutzerdefinierte Daten über benutzerdefinierte Ereignisse zu senden. | <ul><li> Daten, die innerhalb Ihrer Anwendung generiert, aber nicht vom SDK über einen der Standarddatentypen (Anforderungen, Abhängigkeiten, Ausnahmen usw.) erkannt werden.</li><li> Daten, die meist mit anderen Anwendungsdaten in Application Insights korreliert sind. </li></ul> |
-| Datensammler-API in Azure Monitor-Protokollen | Die Datensammler-API in Azure Monitor-Protokollen ist eine völlig offene Methode zur Datenerfassung. Alle in einem JSON-Objekt formatierten Daten können hier gesendet werden. Nachdem sie gesendet wurden, werden sie verarbeitet und in Monitor-Protokollen zur Verfügung gestellt, um mit anderen Daten in Monitor-Protokollen oder mit anderen Application Insights-Daten korreliert zu werden. <br/><br/> Es ist ziemlich einfach, die Daten als Dateien in einen Azure Blob Storage-Blob hochzuladen, von wo aus diese Dateien verarbeitet und in Log Analytics hochgeladen werden. Eine Beispielimplementierung finden Sie unter [Erstellen einer Datenpipeline mit der Datensammler-API](./create-pipeline-datacollector-api.md). | <ul><li> Daten, die nicht notwendigerweise innerhalb einer Anwendung generiert werden, die innerhalb von Application Insights instrumentiert wird.<br>Beispiele sind Lookup- und Faktentabellen, Referenzdaten, vorab aggregierte Statistiken usw. </li><li> Daten, auf die mit anderen Azure Monitor-Daten über Querverweise verwiesen wird (Application Insights, andere Monitor-Protokolldatentypen, Security Center, Container Insights/VMs usw.). </li></ul> |
+| Datensammler-API in Azure Monitor-Protokollen | Die Datensammler-API in Azure Monitor-Protokollen ist eine völlig offene Methode zur Datenerfassung. Alle in einem JSON-Objekt formatierten Daten können hier gesendet werden. Nachdem sie gesendet wurden, werden sie verarbeitet und in Monitor-Protokollen zur Verfügung gestellt, um mit anderen Daten in Monitor-Protokollen oder mit anderen Application Insights-Daten korreliert zu werden. <br/><br/> Es ist ziemlich einfach, die Daten als Dateien in einen Azure Blob Storage-Blob hochzuladen, von wo aus diese Dateien verarbeitet und in Log Analytics hochgeladen werden. Eine Beispielimplementierung finden Sie unter [Erstellen einer Datenpipeline mit der Datensammler-API](./create-pipeline-datacollector-api.md). | <ul><li> Daten, die nicht notwendigerweise innerhalb einer Anwendung generiert werden, die innerhalb von Application Insights instrumentiert wird.<br>Beispiele sind Lookup- und Faktentabellen, Referenzdaten, vorab aggregierte Statistiken usw. </li><li> Daten, auf die mit anderen Azure Monitor-Daten über Querverweise verwiesen wird (Application Insights, andere Monitor-Protokolldatentypen, Defender für Cloud, Container Insights/VMs usw.). </li></ul> |
 | [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Azure Data Explorer (jetzt allgemein und öffentlich verfügbar) ist die Datenplattform, die Application Insights Analytics und Azure Monitor Logs zugrunde liegt. Die Verwendung der Datenplattform im Rohformat bietet volle Flexibilität (erfordert aber den Verwaltungsmehraufwand) für den Cluster (Kubernetes RBAC, Bindungsrate, Schema usw.). Azure Data Explorer bietet viele [Erfassungsoptionen](/azure/data-explorer/ingest-data-overview#ingestion-methods), wie z. B. [CSV-, TSV- und JSON-Dateien](/azure/kusto/management/mappings). | <ul><li> Daten, die nicht mit anderen Daten in Application Insights oder Monitor-Protokollen korreliert werden. </li><li> Daten, die erweiterte Erfassungs- oder Verarbeitungsfunktionen erfordern, die aktuell nicht in Azure Monitor-Protokollen verfügbar sind. </li></ul> |
 
 

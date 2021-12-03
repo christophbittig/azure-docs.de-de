@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 04/09/2021
 ms.author: rohink
-ms.openlocfilehash: eb66facb8d36884205bc9cd8e562ab97f92c3dd8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 819e3f911a769f870b792ed92b699f3356139565
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745035"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457695"
 ---
 # <a name="what-is-azure-private-dns"></a>Was ist privates Azure-DNS?
 
@@ -47,7 +47,7 @@ Privates Azure-DNS bietet folgende Vorteile:
 
 ## <a name="capabilities"></a>Funktionen
 
-Azure DNS bietet die folgenden Funktionen:
+Privates Azure-DNS bietet die folgenden Funktionen:
 
 * **Automatische Registrierung von virtuellen Computern in einem virtuellen Netzwerk, das mit einer privaten Zone mit aktivierter automatischer Registrierung verknüpft ist**. Virtuelle Computer werden für die private Zone als A-Einträge registriert, die auf die zugehörigen privaten IP-Adressen verweisen. Beim Löschen eines virtuellen Computers in einer virtuellen Netzwerkverknüpfung mit aktivierter automatischer Registrierung entfernt Azure DNS automatisch auch den entsprechenden DNS-Eintrag aus der verknüpften privaten Zone.
 
@@ -57,7 +57,7 @@ Azure DNS bietet die folgenden Funktionen:
 
 ## <a name="other-considerations"></a>Weitere Überlegungen
 
-Für Azure DNS gelten die folgenden Einschränkungen:
+Für privates Azure-DNS gelten die folgenden Einschränkungen:
 
 * Ein bestimmtes virtuelles Netzwerk kann nur mit genau einer privaten Zone verknüpft werden, wenn die automatische Registrierung von VM-DNS-Einträgen aktiviert ist. Sie können jedoch mehrere virtuelle Netzwerke mit einer einzelnen DNS-Zone verknüpfen.
 * Reverse-DNS funktioniert nur für den privaten IP-Bereich im verknüpften virtuellen Netzwerk.

@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: bonova, mathoma, danil
 ms.date: 09/21/2021
-ms.openlocfilehash: 505dbbed8dc0287d33e09d1db6471a4dedee6f6f
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9406a8c0a54bac170c43a75f95842f2cf0dde171
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131476944"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548860"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Featurevergleich: Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -35,6 +35,9 @@ Azure verwaltet Ihre Datenbanken und garantiert ihre Hochverfügbarkeit. Einige 
 Wenn Sie weitere Details zu den Unterschieden benötigen, finden Sie diese auf den separaten Seiten:
 - [Unterschiede bei T-SQL zwischen Azure SQL-Datenbank und SQL Server](transact-sql-tsql-differences-sql-server.md)
 - [Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance](../managed-instance/transact-sql-tsql-differences-sql-server.md)
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>Features von SQL-Datenbank und SQL Managed Instance

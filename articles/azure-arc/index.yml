@@ -96,7 +96,7 @@ conceptualContent:
           text: Azure Policy – Übersicht
         - url: ../security-center/azure-defender.md
           itemType: overview
-          text: Übersicht über Azure Defender
+          text: Übersicht über Microsoft Defender für Cloud
         - url: ../automation/automation-intro.md
           itemType: overview
           text: Azure Automation – Übersicht

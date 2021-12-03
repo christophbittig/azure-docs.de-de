@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 89c310e1cb18a41a4d04760af26dc06215770b9d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1ec5ed80111d7d0665d42b20dd725769b13de4b9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101507"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520666"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -83,6 +83,16 @@ Verwenden Sie die folgende URL, um ein Projekt zu erstellen und Ihre Tagdatei zu
 |Platzhalter  |Wert  | Beispiel |
 |---------|---------|---------|
 |`{YOUR-ENDPOINT}`     | Der Endpunkt für die Authentifizierung Ihrer API-Anforderung.   | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
+
+### <a name="parameters"></a>Parameter
+
+Übergeben Sie in Ihrer Anforderung den folgenden Parameter. 
+
+|Key|Erklärung|Wert|
+|--|--|--|
+|`api-version`| Die verwendete API-Version.| `2021-11-01-preview` |
+
+Fügen Sie am Ende Ihrer Anforderungs-URL `?api-version=2021-11-01-preview` hinzu, um den Parameter zu übergeben.
 
 ### <a name="headers"></a>Header
 
@@ -156,6 +166,16 @@ Verwenden Sie zum Erstellen Ihrer API-Anforderung die folgende URL. Ersetzen Sie
 |`{YOUR-ENDPOINT}`     | Der Endpunkt für die Authentifizierung Ihrer API-Anforderung.   | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 |`{PROJECT-NAME}`     | Der Name für Ihr Projekt. Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.  | `myProject` |
 
+### <a name="parameters"></a>Parameter
+
+Übergeben Sie in Ihrer Anforderung den folgenden Parameter. 
+
+|Schlüssel|Erklärung|Wert|
+|--|--|--|
+|`api-version`| Die verwendete API-Version.| `2021-11-01-preview` |
+
+Fügen Sie am Ende Ihrer Anforderungs-URL `?api-version=2021-11-01-preview` hinzu, um den Parameter zu übergeben.
+
 ### <a name="headers"></a>Header
 
 Verwenden Sie den folgenden Header, um Ihre Anforderung zu authentifizieren. 
@@ -183,7 +203,7 @@ Verwenden Sie den folgenden JSON-Code in Ihrer Anforderung. Das Modell wird `MyM
 Nachdem Sie Ihre API-Anforderung gesendet haben, erhalten Sie eine `202`-Antwort, die angibt, dass sie erfolgreich war. Extrahieren Sie in den Antwortheadern den `location`-Wert. Er weist das folgende Format auf: 
 
 ```rest
-{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/train/jobs/{JOB-ID}
+{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/train/jobs/{JOB-ID}?api-version=xxxx-xx-xx-xxxxxxx
 ``` 
 
 `JOB-ID` wird verwendet, um Ihre Anforderung zu identifizieren, da es sich um einen asynchronen Vorgang handelt. Sie verwenden diese URL im nächsten Schritt, um den Trainingsstatus abzurufen. 
@@ -203,6 +223,16 @@ Verwenden Sie die folgende **GET**-Anforderung, um den Status des Trainingsproze
 |`{PROJECT-NAME}`     | Der Name für Ihr Projekt. Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.  | `myProject` |
 |`{JOB-ID}`     | Die ID zum Ermitteln des Trainingsstatus Ihres Modells. Diese befindet sich im `location`-Headerwert, den Sie im vorherigen Schritt erhalten haben.  | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx` |
 
+### <a name="parameters"></a>Parameter
+
+Übergeben Sie in Ihrer Anforderung den folgenden Parameter. 
+
+|Key|Erklärung|Wert|
+|--|--|--|
+|`api-version`| Die verwendete API-Version.| `2021-11-01-preview` |
+
+Fügen Sie am Ende Ihrer Anforderungs-URL `?api-version=2021-11-01-preview` hinzu, um den Parameter zu übergeben.
+
 ### <a name="headers"></a>Header
 
 Verwenden Sie den folgenden Header, um Ihre Anforderung zu authentifizieren. 
@@ -210,7 +240,6 @@ Verwenden Sie den folgenden Header, um Ihre Anforderung zu authentifizieren.
 |Schlüssel|Wert|
 |--|--|
 |`Ocp-Apim-Subscription-Key`| Der Schlüssel für Ihre Ressource. Wird für die Authentifizierung Ihrer API-Anforderungen verwendet.|
-
 
 ### <a name="response-body"></a>Antworttext
 
@@ -262,6 +291,16 @@ Erstellen Sie eine **PUT**-Anforderung mithilfe der folgenden URL, der Header un
 |`{PROJECT-NAME}`     | Der Name für Ihr Projekt. Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.  | `myProject` |
 |`{DEPLOYMENT-NAME}`     | Der Name Ihrer Bereitstellung. Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.  | `prod` |
 
+### <a name="parameters"></a>Parameter
+
+Übergeben Sie in Ihrer Anforderung den folgenden Parameter. 
+
+|Key|Erklärung|Wert|
+|--|--|--|
+|`api-version`| Die verwendete API-Version.| `2021-11-01-preview` |
+
+Fügen Sie am Ende Ihrer Anforderungs-URL `?api-version=2021-11-01-preview` hinzu, um den Parameter zu übergeben.
+
 ### <a name="headers"></a>Header
 
 Verwenden Sie den folgenden Header, um Ihre Anforderung zu authentifizieren. 
@@ -284,7 +323,7 @@ Verwenden Sie den folgenden JSON-Code in Ihrer Anforderung. Das Modell wird `MyM
 Nachdem Sie Ihre API-Anforderung gesendet haben, erhalten Sie eine `202`-Antwort, die angibt, dass sie erfolgreich war. Extrahieren Sie in den Antwortheadern den `location`-Wert. Er weist das folgende Format auf: 
 
 ```rest
-{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/deployments/{DEPLOYMENT-NAME}/jobs/{JOB-ID}
+{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/deployments/{DEPLOYMENT-NAME}/jobs/{JOB-ID}?api-version=xxxx-xx-xx-xxxxxxx
 ``` 
 
 `JOB-ID` wird verwendet, um Ihre Anforderung zu identifizieren, da es sich um einen asynchronen Vorgang handelt. Sie verwenden diese URL im nächsten Schritt, um den Veröffentlichungsstatus abzurufen.
@@ -304,6 +343,16 @@ Verwenden Sie die folgende **GET**-Anforderung, um den Status des Veröffentlich
 |`{DEPLOYMENT-NAME}`     | Der Name Ihrer Bereitstellung. Bei diesem Wert wird die Groß-/Kleinschreibung beachtet.  | `prod` |
 |`{JOB-ID}`     | Die ID zum Ermitteln des Trainingsstatus Ihres Modells. Diese befindet sich im `location`-Headerwert, den Sie im vorherigen Schritt erhalten haben.  | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx` |
 
+### <a name="parameters"></a>Parameter
+
+Übergeben Sie in Ihrer Anforderung den folgenden Parameter. 
+
+|Schlüssel|Erklärung|Wert|
+|--|--|--|
+|`api-version`| Die verwendete API-Version.| `2021-11-01-preview` |
+
+Fügen Sie am Ende Ihrer Anforderungs-URL `?api-version=2021-11-01-preview` hinzu, um den Parameter zu übergeben.
+
 ### <a name="headers"></a>Header
 
 Verwenden Sie den folgenden Header, um Ihre Anforderung zu authentifizieren. 
@@ -311,7 +360,6 @@ Verwenden Sie den folgenden Header, um Ihre Anforderung zu authentifizieren.
 |Schlüssel|Wert|
 |--|--|
 |`Ocp-Apim-Subscription-Key`| Der Schlüssel für Ihre Ressource. Wird für die Authentifizierung Ihrer API-Anforderungen verwendet.|
-
 
 ### <a name="submit-text-classification-task"></a>Übermitteln der Textklassifizierungsaufgabe
 

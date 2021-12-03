@@ -8,19 +8,17 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 9/21/2020
-ms.openlocfilehash: 268ab28c5f5aa500a110abf7cca650d7b7f14914
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3617546e1319617a2a333a2c358880812d8626b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355358"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468079"
 ---
-# <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL – Flexible Server mit der Azure CLI
+# <a name="manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Verwalten von Firewallregeln für Azure Database for MySQL – Flexible Server mit Azure CLI
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 Azure Database for MySQL Flexible Server unterstützt zwei Arten von sich gegenseitig ausschließenden Netzwerkverbindungsmethoden, mit denen eine Verbindung mit Ihrem flexiblen Server hergestellt werden kann. Die zwei Optionen sind:
 
@@ -131,8 +129,8 @@ Geben Sie die IP-Adresse „0.0.0.0“ als Start-IP-Adresse an, um Anwendungen �
 az mysql flexible-server firewall-rule create --name mydemoserver --start-ip-address 0.0.0.0
 ```
 
-   > [!IMPORTANT]
-   > Diese Option konfiguriert die Firewall zum Zulassen des öffentlichen Zugriffs über Azure-Dienste und -Ressourcen auf diesen Server, einschließlich Verbindungen aus Abonnements anderer Kunden. Wenn Sie diese Option auswählen, stellen Sie sicher, dass die Anmelde- und die Benutzerberechtigungen den Zugriff nur auf autorisierte Benutzer beschränken.
+> [!IMPORTANT]
+> Diese Option konfiguriert die Firewall zum Zulassen des öffentlichen Zugriffs über Azure-Dienste und -Ressourcen auf diesen Server, einschließlich Verbindungen aus Abonnements anderer Kunden. Wenn Sie diese Option auswählen, stellen Sie sicher, dass die Anmelde- und die Benutzerberechtigungen den Zugriff nur auf autorisierte Benutzer beschränken.
 
 Bei erfolgreicher Ausführung listet die Befehlsausgabe für die Erstellung die Details der von Ihnen erstellten Firewallregel standardmäßig im JSON-Format auf. Falls ein Fehler auftritt, wird in der Ausgabe stattdessen eine Fehlermeldung angezeigt.
 

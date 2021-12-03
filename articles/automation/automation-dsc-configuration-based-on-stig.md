@@ -3,19 +3,15 @@ title: Konfigurieren von Daten basierend auf STIG in Azure Automation State Conf
 description: In diesem Artikel erfahren Sie, wie Sie Daten basierend auf DoD STIG für Azure Automation State Configuration konfigurieren.
 keywords: DSC,PowerShell,Konfiguration,Setup,Einrichtung
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgreenegit
-ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: dab0cd7f7d660808b4ed7a91318baad55f80928c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba875eb6fd132a6f5bcf916936545ac76c1656d3
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87015135"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488581"
 ---
 # <a name="configure-data-based-on-security-technical-information-guide-stig"></a>Konfigurieren von Daten basierend auf STIG (Security Technical Information Guide, Leitfaden mit technischen Informationen zur Sicherheit)
 

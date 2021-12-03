@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 0378c3a8859092f65dca2b8e8147f9be6889e3e6
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d08c55a1449d159438b652bd45bbdc50e02fb126
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251297"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427929"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Bereitstellen und Erstellen von Linux-Images in Azure
 
@@ -32,7 +32,7 @@ Azure ermöglicht Ihnen das Bereitstellen einer virtuellen Festplatte (Virtual H
 
 Verwaltete Azure-Datenträger sind einzelne VHDs. Sie können entweder anhand einer vorhandenen VHD einen verwalteten Datenträger erstellen oder einen leeren verwalteten Datenträger von Grund auf erstellen. Sie können VMs von verwalteten Datenträgern erstellen, indem Sie den Datenträger an den virtuellen Computer anfügen, aber Sie können nur eine VHD mit einem virtuellen Computer verwenden. Sie können keine Betriebssystemeigenschaften ändern. Azure versucht lediglich, den virtuellen Computer zu aktivieren und mit diesem Datenträger zu starten. 
 
-Azure-Images können aus mehreren Betriebssystemdatenträgern und Datenträgern bestehen. Wenn Sie ein verwaltetes Image zum Erstellen eines virtuellen Computers verwenden, erstellt die Plattform eine Kopie des Image und verwendet diese, um den virtuellen Computer zu erstellen. Verwaltete Images unterstützen also die Wiederverwendung desselben Image für mehrere VMs. Azure bietet auch erweiterte Verwaltungsfunktionen für Images wie die globale Replikation und die Versionsverwaltung über [Shared Image Gallery](../shared-image-galleries.md). 
+Azure-Images können aus mehreren Betriebssystemdatenträgern und Datenträgern bestehen. Wenn Sie ein verwaltetes Image zum Erstellen eines virtuellen Computers verwenden, erstellt die Plattform eine Kopie des Image und verwendet diese, um den virtuellen Computer zu erstellen. Verwaltete Images unterstützen also die Wiederverwendung desselben Image für mehrere VMs. Azure bietet auch erweiterte Verwaltungsfunktionen für Images wie die globale Replikation und die Versionsverwaltung über [Azure Compute Gallery](../shared-image-galleries.md) (früher als „Shared Image Gallery“ bezeichnet). 
 
 
 
@@ -42,9 +42,9 @@ Azure bietet zwei Haupttypen von Images, generalisierte und spezialisierte Image
 
 | Szenario      | Imagetyp  | Speicheroptionen |
 | ------------- |:-------------:| :-------------:| 
-| Sie möchten ein Image erstellen, das für die Verwendung durch mehrere VMs konfiguriert werden kann, und Sie möchten den Hostnamen festlegen, einen Administratorbenutzer hinzufügen und weitere Aufgaben beim ersten Start ausführen können. | Generalisiert | Shared Image Gallery oder eigenständige verwaltete Images |
-| Erstellen eines Image anhand einer VM-Momentaufnahme oder einer Sicherung | Spezialisiert |Shared Image Gallery oder ein verwalteter Datenträger |
-| Schnelles Erstellen eines Image, das keine Konfiguration zum Erstellen mehrerer VMs erfordert |Spezialisiert |Gemeinsamer Image-Katalog |
+| Sie möchten ein Image erstellen, das für die Verwendung durch mehrere VMs konfiguriert werden kann, und Sie möchten den Hostnamen festlegen, einen Administratorbenutzer hinzufügen und weitere Aufgaben beim ersten Start ausführen können. | Generalisiert | Azure Compute Gallery oder eigenständige verwaltete Images |
+| Erstellen eines Image anhand einer VM-Momentaufnahme oder einer Sicherung | Spezialisiert |Azure Compute Gallery oder ein verwalteter Datenträger |
+| Schnelles Erstellen eines Image, das keine Konfiguration zum Erstellen mehrerer VMs erfordert |Spezialisiert |Azure Compute Gallery |
 
 
 ### <a name="generalized-images"></a>Generalisierte Images
@@ -68,7 +68,7 @@ Für diese Images sind keine Bereitstellungs-Agents erforderlich. Möglicherweis
 Für die Bereitstellung Ihres Linux-Image stehen Ihnen zwei Optionen zur Verfügung:
 
 - Verwaltete Images für die einfache VM-Erstellung in einer Entwicklungs- und Testumgebung.
-- [Shared Image Gallery](../shared-image-galleries.md) für das bedarfsorientierte Erstellen und Freigeben von Images.
+- [Azure Compute Gallery](../shared-image-galleries.md) für das bedarfsorientierte Erstellen und Freigeben von Images.
 
 
 ### <a name="managed-images"></a>Verwaltete Images
@@ -77,9 +77,9 @@ Verwaltete Images können verwendet werden, um mehrere VMs zu erstellen, für si
 
 Verwaltete Images können in Entwicklungs- und Testumgebungen verwendet werden, in denen Sie einige einfache generalisierte Images zur Verwendung in einer einzelnen Region und in einem einzigen Abonnement benötigen. 
 
-### <a name="azure-shared-image-gallery-sig"></a>Azure Shared Image Gallery (SIG)
+### <a name="azure-compute-gallery"></a>Azure Compute Gallery
 
-Die Verwendung von [Katalogen mit freigegebenen Images](../shared-image-galleries.md) (Shared Image Galleries, SIGs) wird für das bedarfsorientierte Erstellen, Verwalten und Freigeben von Images empfohlen. Kataloge mit freigegebenen Images unterstützen Sie dabei, Ihre Images zu strukturieren und zu organisieren.  
+[Azure Compute Gallery](../shared-image-galleries.md)-Instanzen (früher als „Shared Image Gallery“ bezeichnet) werden für das bedarfsorientierte Erstellen, Verwalten und Freigeben von Images empfohlen. Kataloge unterstützen Sie dabei, Ihre Images zu strukturieren und zu organisieren.  
 
 - Unterstützung von generalisierten und spezialisierten Images
 - Unterstützung von Images der Generation 1 und 2
@@ -89,7 +89,7 @@ Die Verwendung von [Katalogen mit freigegebenen Images](../shared-image-gallerie
 - Freigeben über Abonnements hinweg und sogar zwischen Active Directory-Mandanten (AD) über Azure RBAC
 - Skalieren Ihrer Bereitstellungen mit Imagereplikaten in jeder Region.
 
-Im Allgemeinen erstellen Sie einen SIG, der aus folgenden Elementen besteht:
+Im Allgemeinen erstellen Sie einen Katalog, der aus folgenden Elementen besteht:
 - Imagedefinitionen: Dabei handelt es sich um Container, die Gruppen von Images enthalten.
 - Imageversionen: Dies sind die eigentlichen Images.
 
@@ -113,4 +113,5 @@ Wenn Sie dennoch ein eigenes Image erstellen müssen, stellen Sie sicher, dass e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie eine [Shared Image Gallery-Instanz erstellen](tutorial-custom-images.md).
+Erfahren Sie, wie Sie eine [Azure Compute Gallery](tutorial-custom-images.md)-Instanz erstellen.
+

@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 author: timlt
 ms.service: iot-develop
@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 981ebfece7bc12584adfdf1e565bd275d8e1b2fb
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 210978e3ecc817c55103267014fef9bd9e36a0e7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226689"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032784"
 ---
 ## <a name="create-an-application"></a>Erstellen einer Anwendung
 Es gibt verschiedene Möglichkeiten zum Verbinden von Geräten mit Azure IoT. In diesem Abschnitt wird beschrieben, wie Sie Azure IoT Central verwenden, um die Verbindung für ein Gerät herzustellen. Bei IoT Central handelt es sich um eine IoT-Anwendungsplattform, mit der die Kosten und die Komplexität der Verwaltung von Geräten in einer IoT-Lösung reduziert werden.
@@ -38,16 +38,15 @@ Erstellen Sie wie folgt eine neue Anwendung:
     :::image type="content" source="media/iot-develop-create-central-app-with-device/iot-central-created.png" alt-text="IoT Central: Dashboard „Neue Anwendung“":::
 
 ## <a name="add-a-device"></a>Hinzufügen eines Geräts
-In diesem Abschnitt fügen Sie Ihrer IoT Central-Anwendung ein neues Gerät hinzu. Das Gerät ist eine Instanz einer Gerätevorlage, die ein reales oder simuliertes Gerät darstellt, das Sie mit der Anwendung verbinden werden. 
+In diesem Abschnitt fügen Sie Ihrer IoT Central-Anwendung ein neues Gerät hinzu. Das Gerät ist eine Instanz einer Gerätevorlage, die ein Gerät darstellt, das Sie mit der Anwendung verbinden werden. 
 
 So erstellen Sie ein neues Gerät:
 1. Wählen Sie im linken Bereich **Geräte** und dann **+ Neu** aus.
-1. Behalten Sie für **Gerätevorlage** die Festlegung *Nicht zugewiesen* bei.
+1. Behalten Sie für **Gerätevorlage** die Einstellung *Nicht zugewiesen* bei, und legen Sie für **Dieses Gerät simulieren?** die Einstellung *Nein* fest.
 
-    > [!NOTE]
-    > In diesem Schnellstart stellen Sie der Einfachheit halber eine Verbindung mit einem simulierten Gerät her, das eine nicht zugewiesene Vorlage verwendet. Wenn Sie IoT Central weiterhin zum Verwalten von Geräten verwenden, erfahren Sie mehr über die Verwendung von Gerätevorlagen. Eine Übersicht über das Arbeiten mit Gerätevorlagen finden Sie unter [Schnellstart: Hinzufügen eines simulierten Geräts zu ihrer IoT Central-Anwendung](../articles/iot-central/core/quick-create-simulated-device.md).
 1. Legen Sie einen benutzerfreundlichen **Gerätenamen** und eine benutzerfreundliche **Geräte-ID** fest. Verwenden Sie optional die generierten Werte.
     :::image type="content" source="media/iot-develop-create-central-app-with-device/iot-central-create-device.png" alt-text="IoT Central: Dialogfeld „Neues Gerät“":::
+
 1. Klicken Sie auf **Erstellen**.
 
     Das erstellte Gerät wird in der Liste **Alle Geräte** angezeigt.

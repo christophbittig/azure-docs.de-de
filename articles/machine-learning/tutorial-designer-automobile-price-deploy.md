@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/11/2021
+ms.date: 10/21/2021
 ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: a9fe604673ee53aa6772e6f382a4a3e3a53fb903
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 3348bddec5700ba2a5ddf1112ad20f9319e04d79
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115015"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554885"
 ---
 # <a name="tutorial-designer---deploy-a-machine-learning-model"></a>Tutorial – Bereitstellen eines Machine Learning-Modells mit dem Designer
 
@@ -38,7 +38,7 @@ Absolvieren Sie den [ersten Teil des Tutorials](tutorial-designer-automobile-pri
 
 ## <a name="create-a-real-time-inference-pipeline"></a>Erstellen einer Echtzeit-Rückschlusspipeline
 
-Zum Bereitstellen Ihrer Pipeline müssen Sie zunächst die Trainingspipeline in eine Echtzeit-Rückschlusspipeline konvertieren. Dadurch werden die Trainingsmodule entfernt und Webdiensteingaben und -ausgaben für die Verarbeitung von Anforderungen hinzugefügt.
+Zum Bereitstellen Ihrer Pipeline müssen Sie zunächst die Trainingspipeline in eine Echtzeit-Rückschlusspipeline konvertieren. Dadurch werden die Trainingskomponenten entfernt und Webdiensteingaben und -ausgaben für die Verarbeitung von Anforderungen hinzugefügt.
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Erstellen einer Echtzeit-Rückschlusspipeline
 
@@ -52,18 +52,18 @@ Zum Bereitstellen Ihrer Pipeline müssen Sie zunächst die Trainingspipeline in 
 
     Wenn Sie **Rückschlusspipeline erstellen** auswählen, passiert Folgendes:
     
-    * Das trainierte Modell wird als Modul **Dataset** in der Modulpalette gespeichert. Sie finden es unter **My Datasets** (Meine Datasets).
-    * Trainingsmodule wie **Train Model** (Modell trainieren) und **Split Data** (Daten aufteilen) werden entfernt.
+    * Das trainierte Modell wird als Komponente **Dataset** in der Komponentenpalette gespeichert. Sie finden es unter **My Datasets** (Meine Datasets).
+    * Trainingskomponenten wie **Modell trainieren** und **Daten aufteilen** werden entfernt.
     * Das gespeicherte trainierte Modell wird wieder der Pipeline hinzugefügt.
-    * Die Module **Web Service Input** (Webdiensteingabe) und **Web Service Output** (Webdienstausgabe) werden hinzugefügt. Diese Module zeigen, wo Benutzerdaten in die Pipeline eingehen und wo sie zurückgegeben werden.
+    * Die Komponenten **Webdiensteingabe** und **Webdienstausgabe** werden hinzugefügt. Diese Komponenten zeigen, wo Benutzerdaten in die Pipeline gelangen und wo sie zurückgegeben werden.
 
     > [!NOTE]
-    > Standardmäßig erwartet die **Webdiensteingabe** dasselbe Datenschema wie die Modulausgabedaten, die eine Verbindung mit demselben Downstreamport herstellen. In diesem Beispiel stellen **Web Service Input** (Webdiensteingabe) und **Automobile price data (Raw)** (Automobilpreisdaten (Rohdaten)) eine Verbindung mit demselben Downstreammodul her. Daher erwartet **Web Service Input** (Webdiensteingabe) dasselbe Datenschema wie **Automobile price data (Raw)** (Automobilpreisdaten (Rohdaten)) und die Zielvariablenspalte `price` ist im Schema enthalten.
-    > Wenn Sie die Daten bewerten, sind Ihnen jedoch normalerweise die Zielvariablenwerte nicht bekannt. In diesem Fall können Sie die Zielvariablenspalte in der Rückschlusspipeline mithilfe des Moduls **Select Columns in Dataset** (Spalten im Dataset auswählen) entfernen. Stellen Sie sicher, dass die Ausgabe von **Select Columns in Dataset** (Spalten im Dataset auswählen), die die Zielvariablenspalte entfernt, mit demselben Port wie die Ausgabe des Moduls **Web Service Intput** (Webdiensteingabe) verbunden ist.
+    > Standardmäßig erwartet die **Webdiensteingabe** dasselbe Datenschema wie die Komponentenausgabedaten, die eine Verbindung mit demselben Downstreamport herstellen. In diesem Beispiel stellen **Webdiensteingabe** und **Automobilpreisdaten (Rohdaten)** eine Verbindung mit demselben Downstreammodul her. Daher erwartet **Webdiensteingabe** dasselbe Datenschema wie **Automobilpreisdaten (Rohdaten)** , und die Zielvariablenspalte `price` ist im Schema enthalten.
+    > Wenn Sie die Daten bewerten, sind Ihnen jedoch normalerweise die Zielvariablenwerte nicht bekannt. In diesem Fall können Sie die Zielvariablenspalte in der Rückschlusspipeline mithilfe der Komponente **Spalten im Dataset auswählen** entfernen. Stellen Sie sicher, dass die Ausgabe von **Spalten im Dataset auswählen**, die die Zielvariablenspalte entfernt, mit demselben Port wie die Ausgabe der Komponente **Webdiensteingabe** verbunden ist.
 
 1. Wählen Sie **Übermitteln** aus, und verwenden Sie das gleiche Computeziel und Experiment wie im ersten Teil.
 
-    Falls dies die erstmalige Ausführung ist, kann es bis zu 20 Minuten dauern, bis der Ausführungsvorgang für die Pipeline vollständig abgeschlossen ist. In den Standardcomputeeinstellungen ist eine minimale Knotengröße von 0 festgelegt. Das bedeutet, dass der Designer Ressourcen nach dem Leerlauf zuordnen muss. Wiederholte Pipelineausführungen werden schneller abgeschlossen, da die Computeressourcen bereits zugeordnet sind. Außerdem verwendet der Designer für jedes Modul zwischengespeicherte Ergebnisse, um die Effizienz weiter zu steigern.
+    Falls dies die erstmalige Ausführung ist, kann es bis zu 20 Minuten dauern, bis der Ausführungsvorgang für die Pipeline vollständig abgeschlossen ist. In den Standardcomputeeinstellungen ist eine minimale Knotengröße von 0 festgelegt. Das bedeutet, dass der Designer Ressourcen nach dem Leerlauf zuordnen muss. Wiederholte Pipelineausführungen werden schneller abgeschlossen, da die Computeressourcen bereits zugeordnet sind. Außerdem verwendet der Designer für jede Komponente zwischengespeicherte Ergebnisse, um die Effizienz weiter zu steigern.
 
 1. Klicken Sie auf **Bereitstellen**.
 
@@ -148,19 +148,19 @@ Wenn Sie in Ihrer Trainingspipeline einige Änderungen vornehmen, sollten Sie di
 
 Beachten Sie, dass nur trainierte Modelle in der Rückschlusspipeline aktualisiert werden, die Datentransformation wird hingegen nicht aktualisiert.
 
-Wenn Sie die aktualisierte Transformation in der Rückschlusspipeline verwenden möchten, müssen Sie die Transformationsausgabe des Transformationsmoduls als Dataset registrieren.
+Wenn Sie die aktualisierte Transformation in der Rückschlusspipeline verwenden möchten, müssen Sie die Transformationsausgabe der Transformationskomponente als Dataset registrieren.
 
 ![Screenshot: Registrieren des Transformationsdatasets](./media/tutorial-designer-automobile-price-deploy/register-transformation-dataset.png)
 
-Ersetzen Sie dann manuell das Modul **TD-** in der Rückschlusspipeline durch das registrierte Dataset.
+Ersetzen Sie anschließend die **TD-** -Komponente in der Rückschlusspipeline manuell durch das registrierte Dataset.
 
-![Screenshot: Ersetzen des Transformationsmoduls](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
+![Screenshot: Ersetzen der Transformationskomponente](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
 
 Anschließend können Sie die Rückschlusspipeline mit dem aktualisierten Modell und der aktualisierten Transformation übermitteln und bereitstellen.
 
 ### <a name="deploy-real-time-endpoint"></a>Bereitstellen eines Echtzeitendpunkts
 
-Enthält Ihre Rückschlusspipeline das Modul **Import Data** (Daten importieren) oder **Export Data** (Daten exportieren), werden diese aufgrund der Datenspeicher-Zugriffsbeschränkung automatisch entfernt, wenn sie auf einem Echtzeitendpunkt bereitgestellt werden.
+Enthält Ihre Rückschlusspipeline die Komponente **Daten importieren** oder **Daten exportieren**, werden diese aufgrund der Datenspeicherzugriffsbeschränkung automatisch entfernt, wenn sie auf einem Echtzeitendpunkt bereitgestellt werden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

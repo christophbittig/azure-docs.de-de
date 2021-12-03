@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: db141f863389d724cc1437beeed3b00b44020098
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 65f3ea7217930b680cfb197092533989a3206894
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161841"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054568"
 ---
 # <a name="orchestration-modes-api-comparison"></a>Vergleich der Orchestrierungsmodi-API 
 
@@ -31,7 +31,6 @@ In diesem Artikel werden die API-Unterschiede zwischen dem einheitlichen und [de
 
 | Einheitliche API | Flexible Alternative |
 |-|-|
-| VM-Skalierungsgruppen; VM-Batchlebenszyklusvorgänge:  | Aufrufen der API für eine einzelne VM auf bestimmten Instanzen: |
 | [Zuordnung aufheben](/rest/api/compute/virtualmachinescalesetvms/deallocate)  | [Aufrufen der API für eine einzelne VM – Zuordnung aufheben](/rest/api/compute/virtualmachines/deallocate)   |
 | [Löschen](/rest/api/compute/virtualmachinescalesetvms/delete)  | [Aufrufen der API für eine einzelne VM – Löschen](/rest/api/compute/virtualmachines/delete)  |
 | [Instanzansicht abrufen](/rest/api/compute/virtualmachinescalesetvms/getinstanceview)  | [Aufrufen der API für eine einzelne VM – Instanzansicht](/rest/api/compute/virtualmachines/instanceview)  |
@@ -47,23 +46,42 @@ In diesem Artikel werden die API-Unterschiede zwischen dem einheitlichen und [de
 
 ## <a name="get-or-update"></a>Erhalten oder aktualisieren 
 
-### <a name="uniform-api"></a>Einheitliche API
+**Einheitliche API:**
+
 VM-Skalierungssätze; VM-Get- oder Update-Instanz:
 - [Get](/rest/api/compute/virtualmachinescalesetvms/get) 
 - [Aktualisieren](/rest/api/compute/virtualmachinescalesetvms/update)
 
-### <a name="flexible-alternative"></a>Flexible Alternative 
+**Flexible Alternative:** 
+
 Aufrufen der API für einen einzelnen VM:
 - [ARM Lock Ressource](../azure-resource-manager/management/lock-resources.md?tabs=json) für den Verhaltenstyp des Instanzschutzes 
+    
+
+## <a name="get-or-update-scale-set-vm-instances"></a>Abrufen oder Aktualisieren von VM-Instanzen von Skalierungsgruppen
+
+| Einheitliche API | Flexible Alternative |
+|-|-|
+| [VM-Details zu Skalierungsgruppen](/rest/api/compute/virtualmachinescalesetvms/get) | [Abrufen des virtuellen Computers](/rest/api/compute/virtualmachines/get) |
+| [Aktualisieren der VM-Instanz von Skalierungsgruppen](/rest/api/compute/virtualmachinescalesetvms/update) | [Aktualisieren des virtuellen Computers](/rest/api/compute/virtualmachines/update) |
+
+
+## <a name="instance-protection"></a>Instanzschutz 
+
+| Einheitliche API | Flexible Alternative |
+|-|-|
+| [Instanzschutz](virtual-machine-scale-sets-instance-protection.md) | [ARM Lock Ressource](../azure-resource-manager/management/lock-resources.md?tabs=json) für den Verhaltenstyp des Instanzschutzes | 
 
 
 ## <a name="list-instances"></a>Instanzen auflisten 
 
-### <a name="uniform-api"></a>Einheitliche API
+**Einheitliche API:**
+
 `VMSS List Instances`: 
 - Gibt die Skalierungsgruppen-ID zurück, die jeder Instanz zugeordnet ist.
 
-### <a name="flexible-alternative"></a>Flexible Alternative
+**Flexible Alternative:**
+
 Azure Resource Graph: 
 
 ```armasm
@@ -72,9 +90,10 @@ resources
 | where properties.virtualMachineScaleSet.id contains "portalbb01" 
 ```
 
-## <a name="scale-set-operations"></a>Skalierungsgruppenvorgänge 
+## <a name="scale-set-instance-operations"></a>Instanzvorgänge von Skalierungsgruppen 
 
-### <a name="uniform-api"></a>Einheitliche API
+**Einheitliche API:**
+
 Übersicht über VM-Skalierungsgruppen
 - [Aktualisieren von Instanzen](/rest/api/compute/virtual-machine-scale-sets/update-instances)
 - [Zuordnung aufheben](/rest/api/compute/virtual-machine-scale-sets/deallocate)
@@ -87,7 +106,8 @@ resources
 - [Festlegen des Orchestrierungsdienststatus](/rest/api/compute/virtual-machine-scale-sets/set-orchestration-service-state)
 - [Start](/rest/api/compute/virtual-machine-scale-sets/start)
 
-### <a name="flexible-alternative"></a>Flexible Alternative
+**Flexible Alternative:**
+
 Aufrufen von Vorgängen auf einzelnen VMs.
 
 Vorgänge für virtuelle Computer:
@@ -95,7 +115,8 @@ Vorgänge für virtuelle Computer:
 
 ## <a name="vm-extension"></a>VM-Erweiterung
 
-### <a name="uniform-api"></a>Einheitliche API
+**Einheitliche API:**
+
 VM-Skalierungsgruppen/VM-Erweiterungen:
 - [Erstellen oder Aktualisieren](/rest/api/compute/virtual-machine-scale-set-vm-extensions/create-or-update)
 - [Löschen](/rest/api/compute/virtual-machine-scale-set-vm-extensions/delete)
@@ -103,28 +124,33 @@ VM-Skalierungsgruppen/VM-Erweiterungen:
 - [Liste](/rest/api/compute/virtual-machine-scale-set-vm-extensions/list)
 - [Aktualisieren](/rest/api/compute/virtual-machine-scale-set-vm-extensions/update) 
 
-### <a name="flexible-alternative"></a>Flexible Alternative
+**Flexible Alternative:**
+
 Aufrufen von Vorgängen auf einzelnen VMs.
 
 
 ## <a name="networking"></a>Netzwerk 
 
-### <a name="uniform-api"></a>Einheitliche API
-- NAT-Pool/Portweiterleitung 
-- NAT-Pool wird in flexiblen Skalierungsgruppen nicht unterstützt  
+| Einheitliche API | Flexible Alternative |
+|-|-|
+| NAT-Pool des Lastenausgleichs | Angeben einer NAT-Regel für bestimmte Instanzen | 
 
-### <a name="flexible-alternative"></a>Flexible Alternative
-- Einrichten einzelner NAT-Regeln auf jedem VM
+> [!IMPORTANT]
+> Das Netzwerkverhalten hängt davon ab, wie Sie virtuelle Computer in Ihrer Skalierungsgruppe erstellen. **Manuell hinzugefügte VM-Instanzen** verfügen über einen ausgehenden Standardkonnektivitätszugriff. **Implizit erstellte VM-Instanzen** verfügen über keinen Standardzugriff.
+>
+> Weitere Informationen zu Netzwerken für flexible Skalierungsgruppen finden Sie unter [Skalierbare Netzwerkkonnektivität](../virtual-machines/flexible-virtual-machine-scale-sets-migration-resources.md#create-scalable-network-connectivity).
 
 
 ## <a name="scale-set-apis"></a>Skalierungsgruppen-APIs
 
-### <a name="uniform-api"></a>Einheitliche API
+**Einheitliche API:**
+
 Einheitliche VM-Skalierungsgruppen-APIs
 - [Konvertieren in eine einzelne Platzierungsgruppe](/rest/api/compute/virtual-machine-scale-sets/convert-to-single-placement-group)
 - [Wiederherstellung erzwingen; Service Fabric-Platform; Updatedomäne](/rest/api/compute/virtual-machine-scale-sets/force-recovery-service-fabric-platform-update-domain-walk)
 
-### <a name="flexible-alternative"></a>Flexible Alternative
+**Flexible Alternative:**
+
 Wird in flexiblen Skalierungsgruppen für VMs nicht unterstützt.
 
 

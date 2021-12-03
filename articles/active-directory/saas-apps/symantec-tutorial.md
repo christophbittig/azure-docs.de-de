@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Symantec Web Security Service (WSS) | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Symantec Web Security Service (WSS)'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Symantec Web Security Service (WSS) konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,26 +9,26 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/24/2021
+ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 7eb68e8e460c12336e6f10eb65701a542fcc1b3a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 572a09fa957ae271d131358a612f00bc9ae2107e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124751887"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316807"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Tutorial: Azure Active Directory-Integration mit Symantec Web Security Service (WSS)
+# <a name="tutorial-azure-ad-sso-integration-with-symantec-web-security-service-wss"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Symantec Web Security Service (WSS)
 
 In diesem Tutorial erfahren Sie, wie Sie Ihr Symantec Web Security Service-Konto (WSS) mit Ihrem Azure AD-Konto (Azure Active Directory) integrieren, sodass WSS einen Endbenutzer, der in Azure AD mithilfe der SAML-Authentifizierung bereitgestellt wurde, authentifizieren und Richtlinienregeln auf Benutzer- oder Gruppenebene erzwingen kann.
 
 Die Integration von Symantec Web Security Service (WSS) in Azure AD bietet die folgenden Vorteile:
 
-- Sie verwalten alle Benutzer und Gruppen, die vom WSS-Konto verwendet werden, über das Azure AD-Portal.
+* Sie verwalten alle Benutzer und Gruppen, die vom WSS-Konto verwendet werden, über das Azure AD-Portal.
 
-- Sie erlauben den Endbenutzern die Authentifizierung bei WSS mit ihren Azure AD-Anmeldeinformationen.
+* Sie erlauben den Endbenutzern die Authentifizierung bei WSS mit ihren Azure AD-Anmeldeinformationen.
 
-- Sie aktivieren die Erzwingung von Richtlinienregeln auf Benutzer- und Gruppenebene, die in Ihrem WSS-Konto definiert sind.
+* Sie aktivieren die Erzwingung von Richtlinienregeln auf Benutzer- und Gruppenebene, die in Ihrem WSS-Konto definiert sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,6 +36,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Symantec Web Security Service (WSS)-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -138,4 +141,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Symantec Web Security Service (WSS) können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Symantec Web Security Service (WSS) können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

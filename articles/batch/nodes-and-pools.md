@@ -3,12 +3,12 @@ title: Knoten und Pools in Azure Batch
 description: Erfahren Sie mehr über Computeknoten und Pools und deren Verwendung in einem Azure Batch-Workflow aus Entwicklersicht.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 7d4c2d45849deb011498efe4c8a1ae91724b9acd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d5556bd719f982995c9353003f2c9dccc1e1a48
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563894"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443393"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoten und Pools in Azure Batch
 
@@ -90,7 +90,7 @@ Wenn Sie einen Pool erstellen, müssen Sie je nach dem Betriebssystem des Basisi
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>Benutzerdefinierte Images für Pools virtueller Computer
 
-Weitere Informationen zum Erstellen eines Pools mit benutzerdefinierten Images finden Sie unter [Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Pools](batch-sig-images.md).
+Weitere Informationen zum Erstellen eines Pools mit benutzerdefinierten Images finden Sie unter [Verwenden der Azure Compute Gallery zum Erstellen eines benutzerdefinierten Pools](batch-sig-images.md).
 
 Alternativ können Sie einen benutzerdefinierten Pool mit virtuellen Computern erstellen, indem Sie eine Ressource mit [verwaltetem Image](batch-custom-images.md) verwenden. Informationen zum Vorbereiten benutzerdefinierter Linux-Images von Azure-VMs finden Sie unter [Generalisieren und Erfassen eines virtuellen Linux-Computers](../virtual-machines/linux/capture-image.md). Informationen zum Vorbereiten benutzerdefinierter Windows-Images von virtuellen Azure-Computern finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).
 

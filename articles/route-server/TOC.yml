@@ -31,6 +31,8 @@
       href: expressroute-vpn-support.md
     - name: Zweifach vernetztes Netzwerk
       href: about-dual-homed-network.md
+    - name: Pfadauswahl
+      href: path-selection.md
 - name: Anleitungen
   items:
     - name: Beheben von Problemen mit Route Server
@@ -39,7 +41,7 @@
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.network/#route
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network/routeserver
     - name: REST
       href: /rest/api/virtualwan/virtualhubipconfiguration

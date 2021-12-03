@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/28/2021
+ms.date: 11/09/2021
 ms.author: victorh
-ms.openlocfilehash: 2dbcb4d42372c97b12d4a71ef43ee1e10f1232bf
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: ec914df62c98ea7948c198949b34e37aa3c485d3
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209545"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137358"
 ---
 # <a name="configure-azure-firewall-rules"></a>Konfigurieren von Azure Firewall-Regeln
 Sie können NAT-Regeln, Netzwerkregeln und Anwendungsregeln in Azure Firewall entweder mithilfe klassischer Regeln oder der Firewallrichtlinie konfigurieren. Azure Firewall verweigert standardmäßig jeglichen Datenverkehr, bis Regeln zum Zulassen von Datenverkehr manuell konfiguriert werden.
@@ -53,7 +53,9 @@ Nachfolgend ist eine Beispielrichtlinie aufgeführt:
 |ChAppRC2      |     Anwendungsregelsammlung    |2000         |7         |-|
 |ChDNATRC3     | DNAT-Regelsammlung        | 3000        |  2       |-|
 
-Die Regeln werden in der folgenden Reihenfolge verarbeitet: DNATRC1, DNATRC3, ChDNATRC3, NetworkRC1, NetworkRC2, ChNetRC1, ChNetRC2, AppRC2, ChAppRC1, ChAppRC2
+Die Regeln werden in der folgenden Reihenfolge verarbeitet: DNATRC1, DNATRC3, ChDNATRC3, NetworkRC1, NetworkRC2, ChNetRC1, ChNetRC2, AppRC2, ChAppRC1, ChAppRC2.
+
+Weitere Informationen über Firewall-Richtlinien-Regelsätze finden Sie unter [Azure Firewall-Richtlinien-Regelsätze](policy-rule-sets.md).
 
 ### <a name="threat-intelligence"></a>Threat Intelligence
 

@@ -1,27 +1,26 @@
 ---
 title: Datenbank-Ledger
 description: Dieser Artikel enthält Informationen zu Ledger-Datenbanktabellen und zugeordneten Ansichten in der Azure SQL-Datenbank.
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 85ae3c86c98f83499409e024431f83a54622d0f2
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: f5273208104853a276ae78e8debc685fa2a05c4d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665894"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062206"
 ---
 # <a name="what-is-the-database-ledger"></a>Was ist der Datenbankledger?
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger ist zurzeit als Public Preview (Öffentliche Vorschau) verfügbar.
 
 Der Datenbankledger ist Teil des Ledgerfeatures von Azure SQL-Datenbank. Der Datenbank-Ledger erfasst schrittweise den Zustand einer Datenbank, die sich im Laufe der Zeit entwickelt, während Aktualisierungen der Ledger-Tabellen stattfinden. Er verwendet logisch eine Blockchain und [Hashbaum-Datenstrukturen](/archive/msdn-magazine/2018/march/blockchain-blockchain-fundamentals). 
 

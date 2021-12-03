@@ -3,17 +3,17 @@ title: Ausschließliches Bereitstellen von zustandslosen Knotentypen in einem Se
 description: Erfahren Sie, wie Sie zustandslose Knotentypen in Azure Service Fabric-Clustern erstellen und bereitstellen.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 04/16/2021
+ms.date: 10/19/2021
 ms.author: pepogors
-ms.openlocfilehash: 8e6c3e27f38342028efd102efa32f3df90b2f88a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9c9f94cf3d9a9eb0ea18356afdcbba7046509762
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950087"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460411"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>Bereitstellen eines Azure Service Fabric-Clusters mit ausschließlich zustandslosen Knotentypen
-Für Service Fabric-Knotentypen gilt die Annahme, dass zu einem bestimmten Zeitpunkt ggf. zustandsbehaftete Dienste auf den Knoten platziert werden. Zustandslose Knotentypen lockern diese Annahme für einen Knotentyp und ermöglichen so die Nutzung anderer Funktionen wie schnellere Aufskalierungsvorgänge, Unterstützung für automatische Betriebssystemupgrades bei Bronze-Dauerhaftigkeit und horizontales Skalieren auf mehr als 100 Knoten in einer einzigen VM-Skalierungsgruppe.
+Für Service Fabric-Knotentypen gilt die Annahme, dass zu einem bestimmten Zeitpunkt ggf. zustandsbehaftete Dienste auf den Knoten platziert werden. Zustandslose Knotentypen verändern diese Annahme für einen Knotentyp und ermöglichen so die Nutzung anderer Funktionen wie schnellere Aufskalierungsvorgänge, Unterstützung für automatische Betriebssystemupgrades bei Bronze-Dauerhaftigkeit und horizontales Skalieren auf mehr als 100 Knoten in einer einzigen VM-Skalierungsgruppe.
 
 * Primäre Knotentypen können nicht als zustandslos konfiguriert werden.
 * Zustandslose Knotentypen werden nur mit den Bronze-Dauerhaftigkeitsebenen unterstützt.
@@ -73,7 +73,7 @@ Zum Aktivieren von zustandslosen Knotentypen sollten Sie Folgendes für die zugr
 
 * Den Wert der **singlePlacementGroup**-Eigenschaft, der auf **false** festgelegt werden muss, wenn eine Skalierung auf mehr als 100 VMs erforderlich ist.
 * Den **upgradeMode** der Skalierungsgruppe, der auf **Rolling** (Parallel) festgelegt werden sollte.
-* Der parallele Upgrademodus erfordert die konfigurierte Anwendungsintegritätserweiterung oder Integritätstests. Konfigurieren Sie den Integritätstest mit der Standardkonfiguration für zustandslose Knotentypen, wie unten vorgeschlagen. Nach der Bereitstellung von Anwendungen für den Knotentyp können Integritätstest-/Integritätserweiterungsports geändert werden, um die Anwendungsintegrität zu überwachen.
+* Der parallele Upgrademodus erfordert die konfigurierte Anwendungsintegritätserweiterung oder Integritätstests. Weitere Informationen zum Konfigurieren der Integritätstest oder der Anwendungszustandserweiterung finden Sie in diesem [Dokument.](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#how-does-automatic-os-image-upgrade-work) Konfigurieren Sie den Integritätstest mit der Standardkonfiguration für zustandslose Knotentypen, wie unten vorgeschlagen. Nach der Bereitstellung der Anwendungen für den Knotentyp können Integritätstest-/Integritätserweiterungsports geändert werden, um die eigentliche Anwendungsintegrität zu überwachen.
 
 >[!NOTE]
 > Bei Verwendung der automatischen Skalierung mit zustandslosen Knotentypen wird der Knotenzustand nach dem Herunterskalieren nicht automatisch bereinigt. Um den Knotenzustand ausgefallener Knoten während der automatischen Skalierung zu bereinigen, empfiehlt sich die Verwendung der [Service Fabric-Hilfsanwendung für die Autoskalierung](https://github.com/Azure/service-fabric-autoscale-helper).
@@ -143,9 +143,6 @@ Zur Konfiguration von zustandslosen Knotentypen, die sich über mehrere Verfügb
 * Festlegen von **singlePlacementGroup**: **FALSE**, wenn mehrere Platzierungsgruppen aktiviert werden müssen.
 * Festlegen von **upgradeMode**: **Rolling**, und fügen Sie Anwendungszustandserweiterungen/Integritätstests wie oben erwähnt hinzu.
 * Festlegen von **platformFaultDomainCount**: **5** für VM-Skalierungsgruppe.
-
->[!NOTE]
-> Unabhängig vom VMSSZonalUpgradeMode, der im Cluster konfiguriert ist, erfolgen Aktualisierungen von VM-Skalierungsgruppen für den zonenübergreifenden zustandslosen Knotentyp immer für eine Verfügbarkeitszone nach der anderen, weil der parallele Upgrademodus verwendet wird.
 
 Weitere Informationen finden Sie in der [Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) zum Konfigurieren zustandsloser Knotentypen mit mehreren Verfügbarkeitszonen.
 

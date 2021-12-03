@@ -9,35 +9,33 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 10/23/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8a2bfb1e76a323ab3fb9d4daa3bbb3e6ba2408ab
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 7981bdf26d3bafe301667e02af3fecdf53931021
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619783"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548442"
 ---
-# <a name="configure-permission-classifications-with-azure-active-directory"></a>Konfigurieren von Berechtigungsklassifizierungen bei Azure Active Directory
+# <a name="configure-permission-classifications"></a>Konfigurieren von Berechtigungsklassifizierungen
 
-Mit Berechtigungsklassifizierungen können Sie die Auswirkung ermitteln, die unterschiedliche Berechtigungen gemäß den Richtlinien Ihres Unternehmens und den Risikobewertungen haben. Beispielsweise können Sie Berechtigungsklassifizierungen in Einwilligungsrichtlinien verwenden, um den Berechtigungssatz zu identifizieren, dem Benutzer zustimmen dürfen.
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-Damit Sie die in dieser Anleitung gestellten Aufgaben ausführen können, benötigen Sie Folgendes:
-
-- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Rolle „Globaler Administrator“
-- Einrichten von Azure AD PowerShell. Weitere Informationen finden Sie unter [Azure AD PowerShell](/powershell/azure/).
-
-## <a name="manage-permission-classifications"></a>Verwalten von Berechtigungsklassifizierungen
+In diesem Artikel erfahren Sie, wie Sie Berechtigungsklassifizierungen in Azure Active Directory (Azure AD) konfigurieren. Mit Berechtigungsklassifizierungen können Sie die Auswirkung ermitteln, die unterschiedliche Berechtigungen gemäß den Richtlinien Ihres Unternehmens und den Risikobewertungen haben. Beispielsweise können Sie Berechtigungsklassifizierungen in Einwilligungsrichtlinien verwenden, um den Berechtigungssatz zu identifizieren, dem Benutzer zustimmen dürfen.
 
 Derzeit wird nur die Berechtigungsklassifizierung „Geringe Auswirkung“ unterstützt. Nur delegierte Berechtigungen, für die keine Administratoreinwilligung erforderlich ist, können als „Geringe Auswirkung“ klassifiziert werden.
 
-> [!TIP]
-> Die für die einfache Anmeldung erforderlichen Mindestberechtigungen sind `openid`, `profile`, `email`, `User.Read` und `offline_access` – alle delegierte Berechtigungen für Microsoft Graph. Mit diesen Berechtigungen kann eine App die vollständigen Profildetails des angemeldeten Benutzers lesen und diesen Zugriff auch dann beibehalten, wenn der Benutzer die App nicht mehr verwendet.
+Die für die einfache Anmeldung erforderlichen Mindestberechtigungen sind `openid`, `profile`, `email`, `User.Read` und `offline_access` – alle delegierte Berechtigungen für Microsoft Graph. Mit diesen Berechtigungen kann eine App die vollständigen Profildetails des angemeldeten Benutzers lesen und diesen Zugriff auch dann beibehalten, wenn der Benutzer die App nicht mehr verwendet.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Zum Konfigurieren von Berechtigungsklassifizierungen sind folgende Voraussetzungen erforderlich:
+
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Eine der folgenden Rollen: Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
+
+## <a name="manage-permission-classifications"></a>Verwalten von Berechtigungsklassifizierungen
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -128,12 +126,4 @@ Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](/powe
 
 Weitere Informationen:
 
-* [Konfigurieren von Einstellungen für die Benutzereinwilligung](configure-user-consent.md)
-* [Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)](configure-admin-consent-workflow.md)
-* Weitere Informationen zum [Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen](manage-consent-requests.md)
-* [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung](grant-admin-consent.md)
-* [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/v2-permissions-and-consent.md)
-
-So erhalten Sie Hilfe oder finden Antworten auf Ihre Fragen:
-
-* [Azure AD bei Microsoft Q&A](/answers/topics/azure-active-directory.html)
+- Wechseln Sie zu [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/v2-permissions-and-consent.md)

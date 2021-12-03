@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 10/22/2021
+ms.date: 10/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c76db99be355e0cf57a29aaf5a390df0112c644f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 0707969fe74714864eb3f92740c911847e21bd92
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224609"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490192"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
@@ -72,10 +72,9 @@ Für die Azure AD-Hybrideinbindung müssen die Geräte innerhalb des Netzwerks 
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (Wenn Sie nahtloses einmaliges Anmelden verwenden oder verwenden möchten.)
-- `https://enterpriseregistration.windows.net`
 
 > [!WARNING]
-> Wenn Ihre Organisation Proxyserver verwendet, die SSL-Datenverkehr für Szenarien wie die Verhinderung von Datenverlust oder Azure AD-Mandanteneinschränkungen abfangen, stellen Sie sicher, dass der Datenverkehr zu „https://device.login.microsoftonline.com“ von TLSI (TLS break and inspect) ausgeschlossen ist. Wird „https://device.login.microsoftonline.com“ nicht ausgeschlossen, kann dies zu Beeinträchtigungen bei der Clientzertifikatauthentifizierung führen und Probleme bei der Geräteregistrierung und beim gerätebasierten bedingten Zugriff verursachen.
+> Wenn Ihre Organisation Proxyserver verwendet, die SSL-Datenverkehr für Szenarien wie die Verhinderung von Datenverlust oder Azure AD-Mandanteneinschränkungen abfangen, stellen Sie sicher, dass der Datenverkehr zu diesen URLs von TLSI (TLS break and inspect) ausgeschlossen ist. Wenn diese URLs nicht ausgeschlossen werden, kann dies zu Störungen bei der Clientzertifikatauthentifizierung, Problemen mit der Geräteregistrierung und dem gerätebasierten bedingten Zugriff führen.
 
 Wenn für Ihre Organisation Zugriff auf das Internet über einen ausgehenden Proxy erforderlich ist, können Sie die Vorgehensweise unter [Implementierung von Web Proxy Auto-Discovery (WPAD)](/previous-versions/tn-archive/cc995261(v=technet.10)) verwenden, damit Windows 10-Computer Geräte bei Azure AD registrieren können. Wenn bei der Konfiguration und Verwaltung von WPAD Probleme auftreten, finden Sie entsprechende Informationen unter [Problembehandlung bei der automatischen Erkennung](/previous-versions/tn-archive/cc302643(v=technet.10)). Auf Windows 10-Geräten vor dem Update 1709 ist „WPAD“ die einzige verfügbare Option zum Konfigurieren eines Proxys für Azure AD Hybrid Join. 
 
@@ -129,6 +128,14 @@ Wenn es sich bei einigen Ihrer in die Domäne eingebundenen Geräte um kompatibl
 - Konfigurieren der lokalen Intraneteinstellungen für die Geräteregistrierung
 - Konfigurieren des nahtlosen einmaligen Anmeldens
 - Installieren von Microsoft Workplace Join für kompatible Windows-Computer
+
+Kompatible Windows-Geräte sind Geräte mit älteren Betriebssystemen. Die folgenden Geräte sind kompatible Windows Geräte:
+
+- Windows 7
+- Windows 8.1
+- Windows Server 2008 R2
+- Windows Server 2012
+- Windows Server 2012 R2
 
 > [!NOTE]
 > Die Unterstützung für Windows 7 wurde am 14. Januar 2020 eingestellt. Weitere Informationen finden Sie unter [Der Support für Windows 7 endet am 14. Januar 2020](https://support.microsoft.com/help/4057281/windows-7-support-ended-on-january-14-2020).

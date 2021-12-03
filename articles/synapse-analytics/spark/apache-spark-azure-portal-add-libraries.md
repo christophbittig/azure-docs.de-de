@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: e8ad6d072af6979eb8509068c1dcd239e7840950
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4ad54fe95bc646d7ed3c96ad901ae2ba1337ab7b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598013"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251336"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics
 Bibliotheken stellen wiederverwendbaren Code bereit, den Sie in Ihre Programme oder Projekte einschließen können. 
@@ -39,8 +39,8 @@ In Synapse können Arbeitsbereichspakete benutzerdefinierte oder private Wheel- 
 
 Weitere Informationen zum Verwalten von Arbeitsbereichsbibliotheken finden Sie in den folgenden Schrittanleitungen:
 
-- [Python-Arbeitsbereichspakete (Vorschau):](./apache-spark-manage-python-packages.md#install-wheel-files) Laden Sie Python-Wheel-Dateien als Arbeitsbereichspaket hoch, und fügen Sie diese Pakete später bestimmten serverlosen Apache Spark-Pools hinzu.
-- [Scala/Java-Arbeitsbereichspakete (Vorschau):](./apache-spark-manage-scala-packages.md#workspace-packages) Laden Sie Scala- und Java-JAR-Dateien als Arbeitsbereichspaket hoch, und fügen Sie diese Pakete später bestimmten serverlosen Apache Spark-Pools hinzu.
+- [Python-Arbeitsbereichspakete:](./apache-spark-manage-python-packages.md#install-wheel-files) Laden Sie Python-Wheel-Dateien als Arbeitsbereichspaket hoch, und fügen Sie diese Pakete später bestimmten serverlosen Apache Spark-Pools hinzu.
+- [Scala/Java-Arbeitsbereichspakete:](./apache-spark-manage-scala-packages.md#workspace-packages) Laden Sie Scala- und Java-JAR-Dateien als Arbeitsbereichspaket hoch, und fügen Sie diese Pakete später bestimmten serverlosen Apache Spark-Pools hinzu.
 
 ## <a name="pool-packages"></a>Poolpakete
 In einigen Fällen möchten Sie möglicherweise den Satz von Paketen standardisieren, die für einen bestimmten Apache Spark-Pool verwendet werden. Diese Standardisierung kann nützlich sein, wenn dieselben Pakete häufig von mehreren Personen Ihres Teams installiert werden. 
@@ -63,7 +63,7 @@ Mit sitzungsbezogenen Paketen können Benutzer zu Beginn ihrer Sitzung Paketabh�
 
 Weitere Informationen zum Verwalten von sitzungsbezogenen Paketen finden Sie in den folgenden Schrittanleitungen:
 
-- [Python-Sitzungspakete (Vorschau):](./apache-spark-manage-python-packages.md) Stellen Sie zu Beginn einer Sitzung eine Conda-Datei namens *environment.yml* bereit, um zusätzliche Python-Pakete aus beliebten Repositorys zu installieren. 
+- [Python-Sitzungspakete:](./apache-spark-manage-python-packages.md) Stellen Sie zu Beginn einer Sitzung eine Conda-Datei namens *environment.yml* bereit, um zusätzliche Python-Pakete aus beliebten Repositorys zu installieren. 
 - [Scala/Java-Sitzungspakete:](./apache-spark-manage-scala-packages.md) Geben Sie zu Beginn der Sitzung mithilfe von `%%configure` eine Liste mit JAR-Dateien an, die installiert werden sollen.
 
 ## <a name="next-steps"></a>Nächste Schritte

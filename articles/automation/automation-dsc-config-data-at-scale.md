@@ -3,19 +3,15 @@ title: Konfigurieren von Daten in jeder Größenordnung in Azure Automation Stat
 description: In diesem Artikel erfahren Sie, wie Sie Daten in jeder Größenordnung für Azure Automation State Configuration konfigurieren.
 keywords: DSC,PowerShell,Konfiguration,Setup,Einrichtung
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgreenegit
-ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bc55a4c5ab20cac041a00a0f924b207eb256ae8b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4dd1c7eceb86d1153d08414a5c81ed09b395916c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86186519"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484548"
 ---
 # <a name="configure-data-at-scale-for-azure-automation-state-configuration"></a>Konfigurieren von Daten in jeder Größenordnung in Azure Automation State Configuration
 

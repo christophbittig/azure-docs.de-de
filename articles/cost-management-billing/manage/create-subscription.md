@@ -6,14 +6,14 @@ ms.reviewer: amberb
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 10/28/2021
+ms.date: 11/11/2021
 ms.author: banders
-ms.openlocfilehash: 932f8bd68ee36d34bb35d2e50acc8ac5954275b7
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 4632cd70192387da98f62a3ee96fcf0a3650aad1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131425802"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284377"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Erstellen eines zusätzlichen Azure-Abonnements
 
@@ -71,6 +71,21 @@ Zum Erstellen von Abonnements benötigen Sie die folgenden Berechtigungen:
 |Kunde    | Das Abonnement wird für den von Ihnen ausgewählten Kunden erstellt. Wenn Sie über nur einen Kunden verfügen, wird die Auswahl abgeblendet dargestellt.  |
 |Reseller    | Der Handelspartner, der die Dienste für den Kunden bereitstellt. Dies ist ein optionales Feld, das nur für indirekte Anbieter im CSP-Modell mit zwei Ebenen anwendbar ist. |
 |Name     | Anhand des Anzeigenamens können Sie das Abonnement im Azure-Portal einfach identifizieren.  |
+
+## <a name="create-a-subscription-as-a-partner-for-a-customer"></a>Erstellen eines Abonnements als Partner für einen Kunden
+
+Partner mit einer Microsoft Partner-Vereinbarung führen die folgenden Schritte aus, um ein neues Microsoft Azure Plan-Abonnement für ihre Kunden zu erstellen. Das Abonnement wird unter dem Abrechnungskonto und Abrechnungsprofil des Partners erstellt.
+
+1.  Melden Sie sich mit Ihrem Partner-Center-Konto beim Azure Portal an.
+Stellen Sie sicher, dass Sie sich in Ihrem Verzeichnis des Partner-Centers (Mandant) und nicht im Mandanten eines Kunden befinden.
+1.  Navigieren Sie zu **Kostenverwaltung und Abrechnung**.
+1.  Wählen Sie den Abrechnungsbereich für das Abrechnungskonto aus, in dem sich das Kundenkonto befindet.
+1.  Wählen Sie im Menü auf der linken Seite unter **Abrechnung** die Option **Kunden** aus.
+1.  Wählen Sie auf der Seite Kunden den Kunden aus.
+1.  Wählen Sie im linken Menü unter **Produkte + Dienste** die Option **Azure-Abonnements** aus.
+1.  Wählen Sie auf der Seite Azure-Abonnement die Option **+ Hinzufügen** aus, um ein Abonnement zu erstellen.
+1.  Geben Sie die Angaben zum Abonnement ein und wählen Sie nach Abschluss des Vorgangs **Überprüfen + erstellen** aus.
+
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>Programmgesteuertes Erstellen eines zusätzlichen Azure-Abonnements
 

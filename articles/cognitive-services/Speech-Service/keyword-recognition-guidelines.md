@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: hasshah
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 09322cb8d5497b2f6ea639955ebd7338e39f2418
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a6b7a9c072951a7010403c9e54dff844eb910d95
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110116589"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490660"
 ---
 # <a name="recommendations-and-guidelines-for-keyword-recognition"></a>Empfehlungen und Richtlinien für die Schlüsselworterkennung
 
@@ -42,13 +42,13 @@ Das Erstellen eines effektiven Schlüsselworts ist wichtig, um sicherzustellen, 
 
 Bei einem Szenario mit mehrstufiger Schlüsselworterkennung, in dem die [Schlüsselwortüberprüfung](keyword-recognition-overview.md#keyword-verification) verwendet wird, können Anwendungen auswählen, wann der Endbenutzer über eine Schlüsselworterkennung benachrichtigt wird. Die Empfehlung zum Rendern eines visuellen oder akustischen Indikators besteht darin, sich auf Antworten des Diensts für die Schlüsselwortüberprüfung zu verlassen:
 
-![Richtlinie für die Benutzererfahrung bei der Optimierung der Genauigkeit.](media/custom-keyword/keyword-verification-ux-accuracy.png)
+![Richtlinie für die Benutzererfahrung bei der Optimierung der Genauigkeit.](media/custom-keyword/kw-verification-ux-accuracy.png)
 
 Dies gewährleistet ein optimales Erlebnis in Bezug auf die Genauigkeit, um die vom Benutzer wahrgenommenen Auswirkungen der Akzeptanz falscher Begriffe zu minimieren, verursacht jedoch zusätzliche Wartezeiten.
 
 Für Anwendungen, die eine Optimierung der Wartezeit erfordern, können Anwendungen dem Benutzer leichte und unauffällige Indikatoren auf der Grundlage der gerätebasierten Schlüsselworterkennung zur Verfügung stellen. Beispielsweise das Aufleuchten eines LED-Musters oder das Pulsieren eines Symbols. Die Indikatoren können weiter bestehen, wenn die Schlüsselwortüberprüfung mit einer Schlüsselwortannahme antwortet, oder sie können verworfen werden, wenn die Antwort eine Schlüsselwortablehnung ist:
 
-![Richtlinie für die Benutzererfahrung bei der Optimierung der Wartezeit.](media/custom-keyword/keyword-verification-ux-latency.png)
+![Richtlinie für die Benutzererfahrung bei der Optimierung der Wartezeit.](media/custom-keyword/kw-verification-ux-latency.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

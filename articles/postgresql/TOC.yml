@@ -103,7 +103,7 @@
             - name: Azure-Portal
               href: tutorial-design-database-using-azure-portal.md
               displayName: design database
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -146,7 +146,7 @@
             - name: Verbindungsarchitektur
               href: concepts-connectivity-architecture.md
               displayName: 'security, architecture'
-            - name: Bedrohungsschutz mit Azure Defender
+            - name: Bedrohungsschutz mit Microsoft Defender für Cloud
               href: ../security-center/defender-for-databases-usage.md?toc=/azure/postgresql/toc.json&bc=/azure/postgresql/breadcrumb/toc.json
               displayName: 'security, advanced threat protection'
             - name: Azure AD-Authentifizierung
@@ -240,14 +240,14 @@
             - name: Azure-Portal
               href: howto-create-manage-server-portal.md
               displayName: 'scale server, reset password'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: how-to-manage-server-cli.md
               displayName: 'scale server, reset password'
         - name: Neustarten des Servers
           items:
             - name: Azure-Portal
               href: howto-restart-server-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-restart-server-cli.md
             - name: Azure PowerShell
               href: howto-restart-server-powershell.md
@@ -267,7 +267,7 @@
             - name: Azure-Portal
               href: howto-restore-server-portal.md
               displayName: 'restore, georestore, geo-restore, outage'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-restore-server-cli.md
               displayName: 'restore, georestore, geo-restore, outage'
             - name: Azure PowerShell
@@ -311,7 +311,7 @@
             - name: Azure-Portal
               href: howto-configure-server-parameters-using-portal.md
               displayName: 'application development, server parameters'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
               displayName: 'application development, server parameters'
             - name: Azure PowerShell
@@ -322,7 +322,7 @@
             - name: Azure-Portal
               href: howto-auto-grow-storage-portal.md
               displayName: 'business continuity, scale , storage'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
               displayName: 'business continuity, scale , storage'
             - name: Azure PowerShell
@@ -333,7 +333,7 @@
             - name: Azure-Portal
               href: howto-configure-server-logs-in-portal.md
               displayName: 'access logs, monitor'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-server-logs-using-cli.md
               displayName: 'access logs, monitor'
         - name: Überwachen
@@ -409,7 +409,7 @@
               href: howto-migrate-using-dump-and-restore.md
             - name: Aktualisieren/Migrieren von Daten mit „pg_dump“ und psql
               href: howto-migrate-using-export-and-import.md
-- name: Flexible Server (Vorschau)
+- name: Flexible Server
   expanded: true
   items:
     - name: Dokumentation zu Flexible Server
@@ -429,7 +429,7 @@
           items:
             - name: Azure-Portal
               href: flexible-server/quickstart-create-server-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: flexible-server/quickstart-create-server-cli.md
             - name: ARM-Vorlage
               displayName: Resource Manager
@@ -457,7 +457,7 @@
             - name: Erstellen einer Web-App in einem virtuellen Netzwerk
               href: flexible-server/tutorial-webapp-server-vnet.md
             - name: Bereitstellen einer Django-App in App Service
-              href: flexible-server/tutorial-django-app-service-postgres.md
+              href: ../app-service/tutorial-python-postgresql-app.md
     - name: Konzepte
       items:
         - name: Server
@@ -517,6 +517,8 @@
                   href: flexible-server/concepts-intelligent-tuning.md
         - name: Replication
           href: flexible-server/concepts-logical.md
+        - name: "Azure\_Advisor-Empfehlungen"
+          href: flexible-server/concepts-azure-advisor-recommendations.md
     - name: Problembehandlung
       items:
         - name: Behandeln von CLI-Fehlern
@@ -577,7 +579,7 @@
           items:
             - name: Azure-Portal
               href: flexible-server/how-to-restart-server-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: flexible-server/how-to-restart-server-cli.md
         - name: Wiederherstellen eines Servers
           items:
@@ -595,7 +597,7 @@
           items:
             - name: Azure-Portal
               href: flexible-server/how-to-manage-high-availability-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: flexible-server/how-to-configure-high-availability-cli.md
         - name: Überwachen
           items:
@@ -781,7 +783,7 @@
           href: reference-hyperscale-metadata.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/postgres
     - name: REST-API
       href: /rest/api/postgresql

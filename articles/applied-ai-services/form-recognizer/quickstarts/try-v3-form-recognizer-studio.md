@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2021
 ms.author: sajagtap
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a14cd140d2bb0d2768c85fa2addca2140ccb1ffa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dc4f54a6ab42089068c3db8b7fe64bfada59adf5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131026731"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290683"
 ---
 # <a name="get-started-form-recognizer-studio--preview"></a>Erste Schritte: Formularerkennung Studio | Vorschau
 
@@ -24,12 +24,18 @@ ms.locfileid: "131026731"
 
 [Formularerkennung Studio (Vorschau)](https://formrecognizer.appliedai.azure.com/) ist ein Onlinetool für das grafische Erkunden und Kennenlernen der Features des Diensts „Formularerkennung“ und das Integrieren in Ihre Anwendungen. Steigen Sie ein, indem Sie die vortrainierten Modelle mit Beispieldokumenten oder Ihren eigenen Dokumenten erkunden. Erstellen Sie Projekte für die Entwicklung von benutzerdefinierten Formularmodellen, und verweisen Sie in Ihren Anwendungen darauf, indem Sie die Informationen zum [Python SDK (Vorschau)](try-v3-python-sdk.md) und in anderen Schnellstartanleitungen verwenden.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="migrating-from-the-sample-labeling-tool"></a>Migrieren vom Tool für die Beschriftung von Beispielen
+
+Wenn Sie zuvor das [Tool für die Beschriftung von Beispielen](try-sample-label-tool.md) genutzt haben, überspringen Sie die Voraussetzungen, um [**sich bei der Studio-Vorschauversion anzumelden**](try-v3-form-recognizer-studio.md#sign-into-the-form-recognizer-studio-preview) und Ihr vorhandenes Azure-Konto sowie Formularerkennungs- oder Cognitive Services-Ressourcen mit Studio zu verwenden. 
+
+Wenn Sie Ihre vorhandenen benutzerdefinierten Projekte zu Studio migrieren möchten, fahren Sie mit dem Abschnitt [**Erste Schritte mit dem benutzerdefinierten Modell**](try-v3-form-recognizer-studio.md#custom-model-basics) fort, um ein neues Projekt zu erstellen und es auf den gleichen Speicherort in Azure Blob Storage zu verweisen (vorausgesetzt Sie haben in Azure Zugriff darauf). Nachdem Sie ein neues Projekt konfiguriert haben, lädt Studio alle Dokumente und Zwischendateien zum Beschriften und Trainieren.
+
+## <a name="minimum-prerequisites-for-new-users"></a>Mindestvoraussetzungen für neue Benutzer
 
 * Ein aktives [**Azure-Konto**](https://azure.microsoft.com/free/cognitive-services/).  Falls Sie noch kein Konto haben, können Sie ein [**kostenloses Konto erstellen**](https://azure.microsoft.com/free/).
 * Eine [**Formularerkennung**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) oder [**Cognitive Services Multi-Service**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) Ressource.
 
-## <a name="additional-steps-for-custom-projects"></a>Zusätzliche Schritte für benutzerdefinierte Projekte
+## <a name="additional-prerequisites-for-custom-projects"></a>Zusätzliche Voraussetzungen für benutzerdefinierte Projekte
 
 Neben dem Azure-Konto und einer Formularerkennung- oder Cognitive Services-Ressource benötigen Sie Folgendes:
 

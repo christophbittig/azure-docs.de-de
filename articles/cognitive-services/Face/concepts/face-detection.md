@@ -8,14 +8,14 @@ manager: nitime
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: 8e14e1fd97bbf3e0fe83c1b7e0eeae1cf446e74d
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 262de9199d1572130147895e972355daf4ecafbc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811232"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450389"
 ---
 # <a name="face-detection-and-attributes"></a>Gesichtserkennung und -attribute
 
@@ -58,6 +58,9 @@ Attribute sind ein Satz von Merkmalen, die optional durch die API [Face – Dete
 * **Rauschen:** Visuelle Störungen, die im Gesicht erkannt wurden. Dieses Attribut gibt einen Wert zwischen 0 und 1 und eine informelle Bewertung von gering, mittel oder hoch zurück.
 * **Okklusion:** Gibt an, ob Objekte Teile des Gesichts verdecken. Dieses Attribut gibt einen booleschen Wert für die eyeOccluded, foreheadOccluded und mouthOccluded zurück.
 * **Lächeln:** Gibt die Stärke des Lächelns des jeweiligen Gesichts an. Dieser Wert liegt zwischen 0 (kein Lächeln) und 1 (deutliches Lächeln).
+* **QualityForRecognition** Die allgemeine Bildqualität in Bezug darauf, ob das bei der Erkennung verwendete Bild von ausreichender Qualität ist, um die Gesichtserkennung durchzuführen. Der Wert ist eine informelle Bewertung von niedrig, mittel oder hoch. Für die Registrierung von Personen werden nur Bilder mit hoher Qualität empfohlen und die Qualität „mittel“ oder höher wird bei Identifikationen empfohlen.
+    >[!NOTE]
+    > Die Verfügbarkeit der einzelnen Attribute hängt vom angegebenen Erkennungsmodell ab. Das QualityForRecognition-Attribut hängt auch vom Erkennungsmodell ab, da es derzeit nur verfügbar ist, wenn eine Kombination aus detection model detection_01 (Erkennungsmodellerkennung_01) oder detection_03 (Erkennung_03) und recognition model recognition_03 (Wiedererkennungsmodellwiedererkennung_03) oder recognition_04 (Wiedererkennung_04) verwendet wird.
 
 > [!IMPORTANT]
 > Gesichtsattribute werden mithilfe statistischer Algorithmen vorhergesagt. Sie sind möglicherweise nicht immer genau. Treffen Sie Entscheidungen auf Grundlage von Attributdaten mit Umsicht.
@@ -66,18 +69,27 @@ Attribute sind ein Satz von Merkmalen, die optional durch die API [Face – Dete
 
 Anhand der folgenden Tipps können Sie sicherstellen, dass Ihre Eingabebilder möglichst genaue Erkennungsergebnisse liefern:
 
-* Als Eingabebildformate werden JPEG, PNG, GIF (der erste Frame) und BMP unterstützt.
+* Als Eingabebildformate werden JPEG, PNG, GIF (der erste Frame), BMP unterstützt. 
 * Die Bilddateien dürfen maximal 6 MB groß sein.
 * Die minimal erkennbare Gesichtsgröße beträgt 36×36 Pixel auf einem Bild, das selbst nicht größer als 1.920×1.080 Pixel sein darf. Auf Bildern, die größer als 1.920×1.080 Pixel sind, ist eine proportional größere minimale Gesichtsgröße möglich. Eine Verkleinerung der Gesichtsgröße kann dazu führen, dass einige Gesichter nicht erkannt werden, selbst wenn sie größer als die minimal erkennbare Gesichtsgröße sind.
 * Die maximal erkennbare Gesichtsgröße beträgt 4.096×4.096 Pixel.
 * Gesichter außerhalb der Größenspanne von 36×36 bis 4.096×4.096 Pixel werden nicht erkannt.
-* Einige Gesichter können möglicherweise aufgrund technischer Probleme nicht erkannt werden. Extreme Gesichtswinkel (Kopfhaltung) oder verdeckte Gesichter (Objekte wie Sonnenbrille oder Hände bedecken Teile des Gesichts) können die Erkennung beeinträchtigen. Frontalansichten und nahezu der Frontalansicht entsprechende Ansichten von Gesichtern führen zu den besten Ergebnissen.
+* Einige Gesichter können möglicherweise aufgrund technischer Probleme wie der folgenden nicht erkannt werden:
+  * Bilder mit extremer Beleuchtung (z. B. starkes Gegenlicht)
+  * Hindernisse, die ein oder beide Augen verdecken
+  * Unterschiede beim Haartyp oder der Gesichtsbehaarung
+  * Veränderungen am Gesicht (z. B. durch Alterung)
+  * Extreme Gesichtsausdrücke
 
-Eingabedaten mit Ausrichtungsinformationen:
-* Einige Eingabebilder im JPEG-Format können Ausrichtungsinformationen in Exif-Metadaten (Exchangeable Image File Format) enthalten. Wenn die Exif-Ausrichtung verfügbar ist, werden die Bilder automatisch in die richtige Ausrichtung gedreht, bevor sie zur Gesichtserkennung gesendet werden. Das Gesichtsrechteck, die Orientierungspunkte und die Kopfhaltung für jedes erkannte Gesicht werden auf der Grundlage des gedrehten Bildes geschätzt.
-* Um das Gesichtsrechteck und die Orientierungspunkte richtig anzuzeigen, müssen Sie sicherstellen, dass das Bild richtig gedreht ist. Die meisten Tools zur Bildvisualisierung drehen das Bild standardmäßig automatisch entsprechend seiner Exif-Ausrichtung. Bei anderen Tools müssen Sie die Drehung möglicherweise mithilfe Ihres eigenen Codes anwenden. Die folgenden Beispiele zeigen ein Gesichtsrechteck auf einem gedrehten Bild (links) und einem nicht gedrehten Bild (rechts).
+### <a name="input-data-with-orientation-information"></a>Eingabedaten mit Ausrichtungsinformationen:
 
-![Zwei Bilder mit Gesichtern mit/ohne Drehung](../Images/image-rotation.png)
+Einige Eingabebilder im JPEG-Format können Ausrichtungsinformationen in Exif-Metadaten (Exchangeable Image File Format) enthalten. Wenn die Exif-Ausrichtung verfügbar ist, werden die Bilder automatisch in die richtige Ausrichtung gedreht, bevor sie zur Gesichtserkennung gesendet werden. Das Gesichtsrechteck, die Orientierungspunkte und die Kopfhaltung für jedes erkannte Gesicht werden auf der Grundlage des gedrehten Bildes geschätzt.
+
+Um das Gesichtsrechteck und die Orientierungspunkte richtig anzuzeigen, müssen Sie sicherstellen, dass das Bild richtig gedreht ist. Die meisten Tools zur Bildvisualisierung drehen das Bild standardmäßig automatisch entsprechend seiner Exif-Ausrichtung. Bei anderen Tools müssen Sie die Drehung möglicherweise mithilfe Ihres eigenen Codes anwenden. Die folgenden Beispiele zeigen ein Gesichtsrechteck auf einem gedrehten Bild (links) und einem nicht gedrehten Bild (rechts).
+
+![Bilder mit zwei Gesichtern mit und ohne Drehung](../Images/image-rotation.png)
+
+### <a name="video-input"></a>Videoeingang
 
 Wenn Sie Gesichter in einem Videofeed ermitteln möchten, können Sie die Leistung verbessern, indem Sie bestimmte Einstellungen an Ihrer Videokamera anpassen:
 

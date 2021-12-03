@@ -1,14 +1,14 @@
 ---
 title: Arbeiten mit Warnungen auf der lokalen Verwaltungskonsole
 description: Mithilfe der lokalen Verwaltungskonsole können Sie eine Unternehmensübersicht über die aktuellen Bedrohungen in Ihrem Netzwerk erhalten und besser verstehen, wie diese von den Sensorbenutzern behandelt werden.
-ms.date: 07/13/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 2766776083eaeb96f6a1d577b160d0cdbe9eb3d0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2f97f4109f34ef448ccf67c02758c8df2d556c6d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114466247"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293305"
 ---
 # <a name="work-with-alerts-on-the-on-premises-management-console"></a>Arbeiten mit Warnungen auf der lokalen Verwaltungskonsole 
 

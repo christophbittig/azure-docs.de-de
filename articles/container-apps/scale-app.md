@@ -1,19 +1,19 @@
 ---
 title: Skalierung in Azure Container Apps
 description: Erfahren Sie, wie Anwendungen in Azure Container Apps horizontal ab- und hochskaliert werden.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d33c3d6687179e734f82f0b109bb0fb9b45be205
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 683545b892db4830e01f71faa2f77a097f9e8a9a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095125"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061171"
 ---
 # <a name="set-scaling-rules-in-azure-container-apps"></a>Festlegen von Skalierungsregeln in Azure Container Apps
 
@@ -31,6 +31,7 @@ Die Skalierungsregeln sind im Abschnitt `resources.properties.template.scale` de
 - Wenn Sie sicherstellen möchten, dass jederzeit eine Instanz Ihrer Anwendung ausgeführt wird, legen Sie `minReplicas` auf 1 oder höher fest.
 - Replikate, die keine Verarbeitung ausführen, die aber im Arbeitsspeicher verbleiben, werden in der Kategorie „Leerlaufgebühren“ abgerechnet.
 - Änderungen an Skalierungsregeln stellen eine Änderung des [Revisionsbereichs](overview.md) dar.
+- Wenn Sie Nicht-HTTP-Ereignisskalierungsregeln verwenden, wird das Festlegen von `activeRevisionMode` auf `single` empfohlen.
 
 > [!IMPORTANT]
 > Replikatmengen sind eine Zielmenge, keine Garantie. Selbst wenn Sie `maxReplicas` auf `1` festlegen, gibt es keine Zusicherung der Threadsicherheit.
@@ -166,7 +167,7 @@ Das folgende Beispiel zeigt das Erstellen einer CPU-Skalierungsregel.
 
 ## <a name="memory"></a>Arbeitsspeicher
 
-Mithilfe von CPU-Skalierung kann Ihre App je nach Auslastung der CPU horizontal hoch- oder abskalieren. Bei der CPU-Skalierung kann Ihre Container-App nicht auf 0 skaliert werden. Weitere Informationen zu diesem Skalierer finden Sie unter [KEDA-Speicherskalierer](https://keda.sh/docs/scalers/memory/).
+Mithilfe der Skalierung des Arbeitsspeichers kann Ihre App je nach Auslastung des Arbeitsspeichers horizontal hoch- oder abskalieren. Bei der Skalierung des Arbeitsspeichers kann Ihre Container-App nicht auf 0 skaliert werden. Weitere Informationen zu diesem Skalierer finden Sie unter [KEDA-Speicherskalierer](https://keda.sh/docs/scalers/memory/).
 
 Das folgende Beispiel zeigt das Erstellen einer Arbeitsspeicher-Skalierungsregel.
 

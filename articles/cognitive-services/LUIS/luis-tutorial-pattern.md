@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.openlocfilehash: 9814304aed4d7a5f307fb2179491b0fa9635fd68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d4ac6af77344717a9f38a96a28217de35d28d3d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324653"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454768"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Tutorial: Hinzufügen von Formaten für allgemeine Mustervorlagen, um Vorhersagen zu verbessern
 
@@ -539,4 +539,4 @@ In diesem Tutorial wurden Muster hinzugefügt, mit denen LUIS die Absicht mit ei
 
 
 > [!div class="nextstepaction"]
-> [Verwenden von Rollen mit einem Muster](luis-tutorial-pattern.md)
+> [Informieren Sie sich ausführlicher über die Mustersyntax.](./reference-pattern-syntax.md)

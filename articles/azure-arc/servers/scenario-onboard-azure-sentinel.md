@@ -1,18 +1,18 @@
 ---
-title: Onboarding von Servern mit Azure Arc-Unterstützung auf Azure Sentinel
-description: Hier erfahren Sie, wie Sie Ihre Server mit Azure Arc-Unterstützung zu Azure Sentinel hinzufügen und deren Sicherheitsstatus proaktiv überwachen.
+title: Onboarding von Servern mit Azure Arc-Unterstützung auf Microsoft Sentinel
+description: Hier erfahren Sie, wie Sie Ihre Server mit Azure Arc-Unterstützung zu Microsoft Sentinel hinzufügen und deren Sicherheitsstatus proaktiv überwachen.
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: d37a6b62a5a3d95cc02090b4536db2076b2e1b5c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9a7f7fb8edb6edf18d9f8d5fed0608520cb3b80f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837231"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306489"
 ---
-# <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Onboarding von Servern mit Azure Arc-Unterstützung auf Azure Sentinel
+# <a name="onboard-azure-arc-enabled-servers-to-microsoft-sentinel"></a>Onboarding von Servern mit Azure Arc-Unterstützung bei Microsoft Sentinel
 
-Dieser Artikel soll Ihnen helfen, das Onboarding Ihrer Server mit Azure Arc-Unterstützung auf [Azure Sentinel](../../sentinel/overview.md) durchzuführen und mit der Erfassung von Sicherheitsereignissen zu beginnen. Azure Sentinel ist eine Einzellösung für Warnungserkennung, Einblicke in Bedrohungen, proaktives Hunting und Reaktion auf Bedrohungen im gesamten Unternehmen.
+Dieser Artikel soll Ihnen helfen, das Onboarding Ihrer Server mit Azure Arc-Unterstützung auf [Microsoft Sentinel](../../sentinel/overview.md) durchzuführen und mit der Erfassung von Sicherheitsereignissen zu beginnen. Microsoft Sentinel ist eine Einzellösung für Warnungserkennung, Einblicke in Bedrohungen, proaktives Hunting und Reaktion auf Bedrohungen im gesamten Unternehmen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -20,13 +20,13 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Anforderungen erfüll
 
 - Einen [Log Analytics-Arbeitsbereich](../../azure-monitor/logs/data-platform-logs.md). Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../../azure-monitor/logs/design-logs-deployment.md).
 
-- Azure Sentinel ist [in Ihrem Abonnement aktiviert](../../sentinel/quickstart-onboard.md).
+- Microsoft Sentinel ist [in Ihrem Abonnement aktiviert](../../sentinel/quickstart-onboard.md).
 
 - Der Computer oder Server ist mit Servern mit Azure Arc-Unterstützung verbunden.
 
-## <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Onboarding von Servern mit Azure Arc-Unterstützung auf Azure Sentinel
+## <a name="onboard-azure-arc-enabled-servers-to-microsoft-sentinel"></a>Onboarding von Servern mit Azure Arc-Unterstützung bei Microsoft Sentinel
 
-Azure Sentinel verfügt über eine Reihe von Connectors für Microsoft-Lösungen, die sofort verfügbar sind und Echtzeitintegration bieten. Für physische und virtuelle Computer können Sie den Log Analytics-Agenten installieren, mit dem die Protokolle gesammelt und an Azure Sentinel weitergeleitet werden. Azure Arc-aktivierte Server unterstützen die Bereitstellung des Protokollanalyse-Agenten mit den folgenden Methoden:
+Microsoft Sentinel verfügt über eine Reihe von Connectors für Microsoft-Lösungen, die sofort verfügbar sind und Echtzeitintegration bieten. Für physische und virtuelle Computer können Sie den Log Analytics-Agent installieren, mit dem die Protokolle gesammelt und an Microsoft Sentinel weitergeleitet werden. Azure Arc-aktivierte Server unterstützen die Bereitstellung des Protokollanalyse-Agenten mit den folgenden Methoden:
 
 - Verwenden des VM-Erweiterungen-Frameworks.
 
@@ -43,8 +43,8 @@ Azure Sentinel verfügt über eine Reihe von Connectors für Microsoft-Lösungen
 
 Es wird empfohlen, den Log Analytics-Agent für Windows oder Linux mit Azure Policy zu installieren.
 
-Sobald Ihre Server mit Arc-Unterstützung verbunden sind, beginnt das Streaming Ihrer Daten zu Azure Sentinel. Sie können dann mit der Arbeit mit Ihren Daten loslegen. Sie können die Protokolle in den [integrierten Arbeitsmappen](../../sentinel/get-visibility.md) anzeigen und mit der Erstellung von Abfragen in Log Analytics beginnen, um [die Daten zu untersuchen](../../sentinel/investigate-cases.md).
+Sobald Ihre Server mit Arc-Unterstützung verbunden sind, beginnt das Streaming Ihrer Daten zu Microsoft Sentinel. Sie können dann mit der Arbeit mit Ihren Daten loslegen. Sie können die Protokolle in den [integrierten Arbeitsmappen](../../sentinel/get-visibility.md) anzeigen und mit der Erstellung von Abfragen in Log Analytics beginnen, um [die Daten zu untersuchen](../../sentinel/investigate-cases.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](../../sentinel/detect-threats-built-in.md).
+Beginnen Sie mit [Erkennung von Bedrohungen mithilfe von Microsoft Sentinel](../../sentinel/detect-threats-built-in.md).

@@ -1,38 +1,38 @@
 ---
-title: Referenz zu Azure Sentinel-Entitätstypen | Microsoft-Dokumentation
-description: In diesem Artikel werden die Azure Sentinel-Entitätstypen und ihre erforderlichen Bezeichner vorgestellt.
+title: Referenz zu Microsoft Sentinel-Entitätstypen | Microsoft-Dokumentation
+description: In diesem Artikel werden die Microsoft Sentinel-Entitätstypen und ihre erforderlichen Bezeichner vorgestellt.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 44f8eb527901f5457a4eddfab0bfdd8191f60d0f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c5917011bd937e88811c9f0cffaed7f8c1c61f00
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046829"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521204"
 ---
-# <a name="azure-sentinel-entity-types-reference"></a>Referenz zu Azure Sentinel-Entitätstypen
+# <a name="microsoft-sentinel-entity-types-reference"></a>Referenz zu Microsoft Sentinel-Entitätstypen
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="entity-types-and-identifiers"></a>Entitätstypen und Bezeichner
 
-Die folgende Tabelle zeigt die **Entitätstypen**, die derzeit für die Zuordnung in Azure Sentinel verfügbar sind, und die **Attribute**, die als **Bezeichner** für jeden Entitätstyp verfügbar sind. Diese werden in der Dropdownliste **Bezeichner** im Abschnitt [Entitätszuordnung](map-data-fields-to-entities.md) des [Analyseregel-Assistenten](detect-threats-custom.md) angezeigt.
+Die folgende Tabelle zeigt die **Entitätstypen**, die derzeit für die Zuordnung in Microsoft Sentinel verfügbar sind, und die **Attribute**, die als **Bezeichner** für jeden Entitätstyp verfügbar sind. Diese werden in der Dropdownliste **Bezeichner** im Abschnitt [Entitätszuordnung](map-data-fields-to-entities.md) des [Analyseregel-Assistenten](detect-threats-custom.md) angezeigt.
 
 Jeder der Bezeichner in der Spalte **erforderliche Bezeichner** ist mindestens erforderlich, um die zugehörige Entität zu identifizieren. Ein erforderlicher Bezeichner kann allein jedoch nicht ausreichen, um eine *eindeutige* Identifikation bereitzustellen. Umso mehr Bezeichner verwendet werden, desto größer ist die Wahrscheinlichkeit der eindeutigen Identifizierung. Sie können bis zu drei Bezeichner für eine einzelne Entitätszuordnung verwenden.
 
-Um optimale Ergebnisse (garantiert eindeutige Identifizierung) zu gewährleisten, sollten Sie nach Möglichkeit Bezeichner aus der Spalte mit den **stärksten Bezeichnern** verwenden. Durch die Verwendung mehrerer starker Bezeichner wird die Korrelation zwischen starken Bezeichnern aus unterschiedlichen Datenquellen und Schemas ermöglicht. Dies ermöglicht es Azure Sentinel wiederum, umfassendere Einblicke für eine bestimmte Entität bereitzustellen.
+Um optimale Ergebnisse (garantiert eindeutige Identifizierung) zu gewährleisten, sollten Sie nach Möglichkeit Bezeichner aus der Spalte mit den **stärksten Bezeichnern** verwenden. Durch die Verwendung mehrerer starker Bezeichner wird die Korrelation zwischen starken Bezeichnern aus unterschiedlichen Datenquellen und Schemas ermöglicht. Dies ermöglicht es Microsoft Sentinel wiederum, umfassendere Einblicke für eine bestimmte Entität bereitzustellen.
 
 | Entitätstyp | Bezeichner | Erforderliche Bezeichner | Stärkste Bezeichner |
 | - | - | - | - |
@@ -68,7 +68,7 @@ Im Folgenden finden Sie eine ausführlichere Beschreibung der vollständigen Sch
 
 *Entitätsname: Account*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘account’ |
 | Name | String | Der Kontoname. Dieses Feld sollte nur den Namen enthalten, ohne dass eine Domäne hinzugefügt wird. |
@@ -104,7 +104,7 @@ Schwache Bezeichner einer Kontoentität:
 
 ## <a name="host"></a>Host
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘host’ |
 | DnsDomain | Zeichenfolge | Die DNS-Domäne, zu der dieser Host gehört. Sollte das vollständige DNS-Suffix für die Domäne enthalten, sofern bekannt. |
@@ -137,11 +137,11 @@ Schwache Bezeichner einer Hostentität:
 
 *Entitätsname: IP*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘ip’ |
 | Adresse | Zeichenfolge | Die IP-Adresse als Zeichenfolge, z. B. 127.0.0.1 (in IPv4 oder IPv6). |
-| Location | GeoLocation | Der an die IP-Entität angefügte Geostandortkontext. <br><br>Weitere Informationen finden Sie unter [Anreichern von Entitäten in Azure Sentinel mit Geolocationdaten über die REST-API (öffentliche Vorschau)](geolocation-data-api.md). |
+| Location | GeoLocation | Der an die IP-Entität angefügte Geostandortkontext. <br><br>Weitere Informationen finden Sie unter [Anreichern von Entitäten in Microsoft Sentinel mit Geolocationdaten über die REST-API (öffentliche Vorschau)](geolocation-data-api.md). |
 |
 
 Starke Bezeichner einer IP-Entität:
@@ -149,7 +149,7 @@ Starke Bezeichner einer IP-Entität:
 
 ## <a name="malware"></a>Malware
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘malware’ |
 | Name | String | Der Name der Schadsoftware vom Hersteller, z. B `Win32/Toga!rfn`. |
@@ -180,7 +180,7 @@ Starke Bezeichner einer Dateientität:
 
 ## <a name="process"></a>Prozess
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘process’ |
 | ProcessId | Zeichenfolge | Die Prozess-ID. |
@@ -210,7 +210,7 @@ Schwache Bezeichner einer Prozessentität:
 
 *Entitätsname: CloudApplication*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘cloud-application’ |
 | AppId | Int | Der technische Bezeichner der Anwendung. Dies sollte einer der Werte sein, die in der Liste der [Cloudanwendungsbezeichner](#cloud-application-identifiers) definiert sind. Der Wert für das AppId-Feld ist optional. |
@@ -228,7 +228,7 @@ Starke Bezeichner einer Cloudanwendungsentität:
 
 *Entitätsname: DNS*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘dns’ |
 | DomainName | Zeichenfolge | Der Name des DNS-Eintrags, der der Warnung zugeordnet ist. |
@@ -245,7 +245,7 @@ Schwache Bezeichner einer DNS-Entität:
 
 ## <a name="azure-resource"></a>Azure-Ressource
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'azure-resource' |
 | resourceId | String | Die Azure-Ressourcen-ID der Ressource. |
@@ -262,7 +262,7 @@ Starke Bezeichner einer Azure-Ressourcenentität:
 
 *Entitätsname: FileHash*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'filehash' |
 | Algorithmus | Enumeration | Der Hashalgorithmustyp. Mögliche Werte:<li>Unbekannt<li>MD5<li>SHA1<li>SHA256<li>SHA256AC |
@@ -276,7 +276,7 @@ Starke Bezeichner einer Dateihashentität:
 
 *Entitätsname: RegistryKey*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘registry-key’ |
 | Hive | Enum? | Einer der folgenden Werte:<li>HKEY_LOCAL_MACHINE<li>HKEY_CLASSES_ROOT<li>HKEY_CURRENT_CONFIG<li>HKEY_USERS<li>HKEY_CURRENT_USER_LOCAL_SETTINGS<li>HKEY_PERFORMANCE_DATA<li>HKEY_PERFORMANCE_NLSTEXT<li>HKEY_PERFORMANCE_TEXT<li>HKEY_A<li>HKEY_CURRENT_USER |
@@ -290,7 +290,7 @@ Starke Bezeichner einer Registrierungsschlüsselentität:
 
 *Entitätsname: RegistryValue*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘registry-value’ |
 | Schlüssel | Entität (RegistryKey) | Die Registrierungsschlüsselentität. |
@@ -367,7 +367,7 @@ Schwache Bezeichner einer IoT-Geräteentität:
 
 ## <a name="mailbox"></a>Mailbox
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'mailbox' |
 | MailboxPrimaryAddress | Zeichenfolge | Die primäre Adresse des Postfachs. |
@@ -387,7 +387,7 @@ Starke Bezeichner einer Postfachentität:
 > [!NOTE]
 > **Microsoft Defender für Office 365** wurde früher als Office 365 Advanced Threat Protection (O365 ATP) bezeichnet.
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'mail-cluster' |
 | NetworkMessageIds | IList&lt;String&gt; | Die E-Mail-Nachrichten-IDs, die Teil des Nachrichtenclusters sind. |
@@ -414,7 +414,7 @@ Starke Bezeichner einer Nachrichtencluster Entität:
 
 *Entitätsname: MailMessage*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'mail-message' |
 | Dateien | IList&lt;File&gt; | Die Dateientitäten der Anlagen dieser E-Mail-Nachricht. |
@@ -503,7 +503,7 @@ In der folgenden Liste werden Bezeichner für bekannte Cloudanwendungen definier
 |17865|Ariba Inc|
 |18432|Zscaler|
 |19688|Xactly|
-|20595|Microsoft Cloud App Security|
+|20595|Microsoft Defender für Cloud-Apps|
 |20892|Microsoft SharePoint Online|
 |20893|Microsoft Exchange Online|
 |20940|Active Directory|
@@ -542,6 +542,6 @@ In der folgenden Liste werden Bezeichner für bekannte Cloudanwendungen definier
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument haben Sie die Entitätsstruktur, Bezeichner und das Schema in Azure Sentinel kennengelernt.
+In diesem Dokument haben Sie die Entitätsstruktur, Bezeichner und das Schema in Microsoft Sentinel kennengelernt.
 
 Informieren Sie sich über [Entitäten](entities-in-azure-sentinel.md) und die [Entitätszuordnung](map-data-fields-to-entities.md). 

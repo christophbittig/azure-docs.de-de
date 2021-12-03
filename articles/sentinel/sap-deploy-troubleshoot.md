@@ -1,21 +1,21 @@
 ---
-title: Problembehandlung bei der Bereitstellung der Azure Sentinel-Lösung für SAP | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie bestimmte Probleme behandeln, die bei der Bereitstellung Ihrer Azure Sentinel-Lösung für SAP auftreten können.
+title: Problembehandlung bei der Bereitstellung der Microsoft Sentinel-Lösung für SAP | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie bestimmte Probleme behandeln, die bei der Bereitstellung der Microsoft Sentinel-Lösung für SAP auftreten können.
 author: batamig
 ms.author: bagold
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: troubleshooting
 ms.custom: mvc, ignite-fall-2021
-ms.date: 08/09/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: d514ceee8f81943efd6024abcde510e910b6cc5f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: 7eee4c9fdd3de93017c15556646fa9e6ece8b22c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131013933"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520007"
 ---
-# <a name="troubleshooting-your-azure-sentinel-sap-solution-deployment"></a>Problembehandlung bei der Bereitstellung der Azure Sentinel-Lösung für SAP
+# <a name="troubleshooting-your-microsoft-sentinel-sap-solution-deployment"></a>Problembehandlung bei der Bereitstellung der Microsoft Sentinel-Lösung für SAP
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -69,7 +69,7 @@ docker restart sapcon-[SID]
 
 ## <a name="view-all-docker-execution-logs"></a>Anzeigen aller Docker-Ausführungsprotokolle
 
-Führen Sie einen der folgenden Befehle aus, um alle Docker-Ausführungsprotokolle für die Bereitstellung des SAP-Datenconnectors von Azure Sentinel anzuzeigen:
+Führen Sie einen der folgenden Befehle aus, um alle Docker-Ausführungsprotokolle für die Bereitstellung des Microsoft Sentinel-Datenconnectors für SAP anzuzeigen:
 
 ```bash
 docker exec -it sapcon-[SID] bash && cd /sapcon-app/sapcon/logs
@@ -97,7 +97,7 @@ total 508
 -rw-r--r-- 1 root root    525 Mar 12 16:01  ABAPSpoolOutputLog.log
 -rw-r--r-- 1 root root      0 Mar 12 15:51  ABAPTableDataLog.log
 -rw-r--r-- 1 root root    495 Mar 12 16:01  ABAPWorkflowLog.log
--rw-r--r-- 1 root root 465311 Mar 14 06:54  API.log # view this log to see submits of data into Azure Sentinel
+-rw-r--r-- 1 root root 465311 Mar 14 06:54  API.log # view this log to see submits of data into Microsoft Sentinel
 -rw-r--r-- 1 root root      0 Mar 12 15:51  LogsDeltaManager.log
 -rw-r--r-- 1 root root      0 Mar 12 15:51  PersistenceManager.log
 -rw-r--r-- 1 root root   4830 Mar 12 16:01  RFC.log
@@ -195,9 +195,9 @@ Wenn ABAP Laufzeitfehler in großen Systemen gemeldet werden, versuchen Sie, ein
 1. Überprüfen Sie, ob Nachrichten in SAP **SM20** oder **RSAU_READ_LOG** eingehen und vorhanden sind, ohne dass im Connectorprotokoll spezielle Fehler angezeigt werden.
 
 
-### <a name="incorrect-azure-sentinel-workspace-id-or-key"></a>Falsche ID oder falscher Schlüssel für Azure Sentinel-Arbeitsbereich
+### <a name="incorrect-microsoft-sentinel-workspace-id-or-key"></a>Falsche ID oder falscher Schlüssel für den Microsoft Sentinel-Arbeitsbereich
 
-Wenn Sie feststellen, dass Sie eine falsche Arbeitsbereichs-ID oder einen falschen Schlüssel in Ihr [Bereitstellungsskript](sap-deploy-solution.md#create-key-vault-for-your-sap-credentials) eingegeben haben, aktualisieren Sie die in Azure Key Vault gespeicherten Anmeldeinformationen.
+Wenn Sie feststellen, dass Sie eine falsche Arbeitsbereichs-ID oder einen falschen Schlüssel in Ihr [Bereitstellungsskript](sap-deploy-solution.md#create-a-key-vault-for-your-sap-credentials) eingegeben haben, aktualisieren Sie die in Azure Key Vault gespeicherten Anmeldeinformationen.
 
 Starten Sie den Container neu, nachdem Sie Ihre Anmeldeinformationen in Azure KeyVault überprüft haben:
 
@@ -234,7 +234,7 @@ Wenn sie eine Fehlermeldung wie die folgende erhalten: **... Fehlende Back-End-R
 
 ### <a name="missing-data-in-your-workbooks-or-alerts"></a>Fehlende Daten in Ihrer Arbeitsmappe oder Ihren Warnungen
 
-Wenn Sie feststellen, dass Daten in Ihren Azure Sentinel-Arbeitsmappen oder -Warnungen fehlen, stellen Sie sicher, dass die **Auditlog**-Richtlinie auf SAP-Seite ordnungsgemäß aktiviert ist und keine Fehler in der Protokolldatei auftreten. 
+Wenn Sie feststellen, dass in Ihren Microsoft Sentinel-Arbeitsmappen oder -Warnungen Daten fehlen, stellen Sie sicher, dass die **Auditlog**-Richtlinie auf SAP-Seite ordnungsgemäß aktiviert ist und die Protokolldatei keine Fehler enthält. 
 
 Verwenden Sie die Transaktion **RSAU_CONFIG_LOG** für diesen Schritt.
 
@@ -247,14 +247,20 @@ Weitere Informationen finden Sie unter [Konfigurieren Ihres SAP-Systems](sap-dep
 
 ### <a name="network-connectivity-issues"></a>Probleme mit der Netzwerkkonnektivität
 
-Wenn Probleme mit der Netzwerkkonnektivität mit der SAP-Umgebung oder Azure Sentinel auftreten, überprüfen Sie Ihre Netzwerkkonnektivität, um sicherzustellen, dass Daten wie erwartet fließen.
+Wenn Probleme mit der Netzwerkkonnektivität mit der SAP-Umgebung oder Microsoft Sentinel auftreten, überprüfen Sie Ihre Netzwerkkonnektivität, um sicherzustellen, dass der Datenfluss den Erwartungen entspricht.
+
+Häufige Probleme sind beispielweise:
+
+- Firewalls zwischen dem Docker-Container und den SAP-Hosts blockieren möglicherweise den Datenverkehr. Der SAP-Host empfängt Kommunikationen über die folgenden TCP-Ports, die offen sein müssen: **32xx**, **5xx13** und **33xx**. **xx** steht hierbei für die SAP-Instanznummer.
+
+- Für die ausgehende Kommunikation Ihres SAP-Hosts mit Microsoft Container Registry oder Azure ist eine Proxykonfiguration erforderlich. Dies wirkt sich in der Regel auf die Installation aus und führt dazu, dass Sie die Umgebungsvariablen `HTTP_PROXY` und `HTTPS_PROXY` konfigurieren müssen. Sie können Umgebungsvariablen auch bei der Erstellung des Docker-Containers in selbigem erfassen, indem Sie dem Docker-Befehl `create` / `run` das Flag `-e` hinzufügen.
 
 ### <a name="other-unexpected-issues"></a>Sonstige unerwartete Fehler
 
 Wenn unerwartete Probleme auftreten, die in diesem Artikel nicht aufgeführt sind, versuchen Sie Folgendes:
 
 - [Zurücksetzen des Connectors und erneutes Laden der Protokolle](#reset-the-sap-data-connector)
-- [Durchführen eines Upgrades des Connectors](sap-deploy-solution.md#update-your-sap-data-connector) auf die aktuelle Version
+- [Upgraden Sie den Connector](sap-deploy-solution.md#update-your-sap-data-connector) auf die aktuelle Version.
 
 > [!TIP]
 > Das Zurücksetzen Ihres Connectors und Sicherstellen, dass Sie über die neuesten Upgrades verfügen, wird auch nach größeren Konfigurationsänderungen empfohlen.
@@ -300,7 +306,7 @@ Falls Sie die [erforderlichen Change Requests für SAP-Protokolle](sap-solution-
 
 ### <a name="audit-log-data-not-ingested-past-initial-load"></a>Überwachungsprotokolldaten werden nach dem ersten Laden nicht erfasst
 
-Wenn die SAP-Überwachungsprotokolldaten, die entweder in den Transaktionen **RSAU_READ_LOAD** oder **SM200** sichtbar sind, nach dem ersten Ladevorgang nicht in Azure Sentinel erfasst werden, liegt möglicherweise eine Fehlkonfiguration des SAP-Systems und des SAP-Hostbetriebssystems vor.
+Wenn die SAP-Überwachungsprotokolldaten aus den **RSAU_READ_LOAD**- oder **SM200**-Transaktionen nach dem ersten Ladevorgang nicht in Microsoft Sentinel erfasst werden, liegt möglicherweise eine Fehlkonfiguration des SAP-Systems und des Betriebssystems des SAP-Hosts vor.
 
 - Die ersten Ladevorgänge werden nach einer Neuinstallation des SAP-Datenconnectors oder nach dem Löschen der Datei **metadata.db** ausgeführt.
 - Eine falsche Konfiguration kann beispielsweise vorliegen, wenn die Zeitzone für Ihr SAP-System in der Transaktion **STZAC** auf **CET** festgelegt ist, aber die Zeitzone für das SAP-Hostbetriebssystem **UTC** lautet.
@@ -329,11 +335,11 @@ Führen Sie den Bericht **RSDBTIME** in der Transaktion **SE38** aus, um nach Fe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
 - [Bereitstellen der kontinuierlichen Bedrohungsüberwachung in SAP (Public Preview)](sap-deploy-solution.md)
-- [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP (Public Preview)](sap-solution-log-reference.md)
-- [Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
-- [Konfigurationsoptionen von Experten, lokale Bereitstellung und SAPControl-Protokollquellen](sap-solution-deploy-alternate.md)
-- [Azure Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten (Public Preview)](sap-solution-security-content.md)
-- [Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP (öffentliche Vorschau)](sap-solution-detailed-requirements.md)
+- [Referenz zu Protokollen der Microsoft Sentinel-Lösung für SAP (Public Preview)](sap-solution-log-reference.md)
+- [Bereitstellen des Microsoft Sentinel-Datenconnectors für SAP mit SNC](sap-solution-deploy-snc.md)
+- [Konfigurationsoptionen für Experten, lokale Bereitstellung und SAPControl-Protokollquellen](sap-solution-deploy-alternate.md)
+- [Microsoft Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten (Public Preview)](sap-solution-security-content.md)
+- [Detaillierte SAP-Anforderungen für die Microsoft Sentinel-Lösung für SAP (Public Preview)](sap-solution-detailed-requirements.md)

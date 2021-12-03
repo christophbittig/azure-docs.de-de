@@ -2,21 +2,21 @@
 title: Verbessern der Columnstore-Indexleistung für dedizierte SQL-Pools
 description: Reduzieren Sie Arbeitsspeicheranforderungen, oder erhöhen Sie den verfügbaren Arbeitsspeicher, um die Anzahl der Zeilen in jeder Zeilengruppe in einem dedizierten SQL-Pool zu maximieren.
 services: synapse-analytics
-author: julieMSFT
+author: WilliamDAssafMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/22/2019
-ms.author: jrasnick
-ms.reviewer: igorstan
+ms.date: 10/18/2021
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: azure-synapse
-ms.openlocfilehash: 1336359bdd0768ba1d1554554d266cacfb483a43
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: c461128daf0c6ca9fcaa09ba9b87ecc884405f0b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566510"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249303"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>Maximieren der Zeilengruppenqualität für Columnstore-Indizes in einem dedizierten SQL-Pool 
 
@@ -83,9 +83,7 @@ trim_reason_desc enthält Informationen darüber, ob die Zeilengruppe gekürzt w
 
 ## <a name="how-to-estimate-memory-requirements"></a>Einschätzen der Arbeitsspeicheranforderungen
 
-<!--
-To view an estimate of the memory requirements to compress a rowgroup of maximum size into a columnstore index, download and run the view [dbo.vCS_mon_mem_grant](). This view shows the size of the memory grant that a rowgroup requires for compression in to the columnstore.
--->
+Um eine Schätzung der Arbeitsspeicheranforderungen zum Komprimieren einer Zeilengruppe mit maximaler Größe in einen Columnstore-Index anzuzeigen, sollten Sie die Beispielansicht [dbo.vCS_mon_mem_grant](..\sql\data-load-columnstore-compression.md) erstellen. Diese Abfrage zeigt die Größe der Speicherzuweisung, die eine Zeilengruppe für die Komprimierung in den Columnstore benötigt.
 
 Der maximale erforderliche Arbeitsspeicher zum Komprimieren einer Zeilengruppe beträgt ungefähr
 
@@ -98,8 +96,6 @@ Der maximale erforderliche Arbeitsspeicher zum Komprimieren einer Zeilengruppe b
 > Kurze Zeichenfolgenspalten verwenden Zeichenfolgendatentypen mit <= 32 Byte, und lange Zeichenfolgenspalten verwenden Zeichenfolgendatentypen mit > 32 Byte.
 
 Lange Zeichenfolgen werden mit einer Komprimierungsmethode komprimiert, die für das Komprimieren von Texten entwickelt wurde. Diese Komprimierungsmethode verwendet ein *Wörterbuch* zum Speichern von Textmustern. Die maximale Größe eines Wörterbuchs beträgt 16 MB. Es gibt nur ein Wörterbuch für jede lange Zeichenfolgenspalte in der Zeilengruppe.
-
-Eine ausführliche Diskussion der Columnstore-Arbeitsspeicheranforderungen finden Sie im Video [Dedicated SQL Pool Scaling: Configuration and Guidance](https://channel9.msdn.com/Events/Ignite/2016/BRK3291) (Skalieren von dedizierten SQL-Pools: Konfiguration und Anleitungen).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Verfahren zum Verringern der Arbeitsspeicheranforderungen
 

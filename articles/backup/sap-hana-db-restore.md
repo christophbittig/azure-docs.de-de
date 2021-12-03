@@ -2,13 +2,16 @@
 title: Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 description: In diesem Artikel erfahren Sie, wie Sie SAP HANA-Datenbanken wiederherstellen, die in Azure Virtual Machines ausgeführt werden. Zum Wiederherstellen von Datenbanken in einer sekundären Region können Sie auch die regionsübergreifende Wiederherstellung verwenden.
 ms.topic: conceptual
-ms.date: 09/01/2021
-ms.openlocfilehash: 7bf9734cafa003132fdef97026c76c8bdf8b329d
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 427dc637a0aa44ab6a0627b7a844ad6c7d3bb46e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426488"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431455"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -36,23 +39,21 @@ Beachten Sie vor dem Wiederherstellen einer Datenbank Folgendes:
 
 * Um sicherzustellen, dass die SAP HANA-Zielinstanz bereit für eine Wiederherstellung ist, überprüfen Sie ihren Status **Sicherungsbereitschaft**:
 
-  1. Öffnen Sie den Tresor, in dem die SAP HANA-Zielinstanz registriert ist.
+  1. Wechseln Sie im Azure-Portal zu **Backup Center**, und klicken Sie auf **+Sicherung**.
 
-  1. Wählen Sie im Dashboard des Tresors unter **Erste Schritte** die Option **Sicherung** aus.
+     :::image type="content" source="./media/sap-hana-db-restore/backup-center-configure-inline.png" alt-text="Screenshot, der zeigt, wie der Prozess gestartet wird, um zu überprüfen, ob die SAP HANA-Instanz für die Wiederherstellung bereit ist." lightbox="./media/sap-hana-db-restore/backup-center-configure-expanded.png":::
 
-      ![„Sicherung“ im Dashboard des Tresors](media/sap-hana-db-restore/getting-started-backup.png)
+  1. Wählen Sie **SAP HANA in Azure-VM** als Datenquellentyp und anschließend den Tresor aus, bei dem die SAP HANA-Instanz registriert ist, und klicken Sie dann auf **Weiter**.
 
-  1. Wählen Sie in **Sicherung** unter **Was möchten Sie sichern?** die Option **SAP HANA in Azure-VM** aus.
-
-      ![Auswählen von „SAP HANA in Azure-VM“](media/sap-hana-db-restore/sap-hana-backup.png)
+     :::image type="content" source="./media/sap-hana-db-restore/hana-select-vault.png" alt-text="Screenshot: Auswählen von SAP HANA auf einem virtuellen Azure-Computer.":::
 
   1. Wählen Sie unter **DBs in VMs ermitteln** die Option **Details anzeigen** aus.
 
-      ![Anzeigen der Details](media/sap-hana-db-restore/view-details.png)
+     :::image type="content" source="./media/sap-hana-db-restore/hana-discover-databases.png" alt-text="Screenshot: Anzeigen der Datenbankdetails.":::
 
   1. Überprüfen Sie die **Sicherungsbereitschaft** der Ziel-VM.
 
-      ![Geschützte Server](media/sap-hana-db-restore/protected-servers.png)
+     :::image type="content" source="./media/sap-hana-db-restore/hana-select-virtual-machines-inline.png" alt-text="Screenshot: Geschützte Server." lightbox="./media/sap-hana-db-restore/hana-select-virtual-machines-expanded.png":::
 
 * Weitere Informationen zu den von SAP HANA unterstützten Wiederherstellungstypen finden Sie in SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148)
 
@@ -66,43 +67,27 @@ Zum Wiederherstellen benötigen Sie folgende Berechtigungen:
   * Wenn Sie die Daten auf dem gleichen virtuellen Computer wiederherstellen, handelt es sich hierbei um den virtuellen Quellcomputer.
   * Wenn Sie als Ziel für die Wiederherstellung einen anderen Speicherort verwenden, handelt es sich hierbei um den neuen virtuellen Zielcomputer.
 
-1. Öffnen Sie den Tresor, in dem die wiederherzustellende SAP HANA-Datenbank registriert ist.
+1. Wechseln Sie im Azure-Portal zu **Backup Center**, und klicken Sie auf **Wiederherstellen**.
 
-1. Wählen Sie im Tresor-Dashboard unter **Geschützte Elemente** die Option **Sicherungselemente** aus.
+   :::image type="content" source="./media/sap-hana-db-restore/backup-center-restore-inline.png" alt-text="Screenshot: Starten der Wiederherstellung einer SAP HANA-Datenbank." lightbox="./media/sap-hana-db-restore/backup-center-restore-expanded.png":::
 
-    ![Sicherungselemente](media/sap-hana-db-restore/backup-items.png)
+1. Wählen **SAP HANA in Azure-VM** als Datenquellentyp und anschließend die Datenbank aus, die Sie wiederherstellen möchten, und klicken Sie dann auf **Weiter**.
 
-1. Wählen Sie im Menü **Sicherungselemente** unter **Sicherungsverwaltungstyp** die Option **SAP HANA in Azure-VM** aus.
-
-    ![Sicherungsverwaltungstyp](media/sap-hana-db-restore/backup-management-type.png)
-
-1. Auswählen der wiederherzustellenden Datenbank
-
-    ![Wiederherzustellende Datenbank](media/sap-hana-db-restore/database-to-restore.png)
-
-1. Überprüfen Sie das Datenbankmenü. Es enthält folgende Informationen über die Datenbanksicherung:
-
-    * Die ältesten und neuesten Wiederherstellungspunkte
-
-    * Den Protokollsicherungsstatus für die letzten 24 und 72 Stunden für die Datenbank
-
-    ![Menü „Datenbank“](media/sap-hana-db-restore/database-menu.png)
-
-1. Wählen Sie **Datenbank wiederherstellen** aus.
+   :::image type="content" source="./media/sap-hana-db-restore/hana-restore-select-database.png" alt-text="Screenshot: Wiederherstellen der Sicherungselemente.":::
 
 1. Geben Sie unter **Wiederherstellungskonfiguration** an, wo (oder wie) die Daten wiederhergestellt werden sollen:
 
-    * **Alternativer Standort:** Die Datenbank wird an einem alternativen Speicherort wiederhergestellt, und die ursprüngliche Quelldatenbank bleibt erhalten.
+   * **Alternativer Standort:** Die Datenbank wird an einem alternativen Speicherort wiederhergestellt, und die ursprüngliche Quelldatenbank bleibt erhalten.
 
-    * **Datenbank überschreiben:** Die Daten werden auf derselben SAP HANA-Instanz wiederhergestellt, auf der sich auch die ursprüngliche Quelle befunden hat. Bei dieser Option wird die ursprüngliche Datenbank überschrieben.
+   * **Datenbank überschreiben:** Die Daten werden auf derselben SAP HANA-Instanz wiederhergestellt, auf der sich auch die ursprüngliche Quelle befunden hat. Bei dieser Option wird die ursprüngliche Datenbank überschrieben.
 
-      ![Wiederherstellungskonfiguration](media/sap-hana-db-restore/restore-configuration.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-restore-configuration.png" alt-text="Screenshot: Wiederherstellen der Konfiguration.":::
 
 ### <a name="restore-to-alternate-location"></a>Wiederherstellen an einem alternativen Speicherort
 
 1. Wählen Sie im Menü **Wiederherstellungskonfiguration** unter **Zielort der Wiederherstellung** die Option **Alternativer Speicherort** aus.
 
-    ![Wiederherstellen an einem alternativen Speicherort](media/sap-hana-db-restore/restore-alternate-location.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-alternate-location-recovery.png" alt-text="Screenshot: Wiederherstellung an einem alternativen Speicherort.":::
 
 1. Wählen Sie den SAP HANA-Hostnamen und die Instanz aus, in der Sie die Datenbank wiederherstellen möchten.
 1. Überprüfen Sie, ob die SAP HANA-Zielinstanz bereit für die Wiederherstellung ist, indem Sie ihre **Sicherungsbereitschaft** sicherstellen. Weitere Informationen finden Sie im Abschnitt zu [Voraussetzungen](#prerequisites).
@@ -112,9 +97,6 @@ Zum Wiederherstellen benötigen Sie folgende Berechtigungen:
     > SDC-Wiederherstellungen (Single Database Container, Einzeldatenbank-Container) müssen diesen [Überprüfungen](backup-azure-sap-hana-database-troubleshoot.md#single-container-database-sdc-restore) folgen.
 
 1. Aktivieren Sie ggf. **Überschreiben, wenn die gleichnamige Datenbank bereits in der ausgewählten HANA-Instanz vorhanden ist**.
-1. Klicken Sie auf **OK**.
-
-    ![Wiederherstellungskonfiguration – abschließender Bildschirm](media/sap-hana-db-restore/restore-configuration-last.png)
 
 1. Wählen Sie unter **Wiederherstellungspunkt auswählen** die Option **Protokolle (Zeitpunkt)** aus, um [einen bestimmten Zeitpunkt wiederherzustellen](#restore-to-a-specific-point-in-time). Oder wählen Sie **Vollständig und differenziell** aus, um einen [bestimmten Wiederherstellungspunkt](#restore-to-a-specific-recovery-point) wiederherzustellen.
 
@@ -122,7 +104,7 @@ Zum Wiederherstellen benötigen Sie folgende Berechtigungen:
 
 1. Wählen Sie im Menü **Wiederherstellungskonfiguration** unter **Zielort der Wiederherstellung** die Option **Datenbank überschreiben** > **OK** aus.
 
-    ![Datenbank überschreiben](media/sap-hana-db-restore/overwrite-db.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-overwrite-database.png" alt-text="Screenshot: Außerkraftsetzen der Datenbank.":::
 
 1. Wählen Sie unter **Wiederherstellungspunkt auswählen** die Option **Protokolle (Zeitpunkt)** aus, um [einen bestimmten Zeitpunkt wiederherzustellen](#restore-to-a-specific-point-in-time). Oder wählen Sie **Vollständig und differenziell** aus, um einen [bestimmten Wiederherstellungspunkt](#restore-to-a-specific-recovery-point) wiederherzustellen.
 
@@ -148,11 +130,11 @@ Um die Sicherungsdaten als Dateien und nicht als Datenbank wiederherzustellen, w
     >[!NOTE]
     >Um die Datenbank-Sicherungsdateien auf einer Azure-Dateifreigabe wiederherzustellen, die auf der registrierten Ziel-VM bereitgestellt ist, stellen Sie sicher, dass das root-Konto über Lese-/Schreibberechtigungen für die Azure-Dateifreigabe verfügt.
 
-    ![Auswählen des Zielpfads](media/sap-hana-db-restore/restore-as-files.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-restore-as-files.png" alt-text="Screenshot: Auswählen des Zielpfads.":::
 
 1. Wählen Sie den **Wiederherstellungspunkt** aus, an dem alle Sicherungsdateien und -ordner wiederhergestellt werden.
 
-    ![Auswählen eines Wiederherstellungspunkts](media/sap-hana-db-restore/select-restore-point.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-select-recovery-point-inline.png" alt-text="Screenshot: Auswählen des Wiederherstellungspunkts." lightbox="./media/sap-hana-db-restore/hana-select-recovery-point-expanded.png":::
 
 1. Alle Sicherungsdateien, die dem ausgewählten Wiederherstellungspunkt zugeordnet sind, werden im Zielpfad gesichert.
 1. Basierend auf dem ausgewählten Typ von Wiederherstellungspunkt (**Point-in-Time** oder **Vollständig und differenziell**) sehen Sie einen oder mehrere im Zielpfad erstellte Ordner. Einer der Ordner mit dem Namen `Data_<date and time of restore>` enthält die vollständigen Sicherungen, während der andere Ordner mit dem Namen `Log` die Protokollsicherungen und sonstigen Sicherungen (z. B. differenziell und inkrementell) enthält.
@@ -289,10 +271,10 @@ Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt 
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Überwachen von Wiederherstellungsaufträgen für die sekundäre Regionen
 
-1. Navigieren Sie im Portal zu **Recovery Services-Tresor** > **Sicherungsaufträge**.
-1. Wählen Sie **Sekundäre Region** aus, um die Elemente in der sekundären Region anzuzeigen.
+1. Wechseln Sie im Azure-Portal zu **Backup Center** > **Sicherungsaufträge**.
+1. Filtern Sie **Vorgang** nach dem Wert **CrossRegionRestore**, um die Aufträge in der sekundären Region anzuzeigen.
 
-    ![Gefilterte Sicherungsaufträge](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)
+   :::image type="content" source="./media/sap-hana-db-restore/hana-view-jobs-inline.png" alt-text="Screenshot: Gefilterte Sicherungsaufträge." lightbox="./media/sap-hana-db-restore/hana-view-jobs-expanded.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

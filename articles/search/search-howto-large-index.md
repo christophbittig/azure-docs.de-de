@@ -2,18 +2,18 @@
 title: Indizieren großer Datasets mithilfe integrierter Indexer
 titleSuffix: Azure Cognitive Search
 description: Strategien für die Indizierung umfangreicher Daten oder rechenintensive Indizierung über den Batchmodus, Ressourcenerstellung und Techniken für die geplante, parallele und verteilte Indizierung.
-manager: liamca
+manager: nitinme
 author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: c754c47bda03987c00b763d39c608f9de3d84deb
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 11/12/2021
+ms.openlocfilehash: 0c7dccdc484a99e751a7676729a760499b501672
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558811"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487984"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indizieren großer Datasets in der kognitiven Azure-Suche
 
@@ -27,7 +27,7 @@ In den folgenden Abschnitten werden Techniken zum Indizieren großer Datenmengen
 
 ## <a name="use-the-push-api"></a>Verwenden der Push-API
 
-Beim Pushen von Daten an einen Index mithilfe der REST-API [Dokumente hinzufügen](/rest/api/searchservice/addupdate-or-delete-documents) oder der [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments)-Methode kommen einige wichtige Aspekte zum Tragen, die die Indizierungsgeschwindigkeit beeinflussen. Diese Faktoren werden im folgenden Abschnitt beschrieben und reichen von der festgelegten Dienstkapazität bis hin zu Codeoptimierungen.
+Beim Pushen von Daten an einen Index mithilfe der REST-API [Dokumente hinzufügen](/rest/api/searchservice/addupdate-or-delete-documents) oder der [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments)-Methode (.NET) kommen einige wichtige Aspekte zum Tragen, die die Indizierungsgeschwindigkeit beeinflussen. Diese Faktoren werden im folgenden Abschnitt beschrieben und reichen von der festgelegten Dienstkapazität bis hin zu Codeoptimierungen.
 
 Weitere Informationen und Codebeispiele, die die Pushmodellindizierung veranschaulichen, finden Sie unter [Tutorial: Optimieren der Indizierungsgeschwindigkeiten](tutorial-optimize-indexing-push-api.md).
 

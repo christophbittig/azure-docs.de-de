@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 24f3d5bfa5883477b436956d90b7af70142311aa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 57e608348e460c0598f7003af96ea1ac55bbf951
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128587744"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022814"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Verschieben von virtuellen Azure IaaS-Computern zwischen Azure Government und öffentlichen Regionen 
 
@@ -57,11 +57,10 @@ Vergewissern Sie sich, dass Ihr Azure-Konto über die Berechtigungen für die Re
 
 ### <a name="set-up-an-azure-network"></a>Richten Sie ein Azure-Netzwerk ein
 
-Richten Sie ein [Azure-Zielnetzwerk](../virtual-network/quick-create-portal.md) ein.
+Richten Sie das [Azure-Zielnetzwerk](../virtual-network/quick-create-portal.md) ein.
 
 - Azure-VMs werden in dieses Netzwerk platziert, wenn sie nach dem Failover erstellt werden.
 - Das Netzwerk muss sich in der gleichen Region befinden wie der Recovery Services-Tresor.
-
 
 ### <a name="set-up-an-azure-storage-account"></a>Richten Sie ein Azure-Speicherkonto ein
 
@@ -98,7 +97,7 @@ Der Mobilitätsdienst muss auf jedem Computer installiert sein, den Sie replizie
 
     - [Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md)
     - [Load Balancer](../load-balancer/index.yml)
-    - [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
+    - [Öffentliche IP-Adresse](../virtual-network/ip-services/virtual-network-public-ip-address.md)
     
     Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](../index.yml?pivot=products&panel=network) zum Netzwerk.
 

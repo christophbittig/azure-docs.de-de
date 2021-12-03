@@ -11,20 +11,23 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/08/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: dd8713bcbe96c16e24305e05f693bbf15af327ab
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 79aefd5c4b41e86aeeb2f7f02f2df57397c4b36b
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163061"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157493"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>Featureinteroperabilität mit Verfügbarkeitsgruppe und DNN-Listener 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Es gibt bestimmte SQL Server-Features, für die ein hartcodierter virtueller Netzwerkname (VNN) erforderlich ist. Daher müssen bei Verwendung des DNN-Listeners (Distributed Network Name) mit Ihrer Always On-Verfügbarkeitsgruppe und SQL Server auf Azure-VMs unter Umständen noch einige weitere Aspekte berücksichtigt werden. 
+> [!TIP]
+> Eliminieren Sie die Notwendigkeit eines verteilten Netzwerknamens für Ihre Always On Availability (AG)-Gruppe, indem Sie Ihre SQL Server-VMs in [mehreren Subnetzen](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) innerhalb desselben virtuellen Azure-Netzwerks erstellen.
+
+Es gibt bestimmte SQL Server-Features, für die ein hartcodierter virtueller Netzwerkname (VNN) erforderlich ist. Wenn Sie also den DNN-Listener (Distributed Network Name) mit Ihrer Always On-Verfügbarkeitsgruppe und SQL Server auf Azure-VMs in einem einzigen Subnetz verwenden, müssen Sie möglicherweise einige zusätzliche Überlegungen anstellen. 
 
 In diesem Artikel werden SQL Server-Features und die Interoperabilität mit dem DNN-Listener für Verfügbarkeitsgruppen beschrieben. 
 

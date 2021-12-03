@@ -1,150 +1,148 @@
 ---
-title: Verwalten von Richtlinien zum automatischen Herunterfahren in Azure DevTest Labs und Compute-VMs
-description: Erfahren Sie, wie Sie eine Richtlinie zum automatischen Herunterfahren für ein Lab festlegen, sodass virtuelle Computer automatisch heruntergefahren werden, wenn sie nicht verwendet werden.
+title: Konfigurieren der Richtlinie zum automatischen Herunterfahren für Labs und virtuelle Computer
+description: Erfahren Sie, wie Sie Zeitpläne und Richtlinien für das automatische Herunterfahren für Azure DevTest Labs bzw. für einzelne virtuelle Computer (VMs) festlegen, um die VMs zu einem bestimmten Zeitpunkt täglich herunterfahren zu können.
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: 75fa8f07c7e3d67ea029413d427046e20d45cdea
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/01/2021
+ms.openlocfilehash: 622d9c2da013ad9eb8c3a0eef46a21999f54ee76
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128648580"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286733"
 ---
-# <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurieren des automatischen Herunterfahrens für Lab- und Compute-VMs in Azure DevTest Labs
+# <a name="configure-auto-shutdown-for-labs-and-vms-in-devtest-labs"></a>Konfigurieren des automatischen Herunterfahrens für Labs und VMs in DevTest Labs
 
-In diesem Artikel wird beschrieben, wie Einstellungen für automatisches Herunterfahren für Lab-VMs in DevTest Labs und Compute-VMs konfiguriert werden.
+Als Lab-Besitzer von Azure DevTest Labs können Sie einen Zeitplan zum Herunterfahren aller virtuellen Computer (VMs) in Ihrem Lab für eine bestimmte Tages- oder Nachtzeit konfigurieren. Sie sparen die Kosten für die Ausführung von Computern, die nicht verwendet werden.
 
-## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>Konfigurieren von automatischem Herunterfahren für Lab-VMs (DevTest Labs)
+Sie können auch eine zentrale Richtlinie zum automatischen Herunterfahren festlegen, um zu steuern, ob Labbenutzer das automatische Herunterfahren für ihre eigenen einzelnen virtuellen Computer planen können. Die Richtlinien für das automatische Herunterfahren reichen von der Ermächtigung für VM-Besitzer, die Zeitpläne für das Herunterfahren ihrer VMs vollständig zu kontrollieren, bis hin zu der Regelung, dass sie keine Kontrolle über die Zeitpläne haben.
 
-Mit Azure DevTest Labs können Sie Kosten und unnötigen Aufwand in Ihren Labs minimieren, indem Sie Richtlinien (Einstellungen) für jedes Lab verwalten. In diesem Artikel erfahren Sie, wie Sie die Richtlinie für automatisches Herunterfahren für ein Lab konfigurieren.  Außerdem wird gezeigt, wie Einstellungen für automatisches Herunterfahren für ein Lab konfiguriert werden. Informationen zum Einrichten der einzelnen Labrichtlinien finden Sie unter [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md).  
+In diesem Artikel wird erläutert, wie Sie Zeitpläne für das automatische Herunterfahren für DevTest Labs-Labs und für einzelne Lab-VMs festlegen. In diesem Artikel wird auch beschrieben, wie Sie die Richtlinie zum automatischen Herunterfahren des Labs festlegen und Benachrichtigungen über das automatische Herunterfahren konfigurieren.
 
-### <a name="set-autoshutdown-policy-for-a-lab"></a>Festlegen einer Richtlinie zum automatischen Herunterfahren für ein Lab
+## <a name="configure-lab-auto-shutdown-schedule"></a>Konfigurieren des Zeitplans für das automatische Herunterfahren des Labs
 
-Als Labbesitzer können Sie einen Zeitplan für das Herunterfahren für alle virtuellen Computer in Ihrem Lab konfigurieren. Auf diese Weise können Sie Kosten für aktive Computer sparen, die nicht verwendet werden (Leerlauf). Sie können eine Richtlinie für das Herunterfahren für alle virtuellen Computer Ihres Labs zentral erzwingen und Ihren Lab-Benutzern auch die Arbeit abnehmen, einen Zeitplan für ihre Computer festzulegen. Mit dieser Funktion können Sie die Richtlinie für Ihren Lab-Zeitplan festlegen, die von der Möglichkeit für Lab-Benutzer reicht, vollständige Kontrolle über den Plan zum Herunterfahren ihrer VM zu haben, bis hin zu keiner Kontrolle über das Herunterfahren ihrer VM. Als Labbesitzer können Sie diese Richtlinie mit den folgenden Schritten konfigurieren:
+Das automatische Herunterfahren trägt zur Minimierung von Lab-Verschwendung bei, indem alle virtuellen Computer eines Labs zu einer bestimmten Tages- oder Nachtzeit heruntergefahren werden. Führen Sie zum Anzeigen oder Ändern des Zeitplans für das automatische Herunterfahren eines Labs die folgenden Schritte aus:
 
 1. Wählen Sie auf der Startseite Ihres Labs **Konfiguration und Richtlinien** aus.
-2. Wählen Sie im linken Menü im Abschnitt **Zeitpläne** die Option **Richtlinien zum automatischen Herunterfahren** aus.
-3. Wählen Sie eine der Optionen aus. Die folgenden Abschnitte enthalten weitere Informationen zu diesen Optionen:
+1. Wählen Sie im linken Menü im Abschnitt **Zeitpläne** die Option **Automatisches Herunterfahren** aus.
+1. Wählen Sie auf dem Bildschirm **Autoabschaltung** für **Aktiviert** die Option **Ein**, um die automatische Abschaltung zu aktivieren, oder **Aus**, um sie zu deaktivieren.
+1. Für **Geplantes Herunterfahren** und **Zeitzone**, geben Sie, wenn Sie das automatische Herunterfahren aktiviert haben, die Zeit und die Zeitzone an, um alle Labor-VMs herunterzufahren.
+1. Wählen Sie für **Benachrichtigung vor automatischer Abschaltung senden?** die Option **Ja** oder **Nein**, um eine Benachrichtigung 30 Minuten vor der angegebenen automatischen Abschaltzeit zu senden. Wenn Sie **Ja** wählen, geben Sie einen Webhook-URL-Endpunkt unter **Webhook-URL** oder durch Semikolon getrennte E-Mail-Adressen unter **E-Mail-Adresse** ein, an welche die Benachrichtigung gepostet oder gesendet werden soll. Weitere Informationen finden Sie im Abschnitt [Benachrichtigungen über automatisches Herunterfahren](#auto-shutdown-notifications).
+1. Wählen Sie **Speichern** aus.
 
-    ![Optionen für die Richtlinie zum automatischen Herunterfahren](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
+   ![Screenshot: Festlegen von Details zum automatischen Herunterfahren für ein Lab.](media/devtest-lab-auto-shutdown/auto-shutdown.png)
+
+Standardmäßig gilt dieser Zeitplan für alle virtuellen Computer im Lab. Um diese Einstellung von einem bestimmten virtuellen Computer zu entfernen, öffnen Sie den Verwaltungsbereich des virtuellen Computers, und ändern Sie die Einstellung **Automatisch herunterfahren**.
+
+> [!NOTE]
+> Wenn Sie den Zeitplan für das automatische Herunterfahren für Ihr Lab oder einen virtuellen Computer innerhalb von 30 Minuten nach dem zuvor geplanten Herunterfahren aktualisieren, wird die neue Zeit zum Herunterfahren am nächsten Tag wirksam.
+
+## <a name="configure-lab-auto-shutdown-policy"></a>Konfigurieren Sie die Richtlinien zum automatischen Herunterfahren des Labors
+
+Als Lab-Besitzer können Sie Kosten steuern und Verschwendung in Ihren Labs minimieren, indem Sie Richtlinieneinstellungen für das automatische Herunterfahren für Ihr Lab anpassen. Informationen zum Festlegen aller Richtlinien finden Sie unter [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md).
 
 > [!IMPORTANT]
 > Änderungen an der Richtlinie für das Herunterfahren gelten nur für neu im Lab erstellte VMs und nicht für bereits vorhandene VMs.
 
-### <a name="configure-autoshutdown-settings"></a>Konfigurieren von Einstellungen für automatisches Herunterfahren
-
-Die Richtlinie zum automatischen Herunterfahren hilft dabei, unnötigen Aufwand im Lab zu minimieren, indem sie Ihnen ermöglicht, die Uhrzeit anzugeben, zu der die VMs für dieses Lab heruntergefahren werden.
-
-Um die Richtlinien für ein Lab anzuzeigen oder zu ändern, gehen Sie folgendermaßen vor:
-
 1. Wählen Sie auf der Startseite Ihres Labs **Konfiguration und Richtlinien** aus.
-2. Wählen Sie im linken Menü im Abschnitt **Zeitpläne** die Option **Automatisches Herunterfahren** aus.
-3. Wählen Sie **Ein**, um diese Richtlinie zu aktivieren, und **Aus**, um sie zu deaktivieren.
-     ![Details zum automatischen Herunterfahren](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
-4. Wenn Sie diese Richtlinie aktivieren, geben Sie die Uhrzeit (und die Zeitzone) an, zu der alle virtuellen Computer im aktuellen Lab heruntergefahren werden sollen.
-5. Geben Sie für die Option, mit der 30 Minuten vor der angegebenen Uhrzeit des automatischen Herunterfahrens eine Benachrichtigung gesendet wird, **Ja** oder **Nein** an. Wenn Sie **Ja** auswählen, geben Sie einen Webhook-URL-Endpunkt oder eine E-Mail-Adresse ein, der bzw. die angibt, wo die Benachrichtigung veröffentlicht bzw. an wen diese gesendet wird. Der Benutzer erhält eine Benachrichtigung und hat die Möglichkeit, das Herunterfahren zu verzögern. Weitere Informationen finden Sie im Abschnitt [Benachrichtigungen](#notifications).
-6. Wählen Sie **Speichern** aus.
 
-    Standardmäßig gilt diese Richtlinie nach der Aktivierung für alle virtuellen Computer im aktuellen Lab. Um diese Einstellung von einem bestimmten virtuellen Computer zu entfernen, öffnen Sie den Verwaltungsbereich des virtuellen Computers, und ändern Sie die Einstellung **Automatisch herunterfahren**.
+1. Wählen Sie im linken Menü im Abschnitt **Zeitpläne** die Option **Richtlinien zum automatischen Herunterfahren** aus.
 
-> [!NOTE]
-> Wenn Sie den Zeitplan für das automatische Herunterfahren Ihres Labs oder eines bestimmten virtuellen Lab-Computers innerhalb von 30 Minuten des aktuellen Zeitplans aktualisieren, wird die aktualisierte Zeit für das Herunterfahren auf den Zeitplan des nächsten Tags angewendet.
+1. Wählen Sie eine der Optionen aus.
 
-### <a name="user-sets-a-schedule-and-can-opt-out"></a>Benutzer legt Zeitplan fest und kann diesen deaktivieren
+   ![Screenshot: Richtlinienoptionen für automatisches Herunterfahren.](./media/devtest-lab-auto-shutdown/policy-options.png)
 
-Wenn Sie für Ihr Lab diese Richtlinie festlegen, können die Lab-Benutzer den Labzeitplan außer Kraft setzen oder deaktivieren. Diese Option gewährt Lab-Benutzern die vollständige Kontrolle über den Zeitplan für das automatische Herunterfahren ihrer virtuellen Computer. Lab-Benutzer sehen keine Änderungen auf der Seite mit dem Zeitplan zum automatischen Herunterfahren ihrer virtuellen Computer.
+   - **Benutzer legt einen Zeitplan fest und kann sich abmelden**: Laborbenutzer können den Laborplan außer Kraft setzen oder abbestellen. Diese Option gewährt VM-Besitzern volle Kontrolle über das Festlegen der Zeitpläne für das automatische Herunterfahren ihrer VMs.
 
-![Optionen für die Richtlinie zum automatischen Herunterfahren – 1](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
+   - **Der Benutzer legt einen Zeitplan fest und kann nicht deaktivieren**: Lab-Benutzer können den Labzeitplan außer Kraft setzen, aber sie können die Richtlinie zum automatischen Herunterfahren nicht deaktivieren. Mit dieser Option wird sichergestellt, dass für jede Lab-VM ein Zeitplan für das automatische Herunterfahren in Kraft ist. VM-Besitzer können die Zeitplanung aktualisieren und Benachrichtigungen über das Herunterfahren einrichten.
 
-### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>Benutzer legt Zeitplan fest und kann diesen nicht deaktivieren
+   - **Der Benutzer hat keine Kontrolle über den vom Labadministrator festgelegten Zeitplan**: Labbenutzer können den Zeitplan für das automatische Herunterfahren des Labs nicht ändern oder deaktivieren. Mit dieser Option erhält der Labadministrator die vollständige Kontrolle über den Zeitplan für alle Lab-VMs. Labbenutzer können nur Benachrichtigungen zum automatischen Herunterfahren für ihre virtuellen Computer einrichten.
 
-Wenn Sie für Ihr Lab diese Richtlinie festlegen, können die Lab-Benutzer den Labzeitplan außer Kraft setzen. Sie können die Richtlinie zum automatischen Herunterfahren allerdings nicht deaktivieren. Diese Option stellt sicher, dass es für jeden Computer in Ihrem Lab einen Zeitplan für das automatische Herunterfahren gibt. Lab-Benutzer können den Zeitplan für das automatische Herunterfahren ihrer virtuellen Computer aktualisieren und Benachrichtigungen zum Herunterfahren einrichten.
+1. Wählen Sie **Speichern** aus.
 
-![Optionen für die Richtlinie zum automatischen Herunterfahren – 2](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
+## <a name="configure-vm-auto-shutdown-settings"></a>Konfigurieren Sie die Einstellungen für das automatische Herunterfahren des VM
 
-### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>Benutzer kann den vom Labadministrator festgelegten Zeitplan nicht steuern
+Abhängig von der Richtlinie zum automatischen Herunterfahren können Sie auch einen Zeitplan für das automatische Herunterfahren für einzelne Lab-VMs festlegen.
 
-Wenn Sie für Ihr Lab diese Richtlinie festlegen, können die Lab-Benutzer den Labzeitplan nicht außer Kraft setzen oder deaktivieren. Diese Option bietet dem Labadministrator die vollständige Kontrolle über den Zeitplan für jeden Computer im Lab. Lab-Benutzer können nur Benachrichtigungen zum automatischen Herunterfahren für ihre virtuellen Computer einrichten.
+1. Wählen Sie auf der Homepage der VM im Abschnitt **Betrieb** im linken Menü die Option **Automatisches Herunterfahren** aus.
+1. Wählen Sie auf dem Bildschirm **Autoabschaltung** für **Aktiviert** die Option **Ein**, um die automatische Abschaltung zu aktivieren, oder **Aus**, um sie zu deaktivieren.
+1. Für **Geplantes Herunterfahren** und **Zeitzone**, geben Sie, wenn Sie das automatische Herunterfahren aktiviert haben, die Zeit und die Zeitzone an, um alle Labor-VMs herunterzufahren.
+1. Wählen Sie für **Benachrichtigung vor automatischer Abschaltung senden?** die Option **Ja** oder **Nein**, um eine Benachrichtigung 30 Minuten vor der angegebenen automatischen Abschaltzeit zu senden. Wenn Sie **Ja** wählen, geben Sie einen Webhook-URL-Endpunkt unter **Webhook-URL** oder eine E-Mail-Adresse unter **E-Mail-Adresse** ein, an welche die Benachrichtigung gepostet bzw. gesendet werden soll. Weitere Informationen finden Sie im Abschnitt [Benachrichtigungen über automatisches Herunterfahren](#auto-shutdown-notifications).
+1. Wählen Sie **Speichern** aus.
 
-![Optionen für die Richtlinie zum automatischen Herunterfahren – 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
-
-## <a name="configure-autoshutdown-for-compute-vms"></a>Konfigurieren von automatischem Herunterfahren für Compute-VMs
-
-1. Wählen Sie auf der Seite **Virtueller Computer** im linken Menü im Abschnitt **Vorgänge** die Option **Automatisches Herunterfahren** aus.
-2. Wählen Sie auf der Seite **Automatisches Herunterfahren** die Option **Ein** aus, um diese Richtlinie zu aktivieren, und **Aus**, um sie zu deaktivieren.
-3. Wenn Sie diese Richtlinie aktivieren, geben Sie die **Uhrzeit** (und die **Zeitzone**) an, zu der die VM heruntergefahren werden soll.
-4. Wählen Sie für die Option, mit der 30 Minuten vor der angegebenen Uhrzeit des automatischen Herunterfahrens eine Benachrichtigung gesendet wird, **Ja** oder **Nein** aus. Wenn Sie **Ja** auswählen, geben Sie einen Webhook-URL-Endpunkt oder eine E-Mail-Adresse ein, der bzw. die angibt, wo die Benachrichtigung veröffentlicht bzw. an wen diese gesendet wird. Der Benutzer erhält eine Benachrichtigung und hat die Möglichkeit, das Herunterfahren zu verzögern. Weitere Informationen finden Sie im Abschnitt [Benachrichtigungen](#notifications).
-5. Wählen Sie **Speichern** aus.
-
-    ![Konfigurieren von automatischem Herunterfahren für eine Compute-VM](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+   ![Screenshot: Festlegen von Details zum automatischen Herunterfahren für einen VM.](media/devtest-lab-auto-shutdown/compute-auto-shutdown.png)
 
 ### <a name="view-activity-logs-for-auto-shutdown-updates"></a>Anzeigen von Aktivitätsprotokollen für Aktualisierungen der Einstellung zum automatischen Herunterfahren
 
-Wenn Sie die Einstellung zum automatischen Herunterfahren aktualisieren, wird die Aktivität im Aktivitätsprotokoll der VM aufgezeichnet.
+Wenn Sie die Einstellung zum automatischen Herunterfahren aktualisieren, wird die Aktivität im Aktivitätsprotokoll des VM aufgezeichnet.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Startseite für Ihre VM.
-2. Wählen Sie im Menü links **Aktivitätsprotokoll** aus.
-3. Entfernen Sie **Ressource: mycomputevm** aus den Filtern.
-4. Bestätigen Sie, dass der Vorgang **Zeitpläne hinzufügen oder ändern** im Aktivitätsprotokoll angezeigt wird. Wenn Sie diesen Vorgang nicht sehen, warten Sie einen Moment, und aktualisieren Sie das Aktivitätsprotokoll
+1. Wählen Sie auf der Startseite des VM im linken Menü die Option **Aktivitätsprotokoll** aus.
+1. Entfernen Sie **den Ressourcenfilter**, wenden Sie den entsprechenden **Ressourcengruppenfilter** an, und zeigen Sie die Einträge für **Zeitpläne Hinzufügen oder Ändern** an.
 
-    ![Aktivitätsprotokolleintrag](./media/devtest-lab-auto-shutdown/activity-log-entry.png)
-5. Wählen Sie den Vorgang **Zeitpläne hinzufügen oder ändern** aus, um die folgenden Informationen auf der Seite **Zusammenfassung** anzuzeigen:
+   ![Screenshot: Hinzufügen oder Ändern von Zeitplänen im Aktivitätsprotokoll.](media/devtest-lab-auto-shutdown/activity-log-entry.png)
 
-    - Name des Vorgangs (Zeitpläne hinzufügen oder ändern)
-    - Datum und Uhrzeit, zu der die Einstellung zum automatischen Herunterfahren geändert wurde
-    - Die E-Mail-Adresse des Benutzers, der die Einstellung aktualisiert hat
+1. Wählen Sie den Vorgang **Zeitpläne Hinzufügen oder Ändern** aus, um eine Zusammenfassungsseite zu öffnen, auf der weitere Details zum Vorgang angezeigt werden.
 
-        ![Zusammenfassung zum Aktivitätsprotokolleintrag](./media/devtest-lab-auto-shutdown/activity-log-entry-summary.png)
-6. Wechseln Sie auf der Seite **Zeitpläne hinzufügen oder ändern** zur Registerkarte **Änderungsverlauf**, um den Änderungsverlauf für die Einstellung anzuzeigen. Im folgenden Beispiel wurde die Zeit für das Herunterfahren am 10. April 2020 um 15:18:47 EST von 19 Uhr auf 18 Uhr geändert. Und um 15:25:09 EST wurde die Einstellung deaktiviert.
+## <a name="auto-shutdown-notifications"></a>Benachrichtigungen zum automatischen Herunterfahren
 
-    ![Aktivitätsprotokoll – Änderungsverlauf](./media/devtest-lab-auto-shutdown/activity-log-entry-change-history.png)
-7. Um weitere Details zum Vorgang anzuzeigen, wechseln Sie auf der Seite **Zeitpläne hinzufügen oder ändern** zur Registerkarte **JSON**.
+Wenn Sie Benachrichtigungen in der Konfiguration für das automatische Herunterfahren aktivieren, erhalten Labbenutzer 30 Minuten vor dem automatischen Herunterfahren eine Benachrichtigung, wenn einer ihrer VMs betroffen ist. Mit dieser Option erhalten die Labbenutzer die Möglichkeit, ihre Arbeit vor dem Herunterfahren zu speichern. Wenn in den Einstellungen für das automatische Herunterfahren eine E-Mail-Adresse angegeben ist, wird die Benachrichtigung an diese E-Mail-Adresse gesendet. Wenn in den Einstellungen ein Webhook angegeben ist, wird die Benachrichtigung an den Webhook-URL gesendet.
 
-## <a name="notifications"></a>Benachrichtigungen
+Die Benachrichtigung kann zudem Links enthalten, welche die folgenden Aktionen für jeden VM ermöglichen, wenn jemand weiterarbeiten muss:
 
-Nachdem automatisches Herunterfahren konfiguriert wurde, werden 30 Minuten vor dem automatischen Herunterfahren Benachrichtigungen an die Lab-Benutzer gesendet, sofern deren virtuelle Computer betroffen sind. Mit dieser Option erhalten die Lab-Benutzer die Möglichkeit, ihre Arbeit vor dem Herunterfahren zu speichern. Die Benachrichtigung stellt auch Links für jede VM für die folgenden Aktionen für den Fall bereit, dass eine Person weiterhin mit ihrer VM arbeiten muss.
+- Dieses Mal das automatische Herunterfahren Überspringen.
+- Aussetzen des automatischen Herunterfahrens für eine Stunde.
+- Aussetzen des automatischen Herunterfahrens für 2 Stunden.
 
-- Überspringen des automatischen Herunterfahrens für dieses Mal
-- Aussetzen des automatischen Herunterfahrens für eine Stunde
-- Aussetzen des automatischen Herunterfahrens für zwei Stunden
+Sie können Webhooks verwenden, um Ihre eigenen Benachrichtigungen zu implementieren. Sie richten Integrationen ein, die bestimmte Ereignisse abonnieren. Wenn eines dieser Ereignisse eintritt, wird eine HTTP POST-Nutzlast an die URL des Webhooks gesendet.
 
-Die Benachrichtigung wird an die Webhook-URL gesendet, wenn ein Webhook angegeben wurde.  Wenn eine E-Mail-Adresse in den Einstellungen für automatisches Herunterfahren angegeben wurde, wird eine E-Mail an diese E-Mail-Adresse gesendet. Webhooks ermöglichen Ihnen das Erstellen oder Einrichten von Integrationen, die bestimmte Ereignisse abonnieren. Wenn ein solches Ereignis ausgelöst wird, sendet DevTest Labs eine HTTP POST-Nutzlast an die für den Webhook konfigurierte URL. Weitere Informationen zum Antworten auf Webhooks finden Sie unter [Azure Functions: Übersicht über HTTP-Trigger und Bindungen](../azure-functions/functions-bindings-http-webhook.md) oder [Hinzufügen eines HTTP-Triggers für Azure Logic Apps](../connectors/connectors-native-http.md#add-an-http-trigger).
+Apps wie [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und Slack bieten umfassende Unterstützung für Webhooks. Weitere Informationen zum Antworten auf Webhooks finden Sie unter [Azure Functions: Übersicht über HTTP-Trigger und Bindungen](../azure-functions/functions-bindings-http-webhook.md) oder [Hinzufügen eines HTTP-Triggers für Azure Logic Apps](../connectors/connectors-native-http.md#add-an-http-trigger).
 
-Wir empfehlen Ihnen die Verwendung von Webhooks, da diese von verschiedenen Apps wie Azure Logic Apps und Slack umfassend unterstützt werden.  Mit Webhooks können Sie eine eigene Methode zum Senden von Benachrichtigungen implementieren. Als Beispiel wird in diesem Artikel beschrieben, wie die Benachrichtigung zum automatischen Herunterfahren so konfiguriert wird, dass mithilfe von Azure Logic Apps eine E-Mail an den VM-Besitzer gesendet wird. Sehen Sie sich zunächst kurz die grundlegenden Schritte zum Aktivieren von Benachrichtigungen zum automatischen Herunterfahren in Ihrem Lab an.
+Im folgenden Beispiel wird veranschaulicht, wie Sie Logic Apps verwenden, um eine Benachrichtigung zum automatischen Herunterfahren zu konfigurieren, die eine E-Mail an VM-Besitzer sendet.
 
 ### <a name="create-a-logic-app-that-sends-email-notifications"></a>Erstellen einer Logik-App, die E-Mail-Benachrichtigungen sendet
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) bietet viele Connectors, die es einfach machen, einen Dienst für andere Clients wie Office 365 und Twitter zu integrieren. Ganz allgemein können die Schritte zum Einrichten einer Logik-App für E-Mail-Benachrichtigungen in vier Phasen unterteilt werden:
+Azure Logic Apps bietet viele Connectors, die es einfach machen, einen Dienst für andere Clients wie Office 365 und Twitter zu integrieren. Auf hoher Ebene sind die Schritte zum Einrichten einer Logik-App für E-Mail-Benachrichtigungen:
 
-- Erstellen Sie eine Logik-App.
-- Konfigurieren der integrierten Vorlage
-- Integrieren in den E-Mail-Client
-- Abrufen der Webhook-URL
+1. Erstellen Sie eine Logik-App.
+1. Konfigurieren der integrierten Vorlage
+1. Integrieren in den E-Mail-Client.
+1. Hier finden Sie den Webhook-URL, der in den Benachrichtigungseinstellungen für das automatische Herunterfahren verwendet werden soll.
 
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
+Erstellen Sie zum Einstieg eine Logik-App in Azure mit den folgenden Schritten:
 
-Erstellen Sie zunächst mithilfe der folgenden Schritte eine Logik-App in Ihrem Azure-Abonnement:
+1. Geben Sie im Azure-Portal im oberen Suchfeld *Logik-Apps* ein, und wählen Sie dann **Logik-Apps** aus.
 
-1. Wählen Sie im Menü links **+ Ressource erstellen**, dann **Integration** und schließlich **Logik-App** aus.
+1. Wählen Sie auf der Seite **Logik-Apps** die Option **Hinzufügen** aus.
 
-    ![Menü „Neue Logik-App“](./media/devtest-lab-auto-shutdown/new-logic-app.png)
-2. Führen Sie auf der Seite **Logik-App erstellen** die folgenden Schritte aus:
-    1. Geben Sie einen **Namen** für die Logik-App ein.
-    2. Wählen Sie Ihr Azure- **Abonnement** aus.
-    3. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
-    4. Wählen Sie einen **Speicherort** für die Logik-App aus.
+1. Auf der Seite **Logik-App erstellen**:
 
-        ![Neue Logik-App – Einstellungen](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
-3. Wählen Sie in **Benachrichtigungen** die Option **Zu Ressource wechseln** für die Benachrichtigung aus.
+   - Wählen Sie Ihr Azure-**Abonnement** aus.
+   - Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue.
+   - Geben Sie einen **Logik-App-Namen** ein.
+   - Wählen Sie die **Region** für die Logik-App aus.
 
-    ![Zu Ressource wechseln](./media/devtest-lab-auto-shutdown/go-to-resource.png)
-4. Wählen Sie **Logik-App-Designer** unter der Kategorie **Bereitstellungstools** aus.
+   ![Screenshot, der die Seite Logik-App Erstellen zeigt.](media/devtest-lab-auto-shutdown/new-logic-app-page.png)
 
-    ![Auswählen der HTTP-Anforderung/-Antwort](./media/devtest-lab-auto-shutdown/select-http-request-response-option.png)
-5. Wählen Sie auf der Seite **HTTP-Anforderung/-Antwort** die Option **Diese Vorlage verwenden** aus.
+1. Klicken Sie auf **Überprüfen + erstellen** und nach der Überprüfung auf **Erstellen**.
 
-    ![Auswählen der Option „Diese Vorlage verwenden“](./media/devtest-lab-auto-shutdown/select-use-this-template.png)
-6. Kopieren Sie den folgenden JSON-Code in den Abschnitt **JSON-Schema für Anforderungstext**:
+1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressource wechseln**.
+
+Konfigurieren der integrierten Vorlage.
+
+1. Wählen Sie auf der Seite Logik-App die Option **Logik-App Designer** unter **Bereitstellungstools** im linken Navigationsbereich aus.
+
+1. Wählen Sie im oberen Menü **Vorlagen** aus.
+
+1. Wählen Sie unter **Vorlagen** die Option **HTTP Anforderung/Antwort** aus.
+
+   ![Screenshot: Vorlage "HTTP-Anforderungsantwort".](media/devtest-lab-auto-shutdown/select-http-request-response-option.png)
+
+1. Wählen Sie auf der Seite **HTTP-Anforderung/-Antwort** die Option **Diese Vorlage verwenden** aus.
+
+   ![Screenshot, der die Auswahl von Diese Vorlage Verwenden zeigt.](./media/devtest-lab-auto-shutdown/select-use-this-template.png)
+
+1. Kopieren Sie den folgenden JSON-Code in den Abschnitt **JSON-Schema für Anforderungstext**.
+
+   ![Screenshot: JSON-Schema für Anforderungstext.](media/devtest-lab-auto-shutdown/request-json.png)
 
     ```json
     {
@@ -209,22 +207,30 @@ Erstellen Sie zunächst mithilfe der folgenden Schritte eine Logik-App in Ihrem 
     }
     ```
 
-    ![Screenshot: JSON-Schema für Anforderungstext](./media/devtest-lab-auto-shutdown/request-json.png)
-7. Wählen Sie im Designer **+ Neuer Schritt** aus, und führen Sie die folgenden Schritte aus:
-    1. Suchen Sie nach **Office 365 Outlook – E-Mail senden**.
-    2. Wählen Sie unter **Aktionen** die Option **E-Mail senden** aus.
+Integrieren in den E-Mail-Client.
 
-        ![Option „E-Mail senden“](./media/devtest-lab-auto-shutdown/select-send-email.png)
-    3. Wählen Sie **Anmelden** aus, um sich bei Ihrem E-Mail-Konto anzumelden.
-    4. Wählen Sie das Feld **An** und dann den Besitzer aus.
-    5. Wählen Sie **Betreff** aus, und geben Sie einen Betreff für die E-Mail-Benachrichtigung ein. Beispiel: „Herunterfahren der VM vmName für das Lab: labName“
-    6. Wählen Sie **Text** aus, und geben Sie den Inhalt der E-Mail-Benachrichtigung ein. Beispiel: „Das Herunterfahren der VM ‚vmName‘ erfolgt in 15 Minuten. Klicken Sie zum Überspringen dieses Vorgangs auf: URL. Herunterfahren um eine Stunde verschieben: delayUrl60. Herunterfahren um zwei Stunden verschieben: delayUrl120.“
+1. Wählen Sie im Designer **Neuer Schritt** aus.
 
-        ![JSON-Schema für Anforderungstext](./media/devtest-lab-auto-shutdown/email-options.png)
-8. Wählen Sie auf der Symbolleiste **Speichern** aus. Sie können nun die **HTTP POST-URL** kopieren. Wählen Sie die Schaltfläche „Kopieren“ aus, um die URL in die Zwischenablage zu kopieren.
+   ![Screenshot: Neuer Schritt im Designer.](media/devtest-lab-auto-shutdown/new-step.png)
 
-    ![Webhook-URL](./media/devtest-lab-auto-shutdown/webhook-url.png)
+1. Geben Sie auf der Seite **Vorgang wählen** in das Suchfeld *Office 365 Outlook - E-Mail senden* ein und wählen Sie dann **E-Mail senden (V2)** aus **Aktionen**.
+
+   ![Screenshot: Option E-Mail Senden V2.](media/devtest-lab-auto-shutdown/select-send-email.png)
+
+1. Füllen Sie im Formular **E-Mail senden (V2)** die Felder **An**, **Betreff** und **Text** aus.
+
+   Wählen Sie **Dynamischen Inhalt hinzufügen** aus, um die Benachrichtigung automatisch mit Werten zu füllen, die von der App und den Connectors verwendet werden. Wählen Sie beispielsweise für **An** die Option **Besitzer aus.** Füllen Sie **Subject** mit **vmName und** **labName** auf. Fügen Sie dem Nachrichtentext Inhalte wie zum Beispiel die Werte **skipUrl** und **delayUrl** s hinzu.
+
+   ![Screenshot mit einem Beispiel für eine Benachrichtigungs-E-Mail.](media/devtest-lab-auto-shutdown/email-options.png)
+
+1. Wählen Sie auf der Symbolleiste **Speichern** aus.
+
+Nun können Sie die Webhook-URL kopieren. Wählen Sie den Schritt **Wenn eine HTTP-Anforderung empfangen wird** und wählen Sie dann die Schaltfläche Kopieren, um die HTTP POST URL in die Zwischenablage zu kopieren. Fügen Sie diesen Webhook-URL in die Benachrichtigungseinstellungen für das automatische Herunterfahren ein.
+
+![Screenshot, der das Kopieren des Webhook-URL zeigt.](media/devtest-lab-auto-shutdown/webhook-url.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Festlegen aller Richtlinien finden Sie unter [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md).
+- [Automatisches Starten virtueller Labcomputer](devtest-lab-auto-startup-vm.md)
+- [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md)
+- [Empfangen und Beantworten eingehender HTTPS-Anforderungen in Azure Logic Apps](/azure/connectors/connectors-native-reqres)

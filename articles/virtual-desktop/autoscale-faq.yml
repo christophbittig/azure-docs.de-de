@@ -8,20 +8,21 @@ metadata:
   ms.author: helohr
   ms.custom: devx-track-azurepowershell
   manager: femila
-  ms.openlocfilehash: 7024b24b27e8a33cd79c3ad199dcd9e4040588d5
-  ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+  ms.openlocfilehash: 55ed95dbba1e5ee04b1ff9b5e44bb42373846981
+  ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/19/2021
-  ms.locfileid: "130181793"
+  ms.lasthandoff: 11/12/2021
+  ms.locfileid: "132399574"
 title: Häufig gestellte Fragen zur Autoskalierung in Azure Virtual Desktop (Vorschau)
 summary: In diesem Artikel werden häufig gestellte Fragen zur Verwendung des Features für die Autoskalierung (Vorschau) für Azure Virtual Desktop beantwortet.
 sections:
 - name: Wird ignoriert.
   questions:
   - question: >
-      Wie konfiguriere ich die Autoskalierung, sodass außerhalb der Arbeitszeiten keine Sitzungshosts ausgeführt werden?
-    answer: "Im Minimalmodus wird immer die geringstmögliche Anzahl von Sitzungshosts verwendet. Wenn jedoch aktive Sitzungen vorhanden sind, ist die niedrigste Anzahl verwendbarer Sitzungshosts nicht null. Konfigurieren Sie eine Zeitlimitrichtlinie, um alle getrennten Benutzer abzumelden und zu verhindern, dass außerhalb der Arbeitszeiten verwendbare Sitzungshosts vorhanden sind.\n \n"
+      Wie konfiguriere ich das Autoskalierungsfeature so, dass außerhalb der Arbeitszeiten keine Sitzungshosts ausgeführt werden?
+    answer: >
+      Im Minimalmodus wird immer die geringstmögliche Anzahl von Sitzungshosts verwendet. Wenn jedoch aktive Sitzungen vorhanden sind, ist die niedrigste Anzahl verwendbarer Sitzungshosts nicht null. Konfigurieren Sie eine Zeitlimitrichtlinie, um alle getrennten Benutzer abzumelden und zu verhindern, dass außerhalb der Arbeitszeiten verwendbare Sitzungshosts vorhanden sind.
   - question: >
       Werden bei der Autoskalierung virtuelle Computer basierend auf der Dienstauslastung erstellt oder gelöscht?
     answer: >
@@ -29,7 +30,36 @@ sections:
   - question: >
       Kann ich die Skalierung für bestimmte Tage wie Feiertage konfigurieren?
     answer: >
-      Nein. Die Autoskalierung unterstützt derzeit das Minimieren an bestimmten Tagen nicht.
+      Nein. Das Herunterfahren an bestimmten Tagen wird vom Autoskalierungsfeature derzeit nicht unterstützt.
   - question: >
       Fallen zusätzliche Kosten für die Verwendung des Features für die Autoskalierung an?
-    answer: Nein. Weitere Informationen zu Preisen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+    answer: >
+      Nein. Weitere Informationen zu Preisen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+  - question: >
+      Was passiert, wenn die Kapazität des Hostpools exakt dem Kapazitätsschwellenwert entspricht?
+    answer: >
+      Nichts. Das Autoskalierungsfeature reagiert nur, wenn die Kapazität des Hostpools den Kapazitätsschwellenwert über- oder unterschreitet. Wenn die Kapazität des Hostpools exakt dem Kapazitätsschwellenwert entspricht, geschieht nichts.
+  - question: >
+      Ändert das Autoskalierungsfeature meine konfigurierte Einstellung, wenn ich den Ausgleichsmodus für Sitzungshosts festlege?
+    answer: >
+      Ja. Virtuelle Computer werden im Ausgleichsmodus weiterhin durch das Autoskalierungsfeature ein- oder ausgeschaltet – unabhängig davon, wer den Ausgleichsmodus aktiviert hat. Das Autoskalierungsfeature überschreibt den Ausgleichsmodus auf allen virtuellen Computern, die in die Skalierung einbezogen werden. Wenn Sie also einen virtuellen Computer von Skalierungsaktionen ausschließen möchten, müssen Sie Ausschlusstags verwenden.
+  - question: >
+      Wie oft überwacht das Autoskalierungsfeature die Sitzungshosts und führt Skalierungsauswertungen durch?
+    answer: >
+      Das Autoskalierungsfeature überwacht, wann sich Benutzer bei ihren Sitzungshosts anmelden oder von ihnen abmelden, und kategorisiert diese Aktivität als Sitzungsänderungsereignisse. Sitzungsänderungsereignisse lösen eine Skalierungsauswertung aus, durch die Protokolle erstellt werden. Wenn keine Sitzungsänderungsereignisse vorhanden sind oder der Ereignisdienst ausgefallen ist, überprüft das Autoskalierungsfeature, ob Ereignisse verpasst wurden. Wenn innerhalb eines kurzen Zeitraums mehrere Sitzungsänderungsereignisse auftreten, werden die Skalierungsauswertungen zu einem Batch zusammengefasst. Diese Batchverarbeitung ermöglicht es dem Autoskalierungsfeature, eine große Anzahl von Ereignissen schnell zu verarbeiten, ohne das System zu überlasten.
+  - question: >
+      Können Abmeldungen in einer beliebigen Phase des Tages erzwungen werden?
+    answer: >
+      Nein. Wenn Sie das Autoskalierungsfeature aktiviert haben, können Benutzerabmeldungen nur während der Phase des Herunterfahrens erzwungen werden. Wenn also während des Herunterfahrens ein Sitzungshost in den Ausgleichsmodus versetzt wird, um das Herunterfahren vorzubereiten, aber zu Beginn der Nebenzeitphase noch nicht alle Benutzer abgemeldet sind, wird für die restlichen Benutzersitzungen keine Sitzungsabmeldung erzwungen. Der Grund: Während Nebenzeiten werden für Benutzer keine Sitzungsabmeldungen erzwungen. Stattdessen wartet das Autoskalierungsfeature mit dem Aufheben der Zuordnung des virtuellen Computers, bis sich alle Benutzer abgemeldet haben. Wenn die Phase des Herunterfahrens beispielsweise 15 Minuten dauert und die Wartezeit bis zum Abmelden von Benutzern und dem Herunterfahren virtueller Computer 20 Minuten beträgt, wechselt der Zeitplan zur Nebenzeitphase, und es wird keine Abmeldung der Benutzersitzungen erzwungen.
+  - question: >
+      Werden auch Benutzer mit aktiven Sitzungen abgemeldet, wenn ich das Autoskalierungsfeature so konfiguriere, dass Benutzerabmeldungen während des Herunterfahrens erzwungen werden?
+    answer: >
+      Ja. Wenn sich Benutzer während der Wartezeit der Phase für das Herunterfahren nicht abmelden, wird die Abmeldung für im Leerlauf befindliche, getrennte und aktive Sitzungen erzwungen.
+  - question: >
+      Angenommen, für eine aktive Sitzung wird eine Abmeldung erzwungen, aber der Benutzer versucht, erneut eine Verbindung herzustellen. Gibt es eine Möglichkeit, zu verhindern, dass der Benutzer eine neue Sitzung auf einem Sitzungshost startet, der in Kürze durch das Autoskalierungsfeature ausgeschaltet wird?
+    answer: >
+      Wenn das Autoskalierungsfeature einen Sitzungshost ausgewählt hat, der heruntergefahren werden soll, wird der Sitzungshost in den Ausgleichsmodus versetzt. Nachdem alle Benutzersitzungen abgemeldet wurden, hebt das Autoskalierungsfeature die Zuordnung des virtuellen Computers auf. Nach dem Aufheben der Zuordnung des virtuellen Computers legt das Autoskalierungsfeature die Einstellung „AllowNewSessions“ auf „true“ fest, wodurch der Ausgleichsmodus deaktiviert wird. Da Sitzungshosts, die in Kürze heruntergefahren werden, in den Ausgleichsmodus versetzt werden, kann ein Benutzer, für den eine Sitzungsabmeldung erzwungen wird, keine Verbindung mit einem Sitzungshost herstellen, der in Kürze heruntergefahren wird, wenn der Benutzer versucht, erneut eine Verbindung herzustellen.
+  - question: >
+      Kann das Autoskalierungsfeature alle virtuellen Computer in einem Hostpool ausschalten, oder müssen mindestens einige virtuelle Computer eingeschaltet bleiben, damit er ordnungsgemäß funktioniert?
+    answer: >
+      Das Autoskalierungsfeature kann alle virtuellen Computer in einem Hostpool ausschalten, wenn der Mindestprozentsatz für Hosts auf **0 %** festgelegt ist und keine Benutzersitzungen auf dem Sitzungshost vorhanden sind.

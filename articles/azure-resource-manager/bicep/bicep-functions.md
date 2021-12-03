@@ -3,12 +3,12 @@ title: Bicep-Funktionen
 description: Es werden die Funktionen beschrieben, die in einer Bicep-Datei zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 429dca8bd4544e1dd8b22406811e53d0ed2ea623
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 4a4f057fe7c29b3ee9b76aa03992ff1efd70079c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070563"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226908"
 ---
 # <a name="bicep-functions"></a>Bicep-Funktionen
 
@@ -167,5 +167,5 @@ Bicep stellt die folgenden Funktionen für das Arbeiten mit Zeichenfolgen bereit
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine Beschreibung der Abschnitte in einer Bicep-Datei finden Sie unter [Grundlegendes zur Struktur und Syntax von Bicep-Dateien](./file.md).
-* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Bereitstellen mehrerer Instanzen von Ressourcen in Bicep](./loop-resources.md).
+* Wenn Sie beim Erstellen eines Ressourcentyps eine angegebene Anzahl von Wiederholungen durchlaufen möchten, finden Sie weitere Informationen unter [Iterative Schleifen in Bicep](loops.md).
 * Informationen zum Bereitstellen der von Ihnen erstellten Bicep-Datei finden Sie unter [Bereitstellen von Ressourcen mit Bicep und Azure PowerShell](./deploy-powershell.md).

@@ -1,14 +1,14 @@
 ---
 title: Arbeiten mit der Sensorgerätezuordnung
 description: Die Geräteübersicht bietet eine grafische Darstellung erkannter Netzwerkgeräte. Mithilfe der Übersicht können Sie Geräteinformationen und Netzwerksegmente analysieren und verwalten sowie Berichte generieren.
-ms.date: 1/7/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 58ccb69606f41a279424d0faa0241befbe9914bf
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: 559c3691ac83fa031c71b563bd43dce4fa77c31e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137799"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315442"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Untersuchen von Sensorerkennungen in der Geräteübersicht
 

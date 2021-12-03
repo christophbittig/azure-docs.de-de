@@ -5,12 +5,12 @@ ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 8404078943f9398df6604c78413bc3750f13d655
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 0555bf71402230cf8264a271ce3ac6cf59357c12
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729081"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134056"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
@@ -22,6 +22,19 @@ Die folgenden Ressourcen stehen ebenfalls zur Verfügung:
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">Supportoptionen</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">Unterstützte Versionen</a> 
 - <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Codebeispiele</a>
+
+
+## <a name="service-fabric-82"></a>Service Fabric 8.2
+
+Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 8.2 der Service Fabric-Runtime zusammen mit Tools und SDK-Updates in den verschiedenen Azure-Regionen begonnen hat. Die Updates für .NET SDK, Java SDK und Service Fabric-Runtime sind über den Webplattform-Installer, NuGet-Pakete und Maven-Repositorys verfügbar.
+
+### <a name="key-announcements"></a>Wichtige Ankündigungen
+- Bereitstellung einer API im Cluster Manager, um festzustellen, ob ein Upgrade Auswirkungen hat
+
+### <a name="service-fabric-82-releases"></a>Service Fabric 8.2-Releases
+| Veröffentlichungsdatum | Release | Weitere Informationen |
+|---|---|---|
+| 29. Oktober 2021 | [Azure Service Fabric 8.2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-2-release/ba-p/2895108)  | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_82.md)|
 
 
 ## <a name="service-fabric-81"></a>Service Fabric 8.1

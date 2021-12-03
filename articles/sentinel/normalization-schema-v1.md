@@ -1,34 +1,34 @@
 ---
-title: 'Azure Sentinel: Netzwerknormalisierungsschema (Legacyversion – Öffentliche Vorschau) | Microsoft-Dokumentation'
-description: Dieser Artikel behandelt das Schema zur Datennormalisierung von Azure Sentinel.
+title: 'Microsoft Sentinel: Netzwerknormalisierungsschema (Legacyversion – Öffentliche Vorschau) | Microsoft-Dokumentation'
+description: Dieser Artikel behandelt das Schema zur Datennormalisierung von Microsoft Sentinel.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/15/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7442db85d7b6105278024c9fc23bca9eba20ab19
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c5f88a7b5234e2a791d26ecc339e6750497ef6a9
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064391"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522857"
 ---
-# <a name="azure-sentinel-network-normalization-schema-legacy-version---public-preview"></a>Azure Sentinel: Netzwerknormalisierungsschema (Legacyversion – Öffentliche Vorschau)
+# <a name="microsoft-sentinel-network-normalization-schema-legacy-version---public-preview"></a>Microsoft Sentinel: Netzwerknormalisierungsschema (Legacyversion – Öffentliche Vorschau)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Das Netzwerknormalisierungsschema dient zum Beschreiben gemeldeter Netzwerkereignisse und wird von Azure Sentinel verwendet, um quellenunabhängige Analysen zu ermöglichen.
+Das Netzwerknormalisierungsschema dient zum Beschreiben gemeldeter Netzwerkereignisse und wird von Microsoft Sentinel verwendet, um quellenunabhängige Analysen zu ermöglichen.
 
-Weitere Informationen finden Sie unter [Normalisierung und das Azure Sentinel Information Model (ASIM)](normalization.md).
+Weitere Informationen finden Sie unter [Normalisierung und das erweiterte SIEM-Informationsmodell (ASIM)](normalization.md).
 
 > [!IMPORTANT]
 > Dieser Artikel bezieht sich auf Version 0.1 des Netzwerknormalisierungsschemas, die als Vorschauversion veröffentlicht wurde, bevor ASIM verfügbar war. [Version 0.2](network-normalization-schema.md) des Netzwerknormalisierungsschemas ist an ASIM angepasst und bietet weitere Verbesserungen.
@@ -38,11 +38,11 @@ Weitere Informationen finden Sie unter [Normalisierung und das Azure Sentinel In
 
 ## <a name="terminology"></a>Begriff
 
-In den Azure Sentinel-Schemas wird folgende Terminologie verwendet:
+In den Microsoft Sentinel-Schemas wird folgende Terminologie verwendet:
 
 | Begriff | Definition |
 | ---- | ---------- |
-| **Meldendes Gerät** | Das System, das die Datensätze an Azure Sentinel sendet. Möglicherweise bildet dieses System nicht das Thema des Datensatzes. |
+| **Meldendes Gerät** | Das System, das die Datensätze an Microsoft Sentinel sendet. Möglicherweise bildet dieses System nicht das Thema des Datensatzes. |
 | **Datensatz** | Eine Dateneinheit, die vom meldenden Gerät gesendet wird. Diese Dateneinheit wird häufig als `log`, `event` oder `alert` angegeben, kann aber auch andere Datentypen aufweisen.|
 |
 
@@ -88,13 +88,13 @@ Unten finden Sie das Schema der Netzwerksitzungstabelle in Version 1.0.0
 | **EventVendor** | String | Microsoft | Der Hersteller des Produkts, das das Ereignis erzeugt. | event |
 | **EventResult** | Mehrwertig: Success, Partial, Failure, [Empty] (Zeichenfolge) | Erfolg | Der für die Aktivität gemeldete Erfolg. Leerer Wert, wenn nicht zutreffend. | event |
 | **EventResultDetails** | String | Falsches Kennwort | Grund oder Details für das in EventResult gemeldete Ergebnis | event |
-| **EventSchemaVersion** | Real | 0.1 | Azure Sentinel Schema Version. Aktuell 0.1. | event |
+| **EventSchemaVersion** | Real | 0.1 | Microsoft Sentinel Schema Version. Aktuell 0.1. | event |
 | **EventSeverity** | String | Niedrig | Beschreibt den Schweregrad der Auswirkungen, falls die gemeldete Aktivität Sicherheitsauswirkungen hat. | event |
 | **EventOriginalUid** | String | af6ae8fe-ff43-4a4c-b537-8635976a2b51 | Die Datensatz-ID des meldenden Geräts. | event |
 | **EventStartTime** | Date/Time | Lesen Sie dazu „Datentypen“. | Der Zeitpunkt, zu dem das Ereignis begonnen hat | event |
 | **TimeGenerated** | Date/Time | Lesen Sie dazu „Datentypen“. | Der Zeitpunkt, zu dem das Ereignis eingetreten ist, wie von der Meldequelle gemeldet. | Benutzerdefiniertes Feld |
-| **EventTimeIngested** | Date/Time | Lesen Sie dazu „Datentypen“. | Der Zeitpunkt, zu dem das Ereignis in Azure Sentinel erfasst wurde. Wird von Azure Sentinel hinzugefügt. | event |
-| **EventUid** | GUID (Zeichenfolge) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Eindeutiger Bezeichner, mit dem Azure Sentinel eine Zeile markiert. | event |
+| **EventTimeIngested** | Date/Time | Lesen Sie dazu „Datentypen“. | Der Zeitpunkt, zu dem das Ereignis in Microsoft Sentinel erfasst wurde. Wird von Microsoft Sentinel hinzugefügt. | event |
+| **EventUid** | GUID (Zeichenfolge) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Eindeutiger Bezeichner, mit dem Microsoft Sentinel eine Zeile markiert. | event |
 | **NetworkApplicationProtocol** | String | HTTPS | Das Protokoll der Anwendungsschicht, das von der Verbindung oder der Sitzung verwendet wird. | Netzwerk |
 | **DstBytes** | INT | 32455 | Die Anzahl Bytes, die für die Verbindung oder Sitzung vom Ziel an die Quelle gesendet werden. | Destination |
 | **SrcBytes** | INT | 46536 | Die Anzahl Bytes, die für die Verbindung oder Sitzung von der Quelle an das Ziel gesendet werden. | `Source` |
@@ -200,7 +200,7 @@ Unten finden Sie das Schema der Netzwerksitzungstabelle in Version 1.0.0
 
 ## <a name="differences-between-the-version-01-and-version-02"></a><a name="changes"></a>Unterschiede zwischen Version 0.1 und Version 0.2
 
-Die ursprüngliche Version des Schemas zur Netzwerksitzungsnormalisierung von Azure Sentinel, Version 0.1, wurde als Vorschauversion veröffentlicht, bevor ASIM verfügbar war.
+Die ursprüngliche Version des Schemas zur Netzwerksitzungsnormalisierung von Microsoft Sentinel, Version 0.1, wurde als Vorschauversion veröffentlicht, bevor ASIM verfügbar war.
 
 Zu den Unterschieden zwischen Version 0.1, die in diesem Artikel dokumentiert ist, und [Version 0.2](network-normalization-schema.md) gehören:
 
@@ -364,11 +364,11 @@ Die folgenden Felder sind nur in Version 0.1 vorhanden und wurden in [Version 0.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [Normalisierung in Azure Sentinel](normalization.md)
-- [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)](authentication-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Öffentliche Vorschau)](file-event-normalization-schema.md)
-- [Azure Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Prozessereignis-Normalisierungsschema](process-events-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (Öffentliche Vorschau)](registry-event-normalization-schema.md)
+- [Normalisierung in Microsoft Sentinel](normalization.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung der Authentifizierung (Public Preview)](authentication-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung von Dateiereignissen (Public Preview)](file-event-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung von Prozessereignissen](process-events-normalization-schema.md)
+- [Microsoft Sentinel: Referenz zum Schema zur Normalisierung von Registrierungsereignissen (Public Preview)](registry-event-normalization-schema.md)

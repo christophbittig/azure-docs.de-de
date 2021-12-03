@@ -6,115 +6,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/12/2021
-ms.openlocfilehash: c5f29cb909dae7b8e362cdf37481111dbf75c8d9
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.date: 10/22/2021
+ms.openlocfilehash: ce369b60fa1b12823acdb1f5045e403bcaa3f5dd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343159"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037661"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Anfügen einer Cognitive Services-Ressource an ein Skillset in der kognitiven Azure-Suche
 
-Wenn Sie in Azure Cognitive Search eine [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) konfigurieren, können Sie eine begrenzte Anzahl von Dokumenten kostenlos anreichern. Für umfangreichere und häufigere Workloads sollten Sie eine abrechenbare [Cognitive Services-Ressource für mehrere Dienste](../cognitive-services/cognitive-services-apis-create-account.md) anfügen. Eine Ressource für mehrere Dienste bietet „Cognitive Services“ statt einzelner Dienste, und der Zugriff wird über einen einzelnen API-Schlüssel gewährt.
+Wenn Sie in Azure Cognitive Search eine optionale [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) konfigurieren, können Sie eine begrenzte Anzahl von Dokumenten kostenlos anreichern. Für umfangreichere und häufigere Workloads sollten Sie eine abrechenbare [**Cognitive Services-Ressource für mehrere Dienste**](../cognitive-services/cognitive-services-apis-create-account.md) anfügen. Eine Ressource für mehrere Dienste bietet „Cognitive Services“ statt einzelner Dienste, und der Zugriff wird über einen einzelnen API-Schlüssel gewährt.
 
-Ein Ressourcenschlüssel wird in einem Skillset angegeben und ermöglicht es Microsoft, Ihnen die Nutzung dieser APIs in Rechnung zu stellen:
+Ein Ressourcenschlüssel für mehrere Dienste wird in einem Skillset angegeben und ermöglicht es Microsoft, Ihnen die Nutzung dieser APIs in Rechnung zu stellen:
 
 + [Maschinelles Sehen](https://azure.microsoft.com/services/cognitive-services/computer-vision/) für die Bildanalyse und optische Zeichenerkennung (Optical Character Recognition, OCR)
 + [Textanalyse](https://azure.microsoft.com/services/cognitive-services/text-analytics/) für Spracherkennung, Entitätserkennung, Stimmungsanalyse und Schlüsselbegriffserkennung
 + [Textübersetzung](https://azure.microsoft.com/services/cognitive-services/translator-text-api/)
 
-Der Schlüssel wird für die Abrechnung verwendet, aber nicht für Verbindungen. Intern stellt ein Suchdienst eine Verbindung mit einer Cognitive Services-Ressource her, die sich in [derselben physischen Region](https://azure.microsoft.com/global-infrastructure/services/?products=search) befindet.
-
-## <a name="key-requirements"></a>Schlüsselanfoderungen
-
-Ein Ressourcenschlüssel ist für gebührenpflichtige [integrierte Skills](cognitive-search-predefined-skills.md) erforderlich, die mehr als 20 Mal pro Tag für denselben Indexer verwendet werden. Zu den Skills, die Back-End-Aufrufe an Cognitive Services machen, gehören Entitätsverknüpfung, Entitätserkennung, Bildanalyse, Schlüsselbegriffserkennung, Sprachenerkennung, OCR, PII-Erkennung, Stimmung oder Textübersetzung.
-
-Die [benutzerdefinierte Entitätssuche](cognitive-search-skill-custom-entity-lookup.md) wird von Azure Cognitive Search und nicht Cognitive Services berechnet, erfordert jedoch einen Cognitive Services-Ressourcenschlüssel, um Transaktionen über 20 pro Indexer und Tag hinaus zu entsperren. Nur für diesen Skill entsperrt der Ressourcenschlüssel die Anzahl von Transaktionen, hat jedoch keinen Bezug zur Abrechnung.
-
-Sie können den Schlüssel und den Cognitive Services-Abschnitt für Skillsets weglassen, die ausschließlich aus benutzerdefinierten Skills oder Hilfsprogrammskills bestehen („Bedingt“, „Dokumentextraktion“, „Shaper“, „Textzusammenführung“, „Textaufteilung“). Sie können den Abschnitt auch weglassen, wenn Ihre Nutzung gebührenpflichtiger Skills unter 20 Transaktionen pro Indexer und Tag liegt.
-
-## <a name="how-billing-works"></a>Funktionsweise der Abrechnung
-
-+ Azure Cognitive Search verwendet den Cognitive Services-Ressourcenschlüssel, den Sie für ein Skillset bereitstellen, um die Bild- und Textanreicherung abzurechnen. Die Ausführung abrechenbarer Qualifikationen erfolgt nach dem [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/).
-
-+ Die Bildextraktion ist ein Azure Cognitive Search-Vorgang, der ausgeführt wird, wenn Dokumente vor der Anreicherung entschlüsselt werden. Die Bildextraktion ist in allen Ebenen gebührenpflichtig, mit Ausnahme von 20 kostenlosen täglichen Extraktionen im Tarif „Free“. Die Kosten für die Bildextraktion gelten für Bilddateien in Blobs, eingebettete Bilder in anderen Dateien (PDF- und andere App-Dateien) und für mit [Dokumentextraktion](cognitive-search-skill-document-extraction.md) extrahierte Bilder. Die Preise für die Bildextraktion finden Sie in der [Preisübersicht für die kognitive Azure-Suche](https://azure.microsoft.com/pricing/details/search/).
-
-+ Die Textextraktion erfolgt auch während der [Dokumententschlüsselung](search-indexer-overview.md#document-cracking). Sie kann nicht abgerechnet werden.
-
-+ Qualifikationen, für die Cognitive Services nicht benötigt werden, einschließlich bedingter und Shaper-Qualifikationen sowie Qualifikationen zum Zusammenführen oder Teilen von Text, können nicht abgerechnet werden. 
-
-  Wie bereits erwähnt, ist die [benutzerdefinierte Entitätssuche](cognitive-search-skill-custom-entity-lookup.md) ein Sonderfall, da sie einen Schlüssel erfordert, aber von [Cognitive Search berechnet](https://azure.microsoft.com/pricing/details/search/#pricing) wird.
-
-> [!TIP]
-> Um die Kosten für die Skillsetverarbeitung zu senken, aktivieren Sie die [inkrementelle Anreicherung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md), um Anreicherungen zwischenzuspeichern und wiederzuverwenden, die von Änderungen an einem Skillset nicht betroffen sind. Die Zwischenspeicherung erfordert Azure Storage (siehe [Preise](/pricing/details/storage/blobs/), aber die kumulativen Kosten für die Ausführung von Skillsets sind niedriger, wenn vorhandene Anreicherungen wiederverwendet werden können, insbesondere für Skillsets, die Bildextraktion und -analyse verwenden).
-
-## <a name="same-region-requirement"></a>Anforderung derselben Region
-
-Cognitive Search und Cognitive Services müssen in derselben physischen Region vorhanden sein, wie auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=search) angegeben. Die meisten Regionen, die Cognitive Search bieten, bieten auch Cognitive Services.
-
-Wenn Sie in einer Region, die nicht über beide Dienste verfügt, KI-Anreicherung auszuführen versuchen, wird die folgende Meldung angezeigt: „Provided key is not a valid CognitiveServices type key for the region of your search service.“ (Der angegebene Schlüssel ist kein gültiger CognitiveServices-Schlüssel für die Region des Suchdiensts.).
-
 > [!NOTE]
-> Einige integrierte Qualifikationen basieren auf nicht regionalen Cognitive Services (etwa die [Qualifikation „Textübersetzung“](cognitive-search-skill-text-translation.md)). Die Verwendung einer nicht regionalen Qualifikation bedeutet, dass Ihre Anforderung in einer anderen Region als der Azure Cognitive Search-Region verarbeitet werden kann. Weitere Informationen zu nicht regionalen Diensten finden Sie auf der Seite für [Cognitive Services-Produkte nach Region](https://aka.ms/allinoneregioninfo).
+> Die KI-Anreicherung bietet eine geringe Menge an kostenloser Verarbeitung, sodass Sie kurze Übungen durchführen können, ohne eine Cognitive Services-Ressource anfügen zu müssen. Anreicherungen sind für 20 Dokumente pro Tag und Indexer kostenlos. Sie können [den Indexer zurücksetzen](search-howto-run-reset-indexers.md), um den Zähler zurückzusetzen und die Übung zu wiederholen.
 
-## <a name="use-free-resources"></a>Verwenden kostenloser Ressourcen
+## <a name="azure-portal"></a>[**Azure-Portal**](#tab/cogkey-portal)
 
-Sie können eine eingeschränkte, kostenlose Verarbeitungsoption verwenden, um das Tutorial zur KI-Anreicherung und die Schnellstartübungen abzuschließen.
+1. Erstellen Sie eine [Cognitive Services-Ressource für mehrere Dienste](../cognitive-services/cognitive-services-apis-create-account.md) in [derselben Region](#same-region-requirement) wie Ihr Azure Cognitive Search-Dienst.
 
-Kostenlose Ressourcen (begrenzte Anreicherung) sind auf 20 Dokumente pro Tag pro Indexer begrenzt. Sie können [den Indexer zurücksetzen](search-howto-run-reset-indexers.md), um den Zähler zurückzusetzen.
+1. Fügen Sie den Schlüssel einer Skillsetdefinition hinzu:
 
-Wenn Sie für die KI-Erweiterung den **Datenimport**-Assistenten verwenden, finden Sie auf der Seite **KI-Anreicherung hinzufügen (optional)** die Option „Cognitive Services-Instanz anfügen“.
+   + Falls Sie den [Datenimportassistenten](search-import-data-portal.md) verwenden, geben Sie den Schlüssel im zweiten Schritt, „KI-Anreicherungen hinzufügen“, ein.
 
-![Erweiterter Abschnitt „Cognitive Services-Instanz anfügen“](./media/cognitive-search-attach-cognitive-services/attach1.png "Erweiterter Abschnitt „Cognitive Services-Instanz anfügen“")
+   + Wenn Sie einen Schlüssel zu einem neuen oder vorhandenen Skillset hinzufügen, stellen Sie den Schlüssel in der Registerkarte **Cognitive Services** bereit.
 
-## <a name="use-billable-resources"></a>Verwenden abrechenbarer Ressourcen
+   :::image type="content" source="media/cognitive-search-attach-cognitive-services/attach-existing2.png" alt-text="Screenshot der Schlüsselseite" border="true":::
 
-Für Workloads, bei denen täglich mehr als 20 gebührenpflichtige Anreicherungen erstellt werden, müssen Sie eine Cognitive Services-Ressource anfügen. 
+## <a name="rest"></a>[**REST**](#tab/cogkey-rest)
 
-Wenn Sie den **Datenimport**-Assistenten verwenden, können Sie auf der Seite **KI-Anreicherung hinzufügen (Optional)** eine abrechenbare Ressource konfigurieren.
+1. Erstellen Sie eine [Cognitive Services-Ressource für mehrere Dienste](../cognitive-services/cognitive-services-apis-create-account.md) in [derselben Region](#same-region-requirement) wie Ihr Azure Cognitive Search-Dienst.
 
-1. Erweitern Sie **Cognitive Services-Instanz anfügen**, und wählen Sie dann **Neue Cognitive Services-Ressource erstellen** aus. Eine neue Registerkarte wird geöffnet, sodass Sie die Ressource erstellen können:
-
-   ![Erstellen einer Cognitive Services-Ressource](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Erstellen einer Cognitive Services-Ressource")
-
-1. Wählen Sie in der Liste **Standort** die Region aus, in der der Suchdienst enthalten ist.
-
-1. Wählen Sie in der Liste **Tarif** den Tarif **S0** aus, um die gesamte Sammlung der Cognitive Services-Funktionen einschließlich der Funktionen für Bildanalyse und Sprache zu erhalten, die die in der kognitiven Azure-Suche enthaltenen integrierten Skills unterstützen.
-
-   Für den Tarif „S0“ finden Sie Sätze für bestimmte Arbeitsauslastungen auf der Seite [Cognitive Services – Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
-  
-   + Stellen Sie sicher, dass in der Liste **Wählen Sie ein Angebot aus** die Option **Cognitive Services** ausgewählt ist.
-   + Die Preise für **Textanalysen Standard** unter den Funktionen für **Sprache** gelten für die KI-Indizierung.
-   + Die Preise für **Maschinelles Sehen S1** sind unter den Funktionen für **Bildanalyse** aufgeführt.
-
-1. Wählen Sie **Erstellen** aus, um die neue Cognitive Services-Ressource bereitzustellen.
-
-1. Kehren Sie zur vorherigen Registerkarte zurück. Wählen Sie **Aktualisieren** aus, um die Cognitive Services-Ressource anzuzeigen, und wählen Sie dann die Ressource aus:
-
-   ![Auswählen der Cognitive Services-Ressource](./media/cognitive-search-attach-cognitive-services/attach2.png "Auswählen der Cognitive Services-Ressource")
-
-1. Erweitern Sie den Abschnitt **Add cognitive skills** (Kognitive Skills hinzufügen), um die spezifischen kognitiven Skills auszuwählen, die für die Daten ausgeführt werden sollen. Führen Sie dann die restlichen Schritte des Assistenten aus.
-
-## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>Anfügen einer vorhandenen Qualifikationsgruppe an eine Cognitive Services-Ressource
-
-Wenn Sie bereits über eine Qualifikationsgruppe verfügen, können Sie diese an eine neue oder andere Cognitive Services-Ressource anfügen.
-
-1. Wählen Sie auf der Übersichtsseite des Suchdiensts **Skillsets** aus:
-
-   ![Registerkarte „Skillsets“](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "Registerkarte „Skillsets“")
-
-1. Wählen Sie den Namen der Qualifikationsgruppe und dann eine vorhandene Ressource aus, oder erstellen Sie eine neue Ressource. Wählen Sie zum Bestätigen Ihrer Änderungen **OK** aus.
-
-   ![Liste der Skillsetressourcen](./media/cognitive-search-attach-cognitive-services/attach-existing2.png "Liste der Skillsetressourcen")
-
-   Denken Sie daran, dass die Option **Free (begrenzte Anreicherung)** auf 20 Dokumente täglich beschränkt ist und dass Sie **Neue Cognitive Services-Ressource erstellen** zum Bereitstellen einer neuen abrechenbaren Ressource verwenden können. Wenn Sie eine neue Ressource erstellen, wählen Sie **Aktualisieren** aus, um die Liste der Cognitive Services-Ressourcen zu aktualisieren, und wählen Sie dann die Ressource aus.
-
-## <a name="attach-cognitive-services-programmatically"></a>Programmgesteuertes Anfügen von Cognitive Services
-
-Wenn Sie die Qualifikationsgruppe programmgesteuert definieren, fügen Sie einen `cognitiveServices`-Abschnitt zur Qualifikationsgruppe hinzu. Nehmen Sie in diesen Abschnitt den Schlüssel der Cognitive Services-Ressource auf, die Sie der Qualifikationsgruppe zuordnen möchten. Denken Sie daran, dass sich die Ressource in derselben Region wie die Ressource der kognitiven Azure-Suche befinden muss. Nehmen Sie außerdem `@odata.type` auf, und legen Sie ihn auf `#Microsoft.Azure.Search.CognitiveServicesByKey` fest.
-
-Das folgende Beispiel zeigt dieses Muster. Beachten Sie den Abschnitt `cognitiveServices` am Ende der Definition.
+1. Erstellen oder aktualisieren Sie ein Skillset, das Abschnitt `cognitiveServices` im Text der [Skillset-Anfrage](/rest/api/searchservice/create-skillset) angibt:
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
@@ -147,6 +76,70 @@ Content-Type: application/json
     }
 }
 ```
+
+## <a name="net-sdk"></a>[**.NET SDK**](#tab/cogkey-dotnet)
+
+Der folgende gekürzte Codeausschnitt ist aus [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/tutorial-ai-enrichment/v11/Program.cs).
+
+```csharp
+IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+IConfigurationRoot configuration = builder.Build();
+
+string searchServiceUri = configuration["SearchServiceUri"];
+string adminApiKey = configuration["SearchServiceAdminApiKey"];
+string cognitiveServicesKey = configuration["CognitiveServicesKey"];
+
+SearchIndexerClient indexerClient = new SearchIndexerClient(new Uri(searchServiceUri), new AzureKeyCredential(adminApiKey));
+
+// Create the skills
+Console.WriteLine("Creating the skills...");
+OcrSkill ocrSkill = CreateOcrSkill();
+MergeSkill mergeSkill = CreateMergeSkill();
+
+// Create the skillset
+Console.WriteLine("Creating or updating the skillset...");
+List<SearchIndexerSkill> skills = new List<SearchIndexerSkill>();
+skills.Add(ocrSkill);
+skills.Add(mergeSkill);
+
+SearchIndexerSkillset skillset = CreateOrUpdateDemoSkillSet(indexerClient, skills, cognitiveServicesKey);
+```
+
+---
+
+## <a name="how-the-key-is-used"></a>Verwendung des Schlüssels
+
+Der Schlüssel wird für die Abrechnung verwendet, aber nicht für Verbindungen. Ein Suchdienst stellt über das interne Netzwerk eine Verbindung mit einer Cognitive Services-Ressource her, die sich in [derselben physischen Region](https://azure.microsoft.com/global-infrastructure/services/?products=search) befindet. 
+
+Die schlüsselbasierte Abrechnung gilt, wenn API-Aufrufe an Cognitive Services-Ressourcen 20 API-Aufrufe pro Indexer und Tag überschreiten. Sie können den Indexer nach jedem Indexeraufruf zurücksetzen, um den API-Indikator zurückzusetzen. Die maximale Anzahl von Aufrufen, die frei erfolgen können, ist jedoch auf 20 beschränkt.
+
+ Während der KI-Anreicherung ruft Cognitive Search die Cognitive Services-APIs für [integrierte Qualifikationen](cognitive-search-predefined-skills.md) auf, die auf maschinelles Sehen, Textübersetzung und Textanalyse basieren. Zu den integrierten Skills, die Back-End-Aufrufe an Cognitive Services machen, gehören [Entitätsverknüpfung](cognitive-search-skill-entity-linking-v3.md), [Entitätserkennung](cognitive-search-skill-entity-recognition-v3.md), [Bildanalyse](cognitive-search-skill-image-analysis.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), [Sprachenerkennung](cognitive-search-skill-language-detection.md), [OCR](cognitive-search-skill-ocr.md), [PII-Erkennung](cognitive-search-skill-pii-detection.md), [Stimmung](cognitive-search-skill-sentiment-v3.md) und [Textübersetzung](cognitive-search-skill-text-translation.md).
+
+Sie können den Schlüssel und den Abschnitt Cognitive Services für Skillsets weglassen, die ausschließlich aus benutzerdefinierten Qualifikationen oder Hilfsqualifikationen bestehen. Sie müssen die Eigenschaft nicht angeben, wenn Ihre Nutzung gebührenpflichtiger Skills unter 20 Transaktionen pro Indexer und Tag liegt.
+
+### <a name="exceptions-and-special-cases"></a>Ausnahmen und Sonderfälle
+
++ Hilfsqualifikationen, für die Cognitive Services nicht benötigt werden, (nämlich: [bedingte](cognitive-search-skill-conditional.md), [Dokumentextrahierungs-](cognitive-search-skill-document-extraction.md), [Shaper-](cognitive-search-skill-shaper.md), [Textzusammenführungs-](cognitive-search-skill-textmerger.md) und [Textaufteilungsqualifikationen](cognitive-search-skill-textsplit.md)) können nicht abgerechnet werden. 
+
++ Die [benutzerdefinierte Entitätssuche](cognitive-search-skill-custom-entity-lookup.md) wird von Azure Cognitive Search und nicht Cognitive Services berechnet, erfordert jedoch einen Cognitive Services-Ressourcenschlüssel, um Transaktionen über 20 pro Indexer und Tag hinaus zu entsperren. Nur für diesen Skill entsperrt der Ressourcenschlüssel die Anzahl von Transaktionen, hat jedoch keinen Bezug zur Abrechnung.
+
+### <a name="other-costs-of-ai-enrichment"></a>Andere Kosten für die KI-Anreicherung
+
+Die Bildextraktion ist ein Azure Cognitive Search-Vorgang, der ausgeführt wird, wenn Dokumente vor der Anreicherung entschlüsselt werden. Die Bildextraktion ist in allen Ebenen gebührenpflichtig, mit Ausnahme von 20 kostenlosen täglichen Extraktionen im Tarif „Free“. Die Kosten für die Bildextraktion gelten für Bilddateien in Blobs, eingebettete Bilder in anderen Dateien (PDF- und andere App-Dateien) und für mit [Dokumentextraktion](cognitive-search-skill-document-extraction.md) extrahierte Bilder. Die Preise für die Bildextraktion finden Sie in der [Preisübersicht für die kognitive Azure-Suche](https://azure.microsoft.com/pricing/details/search/).
+
+Die Textextraktion erfolgt auch während der [Dokumententschlüsselung](search-indexer-overview.md#document-cracking). Sie kann nicht abgerechnet werden.
+
+> [!TIP]
+> Um die Kosten für die Skillsetverarbeitung zu senken, aktivieren Sie die [inkrementelle Anreicherung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md), um Anreicherungen zwischenzuspeichern und wiederzuverwenden, die von Änderungen an einem Skillset nicht betroffen sind. Die Zwischenspeicherung erfordert Azure Storage (siehe [Preise](https://azure.microsoft.com/pricing/details/storage/blobs/), aber die kumulativen Kosten für die Ausführung von Skillsets sind niedriger, wenn vorhandene Anreicherungen wiederverwendet werden können, insbesondere für Skillsets, die Bildextraktion und -analyse verwenden).
+
+## <a name="same-region-requirement"></a>Anforderung derselben Region
+
+Cognitive Search und Cognitive Services müssen in derselben physischen Region vorhanden sein, wie auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=search) angegeben. Die meisten Regionen, die Cognitive Search bieten, bieten auch Cognitive Services.
+
+Wenn Sie in einer Region, die nicht über beide Dienste verfügt, KI-Anreicherung auszuführen versuchen, wird die folgende Meldung angezeigt: „Provided key is not a valid CognitiveServices type key for the region of your search service.“ (Der angegebene Schlüssel ist kein gültiger CognitiveServices-Schlüssel für die Region des Suchdiensts.).
+
+> [!NOTE]
+> Einige integrierte Qualifikationen basieren auf nicht regionalen Cognitive Services (etwa die [Qualifikation „Textübersetzung“](cognitive-search-skill-text-translation.md)). Die Verwendung einer nicht regionalen Qualifikation bedeutet, dass Ihre Anforderung in einer anderen Region als der Azure Cognitive Search-Region verarbeitet werden kann. Weitere Informationen zu nicht regionalen Diensten finden Sie auf der Seite für [Cognitive Services-Produkte nach Region](https://aka.ms/allinoneregioninfo).
 
 ## <a name="example-estimate-costs"></a>Beispiel: Schätzen der Kosten
 

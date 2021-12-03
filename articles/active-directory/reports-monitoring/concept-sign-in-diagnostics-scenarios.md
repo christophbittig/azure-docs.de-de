@@ -4,7 +4,7 @@ description: Eine Auflistung der Szenarien, die von der Anmeldediagnose für Azu
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/08/2021
+ms.date: 11/12/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4301caa11079604a19b8679311daf1e082b35b1f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: ab25e7150f7930f85df846ece50a3013c0e45818
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993490"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399729"
 ---
 # <a name="sign-in-diagnostics-for-azure-ad-scenarios"></a>Anmeldediagnose für Azure AD Szenarien
 
@@ -73,8 +73,14 @@ Die Anmeldediagnose für Azure AD bietet Unterstützung für die folgenden Szena
     - Einblicke in Fehlercode  
 
     - Legacyauthentifizierung  
+    
+    - B2B blockiert die Anmeldung aufgrund des bedingten Zugriffs
 
     - Blockiert durch Benutzerrisikorichtlinie 
+    
+    - Passthrough-Authentifizierung
+    
+    - Nahtloses einmaliges Anmelden
 
 
 
@@ -285,6 +291,20 @@ Da bei der Passtrough-Authentifizierung lokale und cloudbasierte Authentifizieru
 In diesem Diagnoseszenario werden benutzerspezifische Anmeldeprobleme identifiziert, wenn als Authentifizierungsmethode die Passthrough-Authentifizierung (Pass-Through Authentication, PTA) verwendet wird und ein PTA-spezifischer Fehler auftritt. Fehler aufgrund anderer Probleme werden auch dann ordnungsgemäß diagnostiziert, wenn die PTA-Authentifizierung verwendet wird. 
 
 Bei der Diagnose werden Kontextinformationen zum Fehler und zum angemeldeten Benutzer, zusätzliche Gründe für Anmeldefehler sowie empfohlene Aktionen angezeigt, die der Administrator ergreifen kann, um das Problem zu beheben. Weitere Informationen finden Sie unter [Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung](../hybrid/tshoot-connect-pass-through-authentication.md). 
+
+
+### <a name="seamless-single-sign-on"></a>Nahtloses einmaliges Anmelden
+
+Durch nahtloses einmaliges Anmelden wird die Kerberos-Authentifizierung in die Cloudauthentifizierung integriert. In diesem Szenario kommen zwei Authentifizierungsprotokolle zum Einsatz. Daher kann es schwierig sein, nachzuvollziehen, wo der Fehlerpunkt liegt, wenn Probleme bei der Anmeldung auftreten. Diese Diagnose soll das Diagnostizieren und Auflösen dieser Szenarien vereinfachen.
+ 
+In diesem Diagnoseszenario werden der Kontext des Anmeldefehlers und die spezifische Fehlerursache, Kontextinformationen zum Anmeldeversuch und vorgeschlagene Aktionen untersucht, die der Administrator lokal oder in der Cloud zum Beheben des Problems ausführen kann. Weitere Informationen finden Sie unter [Problembehandlung beim nahtlosen einmaligen Anmelden mit Azure Active Directory](../hybrid/tshoot-connect-sso.md). 
+ 
+
+
+
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

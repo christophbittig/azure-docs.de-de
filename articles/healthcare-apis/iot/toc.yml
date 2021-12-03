@@ -9,6 +9,8 @@ items:
   - name: Schnellstarts
     expanded: true
     items:
+      - name: Erste Schritte mit dem IoT-Connector
+        href: get-started-with-iot.md
       - name: Bereitstellen von IoT-Konnektor
         expanded: true
         items:
@@ -17,19 +19,40 @@ items:
   - name: Konzepte
     expanded: true
     items:
-      - name: IoT-Datenfluss
+      - name: Datenfluss des IoT-Konnektors
         href: iot-data-flow.md
+      - name: IoT-Connector und Azure Machine Learning Service
+        href: iot-connector-machine-learning.md
+      - name: IoT-Connector und Microsoft Power BI
+        href: iot-connector-power-bi.md
+      - name: IoT-Connector und Microsoft Teams Benachrichtigungen
+        href: iot-connector-teams.md
   - name: Anleitungen
     expanded: true
     items:
       - name: Empfangen von Gerätedaten über Azure IoT Hub
         href: device-data-through-iot-hub.md
-      - name: Verwenden der Gerätezuordnung
-        href: how-to-use-device-mapping-iot.md
-      - name: Verwenden der FHIR-Zielzuordnung
-        href: how-to-use-fhir-mapping-iot.md
-      - name: Exportieren von IoT-Connectormetriken über Diagnoseeinstellungen
-        href: iot-metrics-diagnostics-export.md
+      - name: Verwenden von Gerätezuordnungen
+        expanded: true
+        items:
+          - name: Gerätezuordnungen
+            href: how-to-use-device-mappings.md
+          - name: JsonPathContentTemplate-Zuordnungen
+            href: how-to-use-jsonpath-content-mappings.md
+          - name: Zuordnungen berechneter Funktionen
+            href: how-to-use-calculated-functions-mappings.md
+          - name: CollectionContentTemplate-Zuordnungen
+            href: how-to-use-collection-content-mappings.md
+          - name: IotJsonPathContentTemplate-Zuordnungen
+            href: how-to-use-iot-jsonpath-content-mappings.md
+          - name: IotCentralJsonContentTemplate-Zuordnungen
+            href: how-to-use-iot-central-json-content-mappings.md
+      - name: Verwenden benutzerdefinierter Funktionen
+        href: how-to-use-custom-functions.md
+      - name: Verwenden von FHIR-Zielzuordnungen
+        href: how-to-use-fhir-mappings.md
+      - name: Anzeigen von Metriken
+        href: how-to-display-metrics.md
   - name: Ressourcen
     expanded: true
     items:

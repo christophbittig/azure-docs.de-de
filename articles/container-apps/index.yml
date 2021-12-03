@@ -5,16 +5,16 @@ metadata:
   title: Dokumentation zu Azure Container Apps
   description: Mit Azure Container Apps können Sie Containeranwendungen ausführen, ohne sich Gedanken über Orchestrierung oder Infrastruktur machen zu müssen.
   ms.topic: landing-page
-  ms.service: app-service
+  ms.service: container-apps
   author: craigshoemaker
   ms.author: cshoe
-  ms.date: 10/22/2021
-  ms.openlocfilehash: 3ac87235ba581b75b51de60e687d128c0d3feabc
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.date: 11/08/2021
+  ms.openlocfilehash: 39397cee65d48d44896c248620a4ac5d3d65283e
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131088442"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132704767"
 landingContent:
 - title: Informationen zu Azure Container Apps
   linkLists:
@@ -22,12 +22,16 @@ landingContent:
     links:
     - text: Was ist Azure Container Apps?
       url: overview.md
+    - text: Vergleichen von Containeroptionen in Azure
+      url: compare-options.md
 - title: Erste Schritte
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Bereitstellen Ihrer ersten Container-App
+    - text: 'Bereitstellen Ihrer ersten Container-App: Azure CLI'
       url: ./get-started.md
+    - text: 'Bereitstellen Ihrer ersten Container-App: Azure-Portal'
+      url: ./quickstart-portal.md
   - linkListType: concept
     links:
     - text: Umgebungen

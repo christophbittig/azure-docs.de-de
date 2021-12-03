@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/24/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cfa2c8b029a8c8267249907d3f67582a2a38c139
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 4344d8c12c139c428f44d417ccde2c5e950ed307
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272091"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477161"
 ---
 # <a name="update-azure-powershell-modules-in-automation"></a>Azure PowerShell-Module in der Automatisierung aktualisieren
 
@@ -36,11 +36,12 @@ Wenn Sie Ihre Skripts lokal entwickeln, empfiehlt es sich, beim Testen lokal die
 Derzeit ist die Aktualisierung von AZ-Modulen nur über das Portal möglich. Aktualisierungen über PowerShell und ARM-Vorlage werden in Zukunft verfügbar sein. Nur Standard-AZ-Module werden aktualisiert, wenn Sie die folgenden Schritte ausführen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem Automation-Konto.
-1. Wählen Sie unter **Gemeinsame Ressourcen** die Option **PowerShell-Module**.
+1. Wählen Sie unter  **Freigegebene Ressourcen** die Option  **Module** aus.
 1. Wählen Sie **Az-Module aktualisieren**.
 1. Wählen Sie **Modul zum Aktualisieren**. Standardmäßig wird das Az-Modul angezeigt.  
-1. Wählen Sie in der Dropdown-Liste **Modulversion**.
+1. Wählen Sie in der Dropdownliste **Modulversion** und **Runtimeversion** aus.
 1. Wählen Sie **Aktualisieren**, um das Az-Modul auf die von Ihnen gewählte Version zu aktualisieren.
+   Auf der Seite **Module** können Sie die Liste wie unten dargestellt anzeigen:
 
    :::image type="content" source="./media/automation-update-azure-modules/update-az-modules-portal.png" alt-text="Aktualisierung der AZ-Modulseite mit Auswahlen.":::
 

@@ -176,7 +176,7 @@
           href: azure-stack-edge-gpu-manage-certificates.md
         - name: Beheben von Zertifikatfehlern
           href: azure-stack-edge-gpu-certificate-troubleshooting.md
-    - name: Virtuelle Computer
+    - name: Virtuelle Computer (Vorschau)
       items:
         - name: Was sind virtuelle Computer?
           href: azure-stack-edge-gpu-virtual-machine-overview.md
@@ -206,6 +206,8 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
             - name: 'VMs: GPU'
               href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
+            - name: 'VMs: HPN'
+              href: azure-stack-edge-gpu-deploy-virtual-machine-high-performance-network.md
             - name: "VMs: Azure\_PowerShell-Cmdlets"
               href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
             - name: "VMs: Azure\_PowerShell-Skript"
@@ -288,7 +290,7 @@
                   href: azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing.md
                 - name: Entwickeln eines C#-Moduls
                   href: azure-stack-edge-gpu-create-iot-edge-module.md
-            - name: Über Azure Arc (Vorschau)
+            - name: Über Azure Arc
               items:
                 - name: Aktivieren von Arc im Kubernetes-Cluster
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
@@ -296,6 +298,10 @@
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
                 - name: "Bereitstellen eines Azure\_Arc-Datencontrollers"
                   href: azure-stack-edge-gpu-deploy-arc-data-controller.md
+        - name: Anleitung
+          items:
+            - name: Konfigurieren von MetalLB
+              href: azure-stack-edge-gpu-configure-metallb-bgp-mode.md
     - name: IoT Edge
       items:
         - name: "Bereitstellen von IoT\_Edge-Beispielen"
@@ -340,8 +346,6 @@
           href: azure-stack-edge-gpu-data-residency.md
         - name: Anzeigen der Schlüsseltresorintegration
           href: azure-stack-edge-gpu-activation-key-vault.md
-        - name: Aktivieren der proaktiven Protokollierung
-          href: azure-stack-edge-gpu-proactive-log-collection.md
     - name: Gemeinsame Sicherheit
       items:
         - name: Sicherheitsübersicht
@@ -392,11 +396,19 @@
               href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: Geräteprotokolle und -diagnose
               href: azure-stack-edge-gpu-troubleshoot.md
+            - name: Aktivieren der proaktiven Protokollierung
+              href: azure-stack-edge-gpu-proactive-log-collection.md
+            - name: Aktivieren der Remoteunterstützung
+              href: azure-stack-edge-gpu-remote-support-diagnostics-repair.md
             - name: Microsoft-Support kontaktieren
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Freigegebene Versionshinweise
       items:
-        - name: '2106: Aktuell'
+        - name: '2111: Aktuell'
+          href: azure-stack-edge-gpu-2111-release-notes.md
+        - name: 2110
+          href: azure-stack-edge-gpu-2110-release-notes.md
+        - name: 2106
           href: azure-stack-edge-gpu-2106-release-notes.md
         - name: 2105
           href: azure-stack-edge-gpu-2105-release-notes.md

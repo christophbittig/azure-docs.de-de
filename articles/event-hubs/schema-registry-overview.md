@@ -4,17 +4,17 @@ description: In diesem Artikel finden Sie eine Übersicht über die Unterstützu
 ms.topic: overview
 ms.date: 11/02/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 95db225c83bb760b0f5de12a39b20d24c1613d62
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f9e405a82b73530cc53ec98f22b2c1f4473b2550
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449830"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398481"
 ---
 # <a name="azure-schema-registry-in-azure-event-hubs"></a>Azure-Schemaregistrierung in Azure Event Hubs
 In vielen Ereignisstreaming- und Messagingszenarien enthalten die Ereignis- oder Nachrichtennutzdaten strukturierte Daten. Schemagesteuerte Formate wie [Apache Avro](https://avro.apache.org/) werden häufig verwendet, um solche strukturierten Daten zu serialisieren oder zu deserialisieren. 
 
-:::image type="content" source="./media/schema-registry-overview/schema-driven-ser-de.png" alt-text="Schemagesteuerte Serialisierung/Deserialisierung":::
+:::image type="content" source="./media/schema-registry-overview/schema-driven-ser-de.svg" alt-text="Schemagesteuerte Serialisierung/Deserialisierung":::
 
 Die Produceranwendungen verwenden das Schemadokument, um die Ereignisnutzdaten zu serialisieren und in einem Ereignisbroker wie Event Hubs zu veröffentlichen. Ebenso lesen die Consumeranwendungen die Ereignisnutzdaten aus dem Broker und deserialisieren sie mit demselben Schemadokument. Daher können sowohl die Producer als auch die Consumer die Integrität der Daten mit einem Schemadokument überprüfen. 
 
@@ -26,7 +26,7 @@ Wenn Sie schemagesteuerte Formate verwenden, müssen die Produceranwendungen die
 ## <a name="azure-schema-registry"></a>Azure-Schemaregistrierung
 Die **Azure-Schemaregistrierungs** ist eine Funktion von Event Hubs, die ein zentrales Repository für Schemadokumente für ereignisgesteuerte und nachrichtenzentrierte Anwendungen bereitstellt. Sie bietet Ihren Producer- und Consumeranwendungen die Flexibilität, Daten auszutauschen, ohne das Schema verwalten und gemeinsam nutzen zu müssen. Die Schemaregistrierung stellt außerdem ein einfaches Governanceframework für wiederverwendbare Schemas bereit und definiert die Beziehung zwischen Schemas über ein Gruppierungskonstrukt (Schemagruppen).
 
-:::image type="content" source="./media/schema-registry-overview/schema-registry.png" alt-text="Schemaregistrierung":::
+:::image type="content" source="./media/schema-registry-overview/schema-registry.svg" alt-text="Schemaregistrierung":::
 
 Bei schemagesteuerten Serialisierungsframeworks wie Apache Avro kann die Externalisierung von Serialisierungsmetadaten in gemeinsam genutzte Schemas auch dazu beitragen, den Mehraufwand für Typinformationen und Feldnamen pro Nachricht, die in jedem Datensatz enthalten sind, drastisch zu reduzieren, der bei getaggten Formaten wie JSON anfällt. Durch die Speicherung von Schemas zusammen mit den Ereignissen und innerhalb der Ereignisinfrastruktur wird sichergestellt, dass die für die Serialisierung/Deserialisierung erforderlichen Metadaten immer erreichbar sind und Schemas nicht falsch platziert werden können. 
 
@@ -36,7 +36,7 @@ Bei schemagesteuerten Serialisierungsframeworks wie Apache Avro kann die Externa
 ## <a name="schema-registry-information-flow"></a>Informationsfluss bei der Schemaregistrierung 
 Der Informationsfluss bei Verwendung der Schemaregistrierung ist für alle Protokolle identisch, die Sie zum Veröffentlichen oder Nutzen von Ereignissen von Azure Event Hubs verwenden. Das folgende Diagramm zeigt den Informationsfluss in einem Producer- und Consumerszenario für Kafka-Ereignisse, bei dem die Schemaregistrierung verwendet wird. 
 
-:::image type="content" source="./media/schema-registry-overview/information-flow.png" lightbox="./media/schema-registry-overview/information-flow.png" alt-text="Abbildung des Informationsflusses bei der Schemaregistrierung":::
+:::image type="content" source="./media/schema-registry-overview/information-flow.svg" lightbox="./media/schema-registry-overview/information-flow.svg" alt-text="Abbildung des Informationsflusses bei der Schemaregistrierung":::
 
 
 Der Informationsfluss beginnt auf der Producerseite, wo Kafka-Producer die Daten mithilfe des Schemadokuments serialisieren. 

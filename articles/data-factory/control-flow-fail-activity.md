@@ -1,5 +1,5 @@
 ---
-title: Ausführen einer Fail-Aktivität in Azure Data Factory und Synapse Analytics (Vorschau)
+title: Ausführen einer Fail-Aktivität in Azure Data Factory und Synapse Analytics
 titleSuffix: Azure Data Factory & Azure Synapse
 description: Dieser Artikel behandelt die Fail-Aktivität in Azure Data Factory und Synapse Analytics löst absichtlich einen Fehler in einer Pipeline aus.
 author: chez-charlie
@@ -9,14 +9,14 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/22/2021
-ms.openlocfilehash: 2b8b012617633a7569c951e842d35b05a3b2740e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 2f0acb894d6bdacef69dcf8adb2088214e094415
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535860"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517955"
 ---
-# <a name="execute-a-fail-activity-in-azure-data-factory-and-synapse-analytics-preview"></a>Ausführen einer Fail-Aktivität in Azure Data Factory und Synapse Analytics (Vorschau)
+# <a name="execute-a-fail-activity-in-azure-data-factory-and-synapse-analytics"></a>Ausführen einer Fail-Aktivität in Azure Data Factory und Synapse Analytics
 
 Sie sollten von Zeit zu Zeit gelegentlich einen Fehler in einer Pipeline auslösen. Eine [Lookup-Aktivität](control-flow-lookup-activity.md) gibt möglicherweise keine übereinstimmenden Daten zurück, oder eine [Benutzerdefinierte Aktivität](transform-data-using-dotnet-custom-activity.md) beendet möglicherweise mit einem internen Fehler. Unabhängig vom Grund können Sie die Fail-Aktivität jetzt in einer Pipeline verwenden und sowohl deren Fehlermeldung als auch dessen Fehlercode anpassen.
 
@@ -77,3 +77,4 @@ Machen Sie sich mit weiteren unterstützten Ablaufsteuerungsaktivitäten vertrau
 - [Lookup-Aktivität](control-flow-lookup-activity.md)
 - [Webaktivität](control-flow-web-activity.md)
 - [Until-Aktivität](control-flow-until-activity.md)
+- [Grundlegendes zu Pipelinefehlern](tutorial-pipeline-failure-error-handling.md)

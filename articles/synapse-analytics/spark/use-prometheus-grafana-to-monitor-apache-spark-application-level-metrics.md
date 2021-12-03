@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: eb49c65d3d61e17a8e527016d32d80bcc85894d8
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 1c26ed72a804335a675a2456b2908f582848f5a7
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541223"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399084"
 ---
 # <a name="monitor-apache-spark-applications-metrics-with-prometheus-and-grafana"></a>Überwachen von Apache Spark-Anwendungsmetriken mit Prometheus und Grafana
 
@@ -86,6 +86,9 @@ Notieren Sie sich die appId, das Kennwort und die tenantID.
 6. Geben Sie unter „Benutzer auswählen“ Ihren **<Dienstprinzipalnamen>** ein, und klicken Sie auf Ihren Dienstprinzipal.
 
 7. Klicken Sie auf **Anwenden**. (Warten Sie drei Minuten, bis die Berechtigung in Kraft tritt.)
+
+> [!NOTE]
+> Stellen Sie sicher, dass Ihr Dienstprinzipal mindestens über die Rolle „Leser“ in Ihrem Synapse-Arbeitsbereich verfügt. Navigieren Sie im Azure-Portal zur Registerkarte „Zugriffssteuerung (IAM)“, und überprüfen Sie die Berechtigungseinstellungen.
 
 ## <a name="install-connector-prometheus-server-grafana-dashboard"></a>Installieren von Connector, Prometheus-Server und Grafana-Dashboard
 

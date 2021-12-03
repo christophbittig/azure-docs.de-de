@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Bereitstellen von ASP.NET-Apps in Azure Functions mit Azure DevOps Starter'
 description: Azure DevOps Starter erleichtert die ersten Schritte mit Azure. Mit DevOps Starter können Sie in wenigen Schritten Ihre ASP.NET-App in Azure Functions bereitstellen.
-ms.author: mlearned
+ms.author: gwallace
 ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
-author: mlearned
+author: georgewallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef4a33fee3b06155ef02f043d61fcac5646d6a20
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91355473"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053441"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Bereitstellung in Azure Functions mit DevOps Starter
 

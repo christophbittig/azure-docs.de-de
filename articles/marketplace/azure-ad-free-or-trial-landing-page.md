@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/04/2020
-ms.openlocfilehash: e7cee47e90e6484a4258ba82e47af03725c41d34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/25/2021
+ms.openlocfilehash: 8e73947a45f06420cf94119892b19e77802f65bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559289"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056469"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Erstellen der Landing Page für Ihr kostenloses SaaS-Angebot oder Ihr SaaS-Testangebot im kommerziellen Marketplace
 
@@ -44,6 +44,8 @@ In den folgenden Abschnitten dieses Artikels werden Sie durch die Schritte zum E
 ## <a name="create-an-azure-ad-app-registration"></a>Erstellen einer Azure AD-App-Registrierung
 
 Der kommerzielle Marketplace ist vollständig in Azure AD integriert. Benutzer authentifizieren sich mit einem [Azure AD-Konto oder einem Microsoft-Konto (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology), um den Marketplace zu nutzen. Nach dem Erwerb einer kostenlosen Testversion oder eines kostenlosen Abonnements über Ihr reines Auflistungsangebot wechselt der Benutzer vom kommerziellen Marketplace zu Ihrer Landing Page-URL, um sein Abonnement für Ihre SaaS-Anwendung zu aktivieren und zu verwalten. Sie müssen es dem Benutzer ermöglichen, sich mit dem einmaligen Anmelden in Azure AD bei Ihrer Anwendung anzumelden. (Die URL der Landing Page wird auf der Seite [Technische Konfiguration](plan-saas-offer.md#technical-information) des Angebots angegeben.)
+
+[!INCLUDE [pound-sign-note](./includes/pound-sign-note.md)]
 
 Zur Verwendung der Identität muss zunächst sichergestellt werden, dass Ihre Landing Page als Azure AD-Anwendung registriert ist. Durch die Registrierung der Anwendung können Sie Azure AD zum Authentifizieren von Benutzern und Anfordern des Zugriffs auf Benutzerressourcen verwenden. Sie kann als Anwendungsdefinition betrachtet werden, durch die der Dienst angewiesen wird, wie basierend auf den App-Einstellungen Token für die App ausgestellt werden sollen.
 

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: e129b596473784c72cab93568be88dd6dcb6fe2a
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: dd97273c37f4707827f5706889152811745199ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697993"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063637"
 ---
 # <a name="msv2-and-mdsv2-series-medium-memory"></a>Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher
 
@@ -32,7 +32,7 @@ Die VM-Serien „Msv2“ und „Mdsv2“ mit mittlerem Arbeitsspeicher verfügen
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 2<br>
 [Schreibbeschleunigung:](./how-to-enable-write-accelerator.md) Unterstützt<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt für Mdsv2 <br>
 <br>
  
 ## <a name="msv2-medium-memory-diskless"></a>Msv2 mit mittlerem Arbeitsspeicher – ohne Datenträger 

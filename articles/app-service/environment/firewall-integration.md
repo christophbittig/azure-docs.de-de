@@ -1,29 +1,29 @@
 ---
 title: Sperren von ausgehendem Datenverkehr
 description: Erfahren Sie, wie Sie mithilfe der Azure Firewall-Integration innerhalb einer App Service-Umgebung ausgehenden Datenverkehr schützen.
-author: ccompy
+author: madsd
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
 ms.date: 09/16/2021
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: b9d5e3bda24e3020dd21a600cde40c55bffb2f56
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d8896f9bbe7ee4429236eac7763d66b1efd4313c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669225"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523712"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Sperren einer App Service-Umgebung
+
 > [!NOTE]
-> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird
-> 
+> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird.
 
 Die App Service-Umgebung verfügt über externe Abhängigkeiten, auf die sie Zugriff benötigt, um ordnungsgemäß zu funktionieren. Die App Service-Umgebung befindet sich in der Azure Virtual Network-Instanz (VNET) des Benutzers. Benutzer müssen den Datenverkehr für Abhängigkeiten der App Service-Umgebung zulassen. Dies ist jedoch problematisch, wenn sie den gesamten ausgehenden Datenverkehr ihres VNET sperren wollen.
 
 Es gibt eine Reihe von Endpunkten für eingehenden Datenverkehr, die zum Verwalten einer App Service-Umgebung verwendet werden. Der eingehende Verwaltungsdatenverkehr kann über eine Firewallgerät nicht gesendet werden. Die Quelladressen für diesen Datenverkehr sind bekannt und werden im Dokument [Verwaltungsadressen der App Service-Umgebung](./management-addresses.md) veröffentlicht. Es gibt auch ein Diensttag mit dem Namen AppServiceManagement, das mit Netzwerksicherheitsgruppen (NSGs) verwendet werden kann, um den eingehenden Datenverkehr zu sichern.
 
-Die Abhängigkeiten der App Service-Umgebung für den ausgehenden Datenverkehr werden fast ausschließlich mit FQDNs definiert, hinter denen sich keine statischen Adressen befinden. Das Fehlen statischer Adressen bedeutet, dass Netzwerksicherheitsgruppen nicht verwendet werden können, um den ausgehenden Datenverkehr einer App Service-Umgebung zu sperren. Die Adressen ändern sich häufig, sodass keine Regeln auf Grundlage der aktuellen Auflösung aufgestellt und keine NSGs damit erstellt werden können. 
+Die Abhängigkeiten der App Service-Umgebung für den ausgehenden Datenverkehr werden fast ausschließlich mit FQDNs definiert, hinter denen sich keine statischen Adressen befinden. Das Fehlen statischer Adressen bedeutet, dass Netzwerksicherheitsgruppen nicht verwendet werden können, um den ausgehenden Datenverkehr einer App Service-Umgebung zu sperren. Die Adressen ändern sich häufig, sodass keine Regeln auf Grundlage der aktuellen Auflösung aufgestellt und keine NSGs damit erstellt werden können.
 
 Die Lösung zum Sichern ausgehender Adressen besteht in der Verwendung eines Firewallgeräts, das den ausgehenden Datenverkehr basierend auf Domänennamen kontrolliert. Azure Firewall kann ausgehenden HTTP- und HTTPS-Datenverkehr basierend auf den FQDN des Ziels beschränken.  
 
@@ -35,87 +35,87 @@ Es müssen Routen definiert sein, damit der eingehende Datenverkehr an die ASE d
 
 Beim Datenverkehr an und von einer ASE müssen die folgenden Konventionen eingehalten werden:
 
-* Der Datenverkehr an Azure SQL, Storage und Event Hub wird bei Verwendung eines Firewallgeräts nicht unterstützt. Dieser Datenverkehr muss direkt an diese Dienste gesendet werden. Um dies zu ermöglichen, müssen Dienstendpunkte für diese drei Dienste konfiguriert werden. 
-* Es müssen Routingtabellenregeln definiert werden, die eingehenden Verwaltungsdatenverkehr an seinen Ursprungsort zurücksenden.
-* Es müssen Routingtabellenregeln definiert werden, die eingehenden Verwaltungsdatenverkehr an seinen Ursprungsort zurücksenden. 
-* Jeglicher sonstiger Datenverkehr von der ASE kann mit einer Routingtabellenregel an Ihr Firewallgerät gesendet werden.
+- Der Datenverkehr an Azure SQL, Storage und Event Hub wird bei Verwendung eines Firewallgeräts nicht unterstützt. Dieser Datenverkehr muss direkt an diese Dienste gesendet werden. Um dies zu ermöglichen, müssen Dienstendpunkte für diese drei Dienste konfiguriert werden.
+- Es müssen Routingtabellenregeln definiert werden, die eingehenden Verwaltungsdatenverkehr an seinen Ursprungsort zurücksenden.
+- Es müssen Routingtabellenregeln definiert werden, die eingehenden Verwaltungsdatenverkehr an seinen Ursprungsort zurücksenden.
+- Jeglicher sonstiger Datenverkehr von der ASE kann mit einer Routingtabellenregel an Ihr Firewallgerät gesendet werden.
 
 ![ASE mit Azure Firewall: Verbindungsfluss][5]
 
 ## <a name="locking-down-inbound-management-traffic"></a>Sperren der Verwaltung des eingehenden Datenverkehrs
 
-Wenn Subnetz Ihrer App Service-Umgebung nicht bereits eine NSG zugewiesen ist, erstellen Sie eine Netzwerksicherheitsgruppe. Legen Sie in der NSG als erste Regel fest, dass Datenverkehr des Diensttags „AppServiceManagement“ an den Ports 454 und 455 zugelassen werden soll. Die Regel zum Zulassen des Zugriffs für das Tag „AppServiceManagement“ ist das Einzige, was von öffentlichen IP-Adressen erforderlich ist, um Ihre ASE zu verwalten. Die Adressen, die sich hinter diesem Diensttag befinden, werden nur zum Verwalten von Azure App Service verwendet. Der Verwaltungsdatenverkehr, der durch diese Verbindungen fließt, wird verschlüsselt und durch Authentifizierungszertifikate gesichert. Der typische Datenverkehr in diesem Kanal umfasst Dinge wie vom Kunden initiierte Befehle und Integritätstests. 
+Wenn Subnetz Ihrer App Service-Umgebung nicht bereits eine NSG zugewiesen ist, erstellen Sie eine Netzwerksicherheitsgruppe. Legen Sie in der NSG als erste Regel fest, dass Datenverkehr des Diensttags „AppServiceManagement“ an den Ports 454 und 455 zugelassen werden soll. Die Regel zum Zulassen des Zugriffs für das Tag „AppServiceManagement“ ist das Einzige, was von öffentlichen IP-Adressen erforderlich ist, um Ihre ASE zu verwalten. Die Adressen, die sich hinter diesem Diensttag befinden, werden nur zum Verwalten von Azure App Service verwendet. Der Verwaltungsdatenverkehr, der durch diese Verbindungen fließt, wird verschlüsselt und durch Authentifizierungszertifikate gesichert. Der typische Datenverkehr in diesem Kanal umfasst Dinge wie vom Kunden initiierte Befehle und Integritätstests.
 
 App Service-Umgebungen, die über das Portal mit einem neuen Subnetz erstellt werden, werden mit einer NSG eingerichtet, die die Zulassungsregel für das AppServiceManagement-Tag enthält.  
 
 Ihre ASE muss auch eingehende Anforderungen des Tags „Load Balancer“ am Port 16001 zulassen. Die Load Balancer-Anforderungen am Port 16001 sind Keep-Alive-Prüfungen zwischen Load Balancer und ASE-Front-Ends. Ist der Port 16001 blockiert, wird Ihre ASE fehlerhaft.
 
-## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurieren von Azure Firewall mit Ihrer App Service-Umgebung 
+## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurieren von Azure Firewall mit Ihrer App Service-Umgebung
 
 Gehen Sie wie folgt vor, um ausgehenden Datenverkehr Ihrer bestehenden App Service-Umgebung (App Service Environment, ASE) mit Azure Firewall zu sperren:
 
-1. Aktivieren Sie Dienstendpunkte für SQL, Storage und Event Hub in Ihrem ASE-Subnetz. Um Dienstendpunkte zu aktivieren, navigieren Sie im Netzwerkportal zu „Subnetze“, und wählen Sie in der Dropdownliste „Dienstendpunkte“ die Optionen „Microsoft.EventHub“, „Microsoft.SQL“ und „Microsoft.Storage“ aus. Wenn Sie Dienstendpunkte für Azure SQL aktiviert haben, müssen alle Azure SQL-Abhängigkeiten Ihrer Apps ebenfalls mit Dienstendpunkten konfiguriert werden. 
+1. Aktivieren Sie Dienstendpunkte für SQL, Storage und Event Hub in Ihrem ASE-Subnetz. Um Dienstendpunkte zu aktivieren, navigieren Sie im Netzwerkportal zu „Subnetze“, und wählen Sie in der Dropdownliste „Dienstendpunkte“ die Optionen „Microsoft.EventHub“, „Microsoft.SQL“ und „Microsoft.Storage“ aus. Wenn Sie Dienstendpunkte für Azure SQL aktiviert haben, müssen alle Azure SQL-Abhängigkeiten Ihrer Apps ebenfalls mit Dienstendpunkten konfiguriert werden.
 
    ![Auswählen von Dienstendpunkten][2]
-  
+
 1. Erstellen Sie ein Subnetz namens „AzureFirewallSubnet“ in dem VNET, in dem sich die ASE befindet. Folgen Sie den Anweisungen in der [Azure Firewall-Dokumentation](../../firewall/index.yml), um Ihre Azure Firewall-Instanz zu erstellen.
 
-1. Navigieren Sie in der Azure Firewall-Benutzeroberfläche zu „Regeln“ > „Anwendungsregelsammlung“, und wählen Sie „Anwendungsregelsammlung hinzufügen“ aus. Geben Sie einen Namen und eine Priorität an, und legen Sie „Zulassen“ fest. Geben Sie im Abschnitt „FQDN-Tags“ einen Namen an, legen Sie die Quelladressen auf „*“ fest, und wählen Sie die FQDN-Tags „AppServiceEnvironment“ und „WindowsUpdate“ aus. 
-   
+1. Navigieren Sie in der Azure Firewall-Benutzeroberfläche zu „Regeln“ > „Anwendungsregelsammlung“, und wählen Sie „Anwendungsregelsammlung hinzufügen“ aus. Geben Sie einen Namen und eine Priorität an, und legen Sie „Zulassen“ fest. Geben Sie im Abschnitt „FQDN-Tags“ einen Namen an, legen Sie die Quelladressen auf „*“ fest, und wählen Sie die FQDN-Tags „AppServiceEnvironment“ und „WindowsUpdate“ aus.
+
    ![Hinzufügen einer Anwendungsregel][1]
-   
-1. Navigieren Sie in der Azure Firewall-Benutzeroberfläche zu „Regeln“ > „Netzwerkregelsammlung“, und wählen Sie „Netzwerkregelsammlung hinzufügen“ aus. Geben Sie einen Namen und eine Priorität an, und legen Sie „Zulassen“ fest. Geben Sie im Abschnitt „Regeln“ unter „IP-Adressen“ einen Namen an, wählen Sie als Protokoll **Beliebig** aus, legen Sie „*“ auf die Quell- und Zieladressen und die Ports auf 123 fest. Diese Regel ermöglicht es dem System, die Uhrsynchronisierung mit NTP durchzuführen. Erstellen Sie wie oben beschrieben eine weitere Regel für Port 12000, um die Selektierung von Systemproblemen zu erleichtern. 
+
+1. Navigieren Sie in der Azure Firewall-Benutzeroberfläche zu „Regeln“ > „Netzwerkregelsammlung“, und wählen Sie „Netzwerkregelsammlung hinzufügen“ aus. Geben Sie einen Namen und eine Priorität an, und legen Sie „Zulassen“ fest. Geben Sie im Abschnitt „Regeln“ unter „IP-Adressen“ einen Namen an, wählen Sie als Protokoll **Beliebig** aus, legen Sie „*“ auf die Quell- und Zieladressen und die Ports auf 123 fest. Diese Regel ermöglicht es dem System, die Uhrsynchronisierung mit NTP durchzuführen. Erstellen Sie wie oben beschrieben eine weitere Regel für Port 12000, um die Selektierung von Systemproblemen zu erleichtern.
 
    ![Hinzufügen einer NTP-Netzwerkregel][3]
-   
+
 1. Navigieren Sie in der Azure Firewall-Benutzeroberfläche zu „Regeln“ > „Netzwerkregelsammlung“, und wählen Sie „Netzwerkregelsammlung hinzufügen“ aus. Geben Sie einen Namen und eine Priorität an, und legen Sie „Zulassen“ fest. Geben Sie im Abschnitt „Regeln“ unter „Diensttags“ einen Namen ein, wählen Sie als Protokoll **Beliebig** aus, legen Sie „*“ auf Quelladressen fest, wählen Sie ein Diensttag AzureMonitor aus, und legen Sie die Ports auf 80 und 443 fest. Diese Regel ermöglicht es dem System, für Azure Monitor Integritäts- und Metrikinformationen bereitzustellen.
 
    ![Hinzufügen einer NTP-Diensttag-Netzwerkregel][6]
-   
-1. Erstellen Sie eine Routingtabelle mit den Verwaltungsadressen aus [Verwaltungsadressen der App Service-Umgebung]( ./management-addresses.md) mit dem nächsten Hop zum Internet. Die Routingtabelleneinträge werden benötigt, um asymmetrische Routingprobleme zu vermeiden. Fügen Sie mit dem nächsten Hop zum Internet den IP-Adressabhängigkeiten (s. weiter unten „IP-Adressabhängigkeiten“) Routen hinzu. Fügen Sie Ihrer Routingtabelle eine Route für ein virtuelles Gerät für 0.0.0.0/0 hinzu, und legen Sie dabei Ihre private Azure Firewall-IP-Adresse als nächsten Hop fest. 
+
+1. Erstellen Sie eine Routingtabelle mit den Verwaltungsadressen aus [Verwaltungsadressen der App Service-Umgebung]( ./management-addresses.md) mit dem nächsten Hop zum Internet. Die Routingtabelleneinträge werden benötigt, um asymmetrische Routingprobleme zu vermeiden. Fügen Sie mit dem nächsten Hop zum Internet den IP-Adressabhängigkeiten (s. weiter unten „IP-Adressabhängigkeiten“) Routen hinzu. Fügen Sie Ihrer Routingtabelle eine Route für ein virtuelles Gerät für 0.0.0.0/0 hinzu, und legen Sie dabei Ihre private Azure Firewall-IP-Adresse als nächsten Hop fest.
 
    ![Erstellen einer Routingtabelle][4]
-   
+
 1. Weisen Sie die erstellte Routingtabelle dem Subnetz Ihrer App Service-Umgebung zu.
 
-#### <a name="deploying-your-ase-behind-a-firewall"></a>Bereitstellen Ihrer ASE hinter einer Firewall
+### <a name="deploying-your-ase-behind-a-firewall"></a>Bereitstellen Ihrer ASE hinter einer Firewall
 
 Die Schritte zum Bereitstellen Ihrer ASE hinter einer Firewall sind identisch mit der Konfiguration der bestehenden ASE mit einer Azure Firewall-Instanz. Der einzige Unterschied besteht darin, dass Sie Ihr ASE-Subnetz erstellen und anschließend die obigen Schritte ausführen müssen. Wenn Sie Ihre ASE in einem bereits vorhandenen Subnetz erstellen möchten, müssen Sie wie im Dokument [Erstellen einer ASE mit einer Azure Resource Manager-Vorlage](./create-from-template.md) beschrieben eine Resource Manager-Vorlage verwenden.
 
-## <a name="application-traffic"></a>Anwendungsdatenverkehr 
+## <a name="application-traffic"></a>Anwendungsdatenverkehr
 
 Mithilfe der oben genannten Schritte kann Ihre App Service-Umgebung problemlos ausgeführt werden. Sie müssen die Umgebung noch so konfigurieren, dass sie Ihren Anwendungsanforderungen entspricht. Es gibt zwei Probleme bei Anwendungen in einer App Service-Umgebung, die mit Azure Firewall konfiguriert wurde.  
 
-- Anwendungsabhängigkeiten müssen der Azure Firewall-Instanz oder der Routingtabelle hinzugefügt werden. 
+- Anwendungsabhängigkeiten müssen der Azure Firewall-Instanz oder der Routingtabelle hinzugefügt werden.
 - Für den Anwendungsdatenverkehr müssen Routen erstellt werden, um Probleme durch asymmetrisches Routing zu vermeiden.
 
-Wenn Ihre Anwendungen Abhängigkeiten aufweisen, müssen diese Ihrer Azure Firewall-Instanz hinzugefügt werden. Erstellen Sie Anwendungsregeln, um HTTP/HTTPS-Datenverkehr und Netzwerkregeln zuzulassen. 
+Wenn Ihre Anwendungen Abhängigkeiten aufweisen, müssen diese Ihrer Azure Firewall-Instanz hinzugefügt werden. Erstellen Sie Anwendungsregeln, um HTTP/HTTPS-Datenverkehr und Netzwerkregeln zuzulassen.
 
 Wenn Sie den Adressbereich kennen, aus dem der von Ihrer Anwendung angeforderte Datenverkehr kommt, können Sie ihn der Routingtabelle hinzufügen, die dem Subnetz Ihrer App Service-Umgebung zugeordnet ist. Wenn der Adressbereich groß oder nicht angegeben ist, können Sie ein Netzwerkgerät wie Application Gateway verwenden, um eine Adresse Ihrer Routingtabelle hinzufügen zu können. Weitere Informationen zum Konfigurieren einer Application Gateway-Instanz mit dem internen Lastenausgleichsmodul der App Service-Umgebung finden Sie unter [Integrieren eines internen Lastenausgleichs einer App Service-Umgebung in eine Application Gateway-Instanz](./integrate-with-application-gateway.md).
 
-Diese Verwendung von Application Gateway ist nur ein Beispiel dafür, wie Sie Ihr System konfigurieren können. Bei der obigen Konfiguration müssten Sie der Routingtabelle für das ASE-Subnetz eine Route hinzufügen, damit der an die Application Gateway-Instanz gesendete Antwortdatenverkehr direkt an diese weitergeleitet wird. 
+Diese Verwendung von Application Gateway ist nur ein Beispiel dafür, wie Sie Ihr System konfigurieren können. Bei der obigen Konfiguration müssten Sie der Routingtabelle für das ASE-Subnetz eine Route hinzufügen, damit der an die Application Gateway-Instanz gesendete Antwortdatenverkehr direkt an diese weitergeleitet wird.
 
-## <a name="logging"></a>Protokollierung 
+## <a name="logging"></a>Protokollierung
 
-Azure Firewall kann Protokolle an Azure Storage, Event Hub oder Azure Monitor-Protokolle senden. Sie können ein beliebiges unterstütztes Ziel in Ihre App integrieren, indem Sie im Azure Firewall-Portal zu „Diagnoseprotokolle“ navigieren und die Protokolle für das gewünschte Ziel aktivieren. Wenn Sie sich für die Integration in Azure Monitor-Protokolle entscheiden, können Sie Protokolle für sämtlichen Datenverkehr einsehen, der an Azure Firewall gesendet wird. Öffnen Sie zum Anzeigen des abgelehnten Datenverkehrs das Portal mit dem Log Analytics-Arbeitsbereich, wählen Sie „Protokolle“ aus, und geben Sie eine Abfrage wie die folgende ein: 
+Azure Firewall kann Protokolle an Azure Storage, Event Hub oder Azure Monitor-Protokolle senden. Sie können ein beliebiges unterstütztes Ziel in Ihre App integrieren, indem Sie im Azure Firewall-Portal zu „Diagnoseprotokolle“ navigieren und die Protokolle für das gewünschte Ziel aktivieren. Wenn Sie sich für die Integration in Azure Monitor-Protokolle entscheiden, können Sie Protokolle für sämtlichen Datenverkehr einsehen, der an Azure Firewall gesendet wird. Öffnen Sie zum Anzeigen des abgelehnten Datenverkehrs das Portal mit dem Log Analytics-Arbeitsbereich, wählen Sie „Protokolle“ aus, und geben Sie eine Abfrage wie die folgende ein:
 
 ```kusto
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
 Die Integration Ihrer Azure Firewall-Instanz in Azure Monitor-Protokolle ist nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../../azure-monitor/logs/log-query-overview.md).
- 
+
 ## <a name="dependencies"></a>Abhängigkeiten
 
-Die folgenden Informationen sind nur erforderlich, wenn Sie ein anderes Firewallgerät als Azure Firewall konfigurieren möchten. 
+Die folgenden Informationen sind nur erforderlich, wenn Sie ein anderes Firewallgerät als Azure Firewall konfigurieren möchten.
 
 - Dienste, die Dienstendpunkte unterstützen, sollten mit Dienstendpunkten konfiguriert werden.
 - IP-Adressabhängigkeiten gelten für Nicht-HTTP/S-Datenverkehr (TCP- und UDP-Datenverkehr).
 - FQDN-HTTP/HTTPS-Endpunkte können in Ihrem Firewallgerät bereitgestellt werden.
-- Platzhalter-HTTP/HTTPS-Endpunkte sind Abhängigkeiten, die von Ihrer App Service-Umgebung abhängig sein können, basierend auf einer Reihe von Qualifizierern. 
-- Linux-Abhängigkeiten sind nur relevant, wenn Sie in Ihrer App Service-Umgebung Linux-Apps bereitstellen. Wenn Sie in Ihrer App Service-Umgebung keine Linux-Apps bereitstellen, müssen diese Adressen Ihrer Firewall nicht hinzugefügt werden. 
+- Platzhalter-HTTP/HTTPS-Endpunkte sind Abhängigkeiten, die von Ihrer App Service-Umgebung abhängig sein können, basierend auf einer Reihe von Qualifizierern.
+- Linux-Abhängigkeiten sind nur relevant, wenn Sie in Ihrer App Service-Umgebung Linux-Apps bereitstellen. Wenn Sie in Ihrer App Service-Umgebung keine Linux-Apps bereitstellen, müssen diese Adressen Ihrer Firewall nicht hinzugefügt werden.
 
-#### <a name="service-endpoint-capable-dependencies"></a>Dienstendpunktfähige Abhängigkeiten 
+### <a name="service-endpoint-capable-dependencies"></a>Dienstendpunktfähige Abhängigkeiten
 
 | Endpunkt |
 |----------|
@@ -123,7 +123,7 @@ Die folgenden Informationen sind nur erforderlich, wenn Sie ein anderes Firewall
 | Azure Storage |
 | Azure Event Hub |
 
-#### <a name="ip-address-dependencies"></a>IP-Adressabhängigkeiten
+### <a name="ip-address-dependencies"></a>IP-Adressabhängigkeiten
 
 | Endpunkt | Details |
 |----------| ----- |
@@ -138,9 +138,9 @@ Die folgenden Informationen sind nur erforderlich, wenn Sie ein anderes Firewall
 | 13.82.184.151:80 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
 | 13.82.184.151:443 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
 
-Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgeführten Abhängigkeiten (mit den FQDN-Tags konfiguriert). 
+Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgeführten Abhängigkeiten (mit den FQDN-Tags konfiguriert).
 
-#### <a name="fqdn-httphttps-dependencies"></a>FQDN-HTTP/HTTPS-Abhängigkeiten 
+### <a name="fqdn-httphttps-dependencies"></a>FQDN-HTTP/HTTPS-Abhängigkeiten
 
 | Endpunkt |
 |----------|
@@ -217,7 +217,7 @@ Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgef�
 |azprofileruploads4.blob.core.windows.net:443 |
 |azprofileruploads6.blob.core.windows.net:443 |
 |azprofileruploads7.blob.core.windows.net:443 |
-|azprofileruploads8.blob.core.windows.net:443 | 
+|azprofileruploads8.blob.core.windows.net:443 |
 |azprofileruploads9.blob.core.windows.net:443 |
 |azureprofilerfrontdoor.cloudapp.net:443 |
 |settings-win.data.microsoft.com:443 |
@@ -233,7 +233,7 @@ Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgef�
 |ctldl.windowsupdate.com:443 |
 |global-dsms.dsms.core.windows.net:443 |
 
-#### <a name="wildcard-httphttps-dependencies"></a>Platzhalter-HTTP/HTTPS-Abhängigkeiten 
+### <a name="wildcard-httphttps-dependencies"></a>Platzhalter-HTTP/HTTPS-Abhängigkeiten
 
 | Endpunkt |
 |----------|
@@ -247,7 +247,7 @@ Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgef�
 | \*.prod.microsoftmetrics.com:443 |
 | \*.dsms.core.windows.net:443 |
 
-#### <a name="linux-dependencies"></a>Linux-Abhängigkeiten 
+### <a name="linux-dependencies"></a>Linux-Abhängigkeiten
 
 | Endpunkt |
 |----------|
@@ -284,15 +284,15 @@ Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgef�
 
 Befolgen Sie für App Service-Umgebungen in Regionen des Typs US Gov die Anweisungen im Abschnitt [Konfigurieren von Azure Firewall mit ihrer App Service-Umgebung](#configuring-azure-firewall-with-your-ase) in diesem Dokument, um Azure Firewall mit ihrer App Service-Umgebung zu konfigurieren.
 
-Wenn Sie ein anderes Gerät als Azure Firewall in Regionen des Typs US Gov verwenden möchten 
+Wenn Sie ein anderes Gerät als Azure Firewall in Regionen des Typs US Gov verwenden möchten:
 
-* Dienste, die Dienstendpunkte unterstützen, sollten mit Dienstendpunkten konfiguriert werden.
-* FQDN-HTTP/HTTPS-Endpunkte können in Ihrem Firewallgerät bereitgestellt werden.
-* Platzhalter-HTTP/HTTPS-Endpunkte sind Abhängigkeiten, die von Ihrer App Service-Umgebung abhängig sein können, basierend auf einer Reihe von Qualifizierern.
+- Dienste, die Dienstendpunkte unterstützen, sollten mit Dienstendpunkten konfiguriert werden.
+- FQDN-HTTP/HTTPS-Endpunkte können in Ihrem Firewallgerät bereitgestellt werden.
+- Platzhalter-HTTP/HTTPS-Endpunkte sind Abhängigkeiten, die von Ihrer App Service-Umgebung abhängig sein können, basierend auf einer Reihe von Qualifizierern.
 
 Linux ist in Regionen des Typs US Gov nicht verfügbar und wird daher nicht als optionale Konfiguration aufgeführt.
 
-#### <a name="service-endpoint-capable-dependencies"></a>Dienstendpunktfähige Abhängigkeiten ####
+### <a name="service-endpoint-capable-dependencies"></a>Dienstendpunktfähige Abhängigkeiten
 
 | Endpunkt |
 |----------|
@@ -300,7 +300,7 @@ Linux ist in Regionen des Typs US Gov nicht verfügbar und wird daher nicht als 
 | Azure Storage |
 | Azure Event Hub |
 
-#### <a name="ip-address-dependencies"></a>IP-Adressabhängigkeiten
+### <a name="ip-address-dependencies"></a>IP-Adressabhängigkeiten
 
 | Endpunkt | Details |
 |----------| ----- |
@@ -315,7 +315,7 @@ Linux ist in Regionen des Typs US Gov nicht verfügbar und wird daher nicht als 
 | 13.82.184.151:80 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
 | 13.82.184.151:443 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
 
-#### <a name="dependencies"></a>Abhängigkeiten ####
+### <a name="dependencies"></a>Abhängigkeiten
 
 | Endpunkt |
 |----------|

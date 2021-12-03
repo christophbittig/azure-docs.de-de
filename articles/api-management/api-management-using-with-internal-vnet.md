@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee5d0ac639cbd36215df5545d684909af3acd748
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6dc297736403b6124b27f34462ffaee0bfa4cf4a
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128563828"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845777"
 ---
 # <a name="connect-to-a-virtual-network-in-internal-mode-using-azure-api-management"></a>Herstellen einer Verbindung mit einem virtuellen Netzwerk im internen Modus mithilfe von Azure API Management 
 Über virtuelle Azure-Netzwerke (VNets) kann Azure API Management APIs verwalten, die nicht über das Internet zugänglich sind. Hierbei werden mehrere VPN-Technologien zum Herstellen der Verbindung verwendet. Sie können API Management über [externe](./api-management-using-with-vnet.md) oder interne Modi bereitstellen. Informationen zu VNet-Konnektivitätsoptionen, Anforderungen und Überlegungen finden Sie unter [Verwenden eines virtuellen Netzwerks mit Azure API Management](virtual-network-concepts.md).
@@ -152,7 +152,6 @@ Für den Zugriff auf diese API Management-Dienstendpunkte können Sie einen virt
 
 Anschließend können Sie über den virtuellen Computer, den Sie erstellt haben, auf alle Dienstendpunkte zugreifen.
 
-Wenn Sie einen benutzerdefinierten DNS-Server in einem VNET verwenden, können Sie auch DNS-A-Einträge erstellen und von überall in Ihrem VNET auf diese Endpunkte zugreifen.
 
 ### <a name="access-on-custom-domain-names"></a>Zugreifen über benutzerdefinierte Domänennamen
 

@@ -3,12 +3,12 @@ title: Aktivieren von Container Insights | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Container Insights aktivieren und konfigurieren, damit Sie erfahren, wie gut die Leistung Ihrer Container ist und welche leistungsbezogenen Probleme erkannt wurden.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: be2dcaeb088d2996df1d09e3f373e48866db3eb9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2d47ea7f2f2f0dadfd979a42b0b0e9125d4bebde
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233448"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455110"
 ---
 # <a name="enable-container-insights"></a>Aktivieren von Container Insights
 
@@ -74,6 +74,9 @@ Container Insights unterstützt offiziell die folgenden Konfigurationen:
 - Umgebungen: Azure Red Hat OpenShift, Kubernetes lokal und AKS-Engine in Azure und Azure Stack. Weitere Informationen finden Sie unter [AKS-Engine in Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview).
 - Die Versionen von Kubernetes und Unterstützungsrichtlinien sind identisch mit denen, die [in Azure Kubernetes Service (AKS) unterstützt werden](../../aks/supported-kubernetes-versions.md).
 - Es wird empfohlen, ihren Cluster mit [Azure Arc](../../azure-arc/kubernetes/overview.md) zu verbinden und die Überwachung über Container Insights über Azure Arc zu aktivieren.
+
+> [!IMPORTANT]
+> Bitte beachten Sie, dass das Überwachungs-Add-On derzeit nicht für AKS-Cluster unterstützt wird, die mit dem [HTTP-Proxy (Vorschauversion)](../../aks/http-proxy.md) konfiguriert sind.
 
 ## <a name="network-firewall-requirements"></a>Netzwerkfirewallanforderungen
 

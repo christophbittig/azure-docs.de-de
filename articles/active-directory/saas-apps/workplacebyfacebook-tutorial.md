@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: ceb5200f716a00d0c8599ab596b29c727dff486e
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 477dcc9935185861f551f89e7376f705c29ccb29
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232487"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285067"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workplace by Facebook
 
@@ -43,7 +43,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Workplace by Facebook unterstützt **SP**-initiiertes einmaliges Anmelden.
 * Workplace by Facebook unterstützt **Just-in-Time-Bereitstellung**.
-* Workplace by Facebook unterstützt **[automatische Benutzerbereitstellung](workplacebyfacebook-provisioning-tutorial.md)** .
+* Workplace by Facebook unterstützt **[automatische Benutzerbereitstellung](workplace-by-facebook-provisioning-tutorial.md)** .
 * Mobile Workplace by Facebook-Anwendungen können nun mit Azure AD konfiguriert werden, um SSO zu ermöglichen. In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 
@@ -83,11 +83,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** („Recipient URL“ (Empfänger-URL) in Workplace) eine URL im folgenden Format ein: `https://.workplace.com/work/saml.php`.
+    a. Geben Sie im Textfeld **Anmelde-URL** („Recipient URL“ (Empfänger-URL) in Workplace) eine URL im folgenden Format ein: `https://.facebook.com/work/saml.php`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** („Audience URL“ (Zielgruppen-URL) in Workplace) eine URL im folgenden Format ein: `https://www.workplace.com/company/`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** („Audience URL“ (Zielgruppen-URL) in Workplace) eine URL im folgenden Format ein: `https://www.facebook.com/company/`.
 
-    c. Geben Sie im Textfeld **Antwort-URL** („Assertion Consumer Service“ (Assertionsverbraucherdienst) in Workplace) eine URL in folgendem Format ein: `https://.workplace.com/work/saml.php`.
+    c. Geben Sie im Textfeld **Antwort-URL** („Assertion Consumer Service“ (Assertionsverbraucherdienst) in Workplace) eine URL in folgendem Format ein: `https://.facebook.com/work/saml.php`.
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Die richtigen Werte für die Workplace-Community finden Sie auf der Authentifizierungsseite des Workplace-Unternehmensdashboards. Dies wird weiter unten im Tutorial erläutert.
@@ -233,4 +233,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Workplace by Facebook können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Workplace by Facebook können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

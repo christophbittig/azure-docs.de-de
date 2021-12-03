@@ -4,9 +4,9 @@ description: Stellen Sie sicher, dass Administratorzugriff und Administratorkont
 services: active-directory
 keywords: ''
 author: rolyon
-manager: daveba
+manager: KarenH444
 ms.author: rolyon
-ms.date: 11/05/2020
+ms.date: 11/04/2021
 ms.topic: conceptual
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeba1c933d049e67e45204ad62d71a0eb52a930d
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: fd62f1b5974d03e19bd210eec7f8a2cadca0eb22
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662431"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487909"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -178,7 +178,7 @@ Azure AD Identity Protection ist ein algorithmusbasiertes Überwachungs- und Be
 
 #### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>Abrufen Ihres Microsoft 365 Secure Score (bei Verwendung von Microsoft 365)
 
-Secure Score prüft Ihre Einstellungen und Aktivitäten für Microsoft 365-Dienste und vergleicht diese mit einer von Microsoft aufgestellten Baseline. Das Ergebnis sagt aus, in welchem Maß Sie bewährte Sicherheitsmethoden befolgen. Jeder Benutzer, der über Administratorberechtigungen für ein Microsoft 365 Business Standard- oder Enterprise-Abonnement verfügt, kann über `https://securescore.office.com` auf Secure Score zugreifen.
+Secure Score prüft Ihre Einstellungen und Aktivitäten für Microsoft 365-Dienste und vergleicht diese mit einer von Microsoft aufgestellten Baseline. Das Ergebnis sagt aus, in welchem Maß Sie bewährte Sicherheitsmethoden befolgen. Jeder Benutzer, der über Administratorberechtigungen für ein Microsoft 365 Business Standard- oder Enterprise-Abonnement verfügt, kann über `https://security.microsoft.com/securescore` auf Secure Score zugreifen.
 
 #### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>Überprüfen der Microsoft 365-Sicherheit und -Konformität (bei Verwendung von Microsoft 365)
 
@@ -303,7 +303,7 @@ Wenn Ihr Azure Active Directory-Mandant mit einem lokalen Active Directory verbu
 
 #### <a name="establish-integrated-monitoring"></a>Einrichten der integrierten Überwachung
 
-[Azure Security Center](../../security-center/security-center-introduction.md):
+[Microsoft Defender für Cloud](../../defender-for-cloud/defender-for-cloud-introduction.md):
 
 * Bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements
 * Hilft bei der Erkennung von Bedrohungen, die sonst möglicherweise unbemerkt bleiben
@@ -322,7 +322,7 @@ Verwenden Sie Privileged Identity Management mit Azure AD-Administratorrollen zu
 Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle von Ihren Azure-Ressourcen in die vorhandenen SIEM-Systeme (Security Information and Event Management) Ihrer Organisation integrieren. Mit der [Azure-Protokollintegration](/previous-versions/azure/security/fundamentals/azure-log-integration-overview) erfassen Sie Windows-Ereignisse aus Protokollen der Windows-Ereignisanzeige und Azure-Ressourcen aus folgenden Quellen:
 
 * Azure-Aktivitätsprotokolle
-* Azure Security Center-Warnungen
+* Microsoft Defender für Cloud-Warnungen
 * Azure-Ressourcenprotokolle
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Zusätzliche Schritte für Organisationen, die den Zugriff auf andere Cloud-Apps über Azure AD verwalten
@@ -333,7 +333,7 @@ Azure AD bietet Ihnen die Möglichkeit, das Erstellen und Pflegen von Benutzerid
 
 #### <a name="integrate-information-protection"></a>Integrieren von Information Protection
 
-Mit Microsoft Cloud App Security können Sie Dateien untersuchen und Richtlinien auf Grundlage von Klassifizierungsbezeichnungen von Azure Information Protection festlegen, sodass Sie einen größeren Einblick in Ihre Daten in der Cloud gewinnen und sie besser unter Kontrolle haben. Überprüfen und klassifizieren Sie Dateien in der Cloud und wenden Sie Azure Information Protection-Bezeichnungen an. Weitere Informationen finden Sie unter [Integration mit Azure Information Protection](/cloud-app-security/azip-integration).
+Mit Microsoft Defender für Cloud-Apps können Sie Dateien untersuchen und Richtlinien auf Grundlage von Klassifizierungsbezeichnungen von Azure Information Protection festlegen, sodass Sie einen größeren Einblick in Ihre Daten in der Cloud gewinnen und sie besser unter Kontrolle haben. Überprüfen und klassifizieren Sie Dateien in der Cloud und wenden Sie Azure Information Protection-Bezeichnungen an. Weitere Informationen finden Sie unter [Integration mit Azure Information Protection](/cloud-app-security/azip-integration).
 
 #### <a name="configure-conditional-access"></a>Konfigurieren des bedingten Zugriffs
 
@@ -341,7 +341,7 @@ Konfigurieren Sie den bedingten Zugriff basierend auf einer Gruppen-, Standort- 
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>Überwachen der Aktivität in verbundenen Cloud-Apps
 
-Wir empfehlen die Verwendung von [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security), um sicherzustellen, dass der Benutzerzugriff auch in verbundenen Anwendungen geschützt ist. Diese Funktion schützt den Zugriff Ihres Unternehmens auf Cloud-Apps, sichert Ihre Administratorkonten und bietet folgende Möglichkeiten:
+Wir empfehlen die Verwendung von [Microsoft Defender für Cloud-Apps](/cloud-app-security/what-is-cloud-app-security), um sicherzustellen, dass der Benutzerzugriff auch in verbundenen Anwendungen geschützt ist. Diese Funktion schützt den Zugriff Ihres Unternehmens auf Cloud-Apps, sichert Ihre Administratorkonten und bietet folgende Möglichkeiten:
 
 * Erweitern des Einblicks in Cloud-Apps und der Kontrollmöglichkeiten
 * Erstellen von Richtlinien für Zugriff, Aktivitäten und Datenfreigabe
@@ -349,7 +349,7 @@ Wir empfehlen die Verwendung von [Microsoft Cloud App Security](/cloud-app-secur
 * Verhindern von Datenlecks
 * Minimieren von Risiken, automatische Prävention und Durchsetzung von Richtlinien
 
-Der SIEM-Agent von Cloud App Security integriert Cloud App Security in Ihren SIEM-Server, um zentralisierte Überwachung von Microsoft 365-Warnungen und Aktivitäten zu ermöglichen. Er wird auf dem Server ausgeführt, bezieht Warnungen und Aktivitäten aus Cloud App Security und streamt sie an den SIEM-Server. Weitere Informationen finden Sie unter [SIEM-Integration](/cloud-app-security/siem).
+Der SIEM-Agent von Defender für Cloud-Apps integriert Defender für Cloud-Apps in Ihren SIEM-Server, um zentralisierte Überwachung von Microsoft 365-Warnungen und Aktivitäten zu ermöglichen. Er wird auf dem Server ausgeführt, bezieht Warnungen und Aktivitäten aus Defender für Cloud-Apps und streamt sie an den SIEM-Server. Weitere Informationen finden Sie unter [SIEM-Integration](/cloud-app-security/siem).
 
 ## <a name="stage-4-continue-building-defenses"></a>Phase 4: Weiterer Aufbau von Schutzmaßnahmen
 

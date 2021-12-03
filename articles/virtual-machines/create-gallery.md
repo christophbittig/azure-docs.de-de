@@ -1,37 +1,33 @@
 ---
-title: Erstellen einer Shared Image Gallery-Instanz
-description: Erfahren Sie, wie Sie eine Shared Image Gallery-Instanz in Azure erstellen.
+title: Erstellen einer Azure Compute Gallery-Instanz zum Freigeben von Ressourcen
+description: Erfahren Sie, wie Sie eine Azure Compute Gallery-Instanz erstellen
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: shared-image-gallery
+ms.subservice: gallery
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 07/15/2021
+ms.date: 10/05/2021
 ms.author: cynthn
 ms.custom: template-how-to
-ms.openlocfilehash: c7462886c2f85e07f060caa7a11a39a782e38cea
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 924cce1b23cf86a6e29ef4fd28f862bf2fa12363
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452480"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459689"
 ---
-# <a name="create-a-gallery-for-storing-and-sharing-images"></a>Erstellen eines Katalogs zum Speichern und Freigeben von Images
+# <a name="create-a-gallery-for-storing-and-sharing-resources"></a>Erstellen eines Katalogs zum Speichern und Freigeben von Ressourcen
 
 
-Der [Katalog mit freigegebenen Images](./shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Laden von Bereitstellungsaufgaben verwendet werden, z.B. zum Vorabladen von Anwendungen sowie für Anwendungskonfigurationen und andere Betriebssystemkonfigurationen. 
+Eine [Azure Compute Gallery](./shared-image-galleries.md)-Instanz (früher als Shared Image Gallery bezeichnet) vereinfacht die gemeinsame Nutzung von Ressourcen wie Images und Anwendungspaketen in Ihrer Organisation.  
 
-Der Katalog mit geteilten Images gestattet es Ihnen, Ihre benutzerdefinierten VM-Images mit anderen Personen in Ihrer Organisation, innerhalb einer oder zwischen Regionen, innerhalb eines AAD-Mandanten zu teilen. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. Sie können mehrere Kataloge erstellen, damit Sie geteilte Images logisch gruppieren können. 
+Azure Compute Gallery gestattet es Ihnen, Ihre benutzerdefinierten VM-Images mit anderen Personen in Ihrer Organisation, innerhalb einer oder zwischen Regionen, innerhalb eines AAD-Mandanten zu teilen. Wählen Sie aus, was Sie teilen möchten, in welchen Regionen Sie es verfügbar machen möchten, und mit wem Sie es teilen möchten. Sie können mehrere Kataloge erstellen, damit Sie Ressourcen logisch gruppieren können. 
 
-Der Katalog ist eine Ressource der obersten Ebene, die vollständige rollenbasierte Zugriffssteuerung in Azure (RBAC) bereitstellt. Images bieten Versionsverwaltung, und Sie können sich entschließen, jede Imageversion in eine andere Gruppe von Azure-Regionen zu replizieren. Der Katalog funktioniert nur mit verwalteten Images.
-
-Die Funktion „Katalog mit freigegebenen Images“ verfügt über mehrere Ressourcentypen. 
-
-[!INCLUDE [virtual-machines-shared-image-gallery-resources](./includes/virtual-machines-shared-image-gallery-resources.md)]
+Der Katalog ist eine Ressource der obersten Ebene, die vollständige rollenbasierte Zugriffssteuerung in Azure (RBAC) bereitstellt. 
 
 ## <a name="create-a-gallery"></a>Erstellen eines Katalogs
 
-Ein Imagekatalog ist die primäre Ressource, die zur Ermöglichung des Teilens von Images verwendet wird. Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname darf keine Bindestriche enthalten. Katalognamen müssen innerhalb Ihres Abonnements eindeutig sein. 
+Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname darf keine Bindestriche enthalten. Katalognamen müssen innerhalb Ihres Abonnements eindeutig sein. 
 
 Wählen Sie unten eine Option zum Erstellen Ihres Katalogs aus:
 
@@ -40,19 +36,19 @@ Wählen Sie unten eine Option zum Erstellen Ihres Katalogs aus:
 Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGalleryRG* erstellt.
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
-1. Geben Sie in das Suchfeld **Katalog mit freigegebenen Images** ein und wählen Sie in den Ergebnissen **Katalog mit freigegebenen Images** aus.
-1. Klicken Sie auf der Seite **Katalog der freigegebenen Images** auf **Hinzufügen**.
-1. Wählen Sie auf der Seite **Katalog mit freigegebenen Images erstellen** das richtige Abonnement aus.
+1. Geben Sie im Suchfeld **Azure Compute Gallery** ein, und wählen Sie in den Ergebnissen **Azure Compute Gallery** aus.
+1. Klicken Sie auf der Seite **Azure Compute Gallery** auf **Hinzufügen**.
+1. Wählen Sie auf der Seite **Azure Compute Gallery-Instanz erstellen** das richtige Abonnement aus.
 1. Wählen Sie in **Ressourcengruppe** **Neu erstellen** aus, und geben Sie *myGalleryRG* für den Namen ein.
 1. Geben Sie unter **Name** *myGallery* als Namen des Katalogs ein.
 1. Übernehmen Sie den Standardwert für **Region**.
-1. Sie können eine kurze Beschreibung des Katalogs eingeben, wie *Mein Imagekatalog zum Testen*. Klicken Sie dann auf **Überprüfen + Erstellen**.
+1. Sie können eine kurze Beschreibung des Katalogs eingeben, wie *Mein Katalog zum Testen*. Klicken Sie dann auf **Überprüfen + Erstellen**.
 1. Wenn die Überprüfung erfolgreich war, wählen Sie **Erstellen** aus.
 1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
 
 ### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli)
 
-Erstellen Sie einen Imagekatalog mit [az sig create](/cli/azure/sig#az_sig_create). Im folgenden Beispiel werden eine Ressourcengruppe namens *myGalleryRG* in der Region *USA, Osten* und ein Katalog namens *myGallery* erstellt.
+Erstellen Sie einen Katalog mit [az sig create](/cli/azure/sig#az_sig_create). Im folgenden Beispiel werden eine Ressourcengruppe namens *myGalleryRG* in der Region *USA, Osten* und ein Katalog namens *myGallery* erstellt.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -61,7 +57,7 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Erstellen Sie mit [New-AzGallery](/powershell/module/az.compute/new-azgallery) einen Imagekatalog. Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGalleryRG* erstellt.
+Erstellen Sie mit [New-AzGallery](/powershell/module/az.compute/new-azgallery) einen Katalog. Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGalleryRG* erstellt.
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -71,7 +67,7 @@ $gallery = New-AzGallery `
    -GalleryName 'myGallery' `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
-   -Description 'Shared Image Gallery for my organization'  
+   -Description 'Azure Compute Gallery for my organization' 
 ```
 
 
@@ -94,7 +90,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 {
   "properties": {
-    "description": "Shared Image Gallery for my organization"
+    "description": "Azure Compute Gallery for my organization"
   },
   "location": "eastus",
 }
@@ -103,12 +99,10 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erstellen Sie eine [Imagedefinition und eine Imageversion](image-version.md).
+- Erstellen Sie eine [Imagedefinition und eine Imageversion](image-version.md).
 
-[Azure Image Builder (Vorschauversion)](./image-builder-overview.md) hilft beim Automatisieren der Erstellung von Imageversionen. Sie können den Dienst sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](./windows/image-builder-gallery-update-image-version.md) verwenden. 
+- [Erstellen Sie eine VM-Anwendung](vm-applications-how-to.md) in Ihrem Katalog.
 
-Sie können auch mithilfe von Vorlagen eine Ressource im Katalog für freigegebene Images erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
+- Sie können auch einen [Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-create/) mithilfe einer Vorlage erstellen.
 
-- [Erstellen eines Katalogs mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-create/)
-- [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Azure Image Builder](./image-builder-overview.md) hilft beim Automatisieren der Erstellung von Imageversionen. Sie können den Dienst sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](./windows/image-builder-gallery-update-image-version.md) verwenden. 

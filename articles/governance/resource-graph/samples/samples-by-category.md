@@ -1,15 +1,15 @@
 ---
 title: Liste der Azure Resource Graph-Beispielabfragen nach Kategorie
 description: Auflisten von Beispielabfragen für Azure Resource Graph. Zu den Kategorien zählen Tags, Azure Advisor, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr.
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: a16d52f0c780a73bebf9db3e764d76ea6394aff2
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: c2026751ec34d6e5952f156684100a9e5b7c341c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536264"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060134"
 ---
 # <a name="azure-resource-graph-sample-queries-by-category"></a>Azure Resource Graph-Beispielabfragen nach Kategorie
 
@@ -79,6 +79,10 @@ Verwenden Sie andernfalls <kbd>STRG</kbd>-<kbd>F</kbd>, um die Suchfunktion des 
 ## <a name="general"></a>Allgemein
 
 [!INCLUDE [azure-resource-graph-samples-cat-general](../../../../includes/resource-graph/samples/bycat/general.md)]
+
+## <a name="iot-defender"></a>IoT Defender
+
+[!INCLUDE [azure-resource-graph-samples-cat-iot-defender](../../../../includes/resource-graph/samples/bycat/iot-defender.md)]
 
 ## <a name="management-groups"></a>Verwaltungsgruppen
 

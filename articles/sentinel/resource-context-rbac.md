@@ -1,38 +1,38 @@
 ---
-title: Verwalten des Zugriffs auf Azure Sentinel-Daten nach Ressource | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie den Zugriff auf Azure Sentinel-Daten nach den Ressourcen verwalten können, auf die ein Benutzer zugreifen kann. Beim Verwalten des Zugriffs nach Ressource können Sie den ausschließlichen Zugriff auf bestimmte Daten gewähren, ohne dass Sie hierfür die gesamte Azure Sentinel-Umgebung nutzen müssen. Diese Methode wird auch als rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext bezeichnet.
+title: Verwalten des Zugriffs auf Microsoft Sentinel-Daten nach Ressourcen| Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, wie Sie den Zugriff auf Microsoft Sentinel-Daten anhand der Ressourcen, auf die ein Benutzer zugreifen kann, verwalten können. Durch die Verwaltung des Zugriffs nach Ressource können Sie den Zugriff nur auf bestimmte Daten ohne die gesamte Microsoft Sentinel-Erfahrung ermöglichen. Diese Methode wird auch als rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext bezeichnet.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: cd0b10f4dccf9d989aaf93e472306f3283afb7a6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 38fd7f30dc412872ccdb6817ae1f502b78a77641
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055158"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522496"
 ---
-# <a name="manage-access-to-azure-sentinel-data-by-resource"></a>Verwalten des Zugriffs auf Azure Sentinel-Daten nach Ressource
+# <a name="manage-access-to-microsoft-sentinel-data-by-resource"></a>Verwalten des Zugriffs auf Microsoft Sentinel-Daten nach Ressource
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Normalerweise haben Benutzer, die Zugriff auf einen Azure Sentinel-Arbeitsbereich haben, auch Zugriff auf alle Arbeitsbereichsdaten, einschließlich der Sicherheitsinhalte. Administratoren können [Azure-Rollen](roles.md) verwenden, um den Zugriff auf bestimmte Features in Azure Sentinel zu konfigurieren. Dies hängt jeweils von den Zugriffsanforderungen des Teams ab.
+In der Regel haben Benutzer, die Zugriff auf einen Microsoft Sentinel-Arbeitsbereich haben, auch Zugriff auf alle Arbeitsbereichsdaten, einschließlich Sicherheitsinhalten. Administratoren können [Azure-Rollen](roles.md) verwenden, um den Zugriff auf bestimmte Features in Microsoft Sentinel zu konfigurieren. Dies hängt jeweils von den Zugriffsanforderungen des Teams ab.
 
-Es kann aber sein, dass bei Ihnen einige Benutzer im Azure Sentinel-Arbeitsbereich nur Zugriff auf bestimmte Daten benötigen und keinen Zugriff auf die gesamte Azure Sentinel-Umgebung erhalten sollen. Beispiel: Sie möchten einem nicht für Sicherheitsvorgänge zuständigen Team Zugriff auf die Windows-Ereignisdaten für die eigenen Server gewähren.
+Möglicherweise verfügen Sie jedoch über einige Benutzer, die nur auf bestimmte Daten in Ihrem Microsoft Sentinel-Arbeitsbereich zugreifen müssen, aber keinen Zugriff auf die gesamte Microsoft Sentinel-Umgebung haben sollten. Beispiel: Sie möchten einem nicht für Sicherheitsvorgänge zuständigen Team Zugriff auf die Windows-Ereignisdaten für die eigenen Server gewähren.
 
-Für Fälle dieser Art empfehlen wir Ihnen, Ihre rollenbasierte Zugriffssteuerung (RBAC) basierend auf den Ressourcen zu konfigurieren, die für Ihre Benutzer zulässig sind – anstelle des Zugriffs auf den Azure Sentinel-Arbeitsbereich oder bestimmte Azure Sentinel-Features. Diese Methode wird auch als die Einrichtung der **rollenbasierten Zugriffssteuerung (RBAC) im Ressourcenkontext** bezeichnet.
+Für Fälle dieser Art empfehlen wir Ihnen, Ihre rollenbasierte Zugriffssteuerung (RBAC) basierend auf den Ressourcen zu konfigurieren, die für Ihre Benutzer zulässig sind – anstelle des Zugriffs auf den Microsoft-Sentinel-Arbeitsbereich oder bestimmte Microsoft-Sentinel-Features. Diese Methode wird auch als die Einrichtung der **rollenbasierten Zugriffssteuerung (RBAC) im Ressourcenkontext** bezeichnet.
 
-Wenn Benutzer nicht über den Azure Sentinel-Arbeitsbereich, sondern über die für sie zugänglichen Ressourcen Zugriff auf die Azure Sentinel-Daten haben, können sie Protokolle und Arbeitsmappen mit den folgenden Methoden anzeigen:
+Wenn Benutzer zugriff auf Microsoft-Sentinel-Daten über die Ressourcen haben, auf die sie anstelle des Microsoft Sentinel-Arbeitsbereichs zugreifen können, können sie Protokolle und Arbeitsmappen mithilfe der folgenden Methoden anzeigen:
 
 - **Über die Ressource selbst**, z. B. einen virtuellen Azure-Computer. Verwenden Sie diese Methode, um die Protokolle und Arbeitsmappen nur für eine bestimmte Ressource anzuzeigen.
 
@@ -43,7 +43,7 @@ Aktivieren Sie in Azure Monitor die rollenbasierte Zugriffssteuerung (RBAC) für
 > [!NOTE]
 > Falls es sich bei Ihren Daten nicht um eine Azure-Ressource, z. B. Syslog-, CEF- oder AAD-Daten, oder von einem benutzerdefinierten Sammler erfasste Daten handelt, müssen Sie manuell die Ressourcen-ID konfigurieren, die zum Ermitteln der Daten und Aktivieren des Zugriffs verwendet wird. Weitere Informationen finden Sie unter [Explizites Konfigurieren der rollenbasierten Zugriffssteuerung im Ressourcenkontext](#explicitly-configure-resource-context-rbac).
 >
-> Darüber hinaus werden [Funktionen](../azure-monitor/logs/functions.md) und gespeicherte Suchvorgänge in ressourcenorientierten Kontexten nicht unterstützt. Daher werden Azure Sentinel-Features wie Analyse und [Normalisierung](normalization.md) für die rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext in Azure Sentinel nicht unterstützt.
+> Darüber hinaus werden [Funktionen](../azure-monitor/logs/functions.md) und gespeicherte Suchvorgänge in ressourcenorientierten Kontexten nicht unterstützt. Daher werden Microsoft Sentinel-Features wie Analyse und [Normalisierung](normalization.md) für Ressourcen- und Kontextbasierte RBAC in Microsoft Sentinel nicht unterstützt.
 > 
 
 ## <a name="scenarios-for-resource-context-rbac"></a>Szenarien für die rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext
@@ -54,7 +54,7 @@ In der folgenden Tabelle sind die Szenarien angegeben, in denen RBAC im Ressourc
 |---------|---------|---------|
 |**Berechtigungen**     | Gesamter Arbeitsbereich        |   Nur bestimmte Ressourcen      |
 |**Datenzugriff**     |  Alle Daten des Arbeitsbereichs       | Nur Daten für Ressourcen, für die das Team eine Zugriffsberechtigung besitzt        |
-|**Erfahrung**     |  Vollständige Azure Sentinel-Umgebung, ggf. beschränkt auf die [Berechtigungen für Funktionsbereiche](roles.md), die dem Benutzer zugewiesen sind       |  Nur Protokollabfragen und Arbeitsmappen       |
+|**Erfahrung**     |  Die vollständige Microsoft Sentinel-Benutzeroberfläche, die möglicherweise durch die dem Benutzer zugewiesenen [funktionalen](roles.md) Berechtigungen eingeschränkt ist       |  Nur Protokollabfragen und Arbeitsmappen       |
 |     |         |         |
 
 Falls für Ihr Team ähnliche Zugriffsanforderungen wie für andere Teams (keine SOC-Teams) gemäß der obigen Tabelle bestehen, ist RBAC im Ressourcenkontext unter Umständen gut für Ihre Organisation geeignet.
@@ -67,7 +67,7 @@ Die folgende Liste enthält Beschreibungen von Szenarien, in denen andere Datenz
 
 |Szenario  |Lösung  |
 |---------|---------|
-|**Ein SOC-Team in einem Tochterunternehmen benötigt eine vollständige Azure Sentinel-Umgebung**.     |  Verwenden Sie in diesem Fall eine Architektur mit mehreren Arbeitsbereichen, damit Sie Ihre Datenberechtigungen trennen können. <br><br>Weitere Informationen finden Sie unter: <br>- [Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten](extend-sentinel-across-workspaces-tenants.md)<br>    - [Arbeiten mit Vorfällen in vielen Arbeitsbereichen gleichzeitig](multiple-workspace-view.md)          |
+|**Eine Niederlassung verfügt über ein SOC-Team, das eine vollständige Microsoft Sentinel-Erfahrung erfordert.**     |  Verwenden Sie in diesem Fall eine Architektur mit mehreren Arbeitsbereichen, damit Sie Ihre Datenberechtigungen trennen können. <br><br>Weitere Informationen finden Sie unter <br>- [Erweitern von Microsoft Sentinel über Arbeitsbereiche und Mandanten hinweg](extend-sentinel-across-workspaces-tenants.md)<br>    - [Arbeiten mit Vorfällen in vielen Arbeitsbereichen gleichzeitig](multiple-workspace-view.md)          |
 |**Sie möchten Zugriff auf eine bestimmte Art von Ereignis gewähren**.     |  Gewähren Sie für einen Windows-Administrator den Zugriff auf Windows-Sicherheitsereignisse auf allen Systemen. <br><br>Verwenden Sie in solchen Fällen [RBAC auf Tabellenebene](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043), um die Berechtigungen für die einzelnen Tabellen festzulegen.       |
 | **Der Zugriff auf eine Ebene mit höherer Granularität soll eingeschränkt werden (entweder nicht basierend auf der Ressource oder nur auf einen Teil der Felder eines Ereignisses).**   |   Es kann beispielsweise sein, dass Sie den Zugriff auf Office 365-Protokolle auf ein Tochterunternehmen eines Benutzers beschränken möchten. <br><br>Gewähren Sie in diesem Fall Zugriff auf die Daten, indem Sie die integrierte Integration mit [Power BI-Dashboards und -Berichten](../azure-monitor/logs/log-powerbi.md) verwenden.      |
 | | |
@@ -76,19 +76,19 @@ Die folgende Liste enthält Beschreibungen von Szenarien, in denen andere Datenz
 
 Führen Sie die folgenden Schritte aus, wenn Sie die rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext konfigurieren möchten, es sich bei Ihren Daten aber nicht um eine Azure-Ressource handelt.
 
-Beispiele für Daten in Ihrem Azure Sentinel-Arbeitsbereich, bei denen es sich nicht um Azure-Ressourcen handelt, sind Syslog-, CEF- oder AAD-Daten oder mit einem benutzerdefinierten Sammler erfasste Daten.
+Zu den Daten in Ihrem Microsoft Sentinel-Arbeitsbereich, bei denen es sich nicht um Azure-Ressourcen handelt, zählen beispielsweise Syslog-, CEF- oder AAD-Daten oder von einem benutzerdefinierten Collector gesammelte Daten.
 
 **Gehen Sie wie folgt vor, um die rollenbasierte Zugriffssteuerung im Ressourcenkontext explizit zu konfigurieren**:
 
 1. Vergewissern Sie sich, dass Sie die [rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext](../azure-monitor/logs/manage-access.md) in Azure Monitor aktiviert haben. 
 
-1. [Erstellen Sie eine Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md) für jedes Team mit Benutzern, die ohne Verwendung der gesamten Azure Sentinel-Umgebung Zugriff auf Ihre Ressourcen benötigen.
+1. [Erstellen Sie eine Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md) für jedes Benutzerteam, das ohne die gesamte Microsoft Sentinel-Umgebung auf Ihre Ressourcen zugreifen muss.
 
     Weisen Sie jedem Teammitglied [Berechtigungen für das Lesen von Protokollen](../azure-monitor/logs/manage-access.md#resource-permissions) zu.
 
 1. Weisen Sie den von Ihnen erstellten Ressourcenteamgruppen Ressourcen zu, und versehen Sie die Ereignisse mit den relevanten Ressourcen-IDs.
 
-    Wenn Azure-Ressourcen Daten an Azure Sentinel senden, werden die Protokolldatensätze automatisch mit der Ressourcen-ID der Datenquelle versehen.
+    Wenn Azure-Ressourcen Daten an Microsoft Sentinel senden, werden die Protokolleinträge automatisch mit der Ressourcen-ID der Datenquelle versehen.
 
     > [!TIP]
     > Wir empfehlen Ihnen, die Ressourcen, für die Sie Zugriff gewähren, in einer speziell für diesen Zweck erstellten Ressourcengruppe zu gruppieren.
@@ -106,7 +106,7 @@ Beispiele für Daten in Ihrem Azure Sentinel-Arbeitsbereich, bei denen es sich n
 
 Wenn Ereignisse per [Common Event Format (CEF)](connect-common-event-format.md) oder [Syslog](connect-syslog.md) erfasst werden, wird die Protokollweiterleitung genutzt, um Ereignisse für mehrere Quellsysteme zu erfassen.
 
-Wenn eine VM, die CEF- oder Syslog-Daten weiterleitet, auf das Senden von Syslog-Ereignissen von den Quellen lauscht und diese an Azure Sentinel weiterleitet, wird die Ressourcen-ID der Weiterleitungs-VM allen weitergeleiteten Ereignissen zugewiesen.
+Wenn beispielsweise eine CEF- oder Syslog-Weiterleitungs-VM die Quellen abhört, die Syslog-Ereignisse senden, und diese an Microsoft Sentinel weiterleitet, wird die Ressourcen-ID der Log-Weiterleitungs-VM allen Ereignissen zugewiesen, die sie weiterleitet.
 
 Falls mehrere Teams vorhanden sind, sollten Sie sicherstellen, dass Sie über separate VMs für die Protokollweiterleitung verfügen, von denen die Ereignisse für die einzelnen Teams verarbeitet werden.
 
@@ -119,7 +119,7 @@ Durch die Trennung Ihrer VMs wird beispielsweise dafür gesorgt, dass Syslog-Ere
 
 ### <a name="resource-ids-with-logstash-collection"></a>Ressourcen-IDs mit Logstash-Sammlung
 
-Wenn Sie Ihre Daten mit dem [Logstash-Ausgabe-Plug-In](connect-logstash.md) von Azure Sentinel erfassen, sollten Sie das Feld **azure_resource_id** verwenden, um Ihren benutzerdefinierten Sammler so zu konfigurieren, dass er die Ressourcen-ID in Ihrer Ausgabe enthält.
+Wenn Sie Ihre Daten mit dem Microsoft Sentinel [Logstash-Ausgabe-Plugin](connect-logstash.md) sammeln, verwenden Sie das Feld **azure_resource_id**, um Ihren benutzerdefinierten Kollektor so zu konfigurieren, dass die Ressourcen-ID in Ihre Ausgabe aufgenommen wird.
 
 Wenn Sie die rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext nutzen und die per API erfassten Ereignisse für bestimmte Benutzer verfügbar sein sollen, verwenden Sie die Ressourcen-ID der Ressourcengruppe, die Sie [für Ihre Benutzer erstellt](#explicitly-configure-resource-context-rbac) haben.
 
@@ -156,4 +156,4 @@ Wenn Sie die rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext nutzen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen hierzu finden Sie unter [Berechtigungen in Azure Sentinel](roles.md).
+Weitere Informationen finden Sie unter [Berechtigungen in Microsoft Sentinel](roles.md).

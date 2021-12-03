@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d36a2804519e5728dd068cc6c06ad005244e8c95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a65d72835a7a5af2681c5cbf0fd14e36adfb5cbe
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95524095"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033036"
 ---
 # <a name="multitenant-applications-in-azure"></a>Mehrinstanzenfähige Anwendungen in Azure
 Eine mehrinstanzenfähige Anwendung ist eine gemeinsam verwendete Ressource, mit der Benutzer in getrennten Mandanten die Anwendung so anzeigen können, als handele es sich um ihre eigene. Ein typisches Szenario für eine mehrinstanzenfähige Anwendung ist, wenn alle Benutzer das Benutzererlebnis der Anwendung von verschiedenen Mandanten individualisieren möchten, aber davon abgesehen gleiche grundlegende Geschäftsanforderungen haben. Beispiele für große mehrinstanzenfähige Anwendungen sind Microsoft 365, Outlook.com und visualstudio.com.
@@ -41,7 +41,7 @@ Eine korrekt implementierte mehrinstanzenfähige Anwendung bietet Benutzern die 
 * **Kosten**: Die Kosten sind niedriger als bei der Ausführung einer dedizierten Einzelinstanzanwendung, da Mehrinstanzenfähigkeit die gemeinsame Nutzung von Ressourcen ermöglicht.
 * **Individualisierbarkeit**. Die Möglichkeit, die Anwendung für einen einzelnen Mandanten auf verschiedene Weisen zu individualisieren, beispielsweise durch das Hinzufügen oder Entfernen von Funktionen, Ändern von Farben und Logos oder sogar durch das Hinzufügen eigener Codes oder Skripte.
 
-Kurz, obwohl es einige Überlegungen gibt, die Sie bei der Bereitstellung eines hochskalierbaren Dienstes berücksichtigen müssen, gibt es auch einige Ziele und Anforderungen, die bei vielen mehrinstanzenfähigen Anwendungen üblich sind. Einige sind möglicherweise für bestimmte Szenarien nicht relevant, und die Wichtigkeit einzelner Ziele und Anforderungen unterscheidet sich je nach Szenario. Als Anbieter einer mehrinstanzenfähigen Anwendung gibt es für Sie ebenfalls Ziele und Anforderungen wie das Erfüllen der Ziele und Anforderungen des Mandanten, Rentabilität, mehrere Serviceebenen, Bereitstellung, Wartbarkeit, Überwachung und Automatisierung.
+Kurz, obwohl es einige Überlegungen gibt, die Sie bei der Bereitstellung eines hochskalierbaren Dienstes berücksichtigen müssen, gibt es auch mehrere Ziele und Anforderungen, die bei vielen mehrinstanzenfähigen Anwendungen üblich sind. Einige sind möglicherweise für bestimmte Szenarien nicht relevant, und die Wichtigkeit einzelner Ziele und Anforderungen unterscheidet sich je nach Szenario. Als Anbieter einer mehrinstanzenfähigen Anwendung gibt es für Sie ebenfalls Ziele und Anforderungen wie das Erfüllen der Anforderungen des Mandanten, Rentabilität, mehrere Serviceebenen, Bereitstellung, Wartbarkeit, Überwachung und Automatisierung.
 
 Weitere Informationen zu zusätzlichen Überlegungen bei der Entwicklung einer mehrinstanzenfähigen Anwendung finden Sie unter [Hosting a Multi-Tenant Application on Azure][Hosting a Multi-Tenant Application on Azure](Hosten einer mehrinstanzenfähigen Anwendung in Azure, in englischer Sprache). Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](./azure-sql/database/saas-tenancy-app-design-patterns.md). 
 
@@ -84,7 +84,7 @@ Azure bietet viele verschiedene Möglichkeiten zur Bereitstellung neuer Mandante
 * Mit Workerrollen können Sie für einzelne Mandanten Ressourcen bereitstellen oder entfernen (wenn sich beispielsweise ein neuer Mandant anmeldet oder ein bereits vorhandener kündigt), Metriken zu Messzwecken sammeln und die Skalierung verwalten, indem einem bestimmten Zeitplan gefolgt oder das Überschreiten bestimmter Schwellen von wesentlichen Leistungsindikatoren als Auslöser genommen wird. Diese Rolle können Sie außerdem verwenden, um Aktualisierungen und Upgrades für die Lösung bereitzustellen.
 * Sie können Azure Blobs verwenden, um Rechen- oder vorinitialisierte Speicherressourcen für neue Mandanten bereitzustellen und gleichzeitig Zugriffsrichtlinien auf Containerebene zu bieten, um die Rechendienstpakete, VHD-Images und andere Ressourcen zu schützen.
 * Optionen für die Bereitstellung von SQL-Datenbank-Ressourcen für einen Mandanten umfassen:
-  
+
   * DDL in Skripts oder eingebettet als Ressourcen in Assemblys
   * Programmatisches Bereitstellen von DAC-Paketen für SQL Server 2008 R2
   * Kopieren aus einer Masterreferenzdatenbank

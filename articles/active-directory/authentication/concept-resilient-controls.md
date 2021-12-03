@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/13/2021
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4ea1a6b66980081597f301f22243bfd7397630
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 522e3c3e22730ee038f2a77585b698b3ed89921e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388335"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132321832"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -122,7 +122,7 @@ Eine Notfallplanrichtlinie für bedingten Zugriff ist eine **Sicherungsrichtlini
 * Stellen Sie [Azure AD-Self-Service-Kennwortzurücksetzung](./tutorial-enable-sspr.md) und [Azure AD-Kennwortschutz](./howto-password-ban-bad-on-premises-deploy.md) bereit, um sicherzustellen, dass Benutzer keine gängigen Kennwörter und Begriffe verwenden, die Sie sperren möchten.
 * Verwenden Sie Richtlinien, die den Zugriff innerhalb der Apps beschränken, wenn eine bestimmte Authentifizierungsebene nicht erreicht wird, statt eines einfachen Zurücksetzens auf Vollzugriff. Beispiel:
   * Konfigurieren Sie eine Sicherungsrichtlinie, die den eingeschränkten Sitzungsanspruch auf Exchange und SharePoint sendet.
-  * Wenn Ihre Organisation Microsoft Cloud App Security verwendet, ziehen Sie ein Fallback auf eine Richtlinie in Betracht, die MCAS aktiviert, und dann erlaubt MCAS schreibgeschützten Zugriff, jedoch kein Hochladen.
+  * Wenn Ihre Organisation Microsoft Defender für Cloud-Apps verwendet, sollten Sie auf eine Richtlinie zurückgreifen, die Defender für Cloud-Apps einbegreift und dann schreibgeschützten Zugriff, aber keine Uploads zulässt.
 * Benennen Sie Ihre Richtlinien so, dass Sie sie bei einer Unterbrechung problemlos wiederfinden. Der Richtlinienname muss die folgenden Elemente enthalten:
   * Eine *Bezeichnungsnummer* für die Richtlinie.
   * Anzuzeigender Text, diese Richtlinie dient nur für Notfälle. Beispiel: **IM NOTFALL AKTIVIEREN**

@@ -1,26 +1,26 @@
 ---
-title: Bessere Verwaltung Ihres SOC mit Incidentmetriken in Azure Sentinel | Microsoft-Dokumentation
-description: Verwenden Sie Informationen aus dem Azure Sentinel-Bildschirm und der -Arbeitsmappe mit Incidentmetriken, um Ihr Security Operations Center (SOC) besser zu verwalten.
+title: Bessere Verwaltung Ihres SOC mit Incidentmetriken in Microsoft Sentinel | Microsoft-Dokumentation
+description: Verwenden Sie Informationen aus dem Microsoft Sentinel-Bildschirm und der -Arbeitsmappe mit Incidentmetriken, um Ihr Security Operations Center (SOC) besser zu verwalten.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/29/2021
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 0f6fc1ef284cc1e9ac984af0d5b3ace2314c1afa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9e20c875068387342edf6fd70fe93689e26fb1ad
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023099"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523598"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>Bessere Verwaltung von SOC mit Incidentmetriken
 
@@ -28,11 +28,11 @@ ms.locfileid: "131023099"
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Als Security Operations Center-Manager benötigen Sie Metriken und Measures zur Gesamteffizienz, um die Leistung Ihres Teams messen zu können. Sie müssen Incidentvorgänge im Lauf der Zeit anhand einer Vielzahl verschiedener Kriterien anzeigen, wie z. B. Schweregrad, MITRE-Taktiken, mittlere Zeit bis zur Selektierung und mittlere Lösungszeit. Azure Sentinel stellt diese Daten jetzt mit der neuen **SecurityIncident**-Tabelle und dem entsprechenden Schema in Log Analytics und der zugehörigen Arbeitsmappe **Effizienz des Sicherheitsbetriebs** zur Verfügung. Sie können die Leistung Ihres Teams im zeitlichen Verlauf visualisieren und diese Einblicke verwenden, um die Effizienz zu verbessern. Sie können auch eigene KQL-Abfragen für die Incidenttabelle schreiben und verwenden, um benutzerdefinierte Arbeitsmappen zu erstellen, die genau Ihren speziellen Überprüfungsanforderungen und KPIs entsprechen.
+Als Security Operations Center-Manager benötigen Sie Metriken und Measures zur Gesamteffizienz, um die Leistung Ihres Teams messen zu können. Sie müssen Incidentvorgänge im Lauf der Zeit anhand einer Vielzahl verschiedener Kriterien anzeigen, wie z. B. Schweregrad, MITRE-Taktiken, mittlere Zeit bis zur Selektierung und mittlere Lösungszeit. Microsoft Sentinel stellt diese Daten jetzt mit der neuen **SecurityIncident**-Tabelle und dem entsprechenden Schema in Log Analytics und der zugehörigen Arbeitsmappe **Effizienz des Sicherheitsbetriebs** zur Verfügung. Sie können die Leistung Ihres Teams im zeitlichen Verlauf visualisieren und diese Einblicke verwenden, um die Effizienz zu verbessern. Sie können auch eigene KQL-Abfragen für die Incidenttabelle schreiben und verwenden, um benutzerdefinierte Arbeitsmappen zu erstellen, die genau Ihren speziellen Überprüfungsanforderungen und KPIs entsprechen.
 
 ## <a name="use-the-security-incidents-table"></a>Verwenden der Tabelle mit Sicherheitsincidents
 
-Die Tabelle **SecurityIncident** ist in Azure Sentinel integriert. Sie finden Sie zusammen mit anderen Tabellen in der Auflistung **SecurityInsights** unter **Protokolle**. Sie können diese Tabelle wie jede andere auch in Log Analytics abfragen.
+Die Tabelle **SecurityIncident** ist in Microsoft Sentinel integriert. Sie finden Sie zusammen mit anderen Tabellen in der Auflistung **SecurityInsights** unter **Protokolle**. Sie können diese Tabelle wie jede andere auch in Log Analytics abfragen.
 
 :::image type="content" source="./media/manage-soc-with-incident-metrics/security-incident-table.png" alt-text="Tabelle mit Sicherheitsincidents":::
 
@@ -91,7 +91,7 @@ Zur Ergänzung der Tabelle **SecurityIncidents** haben wir eine sofort einsatzbe
 - Neueste Aktivitäten 
 - Neueste Abschlussklassifizierungen  
 
-Sie finden diese neue Arbeitsmappenvorlage, indem Sie im Azure Sentinel-Navigationsmenü **Arbeitsmappen** und dort die Registerkarte **Vorlagen** auswählen. Wählen Sie **Effizienz des Sicherheitsbetriebs** aus dem Katalog, und klicken Sie auf eine der Schaltflächen **Gespeicherte Arbeitsmappe anzeigen** oder **Vorlage anzeigen**.
+Sie finden diese neue Arbeitsmappenvorlage, indem Sie im Microsoft Sentinel-Navigationsmenü **Arbeitsmappen** und dann die Registerkarte **Vorlagen** auswählen. Wählen Sie **Effizienz von Sicherheitsvorgängen** aus dem Katalog aus, und klicken Sie auf eine der Schaltflächen **Gespeicherte Arbeitsmappe anzeigen** und **Vorlage anzeigen**.
 
 :::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="Katalog mit Arbeitsmappen zu Sicherheitsincidents":::
 
@@ -105,5 +105,5 @@ Sie können die Vorlage verwenden, um eigene, auf Ihre Anforderungen zugeschnitt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Für den Einstieg in Azure Sentinel benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/free/)registrieren.
-- Hier erfahren Sie, wie Sie [Ihre Daten in Azure Sentinel integrieren](quickstart-onboard.md) und [Einblicke in Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Für den Einstieg in Microsoft Sentinel benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/free/)registrieren.
+- Hier erfahren Sie, wie Sie [ein Onboarding Ihrer Daten in Microsoft Sentinel durchführen](quickstart-onboard.md) und [Einblicke in Daten und potenzielle Bedrohungen erhalten](get-visibility.md).

@@ -3,13 +3,13 @@ title: Lokale Konfiguration des Sicherheits-Agents von Defender für IoT (C#)
 description: Erfahren Sie mehr über den Defender für IoT-Sicherheitsdienst und die lokale Konfigurationsdatei des Sicherheits-Agents für C#.
 ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 10/08/2020
-ms.openlocfilehash: 810ca270fed350da8beaa1c63fafe39df4ab6a61
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/09/2021
+ms.openlocfilehash: bfd70e8576bb139feb39d4a15e7076da0a4e0131
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128658269"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293590"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Grundlegendes zur lokalen Konfigurationsdatei (C#-Agent)
 

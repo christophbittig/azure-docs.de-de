@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 858234982aa4a148fe6af71ba8993923e80044dd
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 2fa29b8cfd15ccee133ef416d729c1807aa0a400
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230185"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017918"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Single-Page-Webanwendung: An- und Abmeldung
 

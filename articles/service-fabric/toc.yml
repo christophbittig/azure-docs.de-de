@@ -415,7 +415,7 @@
         - name: Konfigurieren des Verfügbarkeitszonenumfangs für verwaltete Cluster
           href: how-to-managed-cluster-availability-zones.md
         - name: Aktivieren der Datenträgerverschlüsselung für verwaltete Clusterknoten
-          href: how-to-enable-managed-cluster-disk-encryption.md
+          href: how-to-managed-cluster-enable-disk-encryption.md
         - name: Auswählen verwalteter Datenträgertypen für verwaltete Clusterknoten
           href: how-to-managed-cluster-managed-disk.md
         - name: Konfigurieren von Upgradeoptionen für verwaltete Cluster

@@ -1,0 +1,73 @@
+### YamlMime:FAQ
+metadata:
+  title: FAQ über Azure Video Analyzer für Medien
+  description: In diesem Artikel finden Sie häufig gestellte Fragen zu Azure Video Analyzer.
+  ms.service: azure-video-analyzer
+  ms.topic: conceptual
+  ms.date: 11/04/2021
+  ms.openlocfilehash: cc09610dec51c63bc825dff97249689061a44e4a
+  ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/04/2021
+  ms.locfileid: "131563642"
+title: FAQ über den Azure Video Analyzer
+summary: Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Azure Video Analyzer.
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: Allgemein
+    answer: "**Welche Systemvariablen kann ich in der Definition der Pipeline-Topologie verwenden?**\n\n| Variable   |  BESCHREIBUNG  | \n| --- | --- | \n| System.Runtime.DateTime | Stellt einen Zeitpunkt (in UTC) dar, der üblicherweise als Datum und Uhrzeit im folgenden Format ausgedrückt wird: <br/>*jjjjMMttTHHmmssZ* | \n| System.Runtime.PreciseDateTime | Stellt eine DateTime-Instanz in koordinierter Weltzeit (UTC) in einem ISO8601-konformen Format mit Millisekunden im folgenden Format dar:<br/>*jjjjMMttTHHmmss.fffZ* | \n| System.TopologyName    | Stellt den Namen der Pipelinetopologie dar. | \n| System.PipelineName | Stellt den Namen der Livepipeline dar. | \n\n> [!Note] \n> System.Runtime.DateTime und System.Runtime.PreciseDateTime können nicht als Teil des Namens einer Azure Video Analyzer-Videoressource in einem Knoten der Videosenke verwendet werden. Diese Variablen können in einer [FileSink](../pipeline.md#file-sink) zum Benennen der Datei verwendet werden.\n\n**Was ist der Unterschied zwischen Livepipeline- und Batchpipelineaufträgen des Video Analyzer-Diensts?**\n\nLivetopologien werden, wie der Name schon sagt, für die Erfassung von Livevideos von Kameras in der Cloud verwendet. Batchtopologien werden verwendet, um die aufgezeichneten Videos aus dem Video Analyzer-Dienst zu verarbeiten oder zu exportieren. Weitere Informationen finden Sie unter [Pipeline](../pipeline.md#pipeline-topologies) und Regeln zur [Verwendung von Knoten in Pipelines](../pipeline.md#rules-on-the-use-of-nodes).\n\n**Wie lautet die Datenschutzrichtlinie für Video Analyzer?**\n\nVideo Analyzer ist Teil der [Datenschutzbestimmungen von Microsoft](https://privacy.microsoft.com/privacystatement). Die Datenschutzerklärung erläutert die von Microsoft verarbeiteten personenbezogenen Daten sowie die Art und die Zwecke der Verarbeitung dieser Daten durch Microsoft. Weitere Informationen zum Datenschutz finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trust-center?rtc=1).\n\n**Verfügen wir über KI-Modelle oder KI-Rückschlussfunktionen für den Video Analyzer-Dienst?**\n\nFür Video Analyzer-Cloudpipelines sind diese aktuell nicht verfügbar. Das Video Analyzer-Edgemodul kann jedoch mit anderen Azure IoT Edge-Modulen, wie z. B. Stream Analytics, Cognitive Services, und anderen Azure-Clouddiensten, wie etwa Event Hub und Cognitive Services, verwendet werden, um leistungsstarke Hybridanwendungen (d. h. Edge- und Cloudanwendungen) zu erstellen. Dieses erweiterbare Edgemodul lässt sich nahtlos in verschiedene KI-Edgemodule wie Azure Cognitive Services-Container oder benutzerdefinierte Edgemodule integrieren, die mithilfe von Open-Source-Machine Learning-Modellen und Ihren Trainingsdaten erstellt wurden. Ein Beispiel dazu finden Sie [hier](../edge/analyze-live-video-use-your-model-grpc.md).\n"
+  - question: Konfiguration und Bereitstellung
+    answer: >
+      **Erstellen eines Azure Video Analyzer-Kontos**
+
+
+      Sie können das Konto entweder mithilfe einer ARM-Vorlage (Azure Resource Manager) oder über das Azure-Portal erstellen. Informationen zum Erstellen eines Azure Video Analyzer-Kontos finden Sie [hier](../create-video-analyzer-account.md)
+
+
+      **Wie lässt sich ein RTSP-Stream simulieren, wenn keine RTSP-Kamera verfügbar ist?**
+
+
+      Sie können den RTSP-Stream simulieren, indem Sie mithilfe einer Azure Linux-VM den RTSP-Kamerasimulator bereitstellen. Weitere Informationen finden Sie unter [RTSP-Kamerasimulator](./get-started-livepipelines-portal.md#deploy-rtsp-camera-simulator).
+
+
+      **Wie lassen sich dem RTSP-Kamerasimulator weitere Beispielvideodateien hinzufügen?**
+
+
+      Informationen zum Hinzufügen einer neuen Videodatei zum Medienordner Ihres vorhandenen RTSP-Kamerasimulators finden Sie [hier](./get-started-livepipelines-portal.md#deploy-rtsp-camera-simulator).
+
+      Beispielmediendateien, die zum Testen verfügbar sind, finden Sie unter [Mediendatensets](https://github.com/Azure/video-analyzer/tree/main/media).
+
+
+      **Ist ein RTSP-Simulator verfügbar, der bei Tests und während der Entwicklung für Livepipelines verwendet werden kann?**
+
+
+      Ja, Sie können den [RTSP-Kamerasimulator](./get-started-livepipelines-portal.md#deploy-rtsp-camera-simulator) für Schnellstarts und Tutorials verwenden, um den Lernprozess zu unterstützen. Es wird dringend empfohlen, dass Sie sich für Ihre Projekte nicht ausschließlich auf den Simulator verlassen. Sie sollten Tests mit Ihrer eigentlichen RTSP-Quelle durchführen, bevor Sie eine Produktionsbereitstellung planen.
+  - question: Aufzeichnen von IP-Kameras und RTSP-Einstellungen
+    answer: "**Muss ich auf meinem Kameragerät ein spezielles SDK verwenden, um einen Videostream zu senden?**\n\nNein. Video Analyzer unterstützt das Aufzeichnen von Medien mithilfe des Videostreamingprotokolls RTSP (Real-Time Streaming Protocol) für Videostreams, das von den meisten IP-Kameras unterstützt wird. \n\n**Kann ich Medien mit anderen Protokollen als RTSP zum Video Analyzer-Dienst pushen?**\n\nNein. Der Video Analyzer-Dienst unterstützt aktuell für die Aufzeichnung von Videos von IP-Kameras nur RTSP. Alles Kameras, die das RTSP-Streaming über TCP/HTTP unterstützen, sollten funktionieren. \n\n**Kann ich die URL der RTSP-Quelle in einer Livepipeline zurücksetzen oder aktualisieren?**\n\nJa, Sie können die RTSP-Konfiguration aktualisieren, wenn sich die Livepipeline im Zustand „deaktiviert“ befindet.\n"
+  - question: Überwachung und Metriken
+    answer: >
+      **Gibt es Tools, die die Überwachung des Video Analyzer-Diensts erleichtern?**
+
+
+      Sie können die vom Dienst generierten Ereignisse und Metriken überwachen, indem Sie Diagnoseeinstellungen einrichten und Protokolle in einem Speicherkonto archivieren. Sie können auf den Abschnitt „Überwachung“ zugreifen, indem Sie im Azure-Portal zum Video Analyzer-Konto navigieren. Weitere Informationen finden Sie [hier](./monitor-log-cloud.md).
+
+
+      **Kann ich die Pipeline in der Cloud mithilfe von Azure Event Grid überwachen?**
+
+
+      Nein. Das wird derzeit nicht unterstützt.
+
+
+      **Kann ich Azure Monitor verwenden, um Integrität, Metriken und Leistung meiner Pipelines in der Cloud anzuzeigen?**
+
+
+      Ja, diese Vorgehensweise wird unterstützt. Weitere Informationen finden Sie in der [Übersicht der Azure Monitor-Metriken](../../../azure-monitor/essentials/data-platform-metrics.md) und im Artikel [Überwachen und Protokollieren](./monitor-log-cloud.md).
+  - question: Abrechnung und Verfügbarkeit
+    answer: >
+      **Wie wird Azure Video Analyzer abgerechnet?**
+
+
+      Abrechnungsdetails finden Sie unter [Azure Video Analyzer – Preise](https://azure.microsoft.com/pricing/details/video-analyzer/).
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n[Schnellstart: Erste Schritte mit dem Azure Video Analyzer-Dienst](./get-started-livepipelines-portal.md)"

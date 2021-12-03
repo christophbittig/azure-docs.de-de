@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: eur
-ms.openlocfilehash: ae07075b91c21a56cd641d81319b863ced950139
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 34a45c4759954c0c0679dcafec13b5327a82cffd
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506544"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252280"
 ---
 :::row:::
     :::column span="3":::
-        Das Speech SDK unterstützt bei Verwendung mit Linux nur **Ubuntu 16.04** (bis September), **Ubuntu 18.04/20.04**, **Debian 9/10**, **Red Hat Enterprise Linux (RHEL) 7/8** und **CentOS 7/8** auf den folgenden Zielarchitekturen:
+        Das Speech SDK unterstützt nur **Ubuntu 16.04** (bis September 2021), **Ubuntu 18.04/20.04**, **Debian 9/10**, **Red Hat Enterprise Linux (RHEL) 7/8** und **CentOS 7/8** auf den folgenden Zielarchitekturen bei Verwendung mit Linux:
     :::column-end:::
     :::column:::
         <br>
         <div class="icon is-large">
-            <img alt="Linux" src="/media/logos/logo_linux-color.svg" width="60px">
+            <img alt="Linux" src="https://docs.microsoft.com/media/logos/logo_linux.svg" width="60px">
         </div>
     :::column-end:::
 :::row-end:::
@@ -39,28 +39,22 @@ ms.locfileid: "131506544"
 Bei einer nativen Anwendung basiert das Speech SDK auf `libMicrosoft.CognitiveServices.Speech.core.so`. Stellen Sie sicher, dass die Zielarchitektur (x86, x64) mit der Anwendung übereinstimmt. Abhängig von der Linux-Version können zusätzliche Abhängigkeiten erforderlich sein.
 
 - Freigegebene Bibliotheken der GNU C-Bibliothek (einschließlich der POSIX Threads Programming-Bibliothek `libpthreads`)
-- OpenSSL-Bibliothek (`libssl.so.1.0.0` oder `libssl.so.1.0.2`)
-- Freigegebene Bibliothek für ALSA-Anwendungen (`libasound.so.2`)
+- OpenSSL-Bibliothek (`libssl`)
+- Freigegebene Bibliothek für ALSA-Anwendungen (`libasound`)
 
-# <a name="ubuntu-160418042004"></a>[Ubuntu 16.04/18.04/20.04](#tab/ubuntu)
+# <a name="ubuntu-18042004"></a>[Ubuntu 18.04/20.04](#tab/ubuntu)
 
 ```Bash
 sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
+sudo apt-get install build-essential libssl-dev libasound2 wget
 ```
-
-> [!NOTE]
-> Wenn „libssl1.0.x“ nicht verfügbar ist, installieren Sie stattdessen „libssl1.1“.
 
 # <a name="debian-910"></a>[Debian 9/10](#tab/debian)
 
 ```Bash
 sudo apt-get update
-sudo apt-get install build-essential libssl1.0.2 libasound2 wget
+sudo apt-get install build-essential libssl-dev libasound2 wget
 ```
-
-> [!NOTE]
-> Wenn „libssl1.0.x“ nicht verfügbar ist, installieren Sie stattdessen „libssl1.1“.
 
 # <a name="rhel-78-and-centos-78"></a>[RHEL 7/8 und CentOS 7/8](#tab/rhel-centos)
 

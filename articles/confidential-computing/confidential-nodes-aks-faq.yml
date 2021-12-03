@@ -8,21 +8,21 @@ metadata:
   ms.topic: conceptual
   ms.date: 06/30/2021
   ms.author: amgowda
-  ms.openlocfilehash: 21a4b0fdd3a000469339e6ac49df0a43dc56e451
-  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+  ms.openlocfilehash: 96e478b61630b90f0253b65b54968f5f05aa1fe3
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/27/2021
-  ms.locfileid: "123101598"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131086543"
 title: Häufig gestellte Fragen zu Confidential Computing-Knoten in Azure Kubernetes Service (AKS)
 summary: >
   In diesem Artikel werden häufig gestellte Fragen zu Intel SGX-basierten Confidential Computing-Knoten in Azure Kubernetes Service (AKS) behandelt. Falls Sie weitere Fragen haben, senden Sie eine E-Mail an **acconaks@microsoft.com** .
 sections:
 - name: Product
   questions:
-  - question: Sind die Confidential Computing-Knoten in AKS allgemein verfügbar?
+  - question: Stehen die vertraulichen Rechenknoten auf AKS für den Produktionsbetrieb zur Verfügung?
     answer: >
-      Ja
+      Ja, für Intel SGX Enclave-Knoten.
   - question: Kann ich den beschleunigten Netzwerkbetrieb mit AKS-Clustern für Azure Confidential Computing aktivieren?
     answer: >
       Nein. Beschleunigter Netzwerkbetrieb wird auf virtuellen DCSv2-Computern, die Confidential Computing-Knoten in AKS bilden, nicht unterstützt.
@@ -33,7 +33,7 @@ sections:
       Nein [Auf der AKS-Engine basierende Confidential Computing-Knoten](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) unterstützen Confidential Computing-Knoten, die benutzerdefinierte Installationen zulassen und die vollständige Kontrolle über Ihre Kubernetes-Steuerungsebene haben.
   - question: Kann ich ACC-Knoten bei anderen Standard-AKS-SKUs ausführen (einen heterogenen Knotenpoolcluster erstellen)?
     answer: >
-      Ja. Sie können unterschiedliche Knotenpools innerhalb desselben AKS-Clusters ausführen, einschließlich ACC-Knoten. Wenn Sie Ihre Enklavenanwendungen in einem bestimmten Knotenpool als Ziel verwenden möchten, ziehen Sie das Hinzufügen von Knotenselektoren oder Anwenden von EPC-Limits in Betracht. Weitere Informationen finden Sie im Schnellstart für vertrauliche Knoten [hier](confidential-nodes-aks-get-started.md).
+      Ja. Sie können unterschiedliche Knotenpools innerhalb desselben AKS-Clusters ausführen, einschließlich ACC-Knoten. Wenn Sie Ihre Enklavenanwendungen in einem bestimmten Knotenpool als Ziel verwenden möchten, ziehen Sie das Hinzufügen von Knotenselektoren oder Anwenden von EPC-Limits in Betracht. Weitere Informationen finden Sie im Schnellstart für vertrauliche Knoten [hier](confidential-enclave-nodes-aks-get-started.md).
   - question: Kann ich Windows-Knoten und Windows-Container bei ACC ausführen?
     answer: >
       Derzeit leider nicht. Wenden Sie sich unter *acconaks@microsoft.com* an das Produktteam, wenn Sie Unterstützung für Windows-Knoten oder -Container benötigen.
@@ -41,25 +41,24 @@ sections:
     answer: >
       Ja. Die VMs haben auch einen regulären Arbeitsspeicher, der Standardcontainer-Workloads ausführen kann. Berücksichtigen Sie das Sicherheits- und Bedrohungsmodell Ihrer Anwendungen, bevor Sie über die Bereitstellungsmodelle entscheiden.
   - question: Welche VM-SKU sollte ich für Confidential Computing-Knoten wählen?
-    answer: >
-      DCSv2-SKUs. Die [DCSv2-SKUs](../virtual-machines/dcv2-series.md) stehen in den [unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all) zur Verfügung.
+    answer: "DCSv2/DCsv3-SKUs. Mehr über [DCSv2](../virtual-machines/dcv2-series.md) und [DCSv3](../virtual-machines/dcv3-series.md) finden Sie in den [unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)      \n"
   - question: Kann ich AKS mit DCSv2-Knotenpools über das Azure-Portal bereitstellen?
     answer: >
-      Ja. Die Azure CLI könnte auch als Alternative verwendet werden, wie [hier](confidential-nodes-aks-get-started.md) beschrieben wird.
+      Ja. Die Azure CLI könnte auch als Alternative verwendet werden, wie [hier](confidential-enclave-nodes-aks-get-started.md) beschrieben wird.
   - question: Welche Ubuntu-Version und VM-Generation wird unterstützt?
     answer: "18.04 für Gen 2. \n"
   - question: Was sind die aktuellen Einschränkungen des Produkts?
     answer: "- Unterstützt nur VM-Knoten für Ubuntu 18.04 Gen 2 \n- Keine Unterstützung für Windows-Knoten oder Windows-Container\n- EPC-speicherbasierte horizontale automatische Podskalierung wird nicht unterstützt. CPU und reguläre speicherbasierte Skalierung wird unterstützt.\n- Dev Spaces in AKS für vertrauliche Apps wird zurzeit nicht unterstützt.   \n"
-  - question: Kann ich AKS mit DCSv2-Knotenpools über das Azure-Portal bereitstellen?
+  - question: Kann ich AKS mit DCSv2/DCSv3-Knotenpools über das Azure-Portal bereitstellen?
     answer: >
-      Ja. Die Azure CLI könnte auch als Alternative verwendet werden, wie [hier](confidential-nodes-aks-get-started.md) beschrieben wird.
+      Ja. Die Azure CLI könnte auch als Alternative verwendet werden, wie [hier](confidential-enclave-nodes-aks-get-started.md) beschrieben wird.
   - question: Welche Ubuntu-Version und VM-Generation wird unterstützt?
     answer: "18.04 für Gen 2. \n"
 - name: Entwicklung und Bereitstellung
   questions:
   - question: Kann ich meine vorhandenen Containeranwendungen in AKS mit Azure Confidential Computing ausführen?
     answer: >
-      Ja. Sie können eine SGX-Wrappersoftware für die Ausführung in einer Enklave verwenden. Weitere Informationen zu den Grundvoraussetzungen für Plattformen finden Sie auf der [Seite „Vertrauliche Container“](confidential-containers.md).
+      Ja, Sie bringen SGX-Wrapper-Software zur Ausführung in einer Intel SGX-Enklave mit. Weitere Einzelheiten zu den Plattform-Enablern finden Sie auf der Seite [vertrauliche Container](confidential-containers.md).
   - question: Sollte ich für den Einstieg in Enklavenanwendungen ein Docker-Basisimage verwenden?
     answer: >
       Verschiedene Grundvoraussetzungen (ISVs und OSS-Projekte) bieten Möglichkeiten zum Aktivieren von vertraulichen Containern. Weitere Details und individuelle Verweise auf Implementierungen finden Sie auf der [Seite „Vertrauliche Container“](confidential-containers.md).
@@ -69,20 +68,20 @@ sections:
     answer: >
       Nachweis ist der Prozess zur Veranschaulichung und Überprüfung, dass ein Softwareelement auf der jeweiligen Hardwareplattform ordnungsgemäß instanziiert wurde. Außerdem stellt er sicher, dass sein Beweis überprüft werden kann, um zu gewährleisten, dass er auf einer sicheren Plattform ausgeführt wird und nicht manipuliert wurde. [Informieren Sie sich genauer](attestation.md) dazu, wie ein Nachweis bei Enklaven-Apps geführt wird.
   - question: Was geschieht, wenn mein Container größer als der verfügbare EPC-Speicher ist?
-    answer: "Der EPC-Speicher bezieht sich auf den Teil Ihrer Anwendung, der zur Ausführung in der Enklave programmiert wurde. Die Gesamtgröße Ihres Containers ist nicht die richtige Methode für einen Vergleich mit dem maximal verfügbaren EPC-Speicher. Tatsächlich ermöglichen DCSv2-Computer mit SGX einen maximalen VM-Arbeitsspeicher von 32 GB, in dem Ihr nicht vertrauenswürdiger Teil der Anwendung genutzt würde. Wenn Ihr Container aber mehr als den verfügbaren EPC-Speicher verbraucht, könnte die Leistung des Programmteils, der in der Enklave ausgeführt wird, dadurch beeinträchtigt werden.\n\nZur besseren Verwaltung des EPC-Speichers in den Workerknoten sollten Sie die EPC-speicherbasierte Verwaltung von Grenzwerten über Kubernetes in Erwägung ziehen. Nutzen Sie das folgende Beispiel als Referenz.\n\n> [!NOTE] \n> Im folgenden Beispiel wird ein öffentliches Container-Image von Docker Hub abgerufen. Es wird empfohlen, ein Pullgeheimnis für die Authentifizierung mithilfe eines Docker Hub-Kontos einrichten, anstatt einen anonymen Pull Request zu verwenden. Um die Zuverlässigkeit bei der Arbeit mit öffentlichen Inhalten zu verbessern, sollten Sie das Image in eine private Azure-Containerregistrierung importieren und dort verwalten. [Erfahren Sie mehr über die Arbeit mit öffentlichen Images](../container-registry/buffer-gate-public-content.md).\n\n```yaml\napiVersion: batch/v1\nkind: Job\nmetadata:\n  name: sgx-test\n  labels:\n    app: sgx-test\nspec:\n  template:\n    metadata:\n      labels:\n        app: sgx-test\n    spec:\n      containers:\n      - name: sgxtest\n        image: oeciteam/sgx-test:1.0\n        resources:\n          limits:\n            sgx.intel.com/sgx_epc_mem_in_MiB: 10 # This limit will automatically place the job into confidential computing node. Alternatively, you can target deployment to nodepools\n      restartPolicy: Never\n  backoffLimit: 0\n```\n"
+    answer: "Der EPC-Speicher bezieht sich auf den Teil Ihrer Anwendung, der zur Ausführung in der Enklave programmiert wurde. Die Gesamtgröße Ihres Containers ist nicht die richtige Methode für einen Vergleich mit dem maximal verfügbaren EPC-Speicher. Tatsächlich ermöglichen DCSv2-Computer mit SGX einen maximalen VM-Arbeitsspeicher von 32 GB, in dem Ihr nicht vertrauenswürdiger Teil der Anwendung genutzt würde. Wenn Ihr Container aber mehr als den verfügbaren EPC-Speicher verbraucht, könnte die Leistung des Programmteils, der in der Enklave ausgeführt wird, dadurch beeinträchtigt werden.\n\nZur besseren Verwaltung des EPC-Speichers in den Workerknoten sollten Sie die EPC-speicherbasierte Verwaltung von Grenzwerten über Kubernetes in Erwägung ziehen. Nutzen Sie das folgende Beispiel als Referenz.\n\n> [!NOTE] \n> Im folgenden Beispiel wird ein öffentliches Container-Image von Docker Hub abgerufen. Es wird empfohlen, ein Pullgeheimnis für die Authentifizierung mithilfe eines Docker Hub-Kontos einrichten, anstatt einen anonymen Pull Request zu verwenden. Um die Zuverlässigkeit bei der Arbeit mit öffentlichen Inhalten zu verbessern, sollten Sie das Image in eine private Azure-Containerregistrierung importieren und dort verwalten. [Erfahren Sie mehr über die Arbeit mit öffentlichen Images](../container-registry/buffer-gate-public-content.md).\n\n```yaml\napiVersion: batch/v1\nkind: Job\nmetadata:\n  name: sgx-test\n  labels:\n    app: sgx-test\nspec:\n  template:\n    metadata:\n      labels:\n        app: sgx-test\n    spec:\n      containers:\n      - name: sgxtest\n        image: oeciteam/sgx-test: 1.0\n        resources:\n          limits:\n            sgx.intel.com/sgx_epc_mem_in_MiB: 10 # This limit will automatically place the job into confidential computing node. Alternatively, you can target deployment to node pools\n      restartPolicy: Never\n  backoffLimit: 0\n```\n"
   - question: Was geschieht, wenn meine Enklave mehr als den maximal verfügbaren EPC-Speicher verbraucht?
     answer: "Der gesamte verfügbare EPC-Speicher wird von den Enklavenanwendungen auf denselben VMs oder Workerknoten gemeinsam genutzt. Wenn Ihre Anwendung mehr als den verfügbaren EPC-Speicher nutzt, wirkt sich dies möglicherweise auf ihre Leistung aus. Deshalb empfehlen wir, die Toleranz pro Anwendung in Ihrer YAML-Datei für die Bereitstellung festzulegen, um den verfügbaren EPC-Speicher pro Workerknoten besser verwalten zu können, wie in den vorstehenden Beispielen gezeigt wird. Alternativ können Sie jederzeit wahlweise auf den VM-Größen des Workerknotenpools nach oben navigieren oder weitere Knoten hinzufügen. \n"
   - question: Warum kann ich keine Forks () und „exec“ zur Ausführung mehrerer Prozesse in meiner Enklavenanwendung ausführen?
     answer: >
       Azure Confidential Computing DCsv2 SKU-VMs unterstützen zurzeit einen einzigen Adressraum für das Programm, das in einer Enklave ausgeführt wird. Ein einzelner Prozess ist eine aktuelle Einschränkung, die mit dem Fokus auf hohe Sicherheit konzipiert wurde. Bei den Grundvoraussetzungen für vertrauliche Container gibt es jedoch möglicherweise alternative Implementierungen, um diese Einschränkung zu umgehen.
   - question: Muss ich die Treibervolumes in meine YAML-Datei für die Bereitstellung einbinden?
-    answer: "Nein. Das Produkt verfügt über ein ACC-Add-On mit „confcom“, das Ihnen als Hilfe dient. Weitere Informationen zu den Bereitstellungsdetails finden Sie [hier](confidential-nodes-aks-overview.md).  \n        \n"
+    answer: "Nein. Produkt bietet ACC Add On, dass die (confcom) wird Ihnen helfen, mit diesem. Weitere Informationen zu den Bereitstellungsdetails finden Sie [hier](confidential-enclave-nodes-aks-get-started.md).  \n        \n"
   - question: Können wir die aktuelle Intel SGX DCAP-Treiberversion für AKS ändern?
     answer: "Nein Wir empfehlen Ihnen zur Ausführung von benutzerdefinierten Installationen, Bereitstellungen von [AKS-Engine Confidential Computing-Workerknoten ](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) zu wählen. \n"
   - question: Werden nur signierte und vertrauenswürdige Images in die Enklave für Confidential Computing geladen?
     answer: "Nicht nativ während der Enklaveninitialisierung, die Signatur kann jedoch per Nachweis überprüft werden. Weitere Informationen finden Sie [hier](../attestation/basic-concepts.md#benefits-of-policy-signing). \n"
   - question: Ist das Signieren von Containern möglich, damit für vertrauliche Container der Schutz der Codeintegrität vorhanden ist?
-    answer: "Bei vertraulichen Containern können Sie den Enklavencode signieren, aber nicht den Docker-Container selbst. Beim Signieren von Enklavencode (normalerweise Ihr Kernanwendungscode in Java, Python usw.) können Sie per Nachweis die MRSIGNER-Details des Enklavencodes verifizieren, bevor Sie den Code und die Ausführungsumgebung basierend auf dem Nachweisvorgang als vertrauenswürdig ansehen. \n"
+    answer: "Bei vertraulichen Containern können Sie den Enklavencode signieren, nicht aber den Docker-Container selbst. Bei Enclave-Code (typischerweise Ihr Kernanwendungscode in Java, Python usw.) können Sie die MRSIGNER-Details des Enclave-Codes durch Attestierung verifizieren, bevor Sie dem Code und der Ausführungsumgebung durch den Attestierungsfluss vertrauen können. \n"
 additionalContent: >-
   ## <a name="next-steps"></a>Nächste Schritte
 

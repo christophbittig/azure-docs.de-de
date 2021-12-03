@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 2a61ed8f32fb85c3500ebf191c8bd53808b75eb9
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5be1a70ecd9a5eefdd1df29a5305747cee09ddaa
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696887"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523750"
 ---
 # <a name="oracle-database-in-azure-linux-vm-backup-strategies"></a>Strategien zur Oracle Database-Sicherung auf einer Azure-Linux-VM
 
@@ -59,11 +59,11 @@ Die Möglichkeit, regionsübergreifend auf den Sicherungsspeicher zuzugreifen, i
 
 #### <a name="blob-storage-and-file-storage"></a>Blob Storage und File Storage
 
-Bei Verwendung von Azure Files mit den Protokollen SMB oder NFS 4.1 (Vorschau) zur Einbindung als Sicherungsspeicher ist zu beachten, dass in Azure Files kein georedundanter Speicher mit Lesezugriff (RA-GRS) und kein geozonenredundanter Speicher mit Lesezugriff (RA-GZRS) unterstützt wird. 
+Bei Verwendung von Azure Files mit den Protokollen SMB oder NFS 4.1 zur Einbindung als Sicherungsspeicher ist zu beachten, dass in Azure Files kein georedundanter Speicher mit Lesezugriff (RA-GRS) und kein geozonenredundanter Speicher mit Lesezugriff (RA-GZRS) unterstützt wird. 
 
 Wenn außerdem die Anforderung für den Sicherungsspeicher größer als 5 TiB ist, muss in Azure Files die [Funktion für große Dateifreigaben](../../../storage/files/storage-files-planning.md) aktiviert sein, die keine GRS- oder GZRS-Redundanz unterstützt. Nur LRS wird unterstützt. 
 
-Wenn Azure Blob Storage über das NFS 3.0-Protokoll (Vorschau) eingebunden wird, unterstützt der Dienst derzeit nur LRS- und ZRS-Redundanz.  
+Wenn Azure Blob Storage über das NFS 3.0-Protokoll eingebunden wird, unterstützt der Dienst derzeit nur LRS- und ZRS-Redundanz.  
 
 Wurde Azure Blob Storage mit einer beliebigen Redundanzoption konfiguriert, kann die Einbindung mithilfe von Blobfuse erfolgen.
 
@@ -84,14 +84,9 @@ Azure Blob Storage ist ein äußerst kostengünstiger, dauerhafter und sicherer 
 
 Obwohl Blobfuse in allen Azure-Regionen universell vorhanden ist und mit allen Speicherkontotypen funktioniert (einschließlich Universell V1/V2 und Azure Data Lake Store Gen2), hat sich gezeigt, dass die mit Blobfuse erreichte Leistung geringer ist als bei alternativen Protokollen wie SMB oder NFS. Als Medium zur Datensicherung wird daher die Verwendung des SMB- oder [NFS](../../../storage/blobs/storage-how-to-mount-container-linux.md)-Protokolls zum Einbinden von Azure Blob Storage empfohlen. 
 
-#### <a name="azure-blob-nfs-v30-preview"></a>Azure Blob Storage mit NFS 3.0 (Vorschau)
+#### <a name="azure-blob-nfs-v30"></a>Azure Blob NFS v3.0
 
-Die Unterstützung für das NFS 3.0-Protokoll (Network File System) in Azure befindet sich derzeit in der Vorschauphase. Durch die Unterstützung von [NFS](../../../storage/blobs/network-file-system-protocol-support.md) können Windows- und Linux-Clients einen Blob Storage-Container auf einer Azure-VM einbinden. 
-
-NFS 3.0 in der öffentlichen Vorschau unterstützt GPV2-Speicherkonten mit der Leistungsstufe „Standard“ in den folgenden Regionen: 
-- Australien (Osten)
-- Korea, Mitte
-- USA, Süden-Mitte. 
+Die Unterstützung für das NFS 3.0-Protokoll (Network File System) in Azure ist jetzt verfügbar. Durch die Unterstützung von [NFS](../../../storage/blobs/network-file-system-protocol-support.md) können Windows- und Linux-Clients einen Blob Storage-Container auf einer Azure-VM einbinden. 
 
 Um die Netzwerksicherheit sicherzustellen, muss sich das für die NFS-Einbindung verwendete Speicherkonto in einem VNet befinden. Azure Active Directory-Sicherheit (AD) und Zugriffssteuerungslisten (Access Control Lists, ACLs) werden in Konten mit aktivierter Unterstützung des NFS 3.0-Protokolls noch nicht unterstützt.
 
@@ -99,22 +94,15 @@ Um die Netzwerksicherheit sicherzustellen, muss sich das für die NFS-Einbindung
 
 [Azure Files](../../../storage/files/storage-files-introduction.md) ist ein cloudbasiertes, vollständig verwaltetes, verteiltes Dateisystem, das in lokalen oder cloudbasierten Windows-, Linux- oder macOS-Clients eingebunden werden kann.
 
-Azure Files bietet vollständig verwaltete, plattformübergreifende Dateifreigaben in der Cloud, auf die über das SMB-Protokoll (Server Message Block) und über das NFS-Protokoll (Network File System, Vorschau) zugegriffen werden kann. Azure Files unterstützt derzeit nicht den Zugriff auf mehrere Protokolle, daher kann eine Freigabe entweder eine NFS-Freigabe oder eine SMB-Freigabe sein. Es wird empfohlen, vor dem Erstellen von Azure-Dateifreigaben zu bestimmen, welches Protokoll Ihren Anforderungen am besten entspricht.
+Azure Files bietet vollständig verwaltete, plattformübergreifende Dateifreigaben in der Cloud, auf die über das SMB-Protokoll (Server Message Block) und über das NFS-Protokoll (Network File System) zugegriffen werden kann. Azure Files unterstützt derzeit nicht den Zugriff auf mehrere Protokolle, daher kann eine Freigabe entweder eine NFS-Freigabe oder eine SMB-Freigabe sein. Es wird empfohlen, vor dem Erstellen von Azure-Dateifreigaben zu bestimmen, welches Protokoll Ihren Anforderungen am besten entspricht.
 
 Azure-Dateifreigaben können auch über Azure Backup in einem Recovery Services-Tresor geschützt werden. Dadurch wird eine zusätzliche Schutzebene für Oracle RMAN-Sicherungen bereitgestellt.
 
-#### <a name="azure-files-nfs-v41-preview"></a>Azure Files mit NFS 4.1 (Vorschau)
+#### <a name="azure-files-nfs-v41"></a>Azure Files NFS v4.1
 
-Azure-Dateifreigaben können über das NFS 4.1-Protokoll (Network File System) in Linux-Distributionen eingebunden werden. In der Vorschauphase gibt es eine Reihe von Einschränkungen bei den unterstützten Features. Weitere Informationen finden Sie unter [Einbinden einer Azure NFS-Dateifreigabe (Vorschau)](../../../storage/files/storage-files-how-to-mount-nfs-shares.md). 
+Azure-Dateifreigaben können über das NFS 4.1-Protokoll (Network File System) in Linux-Distributionen eingebunden werden. Es gibt eine Reihe von Einschränkungen bei den unterstützten Features. Weitere Informationen finden Sie unter [Unterstützung für Azure Storage Features](../../../storage/files/files-nfs-protocol.md#support-for-azure-storage-features). 
 
-In der Vorschauphase ist Azure Files mit NFS 4.1 außerdem auf die folgenden [Regionen](../../../storage/files/storage-files-how-to-mount-nfs-shares.md) beschränkt:
-- USA, Osten (LRS und ZRS)
-- USA (Ost) 2
-- USA, Westen 2
-- Europa, Westen
-- Asien, Südosten
-- UK, Süden
-- Australien (Osten)
+[!INCLUDE [files-nfs-regional-availability](../../../../includes/files-nfs-regional-availability.md)]
 
 #### <a name="azure-files-smb-30"></a>Azure Files mit SMB 3.0
 

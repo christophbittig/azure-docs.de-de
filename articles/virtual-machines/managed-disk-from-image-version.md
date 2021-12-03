@@ -1,6 +1,6 @@
 ---
 title: Exportieren einer Imageversion auf einen verwalteten Datenträger
-description: Exportieren Sie eine Imageversion aus einem Katalog mit freigegebenen Images auf einen verwalteten Datenträger.
+description: Exportieren Sie eine Imageversion aus einer Azure Compute Gallery auf einen verwalteten Datenträger.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -10,23 +10,23 @@ ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fd6a1cf2cae56bf2d10fe4075caed019e2e72b7e
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 7984cd086864d069363fa65ab7dbaecf4b62165f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452247"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448859"
 ---
 # <a name="export-an-image-version-to-a-managed-disk"></a>Exportieren einer Imageversion auf einen verwalteten Datenträger
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
-Sie können den Betriebssystemdatenträger oder einen einzelnen Datenträger aus einer Imageversion als verwalteten Datenträger aus einer Imageversion exportieren, die in einem Katalog mit freigegebenen Images gespeichert ist.
+Sie können den Betriebssystemdatenträger oder einen einzelnen Datenträger aus einer Imageversion als verwalteten Datenträger aus einer Imageversion exportieren, die in einer Azure Compute Gallery (früher als Shared Image Gallery bezeichnet) gespeichert ist.
 
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
-Listen Sie die Imageversionen in einem Katalog mithilfe von [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) auf. In diesem Beispiel suchen wir nach allen Imageversionen, die Teil der Imagedefinition *myImageDefinition* im Imagekatalog *myGallery* sind.
+Listen Sie die Imageversionen in einem Katalog mithilfe von [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) auf. In diesem Beispiel suchen wir nach allen Imageversionen, die Teil der Imagedefinition *myImageDefinition* im Katalog *myGallery* sind.
 
 ```azurecli-interactive
 az sig image-version list \

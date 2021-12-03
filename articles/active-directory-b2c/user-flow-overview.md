@@ -12,12 +12,12 @@ ms.date: 04/08/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 7e2b1e02f63257a74d66a70531cfbf7ef56a1c65
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 73d1649881428047cf0c593335d66d9d3145ec2c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043907"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021864"
 ---
 # <a name="user-flows-and-custom-policies-overview"></a>Übersicht über Benutzerflows und benutzerdefinierte Richtlinien
 
@@ -60,7 +60,7 @@ Eine benutzerdefinierte Richtlinie ist vollständig konfigurierbar und richtlini
 Mit einer benutzerdefinierten Richtlinie haben Sie die Möglichkeit, User Journeys mit einer beliebigen Schrittkombination zu erstellen. Beispiel:
 
 * Verbund mit anderen Identitätsanbietern
-* Abfragen für Erst- und Drittanbieterlösungen für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)
+* Herausforderungen bei der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) von Erst- und Drittanbietern
 * Beliebige Benutzereingaben erfassen
 * Integration in externe Systeme mithilfe der REST-API-Kommunikation
 
@@ -78,13 +78,13 @@ Weitere Informationen über benutzerdefinierte Richtlinien finden Sie unter [Ben
 
 Die folgende Tabelle enthält einen detaillierten Vergleich der Szenarien, die Sie mit Azure AD B2C-Benutzerflows und benutzerdefinierten Richtlinien ermöglichen können.
 
-| Kontext | Benutzerabläufe | Benutzerdefinierte Richtlinien |
+| Kontext | Benutzerflows | Benutzerdefinierte Richtlinien |
 |-|-------------------|-----------------|
 | Zielbenutzer | Alle Anwendungsentwickler mit oder ohne Identitätskenntnissen | Identitätsexperten, Systemintegratoren, Berater und interne Identitätsteams. Sie sind mit OpenID Connect-Flows sowie Identitätsanbietern und anspruchsbasierten Authentifizierungen vertraut. |
 | Konfigurationsmethode | Azure-Portal mit benutzerfreundlicher Benutzeroberfläche (User Interface, UI) | Direktes Bearbeiten von XML-Dateien und anschließendes Hochladen in das Azure-Portal |
-| Anpassung der Benutzeroberfläche | [Vollständige Anpassung der Benutzeroberfläche](customize-ui-with-html.md) einschließlich HTML, CSS und [JavaScript](javascript-and-page-layout.md).<br><br>[Unterstützung mehrerer Sprachen](language-customization.md) mit benutzerdefinierten Zeichenfolgen. | identisch |
-| Anpassung von Attributen | Standard- und benutzerdefinierte Attribute | identisch |
-| Token- und Sitzungsverwaltung | [Anpassung von Token](configure-tokens.md) und des [Sitzungsverhaltens](session-behavior.md). | identisch |
+| Anpassung der Benutzeroberfläche | [Vollständige Anpassung der Benutzeroberfläche](customize-ui-with-html.md) einschließlich HTML, CSS und [JavaScript](javascript-and-page-layout.md).<br><br>[Unterstützung mehrerer Sprachen](language-customization.md) mit benutzerdefinierten Zeichenfolgen. | Identisch mit Benutzerflows |
+| Anpassung von Attributen | Standard- und benutzerdefinierte Attribute | Identisch mit Benutzerflows |
+| Token- und Sitzungsverwaltung | [Anpassung von Token](configure-tokens.md) und des [Sitzungsverhaltens](session-behavior.md). | Identisch mit Benutzerflows |
 | Identitätsanbieter | [Vordefinierte lokale Anbieter](identity-provider-local.md) oder [Social Media-Anbieter](add-identity-provider.md), z. B. Verbund mit Azure Active Directory-Mandanten. | Standardbasierte OIDC-, OAUTH- und SAML-Protokolle  Die Authentifizierung ist auch mithilfe der Integration von REST-APIs möglich. |
 | Identitätsaufgaben | [Registrierung oder Anmeldung](add-sign-up-and-sign-in-policy.md) mit lokalen Konten oder vielen Social Media-Konten<br><br>[Self-Service-Kennwortzurücksetzung](add-password-reset-policy.md)<br><br>[Profilbearbeitung](add-profile-editing-policy.md)<br><br>Multi-Factor Authentication<br><br>Zugriffstoken-Flows | Führen Sie dieselben Aufgaben wie bei Benutzerflows mit benutzerdefinierten Identitätsanbietern aus, oder verwenden Sie benutzerdefinierte Bereiche.<br><br>Stellen Sie ein Benutzerkonto bei der Registrierung in einem anderen System bereit.<br><br>Senden Sie mit Ihrem eigenen E-Mail-Dienstanbieter eine Willkommens-E-Mail.<br><br>Verwenden Sie einen Benutzerspeicher außerhalb von Azure AD B2C.<br><br>Überprüfen Sie die von Benutzern bereitgestellten Informationen mit einem vertrauenswürdigen System über eine API. |
 

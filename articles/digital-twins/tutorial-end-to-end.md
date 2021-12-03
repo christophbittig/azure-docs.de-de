@@ -1,22 +1,22 @@
 ---
 title: 'Tutorial: Erstellen einer End-to-End-Lösung'
 titleSuffix: Azure Digital Twins
-description: Tutorial zur Erstellung einer Azure Digital Twins-End-to-End-Lösung, die auf Gerätedaten basiert.
+description: In diesem Tutorial erfahren Sie, wie Sie eine Azure Digital Twins-End-to-End-Lösung erstellen, die auf Gerätedaten basiert.
 author: baanders
 ms.author: baanders
-ms.date: 8/23/2021
+ms.date: 10/19/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9d19a74dc7bacc996fe328679d9c3e12766bfadf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9233f33818e9961cc5daf8cf35b14457172ecae3
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626188"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504833"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Tutorial: Erstellen einer End-to-End-Lösung
 
-Für die Einrichtung einer vollständigen End-to-End-Lösung, die auf Livedaten aus Ihrer Umgebung basiert, können Sie für Ihre Azure Digital Twins-Instanz eine Verbindung mit anderen Azure-Diensten herstellen, um die Verwaltung von Geräten und Daten durchzuführen.
+In diesem Azure Digital Twins-Tutorial wird beschrieben, wie Sie eine End-to-End-Lösung erstellen, die die Funktionalität des Diensts veranschaulicht. Für die Einrichtung einer vollständigen End-to-End-Lösung, die auf Livedaten aus Ihrer Umgebung basiert, können Sie für Ihre Azure Digital Twins-Instanz eine Verbindung mit anderen Azure-Diensten herstellen, um die Verwaltung von Geräten und Daten durchzuführen.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -51,7 +51,7 @@ Hier sind die Komponenten aufgeführt, die mit der Beispiel-App *AdtSampleApp* f
 * Beispiele für die Nutzung des [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) (in *CommandLoop.cs*)
 * Konsolenschnittstelle zum Aufrufen der Azure Digital Twins-API
 * *SampleClientApp*: Azure Digital Twins-Beispiellösung
-* *SampleFunctionsApp*: Eine Azure Functions-App, mit der Ihr Azure Digital Twins-Graph basierend auf den Telemetriedaten von IoT Hub- und Azure Digital Twins-Ereignissen aktualisiert wird
+* *SampleFunctionsApp*: Eine Azure Functions-App, mit der Ihr Azure Digital Twins-Graph basierend auf den Telemetriedaten von IoT Hub- und Azure Digital Twins-Ereignissen aktualisiert wird
 
 ### <a name="instantiate-the-pre-created-twin-graph"></a>Instanziieren des vorab erstellten Zwillingsgraphen
 
@@ -393,7 +393,7 @@ Wählen Sie auf der Seite *Ereignisabonnement erstellen* die Option **Erstellen*
 
 ## <a name="run-the-simulation-and-see-the-results"></a>Ausführen der Simulation und Anzeigen der Ergebnisse
 
-Nun sollten Ereignisse vom simulierten Gerät an Azure Digital Twins und über das Azure Digital Twins-Diagramm übertragen werden können, um Zwillinge nach Bedarf zu aktualisieren. In diesem Abschnitt führen Sie den Gerätesimulator erneut aus, um den von Ihnen eingerichteten vollständigen Ereignisfluss zu starten, und fragen Azure Digital Twins ab, um die Liveergebnisse anzuzeigen.
+Nun sollten Ereignisse vom simulierten Gerät an Azure Digital Twins und über den Azure Digital Twins-Graphen übertragen werden können, um Zwillinge nach Bedarf zu aktualisieren. In diesem Abschnitt führen Sie den Gerätesimulator erneut aus, um den von Ihnen eingerichteten vollständigen Ereignisfluss zu starten, und fragen Azure Digital Twins ab, um die Liveergebnisse anzuzeigen.
 
 Navigieren Sie zu Ihrem Visual Studio-Fenster, in dem das Projekt _**DeviceSimulator**_ geöffnet ist, und führen Sie das Projekt aus.
 

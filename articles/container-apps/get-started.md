@@ -1,25 +1,25 @@
 ---
 title: 'Schnellstart: Bereitstellen Ihrer ersten Container-App'
 description: Stellen Sie Ihre erste Anwendung in Azure Container Apps (Vorschauversion) bereit.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: quickstart
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7c6865d574204f22c8b81afe04dd10561674876b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bb2b24c080f7f8173280d5c31ca711d7241d04f1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101147"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552715"
 ---
 # <a name="quickstart-deploy-your-first-container-app"></a>Schnellstart: Bereitstellen Ihrer ersten Container-App
 
 Mit Azure Container Apps (Vorschauversion) können Sie Microservices und Containeranwendungen auf einer serverlosen Plattform ausführen. Mit Container Apps genießen Sie die Vorteile von Containern und müssen sich nicht mehr um die manuelle Konfiguration von Cloudinfrastrukturen und komplexen Containerorchestratoren kümmern.
 
-In dieser Schnellstartanleitung erstellen Sie eine sichere Container Apps-Umgebung und stellen Ihre erste Container-App bereit.
+In dieser Schnellstartanleitung erstellen Sie eine sichere Container-Apps-Umgebung und stellen Ihre erste Container-App bereit.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +37,7 @@ az login
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az login
 ```
 
@@ -54,31 +54,47 @@ az extension add \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl 
 ```
 
 ---
 
-Legen Sie die folgenden Umgebungsvariablen fest:
+Die Erweiterung wurde installiert. Registrieren Sie nun den Namespace `Microsoft.Web`.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli
-RESOURCE_GROUP="my-containerapps"
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+---
+
+Legen Sie anschließend die folgenden Umgebungsvariablen fest:
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+RESOURCE_GROUP="my-container-apps"
 LOCATION="canadacentral"
-LOG_ANALYTICS_WORKSPACE="containerapps-logs"
-CONTAINERAPPS_ENVIRONMENT="containerapps-env"
+LOG_ANALYTICS_WORKSPACE="my-container-apps-logs"
+CONTAINERAPPS_ENVIRONMENT="my-environment"
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
-$RESOURCE_GROUP="my-containerapps"
+$RESOURCE_GROUP="my-container-apps"
 $LOCATION="canadacentral"
-$LOG_ANALYTICS_WORKSPACE="containerapps-logs"
-$CONTAINERAPPS_ENVIRONMENT="containerapps-env"
+$LOG_ANALYTICS_WORKSPACE="my-container-apps-logs"
+$CONTAINERAPPS_ENVIRONMENT="my-environment"
 ```
 
 ---
@@ -95,7 +111,7 @@ az group create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az group create `
   --name $RESOURCE_GROUP `
   --location "$LOCATION"
@@ -123,7 +139,7 @@ az monitor log-analytics workspace create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az monitor log-analytics workspace create `
   --resource-group $RESOURCE_GROUP `
   --workspace-name $LOG_ANALYTICS_WORKSPACE
@@ -174,7 +190,7 @@ az containerapp env create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp env create `
   --name $CONTAINERAPPS_ENVIRONMENT `
   --resource-group $RESOURCE_GROUP `
@@ -198,26 +214,28 @@ az containerapp create \
   --environment $CONTAINERAPPS_ENVIRONMENT \
   --image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest \
   --target-port 80 \
-  --ingress 'external'
+  --ingress 'external' \
+  --query configuration.ingress.fqdn
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp create `
   --name my-container-app `
   --resource-group $RESOURCE_GROUP `
   --environment $CONTAINERAPPS_ENVIRONMENT `
   --image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest `
   --target-port 80 `
-  --ingress 'external'
+  --ingress 'external' `
+  --query configuration.ingress.fqdn
 ```
 
 ---
 
 Wenn Sie `--ingress` auf `external` festlegen, stellen Sie die Container-App für öffentliche Anforderungen zur Verfügung.
 
-Der Befehl `create` gibt den vollqualifizierten Domänennamen der Container-App zurück. Kopieren Sie diesen Speicherort in einen Webbrowser, und die folgende Meldung wird angezeigt.
+Der Befehl `create` gibt in diesem Fall den vollqualifizierten Domänennamen der Container-App zurück. Kopieren Sie diesen Speicherort in einen Webbrowser, und die folgende Meldung wird angezeigt.
 
 :::image type="content" source="media/get-started/azure-container-apps-quickstart.png" alt-text="Ihre erste Azure Container Apps-Bereitstellung":::
 
@@ -234,7 +252,7 @@ az group delete \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az group delete `
   --name $RESOURCE_GROUP
 ```

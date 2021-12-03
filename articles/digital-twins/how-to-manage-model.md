@@ -1,18 +1,18 @@
 ---
 title: Verwalten von DTDL-Modellen
 titleSuffix: Azure Digital Twins
-description: Informationen zum Erstellen, Bearbeiten und Löschen von Modellen in Azure Digital Twins
+description: Erfahren Sie, wie Sie DTDL-Modelle in Azure Digital Twins verwalten, einschließlich des Erstellens, Bearbeitens und Löschens.
 author: baanders
 ms.author: baanders
-ms.date: 8/30/2021
+ms.date: 10/20/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2e5c137ceb08bd89dc70026639c6191b1c61f42d
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 7ae5a3293b7b9ba4712c3762b18b6d9c66eab926
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223241"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507168"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
@@ -97,7 +97,7 @@ In diesem Abschnitt werden Überlegungen und Strategien zum Aktualisieren von Mo
 Bevor Sie Modelle aktualisieren, sollten Sie in ganzheitlicher Weise über die gesamte Lösung und die Auswirkungen der Modelländerungen nachdenken, die Sie vornehmen werden. Modelle in einer Azure Digital Twins-Lösung sind häufig miteinander verbunden. Daher ist es wichtig, sich kaskadierende Änderungen bewusst zu machen, bei denen die Aktualisierung eines Modells das Aktualisieren mehrerer anderer erfordert. Das Aktualisieren von Modellen wirkt sich auf die Zwillinge aus, die die Modelle verwenden, und kann sich auch auf den Eingangs- und Verarbeitungscode, Clientanwendungen und automatisierte Berichte auswirken.
 
 Im Folgenden finden Sie einige Empfehlungen, mit deren Hilfe Sie Modellübergänge reibungslos verwalten können:
-* Statt sich auf einzelne Modelle zu konzentrieren, sollten Sie erwägen, bei Bedarf den gesamten Modellsatz weiterzuentwickeln, um Modelle und ihre Beziehungen gemeinsam auf dem aktuellen Stand zu halten.
+* Statt sich Modelle als getrennte Entitäten vorzustellen, sollten Sie erwägen, bei Bedarf den gesamten Modellsatz weiterzuentwickeln, um bei Bedarf Modelle und ihre Beziehungen gemeinsam auf dem aktuellen Stand zu halten.
 * Behandeln Sie Modelle wie Quellcode, und verwalten Sie sie in der Quellcodeverwaltung. Behandeln Sie Modelle und Modelländerungen mit derselben Strenge und Aufmerksamkeit wie anderen Code in der Lösung.
 
 Wenn Sie bereit sind, mit dem Aktualisieren der Modelle fortzufahren, lesen Sie den restlichen Teil dieses Abschnitts, in dem die Strategien beschrieben werden, die Sie zum Implementieren der Aktualisierungen verwenden können.

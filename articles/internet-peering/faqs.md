@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 9b0b2b08e01c99fc918c4bc5649197c9caa4978a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4c58a0550d35575721a1d27ce7a572ac0e00e90
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75774033"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024200"
 ---
 # <a name="internet-peering---faqs"></a>Häufig gestellte Fragen zum Internetpeering
 
@@ -29,7 +29,7 @@ Die Einrichtung einer Peeringverbindung mithilfe von Azure PowerShell wird als A
 
 **Welche IP-Adressen werden beim Aufrufen von „New-AzPeeringDirectConnectionObject“ für Microsoft-Geräte und Peergeräte vergeben?**
 
-Beim Aufrufen des Cmdlets „New-AzPeeringDirectConnectionObject“ wird eine /31-Adresse (a.b.c.d/31) oder eine /30-Adresse (a.b.c.d/30) eingegeben. Die erste IP-Adresse (a.b.c.d+0) wird dem Peergerät zugewiesen. Die zweite IP-Adresse (a.b.c.d+1) wird dem Microsoft-Gerät zugewiesen.
+Beim Aufrufen des Cmdlets „New-AzPeeringDirectConnectionObject“ wird eine `/31`-Adresse (`a.b.c.d/31`) oder eine `/30`-Adresse (`a.b.c.d/30`) eingegeben. Die erste IP-Adresse (`a.b.c.d+0`) wird dem Gerät des Peers und die zweite IP-Adresse (`a.b.c.d+1`) dem Microsoft-Gerät zugewiesen.
 
 **Worum handelt es sich bei den Parametern „MaxPrefixesAdvertisedIPv4“ und „MaxPrefixesAdvertisedIPv6“ im Cmdlet „New-AzPeeringDirectConnectionObject“?**
 

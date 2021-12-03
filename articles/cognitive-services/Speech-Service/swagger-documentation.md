@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 02/16/2021
 ms.author: alexeyo
-ms.openlocfilehash: baab45ee4fe3d65c51ce40e6be202980815eb9a6
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: edc01f30ea3090f5c95a1da16e4d62feecbb18cc
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131507187"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989278"
 ---
 # <a name="swagger-documentation"></a>Swagger-Dokumentation
 
-Der Speech-Dienst verfügt über eine Swagger-Spezifikation zum Interagieren mit einigen REST-APIs, die zum Importieren von Daten, Erstellen von Modellen, Testen der Modellgenauigkeit, Erstellen von benutzerdefinierten Endpunkten, Einreihen von Batchtranskriptionen in die Warteschlange und Verwalten von Abonnements verwendet werden. Die meisten Vorgänge, die über den [Custom Speech-Bereich von Speech Studio](./custom-speech-overview.md) verfügbar sind, können mit diesen APIs programmgesteuert durchgeführt werden.
+Der Speech-Dienst verfügt über eine Swagger-Spezifikation zum Interagieren mit einigen REST-APIs, die zum Importieren von Daten, Erstellen von Modellen, Testen der Modellgenauigkeit, Erstellen von benutzerdefinierten Endpunkten, Einreihen von Batchtranskriptionen in die Warteschlange und Verwalten von Abonnements verwendet werden. Die meisten Vorgänge, die über den [Custom Speech-Bereich von Speech Studio](https://aka.ms/speechstudio/customspeech) verfügbar sind, können mit diesen APIs programmgesteuert durchgeführt werden.
 
 > [!NOTE]
 > Der Speech-Dienst verfügt über mehrere REST-APIs für die [Spracherkennung](rest-speech-to-text.md) und die [Sprachsynthese](rest-text-to-speech.md).  

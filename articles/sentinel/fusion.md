@@ -1,26 +1,26 @@
 ---
-title: Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel
-description: Verwenden Sie die Fusion-Technologie in Azure Sentinel, um die „Alarmmüdigkeit“ zu reduzieren und verwertbare Incidents zu erstellen, die auf der erweiterten Erkennung von mehrstufigen Angriffen basieren.
+title: Erweiterte Erkennung von mehrstufigen Angriffen in Microsoft Sentinel
+description: Verwenden Sie die Fusion-Technologie in Microsoft Sentinel, um die „Alarmmüdigkeit“ zu reduzieren und verwertbare Incidents zu erstellen, die auf der erweiterten Erkennung von mehrstufigen Angriffen basieren.
 services: sentinel
 documentationcenter: na
 author: yelevin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2a8a6167208e95a253a2826b47a871278e0f15dc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8fa4fea5502f2e034aa6b5ba3f672cf8012dcd5a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083895"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520045"
 ---
-# <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel
+# <a name="advanced-multistage-attack-detection-in-microsoft-sentinel"></a>Erweiterte Erkennung von mehrstufigen Angriffen in Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -29,18 +29,18 @@ ms.locfileid: "131083895"
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Azure Sentinel verwendet Fusion, ein Korrelations-Modul, das auf skalierbaren Algorithmen von Maschinellem Lernen basiert, um mehrstufige Angriffe (auch als erweiterte persistente Bedrohungen oder APT bezeichnet) automatisch zu erkennen, indem Kombinationen aus anomalem Verhalten und verdächtigen Aktivitäten identifiziert werden, die in verschiedenen Phasen der Kette auftreten können. Auf der Grundlage dieser Entdeckungen generiert Azure Sentinel Incidents, die auf andere Weise nur schwer abgefangen werden können. Diese Incidents umfassen mindestens zwei Warnungen oder Aktivitäten. Standardmäßig weisen diese Incidents ein geringes Volumen, eine hohe Qualität und einen hohen Schweregrad auf.
+Microsoft Sentinel verwendet Fusion, ein Korrelations-Modul, das auf skalierbaren Algorithmen von Maschinellem Lernen basiert, um mehrstufige Angriffe (auch als erweiterte persistente Bedrohungen oder APT bezeichnet) automatisch zu erkennen, indem Kombinationen aus anomalem Verhalten und verdächtigen Aktivitäten identifiziert werden, die in verschiedenen Phasen der Kette auftreten können. Auf der Grundlage dieser Entdeckungen generiert Microsoft Sentinel Incidents, die auf andere Weise nur schwer abgefangen werden können. Diese Incidents umfassen mindestens zwei Warnungen oder Aktivitäten. Standardmäßig weisen diese Incidents ein geringes Volumen, eine hohe Qualität und einen hohen Schweregrad auf.
 
 Diese Erkennungstechnologie ist für Ihre Umgebung angepasst und bewirkt nicht nur eine Reduzierung der [False Positive](false-positives.md)-Rate, sondern kann Angriffe auch mit eingeschränkten oder fehlenden Informationen erkennen.
 
-Da Fusion mehrere Signale von verschiedenen Produkten korreliert, um erweiterte mehrstufige Angriffe zu erkennen, werden erfolgreiche Erkennungen von Fusion als **Fusion-Vorfälle** auf der Seite Azure Sentinel **Vorfälle** und nicht als **Warnungen** angezeigt und in der *Tabelle Vorfälle* in **Protokollen** und nicht in der Tabelle *Sicherheitswarnungen* gespeichert.
+Da Fusion mehrere Signale von verschiedenen Produkten korreliert, um erweiterte mehrstufige Angriffe zu erkennen, werden erfolgreiche Erkennungen von Fusion als **Fusion-Vorfälle** auf der Seite Microsoft Sentinel **Vorfälle** und nicht als **Warnungen** angezeigt und in der Tabelle *Vorfälle* in **Protokollen** und nicht in der Tabelle *Sicherheitswarnungen* gespeichert.
 
 ### <a name="configure-fusion"></a>Konfigurieren von Fusion
 
-Fusion ist standardmäßig in Azure Sentinel als [ Analyseregel](detect-threats-built-in.md#view-built-in-detections) namens **Erweiterte mehrstufige Angriffserkennung** aktiviert. Sie können den Status des Filters anzeigen und ändern, Quellsignale so konfigurieren, dass sie in das Fusion ML-Modell aufgenommen werden, oder bestimmte Erkennungsmuster von der Erkennung durch Fusion ausschließen, die möglicherweise nicht auf Ihre Umgebung anwendbar sind. Erfahren Sie hier, wie Sie [den Fusion-Filter konfigurieren](configure-fusion-rules.md).
+Fusion ist standardmäßig in Microsoft Sentinel als [ Analyseregel](detect-threats-built-in.md#view-built-in-detections) namens **Erweiterte mehrstufige Angriffserkennung** aktiviert. Sie können den Status des Filters anzeigen und ändern, Quellsignale so konfigurieren, dass sie in das Fusion ML-Modell aufgenommen werden, oder bestimmte Erkennungsmuster von der Erkennung durch Fusion ausschließen, die möglicherweise nicht auf Ihre Umgebung anwendbar sind. Erfahren Sie hier, wie Sie [den Fusion-Filter konfigurieren](configure-fusion-rules.md).
 
 > [!NOTE]
-> Azure Sentinel verwendet derzeit Verlaufsdaten von 30 Tagen, um die Algorithmen für das Maschinelle Lernen des Fusion Moduls zu trainieren. Diese Daten werden immer mit den Schlüsseln von Microsoft verschlüsselt, wenn sie die Pipeline für maschinelles Lernen durchlaufen. Die Trainingsdaten werden jedoch nicht mit [vom Kunden verwalteten Schlüsseln (Customer Managed Keys, CMK)](customer-managed-keys.md) verschlüsselt, wenn Sie CMK in Ihrem Azure Sentinel-Arbeitsbereich aktiviert haben. Navigieren Sie zum Deaktivieren von Fusion zum **Azure Sentinel**  \> **Konfiguration** \>  **Analyse\> Aktiv Filter**, klicken Sie mit der rechten Maustaste auf den Filter **Erweiterte mehrstufige Angriffserkennung**, und wählen Sie **Deaktivieren aus.**
+> Microsoft Sentinel verwendet derzeit Verlaufsdaten von 30 Tagen, um die Algorithmen für das Maschinelle Lernen des Fusion Moduls zu trainieren. Diese Daten werden immer mit den Schlüsseln von Microsoft verschlüsselt, wenn sie die Pipeline für maschinelles Lernen durchlaufen. Die Trainingsdaten werden jedoch nicht mit [vom Kunden verwalteten Schlüsseln (Customer Managed Keys, CMK)](customer-managed-keys.md) verschlüsselt, wenn Sie CMK in Ihrem Microsoft Sentinel-Arbeitsbereich aktiviert haben. So deaktivieren Sie Fusion: Navigieren Sie zu **Microsoft Sentinel** \> **Konfiguration** \> **Analytics \> Aktive Regeln**, klicken Sie mit der rechten Maustaste auf die Regel **Advanced Multistage Attack Detection** („Erweiterte mehrstufige Angriffserkennung“), und wählen Sie **Deaktivieren** aus.
 
 ## <a name="fusion-for-emerging-threats"></a>Fusion für neue Bedrohungen
 
@@ -50,7 +50,7 @@ Fusion ist standardmäßig in Azure Sentinel als [ Analyseregel](detect-threats-
 
 Die Menge der Sicherheitsereignisse wächst weiter, und der Umfang und die Raffinesse von Angriffen nehmen ständig zu. Zwar können wir die bekannten Angriffsszenarien definieren, doch wie sieht es eigentlich mit den neuen und noch unbekannten Bedrohungen in Ihrer Umgebung aus?  
 
-Das von ML unterstützte Azure Sentinel Fusion Modul hilft Ihnen, die **neuen und unbekannten Bedrohungen** in Ihrer Umgebung zu finden, indem sie eine **erweiterte ML-Analyse** anwenden und **einen größeren Bereich anomaler Signale** korrelieren und gleichzeitig die Warnungsmüdigkeit gering halten. 
+Das von ML unterstützte Microsoft Sentinel Fusion Modul hilft Ihnen, die **neuen und unbekannten Bedrohungen** in Ihrer Umgebung zu finden, indem sie eine **erweiterte ML-Analyse** anwenden und **einen größeren Bereich anomaler Signale** korrelieren und gleichzeitig die Warnungsmüdigkeit gering halten.
 
 Die ML-Algorithmen des Fusion Moduls lernen ständig aus erfolgten Angriffen und wenden Analysen basierend auf der Meinung von Sicherheitsanalysten an. Es kann daher zuvor unerkannte Bedrohungen von Millionen anomaler Verhaltensweisen in der gesamten Kette in Ihrer Umgebung erkennen, wodurch Sie den Angreifern einen Schritt voraus sein können.
 
@@ -58,45 +58,45 @@ Die ML-Algorithmen des Fusion Moduls lernen ständig aus erfolgten Angriffen und
 
 - [Standardmäßige Erkennung von Anomalien](soc-ml-anomalies.md)
 - Warnungen von Microsoft-Produkten:
-    - Azure Active Directory Identity Protection
-    - Azure Defender
-    - Azure Defender für IoT
-    - Microsoft 365 Defender
-    - Microsoft Cloud App Security
-    - Microsoft Defender für den Endpunkt
-    - Microsoft Defender for Identity
-    - Microsoft Defender für Office 365
+  - Azure Active Directory Identity Protection
+  - Microsoft Defender für Cloud
+  - Microsoft Defender für IoT
+  - Microsoft 365 Defender
+  - Microsoft Defender für Cloud-Apps
+  - Microsoft Defender für den Endpunkt
+  - Microsoft Defender for Identity
+  - Microsoft Defender für Office 365
 - [**Warnungen aus Filtern für geplante**](configure-fusion-rules.md#configure-scheduled-analytics-rules-for-fusion-detections)Analysen, und zwar sowohl [integrierte](detect-threats-built-in.md#scheduled) als auch [von Ihren Sicherheitsanalysten erstellte.](detect-threats-custom.md) Analysefilter müssen Informationen über die Angriffskette (Taktiken) und die Zuordnung der Einheit enthalten, um von Fusion verwendet werden zu können.
 
 Sie müssen nicht unbedingt *alle* oben aufgeführten Datenquellen verbunden haben, damit Fusion für neue Bedrohungen funktioniert. Doch desto mehr Datenquellen Sie verknüpft haben, je umfassender ist die Abdeckung, und desto mehr Bedrohungen wird Fusion entdecken.
 
-Wenn die Korrelationen des Fusion Moduls zur Erkennung einer neuen Bedrohung führen, wird in der Tabelle **Vorfälle** in Ihrem Azure Sentinel-Arbeitsbereich ein Vorfall mit hohem Schweregrad mit dem Titel "*Potentielle mehrstufige Angriffsaktivitäten von Fusion erkannt*" generiert.
+Wenn die Korrelationen des Fusion Moduls zur Erkennung einer neuen Bedrohung führen, wird in der Tabelle **Vorfälle** in Ihrem Microsoft Sentinel-Arbeitsbereich ein Vorfall mit hohem Schweregrad mit dem Titel "*Potentielle mehrstufige Angriffsaktivitäten von Fusion erkannt*" generiert.
 
 ## <a name="fusion-for-ransomware"></a>Fusion für Ransomware
 
-Das Azure Sentinel Fusion Modul von Azure generiert einen Vorfall, wenn mehrere Warnungen verschiedener Typen aus den folgenden Datenquellen erkannt werden, und entscheidet, dass sie mit Ransomware-Aktivitäten in Zusammenhang stehen könnten:
+Das Microsoft Sentinel Fusion Modul von Azure generiert einen Vorfall, wenn mehrere Warnungen verschiedener Typen aus den folgenden Datenquellen erkannt werden, und entscheidet, dass sie mit Ransomware-Aktivitäten in Zusammenhang stehen könnten:
 
-- [Azure Defender (Azure Security Center)](connect-azure-security-center.md)
+- [Microsoft Defender für Cloud](connect-azure-security-center.md)
 - [Microsoft Defender für den Endpunkt](./data-connectors-reference.md#microsoft-defender-for-endpoint)
 - [Microsoft Defender for Identity](./data-connectors-reference.md#microsoft-defender-for-identity)
-- [Microsoft Cloud App Security](./data-connectors-reference.md#microsoft-cloud-app-security-mcas)
-- [Azure Sentinel-Regeln für geplante Analysen](detect-threats-built-in.md#scheduled) Fusion berücksichtigt nur Filter für geplante Analysen mit Taktikinformationen und zugeordneten Einheiten.
+- [Microsoft Defender für Cloud-Apps](./data-connectors-reference.md#microsoft-defender-for-cloud-apps)
+- [Microsoft Sentinel-Regeln für geplante Analysen](detect-threats-built-in.md#scheduled) Fusion berücksichtigt nur Filter für geplante Analysen mit Taktikinformationen und zugeordneten Einheiten.
 
 Solche Fusion-Incidents heißen **Mehrere Warnungen, die sich möglicherweise auf erkannte Ransomware-Aktivität beziehen**, und werden generiert, wenn relevante Warnungen in einem bestimmten Zeitrahmen erkannt werden und mit den Phasen **Ausführung** und **Umgehen von Verteidigungsmaßnahmen** eines Angriffs verknüpft sind.
 
-Beispielsweise generiert Azure Sentinel einen Vorfall für mögliche Ransomware-Aktivitäten, wenn die folgenden Warnungen in einem bestimmten Zeitrahmen auf demselben Host ausgelöst werden:
+Beispielsweise generiert Microsoft Sentinel einen Incident für mögliche Ransomware-Aktivitäten, wenn die folgenden Warnungen in einem bestimmten Zeitrahmen auf demselben Host ausgelöst werden:
 
 | Warnung | `Source` | Schweregrad |
 | ----- | ------ | -------- |
-| **Windows Fehler- und Warnereignisse** | Azure Sentinel-Regeln für geplante Analysen | Information |
-| **Ransomware ‘GandCrab‘ wurde verhindert** | Azure Defender | mittel |
+| **Windows Fehler- und Warnereignisse** | Microsoft Sentinel-Regeln für geplante Analysen | Information |
+| **Ransomware ‘GandCrab‘ wurde verhindert** | Microsoft Defender für Cloud | mittel |
 | **‘Emotet‘-Schadsoftware wurde erkannt** | Microsoft Defender für den Endpunkt | Information |
-| **‘Tofsee‘ hinten erkannt** | Azure Defender | niedrig |
-| **‘Parite‘-Schadsoftware wurde erkannt** | Microsoft Defender für den Endpunkt | Information 
+| **‘Tofsee‘ hinten erkannt** | Microsoft Defender für Cloud | niedrig |
+| **‘Parite‘-Schadsoftware wurde erkannt** | Microsoft Defender für den Endpunkt | Information |
 
 ## <a name="scenario-based-fusion-detections"></a>Szenariobasierte Erkennungen durch Fusion
 
-Im folgenden Abschnitt werden die Arten von [szenariobasierten mehrstufigen Angriffen](fusion-scenario-reference.md) nach Bedrohungsklassifizierung aufgelistet, die Azure Sentinel mit dem Fusion-Korrelations-Filter erkennt.
+Im folgenden Abschnitt werden die Arten von [szenariobasierten mehrstufigen Angriffen](fusion-scenario-reference.md) nach Bedrohungsklassifizierung aufgelistet, die Microsoft Sentinel mit dem Fusion-Korrelations-Filter erkennt.
 
 Um diese Fusion-gestützten Angriffserkennungsszenarien zu ermöglichen, müssen die zugehörigen Datenquellen in Ihrem Log Analytics-Arbeitsbereich erfasst sein. Wählen Sie die Links in der folgenden Tabelle aus, um mehr über die einzelnen Szenarien und die zugehörigen Datenquellen zu erfahren.
 
@@ -125,9 +125,10 @@ Um diese Fusion-gestützten Angriffserkennungsszenarien zu ermöglichen, müssen
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur erweiterten Erkennung mehrstufiger Angriffe durch Fusion:
+
 - Erfahren Sie mehr über [die szenariobasierten Angriffserkennungen durch Fusion](fusion-scenario-reference.md).
 - Hier erfahren Sie, wie Sie [die Filter für Fusion konfigurieren.](configure-fusion-rules.md)
 
-Nachdem Sie nun mehr über die erweiterte Erkennung von mehrstufigen Angriffen erfahren haben, ist für Sie ggf. die folgende Schnellstartanleitung interessant. Darin wird veranschaulicht, wie Sie Einblicke in Ihre Daten und in potenzielle Bedrohungen erhalten: [Erste Schritte mit Azure Sentinel](get-visibility.md).
+Nachdem Sie nun mehr über die erweiterte Erkennung von mehrstufigen Angriffen erfahren haben, ist für Sie ggf. die folgende Schnellstartanleitung interessant. Darin wird veranschaulicht, wie Sie Einblicke in Ihre Daten und potenzielle Bedrohungen erhalten: [Erste Schritte mit Microsoft Sentinel](get-visibility.md).
 
-Arbeiten Sie das folgende Tutorial durch, wenn Sie bereit zum Untersuchen der Incidents sind, die für Sie erstellt wurden: [Untersuchen von Vorfällen mit Azure Sentinel](investigate-cases.md).
+Wenn Sie bereit sind, die Vorfälle zu untersuchen, die für Sie erstellt werden, lesen Sie das folgende Tutorial: [Untersuchen von Vorfällen mit Microsoft Sentinel](investigate-cases.md).

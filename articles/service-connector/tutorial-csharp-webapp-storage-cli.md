@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 11c04c9a513e454e8a9296c00b716a154b5bc541
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8768d188ae56896fe1f7272ee18533e95343e69c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029620"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846556"
 ---
 # <a name="tutorial-deploy-web-application-connected-to-azure-storage-blob-with-service-connector"></a>Tutorial: Bereitstellen einer Webanwendung, die mit Azure Storage Blob verbunden ist, mithilfe des Dienstconnectors
 
@@ -26,10 +26,10 @@ Es wird beschrieben, wie Sie für eine Web-App (kein angemeldeter Benutzer), die
 ## <a name="1-set-up-your-initial-environment"></a>1. Einrichten der anfänglichen Umgebung
 
 1. Sie benötigen ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-2. Installieren Sie die <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.18.0 oder höher, mit der Sie Befehle in einer beliebigen Shell ausführen, um Azure-Ressourcen bereitzustellen und zu konfigurieren.
+2. Installieren Sie die <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.30.0 oder höher, mit der Sie Befehle in einer beliebigen Shell ausführen, um Azure-Ressourcen bereitzustellen und zu konfigurieren.
 
 
-Vergewissern Sie sich, dass Sie mindestens Version 2.18.0 der Azure CLI verwenden:
+Vergewissern Sie sich, dass Sie mindestens Version 2.30.0 der Azure CLI verwenden:
 
 ```Azure CLI
 az --version
@@ -92,6 +92,8 @@ az webapp connection create storage-blob -g ServiceConnector-tutorial-rg -n <app
 - **Ersetzen** Sie *\<app-name>* durch den Namen Ihrer Web-App, die Sie in Schritt 3 verwendet haben.
 - **Ersetzen** Sie *\<storage-name>* durch den Namen Ihrer Speicher-App, die Sie in Schritt 4 verwendet haben.
 
+> [!NOTE]
+> Wird die Fehlermeldung „Das Abonnement ist nicht für die Verwendung des Ressourcenanbieters "{0}" registriert.“ angezeigt, führen Sie `az provider register -n Microsoft.ServiceLinker` aus, um den Dienstconnector-Ressourcenanbieter zu registrieren. Führen Sie anschließend erneut den Verbindungsbefehl aus. 
 
 ## <a name="6-run-sample-code"></a>6. Ausführen des Beispielcodes
 

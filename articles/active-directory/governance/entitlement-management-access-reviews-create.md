@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 10/26/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f2497e47078f91c1649db107dd105227e219ae2
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: d8e4b08f407417136462ff066d0f0e81312662ae
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113565717"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051699"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Erstellen einer Zugriffsüberprüfung für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -40,9 +40,33 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](entitlement-managem
 
 Sie können Zugriffsüberprüfungen beim [Erstellen eines neuen Zugriffspakets](entitlement-management-access-package-create.md) oder beim [Bearbeiten eines vorhandenen Zugriffspakets](entitlement-management-access-package-lifecycle-policy.md) aktivieren. Führen Sie die folgenden Schritte aus, um Zugriffsüberprüfungen für ein Zugriffspaket zu aktivieren:
 
-1. Öffnen Sie die Registerkarte **Lebenszyklus** für ein Zugriffspaket, und scrollen Sie nach unten zu **Zugriffsüberprüfungen**.
+1. Öffnen Sie die Registerkarte **Lebenszyklus** für ein Zugangspaket, um festzulegen, wann die Zuweisung eines Benutzers zu diesem Zugangspaket abläuft. Sie können auch angeben, ob Benutzer ihre Zuweisungen verlängern können.
 
-1. Verschieben Sie den Umschalter **Zugriffsüberprüfungen erforderlich** auf **Ja**.
+1. Legen Sie im Abschnitt **Ablauf** die Option Zugriffspaket läuft ab auf **An Datum**, **Anzahl Tage**, **Anzahl der Stunden** oder **Nie** fest.
+
+    Wählen Sie für **An Datum** ein Ablaufdatum in der Zukunft aus.
+
+    Geben Sie für **Anzahl Tage** eine Zahl zwischen 0 und 3.660 Tagen an.
+
+    Geben Sie unter **Anzahl der Stunden** eine Stundenzahl an.
+
+    Basierend auf Ihrer Auswahl läuft die Zuweisung eines Benutzers zum Zugriffspaket an einem bestimmten Datum, nach einer bestimmten Anzahl von Tagen nach der Genehmigung oder nie ab.
+    
+    ![Zugriffspaket – Lebenszyklusablaufeinstellungen](./media/entitlement-management-access-reviews/expiration.png)
+
+1. Klicken Sie auf Erweiterte Ablaufeinstellungen anzeigen, um zusätzliche Einstellungen anzuzeigen.
+
+1. Um Benutzern zu erlauben, ihre Zuweisungen zu erweitern, setzen Sie **Benutzern die Verlängerung des Zugriffs erlauben** auf **Ja**.
+
+    Wenn Verlängerungen in der Richtlinie zulässig sind, erhält der Benutzer 14 Tage und auch einen Tag vor Ablauf seiner Zugriffspaketzuweisung eine E-Mail, die ihn auffordert, die Zuweisung verlängern zu lassen. Der Benutzer muss sich noch immer im Gültigkeitsbereich der Richtlinie befinden, wenn er eine Verlängerung anfordert. Wenn die Richtlinie ein explizites Enddatum für Zuweisungen umfasst und der Benutzer eine Anforderung zum Verlängern des Zugriffs sendet, muss das Verlängerungsdatum in der Anforderung vor dem Ablauf der Zuweisungen liegen, der in der Richtlinie definiert ist, durch die dem Benutzer Zugriff auf das Zugriffspaket gewährt wurde. Wenn die Richtlinie beispielsweise angibt, dass Zuweisungen am 30. Juni ablaufen sollen, ist die maximale Verlängerung, die ein Benutzer anfordern kann, der 30. Juni.
+
+    Wenn der Zugriff eines Benutzers verlängert wird, kann er das Zugriffspaket nach dem angegebenen Verlängerungsdatum (Datum, das in der Zeitzone des Benutzers festgelegt ist, der die Richtlinie erstellt hat) nicht mehr anfordern.
+
+1. Wenn eine Genehmigung zum Gewähren einer Verlängerung erforderlich sein soll, legen Sie **Genehmigung erforderlich, um Verlängerung zu gewähren** auf **Ja** fest.
+
+    Es werden die auf der Registerkarte Anforderungen festgelegten Genehmigungseinstellungen verwendet.
+
+1. Schieben Sie als Nächstes den Schalter **Zugangsüberprüfungen verlangen** auf **Ja**.
 
     ![Hinzufügen der Zugriffsüberprüfung](./media/entitlement-management-access-reviews/access-reviews-pane.png)
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions
 ms.date: 10/25/2021
-ms.openlocfilehash: 1875b32d5a5f964b3a602b60d820ca377e0ee927
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 026dc4cb24c5e7b51fc5eec918cf92d3b6b23090
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131040906"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846138"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Herstellen einer Verbindung zwischen einer Data Factory und Azure Purview (Vorschau)
 
@@ -72,13 +72,9 @@ Informationen zum Registrieren von Data Factory in Azure Purview finden Sie unte
 
 Die verwaltete Identität für Data Factory wird verwendet, um Pushvorgänge für Herkunftsdaten von der Data Factory zu Purview zu authentifizieren. 
 
-- Weisen Sie für Purview-Konten, die **am oder nach dem 18. August 2021** erstellt wurden, der verwalteten Identität für Data Factory die Rolle **Datenkurator** für Ihre Purview-**Stammsammlung** zu. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Purview](../purview/catalog-permissions.md) und unter [Hinzufügen von Rollen und Einschränken des Zugriffs über Sammlungen](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
+Erteilen Sie der verwalteten Identität der Data Factory die Rolle **Datenkurator** für Ihre Purview-**Stammsammlung**. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Purview](../purview/catalog-permissions.md) und unter [Hinzufügen von Rollen und Einschränken des Zugriffs über Sammlungen](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
 
-    Beim Herstellen einer Verbindung zwischen Data Factory und Purview über die Erstellungsbenutzeroberfläche versucht ADF, eine solche Rollenzuweisung automatisch hinzuzufügen. Wenn Sie die Rolle **Sammlungsadministratoren** für die Purview-Stammsammlung innehaben und über Ihr Netzwerk Zugriff auf das Purview-Konto haben, wird dieser Vorgang erfolgreich ausgeführt.
-
-- Weisen Sie für Purview-Konten, die **vor dem 18. August 2021** erstellt wurden, der verwalteten Identität für die Data Factory die in Azure integrierte Rolle [**Datenkurator für Purview (Legacy)**](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) für Ihr Purview-Konto zu. Weitere Informationen zu Legacyberechtigungen für die Zugriffssteuerung in Azure Purview finden Sie [hier](../purview/catalog-permissions.md#legacy-permission-guide).
-
-    Beim Herstellen einer Verbindung zwischen Data Factory und Purview über die Erstellungsbenutzeroberfläche versucht ADF, eine solche Rollenzuweisung automatisch hinzuzufügen. Wenn Sie für das Purview-Konto die in Azure integrierte Rolle **Besitzer** oder **Benutzerzugriffsadministrator** haben, wird dieser Vorgang erfolgreich durchgeführt.
+Beim Herstellen einer Verbindung zwischen Data Factory und Purview über die Erstellungsbenutzeroberfläche versucht ADF, eine solche Rollenzuweisung automatisch hinzuzufügen. Wenn Sie die Rolle **Sammlungsadministratoren** für die Purview-Stammsammlung innehaben und über Ihr Netzwerk Zugriff auf das Purview-Konto haben, wird dieser Vorgang erfolgreich ausgeführt.
 
 ## <a name="monitor-purview-connection"></a>Überwachen der Purview-Verbindung
 

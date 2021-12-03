@@ -1,5 +1,5 @@
 ---
-title: 'CLI-Skript: Auflisten und Ändern der Serverparameter einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau)'
+title: 'CLI-Skript: Auflisten und Ändern der Serverparameter einer Instanz von Azure Database for MySQL – Flexible Server'
 description: Dieses Azure CLI-Beispielskript zeigt, wie Serverparameter einer Instanz von Azure Database for MySQL – Flexible Server aufgeführt und geändert werden.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: bcb811c9143e97ae070873c4b94396d6a1308d4a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4316669346f8bedec7a674da3e7114b95dd8c4ca
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604632"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844257"
 ---
-# <a name="list-and-change-server-parameters-of-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Auflisten und Ändern der Serverparameter einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau) mithilfe der Azure CLI
+# <a name="list-and-change-server-parameters-of-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Auflisten und Ändern der Serverparameter einer Instanz von Azure Database for MySQL – Flexible Server mithilfe der Azure CLI
 
 Mit diesem CLI-Beispielskript werden alle verfügbaren [Serverparameter](../concepts-server-parameters.md) sowie ihre zulässigen Werte für die Instanz von Azure Database for MySQL – Flexible Server aufgeführt. Zudem wird für die Parameter *max_connections* und *time_zone* (global) ein anderer Wert als der Standardwert festgelegt.
 
@@ -54,5 +54,5 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server (Vorschau)](../sample-scripts-azure-cli.md).
+- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server](../sample-scripts-azure-cli.md).
 - Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).

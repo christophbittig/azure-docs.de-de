@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/15/2021
 ms.author: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 467c5ad44b38e237b1ad9b947f438dcef1006750
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a10d5f1e21f741382ad0d82c06c3f60b19e2c1c4
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038838"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519323"
 ---
 # <a name="security-operations-for-privileged-accounts"></a>Sicherheitsvorgänge für privilegierte Konten
 
@@ -46,13 +46,13 @@ Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien:
 
 Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- oder JSON-Dateien (Comma-Separated Value, JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen in andere Tools, die eine umfassendere Automatisierung von Überwachung und Warnmeldungen ermöglichen:
 
-* [Azure Sentinel](../../sentinel/overview.md): Ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene durch die Bereitstellung von SIEM-Funktionen (Security Information & Event Management). 
+* [Microsoft Sentinel](../../sentinel/overview.md) ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
 
 * [Azure Monitor](../../azure-monitor/overview.md): Ermöglicht die automatisierte Überwachung von und Warnung vor verschiedenen Bedingungen. Damit können Arbeitsmappen erstellt oder verwendet werden, um Daten aus verschiedenen Quellen zu kombinieren.
 
 * [Azure Event Hubs](../../event-hubs/event-hubs-about.md) integriert in ein SIEM-System: [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) wie Splunk, ArcSight, QRadar und Sumo Logic übertragen werden.
 
-* [Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security): Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps. 
+* [Microsoft Defender für Cloud Apps](/cloud-app-security/what-is-cloud-app-security) ermöglichen Ihnen die Erkennung und Verwaltung von Apps, die Steuerung von Apps und Ressourcen sowie die Überprüfung der Compliance Ihrer Cloud-Apps. 
 
 * Microsoft Graph: Sie können die Daten exportieren und mit Microsoft Graph weitere Analysen durchführen. Weitere Informationen zu Microsoft Graph finden Sie unter [Azure Active Directory Identity Protection und das Microsoft Graph PowerShell SDK](../identity-protection/howto-identity-protection-graph-api.md). 
 
@@ -62,7 +62,7 @@ Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und a
 
    * Riskante Anmeldungen: Enthält Informationen zu den Umständen einer Anmeldung, die auf verdächtige Situationen hinweisen können. Weitere Informationen zum Untersuchen von Informationen aus diesem Bericht finden Sie unter [Anleitung: Untersuchen eines Risikos](../identity-protection/howto-identity-protection-investigate-risk.md). 
 
-   * Risikoerkennungen: Enthält Informationen zu anderen Risiken, die bei Erkennung eines Risikos ausgelöst werden, sowie andere relevante Informationen wie den Anmeldeort und Details von Microsoft Cloud App Security (MCAS).
+   * Risikoerkennungen enthalten Informationen zu anderen Risiken, die bei Erkennung eines Risikos ausgelöst werden, sowie andere relevante Informationen wie den Anmeldeort und Details von Microsoft Defender für Cloud Apps.
 
  
 
@@ -135,15 +135,16 @@ Sie können Anmeldeereignisse privilegierter Konten in den Azure AD-Anmeldeprot
 
 | Zu überwachende Elemente | Risikostufe |  Hierbei gilt: |  Filter/Unterfilter | Notizen |
 | - | - | - | - | - |
-| Anmeldefehler, Schwellenwert für falsches Kennwort | Hoch | Azure AD-Anmeldungsprotokoll | Status = Fehler<br>- und -<br>Fehlercode = 50126 | Legen Sie einen Basisschwellenwert fest, den Sie dann überwachen und entsprechend dem Verhalten Ihrer Organisation anpassen können, um die Generierung falscher Warnungen zu minimieren. |
-| Fehler aufgrund einer Anforderung des bedingten Zugriffs |Hoch | Azure AD-Anmeldungsprotokoll | Status = Fehler<br>- und -<br>Fehlercode = 53003<br>- und -<br>Fehlergrund = blockiert durch bedingten Zugriff | Dies kann ein Hinweis darauf sein, dass ein Angreifer versucht, auf das Konto zuzugreifen. |
+| Anmeldefehler, Schwellenwert für falsches Kennwort | Hoch | Azure AD-Anmeldeprotokoll | Status = Fehler<br>- und -<br>Fehlercode = 50126 | Legen Sie einen Basisschwellenwert fest, den Sie dann überwachen und entsprechend dem Verhalten Ihrer Organisation anpassen können, um die Generierung falscher Warnungen zu minimieren. |
+| Fehler aufgrund einer Anforderung des bedingten Zugriffs |Hoch | Azure AD-Anmeldeprotokoll | Status = Fehler<br>- und -<br>Fehlercode = 53003<br>- und -<br>Fehlergrund = blockiert durch bedingten Zugriff | Dies kann ein Hinweis darauf sein, dass ein Angreifer versucht, auf das Konto zuzugreifen. |
 | Privilegierte Konten, die nicht der Benennungsrichtlinie entsprechen.| | Azure-Abonnement | [Auflisten von Azure-Rollenzuweisungen mithilfe des Azure-Portals – Azure RBAC](../../role-based-access-control/role-assignments-list-portal.md)| Listen Sie Rollenzuweisungen für Abonnements auf, und geben Sie eine Warnung aus, wenn der Anmeldename nicht dem Format Ihrer Organisation entspricht. Beispielsweise „ADM_“ als Präfix. |
 | Interrupt |  Hoch/Mittel | Azure AD-Anmeldungen | Status = Unterbrochen<br>- und -<br>Fehlercode = 50074<br>- und -<br>Fehlergrund = Strenge Authentifizierung erforderlich<br>Status = Unterbrochen<br>- und -<br>Fehlercode = 500121<br>Fehlergrund = Fehler bei der Authentifizierung während der Anforderung einer strengen Authentifizierung | Dies kann ein Hinweis darauf sein, dass ein Angreifer über das Kennwort für das Konto verfügt, aber die MFA-Abfrage nicht erfolgreich abschließen kann. | 
 | Privilegierte Konten, die nicht der Benennungsrichtlinie entsprechen.| Hoch | Azure AD-Verzeichnis | [Auflisten von Azure AD-Rollenzuweisungen](../roles/view-assignments.md)| Listen Sie Rollenzuweisungen für Azure AD-Rollen auf, und geben Sie eine Warnung aus, wenn der UPN nicht dem Format Ihrer Organisation entspricht. Beispielsweise „ADM_“ als Präfix. |
-| Entdecken Sie privilegierte Konten, die nicht für MFA registriert sind. | Hoch | Azure AD Graph-API| Abfrage von „isMfaRegistered“ ist für Administratorkonten „false“. [CredentialUserRegistrationDetails auflisten – Microsoft Graph-Betaversion](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http) | Überwachen und untersuchen Sie dies, um zu ermitteln, ob Absicht oder ein Versehen vorliegt. |
-| Kontosperrung | Hoch | Azure AD-Anmeldungsprotokoll | Status = Fehler<br>- und -<br>Fehlercode = 50053 | Legen Sie einen Basisschwellenwert fest, den Sie dann überwachen und entsprechend dem Verhalten Ihrer Organisation anpassen können, um die Generierung falscher Warnungen zu minimieren. |
-| Konto für Anmeldungen deaktiviert/blockiert | Niedrig | Azure AD-Anmeldungsprotokoll | Status = Fehler<br>- und -<br>Ziel = Benutzer-UPN<br>- und -<br>Fehlercode = 50057 | Dies könnte darauf hindeuten, dass jemand versucht, sich Zugriff auf ein Konto zu verschaffen, nachdem er eine Organisation verlassen hat. Trotz der Blockierung des Kontos ist es dennoch wichtig, diese Aktivität zu protokollieren und eine entsprechende Warnung auszugeben. |
-| MFA-Betrugswarnung/Blockierung | Hoch | Azure AD-Anmeldeprotokoll/Azure Log Anaylitics | Erfolgreich = false<br>- und -<br>Ergebnisdetail = MFA verweigert<br>- und -<br>Ziel = Benutzer | Ein privilegierter Benutzer hat angegeben, dass er die MFA-Eingabeaufforderung nicht initiiert hat, was darauf hindeuten könnte, dass ein Angreifer über das Kennwort für das Konto verfügt. |
+| Entdecken Sie privilegierte Konten, die nicht für MFA registriert sind. | Hoch | Microsoft Graph-API| Abfrage von „isMfaRegistered“ ist für Administratorkonten „false“. [CredentialUserRegistrationDetails auflisten – Microsoft Graph-Betaversion](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http) | Überwachen und untersuchen Sie dies, um zu ermitteln, ob Absicht oder ein Versehen vorliegt. |
+| Kontosperrung | Hoch | Azure AD-Anmeldeprotokoll | Status = Fehler<br>- und -<br>Fehlercode = 50053 | Legen Sie einen Basisschwellenwert fest, den Sie dann überwachen und entsprechend dem Verhalten Ihrer Organisation anpassen können, um die Generierung falscher Warnungen zu minimieren. |
+| Konto für Anmeldungen deaktiviert/blockiert | Niedrig | Azure AD-Anmeldeprotokoll | Status = Fehler<br>- und -<br>Ziel = Benutzer-UPN<br>- und -<br>Fehlercode = 50057 | Dies könnte darauf hindeuten, dass jemand versucht, sich Zugriff auf ein Konto zu verschaffen, nachdem er eine Organisation verlassen hat. Trotz der Blockierung des Kontos ist es dennoch wichtig, diese Aktivität zu protokollieren und eine entsprechende Warnung auszugeben. |
+| MFA-Betrugswarnung/Blockierung | Hoch | Azure AD-Anmeldeprotokoll/Azure Log Anaylitics | Anmeldungen>Authentifizierungsdetails Ergebnisdetails = MFA verweigert, Betrugscode eingegeben | Ein privilegierter Benutzer hat angegeben, dass er die MFA-Eingabeaufforderung nicht initiiert hat, was darauf hindeuten könnte, dass ein Angreifer über das Kennwort für das Konto verfügt. |
+| MFA-Betrugswarnung/Blockierung | Hoch | Azure AD Überwachungsprotokoll/Azure Log Anaylitics | Aktivitätstyp = Betrug gemeldet – Benutzer für MFA gesperrt oder Betrug gemeldet – keine Aktion ausgeführt (auf Basis der Einstellungen für Betrugsberichte auf Mandantenebene) | Ein privilegierter Benutzer hat angegeben, dass er die MFA-Eingabeaufforderung nicht initiiert hat, was darauf hindeuten könnte, dass ein Angreifer über das Kennwort für das Konto verfügt. |
 | Anmeldungen mit privilegierten Konten außerhalb der erwarteten Kontrollen. |  | Azure AD-Anmeldeprotokoll | Status = Fehler<br>UserPricipalName = \<Admin account\><br>Standort = \<unapproved location\><br>IP-Adresse = \<unapproved IP\><br>Geräteinformationen = \<unapproved Browser, Operating System\> | Überwachen Sie Einträge, die Sie als nicht genehmigt definiert haben, und geben Sie Warnungen dafür aus. |
 | Außerhalb der normalen Anmeldezeiten | Hoch | Azure AD-Anmeldeprotokoll | Status = Erfolg<br>- und -<br>Standort =<br>- und -<br>Zeit = außerhalb der Arbeitszeiten | Überwachen und warnen Sie, wenn Anmeldungen außerhalb der erwarteten Zeiten erfolgen. Es ist wichtig, das normale Arbeitsmuster für jedes privilegierte Konto zu ermitteln und eine Warnung auszugeben, wenn ungeplante Änderungen außerhalb der normalen Arbeitszeiten vorgenommen werden. Anmeldungen außerhalb der normalen Arbeitszeiten können auf eine Gefährdung oder auf mögliche Insiderbedrohungen hinweisen. | 
 | Identitätsschutzrisiken | Hoch | Identity Protection-Protokolle | Risikozustand = gefährdet<br>- und -<br>Risikostufe = niedrig/mittel/hoch<br>- und -<br>Aktivität = Unbekannte Anmeldung/TOR usw. | Dies deutet darauf hin, dass bei der Anmeldung für das Konto eine gewisse Anomalie erkannt wurde und eine entsprechende Warnung ausgegeben werden sollte. | 

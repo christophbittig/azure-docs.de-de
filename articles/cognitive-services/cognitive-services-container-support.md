@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/28/2021
 ms.author: aahi
 keywords: lokal, Docker, Container, Kubernetes
-ms.openlocfilehash: 0b81d190aa7b565f40dd73fa5054253a46ae7041
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 8758a4688e66a1000c142ab775e563ff829bc79b
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131439251"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158280"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-Container
 
@@ -72,14 +72,11 @@ Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containe
 
 ### <a name="vision-containers"></a>Vision-Container
 
-> [!WARNING]
-> Am 11. Juni 2020 kündigte Microsoft an, dass keine Technologie zur Gesichtserkennung mehr an die Polizeibehörden in den USA verkauft wird, bis es eine strenge, auf den Menschenrechten basierende Regelung gibt. Daher dürfen Kunden keine Gesichtserkennungsfeatures oder in Azure-Diensten enthaltenen Funktionen (wie Gesichtserkennung oder Video Indexer) verwenden, wenn es sich bei dem Kunden um eine Polizeibehörde in den USA handelt oder wenn der Kunde die Nutzung derartiger Dienste durch oder für eine Polizeibehörde zulässt.
 
 | Dienst |  Container | BESCHREIBUNG | Verfügbarkeit |
 |--|--|--|--|
 | [Maschinelles Sehen][cv-containers] | **Read OCR** ([Image](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Mit dem Read OCR-Container können Sie gedruckten und handschriftlichen Text aus Bildern und Dokumenten mit Unterstützung für die Dateiformate JPEG, PNG, BMP, PDF und TIFF extrahieren. Weitere Informationen finden Sie in der Dokumentation zur [Lese-API](./computer-vision/overview-ocr.md). | Beschränkte Vorschauversion. [Zugriff anfordern][request-access]. |
 | [Räumliche Analyse][spa-containers] | **Räumliche Analyse** ([Image](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | Analysiert in Echtzeit gestreamte Videodaten, um räumliche Bezüge zwischen Personen, ihre Bewegungen und ihre Interaktionen mit Objekten in der physischen Umgebung zu verstehen. | Vorschau |
-| [Gesichtserkennung][fa-containers] | **Gesichtserkennung** | Erkennt menschliche Gesichter in Bildern und identifiziert zugehörige Attribute wie Gesichtsmerkmale (z.B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung über eine Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter in einem oder verschiedenen Bildern identisch sind, oder Gesichter mit einer Datenbank vergleichen, um festzustellen, ob ein ähnliches oder identisches Gesicht bereits vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren. | Nicht verfügbar |
 
 <!--
 |[Personalizer](./personalizer/what-is-personalizer.md) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -88,7 +85,6 @@ Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containe
 Darüber hinaus werden einige Container im Angebot [einer Ressource für mehrere Dienste](cognitive-services-apis-create-account.md) von Cognitive Services unterstützt. Sie können eine einzelne All-In-One-Ressource von Cognitive Services erstellen und denselben Abrechnungsschlüssel für alle unterstützten Dienste verwenden:
 
 * Maschinelles Sehen
-* Gesicht
 * LUIS
 * Sprachdienst
 
@@ -120,7 +116,6 @@ Installieren und erkunden Sie die Funktionalität der Container in Azure Cogniti
 
 * [Container für die Anomalieerkennung][ad-containers]
 * [Container für maschinelles Sehen][cv-containers]
-* [Container für die Gesichtserkennung][fa-containers]
 * [Container für Language Understanding (LUIS)][lu-containers]
 * [Container für die Speech Services-API][sp-containers]
 * [Container für Sprachdienst][ta-containers]
@@ -131,7 +126,6 @@ Installieren und erkunden Sie die Funktionalität der Container in Azure Cogniti
 
 [ad-containers]: anomaly-Detector/anomaly-detector-container-howto.md
 [cv-containers]: computer-vision/computer-vision-how-to-install-containers.md
-[fa-containers]: ./face/overview.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
 [spa-containers]: ./computer-vision/spatial-analysis-container.md

@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 09/10/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5a1cc9d12e6a24820b5b84f8a1a275d8451d6247
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 23146fecfcb27e8f468a693804fff5e559866b38
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776935"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522021"
 ---
 # <a name="smb-file-shares-in-azure-files"></a>SMB-Dateifreigaben in Azure Files
-Azure Files unterstützt zwei Branchenstandardprotokolle für die Einbindung von Azure-Dateifreigaben: das [SMB-Protokoll (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) und das [NFS-Protokoll (Network File System)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau). In Azure Files können Sie das Dateisystemprotokoll auswählen, das sich für Ihre Workload am besten eignet. Bei Azure-Dateifreigaben ist der Zugriff auf eine einzelne Azure-Dateifreigabe über das SMB- oder das NFS-Protokoll nicht möglich. Sie können jedoch SMB- und NFS-Dateifreigaben innerhalb desselben Speicherkontos erstellen. Für alle Dateifreigaben ermöglicht Azure Files Dateifreigaben in Unternehmensqualität, die entsprechend Ihren Speicheranforderungen hochskaliert werden können und auf die Tausende von Clients gleichzeitig zugreifen können.
+Azure Files unterstützt zwei Branchenstandardprotokolle für die Einbindung von Azure-Dateifreigaben: das [SMB-Protokoll (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) und das [NFS-Protokoll (Network File System)](https://en.wikipedia.org/wiki/Network_File_System). In Azure Files können Sie das Dateisystemprotokoll auswählen, das sich für Ihre Workload am besten eignet. Bei Azure-Dateifreigaben ist der Zugriff auf eine einzelne Azure-Dateifreigabe über das SMB- oder das NFS-Protokoll nicht möglich. Sie können jedoch SMB- und NFS-Dateifreigaben innerhalb desselben Speicherkontos erstellen. Für alle Dateifreigaben ermöglicht Azure Files Dateifreigaben in Unternehmensqualität, die entsprechend Ihren Speicheranforderungen hochskaliert werden können und auf die Tausende von Clients gleichzeitig zugreifen können.
 
 In diesem Artikel werden SMB-Azure-Dateifreigaben behandelt. Informationen zu NFS-Azure-Dateifreigaben finden Sie unter [NFS-Dateifreigaben in Azure Files](files-nfs-protocol.md).
 
-## <a name="common-scenarios"></a>Häufige Szenarios
+## <a name="common-scenarios"></a>Häufige Szenarien
 SMB-Dateifreigaben werden für eine Vielzahl von Anwendungen verwendet, darunter Dateifreigaben für Endbenutzer und Dateifreigaben, die Datenbanken und Anwendungen unterstützen. SMB-Dateifreigaben werden häufig in den folgenden Szenarien verwendet:
 
 - Dateifreigaben für Endbenutzer, z. B. Teamfreigaben, Basisverzeichnisse usw.

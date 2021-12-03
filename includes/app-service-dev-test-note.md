@@ -4,13 +4,13 @@ ms.service: app-service
 ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 0046b7fcad663187f660d6a65652eab5884eee23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d45bbafbae013b5de2019163cd2abbd5ca625bb9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95986542"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132525049"
 ---
 > [!NOTE]
-> Die App Service-Hostingpläne „Free“ und „Shared“ (Vorschauversion) sind Basistarife, die auf denselben virtuellen Azure-Computern ausgeführt werden wie andere App Service-Apps. Einige Apps gehören möglicherweise anderen Kunden. Diese Tarife sind nur für Entwicklungs- und Testzwecke gedacht.
+> Die App Service-Dienstpläne „Free“ und „Shared“ (Vorschauversion) sind Basistarife, die auf denselben virtuellen Azure-Computern ausgeführt werden wie andere App Service-Apps. Einige Apps gehören möglicherweise anderen Kunden. Diese Tarife sind nur für Entwicklungs- und Testzwecke gedacht.
 >

@@ -11,20 +11,23 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 334ca6aadf43756985c7d187b460b625c5588525
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: fb607461e446ee44a92cee8e6dff60e8c2e6dd45
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693036"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546487"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Was ist eine Einzeldatenbank in Azure SQL-Datenbank?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Der Ressourcentyp für Einzeldatenbanken erstellt eine Datenbank in Azure SQL-Datenbank mit einem eigenen Satz von Ressourcen und wird über einen [Server](logical-servers.md) verwaltet. Bei einer einzelnen Datenbank ist jede Datenbank isoliert und portabel. Jede verfügt über eine eigene Dienstebene innerhalb des [DTU-basierten Kaufmodells](service-tiers-dtu.md) oder [vCore-basierten Kaufmodells](service-tiers-vcore.md) und eine garantierte Computegröße.
 
-> [!IMPORTANT]
-> Eine Einzeldatenbank ist ein Ressourcentyp für Azure SQL-Datenbank. Der andere Typ ist [Pools für elastische Datenbanken](elastic-pool-overview.md).
+„Einzeldatenbank“ ist ein Bereitstellungsmodell für Azure SQL-Datenbank. Der andere Typ ist [Pools für elastische Datenbanken](elastic-pool-overview.md).
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
+
 
 ## <a name="dynamic-scalability"></a>Dynamische Skalierbarkeit
 

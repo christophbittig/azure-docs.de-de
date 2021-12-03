@@ -1,19 +1,19 @@
 ---
 title: Kontingente für Azure Container-Apps (Vorschauversion)
 description: Erfahren Sie mehr über Kontingente für Azure Container-Apps.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 72800baf7faf5807f21c827879036f33e1f0d356
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1252f3ce9ecd4cefdc358fd7e61559e522873e2c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096002"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027842"
 ---
 # <a name="quotas-for-azure-container-apps-preview"></a>Kontingente für Azure Container-Apps (Vorschauversion)
 

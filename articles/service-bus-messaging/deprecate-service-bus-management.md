@@ -3,18 +3,18 @@ title: 'Azure-Messagingdienste: Service Manager an Ressourcen-Manager'
 description: Dieser Artikel bietet eine Zuordnung der veralteten Azure Service Manager-REST-API und PowerShell-Cmdlets zur Resource Manager-REST-API und den zugehörigen PowerShell-Cmdlets.
 ms.topic: article
 ms.date: 08/31/2021
-ms.openlocfilehash: 7d5e4ff0748c2b31c0e9a5c7cdaeb8f2d196d915
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fc64aa41ab0ae2b0ecec735c9b9d19575dd9950e
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791838"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136204"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Einstellung der Azure Service Manager-Unterstützung für Azure Service Bus, Relay und Event Hubs
 
 Resource Manager, der Cloudinfrastrukturstapel der nächsten Generation, ersetzt vollständig das „klassische“ Azure-Dienstverwaltungsmodell (klassisches Bereitstellungsmodell). Folglich werden die REST-APIs des klassischen Bereitstellungsmodells und die Unterstützung für Service Bus, Relay und Event Hubs am 1. November 2021 eingestellt. Diese Einstellung wurde erstmals in einer [Ankündigung der Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Deprecating-Service-Management-support-for-Azure-Service-Bus/ba-p/370909) mitgeteilt. Für eine einfache Identifikation weisen diese APIs `management.core.windows.net` in Ihrem URI auf. In der folgenden Tabelle finden Sie eine Liste der veralteten APIs und der Azure Resource Manager-API-Version, die Sie jetzt verwenden sollten.
 
-Um Service Bus, Relay und Event Hubs weiterhin zu verwenden, wechseln Sie bis zum 31. Oktober 2021 zu Resource Manager. Wir empfehlen allen Kunden, die noch mit alten APIs arbeiten, die Umstellung bald vorzunehmen, um die zusätzlichen Vorteile von Resource Manager zu nutzen. Dazu gehören die Gruppierung von Ressourcen, Tags, ein optimierter Bereitstellungs- und Verwaltungsprozess und eine präzise Zugriffssteuerung mit der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, RBAC).
+Um Service Bus, Relay und Event Hubs weiterhin zu verwenden, wechseln Sie bis zum 30. November 2021 zu Resource Manager. Wir empfehlen allen Kunden, die noch mit alten APIs arbeiten, die Umstellung bald vorzunehmen, um die zusätzlichen Vorteile von Resource Manager zu nutzen. Dazu gehören die Gruppierung von Ressourcen, Tags, ein optimierter Bereitstellungs- und Verwaltungsprozess und eine präzise Zugriffssteuerung mit der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, RBAC).
 
 Weitere Informationen zu Azure Resource Manager im Vergleich zu Azure Service Manager finden Sie im [TechNet-Blog](https://blogs.technet.microsoft.com/meamcs/2016/12/22/difference-between-azure-service-manager-and-azure-resource-manager/).
 

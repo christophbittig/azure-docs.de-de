@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/21/2021
+ms.date: 11/16/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5f2d368748dc722e680f956ea7dd233313a97efe
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: c3dd0d64542dd9d25643fb811accde5d882af870
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251982"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556567"
 ---
 ::: zone target="docs"
 
@@ -73,7 +73,9 @@ Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben.
 
 ## <a name="ship-data-box-back"></a>Zurücksenden der Data Box
 
-Vergewissern Sie sich, dass die Daten vollständig auf das Gerät kopiert wurden, und dass die **Versandvorbereitung** erfolgreich war. Die Vorgehensweise ist abhängig von der Region, in der das Gerät versendet wird.
+Vergewissern Sie sich, dass die Daten vollständig auf das Gerät kopiert wurden, und dass die **Versandvorbereitung** erfolgreich war. 
+
+Die Vorgehensweise ist abhängig von der Region, in der das Gerät versendet wird. In vielen Ländern/Regionen können Sie den von [Microsoft verwalteten Versand](#microsoft-managed-shipping) oder den [selbstverwalteten Versand](#self-managed-shipping) verwenden.
 
 ### <a name="microsoft-managed-shipping"></a>Von Microsoft verwalteter Versand
 
@@ -83,9 +85,15 @@ Befolgen Sie die Richtlinien für die Region, aus der Sie versenden, wenn Sie de
 
 [!INCLUDE [data-box-shipping-in-us-canada](../../includes/data-box-shipping-in-us-canada.md)]
 
-## <a name="europe"></a>[Europa](#tab/in-europe)
+## <a name="eu"></a>[EU](#tab/in-europe)
 
 [!INCLUDE [data-box-shipping-in-eu](../../includes/data-box-shipping-in-eu.md)]
+
+**Bei der Rücksendung an Azure-Rechenzentren in Deutschland oder der Schweiz** können Sie auch den [selbst verwalteten Versand](#self-managed-shipping) nutzen.
+
+## <a name="uk"></a>[UK](#tab/in-uk)
+
+[!INCLUDE [data-box-shipping-in-uk](../../includes/data-box-shipping-in-uk.md)]
 
 ## <a name="australia"></a>[Australien](#tab/in-australia)
 
@@ -99,13 +107,17 @@ Befolgen Sie die Richtlinien für die Region, aus der Sie versenden, wenn Sie de
 
 [!INCLUDE [data-box-shipping-in-singapore](../../includes/data-box-shipping-in-singapore.md)]
 
-## <a name="south-africa"></a>[Südafrika](#tab/in-sa)
-
-[!INCLUDE [data-box-shipping-in-sa](../../includes/data-box-shipping-in-sa.md)]
-
 ## <a name="hong-kong"></a>[Hongkong](#tab/in-hk)
 
 [!INCLUDE [data-box-shipping-in-hk](../../includes/data-box-shipping-in-hk.md)]
+
+## <a name="korea"></a>[Korea](#tab/in-korea)
+
+[!INCLUDE [data-box-shipping-in-korea](../../includes/data-box-shipping-in-korea.md)]
+
+## <a name="s-africa"></a>[Südafrika](#tab/in-sa)
+
+[!INCLUDE [data-box-shipping-in-sa](../../includes/data-box-shipping-in-sa.md)]
 
 ## <a name="uae"></a>[Vereinigte Arabische Emirate](#tab/in-uae)
 

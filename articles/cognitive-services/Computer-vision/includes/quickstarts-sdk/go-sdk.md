@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 4fe4dc0dda9c14ed9309422eb0b96c779fd44ee3
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: a6dbc2b54c8fac9f2b1bdb219784f873d99432f8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112084099"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520559"
 ---
 <a name="HOLTop"></a>
 
@@ -95,7 +95,7 @@ Erstellen Sie Variablen für den Schlüssel und Endpunkt Ihres Maschinelles Sehe
 Beginnen Sie nun damit, Code für verschiedene Vorgänge der OCR Vorgänge hinzuzufügen.
 
 > [!div class="nextstepaction"]
-> [Ich habe den Client eingerichtet.](?success=set-up-client#object-model) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=set-up-client&product=computer-vision&page=go-sdk)
+> [Ich habe die Variablen eingerichtet.](?success=set-up-client#object-model) [Bei mir ist ein Problem aufgetreten.](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Go&Section=set-up-client&product=computer-vision&page=go-sdk)
 
 ## <a name="object-model"></a>Objektmodell
 

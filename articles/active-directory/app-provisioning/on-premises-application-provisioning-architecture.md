@@ -11,12 +11,12 @@ ms.date: 05/28/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd3b716cd754c26c0a3fe0b1f95183c86bac941f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 89a0f2bd6b48d195836303a89143593c4d959bfb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991202"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028004"
 ---
 # <a name="azure-ad-on-premises-application-provisioning-architecture"></a>Azure AD-Architektur für die lokale Anwendungsbereitstellung
 
@@ -62,11 +62,11 @@ Die folgenden Informationen dienen zur besseren Erläuterung der Ankerattribute 
 
 Das Ankerattribut ist ein eindeutiges Attribut eines Objekttyps, der sich nicht ändert und dieses Objekt im In-Memory-Cache des ECMA-Connectorhosts repräsentiert.
 
-Der Distinguished Name (DN) ist ein Name, der ein Objekt eindeutig identifiziert, indem er dessen aktuellen Speicherort in der Verzeichnishierarchie angibt.  Im Falle von SQL wird der Speicherort innerhalb der Partition angegeben. Der Name wird durch Verketten des Ankerattributs als Stamm der Verzeichnispartition gebildet. 
+Der Distinguished Name (DN) ist ein Name, der ein Objekt eindeutig identifiziert, indem er dessen aktuellen Speicherort in der Verzeichnishierarchie angibt.  Im Falle von SQL wird der Speicherort innerhalb der Partition angegeben. Der Name wird durch Verketten des Ankerattributs am Stamm der Verzeichnispartition gebildet. 
 
 Bei klassischen DNs in einem herkömmlichen Format, z. B. für Active Directory oder LDAP, stellen wir uns einen Namen ähnlich dem folgenden vor:
 
-  CN=Lola Jacobson,CN=Users,DC=contoso,DC=com
+  `CN=Lola Jacobson,CN=Users,DC=contoso,DC=com`
 
 Für eine Datenquelle wie beispielsweise SQL, die flach und nicht hierarchisch aufgebaut ist, muss der DN jedoch entweder bereits in einer der Tabellen vorhanden sein oder anhand der Informationen erstellt werden, die wir dem ECMA-Connectorhost bereitstellen.  
 

@@ -8,24 +8,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/27/2021
+ms.date: 10/20/2021
 ms.author: hirsin
 ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ecbb461e45b19630319622e978ad3bd49a376e74
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 62e4557b003c0347c6ecbf8a39102260abb66386
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092735"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050240"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen
 
-Die [Gewährung von OAuth 2.0-Clientanmeldeinformationen](https://tools.ietf.org/html/rfc6749#section-4.4), die in RFC 6749 angegeben ist und gelegentlich als *zweibeinige OAuth-Autorisierung* bezeichnet wird, kann für den Zugriff auf webgehostete Ressourcen über die Identität einer Anwendung verwendet werden. Diese Art der Gewährung wird häufig für Interaktionen zwischen Servern verwendet, die ohne Benutzereingriff im Hintergrund ausgeführt werden müssen. Diese Anwendungstypen werden oft als *Daemons* oder *Dienstkonten* bezeichnet.
+Sie können die in [RFC 6749](https://tools.ietf.org/html/rfc6749#section-4.4) spezifizierte OAuth 2.0 Client Credentials Grant, manchmal auch *zweistufiges OAuth* genannt, für den Zugriff auf web-gehostete Ressourcen unter Verwendung der Identität einer Anwendung verwenden. Diese Art der Gewährung wird häufig für Interaktionen zwischen Servern verwendet, die ohne Benutzereingriff im Hintergrund ausgeführt werden müssen. Diese Anwendungstypen werden oft als *Daemons* oder *Dienstkonten* bezeichnet.
 
 In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer Anwendung programmieren. Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
 
-Beim Fluss zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein vertraulicher Client) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines Benutzers anzunehmen. Für ein höheres Maß an Sicherheit bietet die Microsoft Identity Platform auch die Möglichkeit, dass der aufrufende Dienst ein Zertifikat (statt eines gemeinsamen Geheimnisses) als Anmeldeinformationen verwendet.  Da die eigenen Anmelde Informationen für die Anwendung verwendet werden, müssen diese Anmeldeinformationen sicher aufbewahrt werden. veröffentlichen Sie diese Anmeldeinformationen _niemals_ im Quellcode, Betten Sie Sie in Webseiten ein, oder verwenden Sie sie in einer weit verbreiteten, systemeigenen Anwendung. 
+Beim Fluss zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein vertraulicher Client) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines Benutzers anzunehmen. Für ein höheres Maß an Sicherheit erlaubt die Microsoft-Identitätsplattform dem aufrufenden Dienst auch die Authentifizierung mit einem [Zertifikat](#second-case-access-token-request-with-a-certificate) oder einem föderierten Berechtigungsnachweis anstelle eines gemeinsamen Geheimnisses.  Da die eigenen Anmelde Informationen für die Anwendung verwendet werden, müssen diese Anmeldeinformationen sicher aufbewahrt werden. veröffentlichen Sie diese Anmeldeinformationen _niemals_ im Quellcode, Betten Sie Sie in Webseiten ein, oder verwenden Sie sie in einer weit verbreiteten, systemeigenen Anwendung. 
 
 Im Flow zum Gewähren von Clientanmeldeinformationen werden Berechtigungen von einem Administrator direkt an die eigentliche Anwendung erteilt. Wenn die App einer Ressource ein Token präsentiert, macht die Ressource geltend, dass die App selbst für die Durchführung einer Aktion autorisiert ist, da an der Authentifizierung kein Benutzer beteiligt ist.  In diesem Artikel werden die Schritte beschrieben, die zum [Autorisieren einer Anwendung zum Aufrufen einer API](#application-permissions) erforderlich sind. Es wird aber auch die [Vorgehensweise zum Abrufen der Token, die zum Aufrufen dieser API erforderlich sind](#get-a-token) erläutert.
 
@@ -104,7 +104,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Kann als GUID oder als Anzeigename bereitgestellt werden. Wenn Sie nicht wissen, zu welchem Mandanten der Benutzer gehört, und wenn der Benutzer sich bei jedem Mandanten anmelden können soll, verwenden Sie `common`. |
 | `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
-| `redirect_uri` | Erforderlich | Der Umleitungs-URI, an den die Antwort zur Verarbeitung durch die App gesendet werden soll. Er muss genau einem der Umleitungs-URIs entsprechen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss und zusätzliche Pfadsegmente aufweisen kann. |
+| `redirect_uri` | Erforderlich | Der Umleitungs-URI, an den die Antwort zur Verarbeitung durch die App gesendet werden soll. Er muss genau mit einem der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit der Ausnahme, dass er URL-kodiert sein muss und zusätzliche Pfadsegmente enthalten kann. |
 | `state` | Empfohlen | Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Der Status wird verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 
 An diesem Punkt erzwingt Azure AD, dass sich nur ein Mandantenadministrator anmelden kann, um die Anforderung abzuschließen. Der Administrator wird aufgefordert, alle direkten Anwendungsberechtigungen zu genehmigen, die Sie für Ihre App im App-Registrierungsportal angefordert haben.
@@ -160,7 +160,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
-| Parameter | Bedingung | Beschreibung |
+| Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich | Die Anwendungs-ID, die Ihrer App zugewiesen ist. Diese Informationen finden Sie in dem Portal, in dem Sie Ihre App registriert haben. |
@@ -182,7 +182,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| Parameter | Bedingung | Beschreibung |
+| Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich |Die Anwendungs-ID (Client-ID), die Ihrer App zugewiesen ist. |
@@ -193,9 +193,29 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 Die Parameter für die zertifikatbasierte Anforderung stimmen mit nur einer Ausnahme mit den Parametern für die Anforderung basierend auf einem gemeinsamen Geheimnis überein: der `client_secret`-Parameter wird durch die Parameter `client_assertion_type` und `client_assertion` ersetzt.
 
+### <a name="third-case-access-token-request-with-a-federated-credential"></a>Dritter Fall: Anforderung eines Zugriffstokens mit einem föderierten Berechtigungsnachweis
+
+```HTTP
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
+Host: login.microsoftonline.com
+Content-Type: application/x-www-form-urlencoded
+
+scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
+&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05
+&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
+&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg
+&grant_type=client_credentials
+```
+
+| Parameter | Bedingung | BESCHREIBUNG |
+| --- | --- | --- |
+| `client_assertion` | Erforderlich | Eine Assertion (ein JWT oder JSON-Web-Token), die Ihre Anwendung von einem anderen Identitätsanbieter außerhalb der Microsoft-Identitätsplattform, wie Kubernetes, erhält. Die Spezifika dieses JWT müssen in Ihrer Anwendung als [federated identity credential](workload-identity-federation-create-trust.md) registriert werden. Lesen Sie über [workload identity federation](workload-identity-federation.md), um zu erfahren, wie Sie von anderen Identitätsanbietern generierte Assertions einrichten und verwenden können.|
+
+Alles in der Anfrage entspricht dem obigen zertifikatsbasierten Fluss, mit einer entscheidenden Ausnahme - der Quelle der `client_assertion`. Bei diesem Ablauf erstellt Ihre Anwendung die JWT-Assertion nicht selbst.  Stattdessen verwendet Ihre Anwendung ein JWT, das von einem anderen Identitätsanbieter erstellt wurde.  Dies wird als "[workload identity federation](workload-identity-federation.md)" bezeichnet, bei der die Identität Ihrer Anwendungen in einer anderen Identitätsplattform verwendet wird, um Token innerhalb der Microsoft-Identitätsplattform zu erwerben.  Dies eignet sich am besten für Cloud-übergreifende Szenarien, z. B. wenn Sie Ihre Rechenleistung außerhalb von Azure hosten, aber auf APIs zugreifen, die durch die Microsoft Identitätsplattform geschützt sind. 
+
 ### <a name="successful-response"></a>Erfolgreiche Antwort
 
-Eine erfolgreiche Antwort von beiden Methoden sieht wie folgt aus:
+Eine erfolgreiche Antwort von einer beliebigen Methode sieht wie folgt aus:
 
 ```json
 {

@@ -4,12 +4,12 @@ ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 01/27/2021
 ms.author: kengaderdus
-ms.openlocfilehash: 7f2dc7a36565c035a8d96809ca3720abae680f23
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: c57eec45f91b20694eae730d5e4d44f13c506dc6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130036954"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217040"
 ---
 ::: zone pivot="b2c-user-flow"
 
@@ -20,7 +20,7 @@ ms.locfileid: "130036954"
 
 ::: zone pivot="b2c-custom-policy"
 
-* Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](../articles/active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-custom-policy) beschriebenen Schritte aus.
+* Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Active Directory B2C](../articles/active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-custom-policy) beschriebenen Schritte aus.
 * [Registrieren Sie eine Webanwendung](../articles/active-directory-b2c/tutorial-register-applications.md), und [aktivieren Sie die implizite Genehmigung von ID-Token](../articles/active-directory-b2c/tutorial-register-applications.md#enable-id-token-implicit-grant).
 
 ::: zone-end

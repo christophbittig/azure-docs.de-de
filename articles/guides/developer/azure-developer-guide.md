@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: ae3f62141fdcdb1185f493eceeef7124fe11f869
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: baa926382763199d90ab56cb84f9f5b035741261
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346046"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468949"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -109,7 +109,7 @@ Azure Spring Cloud ist eine serverlose Microserviceplattform, mit deren Hilfe Si
 
 > **Einsatzgebiete:** Als vollständig verwalteter Dienst ist Azure Spring Cloud eine gute Wahl, um die Betriebskosten für die Ausführung von Microservices in Azure, die auf Spring Boot bzw. Spring Cloud basieren, zu reduzieren. 
 >
-> **Erste Schritte:** [Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](../../spring-cloud/quickstart.md)
+> **Erste Schritte:** [Bereitstellen Ihrer ersten Spring Boot-App in Azure Spring Cloud](../../spring-cloud/quickstart.md).
 
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Verbessern Ihrer Anwendungen mit Azure-Diensten
@@ -168,7 +168,7 @@ Azure bietet mehrere Methoden zum Verwenden von Containern in Ihren Anwendungen.
 
 Es ist wichtig, nicht nur zu wissen, wer Ihre Anwendungen verwendet, sondern auch den unberechtigten Zugriff auf Ihre Ressourcen zu verhindern. Azure bietet mehrere Möglichkeiten zum Authentifizieren Ihrer App-Clients.
 
-* **Azure Active Directory (Azure AD)** : Der mehrinstanzenfähige, cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Sie können das einmalige Anmelden (SSO) zu Ihren Anwendungen hinzufügen, indem Sie in Azure AD integrieren. Sie können auf Verzeichniseigenschaften zugreifen, indem Sie direkt die Azure AD Graph-API oder die Microsoft Graph-API verwenden. Sie können mit Azure AD-Unterstützung für das OAuth2.0-Autorisierungsframework und Open ID Connect integrieren, indem Sie native HTTP/REST-Endpunkte und die Azure AD-Authentifizierungsbibliotheken für mehrere Plattformen verwenden.
+* **Azure Active Directory (Azure AD)** : Der mehrinstanzenfähige, cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Sie können das einmalige Anmelden (SSO) zu Ihren Anwendungen hinzufügen, indem Sie in Azure AD integrieren. Sie können auf Verzeichniseigenschaften zugreifen, indem Sie die Microsoft Graph-API verwenden. Sie können mit Azure AD-Unterstützung für das OAuth2.0-Autorisierungsframework und Open ID Connect integrieren, indem Sie native HTTP/REST-Endpunkte und die Azure AD-Authentifizierungsbibliotheken für mehrere Plattformen verwenden.
 
   > **Einsatzgebiete**: Wenn Sie SSO bereitstellen, mit graphbasierten Daten arbeiten oder domänenbasierte Benutzer authentifizieren möchten.
   >

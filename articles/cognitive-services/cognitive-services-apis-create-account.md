@@ -8,14 +8,14 @@ manager: nitinme
 keywords: Cognitive Services, kognitive Intelligenz, kognitive Lösungen, KI-Dienste
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/04/2021
+ms.date: 10/28/2021
 ms.author: aahi
-ms.openlocfilehash: dfd5edc2444b3aa56dce556766013370a08ba846
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 5ebccc07b4816237f12363e7729175dde5537e50
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475960"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458340"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals
 
@@ -43,7 +43,7 @@ Zu diesem Zeitpunkt ermöglicht die Ressource für mehrere Dienste den Zugriff a
 
 * **Vision** – maschinelles Sehen, Custom Vision, Gesichtserkennung
 * **Speech:** Speech
-* **Sprache:** Language Understanding (LUIS), Textanalyse, Textübersetzung
+* **Sprache** - Sprache, Übersetzer
 * **Entscheidungsfindung:** Content Moderator
 
 ### <a name="single-service-resource"></a>[Ressource für einen einzelnen Dienst](#tab/singleservice)
@@ -55,7 +55,7 @@ Verwenden Sie die folgenden Links, um eine Ressource für die verfügbaren Cogni
 | [Maschinelles Sehen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Speech-Dienste](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Plastischer Reader](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomalieerkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | 
 | [Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) |  | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
 | [Gesichtserkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalisierung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     |
-|        |                         | [Textanalyse](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+|        |                         | [Sprachdienst](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
 | | | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) | |
 
 ---
@@ -65,7 +65,7 @@ Verwenden Sie die folgenden Links, um eine Ressource für die verfügbaren Cogni
 
 ### <a name="multi-service-resource"></a>[Ressource für mehrere Dienste](#tab/multiservice)
 
-|Projektdetails| Beschreibung   |
+|Projektdetails| BESCHREIBUNG   |
 |--|--|
 | **Abonnement** | Wählen Sie eines Ihrer verfügbaren Azure-Abonnements aus. |
 | **Ressourcengruppe** | Die Azure-Ressourcengruppe, die Ihre Cognitive Services-Ressource enthält. Sie können eine neue Gruppe erstellen oder sie einer bereits bestehenden Gruppe hinzufügen. |
@@ -80,7 +80,7 @@ Lesen und akzeptieren Sie die Bedingungen (nach Ihren Anforderungen), und wähle
 
 ### <a name="single-service-resource"></a>[Ressource für einen einzelnen Dienst](#tab/singleservice)
 
-|Projektdetails| Beschreibung   |
+|Projektdetails| BESCHREIBUNG   |
 |--|--|
 | **Abonnement** | Wählen Sie eines Ihrer verfügbaren Azure-Abonnements aus. |
 | **Ressourcengruppe** | Die Azure-Ressourcengruppe, die Ihre Cognitive Services-Ressource enthält. Sie können eine neue Gruppe erstellen oder sie einer bereits bestehenden Gruppe hinzufügen. |

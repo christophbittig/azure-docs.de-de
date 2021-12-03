@@ -8,24 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/28/2021
+ms.date: 11/15/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: john.garland, maggie.marxen, ian.bennett, marsma
-ms.openlocfilehash: f1378d1e011deaddf793dea9bebc7b099bedde9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc1154965b037fbc57dcafa30f08fd951721bf6f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346558"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486727"
 ---
 # <a name="role-based-access-control-for-application-developers"></a>Rollenbasierte Zugriffssteuerung für Anwendungsentwickler
 
-Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ermöglicht es bestimmten Benutzern oder Gruppen, bestimmte Berechtigungen im Hinblick darauf zu haben, auf welche Ressourcen sie zugreifen können, welche Aktionen sie mit diesen Ressourcen ausführen können und wer welche Ressourcen verwaltet. In diesem Artikel wird die anwendungsspezifische rollenbasierte Zugriffssteuerung erläutert.
-
-> [!NOTE]
-> Die rollenbasierte Zugriffssteuerung bei einer Anwendung unterscheidet sich von der [rollenbasierten Zugriffssteuerung in Azure](../../role-based-access-control/overview.md) und der [rollenbasierten Zugriffssteuerung in Azure AD](../roles/custom-overview.md#understand-azure-ad-role-based-access-control). Benutzerdefinierte Azure-Rollen und integrierte Rollen gehören beide zu Azure RBAC, mit der Sie Azure-Ressourcen verwalten können. Azure AD RBAC ermöglicht Ihnen die Verwaltung von Azure AD-Ressourcen.
-
+Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ermöglicht es bestimmten Benutzern oder Gruppen, bestimmte Berechtigungen im Hinblick darauf zu haben, auf welche Ressourcen sie zugreifen können, welche Aktionen sie mit diesen Ressourcen ausführen können und wer welche Ressourcen verwaltet. Die rollenbasierte Zugriffssteuerung bei einer Anwendung unterscheidet sich von der [rollenbasierten Zugriffssteuerung in Azure](../../role-based-access-control/overview.md) und der [rollenbasierten Zugriffssteuerung in Azure AD](../roles/custom-overview.md#understand-azure-ad-role-based-access-control). Benutzerdefinierte Azure-Rollen und integrierte Rollen gehören beide zu Azure RBAC, mit der Sie Azure-Ressourcen verwalten können. Azure AD RBAC ermöglicht Ihnen die Verwaltung von Azure AD-Ressourcen. In diesem Artikel wird die anwendungsspezifische rollenbasierte Zugriffssteuerung erläutert.
 
 
 ## <a name="what-are-roles"></a>Was sind Rollen?
@@ -64,8 +60,7 @@ App-Rollen und -Gruppen speichern Informationen zu Benutzerzuweisungen im Verzei
 
 Die Verwendung von benutzerdefiniertem Speicher ermöglicht Entwicklern eine zusätzliche Anpassung und Kontrolle darüber, wie Benutzern Rollen zugewiesen und wie sie dargestellt werden. Diese zusätzliche Flexibilität führt jedoch auch zu mehr Verantwortung. Beispielsweise gibt es zurzeit keinen Mechanismus zum Einbeziehen dieser Informationen in Token, die von Azure AD zurückgegeben werden. Wenn Entwickler Rolleninformationen in einem benutzerdefinierten Datenspeicher verwalten, müssen die Apps die Rollen abrufen können. Dies geschieht normalerweise mithilfe von Erweiterungspunkten, die in der Middleware für die zum Entwickeln der Anwendung genutzten Plattform definiert wird. Darüber hinaus sind Entwickler für die ordnungsgemäße Sicherung des benutzerdefinierten Datenspeichers zuständig.
 
-> [!NOTE]
-> Mithilfe von [benutzerdefinierten Azure AD B2C-Richtlinien](../../active-directory-b2c/custom-policy-overview.md) können Sie mit benutzerdefinierten Datenspeichern interagieren und benutzerdefinierte Ansprüche in ein Token einbeziehen.
+Mithilfe von [benutzerdefinierten Azure AD B2C-Richtlinien](../../active-directory-b2c/custom-policy-overview.md) können Sie mit benutzerdefinierten Datenspeichern interagieren und benutzerdefinierte Ansprüche in ein Token einbeziehen.
 
 ## <a name="choosing-an-approach"></a>Auswählen eines Ansatzes
 
@@ -81,12 +76,9 @@ Obwohl entweder App-Rollen oder Gruppen für die Autorisierung verwendet werden 
 |**Rollenwerte sind zwischen Azure AD-Mandanten statisch**|Ja  |Nein |Ist abhängig von der Implementierung.|
 |**Rollenwerte können in mehreren Anwendungen verwendet werden**|Nein. Außer wenn die Rollenkonfiguration bei jeder App-Registrierung dupliziert wird.|Ja |Ja |
 |**Informationen werden im Verzeichnis gespeichert**|Ja  |Ja |Nein |
-|**Informationen werden per Token übermittelt**|Ja (Rollenanspruch)  |Ja* (Gruppenanspruch) |Nein. Wird zur Laufzeit über benutzerdefinierten Code abgerufen. |
+|**Informationen werden per Token übermittelt**|Ja (Rollenanspruch)  |Ja (Im Fall einer Überschreitung müssen *Gruppenansprüche* möglicherweise zur Laufzeit abgerufen werden) |Nein. Wird zur Laufzeit über benutzerdefinierten Code abgerufen. |
 |**Gültigkeitsdauer**|Ist in der App-Registrierung im Verzeichnis enthalten. Wird beim Entfernen der App-Registrierung entfernt.|Ist im Verzeichnis enthalten. Bleibt selbst dann intakt, wenn die App-Registrierung entfernt wird. |Ist im benutzerdefinierten Datenspeicher enthalten. Ist nicht an die App-Registrierung gebunden.|
 
-
-> [!NOTE]
-> Ja* – Im Fall einer Überschreitung müssen *Gruppenansprüche* möglicherweise zur Laufzeit abgerufen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

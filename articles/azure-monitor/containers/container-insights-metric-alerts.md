@@ -3,12 +3,12 @@ title: Metrikwarnungen von Container Insights
 description: In diesem Artikel werden die empfohlenen Metrikwarnungen vorgestellt, die in der öffentlichen Vorschau von Container Insights verfügbar sind.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 7036bc7a0f161044312687d6b22171df99821e6a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 49ae1fee1961bf722489309d2d605ca7697ab218
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714435"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455129"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>Empfohlene Metrikwarnungen von Container Insights (Vorschau)
 
@@ -47,6 +47,7 @@ Zum Auslösen wichtiger Warnungen umfasst Container Insights die folgenden Metri
 |**(Neue) durchschnittliche Container-CPU in %** |Berechnet die durchschnittliche CPU-Nutzung pro Container.|Wenn die durchschnittliche CPU-Nutzung pro Container größer als 95 % ist.| 
 |**(Neuer) durchschnittlicher Speicher für den Containerarbeitssatz in %** |Berechnet die durchschnittliche Speichernutzung für den Arbeitssatz pro Container.|Wenn die durchschnittliche Speichernutzung für den Arbeitssatz pro Container größer als 95 % ist. |
 |Durchschnittliche CPU-Nutzung in % |Berechnet die durchschnittliche CPU-Nutzung pro Knoten. |Wenn die durchschnittliche CPU-Nutzung durch den Knoten größer als 80 % ist. |
+| Tägliche Überschreitung der Datenobergrenze | Wenn die Datenobergrenze überschritten wird.| Wenn die gesamte Datenerfassung in Ihrem Log Analytics-Arbeitsbereich das [festgelegte Kontingent](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume) überschreitet. |
 |Durchschnittliche Datenträgernutzung in % |Berechnet die durchschnittliche Datenträgernutzung für einen Knoten.|Wenn die Datenträgernutzung für einen Knoten größer als 80 % ist. |
 |**(Neue) durchschnittliche Nutzung des persistenten Volumes in %** |Berechnet die durchschnittliche PV-Nutzung pro Pod. |Wenn die durchschnittliche PV-Nutzung pro Pod größer als 80 % ist.|
 |Durchschnittliche Speichernutzung für Arbeitssatz in % |Berechnet die durchschnittliche Speichernutzung für den Arbeitssatz für einen Knoten. |Wenn die durchschnittliche Speichernutzung für den Arbeitssatz für einen Knoten größer als 80 % ist. |
@@ -88,11 +89,11 @@ Die folgenden Metriken werden, sofern nicht anders angegeben, als Teil dieser Fu
 |Metriknamespace |Metrik |BESCHREIBUNG |
 |---------|----|------------|
 |Insights.container/nodes |cpuUsageMillicores |CPU-Auslastung in Millicores nach Host.|
-|Insights.container/nodes |cpuUsagePercentage |Prozentuale CPU-Auslastung nach Knoten.|
+|Insights.container/nodes |cpuUsagePercentage, cpuUsageAllocatablePercentage (Vorschau) |Prozentuale CPU-Auslastung nach Knoten bzw. zuordnungsfähig.|
 |Insights.container/nodes |memoryRssBytes |Arbeitsspeicher-RSS-Auslastung in Byte nach Host.|
-|Insights.container/nodes |memoryRssPercentage |Prozentuale Arbeitsspeicher-RSS-Auslastung nach Host.|
+|Insights.container/nodes |memoryRssPercentage, memoryRssAllocatablePercentage (Vorschau) |Prozentuale Arbeitsspeicher-RSS-Auslastung nach Host bzw. zuordnungsfähig.|
 |Insights.container/nodes |memoryWorkingSetBytes |Auslastung des Arbeitssatzes für Arbeitsspeicher in Byte nach Host.|
-|Insights.container/nodes |memoryWorkingSetPercentage |Prozentuale Auslastung des Arbeitssatzes für Arbeitsspeicher nach Host.|
+|Insights.container/nodes |memoryWorkingSetPercentage, memoryRssAllocatablePercentage (Vorschau) |Prozentuale Auslastung des Arbeitssatzes für Arbeitsspeicher nach Host bzw. zuordnungsfähig.|
 |Insights.container/nodes |nodesCount |Anzahl von Knoten nach Status.|
 |Insights.container/nodes |diskUsedPercentage |Prozentsatz der Datenträgernutzung auf dem Knoten nach Gerät.|
 |Insights.container/pods |podCount |Anzahl von Pods nach Controller, Namespace, Knoten und Phase.|

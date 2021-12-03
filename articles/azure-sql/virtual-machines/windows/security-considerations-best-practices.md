@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/30/2021
 ms.author: pamela
 ms.reviewer: mathoma
-ms.openlocfilehash: 6927d3d4c9cc7839acc2d17faef88ccd98fd6b21
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 327c2fa71fc8c95da654e7fca9450a8d0372e1ab
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164554"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301781"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Überlegungen zur Sicherheit von SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,15 +31,15 @@ Azure erfüllt mehrere Branchenvorgaben und Standards, mit denen Sie eine konfor
 
 Neben den in diesem Artikel beschriebenen bewährten Methoden wird empfohlen, dass Sie auch die bewährten Methoden für lokale Sicherheit und VM-Sicherheit berücksichtigen und implementieren. 
 
-## <a name="azure-defender-for-sql"></a>Azure Defender für SQL 
+## <a name="microsoft-defender-for-sql"></a>Microsoft Defender für SQL 
 
-[Azure Defender für SQL](../../../security-center/defender-for-sql-introduction.md) ermöglicht Azure Security Center-Sicherheitsfeatures wie Sicherheitsrisikobewertungen und Sicherheitswarnungen. Weitere Informationen hierzu finden Sie unter [Aktivieren von Azure Defender für SQL](../../../security-center/defender-for-sql-usage.md). 
+[Microsoft Defender für SQL](../../../security-center/defender-for-sql-introduction.md) ermöglicht Sicherheits-Funktionen von Microsoft Defender für Cloud, wie zum Beispiel Sicherheitsrisikobewertungen und Sicherheitswarnungen. Weitere Informationen hierzu finden Sie unter [Aktivieren von Microsoft Defender für SQL](../../../security-center/defender-for-sql-usage.md). 
 
 ## <a name="portal-management"></a>Portalverwaltung
 
 Nachdem Sie [die SQL Server-VM bei der SQL-IaaS-Erweiterung registriert haben](sql-agent-extension-manually-register-single-vm.md), können Sie mithilfe der [Ressource „Virtuelle SQL-Computer“](manage-sql-vm-portal.md) im Azure-Portal verschiedene Sicherheitseinstellungen wie die Azure Key Vault-Integration oder die SQL-Authentifizierung konfigurieren. 
 
-Nachdem Sie [Azure Defender für SQL](../../../security-center/defender-for-sql-usage.md) aktiviert haben, können Sie zudem Security Center-Features wie Sicherheitsrisikobewertungen und Sicherheitswarnungen direkt in der [Ressource „Virtuelle SQL-Computer“](manage-sql-vm-portal.md) im Azure-Portal anzeigen. 
+Nachdem Sie [Microsoft Defender für SQL](../../../security-center/defender-for-sql-usage.md) aktiviert haben, können Sie zudem Funktionen von Defender für Cloud wie beispielsweise Sicherheitsrisikobewertungen und Sicherheitswarnungen direkt in der [Ressource „Virtuelle SQL-Computer“](manage-sql-vm-portal.md) im Azure-Portal anzeigen. 
 
 Weitere Informationen hierzu finden Sie unter [Verwalten von SQL Server-VMs in Azure über das Azure-Portal](manage-sql-vm-portal.md). 
 
@@ -133,5 +133,3 @@ Sehen Sie sich auch die anderen Artikel in dieser Reihe an, um mehr zu erfahren:
 - [Security](security-considerations-best-practices.md)
 - [HADR-Einstellungen](hadr-cluster-best-practices.md)
 - [Baseline auswählen](performance-guidelines-best-practices-collect-baseline.md)
-
-

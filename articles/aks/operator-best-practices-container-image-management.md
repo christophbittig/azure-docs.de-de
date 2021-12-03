@@ -4,12 +4,12 @@ description: Lernen Sie die bewährten Methoden für den Clusteroperator zum Ver
 services: container-service
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 998d8602b6aa0e71a04f75aff1c29551ba09c8a3
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: e6c767d1fdf765739f361b91df21e5bc104bc171
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105118"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306527"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Containerimageverwaltung und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ In diesem Artikel wird erläutert, wie Container in AKS gesichert werden. Folgen
 
 Weitere Informationen finden Sie in den Best Practices für [Clustersicherheit][best-practices-cluster-security] und [Podsicherheit][best-practices-pod-security].
 
-Sie können auch [Containersicherheit in Security Center][security-center-containers] verwenden, um die Container auf Sicherheitsrisiken zu überprüfen. Dank der [Integration von Azure Container Registry][security-center-acr] in Security Center können Sie Ihre Images und die Registrierung vor Sicherheitsrisiken schützen.
+Sie können auch [Containersicherheit in Defender für Cloud][security-center-containers] verwenden, um die Container auf Sicherheitsrisiken zu überprüfen. Dank der [Integration von Azure Container Registry][security-center-acr] in Defender für Cloud können Sie Ihre Images und die Registrierung vor Sicherheitsrisiken schützen.
 
 ## <a name="secure-the-images-and-run-time"></a>Sichern von Images und Runtime
 

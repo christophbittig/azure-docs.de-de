@@ -5,12 +5,12 @@ ms.author: palatter
 ms.date: 10/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 3d2859d4103ed98638468da11b2063d639892035
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: d87849dc85264f9a4066acabc55d613e1b47e127
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181832"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133948"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,29 +27,29 @@ Erstellen Sie in Xcode ein neues iOS-Projekt, und wählen Sie die Vorlage **App*
 
 ![Screenshot: ausgewählte Vorlage„Neues Projekt“ in Xcode.](../../media/xcode-new-project-template-select.png)
 
-Benennen Sie das Projekt mit `UILibraryQuickStart`.
+Geben Sie dem Projekt den Namen `UILibraryQuickStart`, und wählen Sie in der Dropdownliste `Interface` die Option `Storyboard` aus.
 
 ![Screenshot: Details des neuen Projekts in Xcode.](../../media/xcode-new-project-details.png)
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Installieren des Pakets und der Abhängigkeiten mit CocoaPods
 
-1. Erstellen Sie eine Podfile für die Anwendung:
+1. Erstellen Sie eine Podfile-Datei in Ihrem Projektstammverzeichnis, indem Sie `pod init` ausführen.
+2. Fügen Sie dieser Podfile-Datei den folgenden Code hinzu:
 
 ```
-source 'https://github.com/Azure/AzurePrivatePodspecs'
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/Azure/AzurePrivatePodspecs.git'
 
 platform :ios, '13.0'
 
 target 'UILibraryQuickStart' do
     use_frameworks!
-    pod 'azure-communication-ui', '1.0.0-alpha.1'
-    pod 'AzureCommunicationCalling', '2.0.1-beta.1'
-    pod 'MicrosoftFluentUI', '0.3.3'
+    pod 'AzureCommunicationUI', '1.0.0-alpha.1'
 end
 ```
 
-2. Führen Sie aus `pod install`.
-3. Öffnen Sie die generierte `.xcworkspace` in Xcode.
+3. Führen Sie `pod install --repo-update` aus. (Dieser Vorgang kann 10–15 Minuten dauern.)
+4. Öffnen Sie die generierte `.xcworkspace` in Xcode.
 
 ### <a name="request-access-to-the-microphone-camera-etc"></a>Fordern Sie Zugriff auf das Mikrofon, die Kamera usw. an.
 
@@ -64,6 +64,10 @@ Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektst
 <string></string>
 ```
 
+Wenn Sie überprüfen möchten, ob die Anforderung der Berechtigung ordnungsgemäß hinzugefügt wurde, sehen Sie sich `Info.plist` an. Wählen Sie hierzu **Öffnen als** > **Eigenschaftenliste** aus. Daraufhin sollte Folgendes angezeigt werden:
+
+![Screenshot: Datenschutz für Kamera und Mikrofon in Xcode](../../media/xcode-info-plist.png)
+
 ### <a name="turn-off-bitcode"></a>Deaktivieren von `Bitcode`
 Legen Sie unter `Build Settings` des Projekts die Option `Enable Bitcode` auf `No` fest. Um die Einstellung zu finden, müssen Sie den Filter von `Basic` in `All` ändern. Sie können auch die Suchleiste auf der rechten Seite verwenden.
 
@@ -71,7 +75,7 @@ Legen Sie unter `Build Settings` des Projekts die Option `Enable Bitcode` auf `N
 
 ## <a name="initialize-composite"></a>Initialisieren der zusammengesetzten Komponenten
 
-Wechseln Sie zu „ViewController“. Fügen Sie hier den folgenden Code hinzu, um die zusammengesetzten Komponenten für Anrufe zu initialisieren. Ersetzen Sie `<GROUP_CALL_ID>` durch die Gruppen-ID für Ihren Anruf, `<DISPLAY_NAME>` durch Ihren Namen und `<USER_ACCESS_TOKEN>` durch Ihr Token.
+Wechseln Sie zu „ViewController“. Fügen Sie hier den folgenden Code hinzu, um die zusammengesetzten Komponenten für Anrufe zu initialisieren. Ersetzen Sie `<GROUP_CALL_ID>` entweder durch die Gruppen-ID des Aufrufs oder durch `UUID()`, um eine solche zu erzeugen. Ersetzen Sie außerdem `<DISPLAY_NAME>` durch Ihren Namen und `<USER_ACCESS_TOKEN>` durch Ihr Token.
 
 ```swift
 import UIKit
@@ -106,8 +110,8 @@ class ViewController: UIViewController {
         let communicationTokenCredential = try! CommunicationTokenCredential(token: "<USER_ACCESS_TOKEN>")
 
         let options = GroupCallOptions(communicationTokenCredential: communicationTokenCredential,
-                                       displayName: displayName,
-                                       groupId: uuid)
+                                       displayName: "<DISPLAY_NAME>",
+                                       groupId: UUID(uuidString: "<GROUP_CALL_ID>")!)
         callComposite?.launch(with: options)
     }
 }
@@ -123,22 +127,24 @@ Sie können Ihre App auf dem iOS-Simulator erstellen und ausführen, indem Sie *
 
 ![Ergebnis der Schnellstart-App](../../media/quick-start-calling-composite-running-ios.gif)
 
+## <a name="sample-application-code-can-be-found-here"></a>Beispielanwendungscode finden Sie [hier](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/ui-library-quickstart).
+
 ## <a name="object-model"></a>Objektmodell
 
 Die folgenden Klassen und Schnittstellen dienen zur Behandlung einiger der wichtigsten Features der Benutzeroberflächen-Clientbibliothek von Azure Communication Services:
 
 | Name                                                                        | BESCHREIBUNG                                                                                  |
 | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| CallComposite | Von der zusammengesetzten Komponente wird eine Anrufumgebung mit Teilnehmergalerie und Steuerelementen gerendert. |
-| CallCompositeOptions | Beinhaltet Optionen wie die Designkonfiguration und den Ereignishandler. |
-| CallCompositeEventsHandler | Ermöglicht das Empfangen von Ereignissen aus der zusammengesetzten Komponente. |
-| GroupCallOptions | Die Optionen zum Beitreten zu einem Gruppenanruf, etwa groupId |
-| TeamsMeetingOptions | Die Optionen für die Teilnahme an einer Teams-Besprechung, etwa der Link zur Besprechung |
-| ThemeConfiguration | Ermöglicht Ihnen das Anpassen des Designs. |
+| [CallComposite](#create-call-composite) | Von der zusammengesetzten Komponente wird eine Anrufumgebung mit Teilnehmergalerie und Steuerelementen gerendert. |
+| [CallCompositeOptions](#create-call-composite) | Beinhaltet Optionen wie die Designkonfiguration und den Ereignishandler. |
+| [CallCompositeEventsHandler](#subscribe-to-events-from-callcomposite) | Ermöglicht das Empfangen von Ereignissen aus der zusammengesetzten Komponente. |
+| [GroupCallOptions](#group-call) | Die Optionen zum Beitreten zu einem Gruppenanruf, etwa groupId |
+| [TeamsMeetingOptions](#teams-meeting) | Die Optionen für die Teilnahme an einer Teams-Besprechung, etwa der Link zur Besprechung |
+| [ThemeConfiguration](#apply-theme-configuration) | Ermöglicht Ihnen das Anpassen des Designs. |
 
 ## <a name="ui-library-functionality"></a>Funktionen der UI-Bibliothek
 
-### <a name="create-call-composite-options-and-call-composite"></a>Erstellen von Optionen für die zusammengesetzte Komponente für Anrufe sowie der zusammengesetzten Komponente für Anrufe
+### <a name="create-call-composite"></a>Erstellen von CallComposite
 
 Initialisieren Sie innerhalb der Funktion `startCallComposite` eine `CallCompositeOptions`-Instanz und eine `CallComposite`-Instanz.
 
@@ -169,8 +175,10 @@ Verwenden Sie das passende Optionsobjekt für die Art von Anruf/Besprechung, die
 Initialisieren Sie innerhalb der Funktion `startCallComposite` eine `GroupCallOptions`-Instanz. Ersetzen Sie `<GROUP_CALL_ID>` durch die Gruppen-ID für Ihren Anruf und `<DISPLAY_NAME>` durch Ihren Namen.
 
 ```swift
+// let uuid = UUID() to create a new call
+let uuid = UUID(uuidString: "<GROUP_CALL_ID>")!
 let options = GroupCallOptions(communicationTokenCredential: communicationTokenCredential,
-                               displayName: displayName,
+                               displayName: "<DISPLAY_NAME>",
                                groupId: uuid)
 ```
 
@@ -180,8 +188,8 @@ Initialisieren Sie innerhalb der Funktion `startCallComposite` eine `TeamsMeetin
 
 ```swift
 let options = TeamsMeetingOptions(communicationTokenCredential: communicationTokenCredential,
-                                  displayName: displayName,
-                                  meetingLink: link)
+                                  displayName: "<DISPLAY_NAME>",
+                                  meetingLink: "<TEAMS_MEETING_LINK>")
 ```
 
 #### <a name="get-a-microsoft-teams-meeting-link"></a>Abrufen eines Microsoft Teams-Besprechungslinks
@@ -197,7 +205,7 @@ Rufen Sie `launch` für die `CallComposite`-Instanz innerhalb der Funktion `star
 callComposite?.launch(with: options)
 ```
 
-### <a name="implement-the-closure-for-events-handler"></a>Implementieren der Schließung für den Ereignishandler
+### <a name="subscribe-to-events-from-callcomposite"></a>Abonnieren von Ereignissen aus `CallComposite`
 
 Sie können die Schließung von `CallCompositeEventsHandler` implementieren, um auf die Ereignisse zu reagieren und die Implementierung an `CallCompositeOptions` zu übergeben. Ein Beispiel hierfür ist ein Ereignis, bei dem die zusammengesetzte Komponente mit einem Fehler beendet wurde.
 
@@ -211,7 +219,7 @@ let handler = CallCompositeEventsHandler(didFail: { error in
 let callCompositeOptions = CallCompositeOptions(callCompositeEventsHandler: handler)
 ```
 
-### <a name="customizing-the-theme"></a>Anpassen des Designs
+### <a name="apply-theme-configuration"></a>Anwenden der Designkonfiguration
 
 Sie können das Design anpassen, indem Sie eine benutzerdefinierte Designkonfiguration erstellen, die das ThemeConfiguration-Protokoll implementiert. Anschließend fügen Sie eine Instanz dieser neuen Klasse in CallCompositeOptions ein.
 

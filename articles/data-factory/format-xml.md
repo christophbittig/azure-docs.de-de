@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/18/2021
 ms.author: jianleishen
-ms.openlocfilehash: 202c2ea7014ea0295fb342b1fc7fabd70d87ac29
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c23245f05f44ff3ca0d730d41982d168dc08458e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743558"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247115"
 ---
 # <a name="xml-format-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Das XML-Format in Azure Data Factory- und Synapse Analytics-Pipelines
 
@@ -94,7 +94,7 @@ Unterstützte **XML-Leseeinstellungen** unter `formatSettings`:
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
-In Zordnungsdatenflüssen können Sie das XML-Format in den folgenden Datenspeichern lesen: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties), und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties). Sie können auf XML-Dateien mit einem XML-Dataset oder einem [Inlinedataset](data-flow-source.md#inline-datasets) verweisen.
+In Zuordnungsdatenflüssen können Sie das XML-Format in den folgenden Datenspeichern lesen: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) und [Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties). Sie können auf XML-Dateien mit einem XML-Dataset oder einem [Inlinedataset](data-flow-source.md#inline-datasets) verweisen.
 
 ### <a name="source-properties"></a>Quelleigenschaften
 

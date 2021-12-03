@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: c5de4ed71de7f6cb6534620cbfd1bc62226123e5
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 9c6fcc3fd0bff46bb3c1665b26502be188a3f83e
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132795"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158695"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
@@ -39,14 +39,14 @@ Weitere Informationen und zusätzliche Konfigurationsoptionen finden Sie unten.
 
 ## <a name="configuration-file-path"></a>Pfad der Konfigurationsdatei
 
-Standardmäßig erwartet Application Insights Java 3.x eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.2.0.jar` befindet.
+Standardmäßig erwartet Application Insights Java 3.x eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.2.3.jar` befindet.
 
 Verwenden Sie eines der folgenden Elemente, um einen eigenen Pfad für Ihre Konfigurationsdatei anzugeben:
 
 * Umgebungsvariable `APPLICATIONINSIGHTS_CONFIGURATION_FILE` oder
 * Java-Systemeigenschaft `applicationinsights.configuration.file`
 
-Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.2.0.jar` aufgelöst.
+Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.2.3.jar` aufgelöst.
 
 ## <a name="connection-string"></a>Verbindungszeichenfolge
 
@@ -194,7 +194,6 @@ Ab Version 3.2.0 können Sie eine benutzerdefinierte Dimension programmatisch in
   ]
 }
 ```
-
 
 ## <a name="telemetry-processors-preview"></a>Telemetrieprozessoren (Vorschauversion)
 
@@ -348,11 +347,16 @@ Ab Version 3.2.0 können die folgenden Vorschauminstrumentierungen aktiviert wer
       },
       "springIntegration": {
         "enabled": true
-      }
+      },
+      "akka": { 
+        "enabled": true
+      },
     }
   }
 }
 ```
+> [!NOTE]
+> Die Akka-Instrumentierung ist ab Version 3.2.2 verfügbar.
 
 ## <a name="heartbeat"></a>Heartbeat
 
@@ -432,6 +436,31 @@ Diese Einstellung gilt für alle folgenden Metriken:
 Sie können den Agent so konfigurieren, dass [Tokenanmeldeinformationen](/java/api/overview/azure/identity-readme#credentials) generiert werden, die für die Azure Active Directory-Authentifizierung erforderlich sind.
 Weitere Informationen finden Sie in der Dokumentation zur [Authentifizierung](./azure-ad-authentication.md).
 
+## <a name="instrumentation-keys-overrides-preview"></a>Instrumentierungstasten überschreiben (Vorschau)
+
+Diese Funktion ist in der Vorschau, beginnend mit 3.2.3.
+
+Instrumentierungsschlüsselüberschreibungen ermöglichen es Ihnen, den [Standardinstrumentierungsschlüssel](#connection-string) außer Kraft zu setzen, zum Beispiel:
+* Setzen Sie einen Instrumentierungsschlüssel für einen http-Pfadpräfix `/myapp1`.
+* Legen Sie einen weiteren Instrumentierungsschlüssel für ein anderes http-Pfadpräfix `/myapp2/` fest.
+
+```json
+{
+  "preview": {
+    "instrumentationKeyOverrides": [
+      {
+        "httpPathPrefix": "/myapp1",
+        "instrumentationKey": "12345678-0000-0000-0000-0FEEDDADBEEF"
+      },
+      {
+        "httpPathPrefix": "/myapp2",
+        "instrumentationKey": "87654321-0000-0000-0000-0FEEDDADBEEF"
+      }
+    ]
+  }
+}
+```
+
 ## <a name="self-diagnostics"></a>Selbstdiagnose
 
 „Selbstdiagnose“ bezeichnet die interne Protokollierung von Application Insights Java 3.x.
@@ -458,7 +487,7 @@ Application Insights Java 3.x protokolliert standardmäßig auf Ebene `INFO` in
 
 `level` kann `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG` oder `TRACE` sein.
 
-`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.2.0.jar` befindet.
+`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.2.3.jar` befindet.
 
 `maxSizeMb` entspricht der maximalen Größe der Protokolldatei, bevor ein Rollover durchgeführt wird.
 

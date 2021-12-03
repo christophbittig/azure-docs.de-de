@@ -10,13 +10,13 @@ ms.custom: contperf-fy21q1, data4ml
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 07/06/2021
-ms.openlocfilehash: 423dae8f84e43900ad84a49423b7d2ff00fb8c76
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 10/21/2021
+ms.openlocfilehash: 2916b7c8042a96e35ad138ae5ae20c389c62e751
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131429791"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866637"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
@@ -97,8 +97,7 @@ Wenn sich Ihr Arbeitsbereich in einem virtuellen Netzwerk befindet, müssen Sie 
 Damit Azure Machine Learning auf die Daten zugreifen kann, müssen Datasets auf der Grundlage von Pfaden in [Azure Machine Learning-Datenspeichern](how-to-access-data.md) oder auf der Grundlage von Web-URLs erstellt werden. 
 
 > [!TIP] 
-> Sie können Datasets direkt auf der Grundlage von Speicher-URLs mit identitätsbasiertem Datenzugriff erstellen. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Speicher mit identitätsbasiertem Datenzugriff (Vorschau)](how-to-identity-based-data-access.md).<br><br>
-Diese Funktion ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion und kann jederzeit geändert werden. 
+> Sie können Datasets direkt auf der Grundlage von Speicher-URLs mit identitätsbasiertem Datenzugriff erstellen. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Speicher mit identitätsbasiertem Datenzugriff](how-to-identity-based-data-access.md).
 
  
 So erstellen Sie Datasets auf der Grundlage eines Datenspeichers mit dem Python SDK:

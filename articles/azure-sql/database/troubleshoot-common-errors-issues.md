@@ -9,13 +9,13 @@ ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: mathoma,vanto
-ms.date: 08/20/2021
-ms.openlocfilehash: f9c5df5bf086e5d80c8f506aa8bb718427755d7a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/04/2021
+ms.openlocfilehash: e445574d69096605f16a6a097f005e020674f6a2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680678"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851703"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Beheben von Konnektivitätsproblemen und anderen Fehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -105,7 +105,7 @@ Wenden Sie sich zum Beheben dieses Problems an Ihren Dienstadministrator, um ein
 In der Regel kann der Dienstadministrator die Anmeldeinformationen mit den folgenden Schritten hinzufügen:
 
 1. Anmelden beim Server mit SQL Server Management Studio (SSMS).
-2. Mithilfe der folgenden SQL-Abfrage in der Masterdatenbank überprüfen, ob der Anmeldename deaktiviert ist:
+2. Mithilfe der folgenden SQL-Abfrage in der `master`-Datenbank überprüfen, ob der Anmeldename deaktiviert ist:
 
    ```sql
    SELECT name, is_disabled FROM sys.sql_logins;
@@ -303,6 +303,8 @@ Um dieses Problem zu umgehen, versuchen Sie, die Abfrage zu optimieren.
 
 Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)
 
+Weitere Informationen zu anderen Fehlern im Zusammenhang mit unzureichendem Arbeitsspeicher und Beispielabfragen finden Sie unter [Behandeln von Fehlern mit unzureichendem Arbeitsspeicher mit Azure SQL-Datenbanken](troubleshoot-memory-errors-issues.md).
+
 ### <a name="table-of-additional-resource-governance-error-messages"></a>Tabelle mit zusätzlichen Fehlermeldungen bezüglich Ressourcenkontrolle
 
 | Fehlercode | severity | BESCHREIBUNG |
@@ -314,7 +316,7 @@ Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der
 | 40550 |16 |Die Sitzung wurde beendet, da zu viele Sperren abgerufen wurden. Reduzieren Sie die Anzahl der in einer einzelnen Transaktion gelesenen oder geänderten Zeilen. Weitere Informationen finden Sie unter [Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung](../performance-improve-use-batching.md).|
 | 40551 |16 |Die Sitzung wurde aufgrund übermäßiger `TEMPDB` -Auslastung beendet. Ändern Sie die Abfrage, um die Verwendung des temporären Tabellenbereichs zu verringern.<br/><br/>Wenn Sie temporäre Objekte verwenden, können Sie Speicherplatz in der `TEMPDB`-Datenbank sparen, indem Sie die temporären Objekte verwerfen, die von der Sitzung nicht mehr benötigt werden. Weitere Informationen zur Verwendung von „tempdb“ in SQL-Datenbank finden Sie unter [Tempdb-Datenbank in SQL-Datenbank](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
 | 40552 |16 |Die Sitzung wurde aufgrund übermäßiger Verwendung des Speicherplatzes für das Transaktionsprotokoll beendet. Reduzieren Sie die Anzahl der in einer einzelnen Transaktion geänderten Zeilen. Weitere Informationen finden Sie unter [Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung](../performance-improve-use-batching.md).<br/><br/>Versuchen Sie beim Durchführen von Masseneinfügungen mit dem Hilfsprogramm `bcp.exe` oder der `System.Data.SqlClient.SqlBulkCopy`-Klasse, die Option `-b batchsize` oder `BatchSize` zu verwenden, um die Anzahl der Zeilen zu beschränken, die bei jeder Transaktion auf den Server kopiert werden. Versuchen Sie es mit der Option `REBUILD WITH ONLINE = ON`, wenn Sie einen Index mit der `ALTER INDEX`-Anweisung neu erstellen. Informationen zu den Größen von Transaktionsprotokollen für das V-Kern-basierte Kaufmodell finden Sie unter: <br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Übersicht über Ressourcenlimits für verwaltete Azure SQL-Instanzen](../managed-instance/resource-limits.md)|
-| 40553 |16 |Die Sitzung wurde aufgrund übermäßiger Speicherauslastung beendet. Ändern Sie die Abfrage, damit weniger Zeilen verarbeitet werden.<br/><br/>Wenn Sie die Anzahl von `ORDER BY`- und `GROUP BY`-Vorgängen im Transact-SQL-Code reduzieren, verringern sich auch die Arbeitsspeicheranforderungen Ihrer Abfrage. Informationen zur Datenbankskalierung finden Sie unter [Skalieren der Ressourcen für einzelne Datenbanken](single-database-scale.md) und [Skalieren der Ressourcen für Pools für elastische Datenbanken](elastic-pool-scale.md).|
+| 40553 |16 |Die Sitzung wurde aufgrund übermäßiger Speicherauslastung beendet. Ändern Sie die Abfrage, damit weniger Zeilen verarbeitet werden.<br/><br/>Wenn Sie die Anzahl von `ORDER BY`- und `GROUP BY`-Vorgängen im Transact-SQL-Code reduzieren, verringern sich auch die Arbeitsspeicheranforderungen Ihrer Abfrage. Informationen zur Datenbankskalierung finden Sie unter [Skalieren der Ressourcen für einzelne Datenbanken](single-database-scale.md) und [Skalieren der Ressourcen für Pools für elastische Datenbanken](elastic-pool-scale.md). Weitere Informationen zu Fehlern im Zusammenhang mit unzureichendem Arbeitsspeicher und Beispielabfragen finden Sie unter [Behandeln von Fehlern mit unzureichendem Arbeitsspeicher mit Azure SQL-Datenbanken](troubleshoot-memory-errors-issues.md).|
 
 ## <a name="elastic-pool-errors"></a>Fehler im Zusammenhang mit Pools für elastische Datenbanken
 
@@ -345,7 +347,7 @@ Die folgenden Fehler beziehen sich auf die Erstellung und Verwendung von Pools f
 
 ## <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>Der von der Anmeldung angeforderte „Master“ der Datenbank kann nicht geöffnet werden. Die Anmeldung ist fehlgeschlagen.
 
-Dieses Problem tritt auf, weil das Konto keine Zugriffsberechtigungen für die Masterdatenbank hat. SQL Server Management Studio (SSMS) versucht jedoch standardmäßig, eine Verbindung mit der Masterdatenbank herzustellen.
+Dieses Problem tritt auf, weil das Konto keine Zugriffsberechtigungen für die `master`-Datenbank hat. SQL Server Management Studio (SSMS) versucht jedoch standardmäßig, eine Verbindung mit der `master`-Datenbank herzustellen.
 
 Gehen Sie folgendermaßen vor, um das Problem zu beheben:
 

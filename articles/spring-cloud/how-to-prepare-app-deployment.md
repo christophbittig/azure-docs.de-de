@@ -8,22 +8,22 @@ ms.date: 07/06/2021
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9def9f39e28851498c7bf87d5b6b2e7d0a26f2c2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 913d750353053398015da9939ec35f0f9b0de1c5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599409"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013705"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Anwendung für die Bereitstellung in Azure Spring Cloud
 
 ::: zone pivot="programming-language-csharp"
 Azure Spring Cloud bietet robuste Dienste zum Hosten, Überwachen, Skalieren und Aktualisieren einer Steeltoe-App. In diesem Artikel wird gezeigt, wie Sie eine vorhandene Steeltoe-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten.
 
-In diesem Artikel werden die Abhängigkeiten, die Konfiguration und der Code erläutert, die zum Ausführen einer .NET Core-Steeltoe-App in Azure Spring Cloud erforderlich sind. Informationen zum Bereitstellen einer Anwendung in Azure Spring Cloud finden Sie unter [Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md).
+In diesem Artikel werden die Abhängigkeiten, die Konfiguration und der Code erläutert, die zum Ausführen einer .NET Core-Steeltoe-App in Azure Spring Cloud erforderlich sind. Informationen zum Bereitstellen einer Anwendung in Azure Spring Cloud finden Sie unter [Bereitstellen Ihrer ersten Spring Boot-Anwendung in Azure Spring Cloud](./quickstart.md).
 
 >[!Note]
-> Steeltoe-Unterstützung für Azure Spring Cloud wird zurzeit als öffentliche Vorschau angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zum Support während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md) einreichen.
+> Steeltoe-Unterstützung für Azure Spring Cloud wird zurzeit als Public Preview angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zum Support während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md) einreichen.
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
 
@@ -136,9 +136,7 @@ In diesem Artikel werden die erforderlichen Abhängigkeiten erläutert und wie d
 
 ## <a name="java-runtime-version"></a>Java Runtime-Version
 
-In Azure Spring Cloud können nur Spring-/Java-Anwendungen ausgeführt werden.
-
-Azure Spring Cloud unterstützt sowohl Java 8 als auch Java 11. Die Hostingumgebung enthält die aktuelle Version von Azul Zulu OpenJDK für Azure. Weitere Informationen zu Azul Zulu OpenJDK für Azure finden Sie unter [Installieren des JDK für Azure und Azure Stack](/azure/developer/java/fundamentals/java-jdk-install).
+Azure Spring Cloud unterstützt sowohl Java 8 als auch Java 11. Im Allgemeinen unterstützt Azure PaaS ausschließlich Java LTS-Versionen, und Azure Spring Cloud unterstützt Java 17 LTS. Die Hostingumgebung enthält die aktuelle Version von Azul Zulu OpenJDK für Azure. Weitere Informationen zu Azul Zulu OpenJDK für Azure finden Sie unter [Installieren des JDK für Azure und Azure Stack](/azure/developer/java/fundamentals/java-jdk-install).
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot- and Spring Cloud-Versionen
 

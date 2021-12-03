@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d090d6c97a26b78799adf8c5927e6e680c43938a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 173ef82e77e44f3b7e2a664d613b1810995fee21
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128596503"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044796"
 ---
 # <a name="tutorial-configure-biocatch-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von BioCatch mit Azure Active Directory B2C
 
@@ -84,7 +84,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 2. Erstellen Sie eine neue Datei, die von der Erweiterungsdatei erbt.
 
-    ```XML
+    ```xml
     <BasePolicy> 
 
         <TenantId>tenant.onmicrosoft.com</TenantId> 
@@ -96,7 +96,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 3. Erstellen Sie unter der BuildingBlocks-Ressource einen Verweis auf die benutzerdefinierte Benutzeroberfläche, um das Eingabefeld auszublenden.
 
-    ```XML
+    ```xml
     <ContentDefinitions> 
 
         <ContentDefinition Id="api.selfasserted"> 
@@ -112,7 +112,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 4. Fügen Sie unter der BuildingBlocks-Ressource die folgenden Ansprüche hinzu.
 
-    ```XML
+    ```xml
     <ClaimsSchema> 
 
           <ClaimType Id="riskLevel"> 
@@ -146,7 +146,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 5. Konfigurieren Sie den selbstbestätigten Anspruchsanbieter für das Feld für die Clientsitzungs-ID.
 
-    ```XML
+    ```xml
     <ClaimsProvider> 
 
           <DisplayName>Client Session ID Claims Provider</DisplayName> 
@@ -190,7 +190,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 6. Konfigurieren Sie den REST-API-Anspruchsanbieter für BioCatch. 
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="BioCatch-API-GETSCORE"> 
 
           <DisplayName>Technical profile for BioCatch API to return session information</DisplayName> 
@@ -236,8 +236,8 @@ document.getElementById("clientSessionId").style.display = 'none';
       </TechnicalProfiles>
     ```
 
-    > [!Note]
-    > BioCatch stellt die zu konfigurierende URL, Kunden-ID und eindeutige Benutzer-ID (unique user ID, uuID) für Sie bereit. Der SessionID-Anspruch des Kunden wird als Abfragezeichenfolgenparameter an BioCatch übergeben. Sie können den Aktivitätstyp (z. B. *MAKE_PAYMENT*) auswählen.
+    > [!NOTE]
+    > BioCatch stellt die zu konfigurierende URL, Kunden-ID und eindeutige Benutzer-ID (Unique User ID, UUID) für Sie bereit. Der SessionID-Anspruch des Kunden wird als Abfragezeichenfolge-Parameter an BioCatch übergeben. Sie können den Aktivitätstyp (z. B. *MAKE_PAYMENT*) auswählen.
 
 7. Konfigurieren Sie die User Journey. Folgen Sie dem Beispiel.
 
@@ -247,7 +247,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
    1. Wenn der zurückgegebene Anspruch für die *Risikostufe* den Wert *LOW* aufweist, überspringen Sie den Schritt für die mehrstufige Authentifizierung. Andernfalls erzwingen Sie die mehrstufige Authentifizierung für den Benutzer.
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="8" Type="ClaimsExchange"> 
 
           <ClaimsExchanges> 
@@ -295,7 +295,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
     Es ist sinnvoll, die von BioCatch zurückgegebenen Informationen als Ansprüche im Token an Ihre Anwendung zu übergeben, insbesondere die Risikostufe (*riskLevel*) und die Bewertung (*score*).
 
-    ```XML
+    ```xml
     <RelyingParty> 
 
     <DefaultUserJourney ReferenceId="SignUpOrSignInMfa" /> 

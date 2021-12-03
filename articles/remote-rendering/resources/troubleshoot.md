@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: bef6439ae51c6e15f7be997758acbbd3722ae4ff
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: a6a9f2c4e480efdbb025fb3edf98dc7e6f599081
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223258"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025948"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -39,7 +39,7 @@ Wenn Sie an einem Laptop mit zwei GPUs arbeiten, kann es vorkommen, dass die GPU
 
 Das zu häufige Senden von REST-API-Befehlen bewirkt, dass der Server eine Drosselung durchführt und schließlich einen Fehler zurückgibt. Der HTTP-Statuscode für die Drosselung lautet 429 („Zu viele Anforderungen“). Als Faustregel sollte eine Verzögerung von **5–10 Sekunden zwischen nachfolgenden Aufrufen** erfolgen.
 
-Beachten Sie, dass dieses Limit nicht nur direkte REST-API-Aufrufe betrifft, sondern auch die C#-/C++-Entsprechungen wie `Session.GetPropertiesAsync`, `Session.RenewAsync` oder `Frontend.GetAssetConversionStatusAsync`.
+Beachten Sie, dass dieses Limit nicht nur direkte REST-API-Aufrufe betrifft, sondern auch die C#-/C++-Entsprechungen wie `Session.GetPropertiesAsync`, `Session.RenewAsync` oder `Frontend.GetAssetConversionStatusAsync`. Einige Funktionen geben auch Informationen zurück, wenn der Vorgang gefahrlos wiederholt werden kann. `RenderingSessionPropertiesResult.MinimumRetryDelay` gibt beispielsweise an, wie viele Sekunden gewartet werden soll, bevor eine weitere Überprüfung versucht wird. Die Verwendung eines solchen Rückgabewerts (falls verfügbar) ist die beste Option, da Sie dann ohne Drosselung Überprüfungen so oft wie möglich durchführen können.
 
 Wenn eine serverseitige Drosselung auftritt, ändern Sie den Code so, dass die Aufrufe seltener durchgeführt werden. Der Server setzt den Drosselungsstatus jede Minute zurück, sodass der Code nach einer Minute sicher erneut ausgeführt werden kann.
 
@@ -202,6 +202,10 @@ Ein weiterer Grund für instabile Hologramme (wabernde, verzerrte, zitternde ode
 Ein anderer Wert, der untersucht werden kann, ist `ServiceStatistics.LatencyPoseToReceiveAvg`. Er sollte konstant weniger als 100 ms betragen. Höhere Werte können darauf hinweisen, dass Sie mit einem zu weit entfernten Rechenzentrum verbunden sind.
 
 Eine Liste der möglichen Entschärfungen finden Sie in den [Richtlinien für die Netzwerkkonnektivität](../reference/network-requirements.md#guidelines-for-network-connectivity).
+
+## <a name="local-content-uis--on-hololens-2-renders-with-significantly-more-distortion-artifacts-than-without-arr"></a>Lokale Inhalte (Benutzeroberflächen, ...) in HoloLens 2 werden mit deutlich mehr Verzerrungsartefakten gerendert als ohne ARR
+
+Dies ist eine Standardeinstellung, bei der die Projektionsqualität lokaler Inhalte zugunsten der Leistung zur Laufzeit gemindert ist. Im Kapitel über die [Posenmodi für die Neuprojektion](../overview/features/late-stage-reprojection.md#reprojection-pose-modes) erfahren Sie, wie der Projektionsmodus geändert werden kann, sodass lokale Inhalte auf der gleichen Qualitätsstufe der Neuprojektion gerendert wird wie ohne ARR.
 
 ## <a name="z-fighting"></a>Z-Fighting
 

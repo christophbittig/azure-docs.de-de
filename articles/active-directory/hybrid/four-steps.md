@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6828f1c02bbcccebcd6b96305b051ebfc996c1a7
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6e06b908ed34f4edbdc85ab105a983cc32fbecc0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046219"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305425"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
 
@@ -77,15 +77,15 @@ Der Azure AD-Anwendungsproxy bietet die folgenden Vorteile:
 * Einmaliges Anmelden (SSO) für Geräte, Ressourcen und Apps in der Cloud und lokal
 * Ermöglichen von zeit- und ortsunabhängigem produktivem Arbeiten für Endbenutzer
 
-### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Ermitteln von Schatten-IT mit Microsoft Cloud App Security
+### <a name="discover-shadow-it-with-microsoft-defender-for-cloud-apps"></a>Entdecken von Schatten-IT mit Microsoft Defender-für-Cloud-Apps
 
 In modernen Unternehmen sind die IT-Abteilungen häufig nicht über alle Cloudanwendungen unterrichtet, die die Benutzer für ihre Arbeit verwenden. Wenn IT-Administratoren gefragt werden, wie viele Cloud-Apps ihrer Meinung nach von ihren Mitarbeitern verwendet werden, sagen sie im Durchschnitt: 30 bis 40. Tatsächlich liegt der Durchschnitt bei über 1.000 separaten Apps, die von Mitarbeitern in Ihrer Organisation genutzt werden. 80 % der Mitarbeiter verwenden nicht sanktionierte Apps, die von niemandem überprüft wurden und die möglicherweise nicht Ihren Sicherheits- und Compliancerichtlinien entsprechen.
 
-[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security) kann Ihnen helfen, nützliche Apps zu identifizieren, die bei den Benutzern beliebt sind. Diese können dann von der IT sanktioniert und dem Katalog der Unternehmensanwendungen hinzugefügt werden, damit die Benutzer von Funktionen wie SSO und bedingtem Zugriff profitieren.
+[Microsoft Defender-für-Cloud-Apps](/cloud-app-security/what-is-cloud-app-security) können Ihnen dabei helfen, nützliche Apps zu identifizieren, die bei den Benutzern beliebt sind. Diese können dann von der IT genehmigt und der Galerie der Unternehmensanwendungen hinzugefügt werden, damit die Benutzer von Funktionen wie SSO und bedingtem Zugriff profitieren können.
 
-<em>„Mit **Cloud App Security** können wir sicherstellen, dass unsere Mitarbeiter unsere Cloud- und SaaS-Anwendungen ordnungsgemäß nutzen. Die verfügbaren Möglichkeiten unterstützen unsere grundlegenden Sicherheitsrichtlinien zum Schutz von Accenture.“</em> --- [John Blasi, Managing Director, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>Mit „**Defender-für-Cloud-Apps** können wir sicherstellen, dass unsere Mitarbeiter unsere Cloud- und SaaS-Anwendungen ordnungsgemäß nutzen, und zwar so, dass unsere grundlegenden Sicherheitsrichtlinien zum Schutz von Accenture unterstützt werden.“</em> --- [John Blasi, Managing Director, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-Zusätzlich zum Erkennen von Schatten-IT können Sie mit MCAS auch die Risikostufe von Apps ermitteln, nicht autorisierte Zugriffe auf Unternehmensdaten verhindern, mögliche Datenlecks erkennen und andere Sicherheitsrisiken in Anwendungen aufdecken.
+Zusätzlich zum Erkennen von Schatten-IT können Sie mit Defender-für-Cloud-Apps auch die Risikostufe von Apps ermitteln, nicht autorisierte Zugriffe auf Unternehmensdaten verhindern, mögliche Datenlecks erkennen und andere Sicherheitsrisiken in Anwendungen aufdecken.
 
 ## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>Schritt 2: Automatisches Einrichten einer Identität für jeden Benutzer
 
@@ -204,13 +204,13 @@ Falls Sie keinen Rückgang der Supportanfragen feststellen, sollten Sie die Ursa
 
 ### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>Überwachen der Nutzung von Apps für Erkenntnisse
 
-Neben der Ermittlung von Schatten-IT kann die Überwachung der App-Nutzung in Ihrer Organisation mit [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) auch helfen, sämtliche Vorteile eines Umstiegs Ihrer Organisation von lokalen auf Cloudanwendungen zu nutzen. Sie behalten durch verbesserten Einblick in Aktivitäten volle Kontrolle über Ihre Ressourcen und können den Schutz wichtiger Daten in Cloudanwendungen erhöhen. Das Überwachen der App-Nutzung in Ihrer Organisation mit MCAS hilft Ihnen bei der Beantwortung der folgenden Fragen:
+Neben der Ermittlung von Schatten-IT kann die Überwachung der App-Nutzung in Ihrer Organisation mit [Microsoft Defender-für-Cloud-Apps](/cloud-app-security/what-is-cloud-app-security) auch dabei helfen, sämtliche Vorteile eines Umstiegs Ihrer Organisation auf Cloudanwendungen zu nutzen. Sie behalten durch verbesserten Einblick in Aktivitäten volle Kontrolle über Ihre Ressourcen und können den Schutz wichtiger Daten in Cloudanwendungen erhöhen. Das Überwachen der App-Nutzung in Ihrer Organisation mithilfe von Defender-für-Cloud-Apps hilft Ihnen bei der Beantwortung der folgenden Fragen:
 
 * Welche nicht sanktionierten Apps nutzen die Mitarbeiter zum Speichern von Daten?
 * Wo und wann werden vertrauliche Daten in der Cloud gespeichert?
 * Wer greift auf vertrauliche Daten in der Cloud zu?
 
-*„Mit Cloud App Security können wir sehr schnell Anomalien erkennen und Maßnahmen ergreifen.“* --- [Eric LePenske, Senior Manager, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*"Mit Defender-für-Cloud-Apps können wir Anomalien schnell erkennen und Maßnahmen ergreifen.“* --- [Eric LePenske, Senior Manager, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 ## <a name="summary"></a>Zusammenfassung
 
@@ -234,7 +234,7 @@ Wir empfehlen Ihnen, die folgende Checkliste zur Referenz auszudrucken, damit Si
 ||Pilotversuch für Self-Service-Kennwortzurücksetzung (SSPR, Self-Service Password Reset) für eine Gruppe|
 ||Überwachen von Hybridkomponenten mithilfe von Azure AD Connect Health|
 ||Zuweisen der Administratorrollen mit den geringsten Berechtigungen für den Betrieb|
-||Ermitteln von Schatten-IT mit Microsoft Cloud App Security|
+||Entdecken von Schatten-IT mit Microsoft Defender-für-Cloud-Apps|
 ||Verwenden von Azure Monitor zum Erfassen von Datenprotokollen für die Analyse|
 
 ### <a name="next-two-weeks"></a>Nächste zwei Wochen

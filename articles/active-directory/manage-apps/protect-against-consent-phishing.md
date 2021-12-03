@@ -13,14 +13,14 @@ ms.date: 08/09/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: tilarso
-ms.openlocfilehash: dc860dce0f75648488ff692a0024a850bf4c76ad
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: cad0102bf76cd63553049045ea55e0e7fb8f16d0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615693"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550682"
 ---
-# <a name="protecting-against-consent-phishing-in-azure-active-directory"></a>Schutz vor Einwilligungsphishing in Azure Active Directory
+# <a name="protecting-against-consent-phishing"></a>Schutz vor Einwilligungsphishing
 
 Die Produktion ist nicht mehr auf private Netzwerke beschränkt, und die Arbeit hat sich erheblich in Richtung Clouddienste verlagert. Cloudanwendungen ermöglichen Mitarbeitern zwar, remote produktiv zu sein, Angreifer können jedoch auch anwendungsbasierte Angriffe nutzen, um Zugriff auf wertvolle Unternehmensdaten zu erhalten. Möglicherweise sind Sie bereits mit Angriffen auf Benutzer vertraut, z. B. dem E-Mail-Phishing oder dem Kompromittieren von Anmeldeinformationen. ***Einwilligungsphishing*** ist ein weiterer Bedrohungsvektor, den Sie beachten sollten.
 In diesem Artikel wird beschrieben, was Einwilligungsphishing ist, was Microsoft zu Ihrem Schutz unternimmt und welche Schritte Organisationen ergreifen können, um die Sicherheit zu gewährleisten.
@@ -65,7 +65,7 @@ Microsoft möchte Administratoren volle Kontrolle über die richtigen Erkenntnis
     - Prüfen Sie auf schlechte Rechtschreibung und Grammatik. Wenn eine E-Mail oder der Einwilligungsbildschirm der Anwendung Fehler hinsichtlich Rechtschreibung und Grammatik aufweist, handelt es sich wahrscheinlich um eine verdächtige Anwendung. In diesem Fall können Sie dies direkt mit dem Link *Hier melden* auf der [Einwilligungsaufforderung](../develop/application-consent-experience.md#building-blocks-of-the-consent-prompt) melden. Microsoft untersucht dann, ob es sich um eine böswillige Anwendung handelt, und deaktiviert sie, wenn sich der Verdacht bestätigt.
     - Verlassen Sie sich nicht auf App-Namen und Domänen-URLs als Quelle für die Authentizität. Angreifer fälschen gerne App-Namen und Domänen, damit sie den Anschein erwecken, dass sie von legitimen Dienstanbietern oder Unternehmen stammen, und die Einwilligung für die böswillige App fördern. Überprüfen Sie stattdessen die Quelle der Domänen-URL, und verwenden Sie nach Möglichkeit Anwendungen von [verifizierten Herausgebern](../develop/publisher-verification-overview.md).
     - Blockieren Sie [Phishing-E-Mails zur Einwilligung mit Microsoft Defender für Office 365](/microsoft-365/security/office-365-security/set-up-anti-phishing-policies#impersonation-settings-in-anti-phishing-policies-in-microsoft-defender-for-office-365), indem Sie sich vor Phishingkampagnen schützen, bei denen ein Angreifer die Identität eines bekannten Benutzers in Ihrer Organisation annimmt.
-    - Konfigurieren Sie Sicherheitsrichtlinien für Microsoft-Cloud-Apps, wie  [Aktivitätsrichtlinien](/cloud-app-security/user-activity-policies),  [Anomalieerkennung](/cloud-app-security/anomaly-detection-policy) und [OAuth-App-Richtlinien](/cloud-app-security/app-permission-policy), um ungewöhnliche Anwendungsaktivitäten in Ihrer Organisation zu verwalten und Maßnahmen zu ergreifen.
+    - Konfigurieren Sie Microsoft Defender für Cloud-Apps-Richtlinien wie  [Aktivitätsrichtlinien](/cloud-app-security/user-activity-policies),  [Anomalieerkennung](/cloud-app-security/anomaly-detection-policy) und  [OAuth-App-Richtlinien](/cloud-app-security/app-permission-policy) , um ungewöhnliche Anwendungsaktivitäten in Ihrer Organisation zu verwalten und Maßnahmen zu ergreifen.
     - Untersuchen Sie Angriffen zum Einwilligungsphishing, und suchen Sie speziell danach. Nutzen Sie dazu den Leitfaden zum [erweiterten Hunting mit Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview).
 * Lassen Sie den Zugriff auf vertrauenswürdige Apps zu, und schützen Sie sich vor Apps, denen Sie nicht vertrauen.
     - Verwenden Sie Anwendungen, die vom Herausgeber überprüft wurden. Die [Herausgeberüberprüfung](../develop/publisher-verification-overview.md) unterstützt Administratoren und Endbenutzer durch einen von Microsoft unterstützten Überprüfungsvorgang dabei, die Authentizität von Anwendungsentwicklern zu verstehen.

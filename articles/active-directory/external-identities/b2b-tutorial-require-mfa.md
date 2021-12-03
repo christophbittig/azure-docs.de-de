@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 06/22/2021
+ms.date: 11/08/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9fa2dd3ab101a340b01f3adcbdb33f8ea36595e
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 60a1be1add489b3b48fc4e0fbeeca34197340e4b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163626"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053811"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Tutorial: Erzwingen der mehrstufigen Authentifizierung für B2B-Gastbenutzer
 
@@ -47,24 +47,24 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie Folgendes:
 
-- **Zugriff auf Azure AD Premium**. Zum Funktionsumfang dieser Edition gehört die Richtlinie für bedingten Zugriff. Um MFA zu erzwingen, müssen Sie eine Azure AD-Richtlinie für bedingten Zugriff erstellen. Beachten Sie, dass MFA-Richtlinien in Ihrer Organisation immer durchgesetzt werden, unabhängig davon, ob Partner über MFA-Funktionen verfügen. Wenn Sie MFA für Ihr Unternehmen einrichten, benötigen Sie ausreichend Azure AD Premium-Lizenzen für Ihre Gastbenutzer. 
+- **Zugriff auf Azure AD Premium**. Zum Funktionsumfang dieser Edition gehört die Richtlinie für bedingten Zugriff. Um MFA zu erzwingen, müssen Sie eine Azure AD-Richtlinie für bedingten Zugriff erstellen. Beachten Sie, dass MFA-Richtlinien in Ihrer Organisation immer durchgesetzt werden, unabhängig davon, ob Partner über MFA-Funktionen verfügen.
 - **Ein gültiges externes E-Mail-Konto**, das Sie Ihrem Mandantenverzeichnis als Gastbenutzer hinzufügen und zum Anmelden verwenden können. Wie Sie ein Gastkonto erstellen, erfahren Sie unter [Hinzufügen von B2B-Gastbenutzern im Azure-Portal](add-users-administrator.md).
 
 ## <a name="create-a-test-guest-user-in-azure-ad"></a>Erstellen eines Testgastbenutzers in Azure AD
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Azure AD-Administrator an.
-2. Wählen Sie im linken Bereich **Azure Active Directory** aus.
-3. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
-4. Klicken Sie auf **Neuer Gastbenutzer**.
+1. Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus.
+1. Wählen Sie im Menü auf der linken Seite unter **Verwalten** die Option **Benutzer** aus.
+1. Klicken Sie auf **Neuer Gastbenutzer**.
 
     ![Screenshot: Auswahl der Option „Neuer Gastbenutzer“](media/tutorial-mfa/tutorial-mfa-user-3.png)
 
-5. Geben Sie unter **Benutzername** die E-Mail-Adresse des externen Benutzers ein. Geben Sie optional eine Begrüßungsnachricht ein.
+1. Geben Sie unter **Identität** die E-Mail-Adresse des externen Benutzers ein. Geben Sie optional einen Namen und eine Begrüßungsnachricht ein.
 
     ![Screenshot: Eingabe der Einladungsnachricht für Gastbenutzer](media/tutorial-mfa/tutorial-mfa-user-4.png)
 
-6. Klicken Sie auf **Einladen**. Die Einladung wird daraufhin automatisch an den Gastbenutzer gesendet. Daraufhin wird die Meldung **Benutzer erfolgreich eingeladen.** angezeigt.
-7. Nach dem Senden der Einladung wird das Benutzerkonto dem Verzeichnis automatisch als Gast hinzugefügt.
+1. Klicken Sie auf **Einladen**. Die Einladung wird daraufhin automatisch an den Gastbenutzer gesendet. Daraufhin wird die Meldung **Benutzer erfolgreich eingeladen.** angezeigt.
+1. Nach dem Senden der Einladung wird das Benutzerkonto dem Verzeichnis automatisch als Gast hinzugefügt.
 
 ## <a name="test-the-sign-in-experience-before-mfa-setup"></a>Testen der Anmeldung vor dem MFA-Setup
 
@@ -75,76 +75,75 @@ Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie F
 ## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>Erstellen einer Richtlinie für bedingten Zugriff mit erforderlicher MFA
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
-2. Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus.
-3. Wählen Sie auf der Seite **Azure Active Directory** im Abschnitt **Sicherheit** **Bedingter Zugriff** aus.
-4. Wählen Sie auf der Seite **Bedingter Zugriff** in der Symbolleiste oben **Neue Richtlinie** aus.
-5. Geben Sie auf der Seite **Neu** im Textfeld **Name** **Mehrstufige Authentifizierung für Zugriff auf B2B-Portal erforderlich** ein.
-6. Wählen Sie im Abschnitt **Zuweisungen** **Benutzer und Gruppen** aus.
-7. Wählen Sie auf der Seite **Benutzer und Gruppen** die Option **Benutzer und Gruppen auswählen** und dann **Alle Gast- und externen Benutzer** aus.
+1. Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus.
+1. Wählen Sie im Menü auf der linken Seite unter **Verwalten** die Option **Sicherheit** aus.
+1. Wählen Sie unter **Schützen** die Option **Bedingter Zugriff** aus.
+1. Wählen Sie auf der Seite **Bedingter Zugriff** in der Symbolleiste oben **Neue Richtlinie** aus.
+1. Geben Sie auf der Seite **Neu** im Textfeld **Name** **Mehrstufige Authentifizierung für Zugriff auf B2B-Portal erforderlich** ein.
+1. Wählen Sie im Abschnitt **Zuweisungen** den Link unter **Benutzer und Gruppen** aus.
+1. Wählen Sie auf der Seite **Benutzer und Gruppen** die Option **Benutzer und Gruppen auswählen** und dann **Alle Gast- und externen Benutzer** aus.
 
     ![Screenshot: Auswahl aller Gastbenutzer](media/tutorial-mfa/tutorial-mfa-policy-6.png)
-9. Wählen Sie **Fertig** aus.
-10. Wählen Sie auf der Seite **Neu** im Abschnitt **Zuweisungen** die Option **Cloud-Apps** aus.
-11. Wählen Sie auf der Seite **Cloud-Apps** **Apps auswählen** und dann **Auswählen** aus.
+1. Wählen Sie im Abschnitt **Zuweisungen** den Link unter **Cloudanwendungen oder -aktionen** aus.
+1. Wählen Sie **Apps auswählen** und dann den Link unter **Auswählen** aus.
 
     ![Screenshot: Seite „Cloud-Apps“ und Option „Auswählen“](media/tutorial-mfa/tutorial-mfa-policy-10.png)
 
-12. Wählen Sie auf der Seite **Auswählen** die Option **Microsoft Azure-Verwaltung** und dann **Auswählen** aus.
+1.  Wählen Sie auf der Seite **Auswählen** die Option **Microsoft Azure-Verwaltung** und dann **Auswählen** aus.
 
     ![Screenshot, auf dem die Option „Microsoft Azure-Verwaltung“ hervorgehoben ist](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
-13. Wählen Sie auf der Seite **Cloud-Apps** **Fertig** aus.
-14. Wählen Sie auf der Seite **Neu** im Abschnitt **Zugriffskontrollen** die Option **Gewähren** aus.
-15. Wählen Sie auf der Seite **Gewähren** die Option **Zugriff gewähren** aus, aktivieren Sie das Kontrollkästchen **Mehrstufige Authentifizierung erforderlich**, und wählen Sie dann **Auswählen** aus.
+1.  Wählen Sie auf der Seite **Neu** im Abschnitt **Zugriffskontrollen** den Link unter **Gewähren** aus.
+1.  Wählen Sie auf der Seite **Gewähren** die Option **Zugriff gewähren** aus, aktivieren Sie das Kontrollkästchen **Mehrstufige Authentifizierung erforderlich**, und wählen Sie dann **Auswählen** aus.
 
     ![Screenshot: Option „Mehrstufige Authentifizierung erforderlich“](media/tutorial-mfa/tutorial-mfa-policy-13.png)
 
-16. Wählen Sie unter **Richtlinie aktivieren** die Option **An** aus.
+1.  Wählen Sie unter **Richtlinie aktivieren** die Option **An** aus.
 
     ![Screenshot: Option „Richtlinie aktivieren“ auf „Ein“ festgelegt](media/tutorial-mfa/tutorial-mfa-policy-14.png)
 
-17. Klicken Sie auf **Erstellen**.
+1.  Klicken Sie auf **Erstellen**.
 
 ## <a name="use-the-what-if-option-to-simulate-sign-in"></a>Simuliertes Anmelden mit der What If-Option
 
-1. Wählen Sie auf der Seite **Bedingter Zugriff – Richtlinien** **What If** aus.
+1. Wählen Sie auf der Seite **Bedingter Zugriff | Richtlinien** die Option **What If** aus.
 
     ![Screenshot, auf dem hervorgehoben ist, wo Sie auf der Seite „Bedingter Zugriff – Richtlinien“ die Option „What if“ auswählen](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
-2. Wählen Sie **Benutzer**, Ihren Testgastbenutzer und dann **Auswählen** aus.
+1. Wählen Sie den Link unter **Benutzer** aus. 
+1. Geben Sie im Suchfeld den Namen Ihres Testgastbenutzers ein. Wählen Sie in den Suchergebnissen den Benutzer aus, und wählen Sie dann **Auswählen** aus.
 
     ![Screenshot: ausgewählter Gastbenutzer](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
 
-3. Wählen Sie **Cloud-Apps** aus.
-4. Wählen Sie auf der Seite **Cloud-Apps** die Option **Apps auswählen** aus, und klicken Sie dann auf **Auswählen**. Wählen Sie in der Anwendungsliste **Microsoft Azure-Verwaltung** aus, und klicken Sie dann auf **Auswählen**.
+1. Wählen Sie den Link unter **Cloud apps, actions, or authentication content** (Cloud-Apps, Aktionen oder Authentifizierungsinhalt) aus. . Wählen Sie **Apps auswählen** und dann den Link unter **Auswählen** aus.
 
     ![Screenshot: ausgewählte Microsoft Azure-Verwaltungs-App](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
 
-5. Wählen Sie auf der Seite **Cloud-Apps** **Fertig** aus.
-6. Wählen Sie **What If** aus, und überprüfen Sie, ob Ihre neue Richtlinie auf der Registerkarte **Anzuwendende Richtlinien** unter **Auswertungsergebnisse** angezeigt wird.
+1. Wählen Sie auf der Seite **Cloud-Apps** in der Anwendungsliste **Microsoft Azure-Verwaltung** und dann **Auswählen** aus.
+1. Wählen Sie **What If** aus, und überprüfen Sie, ob Ihre neue Richtlinie auf der Registerkarte **Anzuwendende Richtlinien** unter **Auswertungsergebnisse** angezeigt wird.
 
     ![Screenshot: Auswahl der Option „What If“](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
 
 ## <a name="test-your-conditional-access-policy"></a>Testen der Richtlinie für bedingten Zugriff
 
 1. Melden Sie sich mit Ihrem Testbenutzernamen und dem dazugehörigen Kennwort im [Azure-Portal](https://portal.azure.com/) an.
-2. Sie sollten eine Anforderung für zusätzliche Authentifizierungsmethoden sehen. Beachten Sie, dass es einige Zeit dauern kann, bis die Richtlinie wirksam wird.
+1. Sie sollten eine Anforderung für zusätzliche Authentifizierungsmethoden sehen. Beachten Sie, dass es einige Zeit dauern kann, bis die Richtlinie wirksam wird.
 
     ![Screenshot: Nachricht „Weitere Informationen erforderlich“](media/tutorial-mfa/mfa-required.png)
 
-3. Melden Sie sich ab.
+1. Melden Sie sich ab.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Löschen Sie den Testbenutzer und die Testrichtlinie für bedingten Zugriff, wenn sie nicht mehr benötigt werden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Azure AD-Administrator an.
-2. Wählen Sie im linken Bereich **Azure Active Directory** aus.
-3. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
-4. Wählen Sie den Testbenutzer und dann **Benutzer löschen** aus.
-5. Wählen Sie im linken Bereich **Azure Active Directory** aus.
-6. Wählen Sie unter **Sicherheit** **Bedingter Zugriff** aus.
-7. Wählen Sie in der Liste **Richtlinienname** das Kontextmenü (...) für Ihre Testrichtlinie und dann **Löschen** aus. Klicken Sie auf **Ja**, um zu bestätigen.
+1. Wählen Sie im linken Bereich **Azure Active Directory** aus.
+1. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
+1. Wählen Sie den Testbenutzer und dann **Benutzer löschen** aus.
+1. Wählen Sie im linken Bereich **Azure Active Directory** aus.
+1. Wählen Sie unter **Sicherheit** **Bedingter Zugriff** aus.
+1. Wählen Sie in der Liste **Richtlinienname** das Kontextmenü (...) für Ihre Testrichtlinie und dann **Löschen** aus. Klicken Sie auf **Ja**, um zu bestätigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,14 +1,14 @@
 ---
 title: Warnungstypen und -beschreibungen
 description: Lesen Sie die Beschreibungen der Warnungen zu Defender für IoT.
-ms.date: 04/28/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 1275762a96106f76622565eae996f764d7934d62
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: ee5e3b32d0a716b9ce05ec2b7bb1ed7c39ddada6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114441271"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283921"
 ---
 # <a name="alert-types-and-descriptions"></a>Warnungstypen und -beschreibungen
 

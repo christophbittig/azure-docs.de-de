@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: overview
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ca822d14f225372f40d14165557677dff66f6ff8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 799385d85e83f42835eb6e70ffb0b5a2b868e1f9
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100350"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372641"
 ---
 # <a name="what-is-service-connector"></a>Was ist der Dienstconnector?
 
@@ -55,6 +55,7 @@ Nachdem eine Dienstverbindung erstellt wurde. Entwickler können den Integrität
 
 * Azure Database for PostgreSQL
 * Azure Database for MySQL
+* Azure Cosmos DB (SQL, MangoDB, Gremlin, Cassandra, Tabelle)
 * Azure Storage (Blob-, Warteschlangen-, Datei- und Tabellenspeicher)
 * Azure-Schlüsseltresor
 * Azure SignalR Service

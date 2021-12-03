@@ -3,16 +3,14 @@ title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für 
 description: Hier sind Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy aufgelistet, die für Azure Automation verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
 ms.date: 09/17/2021
 ms.topic: sample
-author: mgoedtel
-ms.author: magoedte
 ms.service: automation
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1634a3c4ab2a96aaa74b0cf6fa86a20cca741144
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d6818329a3f20cce16ebfc20b2585f497c23db10
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603149"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494227"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-automation"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Automation
 

@@ -3,12 +3,12 @@ title: Änderungen am Verhalten in PowerShell Desired State Configuration für d
 description: Dieser Artikel bietet eine Übersicht über die Plattform, die zum Übermitteln von Konfigurationsänderungen an Computer über Azure Policy verwendet wird.
 ms.date: 05/31/2021
 ms.topic: how-to
-ms.openlocfilehash: b501305513e99963ec9d00a49e6e7aa1c74b3683
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6118ec0ce0bb8b0296153d32dbad559a6b53ebb8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045330"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261860"
 ---
 # <a name="changes-to-behavior-in-powershell-desired-state-configuration-for-guest-configuration"></a>Änderungen am Verhalten in PowerShell Desired State Configuration für die Gastkonfiguration
 
@@ -30,6 +30,30 @@ Die Gastkonfiguration wird in PowerShell Version 7.1.3 für Windows und in der P
 
 Die Gastkonfiguration unterstützt das Zuweisen mehrerer Konfigurationen zum gleichen Computer. Innerhalb des Betriebssystems der Gastkonfigurationserweiterung sind keine besonderen Schritte erforderlich. Es ist nicht erforderlich, [Teilkonfigurationen](/powershell/scripting/dsc/pull-server/partialConfigs)zu konfigurieren.
 
+## <a name="dependencies-are-managed-per-configuration"></a>Verwaltung von Abhängigkeiten auf Konfigurationsebene
+
+Wenn eine Konfiguration [mithilfe der verfügbaren Tools gepackt](../how-to/guest-configuration-create.md) wird, sind die für diese Konfiguration erforderlichen Abhängigkeiten in einer ZIP-Datei enthalten.
+Computer extrahieren den Inhalt für die einzelnen Konfigurationen in einen eindeutigen Ordner.
+Der von der Gastkonfigurationserweiterung bereitgestellte Agent erstellt für jede Konfiguration eine dedizierte PowerShell-Sitzung. Dabei wird die Umgebungsvariable `$Env:PSModulePath` verwendet, die das automatische Laden von Modulen ausschließlich auf den Pfad beschränkt, unter dem das Paket extrahiert wurde.
+
+Diese Änderung bietet mehrere Vorteile.
+
+- Die Verwendung verschiedener Modulversionen für die einzelnen Konfigurationen auf demselben Computer ist möglich.
+- Wenn eine Konfiguration auf einem Computer gelöscht wird, wird der gesamte Ordner, in den sie extrahiert wurde, vom Agent sicher gelöscht, und es müssen keine konfigurationsübergreifend freigegebenen Abhängigkeiten verwaltet werden.
+- Es müssen nicht mehrere Versionen eines Moduls in einem zentralen Dienst verwaltet werden.
+  
+## <a name="artifacts-are-managed-as-packages"></a>Verwaltung von Artefakten als Pakete
+
+Azure Automation State Configuration umfasst die Verwaltung von Artefakten für Module und Konfigurationsskripts. Sobald beides im Dienst veröffentlicht wurde, kann das Skript im MOF-Format kompiliert werden. Ähnlich verhielt es sich bei Windows Pull Server, wo die Verwaltung von Konfigurationen und Modulen in der Webdienstinstanz erforderlich war. Die DSC-Erweiterung verfügt jedoch über ein vereinfachtes Modell, bei dem alle Artefakte zusammen gepackt und an einem Speicherort gespeichert werden, auf den vom Zielcomputer aus über eine HTTPS-Anforderung zugegriffen werden kann. (Hierfür wird häufig der Azure Blob Storage verwendet.)
+
+Bei der Gastkonfiguration wird nur das vereinfachte Modell verwendet, bei dem alle Artefakte zusammen gepackt werden und über HTTPS vom Zielcomputer aus auf sie zugegriffen wird.
+Ein Veröffentlichen von Modulen oder Skripts oder Kompilieren im Dienst ist nicht erforderlich. Eine Änderung ist, dass das Paket immer eine kompilierte MOF-Datei enthalten muss. Es ist nicht möglich, eine Skriptdatei in das Paket einzuschließen und das Skript auf dem Zielcomputer zu kompilieren.
+
+## <a name="maximum-size-of-custom-configuration-package"></a>Die maximale Größe des benutzerdefinierten Konfigurationspakets
+
+In Azure Automation State waren die DSC-Konfigurationen in Ihrer [Größe begrenzt](../../../automation/automation-dsc-compile.md#compile-your-dsc-configuration-in-windows-powershell).
+Die Gastkonfiguration unterstützt eine Gesamtpaketgröße von 100 MB (vor der Komprimierung). Es gibt keine spezielle Größenbeschränkung für die MOF-Datei im Paket.
+
 ## <a name="configuration-mode-is-set-in-the-package-artifact"></a>Der Konfigurationsmodus wird im Paketartefakt festgelegt
 
 Beim Erstellen des Konfigurationspakets wird der Modus mit den folgenden Optionen festgelegt:
@@ -46,7 +70,11 @@ Parameter, die vom Eigenschaften-Array `configurationParameter` in den [Gastkonf
 
 Die Parameter in Azure Policy, die Werte an die Gastkonfigurationszuweisungen übergeben, müssen den Typ _Zeichenfolge_ aufweisen. Arrays können nicht über Parameter übergeben werden. Dies gilt selbst dann, wenn die DSC-Ressource Arrays unterstützt.
 
-## <a name="sequence-of-events"></a>Abfolge von Ereignissen
+## <a name="trigger-set-from-outside-machine"></a>Auslösen von außerhalb des Computers festlegen
+
+Eine Herausforderung in früheren Versionen von DSC war die Korrektur von Drift im großen Stil ohne viel benutzerdefinierten Code und die Nutzung von WinRM-Remoteverbindungen. Die Gastkonfiguration löst dieses Problem. Benutzer der Gastkonfiguration haben die Kontrolle über die Abweichungskorrektur durch [On-Demand-Wiederherstellung](./guest-configuration-policy-effects.md#remediation-on-demand-applyandmonitor).
+
+## <a name="sequence-includes-get-method"></a>Sequenz beinhaltet Get-Methode
 
 Wenn die Gastkonfiguration einen Computer überwacht oder konfiguriert, wird die gleiche Abfolge von Ereignissen sowohl für Windows als auch für Linux verwendet. Die wesentliche Änderung des Verhaltens ist, dass die `Get`-Methode vom Dienst aufgerufen wird, um die Details zum Zustand des Computers zurückzugeben.
 
@@ -55,15 +83,6 @@ Wenn die Gastkonfiguration einen Computer überwacht oder konfiguriert, wird die
 1. Wenn das Paket auf `AuditandSet` festgelegt ist, bestimmt der boolesche Wert, ob der Computer wiederhergestellt werden soll, indem die Konfiguration mithilfe der `Set`-Methode angewendet wird.
    Wenn die `Test`-Methode „False“ zurückgibt, wird `Set` ausgeführt. Wenn die `Test`-Methode „True“ zurückgibt, wird `Set` nicht ausgeführt.
 1. Zuletzt führt der Anbieter `Get` aus, um den aktuellen Zustand der einzelnen Einstellungen zurückzugeben. Dadurch sind Details dazu verfügbar, warum ein Computer nicht konform ist und um zu bestätigen, dass der aktuelle Zustand konform ist.
-
-## <a name="trigger-set-from-outside-machine"></a>Auslösen von außerhalb des Computers festlegen
-
-Eine Herausforderung in früheren Versionen von DSC war die Korrektur von Abweichungen im großen Stil ohne viel benutzerdefinierten Code und die Abhängigkeit von WinRM-Remoteverbindungen. Die Gastkonfiguration löst dieses Problem. Benutzer der Gastkonfiguration haben die Kontrolle über die Abweichungskorrektur durch [On-Demand-Wiederherstellung](./guest-configuration-policy-effects.md#remediation-on-demand-applyandmonitor).
-
-## <a name="maximum-size-of-custom-configuration-package"></a>Die maximale Größe des benutzerdefinierten Konfigurationspakets
-
-In Azure Automation State waren die DSC-Konfigurationen in Ihrer [Größe begrenzt](../../../automation/automation-dsc-compile.md#compile-your-dsc-configuration-in-windows-powershell).
-Die Gastkonfiguration unterstützt eine Gesamtpaketgröße von 100 MB (vor der Komprimierung). Es gibt keine spezifische Beschränkung für die Größe der MOF-Datei innerhalb des Pakets.
 
 ## <a name="special-requirements-for-get"></a>Besondere Anforderungen an Get
 
@@ -95,7 +114,7 @@ return @{
 }
 ```
 
-Wenn Sie Befehlszeilentools verwenden, um Informationen abzurufen, die in Get zurückgegeben werden, werden Sie möglicherweise feststellen, dass das Tool Ausgaben zurückgibt, die Sie nicht erwartet haben. Obwohl Sie die Ausgabe in PowerShell erfassen, wird die Ausgabe möglicherweise auch in den Standardfehler geschrieben. Um dieses Problem zu vermeiden, sollten Sie erwägen, die Ausgabe an NULL umzuleiten.
+Wenn Sie Befehlszeilentools verwenden, um Informationen abzurufen, die in Get zurückgegeben werden, werden Sie möglicherweise feststellen, dass das Tool Ausgaben zurückgibt, die Sie nicht erwartet haben. Auch wenn Sie die Ausgabe in PowerShell erfassen, wurde möglicherweise auch eine Ausgabe in den Standardfehler geschrieben. Um dieses Problem zu vermeiden, sollten Sie erwägen, die Ausgabe an NULL umzuleiten.
 
 ### <a name="the-reasons-property-embedded-class"></a>Die eingebettete Reasons-Eigenschaftsklasse
 
@@ -165,20 +184,20 @@ Der Name der benutzerdefinierten Konfiguration muss überall einheitlich sein. D
 
 ## <a name="common-dsc-features-not-available-during-guest-configuration-public-preview"></a>Die allgemeinen DSC-Funktionen, die während der öffentlichen Vorschau der Gastkonfiguration nicht verfügbar sind
 
-Während der öffentlichen Vorschauversion unterstützt die Gastkonfiguration die [Angabe computerübergreifender Abhängigkeiten](/powershell/scripting/dsc/configurations/crossnodedependencies) mithilfe von „WaitFor*“-Ressourcen nicht. Es ist nicht möglich, dass ein Computer überwacht und darauf wartet, dass ein anderer Computer einen Zustand erreicht, bevor er fortschreitet.
+In der Public Preview unterstützt die Gastkonfiguration die [Angabe computerübergreifender Abhängigkeiten](/powershell/scripting/dsc/configurations/crossnodedependencies) mit „WaitFor*“-Ressourcen nicht. Es ist nicht möglich, dass ein Computer überwacht und darauf wartet, dass ein anderer Computer einen Zustand erreicht, bevor er fortschreitet.
 
 Die [Neustartbehandlung](/powershell/scripting/dsc/configurations/reboot-a-node) ist in der öffentlichen Vorschauversion der Gastkonfiguration einschließlich `$global:DSCMachineStatus` nicht verfügbar. Die Konfigurationen können einen Knoten während oder am Ende einer Konfiguration nicht neu starten.
 
 ## <a name="known-compatibility-issues-with-supported-modules"></a>Die bekannten Kompatibilitätsprobleme mit unterstützten Modulen
 
-Das Modul `PsDscResources` im PowerShell-Katalog und das Modul `PSDesiredStateConfiguration`, das mit Windows geliefert wird, werden von Microsoft unterstützt und sind eine häufig verwendete Gruppe von Ressourcen für DSC. Beachten Sie die folgenden bekannten Kompatibilitätsprobleme, bis das Modul `PSDscResources` für DSCv3 aktualisiert wurde.
+Das Modul `PsDscResources` im PowerShell-Katalog und das mit Windows bereitgestellte Modul `PSDesiredStateConfiguration` werden von Microsoft unterstützt und sind häufig für DSC verwendete Ressourcen. Beachten Sie die folgenden bekannten Kompatibilitätsprobleme, bis das Modul `PSDscResources` für DSCv3 aktualisiert wurde.
 
-- Verwenden Sie keine Ressourcen aus dem Modul `PSDesiredStateConfiguration`, das mit Windows geliefert wird. Wechseln Sie stattdessen zu `PSDscResources`.
+- Verwenden Sie keine Ressourcen aus dem mit Windows bereitgestellten Modul `PSDesiredStateConfiguration`. Wechseln Sie stattdessen zu `PSDscResources`.
 - Verwenden Sie nicht die Ressourcen `WindowsFeature` und `WindowsFeatureSet` in `PsDscResources`. Wechseln Sie stattdessen zu den Ressourcen `WindowsOptionalFeature` und `WindowsOptionalFeatureSet`.
   
 Die „nx“-Ressourcen für Linux, die im [DSC für Linux](https://github.com/microsoft/PowerShell-DSC-for-Linux/tree/master/Providers)-Repository enthalten waren, wurden in einer Kombination der Sprachen C und Python geschrieben. Da die Pfadweiterleitung für DSC unter Linux die Verwendung von PowerShell ist, sind die vorhandenen „nx“-Ressourcen mit DSCv3 nicht kompatibel. Bis ein neues Modul verfügbar ist, das unterstützte Ressourcen für Linux enthält, ist es erforderlich, benutzerdefinierte Ressourcen zu erstellen.
 
-## <a name="coexistance-with-dsc-version-3-and-previous-versions"></a>Parallelität mit der DSC Version 3 und früheren Versionen
+## <a name="coexistence-with-dsc-version-3-and-previous-versions"></a>Gleichzeitige Verwendung von Version 3 und früheren Versionen von DSC
 
 Die DSC Version 3 in der Gastkonfiguration kann gleichzeitig mit älteren Versionen vorhanden sein, die in [Windows](/powershell/scripting/dsc/getting-started/wingettingstarted) und [Linux](/powershell/scripting/dsc/getting-started/lnxgettingstarted) installiert sind.
 Die Implementierungen sind getrennt. Es gibt jedoch keine Konflikterkennung über die DSC-Versionen hinweg. Versuchen Sie daher nicht, die gleichen Einstellungen zu verwalten.

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 6/19/2021
-ms.openlocfilehash: cf23b4111bc50b9276ffdc99704b750c8c7d5b3b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 4238ac653d6b34294d956ea9ff72fe2184ddd1be
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131429107"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281644"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL Single Server
 
@@ -20,16 +20,15 @@ ms.locfileid: "131429107"
 
 [Azure Database for MySQL](overview.md), ein Dienst, der auf MySQL Community Edition basiert, ist in zwei Bereitstellungsmodi verfügbar:
 
+- Flexible Server 
 - Einzelner Server
-- Flexible Server (Vorschau)
 
 In diesem Artikel erhalten Sie eine Übersicht und eine Einführung in die grundlegenden Konzepte des Bereitstellungsmodells „Single Server“. Weitere Informationen zum Bereitstellungsmodus Flexible Server finden Sie in der Übersicht zu [Flexible Server](flexible-server/index.yml). Informationen dazu, wie Sie entscheiden, welche Bereitstellungsoption für Ihre Workload geeignet ist, finden Sie unter [Auswählen der richtigen MySQL Server-Option in Azure](select-right-deployment-type.md).
 
 ## <a name="overview"></a>Übersicht
+Azure Database for MySQL Single Server ist ein vollständig verwalteter Datenbankdienst, der auf minimale Anpassungen ausgelegt ist. Die Single Server-Plattform kann die meisten Funktionen zur Datenbankverwaltung bereitstellen, z. B. Patching, Sicherungen, Hochverfügbarkeit sowie Sicherheit mit minimaler Benutzerkonfiguration und -steuerung. Die Architektur ist für integrierte Hochverfügbarkeit mit einer Verfügbarkeit von 99,99 % bei einer einzelnen Verfügbarkeitszone optimiert. Sie unterstützt die MySQL Community-Versionen 5.6 (eingestellt), 5.7 und 8.0. Der Dienst ist ab heute in vielen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) allgemein verfügbar.
 
-Bei Single Server handelt es sich um einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank. Die Single Server-Plattform kann die meisten Funktionen zur Datenbankverwaltung bereitstellen, z. B. Patching, Sicherungen, Hochverfügbarkeit sowie Sicherheit mit minimaler Benutzerkonfiguration und -steuerung. Die Architektur ist für eine Verfügbarkeit von 99,99 Prozent in einer einzelnen Verfügbarkeitszone optimiert. Sie unterstützt die MySQL Community-Versionen 5.6, 5.7 und 8.0. Der Dienst ist ab heute in vielen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) allgemein verfügbar. 
-
-Single Server-Instanzen eignen sich am besten für cloudnative Anwendungen, da sie für das automatisierte Patchen ohne genauen Patchzeitplan und ohne benutzerdefinierte MySQL-Konfigurationseinstellungen konzipiert sind. 
+Single Server-Instanzen eignen sich am besten **nur für vorhandene Anwendungen, die bereits Einzelserver nutzen**. Für alle neuen Entwicklungen oder Migrationen ist Flexible Server die empfohlene Bereitstellungsoption. Informationen zu den Unterschieden zwischen den Bereitstellungsoptionen für Flexible Server und Single Server finden Sie unter [Auswählen der richtigen MySQL Server-Option in Azure](select-right-deployment-type.md).
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 
@@ -64,7 +63,7 @@ Single Server steht in drei SKU-Tarifen zur Verfügung: „Basic“, „Universe
 
 Single Server nutzt das FIPS 140-2-zertifizierte Kryptografiemodul für die Speicherverschlüsselung ruhender Daten. Daten einschließlich Sicherungen und während der Ausführung von Abfragen erstellte temporäre Daten werden auf dem Datenträger verschlüsselt. Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, und die Schlüssel können vom System (Standard) oder vom [Kunden](concepts-data-encryption-mysql.md) verwaltet werden. Der Dienst verschlüsselt Daten während der Übertragung mit der Transport Layer Security (SSL/TLS), was standardmäßig erzwungen wird. Der Dienst unterstützt die TLS-Versionen 1.2, 1.1 und 1.0 mit der Möglichkeit, die [mindestens erforderliche TLS-Version](concepts-ssl-connection-security.md) zu erzwingen. 
 
-Der Dienst ermöglicht über eine [private Verbindung](concepts-data-access-security-private-link.md) den privaten Zugriff auf die Server und bietet über den optionalen Plan [Azure Defender für relationale Open-Source-Datenbanken](../security-center/defender-for-databases-introduction.md) Schutz gegen Bedrohungen. Azure Defender erkennt anomale Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese missbräuchlich zu nutzen.
+Der Dienst ermöglicht über eine [private Verbindung](concepts-data-access-security-private-link.md) den privaten Zugriff auf die Server und bietet über den optionalen Plan [Microsoft Defender für relationale Open-Source-Datenbanken](../security-center/defender-for-databases-introduction.md) Schutz gegen Bedrohungen. Microsoft Defender für relationale Open-Source-Datenbanken erkennt anormale Aktivitäten, die auf ungewöhnliche und potenziell schädliche Zugriffsversuche auf oder Exploits von Datenbanken hinweisen.
 
 Zusätzlich zur nativen Authentifizierung unterstützt Single Server die Authentifizierung mit [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md). Bei der Authentifizierung mit Azure AD wird eine Verbindung mit den MySQL-Servern mithilfe von Identitäten hergestellt, die in Azure AD definiert und verwaltet werden. Mit der Azure AD-Authentifizierung können Sie Datenbankbenutzeridentitäten und andere Azure-Dienste an einem zentralen Ort verwalten, wodurch die Zugriffssteuerung vereinfacht und zentralisiert wird.
 

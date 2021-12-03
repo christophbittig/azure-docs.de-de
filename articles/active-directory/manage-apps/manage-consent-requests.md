@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: 5de11c8f853d471ad616ff0a9df4d01acb896c3f
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: e871bfe8f6fa787a3ffffc4fa0efb2df6d920a0e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619802"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548385"
 ---
-# <a name="manage-consent-to-applications-and-evaluate-consent-requests-in-azure-active-directory"></a>Verwalten der Einwilligung in Anwendungen und Auswerten von Einwilligungsanforderungen in Azure Active Directory
+# <a name="manage-consent-to-applications-and-evaluate-consent-requests"></a>Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen
 
 Microsoft empfiehlt, die [Möglichkeiten zur Benutzereinwilligung einzuschränken](../../active-directory/manage-apps/configure-user-consent.md), damit Benutzer ihre Einwilligung nur für Apps von überprüften Herausgebern und nur für von Ihnen ausgewählte Berechtigungen erteilen können. Für Apps, die diese Richtlinie nicht erfüllen, wird der Entscheidungsprozess mit dem Sicherheits- und Identitätsadministratorteam Ihrer Organisation zentralisiert.
 
@@ -42,7 +42,7 @@ Nachdem die Endbenutzereinwilligung deaktiviert oder eingeschränkt wurde, müss
 
 3. Wenn Ihre Organisation über eine geeignete Lizenz verfügt:
 
-    * Verwenden Sie zusätzliche [Funktionen für die OAuth-Anwendungsüberwachung in Microsoft Cloud App Security](/cloud-app-security/investigate-risky-oauth).
+    * Verwenden Sie zusätzliche [Features für die OAuth-Anwendungsüberwachung in Microsoft Defender für Cloud-Apps](/cloud-app-security/investigate-risky-oauth).
     * Verwenden Sie [Azure Monitor-Arbeitsmappen für die Überwachung von Berechtigungen und Einwilligungen](../reports-monitoring/howto-use-azure-monitor-workbooks.md) und damit im Zusammenhang stehende Aktivitäten. Die Arbeitsmappe *Erkenntnisse aus Einwilligungen* bietet eine Ansicht der Apps nach der Anzahl fehlerhafter Einwilligungsanforderungen. Dies kann hilfreich sein, um Anwendungen für die Überprüfung durch die Administratoren zu priorisieren und zu entscheiden, ob ihnen eine Administratoreinwilligung gewährt werden soll.
 
 ### <a name="additional-considerations-for-reducing-friction"></a>Zusätzliche Überlegungen zur Vermeidung von Schwierigkeiten
@@ -100,7 +100,7 @@ Unter [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwend
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Erteilen einer Einwilligung im Namen eines bestimmten Benutzers
 
-Anstatt die Einwilligung für die gesamte Organisation zu erteilen, kann ein Administrator auch die [Microsoft Graph-API](/graph/use-the-api) verwenden, um eine Einwilligung für delegierte Berechtigungen im Namen eines einzelnen Benutzers zu erteilen. Weitere Informationen finden Sie unter [Zugreifen im Namen eines Benutzers](/graph/auth-v2-user).
+Anstatt die Einwilligung für die gesamte Organisation zu erteilen, kann ein Administrator auch die [Microsoft Graph-API](/graph/use-the-api) verwenden, um eine Einwilligung für delegierte Berechtigungen im Namen eines einzelnen Benutzers zu erteilen. Ein ausführliches Beispiel für die Verwendung von Microsoft Graph PowerShell finden Sie unter [Zustimmung im Namen eines einzelnen Nutzers mithilfe von PowerShell erteilen](#grant-consent-on-behalf-of-a-single-user-using-powershell).
 
 ## <a name="limiting-user-access-to-applications"></a>Beschränken des Benutzerzugriffs auf Anwendungen
 
@@ -120,6 +120,88 @@ Führen Sie die folgenden Schritte aus, um alle zukünftigen Vorgänge der Benut
 4. Wählen Sie **Unternehmensanwendungen** aus, und wählen Sie im Abschnitt **Verwalten** die Option **Benutzereinstellungen** aus.
 :::image type="content" source="media/manage-consent-requests/disable-user-consent-operations.png" alt-text="Deaktivieren von Vorgängen der Benutzerzustimmung für alle Apps":::
 5. Deaktivieren Sie alle zukünftigen Vorgänge der Benutzerzustimmung, indem Sie die Umschaltfläche **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** auf **Nein** festlegen und dann auf die Schaltfläche **Speichern** klicken.
+
+## <a name="grant-consent-on-behalf-of-a-single-user-using-powershell"></a>Zustimmung im Namen eines einzelnen Benutzers mithilfe von PowerShell erteilen
+
+Wenn ein Nutzer die Zustimmung für sich selbst erteilt, geschieht Folgendes:
+
+1. Ein Dienstprinzipal für die Clientanwendung wird erstellt, wenn noch nicht vorhanden ist. Ein Dienstprinzipal ist die Instanz einer Anwendung oder eines Diensts in Ihrem Azure AD-Mandanten. Der Zugriff, der der App oder dem Dienst gewährt wird, ist diesem Dienstprinzipalobjekt zugeordnet.
+1. Für jede API, auf die die Anwendung einen Zugriff benötigt, wird eine delegierte Berechtigungserteilung für die Zugangsberechtigungen erstellt, die von der Anwendung für diese API für den Zugriff im Namen des Nutzers benötigt werden. Eine delegierte Berechtigungserteilung autorisiert eine Anwendung, im Namen eines Nutzers auf eine API zuzugreifen, wenn sich dieser Nutzer angemeldet hat.
+1. Dem Benutzer wird die Clientanwendung zugewiesen. Durch das Zuweisen der Anwendung zum Benutzer wird sichergestellt, dass die Anwendung im Portal [Meine Apps](my-apps-deployment-plan.md) für diesen Benutzer aufgelistet wird, sodass er den gewährten Zugriff überprüfen und widerrufen kann.
+
+Um die Schritte manuell auszuführen, die dem Erteilen der Zustimmung für eine Anwendung im Namen eines Nutzers gleichkommen, benötigen Sie die folgenden Angaben:
+
+* Die App-ID für die App, für die Sie ihre Zustimmung erteilen (diese wird als "Client-Anwendung" bezeichnet).
+* Die API-Berechtigungen, die für die Client-Anwendung erforderlich sind. Sie müssen die App-ID der API und die Berechtigungs-IDs oder Anspruchswerte kennen.
+* Der Nutzername oder die Objekt-ID für den Nutzer, für den der Zugriff gewährt wird.
+
+Im folgenden Beispiel verwenden wir [Microsoft Graph PowerShell](/graph/powershell/get-started), um die drei oben aufgeführten Schritte auszuführen, um die Zustimmung im Namen eines einzelnen Nutzers zu erteilen. In diesem Beispiel ist die Client-Anwendung [Microsoft Graph Explorer](https://aka.ms/ge) und wir gewähren Zugriff auf die Microsoft Graph-API.
+
+```powershell
+# The app for which consent is being granted. In this example, we're granting access
+# to Microsoft Graph Explorer, an application published by Microsoft.
+$clientAppId = "de8bc8b5-d9f9-48b1-a8ad-b748da725064" # Microsoft Graph Explorer
+
+# The API to which access will be granted. Microsoft Graph Explorer makes API 
+# requests to the Microsoft Graph API, so we'll use that here.
+$resourceAppId = "00000003-0000-0000-c000-000000000000" # Microsoft Graph API
+
+# The permissions to grant. Here we're including "openid", "profile", "User.Read"
+# and "offline_access" (for basic sign-in), as well as "User.ReadBasic.All" (for 
+# reading other users' basic profile).
+$permissions = @("openid", "profile", "offline_access", "User.Read", "User.ReadBasic.All")
+
+# The user on behalf of who access will be granted. The app will be able to access 
+# the API on behalf of this user.
+$userUpnOrId = "user@example.com"
+
+# Step 0. Connect to Microsoft Graph PowerShell. We need User.ReadBasic.All to get
+#    users' IDs, Application.ReadWrite.All to list and create service principals, 
+#    DelegatedPermissionGrant.ReadWrite.All to create delegated permission grants, 
+#    and AppRoleAssignment.ReadWrite.All to assign an app role.
+#    WARNING: These are high-privilege permissions!
+Connect-MgGraph -Scopes ("User.ReadBasic.All Application.ReadWrite.All " `
+                        + "DelegatedPermissionGrant.ReadWrite.All " `
+                        + "AppRoleAssignment.ReadWrite.All")
+
+# Step 1. Check if a service principal exists for the client application. 
+#     If one does not exist, create it.
+$clientSp = Get-MgServicePrincipal -Filter "appId eq '$($clientAppId)'"
+if (-not $clientSp) {
+   $clientSp = New-MgServicePrincipal -AppId $clientAppId
+}
+
+# Step 2. Create a delegated permission grant granting the client app access to the
+#     API, on behalf of the user. (This example assumes that an existing delegated 
+#     permission grant does not already exist, in which case it would be necessary 
+#     to update the existing grant, rather than create a new one.)
+$user = Get-MgUser -UserId $userUpnOrId
+$resourceSp = Get-MgServicePrincipal -Filter "appId eq '$($resourceAppId)'"
+$scopeToGrant = $permissions -join " "
+$grant = New-MgOauth2PermissionGrant -ResourceId $resourceSp.Id `
+                                     -Scope $scopeToGrant `
+                                     -ClientId $clientSp.Id `
+                                     -ConsentType "Principal" `
+                                     -PrincipalId $user.Id
+
+# Step 3. Assign the app to the user. This ensure the user can sign in if assignment
+#     is required, and ensures the app shows up under the user's My Apps.
+if ($clientSp.AppRoles | ? { $_.AllowedMemberTypes -contains "User" }) {
+    Write-Warning ("A default app role assignment cannot be created because the " `
+                 + "client application exposes user-assignable app roles. You must " `
+                 + "assign the user a specific app role for the app to be listed " `
+                 + "in the user's My Apps access panel.")
+} else {
+    # The app role ID 00000000-0000-0000-0000-000000000000 is the default app role
+    # indicating that the app is assigned to the user, but not for any specific 
+    # app role.
+    $assignment = New-MgServicePrincipalAppRoleAssignedTo `
+          -ServicePrincipalId $clientSp.Id `
+          -ResourceId $clientSp.Id `
+          -PrincipalId $user.Id `
+          -AppRoleId "00000000-0000-0000-0000-000000000000"
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

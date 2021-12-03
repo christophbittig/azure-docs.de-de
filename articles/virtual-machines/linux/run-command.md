@@ -1,23 +1,23 @@
 ---
-title: Ausführen von Shellskripts auf einem virtuellen Linux-Computer in Azure
+title: Ausführen von Skripts auf einem virtuellen Linux-Computer in Azure mithilfe der Aktion Befehle ausführen
 description: In diesem Thema erfahren Sie, wie Sie Skripts innerhalb eines virtuellen Azure-Computers unter Linux mithilfe des Features „Skriptausführung“ ausführen.
 services: automation
 ms.service: virtual-machines
 ms.collection: linux
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/26/2019
+author: cynthn
+ms.author: cynthn
+ms.date: 10/27/2021
 ms.topic: how-to
+ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell
-manager: carmonm
-ms.openlocfilehash: 2d4c640695395963a83629fbeea87c96b4a31aad
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a608c252b806e4b6e538ab4849ca305de7602732
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688214"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424720"
 ---
-# <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Ausführen von Shellskripts auf einem virtuellen Linux-Computer mithilfe der Skriptausführung
+# <a name="run-scripts-in-your-linux-vm-by-using-action-run-commands"></a>Ausführen von Skripts auf Ihrem virtuellen Linux-Computer mithilfe der Aktion Befehle ausführen
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
@@ -58,7 +58,7 @@ The entity was not found in this Azure location
 |**RunShellScript**|Führt ein Linux-Shellskript aus.|
 |**ifconfig**| Ruft die Konfiguration aller Netzwerkschnittstellen ab.|
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Im folgenden Beispiel wird der Befehl [az vm run-command](/cli/azure/vm/run-command#az_vm_run_command_invoke) verwendet, um ein Shellskript auf einem virtuellen Azure-Computer unter Linux auszuführen.
 

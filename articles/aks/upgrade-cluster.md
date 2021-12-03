@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Upgrade eines Azure Kubernetes Service-Cl
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 0f4e364cd3de9093b84e3ae02c4337361985959a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 8c5a395833cb19e4f5ce78f08ee37c2eb022169b
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350988"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397336"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -133,34 +133,6 @@ Zusätzlich zum Ausführen von manuellen Upgrades eines Clusters können Sie fü
 
 Automatische Clusterupgrades folgen demselben Prozess wie manuelle Upgrades. Weitere Informationen finden Sie unter [Aktualisieren eines AKS-Clusters][upgrade-cluster].
 
-Das automatische Clusterupgrade für AKS-Cluster ist eine Previewfunktion.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-Fügen Sie die folgende Erweiterung für `az cli` hinzu.
-
-```azurecli-interactive
-az extension add --name aks-preview
-```
-
-Registrieren Sie das Featureflag `AutoUpgradePreview` mithilfe des Befehls [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
-
-```azurecli-interactive
-az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
-```
-
-Es kann einige Minuten dauern, bis der Status *Registered* (Registriert) angezeigt wird. Warten Sie, bis die Registrierung abgeschlossen ist. Überprüfen Sie den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list]:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AutoUpgradePreview')].{Name:name,State:properties.state}"
-```
-
-Wenn der Vorgang abgeschlossen ist, können Sie die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register] aktualisieren:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
 Um beim Erstellen eines Clusters den automatischen Upgradekanal festzulegen, verwenden Sie den Parameter *auto-upgrade-channel*, wie im folgenden Beispiel gezeigt.
 
 ```azurecli-interactive
@@ -179,7 +151,7 @@ Wenn Sie geplante Wartung und automatisches Upgrade verwenden, wird Ihr Upgrade 
 
 ## <a name="special-considerations-for-node-pools-that-span-multiple-availability-zones"></a>Besondere Überlegungen für Knotenpools, die sich über mehrere Verfügbarkeitszonen erstrecken
 
-AKS verwendet Best-Effort-Zonenausgleich in Knotengruppen. Während eines Upgrade-Surges ist die Zone(n) für den/die Surge-Knoten in VMSS im Voraus unbekannt. Dies kann vorübergehend zu einer unausgewogenen Zonenkonfiguration während eines Upgrades führen. AKS löscht jedoch den/die Surge-Knoten, sobald das Upgrade abgeschlossen ist, und bewahrt das ursprüngliche Zonengleichgewicht. Wenn Sie möchten, dass Ihre Zonen während des Upgrades ausgeglichen bleiben, erhöhen Sie den Surge auf ein Vielfaches von 3 Knoten. VMSS gleicht dann Ihre Knoten über Verfügbarkeitszonen mit Best-Effort-Zonenausgleich aus.
+AKS verwendet Best-Effort-Zonenausgleich in Knotengruppen. Während eines Upgradeanstiegs sind Zonen für die Anstiegsknoten in VM-Skalierungssätzen im Voraus unbekannt. Dies kann vorübergehend zu einer unausgewogenen Zonenkonfiguration während eines Upgrades führen. AKS löscht jedoch den/die Surge-Knoten, sobald das Upgrade abgeschlossen ist, und bewahrt das ursprüngliche Zonengleichgewicht. Wenn Sie möchten, dass Ihre Zonen während des Upgrades ausgeglichen bleiben, erhöhen Sie den Surge auf ein Vielfaches von 3 Knoten. VM-Skalierungssätze verteilen ihre Knoten dann auf Verfügbarkeitszonen mit bestmöglichem Zonenausgleich.
 
 Wenn Sie PVCs haben, die durch Azure LRS-Disks gesichert sind, sind diese an eine bestimmte Zone gebunden und werden möglicherweise nicht sofort wiederhergestellt, wenn der Surge-Knoten nicht mit der Zone des PVCs übereinstimmt. Dies kann zu Ausfallzeiten in Ihrer Anwendung führen, wenn der Upgrade-Vorgang weiterhin Knoten entleert, die PVs aber an eine Zone gebunden sind. Um diesen Fall zu bewältigen und eine hohe Verfügbarkeit aufrechtzuerhalten, konfigurieren Sie ein [Pod Disruption Budget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) für Ihre Anwendung. Dadurch kann Kubernetes Ihre Verfügbarkeitsanforderungen während des Entleerungsvorgangs von Upgrade einhalten. 
 

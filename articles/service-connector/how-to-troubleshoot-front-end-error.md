@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: how-to
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 56cde75f021b262cedc4c446f183b8920e78feed
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8a1379495dacba7d2c0cf21af3a1e5ec2f45ed41
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095251"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283181"
 ---
 # <a name="how-to-troubleshoot-with-service-connector"></a>Problembehandlung mit dem Service Connector
 
@@ -53,8 +53,8 @@ Wenn ein Problem auftritt, können Sie in der Fehlermeldung nach vorgeschlagenen
 | Es ist nur eine Authentifizierungs-Information erforderlich | Der Benutzer kann nur einen Authentifizierungs-Informationsparameter angeben, überprüfen, ob keine Authentifizierungs-Informationen bereitgestellt werden oder mehrere Authentifizierungs-Informationsparameter bereitgestellt werden. |
 | Das Authentifizierungs-Informationsargument sollte beim Aktualisieren der Verbindung angegeben werden: `{ConnectionName}` | Beim Aktualisieren einer Geheimnistypverbindung sollte der Parameter für die Authentifizierungs-Informationen angegeben werden. (Dies liegt daran, dass auf das Geheimnis des Benutzers nicht über die ARM-API zugegriffen werden kann.) |
 | Für die Aktualisierung sollten entweder Clienttyp- oder Authentifizierungs-Informationen angegeben werden | Beim Aktualisieren einer Verbindung sollten entweder Clienttyp- oder Authentifizierungs-Informationen angegeben werden. |
-| Verwendungsfehler: {} [KEY=VALUE ...] | Überprüfen Sie die verfügbaren Schlüssel, und geben Sie Werte für den Parameter für die Authentifizierungs-Informationen an, in der Regel in Form von `--param key1=val1 key2=val2`. |
-| Nicht unterstützter Schlüssel `{Key}` wird für den Parameter `{Parameter}` bereitgestellt. Alle möglichen Schlüssel sind: `{Keys}` | Überprüfen Sie die verfügbaren Schlüssel, und geben Sie Werte für den Parameter für die Authentifizierungs-Informationen an, in der Regel in Form von `--param key1=val1 key2=val2`. |
+| Verwendungsfehler: {} [KEY=VALUE ...] | Überprüfen Sie die verfügbaren Schlüssel und geben Sie die Werte für den Parameter für die Authentifizierungs-Informationen an, in der Regel in Form von `--param key1=val1 key2=val2`. |
+| Nicht unterstützter Schlüssel `{Key}` wird für den Parameter `{Parameter}` bereitgestellt. Alle möglichen Schlüssel sind: `{Keys}` | Überprüfen Sie die verfügbaren Schlüssel und geben Sie die Werte für den Parameter für die Authentifizierungs-Informationen an, in der Regel in Form von `--param key1=val1 key2=val2`. |
 | Fehler bei der Bereitstellung. Erstellen Sie die Zielressource manuell, und erstellen Sie dann die Verbindung. Fehlerdetails: `{ErrorTrace}` | <ul><li>Wiederholen.</li><li>Fehler bei der Bereitstellung. Erstellen Sie die Zielressource manuell, und erstellen Sie dann die Verbindung.</li></ul> |
 
 ## <a name="next-steps"></a>Nächste Schritte

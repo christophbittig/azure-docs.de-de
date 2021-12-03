@@ -2,14 +2,14 @@
 title: Anforderungsgrenzwerte und -drosselung
 description: Beschreibt, wie eine Begrenzung von Azure Resource Manager-Anforderungen genutzt wird, wenn Abonnementgrenzwerte erreicht wurden.
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 11/15/2021
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: cb562d6f6489ff30c6b940963a20974eb987b031
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 781c958e1a75e87c3f042e80282909e132730978
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322183"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523386"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
 
@@ -36,6 +36,8 @@ In der folgenden Tabelle sind die Standardgrenzwerte für die Drosselung pro Stu
 Diese Grenzwerte gelten für den Sicherheitsprinzipal (Benutzer oder Anwendung), von dem die Anforderungen stammen, sowie für die Abonnement-ID bzw. die Mandanten-ID. Falls Ihre Anforderungen von mehreren Sicherheitsprinzipalen stammen, liegen die Grenzwerte für das Abonnement oder den Mandanten über 12.000 bzw. 1.200 Anforderungen pro Stunde.
 
 Diese Grenzwerte gelten für jede Azure Resource Manager-Instanz. In jeder Azure-Region sind mehrere Instanzen vorhanden, und Azure Resource Manager wird in allen Azure-Regionen bereitgestellt.  In der Praxis sind die Grenzwerte also höher als diese Grenzwerte. Die Anforderungen von einem Benutzer werden in der Regel von unterschiedlichen Azure Resource Manager-Instanzen verarbeitet.
+
+Die verbleibenden Anforderungen werden in den [Werten im Antwortheader](#remaining-requests) zurückgegeben.
 
 ## <a name="resource-provider-limits"></a>Grenzwerte der Ressourcenanbieter
 
@@ -93,6 +95,7 @@ Sie können die Anzahl der verbleibenden Anforderungen durch Untersuchen der Ant
 
 | Antwortheader | BESCHREIBUNG |
 | --- | --- |
+| x-ms-ratelimit-remaining-subscription-deletes |Verbleibende abonnementbezogene Löschvorgänge. Dieser Wert wird für Löschvorgänge zurückgegeben. |
 | x-ms-ratelimit-remaining-subscription-reads |Verbleibende abonnementbezogene Lesevorgänge. Dieser Wert wird für Lesevorgänge zurückgegeben. |
 | x-ms-ratelimit-remaining-subscription-writes |Verbleibende abonnementbezogene Schreibvorgänge. Dieser Wert wird für Schreibvorgänge zurückgegeben. |
 | x-ms-ratelimit-remaining-tenant-reads |Verbleibende mandantenbezogene Lesevorgänge |

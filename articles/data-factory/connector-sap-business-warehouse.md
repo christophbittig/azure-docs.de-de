@@ -9,12 +9,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: 7a1f472858480fff785f28abef9262721bcbc799
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2cbdd3dc237c3f2e7b3cf23bb844a06fdd40d605
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836069"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325845"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus SAP Business Warehouse mithilfe von Azure Data Factory oder Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -41,6 +41,9 @@ Dieser SAP Business Warehouse-Connector unterstützt insbesondere Folgendes:
 - SAP Business Warehouse **Version 7.x**
 - Kopieren von Daten aus **InfoCubes und QueryCubes** (einschließlich BEx-Abfragen) über MDX-Abfragen
 - Kopieren von Daten mithilfe der Standardauthentifizierung
+
+>[!NOTE]
+>Der SAP Business Warehouse Connector unterstützt derzeit keine Parameter mit MDX.  Wenn eine Filterung mit MDX-Parametern erforderlich ist, können Sie stattdessen den alternativen [SAP-Open-Hub-Connector](connector-sap-business-warehouse-open-hub.md) verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -88,7 +91,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit SAP Business Warehouse (BW) verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapBw** | Ja |
 | server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | Ja |

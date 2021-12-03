@@ -1,44 +1,44 @@
 ---
-title: Bewährte Methoden für die Datensammlung in Azure Sentinel
-description: Erfahren Sie mehr über bewährte Methoden beim Verbinden von Datenquellen mit Azure Sentinel.
+title: Bewährte Methoden für die Datensammlung in Microsoft Sentinel
+description: Erfahren Sie mehr über bewährte Methoden beim Verbinden von Datenquellen mit Microsoft Sentinel.
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
-ms.date: 07/21/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0ba9d4d1452b0a3248e7df817561ec080c95ca93
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 17561127c040fc1aedac771093e0bfa6366c4d30
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131047609"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524776"
 ---
 #  <a name="data-collection-best-practices"></a>Bewährte Methoden für die Datensammlung
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Abschnitt werden bewährte Methoden zum Sammeln von Daten mithilfe von Azure Sentinel-Datenconnectors erläutert. Weitere Informationen finden Sie unter [Verbinden von Datenquellen](connect-data-sources.md), [Referenz zu Azure Sentinel-Datenconnectors](data-connectors-reference.md) sowie im [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md).
+In diesem Abschnitt werden bewährte Methoden zum Sammeln von Daten mithilfe von Microsoft Sentinel-Daten-Connectors erläutert. Weitere Informationen finden Sie unter [Verbinden von Datenquellen](connect-data-sources.md), im [Verweis auf Microsoft Sentinel-Daten-Connectors](data-connectors-reference.md) sowie im [Microsoft Sentinel-Lösungskatalog](sentinel-solutions-catalog.md).
 
 ## <a name="prioritize-your-data-connectors"></a>Priorisieren Ihrer Datenconnectors
 
 Wenn nicht klar ist, welche Datenconnectors am besten für Ihre Umgebung geeignet sind, aktivieren Sie zunächst alle [kostenlosen Datenconnectors](azure-sentinel-billing.md#free-data-sources).
 
-Die kostenlosen Datenconnectors zeigen so bald wie möglich einen Wert aus Azure Sentinel an, während Sie weiterhin andere Datenconnectors und Budgets planen.
+Die kostenlosen Daten-Connectors zeigen so bald wie möglich einen Wert aus Microsoft Sentinel an, während Sie weiterhin andere Daten-Connectors und Budgets planen.
 
 Für Ihre [Partner](data-connectors-reference.md)- und [benutzerdefinierten](create-custom-connector.md) Datenconnectors legen Sie zunächst die [Syslog](connect-syslog.md)- und [CEF](connect-common-event-format.md)-Connectors mit der höchsten Priorität fest, ebenso wie alle Linux-basierten Geräte.
 
 Wenn Ihre Datenerfassung zu schnell zu teuer wird, beenden oder filtern Sie die mit dem [Azure Monitor-Agent](../azure-monitor/agents/azure-monitor-agent-overview.md) weitergeleiteten Protokolle.
 
 > [!TIP]
-> Mit benutzerdefinierten Datenconnectors können Sie Daten in Azure Sentinel aus Datenquellen erfassen, die derzeit nicht von integrierten Funktionen wie Agent, Logstash oder API unterstützt werden. Weitere Informationen finden Sie unter [Ressourcen zum Erstellen benutzerdefinierter Azure Sentinel-Connectors](create-custom-connector.md).
+> Mit benutzerdefinierten Daten-Connectors können Sie Daten in Microsoft Sentinel aus Datenquellen erfassen, die derzeit nicht von integrierten Funktionen wie Agent, Logstash oder API unterstützt werden. Weitere Informationen finden Sie unter [Ressourcen zum Erstellen benutzerdefinierter Microsoft Sentinel-Connectors](create-custom-connector.md).
 >
 
 ## <a name="filter-your-logs-before-ingestion"></a>Filtern von Protokollen vor der Erfassung
 
-Möglicherweise möchten Sie die gesammelten Protokolle oder sogar den Protokollinhalt filtern, bevor die Daten in Azure Sentinel erfasst werden. Beispielsweise können Sie Protokolle herausfiltern, die für Sicherheitsvorgänge irrelevant oder unwichtig sind, oder unerwünschte Details aus Protokollmeldungen entfernen. Das Filtern von Nachrichteninhalten kann auch hilfreich sein, wenn Sie versuchen, die Kosten bei der Arbeit mit Syslog, CEF oder Windows-basierten Protokollen zu senken, die viele irrelevante Details enthalten.
+Möglicherweise möchten Sie die gesammelten Protokolle oder sogar den Protokollinhalt filtern, bevor die Daten in Microsoft Sentinel erfasst werden. Beispielsweise können Sie Protokolle herausfiltern, die für Sicherheitsvorgänge irrelevant oder unwichtig sind, oder unerwünschte Details aus Protokollmeldungen entfernen. Das Filtern von Nachrichteninhalten kann auch hilfreich sein, wenn Sie versuchen, die Kosten bei der Arbeit mit Syslog, CEF oder Windows-basierten Protokollen zu senken, die viele irrelevante Details enthalten.
 
 Filtern Sie Ihre Protokolle mit einer der folgenden Methoden:
 
@@ -57,7 +57,7 @@ Filtern Sie Ihre Protokolle mit einer der folgenden Methoden:
 Die Standardkonfiguration für die Datensammlung funktioniert aufgrund verschiedener Herausforderungen möglicherweise nicht gut für Ihre Organisation. In den folgenden Tabellen werden allgemeine Herausforderungen oder Anforderungen sowie mögliche Lösungen und Überlegungen beschrieben.
 
 > [!NOTE]
-> Viele der unten aufgeführten Lösungen erfordern einen benutzerdefinierten Datenconnector. Weitere Informationen finden Sie unter [Ressourcen zum Erstellen benutzerdefinierter Azure Sentinel-Connectors](create-custom-connector.md).
+> Viele der unten aufgeführten Lösungen erfordern einen benutzerdefinierten Datenconnector. Weitere Informationen finden Sie unter [Ressourcen zum Erstellen benutzerdefinierter Microsoft Sentinel-Connectors](create-custom-connector.md).
 >
 
 ### <a name="on-premises-windows-log-collection"></a>Lokale Windows-Protokollsammlung
@@ -65,10 +65,10 @@ Die Standardkonfiguration für die Datensammlung funktioniert aufgrund verschied
 
 |Herausforderung/Anforderung  |Lösungsvorschläge  |Weitere Überlegungen  |
 |---------|---------|---------|
-|**Erfordert Protokollfilterung**     | Verwenden von Logstash <br><br>Verwenden von Azure Functions <br><br> Verwenden von LogicApps <br><br> Verwenden von benutzerdefiniertem Code (.NET, Python)  |  Während die Filterung zu Kosteneinsparungen führen kann und nur die benötigten Daten erfasst, werden einige Azure Sentinel-Funktionen nicht unterstützt, darunter [UEBA](identify-threats-with-entity-behavior-analytics.md), [Entitätsseiten](identify-threats-with-entity-behavior-analytics.md#entity-pages), [maschinelles Lernen](bring-your-own-ml.md) und [Fusion](fusion.md). <br><br>Beim Konfigurieren der Protokollfilterung müssen Sie Aktualisierungen in Ressourcen vornehmen, z. B. in Abfragen zur Bedrohungssuche und Analyseregeln.     |
+|**Erfordert Protokollfilterung**     | Verwenden von Logstash <br><br>Verwenden von Azure Functions <br><br> Verwenden von LogicApps <br><br> Verwenden von benutzerdefiniertem Code (.NET, Python)  |  Während die Filterung zu Kosteneinsparungen führen kann und nur die benötigten Daten erfasst, werden einige Microsoft Sentinel-Funktionen nicht unterstützt, darunter [UEBA](identify-threats-with-entity-behavior-analytics.md), [Entitätsseiten](identify-threats-with-entity-behavior-analytics.md#entity-pages), [maschinelles Lernen](bring-your-own-ml.md) und [Fusion](fusion.md). <br><br>Beim Konfigurieren der Protokollfilterung müssen Sie Aktualisierungen in Ressourcen vornehmen, z. B. in Abfragen zur Bedrohungssuche und Analyseregeln.     |
 |**Agent kann nicht installiert werden**     |Verwenden von Windows-Ereignisweiterleitung, unterstützt mit dem [Azure Monitor-Agent](connect-windows-security-events.md#connector-options)       |   Die Verwendung von Windows-Ereignisweiterleitung senkt die Lastausgleichsereignisse der Windows-Ereignissammlung von 10.000 Ereignissen auf 500 bis 1000 Ereignisse pro Sekunde.|
 |**Server stellen keine Verbindung mit dem Internet her**     | Verwenden des [Log Analytics-Gateways](../azure-monitor/agents/gateway.md)        | Zum Konfigurieren eines Proxys für Ihren Agent sind zusätzliche Firewallregeln erforderlich, damit das Gateway funktioniert.        |
-|**Erfordert Tagging und Anreicherung bei der Erfassung**     |Verwenden von Logstash zum Einfügen einer ResourceID <br><br>Verwenden einer ARM-Vorlage zum Einfügen der ResourceID in lokale Computer <br><br>Erfassen der Ressourcen-ID in separaten Arbeitsbereichen        | Log Analytics unterstützt keine RBAC für benutzerdefinierte Tabellen <br><br>Azure Sentinel unterstützt keine RBAC auf Zeilenebene <br><br>**Tipp**: Möglicherweise möchten Sie Design und Funktionen für Azure Sentinel verwenden, die arbeitsbereichsübergreifend sind.        |
+|**Erfordert Tagging und Anreicherung bei der Erfassung**     |Verwenden von Logstash zum Einfügen einer ResourceID <br><br>Verwenden einer ARM-Vorlage zum Einfügen der ResourceID in lokale Computer <br><br>Erfassen der Ressourcen-ID in separaten Arbeitsbereichen        | Log Analytics unterstützt keine RBAC für benutzerdefinierte Tabellen <br><br>Microsoft Sentinel unterstützt keine RBAC auf Zeilenebene <br><br>**Tipp**: Möglicherweise möchten Sie Design und Funktionen für Microsoft Sentinel verwenden, die arbeitsbereichsübergreifend sind.        |
 |**Erfordert das Aufteilen von Vorgangs- und Sicherheitsprotokollen**     | Verwenden der Multi-Home-Funktionalität von [Microsoft Monitor-Agent oder Azure Monitor-Agent](connect-windows-security-events.md)        |  Multi-Home-Funktionalität erfordert mehr Bereitstellungsaufwand für den Agent.       |
 |**Erfordert benutzerdefinierte Protokolle**     |   Sammeln von Dateien aus bestimmten Ordnerpfaden <br><br>Verwenden von API-Erfassung <br><br>Verwenden von PowerShell <br><br>Verwenden von Logstash     |   Möglicherweise haben Sie Probleme beim Filtern Ihrer Protokolle. <br><br>Benutzerdefinierte Methoden werden nicht unterstützt. <br><br>Benutzerdefinierte Connectors erfordern möglicherweise Entwicklerkenntnisse.       |
 | | | |
@@ -77,7 +77,7 @@ Die Standardkonfiguration für die Datensammlung funktioniert aufgrund verschied
 
 |Herausforderung/Anforderung  |Lösungsvorschläge  |Weitere Überlegungen  |
 |---------|---------|---------|
-|**Erfordert Protokollfilterung**     | Verwenden von Syslog-NG <br><br>Verwenden von Rsyslog <br><br>Verwenden von FluentD-Konfiguration für den Agent <br><br> Verwenden des Azure Monitor-Agents/Microsoft Monitoring Agent <br><br> Verwenden von Logstash  |  Einige Linux-Distributionen werden vom Agent möglicherweise nicht unterstützt. <br> <br>Für die Verwendung von Syslog oder FluentD sind Entwicklerkenntnisse erforderlich. <br><br>Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Windows-Servern, um Sicherheitsereignisse zu sammeln](connect-windows-security-events.md) und [Ressourcen zum Erstellen von benutzerdefinierten Azure Sentinel-Connectors](create-custom-connector.md).      |
+|**Erfordert Protokollfilterung**     | Verwenden von Syslog-NG <br><br>Verwenden von Rsyslog <br><br>Verwenden von FluentD-Konfiguration für den Agent <br><br> Verwenden des Azure Monitor-Agents/Microsoft Monitoring Agent <br><br> Verwenden von Logstash  |  Einige Linux-Distributionen werden vom Agent möglicherweise nicht unterstützt. <br> <br>Für die Verwendung von Syslog oder FluentD sind Entwicklerkenntnisse erforderlich. <br><br>Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Windows-Servern, um sicherheitsrelevantes Ereignisse zu sammeln](connect-windows-security-events.md) und [Ressourcen zum Erstellen von benutzerdefinierten Microsoft Sentinel-Connectors](create-custom-connector.md).      |
 |**Agent kann nicht installiert werden**     |  Verwenden Sie eine Syslog-Weiterleitung, z. B. syslog-ng oder rsyslog.       |         |
 |**Server stellen keine Verbindung mit dem Internet her**       | Verwenden des [Log Analytics-Gateways](../azure-monitor/agents/gateway.md)        | Zum Konfigurieren eines Proxys für Ihren Agent sind zusätzliche Firewallregeln erforderlich, damit das Gateway funktioniert.          |
 |**Erfordert Tagging und Anreicherung bei der Erfassung**      | Verwenden Sie Logstash für Anreicherung oder benutzerdefinierte Methoden wie API oder EventHubs.         | Möglicherweise ist für die Filterung zusätzlicher Aufwand erforderlich.    |
@@ -104,7 +104,7 @@ Wenn Sie Microsoft Office Daten außerhalb der Standardconnectordaten sammeln m�
 |---------|---------|---------|
 |**Sammeln von Rohdaten aus Teams, Nachrichtenablaufverfolgung, Phishingdaten usw.**     |    Verwenden Sie die integrierten Funktionen des [Office 365-Connectors](./data-connectors-reference.md#microsoft-office-365), und erstellen Sie dann einen benutzerdefinierten Connector für andere Rohdaten.  |  Das Zuordnen von Ereignissen zur entsprechenden recordID kann eine Herausforderung darstellen.  |
 |**Erfordert RBAC zum Aufteilen von Ländern, Abteilungen usw.**     | Passen Sie Ihre Datensammlung an, indem Sie Daten Tags hinzufügen und dedizierte Arbeitsbereiche für jede benötigte Trennung erstellen.|   Die benutzerdefinierte Datensammlung verursacht zusätzliche Erfassungskosten.     |
-|**Erfordert mehrere Mandanten in einem einzelnen Arbeitsbereich**     |  Passen Sie Ihre Datensammlung mithilfe von Azure LightHouse und einer einheitlichen Incidentansicht an.|  Die benutzerdefinierte Datensammlung verursacht zusätzliche Erfassungskosten.  <br><br>Weitere Informationen finden Sie unter [Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten](extend-sentinel-across-workspaces-tenants.md).      |
+|**Erfordert mehrere Mandanten in einem einzelnen Arbeitsbereich**     |  Passen Sie Ihre Datensammlung mithilfe von Azure LightHouse und einer einheitlichen Incidentansicht an.|  Die benutzerdefinierte Datensammlung verursacht zusätzliche Erfassungskosten.  <br><br>Weitere Informationen finden Sie unter [Erweitern von Microsoft Sentinel auf Arbeitsbereiche und Mandanten](extend-sentinel-across-workspaces-tenants.md).      |
 | | | |
 
 ### <a name="cloud-platform-data"></a>Cloudplattformdaten
@@ -119,8 +119,8 @@ Wenn Sie Microsoft Office Daten außerhalb der Standardconnectordaten sammeln m�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [Aktivitäten vor der Bereitstellung und Voraussetzungen für die Bereitstellung von Azure Sentinel](prerequisites.md)
-- [Bewährte Methoden für Azure Sentinel](best-practices.md)
+- [Aktivitäten vor der Bereitstellung und Voraussetzungen für die Bereitstellung von Microsoft Sentinel](prerequisites.md)
+- [Bewährte Methoden für Microsoft Sentinel](best-practices.md)
 - [Herstellen einer Verbindung mit Datenquellen](connect-data-sources.md)

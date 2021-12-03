@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, ignite-fall-2021
-ms.openlocfilehash: 7683f6ef9966672a7b64a9c3474f37d9b95a942c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c57d4efffc207759b8d3da343bda397ee885dc0f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094961"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439080"
 ---
 # <a name="custom-named-entity-recognition-ner-definitions-and-terms"></a>Definitionen und Benennungen zur benutzerdefinierten benannten Entitätserkennung (NER)
 
@@ -38,7 +38,7 @@ In Ihrem Projekt können Sie die folgenden Vorgänge ausführen:
 
 ## <a name="model"></a>Modell
 
-Ein Modell ist ein Objekt, das für eine bestimmte Aufgabe trainiert wurde, in unserem Fall die benutzerdefinierte Entitätsextraktion.
+Ein Modell ist ein Objekt, das für eine bestimmte Aufgabe trainiert wurde, in diesem Fall die benutzerdefinierte Entitätserkennung.
 
 * Das **Modelltraining** ist der Prozess, bei dem Sie Ihrem Modell beibringen, was basierend auf Ihren markierten Daten extrahiert werden soll.
 * Die **Modellauswertung** ist der Prozess, der direkt nach dem Training ausgeführt wird, um zu erfahren, wie gut Ihr Modell funktioniert.

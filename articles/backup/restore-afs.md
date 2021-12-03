@@ -2,13 +2,16 @@
 title: Wiederherstellen von Azure-Dateifreigaben
 description: Erfahren Sie, wie Sie das Azure-Portal verwenden, um eine vollständige Dateifreigabe oder bestimmte Dateien von einem von Azure Backup erstellten Wiederherstellungspunkt wiederherstellen.
 ms.topic: conceptual
-ms.date: 01/12/2020
-ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/03/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 464c9927f901a373310ad6d1c0812a5a5de1eaaa
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89376773"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846828"
 ---
 # <a name="restore-azure-file-shares"></a>Wiederherstellen von Azure-Dateifreigaben
 
@@ -26,37 +29,25 @@ Führen Sie die folgenden Schritte aus, um einen Wiederherstellungsvorgang auszu
 
 ### <a name="select-the-file-share-to-restore"></a>Auswählen der Dateifreigabe, die wiederhergestellt werden soll
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Recovery Services-Tresor, den Sie zur Konfiguration der Sicherung für die Dateifreigabe verwendet haben.
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zu **Backup Center**, und klicken Sie auf **Wiederherstellen**.
 
-1. Wahlen Sie auf dem Blatt „Übersicht“ im Abschnitt **Geschützte Elemente** die Option **Sicherungselemente** aus.
+   :::image type="content" source="./media/restore-afs/backup-center-restore-inline.png" alt-text="Screenshot: Starten des Wiederherstellungsprozesses für die Azure-Dateifreigabe." lightbox="./media/restore-afs/backup-center-restore-expanded.png":::
 
-    ![Sicherungselemente auswählen](./media/restore-afs/backup-items.png)
+1. Wählen Sie **Azure Files (Azure Storage)** als Datenquellentyp aus, wählen Sie die Dateifreigabe aus, die Sie wiederherstellen möchten, und klicken Sie dann auf **Weiter**.
 
-1. Nachdem Sie **Sicherungselemente** ausgewählt haben, wird neben dem Bereich „Übersicht“ ein neuer Bereich angezeigt, in dem alle Sicherungsverwaltungstypen aufgelistet sind.
-
-    ![Sicherungsverwaltungstypen](./media/restore-afs/backup-management.png)
-
-1. Wählen Sie im Bereich **Sicherungselemente** unter **Sicherungsverwaltungstyp** die Option **Azure Storage (Azure Files)** aus. Angezeigt wird eine Liste aller Dateifreigaben und ihrer entsprechenden Speicherkonten, die mit diesem Tresor gesichert werden.
-
-    ![Liste aller Dateifreigaben](./media/restore-afs/file-shares.png)
-
-1. Wählen Sie aus der Liste der Azure-Dateifreigaben die Dateifreigabe aus, für die Sie den Wiederherstellungsvorgang durchführen möchten.
+   :::image type="content" source="./media/restore-afs/azure-file-share-select-instance.png" alt-text="Screenshot: Auswählen von Sicherungselementen.":::
 
 ### <a name="full-share-recovery"></a>Wiederherstellung der vollständigen Freigabe
 
 Sie können diese Wiederherstellungsoption verwenden, um die vollständige Dateifreigabe am ursprünglichen oder einem alternativen Speicherort wiederherzustellen.
 
-1. Wählen Sie die Option **Freigabe wiederherstellen** im Bereich **Sicherungselement** aus, der nach dem Auswählen der Dateifreigabe für die Wiederherstellung in Schritt 5 des Abschnitts [Auswählen der Dateifreigabe, die wiederhergestellt werden soll](#select-the-file-share-to-restore) angezeigt wird.
-
-   ![Wiederherzustellende Freigabe auswählen](./media/restore-afs/restore-share.png)
-
-1. Nachdem Sie **Freigabe wiederherstellen** ausgewählt haben, wird der Bereich **Wiederherstellung** geöffnet. Um den Wiederherstellungspunkt auszuwählen, den Sie für den Wiederherstellungsvorgang nutzen möchten, wählen Sie unter dem Textfeld **Wiederherstellungspunkt** den Linktext **Auswählen** aus.
+1. Nachdem Sie im vorherigen Schritt **Weiter** ausgewählt haben, wird der Bereich **Wiederherstellen** geöffnet. Um den Wiederherstellungspunkt auszuwählen, den Sie für den Wiederherstellungsvorgang nutzen möchten, wählen Sie unter dem Textfeld **Wiederherstellungspunkt** den Linktext **Auswählen** aus.
 
     ![Wiederherstellungspunkt mit „Auswählen“ auswählen](./media/restore-afs/select-restore-point.png)
 
 1. Der Kontextbereich **Wiederherstellungspunkt auswählen** wird auf der rechten Seite geöffnet und listet die für die ausgewählte Dateifreigabe verfügbaren Wiederherstellungspunkte auf. Wählen Sie den Wiederherstellungspunkt aus, den Sie für die Wiederherstellung verwenden möchten, und wählen Sie **OK** aus.
 
-    ![Auswählen eines Wiederherstellungspunkts](./media/restore-afs/restore-point.png)
+   :::image type="content" source="./media/restore-afs/azure-file-share-select-restore-point-inline.png" alt-text="Screenshot: Auswählen des Wiederherstellungspunkts." lightbox="./media/restore-afs/azure-file-share-select-restore-point-expanded.png":::
 
     >[!NOTE]
     >Standardmäßig werden im Bereich **Wiederherstellungspunkt a** Wiederherstellungspunkte der letzten 30 Tage aufgeführt. Wenn Sie sich die Wiederherstellungspunkte ansehen möchten, die während eines bestimmten Zeitraums erstellt wurden, geben Sie den Bereich an, indem Sie die entsprechende **Startzeit** und **Endzeit** und dann die Schaltfläche **Aktualisieren** auswählen.
@@ -72,7 +63,7 @@ Sie können diese Wiederherstellungsoption verwenden, um die vollständige Datei
 
 1. Wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsvorgang zu starten.
 
-    ![Zum Starten „Wiederherstellen“ auswählen](./media/restore-afs/click-restore.png)
+   :::image type="content" source="./media/restore-afs/azure-file-share-original-location-recovery.png" alt-text="Screenshot: Auswählen von „Wiederherstellen“, um zu starten.":::
 
 #### <a name="restore-to-an-alternate-location-full-share-recovery"></a>Wiederherstellen an einem alternativen Speicherort (vollständige Freigabe)
 
@@ -83,13 +74,16 @@ Sie können diese Wiederherstellungsoption verwenden, um die vollständige Datei
 1. Wählen Sie aus, ob Daten bei Konflikten übersprungen oder überschrieben werden sollen.
 1. Nachdem Sie die passenden Werte in alle Felder eingegeben haben, wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsvorgang zu starten.
 
-    ![„Alternativer Speicherort“ auswählen](./media/restore-afs/alternate-location.png)
+   :::image type="content" source="./media/restore-afs/azure-file-share-alternate-location-recovery.png" alt-text="Screenshot: Auswählen eines alternativen Speicherorts.":::
 
 ### <a name="item-level-recovery"></a>Wiederherstellung auf Elementebene
 
 Sie können diese Wiederherstellungsoption verwenden, um einzelne Dateien oder Ordner am ursprünglichen oder einem alternativen Speicherort wiederherzustellen.
 
-1. Wählen Sie die Option **Dateiwiederherstellung** im Bereich **Sicherungselement** aus, der nach dem Auswählen der Dateifreigabe für die Wiederherstellung in Schritt 5 des Abschnitts [Auswählen der Dateifreigabe, die wiederhergestellt werden soll](#select-the-file-share-to-restore) angezeigt wird.
+1. Wechseln Sie zum **Backup Center**, und wählen Sie im Menü die Option **Sicherungsinstanzen** aus, wobei als Datenquellentyp **Azure Storage (Azure Files)** ausgewählt ist.
+1. Wählen Sie die Dateifreigabe aus, für die Sie eine Wiederherstellung auf Elementebene durchführen möchten.
+
+   Das Menü „Sicherungselement“ wird mit einer Option **Dateiwiederherstellung** angezeigt.
 
     ![„Dateiwiederherstellung“ auswählen](./media/restore-afs/file-recovery.png)
 
@@ -153,10 +147,10 @@ Nachdem Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Sicheru
 
 Sie können den Fortschritt der Wiederherstellung auch über den Recovery Services-Tresor überwachen:
 
-1. Öffnen Sie den Recovery Services-Tresor, von dem aus Sie den Wiederherstellungsvorgang ausgelöst haben.
-1. Wählen Sie im Abschnitt **Überwachung** die Option **Sicherungsaufträge** aus, um den Status der für verschiedene Workloads ausgeführten Vorgänge anzuzeigen.
+1. Klicken Sie im **Backup Center** im Menü auf **Sicherungsaufträge**.
+1. Filtern Sie nach Aufträgen mit dem erforderlichen Datenquellentyp und Auftragsstatus.
 
-    ![Sicherungsaufträge auswählen](./media/restore-afs/backup-jobs.png)
+   :::image type="content" source="./media/restore-afs/backup-center-jobs-inline.png" alt-text="Screenshot: Auswählen von Sicherungsaufträgen." lightbox="./media/restore-afs/backup-center-jobs-expanded.png":::
 
 1. Wählen Sie den Namen der Workload aus, die Ihrer Dateifreigabe entspricht, um weitere Details über den Wiederherstellungsvorgang anzuzeigen, wie z. B. **übertragene Daten**, **Anzahl der wiederhergestellten Dateien** usw.
 

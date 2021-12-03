@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 9653e837350f1149a19eed52283187a356cf9efc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 847b3ed779777badaa5b6105f561bb2034e9aa0e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791116"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334243"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Tutorial: Integrieren von Freedcamp in Azure Active Directory
 
@@ -87,7 +87,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.freedcamp.com/login`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Benutzer können auch die URL-Werte für ihre eigene Benutzerdomäne eingeben, und diese Werte müssen nicht unbedingt das Format `freedcamp.com` haben. Benutzer können einen beliebigen, für die Benutzerdomäne spezifischen Wert eingeben, der speziell für ihre Anwendungsinstanz gilt. Sie können sich auch an das [Supportteam für den Freedcamp-Client](mailto:devops@freedcamp.com) wenden, um weitere Informationen zu URL-Mustern zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Benutzer*innen können auch die URL-Werte für ihre eigene Benutzerdomäne eingeben, und diese Werte müssen nicht unbedingt das Format `freedcamp.com` haben. Sie können einen beliebigen, für die Benutzerdomäne spezifischen Wert eingeben, der speziell für ihre Anwendungsinstanz gilt. Sie können sich auch an das [Supportteam für Freedcamp Client](mailto:devops@freedcamp.com) wenden, um weitere Informationen zu URL-Mustern zu erhalten.
 
 1. Suchen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** den Eintrag **Zertifikat (Base64)** . Klicken Sie auf **Herunterladen**, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -191,4 +191,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Freedcamp können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Freedcamp können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

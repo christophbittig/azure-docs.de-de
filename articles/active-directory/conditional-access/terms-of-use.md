@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f34d031bafd801cf068d19a4885bb9a818885c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 754520be35cbac4321fb7fbb65135016642a7ee1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128561915"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018317"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Nutzungsbedingungen für Azure Active Directory
 
@@ -44,7 +44,7 @@ Richtlinien für Azure AD-Nutzungsbedingungen bieten folgende Funktionen:
 - Mitarbeiter oder Gäste müssen Ihre Richtlinie für Nutzungsbedingungen vor dem Registrieren von Sicherheitsinformationen in Azure AD Multi-Factor Authentication (MFA) akzeptieren.
 - Mitarbeiter müssen Ihre Richtlinie für Nutzungsbedingungen vor dem Registrieren von Sicherheitsinformationen in der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure AD akzeptieren.
 - Anzeigen einer Richtlinie für allgemeine Nutzungsbedingungen für alle Benutzer in Ihrer Organisation.
-- Anzeigen von Richtlinien für spezifische Nutzungsbedingungen auf der Grundlage von Benutzerattributen (beispielsweise Ärzte/Pflegepersonal oder Mitarbeiter im Inland/Ausland unter Verwendung [dynamischer Gruppen](../enterprise-users/groups-dynamic-membership.md))
+- Anzeigen bestimmter Nutzungsbedingungen basierend auf Benutzerattributen (z. B. Ärztinnen und Ärzte im Vergleich zu Pflegepersonal oder lokale Mitarbeiter*innen im Vergleich zu internationalen Mitarbeiter*innen) mithilfe von [dynamischen Gruppen](../enterprise-users/groups-dynamic-membership.md)
 - Anzeigen von Richtlinien für spezifische Nutzungsbedingungen beim Zugriff auf besonders geschäftsrelevante Anwendungen (beispielsweise Salesforce).
 - Anzeigen von Richtlinien für Nutzungsbedingungen in verschiedenen Sprachen.
 - Auflisten, wer den Richtlinien für Nutzungsbedingungen bereits bzw. noch nicht zugestimmt hat.

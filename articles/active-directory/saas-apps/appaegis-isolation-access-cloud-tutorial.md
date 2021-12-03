@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/07/2021
 ms.author: jeedes
-ms.openlocfilehash: a9f5a22c8a76af8f57845d8f0e1ba2ebfb0c28f6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 358dcd9945751a20332063f14d408b12de151fed
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124838971"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318398"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-appaegis-isolation-access-cloud"></a>Tutorial: Azure AD SSO Integration mit Appaegis Isolation Access Cloud
 
@@ -103,7 +103,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
@@ -115,7 +115,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt werden Sie B.Simon die Nutzung von Azure Einmaliges Anmelden ermöglichen, indem Sie den Zugriff auf Appaegis Isolation Access Cloud gewähren.
 
@@ -127,13 +127,13 @@ In diesem Abschnitt werden Sie B.Simon die Nutzung von Azure Einmaliges Anmelden
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name=&quot;configure-appaegis-isolation-access-cloud-sso&quot;></a>Konfigurieren von Einmaliges Anmelden für Appaegis Isolation Access Cloud
+## <a name="configure-appaegis-isolation-access-cloud-sso"></a>Konfigurieren von Einmaliges Anmelden für Appaegis Isolation Access Cloud
 
 1. Melden Sie sich bei Ihrer Appaegis Isolation Access Cloud-Unternehmensseite als ein Administrator an.
 
 1. Gehen Sie zu **Einstellung** > **Anpassung** und geben Sie eine  **Mandantendomain-URL** in das Textfeld ein und klicken Sie auf die Schaltfläche **+ldP**.
 
-    ![Der Screenshot zeigt die Kontoanpassung.](./media/appaegis-isolation-access-cloud-tutorial/account.png &quot;Kontoanpassung")
+    ![Der Screenshot zeigt die Kontoanpassung.](./media/appaegis-isolation-access-cloud-tutorial/account.png "Kontoanpassung")
 
 1. Führen Sie auf der Seite **Details des Identitätsanbieters** die folgenden Schritte aus.
 
@@ -171,4 +171,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Appaegis Isolation Access Cloud konfiguriert haben, können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nachdem Sie Appaegis Isolation Access Cloud konfiguriert haben, können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

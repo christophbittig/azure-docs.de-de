@@ -8,19 +8,16 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: helohr
-ms.openlocfilehash: e6325c6511c6df9c3f3c021bc24a3f66b2e56c0f
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 7b4ec084b39d7efde884f0cee0235f6fd3653538
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207733"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987098"
 ---
 # <a name="deploy-azure-ad-joined-virtual-machines-in-azure-virtual-desktop"></a>Bereitstellung von Azure AD-gekoppelten virtuellen Maschinen in Azure Virtual Desktop
 
 Dieser Artikel führt Sie durch den Prozess für die Bereitstellung von und für den Zugriff auf in Azure AD eingebundene VMs in Azure Virtual Desktop. Mit Azure AD-joined VMs entfällt die Notwendigkeit, eine Sichtverbindung von der VM zu einem lokalen oder virtualisierten Active Directory-Domänen-Controller (DC) herzustellen oder Azure AD-Domänendienste (Azure AD DS) bereitzustellen. In einigen Fällen sind sogar überhaupt keine Domänencontroller mehr erforderlich, wodurch die Bereitstellung und Verwaltung der Umgebung deutlich vereinfacht wird. Diese VMs können zur Vereinfachung der Verwaltung auch automatisch bei Intune registriert werden.
-
-> [!NOTE]
-> Azure AD-gekoppelte VMs werden derzeit nur in der Azure Commercial Cloud unterstützt.
 
 ## <a name="supported-configurations"></a>Unterstützte Konfigurationen
 
@@ -50,6 +47,7 @@ Sie können in Azure AD eingebundene VMs direkt über das Azure-Portal bereitste
 > [!NOTE]
 > - Hostpools sollten nur VMs enthalten, die in dieselbe Domäne eingebunden sind. So sollten in AD eingebundene VMs nur mit anderen AD-VMs in einem Hostpool sein, und umgekehrt.
 > - Auf den Hostpool-VMs muss Windows 10 (mit einzelnen oder mehreren Sitzungen), Version 2004 oder höher, ausgeführt werden.
+> - Die Verwaltung von Azure Virtual Desktop-Sitzungshosts mit Microsoft Endpoint Manager (Intune) wird derzeit nur in der öffentlichen Azure-Cloud unterstützt.
 
 ### <a name="assign-user-access-to-host-pools"></a>Benutzerzugriff auf Hostpools zuweisen
 

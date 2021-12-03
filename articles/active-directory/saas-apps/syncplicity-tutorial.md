@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 48550bd5fcba087afa7e4c3f860554bc21db9d2a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6cbb1a53d2cf32ce5b55d1cb304b3ae675ae43d8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124751866"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298986"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Tutorial: Integrieren von Syncplicity in Azure Active Directory
 
@@ -195,4 +195,4 @@ Wenden Sie sich bei Verwendung der mobilen Syncplicity-App an den Syncplicity-Ku
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Syncplicity können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Syncplicity können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

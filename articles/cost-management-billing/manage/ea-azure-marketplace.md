@@ -2,18 +2,18 @@
 title: Azure Marketplace
 description: Hier wird beschrieben, wie EA-Kunden den Azure Marketplace verwenden können.
 author: bandersmsft
-ms.reviewer: baolcsva
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/21/2021
 ms.author: banders
-ms.openlocfilehash: d7514f4f3b1280bd65eaf8913e4f97f21b92fa28
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f22dd59be380a7535d8bdc724d48152eeec4041f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616439"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244189"
 ---
 # <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -21,7 +21,7 @@ In diesem Artikel wird erläutert, wie EA-Kunden und -Partner die Marketplace-Ge
 
 ## <a name="azure-marketplace-for-ea-customers"></a>Azure Marketplace für EA-Kunden
 
-Direkten EA-Kunden werden die Azure Marketplace-Gebühren im Azure Enterprise Portal angezeigt. Alle Azure Marketplace-Käufe und deren Nutzung werden außerhalb der Azure-Vorauszahlung abgerechnet, wobei die Rechnungsstellung vierteljährlich oder monatlich und nachträglich erfolgt.
+Direkten Kunden werden die Azure Marketplace-Gebühren im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts) angezeigt. Alle Azure Marketplace-Käufe und deren Nutzung werden außerhalb der Azure-Vorauszahlung abgerechnet, wobei die Rechnungsstellung vierteljährlich oder monatlich und nachträglich erfolgt. Weitere Informationen finden Sie unter [Verwalten von Azure Marketplace im Azure-Portal](direct-ea-administration.md#enable-azure-marketplace-purchases).
 
 Indirekte Kunden finden ihre Azure Marketplace-Abonnements im Azure Enterprise Portal auf der Seite **Abonnements verwalten**, wobei die Preise jedoch ausgeblendet sind. Kunden sollten ihren Lizenzierungsdienstanbieter (Licensing Solutions Provider, LSP) zwecks Informationen zu Azure Marketplace-Gebühren kontaktieren.
 
@@ -52,12 +52,21 @@ Unternehmensadministratoren können Azure Marketplace-Käufe für alle Azure-Abo
 
 Obwohl Kunden ihre direkten Azure-Abonnements in Azure EA konvertieren können, indem sie sie ihrer Registrierung im Azure Enterprise Portal zuordnen, werden die untergeordneten Abonnements von dieser Aktion nicht automatisch konvertiert.
 
-So aktivieren Sie Azure Marketplace-Einkäufe:
+Zum Aktivieren von Azure Marketplace-Einkäufen im Azure Enterprise Portal führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich beim Azure Enterprise-Portal als Unternehmensadministrator an.
 1. Navigieren Sie zu **Verwalten**.
 1. Wählen Sie unter **Registrierungsdetails** das Stiftsymbol neben dem Zeilenelement **Azure Marketplace** aus.
 1. Schalten Sie nach Bedarf zwischen **Aktiviert/Deaktiviert** oder **Nur kostenlose/BYOL-SKUs** um.
+1. Wählen Sie **Speichern** aus.
+
+Direktkunden können Azure Marketplace-Einkäufe im Azure-Portal aktivieren:
+
+1. Melden Sie sich beim Azure-Portal an.
+1. Navigieren Sie zu **Kostenverwaltung und Abrechnung**.
+1. Wählen Sie im linken Menü Abrechnungsbereiche und dann einen Abrechnungskontobereich aus.
+1. Wählen Sie im Menü links **Richtlinien** aus.
+1. Legen Sie unter „Azure Marketplace“ die Richtlinie auf **Ein** fest.
 1. Wählen Sie **Speichern** aus.
 
 > [!NOTE]

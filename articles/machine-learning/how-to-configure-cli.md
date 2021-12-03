@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Erhalten Sie Informationen zum Installieren und Einrichten der Azure CLI-Erweiterung für Machine Learning.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: mlops
+ms.subservice: core
 ms.topic: how-to
 author: lostmygithubaccount
 ms.author: copeters
-ms.date: 05/25/2021
+ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: d3b21575b1e0e7e8e5c049cdf692ea261b8173c6
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 778c58c2a1408ea7beb2a756d5c1700810f4bb63
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423894"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137599"
 ---
 # <a name="install-and-set-up-the-cli-v2"></a>Installieren und Einrichten der CLI (v2)
 
@@ -75,9 +75,20 @@ Wenn Sie Zugriff auf mehrere Azure-Abonnements haben, können Sie Ihr aktives Ab
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_account_set":::
 
+Richten Sie optional allgemeine Variablen in Ihrer Shell für die Verwendung in nachfolgenden Befehlen ein:
+
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/azure-github.sh" id="set_variables":::
+
+> [!WARNING]
+> Dabei wird die Bash-Syntax zum Festlegen von Variablen verwendet. Passen Sie diese bei Bedarf für Ihre Shell an. Sie können die Werte in den folgenden Befehlen auch inline ersetzen, anstatt Variablen zu verwenden.
+
 Ist noch keine Azure-Ressourcengruppe vorhanden, können Sie sie erstellen:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_group_create":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/azure-github.sh" id="az_group_create":::
+
+Und erstellen Sie einen Machine Learning-Arbeitsbereich:
+
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/azure-github.sh" id="az_ml_workspace_create":::
 
 Für Machine Learning-Unterbefehle sind die Parameter `--workspace/-w` und `--resource-group/-g` erforderlich. Konfigurieren Sie Standardwerte, um diese nicht wiederholt eingeben zu müssen:
 
@@ -86,12 +97,15 @@ Für Machine Learning-Unterbefehle sind die Parameter `--workspace/-w` und `--r
 > [!TIP]
 > Bei den meisten Codebeispielen wird davon ausgegangen, dass Sie einen Standardarbeitsbereich und eine Standardressourcengruppe festgelegt haben. Sie können diese über die Befehlszeile überschreiben.
 
-Erstellen Sie nun den Arbeitsbereich für maschinelles Lernen:
+Sie können Ihre aktuellen Standardwerte mit `--list-defaults/-l` anzeigen:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_ml_workspace_create":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="list_defaults":::
+
+> [!TIP]
+> Die Kombination mit `--output/-o` ermöglicht besser lesbare Ausgabeformate.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Trainieren von Modellen mithilfe der Machine Learning-CLI-Erweiterung (Vorschau)](how-to-train-cli.md)
+- [Trainieren von Modellen mithilfe der CLI (v2)](how-to-train-cli.md)
 - [Einrichten der Azure Machine Learning-Erweiterung für Visual Studio Code](how-to-setup-vs-code.md)
 - [Trainieren eines TensorFlow-Modells für die Bildklassifizierung mit der Azure Machine Learning-Erweiterung für Visual Studio Code](tutorial-train-deploy-image-classification-model-vscode.md)

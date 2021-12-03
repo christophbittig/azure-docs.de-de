@@ -156,6 +156,8 @@
           href: cache-administration.md#schedule-updates
         - name: Konfigurieren des Zugriffs für „redis-cli.exe“
           href: cache-how-to-redis-cli-tool.md
+        - name: Verschieben zwischen Regionen
+          href: cache-moving-resources.md
         - name: Veröffentlichen von Azure Cache for Redis-Ereignissen
           href: cache-event-grid.md
         - name: "Entfernen von TLS\_1.0 und\_1.1"

@@ -6,38 +6,32 @@ ms.author: vlrodrig
 ms.service: purview
 ms.subservice: purview-data-policies
 ms.topic: how-to
-ms.date: 11/02/2021
+ms.date: 11/15/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: cbd6214687e23b90d0c289dd5a34d9410b7f092a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: eab2c720aafe2cfd5a1ca46f2549b42d6f644b25
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021358"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555715"
 ---
 # <a name="dataset-provisioning-by-data-owner-for-azure-storage"></a>Datensatz-Bereitstellung durch Datenbesitzer für Azure Storage
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
-
-Die Purview-Richtlinienerstellung unterstützt die folgenden Funktionen:
--   Datenzugriffsrichtlinie für Azure Storage zum Steuern des Zugriffs auf Daten, die in Blob- oder ADLS Gen2-Dateien gespeichert sind
+In diesem Leitfaden wird beschrieben, wie Sie Azure Storage zum Erzwingen von Datenzugriffsrichtlinien konfigurieren, die über Azure Purview erstellt und verwaltet werden. Die Azure Purview-Richtlinienerstellung unterstützt die folgenden Funktionen:
+-   Datenzugriffsrichtlinien zum Steuern des Zugriffs auf Daten, die in Blob- oder ADLS Gen2-Dateien (Azure Data Lake Storage) gespeichert sind
 
 > [!IMPORTANT]
 > Diese Funktionen befinden sich derzeit in der Vorschau. Diese Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="important-limitations"></a>Wichtige Einschränkungen
+1. Die Zugriffsrichtlinienfunktion ist nur für neue Azure Purview- und Azure Storage-Konten verfügbar.
+2. Registrieren Sie alle Datenquellen für die Verwendung von Governance, und verwalten Sie alle zugehörigen Zugriffsrichtlinien in einem einzelnen Azure Purview-Konto.
+3. Dieses Feature kann nur in den unten aufgeführten Regionen verwendet werden, in denen Verwaltungs- und Erzwingungsfunktionen für Zugriffsrichtlinie bereitgestellt werden.
 
-### <a name="provision-new-accounts-in-an-isolated-test-subscription"></a>Bereitstellen neuer Konten in einem isolierten Testabonnement
-Führen Sie die folgenden Schritte aus, um ein neues Azure Purview-Konto und ein neues Azure Storage-Konto in einem isolierten Testabonnement zu erstellen. Aktivieren Sie dann die Zugriffsrichtlinienfunktionalität in diesen Konten.
+### <a name="supported-regions"></a>Unterstützte Regionen
 
-## <a name="supported-regions"></a>Unterstützte Regionen
-
-> [!IMPORTANT]
-> 1. Die Zugriffsrichtlinienfunktion ist nur für neue Azure Purview- und Azure Storage-Konten verfügbar.
-> 2. Dieses Feature kann nur in den unten aufgeführten Regionen verwendet werden, in denen die Zugriffsrichtlinienfunktionalität bereitgestellt wird.
-
-### <a name="azure-purview"></a>Azure Purview 
-
+#### <a name="azure-purview-management-side"></a>Azure Purview (Verwaltungsseite)
 -   Nordeuropa
 -   Europa, Westen
 -   UK, Süden
@@ -50,30 +44,24 @@ Führen Sie die folgenden Schritte aus, um ein neues Azure Purview-Konto und ein
 -   Kanada, Mitte
 -   Frankreich, Mitte
 
-
-### <a name="azure-storage"></a>Azure Storage
-
+#### <a name="azure-storage-enforcement-side"></a>Azure Storage (Erzwingungsseite)
 -   Frankreich, Mitte
 -   Kanada, Mitte
 
+## <a name="prerequisites"></a>Voraussetzungen
+> [!Important]
+> Lesen Sie diesem Abschnitt sorgfältig. Es gibt mehrere Voraussetzungen, damit Zugriffsrichtlinien ordnungsgemäß funktionieren.
 
-### <a name="create-azure-purview-account"></a>Azure Purview-Konto erstellen
-
-Erstellen Sie ein neues Azure Purview-Konto in den Regionen, in denen die neue Funktionalität aktiviert ist, unter dem Abonnement, das für die neue Funktionalität isoliert ist.
-
-Informationen zum Erstellen eines neuen Purview-Kontos finden Sie unter  [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal.](create-catalog-portal.md)
+### <a name="select-an-isolated-test-subscription"></a>Auswählen eines isolierten Testabonnements
+Erstellen oder verwenden Sie ein isoliertes Testabonnement und führen Sie die folgenden Schritte aus, um ein neues Azure Storage-Konto und ein neues Azure Purview-Konto in diesem Abonnement zu erstellen.
 
 ### <a name="create-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
+Erstellen Sie ein neues Azure Storage-Konto in den oben aufgeführten Regionen. Weitere Informationen finden Sie unter [Azure Storage – Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
 
-Informationen zum Erstellen eines neuen Azure Storage-Kontos finden Sie unter [Erstellen eines Speicherkontos - Azure Storage](../storage/common/storage-account-create.md)
+### <a name="configure-azure-storage-to-enforce-access-policies-from-purview"></a>Konfigurieren Azure Storage zum Erzwingen von Zugriffsrichtlinien aus Purview
 
-### <a name="configure-azure-purview-and-storage-for-access-policies"></a>Konfigurieren von Azure Purview und Storage für Zugriffsrichtlinien
-
-In diesem Abschnitt werden die Schritte zum Konfigurieren von Azure Purview und Storage zum Aktivieren von Zugriffsrichtlinien beschrieben.
-
-#### <a name="register-the-access-policies-functionality-in-azure-storage"></a>Registrieren der Zugriffsrichtlinienfunktionen in Azure Storage
-
-Führen Sie die folgenden Befehle in PowerShell aus, um sich zu registrieren und zu bestätigen, dass diese Funktionalität für Ihr Abonnement aktiviert ist
+#### <a name="enable-access-policy-enforcement-in-the-subscription"></a>Aktivieren der Erzwingung von Zugriffsrichtlinie im Abonnement
+Führen Sie die folgenden Befehle in PowerShell aus, um sich zu registrieren und zu bestätigen, dass die Zugriffsrichtlinie in dem Abonnement aktiviert ist, in dem sich das Azure Storage-Konto befindet:
 
 ```powershell
 # Install the Az module
@@ -83,27 +71,46 @@ Connect-AzAccount -Subscription <SubscriptionID>
 # Register the feature
 Register-AzProviderFeature -FeatureName AllowPurviewPolicyEnforcement -ProviderNamespace Microsoft.Storage
 ```
-
 Wenn die Ausgabe des letzten Befehls den Wert „RegistrationState“ als „Registriert“ anzeigt, ist Ihr Abonnement für diese Funktionalität aktiviert.
 
+#### <a name="check-access-permissions-in-azure-storage"></a>Überprüfen der Zugriffsberechtigungen in Azure Storage
+Ein Benutzer muss die Rolle „Besitzer“ im Azure Storage-Konto haben, um diese Datenquelle später in Azure Purview für Zugriffsrichtlinien zu registrieren: Überprüfen des Zugriffs für einen Benutzer auf [Azure-Ressourcen](../role-based-access-control/check-access.md)
+
+### <a name="create-azure-purview-account"></a>Azure Purview-Konto erstellen
+Erstellen Sie ein neues Azure Purview-Konto in den Regionen, in denen die neue Funktionalität aktiviert ist, unter dem isolierten Testabonnement. Informationen zum Erstellen eines neuen Purview-Kontos finden Sie unter  [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal.](create-catalog-portal.md)
+
+### <a name="configure-azure-purview-to-manage-access-policies"></a>Konfigurieren von Azure Purview zum Verwalten von Zugriffsrichtlinien
+Führen Sie alle folgenden Schritte aus, um Azure Purview zum Verwalten von Zugriffsrichtlinien zu aktivieren. 
+
+#### <a name="opt-in-to-participate-in-azure-purview-data-use-policy-preview"></a>Anmelden für die Teilnahme an der Vorschau der Azure Purview-Datennutzungsrichtlinie
+Diese Funktion befindet sich derzeit in der Vorschauphase, sodass Sie sich für die [Teilnahme an der Vorschau der Purview-Datennutzungsrichtlinie](https://aka.ms/opt-in-data-use-policy) anmelden müssen.
+
+#### <a name="register-purview-as-a-resource-provider-in-other-subscriptions"></a>Registrieren von Purview als Ressourcenanbieter in anderen Abonnements
+Führen Sie diesen Schritt nur aus, wenn das Storage Konto, auf das Sie den Zugriff verwalten möchten, sich in einem anderen Abonnement als das Azure Purview-Konto befindet. Registrieren Sie Azure Purview als Ressourcenanbieter in diesen Abonnements, indem Sie diesem Leitfaden folgen:  
+[Azure-Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md)
+
+#### <a name="configure-permissions-for-policy-management-actions"></a>Konfigurieren von Berechtigungen für Richtlinienverwaltungsaktionen
+- Der Benutzer muss sowohl Datenquellenbesitzer als auch Purview-Datenquellenadministrator sein, um eine Quelle für die Governance der Datennutzung zu registrieren. Jede dieser Rollen kann die Registrierung der Quelle für die Datennutzungsgovernance jedoch unabhängig voneinander wieder aufknüpfen.
+- Der Benutzer muss die Rolle Autor von Purview-Richtlinien auf Stammsammlungsebene haben, um Richtlinienerstellungs-/Verwaltungsaktionen ausführen zu können.
+- Der Benutzer muss die Rolle „Purview-Datenquellenadministrator“ auf Stammsammlungsebene haben, um die Richtlinie zu veröffentlichen.
+
+Weitere Informationen finden Sie im Abschnitt zum Verwalten von Rollenzuweisungen in diesem Handbuch: [Erstellen und Verwalten von Sammlungen](how-to-create-and-manage-collections.md)
+
+Weitere Informationen finden Sie im Abschnitt „Bekannte Probleme“ am Ende dieses Dokuments.
+
 #### <a name="register-and-scan-data-sources-in-purview"></a>Registrieren und Scannen von Azure-Datenquellen
+Registrieren und scannen Sie jede Datenquelle mit Purview, um später Zugriffsrichtlinien zu definieren. Befolgen Sie die Anleitungen für die Purview-Registrierung, um Ihr Speicherkonto zu registrieren:
 
-Die Datenquelle muss mit Purview registriert und überprüft werden, um Richtlinien zu definieren. Befolgen Sie die Anleitungen für die Purview-Registrierung, um Ihr Speicherkonto zu registrieren:
-
--   [Scannen von Azure Storage-Blobs - Azure Purview](register-scan-azure-blob-storage-source.md)
+-   [Registrieren und Scannen von Azure Storage-Blobs – Azure Purview](register-scan-azure-blob-storage-source.md)
 
 -   [Registrieren und Scannen von Azure Data Lake Storage (ADLS) Gen2 - Azure Purview](register-scan-adls-gen2.md)
 
-Aktivieren Sie während der Registrierung die Datenquelle für „Data use governance“, wie in der Abbildung dargestellt
+Aktivieren Sie während der Registrierung die Datenquelle für **Datennutzungsgovernance** wie in der Abbildung.
 
 :::image type="content" source="./media/how-to-access-policies-storage/register-data-source-for-policy.png" alt-text="Die Abbildung zeigt, wie sie eine Datenquelle für die Richtlinie registrieren.":::
 
-#### <a name="configure-permissions-for-policy-management-actions"></a>Konfigurieren von Berechtigungen für Richtlinienverwaltungsaktionen
-
--   Ein Benutzer muss Teil der Rolle „Datenkurator für Purview“ sein, um Richtlinienerstellungs-/Verwaltungsaktionen auszuführen.
--   Ein Benutzer muss Teil der Rolle „Datenquellenadministrator“ sein, um die Richtlinie zu veröffentlichen.
-
-Weitere Informationen finden Sie im Abschnitt zum Verwalten von Rollenzuweisungen in diesem Handbuch: [Erstellen und Verwalten von Sammlungen](how-to-create-and-manage-collections.md)
+> [!NOTE]
+> Das Verhalten des Umschalters erzwingt, dass alle Datenquellen in einem bestimmten Abonnement nur für die Datennutzungsgovernance in einem einzelnen Purview-Konto registriert werden können. Dieses Purview-Konto selbst kann in einem beliebigen Abonnement im Mandanten angemeldet werden.
 
 ## <a name="policy-authoring"></a>Richtlinienerstellung
 
@@ -180,13 +187,40 @@ Die Schritte zum Veröffentlichen einer Richtlinie lauten wie folgt
 
     :::image type="content" source="./media/how-to-access-policies-storage/publish-policy-storage.png" alt-text="Die Abbildung zeigt, wie ein Datenbesitzer eine Richtlinie veröffentlichen kann.":::
 
-1. Eine Liste der Datenquellen wird angezeigt. Sie können einen Namen eingeben, um die Liste zu filtern. Wählen Sie dann jede Datenquelle aus, in der diese Richtlinie veröffentlicht werden soll, und wählen Sie dann die Schaltfläche **Veröffentlichen** aus. Veröffentlichen ist ein Hintergrundvorgang. Es kann bis zu 2 Stunden dauern, bis die Änderungen in der Datenquelle widergespiegelt werden.
+1. Eine Liste der Datenquellen wird angezeigt. Sie können einen Namen eingeben, um die Liste zu filtern. Wählen Sie dann jede Datenquelle aus, in der diese Richtlinie veröffentlicht werden soll, und wählen Sie dann die Schaltfläche **Veröffentlichen** aus.
 
     :::image type="content" source="./media/how-to-access-policies-storage/select-data-sources-publish-policy-storage.png" alt-text="Die Abbildung zeigt, wie ein Datenbesitzer die Datenquelle auswählen kann, in der die Richtlinie veröffentlicht wird.":::
 
+>[!NOTE]
+> Veröffentlichen ist ein Hintergrundvorgang. Es kann bis zu **2 Stunden** dauern, bis die Änderungen in der Datenquelle widergespiegelt werden.
+
+## <a name="azure-purview-policy-action-to-azure-storage-action-mapping"></a>Azure Purview-Richtlinienaktion zur Azure Storage Aktionszuordnung
+
+Dieser Abschnitt enthält eine Referenz dazu, wie Aktionen in Azure Purview-Datenrichtlinien bestimmten Aktionen in Azure Storage zugeordnet werden.
+
+| **Purview-Richtlinien-Aktion** | **Datenquellenspezifische Aktionen**                                                        |
+|---------------------------|-----------------------------------------------------------------------------------------|
+|||
+| *Lesen*                    |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/read                      |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read                |
+|||
+| *Modify*                  |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read                |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write               |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action          |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action         |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete              |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/read                      |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/write                     |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/delete                    |
+|||
+
+## <a name="known-issues"></a>Bekannte Probleme
+Hier werden bekannte Probleme in der aktuellen Version aufgeführt:
+1. Zusätzlich zur Rolle „Richtlinienautor“ benötigt der Benutzer die Berechtigung „Verzeichnisleseberechtigter“ in Azure Active Directory (AAD), um eine Datenbesitzerrichtlinie zu erstellen.
+1. Die Rolle „Richtlinienautor“ reicht nicht aus, um Richtlinien zu erstellen. Außerdem ist die Rolle „Purview Datenquellenadministrator“ erforderlich.
+
 ## <a name="next-steps"></a>Nächste Schritte
+Lesen Sie den Blog und sehen Sie sich die Demo im Zusammenhang mit den in dieser Anleitung erwähnten Funktionen an.
 
-Lesen Sie diese Artikel, um die Konzepte im Zusammenhang mit Zugriffsrichtlinien zu verstehen:
-
-* [Konzepte für Azure Purview-Zugriffsrichtlinien](concept-data-policies.md)
-* [Konzepte für Azure Purview Self-Service-Datenermittlung und -Zugriff](concept-self-service.md)
+* [Neuerungen in Azure Purview auf der Microsoft Ignite 2021](https://techcommunity.microsoft.com/t5/azure-purview/what-s-new-in-azure-purview-at-microsoft-ignite-2021/ba-p/2915954)
+* [Demo der Zugriffsrichtlinie für Azure Storage](https://www.youtube.com/watch?v=CFE8ltT19Ss)

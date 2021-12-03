@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: c257941079c3a43639337dd1b010002ddac4672e
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0e7e2da03d90f4111601871db7085749f9efc75a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639752"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457352"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MySQL – Flexible Server 
+# <a name="set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Einrichten von Warnungen zu Metriken für Azure Database for MySQL – Flexible Server
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In diesem Artikel erfahren Sie, wie Sie mit dem Azure-Portal Azure Database for MySQL-Warnungen einrichten können. Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services eine Warnung empfangen.
 
@@ -54,14 +51,14 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 12. Sie können auch eine neue Aktionsgruppe erstellen, um Benachrichtigungen über die Warnung zu erhalten. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen](../../azure-monitor/alerts/action-groups.md).
 13. Um eine neue Aktionsgruppe zu erstellen, wählen Sie **+ Aktionsgruppe erstellen** aus. Füllen Sie das Formular „Aktionsgruppe erstellen“ mit **Abonnement**, **Ressourcengruppe**, **Aktionsgruppenname** und **Anzeigename** aus.
 14. Konfigurieren Sie **Benachrichtigungen** für die Aktionsgruppe.
-    
+
     Wählen Sie in **Benachrichtigungstyp** die Option „E-Mail an Azure Resource Manager-Rolle“ aus, um Besitzer, Mitwirkende und Leser des Abonnements auszuwählen, die Benachrichtigungen erhalten sollen. Wählen Sie die **Azure Resource Manager-Rolle** zum Senden der E-Mail aus.
     Sie können auch **E-Mail/SMS-Nachricht/Push/Voice** auswählen, um Benachrichtigungen an bestimmte Empfänger zu senden.
 
     Geben Sie **Name** für den Benachrichtigungstyp an, und wählen Sie nach Abschluss **Überprüfen + erstellen** aus.
 
     <!--:::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Action group":::-->
-    
+
 15. Füllen Sie **Warnungsregeldetails** wie **Warnungsregelname**, **Beschreibung**, **Warnungsregel in Ressourcengruppe speichern** und **Schweregrad** aus.
 
     <!--:::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Action group":::-->

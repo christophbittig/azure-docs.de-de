@@ -1,22 +1,30 @@
 ---
-title: Verarbeiten großer Nachrichten mittels Blockerstellung („Chunking“)
-description: Erfahren Sie, wie Sie große Nachrichten verarbeiten, indem Sie Blockerstellung in automatisierten Aufgaben und Workflows verwenden, die Sie mit Azure Logic Apps erstellen.
+title: Handhabung großer Nachrichten in Workflows durch Chunking
+description: Verarbeiten Sie große Nachrichten mit Chunking in Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/18/2020
-ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bcbad7c9a71ae5045f24ee25b8de409ece544c0f
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97695867"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179154"
 ---
-# <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Verarbeiten von großen Nachrichten durch Blockerstellung in Azure Logic Apps
+# <a name="handle-large-messages-in-workflows-using-chunking-in-azure-logic-apps"></a>Umgang mit großen Nachrichten in Workflows mit Chunking in Azure Logic Apps
 
-Beim Verarbeiten von Nachrichten begrenzt Logic Apps Nachrichteninhalt auf eine maximale Größe. Dieser Grenzwert ermöglicht ein Verringern des Mehraufwands, der durch das Speichern und Verarbeiten von großen Nachrichten verursacht wird. Sollen Nachrichten verarbeitet werden, die größer sind, als dieser Grenzwert angibt, kann Logic Apps eine große Nachricht durch *Blockerstellung* in kleinere Nachrichten aufteilen. Auf diese Weise können Sie weiterhin große Dateien unter bestimmten Bedingungen mit Logic Apps übertragen. Bei der Kommunikation mit anderen Diensten über Connectors oder HTTP kann Logic Apps große Nachrichten verarbeiten, jedoch *nur* in Blöcken. Diese Bedingung bedeutet, dass auch Connectors Blockerstellung unterstützen müssen oder der zugrunde liegende HTTP-Nachrichtenaustausch zwischen Logic Apps und diesen Diensten Blockerstellung verwenden muss.
+Azure Logic Apps hat unterschiedliche Höchstgrenzen für die Größe des Nachrichteninhalts, den Auslöser und Aktionen in Logic-App-Workflows verarbeiten können, basierend auf dem Logic-App-Ressourcentyp und der Umgebung, in der der Logic-App-Workflow ausgeführt wird. Diese Grenzen helfen, den Overhead zu reduzieren, der durch die Speicherung und Verarbeitung [großer Nachrichten](#what-is-large-message) entsteht. Weitere Informationen zu Größenbeschränkungen für Nachrichten finden Sie unter [Nachrichtenbeschränkungen in Azure Logic Apps](logic-apps-limits-and-config.md#messages).
 
-In diesem Artikel wird gezeigt, wie Sie die Blockerstellung für Aktionen im Zusammenhang mit Nachrichten einrichten, deren Größe den Grenzwert übersteigt. Logik-App-Trigger unterstützen die Blockerstellung aufgrund des Mehraufwands für den Austausch mehrerer Nachrichten nicht. 
+Wenn Sie integrierte HTTP-Aktionen oder bestimmte verwaltete Connector-Aktionen verwenden und Azure Logic Apps mit Nachrichten arbeiten müssen, die größer als die Standardgrenzen sind, können Sie *chunking* aktivieren, das eine große Nachricht in kleinere Nachrichten aufteilt. Auf diese Weise können Sie unter bestimmten Bedingungen auch große Dateien übertragen. Wenn Sie diese integrierten HTTP-Aktionen oder spezielle verwaltete Connector-Aktionen verwenden, ist Chunking die einzige Möglichkeit für Azure Logic Apps, große Nachrichten zu verarbeiten. Diese Anforderung bedeutet, dass entweder der zugrunde liegende HTTP-Nachrichtenaustausch zwischen Azure Logic Apps und anderen Diensten Chunking verwenden muss, oder dass die von den verwalteten Konnektoren, die Sie verwenden möchten, erstellten Verbindungen ebenfalls Chunking unterstützen müssen.
+
+> [!NOTE]
+> Azure Logic Apps unterstützt kein Chunking bei Triggern aufgrund des erhöhten Overheads beim Austausch mehrerer Nachrichten.
+> Außerdem implementiert Azure Logic Apps das Chunking für HTTP-Aktionen mit seinem eigenen Protokoll, wie in diesem Artikel beschrieben. Selbst wenn Ihre Website oder Ihr Webdienst Chunking unterstützt, funktionieren sie also nicht mit HTTP Action Chunking. Um HTTP Action Chunking mit Ihrer Website oder Ihrem Webservice zu verwenden, müssen Sie das gleiche Protokoll implementieren, das von Azure Logic Apps verwendet wird. Andernfalls sollten Sie das Chunking für die HTTP-Aktion nicht aktivieren. 
+
+Dieser Artikel gibt einen Überblick darüber, wie Chunking in Azure Logic Apps funktioniert und wie man Chunking für unterstützte Aktionen einrichtet.
+
+<a name="what-is-large-message"></a>
 
 ## <a name="what-makes-messages-large"></a>Was macht Nachrichten „groß“?
 
@@ -37,7 +45,6 @@ Andernfalls erhalten Sie einen Laufzeitfehler, wenn Sie versuchen, auf große In
 Dienste, die mit Logic Apps kommunizieren, haben möglicherweise eigene Nachrichtengrößenbeschränkungen. Diese Beschränkungen sind häufig kleiner als die Logic Apps-Beschränkung. Nehmen Sie beispielsweise an, dass ein Connector, der Blockerstellung unterstützt, eine 30-MB-Nachricht als groß einstuft, während Logic Apps dies nicht tut. Um dieser Beschränkung des Connectors zu genügen, teilt Logic Apps jede Nachricht, die größer als 30 MB ist, in kleinere Blöcke auf.
 
 Für Connectors, die Blockerstellung unterstützen, ist das zugrunde liegende Blockerstellungsprotokolls für Endbenutzer nicht sichtbar. Allerdings unterstützen nicht alle Connectors Blockerstellung, sodass diese Connectors Laufzeitfehler generieren, wenn eingehende Nachrichten die Größenbeschränkungen des jeweiligen Connectors überschreiten.
-
 
 Für Aktionen, die Segmentierung unterstützen und dafür aktiviert sind, können Sie keine Trigger-Bodys, Variablen oder Ausdrücke wie z. B. `@triggerBody()?['Content']` verwenden, da durch die Verwendung einer dieser Eingaben verhindert wird, dass der Segmentierungsvorgang stattfindet. Verwenden Sie stattdessen die Aktion [**Compose**](../logic-apps/logic-apps-perform-data-operations.md#compose-action). Insbesondere müssen Sie ein `body`-Feld erstellen, indem Sie die Aktion **Compose** verwenden, um die Datenausgabe des Trigger-Bodys, der Variablen, des Ausdrucks usw. zu speichern, z. B.:
 

@@ -4,13 +4,13 @@ ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
-ms.date: 09/27/2021
-ms.openlocfilehash: 8c4baccdbfb0f6162e666d6901e0080202a3b7e9
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 11/01/2021
+ms.openlocfilehash: 238db4caa1bcb11e0f4c27b6e490b0859b1e536d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212335"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851482"
 ---
 ### <a name="copy-activity-support"></a>Unterstützung der Copy-Aktivität
 
@@ -30,6 +30,7 @@ ms.locfileid: "129212335"
 | Azure SQL-Datenbank \* | Ja | 
 | Azure SQL Managed Instance \* | Ja | 
 | Azure Synapse Analytics \* | Ja | 
+| Dedizierter Azure-SQL-Pool (vormals SQL DW) \* | Ja | 
 | Azure Table Storage | Ja |
 | Amazon S3 | Ja | 
 | Hive \* | Ja | 
@@ -41,6 +42,8 @@ ms.locfileid: "129212335"
 *\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
 
 Wenn Sie eine selbstgehostete Integration Runtime verwenden, beachten Sie die Mindestversion mit Herkunftsunterstützung für:
+
+- Beliebiger Anwendungsfall: Version 5.9.7885.3 oder höher
 - Kopieren von Daten aus Oracle: Version 5.10 oder höher
 - Kopieren von Daten in Azure Synapse Analytics über den COPY-Befehl oder PolyBase: Version 5.10 oder höher
 
@@ -71,6 +74,7 @@ Zusätzlich zur Datenherkunft wird das Datenobjektschema (siehe Registerkarte Ob
 | Azure SQL-Datenbank \* | Ja |
 | Azure SQL Managed Instance \* | Ja | 
 | Azure Synapse Analytics \* | Ja |
+| Dedizierter Azure-SQL-Pool (vormals SQL DW) \* | Ja | 
 
 *\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
 

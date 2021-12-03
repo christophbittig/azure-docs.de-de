@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
-ms.date: 07/20/2021
+ms.date: 10/21/2021
 adobe-target: true
-ms.openlocfilehash: ebe02e264a9f3faea2812253eeced6d56319627d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f14a468130dbadfc9ae6a5668a9e1c71b880e818
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355608"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564915"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Spickzettel mit Machine Learning-Algorithmen für Azure Machine Learning-Designer
 
@@ -39,7 +39,7 @@ Die Vorschläge in diesem Cheat Sheet für Algorithmen stellen nur grobe Richtli
 
 Jeder Algorithmus für maschinelles Lernen hat seinen eigenen Stil oder induktiven Bias. Für ein bestimmtes Problem können verschiedene Algorithmen geeignet sein, aber ein Algorithmus passt möglicherweise besser als andere. Es ist jedoch nicht immer schon im Vorfeld klar, welches der am besten geeignete Algorithmus ist. In diesen Fällen werden im Cheat Sheet mehrere Algorithmen zusammen angegeben. Eine geeignete Strategie bestünde darin, einen Algorithmus zu testen und bei nicht zufriedenstellenden Ergebnissen einen anderen zu versuchen. 
 
-Um mehr über die Algorithmen im Azure Machine Learning-Designer zu erfahren, rufen Sie die [Referenz zu Algorithmen und Modulen](algorithm-module-reference/module-reference.md) auf.
+Rufen Sie die [Referenz zu Algorithmen und Komponenten](component-reference/component-reference.md) auf, um mehr über die Algorithmen im Azure Machine Learning-Designer zu erfahren.
 
 ## <a name="kinds-of-machine-learning"></a>Arten des maschinellen Lernens
 

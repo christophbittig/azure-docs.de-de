@@ -1,18 +1,16 @@
 ---
 title: Verwenden einer App Service-Umgebung
 description: Hier erfahren Sie, wie Sie Ihre App Service-Umgebung zum Hosten isolierter Anwendungen verwenden.
-author: ccompy
-ms.assetid: 377fce0b-7dea-474a-b64b-7fbe78380554
+author: madsd
 ms.topic: article
 ms.date: 07/06/2021
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 01d554c5b34796b54fc67877149a116500c41823
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.author: madsd
+ms.openlocfilehash: 6a01e1c746579ea7d51a0b30fd554d2e2e6bb66b
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216749"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519635"
 ---
 # <a name="using-an-app-service-environment"></a>Verwenden einer App Service-Umgebung
 
@@ -35,13 +33,13 @@ So erstellen Sie eine App in einer ASE
 1. Wählen Sie **Ressource erstellen** > **Web + Mobil** > **Web-Apps** aus.
 1. Wählen Sie ein Abonnement aus.
 1. Geben Sie einen Namen für eine neue Ressourcengruppe ein, oder wählen Sie **Vorhandene verwenden** aus, und wählen Sie in der Dropdownliste eine Ressourcengruppe aus.
-1. Geben Sie einen Namen für die App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE: ![Erstellen einer App in einer ASE][1]
+1. Geben Sie einen Namen für die App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE
 1. Wählen Sie Ihren Veröffentlichungstyp, Ihren Stack und Ihr Betriebssystem aus.
-1. Wählen Sie eine Region aus. Hier muss eine bereits vorhandene App Service-Umgebung der Version 3 ausgewählt werden.  Im Rahmen der App-Erstellung kann keine ASE der Version 3 erstellt werden. 
-1. Wählen Sie einen vorhandenen App Service-Plan in Ihrer ASE aus, oder erstellen Sie einen neuen Plan. Wenn Sie eine neue App erstellen, wählen Sie die gewünschte Größe für Ihren App Service-Plan aus. Die einzige SKU, die Sie für Ihre App auswählen können, ist eine SKU mit Tarif vom Typ „Isoliert V2“. Die Erstellung eines neuen App Service-Plans dauert normalerweise weniger als 20 Minuten. 
+1. Wählen Sie eine Region aus. Hier muss eine bereits vorhandene App Service-Umgebung der Version 3 ausgewählt werden. Sie können während der App-Erstellung keine ASEv3 erstellen: ![ Erstellen einer App in einer ASE][1]
+1. Wählen Sie einen vorhandenen App Service-Plan in Ihrer ASE aus, oder erstellen Sie einen neuen Plan. Wenn Sie eine neue App erstellen, wählen Sie die gewünschte Größe für Ihren App Service-Plan aus. Die einzige SKU, die Sie für Ihre App auswählen können, ist eine SKU mit Tarif vom Typ „Isoliert V2“. Die Erstellung eines neuen App Service-Plans dauert normalerweise weniger als 20 Minuten.
 ![Tarife vom Typ „Isoliert V2“][2]
-1. Klicken Sie auf **Weiter: Überwachen** aus. Wenn Sie App Insights für Ihre App aktivieren möchten, können Sie dies hier im Rahmen der Erstellung tun. 
-1.  Klicken Sie auf **Weiter: Tags**. Fügen Sie der App ggf. gewünschte Tags hinzu.  
+1. Klicken Sie auf **Weiter: Überwachen** aus. Wenn Sie App Insights für Ihre App aktivieren möchten, können Sie dies hier im Rahmen der Erstellung tun.
+1.  Klicken Sie auf **Weiter: Tags**. Fügen Sie der App ggf. gewünschte Tags hinzu.
 1. Wählen Sie **Bewerten + erstellen** aus, stellen Sie sicher, dass die Informationen richtig sind, und wählen Sie dann **Erstellen** aus.
 
 Windows- und Linux-Apps können sich in derselben ASE, aber nicht in demselben App Service-Plan befinden.
@@ -50,9 +48,9 @@ Windows- und Linux-Apps können sich in derselben ASE, aber nicht in demselben A
 
 Jede App Service-App wird in einem App Service-Plan ausgeführt. App Service-Umgebungen enthalten App Service-Pläne, und App Service-Pläne enthalten Apps. Wenn Sie eine App skalieren, skalieren Sie auch den App Service-Plan und damit alle Apps in diesem Plan.
 
-Wenn Sie einen App Service-Plan skalieren, wird die erforderliche Infrastruktur automatisch hinzugefügt. Bei der Skalierung von Vorgängen kommt es zu einer Zeitverzögerung, während die Infrastruktur hinzugefügt wird. Wenn Sie einen App Service-Plan skalieren, werden alle anderen Skalierungsvorgänge, die mit dem gleichen Betriebssystem und der gleichen Größe angefordert wurden, erst nach Abschluss des ersten Vorgangs ausgeführt. Nach Abschluss des blockierenden Skalierungsvorgangs werden alle in die Warteschlange eingereihten Anforderungen gleichzeitig verarbeitet. Ein Skalierungsvorgang mit einer bestimmten Größe und einem bestimmten Betriebssystem führt nicht zur Blockierung der Skalierung anderer Kombinationen von Größe und Betriebssystem. Wenn Sie also beispielsweise einen App Service-Plan vom Typ „Windows I2v2“ skaliert haben, werden andere Skalierungsanforderungen für „Windows I2v2“ in dieser ASE in die Warteschlange eingereiht, bis die erste Skalierung abgeschlossen ist. Die Skalierung dauert normalerweise weniger als 20 Minuten. 
+Wenn Sie einen App Service-Plan skalieren, wird die erforderliche Infrastruktur automatisch hinzugefügt. Bei der Skalierung von Vorgängen kommt es zu einer Zeitverzögerung, während die Infrastruktur hinzugefügt wird. Wenn Sie einen App Service-Plan skalieren und ein weiterer Skalierungsvorgang desselben Betriebssystems und derselben Größe ausgeführt wird, kann es zu einer geringfügigen Verzögerung von einigen Minuten kommen, bis die angeforderte Skalierung gestartet wird. Ein Skalierungsvorgang mit einer bestimmten Größe und einem bestimmten Betriebssystem führt nicht zur Beeinflussung der Skalierung anderer Kombinationen von Größe und Betriebssystem. Wenn Sie z. B. einen Windows I2v2-App Service-Plan skalieren, werden alle anderen Anforderungen zur Skalierung von Windows I2v2 möglicherweise etwas verzögert, aber ein Skalierungsvorgang für einen Windows I3v2 App Service-Plan wird sofort gestartet. Die Skalierung dauert normalerweise weniger als 20 Minuten.
 
-Bei einer mehrinstanzenfähigen App Service-Instanz erfolgt die Skalierung unmittelbar, da sofort ein Ressourcenpool für die Unterstützung verfügbar ist. In einer ASE gibt es keinen solchen Puffer. Die Ressourcen werden nach Bedarf zugeordnet.
+Bei einer mehrinstanzenfähigen App Service-Instanz erfolgt die Skalierung unmittelbar, da sofort ein *freigegebener* Ressourcenpool für die Unterstützung verfügbar ist. ASE ist ein Dienst mit nur einem Mandanten, sodass kein freigegebener Puffer vorhanden ist und Ressourcen je nach Bedarf zugeordnet werden.
 
 ## <a name="app-access"></a>App-Zugriff
 
@@ -184,16 +182,6 @@ So löschen Sie eine ASE
 ![Löschen einer ASE][3]
 1. Klicken Sie auf **OK**.
 
-## <a name="pricing"></a>Preise 
-
-Bei ASEv3 gibt es je nach Art der ASE-Bereitstellung ein anderes Preismodell. Es gibt drei verschiedene Preismodelle: 
-
-- **ASEv3**: Wenn die ASE leer ist, fällt eine Gebühr an, als ob Sie einen ASP mit einer Instanz von Windows I1v2 hätten. Die Gebühr für eine Instanz ist keine additive Gebühr, Sie wird jedoch nur angewendet, wenn die ASE leer ist.
-- **Verfügbarkeitszone ASEv3**: Es gibt eine Gebühr für eine Mindestanzahl von neun Windows I1v2-Instanzen. Wenn Sie über neun oder mehr App Service Planinstanzen verfügen, fällt keine zusätzliche Gebühr für die Unterstützung von Verfügbarkeitszonen an. Alle App Service-Pläne in einer AZ-ASEv3-Instanz haben auch eine Mindestanzahl von 3 Instanzen, um sicherzustellen, dass in jeder Verfügbarkeitszone eine Instanz vorhanden ist. Wenn die Pläne hochskaliert werden, werden sie auf die Verfügbarkeitszonen verteilt. 
-- **Dedizierter Host-ASEv3**: Bei der Bereitstellung eines dedizierten Hosts werden Ihnen zwei dedizierte Hosts gemäß unserer Preisgestaltung bei der ASEv3-Erstellung in Rechnung gestellt. Bei der Skalierung wird dann ein kleiner Prozentsatz des isolierten V2-Tarifs pro Core berechnet.
-
-Die Preise für reservierte Instanzen für isolierte V2 sind verfügbar und werden unter [Anwenden von Reservierungsrabatten auf Azure App Service][reservedinstances] beschrieben. Die Preisgestaltung, zusammen mit der Preisgestaltung für reservierte Instanzen, ist bei der [App Service Preisgestaltung][pricing] unter dem **Plan für isolierte V2** verfügbar. 
-
 <!--Image references-->
 
 [1]: ./media/using/using-appcreate.png
@@ -220,5 +208,3 @@ Die Preise für reservierte Instanzen für isolierte V2 sind verfügbar und werd
 [ASEWAF]: ./integrate-with-application-gateway.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md
-[reservedinstances]: ../../cost-management-billing/reservations/reservation-discount-app-service.md#how-reservation-discounts-apply-to-isolated-v2-instances
-[pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

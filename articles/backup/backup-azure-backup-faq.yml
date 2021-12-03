@@ -4,13 +4,15 @@ metadata:
   description: Antworten auf häufig gestellte Fragen zu
   ms.topic: article
   ms.service: backup
-  ms.date: 06/10/2021
-  ms.openlocfilehash: cf4539afef4df4f09da7eacdf3c195cb08a70e44
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 11/02/2021
+  author: v-amallick
+  ms.author: v-amallick
+  ms.openlocfilehash: afa49f9f586540611e41983407f9381de971614b
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122254248"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131507149"
 title: Azure Backup – häufig gestellte Fragen
 summary: In diesem Artikel werden allgemeine Fragen um Azure Backup-Dienst beantwortet.
 sections:
@@ -33,7 +35,7 @@ sections:
   - question: >
       Wie viele Richtlinien kann ich pro Tresor erstellen?
     answer: >
-      Sie können nur maximal 200 Richtlinien pro Tresor erstellen. Es können jedoch in einem Zeitraum von 24 Stunden nur 50 neue Sicherungsrichtlinien hinzugefügt oder aktuelle Richtlinien durch ARM-Vorlagen (Azure Resource Manager) oder Azure Automation-Clients wie PowerShell bearbeitet werden.
+      Sie können nur maximal 200 Richtlinien pro Tresor erstellen. Es können jedoch in einem Zeitraum von 24 Stunden nur 50 neue Sicherungsrichtlinien hinzugefügt oder aktuelle Richtlinien durch ARM-Vorlagen (Azure Resource Manager) oder Azure Automation-Clients wie PowerShell bearbeitet werden.
   - question: >
       Wie kann ich Daten von unterschiedlichen Servern im Tresor isolieren, wenn meine Organisation über nur einen Tresor verfügt?
     answer: >
@@ -194,6 +196,10 @@ sections:
       Warum ist die Datenmenge, die an den Recovery Services-Tresor übertragen wird, kleiner als die Menge der für die Sicherung ausgewählten Daten?
     answer: >
       Daten, die vom Azure Backup-Agent, von DPM oder von Azure Backup Server gesichert werden, werden vor der Übertragung komprimiert und verschlüsselt. Nach Anwendung der Komprimierung und Verschlüsselung sind die Daten im Tresor um 30 bis 40 % kleiner.
+  - question: >
+      Kann ich die Ablaufzeit für die Wiederherstellungspunkte anzeigen?
+    answer: >
+      Nein, Sie können die Ablaufzeit für die geplanten Sicherungen nicht anzeigen. Sie können jedoch die Ablaufzeit für die bedarfsbasierten Sicherungen über Sicherungsaufträge anzeigen.
   - question: >
       Kann ich einzelne Dateien für einen Wiederherstellungspunkt im Tresor löschen?
     answer: >

@@ -2,14 +2,17 @@
 title: Erstellen und Verwenden privater Endpunkte für Azure Backup
 description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkte für Azure Backup, wo private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 ms.topic: conceptual
-ms.date: 09/24/2021
+ms.date: 11/09/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 246b3fa30b52b654e9210ddbf86ca5ede519f50d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: e474ae10e1461e834312e4ff52b36ece57bcc30e
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264672"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137919"
 ---
 # <a name="create-and-use-private-endpoints-for-azure-backup"></a>Erstellen und Verwenden privater Endpunkte für Azure Backup
 
@@ -544,7 +547,7 @@ Führen Sie die folgenden Schritte aus, um einen Proxyserver für einen virtuell
    >- [US Gov](../azure-government/documentation-government-developer-guide.md)
    >- [Geocodeliste – Beispiel-XML](scripts/geo-code-list.md)
 
-Das folgende Diagramm zeigt ein Setup (bei Verwendung der privaten Azure-DNS-Zonen) mit einem Proxyserver, dessen virtuelles Netzwerk mit einer privaten DNS-Zone mit erforderlichen DNS-Einträgen verknüpft ist. Der Proxyserver kann auch über einen eigenen benutzerdefinierten DNS-Server verfügen, und die oben genannten Domänen können bedingt an 169.63.129.16 weitergeleitet werden. Wenn Sie eine benutzerdefinierte DNS-Server-/-Hostdatei für die DNS-Auflösung verwenden, lesen Sie die Abschnitte zum [Verwalten von DNS-Einträgen](#manage-dns-records) und [Konfigurieren des Schutzes](#configure-backup).
+Das folgende Diagramm zeigt ein Setup (bei Verwendung der privaten Azure-DNS-Zonen) mit einem Proxyserver, dessen virtuelles Netzwerk mit einer privaten DNS-Zone mit erforderlichen DNS-Einträgen verknüpft ist. Der Proxyserver kann auch einen eigenen DNS-Server haben, und die oben genannten Domänen können bedingt an 168.63.129.16 weitergeleitet werden. Wenn Sie eine benutzerdefinierte DNS-Server-/-Hostdatei für die DNS-Auflösung verwenden, lesen Sie die Abschnitte zum [Verwalten von DNS-Einträgen](#manage-dns-records) und [Konfigurieren des Schutzes](#configure-backup).
 
 :::image type="content" source="./media/private-endpoints/setup-with-proxy-server-inline.png" alt-text="Diagramm eines Setups mit einem Proxyserver." lightbox="./media/private-endpoints/setup-with-proxy-server-expanded.png":::
 

@@ -2,13 +2,13 @@
 title: Azure Video Analyzer-Zugriffsrichtlinien
 description: Dieser Artikel erklärt, wie Azure Video Analyzer JWT-Tokens in Zugriffsrichtlinien verwendet, um Videos zu sichern.
 ms.topic: reference
-ms.date: 06/01/2021
-ms.openlocfilehash: fe421e429357000bf6380cdf18f3a029fea4f7c9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/04/2021
+ms.openlocfilehash: 9d9a0f4db83d132fae5bafb2a25d25075296b4ad
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128670479"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486138"
 ---
 # <a name="access-policies"></a>Zugriffsrichtlinien
 

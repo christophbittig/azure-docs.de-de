@@ -5,22 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/28/2021
+ms.date: 10/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
-ms.reviewer: rhicock
+ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1a6ff8a64ac82b27df6e49ef7f500af3fd65316
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a695c5d207bb441bfc3393ee0c5c1222efac4e79
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352728"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063383"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Funktionsweise des Rückschreibens von Self-Service-Kennwortzurücksetzungen in Azure Active Directory
 
-Mit der Self-Service-Kennwortzurücksetzung (SSPR) in Azure Active Directory (Azure AD) können Benutzer ihre Kennwörter in der Cloud zurücksetzen. Die meisten Unternehmen verfügen aber auch über eine lokale Active Directory Domain Services-Umgebung (AD DS) mit ihren Benutzern. Kennwortrückschreiben ist eine Funktion, die mit [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) aktiviert wurde und es ermöglicht, Kennwortänderungen in der Cloud in Echtzeit in ein vorhandenes lokales Verzeichnis zurückzuschreiben. Wenn in dieser Konfiguration Benutzer ihre Kennwörter mithilfe von SSPR in der Cloud ändern oder zurücksetzen, werden die aktualisierten Kennwörter auch in die lokale AD DS Umgebung zurückgeschrieben.
+Mit der Self-Service-Kennwortzurücksetzung (SSPR) in Azure Active Directory (Azure AD) können Benutzer ihre Kennwörter in der Cloud zurücksetzen. Die meisten Unternehmen verfügen aber auch über eine lokale Active Directory Domain Services-Umgebung (AD DS) für ihre Benutzer. Das Kennwortrückschreiben ermöglicht das Zurückschreiben von Kennwortänderungen in der Cloud in Echtzeit in ein lokales Verzeichnis, indem entweder [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) oder die [Azure AD Connect-Cloudsynchronisierung](tutorial-enable-cloud-sync-sspr-writeback.md) verwendet wird. Wenn Benutzer ihre Kennwörter mithilfe von SSPR in der Cloud ändern oder zurücksetzen, werden die aktualisierten Kennwörter auch in die lokale AD DS-Umgebung geschrieben.
 
 > [!IMPORTANT]
 > In diesem Konzeptartikel erfahren Administratoren, wie das Rückschreiben der Self-Service-Kennwortzurücksetzung funktioniert. Wenn Sie bereits als Endbenutzer für die Self-Service-Kennwortzurücksetzung registriert sind und wieder zu Ihrem Konto zurückkehren müssen, gehen Sie zu https://aka.ms/sspr.
@@ -40,18 +41,23 @@ Kennwortrückschreiben bietet die folgenden Features:
 * **Unterstützung für das Ändern von Kennwörtern über den Zugriffsbereich und Microsoft 365**: Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung ihre abgelaufenen oder noch nicht abgelaufenen Kennwörter ändern möchten, werden diese Kennwörter in AD DS zurückgeschrieben.
 * **Unterstützung für Kennwortrückschreiben, wenn die Kennwörter im Azure-Portal von einem Administrator zurückgesetzt werden**: Wenn ein Administrator das Kennwort eines Benutzers im [Azure-Portal](https://portal.azure.com) zurücksetzt und der Benutzer ein Verbundkonto oder ein Konto mit Kennworthashsynchronisierung verwendet, wird das Kennwort lokal zurückgeschrieben. Diese Funktionalität wird im Office-Verwaltungsportal derzeit nicht unterstützt.
 * **Keine Notwendigkeit zur Festlegung von eingehenden Firewallregeln:** Kennwortrückschreiben verwendet ein Azure Service Bus Relay als zugrunde liegenden Kommunikationskanal. Die gesamte Kommunikation geht über Port 443.
+* **Unterstützt die parallele Bereitstellung auf Domänenebene** mithilfe von [Azure AD Connect](tutorial-enable-sspr-writeback.md) oder der [Cloudsynchronisierung](tutorial-enable-cloud-sync-sspr-writeback.md), um je nach Anforderungen auf verschiedene Benutzergruppen (einschließlich der Benutzer in nicht verbundenen Domänen) abzuzielen.  
 
 > [!NOTE]
-> Administratorkonten in geschützten Gruppen im lokalen Active Directory können zum Kennwortrückschreiben verwendet werden. Administratoren können ihr Kennwort in der Cloud ändern, aber nicht die Kennwortzurücksetzung zum Zurücksetzen eines vergessenen Kennworts verwenden. Weitere Informationen zu geschützten Gruppen finden Sie unter [Anhang C: Geschützte Konten und Gruppen in Active Directory](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+> Administratorkonten in geschützten Gruppen im lokalen Active Directory können zum Kennwortrückschreiben verwendet werden. Administratoren können ihr Kennwort in der Cloud ändern, aber ein vergessenes Kennwort nicht zurücksetzen. Weitere Informationen zu geschützten Gruppen finden Sie unter [Anhang C: Geschützte Konten und Gruppen in Active Directory](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
 
-Nutzen Sie das folgende Tutorial, um sich mit dem SSPR-Rückschreiben vertraut zu machen:
+Führen Sie zum Einstieg in das SSPR-Rückschreiben eines oder beide der folgenden Tutorials aus:
 
-> [!div class="nextstepaction"]
-> [Tutorial: Aktivieren des Rückschreibens von Self-Service-Kennwortzurücksetzungen (SSPR)](./tutorial-enable-sspr-writeback.md)
+- [Tutorial: Aktivieren des Rückschreibens von Self-Service-Kennwortzurücksetzungen (SSPR)](tutorial-enable-cloud-sync-sspr-writeback.md)
+- [Tutorial: Aktivieren des Self-Service-Kennwortzurücksetzungsrückschreibens für die Azure Active Directory Connect-Cloudsynchronisierung in eine lokale Umgebung (Vorschau)](tutorial-enable-cloud-sync-sspr-writeback.md)
+
+## <a name="azure-ad-connect-and-cloud-sync-side-by-side-deployment"></a>Parallele Bereitstellung von Azure AD Connect und Cloudsynchronisierung
+
+Sie können Azure AD Connect und die Cloudsynchronisierung parallel in verschiedenen Domänen bereitstellen, um auf verschiedene Benutzergruppen abzuzielen. Dadurch können vorhandene Benutzer weiterhin Kennwortänderungen zurückschreiben und gleichzeitig die Option in Fällen hinzufügen, in denen sich Benutzer aufgrund einer Unternehmensfusion oder -aufteilung in getrennten Domänen befinden. Azure AD Connect und die Cloudsynchronisierung können in verschiedenen Domänen konfiguriert werden, sodass Benutzer aus einer Domäne Azure AD Connect verwenden können, während Benutzer in einer anderen Domäne die Cloudsynchronisierung verwenden. Die Cloudsynchronisierung bietet möglicherweise auch eine höhere Verfügbarkeit, da sie nicht auf eine einzelne Instanz von Azure AD Connect stützt. Einen Featurevergleich für die beiden Bereitstellungsoptionen finden Sie unter [Vergleich von Azure AD Connect und Cloudsynchronisierung](../cloud-sync/what-is-cloud-sync.md#comparison-between-azure-ad-connect-and-cloud-sync).
 
 ## <a name="how-password-writeback-works"></a>Funktionsweise der Kennwortrückschreibung
 
-Wenn Benutzer mit konfigurierter Kennwort-Hashsynchronisierung und Passthrough-Authentifizierung oder ein Verbundbenutzer versucht, sein Kennwort in der Cloud zurückzusetzen oder zu ändern, werden die folgenden Aktionen durchgeführt:
+Wenn ein Benutzerkonto, das für den Verbund und die Kennworthashsynchronisierung (oder bei einer Azure AD Connect-Bereitstellung für die Passthrough-Authentifizierung) konfiguriert wurde, versucht, ein Kennwort in der Cloud zurückzusetzen oder zu ändern, werden die folgenden Aktionen ausgeführt:
 
 1. Es wird überprüft, über welche Art von Kennwort der Benutzer verfügt. Wenn das Kennwort des Benutzers lokal verwaltet wird:
    * Es wird überprüft, ob der Dienst für Rückschreiben aktiviert ist und ausgeführt wird. Wenn dies der Fall ist, kann der Benutzer fortfahren.

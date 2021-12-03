@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 0db8c8d14dbd3e09ebb798c41ea2d7b526acabc9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f77a6d0088d9ee45c1f39a46abbb6f88806b3e57
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124753204"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329466"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-resource-central--saml-sso-for-meeting-room-booking-system"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Resource Central – SAML SSO for Meeting Room Booking System
 
@@ -181,4 +181,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für das einmalige Anm
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Einrichten von Resource Central – SAML SSO for Meeting Room Booking System für einmaliges Anmelden mit Azure AD können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Einrichten von Resource Central – SAML SSO for Meeting Room Booking System für einmaliges Anmelden mit Azure AD können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

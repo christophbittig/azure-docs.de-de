@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: Juliako
   ms.author: juliako
-  ms.date: 06/01/2021
-  ms.openlocfilehash: 2f3aee33c4fb240b786073140d32ed352f9b2229
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.date: 11/04/2021
+  ms.openlocfilehash: bcea52bd5cabdf6322c784c6014f708d59be475d
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121745661"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132714160"
 landingContent:
 - title: Azure Video Analyzer-Übersicht
   linkLists:
@@ -24,63 +24,103 @@ landingContent:
     links:
     - text: Über Azure Video Analyzer (Vorschau)
       url: overview.md
-    - text: Über Azure Video Analyzer für Medien
-      url: ../video-analyzer-for-media-docs/video-indexer-overview.md
+    - text: Begriff
+      url: terminology.md
   - linkListType: quickstart
     links:
+    - text: Erste Schritte mit dem Portal
+      url: get-started-detect-motion-emit-events-portal.md
     - text: Erste Schritte mithilfe einer ARM-Vorlage
       url: get-started-detect-motion-emit-events.md
-    - text: Erste Schritte mithilfe des Portals
-      url: get-started-detect-motion-emit-events-portal.md
-- title: Video basierend auf Ereignissen aufzeichnen
+  - linkListType: concept
+    links:
+    - text: Analysieren von Livevideos
+      url: analyze-live-video-without-recording.md
+- title: Erstellen und Bereitstellen von Pipelines und der Topologie
   linkLists:
   - linkListType: concept
     links:
-    - text: Fortlaufende Videoaufzeichnung
+    - text: Videopipelines
+      url: pipeline.md
+  - linkListType: tutorial
+    links:
+    - text: Erkennen von Objekten, die eine virtuelle Linie überqueren
+      url: edge/use-line-crossing.md
+    - text: Erkennen von Objekten per Open VINO DL Streamer
+      url: edge/use-intel-openvino-tutorial.md
+- title: Erstellen intelligenter Videoanwendungen im Edgebereich
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Ereignisbasierte Videoaufzeichnung
       url: event-based-video-recording-concept.md
   - linkListType: quickstart
     links:
-    - text: Erkennen von Bewegung, Aufzeichnen von Video auf Edgegeräten
-      url: detect-motion-record-video-edge-devices.md
-    - text: Erkennen von Bewegung und Aufzeichnen von Videos in der Cloud
-      url: detect-motion-record-video-clips-cloud.md
+    - text: 'Analysieren von Livevideos mit Ihrem eigenen Modell: HTTP'
+      url: edge/analyze-live-video-use-your-model-http.md
+    - text: Erkennen von Bewegung und Aufzeichnen von Videos auf Edgegeräten
+      url: edge/detect-motion-record-video-edge-devices.md
   - linkListType: tutorial
     links:
     - text: Ereignisbasierte Videoaufzeichnung und -Wiedergabe
-      url: record-event-based-live-video.md
-- title: Analysieren von Live-Videos ohne Aufzeichnung
+      url: edge/record-event-based-live-video.md
+- title: Erstellen von Videoanwendungen im Dienst
   linkLists:
   - linkListType: concept
     links:
-    - text: Analysieren Sie Live-Videos ohne Aufzeichnung
-      url: analyze-live-video-without-recording.md
+    - text: Aktivieren der Aufzeichnung von Kameravideos in der Cloud
+      url: cloud/connect-cameras-to-cloud.md
   - linkListType: quickstart
     links:
-    - text: Erkennen von Bewegung und Ausgeben von Ereignissen
-      url: detect-motion-emit-events-quickstart.md
-    - text: Nachverfolgen von Objekten in Live-Videos
-      url: track-objects-live-video.md
+    - text: Erstellen einer Pipeline im Dienst
+      url: cloud/get-started-livepipelines-portal.md
   - linkListType: tutorial
     links:
-    - text: Analysieren von Live-Videos mit OVMS über die HTTP-Erweiterung
-      url: use-intel-openvino-tutorial.md
-    - text: Analysieren von Live-Videos mit OV DL Streamer über die gRPC-Erweiterung
-      url: use-intel-grpc-video-analytics-serving-tutorial.md
-    - text: Live-Video mit Spatial Analysis analysieren
-      url: computer-vision-for-spatial-analysis.md
-    - text: Live-Video mit Custom Vision analysieren
-      url: analyze-live-video-custom-vision.md
-- title: Referenzen
+    - text: Exportieren eines Videoclips mit dem Portal
+      url: cloud/export-portion-of-video-as-mp4.md
+- title: Beitreten zur Community
   linkLists:
-  - linkListType: reference
+  - linkListType: get-started
     links:
-    - text: Häufig gestellte Fragen
-      url: faq-edge.yml
+    - text: GitHub-Community
+      url: https://github.com/Azure/video-analyzer
+    - text: Tech Community-Blogs
+      url: https://techcommunity.microsoft.com/t5/azure-video-analyzer/bg-p/AzureVideoAnalyzerBlog
+- title: Überwachen und Durchführen der Problembehandlung für Pipeline und Topologie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Überwachen und Protokollieren einer Edgevideopipeline
+      url: edge/monitor-log-edge.md
+    - text: Überwachen und Protokollieren einer Videopipeline im Dienst
+      url: cloud/monitor-log-cloud.md
+    - text: Behandeln von Problemen für eine Edgevideopipeline
+      url: edge/troubleshoot.md
+    - text: Behandeln von Problemen für eine Videopipeline im Dienst
+      url: cloud/troubleshoot.md
+- title: Ermitteln von APIs
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: C#-Repository
+      url: https://go.microsoft.com/fwlink/?linkid=2163551
+    - text: Python-Repository
+      url: https://go.microsoft.com/fwlink/?linkid=2163454
+    - text: REST-API
+      url: /rest/api/videoanalyzer/
     - text: SDKs
       url: sdk.md
-    - text: Pipeline-Erweiterung
-      url: pipeline-extension.md
-    - text: Direkte Methoden
-      url: direct-methods.md
-    - text: Kontingente und Einschränkungen
-      url: quotas-limitations.md
+    - text: Vergleich von direkten Methoden und Code
+      url: edge/direct-methods.md
+- title: Ressourcen
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Versionshinweise
+      url: release-notes.md
+    - text: Preise
+      url: https://azure.microsoft.com/pricing/details/video-analyzer/
+    - text: 'Edge-Modul: häufig gestellte Fragen'
+      url: edge/faq.yml
+    - text: 'Dienst: häufig gestellte Fragen'
+      url: cloud/faq.yml

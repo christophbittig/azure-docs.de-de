@@ -54,6 +54,8 @@
   items:
     - name: Berichte
       items:
+        - name: Zugreifen auf Aktivitätsprotokolle
+          href: howto-access-activity-logs.md
         - name: Herunterladen von Protokollen
           href: howto-download-logs.md
         - name: "Verwalten inaktiver Benutzerkonten in Azure\_AD"
@@ -62,8 +64,6 @@
           href: howto-find-activity-reports.md
         - name: Beheben von Anmeldefehlern für einen Benutzer
           href: howto-troubleshoot-sign-in-errors.md
-        - name: Bereinigen von Benutzern mit Risikomarkierung
-          href: howto-remediate-users-flagged-for-risk.md
         - name: Konfigurieren der Voraussetzungen für die Berichterstellungs-API
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: Verwenden von Azure AD-Arbeitsmappen
@@ -95,6 +95,8 @@
 - name: Verweis
   expanded: true
   items:
+    - name: Bezeichner mit grundlegenden Informationen im Anmeldeprotokoll
+      href: reference-basic-info-identifiers.md
     - name: Azure AD PowerShell-Cmdlets für die Berichterstellung
       href: reference-powershell-reporting.md
     - name: API-Referenz zu Überwachungsprotokollen
@@ -111,3 +113,9 @@
       href: reports-faq.yml
     - name: Anmeldeprotokollschema
       href: reference-azure-monitor-sign-ins-log-schema.md
+    - name: Arbeitsmappen
+      items:
+        - name: Lückenanalyse für bedingten Zugriff
+          href: workbook-conditional-access-gap-analyzer.md
+        - name: Bericht zu vertraulichen Vorgängen
+          href: workbook-sensitive-operations-report.md

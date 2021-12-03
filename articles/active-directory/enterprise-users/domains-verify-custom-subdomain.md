@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/01/2021
+ms.date: 11/05/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a5d3eb79931c845b3e67a65d3e0d77d227f5022
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c8a0ab89e8437edec176e7033665b627df6cd493
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986832"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866485"
 ---
 # <a name="change-subdomain-authentication-type-in-azure-active-directory"></a>Ändern des Authentifizierungstyps der Unterdomäne in Azure Active Directory
 
 Nachdem Azure Active Directory (Azure AD) eine Stammdomäne hinzugefügt wurde, erben alle nachfolgenden untergeordneten Domänen, die diesem Stamm in Ihrer Azure AD-Organisation hinzugefügt werden, automatisch die Authentifizierungseinstellung von der Stammdomäne. Wenn Sie jedoch Domänenauthentifizierungseinstellungen unabhängig von den Einstellungen der Stammdomäne verwalten möchten, können Sie dies jetzt über die Microsoft Graph-API ausführen. Wenn Sie z. B. eine Verbundstammdomäne wie contoso.com haben, können Sie anhand dieses Artikels eine Unterdomäne wie child.contoso.com als verwaltet anstatt als Verbund bestätigen.
 
-Wenn die übergeordnete Domäne im Azure AD-Portal eine Verbunddomäne ist und der Administrator versucht, auf der Seite **Benutzerdefinierte Domänennamen** eine verwaltete Unterdomäne zu bestätigen, erhalten Sie die Fehlermeldung „Fehler beim Hinzufügen der Domäne“ mit der Begründung „Mindestens eine Eigenschaft enthält ungültige Werte“. Wenn Sie versuchen, diese Unterdomäne aus dem Microsoft 365 Admin Center hinzuzufügen, erhalten Sie einen ähnlichen Fehler. Weitere Informationen zu diesem Fehler finden Sie unter [Eine untergeordnete Domäne erbt keine Änderungen der übergeordneten Domäne in Office 365, Azure oder Intune](/office365/troubleshoot/administration/child-domain-fails-inherit-parent-domain-changes).
+Wenn die übergeordnete Domäne im Azure AD-Portal eine Verbunddomäne ist und der Administrator versucht, auf der Seite **Benutzerdefinierte Domänennamen** eine verwaltete Unterdomäne zu überprüfen, wird die Fehlermeldung „Fehler beim Hinzufügen der Domäne“ mit der Begründung „Mindestens eine Eigenschaft enthält ungültige Werte“ angezeigt. Wenn Sie versuchen, diese Unterdomäne aus dem Microsoft 365 Admin Center hinzuzufügen, erhalten Sie einen ähnlichen Fehler. Weitere Informationen zu diesem Fehler finden Sie unter [Eine untergeordnete Domäne erbt keine Änderungen der übergeordneten Domäne in Office 365, Azure oder Intune](/office365/troubleshoot/administration/child-domain-fails-inherit-parent-domain-changes).
 
 ## <a name="how-to-verify-a-custom-subdomain"></a>Überprüfen einer benutzerdefinierten Unterdomäne
 
@@ -39,7 +39,7 @@ Da Unterdomänen standardmäßig den Authentifizierungstyp der Stammdomäne erbe
    New-MsolDomain -Name "child.mydomain.com" -Authentication Federated
    ```
 
-1. Verwenden Sie [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net), um die Domäne mit GET abzurufen. Da die Domäne keine Stammdomäne ist, erbt sie den Authentifizierungstyp der Stammdomäne. Der Befehl und die Ergebnisse können wie folgt aussehen, wobei Sie Ihre eigene Mandanten-ID verwenden:
+1. Verwenden Sie das folgende Beispiel, um GET für die Domäne auszuführen. Da die Domäne keine Stammdomäne ist, erbt sie den Authentifizierungstyp der Stammdomäne. Der Befehl und die Ergebnisse können wie folgt aussehen, wobei Sie Ihre eigene Mandanten-ID verwenden:
 
    ```http
    GET https://graph.windows.net/{tenant_id}/domains?api-version=1.6
@@ -63,7 +63,7 @@ Da Unterdomänen standardmäßig den Authentifizierungstyp der Stammdomäne erbe
      },
    ```
 
-### <a name="use-azure-ad-graph-explorer-api-to-make-this-a-root-domain"></a>Verwenden der Azure AD Graph-Explorer-API zum Festlegen als Stammdomäne
+### <a name="use-microsoft-graph-api-to-make-this-a-root-domain"></a>Verwenden der Microsoft Graph-API, um diese Domäne zu einer Stammdomäne zu machen
 
 Verwenden Sie den folgenden Befehl zum Höherstufen der Unterdomäne:
 
@@ -79,7 +79,7 @@ POST https://graph.windows.net/{tenant_id}/domains/child.mydomain.com/promote?ap
    Set-MsolDomainAuthentication -DomainName child.mydomain.com -Authentication Managed
    ```
 
-1. Überprüfen Sie in Azure AD Graph-Explorer mit GET, ob der Authentifizierungstyp der Unterdomäne jetzt verwaltet ist:
+1. Überprüfen Sie über die Microsoft Graph-API mit GET, ob der Authentifizierungstyp der Unterdomäne jetzt verwaltet ist:
 
    ```http
    GET https://graph.windows.net/{{tenant_id} }/domains?api-version=1.6

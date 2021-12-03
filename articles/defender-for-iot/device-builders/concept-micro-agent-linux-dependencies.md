@@ -2,13 +2,13 @@
 title: Linux-Abhängigkeiten des Micro-Agents (Vorschau)
 description: In diesem Artikel werden die verschiedenen Linux-Betriebssystemabhängigkeiten beim Micro-Agent für Defender für IoT beschrieben.
 ms.topic: conceptual
-ms.date: 08/26/2021
-ms.openlocfilehash: 102cf31dbe19c068de344f1f7f294a6f3f0a722b
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.date: 11/09/2021
+ms.openlocfilehash: 9fa1d53481e5e7f3b775855e54a0387fc04518ba
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967557"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284111"
 ---
 # <a name="micro-agent-linux-dependencies-preview"></a>Linux-Abhängigkeiten des Micro-Agents (Vorschau)
 

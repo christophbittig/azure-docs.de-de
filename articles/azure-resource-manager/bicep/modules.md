@@ -2,13 +2,13 @@
 title: Bicep-Module
 description: Hier wird beschrieben, wie ein Modul in einer Bicep-Datei definiert und wie Modulbereiche eingesetzt werden.
 ms.topic: conceptual
-ms.date: 10/15/2021
-ms.openlocfilehash: 21dc273e506f0c0f148e8a220ca4ea160c7423a8
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.date: 11/12/2021
+ms.openlocfilehash: a8aedd784875fccbad81957550380cc4fa236616
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074492"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551272"
 ---
 # <a name="bicep-modules"></a>Bicep-Module
 
@@ -17,6 +17,10 @@ Mit Bicep können Sie Bereitstellungen in Modulen organisieren. Bei einem Modul 
 Um Module für Personen innerhalb Ihrer Organisation freizugeben, [erstellen Sie eine private Registrierung](private-module-registry.md). Module in der Registrierung sind nur für Benutzer mit den richtigen Berechtigungen verfügbar.
 
 Bicep-Module werden in eine einzelne ARM-Vorlage (Azure Resource Manager) mit [geschachtelten Vorlagen](../templates/linked-templates.md#nested-template) konvertiert.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen zu Modulen und praktische Anleitungen finden Sie unter [Erstellen von zusammensetzbaren Bicep-Dateien mithilfe von Modulen](/learn/modules/create-composable-bicep-files-using-modules/) auf **Microsoft Learn**.
 
 ## <a name="definition-syntax"></a>Definitionssyntax
 
@@ -35,7 +39,7 @@ Ein einfaches, reales Beispiel würde also folgendermaßen aussehen:
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/local-file-definition.bicep" :::
 
-Verwenden Sie den symbolischen Namen, um in einem anderen Teil der Bicep-Datei auf das Modul zu verweisen. Beispielsweise können Sie den symbolischen Namen verwenden, um die Ausgabe eines Moduls zu erhalten. Der symbolische Name kann a-z, A-Z, 0-9 und „_“ enthalten. Der Name darf nicht mit einer Zahl beginnen. Ein Modul darf nicht denselben Namen wie ein Parameter, eine Variable oder eine Ressource haben.
+Verwenden Sie den symbolischen Namen, um in einem anderen Teil der Bicep-Datei auf das Modul zu verweisen. Beispielsweise können Sie den symbolischen Namen verwenden, um die Ausgabe eines Moduls zu erhalten. Der symbolische Name kann die Zeichen a–z, A–Z und 0–9 sowie Unterstriche (`_`) enthalten. Der Name darf nicht mit einer Zahl beginnen. Ein Modul darf nicht denselben Namen wie ein Parameter, eine Variable oder eine Ressource haben.
 
 Der Pfad kann entweder eine lokale Datei oder eine Datei in einer Registrierung sein. Weitere Informationen finden Sie unter [Pfad zum Modul](#path-to-module).
 
@@ -49,17 +53,17 @@ Um **ein Modul bedingt bereitzustellen**, fügen Sie einen `if`-Ausdruck hinzu. 
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/conditional-definition.bicep" highlight="2" :::
 
-Um **mehrere Instanzen** eines Moduls bereitzustellen, fügen Sie den `for`-Ausdruck hinzu. Weitere Informationen finden Sie unter [Moduliteration in Bicep](loop-modules.md).
+Um **mehrere Instanzen** eines Moduls bereitzustellen, fügen Sie den `for`-Ausdruck hinzu. Sie können den Decorator `batchSize` verwenden, um anzugeben, ob die Instanzen nacheinander oder parallel bereitgestellt werden sollen. Weitere Informationen finden Sie unter [Iterative Schleifen in Bicep](loops.md).
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/iterative-definition.bicep" highlight="3" :::
 
-Module werden wie Ressourcen parallel bereitgestellt, es sei denn, sie hängen von anderen Modulen oder Ressourcen ab. In der Regel müssen Sie keine Abhängigkeiten festlegen, da sie implizit bestimmt werden. Wenn Sie eine explizite Abhängigkeit festlegen müssen, können Sie `dependsOn` der Moduldefinition hinzufügen. Weitere Informationen zu Abhängigkeiten finden Sie unter [Festlegen von Ressourcenabhängigkeiten](resource-declaration.md#set-resource-dependencies).
+Module werden wie Ressourcen parallel bereitgestellt, es sei denn, sie hängen von anderen Modulen oder Ressourcen ab. In der Regel müssen Sie keine Abhängigkeiten festlegen, da sie implizit bestimmt werden. Wenn Sie eine explizite Abhängigkeit festlegen müssen, können Sie `dependsOn` der Moduldefinition hinzufügen. Weitere Informationen zu Abhängigkeiten finden Sie unter [Ressourcenabhängigkeiten](resource-declaration.md#dependencies).
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/dependsOn-definition.bicep" highlight="6-8" :::
 
 ## <a name="path-to-module"></a>Pfad zum Modul
 
-Die Datei für das Modul kann entweder eine lokale Datei oder eine externe Datei in einer Bicep-Modulregistrierung sein. Die Syntax für beide Optionen ist unten dargestellt.
+Die Datei für das Modul kann entweder eine lokale Datei oder eine externe Datei in einer Bicep-Modulregistrierung sein. Beide Optionen werden nachstehend vorgestellt.
 
 ### <a name="local-file"></a>Lokale Datei
 
@@ -87,7 +91,7 @@ Zum Beispiel:
 
 Wenn Sie auf ein Modul in einer Registrierung verweisen, ruft die Bicep-Erweiterung in Visual Studio Code automatisch [bicep restore](bicep-cli.md#restore) auf, um das externe Modul in den lokalen Cache zu kopieren. Die Wiederherstellung des externen Moduls dauert einen Moment. Wenn IntelliSense für das Modul nicht sofort funktioniert, warten Sie, bis die Wiederherstellung abgeschlossen ist.
 
-Der vollständige Pfad für ein Modul in einer Registrierung kann lang sein. Anstatt bei jeder Verwendung des Moduls den vollständigen Pfad anzugeben, können Sie [Aliase in der Datei „bicepconfig.json“ konfigurieren](bicep-config.md#aliases-for-modules). Die Aliase erleichtern das Verweisen auf das Modul. Mit einem Alias können Sie z. B. den Pfad wie folgt kürzen:
+Der vollständige Pfad für ein Modul in einer Registrierung kann lang sein. Anstatt bei jeder Verwendung des Moduls den vollständigen Pfad anzugeben, können Sie [Aliase in der Datei „bicepconfig.json“ konfigurieren](bicep-config-modules.md#aliases-for-modules). Die Aliase erleichtern das Verweisen auf das Modul. Mit einem Alias können Sie z. B. den Pfad wie folgt kürzen:
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/alias-definition.bicep" highlight="1" :::
 

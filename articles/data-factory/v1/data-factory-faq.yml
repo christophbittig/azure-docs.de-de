@@ -9,12 +9,12 @@ metadata:
   ms.subservice: v1
   ms.topic: conceptual
   ms.date: 10/22/2021
-  ms.openlocfilehash: 1557693510b8db97fc942cdb864de6c9f9527827
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: 0a85978ffd2fed13e441bc7109ca013c347b4373
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "131464564"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132301663"
 title: Azure Data Factory – Häufig gestellte Fragen
 summary: >
   > [!NOTE]
@@ -198,7 +198,7 @@ sections:
     answer: "Verwenden Sie die **offset** -Eigenschaft, um die Zeit anzugeben, zu der der Slice erstellt werden soll. Weitere Informationen zu dieser Eigenschaft finden Sie im Abschnitt [Dataset: Availability](data-factory-create-datasets.md#dataset-availability) . Hier ist ein kurzes Beispiel:\n\n```json\n\"availability\":\n{\n    \"frequency\": \"Day\",\n    \"interval\": 1,\n    \"offset\": \"06:00:00\"\n}\n```\nTägliche Slices starten anstatt zur Standardzeit (Mitternacht) um **6:00 Uhr** .     \n"
   - question: >
       Wie kann ich einen Slice erneut ausführen?
-    answer: "Sie können einen Slice auf eine der folgenden Arten erneut ausführen:\n\n* Verwenden Sie die App „Überwachen und Verwalten“, um ein Aktivitätsfenster oder einen Slice erneut auszuführen. Anweisungen finden Sie unter [Wiederholen ausgewählter Aktivitätsfenster](data-factory-monitor-manage-app.md#perform-batch-actions) .   \n* Klicken Sie im Azure-Portal auf der Befehlsleiste für den Slice auf dem Blatt **DATENSLICE** auf **Ausführen**.\n* Führen Sie das Cmdlet **Set-AzDataFactorySliceStatus** aus, wobei der Status des Slice auf **Waiting** festgelegt ist.   \n\n    ```powershell\n    Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime \"02/26/2015 19:00:00\" -EndDateTime \"02/26/2015 20:00:00\"\n    ```\n  Unter [Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-Azdatafactoryslicestatus) finden Sie ausführliche Informationen zum Cmdlet.\n"
+    answer: "Sie können einen Slice auf eine der folgenden Arten erneut ausführen:\n\n* Verwenden Sie die App „Überwachen und Verwalten“, um ein Aktivitätsfenster oder einen Slice erneut auszuführen. Anweisungen finden Sie unter [Wiederholen ausgewählter Aktivitätsfenster](data-factory-monitor-manage-app.md#perform-batch-actions) .   \n* Klicken Sie im Azure-Portal auf der Befehlsleiste für den Slice auf dem Blatt **DATENSLICE** auf **Ausführen**.\n* Führen Sie das Cmdlet **Set-AzDataFactorySliceStatus** aus, wobei der Status des Slice auf **Waiting** festgelegt ist.   \n\n  ```powershell\n  Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime \"02/26/2015 19:00:00\" -EndDateTime \"02/26/2015 20:00:00\"\n  ```\n  \n  Unter [Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-Azdatafactoryslicestatus) finden Sie ausführliche Informationen zum Cmdlet.\n"
   - question: >
       Wie lange hat die Verarbeitung eines Slices gedauert?
     answer: "Verwenden Sie den Aktivitätsfenster-Explorer in der App „Überwachen und Verwalten“, um zu erfahren, wie lange es gedauert hat, einen Datenslice zu verarbeiten. Weitere Informationen finden Sie unter [Aktivitätsfenster-Explorer](data-factory-monitor-manage-app.md#activity-window-explorer) .\n\nSie können auch wie folgt im Azure-Portal vorgehen:  \n\n1. Klicken Sie auf der Kachel **Datasets** auf das Blatt **DATA FACTORY** für Ihre Data Factory.\n2. Klicken Sie auf dem Blatt **Datasets** auf das gewünschte Dataset.\n3. Wählen Sie auf dem Blatt **TABELLE** in der Liste **Zuletzt verwendete Slices** den gewünschten Slice aus.\n4. Klicken Sie auf dem Blatt **DATENSLICE** in der Liste **Aktivitätsausführungen** auf die Aktivitätsausführung.\n5. Klicken Sie auf der Kachel **Eigenschaften** auf das Blatt **DETAILS ZUR AKTIVITÄTSAUSFÜHRUNG**.\n6. Daraufhin sollte das Feld **Dauer** mit einem Wert angezeigt werden. Dieser Wert ist die Verarbeitungszeit des Slices.   \n"

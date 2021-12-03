@@ -1,21 +1,21 @@
 ---
 title: Automatische bedarfsgerechte Geräteverwaltung mit Azure IoT Hub | Microsoft-Dokumentation
 description: Verwenden der automatischen Konfigurationen von Azure IoT Hub zum Verwalten mehrerer IoT-Geräte und -Module
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.author: robinsh
+ms.date: 10/26/2021
+ms.author: lizross
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 0e017f4df413d6db528bb99756646859d9a74aea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed6fb0e9e889705a20021061852c3e72737b3652
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92545394"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553950"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatische Verwaltung von IoT-Geräten und -Modulen über das Azure-Portal
 
@@ -56,13 +56,13 @@ Bevor Sie eine Konfiguration erstellen, müssen Sie angeben, welche Geräte oder
 
 ## <a name="create-a-configuration"></a>Erstellen einer Konfiguration
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem IoT Hub. 
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem IoT Hub.
 
-2. Wählen Sie **IoT device configuration** (IoT-Gerätekonfiguration) aus.
+2. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Konfigurationen** aus.
 
 3. Wählen Sie **Gerätekonfiguration hinzufügen** oder **Modulkonfiguration hinzufügen** aus.
 
-   ![Gerätekonfiguration oder Modulkonfiguration hinzufügen](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
+   :::image type="content" source="./media/iot-hub-automatic-device-management/create-automatic-configuration.png" alt-text="Screenshot: Hinzufügen einer Konfiguration" border="true":::
 
 Zum Erstellen einer Konfiguration müssen fünf Schritte ausgeführt werden. Diese werden in den folgenden Abschnitten exemplarisch beschrieben. 
 

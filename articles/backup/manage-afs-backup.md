@@ -2,17 +2,20 @@
 title: Verwalten der Sicherungen von Azure-Dateifreigaben
 description: In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung der Azure-Dateifreigaben beschrieben, die durch Azure Backup gesichert werden.
 ms.topic: conceptual
-ms.date: 10/08/2021
-ms.openlocfilehash: 421162387b28777acf1c4f86288796d8066468a6
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/03/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 465331a39f5fc05d81a4ff06cd58c3962b301831
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216046"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332039"
 ---
 # <a name="manage-azure-file-share-backups"></a>Verwalten der Sicherungen von Azure-Dateifreigaben
 
-In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung der Azure-Dateifreigaben beschrieben, die durch [Azure Backup](./backup-overview.md) gesichert werden. Sie lernen, wie Sie Verwaltungsaufgaben im Recovery Services-Tresor ausführen.
+In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung der Azure-Dateifreigaben beschrieben, die durch [Azure Backup](./backup-overview.md) gesichert werden. Sie lernen, wie Sie Verwaltungsaufgaben im **Backup Center** ausführen.
 
 ## <a name="monitor-jobs"></a>Überwachen von Aufträgen
 
@@ -20,31 +23,36 @@ Wenn Sie einen Sicherungs- oder Wiederherstellungsvorgang auslösen, erstellt de
 
 So öffnen Sie die Seite **Sicherungsaufträge**
 
-1. Öffnen Sie den Recovery Services-Tresor, den Sie zur Konfiguration der Sicherung Ihrer Dateifreigaben verwendet haben. Wählen Sie im Bereich **Übersicht** im Abschnitt **Überwachung** die Option **Sicherungsaufträge**.
+1. Wählen Sie im **Backup Center** im Abschnitt **Überwachung** die Option **Sicherungsaufträge** aus.
 
-   ![Sicherungsaufträge im Abschnitt „Überwachung“](./media/manage-afs-backup/backup-jobs.png)
+   :::image type="content" source="./media/manage-afs-backup/backup-center-jobs-list-inline.png" alt-text="Screenshot: Sicherungsaufträge im Abschnitt „Überwachung“." lightbox="./media/manage-afs-backup/backup-center-jobs-list-expanded.png":::
 
-1. Nachdem Sie **OK** ausgewählt haben, wird im Bereich **Sicherungsaufträge** der Status aller Aufträge aufgelistet. Wählen Sie den Namen der Workload aus, die der Dateifreigabe entspricht, die Sie überwachen möchten.
+   Im Bereich **Sicherungsaufträge** wird der Status aller Aufträge aufgelistet.
 
-   ![Workloadname](./media/manage-afs-backup/workload-name.png)
+1. Wählen Sie **Azure Files (Azure Storage)** als Datenquellentyp und dann eine beliebige Zeile aus, um Details zum jeweiligen Auftrag anzuzeigen.
+
+   :::image type="content" source="./media/manage-afs-backup/backup-center-jobs-inline.png" alt-text="Screenshot: Liste der Aufträge." lightbox="./media/manage-afs-backup/backup-center-jobs-expanded.png":::
+   
+    >[!NOTE]
+    >Da keine Daten in den Datenspeicher übertragen werden, sind die übertragenen Daten in MB bei Sicherungsaufträgen, die Azure-Dateien entsprechen, 0.
 
 ## <a name="monitor-using-azure-backup-reports"></a>Überwachen mit Azure Backup-Berichten
 
-Azure Backup bietet eine Berichtslösung, die [Azure Monitor Protokolle](../azure-monitor/logs/log-analytics-tutorial.md) und [Azure Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) verwendet. Mit diesen Ressourcen erhalten Sie umfassende Einblicke in Ihre Backups. Anhand dieser Berichte können Sie Einblicke in Azure Files-Sicherungselemente, Aufträge auf Elementebene und Details aktiver Richtlinien erhalten. Mit dem in Sicherungsberichten verfügbaren Feature „Bericht per E-Mail senden“ können Sie automatisierte Aufgaben zum Empfangen regelmäßiger Berichte per E-Mail erstellen. Weitere Informationen zum Konfigurieren und Anzeigen von Azure Backup-Berichten finden Sie [hier](./configure-reports.md#get-started).
+Azure Backup bietet eine Berichtslösung, die [Azure Monitor Protokolle](../azure-monitor/logs/log-analytics-tutorial.md) und [Azure Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) verwendet. Mit diesen Ressourcen erhalten Sie umfassende Einblicke in Ihre Backups. Anhand dieser Berichte können Sie Einblicke in Azure Files-Sicherungselemente, Aufträge auf Elementebene und Details aktiver Richtlinien erhalten. Mit dem in Sicherungsberichten verfügbaren Feature Bericht per E-Mail senden können Sie automatisierte Aufgaben zum Empfangen regelmäßiger Berichte per E-Mail erstellen. [Erfahren Sie](./configure-reports.md#get-started), wie Sie Azure Backup-Berichte konfigurieren und anzeigen.
 
 ## <a name="create-a-new-policy"></a>Erstellen einer neuen Richtlinie
 
-Sie können im Recovery Services-Tresor im Abschnitt **Sicherungsrichtlinien** eine neue Richtlinie zum Sichern von Azure-Dateifreigaben erstellen. Für alle beim Konfigurieren der Sicherung für Dateifreigaben erstellten Richtlinien wird als **Richtlinientyp** der Wert **Azure-Dateifreigabe** angezeigt.
+Sie können im **Backup Center** im Abschnitt **Sicherungsrichtlinien** eine neue Richtlinie zum Sichern von Azure-Dateifreigaben erstellen. Für alle beim Konfigurieren der Sicherung für Dateifreigaben erstellten Richtlinien wird als **Richtlinientyp** der Wert **Azure-Dateifreigabe** angezeigt.
 
 Gehen Sie wie folgt vor, um eine neue Sicherungsrichtlinie zu erstellen:
 
-1. Wählen Sie im Fenster **Backup-Richtlinien** der Wiederherstellungsdienste-Vault die Option **+ Hinzufügen**.
+1. Wählen Sie im Fenster **Sicherungsrichtlinien** im **Backup Center** die Option **+Hinzufügen** aus.
 
-   :::image type="content" source="./media/manage-afs-backup/new-backup-policy.png" alt-text="Screenshot zeigt die Option zum Starten der Erstellung einer neuen Sicherungsrichtlinie.":::
+   :::image type="content" source="./media/manage-afs-backup/backup-center-add-policy-inline.png" alt-text="Screenshot zeigt die Option zum Starten der Erstellung einer neuen Sicherungsrichtlinie." lightbox="./media/manage-afs-backup/backup-center-add-policy-expanded.png":::
 
-1. Wählen Sie im Bereich **Hinzufügen** die Option **Azure-Dateifreigabe** als **Richtlinientyp** aus.
+1. Wählen Sie **Azure Files (Azure Storage)** als Datenquellentyp und anschließend den Tresor aus, unter dem die Richtlinie erstellt werden soll, und klicken Sie dann auf **Weiter**.
 
-   :::image type="content" source="./media/manage-afs-backup/define-policy-type.png" alt-text="Screenshot zeigt die Auswahl von Azure File Share als Richtlinientyp.":::
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share-select-vault-for-policy.png" alt-text="Screenshot: Auswählen einer Azure-Dateifreigabe als Richtlinientyp.":::
 
 1. Wenn sich das Fenster **Backup-Richtlinie** für **Azure File Share** öffnet, geben Sie den Namen der Richtlinie an.
 
@@ -82,13 +90,13 @@ Gehen Sie wie folgt vor, um eine neue Sicherungsrichtlinie zu erstellen:
 
 So zeigen Sie die vorhandenen Sicherungsrichtlinien an
 
-1. Öffnen Sie den Recovery Services-Tresor, den Sie zur Konfiguration der Sicherung der Dateifreigabe verwendet haben. Wählen Sie im Menü „Recovery Services-Tresor“ im Abschnitt **Verwalten** die Option **Sicherungsrichtlinien** aus. Alle im Tresor konfigurierten Sicherungsrichtlinien werden angezeigt.
+1. Wählen Sie im **Backup Center** im Abschnitt **Verwalten** die Option **Sicherungsrichtlinien** aus.
 
-   :::image type="content" source="./media/manage-afs-backup/all-backup-policies.png" alt-text="Screenshot mit allen Sicherungsrichtlinien.":::
+   Alle Sicherungsrichtlinien, die für Ihren Tresor konfiguriert sind, werden angezeigt.
 
-1. Um spezifische Richtlinien für **Azure-Dateifreigabe** anzuzeigen, wählen Sie **Azure-Dateifreigabe** aus der Dropdownliste oben rechts aus.
+   :::image type="content" source="./media/manage-afs-backup/backup-center-policies-list-inline.png" alt-text="Screenshot mit allen Sicherungsrichtlinien." lightbox="./media/manage-afs-backup/backup-center-policies-list-expanded.png":::
 
-   :::image type="content" source="./media/manage-afs-backup/azure-file-share.png" alt-text="Screenshot zeigt den Prozess zur Auswahl von Azure File Share.":::
+1. Um für **Azure Files (Azure Storage)** spezifische Richtlinien anzuzeigen, wählen Sie **Azure-Dateifreigabe** als Datenquellentyp aus.
 
 ## <a name="modify-policy"></a>Ändern der Richtlinie
 
@@ -96,15 +104,19 @@ Sie können eine Sicherungsrichtlinie bearbeiten, um die Sicherungshäufigkeit o
 
 So ändern Sie eine Richtlinie
 
-1. Öffnen Sie den Recovery Services-Tresor, den Sie zur Konfiguration der Sicherung der Dateifreigabe verwendet haben. Wählen Sie im Menü „Recovery Services-Tresor“ im Abschnitt **Verwalten** die Option **Sicherungsrichtlinien** aus. Alle im Tresor konfigurierten Sicherungsrichtlinien werden angezeigt.
+1. Wählen Sie im **Backup Center** im Abschnitt **Verwalten** die Option **Sicherungsrichtlinien** aus.
 
-   ![Alle Sicherungsrichtlinien im Tresor](./media/manage-afs-backup/all-backup-policies-modify.png)
+   Alle Sicherungsrichtlinien, die für Ihre Tresore konfiguriert sind, werden angezeigt.
 
-1. Um spezifische Richtlinien für eine Azure-Dateifreigabe anzuzeigen, wählen Sie **Azure-Dateifreigabe** aus der Dropdownliste oben rechts aus. Wählen Sie die Sicherungsrichtlinie aus, die Sie ändern möchten.
+   :::image type="content" source="./media/manage-afs-backup/backup-center-policies-list-inline.png" alt-text="Screenshot aller Sicherungsrichtlinien im Tresor." lightbox="./media/manage-afs-backup/backup-center-policies-list-expanded.png":::
 
-   ![Azure-Dateifreigabe, die Sie ändern möchten](./media/manage-afs-backup/azure-file-share-modify.png)
+1. Um die Richtlinien für eine bestimmte Azure-Dateifreigabe anzuzeigen, wählen Sie **Azure Files (Azure Storage)** spezifische als Datenquellentyp aus.
 
-1. Der Bereich **Zeitplan** wird geöffnet. Bearbeiten Sie **Sicherungszeitplan** und **Aufbewahrungszeitraum** wie gewünscht, und wählen Sie **Speichern** aus. Im Bereich wird eine Meldung „Update wird ausgeführt“ angezeigt. Nachdem die Richtlinienänderungen erfolgreich aktualisiert wurden, wird die Meldung „Die Sicherungsrichtlinie wurde erfolgreich aktualisiert“ angezeigt.
+   Klicken Sie auf die Richtlinie, die Sie aktualisieren möchten.
+
+1. Der Bereich **Zeitplan** wird geöffnet. Bearbeiten Sie **Sicherungszeitplan** und **Aufbewahrungszeitraum** wie gewünscht, und wählen Sie **Speichern** aus.
+
+   Im Bereich wird eine Meldung _Update wird ausgeführt_ angezeigt. Nachdem die Richtlinienänderungen erfolgreich aktualisiert wurden, wird die Meldung _Die Sicherungsrichtlinie wurde erfolgreich aktualisiert_ angezeigt.
 
    ![Geänderte Richtlinie speichern](./media/manage-afs-backup/save-policy.png)
 
@@ -119,15 +131,11 @@ Unter Umständen fallen für die Aufbewahrung der Wiederherstellungspunkte im Sp
 
 So beenden Sie den Schutz für eine Azure-Dateifreigabe
 
-1. Öffnen Sie den Recovery Services-Tresor, der die Wiederherstellungspunkte der Dateifreigaben enthält. Wahlen Sie im Abschnitt **Geschützte Elemente** die Option **Sicherungselemente** aus. Die Liste der Sicherungselementtypen wird angezeigt.
+1. Wechseln Sie zum **Backup Center**, wählen Sie im Menü die Option **Sicherungsinstanzen** und dann **Azure Storage (Azure Files)** als Datenquellentyp aus.
 
-   ![Sicherungselemente](./media/manage-afs-backup/backup-items.png)
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share-backup-instances-inline.png" alt-text="Screenshot: Auswählen von „Azure Files“ als Datentyp." lightbox="./media/manage-afs-backup/azure-file-share-backup-instances-expanded.png":::
 
-1. Wählen Sie in der Liste **Backup Management Type** (Sicherungsverwaltungstyp) den Eintrag **Azure Storage (Azure Files)** aus. Die Liste der **Sicherungselemente für Azure Storage (Azure Files)** wird angezeigt.
-
-   ![Azure Storage (Azure Files) auswählen](./media/manage-afs-backup/azure-storage-azure-files.png)
-
-1. Wählen Sie in der Liste der **Sicherungselemente für Azure Storage (Azure Files)** das Sicherungselement aus, für das der Schutz beendet werden soll.
+1. Wählen Sie das Sicherungselement aus, für das Sie den Schutz beenden möchten.
 
 1. Wählen Sie die Option **Sicherung beenden** aus.
 
@@ -143,15 +151,11 @@ Wenn beim Beenden des Schutzes für die Dateifreigabe die Option **Sicherungsdat
 
 So setzen Sie den Schutz für eine Azure-Dateifreigabe fort
 
-1. Öffnen Sie den Recovery Services-Tresor, der die Wiederherstellungspunkte der Dateifreigaben enthält. Wahlen Sie im Abschnitt **Geschützte Elemente** die Option **Sicherungselemente** aus. Die Liste der Sicherungselementtypen wird angezeigt.
+1. Wechseln Sie zum **Backup Center**, wählen Sie im Menü die Option **Sicherungsinstanzen** und dann **Azure Storage (Azure Files)** als Datenquellentyp aus.
 
-   ![Sicherungselemente für die Fortsetzung](./media/manage-afs-backup/backup-items-resume.png)
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share-backup-instances-inline.png" alt-text="Screenshot: Auswählen von „Azure Files“ als Datenquellentyp." lightbox="./media/manage-afs-backup/azure-file-share-backup-instances-expanded.png":::
 
-1. Wählen Sie in der Liste **Backup Management Type** (Sicherungsverwaltungstyp) den Eintrag **Azure Storage (Azure Files)** aus. Die Liste der **Sicherungselemente für Azure Storage (Azure Files)** wird angezeigt.
-
-   ![Liste von Azure Storage (Azure Files)](./media/manage-afs-backup/azure-storage-azure-files.png)
-
-1. Wählen Sie in der Liste der **Sicherungselemente für Azure Storage (Azure Files)** das Sicherungselement aus, für das der Schutz fortgesetzt werden soll.
+1. Wählen Sie das Sicherungselement aus, für das Sie den Schutz fortsetzen möchten.
 
 1. Wählen Sie die Option **Sicherung fortsetzen** aus.
 
@@ -159,7 +163,9 @@ So setzen Sie den Schutz für eine Azure-Dateifreigabe fort
 
 1. Der Bereich **Sicherungsrichtlinie** wird geöffnet. Wählen Sie eine Richtlinie Ihrer Wahl aus, um die Sicherung fortzusetzen.
 
-1. Nachdem Sie eine Sicherungsrichtlinie ausgewählt haben, wählen Sie **Speichern** aus. Im Portal wird eine Meldung „Update wird ausgeführt“ angezeigt. Nachdem die Sicherung erfolgreich fortgesetzt wurde, wird die Meldung „Die Sicherungsrichtlinie wurde für die geschützte Azure-Dateifreigabe erfolgreich aktualisiert“ angezeigt.
+1. Nachdem Sie eine Sicherungsrichtlinie ausgewählt haben, wählen Sie **Speichern** aus.
+
+   Im Portal wird eine Meldung _Update wird ausgeführt_ angezeigt. Nachdem die Sicherung erfolgreich fortgesetzt wurde, wird die Meldung _Die Sicherungsrichtlinie wurde für die geschützte Azure-Dateifreigabe erfolgreich aktualisiert_ angezeigt.
 
    ![Die Sicherungsrichtlinie wurde erfolgreich aktualisiert](./media/manage-afs-backup/successfully-updated.png)
 

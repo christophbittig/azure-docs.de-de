@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 72490b729a244763cf5a3fa65a1e62128a5b28b2
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 46de9d29d79ee72ff19bb6bf465518176bb72d05
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765300"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988728"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von 4me für die automatische Benutzerbereitstellung
 
@@ -34,6 +34,9 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * Einen Azure AD-Mandanten
 * [Einen 4me-Mandanten](https://www.4me.com/trial/)
 * Ein Benutzerkonto in 4me mit Administratorrechten
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="add-4me-from-the-gallery"></a>Hinzufügen von 4me aus dem Katalog
 

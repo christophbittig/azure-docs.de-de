@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 216c45bf097718f6a696e64c8bd9c8718fc0185e
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 84510afb4a6bac20f7b0496bf99a3e2a5d2571f9
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445281"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132040297"
 ---
 Hier erfahren Sie etwas über die ersten Schritte mit der Anomalieerkennungs-Clientbibliothek für Python. Führen Sie diese Schritte aus, um das Paket zu installieren und mit der Verwendung der vom Dienst zur Verfügung gestellten Algorithmen zu beginnen. Mit dem Anomalieerkennungsdienst können Sie Anomalien in Zeitreihendaten ermitteln, da unabhängig von der Branche, dem Szenario oder der Datenmenge automatisch die am besten geeigneten Modelle für Ihre Daten angewandt werden.
 
@@ -117,6 +117,12 @@ Erstellen Sie ein `DetectRequest`-Objekt mit der Zeitreihe und der `TimeGranular
 ```python
 request = DetectRequest(series=series, granularity=TimeGranularity.daily)
 ```
+
+Eingabeargumentbeschreibungen: „series“: In Abfrage erforderlich. Muss vom Typ „Array“/„Liste“ sein und mindestens 12 Punkte und maximal 8.640 Punkte umfassen. Muss in aufsteigender Reihenfolge nach Zeitstempel sortiert werden und darf keinen doppelten Zeitstempel aufweisen. „granularity“: In Anforderung erforderlich. Darf nur einen der folgenden Werte haben: [„daily“, „minutely“, „hourly“, „weekly“, „monthly“, „yearly“, „secondly“].
+„customInterval“: Muss eine ganze Zahl > 0 sein.
+„period“: Muss eine ganze Zahl >= 0 sein.
+„maxAnomalyRatio“: Muss weniger als 50 Prozent der Reihenpunkte betragen (0 < maxAnomalyRatio < 0,5).
+„sensitivity“: Muss eine ganze Zahl zwischen 0 und 99 sein.
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>Erkennen von Anomalien im gesamten Dataset
 

@@ -11,19 +11,17 @@ ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Gesichtserkennung, Gesichtserkennungssoftware, Gesichtsanalyse, Gesichtsabgleich, Gesichtserkennungs-App, Gesichtserkennungssuche nach Bild, Gesichtserkennungssuche
-ms.openlocfilehash: 90a2b656d66c15eed10d68be8e5af5c35f35d135
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 370d6c17dfaf2d3544506e4e2ab4218f1a48d1fa
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130005689"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370800"
 ---
 # <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
 > [!WARNING]
 > Am 11. Juni 2020 kündigte Microsoft an, dass keine Technologie zur Gesichtserkennung mehr an die Polizeibehörden in den USA verkauft wird, bis es eine strenge, auf den Menschenrechten basierende Regelung gibt. Daher dürfen Kunden keine Gesichtserkennungsfeatures oder in Azure-Diensten enthaltenen Funktionen (wie Gesichtserkennung oder Video Indexer) verwenden, wenn es sich bei dem Kunden um eine Polizeibehörde in den USA handelt oder wenn der Kunde die Nutzung derartiger Dienste durch oder für eine Polizeibehörde zulässt. Wenn Sie eine neue Gesichtserkennungsressource erstellen, müssen Sie im Azure-Portal bestätigen und sich damit einverstanden erklären, dass Sie den Dienst nicht über oder für eine Polizeibehörde in den USA verwenden, und dass Sie die [RAI-Dokumentation (Responsible AI)](../cognitive-services-apis-create-account-cli.md#prerequisites) gelesen haben und diesen Dienst entsprechend verwenden.
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Der Azure-Gesichtserkennungsdienst verfügt über KI-Algorithmen zum Ermitteln, Erkennen und Analysieren menschlicher Gesichter in Bildern. Gesichtserkennungssoftware ist in vielen verschiedenen Szenarien wichtig, z. B. Identitätsüberprüfung, berührungslose Zugangskontrolle und Gesichtsunschärfe aus Datenschutzgründen.
 
@@ -86,9 +84,9 @@ Das folgende Beispiel zeigt das Zielgesicht:
 
 Und diese Bilder sind die Kandidatengesichter:
 
-![Fünf Bilder mit lächelnden Personen. Die Bilder a und b gehören zu derselben Person.](./Images/FaceFindSimilar.Candidates.jpg)
+![Fünf Bilder mit lächelnden Personen. Die Bilder A und B zeigen dieselbe Person.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Für die Suche nach vier ähnlichen Gesichtern gibt der Modus **matchPerson** a und b zurück. Diese zeigen dieselbe Person wie das Zielgesicht. Im Modus **matchFace** werden a, b, c und d zurückgegeben, also genau vier Kandidaten – auch wenn es sich teilweise um andere Personen handelt oder die Ähnlichkeit nur gering ist. Weitere Informationen finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Find Similar-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+Für die Suche nach vier ähnlichen Gesichtern gibt der Modus **matchPerson** A und B zurück. Diese zeigen dieselbe Person wie das Zielgesicht. Im Modus **matchFace** werden A, B, C und D zurückgegeben, also genau vier Kandidaten – auch wenn es sich teilweise um andere Personen handelt oder die Ähnlichkeit nur gering ist. Weitere Informationen finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Find Similar-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
 
 ## <a name="group-faces"></a>Gruppieren von Gesichtern
 

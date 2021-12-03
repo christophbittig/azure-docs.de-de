@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15ccb564fe2c3551103e71b8c1ca2a901ec03e0
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 776e98d414a62e63b6d472df45f52a66b52b0e62
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131440755"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349260"
 ---
 # <a name="how-to-investigate-risk"></a>Anleitung: Untersuchen eines Risikos
 
@@ -87,7 +87,7 @@ Mit den Informationen im Bericht „Risikoerkennungen“ können Administratoren
 - Informationen zu den einzelnen Risikoerkennungen, einschließlich des Typs.
 - Andere, gleichzeitig ausgelöste Risiken
 - Ort des Anmeldeversuchs
-- Links zu weiteren Details von Microsoft Cloud App Security (MCAS).
+- Ausgehender Link zu weiteren Details aus Microsoft Defender for Cloud-Apps.
 
 Administratoren können dann zum Risiko- oder Anmeldebericht des Benutzers zurückkehren, um basierend auf gesammelten Informationen Aktionen auszuführen.
 

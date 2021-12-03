@@ -1,0 +1,77 @@
+items:
+  - name: Dokumentation zum Dienstconnector
+    href: index.yml
+  - name: Übersicht über den Dienstconnector
+    href: overview.md
+  - name: Schnellstarts
+    expanded: true
+    items:
+      - name: Dienstconnector in Azure App Service
+        expanded: true
+        items:
+          - name: Portal
+            href: quickstart-portal-app-service-connection.md
+          - name: Befehlszeilenschnittstelle (CLI)
+            href: quickstart-cli-app-service-connection.md
+      - name: Dienstconnector in Azure Spring Cloud
+        expanded: true
+        items:
+          - name: Portal
+            href: quickstart-portal-spring-cloud-connection.md
+          - name: Befehlszeilenschnittstelle (CLI)
+            href: quickstart-cli-spring-cloud-connection.md
+  - name: Tutorials
+    expanded: true
+    items:
+      - name: Python-App (Django) mit PostgreSQL
+        href: tutorial-django-webapp-postgres-cli.md
+      - name: ASP.NET-App mit Blob Storage
+        href: tutorial-csharp-webapp-storage-cli.md
+      - name: Spring Cloud-App mit MySQL
+        href: tutorial-java-spring-mysql.md
+      - name: Spring Cloud-App mit Kafka in Confluent Cloud
+        href: tutorial-java-spring-confluent-kafka.md
+  - name: Konzepte
+    expanded: true
+    items:
+      - name: Besonderheiten von Dienstconnectors
+        href: concept-service-connector-internals.md
+      - name: Unterstützung für Regionen
+        href: concept-region-support.md
+  - name: Anleitungen
+    expanded: true
+    items:
+      - name: Integrieren
+        expanded: true
+        items:
+          - name: Azure Database for PostgreSQL
+            href: how-to-integrate-postgres.md
+          - name: Azure Database for MySQL
+            href: how-to-integrate-mysql.md
+          - name: Azure Cosmos DB
+            href: how-to-integrate-cosmos-db.md
+          - name: Azure Blob Storage
+            href: how-to-integrate-storage-blob.md
+          - name: Azure Queue Storage
+            href: how-to-integrate-storage-queue.md
+          - name: Azure Table Storage
+            href: how-to-integrate-storage-table.md
+          - name: Azure File Storage
+            href: how-to-integrate-storage-file.md
+          - name: Azure-Schlüsseltresor
+            href: how-to-integrate-key-vault.md
+          - name: Azure SignalR Service
+            href: how-to-integrate-signalr.md
+          - name: Apache Kafka in Confluent Cloud
+            href: how-to-integrate-confluent-kafka.md
+      - name: Problembehandlung
+        items:
+          - name: Handbuch zur Problembehandlung
+            href: how-to-troubleshoot-front-end-error.md
+  - name: Verweis
+    expanded: true
+    items:
+      - name: REST-API
+        href: /rest/api/
+      - name: Python SDK
+        href: /python/api/overview/azure/

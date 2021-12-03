@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: d0a2a7e86edb4593386befbde7a487a3452cc6cf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 23bdf05960af9eb94a2b003af113e7d66c4ea69e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124783670"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132338343"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Datadog
 
@@ -60,7 +60,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Datadog](#configure-datadog-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Datadog-Testbenutzers](#create-datadog-test-user)** , um eine Entsprechung von B. Simon in Datadog zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+    1. Erstellen eines Datadog-Testbenutzers , um eine Entsprechung von B. Simon in Datadog zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -68,29 +68,30 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Datadog** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
-1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+1. Im Abschnitt **Grundlegende SAML-Konfiguration** muss der Benutzer keine Aktionen ausführen, weil die Anwendung bereits in Azure integriert ist.
 
-1. Im Abschnitt **Grundlegende SAML-Konfiguration** muss der Benutzer keine Schritte ausführen, weil die App bereits in Azure integriert ist.
-
-1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten** Modus konfigurieren möchten:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://app.datadoghq.com/account/login/id/<CUSTOM_IDENTIFIER>`
 
     > [!NOTE]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den Datadog-Client](mailto:support@datadoghq.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Anmelde-URL in Ihren [Datadog-SAML-Einstellungen](https://app.datadoghq.com/organization-settings/login-methods/saml). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen. Für die gemeinsame Verwendung der IdP-initiierten Anmeldung und der SP-initiierten Anmeldung müssen beide Versionen der ACS-URL in Azure konfiguriert sein.
 
 1. Klicken Sie auf **Speichern**.
 
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** unter **Benutzerattribute und Ansprüche** auf das Stiftsymbol, um die Einstellungen zu bearbeiten.
+
+1. Klicken Sie auf die Schaltfläche **Gruppenanspruch hinzufügen**. In Azure AD ist der Gruppenanspruchsname standardmäßig eine URL. Beispiel: `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups`). Wenn Sie dies in einen Anzeigenamenswert wie **Gruppen** ändern möchten, wählen Sie **Erweiterte Optionen** aus, und ändern Sie dann den Namen des Gruppenanspruchs in **Gruppen**.
+
+   > [!NOTE]
+   > Das Quellattribut ist auf `Group ID` festgelegt. Dies ist die UUID der Gruppe in Azure AD. In diesem Fall wird die Gruppen-ID von Azure AD als Gruppenanspruchsattribut-Wert und nicht als Gruppenname gesendet. Sie müssen Zuordnungen in Datadog ändern, damit die Zuordnung zur Gruppen-ID und nicht zum Gruppennamen erfolgt. Weitere Informationen finden Sie unter [Datadog-SAML-Zuordnungen](https://docs.datadoghq.com/account_management/saml/#mapping-saml-attributes-to-datadog-roles).
+
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Downloadlink für das Zertifikat](common/metadataxml.png)
-
 1. Kopieren Sie im Abschnitt **Datadog einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
-
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -118,27 +119,23 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-datadog-sso"></a>Konfigurieren des einmaligen Anmeldens für Datadog
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Datadog** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Datadog](mailto:support@datadoghq.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
-
-### <a name="create-datadog-test-user"></a>Erstellen eines Datadog-Testbenutzers
-
-In diesem Abschnitt erstellen Sie in Datadog einen Benutzer namens B. Simon. Arbeiten Sie mit dem [Datadog-Supportteam](mailto:support@datadoghq.com) zusammen, um die Benutzer zur Datadog-Plattform hinzuzufügen.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Datadog** müssen Sie die heruntergeladene **Verbundmetadaten-XML-Datei** in die [Datadog-SAML-Einstellungen](https://app.datadoghq.com/organization-settings/login-methods/saml) hochladen.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
+Testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen. 
 
 #### <a name="sp-initiated"></a>SP-initiiert:
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Datadog weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-* Rufen Sie direkt die Datadog-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die Datadog-Anmelde-URL auf, und starten Sie den Anmeldeflow.
 
 #### <a name="idp-initiated"></a>IDP-initiiert:
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Datadog-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Datadog“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Datadog-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Datadog“ im Portal „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Datadog-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in der [Einführung in das Portal „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ### <a name="enable-all-users-from-your-tenant-to-authenticate-with-the-app"></a>Ermöglichen der Authentifizierung mit der App für alle Benutzer in Ihrem Mandanten
 
@@ -158,4 +155,4 @@ In diesem Abschnitt ermöglichen Sie allen Benutzern in Ihrem Mandanten den Zugr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Datadog können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Datadog können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

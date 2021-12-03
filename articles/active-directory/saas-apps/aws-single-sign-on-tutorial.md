@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration von AWS Single Sign-on in Azure Active Directory-SSO | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit AWS Single Sign-on'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und AWS Single Sign-on konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2021
+ms.date: 10/26/2021
 ms.author: jeedes
-ms.openlocfilehash: bda8218fb9d08da410b08f8b6f3a3e3cda53ec22
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b6154d6542e0f61326c31aeca7abc15d671935ea
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759669"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336371"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>Integration von AWS Single Sign-on in Azure Active Directory-SSO (Single Sign-On, einmaliges Anmelden)
+# <a name="tutorial-azure-ad-sso-integration-with-aws-single-sign-on"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit AWS Single Sign-on
 
 In diesem Tutorial erfahren Sie, wie Sie AWS Single Sign-on in Azure Active Directory (Azure AD) integrieren. Die Integration von AWS Single Sign-on in Azure AD ermöglicht Folgendes:
 
@@ -80,7 +80,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     a. Klicken Sie auf **Metadatendatei hochladen**.
 
-    b. Klicken Sie auf das **Ordnerlogo**, um die Metadatendatei auszuwählen, die Sie im Abschnitt **Konfigurieren des einmaligen Anmeldens für AWS Single Sign-on** (Punkt 8) heruntergeladen haben, und klicken Sie auf **Hinzufügen**.
+    b. Klicken Sie auf das **Ordnerlogo**, um die Metadatendatei auszuwählen, deren Download im Abschnitt **[Konfigurieren des einmaligen Anmeldens für AWS Single Sign-on](#configure-aws-single-sign-on-sso)** erläutert wird, und klicken Sie auf **Hinzufügen**.
 
     ![Bild2](common/browse-upload-metadata.png)
 
@@ -245,4 +245,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von AWS Single Sign-on können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Daten Ihrer Organisation schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von AWS Single Sign-on können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Daten Ihrer Organisation schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

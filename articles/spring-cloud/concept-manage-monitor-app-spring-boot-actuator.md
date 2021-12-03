@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: d9c24868fa847ef3b8be13ca0d7775e24b3116cc
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 001b88e5abe0fc8710d7c87d792de23db4135e16
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356177"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486285"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Verwalten und Überwachen einer App mit dem Azure Spring Boot-Aktor
 
@@ -22,7 +22,7 @@ Nach der Bereitstellung einer neuen Binärdatei für Ihre App sollten Sie die Fu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird vorausgesetzt, dass Sie über eine Spring Boot 2.x-Anwendung verfügen, die erfolgreich bereitgestellt und im Azure Spring Cloud-Dienst gestartet werden kann.  Weitere Informationen finden Sie unter [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](./quickstart.md).
+In diesem Artikel wird vorausgesetzt, dass Sie über eine Spring Boot 2.x-Anwendung verfügen, die erfolgreich bereitgestellt und im Azure Spring Cloud-Dienst gestartet werden kann.  Weitere Informationen finden Sie unter [Schnellstart: Starten einer vorhandenen Anwendung in Azure Spring Cloud über das Azure-Portal](./quickstart.md).
 
 ## <a name="verify-app-through-test-endpoint"></a>Überprüfen der App über einen Testendpunkt
 

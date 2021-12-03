@@ -1,48 +1,48 @@
 ---
-title: Entfernen von Azure Sentinel | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Ihre Azure Sentinel-Instanz löschen.
+title: Microsoft Sentinel entfernen | Microsoft-Dokumentation
+description: Löschen Ihrer Microsoft Sentinel-Instanz
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/16/2020
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: afb17cf0cc999680d2cd60a0be8e4a227aa146bf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4e811cfb24505c00f521121ce846cc58da9cff2f
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009185"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517347"
 ---
-# <a name="remove-azure-sentinel-from-your-workspace"></a>Entfernen von Azure Sentinel aus Ihrem Arbeitsbereich
+# <a name="remove-microsoft-sentinel-from-your-workspace"></a>Entfernen von Microsoft Sentinel aus Ihrem Arbeitsbereich
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Wenn Sie Azure Sentinel nicht mehr verwenden möchten, können Sie die Lösung mithilfe der Anleitung in diesem Artikel aus Ihrem Arbeitsbereich entfernen.
+Wenn Sie Microsoft Sentinel nicht mehr verwenden möchten, können Sie die Lösung mithilfe der Anleitung in diesem Artikel aus Ihrem Arbeitsbereich entfernen.
 
-## <a name="how-to-remove-azure-sentinel"></a>Entfernen von Azure Sentinel
+## <a name="how-to-remove-microsoft-sentinel"></a>Entfernen von Microsoft Sentinel
 
-Gehen Sie folgendermaßen vor, um Azure Sentinel aus Ihrem Arbeitsbereich zu entfernen:
+Gehen Sie folgendermaßen vor, um Microsoft Sentinel aus Ihrem Arbeitsbereich zu entfernen:
 
-1. Wechseln Sie zu **Azure Sentinel** und dann zu **Einstellungen**, und wählen Sie die Registerkarte **Remove Azure Sentinel** (Azure Sentinel entfernen) aus.
+1. Wechseln Sie zu **Microsoft Sentinel** und dann zu **Einstellungen**, und wählen Sie die Registerkarte **Microsoft Sentinel entfernen** aus.
 
-1. Bevor Sie Azure Sentinel entfernen, teilen Sie uns bitte mithilfe der Kontrollkästchen mit, warum Sie es entfernen.
+1. Bevor Sie Microsoft Sentinel entfernen, teilen Sie uns bitte mithilfe der Kontrollkästchen mit, warum Sie es entfernen.
 
-1. Wählen Sie **Remove Azure Sentinel from your workspace** (Azure Sentinel aus Ihrem Arbeitsbereich entfernen) aus.
+1. Wählen Sie **Entfernen von Microsoft Sentinel aus Ihrem Arbeitsbereich** aus.
     
     ![Löschen der Lösung „SecurityInsights“](media/offboard/delete-solution.png)
 
 ## <a name="what-happens-behind-the-scenes"></a>Was passiert im Hintergrund?
 
-Wenn Sie die Lösung entfernen, dauert es bis zu 48 Stunden, bis die erste Phase des Löschvorgangs von Azure Sentinel abgeschlossen ist.
+Wenn Sie die Lösung entfernen, dauert es bis zu 48 Stunden, bis die erste Phase des Löschvorgangs von Microsoft Sentinel abgeschlossen ist.
 
 Nach Abschluss der Verbindungstrennung beginnt der Offboardingprozess.
 
@@ -51,15 +51,15 @@ Nach Abschluss der Verbindungstrennung beginnt der Offboardingprozess.
 
 -   AWS
 
--   Sicherheitsbenachrichtigungen von Microsoft-Diensten: Microsoft Defender for Identity (*ehemals Azure ATP*), Microsoft Cloud App Security mit Cloud Discovery-Schatten-IT-Berichterstellung, Azure AD Identity Protection, Microsoft Defender für Endpunkt (*ehemals Microsoft Defender ATP*), Azure Defender-Benachrichtigungen aus dem Azure Security Center
+-   Sicherheitsbenachrichtigungen von Microsoft-Diensten: Microsoft Defender for Identity *(ehemals Azure ATP),* Microsoft Defender für Cloud-Apps einschließlich Cloud Discovery Schatten-IT-Berichterstellung, Azure AD Identity Protection, Microsoft Defender für Endpunkt *(ehemals Microsoft Defender ATP),* Sicherheitswarnungen von Microsoft Defender für Cloud
 
 -   Threat Intelligence
 
--   Häufig verwendete Sicherheitsprotokolle (z. B. CEF-basierte Protokolle, Barracuda und Syslog) (Wenn Sie Azure Defender-Benachrichtigungen aus dem Azure Security Center erhalten, werden diese Protokolle weiterhin erfasst.)
+-   Häufig verwendete Sicherheitsprotokolle (z. B. CEF-basierte Protokolle, Barracuda und Syslog) (Wenn Sie Sicherheitswarnungen von Microsoft Defender für Cloud erhalten, werden diese Protokolle weiterhin erfasst.)
 
--   Windows-Sicherheitsereignisse (Wenn Sie Azure Defender-Benachrichtigungen aus dem Azure Security Center erhalten, werden diese Protokolle weiterhin erfasst.)
+-   Windows-Sicherheitsereignisse (Wenn Sie Sicherheitswarnungen von Microsoft Defender für Cloud erhalten, werden diese Protokolle weiterhin erfasst.)
 
-Innerhalb der ersten 48 Stunden kann auf die Daten und Analyseregeln (einschließlich Automatisierungskonfiguration in Echtzeit) in Azure Sentinel nicht mehr zugegriffen werden, und sie können auch nicht mehr abgefragt werden.
+Innerhalb der ersten 48 Stunden kann auf die Daten und Analyseregeln (einschließlich Automatisierungskonfiguration in Echtzeit) in Microsoft Sentinel nicht mehr zugegriffen werden, und sie können auch nicht mehr abgefragt werden.
 
 **Nach 30 Tagen werden die folgenden Ressourcen entfernt:**
 
@@ -74,11 +74,11 @@ Ihre Playbooks, gespeicherten Arbeitsmappen, gespeicherten Suchabfragen und Note
 Nach dem Entfernen des Diensts gilt eine Toleranzperiode von 30 Tagen, während der Sie die Lösung wieder aktivieren können. Ihre Daten und Analyseregeln werden dann automatisch wiederhergestellt, aber die Verbindungen für die konfigurierten Connectors, die getrennt wurden, müssen wiederhergestellt werden.
 
 > [!NOTE]
-> Wenn Sie die Lösung entfernen, ist Ihr Abonnement weiterhin beim Azure Sentinel-Ressourcenanbieter registriert. **Sie können dies manuell entfernen.**
+> Wenn Sie die Lösung entfernen, ist Ihr Abonnement weiterhin beim Microsoft Sentinel-Ressourcenanbieter registriert. **Sie können dies manuell entfernen.**
 
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument wurde beschrieben, wie Sie den Azure Sentinel-Dienst entfernen. Gehen Sie wie folgt vor, falls Sie Ihre Meinung ändern und den Dienst wieder installieren möchten:
-- Führen Sie das [Onboarding für Azure Sentinel](quickstart-onboard.md) durch.
+In diesem Dokument wurde beschrieben, wie Sie den Microsoft Sentinel-Dienst entfernen. Gehen Sie wie folgt vor, falls Sie Ihre Meinung ändern und den Dienst wieder installieren möchten:
+- Führen Sie das [Onboarding für Microsoft Sentinel](quickstart-onboard.md) durch.

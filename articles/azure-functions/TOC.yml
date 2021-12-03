@@ -80,7 +80,7 @@
     - name: Funktionen mit Logic Apps
       href: functions-twitter-email.md
     - name: Bereitstellen von Python-Funktionen mit VS Code
-      href: /azure/python/tutorial-vs-code-serverless-python-01
+      href: /azure/azure-functions/create-first-function-vs-code-python
     - name: Erstellen serverloser APIs mit Visual Studio
       href: openapi-apim-integrate-visual-studio.md
       displayName: 'OpenAPI, Swagger'
@@ -102,7 +102,7 @@
     - name: Ändern der Imagegröße mit Event Grid
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Erstellen einer serverlosen Web-App
-      href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
+      href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr/
     - name: Maschinelles Lernen mit TensorFlow
       href: functions-machine-learning-tensorflow.md
     - name: Imageklassifizierung mit PyTorch
@@ -401,7 +401,9 @@
           href: configure-networking-how-to.md
         - name: Georedundante Notfallwiederherstellung
           href: functions-geo-disaster-recovery.md
-    - name: Überwachen
+        - name: Regionsübergreifendes Verschieben
+          href: functions-move-across-regions.md
+    - name: Monitor
       items:
         - name: Konfigurieren der Überwachung
           href: configure-monitoring.md
@@ -429,7 +431,7 @@
               href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Authentifizierung über Twitter
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
-            - name: Authentifizieren mit einem OpenID Connect-Anbieter (Vorschau)
+            - name: Authentifizieren mit einem OpenID Connect-Anbieter
               href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Authentifizieren mithilfe der Anmeldung mit Apple (Vorschau)
               href: ../app-service/configure-authentication-provider-apple.md?toc=%2fazure%2fazure-functions%2ftoc.json
@@ -526,7 +528,7 @@
         - name: Azure Functions Core Tools
           href: functions-core-tools-reference.md
         - name: Azure PowerShell
-          href: /powershell/module/az.functions
+          href: /powershell/module/az.functions/
         - name: Java
           href: /java/api/overview/azure/functions/runtime
         - name: Python
@@ -566,9 +568,20 @@
                 - name: Eingabe
                   href: functions-bindings-cosmosdb-v2-input.md
                   displayName: Azure Cosmos DB
-                - name: Output
+                - name: Ausgabe
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
+        - name: Azure SQL
+          items:
+            - name: Übersicht
+              href: functions-bindings-azure-sql.md
+              displayName: Azure SQL
+            - name: Eingabe
+              href: functions-bindings-azure-sql-input.md
+              displayName: Azure SQL
+            - name: Output
+              href: functions-bindings-azure-sql-output.md
+              displayName: Azure SQL
         - name: Dapr
           href: 'https://github.com/dapr/azure-functions-extension'
         - name: Event Grid
@@ -722,7 +735,7 @@
     - name: Informationen zum Kontingent
       href: functions-scale.md#service-limits
     - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Videos
       href: 'https://www.youtube.com/c/AzureFunctions'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"

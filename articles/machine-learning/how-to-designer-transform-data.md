@@ -5,17 +5,17 @@ description: Erfahren Sie, wie Sie Daten in Azure Machine Learning-Designer impo
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mldata
-author: peterclu
-ms.author: peterlu
-ms.date: 06/28/2020
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: 3d658421d392032e4425a3f87f8f59f9baab2ce4
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 42f70e55bf8c2e8b8d6186d26f5a3a1ba08f6a63
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427607"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557450"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Transformieren von Daten in Azure Machine Learning-Designer
 
@@ -44,60 +44,60 @@ Führen Sie die folgenden Schritte aus, um das Beispieldataset zu importieren.
 
 1. Melden Sie sich bei <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a> an, und wählen Sie den gewünschten Arbeitsbereich aus.
 
-1. Wechseln Sie zum Designer. Wählen Sie **Easy-to-use-prebuild modules** (Benutzerfreundliche vorgefertigte Module) aus, um eine neue Pipeline zu erstellen.
+1. Wechseln Sie zum Designer. Wählen Sie **Benutzerfreundliche vorgefertigte Komponenten** aus, um eine neue Pipeline zu erstellen.
 
 1. Wählen Sie ein Standardcomputeziel zum Ausführen der Pipeline aus.
 
-1. Links neben der Pipelinecanvas befindet sich eine Palette mit Datasets und Modulen. Wählen Sie die Option **Datasets**. Sehen Sie sich dann den Abschnitt **Beispiele** an.
+1. Links neben dem Pipelinezeichenbereich befindet sich eine Palette mit Datasets und Komponenten. Wählen Sie die Option **Datasets**. Sehen Sie sich dann den Abschnitt **Beispiele** an.
 
 1. Ziehen Sie das Dataset **Adult Census Income Binary classification** (Binäres Klassifizierungsdataset der Einkommenserhebung für Erwachsene) per Drag & Drop auf die Canvas.
 
-1. Klicken Sie mit der rechten Maustaste auf das Datasetmodul **Adult Census Income** (Einkommen von Erwachsenen), und wählen Sie **Visualisieren** > **Datasetausgabe** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Datasetkomponente **Einkommen von Erwachsenen**, und wählen Sie **Visualisieren** > **Datasetausgabe** aus.
 
 1. Verwenden Sie das Fenster „Datenvorschau“, um das Dataset zu untersuchen. Beachten Sie besonders die Werte in der Spalte „native-country“.
 
 ### <a name="split-the-data"></a>Teilen der Daten
 
-In diesem Abschnitt verwenden Sie das Modul [Split Data](algorithm-module-reference/split-data.md) (Daten aufteilen), um Zeilen zu identifizieren und aufzuteilen, die „United-States“ in der Spalte „native-country“ enthalten. 
+In diesem Abschnitt verwenden Sie die Komponente [Daten aufteilen](algorithm-module-reference/split-data.md), um Zeilen zu identifizieren und aufzuteilen, die „United-States“ in der Spalte „native-country“ enthalten. 
 
-1. Erweitern Sie in der Modulpalette auf der linken Seite Canvas den Abschnitt **Datentransformation**, und suchen Sie nach dem Modul **Split Data** (Daten aufteilen).
+1. Erweitern Sie in der Komponentenpalette auf der linken Seite des Zeichenbereich den Abschnitt **Datentransformation**, und suchen Sie nach der Komponente **Daten aufteilen**.
 
-1. Ziehen Sie das Modul **Split Data** (Daten aufteilen) per Drag & Drop unter das Datasetmodul auf der Canvas.
+1. Ziehen Sie die Komponente **Daten aufteilen** per Drag & Drop unter die Datasetkomponente im Zeichenbereich.
 
-1. Verbinden Sie das Datasetmodul mit dem Modul **Split Data** (Daten aufteilen).
+1. Verbinden der Datasetkomponente mit der Komponente **Daten aufteilen**.
 
-1. Wählen Sie das Modul **Split Data** (Daten aufteilen) aus.
+1. Wählen Sie das Modul **Daten aufteilen** aus.
 
-1. Legen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Splitter Modus** (Aufteilungsmodus) auf **Regulärer Ausdruck** fest.
+1. Legen Sie rechts neben dem Zeichenbereich im Bereich mit den Komponentendetails die Option **Aufteilungsmodus** auf **Regulärer Ausdruck** fest.
 
 1. Geben Sie den **regulären Ausdruck** ein: `\"native-country" United-States`.
 
-    Der Modus **Regulärer Ausdruck** überprüft eine einzelne Spalte auf einen Wert. Weitere Informationen zum Modul „Split Data“ (Daten aufteilen) finden Sie auf der entsprechenden [Referenzseite für Algorithmen und Module](algorithm-module-reference/split-data.md).
+    Der Modus **Regulärer Ausdruck** überprüft eine einzelne Spalte auf einen Wert. Weitere Informationen zur Komponente „Daten aufteilen“ finden Sie auf der entsprechenden [Referenzseite für Algorithmen und Komponenten](algorithm-module-reference/split-data.md).
 
 Ihre Pipeline sollte wie folgt aussehen:
 
-:::image type="content" source="./media/how-to-designer-transform-data/split-data.png" alt-text="Screenshot: Konfigurieren der Pipeline und des Moduls „Split Data“ (Daten aufteilen)":::
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png" alt-text="Screenshot: Konfigurieren der Pipeline und des Moduls „Daten aufteilen“":::
 
 
 ## <a name="save-the-datasets"></a>Speichern der Datasets
 
-Nachdem die Pipeline nun so eingerichtet ist, dass die Daten aufgeteilt werden, müssen Sie angeben, wo die Datasets gespeichert werden sollen. Verwenden Sie für dieses Beispiel das Modul **Export Data** (Daten exportieren), um das Dataset in einem Datenspeicher zu speichern. Weitere Informationen zu Datenspeichern finden Sie unter [Herstellen einer Verbindung mit Azure-Speicherdiensten](how-to-access-data.md)
+Nachdem die Pipeline nun so eingerichtet ist, dass die Daten aufgeteilt werden, müssen Sie angeben, wo die Datasets gespeichert werden sollen. Verwenden Sie für dieses Beispiel die Komponente **Daten exportieren**, um das Dataset in einem Datenspeicher zu speichern. Weitere Informationen zu Datenspeichern finden Sie unter [Herstellen einer Verbindung mit Azure-Speicherdiensten](how-to-access-data.md)
 
-1. Erweitern Sie in der Modulpalette auf der linken Seite Canvas den Abschnitt **Data Input and Output** (Dateneingabe und -ausgabe), und suchen Sie nach dem Modul **Export Data** (Daten exportieren).
+1. Erweitern Sie in der Komponentenpalette auf der linken Seite des Zeichenbereichs den Abschnitt **Dateneingabe und -ausgabe**, und suchen Sie nach dem Modul **Daten exportieren**.
 
-1. Ziehen Sie zwei Module zum Exportieren von Daten (**Export Data**) per Drag &Drop unter das Modul **Split Data** (Daten aufteilen).
+1. Ziehen Sie zwei Komponenten zum **Exportieren von Daten** per Drag &Drop unter die Komponente **Daten aufteilen**.
 
-1. Verbinden Sie jeden Ausgabeport des Moduls **Split Data** (Daten aufteilen) mit jeweils einem **Export Data**-Modul (Daten exportieren).
+1. Verbinden Sie jeden Ausgabeport der Komponente **Daten aufteilen** mit jeweils einer **Daten exportieren**-Komponente.
 
     Ihre Pipeline sollte in etwa wie folgt aussehen:
 
-    ![Screenshot: Verbinden der Module zum Exportieren von Daten](media/how-to-designer-transform-data/export-data-pipeline.png).
+    ![Screenshot: Verbinden der Komponenten zum Exportieren von Daten](media/how-to-designer-transform-data/export-data-pipeline.png).
 
-1. Wählen Sie das Modul **Export Data** (Daten exportieren) aus, das mit dem Port ganz *links* des Moduls zum Aufteilen von Dateien (**Split Data**) verbunden ist.
+1. Wählen Sie die Komponente **Daten exportieren** aus, die mit dem Port ganz *links* der Komponente zum **Aufteilen von Daten** verbunden ist.
 
-    Die Reihenfolge der Ausgabeports ist für das Modul **Split Data** (Daten aufteilen) von Bedeutung. Der erste Ausgabeport enthält die Zeilen, in denen der reguläre Ausdruck „true“ ist. In diesem Fall enthält der erste Port Zeilen für ein US-bezogenes Einkommen, und der zweite Port enthält Zeilen für Nicht-US-bezogenes Einkommen.
+    Die Reihenfolge der Ausgabeports ist für die Komponente **Daten aufteilen** von Bedeutung. Der erste Ausgabeport enthält die Zeilen, in denen der reguläre Ausdruck „true“ ist. In diesem Fall enthält der erste Port Zeilen für ein US-bezogenes Einkommen, und der zweite Port enthält Zeilen für Nicht-US-bezogenes Einkommen.
 
-1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die folgenden Optionen aus:
+1. Wählen Sie rechts neben dem Zeichenbereich im Bereich mit den Komponentendetails die folgenden Optionen aus:
     
     **Datenspeichertyp**: Azure Blob Storage
 
@@ -112,9 +112,9 @@ Nachdem die Pipeline nun so eingerichtet ist, dass die Daten aufgeteilt werden, 
 
     Wenn Sie über keinen Datenspeicher verfügen, können Sie nun einen erstellen. In diesem Artikel werden die Datasets beispielsweise im standardmäßigen BLOB-Speicherkonto gespeichert, das dem Arbeitsbereich zugeordnet ist. Die Datasets werden im `azureml`-Container in einem neuen Ordner mit dem Namen `data` gespeichert.
 
-1.  Wählen Sie das Modul **Export Data** (Daten exportieren) aus, das mit dem Port ganz *rechts* des Moduls zum Aufteilen von Dateien (**Split Data**) verbunden ist.
+1.  Wählen Sie die Komponente **Daten exportieren** aus, die mit dem Port ganz *links* der Komponente zum **Aufteilen von Daten** verbunden ist.
 
-1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die folgenden Optionen aus:
+1. Wählen Sie rechts neben dem Zeichenbereich im Bereich mit den Komponentendetails die folgenden Optionen aus:
     
     **Datenspeichertyp**: Azure Blob Storage
 
@@ -124,13 +124,13 @@ Nachdem die Pipeline nun so eingerichtet ist, dass die Daten aufgeteilt werden, 
 
     **Dateiformat**: CSV
 
-1. Überprüfen Sie, ob das Modul **Export Data** (Daten exportieren), das mit dem linken Port des Moduls zum **Aufteilen von Dateien** (Split Data) verbunden ist, den **Pfad** `/data/us-income` aufweist.
+1. Überprüfen Sie, ob die Komponente **Daten exportieren**, die mit dem linken Port der Komponente zum **Aufteilen von Dateien** verbunden ist, den **Pfad** `/data/us-income` aufweist.
 
-1. Überprüfen Sie, ob das Modul **Export Data** (Daten exportieren), das mit dem rechten Port verbunden ist, den **Pfad** `/data/non-us-income` aufweist.
+1. Überprüfen Sie, ob die Komponente **Daten exportieren**, die mit dem rechten Port verbunden ist, den **Pfad** `/data/non-us-income` aufweist.
 
     Die Pipeline und die Einstellungen sollten wie folgt aussehen:
     
-    ![Screenshot: Konfigurieren der Module zum Exportieren von Daten](media/how-to-designer-transform-data/us-income-export-data.png).
+    ![Screenshot: Konfigurieren der Komponenten zum Exportieren von Daten](media/how-to-designer-transform-data/us-income-export-data.png).
 
 ### <a name="submit-the-run"></a>Übermitteln der Ausführung
 
@@ -148,11 +148,11 @@ Nachdem die Pipeline nun so eingerichtet ist, dass die Daten aufgeteilt und expo
 
 ## <a name="view-results"></a>Anzeigen der Ergebnisse
 
-Nach der Pipelineausführung können Sie die Ergebnisse anzeigen, indem Sie im Azure-Portal zu Ihrem BLOB-Speicher navigieren. Anhand der Zwischenergebnisse des Moduls **Split Data** (Dateien aufteilen) können Sie zudem überprüfen, ob Ihre Daten korrekt aufgeteilt wurden.
+Nach der Pipelineausführung können Sie die Ergebnisse anzeigen, indem Sie im Azure-Portal zu Ihrem BLOB-Speicher navigieren. Anhand der Zwischenergebnisse der Komponente **Daten aufteilen** können Sie zudem überprüfen, ob Ihre Daten korrekt aufgeteilt wurden.
 
-1. Wählen Sie das Modul **Split Data** (Daten aufteilen) aus.
+1. Wählen Sie das Modul **Daten aufteilen** aus.
 
-1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Ausgaben und Protokolle** aus. 
+1. Wählen Sie rechts neben dem Zeichenbereich im Bereich mit den Komponentendetails die Option **Ausgaben und Protokolle** aus. 
 
 1. Wählen Sie das Symbol zum ![Visualisieren](media/how-to-designer-transform-data/visualize-icon.png) neben **Results dataset1** (Ergebnisse von Dataset 1) aus. 
 

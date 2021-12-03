@@ -7,16 +7,16 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: dfb522e5231072e427c14dfe1c8c16889dd3ff9e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: e39641317cc02c12666adf622ccb931ef57d9339
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214187"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493683"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Erstellen, Importieren und Exportieren von Glossarbegriffen
 
-In diesem Artikel ist beschrieben, wie Sie einen Unternehmensglossarbegriff im Azure Purview-Datenkatalog erstellen und Glossarbegriffe über CSV-Dateien importieren und exportieren.
+In diesem Artikel wird beschrieben, wie Sie das Unternehmensglossar in Azure Purview verwenden. Sie finden hier die Schritte zum Erstellen eines Unternehmensglossarbegriffs im Azure Purview-Datenkatalog und zum Importieren und Exportieren von Glossarbegriffen über CSV-Dateien.
 
 ## <a name="create-a-new-term"></a>Erstellen eine neuen Begriffs
 
@@ -71,7 +71,7 @@ Beachten Sie, dass für die Begriffsnamen die Groß-/Kleinschreibung beachtet wi
 
    :::image type="content" source="media/how-to-create-import-export-glossary/select-term-template-for-import.png" alt-text="Screenshot der Seite „Glossarbegriffe“, Schaltfläche „Begriffe importieren“":::
 
-3. Laden Sie die CSV-Vorlage herunter, und verwenden Sie diese, um die Begriffe einzugeben, die Sie hinzufügen möchten.
+3. Laden Sie die CSV-Vorlage herunter, und verwenden Sie diese, um die Begriffe einzugeben, die Sie hinzufügen möchten. Wenn Sie Ihre CSV-Vorlagendatei benennen, muss der Name mit einem Buchstaben beginnen. Außerdem darf er nur Buchstaben, Zahlen, Leerzeichen, Unterstriche (_) oder andere Nicht-ASCII-Unicode-Zeichen enthalten. Sonderzeichen im Dateinamen führen zu einem Fehler.
 
    > [!Important]
    > Das System unterstützt nur das Importieren von Spalten, die in der Vorlage verfügbar sind. Die Vorlage „Systemstandard“ enthält alle Standardattribute.
@@ -101,4 +101,4 @@ Sie können Begriffe aus dem Glossar exportieren, solange die ausgewählten Begr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Tutorial: Erstellen und Importieren von Glossarbegriffen in Azure Purview (Vorschau)](tutorial-import-create-glossary-terms.md). Hier finden Sie weitere Informationen.
+* Weitere Informationen zu Glossarbegriffen finden Sie in der [Glossarreferenz](reference-purview-glossary.md).

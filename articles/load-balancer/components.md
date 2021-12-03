@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/04/2020
+ms.date: 10/26/2021
 ms.author: allensu
-ms.openlocfilehash: 32cac3156a020beebf046fff9c429a75a348ebcd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 576965485de7bd3c193beae219af74139bffb827
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130215276"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068320"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-Komponenten
 
 Azure Load Balancer umfasst ein paar Hauptkomponenten. Diese Komponenten können in Ihrem Abonnement auf folgende Weise konfiguriert werden:
 
 * Azure-Portal
-* Azure-Befehlszeilenschnittstelle
+* Azure CLI
 * Azure PowerShell
 * Resource Manager-Vorlagen
 
@@ -50,7 +50,9 @@ Der Lastenausgleich kann über mehrere Front-End-IP-Adressen verfügen. Erfahren
 
 Die Gruppe virtueller Computer oder Instanzen in einer VM-Skalierungsgruppe, von denen die eingehende Anforderung verarbeitet wird. Für eine kosteneffiziente Skalierung zur Bewältigung großer Mengen an eingehendem Datenverkehr empfiehlt es sich in der Regel, dem Back-End-Pool weitere Instanzen hinzuzufügen.
 
-Die Konfiguration des Lastenausgleichs wird automatisch angepasst, wenn Sie Instanzen hoch- oder herunterskalieren. Durch Hinzufügen virtueller Computer zum bzw. Entfernen virtueller Computer aus dem Back-End-Pool wird der Lastenausgleich ohne zusätzliche Vorgänge neu konfiguriert. Der Back-End-Pool wird für jeden beliebigen virtuellen Computer in einem einzelnen virtuellen Netzwerk verwendet.
+Die Konfiguration des Lastenausgleichs wird automatisch angepasst, wenn Sie Instanzen hoch- oder herunterskalieren. Durch Hinzufügen virtueller Computer zum bzw. Entfernen virtueller Computer aus dem Back-End-Pool wird der Lastenausgleich ohne zusätzliche Vorgänge neu konfiguriert. Der Back-End-Pool wird für jeden beliebigen virtuellen Computer in einem einzelnen virtuellen Netzwerk verwendet. 
+
+Back-End-Pools unterstützen die Hinzufügung von Instanzen über [die Netzwerkschnittstelle oder IP-Adressen](backend-pool-management.md).
 
 Halten Sie bei der Gestaltung Ihres Back-End-Pools die Anzahl der einzelnen Back-End-Pool-Ressourcen so gering wie möglich, um die Dauer von Verwaltungsvorgängen zu optimieren. Es gibt keinen Unterschied in der Datenebenenleistung oder -skalierung.
 

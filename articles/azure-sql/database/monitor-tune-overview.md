@@ -11,12 +11,12 @@ author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, urmilano, wiassaf
 ms.date: 03/17/2021
-ms.openlocfilehash: 428bc56ed2bcd4cf3da434bff1e399e04706db7d
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 842093f7cf74416e4bfb7b8ee3ed1faf83818675
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112121776"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546982"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Überwachung und Leistungsoptimierung in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,6 +28,9 @@ Azure SQL-Datenbank bietet eine Reihe von Database Advisors, mit denen Sie Empfe
 Azure SQL-Datenbank und Azure SQL Managed Instance bieten verbesserte Überwachungs- und Optimierungsfunktionen, die von künstlicher Intelligenz unterstützt werden, um Ihnen bei der Problembehandlung und Maximierung der Leistung Ihrer Datenbanken und Lösungen zu helfen. Sie können den [Streamingexport](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) dieser [Intelligent Insights](intelligent-insights-overview.md) und andere Ressourcenprotokolle und Metriken der Datenbank in eines von mehreren Zielen für die Nutzung und Analyse konfigurieren, insbesondere mithilfe von [SQL-Analyse](../../azure-monitor/insights/azure-sql.md). Azure SQL-Analyse ist eine erweiterte Cloudüberwachungslösung zum abonnementübergreifenden Überwachen der Leistung Ihrer gesamten Datenbankinstanzen im großen Stil in einer zentralen Ansicht. Eine Liste der Protokolle und Metriken, die Sie exportieren können, finden Sie unter [Diagnosetelemetriedaten für den Export](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export).
 
 SQL Server verfügt mit dem [Abfragespeicher](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) und [dynamischen Verwaltungssichten](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) (Dynamic Management Views, DMVs) über eigene Überwachungs- und Diagnosefunktionen, die von SQL-Datenbank und SQL Managed Instance genutzt werden. Weitere Informationen dazu, wie Skripts eine Vielzahl von Leistungsproblemen überwachen können, finden Sie unter [Überwachen mit dynamischen Verwaltungssichten](monitoring-with-dmvs.md).
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL!](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Überwachungs- und Optimierungsfunktionen im Azure-Portal
 

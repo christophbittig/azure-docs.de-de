@@ -1,18 +1,18 @@
 ---
 title: Bereitstellen von Zertifikaten
 description: Es wird beschrieben, wie Sie Zertifikate für Defender für IoT einrichten und bereitstellen.
-ms.date: 08/29/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: d6a67a84dab6df165346ff2739d0ac56e2b8eff2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: df2b0484d9f9302443dc37870a6a97de31ded3b1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128602819"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343703"
 ---
 # <a name="about-certificates"></a>Informationen zu Zertifikaten
 
-Dieser Artikel enthält Informationen, die Sie beim Erstellen und Bereitstellen von Zertifikaten für Azure Defender für IoT benötigen. Die Erstellung und Bereitstellung von Zertifikaten sollte von einer Person durchgeführt werden, die für Sicherheits-, PKI- oder andere Zertifikate qualifiziert ist.
+Dieser Abschnitt enthält Informationen, die Sie beim Erstellen und Bereitstellen von Zertifikaten für Microsoft Defender für IoT benötigen. Die Erstellung und Bereitstellung von Zertifikaten sollte von einer Person durchgeführt werden, die für Sicherheits-, PKI- oder andere Zertifikate qualifiziert ist.
 
 Von Defender für IoT werden SSL/TLS-Zertifikate genutzt, um die Kommunikation zwischen den folgenden Systemkomponenten zu schützen: 
 
@@ -110,13 +110,17 @@ Einige Sicherheitsrichtlinien der Organisation blockieren möglicherweise den Zu
 
 Für Defender für IoT ist es erforderlich, dass jedes von der Zertifizierungsstelle signierte Zertifikat eine KEY- und eine CRT-Datei enthält. Diese Dateien werden nach der Anmeldung auf den Sensor und in die lokale Verwaltungskonsole hochgeladen. Einige Organisationen benötigen hierfür unter Umständen eine PEM-Datei. Für Defender für IoT ist dieser Dateityp nicht erforderlich.
 
-**CRT: Zertifikatcontainerdatei**  
+**CRT: Zertifikatcontainerdatei**
+
 Eine Datei im PEM- oder DER-Format mit einer anderen Erweiterung. Die Datei wird in Windows-Explorer als Zertifikat erkannt. Die PEM-Datei wird von Windows-Explorer nicht erkannt.
 
-**KEY: Datei mit dem privaten Schlüssel**  
+**KEY: Datei mit dem privaten Schlüssel**
+
 Eine KEY-Datei hat das gleiche Format wie eine PEM-Datei, aber eine andere Erweiterung.
 
-**PEM: Zertifikatcontainerdatei (optional)** Eine PEM-Datei ist eine Textdatei, die die Base64-Codierung des Zertifikattexts, eine Nur-Text-Kopfzeile und eine Fußzeile zur Kennzeichnung des Zertifikatanfangs und -endes enthält.
+**.pem: Zertifikatcontainerdatei (optional)**
+
+Eine PEM-Datei ist eine Textdatei, die die Base64-Codierung des Zertifikattexts, eine Nur-Text-Kopfzeile und eine Fußzeile zur Kennzeichnung des Zertifikatanfangs und -endes enthält.
 
 Unter Umständen müssen Sie vorhandene Dateitypen in unterstützte Typen konvertieren. Ausführlichere Informationen finden Sie unter [Konvertieren vorhandener Dateien in unterstützte Dateien](#convert-existing-files-to-supported-files).
 

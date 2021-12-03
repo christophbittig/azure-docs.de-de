@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 1d5391d90c4770377a85eb6d78cd8cc30f10ccee
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3909c87a256b6ae6afe230f9bad91d3fccdc62a7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249208"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346646"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 
@@ -140,7 +140,7 @@ Die folgenden Konfigurationen werden derzeit nicht unterstützt:
 | Compute |XML-VM-Erweiterungen (BGInfo 1.*, Visual Studio Debugger, Web Deploy und Remotedebuggen) |Dieser Vorgang wird nicht unterstützt. Es wird empfohlen, dass Sie diese Erweiterungen vom virtuellen Computer entfernen, um die Migration fortzusetzen. Andernfalls werden sie während der Migration automatisch gelöscht. |
 | Compute |Startdiagnose mit Storage Premium |Deaktivieren Sie die Funktion „Startdiagnose“ für die virtuellen Computer, bevor Sie mit der Migration fortfahren. Sobald die Migration abgeschlossen ist, können Sie die Startdiagnose im Resource Manager-Stapel erneut aktivieren. Darüber hinaus sollten für Screenshots und serielle Protokolle verwendete Blobs gelöscht werden, damit diese Blobs nicht mehr berechnet werden. |
 | Compute | Clouddienste mit mehreren Verfügbarkeitsgruppen. |Dies wird derzeit nicht unterstützt. Verschieben Sie die virtuellen Computer vor der Migration in dieselbe Verfügbarkeitsgruppe. |
-| Compute | Virtueller Computer mit Azure Security Center-Erweiterung | Azure Security Center installiert die Erweiterungen automatisch auf Ihren virtuellen Computern, um deren Sicherheit zu überwachen und Warnungen auszulösen. Diese Erweiterungen werden in der Regel automatisch installiert, wenn die Azure Security Center-Richtlinie für das Abonnement aktiviert ist. Um die virtuellen Computer zu migrieren, deaktivieren Sie die Security Center-Richtlinie in dem Abonnement, in dem die Security Center-Überwachungserweiterung von den virtuellen Computern entfernt wird. |
+| Compute | Virtuelle Computer mit Microsoft Defender-für-Cloud-Erweiterung | Microsoft Defender für Cloud installiert automatisch die Erweiterungen auf Ihren virtuellen Computern, um deren Sicherheit zu überwachen und Warnungen auszulösen. Diese Erweiterungen werden in der Regel automatisch installiert, wenn die Richtlinie von Microsoft Defender für Cloud für das Abonnement aktiviert ist. Um die virtuellen Computer zu migrieren, deaktivieren Sie die Richtlinie von Defender für Cloud in dem Abonnement, was bewirkt, dass die Defender-für-Cloud-Überwachungserweiterung von den virtuellen Computern entfernt wird. |
 | Compute | Virtueller Computer mit Sicherungs- oder Momentaufnahmeerweiterung | Diese Erweiterungen werden auf einem virtuellen Computer installiert, der mit dem Azure Backup-Dienst konfigurierten wurde. Da die Migration dieser VMs nicht unterstützt wird, befolgen Sie die Anweisungen unter [Häufig gestellte Fragen zur Migration vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell](./migration-classic-resource-manager-faq.yml), um Sicherungen beizubehalten, die vor der Migration erstellt wurden.  |
 | Compute | VM mit Azure Site Recovery-Erweiterung | Diese Erweiterungen werden auf einem virtuellen Computer installiert, der mit dem Azure Site Recovery-Dienst konfigurierten wurde. Während die Migration des mit Site Recovery verwendeten Speichers funktioniert, wird die aktuelle Replikation beeinträchtigt. Sie müssen die VM-Replikation nach der Speichermigration deaktivieren und dann erneut aktivieren. |
 | Netzwerk |Virtuelle Netzwerke, die virtuelle Computer und Web-/Workerrollen enthalten |Dies wird derzeit nicht unterstützt. Verschieben Sie die Web-/Workerrollen vor der Migration in ein eigenes virtuelles Netzwerk. Nach der Migration des klassischen virtuellen Netzwerks kann ein Peering des migrierten virtuellen Azure Resource Manager-Netzwerks mit dem klassischen virtuellen Netzwerk eingerichtet werden, um eine ähnliche Konfiguration wie zuvor zu erhalten.|

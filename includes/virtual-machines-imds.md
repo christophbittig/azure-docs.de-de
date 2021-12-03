@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 60b4e1ac82574cab16feee9c436d9521eaf58ad4
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: c2d566e1ded80ed0d0d7ef33fb7218f77b39fe21
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130173356"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132530208"
 ---
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu Instanzen virtueller Computer bereit, die derzeit ausgeführt werden. Sie können ihn zur Verwaltung und Konfiguration Ihrer virtuellen Computer verwenden.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine umfassende Liste der verfügbaren Daten finden Sie in der [Übersicht über die Endpunktkategorien](#endpoint-categories).
@@ -323,7 +323,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich/Optional | Beschreibung |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `format` | Optional* | Das Format (`json` oder `text`) der Antwort. *Hinweis: Ist möglicherweise erforderlich, wenn Anforderungsparameter verwendet werden.
@@ -651,7 +651,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "azEnvironment": "AZUREPUBLICCLOUD",
     "extendedLocation": {
       "type": "edgeZone",
-      "location": "microsoftlosangeles"
+      "name": "microsoftlosangeles"
     },
     "evictionPolicy": "",
     "isHostCompatibilityLayerVm": "true",
@@ -769,7 +769,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "azEnvironment": "AZUREPUBLICCLOUD",
     "extendedLocation": {
       "type": "edgeZone",
-      "location": "microsoftlosangeles"
+      "name": "microsoftlosangeles"
     },
     "evictionPolicy": "",
     "isHostCompatibilityLayerVm": "true",
@@ -994,7 +994,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich/Optional | Beschreibung |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `nonce` | Optional | Eine 10-stellige Zeichenfolge, die als kryptografische Nonce fungiert. Wenn kein Wert angegeben wird, verwendet IMDS den aktuellen UTC-Zeitstempel.
@@ -1398,7 +1398,7 @@ Wenn Sie nach mehreren Versuchen keine Antwort auf die Metadaten erhalten, könn
 
 ## <a name="product-feedback"></a>Produktfeedback
 
-Sie können [hier](https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627) in unserem Kanal für Benutzerfeedback unter „Virtuelle Computer“ > „Instance Metadata Service“ Feedback zu Produkten geben und Ideen unterbreiten.
+Sie können [hier](https://feedback.azure.com/d365community/forum/ec2f1827-be25-ec11-b6e6-000d3a4f0f1c?c=a60ebac8-c125-ec11-b6e6-000d3a4f0f1c) in unserem Kanal für Benutzerfeedback unter „Virtuelle Computer“ > „Instance Metadata Service“ Feedback zu Produkten geben und Ideen unterbreiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c18e242694d5f4d02ce9111d852a66bf49e48bcd
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 44cbae10fc83ddbacf9abc8fd6510667c1f27e00
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275485"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524377"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Problembehandlung bei Leistungsproblemen mit Azure-Dateifreigaben
 
@@ -23,7 +23,7 @@ In diesem Artikel sind einige allgemeine Probleme aufgeführt, die im Zusammenha
 |-|:-:|:-:|
 | Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 | Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
-| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Hohe Latenz, niedriger Durchsatz und allgemeine Leistungsprobleme
 
@@ -81,8 +81,8 @@ Wenn Sie ermitteln möchten, ob die meisten Ihrer Anforderungen metadatenzentrie
 #### <a name="workaround"></a>Problemumgehung
 
 - Überprüfen Sie, ob die Anwendung so geändert werden kann, dass sich die Anzahl von Metadatenvorgängen verringert.
-- Fügen Sie auf der Dateifreigabe eine virtuelle Festplatte (Virtual Hard Disk, VHD) hinzu, und binden Sie die VHD über SMB vom Client ein, um Dateivorgänge für die Daten durchzuführen. Dieser Ansatz funktioniert bei Szenarios mit einem einzelnen Writer/Reader oder bei Szenarios mit mehreren Readern und keinen Writern. Weil das Dateisystem im Besitz des Clients (und nicht von Azure Files) ist, dürfen Metadatenvorgänge lokal sein. Das-Setup bietet eine ähnliche Leistung wie bei einem lokalen, direkt angeschlossenen Speicher.
-    -   Verwenden Sie zum Einbinden einer VHD auf einem Windows Client das PowerShell-Cmdlet [Mount-DiskImage.](/powershell/module/storage/mount-diskimage)
+- Fügen Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) für die Dateifreigabe hinzu, und binden Sie die VHD vom Client ein, um Dateivorgänge für die Daten durchzuführen. Dieser Ansatz funktioniert bei Szenarios mit einem einzelnen Writer/Reader oder bei Szenarios mit mehreren Readern und keinen Writern. Weil das Dateisystem im Besitz des Clients (und nicht von Azure Files) ist, dürfen Metadatenvorgänge lokal sein. Das-Setup bietet eine ähnliche Leistung wie bei einem lokalen, direkt angeschlossenen Speicher.
+    -   Verwenden Sie zum Einbinden einer VHD auf einem Windows-Client das PowerShell-Cmdlet [Mount-DiskImage](/powershell/module/storage/mount-diskimage).
     -   Informationen zum Einbinden einer VHD unter Linux finden Sie in der Dokumentation für Ihre Linux-Distribution.     
 
 ### <a name="cause-3-single-threaded-application"></a>Ursache 3: Singlethread-Anwendung
@@ -124,6 +124,7 @@ Eine mögliche Ursache ist das Fehlen von SMB-Unterstützung für mehrere Kanäl
 - Durch Bereitstellen eines virtuellen Computers mit einem größeren Kern könnte der Durchsatz möglicherweise erhöht werden.
 - Durch Ausführen der Clientanwendung auf mehreren virtuellen Computern wird der Durchsatz erhöht.
 - Verwenden Sie nach Möglichkeit REST-APIs.
+- Für NFS-Dateifreigaben ist nconnect in der Vorschau verfügbar. Die Verwendung wird für Produktionsworkloads nicht empfohlen.
 
 ## <a name="throughput-on-linux-clients-is-significantly-lower-than-that-of-windows-clients"></a>Der Durchsatz auf Linux-Clients ist deutlich geringer als auf Windows-Clients
 
@@ -219,7 +220,7 @@ Letzte Änderungen an SMB Multichannel-Konfigurationseinstellungen ohne eine ern
 
 ### <a name="cause"></a>Ursache  
 
-Eine hohe Anzahl von Dateiänderungsbenachrichtigungen für Dateifreigaben kann zu erheblichen hohen Latenzen führen. Dieses Problem tritt normalerweise bei Websites auf, die auf Dateifreigaben mit einer tief geschachtelten Verzeichnisstruktur gehostet werden. Ein typisches Szenario ist eine IIS-gehostete Webanwendung, bei der eine Dateiänderungsbenachrichtigung für jedes Verzeichnis in der Standardkonfiguration eingerichtet wird. Bei jeder Änderung ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) für die Freigabe, für die der SMB-Client registriert ist, wird eine Änderungsbenachrichtigung vom Dateidienst an den Client gepusht. Dadurch werden Systemressourcen beansprucht, und das Problem verschlimmert sich mit zunehmender Anzahl von Änderungen. Dies kann eine Freigabedrosselung verursachen und folglich zu einer höheren clientseitigen Latenz führen. 
+Eine hohe Anzahl von Dateiänderungsbenachrichtigungen für Dateifreigaben kann zu erheblichen hohen Latenzen führen. Dieses Problem tritt normalerweise bei Websites auf, die auf Dateifreigaben mit einer tief geschachtelten Verzeichnisstruktur gehostet werden. Ein typisches Szenario ist eine IIS-gehostete Webanwendung, bei der eine Dateiänderungsbenachrichtigung für jedes Verzeichnis in der Standardkonfiguration eingerichtet wird. Bei jeder Änderung ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) für die Freigabe, für die der Client registriert ist, wird eine Änderungsbenachrichtigung vom Dateidienst an den Client gepusht. Dadurch werden Systemressourcen beansprucht, und das Problem verschlimmert sich mit zunehmender Anzahl von Änderungen. Dies kann eine Freigabedrosselung verursachen und folglich zu einer höheren clientseitigen Latenz führen. 
 
 Zur Überprüfung können Sie die Azure-Metriken im Portal folgendermaßen verwenden: 
 
@@ -227,7 +228,7 @@ Zur Überprüfung können Sie die Azure-Metriken im Portal folgendermaßen verwe
 1. Wählen Sie im linken Menü unter „Überwachung“ die Option „Metriken“ aus. 
 1. Wählen Sie „Datei“ als Metriknamespace für Ihren Speicherkontobereich aus. 
 1. Wählen Sie „Transaktionen“ als Metrik aus. 
-1. Fügen Sie einen Filter für „Antworttyp“ hinzu, und überprüfen Sie, ob es Anforderungen gibt, die den Antwortcode „SuccessWithThrottling“ (für SMB) oder „ClientThrottlingError“ (für REST) enthalten.
+1. Fügen Sie einen Filter für „ResponseType“ hinzu, und überprüfen Sie, ob es Anforderungen gibt, die den Antwortcode „SuccessWithThrottling“ (für SMB oder NFS) oder „ClientThrottlingError“ (für REST) enthalten.
 
 ### <a name="solution"></a>Lösung 
 

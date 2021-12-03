@@ -6,32 +6,26 @@ documentationcenter: ''
 author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 07/07/2021
+ms.date: 10/25/2021
 ms.author: danlep
-ms.openlocfilehash: c70e72550b88850b6b30c8f96f7f2dc4a460b222
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bf95131892703fcb7ce8c31c68f7b1da6dca1dee
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128678951"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031744"
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
-In diesem Artikel wird die Syntax für Richtlinienausdrücke in C# 7 erläutert. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.
-
-Weitere Informationen finden Sie unter:
-
-- Erfahren Sie, wie Kontextinformationen für Ihren Back-End-Dienst bereitgestellt werden. Verwenden Sie die Richtlinien [Abfragezeichenfolgenparameter festlegen](api-management-transformation-policies.md#SetQueryStringParameter) und [HTTP-Header festlegen](api-management-transformation-policies.md#SetHTTPheader), um diese Informationen bereitzustellen.
-- Erfahren Sie, wie die Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) verwendet wird, um den Zugriff auf Vorgänge basierend auf Tokenansprüchen vorab zu autorisieren.
-- Erfahren Sie, wie eine [API-Inspektor](./api-management-howto-api-inspector.md)-Ablaufverfolgung verwendet wird, um die Auswertung von Richtlinien und die Ergebnisse dieser Auswertungen anzuzeigen.
-- Erfahren Sie, wie Ausdrücke mit den Richtlinien [Aus Cache abrufen](api-management-caching-policies.md#GetFromCache) und [In Cache speichern](api-management-caching-policies.md#StoreToCache) verwendet werden, um das Zwischenspeichern von Antworten für API Management zu konfigurieren. Legen Sie eine Dauer fest, die dem Zwischenspeichern von Antworten des Back-End-Diensts entspricht, wie in der `Cache-Control`-Anweisung des Back-End-Diensts angegeben.
-- Erfahren Sie, wie Inhalte gefiltert werden. Entfernen Sie Datenelemente mit den Richtlinien [Ablaufsteuerung](api-management-advanced-policies.md#choose) und [Text festlegen](api-management-transformation-policies.md#SetBody) aus der vom Back-End empfangenen Antwort.
-- Informationen zum Herunterladen der Richtlinienanweisungen finden Sie im GitHub-Repository unter [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies).
-
+In diesem Artikel wird die Syntax für Richtlinienausdrücke in C# 7 erläutert. Jeder Ausdruck besitzt Zugriff auf Folgendes:
+* Die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables).
+* Eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.
 
 ## <a name="syntax"></a><a name="Syntax"></a> Syntax
-Ausdrücke mit einer einzelnen Anweisung werden in `@(expression)` eingeschlossen, wobei `expression` eine wohlgeformte C#-Ausdrucksanweisung ist.
-
-Ausdrücke mit mehreren Anweisungen werden in `@{expression}` eingeschlossen. Alle Codepfade in Ausdrücken mit mehreren Anweisungen müssen mit einer `return`-Anweisung enden.
+* **Ausdrücke mit einer einzelnen Anweisung:**
+    * Werden in `@(expression)` eingeschlossen, wobei `expression` eine wohlgeformte C#-Ausdrucksanweisung ist.
+* **Ausdrücke mit mehreren Anweisungen:** 
+    * Werden in `@{expression}` eingeschlossen. 
+    * Alle Codepfade in Ausdrücken mit mehreren Anweisungen müssen mit einer `return`-Anweisung enden.
 
 ## <a name="examples"></a><a name="PolicyExpressionsExamples"></a> Beispiele
 
@@ -61,13 +55,13 @@ Ausdrücke mit mehreren Anweisungen werden in `@{expression}` eingeschlossen. Al
 ```
 
 ## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>Verwendung
-Ausdrücke können als Attributwerte oder Textwerte in beliebigen API Management-[Richtlinien](api-management-policies.md) verwendet werden (sofern in der Richtlinienreferenz nicht anders angegeben).
+Sofern in der Richtlinienreferenz nicht anders angegeben, können Ausdrücke als Attributwerte oder Textwerte in beliebigen API Management-[Richtlinien](api-management-policies.md) verwendet werden.
 
 > [!IMPORTANT]
-> Bei Verwendung von Richtlinienausdrücken erfolgt nur eine begrenzte Überprüfung der Richtlinienausdrücke beim Definieren der Richtlinie. Ausdrücke werden vom Gateway zur Laufzeit ausgeführt, und durch Richtlinienausdrücke generierte Ausnahmen führen zu einem Laufzeitfehler.
+> Wenn die Richtlinie definiert wird, erhalten Richtlinienausdrücke nur eine eingeschränkte Überprüfung. Ausdrücke werden vom Gateway zur Laufzeit ausgeführt. Alle Ausnahmen, die von Richtlinienausdrücken generiert werden, führen zu einem Laufzeitfehler.
 
 ## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a> In Richtlinienausdrücken zulässige .NET Framework-Typen
-Die folgende Tabelle enthält die .NET Framework-Typen und die zugehörigen Mitglieder, die in Richtlinienausdrücken zulässig sind.
+Die folgende Tabelle enthält die .NET Framework-Typen und die Member, die in Richtlinienausdrücken zulässig sind.
 
 |type|Unterstützte Member|
 |--------------|-----------------------|
@@ -202,7 +196,9 @@ Die folgende Tabelle enthält die .NET Framework-Typen und die zugehörigen Mitg
 |System.Xml.XmlNodeType|All|
 
 ## <a name="context-variable"></a><a name="ContextVariables"></a> Kontextvariable
-Eine Variable namens `context` steht implizit in jedem [Richtlinienausdruck](api-management-policy-expressions.md#Syntax) zur Verfügung. Ihre Mitglieder bieten Informationen zu `\request`. Alle `context`-Mitglieder sind schreibgeschützt.
+Die `context`-Variable steht implizit in jedem [Richtlinienausdruck](api-management-policy-expressions.md#Syntax) zur Verfügung. Für ihre Member gilt:
+* Sie stellen Informationen bereit, die für die API-[Anforderung](#ref-context-request) und -[Antwort](#ref-context-response) und zugehörige Eigenschaften relevant sind. 
+* Alle sind alle schreibgeschützt.
 
 |Kontextvariable|Zulässige Methoden, Eigenschaften und Parameterwerte|
 |----------------------|-------------------------------------------------------|
@@ -220,7 +216,7 @@ Eine Variable namens `context` steht implizit in jedem [Richtlinienausdruck](api
 |<a id="ref-context-user"></a>context.User|Email: string<br /><br /> FirstName: string<br /><br /> Groups: IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: string<br /><br /> Identities: IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: string<br /><br /> Note: string<br /><br /> RegistrationDate: Datetime|
 |<a id="ref-iapi"></a>IApi|Id: string<br /><br /> Name: string<br /><br /> Path: string<br /><br /> Protocols: IEnumerable<string\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Id: string<br /><br /> Name: string|
-|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false): Where T: string, byte[],JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Mit der `context.Request.Body.As<T>`-Methode und der `context.Response.Body.As<T>`-Methode werden ein Anforderungs- und ein Antwortnachrichtentext in einem angegebenen Typ `T` gelesen. Standardmäßig verwendet die Methode den Datenstrom des Originalnachrichtentexts und sorgt dafür, dass er nach seiner Rückgabe nicht mehr verfügbar ist. Wenn dies vermieden werden und die Methode eine Kopie des Textdatenstroms verarbeiten soll, legen Sie den `preserveContent`-Parameter wie in [diesem Beispiel](api-management-transformation-policies.md#SetBody) auf `true` fest.|
+|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false): Where T: string, byte[],JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Die `context.Request.Body.As<T>`- und `context.Response.Body.As<T>`-Methoden werden zum Lesen eines Anforderungs- und eines Antwortnachrichtentexts in einem angegebenen `T`-Typ verwendet. Standardmäßig gilt für die Methode Folgendes:<br /><ul><li>Sie verwendet den ursprünglichen Nachrichtentextstream.</li><li>Sie rendert ihn nach der Rückgabe als nicht verfügbar.</li></ul> <br />Wenn dies vermieden werden und die Methode eine Kopie des Textdatenstroms verarbeiten soll, legen Sie den `preserveContent`-Parameter wie in [diesem Beispiel](api-management-transformation-policies.md#SetBody) auf `true` fest.|
 |<a id="ref-iurl"></a>IUrl|Host: string<br /><br /> Path: string<br /><br /> Port: int<br /><br /> [Query](#ref-iurl-query) (Abfrage): IReadOnlyDictionary<string, string[]><br /><br /> QueryString: string<br /><br /> Scheme: string|
 |<a id="ref-iuseridentity"></a>IUserIdentity|Id: string<br /><br /> Provider: string|
 |<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Header: string<br /><br /> Query: string|
@@ -250,3 +246,13 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
 + Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 + [API Management-Richtlinienbeispiele](./policy-reference.md)
+
+Weitere Informationen finden Sie unter:
+
+- Erfahren Sie, wie Kontextinformationen für Ihren Back-End-Dienst bereitgestellt werden. Verwenden Sie die Richtlinien [Abfragezeichenfolgenparameter festlegen](api-management-transformation-policies.md#SetQueryStringParameter) und [HTTP-Header festlegen](api-management-transformation-policies.md#SetHTTPheader), um diese Informationen bereitzustellen.
+- Erfahren Sie, wie die Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) verwendet wird, um den Zugriff auf Vorgänge basierend auf Tokenansprüchen vorab zu autorisieren.
+- Erfahren Sie, wie eine [API-Inspektor](./api-management-howto-api-inspector.md)-Ablaufverfolgung verwendet wird, um die Auswertung von Richtlinien und die Ergebnisse dieser Auswertungen anzuzeigen.
+- Erfahren Sie, wie Ausdrücke mit den Richtlinien [Aus Cache abrufen](api-management-caching-policies.md#GetFromCache) und [In Cache speichern](api-management-caching-policies.md#StoreToCache) verwendet werden, um das Zwischenspeichern von Antworten für API Management zu konfigurieren. Legen Sie eine Dauer fest, die dem Zwischenspeichern von Antworten des Back-End-Diensts entspricht, wie in der `Cache-Control`-Anweisung des Back-End-Diensts angegeben.
+- Erfahren Sie, wie Inhalte gefiltert werden. Entfernen Sie Datenelemente mit den Richtlinien [Ablaufsteuerung](api-management-advanced-policies.md#choose) und [Text festlegen](api-management-transformation-policies.md#SetBody) aus der vom Back-End empfangenen Antwort.
+- Informationen zum Herunterladen der Richtlinienanweisungen finden Sie im GitHub-Repository unter [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies).
+

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: bf6afd93833bb8e81046f4bc84d53203920d4733
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: de40ab35343a096f8259c446289f549528f2bcab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129989891"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068187"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Aktivieren von nativen Clientanwendungen für die Interaktion mit Proxyanwendungen
 
@@ -111,7 +111,7 @@ Die erforderlichen Informationen im Beispielcode sind wie folgt im Azure AD-Por
 | \<Tenant ID> | **Azure Active Directory** > **Eigenschaften** > **Verzeichnis-ID** |
 | \<App ID of the Native app> | **Anwendungs Registrierung** > *Ihre native Anwendung* > **Übersicht** > **Anwendungs-ID** |
 | \<Scope> | **Anwendungsregistrierung** > *Ihre native Anwendung* > **API-Berechtigungen** > Klicken Sie auf die Berechtigungs-API (user_impersonation) > Ein Bereich mit der Überschrift **user_impersonation** wird auf der rechten Seite angezeigt. > Der Bereich ist die URL im Bearbeitungsfeld.
-| \<Proxy App Url> | Die externe URL und der Pfad zur API.
+| \<Proxy App URL> | Die externe URL und der Pfad zur API
 
 Nachdem Sie den MSAL-Code mit diesen Parametern bearbeitet haben, können sich Ihre Benutzer bei nativen Client-Apps authentifizieren, auch wenn sie sich außerhalb des Unternehmensnetzwerks befinden.
 

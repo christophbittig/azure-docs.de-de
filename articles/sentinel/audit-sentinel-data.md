@@ -1,52 +1,50 @@
 ---
-title: Überwachen von Azure Sentinel-Abfragen und -Aktivitäten | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie in Azure Sentinel ausgeführte Abfragen und Aktivitäten überwachen.
+title: Überwachen von Microsoft Sentinel-Abfragen und -Aktivitäten | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie in Microsoft Sentinel ausgeführte Abfragen und Aktivitäten überwachen.
 services: sentinel
 documentationcenter: na
 author: batamig
 manager: rkarlin
 editor: ''
 ms.assetid: 9b4c8e38-c986-4223-aa24-a71b01cb15ae
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 27e4d3cd795d612ee9ef75160dc7a466a1dfdaab
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d1524139049b77cfeeff58563904489ae49728ef
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131075423"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518050"
 ---
-# <a name="audit-azure-sentinel-queries-and-activities"></a>Überwachen von Azure Sentinel-Abfragen und -Aktivitäten
+# <a name="audit-microsoft-sentinel-queries-and-activities"></a>Überwachen von Microsoft Sentinel-Abfragen und -Aktivitäten
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Überwachungsdaten für ausgeführte Abfragen und Aktivitäten in Ihrem Azure Sentinel-Arbeitsbereich anzeigen können, z. B. für interne und externe Complianceanforderungen im SOC-Arbeitsbereich (Security Operations).
+In diesem Artikel wird beschrieben, wie Sie Überwachungsdaten für ausgeführte Abfragen und Aktivitäten in Ihrem Microsoft Sentinel-Arbeitsbereich anzeigen können, z. B. für interne und externe Complianceanforderungen im SOC-Arbeitsbereich (Security Operations).
 
-Azure Sentinel bietet Zugriff auf:
+Microsoft Sentinel bietet Zugriff auf:
 
-- Die Tabelle **AzureActivity**, die Details zu allen in Azure Sentinel ausgeführten Aktionen bereitstellt, z. B. zum Bearbeiten von Warnungsregeln. In der Tabelle **AzureActivity** werden bestimmte Abfragedaten nicht protokolliert. Weitere Informationen finden Sie unter [Überwachen mit Azure-Aktivitätsprotokollen](#auditing-with-azure-activity-logs).
+- Die Tabelle **AzureActivity**, die Details zu allen in Microsoft Sentinel ausgeführten Aktionen bereitstellt, z. B. zum Bearbeiten von Warnungsregeln. In der Tabelle **AzureActivity** werden bestimmte Abfragedaten nicht protokolliert. Weitere Informationen finden Sie unter [Überwachen mit Azure-Aktivitätsprotokollen](#auditing-with-azure-activity-logs).
 
-- Die Tabelle **LAQueryLogs**, die Details zu den Abfragen bereitstellt, die in Log Analytics ausgeführt werden, einschließlich der von Azure Sentinel ausgeführten Abfragen. Weitere Informationen finden Sie unter [Überwachung mit LAQueryLogs](#auditing-with-laquerylogs).
+- Die Tabelle **LAQueryLogs**, die Details zu den Abfragen bereitstellt, die in Log Analytics ausgeführt werden, einschließlich der von Microsoft Sentinel ausgeführten Abfragen. Weitere Informationen finden Sie unter [Überwachung mit LAQueryLogs](#auditing-with-laquerylogs).
 
 > [!TIP]
-> Zusätzlich zu den in diesem Artikel beschriebenen manuellen Abfragen bietet Azure Sentinel eine integrierte Arbeitsmappe, die Sie beim Überwachen der Aktivitäten in ihrer SOC-Umgebung unterstützt.
+> Zusätzlich zu den in diesem Artikel beschriebenen manuellen Abfragen bietet Microsoft Sentinel eine integrierte Arbeitsmappe, die Sie beim Überwachen der Aktivitäten in ihrer SOC-Umgebung unterstützt.
 >
-> Suchen Sie im Bereich Azure Sentinel-**Arbeitsmappen** nach der Arbeitsmappe **Arbeitsbereichsüberwachung**.
-
-
+> Suchen Sie im Microsoft Sentinel-Bereich **Arbeitsmappen** nach der Arbeitsmappe **Arbeitsbereichsüberwachung**.
 
 ## <a name="auditing-with-azure-activity-logs"></a>Überwachen mit Azure-Aktivitätsprotokollen
 
-Die Überwachungsprotokolle von Azure Sentinel werden in den [Azure-Aktivitätsprotokollen](../azure-monitor/essentials/platform-logs-overview.md) verwaltet, in denen die Tabelle **AzureActivity** alle Aktionen enthält, die in Ihrem Azure Sentinel-Arbeitsbereich ausgeführt werden.
+Die Überwachungsprotokolle von Microsoft Sentinel werden in den [Azure-Aktivitätsprotokollen](../azure-monitor/essentials/platform-logs-overview.md) verwaltet, in denen die Tabelle **AzureActivity** alle Aktionen enthält, die in Ihrem Microsoft Sentinel-Arbeitsbereich ausgeführt werden.
 
-Sie können die Tabelle **AzureActivity** verwenden, wenn Sie die Aktivität in Ihrer SOC-Umgebung mit Azure Sentinel überwachen.
+Sie können die Tabelle **AzureActivity** verwenden, wenn Sie die Aktivität in Ihrer SOC-Umgebung mit Microsoft Sentinel überwachen.
 
 **So fragen Sie die Tabelle AzureActivity ab**:
 
@@ -54,7 +52,7 @@ Sie können die Tabelle **AzureActivity** verwenden, wenn Sie die Aktivität in 
 
 1. Fragen Sie die Daten dann wie jede andere Tabelle mit KQL ab.
 
-    Die Tabelle **AzureActivity** enthält Daten aus vielen Diensten, einschließlich Azure Sentinel. Wenn Sie nur Daten aus Azure Sentinel filtern möchten, starten Sie die Abfrage mit folgendem Code:
+    Die Tabelle **AzureActivity** enthält Daten aus vielen Diensten, einschließlich Microsoft Sentinel. Wenn Sie nur Daten aus Microsoft Sentinel filtern möchten, starten Sie die Abfrage mit folgendem Code:
 
     ```kql
      AzureActivity
@@ -70,9 +68,9 @@ Sie können die Tabelle **AzureActivity** verwenden, wenn Sie die Aktivität in 
     | project Caller , TimeGenerated , Properties
     ```
 
-Fügen Sie Ihrer Abfrage weitere Parameter hinzu, um die Tabelle **AzureActivities** weiter zu untersuchen, je nachdem, was Sie melden müssen. In den folgenden Abschnitten finden Sie weitere Beispielabfragen für die Überwachung mit Daten der Tabelle **AzureActivity**. 
+Fügen Sie Ihrer Abfrage weitere Parameter hinzu, um die Tabelle **AzureActivities** weiter zu untersuchen, je nachdem, was Sie melden müssen. In den folgenden Abschnitten finden Sie weitere Beispielabfragen für die Überwachung mit Daten der Tabelle **AzureActivity**.
 
-Weitere Informationen finden Sie unter [In Azure-Aktivitätsprotokollen enthaltene Azure Sentinel-Daten](#azure-sentinel-data-included-in-azure-activity-logs).
+Weitere Informationen finden Sie unter [In Azure-Aktivitätsprotokollen enthaltene Microsoft Sentinel-Daten](#microsoft-sentinel-data-included-in-azure-activity-logs).
 
 ### <a name="find-all-actions-taken-by-a-specific-user-in-the-last-24-hours"></a>Suchen aller Aktionen, die von einem bestimmten Benutzer in den letzten 24 Stunden ausgeführt wurden
 
@@ -87,7 +85,7 @@ AzureActivity
 
 ### <a name="find-all-delete-operations"></a>Suchen aller Löschvorgänge
 
-Die folgende **AzureActivity**-Tabellenabfrage listet alle Löschvorgänge auf, die in Ihrem Azure Sentinel-Arbeitsbereich ausgeführt wurden.
+Die folgende **AzureActivity**-Tabellenabfrage listet alle Löschvorgänge auf, die in Ihrem Microsoft Sentinel-Arbeitsbereich ausgeführt wurden.
 
 ```kql
 AzureActivity
@@ -95,12 +93,11 @@ AzureActivity
 | where OperationName contains "Delete"
 | where ActivityStatusValue contains "Succeeded"
 | project TimeGenerated, Caller, OperationName
-``` 
+```
 
+### <a name="microsoft-sentinel-data-included-in-azure-activity-logs"></a>In Azure-Aktivitätsprotokollen enthaltene Microsoft Sentinel-Daten
 
-### <a name="azure-sentinel-data-included-in-azure-activity-logs"></a>In Azure-Aktivitätsprotokollen enthaltene Azure Sentinel-Daten
- 
-Die Überwachungsprotokolle von Azure Sentinel werden in den [Azure-Aktivitätsprotokollen](../azure-monitor/essentials/platform-logs-overview.md)verwaltet und enthalten die folgenden Informationstypen:
+Die Überwachungsprotokolle von Microsoft Sentinel werden in den [Azure-Aktivitätsprotokollen](../azure-monitor/essentials/platform-logs-overview.md) verwaltet und enthalten die folgenden Informationstypen:
 
 |Vorgang  |Informationstypen  |
 |---------|---------|
@@ -109,59 +106,55 @@ Die Überwachungsprotokolle von Azure Sentinel werden in den [Azure-Aktivitätsp
 |**Aktualisiert**     |  Warnregeln<br>Lesezeichen <br> Fälle <br> Datenconnectors <br>Vorfälle <br>Kommentare zum Incident <br>Threat Intelligence-Berichte <br> Arbeitsmappen <br>Workflow       |
 |     |         |
 
-Sie können die Azure-Aktivitätsprotokolle auch verwenden, um nach Benutzerautorisierungen und Lizenzen zu suchen. 
+Sie können die Azure-Aktivitätsprotokolle auch verwenden, um nach Benutzerautorisierungen und Lizenzen zu suchen.
 
 In der folgenden Tabelle sind z. B. die in Azure-Aktivitätsprotokollen gefundenen ausgewählten Vorgänge mit der jeweiligen Ressource aufgelistet, aus der die Protokolldaten abgerufen werden.
 
-|Vorgangsname|    Ressourcentyp|
+|Vorgangsname| Ressourcentyp|
 |----|----|
-|Arbeitsmappe erstellen oder aktualisieren  |Microsoft.Insights/workbooks|
-|Arbeitsmappe löschen    |Microsoft.Insights/workbooks|
-|Workflow festlegen   |Microsoft.Logic/workflows|
-|Workflow löschen    |Microsoft.Logic/workflows|
-|Gespeicherten Suchvorgang erstellen    |Microsoft.OperationalInsights/workspaces/savedSearches|
-|Gespeicherte Suche löschen    |Microsoft.OperationalInsights/workspaces/savedSearches|
+|Arbeitsmappe erstellen oder aktualisieren |Microsoft.Insights/workbooks|
+|Arbeitsmappe löschen |Microsoft.Insights/workbooks|
+|Workflow festlegen |Microsoft.Logic/workflows|
+|Workflow löschen |Microsoft.Logic/workflows|
+|Gespeicherten Suchvorgang erstellen |Microsoft.OperationalInsights/workspaces/savedSearches|
+|Gespeicherte Suche löschen |Microsoft.OperationalInsights/workspaces/savedSearches|
 |Warnungsregeln aktualisieren |Microsoft.SecurityInsights/alertRules|
 |Warnungsregeln löschen |Microsoft.SecurityInsights/alertRules|
 |Antwortaktionen für Warnungsregeln aktualisieren |Microsoft.SecurityInsights/alertRules/actions|
 |Antwortaktionen für Warnungsregeln löschen |Microsoft.SecurityInsights/alertRules/actions|
-|Lesezeichen aktualisieren   |Microsoft.SecurityInsights/bookmarks|
-|Lesezeichen löschen   |Microsoft.SecurityInsights/bookmarks|
-|Fälle aktualisieren   |Microsoft.SecurityInsights/Cases|
-|Untersuchung von Fällen aktualisieren  |Microsoft.SecurityInsights/Cases/investigations|
-|Kommentare zu Fällen erstellen   |Microsoft.SecurityInsights/Cases/comments|
+|Lesezeichen aktualisieren |Microsoft.SecurityInsights/bookmarks|
+|Lesezeichen löschen |Microsoft.SecurityInsights/bookmarks|
+|Fälle aktualisieren |Microsoft.SecurityInsights/Cases|
+|Untersuchung von Fällen aktualisieren |Microsoft.SecurityInsights/Cases/investigations|
+|Kommentare zu Fällen erstellen |Microsoft.SecurityInsights/Cases/comments|
 |Datenconnectors aktualisieren |Microsoft.SecurityInsights/dataConnectors|
 |Datenconnectors löschen |Microsoft.SecurityInsights/dataConnectors|
-|Aktualisieren der Einstellungen    |Microsoft.SecurityInsights/settings|
+|Aktualisieren der Einstellungen |Microsoft.SecurityInsights/settings|
 | | |
 
 Weitere Informationen finden Sie unter [Ereignisschema des Azure-Aktivitätsprotokolls](../azure-monitor/essentials/activity-log-schema.md).
 
-
 ## <a name="auditing-with-laquerylogs"></a>Überwachung mit LAQueryLogs
 
-Die Tabelle **LAQueryLogs** enthält Details zu Protokollabfragen, die in Log Analytics ausgeführt werden. Da Log Analytics als zugrunde liegender Datenspeicher von Azure Sentinel verwendet wird, können Sie Ihr System so konfigurieren, dass LAQueryLogs-Daten in Ihrem Azure Sentinel-Arbeitsbereich erfasst werden.
+Die Tabelle **LAQueryLogs** enthält Details zu Protokollabfragen, die in Log Analytics ausgeführt werden. Da Log Analytics als zugrunde liegender Datenspeicher von Microsoft Sentinel verwendet wird, können Sie Ihr System so konfigurieren, dass LAQueryLogs-Daten in Ihrem Microsoft Sentinel-Arbeitsbereich erfasst werden.
 
 LAQueryLogs-Daten enthalten beispielsweise folgende Informationen:
 
 - Wann Abfragen ausgeführt wurden
 - Wer Abfragen in Log Analytics ausführte
-- Welches Tool zum Ausführen von Abfragen in Log Analytics verwendet wurde, z. B. Azure Sentinel
+- Welches Tool zum Ausführen von Abfragen in Log Analytics verwendet wurde, z. B. Microsoft Sentinel
 - Die Abfragetexte selbst
 - Leistungsdaten bei jeder Abfrageausführung
 
 > [!NOTE]
-> - Die Tabelle **LAQueryLogs** enthält nur Abfragen, die auf dem Blatt Protokolle von Azure Sentinel ausgeführt wurden. Sie enthält nicht die Abfragen, die von geplanten Analyseregeln mit dem **Untersuchungsdiagramm** oder auf der Seite **Hunting** von Azure Sentinel ausgeführt werden.
+> - Die Tabelle **LAQueryLogs** enthält nur Abfragen, die auf dem Blatt „Protokolle“ von Microsoft Sentinel ausgeführt wurden. Sie enthält nicht die Abfragen, die von geplanten Analyseregeln mit dem **Untersuchungsdiagramm** oder auf der Seite **Hunting** von Microsoft Sentinel ausgeführt werden.
 > - Zwischen dem Zeitpunkt, zu dem eine Abfrage ausgeführt wird, und dem Füllen der Daten in der Tabelle **LAQueryLogs** kann es zu einer kurzen Verzögerung kommen. Es wird empfohlen, ungefähr 5 Minuten auf die Abfrage der Tabelle **LAQueryLogs** für Überwachungsdaten zu warten.
->
-
 
 **So fragen Sie die Tabelle LAQueryLogs ab**:
 
-1. Die Tabelle **LAQueryLogs** ist in Ihrem Log Analytics-Arbeitsbereich standardmäßig nicht aktiviert. Wenn Sie bei der Überwachung in Azure Sentinel **LAQueryLogs**-Daten verwenden möchten, aktivieren Sie zuerst **LAQueryLogs** im Bereich **Diagnoseeinstellungen** in Ihrem Log Analytics-Arbeitsbereich.
+1. Die Tabelle **LAQueryLogs** ist in Ihrem Log Analytics-Arbeitsbereich standardmäßig nicht aktiviert. Wenn Sie bei der Überwachung in Microsoft Sentinel **LAQueryLogs**-Daten verwenden möchten, aktivieren Sie zuerst **LAQueryLogs** im Bereich **Diagnoseeinstellungen** in Ihrem Log Analytics-Arbeitsbereich.
 
     Weitere Informationen finden Sie unter [Überwachen von Abfragen in Azure Monitor-Protokollen](../azure-monitor/logs/query-audit.md).
-
 
 1. Fragen Sie die Daten dann wie jede andere Tabelle mit KQL ab.
 
@@ -173,7 +166,7 @@ LAQueryLogs-Daten enthalten beispielsweise folgende Informationen:
     | summarize events_count=count() by bin(TimeGenerated, 1d)
     ```
 
-In den folgenden Abschnitten werden weitere Beispielabfragen gezeigt, die für die Tabelle **LAQueryLogs** ausgeführt werden können, wenn Sie Aktivitäten in Ihrer SOC-Umgebung mithilfe von Azure Sentinel überwachen.
+In den folgenden Abschnitten werden weitere Beispielabfragen gezeigt, die für die Tabelle **LAQueryLogs** ausgeführt werden können, wenn Sie Aktivitäten in Ihrer SOC-Umgebung mithilfe von Microsoft Sentinel überwachen.
 
 ### <a name="the-number-of-queries-run-where-the-response-wasnt-ok"></a>Die Anzahl der ausgeführten Abfragen, bei denen die Antwort nicht „OK“ war
 
@@ -214,11 +207,11 @@ LAQueryLogs
 | sort by Queries desc
 ```
 
-## <a name="configuring-alerts-for-azure-sentinel-activities"></a>Konfigurieren von Warnungen für Azure Sentinel-Aktivitäten
+## <a name="configuring-alerts-for-microsoft-sentinel-activities"></a>Konfigurieren von Warnungen für Microsoft Sentinel-Aktivitäten
 
-Möglicherweise möchten Sie Azure Sentinel-Überwachungsressourcen verwenden, um proaktive Warnungen zu erstellen.
+Möglicherweise möchten Sie Microsoft Sentinel-Überwachungsressourcen verwenden, um proaktive Warnungen zu erstellen.
 
-Wenn Sie z. B. sensible Tabellen in Ihrem Azure Sentinel-Arbeitsbereich haben, können Sie die folgende Abfrage verwenden, damit Sie bei jedem Abfragen dieser Tabellen benachrichtigt werden:
+Wenn Sie z. B. sensible Tabellen in Ihrem Microsoft Sentinel-Arbeitsbereich haben, können Sie die folgende Abfrage verwenden, damit Sie bei jedem Abfragen dieser Tabellen benachrichtigt werden:
 
 ```kql
 LAQueryLogs
@@ -228,36 +221,35 @@ LAQueryLogs
 | project User, Query
 ```
 
+## <a name="monitor-microsoft-sentinel-with-workbooks-rules-and-playbooks"></a>Überwachen von Microsoft Sentinel mit Arbeitsmappen, Regeln und Playbooks
 
-## <a name="monitor-azure-sentinel-with-workbooks-rules-and-playbooks"></a>Überwachen von Azure Sentinel mit Arbeitsmappen, Regeln und Playbooks
-
-Verwenden Sie die eigenen Features von Azure Sentinel, um Ereignisse und Aktionen zu überwachen, die in Azure Sentinel auftreten.
+Verwenden Sie die eigenen Features von Microsoft Sentinel, um Ereignisse und Aktionen zu überwachen, die in Microsoft Sentinel auftreten.
 
 - **Überwachen mit Arbeitsmappen**. Die folgenden Arbeitsmappen wurden zum Überwachen der Arbeitsbereichsaktivität erstellt:
 
-    - **Arbeitsbereichsüberwachung**. Enthält Informationen darüber, welche Benutzer in der Umgebung Aktionen ausführen, welche Aktionen sie ausgeführt haben und mehr.
-    - **Analyseeffizienz**. Bietet Erkenntnisse darüber, welche Analyseregeln verwendet, welche MITRE-Taktiken am häufigsten behandelt und welche Incidents aus den Regeln generiert werden.
-    - **Effizienz von Sicherheitsvorgängen**. Zeigt Metriken zur Leistung des SOC-Teams, geöffneten Incidents, geschlossenen Incidents und mehr an. Diese Arbeitsmappe kann verwendet werden, um die Leistung des Teams zu zeigen und alle möglicherweise fehlenden, Aufmerksamkeit erfordernden Bereiche hervorzuheben.
-    - **Überwachung der Datenerfassungsintegrität**. Hilft bei der Suche nach angehaltenen oder beendeten Erfassungen. 
+  - **Arbeitsbereichsüberwachung**. Enthält Informationen darüber, welche Benutzer in der Umgebung Aktionen ausführen, welche Aktionen sie ausgeführt haben und mehr.
+  - **Analyseeffizienz**. Bietet Erkenntnisse darüber, welche Analyseregeln verwendet, welche MITRE-Taktiken am häufigsten behandelt und welche Incidents aus den Regeln generiert werden.
+  - **Effizienz von Sicherheitsvorgängen**. Zeigt Metriken zur Leistung des SOC-Teams, geöffneten Incidents, geschlossenen Incidents und mehr an. Diese Arbeitsmappe kann verwendet werden, um die Leistung des Teams zu zeigen und alle möglicherweise fehlenden, Aufmerksamkeit erfordernden Bereiche hervorzuheben.
+  - **Überwachung der Datenerfassungsintegrität**. Hilft bei der Suche nach angehaltenen oder beendeten Erfassungen.
 
-    Weitere Informationen finden Sie unter [Häufig verwendete Azure Sentinel-Arbeitsmappen](top-workbooks.md).
+  Weitere Informationen finden Sie unter [Häufig verwendete Microsoft Sentinel-Arbeitsmappen](top-workbooks.md).
 
-- **Achten auf Erfassungsverzögerungen**.  Wenn Sie Bedenken wegen der Erfassungsverzögerung haben, [legen Sie eine Variable in einer Analyseregel fest](https://techcommunity.microsoft.com/t5/azure-sentinel/handling-ingestion-delay-in-azure-sentinel-scheduled-alert-rules/ba-p/2052851), um die Verzögerung darzustellen. 
+- **Achten auf Erfassungsverzögerungen**.  Wenn Sie Bedenken wegen der Erfassungsverzögerung haben, [legen Sie eine Variable in einer Analyseregel fest](ingestion-delay.md), um die Verzögerung darzustellen.
 
-    Die folgende Analyseregel kann beispielsweise dazu beitragen, sicherzustellen, dass die Ergebnisse keine Duplikate enthalten, und dass Protokolle beim Ausführen der Regeln nicht ignoriert werden:
+  Die folgende Analyseregel kann beispielsweise dazu beitragen, sicherzustellen, dass die Ergebnisse keine Duplikate enthalten, und dass Protokolle beim Ausführen der Regeln nicht ignoriert werden:
 
-    ```kusto
-    let ingestion_delay= 2min;let rule_look_back = 5min;CommonSecurityLog| where TimeGenerated >= ago(ingestion_delay + rule_look_back)| where ingestion_time() > (rule_look_back)
-    -   Calculating ingestion delay
+  ```kusto
+  let ingestion_delay= 2min;let rule_look_back = 5min;CommonSecurityLog| where TimeGenerated >= ago(ingestion_delay + rule_look_back)| where ingestion_time() > (rule_look_back)
+  - Calculating ingestion delay
     CommonSecurityLog| extend delay = ingestion_time() - TimeGenerated| summarize percentiles(delay,95,99) by DeviceVendor, DeviceProduct
-    ```
+  ```
 
-    Weitere Informationen finden Sie unter [Automatisierung der Vorfallbehandlung in Azure Sentinel mit Automatisierungsregeln](automate-incident-handling-with-automation-rules.md).
+  Weitere Informationen finden Sie unter [Automatisierung der Vorfallbehandlung in Microsoft Sentinel mit Automatisierungsregeln](automate-incident-handling-with-automation-rules.md).
 
 - **Überwachen Sie die Integrität des Datenconnectors** mithilfe des Playbooks [Connector Health Push Notification Solution](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Send-ConnectorHealthStatus) (Pushbenachrichtigungslösung zur Connectorintegrität), um auf eine angehaltene oder beendete Erfassung zu achten und Benachrichtigungen zu senden, wenn ein Connector das Erfassen von Daten beendet hat oder Computer die Berichterstellung beendet haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie in Azure Sentinel die Arbeitsmappe **Arbeitsbereichsüberwachung**, um die Aktivitäten in Ihrer SOC-Umgebung zu überwachen.
+Verwenden Sie in Microsoft Sentinel die Arbeitsmappe **Arbeitsbereichsüberwachung**, um die Aktivitäten in Ihrer SOC-Umgebung zu überwachen.
 
 Weitere Informationen finden Sie unter [Visualisieren und Überwachen Ihrer Daten](monitor-your-data.md).

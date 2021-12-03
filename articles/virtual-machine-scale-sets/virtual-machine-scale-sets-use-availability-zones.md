@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5584f052dc9dcb72f03b923c1a4c666e212b5385
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: b4da00cb112ac84a049910cb23a71841461cfa06
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697357"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459917"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet
 
@@ -38,7 +38,7 @@ Bei der maximalen Zuweisung verteilt die Skalierungsgruppe Ihre VMs in jeder Zon
 
 ### <a name="placement-groups"></a>Platzierungsgruppen
 
-Bei der Bereitstellung einer Skalierungsgruppe haben Sie auch die Möglichkeit, diese mit einer einzelnen oder mit mehreren [Platzierungsgruppen](./virtual-machine-scale-sets-placement-groups.md) pro Verfügbarkeitszone durchzuführen. Bei regionalen (nicht zonalen) Skalierungsgruppen kann zwischen einer einzelnen Platzierungsgruppe oder mehreren Platzierungsgruppen in der Region gewählt werden. Für die meisten Workloads empfehlen wir mehrere Platzierungsgruppen, um eine bessere Skalierbarkeit zu erzielen. In der API-Version *2017-12-01* werden für Skalierungsgruppen standardmäßig mehrere Platzierungsgruppen für einzelne und mehrere Zonen verwendet. Für regionale (nicht zonale) Skalierungsgruppen wird dagegen standardmäßig nur eine einzelne Platzierungsgruppe genutzt.
+Bei der Bereitstellung einer Skalierungsgruppe haben Sie auch die Möglichkeit, diese mit einer einzelnen oder mit mehreren [Platzierungsgruppen](./virtual-machine-scale-sets-placement-groups.md) pro Verfügbarkeitszone durchzuführen. Bei regionalen (nicht zonalen) Skalierungsgruppen kann zwischen einer einzelnen Platzierungsgruppe oder mehreren Platzierungsgruppen in der Region gewählt werden. Wenn die Eigenschaft Skalierungssatz `singlePlacementGroup` auf false gesetzt ist, kann der Skalierungssatz aus mehreren Platzierungsgruppen bestehen und hat einen Bereich von 0-1.000 VMs. Beim Standardwert true besteht das Scale-Set aus einer einzigen Platzierungsgruppe und hat einen Bereich von 0-100 VMs. Für die meisten Workloads empfehlen wir mehrere Platzierungsgruppen, um eine bessere Skalierbarkeit zu erzielen. In der API-Version *2017-12-01* werden für Skalierungsgruppen standardmäßig mehrere Platzierungsgruppen für einzelne und mehrere Zonen verwendet. Für regionale (nicht zonale) Skalierungsgruppen wird dagegen standardmäßig nur eine einzelne Platzierungsgruppe genutzt.
 
 > [!NOTE]
 > Bei der maximalen Zuweisung müssen Sie mehrere Platzierungsgruppen verwenden.
@@ -55,6 +55,9 @@ Es ist möglich, dass VMs in der Skalierungsgruppe erfolgreich erstellt werden, 
 Beim bestmöglichen Zonengleichgewicht versucht die Skalierungsgruppe, das horizontale Herunter- und Hochskalieren durchzuführen, während das Gleichgewicht beibehalten wird. Falls dies aus bestimmten Gründen nicht möglich ist (wenn beispielsweise eine Zone ausfällt und die Skalierungsgruppe in dieser Zone keine neue VM erstellen kann), lässt die Skalierungsgruppe ein vorübergehendes Ungleichgewicht zu, um das erfolgreiche Ab- und Aufskalieren zu ermöglichen. Bei den nachfolgenden Versuchen zur horizontalen Skalierung fügt die Skalierungsgruppe den Zonen VMs hinzu, die mehr VMs benötigen, damit sich die Skalierungsgruppe im Gleichgewicht befindet. Entsprechend entfernt die Skalierungsgruppe bei nachfolgenden Versuchen, das horizontale Herunterskalieren durchzuführen, VMs aus den Zonen, die weniger VMs benötigen, damit sich die Skalierungsgruppe im Gleichgewicht befindet. Beim „strengen Zonengleichgewicht“ enden für die Skalierungsgruppe alle Versuche zum horizontalen Herunter- oder Hochskalieren mit einem Fehler, falls dies zu einem Ungleichgewicht führen würde.
 
 Legen Sie *zoneBalance* auf *false* fest, um das bestmögliche Zonengleichgewicht zu verwenden. Dies ist die Standardeinstellung in API-Version *2017-12-01*. Legen Sie *zoneBalance* auf *true* fest, um das strenge Zonengleichgewicht zu verwenden.
+
+>[!NOTE]
+> Die `zoneBalance`-Eigenschaft kann nur festgelegt werden, wenn die zones-Eigenschaft der Skalierung gruppe mehr als eine Zone enthält. Wenn keine Zonen oder nur eine Zone angegeben ist, sollte die zoneBalance-Eigenschaft nicht festgelegt werden.
 
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>Skalierungsgruppen mit einer Zone und zonenredundante Skalierungsgruppen
 

@@ -4,187 +4,56 @@ description: Eine Referenz aller Dienste und anderer Ressourcen, die von Azure M
 ms.topic: conceptual
 author: rboucher
 ms.author: robb
-ms.date: 08/15/2020
-ms.openlocfilehash: 1e43944b803f798c3bd741903f1ee0732bcb93d4
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 11/02/2021
+ms.openlocfilehash: b5ae25c2421d4c572a3ce2bd40ccec5a6cb959f7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864533"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310474"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
-In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
 
-## <a name="insights-and-core-solutions"></a>Erkenntnisse und wichtige Lösungen
-Wichtige Erkenntnisse und Lösungen werden als Teil von Azure Monitor betrachtet und folgen den Vereinbarungen zum Support und Servicelevel für Azure. Sie werden in allen Azure-Regionen unterstützt, in denen Azure Monitor verfügbar ist.
+In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden.
 
-### <a name="insights"></a>Einblicke
+## <a name="insights-and-curated-visualizations"></a>Insights und kuratierte Visualisierungen
 
-Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte Anwendungen und Dienste bereitgestellt. Dabei werden sowohl Protokolle als auch Metriken erfasst und analysiert.
+Einige Dienste verfügen über kuratierte Überwachungsfunktionen. Das heißt, dass Microsoft angepasste Funktionen anbietet, die als Ausgangspunkt für die Überwachung dieser Dienste gedacht sind. Diese Funktionen werden zusammen als **kuratierte Visualisierungen** bezeichnet, wobei die größeren, komplexeren Visualisierungen als **Insights** bezeichnet werden.  
 
-| Erkenntnis | BESCHREIBUNG |
-|:---|:---|
-| [Application Insights](app/app-insights-overview.md) | Erweiterbarer APM-Dienst (Application Performance Management) zum Überwachen Ihrer Live-Webanwendung auf einer beliebigen Plattform. |
-| [Container Insights](containers/container-insights-overview.md) | Überwacht die Leistung von Containerworkloads, die entweder in Azure Container Instances oder in Managed Kubernetes-Clustern bereitgestellt sind, die im Azure Kubernetes Service (AKS) gehostet werden. |
-| [Cosmos DB-Erkenntnisse](insights/cosmosdb-insights-overview.md) | Bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen auf einer vereinheitlichten interaktiven Oberfläche. |
-| [Netzwerkerkenntnisse (Vorschau)](insights/network-insights-overview.md) | Bietet einen umfassenden Überblick über Integrität und Metriken Ihrer gesamten Netzwerkressource. Die erweiterte Suchfunktion unterstützt Sie beim Identifizieren von Ressourcenabhängigkeiten und ermöglicht Szenarien wie das Identifizieren von Ressourcen, die Ihre Website gehostet werden, indem einfach nach dem Namen Ihrer Website gesucht wird. |
-[Resource Group Insights (Vorschau)](insights/resource-group-insights.md) |  Selektieren und Diagnostizieren von Problemen Ihrer individuellen Ressourcen und Bereitstellen eines Kontexts für die Integrität und Leistung der Ressourcengruppe als Ganzes. |
-| [Storage Insights](../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | Ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. |
-| [VM Insights](vm/vminsights-overview.md) | Überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. |
-| [Key Vault Insights (Vorschau)](./insights/key-vault-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Latenz im Zusammenhang mit Key Vault bereitgestellt. |
-| [Erkenntnisse zu Azure Cache for Redis (Vorschau)](insights/redis-cache-insights-overview.md) |  Bietet eine einheitliche, interaktive Ansicht der Leistung, Fehler, Kapazität und Betriebsintegrität insgesamt. |
+Die Funktionen sammeln und analysieren einen Teil der Protokolle und Metriken und können je nach Dienst auch sofort einsatzbereite Warnungen bereitstellen. Sie präsentieren diese Telemetriedaten in einem visuellen Layout. Die Visualisierungen variieren in Größe und Umfang. Einige werden als Teil von Azure Monitor betrachtet und unterliegen den Vereinbarungen zum Support und Servicelevel für Azure. Sie werden in allen Azure-Regionen unterstützt, in denen Azure Monitor verfügbar ist. Andere kuratierte Visualisierungen bieten weniger Funktionalität, skalieren möglicherweise nicht und unterliegen ggf. unterschiedlichen Vereinbarungen.  Einige basieren möglicherweise ausschließlich auf Azure Monitor-Arbeitsmappen, während andere über eine umfangreiche benutzerdefinierte Benutzeroberfläche verfügen. 
+
+In der folgenden Tabelle sind die verfügbaren kuratierten Visualisierungen und zugehörige ausführlichere Informationen aufgeführt.  
+
+>[!NOTE]
+> Bei **Überwachungslösungen** handelt es sich um eine ältere Visualisierung, die nicht mehr aktiv weiterentwickelt wird.  Diese Technologie wird durch das oben beschriebene Azure Monitor-Feature „Insights“ ersetzt. Wir empfehlen, Insights zu verwenden und keine neuen Instanzen von Lösungen bereitzustellen. Weitere Informationen zu Lösungen finden Sie unter [Überwachungslösungen in Azure Monitor](/azure/azure-monitor/insights/solutions).
 
 
-### <a name="core-solutions"></a>Wichtige Lösungen
-
-Lösungen basieren auf Protokollabfragen und Ansichten, die für eine bestimmte Anwendung oder einen bestimmten Dienst angepasst sind. Dabei werden nur Protokolle erfasst und analysiert, und sie werden im Laufe der Zeit zugunsten von Erkenntnissen eingestellt.
-
-| Lösung | BESCHREIBUNG |
-|:---|:---|
-| [Agent-Integrität](insights/solution-agenthealth.md) | Analysieren der Integrität und Konfiguration von Log Analytics-Agents. |
-| [Benachrichtigungsverwaltung](insights/alert-management-solution.md) | Analysieren von Warnungen, die von System Center Operations Manager, Nagios oder Zabbix erfasst werden. |
-| [Dienstzuordnung](vm/service-map.md) | Automatisches Ermitteln von Anwendungskomponenten auf Windows- und Linux-Systemen und Darstellung der Kommunikation zwischen Diensten. |
-
-
-
-## <a name="azure-services"></a>Azure-Dienste
-In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfassten Daten aufgeführt. 
-
-- Metriken: Der Dienst erfasst automatisch Metriken in Azure Monitor-Metriken. 
-- Protokolle: Der Dienst unterstützt Diagnoseeinstellungen, mit denen Plattformprotokolle und -metriken in Azure Monitor-Protokollen erfasst werden können.
-- Erkenntnis: Es ist eine Erkenntnis für den Dienst verfügbar, die eine angepasste Überwachungsoberfläche für den Dienst bereitstellt.
-
-| Dienst | Metriken | Protokolle | Erkenntnis | Notizen |
-|:---|:---|:---|:---|:---|
-|Active Directory | Nein | Ja | [Ja](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
-|Active Directory B2C | Nein | Nein | Nein |  |
-|Active Directory Domain Services | Nein | Ja | Nein |  |
-|Aktivitätsprotokoll | Nein | Ja | Nein | |
-|Erweiterter Schutz vor Bedrohungen | Nein | Nein | Nein |  |
-|Advisor | Nein | Nein | Nein |  |
-|AI Builder | Nein | Nein | Nein |  |
-|Analysis Services | Ja | Ja | Nein |  |
-|API for FHIR | Nein | Nein | Nein |  |
-|API Management | Ja | Ja | Nein |  |
-|App Service | Ja | Ja | Nein |  |
-|AppConfig | Nein | Nein | Nein |  |
-|Application Gateway | Ja | Ja | Nein |  |
-|Nachweisdienst | Nein | Nein | Nein |  |
-|Automation | Ja | Ja | Nein |  |
-|Azure Service Manager (RDFE) | Nein | Nein | Nein |  |
-|Backup | Nein | Ja | Nein |  |
-|Bastion | Nein | Nein | Nein |  |
-|Batch | Ja | Ja | Nein |  |
-|Batch KI | Nein | Nein | Nein |  |
-|Blockchain-Dienst | Nein | Ja | Nein |  |
-|Blaupausen | Nein | Nein | Nein |  |
-|Botdienst | Nein | Nein | Nein |  |
-|Cloud Services | Ja | Ja | Nein | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.  |
-|Cloud Shell | Nein | Nein | Nein |  |
-|Cognitive Services | Ja | Ja | Nein |  |
-|Container Instances | Ja | Nein | Nein |  |
-|Containerregistrierung | Ja | Ja | Nein |  |
-|Content Delivery Network (CDN) | Nein | Ja | Nein |  |
-|Cosmos DB | Ja | Ja | [Ja](insights/cosmosdb-insights-overview.md) |  |
-|Cost Management | Nein | Nein | Nein |  |
-|Data Box | Nein | Nein | Nein |  |
-|Data Catalog Gen2 | Nein | Nein | Nein |  |
-|Data Explorer | Ja | Ja | Nein |  |
-|Data Factory | Ja | Ja | Nein |  |
-|Data Factory v2 | Nein | Ja | Nein |  |
-|Datenfreigabe | Nein | Nein | Nein |  |
-|Database for MariaDB | Ja | Ja | Nein |  |
-|Database for MySQL | Ja | Ja | Nein |  |
-|Database for PostgreSQL | Ja | Ja | Nein |  |
-|Database Migration Service | Nein | Nein | Nein |  |
-|Databricks | Nein | Ja | Nein |  |
-|DDoS Protection | Ja | Ja | Nein |  |
-|DevOps | Nein | Nein | Nein |  |
-|DNS | Ja | Nein | Nein |  |
-|Domänennamen | Nein | Nein | Nein |  |
-|DPS | Nein | Nein | Nein |  |
-|Dynamics 365 Customer Engagement | Nein | Nein | Nein |  |
-|Dynamics 365 Finance and Operations | Nein | Nein | Nein |  |
-|Event Grid | Ja | Nein | Nein |  |
-|Event Hubs | Ja | Ja | Nein |  |
-|ExpressRoute | Ja | Ja | Nein |  |
-|Firewall | Ja | Ja | Nein |  |
-|Front Door | Ja | Ja | Nein |  |
-|Functions | Ja | Ja | Nein |  |
-|HDInsight | Nein | Ja | Nein |  |
-|HPC Cache | Nein | Nein | Nein |  |
-|Information Protection | Nein | Ja | Nein |  |
-|Intune | Nein | Ja | Nein |  |
-|IoT Central | Nein | Nein | Nein |  |
-|IoT Hub | Ja | Ja | Nein |  |
-|Key Vault | Ja | Ja | [Ja](./insights/key-vault-insights-overview.md) |  |
-|Kubernetes Service (AKS) | Nein | Nein | [Ja](containers/container-insights-overview.md)  |  |
-|Load Balancer | Ja | Nein | Nein |  |
-|Logic Apps | Ja | Ja | Nein |  |
-|Machine Learning Service | Nein | Nein | Nein |  |
-|Verwaltete Anwendungen  | Nein | Nein | Nein |  |
-|Karten  | Nein | Nein | Nein |  |
-|Media Services | Ja | Ja | Nein |  |
-|Microsoft Managed Desktop | Nein | Nein | Nein |  |
-|Microsoft Power Apps | Nein | Nein | Nein |  |
-|Microsoft Social Engagement | Nein | Nein | Nein |  |
-|Microsoft Stream | Ja | Ja | Nein |  |
-|Migrieren | Nein | Nein | Nein |  |
-|Multi-Factor Authentication | Nein | Ja | Nein |  |
-|Network Watcher | Ja | Ja | Nein |  |
-|Notification Hubs | Ja | Nein | Nein |  |
-|Open Datasets | Nein | Nein | Nein |  |
-|Richtlinie | Nein | Nein | Nein |  |
-|Power Automate | Nein | Nein | Nein |  |
-|Power BI Embedded | Ja | Ja | Nein |  |
-|Private Link | Nein | Nein | Nein |  |
-|Project Spool Communication Platform | Nein | Nein | Nein |  |
-|Red Hat OpenShift | Nein | Nein | Nein |  |
-|Redis Cache | Ja | Ja | [Ja](insights/redis-cache-insights-overview.md) | |
-|Ressourcendiagramm | Nein | Nein | Nein |  |
-|Ressourcen-Manager | Nein | Nein | Nein |  |
-|Retail Search – by Bing | Nein | Nein | Nein |  |
-|Suchen, | Ja | Ja | Nein |  |
-|Service Bus | Ja | Ja | Nein |  |
-|Service Fabric | Nein | Ja | Nein | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.  |
-|Signup Portal | Nein | Nein | Nein |  |
-|Site Recovery | Nein | Ja | Nein |  |
-|Spring Cloud Service | Nein | Nein | Nein |  |
-|Azure Synapse Analytics | Ja | Ja | Nein |  |
-|SQL-Datenbank | Ja | Ja | Nein |  |
-|SQL Server Stretch Database | Ja | Ja | Nein |  |
-|Stapel | Nein | Nein | Nein |  |
-|Storage | Ja | Nein | [Ja](../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) |  |
-|Storage Cache | Nein | Nein | Nein |  |
-|Speichersynchronisierungsdienste | Nein | Nein | Nein |  |
-|Stream Analytics | Ja | Ja | Nein |  |
-|Time Series Insights | Ja | Ja | Nein |  |
-|TINA | Nein | Nein | Nein |  |
-|Traffic Manager | Ja | Ja | Nein |  |
-|Universal Print | Nein | Nein | Nein |  |
-|Virtual Machine Scale Sets | Nein | Ja | [Ja](vm/vminsights-overview.md) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich. |
-|Virtual Machines | Ja | Ja | [Ja](vm/vminsights-overview.md) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich. |
-|Virtual Network | Ja | Ja | [Ja](insights/network-insights-overview.md) |  |
-|Virtual Network – NSG-Datenflussprotokolle | Nein | Ja | Nein |  |
-|VPN Gateway | Ja | Ja | Nein |  |
-|Windows Virtual Desktop | Nein | Ja | Nein |  |
-
-## <a name="virtual-machine-agents"></a>Agents für virtuelle Computer
-In der folgenden Tabelle sind die Agents aufgeführt, die Daten vom Gastbetriebssystem virtueller Computer sammeln und an Azure Monitor senden können. Jeder Agent kann verschiedene Daten sammeln und an „Metriken“ oder „Protokolle“ in Azure Monitor senden. 
-
-Ausführliche Informationen zu den Daten, die von den einzelnen Agents gesammelt werden können, finden Sie unter [Übersicht über Azure Monitor-Agents](agents/agents-overview.md).
-
-| Agent |  Metriken | Protokolle |
-|:---|:---|:---|:---|
-| [Azure Monitor-Agent (Vorschau)](agents/azure-monitor-agent-overview.md) | Ja | Ja |
-| [Log Analytics-Agent](agents/log-analytics-agent.md) | Nein | Ja|
-| [Diagnoseerweiterung](agents/diagnostics-extension-overview.md) | Ja | Nein |
-| [Telegraf-Agent](essentials/collect-custom-metrics-linux-telegraf.md) | Ja | Nein |
-| [Dependency-Agent](vm/vminsights-enable-overview.md) | Nein | Ja |
-
+|Name mit Link zur Dokumentation| State | [Link zum Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/more)| BESCHREIBUNG | 
+|:--|:--|:--|:--|
+| [Azure Monitor-Arbeitsmappen für Azure Active Directory](/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks) | Allgemeine Verfügbarkeit (General Availability, GA) | [Ja](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Workbooks) | Azure Active Directory stellt Arbeitsmappen bereit, um die Auswirkungen Ihrer Richtlinien für bedingten Zugriff verstehen, Anmeldefehler beheben und Legacyauthentifizierungen identifizieren zu können. | 
+| [Azure Backup Insights](/azure/backup/backup-azure-monitoring-use-azuremonitor) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_DataProtection/BackupCenterMenuBlade/backupReportsConfigure/menuId/backupReportsConfigure) | Stellt integrierte Überwachungs-und Warnungsfunktionen in einem Recovery Services-Tresor bereit | 
+| [Erkunden von Azure Monitor für Azure Cache for Redis (Vorschauversion)](/azure/azure-monitor/insights/redis-cache-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/redisCacheInsights) | Bietet eine einheitliche, interaktive Ansicht der Gesamtleistung, Fehler, Kapazität und Betriebsintegrität | 
+| [Azure Cosmos DB Insights](/azure/azure-monitor/insights/cosmosdb-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/cosmosDBInsights) | Bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen auf einer vereinheitlichten interaktiven Oberfläche. | 
+| [Azure Daten-Explorer Einblicke](/azure/azure-monitor/insights/data-explorer) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/adxClusterInsights) | Azure Data Explorer Insights ermöglicht die umfassende Überwachung Ihrer Cluster mithilfe einer einheitlichen Ansicht der Leistung, Vorgänge, Nutzung und Fehler Ihres Clusters. | 
+| [Azure HDInsight (Vorschau)](/azure/hdinsight/log-analytics-migration#insights) | Vorschau | Nein | Eine Azure Monitor-Arbeitsmappe, die wichtige Leistungsmetriken aus Ihrem HDInsight-Cluster erfasst und die Visualisierungen und Dashboards für die meisten gängigen Szenarios bereitstellt. Bietet eine vollständige Ansicht eines einzelnen HDInsight-Clusters, einschließlich Ressourcennutzung und Anwendungsstatus.|
+ | [Azure IoT Edge Insights](/azure/iot-edge/how-to-explore-curated-visualizations/) | Allgemein verfügbar | Nein | Visualisieren und erkunden Sie die vom IoT Edge-Gerät gesammelten Metriken mithilfe von Azure Monitor-Arbeitsmappen direkt im Azure-Portal. Die kuratierten Arbeitsmappen nutzen integrierte Metriken aus der IoT Edge-Runtime. Für diese Ansichten ist keinerlei Metrikinstrumentierung aus den Workloadmodulen erforderlich. | 
+ | [Azure Key Vault Insights (Vorschau)](/azure/azure-monitor/insights/key-vault-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/keyvaultsInsights) | Ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Latenz im Zusammenhang mit Key Vault bereitgestellt. | 
+ | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/applicationsInsights) | Erweiterbarer Application-Performance-Management-Dienst (APM), der die Verfügbarkeit, Leistung und Nutzung Ihrer Webanwendungen unabhängig davon überwacht, ob sie in der Cloud oder lokal gehostet werden. Es nutzt die leistungsstarke Datenanalyseplattform in Azure Monitor, um Ihnen tiefgreifende Einblicke in den Betrieb Ihrer Anwendung zu geben. Sie können Fehler diagnostizieren, ohne darauf warten zu müssen, dass diese von Benutzern gemeldet werden. Application Insights beinhaltet Verbindungspunkte zu einer Vielzahl von Entwicklungstools und lässt sich in Visual Studio integrieren, um Ihre DevOps-Prozesse zu unterstützen. | 
+ | [Azure Monitor Log Analytics-Arbeitsbereich](/azure/azure-monitor/logs/log-analytics-workspace-insights-overview) | Vorschau | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/lawsInsights) | Die Log Analytics-Arbeitsbereich Insights (Vorschau) bietet eine umfassende Überwachung Ihrer Arbeitsbereiche durch eine einheitliche Ansicht von der Nutzung, Leistung, Integrität, des Agents, der Abfragen und des Änderungsprotokolls Ihres Arbeitsbereichs. Dieser Artikel hilft Ihnen zu Verstehen wie die Log Analytics-Arbeitsbereich Insights (Vorschau) integriert und verwendet werden. | 
+ | [Azure Service Bus](/azure/service-bus/) | Vorschau | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/serviceBusInsights) |  | 
+ | [Azure SQL Insights](/azure/azure-monitor/insights/sql-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/sqlWorkloadInsights) | Eine umfassende Schnittstelle für die Überwachung aller Produkte der Azure SQL-Familie. SQL Insights verwendet dynamische Managementansichten, um die Daten offenzulegen, die Sie zur Überwachung des Zustands, zur Diagnose von Problemen und zur Leistungsoptimierung benötigen. Hinweis: Wenn Sie nur die SQL Überwachung einrichten, verwenden Sie diese anstelle der Lösung „SQL-Analyse“. |
+ | [Azure Storage Insights](/azure/azure-monitor/insights/storage-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/storageInsights) | Ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. | 
+ | [Azure VM Insights](/azure/azure-monitor/insights/vminsights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/virtualMachines) | Überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen.  | 
+ | [Azure Monitor Network Insights](/azure/azure-monitor/insights/network-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/networkInsights) | Bietet einen umfassenden Überblick über Integrität und Metriken Ihrer gesamten Netzwerkressource. Die erweiterte Suchfunktion unterstützt Sie beim Identifizieren von Ressourcenabhängigkeiten und ermöglicht Szenarien wie das Identifizieren von Ressourcen, die Ihre Website gehostet werden, indem einfach nach dem Namen Ihrer Website gesucht wird. | 
+ | [Azure Container Insights](/azure/azure-monitor/insights/container-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/containerInsights) | Überwacht die Leistung von Containerworkloads, die in Managed Kubernetes-Clustern bereitgestellt und in Azure Kubernetes Service (AKS) gehostet werden. Es ermöglicht den Einblick in die Leistung, indem anhand der Metrik-API die in Kubernetes verfügbaren Metriken von Controllern, Knoten und Containern erfasst werden. Auch Containerprotokolle werden erfasst.  Nach der Aktivierung der Überwachung auf Kubernetes-Clustern werden diese Metriken und Protokolle für Sie automatisch mittels einer Containerversion des Log Analytics-Agents für Linux erfasst gespeichert. | 
+ | [Azure Monitor für Ressourcengruppen](/azure/azure-monitor/insights/resource-group-insights) | Allgemein verfügbar | Nein | Selektieren und Diagnostizieren von Problemen Ihrer individuellen Ressourcen und Bereitstellen eines Kontexts für die Integrität und Leistung der Ressourcengruppe als Ganzes. | 
+ | [Azure Monitor SAP](/azure/virtual-machines/workloads/sap/monitor-sap-on-azure) | Allgemein verfügbar | Nein | Ein Azure-natives Überwachungsprodukt für alle Kunden, die ihre SAP-Umgebungen in Azure ausführen. Es funktioniert sowohl mit SAP auf virtuellen Azure-Computern als auch mit SAP in Azure (große Instanzen). Erfasst Telemetriedaten aus der Azure-Infrastruktur und den Azure-Datenbanken an einem zentralen Ort und korreliert die Daten visuell, um die Problembehandlung zu beschleunigen. Sie können verschiedene Komponenten einer SAP-Landschaft wie beispielsweise Azure-VMs, Hochverfügbarkeitscluster, SAP HANA-Datenbanken oder SAP NetWeaver überwachen, indem sie den entsprechenden Anbieter für die jeweilige Komponente hinzufügen. |
+ | [Erkenntnisse zu Azure Stack HCI](/azure-stack/hci/manage/azure-stack-hci-insights) | Vorschau | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/azureStackHCIInsights) | Basiert auf Azure Monitor-Arbeitsmappen. Bietet Einblicke in die Integrität, Leistung und Nutzung über registrierte Azure Stack HCI-Cluster der Version 21H2, die mit Azure verbunden und für die Überwachung registriert sind. Die Daten werden in einem Log Analytics-Arbeitsbereich gespeichert. Dies ermöglicht leistungsstarke Aggregation und Filterung sowie die Analyse von Datentrends im zeitlichen Verlauf.  | 
+ | [Erkenntnisse für Windows Virtual Desktop](/azure/virtual-desktop/azure-monitor) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/insights/menuId/insights) | Azure Monitor für Windows Virtual Desktop (Vorschau) ist ein Dashboard, das auf Azure Monitor-Arbeitsmappen basiert und IT-Experten Informationen zu ihren Windows Virtual Desktop-Umgebungen bereitstellt. In diesem Thema wird erläutert, wie Sie Azure Monitor für Windows Virtual Desktop zur Überwachung Ihrer Windows Virtual Desktop-Umgebungen einrichten. | 
 
 ## <a name="product-integrations"></a>Produktintegrationen
-Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre Daten in einem Log Analytics-Arbeitsbereich, sodass sie mit anderen von Azure Monitor gesammelten Protokolldaten analysiert werden können.
+
+Die in der folgenden Tabelle aufgeführten anderen Dienste und älteren Überwachungslösungen speichern ihre Daten in einem Log Analytics-Arbeitsbereich, sodass sie mit anderen von Azure Monitor gesammelten Protokolldaten analysiert werden können.
 
 | Produkt/Dienst | BESCHREIBUNG |
 |:---|:---|
@@ -193,40 +62,30 @@ Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre 
 | [Azure Security Center](../security-center/index.yml) | Sammeln und Analysieren von Sicherheitsereignissen und Durchführen einer Bedrohungsanalyse. Informationen finden Sie unter [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md). |
 | [Azure Sentinel](../sentinel/index.yml) | Stellt eine Verbindung mit verschiedenen Quellen her, einschließlich Office 365 und Amazon Web Services CloudTrail. Lesen Sie dazu [Herstellen einer Verbindung mit Datenquellen](../sentinel/connect-data-sources.md). |
 | [Microsoft Intune](/intune/) | Erstellen einer Diagnoseeinstellung zum Senden von Protokollen an Azure Monitor. Informationen finden Sie unter [Senden von Daten an den Speicher, an Event Hubs oder Log Analytics in Intune (Vorschauversion)](/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Netzwerk  | [Netzwerkleistungsmonitor](insights/network-performance-monitor.md): Überwachen der Netzwerkkonnektivität und -leistung für Dienst- und Anwendungsendpunkte.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics): Analysieren der Protokolle und Metriken von Azure Application Gateway.<br>[Traffic Analytics](../network-watcher/traffic-analytics.md): Analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. |
-| [Office 365](insights/solution-office-365.md) | Überwachen Ihrer Office 365-Umgebungen. Aktualisierte Version mit verbessertem Onboarding über Azure Sentinel verfügbar. |
-| [Azure SQL-Analyse](insights/azure-sql.md) | Bedarfsorientiertes und abonnementübergreifendes Überwachen der Leistung von Azure SQL-Datenbanken und verwalteten SQL-Instanzen. |
-| [Surface Hub](insights/surface-hubs.md) | Nachverfolgen der Integrität und Nutzung von Surface Hub-Geräten. |
+| Netzwerk – [Traffic Analytics](../network-watcher/traffic-analytics.md) | Analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen |
 | [System Center Operations Manager](/system-center/scom) | Erfassen der Daten von Operations Manager-Agents durch Herstellen einer Verbindung zwischen der jeweiligen Verwaltungsgruppe und Azure Monitor. Informationen finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](agents/om-agents.md).<br> Bewerten des Risikos und der Integrität Ihrer System Center Operations Manager-Verwaltungsgruppe mithilfe der Lösung zur [Operations Manager-Bewertung](insights/scom-assessment.md). |
 | [Microsoft Teams-Räume](/microsoftteams/room-systems/azure-monitor-deploy) | Integrierte End-to-End-Verwaltung von Geräten für Microsoft Teams-Räume. |
 | [Visual Studio App Center](/appcenter/) | Erstellen, Testen und Verteilen von Anwendungen und anschließendes Überwachen von Status und Nutzung. Informationen finden Sie unter [Analysieren Ihrer mobilen Apps mit App Center und Application Insights](app/mobile-center-quickstart.md). |
 | Windows | [Windows Update Compliance](/windows/deployment/update/update-compliance-get-started): Bewerten Ihrer Windows Desktop-Upgrades.<br>[Desktop Analytics](/configmgr/desktop-analytics/overview): Ist in Configuration Manager integriert und bietet Einblicke und Informationen, mit denen fundiertere Entscheidungen zur Updatebereitschaft Ihres Windows-Clients getroffen werden können. |
+| **Die folgenden Lösungen können auch in Teile von Azure Monitor integriert werden. Beachten Sie, dass sich Lösungen nicht mehr aktiv weiterentwickelt werden. Verwenden Sie stattdessen [Insights](#insights-and-curated-visualizations).**  | | 
+| Netzwerk – [Netzwerkleistungsmonitor-Lösung](insights/network-performance-monitor.md) | 
+| Netzwerk – [Azure Application Gateway-Lösung](insights/azure-networking-analytics.md#azure-application-gateway-analytics) | .
+| [Office 365-Lösung](insights/solution-office-365.md) | Überwachen Ihrer Office 365-Umgebungen. Aktualisierte Version mit verbessertem Onboarding über Microsoft Sentinel verfügbar. |
+| [SQL-Analyse-Lösung](insights/azure-sql.md) | Verwenden Sie stattdessen SQL Insights. |
+| [Surface Hub-Lösung](insights/surface-hubs.md) |  |
 
 
+## <a name="third-party-integration"></a>Integration von Drittanbietern
 
-## <a name="other-solutions"></a>Andere Lösungen
-Für die Überwachung verschiedener Anwendungen und Dienste stehen andere Lösungen zur Verfügung, aber die aktive Entwicklung wurde eingestellt und sie sind möglicherweise nicht in allen Regionen verfügbar. Diese fallen unter die Vereinbarung zum Servicelevel für die Azure Log Analytics-Datenerfassung.
-
-| Lösung | BESCHREIBUNG |
-|:---|:---|
-| [Active Directory-Integritätsprüfung](insights/ad-assessment.md) | Bewerten des Risikos und der Integrität Ihrer Active Directory-Umgebungen. |
-| [Active Directory-Replikationsstatusmonitor](insights/ad-replication-status.md) | Regelmäßige Überwachung Ihrer Active Directory-Umgebung auf Replikationsfehler. |
-| [Aktivitätsprotokollanalyse](essentials/activity-log.md#activity-log-analytics-monitoring-solution) | Anzeigen von Aktivitätsprotokolleinträgen |
-| [DNS-Analyse (Vorschauversion)](insights/dns-analytics.md) | Erfasst, analysiert und korreliert Windows-DNS-Analyseprotokolle und -Überwachungsprotokolle sowie andere zugehörige Daten von Ihren DNS-Servern. |
-| [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Sammeln, Anzeigen und Analysieren von Integritäts- und Leistungsmetriken des Cloud Foundry-Systems über mehrere Bereitstellungen hinweg. |
-| [Container](containers/containers.md) | Anzeigen und Verwalten von Docker- und Windows-Containerhosts. |
-| [Bedarfsgesteuerte Bewertungen](/services-hub/health/getting_started_with_on_demand_assessments) | Bewerten und Optimieren der Verfügbarkeit, Sicherheit und Leistung Ihrer lokalen, hybriden und cloudbasierten Umgebungen mit Microsoft-Technologie. |
-| [SQL-Integritätsprüfung](insights/sql-assessment.md) | Bewerten des Risikos und der Integrität Ihrer SQL Server-Umgebungen.  |
-| [Wire Data](insights/wire-data.md) | Konsolidierte Netzwerk- und Leistungsdaten, die von mit Windows verbundenen und mit Linux verbundenen Computern mit dem Log Analytics-Agent gesammelt werden. |
-
-## <a name="third-party-integration"></a>Integration von Drittanbieterprodukten
-
-| Lösung | BESCHREIBUNG |
+| Integration | BESCHREIBUNG |
 |:---|:---|
 | [ITSM](alerts/itsmc-overview.md) | Der ITSM-Connector ermöglicht Ihnen, Azure und ein unterstütztes ITSM-Produkt bzw. einen unterstützten ITSM-Dienst zu verbinden.  |
+| [Azure Monitor Partners](/azure/azure-monitor/partners/) | Eine Liste von Partnern, die in irgendeiner Form mit Azure Monitor integriert sind | 
+| [Azure Monitor Partner-Integrationen](/azure/partner-solutions/overview/)| Spezialisierte Integrationen zwischen Azure Monitor und anderen Nicht-Microsoft-Überwachungsplattformen, wenn Sie bereits darauf aufgebaut haben.  Beispiele dafür sind Datadog und Elastic|
 
 
 ## <a name="resources-outside-of-azure"></a>Ressourcen außerhalb von Azure
+
 Mithilfe der in der folgenden Tabelle aufgeführten Methoden kann Azure Monitor Daten von Ressourcen außerhalb von Azure sammeln.
 
 | Resource | Methode |
@@ -236,10 +95,192 @@ Mithilfe der in der folgenden Tabelle aufgeführten Methoden kann Azure Monitor 
 | REST-API-Client | Zum Schreiben von Daten in Azure Monitor-Protokolle und -Metriken von jedem Rest-API-Client aus stehen separate APIs zur Verfügung. Weitere Informationen finden Sie unter [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API](logs/data-collector-api.md) (für Protokolle) und [Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API](essentials/metrics-store-custom-rest-api.md) (für Metriken). |
 
 
+## <a name="azure-supported-services"></a>Von Azure unterstützte Dienste
+ 
+In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfassten Daten aufgeführt. 
+
+- Metriken: Der Dienst erfasst automatisch Metriken in Azure Monitor-Metriken. 
+- Protokolle - Der Dienst unterstützt Diagnoseeinstellungen, die Metriken und Plattformprotokolle an Azure Monitor Logs zur Analyse in Log Analytics senden können.
+- Einsicht - Es ist eine Einsicht verfügbar, die eine individuelle Überwachung des Dienstes ermöglicht.
+
+| Dienst | Namespace des Ressourcenanbieters | Verfügt über Metriken | Verfügt über Protokolle | Erkenntnis | Notizen
+|---------|---------------------------------------|----------------|-----------|----------|--------|
+ | [Azure Active Directory-Domänendienste](/azure/active-directory-domain-services/) | Microsoft.AAD/DomainServices | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftaaddomainservices) |   | |
+ | [Azure Active Directory](/azure/active-directory/) | Microsoft.Aadiam/azureADMetrics | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftaadiamazureadmetrics) | Nein | [Azure Monitor-Arbeitsmappen für Azure Active Directory](/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks) | |
+ | [Azure Analysis Services](/azure/analysis-services/)   | Microsoft.AnalysisServices/servers | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftanalysisservicesservers) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftanalysisservicesservers) |   | |
+ | [API Management](/azure/api-management/)   | Microsoft.ApiManagement/service | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftapimanagementservice) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftapimanagementservice) |   | |
+ | [Azure App Configuration](/azure/azure-app-configuration/)   | Microsoft.AppConfiguration/configurationStores | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftappconfigurationconfigurationstores) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftappconfigurationconfigurationstores) |   | |
+ | [Azure Spring Cloud](/azure/spring-cloud/spring-cloud-overview.md)   | Microsoft.AppPlatform/Spring | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftappplatformspring) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftappplatformspring) |   | |
+ | [Azure Attestation Service](/azure/attestation/overview) | Microsoft.Attestation/attestationProviders | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftattestationattestationproviders) |   | |
+ | [Azure Automation](/azure/automation/)   | Microsoft.Automation/automationAccounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftautomationautomationaccounts) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftautomationautomationaccounts) |   | |
+ | [Azure VMware Solution](/azure/azure-vmware/)   | Microsoft.AVS/privateClouds | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftavsprivateclouds) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftavsprivateclouds) |   | |
+ | [Azure Batch](/azure/batch/)   | Microsoft.Batch/batchAccounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftbatchbatchaccounts) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftbatchbatchaccounts) |   | |
+ | [Azure Batch](/azure/batch/)   | Microsoft.BatchAI/workspaces | Nein | Nein |   | |
+ | [Azure Cognitive Services – API für die Bing-Suche](/azure/cognitive-services/bing-web-search/) | Microsoft.Bing/accounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftbingaccounts) | Nein |   | |
+ | [Azure Blockchain Service](/azure/blockchain/workbench/)   | Microsoft.Blockchain/blockchainMembers | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftblockchainblockchainmembers) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftblockchainblockchainmembers) |   | |
+ | [Azure Blockchain Service](/azure/blockchain/workbench/)   | Microsoft.Blockchain/cordaMembers | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftblockchaincordamembers) |   | |
+ | [Azure Bot Service](/azure/bot-service/)   | Microsoft.BotService/botServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftbotservicebotservices) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftbotservicebotservices) |   | |
+ | [Azure Cache for Redis](/azure/azure-cache-for-redis/)   | Microsoft.Cache/Redis | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcacheredis) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcacheredis) | [Erkunden von Azure Monitor für Azure Cache for Redis (Vorschauversion)](/azure/azure-monitor/insights/redis-cache-insights-overview) | |
+ | [Azure Cache for Redis](/azure/azure-cache-for-redis/)   | Microsoft.Cache/redisEnterprise | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcacheredisenterprise) | Nein | [Erkunden von Azure Monitor für Azure Cache for Redis (Vorschauversion)](/azure/azure-monitor/insights/redis-cache-insights-overview) | |
+ | [Content Delivery Network](/azure/cdn/)   | Microsoft.Cdn/CdnWebApplicationFirewallPolicies | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcdncdnwebapplicationfirewallpolicies) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcdncdnwebapplicationfirewallpolicies) |   | |
+ | [Content Delivery Network](/azure/cdn/)   | Microsoft.Cdn/profiles | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcdnprofiles) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcdnprofiles) |   | |
+ | [Content Delivery Network](/azure/cdn/)   | Microsoft.Cdn/profiles/endpoints | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcdnprofilesendpoints) |   | |
+ | [Azure Virtual Machines – klassisch](/azure/virtual-machines/) | Microsoft.ClassicCompute/domainNames/slots/roles | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftclassiccomputedomainnamesslotsroles) | Nein | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | |
+ | [Azure Virtual Machines – klassisch](/azure/virtual-machines/) | Microsoft.ClassicCompute/virtualMachines | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftclassiccomputevirtualmachines) | Nein |   | |
+ | [Virtual Network (klassisch)](/azure/virtual-network/network-security-groups-overview) | Microsoft.ClassicNetwork/networkSecurityGroups | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftclassicnetworknetworksecuritygroups) |   | |
+ | [Azure Storage (klassisch)](/azure/storage/) | Microsoft.ClassicStorage/storageAccounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftclassicstoragestorageaccounts) | Nein | [Storage Insights](/azure/azure-monitor/insights/storage-insights-overview)  | |
+ | [Azure Blob Storage (klassisch)](/azure/storage/blobs/) | Microsoft.ClassicStorage/storageAccounts/blobServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftclassicstoragestorageaccountsblobservices) | Nein | [Storage Insights](/azure/azure-monitor/insights/storage-insights-overview)  | |
+ | [Azure Files (klassisch)](/azure/storage/files/) | Microsoft.ClassicStorage/storageAccounts/fileServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftclassicstoragestorageaccountsfileservices) | Nein | [Storage Insights](/azure/azure-monitor/insights/storage-insights-overview)  | |
+ | [Azure Queue Storage (klassisch)](/azure/storage/queue/) | Microsoft.ClassicStorage/storageAccounts/queueServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftclassicstoragestorageaccountsqueueservices) | Nein | [Storage Insights](/azure/azure-monitor/insights/storage-insights-overview)  | |
+ | [Azure Table Storage (klassisch)](/azure/storage/tables/) | Microsoft.ClassicStorage/storageAccounts/tableServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftclassicstoragestorageaccountstableservices) | Nein | [Storage Insights](/azure/azure-monitor/insights/storage-insights-overview)  | |
+ | Microsoft Cloud-Testplattform | Microsoft.Cloudtest/hostedpools | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcloudtesthostedpools) | Nein |   | |
+ | Microsoft Cloud-Testplattform | Microsoft.Cloudtest/pools | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcloudtestpools) | Nein |   | |
+ | [Cray ClusterStor in Azure](https://azure.microsoft.com/blog/supercomputing-in-the-cloud-announcing-three-new-cray-in-azure-offers/) | Microsoft.ClusterStor/nodes | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftclusterstornodes) | Nein |   | |
+ | [Azure Cognitive Services](/azure/cognitive-services/)   | Microsoft.CognitiveServices/accounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcognitiveservicesaccounts) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcognitiveservicesaccounts) |   | |
+ | [Azure Communication Services](/azure/communication-services/) | Microsoft.Communication/CommunicationServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcommunicationcommunicationservices) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcommunicationcommunicationservices) |   | |
+ | [Azure Cloud Services](/azure/cloud-services-extended-support/)   | Microsoft.Compute/cloudServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputecloudservices) | Nein |  | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
+ | [Azure Cloud Services](/azure/cloud-services-extended-support/) | Microsoft.Compute/cloudServices/roles | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputecloudservicesroles) | Nein | | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
+ | [Dokumentation zu virtuellen Computern](/azure/virtual-machines/)<br />[Skalierungsgruppen für virtuelle Computer](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/disks | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputedisks) | Nein | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | |
+ | [Dokumentation zu virtuellen Computern](/azure/virtual-machines/)<br />[Skalierungsgruppen für virtuelle Computer](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/virtualMachines | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputevirtualmachines) | Nein | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
+ | [Dokumentation zu virtuellen Computern](/azure/virtual-machines/)<br />[Skalierungsgruppen für virtuelle Computer](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/virtualMachineScaleSets | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputevirtualmachinescalesets) | Nein | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
+ | [Dokumentation zu virtuellen Computern](/azure/virtual-machines/)<br />[Skalierungsgruppen für virtuelle Computer](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputevirtualmachinescalesetsvirtualmachines) | Nein | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
+ | [Microsoft-Plattform für vernetzte Fahrzeuge](https://azure.microsoft.com/blog/microsoft-connected-vehicle-platform-trends-and-investment-areas/) | Microsoft.ConnectedVehicle/platformAccounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftconnectedvehicleplatformaccounts) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftconnectedvehicleplatformaccounts) |   | |
+ | [Azure Container Instances](/azure/container-instances/)   | Microsoft.ContainerInstance/containerGroups | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcontainerinstancecontainergroups) | Nein | [Container Insights](/azure/azure-monitor/insights/container-insights-overview) | |
+ | [Azure Container Registry](/azure/container-registry/)   | Microsoft.ContainerRegistry/registries | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcontainerregistryregistries) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcontainerregistryregistries) |   | |
+ | [Azure Kubernetes Service (AKS)](/azure/aks/)   | Microsoft.ContainerService/managedClusters | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcontainerservicemanagedclusters) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcontainerservicemanagedclusters) | [Container Insights](/azure/azure-monitor/insights/container-insights-overview) | |
+ | [Benutzerdefinierte Azure-Anbieter](/azure/azure-resource-manager/custom-providers/)   | Microsoft.CustomProviders/resourceProviders | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcustomprovidersresourceproviders) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcustomprovidersresourceproviders) |   | |
+ | [Microsoft Dynamics 365 Customer Insights](/dynamics365/customer-insights/) | Microsoft.D365CustomerInsights/instances | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftd365customerinsightsinstances) |   | |
+ | [Azure Stack Edge](/azure/databox-online/azure-stack-edge-overview.md)   | Microsoft.DataBoxEdge/DataBoxEdgeDevices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdataboxedgedataboxedgedevices) | Nein |   | |
+ | [Azure Databricks](/azure/azure-databricks/)   | Microsoft.Databricks/workspaces | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatabricksworkspaces) |   | |
+ | Project CI | Microsoft.DataCollaboration/workspaces | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdatacollaborationworkspaces) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatacollaborationworkspaces) |   | |
+ | [Azure Data Factory](/azure/data-factory/)   | Microsoft.DataFactory/dataFactories | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdatafactorydatafactories) | Nein |   | |
+ | [Azure Data Factory](/azure/data-factory/)   | Microsoft.DataFactory/factories | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdatafactoryfactories) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatafactoryfactories) |   | |
+ | [Azure Data Lake Analytics](/azure/data-lake-analytics/)   | Microsoft.DataLakeAnalytics/accounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdatalakeanalyticsaccounts) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatalakeanalyticsaccounts) |   | |
+ | [Azure Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction.md)   | Microsoft.DataLakeStore/accounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdatalakestoreaccounts) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatalakestoreaccounts) |   | |
+ | [Azure Data Share](/azure/data-share/)   | Microsoft.DataShare/accounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdatashareaccounts) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdatashareaccounts) |   | |
+ | [Azure Database for MariaDB](/azure/mariadb/)   | Microsoft.DBforMariaDB/servers | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdbformariadbservers) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbformariadbservers) |   | |
+ | [Azure Database for MySQL](/azure/mysql/)   | Microsoft.DBforMySQL/flexibleServers | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdbformysqlflexibleservers) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbformysqlflexibleservers) |   | |
+ | [Azure Database for MySQL](/azure/mysql/)   | Microsoft.DBforMySQL/servers | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdbformysqlservers) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbformysqlservers) |   | |
+ | [Azure-Datenbank für PostgreSQL](/azure/postgresql/)   | Microsoft.DBforPostgreSQL/flexibleServers | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdbforpostgresqlflexibleservers) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbforpostgresqlflexibleservers) |   | |
+ | [Azure-Datenbank für PostgreSQL](/azure/postgresql/)   | Microsoft.DBforPostgreSQL/serverGroupsv2 | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdbforpostgresqlservergroupsv2) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbforpostgresqlservergroupsv2) |   | |
+ | [Azure-Datenbank für PostgreSQL](/azure/postgresql/)   | Microsoft.DBforPostgreSQL/servers | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdbforpostgresqlservers) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbforpostgresqlservers) |   | |
+ | [Azure-Datenbank für PostgreSQL](/azure/postgresql/)   | Microsoft.DBforPostgreSQL/serversv2 | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdbforpostgresqlserversv2) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdbforpostgresqlserversv2) |   | |
+ | [Microsoft Windows Virtual Desktop](/azure/virtual-desktop/)   | Microsoft.DesktopVirtualization/applicationgroups | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdesktopvirtualizationapplicationgroups) | [Erkenntnisse für Windows Virtual Desktop](/azure/virtual-desktop/azure-monitor) | |
+ | [Microsoft Windows Virtual Desktop](/azure/virtual-desktop/)   | Microsoft.DesktopVirtualization/hostpools | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdesktopvirtualizationhostpools) | [Erkenntnisse für Windows Virtual Desktop](/azure/virtual-desktop/azure-monitor) | |
+ | [Microsoft Windows Virtual Desktop](/azure/virtual-desktop/)   | Microsoft.DesktopVirtualization/workspaces | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdesktopvirtualizationworkspaces) |   | |
+ | [Azure IoT Hub](/azure/iot-hub/) | Microsoft.Devices/ElasticPools | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdeviceselasticpools) | Nein |   | |
+ | [Azure IoT Hub](/azure/iot-hub/) | Microsoft.Devices/ElasticPools/IotHubTenants | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdeviceselasticpoolsiothubtenants) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdeviceselasticpoolsiothubtenants) |   | |
+ | [Azure IoT Hub](/azure/iot-hub/) | Microsoft.Devices/IotHubs | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdevicesiothubs) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdevicesiothubs) |   | |
+ | [Azure IoT Hub Device Provisioning-Dienst](/azure/iot-dps/)   | Microsoft.Devices/ProvisioningServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdevicesprovisioningservices) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdevicesprovisioningservices) |   | |
+ | [Azure Digital Twins](/azure/digital-twins/about-digital-twins.md)   | Microsoft.DigitalTwins/digitalTwinsInstances | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdigitaltwinsdigitaltwinsinstances) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdigitaltwinsdigitaltwinsinstances) |   | |
+ | [Azure Cosmos DB](/azure/cosmos-db/)   | Microsoft.DocumentDB/databaseAccounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftdocumentdbdatabaseaccounts) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftdocumentdbdatabaseaccounts) | [Azure Cosmos DB Insights](/azure/azure-monitor/insights/cosmosdb-insights-overview) | |
+ | [Azure Event Grid](/azure/event-grid/)   | Microsoft.EventGrid/domains | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofteventgriddomains) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventgriddomains) |   | |
+ | [Azure Event Grid](/azure/event-grid/)   | Microsoft.EventGrid/eventSubscriptions | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofteventgrideventsubscriptions) | Nein |   | |
+ | [Azure Event Grid](/azure/event-grid/)   | Microsoft.EventGrid/extensionTopics | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofteventgridextensiontopics) | Nein |   | |
+ | [Azure Event Grid](/azure/event-grid/)   | Microsoft.EventGrid/partnerNamespaces | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofteventgridpartnernamespaces) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventgridpartnernamespaces) |   | |
+ | [Azure Event Grid](/azure/event-grid/)   | Microsoft.EventGrid/partnerTopics | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofteventgridpartnertopics) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventgridpartnertopics) |   | |
+ | [Azure Event Grid](/azure/event-grid/)   | Microsoft.EventGrid/systemTopics | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofteventgridsystemtopics) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventgridsystemtopics) |   | |
+ | [Azure Event Grid](/azure/event-grid/)   | Microsoft.EventGrid/topics | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofteventgridtopics) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventgridtopics) |   | |
+ | [Azure Event Hubs](/azure/event-hubs/)   | Microsoft.EventHub/clusters | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofteventhubclusters) | Nein | 0 | |
+ | [Azure Event Hubs](/azure/event-hubs/)   | Microsoft.EventHub/namespaces | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofteventhubnamespaces) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsofteventhubnamespaces) | 0 | |
+ | [Microsoft Experimentation Platform](https://www.microsoft.com/research/group/experimentation-platform-exp/) | microsoft.experimentation/experimentWorkspaces | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftexperimentationexperimentworkspaces) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftexperimentationexperimentworkspaces) |   | |
+ | [Azure HDInsight](/azure/hdinsight/)   | Microsoft.HDInsight/clusters | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofthdinsightclusters) | Nein | [Azure HDInsight (Vorschau)](/azure/hdinsight/log-analytics-migration#insights) | |
+ | [Azure API for FHIR](/azure/healthcare-apis/) | Microsoft.HealthcareApis/services | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsofthealthcareapisservices) |   | |
+ | [Azure API for FHIR](/azure/healthcare-apis/) | Microsoft.HealthcareApis/workspaces/iotconnectors | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisworkspacesiotconnectors) | Nein |   | |
+ | [StorSimple](/azure/storsimple/)   | microsoft.hybridnetwork/networkfunctions | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofthybridnetworknetworkfunctions) | Nein |   | |
+ | [StorSimple](/azure/storsimple/)   | microsoft.hybridnetwork/virtualnetworkfunctions | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofthybridnetworkvirtualnetworkfunctions) | Nein |   | |
+ | [Azure Monitor](/azure/azure-monitor/)   | microsoft.insights/autoscalesettings | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftinsightsautoscalesettings) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftinsightsautoscalesettings) |   | |
+ | [Azure Monitor](/azure/azure-monitor/)   | microsoft.insights/components | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftinsightscomponents) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftinsightscomponents) | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
+ | [Azure IoT Central](/azure/iot-central/)   | Microsoft.IoTCentral/IoTApps | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftiotcentraliotapps) | Nein |   | |
+ | [Azure Key Vault](/azure/key-vault/)   | Microsoft.KeyVault/managedHSMs | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftkeyvaultmanagedhsms) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftkeyvaultmanagedhsms) | [Azure Key Vault Insights (Vorschau)](/azure/azure-monitor/insights/key-vault-insights-overview) | |
+ | [Azure Key Vault](/azure/key-vault/)   | Microsoft.KeyVault/vaults | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftkeyvaultvaults) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftkeyvaultvaults) | [Azure Key Vault Insights (Vorschau)](/azure/azure-monitor/insights/key-vault-insights-overview) | |
+ | [Azure Kubernetes Service (AKS)](/azure/aks/)   | Microsoft.Kubernetes/connectedClusters | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftkubernetesconnectedclusters) | Nein |   | |
+ | [Azure Data Explorer](/azure/data-explorer/)   | Microsoft.Kusto/clusters | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftkustoclusters) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftkustoclusters) |   | |
+ | [Azure Logic Apps](/azure/logic-apps/)   | Microsoft.Logic/integrationAccounts | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftlogicintegrationaccounts) |   | |
+ | [Azure Logic Apps](/azure/logic-apps/)   | Microsoft.Logic/integrationServiceEnvironments | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftlogicintegrationserviceenvironments) | Nein |   | |
+ | [Azure Logic Apps](/azure/logic-apps/)   | Microsoft.Logic/workflows | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftlogicworkflows) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftlogicworkflows) |   | |
+ | [Azure Machine Learning](/azure/machine-learning/)   | Microsoft.MachineLearningServices/workspaces | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftmachinelearningservicesworkspaces) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftmachinelearningservicesworkspaces) |   | |
+ | [Azure Maps](/azure/azure-maps/)   | Microsoft.Maps/accounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftmapsaccounts) | Nein |   | |
+ | [Azure Media Services](/azure/media-services/)   | Microsoft.Media/mediaservices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservices) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftmediamediaservices) |   | |
+ | [Azure Media Services](/azure/media-services/)   | Microsoft.Media/mediaservices/liveEvents | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservicesliveevents) | Nein |   | |
+ | [Azure Media Services](/azure/media-services/)   | Microsoft.Media/mediaservices/streamingEndpoints | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservicesstreamingendpoints) | Nein |   | |
+ | [Azure Media Services](/azure/media-services/)   | Microsoft.Media/videoAnalyzers | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftmediavideoanalyzers) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftmediavideoanalyzers) |   | |
+ | [Azure Spatial Anchors](/azure/spatial-anchors/)   | Microsoft.MixedReality/remoteRenderingAccounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftmixedrealityremoterenderingaccounts) | Nein |   | |
+ | [Azure Spatial Anchors](/azure/spatial-anchors/)   | Microsoft.MixedReality/spatialAnchorsAccounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftmixedrealityspatialanchorsaccounts) | Nein |   | |
+ | [Azure NetApp Files](/azure/azure-netapp-files/)   | Microsoft.NetApp/netAppAccounts/capacityPools | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetappnetappaccountscapacitypools) | Nein |   | |
+ | [Azure NetApp Files](/azure/azure-netapp-files/)   | Microsoft.NetApp/netAppAccounts/capacityPools/volumes | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) | Nein |   | |
+ | [Application Gateway](/azure/application-gateway/) | Microsoft.Network/applicationGateways | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkapplicationgateways) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkapplicationgateways) |   | |
+ | [Azure Firewall](/azure/firewall/) | Microsoft.Network/azureFirewalls | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkazurefirewalls) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkazurefirewalls) |   | |
+ | [Azure Bastion](/azure/bastion/) | Microsoft.Network/bastionHosts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkbastionhosts) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkbastionhosts) |   | |
+ | [VPN Gateway](/azure/vpn-gateway/) | Microsoft.Network/connections | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkconnections) | Nein |   | |
+ | [Azure DNS](/azure/dns/) | Microsoft.Network/dnszones | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkdnszones) | Nein |   | |
+ | [Azure ExpressRoute](/azure/expressroute/) | Microsoft.Network/expressRouteCircuits | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkexpressroutecircuits) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkexpressroutecircuits) |   | |
+ | [Azure ExpressRoute](/azure/expressroute/) | Microsoft.Network/expressRouteGateways | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkexpressroutegateways) | Nein |   | |
+ | [Azure ExpressRoute](/azure/expressroute/) | Microsoft.Network/expressRoutePorts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkexpressrouteports) | Nein |   | |
+ | [Azure Front Door](/azure/frontdoor/) | Microsoft.Network/frontdoors | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkfrontdoors) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkfrontdoors) |   | |
+ | [Azure-Lastenausgleich](/azure/load-balancer/) | Microsoft.Network/loadBalancers | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkloadbalancers) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkloadbalancers) |   | |
+ | [Azure-Lastenausgleich](/azure/load-balancer/) | Microsoft.Network/natGateways | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworknatgateways) | Nein |   | |
+ | [Azure Virtual Network](/azure/virtual-network/) | Microsoft.Network/networkInterfaces | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworknetworkinterfaces) | Nein | [Azure Monitor Network Insights](/azure/azure-monitor/insights/network-insights-overview) | |
+ | [Azure Virtual Network](/azure/virtual-network/) | Microsoft.Network/networkSecurityGroups | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworknetworksecuritygroups) | [Azure Monitor Network Insights](/azure/azure-monitor/insights/network-insights-overview) | |
+ | [Azure Network Watcher](/azure/network-watcher/network-watcher-monitoring-overview) | Microsoft.Network/networkWatchers/connectionMonitors | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworknetworkwatchersconnectionmonitors) | Nein |   | |
+ | [Azure Virtual WAN](/azure/virtual-wan/virtual-wan-about) | Microsoft.Network/p2sVpnGateways | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkp2svpngateways) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkp2svpngateways) |   | |
+ | [Azure DNS Private Zones](/azure/dns/private-dns-privatednszone) | Microsoft.Network/privateDnsZones | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkprivatednszones) | Nein |   | |
+ | [Azure Private Link](/azure/private-link/private-link-overview) | Microsoft.Network/privateEndpoints | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkprivateendpoints) | Nein |   | |
+ | [Azure Private Link](/azure/private-link/private-link-overview) | Microsoft.Network/privateLinkServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkprivatelinkservices) | Nein |   | |
+ | [Azure Virtual Network](/azure/virtual-network/) | Microsoft.Network/publicIPAddresses | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkpublicipaddresses) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkpublicipaddresses) | [Azure Monitor Network Insights](/azure/azure-monitor/insights/network-insights-overview) | |
+ | [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview) | Microsoft.Network/trafficmanagerprofiles | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworktrafficmanagerprofiles) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworktrafficmanagerprofiles) |   | |
+ | [Azure Virtual WAN](/azure/virtual-wan/virtual-wan-about) | Microsoft.Network/virtualHubs | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkvirtualhubs) | Nein |   | |
+ | [Azure VPN Gateway](/azure/vpn-gateway/) | Microsoft.Network/virtualNetworkGateways | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkvirtualnetworkgateways) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkvirtualnetworkgateways) |   | |
+ | [Azure Virtual Network](/azure/virtual-network/) | Microsoft.Network/virtualNetworks | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkvirtualnetworks) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkvirtualnetworks) | [Azure Monitor Network Insights](/azure/azure-monitor/insights/network-insights-overview) | |
+ | [Azure Virtual Network](/azure/virtual-network/) | Microsoft.Network/virtualRouters | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkvirtualrouters) | Nein |   | |
+ | [Azure Virtual WAN](/azure/virtual-wan/virtual-wan-about) | Microsoft.Network/vpnGateways | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnetworkvpngateways) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftnetworkvpngateways) |   | |
+ | [Azure Notification Hubs](/azure/notification-hubs/)   | Microsoft.NotificationHubs/namespaces/notificationHubs | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftnotificationhubsnamespacesnotificationhubs) | Nein |   | |
+ | [Azure Monitor](/azure/azure-monitor/)   | Microsoft.OperationalInsights/workspaces | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftoperationalinsightsworkspaces) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftoperationalinsightsworkspaces) |   | |
+ | [Azure Peering Service](/azure/peering-service/) | Microsoft.Peering/peerings | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftpeeringpeerings) | Nein |   | |
+ | [Azure Peering Service](/azure/peering-service/) | Microsoft.Peering/peeringServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftpeeringpeeringservices) | Nein |   | |
+ | [Microsoft Power BI](/power-bi/power-bi-overview)   | Microsoft.PowerBI/tenants | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftpowerbitenants) |   | |
+ | [Microsoft Power BI](/power-bi/power-bi-overview)   | Microsoft.PowerBI/tenants/workspaces | Nein | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftpowerbitenantsworkspaces) |   | |
+ | [Power BI Embedded](/azure/power-bi-embedded/)   | Microsoft.PowerBIDedicated/capacities | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftpowerbidedicatedcapacities) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftpowerbidedicatedcapacities) |   | |
+ | [Azure Purview](/azure/purview/) | Microsoft.Purview/accounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftpurviewaccounts) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftpurviewaccounts) |   | |
+ | [Azure Site Recovery](/azure/site-recovery/)   | Microsoft.RecoveryServices/vaults | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftrecoveryservicesvaults) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftrecoveryservicesvaults) |   | |
+ | [Azure Relay](/azure/service-bus-relay/relay-what-is-it.md)   | Microsoft.Relay/namespaces | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftrelaynamespaces) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftrelaynamespaces) |   | |
+ | [Azure Resource Manager](/azure/azure-resource-manager/)   | Microsoft.Resources/subscriptions | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftresourcessubscriptions) | Nein |   | |
+ | [Azure Cognitive Search](/azure/search/)   | Microsoft.Search/searchServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftsearchsearchservices) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsearchsearchservices) |   | |
+ | [Azure Service Bus](/azure/service-bus/)   | Microsoft.ServiceBus/namespaces | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftservicebusnamespaces) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftservicebusnamespaces) | [Azure Service Bus](/azure/service-bus/) | |
+ | [Service Fabric](/azure/service-fabric/index.yml)   | Microsoft.ServiceFabric   | Nein | Nein | [Service Fabric](/azure/service-fabric/)   | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
+ | [Azure SignalR Service](/azure/azure-signalr/)   | Microsoft.SignalRService/SignalR | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftsignalrservicesignalr) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsignalrservicesignalr) |   | |
+ | [Azure SignalR Service](/azure/azure-signalr/)   | Microsoft.SignalRService/WebPubSub | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftsignalrservicewebpubsub) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsignalrservicewebpubsub) |   | |
+ | [Verwaltete Azure SQL-Datenbank-Instanz](/azure/azure-sql/database/monitoring-tuning-index) | Microsoft.Sql/managedInstances | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftsqlmanagedinstances) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsqlmanagedinstances) | [Azure SQL Insights](/azure/azure-monitor/insights/sql-insights-overview) | |
+ | [Azure SQL-Datenbank](/azure/azure-sql/database/) | Microsoft.Sql/servers/databases | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftsqlserversdatabases) | Nein | [Azure SQL Insights](/azure/azure-monitor/insights/sql-insights-overview) | |
+ | [Azure SQL-Datenbank](/azure/azure-sql/database/) | Microsoft.Sql/servers/elasticpools | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftsqlserverselasticpools) | Nein | [Azure SQL Insights](/azure/azure-monitor/insights/sql-insights-overview) | |
+ | [Azure Storage (in englischer Sprache)](/azure/storage/)   | Microsoft.Storage/storageAccounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftstoragestorageaccounts) | Nein | [Azure Storage Insights](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure-Speicherblobs](/azure/storage/blobs/) | Microsoft.Storage/storageAccounts/blobServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftstoragestorageaccountsblobservices) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftstoragestorageaccountsblobservices) | [Azure Storage Insights](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure Files](/azure/storage/files/) | Microsoft.Storage/storageAccounts/fileServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftstoragestorageaccountsfileservices) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftstoragestorageaccountsfileservices) | [Azure Storage Insights](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure Queue Storage-Dienste](/azure/storage/queues/)   | Microsoft.Storage/storageAccounts/queueServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftstoragestorageaccountsqueueservices) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftstoragestorageaccountsqueueservices) | [Azure Storage Insights](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure Table Storage](/azure/storage/tables/)   | Microsoft.Storage/storageAccounts/tableServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftstoragestorageaccountstableservices) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftstoragestorageaccountstableservices) | [Azure Storage Insights](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure HPC Cache](/azure/hpc-cache/) | Microsoft.StorageCache/caches | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftstoragecachecaches) | Nein |   | |
+ | [Azure Storage (in englischer Sprache)](/azure/storage/)   | Microsoft.StorageSync/storageSyncServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftstoragesyncstoragesyncservices) | Nein | [Azure Storage Insights](/azure/azure-monitor/insights/storage-insights-overview) | |
+ | [Azure Stream Analytics](/azure/stream-analytics/)   | Microsoft.StreamAnalytics/streamingjobs | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftstreamanalyticsstreamingjobs) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftstreamanalyticsstreamingjobs) |   | |
+ | [Azure Synapse Analytics](/azure/sql-data-warehouse/)   | Microsoft.Synapse/workspaces | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftsynapseworkspaces) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsynapseworkspaces) |   | |
+ | [Azure Synapse Analytics](/azure/sql-data-warehouse/)   | Microsoft.Synapse/workspaces/bigDataPools | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftsynapseworkspacesbigdatapools) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsynapseworkspacesbigdatapools) |   | |
+ | [Azure Synapse Analytics](/azure/sql-data-warehouse/)   | Microsoft.Synapse/workspaces/sqlPools | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftsynapseworkspacessqlpools) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftsynapseworkspacessqlpools) |   | |
+ | [Azure Time Series Insights](/azure/time-series-insights/)   | Microsoft.TimeSeriesInsights/environments | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofttimeseriesinsightsenvironments) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsofttimeseriesinsightsenvironments) |   | |
+ | [Azure Time Series Insights](/azure/time-series-insights/)   | Microsoft.TimeSeriesInsights/environments/eventsources | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsofttimeseriesinsightsenvironmentseventsources) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsofttimeseriesinsightsenvironmentseventsources) |   | |
+ | [Azure VMware Solution](/azure/azure-vmware/)   | Microsoft.VMwareCloudSimple/virtualMachines | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftvmwarecloudsimplevirtualmachines) | Nein |   | |
+ | [Azure App Service](/azure/app-service/)<br />[Azure-Funktionen](/azure/azure-functions/)   | Microsoft.Web/connections | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebconnections) | Nein |   | |
+ | [Azure App Service](/azure/app-service/)<br />[Azure-Funktionen](/azure/azure-functions/)   | Microsoft.Web/hostingEnvironments | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebhostingenvironments) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftwebhostingenvironments) | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
+ | [Azure App Service](/azure/app-service/)<br />[Azure-Funktionen](/azure/azure-functions/)   | Microsoft.Web/hostingEnvironments/multiRolePools | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebhostingenvironmentsmultirolepools) | Nein | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
+ | [Azure App Service](/azure/app-service/)<br />[Azure-Funktionen](/azure/azure-functions/)   | Microsoft.Web/hostingEnvironments/workerPools | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebhostingenvironmentsworkerpools) | Nein | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
+ | [Azure App Service](/azure/app-service/)<br />[Azure-Funktionen](/azure/azure-functions/)   | Microsoft.Web/serverFarms | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebserverfarms) | Nein | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
+ | [Azure App Service](/azure/app-service/)<br />[Azure-Funktionen](/azure/azure-functions/)   | Microsoft.Web/sites | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebsites) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftwebsites) | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
+ | [Azure App Service](/azure/app-service/)<br />[Azure-Funktionen](/azure/azure-functions/)   | Microsoft.Web/sites/slots | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebsitesslots) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftwebsitesslots) | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
+ | [Azure App Service](/azure/app-service/)<br />[Azure-Funktionen](/azure/azure-functions/)   | Microsoft.Web/staticSites | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebstaticsites) | Nein | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die [Azure Monitor-Datenplattform, auf der mit Erkenntnissen und Lösungen gesammelte Protokolle und Metriken gespeichert werden](data-platform.md).
 - Arbeiten Sie ein [Tutorial zum Überwachen einer Azure-Ressource](essentials/tutorial-resource-logs.md) durch.
 - Arbeiten Sie ein [Tutorial zum Schreiben einer Protokollabfrage für die Analyse von Daten in Azure Monitor-Protokollen](essentials/tutorial-resource-logs.md) durch.
-- Arbeiten Sie ein [Tutorial zum Erstellen eines Metrikdiagramms für die Analyse von Daten in Azure Monitor-Metriken](essentials/tutorial-metrics-explorer.md) durch.
+- Arbeiten Sie ein [Tutorial zum Erstellen eines Metrikdiagramms für die Analyse von Daten in Azure Monitor-Metriken](essentials/tutorial-metrics.md) durch.
+ 

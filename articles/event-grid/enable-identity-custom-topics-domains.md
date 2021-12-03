@@ -2,24 +2,21 @@
 title: Aktivieren einer verwalteten Identität für benutzerdefinierte Azure Event Grid-Themen und -Domänen
 description: In diesem Artikel wird beschrieben, wie Sie die verwaltete Dienstidentität für ein benutzerdefiniertes Azure Event Grid-Thema oder eine benutzerdefinierte Azure Event Grid-Domäne aktivieren.
 ms.topic: how-to
-ms.date: 08/20/2021
-ms.openlocfilehash: 9a63e6ae65c1348e22418506bb3bf475aafc0c10
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 11/09/2021
+ms.openlocfilehash: 1f9cae4c25c37d0fcb670804ae3450871dbd5259
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633526"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156585"
 ---
 # <a name="assign-a-managed-identity-to-an-event-grid-custom-topic-or-domain"></a>Zuweisen einer verwalteten Identität zu einem benutzerdefinierten Event Grid-Thema oder einer benutzerdefinierten Event Grid-Domäne 
-In diesem Artikel wird beschrieben, wie Sie einem benutzerdefinierten Event Grid-Thema oder einer benutzerdefinierten Event Grid-Domäne eine system- oder benutzerseitig zugewiesene Identität zuweisen. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).
-
-> [!IMPORTANT]
-> Sie können entweder eine systemseitig oder eine benutzerseitig zugewiesene Identität für ein Event Grid-Thema oder eine Event Grid-Domäne aktivieren, aber nicht beide. Einem Thema oder einer Domäne können maximal zwei benutzerseitig zugewiesene Identitäten zugewiesen werden. 
+Dieser Artikel zeigt Ihnen, wie Sie das Azure-Portal und die Befehlszeilenschnittstelle (CLI) verwenden, um einem benutzerdefinierten Thema oder einer Domäne eine vom System zugewiesene oder eine vom Benutzer zugewiesene [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) zuzuweisen. 
 
 ## <a name="enable-identity-when-creating-a-topic-or-domain"></a>Aktivieren der Identität beim Erstellen eines Themas oder einer Domäne
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
-Beim Erstellen im Azure-Portal können Sie einem benutzerdefinierten Thema oder einer benutzerdefinierten Domäne eine system- oder benutzerseitig zugewiesene Identität zuweisen. 
+Im **Azure-Portal** können Sie beim Erstellen eines Themas oder einer Domäne entweder eine vom System zugewiesene Identität oder zwei vom Benutzer zugewiesene Identitäten zuweisen, aber nicht beide Arten von Identitäten. Sobald das Thema oder die Domäne erstellt ist, können Sie beide Arten von Identitäten zuweisen, indem Sie die Schritte im Abschnitt [Identität für ein bestehendes Thema oder eine Domäne aktivieren](#enable-identity-for-an-existing-custom-topic-or-domain) ausführen.
 
 ### <a name="enable-system-assigned-identity"></a>Aktivieren systemseitig zugewiesener Identitäten
 Wählen Sie im Assistenten zum Erstellen von Themen oder Domänen auf der Seite **Erweitert** die Option **Systemseitig zugewiesene Identität aktivieren** aus. 
@@ -33,7 +30,9 @@ Wählen Sie im Assistenten zum Erstellen von Themen oder Domänen auf der Seite 
 1. Wählen Sie im Fenster **Benutzerseitig zugewiesene Identität auswählen** das Abonnement mit der benutzerseitig zugewiesenen Identität und anschließend die **benutzerseitig zugewiesene Identität** aus, und klicken Sie dann auf **Auswählen**. 
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
-Sie können ein benutzerdefiniertes Thema oder eine benutzerdefinierte Domäne mit einer systemseitig zugewiesenen Identität auch mithilfe der Azure-Befehlszeilenschnittstelle erstellen. Verwenden Sie den Befehl `az eventgrid topic create`, wobei der Parameter `--identity` auf `systemassigned` festgelegt ist. Wenn Sie für diesen Parameter keinen Wert angeben, wird der Standardwert `noidentity` verwendet. 
+Sie können auch Azure CLI verwenden, um ein benutzerdefiniertes Thema oder eine Domäne mit einer vom System zugewiesenen Identität zu erstellen. Derzeit unterstützt Azure CLI nicht die Zuweisung einer vom Benutzer zugewiesenen Identität zu einem Thema oder einer Domäne.  
+
+Verwenden Sie den Befehl `az eventgrid topic create`, wobei der Parameter `--identity` auf `systemassigned` festgelegt ist. Wenn Sie für diesen Parameter keinen Wert angeben, wird der Standardwert `noidentity` verwendet. 
 
 ```azurecli-interactive
 # create a custom topic with a system-assigned identity
@@ -42,16 +41,15 @@ az eventgrid topic create -g <RESOURCE GROUP NAME> --name <TOPIC NAME> -l <LOCAT
 
 Entsprechend können Sie den Befehl `az eventgrid domain create` verwenden, um eine Domäne mit einer systemseitig zugewiesenen Identität zu erstellen.
 
-> [!NOTE]
-> Die Azure-Befehlszeilenschnittstelle unterstützt das Zuweisen von benutzerseitig zugewiesenen verwalteten Identität zu einem Event Grid-Thema oder einer Event Grid-Domäne noch nicht. 
-
 ---
 
 ## <a name="enable-identity-for-an-existing-custom-topic-or-domain"></a>Aktivieren der Identität für ein vorhandenes benutzerdefiniertes Thema oder eine vorhandene benutzerdefinierte Domäne
 In diesem Abschnitt erfahren Sie, wie Sie eine system- oder benutzerseitig zugewiesene Identität für ein vorhandenes benutzerdefiniertes Thema oder eine vorhandene benutzerdefinierte Domäne aktivieren. 
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
-Das folgende Verfahren zeigt, wie Sie eine systemseitig zugewiesene Identität für ein benutzerdefiniertes Thema aktivieren. Die Schritte zum Aktivieren einer Identität für eine Domäne sind ähnlich. 
+Wenn Sie das Azure-Portal verwenden, können Sie einem bestehenden Thema oder einer Domäne eine systemzugeordnete Identität und bis zu zwei benutzerzugeordnete Identitäten zuweisen.
+
+Die folgenden Verfahren zeigen Ihnen, wie Sie eine Identität für ein benutzerdefiniertes Thema aktivieren können. Die Schritte zum Aktivieren einer Identität für eine Domäne sind ähnlich. 
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Suchen Sie oben in der Suchleiste nach **Event Grid-Themen**.
@@ -78,6 +76,8 @@ Das folgende Verfahren zeigt, wie Sie eine systemseitig zugewiesene Identität f
 Sie können ähnliche Schritte zum Aktivieren der Identität für eine Event Grid-Domäne verwenden.
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
+Sie können auch Azure CLI verwenden, um eine vom System zugewiesene Identität einem vorhandenen benutzerdefinierten Thema oder einer Domäne zuzuweisen. Derzeit unterstützt Azure CLI nicht die Zuweisung einer vom Benutzer zugewiesenen Identität zu einem Thema oder einer Domäne.
+
 Verwenden Sie den Befehl `az eventgrid topic update`, wobei Sie `--identity` auf `systemassigned` festlegen, um die vom System zugewiesene Identität für ein vorhandenes benutzerdefiniertes Thema zu aktivieren. Wenn Sie die Identität deaktivieren möchten, geben Sie als Wert `noidentity` an. 
 
 ```azurecli-interactive
@@ -86,9 +86,6 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 ```
 
 Der Befehl zum Aktualisieren einer vorhandenen Domäne lautet entsprechend (`az eventgrid domain update`).
-
-> [!NOTE]
-> Die Azure-Befehlszeilenschnittstelle unterstützt das Zuweisen von benutzerseitig zugewiesenen verwalteten Identität zu einem Event Grid-Thema oder einer Event Grid-Domäne noch nicht. 
 
 ---
 

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a0c499ad15618d874a99be65f6d3af8d11fd88ec
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 30039e687750cbe7f21cea62b117608e41ee4f93
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408945"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553209"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Auswählen zwischen dem vCore-basierten und dem DTU-basierten Kaufmodell – Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,6 +26,11 @@ Azure SQL-Datenbank und Azure SQL Managed Instance ermöglichen Ihnen den einfac
 
 - [Auf virtuellem Kern basierendes (vCore-basiertes) Kaufmodell](service-tiers-vcore.md) (empfohlen). Dieses Kaufmodell ermöglicht die Wahl zwischen einer bereitgestellten Computeebene und einer serverlosen Computeebene. Mit der bereitgestellten Computeebene wählen Sie die genaue Menge an Computeressourcen aus, die immer für Ihre Workload bereitgestellt werden. Mit der serverlosen Computeebene geben Sie die automatische Skalierung der Computeressourcen über einen konfigurierbaren Computebereich an. Mit dieser Computeebene haben Sie auch die Möglichkeit, die Datenbank entsprechend der Workloadaktivität automatisch anzuhalten und fortzusetzen. Der V-Kern-Einzelpreis pro Zeiteinheit ist auf der bereitgestellten Computeebene niedriger als auf der serverlosen Computeebene.
 - [Auf Datenbanktransaktionseinheit basierendes (DTU-basiertes) Kaufmodell](service-tiers-dtu.md). Dieses Kaufmodell bietet gebündelte Compute- und Speicherpakete, die für gängige Workloads zusammengestellt wurden.
+
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021) 
+
 
 Es gibt zwei Kaufmodelle:
 

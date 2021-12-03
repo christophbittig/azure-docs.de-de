@@ -3,12 +3,12 @@ title: Planen und Bereitstellen von Servern mit Azure Arc-Unterstützung
 description: Erfahren Sie, wie Sie eine große Anzahl von Computern für Server mit Azure Arc-Unterstützung aktivieren, um die Konfiguration wichtiger Sicherheits-, Verwaltungs- und Überwachungsfunktionen in Azure zu vereinfachen.
 ms.date: 08/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a8bd9187d3d8d2394fe340eb1822f45e17a50b7
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: b32090caf8167874e61bbca0c5f3782557abd620
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129708972"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340285"
 ---
 # <a name="plan-and-deploy-azure-arc-enabled-servers"></a>Planen und Bereitstellen von Servern mit Azure Arc-Unterstützung
 
@@ -67,7 +67,7 @@ In dieser Phase aktivieren System Engineers oder Administratoren die Kernfunktio
 | Konfigurieren der [rollenbasierten Zugriffssteuerung](../../role-based-access-control/overview.md) (Role Based Access Control, RBAC) | Entwickeln Sie einen Zugriffsplan, um zu steuern, wer Zugriff auf die Verwaltung von Servern mit Azure Arc-Unterstützung hat und wer Daten aus anderen Azure-Diensten und -Lösungen anzeigen kann. | Ein Tag |
 | Identifizieren von Computern mit bereits installiertem Log Analytics-Agent | Führen Sie die folgende Protokollabfrage in [Log Analytics](../../azure-monitor/logs/log-analytics-overview.md) durch, um die Konvertierung vorhandener Log Analytics-Agent-Bereitstellungen in einem von der Erweiterung verwalteten Agent zu unterstützen:<br> Heartbeat <br> &#124;, wobei TimeGenerated > ago(30d) <br> &#124;, wobei ResourceType == "machines" und (ComputerEnvironment == "Non-Azure") <br> &#124; zusammenfassen nach Computer, ResourceProvider, ResourceType, Computer Environment | Eine Stunde |
 
-<sup>1</sup> Ein wichtiger Aspekt bei der Bewertung des Entwurfs Ihres Log Analytics-Arbeitsbereichs ist die Integration in Azure Automation zur Unterstützung der Funktionen „Updateverwaltung“ und „Änderungsnachverfolgung und Bestand“ sowie Azure Security Center und Azure Sentinel. Wenn Ihre Organisation bereits über ein Automation-Konto verfügt und dessen Verwaltungsfeatures aktiviert hat, die mit einem Log Analytics-Arbeitsbereich verknüpft sind, bewerten Sie, ob Sie Verwaltungsvorgänge zentralisieren und optimieren und die Kosten minimieren können, indem Sie diese vorhandenen Ressourcen nutzen, um zum Vergleich ein doppeltes Konto, einen doppelten Arbeitsbereich usw. zu erstellen.
+<sup>1</sup> Ein wichtiger Aspekt bei der Bewertung des Entwurfs Ihres Log Analytics-Arbeitsbereichs ist die Integration in Azure Automation zur Unterstützung der Funktionen „Updateverwaltung“ und „Änderungsnachverfolgung und Bestand“ sowie Microsoft Defender für Cloud und Microsoft Sentinel. Wenn Ihre Organisation bereits über ein Automation-Konto verfügt und dessen Verwaltungsfeatures aktiviert hat, die mit einem Log Analytics-Arbeitsbereich verknüpft sind, bewerten Sie, ob Sie Verwaltungsvorgänge zentralisieren und optimieren und die Kosten minimieren können, indem Sie diese vorhandenen Ressourcen nutzen, um zum Vergleich ein doppeltes Konto, einen doppelten Arbeitsbereich usw. zu erstellen.
 
 ## <a name="phase-2-deploy-azure-arc-enabled-servers"></a>Phase 2: Bereitstellen von Servern mit Azure Arc-Unterstützung
 

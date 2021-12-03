@@ -44,6 +44,12 @@
           href: tutorial-alias-pip.md
         - name: Aliaseinträge für Zoneneinträge
           href: tutorial-alias-rr.md
+- name: Beispiele
+  items:
+    - name: Azure PowerShell
+      items:
+        - name: Ermitteln fehlerhafter DNS-Einträge
+          href: ./scripts/find-unhealthy-dns-records.md
 - name: Konzepte
   items:
     - name: Sicherheit
@@ -144,14 +150,12 @@
           href: cli-samples.md
         - name: Azure PowerShell
           href: /powershell/module/az.dns
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: /cli/azure/network/dns
         - name: .NET
           href: /dotnet/api/microsoft.azure.management.dns.models
         - name: Java
           href: /java/api/com.microsoft.azure.management.dns
-        - name: Node.js
-          href: 'https://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/'
         - name: Ruby
           href: 'https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0'
         - name: Python

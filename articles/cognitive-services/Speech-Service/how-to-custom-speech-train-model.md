@@ -3,19 +3,20 @@ title: Trainieren und Bereitstellen eines Custom Speech-Modells – Speech-Dien
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Custom Speech-Modelle trainieren und bereitstellen können. Das Training einer Spracherkennung kann die Erkennungsgenauigkeit sowohl für das Microsoft-Basismodell als auch für ein benutzerdefiniertes Modell verbessern.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: pafarley
-ms.openlocfilehash: 73076c141f28bc22450c87491053130ace6b5793
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a7f0e4f45659d77400f21d6ff056c1b8d5131fca
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540755"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509174"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Trainieren und Bereitstellen eines Custom Speech-Modells
 
@@ -27,8 +28,8 @@ Wenn Sie bei einem Basismodell auf Erkennungsprobleme stoßen, kann die Verwendu
 
 | Anwendungsfall | Datentyp |
 | -------- | --------- |
-| Verbessern der Erkennungsgenauigkeit für branchenspezifisches Vokabular und entsprechende Grammatik (z. B. aus der Medizin- oder IT-Branche) | Zugehöriger Text (Sätze/Äußerungen) |
-| Definieren der phonetischen und angezeigten Form eines Worts oder Begriffs mit nicht standardmäßiger Aussprache (beispielsweise Produktnamen oder Akronyme) | Zugehöriger Text (Aussprache) |
+| Verbessern der Erkennungsgenauigkeit für branchenspezifisches Vokabular und entsprechende Grammatik (z. B. aus der Medizin- oder IT-Branche) | Nur-Text oder strukturierte Textdaten |
+| Definieren der phonetischen und angezeigten Form eines Worts oder Begriffs mit nicht standardmäßiger Aussprache (beispielsweise Produktnamen oder Akronyme) | Aussprache-Daten oder phonetische Aussprache in strukturiertem Text |
 | Verbessern der Erkennungsgenauigkeit für Sprechweisen, Akzente oder bestimmte Hintergrundgeräusche | Audio + menschenmarkierte Transkripte |
 
 ## <a name="train-and-evaluate-a-model"></a>Trainieren und Bewerten eines Modells

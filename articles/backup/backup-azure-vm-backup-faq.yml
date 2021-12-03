@@ -4,13 +4,15 @@ metadata:
   description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von virtuellen Azure-Computern mit dem Azure Backup-Dienst.
   ms.topic: article
   ms.service: backup
-  ms.date: 08/19/2021
-  ms.openlocfilehash: 7ccfe8d814cc06e7c637b6de3a8df6edb43f52bd
-  ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+  ms.date: 11/09/2021
+  author: v-amallick
+  ms.author: v-amallick
+  ms.openlocfilehash: 6affe7d7e9d0fdeb50da09c80203d01647c46a8e
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130069442"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132293894"
 title: Häufig gestellte Fragen – Sicherung von Azure-VMs
 summary: >
   Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Sicherung von Azure-VMs mit dem Dienst [Azure Backup](./backup-overview.md).
@@ -22,7 +24,7 @@ sections:
       Wenn Sie eine VM erstellen, können Sie die Sicherung für VMs aktivieren, die [unterstützte Betriebssysteme](backup-support-matrix-iaas.md#supported-backup-actions) ausführen.
   - question: Warum dauert die erste Sicherung so lange?
     answer: >
-      Die erste Sicherung ist immer eine vollständige Sicherung, und die Dauer hängt von der Größe der Daten sowie vom Zeitpunkt der Sicherungsverarbeitung ab.
+      Die erste Sicherung ist immer eine vollständige Sicherung, und ihre Dauer hängt von der Größe der Daten sowie vom Zeitpunkt der Sicherungsverarbeitung ab.
 
 
       Informationen zur Verbesserung der Sicherungsleistung finden Sie unter [Bewährte Methoden](./backup-azure-vms-introduction.md#best-practices), [Überlegungen zu Sicherung und Wiederherstellung](./backup-azure-vms-introduction.md#backup-and-restore-considerations) und [Backupleistung](./backup-azure-vms-introduction.md#backup-performance).
@@ -117,9 +119,9 @@ sections:
   - question: Beeinträchtigt Azure Backup die Anwendungsleistung?
     answer: >
       Das Erstellen einer VM-Momentaufnahme dauert ein paar Minuten, und während dieser Phase kommt es zu einer sehr geringen Beeinträchtigung der Anwendungsleistung. Die Datenübertragung in einen Tresor dauert jedoch einige Stunden. Daher wird empfohlen, Sicherungen außerhalb der Geschäftszeiten zu planen. Weitere Informationen zu [Bewährten Methoden zum Sichern und Wiederherstellen](./backup-azure-vms-introduction.md#backup-and-restore-considerations).
-  - question: Wird der neue Datenträger, der dem virtuellen Computer hinzugefügt wurde, automatisch gesichert?
+  - question: Wird ein neuer Datenträger, der dem virtuellen Computer hinzugefügt wurde, automatisch gesichert?
     answer: >
-      Ja, der neue Datenträger, der einem virtuellen Computer hinzugefügt wurde, wird während der nächsten Sicherung automatisch gesichert.
+      Ja, ein neuer Datenträger, der einem virtuellen Computer hinzugefügt wird, wird während der nächsten Sicherung automatisch gesichert.
 - name: Restore
   questions:
   - question: Wie entscheide ich, ob ich nur Datenträger oder eine vollständige VM wiederherstelle?
@@ -154,7 +156,7 @@ sections:
     answer: Ja. Selbst wenn Sie die VM gelöscht haben, können Sie diese über das entsprechende Sicherungselement im Tresor [mithilfe eines Wiederherstellungspunkts wiederherstellen](backup-azure-arm-restore-vms.md#select-a-restore-point).
   - question: Wie stelle ich eine VM in denselben Verfügbarkeitsgruppen wieder her?
     answer: Bei Azure-VMs mit verwalteten Datenträgern ist die Wiederherstellung in Verfügbarkeitsgruppen durch eine Option in der Vorlage zur Wiederherstellung als verwaltete Datenträger möglich. Diese Vorlage verfügt über den Eingabeparameter **Verfügbarkeitsgruppen**.
-  - question: Wie erreichen ich bei Wiederherstellungen eine schnellere Leistung?
+  - question: Wie erreiche ich bei Wiederherstellungen eine schnellere Leistung?
     answer: >
       Die Funktion zur [sofortigen Wiederherstellung](backup-instant-restore-capability.md) ermöglicht schnellere Sicherungen und sofortige Wiederherstellungen aus den Momentaufnahmen.
   - question: Was geschieht, wenn wir die Key Vault-Einstellungen für die verschlüsselte VM ändern?
@@ -167,9 +169,9 @@ sections:
     answer: >
       Ja, Sie können auf den virtuellen Computer nach dessen Wiederherstellung zugreifen, die erforderlich war, weil ein virtueller Computer die Beziehung zum Domänencontroller unterbrochen hat. Weitere Informationen finden Sie in [diesem Artikel](./backup-azure-arm-restore-vms.md#post-restore-steps).
   - question: Kann ich einen aktuellen Wiederherstellungsauftrag abbrechen?
-    answer: Nein, Sie können den Wiederherstellungsauftrag, der gerade ausgeführt wird, nicht abbrechen.
-  - question: Warum dauert der Wiederherstellungsvorgang so lange?
-    answer: Die gesamte Wiederherstellungszeit hängt von den Eingabe-/Ausgabevorgängen pro Sekunde (IOPS) und dem Durchsatz des Speicherkontos ab. Wenn das Zielspeicherkonto mit anderen anwendungsbezogenen Lese- und Schreibvorgängen beschäftigt ist, kann sich dies auf die gesamte Wiederherstellungszeit auswirken. Wählen Sie zum Verbessern des Wiederherstellungsvorgangs ein Speicherkonto ohne andere Anwendungsdaten aus.
+    answer: Nein, Sie können einen Wiederherstellungsauftrag, der gerade ausgeführt wird, nicht abbrechen.
+  - question: Warum dauert mein Wiederherstellungsvorgang so lange?
+    answer: Die gesamte Wiederherstellungszeit hängt von der Geschwindigkeit der Eingabe-/Ausgabevorgänge pro Sekunde (IOPS) und dem Durchsatz des Speicherkontos ab. Wenn das Zielspeicherkonto mit anderen anwendungsbezogenen Lese- und Schreibvorgängen beschäftigt ist, kann sich dies auf die gesamte Wiederherstellungszeit auswirken. Wählen Sie zum Steigern der Geschwindigkeit des Wiederherstellungsvorgangs ein Speicherkonto ohne andere Anwendungsdaten aus.
   - question: Wie handhaben wir Wiederherstellungskonflikte des Typs „Neuen virtuellen Computer erstellen“ mit Governancerichtlinien?
     answer: >
       Azure Backup verwendet „angefügte“ Datenträger aus Wiederherstellungspunkten und untersucht nicht Ihre Imageverweise oder -kataloge. Deshalb können Sie in der Richtlinie „storageProfile.osDisk.createOption as Attach“ aktivieren. Dann lautet die Skriptbedingung wie folgt:
@@ -251,3 +253,5 @@ sections:
   - question: Was ist die minimale RPO (Recovery Point Objective) und RTO (Recovery Time Objective) für VM-Sicherungen in Azure Backup?
     answer: >
       **RPO**: Der RPO-Mindestwert ist 1 Tag oder 24 Stunden.  <br><br>  **RTO**: Die Momentaufnahmen werden im Speicherkonto gespeichert. Daher erfolgt die Wiederherstellung von der Ebene mit sofortiger Wiederherstellung sofort. Diese Daten werden dann an den Recovery Services-Tresor übertragen, der vom Azure Backup-Dienst verwaltet wird. Die Übertragung und Wiederherstellung dauert einige Stunden.
+  - question: Warum wird der Fehler „VMMarketplaceInvalidInputmessage“ angezeigt?
+    answer: Dieser Fehler wird angezeigt, wenn Sie versuchen, einen virtuellen Computer zu starten, nachdem Sie einen virtuellen Azure-Computer auf der Grundlage eines Marketplace-fremden Images erstellt oder den Betriebssystemdatenträger eines virtuellen Computers mit einem Marketplace-fremden Image ausgetauscht haben, und bei der VM-Bereitstellung dann ein Fehler auftritt. Entfernen Sie die Planinformationen vom virtuellen Computer, um dieses Problem zu beheben.

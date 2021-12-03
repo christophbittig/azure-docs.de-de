@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aec870e6027d9a6d2e6c3b66363f93c73fad5e78
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 6d3f6163cc8c5f642835562c631d1712f329a788
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064141"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292527"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Steuern von Azure AD-Dienstkonten
 
@@ -40,7 +40,7 @@ Dokumentieren Sie vor der Erstellung eines Dienstkontos oder der Registrierung e
 | CMDB-Link| Link zu den Ressourcen, auf die zugegriffen werden soll, sowie zu Skripts, in denen das Dienstkonto verwendet wird.| Dokumentieren Sie die Ressourcen- und Skriptbesitzer, um alle notwendigen Upstream- und Downstreamauswirkungen von Änderungen kommunizieren zu können. |
 | Risikobewertung| Das Risiko und die geschäftlichen Auswirkungen im Falle einer Kompromittierung des Kontos.| Verwenden Sie diese Informationen, um den Berechtigungsbereich einzugrenzen und zu bestimmen, wer Zugriff auf die Kontoinformationen haben soll. |
 | Überprüfungszeitraum| Der Zeitplan für die Überprüfung des Dienstkontos durch den Besitzer.| Verwenden Sie diese Information, um die Überprüfungskommunikation und Überprüfungen zu planen. Dokumentieren Sie, was geschehen soll, wenn bis zu einem bestimmten Zeitpunkt nach dem geplanten Überprüfungszeitraum keine Überprüfung stattgefunden hat. |
-| Lebensdauer| Die voraussichtliche maximale Lebensdauer eines Kontos.| Verwenden Sie diese Information, um die Kommunikation mit dem Besitzer zu planen und die Konten letztendlich zu deaktivieren und anschließend zu löschen. Legen Sie nach Möglichkeit ein Ablaufdatum für Anmeldeinformationen fest, sofern kein automatischer Rollover für Anmeldeinformationen möglich ist. |
+| Gültigkeitsdauer| Die voraussichtliche maximale Lebensdauer eines Kontos.| Verwenden Sie diese Information, um die Kommunikation mit dem Besitzer zu planen und die Konten letztendlich zu deaktivieren und anschließend zu löschen. Legen Sie nach Möglichkeit ein Ablaufdatum für Anmeldeinformationen fest, sofern kein automatischer Rollover für Anmeldeinformationen möglich ist. |
 | Name| Standardisierter Name des Kontos| Erstellen Sie ein Benennungsschema für alle Dienstkonten, um problemlos nach Dienstkonten suchen, sortieren und filtern zu können. |
 
 
@@ -111,7 +111,7 @@ Planung und Erstellung wurden in diesem Artikel bereits behandelt. Darüber hina
 
 * Gib es Veränderungen bei den Anmeldemustern von Dienstkonten?
 
-Es empfiehlt sich, Azure AD-Anmeldeprotokolle zu exportieren und in Ihre vorhandenen SIEM-Tools (Security Information & Event Management) wie etwa Azure Sentinel zu importieren. Verwenden Sie Ihre SIEM-Lösung, um Warnungen und Dashboards zu erstellen.
+Es empfiehlt sich, Azure AD-Anmeldeprotokolle zu exportieren und sie in Ihre vorhandenen SIEM-Tools (Security Information & Event Management) wie etwa Microsoft Sentinel zu importieren. Verwenden Sie Ihre SIEM-Lösung, um Warnungen und Dashboards zu erstellen.
 
 ### <a name="review-service-account-permissions"></a>Überprüfen von Dienstkontoberechtigungen
 
@@ -195,4 +195,3 @@ Weitere Informationen zum Schutz von Azure-Dienstkonten finden Sie hier:
 
 
  
-

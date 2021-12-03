@@ -7,14 +7,14 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: mldata
 ms.topic: how-to
-ms.date: 09/24/2021
-ms.custom: data4ml, ignite-fall-2021
-ms.openlocfilehash: 3fae9f8f6e5c0e54d42751456b693a4bc094771c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/21/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a811c63e29800fa7f79d620f358e06939168ce4c
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131079375"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563034"
 ---
 # <a name="labeling-images-and-text-documents"></a>Beschriften von Bildern und Textdokumenten
 
@@ -67,6 +67,8 @@ Machine-Learning-Algorithmen können während der Beschriftung ausgelöst werden
     * Später wird neben dem Projektnamen unter Umständen **Vorab beschriftete Aufgaben** angezeigt.  Elemente werden dann mit einer von einem Machine-Learning-Klassifizierungsmodell vorgeschlagenen Beschriftung angezeigt. Machine Learning-Modelle sind niemals hundertprozentig genau. Es werden zwar nur Daten verwendet, bei denen das Modell eine hohe Zuverlässigkeit ermittelt hat, trotzdem kann es vorkommen, dass diese Bilder nicht korrekt vorab beschriftet wurden.  Wenn Beschriftungen angezeigt werden, korrigieren Sie falsche Beschriftungen, bevor Sie die Seite übermitteln.
 
 Insbesondere in der Anfangsphase eines Bezeichnungsprojekts ist die Genauigkeit des Machine Learning-Modells möglicherweise nur für die Kennzeichnung einer kleinen Teilmenge von Bildern ausreichend. Sobald diese Bilder gekennzeichnet wurden, kehrt das Bezeichnungsprojekt zur manuellen Kennzeichnung zurück, um mehr Daten für das nächste Modelltraining zu erfassen. Im Laufe der Zeit erhöht sich die Zuverlässigkeit des Modells für einen größeren Teil von Bildern, was im weiteren Projektverlauf zu mehr Vorabbeschriftungsaufgaben führt.
+
+Wenn keine Vorabbeschriftungsaufgaben mehr vorhanden sind, beenden Sie das Bestätigen oder Korrigieren von Bezeichnungen und wechseln zurück zum manuellen Markieren der Elemente.
 
 ## <a name="image-tasks"></a><a name="image-tasks"></a> Bildaufgaben
 

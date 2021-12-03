@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 69dbe496745ebbe3fbc9547a1ffc381ec0cae905
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 33ff5a9e2dcf0d4e8f62d38bc36811548f9d3b3c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340374"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484825"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Notfallwiederherstellung in Azure Spring Cloud
 
 **Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
-In diesem Artikel werden einige Strategien erläutert, mit denen Sie Ihre Azure Spring Cloud-Anwendungen vor Ausfallzeiten schützen können.  In jeder Region und jedem Rechenzentrum können Ausfallzeiten aufgrund von regionalen Ausfällen auftreten, durch eine sorgfältige Planung können jedoch die Auswirkungen auf Ihre Kunden abgeschwächt werden.
+In diesem Artikel werden einige Strategien erläutert, mit denen Sie Ihre Anwendungen in Azure Spring Cloud vor Ausfallzeiten schützen können.  In jeder Region und jedem Rechenzentrum können Ausfallzeiten aufgrund von regionalen Ausfällen auftreten, durch eine sorgfältige Planung können jedoch die Auswirkungen auf Ihre Kunden abgeschwächt werden.
 
 ## <a name="plan-your-application-deployment"></a>Planen Ihrer Anwendungsbereitstellung
 
-Azure Spring Cloud-Anwendungen werden in einer spezifischen Region ausgeführt.  Azure betreibt Datencenter in mehreren Gebieten auf der ganzen Erde. Bei einem Azure-Gebiet handelt es sich um einen definierten Bereich der Erde, der mindestens eine Azure-Region enthält. Eine Azure-Region ist ein Bereich in einem Gebiet mit mindestens einem Rechenzentrum.  Jeder Azure-Region ist innerhalb des gleichen geografischen Gebiets eine andere Region als Regionspartner zugeordnet. In Azure werden Plattformupdates (geplante Wartung) für Regionspaare serialisiert, um sicherzustellen, dass immer nur jeweils eine Region pro Paar aktualisiert wird. Bei einem Ausfall, der sich auf mehrere Regionen auswirkt, wird mindestens eine Region in jedem Paar für die Wiederherstellung priorisiert.
+Anwendungen in Azure Spring Cloud werden in einer bestimmten Region ausgeführt.  Azure betreibt Datencenter in mehreren Gebieten auf der ganzen Erde. Bei einem Azure-Gebiet handelt es sich um einen definierten Bereich der Erde, der mindestens eine Azure-Region enthält. Eine Azure-Region ist ein Bereich in einem Gebiet mit mindestens einem Rechenzentrum.  Jeder Azure-Region ist innerhalb des gleichen geografischen Gebiets eine andere Region als Regionspartner zugeordnet. In Azure werden Plattformupdates (geplante Wartung) für Regionspaare serialisiert, um sicherzustellen, dass immer nur jeweils eine Region pro Paar aktualisiert wird. Bei einem Ausfall, der sich auf mehrere Regionen auswirkt, wird mindestens eine Region in jedem Paar für die Wiederherstellung priorisiert.
 
 Zur Sicherstellung von Hochverfügbarkeit und Schutz vor Ausfällen müssen Sie Ihre Spring Cloud-Anwendungen in mehreren Regionen bereitstellen.  Azure umfasst eine Liste mit [Regionspaaren](../best-practices-availability-paired-regions.md), sodass Sie Spring Cloud-Bereitstellungen mit Regionspaaren planen können.  Es empfiehlt sich, beim Entwurf Ihrer Microservicearchitektur drei wichtige Faktoren zu berücksichtigen: regionale Verfügbarkeit, Azure-Regionspaare und Dienstverfügbarkeit.
 
@@ -34,12 +34,12 @@ Zur Sicherstellung von Hochverfügbarkeit und Schutz vor Ausfällen müssen Sie 
 
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) gewährleistet einen DNS-basierten Lastausgleich des Datenverkehrs und kann Netzwerkdatenverkehr auf mehrere Regionen verteilen.  Verwenden Sie Azure Traffic Manager, um Kunden an die nächstgelegene Azure Spring Cloud-Dienstinstanz weiterzuleiten.  Optimale Leistungs- und Redundanzwerte werden erzielt, indem Sie den gesamten Anwendungsdatenverkehr über Azure Traffic Manager leiten, bevor er an den Azure Spring Cloud-Dienst gesendet wird.
 
-Wenn Sie über Azure Spring Cloud-Anwendungen in mehreren Regionen verfügen, können Sie über Azure Traffic Manager den Datenverkehrsfluss in die Anwendungen in den einzelnen Regionen steuern.  Definieren Sie einen Azure Traffic Manager-Endpunkt für jeden Dienst unter Verwendung der Dienst-IP-Adresse. Kunden sollten eine Verbindung mit einem DNS-Namen in Azure Traffic Manager herstellen, der auf den Azure Spring Cloud-Dienst verweist.  Mit Azure Traffic Manager wird ein Lastausgleich des Datenverkehrs über die definierten Endpunkte vorgenommen.  Bei einem Ausfall eines Rechenzentrums leitet Azure Traffic Manager den Datenverkehr von dieser Region an die zugehörige andere Region des Regionspaars weiter, um die Dienstkontinuität sicherzustellen.
+Wenn Sie Anwendungen in Azure Spring Cloud in mehreren Regionen ausführen, verwenden Sie Azure Traffic Manager, um den Verkehrsfluss zu Ihren Anwendungen in jeder Region zu steuern.  Definieren Sie einen Azure Traffic Manager-Endpunkt für jeden Dienst unter Verwendung der Dienst-IP-Adresse. Kunden sollten eine Verbindung mit einem DNS-Namen in Azure Traffic Manager herstellen, der auf den Azure Spring Cloud-Dienst verweist.  Mit Azure Traffic Manager wird ein Lastausgleich des Datenverkehrs über die definierten Endpunkte vorgenommen.  Bei einem Ausfall eines Rechenzentrums leitet Azure Traffic Manager den Datenverkehr von dieser Region an die zugehörige andere Region des Regionspaars weiter, um die Dienstkontinuität sicherzustellen.
 
 ## <a name="create-azure-traffic-manager-for-azure-spring-cloud"></a>Erstellen von Azure Traffic Manager für Azure Spring Cloud
 
 1. Erstellen Sie Azure Spring Cloud in zwei unterschiedlichen Regionen.
-Sie benötigen zwei Dienstinstanzen von Azure Spring Cloud, die in zwei verschiedenen Regionen bereitgestellt werden („USA, Osten“ und „Europa, Westen“). Starten Sie eine vorhandene Azure Spring Cloud-Anwendung über das Azure-Portal, um zwei Dienstinstanzen zu erstellen. Jede dient jeweils als primärer bzw. Failoverendpunkt für den Datenverkehr.
+Sie benötigen zwei Dienstinstanzen von Azure Spring Cloud, die in zwei verschiedenen Regionen bereitgestellt werden („USA, Osten“ und „Europa, Westen“). Starten Sie eine vorhandene Anwendung in Azure Spring Cloud über das Azure-Portal, um zwei Dienstinstanzen zu erstellen. Jede dient jeweils als primärer bzw. Failoverendpunkt für den Datenverkehr.
 
 **Info zu den beiden Dienstinstanzen**:
 
@@ -67,4 +67,4 @@ Im Folgenden das Traffic Manager-Profil:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md)
+* [Schnellstart: Bereitstellen Ihrer ersten Spring Boot-App in Azure Spring Cloud](./quickstart.md)

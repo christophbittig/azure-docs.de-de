@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.subservice: service-overview
 ms.topic: how-to
 ms.date: 06/30/2021
-ms.openlocfilehash: 29d0bdba30bb75a085e147c72438f22121744870
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: 5f1464c6fb74bc04dacb230cd2a5993f7566e82a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113134580"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546878"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>Planen und Verwalten der Kosten für Azure SQL-Datenbank
 
@@ -21,6 +21,8 @@ In diesem Artikel erfahren Sie, wie Sie die Kosten für Azure SQL-Datenbank plan
 
 Zunächst verwenden Sie den Azure-Preisrechner zum Hinzufügen der Azure-Ressourcen und überprüfen die geschätzten Kosten. Nachdem Sie mit der Nutzung von Azure SQL-Datenbank-Ressourcen begonnen haben, können Sie Cost Management-Features verwenden, um Budgets festzulegen und Kosten zu überwachen. Sie können auch vorhergesagte Kosten überprüfen und Ausgabentrends ermitteln, um die Bereiche zu identifizieren, in denen ggf. Maßnahmen erforderlich sind. Die Kosten für Azure SQL-Datenbank stellen nur einen Teil der monatlichen Kosten Ihrer Azure-Rechnung dar. Zwar wird in diesem Artikel das Planen und Verwalten der Kosten für Azure SQL-Datenbank erläutert, doch werden Ihnen alle Azure-Dienste und -Ressourcen in Rechnung gestellt, die unter Ihrem Azure-Abonnement verwendet werden, einschließlich der Dienste von Drittanbietern.
 
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

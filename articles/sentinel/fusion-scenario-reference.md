@@ -1,30 +1,30 @@
 ---
-title: Vom Azure Sentinel Fusion Modul erkannte Szenarien
+title: Vom Microsoft Sentinel Fusion Modul erkannte Szenarien
 description: Erfahren Sie mehr über die von Fusion erkannten Szenarien, die hier gruppiert nach Bedrohungsklassifizierung aufgeführt sind.
 services: sentinel
 documentationcenter: na
 author: yelevin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 25706c4a80e63ed76cc94d24582bcf6433032950
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b5c03e94dfd1bea5453a449d7c6ae045371150b7
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095527"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523541"
 ---
-# <a name="scenarios-detected-by-the-azure-sentinel-fusion-engine"></a>Vom Azure Sentinel Fusion Modul erkannte Szenarien
+# <a name="scenarios-detected-by-the-microsoft-sentinel-fusion-engine"></a>Vom Microsoft Sentinel Fusion Modul erkannte Szenarien
 
-In diesem Dokument werden, gruppiert nach Bedrohungsklassifizierung, die Typen szenariobasierter mehrstufiger Angriffe aufgelistet, die das Fusion Korrelations-Moduls erkennt.
+In diesem Dokument werden die Arten von szenariobasierten mehrstufigen Angriffen nach Bedrohungsklassifizierung aufgelistet, die Microsoft Sentinel mit dem Fusion-Korrelations-Modul erkennt.
 
-Da [Fusion](fusion.md) mehrere Signale von verschiedenen Produkten korreliert, um erweiterte mehrstufige Angriffe zu erkennen, werden erfolgreiche Erkennungen von Fusion als **Fusion-Vorfälle** auf der Seite Azure Sentinel **Vorfälle** und nicht als **Warnungen** angezeigt und in der *Tabelle Vorfälle* in **Protokollen** und nicht in der Tabelle *Sicherheitswarnungen* gespeichert.
+Da [Fusion](fusion.md) mehrere Signale von verschiedenen Produkten korreliert, um erweiterte mehrstufige Angriffe zu erkennen, werden erfolgreiche Erkennungen von Fusion als **Fusion-Vorfälle** auf der Seite Microsoft Sentinel **Vorfälle** und nicht als **Warnungen** angezeigt und in der Tabelle *Vorfälle* in **Protokollen** und nicht in der Tabelle *Sicherheitswarnungen* gespeichert.
 
 Um diese von Fusion gestützten Angriffserkennungsszenarien zu ermöglichen, müssen alle aufgeführten Datenquellen in Ihrem Log Analytics-Arbeitsbereich erfasst werden.
 
@@ -41,7 +41,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Ressourcen-Hijacking (T1496)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass virtuelle Computer in ungewöhnlicher Anzahl in einer einzelnen Sitzung im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto erstellt wurden. Diese Art von Benachrichtigung zeigt mit einem hohen Grad an Vertrauenswürdigkeit an, dass das in der Fusion-Vorfallsbeschreibung genannte Konto beschädigt und zum Erstellen neuer VMs für nicht autorisierte Zwecke verwendet wurde, etwa zum Ausführen von Vorgängen zum Kryptografiemining. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung über mehrere Aktivitäten zur VM-Erstellung lauten:
 
@@ -68,7 +68,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Brute Force (T1110)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Azure Active Directory Identity Protection
 
 **Beschreibung**: Fusion-Vorfälle dieser Art deuten darauf hin, dass ein Benutzer nach einer verdächtigen Anmeldung bei einem Azure AD-Konto mehrere Kennwörter zurückgesetzt hat. Dies ist ein Hinweis darauf, dass das in der Beschreibung des Fusion-Vorfalls genannte Konto kompromittiert und dazu verwendet wurde, mehrere Kennwörter zurückzusetzen, um Zugriff auf mehrere Systeme und Ressourcen zu erhalten. Die Manipulation von Konten (einschließlich Zurücksetzung von Kennwörtern) kann Angreifern dabei helfen, den Zugriff auf Anmeldeinformationen und bestimmte Berechtigungsebenen innerhalb einer Umgebung aufrechtzuerhalten. Die Permutationen von Warnungen zu verdächtigen Azure AD-Anmeldungen mit Warnungen zum Zurücksetzen mehrerer Kennwörter sind wie folgt:
 
@@ -91,7 +91,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Brute Force (T1110)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieser Art deuten darauf hin, dass eine verdächtige Anmeldung bei einem Azure AD-Konto mit einer erfolgreichen Anmeldung über ein Palo Alto VPN über eine IP-Adresse einherging, von der aus mehrere fehlgeschlagene Azure AD-Anmeldungen in einem ähnlichen Zeitrahmen erfolgt sind. Obwohl dies kein Hinweis auf einen mehrstufigen Angriff ist, ergibt die Korrelation dieser beiden Warnungen mit geringerer Zuverlässigkeit einen Vorfall mit hoher Zuverlässigkeit, der auf einen ersten böswilligen Zugriff auf das Netzwerk der Organisation schließen lässt. Alternativ kann dies ein Hinweis darauf sein, dass ein Angreifer versucht, sich mit Brute-Force-Techniken Zugriff auf ein Azure AD-Konto zu verschaffen. Die Permutationen verdächtiger Azure AD-Anmeldewarnungen mit Warnungen des Typs „IP-Adresse mit mehreren fehlgeschlagenen Azure AD-Anmeldungen meldet sich erfolgreich bei Palo Alto VPN an“ sind wie folgt:
 
@@ -156,7 +156,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Ressourcen-Hijacking (T1496)
 
-**Datenconnector-Quellen:** Azure Active Directory Identity Protection, Azure Defender (Azure Security Center)
+**Datenconnector-Quellen:** Azure Active Directory Identity Protection, Microsoft Defender für Cloud
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten auf eine Aktivität zum Crypto Mining hin, die einer verdächtigen Anmeldung bei einem Azure AD-Konto zugeordnet ist. Dies bedeutet mit hoher Zuverlässigkeit, dass das in der Warnungsbeschreibung genannte Benutzerkonto kompromittiert und zum Übernehmen von Ressourcen in Ihrer Umgebung verwendet wurde, um mit diesen das Mining einer Kryptowährung zu betreiben. Dies kann Ihre Computeressourcen und damit die Computingleistung beeinträchtigen und zu deutlich höheren als den erwarteten Cloudnutzungsgebühren führen. Die Permutationen verdächtiger Azure AD-Anmeldewarnungen im Zusammenhang mit der Warnung zum Crypto Mining sind:  
 
@@ -178,7 +178,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Datenvernichtung (T1485)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass einzigartige Dateien in anomaler Anzahl von einem Benutzer im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto gelöscht wurden. Dies ist ein Hinweis darauf, dass das in der Beschreibung des Fusion-Vorfalls genannte Konto möglicherweise kompromittiert und zu böswilligen Zwecken zur Vernichtung von Daten verwendet wurde. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung zur Massenlöschung von Dateien sind:  
 
@@ -201,7 +201,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Datenvernichtung (T1485)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Microsoft Cloud App Security
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Microsoft Defender für Cloud Apps
 
 **Beschreibung:** Fusion-Vorfälle dieser Art deuten darauf hin, dass eine anomale Anzahl eindeutiger Dateien nach einer erfolgreichen Azure AD-Anmeldung gelöscht wurde, obwohl die IP-Adresse des Benutzers von einer Cisco Firewall-Appliance blockiert wurde. Die ist ein Hinweis darauf, dass das in der Beschreibung des Fusion-Vorfalls genannte Konto kompromittiert und zu böswilligen Zwecken zur Vernichtung von Daten verwendet wurde. Da die IP-Adresse von der Firewall blockiert wurde, ist dieselbe IP-Adresse, die sich erfolgreich bei Azure AD anmeldet, potenziell verdächtig und könnte eine Kompromittierung der Anmeldeinformationen für das Benutzerkonto bedeuten.
 
@@ -214,7 +214,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Brute Force (T1110), Datenvernichtung (T1485)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Microsoft Cloud App Security
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Microsoft Defender für Cloud Apps
 
 **Beschreibung**: Fusion-Vorfälle dieser Art geben an, dass eine anomale Anzahl eindeutiger Dateien von einem Benutzer gelöscht wurde, der sich erfolgreich über ein Palo Alto VPN mit einer IP-Adresse angemeldet hat, von der aus in einem ähnlichen Zeitrahmen mehrere fehlgeschlagene Azure AD-Anmeldungen erfolgt sind. Dies ist ein Hinweis darauf, dass das in der Beschreibung des Fusion-Vorfalls genannte Konto möglicherweise kompromittiert und zu böswilligen Zwecken zur Vernichtung von Daten verwendet wurde.
 
@@ -225,7 +225,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Datenvernichtung (T1485)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass E-Mails in ungewöhnlicher Anzahl in einer einzelnen Sitzung im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto gelöscht wurden. Dies ist ein Hinweis darauf, dass das in der Beschreibung des Fusion-Vorfalls genannte Konto möglicherweise kompromittiert und zu böswilligen Zwecken zur Vernichtung von Daten verwendet wurde, etwa um die Organisation zu schädigen oder E-Mail-Aktivität im Zusammenhang mit Spam zu verbergen. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung über verdächtige Aktivitäten zur E-Mail-Löschung lauten:   
 
@@ -252,7 +252,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), E-Mail-Sammlung (T1114), Exfiltration über einen Webdienst (T1567)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Microsoft Cloud App Security
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Microsoft Defender für Cloud Apps
 
 **Beschreibung**: Fusion-Vorfälle dieser Art sind ein Hinweis, dass entweder ein neues Exchange-Administratorkonto erstellt wurde oder ein bestehendes Exchange-Administratorkonto in den letzten zwei Wochen zum ersten Mal eine administrative Aktion durchgeführt hat, und dass das Konto dann einige E-Mail-Weiterleitungsaktionen durchgeführt hat, die für ein Administratorkonto ungewöhnlich sind. Dies deutet darauf hin, dass das in der Beschreibung des Fusion-Vorfalls angegebene Benutzerkonto kompromittiert bzw. manipuliert und verwendet wurde, um Daten aus dem Netzwerk Ihrer Organisation zu exfiltrieren.
 
@@ -262,7 +262,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass Dateien in anomaler Anzahl von einem Benutzer im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto heruntergeladen wurden. Diese Indikation bietet hohe Vertrauenswürdigkeit für die Annahme, dass das in der Fusion-Vorfallsbeschreibung angegebene Konto kompromittiert und zur Exfiltration von Daten aus dem Netzwerk Ihrer Organisation verwendet wurde. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung zum Massendownload von Dateien sind:  
 
@@ -285,7 +285,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Exfiltration über einen Webdienst (T1567)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Microsoft Cloud App Security
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Microsoft Defender für Cloud Apps
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass eine anomale Anzahl von Dateien von einem Benutzer heruntergeladen wurde, obwohl die IP-Adresse des Benutzers von einer Cisco Firewall-Appliance blockiert wurde. Dies kann ein möglicher Versuch eines Angreifers sein, Daten aus dem Netzwerk der Organisation zu exfiltrieren, nachdem ein Benutzerkonto kompromittiert wurde. Da die IP-Adresse von der Firewall blockiert wurde, ist dieselbe IP-Adresse, die sich erfolgreich bei Azure AD anmeldet, potenziell verdächtig und könnte eine Kompromittierung der Anmeldeinformationen für das Benutzerkonto bedeuten.
 
@@ -298,7 +298,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Exfiltration über Webdienst (T1567), Größenbeschränkungen für Datenübertragungen (T1030)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Microsoft Cloud App Security
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Microsoft Defender für Cloud Apps
 
 **Beschreibung**: Fusion-Vorfälle dieses Typs sind ein Hinweis, dass eine anomale Anzahl von Dateien von einem Benutzer heruntergeladen wurde, der über eine zuvor nicht verwendete IP-Adresse verbunden war. Obwohl dies kein Beweis für einen mehrstufigen Angriff ist, ergibt die Korrelation dieser beiden Warnungen mit geringerer Zuverlässigkeit einen Vorfall mit hoher Zuverlässigkeit, der auf den Versuch eines Angreifers hindeutet, Daten aus dem Netzwerk der Organisation über ein möglicherweise kompromittiertes Benutzerkonto zu exfiltrieren. In stabilen Umgebungen können solche Verbindungen über bislang nicht bekannte IP-Adressen unzulässig sein, insbesondere wenn sie mit Volumenspitzen verbunden sind, die mit einer groß angelegten Exfiltration von Dokumenten in Verbindung gebracht werden könnten.
 
@@ -308,7 +308,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Exfiltration über einen Webdienst (T1567)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass eine Anzahl von Dateien oberhalb eines bestimmten Schwellenwerts im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto für andere freigegeben wurden. Diese Indikation bietet hohe Vertrauenswürdigkeit für die Annahme, dass das in der Fusion-Vorfallsbeschreibung angegebene Konto kompromittiert und zur Exfiltration von Daten aus dem Netzwerk Ihrer Organisation verwendet wurde, indem Dateien wie Dokumente, Kalkulationstabellen usw. mit böswilliger Absicht für unberechtigte Benutzer freigegeben wurden. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung zur Massenfreigabe von Dateien sind:  
 
@@ -329,7 +329,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Exfiltration über einen Webdienst (T1567)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass Power BI-Berichte in ungewöhnlicher Anzahl in einer einzelnen Sitzung im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto freigegeben wurden. Diese Indikation bietet hohe Vertrauenswürdigkeit für die Annahme, dass das in der Fusion-Vorfallsbeschreibung angegebene Konto kompromittiert und zur Exfiltration von Daten aus dem Netzwerk Ihrer Organisation verwendet wurde, indem Power BI-Berichte in böswilliger Absicht für unberechtigte Benutzer freigegeben wurden. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung über mehrere Aktivitäten zur Freigabe von Power BI-Berichten lauten:  
 
@@ -349,7 +349,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), E-Mail-Sammlung (T1114), Automatisierte Exfiltration (T1020)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass eine verdächtige Posteingangs-Weiterleitungsregel für den Posteingang eines Benutzers im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto festgelegt wurde. Diese Indikation bietet hohe Vertrauenswürdigkeit für die Annahme, dass das Konto des Benutzers (das in der Fusion-Vorfallsbeschreibung angegeben ist) kompromittiert und zur Exfiltration von Daten aus dem Netzwerk Ihrer Organisation verwendet wurde, indem ohne Wissen des wahren Benutzers eine Weiterleitungsregel für ein Postfach aktiviert wurde. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung zur Office 365-Postfachexfiltration sind:
 
@@ -372,7 +372,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken**: Größenbeschränkungen für die Datenübertragung (T1030)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Microsoft Cloud App Security
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Microsoft Defender für Cloud Apps
 
 **Beschreibung**: Fusion-Vorfälle dieser Art deuten darauf hin, dass ein Angreifer mithilfe von Schadsoftware versucht hat, große Datenmengen durch Herunterladen oder Freigeben über SharePoint zu exfiltrieren. In stabilen Umgebungen können solche Verbindungen über bislang nicht bekannte IP-Adressen unzulässig sein, insbesondere wenn sie mit Volumenspitzen verbunden sind, die mit einer groß angelegten Exfiltration von Dokumenten in Verbindung gebracht werden könnten. 
 
@@ -385,7 +385,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), internes Spear-Phishing (T1534), Automatisierte Exfiltration (T1020)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass anomale Posteingangs-Weiterleitungsregeln für den Posteingang eines Benutzers im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto festgelegt wurden. Dies gibt einen sehr zuverlässigen Hinweis darauf, dass das in der Beschreibung des Fusion-Vorfalls genannte Konto kompromittiert und zu böswilligen Zwecken zur Manipulation der Regeln des Benutzerposteingangs verwendet wurde, um möglicherweise Daten aus dem Netzwerk der Organisation zu exfiltrieren. Alternativ könnte der Angreifer versuchen, Phishing-E-Mails aus dem Innern der Organisation zu erstellen (durch Umgehen der Mechanismen zur Erkennung von Phishing, die auf E-Mails aus externen Quellen gerichtet sind), um ihm durch Erwerb des Zugriffs auf weitere Benutzerkonten und/oder bevorrechtigte Konten eine Seitwärtsbewegung zu ermöglichen. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung über verdächtige Regeln zur Postfachänderung lauten:
 
@@ -406,7 +406,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Exfiltration über einen Webdienst (T1567)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass eine verdächtige Aktivität zur Freigabe von Power BI-Berichten im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto auftrat. Die Freigabeaktivität wurde als verdächtig identifiziert, weil der Power BI-Bericht vertrauliche Informationen enthielt, wie mithilfe der natürlichsprachlichen Verarbeitung festgestellt wurde, und weil er mit einer externen E-Mail-Adresse geteilt, im Web veröffentlicht oder als Momentaufnahme an eine extern abonnierte E-Mail-Adresse übermittelt wurde. Diese Benachrichtigung deutet mit hoher Vertrauenswürdigkeit darauf hin, dass das in der Fusion-Vorfallsbeschreibung angegebene Konto kompromittiert und zur Exfiltration vertraulicher Daten aus Ihrer Organisation verwendet wurde, indem Power BI-Berichte in böswilliger Absicht für unberechtigte Benutzer freigegeben wurden. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung über die verdächtige Freigabe von Power BI-Berichten lauten:  
 
@@ -429,7 +429,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Denial-of-Service am Endpunkt (T1499)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass virtuelle Computer in ungewöhnlicher Anzahl in einer einzelnen Sitzung im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto gelöscht wurden. Diese Indikation bietet hohe Vertrauenswürdigkeit für die Annahme, dass das in der Fusion-Vorfallsbeschreibung genannte Konto kompromittiert und zum Versuch der Betriebsunterbrechung oder Vernichtung der Cloudumgebung der Organisation verwendet wurde. Die Permutationen von Warnungen zu verdächtigen Azure AD-Anmeldungen im Zusammenhang mit der Warnung über mehrere Aktivitäten zur Löschung von VMs lauten:  
 
@@ -451,7 +451,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), internes Spear-Phishing (T1534)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass Identitätswechselaktionen in anomaler Anzahl im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto aufgetreten sind. Einige Softwareanwendungen bieten Optionen, mit denen Benutzer die Identität anderer Benutzer annehmen können. Beispielsweise geben E-Mail-Dienste ihren Benutzern die Möglichkeit, andere Benutzer zum Senden von E-Mails in ihrem Auftrag zu ermächtigen. Diese Benachrichtigung gibt einen ziemlich vertrauenswürdigen Hinweis darauf, dass das in der Fusion-Vorfallsbeschreibung genannte Konto kompromittiert und dazu verwendet wurde, Identitätswechselaktivitäten zu böswilligen Zwecken durchzuführen, etwa um Phishing-E-Mails zur Verteilung von Malware oder zur Seitwärtsbewegung zu senden. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung zum Office 365-Identitätswechsel sind:  
 
@@ -474,7 +474,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), internes Spear-Phishing (T1534), Automatisierte Exfiltration (T1020)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass anomale Posteingangs-Weiterleitungsregeln für den Posteingang eines Benutzers im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto festgelegt wurden. Dies gibt einen sehr zuverlässigen Hinweis darauf, dass das in der Beschreibung des Fusion-Vorfalls genannte Konto kompromittiert und zu böswilligen Zwecken zur Manipulation der Regeln des Benutzerposteingangs verwendet wurde, um möglicherweise Daten aus dem Netzwerk der Organisation zu exfiltrieren. Alternativ könnte der Angreifer versuchen, Phishing-E-Mails aus dem Innern der Organisation zu erstellen (durch Umgehen der Mechanismen zur Erkennung von Phishing, die auf E-Mails aus externen Quellen gerichtet sind), um ihm durch Erwerb des Zugriffs auf weitere Benutzerkonten und/oder bevorrechtigte Konten eine Seitwärtsbewegung zu ermöglichen. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung über verdächtige Regeln zur Postfachänderung lauten:
 
@@ -496,7 +496,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** –
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass administrative Aktivitäten in anomaler Anzahl in einer einzelnen Sitzung im Anschluss an eine verdächtige Azure AD-Anmeldung des gleichen Kontos durchgeführt wurden. Dies ist ein Hinweis darauf, dass das in der Beschreibung des Fusion-Vorfalls genannte Konto möglicherweise kompromittiert und in böswilliger Absicht zum Ausführen einer beliebigen Anzahl nicht autorisierter administrativer Aktionen verwendet wurde. Dies ist zugleich ein Hinweis darauf, dass möglicherweise ein Konto mit Administratorberechtigungen kompromittiert wurde. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung über verdächtige administrative Aktivitäten in der Cloud-App lauten:  
 
@@ -521,7 +521,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), E-Mail-Sammlung (T1114), Exfiltration über einen Webdienst (T1567)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Microsoft Cloud App Security
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Microsoft Defender für Cloud Apps
 
 **Beschreibung**: Fusion-Vorfälle dieser Art sind ein Hinweis, dass entweder ein neues Exchange-Administratorkonto erstellt wurde oder ein bestehendes Exchange-Administratorkonto in den letzten zwei Wochen zum ersten Mal eine administrative Aktion durchgeführt hat, und dass das Konto dann einige E-Mail-Weiterleitungsaktionen durchgeführt hat, die für ein Administratorkonto ungewöhnlich sind. Dies deutet darauf hin, dass das in der Beschreibung des Fusion-Vorfalls angegebene Benutzerkonto kompromittiert bzw. manipuliert und verwendet wurde, um Daten aus dem Netzwerk Ihrer Organisation zu exfiltrieren.
 
@@ -536,7 +536,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **Datenconnector-Quellen:** Microsoft Defender for Endpoint (früher Microsoft Defender Advanced Threat Protection oder MDATP), Palo Alto Networks 
 
-**Beschreibung:** Fusion-Vorfälle dieses Typs zeigen an, dass eine ausgehende Verbindungsanforderung mithilfe eines PowerShell-Befehls durchgeführt wurde. Im Anschluss daran wurde von der Palo Alto Networks-Firewall eine ungewöhnliche eingehende Aktivität erkannt. Dies ist ein Hinweis darauf, dass ein Angreifer sich wahrscheinlich Zugriff auf Ihr Netzwerk verschafft hat und versucht, böswillige Aktionen auszuführen. Verbindungsversuche von PowerShell, die diesem Muster folgen, können einen Hinweis auf Command-and-Control-Aktivitäten von Malware, Anforderungen für den Download zusätzlicher Malware oder einen Angreifer darstellen, der interaktiven Remotezugriff einrichtet. Wie bei allen Living-off-the-Land-Angriffen könnte diese Aktivität auch eine legitime Verwendung von PowerShell darstellen. Die Ausführung eines PowerShell-Befehls, auf die verdächtige eingehende Firewall-Aktivitäten folgen, steigert aber die Glaubwürdigkeit der Annahme, dass PowerShell in böswilliger Weise verwendet wird und der Vorfall genauer untersucht werden sollte. In Palo Alto-Protokollen sucht Azure Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
+**Beschreibung:** Fusion-Vorfälle dieses Typs zeigen an, dass eine ausgehende Verbindungsanforderung mithilfe eines PowerShell-Befehls durchgeführt wurde. Im Anschluss daran wurde von der Palo Alto Networks-Firewall eine ungewöhnliche eingehende Aktivität erkannt. Dies ist ein Hinweis darauf, dass ein Angreifer sich wahrscheinlich Zugriff auf Ihr Netzwerk verschafft hat und versucht, böswillige Aktionen auszuführen. Verbindungsversuche von PowerShell, die diesem Muster folgen, können einen Hinweis auf Command-and-Control-Aktivitäten von Malware, Anforderungen für den Download zusätzlicher Malware oder einen Angreifer darstellen, der interaktiven Remotezugriff einrichtet. Wie bei allen Living-off-the-Land-Angriffen könnte diese Aktivität auch eine legitime Verwendung von PowerShell darstellen. Die Ausführung eines PowerShell-Befehls, auf die verdächtige eingehende Firewall-Aktivitäten folgen, steigert aber die Glaubwürdigkeit der Annahme, dass PowerShell in böswilliger Weise verwendet wird und der Vorfall genauer untersucht werden sollte. In Palo Alto-Protokollen sucht Microsoft Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
 
 ### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Verdächtige WMI-Remoteausführung, auf die anomaler, durch die Palo Alto Networks-Firewall gekennzeichneter Datenverkehr folgte.
 Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
@@ -547,7 +547,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **Datenconnector-Quellen:** Microsoft Defender für den Endpunkt (vormals MDATP), Palo Alto Networks 
 
-**Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass WMI-Befehle (Windows Management Interface) remote auf einem System ausgeführt wurden. Im Anschluss daran wurden von der Palo Alto Networks-Firewall verdächtige eingehende Aktivitäten erkannt. Dies ist ein Hinweis darauf, dass sich ein Angreifer möglicherweise Zugriff auf Ihr Netzwerk verschafft hat und Lateral Movement, das Heraufstufen von Berechtigungen und/oder Ausführen schädlicher Nutzdaten versucht. Wie bei allen Living-off-the-Land-Angriffen könnte diese Aktivität auch eine legitime Verwendung von WMI darstellen. Die Remoteausführung eines WMI-Befehls, auf die verdächtige eingehende Firewall-Aktivitäten folgen, steigert aber die Glaubwürdigkeit der Annahme, dass WMI in böswilliger Weise verwendet wird und der Vorfall genauer untersucht werden sollte. In Palo Alto-Protokollen sucht Azure Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
+**Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass WMI-Befehle (Windows Management Interface) remote auf einem System ausgeführt wurden. Im Anschluss daran wurden von der Palo Alto Networks-Firewall verdächtige eingehende Aktivitäten erkannt. Dies ist ein Hinweis darauf, dass sich ein Angreifer möglicherweise Zugriff auf Ihr Netzwerk verschafft hat und Lateral Movement, das Heraufstufen von Berechtigungen und/oder Ausführen schädlicher Nutzdaten versucht. Wie bei allen Living-off-the-Land-Angriffen könnte diese Aktivität auch eine legitime Verwendung von WMI darstellen. Die Remoteausführung eines WMI-Befehls, auf die verdächtige eingehende Firewall-Aktivitäten folgen, steigert aber die Glaubwürdigkeit der Annahme, dass WMI in böswilliger Weise verwendet wird und der Vorfall genauer untersucht werden sollte. In Palo Alto-Protokollen sucht Microsoft Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
 
 ### <a name="suspicious-powershell-command-line-following-suspicious-sign-in"></a>Verdächtige PowerShell-Befehlszeile nach verdächtiger Anmeldung
 
@@ -581,7 +581,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Kein Standardport (T1571), T1065 (eingestellt)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Microsoft Cloud App Security
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Microsoft Defender für Cloud Apps
 
 **Beschreibung**: Fusion-Vorfälle dieser Art deuten auf Kommunikationsmuster von einer internen zu einer externen IP-Adresse hin, die mit Beaconing übereinstimmen, nachdem die Anmeldung eines Benutzers bei einem Dienst von einer zugehörigen internen Entität mehrfach fehlgeschlagen ist. Die Kombination dieser beiden Ereignisse könnte ein Hinweis auf eine Infektion mit Schadsoftware oder auf einen kompromittierten Host sein, der Daten exfiltriert. 
 
@@ -595,7 +595,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Kein Standardport (T1571), T1065 (eingestellt)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Azure Active Directory Identity Protection
 
 **Beschreibung**: Fusion-Vorfälle dieser Art deuten auf Kommunikationsmuster von einer internen zu einer externen IP-Adresse hin, die mit Beaconing übereinstimmen, nachdem eine verdächtige Benutzeranmeldung bei Azure AD erfolgt ist. Die Kombination dieser beiden Ereignisse könnte ein Hinweis auf eine Infektion mit Schadsoftware oder auf einen kompromittierten Host sein, der Daten exfiltriert. Die Permutationen der von Fortinet erkannten Beaconmuster mit Warnungen zu verdächtigen Azure AD-Anmelderungen sind wie folgt:   
 
@@ -618,7 +618,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **Datenconnector-Quellen:** Microsoft Defender für den Endpunkt (vormals MDATP), Palo Alto Networks 
 
-**Beschreibung:** Fusion-Vorfälle dieses Typs zeigen an, dass eine ausgehende Verbindungsanforderung an den TOR-Anonymisierungsdienst durchgeführt wurde. Im Anschluss daran wurde dann von der Palo Alto Networks-Firewall eine ungewöhnliche eingehende Aktivität erkannt. Dies ist einen Hinweis darauf, dass ein Angreifer sich wahrscheinlich Zugriff auf Ihr Netzwerk verschafft hat und versucht, seine Aktionen und Absichten zu verbergen. Verbindungsversuche mit dem TOR-Netzwerk, die diesem Muster folgen, können einen Hinweis auf Command-and-Control-Aktivitäten von Malware, Anforderungen für den Download zusätzlicher Malware oder einen Angreifer darstellen, der interaktiven Remotezugriff einrichtet. In Palo Alto-Protokollen sucht Azure Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
+**Beschreibung:** Fusion-Vorfälle dieses Typs zeigen an, dass eine ausgehende Verbindungsanforderung an den TOR-Anonymisierungsdienst durchgeführt wurde. Im Anschluss daran wurde dann von der Palo Alto Networks-Firewall eine ungewöhnliche eingehende Aktivität erkannt. Dies ist einen Hinweis darauf, dass ein Angreifer sich wahrscheinlich Zugriff auf Ihr Netzwerk verschafft hat und versucht, seine Aktionen und Absichten zu verbergen. Verbindungsversuche mit dem TOR-Netzwerk, die diesem Muster folgen, können einen Hinweis auf Command-and-Control-Aktivitäten von Malware, Anforderungen für den Download zusätzlicher Malware oder einen Angreifer darstellen, der interaktiven Remotezugriff einrichtet. In Palo Alto-Protokollen sucht Microsoft Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
 
 ### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Ausgehende Verbindung mit IP mit einem Verlauf nicht autorisierter Zugriffsversuche, gefolgt von anomalem, durch die Palo Alto Networks-Firewall gekennzeichnetem Datenverkehr
 Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
@@ -629,7 +629,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **Datenconnector-Quellen:** Microsoft Defender für den Endpunkt (vormals MDATP), Palo Alto Networks 
 
-**Beschreibung:** Fusion-Vorfälle dieses Typs zeigen an, dass eine ausgehende Verbindung mit einer IP-Adresse mit einem Backlog unberechtigter Zugriffsversuche hergestellt wurde. Im Anschluss daran wurde von der Palo Alto Networks-Firewall eine ungewöhnliche Aktivität erkannt. Dies deutet darauf hin, dass ein Angreifer sich wahrscheinlich Zugriff auf Ihr Netzwerk verschafft hat. Verbindungsversuche, die diesem Muster folgen, können einen Hinweis auf Command-and-Control-Aktivitäten von Malware, Anforderungen für den Download zusätzlicher Malware oder einen Angreifer darstellen, der interaktiven Remotezugriff einrichtet. In Palo Alto-Protokollen sucht Azure Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
+**Beschreibung:** Fusion-Vorfälle dieses Typs zeigen an, dass eine ausgehende Verbindung mit einer IP-Adresse mit einem Backlog unberechtigter Zugriffsversuche hergestellt wurde. Im Anschluss daran wurde von der Palo Alto Networks-Firewall eine ungewöhnliche Aktivität erkannt. Dies deutet darauf hin, dass ein Angreifer sich wahrscheinlich Zugriff auf Ihr Netzwerk verschafft hat. Verbindungsversuche, die diesem Muster folgen, können einen Hinweis auf Command-and-Control-Aktivitäten von Malware, Anforderungen für den Download zusätzlicher Malware oder einen Angreifer darstellen, der interaktiven Remotezugriff einrichtet. In Palo Alto-Protokollen sucht Microsoft Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
 
 ## <a name="persistence"></a>Persistenz
 (Neue Bedrohungsklassifizierung)
@@ -644,7 +644,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Konto erstellen (T1136), gültiges Konto (T1078)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieser Art deuten darauf hin, dass ein Benutzer seine Einwilligung für eine Anwendung gegeben hat, der dies noch nie oder nur selten getan hat, nachdem eine verdächtige Anmeldung bei einem Azure AD-Konto erfolgt war. Dies ist ein Hinweis darauf, dass das in der Beschreibung des Fusion-Vorfalls genannte Konto möglicherweise kompromittiert und zu böswilligen Zwecken für den Zugriff auf oder die Manipulation der Anwendung verwendet wurde.  Einwilligen in eine Anwendung, Hinzufügen eines Dienstprinzipals und Hinzufügen von OAuth2PermissionGrant sollten in der Regel seltene Ereignisse sein. Angreifer können diese Art der Konfigurationsänderung nutzen, um sich in Systemen dauerhaft festzusetzen. Die Permutationen von Warnungen zu verdächtigen Azure AD-Anmeldungen im Zusammenhang mit der Warnung zur seltenen Einwilligung in Anwendungen sind wie folgt:
 
@@ -666,7 +666,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Verschlüsselung von Daten zur Beeinträchtigung (T1486)
 
-**Datenconnector-Quellen:** Microsoft Cloud App Security, Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Defender für Cloud Apps, Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass anomales Benutzerverhalten, das auf einen Ransomware-Angriff hinweist, im Anschluss an eine verdächtige Anmeldung bei einem Azure AD-Konto entdeckt wurden. Dieser Hinweis weist mit hoher Vertrauenswürdigkeit darauf hin, dass das in der Fusion-Vorfallsbeschreibung genannte Konto kompromittiert und dazu verwendet wurde, Daten zum Zweck der Erpressung des Datenbesitzers oder zur Hinderung des Datenbesitzers am Zugriff auf seine Daten zu verschlüsseln. Die Permutationen verdächtiger Azure AD-Anmeldebenachrichtigungen im Zusammenhang mit der Benachrichtigung zur Ausführung von Ransomware sind:  
 
@@ -691,7 +691,7 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **Datenconnector-Quellen:** Microsoft Defender für den Endpunkt (vormals MDATP), Palo Alto Networks 
 
-**Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass die nicht standardmäßige Verwendung von Protokollen, die der Verwendung von Angriffs-Frameworks wie z. B. Metasploit ähnelt, erkannt wurde. Im Anschluss daran wurden von der Palo Alto Networks-Firewall verdächtige eingehende Aktivitäten erkannt. Dies kann ein früher Hinweis darauf, sein, dass ein Angreifer einen Dienst ausgenutzt hat, um Zugriff auf Ihre Netzwerkressourcen zu erlangen, oder den Zugriff bereits erlangt hat und versucht, verfügbare Systeme/Dienste weiter für Seitwärtsbewegung und/oder Rechteausweitung auszunutzen. In Palo Alto-Protokollen sucht Azure Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
+**Beschreibung:** Fusion-Vorfälle dieses Typs deuten darauf hin, dass die nicht standardmäßige Verwendung von Protokollen, die der Verwendung von Angriffs-Frameworks wie z. B. Metasploit ähnelt, erkannt wurde. Im Anschluss daran wurden von der Palo Alto Networks-Firewall verdächtige eingehende Aktivitäten erkannt. Dies kann ein früher Hinweis darauf, sein, dass ein Angreifer einen Dienst ausgenutzt hat, um Zugriff auf Ihre Netzwerkressourcen zu erlangen, oder den Zugriff bereits erlangt hat und versucht, verfügbare Systeme/Dienste weiter für Seitwärtsbewegung und/oder Rechteausweitung auszunutzen. In Palo Alto-Protokollen sucht Microsoft Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires). Konsultieren Sie außerdem das Palo Alto-Bedrohungsprotokoll, das dem in der Fusion-Vorfallsbeschreibung aufgelisteten [Bedrohungs-/Inhaltstyp](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) entspricht, um weitere Details zur Benachrichtigung zu erhalten.
 
 ## <a name="resource-hijacking"></a>Ressourcenübernahme
 (Neue Bedrohungsklassifizierung)
@@ -705,9 +705,10 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 **MITRE ATT&CK-Techniken:** Gültiges Konto (T1078), Ressourcen-Hijacking (T1496)
 
-**Datenconnector-Quellen:** Azure Sentinel (Regel für geplante Analysen), Azure Active Directory Identity Protection
+**Datenconnector-Quellen:** Microsoft Sentinel (Regel für geplante Analysen), Azure Active Directory Identity Protection
 
 **Beschreibung:** Fusion-Vorfälle dieser Art deuten darauf hin, dass ein Benutzer eine Azure-Ressource oder -Ressourcengruppe bereitgestellt hat (eine seltene Aktivität), nachdem er sich bei einem verdächtigen Azure AD-Konto mit zuvor nicht bekannten Eigenschaften angemeldet hat. Dies könnte möglicherweise ein Versuch eines Angreifers sein, Ressourcen oder Ressourcengruppen für böswillige Zwecke bereitzustellen, nachdem er das in der Beschreibung des Fusion-Vorfalls genannte Konto des Benutzers kompromittiert hat.
+
 Die Permutationen von Warnungen zu verdächtigen Azure AD-Anmeldungen bei der Bereitstellung einer verdächtigen Ressource/Ressourcengruppe durch einen bislang nicht bekannten Aufrufer sind wie folgt:
 
 - **Unmöglicher Ortswechsel zu einem atypischen Ort, der zu verdächtiger Bereitstellung von Ressourcen-/Ressourcengruppen durch einen bislang nicht bekannten Aufrufer führt**
@@ -722,6 +723,6 @@ Die Permutationen von Warnungen zu verdächtigen Azure AD-Anmeldungen bei der Be
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun mehr über die erweiterte Erkennung von mehrstufigen Angriffen erfahren haben, ist für Sie ggf. die folgende Schnellstartanleitung interessant. Darin wird veranschaulicht, wie Sie Einblicke in Ihre Daten und in potenzielle Bedrohungen erhalten: [Erste Schritte mit Azure Sentinel](get-visibility.md).
+Nachdem Sie nun mehr über die erweiterte Erkennung von mehrstufigen Angriffen erfahren haben, ist für Sie ggf. die folgende Schnellstartanleitung interessant. Darin wird veranschaulicht, wie Sie Einblicke in Ihre Daten und potenzielle Bedrohungen erhalten: [Erste Schritte mit Microsoft Sentinel](get-visibility.md).
 
-Arbeiten Sie das folgende Tutorial durch, wenn Sie bereit zum Untersuchen der Incidents sind, die für Sie erstellt wurden: [Untersuchen von Vorfällen mit Azure Sentinel](investigate-cases.md).
+Wenn Sie bereit sind, die Vorfälle zu untersuchen, die für Sie erstellt werden, lesen Sie das folgende Tutorial: [Untersuchen von Vorfällen mit Azure Sentinel](investigate-cases.md).

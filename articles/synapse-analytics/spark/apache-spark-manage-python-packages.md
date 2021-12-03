@@ -10,12 +10,12 @@ ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1b69aed711100eead6e7669c7d57e2f8faac25ad
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: c696105fee677e8e8dca71d5515e0dd2374960b0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429182"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228447"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Python-Bibliotheken für Apache Spark in Azure Synapse Analytics
 
@@ -61,7 +61,7 @@ absl-py==0.7.0
 adal==1.2.1
 alabaster==0.7.10
 ```
-##### <a name="yml-format-preview"></a>YML-Format (Vorschau)
+##### <a name="yml-format"></a>YML-Format
 Darüber hinaus können Sie auch eine Datei *environment.yml* bereitstellen, um die Poolumgebung zu aktualisieren. Die in dieser Datei aufgeführten Pakete werden aus den Conda-Standardkanälen „Conda-Forge“ und „PyPI“ heruntergeladen. Mithilfe der Konfigurationsoptionen können Sie andere Kanäle angeben oder die Standardkanäle entfernen.
 
 In diesem Beispiel werden die Kanäle und die Conda-/PyPI-Abhängigkeiten angegeben. 
@@ -116,7 +116,7 @@ So aktualisieren Sie Bibliotheken oder fügen sie einem Spark-Pool hinzu
 > Wenn diese Einstellung deaktiviert ist, müssen Sie warten, bis die aktuelle Spark-Sitzung beendet wird, oder sie manuell beenden. Nachdem die Sitzung beendet wurde, müssen Sie den Pool neu starten.
 
 
-##### <a name="track-installation-progress-preview"></a>Nachverfolgen des Installationsstatus (Vorschau)
+##### <a name="track-installation-progress"></a>Nachverfolgen des Installationsstatus  
 Bei jeder Aktualisierung eines Pools mit einem neuen Satz von Bibliotheken wird ein vom System reservierter Spark-Auftrag initiiert. Mit diesem Spark-Auftrag können Sie den Status der Bibliotheksinstallation überwachen. Wenn bei der Installation aufgrund von Bibliothekskonflikten oder anderen Problemen ein Fehler auftritt, wird der Spark-Pool auf den vorherigen oder den Standardzustand zurückgesetzt. 
 
 Darüber hinaus können Benutzer auch die Installationsprotokolle überprüfen, um Abhängigkeitskonflikte zu identifizieren oder zu ermitteln, welche Bibliotheken während des Poolupdates installiert wurden.
@@ -132,7 +132,7 @@ So zeigen Sie diese Protokolle an
 ## <a name="install-wheel-files"></a>Installieren von Wheel-Dateien
 Python-Wheel-Dateien sind eine gängige Methode zum Erstellen von Paketen aus Python-Bibliotheken. Innerhalb von Azure Synapse Analytics können Benutzer ihre Wheel-Dateien an einen bekannten Speicherort im Azure Data Lake Storage-Konto hochladen oder den Upload über die Azure Synapse-Schnittstelle für Arbeitsbereichspakete durchführen.
 
-### <a name="workspace-packages-preview"></a>Arbeitsbereichspakete (Vorschau)
+### <a name="workspace-packages"></a>Arbeitsbereichspakete 
 Arbeitsbereichspakete können benutzerdefinierte oder private Wheel-Dateien sein. Sie können diese Pakete in Ihren Arbeitsbereich hochladen und später einem bestimmten Spark-Pool zuweisen.
 
 So fügen Sie Arbeitsbereichspakete hinzu
@@ -145,7 +145,7 @@ So fügen Sie Arbeitsbereichspakete hinzu
 >[!WARNING]
 >- Innerhalb von Azure Synapse kann ein Apache Spark-Pool benutzerdefinierte Bibliotheken nutzen, die entweder als Workspace-Pakete oder innerhalb eines bekannten Azure Data Lake Storage-Pfads hochgeladen werden. Allerdings können diese beiden Optionen nicht gleichzeitig innerhalb desselben Apache Spark-Pools verwendet werden. Bei Bereitstellung von Paketen mit beiden Methoden werden nur die in der Liste der Arbeitsbereichspakete angegebenen Wheel-Dateien installiert. 
 >
->- Sobald Arbeitsbereichspakete (Vorschau) verwendet werden, um Pakete in einem bestimmten Apache Spark-Pool zu installieren, gibt es die Einschränkung, dass Sie keine Pakete mehr mit dem Pfad des Speicherkontos in demselben Pool angeben können.  
+>- Sobald Arbeitsbereichspakete verwendet werden, um Pakete in einem bestimmten Apache Spark-Pool zu installieren, gibt es die Einschränkung, dass Sie keine Pakete mehr mit dem Pfad des Speicherkontos in demselben Pool angeben können.  
 
 ### <a name="storage-account"></a>Speicherkonto
 Benutzerdefiniert erstellte Wheel-Pakete können im Apache Spark-Pool installiert werden, indem alle Wheel-Dateien in Azure Data Lake Storage (Gen2)-Konto hochgeladen werden, das mit dem Synapse-Arbeitsbereich verknüpft ist. 
@@ -164,7 +164,7 @@ abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<wo
 > Um benutzerdefinierte Bibliotheken über die Azure Data Lake Storage-Methode zu installieren, müssen Sie über die Berechtigung **Mitwirkender an Storage-Blobdaten** oder **Besitzer von Speicherblobdaten** für das primäre Gen2-Speicherkonto verfügen, das mit dem Azure Synapse Analytics-Arbeitsbereich verknüpft ist.
 
 
-## <a name="session-scoped-packages-preview"></a>Sitzungsbezogene Pakete (Vorschau)
+## <a name="session-scoped-packages"></a>Sitzungsbezogene Pakete
 Zusätzlich zu den Paketen auf Poolebene können Sie zu Beginn einer Notebook-Sitzung auch sitzungsbezogene Bibliotheken angeben.  Mithilfe sitzungsbezogener Bibliotheken können Sie benutzerdefinierte Python-Umgebungen innerhalb einer Notebook-Sitzung angeben und verwenden. 
 
 Bei der Verwendung sitzungsbezogener Bibliotheken sind folgende Punkte zu berücksichtigen:

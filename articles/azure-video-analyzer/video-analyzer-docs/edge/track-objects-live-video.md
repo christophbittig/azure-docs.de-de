@@ -2,14 +2,14 @@
 title: Nachverfolgen von Objekten in einem Livevideo mit Azure Video Analyzer
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie das Azure Video Analyzer-Edgemodul verwenden, um Objekte in einem Livevideofeed einer (simulierten) IP-Kamera nachzuverfolgen. Es wird gezeigt, wie Sie ein Modell für maschinelles Sehen anwenden, um Objekte in einer Teilmenge der Frames im Livevideofeed zu erkennen. Anschließend können Sie einen Knoten für die Objektnachverfolgung verwenden, um diese Objekte in den anderen Frames zu verfolgen.
 ms.topic: quickstart
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ceda70a3fa0ced3c64eed041ef65600c1cf37563
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2b9286dc6dba80de841969af285ab57e587f560a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101808"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319261"
 ---
 # <a name="quickstart-track-objects-in-a-live-video"></a>Schnellstart: Nachverfolgen von Objekten in einem Livevideo
 

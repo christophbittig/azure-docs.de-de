@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 8aba6f13957d37f843114572f001029baf41ded6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5838185328920587b11bb66d21c9402ce93e9b6b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889347"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458245"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Auswählen einer Domäne für ein Custom Vision-Projekt
 
@@ -50,6 +50,8 @@ Auf der Registerkarte „Einstellungen“ Ihres Custom Vision-Projekt können Si
 ## <a name="compact-domains"></a>Kompaktdomänen
 
 Die von Kompaktdomänen generierten Modelle können für die lokale Ausführung exportiert werden. In der öffentlichen Vorschauversion 3.4 der API von Custom Vision können Sie eine Liste der exportierbaren Plattformen für kompakte Domänen erhalten, indem Sie die GetDomains-API aufrufen.
+
+Alle folgenden Domänen unterstützen den Export im ONNX-, TensorFlow-, TensorFlowLite-, TensorFlow.js-, CoreML- und VAIDK-Format, mit der Ausnahme, dass die Domäne **Objekterkennung Allgemein (kompakt)** nicht VAIDK unterstützt.
 
 Die Modellleistung variiert je nach ausgewählter Domäne. In der folgenden Tabelle geben wir die Modellgröße und die Rückschlusszeit auf der Intel Desktop-CPU und der NVIDIA-GPU \[1\] an. Diese Zahlen enthalten keine Vor- und Nachverarbeitungszeit.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 4b4b84de819e8b2e64238ef1d3d8d7149473c2b0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b39616ea0270615db618b8097a28b67f2cff45e5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124753900"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311551"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudtamerio"></a>Tutorial: Integration des einmaligen Anmeldens (SSO) von Azure Active Directory mit cloudtamer.io
 
@@ -65,6 +65,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 1. **[Konfigurieren des einmaligen Anmeldens für cloudtamer.io](#configure-cloudtamerio-sso)** , um die Einstellungen für das einmalige Anmelden auf der Anwendungsseite zu konfigurieren.
     1. **[Erstellen eines cloudtamer.io-Testbenutzers](#create-cloudtamerio-test-user)** , um eine Entsprechung von B. Simon in cloudtamer.io zu erhalten, die mit der entsprechenden Benutzerdarstellung in Azure AD verknüpft ist.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+1. **[Gruppenassertionen](#group-assertions)** , um Gruppenassertionen für Azure AD und cloudtamer.io festzulegen
 
 ### <a name="begin-cloudtamerio-sso-configuration"></a>Eine Anleitung zum Starten der Konfiguration für das einmalige Anmelden mit cloudtamer.io
 
@@ -179,7 +180,41 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „cloudtamer.io“ in dem Zugriffsbereich „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeablaufs zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der cloudtamer.io-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
+## <a name="group-assertions"></a>Gruppenassertionen
+
+Führen Sie zum einfachen Verwalten der Benutzerberechtigungen für cloudtamer.io mithilfe vorhandener Azure Active Directory-Gruppen die folgenden Schritte aus:
+
+### <a name="azure-ad-configuration"></a>Azure AD-Konfiguration
+
+1. Wechseln Sie im Azure-Portal zu **Azure Active Directory** > **Unternehmensanwendungen**.
+1. Wählen Sie in der Liste die Unternehmensanwendung für cloudtamer.io aus.
+1. Wählen Sie im Menü auf der linken Seite unter **Übersicht** die Option **Einmaliges Anmelden** aus.
+1. Wählen Sie unter **Einmaliges Anmelden** unter **Benutzerattribute und Ansprüche** die Option **Bearbeiten** aus.
+1. Wählen Sie **Gruppenanspruch hinzufügen** aus. 
+   > [!NOTE]
+   > Sie können nur einen Gruppenanspruch haben. Ist diese Option deaktiviert, ist möglicherweise bereits ein Gruppenanspruch definiert.
+1. Wählen Sie unter **Gruppenansprüche** die Gruppen aus, die im Anspruch zurückgegeben werden sollen:
+   - Wenn Sie jede Gruppe, die Sie in cloudtamer.io verwenden möchten, immer dieser Unternehmensanwendung zuordnen möchten, wählen Sie **Der Anwendung zugewiesene Gruppen** aus.
+   - Wenn alle Gruppen angezeigt werden sollen (diese Auswahl kann zu einer großen Anzahl von Gruppenassertionen führen und Beschränkungen unterliegen), wählen Sie **Der Anwendung zugewiesene Gruppen** aus.
+1. Übernehmen Sie für **Quellattribut** den Standardwert **Gruppen-ID**.
+1. Aktivieren Sie das Kontrollkästchen **Name des Gruppenanspruchs anpassen**.
+1. Geben Sie unter **Name** den Namen **memberOf** ein.
+1. Wählen Sie **Speichern** aus, um die Konfiguration mit Azure AD abzuschließen.
+
+### <a name="cloudtamerio-configuration"></a>Konfiguration von cloudtamer.io
+
+1. Navigieren Sie in cloudtamer.io zu **Users** > **Identity Management Systems** (Benutzer > Identitätsverwaltungssysteme)
+1. Wählen Sie das IDMS aus, das Sie für Azure AD erstellt haben.
+1. Wählen Sie auf der Übersichtsseite die Registerkarte **User Group Associations** (Benutzergruppenzuordnungen) aus.
+1. Führen Sie für jede gewünschte Benutzergruppenzuordnung die folgenden Schritte aus:
+   1. Wählen Sie **Add** > **Add New** (Hinzufügen > Neu hinzufügen) aus.
+   1. Gehen Sie im angezeigten Dialogfeld wie folgt vor:
+      1. Geben Sie unter **Name** den Namen **memberOf** ein.
+      1. Geben Sie unter **RegEx** die Objekt-ID (aus Azure AD) der Gruppe ein, die Sie zuordnen möchten.
+      1. Wählen Sie unter **User Group** (Benutzergruppe) die interne cloudtamer.io-Gruppe aus, die Sie der Gruppe unter **RegEx** zuordnen möchten.
+      1. Aktivieren Sie das Kontrollkästchen **Update on Login** (Bei Anmeldung aktualisieren).
+   1. Wählen Sie **Add** (Hinzufügen) aus, um die Gruppenzuordnung hinzuzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von cloudtamer.io können Sie eine Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von cloudtamer.io können Sie eine Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

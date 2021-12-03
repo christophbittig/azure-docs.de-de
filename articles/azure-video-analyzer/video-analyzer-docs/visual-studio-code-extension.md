@@ -3,14 +3,14 @@ title: Verwenden der Visual Studio Code-Erweiterung für Azure Video Analyzer
 description: In diesem Referenzartikel wird erläutert, wie Sie die verschiedenen Funktionen der Visual Studio Code-Erweiterung für Azure Video Analyzer verwenden.
 ms.service: azure-video-analyzer
 ms.topic: reference
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0e69938b340d88a4e0002aaf9155d42ad0899189
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b0faa61b724420ad04cc489d51539c134569dd05
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073641"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287113"
 ---
 # <a name="visual-studio-code-extension-for-azure-video-analyzer"></a>Verwenden der Visual Studio Code-Erweiterung für Azure Video Analyzer
 
@@ -36,7 +36,7 @@ Wenn Sie den zugrunde liegenden JSON-Code hinter einer vorhandenen Topologie anz
 
 ## <a name="live-pipelines"></a>Livepipelines
 
-Um eine Livepipeline zu erstellen, klicken Sie links unter Pipelinetopologien mit der rechten Maustaste auf den Namen der Topologie und wählen Sie `Create live pipeline` aus.  Sie müssen dann einen Namen für die Livepipeline und alle erforderlichen Parameter eingeben, bevor Sie fortfahren.  Rechts oben können Sie entweder auf `Save` klicken, um es in einem inaktiven Zustand zu speichern, oder auf `Save and activate`, um die Livepipeline sofort zu starten. 
+Um eine Livepipeline zu erstellen, klicken Sie links unter Pipelinetopologien mit der rechten Maustaste auf den Namen der Topologie und wählen Sie `Create live pipeline` aus.  Sie müssen dann einen Namen für die Live-Pipeline und alle erforderlichen Parameter eingeben, bevor Sie fortfahren.  Rechts oben können Sie entweder auf `Save` klicken, um es in einem inaktiven Zustand zu speichern, oder auf `Save and activate`, um die Livepipeline sofort zu starten. 
 
 Klicken Sie zum Aktivieren einer vorhandenen Livepipeline links unter Pipelinetopologien mit der rechten Maustaste auf den Namen der Livepipeline und wählen Sie `Activate live pipeline` aus.
 

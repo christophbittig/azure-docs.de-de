@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: thwimmer
-ms.openlocfilehash: 9e8385faadc4c3c9d34471741cc238e964ed67a2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b7e10c4606c26f9d340437305a49e1ae236eecb9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589165"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456079"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von RingCentral für die automatische Benutzerbereitstellung
 
@@ -94,7 +94,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
    ![AAD](./media/ringcentral-provisioning-tutorial/admincredentials.png)
 
-   ![Zugriff](./media/ringcentral-provisioning-tutorial/authorize.png)
+   ![Access](./media/ringcentral-provisioning-tutorial/authorize.png)
 
    ![Authorize](./media/ringcentral-provisioning-tutorial/accessrequest.png)
 
@@ -152,6 +152,8 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
 * 10.9.2020: Unterstützung für die Attribute „displayName“ und „manager“ wurde entfernt.
 * 15.03.2021: Aktualisierung der Autorisierungsmethode von permanentem Bearertoken in OAuth-Autorisierungscodeflow
+* 28.10.2021: Standardzuordnung zu **mail-> emails[type eq “work”].value**
+* 28.10.2021: Die Ratenbegrenzung wurde für Lesevorgänge auf 300/Minute und für Schreibvorgänge auf 1.000/Minute aktualisiert.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

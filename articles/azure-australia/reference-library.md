@@ -7,12 +7,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yvettep
-ms.openlocfilehash: d13ae772aaef25997365915465ed544ea4002964
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 2b3a27a0f7f051b30a0e6c5fa0471acb4d0c6439
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "122345760"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310526"
 ---
 # <a name="additional-documentation-and-resources-by-focus-area"></a>Zusätzliche Dokumentation und Ressourcen nach Schwerpunktbereich
 
@@ -81,10 +81,10 @@ Diese Ressourcenbibliothek enthält zusätzliche Links und Referenzen, die für 
 
 * [Azure Governance](../governance/index.yml)
 * [Azure-Sicherheit – bewährte Methoden](../security/fundamentals/best-practices-and-patterns.md)
-* [Von Azure Security Center unterstützte Features und Plattformen](../security-center/security-center-os-coverage.md)
+* [Vom Azure Security Center unterstützte Plattformen und Features](../security-center/security-center-os-coverage.md)
 * [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md)
 * [Azure-Diagnoseprotokolle](../azure-monitor/essentials/platform-logs-overview.md)
-* [Azure Security Center-Warnungen](../security-center/security-center-managing-and-responding-alerts.md)
+* [Microsoft Defender für Cloud-Warnungen](../security-center/security-center-managing-and-responding-alerts.md)
 * [Azure Log Integration](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 * [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 * [Streamen von Azure-Überwachungsprotokollen an Event Hub](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)

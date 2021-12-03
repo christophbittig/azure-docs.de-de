@@ -279,14 +279,22 @@ items:
                     href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                   - name: 'Überwachen, Diagnostizieren und Durchführen der Problembehandlung'
                     href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: "Unterstützung des NFS\_3.0-Protokolls"
+          - name: Protokollunterstützung
             items:
-              - name: Übersicht
-                href: network-file-system-protocol-support.md
-              - name: Überlegungen zur Leistung
-                href: network-file-system-protocol-support-performance.md
-              - name: Bekannte Probleme
-                href: network-file-system-protocol-known-issues.md
+              - name: "NFS\_3.0"
+                items:
+                  - name: Übersicht
+                    href: network-file-system-protocol-support.md
+                  - name: Überlegungen zur Leistung
+                    href: network-file-system-protocol-support-performance.md
+                  - name: Bekannte Probleme
+                    href: network-file-system-protocol-known-issues.md
+              - name: SFTP
+                items:
+                  - name: Übersicht
+                    href: secure-file-transfer-protocol-support.md
+                  - name: Bekannte Probleme
+                    href: secure-file-transfer-protocol-known-issues.md
           - name: Behandlung von Ereignissen
             href: storage-blob-event-overview.md
           - name: Features für Seitenblobs
@@ -310,8 +318,6 @@ items:
                 href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: Abrufen von Kontokonfigurationseigenschaften
                 href: ../common/storage-account-get-info.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              - name: Verwalten der Standardzugriffsebene eines Speicherkontos
-                href: ../common/manage-account-default-access-tier.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Erstellen und Verwalten von Containern
             items:
               - name: Erstellen oder Löschen eines Containers (.NET)
@@ -326,8 +332,6 @@ items:
                 href: storage-blobs-list.md
               - name: Verwalten von Blobeigenschaften und Metadaten (.NET)
                 href: storage-blob-properties-metadata.md
-              - name: Verwalten der Zugriffsebene eines Blobs
-                href: manage-access-tier.md
               - name: Kopieren eines Blobs (SDK)
                 href: storage-blob-copy.md
               - name: Verwenden von Blobindextags
@@ -436,7 +440,7 @@ items:
                         href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                   - name: Konfigurieren der Netzwerkroutingpräferenz
                     href: ../common/configure-network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              - name: Konfigurieren von Azure Defender für Bedrohungsschutz
+              - name: Aktivieren des Bedrohungsschutzes mit Microsoft Defender für Speicher
                 href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Schützen von Blobdaten
             items:
@@ -476,14 +480,18 @@ items:
                 href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Verwalten von Blobtiering und Lebenszyklus
             items:
-              - name: Konfigurieren der Richtlinien für die Lebenszyklusverwaltung
-                href: lifecycle-management-policy-configure.md
-              - name: Verwalten von Daten auf der Archivebene
+              - name: Ändern der Zugriffsebene eines Blobs
+                href: access-tiers-online-manage.md
+              - name: Verwalten der Datenarchivierung
                 items:
+                  - name: Archivieren eines Blobs
+                    href: archive-blob.md
                   - name: Aktivieren eines archivierten Blobs
                     href: archive-rehydrate-to-online-tier.md
                   - name: Behandeln eines Ereignisses bei der Blobaktivierung
                     href: archive-rehydrate-handle-event.md
+              - name: Konfigurieren der Richtlinien für die Lebenszyklusverwaltung
+                href: lifecycle-management-policy-configure.md
           - name: Verwalten der Objektreplikation
             items:
               - name: Konfigurieren von Objektreplikationsrichtlinien
@@ -538,6 +546,8 @@ items:
                     href: ../common/storage-use-azcopy-google-cloud.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: Azure Data Factory
                 href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              - name: Übertragen von Daten mithilfe von SFTP
+                href: secure-file-transfer-protocol-support-how-to.md
               - name: Einbinden von Speicher mithilfe von NFS
                 href: network-file-system-protocol-support-how-to.md
               - name: Einbinden von Speicher aus Linux mithilfe von blobfuse
@@ -623,6 +633,8 @@ items:
             href: /azure/templates/microsoft.storage/allversions
           - name: Überwachungsdaten
             href: monitor-blob-storage-reference.md
+          - name: Unterstützung für Hostschlüssel (SFTP)
+            href: secure-file-transfer-protocol-host-keys.md
           - name: Azure Policy-Integrationen
             displayName: 'samples, policies, definitions'
             href: ../common/policy-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -736,6 +748,8 @@ items:
             href: data-lake-storage-introduction.md
       - name: Tutorials
         items:
+          - name: Verwenden mit Synapse SQL
+            href: data-lake-storage-use-sql.md
           - name: Verwenden mit Databricks und Spark
             href: data-lake-storage-use-databricks-spark.md
           - name: Verwenden mit Apache Hive und HDInsight
@@ -887,7 +901,7 @@ items:
           - name: .NET
             href: /dotnet/api/azure.storage.files.datalake
           - name: Java
-            href: 'https://docs.microsoft.com/java/api/overview/azure/storage-file-datalake-readme'
+            href: /java/api/overview/azure/storage-file-datalake-readme
           - name: Python
             href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
           - name: JavaScript

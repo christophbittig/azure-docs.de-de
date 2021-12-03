@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0df7b263ef5d62b064a5afe537cffc926230b0a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87048658"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238676"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Verwenden Sie einen sequenziellen Konvoi in Azure Logic Apps mit Azure Service Bus, um verwandte Nachrichten in der richtigen Reihenfolge zu senden
 
@@ -283,7 +283,7 @@ Mit dieser [**Until**-Schleife](../logic-apps/logic-apps-control-flow-loops.md#u
 
 * Überprüfen Sie, ob die `isDone`-Variable auf `true` festgelegt ist.
 
-  * Wenn `isDone` nicht auf `true` festgelegt ist, verarbeitet der Workflow weiterhin Nachrichten. Der Workflow verlängert also die Sperre der Sitzung in der Warteschlange und überprüft die Schleifenbedingung erneut.
+  * Wenn `isDone` auf `true` festgelegt ist, verarbeitet der Workflow weiterhin Nachrichten und verlängert auf diese Weise die Sperre der Sitzung in der Warteschlange und überprüft die Schleifenbedingung erneut.
 
     Sie müssen den Namen Ihrer Service Bus-Warteschlange in der Service Bus-Aktion [**Sperre für die Sitzung in einer Warteschlange verlängern**](#renew-lock-on-session) angeben.
 

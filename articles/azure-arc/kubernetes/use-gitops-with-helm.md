@@ -1,39 +1,37 @@
 ---
-title: Bereitstellen von Helm-Charts mithilfe von GitOps in Arc-fähigen Kubernetes-Clustern
+title: Bereitstellen von Helm-Charts mithilfe von GitOps in einem Kubernetes-Cluster mit Azure Arc-Unterstützung
 services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
 ms.topic: article
-author: mlearned
-ms.author: mlearned
-description: Verwenden von GitOps mit Helm für Azure Arc-fähige Clusterkonfiguration
+description: Verwenden von GitOps mit Helm für eine Clusterkonfiguration mit Azure Arc-Unterstützung
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: df9b40764ec463553659803749f282bbc4587bde
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: bc0dc3f0583c346ae909bbb877a6e8a9a9d66a72
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449542"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053291"
 ---
-# <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Bereitstellen von Helm-Charts mithilfe von GitOps in einem Arc-fähigen Kubernetes-Cluster
+# <a name="deploy-helm-charts-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Bereitstellen von Helm-Charts mithilfe von GitOps in einem Kubernetes-Cluster mit Azure Arc-Unterstützung
 
 Helm ist ein Open Source-Verpackungstool, das Ihnen dabei hilft, Kubernetes-Anwendungen zu installieren und ihren Lebenszyklus zu verwalten. Ähnlich wie Linux-Paket-Manager (z. B. APT und Yum) wird Helm zur Verwaltung von Kubernetes-Charts verwendet, bei denen es sich um Pakete aus vorkonfigurierten Kubernetes-Ressourcen handelt.
 
-In diesem Artikel wird die Konfiguration und Verwendung von Helm mit Azure Arc-fähigem Kubernetes veranschaulicht.
+In diesem Artikel wird die Konfiguration und Verwendung von Helm mit Kubernetes mit Azure Arc-Unterstützung veranschaulicht.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Ein vorhandener Cluster, der mit Kubernetes mit Azure Arc-Aktivierung verbunden ist.
-    - Wenn Sie noch keine Verbindung mit einem Cluster hergestellt haben, führen Sie unseren [Schnellstart zum Verbinden eines Kubernetes-Clusters mit Azure Arc-Aktivierung](quickstart-connect-cluster.md) durch.
-- Ein grundlegendes Verständnis der Vorteile und der Architektur dieses Features. Weitere Informationen finden Sie im Artikel [Konfigurationen und GitOps: Kubernetes mit Azure Arc-Aktivierung](conceptual-configurations.md).
-- Installieren Sie die `k8s-configuration`Azure CLI-Erweiterung der Version >= 1.0.0:
+- Ein vorhandener Cluster, der mit Kubernetes mit Azure Arc-Unterstützung verbunden ist
+    - Wenn Sie noch keine Verbindung mit einem Cluster hergestellt haben, führen Sie unseren [Schnellstart zum Verbinden eines Kubernetes-Clusters mit Azure Arc-Unterstützung](quickstart-connect-cluster.md) aus.
+- Ein grundlegendes Verständnis der Vorteile und der Architektur dieses Features. Weitere Informationen finden Sie im Artikel [Konfigurationen und GitOps: Azure Arc-fähiges Kubernetes](conceptual-configurations.md).
+- Installieren Sie die `k8s-configuration` Azure CLI-Erweiterung der Version >= 1.0.0:
   
   ```azurecli
   az extension add --name k8s-configuration
   ```
 
-## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Übersicht über die Verwendung von GitOps und Helm mit Azure Arc-fähigem Kubernetes
+## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Übersicht über die Verwendung von GitOps und Helm mit Kubernetes mit Azure Arc-Unterstützung
 
  Der Helm-Operator stellt eine Erweiterung für Flux bereit, die Helm-Chartreleases automatisiert. Ein Helm-Chart-Release wird von einer benutzerdefinierten Kubernetes-Ressource namens HelmRelease beschrieben. Flux synchronisiert diese Ressourcen zwischen Git und dem Cluster, während der Helm-Operator sicherstellt, dass Helm-Charts wie in den Ressourcen festgelegt veröffentlicht werden.
 

@@ -2,17 +2,17 @@
 title: Konfigurieren von Netzwerkeinstellungen für verwaltete Service Fabric-Cluster
 description: Erfahren Sie, wie Sie Ihre verwalteten Service Fabric-Cluster für NSG-Regeln, RDP-Portzugriff, Lastenausgleichsregeln und vieles mehr konfigurieren.
 ms.topic: how-to
-ms.date: 8/23/2021
-ms.openlocfilehash: 432246ca0550e4fab678a3a190221de88ce04478
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/10/2021
+ms.openlocfilehash: 2334618f11533d285154082e0d1b5dadbc41368f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128638420"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289384"
 ---
 # <a name="configure-network-settings-for-service-fabric-managed-clusters"></a>Konfigurieren von Netzwerkeinstellungen für verwaltete Service Fabric-Cluster
 
-Verwaltete Service Fabric-Cluster werden mit einer standardmäßigen Netzwerkkonfiguration erstellt. Diese Konfiguration besteht aus einem [Azure Load Balancer](../load-balancer/load-balancer-overview.md) mit einer öffentlichen IP-Adresse, einem VNET mit einem zugeordneten Subnetz und einer NSG, die für wichtige Clusterfunktionen konfiguriert ist. Es werden auch optionale NSG-Regeln angewendet, z. B. das standardmäßige Zulassen des gesamten ausgehenden Datenverkehrs, was die Kundenkonfiguration vereinfachen soll. In diesem Dokument wird erläutert, wie Sie die folgenden Netzwerkkonfigurationsoptionen und vieles mehr ändern:
+Verwaltete Service Fabric-Cluster werden mit einer standardmäßigen Netzwerkkonfiguration erstellt. Diese Konfiguration besteht aus einem [Azure Load Balancer](../load-balancer/load-balancer-overview.md) mit einer öffentlichen IP-Adresse, einem VNET mit einem zugeordneten Subnetz und einer NSG, die für wichtige Clusterfunktionen konfiguriert ist. Es werden auch optionale NSG(-Netzwerksicherheitsgruppen)-Regeln angewendet, z. B. das standardmäßige Zulassen des gesamten ausgehenden Datenverkehrs, was die Kundenkonfiguration vereinfachen soll. In diesem Dokument wird erläutert, wie Sie die folgenden Netzwerkkonfigurationsoptionen und vieles mehr ändern:
 
 - [Verwalten von NSG-Regeln](#nsgrules)
 - [Verwalten des RDP-Zugriffs](#rdp)
@@ -20,6 +20,9 @@ Verwaltete Service Fabric-Cluster werden mit einer standardmäßigen Netzwerkkon
 - [Aktivieren von IPv6](#ipv6)
 - [Verwendung eines eigenen virtuellen Netzwerks](#byovnet)
 - [Verwendung eines eigenen Lastenausgleichs](#byolb)
+- [Aktivieren des beschleunigten Netzwerkbetriebs](#accelnet)
+- [Konfigurieren von Hilfssubnetzen](#auxsubnet)
+
 
 <a id="nsgrules"></a>
 ## <a name="manage-nsg-rules"></a>Verwalten von NSG-Regeln
@@ -38,62 +41,62 @@ Verwaltete Service Fabric-Cluster ermöglichen Ihnen die Zuweisung von NSG-Regel
 Verwenden Sie die Eigenschaft [networkSecurityRules](/azure/templates/microsoft.servicefabric/managedclusters#managedclusterproperties-object) Ihrer *Microsoft.ServiceFabric/managedclusters*-Ressource (Version `2021-05-01` oder höher), um NSG-Regeln zuzuweisen. Beispiel:
 
 ```json
-            "apiVersion": "2021-05-01",
-            "type": "Microsoft.ServiceFabric/managedclusters",
-            ...
-            "properties": {
-                ...
-                "networkSecurityRules" : [
-                    {
-                        "name": "AllowCustomers",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "Internet",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33000-33499",
-                        "access": "Allow",
-                        "priority": 2001,
-                        "direction": "Inbound"
-                    },
-                    {
-                        "name": "AllowARM",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "AzureResourceManager",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33500-33699",
-                        "access": "Allow",
-                        "priority": 2002,
-                        "direction": "Inbound"
-                    },
-                    {
-                        "name": "DenyCustomers",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "Internet",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33700-33799",
-                        "access": "Deny",
-                        "priority": 2003,
-                        "direction": "Outbound"
-                    },
-                    {
-                        "name": "DenyRDP",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "*",
-                        "destinationAddressPrefix": "VirtualNetwork",
-                        "destinationPortRange": "3389",
-                        "access": "Deny",
-                        "priority": 2004,
-                        "direction": "Inbound",
-                        "description": "Override for optional SFMC_AllowRdpPort rule. This is required in tests to avoid Sev2 incident for security policy violation."
-                    }
-                ],
-                "fabricSettings": [
-                ...
-                ]
-            }
+{
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedclusters",
+  "properties": {
+    "networkSecurityRules": [
+      {
+        "name": "AllowCustomers",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "Internet",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33000-33499",
+        "access": "Allow",
+        "priority": 2001,
+        "direction": "Inbound"
+      },
+      {
+        "name": "AllowARM",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "AzureResourceManager",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33500-33699",
+        "access": "Allow",
+        "priority": 2002,
+        "direction": "Inbound"
+      },
+      {
+        "name": "DenyCustomers",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "Internet",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33700-33799",
+        "access": "Deny",
+        "priority": 2003,
+        "direction": "Outbound"
+      },
+      {
+        "name": "DenyRDP",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "*",
+        "destinationAddressPrefix": "VirtualNetwork",
+        "destinationPortRange": "3389",
+        "access": "Deny",
+        "priority": 2004,
+        "direction": "Inbound",
+        "description": "Override for optional SFMC_AllowRdpPort rule. This is required in tests to avoid Sev2 incident for security policy violation."
+      }
+    ],
+    "fabricSettings": [
+      "..."
+    ]
+  }
+}
 ```
 
 ## <a name="clientconnection-and-httpgatewayconnection-default-and-optional-rules"></a>ClientConnection- und HttpGatewayConnection-Standardregeln und optionale Regeln
@@ -199,8 +202,8 @@ Suchen Sie mithilfe des Azure-Portals nach den NAT-Regeln für eingehenden Daten
 
    ![Eingehende NAT-Regeln][Inbound-NAT-Rules]
 
-   Standardmäßig beginnt bei Windows-Clustern die Zuteilung zum Front-End-Port bei 50000 und der Zielport ist 3389. Dies ist dem RDP-Dienst auf dem Zielknoten zugeordnet.
-   >[!NOTE]
+   Standardmäßig befindet sich der Front-End-Port für Windows-Cluster im Bereich von 50000 und höher, und der Zielport ist 3389. Dies ist dem RDP-Dienst auf dem Zielknoten zugeordnet.
+   > [!NOTE]
    > Wenn Sie das BYOLB-Feature benutzen und RDP verwenden möchten, müssen Sie dafür einen NAT-Pool separat konfigurieren. Dadurch werden nicht automatisch NAT-Regeln für diese Knotentypen erstellt.
 
 4. Stellen Sie eine Remoteverbindung mit dem spezifischen Knoten (Skalierungsgruppeninstanz) her. Sie können den Benutzernamen und das Kennwort, die Sie beim Erstellen des Clusters erstellt haben, oder beliebige andere Anmeldeinformationen, die Sie konfiguriert haben, verwenden.
@@ -331,6 +334,9 @@ Verwaltete Cluster aktivieren IPv6 nicht standardmäßig. Dieses Feature ermögl
 Mit diesem Feature können Kunden ein vorhandenes virtuelles Netzwerk verwenden, indem sie ein dediziertes Subnetz angeben, in dem der verwaltete Cluster seine Ressourcen bereitstellt. Dies kann nützlich sein, wenn Sie bereits über ein konfiguriertes VNet und Subnetz mit zugehörigen Sicherheitsrichtlinien und Datenverkehrsrouting verfügen, die Sie verwenden möchten. Sobald die Bereitstellung an ein vorhandenes virtuelles Netzwerk durch Sie erfolgt ist, ist es einfach, andere Netzwerkfeatures wie Azure ExpressRoute, Azure-VPN-Gateway, eine Netzwerksicherheitsgruppe und Peering virtueller Netzwerke zu integrieren. Darüber hinaus können Sie bei Bedarf [Ihren eigenen Azure-Lastenausgleich verwenden](#byolb).
 
 > [!NOTE]
+> Bei Verwendung von BYOVNET werden verwaltete Clusterressourcen in einem Subnetz bereitgestellt. 
+
+> [!NOTE]
 > Diese Einstellung kann nicht mehr geändert werden, nachdem der Cluster erstellt wurde, und der verwaltete Cluster weist dem bereitgestellten Subnetz eine NSG zu. Setzen Sie die NSG-Zuweisung nicht außer Kraft, da der Datenverkehr möglicherweise unterbrochen wird.
 
 **Verwendung eines eigenen virtuellen Netzwerks:**
@@ -435,27 +441,38 @@ Mit diesem Feature können Kunden ein vorhandenes virtuelles Netzwerk verwenden,
 
 <a id="byolb"></a>
 ## <a name="bring-your-own-azure-load-balancer-preview"></a>Verwendung eines eigenen Azure Load Balancers (Vorschau)
-Verwaltete Cluster erstellen einen Azure Load Balancer und einen vollqualifizierten Domänennamen mit einer statischen öffentlichen IP-Adresse für den primären und sekundären Knotentyp. Mit dieser Funktion können Sie einen Azure Load Balancer für sekundäre Knotentypen sowohl für eingehenden als auch für ausgehenden Datenverkehr erstellen oder wiederverwenden. Wenn Sie Ihren eigenen Azure Load Balancer verwenden, können Sie Folgendes:
+Verwaltete Cluster erstellen einen öffentlichen standardisierten Azure Load Balancer und einen vollqualifizierten Domänennamen mit einer statischen öffentlichen IP-Adresse für den primären und sekundären Knotentyp. Mit der Funktion „bring your own load balancer“ (eigenen Load Balancer einbringen) können Sie einen vorhandenen Azure Load Balancer für sekundäre Knotentypen sowohl für eingehenden als auch für ausgehenden Datenverkehr verwenden. Wenn Sie Ihren eigenen Azure Load Balancer verwenden, können Sie Folgendes:
 
 * Einen vorkonfigurierte statische IP-Adresse für den Load Balancer für privaten oder öffentlichen Datenverkehr nutzen.
 * Einen Load Balancer einem bestimmten Knotentyp zuordnen.
-* Netzwerksicherheitsgruppenregeln pro Knotentyp konfigurieren, da jeder Knotentyp in einem eigenen Subnetz mit einer eindeutigen NSG bereitgestellt wird 
+* Konfigurieren Sie Netzwerksicherheitsgruppenregeln pro Knotentyp, da jeder Knotentyp in einem eigenen Subnetz bereitgestellt wird
 * Eventuell vorhandene Richtlinien und Kontrollen verwalten.
+* Konfigurieren eines ausschließlich internen Lastenausgleichs (Load Balancer) und Verwenden des Standardlastenausgleichs für externen Datenverkehr
 
 > [!NOTE]
-> Sie können nach der Clusterbereitstellung für einen Knotentyp nicht von „Standard“ zu „Benutzerdefiniert“ wechseln, aber Sie können die Konfiguration des benutzerdefinierten Lastenausgleichs nach der Bereitstellung ändern.
+> Bei Verwendung von BYOVNET werden verwaltete Clusterressourcen unabhängig von zusätzlichen konfigurierten Lastenausgleichsressourcen in einem Subnetz mit einer NSG bereitgestellt.
+
+> [!NOTE]
+> Sie können nach der Bereitstellung eines Knotentyps nicht vom Standardlastenausgleich zu einem benutzerdefinierten Lastenausgleich (Load Balancer) wechseln, aber Sie können die Konfiguration des benutzerdefinierten Lastenausgleichs nach der Bereitstellung ändern, wenn diese aktiviert ist.
 
 **Funktionsanforderungen**
  * SKU-Typen „Basic Azure Load Balancer“ und „Standard Azure Load Balancer“ werden unterstützt.
- * Back-End- und NAT-Pools müssen auf dem vorhandenen Azure Load Balancer konfiguriert werden. Ein Beispiel finden Sie im vollständigen [Beispiel zum Erstellen und Zuweisen einer Rolle hier](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role.json). 
+ * Back-End- und NAT-Pools müssen auf dem Azure Load Balancer konfiguriert werden.
+ * Sie müssen die ausgehende Konnektivität entweder mithilfe eines bereitgestellten öffentlichen Lastenausgleichs oder des öffentlichen Standardlastenausgleichs aktivieren.
 
 Hier sind einige Beispielszenarien, in denen Kunden dies verwenden können:
 
 In diesem Beispiel möchte ein Kunde Datenverkehr über einen vorhandenen Azure Load Balancer, der mit einer vorhandenen statischen IP-Adresse konfiguriert ist, an zwei Knotentypen weiterleiten.
+
 ![Verwendung eines eigenen Load Balancers, Beispiel 1][sfmc-byolb-example-1]
 
-In diesem Beispiel möchte ein Kunde Datenverkehr über vorhandene Azure Load Balancers routen. Dies soll dazu dienen, ihn bei der unabhängigen Verwaltung des Datenverkehrsflusses zu seinen Anwendungen zu unterstützen, die auf separaten Knotentypen ausgeführt werden. Bei der Einrichtung wie in diesem Beispiel befindet sich jeder Knotentyp hinter seiner eigenen NSG, die Sie verwalten können.
+In diesem Beispiel möchte ein Kunde Datenverkehr über vorhandene Azure Load Balancers routen. Dies soll dazu dienen, ihn bei der unabhängigen Verwaltung des Datenverkehrsflusses zu seinen Anwendungen zu unterstützen, die auf separaten Knotentypen ausgeführt werden. Bei der Einrichtung wie in diesem Beispiel befindet sich jeder Knotentyp hinter seiner eigenen verwalteten NSG.
+
 ![Verwendung eines eigenen Load Balancers, Beispiel 2][sfmc-byolb-example-2]
+
+In diesem Beispiel möchte ein Kunde Datenverkehr über vorhandene interne Azure Load-Balancer-Systeme routen. Dies hilft ihnen, den Datenverkehrsfluss zu ihren Anwendungen unabhängig voneinander zu verwalten, die auf separaten Knotentypen ausgeführt werden. Bei der Einrichtung wie in diesem Beispiel befindet sich jeder Knotentyp hinter seiner eigenen verwalteten NSG und verwendet den Standardlastenausgleich für externen Datenverkehr.
+
+![Verwendung eines eigenen Load Balancers, Beispiel 3][sfmc-byolb-example-3]
 
 So konfigurieren Sie die Verwendung eines eigenen Lastenausgleichs:
 
@@ -488,7 +505,7 @@ So konfigurieren Sie die Verwendung eines eigenen Lastenausgleichs:
 
 2. Fügen Sie der Service Fabric-Ressourcenanbieteranwendung eine Rollenzuweisung hinzu. Das Hinzufügen einer Rollenzuweisung ist eine einmalige Aktion. Sie fügen die Rolle hinzu, indem Sie die folgenden PowerShell-Befehle ausführen oder wie unten beschrieben eine ARM-Vorlage (Azure Resource Manager-Vorlage) konfigurieren.
 
-   In den folgenden Schritten beginnen wir mit einem vorhandenen Lastenausgleich mit dem Namen Existing-LoadBalancer1 in der Ressourcengruppe Existing-RG. Das Subnetz ist standardmäßig benannt.
+   In den folgenden Schritten beginnen wir mit einem vorhandenen Lastenausgleich mit dem Namen Existing-LoadBalancer1 in der Ressourcengruppe Existing-RG. 
 
    Rufen Sie die erforderlichen `Id`-Eigenschaftsinformationen aus dem vorhandenen Azure Load Balancer ab. Sie führen diese Schritte aus: 
 
@@ -510,7 +527,7 @@ So konfigurieren Sie die Verwendung eines eigenen Lastenausgleichs:
    New-AzRoleAssignment -PrincipalId 00000000-0000-0000-0000-000000000000 -RoleDefinitionName "Network Contributor" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<LoadBalancerName>"
    ```
 
-   Sie können die Rollenzuweisung auch mithilfe einer ARM-Vorlage (Azure Resource Manager-Vorlage) hinzufügen, die mit den richtigen Werten für `principalId`, `roleDefinitionId`, `vnetName` und `subnetName` konfiguriert ist:
+   Sie können die Rollenzuweisung auch mithilfe einer ARM-Vorlage (Azure-Ressourcen-Manager-Vorlage) hinzufügen, die mit den richtigen Werten für `principalId`, `roleDefinitionId`“ konfiguriert ist:
 
    ```JSON
       "type": "Microsoft.Authorization/roleAssignments",
@@ -528,17 +545,40 @@ So konfigurieren Sie die Verwendung eines eigenen Lastenausgleichs:
    > [!NOTE]
    > loadBalancerRoleAssignmentID muss eine [GUID](../azure-resource-manager/templates/template-functions-string.md#examples-16) sein. Wenn Sie eine Vorlage erneut bereitstellen, einschließlich dieser Rollenzuweisung, vergewissern Sie sich, dass die GUID die gleiche wie die ursprünglich verwendete ist. Wir empfehlen, dies isoliert auszuführen oder nach der Bereitstellung diese Ressource aus der Clustervorlage zu entfernen, da sie nur einmal erstellt werden muss.
 
-3. Konfigurieren Sie die ausgehende Konnektivität. Alle Knoten müssen in der Lage sein, ausgehenden Datenverkehr über Port 443 an den ServiceFabric-Ressourcenanbieter weiter zu routen. Sie können das Diensttag `ServiceFabric` in Ihrer NSG verwenden, um das Datenverkehrsziel auf den Azure-Endpunkt zu beschränken.
+   In dieser Beispielvorlage erfahren Sie, [wie Sie einen öffentlichen Lastenausgleich erstellen und eine Rolle zuweisen](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role.json).
+
+
+3. Konfigurieren Sie die erforderliche ausgehende Konnektivität für den Knotentyp. Sie müssen einen öffentlichen Lastenausgleich konfigurieren, um ausgehende Verbindungen zu ermöglichen, oder den öffentlichen Standardlastenausgleich verwenden. 
+   
+   Konfigurieren Sie `outboundRules`, um einen öffentlichen Load Balancer für die Bereitstellung ausgehender Konnektivität zu konfigurieren. Weitere Informationen finden Sie im Beispiel [ zum Erstellen eines Lastenausgleichs und Zuweisen eines Rolle-Samples in einer Azure Ressourcen-Manager(ARM)-Vorlage](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role.json).
+   
+   oder
+   
+   Um den Knotentyp für die Verwendung des Standardlastenausgleichs zu konfigurieren, legen Sie Folgendes in Ihrer Vorlage fest: 
+   
+   * Die apiVersion der verwalteten Service-Fabric-Clusterressource sollte **2021-11-01-Vorschau** oder höher lauten.
+
+   ```json
+      {
+      "apiVersion": "[variables('sfApiVersion')]",
+      "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+      ...
+      "properties": {
+          "isPrimary": false,
+          "useDefaultPublicLoadBalancer": true
+          ...
+      }
+   ```
 
 4. Konfigurieren Sie optional einen eingehenden Anwendungsport und einen zugehörigen Test für Ihren Azure Load Balancer.
+   Ein Beispiel hierfür finden Sie unter [„Verwendung eines eigenen Lastenausgleichs-Samples in einer Azure Ressourcen-Manager-(ARM-)Vorlage“](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB).
 
 5. Konfigurieren Sie optional die NSG-Regeln des verwalteten Clusters, die auf den Knotentyp angewendet werden, um jeglichen erforderlichen Datenverkehr zu ermöglichen, den Sie auf dem Azure Load Balancer konfiguriert haben, oder der Datenverkehr wird blockiert.
+   Ein Beispiel für eingehenden NSG-Regel-Konfiguration finden Sie unter [„Verwendung eines eigenen Lastenausgleich-Samples in einer Azure Ressourcen-Manager(ARM)-Vorlage“](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB). Suchen Sie in der Vorlage nach der Eienschaft `networkSecurityRules`.
 
-   Ein Beispiel zum Öffnen von Regeln für eingehenden Datenverkehr finden Sie in der [Azure Resource Manager(ARM)-Vorlage „Verwendung eines eigenen Lastenausgleichs“](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB).
+6. Bereitstellen der konfigurierten ARM-Vorlage für verwaltete Cluster: In diesem Schritt verwenden wir die Arm-Vorlage [Verwendung eines eigenen Lastenausgleich-Samples in einer Azure Ressourcen-Manager(ARM)-Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB) (Bring your own load balancer sample Azure Resource Manager (ARM) template).
 
-6. Bereitstellen der konfigurierten ARM-Vorlage für verwaltete Cluster
-
-   Im folgenden Beispiel erstellen wir eine Ressourcengruppe namens `MyResourceGroup` in `westus` und stellen einen Cluster bereit, in der diese Funktion aktiviert ist.
+   Im Folgenden wird eine Ressourcengruppe namens `MyResourceGroup` in `westus` erstellt und ein Cluster wird mithilfe eines vorhandenen Lastenausgleichs bereitgestellt.
    ```powershell
     New-AzResourceGroup -Name MyResourceGroup -Location westus
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName MyResourceGroup -TemplateFile AzureDeploy.json
@@ -546,6 +586,62 @@ So konfigurieren Sie die Verwendung eines eigenen Lastenausgleichs:
 
    Nach der Bereitstellung ist der sekundäre Knotentyp für die Verwendung des angegebenen Lastenausgleichs für eingehenden und ausgehenden Datenverkehr konfiguriert. Die Service Fabric-Clientverbindungs- und -Gatewayendpunkte verweisen weiterhin auf das öffentliche DNS der statischen IP-Adresse des primären Knotentyps des verwalteten Clusters.
 
+
+
+<a id="accelnet"></a>
+## <a name="enable-accelerated-networking-preview"></a>Aktivieren des beschleunigten Netzwerkbetriebs (Vorschau)
+Der beschleunigte Netzwerkbetrieb ermöglicht die E/A-Virtualisierung mit einzelnem Stamm (Single Root I/O Virtualization, SR-IOV) für einen virtuellen Computer (VM) der VM-Skalierunggruppe, die die zugrunde liegende Ressource für Knotentypen ist. Dieser Hochleistungspfad umgeht den Host vom Datenpfad, wodurch Latenz, Jitter und CPU-Auslastung für die anspruchsvollsten Netzwerkworkloads reduziert werden. Von Service Fabric verwaltete Clusterknotentypen können mit beschleunigtem Netzwerkbetrieb auf [unterstützten SKUs virtueller Computer](../virtual-machines/sizes.md) bereitgestellt werden. Weitere Informationen finden Sie unter [Einschränkungen und Bedingungen](../virtual-network/create-vm-accelerated-networking-powershell.md#limitations-and-constraints). 
+
+* Bitte beachten Sie, dass der beschleunigte Netzwerkbetrieb in den meisten universellen, compute-optimierten Instanzgrößen mit mindestens 2 vCPUs unterstützt wird. Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt.
+
+Aktivieren Sie den beschleunigten Netzwerkbetrieb, indem Sie die Eigenschaft `enableAcceleratedNetworking` in Ihrer Ressourcen-Manager-Vorlage wie folgt deklarieren:
+
+* Die apiVersion der verwalteten Service-Fabric-Clusterressource sollte **2021-11-01-Vorschau** oder höher lauten.
+
+```json
+   {
+   "apiVersion": "[variables('sfApiVersion')]",
+   "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+   ...
+   "properties": {
+       ...
+       "enableAcceleratedNetworking": true,
+       ...
+   }
+```
+
+Um den beschleunigten Netzwerkbetrieb für einen vorhandenen Service-Fabric-Cluster zu aktivieren, müssen Sie zunächst einen Service-Fabric-Cluster erweitern, indem Sie einen neuen Knotentyp hinzufügen und Folgendes ausführen:
+
+1) Bereitstellen eines Knotentyps mit aktiviertem beschleunigten Netzwerkbetrieb
+2) Migrieren Ihrer Dienste und deren Status zum bereitgestellten Knotentyp mit aktiviertem beschleunigten Netzwerkbetrieb
+
+Die Erweiterung der Infrastruktur ist erforderlich, um beschleunigten Netzwerkbetrieb für einen vorhandenen Cluster zu ermöglichen, da die Aktivierung von beschleunigtem Netzwerkbetrieb zu Ausfallzeiten führen würde, da alle virtuellen Computer in einer Verfügbarkeitsgruppe beendet werden müssen und ihre Zuordnung aufgehoben werden muss, bevor beschleunigter Netzwerkbetrieb für eine vorhandene NIC aktiviert werden kann.
+
+
+<a id="auxsubnet"></a>
+## <a name="configure-auxiliary-subnets-preview"></a>Konfigurieren von Hilfssubnetzen (Vorschau)
+Zusätzliche Subnetze bieten die Möglichkeit, zusätzliche verwaltete Subnetze ohne Knotentyp zum Unterstützen von Fallszenarien wie [Private Link Service](../private-link/private-link-service-overview.md) und [Bastion-Hosts](../bastion/bastion-overview.md) zu erstellen.
+
+Konfigurieren Sie weitere Subnetze, indem Sie die Eigenschaft `auxiliarySubnets` und die erforderlichen Parameter in Ihrer Ressourcen-Manager-Vorlage wie folgt deklarieren:
+
+* Die apiVersion der verwalteten Service-Fabric-Clusterressource sollte **2021-11-01-Vorschau** oder höher lauten.
+
+```JSON
+    "resources": [
+        {
+            "apiVersion": "[variables('sfApiVersion')]",
+            "type": "Microsoft.ServiceFabric/managedclusters",
+            ...
+            "properties": {
+                "auxiliarySubnets": [
+                  {
+                  "name" : "mysubnet",
+                  "enableIpv6" : "true"
+                  }
+                ]              
+```
+
+Siehe [vollständige Liste der verfügbaren Parameter](/azure/templates/microsoft.servicefabric/2021-11-01/managedclusters) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Konfigurationsoptionen für verwaltete verwaltete Service Fabric-Cluster](how-to-managed-cluster-configuration.md)
@@ -556,4 +652,5 @@ So konfigurieren Sie die Verwendung eines eigenen Lastenausgleichs:
 [sfmc-rdp-connect]: ./media/how-to-managed-cluster-networking/sfmc-rdp-connect.png
 [sfmc-byolb-example-1]: ./media/how-to-managed-cluster-networking/sfmc-byolb-scenario-1.png
 [sfmc-byolb-example-2]: ./media/how-to-managed-cluster-networking/sfmc-byolb-scenario-2.png
+[sfmc-byolb-example-3]: ./media/how-to-managed-cluster-networking/sfmc-byolb-scenario-3.png
 

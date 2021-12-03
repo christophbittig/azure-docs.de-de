@@ -1,27 +1,28 @@
 ---
-title: Modellinterpretierbarkeit in Azure Machine Learning (Vorschauversion)
+title: Interpretierbarkeit von Modellen (Vorschau)
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mithilfe des Python-SDK für Azure Machine Learning verstehen und erläutern können, wie Ihr Machine Learning-Modell während des Trainings Vorhersagen macht und Rückschlüsse zieht.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.topic: how-to
-ms.custom: responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 02/25/2021
-ms.openlocfilehash: e4298daf41d63ee9d0f90c171c29502806681070
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.custom: responsible-ml, mktng-kw-nov2021
+ms.date: 11/04/2021
+ms.openlocfilehash: baf146725c01736fde36420779e495ce3906f891
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534791"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852596"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Modellinterpretierbarkeit in Azure Machine Learning (Vorschauversion)
 
+In diesem Artikel werden Methoden beschrieben, die Sie für die Modellinterpretierbarkeit in Azure Machine Learning verwenden können. 
 
-## <a name="model-interpretability-overview"></a>Übersicht über die Modellinterpretierbarkeit
+## <a name="why-does-model-interpretability-matter"></a>Warum spielt die Modellinterpretierbarkeit eine Rolle?
 
 Die Modellinterpretierbarkeit ist wichtig für Data Scientists, Prüfer und Entscheidungsträger im Unternehmen, um die Einhaltung von Unternehmensrichtlinien, Industriestandards und behördlichen Vorschriften zu gewährleisten:
 
@@ -54,7 +55,7 @@ Durch Verwenden der Klassen und Methoden im SDK haben Sie folgende Möglichkeite
 
 Beim maschinellen Lernen sind **Merkmale** diejenigen Datenfelder, die zum Vorhersagen eines Zieldatenpunkts verwendet werden. Um beispielsweise ein Kreditrisiko vorherzusagen, werden möglicherweise Datenfelder für Alter, Kontogröße und Kontoalter verwendet. In diesem Fall sind Alter, Kontogröße und Kontoalter **Merkmale**. Die Relevanz eines Merkmals informiert darüber, wie sich jedes Datenfeld auf die Vorhersagen des Modells ausgewirkt hat. Das Alter spielt möglicherweise bei der Vorhersage eine schwerer wiegende Rolle, wohingegen Kontogröße und Kontoalter sich nur unwesentlich auf die Vorhersagewerte auswirken. Dank dieses Prozesses können Data Scientists die getroffenen Vorhersagen erklären, sodass alle Beteiligten einen Einblick darin erhalten, welche Features die wichtigsten im Modell sind.
 
-## <a name="supported-interpretability-techniques"></a>Unterstützte Interpretierbarkeitstechniken
+## <a name="supported-model-interpretability-techniques"></a>Unterstützte Techniken für die Modellinterpretierbarkeit
 
  `azureml-interpret` verwendet die Interpretierbarkeitstechniken, die in [Interpret-Community](https://github.com/interpretml/interpret-community/) entwickelt wurden, einem Open-Source-Python-Paket zum Trainieren von interpretierbaren Modellen und zur Unterstützung bei der Erläuterung von Blackbox-KI-Systemen. [Interpret-Community](https://github.com/interpretml/interpret-community/) fungiert als Host für die unterstützten Explainer dieses SDK und unterstützt derzeit die folgenden Interpretierbarkeitstechniken:
 

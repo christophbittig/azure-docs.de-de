@@ -1,20 +1,20 @@
 ---
 title: Gewinnen von Erkenntnissen zu globalen, regionalen und lokalen Bedrohungen
 description: In der lokalen Verwaltungskonsole können Sie mithilfe der Siteübersicht Erkenntnisse zu globalen, regionalen und lokalen Bedrohungen gewinnen.
-ms.date: 12/07/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: db3b9fbca9acd6c4ce1cfe137a4024f66d8a6292
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 6cef79e708f5aff5eff2c02f2b0fe612aa11a224
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017349"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293229"
 ---
 # <a name="gain-insight-into-global-regional-and-local-threats"></a>Gewinnen von Erkenntnissen zu globalen, regionalen und lokalen Bedrohungen
 
 In der lokalen Verwaltungskonsole können Sie mithilfe der Siteübersicht eine vollständige Sicherheitsabdeckung erzielen, indem Sie Ihr Netzwerk in geografische und logische Segmente unterteilen, die Ihre Geschäftstopologie widerspiegeln:
 
-- **Geografische Einrichtungsebene**: Ein Standort spiegelt eine Anzahl von Geräten wider, die nach einem auf der Karte dargestellten geografischen Standort gruppiert sind. Azure Defender für IoT stellt standardmäßig eine Weltkarte bereit. Sie können die Karte aktualisieren, um Ihre Organisations- oder Geschäftsstruktur widerzuspiegeln. Verwenden Sie z. B. eine Karte, die Standorte in einem bestimmten Land, in einer Stadt oder in einem Industriegelände widerspiegelt. Wenn sich die Farbe des Standorts auf der Karte ändert, bietet dies dem SOC-Team einen Hinweis auf den kritischen Systemstatus in der Einrichtung.
+- **Geografische Einrichtungsebene**: Ein Standort spiegelt eine Anzahl von Geräten wider, die nach einem auf der Karte dargestellten geografischen Standort gruppiert sind. Microsoft Defender für IoT stellt Ihnen standardmäßig eine Weltkarte bereit. Sie können die Karte aktualisieren, um Ihre Organisations- oder Geschäftsstruktur widerzuspiegeln. Verwenden Sie z. B. eine Karte, die Standorte in einem bestimmten Land, in einer Stadt oder in einem Industriegelände widerspiegelt. Wenn sich die Farbe des Standorts auf der Karte ändert, bietet dies dem SOC-Team einen Hinweis auf den kritischen Systemstatus in der Einrichtung.
 
   Die Karte ist interaktiv und ermöglicht das Öffnen der einzelnen Standorte und das genaue Betrachten der Informationen zum jeweiligen Standort.
 

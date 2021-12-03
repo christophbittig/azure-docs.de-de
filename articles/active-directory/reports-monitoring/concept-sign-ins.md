@@ -4,7 +4,7 @@ description: Hier finden Sie eine Übersicht über die Anmeldeprotokolle in Azur
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/16/2021
+ms.date: 10/25/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 187d6fbb8f398291325a04bb07f2ce31b7aca721
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: ad322032237d8e65fd82fea74bf359fcd65c3840
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997419"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997227"
 ---
 # <a name="sign-in-logs-in-azure-active-directory"></a>Anmeldeprotokolle in Azure Active Directory
 
@@ -120,12 +120,12 @@ Während das Protokollelement einen Fehlergrund bereitstellt, gibt es Fälle, in
 
 
 
-## <a name="filter-sign-in-activities&quot;></a>Filtern von Anmeldeaktivitäten
+## <a name="filter-sign-in-activities"></a>Filtern von Anmeldeaktivitäten
 
 
 Sie können die Daten in einem Protokoll filtern, um sie gemäß Ihren Anforderungen einzugrenzen:
 
-![Screenshot: Option „Filter hinzufügen“](./media/concept-sign-ins/04.png &quot;Anmeldeaktivität")
+![Screenshot: Option „Filter hinzufügen“](./media/concept-sign-ins/04.png "Anmeldeaktivität")
 
 **Anforderungs-ID-** : ID der Anforderung, die Sie interessiert.
 
@@ -269,7 +269,7 @@ Durch Klicken auf ein Element können Sie ausführlichere Informationen zum ents
 - Anmeldestatus
 
 > [!NOTE]
-> IP-Adressen werden so ausgestellt, dass es keine definitive Verbindung zwischen einer IP-Adresse und dem physischen Standort des Computers mit dieser Adresse gibt. Das Zuordnen von IP-Adressen wird außerdem durch Faktoren wie Mobilfunkanbieter und VPNs verkompliziert, die IP-Adressen aus zentralen Pools zuweisen, die oft sehr weit von den Orten entfernt sind, an denen das Clientgerät tatsächlich verwendet wird. Derzeit erfolgt das Konvertieren einer IP-Adresse in einen physischen Standort basierend auf Ablaufverfolgungen, Registrierungsdaten, Reverse-Lookups und anderen Informationen.
+> IP-Adressen werden so ausgestellt, dass es keine definitive Verbindung zwischen einer IP-Adresse und dem physischen Standort des Computers mit dieser Adresse gibt. Das Zuordnen von IP-Adressen wird außerdem durch Faktoren wie Mobilfunkanbieter und VPNs verkompliziert, die IP-Adressen aus zentralen Pools zuweisen, die oft sehr weit von den Orten entfernt sind, an denen das Clientgerät tatsächlich verwendet wird. Derzeit ist das Konvertieren der IP-Adresse in einen physischen Speicherort eine optimale Lösung, die auf Ablaufverfolgungen, Registrierungsdaten, Reverse-Lookups und anderen Informationen basiert.
 
 Wenn Sie auf der Seite **Benutzer** im Abschnitt **Aktivität** auf **Anmeldevorgänge** klicken, wird eine umfassenden Übersicht über alle Benutzeranmeldungen angezeigt.
 
@@ -280,6 +280,7 @@ Wenn Sie auf der Seite **Benutzer** im Abschnitt **Aktivität** auf **Anmeldevor
 Die Registerkarte **Authentifizierungsdetails** im Anmeldebericht enthält die folgenden Informationen für jeden Authentifizierungsversuch:
 
 - Eine Liste der angewendeten Authentifizierungsrichtlinien (z. B. bedingter Zugriff, MFA pro Benutzer, Sicherheitsstandards)
+- Eine Liste der angewendeten Richtlinien für die Sitzungslebensdauer (z. B. Anmeldehäufigkeit, MFA-Speicherung, konfigurierbare Tokengültigkeitsdauer)
 - Die Abfolge der für die Anmeldung verwendeten Authentifizierungsmethoden
 - Ob der Authentifizierungsversuch erfolgreich war oder nicht
 - Ausführliche Informationen zu den Gründen, aus denen der Authentifizierungsversuch erfolgreich war oder nicht
@@ -287,6 +288,7 @@ Die Registerkarte **Authentifizierungsdetails** im Anmeldebericht enthält die f
 Mit diesen Informationen können Administratoren die Problembehandlung für jeden Schritt bei der Anmeldung eines Benutzers und Nachverfolgungen durchführen:
 
 - Umfang der durch mehrstufige Authentifizierung geschützten Anmeldungen 
+- Grund für die Authentifizierungsaufforderung basierend auf den Richtlinien für die Sitzungslebensdauer
 - Nutzungs- und Erfolgsraten für jede Authentifizierungsmethode 
 - Verwendung kennwortloser Authentifizierungsmethoden (z. B. kennwortlose Anmeldung per Telefon, FIDO2 und Windows Hello for Business) 
 - Wie häufig Authentifizierungsanforderungen durch Tokenansprüche erfüllt werden (wobei Benutzer nicht interaktiv zur Eingabe eines Kennworts, eines SMS-OTP usw. aufgefordert werden)

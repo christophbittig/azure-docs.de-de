@@ -3,12 +3,12 @@ title: Verwalten einer Hybridinfrastruktur im großen Stil mit Azure Arc
 description: Mit Azure Lighthouse Video können Sie die VMs und Kubernetes-Cluster von Kunden außerhalb von Azure effektiv verwalten.
 ms.date: 09/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 8761c87daeda97b6c67ce8e79e438ed01d8d3a37
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 5acb9cae08795a9c87db0d6353f4870e92849f24
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714721"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293059"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Verwalten einer Hybridinfrastruktur im großen Stil mit Azure Arc
 
@@ -31,7 +31,7 @@ Als Dienstanbieter können Sie lokale Computer mit Windows Server oder Linux au�
 
 Sie können diese verbundenen Computer mithilfe von Azure-Konstrukten wie Azure Policy und Tags verwalten, genau wie Sie die Azure-Ressourcen der Kunden verwalten. Sie können auch über Kundenmandanten hinweg alle verbundenen Hybridcomputer gemeinsam verwalten.
 
-Beispielsweise können Sie [sicherstellen, dass dieselben Richtlinien auf allen Hybridcomputern der Kunden angewandt werden](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md). Außerdem können Sie Azure Security Center verwenden, um die Konformität in allen Hybridumgebungen Ihrer Kunden zu überwachen, oder [mithilfe von Azure Monitor Daten direkt von Hybridcomputern erfassen](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) und in einem Log Analytics-Arbeitsbereich anzeigen. [Erweiterungen für virtuelle Computer](../../azure-arc/servers/manage-vm-extensions.md) können auf Azure-fremden Windows- und Linux-VMs bereitgestellt werden, um die Verwaltung der Hybridcomputer des Kunden zu vereinfachen.
+Beispielsweise können Sie [sicherstellen, dass dieselben Richtlinien auf allen Hybridcomputern der Kunden angewandt werden](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md). Außerdem können Sie Microsoft Defender für Cloud auch dafür verwenden, um die Konformität in allen Hybridumgebungen Ihrer Kunden zu überwachen oder um [mithilfe von Azure Monitor Daten direkt aus Hybridcomputern erfassen](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) und in einem Protokollanalyse(Log-Analytics)-Arbeitsbereich sammeln. [Erweiterungen für virtuelle Computer](../../azure-arc/servers/manage-vm-extensions.md) können auf Azure-fremden Windows- und Linux-VMs bereitgestellt werden, um die Verwaltung der Hybridcomputer des Kunden zu vereinfachen.
 
 ## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Verwalten von Kubernetes-Hybridclustern im großen Stil mithilfe von Kubernetes mit Azure Arc-Unterstützung
 

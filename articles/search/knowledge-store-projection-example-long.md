@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/15/2021
-ms.openlocfilehash: e06772af191917daed79210c28ed2efb19c30036
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.date: 10/20/2021
+ms.openlocfilehash: a820101897ae20dbdeac029187d4ace356ae08af
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134220"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491106"
 ---
 # <a name="detailed-example-of-shapes-and-projections-in-a-knowledge-store"></a>Detailliertes Beispiel für Formen und Projektionen in einem Wissensspeicher
 
@@ -23,9 +23,17 @@ Wenn Ihre Anwendungsanforderungen mehrere Skills und Projektionen erfordern, kö
 
 ## <a name="download-sample-definitions"></a>Herunterladen von Beispieldefinitionen
 
+In diesem Beispiel werden die [Postman Desktop-Anwendung](https://www.postman.com/downloads/) und die [Search-REST-APIs](/rest/api/searchservice/) verwendet.
+
 Klonen Sie oder laden Sie [azure-search-postman-samples](https://github.com/Azure-Samples/azure-search-postman-samples) auf GitHub herunter, und importieren Sie die [**Projektionssammlung**](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/projections), um die einzelnen Schritte dieses Beispiels selbst auszuführen.
 
-Beispieldokumente sind in der Sammlung nicht speziell enthalten, doch die [gemischten Mediendateien](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/ai-enrichment-mixed-media) aus [azure-search-sample-data](https://github.com/Azure-Samples/azure-search-sample-data) enthalten sowohl Text als auch Bilder, um die in diesem Beispiel beschriebenen Projektionen zu unterstützen.
+## <a name="set-up-sample-data"></a>Einrichten von Beispieldaten
+
+Beispieldokumente sind nicht speziell in der Sammlung Projektionen enthalten, doch die [Demodatendateien zur KI-Anreicherung](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/ai-enrichment-mixed-media) aus dem [Repository azure-search-sample-data](https://github.com/Azure-Samples/azure-search-sample-data) enthalten Text und Bilder, um die in diesem Beispiel beschriebenen Projektionen zu unterstützen.
+
+Erstellen Sie in Azure Storage einen Blobcontainer, und laden Sie alle 14 Elemente hoch.
+
+Kopieren Sie in Azure Storage eine Verbindungszeichenfolge, damit Sie diese in der Postman-Sammlung angeben können.
 
 ## <a name="example-skillset"></a>Beispielskillset
 
@@ -375,7 +383,7 @@ Im folgenden Beispiel werden einzelne Hoteldokumente, ein Hoteldokument pro Blob
 }
 ```
 
-Die Quelle ist die Ausgabe des Shaper-Skills „objectprojection“. Jedes Blob enthält eine JSON-Darstellung der einzelnen Feldeingaben.
+Die Quelle ist die Ausgabe des Shaper-Skills namens „objectprojection“. Jedes Blob enthält eine JSON-Darstellung der einzelnen Feldeingaben.
 
 ```json
     {

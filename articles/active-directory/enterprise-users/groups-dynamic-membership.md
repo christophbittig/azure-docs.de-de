@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 088273ff23b28bd54a4a14ab9485a0e28ae42cef
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1a30e270b202989f041ea9e07dc69e67c33b8e87
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986547"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448270"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -52,19 +52,19 @@ Schrittweise Anweisungen dazu finden Sie unter [Erstellen oder Aktualisieren ein
 
 ![Hinzufügen einer Mitgliedschaftsregel für eine dynamische Gruppe](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
-### <a name="rule-syntax-for-a-single-expression&quot;></a>Regelsyntax für einen einzelnen Ausdruck
+### <a name="rule-syntax-for-a-single-expression"></a>Regelsyntax für einen einzelnen Ausdruck
 
 Ein einzelner Ausdruck ist die einfachste Form einer Mitgliedschaftsregel, und sie besteht nur aus den drei oben genannten Teilen. Eine Regel mit einem einzelnen Ausdruck sieht wie folgt aus: `Property Operator Value`, wobei die Syntax für die Eigenschaft der Name von „object.property“ ist.
 
 Im Folgenden finden ein Beispiel für eine richtig aufgebaute Mitgliedschaftsregel mit einem einzelnen Ausdruck:
 
 ```
-user.department -eq &quot;Sales&quot;
+user.department -eq "Sales"
 ```
 
 Bei einem einzelnen Ausdruck sind Klammern optional. Die Gesamtlänge des Texts der Mitgliedschaftsregel darf 3.072 Zeichen nicht überschreiten.
 
-## <a name=&quot;constructing-the-body-of-a-membership-rule&quot;></a>Erstellen des Texts einer Mitgliedschaftsregel
+## <a name="constructing-the-body-of-a-membership-rule"></a>Erstellen des Texts einer Mitgliedschaftsregel
 
 Eine Mitgliedschaftsregel, die eine Gruppe automatisch mit Benutzern oder Geräten auffüllt, ist ein binärer Ausdruck, der als Ergebnis „true“ oder „false“ ergibt. Die drei Teile einer einfachen Regel sind:
 
@@ -74,7 +74,7 @@ Eine Mitgliedschaftsregel, die eine Gruppe automatisch mit Benutzern oder Gerät
 
 Die Reihenfolge der Teile in einem Ausdruck ist wichtig, um Syntaxfehler zu vermeiden.
 
-## <a name=&quot;supported-properties&quot;></a>Unterstützte Eigenschaften
+## <a name="supported-properties"></a>Unterstützte Eigenschaften
 
 Es gibt drei Arten von Eigenschaften, die verwendet werden können, um eine Mitgliedschaftsregel zu erstellen.
 
@@ -84,18 +84,18 @@ Es gibt drei Arten von Eigenschaften, die verwendet werden können, um eine Mitg
 
 Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden können, um einen einzelnen Ausdruck zu erstellen.
 
-### <a name=&quot;properties-of-type-boolean&quot;></a>Eigenschaften vom Typ &quot;boolesch&quot;
+### <a name="properties-of-type-boolean"></a>Eigenschaften vom Typ "boolesch"
 
 | Eigenschaften | Zulässige Werte | Verwendung |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
-### <a name=&quot;properties-of-type-string&quot;></a>Eigenschaften vom Typ &quot;string&quot;
+### <a name="properties-of-type-string"></a>Eigenschaften vom Typ "string"
 
 | Eigenschaften | Zulässige Werte | Verwendung |
 | --- | --- | --- |
-| city |Jeder string-Wert oder *null* |(user.city -eq &quot;value") |
+| city |Jeder string-Wert oder *null* |(user.city -eq "value") |
 | country |Jeder string-Wert oder *null* |(user.country -eq "value") |
 | companyName | Jeder string-Wert oder *null* | (user.companyName -eq "value") |
 | department |Jeder string-Wert oder *null* |(user.department -eq "value") |

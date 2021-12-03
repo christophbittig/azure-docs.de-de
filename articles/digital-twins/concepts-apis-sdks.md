@@ -1,26 +1,27 @@
 ---
 title: Azure Digital Twins-APIs und -SDKs
 titleSuffix: Azure Digital Twins
-description: Informationen zu den API- und SDK-Optionen von Azure Digital Twins.
+description: Erfahren Sie mehr über Azure Digital Twins API- und SDK-Optionen, einschließlich Informationen zu SDK-Hilfsklassen und allgemeinen Nutzungshinweisen.
 author: baanders
 ms.author: baanders
-ms.date: 04/30/2021
+ms.date: 10/25/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6a69e1eeeb1861f7d2a14e1a96c959c18a090682
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1fcbeeb532e813535cc8f3adcf02b2c2e990287e
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438743"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500201"
 ---
 # <a name="azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins-APIs und -SDKs
 
-Azure Digital Twins ist sowohl mit **Steuerungsebenen-APIs** als auch mit **Datenebenen-APIs** zur Verwaltung Ihrer Instanz und ihrer Elemente ausgestattet. 
+Dieser Artikel bietet eine Übersicht über die verfügbaren Azure Digital Twins APIs und die Methoden zur Interaktion mit ihnen. Sie können die REST-APIs entweder direkt mit den zugehörigen Swagger-Dateien (über ein Tool wie [Postman](how-to-use-postman.md)) oder über ein SDK verwenden.
+
+Azure Digital Twins ist sowohl mit **Steuerungsebenen-APIs** als auch mit **Datenebenen-APIs** und **SDKs** zur Verwaltung Ihrer Instanz und ihrer Elemente ausgestattet. 
 * Die Steuerungsebenen-APIs sind [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md)-APIs, die Vorgänge zur Ressourcenverwaltung wie das Erstellen und Löschen von Instanzen abdecken. 
 * Bei den Datenebenen-APIs handelt es sich um Azure Digital Twins-APIs, die für Vorgänge zur Datenverwaltung wie die Verwaltung von Modellen, Zwillingen und des Graphen verwendet werden.
-
-Dieser Artikel bietet eine Übersicht über die verfügbaren APIs und die Methoden zur Interaktion mit ihnen. Sie können die REST-APIs entweder direkt mit den zugehörigen Swagger-Dateien (über ein Tool wie [Postman](how-to-use-postman.md)) oder über ein SDK verwenden.
+* Die SDKs nutzen die bestehenden APIs, um die Entwicklung von benutzerdefinierten Anwendungen unter Verwendung von Azure Digital Twins zu erleichtern. Die SDKs für die Steuerebene sind in [.NET (C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true) und [Java](/java/api/overview/azure/digitaltwins/resourcemanagement?view=azure-java-stable&preserve-view=true) verfügbar, und die SDKs für die Datenebene sind in [.NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), [Java](/java/api/overview/azure/digitaltwins/client?view=azure-java-stable&preserve-view=true), [JavaScript](/javascript/api/@azure/digital-twins-core/?view=azure-node-latest&preserve-view=true) und [Python](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true) verfügbar.
 
 ## <a name="overview-control-plane-apis"></a>Übersicht: Steuerungsebenen-APIs
 
@@ -51,25 +52,25 @@ Die aktuellste Datenebenen-API-Version ist _**2020-10-31**_.
 
 So verwenden Sie die Datenebenen-APIs
 * Sie können die APIs direkt aufrufen, indem Sie wie folgt vorgehen:
-   - Verweisen auf den aktuellen Swagger-Ordner im [Swagger-Repository der Datenebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Dieser Ordner enthält auch einen Ordner mit Beispielen, die die Verwendung veranschaulichen. 
+   - Verweis auf den aktuellen Swagger-Ordner im [Swagger-Repository der Datenebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Dieser Ordner enthält auch einen Ordner mit Beispielen, die die Verwendung veranschaulichen. 
    - Zeigen Sie die [API-Referenzdokumentation](/rest/api/azure-digitaltwins/) an.
 * Sie können das **.NET (C#) SDK** verwenden. So verwenden Sie das .NET SDK
    - Sie können das Paket über NuGet anzeigen und hinzufügen: [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
    - Sie können die [SDK-Referenzdokumentation](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) anzeigen.
-   - Sie suchen die SDK-Quelle, einschließlich eines Ordner mit Beispielen, in GitHub: [Azure IoT Digital Twins-Clientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - Sie können ausführliche Informationen und Anwendungsbeispiele anzeigen, indem Sie mit dem Abschnitt [.NET (C#) SDK (Datenebene)](#net-c-sdk-data-plane) dieses Artikels fortfahren.
+   - Sie können die SDK-Quelle, einschließlich eines Ordners mit Beispielen, in GitHub: [Azure IoT Digital Twins-Clientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) finden. 
+   - Ausführliche Informationen und Anwendungsbeispiele finden Sie im Abschnitt [.NET (C#) SDK (Datenebene)](#net-c-sdk-data-plane) dieses Artikels.
 * Sie können das **Java SDK** verwenden. Zum Verwenden des Java-SDK...
    - Sie können das Paket über Maven anzeigen und installieren: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)
-   - Sie können die [SDK-Referenzdokumentation](/java/api/overview/azure/digitaltwins/client?view=azure-java-stable&preserve-view=true) anzeigen.
+   - Sie können die [SDK-Referenzdokumentation](/java/api/overview/azure/digitaltwins/client?view=azure-java-stable&preserve-view=true) anzeigen
    - Sie können die SDK-Quelle in GitHub finden: [Azure IoT Digital Twins-Clientbibliothek für Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * Sie können das **JavaScript SDK** verwenden. So verwenden Sie das JavaScript SDK
-   - Sie können das Paket über npm anzeigen und installieren: [Azure Digital Twins-Hauptclientbibliothek für JavaScript](https://www.npmjs.com/package/@azure/digital-twins-core).
+   - Sie können das Paket über npm anzeigen und installieren: [Azure Digital Twins-Clientbibliothek für JavaScript](https://www.npmjs.com/package/@azure/digital-twins-core).
    - Sie können die [SDK-Referenzdokumentation](/javascript/api/@azure/digital-twins-core/?view=azure-node-latest&preserve-view=true) anzeigen.
-   - Sie können die SDK-Quelle in GitHub finden: [Azure Digital Twins-Hauptclientbibliothek für JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
+   - Sie können die SDK-Quelle in GitHub finden: [Azure IoT Digital Twins-Clientbibliothek für Java](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
 * Sie können das **Python SDK** verwenden. Zum Verwenden des Python SDK...
-   - Sie können das Paket über PyPi anzeigen und installieren: [Azure Digital Twins-Hauptclientbibliothek für Python](https://pypi.org/project/azure-digitaltwins-core/).
+   - Sie können das Paket von PyPi aus anzeigen und installieren: [Azure Digital Twins Core Client-Bibliothek für Python](https://pypi.org/project/azure-digitaltwins-core/).
    - Sie können die [SDK-Referenzdokumentation](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true) anzeigen.
-   - Sie können die SDK-Quelle in GitHub finden: [Azure Digital Twins-Hauptclientbibliothek für Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
+   - Sie können die SDK-Quelle in GitHub finden: [Azure IoT Digital Twins-Clientbibliothek für Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 
 Sie können auch Datenebenen-APIs anwenden, indem Sie mit Azure Digital Twins über die [CLI](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) interagieren.
 

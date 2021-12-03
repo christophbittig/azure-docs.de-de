@@ -4,12 +4,12 @@ description: In diesem Artikel werden automatische Updates für den Mobilitäts-
 ms.service: site-recovery
 ms.topic: article
 ms.date: 09/01/2021
-ms.openlocfilehash: 97cfba3e14268385632a47a5898b21e8d68811cb
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a683aacc762ce169045ee17891b49624ef1ee991
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539729"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437643"
 ---
 # <a name="upgrade-mobility-service-and-appliance-components-preview"></a>Upgrade von Mobility Service- und Appliancekomponenten (Vorschau)
 
@@ -117,6 +117,25 @@ Navigieren Sie zum Überprüfen des Updatestatus einer der Komponenten zum Appli
 Wenn einer dieser aktualisiert werden muss, wird der **Status** entsprechend angezeigt. Klicken Sie auf die Statusmeldung, um das Upgrade der Komponente durchzuführen.
 
   ![Komponenten der Replikationsappliance](./media/upgrade-mobility-service-preview/appliance-components.png)
+
+### <a name="turn-off-auto-update"></a>Deaktivieren der automatischen Aktualisierung
+
+1. Öffnen Sie auf dem Server, auf dem die Appliance ausgeführt wird, den Registrierungs-Editor.
+2. Navigieren Sie zu **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
+3. Zum Deaktivieren der automatischen Aktualisierung erstellen Sie einen Registrierungsschlüssel **AutoUpdate** mit dem DWORD-Wert 0.
+
+    ![Festlegen des Registrierungsschlüssels](./media/upgrade-mobility-service-preview/registry-key.png)
+
+
+### <a name="turn-on-auto-update"></a>Aktivieren der automatischen Aktualisierung
+
+Sie können die automatische Aktualisierung aktivieren, indem Sie den AutoUpdate-Registrierungsschlüssel aus HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance löschen.
+
+So löschen Sie den Registrierungsschlüssel:
+
+1. Öffnen Sie auf dem Server, auf dem die Appliance ausgeführt wird, den Registrierungs-Editor.
+2. Navigieren Sie zu **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
+3. Löschen Sie den Registrierungsschlüssel **AutoUpdate**, der zuvor zum Deaktivieren der automatischen Aktualisierung erstellt wurde.
 
 ### <a name="resolve-issues-with-component-upgrade"></a>Beheben von Problemen beim Komponentenupgrade
 

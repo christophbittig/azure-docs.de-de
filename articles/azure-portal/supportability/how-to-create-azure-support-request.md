@@ -3,13 +3,13 @@ title: 'Gewusst wie: Erstellen einer Azure-Supportanfrage'
 description: Kunden, die Unterstützung benötigen, können das Azure-Portal verwenden, um Self-Service-Lösungen zu finden und Supportanfragen zu erstellen und zu verwalten.
 ms.topic: how-to
 ms.custom: support-help-page
-ms.date: 09/30/2021
-ms.openlocfilehash: 4598cc16173100749ad3f1bdefd3165020554465
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/20/2021
+ms.openlocfilehash: 8c1a9e841c291bc6a7a6139b7aff4217975a0bcd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129358279"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264996"
 ---
 # <a name="create-an-azure-support-request"></a>Erstellen einer Azure-Supportanfrage
 
@@ -78,7 +78,7 @@ Als Nächstes sammeln wir zusätzliche Details über das Problem. Wenn Sie in di
 
 1. Füllen Sie die **Problemdetails** aus, um uns weitere Informationen zu Ihrem Problem bereitzustellen. Teilen Sie uns wenn möglich mit, wann das Problem begonnen hat und durch welche Schritte es hervorgerufen wird. Sie können eine Datei hochladen, z. B. eine Protokolldatei oder eine Ausgabe der Diagnose. Weitere Informationen zu Dateiuploads finden Sie unter [Richtlinien für den Dateiupload](how-to-manage-azure-support-request.md#file-upload-guidelines).
 
-1. Wählen Sie im Abschnitt **Diagnoseinformationen freigeben** die Option **Ja** oder **Nein** aus. Wenn Sie **Ja** auswählen, kann der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) aus Ihren Azure-Ressourcen erfassen. Wenn Sie diese Informationen nicht freigeben möchten, wählen Sie **Nein** aus. Weitere Informationen zu den Dateitypen, die gesammelt werden können, finden Sie im Abschnitt [Erweiterte Diagnoseinformationsprotokolle](#advanced-diagnostic-information-logs).
+1. Wählen Sie im Abschnitt **Erweiterte Diagnoseinformationen** die Option **Ja** oder **Nein** aus. Wenn Sie **Ja** auswählen, kann der Azure-Support [erweiterte Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) aus Ihren Azure-Ressourcen erfassen. Wenn Sie diese Informationen nicht freigeben möchten, wählen Sie **Nein** aus. Weitere Informationen zu den Dateitypen, die gesammelt werden können, finden Sie im Abschnitt [Erweiterte Diagnoseinformationsprotokolle](#advanced-diagnostic-information-logs).
 
   In einigen Fällen stehen zusätzliche Optionen zur Auswahl. Beispielsweise können Sie für bestimmte VM-Problemtypen auswählen, ob Sie den [Zugriff auf den Arbeitsspeicher einer VM zulassen](#memory-dump-collection) möchten.
 

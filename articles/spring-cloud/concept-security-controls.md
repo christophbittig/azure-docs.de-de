@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: dbd544a3b8a2a55b6eafa51115277f6ef142b41c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: f980c67e22ca031617e9614d2e8facd2e9a9dafa
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349952"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485709"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Sicherheitskontrollen für den Azure Spring Cloud-Dienst
 
@@ -34,8 +34,8 @@ Eine Sicherheitskontrolle stellt eine Qualitätseigenschaft oder ein Feature ein
 
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Diensttag | Ja | Verwenden Sie das **AzureSpringCloud**-Diensttag, um Zugriffssteuerungen für ausgehenden Netzwerkzugriff für [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules) oder [Azure-Firewall](../firewall/service-tags.md) zu definieren, um Datenverkehr zu Azure Spring Cloud-Anwendungen zu ermöglichen. | [Diensttags](../virtual-network/service-tags-overview.md) |
+| Diensttag | Ja | Verwenden Sie das **AzureSpringCloud**-Diensttag, um Zugriffssteuerungen für ausgehenden Netzwerkzugriff für [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules) oder [Azure-Firewall](../firewall/service-tags.md) zu definieren, um Datenverkehr zu Anwendungen in Azure Spring Cloud zu ermöglichen. | [Diensttags](../virtual-network/service-tags-overview.md) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md)
+* [Schnellstart: Bereitstellen Ihrer ersten Spring Boot-App in Azure Spring Cloud](./quickstart.md)

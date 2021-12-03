@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: a2c33808be505209ff5eca58480b9fd5f03d9d4f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5c628e67b258d3d51b5f7b05b08c0ac0b2accb9a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124785532"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304091"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Tutorial: Integrieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Splan Visitor
 
@@ -127,4 +127,4 @@ Testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit einer der fo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Plan Visitor können Sie sich [hier](/cloud-app-security/proxy-deployment-any-app) darüber informieren, wie Sie Sitzungssteuerungen in Microsoft Cloud App Security erzwingen. Sitzungssteuerungen schützen in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Sitzungssteuerungen basieren auf bedingtem Zugriff.
+Nach dem Konfigurieren von Splan Visitor können Sie sich [hier](/cloud-app-security/proxy-deployment-any-app) darüber informieren, wie Sie Sitzungssteuerungen in Microsoft Defender for Cloud Apps erzwingen. Sitzungssteuerungen schützen in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Sitzungssteuerungen basieren auf bedingtem Zugriff.

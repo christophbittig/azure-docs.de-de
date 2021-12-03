@@ -3,12 +3,12 @@ title: Statsbeat in Azure Application Insights | Microsoft-Dokumentation
 description: Statistiken zu Application Insights SDKs und der automatischen Instrumentierung
 ms.topic: conceptual
 ms.date: 09/20/2021
-ms.openlocfilehash: 440f6651f759bce9340763ea141c8057d5a1e4b8
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 55e727bc05007c69f0144c7f95e17e38f907742e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167789"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426884"
 ---
 # <a name="statsbeat-in-azure-application-insights"></a>Statsbeat in Azure Application Insights
 
@@ -57,10 +57,12 @@ Statsbeat sammelt essenzielle und nicht essenzielle Metriken.
 
 ### <a name="non-essential-statsbeat"></a>Nicht essenzielle Statsbeat-Daten
 
-- Nachverfolgen von Erfolg und Fehler bei der Datenträgerpersistenz
-- Netzwerk-Statsbeat für Livemetriken
-- Netzwerk-Statsbeat für Azure-Metadatendienst
-- Netzwerk-Statsbeat für Profiler
+Nachverfolgen des Datenträger-E/A-Fehlers bei Verwendung von Datenträgerpersistenz für wiederholbare Telemetrie
+
+|Metrikname|Einheit|Unterstützte Dimensionen|
+|-----|-----|-----|
+|Anzahl der Lesefehler|Anzahl| `Resource Provider`, `Attach Type`, `Instrumentation Key`, `Runtime Version`, `Operating System`, `Language`, `Version`|
+|Anzahl der Schreibfehler|Anzahl| `Resource Provider`, `Attach Type`, `Instrumentation Key`, `Runtime Version`, `Operating System`, `Language`, `Version`|
 
 ### <a name="configure-statsbeat"></a>Konfigurieren von Statsbeat
 

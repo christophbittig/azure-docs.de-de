@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e64f27480126fdf444f8dd72abc2d66c78b30407
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 1eac3238bc5f39915360db2de3b0526ed4f699d7
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868805"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491851"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>Tutorial: Konfigurieren Ihres Regelmoduls
 
@@ -48,6 +48,14 @@ In diesem Tutorial lernen Sie Folgendes:
     ![Regelmodulkonfiguration](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
 
 1. Bestimmen Sie die Priorität der Regeln in der Konfiguration, indem Sie die Schaltflächen zum Verschieben nach oben, nach unten und ganz nach oben verwenden. Die Priorität ist in aufsteigender Reihenfolge, was bedeutet, dass die erste aufgelistete Regel die wichtigste Regel ist.
+
+
+    > [!TIP]
+    > Wenn Sie überprüfen möchten, wann die Änderungen an Azure Front Door weitergegeben werden, können Sie mithilfe des folgenden Beispiels einen benutzerdefinierten Antwortheader in der Regel erstellen. Sie können einen Antwortheader (`_X-<RuleName>-Version_`) hinzufügen und den Wert bei jeder Aktualisierung der Regel ändern.
+    >  
+    > :::image type="content" source="./media/front-door-rules-engine/rules-version.png" alt-text="Screenshot: Regel für benutzerdefinierten Versionsheader" lightbox="./media/front-door-rules-engine/rules-version-expanded.png":::
+    > Nach dem Anwenden der Änderungen können Sie zur URL wechseln, um die aufgerufene Regelversion zu überprüfen: :::image type="content" source="./media/front-door-rules-engine/version-output.png" alt-text="Screenshot: Ausgabe der Version des benutzerdefinierten Headers":::
+
 
 1. Nachdem Sie eine oder mehrere Regeln erstellt haben, drücken Sie **Speichern**. Mit dieser Aktion wird die Konfiguration des Regelmoduls erstellt.
 

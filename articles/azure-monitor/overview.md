@@ -4,13 +4,13 @@ description: Übersicht über die Microsoft-Dienste und -Funktionen, die zu eine
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 11/17/2019
-ms.openlocfilehash: 639386e1a64ff40375fac5baafc10b6a3a1cb84d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/01/2021
+ms.openlocfilehash: 18019dbf4f6c3a6494b105362790dd41d4132595
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130227053"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055848"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -51,12 +51,11 @@ Azure Monitor verwendet eine Version der [Kusto-Abfragesprache](/azure/kusto/que
 ![Diagramm der Protokolldaten, die zur Analyse an Log Analytics übertragen werden](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Welche Daten sammelt Azure Monitor?
-
 Azure Monitor kann Daten aus [vielen verschiedenen Quellen](monitor-reference.md) sammeln. Dies reicht von Ihrer Anwendung, allen Betriebssystemen und Diensten, von denen Sie abhängig ist, bis hin zur Plattform selbst. Azure Monitor sammelt Daten aus jeder der folgenden Schichten:
 
 - **Überwachungsdaten zu Anwendungen**: Daten zur Leistung und Funktionalität des von Ihnen geschriebenen Codes, unabhängig von seiner Plattform.
 - **Überwachungsdaten zum Gast-BS:** Daten zum Betriebssystem, unter dem die Anwendung ausgeführt wird. Es kann in Azure, einer anderen Cloud oder lokal ausgeführt werden. 
-- **Überwachungsdaten zur Azure-Ressource:** Daten zum Betrieb einer Azure-Ressource.
+- **Überwachungsdaten zur Azure-Ressource:** Daten zum Betrieb einer Azure-Ressource. Eine vollständige Liste der Ressourcen mit Metriken oder Protokollen finden Sie unter [Was können Sie mit Azure Monitor überwachen?](monitor-reference.md#azure-supported-services).
 - **Überwachungsdaten zum Azure-Abonnement**: Daten zum Betrieb und zur Verwaltung eines Azure-Abonnements sowie Daten zur Integrität und zum Betrieb von Azure selbst. 
 - **Überwachungsdaten zu Azure-Mandanten**: Daten zum Betrieb von Azure-Diensten auf Mandantenebene, z. B. Azure Active Directory.
 
@@ -67,11 +66,12 @@ Sobald Sie ein Azure-Abonnement erstellen und damit beginnen, ihm Ressourcen hin
 Aktivieren Sie die Überwachung für Ihre Anwendung mit [Application Insights](app/app-insights-overview.md), um ausführliche Informationen zu erfassen, einschließlich der Anzahl der Seitenaufrufe, Anwendungsanforderungen und Ausnahmen. Überprüfen Sie darüber hinaus die Verfügbarkeit Ihrer Anwendung, indem Sie einen [Verfügbarkeitstest](app/monitor-web-app-availability.md) konfigurieren, um Benutzerdatenverkehr zu simulieren.
 
 ### <a name="custom-sources"></a>Benutzerdefinierte Quellen
-
 Azure Monitor kann mithilfe der [Datensammler-API](logs/data-collector-api.md) Protokolldaten von jedem REST-Client erfassen. Dies erlaubt Ihnen das Erstellen von benutzerdefinierten Überwachungsszenarien und das Ausweiten der Überwachung auf Ressourcen, die Telemetriedaten nicht durch andere Quellen verfügbar machen.
 
-## <a name="insights"></a>Einblicke
-Das Überwachen von Daten ist nur nützlich, wenn dadurch Ihre Einsicht in den Betrieb Ihrer Computerumgebung ausgeweitet wird. Mit [Erkenntnissen](monitor-reference.md#insights-and-core-solutions) wird eine angepasste Überwachungsoberfläche für bestimmte Azure-Dienste bereitgestellt. Sie erfordern nur eine minimale Konfiguration und erhöhen die Transparenz des Betriebs kritischer Ressourcen.
+## <a name="insights-and-curated-visualizations"></a>Erkenntnisse und zusammengestellte Visualisierungen
+Das Überwachen von Daten ist nur nützlich, wenn dadurch Ihre Einsicht in den Betrieb Ihrer Computerumgebung ausgeweitet wird. Einige Azure-Ressourcenanbieter verfügen über eine "zusammengestellte Visualisierung", die Ihnen eine an den Nutzer angepasste Überwachungspraxis für diesen bestimmten Dienst oder eine Reihe von Diensten bietet. Sie erfordern im Allgemeinen eine minimale Konfiguration. Größere skalierbare zusammengestellte Visualisierungen sind unter „Erkenntnisse“ geläufig und in der Dokumentation und im Azure-Portal mit diesem Namen gekennzeichnet.  
+
+Weitere Informationen finden Sie unter [Liste der Erkenntnisse und zusammengestellten Visualisierungen mit Azure Monitor](monitor-reference.md#insights-and-curated-visualizations). Einige der größeren Erkenntnisse werden auch unten beschrieben.
 
 ### <a name="application-insights"></a>Application Insights
 [Application Insights](app/app-insights-overview.md) überwacht Verfügbarkeit, Leistung und Nutzung Ihrer Webanwendungen, gleich ob sie in der Cloud oder lokal gehostet sind. Es nutzt die leistungsstarke Datenanalyseplattform in Azure Monitor, um Ihnen tiefgreifende Einblicke in den Betrieb Ihrer Anwendung zu geben. Sie können Fehler diagnostizieren, ohne darauf warten zu müssen, dass diese von Benutzern gemeldet werden. Application Insights beinhaltet Verbindungspunkte zu einer Vielzahl von Entwicklungstools und lässt sich in Visual Studio integrieren, um Ihre DevOps-Prozesse zu unterstützen.
@@ -90,9 +90,9 @@ Das Überwachen von Daten ist nur nützlich, wenn dadurch Ihre Einsicht in den B
 ![VM Insights](media/overview/vm-insights.png)
 
 
+
 ## <a name="responding-to-critical-situations"></a>Reagieren auf kritische Situationen
 Über die Möglichkeit zum interaktiven Analysieren von Überwachungsdaten hinaus muss eine effektive Überwachungslösung auch in der Lage sein, proaktiv auf kritische Bedingungen zu reagieren, die in den gesammelten Daten erkannt werden. Das kann durch Senden eines Texts oder einer E-Mail an einen für die Untersuchung eines Problems zuständigen Administrator erfolgen. Alternativ können Sie einen automatisierten Prozess starten, der versucht, einen Fehlerzustand zu korrigieren.
-
 
 ### <a name="alerts"></a>Alerts
 [Warnungen in Azure Monitor](alerts/alerts-overview.md) informieren Sie proaktiv über kritische Zustände und versuchen potenziell, Korrekturmaßnahmen einzuleiten. Auf Metriken basierende Warnungsregeln bieten Warnungen nahezu in Echtzeit basierend auf numerischen Werten. Auf Protokollen basierende Regeln ermöglichen eine komplexe Logik über Daten aus mehreren Quellen hinweg.

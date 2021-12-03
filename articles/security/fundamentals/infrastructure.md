@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 2a9e61ec850d20ab9b630036cd265fbb7f3801ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb05fcd0e13aded505ee3fd9d1095338622b949c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87543927"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339407"
 ---
 # <a name="azure-infrastructure-security"></a>Sicherheit der Azure-Infrastruktur
 Microsoft Azure wird in Rechenzentren ausgeführt, die von Microsoft verwaltet und betrieben werden. Diese geografisch voneinander getrennten Rechenzentren erfüllen die wichtigsten Branchenstandards, wie etwa ISO/IEC 27001:2013 und NIST SP 800-53, bezüglich Sicherheit und Zuverlässigkeit. Die Rechenzentren werden von Microsoft-Betriebspersonal verwaltet und überwacht. Das Betriebspersonal verfügt über langjährige Erfahrung in der Bereitstellung der weltweit größten Onlinedienste, die jeden Tag rund um die Uhr verfügbar sind.
@@ -43,4 +43,4 @@ Diese Artikelreihe enthält Informationen zu den Maßnahmen, die Microsoft zum S
 
 - Informieren Sie sich über die [gemeinsame Verantwortung in der Cloud](shared-responsibility.md).
 
-- Erfahren Sie, wie [Azure Security Center](https://azure.microsoft.com/services/security-center/) Sie durch mehr Transparenz und eine bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen bei der Vermeidung, Erkennung und Behandlung von Bedrohungen unterstützt.
+- Hier erfahren Sie, wie [Microsoft Defender für Cloud](https://azure.microsoft.com/services/security-center/) Ihnen dabei hilft, Bedrohungen zu verhindern, zu erkennen und auf sie zu reagieren, indem Sie die Sicherheit Ihrer Azure-Ressourcen besser einsehen und somit besser kontrollieren können.

@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Anzeigen von Ergebnissen des Azure IoT Hub-Nachrichtenroutings (.NET) | Microsoft-Dokumentation'
 description: 'Tutorial: Nachdem Sie in Teil 1 des Tutorials alle Ressourcen eingerichtet haben, fügen Sie die Möglichkeit hinzu, Nachrichten an Azure Stream Analytics weiterzuleiten und die Ergebnisse in Power BI anzuzeigen.'
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 09/21/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: e055868c04056170f351c3534f065d842f833691
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: de024d8254c9eca47046c4b73de47b99420fd2e9
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457383"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554786"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Tutorial: Teil 2: Anzeigen der weitergeleiteten Nachrichten
 

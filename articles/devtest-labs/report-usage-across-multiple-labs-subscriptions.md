@@ -3,16 +3,16 @@ title: Azure DevTest Labs-Nutzung für mehrere Labs und Abonnements
 description: Es wird beschrieben, wie Sie die Azure DevTest Labs-Nutzung für mehrere Labs und Abonnements melden.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 671941e259bd1329dab3e30c1c95eb77ed3091f9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d2bf6954b629c3a9fc28569a86df4aa61f5dc94f
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642831"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401039"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Melden der Azure DevTest Labs-Nutzung für mehrere Labs und Abonnements
 
-Die meisten größeren Organisationen möchten die Ressourcennutzung nachverfolgen, um die Effektivität zu erhöhen, indem Trends und Ausreißer in Bezug auf die Nutzung visualisiert werden. Basierend auf der Ressourcennutzung können die Lab-Besitzer oder -Manager die Labs so anpassen, dass eine [Verbesserung der Ressourcennutzung und der Kosten](../cost-management-billing/cost-management-billing-overview.md) erzielt wird. In Azure DevTest Labs können Sie die Ressourcennutzung pro Lab herunterladen, um einen tieferen Einblick in den Verlauf und die Nutzungsmuster zu erhalten. Diese Nutzungsmuster können bei der Ermittlung von Änderungen hilfreich sein, um die Effizienz zu erhöhen. Die meisten Unternehmen benötigen sowohl Informationen zur Nutzung einzelner Labs als auch übergreifend zur allgemeinen Nutzung [mehrerer Labs und Abonnements](/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
+Die meisten großen Organisationen möchten die Ressourcennutzung nachverfolgen, um Trends und Ausreißer effektiver zu visualisieren. Basierend auf der Ressourcennutzung können Labbesitzer oder -manager Labs anpassen, um die [Ressourcennutzung und die Kosten](../cost-management-billing/cost-management-billing-overview.md)zu verbessern. In Azure DevTest Labs können Sie die Ressourcennutzung pro Lab herunterladen, um einen tieferen Einblick in den Verlauf und die Nutzungsmuster zu erhalten. Diese Verwendungsmuster helfen dabei, Änderungen zu ermitteln, um die Effizienz zu verbessern. Die meisten Unternehmen benötigen sowohl Informationen zur Nutzung einzelner Labs als auch übergreifend zur allgemeinen Nutzung [mehrerer Labs und Abonnements](/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
 
 In diesem Artikel wird beschrieben, wie Sie Informationen zur Ressourcennutzung für mehrere Labs und Abonnements verarbeiten.
 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie Informationen zur Ressourcennutzung 
 
 In diesem Abschnitt wird beschrieben, wie Sie die Ressourcennutzung für ein einzelnes Lab exportieren.
 
-Bevor Sie die Ressourcennutzung von DevTest Labs exportieren können, müssen Sie ein Azure Storage-Konto einrichten, damit die unterschiedlichen Dateien mit den Nutzungsdaten gespeichert werden können. Es gibt zwei gängige Möglichkeiten, den Export von Daten durchzuführen:
+Bevor Sie die DevTest Labs-Ressourcennutzung exportieren können, müssen Sie ein Azure Storage Konto für die Dateien einrichten, die die Nutzungsdaten enthalten. Es gibt zwei gängige Möglichkeiten zum Ausführen des Datenexports:
 
 * [DevTest Labs-REST-API](/rest/api/dtl/labs/exportresourceusage) 
 * Das PowerShell-Az.Resource-Modul [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) mit der Aktion `exportResourceUsage`, der Lab-Ressourcen-ID und den erforderlichen Parametern. 
@@ -39,21 +39,21 @@ Derzeit sind zwei CSV-Dateien vorhanden:
 * *virtualmachines.csv* enthält Informationen zu den virtuellen Computern im Lab.
 * *disks.csv* enthält Informationen zu den unterschiedlichen Datenträgern des Labs. 
 
-Diese Dateien werden im Blobcontainer *labresourceusage* unter dem Namen des Labs gespeichert. Außerdem sind die eindeutige ID des Labs, das Ausführungsdatum und das vollständige Datum bzw. Startdatum für die Exportanforderung angegeben. Beispiel für eine Blobstruktur:
+Diese Dateien werden im Blobcontainer *labresourceusage* gespeichert. Die Dateien befinden sich unter dem Labnamen, der eindeutigen Lab-ID, dem ausgeführten Datum und `full` entweder oder dem Startdatum der Exportanforderung. Ein Beispiel für eine Blobstruktur ist:
 
 * `labresourceusage/labname/1111aaaa-bbbb-cccc-dddd-2222eeee/<End>DD26-MM6-2019YYYY/full/virtualmachines.csv`
 * `labresourceusage/labname/1111aaaa-bbbb-cccc-dddd-2222eeee/<End>DD-MM-YYYY/26-6-2019/20-6-2019<Start>DD-MM-YYYY/virtualmachines.csv`
 
 ## <a name="exporting-usage-for-all-labs"></a>Exportieren der Nutzung für alle Labs
 
-Sie können zum Exportieren der Nutzungsinformationen für mehrere Labs beispielsweise Folgendes verwenden: 
+Um die Nutzungsinformationen für mehrere Labs zu exportieren, sollten Sie Folgendes verwenden: 
 
 * [Azure Functions](../azure-functions/index.yml): Für viele Sprachen verfügbar, z. B. PowerShell. 
 * [Azure Automation-Runbook](../automation/index.yml): Verwenden Sie PowerShell, Python oder einen benutzerdefinierten grafischen Designer, um den Exportcode zu schreiben.
 
 Mit diesen Technologien können Sie die einzelnen Lab-Exporte für alle Labs zu einem bestimmten Datum und einer bestimmten Uhrzeit durchführen. 
 
-Ihre Azure-Funktion sollte die Daten per Pushvorgang in den Langzeitspeicher übertragen. Beim Exportieren von Daten für mehrere Labs kann der Export etwas länger dauern. Wir empfehlen Ihnen für die Labs eine parallele Durchführung, um die Leistung zu verbessern und die Wahrscheinlichkeit einer Duplizierung von Informationen zu verringern. Führen Sie Azure Functions asynchron aus, um die Parallelität zu ermöglichen. Nutzen Sie auch den Zeitgebertrigger von Azure Functions.
+Ihre Azure-Funktion sollte die Daten per Pushvorgang in den Langzeitspeicher übertragen. Wenn Sie Daten für mehrere Labs exportieren, kann der Export einige Zeit in Anspruch nehmen. Um die Leistung zu verbessern und die Möglichkeit der Duplizierung von Informationen zu reduzieren, wird empfohlen, jedes Lab parallel auszuführen. Führen Sie Azure Functions asynchron aus, um die Parallelität zu ermöglichen. Nutzen Sie auch den Timertrigger, den Azure Functions bietet.
 
 ## <a name="using-a-long-term-storage"></a>Nutzen eines Langzeitspeichers
 
@@ -65,7 +65,7 @@ Der Langzeitspeicher kann verwendet werden, um Textbearbeitungen durchzuführen,
 * Erstellen komplexer Gruppierungen
 * Aggregieren der Daten
 
-Einige gängige Speicherlösungen sind: [SQL Server](https://azure.microsoft.com/services/sql-database/), [Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/) und [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Die Entscheidung, welche Langzeitspeicher-Lösung Sie wählen, hängt von Ihren Vorlieben ab. Sie können bei der Auswahl des Tools beispielsweise darauf achten, welche Optionen in Bezug auf die Interaktionsverfügbarkeit beim Visualisieren der Daten vorhanden sind.
+Einige gängige Speicherlösungen sind: [SQL Server](https://azure.microsoft.com/services/sql-database/), [Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/) und [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Die Entscheidung, welche Langzeitspeicher-Lösung Sie wählen, hängt von Ihren Vorlieben ab. Je nachdem, was es für die Interaktionsverfügbarkeit bietet, können Sie beim Visualisieren der Daten das Tool auswählen.
 
 ## <a name="visualizing-data-and-gathering-insights"></a>Visualisieren von Daten und Sammeln von Erkenntnissen
 
@@ -75,7 +75,7 @@ Sie können [Azure Data Factory](https://azure.microsoft.com/services/data-facto
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem das System eingerichtet wurde und die Verschiebung der Daten in den Langzeitspeicher begonnen hat, ist der nächste Schritt das Ermitteln der Fragen, die anhand der Daten beantwortet werden müssen. Beispiel: 
+Sobald Sie das System eingerichtet haben und die Daten in den langfristigen Speicher verschoben werden, besteht der nächste Schritt darin, die Fragen zu stellen, die die Daten beantworten müssen. Beispiel: 
 
 -   Welche VM-Größen werden genutzt?
 

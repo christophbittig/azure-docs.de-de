@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2, ignite-fall-2021
-ms.openlocfilehash: c086523feb73ee6571776b825420c4375ae48da9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2bcd276b5c6d80de9266e41a95e1f59b3453a63c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131088139"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289848"
 ---
 # <a name="deploy-and-score-a-machine-learning-model-by-using-an-online-endpoint-preview"></a>Bereitstellen und Bewerten eines Machine Learning-Modells mit einem Onlineendpunkt (Vorschau)
 
@@ -47,6 +47,9 @@ Weitere Informationen finden Sie unter [Was sind Azure Machine Learning-Endpunkt
 
 * (Optional) Zur lokalen Bereitstellung müssen Sie die [Docker-Engine](https://docs.docker.com/engine/install/) auf Ihrem lokalen Computer installieren. Diese Option wird *dringend empfohlen*, um das Debuggen von Problemen zu vereinfachen.
 
+> [!IMPORTANT]
+> Bei den Beispielen in diesem Dokument wird davon ausgegangen, dass Sie die Bash-Shell verwenden. Beispielsweise aus einem Linux-System oder [Windows-Subsystem für Linux](/windows/wsl/about). 
+
 ## <a name="prepare-your-system"></a>Vorbereiten Ihres Systems
 
 Klonen Sie zunächst das Beispielrepository (azureml-examples), um diesem Artikel zu folgen. Führen Sie dann den folgenden Code aus, um zum Verzeichnis mit den Beispielen zu wechseln:
@@ -61,31 +64,19 @@ Wählen Sie zum Festlegen Ihres Endpunktnamens je nach Betriebssystem einen der 
 
 Führen Sie für Unix den folgenden Befehl aus:
 
-```azurecli
-export ENDPOINT_NAME=YOUR_ENDPOINT_NAME
-```
-
-Führen Sie für Windows den folgenden Befehl aus:
-
-```azurecli
-set ENDPOINT_NAME=YOUR_ENDPOINT_NAME
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="set_endpoint_name":::
 
 > [!NOTE]
-> Endpunktnamen müssen innerhalb einer Azure-Region eindeutig sein. In der Azure-Region „westus2“ kann es z. B. nur einen Endpunkt namens `my-endpoint` geben. 
+> Wir haben vor Kurzem die CLI-Schnittstelle geändert: Früher hatten wir sowohl `endpoint` als auch `deployment` unter `az ml endpoint`, jetzt haben wir sie in `az ml online-endpoint` und `az ml online-deployment` getrennt.  Dadurch wird die Verwendung von Endpunkten in CI/CD-Skripts vereinfacht.
 
-## <a name="define-the-endpoint-configuration"></a>Definieren der Endpunktkonfiguration
+> [!NOTE]
+> Endpunktnamen müssen innerhalb einer Azure-Region eindeutig sein. In der Azure-Region „`westus2`“ kann es z. B. nur einen Endpunkt namens `my-endpoint` geben. 
 
-Für die Bereitstellung eines Modells auf einem Onlineendpunkt sind bestimmte Eingaben erforderlich:
+## <a name="review-the-endpoint-and-deployment-configurations"></a>Überprüfen der Endpunkt- und Bereitstellungskonfigurationen
 
-- Modelldateien (oder Name und Version eines Modells, das bereits in Ihrem Arbeitsbereich registriert ist). In diesem Beispiel verwenden wir ein scikit-learn-Modell, das Regressionen durchführt.
-- Der Code, der für die Bewertung des Modells erforderlich ist. In diesem Fall verfügen wir über eine *score.py*-Datei.
-- Eine Umgebung, in der Ihr Modell ausgeführt wird. Wie Sie sehen werden, kann die Umgebung ein Docker-Image mit Conda-Abhängigkeiten oder eine Dockerfile-Datei sein.
-- Einstellungen zum Angeben des Instanztyps und der Skalierungskapazität.
+Der folgende Codeausschnitt zeigt die Datei *endpoints/online/managed/sample/endpoint.yml:* 
 
-Der folgende Codeausschnitt zeigt die Datei *endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yml*, in der alle erforderlichen Eingaben erfasst sind: 
-
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/endpoint.yml":::
 
 > [!NOTE]
 > Eine vollständige Beschreibung zu YAML finden Sie in der [YAML-Referenz zu verwalteten Onlineendpunkten (Vorschauversion)](reference-yaml-endpoint-managed-online.md).
@@ -97,21 +88,30 @@ Die Referenz für das YAML-Endpunktformat wird in der folgenden Tabelle beschrie
 | `$schema`    | (Optional) Das YAML-Schema. Um alle verfügbaren Optionen in der YAML-Datei anzuzeigen, können Sie sich das Schema aus dem vorangegangenen Beispiel in einem Browser ansehen.|
 | `name`       | Der Name des Endpunkts. Er muss in der Azure-Region eindeutig sein.|
 | `traffic` | Der Prozentsatz des Datenverkehrs vom Endpunkt, der zu den einzelnen Bereitstellungen umgeleitet wird. Die Summe der Datenverkehrswerte muss 100 sein. |
-| `auth_mode` | Verwenden Sie `key` für die schlüsselbasierte Authentifizierung oder `aml_token` für die tokenbasierte Azure Machine Learning-Authentifizierung. `key` läuft nicht ab, dafür aber `aml_token`. (Rufen Sie das letzte Token mit dem Befehl `az ml endpoint get-credentials` ab.) |
-| `deployments` | Die Liste der Bereitstellungen, die am Endpunkt erstellt werden sollen. In diesem Fall gibt es nur eine Bereitstellung namens `blue`. Weitere Informationen zu mehreren Bereitstellungen finden Sie unter [Sicherer Rollout für Onlineendpunkte (Vorschau)](how-to-safely-rollout-managed-endpoints.md).|
+| `auth_mode` | Verwenden Sie `key` für schlüsselbasierte Authentifizierung. Verwenden Sie `aml_token` für die tokenbasierte Azure Machine Learning-Authentifizierung. `key` läuft nicht ab, dafür aber `aml_token`. (Rufen Sie das letzte Token mit dem Befehl `az ml online-endpoint get-credentials` ab.) |
 
-In der nächsten Tabelle werden die Attribute von `deployments` beschrieben:
+Das Beispiel enthält alle Dateien, die zum Bereitstellen eines Modells auf einem Onlineendpunkt erforderlich sind. Um ein Modell bereitzustellen, müssen Sie über Folgendes verfügen:
 
-| Key | BESCHREIBUNG |
+- Modelldateien (oder Name und Version eines Modells, das bereits in Ihrem Arbeitsbereich registriert ist). In diesem Beispiel verwenden wir ein scikit-learn-Modell, das Regressionen durchführt.
+- Der Code, der für die Bewertung des Modells erforderlich ist. In diesem Fall verfügen wir über eine *score.py*-Datei.
+- Eine Umgebung, in der Ihr Modell ausgeführt wird. Wie Sie sehen werden, kann die Umgebung ein Docker-Image mit Conda-Abhängigkeiten oder eine Dockerfile-Datei sein.
+- Einstellungen zum Angeben des Instanztyps und der Skalierungskapazität.
+
+Der folgende Codeausschnitt zeigt die Datei *endpoints/online/managed/sample/blue-deployment.yml* mit allen erforderlichen Eingaben: 
+
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/blue-deployment.yml":::
+
+In der Tabelle werden die Attribute von `deployment` beschrieben:
+
+| Schlüssel | BESCHREIBUNG |
 | --- | --- |
 | `name`  | Der Name der Bereitstellung |
-| `model` | In diesem Beispiel geben wir diese Modelleigenschaften inline an: `name`, `version` und `local_path`. Modelldateien werden automatisch hochgeladen und registriert. Ein Nachteil der Inlinespezifikation ist, dass Sie die Version manuell erhöhen müssen, wenn Sie die Modelldateien aktualisieren möchten. Informationen zu verwandten bewährten Methoden finden Sie im Tipp im nächsten Abschnitt. |
+| `model` | In diesem Beispiel geben wir die Modelleigenschaften inline an: `local_path`. Modelldateien werden automatisch hochgeladen und mit einem automatisch generierten Namen registriert. Informationen zu verwandten bewährten Methoden finden Sie im Tipp im nächsten Abschnitt. |
 | `code_configuration.code.local_path` | Das Verzeichnis, das den gesamten Python-Quellcode für die Bewertung des Modells enthält. Sie können geschachtelte Verzeichnisse und Pakete verwenden. |
 | `code_configuration.scoring_script` | Die Python-Datei, die sich im `code_configuration.code.local_path`-Bewertungsverzeichnis befindet. Dieser Python-Code muss über eine `init()`- und eine `run()`-Funktion verfügen. Die Funktion `init()` wird aufgerufen, nachdem das Modell erstellt oder aktualisiert wurde (Sie können es verwenden, um das Modell z. B. im Arbeitsspeicher zwischenzuspeichern). Die Funktion `run()` wird bei jedem Aufruf des Endpunkts aufgerufen, um die tatsächliche Bewertung und Vorhersage auszuführen. |
-| `environment` | Enthält die Details der Umgebung zum Hosten des Modells und des Codes. In diesem Beispiel verfügen wir über Inlinedefinitionen, die `name`, `version` und `path` einbeziehen. Wir verwenden `environment.docker.image` für das Image. Die `conda_file`-Abhängigkeiten werden zusätzlich zum Image installiert. Weitere Informationen finden Sie im Tipp im nächsten Abschnitt. |
+| `environment` | Enthält die Details der Umgebung zum Hosten des Modells und des Codes. In diesem Beispiel verfügen wir über Inlinedefinitionen, die `path` einbeziehen. Wir verwenden `environment.docker.image` für das Image. Die `conda_file`-Abhängigkeiten werden zusätzlich zum Image installiert. Weitere Informationen finden Sie im Tipp im nächsten Abschnitt. |
 | `instance_type` | Die VM-SKU, die Ihre Bereitstellungsinstanzen hosten wird. Weitere Informationen finden Sie unter [Unterstützte VM-SKUs für verwaltete Onlineendpunkte](reference-managed-online-endpoints-vm-sku-list.md). |
-| `scale_settings.scale_type` | Zurzeit muss dieser Wert auf `manual` festgelegt werden. Um nach dem Erstellen des Endpunkts und der Bereitstellung hoch- oder herunterskalieren zu können, aktualisieren Sie `instance_count` im YAML-Code, und führen Sie den Befehl `az ml endpoint update -n $ENDPOINT_NAME --file <yaml filepath>` aus.|
-| `scale_settings.instance_count` | Die Anzahl der Instanzen in der Bereitstellung. Richten Sie den Wert nach der zu erwartenden Workload. Für eine entsprechende Hochverfügbarkeit empfehlen wir, dass Sie `scale_settings.instance_count` mindestens auf `3` festlegen. |
+| `instance_count` | Die Anzahl der Instanzen in der Bereitstellung. Richten Sie den Wert nach der zu erwartenden Workload. Für eine entsprechende Hochverfügbarkeit empfehlen wir, dass Sie `instance_count` mindestens auf `3` festlegen. |
 
 Weitere Informationen zum YAML-Schema finden Sie in der [YAML-Referenz für Onlineendpunkte](reference-yaml-endpoint-managed-online.md).
 
@@ -124,7 +124,7 @@ Weitere Informationen zum YAML-Schema finden Sie in der [YAML-Referenz für Onli
 
 ### <a name="register-your-model-and-environment-separately"></a>Separates Registrieren von Modell und Umgebung
 
-In diesem Beispiel geben wir die Modell- und Umgebungseigenschaften inline an: `name`, `version` und `local_path` (von wo aus Dateien hochgeladen werden sollen). Die CLI lädt die Dateien automatisch hoch und registriert das Modell und die Umgebung. Als bewährte Methode für die Produktion sollten Sie das Modell und die Umgebung registrieren und den registrierten Namen sowie die Version im YAML-Code separat angeben. Verwenden Sie das Format `model: azureml:my-model:1` oder `environment: azureml:my-env:1`.
+In diesem Beispiel geben wir die `local_path` Inline -Datei (aus der Dateien hochgeladen werden) an. Die CLI lädt die Dateien automatisch hoch und registriert das Modell und die Umgebung. Als bewährte Methode für die Produktion sollten Sie das Modell und die Umgebung registrieren und den registrierten Namen sowie die Version im YAML-Code separat angeben. Verwenden Sie das Format `model: azureml:my-model:1` oder `environment: azureml:my-env:1`.
 
 Zur Registrierung können Sie die YAML-Definitionen von `model` und `environment` in separate YAML-Dateien extrahieren und die Befehle `az ml model create` und `az ml environment create` verwenden. Führen Sie `az ml model create -h` und `az ml environment create -h` aus, um mehr über diese Befehle zu erfahren.
 
@@ -147,7 +147,7 @@ Wie bereits erwähnt, muss das `code_configuration.scoring_script` eine `init()`
 
 ## <a name="deploy-and-debug-locally-by-using-local-endpoints"></a>Lokales Bereitstellen und Debuggen mithilfe von lokalen Endpunkten
 
-Um Zeit beim Debuggen zu sparen, *wird dringend empfohlen*, den Endpunkt lokal zu testen.
+Um Zeit beim Debuggen zu sparen, *wird dringend empfohlen*, den Endpunkt lokal zu testen. Weitere Informationen finden Sie unter [Lokales Debuggen verwalteter Onlineendpunkte in Visual Studio Code](how-to-debug-managed-online-endpoints-visual-studio-code.md).
 
 > [!NOTE]
 > * Für die lokale Bereitstellung muss die [Docker-Engine](https://docs.docker.com/engine/install/) installiert sein.
@@ -155,47 +155,58 @@ Um Zeit beim Debuggen zu sparen, *wird dringend empfohlen*, den Endpunkt lokal z
 
 > [!IMPORTANT]
 > Das Ziel einer lokalen Endpunktbereitstellung besteht darin, Ihren Code und Ihre Konfiguration vor der Bereitstellung in Azure zu überprüfen und zu debuggen. Die lokale Bereitstellung weist die folgenden Einschränkungen auf:
-> - Lokale Endpunkte unterstützen *keine* Datenverkehrsregeln, Authentifizierung, Skalierungseinstellungen oder Testeinstellungen. 
-> - Lokale Endpunkte unterstützen nur eine Bereitstellung pro Endpunkt. Das heißt, dass Sie in einer lokalen Bereitstellung keinen Verweis auf ein Modell oder eine Umgebung verwenden können, das bzw. die in Ihrem Azure Machine Learning-Arbeitsbereich registriert ist. 
+> - Lokale Endpunkte unterstützen *keine* Datenverkehrsregeln, Authentifizierungen oder Testeinstellungen. 
+> - Lokale Endpunkte unterstützen nur eine Bereitstellung pro Endpunkt. 
 
 ### <a name="deploy-the-model-locally"></a>Lokales Bereitstellen des Modells
 
-So stellen Sie das Modell lokal bereit
+Erstellen Sie zunächst den Endpunkt. Optional können Sie für einen lokalen Endpunkt diesen Schritt überspringen und die Bereitstellung (nächster Schritt) direkt erstellen, wodurch wiederum die erforderlichen Metadaten erstellt werden. Dies ist für Entwicklungs- und Testzwecke nützlich.
 
-```azurecli
-az ml endpoint create --local -n $ENDPOINT_NAME -f endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yml
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="create_endpoint":::
 
-> [!NOTE]
-> Bei einem Windows-Betriebssystem verwenden Sie `%ENDPOINT_NAME%` hier und in nachfolgenden Befehlen anstelle von `$ENDPOINT_NAME`.
+Erstellen Sie nun eine Bereitstellung mit dem Namen `blue` unter dem Endpunkt.
+
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="create_deployment":::
 
 Das `--local`-Flag weist die CLI an, den Endpunkt in der Docker-Umgebung bereitzustellen.
 
+> [!TIP]
+> Verwenden Sie Visual Studio Code, um Ihre Endpunkte lokal zu testen und zu debuggen. Weitere Informationen finden Sie unter [Lokales Debuggen verwalteter Onlineendpunkten in Visual Studio Code](how-to-debug-managed-online-endpoints-visual-studio-code.md).
+
 ### <a name="verify-the-local-deployment-succeeded"></a>Überprüfen Sie, ob die lokale Bereitstellung erfolgreich war.
 
-Überprüfen Sie die Protokolle, um festzustellen, ob das Modell ohne Fehler bereitgestellt wurde:
+Überprüfen Sie den Status, um festzustellen, ob das Modell ohne Fehler bereitgestellt wurde:
 
-```azurecli
-az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="get_status":::
+
+Die Ausgabe sollte in etwa dem folgenden JSON-Code entsprechen. Beachten Sie, dass der `provisioning_state``Succeeded` ist.
+
+```json
+{
+  "auth_mode": "key",
+  "location": "local",
+  "name": "docs-endpoint",
+  "properties": {},
+  "provisioning_state": "Succeeded",
+  "scoring_uri": "http://localhost:49158/score",
+  "tags": {},
+  "traffic": {}
+}
 ```
 
 ### <a name="invoke-the-local-endpoint-to-score-data-by-using-your-model"></a>Aufrufen des lokalen Endpunkts zum Bewerten von Daten mit Ihrem Modell
 
 Rufen Sie den Endpunkt auf, um das Modell mithilfe des praktischen Befehls `invoke` und der Übergabe von in einer JSON-Datei gespeicherten Abfrageparametern zu bewerten:
 
-```azurecli
-az ml endpoint invoke --local -n $ENDPOINT_NAME --request-file endpoints/online/model-1/sample-request.json
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="test_endpoint":::
 
-Wenn Sie einen REST-Client (z. B. curl) verwenden möchten, müssen Sie über den Bewertungs-URI verfügen. Führen Sie `az ml endpoint show --local -n $ENDPOINT_NAME` aus, um den Bewertungs-URI abzurufen. Suchen Sie in den zurückgegebenen Daten das Attribut `scoring_uri`. 
+Wenn Sie einen REST-Client (z. B. curl) verwenden möchten, müssen Sie über den Bewertungs-URI verfügen. Führen Sie `az ml online-endpoint show --local -n $ENDPOINT_NAME` aus, um den Bewertungs-URI abzurufen. Suchen Sie in den zurückgegebenen Daten das Attribut `scoring_uri`. Curl-basierte Beispielbefehle sind weiter später in diesem Dokument verfügbar.
 
 ### <a name="review-the-logs-for-output-from-the-invoke-operation"></a>Überprüfen der Protokolle hinsichtlich der Ausgaben des Aufrufvorgangs
 
 In der *score.py*-Beispieldatei protokolliert die `run()`-Methode einige Ausgaben in der Konsole. Sie können diese Ausgabe mit dem Befehl `get-logs` erneut anzeigen:
 
-```azurecli
-az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="get_logs":::
 
 ##  <a name="deploy-your-managed-online-endpoint-to-azure"></a>Bereitstellen Ihres verwalteten Onlineendpunkts in Azure
 
@@ -203,11 +214,18 @@ Stellen Sie als nächstes Ihren verwalteten Onlineendpunkt in Azure bereit.
 
 ### <a name="deploy-to-azure"></a>In Azure bereitstellen
 
-Führen Sie den folgenden Code aus, um die YAML-Konfiguration in der Cloud bereitzustellen:
+Führen Sie den folgenden Code aus, um den Endpunkt in der Cloud zu erstellen:
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="deploy" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="create_endpoint" :::
+
+Führen Sie den folgenden Code aus, um die Bereitstellung mit dem Namen `blue` unter dem Endpunkt zu erstellen:
+
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="create_deployment" :::
 
 Diese Bereitstellung kann bis zu 15 Minuten dauern, je nachdem, ob die zugrunde liegende Umgebung bzw. das zugrunde liegende Image zum ersten Mal erstellt wird. Nachfolgende Bereitstellungen, die dieselbe Umgebung verwenden, werden schneller abgeschlossen.
+
+> [!Important]
+> Das Flag "--all-traffic" im obigen `az ml online-deployment create` ordnet 100 % des Datenverkehrs zum Endpunkt der neu erstellten Bereitstellung zu. Obwohl dies für Entwicklungs- und Testzwecke hilfreich ist, sollten Sie für die Produktion den Datenverkehr zur neuen Bereitstellung über einen expliziten Befehl öffnen. Zum Beispiel, `az ml online-endpoint update -n $ENDPOINT_NAME --traffic "blue=100"` 
 
 > [!TIP]
 > * Wenn Sie ihre CLI-Konsole nicht blockieren möchten, können Sie dem Befehl das Flag `--no-wait` hinzufügen. Dadurch wird jedoch die interaktive Anzeige des Bereitstellungsstatus nicht mehr angezeigt.
@@ -223,7 +241,7 @@ Der Befehl `show` enthält Informationen in `provisioning_status` zum Endpunkt u
 Sie können alle Endpunkte im Arbeitsbereich in einem Tabellenformat mit dem Befehl `list` auflisten:
 
 ```azurecli
-az ml endpoint list --output table
+az ml online-endpoint list --output table
 ```
 
 ### <a name="check-the-status-of-the-cloud-deployment"></a>Überprüfen des Status der Cloudbereitstellung
@@ -240,26 +258,24 @@ Sie können entweder den `invoke`-Befehl oder einen REST-Client Ihrer Wahl verwe
 
 ::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint" :::
 
+Das folgende Beispiel zeigt, wie Sie den Schlüssel für die Authentifizierung beim Endpunkt erhalten:
+
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint_using_curl_get_key":::
+
+Verwenden Sie als Nächstes curl, um Daten zu bewerten.
+
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint_using_curl" :::
+
+Beachten Sie, dass wir die Befehle `show` und `get-credentials` verwenden, um die Anmeldeinformationen für die Authentifizierung zu erhalten. Beachten Sie zudem, dass wir das Flag `--query` verwenden, um die Attribute auf die erforderlichen Angaben zu beschränken. Weitere Informationen zu `--query` finden Sie unter [Abfragen der Azure CLI-Befehlsausgabe](/cli/azure/query-azure-cli).
+
 Führen Sie `get-logs` erneut aus, um die Aufrufprotokolle anzuzeigen.
-
-Um einen REST-Client zu verwenden, müssen Sie über den Wert für `scoring_uri` und den Authentifizierungsschlüssel oder das Token verfügen. Der `scoring_uri`-Wert ist in der Ausgabe des Befehls `show` verfügbar:
- 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_scoring_uri" :::
-
-Wir verwenden das Flag `--query`, um die Attribute auf die erforderlichen Angaben zu beschränken. Weitere Informationen zu `--query` finden Sie unter [Abfragen der Azure CLI-Befehlsausgabe](/cli/azure/query-azure-cli).
-
-Rufen Sie die erforderlichen Anmeldeinformationen mithilfe des Befehls `get-credentials` ab:
-
-```azurecli
-az ml endpoint get-credentials -n $ENDPOINT_NAME
-```
 
 ### <a name="optional-update-the-deployment"></a>(Optional) Aktualisieren der Bereitstellung
 
-Wenn Sie den Code, das Modell, die Umgebung oder Ihre Skalierungseinstellungen aktualisieren möchten, aktualisieren Sie die YAML-Datei, und führen Sie dann den Befehl `az ml endpoint update` aus. 
+Wenn Sie den Code, das Modell oder die Umgebung aktualisieren möchten, aktualisieren Sie die YAML-Datei und führen Sie dann den Befehl `az ml online-endpoint update` aus. 
 
-> [!IMPORTANT]
-> Sie können nur *einen* Aspekt (Datenverkehr, Skalierungseinstellungen, Code, Modell oder Umgebung) in einem einzelnen `update`-Befehl ändern. 
+> [!Note]
+> Wenn Sie die Instanzanzahl und zusammen mit anderen Modelleinstellungen (Code, Modell oder Umgebung) in einem einzigen `update` Befehl aktualisieren: Zuerst wird der Skalierungsvorgang ausgeführt, dann werden die anderen Updates angewendet. In der Produktionsumgebung ist es eine bewährte Methode, diese Vorgänge separat durchzuführen.
 
 Informationen zur Funktionsweise von `update`:
 
@@ -269,28 +285,25 @@ Informationen zur Funktionsweise von `update`:
 1. Führen Sie den folgenden Befehl aus:
 
     ```azurecli
-    az ml endpoint update -n $ENDPOINT_NAME -f endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yml
+    az ml online-deployment update -n blue --endpoint $ENDPOINT_NAME -f endpoints/online/managed/sample/blue-deployment.yml
     ```
 
-    > [!IMPORTANT]
-    > Das Aktualisieren mithilfe von YAML ist deklarativ. Dies bedeutet, dass Änderungen am YAML-Code in den zugrunde liegenden Azure Resource Manager-Ressourcen (Endpunkte und Bereitstellungen) widergespiegelt werden. Ein deklarativer Ansatz nutzt [GitOps](https://www.atlassian.com/git/tutorials/gitops): *Alle* Änderungen an Endpunkten bzw. Bereitstellungen (auch `instance_count`) erfolgen über den YAML-Code. Wenn Sie eine Bereitstellung aus dem YAML-Code entfernen und `az ml endpoint update` mit der Datei ausführen, wird die Bereitstellung daraufhin gelöscht. Sie können Aktualisierungen vornehmen, ohne den YAML-Code zu verwenden, indem Sie das Flag `--set` verwenden.
+    > [!Note]
+    > Das Aktualisieren mithilfe von YAML ist deklarativ. Dies bedeutet, dass Änderungen am YAML-Code in den zugrunde liegenden Azure Resource Manager-Ressourcen (Endpunkte und Bereitstellungen) widergespiegelt werden. Ein deklarativer Ansatz nutzt [GitOps](https://www.atlassian.com/git/tutorials/gitops): *Alle* Änderungen an Endpunkten bzw. Bereitstellungen (auch `instance_count`) erfolgen über den YAML-Code. Sie können Aktualisierungen vornehmen, ohne den YAML-Code zu verwenden, indem Sie das Flag `--set` verwenden.
     
 1. Da Sie die Funktion `init()` geändert haben (`init()` wird ausgeführt, wenn der Endpunkt erstellt oder aktualisiert wird), befindet sich die Meldung `Updated successfully` in den Protokollen. Rufen Sie die Protokolle ab, indem Sie Folgendes ausführen:
 
-    ```azurecli
-    az ml endpoint get-logs -n $ENDPOINT_NAME --deployment blue
-    ```
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_logs" :::
 
-Führen Sie Folgendes in dem seltenen Fall aus, dass Sie Ihre Bereitstellung aufgrund eines unlösbaren Problems löschen und neu erstellen möchten:
-
-```azurecli
-az ml endpoint delete -n $ENDPOINT_NAME --deployment blue
-```
-
-Der Befehl `update` funktioniert auch mit lokalen Endpunkten. Verwenden Sie denselben `az ml endpoint update`-Befehl mit dem Flag `--local`.
+Der Befehl `update` funktioniert auch mit lokalen Bereitstellungen. Verwenden Sie denselben `az ml online-deployment update`-Befehl mit dem Flag `--local`.
 
 > [!TIP]
-> Mit dem Befehl `az ml endpoint update` können Sie den [`--set`-Parameter in der Azure CLI](/cli/azure/use-cli-effectively#generic-update-arguments) verwenden, um Attribute in Ihrer YAML-Datei außer Kraft zu setzen *oder* bestimmte Attribute ohne Übergabe der YAML-Datei festzulegen. Die Verwendung von `--set` für einzelne Attribute ist besonders in Entwicklungs- und Testszenarien nützlich. Sie können das Flag `--set deployments[0].scale_settings.instance_count=2` verwenden, um z. B. den `instance_count`-Wert für die erste Bereitstellung hochzuskalieren. Da die YAML-Datei jedoch nicht aktualisiert wird, unterstützt dieses Verfahren [GitOps](https://www.atlassian.com/git/tutorials/gitops) nicht.
+> Mit dem Befehl `update` können Sie den [`--set`-Parameter in der Azure CLI](/cli/azure/use-cli-effectively#generic-update-arguments) verwenden, um Attribute in Ihrer YAML-Datei außer Kraft zu setzen *oder* bestimmte Attribute ohne Übergabe der YAML-Datei festzulegen. Die Verwendung von `--set` für einzelne Attribute ist besonders in Entwicklungs- und Testszenarien nützlich. Sie können das Flag `--set instance_count=2` verwenden, um z. B. den `instance_count`-Wert für die erste Bereitstellung hochzuskalieren. Da die YAML-Datei jedoch nicht aktualisiert wird, unterstützt dieses Verfahren [GitOps](https://www.atlassian.com/git/tutorials/gitops) nicht.
+> [!Note]
+> Das obige Beispiel zeigt ein rollierendes Update, d. h., die gleiche Bereitstellung wird mit der neuen Konfiguration aktualisiert, mit 20 % Knoten gleichzeitig. Wenn die Bereitstellung über 10 Knoten verfügt, werden 2 Knoten gleichzeitig aktualisiert. Für die Verwendung in der Produktion sollten Sie die [Blau-Grün-Bereitstellung](how-to-safely-rollout-managed-endpoints.md)in Betracht ziehen, die eine sicherere Alternative bietet.
+### <a name="optional-configure-autoscaling"></a>(Optional) Konfigurieren der automatischen Skalierung
+
+Die automatische Skalierung führt automatisch die richtige Menge an Ressourcen aus, um die Last für Ihre Anwendung zu bewältigen. Verwaltete Onlineendpunkte unterstützen die automatische Skalierung durch die Integration in das Feature für die automatische Skalierung von Azure Monitor. Informationen zum Konfigurieren der automatischen Skalierung finden Sie unter [Automatisches Skalieren von Onlineendpunkten](how-to-autoscale-endpoints.md).
 
 ### <a name="optional-monitor-sla-by-using-azure-monitor"></a>(Optional) Überwachen der SLA mit Azure Monitor
 
@@ -332,7 +345,8 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Bereitstellen von Modellen per REST (Vorschau)](how-to-deploy-with-rest.md)
 - [Erstellen und Verwenden von verwalteten Onlineendpunkten (Vorschau) in Studio](how-to-use-managed-online-endpoint-studio.md)
 - [Sicherer Rollout für Onlineendpunkte (Vorschau)](how-to-safely-rollout-managed-endpoints.md)
+- [Automatisches Skalieren verwalteter Onlineendpunkte](how-to-autoscale-endpoints.md)
 - [Verwenden von Batchendpunkten (Vorschau) für die Batchbewertung](how-to-use-batch-endpoint.md)
 - [Anzeigen der Kosten für einen verwalteten Azure Machine Learning-Onlineendpunkt (Vorschau)](how-to-view-online-endpoints-costs.md)
-- [Tutorial: Zugreifen auf Azure-Ressourcen mit einem verwalteten Onlineendpunkt und einer systemseitig verwalteten Identität (Vorschau)](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)
-- [Problembehandlung für die Bereitstellung verwalteter Onlineendpunkte](./how-to-troubleshoot-online-endpoints.md)
+- [Zugreifen auf Azure-Ressourcen mit einem verwalteten Onlineendpunkt und einer verwalteten Identität (Vorschau)](how-to-access-resources-from-endpoints-managed-identities.md)
+- [Problembehandlung für die Bereitstellung verwalteter Onlineendpunkte](how-to-troubleshoot-online-endpoints.md)

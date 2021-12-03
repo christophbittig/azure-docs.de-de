@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.openlocfilehash: eed02e188ec4860e53782f0191061fa006152f96
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 33077902722a32f792c12598f7d555880050a574
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816481"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309014"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-reprints-desk---article-galaxy"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Reprints Desk – Article Galaxy
 
@@ -43,7 +43,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Für Reprints Desk – Article Galaxy wird die **Just-In-Time**-Benutzerbereitstellung unterstützt.
 
-* [Nach dem Konfigurieren von Reprints Desk – Article Galaxy können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.](/cloud-app-security/proxy-deployment-any-app)
+* [Nach dem Konfigurieren von Reprints Desk – Article Galaxy können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="adding-reprints-desk---article-galaxy-from-the-gallery"></a>Hinzufügen von Reprints Desk – Article Galaxy aus dem Katalog
 
@@ -156,6 +156,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Reprints Desk – Article Galaxy�
 
 - [Testen von Reprints Desk – Article Galaxy mit Azure AD](https://aad.portal.azure.com/)
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+- [Was ist die Sitzungssteuerung in Microsoft Defender for Cloud Apps?](/cloud-app-security/proxy-intro-aad)
 
 - [Schützen von Apps mit Microsoft Cloud App Security Conditional Access App Control](/cloud-app-security/proxy-intro-aad)

@@ -1,23 +1,32 @@
 ---
 title: Überwachen von mobilen Apps mit Azure Monitor Application Insights
 description: Dieser Artikel enthält Informationen zum schnellen Einrichten einer mobilen App für die Überwachung mit Azure Monitor Application Insights und App Center.
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ddc8a10d3f68642a9fa17c02b937a536c150e3b7
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 2a5b33de0095cfe4def9bf766a4838b2869820e2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131712"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327441"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Analysieren Ihrer mobilen Apps mit App Center und Application Insights
 
-In diesem Schnellstart erfahren Sie, wie Sie die Instanz von App Center Ihrer App mit Application Insights verbinden. Mit Application Insights können Sie Ihre Telemetriedaten mit leistungsfähigen Tools abfragen, segmentieren, filtern und analysieren. Diese Tools sind leistungsstärker als die Tools, die im [Analytics](/mobile-center/analytics/)-Dienst von App Center zur Verfügung stehen.
+In diesem Tutorial erfahren Sie, wie Sie die App Center-Instanz Ihrer App mit Application Insights verbinden. Mit Application Insights können Sie Ihre Telemetriedaten mit leistungsfähigen Tools abfragen, segmentieren, filtern und analysieren. Diese Tools sind leistungsstärker als die Tools, die im [Analytics](/mobile-center/analytics/)-Dienst von App Center zur Verfügung stehen.
+
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Verbinden der App Center-Instanz einer App mit Application Insights
+> * Ändern Ihrer App für das Senden von benutzerdefinierten Telemetriedaten an Application Insights
+> * Abfragen benutzerdefinierter Telemetriedaten in Log Analytics
+> * Analysieren von Wechsel-, Aufbewahrungs- und Navigationsmustern in Ihrer App
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 - Ein Azure-Abonnement.
 - Eine iOS-, Android-, Xamarin-, Universal Windows- oder React Native-App
@@ -71,7 +80,7 @@ Sobald Ihre App benutzerdefinierte Ereignisse sendet und diese von App Center em
 
     Ein Konfigurationsfeld wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der unten stehenden Tabelle aus.
 
-    | Einstellungen        |  Wert           | BESCHREIBUNG  |
+    | Einstellungen        |  Wert           | Beschreibung  |
    | ------------- |:-------------|:-----|
    | **Name**      | Ein global eindeutiger Wert wie z.B. „myApp-iOS“ | Der Name, der die zu überwachende App identifiziert. |
      | **Ressourcengruppe**     | Eine neue Ressourcengruppe, oder eine vorhandene aus dem Menü | Die Ressourcengruppe, in der die neue Application Insights-Ressource erstellt werden soll |

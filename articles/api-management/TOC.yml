@@ -110,9 +110,13 @@
           href: restify-soap-api.md
         - name: Importieren einer WebSocket-API
           href: websocket-api.md
-        - name: Importieren einer Web-App
+        - name: Importieren einer GraphQL-API
+          href: graphql-api.md
+        - name: "Importieren einer App\_Service-Web-API"
           href: import-app-service-as-api.md
-        - name: Importieren einer Funktionen-App
+        - name: Importieren einer Container-App-Web-API
+          href: import-container-app-with-oas.md
+        - name: Importieren einer Funktions-App-Web-API
           href: import-function-app-as-api.md
         - name: Importieren einer Logik-App
           href: import-logic-app-as-api.md
@@ -290,6 +294,8 @@
           href: api-management-dapr-policies.md
         - name: Überprüfungsrichtlinien
           href: validation-policies.md
+        - name: GraphQL-Überprüfungsrichtlinien
+          href: graphql-validation-policies.md
     - name: Verwalten in Produktion
       items:
         - name: Exportieren von APIs in Power Platform
@@ -360,7 +366,7 @@
     - name: Versionshinweise
       href: 'https://aka.ms/apim/releases'
     - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Videos
       href: 'https://azure.microsoft.com/documentation/videos/index/?service=api-management'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"

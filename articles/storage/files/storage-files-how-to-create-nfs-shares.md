@@ -1,22 +1,22 @@
 ---
-title: Erstellen einer NFS-Freigabe (Vorschau) – Azure Files
+title: 'Erstellen einer NFS-Freigabe: Azure Files'
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure-Dateifreigabe erstellen, die mithilfe des NFS-Protokolls (Network File System) eingebunden werden kann.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 11/16/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2b1e7f17445fe2b24b19acf4669637ef4c47c196
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 77a8a7d3a210441cea406241ee1f4f776878c826
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339151"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519426"
 ---
-# <a name="how-to-create-an-nfs-share-preview"></a>Erstellen einer NFS-Freigabe (Vorschau)
-Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Cloud gespeichert werden. In diesem Artikel erfahren Sie, wie Sie eine Dateifreigabe erstellen, für die das NFS-Protokoll verwendet wird (Vorschau).
+# <a name="how-to-create-an-nfs-share"></a>Erstellen einer NFS-Freigabe
+Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Cloud gespeichert werden. In diesem Artikel geht es um das Erstellen einer Dateifreigabe, für die das NFS-Protokoll verwendet wird.
 
 ## <a name="applies-to"></a>Gilt für:
 | Dateifreigabetyp | SMB | NFS |
@@ -42,76 +42,13 @@ Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Clo
 
 - Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](/cli/azure/install-azure-cli).
 
-## <a name="register-the-nfs-41-protocol"></a>Registrieren des NFS 4.1-Protokolls
-
-Sie müssen sich erst für das Feature registrieren, um NFS-basierte Azure-Dateifreigaben erstellen zu können. In Speicherkonten, die vor der Registrierung erstellt wurden, können keine NFS-Freigaben erstellt werden.
-
-Wenn Sie das Azure PowerShell-Modul oder die Azure CLI nutzen, registrieren Sie Ihr Feature mithilfe der folgenden Befehle:
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-Verwenden Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle, um die NFS 4.1-Funktionen für Azure Files zu registrieren.
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-```azurepowershell
-# Connect your PowerShell session to your Azure account, if you have not already done so.
-Connect-AzAccount
-# Set the actively selected subscription, if you have not already done so.
-$subscriptionId = "<yourSubscriptionIDHere>"
-$context = Get-AzSubscription -SubscriptionId $subscriptionId
-Set-AzContext $context
-# Register the NFS 4.1 feature with Azure Files to enable the preview.
-Register-AzProviderFeature `
-    -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowNfsFileShares 
-    
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-```azurecli
-# Connect your Azure CLI to your Azure account, if you have not already done so.
-az login
-# Provide the subscription ID for the subscription where you would like to 
-# register the feature
-subscriptionId="<yourSubscriptionIDHere>"
-az feature register \
-    --name AllowNfsFileShares \
-    --namespace Microsoft.Storage \
-    --subscription $subscriptionId
-az provider register \
-    --namespace Microsoft.Storage
-```
-
----
-
-Die Registrierungsgenehmigung kann bis zu einer Stunde dauern. Verwenden Sie die folgenden Befehle, um zu überprüfen, ob die Registrierung abgeschlossen wurde:
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-Verwenden Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle, um die Registrierung der NFS 4.1-Funktionen für Azure Files zu überprüfen. 
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-```azurepowershell
-Get-AzProviderFeature `
-    -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowNfsFileShares
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-```azurecli
-az feature show \
-    --name AllowNfsFileShares \
-    --namespace Microsoft.Storage \
-    --subscription $subscriptionId
-```
----
-
 ## <a name="create-a-filestorage-storage-account"></a>Erstellen eines FileStorage-Speicherkontos
 Derzeit sind NFS 4.1-Freigaben nur als Premium-Dateifreigaben verfügbar. Wenn Sie eine Premium-Dateifreigabe mit Unterstützung für das Protokoll NFS 4.1 bereitstellen möchten, müssen Sie zunächst ein FileStorage-Speicherkonto erstellen. Ein Speicherkonto ist ein Objekt auf oberster Ebene in Azure, das einen freigegebenen Speicherpool darstellt, der zum Bereitstellen mehrerer Azure-Dateifreigaben verwendet werden kann.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Navigieren Sie zum Erstellen eines FileStorage-Speicherkontos zum Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Menü **Speicherkonten** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) im linken Menü **Speicherkonten** aus.
 
     ![Hauptseite im Azure-Portal: Auswählen eines Speicherkontos](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
@@ -164,6 +101,32 @@ az storage account create \
     --location $location \
     --sku Premium_LRS \
     --kind FileStorage
+```
+---
+
+## <a name="disable-secure-transfer"></a>Deaktivieren der sicheren Übertragung
+
+Sie können eine NFS-Dateifreigabe nur einbinden, wenn Sie die sichere Übertragung deaktivieren.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Navigieren Sie zu dem Speicherkonto, das Sie erstellt haben.
+1. Wählen Sie **Konfiguration** aus.
+1. Wählen Sie für **Sichere Übertragung erforderlich** die Einstellung **Deaktiviert** aus.
+1. Wählen Sie **Speichern** aus.
+
+    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="Screenshot mit dem Konfigurationsbildschirm des Speicherkontos und der deaktivierten Option „Sichere Übertragung erforderlich“" lightbox="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png":::
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $False
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli
+az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only false
 ```
 ---
 

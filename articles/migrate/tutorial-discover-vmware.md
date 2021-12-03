@@ -5,14 +5,14 @@ author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 07/28/2021
+ms.date: 11/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 3d3fc18ebceb18e7411a68c19e069a0db4889854
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7eb6aea743176bb4cdaf313d392320378bc016d1
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124797113"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397495"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>Tutorial: Ermitteln von in einer VMware-Umgebung ausgeführten Servern mit Azure Migrate
 
@@ -185,13 +185,13 @@ Vergewissern Sie sich vor dem Bereitstellen der OVA-Datei, dass die Datei sicher
     
         **Algorithmus** | **Download** | **SHA256**
         --- | --- | ---
-        VMware (11,9 GB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+        VMware (11,9 GB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140333) | 08e4fa3aa827a88b68d3b56306926773f75c3a8a47ba4296871cfcb6c9830ea8
 
     - Azure Government:
     
         **Algorithmus** | **Download** | **SHA256**
         --- | --- | ---
-        VMware (85,8 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
+        VMware (85,8 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140337) | 3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
 #### <a name="create-the-appliance-server"></a>Erstellen des Servers auf der Appliance
 
@@ -318,7 +318,7 @@ Wählen Sie **Ermittlung starten** aus, um die vCenter Server-Ermittlung zu star
 * Bei der [Softwareinventur](how-to-discover-applications.md) wird die auf ermittelten Servern vorhandene Webserverrolle identifiziert. Wenn für einen Server die Webserverrolle aktiviert ist, führt Azure Migrate die Ermittlung von Web-Apps auf dem Server durch. Konfigurationsdaten von Web-Apps werden alle 24 Stunden aktualisiert.
 * Bei der Softwareinventur werden die hinzugefügten Serveranmeldeinformationen mit Servern abgeglichen und für die Abhängigkeitsanalyse ohne Agent überprüft. Wenn die Ermittlung von Servern abgeschlossen ist, können Sie im Portal die Abhängigkeitsanalyse ohne Agent auf den Servern aktivieren. Nur die Server mit erfolgreicher Überprüfung können ausgewählt werden, um die [Abhängigkeitsanalyse ohne Agent](how-to-create-group-machine-dependencies-agentless.md) zu aktivieren.
 * Die Daten von ASP.NET-Web-Apps und SQL Server-Instanzen und -Datenbanken werden innerhalb von 24 Stunden nach Beginn der Ermittlung im Portal angezeigt.
-* Standardmäßig verwendet Azure Migrate für Verbindungen mit SQL-Instanzen die sicherste Methode, d. h., Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen, indem die TrustServerCertificate-Eigenschaft auf `true` festgelegt wird. Darüber hinaus verwendet die Transportschicht SSL zum Verschlüsseln des Kanals und Umgehen der Zertifikatkette zur Überprüfung der Vertrauenswürdigkeit. Daher muss der Server der Appliance so eingerichtet sein, dass er die Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft. Sie können die Verbindungseinstellungen jedoch ändern, indem Sie auf der Appliance **SQL Server-Verbindungseigenschaften bearbeiten** auswählen. [Erfahren Sie mehr](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) darüber, was Sie auswählen sollten.
+* Standardmäßig verwendet Azure Migrate für Verbindungen mit SQL-Instanzen die sicherste Methode, d. h., Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen, indem die TrustServerCertificate-Eigenschaft auf `true` festgelegt wird. Darüber hinaus verwendet die Transportschicht SSL zum Verschlüsseln des Kanals und Umgehen der Zertifikatkette zur Überprüfung der Vertrauenswürdigkeit. Daher muss der Server der Appliance so eingerichtet sein, dass er die Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft. Sie können die Verbindungseinstellungen jedoch ändern, indem Sie in der Appliance **Edit SQL Server connection properties** (SQL Server-Verbindungseigenschaften bearbeiten) auswählen. [Hier erfahren Sie mehr](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine), um zu verstehen, was Sie auswählen müssen.
 
     :::image type="content" source="./media/tutorial-discover-vmware/sql-connection-properties.png" alt-text="Screenshot der Bearbeitung der SQL Server-Verbindungseigenschaften":::
 
@@ -326,9 +326,10 @@ Wählen Sie **Ermittlung starten** aus, um die vCenter Server-Ermittlung zu star
 
 ### <a name="view-discovered-data"></a>Anzeigen der ermittelten Daten
 
-1. Wechseln Sie zurück zum Azure Migrate-Portal.
-1. Klicken Sie wie im folgenden Screenshot gezeigt auf „Aktualisieren“, um die ermittelten Daten anzuzeigen.
-    :::image type="content" source="./media/tutorial-discover-vmware/discovery-assessment-tile.png" alt-text="Screenshot: Aktualisieren von Daten auf der Kachel für Ermittlung und Bewertung":::
+1. Kehren Sie zu Azure Migrate im Azure-Portal zurück.
+1. Wählen Sie **Aktualisieren** aus, um ermittelte Daten anzuzeigen.
+
+   :::image type="content" source="./media/tutorial-discover-vmware/discovery-assessment-tile.png" alt-text="Screenshot: Aktualisieren von Daten auf der Kachel für Ermittlung und Bewertung":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

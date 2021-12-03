@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/29/2021
 ms.author: srijangupta
-ms.openlocfilehash: 1e62653a7b48ac22f4482974696ad14c13b39a88
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 7ebabe554121e2ad07ef776ed78046a09db9ca9c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698855"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054588"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init-Unterstützung für virtuelle Computer in Azure
 
@@ -48,8 +48,8 @@ Es gibt zwei Phasen, um cloud-init für die empfohlenen Linux-Distributionsbetri
 ### <a name="rhel"></a>RHEL
 | Herausgeber/Version| Angebot | SKU | Version | Image-cloud-init-fähig | cloud-init-Paketunterstützung in Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|RedHat 7 |RHEL |7.7, 7.8, 7_9 |latest |ja | ja |
-|RedHat 8 |RHEL |8.1, 8.2, 8_3, 8_4 |latest |ja | ja |
+|RedHat 7 |RHEL |7.7, 7.8, 7_9 |latest |ja | Ja |
+|RedHat 8 |RHEL |8.1, 8.2, 8_3, 8_4 |latest |ja | Ja |
 
 * Alle anderen RedHat-SKUs ab RHEL 7 (Version 7.7) und RHEL 8 (Version 8.1), einschließlich Gen1- und Gen2-Images, werden mit cloud-init bereitgestellt. RHEL 6-Images unterstützen cloud-init nicht. 
 
@@ -57,8 +57,8 @@ Es gibt zwei Phasen, um cloud-init für die empfohlenen Linux-Distributionsbetri
 ### <a name="centos"></a>CentOS
  Herausgeber/Version| Angebot | SKU | Version | Image-cloud-init-fähig | cloud-init-Paketunterstützung in Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7 |CentOS |7.7, 7.8, 7.9 |latest |ja | ja |
-|OpenLogic 8 |CentOS |8.1, 8.2, 8.3 |latest |ja | ja |
+|OpenLogic 7 |CentOS |7.7, 7.8, 7.9 |latest |ja | Ja |
+|OpenLogic 8 |CentOS |8.1, 8.2, 8.3 |latest |ja | Ja |
 
 * Alle anderen CentOS-SKUs ab CentOS 7 (Version 7.7) und CentOS 8 (Version 8.1), einschließlich Gen1- und Gen2-Images, werden mit cloud-init bereitgestellt. CentOS 6.10-, 7.4-, 7.5- und 7.6-Images unterstützen cloud-init nicht. 
 
@@ -71,8 +71,8 @@ Es gibt zwei Phasen, um cloud-init für die empfohlenen Linux-Distributionsbetri
 
  Herausgeber/Version| Angebot | SKU | Version | Image-cloud-init-fähig | cloud-init-Paketunterstützung in Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7 |Oracle Linux |77, 78, ol79 |latest |ja | ja |
-|Oracle 8 |Oracle Linux |81, ol82, ol83-lvm, ol84-lvm |latest |ja | ja |
+|Oracle 7 |Oracle Linux |77, 78, ol79 |latest |ja | Ja |
+|Oracle 8 |Oracle Linux |81, ol82, ol83-lvm, ol84-lvm |latest |ja | Ja |
 
 * Alle anderen Oracle-SKUs ab Oracle 7 (Version 7.7) und Oracle 8 (Version 8.1), einschließlich Gen1- und Gen2-Images, werden mit cloud-init bereitgestellt.
 
@@ -81,8 +81,8 @@ Es gibt zwei Phasen, um cloud-init für die empfohlenen Linux-Distributionsbetri
 
  Herausgeber/Version| Angebot | SKU | Version | Image-cloud-init-fähig | cloud-init-Paketunterstützung in Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| SUSE 15 |SLES (SUSE Linux Enterprise Server) |sp1, sp2, sp3 |latest |ja | ja |
-|SUSE 12 |SLES (SUSE Linux Enterprise Server) |sp5 |latest |ja | ja |
+| SUSE 15 |SLES (SUSE Linux Enterprise Server) |sp1, sp2, sp3 |latest |ja | Ja |
+|SUSE 12 |SLES (SUSE Linux Enterprise Server) |sp5 |latest |ja | Ja |
 
 * Alle anderen SUSE-SKUs ab SLES 15 (sp1) und SLES 12 (sp5), einschließlich Gen1- und Gen2-Images, werden mit cloud-init bereitgestellt.
 * Darüber hinaus werden diese Images auch mit cloud-init bereitgestellt:
@@ -140,14 +140,13 @@ packages:
   - httpd
 ```
 > [!NOTE]
-> cloud-init weist mehrere [Eingabetypen](https://cloudinit.readthedocs.io/en/latest/topics/format.html) auf und gibt in der ersten Zeile von customData/userData an, wie die Eingabe verarbeitet werden soll. Beispielsweise gibt `#cloud-config` an, dass der Inhalt als cloud-init-Konfiguration verarbeitet werden soll.
+> „cloud-init“ weist mehrere [Eingabetypen](https://cloudinit.readthedocs.io/en/latest/topics/format.html) auf und gibt in der ersten Zeile von „customData/userData“ an, wie die Eingabe verarbeitet werden soll. Beispielsweise gibt `#cloud-config` an, dass der Inhalt als cloud-init-Konfiguration verarbeitet werden soll.
 
-
-Drücken Sie `ctrl-X`, um die Datei zu verlassen, geben Sie `y` ein, um die Datei zu speichern, und drücken Sie `enter`, um den Dateinamen beim Beenden zu bestätigen.
+Drücken Sie <kbd>STRG+X</kbd>, um die Datei zu verlassen, geben Sie <kbd>y</kbd> ein, um die Datei zu speichern, und drücken Sie die <kbd>EINGABETASTE</kbd>, um den Dateinamen beim Beenden zu bestätigen.
 
 Erstellen Sie im letzten Schritt mit dem Befehl [az vm create](/cli/azure/vm) einen virtuellen Computer. 
 
-Das folgende Beispiel erstellt einen virtuellen Computer mit dem Namen *centos74* und SSH-Schlüssel, falls diese nicht bereits an einem Standardschlüsselspeicherort vorhanden sind. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.  Verwenden Sie den `--custom-data`-Parameter, um Ihre cloud-init-Konfigurationsdatei zu übergeben. Geben Sie den vollständigen Pfad zu der Konfigurationsdatei *cloud-init.txt* an, wenn Sie die Datei außerhalb Ihres vorhandenen Arbeitsverzeichnisses gespeichert haben. 
+Das folgende Beispiel erstellt einen virtuellen Computer mit dem Namen `centos74` und SSH-Schlüssel, falls sie nicht bereits an einem Standard-Schlüsselspeicherort vorhanden sind. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.  Verwenden Sie den `--custom-data`-Parameter, um Ihre cloud-init-Konfigurationsdatei zu übergeben. Geben Sie den vollständigen Pfad zu der Konfigurationsdatei *cloud-init.txt* an, wenn Sie die Datei außerhalb Ihres vorhandenen Arbeitsverzeichnisses gespeichert haben. 
 
 ```azurecli-interactive 
 az vm create \

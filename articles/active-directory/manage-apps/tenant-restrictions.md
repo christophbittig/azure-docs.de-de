@@ -12,14 +12,14 @@ ms.date: 7/30/2021
 ms.author: davidmu
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5cdbbe4955063d6a241949be14cd7dcd0af0a5
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: d3dc75a0c9d5f47d7f415a5df29398e8d407d7cf
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997514"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546537"
 ---
-# <a name="restrict-access-to-a-tenant-in-azure-active-directory"></a>Einschränken des Zugriffs auf einen Mandanten in Azure Active Directory
+# <a name="restrict-access-to-a-tenant"></a>Beschränken des Zugriffs auf einen Mandanten
 
 Große Organisationen mit hohen Sicherheitsanforderungen, die Clouddienste wie etwa Microsoft 365 nutzen möchten, müssen sich darauf verlassen können, dass ihre Benutzer nur auf genehmigte Ressourcen zugreifen können. Zur Steuerung des Zugriffs schränken Unternehmen in der Regel Domänennamen oder IP-Adressen ein. In einer Welt, in der SaaS-Apps (Software-as-a-Service) in einer öffentlichen Cloud gehostet und unter freigegebenen Domänennamen wie [outlook.office.com](https://outlook.office.com/) und [login.microsoftonline.com](https://login.microsoftonline.com/) ausgeführt werden, ist diese Vorgehensweise jedoch zum Scheitern verurteilt. Die Blockierung der Adressen würde dazu führen, dass Benutzer gar nicht mehr über das Web auf Outlook zugreifen können, anstatt lediglich ihren Zugriff auf genehmigte Identitäten und Ressourcen zu beschränken.
 
@@ -78,7 +78,7 @@ Die Header müssen folgende Elemente enthalten:
 
 - *Restrict-Access-To-Tenants:* Verwenden Sie den Wert \<permitted tenant list\>. Dabei handelt es sich um eine durch Kommas getrennte Liste mit Mandanten, auf die Benutzer zugreifen können sollen. Der Mandant in dieser Liste kann mithilfe jeder bei einem Mandanten registrierten Domäne sowie mit der Verzeichnis-ID selbst identifiziert werden. In einem Beispiel aller drei Möglichkeiten, einen Mandanten zu beschreiben, sieht das Name-Wert-Paar, um Contoso, Fabrikam und Microsoft zuzulassen, folgendermaßen aus: `Restrict-Access-To-Tenants: contoso.com,fabrikam.onmicrosoft.com,72f988bf-86f1-41af-91ab-2d7cd011db47`.
 
-- *Restrict-Access-Context:* Verwenden Sie einen Wert für eine einzelne Verzeichnis-ID, um zu deklarieren, welcher Mandant die Mandanteneinschränkungen festlegt. Wenn Sie z. B. Contoso als den Mandanten deklarieren möchten, der die Mandanteneinschränkungsrichtlinie festlegt, sieht das Name-Wert-Paar wie folgt aus: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`.  Sie **müssen** an dieser Stelle ihre eigene Verzeichnis-ID verwenden, um Protokolle für diese Authentifizierungen zu erhalten.
+- *Restrict-Access-Context:* Verwenden Sie einen Wert für eine einzelne Verzeichnis-ID, um zu deklarieren, welcher Mandant die Mandanteneinschränkungen festlegt. Wenn Sie z. B. Contoso als den Mandanten deklarieren möchten, der die Mandanteneinschränkungsrichtlinie festlegt, sieht das Name-Wert-Paar wie folgt aus: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`. Sie *müssen* hier Ihre eigene Verzeichnis-ID verwenden, um Protokolle für diese Authentifizierungen abzurufen. Wenn Sie eine andere Verzeichnis-ID als Ihre eigene verwenden, *werden diese Anmeldeprotokolle im Mandanten einer anderen Person angezeigt*, wobei alle persönlichen Informationen entfernt werden. Weitere Informationen finden Sie unter [Administratorerfahrung](#admin-experience).
 
 > [!TIP]
 > Ihre Verzeichnis-ID finden Sie im [Azure Active Directory-Portal](https://aad.portal.azure.com/). Melden Sie sich als Administrator an, und wählen Sie **Azure Active Directory** und anschließend **Eigenschaften** aus.

@@ -6,13 +6,13 @@ ms.author: dobett
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: ff8726ff95bd8e5e3c24fecb90d52ec48529ef7b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.date: 11/02/2021
+ms.openlocfilehash: eb2e48629e07271fcc151a3de97659c97cbb6719
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236008"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491182"
 ---
 # <a name="glossary-of-iot-terms"></a>Glossar mit IoT-Begriffen
 
@@ -22,219 +22,316 @@ In diesem Artikel werden einige gängige Begriffe aufgeführt, die in den Artike
 
 ### <a name="advanced-message-queueing-protocol"></a>Advanced Message Queueing Protocol
 
-[Advanced Message Queueing Protocol (AMQP)](https://www.amqp.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](../iot-hub/iot-hub-devguide-messaging.md).
+Eines der Messagingprotokolle, das [IoT Hub](#iot-hub) und IoT Central für die Kommunikation mit [Geräten](#device) unterstützen.
+
+[Weitere Informationen](../iot-hub/iot-hub-devguide-protocols.md)
+
+Gilt für: IoT Hub, IoT Central, Geräteentwickler
 
 ### <a name="allocation-policy"></a>Zuordnungsrichtlinie
 
-Beim [Device Provisioning Service](#device-provisioning-service) bestimmt die Zuordnungsrichtlinie, wie Geräte vom Dienst [verknüpften IoT Hubs](#linked-iot-hub) zugeordnet werden.
+Beim [Device Provisioning Service](#device-provisioning-service) bestimmt die Zuordnungsrichtlinie, wie [Geräte](#device) vom Dienst einem [verknüpften IoT-Hub](#linked-iot-hub) zugewiesen werden.
+
+Gilt für: Device Provisioning Service
 
 ### <a name="attestation-mechanism"></a>Nachweismechanismus
 
-Im [Device Provisioning Service](#device-provisioning-service) handelt es sich beim Nachweismechanismus um die Methode, die zur Bestätigung der Identität eines Geräts verwendet wird. Der Nachweismechanismus wird für eine [Registrierung](#enrollment) konfiguriert.
+Bei [Device Provisioning Service](#device-provisioning-service) handelt es sich beim Nachweismechanismus um die Methode, die zur Bestätigung der Identität eines [Geräts](#device) verwendet wird. Der Nachweismechanismus wird für eine [Registrierung](#enrollment) konfiguriert.
 
-Nachweismechanismen sind X.509-Zertifikate, Trusted Platform Modules und symmetrische Schlüssel.
+Nachweismechanismen sind X.509-Zertifikate, Trusted Platform [Modules](#module) und symmetrische Schlüssel.
+
+Gilt für: Device Provisioning Service
 
 ### <a name="automatic-deployment"></a>Automatische Bereitstellung
 
-Bei IoT Edge wird mithilfe einer automatischen Bereitstellung eine Zielgruppe von IoT Edge-Geräten für die Ausführung einer Gruppe von IoT Edge-Modulen konfiguriert. Jede Bereitstellung stellt kontinuierlich sicher, dass alle Geräte, die der Zielbedingung entsprechen, die angegebene Gruppe von Modulen ausführen. Das gilt auch, wenn neue Geräte erstellt oder geändert werden, um der Zielbedingung zu entsprechen. Jedes IoT Edge-Gerät erhält nur die Bereitstellung mit der höchsten Priorität, deren Zielbedingung es erfüllt. Erfahren Sie mehr zur [automatischen IoT Edge-Bereitstellung](../iot-edge/module-deployment-monitoring.md).
+Ein Feature von [IoT Edge](#iot-edge) zur Konfiguration einer Zielgruppe von [IoT Edge-Geräten](#iot-edge-device) für die Ausführung mehrerer IoT Edge-[Module](#module). Jede Bereitstellung stellt kontinuierlich sicher, dass alle [Geräte](#device), die der [Zielbedingung](#target-condition) entsprechen, die angegebene Gruppe von Modulen ausführen. Das gilt auch, wenn neue Geräte erstellt oder geändert werden, um der Zielbedingung zu entsprechen. Jedes IoT Edge-Gerät erhält nur die Bereitstellung mit der höchsten Priorität, deren Zielbedingung es erfüllt.
+
+[Weitere Informationen](../iot-edge/module-deployment-monitoring.md)
+
+Gilt für: IoT Edge
 
 ### <a name="automatic-device-configuration"></a>Automatische Gerätekonfiguration
 
-Ihr Lösungs-Back-End kann [automatische Gerätekonfigurationen](../iot-hub/iot-hub-automatic-device-management.md) verwenden, um einer Gruppe von [Gerätezwillingen](#device-twin) gewünschte Eigenschaften zuzuweisen und den Status anhand von Systemmetriken und benutzerdefinierten Metriken zu melden.
+Ein Feature von [IoT Hub](#iot-hub), mit dem Ihr [Lösungs](#solution)-Back-End einer Gruppe von [Gerätezwillingen](#device-twin) die [gewünschten Eigenschaften](#desired-properties) zuzuweisen und den [Gerätestatus](#device) anhand von Systemmetriken und benutzerdefinierten Metriken melden kann.
+
+[Weitere Informationen](../iot-hub/iot-hub-automatic-device-management.md)
+
+Gilt für: IoT Hub
 
 ### <a name="automatic-device-management"></a>Automatische Geräteverwaltung
 
-Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands über den gesamten Lebenszyklus. Mit der automatischen Geräteverwaltung können Sie eine Gruppe von Geräten auf der Grundlage ihrer Eigenschaften als Ziel festlegen, eine gewünschte Konfiguration definieren und IoT Hub die Geräte aktualisieren lassen, sobald sie in den entsprechenden Bereich fallen.  Umfasst [automatische Gerätekonfigurationen](../iot-hub/iot-hub-automatic-device-management.md) und [automatische IoT Edge-Bereitstellungen](../iot-edge/how-to-deploy-at-scale.md).
+Ein Feature von [IoT Hub](#iot-hub) zur Automatisierung vieler der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen [Gerätebestands](#device) über den gesamten Lebenszyklus. Mit diesem Feature können Sie mehrere Geräten auf der Grundlage ihrer [Eigenschaften](#properties) als Ziel festlegen, eine [gewünschte Konfiguration](#desired-configuration) definieren und IoT Hub die Geräte aktualisieren lassen, sobald sie in den entsprechenden Bereich fallen.
+
+Umfasst [automatische Gerätekonfigurationen](../iot-hub/iot-hub-automatic-device-management.md) und [automatische IoT Edge-Bereitstellungen](../iot-edge/how-to-deploy-at-scale.md).
+
+Gilt für: IoT Hub
+
+### <a name="azure-certified-device-program"></a>Azure Certified Device-Programm
+
+[Azure Certified Device](#device) ist ein kostenloses Programm, mit dem Sie Ihre IoT-Geräte, die für die Ausführung in Azure erstellt wurden, hervorheben, zertifizieren und bewerben können.
+
+[Weitere Informationen](../certification/overview.md)
+
+Gilt für: IoT Hub, IoT Central
 
 ### <a name="azure-digital-twins"></a>Azure Digital Twins
 
-Azure Digital Twins ist ein PaaS-Angebot (Platform as a Service) für die Erstellung digitaler Darstellungen von realen Gegenständen, Orten, Geschäftsprozessen und Personen. Erstellen Sie Zwillingsgraphen, die ganze Umgebungen darstellen, und gewinnen Sie daraus Erkenntnisse, um Produkte zu verbessern, Vorgänge und Kosten zu optimieren und bahnbrechende Kundenerfahrungen zu kreieren. Weitere Informationen finden Sie unter [Azure Digital Twins](../digital-twins/index.yml).
+Ein PaaS-Angebot (Platform as a Service) für die Erstellung digitaler Darstellungen von realen Gegenständen, Orten, Geschäftsprozessen und Personen. Erstellen Sie Zwillingsgraphen, die ganze Umgebungen darstellen, und gewinnen Sie daraus Erkenntnisse, um Produkte zu verbessern, Vorgänge und Kosten zu optimieren und bahnbrechende Kundenerfahrungen zu kreieren.
+
+[Weitere Informationen](../digital-twins/overview.md)
+
+Gilt für: Digital Twins
 
 ### <a name="azure-digital-twins-instance"></a>Azure Digital Twins-Instanz
 
-Eine einzelne Instanz des Azure Digital Twins-Dienstanbieter im Abonnement eines Kunden. [Azure Digital Twins](#azure-digital-twins) bezieht sich auf den Azure-Dienst als Ganzes, wohingegen Ihre Azure Digital Twins-**Instanz** Ihre persönliche Azure Digital Twins-Ressource darstellt.
+Eine einzelne Instanz des [Azure Digital Twins](#azure-digital-twins)-Diensts im Abonnement eines Kunden. [Azure Digital Twins](#digital-twin) bezieht sich auf den Azure-Dienst als Ganzes, während Ihre Azure Digital Twins-*Instanz* Ihre persönliche Azure Digital Twins-Ressource darstellt.
 
-### <a name="azure-iot-device-sdks"></a>Azure IoT-Geräte-SDKs
-
-Es sind _Geräte-SDKs_ für mehrere Sprachen verfügbar, mit denen Sie [Geräte-Apps](#device-app) erstellen können, die mit IoT Hub interagieren. In den IoT Hub-Tutorials wird veranschaulicht, wie Sie diese Geräte-SDKs verwenden. Den Quellcode und weitere Informationen zu den Geräte-SDKs finden Sie in [diesem GitHub-Repository](https://github.com/Azure/azure-iot-sdks).
+Gilt für: Digital Twins
 
 ### <a name="azure-iot-explorer"></a>Azure IoT-Explorer
 
-Mit dem [Azure IoT-Explorer](https://github.com/Azure/azure-iot-explorer) können Sie die Telemetriedaten anzeigen, die das Gerät sendet, Geräteeigenschaften einrichten und Befehle aufrufen. Außerdem können Sie den Explorer zur Interaktion mit Ihren Geräten, zum Testen Ihrer Geräte und zur Verwaltung von [IoT Plug & Play-Geräten](#iot-plug-and-play-device) verwenden.
+Sie können mit diesem Tool die [Telemetriedaten](#telemetry) anzeigen, die das [Gerät](#device) sendet, [Geräteeigenschaften](#properties) bearbeiten und [Befehle](#command) aufrufen. Außerdem können Sie den Explorer zur Interaktion mit Ihren Geräten, zum Testen Ihrer Geräte und zur Verwaltung von [IoT Plug & Play-Geräten](#iot-plug-and-play-device) verwenden.
 
-### <a name="azure-iot-service-sdks"></a>Azure IoT-Dienst-SDKs
+[Weitere Informationen](https://github.com/Azure/azure-iot-explorer)
 
-Es sind _Dienst-SDKs_ für mehrere Sprachen verfügbar, mit denen Sie [Back-End-Apps](#back-end-app) erstellen können, die mit IoT Hub interagieren. In den IoT Hub-Tutorials wird veranschaulicht, wie Sie diese Dienst-SDKs verwenden. Den Quellcode und weitere Informationen zu den Dienst-SDKs finden Sie in [diesem GitHub-Repository](https://github.com/Azure/azure-iot-sdks).
+Gilt für: IoT Hub, Geräteentwickler
 
 ### <a name="azure-iot-tools"></a>Azure IoT-Tools
 
-Die [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) sind eine plattformübergreifende, Open-Source-Erweiterung für Visual Studio Code, die Sie bei der Verwaltung von Azure IoT Hub und Geräten in VS Code unterstützt. Mit Azure IoT-Tools können IoT-Entwicklern ganz einfach IoT-Projekte in Visual Studio Code entwickeln.
+Eine plattformübergreifende Open-Source-Erweiterung für Visual Studio Code, die Sie bei der Verwaltung von [Azure IoT Hub](#iot-hub) und [Geräten](#device) in VS Code unterstützt. Mit Azure IoT Tools können IoT-Entwickler ganz einfach IoT-Projekte in VS Code entwickeln.
+
+Gilt für: Iot Hub, IoT Edge, IoT Central, Geräteentwickler
+
+### <a name="azure-iot-device-sdks"></a>Azure IoT-Geräte-SDKs
+
+Diese SDKs sind für mehrere Programmiersprachen verfügbar und ermöglichen das Erstellen von [Geräte-Apps](#device-app), die mit einem [IoT-Hub](#iot-hub) oder einer IoT Central-Anwendung interagieren.
+
+[Weitere Informationen](../iot-develop/about-iot-sdks.md)
+
+Gilt für: IoT Hub, IoT Central, Geräteentwickler
+
+### <a name="azure-iot-service-sdks"></a>Azure IoT-Dienst-SDKs
+
+Diese SDKs sind für mehrere Programmiersprachen verfügbar und ermöglichen das Erstellen von [Back-End-Apps](#back-end-app), die mit einem [IoT-Hub](#iot-hub) interagieren.
+
+[Weitere Informationen](/azure/iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)
+
+Gilt für: IoT Hub
 
 ## <a name="b"></a>B
 
 ### <a name="back-end-app"></a>Back-End-App
 
-Im Kontext von [IoT Hub](#iot-hub) ist eine Back-End-App eine App, mit der eine Verbindung mit einem der dienstseitigen Endpunkte von IoT Hub hergestellt wird. Mit einer Back-End-App werden beispielsweise [Gerät-zu-Cloud](#device-to-cloud)-Nachrichten (D2C-Nachrichten) abgerufen, oder sie wird zum Verwalten der [Identitätsregistrierung](#identity-registry) eingesetzt. Eine Back-End-App wird normalerweise in der Cloud ausgeführt, aber in vielen Tutorials handelt es sich bei den Back-End-Apps um Konsolen-Apps, die auf dem lokalen Entwicklungscomputer ausgeführt werden.
+Im Kontext von [IoT Hub](#iot-hub) ist dies eine App, mit der eine Verbindung mit einem der dienstseitigen [Endpunkte](#endpoint) eines IoT-Hubs hergestellt wird. Mit einer Back-End-App werden beispielsweise [Gerät-zu-Cloud](#device-to-cloud)-Nachrichten (D2C-Nachrichten) abgerufen, oder sie wird zum Verwalten der [Identitätsregistrierung](#identity-registry) eingesetzt. Eine Back-End-App wird normalerweise in der Cloud ausgeführt, aber in vielen Tutorials handelt es sich bei den Back-End-Apps zur Vereinfachung um Konsolen-Apps, die auf dem lokalen Entwicklungscomputer ausgeführt werden.
+
+Gilt für: IoT Hub
 
 ### <a name="built-in-endpoints"></a>Integrierte Endpunkte
 
-Ein Typ von [Endpunkt](#endpoint), der in IoT Hub integriert ist. Jeder IoT Hub umfasst einen mit Event Hub kompatiblen [Endpunkt](../iot-hub/iot-hub-devguide-endpoints.md). Sie können einen beliebigen für Event Hubs geeigneten Mechanismus zum Lesen von D2C-Nachrichten von diesem Endpunkt verwenden.
+[Endpunkte](#endpoint), die in [IoT Hub](#iot-hub) integriert sind. Jeder IoT-Hub umfasst z. B. einen mit Event Hubs kompatiblen integrierten Endpunkt.
+
+Gilt für: IoT Hub
 
 ## <a name="c"></a>C
 
 ### <a name="cloud-gateway"></a>Cloudgateway
 
-Mit einem Cloudgateway können Verbindungen für Geräte hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Ein Cloudgateway wird in der Cloud gehostet, während ein [Bereichsgateway](#field-gateway) lokal auf Ihren Geräten ausgeführt wird. Ein typischer Anwendungsfall für ein Cloudgateway ist die Implementierung der Protokollübersetzung für Ihre Geräte.
+Eine in der Cloud gehostete App, mit der Verbindungen für [Geräte](#device) hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) oder IoT Central nicht möglich ist. Ein [Cloudgateway](#gateway) wird in der Cloud gehostet, während ein [Bereichsgateway](#field-gateway) lokal auf Ihren Geräten ausgeführt wird. Ein typischer Anwendungsfall für ein Cloudgateway ist die Implementierung der Protokollübersetzung für Ihre Geräte.
+
+Gilt für: IoT Hub, IoT Central
 
 ### <a name="cloud-property"></a>Cloudeigenschaft
 
-In IoT Central sind Cloudeigenschaften Teil der [Gerätevorlage](#device-model), aber nicht des [Gerätemodells](#device-model). Mit Cloudeigenschaften kann der Lösungsentwickler Gerätemetadaten angeben, die in der IoT Central-Anwendung gespeichert werden sollen. Cloudeigenschaften haben keinen Einfluss auf den Code, den ein Geräteentwickler zum Implementieren des Gerätemodells schreibt.
+Ein Feature in IoT Central, mit dem Sie Metadaten von [Geräten](#device) in der IoT Central-Anwendung speichern können. [Cloudeigenschaften](#properties) sind in der [Gerätevorlage](#device-template) definiert, aber sie sind nicht Teil des [Gerätemodells](#device-model). Cloudeigenschaften werden nie mit einem Gerät synchronisiert.
+
+Gilt für: IoT Central
 
 ### <a name="cloud-to-device"></a>Cloud-zu-Gerät (C2D)
 
-Bezieht sich auf Nachrichten, die von IoT Hub an ein verbundenes Gerät gesendet werden. Diese Nachrichten sind häufig Befehle, mit denen das Gerät angewiesen wird, eine Aktion auszuführen. Weitere Informationen finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](../iot-hub/iot-hub-devguide-messaging.md).
+Nachrichten, die von einem [IoT-Hub](#iot-hub) an ein verbundenes [Gerät](#device) gesendet werden. Diese Nachrichten sind häufig [Befehle](#command), mit denen das Gerät angewiesen wird, eine Aktion auszuführen.
 
-### <a name="commands"></a>Befehle
+Gilt für: IoT Hub
 
-In IoT Plug & Play stellen die in einer [Schnittstelle](#interface) definierten Befehle Methoden dar, die auf dem [digitalen Zwilling](#digital-twin) ausgeführt werden können. Dies kann beispielsweise ein Befehl zum Neustart eines Geräts sein.
+### <a name="command"></a>Befehl
+
+In IoT Plug & Play stellen die in einer [Schnittstelle](#interface) definierten Befehle Methoden dar, die auf dem [digitalen Zwilling](#digital-twin) ausgeführt werden können. Dies kann beispielsweise ein Befehl zum Neustart eines [Geräts](#device) sein. In IoT Central werden Befehle in der [Gerätevorlage](#device-template) definiert.
+
+Gilt für: IoT Hub, IoT Central, Geräteentwickler
 
 ### <a name="component"></a>Komponente
 
-In IoT Plug & Play und Azure Digital Twins können Sie die [Schnittstelle](#interface) eines Modells als Assembly aus anderen Schnittstellen erstellen. Ein [Gerätemodell](#device-model) kann mehrere Schnittstellen als Komponenten kombinieren. Ein Modell könnte beispielsweise eine Schalterkomponente und eine Thermostatkomponente enthalten. Mehrere Komponenten in einem Modell können auch denselben Schnittstellentyp verwenden. Beispielsweise könnte ein Modell zwei Thermostatkomponenten enthalten.
+In IoT Plug & Play und [Azure Digital Twins](#azure-digital-twins) können Sie die [Schnittstelle](#interface) eines [Modells](#model) als Assembly aus anderen Schnittstellen erstellen. Ein [Gerätemodell](#device-model) kann mehrere Schnittstellen als Komponenten kombinieren. Ein Modell könnte beispielsweise eine Schalterkomponente und eine Thermostatkomponente enthalten. Mehrere Komponenten in einem Modell können auch denselben Schnittstellentyp verwenden. Beispielsweise könnte ein Modell zwei Thermostatkomponenten enthalten.
+
+Gilt für: IoT Hub, Digital Twins, Geräteentwickler
 
 ### <a name="configuration"></a>Konfiguration
 
-Im Kontext der [automatischen Gerätekonfiguration](../iot-hub/iot-hub-automatic-device-management.md) definiert eine Konfiguration in IoT Hub die gewünschte Konfiguration für eine Gruppe von Gerätezwillingen und bietet einen Satz von Metriken zum Melden von Status und Fortschritt.
+Im Kontext der [automatischen Gerätekonfiguration](#automatic-device-configuration) definiert in [IoT Hub](#iot-hub) definiert dies die [gewünschte Konfiguration](#desired-configuration) für eine Gruppe von [Gerätezwillingen](#device) und bietet einen Satz von Metriken zum Melden von Status und Fortschritt.
+
+Gilt für: IoT Hub
 
 ### <a name="connection-string"></a>Verbindungszeichenfolge
 
-Sie können Verbindungszeichenfolgen in Ihrem App-Code verwenden, um die Informationen zu kapseln, die zum Herstellen der Verbindung mit einem Endpunkt erforderlich sind. Eine Verbindungszeichenfolge enthält üblicherweise die Adresse des Endpunkts und Sicherheitsinformationen, aber das Format der Verbindungszeichenfolge variiert für die verschiedenen Dienste. Im Zusammenhang mit dem IoT Hub-Dienst gibt es zwei Arten von Verbindungszeichenfolgen:
+Wird im App-Code verwendet, um die Informationen zu kapseln, die zum Herstellen der Verbindung mit einem [Endpunkt](#endpoint) erforderlich sind. Eine Verbindungszeichenfolge enthält üblicherweise die Adresse des Endpunkts und Sicherheitsinformationen, aber das Format der Verbindungszeichenfolge variiert für die verschiedenen Dienste. Im Zusammenhang mit dem [IoT Hub](#iot-hub)-Dienst gibt es zwei Arten von Verbindungszeichenfolgen:
 
-- *Geräteverbindungszeichenfolgen:* Ermöglichen es Geräten, eine Verbindung mit den geräteseitigen Endpunkten einer IoT Hub-Instanz herzustellen.
+- *Geräteverbindungszeichenfolgen* ermöglichen es [Geräten](#device), eine Verbindung mit den geräteseitigen Endpunkten eines IoT-Hubs herzustellen.
+- *IoT Hub-Verbindungszeichenfolgen* ermöglichen es [Back-End-Apps](#back-end-app), eine Verbindung mit den dienstseitigen Endpunkten eines IoT-Hubs herzustellen.
 
-- *IoT Hub-Verbindungszeichenfolgen:* Ermöglichen es Back-End-Apps, eine Verbindung mit den dienstseitigen Endpunkten einer IoT Hub-Instanz herzustellen.
+Gilt für: IoT Hub, Geräteentwickler
 
 ### <a name="custom-endpoints"></a>Benutzerdefinierte Endpunkte
 
-Sie können benutzerdefinierte [Endpunkte](../iot-hub/iot-hub-devguide-endpoints.md) auf einen IoT Hub erstellen, um von einer [Routingregel](#routing-rules) versendete Nachrichten weiterzuleiten. Benutzerdefinierte Endpunkte stellen eine direkte Verbindung mit einem Event Hub, einer Service Bus-Warteschlange oder einem Service Bus-Thema her.
+Benutzerdefinierte [Endpunkte](#endpoint) auf einem [IoT-Hub](#routing-rule) zur Weiterleitung der von einer [Routingregel](#iot-hub) gesendeten Nachrichten. Diese Endpunkte stellen eine direkte Verbindung mit einem Event Hub, einer Service Bus-Warteschlange oder einem Service Bus-Thema her.
+
+Gilt für: IoT Hub
 
 ### <a name="custom-gateway"></a>Benutzerdefiniertes Gateway
 
-Mit einem Gateway können Verbindungen für Geräte hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Sie können Azure IoT Edge zum Erstellen von benutzerdefinierten Gateways verwenden, bei denen benutzerdefinierte Logik implementiert wird, um Nachrichten und benutzerdefinierte Protokollkonvertierungen zu verarbeiten und andere Edge-Verarbeitungsvorgänge durchzuführen.
+Ermöglicht Konnektivität für [Geräte](#device), für die eine direkte Verbindung mit [IoT Hub](#iot-hub) oder IoT Central nicht möglich ist. Sie können [Azure IoT Edge](#iot-edge) zum Erstellen von benutzerdefinierten [Gateways](#gateway) verwenden, bei denen benutzerdefinierte Logik implementiert wird, um Nachrichten und benutzerdefinierte Protokollkonvertierungen zu verarbeiten und andere Verarbeitungsvorgänge durchzuführen.
+
+Gilt für: IoT Hub, IoT Central
 
 ## <a name="d"></a>D
 
-### <a name="data-point-message"></a>Datenpunktnachricht
-
-Eine Datenpunktnachricht ist eine [D2C-Nachricht](#device-to-cloud), die [Telemetriedaten](#telemetry) wie Windgeschwindigkeit oder Temperatur enthält.
-
 ### <a name="default-component"></a>Standardkomponente
 
-In IoT Plug & Play weisen alle [Gerätemodelle](#device-model) eine Standardkomponente auf. Ein einfaches Gerätemodell verfügt nur über eine Standardkomponente. Ein solches Modell wird auch als Gerät ohne Komponente bezeichnet. Bei einem komplexeren Modell sind mehrere Komponenten unterhalb der Standardkomponente geschachtelt.
+Alle [Modelle](#model) für [IoT Plug & Play-Geräte](#iot-plug-and-play-device) weisen eine [Standardkomponente](#component) auf. Ein einfaches [Gerätemodell](#device-model) verfügt nur über eine Standardkomponente. Ein solches Modell wird auch als [Gerät](#device) ohne Komponente bezeichnet. Bei einem komplexeren Modell sind mehrere Komponenten unterhalb der Standardkomponente geschachtelt.
+
+Gilt für: IoT Hub, IoT Central, Geräteentwickler
 
 ### <a name="deployment-manifest"></a>Bereitstellungsmanifest
 
-Bei [IoT Edge](#iot-edge) bezeichnet das Bereitstellungsmanifest ein JSON-Dokument mit Informationen, die in mindestens einen Modulzwilling von IoT Edge-Geräten kopiert werden, um eine Gruppe von Modulen, Routen und zugeordneten gewünschten Moduleigenschaften bereitzustellen.
+Ein JSON-Dokument in [IoT Edge](#iot-edge), das die [Konfigurationsdaten](#configuration) für einen oder mehrere [Modulzwillinge](#module-twin) eines [IoT Edge-Geräts](#iot-edge-device) enthält.
+
+Gilt für: IoT Edge, IoT Central
 
 ### <a name="desired-configuration"></a>Gewünschte Konfiguration
 
-Im Kontext eines [Gerätezwillings](../iot-hub/iot-hub-devguide-device-twins.md) bezieht sich die gewünschte Konfiguration auf den vollständigen Satz von Eigenschaften und Metadaten im Gerätezwilling, die mit dem Gerät synchronisiert werden sollen.
+Im Kontext eines [Gerätezwillings](#device-twin) bezieht sich die gewünschte [Konfiguration](#configuration) auf den vollständigen Satz von [Eigenschaften](#properties) und Metadaten im Gerätezwilling, die mit dem [Gerät](#device) synchronisiert werden sollen.
+
+Gilt für: IoT Hub
 
 ### <a name="desired-properties"></a>Gewünschte Eigenschaften
 
-Im Kontext eines [Gerätezwillings](../iot-hub/iot-hub-devguide-device-twins.md) handelt es sich bei gewünschten Eigenschaften um einen Unterabschnitt, der zusammen mit [gemeldeten Eigenschaften](#reported-properties) verwendet wird, um die Gerätekonfiguration oder den Gerätezustand zu synchronisieren. Gewünschte Eigenschaften können nur von einer [Back-End-App](#back-end-app) festgelegt werden und werden von der [Geräte-App](#device-app) erkannt.
+Im Kontext eines [Gerätezwillings](#device-twin) handelt es sich bei gewünschten [Eigenschaften](#properties) um einen Unterabschnitt, der zusammen mit [gemeldeten Eigenschaften](#reported-properties) verwendet wird, um die [Konfiguration](#configuration) oder den Zustand des [Geräts](#device) zu synchronisieren. Gewünschte Eigenschaften können nur von einer [Back-End-App](#back-end-app) festgelegt werden und werden von der [Geräte-App](#device-app) erkannt. In IoT Central wird der Begriff „schreibbare Eigenschaften“ verwendet.
+
+Gilt für: IoT Hub
 
 ### <a name="device"></a>Sicherungsmedium
 
-Im Kontext von IoT ist ein Gerät in der Regel eine kleines, eigenständiges Datenverarbeitungsgerät, das Daten sammeln oder andere Geräte steuern kann. Ein Gerät kann beispielsweise ein Umweltüberwachungsgerät oder ein Regler für Bewässerungs- und Lüftungsanlagen in einem Gewächshaus sein. Der [Gerätekatalog](https://catalog.azureiotsolutions.com/) enthält eine Liste mit Hardwaregeräten, die für die Verwendung mit [IoT Hub](#iot-hub) zertifiziert sind.
+Im Kontext von IoT ist ein Gerät in der Regel eine kleines, eigenständiges Datenverarbeitungsgerät, das Daten sammeln oder andere Geräte steuern kann. Ein Gerät kann beispielsweise ein Umweltüberwachungsgerät oder ein Regler für Bewässerungs- und Lüftungsanlagen in einem Gewächshaus sein. Der Gerätekatalog enthält eine Liste der zertifizierten Geräte.
 
-### <a name="device-app"></a>Geräte-App
-
-Eine Geräte-App wird auf Ihrem [Gerät](#device) ausgeführt und führt die Kommunikation mit [IoT Hub](#iot-hub) durch. Normalerweise nutzen Sie eines der [Azure IoT-Geräte-SDKs](#azure-iot-device-sdks), wenn Sie eine Geräte-App implementieren. In vielen IoT-Tutorials verwenden Sie der Einfachheit halber ein [simuliertes Gerät](#simulated-device).
-
-### <a name="device-builder"></a>Geräteentwickler
-
-Ein Geräteentwickler verwendet ein [Gerätemodell](#device-model) und [Schnittstellen](#interface) beim Implementieren von Code zur Ausführung auf einem [IoT Plug & Play-Gerät](#iot-plug-and-play-device). Geräteentwickler verwenden normalerweise eines der [Azure IoT-Geräte-SDKs](#azure-iot-device-sdks) zum Implementieren des Geräteclients.
-
-### <a name="device-certification"></a>Gerätezertifizierung
-
-Mit dem IoT Plug & Play-Gerätezertifizierungsprogramm wird überprüft, ob ein Gerät die IoT Plug & Play-Zertifizierungsanforderungen erfüllt. Sie können ein zertifiziertes Gerät zum öffentlichen [Katalog mit Certified for Azure IoT-Geräten](https://aka.ms/devicecatalog) hinzufügen.
-
-### <a name="device-condition"></a>Gerätezustand
-
-Bezieht sich auf Informationen zum Gerätezustand, z.B. die derzeit verwendete Verbindungsmethode, die von einer [Geräte-App](#device-app) gemeldet wird. [Geräte-Apps](#device-app) können auch ihre Funktionen melden. Sie können Informationen zum Zustand und zu den Funktionen abfragen, indem Sie Gerätezwillinge verwenden.
-
-### <a name="device-data"></a>Gerätedaten
-
-Gerätedaten sind Daten, die pro Gerät in der IoT Hub-[Identitätsregistrierung](#identity-registry) gespeichert werden. Es ist möglich, diese Daten zu importieren und zu exportieren.
-
-### <a name="device-identity"></a>Geräteidentität
-
-Die Geräteidentität (oder Geräte-ID) ist der eindeutige Bezeichner, der jedem Gerät zugewiesen wird, das in der IoT Hub-[Identitätsregistrierung](#identity-registry) registriert ist.
-
-### <a name="device-management"></a>Geräteverwaltung
-
-Die Geräteverwaltung umfasst den vollständigen Lebenszyklus, der der Verwaltung der Geräte in Ihrer IoT-Lösung zugeordnet ist, z.B. Planen, Bereitstellen, Konfigurieren, Überwachen und Ausmustern.
-
-### <a name="device-management-patterns"></a>Geräteverwaltungsmuster
-
-[IoT Hub](#iot-hub) ermöglicht allgemeine Schritte zur Geräteverwaltung, z.B. Neustart, Zurücksetzung auf die Werkseinstellungen und Durchführung von Firmwareupdates auf Ihren Geräten.
-
-### <a name="device-model"></a>Gerätemodell
-
-Ein Gerätemodell ist ein Typ von [Modell](#model), bei dem die [Digital Twins Definition Language](#digital-twins-definition-language-dtdl) zum Beschreiben der Funktionen eines IoT Plug & Play-Geräts verwendet wird. Ein einfaches Gerätemodell verwendet eine einzelne Schnittstelle, um die Gerätefunktionen zu beschreiben. Ein komplexeres Gerätemodell umfasst mehrere Komponenten, die jeweils eine Reihe von Funktionen beschreiben. Weitere Informationen finden Sie unter [IoT Plug & Play-Komponenten in Modellen](../iot-develop/concepts-modeling-guide.md).
-
-### <a name="device-modeling"></a>Gerätemodellierung
-
-Ein [Geräteentwickler](#device-builder) oder [Modulentwickler](#module-builder) verwendet die [Digital Twins Definition Language](#digital-twins-definition-language-dtdl) zum Modellieren der Funktionen eines [IoT Plug & Play-Geräts](#iot-plug-and-play-device). Ein [Lösungsentwickler](#solution-builder) kann eine IoT-Lösung aus dem Modell konfigurieren.
-
-### <a name="device-provisioning"></a>Gerätebereitstellung
-
-Die Gerätebereitstellung ist der Prozess des Hinzufügens der ersten [Gerätedaten](#device-data) zu den Speichern in Ihrer Lösung. Damit ein neues Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie der IoT Hub-[Identitätsregistrierung](#identity-registry) eine neue Geräte-ID und Schlüssel hinzufügen. Im Rahmen des Bereitstellungsprozesses müssen Sie unter Umständen gerätespezifische Daten in anderen Lösungsspeichern initialisieren.
+Gilt für: IoT Hub, IoT Central, IoT Edge, Device Provisioning Service, Geräteentwickler
 
 ### <a name="device-provisioning-service"></a>Device Provisioning Service
 
-Der IoT Hub Device Provisioning Service (DPS) ist ein Hilfsdienst für [IoT Hub](#iot-hub), mit dem Sie Geräte ohne Benutzereingriff auf einem angegebenen IoT Hub konfigurieren können. Mit DPS können Sie Millionen von Geräten auf sichere und skalierbare Weise bereitstellen.
+Ein Hilfsdienst für [IoT Hub](#iot-hub) und IoT Central für die [Gerätebereitstellung](#device-provisioning) ohne manuelles Eingreifen. Mit DPS können Sie Millionen von [Geräten](#device) auf sichere und skalierbare Weise bereitstellen.
+
+Gilt für: IoT Hub, Device Provisioning Service, IoT Central
 
 ### <a name="device-rest-api"></a>Geräte-REST-API
 
-Sie können die [Geräte-REST-API](/rest/api/iothub/device) auf einem Gerät nutzen, um D2C-Nachrichten an IoT Hub zu senden und [C2D-Nachrichten](#cloud-to-device) von IoT Hub zu empfangen. Es ist in der Regel ratsam, eines der allgemeinen [Geräte-SDKs](#azure-iot-device-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
+Eine REST-API für die Verwendung auf einem [Gerät](#device), um [D2C](#device-to-cloud)-Nachrichten an einen [IoT-Hub](#iot-hub) zu senden und [C2D](#cloud-to-device)-Nachrichten von einem IoT-Hub zu empfangen. In der Regel sollten Sie eines der übergeordneten [Azure IoT-Geräte-SDKs](#azure-iot-device-sdks) verwenden.
+
+[Weitere Informationen](/rest/api/iothub/device)
+
+Gilt für: IoT Hub
+
+### <a name="device-app"></a>Geräte-App
+
+Eine Geräte-App wird auf Ihrem [Gerät](#device) ausgeführt und führt die Kommunikation mit Ihrem [IoT-Hub](#iot-hub) oder Ihrer IoT Central-Anwendung durch. Normalerweise nutzen Sie eines der [Azure IoT-Geräte-SDKs](#azure-iot-device-sdks), wenn Sie eine Geräte-App implementieren.
+
+Gilt für: IoT Hub, IoT Central, Geräteentwickler
+
+### <a name="device-builder"></a>Geräteentwickler
+
+Die Person, die für die Erstellung des Codes verantwortlich ist, der auf Ihren [Geräten](#device) ausgeführt werden soll. Geräteentwickler verwenden normalerweise eines der [Azure IoT-Geräte-SDKs](#azure-iot-device-sdks) zum Implementieren des Geräteclients. Ein Geräteentwickler verwendet ein [Gerätemodell](#device-model) und [Schnittstellen](#interface) beim Implementieren von Code zur Ausführung auf einem [IoT Plug & Play-Gerät](#iot-plug-and-play-device).
+
+Gilt für: Iot Hub, IoT Central, IoT Edge, Geräteentwickler
+
+### <a name="device-identity"></a>Geräteidentität
+
+Ein eindeutiger Bezeichner, der jedem [Gerät](#device) zugewiesen wird, das in der [IoT Hub](#iot-hub)-[Identitätsregistrierung](#identity-registry) oder in einer IoT Central-Anwendung registriert ist.
+
+Gilt für: IoT Hub, IoT Central
+
+### <a name="device-management"></a>Geräteverwaltung
+
+Die Geräteverwaltung umfasst den vollständigen Lebenszyklus, der der Verwaltung der [Geräte](#device) in Ihrer IoT-[Lösung](#solution) zugeordnet ist, z. B. Planen, Bereitstellen, Konfigurieren, Überwachen und Ausmustern.
+
+Gilt für: IoT Hub, IoT Central
+
+### <a name="device-model"></a>Gerätemodell
+
+Eine Beschreibung der Funktionen eines [Geräts](#device) in der [Digital Twins Definition Language](#digital-twins-definition-language). Zu den Funktionen gehören [Telemetrie](#telemetry), [Eigenschaften](#properties) und [Befehle](#command).
+
+[Weitere Informationen](../iot-develop/concepts-modeling-guide.md)
+
+Gilt für: IoT Hub, IoT Central, Geräteentwickler, Digital Twins
+
+### <a name="device-provisioning"></a>Gerätebereitstellung
+
+Der Prozess des Hinzufügens der ersten [Gerätedaten](#device) in den Speichern in Ihrer [Lösung](#solution). Damit ein neues Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie der [IoT Hub](#iot-hub)-[Identitätsregistrierung](#identity-registry) eine neue Geräte-ID und Schlüssel hinzufügen. Der [Device Provisioning Service](#device-provisioning-service) kann Geräte automatisch in einem IoT-Hub oder einer IoT Central-Anwendung bereitstellen.
+
+Gilt für: IoT Hub, IoT Central, Device Provisioning Service
 
 ### <a name="device-template"></a>Gerätevorlage
 
-In IoT Central ist eine [Gerätevorlage](../iot-central/core/concepts-device-templates.md) eine Blaupause, die die Merkmale und das Verhalten eines Gerätetyps definiert, der eine Verbindung mit Ihrer Anwendung herstellt. Beispielsweise definiert die Gerätevorlage die Telemetrie, die ein Gerät sendet, sodass IoT Central Visualisierungen mit den richtigen Einheiten und Datentypen erstellen kann. Ein [Gerätemodell](#device-model) ist Teil der Gerätevorlage.
+In IoT Central ist eine [Gerätevorlage](#device) eine Blaupause, die die Merkmale und das Verhalten eines Gerätetyps definiert, der eine Verbindung mit Ihrer Anwendung herstellt.
+
+Beispielsweise definiert die Gerätevorlage die [Telemetriedaten](#telemetry), die ein Gerät sendet, sodass IoT Central Visualisierungen mit den richtigen Einheiten und Datentypen erstellen kann. Ein [Gerätemodell](#device-model) ist Teil der Gerätevorlage.
+
+Gilt für: IoT Central
 
 ### <a name="device-twin"></a>Gerätezwilling
 
-Ein Gerätezwilling ist ein JSON-Dokument, mit dem Informationen zum Gerätezustand gespeichert werden, z.B. Metadaten, Konfigurationen und Bedingungen. IoT Hub speichert einen Gerätezwilling für jedes Gerät, das Sie für IoT Hub bereitstellen. Mit Gerätezwillingen können Sie Gerätebedingungen und Konfigurationen zwischen dem Gerät und dem Lösungs-Back-End synchronisieren. Sie können Gerätezwillinge abfragen, um bestimmte Geräte sowie den Status von Vorgängen mit langer Ausführungsdauer zu ermitteln.
+Ein [Gerätezwilling](#device) ist ein JSON-Dokument, in dem Informationen zum Gerätezustand gespeichert werden, z. B. Metadaten, [Konfigurationen](#configuration) und Bedingungen. [IoT Hub](#iot-hub) speichert einen Gerätezwilling für jedes Gerät, das Sie für IoT Hub bereitstellen. Mit Gerätezwillingen können Sie Gerätebedingungen und Konfigurationen zwischen dem Gerät und dem [Lösungs](#solution)-Back-End synchronisieren. Sie können Gerätezwillinge abfragen, um bestimmte Geräte sowie den Status von Vorgängen mit langer Ausführungsdauer zu ermitteln.
+
+Gilt für: IoT Hub
 
 ### <a name="device-to-cloud"></a>Gerät-zu-Cloud (D2C)
 
-Bezieht sich auf Nachrichten, die von einem verbundenen Gerät an [IoT Hub](#iot-hub) gesendet werden. Bei diesen Nachrichten kann es sich um [datenpunktbezogene](#data-point-message) oder um [interaktive](#interactive-message) Nachrichten handeln. Weitere Informationen finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](../iot-hub/iot-hub-devguide-messaging.md).
+Bezieht sich auf Nachrichten, die von einem verbundenen [Gerät](#device) an [IoT Hub](#iot-hub) oder IoT Central gesendet werden.
+
+Gilt für: IoT Hub
+
+### <a name="digital-twins-definition-language"></a>Digital Twins Definition Language
+
+Eine JSON-LD-Sprache zum Beschreiben von [Modellen](#model) und [Schnittstellen](#interface) für [IoT Plug & Play-Geräte](#iot-plug-and-play-device) und [Azure Digital Twins](#azure-digital-twins)-Entitäten. Die Sprache ermöglicht es der IoT-Plattform und IoT-[Lösungen](#solution), die Semantik der Entität zu verwenden.
+
+[Weitere Informationen](https://github.com/Azure/opendigitaltwins-dtdl)
+
+Gilt für: IoT Hub, IoT Central, Digital Twins
 
 ### <a name="digital-twin"></a>Digitaler Zwilling
 
-Ein digitaler Zwilling ist eine Sammlung digitaler Daten, die ein physisches Objekt repräsentieren. Änderungen am physischen Objekt spiegeln sich im digitalen Zwilling wider. In einigen Szenarien können Sie den digitalen Zwilling verwenden, um das physische Objekt zu bearbeiten. Der [Azure Digital Twins-Dienst](../digital-twins/index.yml) verwendet [Modelle](#model), die in der [Digital Twins Definition Language (DTDL)](#digital-twins-definition-language-dtdl) formuliert werden, um digitale Zwillinge von physischen Geräten oder abstrakten Geschäftskonzepten darzustellen und so eine Vielzahl verschiedener cloudbasierter Lösungen für digitale Zwillinge zu ermöglichen. Ein [IoT Plug & Play](../iot-develop/index.yml)-Gerät besitzt einen digitalen Zwilling, der durch ein DTDL-[Gerätemodell](#device-model) beschrieben wird.
+Ein digitaler Zwilling ist eine Sammlung digitaler Daten, die ein physisches Objekt repräsentieren. Änderungen am physischen Objekt spiegeln sich im digitalen Zwilling wider. In einigen Szenarien können Sie den digitalen Zwilling verwenden, um das physische Objekt zu bearbeiten. Der [Azure Digital Twins-Dienst](../digital-twins/index.yml) verwendet [Modelle](#model), die in der [Digital Twins Definition Language](#digital-twins-definition-language) ausgedrückt werden, um digitale Zwillinge von [physischen Geräten](#physical-device) oder abstrakte Geschäftskonzepte darzustellen und so eine Vielzahl verschiedener cloudbasierter [Lösungen](#solution) für digitale Zwillinge zu ermöglichen. Ein [IoT Plug & Play](../iot-develop/index.yml)-[Gerät](#device) besitzt einen digitalen Zwilling, der durch ein DTDL-[Gerätemodell](#device-model) (Digital Twins Definition Language) beschrieben wird.
+
+Gilt für: IoT Hub, IoT Central, Digital Twins, Geräteentwickler
 
 ### <a name="digital-twin-change-events"></a>Änderungsereignisse bei digitalen Zwillingen
 
-Wenn ein [IoT Plug & Play-Gerät](#iot-plug-and-play-device) mit einem IoT-Hub verbunden wird, kann der Hub die Routingfunktionen des Geräts nutzen, um Benachrichtigungen zu Änderungen bei digitalen Zwillingen zu senden. Beispiel: Wenn sich ein [Eigenschaftswert](#properties) auf einem Gerät ändert, kann IoT Hub eine Benachrichtigung an einen Endpunkt wie z. B. einen Event Hub senden.
+Wenn ein [IoT Plug & Play-Gerät](#iot-plug-and-play-device) mit einem [IoT-Hub](#iot-hub) verbunden wird, kann der Hub die Routingfunktionen des Geräts nutzen, um Benachrichtigungen zu Änderungen bei [digitalen Zwillingen](#digital-twin) zu senden. Die Datenexportfunktion von IoT Central kann auch Änderungsereignisse von digitalen Zwillingen an andere Dienste weiterleiten. Beispiel: Wenn sich ein Eigenschaftswert auf einem [Gerät](#device) ändert, kann IoT Hub eine Benachrichtigung an einen [Endpunkt](#endpoint) wie z. B. einen Event Hub senden.
 
-### <a name="digital-twin-route"></a>Route für digitale Zwillinge
+Gilt für: IoT Hub, IoT Central
 
-Eine Route, die in einem IoT Hub eingerichtet wurde, um [Änderungsereignisse bei digitalen Zwillingen](#digital-twin-change-events) an einen Endpunkt wie einen Event Hub zu übermitteln.
+### <a name="digital-twin-graph"></a>Digital Twin-Graph
 
-### <a name="digital-twins-definition-language-dtdl"></a>Digital Twins Definition Language (DTDL)
+Beim [Azure Digital Twins](#azure-digital-twins)-Dienst können Sie [digitale Zwillinge](#digital-twin) mit [Beziehungen](#relationship) verbinden, um Wissensgraphen zu erstellen, die Ihre gesamte physische Umgebung digital darstellen. Eine einzelne [Azure Digital Twins-Instanz](#azure-digital-twins-instance) kann viele nicht verbundene Graphen oder einen einzelnen verbundenen Graphen hosten.
 
-Eine JSON-LD-Sprache zum Beschreiben von [Modellen](#model) und [Schnittstellen](#interface) für [IoT Plug & Play-Geräte](#iot-plug-and-play-device) und [Azure Digital Twins](../digital-twins/index.yml)-Entitäten. Verwenden Sie die [Digital Twins Definition Language, Version 2](https://github.com/Azure/opendigitaltwins-dtdl), um die Funktionen eines [digitalen Zwillings](#digital-twin) zu beschreiben und es der IoT-Plattform und den IoT-Lösungen zu ermöglichen, die Semantik der Entität zu nutzen. Digital Twins Definition Language wird oft als DTDL abgekürzt.
+Gilt für: IoT Hub
 
 ### <a name="direct-method"></a>Direkte Methode
 
-Eine [direkte Methode](../iot-hub/iot-hub-devguide-direct-methods.md) ist eine Möglichkeit zum Auslösen einer auf einem Gerät auszuführenden Methode, indem eine API auf Ihrem IoT Hub aufgerufen wird.
+Eine Möglichkeit zum Ausführen einer Methode auf einem [Gerät](#device), indem eine API auf Ihrem [IoT-Hub](#iot-hub) aufgerufen wird.
 
-### <a name="downstream-services"></a>Downstreamdienste
+Gilt für: IoT Hub
 
-Ein relativer Begriff für Dienste, die Daten aus dem aktuellen Kontext empfangen. Beispielsweise gelten [Time Series Insights](../time-series-insights/index.yml) im Kontext von Azure Digital Twins als Downstreamdienst, wenn Ihre Daten so konfiguriert sind, dass sie von Azure Digital Twins zu Time Series Insights fließen.
+### <a name="downstream-service"></a>Downstreamdienst
+
+Ein relativer Begriff für Dienste, die Daten aus dem aktuellen Kontext empfangen. Beispielsweise gelten Time Series Insights im Kontext von [Azure Digital Twins](#azure-digital-twins) als Downstreamdienst, wenn Ihre Daten so konfiguriert sind, dass sie von [Azure Digital Twins](#digital-twin) zu Time Series Insights fließen.
+
+Gilt für: IoT Hub, IoT Central, Digital Twins
 
 ## <a name="e"></a>E
 
@@ -242,352 +339,475 @@ Ein relativer Begriff für Dienste, die Daten aus dem aktuellen Kontext empfange
 
 Eine benannte Darstellung eines Datenroutingdiensts, der Daten von anderen Diensten empfangen kann.
 
-Ein IoT Hub macht mehrere [Endpunkte](../iot-hub/iot-hub-devguide-endpoints.md) verfügbar, mit deren Hilfe Ihre Apps eine Verbindung mit dem IoT Hub herstellen können. Es gibt geräteseitige Endpunkte, die Geräten das Durchführen von Vorgängen ermöglichen, z.B. das Senden von [D2C](#device-to-cloud)-Nachrichten und das Empfangen von [C2D](#cloud-to-device)-Nachrichten. Es gibt dienstseitige Verwaltungsendpunkte, die [Back-End-Apps](#back-end-app) das Durchführen von Vorgängen ermöglichen, z.B. die Verwaltung der [Geräteidentität](#device-identity) und von Gerätezwillingen. Es gibt dienstseitige [integrierte Endpunkte](#built-in-endpoints) zum Lesen von D2C-Nachrichten. Sie können [benutzerdefinierte Endpunkte](#custom-endpoints) erstellen, um von einer [Routingregel](#routing-rules) versendete D2C-Nachrichten zu empfangen.
+Ein [IoT-Hub](#iot-hub) macht mehrere Endpunkte verfügbar, mit deren Hilfe Ihre Apps eine Verbindung mit dem IoT-Hub herstellen können. Es gibt geräteseitige Endpunkte, die [Geräten](#device) das Durchführen von Vorgängen ermöglichen, z. B. das Senden von [D2C](#device-to-cloud)-Nachrichten. Es gibt dienstseitige Verwaltungsendpunkte, die [Back-End-Apps](#back-end-app) das Durchführen von Vorgängen ermöglichen, z. B. die Verwaltung der [Geräteidentität](#device-identity). Es gibt dienstseitige [integrierte Endpunkte](#built-in-endpoints) zum Lesen von D2C-Nachrichten. Sie können [benutzerdefinierte Endpunkte](#custom-endpoints) erstellen, um von einer [Routingregel](#routing-rule) versendete D2C-Nachrichten zu empfangen.
+
+Gilt für: IoT Hub
 
 ### <a name="enrollment"></a>Anmeldung
 
-Beim [Device Provisioning Service](#device-provisioning-service) ist die Registrierung der Eintrag einzelner Geräte oder Gerätegruppen, die über die automatische Bereitstellung bei einem [verknüpften IoT Hub](#linked-iot-hub) registriert werden können.
+Beim [Device Provisioning Service](#device-provisioning-service) ist die Registrierung der Eintrag einzelner [Geräte](#device) oder Gerätegruppen, die über die automatische Bereitstellung bei einem [verknüpften IoT-Hub](#linked-iot-hub) registriert werden können.
+
+Gilt für: IoT Hub, IoT Central, Device Provisioning Service
 
 ### <a name="enrollment-group"></a>Registrierungsgruppe
 
-Beim [Device Provisioning Service](#device-provisioning-service) wird mit einer Registrierungsgruppe eine Gruppe von Geräten bezeichnet, die gemeinsam einen [Nachweismechanismus](#attestation-mechanism) für X.509 oder einen symmetrischen Schlüssel verwenden.
+Beim [Device Provisioning Service](#device-provisioning-service) und bei IoT Central wird mit einer [Registrierungsgruppe](#enrollment) eine Gruppe von [Geräten](#device) bezeichnet, die gemeinsam einen [Nachweismechanismus](#attestation-mechanism) für X.509 oder einen symmetrischen Schlüssel verwenden.
 
-### <a name="event-handlers"></a>Ereignishandler
+Gilt für: IoT Hub, Device Provisioning Service, IoT Central
 
-Dies kann ein beliebiger Prozess sein, der bei Eintritt eines Ereignisses ausgelöst wird und eine bestimmte Verarbeitungsaktion ausführt. Eine Möglichkeit, Ereignishandler zu erstellen, besteht darin, einer Azure-Funktion Code zur Ereignisverarbeitung hinzuzufügen und Daten über [Endpunkte](#endpoint) und [Ereignisrouting](#event-routing) über diesen zu senden.
+### <a name="event-hubs-compatible-endpoint"></a>Event Hub-kompatibler Endpunkt
 
-### <a name="event-hub-compatible-endpoint"></a>Event Hub-kompatibler Endpunkt
+Ein [IoT Hub](#iot-hub)-[Endpunkt](#endpoint), mit dem das Event Hubs-kompatible Lesen von [Gerätenachrichten](#device) ermöglicht wird, die an den Hub gesendet werden. Event Hub-kompatible Methoden sind beispielsweise das Verwenden von [Event Hubs-SDKs](../event-hubs/event-hubs-programming-guide.md) und [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
 
-Zum Lesen von [D2C](#device-to-cloud)-Nachrichten, die an Ihren IoT Hub gesendet werden, können Sie sich mit einem Endpunkt auf Ihrem Hub verbinden und eine beliebige Event Hub-kompatible Methode zum Lesen dieser Nachrichten nutzen. Event Hub-kompatible Methoden sind beispielsweise das Verwenden von [Event Hubs SDKs](../event-hubs/event-hubs-programming-guide.md) und [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
+Gilt für: IoT Hub
+
+### <a name="event-handler"></a>Ereignishandler
+
+Ein Prozess, der durch das Eintreffen eines Ereignisses ausgelöst wird. Eine Möglichkeit, Ereignishandler zu erstellen, besteht darin, einer Azure-Funktion Code zur Ereignisverarbeitung hinzuzufügen und Daten über [Endpunkte](#endpoint) und [Ereignisrouting](#event-routing) über diesen zu senden.
+
+Gilt für: IoT Hub
 
 ### <a name="event-routing"></a>Ereignisrouting
 
-Der Prozess zum Senden von Ereignissen und zugehörigen Daten von einem Gerät oder Dienst zum [Endpunkt](#endpoint) eines anderen Geräts oder Diensts. 
+Der Prozess zum Senden von Ereignissen und zugehörigen Daten von einem [Gerät](#device) oder Dienst zum [Endpunkt](#endpoint) eines anderen Geräts oder Diensts.
 
-Bei IoT Hub können Sie [Routingregeln](#routing-rules) definieren, die beschreiben, wie Nachrichten gesendet werden sollen. Bei Azure Digital Twins sind Ereignisrouten Entitäten, die zu diesem Zweck erstellt wurden. Azure Digital Twins-Ereignisrouten können Filter enthalten, um die Typen von Ereignissen einzuschränken, die an den jeweiligen Endpunkt gesendet werden.
+Bei [IoT Hub](#iot-hub) können Sie [Routingregeln](#routing-rule) definieren, die beschreiben, wie Nachrichten gesendet werden sollen. Bei [Azure Digital Twins](#azure-digital-twins) sind Ereignisrouten Entitäten, die zu diesem Zweck erstellt wurden. [Azure Digital Twins](#digital-twin)-Ereignisrouten können Filter enthalten, um die Typen von Ereignissen einzuschränken, die an den jeweiligen Endpunkt gesendet werden.
+
+Gilt für: IoT Hub, Digital Twins
 
 ## <a name="f"></a>F
 
 ### <a name="field-gateway"></a>Bereichsgateway
 
-Ein Bereichsgateway ermöglicht Verbindungen für Geräte, die keine direkte Verbindung mit dem [IoT Hub](#iot-hub) herstellen können. Es wird meist lokal mit Ihren Geräten bereitgestellt. Weitere Informationen finden Sie unter [Was ist Azure IoT Hub?](../iot-hub/about-iot-hub.md).
+Ermöglicht Verbindungen für [Geräte](#device), die keine direkte Verbindung mit [IoT Hub](#iot-hub) herstellen können. Es wird meist lokal mit Ihren Geräten bereitgestellt.
+
+Gilt für: IoT Hub, IoT Central
 
 ## <a name="g"></a>G
 
 ### <a name="gateway"></a>Gateway
 
-Mit einem Gateway können Verbindungen für Geräte hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Siehe auch [Bereichsgateway](#field-gateway), [Cloudgateway](#cloud-gateway)und [Benutzerdefiniertes Gateway](#custom-gateway).
+Mit einem Gateway können Verbindungen für [Geräte](#device) hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Siehe auch [Bereichsgateway](#field-gateway), [Cloudgateway](#cloud-gateway) und [benutzerdefiniertes Gateway](#custom-gateway).
+
+Gilt für: IoT Hub, IoT Central
 
 ### <a name="gateway-device"></a>Gatewaygerät
 
-Ein Gerät ist ein Beispiel für ein [Bereichsgateway](#field-gateway). Ein Gatewaygerät kann ein Standard-IoT-[Gerät](#device) oder ein [IoT Edge-Gerät](#iot-edge-device) sein.
+Ein Beispiel für ein [Bereichsgateway](#field-gateway). Ein [Gatewaygerät](#gateway) kann ein Standard-IoT-[Gerät](#device) oder ein [IoT Edge-Gerät](#iot-edge-device) sein.
 
 Über ein Gatewaygerät können nachgeschaltete Geräte, die keine direkte Verbindung mit [IoT Hub](#iot-hub) herstellen können, Verbindungen herstellen.
+
+Gilt für: IoT Hub, IoT Central, IoT Edge
 
 ## <a name="h"></a>H
 
 ### <a name="hardware-security-module"></a>Hardwaresicherheitsmodul
 
-Ein Hardwaresicherheitsmodul (HSM) wird für die sichere, hardwarebasierte Speicherung von Gerätegeheimnissen verwendet. Dies ist die sicherste Form von geheimem Speicher für ein Gerät. In einem HSM können sowohl X.509-Zertifikate als auch symmetrische Schlüssel gespeichert werden. Beim [Device Provisioning Service](#device-provisioning-service) kann ein HSM für einen [Nachweismechanismus](#attestation-mechanism) verwendet werden.
+Wird für die sichere, hardwarebasierte Speicherung von [Gerätegeheimnissen](#device) verwendet. Dies ist die sicherste Form von geheimem Speicher für ein Gerät. Ein [Hardwaresicherheitsmodul](#module) kann sowohl X.509-Zertifikate als auch symmetrische Schlüssel speichern. Beim [Device Provisioning Service](#device-provisioning-service) kann ein Hardwaresicherheitsmodul (HSM) für einen [Nachweismechanismus](#attestation-mechanism) verwendet werden.
+
+Gilt für: IoT Hub, Geräteentwickler, Device Provisioning Service
 
 ## <a name="i"></a>I
 
 ### <a name="id-scope"></a>ID-Bereich
 
-Der ID-Bereich ist ein eindeutiger Wert, der einer [DPS-Instanz (Device Provisioning Service)](#device-provisioning-service) bei ihrer Erstellung zugewiesen wird.
+Ein eindeutiger Wert, der einer [DPS-Instanz (Device Provisioning Service)](#device-provisioning-service) bei ihrer Erstellung zugewiesen wird.
 
 IoT Central-Anwendungen nutzen DPS-Instanzen und machen den ID-Bereich über die IoT Central-Benutzeroberfläche verfügbar.
 
+Gilt für: IoT Hub, IoT Central, Device Provisioning Service
+
 ### <a name="identity-registry"></a>Identitätsregistrierung
 
-Die [Identitätsregistrierung](../iot-hub/iot-hub-devguide-identity-registry.md) ist die integrierte Komponente in IoT Hub, in der Informationen zu den einzelnen Geräten gespeichert werden, die sich mit einem IoT Hub verbinden dürfen.
+Eine integrierte [Komponente](#component) von [IoT-Hubs](#iot-hub), in der Informationen zu den einzelnen [Geräten](#device) gespeichert werden, die eine Verbindung mit dem Hub herstellen dürfen.
+
+Gilt für: IoT Hub
 
 ### <a name="individual-enrollment"></a>Individuelle Registrierung
 
-Beim [Device Provisioning Service](#device-provisioning-service) wird ein einzelnes Gerät, das ein untergeordnetes X.509-Zertifikat oder einen symmetrischen Schlüssel als [Nachweismechanismus](#attestation-mechanism) verwendet, über eine individuelle Registrierung identifiziert.
+Identifiziert ein einzelnes [Gerät](#device), das der [Device Provisioning Service](#device-provisioning-service) auf einem [IoT-Hub](#iot-hub) bereitstellen kann.
 
-### <a name="interactive-message"></a>Interaktive Nachricht
-
-Eine interaktive Nachricht ist eine [C2D](#cloud-to-device)-Nachricht, die eine sofortige Aktion im Lösungs-Back-End auslöst. Beispielsweise kann ein Gerät einen Alarm zu einem Fehler senden, der automatisch in einem CRM-System protokolliert werden soll.
+Gilt für: Iot Hub, Device Provisioning Service
 
 ### <a name="interface"></a>Schnittstelle
 
-In IoT Plug & Play beschreibt eine Schnittstelle verwandte Funktionen, die durch ein [IoT Plug & Play-Gerät](#iot-plug-and-play-device) oder einen [digitalen Zwilling](#digital-twin) implementiert werden. Sie können Schnittstellen in verschiedenen [Gerätemodellen](#device-model) wiederverwenden. Wenn eine Schnittstelle in einem Gerätemodell verwendet wird, definiert sie eine [Komponente](#component) des Geräts. Ein einfaches Gerät enthält nur eine Standardschnittstelle.
+In IoT Plug & Play beschreibt eine Schnittstelle verwandte Funktionen, die durch ein [IoT Plug & Play-Gerät](#iot-plug-and-play-device) oder einen [digitalen Zwilling](#digital-twin) implementiert werden. Sie können Schnittstellen in verschiedenen [Gerätemodellen](#device-model) wiederverwenden. Wenn eine Schnittstelle in einem [Gerätemodell](#model) verwendet wird, definiert sie eine [Komponente](#component) des [Geräts](#device). Ein einfaches Gerät enthält nur eine Standardschnittstelle.
 
-Bei Azure Digital Twins kann das Codeelement auf oberster Ebene in einer [DTDL](#digital-twins-definition-language-dtdl)-Modelldefinition als *Schnittstelle* bezeichnet werden.
+Bei [Azure Digital Twins](#azure-digital-twins) kann das Codeelement auf oberster Ebene in einer [DTDL](#digital-twins-definition-language)-Modelldefinition (Digital Twins Definition Language) als *Schnittstelle* bezeichnet werden.
+
+Gilt für: Geräteentwickler, Digital Twins
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure IoT Edge ermöglicht die cloudgesteuerte Bereitstellung von Azure-Diensten und lösungsspezifischem Code auf lokalen Geräten. [IoT Edge-Geräte](#iot-edge-device) können Daten anderer Geräte aggregieren und Berechnungen und Analysen durchführen, bevor sie die Daten an die Cloud senden. Weitere Informationen finden Sie unter [Azure IoT Edge](../iot-edge/index.yml).
+Ein Dienst mit den zugehörigen Clientbibliotheken und der Runtime, der die cloudgesteuerte Bereitstellung von Azure-Diensten und [lösungsspezifischem](#solution) Code auf lokalen [Geräten](#device) ermöglicht. [IoT Edge-Geräte](#iot-edge-device) können Daten anderer Geräte aggregieren und Berechnungen und Analysen durchführen, bevor sie die Daten an die Cloud senden.
+
+[Weitere Informationen](../iot-edge/index.yml)
+
+Gilt für: IoT Edge
 
 ### <a name="iot-edge-agent"></a>IoT Edge-Agent
 
-Die für die Bereitstellung und Überwachung von Modulen zuständige Komponente der IoT Edge-Laufzeit.
+Die für die Bereitstellung und Überwachung von [Modulen](#module) zuständige Komponente der [IoT Edge-Runtime](#iot-edge-runtime).
+
+Gilt für: IoT Edge
 
 ### <a name="iot-edge-device"></a>IoT Edge-Gerät
 
-Ein IoT Edge-Gerät verwendet containerisierte IoT Edge-[Module](#modules), um Azure-Dienste, Drittanbieterdienste oder Ihren Code auszuführen. Auf dem IoT Edge-Gerät verwaltet die [IoT Edge-Runtime](#iot-edge-runtime) die Module. Sie können ein IoT Edge-Gerät remote über die Cloud überwachen und verwalten.
+Ein [Gerät](#device), das containerisierte [IoT Edge](#iot-edge)-[Module](#module) verwendet, um Azure-Dienste, Drittanbieterdienste oder Ihren Code auszuführen. Auf dem Gerät verwaltet die [IoT Edge-Runtime](#iot-edge-runtime) die Module. Sie können ein IoT Edge-Gerät remote über die Cloud überwachen und verwalten.
+
+Gilt für: IoT Edge
 
 ### <a name="iot-edge-hub"></a>IoT Edge-Hub
 
-Die Komponente der IoT Edge-Laufzeit, die für die Kommunikation zwischen Modulen sowie für die (bei IoT Hub eingehende) Upstreamkommunikation und die (von IoT Hub ausgehende) Downstreamkommunikation zuständig ist.
+Der Teil der [IoT Edge-Runtime](#iot-edge-runtime), der für die Kommunikation zwischen [Modulen](#module) sowie für die Upstream- und Downstreamkommunikation zuständig ist.
+
+Gilt für: IoT Edge
 
 ### <a name="iot-edge-runtime"></a>IoT Edge-Laufzeit
 
-Die IoT Edge-Laufzeit enthält alles, was Microsoft für die Installation auf einem IoT Edge-Gerät bereitstellt. Sie enthält den Edge-Agent, den Edge-Hub und den IoT Edge-Sicherheitsdaemon.
+Enthält alles, was Microsoft für die Installation auf einem [IoT Edge-Gerät](#iot-edge-device) bereitstellt. Sie enthält den Edge-Agent, den Edge-Hub und den [IoT Edge](#iot-edge)-Sicherheitsdaemon.
 
-### <a name="iot-extension-for-azure-cli"></a>IoT-Erweiterung für die Azure CLI
-
-Die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) ist ein plattformübergreifendes Befehlszeilentool. Mit dem Tool können Sie Ihre Geräte in der [Identitätsregistrierung](#identity-registry) verwalten, Nachrichten und Dateien für Ihre Geräte senden und empfangen und die IoT Hub-Vorgänge überwachen.
+Gilt für: IoT Edge
 
 ### <a name="iot-hub"></a>IoT Hub
 
-IoT Hub ist ein vollständig verwalteter Azure-Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. Weitere Informationen finden Sie unter [Was ist Azure IoT Hub?](../iot-hub/about-iot-hub.md). Mit Ihrem Azure-Abonnement können Sie IoT-Hubs für die Verarbeitung Ihrer IoT-Messagingworkloads erstellen.
+Ein vollständig verwalteter Azure-Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von [Geräten](#device) und einem [Lösungs](#solution)-Back-End ermöglicht. Weitere Informationen finden Sie unter [Was ist Azure IoT Hub?](../iot-hub/about-iot-hub.md). Mit Ihrem Azure-Abonnement können Sie IoT-Hubs für die Verarbeitung Ihrer IoT-Messagingworkloads erstellen.
 
-### <a name="iot-hub-metrics"></a>IoT Hub-Metriken
+[Weitere Informationen](../iot-hub/about-iot-hub.md)
 
-Mit IoT Hub-Metriken erhalten Sie Daten zum Zustand von IoT Hubs in Ihrem Azure-Abonnement. Auf der Grundlage von IoT Hub-Metriken können Sie die allgemeine Integrität des Diensts und der mit ihm verbundenen Geräte beurteilen. Anhand von IoT Hub-Metriken können Sie sich über den Status Ihrer IoT Hub-Instanz informieren und den Ursachen von Fehlern nachgehen, ohne sich dafür an den Azure-Support wenden zu müssen. Weitere Informationen finden Sie unter [Überwachen von Azure IoT Hub](../iot-hub/monitor-iot-hub.md).
-
-### <a name="iot-hub-query-language"></a>IoT Hub-Abfragesprache
-
-Die [IoT Hub-Abfragesprache](../iot-hub/iot-hub-devguide-query-language.md) ist eine SQL-ähnliche Sprache, mit der Sie Ihre [Aufträge](#job), digitalen Zwillinge und Gerätezwillinge abfragen können.
+Gilt für: IoT Hub
 
 ### <a name="iot-hub-resource-rest-api"></a>IoT Hub-Ressourcen-REST-API
 
-Sie können die [IoT Hub-Ressourcen-REST-API](/rest/api/iothub/iothubresource) verwenden, um die IoT Hub-Instanzen in Ihrem Azure-Abonnement zu verwalten, in dem Vorgänge wie das Erstellen, Aktualisieren und Löschen von Hubs durchgeführt werden.
+Eine API, die Sie für die Verwaltung der [IoT-Hubs](#iot-hub) in Ihrem Azure-Abonnement verwenden können und die Vorgänge wie das Erstellen, Aktualisieren und Löschen von Hubs ermöglicht.
+
+Gilt für: IoT Hub
+
+### <a name="iot-hub-metrics"></a>IoT Hub-Metriken
+
+Ein Feature im Azure-Portal, mit dem Sie den Status Ihrer [IoT-Hubs](#iot-hub) überwachen können. Auf der Grundlage von IoT Hub-Metriken können Sie die allgemeine Integrität eines IoT-Hubs und der mit ihm verbundenen [Geräte](#device) beurteilen.
+
+Gilt für: IoT Hub
+
+### <a name="iot-hub-query-language"></a>IoT Hub-Abfragesprache
+
+Eine SQL-ähnliche Sprache für [IoT Hub](#iot-hub), mit der Sie Ihre [Aufträge](#job), [digitalen Zwillinge](#digital-twin) und [Gerätezwillinge](#device-twin) abfragen können.
+
+Gilt für: IoT Hub
 
 ### <a name="iot-plug-and-play-bridge"></a>IoT Plug & Play-Brücke
 
-IoT Plug & Play-Brücke ist eine Open-Source-Anwendung, die es vorhandenen, an Windows- oder Linux-Gateways angefügten Sensoren und Peripheriegeräten ermöglicht, eine Verbindung als [IoT Plug & Play-Geräte](#iot-plug-and-play-device) herzustellen.
+Eine Open-Source-Anwendung, die es vorhandenen, an Windows- oder Linux-[Gateways](#gateway) angefügten Sensoren und Peripheriegeräten ermöglicht, eine Verbindung als [IoT Plug & Play-Geräte](#iot-plug-and-play-device) herzustellen.
 
-### <a name="iot-plug-and-play-conventions"></a>IoT Plug & Play-Konventionen
+Gilt für: IoT Hub, Geräteentwickler, IoT Central
 
-Von IoT Plug & Play-[Geräten](#iot-plug-and-play-device) wird erwartet, dass sie beim Datenaustausch mit einer Lösung eine Reihe von Konventionen einhalten.
+### <a name="iot-plug-and-play-conventions"></a>IoT Plug & Play-Konventionen
+
+Eine Reihe von Konventionen, die IoT-[Geräte](#device) einhalten müssen, um Daten mit einer [Lösung](#solution) austauschen zu können.
+
+Gilt für: IoT Hub, IoT Central, Geräteentwickler
 
 ### <a name="iot-plug-and-play-device"></a>IoT Plug & Play-Gerät
 
-Ein IoT Plug & Play-Gerät ist normalerweise ein kleines, eigenständiges Computergerät, das Daten sammelt oder andere Geräte steuert. Auf einem solchen Gerät wird Software oder Firmware ausgeführt, die ein [Gerätemodell](#device-model) implementiert.  Ein IoT Plug & Play-Gerät könnte z.B. ein Gerät zur Überwachung von Umweltdaten oder ein Regler für ein intelligentes Bewässerungssystem in der Landwirtschaft sein. Ein IoT Plug & Play-Gerät kann direkt oder als IoT Edge-Modul implementiert werden. Sie können eine in der Cloud gehostete IoT-Lösung zum Steuern, Überwachen und Empfangen von Daten von IoT Plug & Play-Geräten schreiben.
+Ein kleines, eigenständiges [Computergerät](#device), das Daten sammelt oder andere Geräte steuert. Auf einem solchen Gerät wird Software oder Firmware ausgeführt, die ein [Gerätemodell](#device-model) implementiert. Ein IoT Plug & Play-Gerät könnte z.B. ein Gerät zur Überwachung von Umweltdaten oder ein Regler für ein intelligentes Bewässerungssystem in der Landwirtschaft sein. Ein IoT Plug & Play-Gerät kann direkt oder als [IoT Edge](#iot-edge)-[Modul](#module) implementiert werden.
+
+Gilt für: IoT Hub, IoT Central, Geräteentwickler
+
+### <a name="iot-extension-for-azure-cli"></a>IoT-Erweiterung für die Azure CLI
+
+Eine Erweiterung für die Azure-Befehlszeilenschnittstelle. Mit der Erweiterung können Sie Ihre [Geräte](#device) in der [Identitätsregistrierung](#identity-registry) verwalten, Gerätenachrichten senden und empfangen und [IoT Hub](#iot-hub)-Vorgänge überwachen.
+
+[Weitere Informationen](/cli/azure/azure-cli-reference-for-IoT)
+
+Gilt für: IoT Hub, IoT Central, IoT Edge, Device Provisioning Service, Geräteentwickler
 
 ## <a name="j"></a>J
 
 ### <a name="job"></a>Auftrag
 
-In [IoT Hub](#iot-hub) können Sie mit [Aufträgen](../iot-hub/iot-hub-devguide-jobs.md) Aktivitäten für eine Gruppe von Geräten planen und nachverfolgen, die bei Ihrem IoT-Hub registriert sind. Aktivitäten sind beispielsweise das Aktualisieren der [gewünschten Eigenschaften](#desired-properties) von Gerätezwillingen und ihrer [Tags](#tags) sowie das Aufrufen [direkter Methoden](#direct-method). Außerdem nutzt IoT Hub Aufträge zum [Importieren und Exportieren](../iot-hub/iot-hub-devguide-identity-registry.md#import-and-export-device-identities) aus der [Identitätsregistrierung](#identity-registry).
+Im Kontext von [IoT Hub](#iot-hub) können Sie mit Aufträgen Aktivitäten für eine Gruppe von [Geräten](#device) planen und nachverfolgen, die bei Ihrem IoT-Hub registriert sind. Aktivitäten sind beispielsweise das Aktualisieren der [gewünschten Eigenschaften](#desired-properties) von [Gerätezwillingen](#device-twin) und ihrer [Tags](#tag) sowie das Aufrufen [direkter Methoden](#direct-method). Außerdem nutzt IoT Hub Aufträge zum Importieren und Exportieren aus der [Identitätsregistrierung](#identity-registry).
 
-In IoT Central können Sie Ihre verbundenen Geräte mit [Aufträgen](../iot-central/core/howto-manage-devices-in-bulk.md) gesammelt verwalten und für diese Eigenschaften festlegen und Befehle aufrufen. IoT Central-Aufträge ermöglichen auch das Aktualisieren von [Cloudeigenschaften](#cloud-property) in einem Massenvorgang.
+Im Kontext von IoT Central können Sie Ihre verbundenen Geräte mit Aufträgen gesammelt verwalten und für diese [Eigenschaften](#properties) festlegen und [Befehle](#command) aufrufen. IoT Central-Aufträge ermöglichen auch das Aktualisieren von Cloudeigenschaften in einem Massenvorgang.
+
+Gilt für: IoT Hub, IoT Central
 
 ## <a name="l"></a>L
 
 ### <a name="leaf-device"></a>Blattgerät
 
-Bei [IoT Edge](#iot-edge) bezeichnet ein Blattgerät ein Gerät ohne nachgeschaltete Geräte.
+Ein [Gerät](#device) ohne Verbindungen zu nachgeschalteten Geräten. In der Regel sind Blattgeräte mit einem [Gatewaygerät](#gateway-device) verbunden.
+
+Gilt für: IoT Edge, IoT Central, Geräteentwickler
 
 ### <a name="lifecycle-event"></a>Lebenszyklusereignis
 
-Bei Azure Digital Twins wird dieser Typ von Ereignis ausgelöst, wenn ein Datenelement, z. B. ein digitaler Zwilling, eine Beziehung oder ein Ereignishandler, erstellt oder aus der Azure Digital Twins-Instanz gelöscht wird.
+Bei [Azure Digital Twins](#azure-digital-twins) wird dieser Typ von Ereignis ausgelöst, wenn ein Datenelement, z. B. ein [digitaler Zwilling](#digital-twin), eine [Beziehung](#relationship) oder ein [Ereignishandler](#event-handler), erstellt oder aus der [Azure Digital Twins-Instanz](#azure-digital-twins-instance) gelöscht wird.
+
+Gilt für: Digital Twins, IoT Hub, IoT Central
 
 ### <a name="linked-iot-hub"></a>Verknüpfter IoT Hub
 
-Der [Device Provisioning Service (DPS)](#device-provisioning-service) kann Geräte in IoT Hubs bereitstellen, die mit ihm verknüpft wurden. Wenn Sie einen IoT Hub mit einer DPS-Instanz verknüpfen, kann der Dienst eine Geräte-ID registrieren und die Ausgangskonfiguration des Gerätezwillings festlegen.
+Ein mit Ihre [DPS](#device-provisioning-service)-Instanz (Device Provisioning Service) verknüpfter [IoT-Hub](#iot-hub). Eine DPS-Instanz kann eine [Geräte](#device)-ID registrieren und die [Ausgangskonfiguration](#configuration) des [Gerätezwillings](#device-twin) in verknüpften IoT-Hubs festlegen.
+
+Gilt für: Iot Hub, Device Provisioning Service
 
 ## <a name="m"></a>M
 
+### <a name="mqtt"></a>MQTT
+
+Eines der Messagingprotokolle, das [IoT Hub](#iot-hub) und IoT Central für die Kommunikation mit [Geräten](#device) unterstützen. MQTT steht für nichts.
+
+[Weitere Informationen](../iot-hub/iot-hub-devguide-protocols.md)
+
+Gilt für: IoT Hub, IoT Central, Geräteentwickler
+
 ### <a name="model"></a>Modell
 
-Ein Modell definiert einen Typ von Entität in Ihrer physischen Umgebung, einschließlich ihrer Eigenschaften, Telemetrien, Komponenten und zuweilen weiterer Informationen. Modelle werden verwendet, um [digitale Zwillinge](#digital-twin) zu erstellen, die bestimmte physische Objekte dieses Typs darstellen. Modelle werden in der [Digital Twins Definition Language](#digital-twins-definition-language-dtdl) geschrieben.
+Eine Definition eines Entitätstyps in Ihrer physischen Umgebung, einschließlich seiner [Eigenschaften](#properties), Telemetriedaten und [Komponenten](#component). Modelle werden verwendet, um [digitale Zwillinge](#digital-twin) zu erstellen, die bestimmte physische Objekte dieses Typs darstellen. Modelle werden in der [Digital Twins Definition Language](#digital-twins-definition-language) geschrieben.
 
-Beim [Azure Digital Twins-Dienst](../digital-twins/index.yml) können Modelle zum Definieren von Geräten und übergeordneten abstrakten Geschäftskonzepten verwendet werden. Bei [IoT Plug & Play](../iot-develop/index.yml) werden [Gerätemodelle](#device-model) verwendet, um Geräte genau zu beschreiben.
+Beim [Azure Digital Twins-Dienst](#azure-digital-twins) können Modelle zum Definieren von [Geräten](#device) und übergeordneten abstrakten Geschäftskonzepten verwendet werden. Bei IoT Plug & Play werden [Gerätemodelle](#device-model) verwendet, um Geräte genau zu beschreiben.
+
+Gilt für: IoT Hub, IoT Central, Digital Twins, Geräteentwickler
 
 ### <a name="model-id"></a>Modell-ID
 
-Wenn ein IoT Plug & Play-Gerät eine Verbindung mit einem IoT-Hub herstellt, sendet es die **Modell-ID** des von ihm implementierten [DTDL](#digital-twins-definition-language-dtdl)-Modells. Anhand dieser ID ist die Lösung in der Lage, das Gerätemodell zu finden.
+Wenn ein [IoT Plug & Play-Gerät](#iot-plug-and-play-device) eine Verbindung mit einem [IoT-Hub](#iot-hub) oder einer IoT Central-Anwendung herstellt, sendet es die [Modell](#model)-ID des von ihm implementierten [DTDL](#digital-twins-definition-language)-Modells (Digital Twins Definition Language). Jedes Modell hat eine eindeutige Modell-ID. Anhand dieser Modell-ID ist die [Lösung](#solution) in der Lage, das [Gerätemodell](#device-model) zu ermitteln.
+
+Gilt für: IoT Hub, IoT Central, Geräteentwickler, Digital Twins
 
 ### <a name="model-repository"></a>Modellrepository
 
-In einem Modellrepository werden [Gerätemodelle](#device-model) und [Schnittstellen](#interface) gespeichert.
+Speichert [Modelle](#model) und [Schnittstellen](#interface) mithilfe der [Digital Twins Definition Language](#digital-twins-definition-language). Eine [Lösung](#solution) verwendet eine [Modell-ID](#model-id), um ein Modell aus einem Repository abzurufen.
+
+Gilt für: IoT Hub, IoT Central, Digital Twins
 
 ### <a name="model-repository-rest-api"></a>Modellrepository-REST-API
 
-Eine API zum Verwalten von und Interagieren mit dem Modellrepository. So können Sie beispielsweise mithilfe der API [Gerätemodelle](#device-model) hinzufügen und danach suchen.
+Eine API zum Verwalten von und Interagieren mit einem [Modellrepository](#model-repository). So können Sie beispielsweise mithilfe der API [Gerätemodelle](#device-model) hinzufügen und danach suchen.
 
-### <a name="module-builder"></a>Modulentwickler
+Gilt für: IoT Hub, IoT Central, Digital Twins
 
-Ein Modulentwickler verwendet ein [Gerätemodell](#device-model) und [Schnittstellen](#interface) beim Implementieren von Code zur Ausführung auf einem [IoT Plug & Play-Gerät](#iot-plug-and-play-device). Modulentwickler implementieren den Code als Modul oder IoT Edge-Modul, das für die IoT Edge-Runtime auf einem Gerät bereitgestellt werden soll.
+### <a name="module"></a>Modul
+
+Mithilfe der [IoT Hub](#iot-hub)-[Geräte](#device)-SDKs können Sie Module instanziieren, die jeweils eine unabhängige Verbindung mit Ihrem IoT-Hub herstellen. Dadurch können Sie separate Namespaces für unterschiedliche [Komponenten](#component) auf Ihrem Gerät verwenden.
+
+[Modulidentität](#module-identity) und [Modulzwilling](#module-twin) bieten die gleichen Funktionen wie [Geräteidentität](#device-identity) und [Gerätezwilling](#device-twin), aber mit einer höheren Granularität.
+
+Bei [IoT Edge](#iot-edge) ist ein Modul ein Docker-Container, der auf [IoT Edge-Geräten](#iot-edge-device) bereitgestellt werden kann. Es führt eine spezifische Aufgabe aus und erfasst so beispielsweise eine Nachricht von einem Gerät, transformiert eine Nachricht oder sendet eine Nachricht an eine IoT Hub-Instanz. Es kommuniziert mit anderen Modulen und sendet Daten an die [IoT Edge-Runtime](#iot-edge-runtime).
+
+Gilt für: Iot Hub, IoT Edge, Geräteentwickler
 
 ### <a name="module-identity"></a>Modulidentität
 
-Die Modulidentität ist der eindeutige Bezeichner, der jedem Modul zugeordnet ist, das zu einem Gerät gehört. Die Modulidentität wird auch in der [Identitätsregistrierung](#identity-registry) registriert.
+Ein eindeutiger Bezeichner, der jedem [Modul](#module) zugewiesen ist, das zu einem [Gerät](#device) gehört. Die Modulidentität (Modul-ID, auch Modulkennung) wird auch in der [Identitätsregistrierung](#identity-registry) registriert.
 
-Die Modulidentität gibt die Sicherheitsanmeldeinformationen an, die das Modul für die Authentifizierung beim [IoT Hub](#iot-hub) oder im Falle eines IoT Edge-Moduls beim [IoT Edge Hub](#iot-edge-hub) verwendet.
+Die Modulidentität gibt die Sicherheitsanmeldeinformationen an, die das Modul für die Authentifizierung beim [IoT-Hub](#iot-hub) oder im Fall eines [IoT Edge-Moduls](#iot-edge) beim [IoT Edge-Hub](#iot-edge-hub) verwendet.
+
+Gilt für: Iot Hub, IoT Edge, Geräteentwickler
 
 ### <a name="module-image"></a>Modulimage
 
-Das Docker-Image, das von der [IoT Edge-Runtime](#iot-edge-runtime) zum Instanziieren der Modulinstanzen verwendet wird.
+Das Docker-Image, das von der [IoT Edge-Runtime](#iot-edge-runtime) zum Instanziieren der [Modulinstanzen](#module) verwendet wird.
+
+Gilt für: IoT Edge
 
 ### <a name="module-twin"></a>Modulzwilling
 
-Modulzwillinge ähneln Gerätezwillingen und sind JSON-Dokumente, in denen Modulstatusinformationen wie Metadaten, Konfigurationen und Zustände gespeichert werden. IoT Hub speichert einen Modulzwilling für jede Modulidentität, die Sie unter einer Geräteidentität in Ihrer IoT Hub-Instanz bereitstellen. Mit Modulzwillingen können Sie Modulbedingungen und Konfigurationen zwischen dem Modul und dem Lösungs-Back-End synchronisieren. Sie können Modulzwillinge abfragen, um bestimmte Module zu ermitteln und den Status von Vorgängen mit langer Ausführungsdauer abzufragen.
+[Modulzwillinge](#module) ähneln [Gerätezwillingen](#device-twin) und sind JSON-Dokumente, in denen Modulstatusinformationen wie Metadaten, [Konfigurationen](#configuration) und Zustände gespeichert werden. [IoT Hub](#iot-hub) speichert einen Modulzwilling für jede [Modulidentität](#module-identity), die Sie unter einer [Geräteidentität](#device-identity) in Ihrem IoT-Hub bereitstellen. Mit Modulzwillingen können Sie Modulbedingungen und Konfigurationen zwischen dem Modul und dem [Lösungs](#solution)-Back-End synchronisieren. Sie können Modulzwillinge abfragen, um bestimmte Module zu ermitteln und den Status von Vorgängen mit langer Ausführungsdauer abzufragen.
 
-### <a name="modules"></a>Module
-
-Auf der Geräteseite können Sie mithilfe der IoT Hub-Geräte-SDKs [Module](../iot-hub/iot-hub-devguide-module-twins.md) erstellen, die jeweils eine unabhängige Verbindung mit IoT Hub herstellen. Durch diese Funktionalität können Sie separate Namespaces für unterschiedliche Komponenten auf Ihrem Gerät verwenden.
-
-Modulidentität und Modulzwilling bieten die gleichen Funktionen wie [Geräteidentität](#device-identity) und [Gerätezwilling](#device-twin), aber mit einer höheren Granularität. Dank dieser höheren Granularität können geeignete Geräte (etwa betriebssystembasierte Geräte oder Firmwaregeräte, die mehrere Komponenten verwalten) Konfigurationen und Zustände für die einzelnen Komponenten isolieren.
-
-Bei [IoT Edge](#iot-edge) ist ein Modul ein Docker-Container, der auf IoT Edge-Geräten bereitgestellt werden kann. Es führt eine spezifische Aufgabe aus und erfasst so beispielsweise eine Nachricht von einem Gerät, transformiert eine Nachricht oder sendet eine Nachricht an eine IoT Hub-Instanz. Es kommuniziert mit anderen Modulen und sendet Daten an die [IoT Edge-Runtime](#iot-edge-runtime).
-
-### <a name="mqtt"></a>MQTT
-
-[MQTT](https://mqtt.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](../iot-hub/iot-hub-devguide-messaging.md).
+Gilt für: IoT Hub
 
 ## <a name="o"></a>O
 
 ### <a name="ontology"></a>Ontologie
 
-Eine Reihe von Modellen für eine bestimmte Domäne, z. B. Immobilien, Smart Citys, IoT-Systeme, Energienetze und mehr. Ontologien werden oft als Schemas für Wissensgraphen wie die in [Azure Digital Twins](#azure-digital-twins) verwendet, weil sie einen Ausgangspunkt bereitstellen, der auf Branchenstandards und bewährten Methoden basiert.
+Im Kontext von [Digital Twins](#digital-twin) ist dies eine Reihe von [Modellen](#model) für eine bestimmte Domäne, z. B. Immobilien, Smart Citys, IoT-Systeme, Energienetze usw. Ontologien werden oft als Schemas für Wissensgraphen wie die in [Azure Digital Twins](#azure-digital-twins) verwendet, weil sie einen Ausgangspunkt bereitstellen, der auf Branchenstandards und bewährten Methoden basiert.
 
-Weitere Informationen zu Ontologien finden Sie unter [Was ist eine Ontologie?](../digital-twins/concepts-ontologies.md).
+[Weitere Informationen](../digital-twins/concepts-ontologies.md)
+
+Gilt für: Digital Twins
 
 ### <a name="operations-monitoring"></a>Vorgangsüberwachung
 
-Die IoT Hub-[Vorgangsüberwachung](../iot-hub/iot-hub-operations-monitoring.md) ermöglicht Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit. [IoT Hub](#iot-hub) verfolgt Ereignisse in verschiedenen Vorgangskategorien nach. Sie können festlegen, dass Ereignisse aus einer oder mehreren Kategorien zur Verarbeitung an einen IoT Hub-Endpunkt gesendet werden. Sie können die Daten auf Fehler überwachen oder eine komplexere auf Datenmustern basierende Verarbeitung einrichten.
+Ein Feature von [IoT Hub](#iot-hub), mit dem Sie den Status von Vorgängen auf Ihrem IoT-Hub in Echtzeit überwachen können. IoT Hub verfolgt Ereignisse in verschiedenen Vorgangskategorien nach. Sie können festlegen, dass Ereignisse aus einer oder mehreren Kategorien zur Verarbeitung an einen IoT Hub-[Endpunkt](#endpoint) gesendet werden. Sie können die Daten auf Fehler überwachen oder eine komplexere auf Datenmustern basierende Verarbeitung einrichten.
+
+Gilt für: IoT Hub
 
 ## <a name="p"></a>P
 
 ### <a name="physical-device"></a>Physisches Gerät
 
-Ein physisches Gerät ist ein echtes Gerät, z.B. ein Raspberry Pi mit einer Verbindung mit einem IoT Hub. Der Einfachheit halber werden in vielen IoT Hub-Tutorials [simulierte Geräte](#simulated-device) verwendet, damit Sie Beispiele auf Ihrem lokalen Computer ausführen können.
+Ein reales IoT-[Gerät](#device), das eine Verbindung mit einem [IoT-Hub](#iot-hub) herstellt. Der Einfachheit halber wird IoT-Gerätecode in vielen Tutorials und Schnellstarts auf einem Desktopcomputer und nicht auf einem physischen Gerät ausgeführt.
+
+Gilt für: Iot Hub, IoT Central, Geräteentwickler, IoT Edge
 
 ### <a name="primary-and-secondary-keys"></a>Primär- und Sekundärschlüssel
 
-Wenn Sie einen geräteseitigen oder dienstseitigen Endpunkt mit einem IoT Hub verbinden, enthält die [Verbindungszeichenfolge](#connection-string) einen Schlüssel zum Gewähren des Zugriffs. Wenn Sie der [Identitätsregistrierung](#identity-registry) ein Gerät hinzufügen oder dem Hub eine [SAS-Richtlinie](#shared-access-policy) hinzufügen, generiert der Dienst einen Primär- und einen Sekundärschlüssel. Dank der zwei Schlüssel können Sie ein Rollover von einem Schlüssel zum anderen Schlüssel durchführen, wenn Sie einen Schlüssel aktualisieren, ohne den Zugriff auf den IoT Hub zu verlieren.
+Wenn Sie einen [geräteseitigen](#device) oder dienstseitigen [Endpunkt](#endpoint) mit einem [IoT-Hub](#iot-hub) oder einer IoT Central-Anwendung verbinden, enthält die [Verbindungszeichenfolge](#connection-string) einen Schlüssel zum Gewähren des Zugriffs. Wenn Sie der [Identitätsregistrierung](#identity-registry) ein Gerät hinzufügen oder dem Hub eine [SAS-Richtlinie](#shared-access-policy) hinzufügen, generiert der Dienst einen Primär- und einen Sekundärschlüssel. Dank der zwei Schlüssel können Sie einen Rollover von einem Schlüssel zum anderen Schlüssel durchführen, wenn Sie einen Schlüssel aktualisieren, ohne den Zugriff auf den IoT-Hub oder die IoT Central-Anwendung zu verlieren.
+
+Gilt für: IoT Hub, IoT Central
 
 ### <a name="properties"></a>Eigenschaften
 
-Eigenschaften sind Datenfelder, die in einer [Schnittstelle](#interface) definiert sind und einen bestimmten beständigen Zustand eines [digitalen Zwillings](#digital-twin) repräsentieren. Sie können Eigenschaften als schreibgeschützt oder beschreibbar deklarieren. Schreibgeschützte Eigenschaften, z.B. eine Seriennummer, werden durch Code festgelegt, der auf dem [IoT Plug & Play-Gerät](#iot-plug-and-play-device) selbst ausgeführt wird. Schreibbare Eigenschaften, z.B. ein Alarmschwellenwert, werden normalerweise aus der cloudbasierten IoT-Lösung festgelegt.
+Im Kontext von [digitalen Zwillingen](#digital-twin) werden Datenfelder in einer [Schnittstelle](#interface) definiert und stellen einen beständigen Zustand eines digitalen Zwillings dar. Sie können Eigenschaften als schreibgeschützt oder beschreibbar deklarieren. Schreibgeschützte Eigenschaften, z.B. eine Seriennummer, werden durch Code festgelegt, der auf dem [IoT Plug & Play-Gerät](#iot-plug-and-play-device) selbst ausgeführt wird. Schreibbare Eigenschaften, z. B. ein Alarmschwellenwert, werden normalerweise in der cloudbasierten IoT-[Lösung](#solution) festgelegt.
+
+Gilt für: IoT Hub, IoT Central, Digital Twins, Geräteentwickler
 
 ### <a name="property-change-event"></a>Eigenschaftenänderungsereignis
 
 Ein Ereignis, das Folge einer Eigenschaftsänderung in einem [digitalen Zwilling](#digital-twin) ist.
 
+Gilt für: IoT Hub, IoT Central, Digital Twins
+
 ### <a name="protocol-gateway"></a>Protokollgateway
 
-Ein Protokollgateway wird der Regel in der Cloud bereitgestellt und bietet Protokollübersetzungsdienste für Geräte, die sich mit [IoT Hub](#iot-hub) verbinden. Weitere Informationen finden Sie unter [Was ist Azure IoT Hub?](../iot-hub/about-iot-hub.md).
+Ein [Gateway](#gateway) wird der Regel in der Cloud bereitgestellt und bietet Protokollübersetzungsdienste für [Geräte](#device), die eine Verbindung mit einem [IoT-Hub](#iot-hub) oder einer IoT Central-Anwendung herstellen.
+
+Gilt für: IoT Hub, IoT Central
 
 ## <a name="r"></a>R
 
 ### <a name="registration"></a>Registrierung
 
-Bei einer Registrierung handelt es sich um den Eintrag eines Geräts in der IoT Hub-[Identitätsregistrierung](#identity-registry). Sie können ein Gerät direkt oder zur Automatisierung der Geräteregistrierung über den [Device Provisioning Service](#device-provisioning-service) registrieren.
+Ein Eintrag eines [Geräts](#device) in der [IoT Hub](#iot-hub)-[Identitätsregistrierung](#identity-registry). Sie können ein Gerät direkt oder zur Automatisierung der Geräteregistrierung über den [Device Provisioning Service](#device-provisioning-service) registrieren.
+
+Gilt für: IoT Hub, IoT Central, Device Provisioning Service
 
 ### <a name="registration-id"></a>Registrierungs-ID
 
-Die Registrierungs-ID wird zur eindeutigen Identifizierung der [Registrierung](#registration) eines Geräts beim [Device Provisioning Service](#device-provisioning-service) verwendet. Der Wert der Registrierungs-ID kann mit dem der [Geräteidentität](#device-identity) übereinstimmen.
+Eines eindeutige [Geräteidentität](#device-identity) im [Device Provisioning Service](#device-provisioning-service). Der Wert der [Registrierungs](#registration)-ID kann mit dem der [Geräteidentität](#device) übereinstimmen.
 
-### <a name="relationship"></a>Relationship
+Gilt für: IoT Hub, IoT Central, Device Provisioning Service
 
-Beim [Azure Digital Twins](../digital-twins/index.yml)-Dienst werden Beziehungen verwendet, um [digitale Zwillinge](#digital-twin) mit Wissensgraphen zu verbinden, die Ihre gesamte physische Umgebung digital darstellen. Die Typen von Beziehungen, die für Ihre Zwillinge möglich sind, werden im Rahmen der [Modell](#model)definitionen der Zwillinge definiert: Das [DTDL](#digital-twins-definition-language-dtdl)-Modell für einen bestimmten Zwillingstyp enthält Informationen zu seinen möglichen Beziehungen zu anderen Zwillingen.
+### <a name="relationship"></a>Beziehung
+
+Wird beim [Azure Digital Twins](#azure-digital-twins)-Dienst verwendet, um [digitale Zwillinge](#digital-twin) mit Wissensgraphen zu verbinden, die Ihre gesamte physische Umgebung digital darstellen. Die Typen von Beziehungen, die Ihre Zwillinge haben können, werden im [Digital Twins Definition Language](#digital-twins-definition-language)-[Modell](#model) definiert.
+
+Gilt für: Digital Twins
 
 ### <a name="reported-configuration"></a>Gemeldete Konfiguration
 
-Im Kontext eines [Gerätezwillings](../iot-hub/iot-hub-devguide-device-twins.md) bezieht sich die gemeldete Konfiguration auf den vollständigen Satz von Eigenschaften und Metadaten im Gerätezwilling, die an das Lösungs-Back-End gemeldet werden sollen.
+Im Kontext eines [Gerätezwillings](#device-twin) bezieht sich dies auf den vollständigen Satz von [Eigenschaften](#properties) und Metadaten im [Gerätezwilling](#device), die an das [Lösungs](#solution)-Back-End gemeldet werden sollen.
+
+Gilt für: IoT Hub, Geräteentwickler
 
 ### <a name="reported-properties"></a>Gemeldete Eigenschaften
 
-Im Kontext eines [Gerätezwillings](../iot-hub/iot-hub-devguide-device-twins.md) handelt es sich bei gemeldeten Eigenschaften um einen Unterabschnitt, der zusammen mit [gewünschten Eigenschaften](#desired-properties) verwendet wird, um die Gerätekonfiguration oder den Gerätezustand zu synchronisieren. Gemeldete Eigenschaften können nur von der [Geräte-App](#device-app) festgelegt werden. Das Lesen und Abfragen ist per [Back-End-App](#back-end-app) möglich.
+Im Kontext eines [Gerätezwillings](#device-twin) handelt es sich bei gemeldeten [Eigenschaften](#properties) um einen Unterabschnitt des [Gerätezwillings](#device). Gemeldete Eigenschaften können nur vom Gerät festgelegt werden. Das Lesen und Abfragen ist aber über die [Back-End-App](#back-end-app) möglich.
+
+Gilt für: IoT Hub, Geräteentwickler
 
 ### <a name="retry-policy"></a>Wiederholungsrichtlinie
 
-Sie verwenden eine Wiederholungsrichtlinie, um [vorübergehende Fehler](/azure/architecture/best-practices/transient-faults) zu verarbeiten, wenn Sie eine Verbindung mit einem Clouddienst herstellen.
+Eine Möglichkeit, um vorübergehende Fehler zu verarbeiten, wenn Sie eine Verbindung mit einem Clouddienst herstellen.
 
-### <a name="routing-rules"></a>Routingregeln
+Gilt für: IoT Hub, IoT Central, Geräteentwickler
 
-Sie konfigurieren [Routingregeln](../iot-hub/iot-hub-devguide-messages-read-custom.md) in Ihrem IoT Hub, um D2C-Nachrichten an einen [integrierten Endpunkt](#built-in-endpoints) oder [benutzerdefinierte Endpunkte](#custom-endpoints) für die Verarbeitung durch Ihr Lösungs-Back-End weiterzuleiten.
+### <a name="routing-rule"></a>Routingregel
+
+Ein Feature von [IoT Hub](#iot-hub), um [D2C](#device-to-cloud)-Nachrichten an einen integrierten [Endpunkt](#endpoint) oder [benutzerdefinierte Endpunkte](#custom-endpoints) für die Verarbeitung durch Ihr [Lösungs](#solution)-Back-End weiterzuleiten.
+
+Gilt für: IoT Hub
 
 ## <a name="s"></a>E
 
-### <a name="sasl-plain"></a>SASL PLAIN
+### <a name="saslplain"></a>SASL/PLAIN
 
-SASL PLAIN ist ein Protokoll, das vom AMQP-Protokoll zum Übertragen von Sicherheitstoken verwendet wird.
+Ein Protokoll, das vom [Advanced Message Queueing Protocol](#advanced-message-queueing-protocol) (AMQP) zum Übertragen von Sicherheitstoken verwendet wird.
 
-### <a name="service-operations-endpoint"></a>Endpunkt für Dienstvorgänge
+[Weitere Informationen](https://wikipedia.org/wiki/Simple_Authentication_and_Security_Layer)
 
-Ein [Endpunkt](#endpoint) für die Verwaltung von Diensteinstellungen, der von einem Dienstadministrator verwendet wird. Beispielsweise verwenden Sie den Dienstendpunkt im [Device Provisioning Service](#device-provisioning-service) zum Verwalten von Registrierungen.
+Gilt für: IoT Hub
 
 ### <a name="service-rest-api"></a>Dienst-REST-API
 
-Sie können die [Dienst-REST-API](/rest/api/iothub/service/configuration) des Lösungs-Back-Ends zur Verwaltung Ihrer Geräte verwenden. Mithilfe der API können Sie Eigenschaften von [Gerätezwillingen](#device-twin) abrufen und aktualisieren, [direkte Methoden](#direct-method) aufrufen und [Aufträge](#job) planen. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
+Eine REST-API, die Sie am [Lösungs](#solution)-Back-Ends zur Verwaltung Ihrer [Geräte](#device) verwenden können. Sie können z. B. die API des [Iot Hub](#iot-hub)-Diensts verwenden, um [Eigenschaften](#properties) von [Gerätezwillingen](#device-twin) abzurufen und zu aktualisieren, [direkte Methoden](#direct-method) aufzurufen und [Aufträge](#job) zu planen. In der Regel sollten Sie eines der übergeordneten Dienst-SDKs verwenden.
+
+Gilt für: IoT Hub, IoT Central, Device Provisioning Service, IoT Edge
+
+### <a name="service-operations-endpoint"></a>Endpunkt für Dienstvorgänge
+
+Ein [Endpunkt](#endpoint), den Administratoren zum Verwalten von Diensteinstellungen verwenden. Beispielsweise verwenden Sie den Dienstendpunkt im [Device Provisioning Service](#device-provisioning-service) zum Verwalten von [Registrierungen](#enrollment).
+
+Gilt für: IoT Hub, Device Provisioning Service, IoT Edge, Digital Twins
 
 ### <a name="shared-access-policy"></a>SAS-Richtlinie
 
-Mit einer SAS-Richtlinie werden die Berechtigungen definiert, die allen Personen mit einem [Primär- oder Sekundärschlüssel](#primary-and-secondary-keys), der dieser Richtlinie zugeordnet ist, gewährt werden. Sie können die SAS-Richtlinien und Schlüssel für den Hub im Portal verwalten.
+Dient zum Definieren von Berechtigungen, die allen Personen mit einem Primär- oder Sekundärschlüssel, der dieser Richtlinie zugeordnet ist, gewährt werden. Sie können die SAS-Richtlinien und Schlüssel für den Hub im Portal verwalten.
+
+Gilt für: IoT Hub, IoT Edge, Device Provisioning Service
 
 ### <a name="shared-access-signature"></a>Shared Access Signature (SAS)
 
-Bei Shared Access Signatures handelt es sich um einen Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Die SAS-Authentifizierung besteht aus zwei Komponenten: einer _Richtlinie für den gemeinsamen Zugriff_ und einer _Shared Access Signature_ (häufig auch als „Token“ bezeichnet). Ein Gerät verwendet eine SAS für die Authentifizierung mit IoT Hub. [Back-End-Apps](#back-end-app) nutzen ebenfalls eine SAS für die Authentifizierung mit den dienstseitigen Endpunkten von IoT Hub. Normalerweise binden Sie das SAS-Token in die [Verbindungszeichenfolge](#connection-string) ein, die von einer App verwendet wird, um eine Verbindung mit IoT Hub herzustellen.
+Eine Shared Access Signature ist ein signierter URI, der auf eine oder mehrere Ressourcen zeigt, z. B. auf einen [IoT-Hub](#iot-hub)-[Endpunkt](#endpoint). Der URI enthält ein Token, das angibt, wie der Client auf die Ressourcen zugreifen kann. Einer der Abfrageparameter ist die Signatur. Sie besteht aus den SAS-Parametern und wird mit dem Schlüssel signiert, der zum Erstellen der SAS verwendet wurde. Diese Signatur wird von Azure Storage verwendet, um den Zugriff auf die Speicherressource zu autorisieren.
+
+Gilt für: Iot Hub, Digital Twins, IoT Central, IoT Edge
 
 ### <a name="simulated-device"></a>Simuliertes Gerät
 
-Der Einfachheit halber werden in vielen IoT Hub-Tutorials simulierte Geräte verwendet, damit Sie Beispiele auf Ihrem lokalen Computer ausführen können. Ein [physisches Gerät](#physical-device) ist dagegen ein echtes Gerät, z.B. ein Raspberry Pi mit einer Verbindung mit IoT Hub.
+Der Einfachheit halber wird [Gerätecode](#device) in vielen Tutorials und Schnellstarts mit simulierten Sensoren auf Ihrem lokalen Entwicklungscomputer ausgeführt. Ein [physisches Gerät](#physical-device), z. B. ein MXCHIP, hat dagegen echte Sensoren und stellt eine Verbindung mit einem [IoT-Hub](#iot-hub) her.
+
+Gilt für: Iot Hub, IoT Central, Geräteentwickler, IoT Edge, Digital Twins, Device Provisioning Service
 
 ### <a name="solution"></a>Lösung
 
-Eine _Lösung_ kann eine Visual Studio-Lösung (Projektmappe) sein, die mindestens ein Projekt enthält. Eine _Lösung_ kann auch eine IoT-Lösung sein, die Elemente wie Geräte, [Geräte-Apps](#device-app), einen IoT Hub, andere Azure-Dienste und [Back-End-Apps](#back-end-app) enthält.
+Im IoT-Kontext ist eine *Lösung* meist eine IoT-Lösung, die Elemente wie Geräte, [Geräte](#device), [Geräte-Apps](#device-app), einen [IoT-Hub](#iot-hub), andere Azure-Dienste und [Back-End-Apps](#back-end-app) enthält.
 
-### <a name="solution-builder"></a>Lösungsentwickler
-
-Ein Lösungsentwickler erstellt das Lösungs-Back-End. Ein Lösungsentwickler arbeitet normalerweise mit Azure-Ressourcen wie IoT Hub und [Modellrepositorys](#model-repository).
+Gilt für: IoT Hub, IoT Central, Device Provisioning Service, IoT Edge, Digital Twins
 
 ### <a name="system-properties"></a>Systemeigenschaften
 
-Im Kontext eines [Gerätezwillings](../iot-hub/iot-hub-devguide-device-twins.md) sind Systemeigenschaften schreibgeschützt und enthalten Informationen zur Gerätenutzung, z.B. den Zeitpunkt der letzten Aktivität und den Verbindungsstatus.
+Im Kontext eines [Gerätezwillings](#device-twin) sind diese [Eigenschaften](#properties) schreibgeschützt und enthalten Informationen zur [Gerätenutzung](#device), z. B. den Zeitpunkt der letzten Aktivität und den Verbindungsstatus.
+
+Gilt für: IoT Hub
 
 ## <a name="t"></a>T
 
-### <a name="tags"></a>`Tags`
+### <a name="tag"></a>Tag
 
-Im Kontext eines [Gerätezwillings](../iot-hub/iot-hub-devguide-device-twins.md) sind Tags Gerätemetadaten, die vom Lösungs-Back-End in Form eines JSON-Dokuments gespeichert und abgerufen werden. Tags sind für Apps auf einem Gerät nicht sichtbar.
+Im Kontext eines [Gerätezwillings](#device-twin) sind Tags [Gerätemetadaten](#device), die vom [Lösungs](#solution)-Back-End in Form eines JSON-Dokuments gespeichert und abgerufen werden. Tags sind für Apps auf einem Gerät nicht sichtbar.
+
+Gilt für: IoT Hub
 
 ### <a name="target-condition"></a>Zielbedingung
 
-Bei einer IoT Edge-Bereitstellung werden die Zielgeräte für die Bereitstellung anhand der Zielbedingung ausgewählt, z. B. **tag.environment = prod**. Die Zielbedingung wird kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen.
+In einer [IoT Edge](#iot-edge)-Bereitstellung dient die Zielbedingung zur Auswahl der [Zielgeräte](#device) für die Bereitstellung. Die Zielbedingung wird kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen.
+
+Gilt für: IoT Edge
 
 ### <a name="telemetry"></a>Telemetrie
 
-Mit Geräten werden Telemetriedaten erfasst, z.B. Windgeschwindigkeit oder Temperatur, und es werden Datenpunktnachrichten verwendet, um Telemetriedaten an IoT Hub zu senden.
-
-Bei IoT Plug & Play und Azure Digital Twins stellen in einer [Schnittstelle](#interface) definierte Telemetriefelder Messungen dar. Diese Messungen sind normalerweise Werte wie Sensormesswerte, die von Geräten wie [IoT Plug & Play-Geräten](#iot-plug-and-play-device) als Datenstrom gesendet werden.
+Die Daten, z. B. Windgeschwindigkeit oder Temperatur, die an einen [IoT-Hub](#iot-hub) gesendet und von den Sensoren eines [Geräts](#device) gesammelt wurden.
 
 Im Gegensatz zu [Eigenschaften](#properties) wird Telemetrie nicht in einem [digitalen Zwilling](#digital-twin) gespeichert. Telemetrie ist ein Strom zeitgebundener Datenereignissen, die in der Reihenfolge ihres Auftretens verarbeitet werden müssen.
 
+Bei IoT Plug & Play und [Azure Digital Twins](#azure-digital-twins) stellen in einer [Schnittstelle](#interface) definierte Telemetriefelder Messungen dar. Diese Messungen sind normalerweise Werte wie Sensormesswerte, die von Geräten wie [IoT Plug & Play-Geräten](#iot-plug-and-play-device) als Datenstrom gesendet werden.
+
+Gilt für: IoT Hub, IoT Central, Digital Twins, IoT Edge, Geräteentwickler
+
 ### <a name="telemetry-event"></a>Telemetrieereignis
 
-Ein Ereignis, das den Eingang von Telemetriedaten angibt.
+Ein Ereignis in einem [IoT-Hub](#iot-hub), das den Eingang von [Telemetriedaten](#telemetry) angibt.
 
-### <a name="token-service"></a>Tokendienst
-
-Sie können einen Tokendienst verwenden, um einen Authentifizierungsmechanismus für Ihre Geräte zu implementieren. Er verwendet eine [SAS-Richtlinie](#shared-access-policy) von IoT Hub mit **DeviceConnect**-Berechtigungen, um Token mit *Gerätebereich* zu erstellen. Mit diesen Token kann ein Gerät eine Verbindung mit Ihrem IoT Hub herstellen. Ein Gerät verwendet einen benutzerdefinierten Authentifizierungsmechanismus für die Authentifizierung mit dem Tokendienst. Sofern die Authentifizierung des Geräts erfolgreich ist, stellt der Tokendienst ein SAS-Token für das Gerät bereit, mit dem auf IoT Hub zugegriffen werden kann.
-
-### <a name="twin-graph-or-digital-twin-graph"></a>Zwillingsgraph (oder Digital Twin-Graph)
-
-Beim [Azure Digital Twins](../digital-twins/index.yml)-Dienst können Sie [digitale Zwillinge](#digital-twin) mit [Beziehungen](#relationship) verbinden, um Wissensgraphen zu erstellen, die Ihre gesamte physische Umgebung digital darstellen. Eine einzelne [Azure Digital Twins-Instanz](#azure-digital-twins-instance) kann viele nicht verbundene Graphen oder einen einzelnen verbundenen Graphen hosten.
+Gilt für: IoT Hub
 
 ### <a name="twin-queries"></a>Zwillingsabfragen
 
-Für [Geräte- und Modulzwillingsabfragen](../iot-hub/iot-hub-devguide-query-language.md) wird die SQL-ähnliche IoT Hub-Abfragesprache verwendet, um Informationen von ihren Geräte- oder Modulzwillingen abzufragen. Sie können die gleiche IoT Hub-Abfragesprache verwenden, um Informationen zu einem [Auftrag](#job) abzurufen, der in IoT Hub ausgeführt wird.
+Ein Feature von [IoT Hub](#iot-hub), mit dem Sie eine SQL-ähnliche Abfragesprache verwenden können, um Informationen von Ihren [Gerätezwillingen](#device-twin) oder [Modulzwillingen](#module-twin) abzurufen.
+
+Gilt für: IoT Hub
 
 ### <a name="twin-synchronization"></a>Zwillingssynchronisierung
 
-Bei der Zwillingssynchronisierung werden die [gewünschten Eigenschaften](#desired-properties) in Ihren Geräte- oder Modulzwillingen verwendet, um die Geräte oder Module zu konfigurieren und [gemeldete Eigenschaften](#reported-properties) von Ihren Geräten oder Modulen abzurufen und im entsprechenden Zwilling zu speichern.
+Der Prozess in [IoT Hub](#iot-hub), mit dem anhand der [gewünschten Eigenschaften](#desired-properties) in Ihren [Gerätezwillingen](#device-twin) oder [Modulzwillingen](#module-twin) Ihre [Geräte](#device) oder [Module](#module) konfiguriert und [gemeldete Eigenschaften](#reported-properties) von Ihren Geräten oder Modulen abgerufen und im Zwilling gespeichert werden.
+
+Gilt für: IoT Hub
 
 ## <a name="u"></a>U
 
-### <a name="upstream-services"></a>Upstreamdienste
+### <a name="upstream-service"></a>Upstreamdienst
 
-Ein relativer Begriff für Dienste, die Daten in den aktuellen Kontext einspeisen. Beispielsweise gilt IoT Hub im Kontext von Azure Digital Twins als Upstreamdienst, da Ihre Daten vom IoT Hub zu Azure Digital Twins fließen.
+Ein relativer Begriff für Dienste, die Daten in den aktuellen Kontext einspeisen. Beispielsweise gilt [IoT Hub](#iot-hub) im Kontext von [Azure Digital Twins](#azure-digital-twins) als Upstreamdienst, da Ihre Daten vom IoT-Hub zu Azure [Digital Twins](#digital-twin) fließen.
 
-## <a name="x"></a>X
+Gilt für: IoT Hub, IoT Central, Digital Twins
 
-### <a name="x509-client-certificate"></a>X.509-Clientzertifikat
-
-Ein Gerät kann ein X.509-Zertifikat für die Authentifizierung beim [IoT Hub](#iot-hub) verwenden. Der Einsatz eines X.509-Zertifikats ist eine Alternative zur Verwendung eines [SAS-Tokens](#shared-access-signature).

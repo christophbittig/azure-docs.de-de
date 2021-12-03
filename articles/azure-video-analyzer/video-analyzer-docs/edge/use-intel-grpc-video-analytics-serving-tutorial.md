@@ -3,14 +3,14 @@ title: Analysieren von Livevideos mithilfe der Edge-KI-Erweiterung „Intel Open
 description: In diesem Tutorial erfahren Sie, wie Sie die Edge-KI-Erweiterung „Intel OpenVINO™ DL Streamer“ verwenden, um Livevideofeeds einer (simulierten) IP-Kamera zu analysieren.
 ms.topic: tutorial
 ms.service: azure-video-analyzer
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 55ce6a7afc47e614bf080a21106f1a26388126f8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0a3436dced8129aa984d30a0f2b4d6bcfecb5913
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030300"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484211"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>Tutorial: Analysieren von Livevideos mit der Edge-KI-Erweiterung „Intel OpenVINO™ DL Streamer“ 
 
@@ -36,7 +36,7 @@ In diesem Tutorial werden ein virtueller Azure-Computer als simuliertes IoT Edg
 
 Beim Einrichten der Azure-Ressourcen wird ein kurzes Parkplatzvideo auf den virtuellen Linux-Computer in Azure kopiert, den Sie als IoT Edge-Gerät verwenden. In diesem Tutorial wird die Videodatei verwendet, um einen Livestream zu simulieren.
 
-Öffnen Sie eine Anwendung wie etwa den [VLC Media Player](https://www.videolan.org/vlc/). Drücken Sie STRG+N, und fügen Sie dann einen Link zum [Video](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) ein, um die Wiedergabe zu starten. Das Video zeigt Fahrzeuge auf einem Parkplatz. Die meisten davon sind geparkt. Ein einzelnes Fahrzeug bewegt sich.
+Öffnen Sie eine Anwendung wie etwa den [VLC Media Player](https://www.videolan.org/vlc/). Drücken Sie STRG+N, und fügen Sie dann einen Link zum [Video](https://avamedia.blob.core.windows.net/public/lots_015.mkv) ein, um die Wiedergabe zu starten. Das Video zeigt Fahrzeuge auf einem Parkplatz. Die meisten davon sind geparkt. Ein einzelnes Fahrzeug bewegt sich.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LUbN]
 

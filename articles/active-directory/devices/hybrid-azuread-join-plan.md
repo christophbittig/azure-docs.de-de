@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a782a2194b64fa82163c8c4df14e78de7e83a57f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a766415eab11a0486b4609d181e5f01dcf4ef2a6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128612546"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049689"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -29,6 +29,10 @@ ms.locfileid: "128612546"
 Durch das Bereitstellen Ihrer Geräte in Azure AD maximieren Sie die Produktivität Ihrer Benutzer durch einmaliges Anmelden (SSO) für Ihre gesamten Cloud- und lokalen Ressourcen. Gleichzeitig können Sie den Zugriff auf Ihre Cloud- und lokalen Ressourcen durch [bedingten Zugriff](../conditional-access/overview.md) schützen.
 
 Wenn Sie in einer lokalen Active Directory (AD)-Umgebung Ihre in die AD-Domäne eingebundenen Compute in Azure AD einbinden möchten, kann dies durch Vornehmen einer Einbindung in Azure AD Hybrid erfolgen. Dieser Artikel enthält eine Anleitung zum Implementieren einer Azure AD-Hybrideinbindung in Ihre Umgebung. 
+
+> [!TIP]
+> SSO-Zugriff auf lokale Ressourcen ist auch für Geräte verfügbar, die mit Azure AD verbunden sind. Weitere Informationen finden Sie unter [So funktioniert das einmalige Anmelden bei lokalen Ressourcen auf in Azure AD eingebundenen Geräten](azuread-join-sso.md).
+>
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,6 +67,7 @@ Azure AD Hybrid Join unterstützt zahlreiche Windows-Geräte. Da die Konfigurati
 ### <a name="windows-current-devices"></a>Aktuelle Windows-Geräte
 
 - Windows 10
+- Windows 11
 - Windows Server 2016
   - **Hinweis**: Kunden der nationalen Azure-Cloud benötigen Version 1803.
 - Windows Server 2019

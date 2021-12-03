@@ -1,28 +1,28 @@
 ---
 title: Tokenanreicherung – Azure Active Directory B2C
-description: Reichern Sie Token mit Ansprüchen aus externen Quellen unter Verwendung von APIs an.
+description: Anreichern von Token mit Ansprüchen aus externen Identitätsdatenquellen mithilfe von APIs oder ausgehenden Webhooks.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/29/2021
-ms.author: mimart
+ms.date: 11/09/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 20473d6a5dcbdc826605d46928a7bfbb90792e0e
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: a6f91fd8de1f208bcbe57a9e541ad1e73340e995
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186063"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179477"
 ---
 # <a name="enrich-tokens-with-claims-from-external-sources-using-api-connectors"></a>Anreichern von Token mit Ansprüchen aus externen Quellen unter Verwendung von API-Connectors
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Mit Azure Active Directory B2C (Azure AD B2C) können Identitätsentwickler unter Verwendung von [API-Connectors](api-connectors-overview.md) eine Interaktion mit einer RESTful-API in ihren Benutzerflow integrieren. Am Ende dieser exemplarischen Vorgehensweise können Sie einen Azure AD B2C-Benutzerflow erstellen, der mit APIs interagiert, um Token mit Informationen aus externen Quellen anzureichern.
+Mit Azure Active Directory B2C (Azure AD B2C) können Identitätsentwickler unter Verwendung von [API-Connectors](api-connectors-overview.md) eine Interaktion mit einer RESTful-API in ihren Benutzerflow integrieren. So können Entwickler dynamisch Daten aus externen Identitätsquellen abrufen. Am Ende dieser exemplarischen Vorgehensweise können Sie einen Azure AD B2C-Benutzerflow erstellen, der mit APIs interagiert, um Token mit Informationen aus externen Quellen anzureichern.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -250,12 +250,12 @@ Nachdem Sie Ihre REST-API bereitgestellt haben, legen Sie die Metadaten des tech
 
 - **ServiceUrl**. Legt die URL des REST-API-Endpunkts fest.
 - **SendClaimsIn**. Gibt an, wie die Eingabeansprüche an den RESTful-Anspruchsanbieter gesendet werden.
-- **AuthenticationType**. Legt den Typ der Authentifizierung fest, die vom RESTful-Anspruchsanbieter ausgeführt wird. 
-- **AllowInsecureAuthInProduction**. Sorgen Sie in einer Produktionsumgebung dafür, dass diese Metadaten auf `true` festgelegt werden.
+- **AuthenticationType**. Legen Sie die Art der Authentifizierung fest, die vom RESTful-Anbieter durchgeführt wird, z. B. `Basic` oder `ClientCertificate` 
+- **AllowInsecureAuthInProduction**. In einer Produktionsumgebung sollten Sie diese Metadaten auf `false` setzen.
     
 Weitere Konfigurationen finden Sie in den [Metadaten für das technische RESTful-Profil](restful-technical-profile.md#metadata).
 
-Die Kommentare `AuthenticationType` und `AllowInsecureAuthInProduction` oben geben Änderungen an, die Sie beim Wechsel zu einer Produktionsumgebung vornehmen sollten. Informationen zum Schützen Ihrer RESTful-APIs für die Produktionsumgebung finden Sie unter [Schützen von RESTful-APIs](secure-rest-api.md).
+Die Kommentare `AuthenticationType` und `AllowInsecureAuthInProduction` oben geben Änderungen an, die Sie beim Wechsel zu einer Produktionsumgebung vornehmen sollten. Wie Sie Ihre RESTful-APIs für die Produktion sichern können, erfahren Sie unter [Sichern Sie Ihre RESTful-API](secure-rest-api.md).
 
 ## <a name="add-an-orchestration-step"></a>Hinzufügen eines Orchestrierungsschritts
 
@@ -415,5 +415,3 @@ Informationen zum Schützen Ihrer APIs finden Sie in den folgenden Artikeln:
 - [Referenz: Technisches Profil „RESTful“](restful-technical-profile.md)
 
 ::: zone-end
-
-

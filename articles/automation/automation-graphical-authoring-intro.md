@@ -3,21 +3,25 @@ title: Erstellen von grafischen Azure Automation-Runbooks
 description: In diesem Artikel erfahren Sie, wie Sie ein grafisches Runbook erstellen, ohne mit Code zu arbeiten.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/16/2018
+ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: af5a1a8353435d9f54b28bce46897f55f8b560a7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2ce84a91fcb91be0326571a95cfa92fdfa3b33ef
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124812661"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130220262"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Erstellen von grafischen Azure Automation-Runbooks
 
 Alle Runbooks in Azure Automation sind Windows PowerShell-Workflows. Grafische Runbooks und grafische PowerShell-Workflow-Runbooks generieren PowerShell-Code, den die Automation-Worker ausführen, Sie jedoch weder anzeigen noch ändern können. Sie können ein grafisches Runbook in ein grafisches PowerShell-Workflow-Runbook konvertieren und umgekehrt. Diese Runbooks können jedoch nicht in ein Textrunbook konvertiert werden. Außerdem kann der grafische Automatisierungs-Editor kein Textrunbook importieren.
 
 Mithilfe der grafischen Erstellung können Sie ohne die Komplexität des zugrunde liegenden Windows PowerShell- oder PowerShell-Workflow-Codes Runbooks für Azure Automation erstellen. Sie können der Canvas Aktivitäten aus einer Bibliothek mit Cmdlets und Runbooks hinzufügen, Verknüpfungen erstellen und die Elemente konfigurieren, um einen Workflow zu erhalten. Wenn Sie schon einmal mit System Center Orchestrator oder Service Management Automation (SMA) gearbeitet haben, dürfte Ihnen die grafischen Erstellung bekannt vorkommen. Dieser Artikel bietet eine Einführung in die Konzepte, die Sie für den Einstieg in die Erstellung eines grafischen Runbooks benötigen.
+
+> [!NOTE]
+> Sie können einem grafischen Runbook keine digitale Signatur hinzufügen. Diese Funktion wird in Azure Automation nicht unterstützt.
+>
 
 ## <a name="overview-of-graphical-editor"></a>Übersicht über den grafischen Editor
 

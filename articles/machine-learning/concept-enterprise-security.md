@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/22/2021
-ms.openlocfilehash: 1675cd187942c582fbe85c1642a6d4e0176f37a4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 10/21/2021
+ms.openlocfilehash: d5034f59cc71352518c0570e525f952f0f657c71
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131475709"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343133"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Sicherheit und Governance in Unternehmen für Azure Machine Learning
 
@@ -107,7 +107,7 @@ Beim Bereitstellen von Modellen als Webdienste können Sie TLS (Transport Layer 
 
 ## <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken
 
-[Azure Security Center](../security-center/security-center-introduction.md) bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Für Azure Machine Learning sollten Sie die Überprüfung der [Azure Container Registry](../container-registry/container-registry-intro.md)-Ressourcen sowie der Azure Kubernetes Service-Ressourcen aktivieren. Weitere Informationen finden Sie unter [Azure Container Registry-Imagescans durch Security Center](../security-center/defender-for-container-registries-introduction.md) und [Azure Kubernetes Service-Integration in Security Center](../security-center/defender-for-kubernetes-introduction.md).
+[Microsoft Defender for Cloud](../security-center/security-center-introduction.md) bietet eine einheitliche Sicherheitsverwaltung und erweiterten Bedrohungsschutz für Hybrid Cloud-Workloads. Für Azure Machine Learning sollten Sie die Überprüfung der [Azure Container Registry](../container-registry/container-registry-intro.md)-Ressourcen sowie der Azure Kubernetes Service-Ressourcen aktivieren. Weitere Informationen finden Sie unter [Azure Container Registry-Imageüberprüfungen durch Defender für Cloud](../security-center/defender-for-container-registries-introduction.md) und [Azure Kubernetes Service-Integration mit Defender für Cloud](../security-center/defender-for-kubernetes-introduction.md).
 
 ## <a name="audit-and-manage-compliance"></a>Überwachen und Verwalten der Compliance
 

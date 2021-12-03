@@ -11,21 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: eded4bfc37df72b9163aeac51d66c973b24838b2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a867ab015dedcbe5c8053b4ff26a98f406cbd6af
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124750262"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286927"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>Anzeigen und Konfigurieren der DDoS-Diagnoseprotokollierung
 
-Die Standardversion von Azure DDoS Protection liefert per Analyse von DDoS-Angriffen ausführliche Erkenntnisse zu Angriffen und ermöglicht eine Visualisierung. Kunden, die ihre virtuellen Netzwerke vor DDoS-Angriffen schützen, verfügen über detaillierte Einblicke in den Datenverkehr von Angriffen und die Aktionen, die zur Eindämmung des Angriffs durchgeführt werden. Hierfür werden Berichte zur Angriffsentschärfung und Protokolle zum Verlauf der Entschärfung genutzt. Über Azure Monitor werden umfangreiche Telemetriedaten bereitgestellt. Diese umfassen u. a. detaillierte Metriken während der Dauer eines DDoS-Angriffs. Warnungen können für beliebige durch den DDoS-Schutz verfügbar gemachte Azure Monitor-Metriken konfiguriert werden. Die Protokollierung kann zudem mit [Azure Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection), Splunk (Azure Event Hubs), OMS Log Analytics und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integriert werden.
+Die Standardversion von Azure DDoS Protection liefert per Analyse von DDoS-Angriffen ausführliche Erkenntnisse zu Angriffen und ermöglicht eine Visualisierung. Kunden, die ihre virtuellen Netzwerke vor DDoS-Angriffen schützen, verfügen über detaillierte Einblicke in den Datenverkehr von Angriffen und die Aktionen, die zur Eindämmung des Angriffs durchgeführt werden. Hierfür werden Berichte zur Angriffsentschärfung und Protokolle zum Verlauf der Entschärfung genutzt. Über Azure Monitor werden umfangreiche Telemetriedaten bereitgestellt. Diese umfassen u. a. detaillierte Metriken während der Dauer eines DDoS-Angriffs. Warnungen können für beliebige durch den DDoS-Schutz verfügbar gemachte Azure Monitor-Metriken konfiguriert werden. Die Protokollierung kann zudem mit [Microsoft Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection), Splunk (Azure Event Hubs), OMS Log Analytics und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integriert werden.
 
 Für Azure DDoS Protection Standard sind die folgenden Diagnoseprotokolle verfügbar: 
 
 - **DDoSProtectionNotifications:** Sie erhalten immer eine Benachrichtigung, wenn eine Ressource mit öffentlicher IP-Adresse angegriffen wird und wenn der Angriff entschärft wurde.
-- **DDoSMitigationFlowLogs:** Mit Datenflussprotokollen zur Entschärfung von Angriffen können Sie den verworfenen Datenverkehr, weitergeleiteten Datenverkehr und andere interessante Datenpunkte bei einem aktiven DDoS-Angriff nahezu in Echtzeit überprüfen. Sie können den konstanten Datenstrom dieser Daten in Azure Sentinel oder Ihren SIEM-Drittanbietersystemen per Event Hub erfassen, um eine Überwachung nahezu in Echtzeit zu ermöglichen, gegebenenfalls Aktionen durchzuführen und Ihre erforderlichen Abwehrmaßnahmen zu ermitteln.
+- **DDoSMitigationFlowLogs:** Mit Datenflussprotokollen zur Entschärfung von Angriffen können Sie den verworfenen Datenverkehr, weitergeleiteten Datenverkehr und andere interessante Datenpunkte bei einem aktiven DDoS-Angriff nahezu in Echtzeit überprüfen. Sie können den konstanten Datenstrom dieser Daten in Microsoft Sentinel oder Ihren SIEM-Drittanbietersystemen per Event Hub erfassen, um eine Überwachung nahezu in Echtzeit zu ermöglichen, gegebenenfalls Aktionen durchzuführen und Ihre erforderlichen Abwehrmaßnahmen zu ermitteln.
 - **DDoSMitigationReports:** Für Berichte zur Entschärfung von Angriffen werden die NetFlow-Protokolldaten verwendet. Diese Daten werden aggregiert, um ausführliche Informationen zum Angriff auf Ihre Ressource zu liefern. Jedes Mal, wenn eine öffentliche IP-Ressource angegriffen wird, beginnt die Berichterstellung, sobald der Entschärfungsvorgang gestartet wurde. Alle fünf Minuten wird ein inkrementeller Bericht generiert, und für den gesamten Entschärfungszeitraum wird ein Abschlussbericht erstellt. So wird sichergestellt, dass Sie bei einem länger andauernden DDoS-Angriff die aktuellste Momentaufnahme des Berichts zur Entschärfung (alle fünf Minuten) und eine vollständige Zusammenfassung nach Abschluss der Entschärfung anzeigen können. 
 - **AllMetrics:** Dieses Protokoll enthält alle Metriken, die während eines DDoS-Angriffs verfügbar sind. 
 
@@ -165,11 +165,11 @@ Diese [integrierte Richtlinie](https://portal.azure.com/#blade/Microsoft_Azure_P
 
 ## <a name="view-log-data-in-workbooks"></a>Anzeigen von Protokolldaten in Arbeitsmappen
 
-### <a name="azure-sentinel-data-connector"></a>Azure Sentinel-Datenconnector
+### <a name="microsoft-sentinel-data-connector"></a>Microsoft Sentinel-Datenconnector
 
-Sie können Protokolle mit Azure Sentinel verbinden, Ihre Daten in Arbeitsmappen anzeigen und analysieren, benutzerdefinierte Warnungen erstellen und dies in Untersuchungsprozesse integrieren. Informationen zum Herstellen einer Verbindung mit Azure Sentinel finden Sie unter [Herstellen einer Verbindung mit Azure Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection). 
+Sie können Protokolle mit Microsoft Sentinel verbinden, Ihre Daten in Arbeitsmappen anzeigen und analysieren, benutzerdefinierte Warnungen erstellen und dies in Untersuchungsprozesse integrieren. Informationen zum Herstellen einer Verbindung mit Microsoft Sentinel finden Sie unter [Verbinden mit Microsoft Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection). 
 
-![Azure Sentinel-DDoS-Connector](./media/ddos-attack-telemetry/azure-sentinel-ddos.png)
+![Microsoft Sentinel-DDoS-Connector](./media/ddos-attack-telemetry/azure-sentinel-ddos.png)
 
 ### <a name="azure-ddos-protection-workbook"></a>Azure DDoS Protection-Arbeitsmappe
 

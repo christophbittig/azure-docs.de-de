@@ -58,7 +58,7 @@
       items:
         - name: 'Schützen, Überwachen und Verwalten virtueller Computer'
           href: integrate-azure-native-services.md
-        - name: Integrieren von Azure Security Center
+        - name: Integrieren von Microsoft Defender für Cloud
           href: azure-security-integration.md
         - name: Integrieren von Azure NetApp Files
           href: netapp-files-with-azure-vmware-solution.md
@@ -136,14 +136,14 @@
           href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: Bereitstellen von VMware SRM für die Notfallwiederherstellung
           href: disaster-recovery-using-vmware-site-recovery-manager.md
+        - name: Bereitstellen der Zerto-Notfallwiederherstellung
+          href: deploy-zerto-disaster-recovery.md
     - name: Bereitstellen virtueller Desktops
       items:
         - name: Bereitstellen von Horizon in Azure VMware Solution
           href: azure-vmware-solution-horizon.md
         - name: Bereitstellen von Citrix auf Azure VMware Solution
           href: azure-vmware-solution-citrix.md
-        - name: Bereitstellen der Zerto-Notfallwiederherstellung
-          href: deploy-zerto-disaster-recovery.md
     - name: Verschieben von Ressourcen
       items:
         - name: "Verschieben von Azure\_VMware\_Solution-Abonnements"
@@ -219,7 +219,7 @@
     - name: Videos
       items:
         - name: Wiedergabeliste
-          href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
+          href: 'https://www.youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
         - name: Integration in Azure-Dienst
           href: 'https://youtu.be/m26iLu6DHbU'
         - name: Integration in Azure Application Gateway
@@ -229,7 +229,7 @@
 - name: Verweis
   items:
     - name: REST-API
-      href: /rest/api/avs
+      href: /rest/api/avs/
     - name: Azure CLI
       href: /cli/azure/vmware
     - name: Azure PowerShell

@@ -1,25 +1,25 @@
 ---
 title: API-Spezifikation der ARM-Vorlage für Container Apps (Vorschau)
 description: Sehen Sie sich die verfügbaren Eigenschaften in der ARM-Vorlage für Container Apps an.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: reference
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f59046a431e872c11f7b03ffff30240beb330f37
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b0f0c4c360b8b9b3cdbe78c833df2a76c2b27d84
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095010"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323522"
 ---
 # <a name="container-apps-preview-arm-template-api-specification"></a>API-Spezifikation der ARM-Vorlage für Container Apps (Vorschau)
 
 Azure Container Apps-Bereitstellungen basieren auf einer Azure Resource Manager-Vorlage (ARM). In den folgenden Tabellen werden die Eigenschaften beschrieben, die in der ARM-Vorlage der Container-App verfügbar sind.
 
-Die [ARM-Beispielvorlage für Verwendungsbeispiele](#example)
+Die [ARM-Beispielvorlage für Verwendungsbeispiele](#example).
 
 ## <a name="resources"></a>Ressourcen
 

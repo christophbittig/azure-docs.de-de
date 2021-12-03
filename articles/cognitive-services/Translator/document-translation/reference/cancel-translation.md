@@ -3,19 +3,17 @@ title: Methode „Abbrechen der Übersetzung“
 titleSuffix: Azure Cognitive Services
 description: Die Methode „Abbrechen der Übersetzung“ (Cancel translation) bricht einen aktuell verarbeiteten oder in die Warteschlange eingereihten Vorgang ab.
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/20/2021
-ms.author: v-jansk
-ms.openlocfilehash: eb8411717d0229b13571284176da7ccc113cf828
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 8bf718da42dbd29c864736209cf441b03f3c9e1b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112540738"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059258"
 ---
 # <a name="cancel-translation"></a>Abbrechen der Übersetzung
 

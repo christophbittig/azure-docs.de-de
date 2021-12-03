@@ -9,12 +9,13 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: e10a31b2156cce03dcef40a88f5cb380f12dd03c
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d72db64026ff3d4d4cee759b34047662248737a6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835523"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845131"
 ---
 # <a name="quickstart-configure-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>Schnellstart: Konfigurieren der Voraussetzungen für die Verwendung von Cognitive Services in Azure Synapse Analytics
 
@@ -39,7 +40,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-cognitive-services-resource"></a>Erstellen einer Cognitive Services-Ressource
 
-[Azure Cognitive Services](../../cognitive-services/index.yml) beinhaltet zahlreiche Typen von Diensten. Textanalyse und Anomalieerkennung sind zwei Beispiele in den Azure Synapse-Tutorials.
+[Azure Cognitive Services](../../cognitive-services/index.yml) beinhaltet zahlreiche Typen von Diensten. Die folgenden Dienste sind Beispiele, die in den Azure Synapse-Tutorials verwendet werden.
 
 Sie können eine [Textanalyseressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) im Azure-Portal erstellen:
 
@@ -49,10 +50,32 @@ Sie können eine [Anomalieerkennungsressource](https://ms.portal.azure.com/#crea
 
 ![Screenshot: Anomalieerkennung im Portal mit der Schaltfläche „Erstellen“](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00a.png)
 
+Sie können im Azure-Portal eine Ressource des Typs [Formularerkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) erstellen:
+
+![Screenshot: Formularerkennung im Portal mit der Schaltfläche „Erstellen“.](media/tutorial-configure-cognitive-services/tutorial-configure-form-recognizer.png)
+
+Sie können im Azure-Portal eine Ressource des Typs [Textübersetzung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) erstellen:
+
+![Screenshot: Textübersetzung im Portal mit der Schaltfläche „Erstellen“.](media/tutorial-configure-cognitive-services/tutorial-configure-translator.png)
+
+Sie können im Azure-Portal eine Ressource des Typs [Maschinelles Sehen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision) erstellen:
+
+![Screenshot: maschinelles Sehen im Portal mit der Schaltfläche „Erstellen“.](media/tutorial-configure-cognitive-services/tutorial-configure-computer-vision.png)
+
+
+Erstellen Sie im Azure-Portal eine Ressource des Typs [Gesicht](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace):
+
+![Screenshot: „Gesicht“ im Portal mit der Schaltfläche „Erstellen“.](media/tutorial-configure-cognitive-services/tutorial-configure-face.png)
+
+
+Sie können im Azure-Portal eine Ressource des Typs [Sprache](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices) erstellen:
+
+![Screenshot: Sprache im Portal mit der Schaltfläche „Erstellen“.](media/tutorial-configure-cognitive-services/tutorial-configure-speech.png)
+
 ## <a name="create-a-key-vault-and-configure-secrets-and-access"></a>Erstellen eines Schlüsseltresors und Konfigurieren von Geheimnissen und Zugriff
 
 1. Erstellen Sie einen [Schlüsseltresor](https://ms.portal.azure.com/#create/Microsoft.KeyVault) im Azure-Portal.
-2. Navigieren Sie zu **Key Vault** > **Zugriffsrichtlinien**, und gewähren Sie der [MSI des Azure Synapse-Arbeitsbereichs](../security/synapse-workspace-managed-identity.md) Berechtigungen zum Lesen von Geheimnissen aus Azure Key Vault.
+2. Navigieren Sie zu **Key Vault** > **Zugriffsrichtlinien**, und gewähren Sie der [MSI des Azure Synapse-Arbeitsbereichs](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics) Berechtigungen zum Lesen von Geheimnissen aus Azure Key Vault.
 
    > [!NOTE]
    > Stellen Sie sicher, dass die Richtlinienänderungen gespeichert werden. Dieser Schritt ist leicht zu übersehen.

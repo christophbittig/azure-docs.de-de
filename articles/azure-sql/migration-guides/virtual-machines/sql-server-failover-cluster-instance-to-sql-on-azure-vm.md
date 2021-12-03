@@ -8,12 +8,12 @@ manager: bsiva
 ms.topic: how-to
 ms.date: 4/25/2021
 ms.author: rahugup
-ms.openlocfilehash: 27b0841e601fb7d2eaa7712495b7440a0b886d7c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: a1ae8cd56d705df0234425488029ca7073c6dfea
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113769261"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347706"
 ---
 # <a name="migrate-failover-cluster-instance-to-sql-server-on-azure-vms"></a>Migrieren einer Failoverclusterinstanz zu SQL Server auf Azure-VMs
 
@@ -325,7 +325,7 @@ Konfigurieren Sie nach der Migration Ihrer virtuellen Computer den Cluster neu. 
    NumberofNodes | Optional | Geben Sie die Anzahl der Knoten in Ihrer Failoverclusterinstanz an. Mit diesem Parameter wird die richtige SKU für die freigegebenen Datenträger identifiziert, die erstellt werden sollen. Standardmäßig geht das Skript davon aus, dass die Anzahl der Knoten im Cluster 2 beträgt.   
    DiskNamePrefix | Optional | Geben Sie das Präfix an, das Sie den Namen Ihrer freigegebenen Datenträger hinzufügen möchten. 
    
-   ```powershell 
+   ```powershell
    ./Create-SharedDisks.ps1 -ResourceGroupName $resoucegroupname -NumberofNodes $nodesincluster -DiskNamePrefix $disknameprefix 
    ```
 
@@ -336,7 +336,7 @@ Konfigurieren Sie nach der Migration Ihrer virtuellen Computer den Cluster neu. 
    ResourceGroupName | Obligatorisch. | Geben Sie den Namen der Ressourcengruppe an, die die migrierten Server enthält.
    StartingLunNumber | Optional |Geben Sie die Start-LUN-Nummer an, der die freigegebenen Datenträger angefügt werden können. Standardmäßig versucht das Skript, freigegebene Datenträger LUNs ab 0 anzufügen.  
    
-   ```powershell 
+   ```powershell
    ./Attach-ShareDisks.ps1 -ResourceGroupName $resoucegroupname 
    ```
 
@@ -374,10 +374,10 @@ Ihre SQL Server-Failoverclusterinstanz ist bereit.
     - Schützen Sie Ihre Daten, indem Sie Azure-VMs mit dem [Azure Backup-Dienst](../../../backup/quick-backup-vm-portal.md) sichern. 
     - Sorgen Sie für die kontinuierliche Ausführung und Verfügbarkeit von Workloads, indem Sie Azure-VMs mithilfe von [Site Recovery](../../../site-recovery/azure-to-azure-tutorial-enable-replication.md) in eine sekundäre Region replizieren.
 - Beachten Sie zur Steigerung der Sicherheit Folgendes:
-    - Sperren und beschränken Sie den Zugriff von eingehendem Datenverkehr mit der [Just-in-Time-Verwaltung im Azure Security Center](../../../security-center/security-center-just-in-time.md).
+    - Sperren und beschränken Sie den Zugriff von eingehendem Datenverkehr mit der [Just-In-Time-Verwaltung bei Microsoft Defender für Cloud](../../../security-center/security-center-just-in-time.md).
     - Beschränken Sie den Netzwerkdatenverkehr mithilfe von [Netzwerksicherheitsgruppen](../../../virtual-network/network-security-groups-overview.md) auf Verwaltungsendpunkte.
     - Stellen Sie [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) bereit, um Datenträger und Daten vor Diebstahl und unbefugtem Zugriff zu schützen.
-    - Erfahren Sie mehr über das [Sichern von IaaS-Ressourcen](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/), und besuchen Sie die Website [Azure Security Center](https://azure.microsoft.com/services/security-center/).
+    - Erfahren Sie mehr über das [Schützen von IaaS-Ressourcen](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/), und besuchen Sie die Webseite [Microsoft Defender für Cloud](https://azure.microsoft.com/services/security-center/).
 - Beachten Sie zur Überwachung und Verwaltung Folgendes:
     - Ziehen Sie die Bereitstellung von [Azure Cost Management](../../../cost-management-billing/cost-management-billing-overview.md) in Erwägung, um den Ressourceneinsatz und die Ausgaben zu überwachen.
 

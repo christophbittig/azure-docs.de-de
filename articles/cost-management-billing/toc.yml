@@ -180,7 +180,7 @@
               href: manage/azurestudents-subscription-disabled.md
             - name: Einrichten und Konfigurieren der AWS-Integration
               href: costs/aws-integration-set-up-configure.md
-            - name: Einrichten der Zahlung per Rechnung
+            - name: Bezahlen per Scheck oder Überweisung
               href: manage/pay-by-invoice.md
             - name: Erstellen zusätzlicher Abonnements
               href: manage/create-subscription.md

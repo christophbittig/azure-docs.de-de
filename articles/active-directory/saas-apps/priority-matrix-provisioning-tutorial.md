@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: thwimmer
-ms.openlocfilehash: faa893f02f83259e7f13be64aa076d20a0342006
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 6e2efe17e07e51708e4d1de68a7ce0aeea3594aa
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766364"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989209"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Priority Matrix für die automatische Benutzerbereitstellung
 
@@ -34,6 +34,9 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * Einen Azure AD-Mandanten
 * [Einen Priority Matrix-Mandanten](https://appfluence.com/pricing/)
 * Ein Benutzerkonto in Priority Matrix mit Administratorberechtigungen
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="assign-users-to-priority-matrix"></a>Zuweisen von Benutzern zu Priority Matrix
 

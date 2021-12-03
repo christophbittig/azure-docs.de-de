@@ -3,14 +3,14 @@ title: Hochladen und Indizieren von Videos mit Azure Video Analyzer for Media (f
 description: In diesem Thema wird veranschaulicht, wie Sie APIs zum Hochladen und Indizieren Ihrer Videos mit Azure Video Analyzer for Media (früher Video Indexer) verwenden.
 ms.service: azure-video-analyzer
 ms.topic: article
-ms.date: 05/12/2021
+ms.date: 11/15/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 507e92a83f2c8f9f0a21368808b57b1fadc1b64d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f2a9aa291937afcb55739cfdb4532d0a59f2bc9f
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131071684"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519589"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -317,13 +317,13 @@ public class AccountContractSlim
 
 ### <a name="arm-account"></a>[ARM-Konto](#tab/with-arm-account-account/)
 
-Nachdem Sie dieses c#-Projekt in Ihre Entwicklungsplattform kopiert haben, müssen Sie Folgendes ausführen: 
-1. Wechseln Sie zu Program.cs, und geben ```SubscriptionId``` Sie ihre Abonnement-ID ein.
+Nachdem Sie dieses C#-Projekt auf Ihre Entwicklungsplattform kopiert haben, müssen Sie Folgendes ausführen: 
+1. Wechseln Sie zu „Program.cs“, und geben Sie für ```SubscriptionId``` Ihre Abonnement-ID ein.
 2. Wechseln Sie zu Program.cs, und geben ```ResourceGroup``` Sie ihre Ressourcengruppe ein.
 3. Wechseln Sie zu Program.cs, und geben ```AccountName``` Sie ihren Accountnamen ein.
-4. Wechseln Sie zu Program.cs, und geben ```VideoUrl``` Sie ihre Video-URL ein.
-5. Stellen Sie sicher, dass dotnet 6.0 installiert ist. Falls nicht, klicken Sie [hier,](https://dotnet.microsoft.com/download/dotnet/6.0) zum Installieren.
-6. Stellen Sie sicher, dass Azure CLI installiert ist. Falls nicht, klicken Sie [hier,](/cli/azure/install-azure-cli) zum Installieren.
+4. Wechseln Sie zu „Program.cs“, und geben Sie für ```VideoUrl``` Ihre Video-URL ein.
+5. Stellen Sie sicher, dass dotnet 6.0 installiert ist. Wenn dies nicht der Fall ist, [installieren Sie diese Version](https://dotnet.microsoft.com/download/dotnet/6.0).
+6. Stellen Sie sicher, dass Azure CLI installiert ist. Wenn dies nicht der Fall ist, [installieren Sie sie](/cli/azure/install-azure-cli).
 7. Öffnen Sie Ihr Terminal, und navigieren Sie zum Ordner VideoIndexerArm.
 8. Melden Sie sich bei Azure an: ```az login --use-device```
 9. Erstellen Sie das Projekt: ```dotnet build```

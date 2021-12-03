@@ -12,12 +12,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 02/03/2021
-  ms.openlocfilehash: 7f0ac9bc80068830d02636ba85f1846b4e86c690
-  ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
+  ms.openlocfilehash: c4ca7c2c295d3239a5becc255cb951ab7ad92882
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/21/2021
-  ms.locfileid: "112422829"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132718049"
 landingContent:
 - title: Informationen zur Azure-Sicherheit
   linkLists:
@@ -45,7 +45,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Security Center
+    - text: Microsoft Defender für Cloud
       url: ../../security-center/security-center-introduction.md
   - linkListType: concept
     links:
@@ -100,4 +100,4 @@ landingContent:
     - text: Implementieren der Sicherheit für die Ressourcenverwaltung
       url: /learn/paths/implement-resource-mgmt-security
     - text: Implementieren der VM-Hostsicherheit
-      url: https://docs.microsoft.com/learn/paths/implement-host-security
+      url: /learn/paths/implement-host-security

@@ -12,14 +12,14 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: 1a600bf3e3525535e7438559674342c629aa5887
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 2ac26b4815cce980e456777c8d47d958e74fa48f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613681"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546422"
 ---
-# <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Beheben von Problemen mit dem SAML-basierten einmaligen Anmelden in Azure Active Directory
+# <a name="troubleshoot-saml-based-single-sign-on"></a>Problembehandlung bei SAML-basiertem einmaligem Anmelden
 
 Wenn beim Konfigurieren einer Anwendung ein Problem auftritt: Stellen Sie sicher, dass Sie alle Schritte im Lernprogramm für die Anwendung ausgeführt haben. Die Konfiguration der Anwendung umfasst eine Inlinedokumentation zum Konfigurieren der Anwendung. Darüber hinaus finden Sie in der [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md) ausführliche schrittweise Anweisungen.
 

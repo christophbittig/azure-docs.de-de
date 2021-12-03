@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 2a7675f4a31971e37af192f84a997c5f2200e78c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a77c7dc271ec31f04233d9251ce1e8d220c9c7dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124760714"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>Tutorial: Azure Active Directory-Integration von TAS
 
@@ -143,9 +143,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     >[!NOTE]
     > Wenden Sie sich an das [TAS-Supportteam](mailto:support@combtas.com), um die IP-Adresse zu erhalten.
 
-    f. Kopieren Sie die **URL für einmaliges Anmelden**, und fügen Sie die URL im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in die Textfelder **Bezeichner (Entitäts-ID)** und **Anmelde-URL** ein. Bei der URL muss die Groß-/Kleinschreibung beachtet werden, und am Ende der URL muss ein Schrägstrich (/) stehen.
+    f. Kopieren Sie die URL für **einmaliges Anmelden**, und fügen Sie die URL in den **Bezeichner (Entitäts-ID)** und ins Textfeld **URL zum einmaligen Anmelden** der **Basic SAML-Konfiguration** im Azure-Portal ein. Bei der URL muss die Groß-/Kleinschreibung beachtet werden, und am Ende der URL muss ein Schrägstrich (/) stehen.
 
-    g. Kopieren Sie auf der Setupseite die **Assertionsverbraucherdienst-URL**, und fügen Sie die URL im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Antwort-URL** ein.
+    g. Kopieren Sie auf der Setupseite die **Assertionsdiensts-URL**, und fügen Sie die sie ins Textfeld **Antwort-URL** der **Basic SAML-Konfiguration** im Azure-Portal ein.
 
     h. Klicken Sie auf **SSO-Zeile einfügen**.
 
@@ -171,4 +171,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von TAS können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von TAS können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

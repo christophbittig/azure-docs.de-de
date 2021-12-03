@@ -6,14 +6,14 @@ author: mhamilton723
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: sample
-ms.date: 07/06/2020
+ms.date: 10/28/2021
 ms.author: marhamil
-ms.openlocfilehash: c47aa803774343b39efeabe3452f1b256cc64c0d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 154317217ce22196ddde1e4a3c04c39d5eafc0ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363271"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469804"
 ---
 # <a name="quick-examples"></a>Kurze Beispiele
 
@@ -21,7 +21,7 @@ Die folgenden Codeausschnitte sind bereit zur Ausführung und helfen Ihnen beim 
 
 Für die Beispiele werden diese Cognitive Services-Komponenten verwendet:
 
-- Textanalyse: Ermitteln der Stimmung (oder Laune) in einer Reihe von Sätzen
+- Sprachdienst: Ermitteln der Stimmung (oder der Laune) in verschiedenen Sätzen
 - Maschinelles Sehen: Abrufen der Tags (Einwortbeschreibungen) die einem Satz von Bildern zugeordnet sind
 - Bing-Bildersuche: Suchen im Web nach Bildern im Zusammenhang mit einer Abfrage in natürlicher Sprache
 - Spracherkennung: Transkribieren von Audiodateien zum Extrahieren textbasierter Transkriptionen
@@ -47,9 +47,9 @@ val serviceKey = "ADD-YOUR-SUBSCRIPTION-KEY"
 val location = "eastus"
 ```
 
-## <a name="text-analytics"></a>Textanalyse
+## <a name="language-service"></a>Sprachdienst
 
-Der [Textanalyse](../text-analytics/index.yml)-Dienst bietet mehrere Algorithmen zum Extrahieren intelligenter Erkenntnisse aus Text. Beispielsweise können wir die Stimmung eines Eingabetexts ermitteln. Der Dienst gibt eine Bewertung zwischen `0.0` und `1.0` zurück, wobei niedrige Scores auf eine negative Stimmung und hohe Scores auf eine positive Stimmung hindeuten.  Im folgenden Beispiel werden drei einfache Sätze verwendet, und es wird jeweils ein Score für die Stimmung zurückgegeben.
+Der [Sprachdienst](../language-service/index.yml) bietet mehrere Algorithmen zum Extrahieren intelligenter Erkenntnisse aus Text. Beispielsweise können wir die Stimmung eines Eingabetexts ermitteln. Der Dienst gibt eine Bewertung zwischen `0.0` und `1.0` zurück, wobei niedrige Scores auf eine negative Stimmung und hohe Scores auf eine positive Stimmung hindeuten.  Im folgenden Beispiel werden drei einfache Sätze verwendet, und es wird jeweils ein Score für die Stimmung zurückgegeben.
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -112,7 +112,7 @@ display(analysis.transform(df).select(col("image"), col("results").getItem("tags
 
 | image | tags |
 |:------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|
-| https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg | [„Skaten“ „Person“ „Mann“ „draußen“ „Reiten“ „Sport“ „Skateboard“ „jung“ „Brett“ „Hemd“ „Luft“ „schwarz“ „Park“ „Junge“ „Seite“ „Springen „Trick“ „Rampe“ „tun“ „Fliegen“]
+| https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg | [„Skaten“ „Person“ „Mann“ „im Freien“ „Reiten“ „Sport“ „Skateboard“ „jung“ „Brett“ „Hemd“ „Luft“ „schwarz“ „Park“ „Junge“ „Seite“ „Springen „Trick“ „Rampe“ „tun“ „Fliegen“]
 | https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/dog.jpg | [„Hund“ „draußen“ „Zaun“ „hölzern“ „klein“ „braun“ „Gebäude“ „Sitzen“ „vorne“ „Bank“ „Stehen“ „Tisch“ „Gehen“ „Brett“ „Strand“ „weiß“ „Halten“ „Brücke“ „Spur“]                
 | https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/house.jpg | [„draußen“ „Gras“ „Haus“ „Gebäude“ „alt“ „Zuhause“ „vorne“ „klein“ „Kirche“ „Stein“ „groß“ „Grasen“ „Hof“ „grün“ „Sitzen“ „Führen“ „Schafe“ „Ziegel“ „Bank“„Straße“ „weiß“ „Land“ „Uhr“ „Schild“„geparkt“„Feld“„Stehen“„Garten“„Wasser“„rot“ „Pferd“ „Mann“ „groß“ „Feuer“ „Gruppe“] 
 

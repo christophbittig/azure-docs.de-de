@@ -1,16 +1,16 @@
 ---
-author: DCtheGeek
+author: georgewallace
 ms.service: resource-graph
 ms.topic: include
-ms.date: 09/03/2021
-ms.author: dacoulte
+ms.date: 10/12/2021
+ms.author: gwallace
 ms.custom: generated
-ms.openlocfilehash: 60ce5f19b16926692da046eb4bd910fb9f9a1548
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 78a85558ea39fb483ee45cbc8e6850573c1791e2
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536255"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132052976"
 ---
 ### <a name="get-count-and-percentage-of-arc-enabled-servers-by-domain"></a>Abrufen der Anzahl und des Prozentsatzes von Servern mit Arc-Unterstützung nach Domäne
 
@@ -50,7 +50,7 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.hybridcompute/machin
 
 ### <a name="list-all-extensions-installed-on-an-azure-arc-enabled-server"></a>Auflisten aller Erweiterungen, die auf einem Server mit Azure Arc-Unterstützung installiert sind
 
-Zunächst verwendet diese Abfrage `project` für den Hybridcomputer-Ressourcentyp, um die ID in Großbuchstaben (`toupper()`), den Computernamen und das auf dem Computer ausgeführte Betriebssystem abzurufen. Das Abrufen der Ressourcen-ID in Großbuchstaben ist eine gute Möglichkeit, einen `join`-Vorgang für eine andere Eigenschaft vorzubereiten. Anschließend wird für die Abfrage `join` mit _leftouter_ für **kind** verwendet, um Erweiterungen abzurufen. Hierfür wird ein Abgleich mit dem `substring`-Element der Erweiterungs-ID in Großbuchstaben durchgeführt. Da der Teil der ID vor `/extensions/<ExtensionName>` das gleiche Format wie die ID des Hybridcomputers hat, verwenden Sie diese Eigenschaft für den `join`-Vorgang. `summarize` wird dann mit `make_list` im Namen der VM-Erweiterung verwendet, um die Namen der einzelnen Erweiterungen zu kombinieren. Hierbei sind _id_, _OSName_ und _ComputerName_ für jede Arrayeigenschaft jeweils identisch. Abschließend erfolgt eine Sortierung in Kleinbuchstaben nach _OSName_ mit **asc**. Standardmäßig wird für `order by` „descending“ (absteigend) und nicht „ascending“ (aufsteigend) verwendet.
+Zunächst verwendet diese Abfrage `project` für den Hybridcomputer-Ressourcentyp, um die ID in Großbuchstaben (`toupper()`), den Computernamen und das auf dem Computer ausgeführte Betriebssystem abzurufen. Das Abrufen der Ressourcen-ID in Großbuchstaben ist eine gute Möglichkeit, um einen `join`-Vorgang für eine andere Eigenschaft vorzubereiten. Anschließend wird für die Abfrage `join` mit _leftouter_ für **kind** verwendet, um Erweiterungen abzurufen. Hierfür wird ein Abgleich mit dem `substring`-Element der Erweiterungs-ID in Großbuchstaben durchgeführt. Da der Teil der ID vor `/extensions/<ExtensionName>` das gleiche Format wie die ID des Hybridcomputers hat, verwenden Sie diese Eigenschaft für den `join`-Vorgang. `summarize` wird dann mit `make_list` im Namen der VM-Erweiterung verwendet, um die Namen der einzelnen Erweiterungen zu kombinieren. Hierbei sind _id_, _OSName_ und _ComputerName_ für jede Arrayeigenschaft jeweils identisch. Abschließend erfolgt eine Sortierung in Kleinbuchstaben nach _OSName_ mit **asc**. Standardmäßig wird für `order by` „descending“ (absteigend) und nicht „ascending“ (aufsteigend) verwendet.
 
 ```kusto
 Resources
@@ -74,7 +74,7 @@ Resources
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
-az graph query -q "Resources | where type == 'microsoft.hybridcompute/machines' | project id, JoinID = toupper(id), ComputerName = tostring(properties.osProfile.computerName), OSName = tostring(properties.osName) | join kind=leftouter( Resources | where type == 'microsoft.hybridcompute/machines/extensions' | project  MachineId = toupper(substring(id, 0, indexof(id, '/extensions'))),  ExtensionName = name ) on $left.JoinID == $right.MachineId | summarize Extensions = make_list(ExtensionName) by id, ComputerName, OSName | order by tolower(OSName) asc"
+az graph query -q "Resources | where type == 'microsoft.hybridcompute/machines' | project id, JoinID = toupper(id), ComputerName = tostring(properties.osProfile.computerName), OSName = tostring(properties.osName) | join kind=leftouter( Resources | where type == 'microsoft.hybridcompute/machines/extensions' | project  MachineId = toupper(substring(id, 0, indexof(id, '/extensions'))),  ExtensionName = name ) on \$left.JoinID == \$right.MachineId | summarize Extensions = make_list(ExtensionName) by id, ComputerName, OSName | order by tolower(OSName) asc"
 ```
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
@@ -95,7 +95,7 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.hybridcompute/machin
 
 ### <a name="list-arc-enabled-servers-not-running-latest-released-agent-version"></a>Auflisten von Servern mit Arc-Unterstützung, auf denen nicht die neueste veröffentlichte Agent-Version ausgeführt wird
 
-Diese Abfrage gibt alle Server mit Arc-Unterstützung zurück, auf denen eine veraltete Version des Connected Machine-Agents ausgeführt wird. Agents mit dem Status **Abgelaufen** werden aus den Ergebnissen ausgeschlossen. Die Abfrage verwendet das _leftouter_-Element `join`, um die Advisor-Empfehlungen zu allen Connected Machine-Agents, die als veraltet identifiziert wurden, und Hybridcomputern zusammenzuführen, um alle Agents herauszufiltern, die über einen bestimmten Zeitraum nicht mit Azure kommuniziert haben.
+Diese Abfrage gibt alle Server mit Arc-Unterstützung zurück, auf denen eine veraltete Version des Connected Machine-Agents ausgeführt wird. Agents mit dem Status **Abgelaufen** werden aus den Ergebnissen ausgeschlossen. Die Abfrage verwendet das _leftouter_-Element `join`, um die Advisor-Empfehlungen zu allen Connected Machine-Agents, die als veraltet identifiziert wurden, und Hybridcomputern zusammenzuführen, um alle Agents herauszufiltern, die über einen bestimmten Zeitraum nicht mit Azure kommuniziert haben.
 
 ```kusto
 AdvisorResources
@@ -123,7 +123,7 @@ AdvisorResources
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
-az graph query -q "AdvisorResources | where type == 'microsoft.advisor/recommendations' | where properties.category == 'HighAvailability' | where properties.shortDescription.solution == 'Upgrade to the latest version of the Azure Connected Machine agent' | project  id,  JoinId = toupper(properties.resourceMetadata.resourceId),  machineName = tostring(properties.impactedValue),  agentVersion = tostring(properties.extendedProperties.installedVersion),  expectedVersion = tostring(properties.extendedProperties.latestVersion) | join kind=leftouter( Resources | where type == 'microsoft.hybridcompute/machines' | project  machineId = toupper(id),  status = tostring (properties.status) ) on $left.JoinId == $right.machineId | where status != 'Expired' | summarize by id, machineName, agentVersion, expectedVersion | order by tolower(machineName) asc"
+az graph query -q "AdvisorResources | where type == 'microsoft.advisor/recommendations' | where properties.category == 'HighAvailability' | where properties.shortDescription.solution == 'Upgrade to the latest version of the Azure Connected Machine agent' | project  id,  JoinId = toupper(properties.resourceMetadata.resourceId),  machineName = tostring(properties.impactedValue),  agentVersion = tostring(properties.extendedProperties.installedVersion),  expectedVersion = tostring(properties.extendedProperties.latestVersion) | join kind=leftouter( Resources | where type == 'microsoft.hybridcompute/machines' | project  machineId = toupper(id),  status = tostring (properties.status) ) on \$left.JoinId == \$right.machineId | where status != 'Expired' | summarize by id, machineName, agentVersion, expectedVersion | order by tolower(machineName) asc"
 ```
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)

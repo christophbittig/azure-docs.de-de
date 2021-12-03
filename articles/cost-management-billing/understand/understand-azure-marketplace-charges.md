@@ -2,20 +2,20 @@
 title: Grundlegendes zu Azure-Gebühren für externe Dienste
 description: Informieren Sie sich über die Gebührenabrechnung für externe Dienste in Azure (früher Marketplace).
 author: bandersmsft
-ms.reviewer: judupont
+ms.reviewer: sapnakeshari
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/20/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee3e5b7b172bc6441e0148c3cbfa4bab02e6949b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c3ac9a13342d6e3fb46c9a1c709a22b67b6eeb9a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128586464"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252020"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Grundlegendes zu Azure-Gebühren für externe Dienste
 Externe Dienste werden von Drittanbietern im Azure Marketplace veröffentlicht. Ein Beispiel für einen externen Dienst, den Sie in Azure erwerben können, der jedoch nicht von Microsoft veröffentlicht wird, ist SendGrid. Einige Microsoft-Produkte sind auch über den Azure Marketplace erhältlich.
@@ -49,6 +49,8 @@ You can view a list of the external services that are on each subscription withi
 ## <a name="external-spending-for-ea-customers"></a>Externe Ausgaben für EA-Kunden
 
 EA-Kunden können im EA-Portal die Ausgaben für externe Dienste anzeigen und Berichte herunterladen. Informationen zum Einstieg finden Sie unter [Azure Marketplace for EA Customers](https://ea.azure.com/helpdocs/azureMarketplace) (Azure Marketplace für EA-Kunden).
+
+Direkte EA-Kunden können Ausgaben für externe Dienste im [Azure-Portal](https://portal.azure.com) anzeigen. Navigieren Sie zum Menü „Verbrauch + Gebühren“, um die Azure Marketplace-Gebühren anzuzeigen und herunterzuladen.
 
 ## <a name="view-and-download-invoices-for-external-services"></a>Anzeigen und Herunterladen von Rechnungen für externe Dienste
 

@@ -2,14 +2,14 @@
 title: Hinzufügen eines Artefaktrepositorys zu Ihrem Lab
 description: Erfahren Sie, wie Sie Ihr eigenes Artefaktrepository für Ihr Lab in Azure DevTest Labs angeben, um Tools zu speichern, die im öffentlichen Artefaktrepository nicht verfügbar sind.
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 10/19/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 83a1cbb6c25c76d23977219d8e3b46491bbb363b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 16c555e73639ee9c34ac353b43e828c1a6afbbe4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644446"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229292"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Hinzufügen eines Artefaktrepositorys zu Ihrem Lab in DevTest Labs
 DevTest Labs ermöglicht das Angeben eines Artefakts, das einem virtuellen Computer hinzugefügt werden soll – entweder beim Erstellen des virtuellen Computers oder nach Erstellung des virtuellen Computers. Bei diesem Artefakt kann es sich beispielsweise um ein Tool oder um eine Anwendung handeln, das bzw. die Sie auf dem virtuellen Computer installieren möchten. Artefakte werden in einer JSON-Datei definiert, die aus einem GitHub- oder Azure DevOps-Git-Repository geladen wird.
@@ -46,9 +46,9 @@ Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wich
 7. Wählen Sie auf der Registerkarte **Sicherheit > Persönliche Zugriffstoken** die Option **+ Neues Token** aus.
 8. Gehen Sie auf der Seite **Neues persönliches Zugriffstoken erstellen** folgendermaßen vor:
    1. Geben Sie unter **Name** einen Namen für das Token ein.
-   2. Wählen Sie in der Liste **Organisation** die Option **Alle zugänglichen Organisationen** aus.
+   2. Wählen Sie in der Liste **Organisation** die Organisation aus, zu der das Repository gehört.
    3. Wählen Sie in der Liste **Ablaufzeit (UTC)** die Option **90 Tage** oder einen benutzerdefinierten Zeitraum aus.
-   4. Wählen Sie für „Bereiche“ die Option **Vollzugriff** aus.
+   4. Wählen Sie die Option **Benutzerdefiniert** für Bereiche aus, und wählen Sie nur **Code - Lesen** aus.
    5. Klicken Sie auf **Erstellen**.
 9. Das neue Token wird in der Liste **Persönliche Zugriffstokens** angezeigt. Wählen Sie **Token kopieren**, und speichern Sie den Tokenwert für die spätere Verwendung.
 10. Fahren Sie mit dem Abschnitt zum Herstellen der Verbindung zwischen Ihrem Lab und dem Repository fort.
@@ -80,7 +80,7 @@ Vorlagen für die Azure-Ressourcenverwaltung (Azure Resource Manager-Vorlagen) s
 In diesem Abschnitt erfahren Sie, wie Sie einem Lab unter Verwendung einer Azure Resource Manager-Vorlage ein Artefaktrepository hinzufügen.  Die Vorlage erstellt das Lab, falls es noch nicht vorhanden ist.
 
 ### <a name="template"></a>Vorlage
-Die in diesem Artikel verwendete Beispielvorlage sammelt über Parameter folgende Informationen. Die meisten Parameter besitzen zwar intelligente Standardwerte, einige Werte müssen jedoch angegeben werden. Sie müssen den Labnamen, den URI für das Artefaktrepository und das Sicherheitstoken für das Repository angeben.
+Die in diesem Artikel verwendete Beispielvorlage sammelt über Parameter folgende Informationen. Die meisten Parameter besitzen zwar intelligente Standardwerte, einige Werte müssen jedoch angegeben werden. Sie müssen den Lab-Namen, den URI für das Artefaktrepository und das Sicherheitstoken für das Repository angeben.
 
 - Labname:
 - Anzeigename für das Artefaktrepository auf der Benutzeroberfläche von DevTest Labs. Standardwert: `Team Repository`.
@@ -171,7 +171,7 @@ Erstellen Sie zunächst mit [New-AzResourceGroup](/powershell/module/az.resource
 New-AzResourceGroup -Name MyLabResourceGroup1 -Location westus
 ```
 
-Erstellen Sie als Nächstes mit [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) eine Bereitstellung für die Ressourcengruppe. Dieses Cmdlet wendet die Ressourcenänderungen auf Azure an. Für jede Ressourcengruppe können mehrere Ressourcenbereitstellungen ausgeführt werden. Falls Sie mehrmals etwas in der gleichen Ressourcengruppe bereitstellen, achten Sie darauf, dass der Name jeder Bereitstellung eindeutig ist.
+Erstellen Sie als Nächstes mit [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) eine Bereitstellung für die Ressourcengruppe. Dieses Cmdlet wendet die Ressourcenänderungen auf Azure an. Für jede Ressourcengruppe können mehrere Ressourcenbereitstellungen ausgeführt werden. Falls Sie mehrere Bereitstellungen in der gleichen Ressourcengruppe ausführen, achten Sie darauf, dass der Name jeder Bereitstellung eindeutig ist.
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -342,13 +342,13 @@ Das PowerShell-Beispielskript in diesem Artikel verwendet folgende Parameter:
 | Parameter | BESCHREIBUNG |
 | --------- | ----------- |
 | LabName | Der Name des Labs. |
-| ArtifactRepositoryName | Der Name für das neue Artefaktrepository. Ohne Angabe erstellt das Skript einen Zufallsnamen für das Repository. |
+| ArtifactRepositoryName | Der Name für das neue Artefaktrepository. Ohne Angabe eines Namens erstellt das Skript einen Zufallsnamen für das Repository. |
 | ArtifactRepositoryDisplayName | Der Anzeigename für das Artefaktrepository. Dieser Name wird im Azure-Portal (https://portal.azure.com) angezeigt, wenn alle Artefaktrepositorys für ein Lab angezeigt werden. |
 | RepositoryUri | Der URI für das Repository. Beispiele: `https://github.com/<myteam>/<nameofrepo>.git`, `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.|
-| RepositoryBranch | Branch, in dem sich Artefaktdateien befinden. Standardwert: „master“. |
+| RepositoryBranch | Branch, in dem sich Artefaktdateien befinden. Wird standardmäßig auf `master` festgelegt. |
 | FolderPath | Ordner, in dem sich Artefakte befinden. Standardwert: „/Artifacts“. |
 | PersonalAccessToken | Das Sicherheitstoken für den Zugriff auf das GitHub- oder VSO Git-Repository. Eine Anleitung zum Abrufen des persönlichen Zugriffstokens finden Sie im Abschnitt „Voraussetzungen“. |
-| SourceType | Gibt an, ob sich das Artefakt in einem VSO Git- oder in einem GitHub-Repository befindet. |
+| SourceType | Gibt an, ob sich das Artefakt in einem VSOGit- oder in einem GitHub-Repository befindet. |
 
 Das Repository selbst muss zur Identifizierung über einen internen Namen verfügen. Dieser unterscheidet sich von dem Namen, der im Azure-Portal angezeigt wird. Der interne Name wird bei Verwendung von Azure-REST-APIs sowie bei Verwendung von Azure PowerShell angezeigt, nicht aber im Azure-Portal. Falls der Skriptbenutzer keinen Namen angibt, wird durch das Skript ein Name festgelegt.
 

@@ -1,28 +1,28 @@
 ---
-title: Verwalten von Vorlagenversionen für Ihre geplanten Analyseregeln in Azure Sentinel
+title: Verwalten von Vorlagenversionen für Ihre geplanten Analyseregeln in Microsoft Sentinel
 description: Erfahren Sie, wie Sie die Beziehung zwischen Ihren Vorlagen für geplante Analyseregeln und den aus diesen Vorlagen erstellten Regeln verwalten. Außerdem erhalten Sie Informationen dazu, wie Sie Aktualisierungen der Vorlagen mit Ihren Regeln zusammenführen und Änderungen in Ihren Regeln auf die ursprüngliche Vorlage zurücksetzen.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 27e6a78ec66b3427aa911abba5d7f4cdda20d876
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5845dfd88e3377eacff5b1d27ab927df422e4556
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023080"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522952"
 ---
-# <a name="manage-template-versions-for-your-scheduled-analytics-rules-in-azure-sentinel"></a>Verwalten von Vorlagenversionen für Ihre geplanten Analyseregeln in Azure Sentinel
+# <a name="manage-template-versions-for-your-scheduled-analytics-rules-in-microsoft-sentinel"></a>Verwalten von Vorlagenversionen für Ihre geplanten Analyseregeln in Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "131023080"
 
 ## <a name="introduction"></a>Einführung
 
-Azure Sentinel enthält [Analyseregelvorlagen](detect-threats-built-in.md), die Sie in aktive Regeln umwandeln, indem Sie eine Kopie davon erstellen. Dies geschieht, wenn Sie eine Regel aus einer Vorlage erstellen. An diesem Punkt ist die aktive Regel jedoch nicht mehr mit der Vorlage verbunden. Wenn eine Regelvorlage von Microsoft-Technikern oder anderen Personen geändert wird, werden alle zuvor aus dieser Vorlage erstellten Regeln ***nicht*** dynamisch an die neue Vorlage angepasst.
+Microsoft Sentinel enthält [Analyseregelvorlagen](detect-threats-built-in.md), die Sie in aktive Regeln umwandeln, indem Sie eine Kopie davon erstellen. Dies geschieht, wenn Sie eine Regel aus einer Vorlage erstellen. An diesem Punkt ist die aktive Regel jedoch nicht mehr mit der Vorlage verbunden. Wenn eine Regelvorlage von Microsoft-Technikern oder anderen Personen geändert wird, werden alle zuvor aus dieser Vorlage erstellten Regeln ***nicht*** dynamisch an die neue Vorlage angepasst.
 
 Allerdings ***merken*** sich Regeln, die aus Vorlagen erstellt wurden, von welchen Vorlagen sie stammten. Dies bietet zwei Vorteile:
 
@@ -71,7 +71,7 @@ Durch Implementierung der Vorlagenversionskontrolle können Sie die Versionen Ih
 
     > [!NOTE]
     > Die Abbildungen 2 und 3 oben zeigen zwei Beispiele für Regeln, die aus Vorlagen erstellt wurden und bei denen die Vorlage nicht aktualisiert wurde.
-    > - Abbildung 2 zeigt eine Regel mit einer Versionsnummer für die aktuelle Vorlage. Dies deutet darauf hin, dass die Regel nach der ersten Implementierung der Vorlagenversionskontrolle durch Azure Sentinel im Oktober 2021 erstellt wurde.
+    > - Abbildung 2 zeigt eine Regel mit einer Versionsnummer für die aktuelle Vorlage. Dies deutet darauf hin, dass die Regel nach der ersten Implementierung der Vorlagenversionskontrolle durch Microsoft Sentinel im Oktober 2021 erstellt wurde.
     > - Abbildung 3 zeigt eine Regel ohne aktuelle Vorlagenversion. Dies zeigt, dass die Regel vor Oktober 2021 erstellt wurde. Wenn eine neueste Vorlagenversion verfügbar ist, handelt es sich wahrscheinlich um eine neuere Version als die, die zum Erstellen der Regel verwendet wurde.
 
 ## <a name="compare-your-active-rule-with-its-template"></a>Vergleichen Ihrer aktiven Regel mit der jeweiligen Vorlage
@@ -88,6 +88,7 @@ Auf dieser Registerkarte wird ein direkter Vergleich zwischen den YAML-Darstellu
 
 > [!NOTE]
 > Durch Aktualisieren dieser Regel wird Ihre vorhandene Regel mit der neuesten Version der Vorlage überschrieben.
+
 Alle Automatisierungsschritte oder -logiken, die auf die vorhandene Regel verweisen, sollten überprüft werden, falls sich die Namen, auf die verwiesen wird, geändert haben. Außerdem können alle Anpassungen, die Sie beim Erstellen der ursprünglichen Regel vorgenommen haben ( Änderungen an der Abfrage, Planung, Gruppierung oder anderen Einstellungen), überschrieben werden.
 
 ### <a name="update-your-rule-with-the-new-template-version"></a>Aktualisieren Ihrer Regel mit der neuen Vorlagenversion
@@ -121,7 +122,7 @@ Alle Automatisierungsschritte oder -logiken, die auf die vorhandene Regel verwei
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument haben Sie erfahren, wie Sie die Versionen Ihrer Azure Sentinel-Analyseregelvorlagen nachverfolgen und entweder aktive Regeln auf vorhandene Vorlagenversionen zurücksetzen oder auf neue Versionen aktualisieren können. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Dokument haben Sie erfahren, wie Sie die Versionen Ihrer Microsoft Sentinel-Analyseregelvorlagen nachverfolgen und entweder aktive Regeln auf vorhandene Vorlagenversionen zurücksetzen oder auf neue Versionen aktualisieren können. Weitere Informationen zu Microsoft Sentinel finden Sie in den folgenden Artikeln:
 
 - Weitere Informationen zu [Analyseregeln](detect-threats-built-in.md).
 - Weitere Informationen zum [Analyseregel-Assistenten](detect-threats-custom.md).

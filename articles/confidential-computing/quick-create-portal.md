@@ -1,51 +1,46 @@
 ---
-title: 'Schnellstart: Erstellen eines virtuellen Azure Confidential Computing-Computers im Azure-Portal'
-description: Machen Sie sich als Einstieg in Ihre Bereitstellungen damit vertraut, wie Sie im Azure-Portal schnell einen virtuellen Confidential Computing-Computer erstellen können.
-author: JBCook
+title: 'Schnellstart: Erstellen einer Intel SGX-VM im Azure-Portal'
+description: Zum Einstieg in Ihre Bereitstellungen lernen Sie, wie Sie im Azure-Portal schnell eine Intel SGX-VM erstellen können.
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.workload: infrastructure
 ms.topic: quickstart
-ms.date: 06/13/2021
-ms.author: JenCook
-ms.openlocfilehash: 8fb93b7697e2dd9077995572fc91b6e82a7d8512
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.date: 11/1/2021
+ms.author: stempesta
+ms.custom: mode-portal, ignite-fall-2021
+ms.openlocfilehash: 68eec52333636c54ab9598d4823e4e794e50a3c4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107216"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331944"
 ---
-# <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Schnellstart: Bereitstellen eines virtuellen Azure Confidential Computing-Computers im Azure-Portal
+# <a name="quickstart-create-intel-sgx-vm-in-the-azure-portal"></a>Schnellstart: Erstellen einer Intel SGX-VM im Azure-Portal
 
-Steigen Sie in Azure Confidential Computing ein, indem Sie das Azure-Portal zum Erstellen eines virtuellen Computers (VM) verwenden, der auf Intel SGX basiert. Anschließend können Sie Enclave-Anwendungen ausführen.
-
-Wir empfehlen Ihnen dieses Tutorial, wenn Sie an der Bereitstellung eines virtuellen Confidential Computing-Computers mit benutzerdefinierter Konfiguration interessiert sind. Andernfalls empfehlen wir Ihnen, den Artikel zum Thema [Virtueller Confidential Computing-Computer: Bereitstellungsschritte für den kommerziellen Microsoft-Marketplace](quick-create-marketplace.md) zu lesen.
-
+Dieses Tutorial führt Sie durch den Prozess der Bereitstellung von Intel SGX-VMs im Azure-Portal. Andernfalls wird empfohlen, [Azure Marketplace](quick-create-marketplace.md)-Vorlagen zu nutzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/), bevor Sie beginnen.
 
 > [!NOTE]
-> Mit kostenlosen Testkonten ist kein Zugriff auf die virtuellen Computer möglich, die in diesem Tutorial verwendet werden. Führen Sie ein Upgrade auf ein Abonnement mit nutzungsbasierter Zahlung durch.
+> Mit kostenlosen Testkonten ist kein Zugriff auf die VMs in diesem Tutorial möglich. Führen Sie ein Upgrade auf ein Abonnement mit nutzungsbasierter Zahlung durch.
 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 1. Wählen Sie oben die Option **Ressource erstellen** aus.
 
-1. Wählen Sie im Bereich **Marketplace** links die Option **Compute** aus.
+1. Wählen Sie im Bereich auf der linken Seite **Compute** aus.
 
-1. Wählen Sie **Virtueller Computer** aus.
+1. Wählen Sie **Virtuellen Computer erstellen** aus.
 
     ![Bereitstellen einer VM](media/quick-create-portal/compute-virtual-machine.png)
 
-1. Wählen Sie auf der Startseite des virtuellen Computers die Option **Erstellen** aus.
-
-
-## <a name="configure-a-confidential-computing-virtual-machine"></a>Konfigurieren eines virtuellen Confidential Computing-Computers
+## <a name="configure-an-intel-sgx-virtual-machine"></a>Konfigurieren einer Intel SGX-VM
 
 1. Wählen Sie auf der Registerkarte **Grundlagen** Ihr **Abonnement** und Ihre **Ressourcengruppe** aus.
 
@@ -56,28 +51,23 @@ Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure
    * **Region**: Wählen Sie die für Sie geeignete Azure-Region aus.
 
         > [!NOTE]
-        > Virtuelle Confidential Computing-Computer werden nur auf spezieller Hardware ausgeführt, die in bestimmten Regionen verfügbar ist. Die neuesten verfügbaren Regionen für VMs der DCsv2-Serie sind unter [Verfügbare Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) angegeben.
+        > Intel SGX-VMs werden in bestimmten Regionen auf spezieller Hardware ausgeführt. Informationen zur aktuellen regionalen Verfügbarkeit finden Sie in [Verfügbare Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) unter „DCsv2-Serie“ oder „DCsv3/DCdsv3-Serie“.
 
 1. Konfigurieren Sie das Betriebssystemimage, das Sie für Ihren virtuellen Computer verwenden möchten.
 
-    * **Image auswählen**: Wählen Sie für dieses Tutorial „Ubuntu 18.04 LTS“ aus. Sie können auch „Windows Server 2019“, „Windows Server 2016“ oder „Ubuntu 16.04 LTS“ auswählen. Wenn Sie sich für eines dieser Images entscheiden, werden Sie in diesem Tutorial entsprechend umgeleitet.
+    * **Image wählen**: Wählen Sie für dieses Tutorial „Ubuntu 20.04 LTS (Gen 2)“ aus. Sie können auch „Ubuntu 18.04 LTS (Gen2)“ oder „Windows Server 2019“ auswählen.
     
-    * **Image für Gen 2 wechseln**: Virtuelle Confidential Computing-Computer werden nur unter Images vom Typ [Generation 2](../virtual-machines/generation-2.md) ausgeführt. Stellen Sie sicher, dass das ausgewählte Image den Typ „Generation 2“ aufweist. Klicken Sie oben auf die Registerkarte **Erweitert**, auf der Sie den virtuellen Computer konfigurieren. Scrollen Sie nach unten bis zum Abschnitt „VM-Generation“. Wählen Sie „Gen 2“ aus, und wechseln Sie anschließend zurück zur Registerkarte **Grundlagen**.
+    * **Update auf 2. Generation**: Wählen Sie unter „Image“ im Flyout **VM-Generation konfigurieren** und dann **2. Generation** aus.
     
+        ![image](https://user-images.githubusercontent.com/63871188/137009767-421ee49a-ded8-4cfd-ac53-a3d6750880b9.png)
 
-        ![Erweitert (Registerkarte)](media/quick-create-portal/advanced-tab-virtual-machine.png)
 
-
-        ![VM-Generation](media/quick-create-portal/gen2-virtual-machine.png)
-
-    * **Zur grundlegenden Konfiguration wechseln**: Wechseln Sie zurück zur Registerkarte **Grundlagen**, indem Sie oben die Navigationselemente verwenden.
-
-1. Wählen Sie in der Größenauswahl einen virtuellen Computer mit Confidential Computing-Funktionen aus, indem Sie die Option **Größe ändern** verwenden. Klicken Sie in der VM-Größenauswahl auf **Alle Filter löschen**. Wählen Sie die Option **Filter hinzufügen** und **Familie** als Filtertyp aus. Wählen Sie anschließend nur **Vertrauliche Computeressource** aus.
+1. Wählen Sie über **Größe ändern** in der Größenauswahl einen virtuellen Computer mit Intel SGX-Funktionen aus. Klicken Sie in der VM-Größenauswahl auf **Alle Filter löschen**. Wählen Sie die Option **Filter hinzufügen** und **Familie** als Filtertyp aus. Wählen Sie anschließend nur **Vertrauliche Computeressource** aus.
 
     ![VMs der DCsv2-Serie](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > Es sollten die Größen **DC1s_v2**, **DC2s_v2**, **DC4s_V2** und **DC8_v2** aufgeführt sein. Dies sind die einzigen VM-Größen, für die Confidential Computing derzeit unterstützt wird. [Weitere Informationen](virtual-machine-solutions.md)
+    > Die Größen **DC(Zahl)s_v2**, **DC(Zahl)s_v3** und **DC(Zahl)ds_v3** sollten angezeigt werden. [Weitere Informationen](virtual-machine-solutions-sgx.md)
 
 1. Geben Sie die folgenden Informationen ein:
 
@@ -102,8 +92,8 @@ Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure
 
 1. Nehmen Sie Änderungen auf der Registerkarte **Datenträger** vor.
 
-   * Bei Auswahl eines virtuellen Computers vom Typ **DC1s_v2**, **DC2s_v2** oder **DC4s_V2** sollten Sie entweder **SSD Standard** oder **SSD Premium** als Datenträgertyp auswählen. 
-   * Wählen Sie für einen virtuellen Computer vom Typ **DC8_v2** die Option **SSD Standard** als Datenträgertyp aus.
+   * Die **DCsv2-Serie** unterstützt **SSD Standard**. **Premium SSD** wird für DC1, DC2 und DC4 unterstützt. 
+   * Die **DCsv3- und DCdsv3-Serie** unterstützen **SSD Standard**, **Premium SSD** und **Disk Ultra**.
 
 1. Nehmen Sie auf den folgenden Registerkarten die gewünschten Änderungen an den Einstellungen vor, oder übernehmen Sie die Standardeinstellungen.
 
@@ -134,7 +124,7 @@ Sie finden die öffentliche IP-Adresse Ihrer VM im Azure-Portal im Abschnitt mit
 
 Wenn Sie mit Windows arbeiten und nicht über eine BASH-Shell verfügen, installieren Sie einen SSH-Client (beispielsweise PuTTY).
 
-1. [Laden Sie PuTTY herunter, und installieren Sie es.](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. [Laden Sie PuTTY herunter, und installieren Sie es.](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
 1. Führen Sie PuTTY aus.
 
@@ -147,28 +137,27 @@ Weitere Informationen zum Herstellen einer Verbindung mit virtuellen Linux-Compu
 > [!NOTE]
 > Falls eine PuTTY-Sicherheitswarnung angezeigt wird, dass der Hostschlüssel des Servers nicht in der Registrierung zwischengespeichert wird, wählen Sie eine der folgenden Optionen aus. Wenn Sie diesem Host vertrauen, wählen Sie **Ja** aus, um den Schlüssel dem Cache von PuTTy hinzuzufügen und die Verbindungsherstellung fortzusetzen. Wenn Sie die Verbindung nur einmal herstellen möchten, ohne den Schlüssel dem Cache hinzuzufügen, wählen Sie **Nein** aus. Wenn Sie diesem Host nicht vertrauen, wählen Sie **Abbrechen** aus, um die Verbindungsherstellung abzubrechen.
 
-## <a name="intel-sgx-drivers"></a>Intel SGX-Treiber
+## <a name="install-azure-dcap-client"></a>Installieren des Azure-DCAP-Clients
 
 > [!NOTE]
-> Intel SGX-Treiber sind bereits Teil der Ubuntu & Windows Azure-Katalogimages. Es ist keine spezielle Installation der Treiber erforderlich. Optional können Sie auch die vorhandenen Treiber aktualisieren, die in den Images enthalten sind, indem Sie die [Intel SGX DCAP-Treiberliste](https://01.org/intel-software-guard-extensions/downloads) hinzuziehen.
+> Trusted Hardware Identity Management (THIM) ist ein kostenloser Azure-Dienst, mit dem Sie die Hardware-Identitäten verschiedener Trusted Execution Environments (TEEs) verwalten können. Der Dienst ruft Begleitdaten vom Intel Provisioning Certification Service (PCS) ab und speichert sie zwischen. Er erzwingt zu Nachweiszwecken als Azure-Sicherheitsbaseline eine minimale Trusted Compute Base (TCB). Für Azure-VMs der DCsv3- und DCdsv3-Serie können die Intel-Zertifikate nur aus THIM abgerufen werden, da es nicht möglich ist, von den VMs aus direkte Aufrufe an den Intel-Dienst durchzuführen. 
 
-## <a name="optional-testing-enclave-apps-built-with-open-enclave-sdk-oe-sdk"></a>Optional: Testen von Enclave-Apps, die mit dem Open Enclave SDK (OE SDK) erstellt wurden <a id="Install"></a>
-
-Befolgen Sie die Schritt-für-Schritt-Anleitung für die Installation des [OE SDK](https://github.com/openenclave/openenclave) auf Ihrem virtuellen Computer der DCsv2-Serie, auf dem ein Image vom Typ „Ubuntu 18.04 LTS Gen 2“ ausgeführt wird. 
-
-Wenn Ihr virtueller Computer unter Ubuntu 18.04 LTS Gen 2 ausgeführt wird, gilt die [Installationsanleitung für Ubuntu 18.04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md).
+Mit der Veröffentlichung der skalierbaren Xeon-Prozessoren von Intel® ändert sich die Unterstützung des Remotenachweises. DCsv3 und DCdsv3 unterstützen nur [ECDSA-basierte Nachweise](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html), und Benutzer müssen den [Azure DCAP](https://github.com/Microsoft/Azure-DCAP-Client)-Client installieren, um mit THIM zu interagieren und TEE-Begleitdaten für die Angebotserstellung während des Nachweisverfahrens abzurufen. DCsv2 unterstützt weiterhin [EPID-basierte Nachweise](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html). 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie löschen. 
+Wenn die Ressourcengruppe, der virtuelle Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie löschen. 
 
 Wählen Sie die Ressourcengruppe für den virtuellen Computer und dann **Löschen** aus. Bestätigen Sie dann den Namen der Ressourcengruppe, um das Löschen der Ressourcen abzuschließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen virtuellen Confidential Computing-Computer bereitgestellt und das Open Enclave SDK installiert. Weitere Informationen zu virtuellen Confidential Computing-Computern in Azure finden Sie unter [Lösungen für virtuelle Computer](virtual-machine-solutions.md). 
+In dieser Schnellstart haben Sie eine Intel SGX-VM bereitgestellt und eine Verbindung mit ihr hergestellt. Weitere Informationen finden Sie unter [Lösungen auf virtuellen Computern](virtual-machine-solutions-sgx.md). 
 
 Machen Sie sich damit vertraut, wie Sie Confidential Computing-Anwendungen entwickeln, indem Sie mit den Beispielen zum Open Enclave SDK auf GitHub fortfahren. 
 
 > [!div class="nextstepaction"]
 > [Entwickeln von Open Enclave SDK-Beispielen](https://github.com/openenclave/openenclave/blob/master/samples/README.md)
+
+Microsoft Azure Attestation ist kostenlos und verwendet das ECDSA-basierte Nachweisframework, um die Vertrauenswürdigkeit mehrerer TEEs und die Integrität der darin ausgeführten Binärdateien remote zu überprüfen. Weitere Informationen finden Sie [hier](/azure/attestation/overview).
+

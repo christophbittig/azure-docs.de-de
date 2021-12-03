@@ -10,12 +10,12 @@ ms.author: kengaderdus
 author: kengaderdus
 manager: CelesteDG
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b53e5397c9e4e04a7049d18f9e9efdcfc62a921
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6c5c7b8ed515fc3148f42b06c3c81f6060816e79
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130037793"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281379"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Identity Protection und bedingter Zugriff für Azure AD B2C
 
@@ -28,7 +28,7 @@ Wenn Sie bereits mit [Identity Protection](../active-directory/identity-protecti
 > [!NOTE]
 > Für die Erstellung von Risikoanmeldungsrichtlinien ist Azure AD B2C **Premium 2** erforderlich. **Premium P1**-Mandanten können eine auf Standort, Anwendung, Benutzern oder Gruppen basierende Richtlinie erstellen. Weitere Informationen finden Sie unter [Ändern Ihres Azure AD B2C-Tarifs](billing.md#change-your-azure-ad-pricing-tier).
 
-## <a name="benefits-of-identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Vorteile von Identity Protection und bedingtem Zugriff für Azure AD B2C  
+## <a name="benefits-of-identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Vorteile von Identity Protection und bedingtem Zugriff für Azure AD B2C
 
 Die Kombination aus Richtlinien für bedingten Zugriff und Identity Protection-Risikoerkennung ermöglicht es Ihnen, auf risikobehaftete Authentifizierungen mit der passenden Richtlinienaktion zu reagieren.
 
@@ -41,7 +41,7 @@ Die Kombination aus Richtlinien für bedingten Zugriff und Identity Protection-
 
 Identity Protection und bedingter Zugriff in Azure AD B2C funktionieren weitgehend wie in Azure AD, es gibt jedoch ein paar Ausnahmen:
 
-- Security Center ist in Azure AD B2C nicht verfügbar.
+- Microsoft Defender für Cloud ist in Azure AD B2C nicht verfügbar.
 
 - Identity Protection und bedingter Zugriff werden für ROPC-Server-zu-Server-Flows in Azure AD B2C-Mandanten nicht unterstützt.
 
@@ -50,7 +50,6 @@ Identity Protection und bedingter Zugriff in Azure AD B2C funktionieren weitge
 - In Azure AD B2C-Mandanten steht nur ein Teil der Identity Protection-Risikoerkennungen zur Verfügung. Weitere Informationen finden Sie unter [Untersuchen eines Risikos mit Identity Protection](identity-protection-investigate-risk.md)und [Hinzufügen von bedingtem Zugriff zu Benutzerflows in Azure Active Directory B2C](conditional-access-user-flow.md).
 
 - Das Gerätekompatibilitätsfeature des bedingten Zugriffs ist in Azure AD B2C-Mandanten nicht verfügbar.
-
 
 ## <a name="integrate-conditional-access-with-user-flows-and-custom-policies"></a>Integrieren von bedingtem Zugriff in Benutzerflows und benutzerdefinierte Richtlinien
 

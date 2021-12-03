@@ -1,5 +1,5 @@
 ---
-title: Datei einfügen
+title: include file
 description: include file
 services: service-bus-messaging
 author: spelluru
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/07/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 058ce3899e5857c136859426f0972efc9fd0b92f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 7ec263b7e6c5c5f2191f207cf40ddc43b69fa6ad
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715977"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132096955"
 ---
 In der folgenden Tabelle sind die Kontingentinformationen für das Azure Service Bus Messaging aufgeführt. Informationen zu Preisen und anderen Kontingenten für Service Bus finden Sie unter [Service Bus – Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
@@ -29,7 +29,7 @@ In der folgenden Tabelle sind die Kontingentinformationen für das Azure Service
 | Maximale Größe eines Messagingentitätsnamens: Namespace, Abonnement oder Abonnementregel |Entität |- |50 Zeichen |
 | Maximale Größe der message ID | Entität |- | 128 |
 | Maximale Größe der Sitzungs-ID einer Nachricht | Entität |- | 128 |
-| Nachrichtengröße für eine Warteschlangen-, Themen- oder Abonnemententität |Entität |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. | 256 KB für [Standard-Tarif](../articles/service-bus-messaging/service-bus-premium-messaging.md)<br/> 1 MB für [Premium-Tarif](../articles/service-bus-messaging/service-bus-premium-messaging.md). <br /><br />Die Nachrichtengröße umfasst die Größe der Eigenschaften (System- und Benutzereigenschaften) und die Größe der Nutzdaten. Die Größe der Systemeigenschaften variiert je nach Szenario. |
+| Nachrichtengröße für eine Warteschlangen-, Themen- oder Abonnemententität |Entität |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. | 256 KB für [Standard-Tarif](../articles/service-bus-messaging/service-bus-premium-messaging.md)<br/> 100 MB für [Premium-Tarif](../articles/service-bus-messaging/service-bus-premium-messaging.md). <br /><br />Die Nachrichtengröße umfasst die Größe der Eigenschaften (System- und Benutzereigenschaften) und die Größe der Nutzdaten. Die Größe der Systemeigenschaften variiert je nach Szenario. |
 | Nachrichteneigenschaftsgröße für eine Warteschlangen-, Themen- oder Abonnemententität |Entität | Die Ausnahme `SerializationException` wird generiert. | <p>Die maximale Nachrichteneigenschaftsgröße für jede Eigenschaft beträgt 32 KB.</p><p>Die kumulierte Größe aller Eigenschaften darf 64 KB nicht überschreiten. Dieser Grenzwert gilt für den gesamten Header der im Broker gespeicherten Nachricht, die sowohl über Benutzereigenschaften als auch Systemeigenschaften verfügt (z. B. Sequenznummer, Bezeichnung und Nachrichten-ID).</p><p>Maximale Anzahl der Headereigenschaften im Eigenschaftenbehälter: **byte/int.MaxValue**</p> |
 | Anzahl von Abonnements pro Thema |Entität |Nachfolgende Anforderungen zum Erstellen weiterer Abonnements für das Thema werden abgelehnt. Als Ergebnis wird bei der Konfiguration über das Portal eine Fehlermeldung angezeigt. Bei einem Aufruf über die Verwaltungs-API wird vom aufrufenden Code eine Ausnahme empfangen. |2\.000 pro Thema für die Ebenen „Standard“ und „Premium“ |
 | Anzahl von SQL-Filtern pro Thema |Entität |Nachfolgende Anforderungen für die Erstellung weiterer Filter für das Thema werden abgelehnt, und der aufrufende Code empfängt eine Ausnahme. |2\.000 |

@@ -9,15 +9,77 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e0be3ef40e60f43d3b76c58b8141a0e29ce2742f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7a4e02461b7ba7eaba82b74cc2191b9528376b51
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067677"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486673"
 ---
 # <a name="speech-service-release-notes"></a>Versionshinweise zum Speech-Dienst
 
+## <a name="speech-sdk-1190-2021-nov-release"></a>Speech SDK 1.19.0: Release von November 2021  
+
+ 
+
+**Hinweis**: Informationen zu den ersten Schritten mit dem Speech SDK finden Sie [hier](speech-sdk.md#get-the-speech-sdk). Für das Speech SDK unter Windows muss das freigegebene Microsoft Visual C++ Redistributable für Visual Studio installiert sein. Sie können sie [hier](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)herunterladen.  
+  
+
+#### <a name="highlights"></a>Highlights 
+
+- Sprechererkennungsdienst ist jetzt allgemein verfügbar. Speech SDK-APIs sind unter C++, C#, Java und JavaScript verfügbar. Mit der Sprechererkennung können Sie Sprecher anhand ihrer einzigartigen Stimmmerkmale genau überprüfen und identifizieren. Weitere Informationen finden Sie in der [Dokumentation](speaker-recognition-overview.md). 
+
+- Wir haben die Unterstützung für Ubuntu 16.04 in Verbindung mit Azure DevOps und GitHub eingestellt. Ubuntu 16.04 hat im April 2021 das Ende der Lebensdauer erreicht. Migrieren Sie Ubuntu 16.04-Workflows zu Ubuntu 18.04 oder höher.   
+
+- OpenSSL-Verknüpfung in Linux-Binärdateien wurde in den dynamischen Modus geändert. Die Binärgröße von Linux wurde um etwa 50 % reduziert. 
+
+- Mac M1 ARM-basierte Chipunterstützung wurde hinzugefügt. 
+
+ 
+
+#### <a name="new-features"></a>Neue Funktionen 
+
+- **C++/C#/Java**: Neue APIs wurden hinzugefügt, um die Audioverarbeitungsunterstützung für Spracheingaben mit Microsoft Audio Stack zu ermöglichen. Die Dokumentation finden Sie [hier](audio-processing-overview.md).
+
+- **C++** : Neue APIs für die Absichtserkennung, um einen erweiterten Musterabgleich zu ermöglichen. Dies umfasst Listenentitäten und vordefinierte Ganzzahlentitäten sowie Unterstützung für die Gruppierung von Absichten und Entitäten als Modelle (Dokumentation, Updates und Beispiele befinden sich in der Entwicklung und werden in naher Zukunft veröffentlicht). 
+
+- **Mac:** Unterstützung für ARM64 (M1)-basierte Hardware für Cocoapod, Python, Java und NuGet-Pakete im Zusammenhang mit [GitHub Issue 1244](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1244).
+
+- **iOS/Mac:** iOS- und MacOS-Binärdateien sind jetzt in xcframework im Zusammenhang mit [GitHub Issue 919](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/919) gepackt.
+
+- **iOS/Mac:** Unterstützung für Mac-Katalysator im Zusammenhang mit [GitHub Issue 1171](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1171). 
+
+- **Linux:** Neues tar-Paket für CentOS7 [Informationen zum Speech SDK](speech-sdk.md)wurde hinzugefügt.
+
+- **JavaScript:** VoiceProfile- & SpeakerRecognizer-APIs wurden in asynchron/abwartbar geändert. 
+
+- **JavaScript:** Unterstützung für Azure-Regionen der US-Regierung wurden hinzugefügt. 
+
+- **Windows:** Unterstützung für die Wiedergabe auf UWP (Universal Windows Platform) wurde hinzugefügt. 
+
+  
+
+#### <a name="bug-fixes"></a>Behebung von Programmfehlern 
+
+- **Android:** OpenSSL-Sicherheitsupdate (aktualisiert auf Version 1.1.1l) für Android-Pakete. 
+
+- **Python:** Fehler behoben, bei dem die Auswahl des Lautsprechergeräts in Python fehlschlägt. 
+
+- **Core:** Automatisches Wiederherstellen der Verbindung, wenn ein Verbindungsversuch fehlschlägt. 
+
+- **iOS:** Audiokomprimierung wurde für iOS-Pakete aufgrund von Instabilität und Bitcodebuildproblemen bei Verwendung von Gstreamer deaktiviert. Details sind [GitHub Issue 1209](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1209) verfügbar.
+
+ 
+
+#### <a name="samples-github"></a>Beispiele [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+
+- **Mac/iOS:** Aktualisierte Beispiele und Schnellstarts zur Verwendung des xcframework-Pakets. 
+
+- **.NET:** Beispiele für die Verwendung von .NET Core 3.1 wurden aktualisiert. 
+
+- **JavaScript:** Beispiel für Sprachassistenten wurde hinzugefügt. 
+
+ 
 ## <a name="text-to-speech-2021-october-release"></a>Sprachsynthese - Release Oktober 2021
 **Neue Sprachen und Stimmen wurden für neuronale TTS hinzugefügt**
 - **49 neue Sprachen und Varianten eingeführt** - 98 neue Stimmen in 49 neuen Gebietsschemata wurden in die Liste der neuronalen TTS-Sprachen aufgenommen: Adri auf `af-ZA` Afrikaans (Südafrika), Willem auf `af-ZA` Afrikaans (Südafrika), Mekdes auf `am-ET` Amharisch (Äthiopien), Ameha auf `am-ET` Amharisch (Äthiopien), Fatima auf `ar-AE` Arabisch (Vereinigte Arabische Emirate), Hamdan auf `ar-AE` Arabisch (Vereinigte Arabische Emirate), Laila auf `ar-BH` Arabisch (Bahrain), Ali auf `ar-BH` Arabisch (Bahrain), Amina auf `ar-DZ` Arabisch (Algerien), Ismael auf `ar-DZ` Arabisch (Algerien), Rana auf `ar-IQ` Arabisch (Irak), Bassel auf `ar-IQ` Arabisch (Irak), Sana auf `ar-JO` Arabisch (Jordanien), Taim auf `ar-JO` Arabisch (Jordanien), Noura auf `ar-KW` Arabisch (Kuwait), Fahed auf `ar-KW` Arabisch (Kuwait), Iman auf `ar-LY` Arabisch (Libyen), Omar auf `ar-LY` Arabisch (Libyen), Mouna auf `ar-MA` Arabisch (Marokko), Jamal auf `ar-MA` Arabisch (Marokko), Amal auf `ar-QA` Arabisch (Katar), Moaz auf `ar-QA` Arabisch (Katar), Amany auf `ar-SY` Arabisch (Syrien), Laith auf `ar-SY` Arabisch (Syrien), Reem auf `ar-TN` Arabisch (Tunesien), Hedi auf `ar-TN` Arabisch (Tunesien), Maryam auf `ar-YE` Arabisch (Jemen), Saleh auf `ar-YE` Arabisch (Jemen), Nabanita auf `bn-BD` Bangla (Bangladesch), Pradeep auf `bn-BD` Bangla (Bangladesch), Asilia auf `en-KE` Englisch (Kenia), Chilemba auf `en-KE` Englisch (Kenia), Ezinne auf `en-NG` Englisch (Nigeria), Abeo auf `en-NG` Englisch (Nigeria), Imani auf `en-TZ` Englisch (Tansania), Elimu auf `en-TZ` Englisch (Tansania), Sofia auf `es-BO` Spanisch (Bolivien), Marcelo auf `es-BO` Spanisch (Bolivien), Catalina auf `es-CL` Spanisch (Chile), Lorenzo auf `es-CL` Spanisch (Chile), Maria in `es-CR` Spanisch (Costa Rica), Juan auf `es-CR` Spanisch (Costa Rica), Belkys auf `es-CU` Spanisch (Kuba), Manuel auf `es-CU` Spanisch (Kuba), Ramona auf `es-DO` Spanisch (Dominikanische Republik), Emilio auf `es-DO` Spanisch (Dominikanische Republik), Andrea auf `es-EC` Spanisch (Ecuador), Luis auf `es-EC` Spanisch (Ecuador), Teresa auf `es-GQ` Spanisch (Äquatorialguinea), Javier auf `es-GQ` Spanisch (Äquatorialguinea), Marta auf `es-GT` Spanisch (Guatemala), Andres auf `es-GT` Spanisch (Guatemala), Karla auf `es-HN` Spanisch (Honduras), Carlos auf `es-HN` Spanisch (Honduras), Yolanda auf `es-NI` Spanisch (Nicaragua), Federico auf `es-NI` Spanisch (Nicaragua), Margarita auf `es-PA` Spanisch (Panama), Roberto in `es-PA` Spanisch (Panama), Camila in `es-PE` Spanisch (Peru), Alex auf `es-PE` Spanisch (Peru), Karina auf `es-PR` Spanisch (Puerto Rico), Victor in `es-PR` Spanisch (Puerto Rico), Tania in `es-PY` Spanisch (Paraguay), Mario auf `es-PY` Spanisch (Paraguay), Lorena in `es-SV` Spanisch (El Salvador), Rodrigo auf `es-SV` Spanisch (El Salvador), Valentina auf `es-UY` Spanisch (Uruguay), Mateo auf `es-UY` Spanisch (Uruguay), Paola auf `es-VE` Spanisch (Venezuela), Sebastian auf `es-VE` Spanisch (Venezuela), Dilara auf `fa-IR` Persisch (Iran), Farid auf `fa-IR` Persisch (Iran), Blessica auf `fil-PH` Filipino (Philippinen), Angelo auf `fil-PH` Philippinisch (Philippinen), Sabela auf `gl-ES` Galizisch (Spanien), Roi auf `gl-ES` Galicisch (Spanien), Siti auf `jv-ID` Javanisch (Indonesien), Dimas auf `jv-ID` Javanisch (Indonesien), Sreymom auf `km-KH` Khmer (Kambodscha), Piseth auf `km-KH` Khmer (Kambodscha), Nilar auf `my-MM` Birmanisch (Myanmar), Thiha auf `my-MM` Birmanisch (Myanmar), Ubax auf `so-SO` Somali (Somalia), Muuse auf `so-SO` Somalisch (Somalia), Tuti auf `su-ID` Sundanese (Indonesien), Jajang auf `su-ID` Sundanisch (Indonesien), Rehema auf `sw-TZ` Suaheli (Tansania), Daudi auf `sw-TZ` Suaheli (Tansania), Saranya auf `ta-LK` Tamil (Sri Lanka), Kumar auf `ta-LK` Tamil (Sri Lanka), Venba auf `ta-SG` Tamil (Singapur), Anbu auf `ta-SG` Tamil (Singapur), Gul auf `ur-IN` Urdu (Indien), Salman auf `ur-IN` Urdu (Indien), Madina auf `uz-UZ` Usbekisch (Usbekistan), Sardor auf `uz-UZ` Usbekisch (Usbekistan), Thando auf `zu-ZA` Zulu (Südafrika), Themba auf `zu-ZA` Zulu (Südafrika).
@@ -68,7 +130,7 @@ ms.locfileid: "131067677"
 - **JavaScript**: Es wurde ein Problem behoben, aufgrund dessen das Erkennungsmodul bei der kontinuierlichen Erkennung erneut eine Verbindung mit einem Pushstream hergestellt hat. Ausführlichere Informationen finden Sie [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/399).
 - **JavaScript**: Die Offsetberechnung auf Wortebene in detaillierten Erkennungsergebnissen wurde korrigiert. Ausführlichere Informationen finden Sie [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/394).
 
-#### <a name="samples"></a>Beispiele
+#### <a name="samples"></a>Proben
 
 - Aktualisierte Java-Schnellstartbeispiele finden Sie [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java).
 - Die Beispiele zur JavaScript-Sprechererkennung wurden aktualisiert, um die neue Verwendung der `enrollProfileAsync()`-Methode zu veranschaulichen. Beispiele finden Sie [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/js/node).
@@ -105,8 +167,8 @@ ms.locfileid: "131067677"
 
 #### <a name="new-features"></a>Neue Funktionen
 
-- **C++/C#** : Neue eigenständige Einstufige/Start- und fortlaufende Sprachenerkennung über die `SourceLanguageRecognizer`-API. Wenn Sie nur die in Audioinhalten gesprochene(n) Sprache(n) erkennen möchten, ist dies die richtige API dafür.
-- **C++/C#** : Die Sprach- und Übersetzungserkennung unterstützt jetzt sowohl eine einstufige als auch eine fortlaufende Sprachenerkennung, sodass Sie programmgesteuert bestimmen können, welche Sprachen gesprochen werden, bevor sie transkribiert oder übersetzt werden. Weitere Informationen [zur Spracherkennung finden Sie hier](how-to-automatic-language-detection.md) und weitere Informationen [zur Sprachübersetzung finden Sie hier](get-started-speech-translation.md).
+- **C++/C#** : Neue eigenständige At-Start und Continuous Language Identification über die `SourceLanguageRecognizer` API. Wenn Sie nur die in Audioinhalten gesprochene(n) Sprache(n) erkennen möchten, ist dies die richtige API dafür.
+- **C++/C#** : Die Spracherkennung und die Übersetzungserkennung unterstützen jetzt sowohl die Spracherkennung zu Beginn als auch die kontinuierliche Spracherkennung, so dass Sie programmgesteuert bestimmen können, welche Sprache(n) gesprochen werden, bevor sie transkribiert oder übersetzt werden. Weitere Informationen [zur Spracherkennung finden Sie hier](how-to-automatic-language-detection.md) und weitere Informationen [zur Sprachübersetzung finden Sie hier](get-started-speech-translation.md).
 - **C#** : Unterstützung für Unity wurde zu macOS (x64) hinzugefügt. Dadurch werden Anwendungsfälle für Spracherkennung und Sprachsynthese in Mixed Reality und Gaming ermöglicht.
 - **Go**: Wir haben die Unterstützung für Sprachsynthese/Text-zu-Sprache zur Programmiersprache Go hinzugefügt, um die Sprachsynthese in noch mehr Anwendungsfällen zur Verfügung zu stellen. Weitere Informationen finden Sie in unserer [Schnellstartanleitung](get-started-text-to-speech.md?tabs=windowsinstall&pivots=programming-language-go) oder in unserer [Referenzdokumentation](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go).
 - **C++/C#/Java/Python/Objective-C/Go**: Der Sprachsynthetizer unterstützt jetzt das `connection`-Objekt. Dies hilft Ihnen bei der Verwaltung und Überwachung der Verbindung mit dem Spracherkennungsdienst und ist besonders hilfreich, um eine Vorabverbindung zur Verringerung der Wartezeit herzustellen. Die zugehörige Dokumentation finden Sie [hier](how-to-lower-speech-synthesis-latency.md).

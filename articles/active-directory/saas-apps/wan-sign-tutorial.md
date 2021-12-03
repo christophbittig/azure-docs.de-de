@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit WAN-Sign | Microsoft-Dokumentation'
+title: 'Tutorial: Integration von Azure AD-SSO mit WAN-Sign'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und WAN-Sign konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 10/21/2021
 ms.author: jeedes
-ms.openlocfilehash: b7df43c394d3df20f4d423fde6cf680432c80337
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 54163495d8caf31181e51d22f92787402844e450
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124731482"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320118"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wan-sign"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit WAN-Sign
+# <a name="tutorial-azure-ad-sso-integration-with-wan-sign"></a>Tutorial: Integration von Azure AD-SSO mit WAN-Sign
 
 In diesem Tutorial erfahren Sie, wie Sie WAN-Sign in Azure Active Directory (Azure AD) integrieren. Die Integration von WAN-Sign in Azure AD ermöglicht Folgendes:
 
@@ -37,10 +37,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
+* WAN-Sign unterstützt das **SP**- und das **IDP**-initiierte Single Sign-On.
 
-* WAN-Sign unterstützt **IDP-initiiertes** einmaliges Anmelden.
-
-## <a name="adding-wan-sign-from-the-gallery"></a>Hinzufügen von WAN-Sign aus dem Katalog
+## <a name="add-wan-sign-from-the-gallery"></a>Hinzufügen von WAN-Sign aus dem Katalog
 
 Zum Konfigurieren der Integration von WAN-Sign in Azure AD müssen Sie WAN-Sign aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -50,7 +49,6 @@ Zum Konfigurieren der Integration von WAN-Sign in Azure AD müssen Sie WAN-Sign
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **WAN-Sign** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **WAN-Sign** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-wan-sign"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für WAN-Sign
 
@@ -75,14 +73,18 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://service10.wanbishi.ne.jp/saml/metadata/azuread/<CUSTOMER_ID>`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://service10.wanbishi.ne.jp/saml/metadata/azuread/<CustomerID>`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://service10.wanbishi.ne.jp/saml/azuread/<CUSTOMER_ID>`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://service10.wanbishi.ne.jp/saml/azuread/<CustomerID>`
+
+1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten:
+
+    Geben Sie im Textfeld **Anmelde-URL** eine URL nach folgendem Muster ein: `https://service10.wanbishi.ne.jp/saml/login/azuread/<CustomerID>`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Clientsupportteam von WAN-Sign](mailto:wansign-help@wanbishi.ne.jp). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Diese Werte erhalten Sie vom [Clientsupportteam von WAN-Sign](mailto:wansign-help@wanbishi.ne.jp). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -126,13 +128,20 @@ In diesem Abschnitt erstellen Sie in WAN-Sign einen Benutzer namens „Britta Si
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-* Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der WAN-Sign-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie im Bereich „Meine Apps“ auf die Kachel „WAN-Sign“ klicken, sollten Sie automatisch bei der Instanz von WAN-Sign angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für WAN-Sign weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
+* Rufen Sie direkt die Anmelde-URL für WAN-Sign auf, und initiieren Sie den Anmeldeflow.
+
+#### <a name="idp-initiated"></a>IDP-initiiert:
+
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der WAN-Sign-Instanz angemeldet werden, für die Sie das Single Sign-On eingerichtet haben. 
+
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie in „Meine Apps“ auf die Kachel „WAN-Sign“ klicken, werden Sie bei Konfiguration im SP-Modus zur Anmeldeseite der Anwendung umgeleitet, um den Anmeldefluss zu initiieren. Wenn Sie im IDP-Modus konfiguriert sind, sollten Sie automatisch bei der WAN-Sign-Anwendung angemeldet werden, für die Sie das Single Sign-On eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von WAN-Sign können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von WAN-Sign können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

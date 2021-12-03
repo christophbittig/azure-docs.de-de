@@ -3,15 +3,15 @@ title: Azure Automation-Runbooktypen
 description: In diesem Artikel werden die Runbooktypen beschrieben, die Sie in Azure Automation verwenden können, sowie Aspekte, die Sie bei der Auswahl des geeigneten Typs berücksichtigen sollten.
 services: automation
 ms.subservice: process-automation
-ms.date: 10/05/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 58bc105a088e2ed06fb710d9a2e38e406e375bd9
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: f0fe647d586887bcb2d0a897f57c75a5f0b141b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534323"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423931"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-Runbooktypen
 
@@ -53,10 +53,29 @@ Sie können grafische Runbooks und grafische PowerShell-Workflow-Runbooks im gra
 * Können nicht in eines der [Textformate](automation-runbook-types.md) konvertiert werden (Textrunbooks können darüber hinaus nicht in das grafische Format überführt werden) 
 * Bieten keine Möglichkeit zum Anzeigen oder direkten Bearbeiten des vom grafischen Workflow erstellten PowerShell-Codes. Sie können den erstellten Code in allen Codeaktivitäten anzeigen.
 * Keine Möglichkeit zum Ausführen von Runbooks auf einem Hybrid Runbook Worker unter Linux. Weitere Informationen finden Sie unter [Automatisieren von Ressourcen im Rechenzentrum oder in der Cloud mit Hybrid Runbook Worker](automation-hybrid-runbook-worker.md).
+* Grafische Runbooks können nicht digital signiert werden.
 
 ## <a name="powershell-runbooks"></a>PowerShell-Runbooks
 
-PowerShell-Runbooks basieren auf Windows PowerShell. Sie bearbeiten den Code des Runbooks direkt mit dem Text-Editor im Azure-Portal.  Sie können auch einen beliebigen Offline-Texteditor verwenden und das [Runbook in Azure Automation importieren](manage-runbooks.md) .
+PowerShell-Runbooks basieren auf Windows PowerShell. Sie bearbeiten den Code des Runbooks direkt mit dem Text-Editor im Azure-Portal. Sie können auch einen beliebigen Offline-Texteditor verwenden und das [Runbook in Azure Automation importieren](manage-runbooks.md) .
+
+
+Die PowerShell-Version wird durch die angegebene **Runtimeversion** bestimmt (d. h. Version 7.1 (Vorschauversion) oder Version 5.1). Der Azure Automation-Dienst unterstützt die neueste PowerShell-Runtime.
+ 
+Dieselben Azure-Sandbox- und Hybrid Runbook Worker-Instanzen können **PowerShell 5.1**- und **PowerShell 7.1**-Runbooks parallel ausführen.   
+
+> [!NOTE]
+>  Wenn Sie bei der Ausführung des Runbooks die **Runtimeversion** **7.1 (Vorschauversion)** auswählen, werden PowerShell-Module verwendet, die auf die Runtimeversion 7.1 ausgerichtet sind, und wenn Sie die **Runtimeversion** **5.1** auswählen, werden PowerShell-Module verwendet, die auf die Runtimeversion 5.1 ausgerichtet sind.
+ 
+Stellen Sie sicher, dass Sie die richtige Runtimeversion für Module auswählen.
+
+Beispiel: Wenn Sie ein Runbook für ein SharePoint-Automatisierungsszenario in **Runtimeversion** *7.1 (Vorschauversion)* ausführen, dann importieren Sie das Modul in **Runtimeversion** **7.1 (Vorschauversion)** . Wenn Sie ein Runbook für ein SharePoint-Automatisierungsszenario in **Runtimeversion** **5.1** ausführen, dann importieren Sie das Modul in **Runtimeversion** *5.1*. In diesem Fall sehen Sie zwei Einträge für das Modul, einen für **Runtimeversion** **7.1 (Vorschauversion)** und einen für **5.1**.
+
+:::image type="content" source="./media/automation-runbook-types/runbook-types.png" alt-text="Runbooktypen":::
+
+
+Derzeit werden PowerShell 5.1 und 7.1 (Vorschauversion) unterstützt.
+
 
 ### <a name="advantages"></a>Vorteile
 
@@ -64,7 +83,7 @@ PowerShell-Runbooks basieren auf Windows PowerShell. Sie bearbeiten den Code des
 * Schnellerer Start als PowerShell-Workflow-Runbooks, da vor der Ausführung keine Kompilierung erforderlich ist
 * Werden in Azure und in Hybrid Runbook Workern sowohl für Windows als auch für Linux ausgeführt
 
-### <a name="limitations"></a>Einschränkungen
+### <a name="limitations---version-51"></a>Einschränkungen: Version 5.1
 
 * Erfordern Kenntnisse zu PowerShell-Skripts
 * Können keine [parallele Verarbeitung](automation-powershell-workflow.md#use-parallel-processing) zum gleichzeitigen Ausführen mehrerer Aktionen nutzen
@@ -72,7 +91,7 @@ PowerShell-Runbooks basieren auf Windows PowerShell. Sie bearbeiten den Code des
 * Sie können nur PowerShell-, PowerShell-Workflow- und grafische Runbooks mithilfe des Cmdlets [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) als untergeordnete Runbooks einfügen, wobei ein neuer Auftrag erstellt wird.
 * Für Runbooks kann die PowerShell-Anweisung [#Requires](/powershell/module/microsoft.powershell.core/about/about_requires) nicht verwendet werden. Sie wird in der Azure-Sandbox und für Hybrid Runbook Workers nicht unterstützt und führt möglicherweise dazu, dass für den Auftrag ein Fehler auftritt.
 
-### <a name="known-issues"></a>Bekannte Probleme
+### <a name="known-issues---version-51"></a>Bekannte Probleme: Version 5.1
 
 Im Folgenden sind aktuell bekannte Probleme mit PowerShell-Runbooks aufgeführt:
 
@@ -81,9 +100,34 @@ Im Folgenden sind aktuell bekannte Probleme mit PowerShell-Runbooks aufgeführt:
 * Der Vorgang [Get-Process](/powershell/module/microsoft.powershell.management/get-process) in einer Schleife in einem PowerShell-Runbook kann nach etwa 80 Iterationen zum Absturz führen.
 * Ein PowerShell-Runbook kann einen Fehler verursachen, wenn es versucht, eine große Datenmenge auf einmal in den Ausgabestream zu schreiben. Sie können dieses Problem in der Regel vermeiden, indem Sie nur die für die Arbeit mit großen Objekten benötigten Informationen in die Runbookausgabe einfügen. Anstatt `Get-Process` ohne Einschränkungen zu verwenden, können Sie z. B. nur die erforderlichen Parameter in die Cmdlet-Ausgabe einfügen wie bei `Get-Process | Select ProcessName, CPU`.
 
+### <a name="limitations---71-preview"></a>Einschränkungen: 7.1 (Vorschauversion)
+
+-  Die Azure Automation-internen PowerShell-Cmdlets werden auf einem Linux Hybrid Runbook Worker nicht unterstützt. Sie müssen das `automationassets`-Modul zu Beginn Ihres Python-Runbooks importieren, um auf die Funktionen für freigegebene Ressourcen (Objekte) des Automation-Kontos zugreifen zu können. 
+-  Für die PowerShell 7-Runtimeversion werden die Modulaktivitäten nicht für die importierten Module extrahiert.
+-  Der *PSCredential*-Runbookparametertyp wird in der PowerShell 7-Runtimeversion nicht unterstützt.
+-  PowerShell 7.x unterstützt keine Workflows. Weitere Informationen finden Sie [hier](/powershell/scripting/whats-new/differences-from-windows-powershell?view=powershell-7.1#powershell-workflow&preserve-view=true).
+-  PowerShell 7.x unterstützt derzeit keine signierten Runbooks.
+
+### <a name="known-issues---71-preview"></a>Bekannte Probleme: 7.1 (Vorschauversion)
+
+-  Das Ausführen von untergeordneten Skripts mithilfe von `.\child-runbook.ps1` wird in dieser Vorschauversion nicht unterstützt. 
+  **Problemumgehung**: Verwenden Sie `Start-AutomationRunbook` (internes Cmdlet) oder `Start-AzAutomationRunbook` (aus dem *Az.Automation-Modul*), um ein anderes Runbook aus dem übergeordneten Runbook zu starten.
+-  Runbookeigenschaften, die die Protokollierungsvoreinstellung definieren, werden in der PowerShell 7-Runtime nicht unterstützt.  
+  **Problemumgehung**: Legen Sie die Voreinstellung am Anfang des Runbooks explizit wie folgt fest:
+
+      `$VerbosePreference = "Continue"`
+
+      `$ProgressPreference = "Continue"`
+
+-   Vermeiden Sie den Import des Moduls `Az.Accounts` in Version 2.4.0 für die PowerShell 7-Runtime, da es zu unerwartetem Verhalten bei Verwendung dieser Version in Azure Automation führen kann. 
+-    Möglicherweise treten Formatierungsprobleme mit Fehlerausgabestreams für den Auftrag auf, der in der PowerShell 7-Runtime ausgeführt wird.
+
 ## <a name="powershell-workflow-runbooks"></a>PowerShell-Workflow-Runbooks
 
-PowerShell-Workflow-Runbooks sind Textrunbooks, die auf einem [Windows PowerShell-Workflow](automation-powershell-workflow.md)basieren. Sie bearbeiten den Code des Runbooks direkt mit dem Text-Editor im Azure-Portal. Sie können auch einen beliebigen Offline-Texteditor verwenden und das [Runbook in Azure Automation importieren](manage-runbooks.md) .
+PowerShell-Workflow-Runbooks sind Textrunbooks, die auf einem [Windows PowerShell-Workflow](automation-powershell-workflow.md)basieren. Sie bearbeiten den Code des Runbooks direkt mit dem Text-Editor im Azure-Portal. Sie können auch einen beliebigen Offline-Texteditor verwenden und das [Runbook in Azure Automation importieren](manage-runbooks.md) . 
+
+>[!NOTE]
+> PowerShell 7.1 unterstützt keine Workflow-Runbooks.
 
 ### <a name="advantages"></a>Vorteile
 

@@ -6,15 +6,15 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 839d5f7cd096b9b820e3a137f48efa8882fd3d1c
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 09dc0bd3afb2b9bfc99313ad38d5c7ad19086cb8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003116"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061038"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Importieren von Updates in Device Update für IoT Hub – Schema und weitere Informationen
-Wenn Sie ein Update in Device Update für IoT Hub importieren möchten, müssen Sie zuerst die [Konzepte](import-concepts.md) und die [Schrittanleitung](import-update.md) lesen. Wenn Sie an den Details des Schemas interessiert sind, das beim Erstellen eines Importmanifests verwendet wird, sowie mehr zu verknüpften Objekten erfahren möchten, informieren Sie sich weiter unten.
+Wenn Sie ein Update in Device Update für IoT Hub importieren möchten, müssen Sie zuerst die [Konzepte](import-concepts.md) und die [Schrittanleitung](import-update.md) lesen. Wenn Sie an den Details des Schemas interessiert sind, das beim Erstellen eines Importmanifests verwendet wird, und etwas zu verknüpften Objekten erfahren möchten, informieren Sie sich weiter unten.
 
 ## <a name="import-manifest-schema"></a>Schema des Importmanifests
 
@@ -26,7 +26,7 @@ Wenn Sie ein Update in Device Update für IoT Hub importieren möchten, müssen 
 | Kompatibilität | Array von `CompatibilityInfo`[-Objekten](#compatibilityinfo-object) | Kompatibilitätsinformationen des Geräts, das mit diesem Update kompatibel ist. | Maximal 10 Elemente |
 | CreatedDateTime | date/time | Datum und Uhrzeit, an dem/zu der das Update erstellt wurde. | Durch Trennzeichen getrenntes ISO 8601-Datums- und Uhrzeitformat, in UTC |
 | ManifestVersion | Zeichenfolge | Schemaversion des Importmanifests. Geben Sie den Wert `2.0` an, der mit der Schnittstelle `urn:azureiot:AzureDeviceUpdateCore:1` und der Schnittstelle `urn:azureiot:AzureDeviceUpdateCore:4` kompatibel ist. | Muss gleich `2.0` sein. |
-| Dateien | Array von `File`-Objekten | Aktualisieren von Nutzlastdateien | Maximal 5 Dateien |
+| Dateien | Array von `File`-Objekten | Aktualisieren von Nutzlastdateien | Maximal fünf Dateien |
 
 ## <a name="updateid-object"></a>UpdateId-Objekt
 
@@ -34,7 +34,7 @@ Wenn Sie ein Update in Device Update für IoT Hub importieren möchten, müssen 
 | --------- | --------- | --------- | --------- |
 | Anbieter | Zeichenfolge | Anbieterteil der Update-Identität. | 1–64 Zeichen, alphanumerisch, Punkt und Bindestrich. |
 | Name | Zeichenfolge | Namensteil der Update-Identität. | 1–64 Zeichen, alphanumerisch, Punkt und Bindestrich. |
-| Version | version | Versionsteil der Update-Identität. | 2 bis 4 Teile, durch Punkte getrennte Versionsnummer zwischen 0 und 2147483647. Führende Nullen werden gelöscht. |
+| Version | version | Versionsteil der Update-Identität. | 2 bis 4 Teile, durch Punkte getrennte Versionsnummer. Die Gesamtanzahl _jedes_ durch Punkte getrennten Teils kann zwischen „0“ und „2147483647“ betragen. Führende Nullen werden nicht unterstützt.
 
 ## <a name="file-object"></a>File-Objekt
 
@@ -105,9 +105,9 @@ Wenn zum Anmelden des Benutzers eine Azure AD-Anwendung verwendet wird, muss der
 
 Sie müssen Ihrer Azure AD-App Berechtigungen hinzufügen (auf der Registerkarte der API-Berechtigungen in der Ansicht der Azure AD-Anwendung), um die Azure Device Update-API zu verwenden. Fordern Sie die API-Berechtigung für Azure Device Update an (unter „Von meiner Organisation verwendete APIs“), und erteilen Sie die delegierte Berechtigung „user_impersonation“.
 
-ADU akzeptiert Token, die Token mit einem beliebigen von Azure AD unterstützten Flow für Benutzer, Anwendungen oder verwaltete Identitäten erwerben. Einige Flows erfordern jedoch zusätzliche Einstellungen der Azure AD-Anwendung: 
+ADU akzeptiert Token, die Token mit einem beliebigen von Azure AD unterstützten Flow für Benutzer, Anwendungen oder verwaltete Identitäten erwerben. Einige Flows erfordern jedoch ein zusätzliches Setup der Azure AD-Anwendung: 
 
-* Stellen Sie bei öffentlichen Clientflows sicher, dass Mobil- und Desktopflows aktiviert sind.
+* Sorgen Sie bei öffentlichen Clientflows dafür, dass Mobil- und Desktopflows aktiviert werden.
 * Fügen Sie bei impliziten Flows unbedingt eine Webplattform hinzu, und wählen Sie „Zugriffstoken“ für den Autorisierungsendpunkt aus.
 
 **Beispiel für die Verwendung der Azure CLI**:

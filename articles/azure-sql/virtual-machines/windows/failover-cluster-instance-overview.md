@@ -11,14 +11,14 @@ ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
-ms.openlocfilehash: 317c02a71f555328dfd4d646eb294541df11a0b7
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 2bcf10cf3d5e2036a14372d5dd0bacef7e396857
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161533"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157105"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +54,7 @@ SQL Server auf Azure-VMs bietet verschiedene Optionen als freigegebene Speicher
 |---------|---------|---------|---------|
 |**Betriebssystemversion (Min.)**| All |Windows Server 2012|Windows Server 2016|
 |**Mindestversion von SQL Server**|All|SQL Server 2012|SQL Server 2016|
-|**Unterstützte VM-Verfügbarkeit** |Verfügbarkeitsgruppen mit Näherungsplatzierungsgruppen (Für SSD Premium) </br> Dieselbe Verfügbarkeitszone (Für SSD Ultra) |Verfügbarkeitsgruppen und Verfügbarkeitszonen|Verfügbarkeitsgruppen |
+|**Unterstützte VM-Verfügbarkeit** |[SSD Premium, LRS:](../../../virtual-machines/disks-redundancy.md#locally-redundant-storage-for-managed-disks) Verfügbarkeitsgruppen mit [Näherungsplatzierungsgruppen](../../../virtual-machines/windows/proximity-placement-groups-portal.md) </br> [SSD Premium, ZRS:](../../../virtual-machines/disks-redundancy.md#zone-redundant-storage-for-managed-disks) Verfügbarkeitszonen</br> [Ultra Disks:](../../../virtual-machines/disks-enable-ultra-ssd.md) Dieselbe Verfügbarkeitszone|Verfügbarkeitsgruppen und Verfügbarkeitszonen|Verfügbarkeitsgruppen |
 |**Unterstützt FileStream**|Ja|Nein|Ja |
 |**Azure-Blobcache**|Nein|Nein|Ja|
 
@@ -74,14 +74,17 @@ Im restlichen Teil dieses Abschnitts werden die Vorteile und Einschränkungen de
 - Kann einen einzelnen freigegebenen Datenträger oder Striping für mehrere freigegebene Datenträger verwenden, um einen freigegebenen Speicherpool zu erstellen. 
 - Unterstützt Filestream.
 - SSD Premium-Instanzen unterstützen Verfügbarkeitsgruppen. 
+- Zonenredundanter Speicher (ZRS) mit SSD Premium unterstützt Verfügbarkeitszonen. VMs, die Teil der Failoverclusterinstanz sind, können in verschiedenen Verfügbarkeitszonen platziert werden. 
 
+> [!NOTE]
+> Freigegebene Azure-Datenträger unterstützen zwar auch [SSD Standard-Größen](../../../virtual-machines/disks-shared.md#disk-sizes), die Verwendung von SSD Standard-Datenträgern für SQL Server-Workloads wird aber aufgrund der Leistungseinschränkungen nicht empfohlen.
 
 **Einschränkungen:** 
-- Es wird empfohlen, die virtuellen Computer in derselben Verfügbarkeitsgruppe und Näherungsplatzierungsgruppe zu platzieren.
-- Ultra Disks unterstützen keine Verfügbarkeitsgruppen. 
-- Verfügbarkeitszonen werden für Ultra Disks unterstützt, aber die VMs müssen sich in derselben Verfügbarkeitszone befinden, was die Verfügbarkeit des virtuellen Computers einschränkt. 
-- Unabhängig von der gewählten Hardwareverfügbarkeitslösung liegt die Verfügbarkeit des Failoverclusters immer bei 99,9 %, wenn freigegebene Azure-Datenträger verwendet werden. 
+
 - Zwischenspeichern von SSD Premium-Datenträgern wird nicht unterstützt.
+- Ultra Disks unterstützen keine Verfügbarkeitsgruppen. 
+- Verfügbarkeitszonen werden für Ultra Disks unterstützt, aber die VMs müssen sich in derselben Verfügbarkeitszone befinden, was die Verfügbarkeit des virtuellen Computers auf 99,9 Prozent reduziert.
+- Zonenredundanter Speicher (ZRS) wird von Ultra Disks nicht unterstützt.
 
  
 Informationen zu den ersten Schritten finden Sie unter [SQL Server-Failoverclusterinstanz mit freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md). 
@@ -95,11 +98,13 @@ Informationen zu den ersten Schritten finden Sie unter [SQL Server-Failoverclus
 
 
 **Vorteile:** 
+
 - Ausreichende Netzwerkbandbreite ermöglicht eine robuste und leistungsstarke freigegebene Speicherlösung. 
 - Unterstützt Azure-Blobcache, damit Lesevorgänge lokal aus dem Cache bedient werden können. (Aktualisierungen werden gleichzeitig auf beide Knoten repliziert.) 
 - Unterstützt FileStream. 
 
 **Einschränkungen:**
+
 - Nur für Windows Server 2016 oder höher verfügbar. 
 - Verfügbarkeitszonen werden nicht unterstützt.
 - Erfordert, dass die gleiche Datenträgerkapazität an beide virtuelle Computer angefügt wird. 
@@ -116,7 +121,7 @@ Informationen zu den ersten Schritten finden Sie unter [SQL Server-Failoverclus
 **Unterstützte SQL-Version**: SQL Server 2012 und höher   
 
 **Vorteile:** 
-- Einzige freigegebene Speicherlösung für virtuelle Computer, die auf mehrere Verfügbarkeitszonen verteilt sind. 
+- Freigegebene Speicherlösung für virtuelle Computer, die auf mehrere Verfügbarkeitszonen verteilt sind 
 - Vollständig verwaltetes Dateisystem mit einstelligen Latenzzeiten und burstfähiger E/A-Leistung. 
 
 **Einschränkungen:**
@@ -148,7 +153,9 @@ Für gemeinsame Speichernutzungs- und Datenreplikationslösungen von Microsoft-P
 
 ## <a name="connectivity"></a>Konnektivität
 
-Sie können einen VNet-Namen oder einen Namen für ein verteiltes Netzwerk für eine Failoverclusterinstanz konfigurieren. Machen Sie sich mit den [Unterschieden zwischen den beiden Optionen](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn) vertraut, und stellen Sie dann entweder einen [Namen eines verteilten Netzwerks](failover-cluster-instance-distributed-network-name-dnn-configure.md) oder einen [Namen eines virtuellen Netzwerks](failover-cluster-instance-vnn-azure-load-balancer-configure.md) für Ihre Failoverclusterinstanz bereit.
+Um die Verbindung mit Ihrer Failoverclusterinstanz wie in der lokalen Umgebung herzustellen, stellen Sie Ihre SQL Server-VMs in [mehreren Subnetzen](failover-cluster-instance-prepare-vm.md#subnets) innerhalb desselben virtuellen Netzwerks bereit. Bei der Verwendung mehrerer Subnetze entfällt die Notwendigkeit einer zusätzlichen Abhängigkeit von einer Azure Load Balancer-Instanz oder von einem verteilten Netzwerknamen (Distributed Network Name, DNN), um Ihren Datenverkehr an Ihre Failoverclusterinstanz weiterzuleiten. 
+
+Wenn Sie Ihre SQL Server-VMs in einem einzelnen Subnetz bereitstellen, können Sie einen virtuellen Netzwerknamen (VNN) und eine Azure Load Balancer-Instanz oder einen verteilten Netzwerknamen (Distributed Network Name, DNN) konfigurieren, um Datenverkehr an Ihre Failoverclusterinstanz weiterzuleiten. Machen Sie sich mit den [Unterschieden zwischen den beiden Optionen](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn) vertraut, und stellen Sie dann entweder einen [Namen eines verteilten Netzwerks](failover-cluster-instance-distributed-network-name-dnn-configure.md) oder einen [Namen eines virtuellen Netzwerks](failover-cluster-instance-vnn-azure-load-balancer-configure.md) für Ihre Failoverclusterinstanz bereit.
 
 Verwenden Sie nach Möglichkeit den Namen eines verteilten Netzwerks, da das Failover schneller ist und der Mehraufwand und die Kosten für die Verwaltung des Lastenausgleichs wegfallen. 
 
@@ -158,7 +165,7 @@ Bei Verwendung des DNN funktionieren die meisten SQL Server-Features transparen
 
 BeachtenSie die folgenden Einschränkungen für Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines. 
 
-### <a name="lightweight-extension-support"></a>Unterstützung der Lightweight-Erweiterung   
+### <a name="lightweight-extension-support"></a>Unterstützung der Lightweight-Erweiterung
 
 Zurzeit werden SQL Server-Failoverclusterinstanzen auf Azure-VMs nur mit dem [Lightweight-Verwaltungsmodus](sql-server-iaas-agent-extension-automate-management.md#management-modes) der IaaS-Agent-Erweiterung von SQL Server unterstützt. Um aus dem vollständigen Erweiterungsmodus in den Lightweight-Modus zu wechseln, löschen Sie die Ressource **Virtueller SQL-Computer** für die entsprechenden VMs, und registrieren Sie diese dann bei der Erweiterung für den SQL-IaaS-Agent im Lightweight-Modus. Wenn Sie die Ressource **Virtueller SQL-Computer** mithilfe des Azure-Portals löschen, deaktivieren Sie das Kontrollkästchen neben dem richtigen virtuellen Computer, um das Löschen dieses Computers zu verhindern. 
 

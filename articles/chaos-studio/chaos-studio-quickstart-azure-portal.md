@@ -4,23 +4,33 @@ description: Verstehen der Schritte zum Erstellen und Ausführen eines Chaos Stu
 services: chaos-studio
 author: prashabora
 ms.topic: article
-ms.date: 10/21/2021
+ms.date: 11/10/2021
 ms.author: prashabora
 ms.service: chaos-studio
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a5635307b3b736f535dd21f54b3c2b1ec326e5b0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ec89106c1aee40bc11e6ee2246ef2e01cb8fd466
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095360"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282099"
 ---
 # <a name="quickstart-create-and-run-a-chaos-experiment-using-azure-chaos-studio"></a>Schnellstart: Erstellen und Ausführen eines Chaos-Experiments mit Azure Chaos Studio 
 Beginnen Sie mit Chaos Studio, indem Sie das Service-Direktexperiment zum Herunterfahren von VMs verwenden, um Ihren Dienst in der realen Welt resilienter gegenüber diesem Fehler zu machen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-- Einen virtuellen Computer. Wenn Sie noch keine virtuelle Maschine haben, können Sie [mit den folgenden Schritten eine erstellen](../virtual-machines/linux/quick-create-portal.md).
+- Ein Azure-Abonnement. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+- Eine virtuelle Linux-Maschine. Wenn Sie noch keine virtuelle Maschine haben, können Sie [mit den folgenden Schritten eine erstellen](../virtual-machines/linux/quick-create-portal.md).
+
+## <a name="register-the-chaos-studio-resource-provider"></a>Registrieren des Ressourcenanbieters Chaos Studio
+Wenn Sie Chaos Studio zum ersten Mal verwenden, müssen Sie zuerst den Ressourcenanbieter von Chaos Studio registrieren, bevor Sie Ressourcen integrieren und ein Experiment erstellen. Dies muss für jedes Abonnement erfolgen, in dem Sie Chaos Studio verwenden.
+
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+2. Suchen Sie nach **Abonnements** und öffnen Sie die Seite Abonnementverwaltung.
+3. Klicken Sie auf das Abonnement, in dem Sie Chaos Studio verwenden möchten.
+4. Wählen Sie im linken Navigationsbereich den Eintrag **Ressourcenanbieter** aus.
+5. Suchen Sie in der Liste der Ressourcenanbieter nach **Microsoft.Chaos**.
+6. Klicken Sie auf den Anbieter Microsoft.Chaos und dann auf die Schaltfläche **Registrieren**.
 
 ## <a name="enable-chaos-studio-on-the-virtual-machine-you-created"></a>Aktivieren von Chaos Studio auf dem erstellten virtuellen Computer
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
@@ -121,4 +131,4 @@ Beginnen Sie mit Chaos Studio, indem Sie das Service-Direktexperiment zum Herunt
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun ein Service-Direktexperiment zum Herunterfahren des virtuellen Computers durchgeführt haben, sind Sie für Folgendes bereit:
-- [Erstellen Sie ein Experiment, das agentenbasierte Fehler verwendet](chaos-studio-tutorial-agent-based.md)
+- [Erstellen Sie ein Experiment, das agentenbasierte Fehler verwendet](chaos-studio-tutorial-agent-based-portal.md)

@@ -3,22 +3,22 @@ title: Anpassen der Benutzeroberfläche
 titleSuffix: Azure AD B2C
 description: In diesem Artikel erfahren Sie, wie Sie die Benutzeroberfläche Ihrer Anwendungen anpassen, die Azure Active Directory B2C verwenden.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/06/2021
+ms.date: 10/21/2021
 ms.custom: project-no-code, b2c-support
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f227c63ef837b0de60ee72e2f33084e744f2f96f
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 70331a45936f2608f8eb9a4aadfd182056e11a77
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535597"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222715"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -72,7 +72,8 @@ Das folgende Beispiel zeigt eine Seite für die *Registrierung und Anmeldung* mi
 ::: zone pivot="b2c-user-flow"
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie **Benutzerflows** aus.
 1. Wählen Sie einen Benutzerflow aus, den Sie anpassen möchten.
@@ -198,7 +199,8 @@ Zum Anpassen Ihrer Benutzerflowseiten konfigurieren Sie zuerst das Unternehmensb
 Legen Sie zuerst das Bannerlogo, das Hintergrundbild und die Hintergrundfarbe in **Unternehmensbranding** fest.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie unter **Verwalten** die Option **Unternehmensbranding** aus.
 1. Führen Sie die unter [Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation](../active-directory/fundamentals/customize-branding.md) aufgeführten Schritte aus.
@@ -225,7 +227,7 @@ Nachdem Sie das Unternehmensbranding konfiguriert haben, können Sie es in Ihren
 
 Wenn Sie alle Seiten im Benutzerflow mit Branding versehen möchten, legen Sie die Seitenlayoutversion für jedes Seitenlayout im Benutzerflow fest.
 
-![Seitenlayoutauswahl in Azure AD B2C im Azure-Portal](media/customize-ui/portal-02-page-layout-select.png)
+:::image type="content" source="media/customize-ui/portal-02-page-layout-select.png" alt-text="Seitenlayoutauswahl von Azure AD B2C im Azure-Portal.":::
 
 ::: zone-end
 
@@ -277,6 +279,25 @@ Das folgende Beispiel zeigt die Inhaltsdefinitionen mit den entsprechenden Seite
   </ContentDefinition>
 </ContentDefinitions>
 ```
+
+::: zone-end
+
+::: zone pivot="b2c-user-flow"
+
+## <a name="re-order-input-fields-in-the-sign-up-form"></a>Neuanordnen von Eingabefeldern im Registrierungsformular
+Führen Sie die folgenden Schritte aus, um die Eingabefelder auf der Registrierungsseite im Formular für lokale Konten neu anzuordnen:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Wählen Sie im linken Menü die Option **Benutzerflows** aus.
+1. Wählen Sie einen Benutzerflow (nur für lokale Konten) aus, dessen Eingabefelder Sie neu anordnen möchten.
+1. Wählen Sie im linken Menü die Option **Seitenlayouts** aus.
+1. Wählen Sie in der Tabelle die Zeile **Registrierungsseite für lokales Konto** aus.
+1. Wählen Sie unter **Benutzerattribute** das neu anzuordnende Eingabefeld aus, und ziehen Sie es (nach oben oder unten) an die gewünschte Stelle, um die beabsichtigte Reihenfolge herzustellen. Alternativ können Sie dazu auch die Steuerelemente **Nach oben** oder **Nach unten** verwenden. 
+1. Klicken Sie am oberen Rand der Seite auf **Speichern**.
+
+  :::image type="content" source="media/customize-ui/portal-02-page-layout-fields.png" alt-text="Dropdownmenü zur Vorlagenauswahl auf der Seite „Benutzerflow“ im Azure-Portal.":::
 
 ::: zone-end
 

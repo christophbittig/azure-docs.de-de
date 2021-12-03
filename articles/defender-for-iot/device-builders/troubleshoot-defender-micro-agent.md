@@ -1,18 +1,18 @@
 ---
-title: Problembehandlung für den Defender-IoT-Micro-Agent (Vorschau)
+title: Problembehandlung für den IoT-Micro-Agent für Defender für Cloud (Vorschau)
 description: Erfahren Sie, wie Sie unerwartete oder unerklärliche Fehler behandeln.
-ms.date: 4/5/2021
+ms.date: 11/09/2021
 ms.topic: reference
-ms.openlocfilehash: 23722195f4a7f7a19f10962ce648bc1a6e2a4012
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 94fd4c75a24b37bbc50ca582ca7bb64de87a042c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016369"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283959"
 ---
-# <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Problembehandlung für den Defender-IoT-Micro-Agent (Vorschau)
+# <a name="defender-for-cloud-iot-micro-agent-troubleshooting-preview"></a>Problembehandlung für den IoT-Micro-Agent für Defender für Cloud (Vorschau)
 
-Wenn ein unerwarteter Fehler auftritt, können Sie mit diesen Problembehandlungsmethoden das Problem beheben. Sie können sich bei Bedarf auch an das Produktteam von Azure Defender für IoT wenden, um Unterstützung zu erhalten.   
+Wenn ein unerwarteter Fehler auftritt, können Sie mit diesen Problembehandlungsmethoden das Problem beheben. Sie können sich bei Bedarf auch an das Produktteam von Azure Defender für Cloud für IoT wenden, um Unterstützung zu erhalten.   
 
 ## <a name="service-status"></a>Dienststatus 
 
@@ -38,7 +38,7 @@ Sie erkennen, dass der Dienst abgestürzt ist, wenn die Uptime des Prozesses wen
 
 ## <a name="validate-micro-agent-root-privileges"></a>Überprüfen von Micro-Agent-Stammberechtigungen
 
-Mit dem folgenden Befehl können Sie überprüfen, ob der Defender für IoT-Micro-Agent-Dienst mit Root-Berechtigungen ausgeführt wird.
+Mit dem folgenden Befehl können Sie überprüfen, ob der IoT-Micro-Agent-Dienst bei Defender für Cloud mit Root-Berechtigungen ausgeführt wird.
 
 ```bash
 ps -aux | grep " defender-iot-micro-agent"

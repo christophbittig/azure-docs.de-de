@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 author: wenxwei
 ms.author: wenxwei
-ms.date: 05/25/2021
+ms.date: 10/21/2021
 ms.reviewer: peterlu
 ms.custom: devplatv2
-ms.openlocfilehash: 89fb2c08aa76b88110bb5832f297d08d5891dda4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f411d33baea7863b9139069f1eefd1282cf7b730
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448314"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562084"
 ---
 # <a name="train-models-with-rest-preview"></a>Trainieren von Modellen per REST (Vorschau)
 
@@ -92,7 +92,7 @@ Das LightGBM-Beispiel muss in einer LightGBM-Umgebung ausgeführt werden. Erstel
 
 Sie können das Docker-Image mit `Docker` konfigurieren und Conda-Abhängigkeiten mit `condaFile` hinzufügen: 
 
-:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_environment":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/train-rest.sh" id="create_environment":::
 
 ### <a name="datastore"></a>Datenspeicher
 
@@ -114,7 +114,7 @@ AZURE_STORAGE_KEY=$(az storage account keys list --account-name $AZURE_STORAGE_A
 
 Nachdem Sie nun über den Datenspeicher verfügen, können Sie ein Dataset erstellen. Verwenden Sie für dieses Beispiel das gängige Dataset `iris.csv`, und verweisen Sie in `path` darauf. 
 
-:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_data":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/train-rest.sh" id="create_data":::
 
 ### <a name="code"></a>Code
 
@@ -128,7 +128,7 @@ az storage blob upload-batch -d $AZUREML_DEFAULT_CONTAINER/src \
 
 Nachdem Sie Ihren Code hochgeladen haben, können Sie ihn mit einer PUT-Anforderung angeben und mit `datastoreId` auf den Datenspeicher verweisen. 
 
-:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_code":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/train-rest.sh" id="create_code":::
 
 ## <a name="submit-a-training-job"></a>Übermitteln eines Trainingsauftrags
 
@@ -145,7 +145,7 @@ Da Ihre Ressourcen jetzt vorhanden sind, können Sie den LightGBM-Auftrag ausfü
 
 Verwenden Sie die folgenden Befehle, um den Trainingsauftrag zu übermitteln:
 
-:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_job":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/train-rest.sh" id="create_job":::
 
 ## <a name="submit-a-hyperparameter-sweep-job"></a>Übermitteln eines Sweep-Auftrags für Hyperparameter
 
@@ -162,7 +162,7 @@ Mit Azure Machine Learning haben Sie auch die Möglichkeit, Hyperparameter für 
 
 Verwenden Sie die folgenden Befehle, um einen Sweep-Auftrag mit demselben LightGBM-Beispiel zu erstellen: 
 
-:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_a_sweep_job":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/train-rest.sh" id="create_a_sweep_job":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

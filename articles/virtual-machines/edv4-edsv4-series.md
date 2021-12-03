@@ -8,13 +8,13 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
-ms.date: 02/04/2020
-ms.openlocfilehash: f1f31fe80a0ac156fdb7f2e01ec9a783c4220189
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.date: 10/20/2021
+ms.openlocfilehash: 3f1f1cfa0feb13b03abd5129098ab20c7b755b76
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071224"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401020"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- und Edsv4-Serie
 
@@ -34,21 +34,22 @@ Die Edv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platin
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) Unterstützt<sup>1</sup> <br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br>
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | <sup>**</sup> Maximaler temporärer Speicherdurchsatz: IOPS/MB/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler temporärer Speicherdurchsatz: IOPS/MB/s<sup>*</sup>  | Maximale Anzahl NICs|Max. Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|
-| Standard_E2d_v4<sup>1</sup>  | 2 | 16 | 75 | 4 | 19.000/120 | 2|1000 |
-| Standard_E4d_v4  | 4 | 32 | 150 | 8 | 38.500/242 | 2|2000 |
-| Standard_E8d_v4 | 8 | 64 | 300 | 16 | 77.000/485 | 4|4000 |
-| Standard_E16d_v4 | 16 | 128 | 600 | 32 | 154.000/968 | 8|8.000 |
-| Standard_E20d_v4 | 20 | 160 | 750 | 32 | 193.000/1.211  | 8|10000 |
-| Standard_E32d_v4 | 32 | 256 | 1200 | 32 | 308.000/1.936 | 8|16000 |
-| Standard_E48d_v4 | 48 | 384 | 1800 | 32 | 462.000/2.904 | 8|24.000 |
-| Standard_E64d_v4 | 64 | 504 | 2400 | 32 | 615.000/3.872 | 8|30.000 |
+| Standard_E2d_v4<sup>1</sup>  | 2  | 16  | 75   | 4  | 9\.000/125    | 2 | 1000  |
+| Standard_E4d_v4              | 4  | 32  | 150  | 8  | 19.000/250   | 2 | 2000  |
+| Standard_E8d_v4              | 8  | 64  | 300  | 16 | 38.000/500   | 4 | 4000  |
+| Standard_E16d_v4             | 16 | 128 | 600  | 32 | 75.000/1.000   | 8 | 8.000  |
+| Standard_E20d_v4             | 20 | 160 | 750  | 32 | 94.000/1250  | 8 | 10000 |
+| Standard_E32d_v4             | 32 | 256 | 1200 | 32 | 150.000/2.000 | 8 | 16000 |
+| Standard_E48d_v4             | 48 | 384 | 1800 | 32 | 225.000/3.000 | 8 | 24.000 |
+| Standard_E64d_v4             | 64 | 504 | 2400 | 32 | 300.000/4.000 | 8 | 30.000 |
 
-<sup>1</sup> Beschleunigter Netzwerkbetrieb kann nur auf eine einzelne NIC angewendet werden. <br>
-<sup>**</sup> Diese IOPS-Werte können mithilfe von [Gen2-VMs](generation-2.md) erzielt werden.
+<sup>*</sup> Diese IOPS-Werte können mit [Gen2-VMs](generation-2.md)
+<sup>1</sup> erreicht werden. Beschleunigter Netzwerkbetrieb kann nur auf eine einzelne NIC angewendet werden. <br>
 
 ## <a name="edsv4-series"></a>Edsv4-Serie
 
@@ -62,21 +63,22 @@ Die Edsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Plati
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt <br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
+[Geschachtelte Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): Unterstützt <br>
 <br>
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | <sup>**</sup> Maximaler temporärer Speicherdurchsatz: IOPS/MB/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler temporärer Speicherdurchsatz: IOPS/MB/s<sup>*</sup> | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> | Maximale Anzahl NICs|Max. Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_E2ds_v4<sup>4</sup>  | 2 | 16 | 75 | 4 | 19.000/120(50) | 3200/48 | 4000/200 | 2|1000 |
-| Standard_E4ds_v4  | 4 | 32 | 150 | 8 | 38.500/242(100) | 6400/96 | 8000/200 | 2|2000 |
-| Standard_E8ds_v4 | 8 | 64 | 300 | 16 | 77.000/485(200) | 12800/192 | 16000/400 | 4|4000 |
-| Standard_E16ds_v4 | 16 | 128 | 600 | 32 | 154.000/968(400) | 25600/384 | 32000/800 | 8|8.000 |
-| Standard_E20ds_v4 | 20 | 160 | 750 | 32 | 193.000/1.211(500)  | 32000/480 | 40000/1000 | 8|10000 |
-| Standard_E32ds_v4 | 32 | 256 | 1200 | 32 | 308.000/1.936(800) | 51200/768  | 64000/1600 | 8|16000 |
-| Standard_E48ds_v4 | 48 | 384 | 1800 | 32 | 462.000/2.904(1.200) | 76800/1152 | 80.000/2.000 | 8|24.000 |
-| Standard_E64ds_v4 <sup>2</sup> | 64 | 504 | 2400 | 32 | 615.000/3.872(1.600) | 80000/1200 | 80.000/2.000 | 8|30.000 |
-| Standard_E80ids_v4 <sup>3</sup> | 80 | 504 | 2400 | 32 | 615.000/3.872(1.600) | 80000/1200 | 80.000/2.000 | 8|30.000 |
+| Standard_E2ds_v4<sup>4</sup>    | 2  | 16  | 75   | 4  | 9\.000/125    | 3200/48    | 4000/200   | 2 | 1000  |
+| Standard_E4ds_v4                | 4  | 32  | 150  | 8  | 19.000/250   | 6400/96    | 8000/200   | 2 | 2000  |
+| Standard_E8ds_v4                | 8  | 64  | 300  | 16 | 38.000/500   | 12800/192  | 16000/400  | 4 | 4000  |
+| Standard_E16ds_v4               | 16 | 128 | 600  | 32 | 75.000/1.000   | 25600/384  | 32000/800  | 8 | 8.000  |
+| Standard_E20ds_v4               | 20 | 160 | 750  | 32 | 94.000/1.250  | 32000/480  | 40000/1000 | 8 | 10000 |
+| Standard_E32ds_v4               | 32 | 256 | 1200 | 32 | 150.000/2.000 | 51200/768  | 64000/1600 | 8 | 16000 |
+| Standard_E48ds_v4               | 48 | 384 | 1800 | 32 | 225.000/3.000 | 76800/1152 | 80.000/2.000 | 8 | 24.000 |
+| Standard_E64ds_v4 <sup>2</sup>  | 64 | 504 | 2400 | 32 | 300.000/4.000 | 80000/1200 | 80.000/2.000 | 8 | 30.000 |
+| Standard_E80ids_v4 <sup>3</sup> | 80 | 504 | 2400 | 64 | 375.000/4.000 | 80000/1200 | 80.000/2.000 | 8 | 30.000 |
 
-<sup>**</sup> Diese IOPS-Werte können mithilfe von [Gen2-VMs](generation-2.md) garantiert werden.<br>
+<sup>*</sup> Diese IOPS-Werte können mithilfe von [Gen2-VMs](generation-2.md) garantiert werden.<br>
 <sup>1</sup> VMs der Edsv4-Serie können mit einem [Burst](./disk-bursting.md) ihre Datenträgerleistung für jeweils bis zu 30 Minuten auf das maximale Bursting verbessern.<br>
 <sup>2</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md)<br>
 <sup>3</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.<br>

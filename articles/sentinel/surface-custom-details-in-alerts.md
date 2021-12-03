@@ -1,28 +1,28 @@
 ---
-title: Anzeigen benutzerdefinierter Details in Azure Sentinel-Warnungen | Microsoft-Dokumentation
-description: Extrahieren und Anzeigen von benutzerdefinierten Ereignisdetails in Warnungen der Azure Sentinel-Analyseregeln für bessere und vollständigere Informationen zu Incidents
+title: Anzeigen benutzerdefinierter Details in Microsoft Sentinel-Warnungen | Microsoft-Dokumentation
+description: Extrahieren und Anzeigen von benutzerdefinierten Ereignisdetails in Warnungen der Microsoft Sentinel-Analyseregeln für bessere und vollständigere Informationen zu Incidents
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ffde66c8b64968d7b3aa5cc179177d34e8068e50
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 022c58b2d51405043620174030f1f1b85e3238a6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019607"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523845"
 ---
-# <a name="surface-custom-event-details-in-alerts-in-azure-sentinel"></a>Anzeigen benutzerdefinierter Ereignisdetails in Azure Sentinel-Warnungen 
+# <a name="surface-custom-event-details-in-alerts-in-microsoft-sentinel"></a>Anzeigen benutzerdefinierter Ereignisdetails in Microsoft Sentinel-Warnungen 
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "131019607"
 
 ## <a name="introduction"></a>Einführung
 
-[Analyseregeln für geplante Abfragen](detect-threats-custom.md) analysieren **Ereignisse** aus mit Azure Sentinel verbundenen Datenquellen und erzeugen **Warnungen**, wenn die Inhalte dieser Ereignisse aus Sicherheitssicht bedeutsam sind. Diese Warnungen werden weiter analysiert, gruppiert, nach den verschiedenen Azure Sentinel-Engines gefiltert und in **Incidents** zusammengefasst, die die Aufmerksamkeit eines SOC-Analysten garantieren. Wenn dem Analyst der Incident anzeigt wird, sind jedoch nur die Eigenschaften der Komponentenwarnungen sofort erkennbar. Den eigentlichen Inhalt (die in den Ereignissen enthaltenen Informationen) anzuzeigen, ist ein bisschen komplizierter.
+[Analyseregeln für geplante Abfragen](detect-threats-custom.md) analysieren **Ereignisse** aus mit Microsoft Sentinel verbundenen Datenquellen und erzeugen **Warnungen**, wenn die Inhalte dieser Ereignisse aus Sicherheitssicht bedeutsam sind. Diese Warnungen werden weiter analysiert, gruppiert, nach den verschiedenen Microsoft Sentinel-Engines gefiltert und in **Incidents** zusammengefasst, die die Aufmerksamkeit eines SOC-Analysten garantieren. Wenn dem Analyst der Incident anzeigt wird, sind jedoch nur die Eigenschaften der Komponentenwarnungen sofort erkennbar. Den eigentlichen Inhalt (die in den Ereignissen enthaltenen Informationen) anzuzeigen, ist ein bisschen komplizierter.
 
 Mit dem Feature zu **benutzerdefinierten Details** im **Analyseregel-Assistenten** können Sie Ereignisdaten in den Warnungen anzeigen, die aus diesen Ereignissen erstellt wurden, indem die Ereignisdaten Teil der Warnungseigenschaften werden. Dadurch wird der Ereignisinhalt in Ihren Incidents sofort sichtbar, sodass Sie deutlich schneller und effizienter selektieren, untersuchen, schlussfolgern und antworten können.
 
@@ -40,7 +40,7 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 
 ## <a name="how-to-surface-custom-event-details"></a>Anzeigen von benutzerdefinierten Ereignisdetails
 
-1. Wählen Sie im Azure Sentinel-Navigationsmenü die Option **Analysen** aus.
+1. Wählen Sie im Navigationsmenü von Microsoft Sentinel die Optionen **Analytik**.
 
 1. Wählen Sie eine geplante Abfrageregel aus, und klicken Sie auf **Bearbeiten**. Oder erstellen Sie eine neue Regel, indem Sie oben auf dem Bildschirm auf **Erstellen > Geplante Abfrageregel** klicken.
 
@@ -72,6 +72,6 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
     > - Die Größenbeschränkung für alle benutzerdefinierten Details beträgt insgesamt **2 KB**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument haben Sie erfahren, wie Sie mithilfe von Azure Sentinel-Analyseregeln benutzerdefinierte Details in Warnungen anzeigen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Dokument haben Sie erfahren, wie Sie mithilfe von Microsoft Sentinel-Analyseregeln benutzerdefinierte Details in Warnungen anzeigen. Weitere Informationen über Microsoft Sentinel finden Sie in den folgenden Artikeln:
 - Unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md) können Sie sich ein Gesamtbild machen.
-- Erfahren Sie mehr über [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md).
+- Erfahren Sie mehr über [Entitäten in Microsoft Sentinel](entities-in-azure-sentinel.md).

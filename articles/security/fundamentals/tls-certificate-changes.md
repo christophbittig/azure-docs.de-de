@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 09/13/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 01acde63371fea6a8c3f752caf31fa883e5e617e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cc8cdfcfeee8c5deefe64799be7c6ee27cb644f6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641216"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135815"
 ---
 # <a name="azure-tls-certificate-changes"></a>TLS-Zertifikatänderungen für Azure  
 
@@ -24,13 +24,13 @@ Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Zertifikaten au
 
 Bereits vorhandene Azure-Endpunkte wurden ab dem 13. August 2020 phasenweise umgestellt. Alle neu erstellten TLS/SSL-Azure-Endpunkte enthalten aktualisierte Zertifikate, die mit den neuen Stammzertifizierungsstellen verkettet sind.
 
-Alle Azure-Dienste sind von dieser Änderung betroffen. Hier finden Sie einige zusätzliche Details für bestimmte Dienste:
+Alle Azure-Dienste sind von dieser Änderung betroffen. Hier finden Sie weitere Einzelheiten zu bestimmten Dienstleistungen:
 
 - Für [Azure AD-Dienste](../../active-directory/index.yml) (Azure Active Directory) wurde diese Umstellung am 7. Juli 2020 initiiert.
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) und [DPS](../../iot-dps/index.yml) verbleiben in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456), um ausführliche Informationen zu erhalten.
 - Für [Azure Storage](../../storage/index.yml) [klicken Sie hier, um Details zu erhalten](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-critical-changes-are-almost-here-and-why-you/ba-p/2741581).
 - [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) verbleibt in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](../../azure-cache-for-redis/cache-whats-new.md), um ausführliche Informationen zu erhalten.
-- Azure Instance Metadata Service verbleibt in der Baltimore CyberTrust-Stammzertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html), um ausführliche Informationen zu erhalten.
+- Für [Azure Instance Metadata Service](../../virtual-machines/linux/instance-metadata-service.md?tabs=linux), siehe [Azure Instance Metadata Service-geprüfte Daten TLS: Kritische Änderungen stehen vor der Tür!](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-instance-metadata-service-attested-data-tls-critical/ba-p/2888953) .
 
 > [!IMPORTANT]
 > Kunden müssen ihre Anwendungen nach dieser Änderung ggf. aktualisieren, um Verbindungsfehler beim Herstellen einer Verbindung mit Azure Storage zu vermeiden.
@@ -70,7 +70,7 @@ Im Anschluss finden Sie verschiedene Methoden, mit denen Sie ermitteln können, 
 
 - Wenn Sie über eine Anwendung mit Azure-API- oder Azure-Dienstintegration verfügen und nicht sicher sind, ob sie das Anheften von Zertifikaten nutzt, wenden Sie sich den Hersteller der Anwendung.
 
-- Für unterschiedliche Betriebssysteme und Sprach-Runtimes, die mit Azure-Diensten kommunizieren, sind möglicherweise zusätzliche Schritte erforderlich, um eine ordnungsgemäße Zertifikatkette mit den neuen Stammzertifizierungsstellen einzurichten:
+- Verschiedene Betriebssysteme und Sprachlaufzeiten, die mit Azure-Diensten kommunizieren, erfordern möglicherweise mehr Schritte, um die Zertifikatskette mit diesen neuen Wurzeln korrekt zu erstellen:
     - **Linux:** Bei vielen Distributionen müssen die Zertifizierungsstellen zu „/etc/ssl/certs“ hinzugefügt werden. Spezifische Anweisungen finden Sie in der Dokumentation der Distribution.
     - **Java:** Stellen Sie sicher, dass der Java-Schlüsselspeicher die oben aufgeführten Zertifizierungsstellen enthält.
     - **Windows in nicht verbundenen Umgebungen:** Für Systeme, die in nicht verbundenen Umgebungen ausgeführt werden, müssen die neuen Stammzertifizierungsstellen dem Speicher für vertrauenswürdige Stammzertifizierungsstellen und die Zwischenzertifizierungsstellen dem Speicher für Zwischenzertifizierungsstellen hinzugefügt werden.

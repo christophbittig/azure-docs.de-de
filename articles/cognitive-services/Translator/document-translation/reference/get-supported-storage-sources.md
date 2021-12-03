@@ -3,19 +3,17 @@ title: Methode „Abrufen unterstützter Speicherquellen“
 titleSuffix: Azure Cognitive Services
 description: Die Methode „Abrufen unterstützter Speicherquellen“ gibt eine Liste der unterstützten Speicherquellen zurück.
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
-ms.author: v-jansk
-ms.openlocfilehash: b0cd1c179de36147169239ab50785a9d93dfa5bb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4dae58196bda8978d503593241f3e74c9ef14c69
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458757"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056775"
 ---
 # <a name="get-supported-storage-sources"></a>Abrufen unterstützter Speicherquellen
 
@@ -58,14 +56,14 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 ### <a name="successful-get-supported-storage-sources-response"></a>Erfolgreiche „Abrufen unterstützter Speicherquellen“-Antwort
 Der Basistyp für die Listenrückgabe in der API zum „Abrufen unterstützter Speicherquellen“.
 
-|Name|Typ|BESCHREIBUNG|
+|Name|type|BESCHREIBUNG|
 |--- |--- |--- |
 |value|string []|Eine Liste der Objekte.|
 
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|Typ|Beschreibung|
+|Name|type|BESCHREIBUNG|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|

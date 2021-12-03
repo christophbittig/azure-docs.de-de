@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 5422fe324ca1f3ef5bb2d14fb04664c8fb03fe3c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c57abd00282067b66be0da55bf33324fc55dc435
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866232"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020063"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Debuggen von fehlgeschlagenen Spark-Aufträgen mit dem Azure-Toolkit für IntelliJ (Vorschau)
 
@@ -22,7 +22,7 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsigh
 
 * [Oracle Java Development Kit.](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) In diesem Tutorial wird die Java-Version 8.0.202 verwendet.
   
-* IntelliJ IDEA. In diesem Artikel wird [IntelliJ IDEA Community 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows).
+* IntelliJ IDEA. In diesem Artikel wird [IntelliJ IDEA Community 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows) verwendet.
   
 * Azure-Toolkit für IntelliJ. Weitere Informationen finden Sie unter [Installieren des Azure-Toolkits für IntelliJ](/azure/developer/java/toolkit-for-intellij/installation).
 
@@ -115,11 +115,6 @@ Wenn die Auftragsübermittlung fehlschlägt, können Sie das Profil des fehlgesc
 ## <a name="next-steps"></a><a name="seealso"></a>Nächste Schritte
 
 * [Übersicht: Debuggen von Apache Spark-Anwendungen](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-
-### <a name="demo"></a>Demo
-
-* Erstellen von Scala-Projekten (Video): [Erstellen von Spark Scala-Anwendungen](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Remotedebuggen (Video): [Remotedebuggen von Apache Spark-Anwendungen in einem HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Szenarien
 

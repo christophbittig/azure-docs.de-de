@@ -2,18 +2,18 @@
 title: Geänderte und gelöschte Blobs
 titleSuffix: Azure Cognitive Search
 description: Nach einem ersten Suchindexbuild, der aus Azure Blob Storage importiert wird, kann die nachfolgende Indizierung nur die Blobs übernehmen, die geändert oder gelöscht werden. In diesem Artikel werden die Details erläutert.
-author: nitinme
-ms.author: nitinme
+author: gmndrg
+ms.author: gimondra
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 48a421f2e95e06a61ac4bee734046c043906035e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ab13e8901d507f6499a0eeba336a3f7717795ee7
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023441"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892189"
 ---
 # <a name="change-and-deletion-detection-in-blob-indexing-azure-cognitive-search"></a>Erkennung von Änderungen und Löschungen bei der Blobindizierung (Azure Cognitive Search)
 

@@ -3,15 +3,15 @@ title: Abschätzen der Speicherkosten in Azure Logic Apps für nur einen Mandant
 description: Abschätzen der Speicherkosten für Ihre Workflows mithilfe des Azure Logic Apps-Speicherrechners.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/13/2021
-ms.openlocfilehash: 860e84bf8e2378d4a9c433df81c5adfb6741169e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 11/10/2021
+ms.openlocfilehash: 995c620eeafc5a627a9f9d94733c80de47f2928d
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953835"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132369396"
 ---
 # <a name="estimate-storage-costs-for-workflows-in-single-tenant-azure-logic-apps"></a>Abschätzen der Speicherkosten für Workflows in Azure Logic Apps für nur einen Mandanten
 
@@ -35,8 +35,11 @@ Die Speicherkosten ändern sich basierend auf den Workflow-Inhalten. Verschieden
 Wenn Sie ein Workflow abschätzen möchten, beziehen Sie den JSON-Code für Ihren Workflow:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
 1. Wechseln Sie zum **Logic-Apps**-Dienst und wählen Sie Ihren Workflow aus.
+
 1. Wählen Sie im Menü Ihrer Logic-App unter **Entwicklungstools** die Option **Logic-App-Codeansicht**.
+
 1. Kopieren Sie den JSON-Code des Workflows.
 
 ## <a name="estimate-storage-needs"></a>Abschätzen des Speicherbedarfs
@@ -57,7 +60,9 @@ Wenn Sie ein Workflow abschätzen möchten, beziehen Sie den JSON-Code für Ihre
    * Eine Option zum Auswählen aller Vorgänge mit Nutzlasten über 32 KB.
 
 1. Geben Sie unter **Monatliche Ausführungen** ein, wie oft Sie Ihren Workflow pro Monat ausführen.
+
 1. Wählen Sie **Berechnen** aus und warten Sie, bis die Berechnung ausgeführt wird.
+
 1. Überprüfen Sie die Schätzung der **Vorgangsanzahl** unter **Aufschlüsselung des Speicherbetriebs und Berechnungsschritte**.
 
     In den beiden Tabellen können Sie die geschätzte Anzahl der Vorgänge nach Lauf und nach Monat anzeigen. Die folgenden Vorgänge werden angezeigt:
@@ -67,7 +72,7 @@ Wenn Sie ein Workflow abschätzen möchten, beziehen Sie den JSON-Code für Ihre
     * **Warteschlange** für Azure Queues-Warteschlangenklasse 2 Vorgänge.
     * **Tabellen** für Azure Table Storage-Vorgänge.
 
-    Jeder Vorgang verfügt über eine minimale, maximale und „best geschätzte“Anzahl. Wählen Sie die relevanteste Zahl aus, die Sie für die [Schätzung Ihrer Speicherbetriebskosten](#estimate-storage-costs) basierend auf Ihrem individuellen Szenario verwenden möchten. In der Regel wird die Verwendung der „best geschätzten“ Anzahl im Hinblick auf die Genauigkeit empfohlen. Sie können jedoch auch die maximale Anzahl verwenden, um sicherzustellen, dass Ihre Kostenschätzung einen Puffer umfasst.
+    Jeder Vorgang verfügt über eine minimale, maximale und „best geschätzte“Anzahl. Wählen Sie die relevanteste Zahl aus, die Sie für die [Schätzung Ihrer Speicherbetriebskosten](#estimate-storage-costs) basierend auf Ihrem individuellen Szenario verwenden möchten. Als Empfehlung verwenden Sie die „Best Guess“-Anzahl für die Genauigkeit. Sie können jedoch auch die maximale Anzahl verwenden, um sicherzustellen, dass Ihre Kostenschätzung einen Puffer umfasst.
 
     :::image type="content" source="./media/estimate-storage-costs/storage-calculator-results.png" alt-text="Screenshot: Logic Apps-Speicherrechner mit Ausgabe der geschätzten Vorgängen" lightbox="./media/estimate-storage-costs/storage-calculator-results.png":::.
 
@@ -81,22 +86,30 @@ Nach dem Berechnen des [Speicherbedarfs Ihres Logik-App-Workflows](#estimate-sto
 
 ### <a name="estimate-blob-storage-operations-costs"></a>Einschätzen der Kosten für Blobspeichervorgänge
 
-> [!NOTE]
-> Dieses Funktion ist derzeit nicht verfügbar. Vorerst können Sie weiterhin den Rechner zum Einschätzen des [Warteschlangenspeichers](#estimate-queue-operations-costs) und [des Tabellenspeichers](#estimate-table-operations-costs) zu schätzen.
-
 So schätzen Sie die monatlichen Kosten für die Blobspeichervorgänge Ihrer Logik-App:
 
 1. Wechseln Sie zum [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/).
+
 1. Wählen Sie auf der Registerkarte **Produkte** die Option **Speicher** &gt; **Speicherkonten** aus. Oder geben Sie in dem Suchfeld **Suchleiste** **Speicherkonten** ein, und wählen Sie die entsprechende Kachel aus.
-    :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Screenshot des Azure-Preisrechners mit der Kachel zum Hinzufügen der Speicherkontenansicht." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
+   :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Screenshot des Azure-Preisrechners mit der Kachel zum Hinzufügen der Speicherkontenansicht." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
 1. Wählen Sie in der Benachrichtigung über **Hinzugefügte Speicherkonten** die Option **Ansicht** aus, um den Abschnitt **Speicherkonten** des Rechners anzuzeigen. Oder wechseln Sie manuell zum Abschnitt **Speicherkonten**.
+
 1. Wählen Sie unter **Region** die Region für Ihre Logik-App aus.
+
 1. Wählen Sie unter **Blockblob Speicher** den **Typ** aus.
+
 1. Wählen Sie Ihre Leistungsstufe unter **Leistungsstufe** aus.
+
 1. Wählen Sie Wählen Sie Ihre Redundanzstufe unter **Redundanz** aus.
+
 1. Passen Sie alle anderen Einstellungen nach Bedarf an.
-1. Eingabe der *tatsächlichen* Anzahl Ihrer **Blob-(Schreib-)** Vorgänge aus dem Logic Apps-Speicherrechner unter **Schreibvorgänge**.
-1. Eingabe der *tatsächlichen* Anzahl Ihrer **Blob-(Lese-)** Vorgänge aus dem Logic Apps-Speicherrechner unter **Lesevorgänge**.
+
+1. Eingabe der tatsächlichen Anzahl Ihrer **Blob-(Schreib-)** Vorgänge aus dem Logic Apps-Speicherrechner, *geteilt durch 10.000* unter **Schreibvorgänge**. Dieser Schritt ist erforderlich, da der Rechner in Transaktionseinheiten für Speichervorgänge arbeitet.
+
+1. Eingabe der tatsächlichen Anzahl Ihrer **Blob-(Lese-)** Vorgänge aus dem Logic Apps-Speicherrechner, *geteilt durch 10.000* unter **Lesevorgänge**. Dieser Schritt ist erforderlich, da der Rechner in Transaktionseinheiten für Speichervorgänge arbeitet.
+
 1. Überprüfen Sie die abgeschätzten Kosten für Blobspeichervorgänge.
 
 ### <a name="estimate-queue-operations-costs"></a>Abschätzen der Kosten für Warteschlangenvorgänge
@@ -104,14 +117,23 @@ So schätzen Sie die monatlichen Kosten für die Blobspeichervorgänge Ihrer Log
 Abschätzen der monatlichen Kosten für die Warteschlangenvorgänge Ihrer Logik-App :
 
 1. Wechseln Sie zum [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/).
+
 1. Wählen Sie auf der Registerkarte **Produkte** die Option **Speicher** &gt; **Speicherkonten** aus. Oder geben Sie in dem Suchfeld **Suchleiste** **Speicherkonten** ein, und wählen Sie die entsprechende Kachel aus.
-    :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Screenshot des Azure-Preisrechners mit der Kachel zum Hinzufügen der Speicherkontenansicht." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
+   :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Screenshot des Azure-Preisrechners mit der Kachel zum Hinzufügen der Speicherkontenansicht." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
 1. Wählen Sie in der Benachrichtigung über **Hinzugefügte Speicherkonten** die Option **Ansicht** aus, um den Abschnitt **Speicherkonten** des Rechners anzuzeigen. Oder wechseln Sie manuell zum Abschnitt **Speicherkonten**.
+
 1. Wählen Sie unter **Region** die Region für Ihre Logik-App aus.
+
 1. Wählen Sie unter **Azure Queue Storage** den **Typ** aus.
+
 1. Wählen Sie unter **Speicherkontotyp** Ihren Speicherkontotyp aus.
+
 1. Wählen Sie Wählen Sie Ihre Redundanzstufe unter **Redundanz** aus.
+
 1. Geben Sie die **Warteschlangen**-Vorgangsnummer aus dem Logic Apps Speicherrechner *dividiert durch 10.000* unter **Warteschlangenklasse 2-Vorgänge** ein. Dieser Schritt ist erforderlich, da der Rechner in Transaktionseinheiten für Warteschlangenvorgänge arbeitet.
+
 1. Überprüfen der geschätzten Kosten für Warteschlangenvorgänge.
 
 ### <a name="estimate-table-operations-costs"></a>Abschätzen der Kosten für Tabellenvorgänge
@@ -119,14 +141,23 @@ Abschätzen der monatlichen Kosten für die Warteschlangenvorgänge Ihrer Logik-
 Abschätzen der monatlichen Kosten für die Tabellenspeichervorgänge Ihrer Logik-App:
 
 1. Wechseln Sie zum [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/).
+
 1. Wählen Sie auf der Registerkarte **Produkte** die Option **Speicher** &gt; **Speicherkonten** aus. Oder geben Sie in dem Suchfeld **Suchleiste** **Speicherkonten** ein, und wählen Sie die entsprechende Kachel aus.
-    :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Screenshot des Azure-Preisrechners mit der Kachel zum Hinzufügen der Speicherkontenansicht." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
+   :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Screenshot des Azure-Preisrechners mit der Kachel zum Hinzufügen der Speicherkontenansicht." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
 1. Wählen Sie in der Benachrichtigung über **Hinzugefügte Speicherkonten** die Option **Ansicht** aus, um den Abschnitt **Speicherkonten** des Rechners anzuzeigen. Oder wechseln Sie manuell zum Abschnitt **Speicherkonten**.
+
 1. Wählen Sie unter **Region** die Region für Ihre Logik-App aus.
+
 1. Wählen Sie unter **Table Storage** den **Typ** aus.
+
 1. Wählen Sie unter **Ebene** Ihre Leistungsstufe aus.
+
 1. Wählen Sie Wählen Sie Ihre Redundanzstufe unter **Redundanz** aus.
+
 1. Geben Sie Ihre  **Tabellen**-Vorgangsnummer aus dem Logic Apps Speicherrechner *dividiert durch 10.000* unter **Speichertransaktionen** ein. Dieser Schritt ist erforderlich, da der Rechner in Transaktionseinheiten für Warteschlangenvorgänge arbeitet.
+
 1. Überprüfen der abgeschätzten Kosten für Table Storage-Vorgänge.
 
 ## <a name="next-step"></a>Nächster Schritt

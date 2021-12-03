@@ -5,12 +5,12 @@ author: shijatsu
 ms.author: shijain
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: b86e90298bc753cdea5c0fb5f255e88fcc26dc5c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1c371a155f36574f7a443506c0b9090b6b3bd544
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440754"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447073"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Handbuch für den Übergang vom Azure Monitor-Ansicht-Designer zu Arbeitsmappen
 Der [Ansicht-Designer](view-designer.md) ist eine Funktion in Azure Monitor, mit der Sie verschiedene benutzerdefinierten Ansichten erstellen können, die Ihnen bei der Visualisierung von Daten in Ihrem Log Analytics-Arbeitsbereich mittels Diagrammen, Listen und Zeitachsen helfen. Sie wurden in Arbeitsmappen umgewandelt, die einen flexiblen Bereich für die Datenanalyse und die Erstellung umfassender visueller Berichte innerhalb des Azure-Portals bieten. Dieser Artikel unterstützt Sie beim Übergang vom Ansichts-Designer zu Arbeitsmappen. 
@@ -49,7 +49,7 @@ Obwohl dieses Handbuch einfache Schritte zum direkten Neuerstellen mehrerer der 
 
 
 ## <a name="how-to-start-using-workbooks"></a>Beginnen mit der Verwendung von Arbeitsmappen
-Das Öffnen von Arbeitsmappen aus „Arbeitsmappen“ ist in Log Analytics-Arbeitsbereichen als Element in der Seitennavigationsleiste direkt unter dem Ansicht-Designer aktiviert.
+Öffnen Sie Arbeitsmappen über die Kachel „Arbeitsmappen“ in Ihrem Log Analytics-Arbeitsbereich.
 
 ![Arbeitsmappennavigation](media/view-designer-conversion-overview/workbooks-nav.png)
 

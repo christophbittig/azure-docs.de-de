@@ -1,24 +1,25 @@
 ---
 title: Erstellen einer mit eigenen Schlüsseln verschlüsselten Imageversion
-description: Erstellen Sie eine Imageversion in einem Katalog mit freigegebenen Images, und verwenden Sie dabei kundenseitig verwaltete Verschlüsselungsschlüssel.
+description: Erstellen Sie eine Imageversion in einer Azure Compute Gallery und verwenden Sie dabei kundenseitig verwaltete Chiffrierschlüssel.
+author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 7/1/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d80b2fb62f0c11a06daaf9198add9c7cbe19a42a
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: bcd214413eb4880219e18c4bb03e4430f31690fd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458735"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452051"
 ---
 # <a name="use-customer-managed-keys-for-encrypting-images"></a>Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
-Images in einer Shared Image Gallery werden als Momentaufnahmen gespeichert, sodass sie automatisch durch serverseitige Verschlüsselung verschlüsselt werden. Die serverseitige Verschlüsselung verwendet die [AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) mit 256 Bit – eine der stärksten verfügbaren Blockchiffren. Die serverseitige Verschlüsselung ist ebenfalls mit FIPS 140-2 konform. Weitere Informationen zu den kryptografischen Modulen, die verwalteten Azure-Datenträgern zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](/windows/desktop/seccng/cng-portal).
+Images in einer Azure Compute Gallery (ehemals Shared Image Gallery) werden als Momentaufnahmen gespeichert, sodass sie automatisch durch serverseitige Chiffrierung verschlüsselt werden. Die serverseitige Verschlüsselung verwendet die [AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) mit 256 Bit – eine der stärksten verfügbaren Blockchiffren. Die serverseitige Verschlüsselung ist ebenfalls mit FIPS 140-2 konform. Weitere Informationen zu den kryptografischen Modulen, die verwalteten Azure-Datenträgern zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](/windows/desktop/seccng/cng-portal).
 
 Sie können von der Plattform verwaltete Schlüssel oder eigene Schlüssel für die Verschlüsselung Ihrer Images verwenden. Sie können auch beide Methoden zusammen verwenden, um eine doppelte Verschlüsselung zu erreichen. Wenn Sie die Verschlüsselung mit eigenen Schlüsseln verwalten möchten, können Sie einen *kundenseitig verwalteten Schlüssel* angeben, der zum Verschlüsseln und Entschlüsseln aller Datenträger in Ihren Images verwendet werden soll. 
 
@@ -37,7 +38,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie bereits über einen Datenträgerv
 
 ## <a name="limitations"></a>Einschränkungen
 
-Wenn Sie kundenseitig verwaltete Schlüssel zur Verschlüsselung von Images in einer Shared Image Gallery verwenden, gelten folgende Einschränkungen:   
+Wenn Sie kundenseitig verwaltete Schlüssel zur Verschlüsselung von Images in einer Azure Compute Gallery verwenden, gelten folgende Einschränkungen: 
 
 - Verschlüsselungsschlüsselsätze müssen sich in demselben Abonnement wie Ihr Image befinden.
 
@@ -98,7 +99,7 @@ New-AzGalleryImageVersion `
 
 ### <a name="create-a-vm"></a>Erstellen einer VM
 
-Sie können einen virtuellen Computer (VM) aus einem Katalog mit freigegebenen Images erstellen und kundenseitig verwaltete Schlüssel zum Verschlüsseln der Datenträger verwenden. Die Syntax ist dieselbe wie beim Erstellen einer [generalisierten](vm-generalized-image-version.md) oder [spezialisierten](vm-specialized-image-version.md) VM aus einem Image. Verwenden Sie den erweiterten Parametersatz, und fügen Sie `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` der VM-Konfiguration hinzu.
+Sie können einen virtuellen Computer (VM) aus einer Azure Compute Gallery erstellen und kundenseitig verwaltete Schlüssel zum Verschlüsseln der Datenträger verwenden. Die Syntax ist dieselbe wie beim Erstellen einer [generalisierten](vm-generalized-image-version.md) oder [spezialisierten](vm-specialized-image-version.md) VM aus einem Image. Verwenden Sie den erweiterten Parametersatz, und fügen Sie `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` der VM-Konfiguration hinzu.
 
 Bei Datenträgern für Daten fügen Sie den Parameter `-DiskEncryptionSetId $setID` hinzu, wenn Sie [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) verwenden.
 
@@ -142,7 +143,7 @@ az sig image-version create \
 
 ### <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
-Sie können eine VM aus einem Katalog mit freigegebenen Images erstellen und kundenseitig verwaltete Schlüssel zum Verschlüsseln der Datenträger verwenden. Die Syntax ist dieselbe wie beim Erstellen einer [generalisierten](vm-generalized-image-version.md) oder [spezialisierten](vm-specialized-image-version.md) VM aus einem Image. Fügen Sie einfach den Parameter `--os-disk-encryption-set` mit der ID des Verschlüsselungssatzes hinzu. Bei Datenträgern für Daten fügen Sie `--data-disk-encryption-sets` mit einer durch Leerzeichen getrennten Liste der Datenträgerverschlüsselungssätze für die Datenträger hinzu.
+Sie können einen virtuellen Computer (VM) aus einer Azure Compute Gallery erstellen und kundenseitig verwaltete Schlüssel zum Verschlüsseln der Datenträger verwenden. Die Syntax ist dieselbe wie beim Erstellen einer [generalisierten](vm-generalized-image-version.md) oder [spezialisierten](vm-specialized-image-version.md) VM aus einem Image. Fügen Sie einfach den Parameter `--os-disk-encryption-set` mit der ID des Verschlüsselungssatzes hinzu. Bei Datenträgern für Daten fügen Sie `--data-disk-encryption-sets` mit einer durch Leerzeichen getrennten Liste der Datenträgerverschlüsselungssätze für die Datenträger hinzu.
 
 
 ## <a name="portal"></a>Portal

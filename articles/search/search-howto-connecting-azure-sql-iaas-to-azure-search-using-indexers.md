@@ -2,17 +2,18 @@
 title: Indexerverbindung mit SQL Server auf Azure-VMs
 titleSuffix: Azure Cognitive Search
 description: Aktivieren Sie verschlüsselte Verbindungen, und konfigurieren Sie die Firewall für Verbindungen mit SQL Server auf einem virtuellen Azure-Computer (VM) über einen Indexer in der kognitiven Azure-Suche.
-author: markheff
-ms.author: maheff
+author: gmndrg
+ms.author: gimondra
+manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 11dbe95a63ce22602985cb7ff9b4db11f5e8f8dc
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: ec637058810e5e195569db6a568d5c794b3df1f4
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856750"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892702"
 ---
 # <a name="indexer-connections-to-sql-server-on-an-azure-virtual-machine"></a>Indexerverbindungen mit SQL Server auf einem virtuellen Azure-Computer
 
@@ -89,7 +90,7 @@ Sie können den IP-Adressbereich des [Diensttags](../virtual-network/service-tag
 
 Falls Sie das Azure-Portal zum Erstellen eines Indexers verwenden, müssen Sie dem Portal eingehenden Zugriff auf Ihre SQL Azure-VM erteilen. Eine eingehende Regel in der Firewall erfordert, dass Sie die IP-Adresse des Portals angeben.
 
-Um die IP-Adresse des Portals zu erhalten, pingen Sie `stamp2.ext.search.windows.net` an, also die Domäne des Traffic-Managers. Die Anfrage wird zu einem Timeout führen, aber die IP-Adresse wird in der Statusmeldung sichtbar werden. Beispiel: in der Meldung „Pinging azsyrie.northcentralus.cloudapp.Azure.com [52.252.175.48]“ lautet die IP-Adresse "52.252.175.48".
+Um die IP-Adresse des Portals zu erhalten, pingen Sie `stamp2.ext.search.windows.net` an, also die Domäne des Traffic-Managers. Die Anfrage wird zu einem Timeout führen, aber die IP-Adresse wird in der Statusmeldung sichtbar werden. In der Meldung "Pinging azsyrie.northcentralus.cloudapp.azure.com [52.252.175.48]" lautet die IP-Adresse zum Beispiel "52.252.175.48".
 
 > [!NOTE]
 > Cluster in unterschiedlichen Regionen stellen eine Verbindung mit verschiedenen Traffic-Managern her. Unabhängig vom Domänenname ist die IP-Adresse, die vom Ping zurückgegeben wird, die richtige, wenn Sie eine eingehende Firewallregel für das Azure-Portal in Ihrer Region definieren.

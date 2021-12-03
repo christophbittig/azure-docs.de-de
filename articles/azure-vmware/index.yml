@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: suzizuber
   ms.author: v-szuber
-  ms.date: 10/06/2021
-  ms.openlocfilehash: b6a2adc66a594ec46920bae2bcda9add69cf8a21
-  ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+  ms.date: 11/12/2021
+  ms.openlocfilehash: bf6c18fd32288ed99c16dd89314aca7c743a37b3
+  ms.sourcegitcommit: 81a1d2f927cf78e82557a85c7efdf17bf07aa642
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/06/2021
-  ms.locfileid: "129618454"
+  ms.lasthandoff: 11/19/2021
+  ms.locfileid: "132812067"
 landingContent:
 - title: Informationen zu Azure VMware Solution
   linkLists:
@@ -74,16 +74,26 @@ landingContent:
       url: tutorial-scale-private-cloud.md
     - text: 8. Löschen einer privaten Cloud
       url: tutorial-delete-private-cloud.md
-- title: Notfallwiederherstellung
+- title: Azure VMware Solution auf Unternehmensebene
   linkLists:
-  - linkListType: how-to-guide
+  - linkListType: architecture
     links:
-    - text: Bereitstellen der JetStream-Notfallwiederherstellung
-      url: deploy-disaster-recovery-using-jetstream.md
-    - text: Bereitstellen von VMware HCX für die Notfallwiederherstellung
-      url: deploy-disaster-recovery-using-vmware-hcx.md
-    - text: Bereitstellen von VMware SRM für die Notfallwiederherstellung
-      url: disaster-recovery-using-vmware-site-recovery-manager.md
+    - text: Azure VMware Solution auf Unternehmensebene
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone
+    - text: Identitäts- und Zugriffsverwaltung
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-identity-and-access-management
+    - text: Netzwerktopologie und -konnektivität
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-network-topology-connectivity
+    - text: Verwaltung und Überwachung
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-management-and-monitoring
+    - text: Business Continuity & Disaster Recovery auf Unternehmensebene
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-business-continuity-and-disaster-recovery
+    - text: Sicherheitsgovernance und Compliance auf Unternehmensebene
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-security-governance-and-compliance
+    - text: Plattformautomatisierung und DevOps
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-platform-automation-and-devops
+    - text: Azure VMware Solution-Automatisierung auf Unternehmensebene
+      url: https://github.com/Azure/Enterprise-Scale-for-AVS
 - title: Identitätsverwaltung
   linkLists:
   - linkListType: how-to-guide
@@ -132,7 +142,7 @@ landingContent:
     links:
     - text: Schützen, Überwachen und Verwalten virtueller Computer
       url: integrate-azure-native-services.md
-    - text: Integrieren von Azure Security Center
+    - text: Integrieren von Microsoft Defender für Cloud
       url: azure-security-integration.md
     - text: Integrieren von Azure NetApp Files
       url: netapp-files-with-azure-vmware-solution.md
@@ -152,6 +162,14 @@ landingContent:
       url: set-up-backup-server-for-azure-vmware-solution.md
     - text: Sichern von VMs in der privaten Cloud mit Backup Server
       url: backup-azure-vmware-solution-virtual-machines.md
+  - linkListType: deploy
+    links:
+    - text: Bereitstellen der JetStream-Notfallwiederherstellung
+      url: deploy-disaster-recovery-using-jetstream.md
+    - text: Bereitstellen von VMware HCX für die Notfallwiederherstellung
+      url: deploy-disaster-recovery-using-vmware-hcx.md
+    - text: Bereitstellen von VMware SRM für die Notfallwiederherstellung
+      url: disaster-recovery-using-vmware-site-recovery-manager.md
 - title: VMware Solutions
   linkLists:
   - linkListType: how-to-guide
@@ -168,7 +186,7 @@ landingContent:
       url: deploy-disaster-recovery-using-vmware-hcx.md
     - text: Upgraden der VMware HCX-Appliance
       url: https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html
-- title: VMware-Ökosystem
+- title: Partnerlösungsökosystem
   linkLists:
   - linkListType: reference
     links:
@@ -176,6 +194,10 @@ landingContent:
       url: ecosystem-back-up-vms.md
     - text: Migrationslösungen für virtuelle Computer
       url: ecosystem-migration-vms.md
+    - text: Sicherheitslösungen für Azure VMware Solution
+      url: ecosystem-security-solutions.md
+    - text: Bereitstellung der Bitnami-Appliance
+      url: bitnami-appliances-deployment.md
 - title: Ressourcen
   linkLists:
   - linkListType: reference
@@ -190,6 +212,8 @@ landingContent:
       url: /azure/templates/microsoft.avs/privateclouds
     - text: Azure-Anbieter für Terraform
       url: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/vmware_private_cloud
+    - text: Azure VMware Solution-Automatisierung auf Unternehmensebene
+      url: https://github.com/Azure/Enterprise-Scale-for-AVS
   - linkListType: video
     links:
     - text: Wiedergabeliste

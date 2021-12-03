@@ -2,13 +2,13 @@
 title: 'Schnellstart: Untersuchen von Sicherheitswarnungen'
 description: Enthält eine Beschreibung der Grundlagen und der Drilldown- und Untersuchungsvorgänge bei Sicherheitswarnungen in Defender für IoT auf Ihren IoT-Geräten.
 ms.topic: quickstart
-ms.date: 06/21/2021
-ms.openlocfilehash: 02005680ca1c5d140ffdb101ede359594b28a840
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: c55392650edf85c753bcde32a03e8ad313ebd148
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011141"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331507"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>Schnellstart: Untersuchen von Sicherheitswarnungen
 
@@ -48,7 +48,7 @@ Beim Öffnen der einzelnen aggregierten Warnungen werden die ausführliche Warnu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fahren Sie mit dem nächsten Artikel fort, um weitere Informationen zu Defender-Warnungstypen und möglichen Anpassungen zu erhalten.
+Fahren Sie mit dem nächsten Artikel fort, um weitere Informationen zu Sicherheitswarnungstypen und möglichen Anpassungen zu erhalten.
 
 > [!div class="nextstepaction"]
 > [Azure Security Center für IoT – Sicherheitswarnungen](concept-security-alerts.md)

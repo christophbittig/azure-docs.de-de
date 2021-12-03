@@ -2,13 +2,13 @@
 title: Installieren und Bereitstellen des C-basierten Linux-Agents
 description: Erfahren Sie, wie Sie den C-basierten Sicherheits-Agent von Defender für IoT unter Linux installieren und bereitstellen.
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 46677a971165c65440310e21933f586cc685b771
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/09/2021
+ms.openlocfilehash: 1b1c81b73c6e7b0c32031de256b029a1a1164f4d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584866"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306109"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Bereitstellen des C-basierten Sicherheits-Agents von Defender für IoT unter Linux
 
@@ -80,5 +80,5 @@ Führen Sie Folgendes aus, um den Bereitstellungsstatus zu überprüfen:
 - Lesen der [Übersicht](overview.md) über den Defender für IoT-Dienst
 - Weitere Informationen zu Defender für IoT: [Info zu Agent-basierten Lösungen für Gerätehersteller](architecture-agent-based.md)
 - Aktivieren Sie den [Dienst](quickstart-onboard-iot-hub.md).
-- Lesen Sie die [häufig gestellten Fragen zum Azure Defender für IoT-Agent](resources-agent-frequently-asked-questions.md).
+- Lesen Sie die [häufig gestellten Fragen zum Microsoft Defender für IoT-Agent](resources-agent-frequently-asked-questions.md).
 - Machen Sie sich mit [Sicherheitswarnungen](concept-security-alerts.md) vertraut.

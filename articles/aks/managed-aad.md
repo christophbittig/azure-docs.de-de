@@ -3,14 +3,14 @@ title: Verwenden von Azure AD in Azure Kubernetes Service
 description: Erfahren Sie, wie Sie Azure AD in Azure Kubernetes Service (AKS) verwenden.
 services: container-service
 ms.topic: article
-ms.date: 02/1/2021
+ms.date: 10/20/2021
 ms.author: miwithro
-ms.openlocfilehash: c78c48bc86c999ab85c02f0ba596d425b516ac5a
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 03d6b2e101103607ec1c699ebdf814d6f41cdb76
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984970"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427397"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Von AKS verwaltete Azure Active Directory-Integration
 
@@ -27,11 +27,10 @@ Informieren Sie sich in der [Dokumentation zu den Konzepten der Azure Active Dir
 * Die von AKS verwaltete Azure AD-Integration kann nicht deaktiviert werden.
 * Das Ändern eines integrierten, von AKS verwalteten Azure AD-Clusters in Legacy-AAD wird nicht unterstützt.
 * In Clustern ohne Aktivierung der Kubernetes-RBAC wird die von AKS verwaltete Azure AD-Integration nicht unterstützt.
-* Die Änderung des mit der von AKS verwalteten Azure AD-Integration verknüpften Azure AD-Mandanten wird nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Befehlszeilenschnittstelle ab Version 2.11.0
+* Azure CLI-Version 2.29.0 oder höher
 * kubectl mit der Mindestversion [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) oder [kubelogin](https://github.com/Azure/kubelogin)
 * Wenn Sie [Helm](https://github.com/helm/helm) verwenden, benötigen Sie mindestens Version 3.3 von Helm.
 
@@ -188,36 +187,15 @@ Aktualisieren Sie kubeconfig, um auf den Cluster zuzugreifen, indem Sie die Schr
 
 Es gibt einige nicht interaktive Szenarien, z. B. Continuous Integration-Pipelines, die für Kubectl derzeit nicht verfügbar sind. Sie können [`kubelogin`](https://github.com/Azure/kubelogin) verwenden, um über eine nicht interaktive Dienstprinzipalanmeldung auf den Cluster zuzugreifen.
 
-## <a name="disable-local-accounts-preview"></a>Deaktivieren lokaler Konten (Vorschauversion)
+## <a name="disable-local-accounts"></a>Deaktivieren lokaler Konten
 
 Bei der Bereitstellung eines AKS-Clusters sind lokale Konten standardmäßig aktiviert. Selbst wenn Sie die RBAC- oder Azure Active Directory-Integration aktivieren, ist der Zugriff mit `--admin` weiterhin möglich. Dieser Befehl ist im Wesentlichen eine nicht überwachbare Hintertüroption. Vor diesem Hintergrund bietet AKS Benutzern die Möglichkeit, lokale Konten über das Flag `disable-local-accounts` zu deaktivieren. Der API für verwaltete Cluster wurde auch das Feld `properties.disableLocalAccounts` hinzugefügt, um anzugeben, ob das Feature im Cluster aktiviert ist.
 
 > [!NOTE]
 > In Clustern mit aktivierter Azure AD-Integration können Benutzer, die einer durch `aad-admin-group-object-ids` angegebenen Gruppe angehören, weiterhin mit gewöhnlichen Anmeldeinformationen (keine Administratoranmeldeinformationen) Zugriff erhalten. In Clustern, in denen die Azure AD-Integration nicht aktiviert und `properties.disableLocalAccounts` auf true festgelegt ist, können Benutzer- und Administratoranmeldeinformationen nicht abgerufen werden.
 
-### <a name="register-the-disablelocalaccountspreview-preview-feature"></a>Registrieren der Previewfunktion `DisableLocalAccountsPreview`
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-Sie müssen das Featureflag `DisableLocalAccountsPreview` für Ihr Abonnement aktivieren, um einen AKS-Cluster ohne lokale Konten zu verwenden. Stellen Sie sicher, dass Sie die neueste Version der Azure CLI und die Erweiterung `aks-preview` verwenden.
-
-Registrieren Sie das `DisableLocalAccountsPreview`-Featureflag mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "DisableLocalAccountsPreview"
-```
-
-Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/DisableLocalAccountsPreview')].{Name:name,State:properties.state}"
-```
-
-Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des Ressourcenanbieters *Microsoft.ContainerService*:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+> [!NOTE]
+> Nachdem Benutzer lokaler Konten in einem bereits vorhandenen AKS-Cluster deaktiviert wurden, in dem Benutzer möglicherweise lokale Konten verwendet haben, muss der Administrator [die Clusterzertifikate rotieren](certificate-rotation.md#rotate-your-cluster-certificates), um die Zertifikate zu widerrufen, auf die diese Benutzer möglicherweise Zugriff haben.  Wenn es sich um einen neuen Cluster handelt, ist keine Aktion erforderlich.
 
 ### <a name="create-a-new-cluster-without-local-accounts"></a>Erstellen eines neuen Clusters ohne lokale Konten
 

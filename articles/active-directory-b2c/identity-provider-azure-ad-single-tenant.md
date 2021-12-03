@@ -13,12 +13,12 @@ ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 27353b62255e22f342ce0648a3a9ebde4bd5eb30
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a63c89174103613c722d463e32085600019e9ea0
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130227847"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026005"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für eine bestimmte Azure Active Directory-Organisation in Azure Active Directory B2C
 
@@ -51,10 +51,10 @@ Wenn Sie die Anmeldung für Benutzer mit einem Azure AD-Konto einer bestimmten 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten Ihrer Organisation (z. B. Contoso) enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
 1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
-1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
+1. Wählen Sie unter **Azure-Dienste** **App-Registrierungen** aus, oder suchen Sie nach  **App-Registrierungen** und wählen Sie diese aus.
 1. Wählen Sie **Neue Registrierung** aus.
 1. Geben Sie einen **Namen** für Ihre Anwendung ein. Beispiel: `Azure AD B2C App`.
-1. Übernehmen Sie für diese Anwendung die Standardauswahl von **Nur Konten in diesem Organisationsverzeichnis**.
+1. Übernehmen Sie für diese Anwendung die Standardauswahl von **Nur Konten in diesem Organisationsverzeichnis (Nur Standardverzeichnis – einzelner Tenant**).
 1. Übernehmen Sie den Wert **Web** als **Umleitungs-URI**, geben Sie die folgende URL in Kleinbuchstaben ein, und ersetzen Sie dabei `your-B2C-tenant-name` durch den Namen Ihres Azure AD B2C-Mandanten.
 
     ```
@@ -80,7 +80,7 @@ Wenn Sie die Ansprüche `family_name` und `given_name` von Azure AD erhalten m�
 1. Wählen Sie **Optionalen Anspruch hinzufügen** aus.
 1. Wählen Sie als **Tokentyp** die Option **ID** aus.
 1. Wählen Sie die hinzuzufügenden optionalen Ansprüche (`family_name` und `given_name`) aus.
-1. Klicken Sie auf **Hinzufügen**.
+1. Wählen Sie **Hinzufügen**. Wenn die Option **Microsoft Graph-E-Mail-Berechtigungen aktivieren (erforderlich zum Anzeigen von Ansprüchen in Token)** angezeigt wird, aktivieren Sie diese, und wählen Sie dann erneut **Hinzufügen** aus.
 
 ## <a name="optional-verify-your-app-authenticity"></a>[Optional] Überprüfen der Authentizität Ihrer App
 
@@ -101,8 +101,7 @@ Anhand der [Herausgeberüberprüfung](../active-directory/develop/publisher-veri
     https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
     ```
 
-    Beispiel: `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
-    Beispiel: `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
+ Beispiel: `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`. Wenn Sie eine benutzerdefinierte Domäne verwenden, ersetzen Sie `contoso.com` in `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration` durch Ihren benutzerdefinierten Domänennamen.
 
 1. Geben Sie für **Client-ID** die zuvor notierte Anwendungs-ID ein.
 1. Geben Sie im Feld **Geheimer Clientschlüssel** den zuvor notierten geheimen Clientschlüssel ein.
@@ -125,7 +124,8 @@ Der Azure AD-Identitätsanbieter wurde nun eingerichtet, er ist jedoch noch auf 
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 1. Klicken Sie auf den Benutzerflow, dem Sie Azure AD als Identitätsanbieter hinzufügen möchten.
-1. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** die Option **Contoso Azure AD** aus.
+1. Wählen Sie unter **Einstellungen** die Option **Identitätsanbieter** aus.
+1. Wählen Sie unter **Benutzerdefinierte Identitätsanbieter** die Option **Contoso Azure AD** aus.
 1. Wählen Sie **Speichern** aus.
 1. Um die Richtlinie zu testen, wählen Sie **Benutzerflow ausführen** aus.
 1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden. 

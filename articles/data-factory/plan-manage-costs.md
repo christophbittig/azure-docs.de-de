@@ -7,13 +7,13 @@ ms.service: data-factory
 ms.subservice: pricing
 ms.topic: how-to
 ms.custom: subject-cost-optimization
-ms.date: 04/28/2021
-ms.openlocfilehash: aba57e9ba46faef60f97819fa3de3e89fa94f00e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/01/2021
+ms.openlocfilehash: 51f71bcf39f0b54bf0f7fb389fbbb9797fbb2151
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639891"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469462"
 ---
 # <a name="plan-to-manage-costs-for-azure-data-factory"></a>Planen der Kostenverwaltung für Azure Data Factory
 
@@ -73,12 +73,15 @@ Am Ende Ihres Abrechnungszeitraums werden die Gebühren für die einzelnen Verbr
 
 ### <a name="other-costs-that-might-accrue-with-azure-data-factory"></a>Andere Kosten, die bei Azure Data Factory anfallen können
 
-Wenn Sie Ressourcen für Azure Data Factory erstellen, werden auch Ressourcen für andere Azure-Dienste erstellt. Dazu gehören:
+Wenn Sie Ressourcen für die Azure Data Factory (ADF) erstellen, werden auch Ressourcen für andere Azure-Dienste erstellt. Dazu gehören:
 
 - Pipelineaktivitätsausführung
 - Externe Pipelineaktivitätsausführung
 - Erstellen/Bearbeiten/Abrufen/Überwachen von Data Factory-Artefakten
-- SSIS Integration Runtime-Dauer basierend auf Instanztyp und Dauer
+- Dauer der SSIS Integration Runtime (IR) basierend auf Instanztyp und Dauer
+
+> [!NOTE]
+> Sie können Ihren ADF- und anderen Azure-Ressourcen das gleiche Tag zuweisen, indem Sie diese in die gleiche Kategorie setzen, um ihre konsolidierte Abrechnung einzusehen. Das ADF-Tag wird von allen SSIS-IRs darin geerbt. Wenn Sie Ihr ADF-Tag ändern, müssen Sie alle SSIS-IRs beenden und neu starten, damit sie das neue Tag erben können. Weitere Informationen finden Sie im Abschnitt [Neukonfigurieren der SSIS IR](manage-azure-ssis-integration-runtime.md#to-reconfigure-an-azure-ssis-ir).
 
 ### <a name="using-azure-prepayment-with-azure-data-factory"></a>Verwenden der Azure-Vorauszahlung mit Azure Data Factory
 

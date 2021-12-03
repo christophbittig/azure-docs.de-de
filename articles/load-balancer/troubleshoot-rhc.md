@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: kumud
-ms.openlocfilehash: 8c43a0125dac9931e68ae9567f47d63b3409f878
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: f3f0e1d714c5edef75f0f042edce1749b8f01bcf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113357227"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056507"
 ---
 # <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>Beheben von Problemen mit Ressourcenintegrität und eingehender Verfügbarkeit 
 
@@ -62,8 +62,8 @@ Angenommen, wir überprüfen den Integritätsteststatus und finden heraus, dass 
 * Überprüfen Sie die Netzwerksicherheitsgruppen, die auf Ihre Back-End-Ressourcen angewendet werden. Stellen Sie sicher, dass keine Regeln mit höherer Priorität als AllowAzureLoadBalancerInBound konfiguriert sind, die den Integritätstest blockieren
   * Sie können dies auf dem Blatt „Netzwerk“ Ihrer Back-End-VMs oder VM-Skalierungsgruppen überprüfen
   * Wenn dieses NSG-Problem vorliegt, verschieben Sie die vorhandene Zulassungsregel, oder erstellen Sie eine neue Regel mit hoher Priorität, um AzureLoadBalancer-Datenverkehr zuzulassen
-* Überprüfen Sie Ihr Betriebssystem. Stellen Sie sicher, dass Ihre VMs am Testport lauschen, und überprüfen Sie die zugehörigen Betriebssystem-Firewallregeln, um sicherzustellen, dass der Testdatenverkehr von der IP-Adresse 168.63.129.16 nicht blockiert wird
-  * Zum Überprüfen der Lauschports können Sie an einer Windows-Eingabeaufforderung netstat -a oder bei einem Linux-Terminal netstat -l ausführen
+* Überprüfen Sie Ihr Betriebssystem. Stellen Sie sicher, dass Ihre VMs am Testport lauschen, und überprüfen Sie ihre Firewallregeln für das Betriebssystem, um sicherzustellen, dass sie den von der IP-Adresse `168.63.129.16` ausgehenden Testdatenverkehr nicht blockieren.
+  * Sie können Überwachungsports überprüfen, indem Sie `netstat -a` über eine Windows-Eingabeaufforderung oder `netstat -l` über ein Linux-Terminal ausführen.
 * Platzieren Sie keine Firewall-NVA-VM im Back-End-Pool des Lastenausgleichsmoduls. Verwenden Sie [benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md#user-defined), um Datenverkehr über die Firewall an Back-End-Instanzen zu leiten
 * Stellen Sie sicher, dass das richtige Protokoll verwendet wird. Bei Verwendung von HTTP zum Testen eines Ports, der für Datenverkehr einer Nicht-HTTP-Anwendung konfiguriert ist, tritt bei dem Test ein Fehler auf
 

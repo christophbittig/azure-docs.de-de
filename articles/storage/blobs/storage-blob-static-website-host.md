@@ -5,15 +5,15 @@ author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 1/22/2020
+ms.date: 11/04/2021
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: f222475560c282e7eb63c55a3f827f8f8e48c8ce
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2bc3579c1e1c3748ded0cf68d7f75ec269e9d1e0
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128549469"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853375"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -26,6 +26,8 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 > [!div class="checklist"]
 > - Konfigurieren des Hostens von statischen Websites
 > - Bereitstellen einer Hello World-Website
+
+[!INCLUDE [static websites vs static web apps](../../../includes/storage-blob-static-website-vs-static-web-app.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -107,7 +109,7 @@ Sie haben das Tutorial erfolgreich abgeschlossen und eine statische Website in A
 
 ## <a name="feature-support"></a>Featureunterstützung
 
-In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat.
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
 
 | Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|

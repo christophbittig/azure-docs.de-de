@@ -3,12 +3,12 @@ title: Beheben von Netzwerkproblemen mit der Registrierung
 description: Enthält eine Beschreibung der Symptome, Ursachen und Lösungen häufiger Probleme, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten.
 ms.topic: article
 ms.date: 05/10/2021
-ms.openlocfilehash: f5c51f14eb5ed5a950272e43e701ec7bcc44b901
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 4d3962a99fd462cfe3b613a4f0a9409b309b462f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446484"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287132"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Beheben von Netzwerkproblemen mit der Registrierung
 
@@ -27,7 +27,7 @@ Beispiele für Symptome sind:
 * Das Zugreifen auf oder das Anzeigen von Registrierungseinstellungen im Azure-Portal oder das Verwalten der Registrierung mithilfe der Azure CLI ist nicht möglich.
 * Einstellungen für das virtuelle Netzwerk oder Regeln für den öffentlichen Zugriff können nicht hinzugefügt oder geändert werden.
 * Mit ACR Tasks können keine Images gepusht oder gepullt werden.
-* Mit Azure Security Center können keine Images in der Registrierung gescannt werden, oder die Scanergebnisse werden in Azure Security Center nicht angezeigt.
+* Microsoft Defender für Cloud kann keine Images in der Registrierung überprüfen oder Überprüfungsergebnisse werden in Microsoft Defender für Cloud nicht angezeigt.
 * Sie erhalten einen `host is not reachable`-Fehler, wenn Sie versuchen, auf eine Registrierung zuzugreifen, die mit einem privaten Endpunkt konfiguriert ist.
 
 ## <a name="causes"></a>Ursachen
@@ -35,7 +35,7 @@ Beispiele für Symptome sind:
 * Eine Clientfirewall oder ein Proxy verhindert den Zugriff ([Lösung](#configure-client-firewall-access)).
 * Regeln für den Zugriff auf das öffentliche Netzwerk in der Registrierung verhindern den Zugriff ([Lösung](#configure-public-access-to-registry)).
 * Die Konfiguration des virtuellen Netzwerks oder privaten Endpunkts verhindert den Zugriff ([Lösung](#configure-vnet-access)).
-* Sie versuchen, Azure Security Center oder bestimmte andere Azure-Dienste in eine Registrierung zu integrieren, die über einen privaten Endpunkt, Dienstendpunkt oder Zugriffsregeln für öffentliche IP-Adressen verfügt ([Lösung](#configure-service-access)).
+* Sie versuchen, Microsoft Defender für Cloud oder bestimmte andere Azure-Dienste in eine Registrierung zu integrieren, die über einen privaten Endpunkt, Dienstendpunkte oder Zugriffsregeln für öffentliche IP-Adressen verfügt - [Lösung](#configure-service-access).
 
 ## <a name="further-diagnosis"></a>Weitere Diagnose 
 
@@ -114,7 +114,7 @@ Verwandte Links:
 
 Derzeit ist der Zugriff auf eine Containerregistrierung mit Netzwerkeinschränkungen von mehreren Azure-Diensten aus nicht zulässig:
 
-* Azure Security Center kann keine [Überprüfung von Images auf Sicherheitsrisiken](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) in einer Registrierung durchführen, die den Zugriff auf private Endpunkte, ausgewählte Subnetze oder IP-Adressen beschränkt. 
+* Microsoft Defender für Cloud kann keine [Überprüfung von Images auf Sicherheitsrisiken](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) in einer Registrierung durchführen, die den Zugriff auf private Endpunkte, ausgewählte Subnetze oder IP-Adressen beschränkt. 
 * Ressourcen bestimmter Azure-Dienste, einschließlich Azure App Service und Azure Container Instances, können nicht auf eine Containerregistrierung mit Netzwerkeinschränkung zugreifen.
 
 Wenn Zugriff oder eine Integration dieser Azure-Dienste mit Ihrer Containerregistrierung erforderlich ist, entfernen Sie die Netzwerkbeschränkung. Entfernen Sie z. B. die privaten Endpunkte der Registrierung, oder entfernen oder ändern Sie die Regeln der Registrierung für öffentlichen Zugriff.
@@ -123,7 +123,7 @@ Seit Januar 2021 können Sie eine Registrierung mit Netzwerkeinschränkung so k
 
 Verwandte Links:
 
-* [Azure Container Registry-Imageprüfung durch Security Center](../security-center/defender-for-container-registries-introduction.md)
+* [Die Imageüberprüfung von Azure Container Registry durch Microsoft Defender für Containerregister](../security-center/defender-for-container-registries-introduction.md)
 * [Feedback](https://feedback.azure.com/d365community/idea/cbe6351a-0525-ec11-b6e6-000d3a4f07b8)
 * [Zulassen des sicheren Zugriffs vertrauenswürdiger Dienste auf eine Containerregistrierung mit Netzwerkeinschränkungen](allow-access-trusted-services.md)
 

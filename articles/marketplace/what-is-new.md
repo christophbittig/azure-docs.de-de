@@ -6,12 +6,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/28/2021
-ms.openlocfilehash: 5f51dd3cb31fa0b1ada8efb098aa0814a6a603c5
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 419258da22c82939f0e3959ffbf97547977b393a
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230891"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577686"
 ---
 # <a name="whats-new-in-the-microsoft-commercial-marketplace"></a>Neuerungen im kommerziellen Marketplace von Microsoft
 
@@ -38,7 +38,6 @@ Erfahren Sie mehr über wichtige Aktualisierungen im Programm zum kommerziellen 
 | Besteuerung | Die Endkundenbesteuerung in Australien wird von Microsoft verwaltet, mit Ausnahme von Kundenkäufen im Rahmen eines Enterprise Agreement, das vom Herausgeber verwaltet wird. | 01.07.2021 |
 | Besteuerung | Die Länderliste auf der [Seite mit steuerlichen Aspekten](/partner-center/tax-details-marketplace) wurde aktualisiert und enthält nun Folgendes: <ul><li>Argentinien</li><li>Bulgarien</li><li>Hongkong SAR</li><li>Südkorea</li><li>Pakistan</li><li>Palästinensische Autonomiegebiete</li><li>Panama</li><li>Paraguay</li><li>Peru</li><li>Philippinen</li><li>St. Kitts und Nevis</li><li>Senegal</li><li>Sri Lanka</li><li>Tadschikistan</li><li>Tansania</li><li>Thailand</li><li>Trinidad und Tobago</li><li>Tunesien</li><li>Turkmenistan</li><li>Uganda</li><li>Usbekistan</li><li>Simbabwe</li></ul> | 01.07.2021 |
 | Besteuerung | Nigeria wurde von der Liste der „gemeinsam von Herausgebern/Entwicklern verwalteten Länder“ in die Liste der „Endkundenbesteuerung mit Unterschieden in Marketplaces“ verschoben.  | 01.07.2021 |
-| Auszahlungen | Auszahlungsszenarien für den kommerziellen Marketplace wurden der [Seite mit steuerlichen Aspekten](/partner-center/tax-details-marketplace) hinzugefügt. | 26.04.2021 |
 |
 
 ## <a name="documentation-updates"></a>Dokumentationsupdates
@@ -56,7 +55,4 @@ Erfahren Sie mehr über wichtige Aktualisierungen im Programm zum kommerziellen 
 | Angebote | Zusätzliche Informationen zu VM-Preisoptionen und -Beschreibungen. Weitere Informationen finden Sie unter [Planen eines SaaS-Angebots im kommerziellen Marketplace](plan-saas-offer.md). | 25.05.2021|
 | API-Anleitung | Dieses Thema bietet Herausgebern einen zentralen Ort, um aktuelle Änderungen im kommerziellen Marketplace zu finden, einschließlich Aktualisierungen der Zertifizierungsrichtlinie, Änderungen der Steuerbestimmungen und mehr. Weitere Informationen finden Sie unter [Anpassen Ihrer Geschäftsvorgänge an unsere E-Commerce-Plattform](marketplace-apis-guide.md). | 13.05.2021 |
 | Richtlinie | Eine aktualisierte [Zertifizierungsrichlinie](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context) finden Sie im [Änderungsverlauf](/legal/marketplace/offer-policies-change-history). | 07.05.2021 |
-| Richtlinie | Die [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement) wurde aktualisiert. Informationen zu den Änderungen finden Sie unter [Änderungsverlauf für die Microsoft-Herausgebervereinbarung](/legal/marketplace/mpa-change-history). | 16.04.2021 |
-| Angebote | Unabhängige Softwarehersteller (Independent Software Vendors, ISVs) für Microsoft 365 können jetzt ihr SaaS-Angebot (Software-as-a-Service) mit ihren zugehörigen Teams-Apps, Office-Add-Ins (WXPO) und SharePoint SPFx-Lösungen in Partner Center verknüpfen. SaaS-ISVs können außerdem angeben, ob ihr SaaS-Angebot in die Microsoft Graph-API integriert ist. Weitere Informationen finden Sie unter [Testen und Bereitstellen von Microsoft 365-Apps durch Partner im Portal für integrierte Apps](/microsoft-365/admin/manage/test-and-deploy-microsoft-365-apps). | 08.04.2021 |
-| Richtlinie | Eine aktualisierte [Zertifizierungsrichlinie](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context) finden Sie im [Änderungsverlauf](/legal/marketplace/offer-policies-change-history). | 02.04.2021 |
 |

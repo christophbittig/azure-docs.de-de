@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/13/2021
-ms.openlocfilehash: 082b943aef3f82898b80d23d33a90d3f5ec3ebc6
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.date: 11/02/2021
+ms.openlocfilehash: 76036b42693b17480f4e5ede8d93d981bf40d739
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515127"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429658"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Planen einer von Azure verwalteten Anwendung für ein Azure-Anwendungsangebot
 
@@ -121,6 +121,10 @@ Sie können einen Plan für eine verwaltete Anwendung so konfigurieren, dass ent
 ## <a name="notification-endpoint-url"></a>Benachrichtigungsendpunkt-URL
 
 Sie können optional einen HTTPS-Webhookendpunkt angeben, um Benachrichtigungen zu allen CRUD-Vorgängen bei Instanzen einer verwalteten Anwendung eines Plans zu erhalten.
+
+Azure fügt `/resource` an das Ende Ihres Webhook-URI an, bevor es ihn aufruft. Ihre Webhook-URL muss also auf `/resource` enden, obwohl sie nicht im URI enthalten sein sollte, der im Partner Center in das Feld **Benachrichtigungsendpunkt-URL** eingegeben wurde. Beispielsweise führt die Eingabe `https://contoso.com` als URI des Benachrichtigungsendpunkts zu einem Aufruf von `https://contoso.com/resource`.
+
+Achten Sie beim Lauschen auf Ereignisse aus Ihren verwalteten App-Benachrichtigungen darauf, dass Sie nur auf `https://<url>/resource` und nicht auf die festgelegte URL lauschen. Eine Beispielbenachrichtigung finden Sie unter [Benachrichtigungsschema](/azure/azure-resource-manager/managed-applications/publish-notifications#notification-schema).
 
 ## <a name="customize-allowed-customer-actions-optional"></a>Anpassen der zulässigen Kundenaktionen (optional)
 

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: f2e089532ce0091c633bab86ee5bed0fcf948e98
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 1aa2367a4bf9f4bebab6358d60b86ac19b6d3bf7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639761"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297466"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Sicherheit in Azure Database for MySQL
 
@@ -49,7 +49,7 @@ Beim Erstellen des Azure Database for MySQL-Servers geben Sie Anmeldeinformation
 
 ## <a name="threat-protection"></a>Bedrohungsschutz
 
-Sie können [Azure Defender für relationale Open-Source-Datenbanken](../security-center/defender-for-databases-introduction.md) aktivieren, sodass anormale Aktivitäten erkannt werden, die auf ungewöhnliche und potenziell schädliche Zugriffsversuche oder Serverexploits hinweisen.
+Sie können [Microsoft Defender für relationale Open-Source-Datenbanken](../security-center/defender-for-databases-introduction.md) aktivieren, sodass anormale Aktivitäten erkannt werden, die auf ungewöhnliche und potenziell schädliche Zugriffsversuche oder Exploit-Servern hinweisen.
 
 Aktivitäten in Ihren Datenbanken können mithilfe der [Überwachungsprotokollierung](concepts-audit-logs.md) nachverfolgt werden. 
 

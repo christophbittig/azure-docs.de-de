@@ -2,13 +2,16 @@
 title: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 description: Hier wird beschrieben, wie die Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup aktiviert wird.
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 48798dc276c10276e0effd458bd15e9cfbab32dd
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.date: 11/09/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: d94faf113fb3d75c1c0f5c878369c1856366b1be
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006057"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332116"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 
@@ -30,6 +33,9 @@ Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Por
 
 2. Wählen Sie im Azure Marketplace **Compute** und dann ein VM-Image aus.
 
+   >[!Note]
+   >Um einen VM aus einem Nicht-Marketplace-Bild zu erstellen oder die Betriebssystemplatte eines VM mit einem Nicht-Marketplace-Bild auszutauschen, entfernen Sie die Planinformationen aus dem VM. Dies hilft bei der nahtlosen VM-Wiederherstellung.
+
 3. Richten Sie die VM gemäß den Anweisungen für [Windows](../virtual-machines/windows/quick-create-portal.md) oder [Linux](../virtual-machines/linux/quick-create-portal.md) ein.
 
 4. Wählen Sie auf der Registerkarte **Verwaltung** unter **Backup aktivieren** die Option **Ein** aus.
@@ -49,7 +55,7 @@ Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Por
       ![Standardsicherungsrichtlinie](./media/backup-during-vm-creation/daily-policy.png)
 
 >[!NOTE]
->[SSE und PMK sind die Standardverschlüsselungsmethoden](backup-encryption.md) für Azure-VMs. Azure Backup unterstützt die Sicherung und Wiederherstellung dieser virtuellen Azure-Computer.
+> [SSE und PMK sind die Standardverschlüsselungsmethoden](backup-encryption.md) für Azure-VMs. Azure Backup unterstützt die Sicherung und Wiederherstellung dieser virtuellen Azure-Computer.
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup-Ressourcengruppe für virtuelle Computer
 

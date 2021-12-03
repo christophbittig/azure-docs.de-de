@@ -9,22 +9,19 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5de4c52015a8282591edeee6de9fd27aae042324
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 4794813af900df66fd2d7cd6fb8e238f79d18d4b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770662"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327593"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>Hotpatch für neue VMs (Vorschau)
 
 > [!IMPORTANT]
-> Automanage für Windows Server-Dienste befindet sich derzeit in der öffentlichen Vorschau. Es ist ein Anmeldungsverfahren (opt-in) erforderlich, um die unten beschriebene Hotpatchfunktion verwenden zu können.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Der Hotpatch ist zurzeit in öffentlicher Vorschauversion verfügbar. Es ist ein Anmeldungsverfahren (opt-in) erforderlich, um die unten beschriebene Hotpatch-Funktion verwenden zu können.
+> Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und nicht für Produktionsworkloads empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-> [!NOTE]
-> Hotpatch kann in der _Vorschauversion von Windows Server 2022 Datacenter Azure Edition (Core)_ evaluiert werden.  Hotpatch in der _Vorschauversion von Windows Server 2019 Datacenter Azure Edition Preview_ kann nicht mehr evaluiert werden.
 
 Hotpatching ist eine neue Methode zur Installation von Updates auf unterstützten virtuellen Computern (VMs) der _Windows Server Azure Edition_, die keinen Neustart nach der Installation erfordert. Dieser Artikel enthält Informationen über Hotpatches für unterstützte _Windows Server Azure Edition_-VMs, die folgende Vorteile bieten:
 * Geringere Auswirkungen auf die Workload mit weniger Neustarts
@@ -49,18 +46,19 @@ Hotpatch ist in allen globalen Azure-Regionen als Vorschauversion verfügbar. Az
 ## <a name="how-to-get-started"></a>Erste Schritte
 
 > [!NOTE]
-> Während der Vorschauphase können Sie über [diesen Link](https://aka.ms/AutomanageWindowsServerPreview) im Azure-Portal beginnen.
+> Während der Vorschauphase können Sie über [diesen Link](https://aka.ms/ws2022ae-portal-preview) im Azure-Portal beginnen.
 
 Gehen Sie folgendermaßen vor, um Hotpatch auf einer neuen VM zu verwenden:
 1.  Aktivieren des Zugriffs auf die Vorschauversion
     * Pro Abonnement ist eine einmalige Freigabe des Zugriffs auf die Vorschauversion erforderlich.
     * Der Zugriff auf die Vorschauversion kann über die API, PowerShell oder die Befehlszeilenschnittstelle aktiviert werden, wie im folgenden Abschnitt beschrieben.
-1.  Erstellen einer VM über das Azure-Portal
-    * Während der Vorschau müssen Sie über [diesen Link](https://aka.ms/AutomanageWindowsServerPreview) starten.
-1.  Bereitstellen von VM-Details
-    * Stellen Sie sicher, dass das unterstützte _Windows Server Azure Edition_-Image, das Sie verwenden möchten, in der Dropdownliste der Images ausgewählt ist.  Unterstützte Images sind am Anfang dieses Artikels aufgeführt.
-    * Scrollen Sie im Schritt „Verwaltung“ zum Abschnitt für Updates für das Gastbetriebssystem. Sie werden sehen, dass Hotpatching aktiviert und die Patchinstallation standardmäßig auf das von Azure orchestrierte Patchen festgelegt ist.
-    * Bewährte Methoden für die automatische Verwaltung von virtuellen Computern werden standardmäßig aktiviert.
+1.  Beginnen Sie mit dem Erstellen eines neuen virtuellen Computers über Azure-Portal
+    * Während der Vorschau müssen Sie über [diesen Link](https://aka.ms/ws2022ae-portal-preview) starten.
+1.  Details während der VM-Erstellung
+    * Stellen Sie sicher, dass ein unterstütztes _Windows Server 2019 Datacenter: Azure Edition_ Bild in der Dropdownliste für Bilder ausgewählt ist.  Verwenden [Sie diesen Leitfaden](automanage-windows-server-services-overview.md#getting-started-with-windows-server-azure-edition), um zu bestimmen, welche Bilder unterstützt werden.
+    * Aktivieren Sie auf der Registerkarte Verwaltung im Abschnitt "Gastbetriebssystemupdates" das Kontrollkästchen "Hotpatch aktivieren", um Hotpatch in der Vorschau zu bewerten.  Die Optionen für die Patch-Instrumentierung werden auf "Azure-orchestriert" festgelegt. 
+    * Wählen Sie auf der Registerkarte Verwaltung im Abschnitt "Azure Automanage" für "Azure Automanage-Umgebung" die Option "Dev/Test" oder "Produktion" aus, um die bewährten Methoden für die automatische Verwaltung von Computern in der Vorschauversion zu bewerten.
+    
 1. Erstellen einer neuen VM
 
 ## <a name="enabling-preview-access"></a>Aktivieren des Vorschauzugriffs
@@ -234,5 +232,6 @@ Beim Betrieb einer unterstützten _Windows Server Azure Edition_-VM mit aktivier
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Azure-Updateverwaltung finden Sie [hier](../automation/update-management/overview.md).
-* Weitere Informationen zu automatischen VM-Gastpatches finden Sie [hier](../virtual-machines/automatic-vm-guest-patching.md).
+* Weitere Informationen zur [Azure-Updateverwaltung](../automation/update-management/overview.md) finden Sie hier
+* Weitere Informationen zu [automatischen VM-Gastpatches](../virtual-machines/automatic-vm-guest-patching.md) finden Sie hier
+* Weitere Informationen zu [Automanage für Windows Server](automanage-windows-server-services-overview.md)

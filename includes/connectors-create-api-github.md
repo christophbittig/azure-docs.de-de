@@ -4,16 +4,16 @@ ms.topic: include
 author: ecfan
 ms.author: estfan
 ms.date: 03/02/2018
-ms.openlocfilehash: 1aabc1b33722c571c6519b6620fb62211a44c2e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96d6668a25422824f0e5ddb5f3fea65f7f9daabb
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95999540"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571093"
 ---
-1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine leere Logik-App. 
+1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine leere Logik-App.
 
-2. Geben Sie im Logik-App-Designer „github“ als Filter ein. 
+2. Geben Sie im Logic Apps-Designer *github* als Filter ein.
 
 3. Wählen Sie den zu verwendenden GitHub-Connector und Trigger aus.
 
@@ -22,7 +22,7 @@ ms.locfileid: "95999540"
    > [!NOTE]
    > Alle Logik-App-Workflows müssen mit einem Trigger gestartet werden. Sie können nur Aktionen auswählen, wenn Ihr Logikworkflow bereits mit einem Trigger beginnt. 
 
-4. Wenn Sie nicht zuvor eine Verbindung erstellt haben, wählen Sie **Anmelden** aus, damit Sie Ihre GitHub-Anmeldeinformationen bei Aufforderung bereitstellen können.  
+4. Wenn Sie nicht zuvor eine Verbindung erstellt haben, wählen Sie **Anmelden** aus, damit Sie Ihre GitHub-Anmeldeinformationen bei Aufforderung bereitstellen können.
 
    ![Anmelden mit Ihren GitHub-Anmeldeinformationen](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
 
@@ -37,4 +37,3 @@ ms.locfileid: "95999540"
 6. Fahren Sie fort, Ihren Logik-App-Workflow zu definieren.
 
    ![Fügen Sie Ihrem Logik-App-Workflow weitere Aktionen hinzu](./media/connectors-create-api-github/github-connector-logic-app.png)
-

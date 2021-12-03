@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: Spracherkennung, Spracherkennungssoftware
-ms.openlocfilehash: 78db7165e44eb53a6d34c9095f70185874d0d8ce
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: bf0d8c7ffdff3c936804583f03b42dbe1c5e2392
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131509880"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488390"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
 
@@ -37,15 +37,13 @@ Diese Dokumentation enthält die folgenden Arten von Artikeln:
 > Die Bing-Spracheingabe wurde am 15. Oktober 2019 eingestellt. Wenn Ihre Anwendungen, Tools oder Produkte die Bing-Spracheingabe-APIs verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zum Speech-Dienst:
 > - [Migrieren von der Bing-Spracheingabe zum Speech-Dienst](how-to-migrate-from-bing-speech.md)
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
-
 ## <a name="get-started"></a>Erste Schritte
 
 Verwenden Sie den [Schnellstart](get-started-speech-to-text.md), um mit der Spracherkennung zu beginnen. Der Dienst ist über das [Speech SDK](speech-sdk.md), die [REST-API](rest-speech-to-text.md#pronunciation-assessment-parameters) und die [Speech CLI](spx-overview.md) verfügbar.
 
 ## <a name="sample-code"></a>Beispielcode
 
-Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarios wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und einmalige Erkennung oder die Verwendung benutzerdefinierter Modelle behandelt.
+Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarien wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und anfängliche Erkennung oder die Verwendung benutzerdefinierter Modelle behandelt.
 
 - [Speech-to-text samples (SDK) (Spracherkennungsbeispiele (SDK))](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Batch transcription samples (REST) (Batchtranskriptionsbeispiele (REST))](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)

@@ -13,12 +13,12 @@ ms.subservice: compliance
 ms.date: 08/18/2021
 ms.author: sama
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf38a949d15faa896f4ac673fc53814078a087e
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 7d9b2f8ae5d679bf6642cd4cc2872e53b1234f11
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130231761"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989164"
 ---
 # <a name="tutorial-manage-the-lifecycle-of-your-group-based-licenses-in-azure-ad"></a>Tutorial: Verwalten des Lebenszyklus Ihrer gruppenbasierten Lizenzen in Azure AD
  
@@ -99,11 +99,11 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](entitlement-managem
  
     In diesem Szenario sollen alle Mitarbeiter jährlich überprüfen, ob sie weiterhin eine Lizenz für Office benötigen.
 
-    1.  Wählen Sie unter **Zugriffsüberprüfungen erforderlich** die Option **Ja** aus.
-    2.  Sie können für die Option **Startet am** das aktuelle Datum übernehmen. Dieses Datum markiert den Beginn der Zugriffsüberprüfung. Nachdem Sie eine Zugriffsüberprüfung erstellt haben, können Sie das Startdatum nicht mehr aktualisieren.
-    3.  Legen Sie die Option **Häufigkeit der Überprüfung** auf **Jährlich** fest, da die Überprüfung einmal pro Jahr erfolgen soll. Im Feld **Häufigkeit der Überprüfung** wird festgelegt, wie häufig die Zugriffsüberprüfung durchgeführt wird.
-    4.  Geben Sie die **Dauer (in Tagen)** an.  Im Feld für die Dauer geben Sie an, wie viele Tage lang die Zugriffsüberprüfung jeweils durchgeführt wird.
-    5.  Wählen Sie unter **Prüfer** die Option **Vorgesetzte(r)** aus.
+    1. Wählen Sie unter **Zugriffsüberprüfungen erforderlich** die Option **Ja** aus.
+    2. Sie können für die Option **Startet am** das aktuelle Datum übernehmen. Dieses Datum markiert den Beginn der Zugriffsüberprüfung. Nachdem Sie eine Zugriffsüberprüfung erstellt haben, können Sie das Startdatum nicht mehr aktualisieren.
+    3. Legen Sie die Option **Häufigkeit der Überprüfung** auf **Jährlich** fest, da die Überprüfung einmal pro Jahr erfolgen soll. Im Feld **Häufigkeit der Überprüfung** wird festgelegt, wie häufig die Zugriffsüberprüfung durchgeführt wird.
+    4. Geben Sie die **Dauer (in Tagen)** an.  Im Feld für die Dauer geben Sie an, wie viele Tage lang die Zugriffsüberprüfung jeweils durchgeführt wird.
+    5. Wählen Sie unter **Prüfer** die Option **Vorgesetzte(r)** aus.
 
 ## <a name="step-6-review-and-create-your-access-package"></a>Schritt 6: Überprüfen und Erstellen Ihres Zugriffspakets
 

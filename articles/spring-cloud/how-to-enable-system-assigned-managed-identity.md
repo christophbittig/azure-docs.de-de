@@ -1,5 +1,5 @@
 ---
-title: Aktivieren der systemseitig zugewiesenen verwalteten Identität für die Azure Spring Cloud-Anwendung
+title: Aktivieren der systemseitig zugewiesenen verwalteten Identität für Anwendungen in Azure Spring Cloud
 description: Hier erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität für Ihre Anwendung aktivieren.
 author: karlerickson
 ms.author: karler
@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 6e600a4634bf2aff23301fe2eb1f9084e181a416
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: da455b6ad4d68d94654c66d073c8a5a0ba093da9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350028"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490419"
 ---
-# <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung
+# <a name="how-to-enable-system-assigned-managed-identity-for-applications-in-azure-spring-cloud"></a>Aktivieren der systemseitig zugewiesenen verwalteten Identität für Anwendungen in Azure Spring Cloud
 
 **Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
-Verwaltete Identitäten stellen für Azure-Ressourcen wie Ihre Azure Spring Cloud-Anwendung eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
+Verwaltete Identitäten stellen für Azure-Ressourcen wie Ihre Anwendungen in Azure Spring Cloud eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
 In diesem Artikel erfahren Sie, wie Sie systemseitig zugewiesene verwaltete Identitäten für eine Azure Spring Cloud-App aktivieren und deaktivieren können. Dazu verwenden Sie das Azure-Portal und die CLI (verfügbar in Version 0.2.4).
 

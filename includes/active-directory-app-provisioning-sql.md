@@ -1,16 +1,16 @@
 ---
-ms.openlocfilehash: fe61b971dbe1a3a82a085228ff8723f3cf47df20
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 71ee3e826eb1219a838a8e075e9f1a55e5f1ec8f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129638440"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444503"
 ---
-In diesem Dokument werden die Schritte beschrieben, die Sie ausführen müssen, um Benutzer aus Azure Active Directory (Azure AD) automatisch in einer SQL-Datenbank bereitzustellen und deren Bereitstellungen wieder aufzuheben.  Es wird erläutert, wie Sie den generischen SQL-Connector mit dem Azure AD-ECMA-Connectorhost einrichten und verwenden. 
+In diesem Dokument werden die Schritte beschrieben, die Sie ausführen müssen, um Benutzer aus Azure Active Directory (Azure AD) automatisch in einer SQL-Datenbank bereitzustellen und deren Bereitstellungen wieder aufzuheben.  
  
 Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../articles/active-directory/app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites-for-the-azure-ad-ecma-connector-host"></a>Voraussetzungen für den Azure AD-ECMA-Connectorhost
+## <a name="prerequisites-for-provisioning-to-a-sql-database"></a>Voraussetzungen für die Bereitstellung für eine SQL-Datenbank
 
 >[!IMPORTANT]
 > Die Vorschauversion zur lokalen Bereitstellung ist derzeit nur mit Einladung verfügbar. Um Zugriff auf die Funktion anzufordern, verwenden Sie das [Zugriffsanforderungsformular](https://aka.ms/onpremprovisioningpublicpreviewaccess). Wir öffnen die Vorschauversion im Rahmen der Vorbereitung auf die allgemeine Verfügbarkeit in den nächsten Monaten für weitere Kunden und Connectors.
@@ -19,7 +19,6 @@ Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig g
 ### <a name="on-premises-prerequisites"></a>Lokale Voraussetzungen
 
  - Ein Zielsystem, z. B. eine SQL-Datenbank, in dem Benutzer erstellt, aktualisiert und gelöscht werden können.
- - Ein ECMA-Connector ab Version 2.0 für dieses Zielsystem, der Export-, Schemaabruf- und optional vollständige Import- oder Deltaimportvorgänge unterstützt. Wenn Sie während der Konfiguration nicht über einen ECMA-Connector verfügen, können Sie den End-to-End-Flow dennoch überprüfen, wenn Sie über eine SQL Server-Instanz in Ihrer Umgebung verfügen und den generischen SQL-Connector verwenden.
  - Ein Computer mit Windows Server 2016 oder höher, einer über das Internet zugänglichen TCP/IP-Adresse, Konnektivität mit dem Zielsystem und ausgehender Konnektivität mit login.microsoftonline.com. Ein Beispiel ist eine Windows Server 2016-VM, die in Azure IaaS oder hinter einem Proxy gehostet wird. Der Server sollte über mindestens 3 GB RAM verfügen.
  - Ein Computer mit .NET Framework 4.7.1
 
@@ -83,7 +82,9 @@ Der generische SQL-Connector ist eine DSN-Datei zum Herstellen einer Verbindung 
  4. Wählen Sie die **lokale ECMA-App** aus, die hinzugefügt wurde.
  5. Wählen Sie unter **Erste Schritte** im Feld **3. Benutzerkonten bereitstellen** die Option **Erste Schritte** aus.
  6. Wählen Sie am oberen Rand **Bereitstellung bearbeiten** aus.
- 7. Laden Sie unter **Lokale Konnektivität** das Agent-Installationsprogramm herunter.
+ 7. Laden Sie unter **Lokale Konnektivität** das Agent-Installationsprogramm herunter.     
+     >[!NOTE]
+     >Verwenden Sie verschiedene Bereitstellungs-Agents für die lokale Anwendungsbereitstellung und die Azure AD Connect Cloudsynchronisierung/personengesteuerte Bereitstellung. Es sollten nicht alle drei Szenarien auf demselben Agent verwaltet werden. 
  8. Führen Sie das Installationsprogramm für den Azure AD Connect-Bereitstellungs-Agent **AADConnectProvisioningAgentSetup.msi** aus.
  9. Akzeptieren Sie auf dem Bildschirm **Microsoft Azure AD Connect-Bereitstellungs-Agent-Paket** die Lizenzbedingungen, und wählen Sie **Installieren** aus.
      ![Bildschirm „Microsoft Azure AD Connect-Bereitstellungs-Agent-Paket“.](media/active-directory-app-provisioning-sql/install-1.png)</br>
@@ -210,7 +211,7 @@ Der generische SQL-Connector ist eine DSN-Datei zum Herstellen einer Verbindung 
      ![Screenshot der Seite „Bereitstellung aufheben“](.\media\active-directory-app-provisioning-sql\conn-14.png)</br>
 
 
-## <a name="ensure-ecma2host-service-is-running"></a>Sicherstellen, dass der ECMA2Host-Dienst ausgeführt wird
+## <a name="ensure-the-ecma2host-service-is-running"></a>Sicherstellen, dass der ECMA2Host-Dienst ausgeführt wird
  1. Wählen Sie auf dem Server, auf dem der Azure AD-ECMA-Connectorhost ausgeführt wird, **Starten** aus.
  2. Geben Sie **run** (Ausführen) und **services.msc** in das Feld ein.
  3. Stellen Sie sicher, dass **Microsoft ECMA2Host** in der in der Liste **Dienste** enthalten ist und ausgeführt wird. Wählen Sie andernfalls **Starten** aus.
@@ -222,11 +223,11 @@ Der generische SQL-Connector ist eine DSN-Datei zum Herstellen einer Verbindung 
  1. Melden Sie sich beim Azure-Portal an.
  2. Wechseln Sie zu **Unternehmensanwendungen** und der Anwendung **Lokale ECMA-App**.
  3. Wechseln Sie zu **Bereitstellung bearbeiten**.
- 4. Geben Sie nach 10 Minuten im Abschnitt **Administratoranmeldeinformationen** die folgende URL ein. Ersetzen Sie den Teil `connectorName` durch den Namen des Connectors auf dem ECMA-Host. Sie können auch `localhost` durch den Hostnamen ersetzen.
+ 4. Geben Sie nach 10 Minuten im Abschnitt **Administratoranmeldeinformationen** die folgende URL ein. Ersetzen Sie den Teil `{connectorName}` durch den Namen des Connectors auf dem ECMA-Host. Sie können auch `localhost` durch den Hostnamen ersetzen.
 
  |Eigenschaft|Wert|
  |-----|-----|
- |Mandanten-URL|https://localhost:8585/ecma2host_connectorName/scim|
+ |Mandanten-URL|https://localhost:8585/ecma2host_{connectorName}/scim|
  
  5. Geben Sie den Wert des **geheimen Tokens** ein, das Sie beim Erstellen des Connectors definiert haben.
  6. Wählen Sie **Verbindung testen** aus, und warten Sie eine Minute.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb1d3bac4cb1ca6bc5849ba743c83922f0283cc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dcd5f888622b1ce054f5fbb30db7b668f6501c70
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620975"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049898"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
 
@@ -26,7 +26,7 @@ Die folgende Liste enthält die Einstellungen, für die unter Windows 10 Roamin
 
 Die folgende Tabelle enthält eine Zusammenfassung der Geräte und Kontotypen, die unter Windows 10 vom Framework für die Synchronisierung, Sicherung und Wiederherstellung unterstützt werden.
 
-| Kontotyp und Vorgang | Desktop | Mobile |
+| Kontotyp und Vorgang | Desktop | Mobil |
 | --- | --- | --- |
 | Azure Active Directory: Synchronisierung |Ja |Nein |
 | Azure Active Directory: Sicherung/Wiederherstellung |Nein |Nein |
@@ -69,13 +69,13 @@ In der folgenden Tabelle bezieht sich „Sonstige“ in der Spalte „Gruppe“ 
 Die Einträge „Intern“ in der Spalte „Gruppe“ beziehen sich auf Einstellungen und Apps, für die die Synchronisierung nur in der App selbst oder für das gesamte Gerät per MDM- oder Gruppenrichtlinien-Einstellungen deaktiviert werden kann.
 Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt wird, gehören keiner Gruppe an.
 
-| Einstellungen | Desktop | Mobile | Gruppieren |
+| Einstellungen | Desktop | Mobil | Group |
 | --- | --- | --- | --- |
 | **Konten**: Kontobild |sync |X |Design |
 | **Konten**: weitere Kontoeinstellungen |X |X | |
 | **Erweitertes mobiles Breitband**: Netzwerkname der Internetverbindungsfreigabe (ermöglicht automatische Ermittlung von mobilen WLAN-Hotspots per Bluetooth) |X |X |Kennwörter |
 | **App-Daten**: einzelne Apps können Daten synchronisieren |Sync.sicherung |Sync.sicherung |internal |
-| **App-Liste**: Liste der installierten Apps |X |Sicherung |Sonstiges |
+| **App-Liste**: Liste der installierten Apps |X |Sicherung |Andere |
 | **Bluetooth**: alle Bluetooth-Einstellungen |X |X | |
 | **Eingabeaufforderung:** Standardeinstellungen für die Eingabeaufforderung |sync |X |internal |
 | **Anmeldeinformationen**: Schließfach für Anmeldeinformationen |sync |sync |password |
@@ -102,7 +102,7 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Microsoft Edge-Browser:** eingegebene URLs <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
 | **Microsoft Edge-Browser:** Einstellungen der Favoritenleiste <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
 | **Microsoft Edge-Browser:** Schaltfläche „Startseite“ anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
-| **Microsoft Edge-Browser:** Popups blockieren <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** Popupfenster blockieren <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
 | **Microsoft Edge-Browser:** fragen, wie mit jedem Download verfahren werden soll <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
 | **Microsoft Edge-Browser:** Speichern von Kennwörtern anbieten <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
 | **Microsoft Edge-Browser:** „Do Not Track“-Anforderungen (nicht nachverfolgen) senden <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |

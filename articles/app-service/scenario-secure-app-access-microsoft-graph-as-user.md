@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 09/23/2021
+ms.date: 11/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: 332552d361c4c8c43b7b4bfa981050c829a79762
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b20ae4e6cec7ad3ce710c6e9670ff580b30f2638
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624518"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462308"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Tutorial: Zugreifen auf Microsoft Graph über eine geschützte App als Benutzer
 
@@ -122,9 +122,12 @@ az rest --method PUT --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RES
 ```
 ---
 
-## <a name="call-microsoft-graph-net"></a>Aufrufen von Microsoft Graph (.NET)
+## <a name="call-microsoft-graph"></a>Aufrufen von Microsoft Graph
 
-Ihre Web-App verfügt jetzt über die erforderlichen Berechtigungen, und den Anmeldeparametern wird die Client-ID von Microsoft Graph hinzugefügt. Mit der [Microsoft.Identity.Web-Bibliothek](https://github.com/AzureAD/microsoft-identity-web/) ruft die Web-App ein Zugriffstoken für die Authentifizierung bei Microsoft Graph ab. In Version 1.2.0 und höher ist die Microsoft.Identity.Web-Bibliothek mit dem App Service-Modul für die Authentifizierung/Autorisierung integriert und kann parallel dazu ausgeführt werden. Microsoft.Identity.Web erkennt, dass die Web-App in App Service gehostet wird, und ruft das Zugriffstoken über das App Service-Modul für die Authentifizierung/Autorisierung ab. Das Zugriffstoken wird dann mit der Microsoft Graph-API an authentifizierte Anforderungen weitergeleitet.
+Ihre Web-App verfügt jetzt über die erforderlichen Berechtigungen, und den Anmeldeparametern wird die Client-ID von Microsoft Graph hinzugefügt.
+
+# <a name="c"></a>[C#](#tab/programming-language-csharp)
+Mit der [Microsoft.Identity.Web-Bibliothek](https://github.com/AzureAD/microsoft-identity-web/) ruft die Web-App ein Zugriffstoken für die Authentifizierung bei Microsoft Graph ab. In Version 1.2.0 und höher ist die Microsoft.Identity.Web-Bibliothek mit dem App Service-Modul für die Authentifizierung/Autorisierung integriert und kann parallel dazu ausgeführt werden. Microsoft.Identity.Web erkennt, dass die Web-App in App Service gehostet wird, und ruft das Zugriffstoken über das App Service-Modul für die Authentifizierung/Autorisierung ab. Das Zugriffstoken wird dann mit der Microsoft Graph-API an authentifizierte Anforderungen weitergeleitet.
 
 Im [Beispiel auf GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf) können Sie sich diesen Code in einer Beispielanwendung ansehen.
 
@@ -137,7 +140,7 @@ Im [Beispiel auf GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-d
 
 Installieren Sie die NuGet-Pakete [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) und [Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) in Ihrem Projekt, indem Sie die .NET Core-Befehlszeilenschnittstelle oder die Paket-Manager-Konsole in Visual Studio verwenden.
 
-# <a name="command-line"></a>[Befehlszeile](#tab/command-line)
+#### <a name="net-core-command-line"></a>.NET Core-Befehlszeile
 
 Öffnen Sie eine Befehlszeile, und wechseln Sie zu dem Verzeichnis, in dem Ihre Projektdatei enthalten ist.
 
@@ -149,7 +152,7 @@ dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 dotnet add package Microsoft.Identity.Web
 ```
 
-# <a name="package-manager"></a>[Paket-Manager](#tab/package-manager)
+#### <a name="package-manager-console"></a>Paket-Manager-Konsole
 
 Öffnen Sie das Projekt bzw. die Projektmappe in Visual Studio, und navigieren Sie zu **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**, um die Konsole zu öffnen.
 
@@ -159,8 +162,6 @@ Install-Package Microsoft.Identity.Web.MicrosoftGraph
 
 Install-Package Microsoft.Identity.Web
 ```
-
----
 
 ### <a name="startupcs"></a>Startup.cs
 
@@ -273,6 +274,54 @@ public class IndexModel : PageModel
     }
 }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/programming-language-nodejs)
+
+Die Web-App erhält das Zugriffstoken des Benutzers aus dem Header für eingehende Anforderungen. Anschließend wird das Token an den Microsoft Graph-Client übergeben, um eine authentifizierte Anforderung an den `/me`-Endpunkt zu senden.
+
+In *graphController.js* im [Beispiel auf GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf) können Sie sich diesen Code in einer Beispielanwendung ansehen.
+
+```nodejs
+const graphHelper = require('../utils/graphHelper');
+
+// Some code omitted for brevity.
+
+exports.getProfilePage = async(req, res, next) => {
+
+    try {
+        const graphClient = graphHelper.getAuthenticatedClient(req.session.protectedResources["graphAPI"].accessToken);
+
+        const profile = await graphClient
+            .api('/me')
+            .get();
+
+        res.render('profile', { isAuthenticated: req.session.isAuthenticated, profile: profile, appServiceName: appServiceName });   
+    } catch (error) {
+        next(error);
+    }
+}
+```
+
+Verwenden Sie zum Abfragen von Microsoft Graph das [Microsoft Graph JavaScript SDK](https://github.com/microsoftgraph/msgraph-sdk-javascript). Der Code dafür befindet sich in [utils/graphHelper.js](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/blob/main/2-WebApp-graphapi-on-behalf/utils/graphHelper.js):
+
+```nodejs
+const graph = require('@microsoft/microsoft-graph-client');
+
+// Some code omitted for brevity.
+
+getAuthenticatedClient = (accessToken) => {
+    // Initialize Graph client
+    const client = graph.Client.init({
+        // Use the provided access token to authenticate requests
+        authProvider: (done) => {
+            done(null, accessToken);
+        }
+    });
+
+    return client;
+}
+```
+---
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

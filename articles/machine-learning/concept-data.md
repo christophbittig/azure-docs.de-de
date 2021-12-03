@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 08/31/2020
+ms.date: 10/21/2021
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 1b439f65f2807d2d076363938169631651b85d20
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 5623567cb35f6222d660b9e02de5d2fa125dd826
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129430153"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867150"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 
@@ -67,7 +67,7 @@ Unterstützte cloudbasierte Speicherdienste in Azure, die als Datenspeicher regi
 + Azure Database for MySQL
 
 >[!TIP]
-> Die allgemein verfügbare Funktion zum Erstellen von Datenspeichern setzt eine auf Anmeldeinformationen basierende Authentifizierung für den Zugriff auf Speicherdienste voraus – beispielsweise einen Dienstprinzipal oder ein SAS-Token (Shared Access Signature). Auf diese Anmeldeinformationen können Benutzer zugreifen, die über *Lesezugriff* auf den Arbeitsbereich verfügen. <br><br>Sollte dies ein Problem darstellen, [erstellen Sie einen Datenspeicher mit identitätsbasiertem Datenzugriff auf Speicherdienste (Vorschau)](how-to-identity-based-data-access.md). Diese Funktion ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion und kann jederzeit geändert werden.
+> Die allgemein verfügbare Funktion zum Erstellen von Datenspeichern setzt eine auf Anmeldeinformationen basierende Authentifizierung für den Zugriff auf Speicherdienste voraus – beispielsweise einen Dienstprinzipal oder ein SAS-Token (Shared Access Signature). Auf diese Anmeldeinformationen können Benutzer zugreifen, die über *Lesezugriff* auf den Arbeitsbereich verfügen. <br><br>Sollte dies ein Problem darstellen, [erstellen Sie einen Datenspeicher mit identitätsbasiertem Datenzugriff auf Speicherdienste](how-to-identity-based-data-access.md).
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>Verweisen auf Daten im Speicher mit Datasets

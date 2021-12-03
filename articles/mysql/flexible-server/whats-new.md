@@ -7,24 +7,57 @@ ms.author: jtoland
 ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: 1f4682f616ce09d59e26c578fd6d21e480fae6ef
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 8333f0086a7d2778fcda1efec64ebca6de94a002
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069537"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398001"
 ---
-# <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Neuerungen in Azure Database for MySQL Flexible Server (Vorschauversion)
+# <a name="whats-new-in-azure-database-for-mysql---flexible-server-"></a>Neuerungen in Azure Database for MySQL Flexible Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-[Azure Database for MySQL Flexible Server](./overview.md#azure-database-for-mysql---flexible-server-preview) ist ein Bereitstellungsmodus, der mehr Kontrolle und Flexibilität bei der Datenbankverwaltung und den Konfigurationseinstellungen als der Single Server-Bereitstellungsmodus bietet. Der Dienst unterstützt derzeit die Community-Version von MySQL 5.7 und 8.0.
+[Azure Database for MySQL Flexible Server](./overview.md) ist ein Bereitstellungsmodus, der mehr Kontrolle und Flexibilität bei der Datenbankverwaltung und den Konfigurationseinstellungen als der Single Server-Bereitstellungsmodus bietet. Der Dienst unterstützt derzeit die Community-Version von MySQL 5.7 und 8.0.
 
 In diesem Artikel werden neue Releases und Features in Azure Database for MySQL Flexible Server ab Januar 2021 zusammengefasst. Auflistungen werden in umgekehrter chronologischer Reihenfolge angezeigt, die neuesten Updates zuerst.
 
+## <a name="november-2021"></a>November 2021
+- **Allgemeine Verfügbarkeit von Azure Database for MySQL – Flexible Server**
+    
+  Azure Database for MySQL – Flexible Server ist jetzt in mehr als [30 Azure-Regionen](overview.md) weltweit **allgemein verfügbar**.
+
+- **Anzeigen verfügbarer vollständiger Sicherungen im Azure-Portal** Ein dediziertes Blatt „Sicherung und Wiederherstellung“ ist jetzt im Azure-Portal verfügbar. Auf diesem Blatt werden die Sicherungen aufgelistet, die innerhalb des Aufbewahrungszeitraums des Servers verfügbar sind. Dadurch erhalten Sie effektiv eine Ansicht mit einem einzelnen Bereich zum Verwalten der Sicherungen und aufeinanderfolgenden Wiederherstellungen eines Servers. Dieses Blatt ermöglicht Folgendes: 
+   1) Anzeigen der Abschlusszeitstempel für alle verfügbaren vollständigen Sicherungen innerhalb des Aufbewahrungszeitraums des Servers 
+   2) Ausführen von Wiederherstellungsvorgängen mit diesen vollständigen Sicherungen
+  
+- **Schnellste Wiederherstellungspunkte**
+  
+  Mit der Option „Schnellster Wiederherstellungspunkt“ können Sie eine Flexible Server-Instanz an einem bestimmten Tag innerhalb des Aufbewahrungszeitraums des Servers so schnell wie möglich wiederherstellen. Bei diesem Wiederherstellungsvorgang wird einfach die vollständige Momentaufnahmesicherung wiederhergestellt, ohne dass eine Wiederherstellung von Protokollen erforderlich ist. Mit dem schnellsten Wiederherstellungspunkt werden den Kunden bei der Durchführung von Point-in-Time-Wiederherstellungen über das Azure-Portal 3 Optionen angezeigt, nämlich letzter Wiederherstellungspunkt, benutzerdefinierter Wiederherstellungspunkt und schnellster Wiederherstellungspunkt. [Weitere Informationen](concepts-backup-restore.md#point-in-time-restore)
+  
+- **Blatt mit häufig gestellten Fragen im Azure-Portal**
+
+  Das Blatt „Sicherung und Wiederherstellung“ enthält auch den Abschnitt zum Auflisten der am häufigsten gestellten Fragen mit entsprechenden Antworten. Dadurch erhalten Sie Antworten auf die meisten Fragen zur Sicherung direkt im Azure-Portal. Darüber hinaus können Sie durch Auswählen des Fragezeichensymbols für die häufig gestellten Fragen im oberen Menü auf weitere verwandte Details zugreifen.
+
+- **Wiederherstellen einer gelöschten Instanz von Flexibler Server**
+    
+  Der Dienst ermöglicht Ihnen nun, eine gelöschte flexible MySQL-Serverressource innerhalb von 5 Tagen ab dem Zeitpunkt der Löschung des Servers wiederherzustellen. Eine detaillierte Anleitung zur Wiederherstellung eines gelöschten Servers [finden Sie in den dokumentierten Schritten](../flexible-server/how-to-restore-dropped-server.md). Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, werden Administratoren [Verwaltungssperren](../../azure-resource-manager/management/lock-resources.md) empfohlen.
+
+- **Bekannte Probleme**
+
+Auf Servern mit aktivierter Hochverfügbarkeit und georedundanter Sicherungsoption wurde ein seltenes Problem aufgrund einer Racebedingung festgestellt, die den Neustart des Standbyservers so blockiert, dass er nicht abgeschlossen werden kann. Als Folge dieses Problems kann es passieren, dass beim Failover der für Hochverfügbarkeit aktivierten Azure Database for MySQL-Instanz die flexible MySQL-Serverinstanz lange Zeit im Zustand „Wird neu gestartet“ hängen bleibt. Die Korrektur wird im nächsten Bereitstellungszyklus in der Produktion bereitgestellt.
+
 ## <a name="october-2021"></a>Oktober 2021
 
-- **Auswahl der Verfügbarkeitszonen bei der Erstellung von Lesereplikaten**
+- **Threadpools sind jetzt für Azure Database for MySQL – Flexible Server verfügbar**
+ 
+    Threadpools verbessern die Skalierbarkeit von Azure Database for MySQL – Flexible Server. Mithilfe eines Threadpools können Benutzer jetzt die Leistung optimieren, einen besseren Durchsatz erzielen und die Latenz für hohe gleichzeitige Workloads verringern. [Weitere Informationen](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/achieve-up-to-a-50-performance-boost-in-azure-database-for-mysql/ba-p/2909691)
+
+- **Georedundante Backup-Wiederherstellung in einer geopolitischen Region für Notfallwiederherstellungsszenarien**
+
+    Der Dienst bietet jetzt die zusätzliche Flexibilität, georedundanten Sicherungsspeicher auszuwählen, um eine höhere Datenresilienz zu gewährleisten. Die Aktivierung von Georedundanz ermöglicht Kunden die Wiederherstellung nach einem geografischen Notfall oder regionalen Ausfall, wenn sie nicht auf den Server in der primären Region zugreifen können. Wenn dieses Feature aktiviert ist, können Kunden eine Geowiederherstellung durchführen und einen neuen Server in der geografisch gekoppelten geografischen Region bereitstellen, indem sie die neueste verfügbare georedundante Sicherung des ursprünglichen Servers nutzen. [Weitere Informationen](../flexible-server/concepts-backup-restore.md). 
+
+-  **Auswahl der Verfügbarkeitszonen bei der Erstellung von Lesereplikaten**
 
     Bei der Erstellung von Lesereplikaten haben Sie die Möglichkeit, den Ort der Verfügbarkeitszonen Ihrer Wahl auszuwählen. Eine Verfügbarkeitszone ist ein Hochverfügbarkeitsangebot, das Ihre Anwendungen und Daten vor Fehlschlägen im Rechenzentrum schützt. Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. [Weitere Informationen](../flexible-server/concepts-read-replicas.md)
 
@@ -49,6 +82,21 @@ In diesem Artikel werden neue Releases und Features in Azure Database for MySQL 
 - **Terraform-Unterstützung für MySQL Flexible Server**
     
     Terraform-Unterstützung für MySQL Flexible Server ist jetzt mit der [neuesten Version v2.81.0 von azurerm](https://github.com/hashicorp/terraform-provider-azurerm/blob/v2.81.0/CHANGELOG.md) verfügbar. Das detaillierte Referenzdokument für die Bereitstellung und Verwaltung eines MySQL Flexible Servers mit Terraform finden Sie [hier](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server). Alle Bugs oder bekannten Probleme können [hier](https://github.com/hashicorp/terraform-provider-azurerm/issues) gefunden oder gemeldet werden.
+
+- **Statischer Parameter „innodb_log_file_size“ ist jetzt konfigurierbar**
+
+    - [innodb_log_file_size](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_file_size) kann jetzt mit einem der folgenden Werte konfiguriert werden: 256 MB, 512 MB, 1 GB oder 2 GB. Da es sich um einen statischen Parameter handelt, ist ein Serverneustart erforderlich. Wenn Sie den Parameter „innodb_log_file_size“ vom Standardwert geändert haben, überprüfen Sie, ob der Wert von „show global status like 'innodb_buffer_pool_pages_dirty'“ (globalen Status wie „innodb_buffer_pool_pages_dirty“ anzeigen) 30 Sekunden lang auf 0 bleibt, um eine Verzögerung des Neustarts zu vermeiden. Weitere Informationen finden Sie unter [Serverparameter in Azure Database for MySQL](./concepts-server-parameters.md).
+
+- **Verfügbarkeit in zwei weiteren Azure-Regionen**
+
+   Azure Database for MySQL Flexible Server ist jetzt in den folgenden Azure-Regionen verfügbar:
+
+   - USA, Westen 3
+   - USA, Norden-Mitte [Weitere Informationen](overview.md#azure-regions).
+
+- **Bekannte Probleme**
+    - Wenn die primäre Region ausfällt, können keine georedundanten Server in der jeweiligen geografisch gekoppelten Region erstellt werden, da der Speicher nicht in der primären Region bereitgestellt werden kann. Sie müssen warten, bis die primäre Region verfügbar ist, um georedundante Server in der geografisch gekoppelten Region bereitstellen zu können.
+    
 
 ## <a name="september-2021"></a>September 2021
 
@@ -78,11 +126,11 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Hochverfügbarkeit innerhalb einer Zone mithilfe von Hochverfügbarkeit in gleicher Zone**
 
-  Mit diesem Dienst können Kund*innen jetzt flexibel ihre bevorzugte Verfügbarkeitszone für den Standbyserver auswählen, wenn sie Hochverfügbarkeit aktivieren. Zudem ermöglicht dieses Feature es Kund*innen, einen Standbyserver in derselben Zone wie der primäre Server bereitzustellen, wodurch die Replikationsverzögerung zwischen dem primären Server und dem Standbyserver reduziert wird. Dadurch entstehen auch niedrigere Latenzen zwischen dem Anwendungsserver und dem Datenbankserver, wenn diese in derselben Azure-Zone bereitgestellt werden. [Weitere Informationen](/azure/mysql/flexible-server/concepts-high-availability#same-zone-high-availability)
+  Mit diesem Dienst können Kund*innen jetzt flexibel ihre bevorzugte Verfügbarkeitszone für den Standbyserver auswählen, wenn sie Hochverfügbarkeit aktivieren. Zudem ermöglicht dieses Feature es Kund*innen, einen Standbyserver in derselben Zone wie der primäre Server bereitzustellen, wodurch die Replikationsverzögerung zwischen dem primären Server und dem Standbyserver reduziert wird. Dadurch entstehen auch niedrigere Latenzen zwischen dem Anwendungsserver und dem Datenbankserver, wenn diese in derselben Azure-Zone bereitgestellt werden. [Weitere Informationen](./concepts-high-availability.md)
 
 - **Auswahl der Standbyzone mit zonenredundanter Hochverfügbarkeit**
 
-  Der Dienst bietet Kund*innen jetzt die Möglichkeit, den Standort der Standbyserverzone zu wählen. Mit diesem Feature können Kund*innen ihren Standbyserver in der Zone ihrer Wahl bereitstellen. Die Unterbringung der Standby-Datenbankserver und der Standby-Anwendungen in derselben Zone verringert die Latenzzeiten und ermöglicht es den Kunden, sich besser auf Notfallwiederherstellung-Situationen und Zonenausfall-Szenarien vorzubereiten. [Weitere Informationen](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)
+  Der Dienst bietet Kund*innen jetzt die Möglichkeit, den Standort der Standbyserverzone zu wählen. Mit diesem Feature können Kund*innen ihren Standbyserver in der Zone ihrer Wahl bereitstellen. Die Unterbringung der Standby-Datenbankserver und der Standby-Anwendungen in derselben Zone verringert die Latenzzeiten und ermöglicht es den Kunden, sich besser auf Notfallwiederherstellung-Situationen und Zonenausfall-Szenarien vorzubereiten. [Weitere Informationen](./concepts-high-availability.md)
 
 - **Integration in private DNS-Zonen**
 
@@ -94,7 +142,7 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Zeitpunktwiederherstellung für einen Server in einer Verfügbarkeitszone**
 
-  Die Zeitpunktwiederherstellung für den Dienst aktiviert jetzt die Konfiguration von Verfügbarkeitszonen. Die Unterbringung von Datenbankservern und Standby-Anwendungen in derselben Zone verringert die Latenzzeiten und ermöglicht es den Kunden, sich besser auf Notfallwiederherstellung-Situationen und Zonenausfall-Szenarien vorzubereiten. [Weitere Informationen](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)
+  Die Zeitpunktwiederherstellung für den Dienst aktiviert jetzt die Konfiguration von Verfügbarkeitszonen. Die Unterbringung von Datenbankservern und Standby-Anwendungen in derselben Zone verringert die Latenzzeiten und ermöglicht es den Kunden, sich besser auf Notfallwiederherstellung-Situationen und Zonenausfall-Szenarien vorzubereiten. [Weitere Informationen](./concepts-high-availability.md)
 
 - **Plug-Ins „validate_password“ und „caching_sha2_password“ in der privaten Vorschau verfügbar**
 
@@ -207,7 +255,7 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Fixes für Bereitstellungsfehler bei der Servererstellung in virtuellen Netzwerken mit privatem Zugriff**
 
-  Alle Bereitstellungsfehler, die beim Erstellen von Server in virtuellen Netzwerken aufgetreten sind, wurden behoben. Mit diesem Release können Benutzer*innen stets erfolgreich flexible Server mit privatem Zugriff erstellen.  
+  Alle Bereitstellungsfehler, die beim Erstellen von Server in virtuellen Netzwerken aufgetreten sind, wurden behoben. Mit diesem Release können Benutzer*innen stets erfolgreich flexible Server mit privatem Zugriff erstellen.
 
 ## <a name="march-2021"></a>März 2021
 

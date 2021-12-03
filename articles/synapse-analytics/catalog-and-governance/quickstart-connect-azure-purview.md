@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/29/2021
 ms.author: jejiang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 894df32142cf29e59e40b1e9218f4090bbda93f0
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 86e2eee3be8a25cc236a5774ab485c863c8d655b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351607"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842523"
 ---
 # <a name="quickstartconnect-a-synapse-workspace-to-an-azure-purview-account"></a>Schnellstart: Verbinden eines Synapse-Arbeitsbereichs mit einem Azure Purview-Konto
 
@@ -67,13 +67,9 @@ Die Purview-Verbindungsinformationen werden wie folgt in der Synapse-Arbeitsbere
 
 Die verwaltete Identität des Synapse-Arbeitsbereichs wird verwendet, um Pushvorgänge für Herkunftsinformationen aus dem Synapse-Arbeitsbereich an Purview zu authentifizieren.
 
-- Erteilen Sie für Purview-Konten, die **am oder nach dem 18. August 2021** erstellt wurden, der verwalteten Identität des Synapse-Arbeitsbereichs die Rolle **Datenkurator** für Ihre **Purview-Stammsammlung**. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Purview](../../purview/catalog-permissions.md) sowie unter [Hinzufügen von Rollen und Einschränken des Zugriffs über Sammlungen](../../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
+Weisen Sie der verwalteten Identität des Synapse-Arbeitsbereichs die Rolle **Datenkurator** für Ihre Purview-**Stammsammlung** zu. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Purview](../../purview/catalog-permissions.md) sowie unter [Hinzufügen von Rollen und Einschränken des Zugriffs über Sammlungen](../../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
 
-    Wenn Sie einen Synapse-Arbeitsbereich mit Purview in Synapse Studio verbinden, wird von Synapse automatisch versucht, eine solche Rollenzuweisung hinzuzufügen. Wenn Sie die Rolle **Sammlungsadministratoren** für die Purview-Stammsammlung innehaben und über Ihr Netzwerk Zugriff auf das Purview-Konto haben, wird dieser Vorgang erfolgreich ausgeführt.
-
-- Erteilen Sie für Purview-Konten, die **vor dem 18. August 2021** erstellt wurden, der verwalteten Identität des Synapse-Arbeitsbereichs die in Azure integrierte Rolle [**Purview Data Curator (Legacy)** ](../../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) (Datenkurator für Purview (Legacy)) für Ihr Purview-Konto. Weitere Informationen zu Legacyberechtigungen für die Zugriffssteuerung in Azure Purview finden Sie [hier](../../purview/catalog-permissions.md#legacy-permission-guide).
-
-    Wenn Sie einen Synapse-Arbeitsbereich mit Purview in Synapse Studio verbinden, wird von Synapse automatisch versucht, eine solche Rollenzuweisung hinzuzufügen. Wenn Sie für das Purview-Konto über die in Azure integrierte Rolle **Besitzer** oder **Benutzerzugriffsadministrator** verfügen, ist dieser Vorgang erfolgreich.
+Wenn Sie einen Synapse-Arbeitsbereich mit Purview in Synapse Studio verbinden, wird von Synapse automatisch versucht, eine solche Rollenzuweisung hinzuzufügen. Wenn Sie die Rolle **Sammlungsadministratoren** für die Purview-Stammsammlung innehaben und über Ihr Netzwerk Zugriff auf das Purview-Konto haben, wird dieser Vorgang erfolgreich ausgeführt.
 
 ## <a name="monitor-purview-connection"></a>Überwachen der Purview-Verbindung
 

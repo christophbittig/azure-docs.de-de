@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/23/2021
+ms.date: 10/23/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 1bb1d7c65451be88864440d2e5b1327b3688f337
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: d06dc25abf6ae83fd975a0d8d7fe38d905290e92
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061350"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550777"
 ---
-# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory
+# <a name="assign-users-and-groups-to-an-application"></a>Zuweisen von Benutzern und Gruppen zu einer Anwendung
 
 In diesem Artikel wird das Zuweisen von Benutzern und Gruppen zu einer Unternehmensanwendung in Azure Active Directory (Azure AD) mit PowerShell veranschaulicht. Wenn Sie einen Benutzer einer Anwendung zuweisen, wird die Anwendung im Portal „Meine Apps“ für den Benutzer angezeigt, um den Zugriff zu erleichtern. Wenn die Anwendung Rollen verfügbar macht, können Sie dem Benutzer auch eine bestimmte Rolle zuweisen.
 
@@ -111,12 +111,32 @@ This example assigns the user Britta Simon to the Microsoft Workplace Analytics 
     Remove-AzureADServiceAppRoleAssignment -ObjectId $spo.ObjectId -AppRoleAssignmentId $assignments[assignment #].ObjectId
     ```
 
-## <a name="related-articles"></a>Verwandte Artikel
+## <a name="remove-all-users-who-are-assigned-to-the-application"></a>Entfernen Sie alle Benutzer, die der Anwendung zugewiesen sind.
 
-- [Zuweisen oder Aufheben der Zuweisung eines Benutzers oder einer Gruppe mithilfe des Azure-Portals](add-application-portal-assign-users.md)
-- [Zuweisen von Benutzern und Gruppen für eine App und Aufheben ihrer Zuweisung mit der Graph-API](/graph/api/resources/approleassignment)
-- [Verwalten des Zugriffs auf Apps](what-is-access-management.md)
+   ```powershell
+
+   #Retrieve the service principal object ID.
+   $app_name = "<Your App's display name>"
+   $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
+   $sp.ObjectId
+
+# Get Service Principal using objectId
+$sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
+
+# Get Azure AD App role assignments using objectId of the Service Principal
+$assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -All $true
+
+# Remove all users and groups assigned to the application
+$assignments | ForEach-Object {
+    if ($_.PrincipalType -eq "User") {
+        Remove-AzureADUserAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
+    } elseif ($_.PrincipalType -eq "Group") {
+        Remove-AzureADGroupAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
+    }
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Ausblenden einer App für einen Benutzer](hide-application-from-user-portal.md)
+- [Erstellen und Zuweisen eines Benutzerkontos aus dem Azure-Portal](add-application-portal-assign-users.md)
+- [Verwalten des Zugriffs auf Apps](what-is-access-management.md)

@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: bf81d49bbbfaae2b96dfb712ae69568695ba6f23
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 729c988bcf64cab30cf7644c85a5749ff9c592b7
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687515"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137015"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Benutzerdefinierte Daten und cloud-init auf virtuellen Azure-Computern
 
@@ -84,7 +84,7 @@ Informationen zum Troubleshooting bei der Ausführung benutzerdefinierter Daten 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>Kann ich benutzerdefinierte Daten nach dem Erstellen der VM aktualisieren?
-Für einzelne VMs können benutzerdefinierte Daten im VM-Modell nicht aktualisiert werden. Für VMSS können Sie benutzerdefinierte VMSS-Daten jedoch über die [REST-API](/rest/api/compute/virtualmachinescalesets/update) aktualisieren. (Dies gilt nicht für PS- oder AZ CLI-Clients.) Beim Aktualisieren von benutzerdefinierten Daten im VMSS-Modell geschieht Folgendes:
+Für einzelne VMs können benutzerdefinierte Daten im VM-Modell nicht aktualisiert werden, aber für VMSS können Sie benutzerdefinierte VMSS-Daten über [REST API](/rest/api/compute/virtualmachinescalesets/update), [Az CLI](/cli/azure/vmss?view=azure-cli-latest#az_vmss_update) oder [Az PowerShell](/powershell/module/az.compute/update-azvmss?view=azps-6.6.0) aktualisieren. Beim Aktualisieren von benutzerdefinierten Daten im VMSS-Modell geschieht Folgendes:
 * Vorhandene Instanzen in der VMSS erhalten die aktualisierten benutzerdefinierten Daten erst, wenn Sie das Reimaging durchführen.
 * Vorhandene Instanzen in der VMSS, die aktualisiert werden, erhalten nicht die aktualisierten benutzerdefinierten Daten.
 * Neue Instanzen erhalten die neuen benutzerdefinierten Daten.

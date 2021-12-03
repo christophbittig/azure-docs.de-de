@@ -5,19 +5,19 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/02/2021
+ms.date: 11/09/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 0ae0fa18c2d3d223435656d871bd0d5be00627e4
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 7b1ac1f3b2fcb8c999276fecec495cf496108c12
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113356945"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134899"
 ---
-### <a name="on-demand-bursting-preview"></a>Bedarfsgesteuertes Bursting (Vorschau)
+### <a name="on-demand-bursting"></a>Bedarfsgesteuertes Bursting
 
-SSD Premium-Datenträger, die das bedarfsgesteuerte Burstingmodell des Datenträgerburstings verwenden, können das Bursting über ihre ursprünglich bereitgestellten Ziele hinaus durchführen und auch so oft wie von ihrer Workload benötigt (bis zum maximalen Burstziel). Beispielsweise ist für einen P30-Datenträger (1 TiB) der bereitgestellte IOPS-Wert 5000 IOPS. Wenn auf diesem Datenträger das Datenträgerbursting aktiviert ist, können Ihre Workloads E/As bis zur maximalen Burstleistung von 30.000 IOPS und 1.000 Mbit/s auf diesem Datenträger ausgeben.
+SSD Premium-Datenträger, die das bedarfsgesteuerte Burstingmodell des Datenträgerburstings verwenden, können das Bursting über ihre ursprünglich bereitgestellten Ziele hinaus durchführen und auch so oft wie von ihrer Workload benötigt (bis zum maximalen Burstziel). Beispielsweise ist für einen P30-Datenträger (1 TiB) der bereitgestellte IOPS-Wert 5000 IOPS. Wenn auf diesem Datenträger das Datenträgerbursting aktiviert ist, können Ihre Workloads E/As bis zur maximalen Burstleistung von 30.000 IOPS und 1.000 Mbit/s auf diesem Datenträger ausgeben. Informationen zu den maximalen Burst-Zielen auf jedem unterstützten Datenträger finden Sie unter [Skalierbarkeits- und Leistungsziele für VM-Datenträger](../articles/virtual-machines/disks-scalability-targets.md#premium-ssd-managed-disks-per-disk-limits).
 
 Das Datenträgerbursting ist nicht kostengünstig, wenn Sie davon ausgehen, dass Ihre Workloads häufig über das bereitgestellte Leistungsziel hinaus ausgeführt werden. In diesem Fall wird empfohlen, dass Sie stattdessen die Leistungsstufe Ihres Datenträgers auf eine [höhere Ebene](../articles/virtual-machines/disks-performance-tiers.md) ändern, um eine bessere Baselineleistung zu erzielen. Überprüfen Sie die Abrechnungsdetails, und vergleichen Sie diese mit dem Datenverkehrsmuster Ihrer Workloads.
 
@@ -72,9 +72,13 @@ Das Bursting auf VM-Ebene ist in allen Regionen in der öffentlichen Azure-Cloud
 - [Dsv4-Serie](../articles/virtual-machines/dv4-dsv4-series.md)
 - [Dasv4-Serie](../articles/virtual-machines/dav4-dasv4-series.md)
 - [Ddsv4-Serie](../articles/virtual-machines/ddv4-ddsv4-series.md)
+- [Dasv5-Serie](../articles/virtual-machines/dasv5-dadsv5-series.md)
+- [Dadsv5-Serie](../articles/virtual-machines/dasv5-dadsv5-series.md)
 - [Esv4-Serie](../articles/virtual-machines/ev4-esv4-series.md)
 - [Easv4-Serie](../articles/virtual-machines/eav4-easv4-series.md)
 - [Edsv4-Serie](../articles/virtual-machines/edv4-edsv4-series.md)
+- [Easv5-Serie](../articles/virtual-machines/easv5-eadsv5-series.md)
+- [Eadsv5-Serie](../articles/virtual-machines/easv5-eadsv5-series.md)
 - [B-Serie](../articles/virtual-machines/sizes-b-series-burstable.md)
 - [Fsv2-Serie](../articles/virtual-machines/fsv2-series.md)
 - [Dsv3-Serie](../articles/virtual-machines/dv3-dsv3-series.md)

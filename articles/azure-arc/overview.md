@@ -3,12 +3,12 @@ title: Übersicht über Azure Arc
 description: Hier erfahren Sie, was Azure Arc ist und wie es Kunden bei der Verwaltung und Governance ihrer Hybridressourcen mit anderen Azure-Diensten und -Features unterstützt.
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: 7a900a7a0454f4dff5cdfe98f611982c33617c1d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 62395b53fea3f86e42726f1bb2d35b12d8a0bdca
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832341"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345736"
 ---
 # <a name="azure-arc-overview"></a>Übersicht über Azure Arc
 
@@ -70,11 +70,11 @@ Die folgende Funktionalität der Azure Arc-Steuerungsebene wird ohne Zusatzkoste
 
 * Updateverwaltung
 
-Alle auf Azure Arc-fähigen Servern verwendeten Azure-Dienste, z. B. Azure Security Center oder Azure Monitor, werden zu den Preisen für den jeweiligen Dienst abgerechnet. Weitere Informationen finden Sie auf der Seite [Azure-Preise](https://azure.microsoft.com/pricing/).
+Alle auf Azure Arc-fähigen Servern verwendeten Azure-Dienste, z. B. Microsoft Defender für Cloud oder Azure Monitor, werden zu den Preisen für den jeweiligen Dienst abgerechnet. Weitere Informationen finden Sie auf der Seite [Azure-Preise](https://azure.microsoft.com/pricing/).
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc-fähiges Kubernetes
 
-Alle auf Azure Arc-fähigen Kubernetes-Instanzen verwendeten Azure-Dienste, z. B. Azure Security Center oder Azure Monitor, werden zu den Preisen für den jeweiligen Dienst abgerechnet. Weitere Informationen zu Preisen für Konfigurationen auf der Grundlage von Azure Arc-fähigem Kubernetes finden Sie auf der Seite [Azure-Preise](https://azure.microsoft.com/pricing/).
+Alle in Kubernetes mit Azure Arc-Unterstützung verwendeten Azure-Dienste, z. B. Microsoft Defender für Cloud oder Azure Monitor, werden zu den Preisen für den jeweiligen Dienst abgerechnet. Weitere Informationen zu Preisen für Konfigurationen auf der Grundlage von Azure Arc-fähigem Kubernetes finden Sie auf der Seite [Azure-Preise](https://azure.microsoft.com/pricing/).
 
 ### <a name="azure-arc-enabled-data-services"></a>Azure Arc-fähige Datendienste
 

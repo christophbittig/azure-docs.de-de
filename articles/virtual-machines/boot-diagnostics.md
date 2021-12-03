@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: f0e8a9775fead0f2d54ccf131240f7d4cdefee4d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: fdb7b3bcaac2825e64111bdba4ad98554bfc02ae
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694420"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339255"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure-Startdiagnose
 
@@ -28,7 +28,7 @@ Wenn Sie eine VM im Azure-Portal erstellen, ist die Startdiagnose standardmäßi
 
 Eine alternative Vorgehensweise bei der Startdiagnose ist die Verwendung eines vom Benutzer verwalteten Speicherkontos. Ein Benutzer kann entweder ein neues Speicherkonto erstellen oder ein vorhandenes Konto verwenden.
 > [!NOTE]
-> Bei vom Benutzer verwalteten Speicherkonten, die für die Startdiagnose verwendet werden, müssen das Speicherkonto und die zugehörigen virtuellen Computer im gleichen Abonnement enthalten sein. 
+> Bei vom Benutzer verwalteten Speicherkonten, die für die Startdiagnose verwendet werden, müssen das Speicherkonto und die zugehörigen VMs in der gleichen Region und im gleichen Abonnement enthalten sein. 
 
 
 
@@ -48,6 +48,9 @@ Wenn Sie eine VM im Azure-Portal erstellen, ist die Startdiagnose mithilfe eines
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>Aktivieren der verwalteten Startdiagnose mithilfe der Befehlszeilenschnittstelle
 Die Startdiagnose mit einem verwalteten Speicherkonto wird ab Version 2.12.0 der Azure-Befehlszeilenschnittstelle unterstützt. Wenn Sie keinen Namen oder URI für ein Speicherkonto eingeben, wird ein verwaltetes Konto verwendet. Weitere Informationen und Codebeispiele finden Sie in der [Dokumentation der Befehlszeilenschnittstelle zur Startdiagnose](/cli/azure/vm/boot-diagnostics).
+
+### <a name="enable-managed-boot-diagnostics-using-powershell"></a>Aktivieren der verwalteten Startdiagnose mithilfe von PowerShell
+Startdiagnose mit einem verwalteten Speicherkonto wird ab Version 6.6.0 in Azure PowerShell unterstützt. Wenn Sie keinen Namen oder URI für ein Speicherkonto eingeben, wird ein verwaltetes Konto verwendet. Weitere Informationen und Codebeispiele finden Sie in der [PowerShell-Dokumentation zur Startdiagnose](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostic?view=azps-6.6.0).
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>Aktivieren der verwalteten Startdiagnose mithilfe von ARM-Vorlagen (Azure Resource Manager)
 Ab API-Version 2020-06-01 wird die verwaltete Startdiagnose unterstützt. Weitere Informationen finden Sie unter [Instanzansicht der Startdiagnose](/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics).

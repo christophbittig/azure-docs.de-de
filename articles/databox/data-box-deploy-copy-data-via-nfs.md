@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/29/2020
+ms.date: 11/10/2021
 ms.author: alkohli
-ms.openlocfilehash: d53a619dc6ca5fb0f43f6097664f50bf22943928
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bc2c5a75bb62a4318eb3d29f0843954d8393211
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97678882"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331811"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Tutorial: Kopieren von Daten in eine Azure Data Box über NFS
 
@@ -87,7 +87,10 @@ Nachdem Sie eine Verbindung mit den Data Box-Freigaben hergestellt haben, kopier
 * Stellen Sie sicher, dass Sie die Daten in Freigaben kopieren, die das richtige Datenformat aufweisen. Kopieren Sie beispielsweise die Blockblobdaten in die Freigabe für Blockblobs. Kopieren Sie VHDs in Seitenblobs. Wenn das Datenformat nicht mit dem entsprechenden Freigabetyp übereinstimmt, tritt später beim Hochladen der Daten in Azure ein Fehler auf.
 *  Stellen Sie beim Kopieren von Daten sicher, dass bei der Datengröße die Grenzwerte eingehalten werden, die im Artikel [Größenbeschränkungen für das Azure-Speicherkonto](data-box-limits.md#azure-storage-account-size-limits) beschrieben sind.
 * Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
-* Es wird empfohlen, SMB und NFS nicht gleichzeitig zu verwenden und Daten nicht an dasselbe Endziel in Azure zu kopieren. In solchen Fällen kann das endgültige Ergebnis nicht bestimmt werden.
+* Wenn Sie sowohl das SMB- als auch das NFS-Protokoll für Datenkopien verwenden, wird Folgendes empfohlen:
+  * Verwenden Sie verschiedene Speicherkonten für SMB und NFS.
+  * Kopieren Sie nicht dieselben Daten mit SMB und NFS in dasselbe Endziel in Azure. In diesen Fällen lässt sich das endgültige Ergebnis nicht im Vorhinein bestimmen.
+  * Zwar kann das parallele Kopieren über SMB und NFS funktionieren, doch wird davon abgeraten, da es anfällig für menschliche Fehler ist. Warten Sie, bis die SMB-Datenkopie abgeschlossen ist, bevor Sie eine NFS-Datenkopie starten.
 * **Erstellen Sie immer einen Ordner für die Dateien, die Sie unter die Freigabe kopieren möchten, und kopieren Sie die Dateien dann in diesen Ordner**. Der Ordner, der unter der Blockblob- und der Seitenblob Freigabe erstellt wurde, entspricht einem Container, in den Daten als Blobs hochgeladen werden. Es ist nicht möglich, Dateien direkt in den *root*-Ordner im Speicherkonto zu kopieren.
 * Beim Einlesen von groß- und kleinschreibungsabhängigen Verzeichnis- und Dateinamen aus einer NFS-Freigabe für NFS auf Data Box:
   * Die Groß-/Kleinschreibung im Namen wird beibehalten.

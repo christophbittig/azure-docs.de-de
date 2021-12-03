@@ -8,15 +8,15 @@ ms.subservice: mlops
 ms.reviewer: sgilley
 ms.author: laobri
 author: lobrien
-ms.date: 8/25/2020
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: be7c64940466d3e1379c407970e5bd71645d882b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: a28a9b5cc6241c36e6dfdca253a4e56af480b9d8
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429621"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557507"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Veröffentlichen und Nachverfolgen von Pipelines des maschinellen Lernens
 
@@ -350,13 +350,13 @@ Sie können über Studio auch eine veröffentlichte Pipeline ausführen:
 
 1. Wählen Sie eine bestimmte Pipeline aus, um einen Pipelineendpunkt auszuführen, zu nutzen oder die Ergebnisse früherer Ausführungen des Pipelineendpunkts zu überprüfen.
 
-## <a name="disable-a-published-pipeline&quot;></a>Deaktivieren einer veröffentlichten Pipeline
+## <a name="disable-a-published-pipeline"></a>Deaktivieren einer veröffentlichten Pipeline
 
 Um eine Pipeline aus der Liste der veröffentlichten Pipelines auszublenden, deaktivieren Sie sie in Studio oder über das SDK:
 
 ```python
 # Get the pipeline by using its ID from Azure Machine Learning studio
-p = PublishedPipeline.get(ws, id=&quot;068f4885-7088-424b-8ce2-eeb9ba5381a6")
+p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 

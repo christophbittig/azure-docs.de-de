@@ -1,36 +1,30 @@
 ---
-title: 'Tutorial: Erstellen einer Geräteressource für Azure Network Function Manager'
-description: In diesem Tutorial erfahren Sie, wie Sie eine Geräteressource für Azure Network Function Manager erstellen.
+title: 'Schnellstart: Erstellen einer Geräteressource für Azure Network Function Manager'
+description: In diesem Schnellstart erfahren Sie, wie Sie eine Geräteressource für Azure Network Function Manager erstellen.
 author: prmitt
 ms.service: network-function-manager
-ms.topic: tutorial
-ms.date: 06/30/2021
+ms.topic: quickstart
+ms.date: 11/02/2021
 ms.author: prmitt
-ms.openlocfilehash: 41347c5afe8664955fd5b298330f4299244edb6a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2ab440166ba7e5b27f07880c5ac0cb7fef27466a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130263323"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070247"
 ---
-# <a name="tutorial-create-a-network-function-manager-device-resource-preview"></a>Tutorial: Erstellen einer Network Function Manager-Geräteressource (Vorschau)
+# <a name="quickstart-create-a-network-function-manager-device-resource"></a>Schnellstart: Erstellen einer Network Function Manager-Geräteressource
 
-In diesem Tutorial erstellen Sie eine **Geräteressource** für Azure Network Function Manager (NFM). Die Network Function Manager-Geräteressource ist mit der Azure Stack Edge-Ressource verknüpft. Die Geräteressource vereint alle auf dem Azure Stack Edge-Gerät bereitgestellten Netzwerkfunktionen und umfasst allgemeine Dienste für Bereitstellung, Überwachung und Problembehandlung sowie einheitliche Verwaltungsvorgänge für alle in Azure Stack Edge bereitgestellten Netzwerkfunktionen. Sie müssen zunächst die Network Function Manager-Geräteressource erstellen, damit Sie Netzwerkfunktionen auf dem Azure Stack Edge-Gerät bereitstellen können.
-
-In diesem Tutorial:
-
-> [!div class="checklist"]
-> * Überprüfen der Voraussetzungen
-> * Erstellen einer Geräteressource
-> * Abrufen eines Registrierungsschlüssels
-> * Registrieren des Geräts
+In diesem Schnellstart erstellen Sie eine **Geräteressource** für Azure Network Function Manager (NFM). Die Network Function Manager-Geräteressource ist mit der Azure Stack Edge-Ressource verknüpft. Die Geräteressource vereint alle auf dem Azure Stack Edge-Gerät bereitgestellten Netzwerkfunktionen und umfasst allgemeine Dienste für Bereitstellung, Überwachung und Problembehandlung sowie einheitliche Verwaltungsvorgänge für alle in Azure Stack Edge bereitgestellten Netzwerkfunktionen. Sie müssen zunächst die Network Function Manager-Geräteressource erstellen, damit Sie Netzwerkfunktionen auf dem Azure Stack Edge-Gerät bereitstellen können.
 
 ## <a name="prerequisites"></a><a name="pre"></a>Voraussetzungen
 
 Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind:
 
-* Sie haben alle Voraussetzungen erfüllt, die im Artikel [Übersicht](overview.md#prereq) aufgeführt sind.
-* Ihnen wurden die erforderlichen Berechtigungen zugewiesen. Weitere Informationen finden Sie unter [Registrierung und Berechtigungen von Ressourcenanbietern](overview.md#permissions).
+* Vergewissern Sie sich, dass Sie über ein Azure-Konto mit einem aktiven Abonnement verfügen. Wenn Sie ein Konto benötigen, [erstellen Sie kostenlos ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Sie haben alle Voraussetzungen erfüllt, die im Artikel [Voraussetzungen und Anforderungen](requirements.md) aufgeführt werden.
+* Ihnen wurden die erforderlichen Berechtigungen zugewiesen. Weitere Informationen finden Sie unter [Registrierung und Berechtigungen von Ressourcenanbietern](resources-permissions.md).
 * Lesen Sie den Abschnitt  [Regionale Verfügbarkeit](overview.md#regions) , bevor Sie eine Geräteressource erstellen.
 * Überprüfen Sie, ob Sie von einem Windows-Client eine Remoteverbindung mit dem Azure Stack Edge Pro-GPU-Gerät über PowerShell herstellen können. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der PowerShell-Schnittstelle](../databox-online/azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
@@ -40,7 +34,7 @@ Wenn bereits eine Azure Network Function Manager-Geräteressource vorhanden ist,
 
 Führen Sie zum Erstellen einer **Geräteressource** die folgenden Schritte aus.
 
-1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen beim Azure-[Vorschauportal](https://aka.ms/AzureNetworkFunctionManager) an.
+1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen am [Azure-Portal](https://portal.azure.com) an.
 
 1. Konfigurieren Sie auf der Registerkarte **Grundlagen** unter **Details zum Projekt** und **Details zur Instanz** die Geräteeinstellungen.
    :::image type="content" source="./media/create-device/device-settings.png" alt-text="Screenshot der Geräteeinstellungen":::
@@ -62,7 +56,7 @@ Führen Sie zum Erstellen einer **Geräteressource** die folgenden Schritte aus.
 ## <a name="get-the-registration-key"></a><a name="key"></a>Abrufen des Registrierungsschlüssels
 
 1. Navigieren Sie nach der erfolgreichen Bereitstellung des Geräts zu der Ressourcengruppe, in der die Geräteressource bereitgestellt wird.
-1. Klicken Sie auf die **Geräteressource**. Klicken Sie zum Abrufen des Registrierungsschlüssels auf **Registrierungsschlüssel abrufen**. Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen zum Generieren eines Registrierungsschlüssels verfügen. Weitere Informationen finden Sie unter [Berechtigungen](overview.md#permissions).
+1. Klicken Sie auf die **Geräteressource**. Klicken Sie zum Abrufen des Registrierungsschlüssels auf **Registrierungsschlüssel abrufen**. Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen zum Generieren eines Registrierungsschlüssels verfügen. Weitere Informationen finden Sie im Artikel [Registrierung und Berechtigungen von Ressourcenanbietern](resources-permissions.md).
 
    :::image type="content" source="./media/create-device/register-device.png" alt-text="Screenshot des Registrierungsschlüssels" lightbox="./media/create-device/register-device.png":::
 1. Notieren Sie sich den Registrierungsschlüssel des Geräts, der in den nächsten Schritten benötigt wird.

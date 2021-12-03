@@ -7,13 +7,13 @@ ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 08/23/2021
-ms.openlocfilehash: 4f4b0cd13095c83f84c96e57e73f255caf4fcdc9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/21/2021
+ms.openlocfilehash: 384b1b11e272cab8386a5a4f3344c36e99959254
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736334"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561932"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Migrieren zu Azure Machine Learning 
 
@@ -26,7 +26,7 @@ ms.locfileid: "124736334"
 
 Erfahren Sie, wie Sie eine Migration von Studio (klassisch) zu Azure Machine Learning durchführen. Machine Learning bietet eine modernisierte Data-Science-Plattform, die Ansätze ohne Code und Code-First-Ansätze kombiniert.
 
-Dies ist ein Leitfaden für eine einfache Lift & Shift-Migration. Wenn Sie einen vorhandenen Workflow für maschinelles Lernen optimieren oder eine ML-Plattform modernisieren möchten, finden Sie im [Framework für die Azure Machine Learning-Einführung](https://aka.ms/mlstudio-classic-migration-repo) weitere Ressourcen, wie z. B. Tools für digitale Umfragen, Arbeitsblätter und Planungsvorlagen.
+Dies ist ein Leitfaden für eine einfache Lift & Shift-Migration. Wenn Sie einen vorhandenen Workflow für maschinelles Lernen optimieren oder eine Machine Learning-Plattform modernisieren möchten, finden Sie im [Framework für die Azure Machine Learning-Einführung](https://aka.ms/mlstudio-classic-migration-repo) weitere Ressourcen (z. B. Tools für digitale Umfragen, Arbeitsblätter und Planungsvorlagen).
 
 ![Framework für die Azure Machine Learning-Einführung](./media/migrate-overview/aml-adoption-framework.png)
 
@@ -53,7 +53,7 @@ Für das Migrieren zu Machine Learning wird der folgende Ansatz empfohlen:
 
     [!INCLUDE [aml-compare-classic](../../includes/machine-learning-compare-classic-aml.md)]
 
-3. Vergewissern Sie sich, dass die wichtigen Module aus Studio (klassisch) im Machine Learning-Designer unterstützt werden. Weitere Informationen finden Sie unten in der Tabelle unter [Modulzuordnung zu Studio (klassisch) und dem Designer](#studio-classic-and-designer-module-mapping).
+3. Vergewissern Sie sich, dass die wichtigen Module aus Studio (klassisch) im Machine Learning-Designer unterstützt werden. Weitere Informationen finden Sie unten in der Tabelle unter [Komponentenzuordnung zu Studio (klassisch) und dem Designer](#studio-classic-and-designer-component-mapping).
 
 4. [Erstellen Sie einen Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md?tabs=azure-portal).
 
@@ -90,16 +90,16 @@ Nachdem Sie eine Strategie definiert haben, migrieren Sie Ihr erstes Modell.
 1. Erweitern Sie Szenarien, und migrieren Sie zusätzliche Workloads zu Azure Machine Learning.
 
 
-## <a name="studio-classic-and-designer-module-mapping"></a>Modulzuordnung zu Studio (klassisch) und dem Designer
+## <a name="studio-classic-and-designer-component-mapping"></a>Komponentenzuordnung zu Studio (klassisch) und dem Designer
 
 In der folgenden Tabelle finden Sie Informationen zu den Modulen, die Sie beim erneuten Erstellen von Experimenten aus Studio (klassisch) im Designer verwenden können.
 
 
 > [!IMPORTANT]
-> Der Designer implementiert Module über Open-Source-Python-Pakete anstelle von C#-Paketen wie Studio (klassisch). Aufgrund dieses Unterschieds kann die Ausgabe von Designer-Modulen leicht von den Entsprechungen in Studio (klassisch) abweichen.
+> Der Designer implementiert Module über Open-Source-Python-Pakete anstelle von C#-Paketen wie Studio (klassisch). Aufgrund dieses Unterschieds kann die Ausgabe von Designer-Komponenten leicht von den Entsprechungen in Studio (klassisch) abweichen.
 
 
-|Category|Modul aus Studio (klassisch)|Designer-Ersatzmodul|
+|Category|Modul aus Studio (klassisch)|Designer-Ersatzkomponenten|
 |--------------|----------------|--------------------------------------|
 |Dateneingabe und -ausgabe|– Manuelle Eingabe von Daten </br> – Exportieren von Daten </br> – Importieren von Daten </br> – Laden eines trainierten Modells </br> – Entpacken von gezippten Datasets|– Manuelle Eingabe von Daten </br> – Exportieren von Daten </br> – Importieren von Daten|
 |Data Format Conversions|– Konvertieren in das CSV-Format </br> – Konvertieren in ein Dataset </br> – Konvertieren in das ARFF-Format </br> – Konvertieren in das SVMLight-Format </br> – Konvertieren in das TSV-Format|– Konvertieren in das CSV-Format </br> – Konvertieren in ein Dataset|
@@ -125,9 +125,9 @@ In der folgenden Tabelle finden Sie Informationen zu den Modulen, die Sie beim e
 | Webdienst | – Eingabe </br> – Ausgabe | – Eingabe </br>  - Ausgabe|
 | Maschinelles Sehen| | – Anwenden von Bildtransformationen </br> – Konvertieren in Bildverzeichnisse </br> – Initialisieren von Bildtransformationen </br> – Teilen von Bildverzeichnissen  </br> – DenseNet-Bildklassifizierung   </br>– ResNet-Bildklassifizierung |
 
-Weitere Informationen zur Verwendung einzelner Designer-Module finden Sie unter [Algorithmen und Module – Referenz für Azure Machine Learning-Designer](algorithm-module-reference/module-reference.md).
+Weitere Informationen zur Verwendung einzelner Designer-Komponenten finden Sie unter [Designer-Komponentenreferenz](./component-reference/component-reference.md).
 
-### <a name="what-if-a-designer-module-is-missing"></a>Was geschieht, wenn ein Designer-Modul fehlt?
+### <a name="what-if-a-designer-component-is-missing"></a>Was passiert, wenn eine Designer-Komponente fehlt?
 
 Der Machine Learning-Designer umfasst die beliebtesten Module von Studio (klassisch). Außerdem sind neue Module enthalten, die die neuesten Techniken im Bereich des maschinellen Lernens nutzen. 
 

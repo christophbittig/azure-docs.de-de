@@ -1,23 +1,23 @@
 ---
-title: Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Imagepools
+title: Verwenden der Azure Compute Gallery zum Erstellen eines benutzerdefinierten Imagepools
 description: Benutzerdefinierte Imagepools sind eine effiziente Möglichkeit zum Konfigurieren von Computeknoten, um Ihre Batch-Workloads auszuführen.
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 19a6168c2d6d2a37458dbbe9d8917f6e679da47f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3bd0029978891c3276a357180108d4dad44e3248
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827486"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473545"
 ---
-# <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Imagepools
+# <a name="use-the-azure-compute-gallery-to-create-a-custom-image-pool"></a>Verwenden der Azure Compute Gallery zum Erstellen eines benutzerdefinierten Imagepools
 
-Wenn Sie einen Azure Batch-Pool mithilfe der Konfiguration des virtuellen Computers erstellen, geben Sie das Image eines virtuellen Computers (VM) an, das das Betriebssystem für jeden Computeknoten im Pool bereitstellt. Sie können einen Pool von virtuellen Computern mit einem unterstützten Azure Marketplace-Image erstellen, oder Sie erstellen ein benutzerdefiniertes Image aus einem [Shared Image Gallery-Image](../virtual-machines/shared-image-galleries.md).
+Wenn Sie einen Azure Batch-Pool mithilfe der Konfiguration des virtuellen Computers erstellen, geben Sie das Image eines virtuellen Computers (VM) an, das das Betriebssystem für jeden Computeknoten im Pool bereitstellt. Sie können einen Pool von virtuellen Computern mit einem unterstützten Azure Marketplace Image erstellen oder Sie erstellen ein benutzerdefiniertes Image mit einem [Azure Compute Gallery Image](../virtual-machines/shared-image-galleries.md).
 
-## <a name="benefits-of-the-shared-image-gallery"></a>Vorteile von Shared Image Gallery
+## <a name="benefits-of-the-azure-compute-gallery"></a>Vorteile der Azure Compute Gallery
 
-Wenn Sie Shared Image Gallery für Ihr benutzerdefiniertes Image verwenden, haben Sie die Kontrolle über den Typ und die Konfiguration des Betriebssystems sowie über den Typ der Datenträger. Ihr freigegebenes Image kann Anwendungen und Verweisdaten enthalten, die auf allen Knoten des Batch-Pools verfügbar werden, sobald sie bereitgestellt werden.
+Wenn Sie die Azure Compute Gallery für Ihr benutzerdefiniertes Image verwenden, haben Sie die Kontrolle über den Typ und die Konfiguration des Betriebssystems sowie über den Typ der Datenträger. Ihr freigegebenes Image kann Anwendungen und Verweisdaten enthalten, die auf allen Knoten des Batch-Pools verfügbar werden, sobald sie bereitgestellt werden.
 
 Sie können auch nach Bedarf mehrere Versionen eines Image für Ihre Umgebung verwenden. Wenn Sie eine Imageversion zum Erstellen eines virtuellen Computers verwenden, wird die Imageversion verwendet, um neue Datenträger für den virtuellen Computer zu erstellen.
 
@@ -29,7 +29,7 @@ Die Verwendung eines für Ihr Szenario konfigurierten freigegebenen Image kann m
 - **Das Betriebssystem (Operating System, OS) konfigurieren**: Sie können die Konfiguration des Betriebssystemdatenträgers des Images anpassen.
 - **Anwendungen vorab installieren**: Das Vorinstallieren von Anwendungen auf dem Betriebssystemdatenträger ist effizienter und weniger fehleranfällig als die Installation von Anwendungen nach der Bereitstellung der Computeknoten mit einem Starttask.
 - **Große Datenmengen einmalig kopieren**: Sie können statische Daten zu einem Teil des verwalteten freigegebenen Image machen, indem Sie die Daten auf die Datenträger eines verwalteten Image kopieren. Dieser Vorgang muss nur einmal ausgeführt werden und stellt Daten für jeden Knoten des Pools zur Verfügung.
-- **Pools auf größere Größen skalieren**: Mit Shared Image Gallery können Sie größere Pools mit Ihren benutzerdefinierten Images zusammen mit weiteren freigegebenen Imagereplikaten erstellen.
+- **Pools auf größere Größen skalieren**: Mit Azure Compute Gallery können Sie größere Pools mit Ihren benutzerdefinierten Images zusammen mit weiteren freigegebenen Image-Replikaten erstellen.
 - **Bessere Leistung als bei einfacher Verwendung eines verwalteten Images als benutzerdefiniertes Image.** Bei Verwendung eines Shared Image-Pools benutzerdefinierter Images verkürzt sich die Zeit, die der Pool benötigt, um den stabilen Status zu erreichen, um bis zu 25 Prozent, und die Leerlaufzeit des virtuellen Computers verkürzt sich um bis zu 30 Prozent.
 - **Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung**: Die Imagegruppierungsdefinition enthält Informationen darüber, warum das Image erstellt wurde, für welches Betriebssystem es vorgesehen ist und wie es verwendet wird. Das Gruppieren von Images ermöglicht eine einfachere Imageverwaltung. Weitere Informationen finden Sie unter [Imagedefinitionen](../virtual-machines/shared-image-galleries.md#image-definitions).
 
@@ -40,14 +40,14 @@ Die Verwendung eines für Ihr Szenario konfigurierten freigegebenen Image kann m
 
 - Ein **Azure Batch-Konto.** Informationen zum Erstellen eines Batch-Kontos im Azure-Portal oder mit der Azure-Befehlszeilenschnittstelle finden Sie in den entsprechenden Batch-Schnellstartanleitungen unter [Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal](quick-create-portal.md) und [Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI](quick-create-cli.md).
 
-- **Ein Shared Image Gallery-Image**. Zum Erstellen eines freigegebenen Images müssen Sie über eine verwaltete Imageressource verfügen oder eine verwaltete Imageressource erstellen. Das Image sollte auf der Grundlage von Momentaufnahmen des Betriebssystemdatenträgers des virtuellen Computers und optional seiner angefügten Datenträger erstellt werden.
+- **ein Azure Compute Gallery Image**. Zum Erstellen eines freigegebenen Images müssen Sie über eine verwaltete Imageressource verfügen oder eine verwaltete Imageressource erstellen. Das Image sollte auf der Grundlage von Momentaufnahmen des Betriebssystemdatenträgers des virtuellen Computers und optional seiner angefügten Datenträger erstellt werden.
 
 > [!NOTE]
 > Wenn das freigegebene Image sich nicht im gleichen Abonnement wie das Batch-Konto befindet, müssen Sie für das Abonnement [den Ressourcenanbieter „Microsoft.Batch“ registrieren](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider). Beide Abonnements müssen demselben Azure AD-Mandanten zugeordnet sein.
 >
 > Das Image kann sich in unterschiedlichen Regionen befinden, sofern es über Replikate in derselben Region wie Ihr Batch-Konto verfügt.
 
-Wenn Sie eine Azure AD-Anwendung verwenden, um einen Pool mit benutzerdefinierten Images aus einem Shared Image Gallery-Image zu erstellen, muss dieser Anwendung eine [in Azure integrierte Rolle](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) erteilt worden sein, die ihr Zugriff auf das Shared Image gibt. Sie können diesen Zugriff im Azure-Portal erteilen, indem Sie zum Shared Image navigieren, **Zugriffssteuerung (IAM)** auswählen und eine Rollenzuweisung für die Anwendung hinzufügen.
+Wenn Sie eine Azure AD-Anwendung verwenden, um einen Pool mit benutzerdefinierten Images mit einem Azure Compute Gallery Image zu erstellen, muss dieser Anwendung eine [in Azure integrierte Rolle](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) erteilt worden sein, die ihr Zugriff auf das Shared Image gewährt. Sie können diesen Zugriff im Azure-Portal erteilen, indem Sie zum Shared Image navigieren, **Zugriffssteuerung (IAM)** auswählen und eine Rollenzuweisung für die Anwendung hinzufügen.
 
 ## <a name="prepare-a-shared-image"></a>Vorbereiten eines Shared Image
 
@@ -87,9 +87,9 @@ Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. 
 
 Verwenden Sie zum Erstellen eines verwalteten Images auf der Grundlage einer Momentaufnahme Azure-Befehlszeilentools, etwa den Befehl [az image create](/cli/azure/image). Erstellen Sie ein Image, indem Sie eine Momentaufnahme des Betriebssystemdatenträgers und optional Momentaufnahmen der Datenträger angeben.
 
-### <a name="create-a-shared-image-gallery"></a>Erstellen einer Shared Image Gallery-Instanz
+### <a name="create-an-azure-compute-gallery"></a>Erstellen einer Azure Compute Gallery
 
-Nachdem Sie Ihr verwaltetes Image erfolgreich erstellt haben, müssen Sie eine Shared Image Gallery-Instanz erstellen, um Ihr benutzerdefiniertes Image verfügbar zu machen. Wie Sie eine Shared Image Gallery für Ihre Bilder erstellen können, erfahren Sie unter [Shared Image Gallery erstellen](../virtual-machines/create-gallery.md).
+Nachdem Sie Ihr verwaltetes Image erfolgreich erstellt haben, müssen Sie eine Azure Compute Gallery erstellen, um Ihr benutzerdefiniertes Image verfügbar zu machen. Informationen zum Erstellen einer Azure Compute Gallery für Ihre Images finden Sie unter [Erstellen einer Azure Compute Gallery](../virtual-machines/create-gallery.md).
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Erstellen eines Pools aus einem freigegebenen Image mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -179,7 +179,7 @@ start_task = batchmodels.StartTask(
 start_task.run_elevated = True
 
 # Create an ImageReference which specifies the image from
-# Shared Image Gallery to install on the nodes.
+# Azure Compute Gallery to install on the nodes.
 ir = batchmodels.ImageReference(
     virtual_machine_image_id="/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/galleries/{gallery name}/images/{image definition name}/versions/{version id}"
 )
@@ -212,7 +212,7 @@ Gehen Sie wie folgt vor, um über das Azure-Portal einen Pool auf der Grundlage 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 1. Navigieren Sie zu **Batch-Konten**, und wählen Sie Ihr Konto aus.
 1. Wählen Sie **Pools** und anschließend **Hinzufügen** aus, um einen neuen Pool zu erstellen.
-1. Wählen Sie im Abschnitt **Imagetyp** die Option **Shared Image Gallery** aus.
+1. Wählen Sie im Abschnitt **Imagetyp** die Option **Azure Compute Gallery** aus.
 1. Geben Sie in den restlichen Abschnitten Informationen zu Ihrem verwalteten Image an.
 1. Klicken Sie auf **OK**.
 
@@ -222,11 +222,11 @@ Gehen Sie wie folgt vor, um über das Azure-Portal einen Pool auf der Grundlage 
 
 Wenn Sie beabsichtigen, einen Pool mit Hunderten oder Tausenden von VMs oder mehr mit einem freigegebenen Image zu erstellen, beachten Sie die folgenden Hinweise.
 
-- **Anzahl von Shared Image Gallery-Replikaten**:  Es wird empfohlen, für jeden Pool mit bis zu 300 Instanzen mindestens ein Replikat beizubehalten. Wenn Sie z. B. einen Pool mit 3.000 VMs erstellen, sollten Sie mindestens 10 Replikate Ihres Image beibehalten. Sie sollten immer mehr Replikate beibehalten als in den Mindestanforderungen vorgesehen sind, um eine bessere Leistung zu erzielen.
+- **Azure Compute Gallery Replikatnummern.**  Es wird empfohlen, für jeden Pool mit bis zu 300 Instanzen mindestens ein Replikat beizubehalten. Wenn Sie z. B. einen Pool mit 3.000 VMs erstellen, sollten Sie mindestens 10 Replikate Ihres Image beibehalten. Sie sollten immer mehr Replikate beibehalten als in den Mindestanforderungen vorgesehen sind, um eine bessere Leistung zu erzielen.
 
 - **Timeout bei Größenänderung.** Wenn Ihr Pool eine feste Anzahl von Knoten enthält (also nicht automatisch skaliert wird), erhöhen Sie die Eigenschaft `resizeTimeout` des Pools abhängig von der Größe des Pools. Bei jeweils 1000 VMs beträgt das empfohlene Timeout bei Größenänderung mindestens 15 Minuten. Beispielsweise beträgt das empfohlene Timeout bei Größenänderung für einen Pool mit 2000 VMs mindestens 30 Minuten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Eine ausführliche Übersicht über Batch finden Sie unter [Workflow und Ressourcen des Batch-Diensts](batch-service-workflow-features.md).
-- Erfahren Sie mehr über das [Erstellen der Shared Image Gallery-Instanz](../virtual-machines/shared-image-galleries.md).
+- Informationen über die [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md).

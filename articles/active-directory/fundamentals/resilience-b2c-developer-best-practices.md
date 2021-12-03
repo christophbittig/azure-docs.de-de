@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff7505e7c47b93f32efd9de60463873026247329
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87149785d670e85f991d0fbc851b642688526630
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724924"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059336"
 ---
 # <a name="resilience-through-developer-best-practices"></a>Resilienz durch Best Practices für Entwickler
 
@@ -42,13 +42,14 @@ Der Microsoft Azure AD B2C-Verzeichnisdienst unterstützt Milliarden von Authe
 
   - [Vorbedingungen](../../active-directory-b2c/userjourneys.md) in einer User Journey sehen wie folgt aus:
 
-  ``
+  ```xml
   <Precondition Type="ClaimEquals" ExecuteActionsIf="true"> 
   <Value>requiresMigration</Value>
   ...
-  < Precondition/>
-  ``
-  - Erhöhen Sie die Widerstandsfähigkeit gegen botgesteuerte Anmeldungen [durch Integration eines CAPTCHA-Systems](https://github.com/azure-ad-b2c/samples/tree/master/policies/captcha-integration).
+  <Precondition/>
+  ```
+
+  - Erhöhen Sie die Abwehr gegen botgesteuerte [Anmeldungen durch Integration eines CAPTCHA-Systems](https://github.com/azure-ad-b2c/samples/tree/master/policies/captcha-integration).
 
   - Nutzen Sie ein [Beispiel für Auslastungstests](../../active-directory-b2c/best-practices.md#testing), um Registrierungen und Anmeldungen zu simulieren. 
 
@@ -138,5 +139,5 @@ Ihr Testplan sollte [umfassende API-Tests](../../active-directory-b2c/best-pract
   - [Resiliente Endbenutzerumgebung](resilient-end-user-experience.md)
   - [Resiliente Schnittstellen mit externen Prozessen](resilient-external-processes.md)
   - [Resilienz durch Überwachung und Analyse](resilience-with-monitoring-alerting.md)
-- [Schaffen von Resilienz für die Authentifizierungsinfrastruktur](resilience-in-infrastructure.md)
+- [Erzielen von Resilienz in der Authentifizierungsinfrastruktur](resilience-in-infrastructure.md)
 - [Steigern der Resilienz für Authentifizierung und Autorisierung in Ihren Anwendungen](resilience-app-development-overview.md)

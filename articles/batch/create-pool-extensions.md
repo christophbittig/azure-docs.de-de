@@ -2,13 +2,13 @@
 title: Verwenden von Erweiterungen mit Azure Batch-Pools
 description: Erweiterungen sind kleine Anwendungen, die Konfiguration und Setup nach der Bereitstellung auf Azure Batch-Computeknoten erleichtern.
 ms.topic: how-to
-ms.date: 08/06/2021
-ms.openlocfilehash: b9c34dd5d191253352181158ece29218657f8d75
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/03/2021
+ms.openlocfilehash: bac3c6c53552ac99aef6210cbe184da754580ca0
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338872"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508682"
 ---
 # <a name="use-extensions-with-batch-pools"></a>Verwenden von Erweiterungen mit Azure Batch-Pools
 
@@ -22,12 +22,19 @@ Sie können den Livestatus der von Ihnen verwendeten Erweiterungen überprüfen 
 - Der Erweiterungstyp „CustomScript“ ist für den Azure Batch-Dienst reserviert und kann nicht außer Kraft gesetzt werden.
 - Einige Erweiterungen benötigen möglicherweise eine verwaltete Identität auf Poolebene, auf die im Kontext eines Computeknotens zugegriffen werden kann, um ordnungsgemäß zu funktionieren. Weitere Informationen finden Sie unter [Konfigurieren von verwalteten Identitäten in Batchpools](managed-identity-pools.md), falls dies für die Erweiterung(en) gilt.
 
-### <a name="supported-extensions"></a>Unterstützte Erweiterungen
+## <a name="supported-extensions"></a>Unterstützte Erweiterungen
 
 Die folgenden Erweiterungen können derzeit beim Erstellen eines Azure Batch-Pools installiert werden:
 
-- Azure Key Vault Erweiterung für [Linux](../virtual-machines/extensions/key-vault-linux.md) und [Windows](../virtual-machines/extensions/key-vault-windows.md)
-- Erweiterung für Protokollanalyse und -überwachung für [Linux](../virtual-machines/extensions/oms-linux.md) und [Windows](../virtual-machines/extensions/oms-windows.md)
+- [Azure Key Vault Erweiterung für Linux](../virtual-machines/extensions/key-vault-linux.md)
+- [Azure Key Vault Erweiterung für Windows](../virtual-machines/extensions/key-vault-windows.md)
+- [Azure Monitor Protokollanalysen und Überwachungserweiterung für Linux](../virtual-machines/extensions/oms-linux.md)
+- [Azure Monitor Protokollanalysen und Überwachungserweiterung für Windows](../virtual-machines/extensions/oms-windows.md)
+- [Erweiterung der Azure Desired State Configuration (DSC, Konfigurieren des gewünschten Status)](../virtual-machines/extensions/dsc-overview.md)
+- [Azure Diagnostics Erweiterung für virtuelle Windows-Computer](../virtual-machines/windows/extensions-diagnostics.md)
+- [HPC-GPU-Treibererweiterung für Windows auf AMD](../virtual-machines/extensions/hpccompute-amd-gpu-windows.md)
+- [HPC-GPU-Treibererweiterung für Windows auf NVIDIA](../virtual-machines/extensions/hpccompute-gpu-windows.md)
+- [Microsoft Antimalware-Erweiterung für Windows](../virtual-machines/extensions/iaas-antimalware-windows.md)
 
 Sie können Unterstützung für weitere Herausgeber und/oder Erweiterungstypen anfordern, indem Sie eine Supportanfrage öffnen.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: ac5e48eb09d372bc9f158575275f15a605b24707
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bd4a2736983740fc543677749bddda933ae13748
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771059"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305388"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-cloud-guru"></a>Tutorial: Integration des einmaligen Anmeldens (SSO) von Azure Active Directory mit A Cloud Guru
 
@@ -158,4 +158,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von A Cloud Guru können Sie die Sitzungssteuerung erzwingen, die in Echtzeit Ihre vertraulichen Unternehmensdaten vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von A Cloud Guru können Sie die Sitzungssteuerung erzwingen, die in Echtzeit Ihre vertraulichen Unternehmensdaten vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

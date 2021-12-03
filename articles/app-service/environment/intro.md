@@ -1,28 +1,25 @@
 ---
-title: Einführung
-description: Hier erfahren Sie, wie Azure App Service-Umgebungen Ihnen helfen, Ihre Apps in einer vollständig isolierten und dedizierten Umgebung zu skalieren, zu schützen und zu optimieren.
-author: ccompy
-ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
+title: Einführung in ASEv2
+description: Hier erfahren Sie, wie Azure App Service-Umgebung v2 Ihnen hilft, Ihre Apps in einer vollständig isolierten und dedizierten Umgebung zu skalieren, zu schützen und zu optimieren.
+author: madsd
 ms.topic: overview
-ms.date: 07/28/2021
-ms.author: ccompy
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 6fdce6c435c86d92f56d1ef6e00c966cabf8a590
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/15/2021
+ms.author: madsd
+ms.openlocfilehash: f704cf8bcd1efdc9a415b8c94662570869787491
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130231492"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523323"
 ---
-# <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
+# <a name="introduction-to-app-service-environment-v2"></a>Einführung in die App Service-Umgebung v2
 > [!NOTE]
-> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird
+> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird. Für die App Service-Umgebung steht eine neuere Version zur Verfügung. Diese ist benutzerfreundlicher und basiert auf einer leistungsfähigeren Infrastruktur. Weitere Informationen zu dieser neuen Version finden Sie unter [Einführung in die App Service-Umgebung](overview.md).
 > 
 
+## <a name="overview"></a>Übersicht
 
-## <a name="overview"></a>Übersicht ##
-
-Die Azure App Service-Umgebung ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps mit umfangreicher Skalierung bereitstellt. Über diese Funktion können folgende Elemente gehostet werden:
+Azure App Service-Umgebung v2 ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps mit umfangreicher Skalierung bereitstellt. Über diese Funktion können folgende Elemente gehostet werden:
 
 * Windows-Web-Apps
 * Linux-Web-Apps 
@@ -47,7 +44,7 @@ ASEs hosten Anwendungen von nur einem Kunden in einem seiner VNETs. Kunden haben
 * Der Zugriff von Apps in ASEs kann durch Upstreamgeräte wie z.B. Web Application Firewalls (WAFs) abgegrenzt werden. Weitere Informationen finden Sie unter [Web Application Firewall (WAF)][AppGW].
 * App Service-Umgebungen können durch Anheften von Zonen in Verfügbarkeitszonen bereitgestellt werden.  Ausführlichere Informationen finden Sie unter [Unterstützung der App Service-Umgebung für Verfügbarkeitszonen][ASEAZ].
 
-## <a name="dedicated-environment"></a>Dedizierte Umgebung ##
+## <a name="dedicated-environment"></a>Dedizierte Umgebung
 
 Eine ASE ist eine dedizierte Umgebung, die ausschließlich zu einem einzelnen Kunden gehört und insgesamt 200 App Service-Planinstanzen hosten kann. Ein einzelner isolierter App Service-Plan einer SKU kann bis zu 100 Instanzen enthalten. Wenn Sie alle Instanzen aus allen App Service-Plänen in dieser ASE addieren, muss die Summe kleiner als oder gleich 200 sein.
 
@@ -63,7 +60,7 @@ Kunden müssen keine Front-Ends und Worker verwalten. Die gesamte Infrastruktur 
 
 Es gibt eine monatliche Pauschalgebühr für eine ASE, mit der die Infrastruktur abgedeckt ist. Dies ändert sich nicht mit der Größe der ASE. Darüber hinaus fallen Kosten pro vCPU-App Service-Plan an. Alle in einer ASE gehosteten Apps befinden sich in der isolierten Preis-SKU. Um Informationen zu den Preisen für eine ASE zu erhalten, lesen Sie die Seite [App Service-Preise][Pricing], und überprüfen Sie die verfügbaren Optionen für ASEs.
 
-## <a name="virtual-network-support"></a>Unterstützung für virtuelle Netzwerke ##
+## <a name="virtual-network-support"></a>Unterstützung für virtuelle Netzwerke
 
 Das ASE-Feature ist eine Bereitstellung von Azure App Service direkt im virtuellen Azure Resource Manager-Netzwerk eines Kunden. Weitere Informationen zu virtuellen Azure-Netzwerken finden Sie unter [Virtuelle Azure-Netzwerke – FAQs](../../virtual-network/virtual-networks-faq.md). Eine ASE befindet sich immer in einem virtuellen Netzwerk, genauer gesagt, in einem Subnetz eines virtuellen Netzwerks. Mithilfe der Sicherheitsfunktionen virtueller Netzwerke können Sie ein- und ausgehende Netzwerkkommunikation für Ihre Apps steuern.
 
@@ -77,9 +74,9 @@ Weitere Informationen zur Funktionsweise von ASEs mit virtuellen Netzwerken und 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud/player]
 
-## <a name="app-service-environment-v1"></a>App Service-Umgebung v1 ##
+## <a name="app-service-environment-v1"></a>App Service-Umgebung v1
 
-Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. Die oben aufgeführten Informationen basieren auf ASEv2. In diesem Abschnitt werden die Unterschiede zwischen ASEv1 und ASEv2 aufgezeigt. 
+Es gibt drei Versionen der App Service-Umgebung: ASEv1, ASEv2 und ASEv3. Die oben aufgeführten Informationen basieren auf ASEv2. In diesem Abschnitt werden die Unterschiede zwischen ASEv1 und ASEv2 aufgezeigt. Weitere Informationen finden Sie unter [Übersicht über die App Service-Umgebung](./overview.md).
 
 In ASEv1 müssen Sie alle Ressourcen manuell verwalten. Dies schließt Front-Ends, Worker und IP-Adressen ein, die für IP-basierte TLS/SSL-Bindungen verwendet werden. Bevor Sie Ihren App Service-Plan aufskalieren können, müssen Sie zunächst den Workerpool aufskalieren, den Sie zum Hosten verwenden möchten.
 

@@ -1,128 +1,76 @@
 ---
-title: Hochladen von VHD-Dateien in Azure DevTest Labs mit Storage-Explorer
-description: Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure Storage-Explorers
+title: Hochladen einer VHD-Datei mithilfe von Storage-Explorer
+description: Hochladen einer VHD-Datei mithilfe von Microsoft Azure Storage-Explorer in ein DevTest Labs-Lab-Speicherkonto.
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: d5571beda476e5e5cac7e899af062a969e798b29
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/05/2021
+ms.openlocfilehash: 2531964c056ddbed38da435e16bde3e0f5e1eff9
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610406"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054056"
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure Storage-Explorers
+# <a name="upload-a-vhd-file-to-a-labs-storage-account-by-using-storage-explorer"></a>Hochladen einer VHD-Datei in das Speicherkonto eines Labs mit Storage-Explorer
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefinierte Images zu erstellen. Diese können wiederum verwendet werden, um virtuelle Computer bereitzustellen. Dieser Artikel veranschaulicht, wie Sie den [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) verwenden, um eine VHD-Datei in das Speicherkonto eines Labs hochzuladen. Nachdem Sie die VHD-Datei hochgeladen haben, finden Sie im Abschnitt [Nächste Schritte](#next-steps) einige Artikel, die veranschaulichen, wie aus der hochgeladenen VHD-Datei ein benutzerdefiniertes Image erstellt wird. Weitere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Einführung in verwaltete Datenträger](../virtual-machines/managed-disks-overview.md).
+In Azure DevTest Labs können Sie VHD-Dateien verwenden, um benutzerdefinierte Images für die Bereitstellung von VMs zu erstellen. Dieser Artikel beschreibt, wie Sie [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) verwenden, um eine VHD-Datei in das Speicherkonto eines Labs hochzuladen. Nachdem Sie die VHD-Datei in DevTest Labs hochgeladen haben, können Sie aus der hochgeladenen Datei ein [benutzerdefiniertes Image](devtest-lab-create-custom-image-from-vhd-using-powershell.md) erstellen. Weitere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Einführung in verwaltete Datenträger](../virtual-machines/managed-disks-overview.md).
+
+Der Storage-Explorer unterstützt verschiedene Verbindungsoptionen. Dieser Abschnitt beschreibt das Herstellen einer Verbindung mit einem Speicherkonto, das mit Ihrem Azure-Abonnement verknüpft ist. Informationen zu anderen Verbindungsoptionen von Storage-Explorer finden sie unter [Erste Schritte mit Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- [Laden Sie die neueste Version von Microsoft Azure Storage-Explorer herunter, und installieren Sie sie](https://www.storageexplorer.com).
+
+- Rufen Sie den Namen des Lab-Speicherkontos im Azure-Portal ab:
+
+  1. Suchen Sie im [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) nach **DevTest Labs**, wählen Sie diese Option aus, und wählen Sie dann Ihr Lab aus der Liste aus.
+  1. Wählen Sie auf der Lab-Seite die Option **Konfiguration und Richtlinien** aus. 
+  1. Wählen Sie auf der Seite **Konfiguration und Richtlinien** unter **Basen virtueller Computer** die Option **Benutzerdefinierte Images** aus.
+  1. Wählen Sie auf der Seite **Benutzerdefinierte Images** die Option **Hinzufügen** aus. 
+  1. Wählen Sie auf der Seite **Benutzerdefiniertes Image** unter **VHD** den Link **VHD mit PowerShell hochladen** aus.
+     ![Screenshot: Link „VHD mit PowerShell hochladen“.](media/devtest-lab-upload-vhd-using-storage-explorer/upload-image-using-psh.png)
+  1. Auf der Seite **Image mit PowerShell hochladen** ein Image erstellen, zeigt der `Destination`-Parameter im Aufruf des Cmdlets **Add-AzureVhd** den Speicherkontonamen des Labs im folgenden Format an: `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/`.
+  1. Kopieren Sie den Namen des Speicherkontos, um ihn in den folgenden Schritten zu verwenden.
 
 ## <a name="step-by-step-instructions"></a>Schrittweise Anweisungen
 
-Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in DevTest Labs mithilfe des [Microsoft Azure Storage-Explorers](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+1. Wenn Sie Storage-Explorer öffnen, werden im linken **Explorer**-Bereich alle Azure-Abonnements angezeigt, bei denen Sie angemeldet sind.
 
-1. [Laden Sie die neueste Version des Microsoft Azure Storage-Explorers herunter, und installieren Sie sie](https://www.storageexplorer.com).
+   Wenn Sie ein anderes Konto hinzufügen müssen, wählen Sie das Symbol **Kontoverwaltung** aus, und wählen Sie im Bereich **Kontoverwaltung** die Option **Konto hinzufügen** aus.
 
-1. Rufen Sie den Namen des Lab-Speicherkontos im Azure-Portal ab:
+   ![Screenshot: „Konto hinzufügen“ im Bereich „Kontoverwaltung“.](media/devtest-lab-upload-vhd-using-storage-explorer/add-account-link.png)
 
-    1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
-    
-    1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
-    
-    1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
-    
-    1. Wählen Sie auf dem Blatt des Labs **Konfiguration** aus. 
-    
-    1. Wählen Sie auf dem Blatt **Konfiguration** für das Lab die Option **Benutzerdefinierte Images (VHDs)** aus.
-    
-    1. Wählen Sie auf dem Blatt **Benutzerdefinierte Images** die Option **+ Hinzufügen** aus. 
-    
-    1. Wählen Sie auf dem Blatt **Benutzerdefinierte Images** die Option **VHD** aus.
-    
-    1. Wählen Sie auf dem Blatt **VHD** die Option **Hochladen einer VHD mithilfe von PowerShell** aus.
-    
-        ![Hochladen der VHD mithilfe von PowerShell][0]
-    
-    1. Auf dem Blatt **Upload an image using PowerShell** (Ein Abbild mit PowerShell hochladen) wird ein Aufruf des Cmdlets **Add-AzureVhd** angezeigt. Der erste Parameter (*Ziel*) enthält den Namen des Speicherkontos für das Lab im folgenden Format:
-    
-        `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...`
+   Befolgen Sie die Anweisungen, um sich mit dem Microsoft-Konto anzumelden, das Ihrem Azure-Abonnement zugeordnet ist.
 
-    1. Notieren Sie sich das Speicherkonto, da Sie es in späteren Schritten benötigen.
-    
-1. Stellen Sie über den Storage-Explorer eine Verbindung mit einem Azure-Abonnementkonto her.
+1. Nach der Anmeldung werden im **Explorer**-Bereich die Azure-Abonnements angezeigt, die Ihrem Konto zugeordnet sind. Wählen Sie den Dropdownpfeil neben dem Azure-Abonnement aus, das Sie verwenden möchten. Im linken Bereich werden die Speicherkonten angezeigt, die mit dem ausgewählten Azure-Abonnement verknüpft sind.
 
-    > [!TIP] 
-    > 
-    > Der Storage-Explorer unterstützt verschiedene Verbindungsoptionen. Dieser Abschnitt veranschaulicht die Herstellung einer Verbindung mit einem Speicherkonto, das mit Ihrem Azure-Abonnement verknüpft ist. Weitere vom Storage-Explorer unterstützte Verbindungsoptionen finden Sie im Artikel [Erste Schritte mit dem Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
- 
-    1. Öffnen Sie den Storage-Explorer.
-    
-    1. Wählen Sie im Storage-Explorer die Option **Azure-Kontoeinstellungen** aus. 
-    
-        ![Azure-Kontoeinstellungen][1]
-    
-    1. Im linken Bereich werden die Microsoft-Konten angezeigt, bei denen Sie angemeldet sind. Wählen Sie zum Herstellen einer Verbindung mit einem anderen Konto die Option **Konto hinzufügen** aus, und führen Sie die Schritte in den Dialogfeldern durch, um sich mit einem Microsoft-Konto anzumelden, das mindestens einem aktiven Azure-Abonnement zugeordnet ist.
-    
-        ![Konto hinzufügen][2]
-    
-    1. Nach erfolgreicher Anmeldung mit einem Microsoft-Konto werden im linken Bereich die dem Konto zugeordneten Azure-Abonnements angezeigt. Wählen Sie die Azure-Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **Übernehmen**. (Durch Auswählen von **Alle Abonnements** können Sie alle bzw. keine Azure-Abonnements in der Liste auswählen.)
-    
-        ![Azure-Abonnements auswählen][3]
-    
-    1. Im linken Bereich werden die Speicherkonten angezeigt, die mit den ausgewählten Azure-Abonnements verknüpft sind.
-    
-        ![Ausgewählte Azure-Abonnements][4]
+   ![Screenshot: Speicherkonten für ein ausgewähltes Azure-Abonnement.](media/devtest-lab-upload-vhd-using-storage-explorer/storage-accounts-list.png)
 
-1. Suchen Sie das Speicherkonto des Labs:
+1. Wählen Sie den Dropdownpfeil neben dem Lab-Speicherkontonamen aus, den Sie zuvor gespeichert haben.
 
-    1. Suchen Sie im linken Fensterbereich des Storage-Explorers den Knoten für das Azure-Abonnement, zu dem das Lab gehört, und erweitern Sie den Knoten.
-    
-    1. Erweitern Sie unter dem Knoten des Abonnements den Eintrag **Speicherkonten**.
+1. Erweitern Sie den Knoten **Blobcontainer**, und wählen Sie dann **uploads** aus.
 
-    1. Erweitern Sie den Speicherkontoknoten des Labs, um die Knoten für **Blobcontainer**, **Dateifreigaben**, **Warteschlangen** und **Tabellen** anzuzeigen.
-    
-    1. Erweitern Sie den Knoten **Blobcontainer**.
-    
-    1. Wählen Sie den Blobcontainer für Uploads aus, um den Inhalt im rechten Fensterbereich anzuzeigen.
-        
-        ![Verzeichnis für Uploads][5]
+   ![Screenshot: Erweiterter Knoten „Blobcontainer“ mit dem Verzeichnis „uploads“.](media/devtest-lab-upload-vhd-using-storage-explorer/upload-dir.png)
 
-1. Laden Sie die VHD-Datei mithilfe des Storage-Explorers hoch:
+1. Wählen Sie im rechten Bereich des Storage-Explorers auf der Symbolleiste des Blob-Editors **Hochladen** aus, und wählen Sie dann **Dateien hochladen** aus. 
 
-    1. Im rechten Bereich des Storage-Explorers sollte eine Liste der Blobs im Blobcontainer für **Uploads** des Labspeicherkontos angezeigt werden. Wählen Sie auf der Symbolleiste des Blob-Editors die Option **Upload** aus. 
-        
-        ![Screenshot: Rechter Bereich des Storage-Explorers mit der ausgewählten Schaltfläche „Hochladen“][6]
-    
-    1. Wählen Sie im Dropdownmenü **Upload** den Eintrag **Dateien hochladen...** aus.
-    
-    1. Wählen Sie im Dialogfeld **Dateien hochladen** die Schaltfläche mit den Auslassungspunkten aus.
-        
-        ![Screenshot: Dialogfeld „Dateien hochladen“ mit ausgewählten Auslassungspunkten][8]  
+   ![Screenshot: Schaltfläche „Hochladen“ und „Dateien hochladen“.](media/devtest-lab-upload-vhd-using-storage-explorer/upload-button.png)
 
-    1. Navigieren Sie im Dialogfeld **Dateien zum Hochladen auswählen** zu der gewünschten VHD-Datei, wählen Sie sie aus, und klicken Sie dann auf **Öffnen**.
-    
-    1. Ändern Sie im Dialogfeld **Dateien hochladen** den **Blobtyp** zu **Seitenblob**.
-    
-    1. Wählen Sie die Option **Hochladen**.
+1. Wählen Sie im Dialogfeld **Dateien hochladen** neben dem Feld **Ausgewählte Dateien** die Option **...** aus, navigieren Sie zur VHD-Datei auf Ihrem Computer, wählen Sie sie aus, und wählen Sie dann **Öffnen** aus.
 
-        ![Datei auswählen][9]  
-    
-    1. Der Storage-Explorer-Bereich **Aktivitätsprotokoll** zeigt den Uploadstatus an (zusammen mit Links zum Abbrechen des Uploads). Der Vorgang zum Hochladen kann abhängig von der Größe der VHD-Datei und der Geschwindigkeit Ihrer Verbindung lange dauern. 
+1. Ändern Sie unter **Blobtyp** den **Blockblob** in **Seitenblob**.
 
-        ![Uploadstatus der Datei][10]  
+1. Wählen Sie die Option **Hochladen**.
+
+   ![Screenshot: Dialogfeld „Dateien hochladen“](media/devtest-lab-upload-vhd-using-storage-explorer/upload-file.png)
+
+Im Bereich **Aktivitäten** unten wird der Uploadstatus angezeigt. Das Hochladen der VHD-Datei kann je nach Größe der VHD-Datei und der Verbindungsgeschwindigkeit sehr lange dauern.
+
+![Screenshot: Bereich „Aktivitäten“ mit Uploadstatus.](media/devtest-lab-upload-vhd-using-storage-explorer/upload-status.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen eines benutzerdefinierten Images in Azure DevTest Labs aus einer VHD-Datei mit dem Azure-Portal](devtest-lab-create-template.md)
 - [Erstellen eines benutzerdefinierten Azure DevTest Labs-Images aus einer VHD-Datei mithilfe von PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 
-[0]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-image-using-psh.png
-[1]: ./media/devtest-lab-upload-vhd-using-storage-explorer/settings-icon.png
-[2]: ./media/devtest-lab-upload-vhd-using-storage-explorer/add-account-link.png
-[3]: ./media/devtest-lab-upload-vhd-using-storage-explorer/subscriptions-list.png
-[4]: ./media/devtest-lab-upload-vhd-using-storage-explorer/storage-accounts-list.png
-[5]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-dir.png
-[6]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-button.png
-[7]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-files.png
-[8]: ./media/devtest-lab-upload-vhd-using-storage-explorer/select-file.png
-[9]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-file.png
-[10]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-status.png

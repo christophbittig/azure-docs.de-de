@@ -12,10 +12,18 @@
     - name: Installieren von Bicep-Tools
       href: install.md
       displayName: nightly
+    - name: Behandeln von Problemen bei der Installation
+      href: installation-troubleshoot.md
 - name: Schnellstarts
   items:
     - name: 'Erstellen von Bicep-Vorlagen: VS Code'
       href: quickstart-create-bicep-use-visual-studio-code.md
+    - name: CI/CD
+      items:
+        - name: Bicep mit Pipelines
+          href: add-template-to-azure-pipelines.md
+        - name: Bicep mit GitHub Actions
+          href: deploy-github-actions.md
 - name: Tutorials
   items:
     - name: 'Microsoft Learn: Bicep'
@@ -26,6 +34,9 @@
     - name: Autor
       expanded: true
       items:
+        - name: Dateistruktur und -syntax
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: file.md
         - name: Ressourcen
           items:
             - name: Ressourcendeklaration
@@ -121,12 +132,14 @@
             - name: Übergeben vertraulicher Werte
               displayName: key vault
               href: key-vault-parameter.md
-        - name: CI/CD
-          items:
-            - name: Bicep mit Pipelines
-              href: add-template-to-azure-pipelines.md
-            - name: Bicep mit GitHub Actions
-              href: deploy-github-actions.md
+    - name: Konfigurieren von Einstellungen
+      items:
+        - name: Bicep-Konfigurationsdatei
+          href: bicep-config.md
+        - name: Linter-Einstellungen
+          href: bicep-config-linter.md
+        - name: Moduleinstellungen
+          href: bicep-config-modules.md
     - name: Migrieren zu Bicep
       items:
         - name: Empfohlener Workflow
@@ -136,16 +149,11 @@
           displayName: 'conversion issues,export,convert,playground'
 - name: Verweis
   items:
-    - name: Bicep-Dateistruktur
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: file.md
     - name: Ressourcenreferenz
       href: /azure/templates/
     - name: Datentypen
       href: data-types.md
       displayName: 'supported types,arrays,booleans,integers,objects,strings,secure'
-    - name: Konfigurationsdatei
-      href: bicep-config.md
     - name: Funktionen
       items:
         - name: Alle Funktionen
@@ -188,6 +196,6 @@
       href: bicep-cli.md
       displayName: 'build,decompile,install,list-versions,list versions,upgrade,version'
     - name: Azure PowerShell
-      href: /powershell/module/az.resources
+      href: /powershell/module/az.resources/
     - name: Azure CLI
       href: /cli/azure/resource

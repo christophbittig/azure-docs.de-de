@@ -1,32 +1,40 @@
 ---
-title: Herstellen einer Verbindung mit Ihren virtuellen Computern über einen Browser
+title: Aktivieren des Browserzugriffs auf virtuelle Lab-Computer
 description: Erfahren Sie, wie Sie über einen Browser eine Verbindung mit Ihren virtuellen Computern herstellen.
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: dbbaa4286aac91e362a2024f1705add8f48d566d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/29/2021
+ms.openlocfilehash: f712d0090defa28f673807b835dbe3642cfdface
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644997"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464362"
 ---
-# <a name="connect-to-your-virtual-machines-through-a-browser"></a>Herstellen einer Verbindung mit Ihren virtuellen Computern über einen Browser 
+# <a name="connect-to-your-lab-virtual-machines-through-a-browser"></a>Herstellen einer Verbindung mit Ihren virtuellen Lab-Computern über einen Browser 
 
-DevTest Labs und [Azure Bastion](../bastion/index.yml) sind integriert, sodass Sie über einen Browser eine Verbindung mit Ihren virtuellen Computern herstellen können. Informationen zum Aktivieren dieses Features in DevTest Labs finden Sie unter [Aktivieren der Browserverbindung auf Lab-VMs](enable-browser-connection-lab-virtual-machines.md).
+Die DevTest-Labs integrieren sich in [Azure Bastion](../bastion/index.yml), sodass Sie über einen Browser eine Verbindung mit Ihren virtuellen Lab-Computern herstellen können. Nach dem Aktivieren der **Browserverbindung** können Benutzer des Labs über einen Browser auf ihre virtuellen Computer zugreifen.  
 
-Nach dem Aktivieren der *Browserverbindung* können Benutzer des Labs über einen Browser auf virtuelle Computer zugreifen.  
+In dieser Anleitung stellen Sie mithilfe der **Browser-Verbindung** eine Verbindung mit einem virtuellen Lab-Computer her.
 
-## <a name="create-a-lab-virtual-machine"></a>Erstellen einer Lab-VM
+## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen zuerst den virtuellen Labcomputer in einem VNET erstellen, für das Bastion konfiguriert ist. Wählen Sie das zweite **Subnetz** aus, das Sie erstellt haben, nicht AzureBastionSubnet. Sie können ein virtuelles Netzwerk während der Erstellung eines virtuellen Computers auswählen, indem Sie zur Registerkarte **Erweiterte Einstellungen** navigieren.
+- Ein virtueller Lab-Computer mit den aktivierten Einstellungen [Durch Bastion konfiguriertes virtuelles Netzwerk und **Browserverbindung**](enable-browser-connection-lab-virtual-machines.md).
 
-![Erstellen eines virtuellen Computers](./media/connect-virtual-machine-through-browser/create-virtual-machine.png)
+- Ein Webbrowser, der so konfiguriert ist, dass Popups von `https://portal.azure.com:443`zugelassen werden.
 
 ## <a name="launch-virtual-machine-in-a-browser"></a>Starten des virtuellen Computers in einem Browser
 
-Nachdem der virtuelle Computer erstellt wurde, können Sie ihn in einem Browser starten. Klicken Sie dazu auf die Schaltfläche *Browser verbinden*, und geben Sie Ihren Benutzernamen und Ihr Kennwort für die VM ein.  
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-![In einem Browser starten](./media/connect-virtual-machine-through-browser/browser-connect.png)
+1. Navigieren Sie in **DevTest Labs** zu Ihrem Lab.
+
+1. Wählen Sie einen virtuellen Computer aus.
+
+1. Wählen Sie im oberen Menü **Browserverbindung** aus.
+
+1. Geben Sie im Abschnitt **Browserverbindung** Ihre Anmeldeinformationen ein und wählen Sie dann **Verbinden** aus.
+
+    :::image type="content" source="./media/connect-virtual-machine-through-browser/lab-vm-browser-connect.png" alt-text="Screenshot der Schaltfläche Browserverbindung.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

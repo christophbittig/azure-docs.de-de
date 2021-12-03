@@ -3,21 +3,21 @@ title: Unterstützung für Verfügbarkeitszonen für öffentlichen, mehrinstanze
 description: Erfahren Sie, wie Sie Ihren App Service so bereitstellen, dass Ihre Apps zonenredundant sind.
 author: seligj95
 ms.topic: article
-ms.date: 09/01/2021
+ms.date: 11/16/2021
 ms.author: jordanselig
 ms.custom: references_regions
-ms.openlocfilehash: 1fb6959ab6e47ad631ea3cac208a3dc52ca41e41
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e0388695708e8ab3c47ea8049038fb95384dabd2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832718"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551291"
 ---
 # <a name="availability-zone-support-for-public-multi-tenant-app-service"></a>Unterstützung für Verfügbarkeitszonen für öffentlichen, mehrinstanzenfähigen App Service
 
-Microsoft Azure App Service kann in [Verfügbarkeitszonen (AZ)](../availability-zones/az-overview.md) bereitgestellt werden, was [Hochverfügbarkeit](https://en.wikipedia.org/wiki/High_availability) für Ihre Apps ermöglicht. Diese Architektur wird auch als „Zonenredundanz“ bezeichnet.
+Microsoft Azure App Service kann in [Verfügbarkeitszonen (AZ)](../availability-zones/az-overview.md) bereitgestellt werden, um Resilienz und Zuverlässigkeit für Ihre unternehmenskritischen Workloads zu erzielen. Diese Architektur wird auch als „Zonenredundanz“ bezeichnet.
 
-Eine App befindet sich in einem App Service-Plan (ASP), und der App Service-Plan wiederum befindet sich in einer einzelnen Skalierungseinheit. Wenn ein App Service als zonenredundant konfiguriert ist, verteilt die Plattform die VM-Instanzen im App Service-Plan automatisch auf alle drei Zonen in der ausgewählten Region. Wenn eine Kapazität größer als drei angegeben und die Anzahl der Instanzen durch drei teilbar ist, werden die Instanzen gleichmäßig verteilt. Andernfalls werden Anzahlen von Instanzen über 3*N hinaus auf die verbleibenden ein oder zwei Zonen verteilt.
+Eine App befindet sich in einem App Service-Plan (ASP), und der App Service-Plan wiederum befindet sich in einer einzelnen Skalierungseinheit. Wenn ein App Service als zonenredundant konfiguriert ist, verteilt die Plattform die VM-Instanzen im App Service-Plan automatisch auf alle drei Zonen in der ausgewählten Region. Wenn eine Kapazität größer als drei angegeben und die Anzahl der Instanzen durch drei teilbar ist, werden die Instanzen gleichmäßig verteilt. Andernfalls werden Anzahlen von Instanzen über 3*N hinaus auf die verbleibenden ein oder zwei Zonen verteilt. Für App Services, die nicht als zonenredundant konfiguriert sind, werden die VM-Instanzen in einer einzelnen Zone in der ausgewählten Region platziert.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 

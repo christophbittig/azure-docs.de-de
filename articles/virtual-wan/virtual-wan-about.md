@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: overview
 ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: 97ecb049d4307bacf6c9a7b73d08e3d25e05f112
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 7ca51e5dfba89307be28d277e50715b04f829004
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821665"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028057"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Was ist Azure Virtual WAN?
 
@@ -95,7 +95,9 @@ Der Router kann über vier Routingstatus verfügen: „Bereitgestellt“, „Wir
 * Mit dem Status **Keine** wird angegeben, dass der Router nicht vom virtuellen Hub bereitgestellt wurde. Dies kann passieren, wenn das Virtual WAN den Typ *Basic* aufweist oder wenn der virtuelle Hub vor dem Verfügbarmachen des Diensts bereitgestellt wurde.
 * Mit dem Status **Fehler** wird angegeben, dass während der Instanziierung ein Fehler aufgetreten ist. Zum Instanziieren oder Zurücksetzen des Routers können Sie die Option **Router zurücksetzen** verwenden. Navigieren Sie hierzu im Azure-Portal zur Übersichtsseite des virtuellen Hubs.
 
-Für jeden Router eines virtuellen Hubs wird ein aggregierter Durchsatz von bis zu 50 GBit/s unterstützt. Für die Konnektivität zwischen den VNET-Verbindungen wird übergreifend für alle mit einem einzelnen virtuellen Hub verbundenen VNETs eine Gesamtworkload von 2.000 VMs vorausgesetzt.
+Für jeden Router eines virtuellen Hubs wird ein aggregierter Durchsatz von bis zu 50 GBit/s unterstützt. 
+
+Für die Konnektivität zwischen den VNet-Verbindungen wird übergreifend für alle mit einem einzelnen virtuellen Hub verbundenen VNets standardmäßig eine Gesamtworkload von 2.000 virtuellen Computern vorausgesetzt. Dieser [Grenzwert](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits) kann erhöht werden, indem eine Online-Kundensupportanfrage gestellt wird. Informationen zu den Kostenauswirkungen finden Sie auf der Seite [Virtual WAN – Preise](https://azure.microsoft.com/pricing/details/virtual-wan/) unter *Kosten für Routinginfrastruktureinheiten*. 
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>Transitkonnektivität zwischen VPN und ExpressRoute
 

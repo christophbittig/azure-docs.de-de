@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e6ec06e3df87e0ad0e50efca24439435d655f6a1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: ce40ba28b4e65fe1c9b7f73d70afb519b74d1b90
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752100"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015293"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Verwenden von Logic Apps zum Empfangen einer E-Mail bei Statusänderungen von Key Vault-Geheimnissen
 
@@ -44,7 +44,7 @@ Gehen Sie wie folgt vor, um ein Azure Event Grid-Abonnement zu erstellen:
  
     ![Logik-App-Designer: Verbindung](../media/eventgrid-logicappdesigner1.png)
 
-1. Gehen Sie im Fenster **Bei Eintritt eines Ressourcenereignisses** wie folgt vor:
+1. Gehen Sie auf dem Bildschirm **Wenn ein Ressourcenereignis eintritt** wie folgt vor:
     - Übernehmen Sie für **Abonnement** und **Ressourcenname** die Standardeinstellungen.
     - Wählen Sie unter **Ressourcentyp** die Option **Microsoft.KeyVault.vaults** aus.
     - Wählen Sie unter **Ereignistypelement: 1** die Option **Microsoft.KeyVault.SecretNewVersionCreated** aus.

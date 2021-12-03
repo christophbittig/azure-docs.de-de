@@ -1,5 +1,5 @@
 ---
-title: include file description: include file services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 05/25/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
+Titel: include file Beschreibung: include file Dienste: event-hubs Autor: spelluru ms.service: event-hubs ms.topic: include ms.date: 11/04/2021 ms.author: spelluru ms.custom: "datei einschließen", "fasttrack-edit", "iot", "event-hubs"
 
 ---
 
@@ -12,7 +12,7 @@ Die folgende Tabelle enthält die Grenzwerte, die sich für die Tarife „Basic�
 | Anzahl vermittelter Verbindungen pro Namespace | 100 | 5\.000 | 10000 pro PU | 100000 pro CU |
 | Maximale Aufbewahrungsdauer von Ereignisdaten | 1 Tag | 7 Tage | 90 Tage<br/>1 TB pro PU | 90 Tage<br/>10 TB pro CU |
 | Maximale Anzahl von TUs, PUs oder CUs | 40 TUs | 40 TUs | 16 PUs | 20 CUs |
-| Anzahl von Partitionen pro Event Hub | 32 | 32 | 100 | 1\.024 pro Event Hub<br/> 2000 pro CU |
+| Anzahl von Partitionen pro Event Hub | 32 | 32 | 100 pro Veranstaltungszentrum, 200 pro PU | 1\.024 pro Event Hub<br/> 2000 pro CU |
 | Anzahl von Namespaces pro Abonnement | 1000 | 1000 | 1000 | 1000 (50 pro CU) |
 | Anzahl von Event Hubs pro Namespace | 10 | 10 | 100 pro PU | 1000 |
 | Erfassung | – | Bezahlung pro Stunde | Enthalten | Enthalten |

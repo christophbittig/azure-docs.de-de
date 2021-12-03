@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: a80b5b6340ddf0660961874281cbc6207ffea859
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: bf58338bfc16e2e0cea11183ad4fdf3e72961bb3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063570"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224916"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C-ISV-Partner
 
@@ -47,6 +47,7 @@ Microsoft arbeitet für MFA und kennwortlose Authentifizierung mit den folgenden
 |:-------------------------|:--------------|
 | ![Screenshot des BlokSec-Logos](./media/partner-gallery/bloksec-logo.png) | [BlokSec](./partner-bloksec.md) ist eine Lösung zur Authentifizierung ohne Kennwort und zur mehrstufigen Authentifizierung (MFA) ohne Token, die einwilligungsbasierte Echtzeitdienste bietet und Kunden vor Cyberattacken auf Identitäten schützt, wie z. B. Password Stuffing, Phishing und Man-in-the-Middle-Angriffen. |
 | ![Screenshot eines HYPR-Logos](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) ist ein Anbieter für die kennwortlose Authentifizierung, bei der Kennwörter durch eine Verschlüsselung mit öffentlichen Schlüsseln ersetzt werden. Dadurch lassen sich Betrug, Phishing und die Wiederverwendung von Anmeldeinformationen vermeiden. |
+| ![Screenshot eines IDEMIA-Logos](./media/partner-gallery/idemia-logo.png) | [IDEMIA](./partner-idemia.md) ist ein kennwortloser Authentifizierungsanbieter, der in Echtzeit einwilligungsbasierte Dienste mit biometrischer Authentifizierung wie Gesichts-ID und Fingerabdruck bereitstellt, um Betrug und Wiederverwendung von Anmeldeinformationen zu vermeiden. |
 | ![Screenshot eines itsme-Logos](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) ist eine eiDAS-konforme digitale ID-Lösung (Electronic Identification, Authentication and Trust Services), die es Benutzern ermöglicht, sich ohne Kartenleser, Kennwörter, zweistufige Authentifizierung und mehrere PIN-Codes sicher anzumelden. |
 |![Screenshot eines Keyless-Logos.](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) ist ein Anbieter der kennwortlosen Authentifizierung, der die Authentifizierung in Form eines biometrischen Gesichtsscans ermöglicht, um Betrug, Phishing und die Wiederverwendung von Anmeldeinformationen zu vermeiden.
 | ![Screenshot eines Nevis-Logos](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) ermöglicht die kennwortlose Authentifizierung und bietet mit der Nevis Access-App eine vollständig markentreue Endbenutzerumgebung an, die auf Mobilgeräte abzielt. So wird eine starke Kundenauthentifizierung bereitgestellt, die den Transaktionsanforderungen der Zahlungsdiensterichtlinie 2 (Payment Services Directive 2, PSD2) entspricht. |

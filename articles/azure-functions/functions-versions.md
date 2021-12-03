@@ -3,22 +3,23 @@ title: Übersicht über die Runtimeversionen von Azure Functions
 description: Azure Functions unterstützt mehrere Versionen der Runtime. Lernen Sie die Unterschiede kennen, und erfahren Sie, wie Sie die Version auswählen, die sich am besten für Ihre Anforderungen eignet.
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
-ms.date: 10/13/2021
-ms.openlocfilehash: e04ab727e1bb7e168a4461e69b62ab049e59cacf
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.date: 11/3/2021
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: a3d84e01bd183feb09f9594295111d98713c0373
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003399"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058654"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 
-Azure Functions unterstützt derzeit mehrere Versionen des Runtime-Hosts. In der folgenden Tabelle sind die verfügbaren Versionen, deren Supportebene und wann Sie sie benutzen sollten, aufgeführt:
+<a name="top"></a>Azure Functions unterstützt derzeit mehrere Versionen des Runtime-Hosts. In der folgenden Tabelle sind die verfügbaren Versionen, deren Supportebene und wann Sie sie benutzen sollten, aufgeführt:
 
 | Version | Supportebene | Beschreibung |
 | --- | --- | --- |
-| 4.x | Vorschau | Unterstützt alle Sprachen. Verwenden Sie diese Version, [um C#-Funktionen unter .NET 6.0 auszuführen](functions-dotnet-class-library.md#supported-versions). |
-| 3.x | Allgemein verfügbar | _Empfohlene Runtime-Version für Funktionen in allen Sprachen._ |
+| 4.x | Allgemein verfügbar | _Empfohlene Runtime-Version für Funktionen in allen Sprachen._ Verwenden Sie diese Version, [um C#-Funktionen unter .NET 6.0 auszuführen](functions-dotnet-class-library.md#supported-versions). |
+| 3.x | Allgemein verfügbar | Unterstützt alle Sprachen. Verwenden Sie diese Version, um [C#-Funktionen unter .NET Core 3.1 und .NET 5.0 auszuführen](functions-dotnet-class-library.md#supported-versions).|
 | 2.x | Allgemein verfügbar | Wird für [ältere Versionen von 2.x-Apps](#pinning-to-version-20) unterstützt. Diese Version befindet sich im Wartungsmodus. Verbesserungen werden erst in späteren Versionen bereitgestellt.|
 | 1.x | Allgemein verfügbar | Wird nur für C#-Apps empfohlen, die .NET Framework verwenden müssen und unterstützt nur die Entwicklung im Azure-Portal, Azure Stack Hub-Portal oder lokal auf Windows. Diese Version befindet sich im Wartungsmodus. Verbesserungen werden erst in späteren Versionen bereitgestellt. |
 
@@ -48,7 +49,7 @@ Welche Version der Functions-Runtime von veröffentlichten Apps in Azure verwend
 
 | Wert | Runtimeziel |
 | ------ | -------- |
-| `~4` | 4.x (Vorschau) |
+| `~4` | 4.x |
 | `~3` | 3.x |
 | `~2` | 2.x |
 | `~1` | 1.x |
@@ -70,9 +71,57 @@ Zum Beheben von Problemen mit ihrer Funktions-App, die mit der neuesten Hauptver
 
 Jede Funktions-App, die an `~2.0` angeheftet wird, kann weiterhin unter .NET Core 2.2 ausgeführt werden. Diese Version erhält keine Sicherheitsupdates und andere Updates mehr. Weitere Informationen finden Sie unter [Überlegungen zu Functions v2.x](functions-dotnet-class-library.md#functions-v2x-considerations).   
 
-## <a name="migrating-from-3x-to-4x-preview"></a><a name="migrating-from-3x-to-4x"></a>Migrieren von 3.x nach 4.x (Vorschau)
+## <a name="migrating-from-3x-to-4x"></a><a name="migrating-from-3x-to-4x"></a>Migrieren von 3.x zu 4.x
 
 Die Azure Functions-Version 4.x bietet eine hohe Abwärtskompatibilität mit der Version 3.x. Bei vielen Apps sollte ein Upgrade auf Version 4.x ohne erhebliche Codeänderungen problemlos möglich sein. Führen Sie ausführliche Tests durch, bevor Sie die Hauptversion in Produktions-Apps ändern.
+
+### <a name="upgrading-an-existing-app"></a>Aktualisieren einer vorhandenen App
+
+Wenn Sie Ihre Funktions-App lokal entwickeln, müssen Sie sowohl Ihre lokale Projektumgebung als auch Ihre in Azure ausgeführte Funktions-App aktualisieren. 
+
+#### <a name="local-project"></a>Lokales Projekt
+
+Upgradeanweisungen können sprachabhängig sein. Wenn Ihre Sprache nicht angezeigt wird, schalten Sie sie [oben im Artikel](#top) um.
+
+::: zone pivot="programming-language-csharp"  
+Um eine C#-Klassenbibliotheks-App auf .NET 6 und Azure Functions 4.x zu aktualisieren, aktualisieren Sie das `TargetFramework` und die `AzureFunctionsVersion`:
+
+```xml
+<TargetFramework>net6.0</TargetFramework>
+<AzureFunctionsVersion>v4</AzureFunctionsVersion>
+```
+
+Außerdem müssen Sie sicherstellen, dass die NuGet-Pakete, auf die Ihre Anwendung verweist, auf die neuesten Versionen aktualisiert wurden. Weitere Informationen finden Sie unter [Breaking Changes](#breaking-changes-between-3x-and-4x). Bestimmte Pakete hängen davon ab, ob Ihre Funktionen in-process oder out-of-process ausgeführt werden. 
+
+# <a name="in-process"></a>[In-Process](#tab/in-process)
+
+* [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 4.0.0 oder höher
+
+# <a name="isolated-process"></a>[Isolierter Prozess](#tab/isolated-process)
+
+* [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/) 1.5.2 oder höher
+* [Microsoft.Azure.Functions.Worker.Sdk](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk/) 1.2.0 oder höher
+
+---
+::: zone-end  
+::: zone pivot="programming-language-java,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
+Um Ihre App auf Azure Functions 4.x zu aktualisieren, aktualisieren Sie Ihre lokal installierte Version von [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) auf 4.x, und aktualisieren Sie das [Azure Functions-Erweiterungspaket](functions-bindings-register.md#extension-bundles) für die App auf 2.x oder höher. Weitere Informationen finden Sie unter [Breaking Changes](#breaking-changes-between-3x-and-4x).
+
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-typescript"  
+> [!NOTE]
+> Node.js 10 und 12 werden von Azure Functions 4.x nicht unterstützt.
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
+> [!NOTE]
+> PowerShell 6 wird von Azure Functions 4.x nicht unterstützt.
+::: zone-end  
+::: zone pivot="programming-language-python"  
+> [!NOTE]
+> Python 3.6 wird von Azure Functions 4.x nicht unterstützt.
+::: zone-end
+
+#### <a name="azure"></a>Azure
 
 Um eine App von 3.x zu 4.x zu migrieren, legen Sie die `FUNCTIONS_EXTENSION_VERSION`-Anwendungseinstellung auf `~4` fest, indem Sie den folgenden Azure CLI-Befehl verwenden:
 
@@ -97,42 +146,41 @@ In diesem Abschnitt werden die Änderungen erläutert, die vor einem App-Upgrade
 
 - Standardmäßige und maximale Timeouts werden jetzt in 4.x Linux-Verbrauchsfunktions-Apps erzwungen. ([#1915](https://github.com/Azure/Azure-Functions/issues/1915))
 
-- Application Insights ist nicht mehr standardmäßig in Version 4.x enthalten. Das Produkt ist jetzt als separate Erweiterung verfügbar. ([#2027](https://github.com/Azure/Azure-Functions/issues/2027))
-    - Fügen Sie für In-Process-.NET-Apps Ihrer Funktions-App das Erweiterungspaket [Microsoft.Azure.WebJobs.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ApplicationInsights/) hinzu.
-    - Für isolierte .NET-Apps:
-        - Fügen Sie Ihrer Funktions-App das Erweiterungspaket [Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights/) hinzu.
-        - Aktualisieren Sie die Pakete [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/) und [Microsoft.Azure.Functions.Worker.Sdk](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk/) auf die neuesten Versionen.
-    - Für andere Sprachen umfasst ein zukünftiges Update auf [Azure Functions-Erweiterungspaketen](functions-bindings-register.md#extension-bundles) die Application Insights-Erweiterung. Ihre App verwendet das neue Paket automatisch, wenn es verfügbar ist. Bis das aktualisierte Erweiterungspaket fertig ist, entfernen Sie die Anwendungseinstellungen `APPINSIGHTS_INSTRUMENTATIONKEY` und `APPLICATIONINSIGHTS_CONNECTION_STRING` aus Ihrer Funktions-App. Dadurch wird verhindert, dass der Host nicht gestartet werden kann.
-
 - Funktions-Apps, die Speicherkonten gemeinsam nutzen, können nicht gestartet werden, wenn ihre berechneten Hostnamen identisch sind. Verwenden Sie ein separates Speicherkonto für jede Funktions-App. ([#2049](https://github.com/Azure/Azure-Functions/issues/2049))
 
-#### <a name="languages"></a>Sprachen
+::: zone pivot="programming-language-csharp" 
 
-# <a name="c"></a>[C\#](#tab/csharp)
+- Azure Functions 4.x unterstützt .NET 6 In-Process und isolierte Apps.
 
 - `InvalidHostServicesException` ist jetzt ein schwerwiegender Fehler. ([#2045](https://github.com/Azure/Azure-Functions/issues/2045))
 
 - `EnableEnhancedScopes` ist standardmäßig aktiviert. ([#1954](https://github.com/Azure/Azure-Functions/issues/1954))
 
 - Entfernt `HttpClient` als registrierten Dienst. ([#1911](https://github.com/Azure/Azure-Functions/issues/1911))
-
-# <a name="java"></a>[Java](#tab/java)
-
+::: zone-end  
+::: zone pivot="programming-language-java"  
 - Verwenden eines Klassenladers in Java 11. ([#1997](https://github.com/Azure/Azure-Functions/issues/1997))
 
 - Beendet das Laden von Worker-JAR-Dateien in Java 8. ([#1991](https://github.com/Azure/Azure-Functions/issues/1991))
+::: zone-end    
+::: zone pivot="programming-language-javascript,programming-language-typescript"  
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+- Node.js 10 und 12 werden von Azure Functions 4.x nicht unterstützt. ([#1999](https://github.com/Azure/Azure-Functions/issues/1999))
 
 - Die Ausgabeserialisierung in Node.js-Apps wurde aktualisiert, um frühere Inkonsistenzen zu beheben. ([#2007](https://github.com/Azure/Azure-Functions/issues/2007))
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
+- PowerShell 6 wird von Azure Functions 4.x nicht unterstützt. ([#1999](https://github.com/Azure/Azure-Functions/issues/1999))
 
-# <a name="python"></a>[Python](#tab/python)
+- Standardthreadanzahl wurde aktualisiert. Funktionen, die nicht threadsicher sind oder über eine hohe Arbeitsspeicherauslastung verfügen, können betroffen sein. ([#1962](https://github.com/Azure/Azure-Functions/issues/1962))
+::: zone-end  
+::: zone pivot="programming-language-python"  
+- Python 3.6 wird von Azure Functions 4.x nicht unterstützt. ([#1999](https://github.com/Azure/Azure-Functions/issues/1999))
 
 - Shared Memory-Übertragung ist standardmäßig aktiviert. ([#1973](https://github.com/Azure/Azure-Functions/issues/1973))
 
 - Standardthreadanzahl wurde aktualisiert. Funktionen, die nicht threadsicher sind oder über eine hohe Arbeitsspeicherauslastung verfügen, können betroffen sein. ([#1962](https://github.com/Azure/Azure-Functions/issues/1962))
-
----
+::: zone-end
 
 ## <a name="migrating-from-2x-to-3x"></a>Migrieren von 2.x zu 3.x
 
@@ -142,8 +190,7 @@ Die Azure Functions-Version 3.x bietet eine hohe Abwärtskompatibilität mit d
 
 In diesem Abschnitt werden die Änderungen erläutert, die vor einem App-Upgrade von 2.x auf 3.x beachtet werden müssen.
 
-# <a name="c"></a>[C\#](#tab/csharp)
-
+::: zone pivot="programming-language-csharp"
 Der Hauptunterschied zwischen den Versionen bei der Ausführung von Funktionen der .NET-Klassenbibliothek ist die .NET Core-Laufzeit. Functions Version 2.x ist für die Ausführung unter .NET Core 2.2 vorgesehen, Version 3.x ist für die Ausführung mit .NET Core 3.1 konzipiert.  
 
 * [Synchrone Servervorgänge sind standardmäßig deaktiviert.](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)
@@ -153,11 +200,8 @@ Der Hauptunterschied zwischen den Versionen bei der Ausführung von Funktionen d
 >[!NOTE]
 >Aufgrund von Supportproblemen mit .NET Core 2.2 werden Funktions-Apps, die an Version 2 (`~2`) angeheftet sind, im Wesentlichen mit .NET Core 3.1 ausgeführt. Weitere Informationen finden Sie unter [Functions v2.x-Kompatibilitätsmodus](functions-dotnet-class-library.md#functions-v2x-considerations).
 
-# <a name="java"></a>[Java](#tab/java)
-
-Keine.
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
 
 * Über `context.done` oder Rückgabewerte zugewiesene Ausgabebindungen weisen nun das gleiche Verhalten auf wie die Einstellung in `context.bindings`.
 
@@ -167,13 +211,8 @@ Keine.
 
 * Auf die Nutzlast von HTTP-Anforderungen kann nicht mehr über `context.bindingData.req` zugegriffen werden.  Der Zugriff darauf ist aber weiterhin als Eingabeparameter (`context.req`) und in `context.bindings` möglich.
 
-* Node.js 8 wird nicht mehr unterstützt und in Funktionen der Version 3.x nicht ausgeführt.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Keine.
-
----
+* Node.js 8 wird nicht mehr unterstützt und in Funktionen der Version 3.x nicht ausgeführt.
+::: zone-end 
 
 ## <a name="migrating-from-1x-to-later-versions"></a>Migrieren von 1.x zu neueren Versionen
 
@@ -219,7 +258,7 @@ Sie können folgende Aktualisierungen für Funktions-Apps vornehmen, um die Ziel
 
 In Visual Studio wählen Sie die Runtimeversion beim Erstellen eines Projekts aus. Azure Functions-Tools für Visual Studio unterstützen die drei Hauptversionen der Runtime. Beim Debuggen und Veröffentlichen wird die richtige Version verwendet, basierend auf den Projekteinstellungen. Die Versionseinstellungen sind in der `.csproj`-Datei in den folgenden Einstellungen definiert:
 
-# <a name="version-4x-preview"></a>[Version 4.x (Vorschau)](#tab/v4)
+# <a name="version-4x"></a>[Version 4.x](#tab/v4)
 
 ```xml
 <TargetFramework>net6.0</TargetFramework>

@@ -10,12 +10,12 @@ ms.date: 8/05/2021
 ms.author: ronytho
 ms.reviewer: jrasnick, wiassaf
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 513b2edd432a274f155e79362e715fbc426a9f9e
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: d80b12e807e6c6f0999927bc373fe64c1feb1b40
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081508"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846594"
 ---
 # <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>Einrichten der Zugriffssteuerung für Ihren Azure Synapse-Arbeitsbereich 
 
@@ -129,7 +129,7 @@ Erstellen Sie im Azure-Portal einen Azure Synapse-Arbeitsbereich:
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>SCHRITT 4: Gewähren von Zugriff auf den Standardspeichercontainer für die Arbeitsbereichs-MSI
 
-Zum Ausführen von Pipelines und Systemaufgaben in Azure Synapse muss eine vom Arbeitsbereich verwaltete Dienstidentität (MSI) Zugriff auf `container1` im ADLS Gen2-Standardkonto haben. Weitere Informationen finden Sie unter [Vom Azure Synapse-Arbeitsbereich verwaltete Identität](synapse-workspace-managed-identity.md).
+Zum Ausführen von Pipelines und Systemaufgaben in Azure Synapse muss eine vom Arbeitsbereich verwaltete Dienstidentität (MSI) Zugriff auf `container1` im ADLS Gen2-Standardkonto haben. Weitere Informationen finden Sie unter [Vom Azure Synapse-Arbeitsbereich verwaltete Identität](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics).
 
 - Öffnen Sie das Azure-Portal.
 - Suchen Sie das Speicherkonto `storage1` und dann `container1`.
@@ -181,16 +181,15 @@ Der Ersteller der Arbeitsstation wird automatisch als SQL Active Directory-Admi
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>SCHRITT 7: Gewähren des Zugriffs auf SQL-Pools
 
-Standardmäßig wird allen Benutzern mit der Rolle „Synapse-Administrator“ auch die SQL-Rolle `db_owner` für die dedizierten und serverlosen SQL-Pools im Arbeitsbereich zugewiesen.
+Standardmäßig wird allen Benutzer*innen mit der Rolle „Synapse-Administrator“ auch die SQL-Rolle `db_owner` für die serverlosen SQL-Pools im Arbeitsbereich zugewiesen.
 
-Der Zugriff auf SQL-Pools für andere Benutzer und die Arbeitsbereichs-MSI wird mithilfe von SQL-Berechtigungen gesteuert.  Für das Zuweisen von SQL-Berechtigungen müssen nach der Erstellung SQL-Skripts für jede SQL-Datenbank ausgeführt werden.  Sie müssen diese Skripts in den folgenden drei Fällen ausführen:
+Der Zugriff auf SQL-Pools für andere Benutzer*innen wird mithilfe von SQL-Berechtigungen gesteuert.  Für das Zuweisen von SQL-Berechtigungen müssen nach der Erstellung SQL-Skripts für jede SQL-Datenbank ausgeführt werden.  Sie müssen diese Skripts in den folgenden drei Fällen ausführen:
 1. Gewähren des Zugriffs auf den serverlosen SQL-Pool „Built-in“ und die zugehören Datenbanken für andere Benutzer
 2. Gewähren des Zugriffs für beliebige Benutzer auf Datenbanken in dedizierten SQL-Pools
-3. Gewähren des Zugriffs für die Arbeitsbereichs-MSI auf eine Datenbank im SQL-Pool, damit Pipelines, die Zugriff auf den SQL-Pool benötigen, erfolgreich ausgeführt werden können
 
 Weiter unten finden Sie SQL-Beispielskripts.
 
-Um Zugriff auf eine Datenbank im dedizierten SQL-Pool zu gewähren, können die Skripts vom Ersteller des Arbeitsbereichs oder von einem beliebigen Mitglied der Gruppe `workspace1_SQLAdmins` oder der Gruppe `workspace1_SynapseAdministrators` ausgeführt werden.  
+Um Zugriff auf eine Datenbank im dedizierten SQL-Pool zu gewähren, können die Skripts vom Ersteller des Arbeitsbereichs oder von einem beliebigen Mitglied der Gruppe `workspace1_SynapseAdministrators` ausgeführt werden.  
 
 Zum Gewähren des Zugriffs auf den serverlosen SQL-Pool „Built-in“ können die Skripts von jedem Mitglied der Gruppen `workspace1_SQLAdmins` oder `workspace1_SynapseAdministrators` ausgeführt werden. 
 
@@ -268,36 +267,6 @@ Um Zugriff auf eine **einzelne** Datenbank im dedizierten SQL-Pool zu gewähren,
 
 Führen Sie im Anschluss an die Benutzererstellung Abfragen aus, um zu überprüfen, ob das Speicherkonto von einem serverlosen SQL-Pool abgefragt werden kann.
 
-### <a name="step-73-sql-access-control-for-azure-synapse-pipeline-runs"></a>SCHRITT 7.3: SQL-Zugriffssteuerung für Azure Synapse-Pipelineausführungen
-
-### <a name="workspace-managed-identity"></a>Vom Arbeitsbereich verwaltete Identität
-
-> [!IMPORTANT]
-> Zur erfolgreichen Ausführung von Pipelines mit Datasets oder Aktivitäten, die auf einen SQL-Pool verweisen, muss der Arbeitsbereichsidentität Zugriff auf den SQL-Pool gewährt werden.
-
-Weitere Informationen zur vom Arbeitsbereich verwalteten Identität finden Sie unter [Vom Azure Synapse-Arbeitsbereich verwaltete Identität](synapse-workspace-managed-identity.md). Führen Sie die folgenden Befehle für jeden SQL-Pool aus, um der vom Arbeitsbereich verwalteten Systemidentität das Ausführen von Pipelines für die SQL-Pooldatenbanken zu ermöglichen:  
-
->[!note]
->In den folgenden Skripts ist der `<databasename>` für eine dedizierte SQL-Pooldatenbank mit dem Poolnamen identisch.  Für eine Datenbank im serverlosen SQL-Pool „Built-in“ lautet der Name der Datenbank `<databasename>`.
-
-```sql
---Create a SQL user for the workspace MSI in database
-CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
-
---Granting permission to the identity
-GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
-```
-
-Wenn Sie diese Berechtigung wieder entfernen möchten, führen Sie das folgende Skript für den gleichen SQL-Pool aus:
-
-```sql
---Revoke permission granted to the workspace MSI
-REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
-
---Delete the workspace MSI user in the database
-DROP USER [<workspacename>];
-```
-
 ## <a name="step-8-add-users-to-security-groups"></a>SCHRITT 8: Hinzufügen von Benutzern zu Sicherheitsgruppen
 
 Die anfängliche Konfiguration für Ihr Zugriffssteuerungssystem ist nun abgeschlossen.
@@ -320,7 +289,7 @@ Ihr Arbeitsbereich ist jetzt vollständig konfiguriert und geschützt.
 
 In diesem Leitfaden ging es um die Einrichtung eines grundlegenden Zugriffssteuerungssystems. Für komplexere Szenarien können Sie zusätzliche Sicherheitsgruppen erstellen und diesen präzisere Rollen in spezifischeren Gültigkeitsbereichen zuweisen. Betrachten Sie folgende Fälle:
 
-**Aktivieren der Git-Unterstützung** für den Arbeitsbereich für erweiterte Entwicklungsszenarien, einschließlich CI/CD.  Im Git-Modus bestimmen Git-Berechtigungen, ob Benutzer Änderungen an ihren Arbeitsbranches committen können.  Die Veröffentlichung im Dienst erfolgt nur über den Kollaborationsbranch.  Erstellen Sie ggf. eine Sicherheitsgruppe für Entwickler, die Updates in einem Arbeitsbranch entwickeln und debuggen müssen, aber keine Änderungen am Livedienst veröffentlichen müssen.
+**Aktivieren der Git-Unterstützung** für den Arbeitsbereich für erweiterte Entwicklungsszenarien, einschließlich CI/CD.  Im Git-Modus bestimmen Git-Berechtigungen und Synapse-RBAC, ob ein*e Benutzer*in Änderungen an seinem bzw. ihrem Arbeitsbranch ausführen kann.  Die Veröffentlichung im Dienst erfolgt nur über den Kollaborationsbranch.  Erstellen Sie ggf. eine Sicherheitsgruppe für Entwickler, die Updates in einem Arbeitsbranch entwickeln und debuggen müssen, aber keine Änderungen am Livedienst veröffentlichen müssen.
 
 **Einschränken des Entwicklerzugriffs** auf bestimmte Ressourcen.  Erstellen Sie zusätzliche differenziertere Sicherheitsgruppen für Entwickler, die nur auf bestimmte Ressourcen Zugriff benötigen.  Weisen Sie diesen Gruppen geeignete Azure Synapse-Rollen zu, die nur für bestimmte Spark-Pools, Integration Runtimes oder Anmeldeinformationen gelten.
 

@@ -13,22 +13,22 @@ ms.date: 09/23/2021
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: phsignor
-ms.openlocfilehash: 7bc1f981287c71d967084694c144983167a4386d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: b0e70acffd8f2d10e8e0a4d2fec8c84b7c5e1747
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057320"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550285"
 ---
-# <a name="enable-self-service-application-assignment-in-azure-active-directory"></a>Aktivieren der Self-Service-Anwendungszuweisung in Azure Active Directory
+# <a name="enable-self-service-application-assignment"></a>Aktivieren der Self-Service-Anwendungszuweisung
 
 In diesem Artikel erfahren Sie, wie Sie den Self-Service-Anwendungszugriff mithilfe des Azure Active Directory Admin Center aktivieren.
 
-Bevor Ihre Benutzer Anwendungen über das Portal „Meine Apps“ selbst ermitteln können, müssen Sie den **Self-Service-Anwendungszugriff** auf alle Anwendungen aktivieren, die Benutzer selbst ermitteln und für die sie den Zugriff anfordern können sollen. Diese Funktion ist für Anwendungen verfügbar, die aus dem [Azure AD-Katalog](./add-application-portal.md), [Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md) oder über [Benutzer- oder Administratoreinwilligung](../develop/application-consent-experience.md) hinzugefügt wurden.
+Bevor Ihre Benutzer im Portal [Meine Apps](my-apps-deployment-plan.md) selbst auf Anwendungen zugreifen können, müssen Sie den **Self-Service-Anwendungszugriff** für die Anwendungen aktivieren. Diese Funktion ist für Anwendungen verfügbar, die aus dem Azure AD-Katalog, dem [Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md) oder über [Benutzer- oder Administratoreinwilligung](../develop/application-consent-experience.md) hinzugefügt wurden.
 
 Mit dieser Funktion können Sie die folgenden Schritte ausführen:
 
-- Sie können es Benutzern ermöglichen, Anwendungen über das [Portal „Meine Apps“](https://myapps.microsoft.com/) ohne Zutun der IT-Abteilung selbst zu ermitteln.
+- Sie können es Benutzern ermöglichen, Anwendungen über das Portal „Meine Apps“ ohne Zutun der IT-Abteilung selbst zu ermitteln.
 
 - Diese Benutzer einer vorkonfigurierten Gruppe hinzufügen, sodass Sie sehen können, welcher Benutzer den Zugriff angefordert hat, sowie den Zugriff aufheben und die den Benutzern zugewiesenen Rollen verwalten können
 
@@ -62,27 +62,27 @@ Führen Sie die folgenden Schritte aus, um den Self-Service-Anwendungszugriff au
 
 1. Wählen Sie im Navigationsmenü auf der linken Seite **Self-Service** aus.
 
-1. Um den Self-Service-Anwendungszugriff auf die Anwendung zu aktivieren, legen Sie **Benutzern das Anfordern des Zugriffs auf diese Anwendung erlauben?** auf **Ja** fest.
+1. Um den Self-Service-Anwendungszugriff für diese Anwendung zu aktivieren, legen Sie **Benutzern das Anfordern des Zugriffs auf diese Anwendung erlauben?** auf **Ja** fest.
 
 1. Wählen Sie neben **Welcher Gruppe sollen zugewiesene Benutzer hinzugefügt werden?** **Gruppe auswählen** aus. Wählen Sie eine Gruppe, und wählen Sie **Auswählen**. Wenn die Anforderung eines Benutzers genehmigt wird, wird er dieser Gruppe hinzugefügt. Wenn Sie die Mitgliedschaft dieser Gruppe prüfen, können Sie erkennen, wem der Zugriff auf die Anwendung über einen Self-Service-Zugriff gewährt wurde.
   
     > [!NOTE]
     > Diese Einstellung unterstützt keine Gruppen, die lokal synchronisiert werden.
 
-1. **Optional:** Um eine Genehmigung des Unternehmens anzufordern, ehe Benutzer Zugriff erhalten, legen Sie **Genehmigung anfordern, bevor Zugriff auf diese Anwendung gewährt wird?** auf **Ja** fest.
+1. **Optional**: Um eine Genehmigung des Unternehmens anzufordern, ehe Benutzer Zugriff erhalten, legen Sie **Genehmigung anfordern, bevor Zugriff auf diese Anwendung gewährt wird?** auf **Ja** fest.
 
-1. **Optional: nur für Anwendungen mit einmaligem Anmelden per Kennwort:** Wenn Sie möchten, dass die genehmigenden Personen des Unternehmens die für genehmigte Benutzer an die Anwendung gesendeten Kennwörter angeben können, legen Sie **Genehmigenden Personen das Festlegen von Benutzerkennwörtern für diese Anwendung gestatten?** auf **Ja** fest.
+1. **Optional nur für Anwendungen mit einmaligem Anmelden per Kennwort**: Wenn die genehmigenden Personen des Unternehmens die Kennwörter angeben sollen, die für genehmigte Benutzer an diese Anwendung gesendet werden, legen Sie **Genehmigenden Personen das Festlegen von Benutzerkennwörtern für diese Anwendung gestatten?** auf **Ja** fest.
 
-1. **Optional:** Um die genehmigenden Personen des Unternehmens anzugeben, die den Zugriff auf die Anwendung genehmigen können, wählen Sie neben **Wer darf den Zugriff auf diese Anwendung genehmigen?** **Genehmigende Person auswählen** aus. Hier können Sie bis zu 10 genehmigende Personen des Unternehmens auswählen. Wählen Sie dann **Auswählen** aus.
+1. **Optional**: Um die genehmigenden Personen des Unternehmens anzugeben, die den Zugriff auf die Anwendung genehmigen können, wählen Sie **Genehmigende Personen auswählen** und dann bis zu 10 genehmigende Personen des Unternehmens aus, und wählen Sie dann **Auswählen** aus.
 
     >[!NOTE]
     >Gruppen werden nicht unterstützt. Sie können bis zu 10 genehmigende Personen des Unternehmens auswählen. Wenn Sie mehrere genehmigende Personen angeben, kann jede einzelne genehmigende Person eine Zugriffsanforderung genehmigen.
 
-1. **Optional:** Wenn Sie **für Anwendungen, die Rollen verfügbar machen**, den für den Self-Service genehmigten Benutzern eine Rolle zuweisen möchten, wählen Sie neben **Welcher Rolle sollen Benutzer in dieser Anwendung zugewiesen werden?** **Rolle auswählen** aus, und wählen Sie dann die Rolle aus, die diesen Benutzern zugewiesen werden soll. Wählen Sie dann **Auswählen** aus.
+1. **Optional:** Wenn Sie **bei Anwendungen, die Rollen verfügbar machen**, den für den Self-Service genehmigten Benutzern eine Rolle zuweisen möchten, wählen Sie **Rolle auswählen** und dann die Rolle aus, die diesen Benutzern zugewiesen werden soll, und wählen Sie dann **Auswählen** aus.
 
 1. Wählen Sie abschließend oben im Bereich die Schaltfläche **Speichern** aus.
 
-Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, können Benutzer in ihrem Portal „Meine Apps“ **Self-Service-Apps hinzufügen** auswählen und die Apps suchen, die für den Self-Service-Zugriff aktiviert sind. Außerdem wird genehmigenden Personen des Unternehmens in ihrem „Meine Apps“-Portal eine Benachrichtigung angezeigt. Sie können festlegen, dass sie in einer E-Mail darüber benachrichtigt werden, dass ein Benutzer den Zugriff auf eine Anwendung angefordert hat, der zu genehmigen ist.
+Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, können Benutzer im Portal „Meine Apps“ navigieren und **Self-Service-Apps hinzufügen** auswählen, um nach den Apps zu suchen, die für den Self-Service-Anwendungszugriff aktiviert sind. Außerdem wird genehmigenden Personen des Unternehmens in ihrem „Meine Apps“-Portal eine Benachrichtigung angezeigt. Sie können festlegen, dass sie in einer E-Mail darüber benachrichtigt werden, dass ein Benutzer den Zugriff auf eine Anwendung angefordert hat, der zu genehmigen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

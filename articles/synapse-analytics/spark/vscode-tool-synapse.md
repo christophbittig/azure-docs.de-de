@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: 83d8d6498a5ec4906f7cdd7187ae88e4a2f45126
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 07168ec69046973d4e02c2dc40b3b5e256ea26b4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318025"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492111"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>Tutorial: Erstellen einer Apache Spark-Anwendung mit VS Code mithilfe eines Synapse-Arbeitsbereichs
 
@@ -192,6 +192,29 @@ for (word, count) in sortedCollection:
 >2. Wechseln Sie zum Synapse PySpark-Kernel. Wir empfehlen Ihnen, die automatischen Einstellungen im Azure-Portal zu deaktivieren. Andernfalls kann es sehr lange dauern, den Cluster zu aktivieren und den Synapse-Kernel für die erstmalige Verwendung festzulegen. 
 >
 >    ![Automatische Einstellungen](./media/vscode-tool-synapse/auto-settings.png)
+
+## <a name="spark-session-config"></a>Spark-Sitzungskonfiguration
+
+Sie können in **Sitzung konfigurieren** die Timeoutdauer sowie die Anzahl und Größe der Executors angeben, die für die aktuelle Spark-Sitzung gelten sollen. Sie müssen die Spark-Sitzung neu starten, damit die Konfigurationsänderungen wirksam werden. Alle zwischengespeicherten Notebook-Variablen werden gelöscht.
+
+```python
+%%configure -f
+{
+    // refer to https://github.com/cloudera/livy#request-body for a list of valid parameters to config the session.
+    "driverMemory":"2g",
+    "driverCores":3,
+    "executorMemory":"2g",
+    "executorCores":2,
+    "jars":[],
+    "conf":{
+        "spark.driver.maxResultSize":"10g"
+    }
+}
+```
+
+> [!NOTE]
+>
+> Die Anzeigefunktion und Spark SQL werden in der Ausgabezelle möglicherweise nicht richtig gerendert. 
 
 ## <a name="submit-pyspark-batch-job-to-spark-pool"></a>Übermitteln eines PySpark-Batchauftrags an den Spark-Pool
 

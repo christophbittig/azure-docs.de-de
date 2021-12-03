@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: azure-monitor
 author: rboucher
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
-ms.openlocfilehash: 5f2b77c7d8e1a2da9517183043231b717b6cceab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f691f760c9abfed773db8602f878dfc7ba0c08ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101734041"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520692"
 ---
 ### <a name="general-query-limits"></a>Allgemeine Abfragegrenzwerte
 
@@ -29,10 +29,10 @@ In Azure Monitor gelten mehrere Drosselungsgrenzwerte zum Schutz vor einer über
 
 | "Measure" | Grenzwert pro Benutzer | BESCHREIBUNG |
 |:---|:---|:---|
-| Gleichzeitige Abfragen | 5 | Wenn für den Benutzer bereits fünf Abfragen ausgeführt werden, werden alle neuen Abfragen in eine Parallelitätswarteschlange pro Benutzer eingereiht. Wenn eine der ausgeführten Abfragen beendet wird, wird die nächste Abfrage aus der Warteschlange abgerufen und gestartet. Das bezieht sich nicht auf Abfragen aus Warnungsregeln.
+| Gleichzeitige Abfragen | 5 | Ein Benutzer kann bis zu 5 Abfragen gleichzeitig ausführen. Jede zusätzliche Abfrage wird einer Warteschlange hinzugefügt. Sobald eine der laufenden Abfragen abgeschlossen ist, wird die erste wartende Abfrage aus der Warteschlange abgerufen und ausgeführt. Hinweis: Dieser Grenzwert gilt nicht für Warnungsabfragen.
 | Zeit in der Parallelitätswarteschlange | 3 Minuten | Wenn sich eine Abfrage länger als drei Minuten in der Warteschlange befindet, ohne zu starten, wird sie mit einer HTTP-Fehlerantwort mit dem Code 429 beendet. |
-| Gesamtanzahl von Abfragen in der Parallelitätswarteschlange | 200 | Sobald die Anzahl von Abfragen in der Warteschlange 200 erreicht, werden alle weiteren Abfragen mit dem HTTP-Fehlercode 429 abgelehnt. Diese Zahl gilt zusätzlich zu den fünf Abfragen, die gleichzeitig ausgeführt werden können. |
-| Abfragerate | 200 Abfragen pro 30 Sekunden | Dies ist die Gesamtrate, mit der Abfragen von einem einzelnen Benutzer an alle Arbeitsbereiche übermittelt werden können.  Dieser Grenzwert gilt für programmgesteuerte Abfragen und für Abfragen, die von Visualisierungskomponenten wie Azure-Dashboards und der Zusammenfassungsseite für den Log Analytics-Arbeitsbereich initiiert wurden. |
+| Gesamtanzahl von Abfragen in der Parallelitätswarteschlange | 200 | Sobald die Anzahl von Abfragen in der Warteschlange 200 erreicht hat, wird die nächste Abfrage mit dem HTTP-Fehlercode 429 abgelehnt. Diese Zahl gilt zusätzlich zu den 5 Abfragen, die gleichzeitig ausgeführt werden können. |
+| Abfragerate | 200 Abfragen pro 30 Sekunden | Dies ist die Gesamtrate, mit der Abfragen von einem einzelnen Benutzer an alle Arbeitsbereiche übermittelt werden können. Dieser Grenzwert gilt für programmgesteuerte Abfragen und für Abfragen, die von Visualisierungskomponenten wie Azure-Dashboards und der Zusammenfassungsseite für den Log Analytics-Arbeitsbereich initiiert wurden. |
 
 - Optimieren Sie Ihre Abfragen wie unter [Optimieren von Protokollabfragen in Azure Monitor](../articles/azure-monitor/logs/query-optimization.md) beschrieben.
 - Dashboards und Arbeitsmappen können mehrere Abfragen in einer einzelnen Ansicht enthalten, die bei jedem Laden oder Aktualisieren einen Burst von Abfragen generieren. Zerlegen Sie sie ggf. in mehrere Ansichten, die bedarfsgesteuert geladen werden. 

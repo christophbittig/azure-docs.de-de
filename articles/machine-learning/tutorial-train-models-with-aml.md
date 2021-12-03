@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 10/19/2021
+ms.date: 10/21/2021
 ms.custom: seodec18, devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 305ad833ea34ef51ca1ed0e636dd442238d7a654
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 4f29290c96b5f9603b4d626a8f87ee1c75168abc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238245"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289716"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>Tutorial: Trainieren eines Bildklassifizierungsmodells mit einer Jupyter Notebook-Beispielinstanz 
 
@@ -35,7 +35,7 @@ In [Teil 2 dieses Tutorials](tutorial-deploy-models-with-aml.md) erfahren Sie, w
 
 Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 
->[!NOTE]
+> [!NOTE]
 > Der Code in diesem Artikel wurde mit Version 1.13.0 des Azure [Machine Learning SDK](/python/api/overview/azure/ml/intro) getestet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -52,6 +52,9 @@ Azure Machine Learning enthält einen cloudbasierten Notebook-Server in Ihrem Ar
  Sehen Sie sich das folgende Video an, oder führen Sie die angegebenen detaillierten Schritte aus, um das Notebook für das Tutorial über Ihren Arbeitsbereich zu klonen und auszuführen.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
+
+> [!NOTE]
+> Das Video hilft Ihnen, den Prozess zu verstehen, zeigt jedoch das Öffnen einer anderen Datei.  Öffnen Sie in diesem Tutorial nach dem Klonen des Ordners **tutorials** die Datei **img-classification-part1-training.ipynb** im Ordner **tutorials/image-classification-mnist-data**.
 
 ### <a name="clone-a-notebook-folder"></a><a name="clone"></a> Klonen eines Notebook-Ordners
 

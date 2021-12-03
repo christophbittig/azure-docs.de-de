@@ -12,18 +12,21 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/11/2021
-ms.openlocfilehash: 4bcfc687e1a91fd2ecc652ced2481963974e155f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1011306cb83403b13f90fe3969470ed9722da2e1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643344"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554191"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 In diesem Artikel wird gezeigt, wie Sie eine Azure Active Directory-Instanz (Azure AD) erstellen und mit Daten auffüllen sowie Azure AD anschließend mit [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) verwenden. Eine Übersicht finden Sie im Artikel zur [Azure Active Directory-Authentifizierung](authentication-aad-overview.md).
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD-Authentifizierungsmethoden
 
@@ -330,7 +333,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 Sie können einen Azure AD-Administrator bereitstellen, indem Sie die folgenden CLI-Befehle aufrufen:
 
-| Get-Help | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) | Stellt einen Azure Active Directory-Administrator für den Server bereit, der SQL-Datenbank oder Azure Synapse hostet. (Muss aus dem aktuellen Abonnement stammen.) |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) | Entfernt einen Azure Active Directory-Administrator für den Server, der SQL-Datenbank oder Azure Synapse hostet. |

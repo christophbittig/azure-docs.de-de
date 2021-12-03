@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/07/2021
+ms.date: 11/15/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 1e08dc5c0dc0d8e427de9ae1ebc53f16cb8e015a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: d4e86f2dc3df62b90c45d27d9034e1b97d9b4870
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043603"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522040"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -26,7 +26,7 @@ Vergewissern Sie sich zunächst, dass Sie mit den Konzepten der App-Verwaltung u
 - [Schnellstartserie zur App-Verwaltung in Azure AD](../manage-apps/view-applications-portal.md)
 - [Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?](../manage-apps/what-is-single-sign-on.md)
 
-Es ist eine vorkonfigurierte Sammlung von Attributen und Attributzuordnungen zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Apps verfügbar. Einige Apps verwalten neben Benutzern andere Objekttypen wie beispielsweise Gruppen.
+Es gibt vorkonfigurierte Attribute und Attributzuordnungen zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Apps. Einige Apps verwalten neben Benutzern andere Objekttypen wie beispielsweise Gruppen.
 
 Sie können die Standardattributzuordnungen den Anforderungen Ihres Unternehmens entsprechend anpassen. Dies bedeutet, dass Sie vorhandene Attributzuordnungen ändern oder löschen und neue Attributzuordnungen erstellen können.
 
@@ -258,6 +258,7 @@ Die PATCH- und die POST-Anforderung haben ein unterschiedliches Anforderungsform
   - **Zu beachtende Aspekte**
     - Alle Rollen werden mit „primary = false“ bereitgestellt.
     - Die POST-Anforderung enthält den Rollentyp. Die PATCH-Anforderung enthält keinen Typ. Wir arbeiten daran, den Typ sowohl in POST- als auch in PATCH-Anforderungen zu senden.
+    - AppRoleAssignmentsComplex ist mit dem Festlegen des Bereichs auf „Alle Benutzer und Gruppen synchronisieren“ nicht kompatibel. 
     
   - **Beispielausgabe** 
   
@@ -331,7 +332,7 @@ Durch die Auswahl dieser Option wird eine erneute Synchronisierung aller Benutze
 - Microsoft Azure AD stellt eine effiziente Implementierung eines Synchronisierungsprozesses zur Verfügung. In einer initialisierten Umgebung werden nur Objekte, die eine Aktualisierung erfordern, während eines Synchronisierungszyklus verarbeitet.
 - Das Aktualisieren von Attributzuordnungen hat Auswirkungen auf die Leistung eines Synchronisierungszyklus. Nach einer Aktualisierung der Attributzuordnungskonfiguration müssen alle verwalteten Objekte erneut ausgewertet werden.
 - Es hat sich bewährt, die Anzahl der aufeinanderfolgenden Änderungen an Attributzuordnungen so gering wie möglich zu halten.
-- Das Hinzufügen eines Fotoattributs, das für eine App bereitgestellt werden soll, wird derzeit nicht unterstützt, da das Format zur Synchronisierung des Fotos nicht angegeben werden kann. Sie können das Feature über [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory) anfordern.
+- Das Hinzufügen eines Fotoattributs, das für eine App bereitgestellt werden soll, wird derzeit nicht unterstützt, da das Format zur Synchronisierung des Fotos nicht angegeben werden kann. Sie können das Feature über [User Voice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) anfordern.
 - Das Attribut „IsSoftDeleted“ ist häufig Teil der Standardzuordnungen für eine Anwendung. „IsSoftdeleted“ kann in einem von vier Szenarien „true“ sein (der Benutzer ist außerhalb des gültigen Bereichs, weil seine Zuweisung zur Anwendung aufgehoben wurde, der Benutzer ist außerhalb des gültigen Bereichs, da er nicht dem Bereichsfilter entspricht, der Benutzer wurde in Azure AD vorläufig gelöscht, oder die Eigenschaft „AccountEnabled“ ist für den Benutzer auf „false“ festgelegt). Es wird nicht empfohlen, das IsSoftDeleted-Attribut aus den Attributzuordnungen zu entfernen.
 - Der Azure AD-Bereitstellungsdienst unterstützt nicht die Bereitstellung von NULL-Werten.
 - Der Primärschlüssel (in der Regel „ID“) sollte nicht als Zielattribut in den Attributzuordnungen enthalten sein. 

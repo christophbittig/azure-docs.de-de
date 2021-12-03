@@ -8,16 +8,19 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 08/25/2021
 ms.custom: devx-track-java, subject-rbac-steps
-ms.openlocfilehash: ce5905b43d37faf3b1a6965ae04efb9f8f73c2ff
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 9c4a5715af9fe98f5e577410219a54368c27b6df
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835880"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054873"
 ---
 # <a name="access-config-server-and-service-registry"></a>Zugreifen auf Config Server und Service Registry
 
 In diesem Artikel wird erläutert, wie Sie mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure Active Directory (Azure AD) auf Spring Cloud Config Server und Spring Cloud Service Registry zugreifen, die von Azure Spring Cloud verwaltet werden.
+
+> [!NOTE]
+> Anwendungen, die im Azure Spring Cloud-Dienst bereitgestellt und ausgeführt werden, werden automatisch mit der zertifikatbasierten Authentifizierung und Autorisierung vernetzt, wenn sie auf den verwalteten Spring Cloud-Konfigurationsserver (Config Server) und die -Dienstregistrierung zugreifen. Sie müssen diese Anleitung für diese Anwendungen nicht befolgen. Die zugehörigen Zertifikate werden vollständig von der Azure Spring Cloud-Plattform verwaltet und automatisch in Ihre Anwendung eingefügt, wenn eine Verbindung mit Config Server und der Dienstregistrierung besteht.
 
 ## <a name="assign-role-to-azure-ad-usergroup-msi-or-service-principal"></a>Zuweisen einer Rolle zu einem Azure AD-Benutzer bzw. einer Azure AD-Gruppe, einem MSI oder Dienstprinzipal
 

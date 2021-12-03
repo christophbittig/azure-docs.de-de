@@ -1,18 +1,18 @@
 ---
 title: Konfigurieren der Tunnelerzwingung
 description: Hier erfahren Sie, wie Sie die Ausführung Ihrer App Service-Umgebung ermöglichen, wenn in Ihrem virtuellen Netzwerk das Tunneling für ausgehenden Datenverkehr erzwungen wird.
-author: ccompy
+author: madsd
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.topic: quickstart
 ms.date: 05/29/2018
-ms.author: ccompy
+ms.author: madsd
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8d05b4f8e69023e1ecec7002f394141fff008f0d
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: e0d43424e038328f82d3639891aa85397f68d3ad
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432966"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519608"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling
 > [!NOTE]

@@ -8,16 +8,16 @@ metadata:
   ms.service: active-directory
   ms.workload: identity
   ms.topic: reference
-  ms.date: 09/10/2021
+  ms.date: 10/18/2021
   ms.subservice: hybrid
   ms.author: billmath
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 45a4273ccdfa76eb158ca8fd2ce51161fc3993b1
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 6fec249a2bbd45c478fec4b35abcdc780ee9bdab
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124771344"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130240792"
 title: Häufig gestellte Fragen zur Azure Active Directory Connect-Cloudsynchronisierung
 summary: >
   Lesen Sie hier häufig gestellte Fragen zur Azure Active Directory Connect-Cloudsynchronisierung (Azure AD).
@@ -93,4 +93,7 @@ sections:
   - question: >
       Unterstützt die Cloudsynchronisierung von Azure AD Connect große Gruppen?
     answer: "Ja. Wir unterstützen heute bis zu 50.000 Gruppenmitglieder, die mithilfe der OE-Bereichsfilterung synchronisiert werden. \n"
+  - question: >
+      Führt der Cloudbereitstellungs-Agent einen Lastenausgleich durch, wenn mehrere Agents installiert sind?
+    answer: "Nein. Es ist immer nur ein Agent aktiv. \n"
 additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte \n\n- [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)\n- [Worum handelt es sich bei der Azure AD Connect-Cloudsynchronisierung?](what-is-cloud-sync.md)\n        \n"

@@ -6,19 +6,19 @@ metadata:
   ms.service: active-directory
   ms.subservice: B2B
   ms.topic: reference
-  ms.date: 10/13/2021
+  ms.date: 10/21/2021
   ms.author: mimart
   author: msmimart
   manager: celestedg
   ms.reviewer: mal
   ms.custom: it-pro, seo-update-azuread-jan
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: a714fbb9f5483c8b52480d5fbe41229d655609c8
-  ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+  ms.openlocfilehash: 661d38755cdaeea830b025fa2747b45d43b4c5d2
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130072555"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132490153"
 title: Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 summary: >
   Diese häufig gestellten Fragen (FAQs) zur Azure AD B2B-Zusammenarbeit (Azure Active Directory Business-to-Business) werden regelmäßig mit neuen Themen aktualisiert.
@@ -28,7 +28,7 @@ summary: >
 
   > - **Am 4. Januar 2021** wird Google [die Unterstützung für die WebView-Anmeldung einstellen](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Wenn Sie einen Google-Verbund oder die Self-Service-Registrierung mit Gmail verwenden, sollten Sie [Ihre nativen Branchenanwendungen auf Kompatibilität testen](google-federation.md#deprecation-of-web-view-sign-in-support).
 
-  > - **Ab dem 1. November 2021** unterstützt Microsoft nicht mehr das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B-Zusammenarbeit. Zu diesem Zeitpunkt werden wir damit beginnen, die Einmalkennung per E-Mail für alle bestehenden Mandanten zu aktivieren und für neue Mandanten zur Standardeinstellung zu machen. Wenn Sie nicht möchten, dass diese Funktion automatisch aktiviert wird, können Sie sie [deaktivieren](one-time-passcode.md#disable-email-one-time-passcode).
+  > - **Ab 1. November 2021** wird mit der Aktivierung des Features „Einmalkennung per E-Mail“ für alle bestehenden Mandanten begonnen. Bei neuen Mandanten wird es standardmäßig aktiviert. Im Rahmen dieser Änderung erstellt Microsoft während der Einlösung von Einladungen für die B2B-Zusammenarbeit keine neuen, nicht verwalteten („viralen“) Azure AD-Konten und -Mandanten mehr. Um Unterbrechungen während Feiertagen und Bereitstellungssperren zu minimieren, findet das Rollout der Änderungen für die meisten Mandanten im Januar 2022 statt. Wir aktivieren die Funktion „Einmalkennung per E-Mail“, da sie eine nahtlose alternative Authentifizierungsmethode für Ihre Gastbenutzer bietet. Wenn Sie jedoch nicht möchten, dass dieses Feature automatisch aktiviert wird, können Sie es [deaktivieren](one-time-passcode.md#disable-email-one-time-passcode).
 sections:
 - name: Allgemein
   questions:
@@ -129,4 +129,8 @@ sections:
       Welche Lizenzen sind für die Verwendung von Azure AD B2B erforderlich?
     answer: >
       Informationen darüber, welche Lizenzen Ihre Organisation für die Verwendung von Azure AD B2B benötigt, finden Sie unter [Preise für externe Identitäten](external-identities-pricing.md).
+  - question: >
+      Können sich Benutzer der B2B-Zusammenarbeit mit ihrer nicht als UPN registrierten E-Mail-Adresse anmelden?
+    answer: >
+      Ja. Weitere Informationen zu E-Mails als alternative Anmelde-ID für die B2B-Zusammenarbeit finden Sie unter [Anmeldung bei Azure AD mit einer E-Mail-Adresse als alternative Anmelde-ID (Vorschau)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-use-email-signin#b2b-guest-user-sign-in-with-an-email-address).
 additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n[Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)\n"

@@ -5,15 +5,15 @@ services: app-service
 author: asw101
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 10/25/2021
+ms.date: 11/02/2021
 ms.author: aawislan
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1fa71d13aa43d9fd681ab3eb6799734ea65c1482
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cbca0dbd5449e5461e938d7c252c06f2ef0c18e3
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095476"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578915"
 ---
 # <a name="tutorial-deploy-a-dapr-application-to-azure-container-apps-using-the-azure-cli"></a>Tutorial: Bereitstellen einer Dapr-Anwendung in Azure Container Apps mithilfe der Azure CLI
 
@@ -131,6 +131,22 @@ az extension add \
 ```azurecli
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl 
+```
+
+---
+
+Nachdem die Erweiterung installiert wurde, registrieren Sie den `Microsoft.Web` Namespace.
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+az provider register --namespace Microsoft.Web
 ```
 
 ---
@@ -279,7 +295,9 @@ Verwenden Sie den folgenden Befehl, um den Speicherkontoschlüssel abzurufen.
 
 ```bash
 STORAGE_ACCOUNT_KEY=`az storage account keys list --resource-group $RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query '[0].value' --out tsv`
+```
 
+```bash
 echo $STORAGE_ACCOUNT_KEY
 ```
 
@@ -287,7 +305,9 @@ echo $STORAGE_ACCOUNT_KEY
 
 ```powershell
 $STORAGE_ACCOUNT_KEY=(az storage account keys list --resource-group $RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query '[0].value' --out tsv)
+```
 
+```powershell
 echo $STORAGE_ACCOUNT_KEY
 ```
 
@@ -421,11 +441,11 @@ Sie können überprüfen, ob die Dienste ordnungsgemäß funktionieren, indem Si
 
 1. Klicken Sie auf die Registerkarte **Bearbeiten.**
 
-1. Klicken Sie auf die Schaltfläche **Aktualisieren,** um Updates zu sehen.
+1. Klicken Sie auf die Schaltfläche **Aktualisieren**, um zu sehen, wie die Daten automatisch aktualisiert werden.
 
 ### <a name="view-logs"></a>Protokolle anzeigen
 
-Daten, die über eine Container-App protokolliert werden, werden in der benutzerdefinierten Tabelle `ContainerAppConsoleLogs_CL` im Log Analytics-Arbeitsbereich gespeichert. Sie können Protokolle über das Azure-Portal oder mit der CLI anzeigen.
+Daten, die über eine Container-App protokolliert werden, werden in der benutzerdefinierten Tabelle `ContainerAppConsoleLogs_CL` im Log Analytics-Arbeitsbereich gespeichert. Sie können Protokolle über das Azure-Portal oder mit der CLI anzeigen. Möglicherweise müssen Sie einige Minuten warten, bis die Analyse zum ersten Mal ankommt, bevor Sie die protokollierten Daten abfragen können.
 
 Verwenden Sie den folgenden CLI-Befehl, um Protokolle in der Befehlszeile anzuzeigen.
 

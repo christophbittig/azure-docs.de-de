@@ -3,12 +3,12 @@ title: Einführung in Azure Advisor
 description: Nutzen Sie Azure Advisor, um Ihre Azure-Bereitstellungen zu optimieren.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48423a56983f052e9e048fca111fd77b9188a577
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91405206"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494360"
 ---
 # <a name="introduction-to-azure-advisor"></a>Einführung in Azure Advisor
 
@@ -57,7 +57,7 @@ Sie können als *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements, einer 
 
 Advisor bietet Empfehlungen für Application Gateway, App Services, Verfügbarkeitsgruppen, Azure Cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, öffentliche Azure-IP-Adressen, Azure Synapse Analytics, SQL-Server, Speicherkonten, Traffic Manager-Profile und virtuelle Computer.
 
-Außerdem enthält Azure Advisor auch Ihre Empfehlungen aus dem [Azure Security Center](../security-center/security-center-recommendations.md), zu denen auch Empfehlungen für weitere Ressourcentypen gehören können.
+Außerdem enthält Azure Advisor auch Ihre Empfehlungen aus [Microsoft Defender für Cloud](../defender-for-cloud/defender-for-cloud-introduction.md), zu denen auch Empfehlungen für weitere Ressourcentypen gehören können.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Kann ich eine Empfehlung zurückstellen oder verwerfen?
 

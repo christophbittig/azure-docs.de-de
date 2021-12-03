@@ -73,6 +73,8 @@
               href: manage-vm-extensions-powershell.md
             - name: Bereitstellen von Erweiterungen mithilfe einer ARM-Vorlage
               href: manage-vm-extensions-template.md
+            - name: Automatisches Erweiterungsupgrade
+              href: manage-automatic-vm-extension-upgrade.md
         - name: Verwenden von verwalteten Identitäten auf einem Server
           href: managed-identity-authentication.md
         - name: Agent verwalten
@@ -83,10 +85,10 @@
       items:
         - name: Testen von Servern mit Arc-Unterstützung mithilfe eines virtuellen Azure-Computers
           href: plan-evaluate-on-azure-virtual-machine.md
-        - name: Durchführen des Onboardings in Azure Sentinel
+        - name: Durchführen des Onboardings in Microsoft Sentinel
           href: scenario-onboard-azure-sentinel.md
-        - name: Durchführen des Onboardings in Azure Security Center
-          href: ../../security-center/quickstart-onboard-machines.md
+        - name: "Durchführen des Onboardings in Microsoft\_Defender für Cloud"
+          href: ../../defender-for-cloud/quickstart-onboard-machines.md
     - name: Problembehandlung
       items:
         - name: Agent-Verbindungsprobleme
@@ -100,13 +102,13 @@
     - name: Azure CLI
       href: /cli/azure/connectedmachine
     - name: Azure PowerShell
-      href: /powershell/module/az.connectedmachine
+      href: /powershell/module/az.connectedmachine/
     - name: .NET
       href: /dotnet/api/overview/azure/hybridcompute/management
     - name: 'Azure Stack HCI: REST'
-      href: /rest/api/stackhci
+      href: /rest/api/stackhci/
     - name: REST
-      href: /rest/api/hybridcompute
+      href: /rest/api/hybridcompute/
     - name: Go
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/hybridcompute/mgmt/2020-08-02/hybridcompute'
     - name: Java

@@ -8,12 +8,12 @@ ms.author: kgremban
 ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: e7ded6eb8b3e8ee44594e75eb22b920c4e0649b6
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 5f546acb48a84ddddeb822601d9284818d2211fb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037584"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423069"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Entwickeln und Debuggen von Modulen für Azure IoT Edge mithilfe von Visual Studio 2019
 
@@ -164,6 +164,9 @@ Um das Tool zu initialisieren, geben Sie eine IoT Edge-Geräteverbindungszeichen
 
 In der Regel möchten Sie jedes Modul testen und debuggen, bevor Sie es in einer Gesamtlösung mit mehreren Modulen ausführen.
 
+>[!TIP]
+>Stellen Sie sicher, dass Sie in den richtigen Docker-Containermodus gewechselt sind. Je nach dem, welchen Typ von IoT Edge-Modul Sie entwickeln, ist dies entweder der Linux-Containermodus oder der Windows-Containermodus. Im Docker-Desktopmenü können Sie zwischen den zwei Typen von Modi wechseln. Wählen Sie **Switch to Windows containers** (Zu Windows-Containern wechseln) aus, um Windows-Container zu verwenden, oder wählen Sie **Switch to Linux containers** aus, um Linux-Container zu verwenden. 
+
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Modulordner, und wählen Sie im Menü **Als Startprojekt festlegen** aus.
 
    ![Startprojekt festlegen](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
@@ -205,7 +208,7 @@ Nachdem Sie ein Einzelmodul entwickelt haben, möchten Sie jetzt vielleicht eine
 1. Öffnen Sie die Datei `deployment.template.json`. Dann sehen Sie, dass das neue Modul im Abschnitt **modules** hinzugefügt wurde. Dem Abschnitt **routes** wurde auch eine neue Route hinzugefügt, um Nachrichten aus dem neuen Modul an IoT Hub zu senden. Wenn Sie Daten vom simulierten Temperatursensor an das neue Modul senden möchten, fügen Sie eine weitere Route wie im folgenden Beispiel hinzu: 
 
     ```json
-   "sensorTo<NewModuleName>&quot;: &quot;FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/<NewModuleName>/inputs/input1\")"
+   "sensorTo<NewModuleName>": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/<NewModuleName>/inputs/input1\")"
     ```
 
 1. Klicken Sie mit der rechten Maustaste auf den Projektordner, und wählen Sie im Kontextmenü **Als Startprojekt festlegen** aus.
@@ -246,7 +249,7 @@ Nachdem Sie ein Einzelmodul entwickelt haben, möchten Sie jetzt vielleicht eine
     ```
 
    >[!NOTE]
-   >In diesem Artikel werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
+   >In diesem Artikel werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Projektordner, und wählen Sie **IoT Edge-Module erstellen und pushen** aus, um das Docker-Image für jedes Modul zu kompilieren und zu pushen.
 

@@ -5,16 +5,16 @@ author: normesta
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 11/10/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9346c4e060e5cf4dcd3db7ee58f093f61cc2c646
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 12074ad5eb94f422fb60b1d5f0797bd1b6cc8fcd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818812"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335478"
 ---
 # <a name="monitoring-azure-table-storage"></a>Überwachen von Azure-Tabellenspeicher
 
@@ -246,7 +246,7 @@ Hier sehen Sie ein Beispiel:
 
 #### <a name="send-logs-to-log-analytics"></a>Senden von Protokollen an Log Analytics
 
-Aktivieren Sie Protokolle mit dem Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create).
+Verwenden Sie für das Aktivieren von Protokollen den Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create).
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
@@ -317,6 +317,16 @@ Sie können die Metrikwerte auf der Kontoebene Ihres Speicherkontos oder des Tab
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
+#### <a name="reading-metric-values-with-dimensions"></a>Lesen von Metrikwerten mit Dimensionen
+
+Wenn eine Metrik Dimensionen unterstützt, können Sie Metrikwerte lesen und sie mithilfe von Dimensionswerten filtern. Verwenden Sie das Cmdlet [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric).
+
+```powershell
+$resourceId = "<resource-ID>"
+$dimFilter = [String](New-AzMetricFilter -Dimension ApiName -Operator eq -Value "QueryEntities" 3> $null)
+Get-AzMetric -ResourceId $resourceId -MetricName Transactions -TimeGrain 01:00:00 -MetricFilter $dimFilter -AggregationType "Total"
+```
+
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>Auflisten der Metrikdefinition auf Kontoebene
@@ -335,6 +345,14 @@ Sie können die Metrikwerte Ihres Speicherkontos oder des Tabellenspeicherdienst
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
+```
+
+#### <a name="reading-metric-values-with-dimensions"></a>Lesen von Metrikwerten mit Dimensionen
+
+Wenn eine Metrik Dimensionen unterstützt, können Sie Metrikwerte lesen und sie mithilfe von Dimensionswerten filtern. Verwenden Sie den Befehl [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list).
+
+```azurecli
+az monitor metrics list --resource <resource-ID> --metric "Transactions" --interval PT1H --filter "ApiName eq 'QueryEntities' " --aggregation "Total" 
 ```
 
 ### <a name="net-sdk"></a>[.NET SDK](#tab/azure-portal)

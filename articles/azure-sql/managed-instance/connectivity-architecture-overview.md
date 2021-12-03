@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova
 ms.date: 04/29/2021
-ms.openlocfilehash: 0a9775691780a855824569f77a0bf4a1d3bf295b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 04a275c0e4bc9c3eb52fee8b02ea2606e52d4958
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657764"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554064"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Konnektivitätsarchitektur für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,6 +30,9 @@ SQL Managed Instance wird im virtuellen Azure-Netzwerk und dem für verwaltete I
 - Die Möglichkeit, eine Verbindung von einem lokalen Netzwerk mit SQL Managed Instance herzustellen.
 - Die Möglichkeit, eine Verbindung von SQL Managed Instance mit einem Verbindungsserver oder einem anderen lokalen Datenspeicher herzustellen.
 - Die Möglichkeit, eine Verbindung von SQL Managed Instance mit Azure-Ressourcen herzustellen.
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="communication-overview"></a>Kommunikationsübersicht
 
@@ -100,16 +103,16 @@ Dienstendpunkte können zum Konfigurieren von Firewallregeln für virtuelle Netz
 
 Stellen Sie SQL Managed Instance in einem dedizierten Subnetz im virtuellen Netzwerk bereit. Das Subnetz muss diese Merkmale aufweisen:
 
-- **Dediziertes Subnetz**: Das Subnetz der verwalteten Instanz darf keinen anderen Clouddienst enthalten, der mit ihm verbunden ist (andere verwaltete Instanzen sind jedoch zulässig), und darf kein Gatewaysubnetz sein. Das Subnetz darf keine Ressourcen außer den verwalteten Instanzen enthalten, und Sie können später keine Arten von Ressourcen im Subnetz hinzufügen.
+- **Dediziertes Subnetz:** Das Subnetz von SQL Managed Instance darf keinen anderen Clouddienst enthalten, der damit verbunden ist (andere verwaltete Instanzen sind jedoch zulässig), und darf kein Gatewaysubnetz sein. Das Subnetz darf keine Ressourcen außer den verwalteten Instanzen enthalten, und Sie können später keine Arten von Ressourcen im Subnetz hinzufügen.
 - **Subnetzdelegierung:** Das Subnetz von SQL Managed Instance muss an den Ressourcenanbieter `Microsoft.Sql/managedInstances` delegiert werden.
 - **Netzwerksicherheitsgruppe (NSG)** : Eine NSG muss dem Subnetz von SQL Managed Instance zugeordnet werden. Sie können eine NSG verwenden, um den Zugriff auf den Datenendpunkt von SQL Managed Instance zu steuern, indem Sie Datenverkehr an Port 1433 und die Ports 11000 bis 11999 filtern, wenn SQL Managed Instance für Verbindungsumleitungen konfiguriert ist. Der Dienst stellt automatisch die [Regeln](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) zur Verfügung, die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, und hält sie auf dem neuesten Stand.
 - **Benutzerdefinierte Routingtabelle (User Defined Route, UDR):** Eine UDR-Tabelle muss dem Subnetz von SQL Managed Instance zugeordnet werden. Sie können der Routingtabelle Einträge hinzufügen, um Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über das virtuelle Netzwerkgateway oder das virtuelle Netzwerkgerät (Network Appliance, NVA) zu leiten. Der Dienst stellt automatisch die [Einträge](#mandatory-user-defined-routes-with-service-aided-subnet-configuration) zur Verfügung, die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, und hält sie auf dem neuesten Stand.
 - **Ausreichende IP-Adressen**: Das Subnetz von SQL Managed Instance muss mindestens 32 IP-Adressen umfassen. Weitere Informationen finden Sie unter [Ermitteln der Größe des Subnetzes für SQL Managed Instance](vnet-subnet-determine-size.md). Sie können verwaltete Instanzen im [vorhandenen Netzwerk](vnet-existing-add-subnet.md) bereitstellen, nachdem Sie dieses entsprechend den [Netzwerkanforderungen für SQL Managed Instance](#network-requirements) konfiguriert haben. Erstellen Sie andernfalls ein [neues Netzwerk und Subnetz](virtual-network-subnet-create-arm-template.md).
-- **Entsperrte Ressourcen:** Das virtuelle Netzwerk, das das an SQL Managed Instance delegierte Subnetz enthält, darf keine [Schreib- oder Löschsperren](../../azure-resource-manager/management/lock-resources.md) für die virtuelle Netzwerkressource, ihre übergeordnete Ressourcengruppe oder das Abonnement aufweisen. Das Sperren des virtuellen Netzwerks oder der übergeordneten Ressourcen kann verhindern, dass SQL Managed Instance die regelmäßige Wartung abschließt. Außerdem kann es die Leistung beeinträchtigen, Fehlerkorrekturen verzögern, die Einhaltung gesetzlicher Bestimmungen verhindern, zur Durchführung von Vorgängen außerhalb von SLOs führen und die Instanz unbrauchbar machen.
-- **Zulässig durch Azure-Richtlinien:** Wenn Sie [Azure Policy](../../governance/policy/overview.md) nutzen, um das Erstellen, Ändern und Löschen von Ressourcen über Verweigerungen in dem Geltungsbereich zu steuern, der das virtuelle Netzwerk mit dem an SQL Managed Instance delegierten Subnetz einschließt, müssen Sie Maßnahmen ergreifen, um sicherzustellen, dass solche Richtlinien nicht die Bereitstellung oder regelmäßige Wartung von SQL Managed Instance verhindern. Wenn SQL Managed Instance Ressourcen dieser Ressourcentypen nicht erstellen oder verwalten kann, können sie nach einem Wartungsvorgang möglicherweise nicht bereitgestellt oder nicht mehr verwendet werden. Folgende Ressourcentypen müssen von Verweigerungen ausgeschlossen werden:  
-  - Microsoft.Network/serviceEndpointPolicies
-  - Microsoft.Network/networkIntentPolicies
-  - Microsoft.Network/virtualNetworks/subnets/contextualServiceEndpointPolicies
+- **Zulässig durch Azure-Richtlinien:** Wenn Sie [Azure Policy](../../governance/policy/overview.md) verwenden, um das Erstellen oder Ändern von Ressourcen in dem Geltungsbereich zu verweigern, der das Subnetz/virtuelle Netzwerk von SQL Managed Instance umfasst, sollte Managed Instance durch solche Richtlinien nicht an der Verwaltung seiner internen Ressourcen gehindert werden. Die folgenden Ressourcen müssen von Verweigerungen ausgeschlossen werden, um den normalen Betrieb zu ermöglichen:
+  - Ressourcen vom Typ „Microsoft.Network/serviceEndpointPolicies“, wenn der Ressourcenname mit \_e41f87a2\_ beginnt
+  - Alle Ressourcen vom Typ „Microsoft.Network/networkIntentPolicies“
+  - Alle Ressourcen vom Typ „Microsoft.Network/virtualNetworks/subnets/contextualServiceEndpointPolicies“
+- **Sperren für virtuelles Netzwerk:** [Sperren](../../azure-resource-manager/management/lock-resources.md) für das virtuelle Netzwerk, die übergeordnete Ressourcengruppe oder das Abonnement des dedizierten Subnetzes können gelegentlich die Verwaltungs- und Wartungsvorgänge von SQL Managed Instance beeinträchtigen. Seien Sie besonders vorsichtig, wenn Sie solche Sperren verwenden.
 
 > [!IMPORTANT]
 > Wenn Sie eine verwaltete Instanz erstellen, wird eine Netzwerkzielrichtlinie auf das Subnetz angewendet, um nicht konforme Änderungen am Netzwerksetup zu verhindern. Nachdem die letzte Instanz aus dem Subnetz entfernt wurde, wird auch die Netzwerkzielrichtlinie entfernt. Die folgenden Regeln dienen nur zu Informationszwecken und sollten nicht mit ARM-Vorlagen, PowerShell oder der Befehlszeilenschnittstelle bereitgestellt werden. Wenn Sie die neueste offizielle Vorlage verwenden möchten, können Sie diese jederzeit [aus dem Portal abrufen](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
@@ -171,7 +174,7 @@ Die folgenden Features von virtuellen Netzwerken werden derzeit von SQL Managed 
 - **Globales Peering virtueller Netzwerke**: Konnektivität per [Peering virtueller Netzwerke](../../virtual-network/virtual-network-peering-overview.md) über Azure-Regionen hinweg funktioniert nicht für SQL Managed Instances in Subnetzen, die vor dem 22.09.2020 erstellt wurden.
 - **AzurePlatformDNS**: Die Verwendung des AzurePlatformDNS-[Diensttags](../../virtual-network/service-tags-overview.md) zur Blockierung der DNS-Auflösung der Plattform würde dazu führen, dass SQL Managed Instance nicht mehr verfügbar ist. Obwohl SQL Managed Instance kundenspezifisches DNS für die DNS-Auflösung innerhalb der Engine unterstützt, besteht eine Abhängigkeit vom Plattform-DNS für Plattformvorgänge.
 - **NAT-Gateway**: Die Verwendung von [Azure Virtual Network NAT](../../virtual-network/nat-gateway/nat-overview.md) zur Steuerung der ausgehenden Konnektivität mit einer bestimmten öffentlichen IP-Adresse würde dazu führen, dass SQL Managed Instance nicht erreichbar ist. Der SQL Managed Instance-Dienst ist aktuell auf die Verwendung eines Basislastenausgleichs beschränkt, der keine parallelen eingehenden und ausgehenden Flows für Virtual Network NAT zulässt.
-- **IPv6 für Azure Virtual Network:** Bei der Bereitstellung von SQL Managed Instance in [virtuellen Netzwerken mit dualem IPv4/IPv6-Stapel](../../virtual-network/ipv6-overview.md) wird ein Fehler erwartet. Das Zuordnen von Netzwerksicherheitsgruppen (NSG) oder Routingtabellen (UDR) mit IPv6-Adresspräfixen zu einem SQL Managed Instance-Subnetz oder das Hinzufügen von IPv6-Adresspräfixen zu einer NSG oder UDR, die bereits dem Managed Instance-Subnetz zugeordnet ist, würden dazu führen, dass SQL Managed Instance nicht verfügbar ist. Bei der Bereitstellung von SQL Managed Instance in einem Subnetz mit einer NSG und UDR, die bereits über IPv6-Präfixe verfügen, wird ein Fehler erwartet.
+- **IPv6 für Azure Virtual Network:** Bei der Bereitstellung von SQL Managed Instance in [virtuellen Netzwerken mit dualem IPv4/IPv6-Stapel](../../virtual-network/ip-services/ipv6-overview.md) wird ein Fehler erwartet. Das Zuordnen von Netzwerksicherheitsgruppen (NSG) oder Routingtabellen (UDR) mit IPv6-Adresspräfixen zu einem SQL Managed Instance-Subnetz oder das Hinzufügen von IPv6-Adresspräfixen zu einer NSG oder UDR, die bereits dem Managed Instance-Subnetz zugeordnet ist, würden dazu führen, dass SQL Managed Instance nicht verfügbar ist. Bei der Bereitstellung von SQL Managed Instance in einem Subnetz mit einer NSG und UDR, die bereits über IPv6-Präfixe verfügen, wird ein Fehler erwartet.
 - **Azure DNS private Zonen mit Namen, die für Microsoft-Dienste reserviert sind**: Es folgt die Liste der reservierten Namen: windows.net, database.windows.net, core.windows.net, blob.core.windows.net, table.core.windows.net, management.core.windows.net, monitoring.core.windows.net, queue.core.windows.net, graph.windows.net, login.microsoftonline.com, login.windows.net, servicebus.windows.net, vault.azure.net. Die Bereitstellung von SQL Managed Instance in einem virtuellen Netzwerk mit zugehöriger [Azure DNS Private Zone](../../dns/private-dns-privatednszone.md) mit einem für Microsoft-Dienste reservierten Namen würde fehlschlagen. Wenn Sie eine private Azure-DNS-Zone mit reserviertem Namen mit einem virtuellen Netzwerk verknüpfen, welches eine Managed Instance enthält, dann ist die SQL Managed Instance nicht mehr verfügbar. Bitte folgen Sie der [Azure Private Endpoint DNS Konfiguration](../../private-link/private-endpoint-dns.md) für die richtige Private Link Konfiguration.
 - **Dienstendpunktrichtlinien für Azure Storage**: Das Bereitstellen von SQL Managed Instance in einem Subnetz, dem [Service-Endpunktrichtlinien](../../virtual-network/virtual-network-service-endpoint-policies-overview.md) zugeordnet sind, wird fehlschlagen. Dienstendpunktrichtlinien konnten nicht mit einem Subnetz verknüpft werden, das Managed Instance hostet.
 

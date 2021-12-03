@@ -5,22 +5,24 @@ description: Referenzartikel zu az arcdata dc-Befehlen.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: seanw
-ms.date: 07/30/2021
+ms.date: 11/04/2021
 ms.topic: reference
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: f5b804ca5bf0c38165d848f75de7a3cd428fb2f6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 23cbe9c98e3c0ad86704061dadfad0e83f627ac3
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339775"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852958"
 ---
 # <a name="az-arcdata-dc"></a>az arcdata dc
 ## <a name="commands"></a>Befehle
 | Befehl | BESCHREIBUNG|
 | --- | --- |
 [az arcdata dc create](#az-arcdata-dc-create) | Hiermit wird ein Datencontroller erstellt.
+[az arcdata dc upgrade](#az-arcdata-dc-upgrade) | Upgradet den Datencontroller.
+[az arcdata dc list-upgrades](#az-arcdata-dc-list-upgrades) | Listet die verfügbaren Upgradeversionen auf.
 [az arcdata dc delete](#az-arcdata-dc-delete) | Hiermit wird ein Datencontroller gelöscht.
 [az arcdata dc endpoint](reference-az-arcdata-dc-endpoint.md) | Endpunktbefehle
 [az arcdata dc status](reference-az-arcdata-dc-status.md) | Statusbefehle
@@ -29,185 +31,126 @@ ms.locfileid: "122339775"
 [az arcdata dc export](#az-arcdata-dc-export) | Hiermit werden Metriken, Protokolle oder der Verbrauch exportiert.
 [az arcdata dc upload](#az-arcdata-dc-upload) | Hiermit werden exportierte Datendateien hochgeladen.
 ## <a name="az-arcdata-dc-create"></a>az arcdata dc create
-Hiermit wird ein Datencontroller erstellt. Eine Kube-Konfiguration sowie die Umgebungsvariablen ['AZDATA_USERNAME', 'AZDATA_PASSWORD'] müssen in Ihrem System vorhanden sein.
+Erstellt einen Datencontroller: Eine Kube-Konfiguration ist auf Ihrem System erforderlich, zusammen mit Anmeldeinformationen für die Überwachungsdashboards, die von den folgenden Umgebungsvariablen bereitgestellt werden: AZDATA_LOGSUI_USERNAME und AZDATA_LOGSUI_PASSWORD für das Protokolle-Dashboard und AZDATA_METRICSUI_USERNAME und AZDATA_METRICSUI_PASSWORD für das Metriken-Dashboard. Alternativ werden AZDATA_USERNAME und AZDATA_PASSWORD als Fallback verwendet, wenn eine der beiden Sätze von Umgebungsvariablen fehlt.
 ```bash
-az arcdata dc create --k8s-namespace -k 
-                     --name -n  
-                     
---connectivity-mode  
-                     
---resource-group -g  
-                     
---location -l  
-                     
-[--profile-name]  
-                     
-[--path -p]  
-                     
-[--storage-class]  
-                     
-[--infrastructure]  
-                     
-[--labels]  
-                     
-[--annotations]  
-                     
-[--service-annotations]  
-                     
-[--service-labels]  
-                     
-[--storage-labels]  
-                     
-[--storage-annotations]  
-                     
-[--use-k8s]
+az arcdata dc create 
 ```
 ### <a name="examples"></a>Beispiele
-Datencontrollerbereitstellung.
+Bereitstellen eines indirekt verbundenen Datencontrollers.
 ```bash
-az arcdata dc create --name name --k8s-namespace namespace  --connectivity-mode indirect --resource-group group  --location location, --subscription subscription
+az arcdata dc create --name name --k8s-namespace namespace --connectivity-mode indirect --resource-group group  --location location --subscription subscription --use-k8s
 ```
-### <a name="required-parameters"></a>Erforderliche Parameter
-#### `--k8s-namespace -k`
-Der Kubernetes-Namespace, in dem der Datencontroller bereitgestellt werden soll. Wenn er bereits vorhanden ist, wird er verwendet. Ist keiner vorhanden, wird zunächst versucht, ihn zu erstellen.
-#### `--name -n`
-Der Name des Datencontrollers.
-#### `--connectivity-mode`
-Die Konnektivität zu Azure – indirekt oder direkt, die für den Datencontroller gelten soll.
-#### `--resource-group -g`
-Die Azure-Ressourcengruppe, in der die Datencontrollerressource hinzugefügt werden soll.
-#### `--location -l`
-Der Speicherort in Azure, an dem die Metadaten des Datencontrollers gespeichert werden (z. B. eastus).
-### <a name="optional-parameters"></a>Optionale Parameter
-#### `--profile-name`
-Der Name eines vorhandenen Konfigurationsprofils. Führen Sie `az arcdata dc config list` aus, damit verfügbare Optionen angezeigt werden. Einer der folgenden Werte: ['azure-arc-gke', 'azure-arc-eks', 'azure-arc-kubeadm', 'azure-arc-aks-default-storage', 'azure-arc-azure-openshift', 'azure-arc-ake', 'azure-arc-openshift', 'azure-arc-aks-hci', 'azure-arc-aks-premium-storage'].
-#### `--path -p`
-Der Pfad zu einem Verzeichnis, das ein benutzerdefiniertes Konfigurationsprofil enthält, das benutzt werden kann. Führen Sie `az arcdata dc config init` aus, um ein benutzerdefiniertes Konfigurationsprofil zu erstellen.
-#### `--storage-class`
-Die Speicherklasse, die für alle persistenten Volumes für Daten und Protokolle für alle Datencontrollerpods verwendet werden soll, die sie erfordern.
-#### `--infrastructure`
-Die Infrastruktur, in der der Datencontroller ausgeführt wird. Zulässige Werte: ['aws', 'gcp', 'azure', 'alibaba', 'onpremises', 'other', 'auto']
-#### `--labels`
-Durch Komma getrennte Liste von Bezeichnungen, die auf alle Datencontrollerressourcen angewendet werden.
-#### `--annotations`
-Durch Komma getrennte Liste von Anmerkungen, die auf alle Datencontrollerressourcen angewendet werden.
-#### `--service-annotations`
-Durch Komma getrennte Liste von Anmerkungen, die auf alle externen Datencontrollerdienste angewendet werden.
-#### `--service-labels`
-Durch Komma getrennte Liste von Bezeichnungen, die auf alle externen Datencontrollerdienste angewendet werden.
-#### `--storage-labels`
-Durch Komma getrennte Liste von Bezeichnungen, die auf alle vom Datencontroller erstellten PVCs angewendet werden.
-#### `--storage-annotations`
-Durch Komma getrennte Liste von Anmerkungen, die auf alle vom Datencontroller erstellten PVCs angewendet werden.
-#### `--use-k8s`
-Erstellt den Datencontroller unter Verwendung der lokalen Kubernetes-APIs.
+Bereitstellen eines direkt verbundenen Datencontrollers.
+```bash
+az arcdata dc create --name name  --connectivity-mode direct --resource-group group  --location location --subscription subscription  --custom-location custom-location         
+```
 ### <a name="global-arguments"></a>Globale Argumente
 #### `--debug`
 Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen.
 #### `--help -h`
 Zeigen Sie diese Hilfemeldung an, und schließen Sie sie.
 #### `--output -o`
-Ausgabeformat.  Zulässige Werte: „json“, „jsonc“, „none“, „table“, „tsv“, „yaml“, „yamlc“.  Standardwert: json.
+Ausgabeformat.  Zulässige Werte: json, jsonc, table, tsv.  Standardwert: json.
 #### `--query -q`
-JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org](http://jmespath.org).
-#### `--subscription`
-Der Name oder die ID des Abonnements. Sie können das standardmäßig verwendete Abonnement mittels `az account set -s NAME_OR_ID` konfigurieren.
+JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org/](http://jmespath.org).
 #### `--verbose`
-Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden.
+Ausführlichkeit der Protokollierung erhöhen. Verwenden Sie `--debug`, um vollständige Debugprotokolle zu erhalten.
+## <a name="az-arcdata-dc-upgrade"></a>az arcdata dc upgrade
+Upgradet den Datencontroller auf die angegebene gewünschte Version (desired-version).  Wenn die gewünschte Version (desired-version) nicht angegeben ist, wird versucht, ein Upgrade auf die neueste Version durchzuführen. Wenn Sie sich der gewünschten Version nicht sicher sind, können Sie den Befehl „list-upgrades“ verwenden, um verfügbare Versionen anzuzeigen, oder Sie verwenden das Argument „--dry-run“, um anzuzeigen, welche Version verwendet würde.
+```bash
+az arcdata dc upgrade 
+```
+### <a name="examples"></a>Beispiele
+Datencontrollerupgrade.
+```bash
+az arcdata dc upgrade --k8s-namespace namespace --use-k8s
+```
+### <a name="global-arguments"></a>Globale Argumente
+#### `--debug`
+Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen.
+#### `--help -h`
+Zeigen Sie diese Hilfemeldung an, und schließen Sie sie.
+#### `--output -o`
+Ausgabeformat.  Zulässige Werte: json, jsonc, table, tsv.  Standardwert: json.
+#### `--query -q`
+JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org/](http://jmespath.org).
+#### `--verbose`
+Ausführlichkeit der Protokollierung erhöhen. Verwenden Sie `--debug`, um vollständige Debugprotokolle zu erhalten.
+## <a name="az-arcdata-dc-list-upgrades"></a>az arcdata dc list-upgrades
+Versucht, Versionen auflisten, die in der Docker-Imageregistrierung für das Upgrade verfügbar sind. – Eine Kube-Konfiguration sowie die Umgebungsvariablen ['AZDATA_USERNAME', 'AZDATA_PASSWORD'] müssen auf Ihrem System vorhanden sein.
+```bash
+az arcdata dc list-upgrades 
+```
+### <a name="examples"></a>Beispiele
+Datencontrollerupgrade.
+```bash
+az arcdata dc list-upgrades --k8s-namespace namespace --use-k8s            
+```
+### <a name="global-arguments"></a>Globale Argumente
+#### `--debug`
+Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen.
+#### `--help -h`
+Zeigen Sie diese Hilfemeldung an, und schließen Sie sie.
+#### `--output -o`
+Ausgabeformat.  Zulässige Werte: json, jsonc, table, tsv.  Standardwert: json.
+#### `--query -q`
+JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org/](http://jmespath.org).
+#### `--verbose`
+Ausführlichkeit der Protokollierung erhöhen. Verwenden Sie `--debug`, um vollständige Debugprotokolle zu erhalten.
 ## <a name="az-arcdata-dc-delete"></a>az arcdata dc delete
 Hiermit wird der Datencontroller gelöscht. Eine Kube-Konfiguration ist in Ihrem System erforderlich.
 ```bash
-az arcdata dc delete --name -n 
-                     --k8s-namespace -k  
-                     
-[--force -f]  
-                     
-[--yes -y]
+az arcdata dc delete 
 ```
 ### <a name="examples"></a>Beispiele
-Datencontrollerbereitstellung.
+Löschen eines indirekt verbundenen Datencontrollers.
 ```bash
-az arcdata dc delete --name name --k8s-namespace namespace
+az arcdata dc delete --name name --k8s-namespace namespace --use-k8s
 ```
-### <a name="required-parameters"></a>Erforderliche Parameter
-#### `--name -n`
-Name des Datencontrollers.
-#### `--k8s-namespace -k`
-Der Kubernetes-Namespace, in dem der Datencontroller vorhanden ist.
-### <a name="optional-parameters"></a>Optionale Parameter
-#### `--force -f`
-Erzwingt das Löschen des Datencontrollers und aller Datendienste.
-#### `--yes -y`
-Löscht den Datencontroller ohne Bestätigungsaufforderung.
+Löschen eines direkt verbundenen Datencontrollers.
+```bash
+az arcdata dc delete --name name --resource-group resource-group            
+```
 ### <a name="global-arguments"></a>Globale Argumente
 #### `--debug`
 Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen.
 #### `--help -h`
 Zeigen Sie diese Hilfemeldung an, und schließen Sie sie.
 #### `--output -o`
-Ausgabeformat.  Zulässige Werte: „json“, „jsonc“, „none“, „table“, „tsv“, „yaml“, „yamlc“.  Standardwert: json.
+Ausgabeformat.  Zulässige Werte: json, jsonc, table, tsv.  Standardwert: json.
 #### `--query -q`
-JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org](http://jmespath.org).
-#### `--subscription`
-Der Name oder die ID des Abonnements. Sie können das standardmäßig verwendete Abonnement mittels `az account set -s NAME_OR_ID` konfigurieren.
+JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org/](http://jmespath.org).
 #### `--verbose`
-Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden.
+Ausführlichkeit der Protokollierung erhöhen. Verwenden Sie `--debug`, um vollständige Debugprotokolle zu erhalten.
 ## <a name="az-arcdata-dc-export"></a>az arcdata dc export
 Hiermit werden Metriken, Protokolle oder der Verbrauch in eine Datei exportiert.
 ```bash
-az arcdata dc export --type -t 
-                     --path -p  
-                     
---k8s-namespace -k  
-                     
-[--force -f]  
-                     
-[--use-k8s]
+az arcdata dc export 
 ```
-### <a name="required-parameters"></a>Erforderliche Parameter
-#### `--type -t`
-Der Typ der Daten, die exportiert werden sollen. Optionen: Protokolle, Metriken und Verbrauch.
-#### `--path -p`
-Der vollständige oder relative Pfad einschließlich des Dateinamens der Datei, die exportiert werden soll.
-#### `--k8s-namespace -k`
-Der Kubernetes-Namespace, in dem der Datencontroller vorhanden ist.
-### <a name="optional-parameters"></a>Optionale Parameter
-#### `--force -f`
-Hiermit wird die Erstellung der Ausgabedatei erzwungen. Hiermit werden vorhandene Dateien unter demselben Pfad überschrieben.
-#### `--use-k8s`
-Verwendet lokale Kubernetes-APIs, um diese Aktion auszuführen.
 ### <a name="global-arguments"></a>Globale Argumente
 #### `--debug`
 Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen.
 #### `--help -h`
 Zeigen Sie diese Hilfemeldung an, und schließen Sie sie.
 #### `--output -o`
-Ausgabeformat.  Zulässige Werte: „json“, „jsonc“, „none“, „table“, „tsv“, „yaml“, „yamlc“.  Standardwert: json.
+Ausgabeformat.  Zulässige Werte: json, jsonc, table, tsv.  Standardwert: json.
 #### `--query -q`
-JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org](http://jmespath.org).
-#### `--subscription`
-Der Name oder die ID des Abonnements. Sie können das standardmäßig verwendete Abonnement mittels `az account set -s NAME_OR_ID` konfigurieren.
+JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org/](http://jmespath.org).
 #### `--verbose`
-Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden.
+Ausführlichkeit der Protokollierung erhöhen. Verwenden Sie `--debug`, um vollständige Debugprotokolle zu erhalten.
 ## <a name="az-arcdata-dc-upload"></a>az arcdata dc upload
 Hiermit werden von einem Datencontroller exportierte Datendateien zu Azure hochgeladen.
 ```bash
-az arcdata dc upload --path -p 
-                     
+az arcdata dc upload 
 ```
-### <a name="required-parameters"></a>Erforderliche Parameter
-#### `--path -p`
-Der vollständige oder relative Pfad einschließlich des Dateinamens der Datei, die hochgeladen werden soll.
 ### <a name="global-arguments"></a>Globale Argumente
 #### `--debug`
 Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen.
 #### `--help -h`
 Zeigen Sie diese Hilfemeldung an, und schließen Sie sie.
 #### `--output -o`
-Ausgabeformat.  Zulässige Werte: „json“, „jsonc“, „none“, „table“, „tsv“, „yaml“, „yamlc“.  Standardwert: json.
+Ausgabeformat.  Zulässige Werte: json, jsonc, table, tsv.  Standardwert: json.
 #### `--query -q`
-JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org](http://jmespath.org).
-#### `--subscription`
-Der Name oder die ID des Abonnements. Sie können das standardmäßig verwendete Abonnement mittels `az account set -s NAME_OR_ID` konfigurieren.
+JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter [http://jmespath.org/](http://jmespath.org).
 #### `--verbose`
-Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden.
+Ausführlichkeit der Protokollierung erhöhen. Verwenden Sie `--debug`, um vollständige Debugprotokolle zu erhalten.

@@ -2,14 +2,14 @@
 title: 'Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud: Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Video Analyzer verwenden, um eine ereignisbasierte Videoaufzeichnung in der Cloud durchzuführen und sie aus der Cloud wiederzugeben.
 ms.topic: tutorial
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4f5c7bfe4c56eaa5730a408b549723331c969c29
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1edec79cd7baa20819e0599b039fbdfe20f35d92
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101444"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484805"
 ---
 # <a name="tutorial-event-based-video-recording-and-playback"></a>Tutorial: Ereignisbasierte Videoaufzeichnung und -wiedergabe
 
@@ -70,7 +70,7 @@ Wie das Diagramm zeigt, verwenden Sie einen [RTSP-Quellknoten](../pipeline.md#rt
 
 * Der erste Pfad führt zu einem HTTP-Erweiterungsknoten. Der Knoten erfasst die Videoframes in einem von Ihnen mithilfe des Felds `samplingOptions` festgelegten Wert und leitet die Frames dann als Bilder an das KI-Modul YOLOv3 weiter, das eine Objekterkennung darstellt. Der Knoten empfängt die Ergebnisse, nämlich die vom Modell erkannten Objekte (Fahrzeuge im Verkehrsfluss). Der HTTP-Erweiterungsknoten veröffentlicht anschließend die Ergebnisse über den Knoten der IoT Hub-Nachrichtensenke auf dem IoT Edge Hub.
 
-* Das Objektzählermodul ist so eingerichtet, dass es Nachrichten vom IoT Edge Hub empfängt – welche die Ergebnisse der Objekterkennung (Fahrzeuge im Verkehrsfluss) beinhalten. Das Modul überprüft diese Nachrichten und sucht dabei nach Objekten eines bestimmten Typs, der mithilfe einer Einstellung konfiguriert wurde. Wenn ein solches Objekt gefunden wird, sendet dieses Modul eine Nachricht an den IoT Edge Hub. Diese „Objekt gefunden“-Meldungen werden dann an den IoT Hub-Quellknoten der Pipeline weitergeleitet. Beim Empfang einer solchen Nachricht löst der IoT Hub-Quellknoten in der Pipeline den [Signalgateprozessor](../pipeline.md#signal-gate-processor)-Knoten aus. Der Signalgate-Prozessorknoten wird dann für eine konfigurierte Zeitspanne geöffnet. Das Videosignal fließt für diese Zeitspanne durch das Gate zum Knoten der Videosenke. Dieser Teil des Livestreams wird dann über den Knoten der [Videosenke](../pipeline.md#video-sink) in einem [Video](../terminology.md#video) in Ihrem Video Analyzer-Konto aufgezeichnet. In diesem Tutorial wird ein [Beispielvideo zur Schnellstraßenkreuzung](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) verwendet.
+* Das Objektzählermodul ist so eingerichtet, dass es Nachrichten vom IoT Edge Hub empfängt – welche die Ergebnisse der Objekterkennung (Fahrzeuge im Verkehrsfluss) beinhalten. Das Modul überprüft diese Nachrichten und sucht dabei nach Objekten eines bestimmten Typs, der mithilfe einer Einstellung konfiguriert wurde. Wenn ein solches Objekt gefunden wird, sendet dieses Modul eine Nachricht an den IoT Edge Hub. Diese „Objekt gefunden“-Meldungen werden dann an den IoT Hub-Quellknoten der Pipeline weitergeleitet. Beim Empfang einer solchen Nachricht löst der IoT Hub-Quellknoten in der Pipeline den [Signalgateprozessor](../pipeline.md#signal-gate-processor)-Knoten aus. Der Signalgate-Prozessorknoten wird dann für eine konfigurierte Zeitspanne geöffnet. Das Videosignal fließt für diese Zeitspanne durch das Gate zum Knoten der Videosenke. Dieser Teil des Livestreams wird dann über den Knoten der [Videosenke](../pipeline.md#video-sink) in einem [Video](../terminology.md#video) in Ihrem Video Analyzer-Konto aufgezeichnet. In diesem Tutorial wird ein [Beispielvideo zur Schnellstraßenkreuzung](https://avamedia.blob.core.windows.net/public/camera-300s.mkv) verwendet.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 
@@ -148,7 +148,7 @@ Aktualisieren Sie nach ungefähr 30 Sekunden Azure IoT Hub im unteren linken Be
 
 ## <a name="run-the-program"></a>Ausführen des Programms
 
-1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG + UMSCHALT + X), und suchen Sie nach Azure IoT Hub.
+1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG+UMSCHALT+X), und suchen Sie nach Azure IoT Hub.
 1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
 
     > [!div class="mx-imgBorder"]

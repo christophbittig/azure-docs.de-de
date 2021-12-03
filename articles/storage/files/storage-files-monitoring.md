@@ -6,16 +6,16 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 3/02/2021
+ms.date: 11/10/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 69724711421182b2a530a2411b6ecc31b95a1388
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 79164bedf91a62508d7455104bbbcf00e2eacbee
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823602"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289431"
 ---
 # <a name="monitoring-azure-files"></a>Überwachen von Azure Files
 
@@ -241,7 +241,7 @@ Eine Beschreibung der einzelnen Parameter finden Sie unter [Archivieren von Ress
 
 Wenn Sie auswählen, dass Ihre Protokolle an einen Event Hub gestreamt werden sollen, bezahlen Sie für die Menge an Protokolldaten, die an den Event Hub gesendet werden. Die genauen Preise finden Sie auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) im Abschnitt **Plattformprotokolle**.
 
-Aktivieren Sie Protokolle mit dem Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create).
+Verwenden Sie für das Aktivieren von Protokollen den Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create).
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -315,6 +315,21 @@ Sie können die Metrikwerte auf der Kontoebene Ihres Speicherkontos oder des Azu
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
+#### <a name="reading-metric-values-with-dimensions"></a>Lesen von Metrikwerten mit Dimensionen
+
+Wenn eine Metrik Dimensionen unterstützt, können Sie Metrikwerte lesen und sie mithilfe von Dimensionswerten filtern. Verwenden Sie das Cmdlet [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric).
+
+```powershell
+   $resourceId = "<resource-ID>"
+   Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
+```
+```powershell
+$resourceId = "<resource-ID>"
+$dimFilter = [String](New-AzMetricFilter -Dimension ApiName -Operator eq -Value "GetFile" 3> $null)
+Get-AzMetric -ResourceId $resourceId -MetricName Transactions -TimeGrain 01:00:00 -MetricFilter $dimFilter -AggregationType "Total"
+```
+
+
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>Auflisten der Metrikdefinition auf Kontoebene
@@ -334,7 +349,13 @@ Sie können die Metrikwerte Ihres Speicherkontos oder des Azure Files-Diensts le
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
+#### <a name="reading-metric-values-with-dimensions"></a>Lesen von Metrikwerten mit Dimensionen
 
+Wenn eine Metrik Dimensionen unterstützt, können Sie Metrikwerte lesen und sie mithilfe von Dimensionswerten filtern. Verwenden Sie den Befehl [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list).
+
+```azurecli
+az monitor metrics list --resource <resource-ID> --metric "Transactions" --interval PT1H --filter "ApiName eq 'GetFile' " --aggregation "Total" 
+```
 ### <a name="net-sdk"></a>[.NET SDK](#tab/azure-portal)
 
 Azure Monitor bietet das [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) zum Lesen von Metrikdefinition und -werten. Die [Beispielcode](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) zeigt, wie das SDK mit unterschiedlichen Parametern verwendet wird. Sie benötigen `0.18.0-preview` oder eine höhere Version für Speichermetriken.

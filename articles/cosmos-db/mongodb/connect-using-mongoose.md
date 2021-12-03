@@ -9,12 +9,12 @@ ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 2bae7f2466363861afe99d37748e7ea41fc0e1c9
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: da2f6977890f7b1d6537cb557635733a7fcb1c5a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046637"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058234"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Verbinden einer Node.js Mongoose-Anwendung mit Azure Cosmos DB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -74,25 +74,26 @@ Nachdem Sie die Datenbank erstellt haben, verwenden Sie den Namen in der unten g
 
 4. Importieren Sie die Abhängigkeiten in Ihre `index.js`-Datei.
 
-    ```JavaScript
+   ```javascript
    var mongoose = require('mongoose');
    var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
 5. Fügen Sie Ihre Cosmos DB-Verbindungszeichenfolge und Ihren Cosmos DB-Namen in der ```.env```-Datei hinzu. Ersetzen Sie die Platzhalter „{cosmos-account-name}“ und „{dbname}“ durch Ihren eigenen Cosmos-Kontonamen bzw. Datenbanknamen ohne die geschweiften Klammern.
 
-    ```JavaScript
-   # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
+   ```javascript
+   // You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
 
    COSMOSDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
    COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
    COSMOSDB_DBNAME = "<Azure Cosmos database name>"
    COSMOSDB_HOST= "<Azure Cosmos Host name>"
    COSMOSDB_PORT=10255
-    ```
+   ```
 
 6. Stellen Sie über das Mongoose-Framework eine Verbindung mit Cosmos DB her, indem Sie den folgenden Code am Ende von „index.js“ hinzufügen.
-    ```JavaScript
+
+   ```javascript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
         username: process.env.COSMOSDB_USER,
@@ -105,8 +106,9 @@ Nachdem Sie die Datenbank erstellt haben, verwenden Sie den Namen in der unten g
     .then(() => console.log('Connection to CosmosDB successful'))
     .catch((err) => console.error(err));
     ```
-    >[!Note]
-    > Hier werden die Umgebungsvariablen mithilfe des npm-Pakets „dotenv“ über „process.env.{Variablenname}“ geladen.
+
+    >[!NOTE]
+    > Hier werden die Umgebungsvariablen mithilfe des npm-Pakets `dotenv` über „process.env.{Variablenname}“ geladen.
 
     Sobald Sie eine Verbindung mit Azure Cosmos DB hergestellt haben, können Sie damit beginnen, Objektmodelle in Mongoose einzurichten.
 
@@ -330,6 +332,6 @@ Wie Sie sehen, ist ein Arbeiten mit Mongoose-Diskriminatoren einfach. Wenn Sie �
 - Untersuchen Sie MongoDB-[Beispiele](nodejs-console-app.md) mit der API für MongoDB von Azure Cosmos DB.
 - Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
     - Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
-    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md)
+    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md)
 
 [dbleveltp]: ./media/connect-using-mongoose/db-level-throughput.png

@@ -1,24 +1,24 @@
 ---
 title: Informationen zu API-Connectors in Azure AD B2C
-description: Mit Azure Active Directory (Azure AD) API-Konnektoren können Sie Ihre Benutzerabläufe mithilfe von REST-APIs anpassen und erweitern.
+description: Verwenden Sie Azure Active Directory (Azure AD)-API-Connectors, um Ihre Benutzerflows mithilfe von REST-APIs oder ausgehenden Webhooks auf externe Identitätsdatenquellen anzupassen und zu erweitern.
 services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 07/05/2021
-ms.author: mimart
-author: msmimart
-manager: celestedg
+ms.date: 11/02/2021
+ms.author: kengaderdus
+author: kengaderdus
+manager: CelesteDG
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cade077501e499893686fcc856129deb61e8778e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9b5d3c49019d1953dd0deb5d498291d92af4aba1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338919"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436933"
 ---
-# <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>Verwenden von API-Connectors zum Anpassen und Erweitern von Flows zur Benutzerregistrierung
+# <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows-with-external-identity-data-sources"></a>Verwenden von API-Connectors zum Anpassen und Erweitern von Benutzerflows für die Registrierung mit externen Identitätsdatenquellen 
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "122338919"
 Mithilfe von API-Konnektoren können Sie als Entwickler oder IT-Administrator Ihre Anmelde-Benutzerströme mit REST-APIs integrieren, um das Anmeldeverfahren anzupassen und mit externen Systemen zu integrieren. API-Connectors bieten beispielsweise folgende Möglichkeiten:
 
 - **Überprüfen von Benutzereingabedaten**. Überprüfen Sie auf fehlerhafte oder ungültige Benutzerdaten. Beispielsweise können Sie vom Benutzer bereitgestellte Daten im Vergleich mit vorhandenen Daten in einem externen Datenspeicher oder einer Liste zulässiger Werte überprüfen. Falls ungültig, können Sie einen Benutzer auffordern, gültige Daten anzugeben, oder den Benutzer daran hindern, den Registrierungsflow fortzusetzen.
-- **Benutzeridentität verifizieren**. Verwenden Sie einen Identitätsüberprüfungsdienst, um Entscheidungen bei der Kontoerstellung eine zusätzliche Sicherheitsstufe hinzuzufügen.
+- **Benutzeridentität verifizieren**. Verwenden Sie einen Identitätsüberprüfungsdienst oder externe Identitätsdatenquellen, um Entscheidungen bei der Kontoerstellung eine zusätzliche Sicherheitsstufe hinzuzufügen.
 - **Integrieren in einen benutzerdefinierten Genehmigungsworkflow**. Verbinden mit einem benutzerdefinierten Genehmigungssystem zum Verwalten und Einschränken der Kontoerstellung.
 - **Erweitern Sie Token mit Attributen aus externen Quellen**. Reichern Sie Token mit Attributen für den Benutzer aus Quellen außerhalb von Azure AD B2C an, z. B. Cloudsystemen, benutzerdefinierten Benutzerspeichern, benutzerdefinierten Berechtigungssystemen, Legacyidentitätsdiensten usw.
 - **Überschreiben von Benutzerattributen**. Sie können ein vom Benutzer erfasstes Attribut neu formatieren oder ihm einen Wert zuweisen. Wenn z.B. ein Benutzer den Vornamen vollständig in Kleinbuchstaben oder Großbuchstaben eingibt, können Sie den Namen so formatieren, dass nur der erste Buchstabe groß geschrieben wird. 
@@ -78,9 +78,9 @@ Das Identity Experience Framework (IEF), das Azure Active Directory B2C (Azure A
 
 Mit Azure AD B2C können Sie einer User Journey Ihre eigene Geschäftslogik hinzufügen, indem Sie Ihren eigenen RESTful-Dienst aufrufen. Das Identity Experience Framework kann Daten an Ihren RESTful-Dienst senden und von ihm empfangen, um Ansprüche auszutauschen. Beispielsweise können Sie folgende Aktionen ausführen:
 
-- **Überprüfen von Benutzereingabedaten**. Sie können beispielsweise überprüfen, ob die vom Benutzer angegebene E-Mail-Adresse in Ihrer Kundendatenbank vorhanden ist. Und wenn dies nicht der Fall ist, können Sie einen Fehler ausgeben.
-- **Verarbeiten von Ansprüchen**. Wenn ein Benutzer seinen Vornamen vollständig in Kleinbuchstaben oder Großbuchstaben eingibt, kann die REST-API den Namen so formatieren, dass nur der erste Buchstabe groß geschrieben wird, und den Namen in dieser Form an Azure AD B2C zurückgeben.
-- **Anreichern von Benutzerdaten durch eine stärkere Integration in die Branchenanwendungen des Unternehmens**. Ihr RESTful-Dienst kann die E-Mail-Adresse des Benutzers empfangen, die Kundendatenbank abfragen und die Treuenummer des Benutzers an Azure AD B2C zurückgeben. Die Rückgabeansprüche können dann im Azure AD-Konto des Benutzers gespeichert, in den nächsten Orchestrierungsschritten ausgewertet oder in das Zugriffstoken eingebunden werden.
+- **Verwenden einer externen Identitätsdatenquelle zum Überprüfen von Benutzereingabedaten**. Sie können beispielsweise überprüfen, ob die vom Benutzer angegebene E-Mail-Adresse in Ihrer Kundendatenbank vorhanden ist. Und wenn dies nicht der Fall ist, können Sie einen Fehler ausgeben. Sie können sich API-Connectors auch als eine Möglichkeit vorstellen, ausgehende Webhooks zu unterstützen, da der Aufruf beim Auftreten eines Ereignisses (z. B. Registrierung) erfolgt.
+- **Verarbeiten von Ansprüchen**. Wenn ein Benutzer seinen Vornamen vollständig in Kleinbuchstaben oder Großbuchstaben eingibt, kann die REST-API den Namen so formatieren, dass nur der erste Buchstabe groß geschrieben wird, und den Namen in dieser Form an Azure AD B2C zurückgeben. Wenn Sie jedoch eine benutzerdefinierte Richtlinie verwenden, wird [ClaimsTransformations](claimstransformations.md) gegenüber dem Aufrufen einer RESTful-API bevorzugt. 
+- **Dynamisches Anreichern von Benutzerdaten durch eine stärkere Integration in die Branchenanwendungen des Unternehmens**. Ihr RESTful-Dienst kann die E-Mail-Adresse des Benutzers empfangen, die Kundendatenbank abfragen und die Treuenummer des Benutzers an Azure AD B2C zurückgeben. Die Rückgabeansprüche können dann im Azure AD-Konto des Benutzers gespeichert, in den nächsten Orchestrierungsschritten ausgewertet oder in das Zugriffstoken eingebunden werden.
 - **Ausführen von benutzerdefinierter Geschäftslogik**. Sie können Pushbenachrichtigungen senden, Unternehmensdatenbanken aktualisieren, einen Benutzermigrationsprozess ausführen, Berechtigungen verwalten, Datenbanken überwachen und andere Workflows ausführen.
 
 ![Diagramm eines Anspruchsaustauschs über den RESTful-Dienst](media/api-connectors-overview/restful-service-claims-exchange.png)

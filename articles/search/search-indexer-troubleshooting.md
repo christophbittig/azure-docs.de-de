@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 4453660cb58a1b976488d1cc9e240768637a85b6
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: d54aec5bae8fb86b9c0ed0356cd6af713500527f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129857092"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492055"
 ---
 # <a name="indexer-troubleshooting-guidance-for-azure-cognitive-search"></a>Leitfaden zur Indexer-Problembehandlung bei Azure Cognitive Search
 
@@ -199,6 +199,43 @@ api-key: [admin key]
 ## <a name="missing-content-from-cosmos-db"></a>Fehlender Inhalt aus Cosmos DB
 
 Die kognitive Azure-Suche steht in impliziter Abhängigkeit zur Indizierung von Cosmos DB. Wenn Sie die automatische Indizierung in Cosmos DB deaktivieren, gibt die kognitive Azure-Suche einen erfolgreichen Status zurück, kann jedoch keine Containerinhalte indizieren. Anweisungen zum Überprüfen der Einstellungen und zum Aktivieren der Indizierung finden Sie unter [Verwalten der Indizierung in Azure Cosmos DB](../cosmos-db/how-to-manage-indexing-policy.md#use-the-azure-portal).
+
+## <a name="documents-processed-multiple-times"></a>Mehrfach verarbeitete Dokumente
+
+Indexer nutzen eine konservative Pufferstrategie, um sicherzustellen, dass jedes neue und geänderte Dokument in der Datenquelle während der Indizierung aufgenommen wird. In bestimmten Situationen können sich diese Puffer überlappen, wodurch ein Indexer ein Dokument doppelt oder mehrfach indiziert, was dazu führt, dass die Anzahl der verarbeiteten Dokumente größer als die tatsächliche Anzahl von Dokumenten in der Datenquelle ist. Dieses Verhalten wirkt sich **nicht** auf die im Index gespeicherten Daten aus, es werden z. B. keine Dokumente dupliziert, sondern hat lediglich zur Folge, dass es länger dauern kann, bis die letztliche Konsistenz erreicht ist. Dies kann vor allem dann der Fall sein, wenn eine der folgenden Bedingungen zutrifft:
+
+- Bedarfsbasierte Indexeranforderungen werden in schneller Folge ausgegeben.
+- Die Topologie der Datenquelle umfasst mehrere Replikate und Partitionen (ein solches Beispiel wird [hier](https://docs.microsoft.com/azure/cosmos-db/consistency-levels) erläutert).
+
+Indexer sollen nicht mehrmals in schneller Folge aufgerufen werden. Wenn Sie schnell Updates benötigen, besteht der unterstützte Ansatz im Pushen von Updates an den Index, während gleichzeitig die Datenquelle aktualisiert wird. Für die bedarfsbasierte Verarbeitung wird empfohlen, dass Sie Ihre Anforderungen in Intervallen von fünf Minuten oder mehr senden und den Indexer nach einem Zeitplan ausführen.
+
+### <a name="example-of-duplicate-document-processing-with-30-second-buffer"></a>Beispiel für die doppelte Verarbeitung Dokumente mit einem Puffer von 30 Sekunden
+Bedingungen, unter denen ein Dokument zweimal verarbeitet wird, werden unten in einer Zeitachse mit den einzelnen Aktionen und Gegenaktionen beschrieben. Die folgende Zeitachse veranschaulicht das Problem:
+
+| Zeitachse (hh:mm:ss) | Ereignis | Obere Indexergrenze | Kommentar |
+|---------------------|-------|-------------------------|---------|
+| 00:01:00 | `doc1` wird in eine Datenquelle geschrieben, mit letztlicher Konsistenz. | `null` | Dokumentzeitstempel ist 00:01:00. |
+| 00:01:05 | `doc2` wird in eine Datenquelle geschrieben, mit letztlicher Konsistenz. | `null` | Dokumentzeitstempel ist 00:01:05. |
+| 00:01:10 | Indexer wird gestartet. | `null` | |
+| 00:01:11 | Indexer fragt alle Änderungen vor 00:01:10 ab; dem vom Indexer abgefragten Replikat ist nur `doc2` bekannt; nur `doc2` wird abgerufen. | `null` | Indexer fordert alle Änderungen vor dem Startzeitstempel an, empfängt aber tatsächlich eine Teilmenge. Für dieses Verhalten ist der zurückliegende Pufferzeitraum erforderlich. |
+| 00:01:12 | Indexer verarbeitet `doc2` zum ersten Mal. | `null` | |
+| 00:01:13 | Indexer wird beendet. | 00:01:10 | Die obere Grenze wird auf den Startzeitstempel der aktuellen Indexerausführung aktualisiert. |
+| 00:01:20 | Indexer wird gestartet. | 00:01:10 | |
+| 00:01:21 | Indexer fragt alle Änderungen zwischen 00:00:40 und 00:01:20 ab; dem vom Indexer abgefragten Replikat ist `doc1` und `doc2` bekannt; `doc1` und `doc2` werden abgerufen. | 00:01:10 | Indexer fordert alle Änderungen zwischen der aktuellen oberen Grenze minus dem 30-Sekunden-Puffer und dem Startzeitstempel der aktuellen Indexerausführung an. |
+| 00:01:22 | Indexer verarbeitet `doc1` zum ersten Mal. | 00:01:10 | |
+| 00:01:23 | Indexer verarbeitet `doc2` zum zweiten Mal. | 00:01:10 | |
+| 00:01:24 | Indexer wird beendet. | 00:01:20 | Die obere Grenze wird auf den Startzeitstempel der aktuellen Indexerausführung aktualisiert. |
+| 00:01:32 | Indexer wird gestartet. | 00:01:20 | |
+| 00:01:33 | Indexer fragt alle Änderungen zwischen 00:00:50 und 00:01:32 ab; `doc1` und `doc2` werden abgerufen. | 00:01:20 | Indexer fordert alle Änderungen zwischen der aktuellen oberen Grenze minus dem 30-Sekunden-Puffer und dem Startzeitstempel der aktuellen Indexerausführung an. |
+| 00:01:34 | Indexer verarbeitet `doc1` zum zweiten Mal. | 00:01:20 | |
+| 00:01:35 | Indexer verarbeitet `doc2` zum dritten Mal. | 00:01:20 | |
+| 00:01:36 | Indexer wird beendet. | 00:01:32 | Die obere Grenze wird auf den Startzeitstempel der aktuellen Indexerausführung aktualisiert. |
+| 00:01:40 | Indexer wird gestartet. | 00:01:32 | |
+| 00:01:41 | Indexer fragt alle Änderungen zwischen 00:01:02 und 00:01:40 ab; `doc2` wird abgerufen. | 00:01:32 | Indexer fordert alle Änderungen zwischen der aktuellen oberen Grenze minus dem 30-Sekunden-Puffer und dem Startzeitstempel der aktuellen Indexerausführung an. |
+| 00:01:42 | Indexer verarbeitet `doc2` zum vierten Mal. | 00:01:32 | |
+| 00:01:43 | Indexer wird beendet. | 00:01:40 | Beachten Sie, dass diese Indexerausführung mehr als 30 Sekunden nach dem letzten Schreibzugriff auf die Datenquelle gestartet und auch `doc2` verarbeitet wurde. Dies ist das erwartete Verhalten, denn wenn alle Indexerausführungen vor 00:01:35 entfernt werden, wird dies zur ersten und einzigen Ausführung zur Verarbeitung von `doc1` und `doc2`. |
+
+In der Praxis tritt dieses Szenario nur auf, wenn bedarfsbasierte Indexer für bestimmte Datenquellen innerhalb weniger Minuten manuell aufgerufen werden. Dies kann zu abweichenden Zahlen führen (z. B. dass der Indexer gemäß den Indexerausführungsstatistiken insgesamt 345 Dokumente verarbeitet hat, in der Datenquelle und im Index aber nur 340 Dokumente enthalten sind) oder eine potenziell erhöhte Abrechnung verursachen, wenn Sie die gleichen Skills für dasselbe Dokument mehrmals ausführen. Empfehlung: Die Ausführung eines Indexers unter Verwendung eines Zeitplans ist die bevorzugte Vorgehensweise.
 
 ## <a name="see-also"></a>Weitere Informationen
 

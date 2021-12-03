@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: be5415658de782c362eca0f40a17a4578932aafa
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 95f7c35cc33c1d174cd228bd053dbfea6c850135
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777220"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841694"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps"></a>Konfigurieren von Front-End-Frameworks und Bibliotheken mit Azure Static Web Apps
 
@@ -31,8 +31,9 @@ Die Absicht der Tabellenspalten wird durch die folgenden Punkte erläutert:
 | Framework | Speicherort für App-Artefakte | Benutzerdefinierter Buildbefehl |
 |--|--|--|
 | [Alpine.js](https://github.com/alpinejs/alpine/) | `/` | Nicht zutreffend <sup>2</sup> |
-| [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --prod` |
+| [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --configuration production` |
 | [Angular Universal](https://angular.io/guide/universal) | `dist/<APP_NAME>/browser` | `npm run prerender` |
+| [Astro](https://astro.build) | `dist` | – |
 | [Aurelia](https://aurelia.io/) | `dist` | – |
 | [Backbone.js](https://backbonejs.org/) | `/` | – |
 | [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) | `wwwroot` | – |

@@ -1,19 +1,19 @@
 ---
 title: Bereitstellen einer ASP.NET Core-App in Azure Kubernetes Service mit Azure DevOps Starter
 description: Azure DevOps Starter erleichtert die ersten Schritte mit Azure. Mit Azure DevOps Starter können Sie Ihre ASP.NET Core-App mit Azure Kubernetes Service (AKS) in wenigen Schritten bereitstellen.
-ms.author: mlearned
+ms.author: gwallace
 ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
-author: mlearned
-ms.openlocfilehash: 9ccf28f5431a92f71b1c18e609639d0abf309c06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: georgewallace
+ms.openlocfilehash: 302508d1575dada30d2cee8f65381153ef22d55b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590865"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053139"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>Bereitstellen einer ASP.NET Core-App in Azure Kubernetes Service mit Azure DevOps Starter
 

@@ -2,15 +2,15 @@
 author: fvneerden
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 05/05/2021
+ms.date: 11/04/2021
 ms.author: faneerde
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4d83974a6a4ca074df216bf2df17c8a667062029
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ac02502e1f4958ec0fa6e0a445d720e3c9a00351
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030172"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860651"
 ---
 Wenn Sie die Livepipeline ausführen, durchlaufen die Ergebnisse vom Knoten des Bewegungserkennungsprozessors den Knoten der IoT Hub-Nachrichtensenke und werden an den IoT-Hub gesendet. Die im **Ausgabefenster** von Visual Studio Code angezeigten Nachrichten enthalten jeweils den Abschnitt **body** und den Abschnitt **applicationProperties**. Weitere Informationen finden Sie unter [Erstellen und Lesen von IoT Hub-Nachrichten](../../../../../../iot-hub/iot-hub-devguide-messages-construct.md).
 

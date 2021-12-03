@@ -8,12 +8,12 @@ ms.date: 10/05/2021
 ms.topic: article
 ms.service: azure-fluid
 fluid.url: https://fluidframework.com/docs/build/auth/
-ms.openlocfilehash: fc3e55a91af1e7691d1d2677435c283914521dfe
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: e2f24c5455548980318c4536b5c65f84ea6a7dfb
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661820"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893821"
 ---
 # <a name="authentication-and-authorization-in-your-app"></a>Authentifizierung und Autorisierung in Ihrer App
 
@@ -26,7 +26,7 @@ Sicherheit ist für moderne Webanwendungen von entscheidender Bedeutung. Fluid F
 
 Jedem erstellten Azure Fluid Relay-Dienstmandanten werden eine **Mandanten-ID** und ein eigener eindeutiger **geheimer Mandantenschlüssel** zugewiesen.
 
-Der geheime Schlüssel ist ein **freigegebener geheimer** Schlüssel. Ihre App/Ihr Dienst und der Azure Fluid Relay-Dienst kennen ihn. Da der geheime Mandantenschlüssel eindeutig an Ihren Mandanten gebunden ist, garantiert die Verwendung dieses Schlüssels zum Signieren von Anforderungen an den Azure Fluid Relay-Dienst, dass die Anforderungen von einem autorisierten Benutzer des Mandanten kommen.
+Der geheime Schlüssel ist ein **freigegebener geheimer Schlüssel**. Ihre App/Ihr Dienst und der Azure Fluid Relay-Dienst kennen ihn. Da der geheime Mandantenschlüssel eindeutig an Ihren Mandanten gebunden ist, garantiert die Verwendung dieses Schlüssels zum Signieren von Anforderungen an den Azure Fluid Relay-Dienst, dass die Anforderungen von einem autorisierten Benutzer des Mandanten kommen.
 
 Durch den geheimen Schlüssel erkennt der Azure Fluid Relay-Dienst, dass Anforderungen von Ihrer App oder Ihrem Dienst kommen. Dies ist wichtig, da der Azure Fluid Relay-Dienst, sobald er darauf vertrauen kann, dass *Ihre App* die Anforderungen sendet, den gesendeten Daten vertrauen kann. Aus diesem Grund ist es auch wichtig, dass das Geheimnis sicher behandelt wird.
 
@@ -63,6 +63,26 @@ Obwohl sich die Details der Authentifizierung zwischen Fluid-Diensten unterschei
   "ver": "1.0"
 }.[Signature]
 ```
+
+Der Modus des Benutzers gibt an, ob sich die Verbindung im Lese- oder Lese-/Schreibmodus befindet. Dies kann über das Feld `connections` in `AzureAudience` angezeigt werden. Die Berechtigungen für den Tokenbereich können in Ihrer serverlosen Azure-Funktion unter der `generateToken`-Funktion aktualisiert werden.
+
+```ts
+const token = generateToken(
+  tenantId,
+  documentId,
+  key,
+  scopes ?? [ "Token Scope" ],
+  user
+);
+```
+
+Die Tokenbereiche sowie das Containerverhalten und die Modi lauten wie folgt:
+
+| Tokenbereich | Mein Dokumentverhalten | Verhalten von Zielgruppendokumenten | 
+|-------------|----------------------|----------------------------|
+| DocRead     | Lese- und Schreibzugriff auf das Dokument. Änderungen am Dokument werden nicht in anderen Zielgruppendokumenten widergespiegelt. <br /> Modus: Lesen | Lese- und Schreibzugriff auf das Dokument. Änderungen werden nicht in anderen Zielgruppendokumenten widergespiegelt. <br /> Modus: Schreiben | 
+| DocWrite    | Lese- und Schreibzugriff auf das Dokument. Vorgenommene Änderungen werden in allen anderen Zielgruppendokumenten widergespiegelt. <br />Modus: Schreiben | Lese- und Schreibzugriff auf das Dokument. Vorgenommene Änderungen werden in allen anderen Zielgruppendokumenten widergespiegelt. <br />Modus: Schreiben |
+| DocRead, DocWrite | Lese- und Schreibzugriff auf das Dokument. Vorgenommene Änderungen werden in allen anderen Zielgruppendokumenten widergespiegelt. <br />Modus: Schreiben | Lese- und Schreibzugriff auf das Dokument. Vorgenommene Änderungen werden in allen anderen Zielgruppendokumenten widergespiegelt. <br />Modus: Schreiben |
 
 > [!NOTE]
 > Beachten Sie, dass das Token auch Benutzerinformationen enthält (siehe Zeilen 7–9 oben). Sie können dies verwenden, um die Benutzerinformationen zu vergrößern, die für Fluid-Code mithilfe des [Zielgruppenfeatures](../how-tos/connect-fluid-azure-service.md#getting-audience-details) automatisch verfügbar sind. Weitere Informationen finden Sie unter [Hinzufügen benutzerdefinierter Daten zu Token](../how-tos/connect-fluid-azure-service.md#adding-custom-data-to-tokens).

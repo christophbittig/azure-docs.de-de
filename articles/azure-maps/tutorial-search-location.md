@@ -1,26 +1,27 @@
 ---
 title: 'Tutorial: Suchen nach Orten in der Nähe auf einer Karte | Microsoft Azure Maps'
-description: Tutorial zur Suche von Points of Interest auf einer Karte. Sie erfahren, wie Sie mithilfe des Azure Maps Web SDK einer Karte Suchfunktionen und interaktive Popupfelder hinzufügen.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 1/15/2020
+description: Tutorial zur Suche von Points of Interest auf einer Karte. Hier erfahren Sie, wie Sie mithilfe des Azure Maps-Web-SDKs einer Karte Suchfunktionen und interaktive Popupfelder hinzufügen.
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: eriklind
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 31dd1c06b0f17b469454593131ccdc93b45b2446
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db7fc079426d30c8fc34cce99463b22c910e1ab6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624966"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458986"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Tutorial: Suchen nach Points of Interest in der Nähe mit Azure Maps
 
 In diesem Tutorial wird gezeigt, wie Sie ein Konto für Azure Maps einrichten und anschließend mithilfe der Maps-APIs nach einem Point of Interest suchen. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Erstellen eines Azure Maps-Kontos
 > * Abrufen des Primärschlüssels für Ihr Maps-Konto
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
@@ -145,18 +146,18 @@ In diesem Abschnitt wird veranschaulicht, wie mit der [Such-API](/rest/api/maps/
 
 1. Erstellen Sie im Kartenereignishandler `ready` die Suchdienst-URL, indem Sie den folgenden JavaScript-Code hinzufügen:
 
-    ```JavaScript
-   // Use SubscriptionKeyCredential with a subscription key
-   var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(atlas.getSubscriptionKey());
+    ```javascript
+    // Use SubscriptionKeyCredential with a subscription key
+    var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(atlas. getSubscriptionKey());
+ 
+    // Use subscriptionKeyCredential to create a pipeline
+    var pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential);
+ 
+    // Construct the SearchURL object
+    var searchURL = new atlas.service.SearchURL(pipeline); 
+    ```
 
-   // Use subscriptionKeyCredential to create a pipeline
-   var pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential);
-
-   // Construct the SearchURL object
-   var searchURL = new atlas.service.SearchURL(pipeline); 
-   ```
-
-   `SubscriptionKeyCredential` erstellt ein `SubscriptionKeyCredentialPolicy`-Element, um HTTP-Anforderungen für Azure Maps mit dem Abonnementschlüssel zu authentifizieren. `atlas.service.MapsURL.newPipeline()` verwendet die Richtlinie `SubscriptionKeyCredential` und erstellt eine [Pipeline](/javascript/api/azure-maps-rest/atlas.service.pipeline)-Instanz. `searchURL` stellt eine URL zu [Suchvorgängen](/rest/api/maps/search) von Azure Maps dar.
+    `SubscriptionKeyCredential` erstellt ein `SubscriptionKeyCredentialPolicy`-Element, um HTTP-Anforderungen für Azure Maps mit dem Abonnementschlüssel zu authentifizieren. `atlas.service.MapsURL.newPipeline()` verwendet die Richtlinie `SubscriptionKeyCredential` und erstellt eine [Pipeline](/javascript/api/azure-maps-rest/atlas.service.pipeline)-Instanz. `searchURL` stellt eine URL zu [Suchvorgängen](/rest/api/maps/search) von Azure Maps dar.
 
 2. Fügen Sie als Nächstes den folgenden Skriptblock hinzu, um die Suchabfrage zu erstellen. Hier wird der Dienst für die Fuzzysuche (eine einfache Such-API des Suchdiensts) verwendet. Der Dienst für die Fuzzysuche behandelt die meisten Fuzzyeingaben – etwa Adressen, Orte und POIs (Points of Interest). Dieser Code sucht im angegebenen Radius der Längen- und Breitengradangaben nach nahegelegenen Tankstellen. Eine GeoJSON-Funktionssammlung aus der Antwort wird dann mit der `geojson.getFeatures()`-Methode extrahiert und der Datenquelle hinzugefügt, und die Daten werden über die Symbolebene automatisch auf der Karte gerendert. Im letzten Teil des Skripts wird die Kameraansicht der Karte mithilfe des Begrenzungsrahmens der Ergebnisse und unter Verwendung der Karteneigenschaft [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) festgelegt.
 
@@ -192,7 +193,7 @@ In diesem Abschnitt wird veranschaulicht, wie mit der [Such-API](/rest/api/maps/
 4. Sie können sich die von der Karte gerenderten Rohdaten ansehen, indem Sie die folgende HTTP-Anforderung in Ihren Browser eingeben. Ersetzten Sie \<Your Azure Maps Key\> durch Ihren Primärschlüssel.
 
    ```http
-   https://atlas.microsoft.com/search/poi/json?api-version=1.0&query=gasoline%20station&subscription-key=<subscription-key>&lat=47.6292&lon=-122.2337&radius=100000
+   https://atlas.microsoft.com/search/poi/json?api-version=1.0&query=gasoline%20station&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&lat=47.6292&lon=-122.2337&radius=100000
    ```
 
 Nun können auf der MapSearch-Seite die Standorte von Points of Interest angezeigt werden, die mit einer Fuzzysuchabfrage zurückgegeben werden. Fügen wir nun einige interaktive Funktionen und weitere Informationen zu den Standorten hinzu.
@@ -203,8 +204,8 @@ Die erstellte Karte verwendet bisher nur die Längen-/Breitengraddaten für die 
 
 1. Fügen Sie dem Kartenereignishandler `ready` nach dem Code zum Abfragen des Diensts für die Fuzzysuche die folgenden Codezeilen hinzu. Mit diesem Code wird eine Instanz eines Popups erstellt und der Symbolebene ein mouseover-Ereignis hinzugefügt.
 
-    ```JavaScript
-   //Create a popup but leave it closed so we can update it and display it later.
+    ```javascript
+    // Create a popup but leave it closed so we can update it and display it later.
     popup = new atlas.Popup();
 
     //Add a mouse over event to the result layer and display a popup when this event fires.

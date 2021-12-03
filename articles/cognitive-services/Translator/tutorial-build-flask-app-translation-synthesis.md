@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 03/04/2021
+ms.date: 10/28/2021
 ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: 6ec951e57b40ae1440f541c02b26e7788b3cf151
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: af09d5044c578b876ef3464caf1ec1bc1b96ab71
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043732"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446503"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Tutorial: Erstellen einer Flask-App mit Azure Cognitive Services
 
@@ -29,8 +29,8 @@ Hier ist angegeben, was in diesem Tutorial vermittelt wird:
 > * Einrichten Ihrer Entwicklungsumgebung und Installieren von Abhängigkeiten
 > * Erstellen einer Flask-App
 > * Verwenden von Translator zum Übersetzen von Text
-> * Verwenden der Textanalyse zum Analysieren von positiven/negativen Stimmungen für Eingabetext und Übersetzungen
-> * Verwenden der Spracherkennungsdienste zum Konvertieren von übersetztem Text in synthetisierte Sprache
+> * Verwenden des Sprachdiensts zum Analysieren von positiven/negativen Stimmungen für Eingabetext und Übersetzungen
+> * Verwenden des Speech-Diensts zum Konvertieren von übersetztem Text in synthetisierte Sprache
 > * Lokales Ausführen Ihrer Flask-App
 
 > [!TIP]
@@ -54,14 +54,14 @@ Hier sind die Software und Abonnementschlüssel angegeben, die Sie für dieses T
 * Eine IDE oder ein Text-Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/) oder [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) oder [Firefox](https://www.mozilla.org/firefox)
 * Ein Abonnementschlüssel für **Textübersetzung** (Sie können wahrscheinlich den Standort **global** verwenden.)
-* Ein Abonnementschlüssel für die **Textanalyse** in der Region **USA, Westen**.
+* Ein Abonnementschlüssel für den **Sprachdienst** in der Region **USA, Westen**
 * Ein Abonnementschlüssel für **Spracherkennungsdienste** in der Region **USA, Westen**.
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Erstellen eines Kontos und Abonnieren der Ressourcen
 
 Wie bereits erwähnt, benötigen Sie für dieses Tutorial drei Abonnementschlüssel. Dies bedeutet, dass Sie unter Ihrem Azure-Konto Ressourcen für folgende Komponenten erstellen müssen:
 * Übersetzer
-* Textanalyse
+* Sprachdienst
 * Spracherkennungsdienste
 
 Unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](../cognitive-services-apis-create-account.md) finden Sie eine Schritt-für-Schritt-Anleitung zur Erstellung von Ressourcen.
@@ -475,18 +475,18 @@ Drücken Sie **STRG+C**, um die App zu beenden, und fahren Sie dann mit dem näc
 
 ## <a name="analyze-sentiment"></a>Analysieren von Stimmungen
 
-Die [Textanalyse-API](../text-analytics/overview.md) kann genutzt werden, um die Standpunktanalyse durchzuführen, Schlüsselbegriffe aus Text zu extrahieren oder die Quellsprache zu erkennen. In dieser App nutzen wir die Standpunktanalyse, um zu ermitteln, ob der angegebene Text positiv, neutral oder negativ ist. Die API gibt eine numerische Bewertung zwischen 0 und 1 zurück. Dabei weisen Werte nahe 1 auf eine positive Stimmung und Werte nahe 0 auf eine negative Stimmung hin.
+Die [Sprachdienst-API](../language-service/overview.md) kann genutzt werden, um die Standpunktanalyse durchzuführen, Schlüsselbegriffe aus Text zu extrahieren oder die Quellsprache zu erkennen. In dieser App nutzen wir die Standpunktanalyse, um zu ermitteln, ob der angegebene Text positiv, neutral oder negativ ist. Die API gibt eine numerische Bewertung zwischen 0 und 1 zurück. Dabei weisen Werte nahe 1 auf eine positive Stimmung und Werte nahe 0 auf eine negative Stimmung hin.
 
 In diesem Abschnitt führen Sie einige Schritte aus:
 
-* Schreiben von Python-Code zum Aufrufen der Textanalyse-API, um eine Standpunktanalyse durchzuführen und eine Antwort zurückzugeben
+* Schreiben von Python-Code zum Aufrufen der Sprachdienst-API, um eine Standpunktanalyse durchzuführen und eine Antwort zurückzugeben
 * Erstellen einer Flask-Route zum Aufrufen Ihres Python-Codes
 * Aktualisieren des HTML-Codes mit einem Bereich für Stimmungswerte und einer Schaltfläche zum Durchführen der Analyse
 * Schreiben von JavaScript, um Benutzern die Interaktion mit Ihrer Flask-App über den HTML-Code zu ermöglichen
 
-### <a name="call-the-text-analytics-api"></a>Aufrufen der Textanalyse-API
+### <a name="call-the-language-service-api"></a>Aufrufen der Sprachdienst-API
 
-Wir schreiben nun eine Funktion zum Aufrufen der Textanalyse-API. Für diese Funktion werden vier Argumente verwendet: `input_text`, `input_language`, `output_text` und `output_language`. Diese Funktion wird jeweils aufgerufen, wenn ein Benutzer in Ihrer App die Schaltfläche für die Standpunktanalyse betätigt. Vom Benutzer bereitgestellte Daten aus dem Textbereich und der Sprachauswahl sowie die erkannte Sprache und die Übersetzungsausgabe werden mit jeder Anforderung angegeben. Das Antwortobjekt enthält Stimmungswerte für den Quelltext und die Übersetzung. In den folgenden Abschnitten schreiben Sie JavaScript-Code zum Analysieren der Antwort und Verwenden in Ihrer App. Zunächst geht es um das Aufrufen der Textanalyse-API.
+Schreiben Sie eine Funktion zum Aufrufen der Sprachdienst-API. Für diese Funktion werden vier Argumente verwendet: `input_text`, `input_language`, `output_text` und `output_language`. Diese Funktion wird jeweils aufgerufen, wenn ein Benutzer in Ihrer App die Schaltfläche für die Standpunktanalyse betätigt. Vom Benutzer bereitgestellte Daten aus dem Textbereich und der Sprachauswahl sowie die erkannte Sprache und die Übersetzungsausgabe werden mit jeder Anforderung angegeben. Das Antwortobjekt enthält Stimmungswerte für den Quelltext und die Übersetzung. In den folgenden Abschnitten schreiben Sie JavaScript-Code zum Analysieren der Antwort und Verwenden in Ihrer App. Konzentrieren Sie sich zunächst auf den Aufruf der Sprachdienst-API.
 
 1. Wir erstellen im Stammverzeichnis Ihres Arbeitsverzeichnisses eine Datei mit dem Namen `sentiment.py`.
 2. Fügen Sie als Nächstes der Datei `sentiment.py` diesen Code hinzu.
@@ -525,7 +525,7 @@ Wir schreiben nun eine Funktion zum Aufrufen der Textanalyse-API. Für diese Fun
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. Fügen Sie Ihren Abonnementschlüssel für die Textanalyse hinzu, und speichern Sie.
+3. Fügen Sie Ihren Abonnementschlüssel für den Sprachdienst hinzu, und speichern Sie ihn.
 
 ### <a name="add-a-route-to-apppy"></a>Hinzufügen einer Route zu `app.py`
 
@@ -948,5 +948,5 @@ Der Quellcode für dieses Projekt ist auf [GitHub](https://github.com/MicrosoftT
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Referenz zu Translator](./reference/v3-0-reference.md)
-* [Referenz zur Textanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
+* [Referenz zur Sprachdienst-API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1)
 * [Referenz zur Text-to-Speech-API](../speech-service/rest-text-to-speech.md)

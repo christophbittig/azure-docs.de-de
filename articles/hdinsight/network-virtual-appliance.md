@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Reihe zusätzlicher Features für Ihr vi
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 7fe266c3c7b75762133fca4645e0675845c28972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f92dc402323e8285f9a2c23ba9e4a229d72718a0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943979"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254771"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Konfigurieren eines virtuellen Netzwerkgeräts in Azure HDInsight
 
@@ -44,7 +44,7 @@ Optional können Sie mindestens einen der folgenden Dienstendpunkte aktivieren, 
 
 ### <a name="fqdn-httphttps-dependencies"></a>FQDN-HTTP/HTTPS-Abhängigkeiten
 
-Sie finden [in diesem Repository](https://github.com/Azure-Samples/hdinsight-fqdn-lists/) die Liste der FQDN-Abhängigkeiten (größtenteils Azure Storage und Azure Service Bus) zur Konfiguration Ihres virtuellen Netzwerkgeräts. Die regionale Liste finden Sie [hier](https://github.com/Azure-Samples/hdinsight-fqdn-lists/tree/master/Regional). Diese Abhängigkeiten werden vom HDInsight-Ressourcenanbieter (RP) genutzt, um Cluster erfolgreich zu erstellen und zu überwachen/verwalten. Dazu gehören Telemetrie-/Diagnoseprotokolle, Bereitstellungsmetadaten, clusterbezogene Konfigurationen, Skripts usw. Die Liste der FQDN-Abhängigkeiten könnte sich mit der Veröffentlichung künftiger HDInsight-Updates ändern.
+Sie finden [in diesem Repository](https://github.com/Azure-Samples/hdinsight-fqdn-lists/) die Liste der abhängigen FQDNs (größtenteils Azure Storage und Azure Service Bus) zur Konfiguration Ihres virtuellen Netzwerkgeräts. Die regionale Liste finden Sie [hier](https://github.com/Azure-Samples/hdinsight-fqdn-lists/tree/main/Public). Diese Abhängigkeiten werden vom HDInsight-Ressourcenanbieter (RP) genutzt, um Cluster erfolgreich zu erstellen und zu überwachen/verwalten. Dazu gehören Telemetrie-/Diagnoseprotokolle, Bereitstellungsmetadaten, clusterbezogene Konfigurationen, Skripts usw. Diese Liste der FQDN-Abhängigkeiten könnte sich mit der Veröffentlichung künftiger HDInsight-Updates ändern.
 
 In der folgenden Liste sind nur einige FQDNs aufgeführt, die für das Patchen von Betriebssystemen und Sicherheitspatches oder Zertifikatüberprüfungen *nach* der Erstellung des Clusters und während der Lebensdauer der Clustervorgänge erforderlich sein können:
 

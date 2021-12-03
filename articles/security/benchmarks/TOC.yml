@@ -107,7 +107,7 @@
       href: /azure/databricks/scenarios/security-baseline
     - name: Azure DDoS Protection Standard-Sicherheitsbaseline
       href: ../fundamentals/ddos-protection-security-baseline.md
-    - name: Sicherheitsbaseline von Azure Defender für IoT Edge
+    - name: Sicherheitsbaseline von Microsoft Defender für IoT
       href: ../../defender-for-iot/security-baseline.md
     - name: Azure DevTest Labs-Sicherheitsbaseline
       href: ../../devtest-labs/security-baseline.md
@@ -151,7 +151,7 @@
       href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
     - name: Azure Resource Manager-Sicherheitsbaseline
       href: ../../azure-resource-manager/management/security-baseline.md
-    - name: "Azure\_Sentinel-Sicherheitsbaseline"
+    - name: "Microsoft\_Sentinel-Sicherheitsbaseline"
       href: ../../sentinel/security-baseline.md
     - name: Azure SignalR Service-Sicherheitsbaseline
       href: ../../azure-signalr/security-baseline.md
@@ -199,7 +199,7 @@
       href: ../../governance/policy/samples/guest-configuration-baseline-linux.md?toc=/azure/security/benchmarks/toc.json
     - name: Logic Apps-Sicherheitsbaseline
       href: ../../logic-apps/security-baseline.md
-    - name: Microsoft Cloud App Security-Baseline
+    - name: Baseline für Microsoft Defender for Cloud Apps
       href: /cloud-app-security/security-baseline
     - name: Microsoft Defender for Identity-Sicherheitsbaseline
       href: /defender-for-identity/security-baseline
@@ -207,7 +207,7 @@
       href: ../../network-watcher/security-baseline.md
     - name: "Power\_BI-Baseline"
       href: /security/benchmark/azure/baselines/power-bi-security-baseline
-    - name: Security Center-Baseline
+    - name: Baseline für Defender für Cloud
       href: ../../security-center/security-baseline.md
     - name: Service Bus-Baseline
       href: ../../service-bus-messaging/security-baseline.md
@@ -247,7 +247,7 @@
       href: ../fundamentals/index.yml
     - name: Gemeinsame Verantwortung in der Cloud
       href: ../fundamentals/shared-responsibility.md
-    - name: Azure Security Center
+    - name: Microsoft Defender für Cloud
       href: ../../security-center/index.yml
     - name: Blaupausenbeispiel „Azure Security Benchmark Foundation“
       href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.md

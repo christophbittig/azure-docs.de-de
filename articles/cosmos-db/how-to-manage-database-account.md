@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: d6cf0b9ba4fe856a153abf004a81c250c59b2aa1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6046468281878f8ae6b9ac9f802bb16fd378c616
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618588"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434140"
 ---
 # <a name="manage-an-azure-cosmos-account-using-the-azure-portal"></a>Erstellen eines Azure Cosmos DB-Kontos über das Azure-Portal
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie mit dem Azure-Portal verschiedene Aufgab
 ## <a name="addremove-regions-from-your-database-account"></a>Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto
 
 > [!TIP]
-> Wenn eine neue Region hinzugefügt wird, müssen alle Daten vollständig repliziert und in die neue Region committet werden, bevor die Region als verfügbar markiert wird. Wie lange dieser Vorgang dauert, hängt davon ab, wie viele Daten in dem Konto gespeichert werden.
+> Wenn eine neue Region hinzugefügt wird, müssen alle Daten vollständig repliziert und in die neue Region committet werden, bevor die Region als verfügbar markiert wird. Wie lange dieser Vorgang dauert, hängt davon ab, wie viele Daten in dem Konto gespeichert werden. Wenn ein [asynchroner Durchsatzskalierungsvorgang](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) ausgeführt wird, wird der Vorgang zum horizontalen Hochskalieren des Durchsatzes angehalten und automatisch fortgesetzt, sobald der Vorgang zum Hinzufügen/Entfernen von Regionen abgeschlossen ist. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
@@ -95,6 +95,9 @@ Nachdem ein Cosmos-Konto für automatisches Failover konfiguriert wurde, kann di
 
 > [!IMPORTANT]
 > Damit dieser Vorgang erfolgreich ausgeführt wird, muss das Azure Cosmos-Konto für manuelles Failover konfiguriert sein.
+
+> [!NOTE]
+> Wenn Sie einen manuellen Failovervorgang ausführen, während ein [asynchroner Durchsatzskalierungsvorgang](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) aktiv ist, wird der Vorgang zum horizontalen Hochskalieren des Durchsatzes angehalten. Er wird automatisch fortgesetzt, sobald der Failovervorgang abgeschlossen ist.
 
 1. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie das Menü **Daten global replizieren**.
 

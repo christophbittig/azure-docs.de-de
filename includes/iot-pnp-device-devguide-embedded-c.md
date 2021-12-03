@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 09/07/2021
-ms.openlocfilehash: e80149a89c38124a6789b5e74e1c73f647465ae6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3f580069fc44f676bc6fcffa40bd74256a818a50
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128580500"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521156"
 ---
 ## <a name="sdks"></a>SDKs
 
@@ -66,7 +66,7 @@ status = nx_azure_iot_provisioning_client_registration_payload_set(prov_client_p
 
 ## <a name="use-components"></a>Verwenden von Komponenten
 
-Wie unter [Verstehen der Komponenten in IoT Plug & Play-Modellen](../articles/iot-develop/concepts-modeling-guide.md) beschrieben, müssen Geräteentwickler entscheiden, ob sie Komponenten zum Beschreiben ihrer Geräte verwenden möchten. Bei der Verwendung von Komponenten müssen Geräte den in den folgenden Abschnitten beschriebenen Regeln entsprechen. Um die Arbeit mit den IoT Plug & Play-Konventionen für Komponenten zu vereinfachen, verwenden die Beispiele die Hilfsfunktionen in [nx_azure_iot_pnp_helpers.h](https://github.com/azure-rtos/netxduo/blob/master/addons/azure_iot/samples/common/nx_azure_iot_pnp_helpers.h).
+Wie unter [Verstehen der Komponenten in IoT Plug & Play-Modellen](../articles/iot-develop/concepts-modeling-guide.md) beschrieben, müssen Geräteentwickler entscheiden, ob sie Komponenten zum Beschreiben ihrer Geräte verwenden möchten. Bei der Verwendung von Komponenten müssen Geräte den in den folgenden Abschnitten beschriebenen Regeln entsprechen. Um die Arbeit mit den IoT Plug & Play-Konventionen für Komponenten zu vereinfachen, verwenden die Beispiele die Hilfsfunktionen in [nx_azure_iot_hub_client.h](https://github.com/azure-rtos/netxduo/blob/master/addons/azure_iot/nx_azure_iot_hub_client.h).
 
 ## <a name="telemetry"></a>Telemetrie
 

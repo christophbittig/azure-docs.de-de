@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Azure Cosmos DB Datenbankschutz und Datensicherhe
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 11/03/2021
 ms.author: mjbrown
-ms.openlocfilehash: 818c380d1ec2b3d7095eccec94b8e6f324cb45d0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b789ff99ce38df897df752609240dfa0d1d4f558
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615003"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510175"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Sicherheit bei Azure Cosmos DB – Übersicht
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -20,11 +20,11 @@ Dieser Artikel erläutert bewährte Methoden und wichtige Funktionen von Azure C
 
 ## <a name="whats-new-in-azure-cosmos-db-security"></a>Neuerungen bei der Sicherheit von Azure Cosmos DB
 
-Die Verschlüsselung ruhender Daten, die in Azure Cosmos DB gespeichert sind, ist jetzt für Dokumente und Sicherungen in allen Azure-Regionen verfügbar. Die Verschlüsselung ruhender Daten wird automatisch auf neue und bestehende Kunden in diesen Regionen angewendet. Es ist keine Konfiguration erforderlich. Sie können die gleichen Vorteile im Hinblick auf Wartezeit, Durchsatz, Verfügbarkeit und Funktionalität wie zuvor nutzen und können außerdem auf die Sicherheit Ihrer verschlüsselten ruhenden Daten vertrauen.
+Die Verschlüsselung ruhender Daten, die in Azure Cosmos DB gespeichert sind, ist jetzt für Dokumente und Sicherungen in allen Azure-Regionen verfügbar. Die Verschlüsselung ruhender Daten wird automatisch auf neue und bestehende Kunden in diesen Regionen angewendet. Es ist keine Konfiguration erforderlich. Sie können die gleichen Vorteile im Hinblick auf Wartezeit, Durchsatz, Verfügbarkeit und Funktionalität wie zuvor nutzen und können außerdem auf die Sicherheit Ihrer verschlüsselten ruhenden Daten vertrauen.  Die in Ihrem Azure Cosmos-Konto gespeicherten Daten werden automatisch und nahtlos mit Schlüsseln verschlüsselt, die von Microsoft mithilfe von dienstseitig verwalteten Schlüsseln verwaltet werden. Optional können Sie eine zweite Verschlüsselungsebene mit Schlüsseln hinzufügen, die Sie mithilfe von [kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK)](how-to-setup-cmk.md) verwalten.
 
 ## <a name="how-do-i-secure-my-database"></a>Wie schütze ich meine Datenbank?
 
-Für die Sicherheit der Daten sind Sie, Ihr Kunde und Ihr Datenbankanbieter gemeinsam verantwortlich. Der Umfang Ihres Verantwortungsbereichs kann je nach Datenbankanbieter unterschiedlich ausfallen. Wenn Sie sich für eine lokale Lösung entschieden haben, müssen Sie weitgehend selbst für die Sicherheit sorgen – vom Endpunktschutz bis hin zur physischen Sicherung Ihrer Hardware. Das ist keine leichte Aufgabe. Wenn Sie einen PaaS-basierten Clouddatenbankanbieter wie Azure Cosmos DB ins Boot holen, verkleinert sich Ihr Verantwortungsbereich erheblich. Die folgende Abbildung – entnommen aus dem Microsoft-Whitepaper [Shared Responsibilities for Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) (Gemeinsame Verantwortung für das Cloud Computing) – zeigt, wie viel weniger Verantwortung auf Ihren Schultern liegt, wenn Sie mit einem PaaS-Anbieter wie Azure Cosmos DB arbeiten.
+Für die Sicherheit der Daten sind Sie, Ihr Kunde und Ihr Datenbankanbieter gemeinsam verantwortlich. Der Umfang Ihres Verantwortungsbereichs kann je nach Datenbankanbieter unterschiedlich ausfallen. Wenn Sie sich für eine lokale Lösung entschieden haben, müssen Sie weitgehend selbst für die Sicherheit sorgen – vom Endpunktschutz bis hin zur physischen Sicherung Ihrer Hardware. Das ist keine leichte Aufgabe. Wenn Sie einen PaaS-basierten Clouddatenbankanbieter wie Azure Cosmos DB ins Boot holen, verkleinert sich Ihr Verantwortungsbereich erheblich. Die folgende Abbildung – entnommen aus dem Microsoft-Whitepaper [Shared Responsibilities for Cloud Computing](https://azure.microsoft.com/resources/shared-responsibilities-for-cloud-computing/) (Gemeinsame Verantwortung für das Cloud Computing) – zeigt, wie viel weniger Verantwortung auf Ihren Schultern liegt, wenn Sie mit einem PaaS-Anbieter wie Azure Cosmos DB arbeiten.
 
 :::image type="content" source="./media/database-security/nosql-database-security-responsibilities.png" alt-text="Aufgaben von Kunde und Datenbankanbieter":::
 
@@ -71,14 +71,14 @@ Betrachten wir die Anforderungen nun im Detail.
 |Wiederherstellen gelöschter Daten|Automatisierte Onlinesicherungen können zum Wiederherstellen von Daten verwendet werden, die versehentlich gelöscht wurden. Dies ist bis zu ca. 30 Tage nach dem Löschen möglich. <br><br>Weitere Informationen erhalten Sie unter [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](online-backup-and-restore.md).|
 |Schützen und Isolieren von vertraulichen Daten|Jetzt sind alle ruhenden Daten verschlüsselt, die sich in den unter „Neuerungen“ aufgeführten Regionen befinden.<br><br>Personenbezogene und vertrauliche Daten können in einem bestimmten Container isoliert werden, und der Lese-/Schreibzugriff bzw. der schreibgeschützte Zugriff kann auf bestimmte Benutzer beschränkt werden.|
 |Überwachen auf Angriffe|Mithilfe von [Überwachungsprotokollierung und Aktivitätsprotokollen](./monitor-cosmos-db.md) können Sie Ihr Konto auf normale und ungewöhnliche Aktivitäten überwachen. Sie können anzeigen, welche Vorgänge für Ihre Ressourcen ausgeführt wurden, wer den jeweiligen Vorgang initiiert hat, wann der Vorgang ausgeführt wurde, welchen Status der Vorgang aufweist und vieles mehr, wie im Screenshot unter dieser Tabelle gezeigt.|
-|Reagieren auf Angriffe|Nachdem Sie den Azure-Support kontaktiert haben, um einen möglichen Angriff zu melden, wird ein aus fünf Schritten bestehender Prozess zur Reaktion auf den Incident angestoßen. Ziel dieses Prozesses ist es, die normale Dienstsicherheit und den normalen Betrieb so schnell wie möglich wiederherzustellen, nachdem ein Problem erkannt und eine Untersuchung gestartet wurde.<br><br>Weitere Informationen erhalten Sie unter [Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) (Sicherheitsreaktion von Microsoft Azure in der Cloud).|
+|Reagieren auf Angriffe|Nachdem Sie den Azure-Support kontaktiert haben, um einen möglichen Angriff zu melden, wird ein aus fünf Schritten bestehender Prozess zur Reaktion auf den Incident angestoßen. Ziel dieses Prozesses ist es, die normale Dienstsicherheit und den normalen Betrieb so schnell wie möglich wiederherzustellen, nachdem ein Problem erkannt und eine Untersuchung gestartet wurde.<br><br>Weitere Informationen erhalten Sie unter [Microsoft Azure Security Response in the Cloud](https://azure.microsoft.com/resources/shared-responsibilities-for-cloud-computing/) (Sicherheitsreaktion von Microsoft Azure in der Cloud).|
 |Geofencing (geografische Eingrenzung)|Azure Cosmos DB stellt die Datengovernance und -compliance für unabhängige Regionen sicher (z.B. Deutschland, China, US Government).|
 |Geschützte Einrichtungen|Die Daten in Azure Cosmos DB sind auf SSDs in den geschützten Rechenzentren von Azure gespeichert.<br><br>Weitere Informationen erhalten Sie unter [Globale Rechenzentren von Microsoft](https://www.microsoft.com/en-us/cloud-platform/global-datacenters).|
-|HTTPS-/SSL-/TLS-Verschlüsselung|Alle Verbindungen mit Azure Cosmos DB unterstützen HTTPS. Azure Cosmos DB unterstützt auch TLS 1.2.<br>Es ist möglich, eine serverseitige TLS-Mindestversion zu erzwingen. Wenden Sie sich zu diesem Zweck an [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com).|
+|HTTPS-/SSL-/TLS-Verschlüsselung|Alle Verbindungen mit Azure Cosmos DB unterstützen HTTPS. Azure Cosmos DB unterstützt auch TLS 1.2.<br>Es ist möglich, eine serverseitige TLS-Mindestversion zu erzwingen. Öffnen Sie hierzu ein [Azure-Supportticket](https://azure.microsoft.com/support/options/).|
 |Verschlüsselung ruhender Daten|Alle in Azure Cosmos DB gespeicherte Daten werden im Ruhezustand verschlüsselt. Weitere Informationen finden Sie unter [Azure Cosmos DB-Verschlüsselung ruhender Daten](./database-encryption-at-rest.md).|
 |Gepatchte Server|Da Azure Cosmos DB eine verwaltete Datenbank ist, müssen Sie keine Server verwalten oder patchen – das wird automatisch für Sie erledigt.|
 |Administratorkonten mit sicheren Kennwörtern|Es ist kaum zu glauben, dass diese Anforderung überhaupt erwähnt werden muss, aber im Gegensatz zu einigen unserer Wettbewerber ist es in Azure Cosmos DB unmöglich, ein Administratorkonto ohne Kennwort einzurichten.<br><br> Die Sicherheit über TLS und die auf HMAC-Geheimnissen basierende Authentifizierung sind standardmäßig integriert.|
-|Zertifizierungen für Sicherheit und Datenschutz| Die aktuelle Liste mit Zertifizierungen finden Sie auf der allgemeinen [Website mit Complianceangeboten für Azure](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) und im aktuellen [Dokument zur Azure-Compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) mit allen Zertifizierungen (suchen Sie nach „Cosmos“). Ausführlichere Informationen finden Sie im Beitrag [Azure #CosmosDB: sicher, privat, konform] vom 25. April 2018, in dem es um SOCS 1/2 Type 2, HITRUST, PCI-DSS Level 1, ISO 27001, HIPAA, FedRAMP High und vieles mehr geht.
+|Zertifizierungen für Sicherheit und Datenschutz| Die aktuelle Liste mit Zertifizierungen finden Sie auf der allgemeinen [Website mit Complianceangeboten für Azure](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) und im aktuellen [Dokument zur Azure-Compliance](https://azure.microsoft.com/mediahandler/files/resourcefiles/microsoft-azure-compliance-offerings/Microsoft%20Azure%20Compliance%20Offerings.pdf) mit allen Zertifizierungen (suchen Sie nach „Cosmos“).
 
 Der folgende Screenshot zeigt, wie Sie Überwachungs- und Aktivitätsprotokolle zum Überwachen Ihres Kontos verwenden können: :::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="Aktivitätsprotokolle für Azure Cosmos DB":::
 

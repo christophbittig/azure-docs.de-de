@@ -1,5 +1,5 @@
 ---
-title: 'CLI-Skript: Erstellen und Verwalten von Lesereplikaten in einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau)'
+title: 'CLI-Skript: Erstellen und Verwalten von Lesereplikaten in einer Instanz von Azure Database for MySQL – Flexible Server'
 description: Dieses Azure CLI-Beispielskript zeigt, wie Sie Lesereplikate in einer Instanz von Azure Database for MySQL – Flexible Server erstellen und verwalten.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 02eea900b9e78b0a23bead45bd077902de7417eb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1155231ca8909352aee2354023a19ea66c7ffc4d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701953"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844097"
 ---
-# <a name="create-and-manage-read-replicas-in-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Erstellen und Verwalten von Lesereplikaten in einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau) mithilfe der Azure CLI
+# <a name="create-and-manage-read-replicas-in-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Erstellen und Verwalten von Lesereplikaten in einer Instanz von Azure Database for MySQL – Flexible Server mithilfe der Azure CLI
 
 Dieses CLI-Beispielskript erstellt und verwaltet [Lesereplikate](../concepts-read-replicas.md) in einer Instanz von Azure Database for MySQL – Flexible Server.
 
@@ -56,5 +56,5 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server (Vorschau)](../sample-scripts-azure-cli.md).
+- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server](../sample-scripts-azure-cli.md).
 - Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).

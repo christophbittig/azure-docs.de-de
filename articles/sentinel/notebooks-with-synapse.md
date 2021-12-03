@@ -1,31 +1,31 @@
 ---
-title: Umfangreiche Sicherheitsanalysen mit Azure Sentinel-Notebooks und Azure Synapse-Integration
-description: In diesem Artikel wird beschrieben, wie Sie Abfragen von großen Datenmengen in Azure Synapse Analytics mit Azure Sentinel-Notebooks ausführen.
+title: Umfangreiche Sicherheitsanalysen mit Microsoft Sentinel Notebooks und Azure Synapse-Integration
+description: In diesem Artikel wird beschrieben, wie Sie Abfragen von großen Datenmengen in Azure Synapse Analytics mit Microsoft Sentinel-Notebooks ausführen.
 services: sentinel
 author: batamig
 ms.author: bagol
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
-ms.date: 10/06/2021
-ms.openlocfilehash: 6e5efb00db63f0188248c758443e944f0653e513
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.openlocfilehash: 10914037b239bf2301881a18c6095ba9364af4ae
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021541"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517328"
 ---
-# <a name="large-scale-security-analytics-using-azure-sentinel-notebooks-and-azure-synapse-integration-public-preview"></a>Umfangreiche Sicherheitsanalysen mit Azure Sentinel-Notebooks und Azure Synapse-Integration (öffentliche Vorschau)
+# <a name="large-scale-security-analytics-using-microsoft-sentinel-notebooks-and-azure-synapse-integration-public-preview"></a>Umfangreiche Sicherheitsanalysen mit Microsoft Sentinel-Notebooks und Azure Synapse-Integration (öffentliche Vorschau)
 
 > [!IMPORTANT]
-> Die Integration von Azure Sentinel-Notebooks mit Azure Synapse Analytics befindet sich derzeit in der VORSCHAU. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> Die Integration von Microsoft Sentinel-Notebooks mit Azure Synapse Analytics befindet sich derzeit in der VORSCHAU. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 >
 
-Die Integration von Azure Sentinel-Notebooks mit Azure Synapse Analytics ermöglicht umfangreiche Sicherheitsanalysen.
+Die Integration von Microsoft Sentinel-Notebooks mit Azure Synapse Analytics ermöglicht umfangreiche Sicherheitsanalysen.
 
-Während KQL und Log Analytics die primären Tools und Lösungen zum Abfragen und Analysieren von Daten in Azure Sentinel sind, bietet Azure Synapse zusätzliche Funktionen für die Analyse von Datenmengen mit integriertem Data Lake-Zugriff und der verteilten Verarbeitungs-Engine von Apache Spark.
+Während KQL und Log Analytics die primären Tools und Lösungen zum Abfragen und Analysieren von Daten in Microsoft Sentinel sind, bietet Azure Synapse zusätzliche Funktionen für die Analyse von Datenmengen mit integriertem Data Lake-Zugriff und der verteilten Verarbeitungs-Engine von Apache Spark.
 
 Die Integration mit Azure Synapse bietet folgendes:
 
@@ -41,40 +41,40 @@ Sie können beispielsweise Notebooks mit Azure Synapse verwenden, um in Netzwerk
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="understand-azure-sentinel-notebooks"></a>Sich mit Azure Sentinel-Notebooks vertraut machen
+### <a name="understand-microsoft-sentinel-notebooks"></a>Sich mit Microsoft Sentinel-Notebooks vertraut machen
 
-Es wird empfohlen, dass Sie sich im Allgemeinen mit Azure Sentinel-Notebooks vertraut machen, bevor Sie die Verfahren in diesem Artikel ausführen.
+Es wird empfohlen, dass Sie sich im Allgemeinen mit Microsoft Sentinel-Notebooks vertraut machen, bevor Sie die Prozeduren in diesem Artikel ausführen.
 
-Zu Beginn sollten Sie einen Blick auf [Jupyter-Notebooks werfen und diese verwenden, um nach Sicherheitsbedrohungen zu suchen](notebooks.md) und [einen Blick auf die Anleitung werfen: Erste Schritte mit Jupyter-Notebooks und MSTICPy in Azure Sentinel](notebook-get-started.md).
+Zu Beginn sollten Sie einen Blick auf das Kapitel [Jupyter-Notebooks verwenden, um nach Sicherheitsbedrohungen zu suchen](notebooks.md) sowie das [Tutorial: Erste Schritte mit Jupyter-Notebooks und MSTICPy in Microsoft Sentinel](notebook-get-started.md) werfen.
 
 ### <a name="required-roles-and-permissions"></a>Erforderliche Rollen und Berechtigungen
 
-Um Azure Synapse mit Azure Sentinel-Notebooks zu verwenden, müssen Sie über die folgenden Rollen und Berechtigungen verfügen:
+Um Azure Synapse mit Microsoft Sentinel-Notebooks zu verwenden, müssen Sie über die folgenden Rollen und Berechtigungen verfügen:
 
 |type  |Details  |
 |---------|---------|
-|**Azure Sentinel**     |- Die Rolle **Azure Sentinel-Mitwirkender** zum Speichern und Starten von Notebooks aus Azure Sentinel heraus.         |
-|**Azure Machine Learning**     |- Eine Rolle **Inhaber** oder **Mitwirkender** auf Ressourcengruppenebene, um bei Bedarf einen neuen Azure Machine Learning-Arbeitsbereich zu erstellen. <br>- Eine Rolle **Mitwirkender** im Azure Machine Learning-Arbeitsbereich, in dem Sie Ihre Azure Sentinel-Notebooks ausführen.    <br><br>Weitere Informationen finden Sie unter [Zugriff auf einen Azure Machine Learning-Arbeitsbereich verwalten](/azure/machine-learning/how-to-assign-roles).     |
+|**Microsoft Sentinel**     |- Die Rolle **Microsoft Sentinel-Mitwirkender** zum Speichern und Starten von Notebooks aus Microsoft Sentinel heraus.         |
+|**Azure Machine Learning**     |- Eine Rolle **Inhaber** oder **Mitwirkender** auf Ressourcengruppenebene, um bei Bedarf einen neuen Azure Machine Learning-Arbeitsbereich zu erstellen. <br>- Eine Rolle **Mitwirkender** im Azure Machine Learning-Arbeitsbereich, in dem Sie Ihre Microsoft Sentinel-Notebooks ausführen.    <br><br>Weitere Informationen finden Sie unter [Zugriff auf einen Azure Machine Learning-Arbeitsbereich verwalten](/azure/machine-learning/how-to-assign-roles).     |
 |**Azure Synapse Analytics**     | - Eine Rolle **Besitzer** auf Ressourcengruppenebene, um einen neuen Azure Synapse-Arbeitsbereich zu erstellen.<br>- Eine Rolle **Mitwirkender** im Azure Synapse-Arbeitsbereich zum Ausführen Ihrer Abfragen. <br>- Eine Rolle Azure Synapse Analytics-**Mitwirkender** in Synapse Studio   <br><br>Weitere Informationen finden Sie unter [Informationen zu den Rollen, die zum Ausführen allgemeiner Aufgaben in Synapse erforderlich sind](/azure/synapse-analytics/security/synapse-workspace-understand-what-role-you-need).     |
 |**Azure Data Lake Storage Gen2**     | - Eine Rolle Azure Log Analytics-**Mitwirkender** zum Exportieren von Daten aus einem Log Analytics-Arbeitsbereich<br>– Eine Rolle Azure Blob Storage-Mitwirkender zum Abfragen von Daten aus einem Data Lake  <br><br>Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal).|
 |     |         |
 
 ### <a name="connect-to-azure-ml-and-synapse-workspaces"></a>Herstellen einer Verbindung mit Azure ML- und Synapse-Arbeitsbereichen
 
-Um Azure Sentinel-Notebooks mit Azure Synapse zu verwenden, müssen Sie zunächst eine Verbindung mit einem Azure Machine Learning-Arbeitsbereich und einem Azure Synapse-Arbeitsbereich herstellen.
+Um Microsoft Sentinel-Notebooks mit Azure Synapse zu verwenden, müssen Sie zunächst eine Verbindung mit einem Azure Machine Learning-Arbeitsbereich und einem Azure Synapse-Arbeitsbereich herstellen.
 
 **So erstellen Sie einen Azure Machine Learning-Arbeitsbereich oder stellen eine Verbindung zu ihm her**:
 
-Azure Machine Learning-Arbeitsbereiche sind eine Grundvoraussetzung für die Verwendung von Notebooks in Azure Sentinel.
+Azure Machine Learning-Arbeitsbereiche sind eine Grundvoraussetzung für die Verwendung von Notebooks in Microsoft Sentinel.
 
 Wenn Sie noch nicht verbunden sind, lesen Sie den Abschnitt [Jupyter-Notebooks verwenden, um nach Sicherheitsbedrohungen zu suchen](notebooks.md).
 
 **So erstellen Sie einen neuen Azure Synapse-Arbeitsbereich**:
 
-Wählen Sie oben auf der Seite **Notebooks** von Azure Sentinel die Option **Azure Synapse konfigurieren** und dann **Neuen Azure Synapse-Arbeitsbereich erstellen** aus.
+Wählen Sie oben auf der Seite **Notebooks** von Microsoft Sentinel die Option **Azure Synapse konfigurieren** und dann **Neuen Azure Synapse-Arbeitsbereich erstellen** aus.
 
 > [!NOTE]
-> Azure Data Lake Storage Gen2 ist ein integrierter Data Lake, der in jedem Azure Synapse-Arbeitsbereich enthalten ist. Stellen Sie sicher, dass Sie einen neuen Data Lake auswählen oder erstellen, der sich in derselben Region wie Ihr Azure Sentinel-Arbeitsbereich befindet. Dies ist erforderlich, wenn Sie Ihre Daten exportieren, wie weiter unten in diesem Artikel beschrieben.
+> Azure Data Lake Storage Gen2 ist ein integrierter Data Lake, der in jedem Azure Synapse-Arbeitsbereich enthalten ist. Stellen Sie sicher, dass Sie einen neuen Data Lake auswählen oder erstellen, der sich in derselben Region wie Ihr Microsoft Sentinel-Arbeitsbereich befindet. Dies ist erforderlich, wenn Sie Ihre Daten exportieren, wie weiter unten in diesem Artikel beschrieben.
 >
 
 Weitere Informationen finden Sie in der [Azure Synapse-Dokumentation](/azure/synapse-analytics/quickstart-create-workspace).
@@ -82,15 +82,15 @@ Weitere Informationen finden Sie in der [Azure Synapse-Dokumentation](/azure/syn
 
 ## <a name="configure-your-azure-synapse-analytics-integration"></a>Ihre Azure Synapse Analytics-Integration konfigurieren
 
-Azure Sentinel bietet das integrierte Notebook **Azure Synapse – Konfigurieren von Azure ML und Azure Synapse Analytics**, das Sie durch die Konfigurationen führt, die für die Integration in Azure Synapse erforderlich sind.
+Microsoft Sentinel bietet das integrierte Notebook **Azure Synapse – Konfigurieren von Azure ML und Azure Synapse Analytics**, das Sie durch die Konfigurationen führt, die für die Integration in Azure Synapse erforderlich sind.
 
 > [!NOTE]
-> Das Konfigurieren Ihrer Azure Synapse-Integration ist ein einmaliger Vorgang, und Sie müssen dieses Notebook nur einmal für Ihren Azure Sentinel-Arbeitsbereich ausführen.
+> Das Konfigurieren Ihrer Azure Synapse-Integration ist ein einmaliger Vorgang, und Sie müssen dieses Notebook nur einmal für Ihren Microsoft Sentinel-Arbeitsbereich ausführen.
 >
 
 **So führen Sie das Azure Synapse – Azure ML- und Azure Synapse Analytics-Notebooks konfigurieren**:
 
-1. Wählen Sie auf der Seite **Notebooks** von Azure Sentinel die Registerkarte **Vorlagen** aus und geben Sie **Synapse** in die Suchleiste ein, um das Notebook zu finden.
+1. Wählen Sie auf der Seite **Notebooks** von Microsoft Sentinel die Registerkarte **Vorlagen** aus und geben Sie **Synapse** in die Suchleiste ein, um das Notebook zu finden.
 
 1. Suchen und wählen Sie das Notebook **Azure Synapse – Azure ML und Azure Synapse Analytics konfigurieren** aus, und wählen Sie dann unten rechts **Notebook-Vorlage klonen** aus.
 
@@ -98,7 +98,7 @@ Azure Sentinel bietet das integrierte Notebook **Azure Synapse – Konfigurieren
 
 1. Nachdem Ihr Notebook bereitgestellt wurde, wählen Sie **Notebook starten**, um es zu öffnen.
 
-    Das Notebook wird in Ihrem Azure ML-Arbeitsbereich in Azure Sentinel geöffnet. Weitere Informationen finden Sie unter [Starten eines Notebooks in Ihrem Azure ML-Arbeitsbereich](notebooks.md#launch-a-notebook-in-your-azure-ml-workspace).
+    Das Notebook wird in Ihrem Azure ML-Arbeitsbereich in Microsoft Sentinel geöffnet. Weitere Informationen finden Sie unter [Starten eines Notebooks in Ihrem Azure ML-Arbeitsbereich](notebooks.md#launch-a-notebook-in-your-azure-ml-workspace).
 
 1. Führen Sie die Zellen in den ersten Schritten des Notebooks aus, um die erforderlichen Python-Bibliotheken und -Funktionen zu laden und sich bei Azure-Ressourcen zu authentifizieren.
 
@@ -112,11 +112,11 @@ Nachdem sich Ihre Daten im Azure Data Lake Storage befinden, können Sie Abfrage
 
 ## <a name="hunt-on-historical-data-at-scale"></a>Suche nach historischen Daten in großem Maßstab
 
-Azure Sentinel bietet die integrierte **Azure Synapse – Erkennung von potentiellem Netzwerk-Beaconing mithilfe des Apache Spark-Notebooks**. Verwenden Sie dieses Notebook als Vorlage für ein reales Beispielsicherheitsszenario, um die Suche nach Datenmengen mit Azure Sentinel und Azure Synapse zu beginnen.
+Microsoft Sentinel bietet die integrierte **Azure Synapse – Erkennung von potentiellem Netzwerk-Beaconing mithilfe des Apache Spark-Notebooks**. Verwenden Sie dieses Notebook als Vorlage für ein reales Beispielsicherheitsszenario, um die Suche nach Datenmengen mit Microsoft Sentinel und Azure Synapse zu beginnen.
 
-**So erkennen Sie potenzielles Netzwerk-Beaconing mit Azure Sentinel und Azure Synapse**:
+**So erkennen Sie potenzielles Netzwerk-Beaconing mit Microsoft Sentinel und Azure Synapse**:
 
-1. Wählen Sie auf der Seite **Notebooks** von Azure Sentinel die Registerkarte **Vorlagen** aus und geben Sie **Synapse** in die Suchleiste ein, um das Notebook zu finden.
+1. Wählen Sie auf der Seite **Notebooks** von Microsoft Sentinel die Registerkarte **Vorlagen** aus und geben Sie **Synapse** in die Suchleiste ein, um das Notebook zu finden.
 
 1. Suchen und wählen Sie das Notebook **Azure Synapse – Potentielles Netzwerk-Beaconing unter Verwendung von Apache Spark erkennen**  und wählen Sie dann unten rechts **Notebook-Vorlage klonen** aus.
 
@@ -124,7 +124,7 @@ Azure Sentinel bietet die integrierte **Azure Synapse – Erkennung von potentie
 
 1. Nachdem Ihr Notebook bereitgestellt wurde, wählen Sie **Notebook starten**, um es zu öffnen.
 
-    Das Notebook wird in Ihrem Azure ML-Arbeitsbereich von Azure Sentinel aus geöffnet. Weitere Informationen finden Sie unter [Starten eines Notebooks in Ihrem Azure ML-Arbeitsbereich](notebooks.md#launch-a-notebook-in-your-azure-ml-workspace).
+    Das Notebook wird in Ihrem Azure ML-Arbeitsbereich aus Microsoft Sentinel heraus geöffnet. Weitere Informationen finden Sie unter [Starten eines Notebooks in Ihrem Azure ML-Arbeitsbereich](notebooks.md#launch-a-notebook-in-your-azure-ml-workspace).
 
 1. Führen Sie die Zellen in den ersten Schritten des Notebooks aus, um die erforderlichen Python-Bibliotheken und -Funktionen zu laden und sich bei Azure-Ressourcen zu authentifizieren.
 
@@ -160,19 +160,19 @@ Azure Sentinel bietet die integrierte **Azure Synapse – Erkennung von potentie
     - Ergebnisse via IP-Adressen-GeoLocation, WhoIs und anderen Threat Intelligence-Daten bereichern, um ein vollständigeres Bild des anomalen Netzwerkverhaltens zu erhalten.
     - MSTICPy-Visualisierungen ausführen, um Standorte zu kartieren, während Sie die Verteilung von Remote-Netzwerkverbindungen oder anderen Ereignissen betrachten.
 
-    Die Ergebnisse können zur weiteren Untersuchung an Azure Sentinel zurückgeschrieben werden. Aus den Ergebnissen können Sie beispielsweise benutzerdefinierte Vorfälle, Beobachtungslisten oder Lesezeichen für die Suche erstellen.
+    Die Ergebnisse können zur weiteren Untersuchung an Microsoft Sentinel zurückgeschrieben werden. Aus den Ergebnissen können Sie beispielsweise benutzerdefinierte Vorfälle, Beobachtungslisten oder Lesezeichen für die Suche erstellen.
 
     > [!TIP]
     > Verwenden Sie diese Schritte, um potenzielles Netzwerk-Beaconing zu erkennen, oder verwenden Sie sie als Vorlage und passen Sie sie an die Anforderungen Ihrer Organisation an.
     >
 
-## <a name="manage-your-azure-synapse-session-from-azure-sentinel"></a>Verwalten Sie Ihre Azure Synapse-Sitzung über Azure Sentinel
+## <a name="manage-your-azure-synapse-session-from-microsoft-sentinel"></a>Verwalten Sie Ihre Azure Synapse-Sitzung über Microsoft Sentinel
 
-Wenn Sie sich nicht in einer Azure Synapse-Sitzung befinden, verwendet Azure Sentinel standardmäßig den Azure ML-Compute, der im Feld **Compute** oben auf der Seite **Notebooks** ausgewählt ist.
+Wenn Sie sich nicht in einer Azure Synapse-Sitzung befinden, verwendet Microsoft Sentinel standardmäßig den Azure ML-Compute, der im Feld **Compute** oben auf der Seite **Notebooks** ausgewählt ist.
 
 Verwenden Sie den folgenden Code, den Sie von hier aus kopieren können, oder das Notebook **Azure Synapse – Potentielles Netzwerk-Beaconing mit Apache Spark erkennen**, um Ihre Azure Synapse-Sitzung zu starten und zu stoppen.
 
-### <a name="start-an-azure-synapse-session-from-within-azure-sentinel"></a>Starten Sie eine Azure Synapse-Sitzung in Azure Sentinel
+### <a name="start-an-azure-synapse-session-from-within-microsoft-sentinel"></a>Starten Sie eine Azure Synapse-Sitzung in Microsoft Sentinel
 
 Führen Sie den folgenden Code aus:
 
@@ -192,7 +192,7 @@ account_name = '<storage account name>' # fill in your primary account name
 container_name = '<container name>' # fill in your container name
 subscription_id = '<subscription if>' # fill in your subscription id
 resource_group = '<resource group>' # fill in your resource groups for ADLS
-workspace_name = '<azure sentinel/log analytics workspace name>' # fill in your workspace name
+workspace_name = '<Microsoft Sentinel/log analytics workspace name>' # fill in your workspace name
 device_vendor = "Fortinet"  # Replace your desired network vendor from commonsecuritylogs
 
 # Datetime and lookback parameters
@@ -222,7 +222,7 @@ lookback_days = "21" # fill in lookback days if you want to run it on historical
 
 Im obigen Beispiel werden die Abfragen für Daten zwischen dem 28. Oktober und dem 17. November 2021 ausgeführt.
 
-### <a name="stop-an-azure-synapse-session-from-within-azure-sentinel"></a>Beenden einer Azure Synapse-Sitzung in Azure Sentinel
+### <a name="stop-an-azure-synapse-session-from-within-microsoft-sentinel"></a>Beenden Sie eine Azure Synapse-Sitzung in Microsoft Sentinel
 
 Führen Sie den folgenden Code aus:
 
@@ -230,7 +230,7 @@ Führen Sie den folgenden Code aus:
 %synapse stop
 ```
 
-### <a name="switch-azure-synapse-workspaces-in-azure-sentinel"></a>Wechseln von Azure Synapse-Arbeitsbereichen in Azure Sentinel
+### <a name="switch-azure-synapse-workspaces-in-microsoft-sentinel"></a>Wechseln von Azure Synapse-Arbeitsbereichen in Microsoft Sentinel
 
 Verwenden Sie eine der folgenden Methoden, um einen anderen Synapse-Arbeitsbereich als den, in dem Sie derzeit angemeldet sind, zu verwalten oder auszuwählen:
 
@@ -258,5 +258,5 @@ Verwenden Sie eine der folgenden Methoden, um einen anderen Synapse-Arbeitsberei
 Weitere Informationen finden Sie unter:
 
 - [Aufspüren von Sicherheitsrisiken mit Jupyter Notebooks](notebooks.md)
-- [Tutorial: Erste Schritte mit Jupyter-Notebooks und MSTICPy in Azure Sentinel](notebook-get-started.md)
+- [Tutorial: Erste Schritte mit Jupyter-Notebooks und MSTICPy in Microsoft Sentinel](notebook-get-started.md)
 - [Verknüpfen von Azure Synapse Analytics- und Azure Machine Learning-Arbeitsbereichen sowie Anfügen von Apache Spark-Pools (Vorschau)](/azure/machine-learning/how-to-link-synapse-ml-workspaces)

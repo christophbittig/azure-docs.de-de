@@ -1,18 +1,18 @@
 ---
 title: Konfigurieren des Dateiuploads im Azure-Portal | Microsoft Docs
 description: Konfigurieren des IoT Hubs im Azure-Portal zum Aktivieren von Dateiuploads von verbundenen Geräten. Enthält Informationen zum Konfigurieren des Azure-Zielspeicherkontos.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.author: robinsh
-ms.openlocfilehash: bf8bf9d1b472ff1986596f6cae7e1f7b415d3bc6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: lizross
+ms.openlocfilehash: 5871ffdc16fe7c3e66c6915c72198250823d817e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339231"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555279"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Konfigurieren des Dateiuploads in IoT Hub im Azure-Portal
 
@@ -20,7 +20,7 @@ ms.locfileid: "122339231"
 
 In diesem Artikel erfahren Sie, wie Sie Dateiuploads in Ihrem IoT-Hub im Azure-Portal konfigurieren. 
 
-Damit Sie die [Dateiuploadfunktion in IoT Hub](iot-hub-devguide-file-upload.md) nutzen können, müssen Sie Ihrem IoT-Hub zuerst ein Azure-Speicherkonto und einen Blobcontainer zuordnen. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können. Zusätzlich zum Speicherkonto und Blobcontainer können Sie die Gültigkeitsdauer (TTL) für den SAS-URI und den Authentifizierungstyp festlegen, der von IoT Hub bei Azure Storage verwendet wird. Sie können auch Einstellungen für die optionalen Dateiuploadbenachrichtigungen konfigurieren, die IoT Hub an Back-End-Dienste übermitteln kann.
+Damit Sie die [Dateiuploadfunktion in IoT Hub](iot-hub-devguide-file-upload.md) nutzen können, müssen Sie Ihrem IoT-Hub zuerst ein Azure-Speicherkonto und einen Blobcontainer zuordnen. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können. Zusätzlich zum Speicherkonto und Blobcontainer können Sie die Gültigkeitsdauer (TTL) für den SAS-URI und den Authentifizierungstyp festlegen, der von IoT Hub für Azure Storage verwendet wird. Sie können auch Einstellungen für die optionalen Dateiuploadbenachrichtigungen konfigurieren, die IoT Hub an Back-End-Dienste übermitteln kann.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,15 +32,13 @@ Damit Sie die [Dateiuploadfunktion in IoT Hub](iot-hub-devguide-file-upload.md) 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem IoT-Hub, und wählen Sie **Dateiupload** aus, um die Dateiuploadeigenschaften anzuzeigen. Wählen Sie dann unter **Einstellungen für Speichercontainer** die Option **Azure Storage-Container** aus.
 
-    :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-settings.png" alt-text="Anzeigen der Dateiuploadeinstellungen für den IoT Hub im Portal":::
+    :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-settings.png" alt-text="Screenshot: Konfigurieren von Dateiuploadeinstellungen im Portal.":::
 
-1. Wählen Sie in Ihrem aktuellen Abonnement ein Azure Storage-Konto und einen Blobcontainer aus, das bzw. der Ihrem IoT-Hub zugeordnet werden soll. Bei Bedarf können Sie im Bereich **Speicherkonten** ein Azure Storage-Konto und im Bereich **Container** einen Blobcontainer erstellen. 
+1. Wählen Sie in Ihrem aktuellen Abonnement ein Azure Storage-Konto und einen Blobcontainer aus, das bzw. der Ihrem IoT-Hub zugeordnet werden soll. Bei Bedarf können Sie im Bereich **Speicherkonten** ein Azure Storage-Konto und im Bereich **Container** einen Blobcontainer erstellen.
 
-   :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-container-selection.png" alt-text="Anzeigen von Speichercontainern für den Dateiupload im Portal":::
+   :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-container-selection.png" alt-text="Screenshot: Anzeigen von Speichercontainern für den Dateiupload.":::
 
-1. Nachdem Sie ein Azure Storage-Konto und einen Blobcontainer ausgewählt haben, konfigurieren Sie die restlichen Dateiuploadeigenschaften.    
-
-    :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-selected-container.png" alt-text="Konfigurieren des Dateiuploads für IoT Hub im Portal":::
+1. Nachdem Sie ein Azure Storage-Konto und einen Blobcontainer ausgewählt haben, konfigurieren Sie die restlichen Dateiuploadeigenschaften.
 
     * **Benachrichtigungen für hochgeladene Dateien empfangen**: Aktivieren oder deaktivieren Sie Dateiuploadbenachrichtigungen über den Umschalter.
 
@@ -59,6 +57,6 @@ Damit Sie die [Dateiuploadfunktion in IoT Hub](iot-hub-devguide-file-upload.md) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Hochladen von Dateien aus einer Geräteübersicht](iot-hub-devguide-file-upload.md)
+* [Hochladen von Dateien von einem Gerät – Übersicht](iot-hub-devguide-file-upload.md)
 * [IoT Hub-Unterstützung für verwaltete Identitäten](./iot-hub-managed-identity.md)
 * [Anleitungen zum Dateiupload](./iot-hub-csharp-csharp-file-upload.md)

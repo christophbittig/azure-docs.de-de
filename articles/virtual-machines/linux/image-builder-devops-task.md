@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c700170e59792dc6f782ded02960962c7b21d946
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 70a9b1da38f827da393164e4ab1da9928ea6e7b9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696921"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428043"
 ---
 # <a name="azure-image-builder-service-devops-task-preview"></a>DevOps-Task des Azure VM Image Builder-Diensts (Vorschau)
 
@@ -78,7 +78,7 @@ Verwenden Sie die Ressourcengruppe, in der das Artefakt der temporären Imagevor
  
 ### <a name="location"></a>Standort
 
-Der Standort entspricht der Region, in der Image Builder ausgeführt wird. Es wird nur eine festgelegte Anzahl von [Regionen](../image-builder-overview.md#regions) unterstützt. Die Quellimages müssen an diesem Standort vorhanden sein. Wenn Sie zum Beispiel Shared Image Gallery verwenden, muss in der Region ein Replikat vorhanden sein.
+Der Standort entspricht der Region, in der Image Builder ausgeführt wird. Es wird nur eine festgelegte Anzahl von [Regionen](../image-builder-overview.md#regions) unterstützt. Die Quellimages müssen an diesem Standort vorhanden sein. Wenn Sie zum Beispiel Azure Compute Gallery verwenden, muss in der Region ein Replikat vorhanden sein.
 
 ### <a name="managed-identity-required"></a>Verwaltete Identität (erforderlich)
 Image Builder erfordert eine verwaltete Identität, die zum Lesen von benutzerdefinierten Quellimages, zum Herstellen einer Verbindung mit Azure Storage und zum Erstellen von benutzerdefinierten Images verwendet wird. Weitere Informationen finden Sie unter [Informationen zu Azure VM Image Builder](../image-builder-overview.md#permissions).
@@ -94,12 +94,12 @@ Die Quellimages müssen von den unterstützten Image Builder-Betriebssystemen st
     ```json
     /subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/images/<imageName>
     ```
-* Azure Shared Image Gallery: Sie müssen die Ressourcen-ID der Imageversion übergeben, z. B.:
+* Azure Compute Gallery: Sie müssen die Ressourcen-ID der Imageversion übergeben, z. B.:
     ```json
     /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup/providers/Microsoft.Compute/galleries/$sigName/images/$imageDefName/versions/<versionNumber>
     ```
 
-    Wenn Sie die neueste Version von Shared Image Gallery benötigen, können Sie einen Azure PowerShell- oder Azure CLI-Task ausführen, bevor dieser die neueste Version abruft und eine DevOps-Variable festlegt. Verwenden Sie die Variable in dem DevOps-Task von Azure VM Image Builder. Weitere Informationen finden Sie in den [Beispielen](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/8_Getting_Latest_SIG_Version_ResID#getting-the-latest-image-version-resourceid-from-shared-image-gallery).
+    Wenn Sie die neueste Version von Azure Compute Gallery (ehemals Shared Image Gallery) benötigen, können Sie einen Azure PowerShell- oder Azure CLI-Task ausführen, bevor dieser die neueste Version abruft und eine DevOps-Variable festlegt. Verwenden Sie die Variable in dem DevOps-Task von Azure VM Image Builder. Weitere Informationen finden Sie in den [Beispielen](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/8_Getting_Latest_SIG_Version_ResID#getting-the-latest-image-version-resourceid-from-shared-image-gallery).
 
 * (Marketplace) Basisimage: Es gibt eine Dropdownliste mit beliebten Images, welche stets die „neueste“ Version der unterstützten Betriebssysteme verwenden. 
 
@@ -233,9 +233,9 @@ Es werden drei Verteilertypen unterstützt.
 
 * Standorte
 
-#### <a name="azure-shared-image-gallery"></a>Azure Shared Image Gallery
+#### <a name="azure-compute-gallery"></a>Azure Compute Gallery
 
-Die Shared Image Gallery-Instanz **muss** bereits vorhanden sein.
+Die Azure Compute Gallery-Instanz **muss** bereits vorhanden sein.
 
 * ResourceID: 
     ```bash

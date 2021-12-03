@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/09/2019
-ms.openlocfilehash: ed819b22caab25fea8ae002d482cf2df5d0bf60c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/22/2021
+ms.openlocfilehash: 8f5965b81e403e58e6c58e0ca3d567375e211d37
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733068"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426169"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -28,7 +28,7 @@ Wenn Sie eine mehrsprachige LUIS-Clientanwendung benötigen, z.B. einen Chatbot,
 
 LUIS versteht Äußerungen in den folgenden Sprachen:
 
-| Sprache |Gebietsschema  |  Vordefinierte Domäne | Vordefinierte Entität | Ausdrucklistenempfehlungen | \**[Textanalyse](../text-analytics/language-support.md)<br>(Stimmung und<br>Schlüsselwörter)|
+| Sprache |Gebietsschema  |  Vordefinierte Domäne | Vordefinierte Entität | Ausdrucklistenempfehlungen | **[Stimmungsanalyse](../language-service/sentiment-opinion-mining/overview.md) und [Schlüsselbegriffserkennung](../language-service/key-phrase-extraction/overview.md)|
 |--|--|:--:|:--:|:--:|:--:|
 | Arabisch (Vorschau, modernes Hocharabisch) |`ar-AR`|-|-|-|-|
 | *[Chinesisch](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
@@ -37,17 +37,17 @@ LUIS versteht Äußerungen in den folgenden Sprachen:
 | Französisch (Kanada) |`fr-CA` |-|-|-|✔|
 | Französisch (Frankreich) |`fr-FR` |✔| ✔ |✔ |✔|
 | Deutsch |`de-DE` |✔| ✔ |✔ |✔|
-| Gujarati | `gu-IN`|-|-|-|-|
-| Hindi | `hi-IN`|-|✔|-|-|
+| Gujarati (Vorschau) | `gu-IN`|-|-|-|-|
+| Hindi (Vorschau) | `hi-IN`|-|✔|-|-|
 | Italienisch |`it-IT` |✔| ✔ |✔|✔|
 | *[Japanisch](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Nur Schlüsselausdruck|
 | Koreanisch |`ko-KR` |✔|-|-|Nur Schlüsselausdruck|
-| Marathi | `mr-IN`|-|-|-|-|
+| Marathi (Vorschau) | `mr-IN`|-|-|-|-|
 | Portugiesisch (Brasilien) |`pt-BR` |✔| ✔ |✔ |Nicht alle Unterkulturen|
 | Spanisch (Mexiko)|`es-MX` |-|✔|✔|✔|
 | Spanisch (Spanien) |`es-ES` |✔| ✔ |✔|✔|
-| Tamilisch | `ta-IN`|-|-|-|-|
-| Telugu | `te-IN`|-|-|-|-|
+| Tamil (Vorschau) | `ta-IN`|-|-|-|-|
+| Telugu (Vorschau) | `te-IN`|-|-|-|-|
 | Türkisch | `tr-TR` |✔|✔|-|Nur Stimmung|
 
 
@@ -63,7 +63,7 @@ Die Sprachunterstützung variiert für [vordefinierte Entitäten](luis-reference
      - でございます ist nicht dasselbe wie です.
      - です ist nicht dasselbe wie だ.
 
-[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
+[!INCLUDE [Language service support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>Unterstützte Sprachen der Speech-API
 Informationen zu den Sprachen für den Spracherkennungsmodus von Speech finden Sie unter [Unterstützte Sprachen](../speech-service/speech-to-text.md) für Speech.

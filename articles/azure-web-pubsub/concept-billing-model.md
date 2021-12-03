@@ -5,13 +5,13 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 03/29/2021
-ms.openlocfilehash: c7a7aaa47d40c9d49065f71bc9bebc998adbfc12
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 11/08/2021
+ms.openlocfilehash: e7bce9f9c5ac81d7f722e76162f38e4b0178a157
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410475"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131994989"
 ---
 # <a name="billing-model-of-azure-web-pubsub-service"></a>Abrechnungsmodell des Azure Web PubSub-Dienstes
 
@@ -43,7 +43,7 @@ Der ausgehende Datenverkehr ist die Nachricht, die vom Azure Web PubSub-Dienst g
 
 - Die Nachrichten, die vom Dienst an Empfänger gesendet werden.
 - Die Nachrichten, die vom Dienst an die Upstream-Webhooks gesendet werden.
-- Die Diagnoseprotokolle mit dem [Live-Ablaufverfolgungstool](./howto-troubleshoot-diagnostic-logs.md#capture-diagnostic-logs-with-azure-web-pubsub-service-live-trace-tool). 
+- Die Ressourcenprotokolle mit dem [Liveablaufverfolgungs-Tool](./howto-troubleshoot-resource-logs.md#capture-resource-logs-with-live-trace-tool). 
 
 Der eingehende Datenverkehr ist die Nachricht, die an den Azure Web PubSub-Dienst gesendet wird. 
 

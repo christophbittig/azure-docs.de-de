@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/29/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fa4df7119763e835cf62e67512105b748c7e2265
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: aad9a66c37b4d9d4ba590e339cd2188e5e194c64
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921009"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449923"
 ---
 ::: zone target = "docs"
 
@@ -71,7 +71,7 @@ Sie sind jetzt bereit, Ihr Gerät zurückzusenden.
 ## <a name="ship-data-box-heavy-back"></a>Zurücksenden von Data Box Heavy
 
 1. Stellen Sie sicher, dass das Gerät ausgeschaltet ist und alle Kabel entfernt wurden. Wickeln Sie die vier Netzkabel auf, und legen Sie sie in die Ablage (auf der Rückseite des Geräts).
-2. Das Gerät versendet LTL-Fracht per FedEx in die USA und DHL in die EU.
+2. Das Gerät versendet LTL-Fracht per FedEx in die USA und per DHL in die EU.
 
     1. Wenden Sie sich an [Data Box Operations](mailto:DataBoxOps@microsoft.com), um sie über die Abholung zu informieren und das Adressetikett für den Rückversand zu erhalten.
     2. Vereinbaren Sie unter der lokalen Telefonnummer Ihres Transportdienstleisters einen Abholtermin.

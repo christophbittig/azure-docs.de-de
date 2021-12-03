@@ -8,12 +8,12 @@ ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: db70740b484290b56d140d6b71d570d61afd138d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 801930dc58993a81c29969f602da64f201919bd0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082719"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428005"
 ---
 # <a name="azure-disk-pools-preview-planning-guide"></a>Planungshandbuch für Azure-Datenträgerpools (Vorschau)
 
@@ -57,6 +57,8 @@ Informationen zum Planen Ihrer Netzwerkeinrichtung sowie weitere Überlegungen z
 Das folgende Beispiel sollte Ihnen einen Überblick darüber geben, wie die verschiedenen Leistungsfaktoren zusammenarbeiten:
 
 Wenn Sie z. B. zwei SSD Premium-Datenträger mit 1 TiB (P30, mit einer Zielvorgabe von 5.000 IOPS und 200 MBit/s) zu einem Standard-Datenträgerpool hinzufügen, können Sie 2 x 5000 = 10.000 IOPS erreichen. Der Durchsatz würde jedoch vom Datenträgerpool auf 384 MBit/s begrenzt werden. Um diesen Grenzwert von 384 MBit/s zu überschreiten, können Sie weitere Datenträgerpools bereitstellen, um für zusätzlichen Durchsatz eine Aufskalierung zu erreichen. Ihr Netzwerkdurchsatz schränkt die Effektivität der Aufskalierung ein.
+
+Datenträgerpools, die ohne Angabe der SKU in der REST-API erstellt werden, entsprechen standardmäßig dem Standard-Datenträgerpool.
 
 ## <a name="availability"></a>Verfügbarkeit
 

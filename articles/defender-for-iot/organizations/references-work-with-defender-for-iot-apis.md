@@ -1,16 +1,18 @@
 ---
 title: Arbeiten mit den APIs von Defender für IoT
 description: Verwenden Sie eine externe REST-API, um auf die von Sensoren und Verwaltungskonsolen ermittelten Daten zuzugreifen und Aktionen mit diesen Daten auszuführen.
-ms.date: 10/17/2021
+ms.date: 11/09/2021
 ms.topic: reference
-ms.openlocfilehash: f11627a35f2d91cb719866e6fc7d8fc480a50b17
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 3d7fdf855e33c84ce966bbe89e564434b2a8a748
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131578"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325294"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Sensor- und Verwaltungskonsolen-APIs für Defender für IoT
+
+Defender für IoT-APIs unterliegen der [Microsoft-API-Lizenz und den Nutzungsbedingungen](/legal/microsoft-apis/terms-of-use).
 
 Verwenden Sie eine externe REST-API, um auf die von Sensoren und Verwaltungskonsolen ermittelten Daten zuzugreifen und Aktionen mit diesen Daten auszuführen.
 
@@ -18,7 +20,7 @@ Die Verbindungen sind durch SSL gesichert.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Im Allgemeinen müssen Sie ein Zugriffstoken generieren, wenn Sie eine externe API auf dem Sensor oder in der lokalen Verwaltungskonsole von Azure Defender für IoT verwenden. Für Authentifizierungs-APIs, die Sie auf dem Sensor und in der lokalen Verwaltungskonsole verwenden, sind keine Token erforderlich.
+Generell gilt: Wenn Sie eine externe API auf dem Microsoft Defender für IoT-Sensor oder der lokalen Verwaltungskonsole verwenden, müssen Sie ein Zugriffstoken generieren. Für Authentifizierungs-APIs, die Sie auf dem Sensor und in der lokalen Verwaltungskonsole verwenden, sind keine Token erforderlich.
 
 So generieren Sie ein Token
 

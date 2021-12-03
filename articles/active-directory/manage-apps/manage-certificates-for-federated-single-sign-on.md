@@ -13,14 +13,14 @@ ms.date: 04/04/2019
 ms.author: davidmu
 ms.reviewer: saumadan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886defd9362d1001a32d3076623ffd87ce718fe3
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: d67c54ceb5d99c19e862e9140223f98d20de2f5b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617585"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550323"
 ---
-# <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
+# <a name="manage-certificates-for-federated-single-sign-on"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung
 
 In diesem Artikel werden häufig gestellte Fragen sowie Informationen zu den Zertifikaten behandelt, die Azure Active Directory (Azure AD) erstellt, um die einmalige Verbundanmeldung (Single Sign-On, SSO) für Ihre Software-as-a-Service-Anwendungen (SaaS-Anwendungen) einzurichten. Fügen Sie Anwendungen aus dem Azure AD-App-Katalog oder über Anwendungsvorlagen hinzu, die nicht aus dem Katalog stammen. Konfigurieren der Anwendung mit der Option für Verbund-SSO.
 

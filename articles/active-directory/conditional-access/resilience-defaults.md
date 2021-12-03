@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46a8e61f296d430713812007b93f1b34cea8588a
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 5e2bebe9769d38502a37134326228d41979cad5a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811551"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432679"
 ---
-# <a name="conditional-access-resilience-defaults"></a>Bedingter Zugriff: Resilienz-Standardwerte
+# <a name="conditional-access-resilience-defaults-preview"></a>Bedingter Zugriff: Resilienz-Standardwerte (Vorschau)
 
 Bei einem Ausfall des primären Authentifizierungsdiensts kann der Azure Active Directory (Azure AD)-Sicherungsauthentifizierungsdienst automatisch Zugriffstoken für Anwendungen für vorhandene Sitzungen ausstellen. Diese Funktionalität kann die Resilienz von Azure AD deutlich erhöhen, da erneute Authentifizierungen für vorhandene Sitzungen mehr als 90 Prozent der Authentifizierungen für Azure AD ausmachen. Der Sicherungsauthentifizierungsdienst unterstützt keine neuen Sitzungen oder Authentifizierungen von Gastbenutzern.
 

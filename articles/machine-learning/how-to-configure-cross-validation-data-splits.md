@@ -1,7 +1,7 @@
 ---
 title: Datenaufteilung und Kreuzvalidierung beim automatisierten maschinellen Lernen
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie die Aufteilung von Datasets und die Kreuzvalidierung für Experimente mit automatisiertem maschinellem Lernen konfigurieren.
+description: Erfahren Sie, wie Sie Trainings-, Validierungs-, Kreuzvalidierungs- und Testdaten für automatisierte Experimente zum maschinellen Lernen konfigurieren können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: automl
@@ -10,15 +10,15 @@ ms.custom: automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
-ms.date: 02/23/2021
-ms.openlocfilehash: e6a5893fd6c6fab3dc1631065d63315fe2c6fd84
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 11/15/2021
+ms.openlocfilehash: 69f5913b03db51561cde17117ef97ec3c9e50868
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427645"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520615"
 ---
-# <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurieren von Datenaufteilung und Kreuzvalidierung im automatisierten maschinellen Lernen
+# <a name="configure-training-validation-cross-validation-and-test-data-in-automated-machine-learning"></a>Konfigurieren von Trainings-, Validierungs-, Kreuzvalidierungs- und Testdaten in automatisiertem maschinellem Lernen
 
 In diesem Artikel lernen Sie die verschiedenen Optionen zum Konfigurieren der Aufteilung von Trainings- und Validierungsdaten sowie die Einstellungen für die Kreuzvalidierung für Ihre Experimente mit automatisiertem maschinellem Lernen (automatisiertem ML) kennen.
 
@@ -27,9 +27,6 @@ Wenn Sie in Azure Machine Learning automatisiertes maschinelles Lernen zum Erste
 Experimente mit automatisiertem maschinellem Lernen führen die Modellvalidierung automatisch durch. In den folgenden Abschnitten wird beschrieben, wie Sie die Validierungseinstellungen mit dem [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) weiter anpassen können. 
 
 Anweisungen zum Arbeiten mit wenig Code oder ohne Code finden Sie unter [Erstellen automatisierter Experimente mit maschinellem Lernen in Azure Machine Learning-Studio](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment). 
-
-> [!NOTE]
-> In Studio wird aktuell die Aufteilung von Trainings- und Validierungsdaten sowie Optionen zur Kreuzvalidierung unterstützt, nicht jedoch das Angeben einzelner Datendateien für Ihren Validierungssatz. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -64,19 +61,20 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-Wenn Sie nicht explizit die Parameter `validation_data` oder `n_cross_validations` angeben, werden beim automatisierten maschinellen Lernen Standardverfahren angewandt, die von der Anzahl der Zeilen im übergebenen einzelnen Dataset `training_data` abhängen:
+Wenn Sie weder einen `validation_data`- noch einen `n_cross_validations`-Parameter explizit angeben, wendet die automatisierte ML Standardtechniken an, die von der Anzahl der im Einzeldatensatz `training_data` angegebenen Zeilen abhängen.
 
 |Größe der Trainings&nbsp;daten&nbsp;| Validierungsverfahren |
 |---|-----|
 |**Größer&nbsp;als&nbsp;20.000&nbsp;Zeilen**| Es wird eine Aufteilung in Trainings- und Validierungsdaten vorgenommen. Standardmäßig werden 10 % des ursprünglichen Trainingsdatasets als Validierungsset verwendet. Dieses Validierungsset wird seinerseits für die Metrikberechnung verwendet.
 |**Kleiner&nbsp;als&nbsp;20.000&nbsp;Zeilen**| Der Kreuzvalidierungsansatz wird angewendet. Die Standardanzahl der Faltungen (Folds) hängt von der Zeilenanzahl ab. <br> **Wenn das Dataset weniger als 1.000 Zeilen aufweist**, werden 10 Faltungen verwendet. <br> **Wenn die Anzahl der Zeilen zwischen 1.000 und 20.000 liegt**, werden drei Faltungen verwendet.
 
+
 ## <a name="provide-validation-data"></a>Bereitstellen von Validierungsdaten
 
 In diesem Fall können Sie entweder von einer einzelnen Datendatei ausgehen, die Sie in Trainings- und Validierungsdatasets aufteilen, oder Sie können für den Validierungssatz eine separate Datendatei bereitstellen. In beiden Fällen weist der Parameter `validation_data` in Ihrem `AutoMLConfig`-Objekt die Daten zu, die als Validierungsset verwendet werden. Dieser Parameter akzeptiert nur Datasets in der Form eines [Azure Machine Learning-Datasets](how-to-create-register-datasets.md) oder eines Pandas-Dataframes.   
 
 > [!NOTE]
-> Für den Parameter `validation_data` müssen die Parameter `training_data` und `label_column_name` ebenfalls festgelegt werden. Sie können nur einen Validierungsparameter festlegen. Das heißt, Sie können nur entweder `validation_data` oder `n_cross_validations` angeben, aber nicht beide.
+> Für den Parameter `validation_data` müssen die Parameter `training_data` und `label_column_name` ebenfalls festgelegt werden. Sie können nur einen Validierungsparameter festlegen, d. h., Sie können nur oder und `validation_data``n_cross_validations` nicht beide angeben.
 
 Im folgenden Codebeispiel ist explizit definiert, welcher Teil der bereitgestellten Daten in `dataset` zum Training und welcher zur Validierung verwendet wird.
 
@@ -200,6 +198,42 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 Wenn die k-fache Kreuzvalidierung oder die Monte Carlo-Kreuzvalidierung verwendet wird, werden Metriken für jeden Validierungsteil berechnet und anschließend aggregiert. Der Aggregationsvorgang ist bei skalaren Metriken ein Mittelwert und bei Diagrammen eine Summe. Die bei der Kreuzvalidierung berechneten Metriken basieren auf allen Aufteilungen und somit auf allen Stichproben aus dem Trainingssatz. [Weitere Informationen zu Metriken beim automatisierten maschinellen Lernen.](how-to-understand-automated-ml.md)
 
 Wenn ein benutzerdefinierter Validierungssatz oder ein automatisch ausgewählter Validierungssatz verwendet wird, werden die Metriken zur Modellauswertung nur mit diesem Validierungssatz berechnet und nicht mit den Trainingsdaten.
+
+## <a name="provide-test-data-preview"></a>Testdaten bereitstellen (Vorschau)
+
+Sie können auch Testdaten bereitstellen, um das empfohlene Modell auszuwerten, das automatisierte ML nach Abschluss des Experiments für Sie generiert. Wenn Sie Testdaten bereitstellen, werden diese getrennt von Trainings- und Validierungsdaten betrachtet, um die Ergebnisse des Testlaufs des empfohlenen Modells nicht zu verfälschen. [Erfahren Sie mehr über Trainings-, Validierungs- und Testdaten in automatisierten ML.](concept-automated-ml.md#training-validation-and-test-data) 
+
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
+
+Testdatasets müssen in Form eines [Azure Machine Learning TabularDataset](how-to-create-register-datasets.md#tabulardataset)vorliegen. Sie können ein Testdataset mit den `test_data` Parametern und `test_size` in Ihrem `AutoMLConfig` -Objekt angeben.  Diese Parameter schließen sich gegenseitig aus und können nicht gleichzeitig angegeben werden. 
+
+Geben Sie mit dem `test_data` Parameter ein vorhandenes Dataset an, das an Ihr Objekt übergeben werden `AutoMLConfig` soll. 
+
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             ...
+                             # Provide an existing test dataset
+                             test_data=test_dataset,
+                             ...
+                             forecasting_parameters=forecasting_parameters)
+```
+
+Verwenden Sie beim Erstellen den Parameter , um eine Train/Test-Aufteilung zu verwenden, anstatt Testdaten direkt `test_size``AutoMLConfig` bereitzustellen. Dieser Parameter muss ein Gleitkommawert zwischen ausschließlich 0,0 und 1,0 sein und gibt den Prozentsatz des Trainingsdatensatzes an, der für den Testdatensatz verwendet werden soll.
+
+```python
+automl_config = AutoMLConfig(task = 'regression',
+                             ...
+                             # Specify train/test split
+                             training_data=training_data,
+                             test_size=0.2)
+```
+
+> [!Note]
+> Für Regressionsaufgaben wird eine Zufallsstichprobe verwendet.<br>
+> Für Klassifizierungsaufgaben werden geschichtete Stichproben verwendet, aber auch Zufallsstichproben, wenn eine geschichtete Stichprobe nicht durchführbar ist. <br>
+> Die Vorhersage unterstützt derzeit nicht die Angabe eines Testdatensatzes mit einer Aufteilung in Training und Test.
+
+Wenn sie die `test_data` Parameter oder `test_size` an `AutoMLConfig` übergeben, wird nach Abschluss des Experiments automatisch ein Remotetestlauf ausgelöst. In diesem Testlauf werden die bereitgestellten Testdaten verwendet, um das beste Modell auszuwerten, das von automatisierten ML empfohlen wird. Erfahren Sie mehr über [das Abrufen der Vorhersagen aus dem Testlauf.](how-to-configure-auto-train.md#test-models-preview)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

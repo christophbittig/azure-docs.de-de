@@ -1,14 +1,14 @@
 ---
 title: Micro-Agent-Ereigniserfassung (Vorschau)
 description: Defender für IoT-Sicherheits-Agents erfassen Daten und Systemereignisse von Ihrem lokalen Gerät und senden die Daten zur Verarbeitung und Analyse an die Azure-Cloud.
-ms.date: 10/11/2021
+ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1868df35c05560fd80f6fa619b2d612ba6325d3c
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: 36cce317c4e53f7578dace7faba5e2fb567f42cc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740434"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289976"
 ---
 # <a name="micro-agent-event-collection-preview"></a>Micro-Agent-Ereigniserfassung (Vorschau)
 

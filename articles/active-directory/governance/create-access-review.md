@@ -1,9 +1,9 @@
 ---
 title: Erstellen einer Zugriffsüberprüfung von Gruppen und Anwendungen – Azure AD
-description: Erfahren Sie, wie Sie eine Gruppenmitglieder oder den Anwendungszugriff betreffende Zugriffsüberprüfung in Azure Active Directory-Zugriffsüberprüfungen erstellen.
+description: Erfahren Sie, wie Sie eine Gruppenmitglieder oder den Anwendungszugriff betreffende Zugriffsüberprüfung in Azure Active Directory erstellen.
 services: active-directory
 author: ajburnle
-manager: daveba
+manager: karenhoran
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -11,22 +11,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 5/6/2021
+ms.date: 08/20/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4426f10ced8d8cda294c3a80923712f59e8466
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 224c81d1f5e827bb53fce1cfdeae22028ec1b598
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122356428"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517670"
 ---
-# <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung für Gruppen und Anwendungen in Azure AD-Zugriffsüberprüfungen
+# <a name="create-an-access-review-of-groups-and-applications-in-azure-ad"></a>Erstellen einer Zugriffsüberprüfung von Gruppen und Anwendungen in Azure AD
 
-Der Zugriff auf Gruppen und Anwendungen für Mitarbeiter und Gäste ändert sich im Laufe der Zeit. Zur Senkung der Risiken im Zusammenhang mit veralteten Zugriffszuweisungen können Administratoren mithilfe von Azure Active Directory (Azure AD) Zugriffsüberprüfungen für Gruppenmitglieder oder Anwendungszugriff erstellen. Besitzer von Microsoft 365-Gruppen und Sicherheitsgruppen können mit Azure AD auch Zugriffsüberprüfungen für Gruppenmitglieder (Vorschau) erstellen, wenn der globale Administrator oder Benutzeradministrator die Einstellung über das Blatt „Einstellungen für Zugriffsüberprüfungen“ aktiviert. Für eine routinemäßige Überprüfung können bei Bedarf auch wiederkehrende Zugriffsüberprüfungen erstellt werden. Weitere Informationen zu diesen Szenarien finden Sie unter [Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen](manage-user-access-with-access-reviews.md) sowie unter [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](manage-guest-access-with-access-reviews.md).
+Der Zugriff auf Gruppen und Anwendungen für Mitarbeiter und Gäste ändert sich im Laufe der Zeit. Zur Senkung der Risiken im Zusammenhang mit veralteten Zugriffszuweisungen können Administratoren mithilfe von Azure Active Directory (Azure AD) Zugriffsüberprüfungen für Gruppenmitglieder oder Anwendungszugriff erstellen.
 
-Sehen Sie sich ein kurzes Video zum Aktivieren von Zugriffsüberprüfungen an:
+Auch Besitzer von Microsoft 365-Gruppen und Sicherheitsgruppen können mit Azure AD Zugriffsüberprüfungen für Gruppenmitglieder erstellen, wenn der globale Administrator oder Benutzeradministrator die Einstellung über den Bereich **Einstellungen für Zugriffsüberprüfungen** aktiviert (Vorschau). Weitere Informationen zu diesen Szenarien finden Sie unter [Verwaltung von Benutzer- und Gastbenutzerzugängen mit Zugriffsüberprüfungen](manage-access-review.md).
+
+Sehen Sie sich ein kurzes Video zur Aktivierung von Zugriffsüberprüfungen an.
 
 >[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
 
@@ -34,9 +36,10 @@ In diesem Artikel wird die Erstellung einer oder mehrerer Zugriffsüberprüfunge
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure AD Premium P2
-- Globaler Administrator oder Benutzeradministrator
-- Besitzer von Microsoft 365-Gruppen und Sicherheitsgruppen(Vorschau)
+- Azure AD Premium P2.
+- Die Rolle „Globaler Administrator“, „Benutzeradministrator“ oder „Identity Governance-Administrator“ zum Erstellen von Überprüfungen für Gruppen und Anwendungen.
+- Globale Administratoren und Administratoren für privilegierte Rollen können Überprüfungen von Gruppen erstellen, denen Rollen zugewiesen werden können. Weitere Informationen finden Sie unter [Verwenden von Azure AD-Gruppen zum Verwalten von Rollenzuweisungen](../roles/groups-concept.md).
+- (Vorschau) Besitzer von Microsoft 365-Gruppen und Sicherheitsgruppen.
 
 Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-overview.md#license-requirements).
 
@@ -44,151 +47,156 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
 
 1. Melden Sie sich beim Azure-Portal an, und öffnen Sie die Seite [Identity Governance](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-2. Klicken Sie im linken Menü auf **Zugriffsüberprüfungen**.
+1. Wählen Sie im linken Menü **Zugriffsüberprüfungen** aus.
 
-3. Klicken Sie auf **Neue Zugriffsüberprüfung**, um eine neue Zugriffsüberprüfung zu erstellen.
+1. Wählen Sie **Neue Zugriffsüberprüfung** aus, um eine neue Zugriffsüberprüfung zu erstellen.
 
-    ![Bereich „Zugriffsüberprüfungen“ in Identity Governance](./media/create-access-review/access-reviews.png)
+    ![Screenshot: Bereich „Zugriffsüberprüfungen“ in Identity Governance.](./media/create-access-review/access-reviews.png)
 
-4. Wählen Sie in **Schritt 1: Auswählen, was überprüft werden soll** aus, welche Ressource Sie überprüfen möchten.
+1. Wählen Sie im Feld **Auswählen, was überprüft werden soll** aus, welche Ressource Sie überprüfen möchten.
 
-    ![Erstellen einer Zugriffsüberprüfung – Name und Beschreibung der Überprüfung](./media/create-access-review/select-what-review.png)
+    ![Screenshot: Erstellen einer Zugriffsüberprüfung.](./media/create-access-review/select-what-review.png)
 
-5. Wenn Sie in Schritt 1 **Teams und Gruppen** ausgewählt haben, stehen Ihnen in Schritt 2 zwei Optionen zur Auswahl.
-   - **All Microsoft 365 groups with guest users** (Alle Microsoft 365-Gruppen mit Gastbenutzern): Wählen Sie diese Option aus, wenn Sie wiederkehrende Überprüfungen für alle Gastbenutzer in all Ihren Microsoft Teams- und Microsoft 365-Gruppen in Ihrer Organisation erstellen möchten. Sie können bestimmte Gruppen ausschließen, indem Sie auf „Select group(s) to exclude“ (Auszuschließende Gruppen auswählen) klicken.
-   - **Select teams + groups** (Teams und Gruppen auswählen): Wählen Sie diese Option aus, wenn Sie feste Teams und Gruppen für die Überprüfung angeben möchten. Nach dem Klicken auf diese Option wird auf der rechten Seite eine Liste mit Gruppen zur Auswahl angezeigt.
+1. Wenn Sie **Teams und Gruppen** ausgewählt haben, stehen Ihnen zwei Optionen zur Auswahl.
 
-     ![Teams und Gruppen](./media/create-access-review/teams-groups.png)
+   - **Alle Microsoft 365-Gruppen mit Gastbenutzern**: Wählen Sie diese Option aus, wenn Sie wiederkehrende Überprüfungen für alle Gastbenutzer in all Ihren Microsoft Teams- und Microsoft 365-Gruppen in Ihrer Organisation erstellen möchten. Dynamische Gruppen und Gruppen, denen Rollen zugewiesen werden können, sind nicht enthalten. Sie können auch einzelne Gruppen ausschließen, indem Sie **Auszuschließende Gruppen auswählen** auswählen.
+   - **Teams und Gruppen auswählen**: Wählen Sie diese Option aus, wenn Sie eine Gruppe von Teams oder Gruppen für die Überprüfung angeben möchten. Auf der rechten Seite wird eine Liste der Gruppen angezeigt, aus der Sie auswählen können.
 
-     ![Ausgewählte Option „Teams + Groups“ (Teams und Gruppen) auf der Benutzeroberfläche](./media/create-access-review/teams-groups-detailed.png)
+     ![Screenshot: Auswählen von Teams und Gruppen.](./media/create-access-review/teams-groups.png)
 
-6. Wenn Sie in Schritt 1 die Option **Anwendungen** ausgewählt haben, können Sie in Schritt 2 eine oder mehrere Anwendungen auswählen.
+1. Wenn Sie **Anwendungen** ausgewählt haben, können Sie eine oder mehrere Anwendungen auswählen.
 
-    >[!NOTE]
-    > Wenn Sie mehrere Gruppen oder Anwendungen auswählen, werden mehrere Zugriffsüberprüfungen erstellt. Wenn Sie z. B. fünf zu überprüfende Gruppen auswählen, werden auch fünf separate Zugriffsüberprüfungen erstellt.
-
-   ![Benutzeroberfläche bei Auswahl von „Anwendungen“ anstelle von Gruppen](./media/create-access-review/select-application-detailed.png)
-
-7. Als Nächstes können Sie in Schritt 3 einen Bereich für die Überprüfung auswählen. Folgende Optionen sind verfügbar:
-   - **Nur Gastbenutzer:** Wenn Sie diese Option auswählen, wird die Zugriffsüberprüfung ausschließlich auf die Azure AD B2B-Gastbenutzer in Ihrem Verzeichnis beschränkt.
-   - **Jeder:** Wenn Sie diese Option auswählen, wird die Zugriffsüberprüfung auf alle Benutzerobjekte angewandt, die der Ressource zugeordnet sind.
-
-    >[!NOTE]
-    > Wenn Sie in Schritt 2 „All Microsoft 365 groups with guest users“ (Alle Microsoft 365-Gruppen mit Gastbenutzern) ausgewählt haben, steht Ihnen in Schritt 3 als einzige Option die Überprüfung von Gastbenutzern zur Verfügung.
-
-8. Klicken Sie auf **Weiter: Überprüfungen**.
-
-9. Wählen Sie im Abschnitt **Prüfer auswählen** mindestens eine Person für die Zugriffsüberprüfungen aus. Es gibt folgende Auswahlmöglichkeiten:
-    - **Gruppenbesitzer** (nur verfügbar, wenn eine Überprüfung für ein Team oder eine Gruppe durchgeführt wird)
-    - **Ausgewählte Benutzer oder Gruppen**
-    - **Users review own access** (Benutzer überprüfen eigenen Zugriff)
-    - **Vorgesetzte von Benutzern**
-    Wenn Sie **Managers of users** (Benutzermanager) oder **Gruppenbesitzer** auswählen, haben Sie auch die Möglichkeit, einen Fallbackprüfer anzugeben. Fallbackprüfer werden aufgefordert, eine Überprüfung durchzuführen, wenn für den Benutzer kein Manager im Verzeichnis angegeben ist oder die Gruppe keinen Besitzer hat.
-
-    ![Neue Zugriffsüberprüfung](./media/create-access-review/new-access-review.png)
-
-10. Im Abschnitt **Specify recurrence of review** (Wiederholung für Überprüfung angeben) können Sie eine Häufigkeit angeben, z. B. **wöchentlich, monatlich, vierteljährlich, halbjährlich, jährlich**. Anschließend geben Sie eine **Dauer** an. Diese legt fest, wie lange eine Überprüfung für die Eingabe von Prüfern geöffnet bleiben soll. Für eine monatliche Überprüfung kann beispielsweise eine maximale Dauer von 27 Tagen angegeben werden, um Überschneidungen zu vermeiden. Sie sollten die Dauer eventuell verkürzen, um sicherzustellen, dass die Eingaben Ihrer Prüfer früher angewandt werden. Als Nächstes können Sie ein **Startdatum** und ein **Enddatum** auswählen.
-
-    ![Auswählen der Häufigkeit von Überprüfungen](./media/create-access-review/frequency.png)
-
-11. Klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Einstellungen**.
-
-12. Unter **Einstellungen nach Abschluss** können Sie angeben, was nach Abschluss der Überprüfung geschehen soll.
-
-    ![Erstellen einer Zugriffsüberprüfung: „Einstellungen nach Abschluss“](./media/create-access-review/upon-completion-settings-new.png)
-
-    Soll abgelehnten Benutzern automatisch der Zugriff entzogen werden, legen Sie Ergebnisse automatisch auf Ressource anwenden auf Aktivieren fest. Falls Sie die Ergebnisse nach Abschluss der Überprüfung manuell anwenden möchten, legen Sie die Einstellung auf Deaktivieren fest.
-    
-    Geben Sie mithilfe der Liste If reviewers don‘t respond (Wenn die Prüfer nicht reagieren) an, was bei Benutzern geschehen soll, die vom Prüfer nicht innerhalb des vorgesehenen Zeitraums überprüft werden. Diese Einstellung hat keine Auswirkungen auf Benutzer, die von den Prüfern manuell überprüft wurden. Lautet die Entscheidung des Prüfers letztlich „Verweigern“, wird dem Benutzer der Zugriff entzogen.
-
-    - **Keine Änderung**: Der Zugriff des Benutzers bleibt unverändert.
-    - **Zugriff entfernen**: Dem Benutzer wird der Zugriff entzogen.
-    - **Zugriff genehmigen**: Der Zugriff des Benutzers wird genehmigt.
-    - **Empfehlungen annehmen**: Die Systemempfehlungen hinsichtlich der Ablehnung oder Gewährung des weiteren Benutzerzugriffs werden verwendet.
-
-    ![Optionen für „Einstellungen nach Abschluss“](./media/create-access-review/upon-completion-settings-new.png)
-
-    Verwenden Sie **Auf verweigerte Gastbenutzer anzuwendende Aktion**, um festzulegen, was mit Gastbenutzern geschieht, wenn diese abgelehnt werden.
-    - Mit „Remove user’s membership from the resource“ (Benutzermitgliedschaft für Ressource entfernen) können Sie den Zugriff des abgelehnten Benutzers auf die zu überprüfende Gruppe oder Anwendung deaktivieren. Der Benutzer kann sich allerdings weiterhin beim Mandanten anmelden.
-    - Mit „Block user from signing-in for 30 days, then remove user from the tenant“ (Anmeldung des Benutzers für 30 Tage blockieren und den Benutzer anschließend aus Mandanten entfernen) können Sie verhindern, dass der abgelehnte Benutzer sich beim Mandanten anmeldet, unabhängig davon, ob er Zugriff auf andere Ressourcen hat. Wenn ein Fehler aufgetreten ist oder ein Administrator beschließt, den Zugriff erneut zu aktivieren, kann das innerhalb von 30 Tagen nach der Deaktivierung des Benutzers geschehen. Wenn keine Aktionen mit dem deaktivierten Benutzer durchgeführt werden, wird dieser aus dem Mandanten gelöscht.
-
-    Weitere Informationen zu bewährten Methoden zum Entfernen von Gastbenutzern, die keinen Zugriff mehr auf Ressourcen in Ihrer Organisation haben sollen, finden Sie im Artikel [Verwenden von Azure AD Identity Governance zum Überprüfen und Entfernen externer Benutzer, die keinen Zugriff mehr auf Ressourcen haben](access-reviews-external-users.md).
-
+   ![Screenshot: Benutzeroberfläche, die angezeigt wird, wenn Sie Anwendungen anstelle von Gruppen ausgewählt haben.](./media/create-access-review/select-application-detailed.png)
 
     > [!NOTE]
-    > Die auf abgelehnte Gastbenutzer anzuwendende Aktion kann nicht für Überprüfungen konfiguriert werden, die sich neben Gastbenutzern auf einen größeren Bereich beziehen. Sie kann auch nicht für Überprüfungen von **allen Microsoft 365-Gruppen mit Gastbenutzern** konfiguriert werden. Wenn diese Option nicht konfiguriert werden kann, wird für abgelehnte Benutzer die Standardoption (Entfernen der Benutzermitgliedschaft aus der Ressource) verwendet.
+    > Wenn Sie mehrere Gruppen oder Anwendungen auswählen, werden mehrere Zugriffsüberprüfungen erstellt. Wenn Sie z. B. fünf zu überprüfende Gruppen auswählen, werden fünf separate Zugriffsüberprüfungen erstellt.
 
-13. Sie können Benachrichtigungen an weitere Benutzer oder Gruppen (Vorschauversion) senden, um Überprüfungsabschlussupdates zu erhalten. Mit diesem Feature können andere Beteiligte als der Ersteller der Überprüfung über den Fortschritt der Überprüfung informiert werden. Um dieses Feature zu verwenden, wählen Sie **Benutzer oder Gruppen auswählen** aus, und fügen Sie einen weiteren Benutzer oder eine weitere Gruppe hinzu, wenn Sie Statusinformationen zur Überprüfung erhalten möchten.
+1. Jetzt können Sie einen Bereich für die Überprüfung auswählen. Folgende Optionen sind verfügbar:
 
-14. Wählen Sie unter **Enable review decision helpers** (Entscheidungshilfen für Überprüfungen aktivieren) aus, ob Ihre Prüfer während des Überprüfungsvorgangs Empfehlungen erhalten sollen.
+    - **Nur Gastbenutzer**: Diese Option beschränkt die Zugriffsüberprüfung ausschließlich auf die Azure AD B2B-Gastbenutzer in Ihrem Verzeichnis.
+    - **Jeder**: Mit dieser Option wird die Zugriffsüberprüfung auf alle Benutzerobjekte angewendet, die der Ressource zugeordnet sind.
 
-    ![Optionen für das Aktivieren von Entscheidungshilfen](./media/create-access-review/helpers.png)
+    > [!NOTE]  
+    > Wenn Sie **Alle Microsoft 365-Gruppen mit Gastbenutzern** ausgewählt haben, steht Ihnen als einzige Option für die Überprüfung **Nur Gastbenutzer** zur Verfügung.
 
-15. Sie können im Abschnitt **Erweiterte Einstellungen** Folgendes auswählen:
-    - Legen Sie **Begründung erforderlich** auf **Aktivieren** fest, damit Prüfer einen Grund für die Genehmigung angeben müssen.
-    - Legen Sie **E-Mail-Benachrichtigungen** auf **Aktivieren** fest, damit Azure AD beim Start einer Zugriffsüberprüfung E-Mail-Benachrichtigungen an die Prüfer und beim Abschluss einer Überprüfung Benachrichtigungen an Administratoren sendet.
-    - Legen Sie **Erinnerungen** auf **Aktivieren** fest, damit Azure AD Erinnerungen zu laufenden Zugriffsüberprüfungen an alle Prüfer sendet. Prüfer erhalten die Erinnerungen unabhängig davon, ob die Überprüfung zu diesem Zeitpunkt bereits abgeschlossen wurde, in der Mitte des Überprüfungszeitraums.
-    - Der Inhalt der an Prüfer gesendeten E-Mail wird automatisch basierend auf den Überprüfungsdetails generiert, z. B. Name der Überprüfung, Name der Ressource, Fälligkeitsdatum usw. Wenn Sie eine Möglichkeit benötigen, zusätzliche Informationen wie etwa weitere Anweisungen oder Kontaktinformationen mitzuteilen, können Sie diese Informationen im Abschnitt **E-Mail mit zusätzlichen Inhalten für Prüfer** angeben. Die eingegebenen Informationen werden in die Einladungs- und Erinnerungs-E-Mails an die zugewiesenen Prüfer eingefügt. Der in der Abbildung unten hervorgehobene Abschnitt zeigt, wo diese Informationen angezeigt werden.
+1. Wählen Sie **Weiter: Überprüfungen** aus.
 
-      ![Zusätzliche Inhalte für Prüfer](./media/create-access-review/additional-content-reviewer.png)
+1. Wählen Sie im Abschnitt **Prüfer festlegen** im Feld **Prüfer auswählen** mindestens eine Person aus, die die Zugriffsüberprüfungen ausführen soll. Es gibt folgende Auswahlmöglichkeiten:
 
-16. Klicken Sie auf **Weiter: Überprüfen und erstellen**, um zur nächsten Seite zu wechseln.
+    - **Gruppenbesitzer**: Diese Option ist nur verfügbar, wenn Sie eine Überprüfung für ein Team oder eine Gruppe durchführen.
+    - **Ausgewählte Benutzer oder Gruppen**
+    - **Benutzer überprüfen ihren eigenen Zugriff**
+    - **Vorgesetzte von Benutzern**
 
-17. Benennen Sie die Zugriffsüberprüfung. Wahlweise können Sie jeder Überprüfung eine Beschreibung hinzufügen. Den Prüfern werden Name und Beschreibung angezeigt.
+   Wenn Sie **Vorgesetzte von Benutzern** oder **Gruppenbesitzer** auswählen, können Sie auch einen Fallbackprüfer angeben. Fallbackprüfer werden aufgefordert, eine Überprüfung durchzuführen, wenn für den Benutzer im Verzeichnis kein Vorgesetzter angegeben ist oder wenn die Gruppe keinen Besitzer hat.
 
-18. Überprüfen Sie die Informationen, und wählen Sie **Erstellen** aus.
+      ![Screenshot: Neue Zugriffsüberprüfung.](./media/create-access-review/new-access-review.png)
 
-       ![Bildschirm „Erstellen“ für Überprüfungen](./media/create-access-review/create-review.png)
+1. Wählen Sie im Abschnitt **Wiederholung der Überprüfung angeben** die folgenden Optionen aus:
 
-## <a name="allow--group-owners-to-create-and-manage-access-reviews-preview"></a>Gruppenbesitzern das Erstellen und Verwalten von Zugriffsüberprüfungen erlauben (Vorschau)
+   - **Dauer (in Tagen)** : Gibt an, wie lange Prüfer etwas für eine Überprüfung eingeben kann.
+   - **Startdatum**: Gibt an, wann die Überprüfungsreihe beginnt.
+   - **Enddatum**: Gibt an, wann die Überprüfungsreihe endet. Mögliche Optionen sind **Nie**, **An bestimmtem Datum beenden** oder **Nach Anzahl von Vorkommen beenden**.
 
-Erforderliche Rolle: Globaler Administrator oder Benutzeradministrator
+     ![Screenshot, der zeigt, wie oft die Überprüfung durchgeführt werden soll.](./media/create-access-review/frequency.png)
+
+1. Wählen Sie **Weiter: Einstellungen** aus.
+
+1. Im Abschnitt **Einstellungen nach Abschluss** können Sie angeben, was nach Abschluss der Überprüfung geschehen soll.
+
+    ![Screenshot: Einstellungen nach Abschluss.](./media/create-access-review/upon-completion-settings-new.png)
+
+    - **Ergebnisse automatisch auf Ressource anwenden**: Aktivieren Sie dieses Kontrollkästchen, wenn der Zugriff abgelehnter Benutzer am Ende der Überprüfungsdauer automatisch entfernt werden soll. Wenn die Option deaktiviert ist, müssen Sie die Ergebnisse nach Abschluss der Überprüfung manuell anwenden. Weitere Informationen zum Anwenden der Überprüfungsergebnisse finden Sie unter [Verwaltung von Benutzer- und Gastbenutzerzugängen mit Zugriffsüberprüfungen](manage-access-review.md).
+
+    - **Wenn Prüfer nicht reagieren**: Mit dieser Option geben Sie an, wie mit Benutzern verfahren werden soll, die innerhalb des Überprüfungszeitraums von keinem Prüfer überprüft wurden. Diese Einstellung wirkt sich nicht auf Benutzer aus, die von einem Prüfer überprüft wurden. Die Dropdownliste enthält die folgenden Optionen:
+
+       - **Keine Änderung**: Der Zugriff des Benutzers bleibt unverändert.
+       - **Zugriff entfernen**: Dem Benutzer wird der Zugriff entzogen.
+       - **Zugriff genehmigen**: Der Zugriff des Benutzers wird genehmigt.
+       - **Empfehlungen annehmen**: Die Systemempfehlungen hinsichtlich der Ablehnung oder Gewährung des weiteren Benutzerzugriffs werden verwendet.
+
+    - **Auf abgelehnte Gastbenutzer anzuwendende Aktion**: Diese Option ist nur verfügbar, wenn die Zugriffsüberprüfung so konfiguriert wurde, dass sie nur Gastbenutzer umfasst. Mithilfe dieser Option können Sie angeben, wie mit Gastbenutzern verfahren werden soll, die entweder durch einen Prüfer oder aufgrund der Einstellung **Wenn Prüfer nicht reagieren** abgelehnt wurden.
+
+       - **Mitgliedschaft des Benutzers aus der Ressource entfernen**: Bei Verwendung dieser Option wird der Zugriff eines abgelehnten Gastbenutzers auf die überprüfte Gruppe oder Anwendung deaktiviert. Sie können sich weiterhin beim Mandanten anmelden und verlieren keinen anderen Zugriff.
+       - **Anmeldung des Benutzers für 30 Tage blockieren und den Benutzer anschließend vom Mandanten entfernen**: Bei Verwendung dieser Option können sich abgelehnte Gastbenutzer nicht mehr beim Mandanten anmelden – unabhängig vom Zugriff auf andere Ressourcen. Wurde diese Maßnahme fälschlicherweise ergriffen, können Administratoren den Zugriff des Gastbenutzers innerhalb von 30 Tagen nach der Deaktivierung wieder aktivieren. Wird für den deaktivierten Gastbenutzer keine Aktion durchgeführt, wird er nach 30 Tagen aus dem Mandanten gelöscht.
+
+    Weitere Informationen zu bewährten Methoden im Zusammenhang mit dem Entfernen von Gastbenutzern, die keinen Zugriff mehr auf Ressourcen in Ihrer Organisation haben, finden Sie unter [Verwenden von Azure AD Identity Governance zum Überprüfen und Entfernen externer Benutzer, die keinen Zugriff mehr auf Ressourcen haben](access-reviews-external-users.md).
+
+    > [!NOTE]
+    > Die **auf abgelehnte Gastbenutzer anzuwendende Aktion** kann nicht für Überprüfungen konfiguriert werden, die sich neben Gastbenutzern auf einen größeren Bereich beziehen. Sie kann auch nicht für Überprüfungen von **allen Microsoft 365-Gruppen mit Gastbenutzern** konfiguriert werden. Wenn diese Option nicht konfiguriert werden kann, wird für abgelehnte Benutzer die Standardoption (Entfernen der Mitgliedschaft eines Benutzers aus der Ressource) verwendet.
+
+1. Verwenden Sie die Option **Bei Abschluss der Überprüfung Benachrichtigung senden an:** , um Benachrichtigungen mit Abschlussupdates an andere Benutzer oder Gruppen zu senden. Mit diesem Feature können andere Beteiligte als der Ersteller der Überprüfung über den Fortschritt der Überprüfung informiert werden. Um dieses Feature zu verwenden, wählen Sie **Benutzer oder Gruppen auswählen** aus, und fügen Sie einen weiteren Benutzer oder eine weitere Gruppe hinzu, für den bzw. die Sie Statusinformationen zur Überprüfung erhalten möchten.
+
+1. Wählen Sie im Abschnitt **Entscheidungshilfen für Überprüfungen aktivieren** aus, ob Ihre Prüfer während des Überprüfungsvorgangs Empfehlungen erhalten sollen. Wenn diese Option aktiviert ist, werden Benutzer, die sich während der letzten 30 Tage angemeldet haben, zur Genehmigung empfohlen. Für Benutzer, die sich während der letzten 30 Tage nicht angemeldet haben, wird die Ablehnung empfohlen.
+
+   > [!NOTE]
+   > Wenn Sie eine anwendungsbasierte Zugriffsüberprüfung erstellen, liegt Ihren Empfehlungen der 30-tägige Intervallzeitraum zugrunde, der auf der letzten Anmeldung des Benutzers bei der Anwendung basiert (nicht auf der letzten Anmeldung beim Mandanten).
+
+   ![Screenshot: Option „Entscheidungshilfen für Prüfer aktivieren“.](./media/create-access-review/helpers.png)
+
+1. Sie können im Abschnitt **Erweiterte Einstellungen** Folgendes auswählen:
+
+    - **Begründung erforderlich**: Wenn Sie dieses Kontrollkästchen aktivieren, müssen Prüfer einen Grund für die Genehmigung oder Ablehnung angeben.
+    - **E-Mail-Benachrichtigungen**: Aktivieren Sie dieses Kontrollkästchen, damit Azure AD beim Start einer Zugriffsüberprüfung E-Mail-Benachrichtigungen an die Prüfer und beim Abschluss einer Überprüfung Benachrichtigungen an Administratoren sendet.
+    - L **Erinnerungen**: Aktivieren Sie dieses Kontrollkästchen, damit Azure AD Erinnerungen zu laufenden Zugriffsüberprüfungen an alle Prüfer sendet. Prüfer erhalten die Erinnerungen nach der Hälfte der Überprüfung, unabhängig davon, ob sie ihre Überprüfung abgeschlossen haben oder nicht.
+    - **Zusätzlicher Inhalt für E-Mail an Prüfer**: Der Inhalt der an Prüfer gesendeten E-Mail wird automatisch basierend auf den Überprüfungsdetails generiert, z. B. Name der Überprüfung, Name der Ressource, Fälligkeitsdatum usw. Wenn Sie weitere Informationen übermitteln müssen, können Sie in dem Feld Details wie Anweisungen oder Kontaktinformationen angeben. Die eingegebenen Informationen werden in die Einladung eingefügt, und Erinnerungs-E-Mails werden an die zugewiesenen Prüfer gesendet. Der in der folgenden Abbildung hervorgehobene Abschnitt zeigt, wo diese Informationen angezeigt werden.
+
+      ![Screenshot: Zusätzliche Inhalte für Prüfer.](./media/create-access-review/additional-content-reviewer.png)
+
+1. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
+
+   ![Screenshot: Registerkarte „Überprüfen und erstellen“.](./media/create-access-review/create-review.png)
+
+1. Benennen Sie die Zugriffsüberprüfung. Wahlweise können Sie jeder Überprüfung eine Beschreibung hinzufügen. Den Prüfern werden Name und Beschreibung angezeigt.
+
+1. Überprüfen Sie die Informationen, und wählen Sie **Erstellen** aus.
+
+## <a name="allow-group-owners-to-create-and-manage-access-reviews-of-their-groups-preview"></a>Ermöglichen der Erstellung und Verwaltung von Zugriffsüberprüfungen ihrer Gruppen für Gruppenbesitzer (Vorschau)
+
+Die Rolle muss „Globaler Administrator“ oder „Benutzeradministrator“ lauten.
 
 1. Melden Sie sich beim Azure-Portal an, und öffnen Sie die Seite [Identity Governance](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-1. Navigieren Sie im linken Menü unter **Zugriffsüberprüfungen** zu **Einstellungen**.
+1. Wählen Sie im Menü auf der linken Seite unter **Zugriffsüberprüfungen** die Option **Einstellungen** aus.
 
-1. Legen Sie auf der Seite „Delegieren, wer Zugriffsüberprüfungen erstellen und verwalten kann“ die Einstellung **(Vorschau) Gruppenbesitzer können Zugriffsüberprüfungen für Gruppen, deren Besitzer sie sind, erstellen und verwalten** auf **Ja** fest.
+1. Legen Sie auf der Seite **Delegieren, wer Zugriffsüberprüfungen erstellen und verwalten kann** die Einstellung **(Vorschau) Gruppenbesitzer können Zugriffsüberprüfungen für Gruppen, deren Besitzer sie sind, erstellen und verwalten** auf **Ja** fest.
 
-    ![Erstellen von Überprüfungen: Aktivieren von Überprüfungen durch Gruppenbesitzer](./media/create-access-review/group-owners-review-access.png)
+    ![Screenshot: Aktivieren der Überprüfung durch Gruppenbesitzer.](./media/create-access-review/group-owners-review-access.png)
 
     > [!NOTE]
-    > Standardmäßig ist die Einstellung auf **Nein** festgelegt. Daher muss sie aktualisiert werden, damit Gruppenbesitzer Zugriffsüberprüfungen erstellen und verwalten können.
+    > Standardmäßig ist die Einstellung auf den Wert **Nein** festgelegt. Um Gruppenbesitzern das Erstellen und Verwalten von Zugriffsüberprüfungen zu erlauben, legen Sie die Einstellung auf **Ja** fest.
 
 ## <a name="start-the-access-review"></a>Starten der Zugriffsüberprüfung
 
-Klicken Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung auf **Starten**. Die Zugriffsüberprüfung wird in der Liste mit einer Angabe des Status angezeigt.
+Wählen Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung die Option **Starten** aus. Die Zugriffsüberprüfung wird in der Liste mit einer Angabe des Status angezeigt.
 
-![Liste der Zugriffsüberprüfungen mit jeweiligem Status](./media/create-access-review/access-reviews-list.png)
+![Screenshot: Liste der Zugriffsüberprüfungen und deren Status.](./media/create-access-review/access-reviews-list.png)
 
 Standardmäßig sendet Azure AD kurz nach dem Start der Überprüfung eine E-Mail an die Prüfer. Wenn Sie nicht möchten, dass Azure AD die E-Mail sendet, stellen Sie sicher, dass die Prüfer darüber in Kenntnis gesetzt werden, dass sie eine ausstehende Zugriffsüberprüfung abschließen müssen. Sie können ihnen die Anweisungen zum [Überprüfen des Zugriffs auf Gruppen oder Anwendungen](perform-access-review.md) anzeigen. Wenn Ihre Überprüfung für Gäste gedacht ist, die ihren eigenen Zugriff überprüfen sollen, können Sie ihnen die Anweisungen zum [Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen ](review-your-access.md) anzeigen.
 
-Wenn Sie Gäste als Prüfer zugewiesen haben, diese die Einladung aber nicht angenommen haben, erhalten sie keine E-Mail zu Zugriffsüberprüfungen, da die Einladung zuerst akzeptiert werden muss, bevor Überprüfungen vorgenommen werden können.
+Wenn Sie Gäste als Prüfer zugewiesen haben und diese ihre Einladung für den Mandanten nicht akzeptiert haben, erhalten sie keine E-Mail von Zugriffsüberprüfungen. Sie müssen zunächst die Einladung annehmen, bevor sie mit der Überprüfung beginnen können.
 
-## <a name="access-review-status-table"></a>Zugriffsüberprüfungs-Statustabelle
+## <a name="update-the-access-review"></a>Zugriffsüberprüfung aktualisieren
 
-| Status | Definition |
-|--------|------------|
-|NotStarted | Die Überprüfung wurde erstellt, die Benutzerermittlung wartet auf den Start. |
-|Wird initialisiert...   | Die Benutzerermittlung ist dabei, alle Benutzer zu identifizieren, die Teil der Überprüfung sind. |
-|Wird gestartet | Die Überprüfung wird gestartet. Wenn E-Mail-Benachrichtigungen erlaubt sind, werden E-Mails an Überprüfer gesendet. |
-|InProgress | Die Überprüfung hat begonnen. Wenn E-Mail-Benachrichtigungen aktiviert sind, wurden E-Mails an Überprüfer gesendet. Überprüfer können Entscheidungen bis zum Fälligkeitsdatum einreichen. |
-|Wird abgeschlossen | Die Überprüfung wird abgeschlossen, und E-Mails werden an den Besitzer der Überprüfung gesendet. |
-|Automatische Überprüfung | Die Überprüfung befindet sich in einer Systemüberprüfungsphase. Das System zeichnet Entscheidungen für Benutzer auf, die auf der Grundlage von Empfehlungen oder vorkonfigurierten Entscheidungen nicht geprüft wurden. |
-|Automatisch überprüft | Für alle Benutzer, die nicht überprüft wurden, wurden Entscheidungen vom System aufgezeichnet. Die Überprüfung ist bereit, zu **Anwenden** fortzuschreiten, wenn die automatische Übernahme aktiviert ist. |
-|Anwenden | Für Benutzer, die genehmigt wurden, wird der Zugriff nicht geändert. |
-|Übernommen | Abgelehnte Benutzer, sofern vorhanden, wurden aus der Ressource oder dem Verzeichnis entfernt. |
-|Fehler | Die Überprüfung konnte nicht fortgesetzt werden. Dieser Fehler kann auf das Löschen des Mandanten, eine Änderung an Lizenzen oder andere interne Mandantenänderungen zurückzuführen sein. |
+Nachdem eine oder mehrere Zugriffsüberprüfungen gestartet wurden, möchten Sie die Einstellungen Ihrer vorhandenen Zugriffsüberprüfungen möglicherweise ändern oder aktualisieren. Im Folgenden finden Sie einige häufige Szenarien, die sie berücksichtigen sollten:
 
-## <a name="create-reviews-via-apis"></a>Erstellen von Überprüfungen über APIs
+- **Einstellungen oder Prüfern aktualisieren**: Wenn eine Zugriffsüberprüfung wiederholt wird, gibt es getrennte Einstellungen für **Aktuell** und **Serie**. Wenn Sie die Einstellungen oder Prüfer unter **Aktuell** aktualisieren, werden die Änderungen nur auf die aktuelle Zugriffsüberprüfung angewendet. Wenn Sie die Einstellungen oder Prüfer unter **Serie** aktualisieren, werden die Einstellungen für alle zukünftigen Wiederholungen aktualisiert.
 
-Zugriffsüberprüfungen können auch unter Verwendung von APIs erstellt werden. Die Aktionen, die Sie zur Verwaltung von Zugriffsüberprüfungen für Gruppen und Anwendungsbenutzer im Azure-Portal ausführen, können auch über Microsoft Graph-APIs ausgeführt werden. 
-+ Weitere Informationen finden Sie unter [Azure AD-Zugriffsüberprüfungen](/graph/api/resources/accessreviewsv2-root).
-+ Ein Tutorial finden Sie unter [Verwenden der Zugriffsüberprüfungs-API zum Überprüfen des Gastzugriffs auf Ihre Microsoft 365-Gruppen](/graph/tutorial-accessreviews-m365group).
-+ Ein Codebeispiel finden Sie unter [Beispiel für das Abrufen von Azure AD-Zugriffsüberprüfungen über Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
+   ![Screenshot: Aktualisieren der Einstellungen für die Zugriffsüberprüfung.](./media/create-access-review/current-v-series-setting.png)
+
+- **Prüfer hinzufügen und entfernen**: Beim Aktualisieren von Zugriffsüberprüfungen können Sie zusätzlich zum primären Prüfer einen Fallbackprüfer hinzufügen. Primäre Prüfer können entfernt werden, wenn Sie eine Zugriffsüberprüfung aktualisieren. Fallbackprüfer können standardmäßig nicht entfernt werden.
+
+    > [!Note]
+    > Fallbackprüfer können nur hinzugefügt werden, wenn der Prüfertyp „Vorgesetzter“ oder „Gruppenbesitzer“ lautet. Primäre Prüfer können hinzugefügt werden, wenn der Prüfertyp der ausgewählte Benutzer ist.
+
+- **Prüfer erinnern**: Beim Aktualisieren von Zugriffsüberprüfungen können Sie die Option **Erinnerungen** unter **Erweiterte Einstellungen** aktivieren. Benutzer erhalten dann nach der Hälfte des Überprüfungszeitraums eine E-Mail-Benachrichtigung, unabhängig davon, ob sie ihre Überprüfung abgeschlossen haben oder nicht.
+
+   ![Screenshot: Erinnerungen für Prüfer.](./media/create-access-review/reminder-setting.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Überprüfen des Zugriffs auf Gruppen oder Anwendungen](perform-access-review.md)
 - [Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen](review-your-access.md)
 - [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md)
+
+

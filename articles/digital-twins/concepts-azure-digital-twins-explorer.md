@@ -1,22 +1,24 @@
 ---
 title: Azure Digital Twins-Explorer
 titleSuffix: Azure Digital Twins
-description: Grundlegendes zu den Funktionen und dem Zweck von Azure Digital Twins-Explorer
+description: Erfahren Sie mehr über die Funktionen und den Zweck von Azure Digital Twins-Explorer und darüber, wann es ein nützliches Werkzeug zum Visualisieren digitaler Modelle, von Twins und Diagrammen sein kann.
 author: baanders
 ms.author: baanders
-ms.date: 8/24/2021
+ms.date: 10/29/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8006a98f91434243a94d24f6f7154e5856321744
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: bbcc693123f84d5cf789f53c8961f648ce2e90bf
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227078"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504244"
 ---
 # <a name="azure-digital-twins-explorer-preview"></a>Azure Digital Twins-Explorer (Vorschau)
 
-**Azure Digital Twins-Explorer** ist ein Entwicklertool zum Visualisieren und Interagieren mit den Daten in Ihrer Azure Digital Twins-Instanz, einschließlich Ihrer [Modelle](concepts-models.md) und des [Zwillingsgraphen](concepts-twins-graph.md). 
+Dieser Abschnitt enthält weitere Informationen zum **Azure Digital Twins-Explorer**, einschließlich der Anwendungsfälle und einer Übersicht seiner Features. Ausführliche Schritte zur Verwendung der einzelnen Funktionen finden Sie unter [Verwenden des Azure Digital Twins-Explorers](how-to-use-azure-digital-twins-explorer.md).
+
+Azure Digital Twins-Explorer ist ein Entwicklertool zum Visualisieren und Interagieren mit den Daten in Ihrer Azure Digital Twins-Instanz, einschließlich Ihrer [Modelle](concepts-models.md) und des [Zwillingsgraphen](concepts-twins-graph.md). 
 
 >[!NOTE]
 >Dieses Tool ist aktuell als **öffentliche Vorschauversion** verfügbar.
@@ -26,8 +28,6 @@ Hier sehen Sie eine Ansicht des Explorer-Fensters mit Modellen und Zwillingen, d
 :::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="Screenshot des Azure Digital Twins-Explorers mit Beispielmodellen und -zwillingen." lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
 
 Die visuelle Schnittstelle ist ein großartiges Tool, um die Form Ihres Graphen und Modellsatzes zu untersuchen und zu verstehen. Sie können damit auch punktuelle Änderungen an einzelnen Zwillingen und Beziehungen vornehmen.
-
-Dieser Artikel enthält weitere Informationen zum Azure Digital Twins-Explorer, einschließlich Anwendungsfälle und einer Übersicht seiner Features. Ausführliche Schritte zur Verwendung der einzelnen Funktionen finden Sie unter [Verwenden des Azure Digital Twins-Explorers](how-to-use-azure-digital-twins-explorer.md).
 
 ## <a name="when-to-use"></a>Verwendung
 
@@ -46,10 +46,11 @@ Der Hauptzweck des Explorers besteht darin, Sie beim Visualisieren und Verstehen
 Azure Digital Twins-Explorer sind in Panels organisiert, die jeweils einen anderen Satz von Funktionen zum Untersuchen und Verwalten Ihrer Modelle, Zwillinge und Beziehungen bieten.
 
 Die Abschnitte des Explorers lauten wie folgt:
-* **Modelle**: Hinzufügen, Entfernen und Anzeigen von Details zu Ihren Modellen aus einer Listenansicht.
-* **Modellgraph**: Visualisieren Ihrer Modelle und der Art und Weise, wie sie miteinander verbunden sind, in Form eines anpassbaren Modellgraphen.
-* **Zwillingsgraph**: Visualisieren Ihrer Zwillinge und Beziehungen als anpassbare Zwillingsgraphen. Erstellen und Löschen von Zwillingen und Beziehungen sowie Anzeigen oder Bearbeiten ihrer Eigenschaften.
 * **Abfrage-Explorer**: Ausführen von Abfragen an das Zwillingsdiagramm und Anzeigen der visuellen Ergebnisse im Panel **Zwillingsgraph**.
+* **Modelle**: Zeigen Sie eine Liste Ihrer Modelle an und führen Sie Modellaktionen durch, wie z. B. Hinzufügen, Entfernen und Anzeigen von Modelldetails.
+* Im Bereich **Twins** wird eine Liste Ihrer Zwillinge und der dazugehörigen Beziehungen angezeigt.
+* **Zwillingsgraph**: Visualisieren Ihrer Zwillinge und Beziehungen als anpassbare Zwillingsgraphen. Erstellen und Löschen von Zwillingen und Beziehungen sowie Anzeigen oder Bearbeiten ihrer Eigenschaften.
+* **Modellgraph**: Visualisieren Ihrer Modelle und der Art und Weise, wie sie miteinander verbunden sind, in Form eines anpassbaren Modellgraphen.
 
 :::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-panels.png" alt-text="Screenshot von Azure Digital Twins-Explorer mit einer Hervorhebung um jedes der oben beschriebenen Panels." lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-panels.png":::
 

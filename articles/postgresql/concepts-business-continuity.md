@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: f8d8547c2d4900e6258f7360c50d8dfc17157832
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68e046d0a19af2d8a4f6a413b527c9bf49c0e6ec
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100517243"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137140"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Einzelserver
 
@@ -44,8 +44,7 @@ Sie können die Sicherungen des Diensts verwenden, um einen Server nach verschie
 
 Sie können eine **Point-in-Time-Wiederherstellung** durchführen, um eine Kopie Ihres Servers zu einem als fehlerfrei bekannten Zeitpunkt zu erstellen. Dieser Zeitpunkt muss innerhalb der Aufbewahrungszeit für Sicherungen liegen, die Sie für den Server konfiguriert haben. Nach der Wiederherstellung der Daten auf dem neuen Server können Sie entweder den ursprünglichen Server durch den wiederhergestellten Server ersetzen oder die benötigten Daten vom wiederhergestellten Server auf den ursprünglichen Server kopieren.
 
-> [!IMPORTANT]
-> Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Verwenden Sie die [Azure-Ressourcensperre](../azure-resource-manager/management/lock-resources.md), um einer versehentlichen Löschung Ihres Servers vorzubeugen.
+Wir empfehlen die Verwendung von [Azure Resource Lock](../azure-resource-manager/management/lock-resources.md), um ein versehentliches Löschen Ihres Servers zu verhindern. Wenn Sie Ihren Server versehentlich gelöscht haben, können Sie ihn möglicherweise wiederherstellen, wenn die Löschung innerhalb der letzten 5 Tage erfolgte. Weitere Informationen finden Sie unter [Wiederherstellen eines ausgefallenen Azure Database for PostgreSQL-Servers](howto-restore-dropped-server.md).
 
 ## <a name="recover-from-an-azure-data-center-outage"></a>Wiederherstellen nach dem Ausfall eines Azure-Rechenzentrums
 

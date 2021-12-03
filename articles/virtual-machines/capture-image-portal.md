@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 06/21/2021
 ms.author: cynthn
 ms.custom: portal
-ms.openlocfilehash: b9218f6eebedd8f94c06a664518fc718f0eb7d19
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: bfab2d65de8b15ac72fe3c3b536b76ef14f046b4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112992115"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437294"
 ---
 # <a name="create-an-image-of-a-vm-in-the-portal"></a>Erstellen eines Images eines virtuellen Computers im Portal
 
 Ein Image kann über einen virtuellen Computer erstellt und dann zum Erstellen mehrerer virtueller Computer verwendet werden.
 
-Für in Shared Image Gallery gespeicherte Images können Sie virtuelle Computer verwenden, auf denen bereits Konten erstellt wurden (spezialisiert). Alternativ können Sie den virtuellen Computer generalisieren, bevor Sie das Image erstellen, um Computerkonten und andere computerspezifische Informationen zu entfernen. Informationen zum Generalisieren eines virtuellen Computers finden Sie unter [Entfernen VM-spezifischer Informationen durch Generalisieren einer VM vor Erstellen eines Images](generalize.md). Weitere Informationen finden Sie unter [Generalisierte und spezialisierte Images](shared-image-galleries.md#generalized-and-specialized-images).
+Für in Azure Compute Gallery (früher als Shared Image Gallery bezeichnet) gespeicherte Images können Sie VMs verwenden, auf denen bereits Konten erstellt wurden (spezialisiert). Alternativ können Sie die VM generalisieren, bevor Sie das Image erstellen, um Computerkonten und andere computerspezifische Informationen zu entfernen. Informationen zum Generalisieren eines virtuellen Computers finden Sie unter [Entfernen VM-spezifischer Informationen durch Generalisieren einer VM vor Erstellen eines Images](generalize.md). Weitere Informationen finden Sie unter [Generalisierte und spezialisierte Images](shared-image-galleries.md#generalized-and-specialized-images).
 
 
 ## <a name="capture-a-vm-in-the-portal"></a>Erfassen eines virtuellen Computers im Portal 
@@ -63,4 +63,4 @@ Für in Shared Image Gallery gespeicherte Images können Sie virtuelle Computer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Übersicht über Kataloge mit freigegebenen Images](shared-image-galleries.md)  
+- [Azure Compute Gallerys: Übersicht](shared-image-galleries.md) 

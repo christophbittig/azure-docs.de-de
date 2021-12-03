@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 88025243a379b18b5b24cb3c47caee4713b47585
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 74a39ff953c1ef8e549dbace0c7fc495976fae2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131541"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325522"
 ---
 # <a name="join-a-teams-meeting"></a>Teilnehmen an einer Teams-Besprechung
 
@@ -36,9 +36,9 @@ Benutzerdefinierte Anwendungen, die mit Azure Communication Services erstellt wu
 
 ## <a name="meeting-experience"></a>Benutzererfahrung während der Besprechung
 
-Genau wie beim anonymen Besprechungsbeitritt von Teams muss Ihre Anwendung über den Besprechungslink für den Beitritt verfügen. Dieser kann über die Graph-API oder aus dem Kalender in Microsoft Teams abgerufen werden. Die Namen von in Teams angezeigten BYOI-Benutzern können über das Anruf-SDK von Communication Services konfiguriert werden und sind als „extern“ gekennzeichnet, um Teams-Benutzern mitzuteilen, dass sie nicht über Azure Active Directory authentifiziert wurden.
+Genau wie beim anonymen Besprechungsbeitritt von Teams muss Ihre Anwendung über den Besprechungslink für den Beitritt verfügen. Dieser kann über die Graph-API oder aus dem Kalender in Microsoft Teams abgerufen werden. Die Namen von in Teams angezeigten BYOI-Benutzern können über das Anruf-SDK von Communication Services konfiguriert werden und sind als „extern“ gekennzeichnet, um Teams-Benutzern mitzuteilen, dass sie nicht über Azure Active Directory authentifiziert wurden. Wenn der erste ACS-Benutzer einer Teams-Besprechung beitritt, zeigt der Teams-Client eine Meldung an, die angibt, dass einige Features möglicherweise nicht verfügbar sind, da einer der Teilnehmer einen benutzerdefinierten Client verwendet.
 
-Während einer Besprechung können Communication Services-Benutzer grundlegende Audio-, Video-, Bildschirmfreigabe- und Chatfunktionen über Azure Communication Services SDKs verwenden. Sobald ein Communication Services-Benutzer die Besprechung verlässt oder die Besprechung beendet wird, kann er keine neuen Chatnachrichten mehr senden oder empfangen. Er kann jedoch weiterhin auf Nachrichten zugreifen, die während der Besprechung gesendet und empfangen wurden. Anonyme Communication Services-Benutzer können der Besprechung keine zusätzlichen Teilnehmer hinzufügen, und sie können für die Besprechung keine Aufzeichnung oder Transkription starten.
+Während einer Besprechung können Communication Services-Benutzer grundlegende Audio-, Video-, Bildschirmfreigabe- und Chatfunktionen über Azure Communication Services SDKs verwenden. Sobald ein Communication Services-Benutzer die Besprechung verlässt oder die Besprechung beendet wird, kann er keine neuen Chatnachrichten mehr senden oder empfangen. Er kann jedoch weiterhin auf Nachrichten zugreifen, die während der Besprechung gesendet und empfangen wurden. Anonyme Communication Services-Benutzer können der Besprechung keine zusätzlichen Teilnehmer hinzufügen oder sie aus ihr entfernen, und sie können für die Besprechung keine Aufzeichnung oder Transkription starten.
 
 Weitere Informationen zu erforderlichen Dataflows für den Beitritt zu Teams-Besprechungen finden Sie auf der Seite [Client- und Serverarchitektur](client-and-server-architecture.md). Das [Hero-Beispiel für Gruppenanrufe](../samples/calling-hero-sample.md) enthält Beispielcode für den Beitritt zu einer Teams-Besprechung über eine Webanwendung.
 
@@ -51,6 +51,7 @@ Microsoft gibt Ihnen über die Azure Communication Services-API einen Hinweis, d
 
 - Ein BYOI-Benutzer darf an einer Teams-Besprechung teilnehmen, die für einen Teams-Kanal geplant ist, sowie Audio- und Videodaten verwenden. Er kann aber keine Chatnachrichten senden oder empfangen, weil er kein Mitglied des Kanals ist.
 - Wenn Sie Microsoft Graph verwenden, um [die Teilnehmer einer Teams-Besprechung aufzulisten](/graph/api/call-list-participants), werden derzeit keine Details für Communication Services-Benutzer berücksichtigt.
+- PowerPoint-Präsentationen werden für Nutzer der Kommunikationsdienste nicht wiedergegeben.
 - Teams-Besprechungen unterstützen bis zu 1.000 Teilnehmer, aber das Anruf-SDK von Azure Communication Services unterstützt derzeit nur 350 Teilnehmer.
 - Bei [Cloud Video Interop für Microsoft Teams](/microsoftteams/cloud-video-interop) wurden auf einigen Geräten Probleme festgestellt, wenn ein Communication Services-Benutzer den Bildschirm teilte.
 - Features wie das Heben der Hand, der Zusammen-Modus und Gruppenräume stehen nur Teams-Benutzern zur Verfügung.
@@ -60,6 +61,6 @@ Microsoft gibt Ihnen über die Azure Communication Services-API einen Hinweis, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Verknüpfen einer BYOI-Anruf-App mit einer Teams-Besprechung](../quickstarts/voice-video-calling/get-started-teams-interop.md)
-> [Verknüpfen einer BYOI-Chat-App mit einer Teams-Besprechung](../quickstarts/chat/meeting-interop.md)
+- [Anleitung: An einer Teambesprechung teilnehmen](../how-tos/calling-sdk/teams-interoperability.md)
+- [Schnellstart: Beitritt einer BYOI-Anruf-App zu einer Teams-Besprechung](../quickstarts/voice-video-calling/get-started-teams-interop.md)
+- [Schnellstart: Beitritt einer BYOI-Chat-App zu einer Teams-Besprechung](../quickstarts/chat/meeting-interop.md)

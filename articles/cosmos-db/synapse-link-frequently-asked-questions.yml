@@ -6,14 +6,14 @@ metadata:
   ms.author: rosouz
   ms.service: cosmos-db
   ms.topic: conceptual
-  ms.date: 11/30/2020
+  ms.date: 11/02/2021
   ms.custom: synapse-cosmos-db
-  ms.openlocfilehash: a03572b75d12535dfd81e1539e2d4d27b1ffc2df
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 0820524698e13e5fe2e73ac3f245232a0a7ac227
+  ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131011406"
+  ms.lasthandoff: 11/10/2021
+  ms.locfileid: "132137212"
 title: Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
 summary: >
   [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -52,16 +52,19 @@ sections:
       Wirkt sich der analytische Speicher auf Transaktions-SLAs von Cosmos DB aus?
     answer: >
       Nein, es gibt keine Auswirkungen.
+  - question: >
+      Kann ich Synapse Link in serverlosen Azure Cosmos DB-Konten verwenden?
+    answer: "Ja, es wird unterstützt. Vorhandene Container werden jedoch nur für SQL API-Container und über Azure CLI Oder PowerShell unterstützt.         \n"
 - name: Azure Cosmos DB-Analysespeicher
   questions:
   - question: >
       Kann ich den Analysespeicher für vorhandene Container aktivieren?
     answer: >
-      Derzeit kann der Analysespeicher nur für neue Container (in neuen und vorhandenen Konten) aktiviert werden.
+      Derzeit können Sie den Analysespeicher nur für vorhandene SQL API-Container aktivieren.
   - question: >
       Kann ich den Analysespeicher für meine Azure Cosmos DB-Container deaktivieren, wenn er während der Containererstellung aktiviert wurde?
     answer: >
-      Derzeit kann der Analysespeicher in einem Azure Cosmos DB-Container nicht deaktiviert werden, wenn er während der Containererstellung aktiviert wurde.
+      Derzeit kann der Analysespeicher für einen Azure Cosmos DB-Container nicht deaktiviert werden.
   - question: >
       Wird der Analysespeicher für Azure Cosmos DB-Container mit per Autoskalierung bereitgestelltem Durchsatz unterstützt?
     answer: >
@@ -108,8 +111,7 @@ sections:
       Wenn bestimmte Elemente in Ihrem Container gegen das [genau definierte Schema für Analysen](analytical-store-introduction.md#analytical-schema) verstoßen, werden sie nicht in den Analysespeicher aufgenommen. Wenn Sie Szenarien durch ein genau definiertes Schema für Analysen blockiert haben, wenden Sie sich per E-Mail an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com), um Hilfe zu erhalten.
   - question: >
       Kann ich die Daten im Analysespeicher anders partitionieren als im Transaktionsspeicher?
-    answer: >
-      Die Daten im Analysespeicher werden basierend auf der horizontalen Partitionierung von Datenbank-Shards im Transaktionsspeicher partitioniert. Derzeit ist es nicht möglich, eine andere Partitionierungsstrategie für den Analysespeicher auszuwählen.
+    answer: "Der Analysespeicher ist standardmäßig nicht partitioniert.Wenn Ihre analytischen Abfragen häufig Filter verwenden, können Sie basierend auf diesen Feldern partitionieren, um die Abfrageleistung zu verbessern. Weitere Informationen finden Sie in den Artikeln zur [Einführung in die benutzerdefinierte Partitionierung](custom-partitioning-analytical-store.md) und [Konfigurieren der benutzerdefinierten Partitionierung](configure-custom-partitioning.md).  \n"
   - question: >
       Kann ich die Art und Weise, wie Transaktionsdaten in das Spaltenformat im Analysespeicher transformiert werden, anpassen oder außer Kraft setzen?
     answer: >
@@ -154,7 +156,7 @@ sections:
   - question: >
       Ist es möglich, kundenseitig verwaltete Schlüssel mit Azure Synapse Link zu verwenden?
     answer: >
-      Ja, Azure Synapse Link unterstützt das Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der verwalteten Identität Ihres Azure Cosmos DB-Kontos. Sie können Daten nahtlos im Transaktions- und Analysespeicher verschlüsseln und dabei die gleichen kundenseitig verwalteten Schlüssel automatisiert und transparent verwenden. Weitere Informationen finden Sie unter [Verwenden einer verwalteten Identität in der Azure Key Vault-Zugriffsrichtlinie](how-to-setup-cmk.md#using-managed-identity).
+      Ja, Azure Synapse Link unterstützt das Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der verwalteten Identität Ihres Azure Cosmos DB-Kontos. Sie können Daten nahtlos im Transaktions- und Analysespeicher verschlüsseln und dabei die gleichen kundenseitig verwalteten Schlüssel automatisiert und transparent verwenden. Weitere Informationen finden Sie in dem Artikel [Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe verwalteter Identitäten eines Azure Cosmos DB-Kontos](how-to-setup-cmk.md#using-managed-identity).
   - question: >
       Bietet Azure Synapse Link eine Netzwerkisolation mit verwalteten virtuellen Azure Synapse-Netzwerken?
     answer: >
@@ -189,9 +191,23 @@ sections:
   questions:
   - question: >
       Wie erkenne ich in Azure Synapse Studio, ob eine Verbindung mit einem Azure Cosmos DB-Container besteht, der mit dem Analysespeicher aktiviert ist?
-    answer: "Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist, weist das folgende Symbol auf:\n\n:::image type=\"content\" source=\"./media/synapse-link-frequently-asked-questions/analytical-store-icon.png\" alt-text=\"Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist – Symbol\":::\n\nEin Transaktionsspeichercontainer wird durch das folgende Symbol dargestellt:\n\n:::image type=\"content\" source=\"./media/synapse-link-frequently-asked-questions/transactional-store-icon.png\" alt-text=\"Ein Azure Cosmos DB Container, der mit dem Transaktionsspeicher aktiviert ist – Symbol\":::\n \n"
+    answer: >
+      Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist, weist das folgende Symbol auf:
+
+
+      :::image type="content" source="./media/synapse-link-frequently-asked-questions/analytical-store-icon.png" alt-text="Ein Azure Cosmos DB-Container, der mit dem Analysespeicher aktiviert ist – Symbol":::
+
+
+      Ein Transaktionsspeichercontainer wird durch das folgende Symbol dargestellt:
+
+
+      :::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Ein Azure Cosmos DB Container, der mit dem Transaktionsspeicher aktiviert ist – Symbol":::
   - question: >
       Wie werden Azure Cosmos DB-Anmeldeinformationen von Azure Synapse Studio übermittelt?
     answer: >
       Derzeit werden Azure Cosmos DB-Anmeldeinformationen beim Erstellen des verknüpften Diensts von dem Benutzer übermittelt, der Zugriff auf die Azure Cosmos DB-Datenbanken hat. Der Zugriff auf diesen Speicher steht anderen Benutzern zur Verfügung, die Zugriff auf den Arbeitsbereich haben.
+  - question: >
+      Kann ich SQL Server Management Studio verwenden, um den Analysespeicher mithilfe von Synapse Serverless SQL-Pool abzufragen?
+    answer: >
+      Ja.
 additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n* Erfahren Sie mehr über die [Vorteile von Azure Synapse Link](synapse-link.md#synapse-link-benefits).\n\n* Erfahren Sie mehr über die [Integration zwischen Azure Synapse Link und Azure Cosmos DB](synapse-link.md#synapse-link-integration).\n"

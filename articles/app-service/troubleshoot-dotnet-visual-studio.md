@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: f44d3eb84715233e6d9aa4a1d06d626d162973ee
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 2dc6e9deba6f1e6c5f7e43b5a87ef32aa53061be
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205267"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049102"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problembehandlung von Apps in Azure App Service mit Visual Studio
 ## <a name="overview"></a>Übersicht
@@ -78,9 +78,9 @@ Das `customErrors`-Kennzeichen in der Datei "Web.config" ist bei der Bereitstell
 
 **Die Website kann die Seite nicht anzeigen**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Screenshot des Fehlers „Die Website kann die Seite nicht anzeigen“ in einem Webbrowser":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Screenshot der Fehlermeldung „Die Website kann die Seite nicht anzeigen“ in einem Webbrowser":::
 
-Häufig ist der einfachste Weg für die Suche nach der Fehlerursache die Aktivierung detaillierter Fehlermeldungen. Im ersten der vorherigen Screenshots wird dies erläutert. Dazu ist eine Änderung an der bereitgestellten Web.config-Datei erforderlich. Sie können die Datei *Web.config* im Projekt bearbeiten und das Projekt neu bereitstellen oder eine [Web.config-Transformation](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) erstellen und eine Debugversion bereitstellen. Es gibt aber noch einen einfacheren Weg: Im **Projektmappen-Explorer** können Sie Dateien in der Remote-App mithilfe des Features *Remoteansicht* direkt anzeigen und bearbeiten.
+Häufig ist der einfachste Weg für die Suche nach der Fehlerursache die Aktivierung detaillierter Fehlermeldungen. Im ersten der vorherigen Screenshots wird dies erläutert. Dazu ist eine Änderung an der bereitgestellten Web.config-Datei erforderlich. Sie können die Datei *Web.config* im Projekt bearbeiten und das Projekt neu bereitstellen oder eine [`Web.config`-Transformation](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) erstellen und eine Debugversion bereitstellen. Es gibt aber noch einen einfacheren Weg: Im **Projektmappen-Explorer** können Sie Dateien in der Remote-App mithilfe des Features *Remoteansicht* direkt anzeigen und bearbeiten.
 
 1. Erweitern Sie im **Server-Explorer** den Knoten **Azure**, erweitern Sie **App Service**, erweitern Sie die Ressourcengruppe, in der sich die App befindet, und erweitern Sie dann den Knoten für die App.
 

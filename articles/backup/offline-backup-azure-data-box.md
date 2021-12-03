@@ -3,12 +3,12 @@ title: Offlinesicherung unter Verwendung von Azure Data Box
 description: In diesem Artikel erfahren Sie, wie Sie Azure Data Box verwenden können, um ein Offlineseeding für eine große Menge Erstsicherungsdaten vom MARS-Agent in einen Recovery Services-Tresor auszuführen.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 7793259797a47eb0353de7ecb27686ea2eafa24c
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 40fb046506238c5f02c7e36d6ce12b31ed44fcaa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185901"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020538"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box
 

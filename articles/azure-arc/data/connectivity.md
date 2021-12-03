@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/08/2021
+ms.date: 11/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: fa34a8e5e801080f354e13b632917a1a05eabf43
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 61dec7d7c6391cacb5f25a2fccbda6b4d97b7033
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832638"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316145"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Konnektivitätsmodi und -anforderungen
 
@@ -34,7 +34,7 @@ Wichtig: Wenn die Azure Arc-fähigen Datendienste direkt mit Azure verbunden sin
 
 Darüber hinaus können Azure Active Directory und rollenbasierte Azure-Zugriffssteuerung nur im Modus „Direkt verbunden“ verwendet werden, da eine Abhängigkeit von einer kontinuierlichen und direkten Verbindung mit Azure besteht, um diese Funktionalität bereitzustellen.
 
-Schließlich sind einige mit Azure verbundene Dienste nur dann verfügbar, wenn sie direkt erreichbar sind, wie die Azure Defender-Sicherheitsdienste, Container Insights und Azure Backup in Blob Storage.
+Einige an Azure angebundene Dienste sind nur verfügbar, wenn sie direkt erreicht werden können, z. B. die Sicherheitsdienste Microsoft Defender für Cloud, Container Insights und Azure Backup um Speicher zu verbinden.
 
 ||**Indirekt verbunden**|**Direkt verbunden**|**Nie verbunden**|
 |---|---|---|---|
@@ -48,16 +48,16 @@ Schließlich sind einige mit Azure verbundene Dienste nur dann verfügbar, wenn 
 |**Feature**|**Indirekt verbunden**|**Direkt verbunden**|
 |---|---|---|
 |**Automatische Hochverfügbarkeit**|Unterstützt|Unterstützt|
-|**Self-Service-Bereitstellung**|Unterstützt<br/>Die Erstellung kann über Azure Data Studio, über die geeignete CLI oder native Kubernetes-Tools (Helm, kubectl, oc usw.) oder mithilfe einer Azure Arc-fähigen Kubernetes GitOps-Bereitstellung durchgeführt werden.|Unterstützt<br/>Neben den Erstellungsoptionen im Modus „Indirekt verbunden“ können Sie zum Erstellen auch das Azure-Portal, Azure Resource Manager-APIs, die Azure CLI oder ARM-Vorlagen verwenden. **Anstehende Verfügbarkeit des Modus „Direkt verbunden“**
-|**Elastische Skalierbarkeit**|Unterstützt|Unterstützt<br/>**Anstehende Verfügbarkeit des Modus „Direkt verbunden“**|
-|**Abrechnung**|Unterstützt<br/>Abrechnungsdaten werden in regelmäßigen Abständen exportiert und an Azure gesendet.|Unterstützt<br/>Abrechnungsdaten werden automatisch und kontinuierlich an Azure gesendet und in nahezu Echtzeit angezeigt. **Anstehende Verfügbarkeit des Modus „Direkt verbunden“**|
+|**Self-Service-Bereitstellung**|Unterstützt<br/>Die Erstellung kann über Azure Data Studio, über die geeignete CLI oder native Kubernetes-Tools (Helm, kubectl, oc usw.) oder mithilfe einer Azure Arc-fähigen Kubernetes GitOps-Bereitstellung durchgeführt werden.|Unterstützt<br/>Neben den Erstellungsoptionen im Modus „Indirekt verbunden“ können Sie zum Erstellen auch das Azure-Portal, Azure Resource Manager-APIs, die Azure CLI oder ARM-Vorlagen verwenden. 
+|**Elastische Skalierbarkeit**|Unterstützt|Unterstützt<br/>|
+|**Abrechnung**|Unterstützt<br/>Abrechnungsdaten werden in regelmäßigen Abständen exportiert und an Azure gesendet.|Unterstützt<br/>Abrechnungsdaten werden automatisch und kontinuierlich an Azure gesendet und in nahezu Echtzeit angezeigt. |
 |**Bestandsverwaltung**|Unterstützt<br/>Inventardaten werden in regelmäßigen Abständen exportiert und an Azure gesendet.<br/><br/>Verwenden Sie Clienttools wie Azure Data Studio, Azure Data CLI oder `kubectl`, um den Bestand lokal anzuzeigen und zu verwalten.|Unterstützt<br/>Inventardaten werden automatisch und kontinuierlich an Azure gesendet und in nahezu Echtzeit angezeigt. Sie können so den Bestand direkt im Azure-Portal verwalten.|
-|**Automatische Upgrades und Patches**|Unterstützt<br/>Der Datencontroller muss entweder direkt auf Microsoft Container Registry (MCR) zugreifen können, oder die Containerimages müssen aus MCR gepullt und in eine lokale private Containerregistrierung gepusht werden, auf die der Datencontroller Zugriff besitzt.|Unterstützt<br/>**Anstehende Verfügbarkeit des Modus „Direkt verbunden“**|
-|**Regelmäßige Sicherung und Wiederherstellung**|Unterstützt<br/>Automatische lokale Sicherung und Wiederherstellung.|Unterstützt<br/>Zusätzlich zur automatisierten lokalen Sicherung und Wiederherstellung können Sie _optional_ Sicherungen für die langfristige Aufbewahrung außerhalb des Standorts an Azure Backup senden. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
-|**Überwachung**|Unterstützt<br/>Lokale Überwachung mit Grafana- und Kibana-Dashboards.|Unterstützt<br/>Zusätzlich zu den lokalen Überwachungsdashboards können Sie _optional_ Überwachungsdaten und Protokolle an Azure Monitor senden, um mehrere Standorte an einem Ort angemessen zu überwachen. **Anstehende Verfügbarkeit des Modus „Direkt verbunden“**|
+|**Automatische Upgrades und Patches**|Unterstützt<br/>Der Datencontroller muss entweder direkt auf Microsoft Container Registry (MCR) zugreifen können, oder die Containerimages müssen aus MCR gepullt und in eine lokale private Containerregistrierung gepusht werden, auf die der Datencontroller Zugriff besitzt.|Unterstützt<br/>**Abhängig von der Verfügbarkeit in der direkten Verbindung.**|
+|**Regelmäßige Sicherung und Wiederherstellung**|Unterstützt<br/>Automatische lokale Sicherung und Wiederherstellung.|Unterstützt<br/>Zusätzlich zur automatisierten lokalen Sicherung und Wiederherstellung können Sie _optional_ Sicherungen für die langfristige Aufbewahrung außerhalb des Standorts an Azure Backup senden. **Abhängig von der Verfügbarkeit im direkt angeschlossenen Modus.**|
+|**Überwachung**|Unterstützt<br/>Lokale Überwachung mit Grafana- und Kibana-Dashboards.|Unterstützt<br/>Zusätzlich zu den lokalen Überwachungsdashboards können Sie _optional_ Überwachungsdaten und Protokolle an Azure Monitor senden, um mehrere Standorte an einem Ort angemessen zu überwachen. |
 |**Authentifizierung**|Verwenden Sie einen lokalen Benutzernamen bzw. ein lokales Kennwort für die Datencontroller- und Dashboardauthentifizierung. Verwenden Sie SQL- und Postgres-Anmeldungen oder Active Directory (AD wird zurzeit nicht unterstützt, kommt aber bald in die Vorschauphase) für Verbindungen mit Datenbankinstanzen.  Verwenden Sie K8s-Authentifizierungsanbieter für die Authentifizierung bei der Kubernetes-API.|Zusätzlich zu oder anstelle der Authentifizierungsmethoden für den Modus „Indirekt verbunden“ können Sie _optional_ Azure Active Directory verwenden. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
-|**Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)**|Verwenden Sie Kubernetes RBAC mit der Kubernetes-API. Verwenden Sie SQL und Postgres RBAC für Datenbankinstanzen.|Sie können Azure Active Directory und Azure-RBAC verwenden.|
-|**Azure Defender**|Nicht unterstützt|In Zukunft geplant|
+|**Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)**|Verwenden Sie Kubernetes RBAC mit der Kubernetes-API. Verwenden Sie SQL und Postgres RBAC für Datenbankinstanzen.|Sie können Azure Active Directory und Azure-RBAC verwenden. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
+|**Microsoft Defender für Cloud**|Nicht unterstützt|In Zukunft geplant|
 
 ## <a name="connectivity-requirements"></a>Konnektivitätsanforderungen
 
@@ -75,13 +75,13 @@ Schließlich sind einige mit Azure verbundene Dienste nur dann verfügbar, wenn 
 |**Azure Active Directory (AAD) (Zukünftig)**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Möglicherweise, aber vielleicht zahlen Sie bereits für Azure AD|Nur direkt|Wenn Sie Azure AD für die Authentifizierung verwenden möchten, muss Konnektivität mit Azure jederzeit hergestellt werden. Wenn Sie Azure AD nicht für die Authentifizierung verwenden möchten, können Sie die Active Directory-Verbunddienste (AD FS) über Active Directory verwenden. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
 |**Sichern und Wiederherstellen**|Kundenumgebung -> Kundenumgebung|Erforderlich|Nein|Indirekt oder direkt|Der Sicherungs- und Wiederherstellungsdienst kann so konfiguriert werden, dass er auf lokale Speicherklassen verweist. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
 |**Azure Backup: langfristige Aufbewahrung (Zukünftig)**| Kundenumgebung-> Azure | Optional| Ja, für Azure Storage | Nur direkt |Möglicherweise möchten Sie Sicherungen, die lokal erstellt wurden, an Azure Backup für die langfristige, externe Aufbewahrung von Sicherungen senden und sie zur Wiederherstellung in die lokale Umgebung zurückholen. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
-|**Azure Defender-Sicherheitsdienste (Zukünftig)**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Ja|Nur direkt|**Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
+|**Microsoft Defender für Cloud-Sicherheitsdienste (zukünftig)**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Ja|Nur direkt|**Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
 |**Bereitstellungs- und Konfigurationsänderungen aus dem Azure-Portal**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Nein|Nur direkt|Bereitstellungs- und Konfigurationsänderungen können lokal mithilfe von Azure Data Studio oder der geeigneten CLI erfolgen.  Im Modus „Direkt verbunden“ können Sie Konfigurationsänderungen auch im Azure-Portal bereitstellen und vornehmen.|
 
 
 ## <a name="details-on-internet-addresses-ports-encryption-and-proxy-server-support"></a>Details zu Internetadressen, Ports, Verschlüsselung und Proxyserverunterstützung
 
-Derzeit ist nur der indirekte Konnektivitätsmodus allgemein verfügbar. In diesem Modus sind nur drei Verbindungen für Dienste erforderlich, die im Internet verfügbar sind. Hierzu zählen folgende Verbindungen:
+Es sind drei Verbindungen zu den im Internet verfügbaren Diensten erforderlich. Hierzu zählen folgende Verbindungen:
 
 - [Microsoft Container Registry (MCR)](#microsoft-container-registry-mcr)
 - [Azure Resource Manager-APIs](#azure-resource-manager-apis)

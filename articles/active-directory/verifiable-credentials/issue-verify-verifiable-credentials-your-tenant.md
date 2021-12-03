@@ -11,12 +11,12 @@ ms.date: 07/20/2021
 ms.author: barclayn
 ms.reviewer: ''
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b2c4e49e7d7b892b581876918152acc4bbe6aa3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: bf1e79f2868ee5f1a3c6b0b920a93a8a1f92c068
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006734"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049157"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Tutorial: Ausstellen und Überprüfen von Nachweisen mithilfe Ihres Mandanten (Vorschau)
 
@@ -195,7 +195,7 @@ Es gibt noch einige weitere Werte, die erforderlich sind, um die Änderungen ein
 
     - Mandanten-ID 
     - Ausstellerbezeichner (Ihre DID)
-    - Key Vault (URI)
+    - Schlüsseltresor (URI)
 
 1. Unter dem Signaturschlüsselbezeichner ist ein URI aufgeführt, aber wir benötigen nur einen Teil davon. Kopieren Sie ab dem Teil mit dem Text **issuerSigningKeyION**, wie durch das rote Rechteck in der folgenden Abbildung hervorgehoben.
 
@@ -218,7 +218,7 @@ Es gibt noch einige weitere Werte, die erforderlich sind, um die Änderungen ein
 
 Jetzt haben wir alles, was wir brauchen, um die Änderungen an unserem Beispielcode vorzunehmen.
 
-- **Aussteller:** „app.js“, aktualisieren Sie „const credential“ mit Ihrem neuen Vertrags-URI.
+- **Aussteller:** app.js const-Anmeldeinformationen mit Ihrem neuen Vertrags-URI aktualisieren
 - **Überprüfung:** „app.js“, aktualisieren Sie „issuerDid“ mit Ihrem Ausstellerbezeichner.
 - **Aussteller und Überprüfung:** Aktualisieren Sie „didconfig.json“ mit den folgenden Werten:
 
@@ -318,7 +318,7 @@ Nachdem Sie nun den Nachweis aus Ihrem eigenen Mandanten mit Ansprüchen aus Ihr
     node app.js
     ```
 
-4. Öffnen Sie die ngrok-URL in Ihrem Browser, und Scannen Sie den QR-Code mithilfe des Authentifikators auf Ihrem mobilen Gerät.
+4. Öffnen Sie die ngrok-URL in Ihrem Browser, und scannen Sie den QR-Code mithilfe von Authenticator auf Ihrem mobilen Gerät.
 5. Wählen Sie auf Ihrem mobilen Gerät auf dem Bildschirm die **neue Berechtigungsanforderung** Option **zulassen** aus.
 
    >[!IMPORTANT]

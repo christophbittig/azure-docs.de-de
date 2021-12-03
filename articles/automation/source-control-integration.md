@@ -1,17 +1,17 @@
 ---
 title: Verwenden der Integration der Quellcodeverwaltung in Azure Automation
-description: In diesem Artikel erfahren Sie, wie Sie die Azure Automation-Quellcodeverwaltung mit anderen Repositorys synchronisieren.
+description: In diesem Artikel erfahren Sie, wie Sie die Azure Automation-Quellcodeverwaltung mit anderen Repositorys synchronisieren können.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/10/2021
+ms.date: 11/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d94da9792d40a389e3981163e565d85d82a9cdc9
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c809021f781e9aa8376b9383328a38bd1c784510
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831238"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477115"
 ---
 # <a name="use-source-control-integration"></a>Verwenden der Integration der Quellcodeverwaltung
 
@@ -30,8 +30,8 @@ Azure Automation unterstützt drei Arten von Quellcodeverwaltung:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Quellcodeverwaltungsrepository (GitHub oder Azure Repos)
-* Ein [ausführendes Konto](automation-security-overview.md#run-as-accounts).
-* Das [`AzureRM.Profile`-Modul](/powershell/module/azurerm.profile/) muss in Ihr Azure Automation-Konto importiert werden. Beachten Sie, dass das entsprechende Az-Modul (`Az.Accounts`) nicht mit der Automation-Quellcodeverwaltung funktioniert.
+* Es wird nur eine vom System zugewiesene [verwaltete Identität](automation-security-overview.md#managed-identities) zugewiesen. Wenn Sie keine vom System zugewiesene verwaltete Identität mit Ihrem Automation-Konto konfiguriert haben, finden Sie weitere Informationen unter Aktivieren der [verwalteten Identität](enable-managed-identity-for-automation.md#enable-a-system-assigned-managed-identity-for-an-azure-automation-account) für die Erstellung.
+* Weisen Sie die vom System zugewiesene verwaltete Identität der Rolle [Mitwirkender](automation-role-based-access-control.md#contributor) im Automation-Konto zu.
 
 > [!NOTE]
 > Synchronisierungsaufträge für die Quellcodeverwaltung werden unter dem Automation-Konto eines Benutzers ausgeführt und mit der gleichen Rate wie andere Automation-Aufträge berechnet.
@@ -39,6 +39,24 @@ Azure Automation unterstützt drei Arten von Quellcodeverwaltung:
 ## <a name="configure-source-control"></a>Konfigurieren der Quellcodeverwaltung
 
 In diesem Abschnitt erfahren Sie, wie Sie die Quellcodeverwaltung für Ihr Automation-Konto konfigurieren. Sie können das Azure-Portal oder PowerShell verwenden.
+
+> [!NOTE]
+> Azure Automation unterstützt nur die vom System zugewiesene verwaltete Identität mit Integration der Quellcodeverwaltung. Wenn Sie sowohl ein Konto "Ausführen als" als auch eine vom System zugewiesene verwaltete Identität aktiviert haben, wird die verwaltete Identität bevorzugt. Wenn Sie stattdessen ein Ausführungskonto verwenden möchten, können Sie [eine Automation-Variable](./shared-resources/variables.md) vom Typ BOOLEAN mit dem Namen `AUTOMATION_SC_USE_RUNAS` und dem Wert `true` erstellen.
+
+### <a name="assign-system-assigned-identity-to-contributor-role"></a>Zuweisen einer vom System zugewiesenen Identität zur Rolle "Mitwirkender"
+
+In diesem Beispiel wird Azure PowerShell verwendet, um zu zeigen, wie die Rolle Mitwirkender im Abonnement der Azure Automation-Kontoressource zugewiesen wird.
+
+1. Öffnen Sie eine PowerShell-Konsole mit erhöhten Rechten.
+1. Melden Sie sich bei Azure an, indem Sie den Befehl `Connect-AzAccount` ausführen.
+1. Führen Sie den folgenden Befehl aus, um dem Dienstprinzipal die Rolle **Mitwirkender** zuzuweisen.
+
+    ```powershell
+    New-AzRoleAssignment `
+        -ObjectId <automation-Identity-object-id> `
+        -Scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}" `
+        -RoleDefinitionName "Contributor"
+    ```
 
 ### <a name="configure-source-control-in-azure-portal"></a>Konfigurieren der Quellcodeverwaltung im Azure-Portal
 
@@ -88,7 +106,6 @@ New-AzAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accoun
 
 > [!NOTE]
 > Azure Repos (Git) verwendet eine URL, die auf **dev.azure.com** statt auf das in früheren Formaten verwendete **visualstudio.com** zugreift. Das ältere URL-Format `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` ist veraltet, wird aber immer noch unterstützt. Das neue Format wird bevorzugt.
-
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"

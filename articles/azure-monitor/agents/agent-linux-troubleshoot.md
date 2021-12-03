@@ -4,25 +4,17 @@ description: Beschreibt die Symptome, Ursachen und Lösungen für die häufigste
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/21/2019
-ms.openlocfilehash: e3e65bd40bfceb6a48d4ce917c274f6532aa30e7
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 10/21/2021
+ms.openlocfilehash: fce62f3bbe5a3eca29f89cb47c98df6485d1d123
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342662"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216559"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux
 
 Dieser Artikel bietet Unterstützung bei der Problembehandlung von Fehlern, die beim Log Analytics-Agent für Linux in Azure Monitor auftreten können, und enthält mögliche Lösungen zum Beheben dieser Fehler.
-
-Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen auch die folgenden Supportkanäle zur Verfügung:
-
-* Kunden mit Premier Support-Vorteilen können eine Supportanfrage mit [Premier](https://premier.microsoft.com/) stellen.
-* Kunden mit Azure-Supportvereinbarungen können eine Supportanfrage [im Azure-Portal](https://azure.microsoft.com/support/options/) stellen.
-* Verwenden Sie zum Diagnostizieren von OMI-Problemen den [OMI troubleshooting guide](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md) (Leitfaden zur OMI-Problembehandlung).
-* Melden Sie ein [GitHub-Problem](https://github.com/Microsoft/OMS-Agent-for-Linux/issues).
-* Besuchen Sie die Log Analytics-Feedbackseite unter [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback), um bereits eingereichte Vorschläge und gemeldete Fehler einzusehen oder ein neues Problem zu melden.
 
 ## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics-Problembehandlungstool
 
@@ -36,9 +28,10 @@ Das Problembehandlungstool kann ausgeführt werden, indem Sie auf einem Computer
 
 Das Problembehandlungstool ist bei der Installation des Log Analytics-Agents automatisch enthalten. Wenn die Installation jedoch in irgendeiner Weise fehlschlägt, kann es mithilfe der folgenden Schritte auch manuell installiert werden.
 
-1. Kopieren Sie das Problembehandlungspaket auf Ihren Computer: `wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
-2. Entpacken Sie das Paket: `tar -xzvf omsagent_tst.tar.gz`
-3. Führen Sie die manuelle Installation aus: `sudo ./install_tst`
+1. Stellen Sie sicher, dass der [GNU Project Debugger (GDB)](https://www.gnu.org/software/gdb/) auf dem Computer installiert ist, da die Problembehandlung darauf basiert.
+2. Kopieren Sie das Problembehandlungspaket auf Ihren Computer: `wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
+3. Entpacken Sie das Paket: `tar -xzvf omsagent_tst.tar.gz`
+4. Führen Sie die manuelle Installation aus: `sudo ./install_tst`
 
 ### <a name="scenarios-covered"></a>Abgedeckte Szenarien
 
@@ -494,3 +487,17 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben.
     ```
 
 3. Aktualisieren Sie die Pakete, indem Sie `sudo sh ./omsagent-*.universal.x64.sh --upgrade` ausführen.
+
+## <a name="issue-installation-is-failing-saying-python2-cannot-support-ctypes-even-though-python3-is-being-used"></a>Problem: Bei der Installation tritt ein Fehler mit dem Hinweis auf, dass Python2 ctypes nicht unterstützen kann, obwohl Python3 verwendet wird.
+
+### <a name="probable-causes"></a>Mögliche Ursachen
+
+Es gibt ein bekanntes Problem, dass die Überprüfung der verwendeten Python-Version nicht erfolgreich ausgeführt wird, wenn die Sprache der VM nicht Englisch ist. Dies führt dazu, dass der Agent immer davon ausgeht, dass Python2 verwendet wird, und einen Fehler verursacht, wenn kein Python2 vorhanden ist.
+
+### <a name="resolution"></a>Lösung
+
+Ändern Sie die Umgebungssprache der VM in Englisch:
+
+```
+export LANG=en_US.UTF-8
+```

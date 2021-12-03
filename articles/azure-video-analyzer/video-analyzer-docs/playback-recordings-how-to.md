@@ -3,14 +3,14 @@ title: Anzeigen von Videos – Azure Video Analyzer
 description: Sie können Azure Video Analyzer für die fortlaufende Videoaufzeichnung verwenden. Die Videoaufzeichnungen können Sie für Wochen oder Monate in der Cloud speichern. Sie können Ihre Aufzeichnung auch auf die für Sie interessanten Clips beschränken, indem Sie die ereignisbasierte Aufzeichnung verwenden. Wenn Sie den Video Analyzer-Dienst verwenden, um Videos von Kameras zu erfassen, können Sie das Video außerdem während der Erfassung streamen. In diesem Artikel wird beschrieben, wie Sie solche Videos anzeigen.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 09/30/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b98d68024857322c591ee2dc77af22ebb1492183
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 552daea0a5a19c7c9e11aca9b47d61ea112a42b3
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048569"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846974"
 ---
 # <a name="viewing-of-videos"></a>Anzeigen von Videos
 

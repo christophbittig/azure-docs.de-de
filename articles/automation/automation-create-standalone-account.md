@@ -1,16 +1,16 @@
 ---
 title: Erstellen eines eigenständigen Azure Automation-Kontos
-description: In diesem Artikel wird beschrieben, wie Sie ein eigenständiges Azure Automation-Konto und ein klassisches ausführendes Konto erstellen.
+description: In diesem Artikel wird erläutert, wie Sie ein eigenständiges Azure Automation-Konto erstellen können.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/24/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: f60c6d08f3ab09a3900203cbebc49477d5c84f0a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eedee6af181a0dc99635dc455dfda6a154fe5eb9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124812612"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451038"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Erstellen eines eigenständigen Azure Automation-Kontos
 
@@ -18,29 +18,13 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure Automation-Konto im Azure-Port
 
 Mit einem Automation-Konto können Sie Runbooks authentifizieren, indem Sie Ressourcen im Azure Resource Manager-Bereitstellungsmodell oder im klassischen Bereitstellungsmodell verwalten. Ein Automation-Konto kann Ressourcen in allen Regionen und Abonnements für einen bestimmten Mandanten verwalten.
 
-Wenn Sie im Azure-Portal ein Automation-Konto erstellen, wird automatisch ein **ausführendes Konto** erstellt. Das Konto führt die folgenden Aufgaben aus:
-
-* Erstellen eines Dienstprinzipals in Azure Active Directory (Azure AD)
-* Erstellen eines Zertifikats
-* Zuweisen der Rolle „Mitwirkender“, die zum Verwalten von Azure Resource Manager-Ressourcen mit Runbooks verwendet wird
-
 Dank der automatischen Erstellung dieses Kontos können Sie schnell Runbooks für Ihre Automatisierungsanforderungen erstellen und bereitstellen.
 
 ## <a name="permissions-required-to-create-an-automation-account"></a>Erforderliche Berechtigungen zum Erstellen eines Automation-Kontos
 
 Zum Erstellen oder Aktualisieren eines Automation-Kontos und zum Abschließen der Aufgaben in diesem Artikel müssen Sie über die folgenden Berechtigungen verfügen:
 
-* Für die Erstellung eines Automation-Kontos muss Ihr Azure AD-Benutzerkonto einer Rolle mit Berechtigungen hinzugefügt werden, die der Rolle „Besitzer“ für `Microsoft.Automation`-Ressourcen entsprechen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
-* Wenn im Azure-Portal unter **Azure Active Directory** > **VERWALTEN** > **Benutzereinstellungen** die Option **App-Registrierungen** auf **Ja** festgelegt ist, können Benutzer ohne Administratorrechte in Ihrem Azure AD-Mandanten [Active Directory-Anwendungen registrieren](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Wenn **App-Registrierungen** auf **Nein** festgelegt ist, muss ein Benutzer, der diese Aktion ausführt, mindestens ein Mitglied der Rolle „Anwendungsentwickler“ in Azure AD sein.
-
-Wenn Sie kein Mitglied der Active Directory-Instanz des Abonnements sind, werden Sie vor der Hinzufügung zur Rolle „Globaler Administrator“/„Co-Administrator“ des Abonnements zunächst als Gast in Active Directory hinzugefügt. In diesem Szenario wird auf der Seite **Automation-Konto hinzufügen** die folgende Meldung angezeigt: `You do not have permissions to create.`
-
-Wird ein Benutzer zuerst der Rolle „Globaler Administrator“/„Co-Administrator“ hinzugefügt, können Sie ihn aus der Active Directory-Instanz des Abonnements entfernen. Sie können den Benutzer der Rolle „Benutzer“ in Active Directory erneut hinzufügen. So überprüfen Sie Benutzerrollen
-
-1. Navigieren Sie im Azure-Portal zur Seite „Azure Active Directory“.
-1. Wählen Sie **Benutzer und Gruppen**.
-1. Wählen Sie **Alle Benutzer**.
-1. Wählen Sie nach der Auswahl eines bestimmten Benutzers **Profil** aus. Als Wert des Attributs **Benutzertyp** im Benutzerprofil darf nicht **Gast** angegeben sein.
+Für die Erstellung eines Automation-Kontos muss Ihr Azure AD-Benutzerkonto einer Rolle mit Berechtigungen hinzugefügt werden, die der Rolle „Besitzer“ für `Microsoft.Automation`-Ressourcen entsprechen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
 
 ## <a name="create-a-new-automation-account-in-the-azure-portal"></a>Erstellen eines neuen Automation-Kontos über das Azure-Portal
 
@@ -50,58 +34,72 @@ Führen Sie die folgenden Schritte aus, um ein Azure Automation-Konto über das 
 1. Klicken Sie auf **+ Ressource erstellen**.
 1. Suchen Sie nach **Automation**. Klicken Sie in den Suchergebnissen auf **Automation**.
 
-   ![„Automation & Control“ im Azure Marketplace suchen und auswählen](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
+   :::image type="content" source="./media/automation-create-standalone-account/automation-account-portal.png" alt-text="Suchen von Automation-Konten im Portal":::
 
-1. Wählen Sie auf dem nächsten Bildschirm die Option **Neu erstellen** aus.
+Die Optionen für Ihr neues Automation-Konto sind auf der Seite **Erstellen eines Automation-Kontos** auf Registerkarten organisiert. In den folgenden Abschnitten werden die einzelnen Registerkarten und ihre Optionen beschrieben.
 
-   ![Automation-Konto hinzufügen](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
+### <a name="basics"></a>Grundlagen
 
-   > [!NOTE]
-   > Falls im Bereich **Automation-Konto hinzufügen** die folgende Meldung angezeigt wird, ist Ihr Konto kein Mitglied der Rolle „Administratoren“ für das Abonnement und fungiert nicht als Co-Administrator des Abonnements.
-   >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="Der Screenshot der Aufforderung, dass Sie nicht über die Berechtigungen zum Erstellen eines ausführenden Kontos in Azure Active Directory verfügen.":::
+Geben Sie auf der Registerkarte **Grundlagen** die grundlegenden Informationen für Ihr Automation-Konto an. Nachdem Sie die Registerkarte **Grundlagen** ausgefüllt haben, können Sie Ihr neues Automation-Konto anhand der Optionen auf den übrigen Registerkarten weiter anpassen, oder Sie können **Überprüfen + erstellen** auswählen, um die Standardoptionen zu übernehmen und mit dem Überprüfen und dem Erstellen des Kontos fortzufahren.
 
-1. Geben Sie auf der Seite **Automation-Konto hinzufügen** im Feld **Name** einen Namen für das neue Automation-Konto ein. Sie können diesen Namen nach der Auswahl nicht mehr ändern. 
+> [!NOTE]
+> Standardmäßig wird eine systemseitig zugewiesene verwaltete Identität für das Automation-Konto aktiviert.
 
-    > [!NOTE]
-    > Automation-Kontonamen sind für jede Region und Ressourcengruppe eindeutig. Namen gelöschter Automation-Konten sind möglicherweise nicht sofort wieder verfügbar.
+In der folgenden Tabelle werden die Felder der Registerkarte **Grundlagen** beschrieben.
 
-1. Falls Sie über mehrere Abonnements verfügen, geben Sie im Feld **Abonnement** das Abonnement an, das Sie für das neue Konto verwenden möchten.
-1. Geben Sie unter **Ressourcengruppe** eine neue oder vorhandene Ressourcengruppe ein, oder wählen Sie eine Ressourcengruppe aus.
-1. Wählen Sie unter **Standort** den Standort eines Azure-Datencenters aus.
-1. Vergewissern Sie sich, dass die Option **Ausführendes Azure-Konto erstellen** auf **Ja** festgelegt ist, und klicken Sie anschließend auf **Erstellen**.
+| **Feld** | **Erforderlich**<br> **or**<br> **optional** |**Beschreibung** |
+|---|---|---|
+|Subscription|Erforderlich |Wählen Sie in der Dropdownliste das Azure-Abonnement für das Konto aus.|
+|Ressourcengruppe|Erforderlich |Wählen Sie in der Dropdownliste Ihre vorhandene Ressourcengruppe oder die Option **Neu erstellen** aus.|
+|Name des Automation-Kontos|Erforderlich |Geben Sie einen eindeutigen Namen für den Standort und die Ressourcengruppe ein. Namen von gelöschten Automation-Konten sind möglicherweise nicht sofort verfügbar. Nach der Eingabe auf der Benutzeroberfläche kann der Kontoname nicht mehr geändert werden. |
+|Region|Erforderlich |Wählen Sie aus der Dropdownliste eine Region für Ihr Konto aus. Eine aktualisierte Liste mit Standorten, an denen Sie ein Automation-Konto bereitstellen können, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all).|
 
-   > [!NOTE]
-   > Wenn Sie die Option **Ausführendes Azure-Konto erstellen** auf **Nein** festlegen, wird auf der Seite **Automation-Konto hinzufügen** eine Meldung angezeigt. Das Konto wird zwar im Azure-Portal erstellt, verfügt aber im Verzeichnisdienst für Ihr Abonnement (klassisches Bereitstellungsmodell oder Azure Resource Manager-Bereitstellungsmodell) über keine entsprechende Authentifizierungsidentität. Dadurch hat das Automation-Konto auch keinen Zugriff auf Ressourcen in Ihrem Abonnement. Runbooks, die auf dieses Konto verweisen, können in diesem Fall nicht authentifiziert werden und keine Aufgaben für Ressourcen in diesen Bereitstellungsmodellen durchführen.
-   >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Der Screenshot der Aufforderung, dass Sie sich dazu entschieden haben, kein ausführendes Konto zu erstellen.":::
-   >
-   > Wenn der Dienstprinzipal nicht erstellt wird, wird die Rolle „Mitwirkender“ nicht zugewiesen.
-   >
+Das folgende Bild zeigt eine Standardkonfiguration für ein neues Automation-Konto.
 
-1. Den Status der Automation-Kontoerstellung können Sie über das Menü unter **Benachrichtigungen** verfolgen.
+:::image type="content" source="./media/automation-create-standalone-account/create-account-basics.png" alt-text="Zum Erstellen eines Automation-Kontos erforderliche Felder auf der Registerkarte „Grundlagen“":::
 
-Nach der erfolgreichen Erstellung des Automation-Kontos werden automatisch verschiedene Ressourcen erstellt. Nachdem diese Ressourcen erstellt sind, können Runbooks gefahrlos gelöscht, wenn Sie diese nicht behalten möchten. Die ausführenden Konten können dazu verwendet werden, sich bei Ihrem Konto in einem Runbook zu authentifizieren, und sollten erhalten bleiben, es sei denn, Sie erstellen ein anderes oder benötigen sie nicht mehr. In der folgenden Tabelle sind die Ressourcen für das ausführende Konto zusammengefasst.
+### <a name="advanced"></a>Fortgeschrittene
 
-| Resource | BESCHREIBUNG |
-| --- | --- |
-| AzureAutomationTutorial-Runbook |Ein grafisches Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht. Das Runbook ruft alle Resource Manager-Ressourcen ab. |
-| AzureAutomationTutorialScript-Runbook |Ein PowerShell-Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht. Das Runbook ruft alle Resource Manager-Ressourcen ab. |
-| AzureAutomationTutorialPython2-Runbook |Ein Python-Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht. Das Runbook führt alle im Abonnement vorhandenen Ressourcengruppen auf. |
-| AzureRunAsCertificate |Eine Zertifikatressource, die automatisch zusammen mit dem Automation-Konto oder mithilfe eines PowerShell-Skripts für ein vorhandenes Konto erstellt wird. Das Zertifikat dient zur Authentifizierung bei Azure, um Azure Resource Manager-Ressourcen über Runbooks verwalten zu können. Dieses Zertifikat ist ein Jahr lang gültig. |
-| AzureRunAsConnection |Eine Verbindungsressource, die automatisch zusammen mit dem Automation-Konto oder mithilfe eines PowerShell-Skripts für ein vorhandenes Konto erstellt wird. |
+Auf der Registerkarte **Erweitert** können Sie die Option für die verwaltete Identität für Ihr neues Automation-Konto konfigurieren. Die Option für die benutzerseitig zugewiesene verwaltete Identität kann auch konfiguriert werden, nachdem das Automation-Konto erstellt wurde.
 
-## <a name="create-a-classic-run-as-account"></a>Erstellen eines klassischen ausführenden Kontos
+Anweisungen zum Erstellen einer benutzerseitig zugewiesenen verwalteten Identität finden Sie unter [Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
 
-Beim Erstellen eines Azure Automation-Konto werden klassische ausführende Konten nicht standardmäßig erstellt. Führen Sie die folgenden Schritte aus, wenn Sie ein klassisches ausführendes Konto zum Verwalten von klassischen Azure-Ressourcen benötigen
+In der folgenden Tabelle werden die Felder der Registerkarte **Erweitert** beschrieben.
 
-1. Wählen Sie in Ihrem Automation-Konto unter **Kontoeinstellungen** die Option **Ausführende Konten** aus.
-2. Wählen Sie **Klassisches ausführendes Azure-Konto** aus.
-3. Klicken Sie auf **Erstellen**, um mit dem Erstellen des klassischen ausführenden Kontos fortzufahren.
+| **Feld** | **Erforderlich**<br> **or**<br> **optional** |**Beschreibung** |
+|---|---|---|
+|Systemseitig zugewiesen |Optional |Eine Azure Active Directory-Identität, die an den Lebenszyklus des Automation-Kontos gebunden ist |
+|Benutzerseitig zugewiesen |Optional |Eine verwaltete Identität, die als eigenständige Azure-Ressource dargestellt und getrennt von den Ressourcen verwaltet wird, die sie verwenden|
+
+Sie können verwaltete Identitäten später aktivieren, und das Automation-Konto wird ohne eine solche Identität erstellt. Informationen zum Aktivieren einer verwalteten Identität nach dem Erstellen des Kontos finden Sie unter [Aktivieren einer verwalteten Identität](enable-managed-identity-for-automation.md). Wenn Sie beide Optionen aktivieren, wählen Sie für die benutzerseitig zugewiesene Identität die Option **Add user assigned identities** (Benutzerseitig zugewiesene Identitäten hinzufügen) aus. Wählen Sie auf der Seite **Benutzerseitig zugewiesene verwaltete Identität auswählen** ein Abonnement aus, und fügen Sie mindestens eine in diesem Abonnement erstellte benutzerseitig zugewiesene Identität hinzu, um sie dem Automation-Konto zuzuweisen.
+
+Das folgende Bild zeigt eine Standardkonfiguration für ein neues Automation-Konto.
+
+:::image type="content" source="./media/automation-create-standalone-account/create-account-advanced.png" alt-text="Zum Erstellen des Automation-Kontos erforderliche Felder auf der Registerkarte „Erweitert“":::
+
+### <a name="tags-tab"></a>Registerkarte „Tags“
+
+Auf der Registerkarte **Tags** können Sie Resource Manager-Tags angeben, um Ihre Azure-Ressourcen zu organisieren. Weitere Informationen finden Sie unter [Markieren von Ressourcen, Ressourcengruppen und Abonnements für die logische Organisation](../azure-resource-manager/management/tag-resources.md).
+
+### <a name="review--create-tab"></a>Registerkarte „Überprüfen und erstellen“
+
+Wenn Sie zur Registerkarte **Überprüfen + erstellen** wechseln, führt Azure die Überprüfung der ausgewählten Automation-Kontoeinstellungen aus. Wenn die Überprüfung erfolgreich ist, können Sie mit dem Erstellen des Automation-Kontos fortfahren.
+
+Wenn die Überprüfung fehlschlägt, gibt das Portal an, welche Einstellungen geändert werden müssen.
+
+Überprüfen Sie Ihr neues Automation-Konto.
+
+:::image type="content" source="./media/automation-create-standalone-account/automation-account-overview.png" alt-text="Übersichtsseite für das Automation-Konto":::
+
+Nach der erfolgreichen Erstellung des Automation-Kontos werden automatisch verschiedene Ressourcen erstellt. Nachdem diese Ressourcen erstellt sind, können Runbooks gefahrlos gelöscht, wenn Sie diese nicht behalten möchten. Die verwalteten Identitäten können für die Authentifizierung bei Ihrem Konto in einem Runbook verwendet werden und sollten erhalten bleiben, es sei denn, Sie erstellen eine andere Identität oder Sie benötigen sie nicht. In der folgenden Tabelle sind die Ressourcen für das Konto zusammengefasst.
+
+|Ressource | Beschreibung | |------||------| |AzureAutomationTutorial-Runbook | Ein grafisches Beispielrunbook, das veranschaulicht, wie die Authentifizierung mithilfe eines ausführenden Kontos funktioniert. Das Runbook ruft alle Resource Manager-Ressourcen ab. | |AzureAutomationTutorialScript |Ein PowerShell-Beispielrunbook, das veranschaulicht, wie die Authentifizierung mithilfe eines ausführenden Kontos funktioniert. Das Runbook erhält alle Resource Manager-Ressourcen.| |AzureAutomationTutorialPython2Runbook |Ein Python-Beispielrunbook, das veranschaulicht, wie die Authentifizierung mithilfe eines ausführenden Kontos funktioniert. Das Runbook listet alle im Abonnement vorhandenen Ressourcengruppen auf.|
+
+> [!NOTE]
+> Die Tutorialrunbooks wurden nicht aktualisiert, um sich mit einer verwalteten Identität zu authentifizieren. Lesen Sie [Verwenden einer systemseitig zugewiesenen Identität](enable-managed-identity-for-automation.md#give-access-to-azure-resources-by-obtaining-a-token) oder [Verwenden einer benutzerseitig zugewiesenen Identität](add-user-assigned-identity.md#give-identity-access-to-azure-resources-by-obtaining-a-token), um zu erfahren, wie Sie der verwalteten Identität Zugriff auf Ressourcen gewähren und Ihre Runbooks für die Authentifizierung mit einem der beiden Typen von verwalteten Identitäten konfigurieren können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur grafischen Erstellung finden Sie unter [Erstellen grafischer Runbooks in Azure Automation](automation-graphical-authoring-intro.md).
 * Informationen zu den ersten Schritten mit PowerShell-Runbooks finden Sie unter [Tutorial: Erstellen eines PowerShell-Runbooks](./learn/powershell-runbook-managed-identity.md).
 * Informationen zu den ersten Schritten mit PowerShell-Workflow-Runbooks finden Sie unter [Tutorial: Erstellen eines PowerShell-Workflow-Runbooks](learn/automation-tutorial-runbook-textual.md).
 * Informationen zu den ersten Schritten mit Python 3-Runbooks finden Sie unter [Tutorial: Erstellen eines Python 3-Runbooks](learn/automation-tutorial-runbook-textual-python-3.md).

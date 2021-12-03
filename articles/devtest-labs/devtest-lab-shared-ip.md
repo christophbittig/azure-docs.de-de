@@ -1,46 +1,50 @@
 ---
 title: Grundlegendes zu freigegebenen IP-Adressen
-description: Erfahren Sie, wie Azure DevTest Labs freigegebene IP-Adressen verwendet, um die Anzahl von öffentlichen IP-Adressen zu minimieren, die für den Zugriff auf die virtuellen Computer Ihres Labs erforderlich sind.
+description: Erfahren Sie, wie Azure DevTest Labs freigegebene IP-Adressen verwendet, um die Anzahl von öffentlichen IP-Adressen zu minimieren, die für den Zugriff auf die VMs Ihres Labs erforderlich sind.
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: e3d5afd69b898a4f17440a81fc41a065c1c79a3e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/08/2021
+ms.openlocfilehash: 06aac18fb7016a7eb5bee938a4d9988719f86a2f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659776"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056913"
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Grundlegendes zu freigegebenen IP-Adressen in Azure DevTest Labs
 
-Azure DevTest Labs ermöglicht virtuellen Lab-Computern die Verwendung der gleichen öffentlichen IP-Adresse, um die Anzahl von öffentlichen IP-Adressen zu minimieren, die für den Zugriff auf die einzelnen virtuellen Lab-Computer erforderlich sind.  Dieser Artikel beschreibt die Funktionsweise von freigegebenen IP-Adressen und die zugehörigen Konfigurationsoptionen.
+Azure DevTest Labs-VMs können eine öffentliche IP-Adresse gemeinsam nutzen, um die Anzahl der öffentlichen IP-Adressen zu minimieren, die Sie für den Zugriff auf Lab-VMs benötigen.  In diesem Artikel wird beschrieben, wie freigegebene IP-Adressen funktionieren und wie Sie freigegebene IP-Adressen konfigurieren.
 
-## <a name="shared-ip-setting"></a>Einstellung für freigegebene IP-Adressen
+## <a name="shared-ip-settings"></a>Einstellung für freigegebene IP-Adressen
 
-Wenn Sie ein Lab erstellen, wird dieses in einem Subnetz eines virtuellen Netzwerks erstellt.  Beim Erstellen dieses Subnetzes ist die Einstellung **Freigegeben öffentliche IP-Adresse aktivieren** standardmäßig auf *Ja* festgelegt.  Diese Konfiguration erstellt eine einzige öffentliche IP-Adresse für das gesamte Subnetz.  Weitere Informationen zum Konfigurieren virtueller Netzwerke und Subnetze finden Sie unter [Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs](devtest-lab-configure-vnet.md).
+Sie erstellen ein DevTest Labs-Lab in einem virtuellen Netzwerk, das über mindestens ein Subnetz verfügen kann. Für das Standardsubnetz ist **Freigegebene öffentliche IP-Adresse aktivieren** auf **Ja** festgelegt.  Diese Konfiguration erstellt eine einzige öffentliche IP-Adresse für das gesamte Subnetz. Alle VMs in diesem Subnetz verwenden standardmäßig die freigegebene IP-Adresse.
 
-![Neues Labsubnetz](media/devtest-lab-shared-ip/lab-subnet.png)
+Weitere Informationen zum Konfigurieren virtueller Netzwerke und Subnetze finden Sie unter [Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs](devtest-lab-configure-vnet.md).
 
-Für bereits vorhandene Labs können Sie diese Option durch Auswählen von **Konfiguration und Richtlinien > Virtuelle Netzwerke** aktivieren. Wählen Sie in der Liste ein virtuelles Netzwerk und anschließend für ein bestimmtes Subnetz die Option **FREIGEGEBENE ÖFFENTLICHE IP-ADRESSE AKTIVIEREN** aus. Falls Sie keine öffentliche IP-Adresse für mehrere virtuelle Lab-Computer freigeben möchten, können Sie diese Option auch in jedem beliebigen Lab deaktivieren.
+![Screenshot: Einstellung „Freigegebene IP-Adresse“ auf der Seite „Lab-Subnetz“.](media/devtest-lab-shared-ip/lab-subnet.png)
 
-Alle in diesem Lab erstellten virtuellen Computer verwenden standardmäßig eine freigegebene IP-Adresse.  Beim Erstellen des virtuellen Computers können Sie diese Einstellung auf der Seite **Erweiterte Einstellungen** unter **IP-Adresskonfiguration** anzeigen.
+Für vorhandene Labs können Sie diese Option aktivieren oder festlegen, indem Sie im linken Navigationsbereich des Labs **Konfiguration und Richtlinien** und dann unter **Externe Ressourcen** die Option **Virtuelle Netzwerke** auswählen. Wählen Sie ein virtuelles Netzwerk aus der Liste aus, um die Einstellungen für freigegebene IP-Adressen für seine Subnetze anzuzeigen.
 
-![Neuer virtueller Computer](media/devtest-lab-shared-ip/new-vm.png)
+Um die Einstellung zu ändern, wählen Sie ein Subnetz aus der Liste aus, und ändern Sie dann **Freigegebene öffentliche IP-Adresse aktivieren** in **Ja** oder **Nein**.
 
-- **Freigegeben:** Alle als **Freigegeben** erstellten virtuellen Computer werden in einer einzelnen Ressourcengruppe (RG) platziert. Dieser RG wird eine einzelne IP-Adresse zugewiesen, und diese IP-Adresse wird von allen virtuellen Computern in der RG verwendet.
-- **Öffentlich:** Jeder virtuelle Computer, den Sie erstellen, besitzt eine eigene IP-Adresse und wird in seiner eigenen Ressourcengruppe erstellt.
-- **Privat:** Jeder virtuelle Computer, den Sie erstellen, verwendet eine private IP-Adresse. Mit diesem virtuellen Computer kann keine direkte Remotedesktopverbindung über das Internet hergestellt werden.
+Wenn Sie eine VM erstellen, können Sie auf der Seite **Erweiterte Einstellungen** neben **IP-Adresse** auf diese Einstellung zugreifen.
 
-Wenn dem Subnetz ein virtueller Computer mit aktivierter IP-Adressfreigabe hinzugefügt wird, fügt DevTest Labs den virtuellen Computer automatisch einem Load Balancer hinzu und weist eine TCP-Portnummer für die öffentliche IP-Adresse zu, um eine Weiterleitung an den RDP-Port des virtuellen Computers einzurichten.  
+![Screenshot: Einstellung „Freigegebene IP-Adresse“ unter „Erweiterte Einstellungen“ beim Erstellen einer neuen VM.](media/devtest-lab-shared-ip/new-vm.png)
 
-## <a name="using-the-shared-ip"></a>Verwenden der freigegebenen IP-Adresse
+- **Freigegeben**: Alle VMs, die Sie als **Freigegeben** erstellen, gehören derselben Ressourcengruppe an. Der Ressourcengruppe ist eine IP-Adresse zugewiesen, die von allen VMs in der Ressourcengruppe verwendet wird.
+- **Öffentlich**: Jede öffentliche VM verfügt über eine eigene IP-Adresse und Ressourcengruppe.
+- **Privat**: Jede private VM verwendet eine private IP-Adresse. Sie können keine Verbindung mit diesen VMs über das Internet herstellen, indem Sie Remotedesktopprotokoll (RDP) verwenden.
 
-- **Linux-Benutzer:** Verwenden Sie die IP-Adresse oder den vollqualifizierten Domänennamen gefolgt von einem Doppelpunkt und dem Port, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen. In der folgenden Abbildung lautet die RDP-Adresse für die Verbindung mit dem virtuellen Computer `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661`.
+Wenn Sie einem Subnetz eine VM mit freigegebener IP-Adresse hinzufügen, fügt DevTest Labs die VM automatisch einem Lastenausgleich hinzu und weist der VM eine TCP-Portnummer für die öffentliche IP-Adresse zu. Die Portnummer leitet an den SSH-Port (Secure Shell) auf der VM weiter.
 
-  ![Beispiel für einen virtuellen Computer](media/devtest-lab-shared-ip/vm-info.png)
+## <a name="use-a-shared-ip"></a>Verwenden einer freigegebenen IP-Adresse
 
-- **Windows-Benutzer:** Verwenden Sie im Azure-Portal die Schaltfläche **Verbinden**, um eine vorkonfigurierte RDP-Datei herunterzuladen und auf den virtuellen Computer zuzugreifen.
+- **Windows-Benutzer**: Wählen Sie im Azure-Portal die Schaltfläche **Verbinden** auf der Seite **Übersicht** der VM aus, um eine vorkonfigurierte RDP-Datei herunterzuladen und auf die VM zuzugreifen.
+
+- **Linux-Benutzer**: SSH (Secure Shell) stellt eine Verbindung mit der VM her, indem die IP-Adresse oder der vollqualifizierte Domänennamen gefolgt von einem Doppelpunkt und der Portnummer verwendet wird. Der folgende Screenshot zeigt beispielsweise die SSH-Verbindungsadresse `contosolab21000000000000.westus3.cloudapp.azure.com:65013`.
+
+  ![Screenshot: RDP- und SSH-Verbindungsoptionen auf der Seite „Übersicht“ einer VM.](media/devtest-lab-shared-ip/vm-info.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md)
-* [Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs](devtest-lab-configure-vnet.md)
+- [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md)
+- [Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs](devtest-lab-configure-vnet.md)

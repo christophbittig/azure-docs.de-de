@@ -33,7 +33,7 @@ groups:
   - id: postgres-single-server
     title: Einzelner Server
   - id: postgres-flexible-server
-    title: Flexible Server (Vorschau)
+    title: Flexible Server
 - id: programming-languages-set-one
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -166,6 +166,14 @@ groups:
     title: JavaScript
   - id: programming-language-java
     title: Java
+  - id: rest-api
+    title: REST-API
+- id: usage-custom-language-features
+  title: Verwendungsmethoden
+  prompt: Auswählen Ihrer bevorzugten Verwendungsmethode
+  pivots:
+  - id: language-studio
+    title: Language Studio
   - id: rest-api
     title: REST-API
 - id: programming-languages-set-ten
@@ -818,16 +826,28 @@ groups:
     title: C#
   - id: programming-language-python
     title: Python
-- id: app-service-ide
+- id: app-service-vscode-cli-portal
   title: Entwicklungsumgebung
   prompt: Wählen einer Entwicklungsumgebung
+  pivots:
+  - id: development-environment-vscode
+    title: Visual Studio Code
+  - id: development-environment-cli
+    title: Befehlszeilenschnittstelle
+  - id: development-environment-azure-portal
+    title: Azure-Portal
+- id: app-service-ide
+  title: Entwicklungsumgebung
+  prompt: Auswählen einer Bereitstellungsumgebung
   pivots:
   - id: development-environment-vs
     title: Visual Studio
   - id: development-environment-vscode
     title: Visual Studio Code
   - id: development-environment-cli
-    title: Befehlszeilenschnittstelle
+    title: Azure-Befehlszeilenschnittstelle
+  - id: development-environment-ps
+    title: Azure PowerShell
 - id: app-service-ide-oss
   title: Entwicklungsumgebung
   prompt: Wählen einer Entwicklungsumgebung
@@ -1109,10 +1129,18 @@ groups:
   - id: azure-arc
     title: Azure Arc
   - id: azure-portal
-    title: Security Center-Portalseiten
+    title: Portalseiten von Defender für Cloud
+- id: connect-aws-accounts
+  title: Hinzufügen eines AWS-Kontos
+  prompt: Wie stellen Sie eine Verbindung mit dem AWS-Konto her?
+  pivots:
+  - id: env-settings
+    title: Umgebungseinstellungen
+  - id: classic-connector
+    title: Klassischer Connector
 - id: manage-asc-initiatives
-  title: Verwalten von Security Center-Initiativen
-  prompt: Wie verwalten Sie Ihre Security Center-Initiativen?
+  title: Verwalten von Defender für Cloud-Initiativen
+  prompt: Wie können Sie Ihre Defender für Cloud-Initiativen verwalten?
   pivots:
   - id: azure-portal
     title: Im Azure-Portal
@@ -1196,6 +1224,18 @@ groups:
     title: Go
   - id: programming-language-ruby
     title: Ruby
+- id: custom-qna-quickstart
+  title: Programmiersprachen
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: studio
+    title: Language Studio
+  - id: rest
+    title: REST
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
 - id: azure-maps-android
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -1298,6 +1338,20 @@ groups:
     title: Azure CLI
   - id: identity-mi-methods-sub-powershell
     title: PowerShell
+- id: programming-languages-set-twenty-eight
+  title: Programmiersprachen
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-go
+    title: Go
 - id: iot-dps-set1
   title: Auswählen einer Programmiersprache
   prompt: Auswählen einer Programmiersprache
@@ -1342,10 +1396,30 @@ groups:
     title: IAR EWARM
   - id: iot-toolset-mplab
     title: MPLAB
+- id: backup-client-powershelltier-clitier-portaltier
+  title: Clients
+  prompt: Auswählen eines Clients
+  pivots:
+  - id: client-powershelltier
+    title: PowerShell
+  - id: client-clitier
+    title: Befehlszeilenschnittstelle (CLI)
+  - id: client-portaltier
+    title: Azure-Portal
+- id: iot-develop-nxp-toolset
+  title: IoT-Geräte
+  prompt: Auswählen einer Jenkins-Buildumgebung
+  pivots:
+  - id: iot-toolset-cmake
+    title: CMake
+  - id: iot-toolset-iar-ewarm
+    title: IAR EWARM
+  - id: iot-toolset-mcuxpresso
+    title: MCUXpresso
 metadata:
-  ms.openlocfilehash: 8f94e077e2983d0b3b8a71729d3d27522f3ee961
-  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+  ms.openlocfilehash: ba085bfaa2acbd523c039bf91f02b3d1c88e92a8
+  ms.sourcegitcommit: dcf3424d7149fceaea0340eb0657baa2c27882a5
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129274745"
+  ms.lasthandoff: 11/30/2021
+  ms.locfileid: "133265384"

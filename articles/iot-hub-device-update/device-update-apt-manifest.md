@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/17/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 878748fcfc9b096e340b53c06969962af99f603f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 24c0d04b6a29b813dc23604594ca4b1b1235dc37
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561167"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373211"
 ---
 # <a name="device-update-apt-manifest"></a>APT-Manifest für Device Update
 
@@ -21,7 +21,7 @@ Das APT Manifest ist eine JSON-Datei, in der die vom APT-Updatehandler benötigt
 
 ## <a name="overview"></a>Übersicht
 
-Wenn ein APT-Manifest als Update an einen Device Update-Agent geliefert wird, verarbeitet der Agent das Manifest und führt die erforderlichen Vorgänge aus. Diese Vorgänge umfassen das Herunterladen und Installieren der in der APT-Manifestdatei angegebenen Pakete und ihrer Abhängigkeiten.
+Wenn ein APT-Manifest als Update an einen Device Update-Agent geliefert wird, verarbeitet der Agent das Manifest und führt die erforderlichen Vorgänge aus. Diese Vorgänge umfassen das Herunterladen und Installieren der in der APT-Manifestdatei angegebenen Pakete und ihrer Abhängigkeiten von einem bestimmten Repository.
 
 Device Update unterstützt den APT-Updatetyp und den APT-Updatehandler. Diese Unterstützung ermöglicht es dem Device Update-Agent, die installierten Debian-Pakete auszuwerten und die erforderlichen Pakete zu aktualisieren. 
 

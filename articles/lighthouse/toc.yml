@@ -101,11 +101,11 @@
             - name: 'Bereitstellen einer Richtlinie, die gewartet werden kann'
               displayName: 'deployIfNotExists, modify, managed identities, managed identity'
               href: ./how-to/deploy-policy-remediation.md
-        - name: Azure Sentinel-Integration
+        - name: Microsoft Sentinel-Integration
           href: ./how-to/manage-sentinel-workspaces.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/managedservices
     - name: Azure PowerShell
       href: /powershell/module/az.managedservices#managed_services

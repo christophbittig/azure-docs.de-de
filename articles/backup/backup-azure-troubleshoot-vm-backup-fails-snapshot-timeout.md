@@ -2,14 +2,16 @@
 title: Beheben von Probleme mit Agents und Erweiterungen
 description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Azure Backup-Fehlern in Verbindung mit dem Agent, der Erweiterung und Datenträgern.
 ms.topic: troubleshooting
-ms.date: 05/25/2021
+ms.date: 11/10/2021
 ms.service: backup
-ms.openlocfilehash: cefb166363677e0d4a7c52eae967b92a8216c825
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+author: v-amallick
+ms.author: v-amallick
+ms.openlocfilehash: 464b2e6ed2c968ea57d5396570d8a928d9d9bace
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264635"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301948"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -129,6 +131,9 @@ Um dieses Problem zu beheben, entfernen Sie die Sperre für die Ressourcengruppe
 **Fehlermeldung**: Backup verfügt nicht über ausreichende Berechtigungen für den Schlüsseltresor zur Sicherung verschlüsselter virtueller Computer. <br>
 
 Damit der Sicherungsvorgang auf verschlüsselten virtuellen Computern erfolgreich ist, benötigt er Berechtigungen zum Zugriff auf den Schlüsseltresor. Berechtigungen können über das [Azure-Portal](./backup-azure-vms-encryption.md) oder mithilfe von [PowerShell](./backup-azure-vms-automation.md#enable-protection) festgelegt werden.
+
+>[!Note]
+>Wenn die erforderlichen Berechtigungen für den Zugriff auf den Key Vault (Schlüsseltresor) bereits festgelegt wurden, wiederholen Sie den Vorgang nach kurzer Zeit.
 
 ## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork: Snapshot operation failed due to no network connectivity on the virtual machine (Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer).
 

@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 07/13/2021
-ms.openlocfilehash: c39b86c6417d2cae8d303f7cae0aa523e223edaa
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 10/21/2021
+ms.openlocfilehash: 09403aa97df2fe0ab451eee3194b1d6e3b239ab2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866940"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249436"
 ---
 # <a name="co-sell-requirements"></a>Co-Selling-Anforderungen
 
@@ -78,7 +78,7 @@ Nachdem der Status „Co-Sell Ready“ erreicht wurde, müssen drei zusätzliche
 
 Anforderung 1: Erreichen Sie Folgendes:
 
-- Erzielen Sie auf _Organisationsebene_ den Schwellenwert von mindestens 100.000 USD Azure-Umsatzverbrauch in den letzten 12 Monaten. Dieser Schwellenwert kann durch eine Kombination mehrerer Azure-Angebote erreicht werden. Wenn das Angebot im kommerziellen Marketplace transaktionsfähig ist, können Sie diese Anforderung erfüllen, indem Sie einen abgerechneten Umsatz von 100.000 USD erzielen.
+- Erzielen Sie auf _Organisationsebene_ den Schwellenwert von mindestens 100.000 USD Azure-Umsatzverbrauch in den letzten 12 Monaten. Dieser Schwellenwert kann durch eine Kombination mehrerer Azure-Angebote erreicht werden. Wenn das Angebot im kommerziellen Marketplace transaktionsfähig ist, können Sie diese Anforderung erfüllen, indem Sie einen abgerechneten Umsatz von 100.000 USD in den letzten 12 Monaten erzielen.
 
 Anforderung 2: Bestehen Sie die technische Prüfung von Microsoft für Azure-basierte Lösungen:
 - Bei der technischen Prüfung muss festgestellt werden, dass mehr als 50 % der Infrastruktur Ihres Angebots wiederholbaren IP-Code in Azure verwendet. Beachten Sie, dass transaktionsfähige Angebote für Azure-VMs und Azure-Anwendungen im kommerziellen Marketplace diese Anforderung standardmäßig erfüllen.

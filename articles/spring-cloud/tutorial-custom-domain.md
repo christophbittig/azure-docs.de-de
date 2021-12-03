@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: bbead4e25df9646c08ec605694cfa7514b011522
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 73f6c8217b6d630a1e31b53d54da56e5d30582a6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015401"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488960"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Tutorial: Zuordnen einer vorhandenen benutzerdefinierten Domäne zu Azure Spring Cloud
 
@@ -24,7 +24,7 @@ Zertifikate dienen zur Verschlüsselung von Webdatenverkehr. Diese TLS-/SSL-Zert
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Eine in Azure Spring Cloud bereitgestellte Anwendung. Lesen Sie dazu entweder den Artikel [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](./quickstart.md), oder verwenden Sie eine bereits vorhandene App.
+* Eine in Azure Spring Cloud bereitgestellte Anwendung (siehe [Schnellstart: Bereitstellen Ihrer ersten Anwendung in Azure Spring Cloud](./quickstart.md), oder verwenden Sie eine vorhandene App)
 * Ein Domänenname mit Zugriff auf die DNS-Registrierung für den Domänenanbieter (beispielsweise GoDaddy).
 * Ein privates Zertifikat (d. h. ihr selbst signiertes Zertifikat) von einem Drittanbieter. Das Zertifikat muss der Domäne entsprechen.
 * Eine bereitgestellte Instanz von [Azure Key Vault](../key-vault/general/overview.md).
@@ -173,7 +173,7 @@ Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen i
 ![Seite der DNS-Einträge](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Zuordnen Ihrer benutzerdefinierten Domäne zur Azure Spring Cloud-App
-Sollten Sie über keine Anwendung in Azure Spring Cloud verfügen, gehen Sie wie unter [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](./quickstart.md) vor.
+Wenn Sie keine Anwendung in Azure Spring Cloud haben, befolgen Sie die Anweisungen unter [Schnellstart: Bereitstellen Ihrer ersten Anwendung in Azure Spring Cloud](./quickstart.md).
 
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Navigieren Sie zur Anwendungsseite.

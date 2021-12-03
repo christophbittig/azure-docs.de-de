@@ -8,12 +8,12 @@ ms.date: 07/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f995b4b17330f6469f05c5399c2129fa7abc33bf
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9823470a097035134f152002c35782aed2210afb
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462552"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132180151"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Aktivieren der Azure Active Directory Domain Services-Authentifizierung über Azure Files
 
@@ -134,18 +134,18 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 Wenn Sie die Azure AD-Authentifizierung über SMB mithilfe der Azure-Befehlszeilenschnittstelle aktivieren möchten, installieren Sie die neueste Version der Befehlszeilenschnittstelle (Version 2.0.70 oder höher). Weitere Informationen zum Installieren der Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-Rufen Sie zum Erstellen eines neuen Speicherkontos [az storage account create](/cli/azure/storage/account#az_storage_account_create) auf, und legen Sie die Eigenschaft `--enable-files-aadds` auf **true** fest. Denken Sie im folgenden Beispiel daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen. (Wenn Sie das vorherige Vorschaumodul verwendet haben, lautet der Parameter für die Featureaktivierung **file-aad**.)
+Um ein neues Speicherkonto zu erstellen, rufen Sie [az storage account create](/cli/azure/storage/account#az_storage_account_create) auf und setzen das Argument `--enable-files-aadds`. Denken Sie im folgenden Beispiel daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen. (Wenn Sie das vorherige Vorschaumodul verwendet haben, lautet der Parameter für die Featureaktivierung **file-aad**.)
 
 ```azurecli-interactive
 # Create a new storage account
-az storage account create -n <storage-account-name> -g <resource-group-name> --enable-files-aadds $true
+az storage account create -n <storage-account-name> -g <resource-group-name> --enable-files-aadds
 ```
 
 Verwenden Sie den folgenden Befehl, um diese Funktion für vorhandene Speicherkonten zu aktivieren:
 
 ```azurecli-interactive
 # Update a new storage account
-az storage account update -n <storage-account-name> -g <resource-group-name> --enable-files-aadds $true
+az storage account update -n <storage-account-name> -g <resource-group-name> --enable-files-aadds
 ```
 ---
 

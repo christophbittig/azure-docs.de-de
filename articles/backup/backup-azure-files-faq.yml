@@ -5,12 +5,12 @@ metadata:
   ms.date: 10/08/2021
   ms.topic: article
   ms.service: backup
-  ms.openlocfilehash: 67ee18a0ae7654ad9ff704e66d4e0a70d00dbb4f
-  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.openlocfilehash: b85496805337da460a9512dc69813240f1022800
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/09/2021
-  ms.locfileid: "129714193"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132290189"
 title: Fragen zum Sichern von Azure Files
 summary: >
   In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Sie können auch auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-backup.html) Fragen zum Azure Backup-Dienst posten.
@@ -74,6 +74,10 @@ sections:
       Kann ich PowerShell zum Konfigurieren/Verwalten/Wiederherstellen von Sicherungen von Azure-Dateifreigaben verwenden?
     answer: >
       Ja. Informationen hierzu finden Sie in der ausführlichen Dokumentation unter [diesem Link](backup-azure-afs-automation.md).
+  - question: >
+      Warum sind in MB übertragene Daten für die Sicherungsaufträge 0?
+    answer: >
+      In der aktuellen Sicherungslösung für Azure Files werden keine Daten in den Tresor übertragen, und Momentaufnahmen werden im gleichen Speicherkonto wie die gesicherte Dateifreigabe gespeichert. Daher betragen die in MB übertragenen Daten 0.
   - question: >
       Warum repliziert Azure Files Sicherungen nicht basierend auf der Einstellung für den Speicherreplikationstyp des Tresors?
     answer: >

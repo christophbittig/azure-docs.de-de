@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate
-ms.openlocfilehash: 86d6fa3c7c5552c0bb48844e543c20dc3493b15e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 89a65c133a2478b38755b05a8c2fe5d1bb6623a7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361493"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131081294"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Übersicht über die Migrationsanleitung für Azure Deutschland
 

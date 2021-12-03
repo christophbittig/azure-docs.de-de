@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 6f9a9f8e6d2a279871ded3dff614be99dd2901df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81766755fcab3164a83ee8d336c8173259448534
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88271089"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132302057"
 ---
 # <a name="additional-documentation"></a>Zusätzliche Dokumentation
 
@@ -21,15 +21,15 @@ Dieser Artikel enthält Links zu zusätzlichen Dokumentationen zur Verwaltungsob
 
 Weitere Dokumente zum Avere-Cluster finden Sie auf der Website unter <https://azure.github.io/Avere/>. Diese Dokumente können Ihnen helfen, die Funktionen des Clusters und die Konfiguration seiner Einstellungen zu verstehen.
 
-* Das [Handbuch zur FXT-Clustererstellung](<https://azure.github.io/Avere/#fxt_cluster>) ist für Cluster konzipiert, die aus physischen Hardwareknoten bestehen, aber einige Informationen im Dokument sind auch für vFXT-Cluster relevant. Insbesondere neue vFXT-Clusteradministratoren können von den folgenden Abschnitten profitieren:
-  * In [Anpassen von Support- und Überwachungseinstellungen](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) wird erläutert, wie Sie die Uploadeinstellungen des Supports anpassen und die Remoteüberwachung aktivieren.
-  * [Konfigurieren von VServern und globalen Namespaces](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>) enthält Informationen zum Erstellen eines clientseitigen Namespace.
-  * In [Konfigurieren von DNS für den Avere-Cluster](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) wird erläutert, wie Sie Roundrobin-DNS konfigurieren.
-  * In [Hinzufügen von Back-End-Speicher](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) wird beschrieben, wie Sie Kernspeichereinheiten hinzuzufügen.
+* Das [Handbuch zur FXT-Clustererstellung](https://azure.github.io/Avere/#fxt_cluster) ist für Cluster konzipiert, die aus physischen Hardwareknoten bestehen, aber einige Informationen im Dokument sind auch für vFXT-Cluster relevant. Insbesondere neue vFXT-Clusteradministratoren können von den folgenden Abschnitten profitieren:
+  * In [Anpassen von Support- und Überwachungseinstellungen](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support) wird erläutert, wie Sie die Uploadeinstellungen des Supports anpassen und die Remoteüberwachung aktivieren.
+  * [Konfigurieren von VServern und globalen Namespaces](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver) enthält Informationen zum Erstellen eines clientseitigen Namespace.
+  * In [Konfigurieren von DNS für den Avere-Cluster](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview) wird erläutert, wie Sie Roundrobin-DNS konfigurieren.
+  * In [Hinzufügen von Back-End-Speicher](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer) wird beschrieben, wie Sie Kernspeichereinheiten hinzuzufügen.
 
-* Das [Handbuch zur Clusterkonfiguration](<https://azure.github.io/Avere/#operations>) ist eine vollständige Referenz der Einstellungen und Optionen für einen Avere-Cluster. Ein vFXT-Cluster verwendet eine Teilmenge dieser Optionen, aber die meisten der Konfigurationsseiten gelten dennoch.
+* Das [Handbuch zur Clusterkonfiguration](https://azure.github.io/Avere/#operations) ist eine vollständige Referenz der Einstellungen und Optionen für einen Avere-Cluster. Ein vFXT-Cluster verwendet eine Teilmenge dieser Optionen, aber die meisten der Konfigurationsseiten gelten dennoch.
 
-* Im [Dashboard-Handbuch](<https://azure.github.io/Avere/#operations>) wird erläutert, wie die Features zur Clusterüberwachung der Avere-Systemsteuerung verwendet werden.
+* Im [Dashboard-Handbuch](https://azure.github.io/Avere/#operations) wird erläutert, wie die Features zur Clusterüberwachung der Avere-Systemsteuerung verwendet werden.
 
 ## <a name="vfxt-creation-and-management-documentation"></a>Dokumentation zur Erstellung und Verwaltung von vFXT
 

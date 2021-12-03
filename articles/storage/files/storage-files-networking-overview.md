@@ -7,17 +7,17 @@ ms.topic: overview
 ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8771c79aa788627fb73745e98e924bbaa3ab1236
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: d3f3bb466156b08ae90561d5e02e5b5ddf469755
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113224677"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518506"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files – Überlegungen zum Netzwerkbetrieb 
 Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstellen:
 
-- Direkter Zugriff auf die Freigabe über das SMB-Protokoll (Server Message Block), das NFS-Protokoll (Network File System, Vorschau) oder das REST-Protokoll „File“. Dieses Zugriffsmuster kommt primär dann zum Einsatz, wenn so wenige lokale Server wie möglich einbezogen werden sollen.
+- Direkter Zugriff auf die Freigabe über das SMB-Protokoll (Server Message Block), das NFS-Protokoll (Network File System) oder das REST-Protokoll „File“. Dieses Zugriffsmuster kommt primär dann zum Einsatz, wenn so wenige lokale Server wie möglich einbezogen werden sollen.
 - Sie erstellen mithilfe der Azure-Dateisynchronisierung einen Cache der Azure-Dateifreigabe auf einem lokalen Server (oder in einer Azure-VM) und greifen auf dem lokalen Server über ein Protokoll Ihrer Wahl (SMB, NFS, FTPS usw.) auf die gewünschten Daten der Dateifreigabe zu. Dieses Zugriffsmuster ist praktisch, weil es die Vorteile einer lokalen Leistung mit serverlos anfügbaren Diensten im Cloudmaßstab – z. B. Azure Backup – kombiniert.
 
 In diesem Artikel wird beschrieben, wie Sie das Netzwerk konfigurieren, wenn Ihr Anwendungsfall einen direkten Zugriff auf die Azure-Dateifreigabe statt der Nutzung der Azure-Dateisynchronisierung erfordert. Weitere Informationen zu Überlegungen zum Netzwerkbetrieb für eine Bereitstellung mit der Azure-Dateisynchronisierung finden Sie unter [Azure Files – Überlegungen zum Netzwerkbetrieb](../file-sync/file-sync-networking-overview.md).
@@ -25,7 +25,7 @@ In diesem Artikel wird beschrieben, wie Sie das Netzwerk konfigurieren, wenn Ihr
 Die Netzwerkkonfiguration für Azure-Dateifreigaben wird im Azure-Speicherkonto vorgenommen. Ein Speicherkonto ist ein Verwaltungskonstrukt, das einen gemeinsam genutzten Pool mit Speicherplatz darstellt, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können. Speicherkonten machen verschiedene Einstellungen verfügbar, die zum Schutz des Netzwerkzugriffs auf Ihre Dateifreigaben beitragen. Hierzu zählen Netzwerkendpunkte, Speicherkonto-Firewalleinstellungen sowie Verschlüsselung während der Übertragung. 
 
 > [!Important]  
-> Azure Files unterstützt mehrere Netzwerkroutingoptionen. Die Standardoption, das Microsoft-Routing, kann mit allen Azure Files-Konfigurationen verwendet werden. Die Internetroutingoption bietet keine Unterstützung für Szenarien mit AD-Domänenbeitritt oder Azure-Dateisynchronisierung.
+> Azure Files unterstützt mehrere Netzwerkroutingoptionen. Die Standardoption, das Microsoft-Routing, kann bei allen Azure Files-Konfigurationen verwendet werden. Die Internetroutingoption bietet keine Unterstützung für Szenarien mit AD-Domänenbeitritt oder Azure-Dateisynchronisierung.
 
 Wir empfehlen Ihnen, vor diesem konzeptionellen Leitfaden den Artikel [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md) zu lesen.
 

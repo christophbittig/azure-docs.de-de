@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: c77ec3cc1abd0f27efc6720d007118346b3def03
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: 388a2a9766b5079b263556f52b29c551e03b34f4
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130253343"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131435660"
 landingContent:
 - title: Informationen zu App Service
   linkLists:
@@ -56,8 +56,6 @@ landingContent:
       url: configure-ssl-bindings.md
     - text: Ausführen der App in bereitgestellten Umgebungen
       url: deploy-staging-slots.md
-    - text: Sicheres Zugreifen auf Speicher und Microsoft Graph
-      url: scenario-secure-app-overview.md
   - linkListType: how-to-guide
     links:
     - text: Herstellen einer Verbindung mit einem Linux-Container über SSH
@@ -102,6 +100,24 @@ landingContent:
       url: tutorial-python-postgresql-app.md
     - text: Ruby-App (Rails) mit PostgreSQL
       url: tutorial-ruby-postgres-app.md
+- title: Sicher
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sicherheit in Azure App Service
+      url: overview-security.md
+  - linkListType: tutorial
+    links:
+    - text: Geheimnisloser SQL-Datenbankzugriff mit verwalteten Identitäten
+      url: tutorial-connect-msi-sql-database.md
+    - text: Geheimnisloser Zugriff auf Speicher und Microsoft Graph mit verwalteten Identitäten
+      url: scenario-secure-app-overview.md
+    - text: Verbinden Sie sich sicher mit Diensten mit Key-Vault-Geheimnissen
+      url: tutorial-connect-msi-key-vault.md
+    - text: Isolieren von Netzwerkdatenverkehr für Back-End-Konnektivität
+      url: tutorial-networking-isolate-vnet.md
+    - text: Authentifizieren von Benutzern
+      url: tutorial-auth-aad.md
 - title: Verwalten und Integrieren
   linkLists:
   - linkListType: concept
@@ -110,10 +126,6 @@ landingContent:
       url: app-service-plan-manage.md
   - linkListType: tutorial
     links:
-    - text: Sichern des Zugriffs auf Ressourcen mit verwalteten Identitäten
-      url: app-service-web-tutorial-connect-msi.md
-    - text: Authentifizieren von Benutzern
-      url: tutorial-auth-aad.md
     - text: Hosten einer RESTful-API mit CORS
       url: app-service-web-tutorial-rest-api.md
     - text: Hinzufügen eines CDN zur Anwendung
@@ -148,13 +160,13 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
-    - text: App Service-Integration in Azure Monitor (Vorschau)
+    - text: App Service-Integration in Azure Monitor
       url: https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html
-    - text: Protokolltypen für die Azure Monitor-Integration (Vorschau)
+    - text: Protokolltypen für die Azure Monitor-Integration
       url: https://azure.github.io/AppService/2020/06/25/New-Logs-Available-for-Azure-Monitor-Integration.html
   - linkListType: tutorial
     links:
-    - text: Behandeln von Fehlern bei Azure Monitor (Vorschau)
+    - text: Behandeln von Fehlern bei Azure Monitor
       url: tutorial-troubleshoot-monitor.md
   - linkListType: how-to-guide
     links:

@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 69846496c05716cc00ca782c979bc3c970537b0b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 243139219259c3b4be95010df988cf30256ca204
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029582"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484111"
 ---
 # <a name="how-to-prepare-data-and-define-a-schema"></a>Vorbereiten von Daten und Definieren eines Schemas
 
-Zum Erstellen eines benutzerdefinierten Klassifizierungsmodells benötigen Sie Qualitätsdaten, um es zu trainieren. In diesem Artikel wird beschrieben, wie Sie bei der Auswahl und Vorbereitung Ihrer Daten und beim Definieren eines Schemas vorgehen sollten. Ein Schema definiert die Klassen, in die Ihr Modell Ihren Text zur Laufzeit klassifizieren muss, und ist der erste Schritt bei der [Entwicklung einer benutzerdefinierten Klassifizierungsanwendung](../overview.md#application-development-lifecycle).
+Zum Erstellen eines benutzerdefinierten Klassifizierungsmodells benötigen Sie Qualitätsdaten, um es zu trainieren. In diesem Artikel wird beschrieben, wie Sie bei der Auswahl und Vorbereitung Ihrer Daten und beim Definieren eines Schemas vorgehen sollten. Ein Schema definiert die Klassen, in die Ihr Modell Ihren Text zur Laufzeit klassifizieren muss, und ist der erste Schritt bei der [Entwicklung einer benutzerdefinierten Klassifizierungsanwendung](../overview.md#project-development-lifecycle).
 
 
 ## <a name="data-selection"></a>Datenauswahl
@@ -47,7 +47,7 @@ Als Voraussetzung für die Erstellung eines Projekts zur benutzerdefinierten Tex
 * [Erstellen und Hochladen von Dateien aus Azure](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
 * [Erstellen und Hochladen von Dateien mit Azure Storage-Explorer](/azure/vs-azure-tools-storage-explorer-blobs)
 
-Sie können nur `.txt`- Dateien für benutzerdefinierten Text verwenden. Wenn Ihre Daten in einem anderen Format vorliegen, können Sie den [Parse-Befehl von CLUtils](https://github.com/microsoft/CogSLanguageUtilities/blob/main/CLUtils/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md) verwenden, um das Dateiformat zu ändern.
+Sie können nur `.txt`- Dateien für benutzerdefinierten Text verwenden. Wenn Ihre Daten in einem anderen Format vorliegen, können Sie den [Parse-Befehl von CLUtils](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md) verwenden, um das Dateiformat zu ändern.
 
  Sie können ein mit Anmerkungen versehenes Dataset oder ein nicht kommentiertes Dataset hochladen und Ihre Daten in Language Studio [kennzeichnen](../how-to/tag-data.md). 
  

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: dd32e421b678b9cfc6277bdc593a06f93fab447f
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: ccd2e196f1e1a44a79f0d4f9f1f07e4a69f2b974
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136110"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053120"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault – Sicherheit
 
@@ -37,8 +37,11 @@ Mit dem Azure Private Link-Dienst können Sie über einen privaten Endpunkt in I
 
 - Beim Key Vault-Front-End (Datenebene) handelt es sich um einen mehrinstanzenfähigen Server. Dies bedeutet, dass die Schlüsseltresore verschiedener Kunden dieselbe öffentliche IP-Adresse gemeinsam nutzen können. Für die Gewährleistung von Isolation wird jede HTTP-Anforderung unabhängig von anderen Anforderungen authentifiziert und autorisiert.
 - Sie können ältere TLS-Versionen zwar ermitteln, um Sicherheitsrisiken zu melden, da die öffentliche IP-Adresse jedoch von mehreren Kunden gemeinsam genutzt wird, ist es dem Key Vault-Team nicht möglich, ältere TLS-Versionen für einzelne Schlüsseltresore auf Transportebene zu deaktivieren.
-- Das HTTPS-Protokoll ermöglicht es dem Client, an der TLS-Aushandlung teilzunehmen. **Clients können die neueste TLS-Version erzwingen.** Wenn dies der Fall ist, wird für die gesamte Verbindung der entsprechende Ebenenschutz verwendet. Dass Key Vault weiterhin ältere TLS-Versionen unterstützt, stellt keine Beeinträchtigung für die Sicherheit von Verbindungen dar, die neuere TLS-Versionen verwenden.
+- Das HTTPS-Protokoll ermöglicht es dem Client, an der TLS-Aushandlung teilzunehmen. **Clients können die neueste TLS-Version erzwingen.** Wenn dies der Fall ist, wird für die gesamte Verbindung der entsprechende Ebenenschutz verwendet. Anwendungen, die mit Azure Active Directory kommunizieren oder sich bei Azure Active Directory authentifizieren, funktionieren möglicherweise nicht wie erwartet, wenn sie NICHT in der Lage sind, TLS 1.2 oder die aktuelle Version für die Kommunikation zu verwenden.
 - Trotz bekannter Sicherheitsrisiken im TLS-Protokoll gibt es keinen bekannten Angriff, bei dem ein böswilliger Agent Informationen aus Ihrem Schlüsseltresor extrahieren kann, wenn ein Angreifer eine Verbindung mit einer TLS-Version initiiert, die Sicherheitsrisiken aufweist. Der Angreifer muss sich trotzdem authentifizieren und autorisiert werden, und solange berechtigte Clients Verbindungen immer mit den aktuellen TLS-Versionen herstellen, ist es nicht möglich, dass Anmeldeinformationen aufgrund von Sicherheitsrisiken in älteren TLS-Versionen kompromittiert werden.
+
+> [!NOTE]
+> Stellen Sie in Azure Key Vault sicher, dass die Anwendung, die auf den Keyvault-Dienst zugreift, auf einer Plattform ausgeführt wird, die TLS 1.2 oder die aktuelle Version unterstützt. Wenn die Anwendung von .NET Framework abhängig ist, sollte sie ebenfalls aktualisiert werden. Sie können auch die in [diesem Artikel](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment) erwähnten Registrierungsänderungen vornehmen, um die Verwendung von TLS 1.2 auf Betriebssystemebene und für .NET Framework explizit zu aktivieren.
 
 ## <a name="key-vault-authentication-options"></a>Key Vault-Authentifizierungsoptionen
 
@@ -73,6 +76,12 @@ Ein Sicherheitsprinzipal ist ein Objekt, das Benutzer, Gruppen, Dienste oder Anw
 - Ein **Dienstprinzipal** ist ein Typ von Sicherheitsprinzipal, der für eine Anwendung oder einen Dienst steht und sozusagen ein Codeausschnitt anstelle eines Benutzers oder einer Gruppe ist. Die Objekt-ID eines Dienstprinzipals wird als dessen **Client-ID** bezeichnet und verhält sich wie der Benutzername. Der **geheime Clientschlüssel** oder das **Zertifikat** des Dienstprinzipals verhält sich wie sein Kennwort. Viele Azure-Dienste unterstützen das Zuweisen von [Verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) mit automatisierter Verwaltung von **Client-ID** und **Zertifikat**. „Verwaltete Identität“ ist die sicherste und empfohlene Option zum Authentifizieren in Azure.
 
 Weitere Informationen zur Authentifizierung bei Key Vault finden Sie unter [Authentifizieren bei Azure Key Vault](authentication.md).
+
+## <a name="conditional-access"></a>Bedingter Zugriff 
+
+Key Vault bietet Unterstützung für Azure Active Directory-Richtlinien für bedingten Zugriff. Mithilfe von Richtlinien für bedingten Zugriff können Sie bei Bedarf die richtigen Zugriffssteuerungen auf Key Vault anwenden, um die Sicherheit Ihrer Organisation zu gewährleisten, und behindern die Benutzer*innen ansonsten nicht.
+
+Weitere Informationen finden Sie unter [Übersicht über den bedingten Zugriff](../../active-directory/conditional-access/overview.md).
 
 ## <a name="privileged-access"></a>Privilegierter Zugriff
 

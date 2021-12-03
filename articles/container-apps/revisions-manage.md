@@ -1,19 +1,19 @@
 ---
 title: Verwalten von Revisionen in Azure Container Apps (Vorschau)
 description: Verwalten von Revisionen und Datenverkehrstrennung in Azure Container Apps
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 10/25/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5f90deaa5e3b8e2aaf067f218638390a089142b4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a1818ba143e05656cb94f70f0c849fc2dd39ba96
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096000"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026366"
 ---
 # <a name="manage-revisions-azure-container-apps-preview"></a>Verwalten von Revisionen in Azure Container Apps (Vorschau)
 
@@ -34,7 +34,7 @@ az containerapp revision list \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp revision list `
   --name <APPLICATION_NAME> `
   --resource-group <RESOURCE_GROUP_NAME> `
@@ -60,7 +60,7 @@ az containerapp revision show \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp revision show `
   --name <REVISION_NAME> `
   --app <CONTAINER_APP_NAME> `
@@ -86,7 +86,7 @@ az containerapp update \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp update `
   --name <APPLICATION_NAME> `
   --resource-group <RESOURCE_GROUP_NAME> `
@@ -138,7 +138,7 @@ az containerapp revision deactivate \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp revision deactivate `
   --name <REVISION_NAME> `
   --app <CONTAINER_APP_NAME> `
@@ -164,7 +164,7 @@ az containerapp revision restart \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp revision restart `
   --name <REVISION_NAME> `
   --app <APPLICATION_NAME> `

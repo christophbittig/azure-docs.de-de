@@ -6,19 +6,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 12/08/2020
-ms.openlocfilehash: 5fba64beff10f59be42776cc87cf6f37922295dd
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 10/26/2021
+ms.openlocfilehash: 9769e52457a65ab3b37135cdbe7d7fdd78e1f1e6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949077"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853850"
 ---
 # <a name="what-is-a-test-drive"></a>Worum handelt es sich bei einer Testversion?
 
 Eine Testversion ist eine großartige Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen die Möglichkeit geben, es vor dem Kauf auszuprobieren, wodurch hoch qualifizierte Leads generiert werden und die Konvertierungsrate steigt. Eine Testversion erweckt Ihr Produkt in einem realen Implementierungsszenario zum Leben. Kunden, die Ihr Produkt testen, demonstrieren eine klare Absicht, eine ähnliche Lösung zu kaufen. Nutzen Sie dies zu Ihrem Vorteil, indem Sie vielversprechenden Leads nachgehen.
 
 Ihre Kunden profitieren auch von einer Testversion. Indem Sie ihnen die Möglichkeit geben, Ihr Produkt zuerst auszuprobieren, verringern Sie Reibungsverluste im Kaufprozess. Darüber hinaus wird eine Testversion vorab bereitgestellt, was heißt, dass Kunden das Produkt nicht herunterladen, einrichten oder konfigurieren müssen.
+
+> [!TIP]
+> Die Ansicht der Testversion für den Kunden im kommerziellen Marketplace finden Sie unter [Was ist Azure Marketplace?](/marketplace/azure-marketplace-overview#take-action-on-a-listing) und [Was ist Microsoft AppSource?](/marketplace/appsource-overview).
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 

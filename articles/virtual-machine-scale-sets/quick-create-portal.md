@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5fd43ebed8d1ebcad3d5f76bda21b978bdb0950e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a58462910a3f673a050bdb252d65369ef6fb3b45
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693234"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003426"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe im Azure-Portal
 
@@ -61,6 +61,7 @@ Sie können eine Skalierungsgruppe mit einem Windows Server-Image oder Linux-Ima
 1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie in der Liste der Ressourcengruppen den Eintrag *myVMSSResourceGroup* aus. 
 1. Geben Sie *myScaleSet* als Name für die Skalierungsgruppe ein.
 1. Wählen Sie unter **Region** eine Region in Ihrer Nähe aus.
+1. Stellen Sie unter **Orchestrierung** sicher, dass die Option *Uniform* für den **Orchestrierungsmodus** ausgewählt ist. 
 1. Wählen Sie unter **Image** ein Marketplace-Image aus. In diesem Beispiel wurde *Ubuntu Server 18.04 LTS* ausgewählt.
 1. Geben Sie den gewünschten Benutzernamen ein, und wählen Sie den bevorzugten Authentifizierungstyp aus.
    - Ein **Kennwort** muss 12 Zeichen lang sein und zur Erfüllung der Komplexitätsanforderungen drei der folgenden vier Elemente enthalten: einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie im Artikel zu den [Anforderungen an Benutzernamen und Kennwörter](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-).

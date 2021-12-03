@@ -2,13 +2,13 @@
 title: 'Azure Service Bus: Ablauf von Nachrichten'
 description: In diesem Artikel werden der Ablauf und die Gültigkeitsdauer von Azure Service Bus-Nachrichten behandelt. Nach einer solchen Frist wird die Nachricht nicht mehr zugestellt.
 ms.topic: conceptual
-ms.date: 07/09/2021
-ms.openlocfilehash: ac37096b411df0fa1a52286f82ce421dff459239
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.date: 11/01/2021
+ms.openlocfilehash: 5534a2ee94db118f4429eaec2409683f68fa5547
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113585463"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460525"
 ---
 # <a name="message-expiration-time-to-live"></a>Nachrichtenablauf (Gültigkeitsdauer)
 Die Nutzlast in einer Nachricht oder die in einer Nachricht an einen Empfänger übermittelten Befehle/Anforderungen unterliegen fast immer einer Form von Ablauffrist auf Anwendungsebene. Nach Ablauf einer solchen Frist wird der Inhalt nicht mehr zugestellt oder der gewünschte Vorgang nicht mehr ausgeführt.
@@ -62,6 +62,7 @@ In den folgenden Situationen werden Entitäten als inaktiv (im Leerlauf befindli
     - Keine Sendevorgänge  
     - Keine Aktualisierungen des Themas  
     - Keine geplanten Nachrichten 
+    - Keine Vorgänge für Abonnements des Themas (wie unten dargestellt)
 - Abonnements
     - Keine Empfangsvorgänge  
     - Keine Aktualisierungen des Abonnements  

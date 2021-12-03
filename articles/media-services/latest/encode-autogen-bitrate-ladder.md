@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/21/2021
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7fc9731769f568107a1ce6dacb5658fe164bd616
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 058d80b85a9a669612c64de6f0f705f6d605e419
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657517"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065017"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Codieren mit einer automatisch generierten Reihe von Bitraten-/Auflösungspaaren
 
@@ -37,7 +37,7 @@ Ein Beispiel für die Verwendung dieser Voreinstellung finden Sie unter [Streame
 
 ## <a name="output"></a>Output
 
-Dieser Abschnitt zeigt drei Beispiele von Ausgabevideoebenen, die vom Media Services-Encoder als Ergebnis der Codierung mit der Voreinstellung **Adaptives Streaming** (H.264) oder der Voreinstellung **H265AdaptiveStreaming** (HEVC) erzeugt wurden. In allen Fällen enthält die Ausgabe eine reine MP4-Audiodatei, die mit 128 KBit/s codiertes Audio in Stereo enthält.
+Dieser Abschnitt zeigt drei Beispiele von Ausgabevideoebenen, die vom Media Services-Encoder als Ergebnis der Codierung mit der Voreinstellung **AdaptiveStreaming** (H.264) oder der Voreinstellung **H265AdaptiveStreaming** (HEVC) erzeugt wurden. In allen Fällen enthält die Ausgabe eine reine MP4-Audiodatei, die mit 128 KBit/s codiertes Audio in Stereo enthält.
 
 ### <a name="example-1"></a>Beispiel 1
 Die Quelle mit der Höhe „1080“ und der Bildrate „29,970“ produziert 6 Videoebenen:

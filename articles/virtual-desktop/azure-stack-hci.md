@@ -7,12 +7,12 @@ ms.date: 11/02/2021
 ms.author: helohr
 manager: femila
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a80cdacaebe4cba2dceb1b29b2f512a6148a518b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d91722247e44016695154912277a0e1e2370fed6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094832"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452127"
 ---
 # <a name="set-up-azure-virtual-desktop-for-azure-stack-hci-preview"></a>Einrichten von Azure Virtual Desktop für Azure Stack HCI (Vorschauversion)
 
@@ -40,20 +40,22 @@ Richten Sie Azure Virtual Desktop für Azure Stack HCI wie folgt ein:
 
 1. Erstellen Sie einen neuen Hostpool ohne virtuelle Computer, indem Sie die Anleitung unter [Erste Schritte des Einrichtungsprozesses für den Hostpool](create-host-pools-azure-marketplace.md#begin-the-host-pool-setup-process) befolgen. Wechseln Sie am Ende dieses Abschnitts zurück zu diesem Artikel, und fahren Sie mit Schritt 2 fort.
 
-2. Befolgen Sie die Anleitung unter [Informationen zum Arbeitsbereich](create-host-pools-azure-marketplace.md#workspace-information), um einen eigenen Arbeitsbereich zu erstellen.
+2. Konfigurieren Sie den neu erstellten Hostpool als Überprüfungs-Hostpool, indem Sie die Schritte unter [Definieren Ihres Hostpools als Überprüfungs-Hostpool](create-validation-host-pool.md#define-your-host-pool-as-a-validation-host-pool) befolgen, um die Eigenschaft „Überprüfungsumgebung“ zu aktivieren.
 
-3. Stellen Sie einen neuen virtuellen Computer in Ihrer Azure Stack HCI-Infrastruktur bereit, indem Sie die Anleitung unter [Erstellen eines neuen virtuellen Computers](/azure-stack/hci/manage/vm#create-a-new-vm) befolgen. Stellen Sie einen virtuellen Computer mit einem unterstützten Betriebssystem bereit, und binden Sie ihn in eine Domäne ein.
+3. Befolgen Sie die Anleitung unter [Informationen zum Arbeitsbereich](create-host-pools-azure-marketplace.md#workspace-information), um einen eigenen Arbeitsbereich zu erstellen.
+
+4. Stellen Sie einen neuen virtuellen Computer in Ihrer Azure Stack HCI-Infrastruktur bereit, indem Sie die Anleitung unter [Erstellen eines neuen virtuellen Computers](/azure-stack/hci/manage/vm#create-a-new-vm) befolgen. Stellen Sie einen virtuellen Computer mit einem unterstützten Betriebssystem bereit, und binden Sie ihn in eine Domäne ein.
 
    >[!NOTE]
    >Installieren Sie die Rolle „Remotedesktop-Sitzungshost (RDSH)“, wenn auf dem virtuellen Computer ein Windows Server-Betriebssystem ausgeführt wird.
 
-4. Ermöglichen Sie für Azure die Verwaltung des neuen virtuellen Computers über Azure Arc, indem Sie darauf den Connected Machine-Agent installieren. Befolgen Sie die Anleitung unter [Verbinden von Hybridcomputern mit Azure Arc-fähigen Servern](../azure-arc/servers/learn/quick-enable-hybrid-vm.md), um den Windows-Agent auf dem virtuellen Computer zu installieren.
+5. Ermöglichen Sie für Azure die Verwaltung des neuen virtuellen Computers über Azure Arc, indem Sie darauf den Connected Machine-Agent installieren. Befolgen Sie die Anleitung unter [Verbinden von Hybridcomputern mit Azure Arc-fähigen Servern](../azure-arc/servers/learn/quick-enable-hybrid-vm.md), um den Windows-Agent auf dem virtuellen Computer zu installieren.
 
-5. Fügen Sie den virtuellen Computer dem Azure Virtual Desktop-Hostpool hinzu, den Sie zuvor erstellt haben, indem Sie den [Azure Virtual Desktop-Agent](agent-overview.md) installieren. Befolgen Sie anschließend die Anleitung unter [Registrieren der VMs beim Azure Virtual Desktop-Hostpool](create-host-pools-powershell.md#register-the-virtual-machines-to-the-azure-virtual-desktop-host-pool), um den virtuellen Computer beim Azure Virtual Desktop-Dienst zu registrieren.
+6. Fügen Sie den virtuellen Computer dem Azure Virtual Desktop-Hostpool hinzu, den Sie zuvor erstellt haben, indem Sie den [Azure Virtual Desktop-Agent](agent-overview.md) installieren. Befolgen Sie anschließend die Anleitung unter [Registrieren der VMs beim Azure Virtual Desktop-Hostpool](create-host-pools-powershell.md#register-the-virtual-machines-to-the-azure-virtual-desktop-host-pool), um den virtuellen Computer beim Azure Virtual Desktop-Dienst zu registrieren.
 
-6. Befolgen Sie die Anleitung unter [Erstellen von App-Gruppen und Verwalten von Benutzerzuweisungen](manage-app-groups.md), um eine App-Gruppe zu Testzwecken zu erstellen und ihr Benutzerzugriff zuzuweisen.
+7. Befolgen Sie die Anleitung unter [Erstellen von App-Gruppen und Verwalten von Benutzerzuweisungen](manage-app-groups.md), um eine App-Gruppe zu Testzwecken zu erstellen und ihr Benutzerzugriff zuzuweisen.
 
-7. Navigieren Sie zum [Webclient](./user-documentation/connect-web.md), und gewähren Sie Ihren Benutzern Zugriff auf die neue Bereitstellung.
+8. Navigieren Sie zum [Webclient](./user-documentation/connect-web.md), und gewähren Sie Ihren Benutzern Zugriff auf die neue Bereitstellung.
 
 ## <a name="optional-configurations"></a>Optionale Konfigurationen
 
@@ -165,6 +167,13 @@ Exportieren Sie die VHD wie folgt:
 
 2. Laden Sie das VHD-Image herunter. Haben Sie etwas Geduld, da der Downloadvorgang einige Minuten dauern kann. Vergewissern Sie sich, dass das Image vollständig heruntergeladen wurde, bevor Sie mit dem nächsten Abschnitt fortfahren.
 
+>[!NOTE]
+>Wenn Sie azcopy ausführen, müssen Sie möglicherweise md5check überspringen, indem Sie den folgenden Befehl ausführen:
+>
+> ```azure
+> azcopy copy “$sas" "destination_path_on_cluster" --check-md5 NoCheck
+> ```
+
 ### <a name="clean-up-the-managed-disk"></a>Bereinigen des verwalteten Datenträgers
 
 Wenn Sie Ihre VHD nicht mehr benötigen, sollten Sie Speicherplatz freigeben, indem Sie den verwalteten Datenträger löschen.
@@ -177,6 +186,13 @@ az disk delete --name $diskName --resource-group $diskRG --yes
 ```
 
 Haben Sie etwas Geduld, da die Ausführung dieses Befehls einige Minuten dauern kann.
+
+>[!NOTE]
+>Optional können Sie die heruntergeladene VHD auch in eine dynamische VHDx konvertieren, indem Sie den folgenden Befehl ausführen:
+>
+> ```powershell
+> Convert-VHD -Path " destination_path_on_cluster\file_name.vhd" -DestinationPath " destination_path_on_cluster\file_name.vhdx" -VHDType Dynamic
+> ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

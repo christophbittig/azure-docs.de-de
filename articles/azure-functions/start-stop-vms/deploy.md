@@ -5,19 +5,16 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 51488a6694b843821110127640281a2da9986862
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 878bead652cf9962febc7622ef98ade0abc6cce5
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124744765"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399691"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>Bereitstellen von „VMs starten/beenden v2 (Vorschau)“
 
 Führen Sie die Schritte in diesem Thema nacheinander aus, um das Feature „VMs starten/beenden v2 (Vorschau)“ zu installieren. Nachdem Sie den Installationsprozess abgeschlossen haben, konfigurieren Sie die Zeitpläne, um sie an Ihre Anforderungen anzupassen.
-
-> [!NOTE]
-> Wenn Probleme während der Bereitstellung bzw. Verwendung von „VMs starten/beenden v2 (Vorschau)“ auftreten oder Sie eine Frage hierzu haben, können Sie ein Issue auf [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) einreichen. Das Erstellen eines Azure-Supportvorfalls über die [Azure-Supportwebsite](https://azure.microsoft.com/support/options/) ist für diese Vorschauversion nicht verfügbar. 
 
 ## <a name="permissions-considerations"></a>Überlegungen zu Berechtigungen
 Beachten Sie folgende Punkte vor und während der Bereitstellung:
@@ -199,7 +196,7 @@ Bei jedem Szenario können Sie als Ziel der Aktion ein oder mehrere Abonnements 
 
 ## <a name="sequenced-start-and-stop-scenario"></a>Szenario mit sequenziertem Starten und Beenden
 
-In einer Umgebung mit mehreren Komponenten auf mehreren Azure Resource Manager-VMs in einer verteilten Anwendungsarchitektur spielt die Reihenfolge, in der Komponenten nacheinander gestartet und beendet werden, eine wichtige Rolle.
+In einer Umgebung mit mehreren Komponenten auf mehreren Azure Resource Manager-VMs in einer verteilten Anwendungsarchitektur spielt die Reihenfolge, in der Komponenten nacheinander gestartet und beendet werden, eine wichtige Rolle. Stellen Sie sicher, dass Sie die Tags **Sequenzestart** und **Sequenzstopp** wie auf der [Seite Übersicht](../../azure-functions/start-stop-vms/overview.md#overview) beschrieben auf die Ziel-VMs angewendet haben, bevor Sie dieses Szenario konfigurieren.
 
 1. Wählen Sie in der Liste der Logik-Apps die Option **ststv2_vms_Sequenced_start** aus, um das sequenzierte Starten zu konfigurieren. Um das sequenzierte Beenden zu konfigurieren, wählen Sie **ststv2_vms_Sequenced_stop** aus.
 

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: ac47322f33ac8f2efd08e5b04e639f09959dee28
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 64a8259f859bb53be6464a9f522c4dcb5491ba21
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352033"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279327"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -19,7 +19,7 @@ Azure bietet integrierte Diagnosefunktionen zur Unterstützung beim Debuggen ein
 In diesem Artikel werden das [Azure-Portal](https://portal.azure.com) und die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet, um mit Diagnoseprotokollen zu arbeiten. Informationen zum Arbeiten mit Diagnoseprotokollen in Visual Studio finden Sie unter [Problembehandlung von Azure in Visual Studio](troubleshoot-dotnet-visual-studio.md).
 
 > [!NOTE]
-> Zusätzlich zu den Protokollierungsanweisungen in diesem Artikel gibt es eine neue, integrierte Protokollierungsfunktion mit Azure Monitor. Weitere Informationen zu dieser Funktion finden Sie im Abschnitt [Senden von Protokollen an Azure Monitor (Vorschauversion)](#send-logs-to-azure-monitor-preview). 
+> Zusätzlich zu den Protokollierungsanweisungen in diesem Artikel gibt es eine neue, integrierte Protokollierungsfunktion mit Azure Monitor. Weitere Informationen zu dieser Funktion finden Sie im Abschnitt [Senden von Protokollen an Azure Monitor](#send-logs-to-azure-monitor). 
 >
 >
 
@@ -182,12 +182,12 @@ Für Windows-Apps enthält die ZIP-Datei den Inhalt des Verzeichnisses *D:\Home\
 | **Webserverprotokolle** | */LogFiles/http/RawLogs/* | Enthält Textdateien im [erweiterten W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging). Diese Informationen können in einem Text-Editor oder mit einem Hilfsprogramm wie [Log Parser](https://www.iis.net/downloads/community/2010/04/log-parser-22) gelesen werden.<br/>App Service unterstützt die Felder `s-computername`, `s-ip` oder `cs-version` nicht. |
 | **Bereitstellungsprotokolle** | */LogFiles/Git/* und */deployments/* | Enthält Protokolle, die von den internen Bereitstellungsprozessen generiert werden, sowie Protokolle für Git-Bereitstellungen. |
 
-## <a name="send-logs-to-azure-monitor-preview"></a>Senden von Protokollen an Azure Monitor (Vorschauversion)
+## <a name="send-logs-to-azure-monitor"></a>Senden von Protokollen an Azure Monitor
 
-Mit der neuen [Azure Monitor-Integration](https://aka.ms/appsvcblog-azmon) können Sie [Diagnoseeinstellungen (Vorschau) erstellen](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting), um Protokolle an Speicherkonten, Event Hubs und Log Analytics zu senden. 
+Mit der neuen [Azure Monitor-Integration](https://aka.ms/appsvcblog-azmon) können Sie [Diagnoseeinstellungen erstellen](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting), um Protokolle an Speicherkonten, Event Hubs und Log Analytics zu senden. 
 
 > [!div class="mx-imgBorder"]
-> ![Diagnoseeinstellungen (Vorschau)](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
+> ![Diagnoseeinstellungen](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
 
 ### <a name="supported-log-types"></a>Unterstützte Protokolltypen
 
@@ -203,11 +203,13 @@ In der folgenden Tabelle werden die unterstützten Protokolltypen und Beschreibu
 | AppServiceAppLogs | ASP.NET und Tomcat<sup>1</sup> | ASP.NET und Tomcat<sup>1</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Anwendungsprotokolle |
 | AppServiceIPSecAuditLogs  | Ja | Ja | Ja | Ja | Anforderungen von IP-Regeln |
 | AppServicePlatformLogs  | Wird noch angekündigt | Ja | Ja | Ja | Containervorgangsprotokolle |
-| AppServiceAntivirusScanAuditLogs | Ja | Ja | Ja | Ja | [Protokolle für Antivirenscans](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) mithilfe von Microsoft Defender; **nur verfügbar für Premium-Tarif** | 
+| AppServiceAntivirusScanAuditLogs <sup>3</sup> | Ja | Ja | Ja | Ja | [Protokolle von Antiviren-Scans](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) mit Microsoft Defender für Cloud; **nur verfügbar für Premium-Tier** | 
 
 <sup>1</sup> Fügen Sie den App-Einstellungen für Tomcat-Apps `TOMCAT_USE_STARTUP_BAT` hinzu, und legen Sie den zugehörigen Wert auf `false` oder `0` fest. Sie müssen die *neueste* Tomcat-Version und *java.util.logging* verwenden.
 
 <sup>2</sup> Fügen Sie den App-Einstellungen für Java SE-Apps `WEBSITE_AZMON_PREVIEW_ENABLED` hinzu, und legen Sie den zugehörigen Wert auf `true` oder `1` fest.
+
+<sup>3</sup> Der Protokolltyp AppServiceAntivirusScanAuditLogs befindet sich derzeit in der Vorschauphase.
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Nächste Schritte
 * [Abfrageprotokolle mit Azure Monitor](../azure-monitor/logs/log-query-overview.md)

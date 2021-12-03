@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0d558330f3c1c5c70fc67b9656beff8eca6dcb40
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 31b6f0459f2fb9b04646667abfda039760e5fcc0
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032523"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892436"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra"></a>Schnellstart: Konfigurieren eines Hybridclusters mit Azure Managed Instance for Apache Cassandra
 
@@ -22,10 +22,7 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie die Azure CLI-Befe
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-* Für diesen Artikel ist die Azure CLI-Version 2.12.1 oder höher erforderlich. Wenn Sie Azure Cloud Shell verwenden, ist die neueste Version bereits installiert.
-
-  > [!NOTE]
-  > Stellen Sie sicher, dass Version **0.9.0** (oder höher) des CLI-Moduls `cosmosdb-preview` in Ihrer Cloud Shell ausgeführt wird. Dies ist erforderlich, damit alle unten aufgeführten Befehle ordnungsgemäß funktionieren. Sie können die Erweiterungsversionen überprüfen, indem Sie `az --version` ausführen. Führen Sie bei Bedarf ein Upgrade mit `az extension update --name cosmosdb-preview` aus.
+* Für diesen Artikel ist die Azure CLI-Version 2.30.0 oder höher erforderlich. Wenn Sie Azure Cloud Shell verwenden, ist die neueste Version bereits installiert.
 
 * [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) mit einer Verbindung mit Ihrer selbstgehosteten bzw. lokalen Umgebung. Weitere Informationen zum Herstellen einer Verbindung für lokale Umgebungen mit Azure finden Sie im Artikel [Verbinden eines lokalen Netzwerks mit Azure](/azure/architecture/reference-architectures/hybrid-networking/).
 
@@ -191,9 +188,7 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie die Azure CLI-Befe
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn beim Anwenden von Berechtigungen für Ihre Virtual Network-Instanz ein Fehler mit dem Hinweis auftritt, dass *der Benutzer oder Dienstprinzipal in der Graphdatenbank für „e5007d2c-4b13-4a74-9b6a-605d99f03501“ nicht gefunden werden kann*, können Sie die gleiche Berechtigung manuell über das Azure-Portal anwenden. Navigieren Sie zum Anwenden von Berechtigungen über das Portal zum Bereich **Zugriffssteuerung (IAM)** Ihres vorhandenen virtuellen Netzwerks, und fügen Sie der Rolle „Netzwerkadministrator“ eine Rollenzuweisung für „Azure Cosmos DB“ hinzu. Werden bei der Suche nach „Azure Cosmos DB“ zwei Einträge angezeigt, fügen Sie beide Einträge hinzu wie in der folgenden Abbildung gezeigt: 
-
-   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="Anwenden von Berechtigungen" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+Wenn beim Anwenden von Berechtigungen für Ihre Virtual Network-Instanz mithilfe der Azure CLI ein Fehler mit dem Hinweis auftritt, dass *der Benutzer oder Dienstprinzipal in der Graphdatenbank für „e5007d2c-4b13-4a74-9b6a-605d99f03501“ nicht gefunden werden kann*, können Sie die gleiche Berechtigung manuell über das Azure-Portal anwenden. Informationen zur Vorgehensweise finden Sie [hier](add-service-principal.md).
 
 > [!NOTE] 
 > Die Azure Cosmos DB-Rollenzuweisung wird nur für Bereitstellungszwecke verwendet. Azure Managed Instance for Apache Cassandra verfügt über keine Back-End-Abhängigkeiten von Azure Cosmos DB.  

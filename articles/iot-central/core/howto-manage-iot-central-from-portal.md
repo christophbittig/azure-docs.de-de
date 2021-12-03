@@ -1,18 +1,18 @@
 ---
 title: Verwalten und Überwachen von IoT Central im Azure-Portal | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie Ihre IoT Central-Anwendungen über das Azure-Portal erstellen, verwalten und überwachen.
+description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal IoT Central-Anwendungen erstellen, verwalten und überwachen und verwaltete Identitäten aktivieren.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/06/2021
 ms.topic: how-to
-ms.openlocfilehash: 57486312b380fc18cfdb399343535e5e12245bff
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: dc9611eebdce1e988e760fda3b000cb52d0ff95a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091596"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488272"
 ---
 # <a name="manage-and-monitor-iot-central-from-the-azure-portal"></a>Verwalten und Überwachen von IoT Central über das Azure-Portal
 
@@ -71,6 +71,31 @@ Um die Anwendung in eine andere Ressourcengruppe zu verschieben, wählen Sie neb
 Wenn Sie die Anwendung in ein anderes Abonnement verschieben möchten, wählen Sie neben dem Abonnement **Ändern** aus. Wählen Sie auf der Seite **Ressourcen verschieben** das Abonnement aus, in das Sie diese Anwendung verschieben möchten:
 
 ![Verwaltungsportal: Ressourcenverwaltung](media/howto-manage-iot-central-from-portal/highlight-subscription.png)
+
+## <a name="configure-a-managed-identity"></a>Konfigurieren einer verwalteten Identität
+
+Wenn Sie einen Datenexport in Ihrer IoT Central-Anwendung konfigurieren, können Sie die Verbindung mit dem Ziel mit einer *Verbindungszeichenfolge* oder einer [verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) konfigurieren. Verwaltete Identitäten sind aus folgenden Gründen sicherer:
+
+* Sie speichern die Anmeldeinformationen für Ihre Ressource nicht in einer Verbindungszeichenfolge in Ihrer IoT Central-Anwendung.
+* Die Anmeldeinformationen sind automatisch an die Lebensdauer Ihrer IoT Central-Anwendung gebunden.
+* Verwaltete Identitäten rotieren ihre Sicherheitsschlüssel automatisch regelmäßig.
+
+IoT Central verwendet derzeit [systemseitig zugewiesene verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Die verwaltete Identität wird entweder über das Azure-Portal oder die REST-API erstellt.
+
+> [!NOTE]
+> Verwaltete Identitäten können nur IoT Central-Anwendungen hinzugefügt werden, die in einer Region erstellt wurden. Alle neuen Anwendungen werden in einer Region erstellt. Weitere Informationen finden Sie bei den [Updates](https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-august-2021/).
+
+Wenn Sie eine verwaltete Identität konfigurieren, müssen Sie einen *Bereich* und eine *Rolle* festlegen:
+
+* Mit dem Bereich wird definiert, wo die verwaltete Identität verwendet werden kann. Sie können zum Beispiel eine Azure-Ressourcengruppe als Bereich festlegen. In diesem Fall müssen sich die IoT Central-Anwendung und das Ziel in derselben Ressourcengruppe befinden.
+* Mit der Rolle wird definiert, über welche Berechtigungen die IoT Central-Anwendung im Zieldienst verfügt. Damit eine IoT Central-Anwendung Daten an einen Event Hub senden kann, muss der verwalteten Identität beispielsweise die Rolle **Azure Event Hubs Data Sender** (Azure Event Hubs-Datensender) zugewiesen sein.
+
+[!INCLUDE [iot-central-managed-identity](../../../includes/iot-central-managed-identity.md)]
+
+Sie können Rollenzuweisungen über das Azure-Portal oder die Azure CLI konfigurieren:
+
+* Weitere Informationen zum Konfigurieren von Rollenzuweisungen für bestimmte Ziele über das Azure-Portal finden Sie unter [Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports](howto-export-data.md).
+* Weitere Informationen zum Konfigurieren von Rollenzuweisungen für bestimmte Ziele über die Azure CLI finden Sie unter [Verwalten von IoT Central über die Azure CLI oder PowerShell](howto-manage-iot-central-from-cli.md).
 
 ## <a name="monitor-application-health"></a>Überwachen der Anwendungsintegrität
 

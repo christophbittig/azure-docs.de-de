@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/13/2021
+ms.date: 10/21/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d15fa618f7195dee15a071b11735b1cfc7276003
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b5f819cbffc04d79ef053d89af3ea865d3dd244c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069671"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251108"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Best Practices für B2B-Funktionen in Azure Active Directory
 Dieser Artikel enthält Empfehlungen und Best Practices für die B2B-Zusammenarbeit (Business-to-Business) in Azure Active Directory (Azure AD).
 
 > [!IMPORTANT]
-> **Ab dem 1. November 2021** wird Microsoft die Einlösung von Einladungen durch die Erstellung von nicht verwalteten ("viralen" oder "just-in-time") Azure AD-Konten und -Tenants für B2B-Kollaborationsszenarien nicht mehr unterstützen. Zu diesem Zeitpunkt werden wir damit beginnen, eine Änderung einzuführen, um die E-Mail-Einmalpasscode-Funktion für alle bestehenden Mandanten zu aktivieren und sie standardmäßig für neue Mandanten zu aktivieren. Wir aktivieren die Funktion „Einmalkennung per E-Mail“, da sie eine nahtlose alternative Authentifizierungsmethode für Ihre Gastbenutzer bietet. Wenn Sie jedoch nicht möchten, dass sich diese Funktion automatisch einschaltet, können Sie sie [deaktivieren](one-time-passcode.md#disable-email-one-time-passcode).
+> **Ab 1. November 2021** wird mit der Aktivierung des Features „Einmalkennung per E-Mail“ für alle bestehenden Mandanten begonnen. Bei neuen Mandanten wird es standardmäßig aktiviert. Im Rahmen dieser Änderung erstellt Microsoft während der Einlösung von Einladungen für die B2B-Zusammenarbeit keine neuen, nicht verwalteten („viralen“) Azure AD-Konten und -Mandanten mehr. Um Unterbrechungen während Feiertagen und Bereitstellungssperren zu minimieren, findet das Rollout der Änderungen für die meisten Mandanten im Januar 2022 statt. Wir aktivieren die Funktion „Einmalkennung per E-Mail“, da sie eine nahtlose alternative Authentifizierungsmethode für Ihre Gastbenutzer bietet. Wenn Sie jedoch nicht möchten, dass dieses Feature automatisch aktiviert wird, können Sie es [deaktivieren](one-time-passcode.md#disable-email-one-time-passcode).
 
 
 ## <a name="b2b-recommendations"></a>B2B-Empfehlungen

@@ -3,12 +3,12 @@ title: 'Bicep-Befehlszeilenschnittstelle: Befehle und Übersicht'
 description: Hier werden die Befehle beschrieben, die Sie in der Bicep-Befehlszeilenschnittstelle verwenden können. Diese Befehle umfassen das Erstellen von Azure Resource Manager-Vorlagen über Bicep.
 ms.topic: conceptual
 ms.date: 10/18/2021
-ms.openlocfilehash: ff5eea15c5e8e3b4f92cdde73d1dfd25865488f0
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: bbb9bbb0f960cac27cba794da410842b80356fb6
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137613"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551936"
 ---
 # <a name="bicep-cli-commands"></a>Befehle der Bicep-Befehlszeilenschnittstelle
 
@@ -138,7 +138,7 @@ Zum Beispiel:
 az bicep publish storage.bicep --target br:exampleregistry.azurecr.io/bicep/modules/storage:v1
 ```
 
-Der Befehl `publish` erkennt keine Aliase, die Sie in einer Datei [bicepconfig.json](bicep-config.md) definiert haben. Geben Sie den vollständigen Modulpfad an.
+Der Befehl `publish` erkennt keine Aliase, die Sie in einer Datei [bicepconfig.json](bicep-config-modules.md) definiert haben. Geben Sie den vollständigen Modulpfad an.
 
 > [!WARNING]
 > Durch eine Veröffentlichung im selben Ziel wird das alte Modul überschrieben. Es wird empfohlen, die Versionsnummer beim Aktualisieren zu erhöhen.

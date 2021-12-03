@@ -6,14 +6,15 @@ author: agowdamsft
 ms.service: container-service
 ms.subservice: confidential-computing
 ms.topic: overview
-ms.date: 2/08/2021
+ms.date: 11/04/2021
 ms.author: amgowda
-ms.openlocfilehash: 203185d9f6def2204906b8722f1969b14eee8787
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f2a0a6452b978b6924574f1499916a0781413a24
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933150"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290227"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service"></a>Confidential Computing-Knoten in Azure Kubernetes Service
 
@@ -23,7 +24,7 @@ Mit [Azure Confidential Computing](overview.md) können Sie Ihre vertraulichen D
 
 Azure Kubernetes Service (AKS) unterstützt das Hinzufügen von [DCsv2 Confidential Computing-Knoten](confidential-computing-enclaves.md) auf der Grundlage von Intel SGX. Auf diesen Knoten können Sie vertrauliche Workloads in einer hardwarebasierten vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE) ausführen. In diesen Umgebungen können mit Code auf Benutzerebene aus Containern private Arbeitsspeicherregionen zugeordnet werden, um den Code direkt per CPU auszuführen. Diese privaten Arbeitsspeicherregionen, die direkt per CPU ausgeführt werden, werden als „Enclaves“ (Enklaven) bezeichnet. Enclaves tragen zum Schutz der Datenvertraulichkeit, Datenintegrität und Codeintegrität vor der Beeinträchtigung durch andere Prozesse bei, die auf denselben Knoten ausgeführt werden. Mit dem Intel SGX-Ausführungsmodell werden auch die Zwischenschichten des Gastbetriebssystems, Hostbetriebssystems und von Hypervisor entfernt, um die Angriffsfläche zu verkleinern. Das Modell für die *hardwarebasierte Ausführung mit containerspezifischer Isolierung* auf einem Knoten ermöglicht Anwendungen die direkte Ausführung mit der CPU, während der spezielle Arbeitsspeicherblock pro Container verschlüsselt bleibt. Confidential Computing-Knoten mit vertraulichen Containern sind ein wertvoller Beitrag zu Ihrer Zero-Trust-Sicherheitsplanung und Strategie für die tiefgehende Verteidigung von Containern.
 
-![Übersicht über SGX-Knoten](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
+:::image type="content" source="./media/confidential-nodes-aks-overview/sgx-aks-node.png" alt-text="Grafik: AKS Confidential Compute-Knoten mit vertraulichen Containern und darin gesichertem Code bzw. darin gesicherten Daten":::
 
 ## <a name="aks-confidential-nodes-features"></a>Features von vertraulichen AKS-Knoten
 
@@ -53,11 +54,13 @@ Für Confidential Computing-Knoten unter AKS werden auch Container unterstützt,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen eines AKS-Clusters mit Confidential Computing-Knoten](./confidential-nodes-aks-get-started.md)
+[Bereitstellen eines AKS-Clusters mit Confidential Computing-Knoten](./confidential-enclave-nodes-aks-get-started.md)
 
 [Schnellstart: Beispiele für vertrauliche Container](https://github.com/Azure-Samples/confidential-container-samples)
 
-[DCsv2: SKU-Liste](../virtual-machines/dcv2-series.md)
+[Intel SGX vertrauliche VM - DCsv2 SKU Liste](../virtual-machines/dcv2-series.md)
+
+[Intel SGX vertrauliche VM - DCsv3 SKU Liste](../virtual-machines/dcv3-series.md)
 
 [Tiefgehende Verteidigung mit vertraulichen Containern: Webinarsitzung](https://www.youtube.com/watch?reload=9&v=FYZxtHI_Or0&feature=youtu.be)
 
@@ -66,4 +69,4 @@ Für Confidential Computing-Knoten unter AKS werden auch Container unterstützt,
 
 
 <!-- LINKS - internal -->
-[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions
+[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions-sgx.md

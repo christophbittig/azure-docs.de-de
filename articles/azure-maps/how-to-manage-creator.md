@@ -3,20 +3,20 @@ title: Verwalten von Microsoft Azure Maps Creator
 description: In diesem Artikel erfahren Sie, wie Sie Microsoft Azure Maps Creator verwalten.
 author: stevemunk
 ms.author: v-munksteve
-ms.date: 10/08/2021
+ms.date: 11/11/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: 09a70e55d796e0eb16d0806fb9a0726ff67ea812
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 124b75aa0a80f84299fd0e113f2d4d7f1a427213
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729765"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400204"
 ---
 # <a name="manage-azure-maps-creator"></a>Verwalten von Azure Maps Creator
 
-Sie können Azure Maps Creator verwenden, um private Gebäudeplandaten zu erstellen. Mit der Azure Maps-API und dem Modul für Gebäudepläne können Sie interaktive und dynamische Gebäudeplan-Webanwendungen entwickeln. Preisinformationen finden Sie unter [Auswählen des richtigen Tarifs in Azure Maps](choose-pricing-tier.md).
+Sie können Azure Maps Creator verwenden, um private Gebäudeplandaten zu erstellen. Mit der Azure Maps-API und dem Modul für Gebäudepläne können Sie interaktive und dynamische Gebäudeplan-Webanwendungen entwickeln. Preisinformationen finden Sie im Abschnitt *Creator* unter [Azure Maps – Preise](https://aka.ms/CreatorPricing).
 
 In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Creator-Ressource in einem Azure Maps-Konto erstellen und löschen.
 
@@ -59,7 +59,7 @@ So löschen Sie die Creator-Ressource:
 2. Wählen Sie **Löschen**.
 
     >[!WARNING]
-    >Wenn Sie die Creator-Ressource Ihres Azure Maps-Kontos löschen, löschen Sie auch die mit Creator-Diensten erstellten Konvertierungen, Datasets, Kachelsets und Featurezustandssets.
+    >Wenn Sie die Creator-Ressource Ihres Azure Maps-Kontos löschen, löschen Sie auch die mit Creator-Diensten erstellten Konvertierungen, Datasets, Kachelsets und Featurezustandssets. Nachdem eine Creator-Ressource gelöscht wurde, kann dies nicht mehr rückgängig gemacht werden.
 
      :::image type="content" source="./media/how-to-manage-creator/creator-delete.png" alt-text="Creator-Seite mit Schaltfläche „Löschen“":::
 

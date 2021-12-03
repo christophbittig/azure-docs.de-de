@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 7ede1ecbbe86f0ec5ef3a79d38b42ff58b653b0b
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 61d80fb7e187910416958b7e3e0183a875590344
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130005351"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399824"
 ---
 # <a name="access-your-application-in-a-private-network"></a>Zugreifen auf eine Anwendung im privaten Netzwerk
 
@@ -212,7 +212,7 @@ Nach der Zuweisung können Sie auf den privaten FQDN Ihrer Anwendung im privaten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verfügbarmachen von Anwendungen im Internet mithilfe von Application Gateway und Azure Firewall](./expose-apps-gateway-azure-firewall.md)
+- [Anwendungen mithilfe von Application Gateway für das Internet verfügbar machen](./expose-apps-gateway.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -4,16 +4,16 @@ description: Hier finden Sie eine Übersicht über verwaltete Azure-Datenträger
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/29/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 801e9ed20c86c59d9c72043ff192a3500bae9a5f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: f3a58291dcd0f6da13fb4c20f806f6450376f2be
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696133"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555699"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Einführung in verwaltete Azure-Datenträger
 
@@ -112,10 +112,7 @@ Bei einer Momentaufnahme eines verwalteten Datenträgers handelt es sich um eine
 
 Momentaufnahmen werden auf Basis der verwendeten Größe in Rechnung gestellt. Wenn Sie beispielsweise eine Momentaufnahme eines verwalteten Datenträgers mit einer bereitgestellten Kapazität von 64GiB und einer tatsächlichen Datengröße von 10GiB erstellen, wird die Momentaufnahme nur für die in Anspruch genommene Datengröße von 10GiB in Rechnung gestellt. Sie können die verwendete Größe Ihrer Momentaufnahmen im [Azure-Nutzungsbericht](../cost-management-billing/understand/review-individual-bill.md) ansehen. Beispiel: Beträgt die verwendete Datengröße einer Momentaufnahme 10 GiB, wird im **täglichen** Nutzungsbericht als verbrauchte Menge Folgendes angezeigt: 10 GiB/(31 Tage) = 0,3226.
 
-Weitere Informationen zur Erstellung von Momentaufnahmen für verwaltete Datenträger finden Sie in den folgenden Ressourcen:
-
-- [Erstellen einer Momentaufnahme](windows/snapshot-copy-managed-disk.md) (Windows)
-- [Erstellen einer Momentaufnahme](linux/snapshot-copy-managed-disk.md) (Linux)
+Weitere Informationen zur Erstellung von Momentaufnahmen für verwaltete Datenträger finden Sie im Artikel [Erstellen einer Momentaufnahme für einen verwalteten Datenträger](windows/snapshot-copy-managed-disk.md).
 
 ### <a name="images"></a>Bilder
 
@@ -136,15 +133,19 @@ Eine Momentaufnahme bezieht sich nur auf den Datenträger, von dem sie erstellt 
 
 ## <a name="disk-allocation-and-performance"></a>Datenträgerzuordnung und Leistung
 
-Das folgende Diagramm zeigt die Echtzeitzuweisung von Bandbreite und IOPS für Datenträger unter Verwendung eines dreistufigen Bereitstellungssystems:
+Das folgende Diagramm zeigt die Echtzeitzuordnung von Bandbreite und IOPS für Datenträger mit drei verschiedenen Pfaden, die eine E/A verwenden kann: 
 
-![Dreistufiges Bereitstellungssystem, das die Zuweisung von Bandbreite und IOPS zeigt](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
+![Diagramm eines dreistufigen Bereitstellungssystems, das die Zuweisung von Bandbreite und IOPS zeigt](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
 
-Die Bereitstellung auf der ersten Stufe legt die Zuweisung von IOPS und Bandbreite pro Datenträger fest.  Auf der zweiten Stufe implementiert der Computeserverhost die SSD-Bereitstellung und wendet sie nur auf Daten an, die auf der SSD des Servers gespeichert sind. Dies umfasst Datenträger mit Caching (ReadWrite und ReadOnly) sowie lokale und temporäre Datenträger. Schließlich erfolgt die VM-Netzwerkbereitstellung auf der dritten Stufe für alle E/A-Vorgänge, die der Computehost an das Back-End von Azure Storage sendet. Bei diesem Schema hängt die Leistung einer VM von einer Vielzahl von Faktoren ab, z. B. wie die VM die lokale SSD verwendet, von der Anzahl der angeschlossenen Datenträger sowie von der Leistung und dem Cachetyp der angeschlossenen Datenträger.
+Der erste E/A-Pfad ist der Pfad des nicht zwischengespeicherten verwalteten Datenträgers. Dieser Pfad wird verwendet, wenn Sie einen verwalteten Datenträger verwenden und die Hostzwischenspeicherung auf „Keine“ festlegen. Eine E/A, die diesen Pfad verwendet, wird basierend auf der Bereitstellung auf Datenträgerebene und dann auf VM-Netzwerkebene für IOPs und Durchsatz ausgeführt.   
+
+Der zweite E/A-Pfad ist der zwischengespeicherte Pfad für verwaltete Datenträger. Zwischengespeicherte E/A-Datenträger verwenden einen SSD-Datenträger in der Nähe des virtuellen Computers, für den eigene IOPS und Durchsatz bereitgestellt sind. Im Diagramm wird dies als Bereitstellung auf SSD-Ebene bezeichnet. Wenn ein zwischengespeicherter verwalteter Datenträger einen Lesevorgang initiiert, überprüft die Anforderung zunächst, ob sich die Daten auf der Server-SSD-Datei befinden. Wenn die Daten nicht vorhanden sind, erzeugt dies einen Cachefehler, und die E/A wird dann basierend auf der Bereitstellung auf SSD-Ebene, der Bereitstellung auf Datenträgerebene und der anschließenden Bereitstellung auf VM-Netzwerkebene für IOPS und Durchsatz ausgeführt. Wenn die Server-SSD Leseanweisungen für zwischengespeicherte E/A initiiert, die auf der Server-SSD vorhanden sind, wird ein Cachetreffer erstellt, und die E/A wird dann basierend auf der Bereitstellung auf SSD-Ebene ausgeführt. Schreibvorgänge, die von einem zwischengespeicherten verwalteten Datenträger initiiert werden, folgen immer dem Pfad eines Cachefehlers und müssen die Bereitstellung auf SSD-Ebene, Datenträgerebene und VM-Netzwerkebene durchgehen.  
+
+Der dritte Pfad ist für den lokalen/temporären Datenträger. Dies ist nur auf VMs verfügbar, die lokale/temporäre Datenträger unterstützen. Eine E/A, die diesen Pfad verwendet, wird basierend auf der Bereitstellung auf SSD-Ebene für IOPS und Durchsatz ausgeführt.   
 
 Als Beispiel für diese Einschränkungen wird eine Standard_DS1v1-VM daran gehindert, das Potenzial von 5.000 IOPS eines P30-Datenträgers aufgrund von Einschränkungen auf SSD- und Netzwerkebene zu erreichen, unabhängig davon, ob ein Cache verwendet wird:
 
-![Standard_DS1v1-Beispielzuordnung](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+![Diagramm des dreistufigen Bereitstellungssystems mit Standard_DS1v1-Beispielzuordnung](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
 
 Azure verwendet einen priorisierten Netzwerkkanal für den Datenverkehr des Datenträgers, der eine höhere Priorität gegenüber anderen niedrigen Prioritäten des Netzwerkdatenverkehrs erhält. Dies hilft den Datenträgern, ihre erwartete Leistung im Falle von Netzwerkkonflikten aufrechtzuerhalten. Ebenso behandelt Azure Storage Ressourcenkonflikte und andere Probleme im Hintergrund durch den automatischen Lastenausgleich. Azure Storage weist die erforderlichen Ressourcen zu, wenn Sie einen Datenträger erstellen, und wendet einen proaktiven und reaktiven Ausgleich der Ressourcen an, um den Datenverkehr zu bewältigen. Dies stellt weiterhin sicher, dass die Datenträger ihre erwarteten IOPS- und Durchsatzziele einhalten können. Sie können die Metriken auf VM- und Datenträgerebene verwenden, um die Leistungs- und Setupwarnungen bei Bedarf zu verfolgen.
 

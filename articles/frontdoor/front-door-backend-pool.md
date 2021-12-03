@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68feb1c2df14c3325ae74ef36874e7008bf9d108
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449296"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371028"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Back-Ends und Back-End-Pools in Azure Front Door
 In diesem Artikel werden die Konzepte für die Zuordnung Ihrer Webanwendungsbereitstellung mit Azure Front Door beschrieben. Außerdem wird die unterschiedliche Terminologie erläutert, die in der Front-End-Konfiguration um die Anwendungs-Back-Ends verwendet wird.
@@ -45,7 +45,7 @@ Von Front Door an ein Back-End weitergeleitete Anforderungen enthalten ein Hosth
 
 Eine für `www.contoso.com` gesendete Anforderung weist beispielsweise den Hostheader www.contoso.com auf. Wenn Sie Ihr Back-End im Azure-Portal konfigurieren, wird standardmäßig der Hostname des Back-Ends als Wert für dieses Feld verwendet. Wenn Ihr Back-End den Namen „contoso-westus.azurewebsites.net“ hat, wird im Azure-Portal automatisch der Wert „contoso-westus.azurewebsites.net“ als Hostheader des Back-Ends eingetragen. Wenn Sie jedoch Azure Resource Manager-Vorlagen oder eine andere Methode verwenden und dieses Feld nicht explizit festlegen, sendet Front Door den Eingangshostnamen als Wert für den Hostheader. Wenn die Anforderung beispielsweise für „www\.contoso.com“ erfolgt und das Back-End „contoso-westus.azurewebsites.net“ ist (mit leerem Headerfeld), legt Front Door den Hostheader als „www\.contoso.com“ fest.
 
-Bei den meisten App-Back-Ends (Azure Web-Apps, Blob Storage und Cloud Services) muss der Hostheader der Domäne des Back-Ends entsprechen. Der Front-End-Host, der die Weiterleitung an Ihr Back-End vornimmt, hat jedoch einen anderen Hostnamen, z. B. www.contoso.net.
+Bei den meisten App-Back-Ends (Azure Web-Apps, Blob Storage und Cloud Services) muss der Hostheader der Domäne des Back-Ends entsprechen. Der Front-End-Host, der die Weiterleitung an das Back-End vornimmt, hat jedoch einen anderen Hostnamen, z. B. `www.contoso.net`.
 
 Wenn der Hostheader für Ihr Back-End dem Back-End-Hostnamen entsprechen muss, müssen Sie sicherstellen, dass der Back-End-Hostheader den Back-End-Hostnamen enthält.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: thwimmer
-ms.openlocfilehash: e4c342025adc46850484535b5270b0889163cbc4
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 14f075c0e721a61237e85311e894a928865698c6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767559"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440820"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von iPass SmartConnect für die automatische Benutzerbereitstellung
 
@@ -32,7 +32,7 @@ In diesem Tutorial werden die Schritte erläutert, die in iPass SmartConnect und
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * Einen Azure AD-Mandanten.
-* [Ein iPass SmartConnect-Mandant](https://www.ipass.com/buy-ipass/).
+* [Einen iPass SmartConnect-Mandanten](https://www.ipass.com/buy-ipass/)
 * Ein Benutzerkonto in iPass SmartConnect mit Administratorberechtigungen.
 
 ## <a name="assigning-users-to-ipass-smartconnect"></a>Zuweisen von Benutzern zu iPass SmartConnect

@@ -9,24 +9,23 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/01/2020
+ms.date: 10/21/2021
 ms.author: allensu
-ms.openlocfilehash: fc474bf8a6df613a8dc1e95169b4730251ff22b7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0501f703ce32df37a755c05240b24b8262ccf314
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472848"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491163"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer-SKUs
 
 Azure Load Balancer verfügt über zwei SKUs.
 
 ## <a name="sku-comparison"></a><a name="skus"></a> SKU-Vergleich
+Azure Load Balancer hat 3 SKUs - Basic, Standard und Gateway. Jede SKU ist auf ein bestimmtes Szenario zugeschnitten und unterscheidet sich in Umfang, Funktionen und Preis. 
 
-Der Lastenausgleich unterstützt sowohl Standard- als auch Basic-SKUs. Diese SKUs unterscheiden sich in Bezug auf Skalierung, Features und Preise. Jedes Szenario, das mit dem Lastenausgleich im Tarif „Basic“ möglich ist, kann auch mit dem Lastenausgleich im Tarif „Standard“ erstellt werden.
-
-Weitere Informationen zu den Unterschieden finden Sie in der folgenden Tabelle. Weitere Informationen finden Sie unter [Übersicht: Azure Load Balancer Standard](./load-balancer-overview.md).
+Um die Unterschiede zwischen Basic und Standard SKU zu vergleichen und zu verstehen, siehe die folgende Tabelle. Weitere Informationen finden Sie unter [Übersicht: Azure Load Balancer Standard](./load-balancer-overview.md). Informationen zu Gateway SKU - für virtuelle Netzwerk-Appliances (NVAs) von Drittanbietern, die sich derzeit in der Vorschau befinden - finden Sie unter [Gateway Load Balancer - Überblick](gateway-overview.md)
 
 >[!NOTE]
 > Microsoft empfiehlt den Lastenausgleich im Tarif „Standard“.
@@ -34,6 +33,10 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 
 | | Load Balancer Standard | Load Balancer Basic |
 | --- | --- | --- |
+| **Szenario** |  Ausgestattet für den Lastausgleich des Datenverkehrs auf der Netzwerkebene, wenn hochleistungs und extrem niedrige Latenzzeiten erforderlich sind. Leitet den Datenverkehr innerhalb von und zwischen Regionen sowie zu Verfügbarkeitszonen für hohe Ausfallsicherheit. | Ausgestattet für kleine Anwendungen, die keine hohe Verfügbarkeit oder Redundanz benötigen. Nicht kompatibel mit Verfügbarkeitszonen. |
+| **Back-End-Typ** | IP-basiert, NIC-basiert | NIC-basiert |
+| **Protokoll** | TCP, UDP | TCP, UDP |
+| **[Front-End-IP-Konfigurationen](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | Unterstützt bis zu 600 Konfigurationen. | Unterstützt bis zu 200 Konfigurationen. |
 | **[Größe des Back-End-Pools](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | Unterstützt bis zu 1.000 Instanzen | Unterstützt bis zu 300 Instanzen |
 | **Endpunkte des Back-End-Pools** | Virtuelle Computer oder VM-Skalierungsgruppen in einem einzelnen Netzwerk | Virtuelle Computer in einer einzelnen Verfügbarkeitsgruppe oder VM-Skalierungsgruppe |
 | **[Integritätstests](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
@@ -48,12 +51,15 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 | **Verwaltungsvorgänge** | Die meisten Vorgänge < 30 Sekunden | Meist 60 bis 90+ Sekunden |
 | **SLA** | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nicht verfügbar | 
 | **Unterstützung des globalen VNet-Peerings** | Standard-ILB wird über globales VNet-Peering unterstützt. | Nicht unterstützt | 
+| **[NAT Gateway-Unterstützung](https://docs.microsoft.com/azure/virtual-network/nat-gateway/nat-overview)** | Sowohl Standard-ILB als auch Standard-Public-LB werden über Nat Gateway unterstützt. | Nicht unterstützt | 
+| **[Private Link-Unterstützung](https://docs.microsoft.com/azure/private-link/private-link-overview)** | Standard-ILB wird über Private Link unterstützt. | Nicht unterstützt | 
+| **[Regionsübergreifender Lastenausgleich (Vorschau)](https://docs.microsoft.com/azure/load-balancer/cross-region-overview)** | Der Standard-Public-Lastenausgleich wird über regionsübergreifenden Lastenausgleich unterstützt. | Nicht unterstützt | 
 
 Weitere Informationen finden Sie unter [Load Balancer-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer). Lesen Sie für den Standard-Load Balancer auch die ausführlicheren Informationen unter [Übersicht](./load-balancer-overview.md), [Preise](https://aka.ms/lbpricing) und [SLA](https://aka.ms/lbsla).
 
 ## <a name="limitations"></a>Einschränkungen
 
-- SKUs sind nicht veränderlich. Sie können die SKU einer vorhandenen Ressource nicht ändern.
+- Sie können [ein Upgrade für Load Balancer-SKUs vornehmen](upgrade-basic-standard.md).
 - Eine Ressource eines eigenständigen virtuellen Computers, eine Verfügbarkeitsgruppenressource oder eine Ressource einer VM-Skalierungsgruppe kann auf eine SKU verweisen, nie auf beide.
 - [Verschiebevorgänge:](../azure-resource-manager/management/move-resource-group-and-subscription.md)
   - Vorgänge zum Verschieben von Ressourcengruppen (innerhalb desselben Abonnements) werden für Load Balancer Standard und für öffentliche IP-Standardadressen **unterstützt**. 

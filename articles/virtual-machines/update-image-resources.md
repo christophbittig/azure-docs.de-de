@@ -1,6 +1,6 @@
 ---
 title: Auflisten, Aktualisieren und Löschen von Imageressourcen
-description: Auflisten, Aktualisieren und Löschen von Bildressourcen in Ihrer gemeinsamen Bildergalerie.
+description: Auflisten, Aktualisieren und Löschen von Bildressourcen in Ihrer Azure Compute Gallery.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 08/05/2021
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af41cd667da05abcd05d4c04d913e82567eec5ca
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 2c01020c266a357329c38023c9e9c34c59424088
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452478"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448765"
 ---
 # <a name="list-update-and-delete-image-resources"></a>Auflisten, Aktualisieren und Löschen von Imageressourcen 
 
-Sie können Ihre freigegebenen Bildergalerie-Ressourcen mit der Azure CLI oder Azure PowerShell verwalten.
+Sie können Ihre Azure Compute Gallery-Ressourcen (früher als Shared Image Gallery bezeichnet) mithilfe der Azure CLI oder Azure PowerShell verwalten.
 
 ## <a name="list-information"></a>Auflisten von Informationen
 
@@ -36,7 +36,7 @@ Die Abbilddefinitionen in einem Katalog, einschließlich der Informationen zum B
 az sig image-definition list --resource-group myGalleryRG --gallery-name myGallery -o table
 ```
 
-Die Versionen geteilter Abbilder in einem Katalog können Sie mit [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) auflisten.
+Listen Sie die Imageversionen in einem Katalog mithilfe von [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) auf.
 
 ```azurecli-interactive
 az sig image-version list --resource-group myGalleryRG --gallery-name myGallery --gallery-image-definition myImageDefinition -o table
@@ -95,7 +95,7 @@ Remove-AzGalleryImageVersion `
 ### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli)
 Es gibt Einschränkungen, welche Elemente aktualisiert werden können. Die folgenden Elemente können aktualisiert werden: 
 
-Katalog mit geteilten Images:
+Azure Compute Gallery:
 - BESCHREIBUNG
 
 Imagedefinition:
@@ -170,7 +170,7 @@ az sig image-version update \
 
 Es gibt Einschränkungen, welche Elemente aktualisiert werden können. Die folgenden Elemente können aktualisiert werden: 
 
-Katalog mit geteilten Images:
+Azure Compute Gallery:
 - BESCHREIBUNG
 
 Imagedefinition:
@@ -258,7 +258,7 @@ az sig image-definition delete \
 ```
 
 
-Löschen Sie einen Imagekatalog mit [az sig delete](/cli/azure/sig#az_sig_delete).
+Löschen Sie einen Katalog mit [az sig delete](/cli/azure/sig#az_sig_delete).
 
 ```azurecli-interactive
 az sig delete \

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.openlocfilehash: b782de623deac68e9a5a305e5cfd1e7ad8578040
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b8aa54369e6da2d70656a0fc11079f6f850c9a9d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124775719"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304532"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SiteIntel
 
@@ -40,7 +40,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * SiteIntel unterstützt SP- und IdP-initiiertes einmaliges Anmelden.
-* Nach dem Konfigurieren von SiteIntel können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von SiteIntel können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="add-siteintel-from-the-gallery"></a>Hinzufügen von SiteIntel aus dem Katalog
 
@@ -98,7 +98,7 @@ Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD im 
 
 1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Schaltfläche **Kopieren** aus, um die URL im Feld **App-Verbundmetadaten-URL** zu kopieren.
 
-    ![Screenshot: Schaltfläche „Kopieren“ neben „App-Verbundmetadaten-URL“](common/copy-metadataurl.png)
+    ![Screenshot: Schaltfläche zum Kopieren neben „App-Verbundmetadaten-URL“](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -154,5 +154,5 @@ Wenn Sie im Zugriffsbereich die Kachel **SiteIntel** auswählen, sollten Sie aut
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 - [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
 - [SiteIntel mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+- [Was ist die Sitzungssteuerung in Microsoft Defender for Cloud Apps?](/cloud-app-security/proxy-intro-aad)
 - [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)

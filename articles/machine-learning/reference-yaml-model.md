@@ -8,37 +8,49 @@ ms.subservice: core
 ms.topic: reference
 author: lostmygithubaccount
 ms.author: copeters
-ms.date: 08/03/2021
+ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: f91c445a9efd427eb28462281f9c1862b6b000c9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 51db45ecaac8be0679832dde29685a6ba2909f75
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346078"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055755"
 ---
 # <a name="cli-v2-model-yaml-schema"></a>YAML-Schema des CLI-Modells (v2)
 
+Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/latest/model.schema.json.
+
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
-## <a name="schema"></a>Schema
+## <a name="yaml-syntax"></a>YAML-Syntax
 
-Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/latest/model.schema.json. Das Schema wird der Einfachheit halber nachstehend im JSON- und YAML-Format bereitgestellt.
-
-# <a name="json"></a>[JSON](#tab/json)
-
-:::code language="json" source="~/azureml-examples-main/cli/.schemas/jsons/latest/model.schema.json":::
-
-# <a name="yaml"></a>[YAML](#tab/yaml)
-
-:::code language="yaml" source="~/azureml-examples-main/cli/.schemas/yamls/latest/model.schema.yml":::
-
----
+| Schlüssel | type | BESCHREIBUNG | Zulässige Werte |
+| --- | ---- | ----------- | -------------- |
+| `$schema` | Zeichenfolge | Das YAML-Schema. | |
+| `name` | Zeichenfolge | **Erforderlich.** Name des Modells. | |
+| `version` | Zeichenfolge | Version des Modells. Wird diese Angabe weggelassen, generiert Azure ML automatisch eine Version. | |
+| `description` | Zeichenfolge | Beschreibung des Modells. | |
+| `tags` | Objekt (object) | Wörterbuch der Tags für das Modell. | |
+| `local_path` | Zeichenfolge | Lokaler Pfad zu der/den Modelldatei(en). Dieser kann entweder auf eine Datei oder ein Verzeichnis verweisen. **Eines von `local_path` oder `model_uri` ist erforderlich.** | |
+| `model_uri` | Zeichenfolge | URI der Modelldatei(en). Dieser kann entweder auf eine Datei oder ein Verzeichnis verweisen. **Eines von `local_path` oder `model_uri` ist erforderlich.** | |
+| `model_format` | Zeichenfolge | Speicherformat des Modells. Anwendbar für no-code Bereitstellung szenarien. | `custom`, `mlflow`, `triton`, `openai` |
+| `flavors` | Objekt (object) | Geschmacksrichtungen des Modells. Jeder Modellspeicherformattyp kann einen oder mehrere unterstützte Flavors haben. Anwendbar für no-code Bereitstellung szenarien. | |
 
 ## <a name="remarks"></a>Hinweise
 
 Mit dem Befehl `az ml model` können Sie Azure Machine Learning-Modelle verwalten.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="examples"></a>Beispiele
 
-- [Installieren und Verwenden der CLI (v2)](how-to-configure-cli.md)
+Beispiele sind im [Beispiele GitHub-Repository](https://github.com/Azure/azureml-examples/tree/main/cli/assets/model) verfügbar. Einige davon sind unten aufgeführt.
+
+## <a name="yaml-local-file"></a>YAML: lokale Datei
+
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/model/local-file.yml":::
+
+## <a name="yaml-local-folder-in-mlflow-format"></a>YAML: lokaler Ordner im MLflow-Format
+
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/model/local-mlflow.yml":::
+
+- [Installieren und Verwenden der CLI (V2)](how-to-configure-cli.md)

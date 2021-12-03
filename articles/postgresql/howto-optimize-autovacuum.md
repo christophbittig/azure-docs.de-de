@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c47f91d9aed9af4c4fbb1a16c27d59b5a5da5d94
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012560"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136265"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Optimieren von Autovacuum auf einem Azure Database for PostgreSQL-Einzelserver
 
@@ -96,7 +96,7 @@ Das Ausführen von Autovacuum ist „kostenaufwendig“, und die Laufzeit von Va
 
 Der Vacuum-Prozess liest physische Seiten und sucht nach inaktiven Tupeln. Für jede Seite in „shared_buffers“ wird vom Kostenwert 1 (vacuum_cost_page_hit) ausgegangen. Für alle anderen Seiten wird bei vorhandenen inaktiven Tupeln ein Kostenwert von 20 zugrunde gelegt (vacuum_cost_page_dirty). Wenn keine inaktiven Tupel vorhanden sind, wird der Kostenwert 10 angesetzt (vacuum_cost_page_miss). Der Vacuum-Vorgang wird beendet, wenn der Prozess „autovacuum_vacuum_cost_limit“ überschreitet.
 
-Nachdem der Grenzwert erreicht wird, verbringt der Prozess die durch den Parameter „autovacuum_vacuum_cost_delay“ angegebene Zeit im Ruhezustand, bevor er erneut gestartet wird. Wenn der Grenzwert nicht erreicht wird, wird Autovacuum nach der durch den Parameter autovacuum_nap_time angegebenen Zeit wieder gestartet.
+Nachdem der Grenzwert erreicht wird, verbringt der Prozess die durch den Parameter „autovacuum_vacuum_cost_delay“ angegebene Zeit im Ruhezustand, bevor er erneut gestartet wird. Wird der Grenzwert nicht erreicht, beginnt das Autovakuum nach dem mit dem Parameter autovacuum_naptime angegebenen Wert.
 
 Zusammengefasst ausgedrückt: Die Parameter „autovacuum_vacuum_cost_delay“ und „autovacuum_vacuum_cost_limit“ steuern, wie viel Datenbereinigung pro Zeiteinheit zulässig ist. Beachten Sie, dass die Standardwerte für die meisten Tarife zu niedrig sind. Die optimalen Werte für diese Parameter sind vom Tarif abhängig und sollten entsprechend konfiguriert werden.
 

@@ -4,13 +4,13 @@ description: Hier wird die Verwendung der Bereichseigenschaft beim Bereitstellen
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: 2b1fb9960caf81a51c80dae312979d90f6eb5f4d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/16/2021
+ms.openlocfilehash: 8d91aa1109db4b1d884e90e3e0744611f9dbf4d8
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733429"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549848"
 ---
 # <a name="set-scope-for-extension-resources-in-bicep"></a>Festlegen des Bereichs für Erweiterungsressourcen in Bicep
 
@@ -143,11 +143,13 @@ resource createStorageLock 'Microsoft.Authorization/locks@2016-09-01' = {
 }
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
-
-Weitere Informationen zur Bereitstellung in Bereichen finden Sie unter:
+Die gleichen Anforderungen gelten für Erweiterungsressourcen wie für andere Ressourcen, wenn sich der als Ziel festgelegte Bereich und der Zielbereich der Bereitstellung unterscheiden. Informationen zur Bereitstellung in mehr als einem Bereich finden Sie unter:
 
 * [Bereitstellungen von Ressourcengruppen](deploy-to-resource-group.md)
 * [Abonnementbereitstellungen](deploy-to-subscription.md)
 * [Verwaltungsgruppenbereitstellungen mit Bicep-Dateien](deploy-to-management-group.md)
 * [Mandantenbereitstellungen mit Bicep-Datei](deploy-to-tenant.md)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Eine vollständige Liste der Erweiterungsressourcentypen finden Sie unter [Ressourcentypen, die Funktionen anderer Ressourcen erweitern](../management/extension-resource-types.md).

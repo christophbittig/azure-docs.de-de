@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer Skalierungsgruppe, die Azure-Spot-VMs nutzt
 description: Erfahren Sie, wie Sie Azure-VM-Skalierungsgruppen erstellen, die Azure-Spot-VMs nutzen, um Kosten zu sparen.
-author: JagVeerappan
-ms.author: jagaveer
+author: mimckitt
+ms.author: mimckitt
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
-ms.date: 02/26/2021
+ms.date: 10/22/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b0c0ffdce85450900c0d4ca0da936b8675820f79
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 842394ed341da88fdb37ff6deb7ccdc519ac2f8e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690564"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060503"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure-Spot-VMs und VM-Skalierungsgruppen 
 
@@ -24,6 +24,20 @@ Wenn Sie Azure Spot-VMs für Skalierungsgruppen verwenden, profitieren Sie von u
 
 Die verfügbare Kapazität kann abhängig von der Größe, Region, Tageszeit usw. variieren. Beim Bereitstellen von Azure-Spot-VM-Instanzen für Skalierungsgruppen wird die Instanz von Azure nur zugeordnet, wenn Kapazität verfügbar ist, für diese Instanzen aber keine SLA besteht. Eine Azure-Spot-VM-Skalierungsgruppe wird in einer einzelnen Fehlerdomäne bereitgestellt und garantiert keine Hochverfügbarkeit.
 
+## <a name="limitations"></a>Einschränkungen
+
+Die folgenden Größen werden für Azure-Spot-VMs nicht unterstützt:
+ - B-Serie
+ - Promoversionen beliebiger Größe (z. B. Promogrößen Dv2, NV, NC, H)
+
+Mit Ausnahme von Microsoft Azure China 21ViaNet können Azure-Spot-VMs in jeder beliebigen Region bereitgestellt werden.
+
+Folgende [Angebotstypen](https://azure.microsoft.com/support/legal/offer-details/) werden derzeit unterstützt:
+
+-   Enterprise Agreement
+-   Angebotscode für nutzungsbasierte Bezahlung (003P)
+-   Gesponsert (0036P und 0136P)
+- Informationen zu Cloud-Dienstanbietern (CSP) finden Sie in [Partner Center](/partner-center/azure-plan-get-started), oder indem Sie sich direkt an Ihren Partner wenden.
 
 ## <a name="pricing"></a>Preise
 
@@ -33,22 +47,6 @@ Die Preise für Azure-Spot-VM-Instanzen variieren je nach Region und SKU. Weiter
 Bei der variablen Preisgestaltung können Sie einen maximalen Preis in US-Dollar (USD) mit bis zu fünf Dezimalstellen festlegen. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die Instanz nicht basierend auf dem Preis entfernt. Der Preis für die Instanz entspricht dem aktuellen Preis für Azure-Spot-VM-Instanzen oder dem Preis für eine Standardinstanz, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind.
 
 
-## <a name="limitations"></a>Einschränkungen
-
-Die folgenden Größen werden für Azure-Spot-VMs nicht unterstützt:
- - B-Serie
- - Promoversionen beliebiger Größe (z. B. Promogrößen Dv2, NV, NC, H)
-
-Mit Ausnahme von Microsoft Azure China 21ViaNet können Azure-Spot-VMs in jeder beliebigen Region bereitgestellt werden.
-
-<a name="channel"></a>
-
-Folgende [Angebotstypen](https://azure.microsoft.com/support/legal/offer-details/) werden derzeit unterstützt:
-
--   Enterprise Agreement
--   Angebotscode für nutzungsbasierte Bezahlung (003P)
--   Gesponsert (0036P und 0136P)
-- Informationen zu Cloud-Dienstanbietern (CSP) finden Sie in [Partner Center](/partner-center/azure-plan-get-started), oder indem Sie sich direkt an Ihren Partner wenden.
 
 ## <a name="eviction-policy"></a>Entfernungsrichtlinie
 
@@ -60,14 +58,20 @@ Wenn die Instanzen beim Entfernen gelöscht werden sollen, legen Sie die Entfern
 
 Benutzer können Benachrichtigungen in der VM über [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md) abonnieren. Dadurch werden Sie benachrichtigt, wenn Ihre virtuellen Computer entfernt werden, und Sie haben vor dem Entfernen 30 Sekunden Zeit, Aufträge abzuschließen und die VMs herunterzufahren. 
 
-<a name="bkmk_try"></a>
-## <a name="try--restore-preview"></a>Testen und wiederherstellen (Vorschau)
+## <a name="eviction-history"></a>Entfernungsverlauf
+Sie können den Preisverlauf und Entfernungsraten pro Größe in einer Region im Portal anzeigen. Wählen Sie **Preisverlauf anzeigen und Preise in Regionen in der Nähe vergleichen** aus, um eine Tabelle oder ein Diagramm der Preise für eine bestimmte Größe anzuzeigen.  Die Preis- und Entfernungsraten in den folgenden Abbildungen sind nur Beispiele. 
 
-Diese neue Funktion auf Plattformebene nutzt KI, um automatisch zu versuchen, entfernte Instanzen von Azure-Spot-VMs in einer Skalierungsgruppe wiederherzustellen und so die Zielanzahl von Instanzen beizubehalten. 
+**Diagramm**:
 
-> [!IMPORTANT]
-> „Testen und wiederherstellen“ ist zurzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+:::image type="content" source="../virtual-machines/media/spot-chart.png" alt-text="Screenshot: Regionsoptionen mit Unterschied in den Preisen und Entfernungsraten als Diagramm.":::
+
+**Tabelle**:
+
+:::image type="content" source="../virtual-machines/media/spot-table.png" alt-text="Screenshot: Regionsoptionen mit Unterschied in den Preisen und Entfernungsraten als Tabelle.":::
+
+## <a name="try--restore"></a>Versuchen und Wiederherstellen 
+
+Dieses neue Feature auf Plattformebene nutzt KI, um automatisch zu versuchen, entfernte Instanzen von Azure Spot Virtual Machine-Instanzen in einer Skalierungsgruppe wiederherzustellen und so die Zielanzahl von Instanzen beizubehalten. 
 
 Vorteile von „Testen und wiederherstellen“:
 - Versuche zur Wiederherstellung von Azure-Spot-VMs, die aufgrund der Kapazität entfernt wurden
@@ -77,49 +81,6 @@ Vorteile von „Testen und wiederherstellen“:
 
 „Testen und wiederherstellen“ ist in Skalierungsgruppen mit [Autoskalierung](virtual-machine-scale-sets-autoscale-overview.md) deaktiviert. Die Anzahl der VMs in der Skalierungsgruppe wird über die Regeln für die Autoskalierung gesteuert.
 
-### <a name="register-for-try--restore"></a>Registrieren für „Testen und wiederherstellen“
-
-Bevor Sie das Feature zum Testen und Wiederherstellen verwenden können, müssen Sie Ihr Abonnement für die Vorschauversion registrieren. Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Featureregistrierung abzuschließen.
-
-
-**Verwenden der CLI 2.0**
-
-Verwenden Sie [az feature register](/cli/azure/feature#az_feature_register), um die Vorschauversion für Ihr Abonnement zu aktivieren. 
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name SpotTryRestore 
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus: 
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name SpotTryRestore 
-```
-
-Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben. 
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute 
-```
-**Verwenden von PowerShell** 
-
-Verwenden Sie das Cmdlet [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature), um die Vorschauversion für Ihr Abonnement zu aktivieren. 
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus: 
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
-```
-
-Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben. 
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
-```
 
 ## <a name="placement-groups"></a>Platzierungsgruppen
 
@@ -138,7 +99,7 @@ Zum Bereitstellen von Azure-Spot-VMs in Skalierungsgruppen können Sie das neue 
 
 ## <a name="portal"></a>Portal
 
-Das Erstellen einer Skalierungsgruppe, die Azure-Spot-VMs nutzt, entspricht den Ausführungen im Artikel [Erste Schritte](quick-create-portal.md). Wenn Sie eine Skalierungsgruppe bereitstellen, können Sie das Spot-Flag und die Entfernungsrichtlinie festlegen: ![Erstellen einer Skalierungsgruppe mit Azure-Spot-VMs](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
+Das Erstellen einer Skalierungsgruppe, die Azure-Spot-VMs nutzt, entspricht den Ausführungen im Artikel [Erste Schritte](quick-create-portal.md). Wenn Sie eine Skalierungsgruppe bereitstellen, können Sie das Spot-Flag, den Entfernungstyp und die Entfernungsrichtlinie festlegen. Außerdem können Sie die Option zum Wiederherstellen von Instanzen mit ![Erstellen einer Skalierungsgruppe mit Azure Spot Virtual Machines](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-1.png) aktivieren.
 
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -155,7 +116,10 @@ az vmss create \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
-    --max-price -1 
+    --eviction-policy Deallocate \
+    --max-price -1 \
+    --enable-spot-restore True \
+    --spot-restore-timeout PT1H
 ```
 
 ## <a name="powershell"></a>PowerShell
@@ -170,7 +134,10 @@ $vmssConfig = New-AzVmssConfig `
     -SkuName "Standard_DS2" `
     -UpgradePolicyMode Automatic `
     -Priority "Spot" `
-    -max-price -1
+    -max-price -1 `
+    -EnableSpotRestore `
+    -SpotRestoreTimeout 60 `
+    -EvictionPolicy delete
 ```
 
 ## <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
@@ -179,7 +146,7 @@ Das Erstellen einer Skalierungsgruppe, die Azure-Spot-VMs nutzt, entspricht den 
 
 Verwenden Sie für die Bereitstellung von Azure-Spot-VMs mithilfe einer Vorlage die `"apiVersion": "2019-03-01"` oder höher. 
 
-Fügen Sie dem Abschnitt `"virtualMachineProfile":` in Ihrer Vorlage die Eigenschaften `priority`, `evictionPolicy` und `billingProfile` und dem Abschnitt `"Microsoft.Compute/virtualMachineScaleSets"` die Eigenschaft `"singlePlacementGroup": false,` hinzu:
+Fügen Sie dem Abschnitt `"virtualMachineProfile":` in Ihrer Vorlage die Eigenschaften `priority`, `evictionPolicy`, `billingProfile` und `spotRestoryPolicy` und dem Abschnitt `"Microsoft.Compute/virtualMachineScaleSets"` die Eigenschaft `"singlePlacementGroup": false,` hinzu:
 
 ```json
 
@@ -195,7 +162,11 @@ Fügen Sie dem Abschnitt `"virtualMachineProfile":` in Ihrer Vorlage die Eigensc
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
-                }
+                },
+                "spotRestorePolicy": {
+                  "enabled": "bool",
+                  "restoreTimeout": "string"
+    },
             },
 ```
 

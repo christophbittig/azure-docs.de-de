@@ -10,12 +10,12 @@ ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: d9b6695824b5fc19d2cd2ee40aec929a372750f2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ce62577dd73d6c6318c5358e4cff3ada4f4bc0a5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124812028"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068861"
 ---
 # <a name="linked-services-in-azure-data-factory-and-azure-synapse-analytics"></a>Verknüpfte Dienste in Azure Data Factory und Azure Synapse Analytics
 
@@ -65,7 +65,7 @@ Ein verknüpfter Dienst wird wie folgt im JSON-Format definiert:
 
 In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschrieben:
 
-Eigenschaft | Beschreibung | Erforderlich |
+Eigenschaft | BESCHREIBUNG | Erforderlich |
 -------- | ----------- | -------- |
 name | Name des verknüpften Diensts. Siehe [Benennungsregeln](naming-rules.md). |  Ja |
 type | Typ des verknüpften Diensts. Beispiel: AzureBlobStorage (Datenspeicher) oder AzureBatch (Compute). Siehe die Beschreibung von „typeProperties“. | Ja |
@@ -109,7 +109,9 @@ Weitere Informationen zu den verschiedenen Compute-Umgebungen, mit denen Sie sic
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im folgenden Tutorial finden Sie schrittweise Anleitungen zum Erstellen von Pipelines und Datasets mit einem dieser Tools oder SDKs.
+- [Informieren Sie sich darüber, wie Sie Anmeldeinformationen für eine benutzerseitig zugewiesene verwaltete Identität in einem verknüpften Dienst verwenden.](credentials.md)
+
+In den folgenden Tutorials finden Sie schrittweise Anleitungen zum Erstellen von Pipelines und Datasets mit einem dieser Tools oder SDKs.
 
 - [Schnellstart: Erstellen einer Data Factory mithilfe von .NET](quickstart-create-data-factory-dot-net.md)
 - [Schnellstart: Erstellen einer Data Factory mithilfe von PowerShell](quickstart-create-data-factory-powershell.md)

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: fbb169924498b30284ea26d172f605596e6a0379
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 8edb225316dfd12acff5c1f6a036246d68d746c8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446362"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306433"
 ---
 # <a name="disable-monitoring-of-your-vms-in-vm-insights"></a>Deaktivieren der Überwachung Ihrer VMs in VM Insights
 
@@ -51,7 +51,7 @@ Wenn der Log Analytics-Arbeitsbereich weiterhin die Überwachung von Daten aus a
 >Entfernen Sie den Log Analytics-Agent in folgenden Fällen nicht: 
 >
 > * Azure Automation verwaltet den virtuellen Computer zur Orchestrierung von Prozessen oder zur Verwaltung von Konfiguration oder Updates. 
-> * Azure Security Center verwaltet den virtuellen Computer in Hinsicht auf Sicherheit und Bedrohungserkennung. 
+> * Microsoft Defender für Cloud verwaltet den virtuellen Computer zur Sicherheits- und Bedrohungserkennung. 
 >
 > Wenn Sie den Log Analytics-Agent entfernen, verhindern Sie eine proaktive Verwaltung Ihres virtuellen Computers durch diese Dienste und Lösungen. 
 

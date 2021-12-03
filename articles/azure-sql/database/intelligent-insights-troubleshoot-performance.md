@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, wiassaf
-ms.date: 1/14/2021
-ms.openlocfilehash: 18cc914db7634637ec2ea541afbcefc105e5d38c
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 11/04/2021
+ms.openlocfilehash: 215cd52bf5f0272884364f2070985459937ccdc8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590340"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853014"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank und Azure SQL Managed Instance mithilfe von Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ Intelligent Insights erkennt automatisch Leistungsprobleme auf Grundlage von War
 | :------------------- | ------------------- | ------------------- |
 | [Erreichen von Ressourcengrenzwerten](intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Die Nutzung der im überwachten Abonnement verfügbaren Ressourcen (Datenübertragungseinheiten, DTUs), Datenbankarbeitsthreads und Datenbankanmeldesitzungen hat Ressourcengrenzwerte erreicht. Dies wirkt sich auf die Leistung aus. | Die Nutzung von CPU-Ressourcen hat Ressourcengrenzwerte erreicht. Dies beeinträchtigt die Datenbankleistung. |
 | [Gestiegene Workload](intelligent-insights-troubleshoot-performance.md#workload-increase) | Eine Zunahme der Workload oder fortlaufende Häufung von Workloads wurde in der Datenbank erkannt. Dies wirkt sich auf die Leistung aus. | Eine Zunahme der Workload wurde erkannt. Dies beeinträchtigt die Datenbankleistung. |
-| [Hohe Arbeitsspeicherauslastung](intelligent-insights-troubleshoot-performance.md#memory-pressure) | Worker, die Speicherzuweisungen angefordert haben, müssen statistisch gesehen lange auf Speicherbelegung warten. Dies gilt auch, wenn eine zunehmende Anzahl von Workern eine Speicherbelegung angefordert haben. Dies wirkt sich auf die Leistung aus. | Worker, die Speicherzuweisungen angefordert haben, warten statistisch gesehen lange auf Speicherbelegung. Dies beeinträchtigt die Datenbankleistung. |
+| [Hohe Arbeitsspeicherauslastung](intelligent-insights-troubleshoot-performance.md#memory-pressure) | Worker, die Speicherzuweisungen angefordert haben, müssen statistisch gesehen lange auf Speicherbelegung warten. Dies gilt auch, wenn eine zunehmende Anzahl von Workern eine Speicherbelegung angefordert hat. Dies wirkt sich auf die Leistung aus. | Worker, die Speicherzuweisungen angefordert haben, warten statistisch gesehen lange auf Speicherbelegung. Dies beeinträchtigt die Datenbankleistung. |
 | [Sperren](intelligent-insights-troubleshoot-performance.md#locking) | Übermäßige Datenbanksperren wurden erkannt, die die Leistung beeinträchtigen. | Übermäßige Datenbanksperren wurden erkannt, welche die Datenbankleistung beeinträchtigen. |
 | [Erhöhter Wert für „Maximaler Grad an Parallelität“](intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Die Option „Maximaler Grad an Parallelität“ (MAXDOP) wurde geändert, was sich auf die Effizienz der Ausführung von Abfragen auswirkt. Dies wirkt sich auf die Leistung aus. | Die Option „Maximaler Grad an Parallelität“ (MAXDOP) wurde geändert, was sich auf die Effizienz der Ausführung von Abfragen auswirkt. Dies wirkt sich auf die Leistung aus. |
 | [Seitenlatchkonflikt](intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Mehrere Threads versuchen gleichzeitig, auf dieselben Datenpufferseiten im Arbeitsspeicher zuzugreifen. Dies führt zu längeren Wartezeiten und verursacht einen Seitenlatchkonflikt. Dies wirkt sich auf die Leistung aus. | Mehrere Threads versuchen gleichzeitig, auf dieselben Datenpufferseiten im Arbeitsspeicher zuzugreifen. Dies führt zu längeren Wartezeiten und verursacht einen Seitenlatchkonflikt. Dies beeinträchtigt die Datenbankleistung. |
@@ -110,7 +110,7 @@ Sie können Abfragen im Zusammenhang mit den Clerks mit der höchsten Speicherbe
 
 Sie können auch die Workload reduzieren, indem Sie sie optimieren oder über mehrere Datenbanken verteilen. Sie können auch Ihre Workload auf mehrere Datenbanken verteilen. Falls dies nicht möglich ist, sollten Sie ggf. den Tarif Ihrer Datenbank erhöhen, um die der Datenbank zur Verfügung stehenden Arbeitsspeicherressourcen zu vergrößern.
 
-Weitere Vorschläge zur Problembehandlung finden Sie unter [Meditation über Speicherzuweisungen: Der mysteriöse SQL Server-Arbeitsspeicherconsumer mit vielen Namen](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994).
+Weitere Vorschläge zur Problembehandlung finden Sie unter [Meditation über Speicherzuweisungen: Der mysteriöse SQL Server-Arbeitsspeicherconsumer mit vielen Namen](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994). Weitere Informationen zu Fehlern im Zusammenhang mit unzureichendem Arbeitsspeicher in Azure SQL-Datenbank finden Sie unter [Behandeln von Fehlern mit unzureichendem Arbeitsspeicher mit Azure SQL-Datenbanken](troubleshoot-memory-errors-issues.md).
 
 ## <a name="locking"></a>Sperren
 
@@ -226,7 +226,7 @@ Weitere Informationen zum Optimieren der Leistung von Abfragen finden Sie unter 
 
 ### <a name="what-is-happening"></a>Was passiert?
 
-Dieses erkennbare Leistungsmuster ist ein Hinweis auf eine Datenbankleistungsbedingung, bei der ein Engpass bei Threads versucht, auf TempDB-Ressourcen zuzugreifen. (Diese Bedingung ist nicht E/A-bezogen.) Das typische Szenario für dieses Leistungsproblem sind Hunderte gleichzeitiger Abfragen, die alle kleine tempDB-Tabellen erstellen, nutzen und dann löschen. Das System hat festgestellt, dass die Anzahl gleichzeitiger Abfragen unter Verwendung der gleichen tempDB-Tabellen im Vergleich mit der Leistungsbaseline der letzten sieben Tage statistisch so signifikant angestiegen ist, dass die Datenbankleistung darunter leidet.
+Dieses erkennbare Leistungsmuster ist ein Hinweis auf eine Datenbankleistungsbedingung, bei der ein Engpass bei Threads versucht, auf TempDB-Ressourcen zuzugreifen. (Diese Bedingung ist nicht E/A-bedingt.) Das typische Szenario für dieses Leistungsproblem sind Hunderte gleichzeitiger Abfragen, die alle kleine TempDB-Tabellen erstellen, nutzen und dann löschen. Das System hat festgestellt, dass die Anzahl gleichzeitiger Abfragen unter Verwendung der gleichen tempDB-Tabellen im Vergleich mit der Leistungsbaseline der letzten sieben Tage statistisch so signifikant angestiegen ist, dass die Datenbankleistung darunter leidet.
 
 ### <a name="troubleshooting"></a>Problembehandlung
 

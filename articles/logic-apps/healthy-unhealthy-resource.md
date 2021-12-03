@@ -6,14 +6,14 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 42b33a5b96de7334f8310b040052c633342f5e05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aafa0584c03c2e7152ab13c5d2a89eb504ac9a14
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712384"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337148"
 ---
-# <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>Einrichten der Protokollierung zum Überwachen von Logik-Apps in Azure Security Center
+# <a name="set-up-logging-to-monitor-logic-apps-in-microsoft-defender-for-cloud"></a>Einrichten der Protokollierung zur Überwachung logischer Anwendungen in Microsoft Defender für Cloud
 
 Bei der Überwachung Ihrer Logic Apps-Ressourcen in [Microsoft Azure Security Center](../security-center/security-center-introduction.md) können Sie [überprüfen, ob die Logik-Apps den Standardrichtlinien entsprechen](#view-logic-apps-health-status). In Azure wird der Integritätsstatus für eine Logic Apps-Ressource angezeigt, nachdem Sie die Protokollierung aktiviert und das Ziel der Protokolle ordnungsgemäß eingerichtet haben. In diesem Artikel wird erläutert, wie Sie die Diagnoseprotokollierung konfigurieren und sicherstellen, dass alle Logik-Apps fehlerfreie Ressourcen sind.
 
@@ -37,9 +37,9 @@ Damit Sie den Integritätsstatus von Ressourcen anzeigen können, müssen Sie zu
 
 Wenn Sie nicht sicher sind, ob die Diagnoseprotokollierung für Ihre Logik-Apps aktiviert ist, können Sie dies in Security Center überprüfen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Geben Sie auf der Suchleiste **Security Center** ein, und wählen Sie den entsprechenden Eintrag aus.
-1. Wählen Sie im Menü auf dem Security Center-Dashboard unter **Allgemein** die Option **Empfehlungen** aus.
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+1. Geben Sie in die Suchleiste ein und wählen Sie **Defender für Cloud**.
+1. Wählen Sie im Menü des Workload-Schutz-Dashboards unter **Allgemein** die Option **Empfehlungen**.
 1. Suchen Sie in der Tabelle mit den Sicherheitsvorschlägen nach **Überwachung und Protokollierung aktivieren** &gt; **In Logic Apps müssen Diagnoseprotokolle aktiviert sein**, und wählen Sie die Empfehlung aus.
 1. Erweitern Sie auf der Empfehlungsseite den Abschnitt **Schritte zur Korrektur**, und überprüfen Sie die Optionen. Sie können die Logic Apps-Diagnose aktivieren, indem Sie die Schaltfläche **Schnelle Problembehebung** auswählen oder die Anweisungen für die manuelle Korrektur befolgen.
 
@@ -47,12 +47,12 @@ Wenn Sie nicht sicher sind, ob die Diagnoseprotokollierung für Ihre Logik-Apps 
 
 Nachdem Sie [die Diagnoseprotokollierung aktiviert](#enable-diagnostic-logging) haben, können Sie den Integritätsstatus Ihrer Logik-Apps in Security Center anzeigen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Geben Sie auf der Suchleiste **Security Center** ein, und wählen Sie den entsprechenden Eintrag aus.
-1. Wählen Sie im Menü auf dem Security Center-Dashboard unter **Allgemein** die Option **Bestand** aus.
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+1. Geben Sie in die Suchleiste ein und wählen Sie **Defender für Cloud**.
+1. Wählen Sie im Dashboard-Menü des Workload-Schutzes unter **Allgemein** die Option **Inventar**.
 1. Filtern Sie auf der Seite „Bestand“ die Liste Ihrer Ressourcen, um nur Logic Apps-Ressourcen anzuzeigen. Wählen Sie im Seitenmenü die Optionen **Ressourcentypen** &gt; **Logik-Apps** aus.
 
-   Der Zähler **Fehlerhafte Ressourcen** zeigt die Anzahl der Logik-Apps an, die in Security Center als fehlerhaft eingestuft werden.
+   Der Zähler **Ungesunde Ressourcen** zeigt die Anzahl der logischen Anwendungen an, die Defender für Cloud als problematisch einstuft.
 1.  Überprüfen Sie in der Liste der Logic Apps-Ressourcen die Spalte **Empfehlungen**. Wählen Sie zum Überprüfen der Integritätsdetails für eine bestimmte Logik-App einen Ressourcennamen oder die Schaltfläche mit den Auslassungspunkten ( **...** ) &gt; **Ressource anzeigen** aus.
 1.  Um potenzielle Probleme mit der Ressourcenintegrität zu beheben, führen Sie die aufgeführten Schritte für Ihre Logik-Apps aus.
 
@@ -60,7 +60,7 @@ Wenn die Diagnoseprotokollierung bereits aktiviert ist, liegt möglicherweise ei
 
 ## <a name="fix-diagnostic-logging-for-logic-apps"></a>Korrigieren der Diagnoseprotokollierung für Logik-Apps
 
-Wenn Ihre [Logik-Apps in Security Center als fehlerhaft aufgeführt sind](#view-logic-apps-health-status), öffnen Sie die jeweilige Logik-App in der Codeansicht im Azure-Portal oder über die Azure-Befehlszeilenschnittstelle. Überprüfen Sie dann die Zielkonfiguration für die Diagnoseprotokolle: [Azure Log Analytics](#log-analytics-and-event-hubs-destinations), [Azure Event Hubs](#log-analytics-and-event-hubs-destinations) oder [ein Azure Storage-Konto](#storage-account-destination).
+Wenn Ihre [Logik-Apps in Defender für Cloud](#view-logic-apps-health-status) als ungesund aufgeführt sind, öffnen Sie Ihre Logik-App in der Codeansicht im Azure-Portal oder über die Azure-Befehlszeilenschnittstelle. Überprüfen Sie dann die Zielkonfiguration für die Diagnoseprotokolle: [Azure Log Analytics](#log-analytics-and-event-hubs-destinations), [Azure Event Hubs](#log-analytics-and-event-hubs-destinations) oder [ein Azure Storage-Konto](#storage-account-destination).
 
 ### <a name="log-analytics-and-event-hubs-destinations"></a>Log Analytics- und Event Hubs-Ziele
 

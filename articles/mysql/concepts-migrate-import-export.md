@@ -7,12 +7,12 @@ ms.service: mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: 954e764cfa454cdfa3175a614093eda6ea8d6173
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: b26cfa516cc9080faac7d47c512b054e5909c1c6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113598376"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345241"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrieren der MySQL-Datenbank durch Import und Export
 
@@ -80,7 +80,7 @@ Um beim Importieren und Exportieren von Daten eine optimale Leistung zu erzielen
 Es gibt zwei Möglichkeiten zum Exportieren und Importieren von Daten in MySQL Workbench: über das Kontextmenü des Objektbrowsers oder über den Navigatorbereich. Jede Methode dient einem anderen Zweck.
 
 > [!NOTE]
-> Wenn Sie eine Verbindung mit einem MySQL-Einzelserver oder flexiblen Server (Vorschau) in MySQL Workbench hinzufügen, gehen Sie wie folgt vor:
+> Wenn Sie eine Verbindung zu einem MySQL-Einzelserver oder flexiblen Server in MySQL Workbench hinzufügen, sollten Sie wie folgt vorgehen:
 >
 > - Stellen Sie bei Verwendung eines MySQL-Einzelservers sicher, dass der Benutzername das Format *\<username@servername>* aufweist.
 > - Verwenden Sie für einen flexiblen MySQL-Server nur *\<username>* . Wenn Sie *\<username@servername>* zur Verbindungsherstellung verwenden, tritt ein Fehler auf.

@@ -1,20 +1,21 @@
 ---
-title: 'Tutorial: Bereitstellen von Azure Spring Cloud-Anwendungen mithilfe von IntelliJ'
+title: 'Tutorial: Bereitstellen von Spring Boot-Anwendungen mithilfe von IntelliJ'
 description: Bereitstellen von Anwendungen in Azure Spring Cloud mithilfe von IntelliJ
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 11/03/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: c3f1ead5d0c7e9ab7011a1179badc41b40912c83
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 0db8cb4393f07b4a7ab8f9f24d1c635aaffcd133
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015381"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493721"
 ---
-# <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Bereitstellen von Azure Spring Cloud-Anwendungen mithilfe von IntelliJ
+# <a name="deploy-spring-boot-applications-using-intellij"></a>Bereitstellen von Spring Boot-Anwendungen mithilfe von IntelliJ
+
 
 **Dieser Artikel gilt für:** ✔️ Java
 
@@ -42,9 +43,9 @@ Sie können das Azure-Toolkit für IntelliJ IDEA 3.51.0 über die **Plug-Ins**-
 
 ## <a name="tutorial-procedures"></a>Prozeduren des Tutorials
 
-Mit den folgenden Prozeduren wird eine Hallo Welt Anwendung mithilfe von IntelliJ IDEA bereitgestellt.
+Mit den folgenden Verfahren wird eine Hello World-Anwendung unter Verwendung von IntelliJ IDEA bereitgestellt.
 
-* Projekt „gs-spring-boot“ öffnen
+* Öffnen des Projekts „gs-spring-boot“
 * In Azure Spring Cloud bereitstellen
 * Streamingprotokolle anzeigen
 
@@ -81,11 +82,11 @@ Für die Bereitstellung in Azure müssen Sie sich bei Ihrem Azure-Konto anmelden
 
 1. Das Plug-In führt den Befehl `mvn package` für das Projekt aus, erstellt dann die neue App und stellt die vom `package`-Befehl generierte JAR-Datei bereit.
 
-1. Wenn die App-URL im Ausgabefenster nicht angezeigt wird, finden Sie sie im Azure-Portal. Navigieren Sie von Ihrer Ressourcengruppe zur Instanz von Azure Spring Cloud.  Wählen Sie anschließend **Apps** aus.  Die ausgeführte App ist aufgelistet.
+1. Wenn die App-URL im Ausgabefenster nicht angezeigt wird, finden Sie sie im Azure-Portal. Navigieren Sie von Ihrer Ressourcengruppe zur Instanz von Azure Spring Cloud.  Wählen Sie anschließend **Apps** aus.  Die ausgeführte App ist aufgelistet. Wählen Sie die App aus, und kopieren Sie dann die **URL** oder den **Testendpunkt**.
 
     ![Test-URL abrufen](media/spring-cloud-intellij-howto/get-test-url.png)
 
-1. Navigieren Sie im Browser zu der URL.
+1. Navigieren Sie im Browser zur URL oder zum Testendpunkt.
 
     ![Navigieren in Browser 2](media/spring-cloud-intellij-howto/navigate-in-browser-2.png)
 

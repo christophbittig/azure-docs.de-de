@@ -1,21 +1,21 @@
 ---
-title: Verwalten des Benutzerzugriffs in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 description: Erfahren Sie, wie Sie mithilfe von Azure AD B2C in Ihrer Anwendung Minderjährige identifizieren, Geburtsdatum und Daten zu Land/Region erfassen und Akzeptanz von Nutzungsbedingungen abrufen.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 0ee26e7fe74d87f7b20f9a28b049b8043b376273
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae1e0c55642865550d58a299041fff6445c67360
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518054"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007729"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 
@@ -141,7 +141,7 @@ In den folgenden Schritten wird beschrieben, wie Sie die Nutzungsbedingungen ver
 
 1. Aufzeichnen der Zustimmung zu den Nutzungsbedingungen und des Zustimmungsdatums über die Graph-API und erweiterte Attribute. Dies kann sowohl über integrierte als auch über benutzerdefinierte Benutzerflows erfolgen. Es wird empfohlen, die Attribute **extension_termsOfUseConsentDateTime** und **extension_termsOfUseConsentVersion** zu erstellen und zu verwenden.
 
-2. Erstellen Sie ein erforderliches Kontrollkästchen mit der Bezeichnung „Nutzungsbedingungen akzeptieren“, und zeichnen Sie das Ergebnis während der Registrierung auf. Dies kann sowohl über integrierte als auch über benutzerdefinierte Benutzerflows erfolgen.
+2. Erstellen Sie ein erforderliches Kontrollkästchen mit der Bezeichnung „Nutzungsbedingungen akzeptieren“, und erfassen Sie das Ergebnis während der Anmeldung. Dies kann sowohl über integrierte als auch über benutzerdefinierte Benutzerflows erfolgen.
 
 3. In Azure AD B2C werden die Nutzungsbedingungen und die Zustimmung des Benutzers gespeichert. Sie können die Graph-API verwenden, um den Status eines Benutzers abzufragen, indem das Erweiterungsattribut gelesen wird, das zum Aufzeichnen der Antwort verwendet wurde, z.B. **termsOfUseTestUpdateDateTime**. Dies kann sowohl über integrierte als auch über benutzerdefinierte Benutzerflows erfolgen.
 

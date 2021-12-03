@@ -13,102 +13,91 @@ metadata:
   ms.devlang: na
   ms.topic: conceptual
   ms.subservice: report-monitor
-  ms.date: 05/12/2020
+  ms.date: 11/08/2021
   ms.author: markvi
-  ms.reviewer: dhanyahk
+  ms.reviewer: besiler
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: f74612097e1ad6edc059625c89f22003d15884af
-  ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+  ms.openlocfilehash: 3fc47efc8fafc23d71b87e44c910d71533b1757d
+  ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/19/2021
-  ms.locfileid: "130162878"
+  ms.lasthandoff: 11/08/2021
+  ms.locfileid: "131995329"
 title: Häufig gestellte Fragen zu Azure Active Directory-Berichten
 summary: "Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active Directory-Berichten (Azure AD). Weitere Informationen finden Sie unter [Azure Active Directory-Berichterstellung](overview-reports.md). \n"
 sections:
 - name: Erste Schritte
   questions:
   - question: >
-      Ich verwende derzeit die Endpunkt-APIs unter „`https://graph.windows.net/<tenant-name>/reports/`“ zum programmgesteuerten Abrufen der Azure AD-Überwachungsberichte und der integrierten Anwendungsnutzungsberichte in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?
+      I currently use the `https://graph.windows.net/<tenant-name>/reports/` endpoint APIs to pull Azure AD audit and integrated application usage reports into our reporting systems programmatically. What should I switch to?
     answer: >
-      In der [API-Referenz](https://developer.microsoft.com/graph/) finden Sie Informationen dazu, wie Sie [mit den APIs auf Aktivitätsberichte zugreifen](concept-reporting-api.md). Dieser Endpunkt verfügt über zwei Berichte (**Überwachung** und **Anmeldungen**), die alle Daten des alten API-Endpunkts enthalten. Dieser neue Endpunkt verfügt auch über einen Bericht zu Anmeldeaktivitäten für die Azure AD Premium-Lizenz, über den Sie Informationen zur App-Nutzung, Gerätenutzung und Benutzeranmeldung abrufen können.
+      Look up the [API reference](https://developer.microsoft.com/graph/) to see how you can [use the APIs to access activity reports](concept-reporting-api.md). This endpoint has two reports (**Audit** and **Sign-ins**) which provide all the data you got in the old API endpoint. This new endpoint also has a sign-ins report with the Azure AD Premium license that you can use to get app usage, device usage, and user sign-in information.
   - question: >
-      Ich verwende derzeit die Endpunkt-APIs unter „`https://graph.windows.net/<tenant-name>/reports/`“ zum programmgesteuerten Abrufen der Azure AD-Sicherheitsberichte (bestimmte Arten von Erkennungen, z.B. kompromittierte Anmeldeinformationen oder Anmeldungen über anonyme IP-Adressen) in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?
+      I currently use the `https://graph.windows.net/<tenant-name>/reports/` endpoint APIs to pull Azure AD security reports (specific types of detections, such as leaked credentials or sign-ins from anonymous IP addresses) into our reporting systems programmatically. What should I switch to?
     answer: >
-      Sie können die [API für Identity Protection-Risikoerkennungen](../identity-protection/howto-identity-protection-graph-api.md) für den Zugriff auf Sicherheitserkennungen über Microsoft Graph verwenden. Dieses neue Format ermöglicht höhere Flexibilität beim Abfragen von Daten mit erweiterter Filterung, Feldauswahl und vielem mehr, und standardisiert Risikoerkennungen in einem Typ zur einfacheren Integration in SIEMs und andere Tools zur Datensammlung. Da die Daten in einem anderen Format vorliegen, können Sie Ihre alten Abfragen nicht durch eine neue Abfrage ersetzen. Allerdings [verwendet die neue API Microsoft Graph](/graph/api/resources/identityprotection-root), den Microsoft-Standard für diese APIs wie Microsoft 365 oder Azure AD. So können Sie entweder Ihre aktuellen Microsoft Graph-Investitionen erweitern oder die Umstellung auf diese neue Standardplattform beginnen.
+      You can use the [Identity Protection risk detections API](../identity-protection/howto-identity-protection-graph-api.md) to access security detections through Microsoft Graph. This new format gives greater flexibility in how you can query data, with advanced filtering, field selection, and more, and standardizes risk detections into one type for easier integration into SIEMs and other data collection tools. Because the data is in a different format, you can't substitute a new query for your old queries. However, [the new API uses Microsoft Graph](/graph/api/resources/identityprotection-root), which is the Microsoft standard for such APIs as Microsoft 365 or Azure AD. So the work required can either extend your current Microsoft Graph investments or help you begin your transition to this new standard platform.
   - question: >
-      Wie erhalte ich eine Premium-Lizenz?
+      How do I get a premium license?
     answer: >
-      Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen.
+      See [Getting started with Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) to upgrade your Azure Active Directory edition.
   - question: >
-      Wie schnell werden nach Erwerb einer Premium-Lizenz Daten zu Aktivitäten angezeigt?
+      How soon should I see activities data after getting a premium license?
     answer: >
-      Wenn Ihnen bereits mit einer kostenlosen Lizenz Daten zu Aktivitäten angezeigt werden, können Sie diese sofort sehen. Wenn Sie noch keine Daten haben, kann es bis zu drei Tagen dauern, bis die Daten in den Berichten angezeigt werden.
+      If you already have activities data as a free license, then you can see it immediately. If you don’t have any data, then it will take up to 3 days for the data to show up in the reports.
   - question: >
-      Werden nach Erwerb einer Azure AD Premium-Lizenz die Daten des letzten Monats angezeigt?
+      Can I see last month's data after getting an Azure AD premium license?
     answer: >
-      Wenn Sie vor Kurzem zu einer Premium-Version (einschließlich einer Testversion) gewechselt sind, werden Ihnen anfänglich Daten von bis zu 7 Tagen angezeigt. Wenn sich Daten ansammeln, können Sie die Daten der letzten 30 Tage sehen.
+      If you have recently switched to a Premium version (including a trial version), you can see data up to 7 days initially. When data accumulates, you can see data for the past 30 days.
   - question: >
-      Muss ich globaler Administrator sein, um die Anmeldeaktivitäten im Azure-Portal anzuzeigen oder Daten über die API abzurufen?
+      Do I need to be a global administrator to see the activity sign-ins to the Azure portal or to get data through the API?
     answer: >
-      Nein, Sie sind auch dann zum Zugriff auf die Berichtsdaten über das Portal oder die API berechtigt, wenn Sie **Sicherheitsleseberechtigter** oder **Sicherheitsadministrator** für den Mandanten sind. Natürlich haben auch **globale Administratoren** Zugriff auf diese Daten.
+      No, you can also access the reporting data through the portal or through the API if you are a **Security Reader** or **Security Administrator** for the tenant. Of course, **Global Administrators** will also have access to this data.
 - name: Aktivitätsprotokolle
   questions:
-  - question: "Wie lange werden Aktivitätsprotokolldaten (Überwachungs- und Anmeldevorgänge) im Azure-Portal aufbewahrt? \n"
+  - question: "What is the data retention for activity logs (Audit and Sign-ins) in the Azure portal? \n"
     answer: >
-      Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinien für Azure AD-Berichte](reference-reports-data-retention.md).
+      For more information, see [data retention policies for Azure AD reports](reference-reports-data-retention.md).
   - question: >
-      Wie lange dauert es, bis nach Abschluss einer Aufgabe Aktivitätsdaten angezeigt werden?
+      How long does it take until I can see the activity data after I have completed my task?
     answer: >
-      Bei Überwachungsprotokollen kann die Verzögerung 15 Minuten bis zu einer Stunde betragen. Aktivitätsprotokolle für Anmeldevorgänge können von 15 Minuten bis zu 2 Stunden bei einigen Datensätzen in Anspruch nehmen.
+      Audit logs have a latency ranging from 15 minutes to an hour. Sign-in activity logs can take from 15 minutes to up to 2 hours for some records.
   - question: >
-      Kann ich Microsoft 365-Aktivitätsprotokollinformationen über das Azure-Portal abrufen?
+      Can I get Microsoft 365 activity log information through the Azure portal?
     answer: >
-      Auch wenn Microsoft 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, müssen Sie, wenn Sie eine vollständige Ansicht der Microsoft 365-Aktivitätsprotokolle anzeigen möchten, das [Microsoft 365 Admin Center](https://admin.microsoft.com) besuchen, um Microsoft 365-Aktivitätsprotokollinformationen abzurufen.
+      Even though Microsoft 365 activity and Azure AD activity logs share a lot of the directory resources, if you want a full view of the Microsoft 365 activity logs, you should go to the [Microsoft 365 admin center](https://admin.microsoft.com) to get Office 365 Activity log information.
   - question: >
-      Mit welchen APIs kann ich Informationen zu Microsoft 365-Aktivitätsprotokollen abrufen?
+      Which APIs do I use to get information about Microsoft 365 Activity logs?
     answer: >
-      Verwenden Sie die [Microsoft 365-Verwaltungs-APIs](/office/office-365-management-api/office-365-management-apis-overview), um über eine API auf die Microsoft 365-Aktivitätsprotokolle zuzugreifen.
+      Use the [Microsoft 365 Management APIs](/office/office-365-management-api/office-365-management-apis-overview) to access the Microsoft 365 Activity logs through an API.
   - question: >
-      Wie viele Datensätze kann ich aus dem Azure-Portal herunterladen?
+      How many records I can download from Azure portal?
     answer: >
-      Sie können bis zu 5000 Datensätze aus dem Azure-Portal herunterladen. Die Datensätze werden nach *Aktualität* sortiert, und standardmäßig erhalten Sie die neuesten 5.000 Datensätze.
-- name: Riskante Anmeldungen
+      You can download up to 5000 records from the Azure portal. The records are sorted by *most recent* and by default, you get the most recent 5000 records.
+- name: Anmeldeprotokolle
   questions:
   - question: >
-      Es gibt eine Risikoerkennung in Identity Protection, aber ich sehe im Anmeldebericht keinen entsprechenden Anmeldevorgang. Entspricht dies dem erwarteten Verhalten?
+      I see .XXX in part of the IP address from a user in my sign in logs. Why is that happening?
     answer: >
-      Ja, Identity Protection beurteilt das Risiko für alle Authentifizierungsflows, ganz gleich, ob diese interaktiv oder nicht interaktiv sind. „Alle Anmeldungen“ führt jedoch nur die interaktiven Anmeldungen auf.
-  - question: >
-      Wie erfahre ich, warum eine Anmeldung oder ein Benutzer im Azure-Portal als riskant gekennzeichnet wurde?
-    answer: >
-      Wenn Sie über ein **Azure AD Premium**-Abonnement verfügen, erfahren Sie mehr über die zugrunde liegenden Risikoerkennungen, wenn Sie unter **Benutzer mit Risikomarkierung** einen Benutzer oder im Bericht **Riskante Anmeldungen** einen Datensatz auswählen. Wenn Sie ein **Free**- oder **Basic**-Abonnement haben, können Sie zwar die Benutzer mit Risikomarkierung und die Berichte „Riskante Anmeldungen“ anzeigen, allerdings nicht die Informationen zu den zugrunde liegenden Risikoerkennungen.
-  - question: >
-      Wie werden IP-Adressen im Bericht zu Anmeldungen und riskanten Anmeldungen berechnet?
-    answer: "IP-Adressen werden so ausgestellt, dass es keine definitive Verbindung zwischen einer IP-Adresse und dem physischen Standort des Computers mit dieser Adresse gibt. Das Zuordnen von IP-Adressen wird außerdem durch Faktoren wie Mobilfunkanbieter und VPNs verkompliziert, die IP-Adressen aus zentralen Pools zuweisen, die oft sehr weit von den Orten entfernt sind, an denen das Clientgerät tatsächlich verwendet wird. Derzeit erfolgt das Konvertieren einer IP-Adresse in einen physischen Standort basierend auf Ablaufverfolgungen, Registrierungsdaten, umgekehrten Suchvorgängen und anderen Informationen. \n"
-  - question: >
-      Was bedeutet die Risikoerkennung „Anmeldung mit erhöhtem Risiko erkannt“?
-    answer: >
-      Die Funktion „Anmeldung mit erhöhtem Risiko erkannt“ dient als Platzhalter für Anmeldungen für Erkennungen, die exklusiv Azure AD Identity Protection-Abonnenten zur Verfügung stehen, um Ihnen einen Einblick in alle riskante Anmeldungen in Ihrer Umgebung zu geben.
+      Azure AD may redact part of an IP address in the sign in logs to protect user privacy when a user may not belong to the tenant viewing the logs. This happens in two cases: first, during cross tenant sign ins, such as when a CSP technician signs into a tenant that CSP manages. Second, when our service was not able to determine the user's identity with sufficient confidence to be sure the user belongs to the tenant viewing the logs.
 - name: Bedingter Zugriff
   questions:
   - question: >
-      Was ist neu an diesem Feature?
+      What's new with this feature?
     answer: >
-      Kunden können nun im Bericht für alle Anmeldungen Probleme mit Richtlinien für bedingten Zugriff beheben. Benutzer können den Status des bedingten Zugriffs überprüfen und die Richtliniendetails für die Anmeldung sowie die jeweiligen Richtlinienergebnisse ansehen.
+      Customers can now troubleshoot Conditional Access policies through all sign-ins report. Customers can review the Conditional Access status and dive into the details of the policies that applied to the sign-in and the result for each policy.
   - question: >
-      Wie fange ich an?
-    answer: "Erste Schritte:\n\n* Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Anmeldebericht.\n* Klicken Sie auf die Anmeldung für die Problembehandlung.\n* Navigieren Sie zur Registerkarte **Bedingter Zugriff**. Hier werden alle Richtlinien angezeigt, die die Anmeldung und das Ergebnis der einzelnen Richtlinien betreffen. \n    \n"
+      How do I get started?
+    answer: "To get started:\n\n* Navigate to the sign-ins report in the [Azure portal](https://portal.azure.com).\n* Click on the sign-in that you want to troubleshoot.\n* Navigate to the **Conditional Access** tab.\nHere, you can view all the policies that impacted the sign-in and the result for each policy. \n    \n"
   - question: >
-      Welche Werte kann der Status des bedingten Zugriffs aufweisen?
-    answer: "Der Status des bedingten Zugriffs kann folgende Werte aufweisen:\n\n* **Nicht angewendet**: Es ist keine Richtlinie für bedingten Zugriff für den Benutzer und die App vorhanden. \n* **Erfolg**: Auf den Benutzer und die App wurde eine Richtlinie für bedingten Zugriff angewendet und erfolgreich umgesetzt. \n* **Fehler**: Die Anmeldung hat zwar die Benutzer- und Anwendungsbedingung mindestens einer Richtlinie für bedingten Zugriff erfüllt, die Gewährungssteuerelemente wurden jedoch nicht erfüllt oder sind auf Blockieren des Zugriffs eingestellt.\n    \n"
+      What are all possible values for the Conditional Access status?
+    answer: "Conditional Access status can have the following values:\n\n* **Not Applied**: This means that there was no Conditional Access policy with the user and app in scope. \n* **Success**: This means that there was a Conditional Access policy with the user and app in scope and Conditional Access policies were successfully satisfied. \n* **Failure**: The sign-in satisfied the user and application condition of at least one Conditional Access policy and grant controls are either not satisfied or set to block access.\n    \n"
   - question: >
-      Welche Werte sind als Ergebnis einer Richtlinie für bedingten Zugriff möglich?
-    answer: "Eine Richtlinie für bedingten Zugriff kann die folgenden Ergebnisse liefern:\n\n* **Erfolg**: Die Richtlinie wurde erfüllt.\n* **Fehler**: Die Richtlinie wurde nicht erfüllt.\n* **Nicht angewendet**: Die Richtlinienbedingungen wurden möglicherweise nicht erfüllt.\n* **Nicht aktiviert**: Die Richtlinie ist deaktiviert. \n    \n"
+      What are all possible values for the Conditional Access policy result?
+    answer: "A Conditional Access policy can have the following results:\n\n* **Success**: The policy was successfully satisfied.\n* **Failure**: The policy was not satisfied.\n* **Not applied**: This might be because the policy conditions did not meet.\n* **Not enabled**: This is due to the policy in disabled state. \n    \n"
   - question: >
-      Der Richtlinienname im Bericht für alle Anmeldungen entspricht nicht dem Namen der Richtlinie für bedingten Zugriff. Warum?
+      The policy name in the all sign-in report does not match the policy name in CA. Why?
     answer: >
-      Der Richtlinienname im Bericht für alle Anmeldungen basiert auf dem Namen der Richtlinie für bedingten Zugriff zum Anmeldezeitpunkt. Die Namen müssen anfangs nicht übereinstimmen, wenn Sie den Richtliniennamen später aktualisieren, d. h. nach der Anmeldung.
+      The policy name in the all sign-in report is based on the Conditional Access policy name at the time of the sign-in. This can be inconsistent with the policy name in CA if you updated the policy name later, that is, after the sign-in.
   - question: >
-      Meine Anmeldung wurde aufgrund einer Richtlinie für bedingten Zugriff blockiert, der Anmeldeaktivitätsbericht gibt jedoch an, dass die Anmeldung erfolgreich war. Warum?
-    answer: Der Anmeldebericht zeigt möglicherweise derzeit keine genauen Ergebnisse für Exchange ActiveSync-Szenarien an, wenn der bedingte Zugriff angewendet wird. In manchen Fällen wird zwar eventuell ein erfolgreiches Anmeldeergebnis im Bericht angezeigt, doch bei der Anmeldung ist aufgrund einer Richtlinie für bedingten Zugriff in Wirklichkeit ein Fehler aufgetreten.
+      My sign-in was blocked due to a Conditional Access policy, but the sign-in activity report shows that the sign-in succeeded. Why?
+    answer: Currently the sign-in report may not show accurate results for Exchange ActiveSync scenarios when Conditional Access is applied. There can be cases when the sign-in result in the report shows a successful sign-in, but the sign-in actually failed due to a Conditional Access policy.

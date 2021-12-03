@@ -2,13 +2,13 @@
 title: 'Schnellstart: Durchführen des Onboardings für Defender für IoT in einer Agent-basierten Lösung'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie in Ihrer Azure IoT Hub-Instanz das Onboarding für den Sicherheitsdienst „Defender für IoT“ durchführen und den Dienst aktivieren.
 ms.topic: quickstart
-ms.date: 1/20/2021
-ms.openlocfilehash: ff3dd6ec3002802ea5f698560b1ead02aee25201
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: f22b319a409b481fdeb26a68cdd4b58809b8d015
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011132"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281852"
 ---
 # <a name="quickstart-onboard-defender-for-iot-to-an-agent-based-solution"></a>Schnellstart: Durchführen des Onboardings für Defender für IoT in einer Agent-basierten Lösung
 
@@ -72,4 +72,4 @@ Die Schaltfläche **IoT-Lösung schützen** wird nur angezeigt, wenn das Onboard
 Im nächsten Artikel erfahren Sie, wie Sie Ihre Lösung konfigurieren:
 
 > [!div class="nextstepaction"]
-> [Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)](quickstart-create-micro-agent-module-twin.md)
+> [Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender für Cloud (Vorschau)](quickstart-create-micro-agent-module-twin.md)

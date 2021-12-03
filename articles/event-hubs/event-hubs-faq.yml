@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: event-hubs
   ms.date: 01/20/2021
-  ms.openlocfilehash: c4f0139377d24f5a7ad18f53f50c16d6bfd19191
-  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+  ms.openlocfilehash: 8b10d0f11f889407569d415c10d6a1898468d96c
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/05/2021
-  ms.locfileid: "129536549"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130218052"
 title: Häufig gestellte Fragen zu Event Hubs
 summary: ''
 sections:
@@ -21,7 +21,7 @@ sections:
     answer: "Ein Namespace ist ein Bereichscontainer für Event Hub- und Kafka-Themen. Dadurch erhalten Sie einen eindeutigen [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Ein Namespace dient als Anwendungscontainer, der mehrere Event Hub- und Kafka-Themen aufnehmen kann. \n"
   - question: >
       Wann erstelle ich einen neuen Namespace bzw. wann verwende ich einen bereits vorhandenen?
-    answer: "Kapazitätszuordnungen ([Durchsatzeinheiten (TUs)](/azure/event-hubs/event-hubs-faq#throughput-units) oder Verarbeitungseinheiten [(PUs)](./event-hubs-scalability.md#processing-units)) werden auf Namespace-Ebene abgerechnet. Ein Namespace ist auch mit einer Region verbunden.\n\nEs empfiehlt sich, einen neuen Namespace zu erstellen, anstatt einen vorhandenen zu verwenden, wenn eines der folgenden Szenarios zutrifft: \n\n- Sie benötigen einen Event Hub, der mit einer neuen Region verbunden ist.\n- Sie benötigen einen Event Hub, der mit einem anderen Abonnement verbunden ist.\n- Sie benötigen einen Event Hub mit einer anderen Kapazitätszuteilung, d. h., der Kapazitätsbedarf für den Namespace zusammen mit dem hinzugefügten Event Hub würde den Schwellenwert von 40 TUs überschreiten, und Sie möchten die Verwendung eines dedizierten Clusters vermeiden.  \n"
+    answer: "Durchsatzeinheiten (Throughput Units, TUs) oder [Verarbeitungseinheiten (Processing Units, PUs)](./event-hubs-scalability.md#processing-units) für Kapazitätszuordnungen werden auf Namespace-Ebene abgerechnet. Ein Namespace ist auch mit einer Region verbunden.\n\nEs empfiehlt sich, einen neuen Namespace zu erstellen, anstatt einen vorhandenen zu verwenden, wenn eines der folgenden Szenarios zutrifft: \n\n- Sie benötigen einen Event Hub, der mit einer neuen Region verbunden ist.\n- Sie benötigen einen Event Hub, der mit einem anderen Abonnement verbunden ist.\n- Sie benötigen einen Event Hub mit einer anderen Kapazitätszuteilung, d. h., der Kapazitätsbedarf für den Namespace zusammen mit dem hinzugefügten Event Hub würde den Schwellenwert von 40 TUs überschreiten, und Sie möchten die Verwendung eines dedizierten Clusters vermeiden.  \n"
   - question: >
       Was ist der Unterschied zwischen den Event Hubs-Ebenen Basic und Standard?
     answer: >
@@ -49,7 +49,7 @@ sections:
       Ja, solange sich alle Event Hubs im gleichen Namespace befinden.
   - question: >
       Was ist die maximale Beibehaltungsdauer für Ereignisse?
-    answer: "Im Standard-Tarif für Event Hubs wird derzeit ein maximaler Aufbewahrungszeitraum von sieben Tagen unterstützt. Event Hubs sind nicht als dauerhafter Datenspeicher vorgesehen. Aufbewahrungszeiträume von mehr als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen erneut in die gleichen Systeme wiederzugeben. Dies gilt beispielsweise, wenn Sie ein neues Machine Learning-Modell für vorhandene Daten trainieren oder überprüfen möchten. Wenn Sie Nachrichten länger als sieben Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Event Hubs Capture](event-hubs-capture-overview.md) in Ihrem Event Hub von Ihrem Event Hub per Pull in das Storage-Konto oder das von Ihnen ausgewählte Azure Data Lake-Dienstkonto übertragen. Abhängig von Ihrer erworbenen Durchsatzeinheit entstehen durch das Aktivieren von „Capture“ Kosten.\n\nSie können den Aufbewahrungszeitraum für die erfassten Daten in Ihrem Speicherkonto konfigurieren. Die **Lebenszyklusverwaltung** von Azure Storage bietet eine umfassende, regelbasierte Richtlinie für universelle v2- und Blob Storage-Konten. Verwenden Sie die Richtlinie, um Ihre Daten in die entsprechenden Zugriffsebenen zu übertragen oder am Ende des Lebenszyklus der Daten ablaufen zu lassen. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](../storage/blobs/storage-lifecycle-management-concepts.md). \n"
+    answer: "Im Standard-Tarif für Event Hubs wird derzeit ein maximaler Aufbewahrungszeitraum von sieben Tagen unterstützt. Event Hubs sind nicht als dauerhafter Datenspeicher vorgesehen. Aufbewahrungszeiträume von mehr als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen erneut in die gleichen Systeme wiederzugeben. Dies gilt beispielsweise, wenn Sie ein neues Machine Learning-Modell für vorhandene Daten trainieren oder überprüfen möchten. Wenn Sie Nachrichten länger als sieben Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Event Hubs Capture](event-hubs-capture-overview.md) in Ihrem Event Hub von Ihrem Event Hub per Pull in das Storage-Konto oder das von Ihnen ausgewählte Azure Data Lake-Dienstkonto übertragen. Abhängig von Ihrer erworbenen Durchsatzeinheit entstehen durch das Aktivieren von „Capture“ Kosten.\n\nSie können den Aufbewahrungszeitraum für die erfassten Daten in Ihrem Speicherkonto konfigurieren. Die **Lebenszyklusverwaltung** von Azure Storage bietet eine umfassende, regelbasierte Richtlinie für universelle v2- und Blob Storage-Konten. Verwenden Sie die Richtlinie, um Ihre Daten in die entsprechenden Zugriffsebenen zu übertragen oder am Ende des Lebenszyklus der Daten ablaufen zu lassen. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](../storage/blobs/lifecycle-management-overview.md). \n"
   - question: >
       Wie überwache ich Event Hubs?
     answer: >

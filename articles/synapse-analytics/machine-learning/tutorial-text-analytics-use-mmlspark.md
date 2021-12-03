@@ -10,18 +10,18 @@ ms.date: 11/02/2021
 author: ruixinxu
 ms.author: ruxu
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: bbbcad29737b46226c48ac9924e60e400327a518
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f15dfc216b664daf41a090189c29bd8772adc707
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030239"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292944"
 ---
 # <a name="tutorial-text-analytics-with-cognitive-service"></a>Tutorial: Textanalyse mit Cognitive Services
 
 Die [Textanalyse](../../cognitive-services/text-analytics/index.yml) ist ein [Azure Cognitive Services](../../cognitive-services/index.yml)-Dienst, mit dem Sie Textmining und Textanalysen mit NLP-Features (Natural Language Processing) durchführen können. In diesem Tutorial erfahren Sie, wie Sie die [Textanalyse](../../cognitive-services/text-analytics/index.yml) verwenden, um unstrukturierten Text mithilfe von Azure Synapse Analytics zu analysieren.
 
-Dieses Tutorial veranschaulicht die Verwendung der Textanalyse mit [MMLSpark](https://github.com/Azure/mmlspark) für Folgendes:
+Dieses Tutorial veranschaulicht die Verwendung der Textanalyse mit [SynapseML](https://github.com/microsoft/SynapseML) für Folgendes:
 
 > [!div class="checklist"]
 > - Erkennen von Stimmungsbezeichnungen auf Satz- oder Dokumentebene
@@ -41,10 +41,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 
 ## <a name="get-started"></a>Erste Schritte
-Öffnen Sie Synapse Studio, und erstellen Sie ein neues Notebook. Importieren Sie zunächst [MMLSpark](https://github.com/Azure/mmlspark). 
+Öffnen Sie Synapse Studio, und erstellen Sie ein neues Notebook. Importieren Sie zunächst [SynapseML](https://github.com/microsoft/SynapseML). 
 
 ```python
-from mmlspark.cognitive import *
+import synapse.ml
+from synapse.ml.cognitive import *
 from pyspark.sql.functions import col
 ```
 
@@ -201,11 +202,11 @@ display(entityv2.transform(df).select("if", "text", col("replies")[0].getItem("e
 ![Erwartete Ergebnisse für die Entitätserkennung v2](./media/tutorial-text-analytics-use-mmlspark/expected-output-entity-detector-v-2.png)
 
 
-### <a name="v31&quot;></a>V3.1
+### <a name="v31"></a>V3.1
 
 ```python
 df = spark.createDataFrame([
-    (&quot;1&quot;, &quot;Microsoft released Windows 10"),
+    ("1", "Microsoft released Windows 10"),
     ("2", "In 1975, Bill Gates III and Paul Allen founded the company.")
 ], ["if", "text"])
 
@@ -302,11 +303,11 @@ display(nerv2.transform(df).select("text", col("replies")[0].getItem("entities")
 ### <a name="expected-results"></a>Erwartete Ergebnisse
 ![Erwartete Ergebnisse für die Erkennung benannter Entitäten v2](./media/tutorial-text-analytics-use-mmlspark/expected-output-ner-v-2.png)
 
-### <a name="v31&quot;></a>V3.1
+### <a name="v31"></a>V3.1
 
 ```python
 df = spark.createDataFrame([
-    (&quot;1&quot;, &quot;en&quot;, &quot;I had a wonderful trip to Seattle last week."),
+    ("1", "en", "I had a wonderful trip to Seattle last week."),
     ("2", "en", "I visited Space Needle 2 times.")
 ], ["id", "language", "text"])
 
@@ -356,4 +357,4 @@ Beenden Sie alle verbundenen Sitzungen (Notebooks), um sicherzustellen, dass die
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Beispiele für Synapse-Notebooks](https://github.com/Azure-Samples/Synapse/tree/main/MachineLearning) 
-* [MMLSpark-GitHub-Repository](https://github.com/Azure/mmlspark)
+* [SynapseML-GitHub-Repository](https://github.com/microsoft/SynapseML)

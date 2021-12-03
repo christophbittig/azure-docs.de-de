@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: a8dd26019d94cbaeca620d4dbb6e1bdf9dabdb2d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5d569598c51429cb12027f3955fa9315a05b16bb
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130246452"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521983"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>Verwalten von Azure Machine Learning-Arbeitsbereichen im Portal oder mit dem Python SDK
 
@@ -146,7 +146,7 @@ Wenn Sie Probleme beim Zugriff auf Ihr Abonnement haben, finden Sie weitere Info
 
 1. Wählen Sie **Überprüfen + erstellen** aus, nachdem die Konfiguration des Arbeitsbereichs abgeschlossen ist. Verwenden Sie optional die Abschnitte [Netzwerk](#networking) und [Erweitert](#advanced), um weitere Einstellungen für den Arbeitsbereich zu konfigurieren.
 
-1. Überprüfen Sie die Einstellungen, und nehmen Sie zusätzliche Änderungen oder Korrekturen vor. Wenn Sie mit den Einstellungen zufrieden sind, wählen Sie **Erstellen** aus.
+1. Überprüfen Sie die Einstellungen, und nehmen Sie weitere Änderungen oder Korrekturen vor. Wenn Sie mit den Einstellungen zufrieden sind, wählen Sie **Erstellen** aus.
 
    > [!Warning] 
    > Die Erstellung des Arbeitsbereichs in der Cloud kann einige Minuten dauern.
@@ -185,7 +185,7 @@ Das Azure Machine Learning Python SDK bietet die Klasse [PrivateEndpointConfig](
 
 ### <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken
 
-Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Sie sollten zulassen, dass Azure Security Center Ihre Ressourcen überprüft und die Empfehlungen befolgt. Weitere Informationen finden Sie unter [Azure Container Registry-Imagescans durch Security Center](../security-center/defender-for-container-registries-introduction.md) und [Azure Kubernetes Service-Integration in Security Center](../security-center/defender-for-kubernetes-introduction.md).
+Microsoft Defender for Cloud bietet eine einheitliche Sicherheitsverwaltung und erweiterten Bedrohungsschutz für Hybrid Cloud-Workloads. Sie sollten Microsoft Defender für Cloud erlauben, Ihre Ressourcen zu überprüfen, und die Empfehlungen befolgen. Weitere Informationen finden Sie unter [Azure Container Registry-Imageüberprüfungen durch Microsoft Defender für Cloud](../security-center/defender-for-container-registries-introduction.md) und [Azure Kubernetes Service-Integration mit Microsoft Defender für Cloud](../security-center/defender-for-kubernetes-introduction.md).
 
 ### <a name="advanced"></a>Erweitert
 
@@ -306,13 +306,15 @@ Zeigen Sie eine Liste mit allen Arbeitsbereichen an, die Sie verwenden können.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Ihre Abonnements finden Sie auf der Seite [Abonnements im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).  Kopieren Sie die ID, und verwenden Sie sie im nachfolgenden Code, um alle für dieses Abonnement verfügbaren Arbeitsbereiche anzuzeigen.
+Ihre Abonnements finden Sie auf der Seite [Abonnements im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Kopieren Sie die ID, und verwenden Sie sie im nachfolgenden Code, um alle für dieses Abonnement verfügbaren Arbeitsbereiche anzuzeigen.
 
 ```python
 from azureml.core import Workspace
 
 Workspace.list('<subscription-id>')
 ```
+
+Die Methode „Workspace.list(..)“ gibt nicht das vollständige Arbeitsbereichsobjekt zurück. Es enthält nur grundlegende Informationen zu vorhandenen Arbeitsbereichen im Abonnement. Verwenden Sie „Workspace.get(..)“, um ein vollständiges Objekt für einen bestimmten Arbeitsbereich abzurufen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -337,6 +339,8 @@ Wenn Sie einen Arbeitsbereich nicht mehr benötigen, löschen Sie ihn.
 
 [!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
 
+Wenn Sie Ihren Arbeitsbereich versehentlich gelöscht haben, können Sie Ihre Notebooks möglicherweise trotzdem abrufen. Weitere Informationen finden Sie unter [Failover für Business Continuity & Disaster Recovery](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion).
+
 # <a name="python"></a>[Python](#tab/python)
 
 Löschen des Arbeitsbereichs `ws`:
@@ -345,7 +349,7 @@ Löschen des Arbeitsbereichs `ws`:
 ws.delete(delete_dependent_resources=False, no_wait=False)
 ```
 
-Die Standardaktion ist nicht das Löschen von Ressourcen, die mit dem Arbeitsbereich verbunden sind, d. h. Containerregistrierung, Speicherkonto, Schlüsseltresor und Application Insights.  Legen Sie `delete_dependent_resources` auf „True“ fest, um auch diese Ressourcen zu löschen.
+Die Standardaktion ist nicht das Löschen von Ressourcen, die mit dem Arbeitsbereich verbunden sind (also Containerregistrierung, Speicherkonto, Schlüsseltresor und Application Insights).  Legen Sie `delete_dependent_resources` auf „True“ fest, um auch diese Ressourcen zu löschen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

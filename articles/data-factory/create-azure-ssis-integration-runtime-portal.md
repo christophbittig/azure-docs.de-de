@@ -1,23 +1,23 @@
 ---
-title: Verwenden des Azure-Portals zum Erstellen einer Integration Runtime
-description: Hier erfahren Sie, wie Sie das Azure-Portal zum Erstellen einer Azure-SSIS-Integration Runtime in Azure Data Factory verwenden, damit Sie SSIS-Pakete in Azure bereitstellen und ausführen können.
+title: Erstellen von Azure-SSIS Integration Runtime über das Azure-Portal
+description: Hier erfahren Sie, wie Sie mit dem Azure-Portal Azure-SSIS Integration Runtime in Azure Data Factory erstellen, damit Sie SSIS-Pakete in Azure bereitstellen und ausführen können.
 ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 09/27/2021
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 105e1b6c54f0240fa5ed46a8fe46ca8cdd92fa53
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 13c5a0d77e82e699c24f13fce3f27d0ddea7fc9e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219543"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851171"
 ---
-# <a name="use-the-azure-portal-to-create-an-integration-runtime"></a>Verwenden des Azure-Portals zum Erstellen einer Integration Runtime
+# <a name="create-an-azure-ssis-integration-runtime-via-azure-portal"></a>Erstellen von Azure-SSIS Integration Runtime über das Azure-Portal 
 
-In diesem Abschnitt erstellen Sie mit dem Azure-Portal über die Data Factory-Benutzeroberfläche (UI) oder die App eine Azure-SSIS IR.
+In diesem Artikel wird erläutert, wie Sie Azure-SSIS Integration Runtime (Azure-SQL Server Integration Services Integration Runtime) in Azure Data Factory (ADF) über das Azure-Portal bzw. die ADF-Benutzeroberfläche erstellen.
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
@@ -190,9 +190,9 @@ Führen Sie auf der Seite **Erweiterte Einstellungen** des Bereichs **Integratio
   
          Ihre hinzugefügten benutzerdefinierten Express-Setups werden auf der Seite **Erweiterte Einstellungen** angezeigt. Um diese zu entfernen, können Sie die entsprechenden Kontrollkästchen aktivieren und dann **Löschen** auswählen.
 
-   1. Aktivieren Sie das Kontrollkästchen **VNET für die Einbindung Ihrer Azure-SSIS Integration Runtime-Instanz auswählen, Erstellung bestimmter Netzwerkressourcen für ADF ermöglichen und optional eigene statische öffentliche IP-Adressen verwenden**, um festzulegen, ob Sie Ihre Integration Runtime mit einem virtuellen Netzwerk verknüpfen möchten. 
+   1. Aktivieren Sie das Kontrollkästchen **Select a VNet for your Azure-SSIS Integration Runtime to join, allow ADF to create certain network resources, and optionally bring your own static public IP addresses** (VNET für die Einbindung Ihrer Azure-SSIS Integration Runtime-Instanz auswählen, Erstellung bestimmter Netzwerkressourcen für ADF ermöglichen und optional eigene statische öffentliche IP-Adressen verwenden), um auszuwählen, ob Sie Ihre Azure-SSIS IR-Instanz in ein virtuelles Netzwerk einbinden möchten. 
 
-      Aktivieren Sie dieses Kontrollkästchen, wenn Sie einen Azure SQL-Datenbankserver mit IP-Firewallregeln/VNET-Dienstendpunkten oder eine verwaltete Instanz mit privatem Endpunkt zum Hosten der SSISDB verwenden oder Zugriff auf lokale Daten benötigen (d. h., dass lokale Datenquellen oder Ziele in Ihren SSIS-Paketen vorhanden sind), ohne eine selbstgehostete IR zu konfigurieren. Weitere Informationen finden Sie im Artikel zum [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk](./join-azure-ssis-integration-runtime-virtual-network.md). 
+      Aktivieren Sie diese Option, wenn Sie einen Azure SQL-Datenbank-Server verwenden, der mit einem virtuellen Netzwerkdienstendpunkt, einer IP-Firewallregel, einem privaten Endpunkt oder Azure SQL Managed Instance konfiguriert wurde, und dieser Server zum Hosten von SSISDB einem virtuellen Netzwerk beitritt. Wenn Sie in Ihren SSIS-Paketen über lokale Datenquellen bzw. -ziele verfügen und Zugriff auf lokale Daten benötigen, ohne eine selbstgehostete Integration Runtime zu konfigurieren, sollten Sie diese Option ebenfalls aktivieren. Weitere Informationen finden Sie im Artikel zum [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk](join-azure-ssis-integration-runtime-virtual-network.md). 
 
       Führen Sie die unten angegebenen Schritte aus, falls Sie das Kontrollkästchen aktivieren.
 
@@ -202,19 +202,27 @@ Führen Sie auf der Seite **Erweiterte Einstellungen** des Bereichs **Integratio
 
       1. Für **Standort** ist derselbe Standort wie für Ihre Integration Runtime ausgewählt.
 
-      1. Wählen Sie für **Typ** den Typ des virtuellen Netzwerks aus: „Klassisch“ oder „Azure Resource Manager“. Sie sollten ein virtuelles Azure Resource Manager-Netzwerk auswählen, da das klassische virtuelle Netzwerk bald veraltet sein wird.
+      1. Wählen Sie für **Typ** den Typ Ihres virtuellen Netzwerks aus: **Azure Resource Manager-VNET** oder „Klassisches virtuelles Netzwerk“. Es wird empfohlen, die Option **Azure Resource Manager-VNET** auszuwählen, da das klassische virtuelle Netzwerk bald veraltet sein wird.
 
-      1. Wählen Sie unter **VNET-Name** den Namen des virtuellen Netzwerks aus. Er sollte mit dem übereinstimmen, der für Ihren Azure SQL-Datenbankserver mit VNET-Dienstendpunkten oder die verwaltete Instanz mit einem privaten Endpunkt zum Hosten der SSISDB verwendet wird. Oder er sollte mit dem Namen des Netzwerks übereinstimmen, das mit Ihrem lokalen Netzwerk verbunden ist. Andernfalls kann es sich um ein beliebiges virtuelles Netzwerk handeln, damit Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwendet werden.
+      1. Wählen Sie unter **VNET-Name** den Namen des virtuellen Netzwerks aus. Dies sollte derselbe Name sein, der zum Konfigurieren eines VNET-Dienstendpunkts bzw. privaten Endpunkts für Ihren Azure SQL-Datenbank-Server verwendet wird, der SSISDB hostet. Alternativ kann dies der Name sein, der von Ihrer Azure SQL Managed Instance-Instanz verknüpft wurde, die SSISDB hostet. Oder er sollte mit dem Namen des Netzwerks übereinstimmen, das mit Ihrem lokalen Netzwerk verbunden ist. Andernfalls kann es sich um ein beliebiges virtuelles Netzwerk handeln, damit Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwendet werden.
 
-      1. Wählen Sie unter **Subnetzname** den Namen des Subnetzes für Ihr virtuelles Netzwerk aus. Es sollte mit dem übereinstimmen, der für Ihren Azure SQL-Datenbankserver mit VNET-Dienstendpunkten zum Hosten der SSISDB verwendet wird. Oder es sollte ein anderes Subnetz sein als das, das für Ihre verwaltete Instanz mit einem privaten Endpunkt zum Hosten der SSISDB verwendet wird. Andernfalls kann es sich um ein beliebiges Subnetz handeln, damit Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwendet werden.
+      1. Wählen Sie unter **Subnetzname** den Namen des Subnetzes für Ihr virtuelles Netzwerk aus. Dies sollte derselbe Name sein, der zum Konfigurieren eines VNET-Dienstendpunkts für Ihren Azure SQL-Datenbank-Server verwendet wird, der SSISDB hostet. Alternativ sollte es sich um ein anderes als das von Ihrer SQL Managed Instance-Instanz verknüpftes Subnetz handeln, das SSISDB hostet. Andernfalls kann es sich um ein beliebiges Subnetz handeln, damit Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwendet werden.
 
-      1. Aktivieren Sie das Kontrollkästchen **Statische öffentliche IP-Adressen für die Azure-SSIS Integration Runtime einbringen**, um festzulegen, ob Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden möchten, damit Sie sie in der Firewall für Ihre Datenquellen zulassen können.
-
-         Führen Sie die unten angegebenen Schritte aus, falls Sie das Kontrollkästchen aktivieren.
-
-         1. Wählen Sie für **Erste statische öffentliche IP-Adresse** die erste statische öffentliche IP-Adresse aus, die den Anforderungen für Ihre Azure-SSIS IR entspricht. Klicken Sie auf den Link **Neue erstellen**, wenn Sie über keine statischen öffentlichen IP-Adressen verfügen, um diese im Azure-Portal zu erstellen. Klicken Sie dann hier auf die Schaltfläche „Aktualisieren“, um sie auszuwählen.
+      1. Wählen Sie für **VNet-Injektionsmethode** die Injektionsmethode Ihrer virtuellen Netzwerks aus: **Express**/**Standard**. 
+   
+         Informationen zum Vergleich dieser Methoden finden Sie im Artikel [Konfiguration des virtuellen Netzwerks für eine Azure-SSIS Integration Runtime](azure-ssis-integration-runtime-virtual-network-configuration.md#compare). 
+   
+         Wenn Sie **Express** auswählen, finden Sie weitere Informationen unter [Injektionsmethode „Express“ für virtuelle Netzwerke](azure-ssis-integration-runtime-express-virtual-network-injection.md). 
       
-         1. Wählen Sie für **Zweite statische öffentliche IP-Adresse** die zweite statische öffentliche IP-Adresse aus, die den Anforderungen für Ihre Azure-SSIS IR entspricht. Klicken Sie auf den Link **Neue erstellen**, wenn Sie über keine statischen öffentlichen IP-Adressen verfügen, um diese im Azure-Portal zu erstellen. Klicken Sie dann hier auf die Schaltfläche „Aktualisieren“, um sie auszuwählen.
+         Wenn Sie **Standard** auswählen, finden Sie weitere Details im Artikel [Injektionsmethode „Standard“ für virtuelle Netzwerke](azure-ssis-integration-runtime-standard-virtual-network-injection.md).  Mit dieser Methode können Sie auch die folgenden Aktionen ausführen:
+
+         1. Aktivieren Sie das Kontrollkästchen **Hiermit werden statische öffentliche IP-Adressen für Ihre Azure-SSIS Integration Runtime bereitgestellt**, um festzulegen, ob Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden möchten, damit Sie sie in der Firewall Ihrer Datenspeicher zulassen können.
+
+            Führen Sie die unten angegebenen Schritte aus, falls Sie das Kontrollkästchen aktivieren.
+
+            1. Wählen Sie für **Erste statische öffentliche IP-Adresse** die erste statische öffentliche IP-Adresse aus, die [den Anforderungen für Ihre Azure-SSIS IR entspricht](azure-ssis-integration-runtime-standard-virtual-network-injection.md#ip). Klicken Sie auf den Link **Neue erstellen**, wenn Sie über keine statischen öffentlichen IP-Adressen verfügen, um diese im Azure-Portal zu erstellen. Klicken Sie dann hier auf die Schaltfläche „Aktualisieren“, um sie auszuwählen.
+      
+            1. Wählen Sie für **Zweite statische öffentliche IP-Adresse** die zweite statische öffentliche IP-Adresse aus, die [den Anforderungen für Ihre Azure-SSIS IR entspricht](azure-ssis-integration-runtime-standard-virtual-network-injection.md#ip). Klicken Sie auf den Link **Neue erstellen**, wenn Sie über keine statischen öffentlichen IP-Adressen verfügen, um diese im Azure-Portal zu erstellen. Klicken Sie dann hier auf die Schaltfläche „Aktualisieren“, um sie auszuwählen.
 
    1. Aktivieren Sie das Kontrollkästchen **Selbstgehostete Integration Runtime als Proxy für Ihre Azure-SSIS Integration Runtime-Instanz einrichten**, um festzulegen, ob Sie eine selbstgehostete IR als Proxy für Ihre Azure-SSIS IR-Instanz konfigurieren möchten. Weitere Informationen finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy](./self-hosted-integration-runtime-proxy-ssis.md). 
 
@@ -228,12 +236,12 @@ Führen Sie auf der Seite **Erweiterte Einstellungen** des Bereichs **Integratio
 
       1. Geben Sie für den **Stagingpfad** einen Blobcontainer in Ihrem ausgewählten Azure-Blobspeicherkonto an oder lassen Sie das Feld leer, um einen Standardpfad für den Stagingprozess zu verwenden.
 
-   1. Wählen Sie **VNET-Überprüfung** > **Weiter** aus. 
+   1. Wählen Sie **VNET-Überprüfung** aus. Wenn die Überprüfung erfolgreich war, wählen Sie **Weiter** aus. 
 
-Überprüfen Sie im Abschnitt **Zusammenfassung** alle Bereitstellungseinstellungen, erstellen Sie Lesezeichen für die empfohlenen Dokumentationslinks, und wählen Sie **Fertig stellen** aus, um die Erstellung Ihrer Integration Runtime-Instanz zu starten.
+Überprüfen Sie auf der Seite **Zusammenfassung** alle Einstellungen für Azure-SSIS IR, lesen Sie die empfohlenen Dokumentationslinks, und klicken Sie auf **Fertig stellen**, um die Erstellung Ihrer Integration Runtime zu starten.
 
 > [!NOTE]
-> Abgesehen von einer benutzerdefinierten Einrichtungszeit sollte dieser Prozess innerhalb von fünf Minuten abgeschlossen sein. Es kann aber 20 bis 30 Minuten dauern, bis der Betritt einer Azure-SSIS IR zu einem virtuellen Netzwerk abgeschlossen ist.
+> Abgesehen von einer benutzerdefinierten Einrichtungszeit sollte dieser Prozess innerhalb von fünf Minuten abgeschlossen sein. Es kann aber 20 bis 30 Minuten dauern, bis Azure-SSIS IR mit einem virtuellen Netzwerk mit der Injektionsmethode „Standard“ verknüpft ist.
 >
 > Bei Verwendung der SSISDB stellt der Data Factory-Dienst eine Verbindung mit Ihrem Datenbankserver her, um die SSISDB vorzubereiten. Außerdem konfiguriert er Berechtigungen und Einstellungen für das virtuelle Netzwerk (sofern angegeben) und verknüpft die Azure-SSIS IR mit dem virtuellen Netzwerk.
 >
@@ -265,16 +273,16 @@ Wechseln Sie im Bereich **Verbindungen** von **Verwaltungshub** zur Seite **Inte
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erfahren Sie, wie Sie eine Azure-SSIS IR mithilfe von Azure PowerShell bereitstellen](create-azure-ssis-integration-runtime-powershell.md).
-- [Erfahren Sie, wie Sie eine Azure-SSIS IR mithilfe einer Azure Resource Manager-Vorlage bereitstellen](create-azure-ssis-integration-runtime-resource-manager-template.md).
-- [Stellen Sie Ihre SSIS-Pakete in Azure Data Factory bereit, und führen Sie diese aus](create-azure-ssis-integration-runtime-deploy-packages.md).
+- [Verwenden von Azure PowerShell zum Erstellen einer Integration Runtime](create-azure-ssis-integration-runtime-powershell.md)
+- [Verwenden einer Azure Resource Manager-Vorlage zum Erstellen einer Integration Runtime](create-azure-ssis-integration-runtime-resource-manager-template.md)
+- [Bereitstellen von SSIS-Paketen](create-azure-ssis-integration-runtime-deploy-packages.md)
 
-Sehen Sie sich auch andere Themen zur Azure-SSIS IR in dieser Dokumentation an:
+Weitere Informationen zur Azure-SSIS IR finden Sie in den folgenden Artikeln: 
 
-- [Azure SSIS-Integration Runtime:](concepts-integration-runtime.md#azure-ssis-integration-runtime) Dieser Artikel enthält allgemeine Informationen zu Integration Runtimes, einschließlich der Azure-SSIS IR.
+- [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime). Dieser Artikel enthält allgemeine konzeptionelle Informationen zu IRs, einschließlich der Azure-SSIS IR. 
 - [Überwachen einer Azure-SSIS-Integrationslaufzeit](monitor-integration-runtime.md#azure-ssis-integration-runtime): In diesem Artikel erfahren Sie, wie Sie Informationen zur Azure-SSIS IR abrufen und verstehen.
 - [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie die Azure-SSIS IR beenden, starten oder löschen. Es wird zudem gezeigt, wie Sie Ihre Azure-SSIS Integration Runtime aufskalieren, indem Sie weitere Knoten hinzufügen.
 - [Bereitstellen und Ausführen eines SSIS-Pakets in Azure](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   
 - [Herstellen einer Verbindung mit dem SSIS-Katalog (SSISDB) in Azure](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
-- [Connect to on-premises data sources with Windows Authentication](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) (Herstellen einer Verbindung mit lokalen Datenquellen mit Windows-Authentifizierung) 
+- [Zugreifen auf Datenspeicher und Dateifreigaben mit Windows-Authentifizierung in SSIS-Paketen in Azure](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) 
 - [Planen der Ausführung von in Azure bereitgestellten SSIS-Paketen](/sql/integration-services/lift-shift/ssis-azure-schedule-packages)

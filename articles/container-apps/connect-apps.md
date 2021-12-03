@@ -1,19 +1,19 @@
 ---
 title: Verbinden von Anwendungen in Azure Container Apps (Vorschauversion)
 description: Es wird beschrieben, wie Sie mehrere Anwendungen bereitstellen, die in Azure Container Apps miteinander kommunizieren.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 10/18/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 10fe890ecd4bb2bc89cea71d1a70f7df9eb38e1e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 75ccb6730d9fdad76f7b7f6f78d3695e86a349f0
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094858"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027392"
 ---
 # <a name="connect-applications-in-azure-container-apps-preview"></a>Verbinden von Anwendungen in Azure Container Apps (Vorschauversion)
 
@@ -21,9 +21,14 @@ In Azure Container Apps wird jede Container-App über einen Domänennamen verfü
 
 Wenn Sie den Domänennamen einer Container-App kennen, können Sie den Standort in Ihrem Anwendungscode aufrufen, um mehrere Container-Apps miteinander zu verbinden.
 
+> [!NOTE]
+> Wenn Sie einen anderen Container in derselben Umgebung mithilfe des FQDN aufrufen, verlässt der Netzwerkdatenverkehr nie die Umgebung.
+
+Eine Beispiellösung, die zeigt, wie Sie zwischen Containern aufrufen können, indem Sie sowohl den FQDN-Speicherort als auch Dapr verwenden, finden Sie unter [Azure-Beispiele](https://github.com/Azure-Samples/container-apps-connect-multiple-apps).
+
 ## <a name="location"></a>Standort
 
-Der Standort einer Container-App umfasst die Werte für die Umgebung, den Namen und die Region. Für den vollqualifizierten Domänennamen, der über die Domäne `azurecontainerapps.io` der obersten Ebene verfügbar ist, wird Folgendes verwendet:
+Der Standort einer Container-App umfasst die Werte für die Umgebung, den Namen und die Region. Für den vollqualifizierten Domänennamen (FQDN), der über die Domäne `azurecontainerapps.io` der obersten Ebene verfügbar ist, wird Folgendes verwendet:
 
 - Name der Container-App
 - Eindeutiger Bezeichner der Umgebung

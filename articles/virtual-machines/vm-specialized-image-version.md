@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines virtuellen Computers aus einer spezialisierten Imageversion
-description: Erstellen Sie einen virtuellen Computer mithilfe einer spezialisierten Imageversion in einer Shared Image Gallery-Instanz.
+description: Erstellen Sie einen virtuellen Computer mithilfe einer spezialisierten Bildversion in einer Azure Compute Gallery.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,18 +9,22 @@ ms.topic: how-to
 ms.date: 08/05/2021
 ms.author: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 009678278d7900908572e81b7aab4222dc3c4a07
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: b500a7e02167f5373eb2dbdeb4bdb708c5b69966
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452481"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474494"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version"></a>Erstellen eines virtuellen Computers mithilfe einer spezialisierten Imageversion 
 
 **Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs 
 
-Erstellen Sie eine VM aus einer [spezialisierten Imageversion](./shared-image-galleries.md#generalized-and-specialized-images), die in einem Katalog mit freigegebenen Images gespeichert ist. Wenn Sie eine VM mit einer generalisierten Imageversion erstellen möchten, finden Sie weitere Informationen unter [Erstellen einer VM aus einer generalisierten Imageversion](vm-generalized-image-version.md).
+Erstellen Sie einen virtuellen Computer aus einer [spezialisierten Imageversion](./shared-image-galleries.md#generalized-and-specialized-images), die in einer Azure Compute Gallery (früher als Shared Image Gallery bezeichnet) gespeichert ist. Wenn Sie eine VM mit einer generalisierten Imageversion erstellen möchten, finden Sie weitere Informationen unter [Erstellen einer VM aus einer generalisierten Imageversion](vm-generalized-image-version.md).
+
+> [!IMPORTANT]
+> 
+> Wenn Sie zur Erstellung eines neuen VM eine spezielle VHD verwenden, behält der neue VM den Computernamen des ursprünglichen VM bei. Andere computerspezifische Informationen (z. B. die CMID) werden ebenfalls beibehalten. In einigen Fällen können diese doppelten Informationen Probleme verursachen. Achten Sie beim Kopieren einer VM darauf, auf welche Arten von computerspezifischen Informationen Ihre Anwendungen angewiesen sind.  
 
 Ersetzen Sie nach Bedarf die Ressourcennamen in diesen Beispielen. 
 
@@ -159,8 +163,8 @@ New-AzVM `
 
 **Nächste Schritte**
 
-Sie können auch mithilfe von Vorlagen eine Ressource im Katalog für freigegebene Images erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
+Sie können auch mithilfe von Vorlagen eine Ressource in der Azure Compute Gallery erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
 
-- [Erstellen eines Katalogs mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-create/)
-- [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Erstellen einer Azure Compute Gallery-Instanz](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Erstellen einer Bilddefinition in einer Azure Compute Gallery-Instanz](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Erstellen einer Bildversion in einer Azure Compute Gallery-Instanz](https://azure.microsoft.com/resources/templates/sig-image-version-create/)

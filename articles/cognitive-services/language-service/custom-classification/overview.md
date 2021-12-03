@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 729cf1ed5d17345c530bd78f9c5c75c15990ab12
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ec68964d1d0e43bf15e66750677326eca305784f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100411"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053063"
 ---
 # <a name="what-is-custom-text-classification-preview"></a>Worum handelt es sich bei der benutzerdefinierten Textklassifizierung (Vorschau)?
 
@@ -27,7 +27,13 @@ Die benutzerdefinierte Textklassifizierung wird als Teil der benutzerdefinierten
 Benutzerdefinierte Textklassifizierung unterstützt zwei Arten von Projekten: 
 
 * **Klassifizierung mit einzelner Bezeichnung:** Sie können für jede Datei Ihres Datasets eine einzelne Klasse zuweisen. Beispielsweise kann ein Drehbuch nur als „Action“ oder als „Thriller“ klassifiziert werden. 
-* **Klassifizierung mit mehreren Bezeichnungen:** Sie können für jede Datei Ihres Datasets mehrere Klassen zuweisen. Beispielsweise kann ein Drehbuch als „Action“ oder als „Action und Thriller“ klassifiziert werden. 
+* **Klassifizierung mit mehreren Bezeichnungen:** Sie können für jede Datei Ihres Datasets mehrere Klassen zuweisen. Beispielsweise kann ein Drehbuch als „Action“ oder als „Action und Thriller“ klassifiziert werden.
+
+Diese Dokumentation enthält die folgenden Arten von Artikeln:
+
+* [Schnellstarts](quickstart.md) sind Anleitungen zu den ersten Schritten, die Sie durch das Senden von Anforderungen an den Dienst führen.
+* Die Artikel zu [Konzepten](concepts/evaluation.md) enthalten Erläuterungen der Dienstfunktionen und -features.
+* [Anleitungen](how-to/tag-data.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.
 
 ## <a name="example-usage-scenarios"></a>Beispiele für Nutzungsszenarien
 
@@ -39,9 +45,9 @@ Supportcenter aller Art erhalten Tausende bis Hunderttausende von E-Mails/Ticket
 
 Search dient als wichtige Grundlage für Apps, mit der Textinhalte für Benutzer angezeigt werden. Häufige Szenarien sind die Katalog- oder Dokumentsuche, die Suche nach Einzelhandelsprodukten oder das Knowledge Mining bei Data Science.Viele Unternehmen aus verschiedenen Branchen möchten eine umfangreiche Suchumgebung für private, heterogene Inhalte erstellen, die sowohl strukturierte als auch unstrukturierte Dokumente umfassen. Als Teil ihrer Pipeline können Entwickler die benutzerdefinierte Klassifizierung verwenden, um Text in Klassen einzuteilen, die für ihre Branche relevant sind. Mithilfe der vorhergesagten Klassen kann die Indizierung der Datei für eine stärker angepasste Sucherfahrung angereichert werden. 
 
-## <a name="application-development-lifecycle"></a>Lebenszyklus der Anwendungsentwicklung
+## <a name="project-development-lifecycle"></a>Lebenszyklus der Projektentwicklung
 
-Das Erstellen einer benutzerdefinierten Klassifizierungsanwendung umfasst in der Regel mehrere verschiedene Schritte. 
+Das Erstellen eines benutzerdefinierten Klassifizierungsprojekts umfasst in der Regel mehrere verschiedene Schritte. 
 
 :::image type="content" source="media/development-lifecycle.png" alt-text="Lebenszyklus der Entwicklung" lightbox="media/development-lifecycle.png":::
 
@@ -65,6 +71,6 @@ Führen Sie die folgenden Schritte aus, um Ihr Modell optimal zu nutzen:
 
 * Verwenden Sie [diesen Schnellstartartikel](quickstart.md), um mit der Verwendung der benutzerdefinierten Textklassifizierung zu beginnen.  
 
-* Lesen Sie beim Durchlaufen des Lebenszyklus der Anwendungsentwicklung das [Glossar](glossary.md), um mehr über die Begriffe zu erfahren, die in der Dokumentation für dieses Feature verwendet werden. 
+* Lesen Sie beim Durchlaufen des Lebenszyklus der Projektentwicklung das [Glossar](glossary.md), um mehr über die Begriffe zu erfahren, die in der Dokumentation für dieses Feature verwendet werden. 
 
 * Informationen zu Aspekten wie [regionale Verfügbarkeit](service-limits.md#regional-availability) finden Sie in den [Diensteinschränkungen](service-limits.md).

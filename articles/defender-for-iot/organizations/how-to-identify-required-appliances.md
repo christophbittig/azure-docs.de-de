@@ -1,14 +1,14 @@
 ---
 title: Ermitteln der erforderlichen Appliances
 description: Erfahren Sie mehr über Hardware und virtuelle Appliances für zertifizierte Defender für IoT-Sensoren und die lokale Verwaltungskonsole.
-ms.date: 06/21/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 22a79bc1f78536df1dd1c248b75eb3b4db8b443d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1b0f96ac19c014ff2cc89df10cae3f21b38211ff
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238546"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343589"
 ---
 # <a name="identify-required-appliances"></a>Ermitteln der erforderlichen Appliances
 
@@ -271,7 +271,6 @@ Nachdem Sie Ihre Appliance gekauft haben, navigieren Sie zu **Defender für IoT*
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Informationen zur Installation von Azure Defender für IoT](how-to-install-software.md)
+[Informationen zur Installation von Microsoft Defender für IoT](how-to-install-software.md)
 
-[Informationen zur Netzwerkeinrichtung von Azure Defender für IoT](how-to-set-up-your-network.md)
-
+[Informationen zur Netzwerkeinrichtung von Microsoft Defender für IoT](how-to-set-up-your-network.md)

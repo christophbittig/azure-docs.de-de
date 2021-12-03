@@ -78,6 +78,8 @@
           href: container-instances-encrypt-data.md
         - name: Bereitstellen auf dedizierten Hosts
           href: container-instances-dedicated-hosts.md
+        - name: Bereitstellen in Verfügbarkeitszonen (Vorschau)
+          href: availability-zones.md
         - name: Verwenden eines Logic Apps-Connectors
           href: ../connectors/connectors-create-api-container-instances.md?toc=/azure/container-instances/toc.json&bc=/azure/container-instances/breadcrumb/toc.json
     - name: Containerszenarien
@@ -138,7 +140,7 @@
           href: container-instances-troubleshooting.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/container
     - name: REST
       href: /rest/api/container-instances

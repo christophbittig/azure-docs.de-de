@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: dbeb1a776aa5d813806cec6622e1ad1e515ccfc5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7f6cd42395b0255a7c0bd68285dd532363b2141f
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128623682"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179819"
 ---
 # <a name="automatically-renew-reservations"></a>Automatisches Verlängern von Reservierungen
 
@@ -61,7 +61,7 @@ Wenn die vorhandene Reservierung abläuft, wird eine neue Reservierung erworben.
 Wenn Sie eine der folgenden Änderungen an der ablaufenden Reservierung vornehmen, wird die Reservierungsverlängerung storniert:
 
 - Split
-- Zusammenführen
+- Merge
 - Übertragen der Reservierung von einem Konto auf ein anderes
 - Übertragen der Reservierung eines WebDirect-Abonnements auf ein Enterprise Agreement-Abonnement (EA) oder eine beliebige andere Kaufmethode
 - Verlängern der Registrierung
@@ -89,7 +89,7 @@ E-Mails zur Verlängerungsbenachrichtigung werden 30 Tage vor Ablauf und noch e
 
 Abhängig von Ihrer Kaufmethode werden E-Mails an verschiedene Personen gesendet:
 
-- EA-Kunden: E-Mails werden an die Benachrichtigungskontakte gesendet, die im EA-Portal festgelegt wurden.
+- EA-Kunden - E-Mails werden an die im EA-Portal festgelegten Benachrichtigungskontakte oder an Unternehmensadministratoren gesendet, die automatisch für den Erhalt von Nutzungsbenachrichtigungen registriert sind.
 - Individuelle Abonnementkunden mit nutzungsbasierten Tarifen: E-Mails werden an Benutzer gesendet, die als Kontoadministratoren eingerichtet wurden.
 - Cloud Solution Provider-Kunden: E-Mails werden an den Benachrichtigungskontakt des Partners gesendet.
 

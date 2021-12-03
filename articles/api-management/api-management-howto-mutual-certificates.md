@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/26/2021
 ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9db002f50675c45a0eeb7bb7e213d0dc65b64ab8
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 00d00c8dc5419b524eb71172adfb5271905d668f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006620"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057782"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management
 
@@ -79,7 +79,11 @@ So fügen Sie ein Schlüsseltresorzertifikat zu API Management hinzu
     > Die Identität benötigt Berechtigungen zum Abrufen und Auflisten von Zertifikaten im Schlüsseltresor. Wenn Sie den Zugriff auf den Schlüsseltresor noch nicht konfiguriert haben, werden Sie von API Management dazu aufgefordert. Der Dienst kann die Identität dann automatisch mit den erforderlichen Berechtigungen konfigurieren.
 1. Wählen Sie **Hinzufügen**.
 
+
+
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-kv.png" alt-text="Hinzufügen eines Schlüsseltresorzertifikats":::
+    
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="upload-a-certificate"></a>Hochladen eines Zertifikats
 
@@ -95,6 +99,9 @@ So laden Sie ein Schlüsseltresorzertifikat in API Management hoch
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-add.png" alt-text="Hochladen des Clientzertifikats":::
 
+
+1. Wählen Sie **Speichern** aus.
+
 Nachdem das Zertifikat hochgeladen wurde, wird es im Fenster **Zertifikate** angezeigt. Wenn Sie viele Zertifikate haben, notieren Sie sich den Fingerabdruck des gewünschten Zertifikats zum [Konfigurieren einer API zum Verwenden eines Clientzertifikats für die Gatewayauthentifizierung](#configure-an-api-to-use-client-certificate-for-gateway-authentication).
 
 > [!NOTE]
@@ -105,8 +112,8 @@ Nachdem das Zertifikat hochgeladen wurde, wird es im Fenster **Zertifikate** ang
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer API Management-Instanz.
 1. Wählen Sie unter **APIs** die Option **APIs** aus.
 1. Wählen Sie eine API aus der Liste aus. 
-2. Wählen Sie auf der Registerkarte **Entwurf** das Editorsymbol im Abschnitt **Back-End** aus.
-3. Wählen Sie in **Gatewayanmeldeinformationen** die Option **Clientzertifikat** aus, und wählen Sie Ihr Zertifikat aus der Dropdownliste aus.
+1. Wählen Sie auf der Registerkarte **Entwurf** das Editorsymbol im Abschnitt **Back-End** aus.
+1. Wählen Sie in **Gatewayanmeldeinformationen** die Option **Clientzertifikat** aus, und wählen Sie Ihr Zertifikat aus der Dropdownliste aus.
 1. Wählen Sie **Speichern** aus.
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png" alt-text="Verwenden eines Clientzertifikats für die Gatewayauthentifizierung":::

@@ -7,17 +7,17 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/02/2021
-ms.openlocfilehash: a19fd4aad4ee8e5bac7dc7cde2a5be4609a346fc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/03/2021
+ms.openlocfilehash: ad30dc4f59816f286f6ffe40909b76410e963c16
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796569"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555756"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Erstellen eines Wissensspeichers mithilfe von REST und Postman
 
-Der Wissensspeicher ist ein Feature von Azure Cognitive Search, das Skillsetausgaben aus einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) zur nachfolgenden Wissensgewinnung, Datenanalyse oder nachgelagerten Verarbeitung an Azure Storage sendet. Nachdem der Wissensspeicher aufgefüllt wurde, können Sie den Inhalt mit Tools wie [Storage-Explorer](knowledge-store-view-storage-explorer.md) oder [Power BI](knowledge-store-connect-power-bi.md) erkunden.
+Der Wissensspeicher ist ein Feature von Azure Cognitive Search, das Skillsetausgaben aus einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) zur nachfolgenden Wissensgewinnung, Datenanalyse oder nachgelagerten Verarbeitung an Azure Storage sendet. Nachdem der Wissensspeicher aufgefüllt wurde, können Sie den Inhalt mit Tools wie dem [Speicherbrowser](knowledge-store-view-storage-explorer.md) oder [Power BI](knowledge-store-connect-power-bi.md) erkunden.
 
 In diesem Artikel verwenden Sie die REST-API zum Erfassen, Anreichern und Erkunden einer Reihe von Kundenbewertungen von Hotelaufenthalten in einem Wissensspeicher in Azure Storage. Das Endergebnis ist ein Wissensspeicher mit originalem Textinhalt, der aus der Quelle stammt, sowie mittels KI generierter Inhalte, die eine Stimmungsbewertung, Schlüsselbegriffsextraktion, Spracherkennung und Textübersetzung von nicht englischsprachigen Kundenkommentaren enthalten.
 
@@ -38,11 +38,11 @@ Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund gen
 
    Wählen Sie den Kontotyp **StorageV2 (allgemein, Version 2)** aus.
 
-1. Erstellen Sie in der Azure Storage-Ressource in **Storage-Explorer** einen Blobcontainer mit dem Namen **hotel-reviews**.
+1. Erstellen Sie in der Azure Storage-Ressource im **Speicherbrowser** einen Blobcontainer mit dem Namen **hotel-reviews**.
 
 1. Wählen Sie oben auf der Seite **Hochladen** aus, um die Datei **HotelReviews-Free.csv** zu laden, die Sie im vorherigen Schritt heruntergeladen haben.
 
-   :::image type="content" source="media/knowledge-store-create-portal/blob-container-storage-explorer.png" alt-text="Screenshot: Storage-Explorer mit hochgeladener Datei und linkem Navigationsbereich" border="true":::
+   :::image type="content" source="media/knowledge-store-create-portal/blob-container-storage-explorer.png" alt-text="Screenshot: Speicherbrowser mit hochgeladener Datei und linkem Navigationsbereich" border="true":::
 
 1. Sie sind fast fertig mit dieser Ressource, aber bevor Sie diese Seiten verlassen, wählen Sie im linken Navigationsbereich **Zugriffsschlüssel** aus, um eine Verbindungszeichenfolge abzurufen, damit Sie diese Daten mit dem Indexer abrufen können.
 
@@ -372,13 +372,13 @@ Nach dem Senden der einzelnen Anforderungen sollte der Dienst mit der Erfolgsmel
 
 Navigieren Sie im Azure-Portal zur Seite **Übersicht** des Azure Cognitive Search-Diensts. Wählen Sie die Registerkarte **Indexer** und dann **hotels-reviews-ixr** aus. Innerhalb von ein oder zwei Minuten sollte sich der Status von „In Bearbeitung“ ohne Fehler und Warnungen in „Erfolgreich“ ändern.
 
-## <a name="check-tables-in-storage-explorer"></a>Überprüfen von Tabellen in Storage-Explorer
+## <a name="check-tables-in-storage-browser"></a>Überprüfen von Tabellen im Speicherbrowser
 
-Wechseln Sie im Azure-Portal zu Ihrem Azure Storage-Konto, und zeigen Sie in **Storage-Explorer** die neuen Tabellen an. Es sollten sechs Tabellen angezeigt werden, und zwar eine für jede im Skillset definierte Projektion.
+Wechseln Sie im Azure-Portal zu Ihrem Azure Storage-Konto, und zeigen Sie im **Speicherbrowser** die neuen Tabellen an. Es sollten sechs Tabellen angezeigt werden, und zwar eine für jede im Skillset definierte Projektion.
 
 Jede Tabelle wird mit den IDs generiert, die für die Kreuzverknüpfung der Tabellen in Abfragen erforderlich sind. Scrollen Sie beim Öffnen einer Tabelle über diese Felder, um die von der Pipeline hinzugefügten Inhaltsfelder anzuzeigen.
 
-   :::image type="content" source="media/knowledge-store-create-rest/knowledge-store-tables.png" alt-text="Screenshot der Wissensspeichertabellen in Storage-Explorer" border="true":::
+   :::image type="content" source="media/knowledge-store-create-portal/azure-table-hotel-reviews.png" alt-text="Screenshot: Wissensspeichertabellen im Speicherbrowser" border="true":::
 
 In dieser exemplarischen Vorgehensweise besteht der Wissensspeicher aus einer Reihe von Tabellen, die verschiedene Möglichkeiten zur Gestaltung und Strukturierung einer Tabelle aufzeigen. Die erste Gruppe mit drei Tabellen zeigt, wie die Ausgabe eines Skills für Shaper die Spalten und Zeilen festlegt. Die Tabellen 4 bis 6 werden aus Anweisungen zur Inline-Gestaltung erstellt, die in die Projektion selbst eingebettet sind. Bei beiden Ansätzen erzielen Sie das gleiche Ergebnis.
 
@@ -404,9 +404,9 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Daten mit Cognitive Services angereichert und die Ergebnisse in einen Wissensspeicher projiziert haben, können Sie mit Storage-Explorer oder anderen Apps Ihr angereichertes Dataset erkunden.
+Nachdem Sie Ihre Daten mit Cognitive Services angereichert und die Ergebnisse in einen Wissensspeicher projiziert haben, können Sie mit dem Speicherbrowser oder anderen Apps Ihr angereichertes Dataset erkunden.
 
-In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie diesen Wissensspeicher mit Storage-Explorer erkunden:
+In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie diesen Wissensspeicher mit dem Speicherbrowser untersuchen:
 
 > [!div class="nextstepaction"]
-> [Anzeigen mit Storage-Explorer](knowledge-store-view-storage-explorer.md)
+> [Anzeige mit dem Speicherbrowser](knowledge-store-view-storage-explorer.md)

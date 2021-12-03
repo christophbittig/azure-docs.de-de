@@ -6,14 +6,14 @@ author: mhamilton723
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: sample
-ms.date: 07/06/2020
+ms.date: 10/28/2021
 ms.author: marhamil
-ms.openlocfilehash: 590ddef27315f37719da5b28c68b6c402371e986
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: acf81e5d9b0502e2eab309ed2fdc239ffae9afc7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363254"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450284"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>Python-Beispiele für Cognitive Services für Big Data
 
@@ -21,7 +21,7 @@ Die folgenden Codeausschnitte sind bereit zur Ausführung und helfen Ihnen beim 
 
 Für die Beispiele in diesem Artikel werden diese Cognitive Services-Komponenten verwendet:
 
-- Textanalyse: Ermitteln der Stimmung (oder Laune) in einer Reihe von Sätzen
+- Sprachdienst: Ermitteln der Stimmung (oder der Laune) in verschiedenen Sätzen
 - Maschinelles Sehen: Abrufen der Tags (Einwortbeschreibungen) die einem Satz von Bildern zugeordnet sind
 - Bing-Bildersuche: Suchen im Web nach Bildern im Zusammenhang mit einer Abfrage in natürlicher Sprache
 - Spracherkennung: Transkribieren von Audiodateien zum Extrahieren textbasierter Transkriptionen
@@ -43,7 +43,7 @@ Zunächst müssen wir dem Projekt folgenden Code hinzufügen:
 ```python
 from mmlspark.cognitive import *
 
-# A general Cognitive Services key for Text Analytics and Computer Vision (or use separate keys that belong to each service)
+# A general Cognitive Services key for the Language service and Computer Vision (or use separate keys that belong to each service)
 service_key = "ADD_YOUR_SUBSCRIPION_KEY"
 # A Bing Search v7 subscription key
 bing_search_key = "ADD_YOUR_SUBSCRIPION_KEY"
@@ -54,9 +54,9 @@ anomaly_key = "ADD_YOUR_SUBSCRIPION_KEY"
 assert service_key != "ADD_YOUR_SUBSCRIPION_KEY"
 ```    
 
-## <a name="text-analytics-sample"></a>Beispiel für Textanalyse
+## <a name="language-service-sample"></a>Sprachdienstbeispiel
 
-Der [Textanalyse](../text-analytics/index.yml)-Dienst bietet mehrere Algorithmen zum Extrahieren intelligenter Erkenntnisse aus Text. Beispielsweise können wir die Stimmung eines Eingabetexts ermitteln. Der Dienst gibt eine Bewertung zwischen 0,0 und 1,0 zurück, wobei niedrige Scores auf eine negative Stimmung und hohe Scores auf eine positive Stimmung hindeuten.  In diesem Beispiel werden drei einfache Sätze verwendet, und es wird jeweils die Stimmung zurückgegeben.
+Der [Sprachdienst](../language-service/index.yml) bietet mehrere Algorithmen zum Extrahieren intelligenter Erkenntnisse aus Text. Beispielsweise können wir die Stimmung eines Eingabetexts ermitteln. Der Dienst gibt eine Bewertung zwischen 0,0 und 1,0 zurück, wobei niedrige Scores auf eine negative Stimmung und hohe Scores auf eine positive Stimmung hindeuten.  In diesem Beispiel werden drei einfache Sätze verwendet, und es wird jeweils die Stimmung zurückgegeben.
 
 ```python
 from pyspark.sql.functions import col
@@ -68,7 +68,7 @@ df = spark.createDataFrame([
   ("The cognitive services on spark aint bad", "en-US"),
 ], ["text", "language"])
 
-# Run the Text Analytics service with options
+# Run the Language service with options
 sentiment = (TextSentiment()
     .setTextCol("text")
     .setLocation("eastus")

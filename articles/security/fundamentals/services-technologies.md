@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 3d2c8f16e340b0b8eca30dd8a67010020b6362df
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 89d0bf17a27fad06362d5166dec4ad5883c36e0d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950427"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323157"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Bei Azure verfügbare Sicherheitsdienste und -technologien
 
@@ -35,7 +35,7 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 |--------|--------|
 |[Azure&nbsp;Security&nbsp;Center](../../security-center/security-center-introduction.md)| Eine Cloudlösung für Workloadschutz, die einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads bietet|
 |[Azure Key Vault](../../key-vault/general/overview.md)| Ein sicherer Kennwortspeicher für Kennwörter, Verbindungszeichenfolgen und andere Informationen, die Sie benötigen, damit Ihre Apps weiterhin funktionieren |
-|[Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md)|Ein Überwachungsdienst, der Telemetrie- und andere Daten erfasst und eine Abfragesprache sowie ein Analysemodul bietet, mit denen Sie Einblicke in die Abläufe Ihrer Apps und Ressourcen erhalten. Er kann alleine oder in Verbindung mit anderen Diensten wie Security Center verwendet werden. |
+|[Azure Monitor-Protokolle](../../azure-monitor/logs/log-query-overview.md)|Ein Überwachungsdienst, der Telemetrie- und andere Daten erfasst und eine Abfragesprache sowie ein Analysemodul bietet, mit denen Sie Einblicke in die Abläufe Ihrer Apps und Ressourcen erhalten. Kann alleine oder in Verbindung mit anderen Diensten wie Defender für Cloud verwendet werden. |
 |[Dokumentation zu Azure Dev/Test Lab](../../devtest-labs/devtest-lab-overview.md)|Ein Dienst, der Entwicklern und Testern dabei hilft, Umgebungen in Azure schnell zu erstellen und dabei unnötigen Aufwand zu minimieren und die Kosten unter Kontrolle zu halten  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->

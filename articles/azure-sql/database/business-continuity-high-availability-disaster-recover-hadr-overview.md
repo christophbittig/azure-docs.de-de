@@ -12,13 +12,13 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
-ms.date: 06/25/2019
-ms.openlocfilehash: 55490fdafb1e494492e4768ddacc9f8c451acebe
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.date: 10/18/2021
+ms.openlocfilehash: ac16a952c4697c99d224153fdb3dfb2684c66dc9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163187"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260643"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database--azure-sql-managed-instance"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,14 +42,14 @@ Aus Datenbankperspektive gibt es vier große potenzielle Störungsszenarien:
 
 Um das Risiko lokaler Hardware- und Softwarefehler zu mindern, bietet SQL-Datenbank eine [Hochverfügbarkeitsarchitektur](high-availability-sla.md), die nach diesen Fehlern eine automatische Wiederherstellung mit einer SLA von bis zu 99,995 Prozent Verfügbarkeit gewährleistet.  
 
-Um Ihr Unternehmen vor Datenverlusten zu schützen, werden von Azure SQL-Datenbank und Azure SQL Managed Instance automatisch wöchentliche vollständige Datenbanksicherungen, alle 12 Stunden differenzielle Datenbanksicherungen und alle 5–10 Minuten Transaktionsprotokollsicherungen durchgeführt. Die Sicherungen werden für alle Dienstebenen mindestens 7 Tage im RA-GRS-Speicher vorgehalten. Alle Dienstebenen außer „Basic“ unterstützen konfigurierbare Aufbewahrungszeiträume von bis zu 35 Tagen für die Point-in-Time-Wiederherstellung.
+Um Ihr Unternehmen vor Datenverlusten zu schützen, werden von Azure SQL-Datenbank und Azure SQL Managed Instance automatisch wöchentliche vollständige Datenbanksicherungen, alle 12 Stunden differenzielle Datenbanksicherungen und alle 5–10 Minuten Transaktionsprotokollsicherungen durchgeführt. Die Sicherungen werden für alle Dienstebenen mindestens sieben Tage lang im georedundanten Speicher mit Lesezugriff aufbewahrt. Alle Dienstebenen außer „Basic“ unterstützen konfigurierbare Aufbewahrungszeiträume von bis zu 35 Tagen für die Point-in-Time-Wiederherstellung.
 
 Azure SQL-Datenbank und Azure SQL Managed Instance bieten außerdem mehrere Features für Geschäftskontinuität, mit denen sich verschiedene ungeplante Szenarien reduzieren lassen.
 
 - [Temporäre Tabellen](../temporal-tables.md) ermöglichen es Ihnen, Zeilenversionen eines beliebigen Zeitpunkts wiederherzustellen.
 - [Integrierte, automatisierte Sicherungen](automated-backups-overview.md) und die [Point-in-Time-Wiederherstellung](recovery-using-backups.md#point-in-time-restore) ermöglichen es Ihnen, die vollständige Datenbank zu einem Zeitpunkt innerhalb des konfigurierten Aufbewahrungszeitraums von bis zu 35 Tagen wiederherzustellen.
 - Sie können [eine gelöschte Datenbank auf den Punkt wiederherstellen](recovery-using-backups.md#deleted-database-restore), an dem sie gelöscht wurde, sofern der **Server noch vorhanden ist**.
-- [Langfristige Sicherungsaufbewahrung](long-term-retention-overview.md) ermöglicht es Ihnen, die Sicherungen bis zu 10 Jahre aufzubewahren. Dies ist die eingeschränkte öffentliche Vorschauversion für SQL Managed Instance
+- [Langfristige Sicherungsaufbewahrung](long-term-retention-overview.md) ermöglicht es Ihnen, die Sicherungen bis zu 10 Jahre aufzubewahren. Dies ist die eingeschränkte Public Preview für SQL Managed Instance.
 - Die [aktive Georeplikation](active-geo-replication-overview.md) ermöglicht es Ihnen, lesbare Replikate zu erstellen und bei Ausfall eines Rechenzentrums oder bei einem Anwendungsupgrade ein manuelles Failover auf ein beliebiges Replikat durchzuführen.
 - Eine [Autofailover-Gruppe](auto-failover-group-overview.md#terminology-and-capabilities) ermöglicht der Anwendung im Fall eines Rechenzentrumsausfalls eine automatische Wiederherstellung.
 
@@ -84,9 +84,9 @@ Es kommt zwar sehr selten vor, aber es ist möglich, dass ein Azure-Rechenzentru
 
 Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als RTO (Recovery Time Objective) bezeichnet. Sie müssen auch herausfinden, über welchen Zeitraum kürzlich durchgeführter Datenupdates (in einem bestimmten Zeitraum) maximal verloren gehen dürfen, wenn die Anwendung nach einer unvorhergesehenen Störung wiederhergestellt wird. Der potenzielle Datenverlust wird als RPO (Recovery Point Objective) bezeichnet.
 
-Andere Wiederherstellungsmethoden bieten andere RPO- und RTO-Ebenen. Sie können eine bestimmte Wiederherstellungsmethode auswählen oder verschiedene Methoden kombinieren, um Anwendungen vollständig wiederherzustellen. In der folgenden Tabelle werden die RPO- und RTO-Werte der einzelnen Wiederherstellungsoptionen verglichen. Gruppen für automatisches Failover vereinfachen die Bereitstellung und die Verwendung von Georeplikation und fügen die zusätzlichen Funktionen hinzu, wie in der folgenden Tabelle beschrieben.
+Andere Wiederherstellungsmethoden bieten andere RPO- und RTO-Ebenen. Sie können eine bestimmte Wiederherstellungsmethode auswählen oder verschiedene Methoden kombinieren, um Anwendungen vollständig wiederherzustellen. In der folgenden Tabelle werden die RPO- und RTO-Werte der einzelnen Wiederherstellungsoptionen verglichen. Autofailover-Gruppen vereinfachen die Bereitstellung und die Verwendung von Georeplikation und fügen die in der folgenden Tabelle beschriebenen zusätzlichen Funktionen hinzu:
 
-| Wiederherstellungsmethode | RTO | RPO |
+| **Wiederherstellungsmethode** | **RTO** | **RPO** |
 | --- | --- | --- |
 | Geowiederherstellung von georeplizierten Sicherungen | 12 Stunden | 1 Stunde |
 | Autofailover-Gruppen | 1 Stunde | 5 s |
@@ -104,9 +104,6 @@ Verwenden Sie Autofailover-Gruppen, wenn Ihre Anwendung einen Teil der folgenden
 - Daten ändern sich sehr schnell, und ein Datenverlust über eine Stunde ist nicht akzeptabel.
 - Die zusätzlichen Kosten für die Georeplikation sind niedriger als die potenziellen Kosten aufgrund der finanziellen Haftung und die damit einhergehenden Geschäftsverluste.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
->
-
 Sie könnten z. B. je nach den Anforderungen Ihrer Anwendung eine Kombination aus Datenbanksicherungen und aktiver Georeplikation verwenden. Überlegungen zum Entwurf eigenständiger Datenbanken und zum Einsatz von Pools für elastische Datenbanken mit diesen Funktionen für Geschäftskontinuität finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](designing-cloud-solutions-for-disaster-recovery.md) und [Strategien für die Notfallwiederherstellung mit Pools für elastische Datenbanken](disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 Die nachstehenden Abschnitte bieten eine Übersicht über die Schritte, die zur Wiederherstellung mithilfe von Datenbanksicherungen oder der aktiven Georeplikation erforderlich sind. Weitere Schritte einschließlich der Planungsanforderungen und Schritte nach der Wiederherstellung sowie Informationen zum Simulieren eines Ausfalls, um eine Strategie für die Notfallwiederherstellung zu entwickeln, finden Sie unter [Wiederherstellen einer Datenbank in SQL-Datenbank nach einem Ausfall](disaster-recovery-guidance.md).
@@ -115,7 +112,7 @@ Die nachstehenden Abschnitte bieten eine Übersicht über die Schritte, die zur 
 
 Unabhängig von der Funktion für die Geschäftskontinuität, die Sie einsetzen werden, müssen Sie folgende Aktivitäten ausführen:
 
-- Ermitteln und Vorbereiten des Zielservers, einschließlich IP-Firewallregeln auf Serverebene, Anmeldedaten und Berechtigungen auf Ebene der Masterdatenbank.
+- Ermitteln und Vorbereiten des Zielservers, einschließlich IP-Firewallregeln auf Serverebene, Anmeldeinformationen und Berechtigungen auf Ebene der `master`-Datenbank
 - Bestimmen, wie Clients und Clientanwendungen an den neuen Server umgeleitet werden sollen.
 - Dokumentieren weiterer Abhängigkeiten wie z.B. Überwachungseinstellungen und Warnungen.
 

@@ -96,6 +96,8 @@
           href: how-to-control-access.md
         - name: Konfigurieren der IP-Filterung
           href: iot-dps-ip-filtering.md
+        - name: Verwalten des Zugriffs über öffentliche Netzwerke
+          href: public-network-access.md
     - name: Bereitstellen von IoT Edge-Geräten
       items:
         - name: Linux
@@ -104,8 +106,12 @@
         - name: Windows
           href: ../iot-edge/how-to-provision-devices-at-scale-windows-tpm.md
           maintainContext: true
-    - name: Problembehandlung
-      href: how-to-troubleshoot-dps.md
+    - name: Problembehandlung und häufig gestellte Fragen
+      items:
+        - name: Problembehandlung für DPS
+          href: how-to-troubleshoot-dps.md
+        - name: Häufig gestellte Fragen zu DPS
+          href: dps-faq.yml
 - name: Verweis
   items:
     - name: REST-API

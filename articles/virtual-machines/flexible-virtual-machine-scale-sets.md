@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 10/13/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: b5c52d2ab3b788a1f06edbc59d8dab05cc8285dd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3403cebab79b49f3a22353bec0a03b68b5a24f0f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130257991"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432831"
 ---
 # <a name="flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>Flexible Orchestrierung für VM-Skalierungsgruppen in Azure
 
@@ -64,7 +64,7 @@ Zur Sicherstellung von Redundanz und einer höheren Leistung werden Anwendungen 
     - Die automatische Skalierung verringert auch die Anzahl von unnötigen VM-Instanzen, auf denen Ihre Anwendung ausgeführt wird, wenn die Nachfrage gering ist. Kunden erhalten weiterhin eine akzeptable Leistungsebene, wenn die Nachfrage zunimmt und automatisch weitere VM-Instanzen hinzugefügt werden. Diese Möglichkeit trägt zur Reduzierung von Kosten und zur effizienten bedarfsabhängigen Erstellung von Azure-Ressourcen bei.
 
 - **Großer Umfang**
-    - Skalierungsgruppen unterstützen bis zu 1.000 VM-Instanzen für Marketplace-Standardimages und benutzerdefinierte Images über Shared Image Gallery. Wenn Sie eine Skalierungsgruppe mithilfe eines verwalteten Images erstellen, beträgt der Grenzwert 600 VM-Instanzen.
+    - Skalierungssätze unterstützen bis zu 1.000 VM-Instanzen für Standard-Marktplatz-Images und benutzerdefinierte Images über die Azure Compute Gallery (früher bekannt als Shared Image Gallery). Wenn Sie eine Skalierungsgruppe mithilfe eines verwalteten Images erstellen, beträgt der Grenzwert 600 VM-Instanzen.
     - Verwenden Sie [Azure Managed Disks](../virtual-machines/managed-disks-overview.md), um für Produktionsworkloads die beste Leistung zu erzielen.
 
 
@@ -98,6 +98,10 @@ Der flexible Orchestrierungsmodus kann mit VM-SKUs verwendet werden, die [speich
 az vm list-skus -l eastus --size standard_d2s_v3 --query "[].capabilities[].[name, value]" -o table
 ```
 
+> [!IMPORTANT]
+> Das Netzwerkverhalten hängt davon ab, wie Sie virtuelle Computer in Ihrer Skalierungsgruppe erstellen. Weitere Informationen finden Sie im Abschnitt [Skalierbare Netzwerkkonnektivität](../virtual-machines/flexible-virtual-machine-scale-sets-migration-resources.md#create-scalable-network-connectivity).
+
+
 ## <a name="features"></a>Funktionen
 In den folgenden Tabellen sind die Features des Orchestrierungsmodus „Flexibel“ sowie Links zur entsprechenden Dokumentation aufgeführt.
 
@@ -120,7 +124,7 @@ In den folgenden Tabellen sind die Features des Orchestrierungsmodus „Flexibel
 | Verwaltete Identität  | Nur benutzerseitig zugewiesene Identität  |
 | Hinzufügung/Entfernung einer vorhandenen VM für Gruppe  | Nein  |
 | Service Fabric  | Nein  |
-| Azure Kubernetes Service (AKS)-/AKE-/k8s-Knotenpool  | Nein  |
+| Azure Kubernetes Service (AKS)/AKE  | Nein  |
 | UserData  | Partiell, UserData können für einzelne VMs angegeben werden. |
 
 

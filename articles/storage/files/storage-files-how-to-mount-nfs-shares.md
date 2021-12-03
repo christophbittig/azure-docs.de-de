@@ -1,23 +1,23 @@
 ---
-title: 'Einbinden einer Azure-NFS-Dateifreigabe (Vorschau): Azure Files'
+title: Einbinden einer Azure-NFS-Dateifreigabe – Azure Files
 description: Erfahren Sie, wie Sie eine NFS (Network File System)-Freigabe einbinden.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 11/16/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8f3565f05fc04a74e761b1070f0374677703d225
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: de0a4ef2530971ae2261f6a3e5ab2f1ef8acdc31
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113225251"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523769"
 ---
-# <a name="how-to-mount-an-nfs-file-share-preview"></a>Einbinden einer NFS-Dateifreigabe (Vorschau)
+# <a name="how-to-mount-an-nfs-file-share"></a>Einbinden einer NFS-Dateifreigabe
 
-[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Linux-Distributionen mit dem SMB- oder NFS-Protokoll (Server Message Block/Network File System) (Vorschau) eingebunden werden. Dieser Artikel konzentriert sich auf die Einbindung mit NFS. Ausführliche Informationen zum Einbinden mit SMB finden Sie unter [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md). Ausführliche Informationen zu den einzelnen verfügbaren Protokollen finden Sie unter [Azure-Dateifreigabeprotokolle](storage-files-planning.md#available-protocols).
+[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Linux-Distributionen mit dem SMB (Server Message Block)-Protokoll oder dem NFS (Network File System)-Protokoll eingebunden werden. Dieser Artikel konzentriert sich auf die Einbindung mit NFS. Ausführliche Informationen zum Einbinden mit SMB finden Sie unter [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md). Ausführliche Informationen zu den einzelnen verfügbaren Protokollen finden Sie unter [Azure-Dateifreigabeprotokolle](storage-files-planning.md#available-protocols).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -30,10 +30,10 @@ ms.locfileid: "113225251"
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Erstellen einer NFS-Freigabe](storage-files-how-to-create-nfs-shares.md)
+- Öffnen Sie Port 2049 auf jedem Client, auf dem Sie Ihre NFS-Freigabe einbinden möchten.
 
     > [!IMPORTANT]
     > Der Zugriff auf NFS-Freigaben ist nur über vertrauenswürdige Netzwerke möglich. Verbindungen mit Ihrer NFS-Freigabe müssen von einer der folgenden Quellen stammen:
-
 - Verwenden Sie eine der folgenden Netzwerklösungen:
     - Entweder [Erstellen eines privaten Endpunkts](storage-files-networking-endpoints.md#create-a-private-endpoint) (empfohlen) oder [Einschränken des Zugriffs auf den öffentlichen Endpunkt](storage-files-networking-endpoints.md#restrict-public-endpoint-access)
     - [Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md)
@@ -42,12 +42,12 @@ ms.locfileid: "113225251"
 
 ## <a name="disable-secure-transfer"></a>Deaktivieren der sicheren Übertragung
 
-1. Melden Sie sich beim Azure-Portal an, und greifen Sie auf das Speicherkonto zu, das die erstellte NFS-Freigabe enthält.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an und greifen Sie auf das Speicherkonto zu, das die von Ihnen erstellte NFS-Freigabe enthält.
 1. Wählen Sie **Konfiguration** aus.
 1. Wählen Sie für **Sichere Übertragung erforderlich** die Einstellung **Deaktiviert** aus.
 1. Wählen Sie **Speichern** aus.
 
-    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Screenshot mit dem Konfigurationsbildschirm des Speicherkontos und der deaktivierten Option „Sichere Übertragung erforderlich“":::
+    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="Screenshot mit dem Konfigurationsbildschirm des Speicherkontos und der deaktivierten Option „Sichere Übertragung erforderlich“" lightbox="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png":::
 
 ## <a name="mount-an-nfs-share"></a>Einbinden einer NFS-Freigabe
 

@@ -1,92 +1,118 @@
 ---
-title: Anfügen oder Trennen eines VM-Datenträgers
-description: Erfahren Sie, wie Sie einen Datenträger an einen virtuellen Computer in Azure DevTest Labs anfügen oder von diesem trennen.
+title: Anfügen eines vorhandenen Datenträgers an eine Lab-VM
+description: In diesem Artikel erfahren Sie, wie Sie einen Lab-Datenträger an eine Lab-VM in Azure DevTest Labs anfügen oder von dieser trennen.
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: 4ff9508e065814f5a548d6468ae959af519469e8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/26/2021
+ms.openlocfilehash: 8afd2fff50a893fb293d7b419c4839c34487c32d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128634784"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453934"
 ---
-# <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Anfügen oder Trennen eines Datenträgers an einen oder von einem virtuellen Computer in Azure DevTest Labs
-[Azure Managed Disks](../virtual-machines/managed-disks-overview.md) verwaltet die Speicherkonten, die VM-Datenträgern zugeordnet sind. Ein Benutzer muss lediglich einen neuen Datenträger an eine VM anfügen sowie Typ und Größe, die er benötigt, angeben – der Datenträger wird dann automatisch von Azure erstellt und verwaltet. Anschließend kann der Datenträger von der VM getrennt und später wieder an dieselbe VM oder an eine andere VM, die diesem Benutzer gehört, angefügt werden.
+# <a name="attach-or-detach-a-lab-data-disk-to-a-lab-virtual-machine-in-azure-devtest-labs"></a>Anfügen oder Trennen eines Lab-Datenträgers an eine bzw. von einer Lab-VM in Azure DevTest Labs
 
-Diese Funktionalität ist besonders für die Verwaltung von Speicher oder Software außerhalb der einzelnen virtuellen Computer praktisch. Befindet sich der Speicher oder die Software bereits auf einem Datenträger, kann dieser einfach an eine VM angefügt, von dieser getrennt und wieder an eine VM des Benutzers, dem dieser Datenträger gehört, angefügt werden.
+Sie können einen neuen [Labdatenträger](../virtual-machines/managed-disks-overview.md) für einen virtuellen Azure-Labcomputer (VM) erstellen und anfügen. Dieser Datenträger kann dann getrennt und gelöscht, wieder angefügt oder an eine andere Lab-VM angefügt werden, deren Eigentümer*in Sie sind. Diese Funktionalität ist besonders für die Verwaltung von Speicher oder Software außerhalb der einzelnen virtuellen Computer praktisch.
 
-## <a name="attach-a-data-disk"></a>Datenträger anfügen
-Bevor Sie einen Datenträger an eine VM anfügen, lesen Sie diese Tipps:
+In diesem Artikel erfahren Sie, wie Sie einen Datenträger an einen virtuellen Labcomputer anfügen und davon trennen.
 
-- Die Größe der VM bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../virtual-machines/sizes.md).
-- Sie können nur einen Datenträger an eine gegenwärtig ausgeführte VM anfügen. Bevor Sie versuchen, einen Datenträger anzufügen, stellen Sie sicher, dass die VM ausgeführt wird.
+## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="attach-a-new-disk"></a>Anfügen eines neuen Datenträgers
+Ihr virtueller Labcomputer muss ausgeführt werden. Die Größe des virtuellen Computers entscheidet darüber, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../virtual-machines/sizes.md).
+
+## <a name="attach-a-new-data-disk"></a>Anschließen eines neuen Datenträgers
+
 Führen Sie die folgenden Schritte durch, um einen neuen verwalteten Datenträger zu erstellen und an eine VM in Azure DevTest Labs anzufügen:
 
-1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
-1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
-1. Wählen Sie in der Liste der Labs das gewünschte Lab aus. 
-1. Wählen Sie in der Liste **Meine virtuellen Computer** eine gegenwärtig ausgeführte VM aus.
-1. Klicken Sie im Menü auf der linken Seite auf **Datenträger**.
-1. Wählen Sie **Neuen anfügen** aus, um einen neuen Datenträger zu erstellen und an die VM anzufügen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-    ![Anfügen eines neuen Datenträgers an einen virtuellen Computer](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png)
-1. Füllen Sie den Bereich **Neuen Datenträger anfügen** aus, indem Sie Name, Typ und Größe für den Datenträger angeben.
+1. Navigieren Sie in **DevTest Labs** zu Ihrem Lab.
 
-    ![Ausfüllen des Formulars „Neuen Datenträger anfügen“](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
-1. Klicken Sie auf **OK**.
+1. Wählen Sie Ihre gegenwärtig ausgeführte VM aus.
 
-Nach einem kurzen Augenblick wird der neue Datenträger erstellt, an die VM angefügt und in der Liste der **Datenträger** für die jeweilige VM angezeigt.
+1. Klicken Sie auf der Seite **Virtueller Computer** unter **Einstellungen** auf **Datenträger**.
+ 
+1. Klicken Sie auf **Neuen anfügen**.
 
-### <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers
-Führen Sie die folgenden Schritte durch, um einen bereits vorhandenen Datenträger an eine gegenwärtig ausgeführte VM anzufügen. 
+    :::image type="content" source="./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png" alt-text="Screenshot: Anfügen eines neuen Datenträgers an einen virtuellen Computer":::
 
-1. Wählen Sie eine ausgeführte VM aus, an die Sie erneut einen Datenträger anfügen möchten.
-1. Klicken Sie im Menü auf der linken Seite auf **Datenträger**.
-1. Wählen Sie **Vorhandenen anfügen** aus, um einen vorhandenen Datenträger an die VM anzufügen.
+1. Geben Sie auf der Seite **Neuen Datenträger anfügen** die folgenden Informationen an: 
 
-    ![Screenshot, der die ausgewählte Einstellungen „Datenträger“ und „Vorhandene anfügen“ zeigt.](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
+    |Eigenschaft | BESCHREIBUNG |
+    |---|---|
+    |Name|Geben Sie einen eindeutigen Namen ein.|
+    |Datenträgertyp| Wählen Sie in der Dropdownliste einen [Datenträgertyp](../virtual-machines/disks-types.md) aus.|
+    |Größe (GiB)|Geben Sie eine Größe in Gigabyte ein.|
 
-1. Klicken Sie im Bereich **Vorhandenen Datenträger anfügen** auf „OK“.
+    :::image type="content" source="./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png" alt-text="Screenshot: Ausfüllen des Formulars „Neuen Datenträger anfügen“":::
 
-    ![Anfügen eines vorhandenen Datenträgers an einen virtuellen Computer](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing.png)
+1. Wählen Sie **OK** aus.
 
-Nach einem kurzen Augenblick wird der Datenträger an die VM angefügt und in der Liste der **Datenträger** für diese VM angezeigt.
+1. Sie werden zurück auf die Seite **Virtueller Computer** geleitet. Zeigen Sie unter **Datenträger** Ihren angefügten Datenträger an.
+
+    :::image type="content" source="./media/devtest-lab-attach-detach-data-disk/devtest-lab-attached-data-disk.png" alt-text="Screenshot: Angefügter Datenträger unter „Datenträger“":::
 
 ## <a name="detach-a-data-disk"></a>Trennen eines Datenträgers
-Wenn Sie einen Datenträger, der einer VM angefügt ist, nicht mehr benötigen, können Sie ihn mühelos trennen. Bei dem Trennvorgang wird der Datenträger aus der VM entfernt, jedoch zur späteren Verwendung im Speicher beibehalten.
 
-Wenn Sie die vorhandenen Daten auf dem Datenträger erneut verwenden möchten, können Sie ihn erneut an denselben virtuellen Computer oder an einen anderen anfügen.
+Beim Trennen wird der Labdatenträger von der Lab-VM entfernt, aber für eine spätere Verwendung im Speicher aufbewahrt.
 
-### <a name="detach-from-the-vms-management-pane"></a>Trennen eines Datenträgers über den Verwaltungsbereich einer VM
-1. Wählen Sie aus der Liste der virtuellen Computer eine VM aus, an die ein Datenträger angefügt wurde.
-1. Klicken Sie im Menü auf der linken Seite auf **Datenträger**.
-1. Wählen Sie in der Liste der **Datenträger** den Datenträger aus, der getrennt werden soll.
+### <a name="detach-from-the-vms-management-page"></a>Trennen über die Verwaltungsseite der VM
 
-    ![Auswählen von Datenträgern für einen virtuellen Computer](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png) 
-1. Wählen Sie im oberen Bereich mit den Details zum Datenträger **Trennen** aus.
+1. Navigieren Sie in **DevTest Labs** zu Ihrem Lab.
 
-    ![Screenshot, der den Detailbereich eines Datenträgers mit hervorgehobener Aktion „Trennen“ zeigt.](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
-1. Wählen Sie **Ja** aus, um zu bestätigen, dass der Datenträger getrennt werden sollen.
+1. Wählen Sie Ihre gegenwärtig ausgeführte VM mit einem angefügten Datenträger aus.
 
-Der Datenträger wird getrennt und steht zum Anfügen an eine andere VM zur Verfügung. 
-### <a name="detach-from-the-labs-main-pane"></a>Trennen eines Datenträgers über den Lab-Hauptbereich
-1. Wählen Sie im Lab-Hauptbereich **Meine Datenträger** aus.
-1. Klicken Sie mit der rechten Maustaste auf den zu trennenden Datenträger, oder klicken Sie auf die Auslassungspunkte ( **...** ), und wählen Sie **Trennen** aus.
+1. Klicken Sie auf der Seite **Virtueller Computer** unter **Einstellungen** auf **Datenträger**.
 
-    ![Trennen eines Datenträgers](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk.png)
+1. Wählen Sie unter **Datenträger** den Datenträger aus, der getrennt werden soll.
+
+    :::image type="content" source="./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png" alt-text="Screenshot: Ausgewählte Datenträger für einen virtuellen Computer":::
+
+1. Klicken Sie auf der Seite **Datenträger** auf **Trennen**.
+
+    :::image type="content" source="./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk-2.png" alt-text="Screenshot: Detailbereich eines Datenträgers mit hervorgehobener Aktion „Trennen“":::
+
+1. Klicken Sie auf **OK**, um zu bestätigen, dass der Datenträger getrennt werden soll. Der Datenträger wird getrennt und steht zum Anfügen an eine andere VM zur Verfügung. 
+
+### <a name="detach-from-the-labs-management-page"></a>Trennen über die Verwaltungsseite des Labs
+
+1. Navigieren Sie in **DevTest Labs** zu Ihrem Lab.
+
+1. Klicken Sie unter **Eigenes Lab** auf **Eigene Datenträger**.
+
+1. Klicken Sie bei dem Datenträger, der getrennt werden soll, auf die Auslassungspunkte ( **...** ) und anschließend auf **Trennen**.
+
+    :::image type="content" source="./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk.png" alt-text="Screenshot: Trennen eines Datenträgers":::
+
 1. Wählen Sie **Ja** aus, um zu bestätigen, dass der Datenträger getrennt werden sollen.
 
    > [!NOTE]
    > Wenn ein Datenträger bereits getrennt ist, können Sie festlegen, dass er aus der Liste der verfügbaren Datenträger entfernt werden soll. Klicken Sie hierzu auf **Löschen**.
-   >
-   >
+
+## <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers
+
+Führen Sie die folgenden Schritte aus, um einen bereits vorhandenen verfügbaren Datenträger an eine gegenwärtig ausgeführte VM anzufügen. 
+
+1. Navigieren Sie in **DevTest Labs** zu Ihrem Lab.
+
+1. Wählen Sie Ihre gegenwärtig ausgeführte VM aus.
+
+1. Klicken Sie auf der Seite **Virtueller Computer** unter **Einstellungen** auf **Datenträger**.
+
+1. Klicken Sie auf **Vorhandenen anfügen**.
+
+    :::image type="content" source="./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png" alt-text="Screenshot: Ausgewählte Einstellung „Datenträger“ und hervorgehobene Option „Vorhandenen anfügen“":::
+
+1. Wählen Sie auf der Seite **Vorhandenen Datenträger anfügen** einen Datenträger aus, und klicken Sie dann auf **OK**. Nach einem kurzen Augenblick wird der Datenträger an die VM angefügt und in der Liste der **Datenträger** für diese VM angezeigt.
+
+    :::image type="content" source="./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing.png" alt-text="Screenshot: Anfügen eines vorhandenen Datenträgers an einen virtuellen Computer":::
 
 ## <a name="upgrade-an-unmanaged-data-disk"></a>Durchführen eines Upgrades für einen nicht verwalteten Datenträger
-Wenn Sie bereits eine VM besitzen, die nicht verwaltete Datenträger verwendet, können Sie die VM problemlos für die Verwendung von verwalteten Datenträgern konfigurieren. Bei diesem Prozess werden sowohl der Betriebssystemdatenträger als auch alle anderen angefügten Datenträger konvertiert.
 
-Um ein Upgrade für einen nicht verwalteten Datenträger durchzuführen, führen Sie die in diesem Artikel erläuterten Schritte zum [Trennen des Datenträgers](#detach-a-data-disk) von einer nicht verwalteten VM durch. [Fügen Sie den Datenträger erneut an eine verwaltete VM an](#attach-an-existing-disk), damit automatisch ein Upgrade für den nicht verwalteten Datenträger auf einen verwalteten Datenträger durchgeführt wird.
+Wenn Sie über eine VM mit nicht verwalteten Datenträgern verfügen, können Sie diese VM so konvertieren, dass sie verwaltete Datenträger verwendet. Bei diesem Prozess werden sowohl der Betriebssystemdatenträger als auch alle anderen angefügten Datenträger konvertiert.
+
+[Trennen Sie zunächst den Datenträger](#detach-a-data-disk) von der nicht verwalteten VM. [Fügen Sie den Datenträger erneut an eine verwaltete VM an](#attach-an-existing-disk), damit automatisch ein Upgrade für den nicht verwalteten Datenträger auf einen verwalteten Datenträger durchgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Erfahren Sie, wie Datenträger für [abrufbare VMs](devtest-lab-add-claimable-vm.md#unclaim-a-vm) verwaltet werden.

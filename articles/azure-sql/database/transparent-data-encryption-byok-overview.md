@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 06/23/2021
-ms.openlocfilehash: c3f6046617458606d13aab243c96ef24246714fd
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 8f056fd416b6bbb36296a57fca26906852eb3af8
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090311"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156580"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -82,15 +82,21 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 - Der Schlüsseltresor und die (verwaltete) SQL-Datenbank-Instanz müssen demselben Azure Active Directory-Mandanten angehören. Mandantenübergreifende Interaktionen zwischen Schlüsseltresor und Server werden nicht unterstützt. Damit Ressourcen später verschoben werden können, muss die TDE mit AKV neu konfiguriert werden. Erfahren Sie mehr über das [Verschieben von Ressourcen](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- Die Funktion zum [vorläufigen Löschen](../../key-vault/general/soft-delete-overview.md) muss im Schlüsseltresor aktiviert sein, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie nicht in der Zwischenzeit vom Kunden wiederhergestellt oder endgültig gelöscht werden. Den Aktionen *Wiederherstellen* und *Endgültig löschen* sind über Zugriffsrichtlinien für den Schlüsseltresor eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert und kann über [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) oder die [CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli) aktiviert werden. Die Aktivierung über das Azure-Portal ist nicht möglich.  
+- Die Funktionen [Soft-Löschen](../../key-vault/general/soft-delete-overview.md) und [Löschschutz](../../key-vault/general/soft-delete-overview.md#purge-protection) müssen auf dem Schlüsseltresor aktiviert sein, um Datenverluste durch versehentliches Löschen von Schlüsseln (oder des Schlüsseltresors) zu vermeiden. 
+    - Weich gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie nicht vom Kunden wiederhergestellt oder gelöscht werden. Den Aktionen *Wiederherstellen* und *Endgültig löschen* sind über Zugriffsrichtlinien für den Schlüsseltresor eigene Berechtigungen zugewiesen. Die Funktion "Soft-delete" kann über das Azure-Portal, [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) oder [Azure CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli) aktiviert werden.
+    - Der Bereinigungsschutz kann mit [Azure CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli) oder [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) aktiviert werden. Wenn der Bereinigungsschutz aktiviert ist, kann ein Tresor oder ein Objekt im gelöschten Zustand erst bereinigt werden, wenn die Aufbewahrungsfrist abgelaufen ist. Der Standardaufbewahrungszeitraum beträgt 90 Tage, kann aber über das Azure-Portal zwischen 7 und 90 Tagen konfiguriert werden.   
 
-- Gewähren Sie dem Server oder der verwalteten Instanz über die entsprechende Azure Active Directory-Identität Zugriff auf den Schlüsseltresor (get, wrapKey, unwrapKey). Wenn Sie das Azure-Portal verwenden, wird die Azure AD-Identität automatisch erstellt. Bei der Verwendung von PowerShell oder der CLI muss die Azure AD-Identität explizit erstellt werden, und der Abschluss des Vorgangs sollte überprüft werden. Unter [Konfigurieren von TDE mit BYOK](transparent-data-encryption-byok-configure.md) und [Konfigurieren von TDE mit BYOK für SQL Managed Instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) finden Sie ausführliche Anleitungen für die Verwendung von PowerShell.
+> [!IMPORTANT]
+> Für Server, die mit kundenverwaltetem TDE konfiguriert werden, sowie für bestehende Server, die kundenverwaltetes TDE verwenden, müssen sowohl der Soft-Delete- als auch der Purge-Schutz für den/die Schlüsseltresor(en) aktiviert sein.
+
+- Gewähren Sie dem Server oder der verwalteten Instanz Zugriff auf den Schlüsseltresor (*get*, *wrapKey*, *unwrapKey*) unter Verwendung seiner Azure Active Directory-Identität. Wenn Sie das Azure-Portal verwenden, wird die Azure AD-Identität automatisch erstellt, wenn der Server erstellt wird. Bei der Verwendung von PowerShell oder Azure CLI muss die Azure AD-Identität explizit erstellt werden und sollte überprüft werden. Unter [Konfigurieren von TDE mit BYOK](transparent-data-encryption-byok-configure.md) und [Konfigurieren von TDE mit BYOK für SQL Managed Instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) finden Sie ausführliche Anleitungen für die Verwendung von PowerShell.
+    - Je nach Berechtigungsmodell des Schlüsseltresors (Zugriffsrichtlinie oder Azure RBAC) kann der Zugriff auf den Schlüsseltresor entweder durch Erstellen einer Zugriffsrichtlinie für den Schlüsseltresor oder durch Erstellen einer neuen Azure RBAC-Rollenzuweisung mit der Rolle [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) gewährt werden.
 
 - Wenn Sie eine Firewall mit AKV verwenden, müssen Sie die Option *Vertrauenswürdige Microsoft-Dienste zulassen* aktivieren.
 
 ### <a name="requirements-for-configuring-tde-protector"></a>Anforderungen an die Konfiguration der TDE-Schutzvorrichtung
 
-- Die TDE-Schutzvorrichtung darf nur ein asymmetrischer RSA- oder RSA HSM-Schlüssel sein. Unterstützte Schlüssellängen sind 2.048 Byte und 3.072 Byte.
+- Die TDE-Schutzvorrichtung darf nur ein asymmetrischer RSA- oder RSA HSM-Schlüssel sein. Die unterstützten Schlüssellängen sind 2048 Bit und 3072 Bit.
 
 - Das Schlüsselaktivierungsdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Vergangenheit sein. Das Ablaufdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Zukunft sein.
 
@@ -113,6 +119,9 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 - Aktivieren Sie die Überwachung und Berichterstellung für alle Verschlüsselungsschlüssel: Key Vault stellt Protokolle bereit, die sich problemlos in andere SIEM-Tools (Security Information & Event Management) einfügen lassen. [Log Analytics](../../azure-monitor/insights/key-vault-insights-overview.md) in Operations Management Suite ist ein Beispiel für einen Dienst, der bereits integriert ist.
 
 - Verknüpfen Sie jeden Server mit zwei Schlüsseltresoren in unterschiedlichen Regionen, aber mit denselben Schlüsselmaterialien, um die Hochverfügbarkeit verschlüsselter Datenbanken zu gewährleisten. Markieren Sie nur den Schlüssel aus dem Schlüsseltresor in derselben Region als TDE-Schutzvorrichtung. Wenn es zu einem Ausfall kommt, der sich auf den Schlüsseltresor in derselben Region auswirkt, wechselt das System automatisch zu diesem Tresor.
+
+> [!NOTE]
+> Um eine größere Flexibilität bei der Konfiguration von kundenverwaltetem TDE zu ermöglichen, können Azure SQL Database Server und Managed Instance in einer Region jetzt mit einem Schlüsseltresor in einer beliebigen anderen Region verknüpft werden. Der Server und der Schlüsseltresor müssen sich nicht in derselben Region befinden. 
 
 ### <a name="recommendations-when-configuring-tde-protector"></a>Empfehlungen für die Konfiguration der TDE-Schutzvorrichtung
 
@@ -137,9 +146,9 @@ Wenn Transparent Data Encryption für die Verwendung eines kundenseitig verwalte
 
 Nachdem der Zugriff auf den Schlüssel wiederhergestellt wurde, erfordert die Wiederherstellung der Datenbank zusätzliche Zeit und Schritte, die je nach verstrichener Zeit ohne Zugriff auf den Schlüssel und die Größe der Daten in der Datenbank variieren kann bzw. können:
 
-- Wenn der Schlüsselzugriff innerhalb von 8 Stunden wiederhergestellt wird, erfolgt die automatische Reparatur der Datenbank innerhalb der nächsten Stunde.
+- Wenn der Schlüsselzugriff innerhalb von 30 Minuten wiederhergestellt wird, wird die Datenbank innerhalb der nächsten Stunde automatisch repariert.
 
-- Wenn der Schlüsselzugriff nach mehr als 8 Stunden wiederhergestellt wird, ist keine automatische Reparatur möglich. Die erneute Aktivierung der Datenbank erfordert zusätzliche Schritte im Portal und kann je nach Größe der Datenbank sehr lange dauern. Wenn die Datenbank wieder online ist, gehen zuvor konfigurierte Einstellungen auf Serverebene wie die Konfiguration der [Failovergruppe](auto-failover-group-overview.md), der Verlauf der Point-in-Time-Wiederherstellung und Tags **verloren**. Daher empfiehlt es sich, ein Benachrichtigungssystem zu implementieren, das es Ihnen ermöglicht, Probleme beim Zugriff auf zugrunde liegende Schlüssel innerhalb von 8 Stunden zu erkennen und zu beheben.
+- Wenn der Schlüsselzugriff nach mehr als 30 Minuten wiederhergestellt wird, ist eine automatische Wiederherstellung nicht möglich, und die Wiederherstellung der Datenbank erfordert zusätzliche Schritte im Portal und kann je nach Größe der Datenbank sehr viel Zeit in Anspruch nehmen. Wenn die Datenbank wieder online ist, gehen zuvor konfigurierte Einstellungen auf Serverebene wie die Konfiguration der [Failovergruppe](auto-failover-group-overview.md), der Verlauf der Point-in-Time-Wiederherstellung und Tags **verloren**. Es wird daher empfohlen, ein Benachrichtigungssystem zu implementieren, das es Ihnen ermöglicht, die zugrunde liegenden Probleme beim Schlüsselzugang innerhalb von 30 Minuten zu erkennen und zu beheben.
 
 Nachfolgend sehen Sie die zusätzlichen Schritte, die im Portal ausgeführt werden müssen, um eine Datenbank, auf die nicht zugegriffen werden kann, wieder online zu schalten.
 
@@ -210,6 +219,8 @@ Um Probleme bei der Einrichtung oder während der Georeplikation aufgrund von un
 ![Failovergruppen und georedundante Notfallwiederherstellung](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png)
 
 Um ein Failover zu testen, führen Sie die Schritte in [Übersicht über die aktive Georeplikation](active-geo-replication-overview.md) aus. Das Failover sollte regelmäßig getestet werden, um sicherzustellen, dass SQL-Datenbank die Zugriffsberechtigung für beide Schlüsseltresore beibehalten hat.
+
+**Azure SQL Database Server und Managed Instance in einer Region können jetzt mit Key Vault in einer anderen Region verknüpft werden.** Der Server und der Schlüsseltresor müssen sich nicht in derselben Region befinden. Dabei können der Einfachheit halber der primäre und der sekundäre Server mit demselben Schlüsseltresor (in einer beliebigen Region) verbunden werden. Dadurch können Szenarien vermieden werden, in denen das Schlüsselmaterial nicht synchronisiert ist, wenn für beide Server getrennte Schlüsseltresore verwendet werden. Azure Key Vault verfügt über mehrere Redundanzebenen, um sicherzustellen, dass Ihre Schlüssel und Schlüsseltresore auch bei Ausfällen von Diensten oder Regionen verfügbar bleiben. [Azure Key Vault: Verfügbarkeit und Redundanz](../../key-vault/general/disaster-recovery-guidance.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

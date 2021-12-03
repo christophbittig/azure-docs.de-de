@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 06/18/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 052e82f0bb1aa7c5b0b3dad7808bd46839fb95ad
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 020296957e09743610ab46db74e663d86901d116
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387789"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179573"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurieren und Übermitteln von Trainingsausführungen
 
@@ -81,7 +81,7 @@ Im Beispielcode in diesem Artikel wird davon ausgegangen, dass Sie bereits ein `
 
 [!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
-## <a name="create-an-environment"></a>Erstellen einer Umgebung
+## <a name="create-an-environment"></a><a name="environment"></a> Erstellen einer Umgebung
 Azure Machine Learning-[Umgebungen](concept-environments.md) sind eine Kapselung der Umgebung, in der Ihr Training für das maschinelle Lernen stattfindet. Sie geben die Python-Pakete, ein Docker-Image, Umgebungsvariablen und Softwareeinstellungen für die Trainings- und Bewertungsskripts an. Sie geben auch Laufzeiten an (Python, Spark oder Docker).
 
 Sie können entweder Ihre eigene Umgebung definieren oder eine zusammengestellte Azure ML-Umgebung verwenden. [Zusammengestellte Umgebungen](./how-to-use-environments.md#use-a-curated-environment) sind vordefinierte Umgebungen, die standardmäßig in Ihrem Arbeitsbereich verfügbar sind. Diese Umgebungen werden durch zwischengespeicherte Docker-Images unterstützt, wodurch die Kosten für die Vorbereitung der Ausführung reduziert werden. Die vollständige Liste der verfügbaren zusammengestellten Umgebungen finden Sie unter [Azure Machine Learning – zusammengestellte Umgebungen](./resource-curated-environments.md).
@@ -113,7 +113,7 @@ myenv.python.user_managed_dependencies = True
 
 ## <a name="create-the-script-run-configuration"></a>Erstellen der Skriptlaufzeitkonfiguration
 
-Da Sie jetzt über ein Computeziel (`my_compute_target`) und eine Umgebung (`myenv`) verfügen, erstellen Sie eine Skriptlaufzeitkonfiguration, die Ihr Trainingsskript (`train.py`) ausführt, das sich in Ihrem `project_folder`-Verzeichnis befindet:
+Nachdem Sie nun ein Rechenziel (`my_compute_target`, siehe [Voraussetzungen](#prerequisites) und eine Umgebung (`myenv`, siehe [Erstellen einer Umgebung](#environment)) haben, erstellen Sie eine Skriptausführungskonfiguration, die Ihr Trainingsskript (`train.py`) in Ihrem Verzeichnis `project_folder` ausführt:
 
 ```python
 from azureml.core import ScriptRunConfig

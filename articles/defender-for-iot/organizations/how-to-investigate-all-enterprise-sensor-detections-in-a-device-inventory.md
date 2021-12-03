@@ -1,14 +1,14 @@
 ---
 title: Informationen zu Geräten, die von allen Unternehmenssensoren erkannt werden
 description: Sie können sich über den Gerätebestand in der lokalen Verwaltungskonsole einen umfassenden Überblick über die Geräteinformationen von verbundenen Sensoren verschaffen. Verwenden Sie die Tools zum Importieren, Exportieren und Filtern, um diese Informationen zu verwalten.
-ms.date: 12/02/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 8016efe809d03cbc00bdb94b67f99caa7f98ac4c
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: 0025016dd449bf4083c707d4a6db5cd25bf66cfd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137786"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343665"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Untersuchen aller Unternehmenssensorerkennungen im Gerätebestand
 
@@ -25,7 +25,7 @@ Im Folgenden werden die Spalten in der Gerätebestandstabelle beschrieben.
 | **Region** | Die Region, in der dieses Gerät enthalten ist |
 | **Website** | Der Standort, der dieses Gerät enthält |
 | **Zone** | Die Zone, in der dieses Gerät enthalten ist |
-| **Appliance** | Der Azure Defender für IoT-Sensor, der dieses Gerät schützt |
+| **Appliance** | Der Microsoft Defender für IoT-Sensor, der dieses Gerät schützt. |
 | **Name** | Der Name des Geräts, wie von Defender für IoT erkannt |
 | **Type** | Der Typ des Geräts, z. B. PLC oder HMI |
 | **Hersteller** | Der Name des Herstellers des Geräts, wie in der MAC-Adresse angegeben |
@@ -43,6 +43,17 @@ Im Folgenden werden die Spalten in der Gerätebestandstabelle beschrieben.
 | **Letzte Aktivität** | Die letzte Aktivität, die das Gerät ausgeführt hat |
 | **Discovered** | Wann dieses Gerät zum ersten Mal im Netzwerk erkannt wurde |
 | **PLC-Modus (Vorschau)** | Der PLC-Betriebsmodus umfasst den Schlüsselzustand (physisch) und den Ausführungszustand (logisch). Mögliche **Schlüsselzustände** sind: „Ausführen“, „Programm“, „Remote“, „Beenden“, „Ungültig“, „Programmieren deaktiviert.Mögliche Ausführung“. Die möglichen **Ausführungszustände** sind: „Ausführen“, „Programm", „Beenden“, „Pausiert“, „Ausnahme“, „Angehalten“, „Eingeschlossen“, „Leerlauf“, „Offline“. Wenn beide Zustände identisch sind, wird nur ein Zustand angezeigt. |
+
+## <a name="what-is-an-inventory-device"></a>Was ist ein Bestandsgerät?
+
+Der Defender für IoT-Gerätebestand zeigt eine Vielzahl von Geräteattributen an. Sie werden von Sensoren erkannt, die die Netzwerke und verwalteten Endpunkte der Organisation überwachen. Defender für IoT identifiziert und klassifiziert Geräte als ein einzelnes eindeutiges Netzwerkgerät im Bestand für:
+
+1. Eigenständige IT-/OT-/IoT-Geräte (mit einem oder mehreren NICs)
+1. Geräte, die aus mehreren Rückwandplatinenkomponenten bestehen (einschließlich aller Racks/Slots/Module)
+1. Geräte, die als Netzwerkinfrastruktur fungieren, z. B. Switch/Router (mit mehreren NICs). 
+
+Öffentliche Internet-IP-Adressen, Multicastgruppen und Broadcastgruppen werden nicht als Bestandsgeräte betrachtet.
+Geräte, die seit mehr als 60 Tagen inaktiv sind, werden als inaktive Bestandsgeräte klassifiziert.
 
 ## <a name="integrate-data-into-the-enterprise-device-inventory"></a>Integrieren von Daten in den Gerätebestand des Unternehmens
 

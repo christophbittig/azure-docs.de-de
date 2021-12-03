@@ -1,5 +1,5 @@
 ---
-title: 'CLI-Skript: Konfigurieren von Überwachungsprotokollen in einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau)'
+title: 'CLI-Skript: Konfigurieren von Überwachungsprotokollen in einer Instanz von Azure Database for MySQL – Flexible Server'
 description: In diesem Azure CLI-Beispielskript wird veranschaulicht, wie Sie Überwachungsprotokolle in einer Instanz von Azure Database for MySQL – Flexible Server konfigurieren.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 5f0393ebce70e68024cdd01e5120ec42b17089bc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 359d505f8d04090c14736be0d448558847e05c80
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604652"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844333"
 ---
-# <a name="configure-audit-logs-on-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Konfigurieren von Überwachungsprotokollen in einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau) mit der Azure CLI
+# <a name="configure-audit-logs-on-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Konfigurieren von Überwachungsprotokollen in einer Instanz von Azure Database for MySQL – Flexible Server mit der Azure CLI
 
 In diesem CLI-Beispielskript werden [Überwachungsprotokolle](../concepts-audit-logs.md) für eine Instanz von Azure Database for MySQL – Flexible Server aktiviert. 
 
@@ -55,5 +55,5 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server (Vorschau)](../sample-scripts-azure-cli.md).
+- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server](../sample-scripts-azure-cli.md).
 - Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).

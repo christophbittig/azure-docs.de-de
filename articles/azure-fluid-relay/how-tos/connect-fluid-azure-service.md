@@ -8,12 +8,12 @@ ms.date: 10/05/2021
 ms.topic: article
 ms.service: azure-fluid
 fluid.url: https://fluidframework.com/docs/deployment/azure-frs/
-ms.openlocfilehash: b9fe1c6a0b70d2e2765ce9da8733916b6226c0da
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: a2093b063e5c2e048bdf0a0a418a8046348032c8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178954"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849575"
 ---
 # <a name="how-to-connect-to-an-azure-fluid-relay-service"></a>Herstellen einer Verbindung mit einem Azure Fluid Relay-Dienst
 
@@ -39,10 +39,7 @@ Um eine Verbindung mit einer Azure Fluid Relay-Instanz herzustellen, müssen Sie
 ```javascript
 const config = {
   tenantId: "myTenantId",
-  tokenProvider: new InsecureTokenProvider("myTenantKey", {
-    id: "userId",
-    name: "Test User",
-  }),
+  tokenProvider: new InsecureTokenProvider("myTenantKey", { id: "userId" }),
   orderer: "https://myOrdererUrl",
   storage: "https://myStorageUrl",
 };
@@ -83,7 +80,7 @@ const client = new AzureClient(clientProps);
 Das Benutzerobjekt kann auch optionale zusätzliche Benutzerdetails enthalten. Beispiel:
 
 ```javascript
-const userDetails: ICustomUserDetails = {
+const userDetails = {
   email: "xyz@outlook.com",
   address: "Redmond",
 };
@@ -155,7 +152,7 @@ const audienceDiv = document.createElement("div");
 const onAudienceChanged = () => {
   const members = audience.getMembers();
   const self = audience.getMyself();
-  const memberStrings: string[] = [];
+  const memberStrings = [];
   const useAzure = process.env.FLUID_CLIENT === "azure";
 
   members.forEach((member) => {

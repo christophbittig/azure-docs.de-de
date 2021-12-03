@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 9a431a2088ac01b3e0bec21b951fa4af0c5347e0
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: b53166da12d2949cbebb590cd326b8bd86d5bec4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419041"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052696"
 ---
 # <a name="using-web-browsers-msalnet"></a>Verwenden von Webbrowsern (MSAL.NET)
 
@@ -105,7 +105,7 @@ Unter Linux öffnet MSAL.NET den Standardbrowser des Betriebssystems mit dem Too
 > [!NOTE]
 > Eine Anpassung ist in MSAL.NET 4.1.0 oder höher möglich.
 
-MSAL.NET kann mit einer HTTP-Nachricht antworten, wenn ein Token empfangen wird oder ein Fehler auftritt. Sie können eine HTML-Nachricht anzeigen oder zu einer URL Ihrer Wahl umleiten:
+MSAL.NET kann mit einer HTTP-Nachricht antworten, wenn ein Token empfangen wird oder ein Fehler auftritt. Sie können eine HTML-Nachricht anzeigen oder zu eine URL Ihrer Wahl umleiten:
 
 ```csharp
 var options = new SystemWebViewOptions() 
@@ -227,4 +227,4 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 #### <a name="net-core-doesnt-support-interactive-authentication-with-an-embedded-browser"></a>.NET Core unterstützt keine interaktive Authentifizierung mit einem eingebetteten Browser
 
 Bei .NET Core ist der interaktive Tokenabruf nur über den Systemwebbrowser und nicht über eingebettete Webansichten verfügbar. Tatsächlich wird von .NET Core noch keine Benutzeroberfläche bereitgestellt.
-Wenn Sie das Surfen mit dem Systemwebbrowser anpassen möchten, können Sie die [IWithCustomUI](scenario-desktop-acquire-token.md#withcustomwebui)-Schnittstelle implementieren und sogar ihren eigenen Browser bereitstellen.
+Wenn Sie das Surfen mit dem Systemwebbrowser anpassen möchten, können Sie die [IWithCustomUI](scenario-desktop-acquire-token-interactive.md#withcustomwebui)-Schnittstelle implementieren und sogar ihren eigenen Browser bereitstellen.

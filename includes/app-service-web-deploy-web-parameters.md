@@ -4,21 +4,21 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 329db6b3fc0bd6d11e5fbac9472aa03899caec2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af26bc94e96c9d4bd1fdf59d5479bdc7181221f5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86050262"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298511"
 ---
-Mit Azure Resource Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens "Parameters", der alle Parameterwerte enthält.
-Definieren Sie einen Parameter für die Werte, die basierend auf dem bereitgestellten Projekt oder der bereitgestellten Umgebung variieren. Definieren Sie keine Parameter für Werte, die sich nicht ändern. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren. 
+Mit Azure Resource Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens "Parameters", der alle Parameterwerte enthält. Sie sollten einen Parameter für die Werte definieren, die basierend auf dem bereitgestellten Projekt oder der bereitgestellten Umgebung variieren. Definieren Sie keine Parameter für Werte, die konstant sind. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren.
 
 Verwenden Sie beim Definieren von Parametern das Feld **allowedValues** , um anzugeben, welche Werte ein Benutzer während der Bereitstellung angeben kann. Verwenden Sie das Feld **defaultValue** , um dem Parameter einen Wert zuweisen, wenn kein Wert während der Bereitstellung angegeben wird.
 
 Nachfolgend wird jeder der in der Vorlage verwendeten Parameter beschrieben.
 
 ### <a name="sitename"></a>siteName
+
 Der Name der Web-App, die Sie erstellen möchten.
 
 ```config
@@ -28,6 +28,7 @@ Der Name der Web-App, die Sie erstellen möchten.
 ```
 
 ### <a name="hostingplanname"></a>hostingPlanName
+
 Der Name des App Service-Plans zum Hosten der Web-App.
 
 ```config
@@ -37,9 +38,10 @@ Der Name des App Service-Plans zum Hosten der Web-App.
 ```
 
 ### <a name="sku"></a>sku
+
 Der Tarif für den Hostingplan.
 
-```config
+```json
 "sku": {
   "type": "string",
   "allowedValues": [
@@ -63,12 +65,13 @@ Der Tarif für den Hostingplan.
 }
 ```
 
-Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind, und weist einen Standardwert (S1) zu, wenn kein Wert angegeben wird.
+Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind, und weist einen Standardwert von `S1` zu, wenn kein Wert angegeben wird.
 
 ### <a name="workersize"></a>workerSize
+
 Die Instanzgröße des Hostingplans (klein, mittel oder groß).
 
-```config
+```json
 "workerSize":{
   "type":"string",
   "allowedValues":[
@@ -80,5 +83,4 @@ Die Instanzgröße des Hostingplans (klein, mittel oder groß).
 }
 ```
 
-Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (0, 1 oder 2), und weist einen Standardwert (0) zu, wenn kein Wert angegeben wird. Die Werte entsprechen klein, mittel und groß.
-
+Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind(`0`, `1` oder `2`), und weist einen Standardwert von `0` zu, wenn kein Wert angegeben wird. Die Werte entsprechen klein, mittel und groß.

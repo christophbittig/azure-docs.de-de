@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 3e2c92d5fed23480f102f1c96631c3a8c9a2e2c8
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 78a66070c6bcf03f4a279163106048d87fe27f23
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456497"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061380"
 ---
 # <a name="register-a-saas-application"></a>Registrieren einer SaaS-Anwendung
 
@@ -27,8 +27,8 @@ Weitere Informationen zu Azure Active Directory (AD) finden Sie unter [Was ist A
 Jede Anwendung muss zunächst in einem Azure AD-Mandanten registriert werden, um die Funktionen von Azure AD nutzen zu können. Im Rahmen dieses Registrierungsvorgangs müssen einige Details zu Ihrer Anwendung an Azure AD weitergegeben werden. Führen Sie die folgenden Schritte aus, um mit dem Azure-Portal eine neue Anwendung zu registrieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
-3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen** und **Registrierung einer neuen Anwendung**.
+2. Wenn Sie mit Ihrem Konto Zugriff auf mehrere Mandanten haben, wählen Sie Ihr Konto rechts oben aus. Legen Sie dann die Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
+3. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory**, dann **App-Registrierungen** und anschließend **Registrierung einer neuen Anwendung**  aus.
 
     ![SaaS: AD-App-Registrierungen](./media/saas-offer-app-registration-v1.png)
 
@@ -41,9 +41,9 @@ Jede Anwendung muss zunächst in einem Azure AD-Mandanten registriert werden, um
 
         Spezifische Beispiele für Webanwendungen finden Sie in den Schnellstart-Einrichtungsanleitungen, die im Abschnitt [Erste Schritte](../../active-directory/develop/quickstart-create-new-tenant.md) des [Azure AD-Entwicklerleitfadens](../../active-directory/develop/index.yml) zur Verfügung stehen.
 
-5. Klicken Sie abschließend auf **Registrieren**.  Ihrer neuen Anwendung wird von Azure AD eine eindeutige *Anwendungs-ID* zugewiesen. Es empfiehlt sich, eine einzelne App zu registrieren, die nur auf die API zugreift (als einzelner Mandant).
+5. Wenn Sie so weit sind, klicken Sie auf **Registrieren**.  Ihrer neuen Anwendung wird von Azure AD eine eindeutige *Anwendungs-ID* zugewiesen. Es empfiehlt sich, eine einzelne App zu registrieren, die nur auf die API zugreift (als einzelner Mandant).
 
-6. Navigieren Sie zum Erstellen eines geheimen Clientschlüssels zur Seite **Certificates & secrets** (Zertifikate und Geheimnisse), und klicken Sie auf **+Neuer geheimer Clientschlüssel**.  Kopieren Sie den Geheimniswert für die Verwendung in Ihrem Code.
+6. Navigieren Sie zum Erstellen eines geheimen Clientschlüssels zur Seite **Zertifikate und Geheimnisse**, und wählen Sie **+Neuer geheimer Clientschlüssel** aus.  Kopieren Sie den Geheimniswert für die Verwendung in Ihrem Code.
 
 Die **Azure AD-App-ID** ist Ihrer Herausgeber-ID zugeordnet. Achten Sie daher darauf, dass in allen Ihren Angeboten die gleiche *App-ID* verwendet wird.
 
@@ -52,9 +52,9 @@ Die **Azure AD-App-ID** ist Ihrer Herausgeber-ID zugeordnet. Achten Sie daher d
 
 ## <a name="how-to-get-the-publishers-authorization-token"></a>Abrufen des Autorisierungstokens des Herausgebers
 
-Nachdem Sie Ihre Anwendung registriert haben, können Sie das Autorisierungstoken des Herausgebers (Azure AD-Zugriffstoken, über den Azure AD v1-Endpunkt) programmgesteuert anfordern. Der Herausgeber muss dieses Token beim Aufrufen der verschiedenen SaaS-Fulfillment-APIs verwenden. Dieses Token ist nur eine Stunde lang gültig. 
+Nachdem Sie Ihre Anwendung registriert haben, können Sie das Autorisierungstoken des Herausgebers (Azure AD-Zugriffstoken, über den Azure AD V1-Endpunkt) programmgesteuert anfordern. Der Herausgeber muss dieses Token beim Aufrufen der verschiedenen SaaS-Fulfillment-APIs verwenden. Dieses Token ist nur eine Stunde lang gültig.
 
-Weitere Informationen zu diesen Token finden Sie unter [Azure Active Directory-Zugriffstoken](../../active-directory/develop/access-tokens.md).  Beachten Sie, dass im folgenden Flow das V1-Endpunkttoken verwendet wird.
+Weitere Informationen zu diesen Token finden Sie unter [Azure Active Directory-Zugriffstoken](../../active-directory/develop/access-tokens.md).  Im folgenden Flow wird das V1-Endpunkttoken verwendet.
 
 ### <a name="get-the-token-with-an-http-post"></a>Abrufen des Tokens mit „HTTP POST“
 
@@ -89,7 +89,7 @@ Post<br>
 
 ##### <a name="response"></a>*Antwort*
 
-|  Name     |  Typ         |  BESCHREIBUNG |
+|  Name     |  type         |  BESCHREIBUNG |
 |  ------   |  ---------------  | ------------ |
 |  200 – OK   |  TokenResponse    |  Anforderung erfolgreich. |
 
@@ -111,7 +111,7 @@ Beispiel für eine Antwort:
 
 | Element | BESCHREIBUNG |
 | ------- | ----------- |
-| `access_token` | Dieses Element ist das Zugriffstoken (`<access_token>`), das Sie beim Aufrufen aller SaaS-Fulfillment- und Marketplace-Messungs-APIs als Autorisierungsparameter übergeben. Beim Aufrufen einer geschützten REST-API wird das Token als „Bearertoken“ in das `Authorization`-Anforderungsheader-Feld eingebettet, damit der Aufrufer von der API authentifiziert werden kann. | 
+| `access_token` | Dieses Element ist das Zugriffstoken (`<access_token>`), das Sie beim Aufrufen aller SaaS-Fulfillment- und Marketplace-Messungs-APIs als den Autorisierungsparameter übergeben. Beim Aufrufen einer geschützten REST-API wird das Token als „Bearertoken“ in das `Authorization`-Anforderungsheader-Feld eingebettet, damit der Aufrufer von der API authentifiziert werden kann. |
 | `expires_in` | Der Zeitraum in Sekunden, wie lange das Zugriffstoken ab dem Zeitpunkt der Ausstellung gültig ist, bevor es abläuft. Der Ausstellungszeitpunkt ist im Anspruch `iat` des Tokens zu finden. |
 | `expires_on` | Der Zeitpunkt, zu dem das Zugriffstoken abläuft. Das Datum wird als Anzahl von Sekunden ab „1970-01-01T0:0:0Z UTC“ (entspricht dem Anspruch `exp` des Tokens) dargestellt. |
 | `not_before` | Der Zeitpunkt, ab dem das Zugriffstoken wirksam ist und akzeptiert werden kann. Das Datum wird als Anzahl von Sekunden ab „1970-01-01T0:0:0Z UTC“ (entspricht dem Anspruch `nbf` des Tokens) dargestellt. |
@@ -120,4 +120,4 @@ Beispiel für eine Antwort:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In der über Azure AD geschützten App kann jetzt [SaaS Fulfillment API Version 2](./pc-saas-fulfillment-api-v2.md) verwendet werden.
+In der über Azure AD geschützten App können jetzt die [SaaS-Fulfillment-Abonnement-APIs der Version 2](pc-saas-fulfillment-subscription-api.md) und die [SaaS-Fulfillment-Vorgangs-APIs der Version 2](pc-saas-fulfillment-operations-api.md) verwendet werden.

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: a8e6133d0b4e7d0595524bb4142e51610226ad7f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f0a78f60f8610c4b6430cf33928ec389c0ed85ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130214685"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471571"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
@@ -37,10 +37,20 @@ Azure bietet jetzt Unterstützung für die Generation 2 der folgenden ausgewäh
 * [Dsv4-Serie](dv4-dsv4-series.md)
 * [Dasv4-Serie](dav4-dasv4-series.md)
 * [Ddsv4-Serie](ddv4-ddsv4-series.md)
+* [Dasv5-Serie](dasv5-dadsv5-series.md)
+* [Dadsv5-Serie](dasv5-dadsv5-series.md)
+* [Dv5-Serie](dv5-dsv5-series.md)
+* [Dsv5-Serie](dv5-dsv5-series.md)
 * [Esv3-Serie](ev3-esv3-series.md)
 * [Esv4-Serie](ev4-esv4-series.md)
 * [Easv4-Serie](eav4-easv4-series.md)
 * [Edsv4-Serie](edv4-edsv4-series.md)
+* [Easv5-Serie](easv5-eadsv5-series.md)
+* [Eadsv5-Serie](easv5-eadsv5-series.md)
+* [Edv5-Serie](edv5-edsv5-series.md)
+* [Edsv5-Serie](edv5-edsv5-series.md)
+* [Ev5-Serie](ev5-esv5-series.md)
+* [Esv5-Serie](ev5-esv5-series.md)
 * [Fsv2-Serie](fsv2-series.md)
 * [GS-Serie](sizes-previous-gen.md#gs-series)
 * [HB-Serie](hb-series.md)
@@ -58,6 +68,7 @@ Azure bietet jetzt Unterstützung für die Generation 2 der folgenden ausgewäh
 * [NVv3-Serie](nvv3-series.md)
 * [NVv4-Serie](nvv4-series.md)
 * [NCasT4_v3-Serie](nct4-v3-series.md)
+* [NDm A100 v4-Serie](ndm-a100-v4-series.md)
 
 <sup>1</sup> Die Mv2-, DC- und NDv2-Serie sowie die Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher unterstützen keine VM-Images der Generation 1 und nur einen Teil der Images der Generation 2. Details finden Sie in der [Dokumentation zur Mv2-Serie](mv2-series.md), [DSv2-Serie](dv2-dsv2-series.md), [ND A100 v4-Serie](nda100-v4-series.md), [NDv2-Serie](ndv2-series.md) sowie der [Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher](msv2-mdsv2-series.md).
 
@@ -111,9 +122,10 @@ Weitere Informationen finden Sie unter [Vertrauenswürdiger Start (Vorschau)](tr
 | Unterstützung für VM-Skalierungsgruppe | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Sichern/Wiederherstellen                    | :heavy_check_mark: | :heavy_check_mark: |
-| Shared Image Gallery              | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Compute Gallery             | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [Serverseitige Verschlüsselung](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
+
 
 ## <a name="creating-a-generation-2-vm"></a>Erstellen einer VM der Generation 2
 

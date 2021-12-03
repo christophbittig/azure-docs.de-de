@@ -4,14 +4,14 @@ description: Übersicht über die Einrichtung mehrerer Azure Web PubSub-Dienstin
 author: vicancy
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 10/13/2021
+ms.date: 11/08/2021
 ms.author: lianwei
-ms.openlocfilehash: f8d5ee649a3e4e8061f264fb1e2e4280659ff7c3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 14a6661196f7bfa16d3611137d1517c41f21b00d
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007257"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156526"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-web-pubsub-service"></a>Resilienz und Notfallwiederherstellung im Azure Web PubSub-Dienst
 
@@ -27,17 +27,24 @@ Ein typisches Setup für ein regionsübergreifendes Szenario ist die Verwendung 
 
 In jedem Paar befinden sich App-Server und Web PubSub-Dienst in derselben Region, und der Web PubSub-Dienst legt den Ereignishandler upstream auf den App-Server in derselben Region fest.
 
-Zur besseren Veranschaulichung der Architektur wird der Web PubSub-Dienst als „primärer“ Dienst für den App-Server im gleichen Paar bezeichnet. Web PubSub-Dienste in anderen Paaren werden als „sekundäre“ Dienste für den App-Server bezeichnet.
+Zur besseren Veranschaulichung der Architektur wird der Web PubSub-Dienst als **primärer** Dienst für den App-Server im gleichen Paar bezeichnet. Web PubSub-Dienste in anderen Paaren werden als **sekundäre** Dienste für den App-Server bezeichnet.
 
-Der Anwendungsserver verwendet die [API für die Überprüfung der Dienstintegrität](/rest/api/webpubsub/health-api/get-service-status), um zu ermitteln, ob die „primären“ und „sekundären“ Dienste fehlerfrei sind oder nicht. Für einen Web PubSub-Dienst mit dem Namen `demo` gibt der Endpunkt `https://demo.webpubsub.azure.com/api/health` beispielsweise den Wert 200 zurück, wenn der Dienst fehlerfrei ist. Der App-Server kann die Endpunkte in regelmäßigen Abständen oder bei Bedarf aufrufen, um zu überprüfen, ob die Endpunkte fehlerfrei sind. WebSocket-Clients rufen in der Regel zuerst durch **Aushandeln** mit ihrem Anwendungsserver die URL ab, die eine Verbindung mit dem Web PubSub-Dienst herstellt. Die Anwendung verwendet diesen Schritt des **Aushandelns**, um ein Failover der Clients auf andere fehlerfreie „sekundäre“ Dienste auszuführen. Hier finden Sie die ausführlichen Schritte:
+Der Anwendungsserver kann die [API für die Überprüfung der Dienstintegrität](/rest/api/webpubsub/dataplane/health-api/get-service-status) verwenden, um zu ermitteln, ob die **primären** und **sekundären** Dienste fehlerfrei sind oder nicht. Für einen Web PubSub-Dienst mit dem Namen `demo` gibt der Endpunkt `https://demo.webpubsub.azure.com/api/health` beispielsweise den Wert 200 zurück, wenn der Dienst fehlerfrei ist. Der App-Server kann die Endpunkte in regelmäßigen Abständen oder bei Bedarf aufrufen, um zu überprüfen, ob die Endpunkte fehlerfrei sind. WebSocket-Clients **verknüpfen** sich in der Regel zuerst mit ihrem Anwendungsserver, um die URL abzurufen, die eine Verbindung mit dem Web PubSub-Dienst herstellt. Die Anwendung verwendet diesen Schritt des **Verknüpfens**, um ein Failover der Clients auf andere fehlerfreie **sekundäre** Dienste auszuführen. Hier finden Sie die ausführlichen Schritte:
 
 1. Beim **Aushandeln** zwischen einem Client und dem App-Server SOLLTE der App-Server nur primäre Web PubSub-Dienstendpunkte zurückgeben, sodass Clients im Normalfall nur eine Verbindung mit primären Endpunkten herstellen.
-
-2. Wenn die primäre Instanz nicht erreichbar ist, SOLLTE beim **Aushandeln** ein fehlerfreier sekundärer Endpunkt zurückgegeben werden, damit der Client weiterhin Verbindungen herstellen kann, und der Client stellt eine Verbindung mit dem sekundären Endpunkt her.
-
-3. Wenn der App-Server Nachrichten an mehrere Clients übertragen möchte, stellen Sie sicher, dass Nachrichten an alle fehlerfreien Endpunkte übertragen werden, sowohl an den primären als auch an die sekundären.
+1. Wenn die primäre Instanz nicht erreichbar ist, SOLLTE beim **Aushandeln** ein fehlerfreier sekundärer Endpunkt zurückgegeben werden, damit der Client weiterhin Verbindungen herstellen kann, und der Client stellt eine Verbindung mit dem sekundären Endpunkt her.
+1. Wenn die primäre Instanz eingerichtet ist, SOLLTE das **Verknüpfen** den fehlerfreien primären Endpunkt zurückgeben, damit Clients jetzt eine Verbindung mit dem primären Endpunkt herstellen können.
+1. Wenn der App-Server Nachrichten an mehrere Clients **überträgt**, SOLLTEN Nachrichten an alle **fehlerfreien** Endpunkte **übertragen** werden, sowohl an die **primären** als auch an die **sekundären**.
+1. Der App-Server kann Verbindungen schließen, die mit **sekundären** Endpunkten verbunden sind, um die Clients zu zwingen, stattdessen eine Verbindung mit dem fehlerfreien primären Endpunkt herzustellen.
 
 In dieser Topologie können Nachrichten von einem Server weiterhin an alle Clients übermittelt werden, da alle App-Server und Web PubSub-Dienstinstanzen miteinander verbunden sind.
+
+Wir haben die Strategie noch nicht in das SDK integriert, daher muss die Anwendung diese Strategie vorerst selbst implementieren. 
+
+Zusammenfassend gilt: Die Anwendungsseite muss Folgendes implementieren:
+1. Integritätsprüfung Die Anwendung kann entweder überprüfen, ob der Dienst fehlerfrei ist, indem sie die [API für die Überprüfung der Dienstintegrität](/rest/api/webpubsub/dataplane/health-api/get-service-status) in regelmäßigen Abständen im Hintergrund oder bei Bedarf für jeden **Verknüpfungsaufruf** verwendet.
+1. Verknüpfungslogik Die Anwendung gibt standardmäßig einen fehlerfreien **primären** Endpunkt zurück. Wenn der **primäre** Endpunkt nicht verfügbar ist, gibt die Anwendung einen fehlerfreien **sekundären** Endpunkt zurück.
+1. Übertragungslogik Wenn Nachrichten an mehrere Clients gesendet werden, muss die Anwendung sicherstellen, dass Nachrichten an alle **fehlerfreien** Endpunkte übertragen werden.
 
 Das folgende Diagramm veranschaulicht diese Topologie:
 
@@ -79,7 +86,7 @@ Der Web PubSub-Dienst kann beide Muster unterstützen. Der wesentliche Unterschi
 Wenn App-Server aktiv/passiv sind, sind auch die Web PubSub-Instanzen aktiv/passiv (weil der primäre App-Server nur seine primäre Web PubSub-Dienstinstanz zurückgibt).
 Wenn App-Server aktiv/aktiv sind, sind auch die Web PubSub-Instanzen aktiv/aktiv (weil alle App-Server ihre eigenen primären Web PubSub-Instanzen zurückgeben und daher alle Datenverkehr empfangen können).
 
-Beachten Sie, dass Sie unabhängig vom ausgewählten Muster jede Web PubSub-Dienstinstanz als primäre Rolle mit einem App-Server verbinden müssen.
+Beachten Sie, dass Sie unabhängig vom ausgewählten Muster jede Web PubSub-Dienstinstanz als **primäre** Rolle mit einem App-Server verbinden müssen.
 
 Aufgrund der Natur von WebSocket-Verbindungen (lange Verbindungen) treten zudem im Fall eines Failovers nach einem Notfall Verbindungsabbrüche bei Clients auf.
 Sie müssen solche Verbindungsabbrüche auf der Clientseite behandeln, damit sie für Ihre Endkunden transparent sind. Stellen Sie beispielsweise nach dem Schließen einer Verbindung erneut eine Verbindung her.

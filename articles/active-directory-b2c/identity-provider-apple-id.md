@@ -8,19 +8,19 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8e47335810ec8f9845ab159af832d7ea3d362323
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: c3d3fa84e615a60092d0f42acd401be0421bc3f3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130228017"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448631"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Einrichten der Registrierung und Anmeldung mit einer Apple-ID mithilfe von Azure Active Directory B2C (Vorschau)
+# <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einer Apple-ID mithilfe von Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -81,7 +81,7 @@ Wenn Sie für Benutzer die Anmeldung mit einer Apple-ID in Azure Active Director
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
 1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus. Oder verwenden Sie das Suchfeld, um nach **Azure AD B2C** zu suchen und diese Option auszuwählen.
-1. Wählen Sie **Identitätsanbieter** und dann **Apple (Vorschau)** aus.
+1. Wählen Sie **Identitätsanbieter** und dann **Apple** aus.
 1. Geben Sie als **Name** den Wert **Mit Apple anmelden** ein. 
 1. Geben Sie die **Apple Developer-ID (Team-ID)** ein.
 1. Geben Sie die **Apple-Dienst-ID (Client-ID)** ein.
@@ -92,8 +92,7 @@ Wenn Sie für Benutzer die Anmeldung mit einer Apple-ID in Azure Active Director
 
 > [!IMPORTANT] 
 > - Zum Anmelden mit Apple muss der Administrator seinen geheimen Clientschlüssel alle 6 Monate erneuern. 
-> - In der öffentlichen Vorschauphase dieses Features müssen Sie den geheimen Apple-Clientschlüssel manuell erneuern, wenn er abläuft. Auf der Seite „IdP für soziale Netzwerke konfigurieren“ des Apple-Identitätsanbieters wird vorab eine Warnung angezeigt, wir empfehlen Ihnen jedoch, eine eigene Erinnerung festzulegen. 
-> - Wenn Sie den geheimen Clientschlüssel erneuern müssen, öffnen Sie Azure AD B2C im Azure-Portal, navigieren Sie zu **Identitätsanbieter** > **Apple**, und wählen Sie **Geheimnis erneuern** aus.
+> - Der geheime Apple-Clientschlüssel wird automatisch verlängert, wenn er abläuft. Wenn Sie den geheimen Clientschlüssel manuell erneuern müssen, öffnen Sie Azure AD B2C im Azure-Portal, navigieren Sie zu **Identitätsanbieter** > **Apple**, und wählen Sie **Geheimnis erneuern** aus.
 > - Befolgen Sie die Richtlinien zum [Anbieten einer Schaltfläche „Mit Apple anmelden“](#customize-your-user-interface).
 
 ## <a name="add-the-apple-identity-provider-to-a-user-flow"></a>Hinzufügen von Apple als Identitätsanbieter zu einem Benutzerflow
@@ -102,7 +101,7 @@ Damit sich Benutzer mit einer Apple-ID anmelden können, müssen Sie einem Benut
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 1. Wählen Sie einen Benutzerflow aus, dem Sie Apple als Identitätsanbieter hinzufügen möchten. 
-1. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** die Option **Apple (Vorschau)** aus.
+1. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** die Option **Apple** aus.
 1. Wählen Sie **Speichern** aus.
 1. Um die Richtlinie zu testen, wählen Sie **Benutzerflow ausführen** aus.
 1. Wählen Sie für **Anwendung** die Webanwendung *testapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.

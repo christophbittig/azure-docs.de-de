@@ -3,14 +3,14 @@ title: Verwenden von Container Storage Interface-Treibern (CSI) für Azure Files
 description: Erfahren Sie, wie Sie die Container Storage Interface-Treiber (CSI) für Azure Files in einem AKS-Cluster (Azure Kubernetes Service) verwenden.
 services: container-service
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 11/09/2021
 author: palma21
-ms.openlocfilehash: c60b2301e6f0ea2767128224c4e76a677df69e0d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f1a0abb0a89ba9e2c913b29ccc17b591c7fa0d39
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355754"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137272"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>Verwenden von Container Storage Interface-Treibern (CSI) von Azure Files in Azure Kubernetes Service (AKS)
 
@@ -258,7 +258,10 @@ kubectl apply -f private-pvc.yaml
 
 [Azure Files unterstützt das NFS v4.1-Protokoll](../storage/files/storage-files-how-to-create-nfs-shares.md). Die NFS 4.1-Unterstützung in Azure Files bietet ein vollständig verwaltetes NFS-Dateisystem als Dienst, der auf einer hochverfügbaren, extrem robusten, verteilten und resilienten Speicherplattform basiert.
 
- Diese Option ist für Workloads mit zufälligem Zugriff und direkten Datenaktualisierungen optimiert und bietet vollständige Unterstützung für POSIX-Dateisysteme. In diesem Abschnitt erfahren Sie, wie Sie NFS-Freigaben mit dem Azure Files-CSI-Treiber in einem AKS-Cluster verwenden.
+Diese Option ist für Workloads mit zufälligem Zugriff und direkten Datenaktualisierungen optimiert und bietet vollständige Unterstützung für POSIX-Dateisysteme. In diesem Abschnitt erfahren Sie, wie Sie NFS-Freigaben mit dem Azure Files-CSI-Treiber in einem AKS-Cluster verwenden.
+
+> [!NOTE]
+> Stellen Sie sicher, dass die Identität des Clusters `Control plane` (mit dem Namen `AKS Cluster Name`) die Berechtigung `Contributor` für die vnet-Ressourcengruppe hat.
 
 ### <a name="create-nfs-file-share-storage-class"></a>Erstellen einer Speicherklasse für die NFS-Dateifreigabe
 

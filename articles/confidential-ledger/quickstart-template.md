@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Microsoft Azure Confidential Ledger-Ressource mithilfe einer Azure Resource Manager-Vorlage
-description: Erfahren Sie, wie Sie eine Microsoft Azure Confidential Ledger-Ressource mithilfe einer Azure Resource Manager-Vorlage erstellen.
+description: Hier erfahren Sie, wie Sie eine Microsoft Azure Confidential Ledger-Ressource mithilfe einer Azure Resource Manager-Vorlage erstellen.
 services: azure-resource-manager
 author: msmbaldwin
 ms.service: azure-resource-manager
@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: mbaldwin
 ms.date: 04/15/2021
-ms.openlocfilehash: dd6dd17db52ea0ecbd2793f62bf319ce36321f98
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0b393c39940e0912a2497b6efba9ca920ce71fe7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752098"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438833"
 ---
-# <a name="quickstart-create-an-microsoft-azure-confidential-ledger-with-an-arm-template"></a>Schnellstartanleitung: Erstellen einer Microsoft Azure Confidential Ledger-Ressource mit einer Azure Resource Manager-Vorlage
+# <a name="quickstart-create-an-microsoft-azure-confidential-ledger-with-an-arm-template"></a>Schnellstart: Erstellen einer Microsoft Azure Confidential Ledger-Ressource mit einer ARM-Vorlage
 
-[Microsoft Azure Confidential Ledger ist](overview.md) ein neuer und äußerst sicherer Dienst für die Verwaltung vertraulicher Datensätze. In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen neuen Ledger erstellen.
+[Microsoft Azure Confidential Ledger](overview.md) ist ein neuer und äußerst sicherer Dienst für die Verwaltung vertraulicher Datensätze. In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen neuen Ledger erstellen.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -63,13 +63,13 @@ In der Vorlage sind die folgenden Azure-Ressourcen definiert:
 
 1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
-    Verwenden Sie den Standardwert, um den Confidential Ledger zu erstellen, sofern kein anderer Wert angegeben ist.
+    Verwenden Sie den Standardwert, um die Confidential Ledger-Ressource zu erstellen, sofern kein anderer Wert angegeben ist.
 
     - **Ledgername**: Wählen Sie einen Namen für Ihren Ledger aus. Namen für Ledger müssen global eindeutig sein.
     - **Standort**: Wählen Sie einen Standort aus. Beispiel: **USA, Osten**
     - **PrincipalId:** Geben Sie die Prinzipal-ID an, die Sie sich oben im Abschnitt [Voraussetzungen](#obtain-your-principal-id) notiert haben.
 
-1. Wählen Sie die Option **Kaufen**. Nachdem die Confidential Ledger-Ressource erfolgreich bereitgestellt wurde, erhalten Sie eine Benachrichtigung.
+1. Wählen Sie die Option **Kaufen**. Nachdem die Confidential Ledger-Ressource erfolgreich bereitgestellt wurde, erhalten Sie eine Benachrichtigung.
 
 Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-Portal können Sie auch Azure PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI) und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -79,7 +79,7 @@ Sie können die Ledger-Ressource im Azure-Portal überprüfen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Weitere Artikel zu Microsoft Azure Confidential Ledger können auf dieser Schnellstartanleitung aufbauen. Falls Sie mit weiteren Schnellstartanleitungen und Tutorials fortfahren möchten, sollten Sie die Ressourcen nicht bereinigen.
+Weitere Artikel zu Azure Confidential Ledger können auf dieser Schnellstartanleitung aufbauen. Falls Sie mit weiteren Schnellstartanleitungen und Tutorials fortfahren möchten, sollten Sie die Ressourcen nicht bereinigen.
 
 Wenn Sie die Ressource nicht mehr benötigen, löschen Sie die Ressourcengruppe. Dadurch wird auch die Ledger-Ressource gelöscht. Die Ressourcengruppe kann über die Azure-Befehlszeilenschnittstelle oder mithilfe von Azure PowerShell gelöscht werden:
 
@@ -104,4 +104,4 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mithilfe einer ARM-Vorlage eine Confidential Ledger-Ressource erstellt und die Bereitstellung überprüft. Weitere Informationen zum Dienst finden Sie unter [Übersicht über Microsoft Azure Confidential Ledger](overview.md).
+In dieser Schnellstartanleitung haben Sie mithilfe einer ARM-Vorlage eine Confidential Ledger-Ressource erstellt und die Bereitstellung überprüft. Weitere Informationen zum Dienst finden Sie unter [Übersicht über Microsoft Azure Confidential Ledger](overview.md).

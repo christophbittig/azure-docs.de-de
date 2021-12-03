@@ -1,26 +1,25 @@
 ---
 title: Referenz zum Schreiben von Ausdrücken für Attributzuordnungen bei der Anwendungsbereitstellung von Azure Active Directory
 description: Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, um Attributwerte während der automatisierten Bereitstellung von SaaS-App-Objekten in Azure Active Directory in ein akzeptables Format zu transformieren. Enthält eine Referenzliste mit Funktionen
-services: active-directory
 author: kenwith
 manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/21/2021
+ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5922fab330409391ba9857b76595f5834469d966
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 83b6e19a1e67e2e7e018aaa43ba4cf6149940ed7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991449"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292678"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 
-Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
+Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese Zuordnungen müssen Sie einen skriptähnlichen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate transformieren können, die für die SaaS-Anwendung akzeptabler sind.
 
 ## <a name="syntax-overview"></a>Syntaxübersicht
 
@@ -38,7 +37,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
 
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateDiff](#datediff) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [PCase](#pcase) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateDiff](#datediff) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [PCase](#pcase) &nbsp;&nbsp;&nbsp;&nbsp; [RandomString](#randomstring) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace)&nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Anfügen
@@ -56,7 +55,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 
 #### <a name="append-constant-suffix-to-user-name"></a>Anfügen eines konstanten Suffixes an einen Benutzernamen
-Beispiel: Wenn Sie eine Salesforce Sandbox-Instanz verwenden, müssen Sie möglicherweise ein weiteres Suffix an alle Benutzernamen anfügen, bevor Sie diese synchronisieren.
+Beispiel: Wenn Sie Salesforce Sandbox verwenden, müssen Sie möglicherweise ein weiteres Suffix an alle Benutzernamen anfügen, bevor Sie diese synchronisieren.
 
 **Ausdruck:**  
 `Append([userPrincipalName], ".test")`
@@ -94,8 +93,8 @@ Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechend
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **value1** |Erforderlich |num |Numerischer Wert, der mit „value2“ mit AND verarbeitet werden soll|
-| **value2** |Erforderlich |num |Numerischer Wert, der mit „value1“ mit AND verarbeitet werden soll|
+| **value1** |Erforderlich |Nummer |Numerischer Wert, der mit „value2“ mit AND verarbeitet werden soll|
+| **value2** |Erforderlich |Nummer |Numerischer Wert, der mit „value1“ mit AND verarbeitet werden soll|
 
 **Beispiel:** 
 `BitAnd(&HF, &HF7)`
@@ -114,7 +113,7 @@ Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechend
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **expression** |Erforderlich | expression | Ein beliebiger gültiger Ausdruck |
+| **Ausdruck** |Erforderlich | expression | Ein beliebiger gültiger Ausdruck |
 
 **Beispiel:** 
 `CBool([attribute1] = [attribute2])`                                                                    
@@ -132,7 +131,7 @@ Die CDate-Funktion gibt einen UTC-DateTime-Wert aus einer Zeichenfolge zurück. 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **expression** |Erforderlich | expression | Jede gültige Zeichenfolge, die ein Datum/eine Uhrzeit darstellt. Informationen zu unterstützten Formaten finden Sie unter [.NET: Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| **Ausdruck** |Erforderlich | Ausdruck | Jede gültige Zeichenfolge, die ein Datum/eine Uhrzeit darstellt. Informationen zu unterstützten Formaten finden Sie unter [.NET: Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 **Hinweise:**  
 Die zurückgegebene Zeichenfolge wird immer als UTC-Wert angegeben und weist das Format **M/d/yyyy h:mm:ss tt** auf.
@@ -277,22 +276,22 @@ Die **interval**-Zeichenfolge muss einem der folgenden Werte entsprechen:
 * **EINGABE**: (StatusHireDate): 2012-03-16-07:00
 * **AUSGABE**: 3/23/2012 7:00:00 AM
 
-**Beispiel 2: Abrufen des Datums 10 Tage vor dem Einstellungsdatum**  
+**Beispiel 2: Abrufen des Datums zehn Tage vor dem Einstellungsdatum**  
 `DateAdd("d", -10, CDate([StatusHireDate]))`
 * **EINGABE**: (StatusHireDate): 2012-03-16-07:00
 * **AUSGABE**: 3/6/2012 7:00:00 AM
 
-**Beispiel 3: Hinzufügen von 2 Wochen zum Einstellungsdatum**  
+**Beispiel 3: Dem Einstellungsdatum zwei Wochen hinzufügen**  
 `DateAdd("ww", 2, CDate([StatusHireDate]))`
 * **EINGABE**: (StatusHireDate): 2012-03-16-07:00
 * **AUSGABE**: 3/30/2012 7:00:00 AM
 
-**Beispiel 4: Hinzufügen von 10 Monaten zum Einstellungsdatum**  
+**Beispiel 4: Dem Einstellungsdatum zwei Wochen hinzufügen**  
 `DateAdd("m", 10, CDate([StatusHireDate]))`
 * **EINGABE**: (StatusHireDate): 2012-03-16-07:00
 * **AUSGABE**: 1/16/2013 7:00:00 AM
 
-**Beispiel 5: Hinzufügen von 2 Jahren zum Einstellungsdatum**  
+**Beispiel 5: Dem Einstellungsdatum zwei Wochen hinzufügen**  
 `DateAdd("yyyy", 2, CDate([StatusHireDate]))`
 * **EINGABE**: (StatusHireDate): 2012-03-16-07:00
 * **AUSGABE**: 3/16/2014 7:00:00 AM
@@ -340,7 +339,7 @@ Die **interval**-Zeichenfolge muss einem der folgenden Werte entsprechen:
 | Differenz in Sekunden zwischen zwei Datumsangaben | s | 2021-08-24 | 2021-08-25 | 86.400 | 
 
 **Beispiel 2: Kombinieren von DateDiff mit der IIF-Funktion zum Festlegen des Attributwerts** <br>
-Wenn ein Konto in Workday aktiv ist, legen Sie das *accountEnabled*-Attribut des Benutzers nur auf True fest, wenn das Einstellungsdatum innerhalb der nächsten 5 Tage liegt. 
+Wenn ein Konto in Workday aktiv ist, legen Sie das Attribut des Nutzers *accountEnabled* (Konto aktiviert) nur dann auf Wahr (True) fest, wenn das Einstellungsdatum innerhalb der nächsten fünf Tage liegt. 
 
 ```
 Switch([Active], , 
@@ -418,7 +417,7 @@ Beispielausgabe: "1088051a-cd4b-4288-84f8-e02042ca72bc"
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **expression** | Erforderlich | expression | Der auszuwertende Ausdruck |
+| **Ausdruck** | Erforderlich | Ausdruck | Der auszuwertende Ausdruck |
 
 **Beispiel 1: Entfernen eines Attributs aus dem Flow, wenn es NULL ist** <br>
 `IgnoreFlowIfNullOrEmpty([department])` <br>
@@ -480,7 +479,7 @@ Wird als 7 ausgewertet.
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **expression** |Erforderlich |expression |Der auszuwertende Ausdruck |
+| **Ausdruck** |Erforderlich |Ausdruck |Der auszuwertende Ausdruck |
 
 **Beispiel:** 
 `IsNull([displayName])`
@@ -498,7 +497,7 @@ Die Umkehrung dieser Funktion heißt "IsPresent".
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **expression** |Erforderlich |expression |Der auszuwertende Ausdruck |
+| **Ausdruck** |Erforderlich |Ausdruck |Der auszuwertende Ausdruck |
 
 **Beispiel:** 
 `IsNullOrEmpty([displayName])`
@@ -515,7 +514,7 @@ Gibt „True“ zurück, wenn das Attribut nicht vorhanden ist oder eine leere Z
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **expression** |Erforderlich |expression |Der auszuwertende Ausdruck |
+| **Ausdruck** |Erforderlich |Ausdruck |Der auszuwertende Ausdruck |
 
 **Beispiel:** 
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
@@ -530,7 +529,7 @@ Gibt „True“ zurück, wenn das Attribut nicht vorhanden ist oder eine leere Z
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **expression** |Erforderlich |expression |Der auszuwertende Ausdruck |
+| **Ausdruck** |Erforderlich |Ausdruck |Der auszuwertende Ausdruck |
 
 ---
 ### <a name="item"></a>Element
@@ -595,8 +594,8 @@ Gibt „Joh“ zurück.
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs. |
-| **start** |Erforderlich |integer |Index in der **Quellzeichenfolge** , an dem die Teilzeichenfolge beginnen soll. Das erstes Zeichen in der Zeichenfolge hat den Index 1, das zweite Zeichen hat den Index 2 usw. |
-| **length** |Erforderlich |integer |Die Länge der Teilzeichenfolge. Wenn die Länge außerhalb der **Quellzeichenfolge** endet, gibt die Funktion die Teilzeichenfolge zwischen **Startindex** und dem Ende der **Quellzeichenfolge** zurück. |
+| **start** |Erforderlich |Integer |Index in der **Quellzeichenfolge** , an dem die Teilzeichenfolge beginnen soll. Das erstes Zeichen in der Zeichenfolge hat den Index 1, das zweite Zeichen hat den Index 2 usw. |
+| **length** |Erforderlich |Integer |Die Länge der Teilzeichenfolge. Wenn die Länge außerhalb der **Quell**-Zeichenfolge endet, gibt die Funktion die Teilzeichenfolge zwischen dem **Start**-Index und dem Ende der **Quell**-Zeichenfolge zurück. |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -634,7 +633,7 @@ Gibt „Joh“ zurück.
 
 
 #### <a name="remove-diacritics-from-a-string"></a>Entfernen diakritischer Zeichen aus einer Zeichenfolge
-Beispiel: Sie müssen Zeichen mit Akzent durch entsprechende Zeichen ohne Akzent ersetzen.
+Beispiel: Ersetzen Sie Zeichen, die Akzente enthalten, durch entsprechende Zeichen, die keine Akzente enthalten.
 
 **Ausdruck:** NormalizeDiacritics([givenName])
 
@@ -680,10 +679,10 @@ Zurückgegebener Beispielwert: *7/2/2021 3:33:38 PM*
 | **value** |Erforderlich | String | Zeichenfolge mit Datum und Uhrzeit im unterstützten Format. Unterstützte Formate finden Sie unter https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx. |
 
 **Beispiel:**
-* Beispiel für Workday: Wenn Sie das Attribut *ContractEndDate* von Workday im Format *2020-12-31-08:00* dem Feld *accountExpires* in AD zuordnen möchten, erfahren Sie hier, wie Sie diese Funktion verwenden und den Zeitzonenoffset so ändern, dass er Ihrem Gebietsschema entspricht. 
+* Beispiel für Workday: Wenn Sie das Attribut *ContractEndDate* von Workday im Format *2020-12-31-08:00* dem Feld *accountExpires* (Konto läuft ab) in AD zuordnen möchten, so erfahren Sie hier, wie Sie diese Funktion verwenden und die Zeitzonenverschiebung so ändern, dass er Ihrer lokalen Zeitzone entspricht. 
   `NumFromDate(Join("", FormatDateTime([ContractEndDate], ,"yyyy-MM-ddzzz", "yyyy-MM-dd"), " 23:59:59-08:00"))`
 
-* Beispiel für SuccessFactors: Wenn Sie das Attribut *endDate* von SuccessFactors im Format *M/d/yyyy hh:mm:ss tt* dem Feld *accountExpires* in AD zuordnen möchten, erfahren Sie hier, wie Sie diese Funktion verwenden und den Zeitzonenoffset so ändern, dass er Ihrem Gebietsschema entspricht.
+* Beispiel für SuccessFactors: Wenn Sie das Attribut *endDate* von SuccessFactors im Format *M/d/yyyy hh:mm:ss tt* dem Feld *accountExpires* (Konto läuft ab) in AD zuordnen möchten, erfahren Sie hier, wie Sie diese Funktion verwenden und die Zeitzonenverschiebung so ändern, dass er Ihrer lokalen Zeitzone entspricht.
   `NumFromDate(Join("",FormatDateTime([endDate], ,"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd")," 23:59:59-08:00"))`
 
 
@@ -728,6 +727,31 @@ Angenommen, Sie beziehen die Attribute *firstName* und *lastName* von SAP Succes
 | `PCase([lastName]," '-")` | *lastName* = "PINTO-DE'SILVA" | "Pinto-De'Silva" | Die Funktion *PCase* verwendet Zeichen im Parameter *wordSeparators*, um Wörter zu erkennen und sie in die richtige Groß-/Kleinschreibung zu transformieren. |
 | `PCase(Join(" ",[firstName],[lastName]))` | *firstName* = GREGORY, *lastName* = "JAMES" | "Gregory James" | Sie können die Join-Funktion in PCase schachteln. Da der Parameter *wordSeparators* nicht angegeben wird, verwendet die Funktion *PCase* den Standardzeichensatz als Worttrennzeichen.  |
 
+
+---
+
+### <a name="randomstring"></a>Zufällige Zeichenfolge (RandomString)
+**Funktion:** Zufälllige Zeichenfolge(Länge, Mindestanzahl an Nummern, Mindestanzahl an Sonderzeichen, Mindestanzahl an Großbuchstaben, Mindestanzahl an Kleinbuchstaben, unzulässige Zeichen) [RandomString(Length, MinimumNumbers, MinimumSpecialCharacters , MinimumCapital, MinimumLowerCase, CharactersToAvoid)]
+
+**Beschreibung:** Die RandomString-Funktion generiert eine zufällige Zeichenfolge basierend auf den angegebenen Bedingungen. Die zulässigen Zeichen können [hier](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference) ausfindig gemacht werden.
+
+**Parameter:** 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **Länge** |Erforderlich |Number |Gesamtlänge der zufälligen Zeichenfolge. Dieser sollte größer oder gleich der Summe aus der Mindestanzahl an Nummern (MinimumNumbers), Mindestanzahl an Sonderzeichen (MinimumSpecialCharacters) und der Mindestanzahl an Großbuchstaben (MinimumCapital) sein. Maximal 256 Zeichen.|
+| **Mindestanzahl an Nummern** (MinimumNumbers) |Erforderlich |Number |Die Mindestanzahl an Nummern in der zufälligen Zeichenfolge.|
+| **Mindestanzahl an Sonderzeichen** (MinimumSpecialCharacters) |Erforderlich |Number |Mindestanzahl an Sonderzeichen.|
+| **Mindestanzahl an Großbuchstaben** (MinimumCapital) |Erforderlich |Number |Mindestanzahl an Großbuchstaben in der zufälligen Zeichenfolge.|
+| **Mindestanzahl an Kleinbuchstaben** (MinimumLowerCase) |Erforderlich |Number |Mindestanzahl an Kleinbuchstaben in der zufälligen Zeichenfolge.|
+| **Unzulässige Zeichen** (CharactersToAvoid) |Optional |String |Zeichen, die beim Generieren der zufälligen Zeichenfolge ausgeschlossen werden sollen.|
+
+
+**Beispiel 1:** – Generieren einer zufälligen Zeichenfolge ohne Sonderzeicheneinschränkungen: `RandomString(6,3,0,0,3)`
+Generiert eine zufällige Zeichenfolge mit 6 Zeichen. Die Zeichenfolge enthält 3 Zahlen und 3 Kleinbuchstaben (1a73qt).
+
+**Beispiel 2:** – Generieren einer zufälligen Zeichenfolge mit Sonderzeicheneinschränkungen: `RandomString(10,2,2,2,1,"?,")`
+Generiert eine zufällige Zeichenfolge mit 10 Zeichen. Die Zeichenfolge enthält mindestens 2 Zahlen, 2 Sonderzeichen, 2 Großbuchstaben, einen Kleinbuchstaben und schließt die Zeichen "?" und "," (1@!2BaRg53) aus.
 
 ---
 
@@ -800,10 +824,11 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 **Beschreibung:** Es sind mindestens zwei Argumente erforderlich, bei denen es sich um eindeutige Regeln für die Generierung von Werten handelt, die mit Ausdrücken definiert werden. Mit der Funktion wird jede Regel ausgewertet. Anschließend wird der Wert überprüft, der generiert wurde, um die Eindeutigkeit in der Ziel-App bzw. im Zielverzeichnis sicherzustellen. Der erste eindeutige Wert, der gefunden wird, wird zurückgegeben. Wenn alle Werte am Ziel bereits vorhanden sind, wird der Eintrag hinterlegt, und die Ursache wird in den Überwachungsprotokollen protokolliert. Für die Anzahl von Argumenten, die bereitgestellt werden können, gilt keine Obergrenze.
 
 
- - Dies ist eine Funktion der obersten Ebene, die nicht geschachtelt werden kann.
+ - Diese Funktion muss sich auf der obersten Ebene befinden und kann nicht geschachtelt werden.
  - Diese Funktion kann nicht auf Attribute angewandt werden, die über eine Rangfolge für den Abgleich verfügen.     
  - Diese Funktion darf nur für die Erstellung von Einträgen verwendet werden. Legen Sie die Eigenschaft **Zuordnung anwenden** auf **Nur beim Erstellen von Objekten** fest.
  - Diese Funktion wird derzeit nur für die Benutzerbereitstellung von Workday in Active Directory und für die Benutzerbereitstellung von SuccessFactors in Active Directory unterstützt. Sie kann nicht für andere Bereitstellungsanwendungen verwendet werden. 
+ - Die LDAP-Suche, die die Funktion *SelectUniqueValue* (Einzigartigen Wert auswählen) im lokalen Active Directory ausführt, escapet keine Sonderzeichen wie diakritische Zeichen. Wenn Sie eine Zeichenfolge wie "Jéssica Smith" übergeben, die ein Sonderzeichen enthält, treten Verarbeitungsfehler auf. Bitte verschachteln Sie die Funktion [Diakritische Zeichen normen](#normalizediacritics) (NormalizeDiacritics) wie im Beispiel unten gezeigt, um die Sonderzeichen zu normen. 
 
 
 **Parameter:** 
@@ -839,7 +864,7 @@ Beispiel: Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funktion:** SingleAppRoleAssignment([appRoleAssignments])
 
-**Beschreibung:** Gibt eine einzelne appRoleAssignment aus der Liste aller appRoleAssignments zurück, die einem Benutzer für eine bestimmte Anwendung zugewiesen sind. Diese Funktion ist erforderlich, um das appRoleAssignments-Objekt in eine einzelne Namenszeichenfolge für eine Rolle zu konvertieren. Beachten Sie, dass die bewährte Methode darin besteht, sicherzustellen, dass einem Benutzer nur jeweils eine appRoleAssignment zugewiesen ist. Wenn mehrere Rollen zugewiesen sind, ist die zurückgegebene Zeichenfolge für die Rolle möglicherweise nicht vorhersehbar. 
+**Beschreibung:** Gibt eine einzelne appRoleAssignment aus der Liste aller appRoleAssignments zurück, die einem Benutzer für eine bestimmte Anwendung zugewiesen sind. Diese Funktion ist erforderlich, um das appRoleAssignments-Objekt in eine einzelne Namenszeichenfolge für eine Rolle zu konvertieren. Die bewährteste Methode ist, sicherzustellen, dass einem Benutzer jeweils nur eine App-Rollen-Zuweisung (appRoleAssignment) zugewiesen ist. Wenn mehrere Rollen zugewiesen sind, ist die für die Rolle zurückgegebene Zeichenfolge möglicherweise nicht vorhersehbar. 
 
 **Parameter:** 
 
@@ -899,7 +924,7 @@ Beispiel: Sie müssen eine durch Trennzeichen getrennte Liste von Zeichenfolgen 
 | **value** |Erforderlich |String |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
 
 #### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Ersetzen eines Werts anhand eines vordefinierten Satzes von Optionen
-Beispiel: Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, der in Azure AD gespeichert ist. Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
+Beispiel: Definieren Sie die Zeitzone des Benutzers anhand des Bundesstaatscodes, der in Azure AD gespeichert ist. Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
 
 **Ausdruck:**  
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
@@ -943,7 +968,7 @@ Beispiel: Sie möchten den UPN-Wert generieren, indem Sie die Quellfelder „Pre
 
 **Beschreibung:** Konvertiert einen *source*-Zeichenfolgenwert mithilfe der angegebenen Kulturregeln in Großbuchstaben. Ohne Angabe der *culture*-Information wird die invariante Kultur verwendet.
 
-Wenn Sie für vorhandene Werte im Zielsystem die Großschreibung festlegen möchten, [aktualisieren Sie das Schema für Ihre Zielanwendung](./customize-application-attributes.md#editing-the-list-of-supported-attributes), und legen Sie die Eigenschaft „caseExact“ für das gewünschte Attribut auf TRUE fest. 
+Wenn Sie für vorhandene Werte im Zielsystem die Großschreibung festlegen möchten, [aktualisieren Sie das Schema für Ihre Zielanwendung](./customize-application-attributes.md#editing-the-list-of-supported-attributes) und stellen Sie die Eigenschaft „caseExact“ für das gewünschte Attribut auf „wahr“ („true“). 
 
 **Parameter:** 
 
@@ -997,7 +1022,7 @@ Sie müssen einen bekannten Domänennamen aus der E-Mail-Adresse eines Benutzers
 
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Generieren eines Benutzeralias durch Verketten von Teilen des Vor- und Nachnamens
-Sie müssen einen Benutzeralias generieren, indem Sie die ersten drei Buchstaben des Vornamens und die ersten fünf Buchstaben des Nachnamens des Benutzers verwenden.
+Sie müssen einen Benutzeraliasnamen generieren, indem Sie die ersten drei Buchstaben des Vornamens und die ersten fünf Buchstaben des Nachnamens des Benutzers verwenden.
 
 **Ausdruck:**  
 `Append(Mid([givenName], 1, 3), Mid([surname], 1, 5))`

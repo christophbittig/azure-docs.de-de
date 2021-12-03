@@ -9,12 +9,12 @@ metadata:
   author: johnkemnetz
   ms.author: johnkem
   ms.date: 08/24/2021
-  ms.openlocfilehash: 8ae0b6d778d71b05b45cdc23d27be26bd6b0cfa9
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 58cd0ace885b8f7852fd13e0612d71e3b77b1b8b
+  ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131088295"
+  ms.lasthandoff: 11/17/2021
+  ms.locfileid: "132715338"
 landingContent:
 - title: Informationen zu Azure Chaos Studio
   linkLists:
@@ -24,16 +24,28 @@ landingContent:
       url: chaos-studio-overview.md
     - text: Was ist Chaos Engineering?
       url: chaos-studio-chaos-engineering-overview.md
+  - linkListType: concept
+    links:
+    - text: Chaos-Experimente
+      url: chaos-studio-chaos-experiments.md
+    - text: Ziele und Funktionen
+      url: chaos-studio-targets-capabilities.md
+    - text: Berechtigungen und Sicherheit
+      url: chaos-studio-permissions-security.md
 - title: Erste Schritte
   linkLists:
-  - linkListType: tutorial
+  - linkListType: video
+    links:
+    - text: Einführung in Chaos Studio
+      url: https://channel9.msdn.com/Shows/Azure-Videos/Azure-Chaos-Studio-Curious-to-control-chaos
+  - linkListType: how-to-guide
     links:
     - text: Erstellen Sie ein Chaos-Experiment, das einen service-direkten Fehler verwendet, um eine Azure Cosmos DB-Instanz ausfallen zu lassen
-      url: chaos-studio-tutorial-service-direct.md
+      url: chaos-studio-tutorial-service-direct-portal.md
     - text: Erstellen Sie ein Experiment, das einen agentenbasierten Fehler mit Azure Chaos Studio verwendet
-      url: chaos-studio-tutorial-agent-based.md
+      url: chaos-studio-tutorial-agent-based-portal.md
     - text: Erstellen Sie ein Experiment, das einen AKS Chaos Mesh-Fehler mit Azure Chaos Studio verwendet
-      url: chaos-studio-tutorial-aks.md
+      url: chaos-studio-tutorial-aks-portal.md
 - title: Verweis
   linkLists:
   - linkListType: reference
@@ -43,4 +55,16 @@ landingContent:
     - text: Fehleranbieter
       url: chaos-studio-fault-providers.md
     - text: REST-API-Dokumentation
-      url: https://docs.microsoft.com/rest/api/chaosstudio
+      url: /rest/api/chaosstudio
+    - text: Python SDK
+      url: /python/api/azure-mgmt-chaos/?view=azure-python-preview
+- title: Beispiele
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Erstellen eines Experiments mit einer ARM-Vorlage
+      url: sample-template-experiment.md
+    - text: Integrieren von Ressourcen mit einer ARM-Vorlage
+      url: sample-template-targets.md
+    - text: REST-API-Beispiele
+      url: chaos-studio-samples-rest-api.md

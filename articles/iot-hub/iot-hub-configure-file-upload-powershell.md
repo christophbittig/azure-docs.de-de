@@ -1,19 +1,19 @@
 ---
 title: Konfigurieren des Hochladens von Dateien mit Azure PowerShell | Microsoft-Dokumentation
 description: Informationen zum Konfigurieren des IoT Hubs mit Azure PowerShell-Cmdlets zum Aktivieren des Hochladens von Dateien von verbundenen Geräten. Enthält Informationen zum Konfigurieren des Azure-Zielspeicherkontos.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dd108bfd61a84e4c25b1ab59e9f24e23048ada2d
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: f20236edd7a905f05d59ddafd3132569a851816a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340473"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553931"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurieren des Hochladens von Dateien in IoT Hub mit PowerShell
 
@@ -141,6 +141,6 @@ Set-AzIotHub `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Hochladen von Dateien aus einer Geräteübersicht](iot-hub-devguide-file-upload.md)
+* [Hochladen von Dateien von einem Gerät – Übersicht](iot-hub-devguide-file-upload.md)
 * [IoT Hub-Unterstützung für verwaltete Identitäten](./iot-hub-managed-identity.md)
 * [Anleitungen zum Dateiupload](./iot-hub-csharp-csharp-file-upload.md)

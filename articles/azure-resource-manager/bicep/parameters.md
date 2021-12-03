@@ -4,13 +4,13 @@ description: Anleitung zum Definieren von Parametern in Bicep-Dateien.
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/01/2021
-ms.openlocfilehash: b90fb108df58c41578bf9472390574b4bc174111
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 11/12/2021
+ms.openlocfilehash: 4345269d9c1191545a28998a38aeedb14b37e0bc
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129363507"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486598"
 ---
 # <a name="parameters-in-bicep"></a>Parameter in Bicep
 
@@ -26,7 +26,15 @@ Weitere Informationen zu Parametern sowie praktische Anleitungen finden Sie unte
 
 ## <a name="declaration"></a>Deklaration
 
-Jeder Parameter benötigt einen Namen und einen Typ. Ein Parameter kann nicht den gleichen Namen wie eine Variable, eine Ressource, eine Ausgabe oder ein anderer Parameter im gleichen Geltungsbereich aufweisen.
+Jeder Parameter hat einen Namen und einen [Datentyp](data-types.md). Optional können Sie einen Standardwert für den Parameter angeben.
+
+```bicep
+param <parameter-name> <parameter-data-type> = <default-value>
+```
+
+Ein Parameter kann nicht den gleichen Namen wie eine Variable, eine Ressource, eine Ausgabe oder ein anderer Parameter im gleichen Geltungsbereich aufweisen.
+
+Das folgende Beispiel zeigt grundlegende Deklarationen von Parametern.
 
 ```bicep
 param demoString string
@@ -68,7 +76,20 @@ param demoPassword string
 param virtualMachineSize string = 'Standard_DS1_v2'
 ```
 
-Dekoratoren sind im [sys Namensraum](bicep-functions.md#namespaces-for-functions). Wenn Sie einen Dekorator von einem anderen Element mit dem gleichen Namen unterscheiden müssen, stellen Sie dem Dekorator `sys` voran. Zum Beispiel, wenn Ihre Bicep Datei einen Parameter mit dem Namen `description` enthält, müssen Sie den sys Namespace hinzufügen, wenn Sie den **description** Dekorator verwenden.
+In der folgenden Tabelle werden die verfügbaren Decorator-Elemente und deren Verwendung beschrieben.
+
+| Decorator | Anwenden auf | Argument | Beschreibung |
+| --------- | ---- | ----------- | ------- |
+| [Zugelassen](#allowed-values) | all | array | Zulässige Werte für den Parameter. Verwenden Sie diesen Decorator, um sicherzustellen, dass der Benutzer korrekte Werte bereitstellt. |
+| [description](#description) | all | Zeichenfolge | Text, der erklärt, wie der Parameter zu verwenden ist. Die Beschreibung wird den Benutzern über das Portal angezeigt. |
+| [maxLength](#length-constraints) | Array, Zeichenfolge | INT | Die maximale Länge für Zeichenfolge- und Array-Parameter. Der Stop-Wert ist inklusiv. |
+| [maxValue](#integer-constraints) | INT | INT | Der maximale Wert für den ganzzahligen Parameter. Der Stop-Wert ist inklusiv. |
+| metadata | all | Objekt | Benutzerdefinierte Eigenschaften, die auf den Parameter angewendet werden sollen. Kann eine Beschreibungseigenschaft enthalten, die dem Description-Decorator entspricht. |
+| [minLength](#length-constraints) | Array, Zeichenfolge | INT | Die minimale Länge für Zeichenfolge- und Array-Parameter. Der Stop-Wert ist inklusiv. |
+| [minValue](#integer-constraints) | INT | INT | Der minimale Wert für den ganzzahligen Parameter. Der Stop-Wert ist inklusiv. |
+| [secure](#secure-parameters) | String-Objekt | none | Markiert den Parameter als sicher. Der Wert eines sicheren Parameters wird weder im Bereitstellungsverlauf gespeichert noch protokolliert. Weitere Informationen finden Sie unter Sichern von [Zeichenfolgen und Objekten](data-types.md#secure-strings-and-objects). |
+
+Decorators befinden sich im [sys-Namespace](bicep-functions.md#namespaces-for-functions). Wenn Sie diesen Decorator von einem anderen Element gleichen Namens unterscheiden müssen, stellen Sie dem Decorator `sys` voran. Zum Beispiel, wenn Ihre Bicep Datei einen Parameter mit dem Namen `description` enthält, müssen Sie den sys Namespace hinzufügen, wenn Sie den **description** Dekorator verwenden.
 
 ```bicep
 @sys.description('The name of the instance.')

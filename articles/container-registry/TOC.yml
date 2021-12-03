@@ -87,6 +87,8 @@
               href: container-registry-oci-artifacts.md
             - name: Push- und Pull-Vorgänge für ein Helm-Chart
               href: container-registry-helm-repos.md
+            - name: Push- und Pull-Vorgänge für Lieferkettenartefakte (Vorschau)
+              href: container-registry-oras-artifacts.md
             - name: Anzeigen von Repositorys
               href: container-registry-repositories.md
             - name: Importieren von Containerimages
@@ -173,7 +175,7 @@
             - name: Überprüfen von Containerimages
               expanded: false
               items:
-                - name: Überprüfen mit Azure Defender
+                - name: Überprüfen mit Microsoft Defender für Cloud
                   href: scan-images-defender.md
                 - name: Überprüfen mit GitHub Actions
                   href: github-action-scan.md
@@ -287,7 +289,7 @@
 - name: Verweis
   expanded: false
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/acr
     - name: REST
       href: /rest/api/containerregistry

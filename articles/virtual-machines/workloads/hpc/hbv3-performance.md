@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: bb32a407813ba7e85f55fc39790fba81ca452c50
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: bb777c952e4166b764032317f859419ebc3c94dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693398"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312018"
 ---
 # <a name="hbv3-series-virtual-machine-performance"></a>VM-Leistung der HBv3-Serie
 
@@ -38,9 +38,10 @@ Die [feste Prozesszuordnung](compiling-scaling-applications.md#process-pinning) 
 
 Der MPI-Latenztest der OSU-Mikrobenchmarksuite kann wie unten gezeigt ausgeführt werden. Beispielskripts finden Sie auf [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh).
 
-```bash 
+```bash
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency
-``` 
+```
+
 ## <a name="mpi-bandwidth"></a>MPI-Bandbreite
 Der MPI-Bandbreitentest der OSU-Mikrobenchmarksuite kann wie unten gezeigt ausgeführt werden. Beispielskripts finden Sie auf [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh).
 ```bash

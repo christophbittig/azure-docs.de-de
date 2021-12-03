@@ -3,15 +3,15 @@ title: Analysieren von Livevideos mit der KI-Erweiterung für OpenVINO™ Model 
 description: In diesem Tutorial wird ein von Intel bereitgestellter KI-Modellserver mit vorab trainierten Modellen verwendet, um den Livevideofeed einer (simulierten) IP-Kamera zu analysieren.
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 titleSuffix: Azure
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 29c6771921ca7e37d5825a24e812234fff9e294b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f2e6e14849bfa00862b2fd87a0e42d88b315ab14
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100343"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490703"
 ---
 # <a name="tutorial-analyze-live-video-using-openvino-model-server--ai-extension-from-intel"></a>Tutorial: Analysieren von Livevideos mit der KI-Erweiterung für OpenVINO™ Model Server von Intel 
 
@@ -72,7 +72,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 ### <a name="review-the-sample-video"></a>Überprüfen des Beispielvideos
 
-Beim Einrichten der Azure-Ressourcen wird ein kurzes [Parkplatzvideo](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) auf den virtuellen Linux-Computer in Azure kopiert, den Sie als IoT Edge-Gerät verwenden. In dieser Schnellstartanleitung wird die Videodatei verwendet, um einen Livestream zu simulieren.
+Beim Einrichten der Azure-Ressourcen wird ein kurzes [Parkplatzvideo](https://avamedia.blob.core.windows.net/public/lots_015.mkv) auf den virtuellen Linux-Computer in Azure kopiert, den Sie als IoT Edge-Gerät verwenden. In dieser Schnellstartanleitung wird die Videodatei verwendet, um einen Livestream zu simulieren.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 

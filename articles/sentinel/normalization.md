@@ -1,37 +1,37 @@
 ---
-title: Normalisierung und das Azure Sentinel-Informationsmodell (ASIM) | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie in Azure Sentinel Daten unter Verwendung des Azure Sentinel-Informationsmodells (ASIM) aus verschiedenen Quellen normalisiert werden.
+title: Normalisierung und das Advanced SIEM Information Model (ASIM) | Microsoft Docs
+description: Dieser Artikel erklärt, wie Microsoft Sentinel Daten aus vielen verschiedenen Quellen mit Hilfe des Advanced SIEM Information Model (ASIM) normalisiert.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9bb09b6a9b65e0e10b2d7d2d1b02e29dde3e85fc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f01526c598b0d890dc40f591f825e10e6060cf8c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009223"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522534"
 ---
-# <a name="normalization-and-the-azure-sentinel-information-model-asim-public-preview"></a>Normalisierung und das Azure Sentinel-Informationsmodell (ASIM) (Öffentliche Vorschau)
+# <a name="normalization-and-the-advanced-siem-information-model-asim-public-preview"></a>Normalisierung und das Advanced SIEM Information Model (ASIM) (Öffentliche Vorschau)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-In Azure Sentinel werden Daten aus vielen Quellen erfasst. Die gemeinsame Verwendung verschiedener Datentypen und -tabellen macht es notwendig, dass Sie mit den einzelnen Typen und Tabellen vertraut sind und eindeutige Datensätze für Analyseregeln, Arbeitsmappen und Hunting-Abfragen für jeden Typ und jedes Schema schreiben und verwenden.
+Microsoft Sentinel nimmt Daten aus vielen Quellen auf. Die gemeinsame Verwendung verschiedener Datentypen und -tabellen macht es notwendig, dass Sie mit den einzelnen Typen und Tabellen vertraut sind und eindeutige Datensätze für Analyseregeln, Arbeitsmappen und Hunting-Abfragen für jeden Typ und jedes Schema schreiben und verwenden.
 
 
 Manchmal benötigen Sie separate Regeln, Arbeitsmappen und Abfragen, selbst bei in den Datentypen gemeinsam verwendeten Elementen, z. B. Firewallgeräten. Auch die Korrelation zwischen verschiedenen Datentypen bei einer Untersuchung und Hunting-Abfrage kann schwierig sein.
 
-Dieser Artikel bietet eine Übersicht über das Azure Sentinel-Informationsmodell (ASIM), welches eine Lösung für die Herausforderungen bei der Behandlung mehrerer Datentypen bietet.
+Dieser Artikel gibt einen Überblick über das Advanced Security Information and Event Management (SIEM) Information Model (ASIM), das eine Lösung für die Herausforderungen bei der Handhabung mehrerer Datentypen bietet.
 
 > [!TIP]
 > Sehen Sie sich auch das [ASIM-Webinar](https://www.youtube.com/watch?v=WoGD-JeC7ng) an, oder befassen Sie sich mit den [Webinarfolien](https://1drv.ms/b/s!AnEPjr8tHcNmjDY1cro08Fk3KUj-?e=murYHG). Weitere Informationen finden Sie in den [nächsten Schritten](#next-steps).
@@ -43,7 +43,7 @@ Dieser Artikel bietet eine Übersicht über das Azure Sentinel-Informationsmodel
 
 ## <a name="common-asim-usage"></a>Allgemeine ASIM-Verwendung
 
-Das Azure Sentinel-Informationsmodell (ASIM) bietet durch folgende Funktionen eine nahtlose Methode für die Verarbeitung verschiedener Quellen in einheitlichen, normalisierten Ansichten:
+Das Advanced SIEM Information Model (ASIM) bietet eine nahtlose Erfahrung für die Handhabung verschiedener Quellen in einheitlichen, normalisierten Ansichten, indem es die folgenden Funktionen bereitstellt:
 
 - **Quellenübergreifende Erkennungsfunktion**. Normalisierte Analyseregeln funktionieren quellenübergreifend, lokal und in der Cloud und erkennen Angriffe wie Brute-Force-Angriffe oder unmögliche Ortswechsel auf verschiedenen Systemen, einschließlich Okta, AWS und Azure.
 
@@ -55,7 +55,7 @@ Das Azure Sentinel-Informationsmodell (ASIM) bietet durch folgende Funktionen ei
 
 ### <a name="asim-and-the-open-source-security-events-metadata"></a>ASIM und die Metadaten von Open-Source-Sicherheitsereignissen
 
-Das Azure Sentinel-Informationsmodell ist am Common Information Model [Open Source Security Events Metadata (OSSEM)](https://ossemproject.com/intro.html) ausgerichtet und ermöglicht daher die vorhersagbare Korrelation von Entitäten aus mehreren normalisierten Tabellen.
+Das Advanced SIEM Information Model ist mit dem [Open Source Security Events Metadata (OSSEM)](https://ossemproject.com/intro.html) gemeinsamen Informationsmodell abgestimmt und ermöglicht eine vorhersehbare Korrelation von Entitäten über normalisierte Tabellen hinweg.
 
 OSSEM ist ein von der Community betriebenes Projekt, das hauptsächlich auf die Dokumentation und Standardisierung von Sicherheitsereignisprotokollen aus unterschiedlichen Datenquellen und Betriebssystemen ausgerichtet ist. Außerdem stellt das Projekt ein Common Information Model (CIM) bereit, das während der Datennormalisierungsprozeduren von Datentechnikern verwendet werden kann, damit Sicherheitsanalytiker Daten über verschiedene Datenquellen hinweg abfragen und analysieren können.
 
@@ -63,28 +63,28 @@ Weitere Informationen finden Sie in der [OSSEM-Referenzdokumentation](https://os
 
 ## <a name="asim-components"></a>ASIM-Komponenten
 
-Die folgende Abbildung zeigt, wie nicht normalisierte Daten in normalisierte Inhalte umgewandelt und in Azure Sentinel verwendet werden können. Beispielsweise können Sie eine benutzerdefinierte, produktspezifische, nicht normalisierte Tabelle mithilfe eines Parsers und eines Normalisierungsschemas in normalisierte Daten konvertieren. Die normalisierten Daten können Sie in von Microsoft definierten sowie in benutzerdefinierten Analysen, Regeln, Arbeitsmappen, Abfragen usw. verwenden.
+Die folgende Abbildung zeigt, wie nicht normalisierte Daten in normalisierte Inhalte übersetzt und in Microsoft Sentinel verwendet werden können. Beispielsweise können Sie eine benutzerdefinierte, produktspezifische, nicht normalisierte Tabelle mithilfe eines Parsers und eines Normalisierungsschemas in normalisierte Daten konvertieren. Die normalisierten Daten können Sie in von Microsoft definierten sowie in benutzerdefinierten Analysen, Regeln, Arbeitsmappen, Abfragen usw. verwenden.
 
- :::image type="content" source="media/normalization/sentinel-information-model-components.png" alt-text="Umwandlung von nicht normalisierten in normalisierte Daten und Verwendung in Azure Sentinel":::
+ :::image type="content" source="media/normalization/sentinel-information-model-components.png" alt-text="Nicht normalisierter in normalisierter Datenkonvertierungsfluss und -nutzung in Microsoft Sentinel":::
 
-Das Azure Sentinel-Informationsmodell umfasst die folgenden Komponenten:
+Das Advanced SIEM Information Model umfasst die folgenden Komponenten:
 
 |Komponente  |BESCHREIBUNG  |
 |---------|---------|
-|**Normalisierte Schemas**     |   Standardsätze von vorhersagbaren Ereignistypen, die Sie beim Erstellen einheitlicher Funktionen verwenden können. <br><br>Jedes Schema definiert die Felder, die ein Ereignis, eine Namenskonvention für normalisierte Spalten und ein Standardformat für die Feldwerte darstellen. <br><br> In ASIM sind derzeit die folgenden Schemas definiert:<br> - [Netzwerksitzung](./network-normalization-schema.md)<br> - [DNS-Aktivität](dns-normalization-schema.md)<br> - [Prozessereignis](process-events-normalization-schema.md)<br> - [Authentifizierungsereignis](authentication-normalization-schema.md)<br> - [Registrierungsereignis](registry-event-normalization-schema.md)<br> - [Dateiaktivität](file-event-normalization-schema.md)  <br><br>Weitere Informationen finden Sie unter [Schemas des Azure Sentinel-Informationsmodells](normalization-about-schemas.md).  |
-|**Parser**     |  Zuordnung vorhandener Daten unter Verwendung von [KQL-Funktionen](/azure/data-explorer/kusto/query/functions/user-defined-functions) zu normalisierten Schemas. <br><br>Die von Microsoft entwickelten normalisierten Parser können über den GitHub-Ordner [Azure-Sentinel/Parsers](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers) bereitgestellt werden. Normalisierte Parser befinden sich in den Unterordnern, die mit **ASim*** beginnen.  <br><br>Weitere Informationen finden Sie unter [Parser des Azure Sentinel-Informationsmodells](normalization-about-parsers.md).     |
-|**Inhalte für jedes normalisierte Schema**     |    Enthält Analyseregeln, Arbeitsmappen, Hunting-Abfragen und mehr. Die Inhalte für jedes normalisierte Schema können für alle normalisierten Daten verwendet werden, ohne dass quellenspezifische Inhalte erstellt werden müssen. <br><br>Weitere Informationen finden Sie unter [Inhalte des Azure Sentinel-Informationsmodells](normalization-content.md).   |
+|**Normalisierte Schemas**     |   Standardsätze von vorhersagbaren Ereignistypen, die Sie beim Erstellen einheitlicher Funktionen verwenden können. <br><br>Jedes Schema definiert die Felder, die ein Ereignis, eine Namenskonvention für normalisierte Spalten und ein Standardformat für die Feldwerte darstellen. <br><br> In ASIM sind derzeit die folgenden Schemas definiert:<br> - [Netzwerksitzung](./network-normalization-schema.md)<br> - [DNS-Aktivität](dns-normalization-schema.md)<br> - [Prozessereignis](process-events-normalization-schema.md)<br> - [Authentifizierungsereignis](authentication-normalization-schema.md)<br> - [Registrierungsereignis](registry-event-normalization-schema.md)<br> - [Dateiaktivität](file-event-normalization-schema.md)  <br><br>Weitere Informationen finden Sie unter [Advanced SIEM-Informationsmodell-Schemata](normalization-about-schemas.md).  |
+|**Parser**     |  Zuordnung vorhandener Daten unter Verwendung von [KQL-Funktionen](/azure/data-explorer/kusto/query/functions/user-defined-functions) zu normalisierten Schemas. <br><br>Stellen Sie die von Microsoft entwickelten Normalisierungsparser aus dem Ordner [`Parsers` im Microsoft Sentinel GitHub-Repository](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers) bereit. Normalisierte Parser befinden sich in den Unterordnern, die mit **ASim*** beginnen.  <br><br>Weitere Informationen finden Sie unter [Advanced SIEM-Informationsmodell-Parser](normalization-about-parsers.md).     |
+|**Inhalte für jedes normalisierte Schema**     |    Enthält Analyseregeln, Arbeitsmappen, Hunting-Abfragen und mehr. Die Inhalte für jedes normalisierte Schema können für alle normalisierten Daten verwendet werden, ohne dass quellenspezifische Inhalte erstellt werden müssen. <br><br>Weitere Informationen finden Sie unter [Advanced SIEM-Informationsmodell Inhalt](normalization-content.md).   |
 | | |
 
 ### <a name="asim-terminology"></a>ASIM-Terminologie
 
-Im Azure Sentinel-Informationsmodell werden die folgenden Begriffe verwendet:
+Das Advanced SIEM Information Model verwendet die folgenden Begriffe:
 
 |Begriff  |BESCHREIBUNG  |
 |---------|---------|
-|**Meldendes Gerät**     |   Das System, das die Datensätze an Azure Sentinel sendet. Möglicherweise ist dieses System nicht das Zielsystem für den gesendeten Datensatz.      |
+|**Meldendes Gerät**     |   Das System, das die Datensätze an Microsoft Sentinel sendet. Möglicherweise ist dieses System nicht das Zielsystem für den gesendeten Datensatz.      |
 |**Datensatz**     |Eine Dateneinheit, die vom meldenden Gerät gesendet wird. Ein Datensatz wird häufig als `log`, `event` oder `alert` angegeben, kann sich aber auch auf andere Datentypen beziehen.         |
-|**Inhalt** oder **Inhaltselement**     |Die verschiedenen, anpassbaren oder vom Benutzer erstellten Artefakte, die mit Azure Sentinel verwendet werden können. Zu diesen Artefakten gehören beispielsweise Analyseregeln, Hunting-Abfragen und Arbeitsmappen. Ein Inhaltselement ist ein solches Artefakt.|
+|**Inhalt** oder **Inhaltselement**     |Die verschiedenen, anpassbaren oder vom Benutzer erstellten Artefakte, die mit Microsoft Sentinel verwendet werden können. Zu diesen Artefakten gehören beispielsweise Analyseregeln, Hunting-Abfragen und Arbeitsmappen. Ein Inhaltselement ist ein solches Artefakt.|
 | | |
 
 <br>
@@ -93,13 +93,13 @@ Im Azure Sentinel-Informationsmodell werden die folgenden Begriffe verwendet:
 
 So beginnen Sie mit der Verwendung von ASIM:
 
-1. Stellen Sie alle ASIM-Parser schnell aus dem [Azure Sentinel GitHub-Repository](https://aka.ms/AzSentinelASim) bereit.
+1. Stellen Sie alle ASIM-Parser schnell aus dem [Microsoft Sentinel GitHub-Repository](https://aka.ms/AzSentinelASim) bereit.
 
-1. Aktivieren Sie Analyseregelvorlagen, die ASIM verwenden. Weitere Informationen finden Sie unter [Inhaltsliste des Azure Sentinel-Informationsmodells (ASIM)](normalization-content.md#builtin).
+1. Aktivieren Sie Analyseregelvorlagen, die ASIM verwenden. Weitere Informationen finden Sie in der Inhaltsliste [Advanced SIEM Information Model (ASIM)](normalization-content.md#builtin).
 
 1. Verwenden Sie ASIM anhand der folgenden Methoden in Ihrem Arbeitsbereich:
 
-    - Verwenden Sie die ASIM-Hunting-Abfragen aus dem Azure Sentinel-GitHub-Repository, wenn Sie Protokolle in KQL auf der Azure Sentinel-Seite **Protokolle** abfragen. Weitere Informationen finden Sie unter [Inhaltsliste des Azure Sentinel-Informationsmodells (ASIM)](normalization-content.md#builtin).
+    - Verwenden Sie die ASIM-Jagdabfragen aus dem Microsoft Sentinel GitHub-Repository, wenn Sie Protokolle in KQL auf der Seite Microsoft Sentinel **Logs** abfragen. Weitere Informationen finden Sie in der Inhaltsliste [Advanced SIEM Information Model (ASIM)](normalization-content.md#builtin).
 
     - Schreiben Sie mithilfe von ASIM Ihre eigenen Analyseregeln, oder [konvertieren Sie vorhandene](normalization-content.md#builtin).
 
@@ -107,11 +107,11 @@ So beginnen Sie mit der Verwendung von ASIM:
 
 ## <a name="next-steps"></a><a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel gibt einen Überblick über die Normalisierung in Azure Sentinel und das Azure Sentinel Information Model.
+Dieser Artikel gibt einen Überblick über die Normalisierung in Microsoft Sentinel und das Advanced SIEM Information Model.
 
 Weitere Informationen finden Sie unter
 
 - Sehen Sie sich das [ASIM-Webinar](https://www.youtube.com/watch?v=WoGD-JeC7ng) an, oder befassen Sie sich mit den [Folien](https://1drv.ms/b/s!AnEPjr8tHcNmjDY1cro08Fk3KUj-?e=murYHG).
-- [Schemas des Azure Sentinel-Informationsmodells](normalization-about-schemas.md)
-- [Parser des Azure Sentinel-Informationsmodells](normalization-about-parsers.md)
-- [ Azure Sentinel-Informationsmodell Inhalt](normalization-content.md)
+- [Advanced SIEM-Informationsmodell-Schemata](normalization-about-schemas.md)
+- [Advanced SIEM-Informationsmodell-Parser](normalization-about-parsers.md)
+- [Advanced SIEM-Informationsmodell Inhalt](normalization-content.md)

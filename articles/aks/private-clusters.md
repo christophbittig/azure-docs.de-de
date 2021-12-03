@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Clust
 services: container-service
 ms.topic: article
 ms.date: 8/30/2021
-ms.openlocfilehash: fd91a848a2da7ca503f74def67c0fab268d253c7
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: b0e89a59e9051de255be21103121569e45a2621a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387979"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440543"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters
 
@@ -72,7 +72,7 @@ Zum Konfigurieren einer privaten DNS-Zone können die folgenden Parameter verwen
 
 - „system“ (Standardwert). Wenn das Argument „--private-dns-zone“ weggelassen wird, erstellt AKS eine private DNS-Zone in der Knotenressourcengruppe.
 - „none“; Standardwert wird „Öffentliches DNS“, was bedeutet, dass AKS keine private DNS-Zone erstellt.  
-- „CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID“ erfordert, dass Sie eine Private DNS-Zone in diesem Format für die globale Azure-Cloud erstellen: `privatelink.<region>.azmk8s.io`. In Zukunft benötigen Sie die Ressourcen-ID dieser Private DNS-Zone.  Außerdem benötigen Sie eine benutzerseitig zugewiesene Identität oder einen benutzerseitig zugewiesenen Dienstprinzipal, der/dem mindestens die Rollen `private dns zone contributor` und `vnet contributor` zugewiesen wurden.
+- „CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID“ erfordert, dass Sie eine private DNS-Zone in diesem Format für die globale Azure-Cloud erstellen: `privatelink.<region>.azmk8s.io` oder `<subzone>.privatelink.<region>.azmk8s.io`. In Zukunft benötigen Sie die Ressourcen-ID dieser Private DNS-Zone.  Außerdem benötigen Sie eine benutzerseitig zugewiesene Identität oder einen benutzerseitig zugewiesenen Dienstprinzipal, der/dem mindestens die Rollen `private dns zone contributor` und `vnet contributor` zugewiesen wurden.
   - Wenn sich „Private DNS Zone“ in einem anderen Abonnement als der AKS-Cluster befindet, müssen Sie Microsoft.ContainerServices in beiden Abonnements registrieren.
   - „fqdn-subdomain“ kann bei „CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID“ nur verwendet werden, um Unterdomänenfunktionen für `privatelink.<region>.azmk8s.io` bereitzustellen.
 
@@ -81,14 +81,68 @@ Zum Konfigurieren einer privaten DNS-Zone können die folgenden Parameter verwen
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [system|none]
 ```
+### <a name="create-a-private-aks-cluster-with-a-byo-private-dns-subzone-preview"></a>Erstellen eines privaten AKS-Clusters mit einer benutzerdefinierten privaten DNS-Subzone (Vorschau)
 
-### <a name="create-a-private-aks-cluster-with-a-custom-private-dns-zone"></a>Erstellen eines privaten AKS-Clusters mit einer benutzerdefinierten privaten DNS-Zone
+Voraussetzungen:
+
+* Azure CLI >= 2.29.0 oder Azure CLI mit Erweiterung „aks-preview“ Version 0.5.34 oder höher.
+
+### <a name="register-the-enableprivateclustersubzone-preview-feature"></a>Registrieren der Previewfunktion `EnablePrivateClusterSubZone`
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+Sie müssen das Featureflag `EnablePrivateClusterSubZone` für Ihr Abonnement aktivieren, um einen privaten AKS-Cluster mit SubZone zu erstellen.
+
+Registrieren Sie das Featureflag `EnablePrivateClusterSubZone` mithilfe des Befehls [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
+az feature register --namespace "Microsoft.ContainerService" --name "EnablePrivateClusterSubZone"
 ```
 
-## <a name="create-a-private-aks-cluster-with-a-public-fqdn"></a>Erstellen eines privaten AKS-Clusters mit einem öffentlichen FQDN
+Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Überprüfen Sie den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list]:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnablePrivateClusterSubZone')].{Name:name,State:properties.state}"
+```
+
+Wenn der Vorgang abgeschlossen ist, können Sie die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register] aktualisieren:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="install-the-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung aks-preview
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+### <a name="create-a-private-aks-cluster-with-custom-private-dns-zone"></a>Erstellen eines privaten AKS-Clusters mit einer benutzerdefinierten privaten DNS-Zone
+
+```azurecli-interactive
+# Custom Private DNS Zone name should be in format "privatelink.<region>.azmk8s.io"
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId>
+```
+
+### <a name="create-a-private-aks-cluster-with-custom-private-dns-subzone"></a>Erstellen eines privaten AKS-Clusters mit einer benutzerdefinierten privaten DNS-Subzone
+
+```azurecli-interactive
+# Custom Private DNS Zone name should be in format "<subzone>.privatelink.<region>.azmk8s.io"
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId>
+```
+
+### <a name="create-a-private-aks-cluster-with-custom-private-dns-zone-and-custom-subdomain"></a>Erstellen eines privaten AKS-Clusters mit einer benutzerdefinierten privaten DNS-Zone und einer benutzerdefinierten Unterdomäne
+
+```azurecli-interactive
+# Custom Private DNS Zone name could be in formats "privatelink.<region>.azmk8s.io" or "<subzone>.privatelink.<region>.azmk8s.io"
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain>
+```
+
+### <a name="create-a-private-aks-cluster-with-a-public-fqdn"></a>Erstellen eines privaten AKS-Clusters mit einem öffentlichen FQDN
 
 Voraussetzungen:
 

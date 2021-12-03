@@ -8,12 +8,12 @@ metadata:
   ms.date: 06/15/2017
   ms.author: rogarana
   ms.subservice: disks
-  ms.openlocfilehash: 2e3e13f0db5b96d8d1cd8ca3eaa7b900dacb0d72
-  ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+  ms.openlocfilehash: 75eccc45269218fa4af9dd8ccac9ed9509c84934
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/07/2021
-  ms.locfileid: "113358313"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132492527"
 title: Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 summary: In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Azure Premium-SSD-Datenträgern ein.
 sections:
@@ -143,10 +143,6 @@ sections:
 
       [Bei Images der Generation 2](./generation-2.md) kann die GPT-Partitionierung sowohl auf dem Betriebssystem-Datenträger als auch auf den Datenträgern verwendet werden.
   - question: >
-      Welche Datenträgertypen unterstützen Momentaufnahmen?
-    answer: >
-      Für SSD Premium, SSD Standard und HDD Standard werden Momentaufnahmen unterstützt. Für diese drei Datenträgertypen werden Momentaufnahmen für alle Datenträgergrößen unterstützt (einschließlich Datenträger mit einer Größe von bis zu 32 TiB). Ultra-Datenträger unterstützen keine Momentaufnahmen.
-  - question: >
       Was sind Azure-Datenträgerreservierungen?
     answer: >
       Die Datenträgerreservierung bietet die Möglichkeit, Datenträgerspeicher ein Jahr im Voraus zu erwerben und so die Gesamtkosten zu reduzieren. Ausführliche Informationen zu Azure-Datenträgerreservierungen finden Sie in unserem Artikel zum Thema: [Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Storage](../cost-management-billing/reservations/understand-disk-reservations.md).
@@ -163,12 +159,45 @@ sections:
       Unterstützen Standard-SSD-Datenträger SLAs für Einzelinstanz-VMs?
     answer: >
       Ja, alle Datenträgertypen unterstützen SLAs für Einzelinstanz-VMs.
+- name: Momentaufnahmen
+  questions:
+  - question: >
+      Kann eine verschlüsselte inkrementelle Momentaufnahme regionsübergreifend kopiert werden?
+    answer: >
+      Ja.
+  - question: >
+      Können mehrere inkrementelle Momentaufnahmen desselben Datenträgers parallel aus einer Region in eine andere kopiert werden?
+    answer: >
+      Nein, es muss gewartet werden, bis der vorherige Kopiervorgang abgeschlossen ist.
+  - question: >
+      Können inkrementelle Momentaufnahmen mehrerer Datenträger gleichzeitig kopiert werden?
+    answer: >
+      Derzeit ja.
+  - question: >
+      Wie kann ich feststellen, ob das Kopieren einer inkrementellen Momentaufnahme in eine andere Region abgeschlossen ist?
+    answer: >
+      Sie können den Status des Kopiervorgangs anhand der Eigenschaft **completionPercent** prüfen. Eine Momentaufnahme ist fertig, wenn der Wert dieser Eigenschaft 100 ist.
+  - question: >
+      Kann ich Momentaufnahmen in einer anderen Reihenfolge als der ihrer Erstellung in eine andere Region kopieren?
+    answer: >
+      Nein, Momentaufnahmen müssen in der Reihenfolge ihrer Erstellung in andere Regionen kopiert werden.
+  - question: >
+      Was geschieht, wenn eine inkrementelle Quellmomentaufnahme gelöscht wird, bevor ein regionsübergreifender Kopiervorgang abgeschlossen ist?
+    answer: >
+      Der Kopiervorgang schlägt fehl.
+  - question: >
+      Werden verwaltete Momentaufnahmen und Bilder verschlüsselt?
+    answer: "Ja. Alle verwalteten Momentaufnahmen und Images werden automatisch verschlüsselt. \n"
+  - question: >
+      Welche Datenträgertypen unterstützen Momentaufnahmen?
+    answer: >
+      Für SSD Premium, SSD Standard und HDD Standard werden Momentaufnahmen unterstützt. Für diese drei Datenträgertypen werden Momentaufnahmen für alle Datenträgergrößen unterstützt (einschließlich Datenträger mit einer Größe von bis zu 32 TiB). Ultra-Datenträger unterstützen keine Momentaufnahmen.
 - name: Freigegebene Azure-Datenträger
   questions:
   - question: >
       Wird das Feature Freigegebene Datenträger für nicht verwaltete Datenträger oder Seitenblobs unterstützt?
     answer: >
-      Nein, es wird nur für Ultra-Datenträger und verwaltete SSD-Premium-Datenträger unterstützt.
+      Nein, sie wird nur für eine Teilmenge der verwalteten Datenträger unterstützt. Für Einzelheiten siehe den [Konzeptartikel](disks-shared.md).
   - question: >
       Welche Regionen unterstützen freigegebene Datenträger?
     answer: >
@@ -347,9 +376,6 @@ sections:
     answer: >
       Ja.
   - question: >
-      Werden verwaltete Momentaufnahmen und Bilder verschlüsselt?
-    answer: "Ja. Alle verwalteten Momentaufnahmen und Images werden automatisch verschlüsselt. \n"
-  - question: >
       Kann ich VMs mit nicht verwalteten Datenträgern, die sich auf Speicherkonten befinden, die verschlüsselt sind oder dies waren, in verwaltete Datenträger konvertieren?
     answer: >
       Ja
@@ -456,11 +482,11 @@ sections:
     answer: >
       Die größte von Azure Backup unterstützte Datenträgergröße beträgt 32 TiB (4 TiB für verschlüsselte Datenträger). Die maximale Datenträgergröße, die von Azure Site Recovery unterstützt wird, beträgt 8 TiB. Unterstützung für die größeren Datenträger bis zu 32 TiB ist in Azure Site Recovery noch nicht verfügbar.
   - question: >
-      Welche VM-Größen werden für große Datenträger (> 4TiB) empfohlen, damit SSD Standard- und HDD Standard-Datenträger optimale Werte für IOPS und Bandbreite erzielen?
+      Welche VM-Größen werden für große Datenträger (> 4 TiB) empfohlen, damit SSD Standard- und HDD Standard-Datenträger optimale Werte für IOPS und Bandbreite erzielen?
     answer: >
       Um für SSD Standard und HDD Standard mit großen Datenträgern (> 4TiB) einen Datenträgerdurchsatz über 500 IOPS und 60MiB/s zu erzielen, sollten Sie zum Optimieren Ihrer Leistung eine neue VM einer der folgenden VM-Größen verwenden: VMs der Serien B, DSv2, Dsv3, ESv3, Fs, Fsv2, M, GS, NCv2, NCv3 oder Ls. Beim Anfügen großer Datenträger an vorhandene VMs oder VMs, die nicht die empfohlenen Größen verwenden, tritt möglicherweise geringere Leistung auf.
   - question: >
-      Wie kann ich meine Datenträger (> 4TiB) aktualisieren, die in der Vorschauphase größerer Datenträger bereitgestellt wurden, um die höhere IOPS und Bandbreite bei allgemeiner Verfügbarkeit zu erhalten?
+      Wie kann ich meine Datenträger (> 4 TiB) aktualisieren, die in der Vorschauphase größerer Datenträger bereitgestellt wurden, um bei allgemeiner Verfügbarkeit die höheren Werte für IOPS und Bandbreite zu erhalten?
     answer: >
       Sie können entweder die VM beenden und starten, der der Datenträger angefügt ist, oder den Datenträger trennen und erneut anfügen. Die Leistungsziele für größere Datenträger wurden sowohl für Premium-SSDs als auch Standard-SSDs bei allgemeiner Verfügbarkeit erhöht.
   - question: >
@@ -511,4 +537,4 @@ sections:
       Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, und wir helfen Ihnen dabei, eine Antwort zu finden. Sie können in den Kommentaren am Ende dieses Artikels Fragen stellen. Auf der [Microsoft-Seite mit Fragen und Antworten zu Azure Storage](/answers/products/azure?product=storage) können Sie sich mit dem Azure Storage-Team und anderen Communitymitgliedern über diesen Artikel austauschen.
 
 
-      Funktionsvorschläge und -ideen können über das [Azure Storage-Feedbackforum](https://feedback.azure.com/forums/217298-storage) eingereicht werden.
+      Funktionsvorschläge und -ideen können über das [Azure Storage-Feedbackforum](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84) eingereicht werden.

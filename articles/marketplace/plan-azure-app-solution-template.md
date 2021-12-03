@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 5f70febb77d61e9d797c618faa82c8275f37bfef
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 11/11/2021
+ms.openlocfilehash: b2119a4168dcc1addec0bff1d046ac90e9530a8a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431382"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308274"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Planen einer Lösungsvorlage für ein Azure-Anwendungsangebot
 
@@ -23,7 +23,7 @@ Für den Plantyp „Lösungsvorlage“ ist eine [Azure Resource Manager-Vorlage 
 
 ## <a name="solution-template-requirements"></a>Anforderungen für Lösungsvorlagen
 
-| Requirements (Anforderungen) | Details |
+| Anforderungen | Details |
 | ------------ | ------------- |
 | Abrechnung und Messung | Pläne für Lösungsvorlagen sind keine Transaktionsangebote. Sie können jedoch zum Bereitstellen bezahlter VM-Angebote verwendet werden, die über den kommerziellen Microsoft-Marketplace abgerechnet werden. Die über die ARM-Vorlage der Lösung bereitgestellten Ressourcen werden im Azure-Abonnement des Kunden eingerichtet. Bei virtuellen Computern mit nutzungsbasierter Bezahlung erfolgt die Transaktion mit dem Kunden über Microsoft, und die Abrechnung wird über das Azure-Abonnement des Kunden abgewickelt. <br><br> Bei der Abrechnung nach dem Modell „Bring Your Own License“ (BYOL) rechnet Microsoft die angefallenen Infrastrukturkosten im Kundenabonnement ab, während Sie Ihre Softwarelizenzgebühren direkt mit dem Kunden abrechnen. |
 | Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. Weitere Informationen finden Sie unter<ul><li>[Erstellen einer technischen Azure-VM-Ressource](./azure-vm-create-certification-faq.yml#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (für Windows-VHDs)</li><li>[Von Azure unterstützte Distributionen von Linux](../virtual-machines/linux/endorsed-distros.md) (für Linux-VHDs)</li></ul> |

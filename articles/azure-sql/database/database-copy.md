@@ -11,12 +11,12 @@ author: rothja
 ms.author: jroth
 ms.reviewer: mathoma
 ms.date: 03/10/2021
-ms.openlocfilehash: 2a725512f3fa18a9af43d2725cda4ce1248e796a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e425644b279b19b9ea6e894e7e81130742bbf60e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339552"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432204"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Datenbank in Azure SQL-Datenbank
 
@@ -94,11 +94,8 @@ Starten Sie das Kopieren der Quelldatenbank mit der Anweisung [CREATE DATABASE .
 
 > [!NOTE]
 > Durch das Beenden der T-SQL-Anweisung wird der Datenbankkopiervorgang nicht beendet. Um den Vorgang zu beenden, müssen Sie die Zieldatenbank löschen.
-> [!NOTE]
-> Datenbankkopien werden nicht unterstützt, wenn für die Quell- und/oder Zielserver ein privater Endpunkt konfiguriert und der Zugriff über das öffentliche Netzwerk deaktiviert ist. Wenn ein privater Endpunkt konfiguriert wurde, aber der Zugriff über das öffentliche Netzwerk zulässig ist, kann nach der Verbindungsherstellung mit dem Zielserver über eine öffentliche IP-Adresse erfolgreich eine Datenbankkopie eingeleitet werden.
-Führen Sie `SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID;` aus, um die Quell-IP-Adresse der aktuellen Verbindung zu ermitteln.
- 
-
+>
+> Datenbankkopien werden nicht unterstützt, wenn für die Quell- und/oder Zielserver ein [privater Endpunkt](private-endpoint-overview.md) konfiguriert ist und der [Zugriff über das öffentliche Netzwerk verweigert wird](connectivity-settings.md#deny-public-network-access). Wenn ein privater Endpunkt konfiguriert wurde, aber der Zugriff über das öffentliche Netzwerk zulässig ist, kann nach der Verbindungsherstellung mit dem Zielserver über eine öffentliche IP-Adresse erfolgreich eine Datenbankkopie eingeleitet werden. Nach Abschluss des Kopiervorgangs kann der öffentliche Zugriff verweigert werden.
 
 > [!IMPORTANT]
 > Das Auswählen einer Sicherungsspeicherredundanz bei Verwendung des Befehls „T-SQL CREATE DATABASE ... AS COPY OF“ wird noch nicht unterstützt. 
@@ -141,7 +138,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 ```
 
 > [!IMPORTANT]
-> Die Firewalls beider Server müssen so konfiguriert werden, dass sie eingehende Verbindungen von der IP-Adresse des Clients zulassen, der den T-SQL-Befehl „CREATE DATABASE ... AS COPY OF“ ausgibt.
+> Die Firewalls beider Server müssen so konfiguriert werden, dass sie eingehende Verbindungen von der IP-Adresse des Clients zulassen, der den T-SQL-Befehl „CREATE DATABASE ... AS COPY OF“ ausgibt. Führen Sie `SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID;` aus, um die Quell-IP-Adresse der aktuellen Verbindung zu ermitteln.
 
 ### <a name="copy-to-a-different-subscription"></a>Kopieren in ein anderes Abonnement
 

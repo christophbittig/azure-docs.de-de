@@ -5,15 +5,15 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: how-to
-ms.date: 04/02/2021
+ms.date: 10/21/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: a959a7b424a855f47a2e128b5c77727d21a9e0aa
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7419eea1503d8d0692bd1b112226c8ce626d9776
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449775"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261574"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps"></a>Einrichten der lokalen Entwicklung für Azure Static Web Apps
 
@@ -63,9 +63,7 @@ Das folgende Diagramm veranschaulicht die lokale Behandlung von Anforderungen:
 - **Vorhandene Azure Static Web Apps-Website:** Sollten Sie über keine Website verfügen, beginnen Sie mit der Starter-App [vanilla-api](https://github.com/staticwebdev/vanilla-api/generate?return_to=/staticwebdev/vanilla-api/generate).
 - **[Node.js](https://nodejs.org) mit npm:** Verwenden Sie die Version [Node.js LTS](https://nodejs.org) (beinhaltet Zugriff auf [npm](https://www.npmjs.com/)).
 - **[Visual Studio Code:](https://code.visualstudio.com/)** Dient zum Debuggen der API-Anwendung, ist für die Befehlszeilenschnittstelle aber nicht erforderlich.
-
-> [!NOTE]
-> Um `swa` mit einer [lokalen API](add-api.md#run-the-frontend-and-api-locally) auszuführen, sind die Azure Functions Core Tools erforderlich.
+- **[Azure Functions Core Tools:](https://github.com/Azure/azure-functions-core-tools#installing)** erforderlich, um die API lokal ausführen zu können
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -73,7 +71,9 @@ Das folgende Diagramm veranschaulicht die lokale Behandlung von Anforderungen:
 
 1. Installieren Sie die Befehlszeilenschnittstelle.
 
-    `npm install -g @azure/static-web-apps-cli`
+    ```console
+    npm install -g @azure/static-web-apps-cli
+    ```
 
 1. Erstellen Sie Ihre App, falls dies für Ihre Anwendung erforderlich ist.
 
@@ -83,7 +83,9 @@ Das folgende Diagramm veranschaulicht die lokale Behandlung von Anforderungen:
 
 1. Starten Sie die Befehlszeilenschnittstelle.
 
-    `swa start`
+    ```console
+    swa start
+    ```
 
 1. Navigieren Sie zu `http://localhost:4280`, um die App im Browser anzuzeigen.
 
@@ -93,8 +95,8 @@ Das folgende Diagramm veranschaulicht die lokale Behandlung von Anforderungen:
 |--- | --- |
 | Bereitstellen eines bestimmten Ordners | `swa start ./output-folder` |
 | Verwenden eines aktiven Framework-Entwicklungsservers | `swa start http://localhost:3000` |
-| Starten einer Funktions-App in einem Ordner | `swa start ./output-folder --api ./api` |
-| Verwenden einer aktiven Funktions-App | `swa start ./output-folder --api http://localhost:7071` |
+| Starten einer Funktions-App in einem Ordner | `swa start ./output-folder --api-location ./api` |
+| Verwenden einer aktiven Funktions-App | `swa start ./output-folder --api-location http://localhost:7071` |
 
 ## <a name="authorization-and-authentication-emulation"></a>Autorisierungs- und Authentifizierungsemulation
 
@@ -131,9 +133,14 @@ Die folgenden Schritte zeigen ein gängiges Szenario, in dem Entwicklungsserver 
 
 1. Öffnen Sie den API-Anwendungsordner in Visual Studio Code, und starten Sie eine Debugsitzung.
 
-1. Übergeben Sie die Adressen für den statischen Server und den API-Server an den Befehl `swa start`, indem Sie sie in der angegebenen Reihenfolge auflisten.
+1. Starten Sie die Static Web Apps-CLI mit dem folgenden Befehl.
 
-    `swa start http://localhost:<DEV-SERVER-PORT-NUMBER> --api=http://localhost:7071`
+
+    ```console
+    swa start http://localhost:<DEV-SERVER-PORT-NUMBER> --api-location http://localhost:7071
+    ```
+
+    Ersetzen Sie `<DEV-SERVER-PORT-NUMBER>` durch die Portnummer des Entwicklungsservers.
 
 Die folgenden Screenshots zeigen die Terminals für ein typisches Debugszenario:
 

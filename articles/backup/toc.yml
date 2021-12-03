@@ -11,7 +11,7 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Sichern einer VM – Portal
+    - name: 'Sichern einer VM: Azure-Portal'
       href: quick-backup-vm-portal.md
     - name: Sichern einer VM – PowerShell
       href: quick-backup-vm-powershell.md
@@ -20,6 +20,8 @@
     - name: 'Sichern eines virtuellen Computers: ARM-Vorlage'
       displayName: Resource Manager
       href: quick-backup-vm-template.md
+    - name: 'Sichern einer VM: Bicep-Vorlage'
+      href: quick-backup-vm-bicep-template.md
 - name: Tutorials
   items:
     - name: Sichern von mehreren Azure-VMs
@@ -182,28 +184,60 @@
       items:
         - name: Übersicht
           href: backup-azure-sql-database.md
-        - name: Backup
+        - name: Über das Azure-Portal
           items:
-            - name: "Sichern mehrerer SQL\_Server-VMs über den Tresor"
-              href: backup-sql-server-database-azure-vms.md
-            - name: "Sichern einer SQL\_Server-Verfügbarkeitsgruppe"
-              href: backup-sql-server-on-availability-groups.md
-            - name: Sichern einer SQL Server-VM über den VM-Bereich
-              href: backup-sql-server-vm-from-vm-pane.md
-        - name: Restore
-          href: restore-sql-database-azure-vm.md
-        - name: Verwalten
-          href: manage-monitor-sql-database-backup.md
+            - name: Backup
+              items:
+                - name: "Sichern mehrerer SQL\_Server-VMs über den Tresor"
+                  href: backup-sql-server-database-azure-vms.md
+                - name: "Sichern einer SQL\_Server-Verfügbarkeitsgruppe"
+                  href: backup-sql-server-on-availability-groups.md
+                - name: Sichern einer SQL Server-VM über den VM-Bereich
+                  href: backup-sql-server-vm-from-vm-pane.md
+            - name: Restore
+              href: restore-sql-database-azure-vm.md
+            - name: Verwalten
+              href: manage-monitor-sql-database-backup.md
+        - name: Mit der REST-API
+          items:
+            - name: Backup
+              href: backup-azure-sql-vm-rest-api.md
+            - name: Restore
+              href: restore-azure-sql-vm-rest-api.md
+            - name: Verwalten
+              href: manage-azure-sql-vm-rest-api.md
     - name: Sicherung von Azure Database for PostgreSQL
       items:
         - name: Übersicht
           href: backup-azure-database-postgresql-overview.md
-        - name: Backup
-          href: backup-azure-database-postgresql.md
-        - name: Restore
-          href: restore-azure-database-postgresql.md
-        - name: Verwalten
-          href: manage-azure-database-postgresql.md
+        - name: Über das Azure-Portal
+          items:
+            - name: Backup
+              href: backup-azure-database-postgresql.md
+            - name: Restore
+              href: restore-azure-database-postgresql.md
+            - name: Verwalten
+              href: manage-azure-database-postgresql.md
+        - name: Mit PowerShell
+          items:
+            - name: Backup
+              href: backup-postgresql-ps.md
+            - name: Restore
+              href: restore-postgresql-database-ps.md
+        - name: Mit der Befehlszeilenschnittstelle
+          items:
+            - name: Backup
+              href: backup-postgresql-cli.md
+            - name: Restore
+              href: restore-postgresql-database-cli.md
+        - name: Mit der REST-API
+          items:
+            - name: Richtlinie
+              href: backup-azure-data-protection-use-rest-api-create-update-postgresql-policy.md
+            - name: Backup
+              href: backup-azure-data-protection-use-rest-api-backup-postgresql.md
+            - name: Restore
+              href: restore-postgresql-database-use-rest-api.md
     - name: Windows-Sicherung mit MARS-Agent
       items:
         - name: Übersicht
@@ -258,7 +292,7 @@
               href: restore-managed-disks-cli.md
         - name: Mit der REST-API
           items:
-            - name: Policy
+            - name: Richtlinie
               href: backup-azure-dataprotection-use-rest-api-create-update-disk-policy.md
             - name: Backup
               href: backup-azure-dataprotection-use-rest-api-backup-disks.md
@@ -288,7 +322,7 @@
               href: restore-blobs-storage-account-cli.md
         - name: Mit der REST-API
           items:
-            - name: Policy
+            - name: Richtlinie
               href: backup-azure-dataprotection-use-rest-api-create-update-blob-policy.md
             - name: Backup
               href: backup-azure-dataprotection-use-rest-api-backup-blobs.md
@@ -436,6 +470,8 @@
           href: monitor-azure-backup-with-backup-explorer.md
         - name: Verwenden des Azure-Portals
           href: backup-azure-monitoring-built-in-monitor.md
+        - name: Verwenden von Azure Monitor-Metriken
+          href: metrics-overview.md
         - name: Verwenden von Azure Monitor-Protokollen
           href: backup-azure-monitoring-use-azuremonitor.md
     - name: Berichte
@@ -458,13 +494,15 @@
               href: backup-azure-diagnostics-mode-data-model.md
     - name: Automation
       items:
+        - name: Überblick
+          href: automation-backup.md
         - name: Integrierte Azure Policy-Instanz für Azure Backup
           items:
             - name: Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy
               href: backup-azure-auto-enable-backup.md
             - name: Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
               href: azure-policy-configure-diagnostics.md
-        - name: PowerShell
+        - name: Verwenden von PowerShell
           items:
             - name: Virtuelle Azure-Computer
               href: backup-azure-vms-automation.md
@@ -504,6 +542,8 @@
           href: security-overview.md
         - name: Rollenbasierte Zugriffssteuerung in Azure
           href: backup-rbac-rs-vault.md
+        - name: Mehrbenutzerautorisierung mithilfe von Resource Guard
+          href: multi-user-authorization.md
         - name: Vorläufiges Löschen
           items:
             - name: Übersicht
@@ -533,10 +573,12 @@
           href: ./security-controls-policy.md
         - name: Sicherheitsbaseline
           href: /security/benchmark/azure/baselines/backup-security-baseline?toc=/azure/backup/toc.json
-    - name: Zugriffsebene
+    - name: Archivzugriffsebene
       items:
-        - name: Archivzugriffsebene
+        - name: Übersicht
           href: archive-tier-support.md
+        - name: Verwenden der Archivebene
+          href: use-archive-tier-support.md
     - name: Problembehandlung
       items:
         - name: Azure VM
@@ -565,6 +607,8 @@
           href: backup-azure-sap-hana-database-troubleshoot.md
         - name: Systemstatus
           href: backup-azure-system-state-troubleshoot.md
+        - name: Archivzugriffsebene
+          href: troubleshoot-archive-tier.md
 - name: Verweis
   items:
     - name: .NET
@@ -574,9 +618,9 @@
     - name: 'Schutz von Daten in Azure: CLI'
       href: /cli/azure/dataprotection?view=azure-cli-latest&preserve-view=true
     - name: Azure PowerShell
-      href: /powershell/module/az.recoveryservices
+      href: /powershell/module/az.recoveryservices/
     - name: 'Schutz von Daten in Azure: PowerShell'
-      href: /powershell/module/az.dataprotection/?view=azps-6.1.0&preserve-view=true
+      href: /powershell/module/az.dataprotection/
     - name: 'PowerShell: Azure Backup-Agent'
       href: /powershell/module/msonlinebackup/?view=msonlinebackup-ps
     - name: 'REST: Schutz von Daten in Azure'

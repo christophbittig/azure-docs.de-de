@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ContractSafe Saml2 SSO | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit ContractSafe Saml2 SSO'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ContractSafe Saml2 SSO konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/20/2019
+ms.date: 10/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 67337a8326a6eca334489b644454debea782c3c7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7e01f3790f14ae2aaf20da465cd9c66336ea5ce6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816895"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132280505"
 ---
-# <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Tutorial: Integrieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ContractSafe Saml2 SSO
+# <a name="tutorial-integrate-azure-ad-sso-with-contractsafe-saml2-sso"></a>Tutorial: Integrieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit ContractSafe Saml2 SSO
 
 In diesem Tutorial erfahren Sie, wie Sie ContractSafe Saml2 SSO in Azure Active Directory (Azure AD) integrieren. Die Integration von ContractSafe Saml2 SSO in Azure AD ermöglicht Folgendes:
 
 * Steuern Sie in Azure AD, wer Zugriff auf ContractSafe Saml2 SSO hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihrem Azure AD-Konto automatisch bei ContractSafe Saml2 SSO anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,13 +35,15 @@ Zunächst benötigen Sie Folgendes:
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. ContractSafe Saml2 SSO unterstützt **SP-initiiertes** einmaliges Anmelden.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* ContractSafe Saml2 SSO unterstützt **SP-initiiertes** einmaliges Anmelden.
 
 ## <a name="add-contractsafe-saml2-sso-from-the-gallery"></a>Hinzufügen von ContractSafe Saml2 SSO über den Katalog
 
 Um die Integration von ContractSafe Saml2 SSO in Azure AD konfigurieren zu können, müssen Sie ContractSafe Saml2 SSO aus dem Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
@@ -54,31 +54,30 @@ Um die Integration von ContractSafe Saml2 SSO in Azure AD konfigurieren zu kö
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit ContractSafe Saml2 SSO mithilfe eines Testbenutzers namens **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ContractSafe Saml2 SSO eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit ContractSafe Saml2 SSO die folgenden Schritte aus:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit ContractSafe Saml2 SSO die folgenden Schritte aus:
 
 1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso), um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
-   * [Erstellen Sie einen Azure AD-Testbenutzer](#create-an-azure-ad-test-user), um das einmalige Anmelden von Azure AD mit dem Konto **B.Simon** zu testen.
-   * [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um **B.Simon** die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen
-
+   1. [Erstellen Sie einen Azure AD-Testbenutzer](#create-an-azure-ad-test-user), um das einmalige Anmelden von Azure AD mit dem Konto **B.Simon** zu testen.
+   1. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um **B.Simon** die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen
 1. [Konfigurieren des einmaligen Anmeldens für ContractSafe Saml2 SSO](#configure-contractsafe-saml2-sso), um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-   * [Erstellen eines ContractSafe Saml2 SSO-Testbenutzers](#create-a-contractsafe-saml2-sso-test-user), um in ContractSafe Saml2 SSO eine Entsprechung von **B.Simon** zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-2. [Testen des einmaligen Anmeldens](#test-sso), um zu überprüfen, ob die Konfiguration funktioniert
+   1. [Erstellen eines ContractSafe Saml2 SSO-Testbenutzers](#create-a-contractsafe-saml2-sso-test-user), um in ContractSafe Saml2 SSO eine Entsprechung von **B.Simon** zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. [Testen des einmaligen Anmeldens](#test-sso), um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **ContractSafe Saml2 SSO** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **ContractSafe Saml2 SSO** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Bearbeitungssymbol (Stift) für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die folgenden Werte in die entsprechenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+   a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`.
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+   b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`.
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den ContractSafe Saml2 SSO-Client](mailto:support@contractsafe.com). Sie können sich auch die Formate im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -102,7 +101,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-## <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen **B. Simon**.
 
@@ -114,20 +113,14 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
-## <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie **B.Simon** die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf ContractSafe Saml2 SSO gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **ContractSafe Saml2 SSO** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie die Schaltfläche **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** die Option **B.Simon** aus. Wählen Sie anschließend im unteren Bildschirmbereich die Schaltfläche **Auswählen** aus.
 1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie dann unten auf dem Bildschirm die Schaltfläche **Auswählen** aus.
 1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen**.
@@ -136,20 +129,18 @@ In diesem Abschnitt ermöglichen Sie **B.Simon** die Verwendung des einmaligen A
 
 Um einmaliges Anmelden aufseiten von **ContractSafe Saml2 SSO** zu konfigurieren, müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [ContractSafe Saml2 SSO-Supportteam](mailto:support@contractsafe.com) senden. Das Team sorgt dafür, dass die SAML-Verbindung für einmaliges Anmelden auf beiden Seiten ordnungsgemäß eingerichtet wird.
 
-## <a name="create-a-contractsafe-saml2-sso-test-user"></a>Erstellen eines ContractSafe Saml2 SSO-Testbenutzers
+### <a name="create-a-contractsafe-saml2-sso-test-user"></a>Erstellen eines ContractSafe Saml2 SSO-Testbenutzers
 
 Erstellen Sie in ContractSafe Saml2 SSO einen Benutzer namens B.Simon. Arbeiten Sie mit dem[ContractSafe Saml2 SSO-Supportteam](mailto:support@contractsafe.com) zusammen, um der ContractSafe Saml2 SSO-Plattform Benutzer hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über das Zugriffspanel. Wenn Sie im Zugriffsbereich die Kachel „ContractSafe Saml2 SSO“ auswählen, sollten Sie automatisch bei der ContractSafe Saml2 SSO-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der ContractSafe Saml2 SSO-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „ContractSafe Saml2 SSO“ klicken, sollten Sie automatisch bei der ContractSafe Saml2 SSO-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [Testen von ContractSafe Saml2 SSO mit Azure AD](https://aad.portal.azure.com/)
+Nach dem Konfigurieren von ContractSafe Saml2 SSO können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

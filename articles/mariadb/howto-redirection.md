@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: 3f26de72839fcaa39bff4d827aba757721736934
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e99d08e638569c68043bb67f090bc7ce41982ca
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664901"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215032"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Herstellen einer Verbindung mit Azure Database for MariaDB mit Umleitung
 
@@ -21,6 +21,9 @@ In diesem Thema wird erläutert, wie Sie eine Anwendung mit Ihrem Azure Database
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen Sie einen Azure Database for MariaDB-Server mit Engine-Version 10.2 oder 10.3. 
 
 Weitere Informationen finden Sie unter den Ausführungen zum Erstellen eines Azure Database for MariaDB-Servers mit dem [Azure-Portal](quickstart-create-mariadb-server-database-using-azure-portal.md) oder der [Azure CLI](quickstart-create-mariadb-server-database-using-azure-cli.md).
+
+> [!IMPORTANT]
+> Derzeit wird die Umleitung bei [Private Link für Azure Database for MariaDB](concepts-data-access-security-private-link.md) nicht unterstützt.
 
 ## <a name="enable-redirection"></a>Aktivieren der Umleitung
 

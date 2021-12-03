@@ -2,14 +2,14 @@
 title: Erkennen der Überquerung einer virtuellen Linie durch Objekte in einem Livevideo mithilfe von Azure Video Analyzer
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Video Analyzer verwenden, um die Überquerung einer Linie durch Objekte in einem Livevideofeed einer (simulierten) IP-Kamera zu erkennen.
 ms.topic: tutorial
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: db1db2166816ab9b2f523aa14af37868bd0b1a1a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 163dcc488de80a81b8ab9defdbdb7b84dfdbd302
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100338"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494594"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>Tutorial: Erkennen der Überquerung einer virtuellen Linie durch Objekte in einem Livevideo
 
@@ -38,7 +38,7 @@ In diesem Tutorial werden ein virtueller Azure-Computer als IoT Edge-Gerät und
 
 In diesem Diagramm ist der Fluss der Signale in diesem Tutorial dargestellt. Ein [Edge-Modul](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](../pipeline.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Videoframes an den Knoten des [HTTP-Erweiterungsprozessors](../pipeline.md#http-extension-processor).
 
-Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Er konvertiert jeden zehnten Videoframe in den angegebenen Bildtyp. Anschließend leitet er das Bild über HTTP an ein anderes Edge-Modul weiter, durch das ein KI-Modell hinter einem HTTP-Endpunkt ausgeführt wird. In diesem Beispiel wird dieses Edge-Modul unter Verwendung des [YOLOv3](https://github.com/Azure/video-analyzer/tree/main/edge-modules/extensions/yolo/yolov3)-Modells erstellt, mit dem viele Objekttypen erkannt werden können. Der HTTP-Erweiterungsprozessorknoten sammelt die Erkennungsergebnisse und sendet sie zusammen mit allen Videoframes (nicht nur dem zehnten Frame) an den Objektverfolgungsknoten. Der Objektverfolgungsknoten verwendet optische Flusstechniken, um das Objekt in den neun Frames zu verfolgen, auf die das KI-Modell nicht angewendet wurde. Der Verfolgungsknoten veröffentlicht seine Ergebnisse im Knoten der IoT Hub-Nachrichtensenke. Der Knoten der [IoT Hub-Nachrichtensenke](../pipeline.md#iot-hub-message-sink) sendet diese Ereignisse anschließend an den [IoT Edge-Hub](../../../iot-fundamentals/iot-glossary.md?view=iotedge-2020-11&preserve-view=true#iot-edge-hub).
+Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Er konvertiert jeden zehnten Videoframe in den angegebenen Bildtyp. Anschließend leitet er das Bild über HTTP an ein anderes Edgemodul weiter, von dem ein KI-Modell hinter einem HTTP-Endpunkt ausgeführt wird. In diesem Beispiel wird dieses Edge-Modul unter Verwendung des [YOLOv3](https://github.com/Azure/video-analyzer/tree/main/edge-modules/extensions/yolo/yolov3)-Modells erstellt, mit dem viele Objekttypen erkannt werden können. Der HTTP-Erweiterungsprozessorknoten sammelt die Erkennungsergebnisse und sendet sie zusammen mit allen Videoframes (nicht nur dem zehnten Frame) an den Objektverfolgungsknoten. Der Objektverfolgungsknoten verwendet optische Flusstechniken, um das Objekt in den neun Frames zu verfolgen, auf die das KI-Modell nicht angewendet wurde. Der Verfolgungsknoten veröffentlicht seine Ergebnisse im Knoten der IoT Hub-Nachrichtensenke. Der Knoten der [IoT Hub-Nachrichtensenke](../pipeline.md#iot-hub-message-sink) sendet diese Ereignisse anschließend an den [IoT Edge-Hub](../../../iot-fundamentals/iot-glossary.md?view=iotedge-2020-11&preserve-view=true#iot-edge-hub).
 
 Der Linienüberquerungsknoten erhält die Ergebnisse vom Upstream-Objektverfolgungsknoten. Die Ausgabe des Objektverfolgungsknotens enthält die Koordinaten der erkannten Objekte. Diese Koordinaten werden vom Linienüberquerungsknoten mit den der Linienkoordinaten abgeglichen. Wenn Objekte die Linie überqueren, gibt der Linienüberquerungsknoten ein Ereignis aus. Die Ereignisse werden an die Nachrichtensenke des IoT Edge-Hubs gesendet. 
 
@@ -82,7 +82,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 Beim Einrichten der Azure-Ressourcen wird ein kurzes Video von Verkehr auf einer Schnellstraße auf die Linux-VM in Azure kopiert, die Sie als IoT Edge-Gerät verwenden. In diesem Tutorial wird die Videodatei verwendet, um einen Livestream zu simulieren.
 
-Öffnen Sie eine Anwendung wie etwa den [VLC Media Player](https://www.videolan.org/vlc/). Drücken Sie STRG+N, und fügen Sie dann einen Link zum [Beispielvideo zur Schnellstraßenkreuzung](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) ein, um die Wiedergabe zu starten. Sie sehen das Videomaterial vieler Fahrzeuge, die sich im Verkehr einer Schnellstraße bewegen.
+Öffnen Sie eine Anwendung wie etwa den [VLC Media Player](https://www.videolan.org/vlc/). Drücken Sie STRG+N, und fügen Sie dann einen Link zum [Beispielvideo zur Schnellstraßenkreuzung](https://avamedia.blob.core.windows.net/public/camera-300s.mkv) ein, um die Wiedergabe zu starten. Sie sehen das Videomaterial vieler Fahrzeuge, die sich im Verkehr einer Schnellstraße bewegen.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LTY4]
 

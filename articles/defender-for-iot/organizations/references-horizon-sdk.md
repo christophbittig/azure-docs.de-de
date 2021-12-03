@@ -1,14 +1,14 @@
 ---
 title: Horizon SDK
-description: Mit dem Horizon SDK können Azure Defender für IoT-Entwickler Zergliederungs-Plug-Ins entwerfen, die den Netzwerkdatenverkehr decodieren, damit er von automatisierten Defender für IoT-Netzwerkanalyseprogrammen verarbeitet werden kann.
-ms.date: 1/13/2021
+description: Mit dem Horizon SDK können Microsoft Defender für IoT-Entwickler Zergliederungs-Plug-Ins entwerfen, die den Netzwerkdatenverkehr decodieren, damit er von automatisierten Defender für IoT-Netzwerkanalyseprogrammen verarbeitet werden kann.
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: a6b9f69daeb39b79ccdabea273efe825f6a9d1ff
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 9affe81bc905e2852732b3892aaac26003c1e8f5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114673986"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286752"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Proprietäre Horizon-Protokollzergliederung
 
@@ -24,7 +24,7 @@ Diese Umgebung bietet Kunden und Technologiepartnern folgende Lösungen:
 
 - Die Sicherheit, die eine proprietäre Entwicklung (ohne Weitergabe vertraulicher Informationen) ermöglicht.
 
-Mit dem Horizon SDK können Azure Defender für IoT-Entwickler Zergliederungs-Plug-Ins entwerfen, die den Netzwerkdatenverkehr decodieren, damit er von automatisierten Defender für IoT-Netzwerkanalyseprogrammen verarbeitet werden kann.
+Mit dem Horizon SDK können Microsoft Defender für IoT-Entwickler Zergliederungs-Plug-Ins entwerfen, die den Netzwerkdatenverkehr decodieren, damit er von automatisierten Defender für IoT-Netzwerkanalyseprogrammen verarbeitet werden kann.
 
 Protokollzergliederungen werden als externe Plug-Ins entwickelt und sind in eine Vielzahl von Defender für IoT-Dienste integriert. Beispielsweise Dienste, die Überwachungs-, Warnungs- und Berichterstellungsfunktionen bereitstellen.
 
@@ -1617,7 +1617,7 @@ Das **Übersichtsfenster** der Horizon-Konsole enthält Informationen zu den von
 | Feld | BESCHREIBUNG |
 |--|--|
 | Application | Der Name des von Ihnen hochgeladenen Plug-ins. |
-| :::image type="content" source="media/references-horizon-sdk/switch.png" alt-text="Ein- und Ausschalter"::: | Schalte Sie das Plug-In **ein** oder **aus**. Wenn Sie das Plug-in ausschalten, verarbeitet Defender für IoT nicht den im Plug-In definierten Protokolldatenverkehr. |
+| :::image type="content" source="media/references-horizon-sdk/switch.png" alt-text="Der Ein-/Aus-Schalter."::: | Schalte Sie das Plug-In **ein** oder **aus**. Wenn Sie das Plug-in ausschalten, verarbeitet Defender für IoT nicht den im Plug-In definierten Protokolldatenverkehr. |
 | Time | Die Uhrzeit, zu der die Daten zuletzt analysiert wurden. Die Aktualisierung erfolgt alle fünf Sekunden. |
 | PPS | Die Anzahl von Paketen pro Sekunde. |
 | Bandbreite | Die durchschnittliche Bandbreite, die innerhalb der letzten fünf Sekunden erkannt wurde. |

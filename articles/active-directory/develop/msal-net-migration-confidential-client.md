@@ -13,12 +13,12 @@ ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 2148aa8deaa698c10918ee7a6b667c7d90286448
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 4e362812224f8e538d7a36dfa5378e23f6438d6e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355081"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462820"
 ---
 # <a name="migrate-confidential-client-applications-from-adalnet-to-msalnet"></a>Migrieren vertraulicher Clientanwendungen von ADAL.NET zu MSAL.NET
 
@@ -149,6 +149,8 @@ public partial class AuthWrapper
 
   var authResult = await app.AcquireTokenForClient(
               new [] { $"{resourceId}/.default" })
+              // .WithTenantId(specificTenant)
+              // See https://aka.ms/msal.net/withTenantId
               .ExecuteAsync()
               .ConfigureAwait(false);
 
@@ -171,7 +173,7 @@ Sie müssen `AppTokenCache` serialisieren, wenn Sie den standardmäßigen In-Mem
 
 ### <a name="migrate-a-web-api-that-calls-downstream-web-apis"></a>Migrieren einer Web-API, die nachgeschaltete Web-APIs aufruft
 
-Web-APIs, die nachgeschaltete Web-APIs aufrufen, verwenden den OAuth2.0-[On-Behalf-Of-Fluss (OBO)](v2-oauth2-on-behalf-of-flow.md). Der Code der Web-API verwendet das aus dem HTTP-Autorisierungsheader abgerufene Token und validiert es. Dieses Token wird gegen ein Token zum Aufruf der nachgeschalteten Web-API ausgetauscht. Dieses Token wird sowohl in ADAL.NET als auch in MSAL.NET als eine `UserAssertion`-Instanz verwendet.
+Web-APIs, die nachgeschaltete Web-APIs aufrufen, verwenden den OAuth2.0-[On-Behalf-Of-Fluss (OBO)](v2-oauth2-on-behalf-of-flow.md). Die Web-API verwendet das aus dem HTTP-**Autorisierungs**-Header abgerufene Token und validiert es. Dieses Token wird gegen ein Token zum Aufruf der nachgeschalteten Web-API ausgetauscht. Dieses Token wird sowohl in ADAL.NET als auch in MSAL.NET als eine `UserAssertion`-Instanz verwendet.
 
 #### <a name="find-out-if-your-code-uses-obo"></a>Ermitteln, ob Ihr Code OBO verwendet
 
@@ -272,6 +274,8 @@ public partial class AuthWrapper
   var authResult = await app.AcquireTokenOnBehalfOf(
               new string[] { $"{resourceId}/.default" },
               userAssertion)
+              // .WithTenantId(specificTenant) 
+              // See https://aka.ms/msal.net/withTenantId
               .ExecuteAsync()
               .ConfigureAwait(false);
   
@@ -300,9 +304,9 @@ Wenn Ihre App ASP.NET Core verwendet, wird dringend empfohlen, auf Microsoft.Ide
 
 Web-Apps, die Benutzer anmelden und Web-APIs im Namen von Benutzern aufrufen, verwenden den OAuth2.0-[Autorisierungscodefluss](v2-oauth2-auth-code-flow.md). Typische Merkmale:
 
-1. Die Web-App meldet einen Benutzer durch Ausführen eines ersten Abschnitts des Autorisierungscodeflusses an. Hierzu wird der Autorisierungsendpunkt in Azure Active Directory (Azure AD) verwendet. Der Benutzer meldet sich an und führt bei Bedarf eine mehrstufige Authentifizierung durch. Als Ergebnis dieses Vorgangs erhält die App den Autorisierungscode. Bisher sind ADAL und MSAL nicht beteiligt.
-2. Die App führt den zweiten Abschnitt des Autorisierungscodeflusses aus. Sie verwendet den Autorisierungscode, um ein Zugriffstoken, ein ID-Token und ein Aktualisierungstoken abzurufen. Ihre Anwendung muss den `redirectUri`-Wert bereitstellen. Dabei handelt es sich um den URI, an dem Azure AD die Sicherheitstoken bereitstellt. Nachdem die App diesen URI empfangen hat, ruft sie in der Regel `AcquireTokenByAuthorizationCode` für ADAL oder MSAL auf, um den Code einzulösen und ein Token abzurufen, das im Tokencache gespeichert wird.
-3. Die App verwendet ADAL oder MSAL für den Aufruf von `AcquireTokenSilent`, damit sie Token zum Aufrufen der benötigten Web-APIs abrufen kann. Dies erfolgt über die Web-App-Controller.
+1. Die Web-App meldet einen Benutzer durch Ausführen eines ersten Abschnitts des Autorisierungscodeflusses an. Dazu wird der Autorisierungsendpunkt von der Microsoft Identity Plattform verwendet. Der Benutzer meldet sich an und führt bei Bedarf eine mehrstufige Authentifizierung durch. Als Ergebnis dieses Vorgangs erhält die App den Autorisierungscode. Die Authentifizierungsbibliothek wird in dieser Phase nicht verwendet.
+1. Die App führt den zweiten Abschnitt des Autorisierungscodeflusses aus. Sie verwendet den Autorisierungscode, um ein Zugriffstoken, ein ID-Token und ein Aktualisierungstoken abzurufen. Ihre Anwendung muss den Wert `redirectUri` angeben. Dabei handelt es sich um den URI, in dem der Microsoft-Identity-Plattform-Endpunkt die Sicherheitstoken bereitstellt. Nachdem die App diesen URI empfangen hat, ruft sie in der Regel `AcquireTokenByAuthorizationCode` für ADAL oder MSAL auf, um den Code einzulösen und ein Token abzurufen, das im Tokencache gespeichert wird.
+1. Die App verwendet ADAL oder MSAL für den Aufruf von `AcquireTokenSilent`, damit sie Token zum Aufrufen der benötigten Web-APIs abrufen kann. Dies erfolgt über die Web-App-Controller.
 
 #### <a name="find-out-if-your-code-uses-the-auth-code-flow"></a>Ermitteln, ob Ihr Code den Authentifizierungscodefluss verwendet
 
@@ -442,7 +446,8 @@ public partial class AuthWrapper
    authResult = await app.AcquireTokenSilent(
                scopes,
                account)
-                .WithAuthority(authority)
+                // .WithTenantId(specificTenantId) 
+                // See https://aka.ms/msal.net/withTenantId
                 .ExecuteAsync().ConfigureAwait(false);
   }
   catch (MsalUiRequiredException)
@@ -496,6 +501,8 @@ Dies sind die wichtigsten Vorteile von MSAL.NET für Ihre Anwendung:
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
+### <a name="msalserviceexception"></a>MsalServiceException
+
 Die folgenden Informationen zur Problembehandlung gehen von zwei Annahmen aus: 
 
 - Ihr ADAL.NET-Code hat funktioniert.
@@ -511,10 +518,19 @@ Es wird eine Ausnahme ausgelöst, und Ihnen wird eine der folgenden Meldungen an
 
 Sie können die Ausnahme mithilfe der folgenden Schritte beheben:
 
-1. Stellen Sie sicher, dass Sie die neueste Version von MSAL.NET verwenden.
+1. Stellen Sie sicher, dass Sie die neueste Version von [MSAL.NET](https://www.nuget.org/packages/Microsoft.Identity.Client/) verwenden.
 1. Vergewissern Sie sich, dass der Autoritätshost, den Sie beim Erstellen der vertraulichen Clientanwendung festgelegt haben, und der mit ADAL verwendete Autoritätshost übereinstimmen. Insbesondere sollte dieselbe [Cloud](msal-national-cloud.md) (Azure Government, Azure China 21Vianet oder Azure Deutschland) verwendet werden.
+
+### <a name="msalclientexception"></a>MsalClientException
+
+In Anwendungen mit mehreren Mandanten können Sie beim Erstellen der Anwendung eine gemeinsame Autorität angeben, aber dann einen bestimmten Mandanten (z. B. den Mandanten des Benutzers) als Ziel verwenden, wenn Sie eine Web-API aufrufen. Seit MSAL.NET 4.37.0 können Sie, wenn Sie bei der Anwendungserstellung `.WithAzureRegion` angeben, nicht mehr die Autorität angeben, die während der Tokenanforderung `.WithAuthority` verwendet. Wenn Sie dies tun, erscheint beim Aktualisieren von früheren Versionen von MSAL.NET folgender Fehler:
+
+  `MsalClientException - "You configured WithAuthority at the request level, and also WithAzureRegion. This is not supported when the environment changes from application to request. Use WithTenantId at the request level instead."`
+
+Um dieses Problem zu beheben, ersetzen Sie `.WithAuthority` auf dem AcquireTokenXXX-Ausdruck durch `.WithTenantId`. Geben Sie den Mandanten mithilfe einer GUID oder eines Domänennamens an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die [Unterschiede zwischen ADAL.NET- und MSAL.NET-Apps](msal-net-differences-adal-net.md).
-Erfahren Sie mehr über die [Serialisierung des Tokencaches in MSAL.NET](msal-net-token-cache-serialization.md).
+Weitere Informationen:
+- [Unterschiede zwischen ADAL.NET- und MSAL.NET-Anwendungen](msal-net-differences-adal-net.md).
+- [Serialisierung des Tokencaches in MSAL.NET](msal-net-token-cache-serialization.md)

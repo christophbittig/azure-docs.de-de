@@ -3,12 +3,12 @@ title: Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Comput
 description: Beschreibt, wie verschlüsselte virtuelle Azure-Computer (VMs) mit dem Azure Backup-Dienst gesichert und wiederhergestellt werden.
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: ef23abb7ba25675ce267fb6a4b0e273a1cc445a4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ebd8280b24c0f99474f3847d7549db0da9a27516
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338879"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157525"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Sichern und Wiederherstellen verschlüsselter virtueller Azure-Computer
 
@@ -152,25 +152,9 @@ So legen Sie Berechtigungen fest:
 
 1. Wählen Sie **Speichern** aus, um Azure Backup die Berechtigungen zu erteilen.
 
-## <a name="restore-an-encrypted-vm"></a>Wiederherstellen eines verschlüsselten virtuellen Computers
-
-Verschlüsselte virtuelle Computer können nur durch Wiederherstellen des VM-Datenträgers wiederhergestellt werden, wie weiter unten erläutert. Die Funktionen **Vorhandene ersetzen** und **Virtuellen Computer wiederherstellen** werden nicht unterstützt.
-
-Stellen Sie verschlüsselte virtuelle Computer wie folgt wieder her:
-
-1. [Stellen Sie den VM-Datenträger wieder her](backup-azure-arm-restore-vms.md#restore-disks).
-
-   > [!NOTE]
-   > Nachdem Sie den VM-Datenträger wiederhergestellt haben, können Sie den Betriebssystemdatenträger des ursprünglichen virtuellen Computers manuell gegen den wiederhergestellten VM-Datenträger austauschen, ohne ihn neu zu erstellen. [Weitere Informationen](https://azure.microsoft.com/blog/os-disk-swap-managed-disks/)
-
-2. Erstellen Sie die VM-Instanz neu, indem Sie eine der folgenden Aktionen ausführen:
-    1. Verwenden Sie die Vorlage, die während des Wiederherstellungsvorgangs generiert wurde, um VM-Einstellungen anzupassen und die Bereitstellung der VM auszulösen. [Weitere Informationen](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)
-       >[!NOTE]
-       >Überprüfen Sie beim Bereitstellen der Vorlage die Speicherkontocontainer und die öffentlichen/privaten Einstellungen.
-    1. Erstellen Sie mithilfe von PowerShell eine neue VM aus den wiederhergestellten Datenträgern. [Weitere Informationen](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)
-1. Installieren Sie für virtuelle Linux-Computer die ADE-Erweiterung neu, damit die Datenträger offen und eingebunden sind.
-
 ## <a name="next-steps"></a>Nächste Schritte
+
+[Sichern und Wiederherstellen verschlüsselter virtueller Azure-Computer](restore-azure-encrypted-virtual-machines.md)
 
 Sollten Probleme auftreten, sehen Sie sich die folgenden Artikel an:
 

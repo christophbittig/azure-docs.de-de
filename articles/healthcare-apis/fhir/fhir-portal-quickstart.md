@@ -6,19 +6,20 @@ ms.service: healthcare-apis
 ms.topic: quickstart
 ms.date: 09/10/2021
 ms.author: ginle
-ms.openlocfilehash: 5f65355ab77547c8587cd228378868b56b193c9b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: mode-other
+ms.openlocfilehash: 659fb82e35cd25622158d05a88d85a16e736c770
+ms.sourcegitcommit: 56235f8694cc5f88db3afcc8c27ce769ecf455b0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124782523"
+ms.lasthandoff: 11/24/2021
+ms.locfileid: "133069705"
 ---
 # <a name="deploy-a-fhir-service-within-azure-healthcare-apis---using-portal"></a>Bereitstellen eines FHIR-Diensts in Azure Healthcare-APIs über das Portal
 
 > [!IMPORTANT]
 > Azure Healthcare-APIs befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
-In diesem Artikel erfahren Sie, wie Sie den FHIR-Dienst in den Azure Healthcare-APIs (auch als FHIR-Dienst bezeichnet) mithilfe der Azure-Portal bereitstellen.
+In diesem Artikel erfahren Sie, wie Sie den FHIR-Dienst mithilfe der Azure-Portal in den Azure Healthcare-APIs (auch als FHIR-Dienst bezeichnet) bereitstellen.
 
 ## <a name="prerequisite"></a>Voraussetzung
 
@@ -36,9 +37,9 @@ Wählen Sie **+ FHIR-Dienst hinzufügen** aus.
 
 Geben Sie einen **Kontonamen** für Ihren FHIR-Dienst ein. Wählen Sie die **FHIR-Version** **(STU3** oder **R4)** und dann **Überprüfen + erstellen** aus.
 
-[![Erstellen eines FHIR-Diensts ](media/fhir-service/create-fhir-service.png) ](media/fhir-service/create-fhir-service.png#lightbox)
+[![Erstellen des FHIR-Diensts ](media/fhir-service/create-fhir-service.png) ](media/fhir-service/create-fhir-service.png#lightbox)
 
-Bevor Sie **erstellen** auswählen, überprüfen Sie die Eigenschaften der Einstellungen Grundlagen und **Zusätzliche Einstellungen** Ihres FHIR-Diensts.  Wenn Sie zurückwechseln und Änderungen vornehmen müssen, wählen Sie **Zurück** aus. Vergewissern Sie sich, dass die Meldung **Überprüfung** erfolgreich angezeigt wird. 
+Bevor Sie Erstellen auswählen, überprüfen **Sie** die Eigenschaften der Einstellungen Grundlagen und **Zusätzliche Einstellungen** Ihres FHIR-Diensts.  Wenn Sie zurückwechseln und Änderungen vornehmen müssen, wählen Sie **Zurück** aus. Vergewissern Sie sich, dass die Meldung **Überprüfung erfolgreich** angezeigt wird. 
 
 [Überprüfen des ![ FHIR-Diensts ](media/fhir-service/validation-fhir-service.png) ](media/fhir-service/validation-fhir-service.png#lightbox)
 
@@ -48,7 +49,7 @@ Sie können auch die Registerkarte **Zusätzliche Einstellungen** auswählen, um
 
 [![Zusätzliche Einstellungen für den FHIR-Dienst ](media/fhir-service/additional-settings-tab.png) ](media/fhir-service/additional-settings-tab.png#lightbox)
 
-Beachten Sie, dass das Feld zum Eingeben **von Zulässigen Objekt-IDs** abgeblendet ist. Dies liegt daran, dass wir in diesem Fall Azure RBAC zum Konfigurieren von Rollenzuweisungen verwenden.
+Beachten Sie, dass das Feld für die Eingabe **von Zulässigen Objekt-IDs** ausgegraut ist. Dies liegt daran, dass wir in diesem Fall Azure RBAC zum Konfigurieren von Rollenzuweisungen verwenden.
 
 Wenn Sie den FHIR-Dienst für die Verwendung eines externen oder sekundären Azure Active Directory-Mandanten konfigurieren möchten, können Sie die Autorität ändern und Objekt-IDs für Benutzer und Gruppen eingeben, denen Zugriff auf den Server gewährt werden soll.
 
@@ -60,4 +61,3 @@ Um zu überprüfen, ob das neue FHIR-API-Konto bereitgestellt wurde, rufen Sie e
 
 >[!div class="nextstepaction"]
 >[Zugreifen auf den FHIR-Dienst mit postman](../use-postman.md)
-

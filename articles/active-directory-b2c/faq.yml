@@ -8,15 +8,15 @@ metadata:
   ms.service: active-directory
   ms.workload: identity
   ms.topic: conceptual
-  ms.date: 09/16/2021
+  ms.date: 10/26/2021
   ms.author: kengaderdus
   ms.subservice: B2C
-  ms.openlocfilehash: 1a40ae657ae3aa93e12c6c3a828783b84d8c9b2d
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: edef0972b98885927d8b26229fe97faab21a50ef
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130041365"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131424361"
 title: 'Azure AD B2C: Häufig gestellte Fragen (FAQ)'
 summary: Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory B2C (Azure AD B2C) beantwortet. Die Seite wird bei Bedarf aktualisiert.
 sections:
@@ -155,7 +155,7 @@ sections:
   - question: >
       Kann ich auf meinen von Azure AD B2C bereitgestellten Seiten für die Registrierung und Anmeldung meine eigenen URLs verwenden? Kann ich beispielsweise die URL von „contoso.b2clogin.com“ in „login.contoso.com“ ändern?
     answer: >
-      Dieses Feature ist als Public Preview verfügbar. Weitere Informationen finden Sie unter [Aktivieren von benutzerdefinierten Domänen für Azure AD B2C](./custom-domain.md?pivots=b2c-user-flow).
+      Ja, Sie können Ihre eigene Domäne verwenden. Weitere Informationen finden Sie unter [Aktivieren von benutzerdefinierten Domänen für Azure AD B2C](./custom-domain.md?pivots=b2c-user-flow).
   - question: >
       Wie lösche ich meinen Azure AD B2C-Mandanten?
     answer: "Führen Sie die folgenden Schritte aus, um Ihren Azure AD B2C-Mandanten zu löschen.\n\nSie können die neue einheitliche Benutzeroberfläche für **App-Registrierungen** oder die alte Benutzeroberfläche für **Anwendungen (Legacy)** verwenden. [Weitere Informationen zur neuen Oberfläche](./app-registrations-training-guide.md)\n\n#### <a name=\"app-registrations\"></a>[App-Registrierungen](#tab/app-reg-ga/)\n\n1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als *Abonnementadministrator* an. Verwenden Sie dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.\n1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.\n1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.\n1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.\n1. Löschen Sie alle **Benutzerabläufe (Richtlinien)** in Ihrem Azure AD B2C-Mandanten.\n1. Löschen Sie alle **Identitätsanbieter** in Ihrem Azure AD B2C-Mandanten.\n1. Klicken Sie auf **App-Registrierungen** und dann auf die Registerkarte **Alle Anwendungen**.\n1. Löschen Sie alle Anwendungen, die Sie registriert haben.\n1. Löschen Sie **b2c-extensions-app**.\n1. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.\n1. Wählen Sie nacheinander die einzelnen Benutzer aus (mit Ausnahme des *Abonnementadministrator*-Benutzers, als der Sie aktuell angemeldet sind). Wählen Sie unten auf der Seite **Löschen** aus, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.\n1. Wählen Sie im linken Menü **Azure Active Directory** aus.\n1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus.\n1. Wählen Sie unter **Zugriffsverwaltung für Azure-Ressourcen** die Option **Ja** und dann **Speichern** aus.\n1. Melden Sie sich vom Azure-Portal ab und dann wieder an, um Ihren Zugriff zu aktualisieren.\n1. Wählen Sie im linken Menü **Azure Active Directory** aus.\n1. Wählen Sie auf der Seite **Übersicht** die Option **Mandant löschen** aus. Folgen Sie den Anweisungen auf dem Bildschirm, um den Prozess abzuschließen.\n\n#### <a name=\"applications-legacy\"></a>[Anwendungen (Legacy)](#tab/applications-legacy/)\n\n1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als *Abonnementadministrator* an. Verwenden Sie dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.\n1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.\n1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.\n1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.\n1. Löschen Sie alle **Benutzerabläufe (Richtlinien)** in Ihrem Azure AD B2C-Mandanten.\n1. Löschen Sie alle **Anwendungen (Legacy)** , die Sie in Ihrem Azure AD B2C-Mandanten registriert haben.\n1. Wählen Sie im linken Menü **Azure Active Directory** aus.\n1. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.\n1. Wählen Sie nacheinander die einzelnen Benutzer aus (mit Ausnahme des *Abonnementadministrator*-Benutzers, als der Sie aktuell angemeldet sind). Wählen Sie unten auf der Seite **Löschen** aus, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.\n1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.\n1. Wählen Sie **Alle Anwendungen anzeigen** aus.\n1. Wählen Sie die Anwendung **b2c-extensions-app** und anschließend **Löschen** aus, und klicken Sie dann auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.\n1. Wählen Sie unter **Verwalten** die Option **Benutzereinstellungen** aus.\n1. Wählen Sie unter **LinkedIn-Kontoverbindungen** die Option **Nein** und dann **Speichern** aus (sofern vorhanden).\n1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus.\n1. Wählen Sie unter **Zugriffsverwaltung für Azure-Ressourcen** die Option **Ja** und dann **Speichern** aus.\n1. Melden Sie sich vom Azure-Portal ab und dann wieder an, um Ihren Zugriff zu aktualisieren.\n1. Wählen Sie im linken Menü **Azure Active Directory** aus.\n1. Wählen Sie auf der Seite **Übersicht** die Option **Verzeichnis löschen** aus. Folgen Sie den Anweisungen auf dem Bildschirm, um den Prozess abzuschließen.\n\n* * *          \n"
@@ -163,6 +163,15 @@ sections:
       Kann ich Azure AD B2C als Teil der Enterprise Mobility Suite erwerben?
     answer: >
       Nein. Azure AD B2C ist ein Azure-Dienst mit nutzungsbasierter Bezahlung und nicht Teil der Enterprise Mobility Suite.
+  - question: >
+      Welche Azure AD B2C-Features sind in Microsoft Azure Government nicht verfügbar?
+    answer: >
+      Die folgenden AD B2C-Features sind in Microsoft Azure Government derzeit nicht verfügbar:
+
+
+      * API-Connectors
+
+      * Bedingter Zugriff
   - question: >
       Wie melde ich Probleme mit Azure AD B2C?
     answer: Siehe [Senden von Supportanfragen für Azure Active Directory B2C](support-options.md).

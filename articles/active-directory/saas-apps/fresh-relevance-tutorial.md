@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: fdcc22b4869f4c16b34885383897f81a832baa5f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c4554d5625b15c3415595677dac878ee72dcf468
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124790945"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348519"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fresh-relevance"></a>Tutorial: Integrieren von Fresh Relevance in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -96,7 +96,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
@@ -108,7 +108,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Fresh Relevance gewähren.
 
@@ -120,13 +120,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name=&quot;configure-fresh-relevance-sso&quot;></a>Konfigurieren des einmaligen Anmeldens für Fresh Relevance
+## <a name="configure-fresh-relevance-sso"></a>Konfigurieren des einmaligen Anmeldens für Fresh Relevance
 
 1. Melden Sie sich bei der Fresh Relevance-Unternehmenswebsite als Administrator an.
 
 1. Wechseln Sie zu **Einstellungen** > **Alle Einstellungen** > **Sicherheit und Datenschutz**, und klicken Sie auf **Einmaliges Anmelden über SAML/Azure AD**.
 
-    ![Screenshot: Einstellungen des SAML-Kontos.](./media/fresh-relevance-tutorial/settings.png &quot;Konto")
+    ![Screenshot: Einstellungen des SAML-Kontos.](./media/fresh-relevance-tutorial/settings.png "Konto")
 
 1. Aktivieren Sie auf der Seite **Konfiguration für SAML/einmaliges Anmelden** das Kontrollkästchen **SAML-SSO für dieses Konto aktivieren**, und klicken Sie dann auf die Schaltfläche **Neue IdP-Konfiguration erstellen**. 
 
@@ -171,4 +171,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Fresh Relevance können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Fresh Relevance können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

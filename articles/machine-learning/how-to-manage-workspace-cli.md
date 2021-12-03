@@ -10,19 +10,19 @@ author: Blackmist
 ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 16def8c00db3702a77e261b71841aa7d2d3c3728
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8f98b1d5d020df0b8a2047fa5881c6d978a0ad94
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128655503"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281739"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-azure-cli"></a>Verwalten von Azure Machine Learning-Arbeitsbereichen mithilfe der Azure CLI
 
 In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Arbeitsbereiche mit der Azure CLI erstellen und verwalten. Die Azure CLI bietet Befehle für die Verwaltung von Azure-Ressourcen und ist so konzipiert, dass Sie schnell mit Azure arbeiten können, wobei der Fokus auf der Automatisierung liegt. Die Erweiterung der CLI für maschinelles Lernen unterstützt Befehle für die Arbeit mit Azure Machine Learning-Ressourcen.
 
 > [!NOTE]
-> Beispiele in diesem Artikel beziehen sich sowohl auf die Version 1.0 als auch v2 der CLI. Die CLI (v2) für maschinelles Lernen befindet sich derzeit in der Public Preview. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
+> Die Beispiele in diesem Artikel beziehen sich sowohl auf die Version 1.0 CLI als auch auf die Version 2.0 CLI. Wenn für einen Befehl keine Version angegeben ist, funktioniert er entweder mit der Version 1.0 oder 2.0 der Befehlsschnittstelle. Die CLI für maschinelles Lernen 2.0 befindet sich derzeit in der öffentlichen Vorschau. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -93,7 +93,7 @@ Wenn Sie einen Azure Machine Learning-Arbeitsbereich bereitstellen, [werden vers
 > * Sowohl Azure Blob- als auch Azure-Dateifunktionen sind aktiviert.
 > * „Hierarchischer Namespace“ (ADLS Gen 2) ist deaktiviert. Diese Anforderungen gelten nur für das vom Arbeitsbereich verwendete _standardmäßige_ Speicherkonto.
 >
-> Beim Anfügen von Azure Container Registry muss das [Administratorkonto](../container-registry/container-registry-authentication.md#admin-account) aktiviert sein, bevor es mit einem Azure Machine Learning-Arbeitsbereich verwendet werden kann.
+> Wenn Sie die Azure-Container-Registrierung anhängen, müssen Sie das [Administratorkonto](../container-registry/container-registry-authentication.md#admin-account) aktiviert haben, bevor es mit einem Azure Machine Learning-Arbeitsbereich verwendet werden kann.
 
 # <a name="create-with-new-resources"></a>[Erstellen mit neuen Ressourcen](#tab/createnewresources)
 
@@ -121,24 +121,16 @@ az ml workspace create -w <workspace-name>
                        --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"
 ```
 
-# <a name="bring-existing-resources-cli-v2---preview"></a>[Verwenden vorhandener Ressourcen (CLI (v2) – Vorschau)](#tab/bringexistingresources2)
+# <a name="bring-existing-resources-20-cli---preview"></a>[Vorhandene Ressourcen übernehmen (2.0 CLI - Vorschau)](#tab/bringexistingresources2)
 
 Um einen neuen Arbeitsbereich zu erstellen und dabei vorhandene zugehörige Ressourcen mithilfe der CLI zu verwenden, müssen Sie zunächst in einer Konfigurationsdatei festlegen, wie Ihr Arbeitsbereich konfiguriert werden soll.
 
-```yaml workspace.yml
-name: azureml888
-location: EastUS
-description: Description of my workspace
-storage_account: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>
-container_registry: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.ContainerRegistry/registries/<registry-name>
-key_vault: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.KeyVault/vaults/<vault-name>
-application_insights: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/microsoft.insights/components/<application-insights-name>
-```
+:::code language="YAML" source="~/azureml-examples-main/cli/resources/workspace/with-existing-resources.yml":::
 
 Dann können Sie auf diese Konfigurationsdatei als Teil des CLI-Befehls zur Erstellung des Arbeitsbereichs verweisen.
 
 ```azurecli-interactive
-az ml workspace create -w <workspace-name> -g <resource-group-name> --file workspace.yml
+az ml workspace create -g <resource-group-name> --file workspace.yml
 ```
 
 Wenn Sie vorhandene Ressourcen anfügen, müssen Sie die ID für die Ressourcen angeben. Sie können diese ID entweder über die Registerkarte „Eigenschaften“ der einzelnen Ressourcen im Azure-Portal abrufen oder mithilfe der Azure CLI die folgenden Befehle ausführen.
@@ -182,7 +174,7 @@ Die Ausgabe des Befehls zur Erstellung des Arbeitsbereichs sieht ähnlich aus wi
 ## <a name="advanced-configurations"></a>Erweiterte Konfigurationen
 ### <a name="configure-workspace-for-private-network-connectivity"></a>Konfigurieren des Arbeitsbereichs für private Netzwerkkonnektivität
 
-Abhängig von Ihrem Anwendungsfall und Ihren organisatorischen Anforderungen können Sie Azure Machine Learning mithilfe einer privaten Netzwerkkonnektivität konfigurieren. Sie können die Azure CLI verwenden, um einen Arbeitsbereich und einen Private Link-Endpunkt für die Arbeitsbereichsressource bereitzustellen. Weitere Informationen zur Verwendung eines privaten Endpunkts und eines virtuellen Netzwerks mit Ihrem Arbeitsbereich finden Sie unter [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md). Für komplexe Ressourcenkonfigurationen beachten Sie auch die vorlagenbasierten Bereitstellungsoptionen einschließlich [Azure Resource Manager](how-to-create-workspace-template.md).
+Abhängig von Ihrem Anwendungsfall und Ihren organisatorischen Anforderungen können Sie Azure Machine Learning mithilfe einer privaten Netzwerkkonnektivität konfigurieren. Sie können die Azure CLI verwenden, um einen Arbeitsbereich und einen Private Link-Endpunkt für die Arbeitsbereichsressource bereitzustellen. Weitere Informationen zur Verwendung eines privaten Endpunkts und eines virtuellen Netzwerks (VNet) mit Ihrem Arbeitsbereich finden Sie unter [Übersicht über Isolierung und Datenschutz im virtuellen Netzwerk](how-to-network-security-overview.md). Für komplexe Ressourcenkonfigurationen beachten Sie auch die vorlagenbasierten Bereitstellungsoptionen einschließlich [Azure Resource Manager](how-to-create-workspace-template.md).
 
 # <a name="10-cli"></a>[1.0 CLI](#tab/vnetpleconfigurationsv1cli)
 
@@ -206,34 +198,68 @@ az ml workspace create -w <workspace-name>
 
 Weitere Einzelheiten zur Verwendung dieser Befehle finden Sie auf den [CLI-Referenzseiten](/cli/azure/ml(v1)/workspace).
 
-# <a name="cli-v2---preview"></a>[CLI (v2) – Vorschau](#tab/vnetpleconfigurationsv2cli)
+# <a name="20-cli---preview"></a>[2.0 CLI - Vorschau](#tab/vnetpleconfigurationsv2cli)
 
-Um eine private Netzwerkkonnektivität für Ihren Arbeitsbereich mithilfe der CLI (v2) einzurichten, erweitern Sie die Konfigurationsdatei des Arbeitsbereichs um die Details der Private Link-Endpunktressourcen.
+Wenn Sie einen privaten Link verwenden, kann Ihr Arbeitsbereich keine Azure Container Registry-Aufgaben für die Image-Erstellung verwenden. Daher müssen Sie die Eigenschaft image_build_compute auf den Namen eines CPU-Compute-Clusters setzen, der für die Erstellung der Docker-Image-Umgebung verwendet werden soll. Mit der Eigenschaft public_network_access können Sie außerdem festlegen, ob der private Link-Arbeitsbereich über das Internet zugänglich sein soll.
 
-```yaml workspace.yml
-name: azureml888
-location: EastUS
-description: Description of my workspace
-storage_account: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>
-container_registry: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.ContainerRegistry/registries/<registry-name>
-key_vault: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.KeyVault/vaults/<vault-name>
-application_insights: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/microsoft.insights/components/<application-insights-name>
-
-private_endpoints:
-  approval_type: AutoApproval
-  connections:
-    my-endpt1:
-      subscription_id: <subscription-id>
-      resource_group: <resourcegroup>
-      location: <location>
-      vnet_name: <vnet-name>
-      subnet_name: <subnet-name>
-```
-
-Dann können Sie auf diese Konfigurationsdatei als Teil des CLI-Befehls zur Erstellung des Arbeitsbereichs verweisen.
+:::code language="YAML" source="~/azureml-examples-main/cli/resources/workspace/privatelink.yml":::
 
 ```azurecli-interactive
-az ml workspace create -w <workspace-name> -g <resource-group-name> --file workspace.yml
+az ml workspace create -g <resource-group-name> --file privatelink.yml
+```
+
+Nachdem Sie den Arbeitsbereich erstellt haben, verwenden Sie die [Azure Networking CLI-Befehle](/cli/azure/network/private-endpoint#az_network_private_endpoint_create), um einen privaten Link-Endpunkt für den Arbeitsbereich zu erstellen.
+
+```azurecli-interactive
+az network private-endpoint create \
+    --name <private-endpoint-name> \
+    --vnet-name <vnet-name> \
+    --subnet <subnet-name> \
+    --private-connection-resource-id "/subscriptions/<subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>" \
+    --group-id amlworkspace \
+    --connection-name workspace -l <location>
+```
+
+Um die privaten DNS-Zoneneinträge für den Arbeitsbereich zu erstellen, verwenden Sie die folgenden Befehle:
+
+```azurecli-interactive
+# Add privatelink.api.azureml.ms
+az network private-dns zone create \
+    -g <resource-group-name> \
+    --name 'privatelink.api.azureml.ms'
+
+az network private-dns link vnet create \
+    -g <resource-group-name> \
+    --zone-name 'privatelink.api.azureml.ms' \
+    --name <link-name> \
+    --virtual-network <vnet-name> \
+    --registration-enabled false
+
+az network private-endpoint dns-zone-group create \
+    -g <resource-group-name> \
+    --endpoint-name <private-endpoint-name> \
+    --name myzonegroup \
+    --private-dns-zone 'privatelink.api.azureml.ms' \
+    --zone-name 'privatelink.api.azureml.ms'
+
+# Add privatelink.notebooks.azure.net
+az network private-dns zone create \
+    -g <resource-group-name> \
+    --name 'privatelink.notebooks.azure.net'
+
+az network private-dns link vnet create \
+    -g <resource-group-name> \
+    --zone-name 'privatelink.notebooks.azure.net' \
+    --name <link-name> \
+    --virtual-network <vnet-name> \
+    --registration-enabled false
+
+az network private-endpoint dns-zone-group add \
+    -g <resource-group-name> \
+    --endpoint-name <private-endpoint-name> \
+    --name myzonegroup \
+    --private-dns-zone 'privatelink.notebooks.azure.net' \
+    --zone-name 'privatelink.notebooks.azure.net'
 ```
 
 ---
@@ -244,7 +270,7 @@ Standardmäßig werden Metadaten für den Arbeitsbereich auf einer Azure Cosmos 
 
 Weitere Informationen über die Ressourcen, die erstellt werden, wenn Sie Ihren eigenen Schlüssel für die Verschlüsselung verwenden, finden Sie unter [Datenverschlüsselung mit Azure Machine Learning](./concept-data-encryption.md#azure-cosmos-db).
 
-Die folgenden CLI-Befehle enthalten Beispiele für das Erstellen eines Arbeitsbereichs, der kundenseitig verwaltete Schlüssel für die Verschlüsselung mithilfe der Versionen „1.0 CLI“ und „CLI (v2)“ verwendet.
+Die folgenden CLI-Befehle enthalten Beispiele für die Erstellung eines Arbeitsbereichs, der vom Kunden verwaltete Schlüssel für die Verschlüsselung mit den Versionen 1.0 CLI und 2.0 CLI verwendet.
 
 # <a name="10-cli"></a>[1.0 CLI](#tab/vnetpleconfigurationsv1cli)
 
@@ -260,32 +286,18 @@ az ml workspace create -w <workspace-name>
                        --hbi-workspace
 ```
 
-# <a name="cli-v2---preview"></a>[CLI (v2) – Vorschau](#tab/vnetpleconfigurationsv2cli)
+# <a name="20-cli---preview"></a>[2.0 CLI - Vorschau](#tab/vnetpleconfigurationsv2cli)
 
 Verwenden Sie den `customer_managed_key`-Parameter, der die Parameter `key_vault` und `key_uri` enthält, um die Ressourcen-ID und den URI des Schlüssels im Tresor anzugeben.
 
 Um die [von Microsoft in Ihrem Arbeitsbereich erfassten Daten einzuschränken](./concept-data-encryption.md#encryption-at-rest), können Sie zusätzlich die `hbi_workspace`-Eigenschaft angeben. 
 
-```yaml workspace.yml
-name: azureml888
-location: EastUS
-description: Description of my workspace
-storage_account: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>
-container_registry: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.ContainerRegistry/registries/<registry-name>
-key_vault: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.KeyVault/vaults/<vault-name>
-application_insights: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/microsoft.insights/components/<application-insights-name>
-
-hbi_workspace: true
-customer_managed_key:
-  key_vault: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers//Microsoft.KeyVault/<vaulttype>/<vaultname>
-  key_uri: https://<keyvaultid>.vault.azure.net/keys/<keyname>/<keyversion>
-
-```
+:::code language="YAML" source="~/azureml-examples-main/cli/resources/workspace/cmk.yml":::
 
 Dann können Sie auf diese Konfigurationsdatei als Teil des CLI-Befehls zur Erstellung des Arbeitsbereichs verweisen.
 
 ```azurecli-interactive
-az ml workspace create -w <workspace-name> -g <resource-group-name> --file workspace.yml
+az ml workspace create -g <resource-group-name> --file cmk.yml
 ```
 ---
 
@@ -301,16 +313,6 @@ az ml workspace create -w <workspace-name> -g <resource-group-name> --file works
 Weitere Informationen zu kundenseitig verwalteten Schlüsseln und Arbeitsbereichen mit starken geschäftlichen Auswirkungen finden Sie unter [Enterprise-Sicherheit für Machine Learning](concept-data-encryption.md#encryption-at-rest).
 
 ## <a name="using-the-cli-to-manage-workspaces"></a>Verwenden der CLI zum Verwalten von Arbeitsbereichen
-
-### <a name="list-workspaces"></a>Auflisten von Arbeitsbereichen
-
-Um alle Arbeitsbereiche für Ihr Azure-Abonnement aufzulisten, verwenden Sie den folgenden Befehl:
-
-```azurecli-interactive
-az ml workspace list
-```
-
-Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace list](/cli/azure/ml/workspace#az_ml_workspace_list).
 
 ### <a name="get-workspace-information"></a>Abrufen von Informationen zum Arbeitsbereich
 
@@ -346,6 +348,8 @@ Weitere Informationen über den Befehl „sync-keys“ finden Sie unter [az ml w
 
 ### <a name="delete-a-workspace"></a>Löschen eines Arbeitsbereichs
 
+[!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
+
 Um einen Arbeitsbereich zu löschen, wenn er nicht mehr benötigt wird, verwenden Sie den folgenden Befehl:
 
 ```azurecli-interactive
@@ -362,6 +366,8 @@ az group delete -g <resource-group-name>
 ```
 
 Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace delete](/cli/azure/ml/workspace#az_ml_workspace_delete).
+
+Wenn Sie Ihren Arbeitsbereich versehentlich gelöscht haben, können Sie Ihre Notizbücher trotzdem wiederherstellen. Weitere Informationen finden Sie in [dieser Dokumentation](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

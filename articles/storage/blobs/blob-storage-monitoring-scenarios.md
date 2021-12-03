@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 07/30/2021
 ms.custom: monitoring
-ms.openlocfilehash: 98c077ff578cfbe70bfe3a871e5a1eb4d5fbd755
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 222c78803e268cef95dc322952874f58346c2919
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584254"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132180169"
 ---
 # <a name="best-practices-for-monitoring-azure-blob-storage"></a>Bewährte Methoden für die Überwachung von Azure Blob Storage
 
@@ -132,6 +132,8 @@ Für das „Wie“ der Überwachung wird im Feld `OperationName` der Vorgang ang
 
 Für das „Wer“ der Überwachung wird in `AuthenticationType` der Authentifizierungstyp angezeigt, der für eine Anforderung verwendet wurde. In diesem Feld können alle von Azure Storage unterstützten Authentifizierungstypen angezeigt werden, z. B. die Verwendung eines Kontoschlüssels oder eines SAS-Tokens sowie die Azure Active Directory-Authentifizierung (Azure AD).
 
+#### <a name="identifying-the-security-principal-used-to-authorize-a-request"></a>Identifizierung des Sicherheitsprinzipals, der zur Autorisierung einer Anforderung verwendet wird
+
 Wurde eine Anforderung über Azure AD authentifiziert, stellt das Feld `RequesterObjectId` die zuverlässigste Methode zur Identifizierung des Sicherheitsprinzipals dar. Sie können den Anzeigenamen des Sicherheitsprinzipals ermitteln, indem Sie mithilfe des Werts in Feld `RequesterObjectId` auf der Azure AD-Seite im Azure-Portal nach dem Sicherheitsprinzipal suchen. Im folgenden Screenshot sehen Sie ein Suchergebnis in Azure AD:
 
 > [!div class="mx-imgBorder"]
@@ -149,7 +151,35 @@ StorageBlobLogs
 | project TimeGenerated, AuthenticationType, RequesterObjectId, OperationName, Uri
 ```
 
-Die Authentifizierung über gemeinsam verwendete Schlüssel und die SAS-Authentifizierung ermöglichen keine Überwachung einzelner Identitäten. Wenn Sie also die Möglichkeit der identitätsbasierten Überwachung verbessern möchten, sollten Sie auf Azure AD umsteigen und die Authentifizierung über gemeinsam verwendete Schlüssel sowie die SAS-Authentifizierung verhindern. Informationen zum Verhindern dieser beiden Authentifizierungstypen finden Sie unter [Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto](../common/shared-key-authorization-prevent.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=portal). Informationen zu den ersten Schritten mit Azure AD finden Sie unter [Autorisieren des Zugriffs auf Warteschlangen mithilfe von Azure Active Directory](authorize-access-azure-active-directory.md).
+Die Authentifizierung über gemeinsam verwendete Schlüssel und die SAS-Authentifizierung ermöglichen keine Überwachung einzelner Identitäten. Wenn Sie also die Möglichkeit der identitätsbasierten Überwachung verbessern möchten, sollten Sie auf Azure AD umsteigen und die Authentifizierung über gemeinsam verwendete Schlüssel sowie die SAS-Authentifizierung verhindern. Informationen zum Verhindern dieser beiden Authentifizierungstypen finden Sie unter [Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto](../common/shared-key-authorization-prevent.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=portal). Die ersten Schritte mit Azure AD finden Sie unter [Zugriff auf Blobs mit Azure Active Directory autorisieren](authorize-access-azure-active-directory.md).
+
+#### <a name="identifying-the-sas-token-used-to-authorize-a-request"></a>Identifizierung des SAS-Tokens, das zur Autorisierung einer Anforderung verwendet wird
+
+Sie können nach Vorgängen suchen, die mit einem SAS-Token autorisiert wurden. Diese Abfrage gibt zum Beispiel alle Schreibvorgänge zurück, die mit einem SAS-Token autorisiert wurden.
+
+```kusto
+StorageBlobLogs
+| where TimeGenerated > ago(3d)
+  and OperationName == "PutBlob"
+  and AuthenticationType == "SAS"
+| project TimeGenerated, AuthenticationType, AuthenticationHash, OperationName, Uri
+```
+
+Aus Sicherheitsgründen erscheinen SAS-Tokens nicht in den Protokollen. Der SHA-256-Hash des SAS-Tokens wird jedoch im Feld `AuthenticationHash` angezeigt, das von dieser Abfrage zurückgegeben wird. 
+
+Wenn Sie mehrere SAS-Tokens verteilt haben und wissen wollen, welche SAS-Tokens verwendet werden, müssen Sie jedes Ihrer SAS-Tokens in einen SHA-256-Hash konvertieren und dann diesen Hash mit dem Hash-Wert vergleichen, der in den Protokollen erscheint.
+
+Dekodieren Sie zunächst jede SAS-Token-Zeichenkette. Das folgende Beispiel dekodiert eine SAS-Token-Zeichenfolge mithilfe von PowerShell.
+
+```powershell
+[uri]::UnescapeDataString("<SAS token goes here>")
+```
+
+Anschließend können Sie diese Zeichenfolge an das [Get-FileHash](/powershell/module/microsoft.powershell.utility/get-filehash) PowerShell-Cmdlet übergeben. Ein Beispiel finden Sie unter [Beispiel 4: Berechnung des Hashwertes einer Zeichenkette](/powershell/module/microsoft.powershell.utility/get-filehash#example-4--compute-the-hash-of-a-string).
+
+Alternativ können Sie die entschlüsselte Zeichenfolge an die Funktion [hash_sha256()](/azure/data-explorer/kusto/query/sha256hashfunction) als Teil einer Abfrage übergeben, wenn Sie Azure Daten Explorer verwenden.
+
+SAS-Tokens enthalten keine Identitätsinformationen. Eine Möglichkeit, die Aktivitäten von Benutzern oder Organisationen zu verfolgen, besteht darin, eine Zuordnung von Benutzern oder Organisationen zu verschiedenen SAS-Token-Hashes zu erstellen.
 
 ## <a name="optimize-cost-for-infrequent-queries"></a>Optimieren der Kosten bei seltenem Durchführen von Abfragen
 

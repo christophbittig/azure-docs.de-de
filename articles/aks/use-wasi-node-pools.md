@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen WebAssembly System Interface-Knotenpool
 services: container-service
 ms.topic: article
 ms.date: 10/12/2021
-ms.openlocfilehash: a15818cc352402cc6b4ba0f302228e183ab1d822
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 91649a6c7893970eee5685554385eed1493c0094
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007243"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265961"
 ---
 # <a name="create-webassembly-system-interface-wasi-node-pools-in-azure-kubernetes-service-aks-to-run-your-webassembly-wasm-workload-preview"></a>Erstellen von WebAssembly System Interface-Knotenpools (WASI) in Azure Kubernetes Service (AKS) zum Ausführen Ihrer WebAssembly-Workload (WASM) (Vorschau)
 

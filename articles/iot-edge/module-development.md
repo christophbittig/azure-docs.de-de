@@ -7,12 +7,12 @@ ms.date: 09/03/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5a04acfdec42319b998b2854be9690bab360558c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: affbabcb036e789975fdeb51f032e8c90861fac0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128550531"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234584"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Entwickeln eigener IoT Edge-Module
 
@@ -169,9 +169,6 @@ Informationen zum Entwickeln mit Windows-Containern finden Sie in der [IoT Edge�
 :::moniker-end
 <!-- end 1.2 -->
 
-<!--1.2-->
-:::moniker range="iotedge-2020-11"
-
 ## <a name="module-security"></a>Modulsicherheit
 
 Sie sollten Ihre Module mit Blick auf die Sicherheit entwickeln. Weitere Informationen zum Schützen Ihrer Module finden Sie unter [Docker-Sicherheit](https://docs.docker.com/engine/security/).
@@ -180,7 +177,7 @@ Um die Modulsicherheit zu verbessern, hat IoT Edge einige Containerfunktionen st
 
 ### <a name="allow-elevated-docker-permissions"></a>Zulassen von gesteigerten Docker-Berechtigungen
 
-In der Datei "config.toml" auf einem IoT Edge-Gerät gibt es einen Parameter mit dem Namen `allow_elevated_docker_permissions`. Wenn es auf **true** gesetzt ist, lässt dieses Flag das Flag `--privileged` sowie alle zusätzlichen Funktionen zu, die Sie im Feld `CapAdd` der Docker HostConfig in den[Optionen zum Erstellen von Containern](how-to-use-create-options.md) definieren.
+In der Datei „config“ auf einem IoT Edge-Gerät gibt es einen Parameter mit dem Namen `allow_elevated_docker_permissions`. Wenn es auf **true** gesetzt ist, lässt dieses Flag das Flag `--privileged` sowie alle zusätzlichen Funktionen zu, die Sie im Feld `CapAdd` der Docker HostConfig in den [Optionen zum Erstellen von Containern](how-to-use-create-options.md) definieren.
 
 >[!NOTE]
 >Derzeit ist dieses Flag standardmäßig **true**, wodurch Bereitstellungen privilegierte Berechtigungen für Module erteilen können. Es wird empfohlen, dieses Flag auf FALSE zu setzen, um die Gerätesicherheit zu verbessern. In Zukunft wird dieses Flag standardmäßig auf **FALSE** festgelegt.
@@ -190,9 +187,6 @@ In der Datei "config.toml" auf einem IoT Edge-Gerät gibt es einen Parameter mit
 Die Docker-Funktionen **Docker-CAP_CHOWN** und **CAP_SETUID** sind standardmäßig deaktiviert. Diese Funktionen können verwendet werden, um auf gesicherten Dateien auf dem Hostgerät zu schreiben und potenziell Stammzugriff zu erhalten.
 
 Wenn Sie diese Funktionen benötigen, können Sie sie mithilfe von CapADD in den Optionen zum Erstellen von Containern manuell erneut aktivieren.
-
-:::moniker-end
-<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>Nächste Schritte
 

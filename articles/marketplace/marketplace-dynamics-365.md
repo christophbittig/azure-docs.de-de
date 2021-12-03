@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: f83fb2b1dbcadf9d40431c7670a1d8618557b047
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 0d31c44a5daa21c16cd7c598f407501104dc53c6
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866955"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546308"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>Planen eines Microsoft Dynamics 365-Angebots
 
@@ -24,7 +24,16 @@ Erstellen Sie, bevor Sie beginnen, ein Konto für den kommerziellen Marketplace 
 
 Wenn Sie die Veröffentlichung eines neuen Angebots vorbereiten, müssen Sie sich für eine Lizenzierungsoption entscheiden. Davon hängt ab, welche zusätzlichen Informationen Sie später bei der Erstellung eines Angebots in Partner Center bereitstellen müssen.
 
-Für Dynamics 365-Angebote sind die folgenden Lizenzierungsoptionen verfügbar:
+Für Dynamics 365-Angebotstypen sind die folgenden Lizenzierungsoptionen verfügbar:
+
+| Angebotstyp | Auflistungsoption |
+| --- | --- |
+| Dynamics 365 for Operations | Kontakt mit mir aufnehmen |
+| Dynamics 365 Customer Engagement & Power Apps | Jetzt anfordern<br>Jetzt abrufen (kostenlos)<br>Kostenlose Testversion (Listing)<br>Kontakt mit mir aufnehmen |
+| Dynamics 365 Business Central | Jetzt abrufen (kostenlos)<br>Kostenlose Testversion (Listing)<br>Kontakt mit mir aufnehmen |
+|||
+
+In der folgenden Tabelle wird der Transaktionsprozess jeder Auflistungsoption beschrieben.
 
 | Lizenzierungsoption | Transaktionsprozess |
 | --- | --- |

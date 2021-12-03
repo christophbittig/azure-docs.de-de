@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, azla
 ms.topic: how-to
-ms.date: 09/13/2021
+ms.date: 11/01/2021
 tags: connectors
-ms.openlocfilehash: 46e0373b7c95b559dd6037d20f00324cd89209d7
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a400c8e5ac118250afedd27f2f8e79b678546727
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045879"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438643"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
@@ -324,7 +324,7 @@ Erstellen Sie abschließend neue Verbindungen, die SNC in allen Logik-Apps verwe
 
    1. Geben Sie bei **SNC-Partnername** den SNC-Namen des Back-Ends ein. Beispiel: `p:CN=DV3, OU=LA, O=MS, C=US`.
 
-   1. Geben Sie bei **SNC-Zertifikat** das öffentliche Zertifikat Ihres SNC-Clients in Base64-codiertem Format ein. Schließen Sie weder die PEM-Kopfzeile noch die PEM-Fußzeile ein.
+   1. Geben Sie bei **SNC-Zertifikat** das öffentliche Zertifikat Ihres SNC-Clients in Base64-codiertem Format ein. Schließen Sie weder die PEM-Kopfzeile noch die PEM-Fußzeile ein. Geben Sie hier nicht das private Zertifikat ein, da die PSE mehrere private Zertifikate enthalten kann, sondern dieser Parameter **SNC-Zertifikat** gibt die Zertifikate an, die für diese Verbindung verwendet werden müssen. Weitere Informationen finden Sie in der folgenden Notiz.
 
    1. Optional können Sie SNC-Einstellungen für **Eigener SNC-Name** und **Quality of Protection für SNC** eingeben.
 
@@ -350,8 +350,35 @@ Erstellen Sie abschließend neue Verbindungen, die SNC in allen Logik-Apps verwe
 
    Der Connector erkennt die Änderung an der PSE und aktualisiert seine Kopie während der nächsten Verbindungsanforderung.
 
+   Gehen Sie folgendermaßen vor, um eine binäre PSE-Datei in das base64-kodierte Format zu konvertieren:
+   
+   1. Verwenden Sie zum Beispiel ein PowerShell-Skript:
+
+      ```powershell
+      Param ([Parameter(Mandatory=$true)][string]$psePath, [string]$base64OutputPath)
+      $base64String = [convert]::ToBase64String((Get-Content -path $psePath -Encoding byte))
+      if ($base64OutputPath -eq $null)
+      {
+          Write-Output $base64String
+      }
+      else
+      {
+          Set-Content -Path $base64OutputPath -Value $base64String
+          Write-Output "Output written to $base64OutputPath"
+      } 
+      ```
+
+   1. Speichern Sie das Skript als `pseConvert.ps1`-Datei, und rufen Sie es dann auf, z. B:
+
+      ```output
+      .\pseConvert.ps1 -psePath "C:\Temp\SECUDIR\request.pse" -base64OutputPath "connectionInput.txt"
+      Output written to connectionInput.txt 
+      ```
+
+      Wenn der Parameter für den Ausgabepfad nicht angegeben wird, wird die Ausgabe des Skripts auf der Konsole mit Zeilenumbrüchen versehen. Entfernen Sie die Zeilenumbrüche der mit Base 64 kodierten Zeichenfolge für den Eingabeparameter connection.
+
    > [!NOTE]
-   > Wenn Sie mehr als ein SNC-Clientzertifikat für Ihre ISE verwenden, müssen Sie dieselbe PSE für alle Verbindungen angeben. Sie können den Parameter für das öffentliche Clientzertifikat auf das jeweilige Zertifikat für jede in Ihrer ISE verwendete Verbindung festlegen.
+   > Wenn Sie mehr als ein SNC-Clientzertifikat für Ihre ISE verwenden, müssen Sie dieselbe PSE für alle Verbindungen angeben. Die PSE muss das private Client-Zertifikat für jede einzelne Verbindung enthalten. Sie müssen den Parameter für das öffentliche Client-Zertifikat so einstellen, dass er mit dem spezifischen privaten Zertifikat für jede in Ihrer ISE verwendete Verbindung übereinstimmt.
 
 1. Wählen Sie **Erstellen** aus, um die Verbindung zu erstellen. Wenn die Parameter korrekt sind, wird die Verbindung erstellt. Sollte ein Problem mit den Parametern bestehen, zeigt das Dialogfeld für die Verbindungserstellung eine Fehlermeldung an.
 
@@ -1074,7 +1101,7 @@ Im folgenden Beispiel wird veranschaulicht, wie die einzelnen IDoc-Elemente eine
    >
    > Weitere Informationen von SAP finden Sie in den folgenden Hinweisen (Anmeldung erforderlich): [https://launchpad.support.sap.com/#/notes/2399329](https://launchpad.support.sap.com/#/notes/2399329) und [https://launchpad.support.sap.com/#/notes/353597](https://launchpad.support.sap.com/#/notes/353597).
 
-   Zum Beispiel:
+   Beispiel:
 
    ![Screenshot: Hinzufügen eines SAP-Triggers zu einem Logik-App-Workflow](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
@@ -1800,7 +1827,13 @@ Falls Sie ein Problem bemerken, dass aus Ihrem Logik-App-Workflow doppelte IDocs
 
 1. Geben Sie für **Transaktions-ID** den Namen Ihrer Variablen erneut ein. Beispiel: `IDOCtransferID`.
 
-1. Optional können Sie die Deduplizierung in Ihrer Testumgebung überprüfen. Wiederholen Sie die **Aktion \[IDOC] Dokument an SAP** senden mit der gleichen **Transaktions-ID-** GUID, die Sie im vorherigen Schritt verwendet haben.
+1. Optional können Sie die Deduplizierung in Ihrer Testumgebung überprüfen.
+
+    1. Wiederholen Sie die **Aktion \[IDOC] Dokument an SAP** senden mit der gleichen **Transaktions-ID-** GUID, die Sie im vorherigen Schritt verwendet haben.
+    
+    1. Um zu überprüfen, welche IDoc-Nummer nach jedem Aufruf der **\[IDOC] Dokument an SAP** senden, verwenden Sie die **\[IDOC] Get IDOC list for transaction** action mit der gleichen **Transaktions-ID** und der **Receive** direction.
+    
+       Wird bei beiden Aufrufen die gleiche IDoc-Nummer zurückgegeben, wurde das IDoc dedupliziert.
 
    Wenn Sie dasselbe IDoc zweimal senden, können Sie überprüfen, ob SAP die Duplizierung des tRFC-Aufrufs identifizieren und die beiden Aufrufe einer einzelnen eingehenden IDoc-Nachricht auflösen kann.
 

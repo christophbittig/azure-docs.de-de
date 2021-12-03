@@ -1,6 +1,6 @@
 ---
-title: Worum handelt es sich bei der Verwaltung des Azure-Hybridvorteils auf Bereichsebene?
-description: Der Azure-Hybridvorteil ist ein Lizenzierungsvorteil, mit dem Sie Ihre lokalen core-basierten Windows Server- und SQL Server-Lizenzen mit aktiver Software Assurance (oder aktivem Abonnement) in Azure bereitstellen können.
+title: Was ist der zentral verwaltete Azure-Hybridvorteil?
+description: Azure-Hybridvorteil ist ein Lizenzierungsvorteil, mit dem Sie Ihre lokalen core-basierten Windows Server- und SQL Server-Lizenzen mit aktiver Software Assurance (oder aktivem Abonnement) in Azure bereitstellen können.
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -9,18 +9,18 @@ ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: 795c8c3509a25abc8244150f129eb9dfbf997557
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 8fb630db1d14fe7af1008979eb5b72ee62287d6a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547440"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235694"
 ---
-# <a name="what-is-scope-level-management-of-azure-hybrid-benefit"></a>Worum handelt es sich bei der Verwaltung des Azure-Hybridvorteils auf Bereichsebene?
+# <a name="what-is-centrally-managed-azure-hybrid-benefit"></a>Was ist der zentral verwaltete Azure-Hybridvorteil?
 
 Mit dem Azure-Hybridvorteil können Sie die Kosten für das Ausführen Ihrer Workloads in der Cloud beträchtlich senken. Hierbei können Sie Ihre lokalen Windows Server- und SQL Server-Lizenzen mit Software Assurance-Aktivierung in Azure nutzen. Weitere Informationen finden Sie unter [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-Sie können Ihren Azure-Hybridvorteil für SQL Server für einen gesamten Azure-Abonnementbereich oder ein gesamtes Abrechnungskonto verwalten. Hier ist eine allgemeine Beschreibung der Funktionsweise angegeben:
+Sie können Ihren Azure-Hybridvorteil für SQL Server für einen gesamten Azure-Abonnementbereich oder ein gesamtes Abrechnungskonto zentral verwalten. Hier ist eine allgemeine Beschreibung der Funktionsweise angegeben:
 
 1. Vergewissern Sie sich zunächst, dass Ihre gesamten SQL Server-VMs für Sie und für Azure sichtbar sind, indem Sie die automatische Registrierung der selbst installierten SQL Server-Images mit der IaaS-Erweiterung aktivieren. Weitere Informationen finden Sie unter [Registrieren mehrerer SQL Server-VMs mit der SQL-IaaS-Agent-Erweiterung in Azure](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md).
 1. Im Azure-Portal unter **Kostenverwaltung + Abrechnung** wählen Sie (als Abrechnungsadministrator) den Bereich und die Anzahl von qualifizierten Lizenzen aus, die Sie zuweisen möchten, um die Ressourcen des Bereichs abzudecken.  
@@ -32,7 +32,7 @@ Sie können Ihren Azure-Hybridvorteil für SQL Server für einen gesamten Azure
 
 Die ursprüngliche Methode zum Aktivieren des Azure-Hybridvorteils auf Ressourcenebene ist für SQL Server weiterhin verfügbar und derzeit die einzige Option für Windows Server. Hierbei wird eine DevOps-Rolle verwendet, mit der für jede einzelne Ressource (z. B. eine SQL-Datenbank oder Windows Server-VM) bei ihrer Erstellung bzw. der Verwaltung der Vorteil ausgewählt wird. Dies führt dazu, dass sich der Stundensatz für die jeweilige Ressource reduziert. Weitere Informationen finden Sie unter [Azure-Hybridvorteil für Windows Server](../../azure-sql/azure-hybrid-benefit.md).
 
-Die Aktivierung des Azure-Hybridvorteils für SQL Server auf Abonnement- oder Kontobereichsebene befindet sich derzeit in der Vorschauphase. Dieses Feature ist nur für Unternehmenskunden verfügbar. Wir arbeiten daran, diese Funktionalität auch auf Windows Server und einen größeren Kundenkreis zu erweitern.
+Die Aktivierung der zentralen Verwaltung des Azure-Hybridvorteils für SQL Server auf Abonnement- oder Kontobereichsebene befindet sich derzeit in der Vorschauphase. Dieses Feature ist nur für Unternehmenskunden verfügbar. Wir arbeiten daran, diese Funktionalität auch auf Windows Server und einen größeren Kundenkreis zu erweitern.
 
 ## <a name="qualifying-sql-server-licenses"></a>Qualifizierte SQL Server-Lizenzen
 
@@ -40,7 +40,7 @@ SQL Server Enterprise- und Standard-Core-Lizenzen mit aktiver Software Assurance
 
 ## <a name="qualifying-azure-resources"></a>Qualifizierte Azure-Ressourcen
 
-Die Verwaltung des Azure-Hybridvorteils auf Bereichsebene deckt die folgenden allgemeinen Azure SQL-Ressourcen ab:
+Die zentrale Verwaltung des Azure-Hybridvorteils auf Bereichsebene deckt die folgenden allgemeinen Azure SQL-Ressourcen ab:
 
 - SQL-DATENBANKEN
 - Verwaltete SQL-Instanzen
@@ -52,7 +52,7 @@ Alle obigen Punkte können auch mit der Verwaltung des Azure-Hybridvorteils auf 
 - Dedizierte Azure-Hosts
 - Azure Data Factory SQL Server Integration Services (SSIS)
 
-## <a name="scope-level-management-advantages"></a>Vorteile der Verwaltung auf Bereichsebene
+## <a name="centralized-scope-level-management-advantages"></a>Vorteile der zentralen Verwaltung auf Bereichsebene
 
 Für Sie ergeben sich die folgenden Vorteile:
 
@@ -103,6 +103,6 @@ Wir empfehlen Ihnen den folgenden Wiederholungsrhythmus für die Verwaltung des 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Arbeiten Sie das Tutorial [Verwalten und Optimieren des Azure-Hybridvorteils für SQL Server](tutorial-azure-hybrid-benefits-sql.md) durch.
-- Informieren Sie sich über die [Umstellung auf die Verwaltung des Azure-Hybridvorteils auf Bereichsebene](transition-existing.md).
-- Lesen Sie die [häufig gestellten Fragen zur Verwaltung des Azure-Hybridvorteils auf Bereichsebene](faq-azure-hybrid-benefit-scope.yml).
+- Folgen Sie dem Tutorial [Verwalten und Optimieren des Azure-Hybridvorteils für SQL Server](tutorial-azure-hybrid-benefits-sql.md).
+- Informieren Sie sich über den [Übergang zum zentral verwalteten Azure-Hybridvorteil](transition-existing.md).
+- Lesen Sie die [häufig gestellten Fragen zum zentral verwalteten Azure-Hybridvorteil](faq-azure-hybrid-benefit-scope.yml).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: jeedes
-ms.openlocfilehash: ef52547bb8ec27bd759a238d742173f6b8fc3994
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e958f8b13c01e895aa4d6485aedd64dd155e69b5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591974"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334984"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-secure-access-vpn"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Check Point Remote Secure Access VPN
 
@@ -76,11 +76,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/ID/<IDENTIFIER_UID>`.
+    1. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/ID/<IDENTIFIER_UID>`.
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/Login/<IDENTIFIER_UID>`
+    1. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/Login/<IDENTIFIER_UID>`
 
-    c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<GATEWAY_IP>/saml-vpn/`.
+    1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<GATEWAY_IP>/saml-vpn/`.
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den Check Point Remote Secure Access VPN-Client](mailto:support@checkpoint.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -180,7 +180,6 @@ Beispiel: `https://gateway1.company.com/saml-vpn`
 
 1. Klicken Sie auf **OK**.
 
-
 ### <a name="configure-an-identity-provider-object"></a>Konfigurieren eines Identitätsproviders
 
 1. Gehen Sie für jedes Sicherheitsgateway, das an Remote Access VPN beteiligt ist, die folgenden Schritte aus.
@@ -220,7 +219,7 @@ Beispiel: `https://gateway1.company.com/saml-vpn`
 
     ![Screenshot für „Hinzufügen eines neuen Objekts“.](./media/check-point-remote-access-vpn-tutorial/add-new-object.png)
 
-1. Geben Sie einen Namen und einen Anzeigenamen ein, und fügen Sie eine Authentifizierungsmethode hinzu bzw. bearbeiten Sie sie: Falls die Anmeldeoption für GWs verwendet wird, die am GWs teilnehmen, sollte der Name mit dem Präfix „SAMLVPN_“ beginnen, um ein reibungsloses Benutzererlebnis zu ermöglichen. 
+1. Geben Sie einen Namen und einen Anzeigenamen ein, und fügen Sie eine Authentifizierungsmethode hinzu bzw. bearbeiten Sie sie: Falls die Anmeldeoption für GWs verwendet wird, die am GWs teilnehmen, sollte der Name mit dem Präfix „SAMLVPN_“ beginnen, um ein reibungsloses Benutzererlebnis zu ermöglichen.
 
     ![Screenshot zur Anmeldeoption.](./media/check-point-remote-access-vpn-tutorial/login-option.png)
 
@@ -237,21 +236,21 @@ Es gibt zwei Optionen:
 
 1. Konfigurieren Sie die erforderlichen Einstellungen in der Verwaltungsdatenbank:
 
-    1.  Schließen Sie SmartConsole.
+    1. Schließen Sie SmartConsole.
 
-    2.  Stellen Sie eine Verbindung mit dem GuiDBEdit-Tool mit dem Verwaltungsserver her (siehe [sk13009](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails&solutionid=sk13009)).
+    2. Stellen Sie eine Verbindung mit dem GuiDBEdit-Tool mit dem Verwaltungsserver her (siehe [sk13009](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails&solutionid=sk13009)).
 
-    3.  Wechseln Sie im oberen linken Bereich zu **Bearbeiten > Netzwerkobjekte**.
+    3. Wechseln Sie im oberen linken Bereich zu **Bearbeiten > Netzwerkobjekte**.
 
-    4.  Wählen Sie im oberen rechten Bereich das **Security Gateway-Objekt** aus.
+    4. Wählen Sie im oberen rechten Bereich das **Security Gateway-Objekt** aus.
 
-    5.  Wechseln Sie im unteren Bereich zu **realms_for_blades > vpn**.
+    5. Wechseln Sie im unteren Bereich zu **realms_for_blades > vpn**.
 
-    6.  Wenn Sie keine lokales Active Directory (LDAP) verwenden möchten, legen Sie **do_ldap_fetch** auf **false** und **do_generic_fetch** auf **true** fest. Klicken Sie dann auf **OK**. Wenn Sie eine lokale Active Directory (LDAP) verwenden möchten, legen Sie **do_ldap_fetch** auf **true** und **do_generic_fetch** auf **false** fest. Klicken Sie dann auf **OK**.
+    6. Wenn Sie keine lokales Active Directory (LDAP) verwenden möchten, legen Sie **do_ldap_fetch** auf **false** und **do_generic_fetch** auf **true** fest. Klicken Sie dann auf **OK**. Wenn Sie eine lokale Active Directory (LDAP) verwenden möchten, legen Sie **do_ldap_fetch** auf **true** und **do_generic_fetch** auf **false** fest. Klicken Sie dann auf **OK**.
 
-    7.  Wiederholen Sie die Schritte iv-vi für alle anwendbaren Sicherheitsgateways.
+    7. Wiederholen Sie die Schritte 4 bis 6 für alle anwendbaren Sicherheitsgateways.
 
-    8.  Speichern Sie alle Änderungen (klicken Sie auf das Menü **Datei** > **Alle speichern**).
+    8. Speichern Sie Ihre Änderungen durch Auswahl von **Datei** > **Alle speichern**.
 
 1. Schließen Sie das GuiDBEdit-Tool.
 
@@ -267,20 +266,21 @@ Es gibt zwei Optionen:
 
 1. Installieren Sie den VPN-Client.
 
-1. Festlegen des Identitätsanbieter-Browsermodus (optional). Standardmäßig verwendet der Windows-Client seinen eingebetteten Browser, und der macOS-Client verwendet Safari für die Authentifizierung im Portal des Identitätsanbieters.
-Damit der Windows-Client dieses Verhalten ändern kann, damit Sie stattdessen Internet Explorer verwenden können:
+1. Legen Sie den Identitätsanbieter-Browsermodus fest (optional).
 
-   1. Öffnen Sie auf dem Clientcomputer einen Nur-Text-Editor als Administrator.
+    Standardmäßig verwendet der Windows-Client seinen eingebetteten Browser, und der macOS-Client verwendet Safari für die Authentifizierung im Portal des Identitätsanbieters. Ändern Sie für Windows-Clients dieses Verhalten, damit Sie stattdessen Internet Explorer verwenden können:
 
-   2. Öffnen Sie die Datei `trac.defaults` im Text-Editor.
+    1. Öffnen Sie auf dem Clientcomputer einen Nur-Text-Editor als Administrator.
 
-      - Unter 32-Bit-Windows: 
+    2. Öffnen Sie die Datei `trac.defaults` im Text-Editor.
 
-        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+       * Unter 32-Bit-Windows: 
 
-      - Unter 64-Bit-Windows: 
+         `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
 
-        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+       * Unter 64-Bit-Windows: 
+
+         `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
 
     3. Ändern Sie den Attributwert `idp_browser_mode` von `embedded` in `IE`.
 
@@ -296,34 +296,35 @@ Damit der Windows-Client dieses Verhalten ändern kann, damit Sie stattdessen In
 
 1. Starten Sie die Authentifizierung mit Browser, der im Hintergrund ausgeführt wird:
 
-   1. Öffnen Sie auf dem Clientcomputer einen Nur-Text-Editor als Administrator.
+    1. Öffnen Sie auf dem Clientcomputer einen Nur-Text-Editor als Administrator.
 
-   2. Öffnen Sie die Datei `trac.defaults` im Text-Editor.
+    2. Öffnen Sie die Datei `trac.defaults` im Text-Editor.
 
-      - Unter 32-Bit-Windows: 
+        * Unter 32-Bit-Windows: 
 
-        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+          `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
 
-      - Unter 64-Bit-Windows: 
+        * Unter 64-Bit-Windows: 
 
-        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+          `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
 
-      - Unter MacOS:
-      
-        `/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/trac.defaults`
+        * Unter MacOS:
+
+          `/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/trac.defaults`
 
     3. Ändern Sie den Wert von `idp_show_browser_primary_auth_flow` in `false`.
 
     4. Speichern Sie die Datei .
 
     5. Starten Sie den Check Point Endpoint Security-VPN-Clientdienst neu.
-       - Öffnen Sie auf Windows-Clients die Windows-Eingabeaufforderung als Administrator, und führen Sie die folgenden Befehle aus:
+
+       * Öffnen Sie auf Windows-Clients die Windows-Eingabeaufforderung als Administrator, und führen Sie die folgenden Befehle aus:
 
          `# net stop TracSrvWrapper`
-        
+
          `# net start TracSrvWrapper`
 
-       - Führen Sie auf macOS-Clients Folgendes aus:
+       * Führen Sie auf macOS-Clients Folgendes aus:
 
          `sudo launchctl stop com.checkpoint.epc.service`
 
@@ -333,7 +334,7 @@ Damit der Windows-Client dieses Verhalten ändern kann, damit Sie stattdessen In
 
 In diesem Abschnitt wird in Check Point Remote Secure Access VPN ein Benutzer namens Britta Simon erstellt. Arbeiten Sie mit [Check Point Remote Secure Access VPN-Supportteam](mailto:support@checkpoint.com) zusammen, um die Benutzer auf der Check Point Remote Secure Access VPN-Plattform für den Remotezugriff hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 1. Öffnen Sie den VPN-Client, und klicken Sie auf **Verbinden mit...** .
 
@@ -347,4 +348,4 @@ In diesem Abschnitt wird in Check Point Remote Secure Access VPN ein Benutzer na
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Check Point Remote Secure Access VPN können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Check Point Remote Secure Access VPN können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

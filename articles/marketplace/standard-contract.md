@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 05/20/2020
-ms.openlocfilehash: 20a257bde6022249fd7b2ab875b94f356234b490
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/26/2021
+ms.openlocfilehash: 4313a9a6478c38ccb6611ea7c0008bd7fa9ebcbf
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94488875"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848247"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Standardvertrag für den kommerziellen Microsoft-Marketplace
 
@@ -22,6 +22,9 @@ Die Geschäftsbedingungen für ein Angebot werden bei dessen Erstellung im Partn
 
 >[!Note]
 >Nachdem Sie ein Angebot über den Standardvertrag für den kommerziellen Microsoft-Marketplace veröffentlicht haben, können Sie Ihre eigenen benutzerdefinierten Geschäftsbedingungen nicht mehr nutzen. Entweder bieten Sie Ihre Lösung im Rahmen des Standardvertrags *oder* Ihrer eigenen Geschäftsbedingungen an. Benutzerdefinierte Geschäftsbedingungen werden auf Angebotsebene definiert und gelten für alle Pläne. Schreiben Sie Ihre benutzerdefinierten Geschäftsbedingungen auf der Seite **Eigenschaften** Ihres Angebots im Partner Center. Wenn Sie die Bedingungen des Standardvertrags ändern möchten, können Sie dies über Zusatzvereinbarungen für den Standardvertrag erreichen.
+
+> [!TIP]
+> Informationen zur Ansicht der Verträge des Kunden im Azure Marketplace finden Sie unter [Verträge](/marketplace/legal-contracts).
 
 ## <a name="standard-contract-amendments"></a>Zusatzvereinbarungen für den Standardvertrag
 
@@ -36,7 +39,7 @@ Für kommerzielle Marketplace-Herausgeber stehen zwei Arten von Zusatzvereinbaru
 >[!Note]
 >Diese beiden Arten von Zusatzvereinbarungen sind übereinander angeordnet. Kunden, für die benutzerdefinierte Zusatzvereinbarungen gelten, erhalten beim Kauf auch die universellen Zusatzvereinbarung für den Standardvertrag. Zusatzvereinbarungen sind auf 4000 Zeichen (einschließlich Leerzeichen) beschränkt.
 
-Sie können den Standardvertrag für den kommerziellen Microsoft-Marketplace für die folgenden Angebotstypen nutzen:  Azure-Anwendungen (Lösungsvorlagen und verwaltete Anwendungen), virtuelle Computer und SaaS.
+Sie können den Standardvertrag für den kommerziellen Microsoft-Marketplace für die folgenden Angebotstypen nutzen: Azure-Anwendungen (Lösungsvorlagen und verwaltete Anwendungen), Azure-Container, Container-Apps, virtuelle Computer und SaaS.
 
 ## <a name="customer-experience"></a>Benutzerfreundlichkeit
 

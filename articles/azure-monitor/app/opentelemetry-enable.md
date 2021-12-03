@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 10/11/2021
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 8f8daa67c22f8a505014ff326ca3961fa86f21f5
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: ae52a8977247903574b9d23fda795e5fd8b7ea3d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130160832"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054427"
 ---
 # <a name="enable-azure-monitor-opentelemetry-exporter-for-net-nodejs-and-python-applications-preview"></a>Aktivieren von Azure Monitor OpenTelemetry Exporter für .NET-, Node.js- und Python-Anwendungen (Vorschau)
 
-In diesem Artikel wird beschrieben, wie das OpenTelemetry-basierte Azure Monitor-Vorschauangebot aktiviert und konfiguriert wird. Wenn Sie die Anweisungen in diesem Artikel befolgen, können Sie OpenTelemetry-Ablaufverfolgungen an Azure Monitor Application Insights senden.
+In diesem Artikel wird beschrieben, wie das OpenTelemetry-basierte Azure Monitor-Vorschauangebot aktiviert und konfiguriert wird. Wenn Sie die Anweisungen in diesem Artikel befolgen, können Sie OpenTelemetry-Ablaufverfolgungen an Azure Monitor Application Insights senden. Weitere Informationen zu OpenTelemetry finden Sie in der [OpenTelemetry-Übersicht](opentelemetry-overview.md) oder in den [Häufig gestellten Fragen zu OpenTelemetry](/azure/azure-monitor/faq#opentelemetry).
 
 > [!IMPORTANT]
 > Azure Monitor OpenTelemetry Exporter für .NET-, Node.js- und Python-Anwendungen befindet sich derzeit in der VORSCHAU.
@@ -31,7 +31,7 @@ In diesem Artikel wird beschrieben, wie das OpenTelemetry-basierte Azure Monitor
  - Automatische Erfassung nicht behandelter Ausnahmen
  - [Profiler](profiler-overview.md)
  - [Momentaufnahmedebugger](snapshot-debugger.md)
- - Offlinespeicherung auf Datenträger
+ - [Offlinedatenträgerspeicher und Wiederholungslogik](telemetry-channels.md#built-in-telemetry-channels)
  - [Azure AD-Authentifizierung](azure-ad-authentication.md)
  - [Stichproben](sampling.md)
  - Automatisches Auffüllen mit Daten von Cloudrollenname und Cloudrolleninstanz in Azure-Umgebungen
@@ -40,7 +40,7 @@ In diesem Artikel wird beschrieben, wie das OpenTelemetry-basierte Azure Monitor
  - Möglichkeit zum Überschreiben des [Vorgangsnamens](correlation.md#data-model-for-telemetry-correlation)
  - Möglichkeit zum manuellen Festlegen der Benutzer-ID oder authentifizierten Benutzer-ID
  - Weitergabe des Vorgangsnamens an Abhängigkeitstelemetrie
- - Verteilte Ablaufverfolgung von Kontextweitergabe (Instrumentierungsbibliotheken) über Azure Functions-Worker
+ - Unterstützung von [Instrumentierungsbibliotheken](#instrumentation-libraries) in Azure Functions
 
 Diejenigen Benutzer, die den vollen Funktionsumfang benötigen, sollten das vorhandene Application Insights [ASP.NET](asp-net.md) oder [ASP.NET Core](asp-net-core.md) SDK verwenden, bis das OpenTelemetry-basierte Angebot ausgereift ist.
 
@@ -72,7 +72,7 @@ Diejenigen Benutzer, die den vollen Funktionsumfang benötigen, sollten das vorh
  - [Livemetriken](live-stream.md)
  - Protokollierungs-API (Konsolenprotokolle, Protokollierungsbibliotheken usw.)
  - Automatische Erfassung nicht behandelter Ausnahmen
- - Offlinespeicherung auf Datenträger
+ - Offlinedatenträgerspeicher und Wiederholungslogik
  - [Azure AD-Authentifizierung](azure-ad-authentication.md)
  - [Stichproben](sampling.md)
  - Automatisches Auffüllen mit Daten von Cloudrollenname und Cloudrolleninstanz in Azure-Umgebungen
@@ -81,7 +81,7 @@ Diejenigen Benutzer, die den vollen Funktionsumfang benötigen, sollten das vorh
  - Möglichkeit zum Überschreiben des [Vorgangsnamens](correlation.md#data-model-for-telemetry-correlation)
  - Möglichkeit zum manuellen Festlegen der Benutzer-ID oder authentifizierten Benutzer-ID
  - Weitergabe des Vorgangsnamens an Abhängigkeitstelemetrie
- - Verteilte Ablaufverfolgung von Kontextweitergabe (Instrumentierungsbibliotheken) über Azure Functions-Worker
+ - Unterstützung von [Instrumentierungsbibliotheken](#instrumentation-libraries) in Azure Functions
 
 Diejenigen Benutzer, die den vollen Funktionsumfang benötigen, sollten das vorhandene [Application Insights Python-OpenCensus SDK](opencensus-python.md) verwenden, bis das OpenTelemetry-basierte Angebot ausgereift ist.
 
@@ -175,17 +175,7 @@ pip install azure-monitor-opentelemetry-exporter
 
 ##### <a name="net"></a>[.NET](#tab/net)
 
-> [!NOTE]
-> Die folgende Anleitung zeigt, wie Sie Azure Monitor Application Insights für eine C#-Konsolenanwendung aktivieren.
-> 
-> Anleitungen für andere Anwendungstypen finden Sie in den OpenTelemetry GitHub-Infodateien:
-> - [ASP.NET](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Instrumentation.AspNet/README.md)
-> - [ASP.NET Core](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Instrumentation.AspNetCore/README.md)
-> - [HttpClient und HttpWebRequest](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Instrumentation.Http/README.md)
-> 
-> Die Erweiterungsmethode `AddAzureMonitorTraceExporter` zum Senden von Daten an Application Insights gilt für alle aufgeführten Anwendungstypen.
-> 
-> Weitere Ressourcen finden Sie in den [OpenTelemetry-Beispielen auf GitHub](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/examples). 
+Der folgende Code veranschaulicht das Aktivieren von OpenTelemetry in einer C#-Konsolenanwendung durch Einrichten von OpenTelemetry TracerProvider. Dieser Code muss beim Anwendungsstart enthalten sein. Für ASP.NET Core wird dies in der Regel in der Klasse `ConfigureServices`Anwendungsmethode`Startup` durchgeführt. Für ASP.NET-Anwendungen erfolgt dies in der Regel in `Global.asax.cs`.
 
 ```csharp
 using System.Diagnostics;
@@ -300,6 +290,9 @@ with tracer.start_as_current_span("hello"):
 
 ---
 
+> [!TIP]
+> Fügen Sie [Instrumentierungsbibliotheken](#instrumentation-libraries) hinzu, um Telemetriedaten über gängige Frameworks/Bibliotheken hinweg automatisch zu sammeln.
+
 #### <a name="set-application-insights-connection-string"></a>Festlegen der Application Insights-Verbindungszeichenfolge
 
 Ersetzen Sie den Platzhalter `<Your Connection String>` im Code oben durch die Verbindungszeichenfolge aus IHRER Application Insights-Ressource.
@@ -319,7 +312,7 @@ Führen Sie Ihre Anwendung aus, und öffnen Sie die Registerkarte der Applicatio
 > Wenn Sie über zwei oder mehr Dienste verfügen, die Telemetriedaten an dieselbe Application Insights-Ressource ausgeben, müssen Sie [Cloudrollennamen festlegen](#set-cloud-role-name-and-cloud-role-instance), um sie ordnungsgemäß in der Anwendungszuordnung darzustellen.
 
 > [!NOTE]
-> Im Rahmen der Verwendung der Application Insights-Instrumentierung sammeln und senden wir Diagnosedaten an Microsoft. Diese Daten helfen uns bei der Ausführung und Verbesserung von Application Insights. Sie haben die Möglichkeit, die Sammlung nicht wesentlicher Daten zu deaktivieren. [Weitere Informationen](./statsbeat.md).
+> Im Rahmen der Verwendung der Application Insights-Instrumentierung sammeln und senden wir Diagnosedaten an Microsoft. Diese Daten helfen uns, Application Insights auszuführen und zu verbessern. Sie haben die Möglichkeit, die Sammlung nicht wesentlicher Daten zu deaktivieren. [Weitere Informationen](./statsbeat.md).
 
 ## <a name="set-cloud-role-name-and-cloud-role-instance"></a>Festlegen von Cloudrollennamen und Cloudrolleninstanz
 
@@ -431,9 +424,9 @@ Die folgenden Bibliotheken wurden für das Arbeiten mit der Vorschauversion übe
 
 #### <a name="python"></a>[Python](#tab/python)
 
-- [Django](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django/README.md) Version: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-django/0.24b0/)
-- [Flask](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask/README.md) Version: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-flask/0.24b0/)
-- [Anforderungen](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-requests/README.md) Version: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-requests/0.24b0/)
+- [Django](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django) Version: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-django/0.24b0/)
+- [Flask](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask) Version: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-flask/0.24b0/)
+- [Anforderungen](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-requests) Version: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-requests/0.24b0/)
 
 ---
 
@@ -464,7 +457,7 @@ Span-Attribute können mit einer der folgenden beiden Methoden hinzugefügt werd
 1. Verwenden von Optionen, die von [Instrumentierungsbibliotheken](#instrumentation-libraries) bereitgestellt werden.
 2. Hinzufügen eines benutzerdefinierten Span-Prozessors.
 
-Zu diesen Attributen kann das Hinzufügen einer benutzerdefinierten Geschäftseigenschaft zu Ihrer Telemetrie gehören. Sie können auch Attribute verwenden, um optionale Felder im Application Insights-Schema festzulegen, z. B. Benutzer-ID oder Client-IP.
+Zu diesen Attributen kann das Hinzufügen einer benutzerdefinierten Eigenschaft zu Ihrer Telemetrie gehören. Sie können auch Attribute verwenden, um optionale Felder im Application Insights-Schema festzulegen, z. B. Client-IP.
 
 > [!TIP]
 > Der Vorteil der Verwendung von „von Instrumentierungsbibliotheken bereitgestellten Optionen“ (sofern verfügbar) besteht darin, dass der gesamte Kontext verfügbar ist, was bedeutet, dass Benutzer zusätzliche Attribute hinzufügen oder filtern können. Die Anreicherungsoption der HttpClient-Instrumentierungsbibliothek umfasst z. B. das Gewähren von Benutzerzugriff auf httpRequestMessage selbst, um beliebige Elemente auszuwählen und als Attribut zu speichern.
@@ -593,6 +586,7 @@ Sie können das Feld _client_IP_ für Anforderungen auffüllen, indem Sie das `h
 Verwenden Sie das [Beispiel zum Hinzufügen einer benutzerdefinierten Eigenschaft](#add-custom-property), ersetzen Sie dabei aber die folgenden Codezeilen in `ActivityEnrichingProcessor.cs`:
 
 ```C#
+// only applicable in case of activity.Kind == Server
 activity.SetTag("http.client_ip", "<IP Address>");
 ```
 

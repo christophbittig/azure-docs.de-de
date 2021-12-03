@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be1e97aead471012e6d0e92931d670306cb1ddf4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "73647749"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458302"
 ---
 # <a name="label-images-faster-with-smart-labeler"></a>Schnelleres Beschriften von Bildern mit der intelligenten Bezeichnungserstellung
 
-In dieser Anleitung erfahren Sie, wie Sie mit der intelligenten Bezeichnungserstellung vorgeschlagene Tags für Bilder generieren. Auf diese Weise können Sie eine große Anzahl von Bildern schneller beschriften, wenn Sie ein Custom Vision-Modell trainieren.
+In dieser Anleitung erfahren Sie, wie Sie mit der intelligenten Bezeichnungserstellung vorgeschlagene Tags für Bilder generieren. Auf diese Weise können Sie eine große Anzahl von Images schneller beschriften, wenn Sie ein benutzerdefiniertes Vision-Modell trainieren.
 
 Wenn Sie Bilder für ein Custom Vision-Modell kennzeichnen, verwendet der Dienst die neueste trainierte Iteration des Modells, um die Beschriftungen von nicht gekennzeichneten Bildern vorherzusagen. Anschließend werden diese Vorhersagen als vorgeschlagene Tags angezeigt, die auf dem ausgewählten Übereinstimmungsschwellenwert und der Vorhersageunsicherheit basieren. Sie können dann die Vorschläge entweder bestätigen oder ändern, um den Prozess der manuellen Kennzeichnung der Bilder für das Training zu beschleunigen.
 

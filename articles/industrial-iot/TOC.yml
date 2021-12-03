@@ -1,5 +1,7 @@
 - name: Dokumentation zu Azure Industrial IoT
   href: index.yml
+- name: "Azure\_Industrial\_IoT-Plattformversionen"
+  href: industrial-iot-platform-versions.md
 - name: Übersicht
   items:
     - name: "Was ist Industrial\_IoT?"
@@ -26,6 +28,74 @@
           href: tutorial-data-explorer-import.md
         - name: 'Tutorial: Visualisieren von Daten mit Time Series Insights (TSI)'
           href: tutorial-visualize-data-time-series-insights.md
+- name: Anleitungen
+  items:
+    - name: Installieren und Bereitstellen von IoT Edge
+      items:
+        - name: Erstellen eines IoT Edge-Geräts
+          href: ../iot-edge/how-to-create-iot-edge-device.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: Linux-Container auf Linux-Hosts
+          items:
+            - name: Bereitstellen eines einzelnen Geräts
+              items:
+                - name: X.509-Zertifikatnachweis
+                  href: ../iot-edge/how-to-provision-single-device-linux-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: Nachweis des symmetrischen Schlüssels
+                  href: ../iot-edge/how-to-provision-single-device-linux-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: Bereitstellen von Geräten im großen Stil
+              items:
+                - name: X.509-Zertifikatnachweis
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: TPM-Nachweis
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-tpm.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: Nachweis des symmetrischen Schlüssels
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: Linux-Container auf Windows-Hosts
+          items:
+            - name: Bereitstellen eines einzelnen Geräts
+              items:
+                - name: X.509-Zertifikatnachweis
+                  href: ../iot-edge/how-to-provision-single-device-linux-on-windows-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: Nachweis des symmetrischen Schlüssels
+                  href: ../iot-edge/how-to-provision-single-device-linux-on-windows-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: Bereitstellen von Geräten im großen Stil
+              items:
+                - name: X.509-Zertifikatnachweis
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-on-windows-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: TPM-Nachweis
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-on-windows-tpm.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: Nachweis des symmetrischen Schlüssels
+                  href: ../iot-edge/how-to-provision-devices-at-scale-linux-on-windows-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: Konfigurieren der geschachtelten Virtualisierung für virtuelle Windows-Computer
+              href: ../iot-edge/nested-virtualization.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: Erstellen des virtuellen Switches
+              href: ../iot-edge/how-to-create-virtual-switch.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: Konfigurieren der GPU-Beschleunigung
+              href: ../iot-edge/gpu-acceleration.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: Windows-Container auf Windows-Hosts
+          items:
+            - name: Bereitstellen eines einzelnen Geräts
+              items:
+                - name: Nachweis des symmetrischen Schlüssels
+                  href: ../iot-edge/how-to-provision-single-device-windows-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: X.509-Zertifikatnachweis
+                  href: ../iot-edge/how-to-provision-single-device-windows-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+            - name: Bereitstellen von Geräten im großen Stil
+              items:
+                - name: Nachweis des symmetrischen Schlüssels
+                  href: ../iot-edge/how-to-provision-devices-at-scale-windows-symmetric.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: X.509-Zertifikatnachweis
+                  href: ../iot-edge/how-to-provision-devices-at-scale-windows-x509.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+                - name: TPM-Nachweis
+                  href: ../iot-edge/how-to-provision-devices-at-scale-windows-tpm.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: Aktualisieren von IoT Edge
+          href: ../iot-edge/how-to-update-iot-edge.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: Verwalten von Gerätezertifikaten
+          href: ../iot-edge/how-to-manage-device-certificates.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: Ausführen von IoT Edge in Kubernetes
+          href: ../iot-edge/how-to-install-iot-edge-kubernetes.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
+        - name: Bereitstellen eines virtuellen IoT Edge-Computers mithilfe einer ARM-Vorlage
+          href: ../iot-edge/how-to-install-iot-edge-ubuntuvm.md?toc=/azure/industrial-iot/toc.json&bc=/azure/industrial-iot/breadcrumb/toc.json
 - name: Verweis
   items:
     - name: Befehlszeilenargumente
@@ -55,7 +125,7 @@
         - name: IoT Solution Accelerators
           href: ./index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

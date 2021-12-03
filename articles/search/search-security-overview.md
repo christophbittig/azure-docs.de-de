@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: c3e6112c1bee8e42f411eaa8d12d873db2657142
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: a4ed9b5a7d33433a14bb7e6800ac54326184a808
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114726458"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347083"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Übersicht über die Sicherheit für Azure Cognitive Search
 
@@ -201,4 +201,4 @@ Eine Übersicht der Sicherheitsarchitektur und der einzelnen Featurekategorien f
 
 + [Grundlegende Azure-Sicherheitsinformationen](../security/fundamentals/index.yml)
 + [Sicherheit von Azure](https://azure.microsoft.com/overview/security)
-+ [Azure Security Center](../security-center/index.yml)
++ [Microsoft Defender für Cloud](../security-center/index.yml)

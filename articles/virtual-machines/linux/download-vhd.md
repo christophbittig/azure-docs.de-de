@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 4492eb9a346d89789f1527bf80b46a08cc74fe92
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 393706ca463d8a3cc6edaede2689feae3e867bfa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696088"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074496"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Herunterladen einer Linux-VHD von Azure
 
@@ -48,7 +48,7 @@ Machen Sie eine Momentaufnahme des Datenträgers, um ihn herunterzuladen.
 Ihre Momentaufnahme wird in Kürze erstellt und kann dann zum Herunterladen oder Erstellen eines anderen virtuellen Computers verwendet werden.
 
 > [!NOTE]
-> Wenn Sie den virtuellen Computer nicht zuerst beenden, ist die Momentaufnahme nicht bereinigt. Der Snapshot befindet sich in dem Zustand, als ob die VM zum Zeitpunkt der Erstellung des Snapshots heruntergefahren oder abgestürzt wäre.  Obwohl dies normalerweise sicher ist, kann dies zu Problemen führen, wenn die ausgeführten Anwendungen, die zu einem bestimmten Zeitpunkt ausgeführt werden, nicht absturzsicher waren.
+> Wenn Sie den virtuellen Computer nicht zuerst beenden, ist die Momentaufnahme nicht bereinigt. Der Snapshot befindet sich in dem Zustand, als ob die VM zum Zeitpunkt der Erstellung des Snapshots heruntergefahren oder abgestürzt wäre. Obwohl dies normalerweise sicher ist, kann dies zu Problemen führen, wenn die ausgeführten Anwendungen, die zu einem bestimmten Zeitpunkt ausgeführt werden, nicht absturzsicher waren.
 >  
 > Diese Methode wird nur für VMs mit einem einzelnen Betriebssystemdatenträger empfohlen. VMs mit mindestens einem Datenträger sollten vor dem Herunterladen oder vor dem Erstellen einer Momentaufnahme für den Betriebssystemdatenträger und jeden Datenträger beendet werden.
 

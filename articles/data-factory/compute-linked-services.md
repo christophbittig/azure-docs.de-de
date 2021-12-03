@@ -9,12 +9,12 @@ author: nabhishek
 ms.author: abnarain
 ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: c6e2491c5c57ca8ebbde287f58fad6d6429b5ee4
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 2b52a22123a6ac0e4a8405f2413b11b6367eeff0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236707"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070924"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-and-synapse-pipelines"></a>Von Azure Data Factory- und Synapse-Pipelines unterstützte Compute-Umgebungen
 
@@ -28,7 +28,7 @@ Die folgende Tabelle enthält eine Liste unterstützter Compute-Umgebungen und d
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Bedarfsgesteuerter HDInsight-Cluster](#azure-hdinsight-on-demand-linked-service) oder [Eigener HDInsight-Cluster](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md), [Pig](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), [Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Benutzerdefiniert](transform-data-using-dotnet-custom-activity.md)     |
-| [ML Studio (klassisch)](#azure-machine-learning-studio-classic-linked-service) | [Aktivitäten in ML Studio (klassisch): Batchausführung und Ressourcenaktualisierung](transform-data-using-machine-learning.md) |
+| [ML Studio (klassisch)](#machine-learning-studio-classic-linked-service) | [Aktivitäten in ML Studio (klassisch): Batchausführung und Ressourcenaktualisierung](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning-Pipelineausführung](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure Synapse Analytics](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Gespeicherte Prozedur](transform-data-using-stored-procedure.md) |
@@ -369,8 +369,8 @@ Lesen Sie die folgenden Artikel, wenn Sie noch nicht mit dem Azure Batch-Dienst 
 | linkedServiceName | Der Name des verknüpften Azure Storage-Diensts, der diesem verknüpften Azure Batch-Dienst zugeordnet ist. Dieser verknüpfte Dienst wird für Stagingdateien verwendet, die für die Ausführung der Aktivität benötigt werden. | Ja      |
 | connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein       |
 
-## <a name="azure-machine-learning-studio-classic-linked-service"></a>Verknüpfter Azure Machine Learning Studio (Classic)-Dienst
-Sie können einen verknüpften Azure Machine Learning Studio (Classic)-Dienst erstellen, um einen Batchbewertungsendpunkt von Machine Learning Studio (Classic) für einen Data Factory- oder Synapse-Arbeitsbereich zu registrieren.
+## <a name="machine-learning-studio-classic-linked-service"></a>Verknüpfter Azure Machine Learning Studio-Dienst (klassisch)
+Sie können einen verknüpften Machine Learning Studio-Dienst (klassisch) erstellen, um einen Batchbewertungsendpunkt von Machine Learning Studio (klassisch) für einen Data Factory- oder Synapse-Arbeitsbereich zu registrieren.
 
 ### <a name="example"></a>Beispiel
 

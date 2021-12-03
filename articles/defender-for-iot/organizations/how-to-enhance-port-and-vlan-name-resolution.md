@@ -1,14 +1,14 @@
 ---
 title: Verbessern der Port- und VLAN-Namensauflösung
 description: Hier erfahren Sie, wie Sie Port- und VLAN-Namen auf ihren Sensoren anpassen können, um die Geräteauflösung zu erweitern.
-ms.date: 12/13/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: de6fbe70d5a5359ad4e4c276642b9b9ed0cef00f
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 5c4f29f43534a797c5e8ac7142fd9633830f7859
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017403"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331488"
 ---
 # <a name="enhance-port-vlan-and-os-resolution"></a>Verbessern der Namensauflösung für Ports, VLANs und Betriebssysteme
 
@@ -16,7 +16,7 @@ Sie können Port- und VLAN-Namen in Ihren Sensoren anpassen, um die Geräteaufl�
 
 ## <a name="customize-port-names"></a>Anpassen von Portnamen
 
-Azure Defender für IoT weist den meisten universell reservierten Ports (z. B. DHCP oder HTTP) automatisch Namen zu. Sie können Portnamen für andere Ports anpassen, die von Azure Defender for IoT erkannt werden. Weisen Sie z. B. einen Namen einem nicht reservierten Port zu, wenn dieser Port ungewöhnlich hohe Aktivitäten aufweist.
+Microsoft Defender für IoT weist den meisten allgemein reservierten Ports, wie DHCP oder HTTP, automatisch Namen zu. Sie können Portnamen für andere Ports anpassen, die von Azure Defender for IoT erkannt werden. Weisen Sie z. B. einen Namen einem nicht reservierten Port zu, wenn dieser Port ungewöhnlich hohe Aktivitäten aufweist.
 
 Diese Namen werden unter den folgenden Bedingungen angezeigt:
 

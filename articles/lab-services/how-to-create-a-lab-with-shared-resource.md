@@ -5,12 +5,12 @@ author: emaher
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: efd33b95bd1a32c73712c7f094107717b4e5b973
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: db69c781c6b2f78e5ffbd6150d49775eb0c8cfbd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225773"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337186"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Erstellen eines Labs mit einer freigegebenen Ressource in Azure Lab Services
 
@@ -42,7 +42,7 @@ Virtuelle Computer verfügen standardmäßig über eine dynamische private IP-Ad
 
 #### <a name="control-access"></a>Steuern des Zugriffs
 Die Steuerung des Zugriffs auf den Lizenzserver ist entscheidend.  Nach der Einrichtung des virtuellen Computers ist weiterhin Zugriff erforderlich, um Wartungs-, Problembehandlungs- und Aktualisierungsaufgaben durchzuführen.  Im Anschluss finden Sie einige Möglichkeiten hierfür:
-- [Einrichten von JIT-Zugriff (Just-In-Time) in Azure Security Center](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
+- [Einrichten des Just-in-Time-Zugriffs (JIT) in Microsoft Defender für Cloud.](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
 - [Einrichten einer Netzwerksicherheitsgruppe, um den Zugriff einzuschränken](../virtual-network/network-security-groups-overview.md)
 - [Einrichten von Bastion, um sicheren Zugriff auf den Lizenzserver zu ermöglichen](https://azure.microsoft.com/services/azure-bastion/)
 
@@ -51,7 +51,8 @@ Die Steuerung des Zugriffs auf den Lizenzserver ist entscheidend.  Nach der Einr
 Zum Verwenden einer freigegebenen Ressource muss das Lab-Konto für die Verwendung eines [virtuellen Peer-Netzwerks](how-to-connect-peer-virtual-network.md) eingerichtet sein.  In diesem Fall stellen wir eine Peeringverbindung mit dem virtuellen Netzwerk her, das die freigegebene Ressource enthält.
 
 >[!WARNING]
->Das Lab für Ihre Klasse muss erstellt werden, **nachdem** eine Peering-Verbindung des Lab-Kontos mit dem virtuellen Netzwerk der freigegebenen Ressource hergestellt wurde.  
-Vorlagencomputer
+>Das Lab für Ihre Klasse muss erstellt werden, **nachdem** eine Peering-Verbindung des Lab-Kontos mit dem virtuellen Netzwerk der freigegebenen Ressource hergestellt wurde.
+
+## <a name="template-machine"></a>Vorlagencomputer
 
 Nachdem das Peering zwischen Ihrem Lab-Konto und dem virtuellen Netzwerk eingerichtet wurde, sollte der Vorlagencomputer nun Zugriff auf die freigegebene Ressource haben.  Abhängig von der freigegebenen Ressource, auf die zugegriffen werden soll, müssen Sie möglicherweise die Firewallregeln aktualisieren.

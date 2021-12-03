@@ -1,19 +1,19 @@
 ---
 title: Revisionen in Azure Container Apps Vorschau
 description: Erfahren Sie, wie Revisionen in Azure Container Apps erstellt werden.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f91168f5d879e9e8844f5b86cee70fe1a0193b09
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: daa5f00ba30bfcd0af41e92339518f0d9c1f44ae
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095999"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134065"
 ---
 # <a name="revisions-in-azure-container-apps-preview"></a>Revisionen in Azure Container Apps Vorschau
 
@@ -73,4 +73,4 @@ Neue Revisionen bleiben aktiv, bis Sie sie deaktivieren oder Ihre Container-App 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schützen einer App](get-started.md)
+> [Schützen einer App](secure-app.md)

@@ -4,13 +4,13 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei zu
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/30/2021
-ms.openlocfilehash: 4cfbac80e9783dd9424a4b2ee63607fb6f2a7f17
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/25/2021
+ms.openlocfilehash: a14019e3cdf595efe0a32a7021333aa5b4f6a6b1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361898"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087417"
 ---
 # <a name="resource-functions-for-bicep"></a>Ressourcenfunktionen für Bicep
 
@@ -116,7 +116,7 @@ Ein [Namespacequalifizierer](bicep-functions.md#namespaces-for-functions) ist ni
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | secretName | Ja | Zeichenfolge | Der Name des Geheimnisses, das in einem Schlüsseltresor gespeichert ist. |
 
@@ -182,7 +182,7 @@ Ein [Namespacequalifizierer](bicep-functions.md#namespaces-for-functions) ist ni
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | apiVersion |Nein |Zeichenfolge |Wenn Sie diesen Parameter nicht angeben, wird die API-Version für die Ressource verwendet. Stellen Sie nur dann eine benutzerdefinierte API-Version bereit, wenn Sie die Funktion mit einer bestimmten Version ausführen müssen. Verwenden Sie das Format **jjjj-mm-tt**. |
 | functionValues |Nein |Objekt (object) | Ein Objekt, das über Werte für die Funktion verfügt. Geben Sie dieses Objekt nur für Funktionen an, die den Empfang eines Objekts mit Parameterwerten unterstützen – z.B. **listAccountSas** für ein Speicherkonto. Ein Beispiel für die Übergabe von Funktionswerten wird in diesem Artikel gezeigt. |
@@ -191,7 +191,7 @@ Ein [Namespacequalifizierer](bicep-functions.md#namespaces-for-functions) ist ni
 
 Die list-Funktionen können in den Eigenschaften einer Ressourcendefinition verwendet werden. Verwenden Sie keine list-Funktionen, die im Abschnitt „outputs“ einer Bicep-Datei vertrauliche Informationen offenlegen. Ausgabewerte werden im Bereitstellungsverlauf gespeichert und könnten von einem böswilligen Benutzer abgerufen werden.
 
-Wenn sie mit einer [Eigenschaftenschleife](./loop-properties.md) verwendet werden, können Sie die list-Funktionen für `input` verwenden, da der Ausdruck der resource-Eigenschaft zugewiesen wird. Sie können sie nicht mit `count` verwenden, weil die Anzahl bestimmt werden muss, bevor die Listenfunktion aufgelöst wird.
+Wenn sie mit einer [iterativen Schleife](loops.md) verwendet werden, können Sie die list-Funktionen für `input` verwenden, da der Ausdruck der resource-Eigenschaft zugewiesen wird. Sie können sie nicht mit `count` verwenden, weil die Anzahl bestimmt werden muss, bevor die Listenfunktion aufgelöst wird.
 
 Bei Verwendung einer **list**-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird. Es wird eine Fehlermeldung angezeigt, wenn die **list**-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie den [Operator bedingter Ausdruck **?:**](./operators-logical.md#conditional-expression--), um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource bereitgestellt wird.
 
@@ -421,7 +421,7 @@ Namespace: [az](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | Ja | Zeichenfolge | Der Ressourcenanbieternamespace für den Ressourcentyp, der auf Zonenunterstützung überprüft werden soll. |
 | resourceType | Ja | Zeichenfolge | Der Ressourcentyp, der auf Zonenunterstützung überprüft werden soll. |
@@ -468,7 +468,7 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 Die Ausgabe aus den vorherigen Beispielen gibt drei Arrays zurück.
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | Unterstützt | array | [ "1" ] |
 | notSupportedRegion | array | [] |
@@ -522,8 +522,9 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
 output blobAddress string = stg.properties.primaryEndpoints.blob
 ```
 
-Weitere Informationen finden Sie unter [Referenzressourcen](./compare-template-syntax.md#reference-resources) und unter der [reference-Funktion für JSON-Vorlagen](../templates/template-functions-resource.md#reference).
+Wenn Sie versuchen, auf eine Ressource zu verweisen, die nicht vorhanden ist, erhalten Sie den Fehler `NotFound`, und Ihre Bereitstellung schlägt fehl.
 
+Weitere Informationen finden Sie unter [Referenzressourcen](./compare-template-syntax.md#reference-resources) und unter der [reference-Funktion für JSON-Vorlagen](../templates/template-functions-resource.md#reference).
 
 ## <a name="resourceid"></a>resourceId
 
@@ -675,4 +676,4 @@ resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-0
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Abrufen von Werten aus der aktuellen Bereitstellung finden Sie unter [Funktionen für Bereitstellungswerte](./bicep-functions-deployment.md).
-* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Bereitstellen mehrerer Instanzen von Ressourcen in Bicep](./loop-resources.md).
+* Wenn Sie beim Erstellen eines Ressourcentyps eine angegebene Anzahl von Wiederholungen durchlaufen möchten, finden Sie weitere Informationen unter [Iterative Schleifen in Bicep](loops.md).

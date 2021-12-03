@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: abcb233665d6c6074ff50d1bb53e553ed9eb99ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c721014e2f0a61e46ad599bccdc26388aa706a3a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339798"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444950"
 ---
 # <a name="replicate-virtual-machines-running-in-a-proximity-placement-group-to-another-region"></a>Replizieren von virtuellen Computern, die in einer Näherungsplatzierungsgruppe ausgeführt werden, in eine andere Region
 
@@ -66,7 +66,7 @@ So wählen Sie beim Aktivieren der Replikation über die Tresorseite eine Näher
 Sie können Ihre Auswahl einer Näherungsplatzierungsgruppe in der DR-Region problemlos aktualisieren, nachdem die Replikation für die VM aktiviert wurde:
 
 1. Erstellen Sie den virtuellen Computer. Wählen Sie im linken Bereich unter **Vorgänge** die Option **Notfallwiederherstellung** aus.
-2. Wechseln Sie zum Bereich **Compute und Netzwerk**, und wählen Sie **Bearbeiten** aus.
+2. Wechseln Sie zum Bereich **Compute** und wählen Sie **Bearbeiten** aus.
 3. Die Optionen zum Bearbeiten von mehreren Zieleinstellungen, einschließlich der Näherungsplatzierungsgruppe, werden angezeigt. Wählen Sie die Näherungsplatzierungsgruppe aus, in die die VM ein Failover durchführen soll. Wählen Sie dann **Speichern** aus.
 
 ### <a name="vmware-to-azure"></a>VMware zu Azure

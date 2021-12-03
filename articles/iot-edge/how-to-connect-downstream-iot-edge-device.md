@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 08e68fc4a5aa2de2c2b0e0bbd326620fadc11022
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: c0bbc7bb40c292675374a3198fe0514b720adfca
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455833"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226108"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten IoT Edge-Geräts mit einem Azure IoT Edge-Gateway
 
@@ -118,7 +118,7 @@ Damit die Gatewayermittlung möglich ist, muss jedes IoT Edge-Gatewaygerät mit 
 
 Für sichere Verbindungen muss jedes IoT Edge-Gerät in einem Gatewayszenario mit einem eindeutigen Gerätezertifizierungsstellenzertifikat und einer Kopie des Stammzertifizierungsstellenzertifikats konfiguriert werden, das von allen Geräten in der Gatewayhierarchie genutzt wird.
 
-Auf Ihrem Gerät sollte IoT Edge bereits installiert sein. Wenn nicht, führen Sie die Schritte zum [Registrieren eines IoT Edge-Geräts in IoT Hub](how-to-register-device.md) aus, und dann [installieren Sie die Azure IoT Edge-Runtime](how-to-install-iot-edge.md).
+Auf Ihrem Gerät sollte IoT Edge bereits installiert sein. Falls nicht, führen Sie die Schritte unter [Manuelles Bereitstellen eines einzelnen Linux-IoT Edge aus](how-to-provision-single-device-linux-symmetric.md).
 
 Die Schritte in diesem Abschnitt verweisen auf das **Zertifikat der Stammzertifizierungsstelle** und auf das **Gerätezertifizierungsstellenzertifikat und den privaten Schlüssel**, die in diesem Artikel an früherer Stelle bereits erläutert wurden. Wenn Sie diese Zertifikate auf einem anderen Gerät erstellt haben, sorgen Sie dafür, dass sie auf diesem Gerät verfügbar sind. Sie können die Dateien physisch übertragen, z. B. mit einem USB-Datenträger, mit einem Dienst wie [Azure Key Vault](../key-vault/general/overview.md) oder mit einer Funktion zum [sicheren Kopieren von Dateien](https://www.ssh.com/ssh/scp/).
 

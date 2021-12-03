@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 08/23/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 38a1e264d3febfc114df253a24479d9580c86bb5
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 0d1ba0118360f579b675f4f64d8ecba1b4764ff5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538361"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425402"
 ---
 # <a name="use-an-azure-free-account-to-try-azure-database-for-postgresql---flexible-server-for-free"></a>Verwenden eines kostenlosen Azure-Kontos, um Azure Database for PostgreSQL – Flexible Server kostenlos zu testen
 
@@ -93,7 +93,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     
     Bei öffentlichem Zugriff ist der Zugriff auf Ihren Server auf zugelassene IP-Adressen beschränkt, die in einer Firewallregel aufgenommen werden. Diese Methode verhindert, dass externe Anwendungen und Tools eine Verbindung mit der Serverinstanz oder mit Datenbanken auf dem Server herstellen – es sei denn, Sie erstellen eine Regel, um die Firewall für bestimmte IP-Adressen oder einen bestimmten IP-Adressbereich zu öffnen.
     
-    Bei privatem Zugriff (VNet-Integration) ist der Zugriff auf Ihren Server auf Ihr virtuelles Netzwerk beschränkt. Weitere Informationen zu Konnektivitätsmethoden finden Sie in der Netzwerkübersicht.
+    Bei privatem Zugriff (VNet-Integration) ist der Zugriff auf Ihren Server auf Ihr virtuelles Netzwerk beschränkt. Weitere Informationen zu Konnektivitätsmethoden finden Sie in der [**Netzwerkübersicht**](https://docs.microsoft.com/azure/postgresql/flexible-server/concepts-networking).
     
     Aktivieren Sie für dieses Tutorial den öffentlichen Zugriff, um eine Verbindung mit dem Server herzustellen.
 

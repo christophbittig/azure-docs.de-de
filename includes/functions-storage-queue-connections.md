@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/08/2021
 ms.author: mahender
-ms.openlocfilehash: 67cb10ee9fb41596880e800a1c42cf2d93fe0d82
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 965a2abb8a56894efc700cea75097526daf4e544
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129992732"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132529970"
 ---
 ## <a name="connections"></a>Verbindungen
 
@@ -34,9 +34,9 @@ Wenn Sie die [Erweiterungsversion 5.x oder höher](../articles/azure-functions/
 
 In diesem Modus erfordert die Erweiterung die folgenden Eigenschaften:
 
-| Eigenschaft                  | Vorlage für Umgebungsvariablen                       |BESCHREIBUNG                                | Beispielwert |
+| Eigenschaft                  | Vorlage für Umgebungsvariable                       |BESCHREIBUNG                                | Beispielwert |
 |---------------------------|-----------------------------------------------------|--------------------------------------------|---------|
-| Warteschlangendienst-URI | `<CONNECTION_NAME_PREFIX>__queueServiceUri`<sup>1</sup>  | Der Datenebenen-URI des Warteschlangendiensts, mit dem Sie eine Verbindung herstellen. | <Speicherkontoname>.queue.core.windows.net |
+| Warteschlangendienst-URI | `<CONNECTION_NAME_PREFIX>__queueServiceUri`<sup>1</sup>  | Dies ist der URI der Datenebene des Warteschlangendiensts, mit dem Sie mithilfe des HTTPS-Schemas eine Verbindung herstellen. | https://<Speicherkontoname>.queue.core.windows.net |
 
 <sup>1</sup> `<CONNECTION_NAME_PREFIX>__serviceUri` kann als Alias verwendet werden. Wenn beide Formulare bereitgestellt wurden, wird das Formular `queueServiceUri` verwendet. Das Formular `serviceUri` kann nicht eingesetzt werden, wenn die gesamte Verbindungskonfiguration über Blobs, Warteschlangen und/oder Tabellen hinweg verwendet werden soll.
 

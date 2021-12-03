@@ -10,18 +10,18 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 8ec66c0aa34fe2a41d4bd0f450175cd884a3bae8
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 70c3eaf554d1752b6aaa2a4ed1bfd05e9da67b5c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692083"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441151"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux-VM-Bereitstellung
 
 **Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
-Wenn Sie einen virtuellen Computer (Virtual Machine, VM) aus einem generalisierten Image (über Shared Image Gallery oder ein verwaltetes Image) erstellen, ermöglicht Ihnen die Steuerungsebene das Erstellen eines virtuellen Computers und das Übergeben von Parametern und Einstellungen an den VM. Dies wird als VM-*Bereitstellung* bezeichnet. Während der Bereitstellung stellt die Plattform dem virtuellen Computer beim Starten die erforderlichen „VM Create“-Parameterwerte (Hostname, Benutzername, Kennwort, SSH-Schlüssel, CustomData) zur Verfügung. 
+Wenn Sie einen virtuellen Computer aus einem generalisierten Image (über Azure Compute Gallery oder ein verwaltetes Image) erstellen, ermöglicht Ihnen die Steuerungsebene das Erstellen eines virtuellen Computers und das Übergeben von Parametern und Einstellungen an den virtuellen Computer. Dies wird als VM-*Bereitstellung* bezeichnet. Während der Bereitstellung stellt die Plattform dem virtuellen Computer beim Starten die erforderlichen „VM Create“-Parameterwerte (Hostname, Benutzername, Kennwort, SSH-Schlüssel, CustomData) zur Verfügung. 
 
 Ein im Image erstellter Bereitstellungs-Agent stellt eine Verbindung mit der Plattform her (wobei eine Verbindung mit mehreren unabhängigen Bereitstellungsschnittstellen hergestellt wird) und legt die Eigenschaften und das Signal für die Plattform fest. 
 

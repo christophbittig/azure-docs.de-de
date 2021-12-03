@@ -1,26 +1,28 @@
 ---
 title: E-Mail zu überfälligen Zahlungen von Azure
-description: Informationen zur Zahlung, wenn das Azure-Abonnement einen überfälligen Saldo aufweist.
-author: genlin
-ms.reviewer: dcscontentpm
+description: In diesem Artikel wird beschrieben, wie Sie eine Zahlung leisten können, wenn Ihr Azure-Abonnement einen überfälligen Saldo aufweist.
+author: bandersmsft
+ms.reviewer: lishepar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/27/2021
 ms.author: banders
-ms.openlocfilehash: 8bdb31d13f35f2ffbc4713623e5509675433ddd8
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b29689069c16a59c134939a5b8cbf8b6b0df4c98
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997174"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464849"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Begleichen überfälliger Zahlungen für Ihr Azure-Abonnement
 
-Dieser Artikel gilt für Kunden, die sich online mit einer Kreditkarte für Azure registriert haben und über ein Abrechnungskonto für das Microsoft Online Services-Programm verfügen. Informationen zum Überprüfen des Abrechnungskontotyps finden Sie [hier](#check-the-type-of-your-account). Falls Sie über ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung verfügen, lesen Sie stattdessen den Artikel [Bezahlen Ihrer Rechnung für Microsoft Azure](../understand/pay-bill.md).
+Dieser Artikel gilt für Kund*innen, die sich online mit einer Kreditkarte bei Azure registriert haben und über ein Abrechnungskonto für das Microsoft Online Services-Programm verfügen, das auch als nutzungsbasierte Zahlung bezeichnet wird. Informationen zum Überprüfen des Abrechnungskontotyps finden Sie [hier](#check-the-type-of-your-account). Falls Sie über ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung verfügen, lesen Sie stattdessen den Artikel [Bezahlen Ihrer Rechnung für Microsoft Azure](../understand/pay-bill.md).
 
-Falls Ihre Zahlung nicht eingegangen ist oder wir die Zahlung nicht verarbeiten können, erhalten Sie eine E-Mail mit der Information, dass die Zahlung für Ihr Abonnement überfällig ist, und im Azure-Portal wird eine entsprechende Warnung angezeigt. Wenn Sie standardmäßig per Kreditkarte bezahlen, kann der [Kontoadministrator](add-change-subscription-administrator.md#whoisaa) die ausstehenden Gebühren über das Azure-Portal begleichen. Bei Zahlung auf Rechnung (Scheck/Überweisung) muss die Zahlung an den Empfänger gesendet werden, der unten auf der Rechnung angegeben ist.
+Falls Ihre Zahlung nicht eingegangen ist oder wir die Zahlung nicht verarbeiten können, erhalten Sie eine E-Mail mit der Information, dass die Zahlung für Ihr Abonnement überfällig ist, und im Azure-Portal wird eine entsprechende Warnung angezeigt. Die E-Mail enthält einen Link, über den Sie zur Seite „Saldo ausgleichen“ gelangen.
+
+Wenn Sie standardmäßig per Kreditkarte bezahlen, kann der [Kontoadministrator](add-change-subscription-administrator.md#whoisaa) die ausstehenden Gebühren über das Azure-Portal begleichen. Bei Zahlung auf Rechnung (Scheck/Überweisung) muss die Zahlung an den Empfänger gesendet werden, der unten auf der Rechnung angegeben ist.
 
 > [!IMPORTANT]
 > * Wenn Sie über mehrere Abonnements verfügen, für die dieselbe Kreditkarte genutzt wird und die alle überfällige Zahlungen aufweisen, müssen Sie die gesamte ausstehende Summe auf einmal begleichen.
@@ -34,9 +36,10 @@ Falls Ihre Zahlung nicht eingegangen ist oder wir die Zahlung nicht verarbeiten 
 1. Klicken Sie auf der Seite **Abonnementübersicht** auf das rote Überfälligkeitsbanner, um den Saldo auszugleichen.
     > [!NOTE]
     > Der Saldo kann nur vom Kontoadministrator ausgeglichen werden.
+    - Wenn keine Probleme mit Ihrem Konto vorliegen, werden Ihnen keine Banner angezeigt.
+    - Wenn für Ihr Konto eine Rechnung zu bezahlen ist, wird Ihnen ein blaues Banner angezeigt, über das Sie zur Seite „Saldo ausgleichen“ gelangen. Sie erhalten außerdem eine E-Mail, in der ein Link zur Seite „Saldo ausgleichen“ vorhanden ist.
+    - Wenn Ihr Konto überfällig ist, wird Ihnen ein rotes Banner mit der Aufschrift „Your account is past due“ (Ihr Konto ist überfällig) angezeigt, über das Sie zur Seite „Saldo ausgleichen“ gelangen. Sie erhalten außerdem eine E-Mail, in der ein Link zur Seite „Saldo ausgleichen“ vorhanden ist.
 1. Klicken Sie auf der neuen Seite **Saldo ausgleichen** auf **Zahlungsmethode auswählen**.
-    ![Screenshot: Link zum Auswählen der Zahlungsmethode](./media/resolve-past-due-balance/settle-balance-screen.png)
-
 1. Wählen Sie auf dem neuen Blatt auf der rechten Seite eine Kreditkarte aus der Dropdownliste aus, oder klicken Sie auf den blauen Link **Neue Zahlungsmethode hinzufügen**, um eine neue Karte hinzuzufügen. Diese Kreditkarte wird zur aktiven Methode für alle Abonnements, für die derzeit die nicht erfolgreiche Zahlungsmethode verwendet wird.
      > [!NOTE]
      > * Die Gesamtsumme umfasst die ausstehenden Beträge aller Microsoft-Dienste, für die die fehlgeschlagene Zahlungsmethode genutzt wurde.

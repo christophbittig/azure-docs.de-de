@@ -1,4 +1,4 @@
-- name: Azure Defender für IoT für Gerätehersteller
+- name: Microsoft Defender für IoT für Gerätehersteller
   href: index.yml
   items: null
 - name: Übersicht
@@ -19,7 +19,7 @@
     - name: Installieren eines Micro-Agents für Defender für IoT (Vorschau)
       displayName: 'package, authentication, methods, certificate, authenticate, version'
       href: quickstart-standalone-agent-binary-installation.md
-    - name: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)
+    - name: Erstellen eines Micro-Agent-Modulzwillings für Defender für IoT (Vorschau)
       href: quickstart-create-micro-agent-module-twin.md
     - name: "Konfigurieren des Defender-IoT-Micro-Agents für Azure\_RTOS"
       href: quickstart-azure-rtos-security-module.md
@@ -86,7 +86,7 @@
         - name: Grundwert
           displayName: 'custom, setting, properties'
           href: concept-baseline.md
-        - name: Azure-Sicherheitsbaseline für Azure Defender für IoT
+        - name: Azure-Sicherheitsbaseline für Microsoft Defender für IoT
           displayName: 'identity management, active directory, privileged access, data protection, incident response, posture, vulnerability, governance'
           href: /security/benchmark/azure/baselines/defender-for-iot-security-baseline?toc=/azure/defender-for-iot/TOC.json
         - name: Klassische Ereignisaggregation für den Defender-IoT-Micro-Agent
@@ -100,10 +100,10 @@
           href: agent-based-recommendations.md
 - name: Anleitungen
   items:
-    - name: Verbinden mit Azure Sentinel
+    - name: Verbinden mit Microsoft Sentinel
       displayName: 'log analytics, service notes'
       href: how-to-configure-with-sentinel.md
-    - name: Konfigurieren einer Agent-basierten Lösung für Azure Defender für IoT
+    - name: Konfigurieren einer Agent-basierten Lösung für Microsoft Defender für IoT
       displayName: 'data, collection, geolocation, log analytics, raw events'
       href: how-to-configure-agent-based-solution.md
     - name: Untersuchen der CIS-Vergleichstest-Empfehlung
@@ -134,7 +134,7 @@
               href: how-to-deploy-linux-c.md
         - name: Beheben von Problemen mit einem Sicherheits-Agent
           items:
-            - name: Behandeln von Problemen mit dem Linux-Sicherheits-Agent von Azure Defender für IoT
+            - name: Behandeln von Problemen mit dem Linux-Sicherheits-Agent von Microsoft Defender für IoT
               href: troubleshoot-agent.md
             - name: Lokale Konfiguration (C)
               href: azure-iot-security-local-configuration-c.md
@@ -155,7 +155,7 @@
           href: how-to-investigate-device.md
     - name: Problembehandlung
       items:
-        - name: Problembehandlung für den Defender-IoT-Micro-Agent (Vorschau)
+        - name: Problembehandlung für den Micro-Agent für Defender für IoT (Vorschau)
           displayName: 'service status, review logs'
           href: troubleshoot-defender-micro-agent.md
 - name: Verweis
@@ -179,8 +179,8 @@
   items:
     - name: Ausbauen von Sicherheitskenntnissen mit Microsoft Learn
       href: /learn/browse/?term=securityS&terms=securityS
-    - name: Dokumentation zu Azure Security Center
-      href: ../../security-center/
+    - name: Dokumentation zu Microsoft Defender for Cloud
+      href: ../../defender-for-cloud/
     - name: Dokumentation zur Azure-Sicherheit
       href: ../../security/index.yml
     - name: "Azure\_IoT-Blog zu Sicherheit, Datenschutz und Compliance"

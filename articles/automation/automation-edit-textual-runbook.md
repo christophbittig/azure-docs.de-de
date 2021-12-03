@@ -4,22 +4,19 @@ description: In diesem Artikel wird beschrieben, wie Sie den Azure Automation-Te
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-manager: carmonm
-ms.openlocfilehash: 48df3f834601410caf83d818ac75b1b7b7e68dc2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: dfab1cb98a15bb919ac017607a56366134149764
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468241"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435432"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Bearbeiten von Textrunbooks in Azure Automation
 
-Mit dem Text-Editor in Azure Automation können Sie [PowerShell-Runbooks](automation-runbook-types.md#powershell-runbooks) und [PowerShell-Workflow-Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) bearbeiten. Dieser Editor hat die typischen Merkmale anderer Code-Editoren, z. B. IntelliSense. Er verfügt außerdem über eine Farbcodierung mit zusätzlichen speziellen Features, die Ihnen den Zugriff auf Ressourcen erleichtern, die für Runbooks üblich sind. 
+Mit dem Text-Editor in Azure Automation können Sie [PowerShell-Runbooks](automation-runbook-types.md#powershell-runbooks) und [PowerShell-Workflow-Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) bearbeiten. Dieser Editor hat die typischen Merkmale anderer Code-Editoren, z. B. IntelliSense. Er verfügt außerdem über eine Farbcodierung mit zusätzlichen speziellen Features, die Ihnen den Zugriff auf Ressourcen erleichtern, die für Runbooks üblich sind.
 
 Der Text-Editor enthält ein Feature zum Einfügen von Code für Cmdlets, Objekte und untergeordnete Runbooks in ein Runbook. Anstatt den Code selbst einzugeben, können Sie aus einer Liste verfügbarer Ressourcen auswählen und der Editor fügt den entsprechenden Code in das Runbook ein.
 
@@ -97,12 +94,11 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwalten von Runbooks in Azure Automation](manage-runbooks.md)
-* [Grundlagen des PowerShell-Workflows](automation-powershell-workflow.md)
-* [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md)
+* Weitere Informationen unter [Verwalten von Runbooks in Azure Automation](manage-runbooks.md).
+* Informationen zu den ersten Schritten mit PowerShell-Workflow-Runbooks finden Sie unter [Informationen zum PowerShell-Workflow](automation-powershell-workflow.md).
 * [Zertifikate](./shared-resources/certificates.md):
 * [Verbindungen](automation-connections.md).
 * [Anmeldeinformationen:](./shared-resources/credentials.md)
 * [Zeitpläne:](./shared-resources/schedules.md)
 * [Variablen:](./shared-resources/variables.md)
-* [PowerShell-Cmdlet-Referenz](/powershell/module/az.automation)
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation).

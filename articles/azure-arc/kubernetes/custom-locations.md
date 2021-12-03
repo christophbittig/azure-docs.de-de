@@ -1,35 +1,30 @@
 ---
-title: Erstellen und Verwalten benutzerdefinierter Standorte in Kubernetes mit Azure Arc-Unterstützung
-services: azure-arc
+title: Erstellen und Verwalten benutzerdefinierter Speicherorte in Azure Arc-fähigen Kubernetes-Clustern
 ms.service: azure-arc
-ms.date: 05/25/2021
+ms.date: 10/19/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
-description: Verwenden benutzerdefinierter Speicherorte zum Bereitstellen von Azure-PaaS-Diensten in Kubernetes-Clustern mit Azure Arc-Unterstützung
-ms.openlocfilehash: a4586f6f527bd98f0f347e51c787f2bcda7c6d8d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+description: Verwenden Sie benutzerdefinierte Speicherorte zum Bereitstellen von Azure-PaaS-Diensten in Azure Arc-fähigen Kubernetes-Clustern.
+ms.openlocfilehash: f241ec384fc9ed7ee96d7415074e009cea486811
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768301"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257024"
 ---
-# <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>Erstellen und Verwalten benutzerdefinierter Standorte in Kubernetes mit Azure Arc-Unterstützung
+# <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>Erstellen und Verwalten benutzerdefinierter Speicherorte in Azure Arc-fähigen Kubernetes-Clustern
 
-Als Azure-Speicherorterweiterung bietet *Benutzerdefinierte Speicherorte* Mandantenadministratoren eine Möglichkeit, ihre Kubernetes-Cluster mit Azure Arc-Unterstützung als Zielspeicherorte für die Bereitstellung von Instanzen von Azure-Diensten zu verwenden. Beispiele für Azure-Ressourcen sind u. a. SQL Managed Instance mit Azure Arc-Unterstützung und PostgreSQL Hyperscale mit Azure Arc-Unterstützung.
-
-Ähnlich wie bei Azure-Speicherorten können Endbenutzer im Mandanten mit Zugriff auf „Benutzerdefinierte Speicherorte“ dort Ressourcen bereitstellen, indem sie das private Compute Ihres Unternehmens verwenden.
+ Mit *benutzerdefinierten Speicherorten* können Mandanten- oder Clusteradministrator*innen ihre Azure Arc-fähigen Kubernetes-Cluster als Zielspeicherorte für die Bereitstellung von Instanzen von Azure-Diensten verwenden, z. B.  Ressourcen wie SQL Managed Instance mit Azure Arc-Unterstützung und PostgreSQL Hyperscale mit Azure Arc-Unterstützung. Bei Azure Arc-fähigen Kubernetes-Clustern stellt der benutzerdefinierte Speicherort eine Abstraktion eines Namespace im Cluster dar. Mandanten- oder Clusteradministrator*innen können Anwendungsentwickler*innen oder Datenbankadministrator*innen über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) Berechtigungen für die Bereitstellung von Ressourcen wie SQL Managed Instance mit Azure Arc-Unterstützung und Instanzen von PostgreSQL Hyperscale mit Azure Arc-Unterstützung sowie Azure-Web-Apps am benutzerdefinierten Speicherort erteilen. 
+ 
+Eine konzeptionelle Übersicht über dieses Feature finden Sie im Artikel [Benutzerdefinierte Speicherorte auf Basis von Azure Arc-fähigen Kubernetes-Clustern](conceptual-custom-locations.md). 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > [!div class="checklist"]
-> * Sie aktivieren benutzerdefinierte Standorte in Ihrem Kubernetes-Cluster mit Azure Arc-Unterstützung.
-> * Sie stellen die Azure-Dienstclustererweiterung der Azure-Dienstinstanz für Ihren Cluster bereit.
-> * Erstellen Sie einen benutzerdefinierten Speicherort in Ihrem Kubernetes-Cluster mit Azure Arc-Unterstützung.
+> * Aktivieren benutzerdefinierter Speicherorte in Ihrem Azure Arc-fähigen Kubernetes-Cluster
+> * Erstellen eines benutzerdefinierten Standorts.
 
-Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benutzerdefinierte Speicherorte“ auf Basis von Kubernetes mit Azure Arc-Unterstützung](conceptual-custom-locations.md).
-
-[!INCLUDE [preview features note](./includes/preview/preview-callout.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,6 +48,8 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benut
     az extension update --name k8s-extension
     az extension update --name customlocation
     ```
+    >[!NOTE]
+    >Es wird empfohlen, die neueste Version der CLI-Erweiterungen zu verwenden, um die neuesten Features zu erhalten.  
 
 - Überprüfen Sie die abgeschlossene Anbieterregistrierung für `Microsoft.ExtendedLocation`.
     1. Geben Sie die folgenden Befehle ein:
@@ -69,7 +66,7 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benut
 
         Nach der Registrierung weist der Status `RegistrationState` den Wert `Registered` auf.
 
-- Überprüfen Sie, ob Sie über einen [verbundenen, Azure Arc-fähigen Kubernetes-Cluster](quickstart-connect-cluster.md) verfügen.
+- Stellen Sie sicher, dass Sie bereits über einen [verbundenen, Azure Arc-fähigen Kubernetes-Cluster](quickstart-connect-cluster.md) verfügen.
     - [Führen Sie für Ihre Agents ein Upgrade](agent-upgrade.md#manually-upgrade-agents) auf Version 1.1.1.0 oder höher aus.
 
 ## <a name="enable-custom-locations-on-cluster"></a>Aktivieren benutzerdefinierter Speicherorte im Cluster
@@ -100,39 +97,142 @@ Wenn Sie bei Azure CLI über einen Dienstprinzipal angemeldet sind, führen Sie 
 
 ## <a name="create-custom-location"></a>Erstellen eines benutzerdefinierten Speicherorts
 
-1. Stellen Sie die Azure-Dienstclusterinstanz der Azure-Dienstinstanz bereit, die letztendlich auf Ihrem Cluster vorhanden sein soll.
+1. Stellen Sie die Azure-Dienstclustererweiterung der Azure-Dienstinstanz bereit, die Sie in Ihrem Cluster installieren möchten:
 
-    * [Azure Arc-fähige Datendienste](../data/create-data-controller-direct-cli.md#create-the-arc-data-services-extension)
+    * [Azure Arc-fähige Datendienste](../data/create-data-controller-direct-cli.md#create-the-arc-data-services-extension)
 
         > [!NOTE]
-        > Der Proxy für ausgehenden Datenverkehr ohne Authentifizierung und der Proxy für ausgehenden Datenverkehr mit Standardauthentifizierung werden von der Data Services-Clustererweiterung mit Arc-Unterstützung aktiviert. Proxys für ausgehenden Datenverkehr, von denen Zertifikate erwartet werden, werden aktuell nicht unterstützt.
+        > Der Proxy für ausgehenden Datenverkehr ohne Authentifizierung und der Proxy für ausgehenden Datenverkehr mit Standardauthentifizierung werden von der Clustererweiterung „Azure Arc-fähige Datendienste“ unterstützt. Proxys für ausgehenden Datenverkehr, von denen Zertifikate erwartet werden, werden aktuell nicht unterstützt.
 
 
     * [Azure App Service in Azure Arc](../../app-service/manage-create-arc-environment.md#install-the-app-service-extension)
 
     * [Event Grid in Kubernetes](../../event-grid/kubernetes/install-k8s-extension.md)
 
-1. Rufen Sie den Azure Resource Manager-Bezeichner des Kubernetes-Clusters mit Azure Arc-Unterstützung ab, auf den in späteren Schritten als `connectedClusterId` verwiesen wird:
+2. Rufen Sie den Azure Resource Manager-Bezeichner des Azure Arc-fähigen Kubernetes-Clusters ab, auf den in späteren Schritten mit `connectedClusterId` verwiesen wird:
 
     ```azurecli
     az connectedk8s show -n <clusterName> -g <resourceGroupName>  --query id -o tsv
     ```
 
-1. Rufen Sie den Azure Resource Manager-Bezeichner der auf dem Kubernetes-Clusters mit Azure Arc-Unterstützung bereitgestellten Clustererweiterung ab, auf den in späteren Schritten als `extensionId` verwiesen wird:
+3. Rufen Sie den Azure Resource Manager-Bezeichner der im Azure Arc-fähigen Kubernetes-Cluster bereitgestellten Clustererweiterung ab, auf den in späteren Schritten mit `extensionId` verwiesen wird:
 
     ```azurecli
     az k8s-extension show --name <extensionInstanceName> --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName>  --query id -o tsv
     ```
 
-1. Erstellen Sie einen benutzerdefinierten Speicherort, indem Sie auf den Kubernetes-Clusters mit Azure Arc-Unterstützung und die Erweiterung verweisen:
+4. Erstellen Sie einen benutzerdefinierten Speicherort, indem Sie auf den Azure Arc-fähigen Kubernetes-Cluster und die Erweiterung verweisen:
 
     ```azurecli
-    az customlocation create -n <customLocationName> -g <resourceGroupName> --namespace arc --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionId>
+    az customlocation create -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
     ```
+
+**Erforderliche Parameter**
+
+| Parametername | BESCHREIBUNG |
+|----------------|------------|
+| `--name, --n` | Namen des benutzerdefinierten Standorts |
+| `--resource-group, --g` | Dies ist die Ressourcengruppe des benutzerdefinierten Speicherorts.  | 
+| `--namespace` | Dies ist der Namespace im Cluster, der an den benutzerdefinierten Speicherort gebunden ist, der erstellt wird. |
+| `--host-resource-id` | Dies ist der Azure Resource Manager-Bezeichner des Azure Arc-fähigen Kubernetes-Clusters (verbundener Cluster). |
+| `--cluster-extension-ids` | Dies sind die Azure Resource Manager-Bezeichner der Clustererweiterungsinstanzen, die in dem verbundenen Cluster installiert sind. Geben Sie eine Liste der Clustererweiterungs-IDs mit Leerzeichen als Trennzeichen an.  |
+
+**Optionale Parameter**
+
+| Parametername | BESCHREIBUNG |
+|--------------|------------|
+| `--assign-identity` | Der Standardwert ist `None`. Wenn der Parameter auf „SystemAssigned“ festgelegt ist, wird eine [systemseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) erstellt. |
+| `--location, --l` | Dies ist der benutzerdefinierte Speicherort für die Azure Resource Manager-Ressource in Azure. Standardmäßig ist dieser Parameter auf den Speicherort (oder die Azure-Region) des verbundenen Clusters festgelegt. |
+| `--tags` | Dies ist eine Liste von Tags mit Leerzeichen als Trennzeichen: Schlüssel[=Wert] [Schlüssel[=Wert] ...]. Verwenden Sie „''“, um vorhandene Tags zu löschen. |
+| `--kubeconfig` | kubeconfig des Administrators bzw. der Administratorin des Clusters. Dies muss als Datei übergeben werden, wenn der Cluster nicht AAD-fähig ist. |
+
+
+## <a name="show-details-of-a-custom-location"></a>Anzeigen von Details für einen benutzerdefinierten Speicherort
+
+So zeigen Sie Details für einen benutzerdefinierten Speicherort an:
+
+```azurecli
+    az customlocation show -n <customLocationName> -g <resourceGroupName> 
+```
+
+**Erforderliche Parameter**
+
+| Parametername | BESCHREIBUNG |
+|----------------|------------|
+| `--name, --n` | Namen des benutzerdefinierten Standorts |
+| `--resource-group, --g` | Dies ist die Ressourcengruppe des benutzerdefinierten Speicherorts.  | 
+
+## <a name="list-custom-locations"></a>Auflisten benutzerdefinierter Speicherorte
+
+Listen Sie alle benutzerdefinierten Speicherorte in einer Ressourcengruppe auf.
+
+```azurecli
+    az customlocation show -g <resourceGroupName> 
+```
+
+**Erforderliche Parameter**
+
+| Parametername | BESCHREIBUNG |
+|----------------|------------|
+| `--resource-group, --g` | Dies ist die Ressourcengruppe des benutzerdefinierten Speicherorts.  | 
+
+
+## <a name="update-a-custom-location"></a>Aktualisieren eines benutzerdefinierten Speicherorts
+
+Verwenden Sie den Befehl `update`, wenn Sie neue Tags hinzufügen oder dem benutzerdefinierten Speicherort neue Clustererweiterungs-IDs zuordnen und dabei vorhandene Tags und zugeordnete Clustererweiterungen beibehalten möchten. `--cluster-extension-ids`, `--tags` und `assign-identity` können aktualisiert werden. 
+
+```azurecli
+    az customlocation update -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
+```
+**Erforderliche Parameter**
+
+| Parametername | BESCHREIBUNG |
+|----------------|------------|
+| `--name, --n` | Namen des benutzerdefinierten Standorts |
+| `--resource-group, --g` | Dies ist die Ressourcengruppe des benutzerdefinierten Speicherorts.  | 
+| `--namespace` | Dies ist der Namespace im Cluster, der an den benutzerdefinierten Speicherort gebunden ist, der erstellt wird. |
+| `--host-resource-id` | Dies ist der Azure Resource Manager-Bezeichner des Azure Arc-fähigen Kubernetes-Clusters (verbundener Cluster). |
+
+**Optionale Parameter**
+
+| Parametername | BESCHREIBUNG |
+|--------------|------------|
+| `--assign-identity` | Dieser Parameter kann entweder auf `None` oder auf `"SystemAssigned` aktualisiert werden, wenn Sie dem benutzerdefinierten Speicherort eine [systemseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) zuweisen möchten. |
+| `--cluster-extension-ids` | Ordnen Sie diesem benutzerdefinierten Speicherort neue Clustererweiterungen zu, indem Sie die Azure Resource Manager-Bezeichner der Clustererweiterungsinstanzen bereitstellen, die in dem verbundenen Cluster installiert sind. Geben Sie eine Liste der Clustererweiterungs-IDs mit Leerzeichen als Trennzeichen an. |
+| `--tags` | Mit diesem Parameter werden neue Tags zu den bereits vorhandenen hinzugefügt. Verwenden Sie hierbei eine Liste von Tags mit Leerzeichen als Trennzeichen: Schlüssel[=Wert] [Schlüssel[=Wert] ...]. |
+
+## <a name="patch-a-custom-location"></a>Patchen eines benutzerdefinierten Speicherorts
+
+Verwenden Sie den Befehl `patch`, wenn Sie vorhandene Tags und Clustererweiterungs-IDs durch neue Tags und Clustererweiterungs-IDs ersetzen möchten. `--cluster-extension-ids`, `assign-identity` und `--tags` können gepatcht werden. 
+
+```azurecli
+    az customlocation patch -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
+```
+
+**Erforderliche Parameter**
+
+| Parametername | BESCHREIBUNG |
+|----------------|------------|
+| `--name, --n` | Namen des benutzerdefinierten Standorts |
+| `--resource-group, --g` | Dies ist die Ressourcengruppe des benutzerdefinierten Speicherorts.  | 
+
+**Optionale Parameter**
+
+| Parametername | BESCHREIBUNG |
+|--------------|------------|
+| `--assign-identity` | Dieser Parameter kann entweder auf `None` oder auf `"SystemAssigned` aktualisiert werden, wenn Sie dem benutzerdefinierten Speicherort eine [systemseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) zuweisen möchten. |
+| `--cluster-extension-ids` | Ordnen Sie diesem benutzerdefinierten Speicherort neue Clustererweiterungen zu, indem Sie die Azure Resource Manager-Bezeichner der Clustererweiterungsinstanzen bereitstellen, die in dem verbundenen Cluster installiert sind. Geben Sie eine Liste der Clustererweiterungs-IDs mit Leerzeichen als Trennzeichen an. |
+| `--tags` | Mit diesem Parameter werden neue Tags zu den bereits vorhandenen hinzugefügt. Verwenden Sie hierbei eine Liste von Tags mit Leerzeichen als Trennzeichen: Schlüssel[=Wert] [Schlüssel[=Wert] ...]. |
+
+## <a name="delete-a-custom-location"></a>Löschen eines benutzerdefinierten Speicherorts
+
+ ```azurecli
+    az customlocation delete -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
+   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Stellen Sie eine sichere Verbindung mit dem Cluster über [Cluster Connect](cluster-connect.md) her.
 - Fahren Sie mit [Azure App Service auf Azure Arc](../../app-service/overview-arc-integration.md) fort, um umfassende Anweisungen zum Installieren von Erweiterungen, Erstellen benutzerdefinierter Standorte und Erstellen der App Service-Kubernetes-Umgebung abzurufen. 
 - Erstellen Sie ein Event Grid-Thema und ein Ereignisabonnement für [Event Grid in Kubernetes](../../event-grid/kubernetes/overview.md).
-- In den derzeit verfügbaren [Azure Arc-fähigen Kubernetes-Erweiterungen](extensions.md#currently-available-extensions) finden Sie weitere Details.
+- Informieren Sie sich genauer über derzeit verfügbare [Erweiterungen für Azure Arc-fähige Kubernetes-Cluster](extensions.md#currently-available-extensions).

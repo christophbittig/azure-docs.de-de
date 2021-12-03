@@ -4,12 +4,12 @@ description: Erstellen Sie Ihre erste Windows-Containeranwendung unter Azure Ser
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 197423670ffe05f15fdc5bfd351efdfba33b53cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc819ea0141cac1305ca7a9c52d452b2f6e2961a
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96533773"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137392"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 
@@ -384,7 +384,7 @@ Windows Server-Container sind möglicherweise nicht mit allen Versionen des Betr
          </ImageOverrides> 
       </ContainerHostPolicies> 
 ```
-Die Buildversion für Windows Server 2016 lautet 14393, und die Buildversion für Windows Server-Version 1709 lautet 16299. Im Dienstmanifest wird weiterhin nur ein Image pro Containerdienst angegeben, wie hier zu sehen ist:
+Die Build-Version für Windows Server 2016 ist 14393, und die Build-Version für Windows Server Version 1709 ist 16299. Im Dienstmanifest wird weiterhin nur ein Image pro Containerdienst angegeben, wie hier zu sehen ist:
 
 ```xml
 <ContainerHost>
@@ -598,6 +598,97 @@ Ab Version 6.2 der Service Fabric-Runtime können Sie den Docker-Daemon mit benu
     } 
 ]
 ```
+
+## <a name="entrypoint-override"></a>EntryPoint Übersteuerung
+Mit der Version 8.2 von ServiceFabric Runtime kann der Einstiegspunkt für die Codepakete **container** und **exe host** außer Kraft gesetzt werden. Dies kann in Fällen verwendet werden, in denen alle Manifest-Elemente gleich bleiben, aber das Container-Image geändert werden muss, dann ist die Bereitstellung einer anderen App-Typ-Version nicht mehr erforderlich, oder es müssen je nach Test- oder Prod-Szenario unterschiedliche Argumente übergeben werden, und der Einstiegspunkt bleibt der gleiche.
+
+Nachfolgend ein Beispiel dafür, wie man den Container-Einstiegspunkt außer Kraft setzt:
+
+### <a name="applicationmanifestxml"></a>ApplicationManifest.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest ApplicationTypeName="MyFirstContainerType"
+                     ApplicationTypeVersion="1.0.0"
+                     xmlns="http://schemas.microsoft.com/2011/01/fabric"
+                     xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+  <Parameters>
+    <Parameter Name="ImageName" DefaultValue="myregistry.azurecr.io/samples/helloworldapp" />
+    <Parameter Name="Commands" DefaultValue="commandsOverride" />
+    <Parameter Name="FromSource" DefaultValue="sourceOverride" />
+    <Parameter Name="EntryPoint" DefaultValue="entryPointOverride" />
+  </Parameters>
+  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
+       should match the Name and Version attributes of the ServiceManifest element defined in the
+       ServiceManifest.xml file. -->
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Guest1Pkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+    <Policies>
+      <CodePackagePolicy CodePackageRef="Code">
+        <EntryPointOverride>
+         <ContainerHostOverride>
+            <ImageOverrides>
+              <Image Name="[ImageName]" />
+            </ImageOverrides>
+            <Commands>[Commands]</Commands>
+            <FromSource>[Source]</FromSource>
+            <EntryPoint>[EntryPoint]</EntryPoint>
+          </ContainerHostOverride>
+        </EntryPointOverride>
+      </CodePackagePolicy>
+    </Policies>
+  </ServiceManifestImport>
+</ApplicationManifest>
+```
+### <a name="servicemanifestxml"></a>ServiceManifest.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceManifest Name="Guest1Pkg"
+                 Version="1.0.0"
+                 xmlns="http://schemas.microsoft.com/2011/01/fabric"
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+  <ServiceTypes>
+    <!-- This is the name of your ServiceType.
+         The UseImplicitHost attribute indicates this is a guest service. -->
+    <StatelessServiceType ServiceTypeName="Guest1Type" UseImplicitHost="true" />
+  </ServiceTypes>
+
+  <!-- Code package is your service executable. -->
+  <CodePackage Name="Code" Version="1.0.0">
+    <EntryPoint>
+      <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
+      <ContainerHost>
+        <ImageName>default imagename</ImageName>
+        <Commands>default cmd</Commands>
+        <EntryPoint>default entrypoint</EntryPoint>
+        <FromSource>default source</FromSource>
+      </ContainerHost>
+    </EntryPoint>
+  </CodePackage>
+
+  <ConfigPackage Name="Config" Version="1.0.0" />
+</ServiceManifest>
+```
+Nachdem die Überschreibungen im Anwendungsmanifest angegeben wurden, wird der Container mit dem Bildnamen myregistry.azurecr.io/samples/helloworldapp, dem Befehl commandsOverride, der Quelle sourceOverride und dem entryPoint entryPointOverride gestartet.
+
+Nachfolgend ein Beispiel dafür, wie der **ExeHost** außer Kraft gesetzt werden kann:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Policies>
+  <CodePackagePolicy CodePackageRef="Code">
+    <EntryPointOverride>
+      <ExeHostOverride>
+        <Program>[Program]</Program>
+        <Arguments>[Entry]</Arguments>
+      </ExeHostOverride>
+    </EntryPointOverride>
+  </CodePackagePolicy>
+</Policies>
+```
+> [!NOTE]
+> Entry Point Override wird für SetupEntryPoint nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Ausführen von [Containern in Service Fabric](service-fabric-containers-overview.md)

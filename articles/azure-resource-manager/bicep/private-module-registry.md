@@ -3,12 +3,12 @@ title: Erstellen einer privaten Registrierung für das Bicep-Modul
 description: Erfahren Sie, wie Sie eine Azure-Containerregistrierung für private Bicep-Module einrichten.
 ms.topic: conceptual
 ms.date: 10/22/2021
-ms.openlocfilehash: f09b4d65c43cbd0f73543322488e56985a16aa9e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b667a80a155355ea206c4804d6eb98200491e3f8
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470317"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551366"
 ---
 # <a name="create-private-registry-for-bicep-modules-preview"></a>Erstellen einer privaten Registrierung für Bicep-Module (Vorschau)
 
@@ -42,7 +42,7 @@ Eine Bicep-Registrierung wird auf [Azure Container Registry (ACR)](../../contain
 
 - Um Module in einer Registrierung zu veröffentlichen, benötigen Sie die Berechtigung zum **Pushen** eines Images. Um Module aus einer Registrierung bereitzustellen, benötigen Sie die Berechtigung zum **Pullen** des Images. Weitere Informationen zu den Rollen, die angemessenen Zugriff gewähren, finden Sie unter [Azure Container Registry-Rollen und -Berechtigungen](../../container-registry/container-registry-roles.md).
 
-- Abhängig vom Typ des Kontos, das Sie zum Bereitstellen des Moduls verwenden, müssen Sie möglicherweise anpassen, welche Anmeldeinformationen verwendet werden. Diese Anmeldeinformationen werden benötigt, um die Module aus der Registrierung abzurufen. Standardmäßig werden Anmeldeinformationen aus Azure CLI oder Azure PowerShell abgerufen. Sie können die Rangfolge zum Abrufen der Anmeldeinformationen in der Datei **bicepconfig.json** anpassen. Weitere Informationen finden Sie unter [Anmeldeinformationen zum Wiederherstellen von Modulen](bicep-config.md#credentials-for-restoring-modules).
+- Abhängig vom Typ des Kontos, das Sie zum Bereitstellen des Moduls verwenden, müssen Sie möglicherweise anpassen, welche Anmeldeinformationen verwendet werden. Diese Anmeldeinformationen werden benötigt, um die Module aus der Registrierung abzurufen. Standardmäßig werden Anmeldeinformationen aus Azure CLI oder Azure PowerShell abgerufen. Sie können die Rangfolge zum Abrufen der Anmeldeinformationen in der Datei **bicepconfig.json** anpassen. Weitere Informationen finden Sie unter [Anmeldeinformationen zum Wiederherstellen von Modulen](bicep-config-modules.md#credentials-for-restoring-modules).
 
 - Um die Sicherheit zu erhöhen, können Sie Zugriff über einen privaten Endpunkt anfordern. Weitere Informationen finden Sie unter [Herstellen einer privaten Verbindung mit einer Azure-Containerregistrierung über Azure Private Link](../../container-registry/container-registry-private-link.md).
 
@@ -73,5 +73,5 @@ Sie können nun aus einer Bicep-Datei auf die Datei in der Registrierung verweis
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu Modulen finden Sie unter [Bicep-Module](modules.md).
-* Informationen zum Konfigurieren von Aliasen für eine Modulregistrierung finden Sie unter [Hinzufügen benutzerdefinierter Einstellungen in der Bicep-Konfigurationsdatei](bicep-config.md).
+* Informationen zum Konfigurieren von Aliasen für eine Modulregistrierung finden Sie unter [Hinzufügen von Moduleinstellungen in der Bicep-Konfigurationsdatei](bicep-config-modules.md).
 * Weitere Informationen zum Veröffentlichen und Wiederherstellen von Modulen finden Sie unter [Bicep CLI-Befehle](bicep-cli.md).

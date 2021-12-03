@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mithilfe von Azure Policy integrierte Richtlinien für Azure Machine Learning erstellen können, um sicherzustellen, dass Ihre Arbeitsbereiche Ihren Anforderungen entsprechen.
 author: aashishb
 ms.author: aashishb
-ms.date: 05/10/2021
+ms.date: 10/21/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: e9a532ca4a4bf87bfb4569c03d367cb4d3d2ea2d
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: ea374a6503b2d015ca92d3aee8179b3511c9755f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428234"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289678"
 ---
 # <a name="audit-and-manage-azure-machine-learning"></a>Azure Machine Learning prüfen und verwalten
 
@@ -125,7 +125,7 @@ Legen Sie den Parameter „effect“ auf __Modify__ oder __Disabled__ fest, um d
 
 * [Dokumentation zu Azure Policy](../governance/policy/overview.md)
 * [Integrierte Richtlinien für Azure Machine Learning](policy-reference.md)
-* [Arbeiten mit Sicherheitsrichtlinien mit Azure Security Center](../security-center/tutorial-security-policy.md)
+* [Arbeiten mit Sicherheitsrichtlinien bei Microsoft Defender für Cloud](../security-center/tutorial-security-policy.md)
 * Das [Cloud Adoption Framework-Szenario für Datenmanagement und -analyse](/azure/cloud-adoption-framework/scenarios/data-management/) beschreibt Überlegungen zum Betrieb von Daten- und Analyse-Workloads in der Cloud.
 * [Cloud Adoption Framework-Datenzielzonen](https://github.com/Azure/data-landing-zone) bieten eine Referenzimplementierung für die Verwaltung von Daten- und Analyse-Workloads in Azure.
 * [Erfahren Sie, wie Sie Richtlinien verwenden, um Azure Private Link mit Azure Private DNS-Zonen zu integrieren](/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale), um die Private Link-Konfiguration für den Arbeitsbereich und abhängige Ressourcen zu verwalten.

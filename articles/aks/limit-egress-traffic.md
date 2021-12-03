@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: e5f71566d3e31858a60f805bf45fe95793dd9b20
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 64b57c814c99d7a792a198d300df27e821fe3cf5
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094256"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577135"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -209,6 +209,26 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für AK
 | **`data.policy.azure.us`** | **`HTTPS:443`** | Diese Adresse wird verwendet, um die Kubernetes-Richtlinien abzurufen und den Konformitätsstatus des Clusters an den Richtliniendienst zu melden. |
 | **`store.policy.azure.us`** | **`HTTPS:443`** | Diese Adresse wird zum Abrufen der Gatekeeper-Artefakte integrierter Richtlinien verwendet. |
 
+## <a name="cluster-extensions"></a>Clustererweiterungen
+
+### <a name="required-fqdn--application-rules"></a>Benötigte FQDNs/Anwendungsregeln
+
+Für die Verwendung von Clustererweiterungen in AKS-Clustern sind die folgenden FQDN-/Anwendungsregeln erforderlich.
+
+| FQDN | Port | Zweck |
+|-----------------------------------------------|-----------|----------|
+| **`<region>.dp.kubernetesconfiguration.azure.com`** | **`HTTPS:443`** | Diese Adresse wird verwendet, um Konfigurationsinformationen aus dem Clustererweiterungsdienst abzurufen und den Erweiterungsstatus an den Dienst zu melden.|
+| **`mcr.microsoft.com, *.data.mcr.microsoft.com`** | **`HTTPS:443`** | Diese Adresse ist erforderlich, um Containerimages für die Installation von Clustererweiterungs-Agents aus dem AKS-Cluster zu pullen.|
+
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Für Azure US Government benötigte FQDNs/Anwendungsregeln
+
+Für die Verwendung von Clustererweiterungen in AKS-Clustern sind die folgenden FQDN-/Anwendungsregeln erforderlich.
+
+| FQDN | Port | Zweck |
+|-----------------------------------------------|-----------|----------|
+| **`<region>.dp.kubernetesconfiguration.azure.us`** | **`HTTPS:443`** | Diese Adresse wird verwendet, um Konfigurationsinformationen aus dem Clustererweiterungsdienst abzurufen und den Erweiterungsstatus an den Dienst zu melden. |
+| **`mcr.microsoft.com, *.data.mcr.microsoft.com`** | **`HTTPS:443`** | Diese Adresse ist erforderlich, um Containerimages für die Installation von Clustererweiterungs-Agents aus dem AKS-Cluster zu pullen.|
+
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Einschränken von ausgehendem Datenverkehr mithilfe von Azure Firewall
 
 Azure Firewall bietet ein FQDN-Tag für Azure Kubernetes Service (`AzureKubernetesService`), um diese Konfiguration zu vereinfachen.
@@ -356,7 +376,7 @@ Erstellen Sie eine leere Routingtabelle, die einem bestimmten Subnetz zugeordnet
 # Create UDR and add a route for Azure Firewall
 
 az network route-table create -g $RG -l $LOC --name $FWROUTE_TABLE_NAME
-az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
+az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
 

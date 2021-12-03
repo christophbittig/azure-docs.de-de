@@ -3,14 +3,14 @@ title: Aufzeichnen und Streamen von Rückschlussmetadaten mit Video – Azure Vi
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Video Analyzer verwenden, um Video- und Rückschlussmetadaten in der Cloud aufzuzeichnen und die Aufzeichnung mit den visuellen Rückschlussmetadaten wiederzugeben.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9e91b9ed8e73f2834165b012654e567a6f219a81
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 67331e8b39a7c059da31215dd971988009a0ee36
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096149"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491979"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>Tutorial: Aufzeichnen und Streamen von Rückschlussmetadaten mit Video
 
@@ -51,9 +51,9 @@ Das Diagramm ist die bildliche Darstellung einer [Pipeline](../pipeline.md) und 
 
 Wie das Diagramm zeigt, verwenden Sie einen [RTSP-Quellknoten](../pipeline.md#rtsp-source) in der Pipeline zum Erfassen des simulierten Livevideos von Verkehr auf einer Schnellstraße und senden dieses Video an zwei Pfade:
 
-* Der erste Pfad führt zu einem HTTP-Erweiterungsknoten. Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Er konvertiert jeden zehnten Videoframe in den angegebenen Bildtyp. Anschließend leitet er das Bild über HTTP an ein anderes Edgemodul weiter, von dem ein KI-Modell hinter einem HTTP-Endpunkt ausgeführt wird. In diesem Beispiel wird dieses Edge-Modul unter Verwendung des YOLOv3-Modells erstellt, mit dem viele Objekttypen erkannt werden können. Der HTTP-Erweiterungsprozessorknoten sammelt die Erkennungsergebnisse und sendet sie zusammen mit allen Videoframes (nicht nur dem zehnten Frame) an den Objektverfolgungsknoten. Der Objektverfolgungsknoten verwendet optische Flusstechniken, um das Objekt in den neun Frames zu verfolgen, auf die das KI-Modell nicht angewendet wurde. Der Verfolgungsknoten veröffentlicht seine Ergebnisse auf dem Videosenkenknoten und dem IoT Hub-Senkenknoten. Der Knoten der [Videosenke](../pipeline.md#video-sink) verwendet die Rückschlussmetadaten aus dem Objektverfolgungsknoten, die mit dem aufgezeichneten Video wiedergegeben werden. Der Knoten der [IoT Hub-Nachrichtensenke](../pipeline.md#iot-hub-message-sink) sendet diese Ereignisse anschließend an den [IoT Edge-Hub](../../../iot-fundamentals/iot-glossary.md#iot-edge-hub).
+* Der erste Pfad führt zu einem HTTP-Erweiterungsknoten. Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Er konvertiert jeden zehnten Videoframe in den angegebenen Bildtyp. Dann leitet es das Bild über HTTP an ein anderes Edge-Modul weiter, das ein KI-Modell hinter einem HTTP-Endpunkt ausführt. In diesem Beispiel wird dieses Edge-Modul unter Verwendung des YOLOv3-Modells erstellt, mit dem viele Objekttypen erkannt werden können. Der HTTP-Erweiterungsprozessorknoten sammelt die Erkennungsergebnisse und sendet sie zusammen mit allen Videoframes (nicht nur dem zehnten Frame) an den Objektverfolgungsknoten. Der Objektverfolgungsknoten verwendet optische Flusstechniken, um das Objekt in den neun Frames zu verfolgen, auf die das KI-Modell nicht angewendet wurde. Der Verfolgungsknoten veröffentlicht seine Ergebnisse auf dem Videosenkenknoten und dem IoT Hub-Senkenknoten. Der Knoten der [Videosenke](../pipeline.md#video-sink) verwendet die Rückschlussmetadaten aus dem Objektverfolgungsknoten, die mit dem aufgezeichneten Video wiedergegeben werden. Der Knoten der [IoT Hub-Nachrichtensenke](../pipeline.md#iot-hub-message-sink) sendet diese Ereignisse anschließend an den [IoT Edge-Hub](../../../iot-fundamentals/iot-glossary.md#iot-edge-hub).
 
-* Der zweite Pfad verläuft direkt von der RTSP-Quelle zum Knoten der Videosenke, um eine kontinuierliche Videoaufzeichnung zu erreichen. In diesem Tutorial wird ein [Beispielvideo zur Schnellstraßenkreuzung](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) verwendet.
+* Der zweite Pfad verläuft direkt von der RTSP-Quelle zum Knoten der Videosenke, um eine kontinuierliche Videoaufzeichnung zu erreichen. In diesem Tutorial wird ein [Beispielvideo zur Schnellstraßenkreuzung](https://avamedia.blob.core.windows.net/public/camera-300s.mkv) verwendet.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 

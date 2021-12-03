@@ -3,15 +3,15 @@ title: 'Analysieren von Livevideos mit Ihrem eigenen Modell: HTTP'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Livevideos mit Ihrem eigenen Modell (HTTP) per Video Analyzer analysieren.
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 09/10/2021
+ms.date: 11/04/2021
 zone_pivot_groups: video-analyzer-programming-languages
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7ec8b1215a835c70d72ca7ff23b76c47f65634c1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c7770c61ce6d768f3fdd3216da94c87466310e74
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101054"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484246"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---http"></a>Schnellstart: Analysieren von Livevideos mit einem eigenen Modell - HTTP
 
@@ -35,7 +35,7 @@ Für die Schnellstartanleitung werden ein virtueller Azure-Computer als IoT Edg
 
 Beim Einrichten der Azure-Ressourcen wird ein kurzes Video von Verkehr auf einer Schnellstraße auf die Linux-VM in Azure kopiert, die Sie als IoT Edge-Gerät verwenden. In dieser Schnellstartanleitung wird die Videodatei verwendet, um einen Livestream zu simulieren.
 
-Öffnen Sie eine Anwendung wie etwa den [VLC Media Player](https://www.videolan.org/vlc/). Drücken Sie STRG+N, und fügen Sie dann einen Link zum [Beispielvideo zur Schnellstraßenkreuzung](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) ein, um die Wiedergabe zu starten. Sie sehen das Videomaterial vieler Fahrzeuge, die sich im Verkehr einer Schnellstraße bewegen.
+Öffnen Sie eine Anwendung wie etwa den [VLC Media Player](https://www.videolan.org/vlc/). Drücken Sie STRG+N, und fügen Sie dann einen Link zum [Beispielvideo zur Schnellstraßenkreuzung](https://avamedia.blob.core.windows.net/public/camera-300s.mkv) ein, um die Wiedergabe zu starten. Sie sehen das Videomaterial vieler Fahrzeuge, die sich im Verkehr einer Schnellstraße bewegen.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LTY4]
 

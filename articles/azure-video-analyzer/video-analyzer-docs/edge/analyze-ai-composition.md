@@ -3,14 +3,14 @@ title: Analysieren von Livevideostreams mit mehreren KI-Modellen mithilfe der KI
 description: Dieser Artikel enthält eine Anleitung zur Analyse von Livevideostreams mit mehreren KI-Modellen mithilfe des Features zur KI-Komposition von Azure Video Analyzer.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 04/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b86cf60f51913c883bdc1fa62a6d8b1bb3f073e9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d4d54fba6f3b59c0e32286333694fa460cdb07b3
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095048"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487536"
 ---
 # <a name="analyze-live-video-streams-with-multiple-ai-models-using-ai-composition"></a>Analysieren von Livevideostreams mit mehreren KI-Modellen mithilfe der KI-Komposition
 
@@ -44,9 +44,9 @@ Nach Abschluss der Schritte in diesem Leitfaden sind Sie in der Lage, einen simu
 
 Da Sie den im Abschnitt „Voraussetzungen“ beschriebenen Schnellstart bereits abgeschlossen haben, haben Sie bereits ein Edgegerät erstellt. Dieses Edgegerät verfügt über den folgenden Eingabeordner – „/home/localedgeuser/samples/input“ – der bestimmte Videodateien enthält. Melden Sie sich am IoT Edge-Gerät an, wechseln Sie in das Verzeichnis: „home/localedgeuser/samples/input/“, und führen Sie den folgenden Befehl aus, um die Eingabedatei zu erhalten, die wir für diesen Leitfaden verwenden werden.
 
-wget https://lvamedia.blob.core.windows.net/public/co-final.mkv
+wget https://avamedia.blob.core.windows.net/public/co-final.mkv
 
-Wenn Sie möchten, können Sie auf Ihrem Computer, auf dem der [VLC Media Player](https://www.videolan.org/vlc/) installiert ist, auch die Tastenkombination STRG+N auswählen und dann einen Link zu einem [Beispielvideo (MKV)](https://lvamedia.blob.core.windows.net/public/co-final.mkv) einfügen, um die Wiedergabe zu starten. Sie sehen das Videomaterial von Autos auf einer Autobahn.
+Wenn Sie möchten, können Sie auf Ihrem Computer, auf dem der [VLC Media Player](https://www.videolan.org/vlc/) installiert ist, auch die Tastenkombination STRG+N auswählen und dann einen Link zu einem [Beispielvideo (MKV)](https://avamedia.blob.core.windows.net/public/co-final.mkv) einfügen, um die Wiedergabe zu starten. Sie sehen das Videomaterial von Autos auf einer Autobahn.
 
 ## <a name="create-and-deploy-the-pipeline"></a>Erstellen und Bereitstellen der Pipeline
 

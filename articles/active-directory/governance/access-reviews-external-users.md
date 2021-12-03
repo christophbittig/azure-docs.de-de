@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
 ms.author: ajburnle
-ms.openlocfilehash: c976562224d4a0caca8921e46d8f8566800027ee
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: eef4702b7166dabb81cd2391d4acb8d8211b9648
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532242"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051912"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>Verwenden von Azure AD (Azure Active Directory) Identity Governance, um externe Benutzer zu überprüfen und zu entfernen, wenn sie keinen Ressourcenzugriff mehr haben
 
@@ -29,7 +29,7 @@ In diesem Artikel werden Features und Methoden beschrieben, mit denen Sie extern
 
 ## <a name="why-review-users-from-external-organizations-in-your-tenant"></a>Warum sollten Sie Benutzer aus externen Organisationen in Ihrem Mandanten überprüfen?
 
-In den meisten Organisationen initiieren Endbenutzer den Vorgang zum Einladen von Geschäftspartnern und Lieferanten zur Zusammenarbeit. Die Notwendigkeit der Zusammenarbeit führt dazu, dass Unternehmen Ressourcenbesitzern und Endbenutzern die Möglichkeit geben, externe Benutzer regelmäßig zu überprüfen und zu bestätigen. Häufig ist der Prozess des Onboardings neuer Partner für die Zusammenarbeit eingeplant und berücksichtigt, da die Zusammenarbeit aber oft nicht klar befristet ist, ist nicht immer offensichtlich, wann ein Benutzer keinen Zugriff mehr benötigt. Außerdem motiviert die Verwaltung des Identitätslebenszyklus Unternehmen dazu, Azure AD zu bereinigen und Benutzer zu entfernen, die keinen Zugriff mehr auf die Ressourcen der Organisation benötigen. Indem Sie nur die relevanten Identitätsverweise für Partner und Lieferanten im Verzeichnis beibehalten, können Sie das Risiko verringern, dass Mitarbeiter versehentlich externe Benutzer, die nicht mehr vorhanden sein sollten, auswählen und ihnen Zugriff gewähren. Dieses Dokument führt Sie durch verschiedene Optionen von Vorschlägen für empfohlene proaktive Maßnahmen bis hin zu reaktiven und Bereinigungsaktivitäten zum Steuern externer Identitäten.
+In den meisten Organisationen initiieren Endbenutzer den Vorgang zum Einladen von Geschäftspartnern und Lieferanten zur Zusammenarbeit. Die Notwendigkeit der Zusammenarbeit führt dazu, dass Unternehmen Ressourcenbesitzern und Endbenutzern die Möglichkeit geben, externe Benutzer regelmäßig zu überprüfen und zu bestätigen. Häufig ist der Prozess des Onboardings neuer Partner für die Zusammenarbeit eingeplant und berücksichtigt, da die Zusammenarbeit aber oft nicht klar befristet ist, ist nicht immer offensichtlich, wann ein Benutzer keinen Zugriff mehr benötigt. Außerdem motiviert die Verwaltung des Identitätslebenszyklus Unternehmen dazu, Azure AD zu bereinigen und Benutzer zu entfernen, die keinen Zugriff mehr auf die Ressourcen der Organisation benötigen. Indem Sie nur die relevanten Identitätsverweise für Partner und Lieferanten im Verzeichnis beibehalten, können Sie das Risiko verringern, dass Mitarbeiter versehentlich externe Benutzer, die nicht mehr vorhanden sein sollten, auswählen und ihnen Zugriff gewähren. In diesem Dokument finden Sie verschiedene Optionen von empfohlenen proaktiven Maßnahmen bis hin zu reaktiven und Bereinigungsaktivitäten zum Steuern externer Identitäten.
 
 ## <a name="use-entitlement-management-to-grant-and-revoke-access"></a>Verwenden der Berechtigungsverwaltung zum Erteilen und Widerrufen des Zugriffs
 

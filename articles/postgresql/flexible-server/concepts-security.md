@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/01/2021
-ms.openlocfilehash: 8e474cd0ae6635034607a088aceee47a83c500de
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: f31c013bbdf12f34cd73495e3885e17a35b368ef
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388772"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312284"
 ---
 # <a name="security-in-azure-database-for-postgresql---flexible-server"></a>Sicherheit in Azure Database for PostgreSQL – Flexible Server
 
@@ -78,10 +78,10 @@ oid            | 24827
 
 ```
 
-Für Flexible Server ist auch die [Überwachungsprotokollierung](../concepts-audit.md) verfügbar, um Aktivitäten in Ihren Datenbanken nachverfolgen zu können. 
+Für Flexible Server ist auch die [Überwachungsprotokollierung](concepts-audit.md) verfügbar, um Aktivitäten in Ihren Datenbanken nachverfolgen zu können. 
 
 > [!NOTE]
-> Azure Database for PostgreSQL – Flexible Server unterstützt zurzeit den [Azure Defender-Datenschutz](../../security-center/azure-defender.md) nicht. 
+> Für Azure Database for PostgreSQL – Flexible Server wird [Schutz von Microsoft Defender für Cloud](../../security-center/azure-defender.md) derzeit nicht unterstützt. 
 
 ## <a name="updating-passwords"></a>Aktualisieren von Kennwörtern
 

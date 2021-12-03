@@ -6,14 +6,14 @@ ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 10/05/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: 797aff6fed0cf2eda46bcf5371e57e18df466f00
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 5ee6972ae409a2912f677c0411daf01aaa96f6f7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546960"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464697"
 ---
 # <a name="permissions-to-view-and-manage-azure-reservations"></a>Berechtigungen zum Anzeigen und Verwalten von Azure-Reservierungen
 
@@ -92,6 +92,8 @@ Damit andere Personen Reservierungen verwalten können, haben Sie zwei Optionen:
 
 Benutzer*innen mit Besitzerzugriff für Reservierungsaufträge, Benutzer*innen mit erhöhtem Zugriff und [Benutzerzugriffsadministrator*innen](../../role-based-access-control/built-in-roles.md#user-access-administrator) können die Zugriffsverwaltung für alle Reservierungsaufträge delegieren, auf die sie Zugriff haben.
 
+Zugriff, der mithilfe von PowerShell gewährt wurde, wird im Azure-Portal nicht angezeigt. Verwenden Sie stattdessen den Befehl `get-AzRoleAssignment` im folgenden Abschnitt, um zugewiesene Rollen anzuzeigen.
+
 ## <a name="assign-the-owner-role-for-all-reservations"></a>Zuweisen der Rolle „Besitzer“ für alle Reservierungen
 
 Verwenden Sie das folgende Azure PowerShell-Skript, um Benutzer*innen RBAC-Zugriff in Azure auf alle Reservierungsaufträge in ihren Azure AD-Mandanten (Verzeichnis) zu gewähren.
@@ -112,9 +114,15 @@ $reservationObjects = $responseJSON.value
 foreach ($reservation in $reservationObjects)
 {
   $reservationOrderId = $reservation.id.substring(0, 84)
-  Write-Host "Assiging Owner role assignment to "$reservationOrderId
+  Write-Host "Assigning Owner role assignment to "$reservationOrderId
   New-AzRoleAssignment -Scope $reservationOrderId -ObjectId <ObjectId> -RoleDefinitionName Owner
 }
+```
+
+Wenn Sie das PowerShell-Skript zum Zuweisen der Besitzrolle verwenden, und dies erfolgreich ausgeführt wird, wird keine Erfolgsmeldung zurückgegeben. Sie können jedoch überprüfen, ob die Rolle zugewiesen wurde:
+
+```azurepowershell
+get-AzRoleAssignment -Scope "/providers/Microsoft.Capacity" |?{$_.RoleDefinitionName -Like "Reservations*"}
 ```
 
 ### <a name="parameters"></a>Parameter

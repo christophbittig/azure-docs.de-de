@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 67b8e9e5c913323d1786427fcd102de9b98d2827
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 5168cbf417bf433632b6e2653dfa39dcdad11f92
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123310462"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306349"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerschaften mit Azure DDoS Protection Standard
 In diesem Artikel werden die Partnerschaftsmöglichkeiten beschrieben, die sich durch Azure DDoS Protection Standard ergeben können. Dieser Artikel soll Produktmanagern und Geschäftsentwicklern helfen, die Investitionspfade zu verstehen, und einen Einblick in die Wertschöpfungsmöglichkeiten durch Partnerschaften geben.
@@ -39,7 +39,7 @@ Für jede geschützte Anwendung optimiert Azure DDoS Protection Standard die Sch
 ### <a name="attack-analytics-telemetry-monitoring-and-alerting"></a>Angriffsanalysen, Telemetriedaten, Überwachung und Warnungen
 Azure DDoS Protection identifiziert und entschärft DDoS-Angriffe ohne jegliches Eingreifen des Benutzers.
 
-- Wenn sich die geschützte Ressource in dem durch Azure Security Center abgedeckten Abonnement befindet, sendet DDoS Protection Standard automatisch eine Warnung an Security Center, sobald ein DDoS-Angriff auf die geschützte Anwendung erkannt und entschärft wird.
+- Wenn sich die geschützte Ressource in dem durch Microsoft Defender für Cloud abgedeckten Abonnement befindet, sendet DDoS Protection Standard automatisch eine Warnung an Security Center, sobald ein DDoS-Angriff auf die geschützte Anwendung erkannt und entschärft wird.
 - Um benachrichtigt zu werden, wenn eine Risikominderung für eine geschützte öffentliche IP-Adresse aktiv ist, können Sie alternativ eine [Warnung für die den DDoS-Angriff betreffende Metrik konfigurieren](alerts.md).
 - Sie können außerdem Warnungen für die anderen DDoS-Metriken erstellen und [Angriffstelemetrie konfigurieren](telemetry.md), um das Ausmaß des Angriffs, den verworfenen Datenverkehr, die Angriffsvektoren, die wichtigsten Mitwirkenden und andere Details zu verstehen.
 

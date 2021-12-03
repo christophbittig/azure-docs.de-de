@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf83185b5c36723621ad586839d6b92260e1a99a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 2e9921204a60f4364b2365139e2a8b07b4b8e7f0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046200"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300822"
 ---
 # <a name="azure-active-directory-security-operations-guide"></a>Azure Active Directory: Leitfaden zu Sicherheitsvorgängen
 
@@ -96,7 +96,7 @@ Microsoft bietet viele Produkte und Dienste, mit denen Sie Ihre IT-Umgebung an I
 
    * [Untersuchen eines Risikos mit Azure Active Directory Identity Protection](../identity-protection/howto-identity-protection-investigate-risk.md) 
 
-   * [Verknüpfen von Azure AD Identity Protection-Daten mit Azure Sentinel](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)
+   * [Verknüpfen von Azure AD Identity Protection-Daten mit Microsoft Sentinel](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)
 
 * Active Directory Domain Services (AD DS)
 
@@ -120,13 +120,13 @@ Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien:
 
 Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- (durch Trennzeichen getrennte Werte) oder JSON-Dateien (JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen in andere Tools, die eine umfassendere Automatisierung von Überwachung und Benachrichtigungen ermöglichen:
 
-* **[Azure Sentinel](../../sentinel/overview.md)** : ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
+* **[Microsoft Sentinel](../../sentinel/overview.md)** : Ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
 
 * **[Azure Monitor](../../azure-monitor/overview.md)** : ermöglicht die automatisierte Überwachung verschiedener Bedingungen und entsprechende Warnungen. Damit können Arbeitsmappen erstellt oder verwendet werden, um Daten aus verschiedenen Quellen zu kombinieren.
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) mit Integration in ein SIEM-System**- [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme wie Splunk, ArcSight, QRadar und Sumo Logic integriert](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) werden.
 
-* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)** : Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps.
+* **[Microsoft Defender für Cloud Apps](/cloud-app-security/what-is-cloud-app-security)** ermöglichen Ihnen die Erkennung und Verwaltung von Apps, die Steuerung von Apps und Ressourcen sowie die Überprüfung der Compliance Ihrer Cloud-Apps.
 
 Ein Großteil der Überwachung und zugehörigen Warnungen hängt von den Auswirkungen Ihrer Richtlinien für bedingten Zugriff ab. Sie können die Arbeitsmappe [Erkenntnisse und Berichterstellung zum bedingten Zugriff](../conditional-access/howto-conditional-access-insights-reporting.md) verwenden, um die Auswirkungen einer oder mehrerer Richtlinien für bedingten Zugriff auf Ihre Anmeldungen sowie die Ergebnisse von Richtlinien, einschließlich Gerätestatus, zu untersuchen. Diese Arbeitsmappe bietet Ihnen die Möglichkeit, eine Zusammenfassung der Auswirkungen anzuzeigen und die Auswirkungen über einen bestimmten Zeitraum zu ermitteln. Sie können mithilfe der Arbeitsmappe auch die Anmeldungen eines bestimmten Benutzers untersuchen. 
 
@@ -156,7 +156,7 @@ Im Rahmen einer Azure-Hybridumgebung sollte Folgendes das Minimum für eine Übe
 
 * **PTA-Agent:** Der Passthrough-Authentifizierungs-Agent wird zum Aktivieren der Passthrough-Authentifizierung verwendet und lokal installiert. Informationen zum Überprüfen Ihrer Agent-Version und zu den nächsten Schritten finden Sie unter [Azure AD-Passthrough-Authentifizierung: Versionsverlauf des Agents](../hybrid/reference-connect-pta-version-history.md). 
 
-* **AD FS/WAP:** Azure Active Directory-Verbunddienste (Azure AD FS) und Webanwendungsproxy (WAP) ermöglichen die sichere Freigabe von digitalen Identitäten und Zugriffsrechten über Ihre Sicherheits- und Unternehmensgrenzen hinweg. Informationen zu Best Practices für die Sicherheit finden Sie unter [Best practices for securing Active Directory Federation Services]/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) (Bewährte Methoden zum Schützen von Active Directory-Verbunddiensten). 
+* **AD FS/WAP:** Azure Active Directory-Verbunddienste (Azure AD FS) und Webanwendungsproxy (WAP) ermöglichen die sichere Freigabe von digitalen Identitäten und Zugriffsrechten über Ihre Sicherheits- und Unternehmensgrenzen hinweg. Informationen über bewährte Sicherheitspraktiken finden Sie unter [Best practices for securing Active Directory Federation Services](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs). 
 
 * **Azure AD Connect Health-Agent:** Dieser Agent stellt eine Kommunikationsverbindung mit Azure AD Connect Health bereit. Informationen zur Installation des Agents finden Sie unter [Installieren der Azure AD Connect Health-Agents](../hybrid/how-to-connect-health-agent-install.md). 
 
@@ -214,7 +214,7 @@ Im Rahmen einer cloudbasierten Azure-Umgebung sollte Folgendes das Minimum für 
 
 * **Self-Service-Gruppenverwaltung:** Sie können Benutzern die Erstellung und Verwaltung ihrer eigenen Sicherheitsgruppen oder Microsoft 365-Gruppen in Azure Active Directory (Azure AD) ermöglichen. Der Besitzer der Gruppe kann Mitgliedschaftsanforderungen genehmigen oder ablehnen sowie die Steuerung der Gruppenmitgliedschaft delegieren. Self-Service-Funktionen zur Gruppenverwaltung sind nicht für E-Mail-aktivierte Sicherheitsgruppen oder Verteilerlisten verfügbar. Weitere Informationen finden Sie unter [Einrichten der Self-Service-Gruppenverwaltung in Azure Active Directory](../enterprise-users/groups-self-service-management.md).
 
-* **Risikoerkennungen:** Enthält Informationen zu anderen Risiken, die bei Erkennung eines Risikos ausgelöst werden, sowie andere relevante Informationen wie den Anmeldeort und Details von Microsoft Cloud App Security (MCAS).
+* **Risikoerkennungen** enthalten Informationen zu anderen Risiken, die bei Erkennung eines Risikos ausgelöst werden, sowie andere relevante Informationen wie den Anmeldeort und Details von Microsoft Defender für Cloud Apps.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

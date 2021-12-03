@@ -1,200 +1,252 @@
 ---
 title: Informationen zum Hochladen von Dateien in Azure IoT Hub | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Verwenden des Dateiupload-Features von IoT Hub zum Verwalten der Uploads von Dateien von einem Gerät in einen Azure Storage-Blobcontainer.'
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 10/25/2021
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: dd7adc3a1fdb45255bd13ee279d66e64bdf4c1d1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 45913f6723cd9733e7c13fef769f1f445260ad00
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355003"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555109"
 ---
 # <a name="upload-files-with-iot-hub"></a>Hochladen von Dateien mit IoT Hub
 
-In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen Gerät-zu-Cloud-Nachrichten zuordnen, die IoT Hub bereitwillig akzeptiert. Beispiel:
-* Große Image-Dateien
-* Videodateien
-* Vibrationsdaten, die mit hoher Häufigkeit als Stichproben erfasst werden
-* Eine Form vorverarbeiteter Daten
+In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen Gerät-zu-Cloud-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispielsweise das Senden großer Mediendateien oder das Senden großer Telemetriesendungen, die entweder von zeitweilig verbundenen Geräten hochgeladen oder aggregiert und komprimiert wurden, um Bandbreite zu sparen.
 
-Wenn Sie derartige Dateien von einem Gerät hochladen müssen, können Sie weiterhin die Sicherheit und Zuverlässigkeit des IoT Hub nutzen. Statt Nachrichten über IoT Hub selbst zu übertragen, fungiert IoT Hub stattdessen als Verteiler für ein zugeordnetes Azure Storage-Konto. Ein Gerät fordert ein Speichertoken von IoT Hub an, das spezifisch für die vom Gerät hochgeladene Datei gilt. Das Gerät verwendet den SAS-URI zum Hochladen der Datei in den Speicher. Wenn der Upload abgeschlossen ist, sendet das Gerät eine Benachrichtigung über den Abschluss an IoT Hub. IoT Hub überprüft, ob der Dateiupload abgeschlossen ist.
+Wenn Sie derartig große Dateien von einem Gerät hochladen müssen, können Sie weiterhin die Sicherheit und Zuverlässigkeit des IoT Hub nutzen. Statt Nachrichten über IoT Hub selbst zu übertragen, fungiert IoT Hub stattdessen als Verteiler für ein zugeordnetes Azure-Speicher-Konto. IoT Hub kann auch Benachrichtigungen an Back-End-Dienste bereitstellen, wenn ein Gerät einen Dateiupload abschließt.
+
+Weitere Informationen zur Verwendung von gemeldeten Eigenschaften, D2C-Nachrichten oder Dateiuploads finden Sie im [Leitfaden für D2C-Kommunikation](iot-hub-devguide-d2c-guidance.md).
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
-### <a name="when-to-use"></a>Verwendung
+## <a name="file-upload-overview"></a>Übersicht über Dateiuploads
 
-Verwenden Sie Dateiuploads zum Senden von Mediendateien und umfangreichen Telemetriebatches, die von zeitweise verbundenen Geräten hochgeladen oder komprimiert werden, um Bandbreite zu sparen. Weitere Informationen zur Verwendung von gemeldeten Eigenschaften, D2C-Nachrichten oder Dateiuploads finden Sie im [Leitfaden zur D2C-Kommunikation](iot-hub-devguide-d2c-guidance.md).
+Ein IoT Hub erleichtert Dateiuploads von verbundenen Geräten, indem er SAS-URIs (Shared Access Signature) pro Upload für einen Blob-Container und ein Azure-Speicherkonto bereitstellt, die mit dem Hub vorkonfiguriert wurden. Die Verwendung von Dateiuploads mit IoT Hub besteht aus drei Teilen: Vorkonfigurieren eines Azure-Speicherkontos und Blob-Containers auf Ihrem IoT Hub, Hochladen von Dateien von Geräten und optional Benachrichtigen von Back-End-Diensten über abgeschlossene Dateiuploads.
 
-## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Zuordnen eines Azure Storage-Kontos zu IoT Hub
+Damit Sie die Dateiuploadfunktion in IoT Hub nutzen können, müssen Sie Ihrem IoT-Hub zuerst ein [Azure-Speicherkonto](/azure/storage/common/storage-account-overview) und einen [Blob-Container](/azure/storage/blobs/storage-blobs-introduction) zuordnen. Sie können auch Einstellungen konfigurieren, die steuern, wie sich der IoT Hub bei Azure Storage authentifiziert und die die Gültigkeitsdauer (Time-to-Live, TTL) der SAS-URIs, die der IoT Hub an Geräte übermittelt, und Benachrichtigungen über Dateiuploads an Ihre Back-End-Dienste steuern. Für mehr Informationen siehe [Zuordnen eines Azure-Speicher-Kontos zu einem IoT Hub](#associate-an-azure-storage-account-with-iot-hub).
 
-Sie müssen über ein Azure Storage-Konto verfügen, das mit Ihrem IoT-Hub verbunden ist. 
+Geräte führen einen dreistufigen Prozess aus, um eine Datei in den zugeordneten Blob-Container hochzuladen:
 
-Um zu erfahren, wie Sie ein eines mithilfe des Portals erstellen, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md). 
+1. Das Gerät initiiert den Dateiupload mit dem IoT Hub. Er übergibt den Namen eines Blobs in der Anfrage und ruft im Gegenzug einen SAS-URI und eine Korrelations-ID ab. Der SAS-URI enthält ein SAS-Token für Azure Storage, das dem Gerät Lese-/Schreibberechtigung für das angeforderte Blob im Blob-Container erteilt. Weitere Informationen finden Sie unter [Gerät: Initialisieren eines Dateiuploads.](#device-initialize-a-file-upload)
 
-Sie können auch eines programmgesteuert mithilfe der [REST-APIs des IoT Hub Ressourcenanbieters ](/rest/api/iothub/iothubresource) erstellen. 
+1. Das Gerät verwendet den SAS-URI, um Azure-Blob-Speicher-APIs sicher aufzurufen, damit die Datei in den Blob-Container hochgeladen werden kann. Weitere Informationen finden Sie unter [Gerät: Hochladen der Datei mit Hilfe von Azure Storage APIs](#device-upload-file-using-azure-storage-apis).
 
-Wenn Sie Azure Storage-Konto einem IoT Hub zuordnen, generiert der IoT Hub einen SAS-URI. Ein Gerät kann diesen SAS-URI für das sichere Hochladen einer Datei zu einem Blobcontainer verwenden.
+1. Wenn der Dateiupload abgeschlossen ist, benachrichtigt das Gerät den IoT Hub über den Abschlussstatus unter Verwendung der Korrelations-ID, die es von IoT Hub beim Initiieren des Uploads erhalten hat. Für weitere Informationen siehe [Gerät: IoT Hub über einen abgeschlossenen Dateiupload benachrichtigen](#device-notify-iot-hub-of-a-completed-file-upload).
 
-## <a name="create-a-container"></a>Erstellen eines Containers
+Back-End-Dienste können Dateiuploadbenachrichtigungen auf dem dienstseitigen Endpunkt für Dateiuploadbenachrichtigungen des IoT Hub abonnieren. Wenn Sie diese Benachrichtigungen auf Ihrem IoT Hub aktiviert haben, werden sie auf diesem Endpunkt übermittelt, wenn ein Gerät den Hub darüber informiert, dass ein Dateiupload abgeschlossen wurde. Dienste können diese Benachrichtigungen verwenden, um eine weitere Verarbeitung der Blobdaten einzuleiten. Weitere Informationen finden Sie unter [Dienst: Dateiuploadbenachrichtigungen.](#service-file-upload-notifications)
 
- So erstellen Sie einen Blobcontainer über das Portal:
+Das Hochladen von Dateien wird von den Azure-IoT-Geräte- und Dienst-SDKs vollständig unterstützt. Für weitere Informationen siehe [Dateiupload mit Hilfe eines SDKs](#file-upload-using-an-sdk).
 
-1. Wählen Sie im linken Bereich Ihres Speicherkontos unter **Datenspeicherung** die Option **Container** aus.
-1. Wählen Sie auf dem Container-Blatt die Option **+ Container** aus.
-1. Geben Sie im Bereich **Neuer Container**, der geöffnet wird, einen Namen für Ihren Container ein, und wählen Sie **Erstellen** aus.
+### <a name="file-upload-quotas-and-limits"></a>Kontingente und Grenzwerte für Dateiuploads
 
-Nach der Erstellung des Containers folgen Sie den Anleitungen in [Konfigurieren des Dateiuploads im Azure-Portal](iot-hub-configure-file-upload.md). Stellen Sie sicher, dass Ihrem IoT Hub ein Blobcontainer zugeordnet ist und die Dateibenachrichtigungen aktiviert sind.
+IoT Hub erzwingt Drosselungsgrenzwerte für die Anzahl von Dateiuploads, die innerhalb eines bestimmten Zeitraums initiiert werden können. Der Schwellenwert basiert auf der SKU und der Anzahl der Einheiten Ihres IoT Hubs. Darüber hinaus ist jedes Gerät jeweils auf 10 gleichzeitige aktive Dateiuploads beschränkt. Weitere Informationen finden Sie unter [Drosselung und Kontingente](iot-hub-devguide-quotas-throttling.md).
 
-Sie können auch die [REST-APIs IoT Hub Ressourcenanbieter](/rest/api/iothub/iothubresource) verwenden, um einen Container zu erstellen, der dem Speicher für Ihre IoT Hub zugeordnet ist.
+## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Zuordnen eines Azure-Speicher-Kontos zu einem IoT Hub
+
+Damit Sie die Dateiuploadfunktion in IoT Hub nutzen können, müssen Sie Ihrem IoT-Hub zuerst ein Azure-Speicherkonto und einen Blob-Container zuordnen. Alle Dateiuploads von Geräten, die bei Ihrem IoT Hub registriert sind, werden in diesen Container übertragen. Informationen zum Konfigurieren eines Speicherkontos und Blob-Containers auf Ihrem IoT Hub finden Sie unter [Konfigurieren von Dateiuploads mit dem Azure-Portal](iot-hub-configure-file-upload.md), [Konfigurieren von Dateiuploads mit Azure CLI](iot-hub-configure-file-upload-cli.md)oder [Konfigurieren von Dateiuploads mit PowerShell.](iot-hub-configure-file-upload-powershell.md) Sie können auch die IoT Hub-Verwaltungs-APIs verwenden, um Dateiuploads programmgesteuert zu konfigurieren.
+
+Wenn Sie das Portal verwenden, können Sie während der Konfiguration ein Speicherkonto und einen Container erstellen. Informationen zum Erstellen eines Speicherkontos finden Sie andernfalls unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) in der Azure Storage-Dokumentation. Sobald Sie über ein Speicherkonto verfügen, können Sie in den [Azure Blob-Storage-Schnellstarts](/azure/storage/blobs/storage-quickstart-blobs-portal) sehen, wie Sie einen Blob-Container erstellen.
+
+Es gibt mehrere andere Einstellungen, die den Ablauf von Dateiuploads und Dateiuploadbenachrichtigungen steuern. In den folgenden Abschnitten sind alle verfügbaren Einstellungen aufgeführt. Je nachdem, ob Sie das Azure-Portal, Azure CLI, PowerShell oder die Verwaltungs-APIs zum Konfigurieren von Dateiuploads verwenden, sind einige dieser Einstellungen möglicherweise nicht verfügbar. Stellen Sie sicher, dass Sie die Einstellung **enableFileUploadNotifications** (Dateiuploadbenachrichtigungen aktivieren) festlegen, wenn Benachrichtigungen an Ihre Back-End-Dienste gesendet werden sollen und wenn ein Dateiupload abgeschlossen ist.
+
+### <a name="iot-hub-storage-and-authentication-settings"></a>IoT Hub-Speicher und -Authentifizierungseinstellungen
+
+Die folgenden Einstellungen ordnen Ihrem IoT Hub ein Speicherkonto und einen Container zu und steuern, wie sich Ihr Hub bei Azure Storage authentifiziert. Diese Einstellungen wirken sich nicht auf die Authentifizierung von Geräten mit Azure Storage aus. Geräte authentifizieren sich immer mit dem SAS-Token, das im SAS-URI angezeigt wird, der aus dem IoT Hub abgerufen wurde.
+
+| Eigenschaft | BESCHREIBUNG | Bereich und Standardwert |
+| --- | --- | --- |
+| **storageEndpoints.$default.authenticationType** | Steuert, wie sich der IoT Hub bei Azure Storage authentifiziert. | Mögliche Werte sind keyBased und identityBased. Standardwert: keyBased. |
+| **storageEndpoints.$default.connectionString** | Die Verbindungszeichenfolge für das Azure-Speicherkonto, das für Dateiuploads verwendet werden soll. | Standard: leere Zeichenfolge. |
+| **storageEndpoints.$default.containerName** | Der Name des Containers, in den Daten hochgeladen werden sollen. | Standard: leere Zeichenfolge. |
+| **storageEndpoints.$default.identity** | Die verwaltete Identität, die für die identitätsbasierte Authentifizierung verwendet werden soll. | Mögliche Werte sind `[system]` für die vom System zugewiesene verwaltete Identität oder eine Ressourcen-ID für eine vom Benutzer zugewiesene verwaltete Identität. Der Wert wird nicht für die schlüsselbasierte Authentifizierung verwendet. Standard: NULL |
+
+### <a name="file-upload-settings"></a>Dateiuploadeinstellungen
+
+Die folgenden Einstellungen steuern das Hochladen von Dateien vom Gerät.
+
+| Eigenschaft | BESCHREIBUNG | Bereich und Standardwert |
+| --- | --- | --- |
+| **storageEndpoints.$default.ttlAsIso8601** | Standard-Gültigkeitsdauer für SAS-URIs, die von IoT Hub generiert werden. | ISO_8601-Intervall bis zu 48 Stunden (mindestens 1 Minute). Standardwert: 1 Stunde. |
+
+### <a name="file-upload-notification-settings"></a>Einstellungen für Dateiuploadbenachrichtigungen
+
+Mit den folgenden Einstellungen werden Dateiuploadbenachrichtigungen an Back-End-Dienste gesteuert.
+
+| Eigenschaft | BESCHREIBUNG | Bereich und Standardwert |
+| --- | --- | --- |
+| **enableFileUploadNotifications** |Steuert, ob Dateiuploadbenachrichtigungen in den Endpunkt für Dateibenachrichtigungen geschrieben werden. |Bool. Standardwert: False. |
+| **fileNotifications.ttlAsIso8601** |Standardgültigkeitsdauer für Dateiuploadbenachrichtigungen. |ISO_8601-Intervall bis zu 48 Stunden (mindestens 1 Minute). Standardwert: 1 Stunde. |
+| **fileNotifications.lockDuration** |Sperrdauer für die Warteschlange der Dateiuploadbenachrichtigungen. |Möglicher Bereich: zwischen fünf und 300 Sekunden. Standardwert: 60 Sekunden. |
+| **fileNotifications.maxDeliveryCount** |Maximale Übermittlungsanzahl für die Warteschlange der Dateiuploadbenachrichtigungen. |1 bis 100. Standardwert: 100. |
 
 ## <a name="file-upload-using-an-sdk"></a>Dateiupload mithilfe eines SDK
 
-Die folgenden Anleitungen bieten vollständige exemplarische Vorgehensweisen für den Dateiupload-Prozess in einer Vielzahl von SDK-Sprachen. Diese Leitfäden zeigen, wie Sie mit dem Azure-Portal ein Speicherkonto einem IoT-Hub zuordnen. Sie enthalten auch Codeausschnitte oder verweisen auf Beispiele, die Sie durch den Uploadprozess führen.
+Die folgenden Schrittanleitungen enthalten eine vollständige Schritt-für-Schritt-Anleitung zum Hochladen von Dateien mithilfe der Azure IoT-Geräte- und Dienst-SDKs. Sie zeigen Ihnen, wie Sie das Azure-Portal verwenden, um ein Speicherkonto einem IoT Hub zuzuordnen, und sie enthalten Codeausschnitte oder verweisen auf Beispiele, die Sie durch einen Upload führen.
 
-* [.NET](iot-hub-csharp-csharp-file-upload.md)
-* [Java](iot-hub-java-java-file-upload.md)
-* [Node.js](iot-hub-node-node-file-upload.md)
-* [Python](iot-hub-python-python-file-upload.md)
-
-> [!NOTE]
-> Die [Azure IoT-SDKs](iot-hub-devguide-sdks.md) verarbeiten automatisch das Abrufen des SAS-URIs (Shared Access Signature), das Hochladen der Datei und das Benachrichtigen von IoT Hub über einen abgeschlossenen Upload. Wenn eine Firewall den Zugriff auf den BLOB Storage-Endpunkt blockiert, aber den Zugriff auf den IOT Hub-Endpunkt zulässt, schlägt der Dateiupload fehl und zeigt folgenden Fehler für das IOT c#-Geräte-SDK an:
->
-> `---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond`
->
-> Damit das Feature zum Hochladen von Dateien funktioniert, muss das Gerät Zugriff auf den IOT Hub-Endpunkt als auch auf den BLOB Storage -Endpunkt haben.
-> 
-
-
-## <a name="initialize-a-file-upload-rest"></a>Initialisieren eines Dateiuploads (REST)
-
-Sie können REST-APIs anstelle eines der SDKs verwenden, um eine Datei hochzuladen. IoT Hub verfügt über einen Endpunkt speziell für Geräte zum Anfordern eines SAS-URI für die Speicherung zum Hochladen einer Datei. Zum Beginnen des Dateiuploads sendet das Gerät eine POST-Anforderung mit dem folgenden JSON-Code an `{iot hub}.azure-devices.net/devices/{deviceId}/files`:
-
-```json
-{
-    "blobName": "{name of the file for which a SAS URI will be generated}"
-}
-```
-
-IoT Hub gibt die folgenden Daten zurück, die vom Gerät zum Hochladen der Datei genutzt werden:
-
-```json
-{
-    "correlationId": "somecorrelationid",
-    "hostName": "yourstorageaccount.blob.core.windows.net",
-    "containerName": "testcontainer",
-    "blobName": "test-device1/image.jpg",
-    "sasToken": "1234asdfSAStoken"
-}
-```
-
-### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>Veraltet: Initialisieren des Uploads einer Datei mit einer GET-Anweisung
+| Schrittanleitung | Geräte-SDK Beispiel | Dienst-SDK Beispiel |
+|---------|--------|---------|
+| [.NET](iot-hub-csharp-csharp-file-upload.md) | Ja | Ja |
+| [Java](iot-hub-java-java-file-upload.md) | Ja | Ja |
+| [Node.js](iot-hub-node-node-file-upload.md) | Ja | Ja |
+| [Python](iot-hub-python-python-file-upload.md) | Ja | Nein (Nicht unterstützt) |
 
 > [!NOTE]
-> In diesem Abschnitt wird veraltete Funktionalität zum Empfangen eines SAS-URI von IoT Hub beschrieben. Verwenden Sie die zuvor beschriebene POST-Methode.
+> Das C-Geräte-SDK verwendet einen einzelnen Befehl auf dem Geräteclient, um Dateiuploads durchzuführen. Weitere Informationen finden Sie unter [IoTHubDeviceClient_UploadToBlobAsync()](/azure/iot-hub/iot-c-sdk-ref/iothub-device-client-h/iothubdeviceclient-uploadtoblobasync) und [IoTHubDeviceClient_UploadMultipleBlocksToBlobAsync()](/azure/iot-hub/iot-c-sdk-ref/iothub-device-client-h/iothubdeviceclient-uploadmultipleblockstoblobasync). Diese Funktionen führen alle Aspekte des Dateiuploads in einem einzigen Befehl aus – initiieren den Upload, laden die Daten in Azure Storage hoch und benachrichtigen IoT Hub, wenn der Vorgang abgeschlossen ist. Dies bedeutet, dass das Gerät zusätzlich zu dem Protokoll, das das Gerät für die Kommunikation mit dem IoT Hub verwendet, auch über HTTPS mit Azure Storage kommunizieren muss, da diese Funktionen Befehle an die Azure Storage-APIs geben.
 
-IoT Hub verfügt über zwei REST-Endpunkte, um den Dateiupload zu unterstützen: einen zum Abrufen des SAS-URIs für den Speicher und einen zum Benachrichtigen von IoT Hub über einen abgeschlossenen Upload. Das Gerät beginnt mit dem Dateiupload, indem es eine GET-Anforderung an den IoT-Hub unter `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`sendet. IoT Hub gibt Folgendes zurück:
+## <a name="device-initialize-a-file-upload"></a>Gerät: Initialisieren eines Dateiuploads
 
-* Einen spezifischen SAS-URI für die hochzuladende Datei
+Das Gerät ruft die REST-API zum [Erstellen von Dateiuploads SAS-URI\](/rest/api/iothub/device/create-file-upload-sas-uri) oder die entsprechende API in einem der Geräte-SDKs auf, um einen Dateiupload zu initiieren.
 
-* Eine Korrelations-ID zur Verwendung nach Abschluss des Uploadvorgangs
-
-## <a name="notify-iot-hub-of-a-completed-file-upload-rest"></a>Benachrichtigen von IoT Hub über einen abgeschlossenen Dateiupload (REST)
-
-Das Gerät lädt die Datei mithilfe der Azure Storage-SDKs in den Speicher hoch. Nach Abschluss des Uploadvorgangs sendet das Gerät eine POST-Anforderung mit dem folgenden JSON-Code an `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications`:
+**Unterstützte Protokolle**: AMQP, AMQP-WS, MQTT, MQTT-WS und HTTPS <br/>
+**Endpunkt**: {iot hub}.azure-devices.net/devices/{deviceId}/files <br/>
+**Methode**: POST
 
 ```json
 {
-    "correlationId": "{correlation ID received from the initial request}",
-    "isSuccess": bool,
-    "statusCode": XXX,
-    "statusDescription": "Description of status"
+    "blobName":"myfile.txt"
 }
+
 ```
-
-Der Wert `isSuccess` ist ein boolescher Wert, der angibt, ob die Datei erfolgreich hochgeladen wurde. Der Statuscode `statusCode` ist der Status des Uploads der Datei in Speicher, und `statusDescription` entspricht `statusCode`.
-
-## <a name="reference-topics"></a>Referenzthemen:
-
-Die folgenden Referenzthemen enthalten weitere Informationen zum Hochladen von Dateien von einem Gerät.
-
-### <a name="file-upload-notifications"></a>Benachrichtigungen zum Dateiupload
-
-Optional: Wenn ein Gerät IoT Hub benachrichtigt, dass ein Upload abgeschlossen ist, generiert IoT Hub eine Benachrichtigungsmeldung. Diese Meldung enthält den Namen und den Speicherort der Datei.
-
-Wie im Abschnitt [Endpunkte](iot-hub-devguide-endpoints.md) erläutert, übermittelt IoT Hub Dateiuploadbenachrichtigungen als Nachrichten über einen dienstseitigen Endpunkt (**/messages/servicebound/fileuploadnotifications**). Die Empfangssemantik für Dateiuploadbenachrichtigungen entspricht der Empfangssemantik für C2D-Nachrichten und weist den gleichen [Nachrichtenlebenszyklus](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle) auf. Jede Nachricht, die vom Endpunkt für Dateiuploadbenachrichtigungen abgerufen wird, ist ein JSON-Datensatz mit den folgenden Eigenschaften:
 
 | Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| EnqueuedTimeUtc |Zeitstempel, der die Erstellung der Benachrichtigung angibt. |
-| deviceId |**DeviceId** des Geräts, das die Datei hochgeladen hat. |
-| BlobUri |Der URI der hochgeladenen Datei. |
-| BlobName |Der Name der hochgeladenen Datei. |
-| LastUpdatedTime |Zeitstempel, der die letzte Aktualisierung der Datei angibt. |
-| BlobSizeInBytes |Die Größe der hochgeladenen Datei. |
+|----------|-------------|
+| Blob-Name | Der Name des Blobs, für das der SAS-URI generiert werden soll. |
 
-**Beispiel**. Dieses Beispiel zeigt den Text einer Dateiuploadbenachrichtigung.
+ Der IoT Hub antwortet mit einer Korrelations-ID und den Elementen eines SAS-URI, die das Gerät für die Authentifizierung bei Azure Storage verwenden kann. Diese Antwort unterliegt den Drosselungsgrenzwerten und Uploadlimits pro Gerät des IoT Hub-Ziels.
+
+```json
+{
+    "correlationId":"MjAyMTA3MzAwNjIxXzBiNjgwOGVkLWZjNzQtN...MzYzLWRlZmI4OWQxMzdmNF9teWZpbGUudHh0X3ZlcjIuMA==",
+    "hostName":"contosostorageaccount.blob.core.windows.net",
+    "containerName":"device-upload-container",
+    "blobName":"mydevice/myfile.txt",
+    "sasToken":"?sv=2018-03-28&sr=b&sig=mBLiODhpKXBs0y9RVzwk1S...l1X9qAfDuyg%3D&se=2021-07-30T06%3A11%3A10Z&sp=rw"
+}
+
+```
+
+| Eigenschaft | BESCHREIBUNG |
+|----------|-------------|
+| correlationId | Die Kennung für das Gerät, die beim Senden der Benachrichtigung über den abgeschlossenen Dateiupload an den IoT Hub verwendet werden soll. |
+| hostName | Der Hostname des Azure-Speicherkontos für das Speicherkonto, das auf dem IoT Hub konfiguriert ist. |
+| containerName | Der Name des Blob-Containers, der auf dem IoT Hub konfiguriert ist. |
+| Blob-Name | Der Speicherort, an dem das Blob im Container gespeichert wird. Der Name weist folgendes Format auf: `{device ID of the device making the request}/{blobName in the request}` |
+| sasToken> | Ein SAS-Token, das Lese-/Schreibzugriff auf das Blob bei Azure Storage gewährt. Das Token wird von IoT Hub generiert und signiert. |
+
+Wenn die Antwort empfangen wird, macht das Gerät Folgendes:
+
+* Es speichert die Korrelations-ID, die in die  Benachrichtigung über den abgeschlossenen Dateiupload an den IoT Hub eingefügt werden soll, wenn der Upload abgeschlossen ist.
+
+* Es verwendet andere Eigenschaften, um einen SAS-URI für das Blob zu erstellen, das für die Authentifizierung bei Azure Storage verwendet wird. Der SAS-URI enthält den Ressourcen-URI für das angeforderte Blob und das SAS-Token. Sie hat folgende Form: `https://{hostName}/{containerName}/{blobName}{sasToken}` (Die `sasToken` Eigenschaft in der Antwort enthält ein vorangestelltes "?"-Zeichen.) Die Klammern sind nicht enthalten.
+
+    Für die Werte, die im obigen Beispiel zurückgesandt werden, lautet der SAS-URI beispielsweise `https://contosostorageaccount.blob.core.windows.net/device-upload-container/mydevice/myfile.txt?sv=2018-03-28&sr=b&sig=mBLiODhpKXBs0y9RVzwk1S...l1X9qAfDuyg%3D&se=2021-07-30T06%3A11%3A10Z&sp=rw`
+
+    Weitere Informationen zum SAS-URI und SAS-Token finden Sie unter [Erstellen einer Dienst-SAS](/rest/api/storageservices/create-service-sas) in der Azure Storage-Dokumentation.
+
+## <a name="device-upload-file-using-azure-storage-apis"></a>Gerät: Datei mit Hilfe von Azure Speicher-APIs hochladen
+
+Das Gerät verwendet die [Azure Blob-Storage-REST-APIs](/rest/api/storageservices/blob-service-rest-api) oder entsprechende Azure Speicher-SDK-APIs, um die Datei in das Blob in Azure Storage hochzuladen.
+
+**Unterstützte Protokolle**: HTTPS
+
+Das folgende Beispiel zeigt eine [Blob-Setzen-Anfrage](/rest/api/storageservices/put-blob) zum Erstellen oder Aktualisieren eines kleinen Blockblobs. Beachten Sie, dass der für diese Anforderung verwendete URI der SAS-URI ist, der von IoT Hub im vorherigen Abschnitt zurückgesandt wurde. Der `x-ms-blob-type` Header gibt an, dass diese Anfrage für ein Blockblob gilt. Wenn die Anfrage erfolgreich ist, gibt Azure Storage einen `201 Created` zurück.
+
+```http
+PUT https://contosostorageaccount.blob.core.windows.net/device-upload-container/mydevice/myfile.txt?sv=2018-03-28&sr=b&sig=mBLiODhpKXBs0y9RVzwk1S...l1X9qAfDuyg%3D&se=2021-07-30T06%3A11%3A10Z&sp=rw HTTP/1.1
+Content-Length: 11
+Content-Type: text/plain; charset=UTF-8
+Host: contosostorageaccount.blob.core.windows.net
+x-ms-blob-type: BlockBlob
+
+hello world
+```
+
+Die Arbeit mit den Azure-Speicher-APIs würde den Rahmen dieses Abschnitts sprengen. Zusätzlich zu den REST-APIs für den Azure Blob Storage, die zuvor in diesem Abschnitt verknüpft wurden, können Sie die folgende Dokumentation lesen, um Ihnen den Einstieg zu erleichtern:
+
+* Weitere Informationen zu den Blobs in Azure Storage finden Sie in der Dokumentation über den [Azure Blob-Speicher](/azure/storage/blobs/).
+
+* Informationen zur Verwendung von Azure Storage-Client-SDKs zum Hochladen von Blobs finden Sie unter [Azure Blob-Speicher-API-Referenz](/azure/storage/blobs/reference).  
+
+## <a name="device-notify-iot-hub-of-a-completed-file-upload"></a>Gerät: Benachrichtigen des IoT Hubs über einen abgeschlossenen Dateiupload
+
+Das Gerät ruft die REST-API zum [Aktualisieren des Dateiuploadstatus ](/rest/api/iothub/device/update-file-upload-status) oder die entsprechende API in einem der Geräte-SDKs auf, wenn es den Dateiupload zum Abschluss bringt. Das Gerät sollte den Dateiuploadstatus mit IoT Hub aktualisieren, unabhängig davon, ob der Upload erfolgreich war oder fehlgeschlagen ist.
+
+**Unterstützte Protokolle**: AMQP, AMQP-WS, MQTT, MQTT-WS und HTTPS <br/>
+**Endpunkt**: {iot hub}.azure-devices.net/devices/{deviceId}/files <br/>
+**Methode**: POST 
+
+```json
+{
+    "correlationId": "MjAyMTA3MzAwNjIxXzBiNjgwOGVkLWZjNzQtN...MzYzLWRlZmI4OWQxMzdmNF9teWZpbGUudHh0X3ZlcjIuMA==",
+    "isSuccess": true,
+    "statusCode": 200,
+    "statusDescription": "File uploaded successfully"
+}
+
+```
+
+ Eigenschaft | BESCHREIBUNG |
+|----------|-------------|
+| correlationId | Die Korrelations-ID, die in der ersten SAS-URI-Anforderung empfangen wurde. |
+| IsSuccess | Ein boolescher Wert, der angibt, ob der Dateiupload erfolgreich war. |
+| statusCode | Eine ganze Zahl, die den Statuscode des Dateiuploads darstellt. In der Regel drei Ziffern; zum Beispiel 200 oder 201. |
+| statusDescription | Eine Beschreibung des Dateiuploadstatus. |
+
+Wenn eine Benachrichtigung über den abgeschlossenen Dateiupload vom Gerät empfangen wird, gibt es folgende Aktionen des IoT Hubs:
+
+* Löst eine Dateiuploadbenachrichtigung an Back-End-Dienste aus, wenn Dateiuploadbenachrichtigungen konfiguriert sind.
+
+* Gibt die dem Dateiupload zugeordneten Ressourcen frei. Ohne Benachrichtigungen verwaltet IoT Hub die Ressourcen, bis die dem Upload zugeordnete SAS-URI-Gültigkeitsdauer (Time-to-Live, TTL) abläuft.
+
+## <a name="service-file-upload-notifications"></a>Service: Benachrichtigungen zum Dateiupload
+
+Wenn Dateiuploadbenachrichtigungen auf Ihrem IoT Hub aktiviert sind, wird eine Benachrichtigung für Back-End-Dienste generiert, wenn von einem Gerät eine Benachrichtigung darüber empfangen wird, dass ein Dateiupload abgeschlossen ist. IoT Hub übermittelt diese Dateiuploadbenachrichtigungen über einen dienstseitigen Endpunkt. Die Empfangssemantik für Dateiuploadbenachrichtigungen entspricht der Empfangssemantik für C2D-Nachrichten und weist den gleichen [Nachrichtenlebenszyklus](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle) auf. Die Dienst-SDKs machen APIs verfügbar, um Dateiuploadbenachrichtigungen zu verarbeiten.
+
+**Unterstützte Protokolle**: AMQP, AMQP-WS <br/>
+**Endpunkt**: {iot hub}.azure-devices.net/messages/servicebound/fileuploadnotifications <br/>
+**Methode**: GET
+
+Jede Nachricht, die vom Endpunkt für Dateiuploadbenachrichtigungen abgerufen wird, ist ein JSON-Datensatz mit den folgenden Eigenschaften:
 
 ```json
 {
     "deviceId":"mydevice",
-    "blobUri":"https://{storage account}.blob.core.windows.net/{container name}/mydevice/myfile.jpg",
-    "blobName":"mydevice/myfile.jpg",
-    "lastUpdatedTime":"2016-06-01T21:22:41+00:00",
-    "blobSizeInBytes":1234,
-    "enqueuedTimeUtc":"2016-06-01T21:22:43.7996883Z"
+    "blobUri":"https://contosostorageaccount.blob.core.windows.net/device-upload-container/mydevice/myfile.txt",
+    "blobName":"mydevice/myfile.txt",
+    "lastUpdatedTime":"2021-07-31T00:26:50+00:00",
+    "blobSizeInBytes":11,
+    "enqueuedTimeUtc":"2021-07-31T00:26:51.5134008Z"
 }
 ```
 
-### <a name="file-upload-notification-configuration-options"></a>Konfigurationsoptionen für Dateiuploadbenachrichtigungen
+| Eigenschaft | BESCHREIBUNG |
+| --- | --- |
+| EnqueuedTimeUtc | Zeitstempel, der die Erstellung der Benachrichtigung angibt. |
+| deviceId | Die Geräte-ID des Geräts, das die Datei hochgeladen hat. |
+| BlobUri | Der URI der hochgeladenen Datei. |
+| Blob-Name | Der Name der hochgeladenen Datei. Der Name weist folgendes Format auf: `{device ID of the device}/{name of the blob}`|
+| lastUpdatedTime |Zeitstempel, der die letzte Aktualisierung der Datei angibt. |
+| BlobSizeInBytes | Eine ganze Zahl, die die Größe der hochgeladenen Datei in Bytes darstellt. |
 
-Jeder IoT-Hub weist die folgenden Konfigurationsoptionen für Dateiuploadbenachrichtigungen auf:
-
-| Eigenschaft | BESCHREIBUNG | Bereich und Standardwert |
-| --- | --- | --- |
-| **enableFileUploadNotifications** |Steuert, ob Dateiuploadbenachrichtigungen in den Endpunkt für Dateibenachrichtigungen geschrieben werden. |Bool. Standardwert: TRUE. |
-| **fileNotifications.ttlAsIso8601** |Standardgültigkeitsdauer für Dateiuploadbenachrichtigungen. |ISO_8601-Intervall bis zu 48 Stunden (mindestens 1 Minute). Standardwert: 1 Stunde. |
-| **fileNotifications.lockDuration** |Sperrdauer für die Warteschlange der Dateiuploadbenachrichtigungen. |5 bis 300 Sekunden (mindestens 5 Sekunden). Standardwert: 60 Sekunden. |
-| **fileNotifications.maxDeliveryCount** |Maximale Übermittlungsanzahl für die Warteschlange der Dateiuploadbenachrichtigungen. |1 bis 100. Standardwert: 100. |
-
-Sie können diese Eigenschaften für Ihren IoT-Hub über das Azure-Portal, Azure CLI oder PowerShell festlegen. Entsprechende Informationen finden Sie in den Themen unter [Konfigurieren des Dateiuploads](iot-hub-configure-file-upload.md).
-
-## <a name="additional-reference-material"></a>Weiteres Referenzmaterial
-
-Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
-
-* Unter [IoT Hub-Endpunkte](iot-hub-devguide-endpoints.md) werden die verschiedenen IoT Hub-Endpunkte für Laufzeit- und Verwaltungsvorgänge beschrieben.
-
-* Unter [Drosselung und Kontingente](iot-hub-devguide-quotas-throttling.md) werden die Kontingente und das Drosselungsverhalten des IoT Hub-Diensts beschrieben.
-
-* Unter [Verstehen und Verwenden von Azure IoT Hub SDKs](iot-hub-devguide-sdks.md) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
-
-* Unter [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) wird die Abfragesprache beschrieben, mit der Sie Informationen zu Gerätezwillingen und Aufträgen aus IoT Hub abrufen können.
-
-* [Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT](iot-hub-mqtt-support.md) enthält weitere Informationen zur IoT Hub-Unterstützung für das MQTT-Protokoll.
+Dienste können Benachrichtigungen zum Verwalten von Uploads verwenden. Beispielsweise können sie ihre eigene Verarbeitung der Blobdaten auslösen, die Verarbeitung der Blobdaten mit anderen Azure-Diensten auslösen oder die Dateiuploadbenachrichtigung zur späteren Überprüfung protokollieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie gelernt haben, wie Sie Dateien mithilfe von IoT Hub von Geräten hochladen, sind möglicherweise die folgenden Themen im IoT Hub-Entwicklerhandbuch für Sie interessant:
+* [Anleitungen zum Dateiupload](iot-hub-csharp-csharp-file-upload.md)
 
-* [Verwalten von Geräteidentitäten in IoT Hub](iot-hub-devguide-identity-registry.md)
+* [Konfigurieren von Dateiuploads auf IoT Hub](iot-hub-configure-file-upload.md)
 
-* [Verwalten des Zugriffs auf IoT Hub](iot-hub-devguide-security.md)
+* [Konfigurieren von verwalteten Identitäten auf IoT Hub](iot-hub-managed-identity.md)
 
-* [Verwenden von Gerätezwillingen zum Synchronisieren von Status und Konfigurationen](iot-hub-devguide-device-twins.md)
+* [Dokumentation zu Azure Blob Storage](/azure/storage/blobs/)
 
-* [Aufrufen einer direkten Methode auf einem Gerät](iot-hub-devguide-direct-methods.md)
-
-* [Planen von Aufträgen auf mehreren Geräten](iot-hub-devguide-jobs.md)
-
-Um einige der in diesem Artikel beschriebenen Konzepte auszuprobieren, sehen Sie sich das folgende IoT Hub-Tutorial an:
-
-* [Hochladen von Dateien von Geräten in die Cloud mit IoT Hub](iot-hub-csharp-csharp-file-upload.md)
+* Unter [Verstehen und Verwenden von Azure IoT Hub SDKs](iot-hub-devguide-sdks.md) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.

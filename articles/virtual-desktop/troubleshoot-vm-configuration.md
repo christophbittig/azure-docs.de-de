@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: aa54932a6093c5c1a22285de9449b2faee06fe67
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4e3b2ab5f775b566a3d820523737200dd3dc5dd3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818540"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467072"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguration des virtuellen Sitzungshostcomputers
 
@@ -178,7 +178,7 @@ Wenn der Azure Virtual Desktop-Agent zum ersten Mal auf Sitzungshost-VMs install
 
 ## <a name="troubleshooting-issues-with-the-azure-virtual-desktop-side-by-side-stack"></a>Problembehandlung beim parallelen Stapel für Azure Virtual Desktop
 
-Der parallele Stapel für Azure Virtual Desktop wird automatisch mit Windows Server 2019 installiert. Verwenden Sie Microsoft Installer (MSI), um den parallelen Stapel unter Microsoft Windows Server 2016 oder Windows Server 2012 R2 zu installieren. Für Microsoft Windows 10 wird der parallele Stapel für Azure Virtual Desktop mit **enablesxstackrs.ps1** aktiviert.
+Der parallele Stapel für Azure Virtual Desktop wird automatisch mit Windows Server 2019 und neuer installiert. Verwenden Sie Microsoft Installer (MSI), um den parallelen Stapel unter Microsoft Windows Server 2016 oder Windows Server 2012 R2 zu installieren. Für Microsoft Windows 10 wird der parallele Stapel für Azure Virtual Desktop mit **enablesxstackrs.ps1** aktiviert.
 
 Es gibt drei Hauptmethoden, wie der parallele Stapel auf Sitzungshostpool-VMs installiert oder aktiviert wird:
 

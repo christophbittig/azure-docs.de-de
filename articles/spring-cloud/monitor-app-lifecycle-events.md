@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 08/19/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 77e6704808cf54f84f0261c07236bfa27d17a1f6
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 594c8f48a51b386c687feda5d46a2423dd4e973b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835864"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064029"
 ---
 # <a name="monitor-app-lifecycle-events-using-azure-activity-log-and-azure-service-health"></a>Überwachen von App-Lebenszyklusereignissen mithilfe des Azure-Aktivitätsprotokolls und der Azure Service Health
 
@@ -23,7 +23,7 @@ Der Azure Spring Cloud-Dienst bietet integrierte Tools zum Überwachen des Statu
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-- Eine bereitgestellte Azure Spring Cloud Dienstinstanz und mindestens eine Anwendung, die bereits in Ihrer Dienstinstanz erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](quickstart.md). 
+- Eine bereitgestellte Azure Spring Cloud Dienstinstanz und mindestens eine Anwendung, die bereits in Ihrer Dienstinstanz erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Bereitstellen Ihrer ersten Spring Boot-App in Azure Spring Cloud](quickstart.md). 
 
 ## <a name="monitor-app-lifecycle-events-triggered-by-users-in-azure-activity-logs"></a>Überwachen von App-Lebenszyklusereignissen, die von Benutzern in Azure-Aktivitätsprotokollen ausgelöst werden
 
@@ -63,6 +63,9 @@ Ihre App kann während der Plattformwartung neu gestartet werden. Sie können ü
 Wenn eine Plattformwartung erfolgt, zeigt Ihre Azure Spring Cloud-Instanz auch den Status **beeinträchtigt** an. Wenn während der Plattformwartung ein Neustart erforderlich ist, führt Azure Spring Cloud ein paralleles Update aus, um Ihre Anwendungen inkrementell zu aktualisieren. Parallele Updates sind so konzipiert, dass Ihre Workloads ohne Ausfallzeiten aktualisiert werden. Den aktuellen Status finden Sie auf der Seite Integritätsverlauf.
 
 :::image type="content" source="media/monitor-app-lifecycle-events/planned-maintenance-in-progress.png" lightbox="media/monitor-app-lifecycle-events/planned-maintenance-in-progress.png" alt-text="Ein Screenshot, der eine Beispielprotokolls für die geplante Wartung in Bearbeitung zeigt":::
+
+>[!NOTE]
+> Derzeit führt Azure Spring Cloud eine regelmäßige geplante Wartung durch, um die zugrunde liegende Kubernetes-Version alle zwei bis vier Monate zu aktualisieren. Eine ausführliche Wartungszeitachse finden Sie auf der Seite „Azure Service Health Benachrichtigungen“.
 
 ## <a name="set-up-alerts"></a>Einrichten von Warnungen
 

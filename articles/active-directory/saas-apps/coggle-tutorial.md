@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Coggle | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Coggle'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Coggle konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 10/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 877462f22e0a3665b4956618078bb05aa95e186d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1ced5a644902af52c8420057157331260ccc1228
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124747512"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305021"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coggle"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Coggle
+# <a name="tutorial-azure-ad-sso-integration-with-coggle"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Coggle
 
 In diesem Tutorial erfahren Sie, wie Sie Coggle in Azure Active Directory (Azure AD) integrieren. Die Integration von Coggle in Azure AD ermöglicht Folgendes:
 
 * Steuern Sie in Azure AD, wer Zugriff auf Coggle hat.
 * Ermöglichen Sie Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Coggle anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,28 +37,25 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Coggle unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden
-* Coggle unterstützt die **Just-in-Time**-Benutzerbereitstellung
+* Coggle unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+* Coggle unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-* Nach dem Konfigurieren von Coggle können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
-
-## <a name="adding-coggle-from-the-gallery"></a>Hinzufügen von Coggle aus dem Katalog
+## <a name="add-coggle-from-the-gallery"></a>Hinzufügen von Coggle aus dem Katalog
 
 Um die Integration von Coggle in Azure AD zu konfigurieren, müssen Sie Coggle aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Coggle** im Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Coggle** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-coggle"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Coggle
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Coggle mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Coggle eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Coggle müssen Sie die folgenden Bausteine ausführen:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Coggle die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
@@ -73,9 +68,9 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Coggle m
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Coggle** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Coggle** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -129,13 +124,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Coggle** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
@@ -146,19 +135,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Klicken Sie auf das **Coggle**-Konto, und wählen Sie **Meine Einstellungen** aus.
 
-    ![Screenshot: Coggle-Unternehmenswebsite mit ausgewählter Option „Meine Einstellungen“](./media/Coggle-tutorial/configure1.png)
+    ![Screenshot: Coggle-Unternehmenswebsite mit ausgewählter Option „Meine Einstellungen“](./media/Coggle-tutorial/settings.png)
 
 3. Klicken Sie auf das folgende **Logo**, und wählen Sie **Authentifizierung** aus.
 
-    ![Screenshot: Walsymbol und ausgewählte Option „Authentifizierung“](./media/Coggle-tutorial/configure2.png)
+    ![Screenshot: Walsymbol und ausgewählte Option „Authentifizierung“](./media/Coggle-tutorial/logo.png)
 
 4. Klicken Sie auf **SAML-Konfiguration bearbeiten**.
 
-    ![Screenshot: Seite „SAML Integration“ (SAML-Integration) mit der Option „Edit SAML Config“ (SAML-Konfiguration bearbeiten)](./media/Coggle-tutorial/configure3.png)
+    ![Screenshot: Seite „SAML Integration“ (SAML-Integration) mit der Option „Edit SAML Config“ (SAML-Konfiguration bearbeiten)](./media/Coggle-tutorial/users.png)
 
 5. Führen Sie auf der Dialogseite **SAML.Integration** die folgenden Schritte aus:
 
-    ![Screenshot: Seite „SAML Integration“ (SAML-Integration) zum Eingeben der Informationen in diesem Schritt](./media/Coggle-tutorial/configure4.png)
+    ![Screenshot: Seite „SAML Integration“ (SAML-Integration) zum Eingeben der Informationen in diesem Schritt](./media/Coggle-tutorial/certificate.png)
 
     a. Fügen Sie im Textfeld **Einstiegspunkt (URL für einmaliges Anmelden des Identitätsanbieters)** den Wert der **Anmelde-URL** ein, den Sie im Azure-Portal kopiert haben.
 
@@ -172,20 +161,20 @@ In diesem Abschnitt wird in Coggle ein Benutzer namens B. Simon erstellt. Coggl
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Coggle“ klicken, sollten Sie automatisch bei der Coggle-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Coggle weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Rufen Sie direkt die Anmelde-URL für Coggle auf, und initiieren Sie den Anmeldeflow.
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP-initiiert:
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Coggle-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-- [Testen von Coggle mit Azure AD](https://aad.portal.azure.com/)
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Coggle“ unter „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Coggle-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)
+Nach dem Konfigurieren von Coggle können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

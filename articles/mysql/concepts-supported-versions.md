@@ -6,13 +6,13 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.custom: ''
-ms.date: 6/3/2020
-ms.openlocfilehash: 1dc37ae36703e334ca132b52749edbcdb9b3a602
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.date: 11/4/2021
+ms.openlocfilehash: 466b3706c2814f4cb833e441c7d19f5d7b2895fe
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164771"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845891"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Unterstützte Azure-Datenbank für MySQL-Serverversionen
 
@@ -24,7 +24,7 @@ Azure Database for MySQL wurde basierend auf [MySQL Community Edition](https://w
 
 Bei der Bereitstellungsoption „Einzelserver“ werden die Verbindungen mit einem Gateway zu Serverinstanzen umgeleitet. Sobald die Verbindung hergestellt ist, zeigt der MySQL-Client die im Gateway festgelegte Version von MySQL an, nicht die tatsächliche Version, die auf Ihrer MySQL-Serverinstanz ausgeführt wird. Um die Version Ihrer MySQL-Serverinstanz zu ermitteln, geben Sie den `SELECT VERSION();`-Befehl an der MySQL-Eingabeaufforderung ein. Überprüfen Sie die [Konnektivitätsarchitektur](./concepts-connectivity-architecture.md#connectivity-architecture), um mehr über Gateways in der Dienstarchitektur von Azure Database for MySQL zu erfahren.
 
-Da Azure Database for MySQL die Hauptversionen v5.7 und v8.0 unterstützt, führt der Standardport 3306 zum Herstellen einer Verbindung mit Azure Database for MySQL die MySQL-Clientversion 5.7 (kleinster gemeinsamer Nenner) aus, um Verbindungen mit Servern der 2 unterstützten Hauptversionen zu unterstützen. Wenn Ihre Anwendung jedoch eine Verbindung zu einer bestimmten Hauptversion, z. B. v5.7 oder v8.0, herstellen muss, können Sie dies tun, indem Sie den Port in der Verbindungszeichenfolge Ihres Servers ändern.
+Da Azure Database for MySQL die Hauptversionen v5.7 und v8.0 unterstützt, führt der Standardport 3306 zum Herstellen einer Verbindung mit Azure Database for MySQL die MySQL-Clientversion 5.6 (kleinster gemeinsamer Nenner) aus, um Verbindungen mit Servern beider unterstützter Hauptversionen zu unterstützen. Wenn Ihre Anwendung jedoch eine Verbindung zu einer bestimmten Hauptversion, z. B. v5.7 oder v8.0, herstellen muss, können Sie dies tun, indem Sie den Port in der Verbindungszeichenfolge Ihres Servers ändern.
 
 Im Azure Database für den MySQL-Dienst lauschen die Gateway-Knoten auf Port 3308 für v5.7-Clients und Port 3309 für v8.0-Clients. Mit anderen Worten: Wenn Sie eine Verbindung zum v5.7-Gateway-Client herstellen möchten, sollten Sie Ihren voll qualifizierten Servernamen und Port 3308 verwenden, um von der Client-Anwendung aus eine Verbindung zu Ihrem Server herzustellen. Ähnlich verhält es sich, wenn Sie eine Verbindung zum v8.0-Gateway-Client herstellen möchten. Sie können Ihren voll qualifizierten Servernamen und Port 3309 verwenden, um sich mit Ihrem Server zu verbinden. Prüfen Sie das folgende Beispiel, um mehr Klarheit zu erhalten.
 

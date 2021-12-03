@@ -1,14 +1,14 @@
 ---
 title: Erstellen benutzerdefinierter Artefakte für Ihren virtuellen DevTest Labs-Computer
-description: Hier erfahren Sie, wie Sie Artefakte erstellen, die mit Azure DevTest Labs zum Bereitstellen und Einrichten von Anwendungen nach der Bereitstellung eines virtuellen Computers verwendet werden.
+description: Erfahren Sie, wie Sie Artefakte für die Bereitstellung und Einrichtung von Anwendungen nach der Bereitstellung eines virtuellen Computers erstellen und verwenden können.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: e19cd5002c150346661654930c22943d5cbc2523
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b10104a2dae0a81fde109901fed5341159785264
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662944"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325142"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Erstellen benutzerdefinierter Artefakte für Ihren virtuellen DevTest Labs-Computer
 
@@ -46,13 +46,13 @@ Das folgende Beispiel zeigt die Abschnitte, die die grundlegende Struktur einer 
 
 | Elementname | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
-| $schema |Nein |Speicherort der JSON-Schemadatei Mithilfe der JSON-Schemadatei können Sie die Gültigkeit der Definitionsdatei testen. |
-| title |Ja |Der Name des im Lab angezeigten Artefakts. |
-| description |Ja |Die Beschreibung des im Lab angezeigten Artefakts. |
-| iconUri |Nein |Der URI des im Lab angezeigten Symbols |
-| targetOsType |Ja |Das Betriebssystem der VM, auf der das Artefakt installiert ist. Unterstützte Optionen sind „Windows“ und „Linux“. |
-| parameters |Nein |Werte, die bereitgestellt werden, wenn der Artefaktinstallationsbefehl auf einem Computer ausgeführt wird. Dieser ermöglicht die Anpassung Ihres Artefakts. |
-| runCommand |Ja |Artefaktinstallationsbefehl, der auf einem virtuellen Computer ausgeführt wird. |
+| `$schema` |Nein |Speicherort der JSON-Schemadatei Mithilfe der JSON-Schemadatei können Sie die Gültigkeit der Definitionsdatei testen. |
+| `title` |Ja |Der Name des im Lab angezeigten Artefakts. |
+| `description` |Ja |Die Beschreibung des im Lab angezeigten Artefakts. |
+| `iconUri` |Nein |Der URI des im Lab angezeigten Symbols |
+| `targetOsType` |Ja |Das Betriebssystem der VM, auf der das Artefakt installiert ist. Unterstützte Optionen sind „Windows“ und „Linux“. |
+| `parameters` |Nein |Werte, die bereitgestellt werden, wenn der Artefaktinstallationsbefehl auf einem Computer ausgeführt wird. Parameter helfen Ihnen beim Anpassen Ihres Artefakts. |
+| `runCommand` |Ja |Artefaktinstallationsbefehl, der auf einem virtuellen Computer ausgeführt wird. |
 
 ### <a name="artifact-parameters"></a>Artefaktparameter
 Geben Sie im Parameterabschnitt der Definitionsdatei an, welche Werte ein Benutzer beim Installieren eines Artefakts eingeben kann. Auf diese Werte können Sie im Artefaktinstallationsbefehl verweisen.
@@ -71,16 +71,16 @@ Sie definieren Parameter mit der folgenden Struktur:
 
 | Elementname | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
-| type |Ja |Der Typ des Parameterwerts. In der folgenden Liste finden Sie die zulässigen Typen. |
-| displayName |Ja |Der Name des Parameters, der einem Benutzer im Labor angezeigt wird. |
-| description |Ja |Die Beschreibung des Parameters, der im Labor angezeigt wird. |
+| `type` |Ja |Der Typ des Parameterwerts. In der folgenden Liste finden Sie die zulässigen Typen. |
+| `displayName` |Ja |Der Name des Parameters, der einem Benutzer im Labor angezeigt wird. |
+| `description` |Ja |Die Beschreibung des Parameters, der im Labor angezeigt wird. |
 
 Folgende Typen sind zulässig:
 
-* „string“ (eine beliebige gültige JSON-Zeichenfolge)
-* „int“ (eine gültige JSON-Ganzzahl)
-* „bool“ (ein gültiger boolescher JSON-Wert)
-* „array“ (ein gültiges JSON-Array)
+* `string` (jede beliebige gültige JSON-Zeichenfolge)
+* `int` (jede beliebige gültige JSON-Ganzzahl)
+* `bool` (jeder beliebige gültige JSON Boolesche Wert)
+* `array` (jede beliebige gültige JSON-Anordnung)
 
 ## <a name="secrets-as-secure-strings"></a>Geheimnisse als sichere Zeichenfolgen
 Deklarieren Sie Geheimnisse als sichere Zeichenfolgen. Hier ist die Syntax zum Deklarieren eines Parameters für eine sichere Zeichenfolge im Abschnitt `parameters` der Datei **artifactfile.json** angegeben:
@@ -105,17 +105,17 @@ Führen Sie für den Befehl zum Installieren des Artefakts das PowerShell-Skript
 
 Alle Informationen zum „artifactfile.json“-Beispiel und zu „artifact.ps1“ (PowerShell-Skript) finden Sie unter [diesem Beispiel auf GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes).
 
-Ein weiterer wichtiger Punkt, der beachtet werden sollte, ist das Verzichten auf die Protokollierung von Geheimnissen in der Konsole, da die Ausgabe für das Debuggen von Benutzern erfasst wird. 
+Ein weiterer wichtiger Punkt ist, keine Geheimnisse auf der Konsole zu protokollieren, da die Ausgabe für das Fehlerbehebungsverfahren von Benutzern aufgezeichnet wird. 
 
 ## <a name="artifact-expressions-and-functions"></a>Ausdrücke und Funktionen für Artefakte
-Sie können zum Erstellen des Artefaktinstallationsbefehls Ausdrücke und Funktionen verwenden.
-Ausdrücke werden in Klammern eingeschlossen ([ und ]) und beim Installieren des Artefakts ausgewertet. Ausdrücke können an einer beliebigen Stelle in einem JSON-Zeichenfolgenwert angezeigt werden. Ausdrücke geben stets einen anderen JSON-Wert zurück. Wenn Sie ein Zeichenfolgenliteral verwenden müssen, das mit einer eckigen Klammer ([) beginnt, müssen Sie zwei eckige Klammern verwenden ([[).
+Sie können zum Erstellen des Artefaktinstallationsbefehls Ausdrücke und Funktionen verwenden. Ausdrücke werten aus, wenn das Artefakt installiert wird. Ausdrücke können überall in einem JSON-Zeichenfolgenwert erscheinen und führen immer zu einem anderen JSON-Wert. Schließen Sie Ausdrücke in eckige Klammern ein, [ und ]. Wenn Sie eine Zeichenkette verwenden müssen, die mit einer [ Klammer beginnt, verwenden Sie zwei Klammern [[.
+
 In der Regel verwenden Sie Ausdrücke mit Funktionen, um einen Wert zu erstellen. Genau wie in JavaScript haben Funktionsaufrufe das Format **functionName(arg1, arg2, arg3)** .
 
 Die folgende Liste zeigt häufig verwendete Funktionen:
 
 * **parameters(parameterName)** : Gibt einen Parameterwert zurück, der beim Ausführen des Artefaktbefehls bereitgestellt wird.
-* **concat(arg1, arg2, arg3,….. )** : Kombiniert mehrere Zeichenfolgenwerte. Diese Funktion kann eine Vielzahl an Argumenten entgegennehmen.
+* **concat(arg1, arg2, arg3,….. )** : Kombiniert mehrere Zeichenfolgenwerte. Diese Funktion kann verschiedene Argumente verwenden.
 
 Das folgende Beispiel zeigt, wie Sie mit Ausdrücken und Funktionen einen Wert erstellen:
 
@@ -131,7 +131,7 @@ Das folgende Beispiel zeigt, wie Sie mit Ausdrücken und Funktionen einen Wert e
 ## <a name="create-a-custom-artifact"></a>Erstellen eines benutzerdefinierten Artefakts
 
 1. Installieren Sie einen JSON-Editor. Sie benötigen zum Bearbeiten von Artefaktdefinitionsdateien einen JSON-Editor. Empfehlenswert ist [Visual Studio Code](https://code.visualstudio.com/), der für Windows, Linux und OS X verfügbar ist.
-2. Rufen Sie die Beispieldefinitionsdatei „artifactfile.json“ ab. Sehen Sie sich die Artefakte in unserem [GitHub-Repository](https://github.com/Azure/azure-devtestlab) an, die vom DevTest Labs-Team erstellt wurden. Wir haben eine umfangreiche Bibliothek an Artefakten erstellt, mit der Sie eigene Artefakte erstellen können. Laden Sie eine Artefaktdefinitionsdatei herunter, und nehmen Sie an dieser Änderungen vor, um eigene Artefakte zu erstellen.
+2. Rufen Sie die Beispieldefinitionsdatei „artifactfile.json“ ab. Sehen Sie sich die Artefakte in unserem [GitHub-Repository](https://github.com/Azure/azure-devtestlab) an, die vom DevTest Labs-Team erstellt wurden. Wir haben eine umfangreiche Bibliothek von Artefakten erstellt, die Ihnen bei der Erstellung Ihrer eigenen Artefakte helfen kann. Laden Sie eine Artefaktdefinitionsdatei herunter, und nehmen Sie an dieser Änderungen vor, um eigene Artefakte zu erstellen.
 3. Verwenden Sie IntelliSense. Zeigen Sie mithilfe von IntelliSense gültige Elemente an, die zum Erstellen einer Artefaktdefinitionsdatei verwendet werden können. Sie können auch die verschiedenen Optionen für die Werte eines Elements sehen. Beispielsweise zeigt IntelliSense beim Bearbeiten des **targetOsType**-Elements die beiden Wahlmöglichkeiten für Windows und Linux an.
 4. Speichern Sie das Artefakt im [öffentlichen Git-Repository für DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) oder in [Ihrem eigenen Git-Repository](devtest-lab-add-artifact-repo.md). Im öffentlichen Repository können Sie Artefakte anzeigen, die von anderen Benutzern gemeinsam verwendet werden und die Sie direkt verwenden oder entsprechend Ihren Anforderungen anpassen können.
    
@@ -141,7 +141,7 @@ Das folgende Beispiel zeigt, wie Sie mit Ausdrücken und Funktionen einen Wert e
       
       Ein Beispiel für den möglichen Inhalt eines Artefaktordners:
       
-      ![Beispiel für einen Artefaktordner](./media/devtest-lab-artifact-author/git-repo.png)
+      ![Screenshot, der ein Beispiel für einen Artefaktordner zeigt.](./media/devtest-lab-artifact-author/git-repo.png)
 5. Wenn Sie zum Speichern von Artefakten Ihr eigenes Repository verwenden, fügen Sie das Repository zum Lab hinzu, wie in diesem Artikel beschrieben: [Hinzufügen eines Git-Repositorys für Artefakte und Vorlagen](devtest-lab-add-artifact-repo.md).
 
 ## <a name="related-articles"></a>Verwandte Artikel

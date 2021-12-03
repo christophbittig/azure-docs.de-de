@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 07/06/2021
+ms.date: 10/21/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 7a009cdebf686a79679b7987b3a9071ae3c9421c
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 3c308761c0becae3a3f0d7eb3a33fc1bc76f5918
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427816"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867055"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Herstellen einer Verbindung mit Speicherdiensten in Azure
 
@@ -29,7 +29,7 @@ Informationen dazu, welche Rolle Datenspeicher im Workflow für den Datenzugriff
 Wenn Sie an einer Vorgehensweise ohne größeren Codeaufwand interessiert sind, sollten Sie sich über die Verwendung von [Azure Machine Learning Studio für die Erstellung und Registrierung von Datenspeichern](how-to-connect-data-ui.md#create-datastores) informieren.
 
 >[!TIP]
-> In diesem Artikel wird davon ausgegangen, dass Sie die Verbindung mit Ihrem Speicherdienst per Authentifizierung mit Anmeldeinformationen herstellen möchten, z. B. einem Dienstprinzipal oder einem SAS-Token (Shared Access Signature). Beachten Sie hierbei, dass alle Benutzer mit der Rolle *Leser* für den Arbeitsbereich diese Anmeldeinformationen abrufen können, wenn sie bei Datenspeichern registriert sind. [Lesen Sie die weiteren Informationen zur Rolle *Leser* für Arbeitsbereiche](how-to-assign-roles.md#default-roles). <br><br>Falls dies problematisch sein sollte, können Sie sich über das [Herstellen einer Verbindung mit Speicherdiensten per identitätsbasiertem Zugriff](how-to-identity-based-data-access.md) informieren. <br><br>Diese Funktion ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion, die jederzeit geändert werden kann. 
+> In diesem Artikel wird davon ausgegangen, dass Sie die Verbindung mit Ihrem Speicherdienst per Authentifizierung mit Anmeldeinformationen herstellen möchten, z. B. einem Dienstprinzipal oder einem SAS-Token (Shared Access Signature). Beachten Sie hierbei, dass alle Benutzer mit der Rolle *Leser* für den Arbeitsbereich diese Anmeldeinformationen abrufen können, wenn sie bei Datenspeichern registriert sind. [Lesen Sie die weiteren Informationen zur Rolle *Leser* für Arbeitsbereiche](how-to-assign-roles.md#default-roles). <br><br>Falls dies problematisch sein sollte, können Sie sich über das [Herstellen einer Verbindung mit Speicherdiensten per identitätsbasiertem Zugriff](how-to-identity-based-data-access.md) informieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -92,7 +92,7 @@ Es wird empfohlen, einen Datenspeicher für einen [Azure-Blobcontainer](../stora
 Um sicherzustellen, dass eine sichere Verbindung mit Ihrem Azure-Speicherdienst hergestellt wird, erfordert Azure Machine Learning, dass Sie über die Berechtigung zum Zugreifen auf den entsprechenden Datenspeichercontainer verfügen. Dieser Zugriff ist von den Anmeldeinformationen für die Authentifizierung abhängig, die zum Registrieren des Datenspeichers verwendet werden. 
 
 > [!NOTE]
-> Dieser Leitfaden gilt auch für [Datenspeicher, die mit identitätsbasiertem Zugriff (Vorschauversion) erstellt werden](how-to-identity-based-data-access.md). 
+> Dieser Leitfaden gilt auch für [Datenspeicher, die mit identitätsbasiertem Zugriff erstellt werden](how-to-identity-based-data-access.md). 
 
 ### <a name="virtual-network"></a>Virtuelles Netzwerk 
 

@@ -12,16 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/28/2021
 ms.author: genli
-ms.openlocfilehash: 3cc4cb587a7b2d5d06c249cc8f25bc78cdb86739
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 5c4c129514ccf2fe3b55fc173d3fd4b87fd50715
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165261"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248961"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Behandeln von Problemen mit ausgehenden SMTP-Verbindungen in Azure
 
 Ausgehende E-Mails, die von einem virtuellen Computer (virtual machine, VM) über den Port 25 direkt an externe Domänen (z. B. „outlook.com“ oder „gmail.com“) gesendet werden, sind nur möglich, wenn der virtuelle Computer in bestimmten Abonnementtypen bereitgestellt wird.
+
+> [!IMPORTANT]
+> Für alle nachstehenden Beispiele gilt der Prozess *nur* für Virtual Machines- und Virtual Machine Scale Sets-Ressourcen (`Microsoft.Compute/virtualMachines` & `Microsoft.Compute/virtualMachineScaleSets`). Das Senden von E-Mails über Port 25 wird von allen Azure PaaS-Ressourcen (Platform-as-a-Service ) nicht unterstützt, einschließlich [Azure App Service](https://azure.microsoft.com/services/app-service) und [Azure Functions](https://azure.microsoft.com/services/functions).
 
 ## <a name="recommended-method-of-sending-email"></a>Empfohlene Methode zum Senden von E-Mails
 

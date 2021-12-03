@@ -1,14 +1,14 @@
 ---
 title: Einblicke in Geräte, die von einem bestimmten Sensor erkannt werden
 description: Die Gerätebestand zeigt verschiedenste Geräteattribute an, die von einem Sensor erkannt werden.
-ms.date: 12/06/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 10df10a64059e5f5673a9e4ae6f18a09e4c41838
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: a218cbb8413728813bc818b73e8292144c01541a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113515271"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312474"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Grundlagen zu Sensorerkennungen in einem Gerätebestand
 
@@ -24,9 +24,9 @@ Die Gerätebestand zeigt verschiedenste Geräteattribute an, die von einem Senso
 
 ## <a name="view-device-attributes-in-the-device-inventory"></a>Anzeigen von Geräteattributen im Gerätebestand
 
-Die folgenden Attribute werden in der Gerätebestandstabelle angezeigt:
+Die folgenden Attribute werden in der Gerätebestandstabelle angezeigt.
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 |--|--|
 | Name | Der Name des Geräts, wie er vom Sensor erkannt oder vom Benutzer eingegeben wurde. |
 | type | Der Typ des Geräts, wie er vom Sensor ermittelt oder vom Benutzer eingegeben wurde. |
@@ -44,8 +44,22 @@ Die folgenden Attribute werden in der Gerätebestandstabelle angezeigt:
 | Gruppen | Die Gruppen, in denen dieses Gerät Mitglied ist |
 | Last Activity (Letzte Aktivität) | Die letzte Aktivität, die das Gerät ausgeführt hat |
 | Discovered | Wann dieses Gerät zum ersten Mal im Netzwerk erkannt wurde |
+| **PLC-Modus (Vorschau)** | Der PLC-Betriebsmodus umfasst den Schlüsselzustand (physisch) und den Ausführungszustand (logisch). Mögliche **Schlüsselzustände** sind: „Ausführen“, „Programm“, „Remote“, „Beenden“, „Ungültig“, „Programmieren deaktiviert.Mögliche Ausführung“. Die möglichen **Ausführungszustände** sind: „Ausführen“, „Programm", „Beenden“, „Pausiert“, „Ausnahme“, „Angehalten“, „Eingeschlossen“, „Leerlauf“, „Offline“. Wenn beide Zustände identisch sind, wird nur ein Zustand angezeigt. |
 
-So können Sie den Gerätebestand anzeigen:
+## <a name="what-is-an-inventory-device"></a>Was ist ein Bestandsgerät?
+
+Der Defender für IoT-Gerätebestand zeigt eine Vielzahl von Ressourcenattributen an. Sie werden von Sensoren erkannt, die die Netzwerke und verwalteten Endpunkte der Organisation überwachen.
+
+Defender für IoT identifiziert und klassifiziert Geräte als ein einzelnes eindeutiges Netzwerkgerät im Bestand für:
+
+1. Eigenständige IT-/OT-/IoT-Geräte (mit einem oder mehreren NICs)
+1. Geräte, die aus mehreren Rückwandplatinenkomponenten bestehen (einschließlich aller Racks/Slots/Module)
+1. Geräte, die als Netzwerkinfrastruktur fungieren, z. B. Switch/Router (mit mehreren NICs). 
+
+Öffentliche Internet-IP-Adressen, Multicastgruppen und Broadcastgruppen werden nicht als Bestandsgeräte betrachtet.
+Geräte, die seit mehr als 60 Tagen inaktiv sind, werden als inaktive Bestandsgeräte klassifiziert.
+
+**So können Sie den Gerätebestand anzeigen:**
 
 1. Wählen Sie im linken Bereich die Option **Devices** (Geräte) aus. Der Bereich **Devices** wird auf der rechten Seite geöffnet.
 
@@ -77,7 +91,7 @@ Sie können einen Filter oder eine Kombination von Filtern speichern, wenn Sie d
 
 Die Filter, die Sie speichern, werden auch als Geräteübersichtsgruppe gespeichert. Durch dieses Feature ist eine zusätzliche Granularität bei der Anzeige von Netzwerkgeräten in der Übersicht möglich.
 
-So können Sie Filter erstellen:
+**So können Sie Filter erstellen:**
 
 1. Wählen Sie in der Spalte, die Sie filtern möchten, das Symbol :::image type="icon" source="media/how-to-work-with-asset-inventory-information/filter-icon.png" border="false"::: aus.
 
@@ -171,7 +185,7 @@ Sie können das Skript einmal bereitstellen oder laufende Abfragen mithilfe der 
 
 - Wenn Sie das Skript wieder am selben Speicherort ausführen, werden diese Dateien überschrieben.
 
-So führen Sie das Skript aus  
+**So führen Sie das Skript aus** 
 
 1. Kopieren Sie das Skript auf ein lokales Laufwerk, und entpacken Sie es. Die folgenden Dateien werden angezeigt:
 
@@ -199,7 +213,7 @@ Dateien, die von den Abfragen generiert werden, können in einem Ordner abgelegt
 
 Ändern Sie keine Dateinamen.
 
-So importieren Sie die Informationen:
+**So importieren Sie die Informationen:**
 
 1. Wählen Sie im Dialogfeld **Import Windows Configuration** (Windows-Konfigurationen importieren) **Import Settings** (Einstellungen importieren) aus.
 

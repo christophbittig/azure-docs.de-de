@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: def376920d111f915edfa7f367fcbedd4bc370f4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5fb5a7c83aba80d5eb58bac4437121ce37b6345a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124778056"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024389"
 ---
 # <a name="copy-data-from-db2-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus DB2 mithilfe von Azure Data Factory oder Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]

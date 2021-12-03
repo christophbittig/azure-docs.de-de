@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 11/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 948005942be193c8b15c363282aa06c006eb244e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cf0f2f2f970e9082f56a90efb5a6508b0b00e32
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727616"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331963"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in VMware
 
@@ -97,7 +97,8 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware berei
 
 4. Wählen Sie im rechten Bereich unter **Datenspeicher** den Datenspeicher aus, in den Sie das VMDK hochladen möchten. 
 
-    - Der Datenspeicher muss vom Typ VMFS5 sein. 
+    - Der Datenspeicher muss vom Typ VMFS5 sein. Databox Gateway wurde mit VMWare mit dem VMFS5-Datenspeicher getestet. Spätere Datenspeicherversionen, einschließlich VMFS6, werden nicht unterstützt.
+
     - Der Datenspeicher muss zudem über genügend freien Speicherplatz für die Datenträger für das Betriebssystem und die Daten verfügen.
    
 5. Klicken Sie mit der rechten Maustaste, und wählen Sie **Datenspeicher durchsuchen** aus.

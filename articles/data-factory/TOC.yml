@@ -228,6 +228,9 @@ items:
                 href: concepts-integration-runtime-performance.md
               - name: Verwalten der Datenflusscanvas
                 href: concepts-data-flow-manage-graph.md
+              - name: Flowlets
+                href: concepts-data-flow-flowlet.md
+                displayName: flowlet
               - name: Ausdrucks-Generator
                 href: concepts-data-flow-expression-builder.md
                 displayName: 'regex, regular expressions'
@@ -643,6 +646,9 @@ items:
             href: data-flow-filter.md
           - name: Vereinfachen
             href: data-flow-flatten.md
+          - name: Flowlet
+            href: data-flow-flowlet.md
+            displayName: flowlet
           - name: Join
             href: data-flow-join.md
             displayName: 'merge, timeout'
@@ -707,6 +713,8 @@ items:
           - name: Verschlüsseln der Anmeldeinformationen für die selbstgehostete Integrationslaufzeit
             href: encrypt-credentials-self-hosted-integration-runtime.md
             displayName: self hosted
+          - name: Anmeldeinformationen in Data Factory
+            href: credentials.md
           - name: Verwaltete Identität für Data Factory
             href: data-factory-service-identity.md
           - name: Verschlüsseln von Data Factory mit vom Kunden verwalteten Schlüsseln
@@ -739,6 +747,8 @@ items:
                 href: monitor-install-analytics.md
           - name: Überwachung mit SDKs
             href: monitor-programmatically.md
+          - name: Pipelinefehler und Fehlerbehandlung
+            href: tutorial-pipeline-failure-error-handling.md
           - name: Überwachen von Pipelines mit E-Mail-Benachrichtigungen
             href: how-to-send-email.md
           - name: "Überwachen von Pipelines mit Microsoft\_Teams-Benachrichtigungen"
@@ -821,7 +831,11 @@ items:
                 href: join-azure-ssis-integration-runtime-virtual-network.md
               - name: Konfiguration von virtuellen Netzwerken
                 href: azure-ssis-integration-runtime-virtual-network-configuration.md
-              - name: Verwenden der Benutzeroberfläche von Azure Data Factory Studio
+              - name: Einschleusung virtueller Express-Netzwerke
+                href: azure-ssis-integration-runtime-express-virtual-network-injection.md
+              - name: Einschleusung virtueller Standardnetzwerke
+                href: azure-ssis-integration-runtime-standard-virtual-network-injection.md
+              - name: Verwenden der Azure Data Factory-Benutzeroberfläche
                 href: join-azure-ssis-integration-runtime-virtual-network-ui.md
               - name: Verwenden von Azure PowerShell
                 href: join-azure-ssis-integration-runtime-virtual-network-powershell.md
@@ -937,6 +951,8 @@ items:
             href: solution-template-move-files.md
           - name: Transformation mit Azure Databricks
             href: solution-template-databricks-notebook.md
+          - name: Aufrufen der Synapse-Pipeline mit einer Notebookaktivität
+            href: solution-template-synapse-notebook.md
       - name: Grundlegendes zu Preisen
         items:
           - name: Übersicht über reservierte Kapazität für Datenflüsse
@@ -1067,5 +1083,7 @@ items:
         href: 'https://azure.microsoft.com/global-infrastructure/services/'
       - name: Supportoptionen
         href: 'https://azure.microsoft.com/support/options/'
+      - name: Anfordern von Kontingenterhöhungen beim Support
+        href: quota-increase.md
       - name: Grenzwerte
         href: ../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits

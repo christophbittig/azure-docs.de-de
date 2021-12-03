@@ -126,19 +126,28 @@
       href: samples-rest.md
 - name: Konzepte
   items:
-    - name: Volltextsuche
-      href: search-lucene-query-architecture.md
-    - name: Analysemodule
-      href: search-analyzers.md
-    - name: Semantische Suche
-      href: semantic-search-overview.md
-    - name: Relevanzbewertung
-      href: index-similarity-and-scoring.md
-    - name: Indexer
-      href: search-indexer-overview.md
-    - name: KI-Anreicherung
-      href: cognitive-search-concept-intro.md
+    - name: Suche
       items:
+        - name: Volltextsuche
+          href: search-lucene-query-architecture.md
+        - name: Semantische Suche
+          href: semantic-search-overview.md
+        - name: Abfragetypen und Komposition
+          href: search-query-overview.md
+        - name: Relevanzbewertung
+          href: index-similarity-and-scoring.md
+    - name: Indizierung
+      items:
+        - name: Suchindizes
+          href: search-what-is-an-index.md
+        - name: Analyzer
+          href: search-analyzers.md
+        - name: Indexer
+          href: search-indexer-overview.md
+    - name: Anreicherung
+      items:
+        - name: Übersicht über Anreicherung
+          href: cognitive-search-concept-intro.md
         - name: Qualifikationsgruppen
           href: cognitive-search-working-with-skillsets.md
         - name: Debugsitzungen
@@ -166,13 +175,13 @@
       items:
         - name: 'Wählen Sie eine Ebene aus:'
           href: search-sku-tier.md
-        - name: Planen der Kapazität
-          href: search-capacity-planning.md
         - name: Erstellen von Diensten
           href: search-create-service-portal.md
         - name: Diensteinschränkungen
           href: search-limits-quotas-capacity.md
-        - name: Verwalten von Kosten
+        - name: Planen der Kapazität
+          href: search-capacity-planning.md
+        - name: Planen und Verwalten von Kosten
           href: search-sku-manage-costs.md
         - name: Verfügbarkeit und Wiederherstellung
           href: search-performance-optimization.md
@@ -257,7 +266,7 @@
     - name: Indizes
       items:
         - name: Erstellen eines Index
-          href: search-what-is-an-index.md
+          href: search-how-to-create-search-index.md
         - name: Erstellen eines mehrsprachigen Index
           href: search-language-support.md
         - name: Synonyme
@@ -340,6 +349,8 @@
               href: search-howto-index-encrypted-blobs.md
         - name: Azure-Tabellen
           href: search-howto-indexing-azure-tables.md
+        - name: Azure Files
+          href: search-file-storage-integration.md
         - name: Azure Cosmos DB
           items:
             - name: SQL- und MongoDB-APIs
@@ -404,7 +415,7 @@
               href: knowledge-store-projections-examples.md
             - name: Beispiel für eine Projektion
               href: knowledge-store-projection-example-long.md
-            - name: Anzeigen mit Storage-Explorer
+            - name: Anzeigen mit dem Speicherbrowser
               href: knowledge-store-view-storage-explorer.md
             - name: Herstellen einer Verbindung mit Power BI
               href: knowledge-store-connect-power-bi.md
@@ -418,8 +429,8 @@
           href: semantic-answers.md
         - name: Hinzufügen der Rechtschreibprüfung zu Abfragen
           href: speller-how-to-add.md
-        - name: Abfragetypen und Komposition
-          href: search-query-overview.md
+        - name: Paging und Formatierung von Suchergebnissen
+          href: search-pagination-page-layout.md
         - name: Verwenden von einfacher Syntax (Beispiele)
           href: search-query-simple-examples.md
         - name: Verwenden der vollständigen Lucene-Syntax (Beispiele)
@@ -434,16 +445,6 @@
               href: index-add-suggesters.md
             - name: Hinzufügen von AutoVervollständigen und Vorschlägen
               href: search-add-autocomplete-suggestions.md
-        - name: Paginierung und Anzahl
-          href: search-pagination-page-layout.md
-        - name: Syntaxverweis
-          items:
-            - name: Einfache Abfragesyntax
-              href: query-simple-syntax.md
-            - name: Vollständige Lucene-Abfragesyntax
-              href: query-lucene-syntax.md
-            - name: moreLikeThis (Vorschau)
-              href: search-more-like-this.md
     - name: Filter
       items:
         - name: Übersicht über Filter
@@ -472,12 +473,10 @@
           href: performance-benchmarks.md
         - name: Leistungstipps
           href: search-performance-tips.md
-        - name: Diagnoseprotokollierung
-          href: search-monitor-logs.md
+        - name: Überwachen von Cognitive Search
+          href: monitor-azure-cognitive-search.md
         - name: Visualisieren von Diagnoseprotokollen
           href: search-monitor-logs-powerbi.md
-        - name: Übersicht über die Überwachung
-          href: search-monitor-usage.md
         - name: Überwachen von Abfragen
           href: search-monitor-queries.md
         - name: Überwachen der indexerbasierten Indizierung
@@ -486,12 +485,6 @@
           href: search-traffic-analytics.md
 - name: Verweis
   items:
-    - name: Azure CLI
-      href: /cli/azure/search
-    - name: Azure PowerShell
-      href: /powershell/module/az.search
-    - name: Resource Manager-Vorlage
-      href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
         - name: Search-API
@@ -522,6 +515,17 @@
           href: /python/api/overview/azure/search-documents-readme
         - name: Verwaltungs-API
           href: /python/api/overview/azure/search/management
+    - name: Azure CLI
+      href: /cli/azure/search
+    - name: Azure PowerShell
+      href: /powershell/module/az.search
+    - name: Azure Resource Manager-Vorlage
+      href: /azure/templates/microsoft.search/searchservices
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
+    - name: Überwachen von Daten – Referenz
+      href: monitor-azure-cognitive-search-data-reference.md
     - name: OData-Sprachreferenz
       items:
         - name: Übersicht
@@ -548,6 +552,14 @@
           href: search-query-odata-search-score-function.md
         - name: Grammatik der OData-Sprache
           href: search-query-odata-syntax-reference.md
+    - name: Abfragesyntaxreferenz
+      items:
+        - name: Einfache Abfragesyntax
+          href: query-simple-syntax.md
+        - name: Vollständige Lucene-Abfragesyntax
+          href: query-lucene-syntax.md
+        - name: moreLikeThis (Vorschau)
+          href: search-more-like-this.md
     - name: Referenz zu Skills
       items:
         - name: Integrierte Skills
@@ -599,9 +611,6 @@
               href: cognitive-search-skill-entity-recognition.md
             - name: Stimmung
               href: cognitive-search-skill-sentiment.md
-    - name: Azure Policy-Integrationen
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Azure-Communitysupport

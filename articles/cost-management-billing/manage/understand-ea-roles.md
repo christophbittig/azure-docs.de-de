@@ -2,19 +2,19 @@
 title: Grundlegendes zu Administratorrollen für Enterprise Agreements (EA) in Azure
 description: Erfahren Sie etwas über Enterprise-Administratorrollen in Azure. Sie können fünf verschiedene administrative Rollen zuweisen.
 author: bandersmsft
-ms.reviewer: adwise
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 07/06/2021
+ms.date: 10/22/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 82e5b16ef4f7892a52ea0ec3d332104cbf99bb68
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 08f13b90190e3d05f87947cb7be58cbda8566c8a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765490"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232885"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Verwalten von Azure Enterprise Agreement-Rollen
 
@@ -69,6 +69,8 @@ Die folgenden administrativen Benutzerrollen sind Teil Ihrer Unternehmensregistr
 - Benachrichtigungskontakt
 
 Rollen werden in zwei unterschiedlichen Portalen verwendet, um Aufgaben abzuschließen. Im [Azure Enterprise Portal](https://ea.azure.com) verwalten Sie Abrechnung und Kosten, und im [Azure-Portal](https://portal.azure.com) werden Azure-Dienste verwaltet.
+
+Direkte EA-Kunden können alle administrativen Aufgaben im Azure-Portal ausführen. Mit dem [Azure-Portal](https://portal.azure.com) können Sie die Abrechnung, Kosten und Azure-Dienste verwalten.
 
 Benutzerrollen sind einem Benutzerkonto zugeordnet. Zum Überprüfen der Authentizität des Benutzers muss jeder Benutzer über ein gültiges Geschäfts-, Schul- oder Unikonto oder über ein Microsoft-Konto verfügen. Stellen Sie sicher, dass jedes Konto einer E-Mail-Adresse zugeordnet ist, die aktiv überwacht wird. Kontobenachrichtigungen werden an diese E-Mail-Adresse gesendet.
 
@@ -168,7 +170,8 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 
 ## <a name="add-a-new-enterprise-administrator"></a>Hinzufügen eines neuen Unternehmensadministrators
 
-Unternehmensadministratoren haben die meisten Berechtigungen bei der Verwaltung einer Azure EA-Registrierung. Der erste Azure EA-Administrator wurde erstellt, als die EA-Vereinbarung eingerichtet wurde. Sie können jedoch jederzeit neue Administratoren hinzufügen oder entfernen. Neue Administratoren werden nur von vorhandenen Administratoren hinzugefügt. Weitere Informationen zum Hinzufügen zusätzlicher Unternehmensadministratoren finden Sie unter [Erstellen eines weiteren Unternehmensadministrators](ea-portal-administration.md#create-another-enterprise-administrator). Weitere Informationen zu Rollen und Aufgaben für ein Abrechnungsprofil finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](understand-mca-roles.md#billing-profile-roles-and-tasks).
+Unternehmensadministratoren haben die meisten Berechtigungen bei der Verwaltung einer Azure EA-Registrierung. Der erste Azure EA-Administrator wurde erstellt, als die EA-Vereinbarung eingerichtet wurde. Sie können jedoch jederzeit neue Administratoren hinzufügen oder entfernen. Neue Administratoren werden nur von vorhandenen Administratoren hinzugefügt. Weitere Informationen zum Hinzufügen zusätzlicher Unternehmensadministratoren finden Sie unter [Erstellen eines weiteren Unternehmensadministrators](ea-portal-administration.md#create-another-enterprise-administrator). Direkte EA-Kunden können das Azure-Portal zum Hinzufügen von EA-Administratoren verwenden. Informationen dazu finden Sie unter [Erstellen eines weiteren Unternehmensadministrators im Azure-Portal](direct-ea-administration.md#add-another-enterprise-administrator). Weitere Informationen zu Rollen und Aufgaben für ein Abrechnungsprofil finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](understand-mca-roles.md#billing-profile-roles-and-tasks).
+
 
 ## <a name="update-account-owner-state-from-pending-to-active"></a>Aktualisieren des Kontobesitzerstatus von „Ausstehend“ in „Aktiv“
 
@@ -178,7 +181,7 @@ Wenn neue Kontobesitzer (Account Owners, AO) erstmals zu einer Azure EA-Registr
 
 Nachdem ein Azure EA-Administrator eine Abteilung erstellt hat, kann der Azure-Unternehmensadministrator Abteilungsadministratoren hinzufügen und diese einer Abteilung zuordnen. Ein Abteilungsadministrator kann neue Konten erstellen. Neue Konten sind erforderlich, damit Azure EA-Abonnements erstellt werden können.
 
-Weitere Informationen zum Hinzufügen eines Abteilungsadministrators finden Sie unter [Erstellen eines Azure EA-Abteilungsadministrators](ea-portal-administration.md#add-a-department-administrator).
+Direkte EA-Administratoren können Abteilungsadministratoren im Azure-Portal hinzufügen. Weitere Informationen finden Sie unter [Erstellen eines Azure EA-Abteilungsadministrators](direct-ea-administration.md#add-a-department-administrator).
 
 ## <a name="usage-and-costs-access-by-role"></a>Zugriff auf Nutzung und Kosten nach Rolle
 

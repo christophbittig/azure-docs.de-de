@@ -2,13 +2,13 @@
 title: Konzeptionelle Erläuterung der Grundlagen des Defender-IoT-Micro-Agent für Azure RTOS
 description: Machen Sie sich mit den grundlegenden Begriffen und dem Workflow für den Defender-IoT-Micro-Agent für Azure RTOS vertraut.
 ms.topic: conceptual
-ms.date: 07/01/2021
-ms.openlocfilehash: 5555b7806f3cf2bfe685ab442b85d44d03e1f406
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.date: 11/09/2021
+ms.openlocfilehash: 084c7130c9fe033fb96fcb0a2e3c2820ef2c77e5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113139177"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278947"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos"></a>Defender-IoT-Micro-Agent für Azure RTOS
 

@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: include
-ms.date: 09/28/2021
+ms.date: 11/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 3a0a63d68c5a63eeb4ac7855b3541471814a734b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: d02eb129dd66234cf7c8522ca8204fb0026da092
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129221060"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132353887"
 ---
 - Container, Freigaben und Ordner:
   - Kopieren Sie Dateien nicht direkt in eine der vorab erstellten Freigaben. Sie müssen zunächst einen Ordner unter der Freigabe erstellen und dann Dateien in diesen Ordner kopieren.
@@ -21,6 +21,10 @@ ms.locfileid: "129221060"
   - Jede Datei, die in die Freigaben *StorageAccount_BlockBlob* und *StorageAccount_PageBlob* geschrieben wird, wird als Blockblob bzw. Seitenblob hochgeladen.
   - Wenn ein Ordner denselben Namen wie ein vorhandener Container hat, wird der Inhalt des Ordners mit dem Inhalt des Containers zusammengeführt. Dateien oder Blobs, die sich noch nicht in der Cloud befinden, werden dem Container hinzugefügt. Wenn eine Datei oder ein Blob denselben Namen wie eine Datei oder ein Blob hat, die bzw. das sich bereits im Container befindet, wird die vorhandene Datei oder das Blob überschrieben.
   - Eine unter den Ordnern *StorageAccount_BlockBlob* und *StorageAccount_PageBlob* erstellte leere Verzeichnishierarchie (ohne jegliche Dateien) wird nicht hochgeladen.
+- Wenn Sie sowohl das SMB- als auch das NFS-Protokoll für Datenkopien verwenden, wird Folgendes empfohlen:
+  - Verwenden Sie verschiedene Speicherkonten für SMB und NFS.
+  - Kopieren Sie nicht dieselben Daten mit SMB und NFS in dasselbe Endziel in Azure. In diesen Fällen lässt sich das endgültige Ergebnis nicht im Vorhinein bestimmen.
+  - Zwar kann das parallele Kopieren über SMB und NFS funktionieren, doch wird davon abgeraten, da es anfällig für menschliche Fehler ist. Warten Sie, bis die SMB-Datenkopie abgeschlossen ist, bevor Sie eine NFS-Datenkopie starten.
 - Uploadverwaltung: 
   - Zur Leistungsverbesserung während Datenuploads empfehlen wir, dass Sie [große Dateifreigaben für das Speicherkonto aktivieren und die Freigabekapazität auf 100 TiB erhöhen](../articles/storage/files/storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account). Große Dateifreigaben werden nur bei Speicherkonten mit lokal redundantem Speicher (LRS) unterstützt.
   - Wenn beim Hochladen von Daten in Azure Fehler auftreten, wird im Zielspeicherkonto ein Fehlerprotokoll erstellt. Der Pfad zu diesem Fehlerprotokoll ist verfügbar, sobald das Hochladen abgeschlossen ist, und Sie können das Protokoll überprüfen, um Korrekturmaßnahmen zu ergreifen. Löschen Sie keine Daten aus der Quelle, ohne die hochgeladenen Daten zu überprüfen.

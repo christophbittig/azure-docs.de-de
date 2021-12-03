@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 814ed1001c39b48a5aa93162cb54ec520050eb66
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 7d56a9747627bd81e9bc0cc72fce804a64af91e4
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457561"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398077"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Abfragesyntax für das IoT Hub-Nachrichtenrouting
 
@@ -53,7 +53,7 @@ Der IoT Hub definiert ein [gemeinsames Format](iot-hub-devguide-messages-constru
 
 Mithilfe von Systemeigenschaften werden Inhalt und Quelle von Nachrichten identifiziert. 
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | contentType | string | Der Benutzer gibt den Inhaltstyp der Nachricht an. Dieser Wert sollte auf „application/JSON“ festgelegt werden, damit Abfragen für den Nachrichtentext ausgeführt werden können. |
 | contentEncoding | string | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
@@ -149,10 +149,9 @@ deviceClient.sendEvent(message, (err, res) => {
 > [!NOTE] 
 > Hier sehen Sie, wie die Codierung des Texts in JavaScript behandelt werden muss. Wenn Sie sich ein Beispiel in C# ansehen möchten, laden Sie die [Azure IoT-Beispiele für C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip) herunter. Entzippen Sie die Datei „master.zip“. In der Datei „Program.cs“ aus der Visual Studio-Projektmappe *SimulatedDevice* werden die Codierung und Übermittlung von Nachrichten an eine IoT Hub-Instanz gezeigt. Dieses Beispiel wird auch im [Nachrichtenrouting-Tutorial](tutorial-routing.md) zum Testen des Nachrichtenroutings verwendet. Am Ende von „Program.cs“ befindet sich auch eine Methode, die dazu dient, in einer der codierten Dateien zu lesen, die Datei zu decodieren und den Inhalt als lesbaren ASCII-Code auszugeben. 
 
-
 ### <a name="query-expressions"></a>Abfrageausdrücke
 
-Einer Abfrage des Nachrichtentexts muss das Präfix `$body` vorangestellt werden. Sie können einen Textverweis, Textarrayverweis oder mehrere Textverweise im Abfrageausdruck verwenden. Der Abfrageausdruck kann auch einen Textverweis mit Nachrichtensystemeigenschaften und einem Verweis auf Nachrichtenanwendungseigenschaften kombinieren. Die folgenden Abfrageausdrücke sind beispielsweise sämtlich gültig: 
+Einer Abfrage des Nachrichtentexts muss das Präfix `$body` vorangestellt werden. Sie können einen Textverweis, Textarrayverweis oder mehrere Textverweise im Abfrageausdruck verwenden. Der Abfrageausdruck kann auch einen Textverweis mit Nachrichtensystemeigenschaften und einem Verweis auf Nachrichtenanwendungseigenschaften kombinieren. Die folgenden Abfrageausdrücke sind beispielsweise sämtlich gültig:
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
@@ -170,9 +169,16 @@ length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```
 
-> [!NOTE] 
+> [!NOTE]
+> Um eine Zwillingsbenachrichtigungsnutzlast basierend auf den geänderten Daten zu filtern, führen Sie Ihre Abfrage für den Nachrichtentext aus:
+>
+> ```sql
+> $body.properties.desired.telemetryConfig.sendFrequency
+> ```
+
+> [!NOTE]
 > Abfragen und Funktionen können nur für Eigenschaften im Textverweis ausgeführt werden. Sie können keine Abfragen oder Funktionen für den gesamten Textverweis ausführen. Beispielsweise wird die folgende Abfrage *nicht* unterstützt und gibt `undefined` zurück:
-> 
+>
 > ```sql
 > $body[0] = 'Feb'
 > ```

@@ -5,12 +5,12 @@ author: yossiy
 ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: yossiy
-ms.openlocfilehash: 13633eefff454cc6f2352264d76ea91367442166
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 01d7852e514931a1546a9ab66c3b582bea115f2b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131062224"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319622"
 ---
 # <a name="move-a-log-analytics-workspace-to-another-region-by-using-the-azure-portal"></a>Verschieben eines Log Analytics-Arbeitsbereichs in eine andere Region über das Azure-Portal
 
@@ -77,7 +77,7 @@ In den folgenden Verfahren wird gezeigt, wie Sie den Arbeitsbereich auf das Vers
 1. Wählen Sie den Arbeitsbereich, die Lösungen, die gespeicherten Suchen, die Warnungen, die Abfragepakete und andere arbeitsbereichsbezogene Ressourcen aus, über die Sie verfügen (z. B. ein Automation-Konto). Wählen Sie dann auf der Symbolleiste **Vorlage exportieren** aus.
     
     > [!NOTE]
-    > Azure Sentinel kann nicht mit einer Vorlage exportiert werden. Sie müssen für [Sentinel das Onboarding](../../sentinel/quickstart-onboard.md) in einen Zielarbeitsbereich durchführen.
+    > Microsoft Sentinel kann nicht mit einer Vorlage exportiert werden. Sie müssen für [Sentinel das Onboarding](../../sentinel/quickstart-onboard.md) in einen Zielarbeitsbereich durchführen.
    
 1. Wählen Sie auf der Symbolleiste **Bereitstellen** aus, um die Vorlage für die Bereitstellung zu bearbeiten und vorzubereiten.
 1. Wählen Sie auf der Symbolleiste **Parameter bearbeiten** aus, um die Datei *parameters.json* im Online-Editor zu öffnen.
@@ -286,7 +286,7 @@ In den folgenden Verfahren wird gezeigt, wie Sie den Arbeitsbereich auf das Vers
 1. Ihr Arbeitsbereich, einschließlich ausgewählter Ressourcen, wird jetzt in der Zielregion bereitgestellt. Sie können die verbleibende Konfiguration im Arbeitsbereich vervollständigen, um die Funktionalität mit dem ursprünglichen Arbeitsbereich zu koppeln.
    - *Verbinden von Agents*: Verwenden Sie eine der verfügbaren Optionen (einschließlich Datensammlungsregeln), um die benötigten Agents für VMs und VM-Skalierungsgruppen zu konfigurieren und den neuen Zielarbeitsbereich als Ziel anzugeben.
    - *Diagnoseeinstellungen*: Aktualisieren Sie die Diagnoseeinstellungen in identifizierten Ressourcen, wobei der Zielarbeitsbereich das Ziel darstellt.
-   - *Installieren von Lösungen*: Einige Lösungen, z. B. [Azure Sentinel](../../sentinel/quickstart-onboard.md), erfordern ein bestimmtes Onboardingverfahren und sind nicht in der Vorlage enthalten. Führen Sie für diese Lösungen ein separates Onboarding im neuen Arbeitsbereich durch.
+   - *Installieren von Lösungen*: Einige Lösungen, z. B. [Microsoft Sentinel](../../sentinel/quickstart-onboard.md), erfordern ein bestimmtes Onboardingverfahren und sind nicht in der Vorlage enthalten. Führen Sie für diese Lösungen ein separates Onboarding im neuen Arbeitsbereich durch.
    - *Konfigurieren der Datensammler-API*: Konfigurieren Sie Datensammler-API-Instanzen, um Daten an den Zielarbeitsbereich zu senden.
    - *Konfigurieren von Warnungsregeln*: Wenn keine Warnungen in die Vorlage exportiert wurden, müssen Sie diese im Zielarbeitsbereich manuell konfigurieren.
 1. Stellen Sie sicher, dass neue Daten nicht im ursprünglichen Arbeitsbereich erfasst werden. Führen Sie die folgende Abfrage in Ihrem ursprünglichen Arbeitsbereich aus, und stellen Sie fest, dass nach der Migration keine Erfassung erfolgt:

@@ -2,31 +2,29 @@
 title: Entwurfsleitfaden für replizierte Tabellen
 description: Empfehlungen für das Entwerfen replizierter Tabellen im Synapse SQL-Pool
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/19/2019
-ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f4c9326d4893209379bf459ed9fa7b9feff253aa
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 2dd2b937029d240ac28904cc346d2211cab99ac1
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109837851"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506351"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Anleitung für das Verwenden replizierter Tabellen im Synapse SQL-Pool
 
 Dieser Artikel enthält Empfehlungen für das Entwerfen replizierter Tabellen in Ihrem Synapse SQL-Poolschema. Nutzen Sie diese Empfehlungen, um die Abfrageleistung zu verbessern, indem Sie die Datenverschiebung und die Komplexität von Abfragen reduzieren.
 
-> [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und -verschiebung im SQL-Pool vertraut sind.    Weitere Informationen finden Sie im Artikel zur [Architektur](massively-parallel-processing-mpp-architecture.md).
+In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und -verschiebung im SQL-Pool vertraut sind.   Weitere Informationen finden Sie im Artikel zur [Architektur](massively-parallel-processing-mpp-architecture.md).
 
 Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren Daten und über das Abfragen der Daten besitzen.    Stellen Sie sich beispielsweise die folgenden Fragen:
 
@@ -36,11 +34,11 @@ Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren D
 
 ## <a name="what-is-a-replicated-table"></a>Was ist eine replizierte Tabelle?
 
-Eine replizierte Tabelle verfügt über eine vollständige Kopie der Tabelle, auf die auf jedem Computeknoten zugegriffen werden kann. Durch das Replizieren einer Tabelle müssen Daten vor einem Join oder einer Aggregation nicht mehr auf Computeknoten übertragen werden. Da die Tabelle über mehrere Kopien verfügt, lässt sich mit replizierten Tabellen am besten arbeiten, wenn die komprimierte Tabelle kleiner als 2 GB ist.  2 GB ist keine harte Grenze.  Wenn die Daten statisch sind und nicht geändert werden, können Sie größere Tabellen replizieren.
+Eine replizierte Tabelle verfügt über eine vollständige Kopie der Tabelle, auf die auf jedem Computeknoten zugegriffen werden kann. Durch das Replizieren einer Tabelle müssen Daten vor einem Join oder einer Aggregation nicht mehr auf Computeknoten übertragen werden. Da die Tabelle über mehrere Kopien verfügt, lässt sich mit replizierten Tabellen am besten arbeiten, wenn die komprimierte Tabelle kleiner als 2 GB ist. 2 GB ist keine harte Grenze.  Wenn die Daten statisch sind und nicht geändert werden, können Sie größere Tabellen replizieren.
 
 Im folgenden Diagramm wird eine replizierte Tabelle dargestellt, auf die auf jedem Computeknoten zugegriffen werden kann. In einem SQL-Pool wird die replizierte Tabelle auf jedem Serverknoten vollständig in eine Verteilungsdatenbank kopiert.
 
-![Replizierte Tabelle](./media/design-guidance-for-replicated-tables/replicated-table.png "Replizierte Tabelle")  
+:::image type="content" source="./media/design-guidance-for-replicated-tables/replicated-table.png" alt-text="Replizierte Tabelle" lightbox="./media/design-guidance-for-replicated-tables/replicated-table.png":::
 
 Replizierte Tabellen eignen sich gut für Dimensionstabellen in einem Sternschema. Dimensionstabellen werden in der Regel mit Faktentabellen verknüpft, die anders verteilt sind als die Dimensionstabelle.  Dimensionen haben normalerweise eine Größe, die das Speichern und Verwalten mehrerer Kopien ermöglicht. In Dimensionen werden beschreibende Daten gespeichert, die sich selten ändern, z.B. Kundenname und -adresse sowie Produktdetails. Da sich die Daten nicht häufig ändern, muss die replizierte Tabelle seltener verwaltet werden.
 
@@ -67,18 +65,16 @@ CPU-intensive Abfragen zeigen die beste Leistung, wenn die Verarbeitung auf alle
 Beispielsweise weist diese Abfrage ein komplexes Prädikat auf.  Sie wird schneller ausgeführt, wenn sich die Daten in einer verteilten Tabelle anstatt in einer replizierten Tabelle befinden. In diesem Beispiel können die Daten mit Roundrobin verteilt werden.
 
 ```sql
-
 SELECT EnglishProductName
 FROM DimProduct
-WHERE EnglishDescription LIKE '%frame%comfortable%'
-
+WHERE EnglishDescription LIKE '%frame%comfortable%';
 ```
 
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Konvertieren Sie vorhandene Roundrobintabellen in replizierte Tabellen
 
 Wenn Sie bereits über Roundrobintabellen verfügen, sollten Sie sie in replizierte Tabellen konvertieren, sofern sie die in diesem Artikel beschriebenen Kriterien erfüllen. Replizierte Tabellen bieten eine bessere Leistung als Roundrobintabellen, da sie nicht das Verschieben von Daten erfordern.  Eine Roundrobintabelle erfordert für Joins immer Datenverschiebung.
 
-In diesem Beispiel wird mithilfe von [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) die Tabelle „DimSalesTerritory“ in eine replizierte Tabelle geändert. Dieses Beispiel ist unabhängig davon gültig, ob „DimSalesTerritory“ eine Tabelle mit Hashverteilung oder eine Roundrobintabelle ist.
+In diesem Beispiel wird mithilfe von [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) die Tabelle `DimSalesTerritory` in eine replizierte Tabelle geändert. Dieses Beispiel ist unabhängig davon gültig, ob `DimSalesTerritory` eine Tabelle mit Hashverteilung oder eine Roundrobintabelle ist.
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]
@@ -101,7 +97,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 Eine replizierte Tabelle erfordert für Joins keine Datenverschiebung, da die gesamte Tabelle bereits auf jedem Computeknoten vorhanden ist. Wenn die Dimensionstabellen nach dem Roundrobinprinzip verteilt sind, wird für einen Join die Dimensionstabelle vollständig auf jeden Computeknoten kopiert. Zum Verschieben der Daten enthält der Abfrageplan einen Vorgang mit dem Namen „BroadcastMoveOperation“. Dieser Typ von Datenverschiebungsvorgang verringert die Abfrageleistung und lässt sich durch die Verwendung replizierter Tabellen vermeiden. Verwenden Sie zum Anzeigen der Schritte von Abfrageplänen die Systemkatalogsicht [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  
 
-Beispielsweise ist in der folgenden Abfrage des AdventureWorks-Schemas die Tabelle `FactInternetSales` eine Tabelle mit Hashverteilung. Die Tabellen `DimDate` und `DimSalesTerritory` sind kleinere Dimensionstabellen. Diese Abfrage gibt den Gesamtumsatz in Nordamerika für das Geschäftsjahr 2004 zurück:
+Beispielsweise ist in der folgenden Abfrage des `AdventureWorks`-Schemas die Tabelle `FactInternetSales` eine Tabelle mit Hashverteilung. Die Tabellen `DimDate` und `DimSalesTerritory` sind kleinere Dimensionstabellen. Diese Abfrage gibt den Gesamtumsatz in Nordamerika für das Geschäftsjahr 2004 zurück:
 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
@@ -124,7 +120,7 @@ Wir haben `DimDate` und `DimSalesTerritory` als replizierte Tabellen neu erstell
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Überlegungen zur Leistung beim Ändern replizierter Tabellen
 
-Der SQL-Pool implementiert eine replizierte Tabelle, indem eine Masterversion der Tabelle erhalten bleibt. Die Masterversion wird in die erste Verteilungsdatenbank auf jedem Computeknoten kopiert. Wenn eine Änderung eintritt, wird zunächst die Masterversion aktualisiert. Anschließend werden dann die Tabellen auf den einzelnen Serverknoten neu erstellt. Das Neuerstellen einer replizierten Tabelle umfasst das Kopieren der Tabelle auf jeden Serverknoten und das anschließende Erstellen der Indizes.  Beispielsweise verfügt eine replizierte Tabelle auf einem DW2000c über 5 Kopien der Daten.  Eine Masterkopie und eine vollständige Kopie auf jedem Serverknoten.  Alle Daten werden in Verteilungsdatenbanken gespeichert. Der SQL-Pool unterstützt mit diesem Modell schnellere Datenänderungsanweisungen und flexible Skalierungsvorgänge.
+Der SQL-Pool implementiert eine replizierte Tabelle, indem eine Masterversion der Tabelle erhalten bleibt. Die Masterversion wird in die erste Verteilungsdatenbank auf jedem Computeknoten kopiert. Wenn eine Änderung eintritt, wird zunächst die Masterversion aktualisiert. Anschließend werden dann die Tabellen auf den einzelnen Serverknoten neu erstellt. Das Neuerstellen einer replizierten Tabelle umfasst das Kopieren der Tabelle auf jeden Serverknoten und das anschließende Erstellen der Indizes.  Beispielsweise verfügt eine replizierte Tabelle auf einem DW2000c über fünf Kopien der Daten.  Eine Masterkopie und eine vollständige Kopie auf jedem Serverknoten.  Alle Daten werden in Verteilungsdatenbanken gespeichert. Der SQL-Pool unterstützt mit diesem Modell schnellere Datenänderungsanweisungen und flexible Skalierungsvorgänge.
 
 Asynchrone Rebuilds werden von der ersten Abfrage der replizierten Tabelle ausgelöst:
 

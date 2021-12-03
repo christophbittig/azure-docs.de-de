@@ -46,6 +46,8 @@
           href: conditions-prerequisites.md
         - name: Häufig gestellte Fragen zu Bedingungen
           href: conditions-faq.md
+        - name: Beispiel für benutzerdefinierte Sicherheitsattribute
+          href: conditions-custom-security-attributes-example.md
     - name: Sicherheit
       items:
         - name: Sicherheitskontrollen von Azure Policy
@@ -104,6 +106,8 @@
           href: conditions-role-assignments-template.md
         - name: Behandeln von Problemen mit Bedingungen
           href: conditions-troubleshoot.md
+        - name: Bedingungen und benutzerdefinierte Sicherheitsattribute
+          href: conditions-custom-security-attributes.md
     - name: Entfernen von Rollenzuweisungen
       href: role-assignments-remove.md
     - name: Auflisten von Ablehnungszuweisungen

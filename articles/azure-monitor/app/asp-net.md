@@ -2,18 +2,21 @@
 title: Konfigurieren der Überwachung für ASP.NET mit Azure Application Insights | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie mehr über die Leistung, die Verfügbarkeit und die Nutzungsanalysen für Ihre lokal oder in Azure gehostete ASP.NET-Website.
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/12/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a0a262564306448fd587a699b24982595506df50
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: c1609e40d83e7064f7a840e178333a229d12083f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740700"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070012"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Konfigurieren von Application Insights für Ihre ASP.NET-Website
 
 Mit diesem Verfahren wird Ihre ASP.NET-Web-App so konfiguriert, dass sie Telemetriedaten an das [Application Insights](./app-insights-overview.md)-Feature des Azure Monitor-Diensts sendet. Dies funktioniert für ASP.NET-Apps, die entweder lokal auf Ihren eigenen IIS-Servern oder in der Cloud gehostet werden. 
+
+> [!NOTE]
+> Eine Vorschau zum [OpenTelemetry-basierten .NET-Angebot](opentelemetry-enable.md?tabs=net) ist verfügbar. [Weitere Informationen](opentelemetry-overview.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie benötigen Folgendes, um Application Insights Ihrer ASP.NET-Website hinzuzufügen:
@@ -51,6 +54,7 @@ In diesem Abschnitt erhalten Sie Informationen zu den Schritten, die für das au
     ```xml
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
+
 4. Wählen Sie **Projekt** >  **NuGet-Pakete verwalten** > **Updates** aus. Aktualisieren Sie dann jedes `Microsoft.ApplicationInsights`-NuGet-Paket auf das neueste stabile Release.   
 5. Führen Sie Ihre Anwendung aus, indem Sie auf **IIS Express** klicken. Eine einfache ASP.NET-App wird geöffnet. Wenn Sie auf den Seiten der Website navigieren, werden Telemetriedaten an Application Insights gesendet.
 

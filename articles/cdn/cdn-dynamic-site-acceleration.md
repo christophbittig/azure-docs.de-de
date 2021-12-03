@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: duau
-ms.openlocfilehash: f793d236db1c840e3866c7b8e9856720077e429a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 113232c44be6eb886c61a617d68f63f0a3225a8c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131426599"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327460"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Beschleunigung dynamischer Websites durch das Azure CDN
 
@@ -179,8 +179,6 @@ So greifen Sie auf die Regel-Engine zu
 
     ![Regel-Engine für die DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
+Alternativ können Sie zwei CDN-Endpunkte verwenden: Ein mit der DSA optimierter Endpunkt zur Bereitstellung von dynamischen Ressourcen und ein anderer mit einem statischen Optimierungstyp, z.B. allgemeine Webbereitstellung, für die Bereitstellung von zwischenspeicherbaren Ressourcen. Ändern Sie Ihre Webseiten-URLs so, dass eine direkte Verknüpfung mit der Ressource für den CDN-Endpunkt hergestellt wird, den Sie verwenden möchten.
 
-
-Alternativ können Sie zwei CDN-Endpunkte verwenden: Ein mit der DSA optimierter Endpunkt zur Bereitstellung von dynamischen Ressourcen und ein anderer mit einem statischen Optimierungstyp, z.B. allgemeine Webbereitstellung, für die Bereitstellung von zwischenspeicherbaren Ressourcen. Ändern Sie Ihre Webseiten-URLs so, dass eine direkte Verknüpfung mit der Ressource für den CDN-Endpunkt hergestellt wird, den Sie verwenden möchten. 
-
-Beispiel: `mydynamic.azureedge.net/index.html` ist eine dynamische Seite, die vom Endpunkt mit Beschleunigung dynamischer Websites geladen wird.  Die HTML-Seite verweist auf mehrere statische Ressourcen, z.B. JavaScript-Bibliotheken oder Images, die vom statischen CDN-Endpunkt geladen werden, z.B. `mystatic.azureedge.net/banner.jpg` und `mystatic.azureedge.net/scripts.js`.
+Beispiel: `mydynamic.azureedge.net/index.html` ist eine dynamische Seite, die vom DSA-Endpunkt geladen wird.  Die HTML-Seite verweist auf mehrere statische Objekte wie z.B. JavaScript-Bibliotheken oder Images, die vom statischen CDN-Endpunkt geladen werden, z.B. `mystatic.azureedge.net/banner.jpg` und `mystatic.azureedge.net/scripts.js`.

@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: automl
 ms.topic: how-to
 ms.custom: automl,contperf-fy21q2
-ms.date: 12/18/2020
-ms.openlocfilehash: 4931b6a1b13390813cee09e906ceaea64205bd70
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: 90fdc6f9c3ec552f8eb0ed98b9be05d4ae931c84
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426395"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281682"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Datenfeaturisierung mit automatisiertem maschinellem Lernen
 
@@ -326,7 +326,7 @@ Um BERT aufzurufen, legen Sie `enable_dnn: True` in Ihren „automl_settings“ 
 
 AutoML führt die folgenden Schritte für BERT aus. 
 
-1. **Vorverarbeitung und Tokenisierung aller Textspalten**. Beispielsweise ist der „StringCast“-Transformator in der Zusammenfassung der Featurisierung für das endgültige Modell zu finden. Ein Beispiel dafür, wie die Zusammenfassung der Featurisierung des Modells zu erstellen ist, findet sich in [diesem Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb).
+1. **Vorverarbeitung und Tokenisierung aller Textspalten**. Beispielsweise ist der „StringCast“-Transformator in der Zusammenfassung der Featurisierung für das endgültige Modell zu finden. Ein Beispiel dafür, wie die Zusammenfassung der Featurisierung des Modells zu erstellen ist, findet sich in [diesem Notebook](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-text-dnn/auto-ml-classification-text-dnn.ipynb).
 
 2. **Verketten Sie alle Textspalten zu einer einzelnen Textspalte**, daher das `StringConcatTransformer` im endgültigen Modell. 
 

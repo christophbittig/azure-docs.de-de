@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 45a18ade65a08b378652248bc0b0f62cb8f97e84
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 652347a2b63581a613088497ef8b3cb7df4ee8ec
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072763"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448745"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -196,10 +196,10 @@ In dieser Phase stellen Sie in der Regel Entwicklungssysteme, Komponententestsys
 
 1.  Sammeln Sie Ressourcenverbrauchsdaten, wie CPU-Auslastung, Speicherdurchsatz und IOPS-Daten, bevor Sie Systeme von der alten Plattform zu Azure verschieben. Erfassen Sie diese Daten insbesondere für Einheiten der DBMS-Schicht, aber auch für Einheiten der Anwendungsschicht. Messen Sie außerdem die Latenz von Netzwerk und Speicher.
 2.  Zeichnen Sie die Nutzungszeitmuster Ihrer Systeme für Verfügbarkeit auf. Das Ziel besteht darin, zu bestimmen, ob Nicht-Produktionssysteme täglich rund um die Uhr verfügbar sein müssen oder während bestimmter Phasen einer Woche oder eines Monats heruntergefahren werden können
-3.  Testen und bestimmen Sie, ob Sie eigene Betriebssystemimages für Ihre VMs in Azure erstellen oder ein Image aus der Azure Shared Image Gallery verwenden möchten. Wenn Sie ein Image aus der Shared Image Gallery verwenden, achten Sie darauf, ein Image zu verwenden, das dem Supportvertrag mit Ihrem Betriebssystemanbieter entspricht. Bei manchen Betriebssystemanbietern können Sie in der Shared Image Gallery BYOL-Images (Bring Your Own License) verwenden. Bei anderen Betriebssystemimages ist er Support bereits im für Azure angegebenen Preis enthalten. Wenn Sie eigene Betriebssystemimages erstellen möchten, lesen Sie die Dokumentation in den folgenden Artikeln:
+3.  Testen und bestimmen Sie, ob Sie eigene Betriebssystemimages für Ihre VMs in Azure erstellen oder ein Image aus der Azure Compute Gallery (früher als Azure Shared Image Gallery bezeichnet) verwenden möchten. Wenn Sie ein Image aus der Azure Compute Gallery verwenden, achten Sie darauf, ein Image zu verwenden, das dem Supportvertrag mit Ihrem Betriebssystemanbieter entspricht. Bei manchen Betriebssystemanbietern können Sie Ihre eigenen Lizenzimages in die Azure Compute Gallery hochladen. Bei anderen Betriebssystemimages ist er Support bereits im für Azure angegebenen Preis enthalten. Wenn Sie eigene Betriebssystemimages erstellen möchten, lesen Sie die Dokumentation in den folgenden Artikeln:
     -   [Build a generalized image of a Windows VM deployed in Azure](../../windows/capture-image-resource.md) (Erstellen eines generalisierten Images einer in Azure bereitgestellten Windows-VM)
     -   [Build a generalized image of a Linux VM deployed in Azure](../../linux/capture-image.md) (Erstellen eines generalisierten Images einer in Azure bereitgestellten Linux-VM)
-3.  Wenn Sie SUSE- und Red Hat Linux-Images aus der Azure Shared Image Gallery verwenden, müssen Sie die für SAP bestimmten Images verwenden, die von den Linux-Anbietern in der Shared Image Gallery angeboten werden.
+3.  Wenn Sie SUSE- und Red Hat Linux-Images aus der Azure Compute Gallery verwenden, müssen Sie die von den Linux-Anbietern für SAP bereitgestellten Images in der Azure Compute Gallery verwenden.
 4.  Achten Sie darauf, dass Sie den Anforderungen an SAP-Unterstützung für Microsoft-Supportverträge gerecht werden. Mehr dazu finden Sie im [SAP-Supporthinweis Nr. 2015553](https://launchpad.support.sap.com/#/notes/2015553). Für HANA (große Instanzen) lesen Sie das Dokument [Onboardinganforderungen](./hana-onboarding-requirements.md).
 4.  Achten Sie darauf, dass die richtigen Personen [Benachrichtigungen zu geplanten Wartungen](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/) erhalten, sodass Sie die besten Ausfallzeiten auswählen können.
 5.  Suchen Sie regelmäßig in Kanälen wie [Channel9](https://channel9.msdn.com/) nach Azure-Präsentationen zu neuen Funktionen, die möglicherweise für Ihre Bereitstellungen anwendbar sind.

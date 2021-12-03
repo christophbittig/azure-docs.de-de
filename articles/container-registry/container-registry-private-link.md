@@ -2,13 +2,13 @@
 title: Einrichten eines privaten Endpunkts mit privater Verbindung
 description: Richten Sie einen privaten Endpunkt in einer Containerregistrierung ein, und ermöglichen Sie den Zugriff auf ein virtuelles Netzwerk über eine private Verbindung. Der Zugriff auf private Links ist ein Feature der Dienstebene Premium.
 ms.topic: article
-ms.date: 07/14/2021
-ms.openlocfilehash: 25a45f0e1f4115fce623deef919368ecdf479ead
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 10/26/2021
+ms.openlocfilehash: ef3f6cd30852f6c2bac5f5e9dce383d8f4501023
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114471509"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523408"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Herstellen einer privaten Verbindung mit einer Azure-Containerregistrierung über Azure Private Link
 
@@ -21,7 +21,7 @@ Dieser Artikel zeigt, wie Sie einen privaten Endpunkt für Ihre Registrierung mi
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 > [!NOTE]
-> Zurzeit können maximal 10 private Endpunkte für eine Registrierung eingerichtet werden. 
+> Ab Oktober 2021 lassen neue Containerregistrierungen maximal 200 private Endpunkte zu. Früher erstellte Registrierungen lassen maximal 10 private Endpunkte zu. Verwenden Sie den Befehl [az acr show-usage](/cli/azure/acr#az_acr_show_usage), um den Grenzwert für Ihre Registrierung anzuzeigen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

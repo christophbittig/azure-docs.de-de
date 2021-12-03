@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/22/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 545f7377e79e7f83182e85aa0f05f62e353051d9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7fb94b8e714c62a92b0fe9411af97f69e0a50423
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128628551"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229558"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Aufgaben für Kontoadministratoren im Azure-Portal
 
@@ -184,6 +184,58 @@ Wenn Sie über ein Azure in Open License-Abonnement verfügen, können Sie Ih
     - Geben Sie an, wie viel Guthaben Sie hinzufügen möchten.
 
 1. Klicken Sie auf **Anwenden**.
+
+## <a name="usage-details-files-comparison"></a>Vergleich von Dateien mit Nutzungsdetails
+
+Anhand der folgenden Informationen können Sie die Zuordnung zwischen den Feldern, die in den Versionen V1 und V2 der Dateien im Kontenportal verfügbar sind, und der aktuellen Version der Datei mit Nutzungsdetails im Azure-Portal ermitteln.
+
+| V1 | V2 | Azure-Portal |
+| --- | --- | --- |
+| Zusätzliche Informationen | Zusätzliche Informationen | AdditionalInfo |
+| Währung | Währung | BillingCurrency |
+| Billing Period | Billing Period | BillingPeriodEndDate |
+| Billing Period | Billing Period | BillingPeriodStartDate |
+| Dienst | Consumed Service | ConsumedService |
+| Wert | Wert | Kosten |
+| Usage Date | Usage Date | Datum |
+| Name | Meter Category | MeterCategory |
+| ResourceGuid | ID der Verbrauchseinheit | MeterId |
+| Region | Meter Region | MeterRegion |
+| Resource | Meter Name | MeterName  |
+| Typ | Unterkategorie für Verbrauchseinheit | MeterSubcategory |
+| Consumed | Verbrauchte Menge | Menge |
+| Komponente | Ressourcengruppe | ResourceGroup |
+|   | Instanzen-ID | resourceId |
+| Sub Region | Resource Location | ResourceLocation |
+| Service Info 1 | Service Info 1 | ServiceInfo1 |
+| Service Info 2 | Service Info 2 | ServiceInfo2 |
+| Abonnement-ID | Abonnement-ID | SubscriptionId |
+| Subscription Name | Subscription Name | SubscriptionName |
+|   | `Tags` | `Tags` |
+| Einheit | Einheit | UnitOfMeasure |
+| | Rate | UnitPrice |
+
+Weitere Informationen zu den Feldern, die in der aktuellen Datei mit Nutzungsdetails verfügbar sind, finden Sie unter [Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren](../understand/understand-usage.md).
+
+Die folgenden Felder stammen aus den Versionen V1 und V2 der Dateien aus dem Kontenportal. Sie sind in der aktuellen Datei mit Nutzungsdetails nicht mehr verfügbar.
+
+| V1 | V2 |
+| --- | --- |
+| Auftrags-ID | Auftrags-ID |
+| BESCHREIBUNG | BESCHREIBUNG |
+| Abrechnungsdatum (Jahrestag) | Abrechnungsdatum (Jahrestag) |
+| Angebotsname | Angebotsname |
+| Service Name | Service Name |
+| Abonnementstatus | Abonnementstatus |
+| Zusätzlicher Abonnementstatus | Zusätzlicher Abonnementstatus |
+| Bereitstellungsstatus | Bereitstellungsstatus |
+| SKU | SKU |
+| Enthalten | Included Quantity |
+| Billable | Overage Quantity |
+| Within Commitment | Within Commitment |
+| Commitment Rate | Commitment Rate |
+| Überschreitung | Überschreitung |
+| Komponente |  |
 
 ## <a name="troubleshooting"></a>Problembehandlung
 Virtuelle Karten oder Prepaidkarten werden nicht unterstützt. Wenn beim Hinzufügen oder Aktualisieren einer gültigen Kreditkarte Fehler auftreten, versuchen Sie, den Browser im privaten Modus zu öffnen.

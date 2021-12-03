@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1f8f8d81af6fb06bba9c48f5ae7d1fbb7f5d2e59
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ed6d0e397a8b0b6b8a3ad69e5dd91b4c60709e35
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355088"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231836"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -19,7 +19,7 @@ In diesem Artikel wird erläutert, wie Sie allgemeine Einstellungen für Web-App
 
 ## <a name="configure-app-settings"></a>Konfigurieren von App-Einstellungen
 
-In App Service handelt es sich bei App-Einstellungen um Variablen, die als Umgebungsvariablen an den Anwendungscode übergeben werden. Bei Linux-Apps und benutzerdefinierten Containern übergibt App Service mithilfe des Flags `--env` App-Einstellungen an den Container, um die Umgebungsvariable im Container festzulegen. In beiden Fällen werden sie beim Start der App in Ihre App-Umgebung eingeschleust. Wenn Sie App-Einstellungen hinzufügen, entfernen oder bearbeiten, löst App Service einen App-Neustart aus.
+In App Service handelt es sich bei App-Einstellungen um Variablen, die als Umgebungsvariablen an den Anwendungscode übergeben werden. Bei Linux-Apps und benutzerdefinierten Containern übergibt App Service mithilfe des Flags `--env` App-Einstellungen an den Container, um die Umgebungsvariable im Container festzulegen. In beiden Fällen werden sie beim Start der App in Ihre App-Umgebung eingeschleust. Wenn Sie App-Einstellungen hinzufügen, entfernen oder bearbeiten, löst App Service einen App-Neustart aus. Die Bezeichnungen von App-Einstellungen dürfen keine Punkte enthalten (`.`). Wenn eine App-Einstellung einen Punkt enthält, wird dieser Punkt durch einen Unterstrich im Container ersetzt.
 
 Suchen Sie im [Azure-Portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus. 
 

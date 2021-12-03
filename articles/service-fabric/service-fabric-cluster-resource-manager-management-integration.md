@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ae80ac5833e90164fc4ff92010fd1830ae932cd2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3622f2a46a0e5c22b7e63c6cdad635227a30714
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92174033"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003882"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integration des Clusterressourcen-Managers in die Service Fabric-Clusterverwaltung
 Der Clusterressourcen-Manager von Service Fabric führt zwar keine Upgrades in Service Fabric aus, ist jedoch daran beteiligt. Bei der Verwaltung unterstützt Sie der Clusterressourcen-Manager zunächst einmal durch das Verfolgen des gewünschten Clusterstatus und der im Cluster enthaltenen Dienste. Der Clusterressourcen-Manager sendet Integritätsberichte, wenn der Cluster nicht in die gewünschte Konfiguration versetzt werden kann. Dies ist beispielsweise der Fall, wenn nicht genügend Kapazität verfügbar ist. Der Clusterressourcen-Manager sendet dann Integritätswarnungen und Fehler, die das Problem angeben. Ein weiterer Teil der Integration hängt mit der Funktionsweise von Upgrades zusammen. Während Upgrades wird das Verhalten des Clusterressourcen-Managers geringfügig verändert.  
@@ -194,9 +194,9 @@ Ein überaus wichtiger Aspekt ist, dass die Regeln – d.h. die strikten Einschr
 Zu Beginn eines Upgrades erfasst der Ressourcen-Manager eine Momentaufnahme der aktuellen Clusteranordnung. Nach Abschluss einer Upgradedomäne wird versucht, die ursprüngliche Anordnung der die Dienste in dieser Upgradedomäne wiederherzustellen. So erfolgen für einen Dienst höchstens zwei Übergänge während des Upgrades. Einer zum Verschieben aus dem betreffenden Knoten und ein weiterer zum Zurückverschieben. Durch die Wiederherstellung des Clusters oder Dienstes in den Zustand vor dem Upgrade wird außerdem sichergestellt, dass das Layout des Clusters nicht durch das Upgrade beeinträchtigt wird. 
 
 ### <a name="reduced-churn"></a>Weniger Änderungen
-Wichtig ist der Hinweis, dass der Clusterressourcen-Manager während des Upgrades den Lastenausgleich deaktiviert. Durch das Verhindern des Lastenausgleichs werden unnötige Reaktionen auf das Upgrade selbst verhindert, beispielsweise das Verschieben von Diensten auf Knoten, die für das Upgrade geleert wurden. Wenn es sich beim betreffenden Upgrade um ein Clusterupgrade handelt, findet für den gesamten Cluster während des Upgrades kein Lastenausgleich statt. Einschränkungsüberprüfungen bleiben aktiv, nur die Verschiebung anhand des proaktiven Ausgleichs von Metriken wird deaktiviert.
+Während Upgrades deaktiviert der Clusterressourcen-Manager auch den Lastenausgleich. Durch das Verhindern des Lastenausgleichs werden unnötige Reaktionen auf das Upgrade selbst verhindert, beispielsweise das Verschieben von Diensten auf Knoten, die für das Upgrade geleert wurden. Wenn es sich beim betreffenden Upgrade um ein Clusterupgrade handelt, findet für den gesamten Cluster während des Upgrades kein Lastenausgleich statt. Einschränkungsüberprüfungen bleiben aktiv, nur die Verschiebung anhand des proaktiven Ausgleichs von Metriken wird deaktiviert.
 
-### <a name="buffered-capacity--upgrade"></a>Gepufferte Kapazität und Upgrade
+### <a name="buffered-capacity-and-upgrade"></a>Gepufferte Kapazität und Upgrade
 Im Allgemeinen möchten Sie, dass das Upgrade auch dann abgeschlossen wird, wenn der Cluster eingeschränkt oder beinahe voll belegt ist. Das Verwalten der Clusterkapazität ist während Upgrades noch wichtiger als sonst. Je nach Anzahl der Upgradedomänen müssen zwischen 5 und 20 Prozent der Kapazität migriert werden, während das Upgrade den Cluster durchläuft. Diese Arbeit muss irgendwo aufgefangen werden. Hier ist das Konzept der [gepufferten Kapazitäten](service-fabric-cluster-resource-manager-cluster-description.md#node-buffer-and-overbooking-capacity) hilfreich. Gepufferte Kapazität wird während des normalen Betriebs berücksichtigt. Der Clusterressourcen-Manager kann Knoten während des Upgrades ggf. bis zu deren Gesamtkapazität (Nutzung des Puffers) füllen.
 
 ## <a name="next-steps"></a>Nächste Schritte

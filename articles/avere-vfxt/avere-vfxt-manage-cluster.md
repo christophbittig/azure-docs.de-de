@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9913bf8e576af5de6f6cb2e558188aa8517a26e3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85505493"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335991"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Verwalten des Avere vFXT-Clusters
 
@@ -25,13 +25,13 @@ Diese Tabelle bietet eine Übersicht darüber, welche Tools für die einzelnen A
 
 | Aktion | Avere-Systemsteuerung | vfxt.py  | Azure-Portal |
 | --- | --- | --- | --- |
-| Hinzufügen von Clusterknoten | nein | ja | nein |
+| Hinzufügen von Clusterknoten | nein | Ja | nein |
 | Entfernen von Clusterknoten | ja | nein | nein |
 | Beenden eines Clusterknotens | Ja (kann auch Dienste oder das System neu starten) | nein | Das Herunterfahren einer Knoten-VM über das Portal wird als Knotenfehler interpretiert |
 | Starten eines beendeten Knotens | nein | nein | ja |
 | Zerstören eines einzelnen Clusterknotens | nein | nein | ja |
 | Neustarten des Clusters |  |  |  |
-| Sicheres Herunterfahren oder Beenden des Clusters | ja | ja | nein |
+| Sicheres Herunterfahren oder Beenden des Clusters | ja | Ja | nein |
 | Zerstören des Clusters  | nein | ja | Ja, aber die Datenintegrität wird nicht garantiert |
 
 Detaillierte Anweisungen für die einzelnen Tools finden Sie unten.
@@ -65,11 +65,11 @@ Um einen Knoten herunterzufahren, neu zu starten oder zu entfernen, suchen Sie d
 > [!NOTE]
 > IP-Adressen können zwischen Clusterknoten verschoben werden, wenn sich die Anzahl der aktiven Knoten ändert.
 
-Weitere Informationen finden Sie unter [Cluster > FXT-Knoten](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) in der Anleitung zu den Clustereinstellungen von Avere.
+Weitere Informationen finden Sie unter [Cluster > FXT-Knoten](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes) in der Anleitung zu den Clustereinstellungen von Avere.
 
 ### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Beenden oder Neustarten des Clusters über die Avere-Systemsteuerung
 
-Auf der Einstellungsseite **Systemwartung** finden Sie Befehle zum Neustarten von Clusterdiensten, zum Neustarten des Clusters oder zum sicheren Herunterfahren des Clusters. Weitere Informationen finden Sie unter [Verwaltung > Systemwartung](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (in der Anleitung zu den Clustereinstellungen von Avere).
+Auf der Einstellungsseite **Systemwartung** finden Sie Befehle zum Neustarten von Clusterdiensten, zum Neustarten des Clusters oder zum sicheren Herunterfahren des Clusters. Weitere Informationen finden Sie unter [Verwaltung > Systemwartung](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance) (in der Anleitung zu den Clustereinstellungen von Avere).
 
 Wenn ein Cluster mit dem Herunterfahren beginnt, werden Statusmeldungen auf der **Dashboard**-Registerkarte angezeigt. Nach einigen Augenblicken hören die Meldungen auf und schließlich reagiert die Avere Control Panel-Sitzung nicht mehr, was bedeutet, dass der Cluster heruntergefahren wurde.
 
@@ -143,7 +143,7 @@ vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNA
 
 Die Option ``--quick-destroy`` kann verwendet werden, wenn Sie geänderte Daten nicht aus dem Clustercache speichern möchten.
 
-Weitere Informationen finden Sie im [Benutzerhandbuch zu vfxt.py](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>).
+Weitere Informationen finden Sie im [Benutzerhandbuch zu vfxt.py](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).
 
 ## <a name="manage-cluster-vms-from-the-azure-portal"></a>Verwalten von virtuellen Clustercomputern über das Azure-Portal
 

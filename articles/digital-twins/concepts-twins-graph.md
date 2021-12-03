@@ -1,22 +1,22 @@
 ---
 title: Digitale Zwillinge und der Zwillingsgraph
 titleSuffix: Azure Digital Twins
-description: Enthält grundlegende Informationen zum Konzept eines digitalen Zwillings und die Erstellung eines Graphen basierend auf den entsprechenden Beziehungen.
+description: Erfahren Sie mehr über digitale Zwillinge und wie ihre Beziehungen einen Graphen für digitale Zwillinge bilden.
 author: baanders
 ms.author: baanders
-ms.date: 8/26/2021
+ms.date: 10/20/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 42cce83683df789aeaabe53ca170f17319ec3603
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 33ad5a0eb684526184affba2d254bf20f66de930
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224838"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500239"
 ---
-# <a name="understand-digital-twins-and-their-twin-graph"></a>Grundlegendes zu digitalen Zwillingen und zum zugehörigen Zwillingsgraphen
+# <a name="digital-twins-and-their-twin-graph"></a>Digitale Zwillinge und ihr Zwillingsgraph
 
-In einer Azure Digital Twins-Lösung werden die Entitäten in Ihrer Umgebung durch **digitale Zwillinge** dargestellt. Ein digitaler Zwilling ist eine Instanz eines Ihrer benutzerdefinierten [Modelle](concepts-models.md). Er kann mit anderen digitalen Zwillingen über **Beziehungen** verbunden werden, um einen **Zwillingsgraphen** zu erhalten. Dieser Zwillingsgraph ist die Darstellung Ihrer gesamten Umgebung.
+In diesem Artikel wird beschrieben, was **digitale Zwillinge** im Kontext von Azure Digital Twins sind und wie Beziehungen zwischen ihnen einen **Zwillingsgraphen** bilden können. In einer Azure Digital Twins-Lösung werden die Entitäten in Ihrer Umgebung durch **digitale Zwillinge** dargestellt. Ein digitaler Zwilling ist eine Instanz eines Ihrer benutzerdefinierten [Modelle](concepts-models.md). Er kann mit anderen digitalen Zwillingen über **Beziehungen** verbunden werden, um einen **Zwillingsgraphen** zu erhalten. Dieser Zwillingsgraph ist die Darstellung Ihrer gesamten Umgebung.
 
 > [!TIP]
 > „Azure Digital Twins“ ist der Name dieses Azure-Diensts. „Digitale Zwillinge“ oder einfach „Zwillinge“ bezieht sich einzelne Zwillingsknoten auf Ihrer Instanz des Diensts.

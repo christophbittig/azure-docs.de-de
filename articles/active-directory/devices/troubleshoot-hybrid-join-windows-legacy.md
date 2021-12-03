@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68c08c8ed88ae9973a453288bd3e55660505caa3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 633d7ae014ed5778483958266268a702b730e911
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620899"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052748"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory 
 
@@ -45,7 +45,7 @@ Dieser Artikel enthält Anleitungen zur Problembehandlung zum Beheben potenziell
 - Aufgrund einer Neuinstallation des Betriebssystems oder einer manuellen Neuregistrierung können Sie mehrere Einträge für ein Gerät auf der Registerkarte „Benutzerinformationen“ abrufen.
 - Bei der anfänglichen Gerätekonfiguration für die Registrierung bzw. den Beitritt von Geräten wird zunächst eine Anmeldung oder Sperren/Entsperren versucht. Es kann eine Verzögerung von bis zu 5 Minuten auftreten, die durch eine Aufgabe der Aufgabenplanung ausgelöst wird. 
 - Stellen Sie sicher, dass [KB4284842](https://support.microsoft.com/help/4284842) installiert, falls Sie Windows 7 SP1 oder Windows Server 2008 R2 SP1 verwenden. Dieses Update verhindert zukünftige Authentifizierungsfehler, wenn Kunden den Zugriff auf geschützte Schlüssel nach dem Ändern des Kennworts verlieren.
-- Ein Azure AD Hybrid-Beitritt ist möglicherweise nicht erfolgreich, nachdem der Benutzerprinzipalname eines Benutzers geändert wurde, da dies den nahtlosen SSO-Authentifizierungsprozess unterbricht. Während des Beitrittsprozesses stellen Sie möglicherweise fest, dass weiterhin der alte Benutzerprinzipalname an Azure AD gesendet wird. Die Browsersitzungscookies müssen gelöscht werden, oder der Benutzer muss sich explizit abmelden und den alten Benutzerprinzipalname entfernen.
+- Eine Azure AD-Hybrideinbindung ist möglicherweise nicht erfolgreich, nachdem der Benutzerprinzipalname eines Benutzers geändert wurde, da dies den nahtlosen SSO-Authentifizierungsprozess unterbricht. Während des Beitrittsprozesses stellen Sie möglicherweise fest, dass weiterhin der alte Benutzerprinzipalname an Azure AD gesendet wird. Die Browsersitzungscookies müssen gelöscht werden, oder der Benutzer muss sich explizit abmelden und den alten Benutzerprinzipalname entfernen.
 
 ## <a name="step-1-retrieve-the-registration-status"></a>Schritt 1: Abrufen des Registrierungsstatus 
 

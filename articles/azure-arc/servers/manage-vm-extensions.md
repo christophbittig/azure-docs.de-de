@@ -1,14 +1,14 @@
 ---
 title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern
 description: Mit Azure Arc-fähigen Servern kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
-ms.date: 09/30/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83fb74673b5da94cc656b512886ce1ee5d772ac1
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: d853317fad2da9d8d7f27cece4fd7d219cdc42dc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130064397"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294179"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern
 
@@ -22,10 +22,10 @@ Mit Azure Arc-fähigen Servern können Sie Azure-VM-Erweiterungen für nicht in 
 - [Azure Resource Manager-Vorlagen](manage-vm-extensions-template.md)
 
 > [!NOTE]
-> Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu Azure-VMs finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
+> Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu virtuellen Azure-Computern finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
 
 > [!NOTE]
-> Derzeit können Sie Erweiterungen nur über das Azure-Portal aktualisieren. Das Ausführen dieses Vorgangs über die Azure CLI, Azure PowerShell oder mit einer Azure Resource Manager-Vorlage wird derzeit nicht unterstützt.
+> Derzeit können Sie Erweiterungen lediglich über das Azure-Portal oder die Azure CLI aktualisieren. Das Ausführen dieses Vorgangs über Azure PowerShell oder mit einer Azure Resource Manager-Vorlage wird derzeit nicht unterstützt.
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
@@ -58,7 +58,7 @@ Arc-fähige Server unterstützen das Verschieben von Computern, auf denen eine o
 
 |Erweiterung |Herausgeber |type |Zusätzliche Informationen |
 |----------|----------|-----|-----------------------|
-|In Azure Defender integrierter Scanner für Sicherheitsrisiken |Qualys |WindowsAgent.AzureSecurityCenter |[Integrierte Azure Defender-Lösung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Integrierte Sicherheitsrisikoscanner von Microsoft Defender für Cloud |Qualys |WindowsAgent.AzureSecurityCenter |[Integrierte Microsoft Defender-für-Cloud-Lösung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |Microsoft Antimalware-Erweiterung |Microsoft.Azure.Security |IaaSAntimalware |[Microsoft Antimalware-Erweiterung für Windows](../../virtual-machines/extensions/iaas-antimalware-windows.md) |
 |Benutzerdefinierte Skripterweiterung |Microsoft.Compute | CustomScriptExtension |[Erweiterung für benutzerdefinierte Windows-Skripts](../../virtual-machines/extensions/custom-script-windows.md)|
 |Log Analytics-Agent |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[Log Analytics-Erweiterung für virtuelle Computer für Windows](../../virtual-machines/extensions/oms-windows.md)|
@@ -71,7 +71,7 @@ Arc-fähige Server unterstützen das Verschieben von Computern, auf denen eine o
 
 |Erweiterung |Herausgeber |type |Zusätzliche Informationen |
 |----------|----------|-----|-----------------------|
-|In Azure Defender integrierter Scanner für Sicherheitsrisiken |Qualys |LinuxAgent.AzureSecurityCenter |[Integrierte Azure Defender-Lösung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Integrierte Sicherheitsrisikoscanner von Microsoft Defender für Cloud |Qualys |LinuxAgent.AzureSecurityCenter |[Integrierte Microsoft Defender-für-Cloud-Lösung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |Benutzerdefinierte Skripterweiterung |Microsoft.Azure.Extensions |CustomScript |[Erweiterung für benutzerdefinierte Linux-Skripts, Version 2](../../virtual-machines/extensions/custom-script-linux.md) |
 |Log Analytics-Agent |Microsoft.EnterpriseCloud.Monitoring |OmsAgentForLinux |[Log Analytics VM-Erweiterung für Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Azure Monitor für VMs (Insights) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[VM-Erweiterung für den Dependency-Agent für Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
@@ -92,7 +92,9 @@ Lesen Sie unbedingt die Dokumentation zu jeder VM-Erweiterung, auf die in der vo
 
 ### <a name="log-analytics-vm-extension"></a>Log Analytics-Erweiterung für virtuelle Computer
 
-Für die Log Analytics-Agent-VM-Erweiterung für Linux muss Python 2.x auf dem Zielcomputer installiert sein.
+Für die Log Analytics-Agent-VM-Erweiterung für Linux muss Python 2.x auf dem Zielcomputer installiert sein. 
+
+Es wird empfohlen, dass Sie vor dem Installieren der Erweiterung die [Bereitstellungsoptionen für den Log Analytics-Agent](concept-log-analytics-extension-deployment.md) lesen, um zu verstehen, welche verschiedenen Methoden verfügbar sind und welche Ihre Anforderungen erfüllen.
 
 ### <a name="azure-key-vault-vm-extension"></a>Azure Key Vault-VM-Erweiterung
 

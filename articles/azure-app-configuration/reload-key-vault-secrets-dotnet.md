@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: avgupta
-ms.openlocfilehash: f133c3184186ef46f7d4579a64d22733b773df7f
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 133c788b3bbe787f87cea3e5c72699c8dd0c4f6f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415191"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316183"
 ---
 # <a name="reload-secrets-and-certificates-from-key-vault-automatically"></a>Erneutes Laden von Geheimnissen und Zertifikaten aus Key Vault
 
@@ -26,7 +26,6 @@ In Sachen Sicherheit hat es sich bewährt, [Geheimnisse](../key-vault/secrets/tu
 - Laden Sie regelmäßig einige oder alle Geheimnisse und Zertifikate aus Key Vault neu.
 
 Bei der ersten Option müssen Sie den Sentinel-Schlüsselwert in App Configuration immer dann aktualisieren, wenn Sie Geheimnisse und Zertifikate in Key Vault rotieren. Dieser Ansatz funktioniert gut, wenn Sie einen sofortigen erneuten Ladevorgang von Geheimnissen und Zertifikaten in Ihrer Anwendung erzwingen möchten. Wenn Geheimnisse und Zertifikate automatisch in Key Vault rotiert werden, können für Ihre Anwendung Fehler ausgegeben werden, wenn Sie den Sentinel-Schlüsselwert nicht rechtzeitig aktualisieren. Die zweite Option ermöglicht es Ihnen, diesen Prozess vollständig zu automatisieren. Sie können Ihre Anwendung so konfigurieren, dass sie Geheimnisse und Zertifikate innerhalb einer bestimmten Verzögerungsspanne zur Zeit der Rotation neu aus Key Vault lädt. Dieses Tutorial begleitet Sie durch den Prozess der zweiten Option.
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

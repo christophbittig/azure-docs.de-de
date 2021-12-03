@@ -3,14 +3,14 @@ title: Verwenden von Azure Automation-Runbooks und -Modulen im PowerShell-Katalo
 description: In diesem Artikel wird erläutert, wie Sie Runbooks und Module aus Microsoft GitHub-Repositorys und dem PowerShell-Katalog verwenden.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/07/2021
+ms.date: 10/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 203900e225700055c581ce4c7a100e055d9526b7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1f6b3a47d7d8bcab77c80b71fcbc06c3381509c9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837440"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504208"
 ---
 # <a name="use-existing-runbooks-and-modules"></a>Verwenden vorhandener Runbooks und Module
 
@@ -21,22 +21,40 @@ Statt eigene Runbooks und Module in Azure Automation zu erstellen, können Sie S
 
 ## <a name="import-runbooks-from-github-with-the-azure-portal"></a>Importieren von Runbooks aus GitHub über das Azure-Portal
 
+> [!NOTE]
+>- Die Option **Katalog durchsuchen** im Azure-Portal verfügt über eine verbesserte Benutzeroberfläche.
+>- Auf dem Blatt **Prozessautomatisierung** > **Runbook** können Sie Runbooks entweder über die Option **Runbook importieren** oder **Katalog durchsuchen** importieren. Auf der Seite **Runbooks** werden zwei neue Spalten angezeigt: **Runtimeversion** und **Runbooktyp**.
+ 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
-2. Wählen Sie unter **Prozessautomatisierung** die Option **Runbookkatalog** aus.
-3. Wählen Sie **Quelle: GitHub** aus.
-4. Sie können die Filter über der Liste verwenden, um die Anzeige nach Herausgeber, Typ und Sortierung einzuschränken. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus.
+1. Wählen Sie das Blatt **Runbooks** unter **Prozessautomatisierung** aus.
+1. Klicken Sie auf der Seite **Runbooks** auf **Runbook importieren**.
+
+   :::image type="content" source="./media/automation-runbook-gallery/import-runbook.png" alt-text="Screenshot: Auswahl eines Runbooks über die Option „Runbook importieren“":::
+
+1. Auf der Seite **Runbook importieren** können Sie entweder eine Datei, die auf Ihrem lokalen Computer gespeichert ist, oder eine Datei von GitHub importieren, indem Sie **Nach Datei suchen** oder **Aus Katalog durchsuchen** verwenden.
+1. Wählen Sie die Datei aus.
+1. Geben Sie den **Namen**, die **Runtimeversion** und die **Beschreibung** ein.
+1. Klicken Sie auf **Importieren**.
+   
+   :::image type="content" source="./media/automation-runbook-gallery/import-runbook-upload-runbook-file.png" alt-text="Screenshot: Auswählen eines Runbooks aus einer Datei oder einem Katalog":::
+
+1. Wählen Sie alternativ auf der Seite **Runbooks** die Option **Katalog durchsuchen** aus, um die verfügbaren Runbooks zu durchsuchen.
+
+   :::image type="content" source="./media/automation-runbook-gallery/browse-gallery-option.png" alt-text="Screenshot: Auswählen der Option „Katalog durchsuchen“ auf dem Blatt „Runbook“":::
+
+1. Sie können die Filter über der Liste verwenden, um die Anzeige nach Herausgeber, Typ und Sortierung einzuschränken. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus.
 
    :::image type="content" source="./media/automation-runbook-gallery/browse-gallery-github.png" alt-text="Durchsuchen des Runbookkatalogs" lightbox="./media/automation-runbook-gallery/browse-gallery-github-expanded.png":::
 
-5. Klicken Sie auf der Detailseite auf **Importieren**, um ein Element zu importieren.
+1. Klicken Sie auf **Auswählen**, um ein gewähltes Runbook auszuwählen. 
+1. Geben Sie auf der Seite **Runbook importieren** den **Namen** ein, und wählen Sie die **Runtimeversionen** aus.
+1. Der **Runbooktyp** und die **Beschreibung** werden automatisch ausgefüllt.
+1. Klicken Sie auf **Importieren**.
 
    :::image type="content" source="./media/automation-runbook-gallery/gallery-item-import.png" alt-text="Importieren eines Katalogelements":::
 
-6. Ändern Sie optional den Namen des Runbooks auf dem Blatt „Importieren“, und klicken Sie zum Importieren des Runbooks auf **OK**.
-
-   :::image type="content" source="./media/automation-runbook-gallery/gallery-item-import-blade.png" alt-text="Blatt „Importieren“ eines Katalogelements":::
-
 7. Das Runbook wird auf der Registerkarte **Runbooks** des Automation-Kontos angezeigt.
+
  
 ## <a name="runbooks-in-the-powershell-gallery"></a>Runbooks im PowerShell-Katalog
 
@@ -56,10 +74,10 @@ Das direkte Importieren aus dem PowerShell-Katalog ist nur über das Azure-Porta
 
 PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können. Vorhandene Module, die Sie in Azure Automation installieren können, sind im [PowerShell-Katalog](https://www.powershellgallery.com) verfügbar. Sie starten diesen Katalog über das Azure-Portal und installieren die Module direkt in Azure Automation. Sie können sie auch manuell herunterladen und installieren.
 
-Sie finden auch Module, die Sie im Azure-Portal importieren können. Diese finden Sie für Ihr Automation-Konto im **Modulkatalog** unter **Freigegebene Ressourcen**.
+Sie finden auch Module, die Sie im Azure-Portal importieren können. Diese finden Sie für Ihr Automation-Konto in den **Modulen** unter **Freigegebene Ressourcen**.
 
 > [!IMPORTANT] 
-> Fügen Sie das Schlüsselwort AzureRm nicht in ein Skript ein, das mit dem Az-Modul ausgeführt werden soll. Die Einbeziehung des Schlüsselworts, auch in einen Kommentar, kann dazu führen, dass AzureRm geladen wird und dann in Konflikt mit dem Az-Modul gerät.
+> Schließen Sie das Schlüsselwort „AzureRm“ in kein Skript ein, das mit dem Az-Modul ausgeführt werden soll. Die Einbeziehung des Schlüsselworts, auch in einen Kommentar, kann dazu führen, dass AzureRm geladen wird und dann in Konflikt mit dem Az-Modul gerät.
 
 ## <a name="common-scenarios-available-in-the-powershell-gallery"></a>Allgemeine im PowerShell-Katalog verfügbare Szenarios
 
@@ -99,7 +117,8 @@ Microsoft empfiehlt, Runbooks aus dem PowerShell-Katalog hinzuzufügen, die für
 ## <a name="import-a-module-from-the-modules-gallery-in-the-azure-portal"></a>Importieren eines Moduls aus dem Modulkatalog im Azure-Portal
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
-1. Wählen Sie unter **Freigegebene Ressourcen**  den **Modulkatalog** aus, um die Liste der Module zu öffnen.
+1. Wählen Sie unter **Freigegebene Ressourcen** die Option **Module** aus.
+1. Wählen Sie auf der Seite **Module** die Option **Katalog durchsuchen** aus, um die Liste der Module zu öffnen.
 
       :::image type="content" source="media/automation-runbook-gallery/modules-blade-sm.png" alt-text="Ansicht des Modulkatalogs." lightbox="media/automation-runbook-gallery/modules-blade-lg.png":::
 
@@ -127,7 +146,7 @@ Microsoft empfiehlt, Runbooks aus dem PowerShell-Katalog hinzuzufügen, die für
 
 ## <a name="request-a-runbook-or-module"></a>Anfordern eines Runbooks oder Moduls
 
-Sie können Anforderungen an [User Voice](https://feedback.azure.com/forums/246290-azure-automation/)senden.  Wenn Sie Hilfe beim Schreiben eines Runbooks benötigen oder eine Frage zu PowerShell haben, stellen Sie eine Frage auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-automation.html).
+Sie können Anforderungen an [User Voice](https://feedback.azure.com/d365community/forum/8ddd03a2-0225-ec11-b6e6-000d3a4f0858)senden.  Wenn Sie Hilfe beim Schreiben eines Runbooks benötigen oder eine Frage zu PowerShell haben, stellen Sie eine Frage auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-automation.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

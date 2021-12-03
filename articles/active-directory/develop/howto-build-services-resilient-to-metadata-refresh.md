@@ -13,12 +13,12 @@ ms.date: 04/21/2021
 ms.author: jmprieur
 ms.reviewer: marsma, shermanouko
 ms.custom: aaddev
-ms.openlocfilehash: 2c7d4fdbcd27b4b8d7097d7a6978f80f5eb7fca4
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 2b698f351198daeceddc6b254eb62ddb5f58a008
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033245"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988898"
 ---
 # <a name="build-services-that-are-resilient-to-azure-ads-openid-connect-metadata-refresh"></a>Erstellen von Diensten, die gegenüber der Aktualisierung der OpenID Connect-Metadaten von Azure AD resilient sind
 
@@ -33,18 +33,18 @@ Verwenden Sie die neueste Version des [Microsoft.IdentityModel.*](https://www.nu
 Stellen Sie in der `ConfigureServices`Methode der Datei Startup.cs sicher, dass`JwtBearerOptions.RefreshOnIssuerKeyNotFound` diese auf wahr gesetzt ist, und dass Sie die neueste Microsoft.IdentityModel.*-Bibliothek verwenden. Diese Eigenschaft sollte standardmäßig aktiviert sein.
 
 ```csharp
-  services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
-  {
+services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
+{
     …
     // shouldn’t be necessary as it’s true by default
     options.RefreshOnIssuerKeyNotFound = true;
     …
-   };
+};
 ```
 
 ## <a name="aspnet-owin"></a>ASP.NET/OWIN
 
-Microsoft empfiehlt, dass Sie auf ASP.NET Core umsteigen, da die Entwicklung von ASP.NET eingestellt wurde. 
+Microsoft empfiehlt, dass Sie auf ASP.NET Core umsteigen, da die Entwicklung von ASP.NET eingestellt wurde.
 
 Wenn Sie ASP.NET classic verwenden, verwenden Sie das aktuellste [Microsoft.IdentityModel.*](https://www.nuget.org/packages?q=Microsoft.IdentityModel).
 
@@ -55,18 +55,20 @@ OWIN bietet ein automatisches Aktualisierungsintervall von 24 Stunden für den `
 Wenn Sie Ihr Token selbst validieren, z. B. in einer Azure-Funktion, verwenden Sie die aktuellste Version von [Microsoft.IdentityModel.*](https://www.nuget.org/packages?q=Microsoft.IdentityModel) und befolgen Sie die Anleitung für Metadaten, die in den folgenden Codeschnipseln dargestellt ist.
 
 ```csharp
-ConfigurationManager<OpenIdConnectConfiguration> configManager = 
-  new ConfigurationManager<OpenIdConnectConfiguration>("http://someaddress.com", 
-                                                       new OpenIdConnectConfigurationRetriever());
-OpenIdConnectConfiguration config = await configManager.GetConfigurationAsync().ConfigureAwait(false);
-TokenValidationParameters validationParameters = new TokenValidationParameters()
+var configManager =
+  new ConfigurationManager<OpenIdConnectConfiguration>(
+    "http://someaddress.com",
+    new OpenIdConnectConfigurationRetriever());
+
+var config = await configManager.GetConfigurationAsync().ConfigureAwait(false);
+var validationParameters = new TokenValidationParameters()
 {
   …
   IssuerSigningKeys = config.SigningKeys;
   …
 }
 
-JsonWebTokenHandler tokenHandler = new JsonWebTokenHandler();
+var tokenHandler = new JsonWebTokenHandler();
 result = Handler.ValidateToken(jwtToken, validationParameters);
 if (result.Exception != null && result.Exception is SecurityTokenSignatureKeyNotFoundException)
 {
@@ -78,6 +80,7 @@ if (result.Exception != null && result.Exception is SecurityTokenSignatureKeyNot
     IssuerSigningKeys = config.SigningKeys,
     …
   };
+
   // attempt to validate token again after refresh
   result = Handler.ValidateToken(jwtToken, validationParameters);
 }

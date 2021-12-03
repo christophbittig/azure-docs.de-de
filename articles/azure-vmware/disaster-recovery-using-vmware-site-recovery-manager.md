@@ -3,12 +3,12 @@ title: Bereitstellen der Notfallwiederherstellung mit VMware Site Recovery Manag
 description: Stellen Sie die Notfallwiederherstellung mit VMware Site Recovery Manager (SRM) in Ihrer privaten Azure VMware Solution Cloud bereit.
 ms.topic: how-to
 ms.date: 10/04/2021
-ms.openlocfilehash: 2cefe85f71c770ce29a14fb4aad7a91efd91651c
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 116c7b672874c1e012b4d9abadacb10bc4ca895f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129430096"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547243"
 ---
 # <a name="deploy-disaster-recovery-with-vmware-site-recovery-manager"></a>Bereitstellen der Notfallwiederherstellung mit VMware Site Recovery Manager
 
@@ -213,6 +213,8 @@ Nachdem Sie die Standortkopplung erstellt haben, befolgen Sie die unten beschrie
 
 - [Ausführen eines Failbacks (vmware.com)](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/com.vmware.srm.admin.doc/GUID-556E84C0-F8B7-4F9F-AAB0-0891C084EDE4.html)
 
+   >[!NOTE]
+   >Wenn IP-Anpassungsregeln für Netzwerkzuordnungen zwischen der AVS-Umgebung und der lokalen Umgebung definiert wurden, werden diese Regeln aufgrund eines [bekannten Problems](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/rn/srm-releasenotes-8-3.html#knownissues) mit SRM 8.3.0 beim Failback von der AVS-Umgebung zur lokalen Umgebung nicht angewendet. Sie können diese Einschränkung umgehen, indem Sie den Schutz von allen VMs in der Schutzgruppe entfernen und dann den Schutz für sie neu konfigurieren, bevor Sie das Failback initiieren.
 
 
 ## <a name="ongoing-management-of-your-srm-solution"></a>Fortlaufende Verwaltung Ihrer SRM-Lösung

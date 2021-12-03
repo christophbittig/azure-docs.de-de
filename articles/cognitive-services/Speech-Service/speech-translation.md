@@ -12,16 +12,14 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Sprachübersetzung
-ms.openlocfilehash: 19332b801493359dc0cf8a8f1d5bab951b9be983
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 3c71682028f1fb54b55e9faddde5928883f44916
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131502747"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485564"
 ---
 # <a name="what-is-speech-translation"></a>Was ist Sprachübersetzung?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 In dieser Übersicht lernen Sie die Vorteile und Funktionen des Sprachübersetzungsdiensts kennen, der eine [mehrsprachige Sprache-zu-Sprache-Übersetzung](language-support.md#speech-translation) und eine Sprache-zu-Text-Übersetzung von Audiostreams in Echtzeit ermöglicht. Mit dem Speech SDK haben Ihre Anwendungen, Tools und Geräte Zugriff auf Quelltranskriptionen und Übersetzungsausgaben für bereitgestelltes Audio. Die Zwischenergebnisse der Transkription und Übersetzung werden zurückgegeben, wenn Sprache erkannt wird, und die Endergebnisse können in synthetisierte Sprache konvertiert werden.
 
@@ -45,7 +43,7 @@ Verwenden Sie die [Schnellstartanleitung](get-started-speech-translation.md), um
 
 ## <a name="sample-code"></a>Beispielcode
 
-Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarien wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und einmalige Erkennung/Übersetzung oder die Verwendung benutzerdefinierter Modelle behandelt.
+Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarien wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und anfängliche Erkennung/Übersetzung oder die Verwendung benutzerdefinierter Modelle behandelt.
 
 * [Beispiele für Spracherkennung und Übersetzung (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/13/2021
+ms.date: 10/20/2021
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee31a8df6d94093565dbc6bb66c1774f0c34c249
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 3b6763ba1b465a0689ab076da69b0efc40d6bd9f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129987022"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262620"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Löschen eines Mandanten in Azure Active Directory
 
@@ -27,8 +27,9 @@ Beim Löschen einer Azure AD-Organisation (Mandant) werden auch alle in der Orga
 
 ## <a name="prepare-the-organization"></a>Vorbereiten der Organisation
 
-Sie können eine Organisation in Azure AD erst löschen, nachdem sie mehrere Prüfungen bestanden hat. Diese Prüfungen verringern das Risiko, dass das Löschen einer Azure AD-Organisation den Benutzerzugriff beeinträchtigt, z. B. die Möglichkeit, sich bei Microsoft 365 anzumelden oder auf Ressourcen in Azure zuzugreifen. Wenn beispielsweise die einem Abonnement zugeordnete Organisation versehentlich gelöscht wird, können Benutzer auf die Azure-Ressourcen für dieses Abonnement nicht mehr zugreifen. Die folgenden Bedingungen werden überprüft:
+Sie können eine Organisation in Azure AD erst löschen, nachdem sie mehrere Prüfungen bestanden hat. Diese Prüfungen verringern das Risiko, dass das Löschen einer Azure AD-Organisation den Benutzerzugriff beeinträchtigt, z. B. die Möglichkeit, sich bei Microsoft 365 anzumelden oder auf Ressourcen in Azure zuzugreifen. Wenn beispielsweise die einem Abonnement zugeordnete Organisation versehentlich gelöscht wird, können Benutzer auf die Azure-Ressourcen für dieses Abonnement nicht mehr zugreifen. Sie sollten die folgenden Bedingungen überprüfen:
 
+* Sie müssen alle ausstehenden Rechnungen und fälligen oder überfälligen Beträge bezahlt haben.
 * Abgesehen von einem globalen Administrator, der die Organisation löschen soll, dürfen sich keine Benutzer im Azure AD-Mandanten befinden. Alle anderen Benutzer müssen gelöscht werden, bevor die Organisation gelöscht werden kann. Wenn Benutzer aus der lokalen Umgebung synchronisiert werden, muss die Synchronisierung zuerst deaktiviert werden, und die Benutzer müssen in der Cloudorganisation über das Azure-Portal oder mithilfe von Azure PowerShell-Cmdlets gelöscht werden.
 * Es dürfen keine Anwendungen in der Organisation vorhanden sein. Alle Anwendungen müssen entfernt werden, bevor die Organisation gelöscht werden kann.
 * Mit der Organisation dürfen keine Anbieter für mehrstufige Authentifizierung verknüpft sein.

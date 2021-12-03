@@ -12,16 +12,14 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: Anomalieerkennung, maschinelles Lernen, Algorithmen
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 24d30a475071667fa9f701776302aa81c652fbe2
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 75a040b8c2b480d0c82ef2cab6a953d230f6ffb7
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045045"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371104"
 ---
 # <a name="what-is-the-anomaly-detector-univariate-api"></a>Worum handelt es sich bei der univariaten Anomalieerkennungs-API?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Die Anomalieerkennungs-API bietet Ihnen die Möglichkeit, Anomalien in Zeitreihendaten ohne Machine Learning-Kenntnisse zu überwachen und zu erkennen. Die Algorithmen der Anomalieerkennungs-API passen sich an, indem die am besten passenden Modelle für Ihre Daten automatisch identifiziert und angewendet werden, unabhängig von der Branche, dem Szenario oder der Datenmenge. Mithilfe der Zeitreihendaten bestimmt die API die Grenzen für die Anomalieerkennung, die erwarteten Werte und, welche Datenpunkte Anomalien sind.
 

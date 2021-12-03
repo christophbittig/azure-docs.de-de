@@ -6,19 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 67a38e0d9a209c12925e54f208c8cc3a614fbe34
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 51685da924bc2fab2f936eceeaf13972216ffd77
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065987"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492131"
 ---
-# <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Sicherung und Wiederherstellung in Azure Database for MySQL Flexible Server (Vorschau)
+# <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server"></a>Sicherung und Wiederherstellung in Azure Database for MySQL Flexible Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 Azure Database for MySQL Flexible Server erstellt automatisch Serversicherungen und speichert diese sicher in lokalen redundanten Speichern innerhalb der Azure-Region. Sicherungen können verwendet werden, um für Ihren Server den Stand zu einem bestimmten Zeitpunkt wiederherzustellen. Sicherungen und Wiederherstellungen sind wesentliche Bestandteile jeder Strategie für Geschäftskontinuität, da Ihre Daten so vor versehentlichen Beschädigungen und Löschungen geschützt werden.
 
@@ -73,6 +70,10 @@ Das primäre Mittel zur Kostenkontrolle bei der Speicherung von Sicherungen ist 
 > [!IMPORTANT]
 > Sicherungen von einem Datenbankserver, der in einer zonenredundanten Hochverfügbarkeitskonfiguration konfiguriert ist, erfolgen vom primären Datenbankserver, da der Mehraufwand bei Momentaufnahmensicherungen minimal ist.
 
+## <a name="view-available-full-backups"></a>Anzeigen verfügbarer vollständiger Sicherungen
+
+Auf dem Blatt Sicherung und Wiederherstellung im Azure-Portal werden die automatisierten vollständigen Sicherungen aufgelistet, die einmal täglich erstellt werden. Auf diesem Blatt können Sie die Abschlusszeitstempel für alle verfügbaren vollständigen Sicherungen innerhalb des Aufbewahrungszeitraums des Servers anzeigen und Wiederherstellungsvorgänge mit diesen vollständigen Sicherungen ausführen. Die Liste der verfügbaren Sicherungen umfasst alle vollständigen automatisierten Sicherungen innerhalb des Aufbewahrungszeitraums, einen Zeitstempel mit dem erfolgreichen Abschluss, einen Zeitstempel, der angibt, wie lange eine Sicherung aufbewahrt wird, und eine Wiederherstellungsaktion.
+
 ## <a name="restore"></a>Restore
 
 Wenn in Azure Database for MySQL eine Wiederherstellung durchgeführt wird, wird aus den Sicherungen des ursprünglichen Servers ein neuer Server erstellt. Es gibt zwei Arten der Wiederherstellung: 
@@ -107,10 +108,11 @@ Die Point-in-Time-Wiederherstellung ist für viele Szenarien hilfreich. Einige d
 -   Der Benutzer löscht eine wichtige Tabelle oder Datenbank
 -   Eine Benutzeranwendung überschreibt aufgrund eines Anwendungsfehlers versehentlich gültige Daten mit ungültigen Daten
 
-Sie können über das [Azure-Portal](how-to-restore-server-portal.md) zwischen einem letzten Wiederherstellungspunkt und einem benutzerdefinierten Wiederherstellungspunkt auswählen.
+Sie können zwischen dem neuesten Wiederherstellungspunkt, dem benutzerdefinierten Wiederherstellungspunkt und dem schnellsten Wiederherstellungspunkt (Wiederherstellung mit vollständiger Sicherung) über [Azure-Portal](how-to-restore-server-portal.md) wählen.
 
 -   **Letzter Wiederherstellungspunkt**: Mit der Option „letzter Wiederherstellungspunkt“ können Sie den Server auf den Zeitstempel zurücksetzen, zu dem der Wiederherstellungsvorgang ausgelöst wurde. Diese Option ist hilfreich, um den Server schnell auf den aktuellsten Stand zu bringen.
 -   **Benutzerdefinierter Wiederherstellungspunkt**: Dadurch können Sie einen beliebigen Zeitpunkt innerhalb des für diesen flexiblen Server definierten Aufbewahrungszeitraums wählen. Diese Option ist nützlich, um den Server genau zu dem Zeitpunkt wiederherzustellen, zu dem ein Benutzerfehler aufgetreten ist.
+-   **Schnellster Wiederherstellungspunkt**: Mit dieser Option können Benutzer den Server innerhalb des für ihren flexiblen Server definierten Aufbewahrungszeitraums für einen bestimmten Tag so schnell wie möglich wiederherstellen. Die schnellste Wiederherstellung ist möglich, indem Sie den Zeitpunkt der Wiederherstellung auswählen, zu dem die vollständige Sicherung abgeschlossen wurde. Dieser Wiederherstellungsvorgang stellt einfach die vollständige Momentaufnahmesicherung wieder her und garantiert keine Wiederherstellung oder Wiedergewinnung von Protokollen, wodurch sie erst schnell wird. Für einen erfolgreichen Wiederherstellungsvorgang wird empfohlen, einen vollständigen Sicherungszeitstempel auszuwählen, der größer als der früheste Wiederherstellungszeitpunkt.
 
 Die geschätzte Wiederherstellungszeit hängt von mehreren Faktoren ab, einschließlich der Datenbankgrößen, der Größe der Sicherung des Transaktionsprotokolls, der Computegröße der SKU und auch der Zeit der Wiederherstellung. Die Wiederherstellung des Transaktionsprotokolls ist der zeitaufwendigste Teil des Wiederherstellungsprozesses. Wenn die Wiederherstellungszeit näher am Zeitplan der Momentaufnahmensicherung gewählt wird, erfolgen die Wiederherstellungsabläufe schneller, da die Anwendung des Transaktionsprotokolls minimal ist. Um die genaue Wiederherstellungszeit für Ihren Server zu schätzen, wird dringend empfohlen, ihn in Ihrer Umgebung zu testen, da er zu viele umgebungsspezifische Variablen aufweist.
 
@@ -118,7 +120,7 @@ Die geschätzte Wiederherstellungszeit hängt von mehreren Faktoren ab, einschli
 > Wenn Sie einen flexiblen Server wiederherstellen, der mit zonenredundanter Hochverfügbarkeit konfiguriert ist, wird der wiederhergestellte Server in derselben Region und Zone wie Ihr primärer Server konfiguriert und als einzelner flexibler Server in einem Modus ohne Hochverfügbarkeit bereitgestellt. Weitere Informationen finden Sie unter [Zonenredundante Hochverfügbarkeit](concepts-high-availability.md) für flexible Server.
 
 > [!IMPORTANT]
-> Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../../azure-resource-manager/management/lock-resources.md) nutzen.
+> Der Dienst ermöglicht Ihnen nun, eine gelöschte flexible MySQL-Serverressource innerhalb von 5 Tagen ab dem Zeitpunkt der Löschung des Servers wiederherzustellen. Eine detaillierte Anleitung zur Wiederherstellung eines gelöschten Servers [finden Sie in den dokumentierten Schritten](../flexible-server/how-to-restore-dropped-server.md). Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../../azure-resource-manager/management/lock-resources.md) nutzen.
 
 ## <a name="geo-restore"></a>Geowiederherstellung
 
@@ -150,7 +152,7 @@ Nach beiden Wiederherstellungsverfahren (**neuester Wiederherstellungspunkt** od
 ### <a name="backup-related-questions"></a>Fragen zur Sicherung
 
 - **Wie sichere ich meinen Server?**
-Azure Database for MySQL ermöglicht standardmäßig automatische Sicherungen Ihres gesamten Servers (einschließlich aller erstellten Datenbanken) mit einer standardmäßigen Aufbewahrungsfrist von 7 Tagen. Manuelle Sicherungen können, nur mit Community-Tools wie mysqldump ([hier](../concepts-migrate-dump-restore.md#dump-and-restore-using-mysqldump-utility) dokumentiert) oder mydumper ([hier](../concepts-migrate-mydumper-myloader.md#create-a-backup-using-mydumper) dokumentiert) erstellt werden. Wenn Sie Azure Database for MySQL in einem Blobspeicher sichern möchten, lesen Sie unseren Tech Community-Blog [Sichern von Azure Database for MySQL auf Blob Storage](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/backup-azure-database-for-mysql-to-a-blob-storage/ba-p/803830). 
+Azure Database for MySQL ermöglicht standardmäßig automatische Sicherungen Ihres gesamten Servers (einschließlich aller erstellten Datenbanken) mit einer standardmäßigen Aufbewahrungsfrist von 7 Tagen. Manuelle Sicherungen können, nur mit Community-Tools wie mysqldump ([hier](../concepts-migrate-dump-restore.md#dump-and-restore-using-mysqldump-utility) dokumentiert) oder mydumper ([hier](../concepts-migrate-mydumper-myloader.md#create-a-backup-using-mydumper) dokumentiert) erstellt werden. Wenn Sie Azure Database for MySQL in einem Blobspeicher sichern möchten, lesen Sie unseren Tech Community-Blog [Sichern von Azure Database for MySQL auf Blob Storage](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/backup-azure-database-for-mysql-to-a-blob-storage/ba-p/803830).
 
 - **Kann ich automatische Sicherungen so konfigurieren, dass sie langfristig aufbewahrt werden?**
 Nein, derzeit unterstützen wir nur eine automatisierte Sicherungsaufbewahrung von maximal 35 Tagen. Sie können manuelle Sicherungen zur langfristigen Aufbewahrung durchführen.
@@ -159,7 +161,7 @@ Nein, derzeit unterstützen wir nur eine automatisierte Sicherungsaufbewahrung v
 Die erste Momentaufnahmensicherung ist für unmittelbar nach Erstellung des Servers geplant. Momentaufnahmesicherungen werden einmal täglich erstellt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt. Sicherungsfenster werden grundsätzlich von Azure verwaltet und können nicht angepasst werden.
 
 - **Werden meine Sicherungen verschlüsselt?**
-Alle Daten, Sicherungen und temporären Dateien für Azure Database for MySQL, die im Zuge der Abfrageausführung erstellt werden, werden mithilfe der AES-256-Bit-Verschlüsselung verschlüsselt. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden. 
+Alle Daten, Sicherungen und temporären Dateien für Azure Database for MySQL, die im Zuge der Abfrageausführung erstellt werden, werden mithilfe der AES-256-Bit-Verschlüsselung verschlüsselt. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
 
 - **Kann ich einzelne oder mehrere Datenbanken wiederherstellen?**
 Das Wiederherstellen einzelner oder mehrerer Datenbanken oder Tabellen wird nicht unterstützt. Falls Sie bestimmte Datenbanken wiederherstellen möchten, führen Sie eine Point-in-Time-Wiederherstellung durch und extrahieren Sie dann die benötigten Tabellen oder Datenbanken.
@@ -174,7 +176,7 @@ Neun, Sicherungen werden intern als Teil des verwalteten Diensts ausgelöst und 
 Azure Database for MySQL erstellt Serversicherungen automatisch und speichert sie in einem vom Benutzer konfigurierten lokal redundanten oder georedundanten Speicher. Diese Sicherungsdateien können nicht exportiert werden. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Sie können die Sicherung der Datenbank optional von 1 bis 35 Tagen konfigurieren.
 
 - **Wie kann ich meine Sicherungen validieren?**
-Die beste Möglichkeit, die Verfügbarkeit gültiger Sicherungen zu validieren, ist es regelmäßig Point-in-Time-Wiederherstellung durchzuführen und zu und bestätigen, dass die Sicherungen gültig und wiederherstellbar sind. Sicherungsvorgänge oder -dateien werden den Endbenutzern nicht verfügbar gemacht.
+Die beste Möglichkeit, die Verfügbarkeit erfolgreich abgeschlossener Sicherungen zu überprüfen, besteht in der Anzeige der vollständigen automatisierten Sicherungen, die innerhalb des Aufbewahrungszeitraums auf dem Blatt Sicherung und Wiederherstellung erstellt wurden. Wenn bei einer Sicherung ein Fehler auftritt, wird sie nicht in der Liste der verfügbaren Sicherungen aufgeführt, und unser Sicherungsdienst versucht alle 20 Minuten, eine Sicherung zu erstellen, bis eine erfolgreiche Sicherung erstellt wird. Diese Sicherungsfehler sind auf hohe Transaktionsproduktionslasten auf dem Server zurückzuführen.
 
 - **Wo kann ich den Speicherverbrauch für Sicherungen einsehen?**
 Im Azure-Portal finden Sie auf der Registerkarte „Überwachung“ im Abschnitt „Metriken“ die Metrik [Verwendeter Sicherungsspeicher](./concepts-monitoring.md), die den gesamten Verbrauch für Sicherungen anzeigt.
@@ -189,7 +191,7 @@ Für die Flexible Server-Instanz werden bis zu 100 % Ihres bereitgestellten Ser
 Für beendete Server werden keine neuen Sicherungen ausgeführt. Alle älteren Sicherungen (innerhalb des Aufbewahrungszeitfensters) zum Zeitpunkt des Anhaltens des Servers werden bis zum erneuten Starten des Servers aufbewahrt, wonach die Aufbewahrung der Sicherungen für den aktiven Server durch dessen Aufbewahrungszeitfenster bestimmt wird.
 
 - **Wie werden mir Sicherungen angehaltener Server in Rechnung gestellt?**
-Während Ihre Serverinstanz angehalten wird, werden Ihnen bereitgestellter Speicher (einschließlich bereitgestellter IOPS) und Sicherungsspeicher (Sicherungen, die im angegebenen Aufbewahrungszeitfenster gespeichert sind) in Rechnung gestellt. Der kostenlose Sicherungsspeicher ist auf die Größe Ihrer bereitgestellten Datenbank beschränkt und gilt nur für aktive Server. 
+Während Ihre Serverinstanz angehalten wird, werden Ihnen bereitgestellter Speicher (einschließlich bereitgestellter IOPS) und Sicherungsspeicher (Sicherungen, die im angegebenen Aufbewahrungszeitfenster gespeichert sind) in Rechnung gestellt. Der kostenlose Sicherungsspeicher ist auf die Größe Ihrer bereitgestellten Datenbank beschränkt und gilt nur für aktive Server.
 
 ### <a name="restore-related-questions"></a>Fragen zur Wiederherstellung
 
@@ -197,12 +199,12 @@ Während Ihre Serverinstanz angehalten wird, werden Ihnen bereitgestellter Speic
 Das Azure-Portal unterstützt die Point-in-Time-Wiederherstellung (für alle Server), sodass Benutzer den neuesten oder einen benutzerdefinierten Wiederherstellungspunkt wiederherstellen können. Informationen zum manuellen Wiederherstellen Ihres Servers aus den Sicherungen, die von mysqldump/myDumper erstellt wurden, finden Sie unter [Wiederherstellen Ihrer Datenbank mit myLoader.](../concepts-migrate-mydumper-myloader.md#restore-your-database-using-myloader)
 
 - **Warum dauert meine Wiederherstellung so lange?**
-Die geschätzte Zeit für die Wiederherstellung des Servers ist von mehreren Faktoren abhängig: 
+Die geschätzte Zeit für die Wiederherstellung des Servers ist von mehreren Faktoren abhängig:
    - Größe der Datenbanken Im Rahmen des Wiederherstellungsprozesses muss die Datenbank mit Daten aus der letzten physischen Sicherung aufgefüllt werden. Daher ist der Zeitaufwand der Wiederherstellung proportional zur Größe der Datenbank.
    - Der aktive Teil der Transaktionsaktivität, der zur Wiederherstellung erneut durchgeführt werden muss Die Wiederherstellung kann abhängig von der zusätzlichen Transaktionsaktivität seit dem letzten erfolgreichen Prüfpunkt länger dauern.
-   - Netzwerkbandbreite, sofern die Wiederherstellung in einer anderen Region erfolgt 
-   - Anzahl der gleichzeitigen Wiederherstellungsanforderungen, die aktuell in der Zielregion verarbeitet werden 
-   - Vorhandensein eines Primärschlüssels in den Tabellen in der Datenbank. Um die Wiederherstellung zu beschleunigen, sollten Sie für alle Tabellen in der Datenbank einen Primärschlüssel hinzufügen.  
+   - Netzwerkbandbreite, sofern die Wiederherstellung in einer anderen Region erfolgt
+   - Anzahl der gleichzeitigen Wiederherstellungsanforderungen, die aktuell in der Zielregion verarbeitet werden
+   - Vorhandensein eines Primärschlüssels in den Tabellen in der Datenbank. Um die Wiederherstellung zu beschleunigen, sollten Sie für alle Tabellen in der Datenbank einen Primärschlüssel hinzufügen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

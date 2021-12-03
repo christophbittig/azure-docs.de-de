@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/26/2021
+ms.date: 10/19/2021
 ms.author: justinha
-ms.openlocfilehash: 027217ab5963f084fca7678c9e51f7188d39a191
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: c103205453a680a9f67c0150cdbfd60cc062ca69
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707887"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266161"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services
 
@@ -74,9 +74,20 @@ Bevor Sie eine Gesamtstruktur-Vertrauensstellung in Azure AD DS konfigurieren, s
 Um die verwaltete Domäne ordnungsgemäß aus der lokalen Umgebung aufzulösen, müssen Sie möglicherweise Weiterleitungen zu den vorhandenen DNS-Servern hinzufügen. Wenn Sie die lokale Umgebung nicht für die Kommunikation mit der verwalteten Domäne konfiguriert haben, führen Sie auf einer Verwaltungsarbeitsstation die folgenden Schritte für die lokale AD DS-Domäne aus:
 
 1. Wählen Sie **Start** > **Verwaltung** > **DNS** aus.
-1. Klicken Sie mit der rechten Maustaste auf den DNS-Server (beispielsweise *myAD01*), und wählen Sie **Eigenschaften** aus.
-1. Wählen Sie **Weiterleitungen** und dann **Bearbeiten** aus, um weitere Weiterleitungen hinzuzufügen.
-1. Fügen Sie die IP-Adressen der verwalteten Domäne hinzu, z. B. *10.0.2.4* und *10.0.2.5*.
+1. Wählen Sie Ihre DNS-Zone (z. B. *aaddscontoso.com*) aus.
+1. Wählen Sie **Bedingte Weiterleitungen** aus, klicken Sie mit der rechten Maustaste, und wählen Sie dann **Neue bedingte Weiterleitung** aus.
+1. Geben Sie Ihre andere **DNS-Domäne** (z. B. *contoso.com*) und dann die IP-Adressen der DNS-Server für diesen Namespace wie im folgenden Beispiel gezeigt ein:
+
+    ![Screenshot: Hinzufügen und Konfigurieren einer bedingten Weiterleitung für den DNS-Server](./media/manage-dns/create-conditional-forwarder.png)
+
+1. Aktivieren Sie das Kontrollkästchen **Diese bedingte Weiterleitung in Active Directory speichern und wie folgt replizieren**, und wählen Sie dann die Option *Alle DNS-Server in dieser Domänen* aus, wie im folgenden Beispiel gezeigt:
+
+    ![Screenshot: Auswählen aller DNS-Server in dieser Domäne](./media/manage-dns/store-in-domain.png)
+
+    > [!IMPORTANT]
+    > Wenn die bedingte Weiterleitung in der *Gesamtstruktur* anstelle der *Domäne* gespeichert wird, führt sie zu einem Fehler.
+
+1. Wählen Sie zum Erstellen der bedingten Weiterleitung **OK** aus.
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Erstellen der eingehenden Gesamtstruktur-Vertrauensstellung in der lokalen Domäne
 

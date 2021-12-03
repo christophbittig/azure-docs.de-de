@@ -8,16 +8,19 @@ ms.topic: how-to
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a3a72975db0a08d8bf3d35cdc8c177ef4230fd23
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: 67e16d2cf0a9ddbc7b4447b22207c908be4a3ac9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220172"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036654"
 ---
 # <a name="enroll-your-subscription-in-per-user-access-pricing"></a>Registrieren Ihres Abonnements für Preise für den Zugriff auf Benutzerebene
 
-Bevor externe Benutzer eine Verbindung mit Ihrer Bereitstellung herstellen können, müssen Sie Ihr Abonnement für die Preise für benutzerspezifischen Zugriff registrieren. Mit den Preisen für benutzerspezifischen Zugriff können Benutzer außerhalb Ihrer Organisation auf Apps und Desktops in Ihrem Abonnement zugreifen. Ihr registriertes Abonnement wird monatlich basierend auf der Anzahl unterschiedlicher Benutzer abgerechnet, die eine Verbindung mit Azure Virtual Desktop-Ressourcen herstellen.
+Bevor externe Benutzer eine Verbindung mit Ihrer Bereitstellung herstellen können, müssen Sie Ihr Abonnement für die Preise für benutzerspezifischen Zugriff registrieren. Die Preise für den Zugriff pro Nutzer berechtigen Nutzer außerhalb Ihrer Organisation, mithilfe von Identitäten, die Sie bereitstellen und verwalten, auf Apps und Desktops in Ihrem Abonnement zu zugreifen. Ihr registriertes Abonnement wird monatlich basierend auf der Anzahl unterschiedlicher Benutzer abgerechnet, die eine Verbindung mit Azure Virtual Desktop-Ressourcen herstellen.
+
+>[!NOTE]
+>Achten Sie darauf, externe *Nutzer* nicht mit externen *Identitäten* zu verwechseln. Azure Virtual Desktop unterstützt derzeit keine externen Identitäten, einschließlich Gastzugänge und B2B-Identitäten (Business-to-Business). Unabhängig davon, ob Sie interne oder externe Nutzer mit dem Azure Virtual Desktop bedienen, müssen Sie Identitäten für diese Nutzer selbst erstellen und verwalten. Die Preise für den Zugriff pro Nutzer sind keine Möglichkeit, Gastnutzerkonten mit dem Azure Virtual Desktop zu aktivieren. Für weitere Informationen, siehe [Grundlegendes zu Lizenzen und zu den Preisen für den Zugriff pro Nutzer](licensing.md).
 
 ## <a name="how-to-enroll"></a>Registrierung
 
@@ -39,4 +42,4 @@ So registrieren Sie Ihr Azure-Abonnement für Preise für benutzerspezifischen Z
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Preisen für benutzerspezifischen Zugriff finden Sie unter [Grundlegendes zu Lizenzen und zu den Preisen für benutzerspezifischen Zugriff](licensing.md). Wenn Sie erfahren möchten, wie Sie die Streamingkosten pro Benutzer-App für Ihre Bereitstellung schätzen, finden Sie weitere Informationen unter [Schätzen der Kosten für das App-Streaming pro Benutzer für Azure Virtual Desktop](streaming-costs.md). Weitere Informationen zum Schätzen der Gesamtkosten der Bereitstellung finden Sie unter [Grundlegendes zu den Gesamtkosten für die Bereitstellung von Azure Virtual Desktop](total-costs.md). 
+Weitere Informationen zu den Preisen für benutzerspezifischen Zugriff finden Sie unter [Grundlegendes zu Lizenzen und zu den Preisen für benutzerspezifischen Zugriff](licensing.md). Wenn Sie erfahren möchten, wie Sie die Streamingkosten pro Benutzer-App für Ihre Bereitstellung schätzen, finden Sie weitere Informationen unter [Schätzen der Kosten für das App-Streaming pro Benutzer für Azure Virtual Desktop](streaming-costs.md). Weitere Informationen zum Schätzen der Gesamtkosten der Bereitstellung finden Sie unter [Grundlegendes zu den Gesamtkosten für die Bereitstellung von Azure Virtual Desktop](total-costs.md).

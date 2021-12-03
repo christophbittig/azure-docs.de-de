@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: a06d07a7d54b6399ab5f83c41284fb2fab7217fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6984d8e07f88eee035e252f0515fe131a4b1b61c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97360270"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422632"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden von .NET (C#) zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver sowie zum Abfragen von Daten
 
@@ -32,7 +32,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
   | **Konfigurieren des Dienstendpunkts** | Öffentlich | [Portal](./howto-manage-vnet-using-portal.md) <br/> [BEFEHLSZEILENSCHNITTSTELLE (CLI)](./howto-manage-vnet-using-cli.md)|
   | **Konfigurieren von Private Link** | Privat | [Portal](./howto-configure-privatelink-portal.md) <br/> [BEFEHLSZEILENSCHNITTSTELLE (CLI)](./howto-configure-privatelink-cli.md) |
 
-- Installieren Sie das [.NET Framework](https://www.microsoft.com/net/download) für Ihre Plattform (Windows, Ubuntu Linux oder macOS).
+- Installieren Sie das [.NET SDK für Ihre Plattform](https://dotnet.microsoft.com/download) (Windows, Ubuntu Linux oder macOS).
 - Installieren Sie [Visual Studio](https://www.visualstudio.com/downloads/), um Ihr Projekt zu erstellen.
 - Installieren Sie das NuGet-Paket [Npgsql](https://www.nuget.org/packages/Npgsql/) in Visual Studio.
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d196fa6eabd0a6f9fc08b8d1b1d60e649d02ee1b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: ca051199e6fcbfab9a8de9e4a03d845bfa03c454
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234963"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553741"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Desktop-App, die Web-APIs aufruft: App-Registrierung
 
@@ -41,6 +41,8 @@ Wenn Ihre Desktopanwendung die interaktive Authentifizierung verwendet, können 
 Die in einer Desktopanwendung zu verwendenden Umleitungs-URIs hängen von dem Flow ab, den Sie verwenden möchten.
 
 Geben Sie den Umleitungs-URI für Ihre App an, indem Sie im Azure-Portal unter **App-Registrierungen** die [Plattformeinstellungen konfigurieren](quickstart-register-app.md#add-a-redirect-uri).
+
+- Für Apps, die [Webauthentifizierungs-Manager (WAM)](scenario-desktop-acquire-token-wam.md)verwenden, müssen Umleitungs-URIs nicht in MSAL, sondern in der [App-Registrierung](scenario-desktop-acquire-token-wam.md#redirect-uri) konfiguriert werden.
 
 - Für Apps mit interaktiver Authentifizierung:
 

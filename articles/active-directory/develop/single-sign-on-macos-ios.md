@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 94174eeb943f4016fde8baf329fa6ba27768e486
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 02140728536e458c85e8c63a0fa1ca3c9663506b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039932"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050504"
 ---
 # <a name="configure-sso-on-macos-and-ios"></a>Konfigurieren von SSO unter macOS und iOS
 
@@ -72,7 +72,7 @@ Umleitungs-URI für App2: `msauth.com.contoso.mytestapp2://auth`
 Umleitungs-URI für App3: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
-> Das Format von Umleitungs-URIs muss mit dem von der MSAL unterstützten Format kompatibel sein. Dies ist unter [MSAL-Formatanforderungen für Umleitungs-URIs](redirect-uris-ios.md#msal-redirect-uri-format-requirements) dokumentiert.
+> Das Format von Umleitungs-URIs muss mit dem von MSAL unterstützten Format kompatibel sein. Dies ist unter [MSAL-Formatanforderungen für Umleitungs-URIs](redirect-uris-ios.md#msal-redirect-uri-format-requirements) dokumentiert.
 
 ### <a name="setup-keychain-sharing-between-applications"></a>Einrichten einer anwendungsübergreifenden Keychainfreigabe
 

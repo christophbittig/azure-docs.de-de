@@ -3,12 +3,12 @@ title: Replizieren virtueller Azure Stack-Computer in Azure mit Azure Site Recov
 description: Hier erfahren Sie, wie Sie die Notfallwiederherstellung in Azure für virtuelle Azure Stack-Computer mit dem Azure Site Recovery-Dienst einrichten.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 386eae05ea06b59aac290d5f1f51d643d7952b6a
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: d423f4511e830c4a62537330f3bff7d2c7bc6ec9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580420"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452716"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replizieren virtueller Azure Stack-Computer in Azure
 
@@ -260,7 +260,7 @@ Bevor Sie ein Testfailover ausführen, überprüfen Sie die Computereigenschafte
 
 1. Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente** > VM.
 2. Im Bereich **Repliziertes Element** finden Sie eine Zusammenfassung der Informationen zu virtuellen Computern, den Integritätsstatus sowie die neuesten verfügbaren Wiederherstellungspunkte. Klicken Sie auf **Eigenschaften**, um weitere Details anzuzeigen.
-3. Unter **Compute und Netzwerk** ändern Sie Einstellungen nach Bedarf.
+3. Unter **Compute**- und **Netzwerk**-Einstellungen ändern Sie die Einstellungen nach Bedarf.
 
     - Sie können den Namen des virtuellen Azure-Computers, die Ressourcengruppe, Zielgröße, [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) und Einstellungen verwalteter Datenträger ändern.
     - Sie können auch Netzwerkeinstellungen anzeigen und ändern. Dazu gehören das Netzwerk/Subnetz, mit dem der virtuelle Azure-Computer nach dem Failover verbunden wird, und die IP-Adresse, die dem virtuellen Computer zugewiesen wird.

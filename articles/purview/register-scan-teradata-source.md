@@ -1,56 +1,67 @@
 ---
-title: Registrieren einer Teradata-Quelle und Einrichten von Überprüfungen
-description: In diesem Artikel erfahren Sie, wie Sie eine Teradata-Quelle in Azure Purview registrieren und eine Überprüfung einrichten.
-author: chandrakavya
-ms.author: kchandra
+title: Verbinden mit und Verwalten von Teradata
+description: In diesem Leitfaden wird beschrieben, wie Sie in Azure Purview eine Verbindung mit Teradata herstellen und Ihre Teradata-Quelle mit den Features von Purview überprüfen und verwalten.
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
-ms.topic: overview
-ms.date: 09/27/2021
-ms.openlocfilehash: 5ba69e4b20edc74dfd9de43f19b2ba582b196353
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.topic: how-to
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: ebaad16ff413b33f175815a1ddadb2fa1d5b63ae
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129211302"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841921"
 ---
-# <a name="register-and-scan-teradata-source"></a>Registrieren und Überprüfen einer Teradata-Quelle
+# <a name="connect-to-and-manage-teradata-in-azure-purview"></a>Verbinden mit und Verwalten von Teradata in Azure Purview
 
-In diesem Artikel erfahren Sie, wie Sie eine Teradata-Quelle in Purview registrieren und eine Überprüfung einrichten.
+In diesem Artikel wird beschrieben, wie Sie Teradata in Azure Purview registrieren, authentifizieren und damit interagieren. Weitere Informationen zu Azure Purview finden Sie im [Einführungsartikel](overview.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Die Teradata-Quelle unterstützt die **vollständige Überprüfung**, um Metadaten aus einer Teradata-Datenbank zu extrahieren, und ruft die **Herkunft** zwischen Datasets ab.
+|**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
+|---|---|---|---|---|---|---|
+| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| [Ja**](how-to-lineage-teradata.md)|
+
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory-Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
+
+Die Teradata-Datenbankversionen 12.x bis 16.x werden unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1.  Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein.
-    Weitere Informationen finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](../data-factory/create-self-hosted-integration-runtime.md).
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-2.  Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
+* Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-3.  Stellen Sie sicher, dass \"Visual C++ Redistributable 2012 Update 4\" auf dem Computer mit der selbstgehosteten Integration Runtime installiert ist. Sollte diese Komponente noch nicht installiert sein, können Sie sie [hier](https://www.microsoft.com/download/details.aspx?id=30679) herunterladen.
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
-4.  Sie müssen den JDBC-Treiber von Teradata manuell auf den virtuellen Computer herunterladen, auf dem die selbstgehostete Integration Runtime ausgeführt wird.
-    Die ausführbare JAR-Datei kann von der Teradata-[Website](https://downloads.teradata.com/) heruntergeladen werden.
+* Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
+
+* Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
+
+* Stellen Sie sicher, dass Visual C++ Redistributable für Visual Studio 2012 Update 4 auf dem Computer mit der selbstgehosteten Integration Runtime installiert ist. Wenn Sie dieses Update nicht installiert haben, [können Sie es hier herunterladen](https://www.microsoft.com/download/details.aspx?id=30679).
+
+* Sie müssen den JDBC-Treiber von Teradata manuell auf den virtuellen Computer herunterladen, auf dem die selbstgehostete Integration Runtime ausgeführt wird. Die ausführbare JAR-Datei kann von der Teradata-[Website](https://downloads.teradata.com/) heruntergeladen werden.
 
     > [!Note]
     > Der Treiber muss für alle Konten des virtuellen Computers zugänglich sein. Installieren Sie ihn nicht in einem Benutzerkonto.
 
-5.  Die Teradata-Datenbankversionen 12.x bis 16.x werden unterstützt. Stellen Sie sicher, dass Sie für die zu überprüfende Teradata-Quelle über Lesezugriff verfügen.
+## <a name="register"></a>Register
 
-## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
+In diesem Abschnitt wird beschrieben, wie Sie Teradata in Azure Purview mithilfe von [Purview Studio](https://web.purview.azure.com/) registrieren.
 
-Die einzige unterstützte Authentifizierung für eine Teradata-Quelle ist die **Standardauthentifizierung**.
+### <a name="authentication-for-registration"></a>Authentifizierung für die Registrierung
 
-## <a name="register-a-teradata-source"></a>Registrieren einer Teradata-Quelle
+Die einzige unterstützte Authentifizierung für eine Teradata-Quelle ist die **Standardauthentifizierung**. Stellen Sie sicher, dass Sie für die zu überprüfende Teradata-Quelle über Lesezugriff verfügen.
 
-Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Teradata-Quelle zu registrieren:
+### <a name="steps-to-register"></a>Schritte zur Registrierung
 
 1.  Navigieren Sie zu Ihrem Purview-Konto.
-2.  Wählen Sie im linken Navigationsbereich **Data Map** aus.
-3.  Wählen Sie **Registrieren** aus.
-4.  Wählen Sie unter „Quellen registrieren“ die Option **Teradata** aus. Wählen Sie **Weiter** aus.
+1.  Wählen Sie im linken Navigationsbereich **Data Map** aus.
+1.  Wählen Sie **Registrieren** aus.
+1.  Wählen Sie unter „Quellen registrieren“ die Option **Teradata** aus. Wählen Sie **Weiter** aus.
 
     :::image type="content" source="media/register-scan-teradata-source/register-sources.png" alt-text="Teradata-Registrierung" border="true":::
 
@@ -58,86 +69,72 @@ Gehen Sie auf dem Bildschirm **Register sources (Teradata)** (Quellen registrier
 
 1.  Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
 
-2.  Geben Sie unter **Host** den Hostnamen für die Verbindungsherstellung mit einer Teradata-Quelle ein. Hierbei kann es sich auch um eine IP-Adresse oder um eine vollqualifizierte Verbindungszeichenfolge für den Server handeln.
+1.  Geben Sie unter **Host** den Hostnamen für die Verbindungsherstellung mit einer Teradata-Quelle ein. Hierbei kann es sich auch um eine IP-Adresse oder um eine vollqualifizierte Verbindungszeichenfolge für den Server handeln.
 
-3.  Optional: Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung.
+1.  Optional: Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung.
 
-4.  Wählen Sie „Fertig stellen“ aus, um die Datenquelle zu registrieren.
+1.  Wählen Sie „Fertig stellen“ aus, um die Datenquelle zu registrieren.
 
     :::image type="content" source="media/register-scan-teradata-source/register-sources-2.png" alt-text="Registrieren von Teradata" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
+## <a name="scan"></a>Überprüfen
 
-Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
+Führen Sie die folgenden Schritte aus, um Teradata zu überprüfen und automatisch Ressourcen zu identifizieren und Ihre Daten zu klassifizieren. Weitere Informationen zum Scannen im Allgemeinen finden Sie in unserer [Einführung in Scans und Aufnahme](concept-scans-and-ingestion.md).
 
-1.  Wählen Sie im Verwaltungscenter **Integration Runtimes** aus. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
+### <a name="create-and-run-scan"></a>Scan erstellen und ausführen
 
-2.  Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
+1. Wählen Sie im Verwaltungscenter **Integration Runtimes** aus. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Wenn sie nicht eingerichtet ist, führen Sie die [hier](./manage-integration-runtimes.md) genannten Schritte aus, um eine selbst gehostete Integrationslaufzeit einzurichten.
 
-3.  Wählen Sie die registrierte Teradata-Quelle aus.
+1. Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
 
-4.  Wählen Sie **Neue Überprüfung** aus.
+1. Wählen Sie die registrierte Teradata-Quelle aus.
 
-5.  Geben Sie folgende Details an:
+1. Wählen Sie **Neue Überprüfung** aus.
 
-    a.  **Name**: Der Name der Überprüfung.
+1. Geben Sie folgende Details an:
 
-    b.  **Verbindung über Integration Runtime herstellen**: Wählen Sie die konfigurierte selbstgehostete Integration Runtime aus.
+    1. **Name**: Der Name der Überprüfung.
 
-    c.  **Anmeldeinformationen**: Wählen Sie die Anmeldeinformationen zur Herstellung der Verbindung mit Ihrer Datenquelle aus. Stellen Sie sicher, dass Sie:
+    1. **Verbindung über Integration Runtime herstellen**: Wählen Sie die konfigurierte selbstgehostete Integration Runtime aus.
 
-    -   beim Erstellen von Anmeldeinformationen die Standardauthentifizierung auswählen.
-    -   im Eingabefeld „Benutzername“ einen Benutzernamen zur Herstellung der Verbindung mit dem Datenbankserver eingeben.
-    -   das Kennwort für den Datenbankserver im geheimen Schlüssel speichern.
+    1. **Anmeldeinformationen**: Wählen Sie die Anmeldeinformationen zur Herstellung der Verbindung mit Ihrer Datenquelle aus. Stellen Sie sicher, dass Sie:
+        * beim Erstellen von Anmeldeinformationen die Standardauthentifizierung auswählen.
+        * im Eingabefeld „Benutzername“ einen Benutzernamen zur Herstellung der Verbindung mit dem Datenbankserver eingeben.
+        * das Kennwort für den Datenbankserver im geheimen Schlüssel speichern.
 
         Weitere Informationen zu Anmeldeinformationen finden Sie [hier](./manage-credentials.md).
 
-6.  **Schema**: Eine durch Semikolons getrennte Liste mit einer Teilmenge von Schemas, die importiert werden sollen. Beispiel: Schema1; Schema2. Ist diese Liste leer, werden alle Benutzerschemas importiert. Alle Systemschemas (beispielsweise „SysAdmin“) und Objekte werden standardmäßig ignoriert. Wenn die Liste leer ist, werden alle verfügbaren Schemas importiert.
+    1. **Schema**: Eine durch Semikolons getrennte Liste mit einer Teilmenge von Schemas, die importiert werden sollen. Beispiel: `schema1; schema2`. Ist diese Liste leer, werden alle Benutzerschemas importiert. Alle Systemschemas (beispielsweise „SysAdmin“) und Objekte werden standardmäßig ignoriert. Wenn die Liste leer ist, werden alle verfügbaren Schemas importiert.
 
-    Zu den zulässigen Schemanamensmustern mit SQL-LIKE-Ausdruckssyntax zählt auch die Verwendung von „%“ wie im folgenden Beispiel: A%; %B; %C%; D
-    - beginnt mit „A“ oder    
-    - endet mit „B“ oder    
-    - enthält „C“ oder    
-    - gleich „D“
+        Zu den zulässigen Schemanamensmustern mit SQL-LIKE-Ausdruckssyntax zählt auch die Verwendung von „%“. Beispiel: `A%; %B; %C%; D`
+        * Starten mit A oder
+        * Endet mit „B“ oder
+        * Enthält „C“ oder
+        * Ist gleich „D“
 
-    Die Verwendung von „NOT“ oder Sonderzeichen ist nicht zulässig.
+        Die Verwendung von „NOT“ oder Sonderzeichen ist nicht zulässig.
 
-7.  **Treiberspeicherort**: Geben Sie den Pfad zum Speicherort des JDBC-Treibers auf dem virtuellen Computer an, auf dem die selbstgehostete Integration Runtime ausgeführt wird. Dabei sollte es sich um den Pfad zu einem gültigen Speicherort eines JAR-Ordners handeln.
+    1. **Treiberspeicherort**: Geben Sie den Pfad zum Speicherort des JDBC-Treibers auf dem virtuellen Computer an, auf dem die selbstgehostete Integration Runtime ausgeführt wird. Dabei sollte es sich um den Pfad zu einem gültigen Speicherort eines JAR-Ordners handeln.
 
-8.  **Maximal verfügbarer Arbeitsspeicher:** Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden Teradata-Quelle.
+    1. **Maximal verfügbarer Arbeitsspeicher:** Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden Teradata-Quelle.
 
-    > [!Note] 
-    > Faustregel: 2 GB Arbeitsspeicher pro 1.000 Tabellen.
+        > [!Note]
+        > Faustregel: 2 GB Arbeitsspeicher pro 1.000 Tabellen.
 
-    :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="Einrichten der Überprüfung" border="true":::
+        :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="Einrichten der Überprüfung" border="true":::
 
-6.  Wählen Sie **Weiter**.
+1. Wählen Sie **Weiter**.
 
-7.  Wählen Sie den **Auslöser für die Überprüfung**. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
+1. Wählen Sie den **Auslöser für die Überprüfung**. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
 
-8.  Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
+1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie **Speichern und ausführen** aus.
 
-## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
-
-1. Navigieren Sie zum Verwaltungscenter. Wählen Sie im Abschnitt **Sources and scanning** (Quellen und Überprüfung) die Option **Datenquellen** aus.
-
-2. Wählen Sie die gewünschte Datenquelle aus. Daraufhin wird eine Liste mit vorhandenen Überprüfungen für diese Datenquelle angezeigt.
-
-3. Wählen Sie die Überprüfung aus, für deren Ergebnisse Sie sich interessieren.
-
-4. Auf dieser Seite werden alle vorherigen Überprüfungsausführungen sowie die Metriken und der Status der jeweiligen Überprüfungsausführung angezeigt. Außerdem sehen Sie hier, ob es sich um eine geplante oder um eine manuelle Überprüfung gehandelt hat, auf wie viele Ressourcen Klassifizierungen angewendet wurden, wie viele Ressourcen insgesamt ermittelt wurden, wann die Überprüfung gestartet und beendet wurde und wie lange die Überprüfung insgesamt gedauert hat.
-
-## <a name="manage-your-scans"></a>Verwalten Ihrer Überprüfungen
-
-Gehen Sie zum Verwalten oder Löschen einer Überprüfung wie folgt vor:
-
-1. Navigieren Sie zum Verwaltungscenter. Wählen Sie im Abschnitt **Sources and scanning** (Quellen und Überprüfung) die Option **Datenquellen** und anschließend die gewünschte Datenquelle aus.
-
-2. Wählen Sie die Überprüfung aus, die Sie verwalten möchten. Wenn Sie die Überprüfung bearbeiten möchten, wählen Sie **Bearbeiten** aus.
-
-3. Wenn Sie Ihre Überprüfung löschen möchten, wählen Sie **Löschen** aus.
+[!INCLUDE [create and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
-- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
+- [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
+- [Data Catalog suchen](how-to-search-catalog.md)

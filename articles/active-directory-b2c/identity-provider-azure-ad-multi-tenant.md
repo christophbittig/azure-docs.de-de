@@ -3,22 +3,22 @@ title: Einrichten der Anmeldung für mehrinstanzenfähiges Azure AD durch benutz
 titleSuffix: Azure AD B2C
 description: Hinzufügen eines mehrinstanzenfähigen Azure AD-Identitätsanbieters mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2021
+ms.date: 10/21/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f41736ac221ee7d7cdce5ac776e70f96aa16536e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 553608a5574edaf904e9c9ac0986a3d0f8af9278
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575093"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227960"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für einen mehrinstanzenfähigen Azure Active Directory-Identitätsanbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -37,6 +37,9 @@ In diesem Artikel wird erläutert, wie Sie die Anmeldung für Benutzer ermöglic
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+> [!NOTE]
+> In diesem Artikel wird vorausgesetzt, dass im vorherigen, unter Voraussetzungen erwähnten Schritt der Starter Pack **SocialAndLocalAccounts** verwendet wird.  
 
 ## <a name="register-an-azure-ad-app"></a>Registrieren einer Azure AD-App
 
@@ -74,7 +77,7 @@ Wenn Sie die Ansprüche `family_name` und `given_name` von Azure AD erhalten m�
 1. Wählen Sie **Optionalen Anspruch hinzufügen** aus.
 1. Wählen Sie als **Tokentyp** die Option **ID** aus.
 1. Wählen Sie die hinzuzufügenden optionalen Ansprüche `family_name` und `given_name` aus.
-1. Klicken Sie auf **Hinzufügen**.
+1. Wählen Sie **Hinzufügen** aus. Wenn die Option **Microsoft Graph-E-Mail-Berechtigungen aktivieren (erforderlich zum Anzeigen von Ansprüchen in Token)** angezeigt wird, aktivieren Sie diese, und wählen Sie dann erneut **Hinzufügen** aus.
 
 ## <a name="optional-verify-your-app-authenticity"></a>[Optional] Überprüfen der Authentizität Ihrer App
 
@@ -101,7 +104,7 @@ Um Benutzern zu ermöglichen, sich mit einem Azure AD-Konto anzumelden, müssen
 
 Sie können Azure AD als Anspruchsanbieter definieren, indem Sie Azure AD in der Erweiterungsdatei Ihrer Richtlinie dem Element **ClaimsProvider** hinzufügen.
 
-1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*.
+1. Öffnen Sie die Datei *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml***.
 1. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
 1. Fügen Sie ein neues **ClaimsProvider**-Element wie folgt hinzu:
 
@@ -168,7 +171,7 @@ Zum Abrufen der Werte müssen Sie sich die OpenID Connect-Ermittlungsmetadaten f
 
 Führen Sie die folgenden Schritte für jeden Azure AD-Mandanten aus, der für die Anmeldung verwendet werden soll:
 
-1. Öffnen Sie Ihren Browser, und navigieren Sie zur OpenID Connect-Metadaten-URL für den Mandanten. Suchen Sie nach dem **issuer**-Objekt, und notieren Sie sich dessen Wert. Dies sollte in etwa wie folgt aussehen: `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/`.
+1. Öffnen Sie Ihren Browser, und navigieren Sie zur OpenID Connect-Metadaten-URL für den Mandanten. Suchen Sie nach dem **issuer**-Objekt, und notieren Sie sich dessen Wert. Dies sollte in etwa wie folgt aussehen: `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/.well-known/openid-configuration`.
 1. Kopieren Sie den Wert, und fügen Sie ihn für den Schlüssel **ValidTokenIssuerPrefixes** ein. Trennen Sie mehrere Aussteller durch ein Komma. Ein Beispiel mit zwei Ausstellern finden Sie im vorherigen `ClaimsProvider`-XML-Beispiel.
 
 [!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]

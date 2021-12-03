@@ -1,34 +1,32 @@
 ---
 title: Abfragesprache
 titleSuffix: Azure Digital Twins
-description: Grundlagen der Azure Digital Twins-Abfragesprache
+description: Erfahren Sie mehr über die Azure Digital Twins-Abfragesprache.
 author: baanders
 ms.author: baanders
-ms.date: 6/1/2021
+ms.date: 10/27/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c5779f827177907d3bf3378fde8a35157723b5f8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 620411b5fc8c657f837f3c27077d4ae3dbf16f1c
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631113"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509691"
 ---
-# <a name="about-the-query-language-for-azure-digital-twins"></a>Abfragesprache für Azure Digital Twins
+# <a name="azure-digital-twins-query-language"></a>Azure Digital Twins-Abfragesprache
 
-Beachten Sie, dass im Mittelpunkt von Azure Digital Twins der [Zwillingsgraph](concepts-twins-graph.md) steht, der sich aus digitalen Zwillingen und Beziehungen zusammensetzt. 
+In diesem Artikel werden die Grundlagen der Abfragesprache und ihrer Funktionen beschrieben. Beachten Sie, dass im Mittelpunkt von Azure Digital Twins der [Zwillingsgraph](concepts-twins-graph.md) steht, der sich aus digitalen Zwillingen und Beziehungen zusammensetzt. Dieser Graph kann abgefragt werden, um Informationen zu den darin enthaltenen digitalen Zwillingen und Beziehungen abzurufen. Diese Abfragen werden in einer benutzerdefinierten SQL-ähnlichen Abfragesprache mit der Bezeichnung **Azure Digital Twins-Abfragesprache** geschrieben. Diese Sprache ähnelt der [IoT Hub-Abfragesprache](../iot-hub/iot-hub-devguide-query-language.md) mit vielen vergleichbaren Features.
 
-Dieser Graph kann abgefragt werden, um Informationen zu den darin enthaltenen digitalen Zwillingen und Beziehungen abzurufen. Diese Abfragen werden in einer benutzerdefinierten SQL-ähnlichen Abfragesprache mit der Bezeichnung **Azure Digital Twins-Abfragesprache** geschrieben. Diese Sprache ähnelt der [IoT Hub-Abfragesprache](../iot-hub/iot-hub-devguide-query-language.md) mit vielen vergleichbaren Features.
-
-In diesem Artikel werden die Grundlagen der Abfragesprache und ihrer Funktionen beschrieben. Ausführlichere Beispiele für die Abfragesyntax und zum Ausführen von Abfrageanforderungen finden Sie unter [Abfragen des Zwillingsgraphen](how-to-query-graph.md).
+Ausführlichere Beispiele für die Abfragesyntax und zum Ausführen von Abfrageanforderungen finden Sie unter [Abfragen des Zwillingsgraphen](how-to-query-graph.md).
 
 ## <a name="about-the-queries"></a>Informationen zu Abfragen
 
 Sie können die Abfragesprache von Azure Digital Twins verwenden, um digitale Zwillinge gemäß folgender Aspekte abzurufen:
-* ihren Eigenschaften (einschließlich [Tageigenschaften](how-to-use-tags.md))
+* Eigenschaften (einschließlich [Tageigenschaften](how-to-use-tags.md))
 * Modelle
-* relationships
+* Beziehungen
   - Eigenschaften der Beziehungen
 
 Wenn Sie eine Abfrage aus einer Client-App an den Dienst senden möchten, verwenden Sie die Azure Digital Twins-[Abfrage-API](/rest/api/digital-twins/dataplane/query). Eine Möglichkeit, die API zu verwenden, ist durch eins der [SDKs für Azure Digital Twins](concepts-apis-sdks.md#overview-data-plane-apis).

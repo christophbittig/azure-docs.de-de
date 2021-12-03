@@ -3,7 +3,7 @@ title: Funktionsweise der Zwischenspeicherung | Microsoft-Dokumentation
 description: Unter Zwischenspeichern versteht man das lokale Speichern von Daten, um im Fall einer erneuten Anforderung dieser Daten schneller darauf zugreifen zu können.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
-ms.author: allensu
-ms.openlocfilehash: 7a4688c196551f3ab6b5713d8939f53af161d1e3
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.date: 10/19/2021
+ms.author: duau
+ms.openlocfilehash: d3ffe6cbfb55651664be4bf845099561916aeee1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505007"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450645"
 ---
 # <a name="how-caching-works"></a>Funktionsweise der Zwischenspeicherung
 
@@ -133,6 +133,10 @@ In der folgenden Tabelle wird das Standardverhalten beim Zwischenspeichern bei d
 **Berücksichtigung des Ursprungs**: Gibt an, ob die unterstützten Header mit Cacheanweisungen berücksichtigt werden sollen, wenn sie in der HTTP-Antwort des Ursprungsservers enthalten sind.
 
 **CDN-Cachedauer**: Gibt den Zeitraum an, in dem eine Ressource im Azure CDN zwischengespeichert wird. Wenn **Berücksichtigung des Ursprungs** jedoch auf „Ja“ festgelegt ist und die HTTP-Antwort des Ursprungsservers den Header mit Cacheanweisungen `Expires` oder `Cache-Control: max-age` enthält, verwendet das Azure CDN stattdessen den vom Header angegebenen Wert für die Dauer. 
+
+> [!NOTE]
+> Azure CDN gibt keine Garantien über die Mindestzeit, die das Objekt im Cache gespeichert wird. Zwischengespeicherte Inhalte können aus dem CDN-Cache entfernt werden, bevor sie ablaufen, wenn die Inhalte nicht so häufig angefordert werden, um Platz für häufiger angeforderte Inhalte zu schaffen.
+> 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

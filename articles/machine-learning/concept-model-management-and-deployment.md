@@ -1,25 +1,25 @@
 ---
 title: 'MLOps: ML-Modellverwaltung'
 titleSuffix: Azure Machine Learning
-description: 'Erfahren Sie mehr über die Modellverwaltung mit Azure Machine Learning (MLOps). Stellen Sie Modelle bereit,verwalten und überwachen Sie diese und verfolgen Sie die Herkunft nach, um sie kontinuierlich zu verbessern. '
+description: 'Erfahren Sie mehr über die Modellverwaltung (MLOps) mit Azure Machine Learning. Stellen Sie Modelle bereit,verwalten und überwachen Sie diese und verfolgen Sie die Herkunft nach, um sie kontinuierlich zu verbessern. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
 ms.topic: conceptual
 author: jpe316
 ms.author: jordane
-ms.date: 07/08/2021
-ms.custom: seodec18
-ms.openlocfilehash: e58e820471bbde5d56996958b82c573c69d332b8
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.custom: seodec18, mktng-kw-nov2021
+ms.date: 11/04/2021
+ms.openlocfilehash: 7391f4306207e6b181f994c04022c4393712f30f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427170"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848475"
 ---
 # <a name="mlops-model-management-deployment-lineage-and-monitoring-with-azure-machine-learning"></a>MLOps: Verwaltung, Bereitstellung, Nachverfolgung der Herkunft und Überwachung von Modellen mit Azure Machine Learning
 
-In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning verwenden, um den Lebenszyklus Ihrer Modelle zu verwalten. Azure Machine Learning verwendet einen Machine Learning Operations-Ansatz (MLOps). MLOps verbessert die Qualität und Konsistenz ihrer Machine Learning-Lösungen. 
+In diesem Artikel erfahren Sie, wie Sie Machine Learning-Vorgänge (MLOps) in Azure Machine Learning durchführen, um den Lebenszyklus Ihrer Modelle zu verwalten. MLOps verbessert die Qualität und Konsistenz ihrer Machine Learning-Lösungen. 
 
 ## <a name="what-is-mlops"></a>Was ist MLOps?
 
@@ -28,6 +28,8 @@ Machine Learning-Vorgänge (MLOps) basieren auf [DevOps](https://azure.microsoft
 * Schnelleres Experimentieren und Entwickeln von Modellen
 * Schnellere Bereitstellung von Modellen in der Produktionsumgebung
 * Qualitätssicherung und End-to-End-Nachverfolgung der Herkunft
+
+## <a name="mlops-in-azure-machine-learning"></a>MLOps in Azure Machine Learning
 
 Azure Machine Learning bietet die folgenden MLOps-Features:
 
@@ -40,6 +42,7 @@ Azure Machine Learning bietet die folgenden MLOps-Features:
 - **Automatisieren des End-to-End-ML-Lebenszyklus mit Azure Machine Learning und Azure Pipelines**. Mithilfe von Pipelines können Sie Modelle regelmäßig aktualisieren, neue Modelle testen und fortlaufende Rollouts von neuen ML-Modellen zusätzlich zu Ihren anderen Anwendungen und Diensten durchführen.
 
 Weitere Informationen zu MLOps finden Sie unter [DevOps für maschinelles Lernen (MLOps) – ein Leitfaden](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-mlops).
+
 ## <a name="create-reproducible-ml-pipelines"></a>Erstellen reproduzierbarer ML-Pipelines
 
 Verwenden Sie ML-Pipelines aus Azure Machine Learning, um alle Schritte zu verbinden, die am Trainingsprozess Ihres Modells beteiligt sind.
@@ -141,7 +144,7 @@ Weitere Informationen finden Sie unter [Kontrollierter Rollout von ML-Modellen](
 
 Microsoft Power BI unterstützt die Verwendung von Machine Learning-Modellen für Datenanalysen. Weitere Informationen finden Sie unter [Integration von Azure Machine Learning in Power BI (Vorschau)](/power-bi/service-machine-learning-integration).
 
-## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Sammeln der erforderlichen Governancedaten zur Erfassung des ML-Lebenszyklus End-to-End
+## <a name="capture-the-governance-data-required-for-mlops"></a>Erfassen der für MLOps erforderlichen Governancedaten
 
 Bei Azure ML können Sie den End-to-End-Überwachungspfad Ihrer gesamten ML-Ressourcen durch Verwendung von Metadaten nachverfolgen.
 

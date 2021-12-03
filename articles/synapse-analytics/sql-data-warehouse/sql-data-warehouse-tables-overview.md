@@ -1,22 +1,22 @@
 ---
 title: Entwerfen von Tabellen
-description: Einführung in das Entwerfen von Tabellen mithilfe eines dedizierten SQL-Pools in Azure Synapse Analytics
+description: Hier erhalten Sie eine Einführung in das Entwerfen von Tabellen mithilfe eines dedizierten SQL-Pools.
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/15/2019
-ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c55edbd24553189c11070999ddc5d3b3516f2d97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea3081720adc74576d171dbba40a0f09d858749a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737930"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507092"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Entwerfen von Tabellen mithilfe eines dedizierten SQL-Pools in Azure Synapse Analytics
 
@@ -36,15 +36,15 @@ In einem [Sternschema](https://en.wikipedia.org/wiki/Star_schema) werden Daten i
 
 Schemas eignen sich gut für das Gruppieren von Tabellen, die auf ähnliche Weise verwendet werden.  Wenn Sie mehrere Datenbanken aus einer lokalen Lösung zu einem dedizierten SQL-Pool migrieren, migrieren Sie am besten alle Fakten-, Dimensions- und Integrationstabellen in ein Schema in einem dedizierten SQL-Pool.
 
-Sie können z. B. alle Tabellen im dedizierten SQL-Poolbeispiel [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in einem Schema namens „wwi“ speichern. Mit dem folgenden Code wird ein [benutzerdefiniertes Schema](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) mit dem Namen „wwi“ erstellt.
+Sie können z. B. alle Tabellen im dedizierten SQL-Poolbeispiel [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) in einem Schema namens `wwi` speichern. Mit dem folgenden Code wird ein [benutzerdefiniertes Schema](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) mit dem Namen `wwi` erstellt.
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-Um die Organisation der Tabellen im dedizierten SQL-Pool anzuzeigen, können Sie „fact“, „dim“ und „int“ als Präfixe für die Tabellennamen verwenden. Die folgende Tabelle zeigt einige der Schema- und Tabellennamen für „WideWorldImportersDW“.  
+Um die Organisation der Tabellen im dedizierten SQL-Pool anzuzeigen, können Sie „fact“, „dim“ und „int“ als Präfixe für die Tabellennamen verwenden. Die folgende Tabelle zeigt einige der Schema- und Tabellennamen für `WideWorldImportersDW`.  
 
-| WideWorldImportersDW table  | Tabellentyp | Dedizierter SQL-Pool |
+| **WideWorldImportersDW table**  | *Tabellentyp* | **Dedizierter SQL-Pool** |
 |:-----|:-----|:------|:-----|
 | City | Dimension | wwi.DimCity |
 | Order | Fakt | wwi.FactOrder |
@@ -65,11 +65,11 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 Eine temporäre Tabelle ist nur für die Dauer der Sitzung vorhanden. Sie können eine temporäre Tabelle verwenden, um zu verhindern, dass andere Benutzer temporäre Ergebnisse sehen, und um die Notwendigkeit von Bereinigungen zu reduzieren.  
 
-Temporäre Tabellen nutzen lokalen Speicher, um eine höhere Leistung bereitzustellen.  Weitere Informationen finden Sie unter [Temporäre Tabellen](sql-data-warehouse-tables-temporary.md).
+Temporäre Tabellen nutzen lokalen Speicher, um eine höhere Leistung bereitzustellen. Weitere Informationen finden Sie unter [Temporäre Tabellen](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Externe Tabelle
 
-Eine externe Tabelle verweist auf Daten in Azure Storage Blob oder Azure Data Lake Store. Bei Verwendung in Verbindung mit der CREATE TABLE AS SELECT-Anweisung werden aus einer externen Tabelle ausgewählte Daten in den dedizierten SQL-Pool importiert.
+Eine externe Tabelle verweist auf Daten in Azure Storage Blob oder Azure Data Lake Store. Bei Verwendung mit der CREATE TABLE AS SELECT-Anweisung werden aus einer externen Tabelle ausgewählte Daten in den dedizierten SQL-Pool importiert.
 
 Externe Tabellen eignen sich daher zum Laden von Daten. Ein Tutorial zum Ladevorgang finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage](./load-data-from-azure-blob-storage-using-copy.md).
 
@@ -103,7 +103,7 @@ Weitere Informationen finden Sie unter [Verteilen von Tabellen in SQL Data Wareh
 
 Die Tabellenkategorie bestimmt oftmals, welche Option für das Verteilen der Tabelle ausgewählt wird.
 
-| Tabellenkategorie | Empfohlene Verteilungsoption |
+| **Tabellenkategorie** | **Empfohlene Verteilungsoption** |
 |:---------------|:--------------------|
 | Fakt           | Verwenden Sie die Hashverteilung mit gruppiertem Columnstore-Index. Die Leistung wird verbessert, wenn zwei Hashtabellen über die gleiche Verteilungsspalte verknüpft sind. |
 | Dimension      | Verwenden Sie bei kleineren Tabellen die Replikation. Wenn Tabellen zu groß sind, um sie auf jedem Serverknoten zu speichern, verwenden Sie die Hashverteilung. |
@@ -144,7 +144,7 @@ PRIMARY KEY wird nur unterstützt, wenn sowohl NONCLUSTERED als auch NOT ENFORCE
 
 Sie können eine Tabelle als neue leere Tabelle erstellen. Alternativ können Sie eine Tabelle erstellen und mit den Ergebnissen einer SELECT-Anweisung füllen. Es folgen die T-SQL-Befehle zum Erstellen einer Tabelle.
 
-| T-SQL-Anweisung | BESCHREIBUNG |
+| **T-SQL-Anweisung**| **Beschreibung** |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Erstellt eine leere Tabelle durch die Definition der Tabellenspalten und Optionen. |
 | [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Erstellt eine externe Tabelle. Die Definition der Tabelle wird in einem dedizierten SQL-Pool gespeichert. Die Tabellendaten werden in Azure Blob Storage oder Azure Data Lake Store abgelegt. |
@@ -297,7 +297,7 @@ FROM size
 
 ### <a name="table-space-summary"></a>Tabellenspeicherplatz – Zusammenfassung
 
-Diese Abfrage gibt die Zeilen und den Speicherplatz nach Tabelle zurück.  Damit können Sie anzeigen, welche Tabellen am größten sind und ob es sich um Roundrobintabellen, replizierte Tabellen oder Tabellen mit Hashverteilung handelt.  Für Tabellen mit Hashverteilung wird zudem die Verteilungsspalte angezeigt.  
+Diese Abfrage gibt die Zeilen und den Speicherplatz nach Tabelle zurück.  Sie eignet sich dazu anzuzeigen, welche Tabellen am größten sind und ob es sich um Roundrobintabellen, replizierte Tabellen oder Tabellen mit Hashverteilung handelt.  Für Tabellen mit Hashverteilung wird zudem die Verteilungsspalte angezeigt.  
 
 ```sql
 SELECT

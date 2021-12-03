@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 06/01/2021
 ms.author: glenga
-ms.openlocfilehash: 729275766806bf5fe47d35b04ddc58b11c58217b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f576840f87387ba6896c6fda3a5ef663cedaffaf
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128908800"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132040391"
 ---
 ## <a name="supported-versions"></a>Unterstützte Versionen
 
@@ -19,12 +19,13 @@ In der folgenden Tabelle sind die höchsten .NET Core- bzw. .NET Framework-Versi
 
 | Version der Functions-Laufzeit | In-Process<br/>([.NET-Klassenbibliothek](../articles/azure-functions/functions-dotnet-class-library.md)) | Out-of-Process<br/>([Isolierte .NET-Ausführung](../articles/azure-functions/dotnet-isolated-process-guide.md)) |
 | ---- | ---- | --- |
-| Functions 4.x (Vorschau) | .NET 6.0 (Vorschau)| .NET 6.0 (Vorschau)<sup>2</sup> |
-| Functions 3.x | .NET Core 3.1 | .NET 5.0 |
-| Functions 2.x | .NET Core 2.1<sup>1</sup> | – |
+| Functions 4.x | .NET 6.0 | .NET 6.0 |
+| Functions 3.x | .NET Core 3.1 | .NET 5.0<sup>1</sup> |
+| Functions 2.x | .NET Core 2.1<sup>2</sup> | – |
 | Functions 1.x | .NET Framework 4.8 | – |
 
-<sup>1</sup> Weitere Informationen finden Sie unter [Überlegungen zu Functions-Versionen 2.x](../articles/azure-functions/functions-dotnet-class-library.md#functions-v2x-considerations).    
-<sup>2</sup> Sie können derzeit nur isolierte Prozessfunktionen mithilfe von Azure Functions Core Tools erstellen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer C#-Funktion über die Befehlszeile in Azure](../articles/azure-functions/create-first-function-cli-csharp.md?tabs=isolated-process).  
+
+<sup>1</sup> Für den Buildprozess ist auch das [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download) erforderlich.   
+<sup>2</sup> Weitere Informationen finden Sie unter [Überlegungen zu Functions-Versionen 2.x](../articles/azure-functions/functions-dotnet-class-library.md#functions-v2x-considerations).     
 
 Aktuelle Informationen zu Azure Functions-Releases (einschließlich Informationen zur Entfernung bestimmter älterer Nebenversionen) finden Sie unter [Azure App Service-Ankündigungen](https://github.com/Azure/app-service-announcements/issues).

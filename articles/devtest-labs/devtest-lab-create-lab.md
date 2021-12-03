@@ -1,100 +1,128 @@
 ---
-title: Erstellen eines Labs
-description: Dieser Artikel beschreibt das Erstellen eines Labs mit dem Azure-Portal und Azure DevTest Labs.
-ms.topic: how-to
-ms.date: 10/12/2020
-ms.openlocfilehash: 68b560125a4cacceee613b5c7c9bfaafc5c95c06
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+title: 'Schnellstart: Erstellen eines Labs im Azure-Portal'
+description: In dieser Schnellstartanleitung erstellen Sie ein Lab mithilfe des Azure-Portals und von Azure DevTest Labs.
+ms.topic: quickstart
+ms.date: 11/04/2021
+ms.openlocfilehash: 5f86c09c4f2d6fab4ad590d7e0bf62194c666e10
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128602895"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286391"
 ---
-# <a name="create-a-lab-in-azure-devtest-labs"></a>Erstellen eines Labs in Azure DevTest Labs
+# <a name="quickstart-create-a-lab-in-azure-devtest-labs-in-azure-portal"></a>Schnellstart: Erstellen eines Labs in Azure DevTest Labs im Azure-Portal
 
-Ein Lab in Azure DevTest Labs ist die Infrastruktur, die eine Gruppe von Ressourcen wie z.B. virtuelle Computer (VMs) umfasst, mit der Sie diese Ressourcen besser verwalten können, indem Sie Einschränkungen und Kontingente angeben. Dieser Artikel beschreibt das Erstellen eines Labs mit dem Azure-Portal.
+Führen Sie erste Schritte mit Azure DevTest Labs mithilfe des Azure-Portals zum Erstellen eines Labs aus. Azure DevTest Labs umfasst eine Gruppe von Ressourcen, etwa virtuelle Azure-Computer (VMs) und Netzwerke. Mit dieser Infrastruktur können Sie diese Ressourcen besser verwalten, indem Sie Grenzwerte und Kontingente angeben. Diese Schnellstartanleitung beschreibt das Erstellen eines Labs mit dem Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Erstellen eines Labs benötigen Sie Folgendes:
+Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Zum Erstellen des Labs müssen Sie der Besitzer des Abonnements sein.
 
-* ein Azure-Abonnement Weitere Informationen zu den Azure-Kaufoptionen finden Sie unter [Azure erwerben](https://azure.microsoft.com/pricing/purchase-options/) oder [Kostenlose Testversion (1 Monat)](https://azure.microsoft.com/pricing/free-trial/). Zum Erstellen des Labs müssen Sie der Besitzer des Abonnements sein.
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-## <a name="get-started-with-azure-devtest-labs-in-minutes"></a>Minutenschnelles Ausführen der ersten Schritte mit Azure DevTest Labs
-
-Wenn Sie auf den folgenden Link klicken, werden zur Seite im Azure-Portal weitergeleitet, auf der Sie ein neues Lab in Azure DevTest Labs erstellen können.
+Wenn Sie den folgenden Link auswählen, werden Sie zur Seite im Azure-Portal weitergeleitet, auf der Sie ein neues Lab in Azure DevTest Labs erstellen können.
 
 [Minutenschnelles Ausführen der ersten Schritte mit Azure DevTest Labs](https://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 
-## <a name="fill-out-settings-for-your-new-account"></a>Konfigurieren der Einstellungen für Ihr neues Konto
+## <a name="create-a-devtest-labs-resource"></a>Erstellen einer DevTest Labs-Ressource
 
-Füllen Sie auf der Seite **DevTest Lab erstellen** die folgenden Einstellungen aus.
+Die Seite **DevTest Lab erstellen** enthält fünf Registerkarten. Die erste Registerkarte sind die **Grundeinstellungen**.
 
 > [!TIP]
 > Unten auf jeder Seite finden Sie einen Link, über den Sie eine **Automatisierungsvorlage herunterladen** können.
 
-### <a name="basic-settings"></a>Grundlegende Einstellungen
+### <a name="basic-settings-tab"></a>Registerkarte „Grundeinstellungen“
 
-Standardmäßig wird die Registerkarte **Grundeinstellungen** angezeigt. 
+Geben Sie die folgenden Informationen ein:
 
-![Grundeinstellungen](./media/devtest-lab-create-lab/basic-settings.png)
-
-Legen Sie die folgenden Werte fest:
-
-|name|BESCHREIBUNG|
+|Eigenschaft | Beschreibung |
 |---|---|
-|**Abonnement** | Erforderlich. Wählen Sie das **Abonnement** aus, das mit dem Lab verknüpft werden soll.|
-|**Ressourcengruppe**| Erforderlich. Geben Sie einen **Namen für die Ressourcengruppe** für das Lab ein. Erstellen Sie einen neuen, falls noch keiner vorhanden ist.|
-|**Lab-Name**| Erforderlich. Geben Sie einen **Namen** für das Lab ein.|
-|**Location**|Erforderlich. Wählen Sie einen Speicherort für das Lab aus.|
-|**Öffentliche Umgebungen**| Weitere Informationen finden Sie unter [Konfigurieren und Verwenden von öffentlichen Umgebungen](devtest-lab-configure-use-public-environments.md).
+|Subscription| Wählen Sie in der Dropdownliste das Azure-Abonnement aus, das für den Cluster verwendet wird.|
+|&nbsp;Ressourcengruppe| Wählen Sie in der Dropdownliste Ihre vorhandene Ressourcengruppe oder die Option **Neu erstellen** aus.|
+|Labname| Geben Sie einen in Ihrem Abonnement eindeutigen Namen für das Lab ein.|
+|Ort| Wählen Sie in der Dropdownliste einen Speicherort für das Lab aus.|
+|Öffentliche Umgebungen| Das Repository der öffentlichen Umgebung enthält eine Liste zusammengestellter Azure Resource Manager-Vorlagen, die Lab-Benutzer zum Erstellen von PaaS-Ressourcen innerhalb von Labs verwenden können. Weitere Informationen finden Sie unter [Konfigurieren und Verwenden von Umgebungen](devtest-lab-configure-use-public-environments.md).|
 
-### <a name="auto-shutdown-settings"></a>Einstellungen für das automatische Herunterfahren
+:::image type="content" source="./media/devtest-lab-create-lab/portal-create-basic-settings.png" alt-text="Screenshot der Registerkarte „Grundeinstellungen“ für „DevTest Labs erstellen“.":::
 
-Wechseln Sie zur Seite **Automatisch herunterfahren**, um die zugehörigen Einstellungen anzuzeigen. Mit dem automatischen Herunterfahren können Sie alle Computer in einem Lab täglich automatisch zu einem geplanten Zeitpunkt herunterfahren.
 
-![Registerkarte „Automatisch herunterfahren“](./media/devtest-lab-create-lab/auto-shutdown.png)
+### <a name="auto-shutdown-tab"></a>Registerkarte „Automatisch herunterfahren“
 
-Auf der Seite können Sie **Automatisch herunterfahren** aktivieren und die Parameter für das automatische Herunterfahren aller Lab-VMs definieren. Die Funktion zum automatischen Herunterfahren dient in erster Linie zum Kostensparen. Mit dieser Funktion können Sie angeben, wann der virtuelle Computer automatisch heruntergefahren werden soll. Nach dem Erstellen des Labs können Sie die Einstellungen zum automatischen Herunterfahren ändern, indem Sie die Schritte im Artikel [Verwalten aller Richtlinien für ein Lab in Azure DevTest Labs](./devtest-lab-set-lab-policy.md#set-auto-shutdown) ausführen.
+Mit dem automatischen Herunterfahren können Sie alle Computer in einem Lab täglich automatisch zu einem geplanten Zeitpunkt herunterfahren. Das Feature „Automatisches Herunterfahren“ ist in erster Linie dazu geeignet, um Kosten zu sparen. Lesen Sie [Verwalten aller Richtlinien für ein Lab in Azure DevTest Labs](./devtest-lab-set-lab-policy.md#set-auto-shutdown), um zu lernen, wie Sie die Einstellungen zum automatischen Herunterfahren nach der Erstellung des Labs ändern können.
 
-### <a name="networking"></a>Netzwerkfunktionen
+Geben Sie die folgenden Informationen ein:
 
-Beim Erstellen eines neuen Labs, wird das Standardnetzwerk für Sie erstellt. Wechseln Sie zur Registerkarte **Netzwerk**, um die Einstellung wie gewünscht zu ändern/konfigurieren. Wählen Sie z. B. ein vorhandenes virtuelles Netzwerk aus.
+|Eigenschaft | Beschreibung |
+|---|---|
+|Aktiviert| Wählen Sie **Ein**, um diese Richtlinie zu aktivieren, oder **Aus**, um sie zu deaktivieren.|
+|Geplantes&nbsp;Herunterfahren| Geben Sie einen Zeitpunkt ein, an dem alle VMs des aktuellen Labs heruntergefahren werden sollen.|
+|Zeitzone| Wählen Sie in der Dropdownliste eine Zeitzone aus.|
+|Benachrichtigung vor dem automatischen Herunterfahren senden? | Wählen Sie **Ja** oder **Nein** aus, um 30 Minuten vor der angegebenen Uhrzeit des automatischen Herunterfahrens eine Benachrichtigung zu senden. Wenn Sie **Ja** auswählen, geben Sie einen Webhook-URL-Endpunkt oder eine E-Mail-Adresse ein, der bzw. die angibt, wo die Benachrichtigung veröffentlicht bzw. an wen diese gesendet wird. Der Benutzer erhält eine Benachrichtigung und hat die Möglichkeit, das Herunterfahren zu verzögern.|
+|Webhook-URL| Wenn das automatische Herunterfahren unmittelbar bevorsteht, wird eine Benachrichtigung an den angegebenen Webhookendpunkt gesendet.|
+|E-Mail-Adresse| Geben Sie einen Satz durch Semikolon getrennte E-Mail-Adressen ein, um Benachrichtigungs-E-Mails zu Warnungen zu erhalten.|
 
-![Registerkarte „Netzwerk“ ](./media/devtest-lab-create-lab/networking.png)
+:::image type="content" source="./media/devtest-lab-create-lab/portal-create-auto-shutdown.png" alt-text="Screenshot: Details zur Planung des automatischen Herunterfahrens":::
 
-### <a name="tags"></a>Tags
+### <a name="networking-tab"></a>Registerkarte „Netzwerk“
 
-Geben Sie **NAME** und **WERT** für **Tags** ein, wenn Sie ein benutzerdefiniertes Tagging erstellen möchten, das jeder im Lab erstellten Ressource hinzugefügt werden soll. Tags sind nützlich zum Verwalten und Organisieren von Lab-Ressourcen nach Kategorie. Weitere Informationen zu Tags, z.B. zum Hinzufügen von Tags nach der Erstellung des Labs, finden Sie unter [Hinzufügen von Tags zu einem Lab](devtest-lab-add-tag.md).
+Es wird ein Standardnetzwerk für Sie erstellt (das später geändert/konfiguriert werden kann). Alternativ dazu können Sie ein vorhandenes virtuelles Netzwerk auswählen.
 
-![Registerkarte „Tags“ ](./media/devtest-lab-create-lab/tags.png)
+Geben Sie die folgenden Informationen ein:
 
-### <a name="review-and-create"></a>Überprüfen und Erstellen
+|Eigenschaft | BESCHREIBUNG |
+|---|---|
+|Virtuelles&nbsp;Netzwerk| Behalten Sie die Standardeinstellung bei oder wählen Sie in der Dropdownliste ein vorhandenes Netzwerk aus. Virtuelle Netzwerke sind in Azure logisch voneinander isoliert. Standardmäßig können virtuelle Computer im gleichen virtuellen Netzwerk aufeinander zugreifen.|
+|Subnet| Behalten Sie die Standardeinstellung bei oder wählen Sie in der Dropdownliste ein vorhandenes Netzwerk aus. Ein Subnetz ist ein IP-Adressbereich in Ihrem virtuellen Netzwerk, mit dem virtuelle Computer voneinander oder vom Internet isoliert werden können.|
 
-Wählen Sie anschließend die Option **Erstellen** aus. Sie können den Status der Lab-Erstellung rechts oben auf der Seite des Portals im Bereich **Benachrichtigungen** überwachen. 
+:::image type="content" source="./media/devtest-lab-create-lab/portal-create-networking.png" alt-text="Screenshot: Netzwerkdetails":::
 
-![Registerkarte zum Erstellen](./media/devtest-lab-create-lab/create-1.png)
+### <a name="tags-tab"></a>Registerkarte „Tags“
 
-## <a name="completed-the-creation"></a>Nach der Erstellung
+Tags sind nützlich zum Verwalten und Organisieren von Lab-Ressourcen nach Kategorie. Weitere Informationen finden Sie unter [Hinzufügen von Tags zu einem Lab](devtest-lab-add-tag.md).
 
-Nachdem die Erstellung abgeschlossen ist, wird die Schaltfläche **Zu Ressource wechseln** unten auf der Seite und im Benachrichtigungsfenster angezeigt. Alternativ können Sie die Seite **DevTest Labs** aktualisieren, um das neu erstellte Lab in der Liste der Labs anzuzeigen.  
+Geben Sie die folgenden Informationen ein:
 
-![Erstellen des Diensts](./media/devtest-lab-create-lab/create-2.png)
+|Eigenschaft | Beschreibung |
+|---|---|
+|Name| Bei Tagnamen ist die Groß-/Kleinschreibung nicht relevant. Sie sind auf 512 Zeichen beschränkt.|
+|Wert| Bei Tagwerten ist die Groß-/Kleinschreibung relevant. Sie sind auf 256 Zeichen beschränkt.|
 
-Klicken Sie auf die Schaltfläche **Zu Ressource wechseln**, und Sie gelangen auf die Startseite Ihres neuen DevTest Labs-Kontos.
+:::image type="content" source="./media/devtest-lab-create-lab/portal-create-tags.png" alt-text="Screenshot: Tagdetails":::
 
-![Resource](./media/devtest-lab-create-lab/go-to-resource.png)
+### <a name="review--create-tab"></a>Registerkarte „Überprüfen und erstellen“
 
-Sie können auch im Azure-Portal nach **DevTest Labs** suchen. Wählen Sie in der Liste das neue Konto aus, und rufen Sie auf die Homepage auf. 
+Auf der Registerkarte **Überprüfen + erstellen** werden alle Konfigurationen überprüft. Wenn alle Einstellungen gültig sind, wird im oberen Bereich **Erfolgreich** angezeigt. Überprüfen Sie Ihre Einstellungen und wählen Sie anschließend **Erstellen** aus. Sie können den Status der Lab-Erstellung rechts oben auf der Seite des Portals im Bereich **Benachrichtigungen** überwachen. 
 
-![Dienst erstellt](./media/devtest-lab-create-lab/created.png)
+:::image type="content" source="./media/devtest-lab-create-lab/portal-review-and-create.png" alt-text="Screenshot der Details auf der Registerkarte „Überprüfen + erstellen“":::
+
+## <a name="post-creation"></a>Nach der Erstellung
+
+1. Wählen Sie nach Abschluss des Erstellungsprozesses in der Bereitstellungsbenachrichtigung die Option **Zu Ressource wechseln** aus.
+
+    :::image type="content" source="./media/devtest-lab-create-lab/creation-notification.png" alt-text="Screenshot: DevTest Labs-Bereitstellungsbenachrichtigung.":::
+
+1. Die Seite **Übersicht** des Labs ähnelt der folgenden Abbildung:
+
+    :::image type="content" source="./media/devtest-lab-create-lab/lab-home-page.png" alt-text="Screenshot: Seite „Übersicht“ von DevTest Labs.":::
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie Ressourcen, um Gebühren für die Ausführung des Labs in Azure zu vermeiden. Wenn Sie den nächsten Artikel durchgehen möchten, um dem Lab einen virtuellen Computer hinzuzufügen, können Sie die Ressourcen nach Abschluss dieses Artikels bereinigen. Führen Sie andernfalls die folgenden Schritte aus:
+
+1. Kehren Sie zur Homepage für das Lab zurück, das Sie erstellt haben.
+
+1. Wählen im oberen Menü **Löschen** aus.
+
+   :::image type="content" source="./media/devtest-lab-create-lab/portal-lab-delete.png" alt-text="Screenshot der Schaltfläche „Löschen“ des Labs.":::
+
+1. Geben Sie auf der Seite **Möchten Sie den Löschvorgang durchführen?** den Lab-Namen in das Textfeld ein, und wählen Sie dann **Löschen** aus.
+
+1. Während des Löschvorgangs können Sie oben auf dem Bildschirm **Benachrichtigungen** auswählen, um den Status anzuzeigen. Das Löschen des Labs dauert eine Weile. Fahren Sie mit dem nächsten Schritt fort, nachdem das Lab gelöscht wurde.
+
+1. Wenn Sie das Lab in einer vorhandenen Ressourcengruppe erstellt haben, wurden alle Lab-Ressourcen entfernt. Wenn Sie eine neue Ressourcengruppe für dieses Tutorial erstellt haben, ist diese jetzt leer und kann gelöscht werden. Zuvor wäre nicht möglich gewesen, die Ressourcengruppe zu löschen, während sich das Lab noch in ihr befand.
 
 ## <a name="next-steps"></a>Nächste Schritte
+In dieser Schnellstartanleitung haben Sie ein Lab erstellt. Im nächsten Artikel erfahren Sie, wie Sie einen virtuellen Computer hinzufügen:
 
-Nachdem das Lab erstellt wurde, sollten Sie ggf. die folgenden Schritte ausführen:
-
-* [Sicherer Zugriff auf ein Lab](devtest-lab-add-devtest-user.md)
-* [Festlegen von Labrichtlinien](devtest-lab-set-lab-policy.md)
-* [Erstellen einer Labvorlage](devtest-lab-create-template.md)
-* [Erstellen benutzerdefinierter Artefakte für Ihre VMs](devtest-lab-artifact-author.md)
-* [Hinzufügen eines virtuellen Computers zu einem Lab](devtest-lab-add-vm.md)
+> [!div class="nextstepaction"]
+> [Erstellen von virtuellen Computern und Hinzufügen zu einem Lab in Azure DevTest Labs](devtest-lab-add-vm.md)

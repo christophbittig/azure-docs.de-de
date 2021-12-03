@@ -1,68 +1,61 @@
 ---
 title: Entwicklungstools für Azure Confidential Computing
-description: Verwendung von Tools und Bibliotheken zum Entwickeln von Anwendungen für Confidential Computing
+description: Verwenden von Tools und Bibliotheken zum Entwickeln von Anwendungen für Confidential Computing für Intel SGX
 services: virtual-machines
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.author: JenCook
-ms.openlocfilehash: 571c1a4ce545976db09f46a07d963d5344c02c29
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 11/01/2021
+ms.author: stempesta
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5faf8807047d0e73029d27f62af8acaab5e80026
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791011"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347649"
 ---
-# <a name="application-development-on-intel-sgx"></a>Anwendungsentwicklung unter Intel SGX 
+# <a name="application-enclave-development"></a>Entwicklung von Anwendungs-Enclaves 
+
+Mit Azure Confidential Computing können Sie Anwendungs-Enclaves für virtuelle Computer (VMs) erstellen, auf denen Intel Software Guard Extensions (SGX) ausgeführt wird. Es ist wichtig, die zugehörigen Tools und die Software zu verstehen, bevor Sie mit der Entwicklung beginnen.
+
+> [!NOTE]
+> Wenn Sie die [Einführung in Intel SGX-VMs und Enclaves](confidential-computing-enclaves.md) noch nicht gelesen haben, tun Sie dies, bevor Sie fortfahren.
+
+## <a name="application-enclaves"></a>Anwendungs-Enclaves
+
+Anwendungs-Enclaves sind isolierte Umgebungen, die bestimmten Code und bestimmte Daten schützen. Beim Erstellen von Enclaves müssen Sie bestimmen, welcher Teil der Anwendung innerhalb der Enclave ausgeführt werden soll. Stellen Sie beim Erstellen oder Verwalten von Enclaves sicher, dass Sie mit dem ausgewählten Bereitstellungsstapel kompatible SDKs und Frameworks verwenden. 
+
+Confidential Computing bietet derzeit Anwendungs-Enclaves. Insbesondere können Sie mit Anwendungs-Enclaves bereitstellen und entwickeln, indem Sie [vertrauliche VMs mit aktiviertem Intel SGX](virtual-machine-solutions-sgx.md) verwenden. 
+
+## <a name="intel-sgx"></a>Intel SGX
+
+Mit Intel SGX-Technologie können Sie Anwendungs-Enclaves oder Trusted Execution Environment-Instanzen mit einem nicht zugänglichen Schlüssel verschlüsseln, der in der CPU gespeichert ist. Die Entschlüsselung des Codes und der Daten innerhalb der Enclave erfolgt innerhalb des Prozessors. Nur die CPU hat Zugriff. Dieser Grad der Isolation schützt die verwendeten Daten und bietet Schutz vor Hardware- und Softwareangriffen. Weitere Informationen finden Sie auf der [Website zu Intel SGX](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html). 
+
+Azure bietet Intel SGX in einer Virtualisierungsumgebung auf verschiedenen VM-Größen der DC-Serie an. Mehrere VM-Größen ermöglichen verschiedene EPC-Größen (Enclave Page Cache). EPC ist die maximale Menge an Arbeitsspeicher für eine Enclave auf der jeweiligen VM. Derzeit sind Intel SGX-VMs auf VMs der [DCsv2-Serie](../virtual-machines/dcv2-series.md) und [DCsv3/DCdsv3-Serie](../virtual-machines/dcv3-series.md) verfügbar.
 
 
-Die Infrastruktur für Confidential Computing erfordert spezielle Tools und Software. Auf dieser Seite werden Konzepte im Zusammenhang mit der Anwendungsentwicklung für virtuelle Azure Confidential Computing-Computer erläutert, die unter Intel SGX ausgeführt werden. [Lesen Sie die Einführung in virtuelle Intel SGX-Computer und -Enklaven](confidential-computing-enclaves.md), bevor Sie diese Seite lesen. 
+### <a name="developing-applications"></a>Entwickeln von Anwendungen
 
-Für die Nutzung der Leistungsfähigkeit von Enklaven und isolierten Umgebungen müssen Sie Tools verwenden, die Confidential Computing unterstützen. Es gibt unterschiedliche Tools, die die Entwicklung von Enklavenanwendungen unterstützen. Beispielsweise können Sie die folgenden Open-Source-Frameworks verwenden: 
+Es gibt zwei Partitionen in einer Anwendung, die mit Enclaves erstellt wurde. 
 
-- [Das Open Enclave Software Development Kit (OE SDK)](#oe-sdk)
-- [Das EGo Software Development Kit](#ego)
-- [Confidential Consortium Framework (CCF)](#ccf)
+Der **Host** ist die „nicht vertrauenswürdige“ Komponente. Ihre Enclave-Anwendung wird auf dem Host ausgeführt. Der Host ist eine nicht vertrauenswürdige Umgebung. Wenn Sie Enclave-Code auf dem Host bereitstellen, kann der Host nicht auf diesen Code zugreifen.
 
-## <a name="overview"></a>Übersicht
+Die **Enclave** ist die „vertrauenswürdige“ Komponente. Der Anwendungscode und seine zwischengespeicherten Daten sowie der Arbeitsspeicher werden in der Enclave ausgeführt. Die Enclave-Umgebung schützt Ihre Geheimnisse und sensiblen Daten. Stellen Sie sicher, dass Ihre sicheren Berechnungen in einer Enclave erfolgen.
 
-Eine für Enklaven erstellte Anwendung wird auf zwei Arten partitioniert:
+![Diagramm einer Anwendung mit den Host- und Enclave-Partitionen. In der Enclave befinden sich die Daten- und Anwendungscodekomponenten.](media/application-development/oe-sdk.png)
 
-1. In eine „nicht vertrauenswürdige“ Komponente (Host)
-1. In eine „vertrauenswürdige“ Komponente (Enklave)
+Um die Leistungsfähigkeit von Enclaves und isolierten Umgebungen ausschöpfen zu können, wählen Sie Tools, die Confidential Computing unterstützen. Verschiedene Tools unterstützen die Entwicklung von Enclave-Anwendungen. Beispielsweise können Sie die folgenden Open-Source-Frameworks verwenden: 
 
+- [Das Open Enclave Software Development Kit (OE SDK)](enclave-development-oss.md#oe-sdk)
+- [Intel SGX SDK](enclave-development-oss.md#intel-sdk)
+- [Das EGo Software Development Kit](enclave-development-oss.md#ego)
+- [Confidential Consortium Framework (CCF)](enclave-development-oss.md#ccf)
 
-![App-Entwicklung](media/application-development/oe-sdk.png)
-
-
-**Der Host** ist eine nicht vertrauenswürdige Umgebung, in der Ihre Enklavenanwendung ausgeführt wird. Auf den auf dem Host bereitgestellten Enklavencode kann der Host nicht zugreifen. 
-
-**Die Enklave** ist der Ort, an dem der Anwendungscode und seine zwischengespeicherten Daten bzw. der Arbeitsspeicher ausgeführt werden. Rechenvorgänge mit hohen Sicherheitsanforderungen sollten in der Enklave durchgeführt werden, um dafür zu sorgen, dass Geheimnisse und vertrauliche Daten geschützt bleiben. 
-
-
-Während des Anwendungsentwurfs ist es wichtig, zu identifizieren und zu bestimmen, welcher Teil der Anwendung in den Enklaven ausgeführt werden muss. Der Code, den Sie in der vertrauenswürdigen Komponente anordnen, wird vom restlichen Teil Ihrer Anwendung isoliert. Nachdem die Enklave initialisiert und der Code in den Arbeitsspeicher geladen wurde, kann dieser Code nicht mehr von den nicht vertrauenswürdigen Komponenten gelesen oder geändert werden. 
-
-## <a name="open-enclave-software-development-kit-oe-sdk"></a>Open Enclave Software Development Kit (OE SDK) <a id="oe-sdk"></a>
-
-Verwenden Sie eine Bibliothek oder ein Framework, die bzw. das von Ihrem Anbieter unterstützt wird, falls Sie Code für die Ausführung in einer Enklave schreiben möchten. Das [Open Enclave SDK](https://github.com/openenclave/openenclave) (OE SDK) ist ein Open-Source-SDK, das die Abstraktion über unterschiedliche Confidential Computing-fähige Hardware ermöglicht. 
-
-Das OE SDK ist so konzipiert, dass es als einzelne Abstraktionsschicht für beliebige Hardware und CSPs genutzt wird. Das OE SDK kann zusätzlich zu virtuellen Azure Confidential Computing-Computern verwendet werden, um Anwendungen basierend auf Enklaven zu erstellen und auszuführen.
-
-## <a name="ego-software-development-kit"></a>EGo Software Development Kit <a id="ego"></a>
-
-[EGo](https://ego.dev/) ist ein Open-Source-SDK, mit dem Sie in der Programmiersprache Go geschriebene Anwendungen innerhalb von Enclaves ausführen können. EGo baut auf dem OE SDK auf und verfügt über eine In-Enclave-Go-Bibliothek für Nachweis und Versiegelung. Viele vorhandene Go-Anwendungen werden ohne Änderungen in EGo ausgeführt.  
-
-## <a name="confidential-consortium-framework-ccf"></a>Confidential Consortium Framework (CCF) <a id="ccf"></a>
-
-Das [CCF](https://github.com/Microsoft/CCF) ist ein verteiltes Netzwerk von Knoten, die jeweils eigene Enklaven ausführen. Mit dem Netzwerk vertrauenswürdiger Knoten können Sie einen Distributed Ledger ausführen. Der Ledger stellt sichere, zuverlässige Komponenten für das zu verwendende Protokoll bereit. 
-
-![CCF-Knoten](media/application-development/ccf.png)
-
-Dieses Open-Source-Framework ermöglicht eine differenzierte Vertraulichkeit mit hohem Durchsatz und Konsortium-Governance für Blockchain. Mit jedem Knoten, der TEEs verwendet, können Sie für einen sicheren Konsens und eine sichere Transaktionsverarbeitung sorgen.
-
+Ermitteln und bestimmen Sie beim Entwerfen einer Anwendung, welcher Teil der Anwendung in Enclaves ausgeführt werden muss. Code in der vertrauenswürdigen Komponente ist vom Rest Ihrer Anwendung isoliert. Nach Initialisierung der Enclave und Laden des Codes in den Arbeitsspeicher können nicht vertrauenswürdige Komponenten diesen Code weder lesen noch ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte 
-- [Bereitstellen eines virtuellen Confidential Computing-Computers der DCsv2-Serie](quick-create-portal.md)
-- [Herunterladen und Installieren des OE SDK und Beginnen mit der Entwicklung von Anwendungen](https://github.com/openenclave/openenclave)
+
+- [Bereitstellen einer Intel SGX-VM für Confidential Computing](quick-create-portal.md)
+- [Einstieg in die Entwicklung von Anwendungen mit Open-Source-Software](enclave-development-oss.md)

@@ -4,13 +4,13 @@ description: Extrahieren Sie Daten aus dem Äußerungstext mit Absichten und Ent
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/13/2021
-ms.openlocfilehash: dd7d113b1c23a0afec82a346e0f7baa1254ebbed
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 10/28/2021
+ms.openlocfilehash: e3618ae81b43402f533df268b4a6e3a7efded997
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500140"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434672"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahieren von Daten aus dem Äußerungstext mit Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
@@ -249,10 +249,10 @@ Einige Apps müssen in der Lage sein, neue oder sich entwickelnde Namen, z.B. vo
 [Pattern.any](reference-entity-pattern-any.md) ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet. Die im Muster verwendete Entität muss gefunden werden, damit das Muster angewendet wird.
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
-Wenn beim [Veröffentlichen](luis-how-to-publish-app.md#sentiment-analysis) die Standpunktanalyse konfiguriert wird, enthält die JSON-Antwort von LUIS eine Standpunktanalyse. Weitere Informationen zu Standpunktanalysen finden Sie in der Dokumentation zur [Textanalyse](../text-analytics/index.yml).
+Wenn beim [Veröffentlichen](luis-how-to-publish-app.md#sentiment-analysis) die Standpunktanalyse konfiguriert wird, enthält die JSON-Antwort von LUIS eine Standpunktanalyse. Weitere Informationen zur Stimmungsanalyse finden Sie in der Dokumentation zum [Sprachdienst](../language-service/sentiment-opinion-mining/overview.md).
 
 ## <a name="key-phrase-extraction-entity-data"></a>Daten von Entitäten zur Schlüsselbegriffserkennung
-Von der [Entität zur Schlüsselbegriffserkennung](luis-reference-prebuilt-keyphrase.md) werden Schlüsselausdrücke in der Äußerung zurückgegeben, die von der [Textanalyse](../text-analytics/index.yml) bereitgestellt werden.
+Von der [Entität zur Schlüsselbegriffserkennung](luis-reference-prebuilt-keyphrase.md) werden Schlüsselausdrücke in der Äußerung zurückgegeben, die vom [Sprachdienst](../language-service/key-phrase-extraction/overview.md) bereitgestellt werden.
 
 ## <a name="data-matching-multiple-entities"></a>Datenabgleich bei mehreren Entitäten
 

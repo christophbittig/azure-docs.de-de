@@ -3,12 +3,12 @@ title: Optimieren von Azure-Workloads mithilfe der Advisor-Bewertung
 description: Verwenden Sie die Azure Advisor-Bewertung, um Azure optimal zu nutzen.
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: e439e5283f2d311d9efb3b30fe157750d589664e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: fc9bcee7d19d9e8ed7b550e7298d615d397c6f8b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787921"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484721"
 ---
 # <a name="optimize-azure-workloads-by-using-advisor-score"></a>Optimieren von Azure-Workloads mithilfe der Advisor-Bewertung
 
@@ -72,7 +72,7 @@ Die Berechnung der Advisor-Bewertung lässt sich in vier Schritten zusammenfasse
    * Ressourcen mit langfristigen Empfehlungen werden bei Ihrer Bewertung höher bewertet.
    * Die in Advisor zurückgestellten oder verworfenen Ressourcen werden vollständig aus der Berechnung Ihrer Bewertung entfernt.
 
-Advisor wendet dieses Modell auf der Kategorieebene des Ratgebers an, um für jede Kategorie eine Advisor-Bewertung anzugeben. **Sicherheit** verwendet ein [Sicherheitsbewertungsmodell](../security-center/secure-score-security-controls.md#introduction-to-secure-score). Ein einfacher Mittelwert bildet die endgültige Advisor-Bewertung.
+Advisor wendet dieses Modell auf der Kategorieebene des Ratgebers an, um für jede Kategorie eine Advisor-Bewertung anzugeben. **Sicherheit** verwendet ein [Sicherheitsbewertungsmodell](../defender-for-cloud/secure-score-security-controls.md#introduction-to-secure-score). Ein einfacher Mittelwert bildet die endgültige Advisor-Bewertung.
 
 ## <a name="advisor-score-faqs"></a>Häufig gestellte Fragen zur Advisor-Bewertung
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2021
 ms.author: jeedes
-ms.openlocfilehash: d4cf62c29c5da444a75b074c672ef0f47c1dfdb1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e5abde0a7db07695a63e8a81a37d0ebaa0473068
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701355"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348785"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-facebook-work-accounts"></a>Tutorial: Azure Active Directory Einmaliges Anmelden (SSO)-Integration mit Facebook-Geschäftskonten
 
@@ -175,4 +175,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie die Facebook-Geschäftskonten konfiguriert haben, können Sie die Sitzungskontrolle erzwingen, die vor Exfiltrieren und Infiltrieren der vertraulichen Daten Ihrer Organisation in Echtzeit schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nachdem Sie die Facebook-Geschäftskonten konfiguriert haben, können Sie die Sitzungskontrolle erzwingen, die vor Exfiltrieren und Infiltrieren der vertraulichen Daten Ihrer Organisation in Echtzeit schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

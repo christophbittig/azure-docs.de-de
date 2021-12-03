@@ -5,21 +5,20 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 11/10/2021
 ms.author: rohink
-ms.openlocfilehash: e4621b73c8b71ba3bb4b42801de5e306cfa3562e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bc003c640e51b855f446878aa0b5829b2d2c09c5
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128573103"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400355"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS – Handbuch zur Problembehandlung
 
 Dieser Artikel enthält Informationen zur Problembehandlung für häufige Fragen zu Azure DNS.
 
 Wenn das Problem durch diese Schritte nicht behoben wird, können Sie auch auf unserer [Frageseite von Microsoft Q&A zu Communitysupport](/answers/topics/azure-virtual-network.html) nach dem Problem suchen oder einen Beitrag dazu veröffentlichen. Sie haben auch die Möglichkeit, eine Azure-Supportanfrage zu erstellen.
-
 
 ## <a name="i-cant-create-a-dns-zone"></a>Ich kann keine DNS-Zone erstellen.
 
@@ -29,7 +28,6 @@ Probieren Sie zum Beheben allgemeiner Probleme die folgenden Schritte aus:
 2.  Jeder DNS-Zonenname muss innerhalb seiner Ressourcengruppe eindeutig sein, d.h. eine Ressourcengruppe kann nicht zwei DNS-Zonen mit dem gleichen Namen enthalten. Verwenden Sie einen anderen Zonennamen oder eine andere Ressourcengruppe.
 3.  Unter Umständen wird der Fehler „Die maximale Anzahl an Zonen im Abonnement {Abonnement-ID} wurde erreicht oder überschritten.“ angezeigt. Verwenden Sie ein anderes Azure-Abonnement, löschen Sie einige Zonen, oder wenden Sie sich an den Azure-Support, um Ihr Abonnementlimit zu erhöhen.
 4.  Möglicherweise wird der Fehler „Die Zone ‚{Zonenname}‘ ist nicht verfügbar.“ angezeigt. Dieser Fehler weist darauf hin, dass Azure-DNS keine Namenserver für diese DNS-Zone zuordnen konnte. Versuchen Sie, einen anderen Zonennamen zu verwenden. Wenn Sie der Besitzer des Domänennamens sind, können Sie sich auch an den Azure-Support wenden, der die Namenserver für Sie zuordnen kann.
-
 
 ### <a name="recommended-articles"></a>Empfohlene Artikel
 
@@ -46,13 +44,10 @@ Probieren Sie zum Beheben allgemeiner Probleme die folgenden Schritte aus:
 4.  Liegt ein CNAME-Konflikt vor?  Die DNS-Standards lassen keinen CNAME-Eintrag mit dem gleichen Namen wie ein Eintrag von einem anderen Typ zu. Wenn bereits ein CNAME-Eintrag vorhanden ist, schlägt das Erstellen eines Eintrags von einem anderem Typ mit gleichem Namen fehl.  Ebenso schlägt das Erstellen eines CNAME-Eintrags fehl, wenn der Name mit dem eines vorhandenen Datensatzes von einem anderen Typ übereinstimmt. Beheben Sie den Konflikt durch Entfernen des anderen Eintrags oder durch Auswählen eines anderen Eintragsnamens.
 5.  Haben Sie die Beschränkung für die zulässige Anzahl von Eintragssätzen in einer DNS-Zone erreicht? Die aktuelle sowie die maximale Anzahl von Eintragssätzen werden im Azure-Portal unter den Eigenschaften für die jeweilige Zone angezeigt. Wenn Sie diese Beschränkung erreicht haben, löschen Sie entweder einige Eintragssätze, oder wenden Sie sich an den Azure-Support, um die Eintragssatzbeschränkung für diese Zone zu erhöhen; versuchen Sie es anschließend erneut. 
 
-
 ### <a name="recommended-articles"></a>Empfohlene Artikel
 
 * [DNS-Zonen und -Einträge](dns-zones-records.md)
 * [Erstellen einer DNS-Zone](./dns-getstarted-portal.md)
-
-
 
 ## <a name="i-cant-resolve-my-dns-record"></a>Ich kann meinen DNS-Eintrag nicht auflösen.
 
@@ -66,39 +61,95 @@ Die DNS-Namensauflösung ist ein mehrstufiger Prozess, der aufgrund einer Vielza
 3.  Vergewissern Sie sich, dass der DNS-Domänenname ordnungsgemäß [an die Azure DNS-Namenserver delegiert wurde](dns-domain-delegation.md). Zahlreiche [Websites von Drittanbietern bieten die Überprüfung von DNS-Delegierungen an](https://www.bing.com/search?q=dns+check+tool). Dieser Test ist eine *Zonen* delegierung, daher sollten Sie nur den Namen der DNS-Zone und nicht den vollqualifizierten Eintragsnamen eingeben.
 4.  Nach Abschluss der obigen Schritte sollte Ihr DNS-Eintrag jetzt ordnungsgemäß aufgelöst werden. Um dies zu überprüfen, können Sie [digwebinterface](https://digwebinterface.com) erneut und dieses Mal mit den standardmäßigen Namenservereinstellungen verwenden.
 
-
 ### <a name="recommended-articles"></a>Empfohlene Artikel
 
 * [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md)
 
+## <a name="dns-zone-status-and-unhealthy-delegation-scenarios"></a>DNS-Zonenstatus und fehlerhafte Delegierungsszenarien
 
-## <a name="unhealthy-dns-zones"></a>Fehlerhafte DNS-Zonen
+Der DNS-Zonenstatus zeigt den aktuellen Status der Zone an. Der DNS-Zonenstatus kann **Unbekannt,** **Verfügbar** und **Heruntergestuft** sein.
 
-Konfigurationsfehler können dazu führen, dass DNS-Zonen fehlerhaft werden. Im Folgenden ein paar Szenarien, die zu diesem Verhalten führen können:
+### <a name="unknown"></a>Unbekannt
 
-* **Fehlerhafte Delegierung**: Eine Zone enthält *NS*-Delegierungsdatensätze, mit denen Datenverkehr von primären an die untergeordneten Zonen delegiert werden kann. Wenn einer der *NS*-Einträge in der übergeordneten Zone vorhanden ist, sollte der DNS-Server eigentlich andere Einträge unterhalb der Delegierung maskieren, mit Ausnahme von Glue-Einträgen. Wenn die Zone jedoch andere Datensätze unterhalb der Delegierung enthält, wird die Zone als fehlerhaft gekennzeichnet.
+Wenn eine Ressource neu erstellt wird, sind nicht sofort Integritätssignale für diese neuen Ressourcen verfügbar. Es können maximal 24 Stunden verstreichen, bis die richtigen Integritätssignale für DNS-Zonen eingehen. Bis zu diesem Zeitpunkt wird die Integrität der DNS-Zonen als **Unbekannt** angezeigt.
 
-    Die folgende Tabelle enthält Szenarien und die entsprechenden Zonenzustandsergebnisse, wenn eine Zone einen NS-Delegierungsdatensatz enthält.
+Wenn die Ressourcen-Integritätsprüfung seit länger als sechs Stunden keine Informationen zu DNS-Zonen erhalten hat, werden die Zonen als „Unbekannt“ markiert. Zwar zeigt dieser Status nicht definitiv den Ressourcenzustand an, aber er ist ein wichtiger Datenpunkt im Problembehandlungsprozess. Sobald das Signal empfangen wurde, und wenn die Ressource wie erwartet ausgeführt wird, wird der Status der Ressource nach wenigen Minuten in **Verfügbar** geändert.
 
-    | Szenario | Zone enthält</br>NS-Delegierungsdatensatz? | Zone enthält</br>Glue Records? | Zone enthält andere</br>Datensätze unterhalb der</br>Delegierung? | Zonenintegrität |
-    |----------|-------------------------------------|-----------------------------|--------------------------------------------------|-------------|
-    | 1        | Nein                                  | -                           | -                                                | Healthy     |
-    | 2        | Ja                                 | Ja                         | Nein                                               | Healthy     |
-    | 3        | Ja                                 | Nein                          | Nein                                               | Healthy     |
-    | 4        | Ja                                 | Nein                          | Ja                                              | Fehlerhaft   |
-    | 5        | Ja                                 | Ja                         | Ja                                              | Fehlerhaft   |
+Der folgende Screenshot zeigt ein Beispiel für die Meldung der Ressourcen-Integritätsprüfung.
 
-    **Empfehlung:** Entfernen Sie alle Datensätze mit Ausnahme von Glue-Datensätzen unterhalb der Delegierungsdatensätze in Ihren Zonen.
+:::image type="content" source="./media/dns-troubleshoot/unknown-status.png" alt-text="Screenshot des Status „Unbekannt“.":::
 
-* **Null TTL** – Die Gültigkeitsdauer (Time to Live, TTL) ist eine Einstellung, die dem DNS-Resolver sagt, wie lange eine Abfrage zwischengespeichert werden soll, bevor eine neue angefordert wird. Die gesammelten Informationen werden dann im Cache des rekursiven oder lokalen Resolvers für die TTL-Dauer gespeichert, bevor das Gerät sich zurück wendet, um neue und aktualisierte Details zu sammeln.
+### <a name="available"></a>Verfügbar
 
-    Wenn TTL in der Konfiguration auf 0 festgelegt ist, kann eines der folgenden Probleme auftreten:
+Der Status **Verfügbar**  zeigt an, dass die Ressourcen-Integritätsprüfung kein Delegierungsproblem in Ihren DNS-Zonen erkannt hat. Dieser Status bedeutet, dass Namenserver-Delegierungseinträge in Ihrer primären Zone ordnungsgemäß verwaltet werden, und dass in Ihrer primären Zone keine Einträge vorhanden sind, die für untergeordnete Zonen vorgesehen sind. 
 
-    * Lange Antwort.
-    * Anstieg des DNS-Datenverkehrs und der Kosten.
-    * Empfindlich für DDoS-Angriffe.
+Der folgende Screenshot zeigt ein Beispiel für die Meldung der Ressourcen-Integritätsprüfung.
 
-    **Empfehlung**: Stellen Sie sicher, dass der TTL-Wert nicht auf *0* festgelegt ist. 
+:::image type="content" source="./media/dns-troubleshoot/available-status.png" alt-text="Screenshot des Status „Verfügbar“.":::
+
+### <a name="degraded"></a>Heruntergestuft
+
+Der Status **Heruntergestuft** zeigt an, dass die Ressourcen-Integritätsprüfung ein Delegierungsproblem in Ihren DNS-Zonen erkannt hat. Korrigieren Sie die Delegierungskonfiguration, und warten Sie 24 Stunden, bis sich der Status in **Verfügbar** ändert.  
+
+Der folgende Screenshot zeigt ein Beispiel für die Meldung der Ressourcen-Integritätsprüfung.
+
+:::image type="content" source="./media/dns-troubleshoot/degraded-status.png" alt-text="Screenshot des Status „Heruntergestuft“.":::
+
+Wenn nach der Korrektur der Konfiguration 24 Stunden verstrichen sind und die DNS-Zonen weiterhin heruntergestuft sind, wenden Sie sich an den Support.  
+
+### <a name="configuration-error-scenario"></a>Konfigurationsfehlerszenario
+
+Das folgende Szenario demonstriert, in dem ein Konfigurationsfehler zum fehlerhaften Zustand der DNS-Zonen geführt hat.
+
+**Fehlerhafte Delegierung**
+
+Eine primäre Zone enthält Namenserver-Delegierungseinträge, mit denen Datenverkehr von der primären an die untergeordneten Zonen delegiert werden kann. Wenn ein Namenserver-Delegierungseintrag in der übergeordneten Zone vorhanden ist, soll der DNS-Server alle anderen Einträge unterhalb des Namenserver-Delegierungseintrags maskieren, mit Ausnahme von Glue-Einträgen, und Datenverkehr auf Grundlage der Benutzerabfrage an die entsprechende untergeordnete Zone weiterleiten. Wenn eine übergeordnete Zone andere Einträge enthält, die für die untergeordneten Zonen (delegierten Zonen) unterhalb des Namenserver-Delegierungseintrags vorgesehen sind, wird die Zone als fehlerhaft markiert, und ihr Status lautet **Heruntergestuft**.
+
+**Was sind Glue-Einträge?** – Hierbei handelt es sich um Einträge unterhalb des Delegierungseintrags, die bei der Weiterleitung von Datenverkehr an die delegierten/untergeordneten Zonen mithilfe ihrer IP-Adressen helfen und, wie im Folgenden zu sehen, konfiguriert werden.
+
+| Einstellung | Wert |
+| ------- | ----- |
+| **Zone** | contoso.com |
+| **Delegierungseintrag** | Untergeordneter Namenserver </br> ns1.child.contoso.com |
+| **Glue-Eintrag** | ns1.child A 1.1.1.1 |
+
+#### <a name="example-of-an-unhealthy-zone"></a>Beispiel für eine fehlerhafte Zone
+
+Im Folgenden sehen Sie ein Beispiel für eine Zone, die Einträge unterhalb der Namenserverdelegierung enthält.
+
+* Zonenname: contoso.com
+
+| Name | type | TTL | Wert |
+| ---- | ---- | --- | ----- |
+| @ | NS | 3600 | ns1-04.azure-dns.com. |
+| @ | SOA | 3600 | _SOA-Werte_ |
+| * | A | 3600 | 255.255.255.255 |
+| **child** | **NS** | **3600** | **ns1-08.azure-dns.com** (Namenserver-Delegierungseintrag) |
+| _**foo.child**_ | _**A**_ | _**3600**_ | _**10.10.10.10**_ |
+| _**txt.child**_ | _**TXT**_ | _**3600**_ | _**"Text-Eintrag"**_ |
+| abc.test | A | 3600 | 5.5.5.5 |
+
+Im vorherigen Beispiel sind **child** (untergeordnet) die Namenserver-Delegierungseinträge. Die Einträge _**foo.child**_ und _**txt.child**_ sind Einträge, die nur in der untergeordneten Zone, **child.contoso.com.** , vorhanden sein sollten. Diese Einträge können zu Inkonsistenzen führen, wenn sie nicht aus der übergeordneten Zone, **contoso.com**, entfernt werden. Diese Inkonsistenzen können dazu führen, dass die Zone als fehlerhaft betrachtet wird, mit dem Status **Heruntergestuft**.
+
+#### <a name="examples-of-when-a-zone-is-considered-healthy-or-unhealthy"></a>Beispiele dafür, wann eine Zone als fehlerfrei oder fehlerhaft betrachtet wird
+
+| Beispiel | Status |
+| ------- | ------ |
+| Die Zone enthält keine Namenserver-Delegierungseinträge, Glue-Einträge oder anderen Einträge. | **Healthy** |
+| Die Zone enthält nur Namenserver-Delegierungseinträge. | **Healthy** |
+| Die Zone enthält nur Namenserver-Delegierungseinträge und Glue-Einträge. | **Healthy** |
+| Die Zone enthält Namenserver-Delegierungseinträge und andere Einträge (mit Ausnahme von Glue-Einträgen) unterhalb des Delegierungseintrags, der in der untergeordneten Zone vorhanden sein sollte. | **Fehlerhaft** |
+| Die Zone enthält Namenserver-Delegierungseinträge, Glue-Einträge und andere Einträge (mit Ausnahme von Glue-Einträgen). | **Fehlerhaft** |
+
+**Wie können Sie diesen Zustand beheben?** – Zum Beheben suchen und entfernen Sie alle Einträge, außer Glue-Einträgen, unterhalb der Namenserver-Delegierungseinträge in Ihrer übergeordneten Zone.
+
+**Auffinden fehlerhafter Delegierungseinträge** – Es wurde ein Skript erstellt, um die fehlerhaften Delegierungseinträge in Ihrer Zone zu finden.  Das Skript meldet Einträge, die fehlerhaft sind.
+
+1. Speichern Sie das Skript, das sich unter [Suchen von fehlerhaften DNS-Einträgen in Azure DNS: PowerShell-Skriptbeispiel](./scripts/find-unhealthy-dns-records.md) befindet.
+
+2. Führen Sie das Skript wie im Skript-Editor erwähnt aus.  Das Skript kann bearbeitet werden, um es an Ihre Anforderungen anzupassen.
+
+**Verlaufsinformationen**: Im Abschnitt „Integritätsverlauf“ von Resource Health stehen bis zu 14 Tage alte Integritätsverlaufsdaten zur Verfügung. Dieser Abschnitt enthält auch die Ursache für die von Resource Health gemeldeten Downtimes (sofern verfügbar). Derzeit zeigt Azure die Downtime für Ihre DNS-Zonenressource mit einer Granularität von 24 Stunden an.
 
 ## <a name="how-do-i-specify-the-service-and-protocol-for-an-srv-record"></a>Wie gebe ich den „service“ und „protocol“ für einen SRV-Eintrag an?
 
@@ -114,7 +165,6 @@ Beispiele für SRV-Eintragsnamen (Dienstname „sip“, Protokoll „tcp“):
 * [DNS-Zonen und -Einträge](dns-zones-records.md)
 * [Erstellen von DNS-Ressourceneintragssätzen und -Einträgen mit dem Azure-Portal](./dns-getstarted-portal.md)
 * [SRV-Eintragstyp (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mit Azure Machine Learning einen neuen Azure Kubernetes Service-Cluster erstellen oder einen bestehenden AKS-Cluster an Ihren Arbeitsbereich anfügen können.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: mlops
+ms.subservice: core
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 09/16/2021
-ms.openlocfilehash: f7e2a3311f9540413880d20839f56a4932519f1c
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 11/05/2021
+ms.openlocfilehash: 4f72252bf375f9341b08f99b57e540784b47429a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426357"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486302"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Erstellen und Anfügen eines Azure Kubernetes Service-Clusters
 
@@ -47,6 +47,8 @@ Mit Azure Machine Learning kann ein trainiertes Machine Learning-Modell im Azure
 - Um einen AKS-Cluster aus einem __anderen Azure-Abonnement__ anfügen zu können, muss Ihnen (Ihrem Azure AD-Konto) die Rolle **Mitwirkender** im AKS-Cluster erteilt werden. Überprüfen Sie Ihren Zugriff im [Azure-Portal](https://ms.portal.azure.com/).
 
 - Wenn Sie einen privaten AKS-Cluster (mit Azure Private Link) verwenden möchten, müssen Sie zuerst den Cluster erstellen und diesen dann **an den Arbeitsbereich anfügen**. Weitere Informationen finden Sie unter [Erstellen eines privaten Azure Kubernetes Service-Clusters](../aks/private-clusters.md).
+
+- Die Verwendung eines [öffentlichen vollqualifizierten Domänennamens (FQDN) mit einem privaten AKS-Cluster](/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-fqdn) wird mit Azure Machine Learning __nicht unterstützt__. 
 
 - Der Computename für den AKS-Cluster MUSS innerhalb Ihres Azure ML-Arbeitsbereichs eindeutig sein. Er kann Buchstaben, Ziffern und Bindestriche enthalten. Er muss mit einem Buchstaben beginnen, mit einem Buchstaben oder einer Ziffer enden und zwischen 3 und 24 Zeichen lang sein.
  

@@ -3,14 +3,14 @@ metadata:
   title: Häufig gestellte Fragen (FAQ) zu Azure Service Bus | Microsoft-Dokumentation
   description: Dieser Artikel bietet Antworten auf einige häufig gestellte Fragen (FAQ) zu Azure Service Bus.
   ms.topic: article
-  ms.service: service-bus
+  ms.service: service-bus-messaging
   ms.date: 01/20/2021
-  ms.openlocfilehash: e364e9719962263e52aa404d8656729b27c72406
-  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+  ms.openlocfilehash: 53c370c85ae0de819ac10a167d57a8bdbe5fef06
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/01/2021
-  ms.locfileid: "129359440"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132061849"
 title: Häufig gestellte Fragen (FAQ) zu Azure Service Bus
 summary: >
   In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus behandelt. Sie können auch [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
@@ -76,7 +76,7 @@ sections:
   - question: >
       Wie werden Nachrichten mit einer Größe über 1 MB behandelt?
     answer: >
-      Service Bus-Messagingdienste (Warteschlangen und Themen/Abonnements) ermöglichen Anwendungen, Nachrichten mit einer Größe bis zu 256 KB (Standard-Tarif) oder 1 MB (Premium-Tarif) zu senden. Wenn Ihre Nachrichten eine Größe über 1 MB aufweisen, verwenden Sie das [in diesem Blogbeitrag](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern) beschriebene Anspruchsüberprüfungsmuster.
+      Service Bus-Messagingdienste (Warteschlangen und Themen/Abonnements) ermöglichen Anwendungen, Nachrichten mit einer Größe bis zu 256 KB (Standard-Tarif) oder 100 MB (Premium-Tarif) zu senden. Wenn die Größe der Nachrichten die zulässige Größe überschreitet, verwenden Sie das [in diesem Blogbeitrag](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern) beschriebene Anspruchsüberprüfungsmuster.
 - name: Problembehandlung
   questions:
   - question: "Warum kann ich keinen Namespace erstellen, nachdem ich ihn aus einem anderen Abonnement gelöscht habe? \n"

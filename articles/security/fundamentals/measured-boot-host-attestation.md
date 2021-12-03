@@ -8,19 +8,19 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 06/24/2021
-ms.openlocfilehash: 6dac3b8230a0bad9c6492b236eac5dddc1839471
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: af2927e4aa9dc9044546537adbde3af97cba4be1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112895776"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249379"
 ---
 # <a name="measured-boot-and-host-attestation"></a>Gemessener Start- und Hostnachweis
 In diesem Artikel wird beschrieben, wie Microsoft die Integrität und Sicherheit von Hosts durch gemessenen Start- und Hostnachweis gewährleistet.
 
 ## <a name="measured-boot"></a>Gemessener Start
 
-Das [Trusted Platform Module](/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) ist eine manipulationsgeschützte, kryptografisch sichere Überwachungskomponente mit Firmware, die von einem vertrauenswürdigen Drittanbieter bereitgestellt wird. Das Startkonfigurationsprotokoll enthält hashverkettete Messungen, die in den Platfformkonfigurationsregistern (PCR) beim letzten Durchlauf der Bootstrappingsequenz seitens des Hosts aufgezeichnet wurden. In der folgenden Abbildung wird dieser Aufzeichnungsprozess veranschaulicht. Durch inkrementelles Hinzufügen einer früheren Hashmessung zum Hash der nächsten Messung und Ausführen des Hashalgorithmus für die Vereinigungsmenge wird die Hashverkettung erreicht.
+Das [Trusted Platform Module](/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) ist eine manipulationsgeschützte, kryptografisch sichere Überwachungskomponente mit Firmware, die von einem vertrauenswürdigen Drittanbieter bereitgestellt wird. Das Startkonfigurationsprotokoll enthält hashverkettete Messungen, die in den Plattformkonfigurationsregistern (PCR) beim letzten Durchlauf der Bootstrappingsequenz seitens des Hosts aufgezeichnet wurden. In der folgenden Abbildung wird dieser Aufzeichnungsprozess veranschaulicht. Durch inkrementelles Hinzufügen einer früheren Hashmessung zum Hash der nächsten Messung und Ausführen des Hashalgorithmus für die Vereinigungsmenge wird die Hashverkettung erreicht.
 
 ![Diagramm der Hashverkettung des Hostnachweisdiensts.](./media/measured-boot-host-attestation/hash-chaining.png)
 

@@ -7,12 +7,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a47b41a8b7f4e18be58c32c97cf279b9229f26da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4f32c0803bb5815599c81ca6c89335fa6e1ffac
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579509"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455167"
 ---
 # <a name="what-is-distributed-tracing"></a>Was ist die verteilte Ablaufverfolgung?
 
@@ -44,6 +44,17 @@ Die verteilte Ablaufverfolgung wird von den Application Insights-Agents und/oder
 Wenn das richtige Application Insights SDK installiert und konfiguriert ist, werden Ablaufverfolgungsinformationen für gängige Frameworks, Bibliotheken und Technologien automatisch von der automatischen Erfassung (Auto-Collectors) für SDK-Abhängigkeiten gesammelt. Die vollständige Liste der unterstützten Technologien finden Sie unter [Automatisches Sammeln von Abhängigkeiten](./auto-collect-dependencies.md).
 
  Darüber hinaus kann jede beliebige Technologie manuell durch einen Aufruf von [TrackDependency](./api-custom-events-metrics.md) auf dem [TelemetryClient](./api-custom-events-metrics.md) überwacht werden.
+
+## <a name="enable-via-opentelemetry"></a>Aktivieren über OpenTelemetry
+
+Application Insights unterstützt jetzt die verteilte Ablaufverfolgung via [OpenTelemetry](https://opentelemetry.io/). OpenTelemetry bietet eine anbieterneutrale Instrumentierung zum Senden von Ablaufverfolgungen, Metriken und Protokollen an Application Insights. Zunächst hat sich die OpenTelemetry-Gemeinschaft dem Distributed Tracing angenommen. Metriken und Protokolle befinden sich noch in der Entwicklung. Eine vollständige Beobachtungsmöglichkeit umfasst alle drei Säulen, doch derzeit beinhalten unsere [Azure Monitor OpenTelemetry-basierten Exporter-Vorschau-Angebote für .NET, Python und JavaScript](opentelemetry-enable.md) nur Distributed Tracing. Unser Java OpenTelemetry-basiertes Azure Monitor-Angebot ist jedoch unbeschränkt und wird vollständig unterstützt. 
+
+Auf den folgenden Seiten finden Sie für jede Sprache eine Anleitung zur Aktivierung und Konfiguration der OpenTelemetry-basierten Angebote von Microsoft. Wichtig ist, dass wir die verfügbaren Funktionen und Einschränkungen der einzelnen Angebote erläutern, damit Sie entscheiden können, ob OpenTelemetry für Ihr Projekt geeignet ist.
+
+* [.NET](opentelemetry-enable.md?tabs=net)
+* [Java](java-in-process-agent.md)
+* [Node.js](opentelemetry-enable.md?tabs=nodejs)
+* [Python](opentelemetry-enable.md?tabs=python)
 
 ## <a name="enable-via-opencensus"></a>Aktivieren über OpenCensus
 

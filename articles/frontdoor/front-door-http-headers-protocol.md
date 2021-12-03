@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: 807138187e37deef6f23121ce085e62f520ad335
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d102978b12c37033d2d52c7ee749c1e7f7878c7c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339538"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132489055"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Protokollunterstützung für HTTP-Header in Azure Front Door
 Dieser Artikel beschreibt das Protokoll, das Front Door mit Teilen des Aufrufpfads unterstützt (siehe Abbildung). Die folgenden Abschnitte enthalten weitere Informationen zu HTTP-Headern, die von Front Door unterstützt werden.
@@ -27,7 +27,10 @@ Dieser Artikel beschreibt das Protokoll, das Front Door mit Teilen des Aufrufpfa
 >Front Door zertifiziert keine HTTP-Header, die hier nicht dokumentiert sind.
 
 ## <a name="client-to-front-door"></a>Client zu Front Door
+
 Front Door akzeptiert die meisten Header für die eingehende Anforderung, ohne sie zu ändern. Einige reservierte Header werden aus der eingehenden Anforderung entfernt, falls gesendet, einschließlich der Header mit dem X-FD-*-Präfix.
+
+Der Header der Debug-Anforderung, "X-Azure-DebugInfo", liefert zusätzliche Debug-Informationen über die Front Door. Sie müssen den Anforderung-Header "X-Azure-DebugInfo: 1" vom Client an Front Door senden, um die [optionalen Response-Header](#optional-debug-response-headers) von Front Door an den Client zu erhalten. 
 
 ## <a name="front-door-to-backend"></a>Front Door zum Back-End
 
@@ -55,6 +58,8 @@ Vom Back-End an Front Door gesendete Header werden auch an den Client weitergele
 | ------------- | ------------- |
 | X-Azure-Ref |  *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Dabei handelt es sich um eine eindeutige Verweiszeichenfolge, die eine von Front Door verarbeitete Anforderung identifiziert, die für die Problembehandlung wichtig ist, da sie zum Suchen nach Zugriffsprotokollen verwendet wird.|
 | X-Cache | *X-Cache:* Dieser Header beschreibt den Zwischenspeicherungsstatus der Anforderung. <br/> - *X-Cache: TCP_HIT*: Das erste Byte der Anforderung ist ein Cachetreffer im Front Door-Edge. <br/> - *X-Cache: TCP_REMOTE_HIT*: Das erste Byte der Anforderung ist ein Cachetreffer im regionalen Cache (Ursprungsschutzebene), aber ein Fehler im Edgecache. <br/> - *X-Cache: TCP_MISS*: Das erste Byte der Anforderung ist ein Cachefehler, und der Inhalt wird vom Ursprung aus bedient. <br/> - *X-Cache: PRIVATE_NOSTORE*: Die Anforderung kann nicht zwischengespeichert werden, da der Cachesteuerelement-Antwortheader auf „private“ oder „no-store“ festgelegt ist. <br/> - *X-Cache: CONFIG_NOCACHE*: Die Anforderung ist so konfiguriert, dass sie nicht in Front Door zwischengespeichert wird. |
+
+### <a name="optional-debug-response-headers"></a>Optionale Debug-Antwort-Header
 
 Sie müssen den Anforderungsheader „X-Azure-DebugInfo: 1“ senden, um die folgenden optionalen Antwortheader zu aktivieren.
 

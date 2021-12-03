@@ -7,24 +7,22 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: vc, devx-track-azurecli
-ms.openlocfilehash: 749137187b7fffe111f854860517dc608ae44c8a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d311dbc14f5a2227f10a29a553adafdbbc28494c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582415"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472730"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Tutorial: Bereitstellen einer WordPress-App in AKS mit Azure Database for MySQL – Flexible Server
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-In dieser Schnellstartanleitung wird eine WordPress-Anwendung in einem AKS-Cluster (Azure Kubernetes Service) mit Azure Database for MySQL – Flexible Server (Vorschau) unter Verwendung der Azure CLI bereitgestellt. 
-**[AKS](../../aks/intro-kubernetes.md)** ist ein verwalteter Kubernetes-Dienst, mit dem Sie Cluster schnell bereitstellen und verwalten können. **[Azure Database for MySQL – Flexible Server (Vorschau)](overview.md)** ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität bei den Verwaltungsfunktionen und Konfigurationseinstellungen der Datenbank bietet. Flexible Server befindet sich aktuell in der Vorschauphase.
+In dieser Schnellstartanleitung wird eine WordPress-Anwendung in einem AKS-Cluster (Azure Kubernetes Service) mit Azure Database for MySQL – Flexible Server unter Verwendung der Azure CLI bereitgestellt.
+**[AKS](../../aks/intro-kubernetes.md)** ist ein verwalteter Kubernetes-Dienst, mit dem Sie Cluster schnell bereitstellen und verwalten können. **[Azure Database for MySQL – Flexible Server](overview.md)** ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität bei den Verwaltungsfunktionen und Konfigurationseinstellungen der Datenbank bietet.
 
 > [!NOTE]
->
-> - Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
-> - Für diese Schnellstartanleitung werden Grundkenntnisse bei Kubernetes-Konzepten, WordPress und MySQL vorausgesetzt.
+> Für diese Schnellstartanleitung werden Grundkenntnisse bei Kubernetes-Konzepten, WordPress und MySQL vorausgesetzt.
 
 [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 

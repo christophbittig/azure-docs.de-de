@@ -3,12 +3,12 @@ title: Konfigurieren der externen Identitätsquelle für vCenter
 description: Erfahren Sie, wie Sie Active Directory über LDAP oder LDAPS für vCenter als externe Identitätsquelle konfigurieren.
 ms.topic: how-to
 ms.date: 08/31/2021
-ms.openlocfilehash: 77644c2d52a5eed87ab4dca83632b69834dd4c58
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 37478b65572fba2815121b0712d1a0f2e43376dc
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537110"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506294"
 ---
 # <a name="configure-external-identity-source-for-vcenter"></a>Konfigurieren der externen Identitätsquelle für vCenter
 
@@ -85,7 +85,7 @@ Sie führen das Cmdlet `New-AvsLDAPSIdentitySource` aus, um AD über LDAP mit SS
    | **Name**  | Benutzerfreundlicher Name der externen Identitätsquelle, z. B. **avslap.local**.  |
    | **DomainName**  | Der FQDN der Domäne.   |
    | **DomainAlias**  | Für Active Directory-Identitätsquellen ist dies der NetBIOS-Name der Domäne. Fügen Sie den NetBIOS-Namen der AD-Domäne als Alias der Identitätsquelle hinzu, wenn Sie die SSPI-Authentifizierung verwenden.     |
-   | **PrimaryUrl**  | Primäre URL der externen Identitätsquelle, z. B. **ldap://yourserver:389**.  |
+   | **PrimaryUrl**  | Primäre URL der externen Identitätsquelle, z. B. **ldap://yourserver:636**.  |
    | **SecondaryURL**  | Sekundäre Fallback-URL, falls bei der primären URL ein Fehler auftritt.  |
    | **BaseDNUsers**  |  Für die Suche nach gültigen Benutzern, z. B. **CN=users,DC=Yourserver,DC=internal**.  Der Basis-DN ist für die Verwendung der LDAP-Authentifizierung erforderlich.  |
    | **BaseDNGroups**  | Für die Suche nach Gruppen, z. B. **CN=group1, DC=yourserver,DC= internal**. Der Basis-DN ist für die Verwendung der LDAP-Authentifizierung erforderlich.  |

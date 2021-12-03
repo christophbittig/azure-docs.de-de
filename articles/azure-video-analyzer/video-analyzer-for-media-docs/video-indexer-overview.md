@@ -5,12 +5,12 @@ description: Dieser Artikel bietet eine Übersicht über den Dienst Azure Video 
 ms.topic: overview
 ms.date: 07/15/2021
 ms.author: juliako
-ms.openlocfilehash: a6fd02283bbd6304611dab1c6cfbc8a63e01139e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fddcb1cd3562fde14c38c68811b7272a7d710d2b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128658600"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487525"
 ---
 # <a name="what-is-video-analyzer-for-media"></a>Was ist Video Analyzer for Media?
 
@@ -66,7 +66,8 @@ In der folgenden Liste sind die Erkenntnisse aufgeführt, die Sie aus Ihren Vide
 * **Durchlaufender Abspann**: Identifiziert den Anfang und das Ende des durchlaufenden Abspanns am Ende von Fernsehsendungen und Filmen.
 * **Erkennung animierter Figuren** (Vorschauversion): Bestimmung, Gruppierung und Erkennung von Figuren in animierten Inhalten mittels Integration von [Cognitive Services Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Weitere Informationen finden Sie unter [Erkennung animierter Figuren](animated-characters-recognition.md).
 * **Erkennung von redaktionellen Aufnahmetypen**: Tagging (Kategorisierung) von Aufnahmen auf der Grundlage ihres Typs (etwa Totale, Halbtotale, Nahaufnahme, extreme Nahaufnahme, zwei Personen, mehrere Personen, Außenaufnahme, Innenaufnahme usw.). Weitere Informationen finden Sie unter [Erkennung von redaktionellen Aufnahmetypen](scenes-shots-keyframes.md#editorial-shot-type-detection).
-* **Verfolgung von beobachteten Personen:** erkennt beobachtete Personen in Videos und stellt Informationen wie die Position der Person im Videoframe (mit Begrenzungsrahmen) und den genauen Zeitstempel (Start, Ende) bereit, sodass verlässlich festgestellt werden kann, wann eine Person erscheint. Weitere Informationen finden Sie im Artikel zum [Verfolgen beobachteter Personen in einem Video](observed-people-tracing.md).
+* **Verfolgung von beobachteten Personen** (Vorschau): Erkennt beobachtete Personen in Videos und stellt Informationen wie die Position der Person im Videoframe (mit Begrenzungsrahmen) und den genauen Zeitstempel (Start, Ende) bereit, sodass verlässlich festgestellt werden kann, wann eine Person erscheint. Weitere Informationen finden Sie im Artikel zum [Verfolgen beobachteter Personen in einem Video](observed-people-tracing.md).
+    * **Erkannte Bekleidung von Personen**: Erkennt die Art der Bekleidung von Personen im Video und liefert entsprechende Informationen. Beispiele wären etwa lange oder kurze Ärmel, lange oder kurze Hose und Rock oder Kleid. Die erkannte Bekleidung wird den Personen zugeordnet, die sie tragen, und der genaue Zeitstempel (Start, Ende) sowie ein Zuverlässigkeitsgrad für die Erkennung werden bereitgestellt.
 
 ### <a name="audio-insights"></a>Erkenntnisse aus Audioaufnahmen
 

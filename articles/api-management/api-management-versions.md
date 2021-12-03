@@ -6,15 +6,14 @@ documentationcenter: ''
 author: johndowns
 ms.service: api-management
 ms.topic: article
-ms.date: 02/10/2021
+ms.date: 10/31/2021
 ms.author: jodowns
-ms.custom: fasttrack-new
-ms.openlocfilehash: 6b055cb6771dc76557c61220a52120a5fbbd7940
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: a89860216563480de4803cc6e4a7e9f24853190f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811370"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471096"
 ---
 # <a name="versions-in-azure-api-management"></a>Versionen in Azure API Management
 
@@ -69,6 +68,8 @@ Azure API Management verwaltet eine Ressource namens *version set*, die einen Sa
 Jede Version einer API wird als eigene API-Ressource verwaltet, die dann einem Versionssatz zugeordnet wird. Ein Versionssatz kann APIs mit unterschiedlichen Vorgängen oder Richtlinien enthalten. Möglicherweise nehmen Sie erhebliche Änderungen zwischen den Versionen in einem Satz vor.
 
 Das Azure-Portal erstellt die Versionssätze für Sie. Sie können den Namen und die Beschreibung für einen Versionssatz im Azure-Portal ändern.
+
+Ein Versionssatz wird automatisch gelöscht, wenn die endgültige Version gelöscht wird.
 
 Sie können Versionssätze mit der [Azure-Befehlszeilenschnittstelle](/cli/azure/apim/api/versionset), [Azure PowerShell](/powershell/module/az.apimanagement/#api-management), [Resource Manager-Vorlagen](/azure/templates/microsoft.apimanagement/service/apiversionsets) oder der [Azure Resource Manager-API](/rest/api/apimanagement/2020-12-01/api-version-set) direkt anzeigen und verwalten.
 

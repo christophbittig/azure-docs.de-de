@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 511f546437d12714ae77d1e3a99f15feda31e33f
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ad00a74871373338a2b4e8b557297a808e8186fc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130228128"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007294"
 ---
 # <a name="add-ad-fs-as-an-openid-connect-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von AD FS als OpenID Connect-Identitätsanbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -62,7 +62,7 @@ In diesem Schritt konfigurieren Sie die Ansprüche, die eine AD FS-Anwendung an 
 
     | LDAP-Attribut | Typ des ausgehenden Anspruchs |
     | -------------- | ------------------- |
-    | Benutzerprinzipalname | UPN |
+    | Benutzerprinzipalname | upn |
     | Surname | family_name |
     | Vorname | given_name |
     | Anzeigename | name |
@@ -94,10 +94,10 @@ In diesem Schritt konfigurieren Sie die Ansprüche, die eine AD FS-Anwendung an 
 1. (Optional) Geben Sie als **Domänenhinweis** die Zeichenfolge `contoso.com` ein. Weitere Informationen finden Sie unter [Einrichten einer direkten Anmeldung mit Azure Active Directory B2C](direct-signin.md#redirect-sign-in-to-a-social-provider).
 1. Wählen Sie unter **Zuordnung von Identitätsanbieteransprüchen** die folgenden Ansprüche aus:
 
-    - **Benutzer-ID**: *upn*
-    - **Anzeigename**: *unique_name*
-    - **Vorname**: *given_name*
-    - **Nachname**: *family_name*
+    - **Benutzer-ID**: `upn`
+    - **Anzeigename**: `unique_name`
+    - **Vorname**: `given_name`
+    - **Nachname**: `family_name`
 
 1. Wählen Sie **Speichern** aus.
 

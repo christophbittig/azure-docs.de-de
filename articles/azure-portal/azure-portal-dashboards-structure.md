@@ -1,19 +1,20 @@
 ---
-title: Struktur von Azure-Dashboards
-description: Durchlaufen Sie die JSON-Struktur eines Azure-Dashboards mithilfe eines Beispieldashboards. Enthält Verweise auf Ressourceneigenschaften.
+title: Die Struktur von Azure-Dashboards
+description: In diesem Artikel wird die JSON-Struktur eines Azure-Dashboards anhand eines Beispieldashboards erläutert. Enthält Verweise auf Ressourceneigenschaften.
 ms.topic: conceptual
-ms.date: 12/20/2019
-ms.openlocfilehash: d37e2fd9c9f6ef6e7ddea6dea002f26f20cd66a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/19/2021
+ms.openlocfilehash: 4f005d6b232a7bba15d55055d49ac1c7adf49866
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745960"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239680"
 ---
-# <a name="the-structure-of-azure-dashboards"></a>Struktur von Azure-Dashboards
+# <a name="the-structure-of-azure-dashboards"></a>Die Struktur von Azure-Dashboards
+
 In diesem Dokument wird die Struktur eines Azure-Dashboards beschrieben. Dabei wird das folgende Dashboard als Beispiel verwendet:
 
-![Beispieldashboard](./media/azure-portal-dashboards-structure/sample-dashboard.png)
+:::image type="content" source="media/azure-portal-dashboards-structure/sample-dashboard.png" alt-text="Screenshot: Beispieldashboard im Azure-Portal.":::
 
 Da freigegebene [Azure-Dashboards Ressourcen sind](../azure-resource-manager/management/overview.md), kann dieses Dashboard als JSON-Code dargestellt werden.  Der folgende JSON-Code stellt das oben visualisierte Dashboard dar.
 
@@ -283,48 +284,55 @@ Da freigegebene [Azure-Dashboards Ressourcen sind](../azure-resource-manager/man
 
 Wir unterteilen die relevanten Abschnitte der JSON-Darstellung.  Die Eigenschaften der obersten Ebene, die __id__-, __name__-, __type__-, __location__- und __tags__-Eigenschaften sind für alle Azure-Ressourcentypen freigegeben. Das heißt, sie haben wenig zu tun mit dem Inhalt des Dashboards.
 
-### <a name="the-id-property"></a>Die ID-Eigenschaft.
+### <a name="id"></a>id
 
-Die Azure-Ressourcen-ID; unterliegt den [Namenskonventionen für Azure-Ressourcen](/azure/architecture/best-practices/resource-naming). Wenn im Portal ein Dashboard erstellt wird, wird in der Regel eine ID in Form einer GUID erstellt. Sie können aber jeden gültigen Namen verwenden, wenn Sie Dashboards programmgesteuert erstellen. 
+Die Azure-Ressourcen-ID; unterliegt den [Namenskonventionen für Azure-Ressourcen](/azure/architecture/best-practices/resource-naming). Wenn im Portal ein Dashboard erstellt wird, wird in der Regel eine ID in Form einer GUID erstellt. Sie können aber jeden gültigen Namen verwenden, wenn Sie Dashboards programmgesteuert erstellen.
 
-### <a name="the-name-property"></a>Die „name“-Eigenschaft
-Die name-Eigenschaft ist das Segment der Ressourcen-ID, das keine Informationen zum Abonnement, Ressourcentyp oder der Ressourcengruppe enthält. Im Wesentlichen handelt es sich um das letzte Segment der Ressourcen-ID.
+### <a name="name"></a>Name
 
-### <a name="the-type-property"></a>Die „type“-Eigenschaft
+Die name-Eigenschaft ist das Segment der Ressourcen-ID, das keine Informationen zum Abonnement, Ressourcentyp oder der Ressourcengruppe enthält. Im Prinzip handelt es sich um das letzte Segment der Ressourcen-ID.
+
+### <a name="type"></a>Typ
+
 Alle Dashboards weisen den Typ __Microsoft.Portal/dashboards__ auf.
 
-### <a name="the-location-property"></a>Die „location“-Eigenschaft
+### <a name="location"></a>Ort
+
 Im Gegensatz zu anderen Ressourcen verfügen Dashboards über keine Laufzeitkomponente.  Für Dashboards gibt die „location“-Eigenschaft den primären geografischen Standort an, an dem die JSON-Darstellung des Dashboards gespeichert wird. Der Wert muss einer der Standortcodes sein, die mit der [Standort-API für die Abonnementressource](/rest/api/resources/subscriptions) abgerufen werden können.
 
-### <a name="the-tags-property"></a>Die „tags“-Eigenschaft
-Tags sind eine gebräuchliche Funktion von Azure-Ressourcen, mit denen Sie die Ressource nach beliebigen Name-Wert-Paaren organisieren können. Für Dashboards ist ein spezielles Tag mit dem Namen __hidden-title__ vorhanden. Wenn diese Eigenschaft in Ihrem Dashboard ausgefüllt ist, wird sie als Anzeigename des Dashboards im Portal verwendet. Azure-Ressourcen-IDs können nicht umbenannt werden, Tags dagegen schon. Dieses Tag ermöglicht einen Anzeigenamen für das Dashboard, der umbenannt werden kann.
+### <a name="tags"></a>`Tags`
+
+Tags sind eine gebräuchliche Funktion von Azure-Ressourcen, mit denen Sie die Ressource nach beliebigen Name-Wert-Paaren organisieren können. Dashboards verfügen über ein spezielles Tag namens __hidden-title__. Wenn diese Eigenschaft bei Ihrem Dashboard ausgefüllt ist, wird der entsprechende Wert als Anzeigename des Dashboards im Portal verwendet. Azure-Ressourcen-IDs können nicht umbenannt werden, Tags hingegen schon. Dieses Tag ermöglicht einen Anzeigenamen für das Dashboard, der umbenannt werden kann.
 
 `"tags": { "hidden-title": "Created via API" }`
 
-### <a name="the-properties-object"></a>Das „properties“-Objekt
+### <a name="properties"></a>Eigenschaften
+
 Das „properties“-Objekt enthält zwei Eigenschaften: __lenses__ und __metadata__. Die __lenses__-Eigenschaft enthält Informationen zu den Kacheln im Dashboard.  Die __metadata__-Eigenschaft ist für mögliche künftige Funktionen vorhanden.
 
-### <a name="the-lenses-property"></a>Die „lenses“-Eigenschaft
-Die __lenses__-Eigenschaft enthält das Dashboard. Beachten Sie, dass das „lenses“-Objekt in diesem Beispiel eine einzige Eigenschaft mit dem Namen „0“ enthält. Fokusbereiche (lenses) stellen ein Gruppierungskonzept dar, das derzeit in Dashboards nicht implementiert ist. Daher weisen all Ihre Dashboards aktuell diese einzige Eigenschaft mit dem Namen „0“ für das „lens“-Objekt auf.
+### <a name="lenses"></a>Fokusbereiche
 
-### <a name="the-lens-object"></a>Das „lens“-Objekt
+Die __lenses__-Eigenschaft enthält das Dashboard. Das Fokusobjekt in diesem Beispiel enthält eine einzige Eigenschaft mit dem Namen „0“. Fokusbereiche sind ein Gruppierungskonzept, das derzeit nicht implementiert ist. Daher verfügen derzeit all Ihre Dashboards über die erwähnte eine Eigenschaft für das Fokusobjekt mit dem Namen „0“.
+
+### <a name="parts"></a>Bestandteile
+
 Das Objekt unterhalb von „0“ enthält zwei Eigenschaften: __order__ und __parts__.  In der aktuellen Version von Dashboards ist __order__ immer auf „0“ festgelegt. Die __parts__-Eigenschaft enthält ein Objekt, das die einzelnen Elemente (auch als Kacheln bezeichnet) im Dashboard definiert.
 
-Das __parts__-Objekt enthält eine Eigenschaft für jeden Teil. Der Name der Eigenschaft ist dabei eine Zahl. Diese Zahl ist nicht wichtig. 
+Das __parts__-Objekt enthält eine Eigenschaft für jeden Teil. Der Name der Eigenschaft ist dabei eine Zahl. Diese Zahl ist nicht wichtig.
 
-### <a name="the-part-object"></a>Das „part“-Objekt
 Jedes einzelne „part“-Objekt verfügt über ein __position__- und __metadata__-Objekt.
 
-### <a name="the-position-object"></a>Das „position“-Objekt
+### <a name="position"></a>Position
+
 Die __position__-Eigenschaft enthält die Informationen zu Größe und Position des Teils und wird mit __x__, __y__, __rowSpan__ und __colSpan__ angegeben. Die Werte beziehen sich auf Rastereinheiten. Diese Rastereinheiten sind sichtbar, wenn sich das Dashboard wie hier gezeigt im Anpassungsmodus befindet. Wenn eine Kachel eine Breite von zwei Rastereinheiten und eine Höhe von einer Rastereinheit haben und sich oben links im Dashboard befinden soll, sieht das „position“-Objekt wie folgt aus:
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
-![Der Screenshot zeigt eine Nahaufnahme des Rasters, wobei eine quadratische Rastereinheit hervorgehoben ist.](./media/azure-portal-dashboards-structure/grid-units.png)
+:::image type="content" source="media/azure-portal-dashboards-structure/grid-units.png" alt-text="Screenshot: Rastereinheiten für ein Dashboard im Azure-Portal":::
 
-### <a name="the-metadata-object"></a>Das „metadata“-Objekt
+### <a name="metadata"></a>Metadaten
+
 Jeder Teil verfügt über eine „metadata“-Eigenschaft. Ein Objekt weist nur eine erforderliche Eigenschaft mit dem Namen __type__ auf. Mit dieser Zeichenfolge wird im Portal festgelegt, welche Kachel angezeigt werden soll. Im Beispieldashboard werden folgende Typen von Kacheln verwendet:
-
 
 1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart`: Wird zum Anzeigen von Überwachungsmetriken verwendet
 1. `Extension[azure]/HubsExtension/PartType/MarkdownPart`: Wird zum Anzeigen von Text oder Bildern mit einfachen Formatierungen für Listen, Links usw. angezeigt
@@ -333,7 +341,8 @@ Jeder Teil verfügt über eine „metadata“-Eigenschaft. Ein Objekt weist nur 
 
 Jeder Teiltyp verfügt über eine eigene Konfiguration. Mögliche Konfigurationseigenschaften sind __inputs__, __settings__ und __asset__. 
 
-### <a name="the-inputs-object"></a>Das „inputs“-Objekt
+### <a name="inputs"></a>Eingaben
+
 Das „inputs“-Objekt enthält im Allgemeinen Informationen, anhand derer eine Kachel an eine Ressourceninstanz gebunden wird.  Das Element für den virtuellen Computer im Beispieldashboard enthält eine einzelne Eingabe, bei der die Bindung mithilfe der Azure-Ressourcen-ID angegeben wird.  Dieses Ressourcen-ID-Format ist für alle Azure-Ressourcen identisch.
 
 ```json
@@ -346,10 +355,11 @@ Das „inputs“-Objekt enthält im Allgemeinen Informationen, anhand derer eine
 ]
 
 ```
-Der Teil für das Metrikdiagramm enthält eine einzelne Eingabe, mit der die Ressource für die Bindung sowie Informationen zu den angezeigten Metriken angegeben werden. Es folgt die Eingabe für die Kachel, auf der die Metriken „Network In“ und „Network Out“ angezeigt werden.
+
+Der Teil für das Metrikdiagramm enthält eine einzelne Eingabe, mit der die Ressource für die Bindung sowie Informationen zu den angezeigten Metriken angegeben werden. Hier sehen Sie die Eingabe für die Kachel, auf der die Metriken „Network In“ (Netzwerk eingehend) und „Network Out“ (Netzwerk ausgehend) angezeigt werden:
 
 ```json
-“inputs”:
+"inputs":
 [
     {
         "name": "queryInputs",
@@ -380,8 +390,9 @@ Der Teil für das Metrikdiagramm enthält eine einzelne Eingabe, mit der die Res
 
 ```
 
-### <a name="the-settings-object"></a>Das „settings“-Objekt
-Das „settings“-Objekt enthält die konfigurierbaren Elemente eines Teils.  Im Beispieldashboard werden im Markdownteil Einstellungen zum Speichern des benutzerdefinierten Markdowninhalts sowie ein konfigurierbarer Titel und Untertitel verwendet.
+### <a name="settings"></a>Einstellungen
+
+Das „settings“-Objekt enthält die konfigurierbaren Elemente eines Teils.  Im Beispieldashboard werden im Markdown-Teil Einstellungen zum Speichern des benutzerdefinierten Markdown-Inhalts sowie ein konfigurierbarer Titel und Untertitel verwendet.
 
 ```json
 "settings": 
@@ -418,7 +429,13 @@ In ähnlicher Weise verfügt die Videokachel über spezifische Einstellungen, di
 
 ```
 
-### <a name="the-asset-object"></a>Das „asset“-Objekt
+### <a name="asset"></a>Asset
+
 Für Kacheln, die an verwaltbare Portalobjekte erster Klasse (sogenannte Assets) gebunden sind, wird diese Beziehung über das „asset“-Objekt angegeben.  Im Beispieldashboard enthält die Kachel für den virtuellen Computer die folgende Beschreibung für „asset“.  Die __idInputName__-Eigenschaft gibt im Portal an, dass die ID-Eingabe den eindeutigen Bezeichner für das Objekt enthält, in diesem Fall die Ressourcen-ID. Für die meisten Azure-Ressourcentypen sind im Portal Assets definiert.
 
 `"asset": {    "idInputName": "id",    "type": "VirtualMachine"    }`
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Informieren Sie sich darüber, wie Sie ein Dashboard [im Azure-Portal](azure-portal-dashboards.md) oder [programmgesteuert](azure-portal-dashboards-create-programmatically.md) erstellen.
+- Erfahren Sie, wie [Markdown-Kacheln in Azure-Dashboards zum Anzeigen von benutzerdefinierten Inhalten verwendet werden](azure-portal-markdown-tile.md).

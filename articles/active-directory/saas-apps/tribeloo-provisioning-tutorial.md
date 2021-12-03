@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: thwimmer
-ms.openlocfilehash: 7524739575e4088b4d95266b2901b08efc2b3c07
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: e01d8584825e1e9a74c82ee34dd3b9c6a2457cf2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122207336"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045917"
 ---
 # <a name="tutorial-configure-tribeloo-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Tribeloo für die automatische Benutzerbereitstellung
 
@@ -54,7 +54,7 @@ Navigieren Sie zur [Tribeloo-App](https://app.tribeloo.com/), und melden Sie sic
     ![Zugreifen auf die Benutzerverwaltung](media/tribeloo-provisioning-tutorial/tribeloo-user-management.png)
 
 1. Wählen Sie die Registerkarte **User provisioning** (Benutzerbereitstellung) (1) aus. Auf dieser Registerkarte haben Sie Zugriff auf Tribeloo-Informationen, die Sie für die Konfiguration der Azure AD-Integration benötigen.
-   1. **SCIM base url** (SCIM-Basis-URL) (2)
+   1. **SCIM base URL** (2)
    1. **SCIM Bearer token** (SCIM-Bearertoken) (3)
 1. Kopieren Sie diese Werte in die Zwischenablage, und fügen Sie sie in die entsprechenden Azure AD-Felder ein (siehe Schritt 5). Die AD-Felder heißen **Mandanten-URL** und **Geheimes Token**.
 
@@ -113,7 +113,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Tribeloo synchronisiert werden. Mit den als **übereinstimmende** Eigenschaften ausgewählten Attributen werden die Benutzerkonten in Tribeloo bei Updatevorgängen abgeglichen. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Tribeloo-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|Typ|Unterstützung für das Filtern|
+   |attribute|type|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;
    |emails[type eq "work"].value|String|

@@ -4,13 +4,13 @@ description: Hier werden bewährte Methoden für die Erstellung von Bicep-Dateie
 author: johndowns
 ms.author: jodowns
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 46efbf883e6dc0409e7f8d5f8d379693079acafc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/02/2021
+ms.openlocfilehash: 65f55208f0a2e09db39cedc8e5074b622b232834
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788437"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057668"
 ---
 # <a name="best-practices-for-bicep"></a>Bewährte Methoden für Bicep
 
@@ -42,8 +42,6 @@ Weitere Informationen zu Bicep-Parametern finden Sie unter [Parameter in Bicep](
 
 ## <a name="variables"></a>Variablen
 
-* Verwenden Sie gemischte Groß-/Kleinschreibung für Variablennamen (beispielsweise `myVariableName`).
-
 * Beim Definieren einer Variablen ist der [Datentyp](data-types.md) nicht erforderlich. Bei Variablen wird der Typ vom Auflösungswert abgeleitet.
 
 * Sie können Bicep-Funktionen verwenden, um eine Variable zu erstellen.
@@ -52,13 +50,29 @@ Weitere Informationen zu Bicep-Parametern finden Sie unter [Parameter in Bicep](
 
 Weitere Informationen zu Bicep-Variablen finden Sie unter [Variablen in Bicep](variables.md).
 
-## <a name="naming"></a>Benennung
+## <a name="names"></a>Namen
+
+* Verwenden Sie Namen mit gemischter Groß-/Kleinschreibung wie `myVariableName` oder `myResource`.
 
 * Mit der Funktion [uniqueString()](bicep-functions-string.md#uniquestring) können global eindeutige Ressourcennamen erstellt werden. Bei Angabe der gleichen Parameter wird jedes Mal die gleiche Zeichenfolge zurückgegeben. Wenn Sie die Ressourcengruppen-ID übergeben, ist die Zeichenfolge bei jeder Bereitstellung für die gleiche Ressourcengruppe identisch und bei der Bereitstellung für andere Ressourcengruppen oder Abonnements unterschiedlich.
 
 * Manchmal werden von der Funktion `uniqueString()` Zeichenfolgen erstellt, die mit einer Zahl beginnen. Bei einigen Azure-Ressourcen (z. B. Speicherkonten) dürfen die Namen nicht mit Zahlen beginnen. Aufgrund dieser Anforderung empfiehlt es sich, die Zeichenfolgeninterpolation für die Erstellung von Ressourcennamen zu verwenden. Sie können der eindeutigen Zeichenfolge ein Präfix hinzufügen.
 
 * Es ist häufig sinnvoll, für das Erstellen von Ressourcennamen Vorlagenausdrücke zu verwenden. Viele Azure-Ressourcentypen weisen Regeln für die zulässigen Zeichen und die Länge der Namen auf. Das Einbetten der Erstellung von Ressourcennamen in die Vorlage bedeutet, dass sich Personen, die die Vorlage verwenden, nicht selbst um die Einhaltung der Regeln kümmern müssen.
+
+* Vermeiden Sie die Verwendung von `name` in einem symbolischen Namen. Der symbolische Name stellt die Ressource dar, nicht den Namen der Ressource. Schreiben Sie beispielsweise nicht Folgendes:
+
+  ```bicep
+  resource cosmosDBAccountName 'Microsoft.DocumentDB/databaseAccounts@2021-04-15' = {
+  ```
+
+  Sondern verwenden Sie:
+
+  ```bicep
+  resource cosmosDBAccount 'Microsoft.DocumentDB/databaseAccounts@2021-04-15' = {
+  ```
+
+* Vermeiden Sie die Unterscheidung von Variablen und Parametern durch Verwendung von Suffixen.
 
 ## <a name="resource-definitions"></a>Ressourcendefinitionen
 
@@ -69,6 +83,8 @@ Weitere Informationen zu Bicep-Variablen finden Sie unter [Variablen in Bicep](v
 * Es ist eine gute Idee, eine aktuelle API-Version für jede Ressource zu verwenden. Neue Features in Azure-Diensten sind manchmal nur in neueren API-Versionen verfügbar.
 
 * Vermeiden Sie nach Möglichkeit die Verwendung der Funktionen [reference](./bicep-functions-resource.md#reference) und [resourceId](./bicep-functions-resource.md#resourceid) in Ihrer Bicep-Datei. Sie können auf eine beliebige Ressource in Bicep zugreifen, indem Sie den symbolischen Namen verwenden. Wenn Sie also beispielsweise ein Speicherkonto mit dem symbolischen Namen „toyDesignDocumentsStorageAccount“ definieren, können Sie mithilfe des Ausdrucks `toyDesignDocumentsStorageAccount.id` auf die zugehörige Ressourcen-ID zugreifen. Durch die Verwendung des symbolischen Namens wird eine implizite Abhängigkeit zwischen Ressourcen erstellt.
+
+* Bevorzugen Sie die Verwendung impliziter Abhängigkeiten gegenüber expliziten Abhängigkeiten. Obwohl es Ihnen die Ressourceneigenschaft `dependsOn` ermöglicht, eine explizite Abhängigkeit zwischen Ressourcen zu deklarieren, ist es in der Regel möglich, die Eigenschaften der anderen Ressource mithilfe ihres symbolischen Namens zu verwenden. Dadurch wird eine implizite Abhängigkeit zwischen den beiden Ressourcen erstellt, und Bicep kann die Beziehung selbst verwalten.
 
 * Wenn die Ressource nicht in der Bicep-Datei bereitgestellt ist, können Sie mit dem Schlüsselwort `existing` trotzdem einen symbolischen Verweis auf die Ressource abrufen.
 
@@ -82,7 +98,7 @@ Weitere Informationen zu Bicep-Variablen finden Sie unter [Variablen in Bicep](v
 
 * Achten Sie darauf, dass Sie keine Ausgaben für vertrauliche Daten erstellen. Jeder Benutzer, der Zugriff auf den Bereitstellungsverlauf hat, kann auch auf Ausgabewerte zugreifen. Sie sind nicht für Geheimnisse geeignet.
 
-* Verwenden Sie das Schlüsselwort `existing`, um bereits vorhandene Eigenschaften von Ressourcen nachzuschlagen, anstatt Eigenschaftswerte mithilfe von Ausgaben zu übergeben. Es ist eine bewährte Methode, Schlüssel aus anderen Ressourcen auf diese Weise nachzuschlagen, anstatt sie per Ausgaben zu übergeben. Sie erhalten so immer die neuesten Daten.
+* Verwenden Sie das `[existing`Schlüsselwort](resource-declaration.md#existing-resources), um Eigenschaften von bereits vorhandenen Ressourcen nachzuschlagen, anstatt Eigenschaftswerte mithilfe von Ausgaben zu übergeben. Es ist eine bewährte Methode, Schlüssel aus anderen Ressourcen auf diese Weise nachzuschlagen, anstatt sie per Ausgaben zu übergeben. Sie erhalten so immer die neuesten Daten.
 
 Weitere Informationen zu Bicep-Ausgaben finden Sie unter [Ausgaben in Bicep](outputs.md).
 

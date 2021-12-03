@@ -7,16 +7,17 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 09/24/2021
-ms.openlocfilehash: d1d15fb4ff3bc2d820311b4f847c21236d83b6f3
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 4e15f2813a0aea04f63cc11b3273c4a91d44afb2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708751"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845872"
 ---
 # <a name="understanding-resource-sets"></a>Grundlegendes zu Ressourcensätzen
 
 In diesem Artikel erfahren Sie, wie Azure Purview Datenressourcen mit Ressourcensätzen logischen Ressourcen zuordnet.
+
 ## <a name="background-info"></a>Hintergrundinformationen
 
 In skalierbaren Datenverarbeitungssystemen wird eine einzelne Tabelle in der Regel in mehreren Dateien gespeichert. Im Azure Purview-Datenkatalog geschieht dies mithilfe von Ressourcensätzen. Ein Ressourcensatz ist ein einzelnes Objekt im Katalog, das eine große Anzahl von Ressourcen im Speicher darstellt.
@@ -67,9 +68,6 @@ Wenn Sie die Option „Erweiterte Ressourcensätze“ aktivieren, können Sie au
 ### <a name="turning-on-advanced-resource-sets"></a>Aktivieren erweiterter Ressourcensätze
 
 Die Option „Erweiterte Ressourcensätze“ ist in allen neuen Azure Purview-Instanzen standardmäßig deaktiviert. Wenn Sie die Option aktivieren möchten, wechseln Sie im Verwaltungshub zu **Kontoinformationen**.
-
-> [!NOTE]
-> Für alle Purview-Instanzen, die vor dem 19. August 2021 erstellt wurden, sind die erweiterten Ressourcensätze standardmäßig aktiviert.
 
 :::image type="content" source="media/concept-resource-sets/advanced-resource-set-toggle.png" alt-text="Aktivieren der Option „Erweiterte Ressourcensätze“" border="true":::
 
@@ -130,6 +128,7 @@ Beim Überprüfen eines Speicherkontos verwendet Azure Purview eine Reihe defini
 - Fälschliche Kennzeichnung einer Ressource als kein Ressourcensatz
 
 Sie können im Management Center Musterregeln definieren, um anzupassen oder außer Kraft zu setzen, wie Azure Purview erkennt, welche Assets als Ressourcensets gruppiert sind und wie sie innerhalb des Katalogs angezeigt werden. Eine Schritt-für-Schritt-Anleitung und Syntax finden Sie unter [Musterregeln für Ressourcengruppen](how-to-resource-set-pattern-rules.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu den ersten Schritten mit Azure Purview finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).

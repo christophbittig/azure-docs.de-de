@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: f2ded17ed86a550ca781fbad792e89bfc4d7809d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a79954ba0a96f6db6f12af13c6c74d7386e88231
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130215932"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473412"
 ---
 # <a name="language-support-for-computer-vision"></a>Sprachunterstützung für maschinelles Sehen
 
-Einige Features des maschinellen Sehens unterstützen mehrere Sprachen; alle hier nicht erwähnten Features unterstützen nur Englisch.
+Einige Funktionen des maschinellen Sehens unterstützen mehrere Sprachen; alle hier nicht erwähnten Funktionen unterstützen nur Englisch.
 
 ## <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
 
-Die OCR-APIs für maschinelles Sehen unterstützen verschiedene Sprachen. Read kann Text aus Bildern und Dokumenten mit gemischten Sprachen extrahieren (einschließlich derselben Textzeile), ohne dass ein Sprachparameter erforderlich ist. Weitere Informationen finden Sie in der [Übersicht über die optische Zeichenerkennung (OCR)](overview-ocr.md).
+Die OCR-APIs für maschinelles Sehen unterstützen viele Sprachen. Read kann Text aus Bildern und Dokumenten mit gemischten Sprachen extrahieren, auch wenn sie in derselben Textzeile vorkommen, ohne dass ein Sprachparameter erforderlich ist. Weitere Informationen finden Sie in der [Übersicht über die optische Zeichenerkennung (OCR)](overview-ocr.md).
 
 
 > [!NOTE]
@@ -31,10 +31,11 @@ Die OCR-APIs für maschinelles Sehen unterstützen verschiedene Sprachen. Read k
 >
 > Die auf Deep Learning basierenden universellen Modelle der Read-OCR extrahieren den gesamten mehrsprachigen Text in Ihren Dokumenten (einschließlich Textzeilen mit gemischten Sprachen) und erfordern keine Angabe eines Sprachcodes. Geben Sie den Sprachcode nicht als Parameter an, es sei denn, Sie sind sich hinsichtlich der Sprache sicher und möchten erzwingen, dass der Dienst nur das relevante Modell anwendet. Andernfalls gibt der Dienst möglicherweise unvollständigen und fehlerhaften Text zurück.
 
-Informationen zu den Sprachen und Features während der Vorschau finden Sie unter [Angeben der Modellversion](./Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional). Das Vorschaumodell enthält alle Verbesserungen an der derzeit allgemein verfügbaren Version.
+Das Vorschaumodell enthält alle Verbesserungen an der derzeit allgemein verfügbaren Version der API. Informationen zu den Sprachen und Features während der Vorschau finden Sie unter [Angeben der Modellversion](./Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional). 
 
 ### <a name="handwritten-languages"></a>Handschriftliche Sprachen
-In der folgenden Tabelle sind die handschriftlichen Sprachen aufgeführt, die von Read unterstützt werden.
+
+In der folgenden Tabelle sind die Sprachen aufgeführt, die von Read für handschriftlichen Text unterstützt werden.
 
 |Sprache| Sprachcode (optional) | Lesen |
 |:-----|:----:|:-----|
@@ -47,7 +48,8 @@ In der folgenden Tabelle sind die handschriftlichen Sprachen aufgeführt, die vo
 |Spanisch |`es`|✅ Vorschau |
 
 ### <a name="print-languages"></a>Drucksprachen
-In der folgenden Tabelle sind die Drucksprachen aufgeführt, die von den OCR-APIs unterstützt werden.
+
+In der folgenden Tabelle sind die Sprachen aufgeführt, die von den OCR-APIs für gedruckten Text unterstützt werden.
 
 |Sprache| Sprachcode (optional) | Lesen | OCR |
 |:-----|:----:|:-----|:---:|
@@ -179,7 +181,7 @@ In der folgenden Tabelle sind die Drucksprachen aufgeführt, die von den OCR-API
 
 ## <a name="image-analysis"></a>Bildanalyse
 
-Einige Aktionen der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)-API können Ergebnisse in anderen Sprachen zurückgeben, angegeben mit dem `language`-Abfrageparameter. Andere Aktionen geben unabhängig davon, welche Sprache angegeben ist, Ergebnisse in englischer Sprache zurück, und andere lösen bei nicht unterstützten Sprachen eine Ausnahme aus. Aktionen werden mit dem `visualFeatures`- und `details`-Abfrageparameter angegeben; in der [Übersicht](overview-image-analysis.md) finden Sie eine Liste mit allen Aktionen, die Sie mit der Bildanalyse durchführen können. Sprachen für das Tagging sind nur in der API-Version 3.2 oder höher verfügbar.
+Einige Funktionen der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)-API können Ergebnisse in anderen Sprachen zurückgeben, angegeben mit dem `language`-Abfrageparameter. Andere Aktionen geben unabhängig davon, welche Sprache angegeben ist, Ergebnisse in englischer Sprache zurück, und andere lösen bei nicht unterstützten Sprachen eine Ausnahme aus. Aktionen werden mit dem `visualFeatures`- und `details`-Abfrageparameter angegeben; in der [Übersicht](overview-image-analysis.md) finden Sie eine Liste mit allen Aktionen, die Sie mit der Bildanalyse durchführen können. Sprachen für das Tagging sind nur in der API-Version 3.2 oder höher verfügbar.
 
 |Sprache | Sprachcode | Kategorien | `Tags` | BESCHREIBUNG | Erwachsene | Marken | Color | Gesichtserkennung | ImageType | Objekte | Prominente | Besondere Merkmale |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|

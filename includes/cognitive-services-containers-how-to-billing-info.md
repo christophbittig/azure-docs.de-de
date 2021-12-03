@@ -1,17 +1,17 @@
 ---
 author: aahill
 ms.author: aahi
-ms.date: 03/02/2021
+ms.date: 07/27/2021
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: d61813e723992f4381c5ea82121da8bbb70016dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1013fc4746a858445ce8df6a451f05632a46aad4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102032930"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024587"
 ---
-Abfragen des Containers werden gemäß des Tarifs der Azure-Ressource in Rechnung gestellt, die für `ApiKey` verwendet wird.
+Abfragen des Containers werden gemäß des Tarifs der Azure-Ressource in Rechnung gestellt, die für den Parameter `ApiKey` verwendet wird.
 
 Für die Ausführung von Azure Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht mit dem Endpunkt für Messung/Abrechnung verbunden sind. Sie müssen sicherstellen, dass die Container jederzeit Abrechnungsinformationen an den Abrechnungsendpunkt übermitteln können. Cognitive Services-Container senden keine Kundendaten (z. B. das analysierte Bild oder den analysierten Text) an Microsoft.
 

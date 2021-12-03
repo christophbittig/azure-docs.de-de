@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/11/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, subject-rbac-steps
-ms.openlocfilehash: 9bcc18a16566f63678fb739b2d453ecc6ffdf3d5
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: ebd3b0f8ffc5b00ebbce55884c889549501ab3ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993889"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466217"
 ---
 # <a name="use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
@@ -157,7 +157,7 @@ So laden Sie das Zertifikat hoch:
 1. Wählen Sie **Azure Active Directory** aus.
 1. Wählen Sie in Azure AD unter **App-Registrierungen** Ihre Anwendung aus.
 1. Wählen Sie **Zertifikate & Geheimnisse** aus.
-1. Wählen Sie **Zertifikat hochladen** aus, und wählen Sie dann das Zertifikat (ein vorhandenes Zertifikat oder das von Ihnen exportierte selbstsignierte Zertifikat) aus.
+1. Wählen Sie **Zertifikate** > **Zertifikat hochladen** aus, und wählen Sie dann das Zertifikat (ein vorhandenes Zertifikat oder das von Ihnen exportierte selbstsignierte Zertifikat) aus.
 
     ![„Zertifikat hochladen“ auswählen und das hinzuzufügende Zertifikat auswählen](./media/howto-create-service-principal-portal/upload-cert.png)
 

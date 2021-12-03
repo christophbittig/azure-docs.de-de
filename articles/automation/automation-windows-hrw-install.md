@@ -3,15 +3,15 @@ title: Bereitstellen eines Agent-basierten Windows Hybrid Runbook Workers in Aut
 description: In diesem Artikel erfahren Sie, wie Sie einen Agent-basierten Hybrid Runbook Worker bereitstellen, mit dem Sie Runbooks auf Windows-basierten Computern in Ihrem lokalen Rechenzentrum oder einer Cloudumgebung ausführen können.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/27/2021
+ms.date: 10/06/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 900ccf0434ee9d6dde9b0312a1bace180fe1470f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: d2588864b2a6bdba913c9a7fb0bbc7af62e8c4c1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706560"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248562"
 ---
 # <a name="deploy-an-agent-based-windows-hybrid-runbook-worker-in-automation"></a>Bereitstellen eines Agent-basierten Windows Hybrid Runbook Workers in Automation
 
@@ -27,7 +27,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen.
 
 ### <a name="a-log-analytics-workspace"></a>Einen Log Analytics-Arbeitsbereich.
 
-Die „Hybrid Runbook Worker“-Rolle ist hinsichtlich ihrer Installation und Konfiguration von einem Azure Monitor Log Analytics-Arbeitsbereich abhängig. Sie können ihn über den [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace) erstellen, mithilfe der [PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json) oder im [Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
+Die „Hybrid Runbook Worker“-Rolle ist hinsichtlich ihrer Installation und Konfiguration von einem Azure Monitor Log Analytics-Arbeitsbereich abhängig. Sie können ihn über den [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace) erstellen, mithilfe der [PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder im [Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
 
 Wenn Sie über keinen Azure Monitor Log Analytics-Arbeitsbereich verfügen, lesen Sie zuerst die [Entwurfsanleitung für Azure Monitor-Protokolle](../azure-monitor/logs/design-logs-deployment.md), bevor Sie einen Arbeitsbereich erstellen.
 

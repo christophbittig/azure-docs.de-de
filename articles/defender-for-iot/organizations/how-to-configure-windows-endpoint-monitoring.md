@@ -1,18 +1,18 @@
 ---
 title: Konfigurieren der Windows-Endpunktüberwachung
 description: Anreichern von Daten, die auf Geräten durch die Windows-Endpunktüberwachung (Windows Endpoint Monitoring, WMI) aufgelöst werden.
-ms.date: 05/03/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 4d701cfda88a2c257b001a52a19853a937661714
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 7b59c0b5dcb14b57ee5e4e12c2dc3e925e30d37d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017746"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281833"
 ---
 # <a name="configure-windows-endpoint-monitoring-wmi"></a>Konfigurieren der Windows-Endpunktüberwachung (WMI)
 
-Mit der Windows-Funktion zur Endpunktüberwachung können Sie in Azure Defender für IoT selektive Stichproben auf Windows-Systemen konfigurieren. Dadurch erhalten Sie stärker fokussierte und genauere Informationen über Ihre Geräte, etwa über die Service Pack-Stufen.
+Mit der Funktion „Windows-Endpunktüberwachung“ können Sie in Microsoft Defender für IoT selektive Stichproben in Windows-Systemen konfigurieren. Dadurch erhalten Sie stärker fokussierte und genauere Informationen über Ihre Geräte, etwa über die Service Pack-Stufen.
 
 Sie können die Erfassung von Stichproben mit bestimmten Bereichen und Hosts und nur im gewünschten Umfang konfigurieren. Sie erreichen die selektive Erfassung von Stichproben mithilfe der Windows-Verwaltungsinstrumentation (WMI), der Standard-Skriptsprache von Microsoft zur Verwaltung von Windows-Systemen.
 

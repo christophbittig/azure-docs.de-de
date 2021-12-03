@@ -11,17 +11,20 @@ author: arvindshmicrosoft
 ms.author: arvindsh
 ms.reviewer: mathoma
 ms.date: 06/23/2021
-ms.openlocfilehash: a3847bb1ac435779e50ce8cc41a3940bb6adfab7
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 669b8610cba44be369ba805834eca2f700d211e0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112965128"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548879"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren vieler Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Pools für elastische Azure SQL-Datenbank-Instanzen sind eine einfache, kostengünstige Lösung zum Verwalten und Skalieren einer großen Zahl von Datenbanken mit variierenden und unvorhersehbaren Nutzungsanforderungen. Die Datenbanken in einem Pool für elastische Datenbanken befinden sich auf einem einzelnen Server und nutzen gemeinsam eine festgelegte Anzahl von Ressourcen zu einem festen Preis. Mit Pools für elastische Datenbanken in Azure SQL-Datenbank sind SaaS-Entwickler in der Lage, das Preis-Leistungs-Verhältnis einer Gruppe von Datenbanken im Rahmen eines vorgegebenen Budgets zu optimieren und gleichzeitig eine flexible Leistung für jede Datenbank sicherzustellen.
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="what-are-sql-elastic-pools"></a>Was sind Pools für elastische SQL-Datenbanken?
 

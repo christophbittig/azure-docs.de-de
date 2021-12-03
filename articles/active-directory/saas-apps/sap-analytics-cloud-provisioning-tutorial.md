@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: thwimmer
-ms.openlocfilehash: 84842b751c0e4351da13d26654147c9541af6973
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 18761305ced552ae8cade7aeb647836ab5666a3e
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643389"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989024"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der automatischen Benutzerbereitstellung für SAP Analytics Cloud
 
@@ -43,6 +43,10 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * Einen SAP Analytics Cloud-Mandanten.
 * Ein Benutzerkonto in der Verwaltungskonsole für die SAP-Identitätsbereitstellung mit Administratorberechtigungen. Stellen Sie sicher, dass Sie Zugriff auf die Proxysysteme in der Verwaltungskonsole für die Identitätsbereitstellung haben. Wenn die Kachel **Proxysysteme** nicht angezeigt wird, erstellen Sie einen Incident für die Komponente **BC-IAM-IPS**, um Zugriff auf diese Kachel anzufordern.
 * Einen OAuth-Client mit Autorisierung zum Erteilen von Clientanmeldeinformationen in SAP Analytics Cloud. Eine entsprechende Anleitung finden Sie hier: [Verwalten von OAuth-Clients und vertrauenswürdigen Identitätsanbietern](https://help.sap.com/viewer/00f68c2e08b941f081002fd3691d86a7/release/en-US/4f43b54398fc4acaa5efa32badfe3df6.html)
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
+
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
 

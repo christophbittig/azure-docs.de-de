@@ -9,12 +9,12 @@ ms.reviewer: eustacea
 ms.date: 09/17/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d07f0073141632477a64b2c1cc4bc3a9b8e8d458
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: a7c714a818282ef42905e711c9f016c2e9c3e31e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233507"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286410"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge-Sicherheits-Manager
 
@@ -64,7 +64,7 @@ Zu den Aufgaben des IoT Edge-Sicherheits-Managers gehören unter anderem:
 * Steuern des Zugriffs auf den Vertrauensanker der Gerätehardware über Notardienste
 * Überwachen der Integrität der IoT Edge-Vorgänge zur Laufzeit
 * Bereitstellen der Geräteidentität und Verwalten des Vertrauensstellungsübergangs bei Bedarf
-* Sicherstellen des sicheren Betriebs von Client-Agents für Dienste, einschließlich Device Update for IoT Hub und Azure Defender für IoT
+* Gewährleisten eines sicheren Betriebs von Client-Agents für Dienste, einschließlich der Geräteaktualisierung für IoT Hub und Azure Defender für IoT.
 :::moniker-end
 
 Der IoT Edge-Sicherheits-Manager besteht aus drei Komponenten:
@@ -269,11 +269,11 @@ Der IoT Edge-Sicherheits-Manager versucht, die Komponenten, die bei benutzerdefi
 
 Informieren Sie sich, wie Sie den Azure IoT-Sicherheits-Manager mit dem Trusted Platform Module (TPM) mithilfe von Software oder virtuellen TPMs härten können:  
 
-Erstellen und Bereitstellen eines [IoT Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer](how-to-auto-provision-simulated-device-linux.md)
+Erstellen und Bereitstellen eines [IoT Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer](how-to-provision-devices-at-scale-linux-tpm.md)
 
 <!--1.1-->
 :::moniker range="iotedge-2018-06"
-Erstellen und Bereitstellen eines [IoT Edge-Geräts mit simuliertem TPM unter Windows](how-to-auto-provision-simulated-device-windows.md)
+Erstellen und Bereitstellen eines [IoT Edge-Geräts mit simuliertem TPM unter Windows](how-to-provision-devices-at-scale-windows-tpm.md)
 :::moniker-end
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,22 +1,22 @@
 ---
 title: Weiterleiten von Warnungsinformation
 description: Sie können Weiterleitungsregeln verwenden, um Warnungsinformation an Partnersysteme zu senden.
-ms.date: 08/29/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: eb902036a286be50dc1f29ccca894f3d422cc59c
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: d863ab9de5e030ddd54ba1b4b40efc01e844f419
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129612204"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278852"
 ---
 # <a name="forward-alert-information"></a>Weiterleiten von Warnungsinformation
 
-Sie können Warnungsinformation an Partner, die mit Azure Defender für IoT integriert sind senden, wie z. B. Syslog-Server, E-Mail-Adressen und mehr. Mithilfe von Weiterleitungsregeln können Sie Warnungsinformation schnell an Sicherheitsbeteiligte senden.
+Sie können Warnmeldungen an Partner, die Microsoft Defender für IoT integrieren, an Syslog-Server, an E-Mail-Adressen und mehr senden. Mithilfe von Weiterleitungsregeln können Sie Warnungsinformation schnell an Sicherheitsbeteiligte senden.
 
 Definieren Sie Kriterien, nach denen eine Weiterleitungsregel ausgelöst werden soll. Durch Verwenden von Kriterien für Weiterleitungsregeln können Sie das Volumen der vom Sensor an externe Systeme gesendeten Informationen genau bestimmen und verwalten.
 
-Syslog und andere Standardweiterleitungsaktionen werden mit Ihrem System ausgeliefert. Durch die Integration mit Partnerherstellern wie Microsoft Azure Sentinel, ServiceNow oder Splunk werden möglicherweise weitere Weiterleitungsaktionen verfügbar.
+Syslog und andere Standardweiterleitungsaktionen werden mit Ihrem System ausgeliefert. Weitere Weiterleitungsaktionen können verfügbar werden, wenn Sie mit Partneranbietern wie Microsoft Sentinel, ServiceNow oder Splunk zusammenarbeiten.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/alert-information-screen.png" alt-text="Warnungsinformationen.":::
 
@@ -54,7 +54,7 @@ Wenn die Überprüfung aktiviert wurde und das Zertifikat nicht überprüft werd
 
 Die folgenden Weiterleitungsregeln ermöglichen die Verschlüsselung und Zertifikatüberprüfung:
 - Syslog CEF
-- Azure Sentinel
+- Microsoft Sentinel
 - QRadar
 
 ## <a name="create-forwarding-rules"></a>Erstellen von Weiterleitungsregeln
@@ -151,14 +151,14 @@ Legen Sie die folgenden Parameter fest:
 | Datum und Uhrzeit | Datum und Uhrzeit des Empfangs der Informationen durch den Syslog-Servercomputer. |
 | Priorität | User.Alert |
 | Hostname | IP-Adresse des Sensors |
-| `Message` | CEF:0 <br />Azure Defender für IoT <br />Sensorname: Der Name der Sensor-Appliance. <br />Sensorversion <br />Titel der Warnung: Der Titel der Warnung. <br />msg: Der Meldungstext der Warnung. <br />Protokoll: Protokoll der Warnung. <br />Schweregrad:  **Warning**, **Minor**, **Major** oder **Critical**. <br />Typ:  **Protocol Violation**, **Policy Violation**, **Malware**, **Anomaly** oder **Operational**. <br /> start: Der Zeitpunkt, zu dem die Warnung erkannt wurde. <br />Kann von der Zeit des Syslog-Servercomputers abweichen und hängt von der Zeitzonenkonfiguration der Weiterleitungsregel ab. <br />src_ip: IP-Adresse des Quellgeräts.  <br />dst_ip: IP-Adresse des Zielgeräts.<br />cat: Die der Warnung zugeordnete Warnungsgruppe.  |
+| `Message` | CEF:0 <br />Microsoft Defender für IoT <br />Sensorname: Der Name der Sensor-Appliance. <br />Sensorversion <br />Titel der Warnung: Der Titel der Warnung. <br />msg: Der Meldungstext der Warnung. <br />Protokoll: Protokoll der Warnung. <br />Schweregrad:  **Warning**, **Minor**, **Major** oder **Critical**. <br />Typ:  **Protocol Violation**, **Policy Violation**, **Malware**, **Anomaly** oder **Operational**. <br /> start: Der Zeitpunkt, zu dem die Warnung erkannt wurde. <br />Kann von der Zeit des Syslog-Servercomputers abweichen und hängt von der Zeitzonenkonfiguration der Weiterleitungsregel ab. <br />src_ip: IP-Adresse des Quellgeräts.  <br />dst_ip: IP-Adresse des Zielgeräts.<br />cat: Die der Warnung zugeordnete Warnungsgruppe.  |
 
 | Syslog-LEEF-Ausgabeformat | BESCHREIBUNG |
 |--|--|
 | Datum und Uhrzeit | Datum und Uhrzeit des Empfangs der Informationen durch den Syslog-Servercomputer. |  
 | Priorität | User.Alert |
 | Hostname | Sensor-IP |
-| `Message` | Sensorname: Der Name der Azure Defender für IoT-Appliance. <br />LEEF:1.0 <br />Azure Defender für IoT <br />Sensor  <br />Sensorversion <br />Azure Defender für IoT-Warnung <br />Titel: Der Titel der Warnung. <br />msg: Der Meldungstext der Warnung. <br />Protokoll: Protokoll der Warnung.<br />Schweregrad:  **Warning**, **Minor**, **Major** oder **Critical**. <br />Typ: Der Typ der Warnung: **Protocol Violation**, **Policy Violation**, **Malware**, **Anomaly** oder **Operational**. <br />start: Der Zeitpunkt der Warnung.Der Zeitpunkt kann von der Uhrzeit des Syslog-Servercomputers abweichen. (Dies hängt von der Zeitzonenkonfiguration ab.) <br />src_ip: IP-Adresse des Quellgeräts.<br />dst_ip: IP-Adresse des Zielgeräts. <br />cat: Die der Warnung zugeordnete Warnungsgruppe. |
+| `Message` | Sensorname: Der Name der Microsoft Defender für IoT-Appliance. <br />LEEF:1.0 <br />Microsoft Defender für IoT <br />Sensor  <br />Sensorversion <br />Microsoft Defender für IoT-Warnung <br />Titel: Der Titel der Warnung. <br />msg: Der Meldungstext der Warnung. <br />Protokoll: Protokoll der Warnung.<br />Schweregrad:  **Warning**, **Minor**, **Major** oder **Critical**. <br />Typ: Der Typ der Warnung: **Protocol Violation**, **Policy Violation**, **Malware**, **Anomaly** oder **Operational**. <br />start: Der Zeitpunkt der Warnung.Der Zeitpunkt kann von der Uhrzeit des Syslog-Servercomputers abweichen. (Dies hängt von der Zeitzonenkonfiguration ab.) <br />src_ip: IP-Adresse des Quellgeräts.<br />dst_ip: IP-Adresse des Zielgeräts. <br />cat: Die der Warnung zugeordnete Warnungsgruppe. |
 
 Nachdem Sie die Informationen eingegeben haben, wählen Sie **Senden** aus.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 09f35e9621f6704fb33720a43afb38fd99e9eec6
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: ea95f9194913b4df00f0b75e7e44ab301b000b95
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123213909"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283219"
 ---
 # <a name="tutorial-configure-akamai-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Akamai mit Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ Zunächst benötigen Sie Folgendes:
 - [Einen Azure AD B2C-Mandanten](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
 
 - Ein [Akamai WAF](https://www.akamai.com/us/en/akamai-free-trials.jsp)-Konto
- 
+
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 Die Akamai WAF-Integration umfasst die folgenden Komponenten:
@@ -53,7 +53,7 @@ Die Akamai WAF-Integration umfasst die folgenden Komponenten:
 
 - [**Azure Front Door**](../frontdoor/front-door-overview.md): Ist für die Aktivierung benutzerdefinierter Domänen für Azure AD B2C-Mandanten zuständig. Der gesamte Datenverkehr von Cloudflare WAF wird an Azure Front Door weitergeleitet, bevor er bei Azure AD B2C-Mandanten eingeht.
 
-- [**Akamai WAF:** ](https://www.akamai.com/us/en/resources/waf.jsp) Webanwendungsfirewall, die den gesamten Datenverkehr verwaltet, der an den Autorisierungsserver gesendet wird
+- [**Akamai WAF:**](https://www.akamai.com/us/en/resources/waf.jsp) Webanwendungsfirewall, die den gesamten Datenverkehr verwaltet, der an den Autorisierungsserver gesendet wird
 
 ## <a name="integrate-with-azure-ad-b2c"></a>Integration in Azure AD B2C
 
@@ -65,25 +65,25 @@ Die Akamai WAF-Integration umfasst die folgenden Komponenten:
 
 [Registrieren Sie sich](https://www.akamai.com), und erstellen Sie ein Akamai-Konto.
 
-### <a name="create-and-configure-property"></a>Erstellen und Konfigurieren der Eigenschaft 
+### <a name="create-and-configure-property"></a>Erstellen und Konfigurieren der Eigenschaft
 
 1. [Erstellen Sie eine neue Eigenschaft.](https://control.akamai.com/wh/CUSTOMER/AKAMAI/en-US/WEBHELP/property-manager/property-manager-help/GUID-14BB87F2-282F-4C4A-8043-B422344884E6.html)
 
-2. Konfigurieren Sie die Einstellungen der Eigenschaft wie folgt:  
+2. Konfigurieren Sie die Einstellungen der Eigenschaft wie folgt:
 
-| Eigenschaft | Wert |
-|:---------------|:---------------|
-|Eigenschaftsversion | Wählen Sie „Standard“ oder „Enhanced TLS“ (bevorzugt) aus. |
-|Hostnamen der Eigenschaft | Fügen Sie einen Hostnamen für die Eigenschaft hinzu. Dies ist der Name Ihrer benutzerdefinierten Domäne, z. B. login.domain.com. <BR> Erstellen oder ändern Sie ein Zertifikat mit den entsprechenden Einstellungen für den benutzerdefinierten Domänennamen. Weitere Informationen finden Sie [hier](https://learn.akamai.com/en-us/webhelp/property-manager/https-delivery-with-property-manager/GUID-9EE0EB6A-E62B-4F5F-9340-60CBD093A429.html). |
+    | Eigenschaft | Wert |
+    |:---------------|:---------------|
+    |Eigenschaftsversion | Wählen Sie „Standard“ oder „Enhanced TLS“ (bevorzugt) aus. |
+    |Hostnamen der Eigenschaft | Fügen Sie einen Hostnamen für die Eigenschaft hinzu. Dies ist der Name Ihrer benutzerdefinierten Domäne, z. B. login.domain.com. <BR> Erstellen oder ändern Sie ein Zertifikat mit den entsprechenden Einstellungen für den benutzerdefinierten Domänennamen. Weitere Informationen finden Sie [hier](https://learn.akamai.com/en-us/webhelp/property-manager/https-delivery-with-property-manager/GUID-9EE0EB6A-E62B-4F5F-9340-60CBD093A429.html). |
 
 3. Legen Sie die Konfigurationseinstellungen für die Ursprungsservereigenschaft wie folgt fest:
 
-|Eigenschaft| Wert |
-|:-----------|:-----------|
-| Ursprungstyp | Ihr Ursprung |
-| Hostname des Ursprungsservers | yourafddomain.azurefd.net |
-| Hostheader für Weiterleitung | Incomming-Hostheader |
-| Hostname des Cacheschlüssels| Incomming-Hostheader  |
+    |Eigenschaft| Wert |
+    |:-----------|:-----------|
+    | Ursprungstyp | Ihr Ursprung |
+    | Hostname des Ursprungsservers | yourafddomain.azurefd.net |
+    | Hostheader für Weiterleitung | Eingehender Hostheader |
+    | Hostname des Cacheschlüssels| Eingehender Hostheader |
 
 ### <a name="configure-dns"></a>Konfigurieren des DNS
 
@@ -99,13 +99,15 @@ Erstellen Sie einen CNAME-Eintrag in Ihrem DNS, z. B. login.domain.com, der auf
 
 Erfahren Sie mehr über [die Funktionsweise des Steuerung und die Konfigurationsoptionen](https://control.akamai.com/dl/security/GUID-81C0214B-602A-4663-839D-68BCBFF41292.html).
 
+<!-- docutune:ignore "Security Center" -->
+
 ### <a name="test-the-settings"></a>Testen der Einstellungen
 
 Überprüfen Sie Folgendes, um sicherzustellen, dass der gesamte Datenverkehr an Azure AD B2C jetzt die benutzerdefinierte Domäne durchläuft:
 
 - Stellen Sie sicher, dass alle eingehenden Anforderungen an die benutzerdefinierte Azure AD B2C-Domäne über Akamai WAF weitergeleitet werden und dass eine gültige TLS-Verbindung verwendet wird.
 - Stellen Sie sicher, dass alle Cookies von Azure AD B2C ordnungsgemäß für die benutzerdefinierte Domäne festgelegt werden.
-- Das Akamai WAF-Dashboard, das Sie in der Security Center-Konsole finden, zeigt Diagramme für den gesamten Datenverkehr an, der die WAF durchläuft, sowie jeglichen Angriffsverkehr.
+- Das Akamai-WAF-Dashboard, das Sie in der Defender-für-Cloud-Konsole finden, zeigt Diagramme für den gesamten Datenverkehr an, der die WAF durchläuft, sowie jeglichen Angriffsverkehr.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

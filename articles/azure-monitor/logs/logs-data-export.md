@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: yossi-y
 ms.author: yossiy
 ms.date: 10/17/2021
-ms.openlocfilehash: 25d1d07edabdc8ee3d46175a51d8a20c5d9cc9eb
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 9814c90a60aaa67ff6c1914c28568fb478bd0f87
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133110"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488542"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
@@ -38,7 +38,7 @@ Mit dem Datenexport im Log Analytics-Arbeitsbereich werden kontinuierlich Daten 
 - Die vorhandenen benutzerdefinierten Protokolltabellen werden beim Export nicht unterstützt. Eine neue benutzerdefinierte Protokollversion, die im März 2022 verfügbar sein wird, wird unterstützt.
 - Wenn die Datenexportregel eine nicht unterstützte Tabelle enthält, ist der Vorgang erfolgreich, aber es werden keine Daten für diese Tabelle exportiert, bis die Tabelle unterstützt wird. 
 - Wenn die Datenexportregel eine nicht vorhandene Tabelle enthält, verursacht sie den Fehler `Table <tableName> does not exist in the workspace`.
-- In Ihrem Arbeitsbereich können bis zu 10 aktivierte Regeln definiert werden. Zusätzliche Regeln sind zulässig, wenn sie deaktiviert sind. 
+- In Ihrem Arbeitsbereich können bis zu 10 aktivierte Regeln definiert werden. Weitere Regeln sind zulässig, wenn sie deaktiviert sind. 
 - Ein Ziel muss für alle Exportregeln in Ihrem Arbeitsbereich eindeutig sein.
 - Die Ziele müssen sich in derselben Region befinden wie der Log Analytics-Arbeitsbereich.
 - Tabellennamen dürfen nicht länger als 60 Zeichen sein, wenn sie in ein Speicherkonto exportiert werden, und nicht länger als 47 Zeichen, wenn sie in ein Event Hub exportiert werden. Tabellen mit längeren Namen werden nicht exportiert.
@@ -73,7 +73,7 @@ Mit dem Datenexport im Log Analytics-Arbeitsbereich werden kontinuierlich Daten 
     - USA, Westen 2
 
 ## <a name="data-completeness"></a>Datenvollständigkeit
-Der Datenexport versucht bis zu 30 Minuten lang, Daten zu senden, wenn das Ziel nicht verfügbar ist. Wenn es nach 30 Minuten immer noch nicht verfügbar ist, werden die Daten verworfen, bis das Ziel wieder verfügbar ist.
+Der Datenexport ist für das Verschieben großer Datenmengen an Ihre Ziele optimiert und kann unter bestimmten Wiederholungsbedingungen eine geringe Anzahl doppelter Datensätze enthalten. Beim Exportieren an Ihr Ziel kann ein Fehler auftreten, wenn die Obergrenze für eingehenden Datenverkehr erreicht wurde. Weitere Informationen hierzu finden Sie unter [Erstellen oder Aktualisieren der Datenexportregel](#create-or-update-data-export-rule). Es wird bis zu 30 Minuten lang weiter versucht, die Daten zu exportieren. Wenn das Ziel bis dann keine Daten akzeptieren kann, werden die Daten verworfen, bis das Ziel wieder verfügbar ist.
 
 ## <a name="cost"></a>Cost
 Für das Datenexportfeature fallen zurzeit keine zusätzlichen Gebühren an. Die Preise für den Datenexport werden später bekanntgegeben, und vor Abrechnungsbeginn wird eine Kündigungsfrist eingeräumt. Falls Sie sich dafür entscheiden, den Datenexport über den Benachrichtigungszeitraum hinaus zu verwenden, wird dies Ihnen zum entsprechenden Tarif in Rechnung gestellt.
@@ -84,7 +84,7 @@ Das Datenexportziel muss erstellt werden, bevor die Exportregel in Ihrem Arbeits
 
 ### <a name="storage-account"></a>Speicherkonto
 
-Sie müssen über Schreibberechtigungen für den Arbeitsbereich und das Ziel verfügen, um eine Datenexportregel konfigurieren zu können. Sie sollten kein vorhandenes Speicherkonto verwenden, in dem andere, nicht überwachungsrelevante Daten gespeichert sind, um den Zugriff auf die Daten besser steuern zu können und ein Erreichen des Grenzwerts der Speichererfassungsrate und Drosselung zu verhindern. 
+Sie müssen über Schreibberechtigungen für den Arbeitsbereich und das Ziel verfügen, um eine Datenexportregel konfigurieren zu können. Verwenden Sie kein vorhandenes Speicherkonto, in dem andere, nicht überwachungsrelevante Daten gespeichert sind, um den Zugriff auf die Daten besser steuern zu können und ein Erreichen des Grenzwerts der Speichererfassungsrate und Drosselung zu verhindern. 
 
 Legen Sie die unveränderliche Richtlinie für das Speicherkonto wie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](../../storage/blobs/immutable-policy-configure-version-scope.md) beschrieben fest, um Daten an unveränderlichen Speicher zu senden. Sie müssen alle Schritte in diesem Artikel ausführen, einschließlich der Aktivierung von Schreibvorgängen in geschützten Anfügeblobs.
 
@@ -95,7 +95,7 @@ Daten werden an Speicherkonten gesendet, wenn sie Azure Monitor erreichen, und i
 > [!NOTE]
 > Es wird empfohlen, ein separates Speicherkonto zu verwenden, um eine ordnungsgemäße Zuweisung der Eingangsrate zu gewährleisten und Drosselungen, Ausfälle und Latenzereignisse zu reduzieren.
 
-Ab dem 15. Oktober 2021 werden Blobs in 5-Minuten-Ordnern in der folgenden Pfadstruktur gespeichert: *WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=\<two-digit 60-minute clock minute\>/PT05M.json*. Da Anfügeblobs auf 50.000 Schreibvorgänge im Speicher beschränkt sind, kann sich die Anzahl der exportierten Blobs erhöhen, wenn die Anzahl der Anfügevorgänge hoch ist. Das Benennungsmuster für Blobs ist in diesem Fall „PT05M_#.json“, wobei # die inkrementelle Blobanzahl ist.
+Ab dem 15. Oktober 2021 werden Blobs in 5-Minuten-Ordnern in der folgenden Pfadstruktur gespeichert: *WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=\<two-digit 60-minute clock minute\>/PT05M.json*. Da Anfügeblobs auf 50.000 Schreibvorgänge im Speicher beschränkt sind, kann sich die Anzahl der exportierten Blobs erhöhen, wenn die Anzahl der Anfügevorgänge hoch ist. Das Benennungsmuster für Blobs ist in diesem Fall „PT05M_#.json“, wobei # die inkrementelle Blobanzahl ist.
 
 Das Speicherkonto-Datenformat ist [JSON Lines](../essentials/resource-logs-blob-format.md). Dies bedeutet, dass die einzelnen Datensätze jeweils durch einen Zeilenumbruch getrennt sind und dass kein externes Datensatzarray und keine Kommas zwischen JSON-Datensätzen verwendet werden. 
 
@@ -144,37 +144,38 @@ Wenn Sie Ihr Speicherkonto so konfiguriert haben, dass der Zugriff von ausgewäh
 [![„Firewalls und virtuelle Netzwerke“ unter Ihrem Speicherkonto](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
 ### <a name="create-or-update-data-export-rule"></a>Erstellen oder Aktualisieren der Datenexportregel
-Eine Datenexportregel definiert die Tabellen, für die Daten exportiert werden, und das Ziel. In Ihrem Arbeitsbereich können 10 Regeln aktiviert sein. Zusätzliche Regeln können hinzugefügt werden, aber im Status „Deaktivieren“. Ziele müssen für alle Exportregeln im Arbeitsbereich eindeutig sein.
+Eine Datenexportregel definiert die Tabellen, für die Daten exportiert werden, und das Ziel. In Ihrem Arbeitsbereich können 10 Regeln aktiviert sein. Zusätzliche Regeln können hinzugefügt werden, müssen aber den Status „Deaktiviert“ aufweisen. Ziele müssen für alle Exportregeln im Arbeitsbereich eindeutig sein.
 
-Datenexportziele weisen Grenzwerte auf, und sie sollten überwacht werden, um Exportdrosselung, Fehler und Latenz zu minimieren. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Standardspeicherkonten](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts) und [Kontingente und Grenzwerte in Azure Event Hubs](../../event-hubs/event-hubs-quotas.md).
+Für Datenexportziele gelten Grenzwerte, und sie sollten überwacht werden, um Exportdrosselung, Fehler und Latenz zu minimieren. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Standardspeicherkonten](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts) und [Kontingente und Grenzwerte in Azure Event Hubs](../../event-hubs/event-hubs-quotas.md).
 
-#### <a name="recommendations-for-storage-account"></a>Empfehlungen für Speicherkonten 
+#### <a name="monitoring-storage-account"></a>Überwachen eines Speicherkontos
 
 1. Verwenden eines separaten Speicherkontos für den Export
-1. Konfigurieren Sie die Warnung für die folgende Metrik mit den folgenden Einstellungen: 
+1. Konfigurieren Sie die Warnung für die folgende Metrik: 
 
     | `Scope` | Metriknamespace | Metric | Aggregation | Schwellenwert |
     |:---|:---|:---|:---|:---|
-    | Speichername | Konto | Eingehende Daten | Sum | 80 % der maximalen Speichereingangsrate. Beispiel: 60 GBit/s für „Allgemein v2“ in „USA, Westen“ |
+    | Speichername | Konto | Eingehende Daten | Sum | 80 % des maximalen Eingangs pro Warnungsauswertungszeitraum. Beispiel: Grenzwert von 60 GBit/s für „Universell v2“ in „USA, Westen“. Der Schwellenwert beträgt 14.400 GBit pro 5-Minuten-Auswertungszeitraum. |
   
 1. Warnung vor Abhilfemaßnahmen
     - Verwenden eines separaten Speicherkontos für den Export
     - Azure Storage-Standardkonten unterstützen höhere Eingangsgrenzwerte bei Anforderung. Um eine Steigerung anzufordern, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/).
     - Aufteilen von Tabellen zwischen zusätzlichen Speicherkonten
 
-#### <a name="recommendations-for-event-hub"></a>Empfehlungen für Event Hub
+#### <a name="monitoring-event-hub"></a>Überwachen eines Event Hubs
 
-1. Konfigurieren Sie [metrische Alarme](../../event-hubs/monitor-event-hubs-reference.md):
+1. Konfigurieren Sie Warnungen für die folgenden [Metriken](../../event-hubs/monitor-event-hubs-reference.md):
   
     | `Scope` | Metriknamespace | Metric | Aggregation | Schwellenwert |
     |:---|:---|:---|:---|:---|
-    | Namespacesname | Event Hub-Standardmetriken | Eingehende Bytes | Sum | 80 % des maximalen Eingangs pro 5 Minuten. Zum Beispiel: 1 MB/s pro Einheit (TU oder PU) |
-    | Namespacesname | Event Hub-Standardmetriken | Eingehende Anforderungen | Anzahl | 80 % der maximalen Ereignisse pro 5 Minuten. Zum Beispiel: 1000/s pro Einheit (TU oder PU) |
-    | Namespacesname | Event Hub-Standardmetriken | Fehler aufgrund von Kontingentüberschreitung | Anzahl | Zwischen 1 % und 5 % der Anforderung |
+    | Namespacesname | Event Hub-Standardmetriken | Eingehende Bytes | Sum | 80 % des maximalen Eingangs pro Warnungsauswertungszeitraum. Beispiel: Grenzwert von 1 MB/s pro Einheit (TU oder PU) und 5 verwendete Einheiten. Der Schwellenwert beträgt 1.200 MB pro 5-Minuten-Auswertungszeitraum. |
+    | Namespacesname | Event Hub-Standardmetriken | Eingehende Anforderungen | Anzahl | 80 % der maximalen Ereignisse pro Warnungsauswertungszeitraum. Beispiel: Grenzwert von 1.000/s pro Einheit (TU oder PU) und 5 verwendete Einheiten. Der Schwellenwert beträgt 1.200.000 pro 5-Minuten-Auswertungszeitraum. |
+    | Namespacesname | Event Hub-Standardmetriken | Fehler aufgrund von Kontingentüberschreitung | Anzahl | 1 % der Anforderung. Pro 5 Minuten beispielsweise 600.000 Anforderungen. Der Schwellenwert beträgt 6.000 pro 5-Minuten-Auswertungszeitraum. |
 
 1. Warnung vor Abhilfemaßnahmen
-   - Erhöhung der Anzahl der Einheiten (TU oder PU)
-   - Aufteilen von Tabellen zwischen zusätzlichen Namespaces
+   - Konfigurieren Sie die Funktion [Auto-inflate](../../event-hubs/event-hubs-auto-inflate.md), um die Anzahl der Durchsatzeinheiten automatisch zu erhöhen, um den Nutzungsanforderungen gerecht zu werden.
+   - Überprüfen sie die Erhöhung der Durchsatzeinheiten, um die Last zu ermöglichen.
+   - Aufteilen von Tabellen zwischen anderen Namespaces
    - Verwenden Sie die Stufen "Prämie" oder "Dedizierte" für einen höheren Durchsatz
 
 Die Exportregel sollte Tabellen enthalten, die in Ihrem Arbeitsbereich enthalten sind. Führen Sie diese Abfrage für eine Liste verfügbarer Tabellen in Ihrem Arbeitsbereich aus.
@@ -632,7 +633,7 @@ Wenn die Datenexportregel eine nicht vorhandene Tabelle umfasst, tritt der Fehle
 
 
 ## <a name="supported-tables"></a>Unterstützte Tabellen
-Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt. Es werden alle Daten aus der Tabelle exportiert, sofern keine Einschränkungen angegeben werden. Diese Liste wird aktualisiert, sobald weitere Tabellen unterstützt werden.
+Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt. Es werden alle Daten aus der Tabelle exportiert, sofern keine Einschränkungen angegeben werden. Diese Liste wird aktualisiert, wenn weitere Tabellen hinzugefügt werden.
 
 | Tabelle | Einschränkungen |
 |:---|:---|
@@ -653,6 +654,10 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | ABSBotRequests |  |
 | ACSAuthIncomingOperations |  |
 | ACSBillingUsage |  |
+| ACRConnectedClientList |  |
+| ACRConnectedClientList |  |
+| ACSCallDiagnostics |  |
+| ACSCallSummary |  |
 | ACSChatIncomingOperations |  |
 | ACSSMSIncomingOperations |  |
 | ADAssessmentRecommendation |  |
@@ -674,7 +679,19 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | AegDeliveryFailureLogs |  |
 | AegPublishFailureLogs |  |
 | AEWAuditLogs |  |
+| AgriFoodApplicationAuditLogs |  |
+| AgriFoodApplicationAuditLogs |  |
+| AgriFoodFarmManagementLogs |  |
+| AgriFoodFarmManagementLogs |  |
+| AgriFoodFarmOperationLogs |  |
+| AgriFoodInsightLogs |  |
+| AgriFoodJobProcessedLogs |  |
+| AgriFoodModelInferenceLogs |  |
+| AgriFoodProviderAuthLogs |  |
+| AgriFoodSatelliteLogs |  |
+| AgriFoodWeatherLogs |  |
 | Warnung |  |
+| AlertEvidence |  |
 | AmlOnlineEndpointConsoleLog |  |
 | ApiManagementGatewayLogs |  |
 | AppCenterError |  |
@@ -685,6 +702,7 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | AppServiceFileAuditLogs |  |
 | AppServiceHTTPLogs |  |
 | AppServicePlatformLogs |  |
+| ATCExpressRouteCircuitIpfix |  |
 | AuditLogs |  |
 | AutoscaleEvaluationsLog |  |
 | AutoscaleScaleActionsLog |  |
@@ -704,6 +722,7 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | CDBPartitionKeyRUConsumption |  |
 | CDBPartitionKeyStatistics |  |
 | CDBQueryRuntimeStatistics |  |
+| CloudAppEvents |  |
 | CommonSecurityLog |  |
 | ComputerGroup |  |
 | ConfigurationData | Teilweise unterstützt: Einige Daten werden durch interne Dienste erfasst, die für den Export nicht unterstützt werden. Dieser Teil fehlt derzeit im Export. |
@@ -747,9 +766,9 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | HDInsightHiveAndLLAPMetrics |  |
 | HDInsightHiveTezAppStats |  |
 | HDInsightJupyterNotebookEvents |  |
-| HDInsightKafkaLogs |  |
 | HDInsightKafkaMetrics |  |
 | HDInsightOozieLogs |  |
+| HDInsightRangerAuditLogs |  |
 | HDInsightSecurityLogs |  |
 | HDInsightSparkApplicationEvents |  |
 | HDInsightSparkBlockManagerEvents |  |
@@ -785,17 +804,17 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | NWConnectionMonitorTestResult |  |
 | OfficeActivity | In Government-Clouds teilweise unterstützt: Einige der Daten werden über Webhooks von O365 in LA erfasst. Dieser Teil fehlt derzeit im Export. |
 | Vorgang | Teilweise unterstützt: Einige Daten werden durch interne Dienste erfasst, die für den Export nicht unterstützt werden. Dieser Teil fehlt derzeit im Export. |
-| Perf | Partieller Support: Zurzeit werden nur Windows-Leistungsdaten unterstützt. Linux-Leistungsdaten fehlen derzeit im Export. |
+| Perf | Teilweise unterstützt: Zurzeit werden nur Windows-Leistungsdaten unterstützt. Linux-Leistungsdaten fehlen derzeit im Export. |
 | PowerBIDatasetsWorkspace |  |
+| HDInsightRangerAuditLogs |  |
 | PurviewScanStatusLogs |  |
 | SCCMAssessmentRecommendation |  |
 | SCOMAssessmentRecommendation |  |
 | SecurityAlert |  |
 | SecurityBaseline |  |
 | SecurityBaselineSummary |  |
-| SecurityCef |  |
 | SecurityDetection |  |
-| SecurityEvent | Teilweise Unterstützung: Daten, die vom Log Analytics-Agent (MMA) oder vom Azure Monitor-Agent (AMA) eintreffen, werden beim Exportvorgang vollständig unterstützt. Daten, die über den Diagnoseerweiterungs-Agent eingehen, werden über den Speicher gesammelt. Dieser Pfad wird beim Export jedoch nicht unterstützt.2 |
+| SecurityEvent | Teilweise Unterstützung: Daten, die vom Log Analytics-Agent (MMA) oder vom Azure Monitor-Agent (AMA) eintreffen, werden beim Exportvorgang vollständig unterstützt. Daten, die über den Diagnoseerweiterungs-Agent eingehen, werden über den Speicher gesammelt. Dieser Pfad wird beim Export jedoch nicht unterstützt. |
 | SecurityIncident |  |
 | SecurityIoTRawEvent |  |
 | SecurityNestedRecommendation |  |
@@ -822,7 +841,7 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | SynapseSqlPoolRequestSteps |  |
 | SynapseSqlPoolSqlRequests |  |
 | SynapseSqlPoolWaits |  |
-| syslog | Teilweise Unterstützung: Daten, die vom Log Analytics-Agent (MMA) oder vom Azure Monitor-Agent (AMA) eintreffen, werden beim Exportvorgang vollständig unterstützt. Daten, die über den Diagnoseerweiterungs-Agent eingehen, werden über den Speicher gesammelt. Dieser Pfad wird beim Export jedoch nicht unterstützt.2 |
+| syslog | Teilweise Unterstützung: Daten, die vom Log Analytics-Agent (MMA) oder vom Azure Monitor-Agent (AMA) eintreffen, werden beim Exportvorgang vollständig unterstützt. Daten, die über den Diagnoseerweiterungs-Agent eingehen, werden über den Speicher gesammelt. Dieser Pfad wird beim Export jedoch nicht unterstützt. |
 | ThreatIntelligenceIndicator |  |
 | Aktualisieren | Teilweise unterstützt: Einige Daten werden durch interne Dienste erfasst, die für den Export nicht unterstützt werden. Dieser Teil fehlt derzeit im Export. |
 | UpdateRunProgress |  |

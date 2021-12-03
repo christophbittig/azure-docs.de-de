@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 94e7b6b351d13a85a516b4a4bc6c54c31754bc12
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cea97bab303ce2d009cecc67ed30ec89b0992118
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346831"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554334"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio-Dashboards
 
@@ -28,52 +28,18 @@ ms.locfileid: "122346831"
 - Herunterladen von [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
 - Installation der Azure Arc-Erweiterung
 
-### <a name="determine-the-data-controller-server-api-endpoint-url"></a>Ermitteln der Endpunkt-URL der Datencontroller-Server-API
 
-Zunächst müssen Sie Azure Data Studio mit der Endpunkt-URL Ihrer Datencontroller-Dienst-API verbinden.
-
-Führen Sie folgenden Befehl aus, um den Endpunkt abzurufen:
-
-```console
-kubectl get svc/controller-svc-external -n <namespace name>
-
-#Example:
-kubectl get svc/controller-svc-external -n arc
-```
-
-Die Ausgabe sieht in etwa wie folgt aus:
-
-```console
-NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                       AGE
-controller-svc-external   LoadBalancer   10.0.175.137   52.154.152.24    30080:32192/TCP                               22h
-```
-
-Wenn Sie einen LoadBalancer-Typ verwenden, sollten Sie die externe IP-Adresse und Portnummer kopieren. Wenn Sie NodePort verwenden, sollten Sie die IP-Adresse Ihres Kubernetes-API-Servers und die in der Spalte „PORT(S)“ aufgeführte Portnummer verwenden.
-
-Anschließend sollten Sie eine URL für Ihren Endpunkt erstellen, indem Sie diese Informationen wie folgt kombinieren:
-
-```console
-https://<ip address>:<port>
-
-Example:
-https://52.154.152.24:30080
-```
-
-Notieren Sie sich Ihre IP-Adresse, da Sie sie im nächsten Schritt verwenden werden.
 
 ### <a name="connect"></a>Verbinden
 
 1. Öffnen Sie Azure Data Studio.
+2. Klicken Sie links auf die Registerkarte **Verbindungen**.
+3. Erweitern Sie die Tafel **Azure Arc Controllers**
+4. Klicken Sie auf die Schaltfläche **Controller verbinden**. Dadurch wird eine Klinge auf der rechten Seite geöffnet
+5. Standardmäßig versucht Azure Data Studio, aus der Datei kube.config in Ihrem Standardverzeichnis zu lesen und die verfügbaren kubernetes-Cluster-Kontexte aufzulisten und den aktuellen Cluster-Kontext auszuwählen. Wenn dies der richtige Cluster für die Verbindung ist, geben Sie den Namespace, in dem der Azure Arc Data Controller bereitgestellt wird, in die Eingabe für **Namespace** ein. Wenn Sie den Namespace abrufen müssen, in dem der Azure Arc Data Controller bereitgestellt wird, können Sie ```kubectl get datacontrollers -A``` auf Ihrem Kubernetes-Cluster ausführen. 
+6. Fügen Sie optional einen Anzeigenamen für den Azure Arc Data Controller in die Eingabe für **Name**
+7. Wählen Sie **Verbinden** aus.
 
-1. Klicken Sie links auf die Registerkarte **Verbindungen**.
-
-Erweitern Sie unten den Bereich **Azure Arc Controllers** (Azure Arc-Controller).
-
-Klicken Sie auf das Plussymbol, um eine neue Datencontrollerverbindung hinzuzufügen.
-
-Geben Sie oben im Bildschirm in der Befehlspalette die URL ein, die Sie in Schritt 1 erstellt haben, und drücken Sie die EINGABETASTE.
-Geben Sie den Benutzernamen für den Datencontroller ein.  Dies ist der Benutzername, den Sie während der Bereitstellung des Datencontrollers übergeben haben.  Drücken Sie auf die EINGABETASTE.
-Geben Sie das Kennwort für den Datencontroller ein.  Dies ist das Kennwort, den Sie während der Bereitstellung des Datencontrollers übergeben haben. Drücken Sie auf die EINGABETASTE.
 
 Nachdem Sie nun eine Verbindung mit einem Datencontroller hergestellt haben, können Sie die Dashboards für den Datencontroller und alle verwalteten SQL Server-Instanzen oder PostgreSQL Hyperscale-Servergruppenressourcen anzeigen.
 

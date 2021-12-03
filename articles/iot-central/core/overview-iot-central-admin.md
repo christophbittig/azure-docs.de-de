@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4ff2ea374768189881c9e1ff28511bc403dd6306
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: b91a9c451c0160523029cd8688dfa9a91f433b37
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350076"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085922"
 ---
 # <a name="iot-central-administrator-guide"></a>IoT Central – Administratorhandbuch
 
@@ -22,6 +22,7 @@ Mit einer IoT Central-Anwendung können Sie Millionen von Geräten während ihre
 In IoT Central führt ein Administrator folgende Aufgaben aus:
 
 - Er verwaltet Benutzer und Rollen in der Anwendung.
+- Erstellt und verwaltet Organisationen
 - Er verwaltet die Sicherheit, z. B. die Geräteauthentifizierung.
 - Er konfiguriert Anwendungseinstellungen.
 - Er aktualisiert Anwendungen.
@@ -34,6 +35,12 @@ IoT Central verwendet ein rollenbasiertes Zugriffssteuerungssystem zum Verwalten
 
 Weitere Informationen finden Sie unter [Verwalten von Benutzern und Rollen in Ihrer IoT Central-Anwendung](howto-manage-users-roles.md).
 
+## <a name="organizations"></a>Organisationen
+
+Mit Organisationen können Sie eine Hierarchie definieren, mit der Sie verwalten, welche Benutzer welche Geräte in Ihrer IoT Central-Anwendung anzeigen können. Die Rolle des Benutzers bestimmt, welche Geräte er sehen und auf welche Umgebungen er zugreifen kann.
+
+Weitere Informationen finden Sie unter [Erstellen einer IoT Central-Organisation](howto-create-organizations.md).
+
 ## <a name="application-security"></a>Anwendungssicherheit
 
 Geräte, die eine Verbindung mit Ihrer IoT Central-Anwendung herstellen, verwenden normalerweise X.509-Zertifikate oder SAS (Shared Access Signature) als Anmeldeinformationen. Der Administrator verwaltet die Gruppenzertifikate oder Schlüssel, von denen die Geräteanmeldeinformationen abgeleitet werden.
@@ -41,6 +48,12 @@ Geräte, die eine Verbindung mit Ihrer IoT Central-Anwendung herstellen, verwend
 Weitere Informationen finden Sie unter [X.509-Gruppenregistrierung](concepts-get-connected.md#x509-group-enrollment), [SAS-Gruppenregistrierung](concepts-get-connected.md#sas-group-enrollment) und [Registrieren von X.509-Gerätezertifikaten](how-to-roll-x509-certificates.md).
 
 Der Administrator kann auch die API-Token erstellen und verwalten, mit denen sich eine Clientanwendung bei Ihrer IoT Central Anwendung authentifiziert. Clientanwendungen verwenden die REST-API für die Interaktion mit IoT Central.
+
+Für Datenexporte kann der Administrator [verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) konfigurieren, um die Verbindungen mit den [Exportzielen](howto-export-data.md) zu schützen. Weitere Informationen finden Sie unter:
+
+- [Konfigurieren einer verwalteten Identität (Azure-Portal)](howto-manage-iot-central-from-portal.md#configure-a-managed-identity)
+- [Konfigurieren einer verwalteten Identität (REST-API)](howto-manage-iot-central-with-rest-api.md)
+- [Konfigurieren einer verwalteten Identität (Azure CLI)](howto-manage-iot-central-from-cli.md#configure-a-managed-identity)
 
 ## <a name="configure-an-application"></a>Konfigurieren einer Anwendung
 

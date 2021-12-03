@@ -1,22 +1,22 @@
 ---
-title: Von Azure Defender für IoT unterstützte Protokolle
-description: Hier erfahren Sie etwas über Protokolle, die von Azure Defender für IoT unterstützt werden.
-ms.date: 09/20/2021
+title: Von Microsoft Defender für IoT unterstützte Protokolle
+description: Hier erfahren Sie etwas über die Protokolle, die von Microsoft Defender für IoT unterstützt werden.
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 9320b43cf645e62d68baac39cdf4f06dd1825305
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ebfd983baf2e925fda66c5fc23edc380420db591
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644427"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305958"
 ---
 # <a name="support-for-iot-ot-ics-and-scada-protocols"></a>Unterstützung für IoT-, OT-, ICS- und SCADA-Protokolle
 
-Azure Defender für IoT stellt eine offene und interoperable OT-Cybersicherheitsplattform (Operation Technology) bereit. Defender für IoT wird an vielen verschiedenen Standorten bereitgestellt und reduziert IoT-, IT- und ICS-Risiken bei Bereitstellungen in anspruchsvollen und komplexen OT-Umgebungen in allen Schlüsselbranchen und geografischen Regionen.
+Microsoft Defender für IoT stellt eine offene und vollständig kompatible OT-Cybersicherheitsplattform (Operation Technology = Bedientechnik) bereit. Defender für IoT wird an vielen verschiedenen Standorten bereitgestellt und reduziert IoT-, IT- und ICS-Risiken bei Bereitstellungen in anspruchsvollen und komplexen OT-Umgebungen in allen Schlüsselbranchen und geografischen Regionen.
 
 ## <a name="supported-protocols"></a>Unterstützte Protokolle
 
-Azure Defender für IoT unterstützt eine breite Palette an Protokollen in einem vielfältigen Unternehmen und enthält Industrieautomatisierungsgeräte für alle Industriebranchen, Unternehmensnetzwerke und Umgebungen von Gebäudeverwaltungssystemen (Building Management System, BMS). Für benutzerdefinierte oder proprietäre Protokolle bietet Microsoft ein SDK, mit dem benutzerdefinierte Protokollzergliederungen als Plug-Ins auf einfache Weise entwickelt, getestet und bereitgestellt werden können. Das SDK übernimmt all dies, ohne proprietäre Informationen (z. B. die Art und Weise, wie die Protokolle entworfen wurden) preiszugeben oder PCAPs zu teilen, die möglicherweise vertrauliche Informationen enthalten. Die unterstützten Protokolle sind nachfolgend aufgeführt.
+Azure Defender für IoT unterstützt eine breite Palette an Protokollen in einem vielfältigen Unternehmen und umfasst industrielle Automatisierungsanlagen für alle Industriebranchen, Unternehmensnetzwerke und Umgebungen von Gebäudeverwaltungssystemen (Building Management System, BMS). Für benutzerdefinierte oder proprietäre Protokolle bietet Microsoft ein SDK, mit dem benutzerdefinierte Protokollzergliederungen als Plug-Ins auf einfache Weise entwickelt, getestet und bereitgestellt werden können. Das SDK übernimmt all dies, ohne proprietäre Informationen (z. B. die Art und Weise, wie die Protokolle entworfen wurden) preiszugeben oder PCAPs zu teilen, die möglicherweise vertrauliche Informationen enthalten. Die unterstützten Protokolle sind nachfolgend aufgeführt.
 
 ### <a name="supported-protocols-passive-monitoring"></a>Unterstützte Protokolle (passive Überwachung)
 
@@ -119,4 +119,5 @@ Wir laden Sie ein, unserer Community hier beizutreten: <horizon-community@micros
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich ausführlicher über [Proprietäre Horizon-Protokollzergliederung](references-horizon-sdk.md).
+
 Sehen Sie sich unsere [Horizon-API](references-horizon-api.md) an.

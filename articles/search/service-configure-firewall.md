@@ -1,61 +1,60 @@
 ---
-title: Konfigurieren einer IP-Firewall für Ihren Azure Cognitive Search-Dienst
+title: Konfigurieren einer IP-Firewall
 titleSuffix: Azure Cognitive Search
-description: Konfigurieren Sie IP-Steuerungsrichtlinien, um den Zugriff auf Ihren Azure Cognitive Search-Dienst einzuschränken.
+description: Konfigurieren Sie IP-Steuerungsrichtlinien, um den Zugriff auf Ihren Azure Cognitive Search-Dienst auf bestimmte IP-Adressen einzuschränken.
 manager: nitinme
-author: markheff
-ms.author: maheff
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: de34c2921c7829cb6d7e7354a1ebcff44271efd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/19/2021
+ms.openlocfilehash: e403a71525a8400f47dee01c14ac192c13ab3826
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545546"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223182"
 ---
-# <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Konfigurieren einer IP-Firewall für Azure Cognitive Search
+# <a name="configure-an-ip-firewall-for-azure-cognitive-search"></a>Konfigurieren einer IP-Firewall für Azure Cognitive Search
 
-Azure Cognitive Search unterstützt IP-Regeln zur Unterstützung eingehender Firewalls. Dieses Modell bietet eine zusätzliche Sicherheitsebene für Ihren Suchdienst, ähnlich den IP-Regeln, die Sie in einer Azure Virtual Network-Sicherheitsgruppe finden. Mit diesen IP-Regeln können Sie nun Ihren Suchdienst so konfigurieren, dass nur von einer genehmigten Gruppe von Computern und/oder Clouddiensten darauf zugegriffen werden kann. Für den Zugriff auf gespeicherte Daten in Ihrem Suchdienst über diese genehmigten Gruppen von Computern und Diensten muss der Aufrufer weiterhin ein gültiges Autorisierungstoken vorlegen.
+Azure Cognitive Search unterstützt IP-Regeln für den eingehenden Zugriff über eine Firewall, ähnlich wie die IP-Regeln, die Sie in einer Azure-Sicherheitsgruppe für virtuelle Netzwerke finden. Durch die Nutzung von IP-Regeln können Sie den Suchdienstzugriff auf genehmigte Computer und Clouddienste einschränken. Für den Zugriff auf gespeicherte Daten in Ihrem Suchdienst über diese genehmigten Gruppen von Computern und Diensten muss der Aufrufer weiterhin ein gültiges Autorisierungstoken vorlegen.
 
-Sie können IP-Regeln im Azure-Portal festlegen, wie in diesem Artikel beschrieben. Alternativ können Sie die [Verwaltungs-REST-API Version 2020-03-13](/rest/api/searchmanagement/), [Azure PowerShell](/powershell/module/az.search) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/search) verwenden.
+Sie können IP-Regeln im Azure-Portal festlegen, wie in diesem Artikel beschrieben, für Suchdienste, die auf der Basic-Ebene und höher bereitgestellt werden. Alternativ können Sie die [Verwaltungs-REST-API Version 2020-03-13](/rest/api/searchmanagement/), [Azure PowerShell](/powershell/module/az.search) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/search) verwenden.
 
-## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Konfigurieren einer IP-Firewall über das Azure-Portal
+<a id="configure-ip-policy"></a> 
 
-Um die IP-Zugriffssteuerungsrichtlinie im Azure-Portal festzulegen, wechseln Sie zur Seite des Azure Cognitive Search-Diensts, und wählen Sie im Navigationsmenü **Netzwerk** aus. Die Endpunktnetzwerkkonnektivität muss **öffentlich** sein. Wenn Ihre Konnektivität auf **Privat** festgelegt ist, können Sie nur über einen privaten Endpunkt auf Ihren Suchdienst zugreifen.
+## <a name="set-ip-ranges-in-azure-portal"></a>Einrichten von IP-Adressbereichen im Azure-Portal
 
-![Screenshot: Konfigurieren der IP-Firewall im Azure-Portal](./media/service-configure-firewall/azure-portal-firewall.png)
+Um die IP-Zugriffssteuerungsrichtlinie im Azure-Portal festzulegen, wechseln Sie zur Seite des Azure Cognitive Search-Diensts, und wählen Sie im linken Navigationsbereich **Netzwerk** aus. Die Endpunktnetzwerkkonnektivität muss **Öffentlicher Zugriff** sein. Wenn Ihre Konnektivität auf **Privater Zugriff** oder **Freigegebener privater Zugriff** festgelegt ist, können Sie nur über einen privaten Endpunkt auf Ihren Suchdienst zugreifen.
+
+:::image type="content" source="media/service-configure-firewall/azure-portal-firewall.png" alt-text="Screenshot: Konfigurieren der IP-Firewall im Azure-Portal" border="true":::
 
 Das Azure-Portal bietet die Möglichkeit, IP-Adressen und IP-Adressbereiche im CIDR-Format anzugeben. Ein Beispiel für die CIDR-Notation ist „8.8.8.0/24“, womit die IPs im Bereich zwischen 8.8.8.0 und 8.8.8.255 dargestellt werden.
 
-> [!NOTE]
-> Nach dem Aktivieren der IP-Zugriffssteuerungsrichtlinie für Ihren Azure Cognitive Search-Dienst werden alle Anforderungen an die Datenebene von Computern außerhalb der Liste der zulässigen IP-Adressbereiche abgelehnt. Werden IP-Regeln konfiguriert, werden einige Features des Azure-Portals deaktiviert. Sie können Informationen auf Dienstebene anzeigen und verwalten, aber der Portalzugriff auf Indexdaten und die verschiedenen Komponenten im Dienst sind aus Sicherheitsgründen eingeschränkt. Dazu zählen beispielsweise Index-, Indexer- und Skillsetdefinitionen. Als Alternative zum Portal können Sie die [VS Code-Erweiterung](https://aka.ms/vscode-search) verwenden, um mit den verschiedenen Komponenten im Dienst zu interagieren.
+Nach dem Aktivieren der IP-Zugriffssteuerungsrichtlinie für Ihren Azure Cognitive Search-Dienst werden alle Anforderungen an die Datenebene von Computern außerhalb der Liste der zulässigen IP-Adressbereiche abgelehnt. 
 
-### <a name="requests-from-your-current-ip"></a>Anforderungen über Ihre aktuelle IP-Adresse
+## <a name="allow-access-from-azure-portal"></a>Zulassen des Zugriffs vom Azure-Portal
 
-Um die Entwicklung zu vereinfachen, unterstützt das Azure-Portal Sie dabei, die IP-Adresse Ihres Clientcomputers zu ermitteln und der Zulassungsliste hinzuzufügen. So können auf Ihrem Computer ausgeführte Apps auf Ihren Azure Cognitive Search-Dienstzugreifen.
+Werden IP-Regeln konfiguriert, werden standardmäßig einige Features des Azure-Portals deaktiviert. Sie können Informationen auf Dienstebene anzeigen und verwalten, aber der Portalzugriff auf Indizes, Indexer und andere Ressourcen der obersten Ebene ist eingeschränkt.
 
-Das Portal erkennt Ihre Client-IP-Adresse automatisch. Es kann sich um die Client-IP-Adresse Ihres Computers oder Netzwerkgateways handeln. Sie müssen diese IP-Adresse entfernen, bevor Sie Ihre Workload in die Produktion überführen.
+Um die Dienstverwaltung über das Portal beizubehalten, wählen Sie unter **Ausnahmen** die Option "Zugriff zulassen" aus. Verwenden Sie alternativ die [VS Code-Erweiterung](https://aka.ms/vscode-search), um Inhalte zu verwalten.
 
-Um ihre aktuelle IP-Adresse zur Liste der IP-Adressen hinzuzufügen, aktivieren Sie **Client-IP-Adresse hinzufügen**. Klicken Sie dann auf **Speichern**.
+## <a name="allow-access-from-your-client"></a>Zulassen des Zugriffs von Ihrem Client
 
-![Screenshot: Konfigurieren der IP-Firewalleinstellungen zum Zulassen der aktuellen IP-Adresse](./media/service-configure-firewall/enable-current-ip.png)
+Clientanwendungen, die Indizierungs- und Abfrageanforderungen per Push an den Suchdienst senden, müssen in einem IP-Adressbereich repräsentiert sein. In Azure können Sie im Allgemeinen die IP-Adresse ermitteln, indem Sie den FQDN eines Diensts pingen (z. B. gibt `ping <your-search-service-name>.search.windows.net` die IP-Adresse eines Suchdiensts zurück). 
 
-## <a name="troubleshoot-issues-with-an-ip-access-control-policy"></a><a id="troubleshoot-ip-firewall"></a>Behandeln von Problemen mit einer IP-Zugriffssteuerungsrichtlinie
+Die Bereitstellung von IP-Adressen für Clients stellt sicher, dass die Anforderung nicht direkt abgelehnt wird, aber für den erfolgreichen Zugriff auf Inhalte und Vorgänge ist auch eine Autorisierung erforderlich. Verwenden Sie eine der folgenden Methoden, um Ihre Anforderung zu authentifizieren:
 
-Sie haben folgende Optionen, um Probleme mit einer IP-Zugriffssteuerungsrichtlinie zu behandeln:
++ [Schlüsselbasierte Authentifizierung](search-security-api-keys.md), bei der ein Administrator- oder Abfrage-API-Schlüssel für die Anforderung bereitgestellt wird
++ [Rollenbasierte Autorisierung](search-security-rbac.md), bei der die aufrufende Funktion Mitglied einer Sicherheitsrolle für einen Suchdienst ist und die [registrierte App ein OAuth-Token](search-howto-aad.md) aus Azure Active Directory darstellt.
 
-### <a name="azure-portal"></a>Azure-Portal
+### <a name="rejected-requests"></a>Abgelehnte Anforderungen
 
-Durch das Aktivieren der IP-Zugriffssteuerungsrichtlinie für Ihren Azure Cognitive Search-Dienst werden alle Anforderungen von Computern außerhalb der Liste der zulässigen IP-Adressbereiche, einschließlich des Azure-Portals, abgelehnt.  Sie können Informationen auf Dienstebene anzeigen und verwalten, aber der Portalzugriff auf Indexdaten und die verschiedenen Komponenten im Dienst sind aus Sicherheitsgründen eingeschränkt. Dazu zählen beispielsweise Index-, Indexer- und Skillsetdefinitionen. 
-
-### <a name="sdks"></a>SDKs
-
-Beim Zugriff auf den Azure Cognitive Search-Dienst mithilfe des SDKs über Computer, die nicht in der Zulassungsliste enthalten sind, wird eine generische Antwort **403: Nicht zulässig** ohne weitere Details zurückgegeben. Überprüfen Sie die Liste der zugelassenen IP-Adressen für Ihr Konto, und stellen Sie sicher, dass die richtige Konfiguration für Ihren Suchdienst aktualisiert wird.
+Wenn Anforderungen von IP-Adressen stammen, die nicht in der Liste zulässig sind, wird eine generische **403 Forbidden-Antwort** ohne zusätzliche Details zurückgegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Zugreifen auf Ihren Suchdienst über Azure Private Link finden Sie im folgenden Artikel:
+Wenn Ihre Clientanwendung eine statische Web-App in Azure ist, erfahren Sie, wie Sie ihren IP-Adressbereich für die Aufnahme in eine IP-Firewallregel des Suchdiensts bestimmen.
 
-* [Erstellen eines privaten Endpunkts für sichere Verbindungen mit Azure Cognitive Search](service-create-private-endpoint.md)
+> [!div class="nextstepaction"]
+> [Ein- und ausgehende IP-Adressen in Azure App Service](../app-service/overview-inbound-outbound-ips.md)

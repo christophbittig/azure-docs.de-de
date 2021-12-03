@@ -4,12 +4,12 @@ description: Überwachung der Anwendungsleistung für Azure-Anwendungsdienste mi
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: d31f8e59b297c16995482826414d07ab8cf5774f
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 747b79affc2cb2ef862c1fb4000879ddbbe5b9f5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233218"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308768"
 ---
 # <a name="application-monitoring-for-azure-app-service-and-aspnet-core"></a>Anwendungsüberwachung für Azure App Service und ASP.NET Core 
 
@@ -20,23 +20,21 @@ Die Aktivierung der Überwachung IhrerASP.NET Core-basierten Webanwendungen, die
 # <a name="windows"></a>[Windows](#tab/Windows)
 
 > [!IMPORTANT]
-> Die folgenden Versionen von ASP.NET Core werden für die automatische Instrumentierung unter Windows unterstützt: ASP.NET Core 3.1 und 5.0. Die Versionen 2.0, 2.1, 2.2 und 3.0 wurden eingestellt und werden nicht mehr unterstützt. Führen Sie ein Upgrade auf eine [unterstützte Version](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) von .NET Core aus, damit die automatische Instrumentierung funktioniert.
+> Die folgenden Versionen von ASP.NET Core werden für die automatische Instrumentierung unter Windows unterstützt: ASP.NET Core 3.1, 5.0 und 6.0. Die Versionen 2.0, 2.1, 2.2 und 3.0 wurden eingestellt und werden nicht mehr unterstützt. Führen Sie ein Upgrade auf eine [unterstützte Version](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) von .NET Core aus, damit die automatische Instrumentierung funktioniert.
 
-Die Ausrichtung auf das vollständige Framework von ASP.NET Core wird unter Windows **nicht unterstützt**. Verwenden Sie stattdessen die [manuelle Instrumentierung](./asp-net-core.md) über Code.
-
-In Windows wird nur die [frameworkabhängige Bereitstellung](/dotnet/core/deploying/#publish-framework-dependent) unterstützt, und die eigenständige [Bereitstellung](/dotnet/core/deploying/#publish-self-contained) wird nicht unterstützt.
+[Das Kürzen eigenständiger Bereitstellungen](/dotnet/core/deploying/trimming/trim-self-contained) wird **nicht unterstützt.** Verwenden Sie stattdessen die [manuelle Instrumentierung](./asp-net-core.md) über Code.
 
 Lesen Sie im Folgenden den Abschnitt zum [Aktivieren der Überwachung](#enable-monitoring ), um mit der Einrichtung von Application Insights mit Ihrer App Service-Ressource zu beginnen. 
 
 # <a name="linux"></a>[Linux](#tab/Linux)
 
 > [!IMPORTANT]
-> Nur ASP.NET Core 6.0 (Vorschauversion) wird für die automatische Instrumentierung unter Linux unterstützt.
+> Nur ASP.NET Core 6.0 wird für die automatische Instrumentierung unter Linux unterstützt.
 
 > [!NOTE]
 > Die Aktivierung der automatischen Instrumentierung unter Linux im App Services-Portal befindet sich in der Public Preview. Diese Vorschauversionen werden ohne Vereinbarung zum Servicelevel bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 
- Unter Linux werden [frameworkabhängige Bereitstellungen](/dotnet/core/deploying/#publish-framework-dependent) und [eigenständige Bereitstellungen](/dotnet/core/deploying/#publish-self-contained) unterstützt. 
+[Das Kürzen eigenständiger Bereitstellungen](/dotnet/core/deploying/trimming/trim-self-contained) wird **nicht unterstützt.** Verwenden Sie stattdessen die [manuelle Instrumentierung](./asp-net-core.md) über Code.
 
 Lesen Sie im Folgenden den Abschnitt zum [Aktivieren der Überwachung](#enable-monitoring ), um mit der Einrichtung von Application Insights mit Ihrer App Service-Ressource zu beginnen. 
 
@@ -120,6 +118,9 @@ Ab Version 2.8.9 wird die vorinstallierte Websiteerweiterung verwendet. Bei eine
 Wenn das Upgrade für eine frühere Version als 2.5.1 ausgeführt wird, vergewissern Sie sich, dass die ApplicationInsights-DLL-Dateien aus dem Ordner „bin“ der Anwendung entfernt werden ([siehe Schritte zur Problembehandlung](#troubleshooting)).
 
 ## <a name="troubleshooting"></a>Problembehandlung
+
+> [!NOTE]
+> Wenn Sie eine Web-App mit den `ASP.NET Core`-Runtimes in Azure App Services erstellen, wird eine einzelne statische HTML-Seite als Startwebsite bereitgestellt. Es wird **nicht** empfohlen, ein Problem mit der Standardvorlage zu beheben. Stellen Sie eine Anwendung vor der Problembehandlung bereit.
 
 Im Folgenden finden Sie eine Schritt-für-Schritt-Anleitung zur Problembehandlung für die Überwachung von aufASP.NET Core basierenden Anwendungen, die auf Azure App Services ausgeführt werden.
 

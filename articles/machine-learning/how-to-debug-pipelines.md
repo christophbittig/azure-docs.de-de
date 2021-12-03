@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: mlops
 author: lobrien
 ms.author: laobri
-ms.date: 10/22/2020
+ms.date: 10/21/2021
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: f6fc3ad230c4da9f44c536ec61d8c840374c3ed6
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 0d25bcabc1c3108ed1899110a61da22551262bf8
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429032"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559122"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>Problembehandlung bei Machine Learning-Pipelines
 
@@ -238,10 +238,10 @@ Für die Problembehandlung und das Debuggen von Echtzeitendpunkten im Designer m
 
 ### <a name="get-logs-from-the-authoring-page"></a>Abrufen von Protokollen auf der Seite zur Dokumenterstellung
 
-Wenn Sie eine Pipelineausführung übermitteln und auf der Seite zur Dokumenterstellung bleiben, finden Sie nach der Ausführung der einzelnen Module die jeweils generierten Protokolldateien.
+Wenn Sie eine Pipelineausführung übermitteln und auf der Seite der Dokumenterstellung bleiben, finden Sie die Protokolldateien, die für jede Komponente generiert werden, sobald die Ausführung der einzelnen Komponenten abgeschlossen ist.
 
-1. Wählen Sie ein Modul aus, dessen Ausführung im Dokumenterstellungsbereich beendet wurde.
-1. Wechseln Sie im rechten Bereich des Moduls zur Registerkarte **Ausgaben und Protokolle**.
+1. Wählen Sie eine Komponente aus, dessen Ausführung im Dokumenterstellungsbereich beendet wurde.
+1. Wechseln Sie im rechten Bereich der Komponente zur Registerkarte **Ausgaben und Protokolle**.
 1. Erweitern Sie den Bereich auf der rechten Seite, und wählen Sie die Datei **70_driver_log.txt** aus, um sie im Browser anzuzeigen. Sie können Protokolle auch lokal herunterladen.
 
     ![Erweiterter Ausgabebereich im Designer](./media/how-to-debug-pipelines/designer-logs.png)
@@ -254,8 +254,8 @@ Sie finden die Protokolldateien bestimmter Ausführungen auch auf der Detailseit
 
     ![Seite für Pipelineausführungen](./media/how-to-debug-pipelines/designer-pipelines.png)
 
-1. Wählen Sie im Vorschaubereich ein Modul aus.
-1. Wechseln Sie im rechten Bereich des Moduls zur Registerkarte **Ausgaben und Protokolle**.
+1. Wählen Sie im Vorschaubereich eine Komponente aus.
+1. Wechseln Sie im rechten Bereich der Komponente zur Registerkarte **Ausgaben und Protokolle**.
 1. Erweitern Sie den Bereich auf der rechten Seite, um die Datei **70_driver_log.txt** im Browser anzuzeigen, oder wählen Sie die Datei aus, um die Protokolle lokal herunterzuladen.
 
 > [!IMPORTANT]

@@ -1,20 +1,20 @@
 ---
 title: C2D-Nachrichten mit Azure IoT Hub (Python) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe der Azure IoT SDKs für Python C2D-Nachrichten von einem Azure IoT Hub an ein Gerät senden. Sie passen eine simulierte Geräte-App für den Empfang von C2D-Nachrichten und eine Back-End-App zum Senden der C2D-Nachrichten an.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 921aa2be168261acad12fa8e1a3ae478656b968c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: de60d0c92ee44cf2e58d11b2e28d9c2dfccdc0b1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236897"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551594"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Senden von C2D-Nachrichten mit IoT Hub (Python)
 

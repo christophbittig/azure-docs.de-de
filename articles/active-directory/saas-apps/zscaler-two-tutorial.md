@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 8e8395fc16d4228969d8fd90eccbc50ceeddfc36
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4e71ac11156cf688ed17264b107e7366fd6310bf
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794821"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Tutorial: Azure Active Directory-Integration in Zscaler Two
 
@@ -196,15 +196,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
    b. Klicken Sie auf **Aktivieren**.
 
-## <a name="configuring-proxy-settings&quot;></a>Konfigurieren von Proxyeinstellungen
+## <a name="configuring-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 
-### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>So konfigurieren Sie die Proxyeinstellungen in Internet Explorer:
+### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>So konfigurieren Sie die Proxyeinstellungen in Internet Explorer:
 
 1. Starten Sie **Internet Explorer**.
 
 2. Wählen Sie im Menü **Extras** die Option **Internetoptionen**, um das Dialogfeld **Internetoptionen** zu öffnen.
 
-   ![Internetoptionen](./media/zscaler-two-tutorial/internet.png &quot;Internetoptionen")
+   ![Internetoptionen](./media/zscaler-two-tutorial/internet.png "Internetoptionen")
 
 3. Klicken Sie auf die Registerkarte **Verbindungen** .
 
@@ -250,4 +250,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Zscaler Two können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Zscaler Two können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

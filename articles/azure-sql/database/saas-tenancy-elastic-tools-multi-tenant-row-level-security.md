@@ -1,7 +1,6 @@
 ---
 title: Mehrinstanzenfähige Apps mit Sicherheit auf Zeilenebene und Tools für elastische Datenbanken
 description: Verwenden Sie Tools für elastische Datenbanken mit Sicherheit auf Zeilenebene zum Erstellen einer Anwendung mit einer hochgradig skalierbaren Datenschicht.
-services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
@@ -11,12 +10,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 5ea87afa5b66701a3d28f98a446c9307ccac0fc4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b7bc3f44b5b794ece77296d84b4d21cf12a57eb3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346616"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063003"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -239,7 +238,7 @@ CREATE FUNCTION rls.fn_tenantAccessPredicate(@TenantId int)
     WITH SCHEMABINDING
 AS
     RETURN SELECT 1 AS fn_accessResult
-        -- Use the user in your application’s connection string.
+        -- Use the user in your application's connection string.
         -- Here we use 'dbo' only for demo purposes!
         WHERE DATABASE_PRINCIPAL_ID() = DATABASE_PRINCIPAL_ID('dbo')
         AND CAST(SESSION_CONTEXT(N'TenantId') AS int) = @TenantId;
@@ -358,7 +357,7 @@ Elastische Datenbanktools und zeilenbasierte Sicherheit können zusammen zum Auf
 
 ## <a name="questions-and-feature-requests"></a>Fragen und Funktionswünsche
 
-Wenn Sie Fragen haben, kontaktieren Sie uns auf der [Microsoft-Seite mit Fragen und Antworten zu SQL-Datenbank](/answers/topics/azure-sql-database.html). Featureanforderungen können im [SQL-Datenbank-Feedbackforum](https://feedback.azure.com/forums/217321-sql-database/) hinzugefügt werden.
+Wenn Sie Fragen haben, kontaktieren Sie uns auf der [Microsoft-Seite mit Fragen und Antworten zu SQL-Datenbank](/answers/topics/azure-sql-database.html). Featureanforderungen können im [SQL-Datenbank-Feedbackforum](https://feedback.azure.com/d365community/forum/04fe6ee0-3b25-ec11-b6e6-000d3a4f0da0) hinzugefügt werden.
 
 <!--Image references-->
 [1]: ./media/saas-tenancy-elastic-tools-multi-tenant-row-level-security/blogging-app.png

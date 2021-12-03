@@ -5,12 +5,12 @@ ms.author: pprystinka
 ms.date: 10/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 9ef83937970e1c4d657841ba2599dac14f02c212
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: f4d83bc8e8d4c56c39867bf2657493fa23b4e030
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181822"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132096907"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,8 +35,8 @@ Klicken Sie auf `Finish`.
 
 ## <a name="maven-repository-credentials"></a>Anmeldeinformationen für das Maven-Repository
 
-- Sie müssen Ihr persönliches Zugriffstoken angeben, für das der Bereich „read:packages“ ausgewählt ist.
-- Möglicherweise muss für dieses persönliches Zugriffstoken einmaliges Anmelden aktiviert sein.
+- Sie müssen Ihr persönliches Zugriffstoken (Personal Access Token, PAT) angeben, für das der Bereich `read:packages` ausgewählt ist.
+- Möglicherweise muss für dieses PAT `SSO enabled` aktiviert sein.
 - Stellen Sie außerdem sicher, dass Ihr GitHub-Benutzer Zugriff auf https://github.com/Azure/communication-preview hat.
 - Das persönliche Zugriffstoken kann hier generiert werden: https://github.com/settings/tokens
 
@@ -57,7 +57,7 @@ android {
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-ui:1.0.0-alpha.1'
+    implementation 'com.azure.android:azure-communication-ui:1.0.0-alpha.2'
     ...
 }
 ```
@@ -146,8 +146,8 @@ class MainActivity : AppCompatActivity() {
         val options = GroupCallOptions(
             this,
             communicationTokenCredential,
+            UUID.fromString("GROUP_CALL_ID"),
             "DISPLAY_NAME",
-            UUID.fromString("GROUP_CALL_ID")
         )
 
         val callComposite: CallComposite = CallCompositeBuilder().build()
@@ -198,8 +198,8 @@ public class MainActivity extends AppCompatActivity {
 
         GroupCallOptions options = new GroupCallOptions(this,
                 communicationTokenCredential,
-                "DISPLAY_NAME",
-                UUID.fromString("GROUP_CALL_ID"));
+                UUID.fromString("GROUP_CALL_ID"),
+                "DISPLAY_NAME");
 
         callComposite.launch(options);
     }
@@ -219,6 +219,8 @@ Erstellen und starten Sie die Anwendung über Android Studio.
 - Akzeptieren Sie die Audioberechtigungen, und wählen Sie Geräte-, Mikrofon- und Videoeinstellungen aus.
 - Klicken Sie auf `Join Call`.
 
+## <a name="sample-application-code-can-be-found-here"></a>Beispielanwendungscode finden Sie [hier](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/ui-library-quickstart/ui-library-quick-start).
+
 ![Starten](../../media/composite-android.gif)
 
 ## <a name="object-model"></a>Objektmodell
@@ -233,7 +235,9 @@ Die folgenden Klassen und Schnittstellen dienen zur Behandlung einiger der wicht
 | [TeamsMeetingOptions](#teams-meeting)                              | Wird an „callComposite.launch“ übergeben, um einer Teams-Besprechung beizutreten.                                |
 | [ThemeConfiguration](#apply-theme-configuration)                   | Wird optional in „CallCompositeBuilder“ eingefügt, um die Hauptfarbe der zusammengesetzten Komponente zu ändern.           |
 
-## <a name="create-call-composite"></a>Erstellen einer zusammengesetzten Komponente für Anrufe
+## <a name="ui-library-functionality"></a>Funktionen der UI-Bibliothek
+
+### <a name="create-call-composite"></a>Erstellen einer zusammengesetzten Komponente für Anrufe
 
 Initialisieren Sie innerhalb der Funktion `startCallComposite` eine `CallCompositeBuilder`-Instanz und eine `CallComposite`-Instanz.
 
@@ -249,7 +253,7 @@ CallComposite callComposite = new CallCompositeBuilder().build();
 ```
 
 -----
-### <a name="create-communicationtokencredential"></a>Erstellen Sie `CommunicationTokenCredential`.
+### <a name="setup-authentication"></a>Einrichten der Authentifizierung
 
 Initialisieren Sie innerhalb der Funktion `startCallComposite` eine `CommunicationTokenCredential`-Instanz. Ersetzen Sie `"<USER_ACCESS_TOKEN>"` durch Ihr Token.
 
@@ -278,7 +282,7 @@ CommunicationTokenCredential communicationTokenCredential = new CommunicationTok
 Wenn Sie noch über kein Token verfügen, finden Sie unter [Benutzerzugriffstoken](../../../identity/quick-create-identity.md) weitere Informationen.
 
 -----
-## <a name="setup-group-call-or-teams-meeting-options"></a>Einrichten von Optionen für Gruppenanrufe oder Teams-Besprechungen
+### <a name="setup-group-call-or-teams-meeting-options"></a>Einrichten von Optionen für Gruppenanrufe oder Teams-Besprechungen
 
 Verwenden Sie das passende Optionsobjekt für die Art von Anruf/Besprechung, die Sie einrichten möchten.
 
@@ -296,8 +300,8 @@ Ersetzen Sie `"DISPLAY_NAME"` durch Ihren eigenen Namen.
 val options = GroupCallOptions(
             this,
             communicationTokenCredential,
+            UUID.fromString("GROUP_CALL_ID"),
             "DISPLAY_NAME",
-            UUID.fromString("GROUP_CALL_ID")
         )
 ```
 
@@ -307,8 +311,8 @@ val options = GroupCallOptions(
 GroupCallOptions options = new GroupCallOptions(
     this,
     communicationTokenCredential,
-    "DISPLAY_NAME",
-    UUID.fromString("GROUP_CALL_ID")
+    UUID.fromString("GROUP_CALL_ID"),
+    "DISPLAY_NAME"
 );
 ```
 -----
@@ -325,8 +329,8 @@ Ersetzen Sie `"DISPLAY_NAME"` durch Ihren eigenen Namen.
 val options = TeamsMeetingOptions(
             this,
             communicationTokenCredential,
+            "TEAMS_MEETING_LINK",
             "DISPLAY_NAME",
-           "TEAMS_MEETING_LINK"
         )
 ```
 
@@ -336,19 +340,19 @@ val options = TeamsMeetingOptions(
 TeamsMeetingOptions options = new TeamsMeetingOptions(
     this,
     communicationTokenCredential,
-    "DISPLAY_NAME",
-    "TEAMS_MEETING_LINK"
+    "TEAMS_MEETING_LINK",
+    "DISPLAY_NAME"
 );
 ```
 
 -----
 ### <a name="get-a-microsoft-teams-meeting-link"></a>Abrufen eines Microsoft Teams-Besprechungslinks
 
-Ein Microsoft Teams-Besprechungslink kann mithilfe der Graph-APIs abgerufen werden. Dieser Prozess wird in der [Graph-Dokumentation](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) näher erläutert.
+Ein Microsoft Teams-Besprechungslink kann mithilfe der Graph-APIs abgerufen werden. Dieser Prozess wird in der [Graph-Dokumentation](/graph/api/onlinemeeting-createorget?preserve-view=true&tabs=http&view=graph-rest-beta) näher erläutert.
 
-Das Communication Services SDK für Anrufe akzeptiert einen vollständigen Microsoft Teams-Besprechungslink. Dieser Link wird als Teil der `onlineMeeting`-Ressource zurückgegeben, auf die Sie über die [`joinWebUrl`-Eigenschaft](https://docs.microsoft.com/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) zugreifen können. Sie können die erforderlichen Besprechungsinformationen auch aus der URL **Besprechung beitreten** in der Teams-Besprechungseinladung selbst abrufen.
+Das Communication Services SDK für Anrufe akzeptiert einen vollständigen Microsoft Teams-Besprechungslink. Dieser Link wird als Teil der `onlineMeeting`-Ressource zurückgegeben, auf die Sie über die [`joinWebUrl`-Eigenschaft](/graph/api/resources/onlinemeeting?preserve-view=true&view=graph-rest-beta) zugreifen können. Sie können die erforderlichen Besprechungsinformationen auch aus der URL **Besprechung beitreten** in der Teams-Besprechungseinladung selbst abrufen.
 
-## <a name="launch"></a>Starten
+### <a name="launch"></a>Starten
 
 Rufen Sie `launch` für die `CallComposite`-Instanz innerhalb der Funktion `startCallComposite` auf.
 
@@ -366,47 +370,35 @@ callComposite.launch(options);
 
 -----
 
-## <a name="subscribe-on-events-from-callcomposite"></a>Abonnieren von Ereignissen von `CallComposite`
+### <a name="subscribe-to-events-from-callcomposite"></a>Abonnieren von Ereignissen aus `CallComposite`
 
 Fügen Sie einen Handler in `CallCompositeBuilder` ein, um Ereignisse zu empfangen.
 
 #### <a name="kotlin"></a>[Kotlin](#tab/kotlin)
 
 ```kotlin
-val communicationCallComposite: CallComposite =
+val callComposite: CallComposite =
             CallCompositeBuilder()
-                .callCompositeEventsHandler(ApplicationCallCompositeEventsHandler())
+                .onException { 
+                    //...
+                }
                 .build()
-
-...
-
-class ApplicationCallCompositeEventsHandler : CallCompositeEventsHandler {
-    override fun onException(eventArgs: OnExceptionEventArgs) {
-        //...
-    }
-}
 ```
 
 #### <a name="java"></a>[Java](#tab/java)
 
 ```java
-CallComposite communicationCallComposite =
+CallComposite callComposite =
                 new CallCompositeBuilder()
-                        .callCompositeEventsHandler(new ApplicationCallCompositeEventsHandler())
+                        .onException(eventArgs -> {
+                            //...
+                        })
                         .build();
-...
-
-class ApplicationCallCompositeEventsHandler implements CallCompositeEventsHandler {
-    @Override
-    public void onException(@NonNull OnExceptionEventArgs eventArgs) {
-        //...
-    }
-}
 ```
 
 -----
 
-## <a name="apply-theme-configuration"></a>Anwenden der Designkonfiguration
+### <a name="apply-theme-configuration"></a>Anwenden der Designkonfiguration
 
 Wenn Sie die Hauptfarbe der zusammengesetzten Komponente ändern möchten, können Sie in `src/main/res/values/themes.xml` und `src/main/res/values-night/themes.xml` einen neuen Designstil erstellen, indem Sie `AzureCommunicationUI.Theme.Calling` als übergeordnetes Design betrachten. Fügen Sie zum Anwenden des Designs die Design-ID in `CallCompositeBuilder` ein.
 
@@ -419,6 +411,8 @@ Wenn Sie die Hauptfarbe der zusammengesetzten Komponente ändern möchten, könn
 #### <a name="kotlin"></a>[Kotlin](#tab/kotlin)
 
 ```kotlin
+import com.azure.android.communication.ui.configuration.ThemeConfiguration
+
 val communicationCallComposite: CallComposite =
         CallCompositeBuilder()
             .theme(ThemeConfiguration(R.style.MyCompany_CallComposite))
@@ -428,6 +422,8 @@ val communicationCallComposite: CallComposite =
 #### <a name="java"></a>[Java](#tab/java)
 
 ```java
+import com.azure.android.communication.ui.configuration.ThemeConfiguration;
+
 CallComposite callComposite = 
     new CallCompositeBuilder()
         .theme(new ThemeConfiguration(R.style.MyCompany_CallComposite))

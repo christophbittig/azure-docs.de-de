@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22de8b7775d6825d99afe8eb4f0dc043f8ec639c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724249"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031554"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer Azure Functions-App
 
@@ -81,7 +81,7 @@ Bei diesem Projekt wird die [Abhängigkeitsinjektion in Azure Functions (.NET)](
 
 3. Aktualisieren Sie die `ConfigureAppConfiguration`-Methode, und fügen Sie den Azure App Configuration-Anbieter als zusätzliche Konfigurationsquelle hinzu, indem Sie `AddAzureAppConfiguration()` aufrufen. 
 
-   Mit der `UseFeatureFlags()`-Methode wird der Anbieter aufgefordert, Featureflags zu laden. Alle Featureflags verfügen über eine Standardablaufdauer von 30 Sekunden für den Cache, bevor erneut eine Überprüfung auf Änderungen durchgeführt wird. Das Ablaufintervall kann aktualisiert werden, indem die `FeatureFlagsOptions.CacheExpirationInterval`-Eigenschaft festgelegt wird, die an die `UseFeatureFlags`-Methode übergeben wird. 
+    Mit der `UseFeatureFlags()`-Methode wird der Anbieter aufgefordert, Featureflags zu laden. Alle Featureflags verfügen über eine Standardablaufdauer von 30 Sekunden für den Cache, bevor erneut eine Überprüfung auf Änderungen durchgeführt wird. Das Ablaufintervall kann aktualisiert werden, indem die `FeatureFlagsOptions.CacheExpirationInterval`-Eigenschaft festgelegt wird, die an die `UseFeatureFlags`-Methode übergeben wird. 
 
     ```csharp
     public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
@@ -94,8 +94,9 @@ Bei diesem Projekt wird die [Abhängigkeitsinjektion in Azure Functions (.NET)](
         });
     }
     ```
-   > [!TIP]
-   > Wenn Sie nicht möchten, dass eine andere Konfiguration als Featureflags in Ihre Anwendung geladen wird, können Sie `Select("_")` aufrufen, um nur einen nicht vorhandenen Dummyschlüssel („_“) zu laden. Standardmäßig werden alle Konfigurationsschlüsselwerte aus Ihrem App Configuration-Speicher geladen, wenn keine `Select`-Methode aufgerufen wird.
+
+    > [!TIP]
+    > Wenn Sie nicht möchten, dass eine andere Konfiguration als Featureflags in Ihre Anwendung geladen wird, können Sie `Select("_")` nur einen nicht vorhandenen Dummyschlüssel laden `"_"` aufrufen. Standardmäßig werden alle Konfigurationsschlüsselwerte aus Ihrem App Configuration-Speicher geladen, wenn keine `Select`-Methode aufgerufen wird.
 
 4. Aktualisieren Sie die `Configure`-Methode, um Azure App Configuration-Dienste und den Feature-Manager per Abhängigkeitsinjektion verfügbar zu machen.
 

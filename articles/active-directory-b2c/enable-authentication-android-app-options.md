@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/05/2021
+ms.date: 11/11/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 415f31c0b6627b290c86f3581eee0723ad20bcb9
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8631c5c0852f915596e3b51c76054301eca64c02
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130040263"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289191"
 ---
 # <a name="configure-authentication-options-in-an-android-app-by-using-azure-ad-b2c"></a>Konfigurieren der Authentifizierungsoptionen in einer Android-App mithilfe von Azure AD B2C 
 
@@ -275,7 +275,26 @@ b2cApp.acquireToken(parameters);
 
 --- 
 
+## <a name="embedded-web-view-experience"></a>Benutzeroberfläche für eingebettete Webansicht
 
+Webbrowser sind eine Voraussetzung für die interaktive Authentifizierung. Die MSAL-Bibliothek verwendet standardmäßig die Systemwebansicht. Während der Anmeldung öffnet die MSAL-Bibliothek die Android-Systemwebansicht mit der Azure AD-B2C-Benutzeroberfläche.  
+
+Weitere Informationen finden Sie im Abschnitt [Aktivieren des appübergreifenden einmaligen Anmeldens unter Android mit MSAL](../active-directory/develop/msal-android-single-sign-on.md#sso-through-system-browser).
+
+Je nach Ihren Anforderungen können Sie die eingebettete Webansicht verwenden. Zwischen der eingebetteten Webansicht und der Systemwebansicht in MSAL gibt es visuelle Unterschiede und Unterschiede bei SSO-Vorgängen.
+
+![Screenshot: Unterschied zwischen der Benutzeroberfläche der Systemwebansicht und der eingebetteten Webansicht](./media/enable-authentication-android-app-options/system-web-browser-vs-embedded-view.png)
+
+> [!IMPORTANT]
+> Es wird empfohlen, die Plattformstandardeinstellung zu verwenden, die normalerweise der Systembrowser ist. Der Systembrowser kann die Benutzer besser speichern, die sich zuvor angemeldet haben. Einige Identitätsanbieter*innen (z. B. Google) unterstützen keine eingebettete Ansicht.
+
+Um dies zu ändern, öffnen Sie die Datei *app/src/main/res/raw/auth_config_b2c.json*. Fügen Sie im Attribut `authorization_user_agent` den Wert `WEBVIEW` hinzu. Im folgenden Beispiel wird veranschaulicht, wie der Webansichtstyp in eine eingebettete Ansicht geändert wird:
+
+```json
+{
+  "authorization_user_agent": "WEBVIEW" 
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

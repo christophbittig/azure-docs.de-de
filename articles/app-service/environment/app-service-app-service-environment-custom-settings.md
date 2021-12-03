@@ -4,21 +4,22 @@ description: Konfigurieren Sie Einstellungen, die für die gesamte Azure App Ser
 author: madsd
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 01/29/2021
+ms.date: 11/03/2021
 ms.author: madsd
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e95f8a4434f0ca27c57791edfe8663df9e77bbaa
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c90357a77d8ea95675fb17ecbde5c8dfb94b49ea
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002711"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524985"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Benutzerdefinierte Konfigurationseinstellungen für App Service-Umgebungen
+
 ## <a name="overview"></a>Übersicht
 Da App Service-Umgebungen (App Service Environments, ASEs) isoliert für einen einzelnen Kunden eingerichtet werden, gibt es bestimmte Konfigurationseinstellungen, die exklusiv auf eine App Service-Umgebung angewendet werden können. In diesem Artikel werden die verschiedenen Anpassungen dokumentiert, die für App Service-Umgebungen verfügbar sind.
 
-Besitzen Sie keine App Service-Umgebung, finden Sie unter [Gewusst wie: Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen](app-service-app-service-environment-create-ilb-ase-resourcemanager.md) Informationen zu ihrer Erstellung.
+Besitzen Sie keine App Service-Umgebung, finden Sie unter [Erstellen einer App Service-Umgebung](./creation.md) Informationen zu ihrer Erstellung.
 
 Sie können Anpassungen der App Service-Umgebung mithilfe eines Arrays im neuen Attribut **clusterSettings** speichern. Dieses Attribut befindet sich im Wörterbuch „Eigenschaften“ der Azure Resource Manager-Entität *hostingEnvironments* .
 
@@ -27,7 +28,7 @@ Der folgende gekürzte Codeausschnitt aus einer Resource Manager-Vorlage zeigt d
 ```json
 "resources": [
 {
-    "apiVersion": "2015-08-01",
+    "apiVersion": "2021-03-01",
     "type": "Microsoft.Web/hostingEnvironments",
     "name": ...,
     "location": ...,
@@ -38,7 +39,7 @@ Der folgende gekürzte Codeausschnitt aus einer Resource Manager-Vorlage zeigt d
                 "value": "valueOfCustomSetting"
             }
         ],
-        "workerPools": [ ...],
+        "internalLoadBalancingMode": ...,
         etc...
     }
 }
@@ -49,7 +50,7 @@ Das Attribut **clusterSettings** kann in eine Resource Manager-Vorlage eingefüg
 ## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Aktualisieren einer App Service-Umgebung mit dem Azure-Ressourcen-Explorer
 Alternativ dazu können Sie die App Service-Umgebung mit dem [Azure-Ressourcen-Explorer](https://resources.azure.com)aktualisieren.  
 
-1. Navigieren Sie im Ressourcen-Explorer zum Knoten für die App Service-Umgebung (**subscriptions** > **resourceGroups** > **providers** > **Microsoft.Web** > **hostingEnvironments**). Klicken Sie dann auf die App Service-Umgebung, die aktualisiert werden soll.
+1. Navigieren Sie im Ressourcen-Explorer zum Knoten für die App Service-Umgebung (**subscriptions** >  **{Ihr Abonnement}**  > **resourceGroups** >  **{Ihre Ressourcengruppe}**  > **providers** > **Microsoft.Web** > **hostingEnvironments**). Klicken Sie dann auf die App Service-Umgebung, die aktualisiert werden soll.
 2. Klicken Sie im rechten Bereich in der oberen Symbolleiste auf **Lesen/Schreiben** , um eine interaktive Bearbeitung im Ressourcen-Explorer zuzulassen.  
 3. Klicken Sie dann auf die blaue Schaltfläche **Bearbeiten** , um die Bearbeitung der Resource Manager-Vorlage zu ermöglichen.
 4. Scrollen Sie zum Ende des rechten Bereichs. Das Attribut **clusterSettings** wird ganz unten angezeigt. Sie können entweder einen Attributwert eingeben oder den vorhandenen Wert aktualisieren.
@@ -61,7 +62,7 @@ Wenn eine App Service-Umgebung beispielsweise über vier Front-Ends verfügt, da
 
 ## <a name="enable-internal-encryption"></a>Aktivieren der internen Verschlüsselung
 
-Die App Service-Umgebung wird als Blackbox-System betrieben, bei dem Sie die internen Komponenten oder die Kommunikation innerhalb des Systems nicht sehen können. Um einen höheren Durchsatz zu ermöglichen, ist die Verschlüsselung zwischen internen Komponente standardmäßig nicht aktiviert. Das System ist sicher, da der Datenverkehr vor Überwachung und Zugriff geschützt ist. Bei einer Kompatibilitätsanforderung, die eine End-to-End-Verschlüsselung des vollständigen Datenpfads voraussetzt, kann diese mit einer Clustereinstellung (clusterSetting) aktiviert werden.  
+Die App Service-Umgebung wird als Blackbox-System betrieben, bei dem Sie die internen Komponenten oder die Kommunikation innerhalb des Systems nicht sehen können. Um einen höheren Durchsatz zu ermöglichen, ist die Verschlüsselung zwischen internen Komponente standardmäßig nicht aktiviert. Das System ist sicher, da der Datenverkehr vor Überwachung und Zugriff geschützt ist. Bei einer Kompatibilitätsanforderung, die eine End-to-End-Verschlüsselung des vollständigen Datenpfads voraussetzt, kann diese mit einer Clustereinstellung (clusterSetting) aktiviert werden.
 
 ```json
 "clusterSettings": [
@@ -107,8 +108,4 @@ Die ASE unterstützt das Ändern der Standardverschlüsselungssammlung. Der Stan
 > Wenn für die Verschlüsselungssammlung falsche Werte festgelegt werden, die SChannel nicht verstehen kann, funktioniert die TLS-Kommunikation mit dem Server ggf. nicht mehr. In diesem Fall müssen Sie den Eintrag *FrontEndSSLCipherSuiteOrder* aus **clusterSettings** entfernen und die aktualisierte Resource Manager-Vorlage übermitteln, um die Standardeinstellungen der Verschlüsselungssammlung wiederherzustellen.  Verwenden Sie diese Funktion umsichtig.
 
 ## <a name="get-started"></a>Erste Schritte
-Die Azure-Website mit Resource Manager-Schnellstartvorlagen umfasst eine Vorlage mit der Basisdefinition zum [Erstellen einer App Service-Umgebung](https://azure.microsoft.com/resources/templates/web-app-ase-create/).
-
-<!-- LINKS -->
-
-<!-- IMAGES -->
+Die Azure-Website mit Resource Manager-Schnellstartvorlagen umfasst eine Vorlage mit der Basisdefinition zum [Erstellen einer App Service-Umgebung](https://azure.microsoft.com/resources/templates/web-app-asp-app-on-asev3-create/).

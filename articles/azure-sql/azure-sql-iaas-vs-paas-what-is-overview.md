@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: b8f55a720583713fad59fc07495dcab070d19fa7
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: b3742fbe8767e46cfdb21c2aee389fe0a2890661
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378091"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549050"
 ---
 # <a name="what-is-azure-sql"></a>Was ist Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,11 +32,13 @@ Azure SQL baut auf der vertrauten SQL Server-Engine auf, sodass Sie Anwendungen 
 
 Erfahren Sie, wie jedes Produkt such in die Azure SQL-Datenplattform von Microsoft einfügt, um die richtige Wahl für Ihre Geschäftsanforderungen zu treffen. Ob bei Ihnen Kosteneinsparungen oder minimaler Verwaltungsaufwand Priorität haben – dieser Artikel kann Ihnen dabei helfen, zu entscheiden, welcher Ansatz der richtige ist, um die wichtigsten Anforderungen Ihres Unternehmens zu erfüllen.
 
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
+
 Wenn Sie noch nicht mit Azure SQL vertraut sind, sehen Sie sich das Video mit den *Infos zu Azure SQL* aus der detaillierten [Azure SQL-Videoserie](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) an:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
 
-> [!TIP]
-> Wie können wir Azure SQL verbessern? [Nehmen Sie an der Umfrage teil.](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456)
+
 
 ## <a name="overview"></a>Übersicht
 
@@ -116,7 +118,7 @@ Im Allgemeinen lässt sich mit SQL-Datenbank und SQL Managed Instance die Anzahl
 | :--- | :--- | :--- |
 |Unterstützt die meisten lokalen Funktionen auf Datenbankebene. Es stehen die gängigsten SQL Server-Features zur Verfügung.<br/>99,995 % Verfügbarkeit garantiert.<br/>Integrierte Funktionen für Sicherungen, Patching und Wiederherstellung.<br/>Letzte stabile Datenbank-Engine-Version.<br/>Möglichkeit, einzelnen Datenbanken die erforderlichen Ressourcen (CPU/Speicher) zuzuweisen.<br/>Integrierte erweiterte Intelligenz- und Sicherheitsfeatures.<br/>Onlineänderung von Ressourcen (CPU/Speicher).| Unterstützt fast alle Funktionen auf Instanz- und Datenbankebene. Hohe Kompatibilität mit SQL Server.<br/>99,99 % Verfügbarkeit garantiert.<br/>Integrierte Funktionen für Sicherungen, Patching und Wiederherstellung.<br/>Letzte stabile Datenbank-Engine-Version.<br/>Einfache Migration von SQL Server.<br/>Private IP-Adresse im virtuellen Azure-Netzwerk.<br/>Integrierte erweiterte Intelligenz- und Sicherheitsfeatures.<br/>Onlineänderung von Ressourcen (CPU/Speicher).| Sie haben vollständige Kontrolle über die SQL Server-Engine. Unterstützt alle lokalen Funktionen.<br/>Verfügbarkeit von bis zu 99,99%.<br/>Vollständige Parität mit der entsprechenden lokalen SQL Server-Version.<br/>Festgelegte, bekannte Datenbank-Engine-Version.<br/>Einfache Migration von SQL Server.<br/>Private IP-Adresse im virtuellen Azure-Netzwerk.<br/>Sie können Anwendungen oder Dienste auf dem Host bereitstellen, auf dem sich SQL Server befindet.|
 |Eine von SQL Server ausgehende Migration kann schwierig sein.<br/>Einige SQL Server-Features stehen nicht zur Verfügung.<br/>Es gibt keine exakte garantierte Wartungszeit (sie ist jedoch nahezu transparent).<br/>Die Kompatibilität mit der SQL Server-Version kann nur über Datenbank-Kompatibilitätsgrade erreicht werden.<br/>Unterstützung für private IP-Adressen mit [Azure Private Link](database/private-endpoint-overview.md).|Es gibt immer noch eine geringe Anzahl von SQL Server-Features, die nicht verfügbar sind.<br/>Es gibt keine exakte garantierte Wartungszeit (sie ist jedoch nahezu transparent).<br/>Die Kompatibilität mit der SQL Server-Version kann nur über Datenbank-Kompatibilitätsgrade erreicht werden.|Sie müssen Ihre Sicherungen und Patches verwalten.<br>Sie müssen Ihre Hochverfügbarkeitslösung selbst implementieren.<br/>Während der Änderung von Ressourcen (CPU/Speicher) treten Ausfallzeiten auf.|
-| Datenbanken von bis zu 100 TB. | Bis zu 8 TB. | SQL Server-Instanzen mit bis zu 256 TB Speicherplatz. Die Instanz unterstützt beliebig viele Datenbanken. |
+| Datenbanken von bis zu 100 TB. | Bis zu 16 TB | SQL Server-Instanzen mit bis zu 256 TB Speicherplatz. Die Instanz unterstützt beliebig viele Datenbanken. |
 | Die lokale Anwendung kann auf Daten in der Azure SQL-Datenbank zugreifen. | [Native Implementierung von und Konnektivität mit virtuellen Netzwerken](managed-instance/vnet-existing-add-subnet.md) in der lokalen Umgebung unter Verwendung von Azure ExpressRoute oder VPN Gateway. | Mit virtuellen SQL-Computern können Sie Anwendungen betreiben, die teilweise in der Cloud und teilweise lokal ausgeführt werden. Beispielsweise können Sie Ihr lokales Netzwerk und Ihre Active Directory-Domäne mit [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)in die Cloud ausdehnen. Weitere Informationen zu Hybrid Cloud-Lösungen finden Sie unter [Erweitern lokaler Datenlösungen auf die Cloud](/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |
 
 
@@ -177,5 +179,6 @@ Für **SQL Server auf Azure-VM** bietet Microsoft eine SLA mit einer Verfügbark
 - Informationen zu den ersten Schritten für SQL-Datenbank finden Sie unter [Erstellen einer ersten Azure SQL-Datenbank](database/single-database-create-quickstart.md).
 - Informationen zu den ersten Schritten mit Azure SQL Managed Instance finden Sie unter [Ihre erste Azure SQL Managed Instance](managed-instance/instance-create-quickstart.md). 
 - Informationen finden Sie unter [Preise für SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/).
+- Informationen finden Sie unter [Azure SQL Managed Instance – Preise](https://azure.microsoft.com/pricing/details/azure-sql-managed-instance/single/).
 - Informationen zu den ersten Schritten mit SQL Server auf virtuellen Azure-Computern finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines/windows/create-sql-vm-portal.md) .
 - [Bestimmen Sie die richtige SQL-Datenbank-SKU bzw. SQL Managed Instance-SKU für Ihre lokale Datenbank](/sql/dma/dma-sku-recommend-sql-db/).

@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b1a9f54febcd2ebf36287590cb0579f8d2dea804
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: f6d54941d01bf6588a330dcf822b38c46ca8eed6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166348"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846537"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -33,7 +33,7 @@ Der Befehl „sync“ unterscheidet sich auf mehrere Arten vom Befehl „copy“
 
 1. Das „recursive“-Flag ist standardmäßig „true“, und „sync“ kopiert alle Unterverzeichnisse. „sync“ kopiert nur die Dateien der obersten Ebene in einem Verzeichnis, wenn das „recursive“-Flag „false“ ist.
 2. Fügen Sie beim Synchronisieren zwischen virtuellen Verzeichnissen dem Pfad einen nachstehenden Schrägstrich hinzu (siehe Beispiele), wenn ein Blob über denselben Namen wie eines der virtuellen Verzeichnisse verfügt.
-3. Wenn das `deleteDestination`-Flag auf „true“ oder „prompt“ festgelegt ist, löscht „sync“ Dateien und Blobs am Ziel, die in der Quelle nicht vorhanden sind.
+3. Wenn das `--delete-destination`-Flag auf „true“ oder „prompt“ festgelegt ist, löscht „sync“ Dateien und Blobs am Ziel, die in der Quelle nicht vorhanden sind.
 
 ## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
 

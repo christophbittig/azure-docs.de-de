@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 000daf7c60d0bc823aacdab85de42af3b6cbbf55
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: 55445659ef58d073eb8992060b82c76bd08f8e18
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129419047"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548309"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2
 
@@ -43,6 +43,7 @@ Es gibt ein Azure PowerShell-Skript, in dem folgende Vorgänge ausgeführt werde
 * In v2 wird IPv6 nicht unterstützt, weshalb v1-Gateways, für die IPv6 aktiviert ist, nicht migriert werden. Wenn Sie das Skript ausführen, wird es möglicherweise nicht vollständig ausgeführt.
 * Wenn das v1-Gateway nur eine private IP-Adresse hat, erstellt das Skript eine öffentliche IP-Adresse und eine private IP-Adresse für das neue v2-Gateway. v2-Gateways unterstützen derzeit nicht nur private IP-Adressen.
 * Header mit Namen, die etwas anderes als Buchstaben, Ziffern, Bindestriche und Unterstriche enthalten, werden nicht an Ihre Anwendung übergeben. Dies gilt nur für Headernamen, nicht für Headerwerte. Hierbei handelt es sich um einen Breaking Change gegenüber v1.
+* Die NTLM- und Kerberos-Authentifizierung wird von Application Gateway v2 nicht unterstützt. Das Skript kann nicht erkennen, ob das Gateway diese Art von Datenverkehr bedient, und kann bei Ausführung als Breaking Change von v1- auf v2-Gateways darstellen.
 
 ## <a name="download-the-script"></a>Herunterladen des Skripts
 

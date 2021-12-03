@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: mimckitt
-ms.openlocfilehash: dcdfee7742f2afb66965c855bf01f86dc1680690
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 64ff90e695b8027ed23da463bdf75a4778675e0a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692995"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456801"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Tutorial: Erstellen und Verwenden eines benutzerdefinierten Images für VM-Skalierungsgruppen mit der Azure CLI
 
@@ -23,7 +23,7 @@ ms.locfileid: "122692995"
 Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bereitstellen der VM-Instanzen verwendet wird. Sie können ein benutzerdefiniertes VM-Image verwenden, um die Anzahl von Aufgaben zu reduzieren, nachdem VM-Instanzen bereitgestellt wurden. Dieses benutzerdefinierte VM-Image enthält alle erforderlichen Anwendungsinstallationen oder -konfigurationen. Für alle VM-Instanzen, die in der Skalierungsgruppe erstellt werden, wird das benutzerdefinierte VM-Image verwendet, und die VM-Instanzen sind für die Bereitstellung Ihres Anwendungsdatenverkehrs bereit. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen einer Shared Image Gallery-Instanz
+> * Erstellen einer Azure Compute Gallery
 > * Erstellen der Definition eines spezialisierten Images
 > * Erstellen einer Imageversion
 > * Erstellen einer Skalierungsgruppe auf der Grundlage eines spezialisierten Images
@@ -38,9 +38,9 @@ Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bere
 
 ## <a name="overview"></a>Übersicht
 
-Der [Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Starten von Konfigurationen verwendet werden, z.B. zum Vorabladen von Anwendungen, Anwendungskonfigurationen und anderen Betriebssystemkonfigurationen. 
+Eine [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Starten von Konfigurationen verwendet werden, z.B. zum Vorabladen von Anwendungen, Anwendungskonfigurationen und anderen Betriebssystemkonfigurationen. 
 
-Shared Image Gallery ermöglicht Ihnen die Freigabe Ihrer benutzerdefinierten VM-Images für andere Benutzer. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. 
+Mithilfe der Azure Compute Gallery können Sie Ihre benutzerdefinierten VM-Images für andere Benutzer freigeben. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. 
 
 ## <a name="create-and-configure-a-source-vm"></a>Erstellen und Konfigurieren einer Quell-VM
 
@@ -235,7 +235,7 @@ az group delete --name myResourceGroup --no-wait --yes
 In diesem Tutorial wurde beschrieben, wie Sie ein benutzerdefiniertes VM-Image für Ihre Skalierungsgruppen mit der Azure CLI erstellen und verwenden:
 
 > [!div class="checklist"]
-> * Erstellen einer Shared Image Gallery-Instanz
+> * Erstellen einer Azure Compute Gallery
 > * Erstellen der Definition eines spezialisierten Images
 > * Erstellen einer Imageversion
 > * Erstellen einer Skalierungsgruppe auf der Grundlage eines spezialisierten Images

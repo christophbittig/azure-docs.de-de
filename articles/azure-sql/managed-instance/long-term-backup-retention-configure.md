@@ -10,13 +10,13 @@ ms.topic: how-to
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma
-ms.date: 07/13/2021
-ms.openlocfilehash: cc25b431c6e1eb4cbb6b31cfc5f9b1a1a26f8a03
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/12/2021
+ms.openlocfilehash: 25040c5017a4d0a990d9b1fddb342cab94c97e85
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349644"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239374"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention"></a>Verwalten der langfristigen Sicherungsaufbewahrung für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,69 +26,28 @@ In Azure SQL Managed Instance können Sie eine Richtlinie für die [langfristige
    > [!IMPORTANT]
    > LTR für verwaltete Instanzen ist zurzeit in der öffentlichen Vorschau in öffentlichen Azure-Regionen verfügbar. 
 
-In den folgenden Abschnitten wird erläutert, wie Sie mithilfe des Azure-Portals und der PowerShell die langfristige Sicherungsaufbewahrung konfigurieren, Sicherungen in Azure SQL-Speicher anzeigen und eine Sicherung in Azure SQL-Speicher wiederherstellen.
+In den folgenden Abschnitten wird erläutert, wie Sie mithilfe des Azure-Portals, von PowerShell und der Azure-Befehlszeilenschnittstelle die Langzeitaufbewahrung von Sicherungen konfigurieren, Sicherungen in Azure SQL-Speicher anzeigen und eine Sicherung in Azure SQL-Speicher wiederherstellen.
 
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
+# <a name="portal"></a>[Portal](#tab/portal)
 
-In den folgenden Abschnitten erfahren Sie, wie Sie das Azure-Portal verwenden, um Richtlinien für die Langzeitaufbewahrung festzulegen, verfügbare Sicherungen für die Langzeitaufbewahrung verwalten und eine Wiederherstellung aus einer verfügbaren Sicherung durchführen.
+Ein aktives Azure-Abonnement.
 
-### <a name="configure-long-term-retention-policies"></a>Konfigurieren von Richtlinien für die langfristige Aufbewahrung
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Sie können SQL Managed Instance zur [Aufbewahrung von automatisierten Sicherungen](../database/long-term-retention-overview.md) für einen längeren Zeitraum konfigurieren, als gemäß der Aufbewahrungsdauer für Ihre Dienstebene vorgesehen ist.
+Bereiten Sie die Umgebung für die Azure CLI vor.
 
-1. Wählen Sie im Azure-Portal Ihre verwaltete Instanz aus, und klicken Sie dann auf **Sicherungen**. Wählen Sie auf der Registerkarte **Aufbewahrungsrichtlinien** die Datenbank(en) aus, für die Sie Richtlinien für die langfristige Sicherungsaufbewahrung festlegen oder ändern möchten. Änderungen gelten nicht für Datenbanken, die nicht ausgewählt wurden. 
+[!INCLUDE[azure-cli-prepare-your-environment-no-header](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-   ![Link zum Verwalten von Sicherungen](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-2. Geben Sie im Bereich **Richtlinien konfigurieren** den gewünschten Aufbewahrungszeitraum für wöchentliche, monatliche oder jährliche Sicherungen an. Wählen Sie den Aufbewahrungszeitraum „0“ aus, um anzugeben, dass keine Langzeitaufbewahrung von Sicherungen festgelegt werden soll.
+Bereiten Sie Ihre Umgebung für PowerShell vor.
 
-   ![Konfigurieren von Richtlinien](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
-
-3. Klicken Sie auf **Anwenden**, wenn Sie fertig sind.
-
-> [!IMPORTANT]
-> Wenn Sie eine Richtlinie für die Langzeitaufbewahrung von Sicherungen aktivieren, kann es bis zu 7 Tage dauern, bevor die erste Sicherung angezeigt wird und wiederhergestellt werden kann. Weitere Informationen dazu, in welchen Intervallen Sicherungskopien für die Langzeitaufbewahrung erstellt werden, finden Sie unter [Langzeitaufbewahrung von Sicherungen](../database/long-term-retention-overview.md).
-
-### <a name="view-backups-and-restore-from-a-backup"></a>Anzeigen von Sicherungen und Wiederherstellen einer Sicherung
-
-Zeigen Sie die Sicherungen an, die für eine bestimmte Datenbank mit einer LTR-Richtlinie aufbewahrt werden, und führen Sie die Wiederherstellung aus diesen Sicherungen aus.
-
-1. Wählen Sie im Azure-Portal Ihre verwaltete Instanz aus, und klicken Sie dann auf **Sicherungen**. Wählen Sie auf der Registerkarte **Verfügbare Sicherungen** die Datenbank aus, für die Sie verfügbare Sicherungen anzeigen möchten. Klicken Sie auf **Manage**.
-
-   ![Auswählen der Datenbank](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
-
-1. Überprüfen Sie im Bereich **Sicherungen verwalten** die verfügbaren Sicherungen.
-
-   ![Anzeigen von Sicherungen](./media/long-term-backup-retention-configure/ltr-available-backups.png)
-
-1. Wählen Sie die Sicherung aus, die Sie wiederherstellen möchten, klicken Sie auf **Wiederherstellen**, geben Sie dann auf der Seite „Wiederherstellen“ den neuen Datenbanknamen an. Die Sicherung und die Quelle werden auf dieser Seite vorab ausgefüllt. 
-
-   ![Auswählen der Sicherung für die Wiederherstellung](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
-   
-   ![Wiederherstellen](./media/long-term-backup-retention-configure/ltr-restore.png)
-
-1. Klicken Sie auf **Überprüfen + erstellen**, um die Wiederherstellungsdetails zu überprüfen. Klicken Sie dann auf **Erstellen**, um die Datenbank aus der ausgewählten Sicherung wiederherzustellen.
-
-1. Klicken Sie auf der Symbolleiste auf das Benachrichtigungssymbol, um den Status des Wiederherstellungsauftrags anzuzeigen.
-
-   ![Status des Wiederherstellungsauftrags](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
-
-1. Öffnen Sie nach Abschluss des Wiederherstellungsauftrags die Seite **Übersicht über verwaltete Instanzen**, um die neu wiederhergestellte Datenbank anzuzeigen.
-
-> [!NOTE]
-> Auf diesem Blatt können Sie mithilfe von SQL Server Management Studio eine Verbindung mit der wiederhergestellten Datenbank herstellen, um erforderliche Aufgaben durchzuführen. Sie können beispielsweise [einen Teil der Daten aus der wiederhergestellten Datenbank extrahieren und in die vorhandene Datenbank kopieren oder die vorhandene Datenbank löschen und die wiederhergestellte Datenbank in den vorhandenen Datenbanknamen umbenennen](../database/recovery-using-backups.md#point-in-time-restore).
-
-
-## <a name="using-powershell"></a>PowerShell
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
 > Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, jedoch erfolgen zukünftige Entwicklungen im Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
-
-In den folgenden Abschnitten wird erläutert, wie Sie mithilfe von PowerShell die langfristige Sicherungsaufbewahrung konfigurieren, Sicherungen in Azure Storage anzeigen und eine Wiederherstellung aus einer Sicherung in Azure Storage ausführen.
-
-### <a name="azure-rbac-roles-to-manage-long-term-retention"></a>Azure RBAC-Rollen zum Verwalten der langfristigen Aufbewahrung
 
 Für **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** und **Restore-AzSqlInstanceDatabase** müssen Sie über eine der folgenden Rollen verfügen:
 
@@ -112,7 +71,62 @@ Azure RBAC-Berechtigungen können im Bereich *Abonnement* oder *Ressourcengrupp
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
-### <a name="create-an-ltr-policy"></a>Erstellen einer LTR-Richtlinie
+---
+
+## <a name="create-long-term-retention-policies"></a>Erstellen von Richtlinien für die Langzeitaufbewahrung
+
+Sie können SQL Managed Instance zur [Aufbewahrung von automatisierten Sicherungen](../database/long-term-retention-overview.md) für einen längeren Zeitraum konfigurieren, als gemäß der Aufbewahrungsdauer für Ihre Dienstebene vorgesehen ist.
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+1. Wählen Sie im Azure-Portal Ihre verwaltete Instanz aus, und klicken Sie dann auf **Sicherungen**. Wählen Sie auf der Registerkarte **Aufbewahrungsrichtlinien** die Datenbank(en) aus, für die Sie Richtlinien für die langfristige Sicherungsaufbewahrung festlegen oder ändern möchten. Änderungen gelten nicht für Datenbanken, die nicht ausgewählt wurden. 
+
+   ![Link zum Verwalten von Sicherungen](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
+
+2. Geben Sie im Bereich **Richtlinien konfigurieren** den gewünschten Aufbewahrungszeitraum für wöchentliche, monatliche oder jährliche Sicherungen an. Wählen Sie den Aufbewahrungszeitraum „0“ aus, um anzugeben, dass keine Langzeitaufbewahrung von Sicherungen festgelegt werden soll.
+
+   ![Konfigurieren von Richtlinien](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+
+3. Klicken Sie auf **Anwenden**, wenn Sie fertig sind.
+
+> [!IMPORTANT]
+> Wenn Sie eine Richtlinie für die Langzeitaufbewahrung von Sicherungen aktivieren, kann es bis zu 7 Tage dauern, bevor die erste Sicherung angezeigt wird und wiederhergestellt werden kann. Weitere Informationen dazu, in welchen Intervallen Sicherungskopien für die Langzeitaufbewahrung erstellt werden, finden Sie unter [Langzeitaufbewahrung von Sicherungen](../database/long-term-retention-overview.md).
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+1. Führen Sie den Befehl [az sql midb show](/cli/azure/sql/midb#az_sql_midb_show) aus, um Details zur Managed Instance-Datenbank zu erhalten.
+
+    ```azurecli
+    az sql midb show /
+    --resource-group mygroup /
+    --managed-instance myinstance /
+    --name mymanageddb /
+    --subscription mysubscription
+    ```
+
+2. Führen Sie den Befehl [az sql midb ltr-policy set](/cli/azure/sql/midb/ltr-policy#az_sql_midb_ltr_policy_set) aus, um eine LTR-Richtlinie zu erstellen. Im folgenden Beispiel wird eine Richtlinie für die Langzeitaufbewahrung für die wöchentliche Sicherung über 12 Wochen definiert.
+
+    ```azurecli
+    az sql midb ltr-policy set /
+    --resource-group mygroup /
+    --managed-instance myinstance /
+    --name mymanageddb /
+    --weekly-retention "P12W"
+    ```
+
+    In diesem Beispiel wird eine Aufbewahrungsrichtlinie für 12 Wochen für die wöchentliche Sicherung, für 5 Jahre für die jährliche Sicherung und für die Woche ab dem 15. April erstellt, in der die jährliche LTR-Sicherung erstellt werden soll.
+
+    ```azurecli
+    az sql midb ltr-policy set /
+    --resource-group mygroup /
+    --managed-instance myinstance /
+    --name mymanageddb /
+    --weekly-retention "P12W" /
+    --yearly-retention "P5Y" /
+    --week-of-year 16
+    ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 # get the Managed Instance
@@ -148,6 +162,111 @@ $LTRPolicy = @{
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy @LTRPolicy
 ```
 
+---
+
+## <a name="view-backups-and-restore-from-a-backup"></a>Anzeigen von Sicherungen und Wiederherstellen einer Sicherung
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+Zeigen Sie die Sicherungen an, die für eine bestimmte Datenbank mit einer LTR-Richtlinie aufbewahrt werden, und führen Sie die Wiederherstellung aus diesen Sicherungen aus.
+
+1. Wählen Sie im Azure-Portal Ihre verwaltete Instanz aus, und klicken Sie dann auf **Sicherungen**. Wählen Sie auf der Registerkarte **Verfügbare Sicherungen** die Datenbank aus, für die Sie verfügbare Sicherungen anzeigen möchten. Klicken Sie auf **Manage**.
+
+   ![Auswählen der Datenbank](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
+
+1. Überprüfen Sie im Bereich **Sicherungen verwalten** die verfügbaren Sicherungen.
+
+   ![Anzeigen von Sicherungen](./media/long-term-backup-retention-configure/ltr-available-backups.png)
+
+1. Wählen Sie die Sicherung aus, die Sie wiederherstellen möchten, klicken Sie auf **Wiederherstellen**, geben Sie dann auf der Seite „Wiederherstellen“ den neuen Datenbanknamen an. Die Sicherung und die Quelle werden auf dieser Seite vorab ausgefüllt. 
+
+   ![Auswählen der Sicherung für die Wiederherstellung](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
+   
+   ![Wiederherstellen](./media/long-term-backup-retention-configure/ltr-restore.png)
+
+1. Klicken Sie auf **Überprüfen + erstellen**, um die Wiederherstellungsdetails zu überprüfen. Klicken Sie dann auf **Erstellen**, um die Datenbank aus der ausgewählten Sicherung wiederherzustellen.
+
+1. Klicken Sie auf der Symbolleiste auf das Benachrichtigungssymbol, um den Status des Wiederherstellungsauftrags anzuzeigen.
+
+   ![Status des Wiederherstellungsauftrags](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
+
+1. Öffnen Sie nach Abschluss des Wiederherstellungsauftrags die Seite **Übersicht über verwaltete Instanzen**, um die neu wiederhergestellte Datenbank anzuzeigen.
+
+> [!NOTE]
+> Auf diesem Blatt können Sie mithilfe von SQL Server Management Studio eine Verbindung mit der wiederhergestellten Datenbank herstellen, um erforderliche Aufgaben durchzuführen. Sie können beispielsweise [einen Teil der Daten aus der wiederhergestellten Datenbank extrahieren und in die vorhandene Datenbank kopieren oder die vorhandene Datenbank löschen und die wiederhergestellte Datenbank in den vorhandenen Datenbanknamen umbenennen](../database/recovery-using-backups.md#point-in-time-restore).
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+### <a name="view-ltr-policies"></a>Anzeigen von LTR-Richtlinien
+
+Führen Sie den Befehl [az sql midb ltr-policy show](/cli/azure/sql/midb/ltr-policy#az_sql_midb_ltr_policy_show) aus, um die LTR-Richtlinie für eine einzelne Datenbank innerhalb einer Instanz anzuzeigen.
+
+```azurecli
+az sql midb ltr-policy show \
+    --resource-group mygroup \
+    --managed-instance myinstance \
+    --name mymanageddb
+```
+
+### <a name="view-ltr-backups"></a>Anzeigen von LTR-Sicherungen
+
+Führen Sie den Befehl [az sql midb ltr-backup list](/cli/azure/sql/midb/ltr-backup#az_sql_midb_ltr_backup_list) aus, um die LTR-Sicherungen innerhalb einer Instanz anzuzeigen.
+
+```azurecli
+az sql midb ltr-backup list \
+    --resource-group mygroup \
+    --location eastus2 \
+    --managed-instance myinstance
+```
+
+### <a name="delete-ltr-backups"></a>Löschen von LTR-Sicherungen
+
+Führen Sie den Befehl [az sql midb ltr-backup delete](/cli/azure/sql/midb/ltr-backup#az_sql_midb_ltr_backup_delete) aus, um eine LTR-Sicherung zu entfernen. Sie können den Befehl [az sql midb ltr-backup list](/cli/azure/sql/midb/ltr-backup#az_sql_midb_ltr_backup_list) ausführen, um die Sicherung `name` abzurufen.
+
+```azurecli
+az sql midb ltr-backup delete \
+    --location eastus2 \
+    --managed-instance myinstance \
+    --database mymanageddb \
+    --name "3214b3fb-fba9-43e7-96a3-09e35ffcb336;132292152080000000"
+```
+
+> [!IMPORTANT]
+> Das Löschen der LTR-Sicherung kann nicht rückgängig gemacht werden. Wenn Sie eine LTR-Sicherung löschen möchten, nachdem die Instanz gelöscht wurde, müssen Sie über die Berechtigung im Bereich „Abonnement“ verfügen. Sie können Benachrichtigungen zu jedem Löschvorgang in Azure Monitor einrichten, indem Sie nach dem Vorgang „Löscht eine Sicherung zur langfristigen Aufbewahrung“ filtern. Das Aktivitätsprotokoll enthält Informationen dazu, wer die Anforderung vorgenommen hat und wann sie erfolgt ist. Ausführliche Anweisungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../../azure-monitor/alerts/alerts-activity-log.md).
+
+### <a name="restore-from-ltr-backups"></a>Wiederherstellen von LTR-Sicherungen
+
+Führen Sie den Befehl [az sql midb ltr-backup restore](/cli/azure/sql/midb/ltr-backup#az_sql_midb_ltr_backup_restore) aus, um Ihre Datenbank aus einer LTR-Sicherung wiederherzustellen. Sie können den Befehl [az sql midb ltr-backup show](/cli/azure/sql/midb/ltr-backup#az_sql_midb_ltr_backup_show) ausführen, um die `backup-id` abzurufen.
+
+1. Erstellen Sie mit dem Befehl `az sql db ltr-backup show` eine Variable für die `backup-id` zur zukünftigen Verwendung.
+
+   ```azurecli
+    get_backup_id=$(az sql midb ltr-backup show
+       --location eastus2 \
+       --managed-instance myinstance \
+       --database mydb \
+       --name "3214b3fb-fba9-43e7-96a3-09e35ffcb336;132292152080000000" \
+       --query 'id' \
+       --output tsv)
+   ```
+2. Wiederherstellen der Datenbank aus einer LTR-Sicherung
+
+    ```azurecli
+    az sql midb ltr-backup restore \
+        --dest-database targetmidb \
+        --dest-mi myinstance \
+        --dest-resource-group mygroup \
+        --backup-id $get_backup_id
+    ```
+
+> [!IMPORTANT]
+> Um die Wiederherstellung aus einer LTR-Sicherung nach dem Löschen der Instanz durchführen zu können, müssen Sie über Berechtigungen im Bereich des Abonnements der Instanz verfügen, und dieses Abonnement muss aktiv sein.
+
+> [!NOTE]
+> Auf diesem Blatt können Sie mithilfe von SQL Server Management Studio eine Verbindung mit der wiederhergestellten Datenbank herstellen, um erforderliche Aufgaben durchzuführen. Sie können beispielsweise einen Teil der Daten aus der wiederhergestellten Datenbank extrahieren und in die vorhandene Datenbank kopieren oder die vorhandene Datenbank löschen und die wiederhergestellte Datenbank in den vorhandenen Datenbanknamen umbenennen. Siehe [Point-in-Time-Wiederherstellung](../database/recovery-using-backups.md#point-in-time-restore).
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ### <a name="view-ltr-policies"></a>Anzeigen von LTR-Richtlinien
 
 In diesem Beispiel wird gezeigt, wie Sie die LTR-Richtlinien in einer Instanz für eine Einzeldatenbank auflisten.
@@ -162,7 +281,7 @@ $LTRPolicies = @{
 Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy @LTRPolicy 
 ```
 
-In diesem Beispiel wird gezeigt, wie Sie die LTR-Richtlinien in einer Instanz für alle Datenbanken auflisten.
+In diesem Beispiel wird gezeigt, wie Sie die LTR-Richtlinien für alle Datenbanken in einer Instanz auflisten.
 
 ```powershell
 # gets the current version of LTR policy for all of the databases on an instance
@@ -286,6 +405,8 @@ Restore-AzSqlInstanceDatabase @RestoreLTRParam
 
 > [!NOTE]
 > Auf diesem Blatt können Sie mithilfe von SQL Server Management Studio eine Verbindung mit der wiederhergestellten Datenbank herstellen, um erforderliche Aufgaben durchzuführen. Sie können beispielsweise einen Teil der Daten aus der wiederhergestellten Datenbank extrahieren und in die vorhandene Datenbank kopieren oder die vorhandene Datenbank löschen und die wiederhergestellte Datenbank in den vorhandenen Datenbanknamen umbenennen. Siehe [Point-in-Time-Wiederherstellung](../database/recovery-using-backups.md#point-in-time-restore).
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

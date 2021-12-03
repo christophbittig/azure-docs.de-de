@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: 12d589088f17e3eeb3bda0fecbb2c1fc24b65203
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 11/09/2021
+ms.openlocfilehash: 868fa30779048447014fa0e7b048d6de8051931c
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129084092"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137532"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -175,7 +175,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | --- | --- | --- | --- |
 > | availabilitySets | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
 > | cloudservices | Ressourcengruppe | 1-15 <br><br>Siehe Hinweis weiter unten. | Leerzeichen, Steuerzeichen oder diese Zeichen können nicht verwendet werden:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
-> | diskEncryptionSets | Ressourcengruppe | 1-80 | Alphanumerische Zeichen und Unterstriche. |
+> | diskEncryptionSets | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
 > | disks | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
 > | galleries | Ressourcengruppe | 1-80 | Alphanumerische Zeichen und Punkte.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
 > | galleries/applications | Katalog | 1-80 | Alphanumerische Zeichen, Bindestriche und Punkte.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |

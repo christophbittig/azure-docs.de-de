@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/16/2021
 ms.author: jamesmantu
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: e3481ee896e6caed33bdf7e59c64307a88136fde
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: a42f4e5cd0b58c2078a4ba498b262efb804edcf8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993651"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050278"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-react-single-page-app-spa-using-auth-code-flow"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API über eine React-Single-Page-Webanwendung (SPA) unter Verwendung des Autorisierungscodeflows
 
@@ -163,7 +163,7 @@ Geben Sie im Schritt [Umleitungs-URI: MSAL.js 2.0 mit dem Authentifizierungscod
 
 Erstellen Sie in *src* einen Ordner namens *components* und in diesem Ordner eine Datei namens *SignInButton.jsx*. Fügen Sie den Code aus einem der folgenden Abschnitte hinzu, um die Anmeldung mittels Popupfenster oder Vollbildumleitung aufzurufen:
 
-### <a name="sign-in-using-popups"></a>Anmelden mittels Popups
+### <a name="sign-in-using-pop-ups"></a>Anmelden mit Hilfe von Popups
 
 Fügen Sie in *src/components/SignInButton.jsx* den folgenden Code hinzu, um eine Schaltflächenkomponente zu erstellen, durch die eine Popupanmeldung aufgerufen wird, wenn ein Benutzer sie auswählt:
 
@@ -277,9 +277,9 @@ An diesem Punkt wird ein mit PKCE geschützter Autorisierungscode an den mit COR
 
 Erstellen Sie in *src/components* eine Datei mit dem Namen *SignOutButton.jsx*. Fügen Sie den Code aus einem der folgenden Abschnitte hinzu, um die Abmeldung mittels Popupfenster oder Vollbildumleitung aufzurufen:
 
-### <a name="sign-out-using-popups"></a>Abmelden mittels Popups
+### <a name="sign-out-using-pop-ups"></a>Durch Pop-Ups abmelden
 
-Fügen Sie in *src/components/SignOutButton.jsx* den folgenden Code hinzu, um eine Schaltflächenkomponente zu erstellen, durch die eine Popupabmeldung aufgerufen wird, wenn ein Benutzer sie auswählt:
+Fügen Sie in *src/components/SignInButton.jsx* den folgenden Code hinzu, um eine Schaltflächenkomponente zu erstellen, durch die eine Popupanmeldung aufgerufen wird, wenn ein Benutzer sie auswählt:
 
 ```jsx
 import React from "react";

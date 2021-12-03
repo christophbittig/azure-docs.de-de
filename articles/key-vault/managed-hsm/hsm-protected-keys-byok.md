@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: mbaldwin
-ms.openlocfilehash: ffdec82c7009ca696b04b4ee5fff31a92bd77d50
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3afe9135c620b808ad6853705c5886aa3628ab7a
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440942"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370307"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Importieren von durch HSM geschützten Schlüsseln in verwaltetes HSM (BYOK)
 
@@ -78,21 +78,21 @@ Weitere Informationen zu den Anmeldeoptionen für die Befehlszeilenschnittstelle
 
 |Schlüsselname|Schlüsseltyp|Schlüsselgröße/Kurve|Origin|BESCHREIBUNG|
 |---|---|---|---|---|
-|Schlüsselaustauschschlüssel (Key Exchange Key, KEK)|RSA| 2\.048 Bit<br />3\.072 Bit<br />4\.096 Bit|Verwaltetes HSM|Dies ist ein durch HSM gestütztes RSA-Schlüsselpaar, das im verwalteten HSM generiert wurde.|
+|Schlüsselaustauschschlüssel (Key Exchange Key, KEK)|RSA-HSM| 2\.048 Bit<br />3\.072 Bit<br />4\.096 Bit|Verwaltetes HSM|Dies ist ein durch HSM gestütztes RSA-Schlüsselpaar, das im verwalteten HSM generiert wurde.|
 |Zielschlüssel|
-||RSA|2\.048 Bit<br />3\.072 Bit<br />4\.096 Bit|Anbieter-HSM|Der an das verwaltete HSM zu übertragende Schlüssel|
-||EC|P-256<br />P-384<br />P-521|Anbieter-HSM|Der an das verwaltete HSM zu übertragende Schlüssel|
-||Symmetrischer Schlüssel (oct-HSM)|128 Bit<br />192 Bit<br />256 Bit|Anbieter-HSM|Der an das verwaltete HSM zu übertragende Schlüssel|
+||RSA-HSM|2\.048 Bit<br />3\.072 Bit<br />4\.096 Bit|Anbieter-HSM|Der an das verwaltete HSM zu übertragende Schlüssel|
+||EC-HSM|P-256<br />P-384<br />P-521|Anbieter-HSM|Der an das verwaltete HSM zu übertragende Schlüssel|
+||Symmetrischer Schlüssel (oct-hsm)|128 Bit<br />192 Bit<br />256 Bit|Anbieter-HSM|Der an das verwaltete HSM zu übertragende Schlüssel|
 ||||
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>Generieren und Übertragen des Schlüssels an das verwaltete HSM
 
 So generieren und übertragen Sie den Schlüssel an das verwaltete HSM
 
-* [Schritt 1: Generieren eines KEK](#step-1-generate-a-kek)
-* [Schritt 2: Herunterladen des öffentlichen Schlüssels des KEK](#step-2-download-the-kek-public-key)
-* [Schritt 3: Generieren des Schlüssels und Vorbereiten für die Übertragung](#step-3-generate-and-prepare-your-key-for-transfer)
-* [Schritt 4: Übertragen Ihres Schlüssels an das verwaltete HSM](#step-4-transfer-your-key-to-managed-hsm)
-
+  - [Schritt 1: Generieren eines KEK](#step-1-generate-a-kek)
+  - [Schritt 2: Herunterladen des öffentlichen Schlüssels des KEK](#step-2-download-the-kek-public-key)
+  - [Schritt 3: Generieren des Schlüssels und Vorbereiten für die Übertragung](#step-3-generate-and-prepare-your-key-for-transfer)
+  - [Schritt 4: Übertragen Ihres Schlüssels an das verwaltete HSM](#step-4-transfer-your-key-to-managed-hsm) 
+   
 ### <a name="step-1-generate-a-kek"></a>Schritt 1: Generieren eines KEK
 
 Ein KEK ist ein RSA-Schlüssel, der in einem verwalteten HSM generiert wird. Der KEK wird zum Verschlüsseln des Schlüssels verwendet, den Sie importieren möchten (*Zielschlüssel*).

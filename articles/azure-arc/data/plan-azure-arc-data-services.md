@@ -6,14 +6,14 @@ ms.service: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: ffb57d83493aee607fa89720d978a00b25e44e24
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 15688b89b319b884707e9e6d8faa9a13de3233e0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426847"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563338"
 ---
 # <a name="plan-an-azure-arc-enabled-data-services-deployment"></a>Planen einer Bereitstellung von Datendiensten mit Azure Arc-Unterstützung
 
@@ -33,7 +33,7 @@ Lesen Sie die folgenden Artikel:
 
 Verifizieren Sie Folgendes:
 
-- Die [arcdata-CLI-Erweiterung](install-arcdata-extension.md) ist installiert.
+- Die [`arcdata` CLI-Erweiterung](install-arcdata-extension.md) ist installiert.
 - Die anderen [Clienttools](install-client-tools.md) sind installiert.
 - Sie haben Zugriff auf den Kubernetes-Cluster.
 - Ihre *kubeconfig*-Datei ist konfiguriert. Sie muss auf den Kubernetes-Cluster verweisen, in dem Sie die Bereitstellung ausführen möchten. Führen Sie den folgenden Befehl aus, um den aktuellen Kontext des Clusters zu überprüfen:
@@ -51,7 +51,7 @@ Nachdem Sie die Infrastruktur vorbereitet haben, stellen Sie die Datendienste mi
 
 ## <a name="overview-create-an-azure-arc-enabled-data-controller"></a>Übersicht: Erstellen eines Datencontrollers mit Azure Arc-Unterstützung
 
-Sie können Datendienste mit Azure Arc-Unterstützung auf verschiedenen Arten von Kubernetes-Clustern erstellen, und Sie können Managed Kubernetes-Dienste mit einer Vielzahl von Ansätzen erstellen.
+Sie können Datendienste mit Azure Arc-Unterstützung auf verschiedenen Arten von Kubernetes-Clustern erstellen und Sie können Managed Kubernetes-Dienste mit verschiedenen Ansätzen erstellen.
 
 Derzeit gehören die folgenden Kubernetes-Dienste und -Distributionen zu den validierten Komponenten:
 
@@ -82,24 +82,30 @@ Beim Erstellen von Datendiensten mit Azure Arc-Unterstützung müssen Sie unabh�
 - **Azure-Ressourcengruppenname**: Der Name der Ressourcengruppe, in der die Datencontrollerressource in Azure erstellt werden soll. Alle SQL Managed Instance-Instanzen und Azure Database for PostgreSQL-Hyperscale-Servergruppen mit Azure Arc-Unterstützung werden ebenfalls in dieser Ressourcengruppe erstellt.
 - **Azure-Standort**: Der Azure-Standort, an dem die Metadaten der Datencontrollerressource in Azure gespeichert werden. Eine Liste der verfügbaren Regionen finden Sie auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc) für die globale Azure-Infrastruktur. Die Metadaten und Abrechnungsinformationen zu den Azure-Ressourcen, die vom bereitgestellten Datencontroller verwaltet werden, werden nur an dem Speicherort in Azure gespeichert, den Sie als Location-Parameter angeben. Wenn Sie im direkten Konnektivitätsmodus bereitstellen, entspricht der Location-Parameter für den Datencontroller dem Standort der gewünschten benutzerdefinierten Standortressource.
 - **Informationen zum Azure-Dienstprinzipal**: 
-   - Wenn Sie während der Erstellung des Azure Arc-Datencontrollers im direkten Konnektivitätsmodus bereitstellen, benötigen Sie die Dienstprinzipalinformationen. Weitere Informationen finden Sie im Abschnitt „Zuweisen von Rollen zum Dienstprinzipal“ von [Hochladen von Nutzungsdaten, Metriken und Protokollen in Azure](upload-metrics-and-logs-to-azure-monitor.md). 
-   - Im indirekten Konnektivitätsmodus müssen Sie den Dienstprinzipal weiterhin manuell exportieren und hochladen, jedoch erst, nachdem Sie den Azure Arc-Datencontroller erstellt haben.
-- **Infrastruktur**: Zu Abrechnungszwecken muss die Infrastruktur angegeben werden, in der Sie Datendienste mit Azure Arc-Unterstützung ausführen. Die Optionen sind *alibaba*, *aws*, *azure*, *gcp*, *onpremises* oder *sonstige*.
+   - Wenn Sie die Bereitstellung im **indirekten** Konnektivitätsmodus ausführen, benötigen Sie Dienstprinzipalinformationen, um Nutzungs- und Metrikdaten hochzuladen. Weitere Informationen finden Sie im Abschnitt „Zuweisen von Rollen zum Dienstprinzipal“ von [Hochladen von Nutzungsdaten, Metriken und Protokollen in Azure](upload-metrics-and-logs-to-azure-monitor.md). 
+
+- **Infrastruktur**: Zu Abrechnungszwecken muss die Infrastruktur angegeben werden, in der Sie Datendienste mit Azure Arc-Unterstützung ausführen. Die Optionen sind:
+- `alibaba`
+- `aws`
+- `azure`
+- `gcp`
+- `onpremises`
+- `other`
 
 ## <a name="additional-concepts-for-direct-connectivity-mode"></a>Zusätzliche Konzepte für den direkten Konnektivitätsmodus
 
-Wie unter [Konnektivitätsmodi und -anforderungen](./connectivity.md) beschrieben,können Sie den Azure Arc-Datencontroller im direkten oder indirekten Konnektivitätsmodus bereitstellen. Die Bereitstellung von Azure Arc-Datendiensten im direkten Verbindungsmodus erfordert das Verständnis einiger zusätzlicher Konzepte und Überlegungen:
+Wie unter [Konnektivitätsmodi und -anforderungen](./connectivity.md) beschrieben, können Sie den Azure Arc-Datencontroller entweder im **direkten** oder **indirekten** Konnektivitätsmodus bereitstellen. Die Bereitstellung von Azure Arc-Datendiensten im direkten Verbindungsmodus erfordert zusätzliche Konzepte und Überlegungen:
 
-* Zunächst muss der Kubernetes-Cluster, in dem die Azure Arc-fähigen Datendienste bereitgestellt werden, ein [Azure Arc-fähiger Kubernetes-Cluster](../kubernetes/overview.md) sein. Die Bereitstellung des Kubernetes-Clusters in Azure Arc bietet Azure-Konnektivität mit Funktionen wie dem automatischen Hochladen von Nutzungsinformationen, Protokollen und Metriken. Wenn Sie Ihren Kubernetes-Cluster mit Azure verbinden, können Sie auch Azure Arc-Datendienste für Ihren Cluster direkt über das Azure-Portal bereitstellen und verwalten. Informationen dazu finden Sie unter [Verbinden Ihres Clusters mit Azure](../kubernetes/quickstart-connect-cluster.md).
+* Zunächst muss der Kubernetes-Cluster, in dem die Azure Arc-fähigen Datendienste bereitgestellt werden, ein [Azure Arc-fähiger Kubernetes-Cluster](../kubernetes/overview.md) sein. Indem Sie Ihren Kubernetes-Cluster mit Azure verbinden, können Sie Azure Arc-Datendienste direkt aus dem Azure-Portal in Ihrem Cluster bereitstellen und verwalten, Ihre Nutzung, Protokolle und Metriken automatisch in Azure hochladen und mehrere andere Azure-Vorteile nutzen. Informationen dazu finden Sie unter [Verbinden Ihres Clusters mit Azure](../kubernetes/quickstart-connect-cluster.md).
 
-* Nachdem der Kubernetes-Cluster in Azure Arc bereitgestellt wurde, stellen Sie Datendienste mit Azure Arc-Unterstützung auf einem Kubernetes-Cluster mit Azure Arc-Unterstützung bereit, indem Sie die folgenden Schritte ausführen:
-   1. Erstellen der Arc-Datendiensterweiterung. Informationen dazu finden Sie unter [Clustererweiterungen in Kubernetes mit Azure Arc-Unterstützung](../kubernetes/conceptual-extensions.md).
+* Nachdem der Kubernetes-Cluster Azure Arc aktiviert ist, stellen Sie die Azure Arc-fähigen Datendienste wie folgt bereit:
+   1. Erstellen Sie die Azure Arc-Datendiensterweiterung. Informationen dazu finden Sie unter [Clustererweiterungen in Kubernetes mit Azure Arc-Unterstützung](../kubernetes/conceptual-extensions.md).
    1. Erstellen eines benutzerdefinierten Standorts. Informationen dazu finden Sie unter [„Benutzerdefinierte Speicherorte“ auf Basis von Kubernetes mit Azure Arc-Unterstützung](../kubernetes/conceptual-custom-locations.md).
    1. Erstellen des Azure Arc-Datencontrollers.
 
    Alle drei Schritte können im Azure-Portal mithilfe des Assistenten zum Erstellen eines Azure Arc-Datencontrollers in einem einzigen Arbeitsschritt ausgeführt werden.
 
-Nachdem der Azure Arc-Datencontroller installiert wurde, können Sie auf Datendienste wie SQL Managed Instance-Instanzen oder PostgreSQL-Hyperscale-Servergruppen mit Azure Arc-Unterstützung zugreifen.
+Nachdem der Azure Arc-Datencontroller installiert wurde, können Sie Azure Arc unterstützte Datendienste wie SQL Managed Instance oder PostgreSQL-Hyperscale erstellen und auf sie zugreifen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

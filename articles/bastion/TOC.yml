@@ -37,7 +37,7 @@
           href: tutorial-create-host-portal.md
         - name: Azure PowerShell
           href: bastion-create-host-powershell.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: create-host-cli.md
     - name: Herstellen einer Verbindung mit einem virtuellen Computer
       items:
@@ -84,19 +84,19 @@
 - name: Verweis
   items:
     - name: Azure PowerShell
-      href: /powershell/module/az.network
+      href: /powershell/module/az.network/
     - name: REST
-      href: /rest/api/virtualnetwork/bastionhosts
-    - name: Azure-Befehlszeilenschnittstelle
+      href: /rest/api/virtualnetwork/bastion-hosts
+    - name: Azure CLI
       href: /cli/azure/network/bastion
 - name: Ressourcen
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
+      href: 'https://azure.microsoft.com/blog/topics/networking/'
     - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/azure-bastion'
+      href: 'https://azure.microsoft.com/pricing/details/azure-bastion/'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
       href: /answers/topics/azure-virtual-network.html
     - name: Vorschau-SLA

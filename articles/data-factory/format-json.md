@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/18/2021
 ms.author: jianleishen
-ms.openlocfilehash: dbee4a0c4aa82d34df6b5ea6e3e7274868be5d62
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 970778c36b426fd30af632ca56443c9fb240c389
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743841"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223725"
 ---
 # <a name="json-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Das JSON-Format in Azure Data Factory and Azure Synapse Analytics
 
@@ -22,7 +22,21 @@ ms.locfileid: "124743841"
 
 Nutzen Sie diesen Artikel, wenn Sie die **JSON-Dateien analysieren oder Daten im JSON-Format schreiben** möchten. 
 
-Das JSON-Format wird für die folgenden Connectors unterstützt: [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure Files](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [Hadoop Distributed File System](connector-hdfs.md), [HTTP](connector-http.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md).
+Das JSON-Format wird für folgende Connectors unterstützt: 
+
+- [Amazon S3](connector-amazon-simple-storage-service.md)
+- [Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)
+- [Azure-Blob](connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
+- [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+- [Azure Files](connector-azure-file-storage.md)
+- [Dateisystem](connector-file-system.md)
+- [FTP](connector-ftp.md)
+- [Google Cloud Storage](connector-google-cloud-storage.md)
+- [HDFS](connector-hdfs.md)
+- [HTTP](connector-http.md)
+- [Oracle Cloud Storage](connector-oracle-cloud-storage.md)
+- [SFTP](connector-sftp.md)
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
@@ -198,13 +212,13 @@ Beim Kopieren von Daten aus JSON-Dateien kann die Kopieraktivität die folgenden
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
-Bei Zuordnungsdatenflüssen können Sie in den folgenden Datenspeichern das JSON-Format lesen und schreiben: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+Bei [Zuordnungsdatenflüssen](concepts-data-flow-overview.md) können Sie in den folgenden Datenspeichern das JSON-Format lesen und schreiben: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties). Darüber hinaus können Sie das JSON-Format in [Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties) lesen.
 
 ### <a name="source-properties"></a>Quelleigenschaften
 
 In der folgenden Tabelle sind die von einer JSON-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Platzhalterpfade | Alle Dateien, die dem Platzhalterpfad entsprechen, werden verarbeitet. Überschreibt den Ordner und den Dateipfad, die im Dataset festgelegt sind. | nein | String[] | wildcardPaths |
 | Partitionsstammpfad | Für partitionierte Dateidaten können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | nein | String | partitionRootPath |
@@ -346,7 +360,7 @@ Wählen Sie **Umgekehrter Schrägstrich mit Escapezeichen** aus, wenn in den JSO
 
 In der folgenden Tabelle sind die von einer JSON-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Ordner löschen | Wenn der Zielordner vor dem Schreiben gelöscht wird. | nein | `true` oder `false` | truncate |
 | Dateinamenoption | Das Namensformat der geschriebenen Daten. Standardmäßig eine Datei pro Partition im Format `part-#####-tid-<guid>`. | nein | Muster: String <br> Pro Partition: String[] <br> Wie Daten in Spalte: String <br> Ausgabe in eine einzelne Datei: `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
@@ -416,6 +430,15 @@ Wenn dieser Ausdruck für eine Spalte mit dem Namen „complexColumn“ eingegeb
     ]
 )
 ```
+
+## <a name="related-connectors-and-formats"></a>Verwandte Connectors und Formate
+
+Hier sind einige gängige Connectors und Formate im Zusammenhang mit dem JSON-Format aufgeführt:
+
+- Azure Blob Storage (connector-azure-blob-storage.md)
+- Textformat mit Trennzeichen (format-delimited-text.md)
+- OData-Connector (connector-odata.md)
+- Parquet-Format (format-parquet.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

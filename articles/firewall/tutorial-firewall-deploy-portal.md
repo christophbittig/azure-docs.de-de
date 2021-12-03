@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 11/10/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 951e2406a387ed2aaedc4cec875c62a14cf5bb2e
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 99b7d27ef16414df161b7d6e120084f2b8220f46
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291944"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297523"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -156,6 +156,10 @@ Stellen Sie die Firewall im VNET bereit.
 8. Notieren Sie sich die öffentlichen IP-Adressen der Firewall. Diese Adressen werden später verwendet.
 
 ## <a name="create-a-default-route"></a>Erstellen einer Standardroute
+
+Beim Erstellen einer Route für ausgehende und eingehende Verbindungen über die Firewall ist eine Standardroute zu 0.0.0.0/0 mit der privaten IP-Adresse des virtuellen Geräts als nächster Hop ausreichend. Dadurch werden alle ausgehenden und eingehenden Verbindungen über die Firewall abgewickelt. Wenn die Firewall beispielsweise einen TCP-Handshake erfüllt und auf eine eingehende Anforderung antwortet, wird die Antwort an die IP-Adresse weitergeleitet, die den Datenverkehr gesendet hat. Dies ist beabsichtigt. 
+
+Daher ist es nicht erforderlich, eine zusätzliche UDR zu erstellen, um den IP-Adressbereich AzureFirewallSubnet einzuschließen. Dies kann zu getrennten Verbindungen führen. Die ursprüngliche Standardroute ist ausreichend.
 
 Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** so, dass sie die Firewall durchläuft.
 

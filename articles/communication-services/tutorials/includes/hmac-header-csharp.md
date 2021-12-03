@@ -8,12 +8,12 @@ ms.author: apistrak
 ms.date: 06/30/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 19a031c58219f7369a2969599b13337de238e4c6
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 1ed686906a8233d0300b43a03d03127f870e3ae5
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107402"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132429982"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -98,9 +98,9 @@ Fügen Sie der `Main` -Methode den folgenden Code hinzu.
 
 ```csharp
 string resourceEndpoint = "resourceEndpoint";
-//Create a uri you are going to call.
+// Create a uri you are going to call.
 var requestUri = new Uri($"{resourceEndpoint}/identities?api-version=2021-03-07");
-//Endpoint identities?api-version=2021-03-07 accepts list of scopes as a body
+// Endpoint identities?api-version=2021-03-07 accepts list of scopes as a body
 var body = new[] { "chat" }; 
 var serializedBody = JsonConvert.SerializeObject(body);
 var requestMessage = new HttpRequestMessage(HttpMethod.Post, requestUri)
@@ -149,8 +149,10 @@ Ersetzen Sie `resourceAccessKey` durch den Zugriffsschlüssel Ihrer tatsächlich
 
 In diesem Abschnitt wird die Zeichenfolge erstellt, die Sie später unserem Autorisierungsheader hinzufügen.
 
-1. Berechnen Sie einen Inhaltshash.
-1. Geben Sie den UTC-Zeitstempel (koordinierte Weltzeit) an.
+1. Bereiten Sie Werte für die zu signierenden Header vor.
+   1. Geben Sie den aktuellen Zeitstempel in der Zeitzone UTC (Koordinierte Weltzeit) an.
+   1. Rufen Sie die Anforderungsstelle (DNS-Hostname oder IP-Adresse und Portnummer) ab.
+   1. Berechnen Sie einen Inhaltshash.
 1. Bereiten Sie eine Zeichenfolge für die Signierung vor.
 1. Berechnen Sie die Signatur.
 1. Verketten Sie die Zeichenfolge für den Autorisierungsheader.
@@ -158,15 +160,18 @@ In diesem Abschnitt wird die Zeichenfolge erstellt, die Sie später unserem Auto
 Fügen Sie der `Main` -Methode den folgenden Code hinzu.
 
 ```csharp
-// Compute a content hash.
-var contentHash = ComputeContentHash(serializedBody);
-//Specify the Coordinated Universal Time (UTC) timestamp.
+// Specify the 'x-ms-date' header as the current UTC timestamp according to the RFC1123 standard
 var date = DateTimeOffset.UtcNow.ToString("r", CultureInfo.InvariantCulture);
-//Prepare a string to sign.
-var stringToSign = $"POST\n{requestUri.PathAndQuery}\n{date};{requestUri.Authority};{contentHash}";
-//Compute the signature.
+// Get the host name corresponding with the 'host' header.
+var host = requestUri.Authority;
+// Compute a content hash for the 'x-ms-content-sha256' header.
+var contentHash = ComputeContentHash(serializedBody);
+
+// Prepare a string to sign.
+var stringToSign = $"POST\n{requestUri.PathAndQuery}\n{date};{host};{contentHash}";
+// Compute the signature.
 var signature = ComputeSignature(stringToSign);
-//Concatenate the string, which will be used in the authorization header.
+// Concatenate the string, which will be used in the authorization header.
 var authorizationHeader = $"HMAC-SHA256 SignedHeaders=x-ms-date;host;x-ms-content-sha256&Signature={signature}";
 ```
 
@@ -175,11 +180,16 @@ var authorizationHeader = $"HMAC-SHA256 SignedHeaders=x-ms-date;host;x-ms-conten
 Verwenden Sie den folgenden Code, um Ihrer Anforderungsnachricht (`requestMessage`) die erforderlichen Header hinzuzufügen:
 
 ```csharp
-//Add a content hash header.
-requestMessage.Headers.Add("x-ms-content-sha256", contentHash);
-//Add a date header.
+// Add a date header.
 requestMessage.Headers.Add("x-ms-date", date);
-//Add an authorization header.
+
+// Add a host header.
+// In C#, the 'host' header is added automatically by the 'HttpClient'. However, this step may be required on other platforms such as Node.js.
+
+// Add a content hash header.
+requestMessage.Headers.Add("x-ms-content-sha256", contentHash);
+
+// Add an authorization header.
 requestMessage.Headers.Add("Authorization", authorizationHeader);
 ```
 

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 7254ed303e45c69f291aa5c7a06f63390aaed162
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9b479950bc5abc47cfc0f86a21262511a74f6852
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340225"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279297"
 ---
 # <a name="list-the-azure-arc-enabled-postgresql-hyperscale-server-groups-created-in-an-azure-arc-data-controller"></a>Auflisten von Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung, die in einem Azure Arc-Datencontroller erstellt wurden
 
@@ -33,10 +33,14 @@ az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 
 Dabei wird eine Ausgabe wie die folgende zurückgegeben:
 ```console
-Name        State    Workers
-----------  -------  ---------
-postgres01  Ready    2
-postgres02  Ready    2
+[
+  {
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Ready",
+    "workers": 4
+  }
+]
 ```
 Weitere Informationen zu den für diesen Befehl verfügbaren Parametern erhalten Sie, wenn Sie Folgendes ausführen:
 ```azurecli
@@ -48,21 +52,13 @@ Führen Sie einen der folgenden Befehle aus.
 
 **Führen Sie folgenden Befehl aus, um die Servergruppen unabhängig von der Postgres-Version aufzulisten:**
 ```console
-kubectl get postgresqls
+kubectl get postgresqls -n <namespace>
 ```
 Dabei wird eine Ausgabe wie die folgende zurückgegeben:
 ```console
-NAME                                             STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
-postgresql-12.arcdata.microsoft.com/postgres01   Ready   3/3          10.0.0.4:30499      51s
-postgresql-12.arcdata.microsoft.com/postgres02   Ready   3/3          10.0.0.4:31066      6d
+NAME         STATE   READY-PODS   PRIMARY-ENDPOINT     AGE
+postgres01   Ready   5/5          12.345.67.890:5432   12d
 ```
-
-**Führen Sie folgenden Befehl aus, um die Servergruppen für eine bestimmte Postgres-Version aufzulisten:**
-```console
-kubectl get postgresql-12
-```
-
-Ersetzen Sie zum Auflisten der Servergruppen, in denen Version 11 von Postgres ausgeführt wird, _postgresql-12_ durch _postgresql-11_.
 
 ## <a name="next-steps"></a>Nächste Schritte:
 

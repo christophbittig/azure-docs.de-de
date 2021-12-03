@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: references_regions, language-service-custom-ner, ignite-fall-2021
 ms.author: aahi
-ms.openlocfilehash: 499fa25a09699e21610fb2c1812612616fb818da
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 996a04ae69e8e511a8dd74b5cad82b76eb1c6d8d
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095342"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502576"
 ---
 # <a name="language-support-for-custom-named-entity-recognition-ner"></a>Sprachunterstützung für die benutzerdefinierte Erkennung benannter Entitäten
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie mehr über die Sprachen und Regionen, die derzeit
 Mit der benutzerdefinierten Erkennung benannter Entitäten können Sie ein Modell in einer Sprache trainieren und in einer anderen Sprache testen. Dieses Feature ist sehr leistungsfähig, da es Ihnen hilft, Zeit und Aufwand zu sparen: Anstatt separate Projekte für jede Sprache zu erstellen, können Sie mehrsprachige Datasets in einem Projekt verarbeiten. Ihr Dataset muss nicht zur Gänze in derselben Sprache vorliegen, aber Sie müssen diese Option bei der Projekterstellung angeben. Wenn Sie während des Auswertungsprozesses feststellen, dass Ihr Modell in bestimmten Sprachen eine schlechte Leistung aufweist, sollten Sie ihrem Trainingssatz weitere Daten in den betreffenden Sprachen hinzufügen.
 
 > [!NOTE]
-> Zum Aktivieren der Unterstützung für mehrere Sprachen müssen Sie diese Option beim [Erstellen Ihres Projekts](how-to/create-project.md) aktivieren.
+> Zum Aktivieren der Unterstützung mehrerer Sprachen müssen Sie diese Option beim [Erstellen Ihres Projekts](how-to/create-project.md) oder später über die Seite mit den Projekteinstellungen aktivieren.
 
 ## <a name="language-support"></a>Sprachunterstützung
 

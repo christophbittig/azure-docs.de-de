@@ -1,20 +1,20 @@
 ---
 title: Azure Confidential Computing-Produkte
 description: Erfahren Sie mehr über alle von Azure bereitgestellten Confidential Computing-Dienste.
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: overview
-ms.date: 11/01/2021
-ms.author: JenCook
+ms.date: 11/04/2021
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6c91bfeaf32dba2f40e321f1c8fbf093351d39cd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 77cd51a87ba1f7ba7f17ed69c102a4020d7bae2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029729"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284396"
 ---
 # <a name="confidential-computing-on-azure"></a>Confidential Computing unter Azure
 
@@ -22,15 +22,13 @@ Heutzutage verschlüsseln Kunden ihre ruhenden und in Übertragung begriffenen D
 
 Technologien wie [Intel Software Guard Extensions](https://www.intel.com.au/content/www/au/en/architecture-and-technology/software-guard-extensions-enhanced-data-protection.html) (Intel SGX) oder [AMD Secure Encrypted Virtualization](https://www.amd.com/en/processors/amd-secure-encrypted-virtualization) (SEV-SNP) sind aktuelle CPU-Verbesserungen, die Confidential Computing-Implementierungen unterstützen. Diese Technologien sind als Virtualisierungserweiterungen konzipiert und stellen Featuresätze für die Entwicklung des Confidential Computing-Bedrohungsmodells bereit, darunter Speicherverschlüsselung und -integrität, Vertraulichkeit und Integrität des CPU-Zustands sowie Nachweisfunktionen.
 
-![Grafische Darstellung der drei Zustände des Datenschutzes mit Hervorhebung der zurzeit verwendeten Confidential Computing-Daten.](media/overview-azure-products/three-states.jpg)
+:::image type="content" source="media/overview-azure-products/three-states.png" alt-text="Grafische Darstellung der drei Zustände des Datenschutzes mit Hervorhebung der zurzeit verwendeten Confidential Computing-Daten.":::
 
 Bei Verwendung mit der Verschlüsselung ruhender und in der Übertragung begriffener Daten bewältigt Confidential Computing die einzige größere Verschlüsselungsherausforderung – die Verschlüsselung während der Verwendung – durch den Schutz sensibler oder stark regulierter Datasets und Anwendungsworkloads in einer sicheren öffentlichen Cloudplattform. Confidential Computing geht über den generischen Schutz von Daten hinaus. TEEs werden auch verwendet, um proprietäre Geschäftslogik, Analysefunktionen, Machine Learning-Algorithmen oder ganze Anwendungen zu schützen.
 
 ## <a name="navigating-azure-confidential-computing"></a>Übersicht über Azure Confidential Computing
 
 Die [Microsoft-Angebote](https://aka.ms/azurecc) für Confidential Computing reichen von IaaS (Infrastructure-as-a-Service) bis hin zu PaaS (Platform as a Service) und Entwicklertools, um Ihre Journey beim Erzielen von Vertraulichkeit für Daten und Code in der Cloud zu unterstützen.
-
-![Screenshot: Azure Confidential Computing-Stapel mit Tools und Diensten](media/overview-azure-products/acc-stack.jpg)
 
 ## <a name="reducing-the-attack-surface"></a>Verkleinern der Angriffsfläche
 Die vertrauenswürdige Rechenbasis (Trusted Computing Base, TCB) bezieht sich auf alle Hardware-, Firmware- und Softwarekomponenten eines Systems, die eine sichere Umgebung bereitstellen. Die Komponenten innerhalb der TCB werden als kritisch eingestuft. Ist eine einzelne Komponente innerhalb der TCB kompromittiert, kann die Sicherheit des gesamten Systems gefährdet sein. Eine kleinere TCB bedeutet höhere Sicherheit. Es besteht eine geringere Gefahr durch verschiedene Sicherheitsrisiken, Schadsoftware, Angriffe und böswillige Personen. Das Ziel von Azure Confidential Computing besteht darin, die TCB für Ihre Cloudworkloads durch TEEs zu verkleinern. 

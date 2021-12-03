@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 678090d4c4de0dfd306bd5b91a26787f9ff15db2
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 504ae03ecff532fff5a8343d02fd8bba21524cfd
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455852"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397317"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-by-using-the-azure-cli"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe der Azure CLI
 
@@ -162,7 +162,7 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Manifest einer mehrstufigen B
 Im vorherigen Beispiel wurde die mehrstufige Bereitstellung gezeigt, bei der `properties.desired` für ein Modul festgelegt wird. Wenn diese mehrstufige Bereitstellung auf ein Gerät abzielt, auf dem dasselbe Modul bereits angewandt wurde, werden alle vorhandenen gewünschten Eigenschaften überschrieben. Um gewünschte Eigenschaften zu aktualisieren anstatt sie zu überschreiben, können Sie einen neuen Unterabschnitt definieren. Beispiel:
 
 ```json
-"SimulatedTEmperatureSensor": {
+"SimulatedTemperatureSensor": {
   "properties.desired.layeredProperties": {
     "SendData": true,
     "SendInterval": 5
@@ -173,7 +173,7 @@ Im vorherigen Beispiel wurde die mehrstufige Bereitstellung gezeigt, bei der `pr
 Dasselbe kann auch wie folgt ausgedrückt werden:
 
 ```json
-"SimulatedTEmperatureSensor": {
+"SimulatedTemperatureSensor": {
   "properties.desired.layeredProperties.SendData" : true,
   "properties.desired.layeredProperties.SendInterval": 5
 }

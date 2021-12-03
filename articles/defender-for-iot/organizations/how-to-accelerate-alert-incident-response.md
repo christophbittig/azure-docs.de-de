@@ -1,18 +1,18 @@
 ---
 title: Beschleunigen von Warnungsworkflows
 description: Verbessern Sie Warnungs- und Incidentworkflows.
-ms.date: 12/02/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: fa8e00fb8b3fdbb01d23aa7213c3bf21db7e9479
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: e570cff67630a483d6926f6090165708a5ca17b4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017973"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283978"
 ---
 # <a name="accelerate-alert-workflows"></a>Beschleunigen von Warnungsworkflows
 
-In diesem Artikel wird beschrieben, wie Sie in Azure Defender für IoT Warnungsworkflows mithilfe von Warnungskommentaren, Warnungsgruppen und benutzerdefinierten Warnungsregeln beschleunigen.  Die folgenden Tools sind für diesen Zweck hilfreich:
+In diesem Abschnitt wird beschrieben, wie Sie in Microsoft Defender für IoT Warnungs-Workflows mithilfe von Warnungskommentaren, Warnungsgruppen und benutzerdefinierten Warnungsregeln beschleunigen.  Die folgenden Tools sind für diesen Zweck hilfreich:
 
 - Analysieren und verwalten Sie das große Aufkommen der in Ihrem Netzwerk erkannten Warnungsereignisse.
 
@@ -114,8 +114,7 @@ Sie können benutzerdefinierte Warnungsregeln basierend auf Folgendem hinzufüge
 - einer Bedingung, die auf der ausgewählten Kategorie basiert, z. B. einer Funktion, die einem Protokoll zugeordnet ist, einem Dateinamen, einem Port oder einer Transportnummer
 - einer Bedingung, die auf einem Datums- und Uhrzeitverweis basiert, wenn eine Erkennung z. B. an einem bestimmten Tag oder zu einer bestimmten Tageszeit durchgeführt wurde
 
-Wenn der Sensor die in der Regel beschriebene Aktivität erkennt, wird die Warnung gesendet.
-Sie enthält die Informationen, die von einzelnen Sensoren erkannt wurden. Definieren Sie beispielsweise eine Regel, die einen Sensor anweist, auf Grundlage einer Quell-IP-Adresse, Ziel-IP-Adresse oder eines Befehls (innerhalb eines Protokolls) eine Warnung auszulösen. Wenn der Sensor den in der Regel definierten Datenverkehr erkennt, wird eine Warnung oder ein Ereignis generiert.
+Wenn der Sensor die in der Regel beschriebene Aktivität erkennt, wird die Warnung gesendet. Sie enthält die Informationen, die von einzelnen Sensoren erkannt wurden. Definieren Sie beispielsweise eine Regel, die einen Sensor anweist, auf Grundlage einer Quell-IP-Adresse, Ziel-IP-Adresse oder eines Befehls (innerhalb eines Protokolls) eine Warnung auszulösen. Wenn der Sensor den in der Regel definierten Datenverkehr erkennt, wird eine Warnung oder ein Ereignis generiert.
 
 Sie können auch Aktionen für Warnungsregeln verwenden, um Defender für IoT anzuweisen, folgende Aufgaben zu erledigen:
 

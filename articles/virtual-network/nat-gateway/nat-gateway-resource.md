@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/28/2021
+ms.date: 11/11/2021
 ms.author: allensu
-ms.openlocfilehash: b9291a7d69bd2aeb5a9343d88d05d42d94d080e0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d0af0d38ef53e4ba90dcf0e7f4cbcc60c52b87a8
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249042"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373135"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen
 
@@ -36,7 +36,7 @@ NAT-Gatewayressourcen sind Teil von [Virtual Network NAT](nat-overview.md) und s
 Die Konfiguration und Nutzung von NAT-Gateways wurde bewusst einfach gehalten:  
 
 NAT-Gatewayressource:
-- Erstellen einer regionalen oder zonenbasierten (nur in einer Zone vorhandenen) NAT-Gatewayressource
+- Erstellen einer regionalen oder zonenbezogenen NAT-Gatewayressource
 - Zuweisen von IP-Adressen
 - Ändern des TCP-Leerlauftimeouts bei Bedarf (optional)  Lesen Sie den Abschnitt [Timer](#timers), <ins>bevor</ins> Sie die Standardeinstellung ändern.
 
@@ -45,84 +45,20 @@ Virtuelles Netzwerk:
 
 Benutzerdefinierte Routen sind nicht erforderlich.
 
-## <a name="resource"></a>Resource
-
-Bei der Ressource wurde auf einen einfachen Aufbau geachtet. Dies ist im folgenden Azure Resource Manager-Beispiel im Vorlagenformat dargestellt.  Dieses Vorlagenformat ist hier angegeben, um die Konzepte und die Struktur zu verdeutlichen.  Ändern Sie das Beispiel gemäß Ihren Anforderungen.  Dieses Dokument ist nicht als Tutorial gedacht.
-
-Im folgenden Diagramm sind die schreibbaren Verweise zwischen den verschiedenen Azure Resource Manager-Ressourcen dargestellt.  Der Pfeil gibt die Richtung des Verweises an und geht vom schreibbaren Ort aus. Überprüfung 
-
-<p align="center">
-  <img src="media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network NAT-Objektmodell">
-</p>
-
-*Abbildung: Virtual Network NAT-Objektmodell*
-
-NAT wird für die meisten Workloads empfohlen, sofern bei Ihnen nicht eine spezifische Abhängigkeit von [poolbasierter Load Balancer-Konnektivität in ausgehender Richtung](../../load-balancer/load-balancer-outbound-connections.md) besteht.  
-
-Sie können die Migration von Standardszenarien für den Lastenausgleich, einschließlich [Ausgangsregeln](../../load-balancer/load-balancer-outbound-connections.md#outboundrules), zu einem NAT-Gateway durchführen. Verschieben Sie zur Durchführung der Migration die Ressourcen bzw. Präfixressourcen für öffentliche IP-Adressen von den Front-Ends des Lastenausgleichs auf das NAT-Gateway. Neue IP-Adressen für das NAT-Gateway sind nicht erforderlich. Öffentliche Standard-IP-Adressressourcen und die Präfixressource für öffentliche IP-Adressen können wiederverwendet werden, sofern die Gesamtzahl von 16 IP-Adressen nicht überschritten wird. Planen Sie die Migration so, dass die Dienstunterbrechung während der Umstellung berücksichtigt wird.  Sie können die Unterbrechungsdauer verringern, indem Sie den Prozess automatisieren. Testen Sie die Migration zuerst in einer Stagingumgebung.  Während der Umstellung werden Datenflüsse, die ursprünglich in eingehender Richtung erfolgt sind, nicht beeinträchtigt.
-
-
-Bei dem folgenden Beispiel handelt es sich um einen Ausschnitt aus einer Azure Resource Manager-Vorlage.  Diese Vorlage stellt mehrere Ressourcen bereit, einschließlich eines NAT-Gateways.  In dem Beispiel besitzt die Vorlage folgende Parameter:
-
-- **natgatewayname**: Der Name des NAT-Gateways.
-- **location**: Die Azure-Region, in der sich die Ressource befindet.
-- **publicipname**: Der Name der öffentlichen IP-Ausgangsadresse, die dem NAT-Gateway zugeordnet ist.
-- **vnetname**: Der Name des virtuellen Netzwerks.
-- **subnetname** Der Name des Subnetzes, das dem NAT-Gateway zugeordnet ist.
-
-Die Gesamtzahl von IP-Adressen, die von allen IP-Adress- und Präfixressourcen bereitgestellt werden, darf den Höchstwert von 16 IP-Adressen nicht übersteigen. Eine beliebige Anzahl von IP-Adressen zwischen 1 und 16 ist zulässig.
-
-:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/nat-gateway-vnet/azuredeploy.json" range="81-96":::
-
-Nachdem die NAT-Gatewayressource erstellt wurde, kann sie in einem oder mehreren Subnetzen eines virtuellen Netzwerks verwendet werden. Geben Sie an, von welchen Subnetzen diese NAT-Gatewayressource verwendet wird. Ein NAT-Gateway kann nicht für mehr als ein virtuelles Netzwerk gelten. Es ist nicht erforderlich, allen Subnetzen eines virtuellen Netzwerks dasselbe NAT-Gateway zuzuweisen. Die einzelnen Subnetze können mit unterschiedlichen NAT-Gatewayressourcen konfiguriert werden.
-
-Szenarien, für die keine Verfügbarkeitszonen genutzt werden, sind regional (keine Angabe einer Zone). Bei Verwendung von Verfügbarkeitszonen können Sie eine Zone angeben, um NAT in einer bestimmten Zone zu isolieren. Die Zonenredundanz wird nicht unterstützt. Lesen Sie den Artikel über NAT-[Verfügbarkeitszonen](#availability-zones).
-
-:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/nat-gateway-vnet/azuredeploy.json" range="1-146" highlight="81-96":::
-
-NAT-Gateways werden mit einer Eigenschaft in einem Subnetz eines virtuellen Netzwerks definiert. Für Datenflüsse, die von virtuellen Computern im Subnetz **subnetname** des virtuellen Netzwerks **vnetname** erstellt werden, wird das NAT-Gateway verwendet. Für alle ausgehenden Verbindungen werden die IP-Adressen, die **natgatewayname** zugeordnet sind, als Quell-IP-Adresse verwendet.
-
-Weitere Informationen zur in diesem Beispiel verwendeten Azure Resource Manager-Vorlage finden Sie hier:
-
-- [Schnellstart: Erstellen eines NAT-Gateways: Resource Manager-Vorlage](quickstart-create-nat-gateway-template.md)
-- [Virtual Network NAT](https://azure.microsoft.com/resources/templates/nat-gateway-1-vm/)
 
 ## <a name="design-guidance"></a>Leitfaden zum Entwurf
 
 Lesen Sie diesen Abschnitt, um sich mit den Aspekten in Bezug auf das Entwerfen virtueller Netzwerke mit NAT vertraut zu machen.  
 
-1. [Kostenoptimierung](#cost-optimization)
-1. [Koexistenz von eingehenden und ausgehenden Verbindungen](#coexistence-of-inbound-and-outbound)
-2. [Verwalten von „Basic“-Ressourcen](#managing-basic-resources)
-3. [Verfügbarkeitszonen](#availability-zones)
+### <a name="connecting-to-azure-services"></a>Herstellen einer Verbindung mit Azure-Diensten
 
-### <a name="cost-optimization"></a>Kostenoptimierung
+Beim Herstellen einer Verbindung mit Azure-Diensten wird empfohlen, [Private Link](../../private-link/private-link-overview.md) zu nutzen. 
 
-[Dienstendpunkte](../virtual-network-service-endpoints-overview.md) und [Private Link](../../private-link/private-link-overview.md) sind zwei Optionen, die beim Optimieren der Kosten berücksichtigt werden sollten. Für diese Dienste ist keine NAT erforderlich. Für Dienstendpunkte oder Private Link bestimmter Datenverkehr wird nicht durch den NAT-Dienst des virtuellen Netzwerks verarbeitet.  
+Mit Private Link werden Azure-Dienstressourcen an Ihr virtuelles Netzwerk gebunden und damit wird auch der Zugriff auf Ihre Azure-Dienstressourcen gesteuert. Wenn Sie beispielsweise auf Azure Storage zugreifen, verwenden Sie einen privaten Endpunkt für den Speicher, um sicherzustellen, dass Ihre Verbindung vollständig privat ist.
 
-Mit Dienstendpunkten werden Azure-Dienstressourcen an Ihr virtuelles Netzwerk gebunden, und sie dienen zum Steuern des Zugriffs auf Ihre Azure-Dienstressourcen. Verwenden Sie beim Zugreifen auf Azure-Speicher beispielsweise einen Dienstendpunkt für die Speicherung, um NAT-Gebühren für die Datenverarbeitung zu vermeiden. Dienstendpunkte sind kostenlos.
+### <a name="connecting-to-the-internet"></a>Herstellen einer Verbindung mit dem Internet
 
-Per Private Link wird der Azure PaaS-Dienst (oder andere mit Private Link gehostete Dienste) als privater Endpunkt in einem virtuellen Netzwerk verfügbar gemacht.  Private Link wird basierend auf der Dauer und den verarbeiteten Daten berechnet.
-
-Evaluieren Sie, ob ein oder beide Ansätze für Ihr Szenario geeignet sind, und nutzen Sie sie je nach Bedarf.
-
-### <a name="coexistence-of-inbound-and-outbound"></a>Koexistenz von eingehenden und ausgehenden Verbindungen
-
-Das NAT-Gateway ist kompatibel mit:
-
- - Load Balancer Standard
- - Öffentliche IP-Standardadresse
- - Öffentliches IP-Standardpräfix
-
-Beginnen Sie bei der Entwicklung einer neuen Bereitstellung mit Standard-SKUs.
-
-<p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network." width="256" title="Virtual Network NAT für Internetverbindung in ausgehender Richtung">
-</p>
-
-*Abbildung: Virtual Network NAT für Internetverbindung in ausgehender Richtung*
-
-Das Szenario mit ausschließlich ausgehender Internetverbindung per NAT-Gateway kann um die Funktionalität für eine eingehende Internetverbindung erweitert werden. Jede Ressource kennt die Richtung, in der ein Datenfluss ausgelöst wird. In einem Subnetz mit einem NAT-Gateway werden alle Szenarien mit ausgehenden Internetverbindungen durch das NAT-Gateway ersetzt. Szenarien mit eingehender Internetverbindung werden von der entsprechenden Ressource bereitgestellt.
+NAT wird für ausgehende Szenarien für alle Produktionsworkloads empfohlen, bei denen Sie eine Verbindung mit einem öffentlichen Endpunkt herstellen müssen. Die folgenden Szenarien sind Beispiele dafür, wie Sie sicherstellen können, dass eingehender Datenverkehr mit NAT-Gateway für ausgehenden Datenverkehr zugleich vorhanden ist.
 
 #### <a name="nat-and-vm-with-instance-level-public-ip"></a>NAT und VM mit öffentlicher IP-Adresse auf Instanzebene
 
@@ -139,7 +75,7 @@ Das Szenario mit ausschließlich ausgehender Internetverbindung per NAT-Gateway 
 
 Von der VM wird das NAT-Gateway für ausgehenden Datenverkehr genutzt.  Ursprünglich eingehender Datenverkehr ist nicht betroffen.
 
-#### <a name="nat-and-vm-with-public-load-balancer"></a>NAT und VM mit öffentlichem Load Balancer
+#### <a name="nat-and-vm-with-standard-public-load-balancer"></a>NAT und virtueller Computer mit öffentlichem Standard Load Balancer
 
 <p align="center">
   <img src="media/nat-overview/flow-direction3.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with a public load balancer." width="350" title="Virtual Network NAT und VM mit öffentlichem Load Balancer">
@@ -154,7 +90,7 @@ Von der VM wird das NAT-Gateway für ausgehenden Datenverkehr genutzt.  Ursprün
 
 Alle Ausgangskonfigurationen einer Lastenausgleichsregel oder von Ausgangsregeln werden durch das NAT-Gateway ersetzt.  Ursprünglich eingehender Datenverkehr ist nicht betroffen.
 
-#### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>NAT und VM mit öffentlicher IP-Adresse auf Instanzebene und öffentlichem Load Balancer
+#### <a name="nat-and-vm-with-instance-level-public-ip-and-standard-public-load-balancer"></a>NAT und virtueller Computer mit öffentlicher IP-Adresse auf Instanzebene und öffentlichem Standard Load Balancer
 
 <p align="center">
   <img src="media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="425" title="Virtual Network NAT und VM mit öffentlicher IP-Adresse auf Instanzebene und öffentlichem Load Balancer">
@@ -168,62 +104,6 @@ Alle Ausgangskonfigurationen einer Lastenausgleichsregel oder von Ausgangsregeln
 | Ausgehend | NAT Gateway |
 
 Alle Ausgangskonfigurationen einer Lastenausgleichsregel oder von Ausgangsregeln werden durch das NAT-Gateway ersetzt.  Die VM nutzt auch das NAT-Gateway für ausgehenden Datenverkehr.  Ursprünglich eingehender Datenverkehr ist nicht betroffen.
-
-### <a name="managing-basic-resources"></a>Verwalten von „Basic“-Ressourcen
-
-Load Balancer Standard, die öffentliche IP-Adresse und das Präfix für die öffentliche IP-Adresse sind mit dem NAT-Gateway kompatibel. NAT-Gateways werden im Subnetzbereich eingesetzt. Die Basic-SKU dieser Dienste muss in einem Subnetz ohne NAT-Gateway bereitgestellt werden. Diese Trennung ermöglicht es, dass beide SKU-Varianten in demselben virtuellen Netzwerk vorhanden sein können.
-
-NAT-Gateways haben Vorrang vor Ausgangsszenarien des Subnetzes. Load Balancer im Tarif „Basic“ oder die öffentliche IP-Adresse (und viele integrierte verwaltete Dienste) können mit den richtigen Übersetzungen nicht angepasst werden. Das NAT-Gateway übernimmt für ein Subnetz die Kontrolle über den ausgehenden Datenverkehr ins Internet. Der eingehende Datenverkehr zum Load Balancer im Tarif „Basic“ und an die öffentliche IP-Adresse ist nicht verfügbar. Der eingehende Datenverkehr an einen Load Balancer im Tarif „Basic“ oder eine auf einer VM konfigurierten öffentlichen IP-Adresse ist nicht verfügbar.
-
-### <a name="availability-zones"></a>Verfügbarkeitszonen
-
-#### <a name="zone-isolation-with-zonal-stacks"></a>Zonenisolation mit Zonenstapeln
-
-<p align="center">
-  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="Virtual Network NAT mit Zonenisolation: Erstellen mehrerer „Zonenstapel“">
-</p>
-
-*Abbildung: Virtual Network NAT mit Zonenisolation: Erstellen mehrerer „Zonenstapel“*
-
-Auch ohne Verfügbarkeitszonen ist NAT resilient und kann mehrere Ausfälle von Infrastrukturkomponenten überstehen.  Verfügbarkeitszonen bauen mit Szenarien zur Zonenisolation für NAT auf dieser Resilienz auf.
-
-Bei virtuellen Netzwerken und den zugehörigen Subnetzen handelt es sich um regionale Konstrukte.  Subnetze sind nicht auf eine Zone beschränkt.
-
-Eine Zonenzusage für die Zonenisolation besteht, wenn sich eine Instanz eines virtuellen Computers mit einer NAT-Gatewayressource in derselben Zone wie die NAT-Gatewayressource und die zugehörigen öffentlichen IP-Adressen befindet. Das für die Zonenisolation empfohlene Muster ist die Erstellung von jeweils einem „Zonenstapel“ pro Verfügbarkeitszone.  Dieser Zonenstapel besteht aus VM-Instanzen, NAT-Gatewayressourcen und öffentlichen IP-Adressen bzw. Präfixressourcen in einem Subnetz, das ausschließlich für dieselbe Zone vorgesehen ist.   Die Vorgänge auf der Steuerungs- und Datenebene sind dann auf die angegebene Zone ausgerichtet und darauf beschränkt. 
-
-Ein Ausfall in einer anderen Zone als Ihrer eigenen Zone sollte keine Auswirkungen auf NAT haben. Für ausgehenden Datenverkehr von virtuellen Computern in derselben Zone tritt aufgrund der Zonenisolation ein Fehler auf.  
-
-#### <a name="integrating-inbound-endpoints"></a>Integrieren von Endpunkten für eingehenden Datenverkehr
-
-Wenn Sie Endpunkte für eingehenden Datenverkehr benötigen, haben Sie zwei Optionen:
-
-| Option | Muster | Beispiel | Vorteil | Nachteil |
-|---|---|---|---|---|
-| (1) | Führen Sie die **Ausrichtung** der Endpunkte für eingehenden Datenverkehr mit den jeweiligen **Zonenstapeln** durch, die Sie für ausgehenden Datenverkehr erstellen. | Erstellen Sie eine Load Balancer Standard-Instanz mit Zonen-Front-End. | Gleiches Integritätsmodell und gleicher Fehlermodus für ein- und ausgehenden Datenverkehr. Einfacherer Betrieb. | Einzelne IP-Adressen pro Zone müssen ggf. durch einen gemeinsamen DNS-Namen maskiert werden. |
-| (2) | Führen Sie die **Überlagerung** der Zonenstapel mit einem **zonenübergreifenden** Endpunkt für eingehenden Datenverkehr durch. | Erstellen Sie eine Load Balancer Standard-Instanz mit zonenredundantem Front-End. | Nur eine IP-Adresse für den Endpunkt für eingehenden Datenverkehr. | Unterschiede bei Integritätsmodell und Fehlermodus für ein- und ausgehenden Datenverkehr.  Komplexerer Betrieb. |
-
->[!NOTE]
-> Für ein NAT-Gateway mit Zonenisolation müssen die IP-Adressen mit der Zone des NAT-Gateways übereinstimmen. NAT-Gatewayressourcen mit IP-Adressen aus einer anderen Zone oder ohne Zone sind nicht zulässig.
-
-#### <a name="cross-zone-outbound-scenarios-not-supported"></a>Keine Unterstützung von zonenübergreifenden Szenarien für ausgehenden Datenverkehr
-
-<p align="center">
-  <img src="media/nat-overview/az-directions2.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet, with the connections between to of the gateways and their subnets broken." width="425" title="Virtual Network NAT ist mit zonenübergreifendem Subnetz nicht kompatibel">
-</p>
-
-*Abbildung: Virtual Network NAT ist mit zonenübergreifendem Subnetz nicht kompatibel*
-
-Sie können für NAT-Gatewayressourcen keine Zonenzusage erzielen, wenn VM-Instanzen in mehreren Zonen desselben Subnetzes bereitgestellt werden.   Auch wenn mehrere NAT-Zonengateways an ein Subnetz angefügt sind, weiß die VM-Instanz nicht, welche NAT-Gatewayressource ausgewählt werden soll.
-
-Eine Zonenzusage besteht nicht, wenn a) die Zone einer VM-Instanz und die Zone eines NAT-Zonengateways nicht aufeinander ausgerichtet sind oder b) eine regionale NAT-Gatewayressource mit VM-Zoneninstanzen genutzt wird.
-
-Auch wenn das Szenario scheinbar funktioniert, sind das Integritätsmodell und der Fehlermodus aus Sicht der Verfügbarkeitszone nicht definiert. Erwägen Sie stattdessen, Zonenstapel zu verwenden oder ganz auf Regionen zu setzen.
-
->[!NOTE]
->Die Zoneneigenschaft einer NAT-Gatewayressource ist nicht veränderlich.  Stellen Sie die NAT-Gatewayressource mit der gewünschten Regions- oder Zonenpräferenz erneut bereit.
-
->[!NOTE] 
->IP-Adressen allein sind nicht zonenredundant, wenn keine Zone angegeben wird.  Das Front-End einer [Load Balancer Standard-Instanz ist zonenredundant](../../load-balancer/load-balancer-standard-availability-zones.md), wenn in einer bestimmten Zone keine IP-Adresse erstellt wird.  Dies gilt nicht für NAT.  Nur die Regions- oder Zonenisolation wird unterstützt.
 
 ## <a name="performance"></a>Leistung
 
@@ -335,10 +215,8 @@ Ein SNAT-Port ist für eine IP-Zieladresse und den entsprechenden Zielport nach 
 
 ## <a name="limitations"></a>Einschränkungen
 
-- NAT ist mit öffentlichen IP-Adressen, Präfixen für öffentliche IP-Adressen und Lastenausgleichsressourcen der Standard-SKU kompatibel.   Basic-Ressourcen (z. B. Load Balancer im Tarif „Basic“) und alle davon abgeleiteten Produkte sind nicht mit NAT kompatibel.  Basic-Ressourcen müssen in einem Subnetz angeordnet sein, für das NAT nicht konfiguriert ist.
-- Die Familie der IPv4-Adressen wird unterstützt.  NAT interagiert nicht mit der Familie der IPv6-Adressen.  Die NAT kann nicht in einem Subnetz mit IPv6-Präfix bereitgestellt werden.
-- NAT kann übergreifend für mehrere virtuelle Netzwerke genutzt werden.
-- Die IP-Fragmentierung wird nicht unterstützt.
+- Grundlegende Load Balancer und öffentliche IP-Adressen im Basis-Standard sind nicht mit NAT kompatibel. Verwenden Sie stattdessen Load Balancer der Standard-SKU und öffentliche IP-Dateien.
+- Die IP-Fragmentierung wird über das NAT-Gateway nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,19 +7,16 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: bf516da87533fb057bd473aa50fc3d5304dbadd1
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 7beb058e51010bc148d9cde31e4053d3de3cf598
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643396"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445519"
 ---
-# <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server-preview"></a>Schnellstart: Verwenden von MySQL Workbench zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL Flexible Server (Vorschau)
+# <a name="use-mysql-workbench-with-azure-database-for-mysql-flexible-server"></a>Verwenden von MySQL Workbench mit Azure Database for MySQL Flexible Server
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL – Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In diesem Schnellstart wird gezeigt, wie Sie mit MySQL Workbench eine Verbindung mit Azure Database for MySQL Flexible Server herstellen.
 

@@ -6,25 +6,23 @@ ms.author: dimadhus
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/6/2021
-ms.openlocfilehash: fa85818b364a869114fe6e3b2de8d2cebfa8ca60
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 961e1fbf4bc87355ce036fb9a5af7a1cd85c4e76
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356515"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472711"
 ---
-# <a name="private-network-access-for-azure-database-for-mysql---flexible-server-preview"></a>Übersicht über den Zugriff auf private Netzwerke für flexible Azure Database for MySQL-Server (Vorschau)
+# <a name="private-network-access-for-azure-database-for-mysql---flexible-server"></a>Zugriff auf private Netzwerke für Azure Database for MySQL Flexible Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In diesem Artikel wird die private Konnektivitätsoption für flexible Azure MySQL-Server beschrieben. Außerdem finden Sie hier ausführliche Informationen zu den VNet-Konzepten für flexible Azure Database for MySQL-Server, die für die sichere Erstellung eines Servers in Azure erforderlich sind.
 
-> [!IMPORTANT]
-> Azure Database for MySQL – Flexible Server befindet sich in der Vorschau.
 
 ## <a name="private-access-vnet-integration"></a>Privater Zugriff (VNET-Integration)
 
-[Azure Virtual Network (VNET)](../../virtual-network/virtual-networks-overview.md) ist der grundlegende Baustein für Ihr privates Netzwerk in Azure. Die VNet-Integration (virtuelles Netzwerk) mit einem flexiblen Azure Database for MySQL-Server bringt Azure-Vorteile wie Netzwerksicherheit und Isolation mit sich.  
+[Azure Virtual Network (VNET)](../../virtual-network/virtual-networks-overview.md) ist der grundlegende Baustein für Ihr privates Netzwerk in Azure. Die VNet-Integration (virtuelles Netzwerk) mit einem flexiblen Azure Database for MySQL-Server bringt Azure-Vorteile wie Netzwerksicherheit und Isolation mit sich.
 
 Durch die VNet-Integration für einen flexiblen Azure Database for MySQL-Server können Sie den Zugriff auf den Server allein auf Ihre virtuelle Netzwerkinfrastruktur beschränken. Ihr virtuelles Netzwerk kann alle Ihre Anwendungs- und Datenbankressourcen in einem einzelnen virtuellen Netzwerk enthalten oder sich über verschiedene virtuelle Netzwerke in der gleichen Region oder in unterschiedlichen Regionen erstrecken. Nahtlose Konnektivität zwischen verschiedenen virtuellen Netzwerken kann mittels [Peering](../../virtual-network/virtual-network-peering-overview.md) erreicht werden. Dabei wird die private Backbone-Infrastruktur von Microsoft verwendet, die sich durch geringe Wartezeit und hohe Bandbreite auszeichnet. Die virtuellen Netzwerke werden für Verbindungszwecke als einzelnes Element angezeigt.
 
@@ -35,7 +33,7 @@ Flexible Azure Database for MySQL-Server unterstützen Clientkonnektivität von 
 
 Mithilfe von Subnetzen können Sie das virtuelle Netzwerk in eines oder mehrere Subnetze segmentieren und einen Teil des VNet-Adressraums zuordnen, in dem Sie dann Azure-Ressourcen bereitstellen können. Für flexible Azure Database for MySQL-Server ist ein [delegiertes Subnetz](../../virtual-network/subnet-delegation-overview.md) erforderlich. In einem delegierten Subnetz können nur flexible Azure Database for MySQL-Server gehostet werden. Durch die Delegierung des Subnetzes erhält der Dienst explizite Berechtigungen zum Erstellen dienstspezifischer Ressourcen im Subnetz, was die nahtlose Verwaltung Ihres flexiblen Azure Database for MySQL-Servers ermöglicht.
 
-Der flexible Azure Database for MySQL-Server wird in [private DNS-Zonen](../../dns/private-dns-privatednszone.md) von Azure integriert, um einen zuverlässigen, sicheren DNS-Dienst zum Verwalten und Auflösen von Domänennamen in einem virtuellen Netzwerk zu bieten, ohne dass Sie eine benutzerdefinierte DNS-Lösung hinzufügen müssen. Die private DNS-Zone kann durch Erstellen [virtueller Netzwerkverbindungen](../../dns/private-dns-virtual-network-links.md) mit einem oder mehreren virtuellen Netzwerken verknüpft werden. 
+Der flexible Azure Database for MySQL-Server wird in [private DNS-Zonen](../../dns/private-dns-privatednszone.md) von Azure integriert, um einen zuverlässigen, sicheren DNS-Dienst zum Verwalten und Auflösen von Domänennamen in einem virtuellen Netzwerk zu bieten, ohne dass Sie eine benutzerdefinierte DNS-Lösung hinzufügen müssen. Die private DNS-Zone kann durch Erstellen [virtueller Netzwerkverbindungen](../../dns/private-dns-virtual-network-links.md) mit einem oder mehreren virtuellen Netzwerken verknüpft werden.
 
 
 :::image type="content" source="./media/concepts-networking/vnet-diagram.png" alt-text="Flexibler Server: MySQL-VNet":::

@@ -1,28 +1,30 @@
 ---
 title: Horizon-API
 description: In dieser Anleitung werden häufig verwendete Horizon-Methoden beschrieben.
-ms.date: 1/5/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: b65f7663df29e2c82faa5d1aeec3b820d5fbaf70
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: db3fd241593f2d5c3e43485bcca4790a73f975fd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016258"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331317"
 ---
-# <a name="horizon-api"></a>Horizon-API 
+# <a name="horizon-api"></a>Horizon-API
 
 In dieser Anleitung werden häufig verwendete Horizon-Methoden beschrieben.
 
-### <a name="getting-more-information"></a>Weitere Informationen
+## <a name="getting-more-information"></a>Weitere Informationen
+
+Defender für IoT-APIs unterliegen der [Microsoft-API-Lizenz und den Nutzungsbedingungen](/legal/microsoft-apis/terms-of-use).
 
 Weitere Informationen zur Arbeit mit Horizon und der Defender für IoT-Plattform finden Sie an folgenden Stellen:
 
 - Informationen zum Horizon ODE-SDK (Open Development Environment) erhalten Sie von Ihrem Defender für IoT-Vertriebsmitarbeiter.
+
 - Informationen zum Support und zur Problembehandlung erhalten Sie vom <support@cyberx-labs.com>.
 
 - Wenn Sie über die Defender für IoT-Konsole auf das Benutzerhandbuch zu Defender für IoT zugreifen möchten, wählen Sie :::image type="icon" source="media/references-horizon-api/profile.png"::: und anschließend **Benutzerhandbuch herunterladen** aus.
-
 
 ## `horizon::protocol::BaseParser`
 
@@ -35,7 +37,7 @@ Abstrakt für alle Plug-Ins. Dies enthält zwei Methoden:
 
 Mit der ersten Funktion, die für das Plug-In aufgerufen wird, wird eine Instanz des Parsers für Horizon erstellt, die erkannt und registriert wird.
 
-### <a name="parameters"></a>Parameter 
+### <a name="parameters"></a>Parameter
 
 Keine.
 
@@ -45,15 +47,15 @@ Keine.
 
 ## `std::vector<uint64_t> horizon::protocol::BaseParser::processDissectAs(const std::map<std::string, std::vector<std::string>> &) const`
 
-Diese Funktion wird für jedes oben registrierte Plug-In aufgerufen. 
+Diese Funktion wird für jedes oben registrierte Plug-In aufgerufen.
 
 In den meisten Fällen bleibt dieser Parameter leer. Löst eine Ausnahme aus, damit Horizon weiß, dass ein Fehler aufgetreten ist.
 
-### <a name="parameters"></a>Parameter 
+### <a name="parameters"></a>Parameter
 
 - Eine Karte mit der Struktur von „dissect_as“, wie in der Datei „config.json“ eines anderen Plug-Ins definiert, das für Sie registriert werden soll.
 
-### <a name="return-value"></a>Rückgabewert 
+### <a name="return-value"></a>Rückgabewert
 
 Ein Array von „uint64_t“, bei dem es sich um die Registrierung handelt, die als eine Art von „uint64_t“ verarbeitet wird. Das heißt, dass in der Karte eine Liste von Ports enthalten ist, deren Werte „uin64_t“ bilden.
 
@@ -70,7 +72,7 @@ Ihr Plug-In sollte threadsicher sein, da diese Funktion möglicherweise von unte
 - Die SDK-Steuerungseinheit, die für das Speichern der Daten und das Erstellen von SDK-bezogenen Objekten wie ILayer und Felder zuständig ist.
 - Ein Hilfsprogramm zum Lesen der Daten aus dem Rohdatenpaket. Für das Hilfsprogramm ist bereits die Bytereihenfolge festgelegt, die Sie in der Datei „config.json“ definiert haben.
 
-### <a name="return-value"></a>Rückgabewert 
+### <a name="return-value"></a>Rückgabewert
 
 Das Ergebnis der Verarbeitung. Mögliche Werte: *Success*, *Malformed* oder *Sanity* (Erfolgreich/Nicht wohlgeformt/Integrität).
 
@@ -82,7 +84,7 @@ Kennzeichnet die Verarbeitung als Integritätsfehler, d. h., das Paket wird vom
 
 Konstruktor
 
-### <a name="parameters"></a>Parameter 
+### <a name="parameters"></a>Parameter
 
 - Definiert den von Horizon für die Protokollierung verwendeten Fehlercode, wie er in der Datei „config.json“ definiert ist.
 
@@ -94,7 +96,7 @@ Ergebnis: Nicht wohlgeformt. Das heißt, dass das Paket bereits als Protokoll er
 
 Konstruktor
 
-### <a name="parameters"></a>Parameter  
+### <a name="parameters"></a>Parameter
 
 - Fehlercode, wie in der Datei „config.json“ definiert.
 
@@ -110,7 +112,7 @@ Konstruktor. Es wurde ein erfolgreiches Basisergebnis erstellt. Das heißt, dass
 
 Konstruktor.
 
-### <a name="parameters"></a>Parameter 
+### <a name="parameters"></a>Parameter
 
 - Die Richtung des Pakets (sofern definiert). Mögliche Werte: *REQUEST* (Anforderung) oder *RESPONSE* (Antwort).
 
@@ -127,15 +129,15 @@ Konstruktor.
 
 Konstruktor.
 
-### <a name="parameters"></a>Parameter 
+### <a name="parameters"></a>Parameter
 
--  Warnungen. Diese Ereignisse schlagen nicht fehl, aber Horizon wird benachrichtigt.
+- Warnungen. Diese Ereignisse schlagen nicht fehl, aber Horizon wird benachrichtigt.
 
 ## `HorizonID HORIZON_FIELD(const std::string_view &)`
 
 Konvertiert einen zeichenfolgenbasierten Verweis auf einen Feldnamen (z. B. „function_code“) in eine Horizon-ID (HorizonID).
 
-### <a name="parameters"></a>Parameter 
+### <a name="parameters"></a>Parameter
 
 - Zu konvertierende Zeichenfolge.
 
@@ -163,7 +165,7 @@ Verweis auf den Manager.
 
 Erstellt auf der Ebene mit der angeforderten ID ein neues numerisches Feld mit 64 Bits.
 
-### <a name="parameters"></a>Parameter 
+### <a name="parameters"></a>Parameter
 
 - Die zuvor erstellte Ebene.
 - Vom Makro **HORIZON_FIELD** erstellte HorizonID.
@@ -173,7 +175,7 @@ Erstellt auf der Ebene mit der angeforderten ID ein neues numerisches Feld mit 6
 
 Erstellt auf der Ebene mit der angeforderten ID ein neues Zeichenfolgenfeld. Der Speicher wird verschoben. Seien Sie daher vorsichtig. Sie können diesen Wert nicht noch einmal verwenden.
 
-### <a name="parameters"></a>Parameter  
+### <a name="parameters"></a>Parameter
 
 - Die zuvor erstellte Ebene.
 - Vom Makro **HORIZON_FIELD** erstellte HorizonID.

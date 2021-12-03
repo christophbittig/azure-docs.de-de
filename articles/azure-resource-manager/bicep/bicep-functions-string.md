@@ -4,13 +4,13 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei f�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/01/2021
-ms.openlocfilehash: e8691fd357b8f8cbde87309f4881fa7424f7f44e
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.date: 10/29/2021
+ms.openlocfilehash: a73df839ff7dcaad992b8930c8fb2545e854951c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389075"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028076"
 ---
 # <a name="string-functions-for-bicep"></a>Zeichenfolgenfunktionen für Bicep
 
@@ -26,7 +26,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | inputString |Ja |Zeichenfolge |Der Wert, der als base64-Darstellung zurückgegeben wird. |
 
@@ -52,7 +52,7 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -68,7 +68,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | base64Value |Ja |Zeichenfolge |Die in ein JSON-Objekt zu konvertierende base64-Darstellung. |
 
@@ -95,7 +95,7 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -111,7 +111,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | base64Value |Ja |Zeichenfolge |Die in eine Zeichenfolge zu konvertierende base64-Darstellung. |
 
@@ -139,7 +139,7 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -157,7 +157,7 @@ output concatOutput string = '${prefix}And${uniqueString(resourceGroup().id)}'
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | concatOutput | String | prefixAnd5yj4yjf5mbg72 |
 
@@ -169,11 +169,11 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 Überprüft, ob ein Array einen Wert enthält, ein Objekt einen Schlüssel enthält oder eine Zeichenfolge eine Teilzeichenfolge enthält. Die Groß-/Kleinschreibung wird beim Zeichenfolgenvergleich beachtet. Wenn Sie jedoch testen, ob ein Objekt einen Schlüssel enthält, wird die Groß-/Kleinschreibung beim Vergleich nicht beachtet.
 
-Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | Container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enthält. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
@@ -211,7 +211,7 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -230,7 +230,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToConvert |Ja |Zeichenfolge |Der Wert, der in einen Daten-URI konvertiert werden soll. |
 
@@ -252,7 +252,7 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -267,7 +267,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |Ja |Zeichenfolge |Der zu konvertierende Daten-URI-Wert. |
 
@@ -289,7 +289,7 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -300,11 +300,11 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Bestimmt, ob ein Array, Objekt oder eine Zeichenfolge leer ist.
 
-Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den überprüft werden soll, ob er leer ist. |
 
@@ -328,7 +328,7 @@ output stringEmpty bool = empty(testString)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -344,7 +344,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
 | stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
@@ -368,7 +368,7 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -387,7 +387,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen erstes Element oder Zeichen abgerufen wird. |
 
@@ -412,7 +412,7 @@ output stringOutput string = first('One Two Three')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -427,7 +427,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | formatString | Ja | Zeichenfolge | Die zusammengesetzte Formatzeichenfolge. |
 | arg1 | Ja | Zeichenfolge, Integer oder boolescher Wert | Der Wert, der in die formatierte Zeichenfolge aufgenommen werden soll. |
@@ -451,7 +451,7 @@ output formatTest string = format('{0}, {1}. Formatted number: {2:N0}', greeting
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | formatTest | String | Hallo, Benutzer. Formatierte Zahl: 8.175.133 |
 
@@ -465,7 +465,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | baseString |Ja |Zeichenfolge |Der in der Hashfunktion für die Erstellung des GUID verwendete Wert. |
 | Zusätzliche Parameter nach Bedarf. |Nein |Zeichenfolge |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
@@ -500,6 +500,9 @@ guid(resourceGroup().id, deployment().name)
 
 Eine Zeichenfolge mit 36 Zeichen im Format eines Globally Unique Identifiers.
 
+> [!NOTE]
+> Bedeutung der Reihenfolge: Es handelt sich nicht nur um dieselben Parameter, sie müssen auch in derselben Reihenfolge angegeben werden. Beispiel: `guid('hello', 'world') != guid('world', 'hello')`
+
 ### <a name="examples"></a>Beispiele
 
 Das folgende Beispiel gibt Ergebnisse aus GUID zurück:
@@ -520,7 +523,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
 | stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
@@ -543,7 +546,7 @@ output notFound int = indexOf('abcdef', 'z')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | firstT | Int | 0 |
 | lastT | Int | 3 |
@@ -571,7 +574,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen letztes Element oder Zeichen abgerufen wird. |
 
@@ -596,7 +599,7 @@ output stringOutput string = last('One Two Three')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -611,7 +614,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
 | stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
@@ -634,7 +637,7 @@ output notFound int = indexOf('abcdef', 'z')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | firstT | Int | 0 |
 | lastT | Int | 3 |
@@ -652,7 +655,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array, Zeichenfolge oder Objekt |Das Array, von dem die Anzahl der Elemente ermittelt werden soll, die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll, oder das Objekt, von dem die Anzahl der Eigenschaften auf Stammebene ermittelt werden soll. |
 
@@ -688,7 +691,7 @@ output objectLength int = length(objectToTest)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arraylength | Int | 3 |
 | stringLength | Int | 13 |
@@ -706,7 +709,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 Sie können diese Funktion nur in einem Ausdruck für den Standardwert eines Parameters verwenden. Wenn diese Funktion an einer anderen Stelle in einer Bicep-Datei verwendet wird, wird ein Fehler zurückgegeben. Die Funktion ist in anderen Teilen der Bicep-Datei nicht zulässig, da bei jedem Aufruf ein anderer Wert zurückgegeben wird. Das Bereitstellen derselben Bicep-Datei mit denselben Parametern würde nicht zuverlässig zu denselben Ergebnissen führen.
 
-Im Gegensatz zur [guid](#guid)-Funktion verwendet die newGuid-Funktion keine Parameter. Wenn Sie die Funktion „guid“ mit demselben Parameter aufrufen, wird jedes Mal der gleiche Bezeichner zurückgegeben. Verwenden Sie die Funktion „guid“, wenn Sie die gleiche GUID für eine spezifische Umgebung zuverlässig generieren müssen. Verwenden Sie die Funktion „newGuid“, wenn Sie jedes Mal einen anderen Bezeichner benötigen, z. B. beim Bereitstellen von Ressourcen für eine Testumgebung.
+Im Gegensatz zur [guid](#guid)-Funktion verwendet die newGuid-Funktion keine Parameter. Wenn Sie die Funktion „guid“ mit denselben Parametern aufrufen, wird jedes Mal der gleiche Bezeichner zurückgegeben. Verwenden Sie die Funktion „guid“, wenn Sie die gleiche GUID für eine spezifische Umgebung zuverlässig generieren müssen. Verwenden Sie die Funktion „newGuid“, wenn Sie jedes Mal einen anderen Bezeichner benötigen, z. B. beim Bereitstellen von Ressourcen für eine Testumgebung.
 
 Die newGuid-Funktion verwendet die [Guid-Struktur](/dotnet/api/system.guid) im .NET Framework, um den global eindeutigen Bezeichner (GUID) zu generieren.
 
@@ -734,7 +737,7 @@ output guidOutput string = guidValue
 
 Die Ausgabe des vorherigen Beispiels variiert bei jeder Bereitstellung. Sie sollte jedoch folgender ähneln:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | guidOutput | Zeichenfolge | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -760,7 +763,7 @@ output nameOutput string = storageName
 
 Die Ausgabe des vorherigen Beispiels variiert bei jeder Bereitstellung. Sie sollte jedoch folgender ähneln:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | nameOutput | Zeichenfolge | storagenziwvyru7uxie |
 
@@ -774,7 +777,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | valueToPad |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der rechtsbündig ausgerichtet werden soll. |
 | totalLength |Ja |INT |Die Gesamtzahl der Zeichen in der zurückgegebenen Zeichenfolge. |
@@ -798,7 +801,7 @@ output stringOutput string = padLeft(testString, 10, '0')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
@@ -812,7 +815,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | originalString |Ja |Zeichenfolge |Der Wert, für den alle Instanzen einer Zeichenfolge durch eine andere Zeichenfolge ersetzt wurden. |
 | oldString |Ja |Zeichenfolge |Die Zeichenfolge, die aus der ursprünglichen Zeichenfolge entfernt werden soll. |
@@ -835,7 +838,7 @@ output secondOutput string = replace(testString, '1234', 'xxxx')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | firstOutput | String | 1231231234 |
 | secondOutput | String | 123-123-xxxx |
@@ -850,7 +853,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Array oder Zeichenfolge, wo Elemente übersprungen werden sollen. |
 | numberToSkip |Ja |INT |Die Anzahl der zu überspringenden Elemente bzw. Zeichen. Wenn dieser Wert 0 (null) oder kleiner ist, werden alle Elemente oder Zeichen in dem Wert zurückgegeben. Ist er größer als die Länge des Arrays bzw. der Zeichenfolge, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. |
@@ -879,7 +882,7 @@ output stringOutput string = skip(testString, charactersToSkip)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
@@ -894,7 +897,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | inputString |Ja |Zeichenfolge |Die zu teilende Zeichenfolge. |
 | Trennzeichen |Ja |Zeichenfolge oder Array von Zeichenfolgen |Das Trennzeichen, das zum Teilen der Zeichenfolge verwendet werden soll. |
@@ -922,7 +925,7 @@ output secondOutput array = split(secondString, delimiters)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
@@ -937,7 +940,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
 | stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
@@ -961,7 +964,7 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -980,7 +983,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Ja | Any |Der Wert, der in eine Zeichenfolge konvertiert werden soll. Werte aller Typen können konvertiert werden, auch Objekte und Arrays. |
 
@@ -1011,7 +1014,7 @@ output intOutput string = string(testInt)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
 | arrayOutput | String | ["a","b","c"] |
@@ -1027,11 +1030,11 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToParse |Ja |Zeichenfolge |Die ursprüngliche Zeichenfolge, aus der die Teilzeichenfolge extrahiert wird. |
 | startIndex |Nein |INT |Die nullbasierte Anfangsposition für die Teilzeichenfolge. |
-| length |Nein |INT |Die Anzahl der Zeichen der Teilzeichenfolge. Muss auf eine Position innerhalb der Zeichenfolge verweisen. Muss Null (0) oder größer sein. |
+| length |Nein |INT |Die Anzahl der Zeichen der Teilzeichenfolge. Muss auf eine Position innerhalb der Zeichenfolge verweisen. Muss Null (0) oder größer sein. Wenn dieser Wert nicht angegeben wird, wird der Rest der Zeichenfolge von der Startposition zurückgegeben.|
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1058,7 +1061,7 @@ output substringOutput string = substring(testString, 4, 3)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | substringOutput | String | two |
 
@@ -1072,7 +1075,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Das Array bzw. die Zeichenfolge, wo die Elemente entnommen werden sollen. |
 | numberToTake |Ja |INT |Die Anzahl der zu entnehmenden Elemente bzw. Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. Ist er größer als die Länge des entsprechenden Arrays bzw. der Zeichenfolge, werden alle Elemente des Arrays bzw. der Zeichenfolge zurückgegeben. |
@@ -1101,7 +1104,7 @@ output stringOutput string = take(testString, charactersToTake)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
@@ -1116,7 +1119,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToChange |Ja |Zeichenfolge |Der Wert, der in Kleinbuchstaben konvertiert werden soll. |
 
@@ -1137,7 +1140,7 @@ output toUpperOutput string = toUpper(testString)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -1152,7 +1155,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToChange |Ja |Zeichenfolge |Der Wert, der in Großbuchstaben konvertiert werden soll. |
 
@@ -1173,7 +1176,7 @@ output toUpperOutput string = toUpper(testString)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -1188,7 +1191,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |Ja |Zeichenfolge |Der zu kürzende Wert. |
 
@@ -1208,7 +1211,7 @@ output return string = trim(testString)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | return | String | one two three |
 
@@ -1222,7 +1225,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | baseString |Ja |Zeichenfolge |Der Wert, der in der Hashfunktion verwendet wird, um eine eindeutige Zeichenfolge zu erstellen. |
 | Zusätzliche Parameter nach Bedarf. |Nein |Zeichenfolge |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
@@ -1258,7 +1261,7 @@ uniqueString(resourceGroup().id, deployment().name)
 Das folgende Beispiel zeigt, wie Sie einen eindeutigen Namen für ein Speicherkonto auf Grundlage seiner Ressourcengruppe erstellen. Innerhalb der Ressourcengruppe ist der Name nicht eindeutig, wenn er auf die gleiche Weise erstellt wird.
 
 ```bicep
-resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
+resource mystorage 'Microsoft.Storage/storageAccounts@2018-07-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
   ...
 }
@@ -1289,7 +1292,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | baseUri |Ja |Zeichenfolge |Die Zeichenfolge mit dem Basis-URI. Achten Sie darauf, das Verhalten bezüglich der Behandlung des nachgestellten Schrägstrichs („/“) zu beobachten, wie im Anschluss auf die folgende Tabelle beschrieben.  |
 | relativeUri |Ja |Zeichenfolge |Der Zeichenfolge mit dem relativen URI, die der Zeichenfolge mit dem Basis-URI hinzugefügt werden soll. |
@@ -1332,7 +1335,7 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -1348,7 +1351,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |Ja |Zeichenfolge |Der zu codierende Wert. |
 
@@ -1373,7 +1376,7 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -1389,7 +1392,7 @@ Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |Ja |Zeichenfolge |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. |
 
@@ -1414,7 +1417,7 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -1423,5 +1426,5 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine Beschreibung der Abschnitte in einer Bicep-Datei finden Sie unter [Grundlegendes zur Struktur und Syntax von Bicep-Dateien](./file.md).
-* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Bereitstellen mehrerer Instanzen von Ressourcen in Bicep](./loop-resources.md).
+* Wenn Sie beim Erstellen eines Ressourcentyps eine angegebene Anzahl von Wiederholungen durchlaufen möchten, finden Sie weitere Informationen unter [Iterative Schleifen in Bicep](loops.md).
 * Informationen zum Bereitstellen der von Ihnen erstellten Bicep-Datei finden Sie unter [Bereitstellen von Ressourcen mit Bicep und Azure PowerShell](./deploy-powershell.md).

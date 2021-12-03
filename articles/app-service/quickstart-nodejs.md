@@ -4,18 +4,14 @@ description: Stellen Sie in wenigen Minuten Ihre erste Node.js-App vom Typ „Ha
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 09/14/2021
-ms.custom: mvc, devcenter, seodec18
-zone_pivot_groups: app-service-ide-oss
-adobe-target: true
-adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
-adobe-target-experience: Experience B
-adobe-target-content: ./quickstart-nodejs-uiex
-ms.openlocfilehash: 6368e186e280262b7901fa3b2c259b44c40c460d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: mvc, devcenter, seodec18, mode-portal
+zone_pivot_groups: app-service-vscode-cli-portal
+ms.openlocfilehash: 70d98c6aed2e8f561aeb40e4e60fdeab603f58c6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657841"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524054"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Erstellen einer Node.js-Web-App in Azure
 
@@ -43,6 +39,14 @@ In dieser Schnellstartanleitung wird eine App Service-App im **Free**-Tarif konf
 
 ::: zone-end
 
+
+:::zone target="docs" pivot="development-environment-azure-portal"
+
+- Sie benötigen ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
+- Installieren Sie [Node.js und npm](https://nodejs.org). Führen Sie den Befehl `node --version` aus, um sich zu vergewissern, dass Node.js installiert ist.
+- Verwenden Sie einen FTP-Client (etwa [FileZilla](https://filezilla-project.org)) zum Herstellen einer Verbindung mit Ihrer App.
+
+::: zone-end
 ## <a name="create-your-nodejs-application"></a>Erstellen der Node.js-Anwendung
 
 In diesem Schritt erstellen Sie eine Node.js-Startanwendung und stellen sicher, dass sie auf Ihrem Computer ausgeführt wird.
@@ -220,6 +224,65 @@ You can launch the app at http://&lt;app-name>.azurewebsites.net
 
 ::: zone-end
 
+:::zone target="docs" pivot="development-environment-azure-portal"
+### <a name="sign-in-to-azure-portal"></a>Anmelden beim Azure-Portal
+
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+
+### <a name="create-azure-resources"></a>Erstellen von Azure-Ressourcen
+
+1. Geben Sie **app services** in das Suchfeld ein. Wählen Sie unter **Dienste** die Option **App Services** aus.
+
+     :::image type="content" source="./media/quickstart-nodejs/portal-search.png?text=Azure portal search details" alt-text="Screenshot: Portalsuche":::
+
+1. Wählen Sie auf der Seite **App Services** die Option **Erstellen** aus.
+1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** für „Ressourcengruppe“ aus. Geben Sie als Namen *myResourceGroup* ein.
+
+    :::image type="content" source="./media/quickstart-nodejs/project-details.png" alt-text="Screenshot: Abschnitt „Projektdetails“, der zeigt, wo Sie das Azure-Abonnement und die Ressourcengruppe für die Web-App auswählen":::
+
+1. Geben Sie unter **Details zur Instanz** einen global eindeutigen Namen für Ihre Web-App ein, und wählen Sie **Code** aus. Wählen Sie unter **Runtimestapel** die Option *Node 14 LTS* sowie das **Betriebssystem** und eine **Region** aus, von der aus Sie Ihre App bedienen möchten.
+
+    :::image type="content" source="./media/quickstart-nodejs/instance-details.png" alt-text="Screenshot: Abschnitt „Instanzdetails“, in dem Sie einen Namen für den virtuellen Computer angeben und Region, Image und Größe für ihn auswählen":::
+
+1. Wählen Sie unter **App Service-Plan** die Option **Neu erstellen** aus. Geben Sie als Name *myAppServicePlan* ein. Wenn Sie zum Free-Tarif wechseln möchten, klicken Sie auf **Größe ändern**, und wählen Sie die Registerkarte **Dev/Test** > **F1** und dann unten auf der Seite die Schaltfläche **Anwenden** aus.
+
+    :::image type="content" source="./media/quickstart-nodejs/app-service-plan-details.png" alt-text="Screenshot: Abschnitt „Administratorkonto“, in dem Sie den Benutzernamen und das Kennwort des Administrators angeben":::
+
+1. Wählen Sie unten auf der Seite die Schaltfläche **Überprüfen und erstellen** aus.
+
+    :::image type="content" source="./media/quickstart-nodejs/review-create.png" alt-text="Screenshot: Schaltfläche „Überprüfen + erstellen“ am unteren Rand der Seite":::
+
+1. Wählen Sie nach der Überprüfung unten auf der Seite die Schaltfläche **Erstellen** aus.
+
+1. Wenn Ihre Bereitstellung abgeschlossen ist, wählen Sie **Go to resource** (Zu Ressource wechseln) aus.
+
+    :::image type="content" source="./media/quickstart-nodejs/next-steps.png" alt-text="Screenshot: Nächster Schritt zum Navigieren zur Ressource":::
+
+### <a name="get-ftp-credentials"></a>Abrufen der FTP-Anmeldeinformationen
+
+Azure App Service unterstützt [**zwei Arten von Anmeldeinformationen**](deploy-configure-credentials.md) für FTP/S-Bereitstellungen. Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements. In diesem Abschnitt erhalten Sie die *Anmeldeinformationen für den Anwendungsbereich*, die mit FileZilla verwendet werden sollen.
+
+1. Klicken Sie auf der Seite der App Service-App im linken Menü auf **Bereitstellungscenter**, und wählen Sie die Registerkarte **FTPS-Anmeldeinformationen** aus.
+
+    :::image type="content" source="./media/quickstart-nodejs/ftps-deployment-credentials.png" alt-text="Anmeldeinformationen für die FTPS-Bereitstellung":::
+
+1. Öffnen Sie **FileZilla**, und erstellen Sie eine neue Site.
+
+1. Kopieren Sie auf der Registerkarte **FTPS-Anmeldeinformationen** die Werte für **FTPS-Endpunkt**, **Benutzername** und **Kennwort** in FileZilla.
+
+    :::image type="content" source="./media/quickstart-nodejs/filezilla-ftps-connection.png" alt-text="FTPS-Verbindungsdetails":::
+
+1. Klicken Sie in FileZilla auf **Verbinden**.
+ 
+### <a name="deploy-files-with-ftp"></a>Bereitstellen von Dateien mit FTP
+
+1. Kopieren Sie alle Dateien und Verzeichnisdateien in das [Verzeichnis **/site/wwwroot**](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) in Azure.
+    
+    :::image type="content" source="./media/quickstart-nodejs/filezilla-deploy-files.png" alt-text="FileZilla: Bereitstellen von Dateien":::
+
+1. Navigieren Sie zur URL Ihrer App, um sicherzustellen, dass die Anwendung richtig ausgeführt wird.
+
+::: zone-end
 ## <a name="redeploy-updates"></a>Erneutes Bereitstellen von Updates
 
 Sie können Änderungen an dieser App bereitstellen, indem Sie Änderungen in Visual Studio Code vornehmen, Ihre Dateien speichern und dann erneut in Ihrer Azure-App bereitstellen. Beispiel:
@@ -258,6 +321,14 @@ Sie können Änderungen an dieser App bereitstellen, indem Sie Änderungen in Vi
 
 ::: zone-end
 
+:::zone target="docs" pivot="development-environment-azure-portal"
+
+2. Speichern Sie Ihre Änderungen, und stellen Sie die App dann mithilfe des FTP-Clients erneut bereit:
+    
+1. Sobald die Bereitstellung abgeschlossen ist, aktualisieren Sie die Webseite `http://<app-name>.azurewebsites.net`. Sie sollten sehen, dass die Meldung `Welcome to Express` in `Welcome to Azure!` geändert wurde.
+
+::: zone-end
+
 ## <a name="stream-logs"></a>Protokolle streamen
 
 :::zone target="docs" pivot="development-environment-vscode"
@@ -266,9 +337,9 @@ Sie können die Protokollausgabe (Aufrufe von `console.log()`) der Azure-App dir
 
 1. Klicken Sie im **App Service**-Explorer mit der rechten Maustaste auf den App-Knoten, und wählen Sie **Streamen der Protokolle starten** aus.
 
-    ![„Start Streaming Logs“ (Streamen der Protokolle starten)](media/quickstart-nodejs/view-logs.png)
+    ![„Start Streaming Logs“ (Streamen der Protokolle starten)](./media/quickstart-nodejs/view-logs.png)
 
-1. Wenn Sie aufgefordert werden, die App neu zu starten, klicken Sie auf **Ja**. Sobald die App neu gestartet wurde, wird das Visual Studio Code-Ausgabefenster mit einer Verbindung mit dem Protokollstream geöffnet. 
+1. Wenn Sie aufgefordert werden, die App neu zu starten, klicken Sie auf **Ja**. Sobald die App neu gestartet wurde, wird das Visual Studio Code-Ausgabefenster mit einer Verbindung mit dem Protokollstream geöffnet.
 
 1. Nach einigen Sekunden wird im Ausgabefenster eine Meldung mit dem Hinweis angezeigt, dass eine Verbindung mit dem Protokollstreamingdienst hergestellt wurde. Sie können weitere Ausgabeaktivitäten generieren, indem Sie die Seite im Browser aktualisieren.
 
@@ -300,6 +371,36 @@ Sie können auch den Parameter `--logs` mit dem Befehl `az webapp up` einfügen,
 Aktualisieren Sie die App im Browser, um Konsolenprotokolle zu erstellen, die Meldungen mit einer Beschreibung der HTTP-Anforderungen an die App enthalten. Wenn nicht sofort eine Ausgabe angezeigt wird, versuchen Sie es nach 30 Sekunden erneut.
 
 Sie können im Terminal jederzeit **STRG**+**C** drücken, um das Protokollstreaming zu beenden.
+
+::: zone-end
+
+:::zone target="docs" pivot="development-environment-azure-portal"
+
+Sie können auf die Konsolenprotokolle zugreifen, die innerhalb der App und des Containers, in dem sie ausgeführt wird, generiert wurden. Sie können die Protokollausgabe (Aufrufe von `console.log()`) der Node.js-App direkt in das Azure-Portal streamen.
+
+1. Scrollen Sie auf der gleichen **App Service**-Seite für Ihre App im linken Menü zum Abschnitt *Überwachung*, und klicken Sie auf **Protokollstream**.
+
+    :::image type="content" source="./media/quickstart-nodejs/log-stream.png" alt-text="Screenshot: Protokollstream in Azure App Service":::
+
+1. Nach einigen Sekunden wird im Ausgabefenster eine Meldung mit dem Hinweis angezeigt, dass eine Verbindung mit dem Protokollstreamingdienst hergestellt wurde. Sie können weitere Ausgabeaktivitäten generieren, indem Sie die Seite im Browser aktualisieren.
+
+    <pre>
+    Connecting...
+    2021-10-26T21:04:14  Welcome, you are now connected to log-streaming service.
+    Starting Log Tail -n 10 of existing logs ----
+    /appsvctmp/volatile/logs/runtime/81b1b83b27ea1c3d598a1cdec28c71c4074ce66c735d0be57f15a8d07cb3178e.log
+    2021-10-26T21:04:08.614384810Z: [INFO]
+    2021-10-26T21:04:08.614393710Z: [INFO]  # Enter the source directory to make sure the script runs where the user expects
+    2021-10-26T21:04:08.614399010Z: [INFO]  cd "/home/site/wwwroot"
+    2021-10-26T21:04:08.614403210Z: [INFO]
+    2021-10-26T21:04:08.614407110Z: [INFO]  export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+    2021-10-26T21:04:08.614411210Z: [INFO]  if [ -z "$PORT" ]; then
+    2021-10-26T21:04:08.614415310Z: [INFO]          export PORT=8080
+    2021-10-26T21:04:08.614419610Z: [INFO]  fi
+    2021-10-26T21:04:08.614423411Z: [INFO]
+    2021-10-26T21:04:08.614427211Z: [INFO]  node /opt/startup/default-static-site.js
+    Ending Log Tail of existing logs ---
+    </pre>
 
 ::: zone-end
 
@@ -336,6 +437,20 @@ az group delete --no-wait
 Der Befehl verwendet den Ressourcengruppennamen, der in der Datei *.azure/config* zwischengespeichert ist.
 
 Mit dem Argument `--no-wait` kann für den Befehl die Rückgabe erfolgen, bevor der Vorgang abgeschlossen ist.
+
+::: zone-end
+
+:::zone target="docs" pivot="development-environment-azure-portal"
+
+Wenn die Ressourcengruppe, der App-Dienst und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie löschen.
+
+1. Klicken Sie auf der Seite *Übersicht* von App Service auf die *Ressourcengruppe*, die Sie im Schritt [Erstellen von Azure-Ressourcen](#create-azure-resources) erstellt haben.
+
+    :::image type="content" source="./media/quickstart-nodejs/resource-group.png" alt-text="Ressourcengruppe auf der Übersichtsseite in App Service":::
+
+1. Wählen Sie auf der Seite *Ressourcengruppe* die Option **Ressourcengruppe löschen** aus. Bestätigen Sie dann den Namen der Ressourcengruppe, um das Löschen der Ressourcen abzuschließen.
+
+    :::image type="content" source="./media/quickstart-nodejs/delete-resource-group.png" alt-text="Ressourcengruppe löschen":::
 
 ::: zone-end
 

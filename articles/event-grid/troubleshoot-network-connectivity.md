@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 09/28/2021
 ms.author: batrived
-ms.openlocfilehash: c565a465dbab683295cf42248640bbbf8242412c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 38b3834b6c7c20e15f466b7af2fb7aa2b1780547
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129229941"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548023"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Behandeln von Konnektivitätsproblemen: Azure Event Grid
 
@@ -71,7 +71,7 @@ Weitere Informationen finden Sie unter [Konfigurieren von IP-Firewallregeln für
 
 #### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>Ermitteln der durch die IP-Firewall blockierten IP-Adressen
 
-Aktivieren Sie Diagnoseprotokolle für das Event Grid-Thema bzw. die -Domäne [Diagnoseprotokolle aktivieren](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-custom-topic). Es wird die IP-Adresse der Verbindung angezeigt, die verweigert wird.
+Aktivieren Sie Diagnoseprotokolle für das Event Grid-Thema bzw. die -Domäne [Diagnoseprotokolle aktivieren](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-event-grid-topics-and-event-grid-domains). Es wird die IP-Adresse der Verbindung angezeigt, die verweigert wird.
 
 ```json
 {

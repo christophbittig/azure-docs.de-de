@@ -3,19 +3,19 @@ title: Callcentertranskription – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Ein häufiges Szenario für die Spracherkennung ist das Transkribieren großer Mengen von Telefoniedaten, die von verschiedenen Systemen stammen, z. B. Systemen für interaktive Sprachantworten (Interactive Voice Response, IVR). Mithilfe von Speech-Diensten und dem Unified Speech-Modell kann ein Unternehmen qualitativ hochwertige Transkriptionen mit Systemen für die Erfassung von Audiodaten erzielen.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: pafarley
-ms.openlocfilehash: 0c1e1ca9b38c342d469c7d4ea1589b48038c95db
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: 0944e5da8bde152a2c8e9fd67e5641d419b0b1fd
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538865"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493962"
 ---
 # <a name="speech-service-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 
@@ -76,7 +76,7 @@ Ein weiterer Schwerpunkt der Analyse ist das Erkennen von Interaktionen, bei den
 
 ### <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
 
-Dieser Bereich ist eine der anspruchsvolleren Analyseanwendungen, die von KI (künstliche Intelligenz) und ML (maschinelles Lernen) profitiert. Das Hauptszenario in diesem Fall ist es, die Absicht des Kunden zu ermitteln. Warum ruft der Kunde an? Welches Problem hat der Kunde? Warum hat der Kunde eine negative Erfahrung gemacht? Unser [Textanalysedienst](https://azure.microsoft.com/services/cognitive-services/text-analytics/) bietet eine Reihe von sofort einsetzbaren Analysefunktionen, mit denen Sie schnell ein Upgrade Ihrer End-to-End-Lösung durchführen können, um diese wichtigen Schlüsselwörter oder Ausdrücke zu extrahieren.
+Dieser Bereich ist eine der anspruchsvolleren Analyseanwendungen, die von KI (künstliche Intelligenz) und ML (maschinelles Lernen) profitiert. Das Hauptszenario in diesem Fall ist es, die Absicht des Kunden zu ermitteln. Warum ruft der Kunde an? Welches Problem hat der Kunde? Warum hat der Kunde eine negative Erfahrung gemacht? Unser [Sprachdienst](https://azure.microsoft.com/services/cognitive-services/text-analytics/) bietet eine Reihe von sofort einsetzbaren Analysefunktionen, mit denen Sie schnell ein Upgrade Ihrer End-to-End-Lösung durchführen können, um diese wichtigen Schlüsselwörter oder Ausdrücke zu extrahieren.
 
 Nachfolgend werden die Batchverarbeitung und die Echtzeitpipelines für die Spracherkennung etwas ausführlicher erläutert.
 
@@ -130,7 +130,7 @@ Ein weiteres Szenario ist die direkte Integration mit dem Session Initiation Pro
 
 ## <a name="sample-code"></a>Beispielcode
 
-Auf GitHub steht Beispielcode für jedes der Features des Speech-Diensts zur Verfügung. In den Beispielen werden gängige Szenarios wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und einmalige Erkennung oder die Verwendung benutzerdefinierter Modelle behandelt. Über die folgenden Links gelangen Sie zu den SDK- und REST-Beispielen:
+Auf GitHub steht Beispielcode für jedes der Features des Speech-Diensts zur Verfügung. In den Beispielen werden gängige Szenarien wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und anfängliche Erkennung oder die Verwendung benutzerdefinierter Modelle behandelt. Über die folgenden Links gelangen Sie zu den SDK- und REST-Beispielen:
 
 - [Beispiele für Spracherkennung und Sprachübersetzung (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Batch transcription samples (REST) (Batchtranskriptionsbeispiele (REST))](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)

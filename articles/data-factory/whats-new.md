@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: concepts
 ms.topic: overview
 ms.date: 07/14/2021
-ms.openlocfilehash: 23c4da30e149f10971c4cdec7b99b63e02c45808
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 52c59662e1dfa97e779cce0b812bcaf25a8494a1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164720"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301625"
 ---
 # <a name="whats-new-in-azure-data-factory"></a>Neues in Azure Data Factory
 
@@ -25,6 +25,34 @@ Der Azure Data Factory-Dienst (ADF) wird laufend verbessert. Damit Sie bezügli
 - Pläne für Änderungen
 
 Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert. 
+
+## <a name="october-2021"></a>Oktober 2021
+<br>
+<table>
+<tr><td><b>Dienstkategorie</b></td><td><b>Verbesserungen beim Dienst</b></td><td><b>Details</b></td></tr>
+  
+<tr><td rowspan=3><b>Datenfluss</b></td><td>Azure Data Explorer-Connector und Amazon Web Services S3-Connector</td><td>Das Microsoft-Datenintegrationsteam hat gerade zwei neue Connectors für Zuordnungsdatenflüsse veröffentlicht. Wenn Sie Azure Synapse verwenden, können Sie jetzt eine direkte Verbindung mit Ihren AWS S3-Buckets für Datentransformationen herstellen. Sowohl in Azure Data Factory als auch in Azure Synapse können Sie nun nativ eine Verbindung mit Ihren Azure Data Explorer-Clustern in Zuordnungsdatenflüssen herstellen.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/mapping-data-flow-gets-new-native-connectors/ba-p/2866754">Weitere Informationen</a></td></tr>
+<tr><td>Power Query-Aktivität jetzt allgemein verfügbar</td><td>Microsoft hat die Power Query-Pipelineaktivität von Azure Data Factory als allgemein verfügbar freigegeben. Dieses neue Feature bietet eine aufskalierte Datenvorbereitung und Data Wrangling für Citizen Integrators innerhalb der ADF-Browserbenutzeroberfläche, um eine integrierte Benutzeroberfläche für technische Fachkräfte für Daten zu erhalten. Das Data Wrangling-Feature von Power Query in ADF bietet eine leistungsstarke und benutzerfreundliche Pipelinefunktion, um Ihre komplexesten Datenintegrations- und ETL-Muster in einem einzigen Dienst zu lösen.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/data-wrangling-at-scale-with-adf-s-power-query-activity-now/ba-p/2824207">Weitere Informationen</a></td></tr>
+<tr><td>Neue stringifizierte Datentransformation in Zuordnungsdatenflüssen</td><td>Zuordnungsdatenflüsse fügen eine neue Datentransformation mit dem Namen „Stringify“ hinzu, um komplexe Datentypen wie Strukturen und Arrays ganz einfach in Zeichenfolgenform zu konvertieren, die an strukturierte Ausgabeziele gesendet werden kann.<br><a href="data-flow-stringify.md">Weitere Informationen</a></td></tr>
+  
+<tr>
+  <td rowspan=2><b>Integration Runtime</b></td>
+  <td>Von Azure Data Factory verwaltetes vNet in allgemeine Verfügbarkeit überführt</td>
+  <td>Sie können die Azure Integration Runtime jetzt als Teil eines verwalteten virtuellen Netzwerks bereitstellen und private Endpunkte nutzen, um eine sichere Verbindung mit unterstützten Datenspeichern herzustellen. Der Datenverkehr durchläuft private Azure-Links, die für eine sichere Konnektivität mit der Datenquelle sorgen. Darüber hinaus wird die Exfiltration von Daten in das öffentliche Internet verhindert.<br><a href="managed-virtual-network-private-endpoint.md">Weitere Informationen</a></td>
+ </tr>
+ <tr>
+   <td>VNet-Injektionsmethode „Express“ für die SSIS Integration Runtime (Public Preview)</td>
+   <td>Die SSIS Integration Runtime unterstützt jetzt die VNet-Injektionsmethode „Express“.<br>
+Weitere Informationen:<br>
+     <a href="join-azure-ssis-integration-runtime-virtual-network.md">Verknüpfung der Azure-SSIS-Integrationslaufzeit mit einem virtuellen Netzwerk</a><br>
+     <a href="azure-ssis-integration-runtime-virtual-network-configuration.md">Konfigurieren eines virtuellen Netzwerks für die Injektion von Azure-SSIS Integration Runtime</a><br>
+     <a href="azure-ssis-integration-runtime-express-virtual-network-injection.md">Expresseinschleusungsmethode für virtuelle Netzwerke (Vorschau)</a>
+   </td>
+ </tr>
+
+<tr><td rowspan=2><b>Security</b></td><td>Azure Key Vault-Integrationsverbesserung</td><td>Wir haben die Azure Key Vault-Integration verbessert, indem vom Benutzer auswählbare Dropdownlisten hinzugefügt werden, um die geheimen Werte im verknüpften Dienst auszuwählen, die Produktivität zu steigern und Benutzer nicht zur Eingabe der Geheimnisse zu zwingen, was zu menschlichen Fehlern führen kann.</td></tr>
+<tr><td>Unterstützung benutzerseitig zugewiesener verwalteter Identitäten in Azure Data Factory</td><td>Die Sicherheit von Anmeldeinformationen ist für jedes Unternehmen von entscheidender Bedeutung. Daher ist das ADF-Team (Azure Data Factory) bestrebt, den Datentechnikprozess für technische Fachkräfte für Daten sowohl sicher als auch einfach zu gestalten. Wir freuen uns, die Unterstützung benutzerseitig zugewiesener verwalteter Identitäten (Vorschauversion) in allen Connectors/verknüpften Diensten ankündigen zu können, die die Azure AD-Authentifizierung (Azure Active Directory) unterstützen.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/support-for-user-assigned-managed-identity-in-azure-data-factory/ba-p/2841013">Weitere Informationen</a></td></tr>
+</table>
 
 ## <a name="september-2021"></a>September 2021
 <br>
@@ -61,7 +89,7 @@ Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert.
 <tr><td><b>Datenverschiebung</b></td><td>Erstellen von metadatengesteuerten Datenerfassungspipelines im ADF-Tool zum Kopieren von Daten in nur 10 Minuten (Public Preview)</td><td>Mit dem metadatengesteuerten Ansatz des Tools zum Kopieren von Daten (Public Preview) können Sie innerhalb von 10 Minuten umfangreiche Datenkopierpipelines erstellen.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/get-metadata-driven-data-ingestion-pipelines-on-adf-within-10/ba-p/2528219">Weitere Informationen</a></td></tr>
 <tr><td><b>Datenfluss</b></td><td>Neue Zuordnungsfunktionen in Transformationsfunktionen für Datenflüsse</td><td>Es wurde eine neue Gruppe von Transformationsfunktionen für Datenflüsse hinzugefügt, die technischen Fachkräften für Daten das einfache Generieren, Lesen und Aktualisieren von Zuordnungsdatentypen und komplexen Zuordnungsstrukturen ermöglichen.<br><a href="data-flow-expression-functions.md#map-functions">Weitere Informationen</a></td></tr>
 <tr><td><b>Integration Runtime</b></td><td>Fünf neue Regionen im verwalteten virtuellen Netzwerk (VNET) in Azure Data Factory (Public Preview) verfügbar</td><td>Die folgenden fünf neuen Regionen sind im verwalteten virtuellen Netzwerk in Azure Data Factory (Public Preview) verfügbar: „China, Osten 2“, „China, Norden 2“, „US Gov Arizona“, „US Gov Texas“ und „US Gov Virginia“.<br><a href="managed-virtual-network-private-endpoint.md#azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions">Weitere Informationen</a></td></tr>
-<tr><td rowspan=2><b>Entwicklerproduktivität</b></td><td>ADF-Startseite mit neuen Sitzungen umgestaltet</td><td>Die Data Factory-Startseite wurde mit besseren Kontrast- und Umbruchfunktionen umgestaltet. Darüber hinaus wurden einige Abschnitte auf der Startseite eingeführt, mit denen Sie die Produktivität bei Ihrer Datenintegrations-Journey verbessern können.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">Weitere Informationen</a></td></tr>
+<tr><td rowspan=2><b>Entwicklerproduktivität</b></td><td>Verbesserungen an der ADF-Startseite</td><td>Die Data Factory-Startseite wurde mit besseren Kontrast- und Umbruchfunktionen umgestaltet. Darüber hinaus wurden einige Abschnitte auf der Startseite eingeführt, mit denen Sie die Produktivität bei Ihrer Datenintegrations-Journey verbessern können.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">Weitere Informationen</a></td></tr>
 <tr><td>Neue Landing Page für Azure Data Factory Studio</td><td>Die Landing Page für das Blatt „Data Factory“ im Azure-Portal wurde überarbeitet.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">Weitere Informationen</a></td></tr>
 </table>
 

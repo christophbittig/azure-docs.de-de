@@ -8,14 +8,14 @@ metadata:
   ms.service: cost-management-billing
   ms.subservice: common
   ms.topic: conceptual
-  ms.date: 10/13/2021
+  ms.date: 10/22/2021
   ms.author: banders
-  ms.openlocfilehash: cc2ee1984af35b357f1c67c03fecacbf17444d22
-  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+  ms.openlocfilehash: c38966a630d61279ab34328bf7a76204fb0079ee
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/14/2021
-  ms.locfileid: "129993053"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130229444"
 title: Häufig gestellte Fragen zu Cost Management and Billing
 summary: ''
 sections:
@@ -161,7 +161,7 @@ sections:
       Entsprechende Informationen finden Sie unter [Anzeigen der Gebühren für Spot-VMs](./costs/cost-analysis-common-uses.md#view-your-spot-vm-charges).
   - question: Wie erhalte ich einen Bericht mit Reservierungsdetails?
     answer: >
-      Informationen zum [Generieren eines Berichts mit Reservierungsdetails](/rest/api/cost-management/generatereservationdetailsreport) finden Sie in der API-Dokumentation.
+      Informationen zum [Generieren eines Berichts mit Reservierungsdetails](/azure/cost-management-billing/reservations/reservation-utilization) finden Sie in der API-Dokumentation.
 - name: Fragen zu Azure Enterprise Agreement (EA) und zum EA-Portal
   questions:
   - question: Wie weise ich SPN-Berechtigungen für meine Registrierung zu?
@@ -176,6 +176,9 @@ sections:
   - question: Wie füge ich meiner Registrierung einen neuen EA-Administrator hinzu?
     answer: >
       Ein neuer Unternehmensadministrator kann von vorhandenen Unternehmensadministratoren hinzugefügt werden. Wenn Sie EA-Administrator sind, melden Sie sich beim EA-Portal an. Klicken Sie auf **Verwalten** und dann in der oberen rechten Ecke auf **+ Administrator hinzufügen**, um einen neuen EA-Administrator hinzuzufügen. Stellen Sie sicher, dass Sie die E-Mail-Adresse und bevorzugte Anmeldemethode des Benutzers kennen, z. B. eine Authentifizierung über ein Geschäfts-, Schul- und Unikonto oder eine Microsoft-Live-ID, damit Sie den Benutzer hinzufügen können.
+
+
+      Wenn Sie der EA-Administrator einer direkten Registrierung sind, melden Sie sich beim Azure-Portal an, und wählen Sie **Abrechnungsbereich** aus. Navigieren Sie zu **Zugriffssteuerung (IAM)**, und wählen Sie in der oberen linken Ecke **+ Hinzufügen** aus, um einen neuen EA-Administrator hinzuzufügen. Sie müssen die E-Mail-Adresse und bevorzugte Anmeldemethode des Benutzers kennen, z. B. für eine Authentifizierung über ein Geschäfts-, Schul- oder Unikonto oder eine Microsoft-Live-ID.
 
 
       Wenn Sie kein EA-Administrator sind, wenden Sie sich an die EA-Administratoren in Ihrem Unternehmen, um diese zu bitten, Sie zur Registrierung hinzuzufügen. Nachdem Sie zur Registrierung hinzugefügt wurden, erhalten Sie eine Aktivierungs-E-Mail.
@@ -220,6 +223,9 @@ sections:
   - question: Meine Registrierung wird im Status „Ausstehend“ angezeigt. Wie aktiviere ich meine Registrierung?
     answer: >
       Registrierungen weisen den Status „Ausstehend“ auf, wenn der ursprüngliche EA-Administrator sich noch nicht bei der Registrierung angemeldet hat. Wenn Sie dieser EA-Administrator sind, melden Sie sich beim Azure-EA-Portal an. Auf der Landing Page mit allen Registrierungsnummern wird die ausstehende Registrierung möglicherweise nicht angezeigt. Deaktivieren Sie das Kontrollkästchen „Aktiv“ in der oberen rechten Ecke Ihres EA-Portals. Damit wird die ausstehende Registrierung angezeigt. Klicken Sie auf die Registrierung, um auf die Informationen zuzugreifen. Sobald Sie zur Seite „Verwalten“ der Registrierung gelangen, wird der Status von „Ausstehend“ zu „Aktiv“ geändert.
+
+
+      Wenn Sie ein direkter Unternehmenskunde sind, melden Sie sich beim Azure-Portal an. Wählen Sie auf der Seite mit dem Abrechnungsbereich Ihr Abrechnungskonto aus. Wenn Sie sich auf der Übersichtsseite für die Registrierung befinden, wird der Status von **Ausstehend** in **Aktiv** geändert. Navigieren Sie anschließend zum Menü **Eigenschaften**, um den aktualisierten Status anzuzeigen.
   - question: Warum verbleibt mein Konto im Status „Ausstehend“?
     answer: >
       Wenn der Registrierung neue Kontobesitzer (Account Owners, AO) hinzugefügt werden, wird unter ihrem Status immer „Ausstehend“ angezeigt. Nach Erhalt der Begrüßungs-E-Mail für die Aktivierung kann der Kontobesitzer sich anmelden, um sein Konto zu aktivieren. Durch die Anmeldung wird der Kontostatus von „Ausstehend“ in „Aktiv“ geändert.
@@ -256,7 +262,7 @@ sections:
       - Löschen Sie den Visual Studio-Abonnenten aus der Verwaltungswebsite in VLSC, und weisen Sie das Abonnement diesmal einem Konto mit anderen Anmeldeinformationen zu. Registrieren Sie sich anschließend erneut für individuelle Visual Studio-Azure-Vorteile.
   - question: Welche Art von Abonnement soll ich erstellen?
     answer: >
-      Im Azure Enterprise Portal stehen für Unternehmenskunden zwei Arten von Abonnements zur Verfügung:
+      Für Azure Enterprise-Kunden werden zwei Abonnementtypen angeboten:
 
 
       - Microsoft Azure Enterprise. Ideal für:
@@ -324,6 +330,9 @@ sections:
 
 
       Sie können auch über die Berichterstellungs-API auf Nutzungsdaten zugreifen. Ausführliche Informationen und Beispielcode finden Sie unter [Azure Enterprise-REST-APIs](manage/ea-portal-rest-apis.md).
+
+
+      Direkte Unternehmenskunden können die Nutzung und Ausgaben auf verschiedenen Abteilungsebenen im Azure-Portal anzeigen. Navigieren Sie zum Menü **Abteilung**, um die Gebühren anzuzeigen.
   - question: Kann ich ein Ausgabenkontingent festlegen und Warnungen erhalten, wenn ich mich dem Grenzwert nähere?
     answer: >
       Ein Ausgabenkontingent kann auf der Abteilungsebene festgelegt werden. Daraufhin werden Sie automatisch vom System benachrichtigt, wenn Ihre Ausgabenlimits 50 Prozent, 75 Prozent, 90 Prozent und 100 Prozent des von Ihnen definierten Kontingents erreichen.
@@ -361,6 +370,9 @@ sections:
       1. Wählen Sie im Azure Enterprise Portal **Verwalten** > **Konto** aus.
 
       1. Zeigen Sie ganz rechts auf **Konto**, um die Optionen **Besitz übertragen** (Personensymbol) und **Abonnement übertragen** (Listensymbol) anzuzeigen. Diese Optionen sind nur für aktive Konten sichtbar.
+
+
+      Direkte Unternehmenskunden können den Abonnementbesitz im Azure-Portal auf ein anderes Konto übertragen. Navigieren Sie zum Menü **Konto** oder **Abonnement**, um den Besitz zu übertragen.
   - question: Kann ein Azure-Kontobesitzer unter mehreren Abteilungen aufgeführt werden?
     answer: >
       Nein. Ein Kontobesitzer kann immer nur einer einzelnen Abteilung zugeordnet sein. Durch diese Richtlinie wird eine korrekte Überwachung und Zuordnung von Kosten und Ausgaben im Zusammenhang mit der entsprechenden Abteilung unter der EA-Registrierung im Azure EA Portal sichergestellt.
@@ -393,6 +405,9 @@ sections:
       1. Wählen Sie den blauen Stift neben „AO-Ansichtsgebühren“ (Account Owner, Kontobesitzer) aus.
 
       1. Wählen Sie **Aktiviert** aus, und speichern Sie.
+
+
+      Für Kunden mit **direkter Registrierung** können Unternehmensadministratoren Kontobesitzern und Abteilungsadministratoren über das Azure-Portal Zugriff auf Kosten-/Preisinformationen in den Nutzungsberichten gewähren. Navigieren Sie zum Menü **Richtlinien**, um Einstellungen zu ändern.
 
 
       > [!NOTE]

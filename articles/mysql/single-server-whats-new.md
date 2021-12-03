@@ -7,20 +7,26 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: b324c6b536ae5038ed9eb1d31025d6e88cf21011
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ef710559cb8d51b21e859bb08c50c5a2ed07b74c
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340137"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894201"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---single-server"></a>Neuerungen in Azure Database for MySQL Single Server
 
 [!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
-Azure Database for MySQL ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Der Dienst basiert auf der [Datenbank-Engine MySQL Community Edition](https://www.mysql.com/products/community/) (verfügbar unter der GPLv2-Lizenz) und unterstützt die Versionen 5.6, 5.7 und 8.0. Bei [Azure Database for MySQL Single Server](./overview.md#azure-database-for-mysql---single-server) handelt es sich um einen Bereitstellungsmodus, der einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank bietet. Die Single Server-Plattform kann die meisten Funktionen zur Datenbankverwaltung bereitstellen, z. B. Patching, Sicherungen, Hochverfügbarkeit sowie Sicherheit, alle mit minimaler Benutzerkonfiguration und -steuerung.
+Azure Database for MySQL ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Der Dienst basiert auf der [Datenbank-Engine MySQL Community Edition](https://www.mysql.com/products/community/) (verfügbar unter der GPLv2-Lizenz) und unterstützt die Versionen 5.6 (eingestellt), 5.7 und 8.0. Bei [Azure Database for MySQL Single Server](./overview.md#azure-database-for-mysql---single-server) handelt es sich um einen Bereitstellungsmodus, der einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank bietet. Die Single Server-Plattform kann die meisten Funktionen zur Datenbankverwaltung bereitstellen, z. B. Patching, Sicherungen, Hochverfügbarkeit sowie Sicherheit, alle mit minimaler Benutzerkonfiguration und -steuerung.
 
 In diesem Artikel werden neue Releases und Features in Azure Database for MySQL Single Server ab Januar 2021 zusammengefasst. Auflistungen werden in umgekehrter chronologischer Reihenfolge angezeigt, die neuesten Updates zuerst.
+
+## <a name="october-2021"></a>Oktober 2021
+
+- **Bekannte Probleme**
+
+Der MySQL-8.0.27-Client ist nicht kompatibel mit der Azure Datenbank für MySQL-Einzelserver. Alle Verbindungen vom MySQL-8.0.27-Clienten, die entweder über mysql.exe oder der Workbench erstellt wurden, führen zu einer Fehlermeldung. Erwägen Sie als Problemumgehung die Verwendung einer früheren Version des Clienten (vor MySQL 8.0.27) oder das Erstellen einer Instanz von [Azure Datenbank für MySQL-flexible Server](https://docs.microsoft.com/azure/mysql/flexible-server/overview).
 
 ## <a name="june-2021"></a>Juni 2021
   
@@ -85,7 +91,7 @@ Weitere Kontaktmöglichkeiten:
 
 - Wenn Sie den Azure-Support kontaktieren möchten, [fordern Sie im Azure-Portal ein Ticket an](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-- Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
+- Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/d365community/forum/47b1e71d-ee24-ec11-b6e6-000d3a4f0da0).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

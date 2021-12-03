@@ -7,12 +7,12 @@ ms.date: 10/19/2021
 ms.author: helohr
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 644857c552b6e54d94746746f1c2ba9a230baeb6
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: a88c9ecef36786f67c930a22ecdd67d5890da92f
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181639"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399065"
 ---
 # <a name="autoscale-preview-for-azure-virtual-desktop-host-pools"></a>Automatische Skalierung (Vorschau) für Azure Virtual Desktop-Hostpools
 
@@ -27,7 +27,10 @@ Mit dem Feature für die automatische Skalierung (Vorschauversion) können Sie d
 - Sitzungslimits pro Sitzungshost
 
 >[!NOTE]
->Windows Virtual Desktop (klassisch) unterstützt das Feature „Automatische Skalierung“ nicht. Die Skalierung kurzlebiger Datenträger wird ebenfalls nicht unterstützt.
+> - Azure Virtual Desktop (klassisch) unterstützt das Feature „Automatische Skalierung“ nicht. 
+> - Die Autoskalierung unterstützt Azure Virtual Desktop für Azure Stack HCI nicht. 
+> - Die automatische Skalierung unterstützt keine Skalierung kurzlebiger Datenträger.
+
 
 Um optimale Ergebnisse zu erzielen, empfehlen wir die Verwendung der automatischen Skalierung mit virtuellen Computern, die Sie mit Azure Resource Manager-Vorlagen für Azure Virtual Desktop oder Erstherstellertools von Microsoft bereitgestellt haben.
 
@@ -36,7 +39,7 @@ Um optimale Ergebnisse zu erzielen, empfehlen wir die Verwendung der automatisch
 >
 > - Sie können die automatische Skalierung nur in der öffentlichen Azure-Cloud verwenden.
 > - Sie können die automatische Skalierung nur mit dem Azure-Portal konfigurieren.
-> - Sie können den Skalierungsplan nur in den Regionen USA und Europa bereitstellen.
+> - Sie können den Skalierungsplan nur den US-Amerikanischen und europäischen Regionen bereitstellen.
 
 ## <a name="requirements"></a>Anforderungen
 
@@ -50,9 +53,9 @@ Bevor Sie Ihren ersten Skalierungsplan erstellen, stellen Sie sicher, dass Sie d
 
 Um mit der Erstellung eines Skalierungsplans zu beginnen, müssen Sie zunächst eine benutzerdefinierte Rolle für rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Ihrem Abonnement erstellen. Diese Rolle ermöglicht Windows Virtual Desktop den durch die VMs in Ihrem Abonnement verursachten Energieverbrauch zu verwalten. Außerdem kann der Dienst Aktionen sowohl auf Hostpools als auch auf VMs anwenden, wenn keine aktiven Benutzersitzungen durchgeführt werden.
 
-Befolgen Sie zum Erstellen der benutzerdefinierten Rolle die Anweisungen unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md) mithilfe dieser JSON-Vorlage:
-
+Befolgen Sie zum Erstellen der benutzerdefinierten Rolle die Anweisungen unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md), während Sie die folgende JSON-Vorlage verwenden. Diese Vorlage enthält bereits alle erforderlichen Berechtigungen. Ausführlichere Anweisungen finden Sie unter [Zuweisen von benutzerdefinierten Rollen mit dem Azure-Portal](#assign-custom-roles-with-the-azure-portal).
 ```json
+ {
  "properties": {
  "roleName": "Autoscale",
  "description": "Friendly description.",
@@ -62,19 +65,20 @@ Befolgen Sie zum Erstellen der benutzerdefinierten Rolle die Anweisungen unter [
   "permissions": [
    {
    "actions": [
-                      "Microsoft.Insights/eventtypes/values/read",
-           "Microsoft.Compute/virtualMachines/deallocate/action",
-                      "Microsoft.Compute/virtualMachines/restart/action",
-                      "Microsoft.Compute/virtualMachines/powerOff/action",
-                      "Microsoft.Compute/virtualMachines/start/action",
-                      "Microsoft.Compute/virtualMachines/read",
-                      "Microsoft.DesktopVirtualization/hostpools/read",
-                      "Microsoft.DesktopVirtualization/hostpools/write",
-                      "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
-                      "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write",
-                      "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete",
-"Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read",                   "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action",
-"Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
+                 "Microsoft.Insights/eventtypes/values/read",
+                 "Microsoft.Compute/virtualMachines/deallocate/action",
+                 "Microsoft.Compute/virtualMachines/restart/action",
+                 "Microsoft.Compute/virtualMachines/powerOff/action",
+                 "Microsoft.Compute/virtualMachines/start/action",
+                 "Microsoft.Compute/virtualMachines/read",
+                 "Microsoft.DesktopVirtualization/hostpools/read",
+                 "Microsoft.DesktopVirtualization/hostpools/write",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
 ],
   "notActions": [],
   "dataActions": [],
@@ -85,11 +89,9 @@ Befolgen Sie zum Erstellen der benutzerdefinierten Rolle die Anweisungen unter [
 }
 ```
 
-## <a name="assign-custom-roles"></a>Zuweisen benutzerdefinierter Rollen
+## <a name="assign-custom-roles-with-the-azure-portal"></a>Zuweisen von benutzerdefinierten Rollen mit dem Azure-Portal
 
-Als Nächstes müssen Sie das Azure-Portal verwenden, um die benutzerdefinierte Rolle zu zuweisen, die Sie in Ihrem Abonnement erstellt haben.
-
-So weisen Sie die benutzerdefinierten Rolle zu:
+So erstellen Sie die benutzerdefinierte Rolle mit dem Azure-Portal und weisen sie Ihrem Abonnement zu:
 
 1. Navigieren Sie im Azure-Portal zu **Abonnements**.
 
@@ -103,18 +105,20 @@ So weisen Sie die benutzerdefinierten Rolle zu:
 4. Fügen Sie auf der Registerkarte **Berechtigungen** dem Abonnement, dem Sie die Rolle zuweisen, die folgenden Berechtigungen hinzu:
 
     ```azcopy
-    "Microsoft.Compute/virtualMachines/deallocate/action", 
-    "Microsoft.Compute/virtualMachines/restart/action", 
-    "Microsoft.Compute/virtualMachines/powerOff/action", 
-    "Microsoft.Compute/virtualMachines/start/action", 
-    "Microsoft.Compute/virtualMachines/read",
-    "Microsoft.DesktopVirtualization/hostpools/read",
-    "Microsoft.DesktopVirtualization/hostpools/write",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read",
+        "Microsoft.Insights/eventtypes/values/read"
+                 "Microsoft.Compute/virtualMachines/deallocate/action"
+                 "Microsoft.Compute/virtualMachines/restart/action"
+                 "Microsoft.Compute/virtualMachines/powerOff/action"
+                 "Microsoft.Compute/virtualMachines/start/action"
+                 "Microsoft.Compute/virtualMachines/read"
+                 "Microsoft.DesktopVirtualization/hostpools/read"
+                 "Microsoft.DesktopVirtualization/hostpools/write"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
     ```
 
 5. Klicken Sie auf **OK**, wenn Sie fertig sind.
@@ -125,29 +129,14 @@ So weisen Sie die benutzerdefinierte Rolle zu, um Zugriff zu gewähren:
 
 1. Wählen Sie auf der Registerkarte **Zugriffssteuerung (IAM)** die Option **Rollenzuweisungen hinzufügen** aus.
 
-2. Wählen Sie die Rolle aus, die Sie gerade erstellt haben.
+2. Wählen Sie die soeben erstellte Rolle aus und fahren Sie mit dem nächsten Bildschirm fort.
 
-3. Geben Sie in der Suchleiste **Windows Virtual Desktop** ein, und wählen Sie diese Eingabe aus, wie im folgenden Screenshot gezeigt.
+3. Klicken Sie auf **Mitglieder auswählen**. Geben Sie in der Suchleiste **Windows Virtual Desktop** ein, und wählen Sie diese Eingabe aus, wie im folgenden Screenshot gezeigt. Wenn Sie über eine Azure Virtual Desktop-Bereitstellung (klassisch) und eine Azure Virtual Desktop-Anwendung mit Azure Resource Manager Azure Virtual Desktop-Objekten verfügen, werden zwei Apps mit dem gleichen Namen angezeigt. Wählen Sie beide aus.
 
     > [!div class="mx-imgBorder"]
     > ![Ein Screenshot des Menüs zur Rollenzuweisung. Das Feld „Auswählen“ ist rot hervorgehoben, und der Benutzer gibt „Windows Virtual Desktop“ in das Suchfeld ein.](media/search-for-role.png)
 
-Stellen Sie beim Hinzufügen der benutzerdefinierten Rolle im Azure-Portal sicher, dass Sie auch die folgenden Berechtigungen ausgewählt haben:
-
-   - Microsoft.Compute/virtualMachines/deallocate/action
-   - Microsoft.Compute/virtualMachines/restart/action
-   - Microsoft.Compute/virtualMachines/powerOff/action
-   - Microsoft.Compute/virtualMachines/start/action 
-   - Microsoft.Compute/virtualMachines/read
-   - Microsoft.DesktopVirtualization/hostpools/read
-   - Microsoft.DesktopVirtualization/hostpools/write
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/read
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/write
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read
-
-Dies sind die gleichen Berechtigungen, die Sie in Schritt 4 eingegeben haben.
+4. Wählen Sie **Überprüfen + Zuweisen** aus, um die Zuweisung abzuschließen.
 
 ## <a name="how-creating-a-scaling-plan-works"></a>So wird ein Skalierungsplan erstellt
 
@@ -194,7 +183,7 @@ So erstellen Sie einen Skalierungsplan:
 
 6. Optional können Sie auch einen Anzeigenamen hinzufügen, der Ihren Benutzern angezeigt wird, und eine Beschreibung für Ihren Plan.
 
-7. Wählen Sie unter **Region** eine Region für Ihren Skalierungsplan aus. Die Metadaten für das Objekt werden in der Geografie gespeichert, die der Region zugeordnet ist. Derzeit unterstützt die automatische Skalierung nur die Regionen „USA, Mitte“ und „USA, Osten 2“. Weitere Informationen zu Regionen finden Sie unter [Datenstandorte für Azure Virtual Desktop](data-locations.md).
+7. Wählen Sie unter **Region** eine Region für Ihren Skalierungsplan aus. Die Metadaten für das Objekt werden in der Geografie gespeichert, die der Region zugeordnet ist. Weitere Informationen zu Regionen finden Sie unter [Datenstandorte für Azure Virtual Desktop](data-locations.md).
 
 8. Wählen Sie für **Zeitzone** die Zeitzone aus, die Sie mit Ihrem Plan verwenden möchten.
 
@@ -210,7 +199,7 @@ So erstellen oder ändern Sie einen Zeitplan:
 
 1. Wählen Sie auf der Registerkarte **Zeitpläne** die Option **Zeitplan hinzufügen** aus.
 
-2. Geben Sie im Feld **Name** einen Namen für Ihren Zeitplan ein.
+2. Geben Sie im Feld **Zeitplanname** einen Namen für Ihren Zeitplan ein.
 
 3. Wählen Sie im Feld **Wiederholen am** die Tage aus, an denen Ihr Zeitplan wiederholt werden soll.
 
@@ -223,13 +212,13 @@ So erstellen oder ändern Sie einen Zeitplan:
         >[!NOTE]
         >Die hier ausgewählte Einstellung für den Lastenausgleich überschreibt die Einstellung, die Sie für ihre ursprünglichen Hostpooleinstellungen ausgewählt haben.
 
-    - Geben Sie unter **Spitzenzeiten** eine Startzeit für den Zeitraum ein, zu dem Ihre Nutzungsrate während des Tages am höchsten ist. Stellen Sie sicher, dass sich der Zeitraum in derselben Zeitzone befindet, die Sie für Ihren Skalierungsplan angegeben haben. Diese Zeit ist auch die Endzeit für Ihre Anlaufzeitphase.
-
-    - Geben Sie unter **Minimaler Prozentsatz der Sitzungshost-VMs** die Menge der Sitzungshostressourcen ein, die Sie während der Anlauf- und Spitzenzeiten verwenden möchten. Wenn Sie beispielsweise **10 %** auswählen und Ihr Hostpool über 10 Sitzungshosts verfügt, bleibt bei der automatischen Skalierung während der Anlauf- und Spitzenzeiten jederzeit ein Sitzungshost für Benutzerverbindungen verfügbar.
+    - Geben Sie unter **Minimaler Prozentsatz der Hosts** den Prozentsatz der Sitzungshosts ein, auf dem Sie in dieser Phase immer bleiben möchten. Wenn der eingegebene Prozentsatz keine ganze Zahl ist, wird er auf die nächste ganze Zahl aufgerundet. Wenn beispielsweise in einem Hostpool von 7 Sitzungshosts der Mindestprozentsatz der Hosts **10 %** für die Startstunden beträgt, bleibt eine VM während der Startzeiten immer aktiviert, und die Funktion für die automatische Skalierung deaktiviert diesen virtuellen Computer nicht. 
     
-    - Geben Sie unter **Kapazitätsschwellenwert** den Prozentsatz der Hostpoolnutzung ein, der den Beginn der Anlauf- und Spitzenzeiten auslöst. Wenn Sie beispielsweise **60 %** für einen Hostpool auswählen, der 100 Sitzungen verarbeiten kann, aktiviert die automatische Skalierung nur dann zusätzliche Hosts, sobald der Hostpool mehr als 60 Sitzungen überschreitet.
+    - Geben Sie **unter Kapazitätsschwellenwert** den Prozentsatz der verfügbaren Hostpoolkapazität ein, der eine Skalierungsaktion auslöst. Wenn beispielsweise zwei Sitzungshosts im Hostpool mit einem maximalen Sitzungslimit von 20 aktiviert sind, beträgt die verfügbare Hostpoolkapazität 40. Wenn Sie den Kapazitätsschwellenwert auf **75 %** festlegen und die Sitzungshosts über mehr als 30 Benutzersitzungen verfügen, aktiviert die Funktion für die automatische Skalierung einen dritten Sitzungshost. Dadurch wird die verfügbare Hostpoolkapazität von 40 in 60 geändert.
 
 5. Füllen Sie auf der Registerkarte **Spitzenzeiten** die folgenden Felder aus:
+
+    - Geben Sie unter **Startzeit** eine Startzeit für den Zeitraum ein, zu dem Ihre Nutzungsrate während des Tages am höchsten ist. Stellen Sie sicher, dass sich der Zeitraum in derselben Zeitzone befindet, die Sie für Ihren Skalierungsplan angegeben haben. Diese Zeit ist auch die Endzeit für die Anlaufphase.
 
     - Für **Lastenausgleich** können Sie entweder breiten- oder tiefenorientierten Lastenausgleich auswählen. Beim breitenorientierten Lastenausgleich werden neue Benutzersitzungen auf alle verfügbaren Sitzungen im Hostpool verteilt. Beim tiefenorientierten Lastenausgleich werden neue Benutzersitzungen auf verfügbare Sitzungshosts mit der höchsten Anzahl von Verbindungen verteilt, für die das maximale Sitzungslimit noch nicht erreicht wurde. Weitere Informationen zu Lastenausgleichstypen finden Sie unter [Konfigurieren der Lastenausgleichsmethode für Azure Virtual Desktop](configure-host-pool-load-balancing.md).
 
@@ -243,6 +232,9 @@ So erstellen oder ändern Sie einen Zeitplan:
       - Mindestprozentsatz der Hosts (%)
       - Kapazitätsschwellenwert (%)
       - Abmeldung der Benutzer erzwingen
+
+    >[!IMPORTANT]
+    >Wenn Sie die Autoscale-Funktion aktiviert haben, um die Abmeldung der Benutzer während des Rampdowns zu erzwingen, wählt die Funktion den Sitzungshost mit der geringsten Anzahl von Benutzersitzungen zum Herunterfahren aus. Die Autoscale-Funktion versetzt den Sitzungshost in den Auslaufmodus, sendet allen aktiven Benutzersitzungen eine Benachrichtigung, dass sie abgemeldet werden, und meldet dann alle Benutzer nach Ablauf der angegebenen Wartezeit ab. Nachdem die Autoscale-Funktion alle Benutzersitzungen abgemeldet hat, wird die Zuordnung der VM aufgehoben. Wenn Sie die erzwungene Abmeldung während des Rampdowns nicht aktiviert haben, werden Sitzungshosts ohne aktive oder getrennte Sitzungen freigegeben.
 
     - Ebenso funktioniert **Nebenzeiten** in gleicher Weise wie **Spitzenzeiten**:
 

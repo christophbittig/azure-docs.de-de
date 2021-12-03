@@ -1,36 +1,42 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Australien
-summary: 'Microsoft Azure Australien ist eine Cloudplattform, die vom Australian Cyber Security Centre (ACSC) zertifiziert und in der Liste zertifizierter Clouddienste (Certified Cloud Services List, CCSL) enthalten ist.'
+summary: Microsoft Azure Australien ist eine Cloudplattform, die vom Australian Cyber Security Centre (ACSC) zertifiziert und in der Liste zertifizierter Clouddienste (Certified Cloud Services List, CCSL) enthalten ist.
 metadata:
   title: Dokumentation zu Azure Australien
-  description: 'Microsoft Azure Australien ist eine Cloudplattform, die vom Australian Cyber Security Centre (ACSC) zertifiziert und in der Liste zertifizierter Clouddienste (Certified Cloud Services List, CCSL) enthalten ist.'
+  description: Microsoft Azure Australien ist eine Cloudplattform, die vom Australian Cyber Security Centre (ACSC) zertifiziert und in der Liste zertifizierter Clouddienste (Certified Cloud Services List, CCSL) enthalten ist.
   ms.service: azure-australia
   ms.topic: landing-page
   author: emilyre
   ms.author: v-emread
   ms.date: 03/11/2020
+  ms.openlocfilehash: 1710a89cbe419ea0d44614acf0e15bbe5abc8814
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132340203"
 landingContent:
-  - title: Informationen zu Azure Australien
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Was ist Azure Australien?
-            url: australia-overview.md
-  - title: Sicherheit
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Datensicherheit
-            url: secure-your-data.md
-          - text: Azure VPN Gateway-Konfiguration
-            url: vpn-gateway.md
-          - text: Azure-Schlüsseltresor
-            url: azure-key-vault.md
-  - title: Gateways
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: 'Gateway: Protokollierung, Überwachung und Sichtbarkeit'
-            url: gateway-log-audit-visibility.md
-          - text: Sichere Remoteverwaltung Ihres Gateways
-            url: gateway-secure-remote-administration.md
+- title: Informationen zu Azure Australien
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Australien?
+      url: australia-overview.md
+- title: Sicherheit
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Datensicherheit
+      url: secure-your-data.md
+    - text: Azure VPN Gateway-Konfiguration
+      url: vpn-gateway.md
+    - text: Azure-Schlüsseltresor
+      url: azure-key-vault.md
+- title: Gateways
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 'Gateway: Protokollierung, Überwachung und Sichtbarkeit'
+      url: gateway-log-audit-visibility.md
+    - text: Sichere Remoteverwaltung Ihres Gateways
+      url: gateway-secure-remote-administration.md

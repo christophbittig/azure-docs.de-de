@@ -3,19 +3,20 @@ title: Erstellen eines Azure Video Analyzer-Kontos
 description: In diesem Thema wird erläutert, wie Sie ein Konto für Azure Video Analyzer erstellen.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: 1cb2f317ca712f2ad8ca911ecff0ac5e62cac0f5
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 11/04/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ae759d67273461dff2c4fb8b37de222603bdcb7d
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603999"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563984"
 ---
 # <a name="create-a-video-analyzer-account"></a>Erstellen eines Video Analyzer-Kontos
 
-Um Azure Video Analyzer verwenden zu können, müssen Sie ein Video Analyzer-Konto erstellen. Das Konto muss einem Speicherkonto und einer [benutzerseitig zugewiesenen verwalteten Identität][docs-uami] zugeordnet werden. Die verwaltete Identität muss über die Berechtigungen der Rolle [Mitwirkender an Storage-Blobdaten][docs-storage-access] und der Rolle [Leser][docs-role-reader] für das Speicherkonto verfügen. In diesem Artikel werden die Schritte zum Erstellen eines neuen Video Analyzer-Kontos beschrieben.
+Um Azure Video Analyzer verwenden zu können, müssen Sie ein Video Analyzer-Konto erstellen. Das Konto muss einem Speicherkonto und mindestens einer [benutzerseitig zugewiesenen verwalteten Identität][docs-uami] (UAMI) zugeordnet werden. Die UAMI muss über die Berechtigungen der Rolle [Mitwirkender an Storage-Blobdaten][docs-storage-access] und der Rolle [Leser][docs-role-reader] für das Speicherkonto verfügen. Optional können Sie Ihrem Video Analyzer IoT Hub Konto eine Verbindung zuordnen. Dies ist erforderlich, wenn Sie das Video Analyzer-Edgemodul als [transparentes Gateway](./cloud/use-remote-device-adapter.md) verwenden. In diesem Fall müssen Sie eine UAMI hinzufügen, die über Berechtigungen für die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) verfügt. Sie können sowohl die gleiche UAMI für Speicherkonto und IoT Hub als auch separate UAMIs verwenden.
 
- Sie können entweder das Azure-Portal oder eine [Azure Resource Manager (ARM)-Vorlage][docs-arm-template] verwenden, um ein Video Analyzer-Konto zu erstellen. Wählen Sie die Registerkarte für die Methode aus, die Sie verwenden möchten.
+In diesem Artikel werden die Schritte zum Erstellen eines neuen Video Analyzer-Kontos beschrieben. Sie können das Azure-Portal oder eine [ARM-Vorlage (Azure Resource Manager)][docs-arm-template] verwenden. Wählen Sie die Registerkarte für die Methode aus, die Sie verwenden möchten.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +29,7 @@ Um Azure Video Analyzer verwenden zu können, müssen Sie ein Video Analyzer-Kon
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Geben Sie in der Suchleiste im oberen Bereich **Video Analyzer** ein.
 1. Klicken Sie unter *Dienste* auf *Video Analyzers*.
-1. Klicken Sie auf **Hinzufügen**.
+1. Klicken Sie auf **Erstellen**.
 1. Geben Sie im Abschnitt zum **Erstellen eines Video Analyzer-Kontos** die erforderlichen Werte ein.
 
     | Name | BESCHREIBUNG |
@@ -38,9 +39,19 @@ Um Azure Video Analyzer verwenden zu können, müssen Sie ein Video Analyzer-Kon
     |**Name des Video Analyzer-Kontos**|Geben Sie den Namen des neuen Video Analyzer-Kontos ein. Der Name eines Video Analyzer-Kontos darf nur Kleinbuchstaben oder Ziffern ohne Leerzeichen enthalten und muss aus 3 bis 24 Zeichen bestehen.|
     |**Location**|Wählen Sie die geografische Region aus, in der die Video- und Metadatendatensätze für das Video Analyzer-Konto gespeichert werden sollen. Im Dropdownlistenfeld werden nur die verfügbaren Video Analyzer-Regionen angezeigt. |
     |**Speicherkonto**|Wählen Sie ein Speicherkonto aus, das als Blobspeicher für die Videoinhalte Ihres Video Analyzer-Konto dienen soll. Sie können ein vorhandenes Speicherkonto in derselben geografischen Region wie Ihr Video Analyzer-Konto auswählen oder ein neues Speicherkonto erstellen. Ein neues Speicherkonto wird in derselben Region erstellt. Für Namen von Speicherkonten gelten die gleichen Regeln wie für Namen von Video Analyzer-Konten.<br/>|
-    |**Benutzeridentität**|Wählen Sie eine benutzerseitig zugewiesene verwaltete Identität aus, die das neue Video Analyzer-Konto für den Zugriff auf das Speicherkonto verwendet. Sie können eine vorhandene benutzerseitig zugewiesene verwaltete Identität auswählen oder eine neue erstellen. Der benutzerseitig zugewiesenen verwalteten Identität werden die Rollen [Mitwirkender an Storage-Blobdaten][docs-storage-access] und [Leser][docs-role-reader] für das Speicherkonto zugewiesen.
+    |**Verwaltete Identität**|Wählen Sie eine benutzerseitig zugewiesene verwaltete Identität aus, die das neue Video Analyzer-Konto für den Zugriff auf das Speicherkonto verwendet. Sie können eine vorhandene benutzerseitig zugewiesene verwaltete Identität auswählen oder eine neue erstellen. Der benutzerseitig zugewiesenen verwalteten Identität werden die Rollen [Mitwirkender an Storage-Blobdaten][docs-storage-access] und [Leser][docs-role-reader] für das Speicherkonto zugewiesen.
 
 1. Klicken Sie unten im Formular auf **Überprüfen + erstellen**.
+
+### <a name="post-deployment-steps"></a>Schritte nach der Bereitstellung
+Sie können einen vorhandenen IoT Hub an das Video Analyzer-Konto anfügen. Hierfür ist eine vorhandene UAMI erforderlich.
+
+1. Klicken Sie auf **Zu Ressource wechseln**, nachdem die Bereitstellung der Ressource abgeschlossen ist.
+1. Wählen Sie unter „Einstellungen“ **IoT Hub** aus, und klicken Sie dann auf **Anfügen**.  Geben Sie auf dem Flyoutblatt **IoT Hub anfügen** die erforderlichen Werte ein:
+     - Abonnement: Wählen Sie den Namen des Azure-Abonnements aus, unter dem der IoT Hub erstellt wurde.
+     - IoT Hub: Wählen Sie die den gewünschten IoT Hub aus.
+     - Verwaltete Identität: Wählen Sie die vorhandene UAMI aus, die für den Zugriff auf den IoT Hub verwendet werden soll.
+1. Klicken Sie auf **Speichern**, um IoT Hub mit Ihrem Video Analyzer-Konto zu verknüpfen.
 
 ## <a name="template"></a>[Vorlage](#tab/template/)
 
@@ -217,9 +228,19 @@ Die folgenden Ressourcen sind in der Vorlage definiert:
     - **Standort**: Wählen Sie einen Standort aus.  Beispiel: **USA, Westen 2**.
     - **Namenspräfix**: Geben Sie eine Zeichenfolge an, die als Präfix für den Namen der Ressourcen verwendet wird (die Standardwerte werden empfohlen).
 
-1. Klicken Sie auf **Überprüfen + erstellen**. Wählen Sie nach Abschluss der Überprüfung die Option **Erstellen** aus, um die VM zu erstellen und bereitzustellen.
+1. Klicken Sie auf **Überprüfen + erstellen**. Wählen Sie nach Abschluss der Überprüfung **Erstellen** aus, um die Vorlage zu erstellen und bereitzustellen.
 
-Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-Portal können Sie auch die Azure CLI, Azure PowerShell und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../../azure-resource-manager/templates/deploy-cli.md).
+In der Anleitung oben wird zum Bereitstellen der Vorlage das Azure-Portal verwendet. Neben dem Azure-Portal können Sie auch die Azure CLI, Azure PowerShell und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../../azure-resource-manager/templates/deploy-cli.md).
+
+### <a name="post-deployment-steps"></a>Schritte nach der Bereitstellung
+Sie können einen vorhandenen IoT Hub an das Video Analyzer-Konto anfügen. Hierfür ist eine vorhandene UAMI erforderlich.
+
+1. Klicken Sie auf **Zu Ressource wechseln**, nachdem die Bereitstellung der Ressource abgeschlossen ist.
+1. Wählen Sie unter „Einstellungen“ **IoT Hub** aus, und klicken Sie dann auf **Anfügen**.  Geben Sie auf dem Flyoutblatt **IoT Hub anfügen** die erforderlichen Werte ein:
+     - Abonnement: Wählen Sie den Namen des Azure-Abonnements aus, unter dem der IoT Hub erstellt wurde.
+     - IoT Hub: Wählen Sie die den gewünschten IoT Hub aus.
+     - Verwaltete Identität: Wählen Sie die vorhandene UAMI aus, die für den Zugriff auf den IoT Hub verwendet werden soll.
+1. Klicken Sie auf **Speichern**, um IoT Hub mit Ihrem Video Analyzer-Konto zu verknüpfen.
 
 ### <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
@@ -237,7 +258,8 @@ Löschen Sie die Ressourcengruppe, wenn Sie die Ressourcen nicht mehr benötigen
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie [Video Analyzer auf einem IoT Edge-Gerät bereitstellen][docs-deploy-on-edge].
+* Erfahren Sie, wie Sie [Video Analyzer auf einem IoT Edge-Gerät bereitstellen][docs-deploy-on-edge].
+* Erfahren Sie, wie Sie [Videos direkt in der Cloud erfassen und aufzeichnen](cloud/get-started-livepipelines-portal.md).
 
 <!-- links -->
 [docs-uami]: ../../active-directory/managed-identities-azure-resources/overview.md
@@ -245,5 +267,3 @@ Erfahren Sie, wie Sie [Video Analyzer auf einem IoT Edge-Gerät bereitstellen][d
 [docs-role-reader]: ../../role-based-access-control/built-in-roles.md#reader
 [docs-arm-template]: ../../azure-resource-manager/templates/overview.md
 [docs-deploy-on-edge]: deploy-iot-edge-device.md
-[click-to-deploy]: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgist.githubusercontent.com%2Fbennage%2F58523b2e6a4d3bf213f16893d894dcaf%2Fraw%2Fazuredeploy.json
-<!-- TODO update the link above! -->

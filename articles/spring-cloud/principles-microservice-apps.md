@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/12/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 4f7cdb16a9885f62657d81354668c46623b3628c
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1f8ef8ded5dc86af6ab8dc8b3344fae86dc8cdd7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129999338"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258029"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Java und Basisbetriebssystem für Spring-Microservice-Apps
 
@@ -76,5 +76,5 @@ Azul Systems sucht kontinuierlich nach Änderungen an Basisbetriebssystemen und 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md)
+* [Schnellstart: Bereitstellen Ihrer ersten Spring Boot-App in Azure Spring Cloud](./quickstart.md)
 * [Langfristiger Java-Support für Azure und Azure Stack](/azure/developer/java/fundamentals/java-support-on-azure)

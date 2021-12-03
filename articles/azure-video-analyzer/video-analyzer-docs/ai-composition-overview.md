@@ -2,13 +2,13 @@
 title: KI-Kompositionen in Azure Video Analyzer
 description: Dieser Artikel bietet eine allgemeine Übersicht über die Unterstützung von Azure Video Analyzer für drei Arten von KI-Kompositionen. Das Thema bietet auch Erläuterungen zu Szenarien für jede Art von KI-Komposition.
 ms.topic: conceptual
-ms.date: 08/11/2021
-ms.openlocfilehash: 709bfe642c6427e131c95d64af6de0ee410cf261
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/04/2021
+ms.openlocfilehash: 4195fd0dbcd44f0eeb273384e6d6cfad352aedb5
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346412"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847107"
 ---
 # <a name="ai-composition"></a>KI-Komposition
 

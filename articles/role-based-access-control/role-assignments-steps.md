@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/14/2021
+ms.date: 11/12/2021
 ms.author: rolyon
-ms.openlocfilehash: 1f1b8f627a60a6e9f9b866ffb48324ecd146ffbe
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 19f7459debe48bfd689e0ccff93b7957bacd7d52
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362087"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398362"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Schritte zum Zuweisen einer Azure-Rolle
 
@@ -83,7 +83,9 @@ Wenn Sie einen Dienstprinzipal zum Zuweisen von Rollen verwenden, erhalten Sie m
 
 ## <a name="step-5-assign-role"></a>Schritt 5: Zuweisen einer Rolle
 
-Sobald Sie den Sicherheitsprinzipal, die Rolle und den Bereich kennen, können Sie die Rolle zuweisen. Sie können über das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle, Azure SDKs oder REST-APIs Rollen zuweisen. Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Dieser Grenzwert schließt Rollenzuweisungen im Abonnement, in der Ressourcengruppe und im Ressourcenbereich ein. Jede Verwaltungsgruppe kann bis zu **500** Rollenzuweisungen enthalten.
+Sobald Sie den Sicherheitsprinzipal, die Rolle und den Bereich kennen, können Sie die Rolle zuweisen. Sie können über das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle, Azure SDKs oder REST-APIs Rollen zuweisen.
+
+Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Dieser Grenzwert schließt Rollenzuweisungen im Abonnement, in der Ressourcengruppe und im Ressourcenbereich ein. Jede Verwaltungsgruppe kann bis zu **500** Rollenzuweisungen enthalten. Das Limit für Rollenzuweisungen für ein Abonnement wird derzeit erhöht. Weitere Informationen finden Sie unter [Behandeln von Problemen bei Azure RBAC](troubleshooting.md#azure-role-assignments-limit).
 
 In den folgenden Artikeln finden Sie ausführliche Anleitungen zum Zuweisen von Rollen.
 

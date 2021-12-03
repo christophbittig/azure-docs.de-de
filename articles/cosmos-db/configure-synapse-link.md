@@ -4,30 +4,31 @@ description: Erfahren Sie, wie Sie Synapse Link für Azure Cosmos DB-Konten akti
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 11/02/2021
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db, devx-track-azurepowershell
-ms.openlocfilehash: 116997c8abbad382dc10014fd76e7933f333c113
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6baedff1ef084940b91c40b57572844f4b63de4b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123109349"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319378"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurieren und Verwenden von Azure Synapse Link für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 [Azure Synapse Link für Azure Cosmos DB](synapse-link.md) ist eine cloudnative hybride Verarbeitungsfunktion für Transaktionen und Analysen (Hybrid Transactional and Analytical Processing, HTAP), mit der Sie in Azure Cosmos DB in Quasi-Echtzeit Analysen für operative Daten ausführen können. Synapse Link sorgt für eine nahtlose Integration zwischen Azure Cosmos DB und Azure Synapse Analytics.
 
-Azure Synapse Link ist für Azure Cosmos DB SQL-API-Container oder für Azure Cosmos DB API für Mongo DB-Sammlungen verfügbar. Führen Sie die folgenden Schritte aus, um mit Azure Synapse Link für Azure Cosmos DB Analyseabfragen durchzuführen:
+Azure Synapse Link ist für die Azure Cosmos DB SQL-API oder die Azure Cosmos DB-API für Mongo DB-Konten verfügbar. Führen Sie die folgenden Schritte aus, um mit Azure Synapse Link für Azure Cosmos DB Analyseabfragen durchzuführen:
 
-* [Aktivieren von Synapse Link für Ihre Azure Cosmos DB-Konten](#enable-synapse-link)
-* [Erstellen eines für einen Analysespeicher aktivierten Azure Cosmos DB-Containers](#create-analytical-ttl)
-* [Optional: Aktualisieren des TTL-Werts des Analysespeichers für einen Azure Cosmos DB-Container](#update-analytical-ttl)
-* [Herstellen einer Verbindung mit einem Synapse-Arbeitsbereich für Ihre Azure Cosmos DB-Datenbank](#connect-to-cosmos-database)
-* [Abfragen des Analysespeichers mit Synapse Spark](#query-analytical-store-spark)
-* [Abfragen des Analysespeichers mit einem serverlosen SQL-Pool](#query-analytical-store-sql-on-demand)
-* [Verwenden eines serverlosen SQL-Pools zum Analysieren und Visualisieren von Daten in Power BI](#analyze-with-powerbi)
+* [Aktivieren von Azure Synapse Link für Azure Cosmos DB-Konten](#enable-synapse-link)
+* [Erstellen eines Containers mit aktiviertem analytischen Speicher](#create-analytical-ttl)
+* [Aktivieren des Analysespeichers in einem vorhandenen Container](#update-analytical-ttl)
+* [Optional: Aktualisieren des TTL-Werts des Analysespeichers für einen Container](#update-analytical-ttl)
+* [Herstellen einer Verbindung mit einem Azure Synapse-Arbeitsbereich für Ihre Azure Cosmos-Datenbank](#connect-to-cosmos-database)
+* [Abfragen des Analysespeichers mit einem Azure Synapse Spark-Pool](#query-analytical-store-spark)
+* [Abfragen des Analysespeichers mit einem serverlosen Azure Synapse SQL-Pool](#query-analytical-store-sql-on-demand)
+* [Verwenden eines serverlosen Azure Synapse SQL-Pools zum Analysieren und Visualisieren von Daten in Power BI](#analyze-with-powerbi)
 
 Sie können sich auch das Lernmodul zur [Konfiguration von Azure Synapse Link für Azure Cosmos DB](/learn/modules/configure-azure-synapse-link-with-azure-cosmos-db/) ansehen.
 
@@ -58,29 +59,30 @@ Sie können sich auch das Lernmodul zur [Konfiguration von Azure Synapse Link f�
 1. Ihr Konto ist jetzt für die Verwendung von Synapse Link aktiviert. Im nächsten Abschnitt wird beschrieben, wie Sie für Analysespeicher aktivierte Container erstellen, um mit dem automatischen Replizieren Ihrer operativen Daten aus dem Transaktionsspeicher im Analysespeicher zu beginnen.
 
 > [!NOTE]
-> Durch das Aktivieren von Synapse Link wird der Analysespeicher nicht automatisch aktiviert. Nachdem Sie Synapse Link für das Cosmos DB-Konto aktiviert haben, aktivieren Sie den Analysespeicher in Containern bei deren Erstellung, um mit dem Replizieren Ihrer operativen Daten in diesen Speicher beginnen zu können. 
+> Durch das Aktivieren von Synapse Link wird der Analysespeicher nicht automatisch aktiviert. Nachdem Sie Synapse Link für das Cosmos DB-Konto aktiviert haben, aktivieren Sie den Analysespeicher in Containern, um mit der Verwendung von Synapse Link zu beginnen. 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="command-line-tools"></a>Befehlszeilentools
 
-Unter folgenden Links wird gezeigt, wie Sie Synapse Link mithilfe der Azure CLI aktivieren:
+Aktivieren Sie Synapse Link in Ihrem Cosmos DB SQL-API- oder MongoDB-API-Konto mithilfe der Azure CLI oder mit PowerShell.
+
+#### <a name="azure-cli"></a>Azure CLI
+
+Verwenden Sie `--enable-analytical-storage true` sowohl für **Erstellungs**- als auch **Aktualisierungsvorgänge**. Sie müssen auch den Darstellungsschematyp auswählen. Für SQL API-Konten können Sie `--analytical-storage-schema-type` mit den Werten `FullFidelity` oder `WellDefined` verwenden. Verwenden Sie für MongoDB-API-Konten immer `--analytical-storage-schema-type FullFidelity`.
 
 * [Erstellen eines neuen Azure Cosmos DB-Kontos mit aktiviertem Synapse Link](/cli/azure/cosmosdb#az_cosmosdb_create-optional-parameters)
 * [Aktualisieren eines vorhandenen Azure Cosmos DB-Kontos zum Aktivieren von Synapse Link](/cli/azure/cosmosdb#az_cosmosdb_update-optional-parameters)
 
-### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>PowerShell
+
+Verwenden Sie `EnableAnalyticalStorage true` sowohl für **Erstellungs**- als auch **Aktualisierungsvorgänge**. Sie müssen auch den Darstellungsschematyp auswählen. Für SQL API-Konten können Sie `--analytical-storage-schema-type` mit den Werten `FullFidelity` oder `WellDefined` verwenden. Verwenden Sie für MongoDB-API-Konten immer `-AnalyticalStorageSchemaType FullFidelity`.
 
 * [Erstellen eines neuen Azure Cosmos DB-Kontos mit aktiviertem Synapse Link](/powershell/module/az.cosmosdb/new-azcosmosdbaccount#description)
 * [Aktualisieren eines vorhandenen Azure Cosmos DB-Kontos zum Aktivieren von Synapse Link](/powershell/module/az.cosmosdb/update-azcosmosdbaccount)
 
 
-Unter folgenden Links wird gezeigt, wie Sie Synapse Link mithilfe von PowerShell aktivieren:
+## <a name="create-an-analytical-store-enabled-container"></a><a id="create-analytical-ttl"></a> Erstellen eines für einen Analysespeicher aktivierten Containers
 
-## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl"></a> Erstellen eines Azure Cosmos-Containers mit Analysespeicher
-
-Beim Erstellen des Containers können Sie den Analysespeicher in einem Azure Cosmos-Container aktivieren. Sie können das Azure-Portal verwenden oder die Eigenschaft `analyticalTTL` bei der Erstellung des Containers konfigurieren, indem Sie die Azure Cosmos DB-SDKs nutzen.
-
-> [!NOTE]
-> Derzeit können Sie den Analysespeicher für **neue** Container aktivieren (sowohl in neuen als auch in vorhandenen Konten). Daten aus Ihren vorhandenen Containern können Sie mithilfe von [Azure Cosmos DB-Migrationstools](cosmosdb-migrationchoices.md) in neue Container migrieren.
+Sie können den Analysespeicher aktivieren, wenn Sie einen Azure Cosmos DB-Container erstellen, indem Sie eine der folgenden Optionen verwenden.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -88,19 +90,23 @@ Beim Erstellen des Containers können Sie den Analysespeicher in einem Azure Cos
 
 1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie die Registerkarte **Daten-Explorer**.
 
-1. Wählen Sie **Neuer Container** aus, und geben Sie einen Namen für Ihre Datenbank, den Container, den Partitionsschlüssel und die Durchsatzdetails ein. Aktivieren Sie die Option **Analysespeicher**. Nach dem Aktivieren des Analysespeichers wird ein Container erstellt, für den die Eigenschaft `AnalyicalTTL` auf den Standardwert „-1“ (unbegrenzte Aufbewahrung) festgelegt ist. In diesem Analysespeicher wird der gesamte Versionsverlauf der Datensätze aufbewahrt.
+1. Wählen Sie **Neuer Container** aus, und geben Sie einen Namen für Ihre Datenbank, den Container, den Partitionsschlüssel und die Durchsatzdetails ein. Aktivieren Sie die Option **Analysespeicher**. Nach dem Aktivieren des Analysespeichers wird ein Container erstellt, für den die Eigenschaft `analytical TTL` auf den Standardwert „-1“ (unbegrenzte Aufbewahrung) festgelegt ist. In diesem Analysespeicher wird der gesamte Versionsverlauf der Datensätze aufbewahrt. Dieser kann später geändert werden.
 
-   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Aktivieren des Analysespeichers für Azure Cosmos-Container":::
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Aktivieren des Analysespeichers für Azure Cosmos DB-Container":::
 
 1. Falls Sie Synapse Link für dieses Konto bisher noch nicht aktiviert haben, werden Sie dazu aufgefordert. Der Grund ist, dass die Erstellung eines für Analysespeicher aktivierten Containers zwingend erforderlich ist. Wählen Sie **Enable Synapse Link** (Synapse Link aktivieren) aus, wenn Sie dazu aufgefordert werden. Dieser Vorgang kann 1 bis 5 Minuten in Anspruch nehmen.
 
-1. Wählen Sie **OK** aus, um einen für Analysespeicher aktivierten Azure Cosmos-Container zu erstellen.
+1. Wählen Sie **OK** aus, um einen für Analysespeicher aktivierten Azure Cosmos DB-Container zu erstellen.
 
 1. Vergewissern Sie sich nach dem Erstellen des Containers, dass der Analysespeicher aktiviert wurde. Klicken Sie hierzu auf **Einstellungen** direkt unterhalb von „Dokumente“ im Daten-Explorer, und überprüfen Sie, ob die Option **Gültigkeitsdauer für den Analysespeicher** aktiviert ist.
 
-### <a name="net-sdk"></a>.NET SDK
+### <a name="azure-cosmos-db-sdks"></a>Azure Cosmos DB SDKs
 
-Mit dem folgenden Code wird ein Container mit Analysespeicher erstellt, indem das .NET SDK verwendet wird. Legen Sie die Eigenschaft für die analytische Gültigkeitsdauer auf den erforderlichen Wert fest. Eine Liste mit den zulässigen Werten finden Sie im Artikel zu den [für die analytische Gültigkeitsdauer unterstützten Werten](analytical-store-introduction.md#analytical-ttl):
+Legen Sie die `analytical TTL`-Eigenschaft auf den erforderlichen Wert fest, um einen Container zu erstellen, für den der Analysespeicher aktiviert ist. Eine Liste mit den zulässigen Werten finden Sie im Artikel zu den [für die analytische Gültigkeitsdauer unterstützten Werten](analytical-store-introduction.md#analytical-ttl).
+
+#### <a name="net-sdk"></a>.NET SDK
+
+Mit dem folgenden Code wird ein Container mit Analysespeicher erstellt, indem das .NET SDK verwendet wird. Legen Sie die `AnalyticalStoreTimeToLiveInSeconds`-Eigenschaft auf den erforderlichen Wert in Sekunden fest, oder verwenden Sie `-1` für eine unbegrenzte Aufbewahrung. Diese Einstellung kann später geändert werden.
 
 ```csharp
 // Create a container with a partition key, and analytical TTL configured to -1 (infinite retention)
@@ -114,9 +120,10 @@ CosmosClient cosmosClient = new CosmosClient("myConnectionString");
 await cosmosClient.GetDatabase("myDatabase").CreateContainerAsync(properties);
 ```
 
-### <a name="java-v4-sdk"></a>Java V4 SDK
+#### <a name="java-v4-sdk"></a>Java V4 SDK
 
-Mit dem folgenden Code wird ein Container mit Analysespeicher erstellt, indem das Java V4 SDK verwendet wird. Legen Sie die Eigenschaft `AnalyticalStoreTimeToLiveInSeconds` auf den erforderlichen Wert fest:
+Mit dem folgenden Code wird ein Container mit Analysespeicher erstellt, indem das Java V4 SDK verwendet wird. Legen Sie die `AnalyticalStoreTimeToLiveInSeconds`-Eigenschaft auf den erforderlichen Wert in Sekunden fest, oder verwenden Sie `-1` für eine unbegrenzte Aufbewahrung. Diese Einstellung kann später geändert werden.
+
 
 ```java
 // Create a container with a partition key and  analytical TTL configured to  -1 (infinite retention) 
@@ -127,23 +134,15 @@ containerProperties.setAnalyticalStoreTimeToLiveInSeconds(-1);
 container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
 ```
 
-### <a name="python-v4-sdk"></a>Python V4 SDK
+#### <a name="python-v4-sdk"></a>Python V4 SDK
 
-Python 2.7 und das Azure Cosmos DB SDK 4.1.0 sind die mindestens erforderlichen Versionen. Darüber hinaus ist das SDK nur mit der SQL-API kompatibel.
-
-Der erste Schritt besteht darin, sicherzustellen, dass Sie mindestens Version 4.1.0 des [Azure Cosmos DB Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) verwenden:
-
-```python
-import azure.cosmos as cosmos
-
-print (cosmos.__version__)
-```
-Im nächsten Schritt wird ein Container mit Analysespeicher erstellt, indem das Python SDK von Azure Cosmos DB verwendet wird:
+Mit dem folgenden Code wird ein Container mit Analysespeicher erstellt, indem das Python V4 SDK verwendet wird: Legen Sie die `analytical_storage_ttl`-Eigenschaft auf den erforderlichen Wert in Sekunden fest, oder verwenden Sie `-1` für eine unbegrenzte Aufbewahrung. Diese Einstellung kann später geändert werden.
 
 ```python
 # Azure Cosmos DB Python SDK, for SQL API only.
 # Creating an analytical store enabled container.
 
+import azure.cosmos as cosmos
 import azure.cosmos.cosmos_client as cosmos_client
 import azure.cosmos.exceptions as exceptions
 from azure.cosmos.partition_key import PartitionKey
@@ -153,23 +152,17 @@ KEY = 'your-cosmos-db-account-key'
 DATABASE = 'your-cosmos-db-database-name'
 CONTAINER = 'your-cosmos-db-container-name'
 
+# Client
 client = cosmos_client.CosmosClient(HOST,  KEY )
-# setup database for this sample. 
-# If doesn't exist, creates a new one with the name informed above.
+
+# Database client
 try:
     db = client.create_database(DATABASE)
 
 except exceptions.CosmosResourceExistsError:
     db = client.get_database_client(DATABASE)
 
-# Creating the container with analytical store enabled, using the name informed above.
-# If a container with the same name exists, an error is returned.
-#
-# The 3 options for the analytical_storage_ttl parameter are:
-# 1) 0 or Null or not informed (Not enabled).
-# 2) -1 (The data will be stored in analytical store infinitely).
-# 3) Any other number is the actual ttl, in seconds.
-
+# Creating the container with analytical store enabled
 try:
     container = db.create_container(
         id=CONTAINER,
@@ -182,30 +175,90 @@ try:
 except exceptions.CosmosResourceExistsError:
     print('A container with already exists')
 ```
+### <a name="command-line-tools"></a>Befehlszeilentools
+
+Legen Sie die `analytical TTL`-Eigenschaft auf den erforderlichen Wert fest, um einen Container zu erstellen, für den der Analysespeicher aktiviert ist. Eine Liste mit den zulässigen Werten finden Sie im Artikel zu den [für die analytische Gültigkeitsdauer unterstützten Werten](analytical-store-introduction.md#analytical-ttl).
+
+#### <a name="azure-cli"></a>Azure CLI
+
+Mithilfe der folgenden Optionen wird mit der Azure CLI ein Container mit Analysespeicher erstellt. Legen Sie die `--analytical-storage-ttl`-Eigenschaft auf den erforderlichen Wert in Sekunden fest, oder verwenden Sie `-1` für eine unbegrenzte Aufbewahrung. Diese Einstellung kann später geändert werden.
+
+* [Erstellen einer Azure Cosmos DB MongoDB-Sammlung](/cli/azure/cosmosdb/mongodb/collection#az_cosmosdb_mongodb_collection_create-examples)
+* [Erstellen eines Azure Cosmos DB SQL-API-Containers](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create) 
+
+#### <a name="powershell"></a>PowerShell
+
+Mithilfe der folgenden Optionen wird mit PowerShell ein Container mit Analysespeicher erstellt. Legen Sie die `-AnalyticalStorageTtl`-Eigenschaft auf den erforderlichen Wert in Sekunden fest, oder verwenden Sie `-1` für eine unbegrenzte Aufbewahrung. Diese Einstellung kann später geändert werden.
+
+* [Erstellen einer Azure Cosmos DB MongoDB-Sammlung](/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection#description)
+* [Erstellen eines Azure Cosmos DB SQL-API-Containers](/powershell/module/az.cosmosdb/new-azcosmosdbsqlcontainer)
+
+
+## <a name="enable-analytical-store-on-an-existing-container"></a><a id="update-analytical-ttl"></a> Aktivieren des Analysespeichers in einem vorhandenen Container
+
+> [!NOTE]
+> Aufgrund kurzfristiger Kapazitätseinschränkungen müssen Sie sich registrieren, um Synapse Link für Ihre vorhandenen Container zu aktivieren. Abhängig von den ausstehenden Anforderungen kann die Genehmigung dieser Anforderung von einem Tag bis zu einer Woche dauern. Anweisungen zum Überprüfen des Anforderungsstatus finden Sie unten. Bei Problemen oder Fragen wenden Sie sich an [cosmosdbsynapselink@microsoft.com](mailto:cosmosdbsynapselink@microsoft.com). Dieser Schritt ist einmal pro Abonnement erforderlich, und für alle neuen Datenbankkonten ist diese Funktion ebenfalls aktiviert.
+
+> [!NOTE]
+> Sie können den Analysespeicher für vorhandene Azure Cosmos DB SQL-API-Container aktivieren. Diese Funktion ist allgemein verfügbar und kann für Produktionsworkloads verwendet werden.
+
+ Beachten Sie die folgenden Details, wenn Sie Synapse Link für Ihre vorhandenen Container aktivieren:
+
+* Die gleiche Leistungsisolation des automatischen Synchronisierungsprozesses für den Analysespeicher gilt für die erste Synchronisierung, und es gibt keine Auswirkungen auf die Leistung Ihrer OLTP-Workload.
+
+* Die anfängliche Synchronisierung eines Containers mit der Gesamtzeit des Analysespeichers variiert je nach Datenvolumen und Komplexität der Dokumente. Dieser Vorgang kann zwischen einigen Sekunden und mehreren Tagen dauern. Verwenden Sie das Azure-Portal, um den Migrationsfortschritt zu überwachen.
+
+* Der Durchsatz Ihres Containers oder Datenbankkontos wirkt sich auch auf die gesamte anfängliche Synchronisierungszeit aus. Obwohl RU/s bei dieser Migration nicht verwendet werden, wirkt sich die Gesamtzahl verfügbarer RU/s auf die Leistung des Prozesses aus. Sie können die verfügbaren RUs Ihrer Umgebung vorübergehend erhöhen, um den Prozess zu beschleunigen.
+
+* Sie können den Analysespeicher eines vorhandenen Containers nicht abfragen, während Synapse Link für diesen Container aktiviert ist. Ihre OLTP-Workload wird nicht beeinträchtigt, und Sie können die Daten weiterhin normal lesen. Nach dem Start der ersten Synchronisierung erfasste Daten werden durch den automatischen Synchronisierungsprozess des regulären Analysespeichers mit dem Analysespeicher zusammengeführt.
+
+* Derzeit vorhandene MongoDB-API-Sammlungen werden nicht unterstützt. Die Alternative besteht in der Migration der Daten in eine neue Sammlung, die mit aktiviertem Analysespeicher erstellt wurde.
+ 
+> [!NOTE]
+> Derzeit ist es nicht möglich, den Analysespeicher aus einem Container zu deaktivieren. Klicken Sie [hier](analytical-store-introduction.md#analytical-store-pricing), um weitere Informationen zu den Preisen für Analysespeicher zu erhalten.
+
+### <a name="azure-portal"></a>Azure-Portal
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) oder [Azure Cosmos DB-Explorer](https://cosmos.azure.com/) an.
+2. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie die Registerkarte **Synapse Link** im Abschnitt **Integrationen**. Auf dieser Registerkarte haben Sie folgende Optionen:
+3. Klicken Sie auf **Registrieren**, um die Genehmigung für Ihr Abonnement anzufordern. Kehren Sie zu diesem Portalbereich zurück, um den Status der Anforderung anzuzeigen.
+4. Nach der Genehmigung wird die Containerliste Ihres Kontos angezeigt, und Sie können diejenigen auswählen, für die der Analysespeicher aktiviert ist.
+5. Optional können Sie zur Registerkarte **Power BI** im Abschnitt **Integrationen** wechseln, um Power BI-Dashboards in Ihren für Synapse Link aktivierten Containern zu erstellen.
+
+
+### <a name="command-line-tools"></a>Befehlszeilentools
+
+Legen Sie die `analytical TTL`-Eigenschaft auf den erforderlichen Wert fest, um einen Container zu erstellen, für den der Analysespeicher aktiviert ist. Eine Liste mit den zulässigen Werten finden Sie im Artikel zu den [für die analytische Gültigkeitsdauer unterstützten Werten](analytical-store-introduction.md#analytical-ttl).
+
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Unter folgenden Links wird gezeigt, wie Sie mithilfe der Azure CLI für einen Analysespeicher aktivierte Container erstellen:
+Verwenden Sie die folgenden Schritte, um den Analysespeicher für einen vorhandenen Container mithilfe der Azure CLI zu aktivieren. Legen Sie die `--analytical-storage-ttl`-Eigenschaft auf den erforderlichen Wert in Sekunden fest, oder verwenden Sie `-1` für eine unbegrenzte Aufbewahrung. Diese Einstellung kann später geändert werden.
 
-* [Azure Cosmos DB-API für MongoDB](/cli/azure/cosmosdb/mongodb/collection#az_cosmosdb_mongodb_collection_create-examples)
-* [SQL-API für Azure Cosmos DB](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create)
+* [Registrieren Sie sich](/cli/azure/feature/registration) mit `az feature registration create --namespace Microsoft.DocumentDB --name AnalyticalStoreMigration` für die Genehmigung. 
+* [Überprüfen Sie den Anforderungsstatus](/cli/azure/feature/registration) mit `az feature registration show --namespace Microsoft.DocumentDB --name AnalyticalStoreMigration`.
+* [Aktualisieren Sie die analytische Gültigkeitsdauer](/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_update&preserve-view=true) nach der Genehmigung der Anforderung auf `-1`.
+* Überprüfen Sie den Migrationsstatus im Azure-Portal.
 
 ### <a name="powershell"></a>PowerShell
 
-Unter folgenden Links wird gezeigt, wie Sie mithilfe von PowerShell für einen Analysespeicher aktivierte Container erstellen:
+Verwenden Sie die folgenden Schritte, um den Analysespeicher für einen vorhandenen Container mithilfe von PowerShell zu aktivieren. Legen Sie die `-AnalyticalStorageTtl`-Eigenschaft auf den erforderlichen Wert in Sekunden fest, oder verwenden Sie `-1` für eine unbegrenzte Aufbewahrung. Diese Einstellung kann später geändert werden.
 
-* [Azure Cosmos DB-API für MongoDB](/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection#description)
-* [SQL-API für Azure Cosmos DB](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create)
+* [Registrieren Sie sich](/powershell/module/az.resources/register-azproviderfeature) mit `Register-AzProviderFeature -ProviderName "Microsoft.DocumentDB" -FeatureName "AnalyticalStoreMigration"` für die Genehmigung.
+* [Überprüfen Sie den Anforderungsstatus](/powershell/module/az.resources/get-azproviderfeature).
+* [Aktualisieren Sie die analytische Gültigkeitsdauer](/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer) nach der Genehmigung der Anforderung auf `-1`.
+* Überprüfen Sie den Migrationsstatus im Azure-Portal.
+
 
 
 ## <a name="optional---update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Optional: Aktualisieren der Gültigkeitsdauer des Analysespeichers
 
-Nachdem der Analysespeicher mit einem bestimmten TTL-Wert aktiviert wurde, sollten Sie ihn später auf einen anderen gültigen Wert aktualisieren. Für die Aktualisierung des Werts können Sie das Azure-Portal, die Azure CLI, PowerShell oder Cosmos DB-SDKs verwenden. Informationen zu den verschiedenen Konfigurationsoptionen für die analytische Gültigkeitsdauer finden Sie im Artikel zu den [für die analytische Gültigkeitsdauer unterstützten Werten](analytical-store-introduction.md#analytical-ttl).
+Nachdem der Analysespeicher mit einem bestimmten TTL-Wert aktiviert wurde, sollten Sie ihn auf einen anderen gültigen Wert aktualisieren. Für die Aktualisierung des Werts können Sie das Azure-Portal, die Azure CLI, PowerShell oder Cosmos DB-SDKs verwenden. Informationen zu den verschiedenen Konfigurationsoptionen für die analytische Gültigkeitsdauer finden Sie im Artikel zu den [für die analytische Gültigkeitsdauer unterstützten Werten](analytical-store-introduction.md#analytical-ttl).
 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Wenn Sie einen für Analysespeicher aktivierten Container über das Azure-Portal erstellt haben, weist dieser für die analytische Gültigkeitsdauer den Standardwert „-1“ auf. Verwenden Sie die folgenden Schritte, um diesen Wert zu aktualisieren:
+Wenn Sie einen für Analysespeicher aktivierten Container über das Azure-Portal erstellt haben, enthält dieser standardmäßig für `analytical TTL` den Wert `-1`. Verwenden Sie die folgenden Schritte, um diesen Wert zu aktualisieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) oder [Azure Cosmos DB-Explorer](https://cosmos.azure.com/) an.
 1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie die Registerkarte **Daten-Explorer**.
@@ -278,8 +331,11 @@ Mit einem serverlosen SQL-Pool können Sie Daten in Ihren Azure Cosmos DB-Conta
 
 ## <a name="use-serverless-sql-pool-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>Verwenden eines serverlosen SQL-Pools zum Analysieren und Visualisieren von Daten in Power BI
 
-Sie können eine serverlose SQL-Pooldatenbank und Sichten über Synapse Link für Azure Cosmos DB erstellen. Später können Sie die Azure Cosmos-Container abfragen und dann ein Modell mit Power BI über diese Sichten erstellen, um die betreffende Abfrage anzuzeigen. Es gibt keine Auswirkungen auf die Leistung oder Kosten Ihrer Transaktionsworkloads, und auch die Verwaltung von ETL-Pipelines bleibt unverändert. Sie können entweder den Modus [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) oder [Import](/power-bi/connect-data/service-dataset-modes-understand#import-mode) verwenden. Weitere Informationen finden Sie im Artikel zum [Verwenden von Power BI und serverlosem Synapse SQL-Pool zum Analysieren von Azure Cosmos DB-Daten mit Synapse Link (Vorschau)](synapse-link-power-bi.md).
+Sie können eine serverlose SQL-Pooldatenbank und Sichten über Synapse Link für Azure Cosmos DB erstellen. Später können Sie die Azure Cosmos DB-Container abfragen und dann ein Modell mit Power BI über diese Sichten erstellen, um die betreffende Abfrage anzuzeigen. Es gibt keine Auswirkungen auf die Leistung oder Kosten Ihrer Transaktionsworkloads, und auch die Verwaltung von ETL-Pipelines bleibt unverändert. Sie können entweder den Modus [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) oder [Import](/power-bi/connect-data/service-dataset-modes-understand#import-mode) verwenden. Weitere Informationen finden Sie im Artikel zum [Verwenden von Power BI und serverlosem Synapse SQL-Pool zum Analysieren von Azure Cosmos DB-Daten mit Synapse Link (Vorschau)](synapse-link-power-bi.md).
 
+## <a name="configure-custom-partitioning"></a>Konfigurieren der benutzerdefinierten Partitionierung
+
+Mit der benutzerdefinierten Partitionierung können Sie Daten des Analysespeichers in Feldern partitionieren, die häufig als Filter in Analyseabfragen verwendet werden, um die Abfrageleistung zu verbessern.Weitere Informationen finden Sie in den Artikeln zur [Einführung in die benutzerdefinierte Partitionierung](custom-partitioning-analytical-store.md) und [Konfigurieren der benutzerdefinierten Partitionierung](configure-custom-partitioning.md).
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 

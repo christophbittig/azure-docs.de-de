@@ -6,12 +6,12 @@ ms.author: csugunan
 ms.service: purview
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 7028bb42481c2559d7aa9d044bd25771efc41f31
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: a5b625bfb72e12169162e16f2fbb349d36885600
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213729"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552228"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure Purview-Metriken in Azure Monitor
 
@@ -63,6 +63,8 @@ In der folgenden Tabelle finden Sie eine Liste der verfügbaren Metriken, die im
 
 | Metrikname | Metriknamespace | Aggregationstyp | BESCHREIBUNG |
 | ------------------- | ------------------- | ------------------- | ----------------- |
+| Data Map-Kapazitätseinheiten | Elastische Data Map | SUM <br> Anzahl | Aggregieren der elastischen Data Map-Kapazitätseinheiten über einen bestimmten Zeitraum |
+| Data Map-Speichergröße | Elastische Data Map | SUM <br> Avg | Aggregieren der elastischen Data Map-Speichergröße über einen bestimmten Zeitraum |
 | Überprüfung abgebrochen | Automatisierte Überprüfung | SUM <br> Anzahl | Aggregat der abgebrochenen Überprüfungen der Datenquelle im Zeitraum |
 | Überprüfung abgeschlossen | Automatisierte Überprüfung | SUM <br> Anzahl | Aggregat der abgeschlossenen Überprüfungen der Datenquellen im Zeitraum |
 | Fehler bei der Überprüfung | Automatisierte Überprüfung | SUM <br> Anzahl | Aggregat der fehlerhaften Überprüfungen der Datenquelle im Zeitraum |

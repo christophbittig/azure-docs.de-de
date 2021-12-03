@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: ee1814d70395be3c084513d7bf59537ba426471a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 79b78af6e0ff1d23ea47b150dfd6c185e3d9df18
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559095"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323118"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>Schnellstart: Erstellen einer Any-to-Any-Konfiguration mit einer ARM-Vorlage
 
@@ -67,7 +67,7 @@ Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.mic
 
 ## <a name="deploy-the-template"></a><a name="deploy"></a>Bereitstellen der Vorlage
 
-Für die korrekte Bereitstellung dieser Vorlage müssen Sie anstelle von anderen Vorgehensweisen die Schaltfläche „Deploy to Azure“ (In Azure bereitstellen) und das Azure-Portal verwenden. Dies hat die folgenden Gründe:
+Für die korrekte Bereitstellung dieser Vorlage müssen Sie anstelle von anderen Vorgehensweisen die Schaltfläche **Deploy to Azure** (In Azure bereitstellen) und das Azure-Portal verwenden. Dies hat die folgenden Gründe:
 
 * Zum Erstellen der P2S-Konfiguration müssen Sie die Daten des Stammzertifikats hochladen. Vom Datenfeld werden die Zertifikatdaten nicht akzeptiert, wenn PowerShell oder die CLI genutzt wird.
 * Aufgrund des Uploads der Zertifikatdaten funktioniert diese Vorlage nicht richtig, wenn Cloud Shell verwendet wird.

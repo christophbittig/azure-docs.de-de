@@ -118,6 +118,8 @@
       items:
         - name: PowerShell
           href: how-to-assign-app-role-managed-identity-powershell.md
+        - name: Befehlszeilenschnittstelle (CLI)
+          href: how-to-assign-app-role-managed-identity-cli.md
     - name: Anzeigen der Aktivität für verwaltete Identitäten
       href: how-to-view-managed-identity-activity.md
 - name: Verweis
@@ -141,6 +143,6 @@
     - name: 'Azure-Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen'
       href: services-support-managed-identities.md
     - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-msi'
+      href: 'https://stackoverflow.com/questions/tagged/azure-managed-identity'
     - name: Azure AD-Entwicklerforum
       href: 'https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789?c=3abf25c9-ad25-ec11-b6e6-000d3a4f0789#'

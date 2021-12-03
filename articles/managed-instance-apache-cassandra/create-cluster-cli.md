@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e5576a557f8e2bacb5861e6a7f31c08357c2b679
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 795ad31b83f3a6f1acdd8bcc7561e6d75556b311
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032504"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892417"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli"></a>Schnellstart: Erstellen eines Clusters vom Typ „Azure Managed Instance for Apache Cassandra“ mithilfe der Azure CLI
 
@@ -27,7 +27,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure CLI ei
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 > [!IMPORTANT]
-> Für diesen Artikel ist die Azure CLI-Version 2.17.1 oder höher erforderlich. Wenn Sie Azure Cloud Shell verwenden, ist die neueste Version bereits installiert.
+> Für diesen Artikel ist die Azure CLI-Version 2.30.0 oder höher erforderlich. Wenn Sie Azure Cloud Shell verwenden, ist die neueste Version bereits installiert.
 
 ## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Erstellen eines Managed Instance-Clusters
 
@@ -87,20 +87,43 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure CLI ei
      --debug
    ```
 
-1. Erstellen Sie abschließend mithilfe des Befehls [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_create) ein Rechenzentrum für den Cluster mit drei Knoten.
+1. Erstellen Sie schließlich ein Rechenzentrum für den Cluster mit drei Knoten, der VM-SKU „Standard D8s v4“ und vier angefügten P30-Datenträgern für jeden Knoten. Verwenden Sie dazu den Befehl [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_create):
 
    ```azurecli-interactive
    dataCenterName='dc1'
    dataCenterLocation='eastus2'
-    
+   virtualMachineSKU='Standard_D8s_v4'
+   noOfDisksPerNode=4
+     
    az managed-cassandra datacenter create \
      --resource-group $resourceGroupName \
      --cluster-name $clusterName \
      --data-center-name $dataCenterName \
      --data-center-location $dataCenterLocation \
      --delegated-subnet-id $delegatedManagementSubnetId \
-     --node-count 3 
+     --node-count 3 \
+     --sku $virtualMachineSKU \
+     --disk-capacity $noOfDisksPerNode \
+     --availability-zone false
    ```
+
+   > [!NOTE]
+   > Der Wert für `--sku` kann aus den folgenden verfügbaren SKUs ausgewählt werden:
+   >
+   > - Standard_E8s_v4
+   > - Standard_E16s_v4 
+   > - Standard_E20s_v4
+   > - Standard_E32s_v4 
+   > - Standard_DS13_v2
+   > - Standard_DS14_v2
+   > - Standard_D8s_v4
+   > - Standard_D16s_v4
+   > - Standard_D32s_v4 
+   > 
+   > Beachten Sie auch, dass `--availability-zone` auf `false` festgelegt ist. Legen Sie diesen Wert auf `true` fest, um Verfügbarkeitszonen zu aktivieren. 
+
+   > [!WARNING]
+   > Verfügbarkeitszonen werden nicht in allen Regionen unterstützt. Bereitstellungen sind nicht erfolgreich, wenn Sie eine Region auswählen, in der Verfügbarkeitszonen nicht unterstützt werden. Informationen zu den unterstützten Regionen finden Sie [hier](/azure/availability-zones/az-overview#azure-regions-with-availability-zones). Die erfolgreiche Bereitstellung von Verfügbarkeitszonen unterliegt auch der Verfügbarkeit von Computeressourcen in allen Zonen in der angegebenen Region. Bei Bereitstellungen kann ein Fehler auftreten, wenn die von Ihnen ausgewählte SKU oder Kapazität nicht in allen Zonen verfügbar ist. 
 
 1. Die Knoten des erstellten Rechenzentrums können bei Bedarf mithilfe des Befehls [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_update) hoch- oder herunterskaliert werden. Ändern Sie den Wert des Parameters `node-count` in den gewünschten Wert:
 
@@ -143,9 +166,7 @@ cqlsh $host 9042 -u cassandra -p cassandra --ssl
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn beim Anwenden von Berechtigungen für Ihre Virtual Network-Instanz ein Fehler mit dem Hinweis auftritt, dass *der Benutzer oder Dienstprinzipal in der Graphdatenbank für „e5007d2c-4b13-4a74-9b6a-605d99f03501“ nicht gefunden werden kann*, können Sie die gleiche Berechtigung manuell über das Azure-Portal anwenden. Navigieren Sie zum Anwenden von Berechtigungen über das Portal zum Bereich **Zugriffssteuerung (IAM)** Ihres vorhandenen virtuellen Netzwerks, und fügen Sie der Rolle „Netzwerkadministrator“ eine Rollenzuweisung für „Azure Cosmos DB“ hinzu. Werden bei der Suche nach „Azure Cosmos DB“ zwei Einträge angezeigt, fügen Sie beide Einträge hinzu wie in der folgenden Abbildung gezeigt: 
-
-   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="Anwenden von Berechtigungen" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+Wenn beim Anwenden von Berechtigungen für Ihre Virtual Network-Instanz mithilfe der Azure CLI ein Fehler mit dem Hinweis auftritt, dass *der Benutzer oder Dienstprinzipal in der Graphdatenbank für „e5007d2c-4b13-4a74-9b6a-605d99f03501“ nicht gefunden werden kann*, können Sie die gleiche Berechtigung manuell über das Azure-Portal anwenden. Informationen zur Vorgehensweise finden Sie [hier](add-service-principal.md).
 
 > [!NOTE] 
 > Die Azure Cosmos DB-Rollenzuweisung wird nur für Bereitstellungszwecke verwendet. Azure Managed Instance for Apache Cassandra verfügt über keine Back-End-Abhängigkeiten von Azure Cosmos DB.  

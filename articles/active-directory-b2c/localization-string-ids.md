@@ -1,21 +1,21 @@
 ---
-title: Lokalisierungszeichenfolgen-IDs – Azure Active Directory B2C | Microsoft-Dokumentation
+title: Lokalisierungszeichenfolgen-IDs – Azure Active Directory B2C
 description: Geben Sie die IDs für eine Inhaltsdefinition mit der ID „api.signuporsignin“ in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C an.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/10/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 88c320d8296972ee84776aa232d688cc9e981f83
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 26c1287dba6dc88530ec268fe278d0fbfafba1ed
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349647"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500999"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
@@ -57,9 +57,8 @@ Die folgenden IDs werden für eine Inhaltsdefinition mit der ID `api.signuporsig
 | **invalid_generic** | Geben Sie einen gültigen Wert für {0} ein. | `>= 2.1.1` |
 | **heading** | Anmelden | `>= 2.1.1` |
 
-
 > [!NOTE]
-> * Platzhalter wie {0} werden automatisch mit dem `DisplayName`-Wert von `ClaimType` aufgefüllt. 
+> * Platzhalter wie {0} werden automatisch mit dem `DisplayName`-Wert von `ClaimType` aufgefüllt.
 > * Weitere Informationen zum Lokalisieren von `ClaimType` finden Sie unter [Beispiel für Registrierung oder Anmeldung](#signupsigninexample).
 
 Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemente auf der Anmelde- oder Registrierungsseite:
@@ -373,7 +372,7 @@ Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung
 |but_change_claims | E-Mail-Adresse ändern|
 
 Hinweis: Das `intro_msg`-Element ist ausgeblendet und wird auf der Seite zur Identitätsüberprüfung nicht angezeigt. Verwenden Sie die [HTML-Anpassung](customize-ui-with-html.md) mit Cascading Stylesheets, um es anzuzeigen. Beispiel:
-    
+
 ```css
 .verificationInfoText div{display: block!important}
 ```
@@ -438,7 +437,6 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für das [technische Profil
 |UserMessageIfDnsResolutionFailed | Der Hostname des Endpunkts des RESTful-Diensts konnte nicht aufgelöst werden. URL des RESTful-Diensts: {0} |
 |UserMessageIfRequestTimeout | Fehler beim Herstellen einer Verbindung mit dem Endpunkt des RESTful-Diensts innerhalb des Zeitlimits von {0} Sekunden. URL des RESTful-Diensts: {1} |
 
-
 ### <a name="restful-service-example"></a>Beispiel für RESTful-Dienst
 
 ```xml
@@ -492,10 +490,9 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profi
 |UserMessageIfVerificationFailedNoRetry | Sie haben die maximale Anzahl von Überprüfungsversuchen überschritten.|
 |UserMessageIfVerificationFailedRetryAllowed | Fehler bei der Überprüfung. Versuchen Sie es noch einmal.|
 
-
 ### <a name="azure-ad-sspr-example"></a>Beispiel für Azure AD SSPR
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInternalError">We are having trouble verifying your email address. Please try again later.</LocalizedString>
@@ -511,7 +508,7 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profi
 
 Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profil mit Einmalkennwort](one-time-password-technical-profile.md).
 
-| id | Standardwert | BESCHREIBUNG | 
+| id | Standardwert | BESCHREIBUNG |
 | --- | ------------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die Codeüberprüfungssitzung abgelaufen ist. Der Code ist entweder abgelaufen, oder der Code wurde nie für einen angegebenen Bezeichner generiert. |
 | UserMessageIfMaxRetryAttempted | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die maximal zulässige Anzahl von Überprüfungsversuchen überschritten wurde. |
@@ -527,7 +524,7 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profi
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of code generation attempts allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
@@ -541,7 +538,7 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen zu Transformationen von Ans
 
 | id | Transformation von Ansprüchen | Standardwert |
 | --- | ------------- |------------- |
-|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | Fehler bei booleschem Anspruchswertvergleich für Anspruchstyp „inputClaim“.| 
+|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | Fehler bei booleschem Anspruchswertvergleich für Anspruchstyp „inputClaim“.|
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | Fehler bei Anspruchswertvergleich: Der angegebene linke Operand ist größer als der rechte Operand.|
 |UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | Fehler bei Anspruchswertvergleich mithilfe von StringComparison „OrdinalIgnoreCase“.|
 

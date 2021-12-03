@@ -12,12 +12,12 @@ ms.reviewer: mathoma
 ms.date: 05/18/2021
 ROBOTS: NOINDEX
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6c16e508aa2002aff07df5fc30e0af4c74bdd025
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 67e79d8b307de6327f3bacf2bfd57f95080b50d1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413698"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553190"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Übersicht über das Modell für virtuelle Kerne – Azure SQL-Datenbank und Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,6 +30,9 @@ Das Kaufmodell für virtuelle Kerne von Azure SQL-Datenbank und Azure SQL Manage
 - Im Fall von Azure SQL-Datenbank bietet das Kaufmodell für virtuelle Kerne höhere Compute-, Arbeitsspeicher-, E/A- und Speichergrenzwerte als das DTU-Modell.
 
 Weitere Informationen zur Wahl zwischen dem V-Kern-Kaufmodell (Kaufmodell für virtuelle Kerne) und dem DTU-Kaufmodell finden Sie unter [Entscheidung zwischen dem V-Kern- und DTU-Kaufmodell](purchasing-models.md).
+
+> [!div class="nextstepaction"]
+> [Umfrage zur Verbesserung von Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="service-tiers"></a>Dienstebenen
 

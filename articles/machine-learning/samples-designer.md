@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: sample
 author: likebupt
 ms.author: keli19
-ms.date: 10/14/2020
+ms.date: 10/21/2021
 ms.custom: designer
-ms.openlocfilehash: a99595405872ff1b341dfc9277583417564ef6b7
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: fa10f97bdbb571c9526e9e611fb0def04ab36b53
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112465077"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559635"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Beispiele für Pipelines und Datasets für Azure Machine Learning Designer
 
@@ -50,12 +50,12 @@ So verwenden Sie ein Beispiel im Designer:
 
    1. Wählen Sie oben auf der Canvas **Übermitteln** aus, um eine Pipelineausführung zu übermitteln.
 
-   Abhängig von der Beispielpipeline und den Computeeinstellungen kann die Ausführung einige Zeit in Anspruch nehmen. In den Standardcomputeeinstellungen ist eine minimale Knotengröße von 0 festgelegt. Das bedeutet, dass der Designer Ressourcen nach dem Leerlauf zuordnen muss. Wiederholte Pipelineausführungen werden schneller abgeschlossen, da die Computeressourcen bereits zugeordnet sind. Außerdem verwendet der Designer für jedes Modul zwischengespeicherte Ergebnisse, um die Effizienz weiter zu steigern.
+   Abhängig von der Beispielpipeline und den Computeeinstellungen kann die Ausführung einige Zeit in Anspruch nehmen. In den Standardcomputeeinstellungen ist eine minimale Knotengröße von 0 festgelegt. Das bedeutet, dass der Designer Ressourcen nach dem Leerlauf zuordnen muss. Wiederholte Pipelineausführungen werden schneller abgeschlossen, da die Computeressourcen bereits zugeordnet sind. Außerdem verwendet der Designer für jede Komponente zwischengespeicherte Ergebnisse, um die Effizienz weiter zu steigern.
 
 
-1. Nach Abschluss der Pipelineausführung können Sie die Pipeline überprüfen und die Ausgabe der einzelnen Module anzeigen, um weitere Informationen zu erhalten. Führen Sie die folgenden Schritte aus, um die Modulausgaben anzuzeigen:
+1. Nach Abschluss der Pipelineausführung können Sie die Pipeline überprüfen und die Ausgabe der einzelnen Komponenten anzeigen, um weitere Informationen zu erhalten. Führen Sie die folgenden Schritte aus, um die Komponentenausgaben anzuzeigen:
 
-   1. Klicken Sie im Zeichenbereich mit der rechten Maustaste auf das Modul, dessen Ausgabe Sie sehen möchten.
+   1. Klicken Sie auf der Canvas mit der rechten Maustaste auf die Komponente, deren Ausgabe Sie sehen möchten.
    1. Wählen Sie **Visualisieren** aus.
 
 
@@ -72,27 +72,27 @@ Durchsuchen Sie diese integrierten Regressionsbeispiele.
 
 ## <a name="classification"></a>Klassifizierung
 
-Durchsuchen Sie diese integrierten Klassifizierungsbeispiele. Sie können die Beispiele öffnen und sich die Modulkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
+Durchsuchen Sie diese integrierten Klassifizierungsbeispiele. Sie können die Beispiele öffnen und sich die Komponentenkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
 | [Binary Classification with Feature Selection - Income Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-feature-selection-income-prediction.md) (Binäre Klassifizierung mit Featureauswahl: Vorhersage des Einkommens) | Dient zum Vorhersagen des Einkommens (hoch oder gering) mittels Two-Class Boosted Decision Tree. Für die Featureauswahl wird die Pearson-Korrelation verwendet.
-| [Binary Classification with custom Python script - Credit Risk Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) (Binäre Klassifizierung mit benutzerdefiniertem Python-Skript: Vorhersage des Kreditrisikos) | Dient zum Klassifizieren des Risikos von Kreditanträgen (hoch oder gering). Zur Gewichtung Ihrer Daten wird das Modul „Python-Skript ausführen“ verwendet.
+| [Binary Classification with custom Python script - Credit Risk Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) (Binäre Klassifizierung mit benutzerdefiniertem Python-Skript: Vorhersage des Kreditrisikos) | Dient zum Klassifizieren des Risikos von Kreditanträgen (hoch oder gering). Zur Gewichtung Ihrer Daten wird die Komponente „Python-Skript ausführen“ verwendet.
 | [Binary Classification - Customer Relationship Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-customer-relationship-prediction.md) (Binäre Klassifizierung: Vorhersage von Kundenbeziehungen) | Dient zum Vorhersagen der Kundenabwanderung mittels Two-Class Boosted Decision Tree. Für das Sampling verzerrter Daten wird SMOTE verwendet.
 | [Text Classification - Wikipedia SP 500 Dataset](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/text-classification-wiki.md) (Textklassifizierung: Wikipedia SP 500-Dataset) | Dient zum Klassifizieren von Unternehmenstypen aus Wikipedia-Artikeln mittels logistischer Regression mit mehreren Klassen. |
 | Klassifizierung mit mehreren Klassen: Buchstabenerkennung | Dient zum Erstellen eines Ensembles von binären Klassifizierern für die Klassifizierung geschriebener Buchstaben. |
 
 ## <a name="computer-vision"></a>Maschinelles Sehen
 
-Durchsuchen Sie diese integrierten Beispiele für maschinelles Sehen. Sie können die Beispiele öffnen und sich die Modulkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
+Durchsuchen Sie diese integrierten Beispiele für maschinelles Sehen. Sie können die Beispiele öffnen und sich die Komponentenkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
-| Bildklassifizierung mithilfe von DenseNet | Verwenden Sie Module für maschinelles Sehen zum Erstellen eines Bildklassifizierungsmodells, das auf PyTorch DenseNet basiert.| 
+| Bildklassifizierung mithilfe von DenseNet | Verwenden Sie Komponenten für maschinelles Sehen zum Erstellen eines Bildklassifizierungsmodells, das auf PyTorch DenseNet basiert.| 
 
 ## <a name="recommender"></a>Empfehlung (Recommender)
 
-Durchsuchen Sie diese integrierten Empfehlungsbeispiele. Sie können die Beispiele öffnen und sich die Modulkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
+Durchsuchen Sie diese integrierten Empfehlungsbeispiele. Sie können die Beispiele öffnen und sich die Komponentenkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
@@ -101,7 +101,7 @@ Durchsuchen Sie diese integrierten Empfehlungsbeispiele. Sie können die Beispie
 
 ## <a name="utility"></a>Hilfsprogramm
 
-Hier finden Sie weitere Informationen zu den Beispielen, mit denen ML-Hilfsprogramme und -Features veranschaulicht werden. Sie können die Beispiele öffnen und sich die Modulkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
+Hier finden Sie weitere Informationen zu den Beispielen, mit denen ML-Hilfsprogramme und -Features veranschaulicht werden. Sie können die Beispiele öffnen und sich die Komponentenkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
@@ -115,7 +115,7 @@ Hier finden Sie weitere Informationen zu den Beispielen, mit denen ML-Hilfsprogr
 
 Beim Erstellen einer neuen Pipeline in Azure Machine Learning-Designer ist eine Reihe von Beispieldatasets standardmäßig enthalten. Diese Beispieldatasets werden von den Beispielpipelines auf der Designerstartseite verwendet. 
 
-Die Beispieldatasets sind unter der Kategorie **Datasets**-**Beispiele** verfügbar. Sie finden diese in der Modulpalette links von der Canvas im Designer. Sie können alle diese Datasets für Ihre eigene Pipeline verwenden, indem Sie sie auf die Canvas ziehen.
+Die Beispieldatasets sind unter der Kategorie **Datasets**-**Beispiele** verfügbar. Sie finden diese in der Komponentenpalette links von der Canvas im Designer. Sie können alle diese Datasets für Ihre eigene Pipeline verwenden, indem Sie sie auf die Canvas ziehen.
 
 | DataSetName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Datasetbeschreibung |
 |-------------|:--------------------|
@@ -142,4 +142,3 @@ Die Beispieldatasets sind unter der Kategorie **Datasets**-**Beispiele** verfüg
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die Grundlagen von Predictive Analytics und maschinellem Lernen werden hier erläutert: [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md).
-

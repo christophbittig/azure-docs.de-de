@@ -1,6 +1,6 @@
 ---
 title: Mandantenübergreifendes Freigeben von Katalogimages in Azure
-description: Erfahren Sie, wie Sie VM-Images mithilfe von Katalogen mit freigegebenen Images und PowerShell über Azure-Mandanten hinweg freigeben.
+description: Hier erfahren Sie, wie Sie VM-Images mithilfe von Azure Compute-Katalogen und PowerShell für Azure-Mandanten freigeben.
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/15/2019
 ms.reviewer: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50bea2cbd4d42855ecf621cb65f61b4565242a6f
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 029e926a7b3b2d932189d0c2b9aa046fabc30a28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450987"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444558"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg mithilfe von PowerShell
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen:heavy_check_mark: Einheitliche Skalierungsgruppen
 
-Mithilfe von Katalogen mit freigegebenen Images können Sie Images über Azure RBAC freigeben. Sie können Azure RBAC verwenden, um Images innerhalb Ihres Mandanten und sogar für Personen außerhalb Ihres Mandanten freizugeben. Weitere Informationen zu dieser einfachen Freigabeoption finden Sie unter [Freigeben des Katalogs](../share-gallery.md).
+In Azure Compute-Kataloge können Sie Images mithilfe von Azure RBAC freigeben. Sie können Azure RBAC verwenden, um Images innerhalb Ihres Mandanten und sogar für Personen außerhalb Ihres Mandanten freizugeben. Weitere Informationen zu dieser einfachen Freigabeoption finden Sie unter [Freigeben des Katalogs](../share-gallery.md).
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -51,7 +51,7 @@ $resourceGroup = "myResourceGroup"
 $location = "South Central US"
 $vmName = "myVMfromImage"
 
-# Set a variable for the image version in Tenant 1 using the full image ID of the shared image version
+# Set a variable for the image version in Tenant 1 using the full image ID of the image version
 $image = "/subscriptions/<Tenant 1 subscription>/resourceGroups/<Resource group>/providers/Microsoft.Compute/galleries/<Gallery>/images/<Image definition>/versions/<version>"
 
 # Create user object
@@ -74,7 +74,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $l
 $nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Location $location `
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 
-# Create a virtual machine configuration using the $image variable to specify the shared image
+# Create a virtual machine configuration using the $image variable to specify the image
 $vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
 Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
 Set-AzVMSourceImage -Id $image | `
@@ -86,4 +86,4 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erstellen Sie [Ressourcen für den Katalog mit freigegebenen Images](../image-version.md).
+Erstellen von [Azure Compute Gallery-Ressourcen](../image-version.md)

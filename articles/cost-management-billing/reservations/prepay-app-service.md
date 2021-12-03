@@ -2,19 +2,19 @@
 title: Speichern für Azure App Service mit reservierter Kapazität
 description: Erfahren Sie, wie Sie Kosten für Azure App Service Premium v3 und Isolated v2 reservierte Instanzen und isolierte Stempelgebühren sparen können.
 author: bandersmsft
-ms.reviewer: primittal
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 10/04/2021
+ms.date: 10/27/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: f3c45799d88601bb8ef9a2d652bb07d7d54aceb9
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 2566b72723b4f7254e2509a331ed554f93ad4bc3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456611"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457884"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Sparen von Kosten mit reservierten Azure App Service-Instanzen
 
@@ -32,7 +32,7 @@ Bevor Sie eine Reservierung erwerben, müssen Sie die benötigte Größe der res
 
 Sie können Reservierungsempfehlungen verwenden, um zu ermitteln, welche Reservierungen Sie erwerben sollten.
 
-- Kaufempfehlungen und die empfohlene Menge werden angezeigt, wenn Sie eine reservierte Premium V3-Instanz im Azure-Portal erwerben.
+- Kaufempfehlungen und die empfohlenen Mengen werden angezeigt, wenn Sie eine reservierte Premium V3-Instanz im Azure-Portal erwerben.
 - Azure Advisor bietet Kaufempfehlungen für einzelne Abonnements.
 - Sie können die APIs verwenden, um Kaufempfehlungen für den Bereich „Freigegeben“ und den Bereich „Einzelabonnement“ abzurufen. Weitere Informationen finden Sie unter [Reserved instance purchase recommendation APIs for enterprise customers (Kaufempfehlungs-APIs zu reservierten Instanzen für Enterprise-Kunden)](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 - Für EA-Kunden (Enterprise Agreement) und MCA-Kunden (Microsoft Customer Agreement, Microsoft-Kundenvereinbarung) sind Kaufempfehlungen zu den Bereichen „Freigegeben“ und „Einzelabonnement“ im Rahmen des [Azure Consumption Insights Power BI-Inhaltspakets](/power-bi/service-connect-to-azure-consumption-insights) verfügbar.
@@ -48,7 +48,7 @@ Die Nutzungsdatei enthält Ihre Gebühren nach Abrechnungszeitraum und Daten zur
 Sie können eine reservierte Premium V3-Instanz im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](prepare-buy-reservation.md). Für den Erwerb einer reservierten Premium V3-Instanz gelten folgende Anforderungen:
 
 - Sie müssen in einer „Besitzer“-Rolle für mindestens ein EA-Abonnement oder ein Abonnement mit einem Satz für nutzungsbasierte Bezahlung sein.
-- Bei EA-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.
+- Bei EA-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein. Direkte Unternehmensvertrags(EA)-Kunden können nun Einstellungen für **Reservierte Instanz** im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts) aktualisieren. Navigieren Sie zum Menü „Richtlinien“, um die Einstellungen zu ändern.
 - Für das Cloud Solution Provider (CSP)-Programm können nur die Administrator- oder Vertriebs-Agents Reservierungen kaufen.
 
 So kaufen Sie ein Instanz:
@@ -74,7 +74,7 @@ Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere 
 Sie können eine reservierte Instanz von App Service (isoliert) v2 im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](prepare-buy-reservation.md). Für den Erwerb einer reservierten Instanz von App Service (isoliert) v2 gelten folgende Anforderungen:
 
 - Sie müssen in einer „Besitzer“-Rolle für mindestens ein EA-Abonnement oder ein Abonnement mit einem Satz für nutzungsbasierte Bezahlung sein.
-- Bei EA-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.
+- Bei EA-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein. Direkte Unternehmensvertrags(EA)-Kunden können nun Einstellungen für **Reservierte Instanz** im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts) aktualisieren. Navigieren Sie zum Menü „Richtlinien“, um die Einstellungen zu ändern.
 - Für das Cloud Solution Provider (CSP)-Programm können nur die Administrator- oder Vertriebs-Agents Reservierungen kaufen.
 
 So kaufen Sie ein Instanz:

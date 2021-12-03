@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: cauribeg
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71648781edd8d202add7ce2a7cc6584173f0451b
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: ca60db1da300bd0b9576a2f08f9cf28e5cf01b66
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537450"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298512"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Erstellen einer Web-App und eines Azure Cache for Redis mithilfe einer Vorlage
 
@@ -21,20 +21,21 @@ ms.locfileid: "129537450"
 
 In diesem Artikel erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, die eine Azure Web-App mit einem Azure Cache for Redis bereitstellt. Sie lernen die folgenden Bereitstellungsdetails kennen:
 
-- Definieren der bereitgestellten Ressourcen 
+- Definieren der bereitzustellenden Ressourcen
 - Definieren von Parametern, die angegeben werden, wenn die Bereitstellung ausgeführt wird
 
 Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
-Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/templates/syntax.md). Weitere Informationen zur JSON-Syntax und den Eigenschaften für Cacheressourcentypen finden Sie unter [Microsoft.Cache resource types](/azure/templates/microsoft.cache/allversions) (Microsoft.Cache-Ressourcentypen).
+Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md). Weitere Informationen zur JSON-Syntax und den Eigenschaften für Cacheressourcentypen finden Sie unter [Microsoft.Cache resource types](/azure/templates/microsoft.cache/allversions) (Microsoft.Cache-Ressourcentypen).
 
 Die vollständige Vorlage finden Sie unter [Web-App mit Azure Cache for Redis-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.web/web-app-with-redis-cache/azuredeploy.json).
 
 ## <a name="what-you-will-deploy"></a>Was Sie bereitstellen
+
 In dieser Vorlage stellen Sie Folgendes bereit:
 
-* Azure-Web-App
-* Azure Cache for Redis
+- Azure-Web-App
+- Azure Cache for Redis
 
 Wählen Sie die folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 

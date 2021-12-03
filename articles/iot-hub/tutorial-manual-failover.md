@@ -1,22 +1,22 @@
 ---
 title: 'Tutorial: Manuelles Failover einer Azure IoT Hub-Instanz | Microsoft-Dokumentation'
 description: 'Tutorial: Hier wird beschrieben, wie Sie ein manuelles Failover für Ihren IoT-Hub auf eine andere Region ausführen und die Funktionsweise überprüfen und anschließend die Verlagerung zurück in die ursprüngliche Region und eine erneute Überprüfung durchführen.'
-author: robinsh
+author: eross-msft
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 08/10/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 898cc8dcb634ed9beab26c0a0d5de9a9fdda068c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2687316551f7f1a7f11cd035130823c19d10b01a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732867"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550437"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Tutorial: Ausführen eines manuellen Failovers für eine IoT Hub-Instanz
 
@@ -48,11 +48,11 @@ Weitere Informationen zum manuellen Failover und einem von Microsoft initiierten
 > [!NOTE]
 > Bei einem IoT-Hub können pro Tag maximal zwei Failover und zwei Failbacks ausgeführt werden.
 
-1. Klicken Sie auf **Ressourcengruppen**, und wählen Sie dann Ihre Ressourcengruppe aus. In diesem Tutorial wird **ManlFailRG** verwendet. Klicken Sie in der Liste der Ressourcen auf Ihren Hub. 
+1. Klicken Sie auf **Ressourcengruppen**, und wählen Sie dann Ihre Ressourcengruppe aus. Klicken Sie in der Liste der Ressourcen auf Ihren Hub.
 
-1. Klicken Sie im Bereich „IoT Hub“ unter **Einstellungen** auf **Failover**.
+1. Klicken Sie im Bereich „IoT Hub“ unter **Hubeinstellungen** auf **Failover**.
 
-   ![Screenshot mit dem Bereich „Eigenschaften“ der IoT Hub-Instanz](./media/tutorial-manual-failover/trigger-failover-01.png)
+:::image type="content" source="./media/tutorial-manual-failover/trigger-failover-01.png" alt-text="Screenshot mit dem Bereich „Eigenschaften“ der IoT Hub-Instanz":::
 
 1. Im Bereich „Manuelles Failover“ werden die Optionen **Aktueller Standort** und **Failover location** (Failoverstandort) angezeigt. Der aktuelle Standort gibt immer den Standort an, an dem der Hub derzeit aktiv ist. Der Failoverstandort ist die standardmäßige [geografisch gekoppelte Azure-Region](../best-practices-availability-paired-regions.md), die mit dem aktuellen Standort gekoppelt ist. Die Standortwerte können nicht geändert werden. In diesem Tutorial ist der aktuelle Standort `West US 2` und der Failoverstandort `West Central US`.
 

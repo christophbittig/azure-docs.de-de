@@ -14,79 +14,79 @@ metadata:
   ms.reviewer: vincesm
   ms.custom: it-pro
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 2682ed48d5da440e36fe560e7b47dab8f9fa20ed
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: c09bcdde3713f3ab93814cc67b23ded5cc49c17d
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "122346848"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131057132"
 title: Behandeln von Problemen bei Azure AD-Rollen mit Gruppenzuweisung
 summary: Nachfolgend sind einige häufig gestellte Fragen und Tipps zur Problembehandlung beim Zuweisen von Azure AD-Rollen zu Azure AD-Gruppen aufgeführt.
 sections:
 - name: Wird ignoriert.
   questions:
   - question: >
-      I'm a Groups Administrator but I can't see the 'Azure AD roles can be assigned to the group' switch.
+      Ich bin ein Gruppenadministrator, aber der Schalter „Azure AD-Rollen können der Gruppe zugewiesen werden“ wird mir nicht angezeigt.
     answer: >
-      Only Privileged Role Administrators or Global Administrators can create a group that's eligible for role assignment. Only users in those roles see this control.
+      Nur Administratoren für privilegierte Rollen oder globale Administratoren können eine Gruppe erstellen, die zur Rollenzuweisung berechtigt ist. Nur Benutzern in diesen Rollen wird das Steuerelement angezeigt.
   - question: >
-      Who can modify the membership of groups that are assigned to Azure AD roles?
+      Wer kann die Mitgliedschaft von Gruppen ändern, die Azure AD-Rollen zugewiesen sind?
     answer: >
-      By default, only Privileged Role Administrator and Global Administrator manage the membership of a role-assignable group, but you can delegate the management of role-assignable groups by adding group owners.
+      Standardmäßig können nur Administratoren für privilegierte Rollen und globale Administratoren die Mitgliedschaft in einer Gruppe mit Rollenzuweisung verwalten, Sie können jedoch die Verwaltung von Gruppen mit Rollenzuweisung delegieren, indem Sie Gruppenbesitzer hinzufügen.
   - question: >
-      I am a Helpdesk Administrator in my organization but I can't update password of a user who is a Directory Readers. Why does that happen?
+      Ich bin ein Helpdesk-Administrator in meiner Organisation, aber ich kann das Kennwort eines Benutzers mit der Rolle „Verzeichnis lesen“ nicht aktualisieren. Was ist die Ursache?
     answer: >
-      The user might have gotten Directory Readers by way of a role-assignable group. All members and owners of a role-assignable groups are protected. Only users in the Privileged Authentication Administrator or Global Administrator roles can reset credentials for a protected user.
+      Der Benutzer hat die Rolle „Verzeichnis lesen“ möglicherweise über eine Gruppe erhalten, der Rollen zugewiesen werden können. Alle Mitglieder und Besitzer einer Gruppe, der Rollen zugewiesen werden können, sind geschützt. Nur Benutzer in der Rolle „Privilegierter Authentifizierungsadministrator“ oder „Globaler Administrator“ können Anmeldeinformationen für einen geschützten Benutzer zurücksetzen.
   - question: >
-      I can't update password of a user. They don't have any higher privileged role assigned. Why is it happening?
-    answer: "The user could be an owner of a role-assignable group. We protect owners of role-assignable groups to avoid elevation of privilege. An example might be if a group Contoso_Security_Admins is assigned to Security Administrator role, where Bob is the group owner and Alice is Password Administrator in the organization. If this protection weren't present, Alice could reset Bob's credentials and take over his identity. After that, Alice could add herself or anyone to the group Contoso_Security_Admins group to become a Security Administrator in the organization. To find out if a user is a group owner, get the list of owned objects of that user and see if any of the groups have isAssignableToRole set to true. If yes, then that user is protected and the behavior is by design. Refer to these documentations for getting owned objects:\n\n- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject)  \n- [List ownedObjects](/graph/api/user-list-ownedobjects?tabs=http)\n"
-  - question: "Can I create an access review on groups that can be assigned to Azure AD roles (specifically, groups with isAssignableToRole property set to true)?  \n"
+      Ich kann das Kennwort eines Benutzers nicht aktualisieren. Ihm ist keine Rolle mit erweiterten Berechtigungen zugewiesen. Warum geschieht das?
+    answer: "Der Benutzer kann ein Besitzer einer Gruppe sein, der Rollen zugewiesen werden können. Besitzer von Gruppen mit Rollenzuweisung sind geschützt, um Rechteerweiterungen zu vermeiden. Hier ein Beispiel: Die Gruppe „Contoso_Security_Admins“ ist der Rolle „Sicherheitsadministrator“ zugewiesen, wobei Bob der Gruppenbesitzer und Alice die Kennwortadministratorin in der Organisation ist. Wäre dieser Schutz nicht vorhanden, könnte Alice die Anmeldeinformationen von Bob zurücksetzen und seine Identität übernehmen. Anschließend könnte Alice sich selbst oder andere Benutzer der Gruppe „Contoso_Security_Admins“ hinzufügen, um ein Sicherheitsadministrator in der Organisation zu werden. Wenn Sie herausfinden möchten, ob ein Benutzer ein Gruppenbesitzer ist, können Sie die Liste der im Besitz dieses Benutzers befindlichen Objekte abrufen und überprüfen, ob für eine der Gruppen „isAssignableToRole“ auf „true“ festgelegt ist. Wenn das der Fall ist, ist dieser Benutzer geschützt, und das Verhalten ist beabsichtigt. Informationen zum Abrufen von in Besitz befindlichen Objekten finden Sie in den folgenden Dokumentationen:\n\n- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject)  \n- [Auflisten von ownedObjects](/graph/api/user-list-ownedobjects?tabs=http)\n"
+  - question: "Kann ich eine Zugriffsüberprüfung für Gruppen erstellen, die Azure AD-Rollen zugewiesen werden können (insbesondere Gruppen, bei denen die Eigenschaft „isAssignableToRole“ auf „true“ festgelegt ist)?  \n"
     answer: >
-      Yes, you can. If you are on newest version of Access Review, then your reviewers are directed to My Access by default, and only Global Administrators can create access reviews on role-assignable groups. However, if you are on the older version of Access Review, then your reviewers are directed to the Access Panel by default, and both Global Administrators and User Administrator can create access reviews on role-assignable groups. The new experience will be rolled out to all customers on July 28, 2020 but if you’d like to upgrade sooner, make a request to [Azure AD Access Reviews - Updated reviewer experience in My Access Signup](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u).
+      Ja, das ist möglich. Globale Administratoren und Administratoren für privilegierte Rollen können Zugriffsüberprüfungen von Gruppen erstellen, denen Rollen zugewiesen werden können.
   - question: >
-      Can I create an access package and put groups that can be assigned to Azure AD roles in it?
-    answer: "Yes, you can. Global Administrator and User Administrator have the power to put any group in an access package. Nothing changes for Global Administrator, but there's a slight change in User Administrator role permissions. To put a role-assignable group into an access package, you must be a User Administrator and also owner of the role-assignable group. Here's the full table showing who can create access package in Enterprise License Management:\n\nAzure AD directory role | Entitlement management role | Can add security group\\* | Can add Microsoft 365 group\\* | Can add app | Can add SharePoint Online site\n----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------\nGlobal Administrator | n/a | ✔️ | ✔️ | ✔️  | ✔️\nUser Administrator  | n/a  | ✔️  | ✔️  | ✔️\nIntune Administrator | Catalog owner | ✔️  | ✔️  | &nbsp;  | &nbsp;\nExchange Administrator  | Catalog owner  | &nbsp; | ✔️  | &nbsp;  | &nbsp;\nTeams service Administrator | Catalog owner  | &nbsp; | ✔️  | &nbsp;  | &nbsp;\nSharePoint Administrator | Catalog owner | &nbsp; | ✔️  | &nbsp;  | ✔️ \nApplication Administrator | Catalog owner  | &nbsp;  | &nbsp; | ✔️  | &nbsp;\nCloud application Administrator | Catalog owner  | &nbsp;  | &nbsp; | ✔️  | &nbsp;\nUser | Catalog owner | Only if group owner | Only if group owner | Only if app owner  | &nbsp;\n\n\\*Group isn't role-assignable; that is, isAssignableToRole = false. If a group is role-assignable, then the person creating the access package must also be owner of the role-assignable group.\n"
+      Kann ich ein Zugriffspaket erstellen und Gruppen hinzufügen, die Azure AD-Rollen zugewiesen werden können?
+    answer: "Ja, das ist möglich. Der globale Administrator und der Benutzeradministrator haben die Möglichkeit, einem Zugriffspaket eine beliebige Gruppe hinzuzufügen. Für den globalen Administrator ändert sich nichts, doch bei den Rollenberechtigungen für den Benutzeradministrator gibt es eine geringfügige Änderung. Wenn Sie einem Zugriffspaket eine Gruppe mit Rollenzuweisung hinzufügen möchten, müssen Sie ein Benutzeradministrator und außerdem Besitzer der Gruppe mit Rollenzuweisung sein. In der folgenden Tabelle sind alle Rollen aufgeführt, die Zugriffspakete in Enterprise License Management erstellen können:\n\nAzure AD-Verzeichnisrolle | Berechtigungsverwaltungsrolle | Kann Sicherheitsgruppe hinzufügen\\* | Kann Microsoft 365-Gruppe hinzufügen\\* | Kann App hinzufügen | Kann SharePoint Online-Website hinzufügen\n----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------\nGlobaler Administrator | – | ✔️ | ✔️ | ✔️  | ✔️\nBenutzeradministrator  | –  | ✔️  | ✔️  | ✔️\nIntune-Administrator | Katalogbesitzer | ✔️  | ✔️  | &nbsp;  | &nbsp;\nExchange-Administrator  | Katalogbesitzer  | &nbsp; | ✔️  | &nbsp;  | &nbsp;\nTeams-Dienstadministrator | Katalogbesitzer  | &nbsp; | ✔️  | &nbsp;  | &nbsp;\nSharePoint-Administrator | Katalogbesitzer | &nbsp; | ✔️  | &nbsp;  | ✔️ \nAnwendungsadministrator | Katalogbesitzer  | &nbsp;  | &nbsp; | ✔️  | &nbsp;\nCloudanwendungsadministrator | Katalogbesitzer  | &nbsp;  | &nbsp; | ✔️  | &nbsp;\nBenutzer | Katalogbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn App-Besitzer  | &nbsp;\n\n\\*Der Gruppe kann keine Rolle zugewiesen werden, d. h. „isAssignableToRole“ = „false“. Wenn einer Gruppe Rollen zugewiesen werden können, muss die Person, die das Zugriffspaket erstellt, auch Besitzer der Gruppe mit Rollenzuweisung sein.\n"
   - question: >
-      I can't find "Remove assignment" option in "Assigned Roles". How do I delete role assignment to a user?
+      Ich kann unter „Zugewiesene Rollen“ die Option „Zuweisung entfernen“ nicht finden. Wie lösche ich die Rollenzuweisung für einen Benutzer?
     answer: >
-      This answer is applicable only to Azure AD Premium P1 organizations.
+      Diese Antwort trifft nur auf Azure AD Premium P1-Organisationen zu.
 
 
-      1. Sign in to the [Azure portal](https://portal.azure.com) or [Azure AD admin center](https://aad.portal.azure.com) and open **Azure Active Directory**.
+      1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) an, und öffnen Sie **Azure Active Directory**.
 
-      1. Select users and open a user profile.
+      1. Wählen Sie Benutzer aus, und öffnen Sie ein Benutzerprofil.
 
-      1. Select **Assigned roles**.
+      1. Wählen Sie **Zugewiesene Rollen** aus.
 
-      1. Select the gear icon. A pane opens that can give this information. There's a "Remove" button beside direct assignments. To remove indirect role assignment, remove the user from the group that has been assigned the role.
+      1. Wählen Sie das Zahnradsymbol aus. Ein Bereich wird geöffnet, der die entsprechenden Informationen enthält. Neben direkten Zuweisungen wird eine Schaltfläche „Entfernen“ angezeigt. Zum Entfernen einer indirekten Rollenzuweisung entfernen Sie den Benutzer aus der Gruppe, der die Rolle zugewiesen wurde.
   - question: >
-      How do I see all groups that are role-assignable?
+      Wie kann ich alle Gruppen anzeigen, denen Rollen zugewiesen werden können?
     answer: >
-      Follow these steps:
+      Folgen Sie diesen Schritten:
 
 
-      1. Sign in to the [Azure portal](https://portal.azure.com) or [Azure AD admin center](https://aad.portal.azure.com) and open **Azure Active Directory**.
+      1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) an, und öffnen Sie **Azure Active Directory**.
 
-      1. Select **Groups** > **All groups**.
+      1. Wählen Sie **Gruppen** > **Alle Gruppen** aus.
 
-      1. Select **Add filters**.
+      1. Wählen Sie **Filter hinzufügen** aus.
 
-      1. Filter to **Role assignable**.
+      1. Filtern Sie nach **Rolle zuweisbar**.
   - question: >
-      How do I know which role are assigned to a principal directly and indirectly?
+      Wie kann ich feststellen, welche Rollen einem Prinzipal direkt und indirekt zugewiesen sind?
     answer: >
-      Follow these steps:
+      Folgen Sie diesen Schritten:
 
 
-      1. Sign in to the [Azure portal](https://portal.azure.com) or [Azure AD admin center](https://aad.portal.azure.com) and open **Azure Active Directory**.
+      1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) an, und öffnen Sie **Azure Active Directory**.
 
-      1. Select users and open a user profile.
+      1. Wählen Sie Benutzer aus, und öffnen Sie ein Benutzerprofil.
 
-      1. Select **Assigned roles**, and then:
+      1. Wählen Sie **Zugewiesene Rollen** aus, und gehen Sie dann folgendermaßen vor:
 
-          - In Azure AD Premium P1 licensed organizations: Select the gear icon. A pane opens that can give this information.
-          - In Azure AD Premium P2 licensed organizations: You'll find direct and inherited license information in the **Membership** column.
-  - question: "Why do we enforce creating a new group for assigning it to role?  \n"
+          - In Organisationen mit Azure AD Premium P1-Lizenz: Wählen Sie das Zahnradsymbol aus. Ein Bereich wird geöffnet, der die entsprechenden Informationen enthält.
+          - In Organisationen mit Azure AD Premium P2-Lizenz: Informationen zu direkten und geerbten Lizenzen sind in der Spalte **Mitgliedschaft** enthalten.
+  - question: "Warum wird das Erstellen einer neuen Gruppe für die Zuweisung zu einer Rolle erzwungen?  \n"
     answer: >
-      If you assign an existing group to a role, the existing group owner could add other members to this group without the new members realizing that they'll have the role. Because role-assignable groups are powerful, we're putting lots of restrictions to protect them. You don't want changes to the group that would be surprising to the person managing the group.
-additionalContent: "\n## Next steps\n\n- [Use Azure AD groups to manage role assignments](groups-concept.md)\n- [Create a role-assignable group](groups-create-eligible.md)"
+      Wenn Sie einer Rolle eine vorhandene Gruppe zuweisen, kann der vorhandene Gruppenbesitzer dieser Gruppe weitere Mitglieder hinzufügen, ohne dass die neuen Mitglieder wissen, dass sie über diese Rolle verfügen. Da Gruppen mit Rollenzuweisung über komplexe Berechtigungen verfügen, sind zu ihrem Schutz viele Einschränkungen vorhanden. Sie möchten keine Änderungen an der Gruppe, die für die Person, die die Gruppe verwaltet, überraschend wären.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n- [Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)](groups-concept.md)\n- [Erstellen einer Gruppe, der Rollen zugeordnet werden können](groups-create-eligible.md)"

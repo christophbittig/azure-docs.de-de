@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen einer Instanz von Azure Database for MySQL Flexible Server (Vorschau) und Azure App Service-Web-App im gleichen virtuellen Netzwerk'
-description: Schnellstartanleitung zum Erstellen einer Instanz von Azure Database for MySQL Flexible Server (Vorschau) mit Web-App in einem virtuellen Netzwerk
+title: 'Tutorial: Erstellen einer Instanz von Azure Database for MySQL Flexible Server und Azure App Service-Web-App im gleichen virtuellen Netzwerk'
+description: Schnellstartanleitung zum Erstellen einer Instanz von Azure Database for MySQL Flexible Server mit Web-App in einem virtuellen Netzwerk
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
@@ -8,23 +8,18 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 0d95def7048b3077232bb728a97c28107ec80313
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6f415429441801455d71aa459067a9c805dddd1c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128654463"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844010"
 ---
-# <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>Tutorial: Erstellen einer Instanz von Azure Database for MySQL Flexible Server (Vorschau) mit App Services-Web-App im virtuellen Netzwerk
+# <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Tutorial: Erstellen einer Instanz von Azure Database for MySQL Flexible Server mit App Services-Web-App im virtuellen Netzwerk
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
-
-
-In diesem Tutorial wird gezeigt, wie Sie eine Azure App Service-Web-App mit MySQL Flexible Server (Vorschau) in einem [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) erstellen.
+In diesem Tutorial wird gezeigt, wie Sie eine Azure App Service-Web-App mit MySQL Flexible Server in einem [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) erstellen.
 
 In diesem Lernprogramm lernen Sie Folgendes:
 >[!div class="checklist"]
@@ -32,7 +27,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > * Erstellen eines Subnetzes für die Delegation an App Service
 > * Erstellen einer Web-App
 > * Hinzufügen der Web-App zum virtuellen Netzwerk
-> * Herstellen einer Verbindung mit Postgres aus der Web-App 
+> * Herstellen einer Verbindung mit Postgres aus der Web-App
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,13 +51,13 @@ az account set --subscription <subscription ID>
 
 Erstellen Sie einen privaten flexiblen Server innerhalb eines virtuellen Netzwerks (VNET) mit dem folgenden Befehl:
 ```azurecli
-az mysql flexible-server create --resource-group myresourcegroup --location westus2
+az mysql flexible-server create --resource-group myresourcegroup --location westus2 --vnet VNETName
 ```
 Kopieren Sie die Verbindungszeichenfolge und den Namen des neu erstellten virtuellen Netzwerks. Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dauern kann:
 
 - Erstellen Sie die Ressourcengruppe, wenn sie noch nicht vorhanden ist.
 - Generiert einen Servernamen, wenn er nicht angegeben ist.
-- Erstellen Sie ein neues virtuelles Netzwerk für Ihre neue MySQL-Serverinstanz. Notieren Sie sich den Namen des virtuellen Netzwerks und des Subnetzes, die für Ihre Serverinstanz erstellt wurden, da Sie die Web-App dem gleichen virtuellen Netzwerk hinzufügen müssen.
+- Erstellen Sie ein neues virtuelles Netzwerk (```VNETName```) für Ihren neuen MySQL-Server und ein Subnetz innerhalb dieses virtuellen Netzwerks für den Datenbankserver. Stellen Sie sicher, dass der Name eindeutig ist
 - Erstellt einen Administratorbenutzernamen und ein Kennwort für Ihren Server, sofern nicht angegeben.
 - Erstellt eine leere Datenbank mit dem Namen **flexibleserverdb**.
 
@@ -70,12 +65,12 @@ Kopieren Sie die Verbindungszeichenfolge und den Namen des neu erstellten virtue
 > Notieren Sie sich das Kennwort, das für Sie generiert wird, wenn es nicht angegeben wird. Wenn Sie das Kennwort vergessen haben, müssen Sie das Kennwort mit dem ``` az mysql flexible-server update```-Befehl zurücksetzen.
 
 ## <a name="create-subnet-for-app-service-endpoint"></a>Erstellen eines Subnetzes für den App Service-Endpunkt
-Sie benötigen nun ein Subnetz, das an den App Service-Web-App-Endpunkt delegiert wird. Führen Sie den folgenden Befehl aus, um ein neues Subnetz im gleichen virtuellen Netzwerk zu erstellen, in dem auch der Datenbankserver erstellt wurde. 
+Sie benötigen nun ein Subnetz, das an den App Service-Web-App-Endpunkt delegiert wird. Führen Sie den folgenden Befehl aus, um ein neues Subnetz im gleichen virtuellen Netzwerk zu erstellen, in dem auch der Datenbankserver erstellt wurde.
 
 ```azurecli
 az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
 ```
-Notieren Sie sich nach diesem Befehl den Namen des virtuellen Netzwerks und des Subnetzes, da Sie diese nach der Erstellung der Web-App zum Hinzufügen einer VNet-Integrationsregel benötigen. 
+Notieren Sie sich nach diesem Befehl den Namen des virtuellen Netzwerks und des Subnetzes, da Sie diese nach der Erstellung der Web-App zum Hinzufügen einer VNet-Integrationsregel benötigen.
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 
@@ -120,6 +115,12 @@ az webapp config appsettings set --settings DBHOST="<mysql-server-name>.mysql.da
 - Ersetzen Sie _&lt;username>_ und _&lt;password>_ durch die Anmeldeinformationen, die durch den Befehl auch für Sie generiert wurden.
 - Die Ressourcengruppe und der Name der App werden aus den zwischengespeicherten Werten in der Datei .azure/config abgerufen.
 - Der Befehl erstellt Einstellungen namens DBHOST, DBNAME, DBUSER und DBPASS. Wenn Ihr Anwendungscode einen anderen Namen für die Datenbankinformationen verwendet, verwenden Sie diese Namen für die App-Einstellungen, wie im Code erwähnt.
+
+
+Konfigurieren Sie die Web-App so, dass alle ausgehenden Verbindungen, die vom virtuellen Netzwerk ausgehen, zugelassen werden.
+```azurecli
+az webapp config set --name mywebapp --resource-group myresourcesourcegroup --generic-configurations '{"vnetRouteAllEnabled": true}'
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2021
 ms.author: duau
-ms.openlocfilehash: 6ccd231c69d69900f81ab91d39eada1f67c7886f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 101d769fce7baaac629c756b3f7fad173f736b6c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124792465"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053705"
 ---
 # <a name="health-probes"></a>Integritätstests
 
@@ -80,4 +80,5 @@ Wenn Sie ein einzelnes Back-End in Ihrem Back-End-Pool haben, können Sie die In
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
+- Informieren Sie sich über das [Erstellen einer Instanz von Front Door Standard/Premium](standard-premium/create-front-door-portal.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/13/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e4be8f3bac712136fc2cbfea5a6a6febbd81e0e1
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: deac46666be5c77d48597d2e75838c167040badf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991088"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059526"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment-in-azure-active-directory"></a>Planen einer automatischen Benutzerbereitstellung in Azure Active Directory
 
@@ -99,7 +99,7 @@ In diesem Beispiel werden Benutzer und/oder Gruppen in einer mit einem lokalen V
 
 In diesem Beispiel erfolgt die Benutzererstellung in Azure AD, und der Azure AD-Bereitstellungsdienst verwaltet die automatische Benutzerbereitstellung für die SaaS-Zielanwendungen.
 
-![Diagramm: Benutzer-/Gruppenerstellungsprozess einer lokalen Personalanwendung über den Azure-Bereitstellungsdienst für die SaaS-Zielanwendungen](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![Diagramm mit dem Benutzer-/Gruppenerstellungsprozess einer lokalen HR-Anwendung über den Azure AD-Bereitstellungsdienst zu den SaaS-Zielanwendungen](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **Beschreibung des Workflows:**
 
@@ -318,7 +318,7 @@ Unter den folgenden Links finden Sie Informationen zum Beheben von Problemen, di
 
 #### <a name="resources"></a>Ressourcen
 
-* [Abgeben von Produktfeedback](https://feedback.azure.com/forums/169401-azure-active-directory)
+* [Abgeben von Produktfeedback](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)
 
 * [Informieren Sie sich über Neuerungen bei Azure AD, um immer auf dem neuesten Stand zu sein](https://azure.microsoft.com/updates/?product=active-directory)
 

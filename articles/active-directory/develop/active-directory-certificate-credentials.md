@@ -9,22 +9,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/23/2021
+ms.date: 10/18/2021
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: contperf-fy21q4, aaddev
-ms.openlocfilehash: ed3495bb7267c54f9b95f7fc3465d76ddde2faaa
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 94abf8e362dabea48c0fa20c488d7b1ca3c70093
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112581887"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451785"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
 Die Microsoft Identity Platform ermöglicht einer Anwendung, sich überall dort mit ihren eigenen Anmeldeinformationen zu authentifizieren, wo ein geheimer Clientschlüssel verwendet werden kann, also beispielsweise im OAuth 2.0-Flow zum [Gewähren von Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md) und im [On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md)-Flow (OBO).
 
-Eine Form von Anmeldeinformationen, die eine Anwendung zur Authentifizierung verwenden kann, ist eine [JSON Web Token (JWT)-Assertion](./security-tokens.md#json-web-tokens-and-claims), die mit einem zur Anwendung gehörigen Zertifikat signiert ist.
+Eine Form von Anmeldeinformationen, die eine Anwendung zur Authentifizierung verwenden kann, ist eine [JSON Web Token (JWT)-Assertion](./security-tokens.md#json-web-tokens-and-claims), die mit einem zur Anwendung gehörigen Zertifikat signiert ist. Dies wird in der [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) Spezifikation für die `private_key_jwt` Client-Authentifizierungsoption beschrieben.
+
+Wenn Sie daran interessiert sind, einen JWT, der von einem anderen Identitätsanbieter ausgestellt wurde, als Berechtigungsnachweis für Ihre Anwendung zu verwenden, lesen Sie bitte unter [Workload Identitätsföderation](workload-identity-federation.md) nach, wie Sie eine Föderationsrichtlinie einrichten können.
 
 ## <a name="assertion-format"></a>Assertionformat
 
@@ -42,12 +44,12 @@ Für die Berechnung der Assertion können Sie eine der zahlreichen JWT-Bibliothe
 
 Anspruchstyp | Wert | BESCHREIBUNG
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Der Anspruch „aud“ (audience, Zielgruppe) identifiziert die Empfänger, für die das JWT vorgesehen ist (hier Azure AD). Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3).  In diesem Fall ist dieser Empfänger der Anmeldeserver (login.microsoftonline.com).
-exp | 1601519414 | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4).  So kann die Assertion bis zu diesem Zeitpunkt verwendet werden. Daher sollte der Zeitraum kurz ausfallen, d. h. höchstens 5–10 Minuten nach `nbf` liegen.  In Azure AD sind derzeit keine Einschränkungen für den `exp`-Zeitpunkt vorgesehen. 
-iss | {ClientID} | Der Anspruch „iss“ (issuer, Aussteller) identifiziert den Prinzipal, der das JWT ausgestellt hat, in diesem Fall Ihre Clientanwendung.  Verwenden Sie die GUID der Anwendungs-ID.
-jti | (eine GUID) | Der Anspruch "jti" (JWT-ID) stellt einen eindeutigen Bezeichner für das JWT bereit. Es MUSS ein Bezeichnerwert zugewiesen werden, bei dem die Wahrscheinlichkeit vernachlässig ist, dass derselbe Wert versehentlich einem anderen Datenobjekt zugewiesen wird. Wenn die Anwendung mehrere Aussteller verwendet, MÜSSEN auch Konflikte zwischen von mehreren Ausstellern erstellten Werten verhindert werden. Der Wert von „JTI“ ist eine Zeichenfolge mit Beachtung der Groß-/Kleinschreibung. [RFC 7519, Abschnitt 4.1.7](https://tools.ietf.org/html/rfc7519#section-4.1.7)
-nbf | 1601519114 | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Die Verwendung der aktuellen Uhrzeit ist angemessen. 
-sub | {ClientID} | Der Anspruch „sub“ (subject, Antragsteller) identifiziert den Antragsteller des JWT, in diesem Fall ist das ebenfalls Ihre Anwendung. Verwenden Sie denselben Wert wie für `iss`. 
+`aud` | `https://login.microsoftonline.com/{tenantId}/v2.0` | Der Anspruch „aud“ (audience, Zielgruppe) identifiziert die Empfänger, für die das JWT vorgesehen ist (hier Azure AD). Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3).  In diesem Fall ist dieser Empfänger der Anmeldeserver (login.microsoftonline.com).
+`exp` | 1601519414 | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4).  So kann die Assertion bis zu diesem Zeitpunkt verwendet werden. Daher sollte der Zeitraum kurz ausfallen, d. h. höchstens 5–10 Minuten nach `nbf` liegen.  In Azure AD sind derzeit keine Einschränkungen für den `exp`-Zeitpunkt vorgesehen. 
+`iss` | {ClientID} | Der Anspruch „iss“ (issuer, Aussteller) identifiziert den Prinzipal, der das JWT ausgestellt hat, in diesem Fall Ihre Clientanwendung.  Verwenden Sie die GUID der Anwendungs-ID.
+`jti` | (eine GUID) | Der Anspruch "jti" (JWT-ID) stellt einen eindeutigen Bezeichner für das JWT bereit. Es MUSS ein Bezeichnerwert zugewiesen werden, bei dem die Wahrscheinlichkeit vernachlässig ist, dass derselbe Wert versehentlich einem anderen Datenobjekt zugewiesen wird. Wenn die Anwendung mehrere Aussteller verwendet, MÜSSEN auch Konflikte zwischen von mehreren Ausstellern erstellten Werten verhindert werden. Der Wert von „JTI“ ist eine Zeichenfolge mit Beachtung der Groß-/Kleinschreibung. [RFC 7519, Abschnitt 4.1.7](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+`nbf` | 1601519114 | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Die Verwendung der aktuellen Uhrzeit ist angemessen. 
+`sub` | {ClientID} | Der Anspruch „sub“ (subject, Antragsteller) identifiziert den Antragsteller des JWT, in diesem Fall ist das ebenfalls Ihre Anwendung. Verwenden Sie denselben Wert wie für `iss`. 
 
 ### <a name="signature"></a>Signatur
 
@@ -94,7 +96,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ### <a name="uploading-the-certificate-file"></a>Hochladen der Zertifikatdatei
 
 In der Azure-App-Registrierung für die Clientanwendung:
-1. Wählen Sie **Zertifikate & Geheimnisse** aus.
+1. Wählen Sie **Zertifikate und Geheimnisse** > **Zertifikate** aus.
 2. Klicken Sie auf **Zertifikat hochladen**, und wählen Sie die Zertifikatdatei zum Hochladen aus.
 3. Klicken Sie auf **Hinzufügen**.
   Nachdem das Zertifikat hochgeladen wurde, werden der Fingerabdruck, das Startdatum und der Ablaufzeitpunkt angezeigt.

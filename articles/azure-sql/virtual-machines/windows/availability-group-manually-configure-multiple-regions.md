@@ -16,12 +16,12 @@ ms.date: 05/02/2017
 ms.author: rsetlem
 ms.custom: seo-lt-2019
 ms.reviewer: mathoma
-ms.openlocfilehash: e9f00376008e4c469318044d3a45280981be621a
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 687fac713abd4843431363214365d35821fa7d28
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166162"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157078"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurieren einer SQL Server Always On-Verfügbarkeitsgruppe in verschiedenen Azure-Regionen
 
@@ -33,13 +33,13 @@ Dieser Artikel gilt für Azure Virtual Machines im Resource Manager-Modus.
 
 Die folgende Abbildung zeigt eine typische Bereitstellung einer Verfügbarkeitsgruppe für virtuelle Azure-Computer:
 
-   ![Diagramm: Azure-Lastenausgleich und Verfügbarkeitsgruppe mit Windows Server-Failovercluster und Always On-Verfügbarkeitsgruppen](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
+:::image type="content" source="./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png" alt-text="Diagramm, das den Azure Load Balancer und das Availability Set mit einem Windows Server Failover Cluster und einer Always On Availability Group zeigt":::
 
 In dieser Bereitstellung befinden sich alle virtuellen Computer in einer einzelnen Azure-Region. Die Verfügbarkeitsgruppenreplikate können über synchrone Commits mit automatischem Failover an SQL-1 und SQL-2 verfügen. Informationen zum Erstellen dieser Architektur finden Sie unter [Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern](availability-group-overview.md).
 
 Bei dieser Architektur kann es zu Ausfallzeiten kommen, wenn nicht mehr auf die Azure-Region zugegriffen werden kann. Fügen Sie daher ein Replikat in einer anderen Azure-Region hinzu, um diesem Problem vorzubeugen. Das folgende Diagramm zeigt die neue Architektur:
 
-   ![Verfügbarkeitsgruppe – Notfallwiederherstellung](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic-dr.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic-dr.png" alt-text="Verfügbarkeitsgruppe – Notfallwiederherstellung":::
 
 Die obige Abbildung enthält einen neuen virtuellen Computer namens SQL-3. SQL-3 befindet sich in einer anderen Azure-Region. SQL-3 wird dem Windows Server-Failovercluster hinzugefügt. SQL-3 kann ein Verfügbarkeitsgruppenreplikat hosten. Beachten Sie außerdem, dass die Azure-Region für SQL-3 über eine neue Azure Load Balancer-Instanz verfügt.
 
@@ -55,7 +55,7 @@ Wenn sich Verfügbarkeitsgruppenreplikate auf virtuellen Azure-Computern in vers
 
 Das folgende Diagramm zeigt die Netzwerkkommunikation zwischen Rechenzentren:
 
-   ![Diagramm: Zwei virtuelle Netzwerke in verschiedenen Azure-Regionen, die mithilfe von VPN-Gateways kommunizieren](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png" alt-text="Diagramm: Zwei virtuelle Netzwerke in verschiedenen Azure-Regionen, die mithilfe von VPN-Gateways kommunizieren":::
 
 >[!IMPORTANT]
 >Bei dieser Architektur fallen Gebühren für ausgehende Daten an, die zwischen Azure-Regionen repliziert werden. Weitere Informationen finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/).  
@@ -77,7 +77,7 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
 1. [Erstellen Sie einen virtuellen SQL Server-Computer in der neuen Region.](create-sql-vm-portal.md)
 
-1. [Erstellen Sie eine Azure Load Balancer-Instanz im Netzwerk für die neue Region.](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
+1. [Erstellen Sie eine Azure Load Balancer-Instanz im Netzwerk für die neue Region.](availability-group-manually-configure-tutorial-single-subnet.md#configure-internal-load-balancer)
 
    Dieser Lastenausgleich muss folgende Anforderungen erfüllen:
 
@@ -89,36 +89,36 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
    - Es muss sich um einen Load Balancer Standard handeln, wenn die virtuellen Computer im Back-End-Pool nicht entweder Teil einer einzelnen Verfügbarkeitsgruppe oder einer VM-Skalierungsgruppe sind. Weitere Informationen finden Sie unter [Übersicht über Azure Load Balancer Standard](../../../load-balancer/load-balancer-overview.md).
    - Es muss sich um einen Load Balancer Standard handeln, wenn die beiden virtuellen Netzwerke in zwei verschiedenen Regionen mittels Peering über das globale VNET-Peering verbunden sind. Weitere Informationen finden Sie unter [Azure Virtual Network – häufig gestellte Fragen](../../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
-1. [Fügen Sie der neuen SQL Server-Instanz das Failoverclustering-Feature hinzu.](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms)
+1. [Fügen Sie der neuen SQL Server-Instanz das Failoverclustering-Feature hinzu.](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md#add-failover-clustering-features-to-both-sql-server-vms)
 
-1. [Fügen Sie die neue SQL Server-Instanz der Domäne hinzu.](availability-group-manually-configure-prerequisites-tutorial.md#joinDomain)
+1. [Fügen Sie die neue SQL Server-Instanz der Domäne hinzu.](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md#joinDomain)
 
-1. [Konfigurieren Sie das neue SQL Server-Dienstkonto für die Verwendung eines Domänenkontos.](availability-group-manually-configure-prerequisites-tutorial.md#setServiceAccount)
+1. [Konfigurieren Sie das neue SQL Server-Dienstkonto für die Verwendung eines Domänenkontos.](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md#setServiceAccount)
 
-1. [Fügen Sie die neue SQL Server-Instanz dem Windows Server-Failovercluster hinzu.](availability-group-manually-configure-tutorial.md#addNode)
+1. [Fügen Sie die neue SQL Server-Instanz dem Windows Server-Failovercluster hinzu.](availability-group-manually-configure-tutorial-single-subnet.md#addNode)
 
 1. Fügen Sie dem Cluster eine IP-Adressressource hinzu.
 
    Die IP-Adressressource kann im Failovercluster-Manager erstellt werden. Wählen Sie den Namen des Clusters aus, klicken Sie mit der rechten Maustaste unter **Hauptressourcen des Clusters** auf den Clusternamen, und wählen Sie dann **Eigenschaften** aus: 
 
-   ![Screenshot: Failovercluster-Manager, in dem ein Clustername, „Servername“ und „Eigenschaften“ ausgewählt ist](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png" alt-text="Screenshot des Failover Cluster Managers mit ausgewähltem Clusternamen Server Name und Properties ":::
 
    Wählen Sie im Dialogfeld **Eigenschaften** die Option **Hinzufügen** unter **IP-Adresse** aus, und fügen Sie dann die IP-Adresse des Clusternamens aus der Remotenetzwerkregion hinzu. Klicken Sie im Dialogfeld **IP-Adresse** auf **OK**, und wählen Sie dann im Dialogfeld **Clustereigenschaften** erneut **OK** aus, um die neue IP-Adresse zu speichern. 
 
-   ![Hinzufügen der IP-Adresse des Clusters](./media/availability-group-manually-configure-multiple-regions/add-cluster-ip-address.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/add-cluster-ip-address.png" alt-text="Hinzufügen der IP-Adresse des Clusters":::
 
 
 1. Fügen Sie die IP-Adresse als Abhängigkeit für den Namen des Kernclusters hinzu.
 
    Öffnen Sie die Clustereigenschaften erneut, und wählen Sie die Registerkarte **Abhängigkeiten** aus. Konfigurieren Sie eine OR-Abhängigkeit für die beiden IP-Adressen: 
 
-   ![Clustereigenschaften](./media/availability-group-manually-configure-multiple-regions/cluster-ip-dependencies.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/cluster-ip-dependencies.png" alt-text="Clustereigenschaften":::
 
 1. Fügen Sie der Verfügbarkeitsgruppenrolle im Cluster eine IP-Adressressource hinzu. 
 
    Klicken Sie in Failovercluster-Manager mit der rechten Maustaste auf die Verfügbarkeitsgruppenrolle, und wählen Sie **Ressource hinzufügen**, **Weitere Ressourcen** und dann **IP-Adresse** aus.
 
-   ![Erstellen der IP-Adresse](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png" alt-text="Erstellen der IP-Adresse":::
 
    Konfigurieren Sie diese IP-Adresse wie folgt:
 
@@ -129,12 +129,12 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
    Der folgende Screenshot zeigt eine ordnungsgemäß konfigurierte IP-Adressclusterressource:
 
-   ![Verfügbarkeitsgruppe](./media/availability-group-manually-configure-multiple-regions/50-configure-dependency-multiple-ip.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/50-configure-dependency-multiple-ip.png" alt-text="Verfügbarkeitsgruppe":::
 
    >[!IMPORTANT]
    >Die Clusterressourcengruppe enthält beide IP-Adressen. Bei beiden IP-Adressen handelt es sich um Abhängigkeiten für den Listener-Clientzugriffspunkt. Verwenden Sie in der Clusterabhängigkeitskonfiguration den Operator **ODER**.
 
-1. [Legen Sie die Clusterparameter in PowerShell fest](availability-group-manually-configure-tutorial.md#setparam).
+1. [Legen Sie die Clusterparameter in PowerShell fest](availability-group-manually-configure-tutorial-single-subnet.md#setparam).
 
    Führen Sie das PowerShell-Skript mit dem Clusternetzwerknamen, der IP-Adresse und dem Testport aus, die Sie für den Lastenausgleich in der neuen Region konfiguriert haben.
 
@@ -151,17 +151,10 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
 1. Aktivieren Sie in der neuen SQL Server-Instanz mithilfe des SQL Server-Konfigurations-Managers die AlwaysOn-Verfügbarkeitsgruppen. (Informationen hierzu finden Sie [hier](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server).)
 
-1. [Konfigurieren Sie die Systemkontoberechtigungen](availability-group-manually-configure-prerequisites-tutorial.md#configure-system-account-permissions) auf dem neuen SQL Server in SQL Server Management Studio.
+1. [Öffnen Sie Firewallports in der neuen SQL Server-Instanz.](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md#endpoint-firewall) Welche Portnummern geöffnet werden müssen, hängt von Ihrer Umgebung ab. Öffnen Sie Ports für den Spiegelungsendpunkt und den Integritätstest der Azure Load Balancer-Instanz.
+1. [Konfigurieren Sie die Systemkontoberechtigungen](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md#configure-system-account-permissions) auf dem neuen SQL Server in SQL Server Management Studio.
 
-1. [Öffnen Sie Firewallports in der neuen SQL Server-Instanz.](availability-group-manually-configure-prerequisites-tutorial.md#endpoint-firewall)
-
-   Welche Portnummern geöffnet werden müssen, hängt von Ihrer Umgebung ab. Öffnen Sie Ports für den Spiegelungsendpunkt und den Integritätstest der Azure Load Balancer-Instanz.
-
-
-1. [Fügen Sie der Verfügbarkeitsgruppe in der neuen SQL Server-Instanz ein Replikat hinzu.](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio)
-
-   Konfigurieren Sie ein Replikat in einer Azure-Remoteregion für die asynchrone Replikation mit manuellem Failover.  
-   
+1. [Fügen Sie der Verfügbarkeitsgruppe in der neuen SQL Server-Instanz ein Replikat hinzu.](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio) Konfigurieren Sie ein Replikat in einer Azure-Remoteregion für die asynchrone Replikation mit manuellem Failover.  
 
 ## <a name="set-connection-for-multiple-subnets"></a>Festlegen der Verbindung für mehrere Subnetze
 

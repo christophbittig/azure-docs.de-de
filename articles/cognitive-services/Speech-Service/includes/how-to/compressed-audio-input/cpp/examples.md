@@ -1,15 +1,15 @@
 ---
-author: PatrickFarley
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
-ms.author: pafarley
-ms.openlocfilehash: 53aad3299bafb606973131646cad26e09671d779
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: f863a7a8b88cd97f0ceef0dd3a711c357202acd1
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123646403"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521215"
 ---
 Wenn Sie das Speech-SDK so konfigurieren möchten, dass komprimierte Audioeingaben akzeptiert werden, erstellen Sie `PullAudioInputStream` oder `PushAudioInputStream`. Erstellen Sie dann eine `AudioConfig` aus einer Instanz Ihrer stream-Klasse, und geben Sie dabei das Komprimierungsformat des Streams an.  Verwandten Beispielcode finden Sie in den [Beispielen zum Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp).
 

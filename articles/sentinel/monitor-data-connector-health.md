@@ -1,36 +1,36 @@
 ---
-title: Überwachen der Integrität ihrer Datenconnectors mit dieser Azure Sentinel-Arbeitsmappe | Microsoft-Dokumentation
+title: Überwachen der Integrität ihrer Datenconnectors mit dieser Microsoft Sentinel-Arbeitsmappe | Microsoft-Dokumentation
 description: Verwenden Sie die Arbeitsmappe zur Überwachung der Integrität, um die Konnektivität und Leistung Ihrer Datenconnectors nachzuverfolgen.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/09/2020
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 89f18c1a7ab517dde3552e1449d0971f29774f91
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 087ee5a8fd0b3f6337306532525c19db46a2c203
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037015"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524434"
 ---
-# <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>Überwachen der Integrität ihrer Datenconnectors mit dieser Azure Sentinel-Arbeitsmappe
+# <a name="monitor-the-health-of-your-data-connectors-with-this-microsoft-sentinel-workbook"></a>Überwachen der Integrität ihrer Datenconnectors mit dieser Microsoft Sentinel-Arbeitsmappe
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Mithilfe der **Arbeitsmappe zur Überwachung der Integrität von Datenconnectors** können Sie die Integrität, Konnektivität und Leistung Ihrer Datenconnectors aus Azure Sentinel heraus nachverfolgen. Die Arbeitsmappe bietet zusätzliche Monitore, erkennt Anomalien und gibt Aufschluss über den Datenerfassungsstatus des Arbeitsbereichs. Sie können die Logik der Arbeitsmappe verwenden, um die allgemeine Integrität der erfassten Daten zu überwachen und benutzerdefinierte Ansichten und regelbasierte Warnungen zu erstellen.
+Mithilfe der **Arbeitsmappe zur Überwachung der Integrität von Datenconnectors** können Sie die Integrität, Konnektivität und Leistung Ihrer Datenconnectors aus Microsoft Sentinel heraus nachverfolgen. Die Arbeitsmappe bietet zusätzliche Monitore, erkennt Anomalien und gibt Aufschluss über den Datenerfassungsstatus des Arbeitsbereichs. Sie können die Logik der Arbeitsmappe verwenden, um die allgemeine Integrität der erfassten Daten zu überwachen und benutzerdefinierte Ansichten und regelbasierte Warnungen zu erstellen.
 
 ## <a name="use-the-health-monitoring-workbook"></a>Verwenden der Arbeitsmappe zur Überwachung der Integrität
 
-1. Wählen Sie im Azure Sentinel-Portal im Menü **Bedrohungsmanagement** die Option **Arbeitsmappen** aus.
+1. Wählen Sie im Microsoft Sentinel-Portal im Menü **Bedrohungsmanagement** die Option **Arbeitsmappen** aus.
 
 1. Geben Sie im **Arbeitsmappenkatalog** in der Suchleiste *Integrität* ein, und wählen Sie in den Ergebnissen **Überwachung der Datenerfassungsintegrität** aus.
 
@@ -68,4 +68,4 @@ Diese Arbeitsmappe enthält drei Registerkartenabschnitte:
     :::image type="content" source="media/monitor-data-connector-health/data-health-workbook-3.png" alt-text="Seite „Informationen zum Agent“ der Arbeitsmappe zur Überwachung der Integrität von Datenconnectors" lightbox="media/monitor-data-connector-health/data-health-workbook-3.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informieren Sie sich, wie Sie [Ihre Daten in Azure Sentinel integrieren](quickstart-onboard.md), [Datenquellen verbinden](connect-data-sources.md) und [Einblicke in Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+Informieren Sie sich, wie Sie [Ihre Daten in Microsoft Sentinel integrieren](quickstart-onboard.md), [Datenquellen verbinden](connect-data-sources.md) und [Einblicke in Daten und potenzielle Bedrohungen erhalten](get-visibility.md).

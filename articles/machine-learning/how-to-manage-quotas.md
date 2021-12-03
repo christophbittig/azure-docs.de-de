@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: SimranArora904
 ms.author: siarora
-ms.date: 06/14/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 6da58d3f37af146c2cb1371cd8b18f134c24d0a2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 809f87ea7d8c4bdf3c6f21fe742ef5a5f2b595d9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067430"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335630"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 
@@ -105,7 +105,9 @@ In der folgenden Tabelle sind weitere Grenzwerte der Plattform angegeben. Wenden
 ### <a name="azure-machine-learning-managed-online-endpoints-preview"></a>Verwaltete Azure Machine Learning-Onlineendpunkte (Vorschau)
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
-Für Azure Machine Learning-Onlineendpunkte gelten die folgenden Grenzwerte:
+Verwaltete Azure Machine Learning-Onlineendpunkte haben die in der folgenden Tabelle beschriebenen Grenzwerte. 
+
+[Zeigen Sie die Metriken an](how-to-monitor-online-endpoints.md#view-metrics), um den aktuellen Verbrauch eines Endpunkt zu bestimmen. Um eine Ausnahme vom Azure Machine Learning-Produktteam anzufordern, öffnen Sie ein Ticket für den technischen Support.
 
 | **Ressource** | **Begrenzung** |
 | --- | --- |
@@ -115,11 +117,15 @@ Für Azure Machine Learning-Onlineendpunkte gelten die folgenden Grenzwerte:
 | Anzahl von Bereitstellungen pro Abonnement | 200 |
 | Anzahl von Bereitstellungen pro Endpunkt | 20 |
 | Anzahl von Instanzen pro Bereitstellung | 20 |
-| Maximale Nutzdatengröße auf Endpunktebene | 1,5 MB |
-| Maximales Anforderungstimeout auf Endpunktebene  | 60 Sekunden |
-| Gesamtanzahl von QPS auf Endpunktebene für alle Bereitstellungen | 100 |
+| Maximales Anforderungstimeout auf Endpunktebene  | 90 Sekunden |
+| Gesamtanforderungen pro Sekunde auf Endpunktebene für alle Bereitstellungen  | 500 <sup>2</sup> |
+| Gesamtanzahl der Verbindungen pro Sekunde auf Endpunktebene für alle Bereitstellungen  | 500 <sup>2</sup> |
+| Gesamtanzahl der auf Endpunktebene aktiven Verbindungen für alle Bereitstellungen  | 500 <sup>2</sup> |
+| Gesamtbandbreite auf Endpunktebene für alle Bereitstellungen  | 5 MBit/s<sup>2</sup> |
 
 <sup>1</sup> Einzelne Bindestriche wie z .B. `my-endpoint-name` sind in Endpunkt- und Bereitstellungsnamen zulässig.
+
+<sup>2</sup> Wenn Sie eine Erhöhung des Grenzwerts anfordern, sollten Sie die damit verbundenen Erhöhungen des Grenzwerts berechnen, die Sie benötigen könnten. Wenn Sie beispielsweise eine Erhöhung des Grenzwerts für Anforderungen pro Sekunde anfordern, sollten Sie auch die erforderlichen Verbindungen und Bandbreitenbegrenzungen berechnen und diese Grenzwerterhöhungen in dieselbe Anforderung einschließen.
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning-Pipelines
 Für [Azure Machine Learning-Pipelines](concept-ml-pipelines.md) gelten die unten angegebenen Grenzwerte.

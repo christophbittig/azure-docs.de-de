@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: 99cee6b73fb37caf0ccf09170d60ea4ba3effc2a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 74a1093f8a084360669c5b436fa56d6ea7aa33d8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714174"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494575"
 ---
 # <a name="azure-bastion-faq"></a>Häufig gestellte Fragen zu Azure Bastion
 
@@ -24,7 +24,7 @@ Nein. Wenn Sie mithilfe von Azure Bastion eine Verbindung mit einem virtuellen C
 
 ### <a name="is-ipv6-supported"></a>Wird IPv6 unterstützt?
 
-Derzeit wird IPv6 nicht unterstützt. Azure Bastion unterstützt nur IPv4.
+Derzeit wird IPv6 nicht unterstützt. Azure Bastion unterstützt nur IPv4. Dies bedeutet, dass Sie Ihrer Bastion-Ressource nur eine öffentliche IPv4-Adresse zuweisen können und dass Sie Bastion verwenden können, um eine Verbindung mit IPv4-Ziel-VMs herzustellen. Sie können Bastion auch verwenden, um eine Verbindung mit Dual Stack-Ziel-VMs herzustellen, aber Sie können über Azure Bastion nur IPv4-Datenverkehr senden. 
 
 ### <a name="can-i-use-azure-bastion-with-azure-private-dns-zones"></a>Kann ich Azure Bastion mit privaten Azure DNS-Zonen verwenden?
 
@@ -46,7 +46,7 @@ Nein. Sie müssen keinen Agent oder eine andere Software in Ihrem Browser oder a
 
 ### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>Welche Funktionen werden in einer RDP-Sitzung unterstützt?
 
-Derzeit wird nur das Kopieren/Einfügen von Text unterstützt. Features wie das Kopieren von Dateien werden nicht unterstützt. Sie können uns Ihr Feedback zu neuen Features auf der [Azure Bastion-Feedbackseite](https://feedback.azure.com/forums/217313-networking?category_id=367303) mitteilen.
+Derzeit wird nur das Kopieren/Einfügen von Text unterstützt. Features wie das Kopieren von Dateien werden nicht unterstützt. Sie können uns Ihr Feedback zu neuen Features auf der [Azure Bastion-Feedbackseite](https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789?c=c109f019-8326-ec11-b6e6-000d3a4f0789) mitteilen.
 
 ### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a><a name="aadj"></a>Funktioniert die Bastion-Härtung bei virtuellen Computern, die mit der AADJ VM-Erweiterung verknüpft sind?
 
@@ -71,7 +71,7 @@ Zum Herstellen einer Verbindung sind die folgenden Rollen erforderlich:
 * Rolle „Leser“ für den virtuellen Computer
 * Rolle „Leser“ für den Netzwerkadapter mit privater IP-Adresse des virtuellen Computers
 * Rolle „Leser“ für die Azure Bastion-Ressource
-* Rolle „Leser“ im virtuellen Netzwerk (nicht erforderlich, wenn kein mittels Peering verbundenes virtuelles Netzwerk vorhanden ist)
+* Rolle „Leser“ im virtuellen Netzwerk des virtuellen Zielcomputers (falls sich die Bastion-Instanz in einem virtuellen Netzwerk mit Peering befindet).
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Erfordert Azure Bastion auf virtuellen Computern, die von Azure gehostet werden, eine RDS-CAL für administrative Aufgaben?
 
@@ -96,7 +96,7 @@ Azure Bastion unterstützt derzeit die folgenden Tastaturlayouts auf dem virtuel
 * sv-se-qwerty
 * tr-tr-qwerty
 
-Das Standardtastaturlayout auf dem virtuellen Zielcomputer stimmt mit Ihrer lokalen Sprache überein, die in den Einstellungen des lokalen Computers geändert werden kann.
+Um die richtigen Tastenzuordnungen für Ihre Zielsprache festzulegen, müssen Sie entweder die Sprache auf Ihrem lokalen Computer oder die Sprache innerhalb der Ziel-VM auf „Englisch (USA)“ einstellen. Dies bedeutet, dass die Sprache des lokalen Computers auf „Englisch (USA)“ festgelegt sein muss, während die Sprache der Ziel-VM auf Ihre Zielsprache festgelegt ist (oder umgekehrt). Sie können Ihrem Computer in den Computereinstellungen die Sprache „Englisch (USA)“ hinzufügen.
 
 ### <a name="does-azure-bastion-support-timezone-configuration-or-timezone-redirection-for-target-vms"></a><a name="timezone"></a>Unterstützt Azure Bastion die Zeitzonenkonfiguration oder Zeitzonenumleitung für virtuelle Zielcomputer?
 
@@ -166,3 +166,6 @@ Vergewissern Sie sich, dass der Benutzer über **Lesezugriff** auf die VM und da
 |Microsoft.Network/virtualNetworks/read|Dient zum Abrufen der Definition des virtuellen Netzwerks.|Aktion|
 |Microsoft.Network/virtualNetworks/subnets/virtualMachines/read|Ruft Verweise auf alle virtuellen Computer im Subnetz eines virtuellen Netzwerks ab.|Aktion|
 |Microsoft.Network/virtualNetworks/virtualMachines/read|Ruft Verweise auf alle virtuellen Computer in einem virtuellen Netzwerk ab.|Aktion|
+
+### <a name="what-is-the-maximum-screen-resolution-supported-via-bastion"></a>Wie hoch ist die maximale Bildschirmauflösung, die von Bastion unterstützt wird?  
+Derzeit ist 1920x1080 (1080p) die maximal unterstützte Auflösung. 

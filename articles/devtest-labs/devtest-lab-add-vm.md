@@ -1,114 +1,106 @@
 ---
-title: Hinzufügen eines virtuellen Computers zu einem Lab
+title: Erstellen eines virtuellen Computers und Hinzufügen der VM zu einem Lab
 description: Hier erhalten Sie Informationen zum Verwenden des Azure-Portals zum Hinzufügen einer VM zu einem Lab in Azure DevTest Labs. Sie können als Basis entweder ein benutzerdefiniertes Image oder eine Formel verwenden.
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: 6f03195a0ad1b9ab69a8274181cacf672b18d1dd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/20/2021
+ms.openlocfilehash: 326d8923b27abff2ee480f6b981392a311be4f30
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128675989"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235286"
 ---
-# <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen eines virtuellen Computers zu einem Lab in Azure DevTest Labs
-Wenn Sie bereits [Ihren ersten virtuellen Computer erstellt haben](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), haben Sie dazu wahrscheinlich ein vorkonfiguriertes [Marketplace-Image](devtest-lab-configure-marketplace-images.md) verwendet. Wenn Sie Ihrem Lab nun weitere virtuelle Computer hinzufügen möchten, können Sie auch eine *Basis* auswählen, die entweder ein [benutzerdefiniertes Image](devtest-lab-create-template.md) oder eine [Formel](devtest-lab-manage-formulas.md) ist. Dieses Tutorial führt Sie durch die Verwendung des Azure-Portals zum Hinzufügen eines virtuellen Computers zu einem Lab in DevTest Labs.
+# <a name="create-and-add-virtual-machines-to-a-lab-in-azure-devtest-labs"></a>Erstellen von virtuellen Computern und Hinzufügen zu einem Lab in Azure DevTest Labs
 
-In diesem Artikel wird außerdem die Verwaltung der Artefakte für einen virtuellen Computer in Ihrem Lab veranschaulicht.
+Dieser Artikel führt Sie durch das Erstellen und Hinzufügen von virtuellen Azure-Computern (VMs) zu einem Lab in Ihren vorhandenen DevTest Labs mithilfe des Azure-Portals.
 
-## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Schritte zum Hinzufügen eines virtuellen Computers zu einem Lab in Azure DevTest Labs
-1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
-1. Wählen Sie **Alle Dienste** und dann im Abschnitt **DEVOPS** die Option **DevTest Labs**. Wählen Sie im Abschnitt **DEVOPS** das Sternchen (*) neben **DevTest Labs** aus. Mit dieser Aktion wird **DevTest Labs** dem linken Navigationsmenü hinzugefügt, sodass Sie beim nächsten Mal einfach darauf zugreifen können. Anschließend können Sie im linken Navigationsmenü **DevTest Labs** auswählen.
+## <a name="create-and-add-virtual-machines"></a>Erstellen und Hinzufügen virtueller Computer
 
-    ![All services (Alle Dienste) – Auswählen von „DevTest Labs“](./media/devtest-lab-create-lab/all-services-select.png)
-1. Wählen Sie in der Liste der Labs das Lab aus, in dem Sie den neuen virtuellen Computer (VM, Virtual Machine) erstellen möchten.
-2. Wählen Sie auf der Seite **Übersicht** des Labs die Option **+ Hinzufügen** aus.
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) an.
 
-    ![Schaltfläche zum Hinzufügen eines virtuellen Computers](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
-1. Wählen Sie auf der Seite **Basis auswählen** ein Marketplace-Image für den virtuellen Computer aus.
-1. Führen Sie auf der Seite **Virtuelle Computer** auf der Registerkarte **Grundeinstellungen** die folgenden Aktionen aus:
-    1. Geben Sie im Textfeld **Name des virtuellen Computers** einen Namen für den virtuellen Computer ein. Im Textfeld ist bereits ein eindeutiger, automatisch erstellter Name angegeben. Der Name entspricht dem Benutzernamen in Ihrer E-Mail-Adresse, gefolgt von einer eindeutigen dreistelligen Nummer. Diese Funktion erspart Ihnen die Zeit, sich einen Computernamen auszudenken und ihn jedes Mal einzugeben, wenn Sie einen Computer erstellen. Wenn Sie wünschen, können Sie dieses automatisch ausgefüllte Feld mit einem selbst gewählten Namen überschreiben. Um den automatisch ausgefüllten Namen für die VM zu überschreiben, geben Sie einen Namen in das Textfeld **Name des virtuellen Computers** ein.
-    2. Geben Sie einen **Benutzernamen** ein, dem Administratorrechte auf dem virtuellen Computer erteilt werden. Der **Benutzername** für den Computer ist mit einem eindeutigen, automatisch generierten Namen vorbelegt. Der Name entspricht dem Benutzernamen in Ihrer E-Mail-Adresse. Diese Funktion erspart Ihnen die Zeit, sich jedes Mal für einen Benutzernamen zu entscheiden, wenn Sie einen neuen Computer erstellen. Auch hier können Sie dieses automatisch ausgefüllte Feld mit einem Benutzernamen Ihrer Wahl überschreiben. Um den automatisch ausgefüllten Wert für den Benutzernamen zu überschreiben, geben Sie einen Wert in das Textfeld **Benutzername** ein. Dieser Benutzer erhält auf dem virtuellen Computer **Administratorrechte**.
-    3. Wenn Sie den ersten virtuellen Computer im Lab erstellen, geben Sie ein **Kennwort** für den Benutzer ein. Um dieses Kennwort als Standardkennwort im Azure-Schlüsseltresor des Labs zu speichern, wählen Sie **Als Standardkennwort speichern** aus. Das Standardkennwort wird im Schlüsseltresor mit dem folgenden Namen gespeichert: **VmPassword**. Wenn Sie versuchen, nachfolgende VMs im Lab zu erstellen, wird **VmPassword** automatisch für das **Kennwort** ausgewählt. Um den Wert zu überschreiben, deaktivieren Sie das Kontrollkästchen **Gespeichertes Geheimnis verwenden** und geben ein Kennwort ein.
+1. Navigieren Sie in **DevTest Labs** zu Ihrem Lab.
 
-        ![Screenshot: Seite „Labressource erstellen“ mit ausgewählter Option „Grundeinstellungen“ und eingegebenen Werten für „Benutzereinstellungen“](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+1. Wählen Sie auf der Seite **Übersicht** die Option **+ Hinzufügen** aus.
 
-        Alternativ können Sie Geheimnisse auch zuerst im Schlüsseltresor speichern und anschließend beim Erstellen einer VM im Lab verwenden. Weitere Informationen finden Sie unter [Speichern eines Geheimnisses in Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md). Zur Verwendung eines Kennworts, das in einem Schlüsseltresor hinterlegt ist, wählen Sie **Gespeichertes Geheimnis verwenden**, und geben Sie einen Schlüsselwert an, der Ihrem Geheimnis (Kennwort) entspricht.
-    4. Wählen Sie im Abschnitt **Weitere Optionen** die Option **Größe ändern**. Wählen Sie eines der vordefinierten Elemente aus, die die Prozessorkerne, die RAM-Größe und die Größe der Festplatte für den zu erstellenden virtuellen Computer angeben.
-    5. Wählen Sie **Artefakte hinzufügen oder entfernen**. Wählen Sie die Artefakte aus, die Sie dem Basisimage hinzufügen möchten, und konfigurieren Sie sie.
-    **Hinweis:** Wenn Sie noch nicht mit DevTest Labs oder dem Konfigurieren von Artefakten vertraut sind, lesen Sie den Abschnitt [Hinzufügen eines vorhandenen Artefakts zu einer VM](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm), und kehren Sie dann hierher zurück.
-2. Wechseln Sie oben zur Registerkarte **Erweiterte Einstellungen**, und führen Sie die folgenden Aktionen aus:
-    1. Wählen Sie **VNET ändern** aus, um das virtuelle Netzwerk zu ändern, in dem sich der virtuelle Computer befindet.
-    2. Wählen Sie zum Ändern des Subnetzes die Option **Subnetz ändern** aus.
-    3. Geben Sie an, ob die IP-Adresse des virtuellen Computers **öffentlich, privat oder freigegeben** ist.
-    4. Geben Sie **Ablaufdatum und -uhrzeit** an, damit der virtuelle Computer automatisch gelöscht wird.
-    5. Wählen Sie für **Make this machine claimable** (Diesen Computer als abrufbar festlegen) die Option **Ja** aus, damit der virtuelle Computer von einem Labbenutzer abgerufen werden kann.
-    6. Geben Sie die Anzahl von **VM-Instanzen** an, die Sie Labbenutzern zur Verfügung stellen möchten.
+   :::image type="content" source="./media/devtest-lab-add-vm/portal-lab-add-vm.png" alt-text="Übersichtsseite des Labs mit der Schaltfläche „Hinzufügen“.":::
 
-        ![Auswählen einer Grundlage](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
-1. Wählen Sie **Erstellen** , um den angegebene virtuellen Computer dem Lab hinzuzufügen.
+1. Wählen Sie auf der Seite **Basis auswählen** ein Marketplace-Image für den virtuellen Computer aus. Dieser Leitfaden verwendet **Windows 11 Pro**. Bestimmte Optionen können sich unterscheiden, wenn Sie ein anderes Image verwenden.
 
-   Auf der Seite für das Lab wird der Status der VM-Erstellung angezeigt: erst als **Wird erstellt** und dann als **Wird ausgeführt**, nachdem die VM gestartet wurde.
+1. Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Informationen an:
 
-    ![Status der VM-Erstellung](./media/tutorial-create-custom-lab/vm-creation-status.png)
+    |Eigenschaft |Beschreibung |
+    |---|---|
+    |Name&nbsp;des virtuellen&nbsp;Computers| Im Textfeld wird bereits ein eindeutiger, automatisch generierter Name angegeben. Der Name entspricht dem Benutzernamen in Ihrer E-Mail-Adresse, gefolgt von einer eindeutigen dreistelligen Zahl. Behalten Sie diese Angabe bei, oder geben Sie einen eindeutigen Namen Ihrer Wahl ein.|
+    |Benutzername| Im Textfeld wird bereits ein eindeutiger, automatisch generierter Name angegeben. Der Name entspricht dem Benutzernamen in Ihrer E-Mail-Adresse. Behalten Sie diese Angabe bei, oder geben Sie einen Namen Ihrer Wahl ein. Dieser Benutzer erhält auf dem virtuellen Computer **Administratorberechtigungen**.|
+    |Gespeichertes Geheimnis verwenden| Lassen Sie das Kontrollkästchen für diese exemplarische Vorgehensweise deaktiviert. Sie können Geheimnisse zunächst in Azure Key Vault speichern und dann hier verwenden. Weitere Informationen finden Sie unter [Speichern eines Geheimnisses in Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md). Wenn Sie lieber ein gespeichertes Geheimnis verwenden möchten, aktivieren Sie das Kontrollkästchen, und wählen Sie dann das Geheimnis aus der Dropdownliste **Geheimnis** aus.|
+    |Kennwort|Geben Sie ein Kennwort ein, das zwischen 8 und 123 Zeichen lang ist.|
+    |Als Standardkennwort speichern| Aktivieren Sie das Kontrollkästchen, um das Kennwort in der Azure Key Vault-Instanz zu speichern, die dem Lab zugeordnet ist.|
+    |Größe des virtuellen Computers| Behalten Sie den Standardwert bei, oder wählen Sie **Größe ändern** aus, um andere physische Komponenten auszuwählen. In dieser exemplarischen Vorgehensweise wird **Standard_B2_v3** verwendet.|
+    |Typ des Betriebssystemdatenträgers|Behalten Sie den Standardwert bei, oder wählen Sie eine andere Option aus der Dropdownliste aus.|
+    |Artifacts| Wählen Sie **Artefakte hinzufügen oder entfernen**. Wählen Sie die Artefakte aus, die Sie dem Basisimage hinzufügen möchten, und konfigurieren Sie sie. Jedes Lab enthält Artefakte aus dem öffentlichen DevTest Labs-Artefaktrepository und Artefakte, die Sie erstellt und Ihrem eigenen Artefaktrepository hinzugefügt haben. Eine ausführliche Anleitung finden Sie weiter unten unter [Hinzufügen von Artefakten während der Installation](#add-artifacts-during-installation).|
 
-## <a name="add-an-existing-artifact-to-a-vm"></a>Hinzufügen eines vorhandenen Artefakts zu einer VM
-Beim Erstellen eines virtuellen Computers können Sie vorhandene Artefakte hinzufügen. Jedes Lab enthält Artefakte aus dem öffentlichen DevTest Labs-Artefaktrepository, sowie Artefakte, die Sie erstellt und Ihrem eigenen Artefaktrepository hinzugefügt haben.
+   :::image type="content" source="./media/devtest-lab-add-vm/portal-lab-vm-basic-settings.png" alt-text="Seite „Grundeinstellungen“ der VM.":::
 
-* Azure DevTest Labs-*Artefakte* ermöglichen Ihnen die Angabe von *Aktionen*, die ausgeführt werden, wenn der virtuelle Computer bereitgestellt wird, beispielsweise Ausführen von Windows PowerShell-Skripts, Ausführen von Bash-Befehlen und Installieren von Software.
-* Mit *Parametern* für Artefakte können Sie das Artefakt für ein bestimmtes Szenario anpassen.
+1. Wählen Sie die Registerkarte **Erweiterte Einstellungen** aus, und geben Sie die folgenden Informationen an:
 
-Informationen zum Erstellen von Artefakten finden Sie im Artikel [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Labs-VM](devtest-lab-artifact-author.md).
+    |Eigenschaft |BESCHREIBUNG |
+    |---|---|
+    |Virtuelles Netzwerk| Behalten Sie die Angabe unverändert bei, oder wählen Sie in der Dropdownliste ein anderes Netzwerk aus.|
+    |&nbsp;Subnetzauswahl| Behalten Sie die Angabe unverändert bei, oder wählen Sie in der Dropdownliste ein anderes Subnetz aus.|
+    |IP-Adresse| Für diese exemplarische Vorgehensweise behalten Sie den Standardwert **Freigegeben** bei.|
+    |Ablaufdatum| Behalten Sie die Angabe unverändert bei, um kein Ablaufdatum festzulegen, oder wählen Sie das Kalendersymbol aus, um ein Ablaufdatum festzulegen.|
+    |Diesen Computer als abrufbar festlegen| Um die VM für einen Lab-Benutzer abrufbar zu machen, wählen Sie **Ja** aus. Das Markieren des Computers als abrufbar bedeutet, dass ihm zum Zeitpunkt der Erstellung kein Besitzer zugewiesen wird. In dieser exemplarischen Vorgehensweise wird **Ja** verwendet.|
+    |Anzahl von Instanzen| Geben Sie für diese exemplarische Vorgehensweise **2** ein. Die Anzahl der zu erstellenden VM-Instanzen.|
+    |Automatisierung | Optional. Wenn Sie **ARM-Vorlage anzeigen** auswählen, wird die Vorlage auf einer neuen Seite geöffnet. Sie können die Vorlage kopieren und speichern, um den gleichen virtuellen Computer später zu erstellen. Nach dem Speichern können Sie die Azure Resource Manager-Vorlage zum [Bereitstellen neuer virtueller Computer mit Azure PowerShell](../azure-resource-manager/templates/overview.md) nutzen.|
 
-1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
-1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
-1. Wählen Sie in der Liste der Labs das Lab mit dem virtuellen Computer aus, mit dem Sie arbeiten möchten.
-1. Wählen Sie **Meine virtuellen Computer** aus.
-1. Wählen Sie den gewünschten virtuellen Computer aus.
-1. Wählen Sie **Artefakte verwalten** aus.
-1. Wählen Sie **Artefakte anwenden**.
-1. Wählen Sie im Bereich **Artefakte anwenden** das Artefakt aus, das Sie dem virtuellen Computer hinzufügen möchten.
-1. Geben Sie im Bereich **Artefakt hinzufügen** die erforderlichen Parameterwerte und alle optionalen Parameter ein, die Sie benötigen.
-1. Wählen Sie **Hinzufügen** aus, um das Artefakt hinzuzufügen, und kehren Sie zum Bereich **Artefakte anwenden** zurück.
+   :::image type="content" source="./media/devtest-lab-add-vm/portal-lab-vm-advanced-settings.png" alt-text="Seite „Erweiterte Einstellungen“ des virtuellen Computers.":::
+
+1. Kehren Sie zur Registerkarte **Grundeinstellungen** zurück, und wählen Sie dann **Erstellen** aus.
+
+1. Wählen Sie auf der Seite **DevTest Lab** unter **Mein Lab** die Option **Abrufbare virtuelle Computer** aus.
+
+   :::image type="content" source="./media/devtest-lab-add-vm/portal-lab-vm-creation-status.png" alt-text="Seite zum Status der Lab-VM-Erstellung.":::
+
+1. Wählen Sie nach einigen Minuten **Aktualisieren** aus, wenn Ihre virtuellen Computer nicht angezeigt werden. Die Installationszeiten variieren basierend auf der ausgewählten Hardware, dem Basisimage und den Artefakten. Die Installation der in dieser exemplarischen Vorgehensweise verwendeten Konfigurationen hat etwa 25 Minuten betragen.
+
+## <a name="add-artifacts-during-installation"></a>Hinzufügen von Artefakten während der Installation
+
+Diese Schritte sind erweiterte Anweisungen zum vorherigen Abschnitt. Die Schritte beginnen, nachdem Sie **Artefakte hinzufügen oder entfernen** auf der Registerkarte **Grundeinstellungen** ausgewählt haben. Weitere Informationen zu Artefakten finden Sie unter [Erfahren Sie, wie Sie Ihre eigenen Artefakte für die Verwendung mit DevTest Labs erstellen](devtest-lab-artifact-author.md).
+
+1. Identifizieren Sie auf der Seite **Artefakte hinzufügen** ein Artefakt, und wählen Sie dann **>** (Größer-als-Symbol) aus. Klicken Sie anschließend auf **OK**.
+
+   :::image type="content" source="./media/devtest-lab-add-vm/portal-add-artifact-during.png" alt-text="Hinzufügen eines Artefakts zur VM.":::
+
+1. Wählen Sie ein anderes Artefakt aus: **PowerShell-Modul installieren**. Dieses Artefakt erfordert zusätzliche Informationen, insbesondere den Namen eines PowerShell-Moduls. Wählen Sie **Az** aus, und wählen Sie dann **OK** aus.
+
 1. Fügen Sie weiterhin nach Bedarf für Ihren virtuellen Computer Artefakte hinzu.
-1. Sobald Sie Ihre Artefakte hinzugefügt haben, können Sie [die Reihenfolge ändern, in der die Artefakte ausgeführt werden](#change-the-order-in-which-artifacts-are-run). Sie können auch zum [Anzeigen oder Ändern eines Artefakts](#view-or-modify-an-artifact)zurückgehen.
-1. Wenn Sie mit dem Hinzufügen von Artefakten fertig sind, wählen Sie **Anwenden**.
 
-## <a name="change-the-order-in-which-artifacts-are-run"></a>Ändern der Reihenfolge, in der Artefakte ausgeführt werden
-Standardmäßig werden die Aktionen der Artefakte in der Reihenfolge ausgeführt, in der sie der VM hinzugefügt wurden.
-Die folgenden Schritte veranschaulichen, wie Sie die Reihenfolge ändern, in der die Artefakte ausgeführt werden.
+1. Wählen Sie **...** (Auslassungszeichen) aus einem ihrer ausgewählten Artefakte aus, und beachten Sie die verschiedenen Optionen, einschließlich der Möglichkeit, die Installationsreihenfolge zu ändern.
 
-1. Wählen Sie oben im Bereich **Artefakte anwenden** den Link, der die Anzahl der Artefakte angibt, die dem virtuellen Computer hinzugefügt wurden.
+1. Wenn Sie mit dem Hinzufügen von Artefakten fertig sind, wählen Sie **OK** aus, um zur Registerkarte **Grundeinstellungen** zurückzukehren.
 
-    ![Anzahl der Artefakte, die dem virtuellen Computer hinzugefügt wurden](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Ziehen Sie die Artefakte im Bereich **Ausgewählte Artefakte** per Drag & Drop in die gewünschte Reihenfolge. **Hinweis:** Wenn beim Ziehen eines Artefakts Probleme auftreten, stellen Sie sicher, dass Sie von der linken Seite des Artefakts aus ziehen.
-1. Wählen Sie nach Abschluss des Vorgangs **OK** .
+## <a name="add-artifacts-after-installation"></a>Hinzufügen von Artefakten nach der Installation
 
-## <a name="view-or-modify-an-artifact"></a>Anzeigen oder Ändern eines Artefakts
-Die folgenden Schritte veranschaulichen das Anzeigen oder Ändern der Parameter eines Artefakts:
+Sie können auch Artefakte hinzufügen, nachdem die VM erstellt wurde. 
 
-1. Wählen Sie oben im Bereich **Artefakte anwenden** den Link, der die Anzahl der Artefakte angibt, die dem virtuellen Computer hinzugefügt wurden.
+1. Wählen Sie auf der Seite **DevTest Lab** unter **Mein Lab** die Option **Alle Ressourcen** aus. **Alle Ressourcen** listet sowohl abgerufene als auch nicht abgerufene VMs auf.
 
-    ![Anzahl der Artefakte, die dem virtuellen Computer hinzugefügt wurden](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Wählen Sie im Bereich **Ausgewählte Artefakte** das Artefakt aus, das Sie anzeigen oder bearbeiten möchten.
-1. Nehmen Sie im Bereich **Artefakt hinzufügen** die erforderlichen Änderungen vor, und wählen Sie **OK**, um den Bereich **Artefakt hinzufügen** zu schließen.
-1. Wählen Sie **OK**, um den Bereich **Ausgewählte Artefakte** zu schließen.
+    :::image type="content" source="./media/devtest-lab-add-vm/portal-lab-vm-all-resources.png" alt-text="Lab zeigt den Status aller Ressourcen an.":::
 
-## <a name="save-azure-resource-manager-template"></a>Speichern der Azure Resource Manager-Vorlage
-Eine Azure Resource Manager-Vorlage bietet eine deklarative Möglichkeit zum Definieren einer wiederholbaren Bereitstellung.
-Die folgenden Schritte erläutern, wie die Azure Resource Manager-Vorlage für den zu erstellenden virtuellen Computer gespeichert wird.
-Nach dem Speichern können Sie die Azure Resource Manager-Vorlage zum [Bereitstellen neuer virtueller Computer mit Azure PowerShell](../azure-resource-manager/templates/overview.md) nutzen.
+1. Wählen Sie Ihre VM aus, sobald der **Status** als **Verfügbar** angezeigt wird.
 
-1. Wählen Sie im Bereich **Virtueller Computer** die Option **Azure Resource Manager-Vorlage anzeigen** aus.
-2. Wählen Sie im Bereich **Azure Resource Manager-Vorlage anzeigen** den Text der Vorlage aus.
-3. Kopieren Sie den markierten Text in die Zwischenablage.
-4. Wählen Sie **OK** aus, um den Bereich **Azure Resource Manager-Vorlage anzeigen** zu schließen.
-5. Öffnen Sie einen Text-Editor.
-6. Fügen Sie den Text der Vorlage aus der Zwischenablage ein.
-7. Speichern Sie die Datei für eine spätere Verwendung.
+1. Wählen Sie auf Ihrer Seite **VM** die Option **Start** aus, um die VM zu starten.
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+1. Einige Augenblicke nachdem die Seite **Wird ausgeführt** anzeigt wird, wählen Sie unter **Vorgänge** die Option **Artefakte** aus.
+
+   :::image type="content" source="./media/devtest-lab-add-vm/portal-lab-vm-overview.png" alt-text="Übersicht über die Lab-VM mit der Schaltfläche „Start“.":::
+
+1. Wählen Sie **Artefakte anwenden** aus, um die Seite **Artefakte hinzufügen** zu öffnen.
+
+1. Ab hier sind die Schritte im Grunde die gleichen wie weiter oben ab [Hinzufügen von Artefakten während der Installation](#add-artifacts-during-installation).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Nach der Erstellung des virtuellen Computers können Sie im Bereich des virtuellen Computers die Option **Verbinden** wählen, um eine Verbindung mit dem virtuellen Computer herzustellen.
 * Informieren Sie sich über das [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Lab-VM](devtest-lab-artifact-author.md).
 * Erkunden Sie den [DevTest Labs-Azure Resource Manager-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

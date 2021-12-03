@@ -4,12 +4,12 @@ description: Überwachung der Anwendungsleistung von Azure App Services mithilfe
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 5e85a12d017f5fc812ac4f910ce9517d73cc41c7
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 97c0d2710d14e523338ac7cd670383caa75c7cef
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154590"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443602"
 ---
 # <a name="application-monitoring-for-azure-app-service-and-aspnet"></a>Anwendungsüberwachung für Azure App Service und ASP.NET 
 
@@ -99,13 +99,13 @@ Sie müssen nur die Anwendungseinstellungen festlegen, um die Sammlung von Telem
 
 ## <a name="upgrade-monitoring-extensionagent---net"></a>Upgrade von Überwachungserweiterung/-Agent: .NET 
 
-### <a name="upgrade-from-versions-289-and-up"></a>Upgrade von Version 2.8.9 und höher
+### <a name="upgrade-from-versions-289-and-up"></a>Upgrade von Versionen 2.8.9 und höher
 
 Das Upgrade von Version 2.8.9 erfolgt automatisch ohne zusätzliche Aktionen. Die neuen Überwachungsfunktionen werden dem Ziel-App-Service im Hintergrund bereitgestellt und beim Neustart der Anwendung übernommen.
 
 Informationen zur aktuell verwendeten Version der Erweiterung finden Sie unter `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`.
 
-:::image type="content"source="./media/azure-web-apps/extension-version.png" alt-text="Screenshot: URL-Pfad zum Überprüfen der ausgeführten Version der Erweiterung." border="false"::: 
+:::image type="content"source="./media/azure-web-apps/extension-version.png" alt-text="Screenshot von dem URL-Pfad zum Überprüfen der Version der von Ihnen ausgeführten Erweiterung." border="false"::: 
 
 ### <a name="upgrade-from-versions-100---265"></a>Upgrade von Version 1.0.0 – 2.6.5
 
@@ -115,19 +115,22 @@ Ab Version 2.8.9 wird die vorinstallierte Websiteerweiterung verwendet. Bei eine
 
 * [Upgrade über PowerShell](#enable-through-powershell):
 
-    1. Legen Sie die Anwendungseinstellungen so fest, dass die vorinstallierte Websiteerweiterung „ApplicationInsightsAgent“ aktiviert wird. Weitere Informationen finden Sie unter [Aktivieren über PowerShell](#enable-through-powershell).
+    1. Legen Sie die Anwendungseinstellungen so fest, dass die vorinstallierte Websiteerweiterung „ApplicationInsightsAgent“ aktiviert wird. Siehe [Aktivieren über PowerShell](#enable-through-powershell).
     2. Entfernen Sie die private Websiteerweiterung mit dem Namen Application Insights-Erweiterung für Azure App Service manuell.
 
 Wenn das Upgrade für eine frühere Version als 2.5.1 ausgeführt wird, vergewissern Sie sich, dass die ApplicationInsights-DLL-Dateien aus dem Ordner „bin“ der Anwendung entfernt werden ([siehe Schritte zur Problembehandlung](#troubleshooting)).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
+> [!NOTE]
+> Wenn Sie eine Web-App mit den `ASP.NET`-Runtimes in Azure App Services erstellen, wird eine einzelne statische HTML-Seite als Startwebsite bereitgestellt. Es wird **nicht** empfohlen, ein Problem mit der Standardvorlage zu beheben. Stellen Sie eine Anwendung vor der Problembehandlung zur Verfügung.
+
 Im Folgenden finden Sie eine Schrittanleitung zur Problembehandlung für die auf Erweiterungen oder Agents basierende Überwachung von ASP.NET-basierten Anwendungen, die in Azure App Services ausgeführt werden.
 
 1. Überprüfen Sie, ob die App-Einstellung `ApplicationInsightsAgent_EXTENSION_VERSION` auf den Wert „~2“ festgelegt ist.
 2. Navigieren Sie zu `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`.  
 
-    :::image type="content"source="./media/azure-web-apps/app-insights-sdk-status.png" alt-text="Screenshot: Link über der Ergebnisseite."border ="false"::: 
+    :::image type="content"source="./media/azure-web-apps/app-insights-sdk-status.png" alt-text="Screenshot von dem Link über der Ergebnisseite."border ="false"::: 
     
     - Stellen Sie sicher, dass für `Application Insights Extension Status``Pre-Installed Site Extension, version 2.8.x.xxxx, is running.`angegeben ist. 
     
@@ -185,7 +188,7 @@ Informationen zu den neuesten Updates und Fehlerbehebungen [finden Sie in den Ve
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Ausführen des Profilers in Ihrer Live-App](./profiler.md)
-* [Überwachen von Azure Functions mit Application Insights](monitor-functions.md)
+* [Überwachen von Azure Functions mit Application Insights](monitor-functions.md).
 * [Ermöglichen des Sendens von Azure-Diagnosedaten an Application Insights](../agents/diagnostics-extension-to-application-insights.md)
 * [Überwachen von Dienstintegritätsmetriken](../data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist
 * [Empfangen von Warnbenachrichtigungen](../alerts/alerts-overview.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.

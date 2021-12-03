@@ -2,13 +2,13 @@
 title: Konfigurieren und Anpassen des Defender-IoT-Micro-Agents für Azure RTOS
 description: Hier erfahren Sie, wie Sie den Defender-IoT-Micro-Agent für Azure RTOS konfigurieren und anpassen.
 ms.topic: how-to
-ms.date: 03/07/2021
-ms.openlocfilehash: 38e0b7cd1226d26caf45ed454c93e253a2ead240
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.date: 11/09/2021
+ms.openlocfilehash: dc6e522e1d9453264d92100c6e7e830506d8284b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113138421"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306281"
 ---
 # <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos"></a>Konfigurieren und Anpassen des Defender-IoT-Micro-Agents für Azure RTOS
 

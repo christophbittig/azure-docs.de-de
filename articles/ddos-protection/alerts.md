@@ -11,23 +11,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 1ea079802a2628b8a698e108f6f689ff5e58f08b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 315f97e6c392578e10159c767c56111e6c34f544
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124750300"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286926"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>Anzeigen und Konfigurieren von DDoS-Schutzwarnungen
 
-Die Standardversion von Azure DDoS Protection liefert per Analyse von DDoS-Angriffen ausführliche Erkenntnisse zu Angriffen und ermöglicht eine Visualisierung. Kunden, die ihre virtuellen Netzwerke vor DDoS-Angriffen schützen, verfügen über detaillierte Einblicke in den Datenverkehr von Angriffen und die Aktionen, die zur Eindämmung des Angriffs durchgeführt werden. Hierfür werden Berichte zur Angriffsentschärfung und Protokolle zum Verlauf der Entschärfung genutzt. Über Azure Monitor werden umfangreiche Telemetriedaten bereitgestellt. Diese umfassen u. a. detaillierte Metriken während der Dauer eines DDoS-Angriffs. Warnungen können für beliebige durch den DDoS-Schutz verfügbar gemachte Azure Monitor-Metriken konfiguriert werden. Die Protokollierung kann zudem mit [Azure Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection), Splunk (Azure Event Hubs), OMS Log Analytics und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integriert werden.
+Die Standardversion von Azure DDoS Protection liefert per Analyse von DDoS-Angriffen ausführliche Erkenntnisse zu Angriffen und ermöglicht eine Visualisierung. Kunden, die ihre virtuellen Netzwerke vor DDoS-Angriffen schützen, verfügen über detaillierte Einblicke in den Datenverkehr von Angriffen und die Aktionen, die zur Eindämmung des Angriffs durchgeführt werden. Hierfür werden Berichte zur Angriffsentschärfung und Protokolle zum Verlauf der Entschärfung genutzt. Über Azure Monitor werden umfangreiche Telemetriedaten bereitgestellt. Diese umfassen u. a. detaillierte Metriken während der Dauer eines DDoS-Angriffs. Warnungen können für beliebige durch den DDoS-Schutz verfügbar gemachte Azure Monitor-Metriken konfiguriert werden. Die Protokollierung kann zudem mit [Microsoft Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection), Splunk (Azure Event Hubs), OMS Log Analytics und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integriert werden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Konfigurieren von Warnungen in Azure Monitor
 > * Konfigurieren von Warnungen im Portal
-> * Anzeigen von Warnungen in Azure Security Center
+> * Warnungen in Microsoft Defender für Cloud anzeigen
 > * Überprüfen und Testen Ihrer Warnungen
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -74,16 +74,16 @@ Innerhalb weniger Minuten nach Erkennung eines Angriffs erhalten Sie eine E-Mail
 
 Sie können auch mehr über das [Konfigurieren von Webhooks](../azure-monitor/alerts/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und über [Logik-Apps](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für die Erstellung von Warnungen erfahren.
 
-## <a name="view-alerts-in-azure-security-center"></a>Anzeigen von Warnungen in Azure Security Center
+## <a name="view-alerts-in-microsoft-defender-for-cloud"></a>Warnungen in Microsoft Defender für Cloud anzeigen
 
-Im Azure Security Center sind zahlreiche [Sicherheitswarnungen](../security-center/security-center-managing-and-responding-alerts.md) vorhanden, die Informationen zum Untersuchen und Beheben von Problemen enthalten. Dieses Feature bietet eine einheitliche Ansicht für die Warnungen, einschließlich Warnungen für DDoS-Angriffe und Aktionen zum zeitnahen Abwehren dieser Angriffe.
+Im Microsoft Defender für Cloud gibt es eine Liste mit [Sicherheitswarnungen](../security-center/security-center-managing-and-responding-alerts.md), die Informationen zum Untersuchen und Beheben von Problemen beinhaltet. Dieses Feature bietet eine einheitliche Ansicht für die Warnungen, einschließlich Warnungen für DDoS-Angriffe und Aktionen zum zeitnahen Abwehren dieser Angriffe.
 Für die Erkennung und Abwehr von DDoS-Angriffen werden insbesondere zwei Warnungen ausgelöst:
 
 - **DDoS Attack detected for Public IP** (DDoS-Angriff für öffentliche IP-Adresse erkannt): Diese Warnung wird generiert, wenn der DDoS-Schutzdienst einen DDoS-Angriff auf eine Ihrer öffentlichen IP-Adressen erkennt.
 - **DDoS Attack mitigated for Public IP** (DDoS-Angriff für öffentliche IP-Adresse abgewehrt): Diese Warnung wird generiert, wenn ein Angriff auf eine öffentliche IP-Adresse abgewehrt wurde.
-Öffnen Sie **Security Center** im Azure-Portal, um die Warnungen anzuzeigen. Klicken Sie unter **Bedrohungsschutz** auf **Sicherheitswarnungen**. Auf dem folgenden Screenshot sehen Sie ein Beispiel für eine Warnung zu einem DDoS-Angriff.
+Öffnen Sie **Defender für Cloud** im Azure-Portal, um die Warnungen anzuzeigen. Klicken Sie unter **Bedrohungsschutz** auf **Sicherheitswarnungen**. Auf dem folgenden Screenshot sehen Sie ein Beispiel für eine Warnung zu einem DDoS-Angriff.
 
-![DDoS-Warnung im Azure Security Center](./media/manage-ddos-protection/ddos-alert-asc.png)
+![DDoS-Warnung in Microsoft Defender für Cloud](./media/manage-ddos-protection/ddos-alert-asc.png)
 
 Die Warnungen enthalten allgemeine Informationen zur angegriffenen öffentlichen IP-Adresse, zum geografischen Raum und zur Bedrohung sowie Schritte zur Behebung.
 
@@ -97,7 +97,7 @@ In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt wer
 
 - Konfigurieren von Warnungen in Azure Monitor
 - Konfigurieren von Warnungen im Portal
-- Anzeigen von Warnungen in Azure Security Center
+- Warnungen in Microsoft Defender für Cloud anzeigen
 - Überprüfen und Testen Ihrer Warnungen
 
 Informationen zum Testen und Simulieren eines DDoS-Angriffs finden Sie in der Anleitung zum Durchführen von Simulationstests:

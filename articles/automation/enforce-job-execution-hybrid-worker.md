@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: 36ead3f16a04055e7056c702b0600265dd8e61ce
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ced119e7835f6c7fd7bf6aea34a10ebea4af3fc5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482836"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026277"
 ---
 # <a name="use-azure-policy-to-enforce-job-execution-on-hybrid-runbook-worker"></a>Verwenden von Azure Policy zum Erzwingen der Auftragsausführung auf Hybrid Runbook Worker
 
@@ -140,15 +140,15 @@ Hier erstellen wir die Richtlinienregel und weisen sie dann entweder einer Verwa
     # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
     ```azurecli
-   az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
-   ```
+    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
+    ```
 
-   Der Parameter **scope** für `az policy assignment create` kann mit einer Verwaltungsgruppe, einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad. Das Muster für **scope** für die einzelnen Container ist unten aufgeführt. Ersetzen Sie `{rName}`, `{rgName}`, `{subId}` und `{mgName}` durch Ihre(n) Ressourcennamen, Ressourcengruppennamen, Abonnement-ID bzw. Namen der Verwaltungsgruppe. `{rType}` wird durch den **Ressourcentyp** der Ressource ersetzt, z. B. `Microsoft.Compute/virtualMachines` für eine VM.
+    Der Parameter **scope** für `az policy assignment create` kann mit einer Verwaltungsgruppe, einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad. Das Muster für **scope** für die einzelnen Container ist unten aufgeführt. Ersetzen Sie `{rName}`, `{rgName}`, `{subId}` und `{mgName}` durch Ihre(n) Ressourcennamen, Ressourcengruppennamen, Abonnement-ID bzw. Namen der Verwaltungsgruppe. `{rType}` wird durch den **Ressourcentyp** der Ressource ersetzt, z. B. `Microsoft.Compute/virtualMachines` für eine VM.
 
-   - Ressource: `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Ressourcengruppe: `/subscriptions/{subID}/resourceGroups/{rgName}`
-   - Abonnement: `/subscriptions/{subID}`
-   - Verwaltungsgruppe: `/providers/Microsoft.Management/managementGroups/{mgName}`
+    - Ressource: `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+    - Ressourcengruppe: `/subscriptions/{subID}/resourceGroups/{rgName}`
+    - Abonnement: `/subscriptions/{subID}`
+    - Verwaltungsgruppe: `/providers/Microsoft.Management/managementGroups/{mgName}`
 
     Sie können die ID der Azure Policy-Definition abrufen, indem Sie PowerShell mit dem folgenden Befehl verwenden:
     

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: how-to
 ms.custom: deploy
-ms.openlocfilehash: fa5c362db03af7004751e39708553edf79f5827a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 97b8d6f32b2e59dd2e19b1d41b4fa01f97158325
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446525"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547684"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Bereitstellen von mit Azure Machine Learning trainierten Modellen auf lokalen Computern 
 
@@ -188,7 +188,7 @@ Sie können das Modell herunterladen:
 - Über die Befehlszeile mit `az ml model download`. (Weitere Informationen finden Sie unter [Herunterladen des Modells](/cli/azure/ml/model#az_ml_model_download).)
 - Mithilfe der `Model.download()`-Methode aus dem Python SDK. (Weitere Informationen finden Sie unter [Modellklasse](/python/api/azureml-core/azureml.core.model.model#download-target-dir------exist-ok-false--exists-ok-none-).)
 
-Bei einem Azure-Modell handelt es sich um ein oder mehrere serialisierte Python-Objekte, die als Python-Pickle-Datei (Erweiterung .pkl) gepackt sind. Der Inhalt der Pickle-Datei hängt von der Bibliothek für maschinelles Lernen oder der Technik ab, die zum Trainieren des Modells verwendet wird. Beispielsweise können Sie bei dem Modell aus dem Tutorial das Modell wie folgt laden:
+Ein Azure-Modell kann in der von Ihrem Framework verwendeten Form verwendet werden, ist aber in der Regel mindestens ein serialisiertes Python-Objekt, das als Python-Pickledatei (PKL-Erweiterung) gepackt ist. Der Inhalt der Pickle-Datei hängt von der Bibliothek für maschinelles Lernen oder der Technik ab, die zum Trainieren des Modells verwendet wird. Beispielsweise können Sie bei dem Modell aus dem Tutorial das Modell wie folgt laden:
 
 ```python
 import pickle
@@ -250,5 +250,6 @@ Weitere Informationen zum Hochladen und Aktualisieren von Modellen und Umgebunge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Informationen zur Verwendung von VS Code mit Azure Machine Learning finden Sie unter [Verbinden zum Berechnen einer Instanz in Visual Studio Code (Vorschau)](how-to-set-up-vs-code-remote.md)
 - Weitere Informationen zum Verwalten von Umgebungen finden Sie unter [Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning](how-to-use-environments.md).
 - Weitere Informationen zum Zugreifen auf Daten in Ihrem Datenspeicher finden Sie unter [Herstellen einer Verbindung mit Speicherdiensten in Azure](how-to-access-data.md).

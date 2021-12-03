@@ -8,12 +8,12 @@ manager: karenh444
 ms.author: barclayn
 ms.topic: tutorial
 ms.date: 10/08/2021
-ms.openlocfilehash: c2f3757c62399049c1ecdc51c5ee2b873dd6c154
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a7065441bc1354d27bef4f3523c8cfa01d789974
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236806"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508002"
 ---
 # <a name="issue-azure-ad-verifiable-credentials-from-an-application-preview"></a>Ausstellen von Azure AD-Nachweisen über eine Anwendung (Vorschau)
 
@@ -23,7 +23,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 >
-> - Einrichten einer Azure Blob Storage-Instanz zum Speichern der Nachweiskonfigurationsdateien
+> - Einrichten einer Azure Blob Storage-Instanz zum Speichern der Azure AD-Nachweiskonfigurationsdateien
 > - Erstellen und Hochladen der Nachweiskonfigurationsdateien
 > - Erstellen der Karte für Nachweisexperten in Azure
 > - Sammeln von Nachweis- und Umgebungsdetails zum Einrichten der Beispielanwendung
@@ -38,37 +38,35 @@ Im folgenden Diagramm sind die Architektur für Azure AD-Nachweise und die Komp
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Bevor Sie beginnen, sollten Sie [einen Mandanten für den Azure AD-Nachweis einrichten](./verifiable-credentials-configure-tenant.md).
-- Installieren Sie [Git](https://git-scm.com/downloads), um das Repository zu klonen, das als Host für die Beispiel-App fungiert.
+- [Einrichten eines Mandanten für Azure AD-Nachweise](./verifiable-credentials-configure-tenant.md)
+- Installieren von [Git](https://git-scm.com/downloads), um das Repository zu klonen, das als Host für die Beispiel-App fungiert
 - [Visual Studio Code](https://code.visualstudio.com/Download) oder ein ähnlicher Code-Editor
-- [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
+- [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
 - [ngrok](https://ngrok.com/) (kostenlos)
-- Ein mobiles Gerät mit Microsoft Authenticator
-  - Es muss mindestens Android-Version 6.2108.5654 installiert sein.
-  - Es muss mindestens iOS-Version 6.5.82 installiert sein.
+- Ein mobiles Gerät mit Microsoft Authenticator:
+  - Installation von Android, Version 6.2108.5654 oder höher
+  - Installation von iOS, Version 6.5.82 oder höher
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Der Azure AD-Nachweisdienst nutzt [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md), um die Nachweiskonfigurationsdateien beim Ausstellen von Nachweisen zu speichern.
+Azure Blob Storage ist eine Objektspeicherlösung für die Cloud. Azure AD-Nachweise nutzen [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md), um die Konfigurationsdateien zu speichern, wenn der Dienst Nachweise ausstellt.
 
-Erstellen und konfigurieren Sie Ihre Azure Blob Storage-Instanz mithilfe der folgenden Schritte:
+Erstellen und konfigurieren Sie Blob Storage mithilfe der folgenden Schritte:
 
-1. Falls Sie kein Azure Blob Storage-Konto besitzen, [erstellen Sie ein Speicherkonto](../../storage/common/storage-account-create.md).
+1. Wenn Sie kein Azure Blob Storage-Konto haben, müssen Sie [eines erstellen](../../storage/common/storage-account-create.md).
 1. Erstellen Sie nach der Erstellung des Speicherkontos einen Container. Scrollen Sie im linken Menü für das Speicherkonto zum Abschnitt **Datenspeicher**, und wählen Sie **Container** aus.
-1. Wählen Sie die Schaltfläche **+ Container**.
-1. Geben Sie unter **Name** einen Namen für den neuen Container ein. Der Containername muss klein geschrieben werden, mit einem Buchstaben oder einer Zahl beginnen und darf nur Buchstaben, Zahlen und Bindestriche (-) enthalten. Beispiel: *vc-container*
+1. Wählen Sie **+ Container** aus.
+1. Geben Sie einen Namen für den neuen Container ein. Der Containername muss klein geschrieben werden, mit einem Buchstaben oder einer Zahl beginnen und darf nur Buchstaben, Zahlen und Bindestriche (-) enthalten. Beispiel: *vc-container*
 1. Legen Sie **Öffentliche Zugriffsebene** auf **Privat** (kein anonymer Zugriff) fest.
 1. Klicken Sie auf **Erstellen**.  
-
-    Der folgende Screenshot zeigt das Erstellen eines Containers:  
 
    ![Screenshot: Erstellen eines Containers](media/verifiable-credentials-configure-issuer/create-container.png)
 
 ## <a name="grant-access-to-the-container"></a>Gewähren des Zugriffs auf den Container
 
-Gewähren Sie nach dem Erstellen des Containers dem angemeldeten Benutzer die richtige Rollenzuweisung, damit er auf die Dateien in Storage Blob zugreifen kann.
+Gewähren Sie nach dem Erstellen des Containers dem angemeldeten Benutzer die richtige Rollenzuweisung, damit er auf die Dateien in Blob Storage zugreifen kann.
 
-1. Wählen Sie in der Containerliste *vc-container* aus.
+1. Wählen Sie in der Containerliste **vc-container** aus.
 
 1. Wählen Sie im Menü die Option **Zugriffssteuerung (IAM)** aus.
 
@@ -76,7 +74,7 @@ Gewähren Sie nach dem Erstellen des Containers dem angemeldeten Benutzer die ri
 
      ![Screenshot: Hinzufügen einer neuen Rollenzuweisung zum Blobcontainer](media/verifiable-credentials-configure-issuer/add-role-assignment.png)
 
-1. Gehen Sie auf der Seite **Rollenzuweisung hinzufügen** wie folgt vor:
+1. Gehen Sie unter **Rollenzuweisung hinzufügen** wie folgt vor:
 
     1. Wählen Sie unter **Rolle** die Option **Storage-Blobdatenleser** aus.
 
@@ -87,20 +85,20 @@ Gewähren Sie nach dem Erstellen des Containers dem angemeldeten Benutzer die ri
         ![Screenshot: Einrichten der neuen Rollenzuweisung](media/verifiable-credentials-configure-issuer/add-role-assignment-container.png)
 
 >[!IMPORTANT]
->Standardmäßig wird die Rolle " Besitzer " dem Container Ersteller zugewiesen. Die Rolle „Besitzer“ ist allein nicht ausreichend. Ihr Konto benötigt die Rolle „Leser von Speicherblobdaten“. Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../../storage/blobs/assign-azure-role-data-access.md).
+>Containererstellern wird standardmäßig die Rolle „Besitzer“ zugewiesen. Die Rolle „Besitzer“ ist allein nicht ausreichend. Ihr Konto benötigt die Rolle „Leser von Speicherblobdaten“. Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../../storage/blobs/assign-azure-role-data-access.md).
 
 ### <a name="upload-the-configuration-files"></a>Hochladen der Konfigurationsdateien
 
-Der Azure AD-Nachweisdienst verwendet zwei JSON-Konfigurationsdateien: die Regel- und die Anzeigedatei. 
+Azure AD-Nachweise verwenden zwei JSON-Konfigurationsdateien: die Regel- und die Anzeigedatei. 
 
-- In der Regeldatei sind wichtige Eigenschaften der Nachweise beschrieben. Insbesondere werden die Ansprüche beschrieben, die Antragsteller (Benutzer) bereitstellen müssen, damit ein Nachweis für sie ausgestellt wird. 
-- Mit der Anzeigedatei wird das Branding des Nachweises und das Format der Ansprüche gesteuert.
+- In der *Regeldatei* sind wichtige Eigenschaften der Nachweise beschrieben. Insbesondere werden die Ansprüche beschrieben, die Antragsteller (Benutzer) bereitstellen müssen, damit ein Nachweis für sie ausgestellt wird. 
+- Mit der *Anzeigedatei* wird das Branding des Nachweises und das Format der Ansprüche gesteuert.
 
-In diesem Abschnitt laden Sie eine Beispielregeldatei und eine Beispielanzeigedatei in Ihren Speicher hoch. Weitere Informationen zum Anpassen dieser Dateien finden Sie unter [Gewusst wie: Anpassen Ihrer Nachweise (Vorschau)](credential-design.md).
+In diesem Abschnitt laden Sie eine Beispielregeldatei und eine Beispielanzeigedatei in Ihren Speicher hoch. Weitere Informationen finden Sie unter [Gewusst wie: Anpassen Ihrer Nachweise (Vorschau)](credential-design.md).
 
 Führen Sie zum Hochladen der Konfigurationsdateien die folgenden Schritte aus:
 
-1. Kopieren Sie den folgenden JSON-Code, und speichern Sie den Inhalt in einer Datei namens „VerifiedCredentialExpertDisplay.json“:
+1. Kopieren Sie den folgenden JSON-Code, und speichern Sie den Inhalt in einer Datei namens *VerifiedCredentialExpertDisplay.json*:
 
     ```json
     {
@@ -135,7 +133,7 @@ Führen Sie zum Hochladen der Konfigurationsdateien die folgenden Schritte aus:
     }
     ```
 
-1. Kopieren Sie den folgenden JSON-Code, und speichern Sie den Inhalt in einer Datei namens „VerifiedCredentialExpertRules.json“. Im folgenden Nachweis sind einige einfache Ansprüche definiert: firstName und lastName.
+1. Kopieren Sie den folgenden JSON-Code, und speichern Sie den Inhalt in einer Datei namens *VerifiedCredentialExpertRules.json*. Im folgenden Nachweis sind einige einfache Ansprüche definiert: `firstName` und `lastName`.
 
     ```json
     {
@@ -164,35 +162,35 @@ Führen Sie zum Hochladen der Konfigurationsdateien die folgenden Schritte aus:
 
 1. Wählen Sie im Menü auf der linken Seite **Container** aus, um eine Liste mit den darin enthaltenen Blobs anzuzeigen. Wählen Sie den zuvor erstellten Container **vc-container** aus.
 
-1. Wählen Sie die Schaltfläche **Hochladen** aus, um das Uploadblatt zu öffnen, und navigieren Sie in Ihrem lokalen Dateisystem zu einer Datei, um sie hochzuladen. Wählen Sie die Dateien **VerifiedCredentialExpertDisplay.json** und **VerifiedCredentialExpertRules.json** aus. Wählen Sie dann **Hochladen** aus, um die Datei in den Container hochzuladen.
+1. Wählen Sie **Hochladen** aus, um den Uploadbereich zu öffnen, und navigieren Sie in Ihrem lokalen Dateisystem zu einer Datei, um sie hochzuladen. Wählen Sie die Dateien **VerifiedCredentialExpertDisplay.json** und **VerifiedCredentialExpertRules.json** aus. Wählen Sie dann **Hochladen** aus, um die Datei in den Container hochzuladen.
 
-## <a name="create-the-verifiable-credential-expert-card-in-azure"></a>Erstellen der Karte für Nachweisexperten in Azure
+## <a name="create-the-verified-credential-expert-card-in-azure"></a>Erstellen der Karte für Nachweisexperten in Azure
 
-In diesem Schritt erstellen Sie die Karte für Nachweisexperten mithilfe von Azure AD-Nachweisen. Nach dem Erstellen eines Nachweises kann Ihr Azure AD-Mandant diesen Nachweis für Benutzer ausstellen, die einen Prozess zur Ausstellung von Nachweisen initiieren.
+In diesem Schritt erstellen Sie die Karte für Nachweisexperten mithilfe von Azure AD-Nachweisen. Nach dem Erstellen eines Nachweises kann Ihr Azure AD-Mandant diesen Nachweis für Benutzer ausstellen, die den Prozess initiieren.
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) über das Haupteingabefeld für die Suche nach **Nachweis**. Wählen Sie dann **Nachweise (Vorschau)** aus.
-1. Nach dem [Einrichten Ihres Mandanten](verifiable-credentials-configure-tenant.md) sollte der Bildschirm mit der Option zum **Erstellen eines neuen Nachweises** angezeigt werden. Wenn er nicht geöffnet wird oder Sie weitere Nachweise erstellen möchten, wählen Sie **Leistungsnachweise** aus. Wählen Sie anschließend **+ Leistungsnachweis** aus.
-1. Gehen Sie auf der Seite zum Erstellen eines neuen Nachweises wie folgt vor:
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach *Nachweise*. Wählen Sie dann **Nachweise (Vorschau)** aus.
+1. Nach dem [Einrichten Ihres Mandanten](verifiable-credentials-configure-tenant.md) sollte das Fenster **Neue Anmeldeinformationen erstellen** angezeigt werden. Wenn er nicht geöffnet wird oder Sie weitere Nachweise erstellen möchten, wählen Sie **Leistungsnachweise** aus. Wählen Sie anschließend **+ Leistungsnachweis** aus.
+1. Gehen Sie unter **Neue Anmeldeinformationen erstellen** wie folgt vor:
 
-    1. Geben Sie in das Feld **Name** für den Nachweis den Namen **VerifiedCredentialExpert** ein. Dieser Name wird im Portal verwendet, um Ihre überprüfbaren Anmeldeinformationen zu identifizieren. Er ist im Rahmen des Vertrags für überprüfbare Anmeldeinformationen enthalten.
+    1. Geben Sie in das Feld **Name** den Namen **VerifiedCredentialExpert** ein. Dieser Name wird im Portal verwendet, um Ihre überprüfbaren Anmeldeinformationen zu identifizieren. Er ist im Rahmen des Vertrags für überprüfbare Anmeldeinformationen enthalten.
 
-    1. Wählen Sie unter **Abonnement** das Azure AD-Abonnement aus, unter dem Sie die Azure Blob Storage-Instanz erstellt haben.
+    1. Wählen Sie unter **Abonnement** das Azure AD-Abonnement aus, unter dem Sie die Blob Storage-Instanz erstellt haben.
 
-    1. Sie müssen unter **Anzeigedatei** die **Anzeigedatei auswählen**. Wählen Sie im Abschnitt „Speicherkonten“ die Option **vc-container** aus. Wählen Sie dann die Datei **VerifiedCredentialExpertDisplay.json** aus, und klicken Sie auf **Auswählen**.
+    1. Wählen Sie unter **Anzeigedatei** die Option **Anzeigedatei auswählen** aus. Wählen Sie im Abschnitt „Speicherkonten“ die Option **vc-container** aus. Wählen Sie dann die Datei **VerifiedCredentialExpertDisplay.json** aus, und klicken Sie auf **Auswählen**.
 
-    1. Sie müssen unter **Rules file** (Regeldatei) die **Regeldatei auswählen**. Wählen Sie im Abschnitt „Speicherkonten“ die Option **vc-container** aus. Wählen Sie dann die Datei **VerifiedCredentialExpertRules.json** aus, und klicken Sie auf **Auswählen**.
+    1. Sie müssen unter **Rules file** (Regeldatei) die **Regeldatei auswählen**. Wählen Sie im Abschnitt „Speicherkonten“ die Option **vc-container** aus. Wählen Sie dann die Datei **VerifiedCredentialExpertRules.json** und anschließend **Auswählen** aus.
 
-    Der folgende Screenshot zeigt, wie Sie einen neuen Nachweis erstellen:
+    1. Klicken Sie auf **Erstellen**.    
 
-    ![Screenshot: Erstellen des neuen Nachweises](media/verifiable-credentials-configure-issuer/how-create-new-credential.png)
+Der folgende Screenshot zeigt, wie Sie einen neuen Nachweis erstellen:
 
-1. Wählen Sie auf dem Bildschirm Neue Anmeldeinformation erstellen die Option **Erstellen** aus.
+  ![Screenshot: Erstellen eines neuen Nachweises](media/verifiable-credentials-configure-issuer/how-create-new-credential.png)
 
-## <a name="gather-credentials-and-environment-details-to-set-up-your-sample-application"></a>Sammeln von Nachweis- und Umgebungsdetails zum Einrichten Ihrer Beispielanwendung
+## <a name="gather-credentials-and-environment-details"></a>Erfassen von Anmeldeinformationen und Umgebungsdetails
 
 Nachdem Sie nun über einen neuen Nachweis verfügen, sammeln Sie einige Informationen zu Ihrer Umgebung und dem von Ihnen erstellten Nachweis. Sie verwenden diese Informationen beim Einrichten Ihrer Beispielanwendung.
 
-1. Wählen Sie unter „Nachweise“ die Option **Leistungsnachweise** und dann in der Liste der Nachweise den zuvor erstellten Nachweis „VerifiedCredentialExpert“ aus
+1. Wählen Sie dann unter „Nachweise“ die Option **Nachweise** aus. Wählen Sie in der Liste der Nachweise den zuvor erstellten Nachweis **VerifiedCredentialExpert** aus.
 
     ![Screenshot: Auswählen des neu erstellten Nachweises](media/verifiable-credentials-configure-issuer/select-verifiable-credential.png)
 
@@ -200,20 +198,20 @@ Nachdem Sie nun über einen neuen Nachweis verfügen, sammeln Sie einige Informa
 
 1. Kopieren Sie den Wert unter **Dezentraler Bezeichner**, und notieren Sie ihn zur späteren Verwendung.
 
-1. Kopieren Sie die **Mandanten-ID**, und notieren Sie sie zur späteren Verwendung. Auf dem folgenden Screenshot wird gezeigt, wie Sie die erforderlichen Werte kopieren:
+1. Kopieren Sie die **Mandanten-ID**, und notieren Sie sie zur späteren Verwendung.
 
-    ![Screenshot: Kopieren der erforderlichen Werte für die Nachweise](media/verifiable-credentials-configure-issuer/copy-the-issue-credential-url.png)
+   ![Screenshot: Kopieren der erforderlichen Werte für die Nachweise](media/verifiable-credentials-configure-issuer/copy-the-issue-credential-url.png)
 
 ## <a name="download-the-sample-code"></a>Herunterladen des Beispielcodes
 
-Die Beispielanwendung ist in .NET verfügbar, und der Code wird in einem GitHub Repository verwaltet. Laden Sie unseren [Beispielcode auf GitHub](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet) herunter, oder klonen Sie das Repository auf Ihrem lokalen Computer:
+Die Beispielanwendung ist in .NET verfügbar, und der Code wird in einem GitHub-Repository verwaltet. Laden Sie den Beispielcode von [GitHub](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet) herunter, oder klonen Sie das Repository auf Ihrem lokalen Computer:
 
 
 ```bash
-git clone git@github.com:Azure-Samples/active-directory-verifiable-credentials-dotnet.git
+git clone https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet.git
 ```
 
-## <a name="configure-the-verifiable-credentials-app"></a>Einrichten der Nachweis-App
+## <a name="configure-the-verifiable-credentials-app"></a>Konfigurieren der Nachweis-App
 
 Erstellen Sie einen geheimen Clientschlüssel für die von Ihnen erstellte registrierte Anwendung. Die Beispielanwendung verwendet den geheimen Clientschlüssel beim Anfordern von Token als Identitätsnachweis.
 
@@ -221,21 +219,21 @@ Erstellen Sie einen geheimen Clientschlüssel für die von Ihnen erstellte regis
 
 1. Wählen Sie die zuvor erstellte Anwendung **verifiable-credentials-app** aus.
 
-1. Wählen Sie den Namen aus, der in den Details der App-Registrierungen angezeigt werden soll.
+1. Wählen Sie den Namen aus, der in den Registrierungsdetails angezeigt werden soll.
 
-1. Kopieren Sie den Wert unter **Anwendungs-ID (Client)**, und speichern Sie ihn zur späteren Verwendung.  
+1. Kopieren Sie den Wert unter **Anwendungs-ID (Client)** , und speichern Sie ihn zur späteren Verwendung.  
 
      ![Screenshot: Kopieren der App-Registrierungs-ID](media/verifiable-credentials-configure-issuer/copy-app-id.png)
 
-1. Wählen Sie in den App-Registrierungsdetails im Hauptmenü unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
+1. Wählen Sie im Hauptmenü unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
 
-1. Wählen Sie **Neuer geheimer Clientschlüssel** aus.
+1. Wählen Sie **Neuer geheimer Clientschlüssel** aus, und führen Sie die folgenden Schritte aus:
 
     1. Geben Sie im Feld **Beschreibung** eine Beschreibung für den geheimen Clientschlüssel ein (z. B. **vc-sample-secret**).
 
-    1. Wählen Sie unter **Gültig bis** einen Gültigkeitszeitraum für das Geheimnis (etwa sechs Monate) und anschließend **Hinzufügen** aus.
+    1. Wählen Sie unter **Gültig bis** einen Gültigkeitszeitraum für das Geheimnis (beispielsweise sechs Monate) aus. Wählen Sie anschließend **Hinzufügen**.
 
-    1. Notieren Sie den **Wert** des Geheimnisses. Dieser Wert wird in einem späteren Schritt für die Konfiguration verwendet. Der Wert des Geheimnisses wird nicht erneut angezeigt und kann auch nicht auf andere Weise abgerufen werden. Notieren Sie ihn daher, sobald er angezeigt wird.
+    1. Notieren Sie den **Wert** des Geheimnisses. Dieser Wert wird in einem späteren Schritt für die Konfiguration verwendet. Der Wert des Geheimnisses wird nicht erneut angezeigt und kann auch nicht auf andere Weise abgerufen werden. Notieren Sie ihn, sobald er angezeigt wird.
 
 An diesem Punkt sollten Sie über alle erforderlichen Informationen verfügen, die Sie zum Einrichten Ihrer Beispielanwendung benötigen.
 
@@ -243,9 +241,9 @@ An diesem Punkt sollten Sie über alle erforderlichen Informationen verfügen, d
 
 Nun nehmen Sie Änderungen am Aussteller-Code der Beispiel-App vor, um ihn mit Ihrer URL für die überprüfbaren Anmeldeinformationen zu aktualisieren. Dieser Schritt ermöglicht es Ihnen, überprüfbare Anmeldeinformationen mit Ihrem eigenen Mandanten auszugeben.
 
-1. Öffnen Sie im Ordner *active-directory-verifiable-credentials-dotnet-main* Visual Studio Code, und wählen Sie das Projekt im Ordner **1.asp-net-core-api-idtokenhint** aus.
+1. Öffnen Sie im Ordner *active-directory-verifiable-credentials-dotnet-main* Visual Studio Code, und wählen Sie das Projekt im Ordner *1.asp-net-core-api-idtokenhint* aus.
 
-1. Öffnen Sie im Projektstammordner die Datei appsettings.json. Diese Datei enthält Informationen zu Ihrem Azure AD-Nachweis. Aktualisieren Sie die folgenden Eigenschaften mit den Informationen, die Sie zuvor in den obigen Schritten notiert haben.
+1. Öffnen Sie im Projektstammordner die Datei *appsettings.json*. Diese Datei enthält Informationen zu Ihren Azure AD-Nachweisen. Aktualisieren Sie die folgenden Eigenschaften mit den Informationen, die Sie in den vorherigen Schritten notiert haben:
 
     1. **TenantID**: Ihre Mandanten-ID
     1. **ClientID**: Ihre Client-ID
@@ -256,7 +254,7 @@ Nun nehmen Sie Änderungen am Aussteller-Code der Beispiel-App vor, um ihn mit I
 
 1. Speichern Sie die *appsettings.json*-Datei.
 
-Der folgende JSON-Code zeigt die vollständige Datei „appsettings.json“.
+Der folgende JSON-Code zeigt die vollständige Datei *appsettings.json*:
 
 ```json
 {
@@ -276,20 +274,20 @@ Der folgende JSON-Code zeigt die vollständige Datei „appsettings.json“.
 }
 ```
 
-## <a name="issuing-your-first-verified-expert-card"></a>Ausstellen Ihrer ersten Karte für Nachweisexperten
+## <a name="issue-your-first-verified-credential-expert-card"></a>Ausstellen Ihrer ersten Karte für Nachweisexperten
 
 Sie können jetzt Ihre erste Karte für Nachweisexperten ausstellen, indem Sie die Beispielanwendung ausführen.
 
-1. Führen Sie in Visual Studio Code das Projekt „Verifiable_credentials_DotNet“ aus. Führen Sie alternativ in der Befehlsshell die folgenden Befehle aus:
+1. Führen Sie in Visual Studio Code das Projekt *Verifiable_credentials_DotNet* aus. Führen Sie alternativ in der Befehlsshell die folgenden Befehle aus:
 
     ```bash
-    cd active-directory-verifiable-credentials-dotnet/1. asp-net-core-api-idtokenhint  dotnet build "asp-net-core-api-idtokenhint.csproj" -c Debug -o .\\bin\\Debug\\netcoreapp3.  dotnet run
+    cd active-directory-verifiable-credentials-dotnet/1-asp-net-core-api-idtokenhint  dotnet build "AspNetCoreVerifiableCredentials.csproj" -c Debug -o .\\bin\\Debug\\netcoreapp3.  dotnet run
     ```
 
 1. Führen Sie in einem anderen Terminal den folgenden Befehl aus. Mit diesem Befehl wird [ngrok](https://ngrok.com/) ausgeführt, um eine URL an 3000 einzurichten und öffentlich im Internet verfügbar zu machen.
 
     ```bash
-    ngrok http 3000
+    ngrok http 5000
     ```
 
     >[!NOTE]
@@ -301,41 +299,41 @@ Sie können jetzt Ihre erste Karte für Nachweisexperten ausstellen, indem Sie d
 
 1. Wählen Sie in einem Webbrowser **Get Credential** (Nachweis abrufen) aus.
 
-     ![Screenshot: Auswählen von „Get credential“ (Nachweis abrufen) in der Beispiel-App](media/verifiable-credentials-configure-issuer/get-credentials.png)
+     ![Screenshot: Auswählen von „Get Credential“ (Nachweis abrufen) in der Beispiel-App](media/verifiable-credentials-configure-issuer/get-credentials.png)
 
 1. Scannen Sie mithilfe Ihres mobilen Geräts den QR-Code mit der Authenticator-App. Sie können den QR-Code auch direkt mit Ihrer Kamera scannen. Dadurch wird die Authenticator-App für Sie geöffnet.
 
     ![Screenshot: Scannen des QR-Codes](media/verifiable-credentials-configure-issuer/scan-issuer-qr-code.png)
 
-1. Zu diesem Zeitpunkt wird die Warnmeldung „Diese App oder Website weist möglicherweise Risiken auf.“ angezeigt. Wählen Sie **Erweitert** aus.
+1. Zu diesem Zeitpunkt wird eine Meldung mit der Warnung angezeigt, dass diese App oder Website riskant sein könnte. Wählen Sie **Erweitert** aus.
 
-     ![Screenshot: Auswählen von „Erweitert“ in der Warnmeldung der Authenticator-App](media/verifiable-credentials-configure-issuer/at-risk.png)
+     ![Screenshot: Reagieren auf die Warnmeldung](media/verifiable-credentials-configure-issuer/at-risk.png)
 
-1. Wählen Sie in der Warnung zur riskanten Website die Option **Trotzdem fortfahren (unsicher)** aus. Diese Warnung wird angezeigt, weil Ihre Domäne nicht mit Ihrem DID verknüpft ist. Befolgen Sie zum Überprüfen Ihrer Domäne die Anleitung im Artikel [Verknüpfen Ihrer Domäne mit Ihrem dezentralisierten Bezeichner (Decentralized Identifier, DID)](how-to-dnsbind.md). Für dieses Tutorial können Sie die Domänenregistrierung überspringen und **Trotzdem fortfahren (unsicher)** auswählen.
+1. Wählen Sie in der Warnung zur riskanten Website die Option **Trotzdem fortfahren (unsicher)** aus. Diese Warnung wird angezeigt, weil Ihre Domäne nicht mit dem dezentralen Bezeichner (DID) verknüpft ist. Befolgen Sie zum Überprüfen Ihrer Domäne die Anleitung unter [Verknüpfen Ihrer Domäne mit Ihrem dezentralisierten Bezeichner (Decentralized Identifier, DID)](how-to-dnsbind.md). Für dieses Tutorial können Sie die Domänenregistrierung überspringen und **Trotzdem fortfahren (unsicher)** auswählen.
 
      ![Screenshot: Fortfahren bei der Warnung zu riskanter App oder Website](media/verifiable-credentials-configure-issuer/proceed-anyway.png)
 
-1. Sie werden zur Eingabe eines PIN-Codes aufgefordert, der auf dem Bildschirm angezeigt wird, auf dem Sie den QR-Code gescannt haben. Die PIN wird verwendet, um die Ausstellungsnutzdaten zusätzlich zu schützen. Der PIN-Code wird jedes Mal nach dem Zufallsprinzip generiert, wenn ein QR-Code für die Ausstellung angezeigt wird.
+1. Sie werden zur Eingabe eines PIN-Codes aufgefordert, der auf dem Bildschirm angezeigt wird, auf dem Sie den QR-Code gescannt haben. Die PIN schützt die Ausstellung zusätzlich. Der PIN-Code wird jedes Mal nach dem Zufallsprinzip generiert, wenn ein QR-Code für die Ausstellung angezeigt wird.
 
-     ![Screenshot: Eingabe des PIN-Codes](media/verifiable-credentials-configure-issuer/enter-verification-code.png)
+     ![Screenshot: Eingeben des PIN-Codes](media/verifiable-credentials-configure-issuer/enter-verification-code.png)
 
-1. Nach der Eingabe der PIN wird der Bildschirm **Nachweis hinzufügen** angezeigt. Beachten Sie, dass am oberen Bildschirmrand die rot angezeigte Meldung **Nicht verifiziert** angezeigt wird. Diese Warnung bezieht sich auf die oben erwähnte Domänenüberprüfung.
+1. Nach der Eingabe der PIN wird der Bildschirm **Nachweis hinzufügen** angezeigt. Am oberen Bildschirmrand sehen Sie eine rot angezeigte Meldung **Nicht verifiziert**. Diese Warnung bezieht sich auf die oben erwähnte Domänenüberprüfung.
 
 1. Wählen Sie **Hinzufügen** aus, um Ihren neuen Nachweis zu akzeptieren.
 
     ![Screenshot: Hinzufügen des neuen Nachweises](media/verifiable-credentials-configure-issuer/new-verifiable-credential.png)
 
-1. Glückwunsch! Sie verfügen nun über einen Nachweis für verifizierte Anmeldeinformationsexperten.
+Glückwunsch! Sie verfügen nun über einen Nachweis für verifizierte Anmeldeinformationsexperten.
 
-    ![Screenshot: Neu hinzugefügter Nachweis](media/verifiable-credentials-configure-issuer/verifiable-credential-has-been-added.png)
+  ![Screenshot: Neu hinzugefügter Nachweis](media/verifiable-credentials-configure-issuer/verifiable-credential-has-been-added.png)
 
 Kehren Sie zur Beispiel-App zurück. Sie sehen, dass die Ausstellung des Nachweises erfolgreich war.
 
   ![Screenshot: Erfolgreich ausgestellter Nachweis](media/verifiable-credentials-configure-issuer/credentials-issued.png)
 
-## <a name="verifying-the-verified-expert-card"></a>Überprüfen der Karte für Nachweisexperten
+## <a name="verify-the-verified-credential-expert-card"></a>Überprüfen der Karte für Nachweisexperten
 
-Sie können jetzt Ihre Karte für Nachweisexperten ausstellen, indem Sie die Beispielanwendung erneut ausführen.
+Sie können jetzt Ihre Karte für Nachweisexperten überprüfen, indem Sie die Beispielanwendung erneut ausführen.
 
 1. Klicken Sie in Ihrem Browser auf die Schaltfläche „Zurück“, um zur Startseite der Beispiel-App zurückzukehren.
 
@@ -345,7 +343,7 @@ Sie können jetzt Ihre Karte für Nachweisexperten ausstellen, indem Sie die Bei
 
 1. Scannen Sie den QR-Code mithilfe der Authenticator-App oder direkt mit der Kamera des Mobilgeräts.
 
-1. Wenn die Warnmeldung „Diese App oder Website weist möglicherweise Risiken auf.“ angezeigt wird, wählen Sie **Erweitert** aus. Wählen Sie anschließend **Trotzdem fortfahren (unsicher)** aus.
+1. Wenn die Warnmeldung angezeigt wird, wählen Sie **Erweitert** aus. Wählen Sie anschließend **Trotzdem fortfahren (unsicher)** aus.
 
 1. Genehmigen Sie die Präsentationsanforderung, indem Sie **Zulassen** auswählen.
 
@@ -359,22 +357,22 @@ Sie können jetzt Ihre Karte für Nachweisexperten ausstellen, indem Sie die Bei
 
     ![Screenshot: Schaltfläche „Letzte Aktivität“, über die Sie zum Nachweisverlauf gelangen](media/verifiable-credentials-configure-issuer/verifable-credential-history.jpg)
 
-1. Unter **Letzte Aktivität** werden die zuletzt durchgeführten Aktivitäten für Ihren Nachweis angezeigt.
+1. Sie können nun die aktuellen Aktivitäten Ihres Nachweises anzeigen.
 
     ![Screenshot: Verlauf der Nachweise](media/verifiable-credentials-configure-issuer/verify-credential-history.jpg)
 
 1. Kehren Sie zur Beispiel-App zurück. Sie sehen, dass die Präsentation der Nachweise empfangen wurde.  
-    ![Seite: Empfangene Präsentation](media/verifiable-credentials-configure-issuer/verifiable-credential-expert-verification.png)
+    ![Screenshot: Präsentation wurde empfangen.](media/verifiable-credentials-configure-issuer/verifiable-credential-expert-verification.png)
 
-## <a name="verifiable-credential-names&quot;></a>Nachweisnamen 
+## <a name="verifiable-credential-names"></a>Nachweisnamen 
 
 Ihr Nachweis enthält **Megan Bowen** für die Werte für Vorname und Nachname im Nachweis. Diese Werte wurden in der Beispielanwendung hartcodiert und dem Nachweis zum Zeitpunkt der Ausstellung in den Nutzdaten hinzugefügt. 
 
-In realen Szenarios pullt Ihre Anwendung die Benutzerdetails von einem Identitätsanbieter. Der folgende Codeausschnitt zeigt, wo der Name in der Beispielanwendung festgelegt wird. In einem Folgebeispiel wird gezeigt, wie Sie die Werte direkt von Ihrem Identitätsanbieter in den Nachweis einfügen.
+In realen Szenarien pullt Ihre Anwendung die Benutzerdetails von einem Identitätsanbieter. Der folgende Codeausschnitt zeigt, wo der Name in der Beispielanwendung festgelegt wird. 
 
 ```csharp
 //file: IssuerController.cs
-[HttpGet(&quot;/api/issuer/issuance-request")]
+[HttpGet("/api/issuer/issuance-request")]
 public async Task<ActionResult> issuanceRequest()
   {
     ...
@@ -388,10 +386,5 @@ public async Task<ActionResult> issuanceRequest()
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Konfigurieren des Azure AD-Nachweisdiensts
-> * Ausstellen und Überprüfen von Nachweisen mithilfe desselben Azure AD-Mandanten
-
 Im [nächsten Schritt](verifiable-credentials-configure-verifier.md) erfahren Sie, wie eine Drittanbieteranwendung (auch als „anspruchsbasierte Anwendung“ bezeichnet) Ihre Nachweise mit einem eigenen API-Dienst für Azure AD-Mandantennachweise überprüfen kann.
+

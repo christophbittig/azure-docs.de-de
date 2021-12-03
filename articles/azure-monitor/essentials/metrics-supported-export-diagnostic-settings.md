@@ -4,12 +4,12 @@ description: In diesem Artikel werden NULL- vs. Nullwerte beim Exportieren von M
 services: azure-monitor
 ms.topic: reference
 ms.date: 07/22/2020
-ms.openlocfilehash: 47b98fe46ac1f2a3e2f3f1a8078ad9ca6f867554
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 53c5aad7061afb0479e9678a188fe99779893fef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048844"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017880"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Über Diagnoseeinstellungen exportierbare Azure Monitor-Plattformmetriken
 
@@ -17,11 +17,11 @@ Azure Monitor stellt [Plattformmetriken](../essentials/data-platform-metrics.md)
 
 ## <a name="metrics-not-exportable-via-diagnostic-settings"></a>Über Diagnoseeinstellungen nicht exportierbare Metriken
 
-Der Inhalt, der hier normalerweise zu finden war, wurde zu [Unterstützte Metriken von Azure Monitor](./metrics-supported.md#exporting-platform-metrics-to-other-locations) verschoben.
+Weitere Informationen finden Sie in der Spalte „Exportierbar?“ unter [Unterstützte Metriken von Azure Monitor](./metrics-supported.md#exporting-platform-metrics-to-other-locations).
 
-Für das Exportieren von Metriken über Diagnoseeinstellungen gibt es Beschränkungen. Alle Metriken können mithilfe der REST-API exportiert werden. 
+Für das Exportieren von Metriken über Diagnoseeinstellungen gibt es Beschränkungen. Alle Metriken können jedoch mithilfe der REST-API exportiert werden.
 
-## <a name="exported-zero-vs-null-values"></a>Exportierte Null- vs. NULL-Werte 
+## <a name="exported-zero-vs-null-values"></a>Exportierte Null- vs. NULL-Werte
 
 Metriken unterscheiden sich in ihrem Verhalten, je nachdem, ob Null- oder NULL-Werte vorhanden sind.  Manche Metriken melden 0, wenn keine Daten enthalten sind, z. B. Metriken zu HTTP-Fehlern. Andere Metriken speichern NULL-Werte, wenn keine Daten enthalten sind, da dies darauf hinweisen kann, dass die Ressource offline ist. Bei der Diagrammerstellung für diese Metriken mit NULL-Werten sehen Sie den Unterschied. Diese Werte werden als [gestrichelte Linien](metrics-troubleshoot.md#chart-shows-dashed-line) angezeigt. 
 

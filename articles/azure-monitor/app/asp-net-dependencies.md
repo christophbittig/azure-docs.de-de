@@ -4,12 +4,12 @@ description: Überwachen Sie Abhängigkeitsaufrufe von Ihrer lokalen oder Micros
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e832da335453151ee60a458cb259d4add15d6e1d
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: a2052b4b4d5822d583101d27e873bf19ceeca49c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228173"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486121"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Abhängigkeitsnachverfolgung in Azure Application Insights 
 
@@ -216,7 +216,7 @@ dependencies
 In der Log Analytics-Abfrageansicht stellt `timestamp` den Moment dar, in dem der TrackDependency()-Aufruf initiiert wurde. Dies erfolgt sofort nach dem Empfang der Antwort auf den Abhängigkeitsaufruf. Um die Uhrzeit des Beginns des Abhängigkeitsaufrufs zu berechnen, subtrahieren Sie den aufgezeichneten `timestamp`-Wert des Abhängigkeitsaufrufs von `duration`.
 
 ## <a name="open-source-sdk"></a>Open Source SDK
-Wie jedes Application Insights-SDK ist auch das Modul zur Abhängigkeitserfassung ein Open Source-Modul. Lesen Sie den Code, tragen Sie zum Code bei, oder melden Sie Probleme im [offiziellen GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
+Wie jedes Application Insights-SDK ist auch das Modul zur Abhängigkeitserfassung ein Open Source-Modul. Lesen Sie den Code, tragen Sie zum Code bei, oder melden Sie Probleme im [offiziellen GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-dotnet).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

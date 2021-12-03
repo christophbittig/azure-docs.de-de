@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1e409fa879f4a541f1f3da7b1c68c06d01e1f8d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6a0bd64f8e3377b78f276b1b3c4bdef6f43d8c76
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128587117"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308046"
 ---
 # <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>Bedingter Zugriff: Cloud-Apps, Aktionen und Authentifizierungskontext
 
@@ -45,7 +45,7 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Microsoft Azure Management](#microsoft-azure-management)
 - Microsoft Azure-Abonnementverwaltung
-- Microsoft Cloud App Security
+- Microsoft Defender für Cloud-Apps
 - Portal für die Zugriffssteuerung auf Microsoft Commerce-Tools
 - Authentifizierungsdienst für Microsoft Commerce-Tools
 - Microsoft Forms
@@ -71,7 +71,7 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - Windows Defender ATP
 
 > [!IMPORTANT]
-> Anwendungen, die für den bedingten Zugriff verfügbar sind, haben einen Onboarding- und Validierungsprozess durchlaufen. Diese Liste schließt nicht alle Microsoft-Apps ein, da viele Back-End-Dienste sind und nicht vorgesehen ist, Richtlinien direkt auf sie anzuwenden. Wenn Sie eine fehlende Anwendung suchen, können Sie sich an das jeweilige Anwendungsteam wenden oder eine Anforderung an [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259) senden.
+> Anwendungen, die für den bedingten Zugriff verfügbar sind, haben einen Onboarding- und Validierungsprozess durchlaufen. Diese Liste schließt nicht alle Microsoft-Apps ein, da viele Back-End-Dienste sind und nicht vorgesehen ist, Richtlinien direkt auf sie anzuwenden. Wenn Sie eine fehlende Anwendung suchen, können Sie sich an das jeweilige Anwendungsteam wenden oder eine Anforderung an [UserVoice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) senden.
 
 ### <a name="office-365"></a>Office 365
 
@@ -144,7 +144,7 @@ Benutzeraktionen sind Aufgaben, die von einem Benutzer ausgeführt werden könne
 
 ## <a name="authentication-context-preview"></a>Authentifizierungskontext (Vorschau)
 
-Der Authentifizierungskontext kann verwendet werden, um Daten und Aktionen in Anwendungen besser zu schützen. Bei diesen Anwendungen kann es sich um Ihre eigenen benutzerdefinierten Anwendungen, um benutzerdefinierte Branchenanwendungen, um Anwendungen wie SharePoint oder um durch Microsoft Cloud App Security (MCAS) geschützte Anwendungen handeln. 
+Der Authentifizierungskontext kann verwendet werden, um Daten und Aktionen in Anwendungen besser zu schützen. Bei diesen Anwendungen kann es sich um Ihre eigenen benutzerdefinierten Anwendungen, benutzerdefinierte Geschäftsbereichsanwendungen (LOB), Anwendungen wie SharePoint oder Anwendungen handeln, die durch Microsoft Defender für Cloud Apps geschützt sind. 
 
 Eine Organisation kann z. B. Dateien auf SharePoint-Websites speichern, z. B. eine Speisekarte oder die geheime Rezeptur ihrer BBQ-Soße. Möglicherweise haben alle Zugriff auf die Speisekartenwebsite, aber Benutzer mit Zugriff auf die geheime Soßenrezepturwebsite müssen möglicherweise von einem verwalteten Gerät aus darauf zugreifen und bestimmten Nutzungsbedingungen zustimmen.
 
@@ -176,7 +176,7 @@ Administratoren können veröffentlichte Authentifizierungskontexte in ihren Ric
 Weitere Informationen zur Verwendung des Authentifizierungskontexts in Anwendungen finden Sie in den folgenden Artikeln.
 
 - [Microsoft Information Protection Vertraulichkeitsbezeichnungen zum Schützen SharePoint Websites](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#more-information-about-the-dependencies-for-the-authentication-context-option)
-- [Microsoft Cloud App Security](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
+- [Microsoft Defender für Cloud-Apps](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
 - [Benutzerdefinierte Anwendungen](../develop/developer-guide-conditional-access-authentication-context.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

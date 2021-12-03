@@ -1,16 +1,16 @@
 ---
-title: Schnellstart: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)
+title: 'Schnellstart: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender für Cloud (Vorschau)'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einzelne Modulzwillinge vom Typ „DefenderIotMicroAgent“ für neue Geräte erstellen.
-ms.date: 05/10/2021
+ms.date: 11/09/2021
 ms.topic: quickstart
-ms.openlocfilehash: cd4ee34d863fdadbf3eebfe5d62854481539f413
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 35480236f6a1fc7457e5af5e8a64e2967d8eaa3e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011168"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331526"
 ---
-# <a name="quickstart-create-a-defender-iot-micro-agent-module-twin-preview"></a>Schnellstart: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)
+# <a name="quickstart-create-a-defender-for-cloud-iot-micro-agent-module-twin-preview"></a>Schnellstart: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender für Cloud (Vorschau)
 
 Sie können einzelne Modulzwillinge vom Typ **DefenderIotMicroAgent** für neue Geräte erstellen. Alternativ können Sie eine Batcherstellung von Modulzwillingen für alle Geräte in einem IoT Hub durchführen. 
 
