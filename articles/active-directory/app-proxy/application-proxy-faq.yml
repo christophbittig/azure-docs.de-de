@@ -88,7 +88,7 @@ sections:
     answer: "Für diesen Anwendungsproxy ist Windows Server 2012 R2 oder höher erforderlich. Derzeit gibt es eine Einschränkung bei HTTP2 für Windows Server 2019. Damit der Connector unter Windows Server 2019 erfolgreich verwendet werden kann, müssen Sie den folgenden Registrierungsschlüssel hinzufügen und den Server neu starten:\n\n```\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WinHttp\\EnableDefaultHttp2 (DWORD) Value: 0 \n```\n"
   - question: >
       Anwendungskonfiguration
-    answer: ''
+    answer: ' '
   - question: >
       Ich erhalte einen Fehler für ein ungültiges Zertifikat oder möglicherweise falsches Kennwort
     answer: >
@@ -143,7 +143,7 @@ sections:
       Der Anwendungsproxy fügt HTTPS-Antworten nicht automatisch den HTTP Strict-Transport-Security-Header hinzu, behält jedoch den Header bei, wenn er sich in der ursprünglichen Antwort befindet, die von der veröffentlichten Anwendung gesendet wurde. Die Suche nach einer Einstellung zur Aktivierung dieser Funktion ist in Planung.
   - question: >
       Integrierte Windows-Authentifizierung
-    answer: ''
+    answer: ' '
   - question: >
       In welchen Fällen sollte ich die „PrincipalsAllowedToDelegateToAccount“-Methode beim Einrichten der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) verwenden?
     answer: >
@@ -168,7 +168,7 @@ sections:
       In diesem Fall wird ein Fallback auf „Benutzerprinzipalname“ durchgeführt. Weitere Details zum B2B-Szenario finden Sie unter [Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD](../external-identities/hybrid-cloud-to-on-premises.md).
   - question: >
       Passthrough-Authentifizierung
-    answer: ''
+    answer: ' '
   - question: >
       Kann ich Richtlinien für bedingten Zugriff für Anwendungen verwenden, die mit Passthrough-Authentifizierung veröffentlicht werden?
     answer: >
@@ -178,7 +178,7 @@ sections:
     answer: "Nein, dieses Szenario wird nicht unterstützt, weil der Anwendungsproxy den TLS-Datenverkehr beendet.  \n"
   - question: >
       Remotedesktopgateway-Veröffentlichung
-    answer: ''
+    answer: ' '
   - question: >
       Wie kann ich Remotedesktopgateway über den Azure AD-Anwendungsproxy veröffentlichen?
     answer: >
@@ -202,7 +202,7 @@ sections:
     answer: Mit dieser Option kann der Benutzer die RDP-Datei herunterladen und über einen anderen RDP-Client verwenden (außerhalb des Remotedesktop-Webclients). In der Regel können andere RDP-Clients (etwa der Microsoft-Remotedesktopclient) die Vorauthentifizierung nicht nativ verarbeiten. Aus diesem Grund funktioniert diese Option nicht.
   - question: >
       SharePoint-Veröffentlichung
-    answer: ''
+    answer: ' '
   - question: >
       Wie kann ich SharePoint über den Azure AD-Anwendungsproxy veröffentlichen?
     answer: >
@@ -212,7 +212,7 @@ sections:
     answer: >
       Die [mobile SharePoint-App](/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) unterstützt derzeit keine Azure Active Directory-Vorauthentifizierung.
   - question: "Veröffentlichung von Active Directory-Verbunddienste (AD FS) \n"
-    answer: ''
+    answer: ' '
   - question: >
       Kann ich den Azure AD-Anwendungsproxy als AD FS-Proxy (wie den Webanwendungsproxy) verwenden?
     answer: >
@@ -222,7 +222,7 @@ sections:
     answer: "Nein, dies wird nicht unterstützt.\n         \n"
   - question: >
       WebSocket
-    answer: ''
+    answer: ' '
   - question: >
       Funktioniert die WebSocket-Unterstützung auch bei anderen Anwendungen als QlikSense und den Remotedesktop-Webclient (HTML5)?
     answer: >
@@ -232,13 +232,13 @@ sections:
       Features (Ereignisprotokolle, PowerShell und Remotedesktopdienste) im Windows Admin Center (WAC) oder Remotedesktop-Webclient funktionieren derzeit nicht über den Azure AD-Anwendungsproxy.
   - question: >
       Linkübersetzung
-    answer: ''
+    answer: ' '
   - question: >
       Wirkt sich die Verwendung der Linkübersetzung auf die Leistung aus?
     answer: "Ja. Die Verwendung der Linkübersetzung wirkt sich auf die Leistung aus. Der Anwendungsproxydienst überprüft die Anwendung auf hartcodierte Links und ersetzt diese durch die entsprechenden veröffentlichten externen URLs, bevor sie dem Benutzer angezeigt werden. \n\nUm eine optimale Leistung zu erzielen, empfiehlt sich die Verwendung von identischen internen und externen URLs durch die Konfiguration [benutzerdefinierter Domänen](./application-proxy-configure-custom-domain.md). Wenn die Verwendung benutzerdefinierter Domänen nicht möglich ist, können Sie die Leistung der Linkübersetzung durch Verwenden der Erweiterung zur sicheren Anmeldung bei „Meine Apps“ oder des Microsoft Edge-Browsers auf mobilen Geräten verbessern. Weitere Informationen finden Sie unter [Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden](./application-proxy-configure-hard-coded-link-translation.md).\n"
   - question: >
       Platzhalter
-    answer: ''
+    answer: ' '
   - question: >
       Wie kann ich mithilfe von Platzhaltern zwei Anwendungen mit demselben benutzerdefinierten Domänennamen, aber mit unterschiedlichen Protokollen – für HTTP und für HTTPS – veröffentlichen?
     answer: >-
