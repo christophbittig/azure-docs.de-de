@@ -7,17 +7,17 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 10/05/2020
+ms.date: 01/11/2022
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 79557d889e4942c7cb7e4ae849b1da84c12a3712
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, "scenarios:getting-started", "languages:ASP.NET", mode-api
+ms.openlocfilehash: 57bcd6562862210be21c17680842de44168c435b
+ms.sourcegitcommit: 04420fb4695bd70408d9854ad5b2af8a9bbfbc64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748725"
+ms.lasthandoff: 01/15/2022
+ms.locfileid: "136847810"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Schnellstart: Aufrufen einer durch Microsoft Identity Platform geschützten ASP.NET-Web-API
 
@@ -48,7 +48,7 @@ Zum Abrufen des Beispiels gibt es zwei Möglichkeiten:
 
 Registrieren Sie Ihre Web-API im Azure-Portal unter **App-Registrierungen**.
 
-1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
@@ -132,13 +132,23 @@ Konfigurieren Sie Ihr TodoListClient-Projekt, indem Sie die Anwendungs-ID zur Da
 
 1. Öffnen Sie die Datei *app.config*, die sich im Stammordner des TodoListClient-Projekts befindet, und fügen Sie dann den Wert der Anwendungs-ID in den `ida:ClientId`-Parameter ein.
 
-## <a name="run-your-todolistclient-project"></a>Ausführen des TodoListClient-Projekts
+## <a name="run-your-projects"></a>Ihre Projekte ausführen
+
+Starten Sie beide Projekte. Wenn Sie Visual Studio verwenden:
+
+1. Klicken Sie mit der rechten Maustaste auf die Visual Studio-Lösung und wählen Sie **Eigenschaften** aus.
+
+1. Wählen Sie unter **Allgemeine Eigenschaften** die Option **Startprojekt** und dann **Mehrere Startprojekte** aus. 
+
+1. Wählen Sie für beide Projekte **Start** als Aktion aus.
+
+1. Stellen Sie sicher, dass der TodoListService-Dienst zuerst gestartet wird, indem Sie ihn mithilfe des Nach-oben-Pfeils an die erste Position in der Liste verschieben.
 
 Melden Sie sich an, um Ihr TodoListClient-Projekt auszuführen.
 
-1. Drücken Sie F5, um das TodoListClient-Projekt zu öffnen. Die Projektseite wird geöffnet.
+1. Drücken Sie F5, um das Projekt zu starten. Die Dienstseite und die Desktopanwendung werden geöffnet.
 
-1. Wählen Sie oben rechts die Option **Anmelden** aus, und melden Sie sich mit den gleichen Anmeldeinformationen an, die Sie zum Registrieren der Anwendung verwendet haben. Sie können sich aber auch als Benutzer im selben Verzeichnis anmelden.
+1. Wählen Sie unter TodoListClient oben rechts die Option **Anmelden** aus, und melden Sie sich mit den gleichen Anmeldeinformationen an, die Sie zum Registrieren der Anwendung verwendet haben. Sie können sich aber auch als Benutzer im selben Verzeichnis anmelden.
 
    Wenn Sie sich zum ersten Mal anmelden, werden Sie möglicherweise aufgefordert, der TodoListServiceWeb-API zuzustimmen.
 

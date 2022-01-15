@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 09/24/2019
+ms.date: 01/14/2022
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 0ced17e1d994f8a21829bf4913a37deff8e68995
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.custom: aaddev, identityplatformtop40, "scenarios:getting-started", "languages:iOS", mode-api
+ms.openlocfilehash: 076218234e3e97a46d981a67aadd3a3f5f496eb4
+ms.sourcegitcommit: 04420fb4695bd70408d9854ad5b2af8a9bbfbc64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132312075"
+ms.lasthandoff: 01/15/2022
+ms.locfileid: "136848852"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer iOS- oder macOS-App
 
@@ -37,109 +37,62 @@ Die Schnellstartanleitung gilt für iOS- und macOS-Apps. Einige Schritte sind nu
 
 ![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-ios/ios-intro.svg)
 
-> [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
-> Die Schnellstartanwendung kann auf zwei Arten gestartet werden:
-> * [Express] [Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels](#option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample)
-> * [Manuell] [Option 2: Registrieren und manuelles Konfigurieren Ihrer Anwendung und des Codebeispiels](#option-2-register-and-manually-configure-your-application-and-code-sample)
->
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels
-> #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
-> So registrieren Sie Ihre App:
-> 1. Navigieren Sie zur Umgebung des Schnellstarts <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs" target="_blank">Azure-Portal – App-Registrierungen</a>.
-> 1. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Registrieren** aus.
-> 1. Befolgen Sie die Anweisungen, um Ihre neue Anwendung mit nur einem Klick herunterzuladen und automatisch zu konfigurieren.
->
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registrieren und manuelles Konfigurieren Ihrer Anwendung und des Codebeispiels
->
-> #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
-> Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
->
-> 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
-> 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, in dem Sie die Anwendung registrieren möchten.
-> 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
-> 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
-> 1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
-> 1. Wählen Sie **Registrieren**.
-> 1. Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** > **iOS** aus.
-> 1. Geben Sie die **Paket-ID** für Ihre Anwendung ein. Die Paket-ID ist eine eindeutige Zeichenfolge, die Ihre Anwendung eindeutig identifiziert (z. B. `com.<yourname>.identitysample.MSALMacOS`). Notieren Sie sich den verwendeten Wert. Die iOS-Konfiguration ist auch bei macOS-Anwendungen anwendbar.
-> 1. Wählen Sie **Konfigurieren** aus, und speichern Sie die Details der **MSAL-Konfiguration** zur späteren Verwendung in diesem Schnellstart.
-> 1. Wählen Sie **Fertig** aus.
+#### <a name="step-1-configure-your-application"></a>Schritt 1: Konfigurieren der Anwendung
+Fügen Sie einen mit dem Authentifizierungsbroker kompatiblen **Umleitungs-URI** hinzu, damit das Codebeispiel für diese Schnellstartanleitung funktioniert.
+> [!div class="nextstepaction"]
+> [Diese Änderung für mich vornehmen]()
 
-> [!div renderon="portal" class="sxs-lookup"]
->
-> #### <a name="step-1-configure-your-application"></a>Schritt 1: Konfigurieren der Anwendung
-> Fügen Sie einen mit dem Authentifizierungsbroker kompatiblen **Umleitungs-URI** hinzu, damit das Codebeispiel für diese Schnellstartanleitung funktioniert.
-> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Diese Änderung für mich vornehmen]()
->
-> > [!div id="appconfigured" class="alert alert-info"]
-> > ![Bereits konfiguriert](media/quickstart-v2-ios/green-check.png): Ihre Anwendung ist mit diesen Attributen konfiguriert.
->
-> #### <a name="step-2-download-the-sample-project"></a>Schritt 2: Herunterladen des Beispielprojekts
-> > [!div id="autoupdate_ios" class="nextstepaction"]
-> > [Herunterladen des Codebeispiels für iOS]()
->
-> > [!div id="autoupdate_macos" class="nextstepaction"]
-> > [Herunterladen des Codebeispiels für macOS]()
-> [!div renderon="docs"]
-> #### <a name="step-2-download-the-sample-project"></a>Schritt 2: Herunterladen des Beispielprojekts
->
-> - [Herunterladen des Codebeispiels für iOS](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-> - [Herunterladen des Codebeispiels für macOS](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+> [!div class="alert alert-info"]
+> ![Bereits konfiguriert](media/quickstart-v2-ios/green-check.png): Ihre Anwendung ist mit diesen Attributen konfiguriert.
+
+#### <a name="step-2-download-the-sample-project"></a>Schritt 2: Herunterladen des Beispielprojekts
+> [!div class="nextstepaction"]
+> [Herunterladen des Codebeispiels für iOS]()
+
+> [!div class="nextstepaction"]
+> [Herunterladen des Codebeispiels für macOS]()
 
 #### <a name="step-3-install-dependencies"></a>Schritt 3: Installieren von Abhängigkeiten
 
 1. Extrahieren Sie die ZIP-Datei.
 2. Navigieren Sie in einem Terminalfenster zu dem Ordner, der das heruntergeladene Codebeispiel enthält, und führen Sie `pod install` zum Installieren der MSAL-Bibliothek aus.
 
-> [!div renderon="portal" class="sxs-lookup"]
-> #### <a name="step-4-your-app-is-configured-and-ready-to-run"></a>Schritt 4: Ihre App ist konfiguriert und betriebsbereit
-> Wir haben das Projekt mit Werten Ihrer App-Eigenschaften konfiguriert. Es ist nun ausführungsbereit.
-> > [!NOTE]
-> > `Enter_the_Supported_Account_Info_Here`
->
-> [!div renderon="docs"]
-> #### <a name="step-4-configure-your-project"></a>Schritt 4: Konfigurieren des Projekts
-> Wenn Sie weiter oben die erste Option ausgewählt haben, können Sie diese Schritte überspringen.
-> 1. Öffnen Sie das Projekt in Xcode.
-> 1. Bearbeiten Sie **ViewController.swift**, und ersetzen Sie die Zeile, die mit „let kClientID“ beginnt, durch den folgenden Codeausschnitt. Sie müssen den Wert für `kClientID` durch die Client-ID ersetzen, die Sie zuvor im Schnellstart beim Registrieren Ihrer App im Portal gespeichert haben:
->
->    ```swift
->    let kClientID = "Enter_the_Application_Id_Here"
->    ```
+#### <a name="step-4-your-app-is-configured-and-ready-to-run"></a>Schritt 4: Ihre App ist konfiguriert und betriebsbereit
+Wir haben das Projekt mit Werten Ihrer App-Eigenschaften konfiguriert. Es ist nun ausführungsbereit.
+> [!NOTE]
+> `Enter_the_Supported_Account_Info_Here`
 
-> 1. Ersetzen Sie beim Erstellen einer App für [nationale Azure AD-Clouds](/graph/deployments#app-registration-and-token-service-root-endpoints) die Zeile, die mit „let kGraphEndpoint“ und „let kAuthority“ beginnt, durch richtige Endpunkte. Verwenden Sie für globalen Zugriff die Standardwerte:
->
->    ```swift
->    let kGraphEndpoint = "https://graph.microsoft.com/"
->    let kAuthority = "https://login.microsoftonline.com/common"
->    ```
+1. Ersetzen Sie beim Erstellen einer App für [nationale Azure AD-Clouds](/graph/deployments#app-registration-and-token-service-root-endpoints) die Zeile, die mit „let kGraphEndpoint“ und „let kAuthority“ beginnt, durch richtige Endpunkte. Verwenden Sie für globalen Zugriff die Standardwerte:
 
-> 1. Informationen zu anderen Endpunkten finden Sie [hier](/graph/deployments#app-registration-and-token-service-root-endpoints). Verwenden Sie beispielsweise zum Ausführen der Schnellstartanleitung mit Azure AD Deutschland Folgendes:
->
->    ```swift
->    let kGraphEndpoint = "https://graph.microsoft.de/"
->    let kAuthority = "https://login.microsoftonline.de/common"
->    ```
+   ```swift
+   let kGraphEndpoint = "https://graph.microsoft.com/"
+   let kAuthority = "https://login.microsoftonline.com/common"
+   ```
 
-> 3. Öffnen Sie die Projekteinstellungen. Geben Sie im Abschnitt **Identität** den Wert für **Bundle Identifier** (Paket-ID) ein, den Sie im Portal angegeben haben.
-> 4. Klicken Sie mit der rechten Maustaste auf **Info.plist**, und wählen Sie **Öffnen als** > **Quellcode** aus.
-> 5. Ersetzen Sie unter dem Stammknoten „dict“ `Enter_the_bundle_Id_Here` durch den Wert für ***Bundle Id*** (Paket-ID), den Sie im Portal verwendet haben. Beachten Sie das Präfix `msauth.` in der Zeichenfolge.
->
->    ```xml
->    <key>CFBundleURLTypes</key>
->    <array>
->       <dict>
->          <key>CFBundleURLSchemes</key>
->          <array>
->             <string>msauth.Enter_the_Bundle_Id_Here</string>
->          </array>
->       </dict>
->    </array>
->    ```
+1. Informationen zu anderen Endpunkten finden Sie [hier](/graph/deployments#app-registration-and-token-service-root-endpoints). Verwenden Sie beispielsweise zum Ausführen der Schnellstartanleitung mit Azure AD Deutschland Folgendes:
 
-> 6. Erstellen Sie die App, und führen Sie sie aus.
+   ```swift
+   let kGraphEndpoint = "https://graph.microsoft.de/"
+   let kAuthority = "https://login.microsoftonline.de/common"
+   ```
+
+3. Öffnen Sie die Projekteinstellungen. Geben Sie im Abschnitt **Identität** den Wert für **Bundle Identifier** (Paket-ID) ein, den Sie im Portal angegeben haben.
+4. Klicken Sie mit der rechten Maustaste auf **Info.plist**, und wählen Sie **Öffnen als** > **Quellcode** aus.
+5. Ersetzen Sie unter dem Stammknoten „dict“ `Enter_the_bundle_Id_Here` durch den Wert für ***Bundle Id*** (Paket-ID), den Sie im Portal verwendet haben. Beachten Sie das Präfix `msauth.` in der Zeichenfolge.
+
+   ```xml
+   <key>CFBundleURLTypes</key>
+   <array>
+      <dict>
+         <key>CFBundleURLSchemes</key>
+         <array>
+            <string>msauth.Enter_the_Bundle_Id_Here</string>
+         </array>
+      </dict>
+   </array>
+   ```
+
+6. Erstellen Sie die App, und führen Sie sie aus.
 
 ## <a name="more-information"></a>Weitere Informationen
 

@@ -7,81 +7,80 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 01/11/2022
 ms.author: jmprieur
-ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: f70c35f55256ef98dd261a13058f1b6ad5330d9f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: devx-track-csharp, "scenarios:getting-started", "languages:aspnet-core", mode-api
+ms.openlocfilehash: c30b50ae0f5eb92f21232096e032a214ec05e316
+ms.sourcegitcommit: 04420fb4695bd70408d9854ad5b2af8a9bbfbc64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616800"
+ms.lasthandoff: 01/15/2022
+ms.locfileid: "136846743"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-the-microsoft-identity-platform"></a>Schnellstart: Schützen einer ASP.NET Core-Web-API mit Microsoft Identity Platform
 
 In dieser Schnellstartanleitung laden Sie ein ASP.NET Core-Web-API-Codebeispiel herunter und überprüfen, wie es den Ressourcenzugriff auf autorisierte Konten beschränkt. Das Beispiel unterstützt die Autorisierung von persönlichen Microsoft-Konten sowie Konten in einer beliebigen Azure AD-Organisation (Azure Active Directory).
 
-> [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Voraussetzungen
->
-> - Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-> - [Azure Active Directory-Mandant](quickstart-create-new-tenant.md)
-> - [.NET Core SDK 3.1+](https://dotnet.microsoft.com/)
-> - [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) oder [Visual Studio Code](https://code.visualstudio.com/)
->
-> ## <a name="step-1-register-the-application"></a>Schritt 1: Registrieren der Anwendung
->
-> Registrieren Sie zunächst die Web-API in Ihrem Azure AD-Mandanten, und fügen Sie einen Bereich hinzu:
->
-> 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
-> 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnisse + Abonnements** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie die Anwendung registrieren möchten.
-> 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
-> 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
-> 1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein. Geben Sie beispielsweise **AspNetCoreWebApi-Quickstart** ein. Benutzern Ihrer App wird dieser Name angezeigt. Sie können ihn später ändern.
-> 1. Wählen Sie **Registrieren**.
-> 1. Wählen Sie unter **Verwalten** die Optionen **Eine API verfügbar machen** > **Bereich hinzufügen** aus. Übernehmen Sie für **Anwendungs-ID-URI** den Standardwert, indem Sie **Speichern und fortfahren** auswählen. Geben Sie dann die folgenden Informationen ein:
->    - **Bereichsname**: `access_as_user`
->    - **Zum Einwilligen berechtigte Personen**: **Administratoren und Benutzer**
->    - **Anzeigename der Administratoreinwilligung**: `Access AspNetCoreWebApi-Quickstart`
->    - **Beschreibung der Administratoreinwilligung**: `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
->    - **Anzeigename der Benutzereinwilligung**: `Access AspNetCoreWebApi-Quickstart`
->    - **Beschreibung der Benutzereinwilligung**: `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
->    - **Status:** **Aktiviert**
-> 1. Wählen Sie **Bereich hinzufügen** aus, um das Hinzufügen des Bereichs abzuschließen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Azure Active Directory-Mandant](quickstart-create-new-tenant.md)
+- [.NET Core SDK 3.1+](https://dotnet.microsoft.com/)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) oder [Visual Studio Code](https://code.visualstudio.com/)
+
+## <a name="step-1-register-the-application"></a>Schritt 1: Registrieren der Anwendung
+
+Registrieren Sie zunächst die Web-API in Ihrem Azure AD-Mandanten, und fügen Sie einen Bereich hinzu:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, in dem Sie die Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein. Geben Sie beispielsweise **AspNetCoreWebApi-Quickstart** ein. Benutzern Ihrer App wird dieser Name angezeigt. Sie können ihn später ändern.
+1. Wählen Sie **Registrieren**.
+1. Wählen Sie unter **Verwalten** die Optionen **Eine API verfügbar machen** > **Bereich hinzufügen** aus. Übernehmen Sie für **Anwendungs-ID-URI** den Standardwert, indem Sie **Speichern und fortfahren** auswählen. Geben Sie dann die folgenden Informationen ein:
+    - **Bereichsname**: `access_as_user`
+   - **Zum Einwilligen berechtigte Personen**: **Administratoren und Benutzer**
+   - **Anzeigename der Administratoreinwilligung**: `Access AspNetCoreWebApi-Quickstart`
+   - **Beschreibung der Administratoreinwilligung**: `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
+   - **Anzeigename der Benutzereinwilligung**: `Access AspNetCoreWebApi-Quickstart`
+   - **Beschreibung der Benutzereinwilligung**: `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
+   - **Status:** **Aktiviert**
+1. Wählen Sie **Bereich hinzufügen** aus, um das Hinzufügen des Bereichs abzuschließen.
 
 ## <a name="step-2-download-the-aspnet-core-project"></a>Schritt 2: Herunterladen des ASP.NET Core-Projekts
 
-> [!div renderon="docs"]
-> [Laden Sie die ASP.NET Core-Lösung von GitHub herunter.](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/archive/aspnetcore3-1.zip)
+[Laden Sie die ASP.NET Core-Lösung von GitHub herunter.](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/archive/aspnetcore3-1.zip)
 
 [!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
 
-> [!div renderon="docs"]
-> ## <a name="step-3-configure-the-aspnet-core-project"></a>Schritt 3: Konfigurieren des ASP.NET Core-Projekts
->
-> In diesem Schritt wird der Beispielcode für die Verwendung der zuvor erstellten App-Registrierung konfiguriert.
->
-> 1. Extrahieren Sie das ZIP-Archiv in einem Ordner in der Nähe des Stammverzeichnisses Ihres Laufwerks. Extrahieren Sie es beispielsweise in *C:\Azure-Samples*.
->
->    Es wird empfohlen, das Archiv in ein Verzeichnis in der Nähe des Stammverzeichnisses Ihres Laufwerks zu extrahieren, um Fehler zu vermeiden, die durch Beschränkungen der Pfadlänge unter Windows verursacht werden.
->
-> 1. Öffnen Sie die Lösung aus dem Ordner *webapi* in Ihrem Code-Editor.
-> 1. Öffnen Sie die Datei *appsettings.json*, und ändern Sie den folgenden Code:
->
->    ```json
->    "ClientId": "Enter_the_Application_Id_here",
->    "TenantId": "Enter_the_Tenant_Info_Here"
->    ```
->
->    - Ersetzen Sie `Enter_the_Application_Id_here` durch die Anwendungs-ID (Client) der im Azure-Portal registrierten Anwendung. Sie finden die Anwendungs-ID (Client) auf der Seite **Übersicht** der App.
->    - Ersetzen Sie `Enter_the_Tenant_Info_Here` durch eine der folgenden Optionen:
->       - Wenn Ihre Anwendung **Nur Konten in diesem Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch die Verzeichnis-ID (Mandant) (eine GUID) oder durch den Mandantennamen (beispielsweise `contoso.onmicrosoft.com`). Die Verzeichnis-ID (Mandant) finden Sie auf der Seite **Übersicht** der App.
->       - Falls Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch `organizations`.
->       - Wenn Ihre Anwendung **Alle Microsoft-Kontobenutzer** unterstützt, behalten Sie `common` für diesen Wert bei.
->
-> Ändern Sie in dieser Schnellstartanleitung keine anderen Werte in der Datei *appsettings.json*.
+
+## <a name="step-3-configure-the-aspnet-core-project"></a>Schritt 3: Konfigurieren des ASP.NET Core-Projekts
+
+In diesem Schritt wird der Beispielcode für die Verwendung der zuvor erstellten App-Registrierung konfiguriert.
+
+1. Extrahieren Sie das ZIP-Archiv in einem Ordner in der Nähe des Stammverzeichnisses Ihres Laufwerks. Extrahieren Sie es beispielsweise in *C:\Azure-Samples*.
+
+   Es wird empfohlen, das Archiv in ein Verzeichnis in der Nähe des Stammverzeichnisses Ihres Laufwerks zu extrahieren, um Fehler zu vermeiden, die durch Beschränkungen der Pfadlänge unter Windows verursacht werden.
+
+1. Öffnen Sie die Lösung aus dem Ordner *webapi* in Ihrem Code-Editor.
+1. Öffnen Sie die Datei *appsettings.json*, und ändern Sie den folgenden Code:
+
+   ```json
+   "ClientId": "Enter_the_Application_Id_here",
+   "TenantId": "Enter_the_Tenant_Info_Here"
+   ```
+
+   - Ersetzen Sie `Enter_the_Application_Id_here` durch die Anwendungs-ID (Client) der im Azure-Portal registrierten Anwendung. Sie finden die Anwendungs-ID (Client) auf der Seite **Übersicht** der App.
+   - Ersetzen Sie `Enter_the_Tenant_Info_Here` durch eine der folgenden Optionen:
+      - Wenn Ihre Anwendung **Nur Konten in diesem Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch die Verzeichnis-ID (Mandant) (eine GUID) oder durch den Mandantennamen (beispielsweise `contoso.onmicrosoft.com`). Die Verzeichnis-ID (Mandant) finden Sie auf der Seite **Übersicht** der App.
+      - Falls Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch `organizations`.
+      - Wenn Ihre Anwendung **Alle Microsoft-Kontobenutzer** unterstützt, behalten Sie `common` für diesen Wert bei.
+
+Ändern Sie in dieser Schnellstartanleitung keine anderen Werte in der Datei *appsettings.json*.
 
 ## <a name="how-the-sample-works"></a>Funktionsweise des Beispiels
 
