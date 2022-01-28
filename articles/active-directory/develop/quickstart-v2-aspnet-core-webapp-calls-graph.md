@@ -10,14 +10,15 @@ ms.subservice: develop
 ms.topic: portal
 ms.workload: identity
 ms.date: 11/22/2021
+ROBOTS: NOINDEX
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, "scenarios:getting-started", "languages:aspnet-core", mode-other
-ms.openlocfilehash: 887a1e072f2ea9325fa1113446c57e5d68dbd691
-ms.sourcegitcommit: 34d047300d800cf6ff7d9dd3e573a0d785f61abc
+ms.openlocfilehash: e093dd1b5a3942ae0c98dc11feb10dd26ead0162
+ms.sourcegitcommit: 3f20f370425cb7d51a35d0bba4733876170a7795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2022
-ms.locfileid: "135935310"
+ms.lasthandoff: 01/27/2022
+ms.locfileid: "137804366"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Schnellstart: ASP.NET Core-Web-App zum Anmelden von Benutzern und Aufrufen von Microsoft Graph in deren Namen
 
