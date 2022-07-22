@@ -154,7 +154,7 @@ SOAR-Integrationen und deren Komponenten finden Sie an folgenden Orten:
 | **Okta** | Verwalteter Logic Apps-Connector<br><br>Playbooks | Community | Benutzerergänzung, <br>Benutzerkorrektur |
 |
 
-## <a name="palo-alto"></a>Garmisch-Partenkirchen
+## <a name="palo-alto"></a>Palo Alto Networks
 
 | Produkt | Integrationskomponenten | Unterstützt von | Szenarien |
 | --- | --- | --- | --- |
