@@ -267,7 +267,7 @@ Weitere Informationen finden Sie unter [Zentrales Entdecken und Bereitstellen vo
 |**Oracle Database-Auditlösung** | Datenconnector, Arbeitsmappe, Analyseregeln, Hunting-Abfragen, Parser| Application|Microsoft |
 | | | | |
 
-## <a name="palo-alto"></a>Garmisch-Partenkirchen
+## <a name="palo-alto"></a>Palo Alto Networks
 
 |Name    |Includes  |Kategorien |Unterstützt von  |
 |---------|---------|---------|---------|
