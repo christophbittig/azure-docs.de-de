@@ -48,7 +48,7 @@ In der folgenden Tabelle sind die unterstützten Drittanbieter und deren Dokumen
 
 | Typ |    Hersteller |    Produkt | Log Analytics-Tabellenname | Referenz zur CEF-Feldzuordnung  |
 | ----- | ----- | ----- | ----- |----- |
-| **Network** | Garmisch-Partenkirchen   | PAN-OS    | CommonSecurityLog |   [PAN-OS 9.0 Common Event Format Integration Guide](https://docs.paloaltonetworks.com/content/dam/techdocs/en_US/pdf/cef/pan-os-90-cef-configuration-guide.pdf) (Integrationsleitfaden zum Common Event Format in PAN-OS 9.0; suchen Sie nach *CEF-style Log Formats*) |
+| **Network** | Palo Alto Networks   | PAN-OS    | CommonSecurityLog |   [PAN-OS 9.0 Common Event Format Integration Guide](https://docs.paloaltonetworks.com/content/dam/techdocs/en_US/pdf/cef/pan-os-90-cef-configuration-guide.pdf) (Integrationsleitfaden zum Common Event Format in PAN-OS 9.0; suchen Sie nach *CEF-style Log Formats*) |
 | **Network** | Check Point  |ALLE   | CommonSecurityLog | [Beschreibung der Protokollfelder](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk109795)       |
 | **Network** | Fortigate   | ALLE   | CommonSecurityLog | [Struktur des Protokollschemas](https://docs.fortinet.com/document/fortigate/6.2.3/fortios-log-message-reference/738142/log-schema-structure)         |
 | **Network** | Barracuda | Web Application Firewall |  CommonSecurityLog   | [Konfigurieren von Syslog und anderen Protokollen](https://campus.barracuda.com/product/webapplicationfirewall/doc/4259935/how-to-configure-syslog-and-other-logs/)  |
